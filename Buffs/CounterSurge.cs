@@ -1,0 +1,22 @@
+﻿using IL.Terraria.DataStructures;
+using Terraria;using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace StarsAbove.Buffs
+{
+    public class CounterSurge : ModBuff
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Counter Surge");
+            Description.SetDefault("The Xenoblade's charged attack has been drastically empowered");
+            Main.buffNoTimeDisplay[Type] = false;
+            Main.debuff[Type] = false; //
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+            
+        }
+    }
+}

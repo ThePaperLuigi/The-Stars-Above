@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\tModLoader.targets" />
+  <PropertyGroup>
+    <AssemblyName>StarsAboveAlpha</AssemblyName>
+    <TargetFramework>net6.0</TargetFramework>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="GraphicsLib">
+      <HintPath>..\Mod Libraries\GraphicsLib_v2.0.0.2.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureHelper">
+      <HintPath>lib\StructureHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="SubworldLibrary">
+      <HintPath>..\..\..\..\..\..\Desktop\Sublib\SubworldLibrary.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

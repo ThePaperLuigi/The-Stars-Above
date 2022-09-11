@@ -1,0 +1,42 @@
+﻿using StarsAbove.NPCs;
+using System.Net.WebSockets;
+using Terraria;using Terraria.ID;
+using Terraria.ModLoader;
+
+using Terraria;using Terraria.ID;
+using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
+
+namespace StarsAbove.Buffs.SubworldModifiers
+{
+    public class RuinedSpaceshipTurmoil : ModBuff
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("[c/EFB43E:Environmental Turmoil]");
+            Description.SetDefault("Exploring derelict, unknown ruins" +
+                "\n" +
+                "\nDefense is reduced by 50" +
+                "\nMana regeneration is drastically increased");
+            Main.buffNoTimeDisplay[Type] = false;
+            Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+            player.statMana++;
+            player.statDefense -= 50;
+        }
+        public override void Update(NPC npc, ref int buffIndex)
+        {
+           
+            
+            
+        }
+        public override bool ReApply(NPC npc, int time, int buffIndex)
+        {
+            
+            return base.ReApply(npc, time, buffIndex);
+        }
+    }
+}

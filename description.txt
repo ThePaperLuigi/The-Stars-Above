@@ -1,0 +1,101 @@
+'Conquer the world's evils, Starfarers at your side.'
+[c/2CD38A:Compatible with multiplayer!]
+Thank you everyone for over 1 million downloads!
+[c/BC84FF:Please check the Discord for the latest info + wiki!]
+[c/ECAD1B:Click the homepage link below!]
+This mod includes:
+- Two fully furnished deuteroganists with over 1000+ 
+   lines of dialogue and custom UI to support it
+- Modular, upgradable ultimate abilities that scale
+   with boss progression
+- Pre-made instanced explorable dungeons
+   set amongst the stars
+- 24 custom unlockable passive abilities present in a
+   unique weight-based system
+- 50+ special weapons that have malleable damage types,
+   alternate abilities, charged attacks, etc.
+- 6 unique bosses each with their own special
+   cast-centric AI
+[c/D64935:*** Requires Subworld Library! ***]
+Full description below...
+
+The Stars Above is a Terraria expansion mod that adds
+a new important game mechanic: the Starfarer system.
+Compatible with multiplayer and all popular content mods.
+
+Meet Asphodene and Eridani: twin Starfarers, spatial
+foreigners that will grant you strength on your journey.
+
+Unlock unique equippable abilities within the Stellar Array,
+mixing and matching them to perfect your build.
+
+Obtain incredibly powerful Stellar Novas to decide battles,
+and then modify and upgrade your Stellar Novas with
+Stellar Prisms.
+
+With hundreds of unique dialogue lines for each Starfarer,
+become stronger with their guidance,
+and arm yourselves for the challenges to come.
+Your Starfarers will also have dialogue for modded bosses!
+
+Obtain extraordinary weapons with layers of strategy
+and myriad powers to overwhelm your foes. Every single
+weapon is incredibly unique and custom-made.
+
+Defeat six powerful unqiue bosses boasting a custom AI system:
+Casted Attacks. Adapt and learn to defeat these powerful foes!
+
+The adventure doesn't stop with your home planet. Journey
+to the stars above, exploring ancient ruins, alien relics,
+and more.
+
+This mod grants nearly limitless player agency; you decide
+how you want to play.
+
+[c/BC84FF:WEAPONS]
+
+Along with the Stellar Array mechanic, there are a myriad of
+new weapons exclusive to your respective Aspect carefully made
+with unique gameplay in mind. This mod embraces quality over
+quantity; each weapon can be qualified as a legendary
+artifact by itself, and you may recognize some of them...
+
+[c/BC84FF:BOSSES]
+
+Once you have defeated the Wall of Flesh, you can challenge The Vagrant of Space and Time.
+Defeating this boss will unlock the next step of your powers, the utilization of Stellar Novas.
+
+During your journey, square off against legendary foes such as Nalhaun, the Burnished King,
+Penthesilea, the Witch of Ink, and Arbitration.
+Prepare yourself for their myriad attacks, and erase them from this world!
+
+At the end of your journey, The Stars Above has one last challenge for you: The Warrior of Light.
+This fight, one of the most unique Terraria bosses ever, will pit you against the pinnacle of heroes, testing
+your strength and willpower. It will push you to your Limit- and beyond.
+
+Once you've bested all the bosses of the Stars Above, a new foe will make itself known.
+Prepare for the fight of your life...
+
+In Expert Mode, prepare for a challenge that will test every ounce of your abilities.
+
+[c/BC84FF:CROSSOVER CONTENT]
+
+For enjoyers of the Calamity Mod:
+Several weapons are custom-tailored to suit the post-Moon Lord endgame the Calamity Mod offers.
+Furthermore, Stellar Novas will scale automatically to Calamity progress.
+
+Custom dialogue is present for Thorium bosses as well!
+Even if the mod does not support a modded boss, there will still be dialogue!
+
+[c/BC84FF:EXTRA]
+
+Thank you to Subworld Library and Scalar's Structurizer for resources used to create subworlds!
+
+This mod is meant to be utilized in tandem with other mods to enhance the gameplay experience.
+
+Fully compatible with multiplayer, but there may be some desync issues.
+Compatible with saves, but highly recommended to start a new playthrough.
+If any incompatibilities arise, they will be mentioned ingame.
+
+Please consider donating to The Stars Above if you're able!
+[c/ECAD1B:https://www.patreon.com/starsabove]

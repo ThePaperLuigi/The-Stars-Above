@@ -1,0 +1,43 @@
+﻿using StarsAbove.Projectiles.Youmu;
+using Terraria;using Terraria.ID;
+using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
+using StarsAbove.Items;
+using System;
+using Terraria;using Terraria.ID;
+using Terraria.ID;
+using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
+
+namespace StarsAbove.Buffs.Youmu
+{
+    public class PhantomMinion : ModBuff
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Phantom Spirit");
+            Description.SetDefault("A phantom spirit is attacking foes");
+			Main.buffNoSave[Type] = true;
+			Main.buffNoTimeDisplay[Type] = true;
+		}
+
+		public override void Update(Player player, ref int buffIndex)
+		{
+			StarsAbovePlayer modPlayer = player.GetModPlayer<StarsAbovePlayer>();
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Youmu.YoumuSpirit>()] > 0)
+			{
+				modPlayer.YoumuMinion = true;
+			}
+			if (!modPlayer.YoumuMinion)
+			{
+				player.DelBuff(buffIndex);
+				buffIndex--;
+			}
+			else
+			{
+				player.buffTime[buffIndex] = 18000;
+
+			}
+		}
+	}
+}

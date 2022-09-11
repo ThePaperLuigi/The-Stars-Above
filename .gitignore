@@ -1,0 +1,15 @@
+/App.config
+/.vs/
+/bin/
+/obj/
+/Properties/
+
+*.user
+*.sln
+*.cache
+*.zip
+*.rar
+*.ini
+
+commit-message.txt
+*.sfk

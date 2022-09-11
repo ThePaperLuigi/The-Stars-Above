@@ -1,0 +1,1064 @@
+Mods: {
+	StarsAbove: {
+		Config: {
+			
+			DisableStellarNovaCutIns: {
+				Label: Disable Stellar Nova cut-ins
+				Tooltip: Disables the portrait of your Starfarer when activating your Stellar Nova.
+			}
+			
+			DisableStellarNovaDialogue: {
+				Label: Disable Stellar Nova dialogue box
+				Tooltip: Disables the dialogue box during the Stellar Nova cut-in.
+			}
+			
+			DisableStarfarerCommentary: {
+				Label: Disable Stellar Nova cut-ins
+				Tooltip: Disables the portrait of your Starfarer when activating your Stellar Nova.
+			}
+			
+			DisableStarfarerCommentaryBuffs: {
+				Label: Disable Starfarer commentary on buffs/debuffs
+				Tooltip: You will no longer recieve Starfarer Prompts for getting buffed/debuffed.
+			}
+			
+			DisableStarfarerCommentaryCombat: {
+				Label: Disable Starfarer commentary for combat events
+				Tooltip: You will no longer recieve Starfarer Prompts for killing foes, etc.
+			}
+			
+			DialogueScrollValue: {
+				Label: Starfarer Text Speed
+				Tooltip: The time for dialogue text to increment in frames. Below 2, it is recommended to disable dialogue sound effects.
+			}
+			
+			DialogueAudio: {
+				Label: Starfarer Text Sound Effect
+				Tooltip: The sound effect that plays when letters appear during Starfarer Dialogue. 5 is silence.
+			}
+			
+			InstantText: {
+				Label: Instant Text
+				Tooltip: Ignores the Starfarer Text Speed option; all text will appear instantly.
+			}
+			
+			DisableDraggingDialogue: {
+				Label: Disable dragging Starfarer Dialogue
+				Tooltip: Starfarer Dialogue is locked in position.
+			}
+			
+			PromptLoc: {
+				Label: Starfarer Prompt positiion
+				Tooltip: Position is measured from the bottom right of the screen!
+			}
+			
+			CommentaryTimer: {
+				Label: Starfarer Prompt positiion
+				Tooltip: Position is measured from the bottom right of the screen!
+			}
+			
+			EnableStarfarerVoices: {
+				Label: Disable Stellar Nova voice lines
+				Tooltip: Disables voice lines for Asphodene and Eridani during Stellar Novas. (Courtesy of 15.ai)
+			}
+			
+			EnableAprilFools: {
+				Label: Enable April Fools mode
+				Tooltip: Adds radical sunglasses to Asphodene and Eridani in the Starfarer menu and during Stellar Novas.
+			}
+		}
+		
+		Common: {
+			ChargeText: Hold left click to charge the weapon; if the weapon is fully charged, the attack varies
+			DiskReady: The Spatial Disk begins to resonate. Left click to interact.
+			ArrayAbility: The Stellar Array has gained a new ability!
+		}
+		
+
+		DamageClass: {
+			CelestialDamageClass: spatial damage
+		}
+		
+		NPCName: {
+			
+			WarriorOfLight: Warrior of Light
+			Tsukiyomi: Tsukiyomi, the First Starfarer
+			Tsukiyomi2: Tsuiyomi, the Progeny of Salvation
+			Nalhaun: Nalhaun, the Burnished King
+			Arbitration: Arbitration
+			Penthesilea: Penthesilea, the Witch of Ink
+			VagrantOfSpaceAndTime: The Vagrant of Space and Time
+			
+		}
+		
+		MapObject: {
+			
+		}
+		
+		ItemTooltip: {
+			#Translated with DeepL, example
+			PrismaticCore:
+				'''
+				来自裂缝之外的闪闪发光的催化剂
+				可用于空间制作，也可在商店高价出售。
+				用来制作恒星新星的升级品
+				'''
+			
+			
+			AegisDriver:
+				'''
+				With 40 mana available, this weapon will be thrown with special effects, consuming 40 mana in the process
+				The blade will ignite, dealing increased damage and will burn foes
+				Burning foes take bonus damage when they are reignited
+				If no mana is available, the weapon will be unpowered and deal half damage
+				Attacking with the powered version of this weapon charges the Aegis Gauge
+				Once the Aegis Gauge is filled, the next attack will explode the foe, dealing massive critical damage while consuming the Aegis Gauge
+				The Aegis Gauge will also slowly charge over time when this weapon is held
+				‘This is the Aegis’s power!’
+				'''
+			RadGun:
+				'''
+				Right click to load 12 bullets into the magazine with 40 mana
+				Timing the reload perfectly will boost damage up to 8 times and refund 20 mana
+				Failing to time the reload perfectly will reset the bonus
+				‘Are you a bad enough dude?’
+				'''
+			CarianDarkMoon:
+				'''
+				Attacks with this weapon will sweep in a wide arc
+				Critical strikes will inflict Frostburn for 3 seconds
+				Right click to consume 100 Mana, gaining the buff Moonlit Greatblade for 18 seconds after a short delay, during which this weapon is unusable
+				Moonlit Greatblade empowers this weapon with lunar energy, granting 10 extra damage and 12  armor penetration
+				During this time, empowered attacks will fire piercing ranged projectiles, and melee strikes are guaranteed to inflict Frostburn
+				Moonlit Greatblade prevents natural mana regeneration when active, and has a 8 second cooldown
+				‘Now cometh the age of stars…’ 
+				'''
+			KonpakuKatana:
+				'''
+				Holding this weapon conjures a Phantom Spirit to attack foes
+				Attacks fire quick long-ranged bullets, dealing Summon damage
+				Proximity to hostile projectiles or enemies with contact damage grants the buff Death’s Dance for 2 seconds (Death’s Dance grants 30% increased damage)
+				Right click to activate Phantom Slash, spinning the weapon around you for 3x base damage (8 second cooldown)
+				If Death’s Dance is currently active, Phantom Slash will do 6x base damage instead and grant Swiftness for 4 seconds
+				‘If there’s something I can’t make clear, I try cutting it!’
+				'''
+			NeoDealmaker:
+				'''
+				Hold left click to charge the weapon; the longer the weapon is charged, the stronger the resulting attack will become
+				Attacks with this weapon fire small pellets, inflicting Midas for 20 seconds on critical strikes
+				Charged attacks will instead fire a BIG SHOT, piercing up to 8 foes and ignoring terrain
+				Defeating foes with the BIG SHOT guarantees a drop of 5 silver
+				‘Now’s your chance to be a…’
+				'''
+			AshenAmbition:
+				'''
+				Attacks pierce foes and have no knockback
+				Right click to disappear, activating Ashen Execution and saving your cursor’s position (1 minute cooldown)
+				After a short delay, teleport to your cursor and deal damage around you, instantly executing foes below this weapon’s base damage * 5
+				Foes below the execution threshold will glow
+				Defeating foes in this manner instantly refreshes the cooldown of Ashen Execution (2 second minimum) and grants one stack of Call of the Void
+				Each stack of Call of the Void increases movement speed by 5%
+				At 5 stacks of Call of the Void, all stacks are reset and Ashen Execution has a 10 second cooldown
+				Additionally, gain Ashen Strength for 2 seconds, drastically restoring HP
+				Failing to execute an enemy returns you to your starting position and resets all stacks of Call of the Void
+				‘Put these foolish ambitions to rest.’
+				'''
+			AncientBook:
+				'''
+				Calls forth Void Octopi to assail foes with homing lasers
+				Each Void Octopi summoned increases damage of all Void Octopi by 3
+				Right click to fire Eldritch Blast towards your cursor for 3 seconds, melting foes for 5x base damage (1 minute cooldown)
+				With at least 1 Void Octopus summoned, the Abyssal Gauge will appear
+				When Void Octopi or Eldritch Blast deals damage the Abyssal Gauge will increase, even when this weapon is not held
+				When the Abyssal Gauge is full, Ancient One’s Summoning will activate when this weapon is held
+				Ancient One’s Summoning will cause magical portals to surround the nearest foe
+				After a short delay, tentacles will be summoned to strike, dealing 5x base damage
+				For each void octopi summoned, the amount of Ancient One’s Summoning’s portals will increase and Eldritch Blast does more damage
+				'We are happy. We are here. We are hype. We are...'
+				'''
+			Skofnung:
+				'''
+				This weapon has a unique attack sequence
+				‘It yearns for justified bloodshed’
+				'''
+			InugamiRipsaw:
+				'''
+				Use right click to activate Berserker Mode for 5 seconds, increasing damage dealt but dealing damage to yourself (20 second cooldown)
+				‘It preys on stray fingers’
+				'''
+			DerFreischutz:
+				'''
+				Bullets will fire from your cursor.
+				Line of sight is not required, but bullets will inherit direction.
+				Critical rate and damage will increase with the amount of bullets fired, but the seventh shot will have recoil damage and damage friends.
+				If the recoil damage would kill you, the gun will misfire.
+				‘It is said he could never miss, but the seventh bullet always struck those he loved’
+				'''
+			DeathInFourActs:
+				'''
+				Every fourth shot will always deal critical damage and grant Swiftness.
+				After the fourth shot is taken, the gun will take time to reload.
+				’In carnage, I bloom, like a flower in the dawn’
+				'''
+			Persephone:
+				'''
+				Applies frostburn to foes and fires an icy projectile when in the confines of the underworld.
+				‘Only thorns left on this rose’
+				'''
+			KazimierzSeraphim:
+				'''
+				Holding this weapon will conjure a spectral blade to orbit you, dealing contact damage.
+				Striking foes with this weapon grants stacks of Radiance (Up to 5.)
+				Critical hits grant two stacks of Radiance.
+				When the orbiting blade strikes an enemy, it will consume all stacks of Radiance.
+				Each stack of Radiance will contribute 5 extra damage.
+				At maximum stacks, the attack will always crit.
+				‘The light holds resolute here!’
+				'''
+			Apalistik:
+				'''
+				Striking foes with the weapon inflicts Riptide for 4 seconds.
+				When a minion strikes an enemy with Riptide, they take 30% extra damage, removing Riptide.
+				Additionally, with this weapon held, minions have a 10% chance to apply Ocean’s Culling for 5 seconds upon striking foes.
+				When you strike a foe with Ocean’s Culling with this weapon, the foe will detonate, taking damage and spewing damaging bubbles around the area.
+				Bubbles count as Minion damage and have a 30% chance to crit.
+				If bubbles hit a foe with Riptide, this chance is increased to 100%.
+				Damage scales with world progression.
+				'''
+			MiserysCompany:
+				'''
+				Right click to cycle between Blade Mode, Scythe Mode, and Shotgun Mode with a 2 second cooldown.
+				Blade Mode allows for quick swings at close range.
+				Scythe Mode throws a scythe with a very long reach that can bypass walls with a cooldown.
+				Shotgun Mode fires bullets in a spread pattern that does not use ammo, doing half damage per shot.
+				'''
+			KarlanTruesilver:
+				'''
+				Unleashes powerful slashes that will obliterate foes.
+				‘When the aether darkens, tis an omen that snowfall draws near’
+				'''
+			EveryMomentMatters:
+				'''
+				Every fourth shot will always deal critical damage and grant Swiftness.
+				Damage will increase with every shot.
+				Every eighth shot will deal triple damage.
+				After the fourth shot is taken, the gun will take time to reload.
+				‘I have risen from the filth and muck. I am the lotus blossom. I am beauty.’
+				'''
+			ForceOfNature:
+				'''
+				Fires a high amount of bullets in a wide spread.
+				Landing hits on foes grants Swiftness for 4 seconds.
+				Attacks cause self-knockback.
+				The weapon must reload after two attacks (fire the weapon without bullets to reload)
+				Right click to fire a Blasting Charge to launch yourself far in the opposite direction (6 second cooldown.)
+				Firing the Blasting Charge reloads the weapon without cooldown.
+				'''
+			LuminaryWand:
+				'''
+				Holding this weapon will conjure a friendly Starchild.
+				Your defense is directly added to the Starchild’s contact damage.
+				When the Starchild deals damage to foes, there is a small chance that a Star Bit will appear.
+				If you pick up a Star Bit while holding this weapon, you will immediately fire a Starblast at your cursor.
+				The Starblast counts as Minion damage.
+				The Starblast has unique effects depending on the color of the Star Bit acquired.
+				Red Star Bits have higher base damage.
+				Orange Star Bits inflict Burn for 4 seconds.
+				Yellow Star Bits bind foes for 1 second.
+				Green Star Bits have a 30% chance to crit.
+				Blue Star Bits restore 10 Mana upon contact with an enemy.
+				Purple Star Bits inflict Starblight for 4 seconds.
+				'''
+			IzanagiEdge:
+				'''
+				Every fourth shot will always deal critical damage.
+				All critical damage from this weapon does quadruple damage instead of double.
+				Damage will increase with every shot.
+				After the fourth shot is taken, the gun will take time to reload.
+				If you land enough shots, your next reload will gain the strength of Honed Edge.
+				Once you reload with Honed Edge, the next shot will deal 10x the normal amount as critical damage, and then reload.
+				This shot restores 100 Mana on contact.
+				‘Strike true, Ziodyne!’
+				'''
+			HawkmoonMagic:
+				'''
+				Right click to reload the gun with 12 rounds
+				Time the reload perfectly to gain Paracausal Anomaly until all bullets are spent.
+				Paracausal Anomaly increases damage while making all attacks critical.
+				This weapon does not use ammo.
+				This weapon can be re-crafted to swap between Magic and Ranged damage.
+				‘What you call Darkness is the end of your evolution’
+				'''
+			HawkmoonRanged:
+				'''
+				Right click to reload the gun with 12 rounds
+				Time the reload perfectly to gain Paracausal Anomaly until all bullets are spent.
+				Paracausal Anomaly increases damage while making all attacks critical.
+				This weapon does not use ammo.
+				This weapon can be re-crafted to swap between Magic and Ranged damage.
+				‘What you call Darkness is the end of your evolution’
+				'''
+			VenerationOfButterflies:
+				'''
+				Fire bursts of fluttering energy at your foe while increasing the Butterfly Gauge.
+				Projectiles inflict Confusion and deal bonus damage to Confused foes.
+				Once the Butterfly Gauge is at its maximum, right click to enter Butterfly Trance for 5 seconds.
+				During Butterfly Trance, the Mana cost of Veneration of Butterflies drops to zero and you can shoot twice as fast.
+				You will also gain 50% damage reduction and slow falling.
+				'''
+			MementoMuse:
+				'''
+				Holding this weapon will cause the Rhythm Gauge to appear
+				Swing in tandem with the beat to deal increased damage and fire a powerful projectile.
+				Keeping up with the rhythm will slowly increase the critical hit ratio.
+				The combo has a limit of 12.
+				Once you have completed a combo, you will gain the ability to use a Rhythm Burst.
+				Right click with Rhythm Burst ready to temporarily ignore timing for 2 seconds.
+				Rhythm Burst will reset your combo to 0.
+				‘I’m not asking for much, do me a favor and die?’
+				'''
+			ApalistikUpgraded:
+				'''
+				Striking foes with the weapon inflicts Riptide for 4 seconds.
+				When a minion strikes an enemy with Riptide, they take 30% extra damage, removing Riptide.
+				Additionally, with this weapon held, minions have a 10% chance to apply Ocean’s Culling for 5 seconds upon striking foes.
+				When you strike a foe with Ocean’s Culling with this weapon, the foe will detonate, taking damage and spewing damaging bubbles around the area.
+				Bubbles count as Minion damage and have a 30% chance to crit.
+				If bubbles hit a foe with Riptide, this chance is increased to 100%.
+				Damage scales greatly with world progression.
+				Right click to imbue yourself with Seaborn Wrath for 8 seconds.
+				Under the effects of Seaborn Wrath, attacks with this weapon will fire bubbles in a spread pattern.
+				Additionally, minions will deal double damage.
+				After use, Seaborn Wrath has a 30 second cooldown.
+				'''
+			Xenoblade:
+				'''
+				Hold left click to charge the weapon; if the weapon is fully charged, the attack varies.
+				Uncharged attacks slash in a wide area and will restore 3 mana.
+				Charged attacks deal double damage, have extraordinary knockback, and range is extended.
+				Preparing charge attacks drain mana.
+				After 2 uncharged attacks in quick succession, the next charged attack is prepared incredibly fast.
+				Right click to cycle Xenoblade Arts between Smash, Speed, Shield, Jump, and Buster.
+				The current Xenoblade Art will grant a specific buff in the stance.
+				Smash grants Titan when active, and charged attacks are upgraded into Smash Attacks guaranteeing critical damage.
+				Speed grants Swiftness when active and disables charged attacks, but normal attacks are stronger and faster.
+				Shield grants Endurance when active, and you gain 18 defense when holding a readied charged attack and mana drain is stopped.
+				Jump grants Featherfall when active, and charged attacks launch you forward, costing 40 mana (Featherfall is lost below 100 mana.)
+				Buster grants Wrath when active and disables normal attacks, but charged attacks are faster.)
+				‘THIS is the Monado’s power!’
+				'''
+			SkyStrikerArms:
+				'''
+				This weapon is unaffected by Aspected Damage Type penalty.
+				Right click to access the Aerial Forme Selection Menu (Aerial Forme is reset upon swapping weapons.)
+				Each Aerial Forme grants unique buffs and modifies weapon attacks.
+				Aerial Forme: Annihilation
+				Damage is increased by 50%, but defenses are reduced by 30.
+				Attacks are changed into fast swings that inflict On Fire for 8 seconds.
+				Critical strikes deal increased damage to targets inflicted with On Fire as well as expelling the debuff.
+				Aerial Forme: Defender
+				Gain 20 defense, enemies are more likely to target you, and 80% of damage taken is reflected to attackers.
+				Attacks are changed into a held ability that raises a shield in front of you, destroying nearby projectiles (2 second cooldown.)
+				Additionally, all allies in the radius gain 10 defense while the shield is active.
+				Aerial Forme: Close Combat
+				Gain Wrath for 2 seconds when attacking foes below 50% HP.
+				Attacks are changed into close-ranged strikes that propel you forward and knock you back when hitting foes.
+				Critical strikes launch a claw that pierces enemies
+				Aerial Forme: Railgunner
+				Critical strike chance is increased by 20%
+				Attacks are changed into long-range piercing bolts, dealing 2x base damage.
+				Critical strikes deal 4x damage.
+				'''
+			RideTheBull:
+				'''
+				Sprays a barrage of powerful bullets.
+				Uses mana, but deals ranged damage.
+				Killing foes will refill a portion of Mana and grant Wrath.
+				‘Never stop shooting’
+				'''
+			Drachenlance:
+				'''
+				Right click to perform a Jump into the air (12 second cooldown) and become imbued with the Blood of the Dragon for 5 seconds.
+				You will also be granted Featherfalling for 1 second.
+				Blood of the Dragon will apply the following effects:
+				During Blood of the Dragon, the next attack will launch you towards your cursor.
+				During Blood of the Dragon, damage is increased by 40%.
+				During Blood of the Dragon, Movement speed is increased.
+				During Blood of the Dragon, you take no fall damage.
+				After two instances of Blood of the Dragon, the next Jump will instead grant Life of the Dragon for 8 seconds.
+				Life of the Dragon will apply the following effects:
+				During Life of the Dragon, the next attack will fire a barrage of draconic fireballs that lower enemy defense.
+				During Life of the Dragon, damage and critical chance is increased by 60%.
+				During Life of the Dragon, every attack after the first will launch you towards your target, dealing high amounts of damage.
+				During Life of the Dragon, you will gain Invincibility for 1 second with every strike.
+				During Life of the Dragon, you take no fall damage and gain 20 defense.
+				Jump stacks will be reset upon swapping off the weapon.
+				‘Born amidst the timeless conflict between men and dragons, forged that they might better pierce the scaled hides of their mortal foes.’
+				'''
+			Hullwrought:
+				'''
+				Hold left click to charge the weapon; if the weapon is fully charged, the attack varies.
+				Right click to swap between Blasting Form and Striking Form with 1/3rd second cooldown.
+				In Striking Form, attacks focus on close-ranged damage.
+				Uncharged attacks will slash in a huge area.
+				Charged attacks propel you forward while swinging in a large circle around you, dealing double damage.
+				In Blasting Form, attacks focus on slow, powerful ranged attacks.
+				Uncharged attacks are disabled.
+				Charged attacks take much longer to perform, but instead fires a powerful projectile that binds foes for 2 seconds.
+				Holding charge attack enhances the attack every 1/2 second, capping at 10 stacks.
+				If the charged attack has 5 stacks or more, it will always be a critical hit.
+				'''
+			CrimsonOutbreak:
+				'''
+				Fires a highly accurate three round burst that inflicts Nanite Plague.
+				Enemies with Nanite Plague will take damage over time and will take more damage from this weapon.
+				Nanite Plague stacks with every shot, and will increase damage taken by bullets further (Max 20 stacks.)
+				Uses mana, but deals ranged damage.
+				‘-directive = KILL while enemies = PRESENT: execute(directive)-’
+				'''
+			VoiceOfTheFallen:
+				'''
+				Critical chance increases with 4% with every shot.
+				Once the gun has landed a critical hit, the chance will reset.
+				‘There are parasites that may benefit the host… teeth sharper than your own’
+				'''
+			Kifrosse:
+				'''
+				Upon use, consumes all remaining Minion Slots (Up to 9) to conjure a Foxfrost Mystic, gaining 20 damage per slot.
+				While the Foxfrost Mystic is stationary, a protective aura will grant Stalwart Snow to nearby allies in range, granting 16 Defense.
+				When in motion, the Frostfire Mystic will shapeshift, granting Swiftness to the summoner.
+				When summoned with less than 3 minion slots:
+				The Foxfrost Mystic will summon a Dancing Foxfire, periodically attacking nearby foes and inflicting Frostburn for 2 seconds.
+				When summoned with 3 or more minion slots:
+				Two Dancing Foxfires are summoned instead of one.
+				The Foxfrost Mystic will periodically apply Amaterasu’s Grace to the summoner for 3 seconds, increasing damage to Frostburned foes by 50%.
+				When summoned with 6 or more minion slots:
+				Both Dancing Foxfires are replaced with Blizzard Foxfires which attack faster and pierce foes.
+				Frostfire is applied for 12 seconds instead of 2.
+				Amaterasu’s Grace becomes permanent.
+				When summoned with 9 minion slots:
+				Allies within the protective aura additionally gain the effects of Amaterasu’s Grace
+				Gain the ability to cast Amaterasu’s Winter when double-tapping DOWN
+				Amaterasu’s Winter will cause all Blizzard Foxfires to attack incredibly fast.
+				Amaterasu’s Winter lasts for 4 seconds and has a 40 second cooldown.
+				Upon obtaining more minion slots, the Foxfrost Mystic should be dismissed and resummoned to apply new effects.
+				'''
+			StygianNymph:
+				'''
+				Hold left click to charge the weapon; if the weapon is fully charged, the attack varies.
+				Holding the weapon will cause the Duality Gauge to appear, beginning 100% Sanctified.
+				Uncharged attacks sweep in a colossal area and influences the Duality Gauge towards Sanctification.
+				Charged attacks deal damage over multiple hits to foes in front of you, and influences the Duality Gauge towards Volatility.
+				Holding charged attacks will drain mana rapidly.
+				When the Duality Gauge is more than 50% Sanctified, gain access to Flash of Eternity.
+				When the Duality Gauge is more than 50% Volatile, gain the buff Claws of Nyx.
+				When conditions are met, right click to activate Flash of Eternity, dashing towards your cursor (16 second cooldown)
+				Claws of Nyx increases damage by 40% and crit chance by 20%
+				‘Darkness comes from within’
+				'''
+			CaesuraOfDespair:
+				'''
+				Holding this weapon will transform you into a Fae Nephilim.
+				Attacks will pierce enemies and deal minion damage.
+				Flight time is infinite as a Fae Nephilim.
+				Additionally, three Nephilim Shards and the Irys will surround you.
+				The Nephilim Shards will independently target and attack nearby foes.
+				The Irys will inflict Irys Gaze on one nearby enemy.
+				Foes affected by Irys Gaze take 50 extra damage from all sources and allows for minions  to crit at a 15% chance.
+				‘Hope has descended’
+				'''
+			CrimsonKey:
+				'''
+				Calls forth an instance of your rebellious heart.
+				Unleashes incredibly powerful bullets.
+				Gain a sizeable amount of bonus damage relative to Max HP and MP.
+				Additionally, the highest critical chance percentage of all damage types is converted into bonus damage.
+				Only one can be summoned at a time.
+				Uses 5 minion slots.
+				‘Ravage them’
+				'''
+			CrimsonSakuraAlpha:
+				'''
+				Striking foes cause Skill Orbs to drop.
+				Right click after picking up a Skill Orb to unleash a special ability.
+				Skill Orbs last for 20 seconds after picking them up and do not stack.
+				Pick up a Red Orb to unleash Flickering Strike: Slash the area around you in a wide attack for double damage.
+				Pick up a Blue Orb to unleash Lightbreak Strike: All melee attacks become critical strikes for 2 seconds.
+				Pick up a Yellow Orb to unleash Dazzling Strike: pierce foes with a ranged burst.
+				Right clicking with multiple orbs will use the orbs in the order you acquired them.
+				After using all 3 orbs in quick succession, right click to enter Blade Will.
+				Blade Will drains mana constantly, and has a 60 second cooldown upon conclusion.
+				During Blade Will, attack much faster and fire projectiles when you attack.
+				Blade Will ends once Mana reaches 0, and Mana can not be regenerated.
+				The longer you stay in Blade Will, the more Mana upkeep is required.
+				Instead of Skill Orbs, attacking foes will drop Blade Orbs which prolong Blade Will through granting Mana.
+				Blade Will’s projectiles will not spawn Blade Orbs.
+				You are unable to use the special abilities while under Blade Will.
+				‘This is the final journey’
+				'''
+			PhantomInTheMirror:
+				'''
+				This weapon inflicts Frostburn for 2 seconds.
+				Right click to summon the Phantom Dagger with 100 mana available; this will not consume Mana.
+				When the Phantom Dagger is present in the world, your Mana will drain and will not regenerate.
+				Right click with the Phantom Dagger present to swap positions with your Phantom Dagger (½ second cooldown.)
+				When you swap with your Phantom Dagger, activate Bloodstained Crescent.
+				Bloodstained Crescent sweeps in a small AoE at both your position and the position of the Phantom Dagger.
+				Bloodstained Crescent deals 200 extra damage to Frostburned foes while removing the debuff and granting 90 mana.
+				‘Yes, lift your voices! Sing for me! Sing for me!!’
+				'''
+			HollowheartAlbion:
+				'''
+				Holding this weapon summons Melusine and Arondight to circle you, aiming at your cursor.
+				Left click to fire from Melusine.
+				Attacking with Melusine fires a missile that has a 50% chance to apply Burning to foes struck for 6 seconds.
+				Striking Frostburned foes with Melusine will deal critical damage and expel Frostburn.
+				Right click to fire from Arondight.
+				Attacking with Arondight fires a missile that has a 50% chance to apply Frostburn to foes struck for 6 seconds.
+				Striking Burning foes with Arondight will deal critical damage and quench Burn.
+				Bullets will travel through walls.
+				This weapon can not crit unless criteria is met.
+				‘Even if it’s just a short dream, my wings will fly for your sake.’
+				'''
+			PleniluneGaze:
+				'''
+				Hold left click to charge the weapon; the longer the weapon is charged, the stronger the resulting attack will become.
+				All arrows will turn into Frost Arrows when firing.
+				Charging the bow to its maximum before firing will turn the arrow into a unique Frostflake Arrow.
+				Frostflake Arrow will bloom upon impact, splitting into 5 Frost Arrows that deal double damage.
+				Right click to expend 90 mana, stepping backwards while conjuring an Ice Lotus at your location.
+				After a short time, the Ice Lotus explodes, spawning 8 Frost Arrows.
+				‘Holding it makes you sleepy’
+				'''
+			Tartaglia:
+				'''
+				Hold left click to charge the weapon; the longer the weapon is charged, the stronger the resulting attack will become.
+				Charging the bow to its maximum before firing will turn the arrow into a unique Riptide Bolt.
+				Riptide Bolt will apply Riptide to foes struck for 12 seconds.
+				Right click to consume 200 mana, entering Raging Tides for 8 seconds.
+				Within Raging Tides, attacks are changed into rapid close-ranged melee strikes that deal double damage and Mana will not regenerate. Gain a movement speed buff during Raging Tides.
+				Attacking foes afflicted with Riptide in this stance will deal extra damage.
+				This weapon does not use ammo.
+				‘Shouldn’t let your guard down!’
+				'''
+			Genocide:
+				'''
+				Attacks fire powerful explosive grenades with high knockback.
+				Striking an enemy with an attack grants 25% increased movement and critical strike chance for 4 seconds.
+				Will automatically take time to reload after 6 shots.
+				The final shot before reloading has a larger explosion radius and deals 2x base damage.
+				The weapon will additionally fire an artillery shell at the target (3 second cooldown.)
+				Upon arriving at the target destination or hitting a tile the artillery shell will explode, dealing 3x base damage.
+				Right click to fire a Plasma Grenade (8 second cooldown.)
+				The Plasma Grenade will automatically bounce to the nearest foe (Up to 3 times)
+				Enemies struck by the Plasma Grenade are inflicted with Mortal Wounds for 12 seconds, increasing damage taken from this weapon by 50%
+				The Plasma Grenade can not bounce to a foe with Mortal Wounds. 
+				‘Keep your mouth shut and eyes open!’
+				'''
+			VisionOfEuthymia:
+				'''
+				Use this item to summon the Eye of Euthymia for 40 seconds.
+				This item can be re-used to replenish the duration of Eye of Euthymia.
+				When striking foes with projectiles, the Eye of Euthymia will follow-up, dealing 1/5th of damage dealt again, capping at 100.
+				This follow up attack has a 2 second cooldown.
+				When Mana is consumed while the Eye of Euthymia is present, it is directly added into the Eternity Gauge, with a cap of 1000.
+				The higher the Eternity Gauge, the lower the cooldown of Eye of Euthymia’s follow-up attack.
+				The Eternity Gauge will deplete upon taking damage proportional to half of the damage taken.
+				The Eternity Gauge will reset when the Eye of Euthymia disappears.
+				‘Fulfill your promise; an everlasting Eternity’
+				'''
+			KroniicAccelerator:
+				'''
+				Use this weapon to throw a piercing projectile.
+				Holding this weapon additionally summons 2 Temporal Timepieces to orbit you.
+				When a Temporal Timepiece comes into contact with an enemy, it accrues Chronal Heat displayed within the Temporal Gauge.
+				Above 80% Chronal Heat, both the Temporal Timepieces and the weapon deal 60 bonus damage.
+				Chronal Heat naturally depletes over time.
+				Right click to expend 50 mana and 80 Chronal Heat, preparing a Timeframe.
+				After 3 seconds, the Temporal Gauge will light up, indicating the Timeframe is ready.
+				Right click with a Timeframe ready to instantly return to your position upon cast of the Timeframe.
+				This restores Health and Mana to the values present when the Timeframe was prepared.
+				The Timeframe lasts for 6 seconds before it expires, and it has a cooldown of 1 minute.
+				‘The time… has come’
+				'''
+			PenthesileaMuse:
+				'''
+				This weapon scales to the Calamity Mod
+				Attacks with this weapon will sweep in a wide arc
+				Every 15 seconds, the nearest boss enemy will be Inked and will drip paint according to a specific color.
+				Right click to view all Mystic Pigments
+				Selecting a Mystic Pigment will change your attacks to the specified color.
+				Striking Inked foes with the correct Mystic Pigment will always crit.
+				Striking Inked foes with the wrong color will deal half damage, and the opposite color will deal 1/3rd damage.
+				Additionally, each Mystic Pigment has a special debuff when striking foes that lasts for 4 seconds.
+				Red Pigment inflicts Ichor / Green Pigment inflicts Cursed Flame
+				Orange Pigment inflicts On Fire / Blue Pigment inflicts Frostburn
+				Yellow Pigment inflicts Midas / Purple Pigment inflicts Acid Venom
+				'''
+			RexLapis:
+				'''
+				This weapon has a unique attack sequence.
+				Right click to consume 150 mana, dropping a colossal earthen meteor from the heavens.
+				This meteor will apply Petrification to most foes, drastically crippling their movement speed.
+				Attacking Petrified foes with this weapon will deal extra damage.
+				The final basic attack will Shatter foes that are Petrified.
+				Shatter deals massive critical damage while removing Petrification.
+				‘I will have order!’
+				'''
+			YunlaiStiletto:
+				'''
+				Striking foes will grant Rage.
+				Right click to expend 80 mana, placing a Lightning Stiletto at your cursor’s location.
+				Once a Lightning Stiletto is present, using right click again will teleport you to the position of the Lightning Stiletto.
+				Additionally, your next attack will become Driving Thunder.
+				Driving Thunder will sweep in a wide arc, dealing high amounts of damage.
+				If Driving Thunder defeats an opponent, the mana used for placing the Lightning Stiletto will be refunded.
+				If you attempt to teleport to an inaccessible location, you will consume the Lightning Stiletto without teleporting, but still prepare Driving Thunder.
+				‘Woven from lightning itself, from a land where gods roam free’
+				'''
+			TwinStars:
+				'''
+				Holding this weapon will conjure twin stars to orbit you, granting 100 extra Max Mana.
+				Attacking with this weapon fires powerful beams of piercing starlight.
+				This weapon drains mana at an incredibly high rate that can not be reduced by any means.
+				Critical strikes grant Binary Magnitude for a very short time.
+				During this time, beams leave devastating napalm in their wake.
+				Above 250 Mana, this weapon deals 50% more damage.
+				1/8th of Max Mana is added directly to damage.
+				'''
+			LiberationBlazing:
+				'''
+				Swapping to this weapon grants the buff ‘Core of Flames’ for 20 seconds.
+				This buff has a 2 minute cooldown, beginning when Core of Flames is applied.
+				When you are under the influence of Core of Flames attacks cause a massive explosion on contact, burning foes for 3 seconds.
+				When the weapon is held without Core of Flames active, you will be burned until the blade is stowed.
+				Right click to unleash Scarlet Outburst, spraying powerful flames around you as well as granting Invincibility for 2 seconds.
+				Scarlet Outburst deals 50 unmitigatable self damage and burns you for 8 seconds.
+				Scarlet Outburst can not be used when you are below 50 HP or if you are currently burning.
+				Below 100 HP, gain drastic Health Regeneration when burning and Core of Flames is active.
+				This healing is only applicable when this weapon is held.
+				‘Fight to emancipate this world’
+				'''
+			Unforgotten:
+				'''
+				Hold left click to charge the weapon; if the weapon is fully charged, the attack varies.
+				Uncharged attacks will alternate between Mortal Steel and Spirit Azakana.
+				Mortal Steel has a 50% critical hit rate independent of other crit calculations.
+				Spirit Azakana has no knockback and can not crit but deals half of the damage again as true damage.
+				Charged attacks consume 30 mana and change depending on the preluding slash.
+				If the last attack was Mortal Steel, the charge attack will inflict Mortal Wounds, which deals damage over time for 10 seconds.
+				If the last attack was Spirit Azakana, the charge attack will deal 20x critical damage to Mortally Wounded foes and purge the debuff.
+				Right click to consume 40 mana to perform Soul Unbound.
+				Soul Unbound will launch you forwards and grant movement speed for 8 seconds.
+				Once Soul Unbound ends, all nearby foes take damage equal to ⅓ of damage you inflicted with this weapon during Soul Unbound.
+				Once Soul Unbound ends, you will be forced to return to the position where Soul Unbound was casted, and attacks will be disabled briefly.
+				Soul Unbound has a 22 second cooldown.
+				‘One to cut, one to seal’
+				'''
+			ClaimhSolais:
+				'''
+				Critical strikes with this weapon will grant a stack of Radiance (Up to 10).
+				Right click with 5 stacks of Radiance to unleash the Radiant Soul, consuming all Radiance
+				When the Radiant Soul is unleashed, gain 2 seconds of Invincibility.
+				The Radiant Soul will deal powerful critical damage to nearby foes in a large radius.
+				The Radiant Soul's damage is influenced by a portion of defense and current stacks of Radiance.
+				Gaining Radiance past 10 stacks will instead grant Ironskin for 4 seconds.
+				The weapon grows in scale based upon a portion of defense.
+				'An indefatigable sword. Its blade glitters with light’
+				'''
+			Suistrume:
+				'''
+				Use this item to expend mana, filling your Performance Gauge and beginning your Stellar Performance.
+				Stellar Performance will increase all outgoing damage by 15%.
+				Stellar Performance will increase movement speed by 40%.
+				Stellar Performance will grant all nearby team members (including the user) a 5% increase to outgoing damage along with bonus health and mana regeneration.
+				The Performance Gauge will naturally deplete over time.
+				Moving during Stellar Performance will increase the Performance Gauge.
+				The Performance Gauge will deplete further according to damage taken (maximum 30% of the gauge lost per hit.)
+				If the Performance Gauge reaches 0, the Stellar Performance will end and will have a 2 minute cooldown.
+				If the Stellar Performance is completed in its entirety, you will restore all HP and MP and Stellar Performance will have its cooldown halved to 1 minute.
+				‘Whatever you’re singing, its cute as always’
+				'''
+			Naganadel:
+				'''
+				Use right click to expend 25 mana, summoning up to 5 Aspected Blades.
+				Blades deal minor contact damage while idle.
+				Attack with blades present to launch them towards the cursor.
+				Use right click once all blades are summoned to launch all blades at once, dealing random effects.
+				Each blade has unique effects:
+				The Stardust Aspect will restore 20 mana on hit, but deal half damage.
+				The Vortex Aspect travels faster and farther, deals 6x damage on a crit and grants Swiftness.
+				The Solar Aspect burns foes on hit and deals double damage to burning enemies, but travels slower and has less range.
+				The Nebula Aspect summons a barrage of falling stars from the sky on hit.
+				Naganadel costs 50 mana to summon instead, but will apply most other effects with a lunar bonus.
+				If the destination is closer than the maximum range, the blades will deal residual damage as they fade away.
+				Blades will persist even when swapping weapons.
+				‘I have no regrets. This is the only path’
+				'''
+			ShadowlessCerulean:
+				'''
+				Attacks with this weapon will sweep in a wide arc and charge the Cerulean Flame Gauge.
+				Critical hits charge the Cerulean Flame Gauge much faster.
+				Once the Cerulean Flame Gauge is at maximum, right click to unleash Shadowless Ignition.
+				Shadowless Ignition will teleport you to your cursor, rendering you invincible and immobile.
+				During this time, you will unleash a barrage of powerful slashes at your location.
+				 Foes caught within Shadowless Ignition are binded and inflicted with Frostburn for 20 seconds.
+				The final strike of Shadowless Ignition will deal bonus critical damage to one foe
+				Once Shadowless Ignition ends, you will be launched in the opposite direction of your cursor and gain the buff Wrathful Cerulean Flame for 8 seconds
+				Attacks during Wrathful Cerulean Flame will become drastically empowered, ensuring critical hits and ignoring all armor
+				Once Wrathful Cerulean Flame ends, you will be inflicted with Burnout, lowering defensive and offensive stats by 50% for 20 seconds
+				You can not charge the Cerulean Flame Gauge while under the effects of Burnout
+				'You will understand my choice one day... Forgive me'"
+				'''
+			HullwroughtMKII:
+				'''
+				Hold left click to charge the weapon; if the weapon is fully charged, the attack varies.
+				Right click to swap between Blasting Form, Striking Form, and Mystic Form with 1/3rd second cooldown.
+				In Striking Form, attacks focus on close-ranged damage.
+				Uncharged attacks will slash in a huge area.
+				Charged attacks propel you forward while swinging in a large circle around you, dealing double damage.
+				In Blasting Form, attacks focus on slow, powerful ranged attacks.
+				Uncharged attacks are disabled.
+				Charged attacks take much longer to perform, but instead fires a powerful projectile that binds foes for 2 seconds.
+				Holding charge attack enhances the attack every 1/2 second, capping at 10 stacks.
+				If the charged attack has 5 stacks or more, it will always be a critical hit.
+				In Mystic Form, attacks focus on magical burst attacks, costing 20 mana per shot.
+				Uncharged attacks fire weak homing projectiles.
+				Charged attacks fire powerful blasts of energy that travel slowly and deal damage over time.
+				Charged attacks require 80 Mana.
+				Gain Mana Regeneration when not in Mystic Form.
+				'''
+			KeyOfTheKingsLaw:
+				'''
+				Summon forth blades from the greatest treasury to smite foes.
+				Projectiles count as Summon damage.
+				Gain a random combat-oriented buff when using the weapon from a pool of 15 buffs. These buffs last for 2 seconds.
+				‘All the treasures of the ancient world at your fingertips’
+				'''
+			LightUnrelenting:
+				'''
+				Will fire a blade of light that will deal double damage and burn foes with 50 mana if mana is available.
+				Right click to unleash your inner potential, gaining the unrivaled strength of Limit Break for 20 seconds (1 minute cooldown.)
+				While under the influence of Limit Break, health will be converted to mana without limit until mana is full.
+				Additionally, all damage is increased by 10% and all magic damage is increased by an additional 100%.
+				You are able to swap to different weapons during Limit Break.
+				If you push your limits to your extremes, death is certain.
+				‘I shall transcend you!’
+				'''
+			IgnitionAstra:
+				'''
+				Wielding this blade will suffuse your surroundings with the power of the Astral or Umbral Aspect.
+				Switch between aspects with right click (2 second cooldown)
+				During Astral Aspect, striking foes will restore a portion of Mana.
+				During Astral Aspect, Mana will be regenerated passively at an increased rate.
+				During Astral Aspect, damage is halved, but defenses are raised.
+				During Umbral Aspect, every attack will swing the blade twice in a wide arc and summon a myriad of astral projectiles to descend from the heavens.
+				During Umbral Aspect, foes struck with the blade will be cursed with Starblight permanently until they are defeated.
+				During Umbral Aspect Mana will be continuously drained and Mana regeneration will be disabled, but attack will be increased.
+				‘The universe stands at the precipice of the end. At the center of it stands Ignition Astra’
+				'''
+			BuryTheLight:
+				'''
+				Each strike restores Health and Mana.
+				Critical hits will inflict Starblight for 20 seconds.
+				On a critical hit, foes that are currently inflicted with Starblight will take extra damage and also be inflicted with Frostburn for 20 seconds.
+				On a critical hit, foes that are currently inflicted with Frostburn will take extra damage and also be inflicted with Shadowflame for 20 seconds.
+				Striking foes and inflicting debuffs will charge the Judgement Gauge.
+				Swapping off of the weapon will drain the Judgement Gauge.
+				Once the Judgement Gauge has reached its maximum, right click to unleash Judgement Cut, disabling your normal attacks.
+				After a brief charge, Judgement Cut dashes forwards and unleashes a myriad of deadly slices where you were previously.
+				You are invincible for the duration of Judgement Cut.
+				Foes afflicted with Starblight, Frostburn, or Shadowflame will take extra critical damage, purging the debuffs in the process.
+				The more debuffs on the foe, the more damage they will take, increasing dramatically.
+				With Calamity Enabled, unleashing Judgement Cut on a foe afflicted with all 3 debuffs will additionally deal 10% of the foe’s Max HP in extra damage, capping at 250,000.
+				‘Now you’re motivated’
+				'''
+			ArchitectLuminance:
+				'''
+				This weapon is unaffected by Aspected Damage Type penalty.
+				Holding this weapon will equip yourself with the Luminary Armament, increasing defense by 30.
+				Right click to summon Artifice Siren for 15 seconds at your cursor (2 minute cooldown.)
+				Artifice Siren will obliterate nearby foes with hyperpowered beams of light, even when this weapon is not held.
+				The current Aspected Damage Type influences the weapon’s attacks.
+				Melee: The weapon swings much faster and defense is added to critical strike damage.
+				Magic: Instead of swinging, the weapon will conjure 6 explosive blasts in a fan pattern dealing ⅓ base damage.
+				Ranged: Instead of swinging, the weapon will quickly fire piercing shots without consuming ammo, dealing ½ base damage.
+				Summon: The Luminary Armament periodically attacks nearby foes, dealing half your current HP as base damage and can crit.
+				‘For the future!’
+				'''
+			CosmicDestroyer:
+				'''
+				This weapon is unaffected by Aspected Damage Type penalty.
+				Fires a barrage of hyperpowered energy bolts.
+				Striking foes will increment the Magiton Gauge- once the Magiton Gauge is full, right click to activate Magiton Overheat for 8 seconds.
+				During Magiton Overheat, attacks will change the next eleven shots into empowered Magiton Shots.
+				Once Magiton Overheat is either fully consumed or ends, you are inflicted with Overheated for 1 second, causing this weapon to become unusable.
+				‘This isn’t… something you see everyday’
+				'''
+			UltimaThule:
+				'''
+				Hold left click to charge the weapon; if the weapon is fully charged, the attack varies.
+				Holding this weapon will conjure 5 Spatial Planets to orbit you.
+				Uncharged attacks cleave a colossal area with powerful spatial damage.
+				Charged attacks conjure stars and a Vorpal Planet from the cosmos to descend upon your foes.
+				When a Spatial Planet strikes an enemy, it will burst into asteroids and additionally grant Universal Manipulation  for 12 seconds.
+				Spatial Planets respawn 2 seconds after impact.
+				When striking a foe with an uncharged attack during Universal Manipulation , the buff becomes Celestial Cacophony for 12 seconds.
+				When using a charged attack during Celestial Cacophony the Vorpal Planet deals triple damage and more stars will descend, consuming Celestial Cacophony.
+				Right click to activate Cosmic Conception which will converge the planets upon yourself, granting the buff Superimposed.
+				Additionally, converging spatial bodies will deal damage to any foe caught in their path.
+				Superimposed grants incredible health regeneration and Invincibility.
+				After 7 seconds, Cosmic Conception will resolve, bursting in an explosion of cosmic energy.
+				Cosmic Conception has a 2 minute cooldown.
+				‘And yet you can walk on’
+				'''
+				
+			#Items
+			Bifrost:
+				'''
+				Allows for the traversal of the universe
+				Use this item to transport between the main world and the Observatory Hyperborea
+				Is not consumed upon use
+				Can only be used from your hotbar
+				Can not be used if the Starfarer Menu is open
+				'''
+			SpatialDisk:
+				'''
+				This mysterious artifact allows you to make contact with your Starfarer
+				Left click to initiate contact with your Starfarer
+				Your Starfarer will periodically grant you components to powerful Aspected Weapons
+				Right click to open the Starfarer Menu and access special abilities
+				Defeating bosses will grant powerful passive abilities available in the Stellar Array
+				Abilities are sorted into 1 cost, 2 cost, or 3 cost categories
+				You are unable to slot abilities that would total a cost higher than 5
+				Additionally, the damage type of Aspected Weapons can be modified with a 10% damage penalty
+				Once they have been unlocked, Stellar Novas can be modified with the Starfarer Menu
+				You can re-acquire lost items and read previous dialogue with the Archive
+				You may not open the Starfarer Menu in combat, and it will close if you enter combat
+				The ability to wield Umbral or Astral weapons depends on your chosen Starfarer
+				'''
+			
+		}
+		
+		ItemName: {
+			#Translated with DeepL, example
+			PrismaticCore: 棱镜核心
+			
+			#Accessories:
+			AlienCoral: Alien Coral
+			CrystallizedAbsence: Crystallized Absence
+			DragonwardTalisman: Dragonward Talisman
+			GaleflameFeather: Galeflame Feather
+			Glitterglue: Teacup of Glitterglue
+			Luciferium: Devil's Bargain
+			PerfectlyGenericAccessory: Perfectly Generic Accessory
+			ToMurder: 'To Murder'
+			
+			#Items
+			Bifrost: Bifrost
+			SpatialDisk: Spatial Disk
+			DebugDisk: Debug Disk
+			ShatteredDisk: The Shattered Disk
+			UnsulliedCanvas: The Unsullied Canvas
+			ProgenitorWish: The Progenitor's Wish
+			DemonicCrux: The Demonic Crux
+			AncientShard: The Ancient Shard
+			MnemonicSigil: Mnemonic Sigil
+			SpatialMemoriam: Spatial Memoriam
+			MnemonicTrace: Mnemonic Trace
+			MnemonicTrace2: Mnemonic Trace
+			MnemonicTrace3: Mnemonic Trace
+			MnemonicTrace4: Mnemonic Trace
+			DullTotemOfLight: Totem of Light
+			TotemOfLightEmpowered: Empowered Totem of Light
+			EnigmaticDust: Enigmatic Dust
+			InertShard: Inert Shard
+			
+			#Pets
+			AegisCrystal: Aegis Crystal
+			BladeWolfItem: Prototype Interface
+			BugHat: Cat's Hat
+			DemonicRibbon: Demonic Ribbon
+			DigiEgg: Digital Egg
+			Digivice: Digital Device
+			DragonEgg: Dragon Egg
+			DustyCartridge: Dusty Cartridge
+			FerryLikeness: Ferry Likeness
+			FuneralPass: Funeral Pass
+			GhostPet: Ghost Pet
+			HolographicToken: Holographic Token
+			MonochromeKnife: Monochrome Knife
+			MysticalCore: Mystical Core
+			MysticPokeball: Mystic Monster Ball
+			PetalsOfKur: Petals of Kur
+			ProgenitorShard: Progenitor Shard
+			RockstarGuitar: Rockstar Guitar
+			SlightlyParanormalCap: Slightly Paranormal Cap
+			TNTCarrot: TNT Carrot
+			ToyDemonfireDagger: Toy Demonfire Dagger
+		
+			#Essences
+			EssenceOfAlpha: Essence of the Alpha
+			EssenceOfAsh: Essence of Ash
+			EssenceOfAzakana: Essence of Azakana
+			EssenceOfBitterfrost: Essence of Bitterfrost
+			EssenceOfBlasting: Essence of Blasting
+			EssenceOfButterflies: Essence of Butterflies
+			EssenceOfDeathsApprentice: Essence of Death's Apprentice
+			EssenceOfDrivingThunder: Essence of Driving Thunder
+			EssenceOfEuthymia: Essence of Euthymia
+			EssenceOfExplsions: Essence of Explosions
+			EssenceOfFingers: Essence of Fingers
+			EssenceOfFoxfire: Essence of Foxfire
+			EssenceOfInk: Essence of Ink
+			EssenceOfIrys: Essence of Hope
+			EssenceOfIzanagi: Essence of Izanagi
+			EssenceOfLiberation: Essence of Liberation
+			EssenceOfLuminance: Essence of Luminance
+			EssenceOfLunarDominion: Essence of Lunar Dominion
+			EssenceOfMisery: Essence of Misery
+			EssenceOfOuterGods: Essence of the Outer Gods
+			EssenceOfPerfection: Essence of Perfection
+			EssenceOfRadiance: Essence Of Radiance
+			EssenceOfSilverAsh: Essence of Silver Ash
+			EssenceOfSin: Essence of Sin
+			EssenceOfStarsong: Essence of Starsong
+			EssenceOfStyle: Essence of Style
+			EssenceOfSurpassingLimits: Essence of Surpassing Limits
+			EssenceOfTheAegis: Essence of the Aegis
+			EssenceOfTheAerialAce: Essence of the Aerial Ace
+			EssenceOfTheAnomaly: Essence of the Anomaly
+			EssenceOfTheBeginningAndEnd: Essence of the Beginning and End
+			EssenceOfTheBionis: Essence of the Bionis
+			EssenceOfTheBull: Essence of the Bull
+			EssenceOfTheChimera: Essence of the Chimera
+			EssenceOfTheCosmos: Essence of the Cosmos
+			EssenceOfTheDarkMoon: Essence of the Dark Moon
+			EssenceOfTheDragonslayer: Essence of the Dragonslayer
+			EssenceOfTheFallen: Essence of the Fallen
+			EssenceOfTheFreeshooter: Essence of the Freeshooter
+			EssenceOfTheFuture: Essence of the Future
+			EssenceOfTheGardener: Essence of the Gardener
+			EssenceOfTheGunlance: Essence of the Gunlance
+			EssenceOfTheHarbinger: Essence of the Harbinger
+			EssenceOfTheHawkmoon: Essence of the Hawkmoon
+			EssenceOfTheHollowheart: Essence of the Hollowheart
+			EssenceOfTheMoonlitAdepti: Essence of the Moonlit Adepti
+			EssenceOfTheObservatory: Essence of the Observatory
+			EssenceOfTheOcean: Essence of the Ocean
+			EssenceOfThePegasus: Essence of the Pegasus
+			EssenceOfThePhantom: Essence of the Phantom
+			EssenceOfTheSharpshooter: Essence of the Sharpshooter
+			EssenceOfTheSwarm: Essence of the Swarm
+			EssenceOfTheTreasury: Essence of the Treasury
+			EssenceOfTheUnderworldGoddess: Essence of the Underworld Goddess
+			EssenceOfTheUnyieldingEarth: Essence of the Unyielding Earth
+			EssenceOfTime: Essence of Time
+			EssenceOfTwinStars: Essence of Twin Stars
+			StarfarerEssence: Starfarer Essence
+			
+			#Weapons
+			AegisDriver: Aegis Driver
+			AncientBook: Takonomicon
+			Apalistik: Apalistik
+			ApalistikUpgraded: Seaborn Apalistik
+			ArachnidNeedlepoint: Arachnid Needlepoint
+			ArchitectLuminance: Architect's Luminance
+			AshenAmbition: Ashen Ambition
+			BuryTheLight: Bury The Light
+			CaesuraOfDespair: Cæsura of Despair
+			CarianDarkMoon: Carian Dark Moon
+			ClaimhSolais: Claimh Solais
+			CosmicDestroyer: Cosmic Destroyer
+			CrimsonKey: Key Of The Sinner
+			CrimsonOutbreak: Crimson Outbreak
+			CrimsonSakuraAlpha: Crimson Sakura Alpha
+			DeathInFourActs: Death In Four Acts
+			DerFreischutz: Der Freischutz
+			Drachenlance: Drachenlance
+			EveryMomentMatters: Every Moment Matters
+			ForceOfNature: Force-of-Nature
+			Genocide: Genocide
+			HawkmoonMagic: Hawkmoon
+			HawkmoonRanged: Hawkmoon
+			HollowheartAlbion: Hollowheart Albion
+			Hullwrought: Hullwrought
+			HullwroughtMKII: Hullwrought MK II
+			IgnitionAstra: Ignition Astra
+			InugamiRipsaw: Inugami Ripsaw
+			IzanagiEdge: Izanagi's Edge
+			KarlanTruesilver: Karlan Truesilver
+			KazimierzSeraphim: Kazimierz Seraphim
+			KeyOfTheKingsLaw: Key of the King's Law
+			Kifrosse: Kifrosse
+			KonpakuKatana: Konpaku Katana
+			KroniicAccelerator: Kroniic Principality
+			LiberationBlazing: Liberation Blazing
+			LightUnrelenting: Light Unrelenting
+			LuminaryWand: Luminary Wand
+			MementoMuse: Memento Muse
+			MiserysCompany: Misery's Company
+			Naganadel: Naganadel
+			NeoDealmaker: Neo Dealmaker
+			PenthesileaMuse: Penthesilea's Muse
+			Persephone: Persephone
+			PhantomInTheMirror: Phantom in the Mirror
+			PleniluneGaze: Plenilune Gaze
+			RadGun: Rad Gun
+			RexLapis: Rex Lapis
+			RideTheBull: Ride the Bull
+			ShadowlessCerulean: Shadowless Cerulean
+			Skofnung: Skofnung
+			SkyStrikerArms: Armaments of the Sky Striker
+			StygianNymph: Stygian Nymph
+			Suistrume: Suistrume
+			Tartaglia: Tartaglia
+			TheOnlyThingIKnowForReal: The Only Thing I Know For Real
+			TwinStars: Twin Stars of Albiero
+			UltimaThule: Ultima Thule
+			Unforgotten: Unforgotten
+			VenerationOfButterflies: Veneration Of Butterflies
+			VisionOfEuthymia: Vision of Euthymia
+			VoiceOfTheFallen: Voice of the Fallen
+			Xenoblade: Xenoblade
+			YunlaiStiletto: Yunlai Stiletto
+		}
+		
+		ProjectileName: {
+			
+		}
+		
+		BuffName: {
+			Afterburner: Afterburner
+			AfterburnerCooldown: AfterburnerCooldown
+			AmmoRecycle: Cyclic Hunter
+			ArchitectLuminanceBuff: Architect's Luminance
+			ArtificeSirenBuff: Artifice Siren Active
+			BinaryMagnitude: Binary Magnitude
+		}
+		
+		BuffDescription: {
+			Afterburner: 
+			'''
+			All attacks will crit
+			'''
+		}
+		
+		RecipeConditions: {
+			
+		}
+		
+		Bestiary: {
+			
+		}
+		
+		BiomeName: {
+			
+		}
+
+		
+		
+		
+		
+	}
+}
