@@ -605,6 +605,30 @@ namespace StarsAbove
 		#endregion
 
 		#region Weapon Sound Effects
+		public static readonly SoundStyle SFX_DealmakerShoot = new($"{nameof(StarsAbove)}/Sounds/SFX/DealmakerShoot")
+		{
+
+		};
+		public static readonly SoundStyle SFX_DealmakerCharged = new($"{nameof(StarsAbove)}/Sounds/SFX/DealmakerCharged")
+		{
+
+		};
+		public static readonly SoundStyle SFX_BlazeAttack = new($"{nameof(StarsAbove)}/Sounds/SFX/BlazeChainsawAttack")
+		{
+
+		};
+		public static readonly SoundStyle SFX_BoilingBloodStart = new($"{nameof(StarsAbove)}/Sounds/SFX/BoilingBloodStart")
+		{
+
+		};
+		public static readonly SoundStyle SFX_BoilingBloodEnd = new($"{nameof(StarsAbove)}/Sounds/SFX/BoilingBloodEnd")
+		{
+
+		};
+		public static readonly SoundStyle SFX_BlazeEquip = new($"{nameof(StarsAbove)}/Sounds/SFX/BlazeEquip")
+		{
+
+		};
 		public static readonly SoundStyle SFX_HuntingHornBasic = new($"{nameof(StarsAbove)}/Sounds/SFX/huntingHornBasic")
 		{
 

@@ -35,7 +35,7 @@ namespace StarsAbove.Items.Consumables
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 12));
-			//ItemID.Sets.ItemIconPulse[Item.type] = true;
+			//
 			ItemID.Sets.AnimatesAsSoul[Item.type] = true;
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 		}
@@ -59,7 +59,6 @@ namespace StarsAbove.Items.Consumables
 		{
 			return true;
 		}
-
 		public override void HoldItem(Player player)
 		{
 			pingCooldown--;
@@ -69,8 +68,6 @@ namespace StarsAbove.Items.Consumables
 			}
 			base.HoldItem(player);
 		}
-		
-
 		public override bool CanUseItem(Player player) {
 			if (player.GetModPlayer<StarsAbovePlayer>().novaUIActive)
 				return false;
@@ -97,7 +94,6 @@ namespace StarsAbove.Items.Consumables
 			else
 			return false;
 		}
-
 		public override bool? UseItem(Player player) {
 			if (player.altFunctionUse == 2 && !player.GetModPlayer<StarsAbovePlayer>().starfarerIntro)
 			{
@@ -182,6 +178,22 @@ namespace StarsAbove.Items.Consumables
 						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = $"Okay, what do you need?";
 					}
 				}
+				if(player.GetModPlayer<StarsAbovePlayer>().NewDiskDialogue)
+                {
+					if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
+					{
+						
+						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = $"Looks like you've unlocked something new." +
+                            $"\nHow about trying it out?";
+						
+
+					}
+					else
+					{
+						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = $"It appears you've unlocked something." +
+                            $"\nLet's make good use of it.";
+					}
+				}
 				if(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().inCombat > 0)
                 {
 					if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
@@ -231,544 +243,544 @@ namespace StarsAbove.Items.Consumables
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 22;
 				player.GetModPlayer<StarsAbovePlayer>().observatoryDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().cosmicVoyageDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 24;
 				player.GetModPlayer<StarsAbovePlayer>().cosmicVoyageDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().desertscourgeDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 201;
 				player.GetModPlayer<StarsAbovePlayer>().desertscourgeDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().slimeDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 51;
 				player.GetModPlayer<StarsAbovePlayer>().slimeDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().eyeDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 52;
 				player.GetModPlayer<StarsAbovePlayer>().eyeDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().EyeBossWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 136;
 				player.GetModPlayer<StarsAbovePlayer>().EyeBossWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().crabulonDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 202;
 				player.GetModPlayer<StarsAbovePlayer>().crabulonDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().corruptBossDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 53;
 				player.GetModPlayer<StarsAbovePlayer>().corruptBossDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().CorruptBossWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 137;
 				player.GetModPlayer<StarsAbovePlayer>().CorruptBossWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().hivemindDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 203;
 				player.GetModPlayer<StarsAbovePlayer>().hivemindDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().perforatorDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 204;
 				player.GetModPlayer<StarsAbovePlayer>().perforatorDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().BeeBossDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 54;
 				player.GetModPlayer<StarsAbovePlayer>().BeeBossDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().QueenSlimeWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 149;
 				player.GetModPlayer<StarsAbovePlayer>().QueenSlimeWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().VirtueWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 150;
 				player.GetModPlayer<StarsAbovePlayer>().VirtueWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().SkeletonDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 55;
 				player.GetModPlayer<StarsAbovePlayer>().SkeletonDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().slimegodDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 205;
 				player.GetModPlayer<StarsAbovePlayer>().slimegodDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().SkeletonWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 101;
 				player.GetModPlayer<StarsAbovePlayer>().SkeletonWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().HellWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 102;
 				player.GetModPlayer<StarsAbovePlayer>().HellWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().QueenBeeWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 103;
 				player.GetModPlayer<StarsAbovePlayer>().QueenBeeWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().MiseryWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 120;
 				player.GetModPlayer<StarsAbovePlayer>().MiseryWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().OceanWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 123;
 				player.GetModPlayer<StarsAbovePlayer>().OceanWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().DeerclopsDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 76;
 				player.GetModPlayer<StarsAbovePlayer>().DeerclopsDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().KingSlimeWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 104;
 				player.GetModPlayer<StarsAbovePlayer>().KingSlimeWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().WallOfFleshDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 56;
 				player.GetModPlayer<StarsAbovePlayer>().WallOfFleshDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().WallOfFleshWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 105;
 				player.GetModPlayer<StarsAbovePlayer>().WallOfFleshWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().LumaWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 124;
 				player.GetModPlayer<StarsAbovePlayer>().LumaWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().QueenSlimeDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 74;
 				player.GetModPlayer<StarsAbovePlayer>().QueenSlimeDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().UrgotWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 146;
 				player.GetModPlayer<StarsAbovePlayer>().UrgotWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().MorningStarWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 148;
 				player.GetModPlayer<StarsAbovePlayer>().MorningStarWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().cryogenDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 206;
 				player.GetModPlayer<StarsAbovePlayer>().cryogenDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().TwinsDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 57;
 				player.GetModPlayer<StarsAbovePlayer>().TwinsDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().aquaticscourgeDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 207;
 				player.GetModPlayer<StarsAbovePlayer>().aquaticscourgeDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().MechBossWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 106;
 				player.GetModPlayer<StarsAbovePlayer>().MechBossWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().DestroyerDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 58;
 				player.GetModPlayer<StarsAbovePlayer>().DestroyerDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().nalhaunBossItemDialogue == 1 && DownedBossSystem.downedVagrant)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 301;
 				player.GetModPlayer<StarsAbovePlayer>().nalhaunBossItemDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().brimstoneelementalDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 208;
 				player.GetModPlayer<StarsAbovePlayer>().brimstoneelementalDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().SkeletronPrimeDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 59;
 				player.GetModPlayer<StarsAbovePlayer>().SkeletronPrimeDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().EmpressDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 75;
 				player.GetModPlayer<StarsAbovePlayer>().EmpressDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().SkyStrikerWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 135;
 				player.GetModPlayer<StarsAbovePlayer>().SkyStrikerWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().OzmaWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 145;
 				player.GetModPlayer<StarsAbovePlayer>().OzmaWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().calamitasDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 209;
 				player.GetModPlayer<StarsAbovePlayer>().calamitasDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().AllMechsDefeatedDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 60;
 				player.GetModPlayer<StarsAbovePlayer>().AllMechsDefeatedDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().AllMechBossWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 107;
 				player.GetModPlayer<StarsAbovePlayer>().AllMechBossWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().HullwroughtWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 121;
 				player.GetModPlayer<StarsAbovePlayer>().HullwroughtWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().MonadoWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 125;
 				player.GetModPlayer<StarsAbovePlayer>().MonadoWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().PlanteraDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 61;
 				player.GetModPlayer<StarsAbovePlayer>().PlanteraDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().FrostMoonWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 126;
 				player.GetModPlayer<StarsAbovePlayer>().FrostMoonWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().penthBossItemDialogue == 1 && DownedBossSystem.downedVagrant)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 302;
 				player.GetModPlayer<StarsAbovePlayer>().penthBossItemDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().leviathanDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 210;
 				player.GetModPlayer<StarsAbovePlayer>().leviathanDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().astrumaureusDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 211;
 				player.GetModPlayer<StarsAbovePlayer>().astrumaureusDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().PlanteraWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 108;
 				player.GetModPlayer<StarsAbovePlayer>().PlanteraWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().GolemDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 62;
 				player.GetModPlayer<StarsAbovePlayer>().GolemDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().arbiterBossItemDialogue == 1 && DownedBossSystem.downedVagrant)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 303;
 				player.GetModPlayer<StarsAbovePlayer>().arbiterBossItemDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().plaguebringerDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 212;
 				player.GetModPlayer<StarsAbovePlayer>().plaguebringerDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().GolemWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 109;
 				player.GetModPlayer<StarsAbovePlayer>().GolemWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().BloodWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 147;
 				player.GetModPlayer<StarsAbovePlayer>().BloodWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().DukeFishronDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 63;
 				player.GetModPlayer<StarsAbovePlayer>().DukeFishronDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().ravagerDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 213;
 				player.GetModPlayer<StarsAbovePlayer>().ravagerDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().DukeFishronWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 116;
 				player.GetModPlayer<StarsAbovePlayer>().DukeFishronWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().CultistDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 64;
 				player.GetModPlayer<StarsAbovePlayer>().CultistDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().astrumdeusDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 214;
 				player.GetModPlayer<StarsAbovePlayer>().astrumdeusDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().LunaticCultistWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 110;
 				player.GetModPlayer<StarsAbovePlayer>().LunaticCultistWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().MoonLordDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 65;
 				player.GetModPlayer<StarsAbovePlayer>().MoonLordDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().warriorBossItemDialogue == 1 && DownedBossSystem.downedVagrant)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 304;
 				player.GetModPlayer<StarsAbovePlayer>().warriorBossItemDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().tsukiyomiDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 73;
 				player.GetModPlayer<StarsAbovePlayer>().tsukiyomiDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().MoonLordWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 111;
 				player.GetModPlayer<StarsAbovePlayer>().MoonLordWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().ShadowlessWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 122;
 				player.GetModPlayer<StarsAbovePlayer>().ShadowlessWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().WarriorOfLightDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 66;
 				player.GetModPlayer<StarsAbovePlayer>().WarriorOfLightDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 				
 			}
@@ -800,8 +812,8 @@ namespace StarsAbove.Items.Consumables
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 70;
 				player.GetModPlayer<StarsAbovePlayer>().nalhaunDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 
 			}
@@ -809,8 +821,8 @@ namespace StarsAbove.Items.Consumables
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 71;
 				player.GetModPlayer<StarsAbovePlayer>().penthDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 
 			}
@@ -818,8 +830,8 @@ namespace StarsAbove.Items.Consumables
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 72;
 				player.GetModPlayer<StarsAbovePlayer>().arbiterDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 
 			}
@@ -827,200 +839,208 @@ namespace StarsAbove.Items.Consumables
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 112;
 				player.GetModPlayer<StarsAbovePlayer>().WarriorWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().VagrantWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 115;
 				player.GetModPlayer<StarsAbovePlayer>().VagrantWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().NalhaunWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 117;
 				player.GetModPlayer<StarsAbovePlayer>().NalhaunWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().PenthesileaWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 118;
 				player.GetModPlayer<StarsAbovePlayer>().PenthesileaWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().ArbitrationWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 119;
 				player.GetModPlayer<StarsAbovePlayer>().ArbitrationWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().ClaimhWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 127;
 				player.GetModPlayer<StarsAbovePlayer>().ClaimhWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().MuseWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 128;
 				player.GetModPlayer<StarsAbovePlayer>().MuseWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().KifrosseWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 129;
 				player.GetModPlayer<StarsAbovePlayer>().KifrosseWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().ArchitectWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 130;
 				player.GetModPlayer<StarsAbovePlayer>().ArchitectWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().MurasamaWeaponDialogue == 1 && DownedBossSystem.downedVagrant)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 139;
 				player.GetModPlayer<StarsAbovePlayer>().MurasamaWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().MercyWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 141;
 				player.GetModPlayer<StarsAbovePlayer>().MercyWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().SakuraWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 142;
 				player.GetModPlayer<StarsAbovePlayer>().SakuraWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().EternalWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 143;
 				player.GetModPlayer<StarsAbovePlayer>().EternalWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().DaemonWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 144;
 				player.GetModPlayer<StarsAbovePlayer>().DaemonWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().NeedlepointWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 140;
 				player.GetModPlayer<StarsAbovePlayer>().NeedlepointWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().CosmicDestroyerWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 138;
 				player.GetModPlayer<StarsAbovePlayer>().CosmicDestroyerWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().ForceWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 131;
 				player.GetModPlayer<StarsAbovePlayer>().ForceWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().GenocideWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 132;
 				player.GetModPlayer<StarsAbovePlayer>().GenocideWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().TakodachiWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 133;
 				player.GetModPlayer<StarsAbovePlayer>().TakodachiWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().TwinStarsWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 134;
 				player.GetModPlayer<StarsAbovePlayer>().TwinStarsWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().RedMageWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 151;
 				player.GetModPlayer<StarsAbovePlayer>().RedMageWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
+				return true;
+			}
+			if (player.GetModPlayer<StarsAbovePlayer>().BlazeWeaponDialogue == 1)
+			{
+				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 152;
+				player.GetModPlayer<StarsAbovePlayer>().BlazeWeaponDialogue = 2;
+				activateDialogue(player);
+
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().AllVanillaBossesDefeatedDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 67;
 				player.GetModPlayer<StarsAbovePlayer>().AllVanillaBossesDefeatedDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().EverythingDefeatedDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 68;
 				player.GetModPlayer<StarsAbovePlayer>().EverythingDefeatedDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>(). AllVanillaBossesDefeatedWeaponDialogue== 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 113;
 				player.GetModPlayer<StarsAbovePlayer>().AllVanillaBossesDefeatedWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().EverythingDefeatedWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 114;
 				player.GetModPlayer<StarsAbovePlayer>().EverythingDefeatedWeaponDialogue = 2;
-				player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-				player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
+				activateDialogue(player);
+				
 				return true;
 			}
 
@@ -1155,22 +1175,33 @@ namespace StarsAbove.Items.Consumables
 			player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
 			return true;
 		}
-
-
-		private void activateDialogue(Player player, int chosenDialogue)//Can be used some day?
+		private void activateDialogue(Player player)
         {
-			player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = chosenDialogue;
 
+			player.GetModPlayer<StarsAbovePlayer>().NewDiskDialogue = false;
 			player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
 			player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
 		}
 
+        public override void UpdateInventory(Player player)
+        {
+			if(player.GetModPlayer<StarsAbovePlayer>().NewDiskDialogue)
+            {
+				ItemID.Sets.ItemIconPulse[Item.type] = true;
+			}
+			else
+            {
+				ItemID.Sets.ItemIconPulse[Item.type] = false;
+			}
+			
+
+			base.UpdateInventory(player);
+        }
 
 
 
 
-
-		public override void AddRecipes()
+        public override void AddRecipes()
 		{
 			CreateRecipe(1)
 				.AddIngredient(ItemID.FallenStar, 1)

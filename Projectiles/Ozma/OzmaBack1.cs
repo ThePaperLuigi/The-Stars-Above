@@ -64,7 +64,7 @@ namespace StarsAbove.Projectiles.Ozma
 			Projectile.width = 200;               //The width of projectile hitbox
 			Projectile.height = 200;              //The height of projectile hitbox
 			Projectile.aiStyle = 0;             //The ai style of the projectile, please reference the source code of Terraria
-			Projectile.friendly = true;         //Can the projectile deal damage to enemies?
+			Projectile.friendly = false;         //Can the projectile deal damage to enemies?
 			Projectile.hostile = false;         //Can the projectile deal damage to the player?
 			Projectile.minion = true;
 			Projectile.penetrate = -1;           //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)

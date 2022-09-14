@@ -8774,6 +8774,86 @@ namespace StarsAbove
 
 
             }//Vermilion Riposte
+            if (chosenDialogue == 152) //Burning Desire
+            {
+                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 2;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheOverwhelmingBlaze").Type);
+                        dialoguePrep = false;
+                    }
+
+
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 0;
+
+                        dialogue = $"Thanks for waiting. " +
+                                  "Here's another Melee-type essence for your use. " +
+                                  "While it's deceptively close-ranged, " +
+                                  "it has the potential for some crazy burst damage. ";
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = $"Sure, it'll most likely " +
+                                  "burn you up from the inside. " +
+                                  "Just a little, though." +
+                                  "";
+
+
+                        //	" ";
+                    }
+                    
+
+                }
+                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 3;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheOverwhelmingBlaze").Type);
+                        dialoguePrep = false;
+                    }
+
+
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 0;
+
+                        dialogue = $"Apologies for the delay- here's an Essence. " +
+                                  "This Melee weapon has some recoil potential, but " +
+                                  "in exchange you could deal some explosive " +
+                                  "amounts of damage.";
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = $"I'd ask you to use it in moderation, " +
+                                  "but I'm sure you'll use it as much as you like. " +
+                                  "Bring some healing potions, at the very least." +
+                                  "";
+
+
+                        //	" ";
+                    }
+
+
+                }
+
+
+            }//Vermilion Riposte
+
             #endregion
             //Boss item dialogues.
             if (chosenDialogue == 301) //Nalhaun item

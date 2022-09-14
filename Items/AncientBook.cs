@@ -24,14 +24,15 @@ namespace StarsAbove.Items
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Takonomicon");
 			Tooltip.SetDefault("Calls forth [c/B875F0:Void Octopi] to assail foes with homing lasers" +
-				"\nEach [c/B875F0:Void Octopus] summoned increases damage of all minions and summon weapons by 7%" +
+				"\nEach [c/B875F0:Void Octopus] summoned increases damage of all minions and summon weapons by 1%" +
 				"\nRight click to fire [c/E752B3:Eldritch Blast] towards your cursor for 3 seconds, melting foes in a line before you (1 minute cooldown)" +
 				"\nWith at least one [c/B875F0:Void Octopus] summoned, the [c/5652E7:Abyssal Gauge] will appear" +
 				"\nWhen [c/B875F0:Void Octopi] or [c/E752B3:Eldritch Blast] deals damage the [c/5652E7:Abyssal Gauge] will increase, even when this weapon is not held" +
 				"\nWhen the [c/5652E7:Abyssal Gauge] is full, [c/AC49F5:Ancient One's Summoning] will activate when this weapon is held" +
-				"\n[c/AC49F5:Ancient One's Summoning] will cause magical portals to surround the nearest foe, dealing half base damage" +
+				"\n[c/AC49F5:Ancient One's Summoning] will cause magical portals to surround the nearest foe" +
 				"\nAfter a short delay, tentacles will be summoned to strike, inflicting Shadowflame for 7 seconds" +
 				"\nFor each void octopi summoned, the amount of [c/AC49F5:Ancient One's Summoning]'s portals will increase and [c/E752B3:Eldritch Blast] does more damage" +
+                "\nDamage scales with world progression" +
 				"\n'We are happy. We are here. We are hype. We are...'"
 				+ $"");
 
@@ -166,7 +167,64 @@ namespace StarsAbove.Items
 			
 		
 		}
-		public override Vector2? HoldoutOffset()
+
+        public override void UpdateInventory(Player player)
+        {
+			if (NPC.downedSlimeKing)
+			{
+				Item.damage = 15;
+			}
+			if (NPC.downedBoss1)
+			{
+				Item.damage = 16;
+			}
+			if (NPC.downedBoss2)
+			{
+				Item.damage = 17;
+			}
+			if (NPC.downedQueenBee)
+			{
+				Item.damage = 18;
+			}
+			if (NPC.downedBoss3)
+			{
+				Item.damage = 19;
+			}
+			if (Main.hardMode)
+			{
+				Item.damage = 22;
+			}
+			if (NPC.downedMechBossAny)
+			{
+				Item.damage = 24;
+			}
+			if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
+			{
+				Item.damage = 26;
+			}
+			if (NPC.downedPlantBoss)
+			{
+				Item.damage = 28;
+			}
+			if (NPC.downedGolemBoss)
+			{
+				Item.damage = 30;
+			}
+			if (NPC.downedFishron)
+			{
+				Item.damage = 34;
+			}
+			if (NPC.downedAncientCultist)
+			{
+				Item.damage = 44;
+			}
+			if (NPC.downedMoonlord)
+			{
+				Item.damage = 60;
+			}
+			
+        }
+        public override Vector2? HoldoutOffset()
 		{
 			return new Vector2(-3, 4);
 		}

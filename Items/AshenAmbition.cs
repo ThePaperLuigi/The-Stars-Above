@@ -27,7 +27,7 @@ namespace StarsAbove.Items
 				"\nEach stack of [c/812ABA:Call of the Void] increases movement speed by 5%" +
 				"\nAt 5 stacks of [c/812ABA:Call of the Void] all stacks are reset and [c/926AD9:Ashen Execution] has a 10 second cooldown" +
 				"\nAdditionally, gain [c/FF7EF3:Ashen Strength] for 2 seconds, drastically restoring HP and increasing damage by 20%" +
-				"\nFailing to execute an enemy returns you to your starting position and resets all stacks of [c/812ABA:Call of the Void]" +
+				"\nFailing to execute an enemy resets all stacks of [c/812ABA:Call of the Void]" +
                 "\n'Put these foolish ambitions to rest'" +
 				$"");  //The (English) text shown below your weapon's name
 

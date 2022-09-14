@@ -12,7 +12,7 @@ namespace StarsAbove.Items.Pets
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Sweet Berry Branch");
 			Tooltip.SetDefault("Summons a friendly guardian of civilization"+
-				$"\nShe forgor [i:{ItemID.Skull}]");
+				$"\n'She forgor [i:{ItemID.Skull}]'");
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

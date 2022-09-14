@@ -21,6 +21,8 @@ namespace StarsAbove.Projectiles.KeyOfTheKingsLaw
 		{
 			DisplayName.SetDefault("Key Of The King's Law");
 			Main.projFrames[Projectile.type] = 14;
+			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20;    //The length of old position to be recorded
+			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
 		}
 
 		public override void SetDefaults()
@@ -40,7 +42,12 @@ namespace StarsAbove.Projectiles.KeyOfTheKingsLaw
 			Projectile.DamageType = DamageClass.Summon;
 
 		}
+		public override bool PreDraw(ref Color lightColor)
+		{
+			default(Effects.YellowTrail).Draw(Projectile);
 
+			return true;
+		}
 		public override void AI()
 		{
 			DelegateMethods.v3_1 = new Vector3(0.6f, 1f, 1f) * 0.2f;
@@ -76,7 +83,12 @@ namespace StarsAbove.Projectiles.KeyOfTheKingsLaw
 		}
         public override void Kill(int timeLeft)
 		{
-			
+			for (int d = 0; d < 18; d++)
+			{
+				Dust.NewDust(Projectile.Center, 0, 0, DustID.AmberBolt, Main.rand.NextFloat(-5, 5), Main.rand.NextFloat(-5, 5), 150, default(Color), 0.7f);
+				Dust.NewDust(Projectile.Center, 0, 0, DustID.FireworkFountain_Yellow, Main.rand.NextFloat(-5, 5), Main.rand.NextFloat(-5, 5), 150, default(Color), 0.3f);
+
+			}
 
 		}
 

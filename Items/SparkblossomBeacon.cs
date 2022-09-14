@@ -25,7 +25,7 @@ namespace StarsAbove.Items
 			Tooltip.SetDefault("Summons [c/49EAFA:Fleeting Sparks] to assail foes with homing electricity" +
 				"\nGain 15 Armor Penetration for summon weapons when this weapon is held" +
 				"\nEvery time a [c/49EAFA:Fleeting Spark] attacks, it has a 10% chance to explode" +
-				"\nWhen a [c/49EAFA:Fleeting Spark] explodes, it deals 3x critical damage to nearby foes and returns" +
+				"\nWhen a [c/49EAFA:Fleeting Spark] explodes, it deals 2x critical damage to nearby foes and returns" +
                 "\nAdditionally, explosions have a 50% chance to generate a Mana Star" +
 				"\nEach attack increases the strength of the [c/49EAFA:Fleeting Spark] by 2% (Maximum 10% increased damage, resets upon exploding)" +
 				"\n'Keep a good distance - there!'"

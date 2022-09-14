@@ -20,3 +20,6 @@ If you would like to contribute to the HJSON file, please look into the template
 
 2. Translators:
 If you would like to translate The Stars Above to another language, I really appreciate it, but please wait until the English HJSON file is complete; this will make your job a lot easier.
+
+# Mod Support
+If you're a mod developer, and you'd like Starfarer dialogue for your bosses or biomes, please shoot me a DM on Discord (PaperLuigi#0001) and I'll try to get back to you.

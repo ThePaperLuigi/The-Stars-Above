@@ -27,7 +27,7 @@ namespace StarsAbove.Buffs
 
 			}
 
-			player.GetDamage(DamageClass.Summon) += (player.ownedProjectileCounts[ProjectileType<Projectiles.Takodachi.TakodachiMinion>()] * 0.07f);
+			player.GetDamage(DamageClass.Summon) += (player.ownedProjectileCounts[ProjectileType<Projectiles.Takodachi.TakodachiMinion>()] * 0.01f);
 
 		}
 	}

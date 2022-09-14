@@ -107,7 +107,7 @@ namespace StarsAbove.Projectiles.SparkblossomBeacon
 					if(Main.rand.Next(0,100) < 10)
                     {
 						//Explode
-						Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0, Mod.Find<ModProjectile>("SparkExplosion").Type, Projectile.damage*3, 0f, owner.whoAmI, 0);
+						Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0, Mod.Find<ModProjectile>("SparkExplosion").Type, Projectile.damage*2, 0f, owner.whoAmI, 0);
 						Projectile.alpha = 255;
 
 						if (Main.rand.Next(0, 100) < 50)

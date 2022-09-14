@@ -16,7 +16,7 @@ namespace StarsAbove.Items
 		{
 			DisplayName.SetDefault("Key of the King's Law");
 			Tooltip.SetDefault("22 summon tag damage" +
-                "\nRapidly summon piercing blades towards your cursor" +
+                "\nRapidly summon powerful blades towards your cursor" +
                 "\nWhen a minion deals tag damage, additionally inflict a random debuff on the foe for 2 seconds" +
 				"\nUsing this weapon grants a random combat-oriented buff for 2 seconds" +
 				"\n'I see your luck has run out, mongrel!'" +

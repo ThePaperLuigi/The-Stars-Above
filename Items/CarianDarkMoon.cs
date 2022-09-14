@@ -121,7 +121,7 @@ namespace StarsAbove.Items
 
 			Vector2 muzzleOffset = Vector2.Normalize(projectile) * 50f;
 
-			if (player.altFunctionUse != 2)
+			if (player.altFunctionUse != 2 && Main.myPlayer == player.whoAmI)
 			{
 				if (currentSwing == 0)
 				{

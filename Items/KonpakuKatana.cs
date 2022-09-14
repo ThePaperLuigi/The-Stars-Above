@@ -26,7 +26,7 @@ namespace StarsAbove.Items
 		public override void SetStaticDefaults() {
 			Tooltip.SetDefault("" +
                 "Holding this weapon conjures a Phantom Spirit to attack foes" +
-                "\nAttacks fire quick long-ranged bullets, dealing Summon damage" +
+                "\nAttacks fire quick long-ranged bullets" +
 				"\nProximity to hostile projectiles or enemies with contact damage grants the buff Death's Dance for 2 seconds" +
                 "\nDeath's Dance grants 30% increased damage" +
 				"\nRight click to activate [c/A6F3C4:Phantom Slash], spinning the weapon around you for 3x base damage (8 second cooldown)" +
@@ -50,6 +50,7 @@ namespace StarsAbove.Items
 			Item.knockBack = 4;
 			Item.rare = ItemRarityID.Green;
 			Item.autoReuse = true;
+			Item.UseSound = SoundID.Item11;
 			Item.shoot = ProjectileType<Projectiles.Youmu.YoumuRound>();
 			Item.shootSpeed = 16f;
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon

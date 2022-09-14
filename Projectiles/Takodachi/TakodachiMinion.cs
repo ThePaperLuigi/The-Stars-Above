@@ -80,7 +80,7 @@ namespace StarsAbove.Projectiles.Takodachi
 					Vector2 position = Projectile.Center;
 					float rotation = (float)Math.Atan2(position.Y - (Main.MouseWorld.Y), position.X - (Main.MouseWorld.X));//Aim towards mouse
 
-					float launchSpeed = 36f;
+					float launchSpeed = 66f;
 					Vector2 mousePosition = owner.GetModPlayer<StarsAbovePlayer>().playerMousePos;
 					Vector2 direction = Vector2.Normalize(targetCenter - Projectile.Center);
 					Vector2 velocity = direction * launchSpeed;
