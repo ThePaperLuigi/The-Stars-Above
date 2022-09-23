@@ -1,13 +1,12 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles
 {
-	public class KazimierzSeraphimProjectile : ModProjectile
+    public class KazimierzSeraphimProjectile : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Kazimierz Seraphim");     //The English name of the projectile

@@ -1,11 +1,10 @@
 using Microsoft.Xna.Framework;
-using System;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Dusts
 {
-	public class Star : ModDust
+    public class Star : ModDust
 	{
 		public override void OnSpawn(Dust dust) {
 			//dust.velocity *= 0.4f;

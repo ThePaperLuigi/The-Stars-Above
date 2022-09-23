@@ -1,17 +1,15 @@
 ﻿
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs.HunterSymphony;
-using System.Security.Policy;
 using Terraria;
 using Terraria.Audio;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.HunterSymphony
 {
-	public class MusicRadiate : ModProjectile
+    public class MusicRadiate : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Hunter's Symphony");

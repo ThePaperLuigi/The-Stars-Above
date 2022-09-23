@@ -1,14 +1,13 @@
 ﻿
 using Microsoft.Xna.Framework;
 using SubworldLibrary;
-using System;
 using Terraria;
 using Terraria.Graphics.Capture;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Biomes
 {
-	public class CityBiome : ModBiome
+    public class CityBiome : ModBiome
 	{
 		// Select all the scenery
 		//public override ModWaterStyle WaterStyle => ModContent.Find<ModWaterStyle>("StarsAbove/ExampleWaterStyle"); // Sets a water style for when inside this biome

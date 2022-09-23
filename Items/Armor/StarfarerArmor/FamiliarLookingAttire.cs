@@ -1,9 +1,7 @@
-﻿using Terraria;using Terraria.DataStructures;
+﻿using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using Terraria.Localization;
 using Terraria.ID;
-using StarsAbove.Items.Materials;
 using StarsAbove.Items.Prisms;
 using Terraria.GameContent.Creative;
 using StarsAbove.Systems;
@@ -15,9 +13,9 @@ using Terraria.GameContent;
 
 namespace StarsAbove.Items.Armor.StarfarerArmor
 {
-	
-	
-	public class FamiliarLookingAttire : ModItem
+
+
+    public class FamiliarLookingAttire : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

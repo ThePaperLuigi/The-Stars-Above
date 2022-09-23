@@ -1,13 +1,11 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Audio;
 
 namespace StarsAbove.Projectiles.VermillionDaemon
 {
-	public class RetributionAttacks : ModProjectile
+    public class RetributionAttacks : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Vermillion Daemon");     //The English name of the projectile

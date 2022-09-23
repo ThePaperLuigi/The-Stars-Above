@@ -3,30 +3,17 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using StarsAbove.Projectiles;
 using StarsAbove.Buffs;
 using static Terraria.ModLoader.ModContent;
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.Utilities;
-using System.Collections.Generic;
-using System.Linq;
-using Terraria.DataStructures;
-using StarsAbove.Projectiles;
 using System;
-using Terraria.Localization;
 using StarsAbove.Items.Essences;
-using StarsAbove.Projectiles.NeoDealmaker;
 using Terraria.Audio;
 using StarsAbove.Projectiles.TheOnlyThingIKnowForReal;
 using StarsAbove.Buffs.TheOnlyThingIKnowForReal;
 
 namespace StarsAbove.Items
 {
-	public class TheOnlyThingIKnowForReal : ModItem //MASTER MODE EXCLUSIVE
+    public class TheOnlyThingIKnowForReal : ModItem //MASTER MODE EXCLUSIVE
 	{
 		public override void SetStaticDefaults()
 		{

@@ -1,21 +1,18 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Items.Essences;
-using Terraria;using Terraria.DataStructures;
-using Terraria.Graphics.Shaders;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using StarsAbove.Projectiles.ArchitectLuminance;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Buffs;
 using StarsAbove.Items.Pets;
 using Terraria.Audio;
-using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
 
 namespace StarsAbove.Items
 {
-	public class ArchitectLuminance : ModItem
+    public class ArchitectLuminance : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

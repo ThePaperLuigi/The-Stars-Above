@@ -1,7 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using StarsAbove.Buffs.SubworldModifiers;
 using StarsAbove.Items;
 using StarsAbove.Items.Essences;
 using StarsAbove.Prefixes;
@@ -22,8 +21,8 @@ using Terraria.UI.Chat;
 
 namespace StarsAbove
 {
-	
-	public class StarsAboveGlobalItem : GlobalItem
+
+    public class StarsAboveGlobalItem : GlobalItem
 	{
 		public override bool InstancePerEntity => true;
         public override GlobalItem Clone(Item item, Item itemClone)

@@ -1,9 +1,8 @@
-using Terraria;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Backgrounds
 {
-	public class MoonBackgroundStyle : ModSurfaceBackgroundStyle
+    public class MoonBackgroundStyle : ModSurfaceBackgroundStyle
 	{
 
 

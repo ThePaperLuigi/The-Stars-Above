@@ -1,14 +1,12 @@
 ﻿using StarsAbove.Items.Prisms;
-using Terraria;using Terraria.DataStructures;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Utilities;
 using static Terraria.ModLoader.ModContent;
-using StarsAbove.Items.Materials;
 
 namespace StarsAbove.Items.Accessories
 {
-	public class DragonwardTalisman : ModItem
+    public class DragonwardTalisman : ModItem
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Dragonward Talisman");

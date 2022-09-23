@@ -1,9 +1,9 @@
-﻿using Terraria;using Terraria.ID;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Buffs
 {
-    
+
     public class StellarListener : ModBuff
     {
         public const float buffRadius = 600; // 100ft, same as shared accessory info

@@ -6,14 +6,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using StarsAbove.NPCs;
-using StarsAbove.Items.Materials;
 using StarsAbove.Items.Prisms;
 using Terraria.GameContent.ItemDropRules;
 
 namespace StarsAbove.Items.BossBags
 {
-	// Basic code for a boss treasure bag
-	public class NalhaunBossBag : ModItem
+    // Basic code for a boss treasure bag
+    public class NalhaunBossBag : ModItem
 	{
 		// Sets the associated NPC this treasure bag is dropped from
 		public override int BossBagNPC => ModContent.NPCType<Nalhaun>();

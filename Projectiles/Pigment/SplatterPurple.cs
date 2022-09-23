@@ -1,12 +1,10 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;using Terraria.GameContent;
-using Terraria.ID;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles.Pigment
 {
-	public class SplatterPurple : ModProjectile
+    public class SplatterPurple : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Penthesila's Muse");     //The English name of the projectile

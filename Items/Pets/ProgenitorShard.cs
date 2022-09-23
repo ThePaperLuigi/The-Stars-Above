@@ -1,13 +1,14 @@
 using StarsAbove.Items.Prisms;
-using Terraria;using Terraria.DataStructures;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using StarsAbove.Items.Materials;
-using static Terraria.ModLoader.ModContent; using Microsoft.Xna.Framework;
+using static Terraria.ModLoader.ModContent;
+using Microsoft.Xna.Framework;
 
 namespace StarsAbove.Items.Pets
 {
-	public class ProgenitorShard : ModItem
+    public class ProgenitorShard : ModItem
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Progenitor's Shard");

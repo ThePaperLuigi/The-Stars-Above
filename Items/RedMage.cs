@@ -4,11 +4,9 @@ using StarsAbove.Buffs.RedMage;
 using StarsAbove.Items.Essences;
 using StarsAbove.Items.Prisms;
 using StarsAbove.Projectiles.RedMage;
-using StarsAbove.Projectiles.Starchild;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
-using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -16,7 +14,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Items
 {
-	public class RedMage : ModItem
+    public class RedMage : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

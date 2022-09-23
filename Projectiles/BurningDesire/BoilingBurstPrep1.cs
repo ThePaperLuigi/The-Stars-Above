@@ -1,16 +1,13 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
-using Terraria;using Terraria.GameContent;
-using Terraria.Graphics.Shaders;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using Terraria.Audio;
 
 namespace StarsAbove.Projectiles.BurningDesire
 {
-	public class BoilingBurstPrep1 : ModProjectile
+    public class BoilingBurstPrep1 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Burning Desire");     //The English name of the projectile

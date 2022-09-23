@@ -1,18 +1,16 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles;
-using Terraria;using Terraria.DataStructures;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Items
 {
-	public class AegisDriver : ModItem
+    public class AegisDriver : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

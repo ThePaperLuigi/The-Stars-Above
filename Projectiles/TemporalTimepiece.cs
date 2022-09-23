@@ -1,12 +1,11 @@
 ﻿
 using Microsoft.Xna.Framework;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles
 {
-	public class TemporalTimepiece : ModProjectile
+    public class TemporalTimepiece : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Kroniic Principality");

@@ -1,13 +1,12 @@
 ﻿
 using Microsoft.Xna.Framework;
-using System.Security.Policy;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles
 {
-	public class Titanomachy1 : ModProjectile
+    public class Titanomachy1 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Titanomachy");

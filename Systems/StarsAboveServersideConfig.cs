@@ -1,34 +1,20 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel;
-using System.Linq;
-using System.Runtime.Serialization;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
 using Terraria.ModLoader.Config;
-using Terraria.ModLoader.Config.UI;
-using Terraria.UI;
 
 namespace StarsAbove
 {
-	// This file contains 2 real ModConfigs (and also a bunch of fake ModConfigs showcasing various ideas). One is set to ConfigScope.ServerSide and the other ConfigScope.ClientSide
-	// ModConfigs contain Public Fields and Properties that represent the choices available to the user. 
-	// Those Fields or Properties will be presented to users in the Config menu.
-	// DONT use static members anywhere in this class (except for an automatically assigned field named Instance with the same Type as the ModConfig class, if you'd rather write "MyConfigClass.Instance" instead of "ModContent.GetInstance<MyConfigClass>()"), tModLoader maintains several instances of ModConfig classes which will not work well with static properties or fields.
+    // This file contains 2 real ModConfigs (and also a bunch of fake ModConfigs showcasing various ideas). One is set to ConfigScope.ServerSide and the other ConfigScope.ClientSide
+    // ModConfigs contain Public Fields and Properties that represent the choices available to the user. 
+    // Those Fields or Properties will be presented to users in the Config menu.
+    // DONT use static members anywhere in this class (except for an automatically assigned field named Instance with the same Type as the ModConfig class, if you'd rather write "MyConfigClass.Instance" instead of "ModContent.GetInstance<MyConfigClass>()"), tModLoader maintains several instances of ModConfig classes which will not work well with static properties or fields.
 
-	/// <summary>
-	/// ExampleConfigServer has Server-wide effects. Things that happen on the server, on the world, or influence autoload go here
-	/// ConfigScope.ServerSide ModConfigs are SHARED from the server to all clients connecting in MP.
-	/// </summary>
+    /// <summary>
+    /// ExampleConfigServer has Server-wide effects. Things that happen on the server, on the world, or influence autoload go here
+    /// ConfigScope.ServerSide ModConfigs are SHARED from the server to all clients connecting in MP.
+    /// </summary>
 
-	public class StarsAboveServersideConfig : ModConfig
+    public class StarsAboveServersideConfig : ModConfig
 	{
 
 		//public new string Name => "Stars Above Config (Server)";

@@ -1,12 +1,11 @@
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.ID;
-using StarsAbove.Items.Materials;
 using StarsAbove.Items.Prisms;
 
 namespace StarsAbove.Items.Placeable
 {
-	public class FirstWarningMusicBox : ModItem
+    public class FirstWarningMusicBox : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

@@ -1,14 +1,13 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles
 {
-	public class IrysCrystal3 : ModProjectile
+    public class IrysCrystal3 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("IrysCrystal");     //The English name of the projectile

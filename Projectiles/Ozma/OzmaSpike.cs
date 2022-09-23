@@ -2,14 +2,14 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs;
 using StarsAbove.Buffs.Ozma;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.Ozma
 {
-	public class OzmaSpike : ModProjectile
+    public class OzmaSpike : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Takonomicon");

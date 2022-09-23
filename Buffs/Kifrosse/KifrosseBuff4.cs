@@ -1,10 +1,10 @@
-using Terraria;using Terraria.ID;
+using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Buffs.Kifrosse
 {
-	public class KifrosseBuff4 : ModBuff
+    public class KifrosseBuff4 : ModBuff
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Kifrosse (4 Tails)");

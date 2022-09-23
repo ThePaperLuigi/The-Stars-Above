@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Buffs;
-using StarsAbove.Items;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
@@ -16,7 +15,7 @@ using StarsAbove.Items.Prisms;
 
 namespace StarsAbove.NPCs
 {
-	public class StarsAboveGlobalNPC : GlobalNPC
+    public class StarsAboveGlobalNPC : GlobalNPC
 	{
 		public override bool InstancePerEntity => true;
 		public bool NanitePlague;

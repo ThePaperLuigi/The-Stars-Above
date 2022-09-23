@@ -1,17 +1,6 @@
 using Microsoft.Xna.Framework;
-using StarsAbove;
 using System;
-using Terraria;using Terraria.GameContent;
-using Terraria.Graphics.Shaders;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using StarsAbove.Buffs;
-using SubworldLibrary;
-using System;
-using Terraria;using Terraria.GameContent;
-using Terraria.Graphics.Shaders;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -19,7 +8,7 @@ using StarsAbove.Buffs.Kifrosse;
 
 namespace StarsAbove.Projectiles.Kifrosse
 {
-	public class Kifrosse9 : ModProjectile
+    public class Kifrosse9 : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

@@ -1,22 +1,13 @@
 ﻿
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using StarsAbove.Buffs.MorningStar;
-using StarsAbove.Buffs.RedMage;
-using StarsAbove.Buffs.Skofnung;
-using System;
-using System.Security.Policy;
 using Terraria;
 using Terraria.Audio;
-using Terraria.GameContent;
-using Terraria.Graphics;
-using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.BurningDesire
 {
-	public class BurningDesireHeld : ModProjectile
+    public class BurningDesireHeld : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

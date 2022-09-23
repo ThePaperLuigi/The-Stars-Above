@@ -1,45 +1,25 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.Serialization;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Config;
-using Terraria.ModLoader.Config.UI;
 using Terraria.UI;
-using StarsAbove;
 using StarsAbove.UI;
 using StarsAbove.UI.Undertale;
 using StarsAbove.UI.Starfarers;
 
 using StarsAbove.UI.StellarNova;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Graphics;
-using StarsAbove.UI;
 using StarsAbove.UI.CosmicDestroyerGauge;
 using StarsAbove.UI.Hawkmoon;
 using StarsAbove.UI.JudgementGauge;
 using StarsAbove.UI.StarfarerMenu;
 
 using StarsAbove.UI.VN;
-
-using static Terraria.ModLoader.ModContent;
 using StarsAbove.UI.CelestialCartography;
 
 namespace StarsAbove
 {
 
-	[Autoload(Side = ModSide.Client)]
+    [Autoload(Side = ModSide.Client)]
 	public class StarsAboveUI : ModSystem
 	{
 

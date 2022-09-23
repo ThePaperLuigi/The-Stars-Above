@@ -1,14 +1,14 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Terraria;using Terraria.GameContent;
-using Terraria.Graphics.Shaders;
+using Terraria;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 
 namespace StarsAbove.Projectiles.Starchild
 {
-	public class RedStarBit : ModProjectile
+    public class RedStarBit : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Luminary Wand");     //The English name of the projectile

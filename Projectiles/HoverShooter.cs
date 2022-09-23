@@ -1,10 +1,9 @@
 using Microsoft.Xna.Framework;
 using System;
-using Terraria;using Terraria.GameContent;
-
+using Terraria;
 namespace StarsAbove.Projectiles
 {
-	public abstract class HoverShooter : Minion
+    public abstract class HoverShooter : Minion
 	{
 		protected float idleAccel = 0.05f;
 		protected float spacingMult = 1f;

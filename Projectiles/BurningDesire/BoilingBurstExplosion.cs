@@ -1,14 +1,13 @@
 ﻿
 using Microsoft.Xna.Framework;
-using System.Security.Policy;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.BurningDesire
 {
-	public class BoilingBurstExplosion : ModProjectile
+    public class BoilingBurstExplosion : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Burning Desire");

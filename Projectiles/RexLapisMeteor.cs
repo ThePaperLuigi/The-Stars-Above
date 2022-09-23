@@ -1,14 +1,13 @@
 ﻿
 using Microsoft.Xna.Framework;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 
 namespace StarsAbove.Projectiles
 {
-	public class RexLapisMeteor : ModProjectile
+    public class RexLapisMeteor : ModProjectile
 	{
 		public override void SetStaticDefaults() {//TODO ADD FADE IN
 			DisplayName.SetDefault("Rex Lapis");

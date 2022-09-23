@@ -1,20 +1,14 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using StarsAbove.Buffs;
 using StarsAbove.Buffs.Ozma;
-using SubworldLibrary;
 using System;
 using Terraria;
-using Terraria.Audio;
-using Terraria.GameContent;
-using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.Ozma
 {
-	public class OzmaDrainAttack : ModProjectile
+    public class OzmaDrainAttack : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Ozma Ascendant");     //The English name of the projectile

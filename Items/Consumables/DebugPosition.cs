@@ -1,16 +1,15 @@
 
 using SubworldLibrary;
-using Terraria;using Terraria.DataStructures;
+using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 
 namespace StarsAbove.Items.Consumables
 {
-	
-	public class DebugPosition : ModItem
+
+    public class DebugPosition : ModItem
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Debug Subworld Position Finder");

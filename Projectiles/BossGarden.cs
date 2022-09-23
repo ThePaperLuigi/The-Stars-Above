@@ -1,17 +1,14 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using StarsAbove.Dusts;
-using System;
 using System.Collections.Generic;
-using Terraria;using Terraria.GameContent;
-using Terraria.Graphics.Shaders;
+using Terraria;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 namespace StarsAbove.Projectiles
 {
-	public class BossGarden : ModProjectile
+    public class BossGarden : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("The Garden of Avalon");     //The English name of the projectile

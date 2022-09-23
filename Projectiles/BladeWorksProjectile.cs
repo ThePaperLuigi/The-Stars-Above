@@ -1,15 +1,13 @@
 ﻿
 using Microsoft.Xna.Framework;
-using System;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles
 {
-	public class BladeWorksProjectile : ModProjectile
+    public class BladeWorksProjectile : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Unlimited Blade Works");

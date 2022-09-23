@@ -1,13 +1,11 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;using Terraria.GameContent;
-using Terraria.ID;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles
 {
-	//
-	public class SteelTempestSwing2 : ModProjectile
+    //
+    public class SteelTempestSwing2 : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

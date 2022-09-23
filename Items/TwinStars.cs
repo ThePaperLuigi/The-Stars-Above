@@ -1,18 +1,15 @@
 ﻿using Microsoft.Xna.Framework;
 using StarsAbove.Items.Essences;
 using StarsAbove.Items.Prisms;
-using StarsAbove.Projectiles;
-using System;
-using Terraria;using Terraria.DataStructures;
-using Terraria.Graphics.Shaders;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Items
 {
-	public class TwinStars : ModItem
+    public class TwinStars : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

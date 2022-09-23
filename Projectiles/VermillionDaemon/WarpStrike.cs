@@ -1,16 +1,14 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Audio;
 using StarsAbove.Buffs;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Buffs.VermillionDaemon;
 
 namespace StarsAbove.Projectiles.VermillionDaemon
 {
-	public class WarpStrike : ModProjectile
+    public class WarpStrike : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Vermillion Daemon");     //The English name of the projectile

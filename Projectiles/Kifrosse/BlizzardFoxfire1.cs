@@ -1,15 +1,14 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Buffs.Kifrosse;
 using System;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.Kifrosse
 {
-	public class BlizzardFoxfire1 : ModProjectile
+    public class BlizzardFoxfire1 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("BlizzardFoxfire1");     //The English name of the projectile

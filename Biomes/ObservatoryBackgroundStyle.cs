@@ -1,9 +1,8 @@
-using Terraria;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Backgrounds
 {
-	public class ObservatoryBackgroundStyle : ModSurfaceBackgroundStyle
+    public class ObservatoryBackgroundStyle : ModSurfaceBackgroundStyle
 	{
 
 

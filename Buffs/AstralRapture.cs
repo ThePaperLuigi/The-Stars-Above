@@ -1,12 +1,6 @@
-﻿using IL.Terraria.DataStructures;
-using Terraria;using Terraria.ID;
-using Terraria.ModLoader;
-using StarsAbove.Buffs;
-using Microsoft.Xna.Framework;
-using Terraria.DataStructures;
-
-using static Terraria.ModLoader.ModContent;
+﻿using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace StarsAbove.Buffs
 {

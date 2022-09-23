@@ -1,8 +1,6 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Items.Materials;
-using System.Collections.Generic;
-using System.Linq;
-using Terraria;using Terraria.DataStructures;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,7 +8,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Items.Prisms
 {
-	public class PrismOfTheRuinedKing : ModItem
+    public class PrismOfTheRuinedKing : ModItem
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Prism of the Ruined King");

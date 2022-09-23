@@ -2,15 +2,15 @@ using Microsoft.Xna.Framework;
 using StarsAbove.Items.Essences;
 using StarsAbove.Items.Materials;
 using StarsAbove.Projectiles.KeyOfTheKingsLaw;
-using Terraria;using Terraria.DataStructures;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Items
 {
-	public class KeyOfTheKingsLaw : ModItem
+    public class KeyOfTheKingsLaw : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

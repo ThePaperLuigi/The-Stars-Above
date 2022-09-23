@@ -1,18 +1,12 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;using Terraria.GameContent;
-using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 
 namespace StarsAbove.Projectiles.UltimaThule
 {
-	public class RandomPlanetProjectile : ModProjectile
+    public class RandomPlanetProjectile : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Ultima Thule");     //The English name of the projectile

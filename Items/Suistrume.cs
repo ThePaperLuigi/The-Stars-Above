@@ -1,26 +1,15 @@
 using Microsoft.Xna.Framework;
-using Terraria;using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
-using StarsAbove.Projectiles;
-using StarsAbove.Buffs;
-using static Terraria.ModLoader.ModContent;
-using Microsoft.Xna.Framework;
-using Terraria;using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.Utilities;
-using System.Collections.Generic;
-using System.Linq;
+using Terraria;
 using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
 using StarsAbove.Projectiles;
-using Microsoft.Xna.Framework.Audio;
-using Terraria.Localization;
+using static Terraria.ModLoader.ModContent;
 using StarsAbove.Items.Essences;
 
 namespace StarsAbove.Items
 {
-	public class Suistrume : ModItem
+    public class Suistrume : ModItem
 	{
 		public override void SetStaticDefaults() {
 			Tooltip.SetDefault("Use this item to expend mana, filling your [c/c2f4ff:Performance Gauge] and beginning your [c/40b9ff:Stellar Performance]" +

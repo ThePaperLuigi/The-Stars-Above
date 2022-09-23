@@ -1,14 +1,14 @@
 using Microsoft.Xna.Framework;
-using Terraria;using Terraria.ID;
+using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 using Terraria.ObjectData;
 using Terraria.DataStructures;
 using Terraria.Localization;
 
 namespace StarsAbove.Tiles
 {
-	internal class SecondWarningMusicBox : ModTile
+    internal class SecondWarningMusicBox : ModTile
 	{
 		public override void SetStaticDefaults()
 		{

@@ -1,18 +1,12 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using StarsAbove.Buffs.RedMage;
-using StarsAbove.Projectiles.SkyStriker;
 using System;
 using Terraria;
-using Terraria.Audio;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.RedMage
 {
-	public class RedMageRapierFast: ModProjectile
+    public class RedMageRapierFast: ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Red Mage's Rapier");     //The English name of the projectile

@@ -1,14 +1,13 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Effects;
 using System;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles.VirtuesEdge
 {
-	public class VirtueVFX2 : ModProjectile
+    public class VirtueVFX2 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Virtue's Edge");     //The English name of the projectile

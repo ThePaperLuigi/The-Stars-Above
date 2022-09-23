@@ -1,16 +1,12 @@
-
-using StarsAbove.Items.Materials;
-using Terraria;using Terraria.DataStructures;
+using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 
 namespace StarsAbove.Items.Consumables
 {
 
-	public class MnemonicTrace3 : ModItem
+    public class MnemonicTrace3 : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

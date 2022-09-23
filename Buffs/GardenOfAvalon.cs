@@ -1,16 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 
-using System;
 
-
-using Terraria;using Terraria.ID;
+using Terraria;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 
 namespace StarsAbove.Buffs
 {
-    
+
     public class GardenOfAvalon : ModBuff
     {
         //public const float buffRadius = 600; // 100ft, same as shared accessory info

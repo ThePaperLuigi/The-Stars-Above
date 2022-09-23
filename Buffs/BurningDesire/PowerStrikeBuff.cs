@@ -1,9 +1,7 @@
-﻿using Microsoft.Xna.Framework;
-using StarsAbove.Utilities;
-using Terraria;using Terraria.ID;
+﻿using StarsAbove.Utilities;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Buffs.BurningDesire
 {

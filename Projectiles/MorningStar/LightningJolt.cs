@@ -1,8 +1,7 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Buffs;
 using System;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -10,7 +9,7 @@ using Terraria.Audio;
 
 namespace StarsAbove.Projectiles.MorningStar
 {
-	public class LightningJolt : ModProjectile
+    public class LightningJolt : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("The Morning Star");     //The English name of the projectile

@@ -1,16 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using StarsAbove.Effects;
 
 namespace StarsAbove.Projectiles.CarianDarkMoon
 {
-	
-	internal class MoonlightAttack : ModProjectile
+
+    internal class MoonlightAttack : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			Main.projFrames[Projectile.type] = 1;

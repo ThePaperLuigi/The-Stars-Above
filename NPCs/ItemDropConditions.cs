@@ -1,19 +1,10 @@
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using StarsAbove.Buffs;
-using StarsAbove.Items;
-using System.Collections.Generic;
 using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
 //using StarsAbove.NPCs.OffworldNPCs;
-using static Terraria.ModLoader.ModContent;
 using Terraria.GameContent.ItemDropRules;
 
 namespace StarsAbove.NPCs
 {
-	public class VagrantDrops : IItemDropRuleCondition
+    public class VagrantDrops : IItemDropRuleCondition
 	{
 		public bool CanDrop(DropAttemptInfo info)
 		{

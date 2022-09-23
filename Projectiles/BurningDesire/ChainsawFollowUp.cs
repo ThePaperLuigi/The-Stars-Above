@@ -1,14 +1,12 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Audio;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.BurningDesire
 {
-	public class ChainsawFollowUp : ModProjectile
+    public class ChainsawFollowUp : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Burning Desire");     //The English name of the projectile

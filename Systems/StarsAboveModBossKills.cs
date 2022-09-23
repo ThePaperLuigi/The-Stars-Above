@@ -1,21 +1,11 @@
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
 using System.IO;
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.GameContent;
-using Terraria.GameContent.Generation;
-using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove
 {
-	public class DownedBossSystem : ModSystem
+    public class DownedBossSystem : ModSystem
 	{
 		public static bool downedWarrior = false;
 		public static bool downedVagrant = false;

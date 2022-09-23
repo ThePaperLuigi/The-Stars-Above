@@ -1,27 +1,13 @@
 
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Media;
-using SubworldLibrary;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.GameContent.Generation;
-using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.ModLoader.IO;
-using Terraria.WorldBuilding;
-using static Terraria.ModLoader.ModContent;
 
 
 namespace StarsAbove
 {
 
-	public class StarsAboveModSystem : ModSystem
+    public class StarsAboveModSystem : ModSystem
 	{
 		
         public override void OnWorldLoad()

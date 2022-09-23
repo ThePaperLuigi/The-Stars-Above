@@ -1,11 +1,10 @@
-using Microsoft.Xna.Framework;
-using Terraria;using Terraria.ID;
+using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Buffs
 {
-	public class DuckHuntBirdPetBuff : ModBuff
+    public class DuckHuntBirdPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Hunted Duck");

@@ -1,15 +1,12 @@
 
 using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 
 namespace StarsAbove
 {
-	
-	public class StarsAboveGlobalProjectile : GlobalProjectile
+
+    public class StarsAboveGlobalProjectile : GlobalProjectile
 	{
 
 		public override void OnHitNPC(Projectile projectile, NPC target, int damage, float knockback, bool crit)

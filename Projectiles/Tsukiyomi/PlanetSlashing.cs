@@ -1,20 +1,12 @@
 using Microsoft.Xna.Framework;
-using Terraria;using Terraria.GameContent;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using StarsAbove.Items.Essences;
-using StarsAbove.Projectiles;
-using Terraria;using Terraria.GameContent;
-using Terraria.ID;
-using Terraria.Localization;
+using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.Tsukiyomi
 {
-	//
-	public class PlanetSlashing : ModProjectile
+    //
+    public class PlanetSlashing : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

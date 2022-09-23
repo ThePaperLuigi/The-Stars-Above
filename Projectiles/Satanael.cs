@@ -2,18 +2,15 @@
 using Microsoft.Xna.Framework;
 
 using Terraria;
-using Terraria.GameContent;
 using Terraria.ID;
-using Terraria.Graphics.Shaders;
 using static Terraria.ModLoader.ModContent;
 using System;
 using Terraria.ModLoader;
-using StarsAbove.Buffs;
 
 namespace StarsAbove.Projectiles
 {
 
-	public class Satanael : ModProjectile
+    public class Satanael : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

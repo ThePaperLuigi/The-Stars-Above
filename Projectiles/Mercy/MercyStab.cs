@@ -2,13 +2,13 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs;
 using System;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.Mercy
 {
-	public class MercyStab : ModProjectile
+    public class MercyStab : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Mercy");

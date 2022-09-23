@@ -2,14 +2,14 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs;
 using StarsAbove.Buffs.RexLapis;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.RexLapis
 {
-	public class RexLapisAttack : ModProjectile
+    public class RexLapisAttack : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Rex Lapis");

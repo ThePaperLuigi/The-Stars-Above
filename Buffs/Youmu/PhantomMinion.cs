@@ -1,11 +1,4 @@
-﻿using StarsAbove.Projectiles.Youmu;
-using Terraria;using Terraria.ID;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using StarsAbove.Items;
-using System;
-using Terraria;using Terraria.ID;
-using Terraria.ID;
+﻿using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 

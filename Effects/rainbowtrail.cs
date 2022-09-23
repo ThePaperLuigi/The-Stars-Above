@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Runtime.InteropServices;
-using Microsoft.Xna.Framework;
 using Terraria.Graphics.Shaders;
 using Terraria;
-using System.Linq;
 
 namespace StarsAbove.Effects
 {
-	[StructLayout(LayoutKind.Sequential, Size = 1)]
+    [StructLayout(LayoutKind.Sequential, Size = 1)]
 	public struct PurpleTrail
 	{
 		private static VertexStrip _vertexStrip = new VertexStrip();

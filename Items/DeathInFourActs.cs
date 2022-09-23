@@ -1,27 +1,16 @@
 using Microsoft.Xna.Framework;
-using Terraria;using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
-using StarsAbove.Projectiles;
-using StarsAbove.Buffs;
-using static Terraria.ModLoader.ModContent;
-using Microsoft.Xna.Framework;
-using Terraria;using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.Utilities;
-using System.Collections.Generic;
-using System.Linq;
+using Terraria;
 using Terraria.DataStructures;
-using System.Reflection;
-using Terraria.Localization;
+using Terraria.ID;
+using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
 using StarsAbove.Items.Essences;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
 
 namespace StarsAbove.Items
 {
-	public class DeathInFourActs : ModItem
+    public class DeathInFourActs : ModItem
 	{
 		public override void SetStaticDefaults() {
 			Tooltip.SetDefault("Every fourth shot will always deal critical damage and grant Swiftness\nAfter the fourth shot is taken, the gun will take time to reload" +

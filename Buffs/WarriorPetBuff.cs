@@ -1,11 +1,11 @@
 using Microsoft.Xna.Framework;
-using Terraria;using Terraria.ID;
+using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Buffs
 {
-	public class WarriorPetBuff : ModBuff
+    public class WarriorPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Discount Warrior of Light");

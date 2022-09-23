@@ -1,27 +1,17 @@
 using Microsoft.Xna.Framework;
-using Terraria;using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
-using StarsAbove.Projectiles;
-using StarsAbove.Buffs;
-using static Terraria.ModLoader.ModContent;
-using Microsoft.Xna.Framework;
-using Terraria;using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.Utilities;
-using System.Collections.Generic;
-using System.Linq;
+using Terraria;
 using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
 using StarsAbove.Projectiles;
+using static Terraria.ModLoader.ModContent;
 using System;
-using Terraria.Localization;
 using StarsAbove.Items.Essences;
 using Terraria.Audio;
 
 namespace StarsAbove.Items
 {
-	public class Tartaglia : ModItem
+    public class Tartaglia : ModItem
 	{
 		public override void SetStaticDefaults() {
 			Tooltip.SetDefault("[c/F7D76A:Hold left click to charge the weapon; the longer the weapon is charged, the stronger the resulting attack will become]" +

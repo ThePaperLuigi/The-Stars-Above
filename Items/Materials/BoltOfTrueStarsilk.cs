@@ -1,16 +1,13 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Items.Prisms;
-using System.Collections.Generic;
-using System.Linq;
-using Terraria;using Terraria.DataStructures;
-using Terraria.DataStructures;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Items.Materials
 {
-	public class BoltOfTrueStarsilk : ModItem
+    public class BoltOfTrueStarsilk : ModItem
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Bolt of True Starsilk");

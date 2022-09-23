@@ -1,11 +1,9 @@
-﻿using Terraria;using Terraria.DataStructures;
-using Terraria.ID;
+﻿using Terraria;
 using Terraria.ModLoader;
-using Terraria.Utilities;
 
 namespace StarsAbove.Items.Accessories
 {
-	public class AlienCoral : ModItem
+    public class AlienCoral : ModItem
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Alien Coral");

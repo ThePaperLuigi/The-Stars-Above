@@ -1,10 +1,9 @@
-using Terraria;using Terraria.ID;
+using Terraria;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Buffs.EverlastingPickaxe
 {
-	public class EverlastingGunpowderLoaded : ModBuff
+    public class EverlastingGunpowderLoaded : ModBuff
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Everlasting Gunpowder Loaded");

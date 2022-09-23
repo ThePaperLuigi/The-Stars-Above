@@ -1,13 +1,12 @@
 ﻿
 using Microsoft.Xna.Framework;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.RedMage
 {
-	public class RedMageStab : ModProjectile
+    public class RedMageStab : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Vermilion Riposte");

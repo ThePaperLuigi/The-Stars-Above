@@ -1,17 +1,17 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Terraria;using Terraria.GameContent;
+using Terraria;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 
 namespace StarsAbove.Projectiles
 {
-	// This file showcases the concept of piercing.
-	// This file also shows an animated projectile
-	// This file also shows advanced drawing to center the drawn projectile correctly
-	/*
+    // This file showcases the concept of piercing.
+    // This file also shows an animated projectile
+    // This file also shows advanced drawing to center the drawn projectile correctly
+    /*
 	
 	NPC.immune determines if an npc can be hit by a item or projectile owned by a particular player (it is an array, each slot corresponds to different players (whoAmI))
 	NPC.immune is decremented towards 0 every update
@@ -38,7 +38,7 @@ namespace StarsAbove.Projectiles
 	Try the above by uncommenting out the respective bits of code in the projectile below.
 	*/
 
-	internal class TruesilverSlash : ModProjectile
+    internal class TruesilverSlash : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			Main.projFrames[Projectile.type] = 5;

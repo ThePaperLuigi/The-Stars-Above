@@ -1,14 +1,9 @@
-using Terraria;using Terraria.DataStructures;
+using Terraria;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
-using Terraria.Localization;
-using StarsAbove.Items.Materials;
-using StarsAbove.Items.Prisms;
-using Terraria.ID;
 
 namespace StarsAbove.Items.Armor.SkyStriker
 {
-	[AutoloadEquip(EquipType.Body)]
+    [AutoloadEquip(EquipType.Body)]
 	public class MeleeTop : ModItem
 	{
 		public override void SetStaticDefaults()

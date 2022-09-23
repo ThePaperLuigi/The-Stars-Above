@@ -1,6 +1,4 @@
-﻿using StarsAbove.NPCs;
-using StarsAbove;
-using Terraria;using Terraria.ID;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Buffs

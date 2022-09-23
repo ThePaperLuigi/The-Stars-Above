@@ -1,22 +1,15 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs;
-using StarsAbove.Buffs.BurningDesire;
 using StarsAbove.Buffs.EverlastingPickaxe;
-using StarsAbove.Items.Essences;
-using StarsAbove.Projectiles.BurningDesire;
 using StarsAbove.Projectiles.EverlastingPickaxe;
 using Terraria;
-using Terraria.Audio;
-using Terraria.DataStructures;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Items
 {
-	public class EverlastingPickaxe : ModItem
+    public class EverlastingPickaxe : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

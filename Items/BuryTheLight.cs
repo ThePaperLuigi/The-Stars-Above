@@ -1,13 +1,13 @@
 using Microsoft.Xna.Framework;
- 
+
 using StarsAbove.Items.Essences;
 using StarsAbove.Items.Materials;
 using StarsAbove.Projectiles;
 using System;
 using System.Collections.Generic;
 using StarsAbove.Utilities;
-using Terraria;using Terraria.DataStructures;
-using Terraria.Graphics.Effects;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -16,7 +16,7 @@ using Terraria.GameContent.Creative;
 
 namespace StarsAbove.Items
 {
-	public class BuryTheLight : ModItem
+    public class BuryTheLight : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

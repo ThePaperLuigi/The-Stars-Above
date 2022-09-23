@@ -1,11 +1,11 @@
 using Microsoft.Xna.Framework;
-using Terraria;using Terraria.ID;
+using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Buffs
 {
-	public class EspeonPetBuff : ModBuff
+    public class EspeonPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Mystic Hound");

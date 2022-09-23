@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 
 using Terraria.ID;
 
-using Terraria;using Terraria.DataStructures;
+using Terraria;
 using Terraria.ModLoader;
 using System;
 using Microsoft.Xna.Framework.Graphics;
@@ -11,8 +11,8 @@ using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Items.Consumables.EternalStar
 {
-	
-	public class CeruleanFragment : ModItem
+
+    public class CeruleanFragment : ModItem
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Cerulean Fragment");

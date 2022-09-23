@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
-using StarsAbove.Projectiles.MorningStar;
-using Terraria;using Terraria.ID;
+using Terraria;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Buffs.MorningStar
 {

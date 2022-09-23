@@ -1,7 +1,6 @@
-using Terraria;using Terraria.DataStructures;
+using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using Terraria.Localization;
 using StarsAbove.Items.Materials;
 using StarsAbove.Items.Prisms;
 using Terraria.ID;
@@ -9,7 +8,7 @@ using Terraria.GameContent.Creative;
 
 namespace StarsAbove.Items.Armor
 {
-	[AutoloadEquip(EquipType.Body)]
+    [AutoloadEquip(EquipType.Body)]
 	public class StarArmorTop : ModItem
 	{
 		public override void SetStaticDefaults()

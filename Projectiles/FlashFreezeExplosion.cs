@@ -1,12 +1,12 @@
 using Microsoft.Xna.Framework;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles
 {
-	//
-	public class FlashFreezeExplosion : ModProjectile
+    //
+    public class FlashFreezeExplosion : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

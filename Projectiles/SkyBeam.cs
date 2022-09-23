@@ -1,11 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Terraria;using Terraria.GameContent;
-using Terraria.ID;
+using Terraria;
+using Terraria.GameContent;
 using Terraria.ModLoader;
-using Terraria.Localization;
 using System;
-using Terraria.Audio;
 
 
 namespace StarsAbove.Projectiles

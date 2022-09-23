@@ -1,14 +1,13 @@
 ﻿
 using Microsoft.Xna.Framework;
 using System;
-using System.Security.Policy;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles
 {
-	public class BrushStroke : ModProjectile
+    public class BrushStroke : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Brush Stroke");

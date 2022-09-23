@@ -1,19 +1,14 @@
 ﻿
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Buffs.MorningStar;
-using StarsAbove.Buffs.Skofnung;
-using System;
-using System.Security.Policy;
-using Terraria;using Terraria.GameContent;
-using Terraria.Graphics;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.MorningStar
 {
-	public class AlucardSword3 : ModProjectile
+    public class AlucardSword3 : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

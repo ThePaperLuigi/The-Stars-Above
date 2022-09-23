@@ -1,16 +1,14 @@
 ﻿
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs;
 using StarsAbove.Buffs.BurningDesire;
-using StarsAbove.Buffs.RexLapis;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.BurningDesire
 {
-	public class BurningDesireStab : ModProjectile
+    public class BurningDesireStab : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Burning Desire");

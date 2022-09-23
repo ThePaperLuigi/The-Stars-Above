@@ -1,11 +1,9 @@
-﻿using Terraria;using Terraria.DataStructures;
-using Terraria.ID;
+﻿using Terraria;
 using Terraria.ModLoader;
-using Terraria.Utilities;
 
 namespace StarsAbove.Items.Accessories
 {
-	public class PerfectlyGenericAccessory : ModItem
+    public class PerfectlyGenericAccessory : ModItem
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Perfectly Generic Accessory");

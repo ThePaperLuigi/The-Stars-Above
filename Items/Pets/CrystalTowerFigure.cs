@@ -1,13 +1,12 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Items.Prisms;
-using Terraria;using Terraria.DataStructures;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent; using Microsoft.Xna.Framework;
-
+using static Terraria.ModLoader.ModContent;
 namespace StarsAbove.Items.Pets
 {
-	public class CrystalTowerFigure : ModItem
+    public class CrystalTowerFigure : ModItem
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Crystal Tower Figurine");

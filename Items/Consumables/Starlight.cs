@@ -2,15 +2,15 @@ using Microsoft.Xna.Framework;
 
 using Terraria.ID;
 
-using Terraria;using Terraria.DataStructures;
+using Terraria;
 using Terraria.ModLoader;
 using System;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace StarsAbove.Items.Consumables
 {
-	
-	public class Starlight : ModItem
+
+    public class Starlight : ModItem
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Starlight");

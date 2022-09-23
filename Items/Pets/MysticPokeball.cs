@@ -1,13 +1,13 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Items.Prisms;
-using Terraria;using Terraria.DataStructures;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent; using Microsoft.Xna.Framework;
-
+using static Terraria.ModLoader.ModContent;
 namespace StarsAbove.Items.Pets
 {
-	public class MysticPokeball : ModItem
+    public class MysticPokeball : ModItem
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Mystic Monster Ball");

@@ -1,12 +1,13 @@
 using StarsAbove.Items.Prisms;
-using Terraria;using Terraria.DataStructures;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent; using Microsoft.Xna.Framework;
+using static Terraria.ModLoader.ModContent;
+using Microsoft.Xna.Framework;
 
 namespace StarsAbove.Items.Pets
 {
-	public class FuneralPass : ModItem
+    public class FuneralPass : ModItem
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Funeral Pass");

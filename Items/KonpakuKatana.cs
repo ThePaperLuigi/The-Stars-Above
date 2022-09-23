@@ -1,19 +1,9 @@
 using Microsoft.Xna.Framework;
-using Terraria;using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
-using StarsAbove.Projectiles;
-using StarsAbove.Buffs;
-using static Terraria.ModLoader.ModContent;
-using Microsoft.Xna.Framework;
-using Terraria;using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.Utilities;
-using System.Collections.Generic;
-using System.Linq;
+using Terraria;
 using Terraria.DataStructures;
-using Terraria.Localization;
+using Terraria.ID;
+using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
 using StarsAbove.Items.Essences;
 using System;
 using StarsAbove.Projectiles.Youmu;
@@ -21,7 +11,7 @@ using StarsAbove.Buffs.Youmu;
 
 namespace StarsAbove.Items
 {
-	public class KonpakuKatana : ModItem
+    public class KonpakuKatana : ModItem
 	{
 		public override void SetStaticDefaults() {
 			Tooltip.SetDefault("" +

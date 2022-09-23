@@ -1,17 +1,13 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using StarsAbove.Buffs;
-using SubworldLibrary;
 using System;
-using Terraria;using Terraria.GameContent;
-using Terraria.Graphics.Shaders;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.TwinStars
 {
-	public class TwinStar2 : ModProjectile
+    public class TwinStar2 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Twin Stars");     //The English name of the projectile

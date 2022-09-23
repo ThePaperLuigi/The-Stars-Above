@@ -6,15 +6,13 @@ using StarsAbove.Projectiles.BurningDesire;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
-using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Items
 {
-	public class BurningDesire : ModItem
+    public class BurningDesire : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

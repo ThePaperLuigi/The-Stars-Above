@@ -1,9 +1,8 @@
 
 using Microsoft.Xna.Framework;
 
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
-using Terraria.Graphics.Shaders;
 using static Terraria.ModLoader.ModContent;
 using System;
 using StarsAbove.Buffs.Youmu;
@@ -12,8 +11,8 @@ using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles.Youmu
 {
-	
-	public class YoumuSpirit : ModProjectile
+
+    public class YoumuSpirit : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			Main.projFrames[Projectile.type] = 7;

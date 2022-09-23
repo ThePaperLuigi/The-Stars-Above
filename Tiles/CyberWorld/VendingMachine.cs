@@ -1,17 +1,13 @@
-using System;
 using Microsoft.Xna.Framework;
-using Terraria;using Terraria.ID;
+using Terraria;
 using Terraria.ID;
-using Terraria.Enums;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 using Terraria.ObjectData;
 using Terraria.DataStructures;
 
 namespace StarsAbove.Tiles.CyberWorld
 {
-	public class VendingMachine : ModTile
+    public class VendingMachine : ModTile
 	{
 		public static int counter = 0;
 		public override void SetStaticDefaults()

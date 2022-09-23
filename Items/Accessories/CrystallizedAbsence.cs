@@ -1,12 +1,4 @@
-﻿using Terraria;using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.Utilities;
-using Microsoft.Xna.Framework;
-using System.Collections.Generic;
-using System.Linq;
-using Terraria;using Terraria.DataStructures;
-using Terraria.DataStructures;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -14,7 +6,7 @@ using StarsAbove.Items.Materials;
 
 namespace StarsAbove.Items.Accessories
 {
-	public class CrystallizedAbsence : ModItem
+    public class CrystallizedAbsence : ModItem
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Crystallized Absence");

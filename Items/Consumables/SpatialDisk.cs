@@ -1,13 +1,10 @@
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using Terraria;using Terraria.DataStructures;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using StarsAbove.NPCs;
 using static Terraria.ModLoader.ModContent;
 using SubworldLibrary;
 using Terraria.Audio;
@@ -15,8 +12,8 @@ using StarsAbove.Subworlds;
 
 namespace StarsAbove.Items.Consumables
 {
-	
-	public class SpatialDisk : ModItem
+
+    public class SpatialDisk : ModItem
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Spatial Disk");

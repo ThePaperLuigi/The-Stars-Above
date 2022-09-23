@@ -1,14 +1,13 @@
 
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles.BloodBlade
 {
-	public class BloodSlash2 : ModProjectile
+    public class BloodSlash2 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("The Blood Blade");     //The English name of the projectile
