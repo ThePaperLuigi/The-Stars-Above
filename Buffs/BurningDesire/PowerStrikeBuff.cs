@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using StarsAbove.Utilities;
 using Terraria;using Terraria.ID;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,7 +12,6 @@ namespace StarsAbove.Buffs.BurningDesire
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Power Strike");
-            Description.SetDefault("");
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
             BuffID.Sets.NurseCannotRemoveDebuff[Type] = true;
@@ -24,10 +24,9 @@ namespace StarsAbove.Buffs.BurningDesire
         }
         public override void ModifyBuffTip(ref string tip, ref int rare)
         {
-            tip = $"{Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().powerStrikeStacks}/5 stacks" +
-                $"\nDamage increased by {Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().powerStrikeStacks * 5}%" +
-                $"\nDefense increased by {Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().powerStrikeStacks * 5}" +
-                $"\n'Do you hear the roar of this chainsaw?'";
+            int powerStrikeStacks = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().powerStrikeStacks;
+            tip = LangHelper.GetTextValue("BuffDescription.PowerStrikeBuff", powerStrikeStacks, powerStrikeStacks * 5,
+                powerStrikeStacks * 5);
 
             base.ModifyBuffTip(ref tip, ref rare);
         }
