@@ -650,7 +650,7 @@ namespace StarsAbove.NPCs
 				*/
 			}
 
-
+			
 			VagrantDrops VagrantDropCondition = new VagrantDrops();
 			IItemDropRule conditionalRule = new LeadingConditionRule(VagrantDropCondition);
 			IItemDropRule rule = ItemDropRule.Common(Mod.Find<ModItem>("PrismaticCore").Type, chanceDenominator: 100);
@@ -666,18 +666,32 @@ namespace StarsAbove.NPCs
 			IItemDropRule rule2 = ItemDropRule.Common(Mod.Find<ModItem>("PerfectlyGenericAccessory").Type, chanceDenominator: 10000);
 			conditionalRule.OnSuccess(rule2);
 			npcLoot.Add(conditionalRule2);
-
+			
 
 		}
 
 		
         public override void ModifyGlobalLoot(GlobalLoot globalLoot)
         {
-			
 
+			/* Doesn't work with Calamity for some reason.
+			VagrantDrops VagrantDropCondition = new VagrantDrops();
+			IItemDropRule conditionalRule = new LeadingConditionRule(VagrantDropCondition);
+			IItemDropRule rule = ItemDropRule.Common(Mod.Find<ModItem>("PrismaticCore").Type, chanceDenominator: 100);
+			conditionalRule.OnSuccess(rule);
+			globalLoot.Add(conditionalRule);
 
-			
-        }
+			IItemDropRule conditionalRule1 = new LeadingConditionRule(VagrantDropCondition);
+			IItemDropRule rule1 = ItemDropRule.Common(Mod.Find<ModItem>("Starlight").Type, chanceDenominator: 25);
+			conditionalRule.OnSuccess(rule1);
+			globalLoot.Add(conditionalRule1);
+
+			IItemDropRule conditionalRule2 = new LeadingConditionRule(VagrantDropCondition);
+			IItemDropRule rule2 = ItemDropRule.Common(Mod.Find<ModItem>("PerfectlyGenericAccessory").Type, chanceDenominator: 10000);
+			conditionalRule.OnSuccess(rule2);
+			globalLoot.Add(conditionalRule2);
+			*/
+		}
 
 		
 

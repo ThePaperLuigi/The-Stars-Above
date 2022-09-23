@@ -172,8 +172,8 @@ namespace StarsAbove.Projectiles.HunterSymphony
 					//player.AddBuff(BuffType<HunterSymphonyCooldown>(), 1200);
 				}
 			}
-			
 
+			Projectile.netUpdate = true;
 			Projectile.damage = 0;
 			if(start)
             {

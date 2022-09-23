@@ -61,10 +61,10 @@ namespace StarsAbove.NPCs
         {
             NPC.boss = true;
             NPC.aiStyle = 0;
-            NPC.lifeMax = 22000;
+            NPC.lifeMax = 50000;
 
             NPC.damage = 0;
-            NPC.defense = 10;
+            NPC.defense = 0;
             NPC.knockBackResist = 0f;
             NPC.width = 220;
             NPC.height = 270;
@@ -171,6 +171,15 @@ namespace StarsAbove.NPCs
         {
             potionType = ItemID.HealingPotion;
             
+            //Because you can not hit this boss, loot will be dropped seperately.
+            if(Main.expertMode)
+            {
+                int k = Item.NewItem(null, (int)NPC.position.X, (int)NPC.position.Y, 0,0, Mod.Find<ModItem>("VagrantBossBag").Type, 1, false);
+                if (Main.netMode == 1)
+                {
+                    NetMessage.SendData(21, -1, -1, null, k, 1f);
+                }
+            }
 
             NPC.SetEventFlagCleared(ref DownedBossSystem.downedVagrant, -1);
             DownedBossSystem.downedVagrant = true;
