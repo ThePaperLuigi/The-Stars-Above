@@ -85,16 +85,20 @@ Mods: {
 		}
 		
 		NPCName: {
-			
-			WarriorOfLight: Warrior of Light
-			Tsukiyomi: Tsukiyomi, the First Starfarer
-			Tsukiyomi2: Tsuiyomi, the Progeny of Salvation
-			Nalhaun: Nalhaun, the Burnished King
-			Arbitration: Arbitration
-			Penthesilea: Penthesilea, the Witch of Ink
-			VagrantOfSpaceAndTime: The Vagrant of Space and Time
-			
-		}
+            Arbitration: Arbitration
+            AstralCell: Astral Cell
+            DummyEnemy: Dummy Enemy
+            Nalhaun: Nalhaun, The Burnished King
+            PaintedAttendantA: Living Brush
+            PaintedAttendantB: Living Brush
+            Penthesilea: Penthesilea, the Witch of Ink
+            PrismLoot: Prismatic Core
+            SpectreOfLight: Spectre Of Light
+            Tsukiyomi: Tsukiyomi, the First Starfarer
+            Tsukiyomi2: Tsukiyomi, the Progeny of Salvation
+            VagrantOfSpaceAndTime: The Vagrant of Space and Time
+            WarriorOfLight: The Warrior Of Light
+        }
 		
 		MapObject: {
 			
@@ -332,24 +336,1196 @@ Mods: {
 		}
 		
 		ProjectileName: {
-			
-		}
+            ArachnidNeedlepointWhip: ArachnidNeedlepointWhip
+            AbsoluteBlade: Absolute Blade
+            AbsoluteBlade2: Absolute Blade
+            AbsoluteGeometry: Absolute Geometry
+            AbsoluteRendHeaven: Absolute Rend Heaven
+            AbsoluteRendHeavenDamage: Absolute Rend Heaven
+            AegisDriverOff: Aegis Driver
+            AegisDriverOn: Aegis Driver
+            AmiyaSlash: Shadowless Cerulean
+            AmiyaSlashBurst: Shadowless Cerulean Burst
+            AmiyaSwing1: Shadowless Cerulean
+            AmiyaSwing2: Shadowless Cerulean
+            AmiyaSwingE1: Shadowless Cerulean
+            AmiyaSwingE2: Shadowless Cerulean
+            ApalistikProjectile: Apalistik
+            ApalistikUpgradedProjectile: Apalistik
+            RobotSpider: Robot Spider
+            RobotSpiderStationary: Robot Spider Stationary
+            SpiderDamage: Arachnid Needlepoint
+            ArchitectShoot: Architect's Luminance
+            Armament: Armament
+            Siren: Artifice Siren
+            SirenLaser1: Siren Laser1
+            SirenLaser2: Siren Laser2
+            SirenLaser3: Siren Laser3
+            SirenTurret1: SirenTurret1
+            SirenTurret2: SirenTurret2
+            SirenTurret3: SirenTurret3
+            Arondight: Hollowheart Albion
+            ArondightBeam: Hollowheart Albion
+            AshenAmbitionExecute: Ashen Ambition
+            AshenAmbitionMarker: Ashen Ambition
+            AshenAmbitionSpear: Ashen Ambition
+            Asteroid: Ultima Thule
+            AstralOrb: Astral Orb
+            bladeWillAttack: blade Will Attack
+            BladeWorksProjectile: Unlimited Blade Works
+            Blaster: Tartaglia
+            BlazingSkies: Blazing Skies
+            BladeArtDragon: The Blood Blade
+            BloodArtPrep: Blood Blade
+            BloodSlash1: BloodSlash1
+            BloodSlash2: The Blood Blade
+            BoilingBurstExplosion: Burning Desire
+            BoilingBurstPrep1: Burning Desire
+            BoilingBurstPrep2: Burning Desire
+            BurningDesireHeld: Burning Desire
+            BurningDesireSlash1: Burning Desire
+            BurningDesireSlash2: Burning Desire
+            BurningDesireStab: Burning Desire
+            BloodstainedCrescent: Bloodstained Crescent
+            BlueSplatter: Blue Splatter
+            BlueSplatterDamage: Blue Splatter Damage
+            PenthCastingPage: Penthesilea's Muse
+            PenthSpin: Penthesilea's Brush
+            BossGarden: The Garden of Avalon
+            BossLaevateinn: Ars Laevateinn
+            BossLaevateinnDamage: Ars Laevateinn
+            BossTheofania: Theofania Inanis
+            BrushStroke: Brush Stroke
+            BrushStrokeDamage: Brush Stroke
+            Bubble: Heavy Arrow
+            BurstFX3: BurstFX3
+            BurstFX4: BurstFX4
+            BurstFX5: BurstFX5
+            BurstFX6: BurstFX6
+            BuryTheLightSlash: Bury The Light
+            BuryTheLightSlash2: Bury The Light
+            BuryTheLightSlash2Pre: Bury The Light
+            ButterflyProjectile: Veneration of Butterflies
+            CarianSwing1: Carian Dark Moon
+            CarianSwing2: Carian Dark Moon
+            CarianSwingE1: Carian Dark Moon
+            CarianSwingE2: Carian Dark Moon
+            ChainsawFollowUp: Burning Desire
+            ChainsawFollowUpAttack: Burning Desire
+            ChainsawFollowUpExplosion: Burning Desire
+            DarkmoonSpawn: Carian Dark Moon
+            DarkmoonSpawnEmpowered: Carian Dark Moon
+            MoonlightAttack: Moonlight Attack
+            ChaosBlaster: Chaos Blaster
+            ChaosBlaster2: Chaos Blaster
+            ChaosBlaster3: Chaos Blaster
+            ChemtankExplosion: Dreadnought Chemtank
+            ChemtankMarker1: Dreadnought Chemtank
+            ChemtankMarker2: Dreadnought Chemtank
+            ChemtankMarker3: Dreadnought Chemtank
+            ChemtankMarker4: Dreadnought Chemtank
+            ChemtankMarker5: Dreadnought Chemtank
+            ChemtankMarker6: Dreadnought Chemtank
+            ChemtankRound: Dreadnought Chemtank
+            ClaimhBurst: Solais Burst
+            CosmicDestroyerRound: Cosmic Destroyer
+            CosmicDestroyerRound2: Cosmic Destroyer
+            DeathInFourActsRound: Death In Four Acts Round
+            DrachenlanceProjectile: Drachenlance
+            Entropy: Entropy
+            EntropyDamage: Entropy
+            Erinys: Erinys
+            ErinysFX: ErinysFX
+            EmblazonedAmethyst: Amethyst Star
+            EmblazonedCerulean: Cerulean Star
+            EmblazonedCitrine: Citrine Star
+            EmblazonedMalachite: Malachite Star
+            EmblazonedVermillion: Vermillion Star
+            EternalStarburst: Eternal Star
+            ImmemorialSupernovaProjectile: Immemorial Supernova
+            EuthymiaFollowUp: Vision of Euthymia
+            EveryMomentMattersRound: Every Moment Matters Round
+            EyeOfEuthymia: The Eye of Euthymia
+            EyeProjectile: The Eye of Cthulhu...?
+            fastRadiate: Radiate
+            Firebolt: Firebolt
+            FlashFreezeExplosion: Flash Freeze
+            ForceOfNatureReload: Force of Nature Reload
+            ForceOfNatureRound: Force of Nature
+            FrostflakeArrow: Frostflake Arrow
+            GasterBlaster: Gaster Blaster
+            GenocideArtillery: Genocide
+            GenocideArtilleryBlast: Genocide
+            GenocidePlasmaGrenade: Genocide Plasma Grenade
+            GenocidePlasmaGrenadeBlast: Genocide
+            GenocideRound: Genocide
+            GenocideRoundBlast: Genocide
+            GenocideRoundFinalBlast: Genocide
+            Geometry: Geometry
+            Hammer: Hammer
+            HawkmoonRound: Hawkmoon
+            HawkmoonRoundWeak: Hawkmoon
+            HeavyArrow: Heavy Arrow
+            HuckleberryRound: HuckleberryRound
+            HullwroughtRound: Hullwrought
+            HullwroughtSpin: Hullwrought
+            HullwroughtSpin2: Hullwrought
+            HullwroughtSpinDamage: Hullwrought
+            HullwroughtStab: Hullwrought
+            HullwroughtStab2: Hullwrought
+            HullwroughtSwing1: Hullwrought
+            HullwroughtSwing12: Hullwrought
+            HullwroughtSwing2: Hullwrought
+            HullwroughtSwing22: Hullwrought
+            HornSlash1: Hunter's Symphony
+            HornSlash2: Hunter's Symphony
+            MusicRadiate: Hunter's Symphony
+            Icebolt: Icebolt
+            Icebolt2: Icebolt2
+            IceLotus: Ice Lotus
+            ignitionAstraSwing: Ignition Astra
+            InkBlot: Ink Blot
+            InkClot: Ink Clot
+            InugamiRipsaw: Inugami Ripsaw
+            Irys: Irys
+            IrysBolt: Irys Bolt
+            IrysCrystal1: IrysCrystal
+            IrysCrystal2: IrysCrystal
+            IrysCrystal3: IrysCrystal
+            IrysCrystalMain: Irys
+            IzanagiRound: Izanagi Round
+            KazimierzSlash1: Kazimierz Seraphim
+            KazimierzSlash2: Kazimierz Seraphim
+            KazVFX1: Kazimierz Seraphim
+            KazVFX2: Kazimierz Seraphim
+            KazimierzSeraphimProjectile: Kazimierz Seraphim
+            KeyOfChronologyBurst: Key of Chronology
+            KeyOfTheKingsLawProjectile: Key Of The King's Law
+            BlizzardFoxfire1: BlizzardFoxfire1
+            BlizzardFoxfire2: BlizzardFoxfire2
+            BlizzardFoxfire3: BlizzardFoxfire2
+            DancingFoxfire1: DancingFoxfire1
+            DancingFoxfire2: DancingFoxfire2
+            Kifrosse1: Foxfrost Mystic
+            Kifrosse2: Foxfrost Mystic
+            Kifrosse3: Foxfrost Mystic
+            Kifrosse4: Foxfrost Mystic
+            Kifrosse5: Foxfrost Mystic
+            Kifrosse6: Foxfrost Mystic
+            Kifrosse7: Foxfrost Mystic
+            Kifrosse8: Foxfrost Mystic
+            Kifrosse9: Foxfrost Mystic
+            Lightblast: Lightblast
+            LongAsteroid: Ultima Thule
+            Melusine: Hollowheart Albion
+            MelusineBeam: Hollowheart Albion
+            MementoMuseProjectile: Memento Muse
+            mementoSwing: Memento Muse
+            MercySlash: Mercy
+            MercySlash2: Mercy
+            MercyStab: Mercy
+            MiseryRound: Misery Round
+            MiseryScythe: Misery's Scythe
+            MiseryShotgun: Misery's Company
+            MonadoBuster: Monado Sigil
+            MonadoEmpoweredCritSwing: Xenoblade
+            MonadoEmpoweredSwing: Xenoblade
+            MonadoJump: Monado Sigil
+            MonadoShield: Monado Sigil
+            MonadoSmash: Monado Sigil
+            MonadoSpeed: Monado Sigil
+            MonadoSwing1: Xenoblade
+            MonadoSwing2: Xenoblade
+            AccursedFlame: The Morning Star
+            AlucardSword1: The Morning Star
+            AlucardSword2: The Morning Star
+            AlucardSword3: The Morning Star
+            IcyShards: Icebolt
+            LightningJolt: The Morning Star
+            MorningStarHitBoom: The Morning Star
+            MorningStarWhip: Morning Star Whip
+            NaganadelProjectile1: Naganadel
+            NaganadelProjectile2: Naganadel
+            NaganadelProjectile3: Naganadel
+            NaganadelProjectile4: Naganadel
+            NaganadelProjectile5: Naganadel
+            NaganadelProjectileFinal1: Naganadel
+            NaganadelProjectileFinal2: Naganadel
+            NaganadelProjectileFinal3: Naganadel
+            NaganadelProjectileFinal4: Naganadel
+            NaganadelProjectileFinal5: Naganadel
+            NalhaunSwing: Nalhaun Swing
+            NalhaunSwing2: Nalhaun Swing2
+            BigShot: Neo Dealmaker
+            SmallShot: Neo Dealmaker
+            NotRadRound: Rad Gun
+            Gateway: Gateway
+            GatewayVFX: StellarGateway
+            HeldGateway: Gateway
+            OutbreakRound: Outbreak Perfected Round
+            OzmaAttack1: Ozma Ascendant
+            OzmaAttack2: Ozma Ascendant
+            OzmaAttack3: Ozma Ascendant
+            OzmaAttack4: Ozma Ascendant
+            OzmaAttack5: Ozma Ascendant
+            OzmaAttack5Slash: Ozma Ascendant
+            OzmaAttack5Slash2: Ozma Ascendant
+            OzmaBack1: Ozma Ascendant
+            OzmaBack2: Ozma Ascendant
+            OzmaBack3: Ozma Ascendant
+            OzmaBack4: Ozma Ascendant
+            OzmaDamage: Ozma Ascendant
+            OzmaDamageFinale: Ozma Ascendant
+            OzmaDrainAttack: Ozma Ascendant
+            OzmaFinaleDescends: Ozma Ascendant
+            OzmaOrbAttack: Ozma Ascendant
+            OzmaSpike: Takonomicon
+            OzmaSpikePortal: Ozma Ascendant
+            BiyomonPet: Biyomon
+            BladeWolfPet: Blade Wolf
+            BloopPet: Bloop
+            BubbaPet: Bubba
+            CrimsonDragonetPet: Crimson Dragonet
+            DuckHuntBirdPet: Duck Hunt Bird
+            DuckHuntDogPet: Duck Hunt Dog
+            EreshkigalPet: Princess of Kur
+            EspeonPet: Espeon
+            FerryPet: Ferry
+            Ghost: Ghost
+            GrahaPet: Graha
+            GuilmonPet: Guilmon
+            HanakoPet: Mysterious Ghost
+            HuTaoPet: Hu Tao
+            KasumiPet: Rock Star
+            LukaPet: Luka
+            MajimaPet: Puppy of Shimano
+            MantisCatPet: Mantis Cat
+            MumeiPet: Mumei
+            NecoArcPet: NecoArc
+            OmoriPet: Monochrome Plush
+            PekoraPet: Suspicious Looking Bunny-Girl
+            PhymPet: Phym
+            PyraPet: Pyra
+            SanaPet: Astrogirl
+            SuiseiPet: Suisei
+            UmbreonPet: Umbreon
+            VitchPet: Fox Vixen
+            WarriorPet: Discount Warrior of Light
+            PhantomInTheMirrorProjectile: Phantom In The Mirror
+            PhantomMarker: Phantom In The Mirror
+            PaintSwingB: Penthesilea's Muse
+            PaintSwingG: Penthesilea's Muse
+            PaintSwingO: Penthesilea's Muse
+            PaintSwingP: Penthesilea's Muse
+            PaintSwingR: Penthesilea's Muse
+            PaintSwingY: Penthesilea's Muse
+            SplatterBlue: Penthesila's Muse
+            SplatterGreen: Penthesila's Muse
+            SplatterOrange: Penthesila's Muse
+            SplatterPurple: Penthesila's Muse
+            SplatterRed: Penthesila's Muse
+            SplatterYellow: Penthesila's Muse
+            PlanteraProjectile: Plantera..?
+            punch: Dragon of Dojima
+            RadiantBraver: Radiant Braver
+            radiate: Radiate
+            radiateChaos: Radiate
+            radiateDamage: Radiate
+            radiateOrder: Radiate
+            RadRound: Rad Gun
+            RedMageFocus: Red Mage's Foci
+            RedMageRapier: Red Mage's Rapier
+            RedMageRapierFast: Red Mage's Rapier
+            RedMageStab: Vermilion Riposte
+            ResolutionMagicCircle: Red Mage's Rapier
+            ResolutionMagicCircle2: Red Mage's Rapier
+            ResolutionProjectile: Vermilion Riposte
+            Scorch: Vermilion Riposte
+            ScorchPrep: Vermilion Riposte
+            Veraero: Veraero
+            Verfire: Verfire
+            Verflare: Verflare
+            VerflareExplosion: Verflare
+            Verholy: Verholy
+            VerholyExplosion: Verholy
+            Verstone: Verstone
+            Verthunder: Verthunder
+            RedSplatter: Red Splatter
+            RedSplatterDamage: Red Splatter Damage
+            RendHeaven: Rend Heaven
+            RendHeavenDamage: Rend Heaven
+            reverseRadiate: Radiate
+            RexLapisAttack: Rex Lapis
+            RexLapisFinish: Rex Lapis
+            RexLapisMeteor: Rex Lapis
+            RexLapisMeteor2: Rex Lapis
+            RexLapisSpin: Rex Lapis
+            RexLapisSpin2: Rex Lapis
+            RexLapisStab: Rex Lapis
+            RexLapisStab0: Rex Lapis
+            RexLapisStab2: Rex Lapis
+            RiptideBolt: Riptide Bolt
+            RupturedHeavenWhip: Ruptured Heaven
+            RupturedSwing1: Ruptured Heaven
+            RupturedSwing2: Ruptured Heaven
+            SaberAOE: Coruscant Saber
+            SaberAOE2: Saber AOE Indicator
+            SaberDamage: Coruscant Saber II
+            sakuraSwing: Crimson Sakura Alpha
+            CursedFlames: Sakura's Vengeance
+            HeavenlyStar: Sakura's Vengeance
+            SakuraPetal: Sakura's Vengeance
+            SakuraSlashCooling1: Sakura's Vengeance
+            SakuraSlashCooling2: Sakura's Vengeance
+            SakuraSlashEarth1: Sakura's Vengeance
+            SakuraSlashEarth2: Sakura's Vengeance
+            SakuraSlashHeaven1: Sakura's Vengeance
+            SakuraSlashHeaven2: Sakura's Vengeance
+            SakuraSlashVolcano1: Sakura's Vengeance
+            SakuraSlashVolcano2: Sakura's Vengeance
+            Satanael: Satanael
+            SatanaelRound: Satanael
+            ScarletOutburst: Scarlet Outburst
+            ShadowbladeAOE: Shadowblade Indicator
+            ShadowbladeDamage: Shadowblade
+            SkofnungStab: Skofnung
+            SkofnungSummon: Skofnung
+            SkofnungSwing2Projectile: Skofnung
+            SkyBeam: Sky Beam
+            SkyStrikerClaw: Armament of the Sky Striker
+            SkyStrikerMeleeClaw: Sky Striker Claw
+            SkyStrikerRailgun: Armament Of The Sky Striker
+            SkyStrikerRailgunRound: Armament of the Sky Striker
+            SkyStrikerShield: Armament of the Sky Striker
+            SkyStrikerShieldDamage: Armament of the Sky Striker
+            SkyStrikerSwing1: Armament of the Sky Striker
+            SkyStrikerSwing2: Armament of the Sky Striker
+            SolemnConfiteor: Saber AOE Indicator
+            SolemnConfiteorDamage: Solemn Confiteor
+            SoulMarker: Soul Marker
+            SpaceBlot: Space Blot
+            SpaceGeometry: Geometry
+            FleetingSparkBullet: Sparkblossom's Beacon
+            FleetingSparkMinion: Fleeting Spark Minion
+            SparkExplosion: Sparkblossom's Beacon
+            SpatialRip: Spatial Rip
+            BlueStarBit: Luminary Wand
+            GreenStarBit: Luminary Wand
+            OrangeStarBit: Luminary Wand
+            PurpleStarBit: Luminary Wand
+            RedStarBit: Luminary Wand
+            Starchild: Starchild
+            YellowStarBit: Luminary Wand
+            StarfarerFollowUp: Aprismatism
+            Starshield: Starshield
+            SteelTempestSwing: Unforgotten
+            SteelTempestSwing2: Unforgotten
+            SteelTempestSwing3: Unforgotten
+            SteelTempestSwing4: Unforgotten
+            AsphodeneBurst0: Asphodene
+            AsphodeneBurst1: Asphodene
+            AsphodeneBurst2: Asphodene
+            AsphodeneBurst3: Asphodene
+            AsphodeneBurst4: Asphodene
+            AsphodeneBurstFX: AsphodeneFX
+            AsphodeneBurstFX2: AsphodeneFX2
+            EridaniBurst0: Eridani
+            EridaniBurst1: Eridani
+            EridaniBurst2: Eridani
+            EridaniBurst3: Eridani
+            EridaniBurst4: Eridani
+            EridaniBurstFX: EridaniFX
+            EridaniBurstFX2: EridaniFX2
+            GardenOfAvalon: The Garden of Avalon
+            kiwamiryukenconfirm: Kiwami Ryuken
+            kiwamiryukenstun: Kiwami Ryuken Stun
+            Laevateinn: Ars Laevateinn
+            LaevateinnDamage: Ars Laevateinn
+            SpaceBurstFX: NovaFX
+            SpaceBurstFX2: NovaFX2
+            Theofania: Theofania Inanis
+            Theofania2: Theofania Inanis
+            Theofania3: Theofania Inanis
+            StilettoMarker: Yunlai Stiletto
+            StygianSwing1: Stygian Swing
+            StygianSwing2: Stygian Swing
+            StygianSwing3: Stygian Swing
+            StygianSwing4: Stygian Swing
+            MagicCircle: Magic Circle
+            TakodachiMinion: Takodachi Minion
+            TakodachiRound: Takonomicon
+            TakonomiconLaser: Takonomicon Laser
+            Tentacle1: Takonomicon
+            Tentacle2: Takonomicon
+            Tentacle3: Takonomicon
+            TentacleCircle: Tentacle Circle
+            tartagliaShot: Tartaglia
+            tartagliaSwing: Tartaglia
+            TemporalTimepiece: Kroniic Principality
+            TemporalTimepiece2: Kroniic Principality
+            TemporalTimepiece3: Kroniic Principality
+            TheBitterEnd: The Bitter End
+            GuntriggerParryProjectile: The Only Thing I Know For Real
+            TheOnlyThingIKnowForRealGuntrigger: The Only Thing I Know For Real
+            TheOnlyThingIKnowForRealSheathe: The Only Thing I Know For Real
+            TheOnlyThingIKnowForRealSlash: The Only Thing I Know For Real
+            TheOnlyThingIKnowForRealSlash2: The Only Thing I Know For Real
+            TheOnlyThingIKnowForRealSlashVFX: The Only Thing I Know For Real
+            TheOnlyThingIKnowForRealSlashVFX2: The Only Thing I Know For Real
+            TheOnlyThingIKnowForRealSpin: The Only Thing I Know For Real
+            TheOnlyThingIKnowForRealSpin2: The Only Thing I Know For Real
+            ThreadsOfFate: Threads of Fate
+            Titanomachy1: Titanomachy
+            Titanomachy2: Titanomachy
+            TitanomachyDamage: Titanomachy
+            TruesilverSlash: Truesilver Slash
+            AsphodeneBurstC: Asphodene
+            BulletWormhole: Wormhole
+            BulletWormhole2: Wormhole
+            BulletWormhole3: Wormhole
+            EridaniBurstC: Eridani
+            Phase2Ring: Tsukiyomi's Channeling Ring
+            PlanetSlashing: Tsukiyomi's blade
+            PlusPlanet: Unstable Planetoid
+            Starmatter: Starmatter
+            TsukiyomiPlanet: Protoplanet
+            TsukiyomiSlash: Tsukiyomi's blade
+            TsukiyomiStar: Protostar
+            TsukiyomiTeleport: Tsukiyomi
+            TsukiyomiTeleportLong: Tsukiyomi
+            Wormhole: Tsukiyomi's Gateway
+            WormholeLong: Tsukiyomi's Gateway
+            TwinStar1: Twin Stars
+            TwinStar2: Twin Stars
+            TwinStarLaser1: Twin Star Laser1
+            TwinStarLaser2: Twin Star Laser2
+            TwinStarShine1: Twin Stars
+            TwinStarShine2: Twin Stars
+            UltimaStab: Ultima Thule
+            UltimaSwing1: Ultima Thule
+            UltimaSwing2: Ultima Thule
+            RandomPlanetProjectile: Ultima Thule
+            RandomPlanets: Ultima Thule
+            UltimaBurstFX: Ultima Thule
+            UltimaConstellation: Ultima Constellation
+            UltimaFollowUp: Ultima Thule Follow-Up
+            UltimaNightglow: Ultima Thule
+            UltimaPlanet1: Ultima Thule
+            UltimaPlanet2: Ultima Thule
+            UltimaPlanet3: Ultima Thule
+            UltimaPlanet4: Ultima Thule
+            UltimaPlanet5: Ultima Thule
+            UltimaStar: Ultima Thule
+            UltimaStarProjectile: Ultima Thule
+            UltimaStarProjectile2: Ultima Thule
+            UltimaVFX1: Ultima Thule
+            UnforgottenBurst: Unforgotten
+            RetributionAttacks: Vermillion Daemon
+            SpectralArsenalProjectile1: Vermillion Daemon
+            SpectralArsenalProjectile2: Vermillion Daemon
+            SpectralArsenalProjectile3: Vermillion Daemon
+            VermillionBlades: Vermillion Daemon
+            VermillionSlash1: Vermillion Daemon
+            VermillionSlash2: Vermillion Daemon
+            VermillionSlash3: Vermillion Daemon
+            WarpStrike: Vermillion Daemon
+            CelestialVoid: Celestial Void
+            CelestialVoidBack: Celestial Void
+            CelestialVoidburst: Virtue's Edge
+            CelestialVoidVFX: Celestial Void
+            CelestialVoidVFX2: Celestial Void
+            VirtueEdgeSlash1: Virtue's Edge
+            VirtueEdgeSlash2: Virtue's Edge
+            VirtueEdgeSlashVoid: Virtue's Edge
+            VirtueVFX1: Virtue's Edge
+            VirtueVFX2: Virtue's Edge
+            VirtueVFXVoid: Virtue's Edge
+            VoidsentBurst: Voidsent Burst
+            WarriorVFX: The Warrior of Light's Aura
+            WarriorVFX2: The Warrior of Light's Aura
+            WhisperRound: WhisperRound
+            YellowSplatter: Yellow Splatter
+            YellowSplatterDamage: Yellow Splatter Damage
+            YoumuCleave: Konpaku Katana
+            YoumuRound: Konpaku Katana
+            YoumuSpin: Konpaku Katana
+            YoumuSpirit: Youmu Spirit
+            yunlaiSwing: Yunlai Stiletto
+        }
 		
 		BuffName: {
-			Afterburner: Afterburner
-			AfterburnerCooldown: AfterburnerCooldown
-			AmmoRecycle: Cyclic Hunter
-			ArchitectLuminanceBuff: Architect's Luminance
-			ArtificeSirenBuff: Artifice Siren Active
-			BinaryMagnitude: Binary Magnitude
-		}
-		
-		BuffDescription: {
-			Afterburner: 
-			'''
-			All attacks will crit
-			'''
-		}
+            Afterburner: Afterburner
+            AfterburnerCooldown: Afterburner Cooldown
+            AmmoRecycle: Cyclic Hunter
+            AncientBulwark: Ancient Bulwark
+            WebOfNeedles: Web of Needles
+            ArchitectLuminanceBuff: Architect's Luminance
+            ArtificeSirenBuff: Artifice Siren Active
+            ArtificeSirenCooldown: Artifice Siren Cooldown
+            AshenAmbitionActive: Ashen Ambition
+            AshenAmbitionCooldown: Ashen Ambition Cooldown
+            AshenAmbitionEnd: Ashen Ambition
+            AshenAmbitionPrep: Ashen Ambition
+            AshenStrength: Ashen Strength
+            CallOfTheVoid1: Call Of The Void
+            CallOfTheVoid2: Call Of The Void
+            CallOfTheVoid3: Call Of The Void
+            CallOfTheVoid4: Call Of The Void
+            AsphodeneBlessing: "[c/5DC5DE:Astral Resonance]"
+            AstarteDriver: Astarte Driver
+            AstarteDriverEnemyCooldown: Astarte Driver Enemy Cooldown
+            AstarteDriverPrep: Astarte Driver Prep
+            AstralAspect: Astral Attunement
+            AstralAspectBow: Astral Attunement
+            AstralRapture: Astral Rapture
+            BerserkerMode: Berserker Mode
+            BerserkerModeCooldown: Berserker Mode Cooldown
+            BinaryMagnitude: Binary Magnitude
+            BiyomonPetBuff: Digital Pet
+            BladeWillCooldown: Blade Will Cooldown
+            BlastingChargeCooldownBuff: Blasting Charge Cooldown
+            BladeArtDragonCooldown: Blade Art: Dragon Cooldown
+            BladeArtDragonPrepBuff: Blade Art: Dragon
+            BloodBladeBuff: Bloodthirsting Blade
+            BoilingBloodBuff: Boiling Blood
+            BoilingBloodCooldown: Extinguished
+            PowerStrikeBuff: Power Strike
+            BloodOfTheDragon: Blood of the Dragon
+            BloopPetBuff: Bubbled Shark
+            BlueOrb: Blue Orb
+            BluePaint: Blue Paint
+            BossCooldown: Boss Cooldown
+            BossEnemySpawnMod: Overwhelming Presence
+            BubbaPetBuff: Detective Dog
+            Burnout: Burnout
+            ButchersDozen: Butcher's Dozen
+            ButterflyTrance: Butterfly Trance
+            MoonlitCooldown: Moonlit Greatblade Cooldown
+            MoonlitGreatblade: Moonlit Greatblade
+            PrepDarkmoon: Moonlit Greatblade
+            CastFinished: Cast Finished
+            CelestialCacophony: Celestial Cacophony
+            Chemtank1: Dreadnought Chemtank Active
+            Chemtank2: Dreadnought Chemtank Active
+            Chemtank3: Dreadnought Chemtank Active
+            Chemtank4: Dreadnought Chemtank Active
+            Chemtank5: Dreadnought Chemtank Active
+            Chemtank6: Dreadnought Chemtank Active
+            ChemtankBuff: Dreadnought Chemtank
+            ChemtankDashCooldown: Disdain Cooldown
+            ChemtankDefenseBuff: Disdain Defense
+            ClawsOfNyx: Claws of Nyx
+            ComboCooldown: Combo Cooldown
+            CoreOfFlames: Core Of Flames
+            CoreOfFlamesCooldown: Core of Flames Cooldown
+            CosmicConception: Cosmic Conception
+            CosmicConceptionCooldown: Cosmic Conception Cooldown
+            MagitonOverheat: Magiton Overheat
+            Overheated: Overheated
+            CosmicIre: Cosmic Ire
+            CosmicRecoil: Cosmic Recoil
+            CounterSurge: Counter Surge
+            CrimsonDragonetPetBuff: Crimson Dragonet
+            DashInvincibility: Dash Invincibility
+            DeathDefianceCooldown: Death Defiance Cooldown
+            DeepFreeze: Deep Freeze
+            Determination: Shadowbringer
+            DownForTheCount: Down For The Count
+            DreamlikeCharisma: Dreamlike Charisma
+            DuckHuntBirdPetBuff: Hunted Duck
+            DuckHuntDogPetBuff: Duck Hunter
+            Ebb: Ebb
+            EreshkigalPetBuff: Princess of Kur
+            EridaniBlessing: "[c/9F5DDE:Umbral Resonance]"
+            EspeonPetBuff: Mystic Hound
+            AmethystBuff: Amethyst Fragment
+            CeruleanBuff: Cerulean Fragment
+            CitrineBuff: Citrine Fragment
+            ImmemorialSupernova: Immemorial Supernova
+            MalachiteBuff: Malachite Fragment
+            VermillionBuff: Vermillion Fragment
+            EverlastingLight: Light Everlasting
+            EyeOfEuthymiaBuff: Eye of Euthymia
+            FerryPetBuff: Churning Ferry
+            FlashOfEternity: Flash Of Eternity
+            FlashOfEternityCooldown: Flash of Eternity Cooldown
+            Flow: Flow
+            ForceOfNatureReloadBuff: Reload
+            GardenOfAvalon: The Garden of Avalon
+            GatewayBuff: Gateway Open
+            GenocideBuff: Bloodfest
+            GenocideReloadBuff: Reload
+            GhostPet: Futuristic Spectre
+            Glitterglued: Glitterglued
+            GoingSupercriticalCooldown: Going Supercritical Cooldown
+            GreenPaint: Green Paint
+            GuilmonPetBuff: Digital Monster
+            HanakoPetBuff: Mysterious Ghost
+            HonedEdge: Honed Edge
+            HonedEdgeCooldown: Honed Edge Cooldown
+            HopesBrillianceBuff: Hope's Brilliance
+            BracingSong: Bracing Song
+            ChallengerSong: Challenger Song
+            ExpertiseSong: Expertise Song
+            HunterSymphonyCooldown: Hunter's Symphony Cooldown
+            InfernalMelody: Infernal Melody
+            InfernalMelody1: Infernal Melody (1/3)
+            InfernalMelody2: Infernal Melody (2/3)
+            InfernalMelody3: Infernal Melody (3/3)
+            VitalitySong: Vitality Song
+            HuTaoPetBuff: Funeral Director
+            Ignited: Ignited
+            InfernalBleed: Infernal Hemorrhage
+            InfernalEnd: Infernal End
+            InkCooldown: Color Swap Cooldown
+            InnerAlchemy: Inner Alchemy
+            Invincibility: Invincibility
+            Invisibility: Invisible
+            IrysBuff: Fae Nephilim
+            IrysGaze: Irys Gaze
+            JumpCooldown: Jump Cooldown
+            KasumiPetBuff: Starry-Eyed Idol
+            KeyOfChronologyCooldown: Key of Chronology Cooldown
+            AmaterasuGrace: Amaterasu's Grace
+            AmaterasuWinter: Amaterasu's Winter
+            AmaterasuWinterCooldown: Amaterasu's Winter Cooldown
+            KifrosseBuff1: Kifrosse (1 Tail)
+            KifrosseBuff2: Kifrosse (2 Tails)
+            KifrosseBuff3: Kifrosse (3 Tails)
+            KifrosseBuff4: Kifrosse (4 Tails)
+            KifrosseBuff5: Kifrosse (5 Tails)
+            KifrosseBuff6: Kifrosse (6 Tails)
+            KifrosseBuff7: Kifrosse (7 Tails)
+            KifrosseBuff8: Kifrosse (8 Tails)
+            KifrosseBuff9: Kifrosse (9 Tails)
+            StalwartSnow: Stalwart Snow
+            KiwamiRyuken: Kiwami Ryuken
+            KiwamiRyukenConfirm: Kiwami Ryuken Activated
+            KroniicPrincipality: Kroniic Principality
+            KroniicPrincipalityCooldown: Timeframe Cooldown
+            LatchedOn: Latched On
+            LeftDebuff: Leftward Chaos
+            LifeOfTheDragon: Life of the Dragon
+            Lightblessed: Lightblessed
+            LightbreakStrike: Lightbreak Strike
+            LimitBreak: Limit Break
+            LimitBreakCooldown: Limit Break Cooldown
+            LivingDead: Living Dead
+            LivingDeadCooldown: Living Dead Cooldown
+            MajimaPetBuff: Puppy of Shimano
+            MantisCatPetBuff: Cat..?
+            MechanicalPrismBuff: Mechanical Prism
+            EdgeOfAnguish: Edge of Anguish
+            EdgeOfAnguishCooldown: Edge of Anguish Cooldown
+            AlucardSwordBuff1: Alucard's Sword
+            AlucardSwordBuff2: Alucard's Sword
+            AlucardSwordBuff3: Alucard's Sword
+            ArcaneArtCooldown: Arcane Art Cooldown
+            MorningStarHeld: Morning Star
+            MorningStarHit: Morning Star
+            MortalWounds: Mortal Wounds
+            NanitePlague: Nanite Plague
+            NascentAria: Nascent Aria
+            NullRadiance: Null Radiance
+            OceanCulling: Ocean's Culling
+            OmoriPetBuff: Monochrome Plush
+            OrangePaint: Orange Paint
+            AnnihilationState: Annihilation State
+            FinaleDescendsCooldown: Finale Descends Cooldown
+            OzmaAttack: Ascendant Array's Attacks
+            OzmaBuff: Ozma Ascendant
+            PekoraPetBuff: Suspicious Looking Bunny-Girl
+            Petrified: Petrified
+            BladeWolfPetBuff: Blade Wolf
+            GrahaPetBuff: Exarchic Mystel
+            LukaPetBuff: Electronic Vocalist
+            MumeiPetBuff: Guardian of Civilization
+            NecoArcPetBuff: Chaotic Cat-Figure
+            SanaPetBuff: Astrogirl
+            SuiseiPetBuff: Diamond in the Rough
+            PhymPetBuff: Phym
+            PlasmaGrenadeCooldownBuff: Plasma Grenade Cooldown
+            PortalReady: "[c/DE5D5D:Gateway Proximity]"
+            PurplePaint: Purple Paint
+            PyraPetBuff: Aegis
+            Pyretic: Pyretic
+            RagingTidesStance: Raging Tides Stance
+            BlackEnchantment: Black Enchantment
+            Dualcast: Dualcast
+            RedMageCastDelay: Cast Delay
+            RedMageHeldBuff: Duelist's Crimson
+            RedMageStabbing: Redoublement
+            VerfireCasting: Verfire Casting
+            VerstoneCasting: Verstone Casting
+            WhiteEnchantment: White Enchantment
+            RedOrb: Red Orb
+            RedPaint: Red Paint
+            RemoveStationarySpiders: Remove Stationary Spiders!
+            BulwarkOfJade: Bulwark of Jade
+            RightDebuff: Rightward Chaos
+            Riptide: Riptide
+            RobotSpiderBuff: Mechanical Arachnids
+            Ruination: Ruination
+            RyukenStun: Ryuken Stun
+            ElementalChaos: Elemental Chaos
+            SakuraCoolingBuff: Cooling Haze
+            SakuraEarthBuff: Earthsplitter
+            SakuraHeavenBuff: Heavenly Volley
+            SakuraVolcanoBuff: Volcanic Wrath
+            Satanael: Satanael
+            SatedAnguish: Sated Anguish
+            SeabornCooldown: Seaborn Wrath Cooldown
+            SeabornWrath: Seaborn Wrath
+            BloodstainedBelone: Bloodstained Belone
+            SkofnungBuff: Blade of Grudges
+            Shielded: Shielded
+            StrikerAttackBuff: Aerial Forme: Annihilation
+            StrikerMeleeBuff: Aerial Forme: Close Combat
+            StrikerShieldBuff: Aerial Forme: Defender
+            StrikerSniperBuff: Aerial Forme: Railgunner
+            SolemnAegis: Solemn Aegis
+            SoulSapping: Soul Sapping
+            SoulUnbound: Soul Unbound
+            SoulUnboundCooldown: Soul Unbound Cooldown
+            SovereignDominion: Sovereign's Dominion
+            FleetingSparkBuff: Fleeting Spark
+            SpatialBurn: Disintegration
+            Starblight: Starblight
+            LucentBliss: Lucent Bliss
+            StarshieldBuff: Starshield
+            StarshieldCooldown: Starshield Cooldown
+            StellarListener: Stellar Listener
+            StellarOverload: Stellar Overload
+            StellarPerformance: Stellar Performance
+            StellarPerformanceCooldown: Stellar Performance Cooldown
+            StellarSickness: Stellar Sickness
+            Stun: Stun
+            Subduced: Subduced
+            BifrostCooldown: "[c/EFB43E:Bifrost Cooldown]"
+            BleachedWorldTurmoil: "[c/EFB43E:Environmental Turmoil]"
+            CityTurmoil: "[c/EFB43E:Environmental Turmoil]"
+            DeadPlanetTurmoil: "[c/EFB43E:Environmental Turmoil]"
+            DefaultTurmoil: "[c/EFB43E:Environmental Turmoil]"
+            MoonTurmoil: "[c/EFB43E:Environmental Turmoil]"
+            ObservatoryTurmoil: "[c/EFB43E:Environmental Turmoil]"
+            RuinedSpaceshipTurmoil: "[c/EFB43E:Environmental Turmoil]"
+            Superimposed: "[c/3B9FE4:Cosmic Voyager]"
+            SurtrTwilight: Surtr's Twilight
+            ApalistikTagDamage: Apalistik Tag Damage
+            KingTagDamage: King Tag Damage
+            PhantomTagDamage: Phantom Tag Damage
+            SeabornApalistikTagDamage: Seaborn Apalistik Tag Damage
+            TakodachiBuff: Void Octopi
+            TakodachiLaserBuff: Takonomicon Annihilation Beam
+            TakodachiLaserBuffCooldown: Takonomicon Laser Cooldown
+            TheofaniaDualcast: Theofania Dualcast
+            TheofaniaTricast: Theofania Tricast
+            GuntriggerParry: Guntrigger Parry
+            GuntriggerParryCooldown: Guntrigger Parry Cooldown
+            ImpactRecoil: Impact Recoil
+            JetstreamBloodshed: Jetstream Bloodshed
+            PerfectGuntrigger: Perfect Guntrigger
+            TwinStarsBuff: Twin Stars
+            TyphoonPrismCooldown: Typhoon Prism Cooldown
+            Ultima: Edge of the Universe
+            UmbralAspect: Umbral Attunement
+            UmbralAspectBow: Umbral Attunement
+            UmbralAspectDepleted: Umbral Depletion
+            UmbralAspectDepletedBow: Umbral Depletion
+            UmbralRapture: Umbral Rapture
+            UmbreonPetBuff: Mystic Hound
+            UniversalManipulation: Universal Manipulation
+            CrimsonMark: Crimson Mark
+            Retribution: Retribution
+            SpectralArsenal1: Spectral Arsenal
+            SpectralArsenal2: Spectral Arsenal
+            SpectralArsenal3: Spectral Arsenal
+            CelestialVoidBuff: Celestial Void
+            VitchPetBuff: Fox Vixen
+            VoidAtrophy1: Void Atrophy1
+            VoidAtrophy2: Void Atrophy2
+            Voidform: Superimposition
+            VoidStrength: Strength Of The Void
+            VoyageCooldown: Cosmic Voyage Cooldown
+            Vulnerable: Vulnerability Up
+            WarriorEnd: Warrior End
+            WarriorPetBuff: Discount Warrior of Light
+            Wormhole: Wormhole
+            WrathfulCeruleanFlame: Wrathful Cerulean Flame
+            YellowOrb: Yellow Orb
+            YellowPaint: Yellow Paint
+            DeathsDance: Death's Dance
+            PhantomMinion: Phantom Spirit
+            YoumuCooldown: Phantom Slash Cooldown
+            StarchildBuff: Starchild
+        }
+        
+        BuffDescription: {
+            Afterburner: All attacks will crit
+            AfterburnerCooldown: Afterburner will fail to activate if this debuff is present
+            AmmoRecycle: Move much faster and gain 10% increased damage
+            AncientBulwark: Gain 80 defense, but damage is reduced by 40%
+            WebOfNeedles: Summon damage is increased by 30%
+            ArchitectLuminanceBuff: Wielding the might of the Architect
+            ArtificeSirenBuff: A hyperpowered mechanical ally is laying waste to your foes
+            ArtificeSirenCooldown: Artifice Siren will fail to activate if this debuff is present
+            AshenAmbitionActive: ""
+            AshenAmbitionCooldown: Ashen Ambition will fail to activate if this debuff is present
+            AshenAmbitionEnd: ""
+            AshenAmbitionPrep: ""
+            AshenStrength: Long-lost ashes are granting massive buffs to health regeneration and damage
+            CallOfTheVoid1: ""
+            CallOfTheVoid2: ""
+            CallOfTheVoid3: ""
+            CallOfTheVoid4: ""
+            AsphodeneBlessing: ""
+            AstarteDriver: The stars are granting you strength
+            AstarteDriverEnemyCooldown: Enemy only debuff.
+            AstarteDriverPrep: The stars are granting you strength.. in just a second
+            AstralAspect: The Astral Aspect grants 10 extra defense and imbues attacks with the ability to drain Mana from foes at the cost of half your damage
+            AstralAspectBow: The Astral Aspect grants health on firing, dramatic health regeneration once charged, and empowers Umbral Aspect at the cost of half your damage
+            AstralRapture: Gain HP and Invincibility on Asphodene's tiles
+            BerserkerMode: All attacks do more damage
+            BerserkerModeCooldown: When this debuff ends, you will be able to use Berserker Mode again
+            BinaryMagnitude: The radiance of the twin stars is empowered
+            BiyomonPetBuff: A digital pet is following you
+            BladeWillCooldown: Blade Will will fail to activate if this debuff is present
+            BlastingChargeCooldownBuff: Blasting Charge fail to activate if this debuff is present
+            BladeArtDragonCooldown: Blade Art: Dragon will fail to activate if this debuff is present
+            BladeArtDragonPrepBuff: ""
+            BloodBladeBuff: Gain powerful buffs based on missing HP, but life regeneration is disabled
+            BoilingBloodBuff:
+                '''
+                Blazing strength empowers you, granting 30% increased damage, 30 defense, attack speed based on missing HP, and follow-up attacks
+                However, health regeneration is disabled and you are slowly losing HP over time
+                'It's not hot enough here!'
+                '''
+            BoilingBloodCooldown: Unable to activate Boiling Blood
+            PowerStrikeBuff:
+                '''
+                {0}/5 stacks
+                Damage increased by {1}%
+                Defense increased by {2}
+                'Do you hear the roar of this chainsaw?'
+                '''
+            BloodOfTheDragon: The gaze of the first brood grants mastery over the skies, resulting in increased damage and movement speed
+            BloopPetBuff: "'a'"
+            BlueOrb: Preparing 'Lightbreak Strike'
+            BluePaint: You've been covered in blue paint
+            BossCooldown: The boss of the Dying Citadel will fail to spawn with this debuff
+            BossEnemySpawnMod: The powerful foe before you prevents natural enemy spawns
+            BubbaPetBuff: A smart dog is following you
+            Burnout: Stats are halved
+            ButchersDozen: Attack damage and swing speed has been increased
+            ButterflyTrance: Entranced by butterflies, your damage taken is reduced by 50%, you fall slowly, and Veneration of Butterflies has no cost
+            MoonlitCooldown: When this debuff ends, you can use Moonlit Greatblade again
+            MoonlitGreatblade: Otherworldly lunar energy grants you strength, but prevents mana regen
+            PrepDarkmoon: Otherworldly lunar energy grants you strength
+            CastFinished: ""
+            CelestialCacophony: The world braces for stellar impact
+            Chemtank1: ""
+            Chemtank2: ""
+            Chemtank3: ""
+            Chemtank4: ""
+            Chemtank5: ""
+            Chemtank6: ""
+            ChemtankBuff: ""
+            ChemtankDashCooldown: Disdain will fail to activate if this debuff is present
+            ChemtankDefenseBuff: Gain 20 defense
+            ClawsOfNyx: Damage and crit rate is increased
+            ComboCooldown: ""
+            CoreOfFlames: Liberation Blazing is at the apex of its power
+            CoreOfFlamesCooldown: Liberation Blazing will not activate Core of Flames when this debuff is active
+            CosmicConception: Spatial mass is coalescing into the singularity
+            CosmicConceptionCooldown: When this debuff ends, you can use Cosmic Conception again
+            MagitonOverheat: Cosmic Destroyer is imbued with overwhelming strength
+            Overheated: ""
+            CosmicIre: Spatial energy imbues your surroundings
+            CosmicRecoil: Limitless power has its cost
+            CounterSurge: The Xenoblade's charged attack has been drastically empowered
+            CrimsonDragonetPetBuff: A crimson dragonet attends to you
+            DashInvincibility: You will not take damage
+            DeathDefianceCooldown: Death Defiance will fail to activate if this debuff is present
+            DeepFreeze: If you are currently standing still when this buff expires, you will be frozen solid and take damage
+            Determination: Dream now of a dark tomorrow... Damage and defenses have been drastically increased
+            DownForTheCount: The foe before you spreads fear into the deepest recesses of your heart, immobilizing you
+            DreamlikeCharisma: Damage is increased, and increased further at max Mana
+            DuckHuntBirdPetBuff: It seems the name has become outdated
+            DuckHuntDogPetBuff: It seems the name has become outdated
+            Ebb: The rift between worlds robs you of all mana
+            EreshkigalPetBuff: I'll have you know that I'm a proper goddess!
+            EridaniBlessing: ""
+            EspeonPetBuff: A pair of mystic hounds are following you
+            AmethystBuff: Gain 5% increased damage
+            CeruleanBuff: Gain 5% increased damage
+            CitrineBuff: Gain 20 defense and 5% increased damage
+            ImmemorialSupernova: ""
+            MalachiteBuff: Gain 10% increased critical strike chance and 5% increased damage
+            VermillionBuff: Gain 50 armor penetration and 5% increased damage
+            EverlastingLight: Endless light blankets the sky... Foes are empowered and will periodically overflow with Light
+            EyeOfEuthymiaBuff: The vision of lightning is with you
+            FerryPetBuff: A myserious boat is following you
+            FlashOfEternity: The next instance of damage is negated
+            FlashOfEternityCooldown: When this debuff ends, you will be able to use Flash of Eternity again
+            Flow: The rift between worlds grants infinite mana, 40% increased damage, and 20% faster attack speed
+            ForceOfNatureReloadBuff: ""
+            GardenOfAvalon: Periodically heal health and mana with the strength of the Stellar Nova
+            GatewayBuff: Ready to traverse the cosmos
+            GenocideBuff: Speed and crit rate is increased
+            GenocideReloadBuff: ""
+            GhostPet: It refers to you as 'Guardian'
+            Glitterglued: Doused in glitterglue
+            GoingSupercriticalCooldown: Going Supercritical will fail to activate if this debuff is present
+            GreenPaint: You've been covered in green paint
+            GuilmonPetBuff: A digital monster is following you
+            HanakoPetBuff: A mysterious ghost follows you
+            HonedEdge: When reloading with Izanagi's Burden, the next shot will become extraordinarily powerful
+            HonedEdgeCooldown: When this debuff ends, you will be able to use Honed Edge again
+            HopesBrillianceBuff: ""
+            BracingSong: Powerful melodies grant 12 Defense and Knockback Resistance
+            ChallengerSong: Powerful melodies grant 14% increased damage
+            ExpertiseSong: Powerful melodies grant 8% increased critical strike chance
+            HunterSymphonyCooldown: Directional songs will fail to activate if this debuff is present
+            InfernalMelody: Powerful melodies grant 20% increased damage
+            InfernalMelody1: ""
+            InfernalMelody2: ""
+            InfernalMelody3: Right click with the Hunter's Symphony to activate Infernal Melody
+            VitalitySong: Powerful melodies grant 15% increased movement speed
+            HuTaoPetBuff: A miniature funeral director is following you
+            Ignited: Shadowless Cerulean surges forth
+            InfernalBleed: Taking lethal damage over time
+            InfernalEnd: Anger after taking damage has temporarily granted 50% increased damage
+            InkCooldown: Swapping Mystic Pigments will fail to activate if this debuff is present
+            InnerAlchemy: Inner balance has been found, granting 10% increased damage, 25 defense, knockback resistance, and Health Regeneration
+            Invincibility: You can not take incoming damage
+            Invisibility: Can't see this
+            IrysBuff: Corporeal form has changed
+            IrysGaze: Can be crit by minions
+            JumpCooldown: When this debuff ends, you will be able to use Jump again
+            KasumiPetBuff: A starry-eyed idol is following you
+            KeyOfChronologyCooldown: Key of Chronology will fail to activate if this debuff is present
+            AmaterasuGrace: Mystic energy grants effective damage against foes inflicted with frostburn
+            AmaterasuWinter: Mystic energy empowers the Blizzard Foxfires
+            AmaterasuWinterCooldown: Amaterasu's Winter will fail to activate if this debuff is present
+            KifrosseBuff1: Mystic energy chills the air around you
+            KifrosseBuff2: Mystic energy chills the air around you
+            KifrosseBuff3: Mystic energy chills the air around you
+            KifrosseBuff4: Mystic energy chills the air around you
+            KifrosseBuff5: Mystic energy chills the air around you
+            KifrosseBuff6: Mystic energy chills the air around you
+            KifrosseBuff7: Mystic energy chills the air around you
+            KifrosseBuff8: Mystic energy chills the air around you
+            KifrosseBuff9: Mystic energy chills the air around you
+            StalwartSnow: Proximity to the Foxfrost Mystic grants increased defense
+            KiwamiRyuken: You are preparing a deadly counterattack
+            KiwamiRyukenConfirm: Get dunked on!
+            KroniicPrincipality: You wield the twin blades of Time
+            KroniicPrincipalityCooldown: Kroniic Principality's Timeframe will fail to activate if this debuff is present
+            LatchedOn: Spider is on you
+            LeftDebuff: When this buff expires, you will be flung left
+            LifeOfTheDragon: The strengthened gaze of the first brood grants mastery over the skies, resulting in increased damage, critical rate, lifesteal, and movement speed
+            Lightblessed: The endless light grants you defense
+            LightbreakStrike: Melee attacks will always crit
+            LimitBreak: All limits are being surpassed, directly turning health into mana and granting a drastic increase to the strength of magical attacks
+            LimitBreakCooldown: When this debuff ends, you will be able to use Limit Break again
+            LivingDead: Dark magic keeps you from death; if you are not healed to 150 HP before Living Dead ends, you will die
+            LivingDeadCooldown: Living Dead will fail to activate if this debuff is present
+            MajimaPetBuff: Kiryu-chan!!
+            MantisCatPetBuff: It brought a friend
+            MechanicalPrismBuff: ""
+            EdgeOfAnguish: ""
+            EdgeOfAnguishCooldown: When this debuff ends, you can use Edge of Anguish again
+            AlucardSwordBuff1: A powerful blade is aiding you
+            AlucardSwordBuff2: A powerful blade is aiding you
+            AlucardSwordBuff3: A powerful blade is aiding you
+            ArcaneArtCooldown: Arcane Art will fail to activate if this debuff is present
+            MorningStarHeld: ""
+            MorningStarHit: ""
+            MortalWounds: Losing life
+            NanitePlague: Losing life
+            NascentAria: Resolve at world's demise is drastically improving maximum health
+            NullRadiance: Your light has gone dim, reducing outgoing damage by half
+            OceanCulling: Weakened
+            OmoriPetBuff: A monochrome plush is following you
+            OrangePaint: You've been covered in orange paint
+            AnnihilationState: ""
+            FinaleDescendsCooldown: Finale Descends will fail to activate if this debuff is present
+            OzmaAttack: ""
+            OzmaBuff: ""
+            PekoraPetBuff: HA ^ HA v HA ^ HA v HA
+            Petrified: Stuck
+            BladeWolfPetBuff: The blade wolf attends you
+            GrahaPetBuff: He wants to go on an adventure together
+            LukaPetBuff: An electronic vocalist is following you
+            MumeiPetBuff: She forgor
+            NecoArcPetBuff: ???
+            SanaPetBuff: Without the limiter, she'd cover the whole screen
+            SuiseiPetBuff: Don't ask about the axe
+            PhymPetBuff: Phym is following you
+            PlasmaGrenadeCooldownBuff: Plasma Grenade fail to activate if this debuff is present
+            PortalReady: Use the Bifrost to return from where you came
+            PurplePaint: You've been covered in purple paint
+            PyraPetBuff: Keep this up, and we'll win for sure!
+            Pyretic: If you are currently moving when this buff expires, you will be lit on fire and take damage
+            RagingTidesStance: Tartaglia's attacks have been changed to melee
+            BlackEnchantment: Attacks are changed, cast instantly, and consume Mana Stacks
+            Dualcast: Next attack will be executed without delay
+            RedMageCastDelay: ""
+            RedMageHeldBuff: Exhibiting proficiency in maiming and mending
+            RedMageStabbing: ""
+            VerfireCasting: ""
+            VerstoneCasting: ""
+            WhiteEnchantment: Attacks are changed, cast instantly, and consume Mana Stacks
+            RedOrb: Preparing 'Flickering Strike'
+            RedPaint: You've been covered in red paint
+            RemoveStationarySpiders: ""
+            BulwarkOfJade: Gain 30 defense
+            RightDebuff: When this buff expires, you will be flung right
+            Riptide: Weakened
+            RobotSpiderBuff: The mechanical arachnids aid you
+            Ruination: You matter so little!
+            RyukenStun: Ow.
+            ElementalChaos: ""
+            SakuraCoolingBuff: ""
+            SakuraEarthBuff: ""
+            SakuraHeavenBuff: ""
+            SakuraVolcanoBuff: ""
+            Satanael: "'You would slay gods to protect the justice you believe in...'"
+            SatedAnguish: The detriments of Lucifer's Bargain have been negated... for now
+            SeabornCooldown: Seaborn Wrath will fail to activate if this debuff is present
+            SeabornWrath: The ocean currents grant your minions extra damage and your weapon is strengthened
+            BloodstainedBelone: Damage has been increased by 10%
+            SkofnungBuff: The Blade of Grudges serves you
+            Shielded: An ally is granting you increased defenses
+            StrikerAttackBuff: ""
+            StrikerMeleeBuff: ""
+            StrikerShieldBuff: ""
+            StrikerSniperBuff: ""
+            SolemnAegis: The next instance of damage is ignored
+            SoulSapping: Nalhaun is draining your soul; if the Soul Gauge drops to zero, you'll die
+            SoulUnbound: You have let go of your mortal form, gaining Movement Speed
+            SoulUnboundCooldown: When this debuff ends, you will be able to use Soul Unbound again
+            SovereignDominion: You matter so little!
+            FleetingSparkBuff: Static electricity arcs from your minions
+            SpatialBurn: Touched by the vacuum of space
+            Starblight: Taking powerful damage over time
+            LucentBliss: Faerie luck has blessed you, increasing maximum Luck and granting Luck
+            StarshieldBuff: A stellar barrier protects you, granting 10% of Max HP as defense as well as 20% increased damage
+            StarshieldCooldown: Starshield will fail to activate if this debuff is present
+            StellarListener: The nearby performance invigorates you, granting an increase to damage, mana regeneration, and health regeneration
+            StellarOverload: The Stellar Array is above capacity, reducing damage by half and defense to 0
+            StellarPerformance: Your performance invigorates you, granting substantial increases to damage and movement speed
+            StellarPerformanceCooldown: When this debuff ends, you will be able to use Stellar Performance again
+            StellarSickness: Attack and defenses are halved as you adjust to your newfound strength
+            Stun: Stuck
+            Subduced: Offensive and defensive stats are halved
+            BifrostCooldown: ""
+            BleachedWorldTurmoil:
+                '''
+                Exploring a planet bleached clean of ambient energy
+                Natural life regeneration is disabled
+                Below 100 HP, you become Slowed
+                '''
+            CityTurmoil:
+                '''
+                Exploring a bustling futuristic cityscape
+                Defenses increased by 10
+                Above 400 HP, gain an extra 10 defense
+                Fall damage is negated
+                '''
+            DeadPlanetTurmoil:
+                '''
+                Exploring a planet long lost
+                Max Life is reduced by 80
+                Mana can not regenerate naturally
+                Defense is increased by 25
+                '''
+            DefaultTurmoil:
+                '''
+                Exploring ruins adrift in the great unknown
+                No special modifiers are active
+                '''
+            MoonTurmoil:
+                '''
+                Temporarily transposed to an orbiting celestial body
+                Defenses have been reduced by 50
+                Outgoing damage is reduced by 20%
+                '''
+            ObservatoryTurmoil:
+                '''
+                Exploring a structure of great import to the Starfarers
+                Aspected Weapons deal double damage
+                '''
+            RuinedSpaceshipTurmoil:
+                '''
+                Exploring derelict, unknown ruins
+                Defense is reduced by 50
+                Mana regeneration is drastically increased
+                '''
+            Superimposed:
+                '''
+                Corporeal body is transposed into the sea of stars
+                The following actions have been restricted:
+                Building, mining, mounts, explosives, flying, and the Rod of Discord
+                Abilities that scale with world progression have reverted to initial values
+                '''
+            SurtrTwilight: All attacks will burn foes
+            ApalistikTagDamage: ""
+            KingTagDamage: ""
+            PhantomTagDamage: ""
+            SeabornApalistikTagDamage: ""
+            TakodachiBuff: The void octopi surround you
+            TakodachiLaserBuff: ""
+            TakodachiLaserBuffCooldown: Takonomicon's laser will fail to activate if this debuff is present
+            TheofaniaDualcast: You are able to cast Theofania Inanis again without cost
+            TheofaniaTricast: You are able to cast Theofania Inanis yet again without cost at limited power
+            GuntriggerParry: ""
+            GuntriggerParryCooldown: Guntrigger Parry will fail to activate if this debuff is present
+            ImpactRecoil: Guntrigger Execution has halved damage
+            JetstreamBloodshed:
+                '''
+                Damage is increased by 30% until damage is taken
+                Increased to 50% at 100 HP or below
+                '''
+            PerfectGuntrigger: ""
+            TwinStarsBuff: Twin stars radiate near you
+            TyphoonPrismCooldown: Typhoon Prism's ability will not activate when this debuff is active
+            Ultima: Blade in hand, etched in fate
+            UmbralAspect: The Umbral Aspect grants extra attack and speed and allows for astral destruction at the cost of constant Mana drain
+            UmbralAspectBow: The Umbral Aspect grants extra attack and critical chance based on Astral Attunement's charges and allows for astral destruction at the cost of constant health and mana drain
+            UmbralAspectDepleted: The Umbral Aspect has drained your energy; Swap to Astral Aspect to recover
+            UmbralAspectDepletedBow: The Umbral Aspect has drained your energy; Swap to Astral Aspect to recover
+            UmbralRapture: Gain HP and Invincibility when on Eridani's tiles
+            UmbreonPetBuff: A pair of mystic hounds are following you
+            UniversalManipulation: Cosmos are in flux
+            CrimsonMark: ""
+            Retribution: Firing a barrage of spectral weapons
+            SpectralArsenal1: ""
+            SpectralArsenal2: ""
+            SpectralArsenal3: ""
+            CelestialVoidBuff: You have torn a rift in spacetime!
+            VitchPetBuff: She'll kill you and charge extra for disposal
+            VoidAtrophy1: Weakened
+            VoidAtrophy2: Weakened
+            Voidform: Corporeal form has transcended dimensions, granting invincibility and drastic life regen but preventing movement
+            VoidStrength: Damage is increased drastically
+            VoyageCooldown:
+                '''
+                Once this debuff expires, you can initiate a Cosmic Voyage again
+                Alternatively, ask a friend to initiate one
+                '''
+            Vulnerable: Your defenses are drastically reduced
+            WarriorEnd: ""
+            WarriorPetBuff: I will transcend you!
+            Wormhole: ""
+            WrathfulCeruleanFlame: Attacks from Shadowless Cerulean pierce armor and crit
+            YellowOrb: Preparing 'Dazzling Strike'
+            YellowPaint: You've been covered in yellow paint
+            DeathsDance: A graze with death has granted you strength
+            PhantomMinion: A phantom spirit is attacking foes
+            YoumuCooldown: When this buff expires, you can use Phantom Slash again
+            StarchildBuff: The starchild is aiding you
+        }
 		
 		RecipeConditions: {
 			
