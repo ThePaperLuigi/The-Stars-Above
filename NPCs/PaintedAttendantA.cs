@@ -23,7 +23,7 @@ namespace StarsAbove.NPCs
 			// We can use AddRange instead of calling Add multiple times in order to add multiple items at once
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 
-				new FlavorTextBestiaryInfoElement("Utilized by Penthesilea to... smack you in the face. The best mages know when physical violence is the answer.")
+				new FlavorTextBestiaryInfoElement($"Mods.StarsAbove.Bestiary.{Name}")
 			});
 		}
 		public override void SetDefaults() {

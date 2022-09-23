@@ -167,9 +167,7 @@ namespace StarsAbove.NPCs
             // We can use AddRange instead of calling Add multiple times in order to add multiple items at once
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 
-                new FlavorTextBestiaryInfoElement("An incredibly powerful mage, the Painted Witch once ruled a planet entirely 'drawn' by her. " +
-                "Ever the trickster, she mastered expert magecraft simply to play pranks upon the works of her colleagues, a testament to her ingenuity.  " +
-                "She met her end at the hands of the First Starbearer after a long conflict.")
+                new FlavorTextBestiaryInfoElement($"Mods.StarsAbove.Bestiary.{Name}")
             });
         }
         public override void ModifyNPCLoot(NPCLoot npcLoot)

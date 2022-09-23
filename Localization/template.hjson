@@ -32,6 +32,11 @@ Mods: {
 				Tooltip: You will no longer recieve Starfarer Prompts for killing foes, etc.
 			}
 			
+			StarfarerPromptCooldown: {
+			    Label: Starfarer Prompt Cooldown
+			    Tooltip: The time between Starfarer Prompts in minutes. If a trigger for a prompt occurs during this time, it is ignored. Does not apply to unique prompts (Bosses, etc.)
+			}
+			
 			DialogueScrollValue: {
 				Label: Starfarer Text Speed
 				Tooltip: The time for dialogue text to increment in frames. Below 2, it is recommended to disable dialogue sound effects.
@@ -67,10 +72,40 @@ Mods: {
 				Tooltip: Disables voice lines for Asphodene and Eridani during Stellar Novas. (Courtesy of 15.ai)
 			}
 			
+			EnableMusicOverride: {
+                Label: Weapon music overrides all other music
+                Tooltip: When enabled, weapons that change the game's music will have priority over nearly everything else.
+            }
+            
+            EnablePlayerWorldLock: {
+                Label: Enable Player Progress World Lock
+                Tooltip: Enables character progression being tied to the first world they joined.
+            }
+			
 			EnableAprilFools: {
 				Label: Enable April Fools mode
 				Tooltip: Adds radical sunglasses to Asphodene and Eridani in the Starfarer menu and during Stellar Novas.
 			}
+			
+			DisableTypePenalty: {
+                Label: Disable damage penalty for Aspected Damage modification
+                Tooltip: 10% damage penalty when Aspected Damage modification is enabled is removed.
+            }
+            
+            DisableCalamityWeaponBuffs: {
+                Label: Disable global damage modifiers for mod compatibility
+                Tooltip: Disables the 20% increase to Aspected Weapon damage when the Calamity Mod is enabled.
+            }
+            
+            DisableWeaponRestrictions: {
+                Label: Disable Aspected Weapon restrictions
+                Tooltip: Disables the restriction for Astral and Umbral weapons being wielded by other players.
+            }
+            
+            CombatTimer: {
+                Label: Combat Timer
+                Tooltip: When striking a foe or getting struck, this is the time in seconds you are 'in combat.' Affects Stellar Nova gauge and using the Starfarer Menu.
+            }
 		}
 		
 		Common: {
@@ -3763,17 +3798,90 @@ Mods: {
             YoumuCooldown: When this buff expires, you can use Phantom Slash again
             StarchildBuff: The starchild is aiding you
         }
+        
+        BossChecklist: {
+            WarriorOfLight: {
+                SpawnInfo: Dispel the unending Light through defeating this foe, summoned with your Starfarer's help from the Moon Lord's corpse. (The Vagrant of Space and Time must have been defeated.)
+                DespawnMessage: The Flood of Light has consumed all...
+            }
+            
+            VagrantOfSpaceAndTime: {
+                SpawnInfo: Defeat this strange foe through the Shattered Disk, obtained from the Wall of Flesh. This fight will be critical to progression later!
+                DespawnMessage: Space and time return to normal...
+            }
+            
+            Nalhaun: {
+                SpawnInfo: Confront this aged monarch with the Ancient Shard, given to you by your Starfarer after any Mechanical Boss is defeated. (The Vagrant of Space and Time must have been defeated.)
+                DespawnMessage: The king's crimson blade rings true yet again...
+            }
+            
+            Penthesilea: {
+                SpawnInfo: Face this fearsome foe with the Unsullied Canvas, given to you by your Starfarer after Plantera is bested. (The Vagrant of Space and Time must have been defeated.)
+                DespawnMessage: You have been splattered away...
+            }
+            
+            Arbitration: {
+                SpawnInfo: This foe embodies true fear... Obtain the Crux from your Starfarer after Golem is defeated. (The Vagrant of Space and Time must have been defeated.)
+                DespawnMessage: Chaos and order intertwined hath consumed you whole.
+            }
+            
+            Tsukiyomi2: {
+                SpawnInfo: The time has finally come. Craft all the Mnemonic Traces together to create the Mnemonic Sigil, and use it within the Observatory Hyperborea to be taken to Tsukiyomi's boss arena.
+                DespawnMessage: ...
+            }
+        }
 		
 		RecipeConditions: {
 			
 		}
 		
 		Bestiary: {
-			
+		    Arbitration: A mysterious figure, said to exhibit balance throughout the galaxy. Little is known about this enemy... Was rent asunder by the First Starbearer.
+			AstralCell: A strange blue object summoned by the Vagrant of Space and Time. It eats water vapor.
+			Nalhaun: A once mighty monarch, cursed to live eternally even as his kingdom crumbed around him. The ability to conjure forth powerful monsters was gifted to him by his final retainer ere she breathed her last. He persisted alone on an empty planet until the First Starbearer ended his long and tragic reign.
+			PaintedAttendantA: Utilized by Penthesilea to... smack you in the face. The best mages know when physical violence is the answer.
+			Penthesilea: An incredibly powerful mage, the Painted Witch once ruled a planet entirely 'drawn' by her. Ever the trickster, she mastered expert magecraft simply to play pranks upon the works of her colleagues, a testament to her ingenuity. She met her end at the hands of the First Starbearer after a long conflict.
+			PrismLoot: The latent magical energy of Prismatic Cores can sometimes influence them to drift around the galaxy. Catch one, and you'll be rewarded!
+			SpectreOfLight: An otherworldy hero, summoned forth by the First Starbearer to assail this land.
+			Tsukiyomi2: The First Starfarer, Tsukiyomi, who holds dominion over orbiting celestial bodies. The gravitational pull of a planet and its natural satellites gives her power. She led the Warrior of Light astray- using his strength and goodwill to conquer and destroy myriad stars... and yet...
+			VagrantOfSpaceAndTime: The enigmatic Starfarer Perseus. His outward appearance is that of utmost confidence... but he's just kind of a dork trying to look cool. His sisters agree on this.
+			WarriorOfLight: The Warrior of Light, or the First Starbearer, once championed justice in the galaxy through his actions, and the aid of his Starfarer. He once ruled a peaceful world, but was forced to watch helplessly as his people met their demise, vowing to never again let others share the same fate- no matter the cost.
+		}
+		
+		Prefix: {
+		    NovaPrefix1: {
+		        $parentVal: Bright
+		        Tooltip: "[c/FEE267:+2 Stellar Nova Energy regeneration]"
+		    }
+
+		    NovaPrefix2: {
+		        $parentVal: Glowing
+		        Tooltip: "[c/FEE267:+4 Stellar Nova Energy regeneration]"
+		    }
+		    NovaPrefix3: {
+		        $parentVal: Luminous
+		        Tooltip: "[c/FEE267:+6 Stellar Nova Energy regeneration]"
+		    }
+		    NovaPrefix4: {
+		        $parentVal: Radiant
+		        Tooltip: "[c/FEE267:+8 Stellar Nova Energy regeneration]"
+		    }
+		    BadNovaPrefix1: {
+		        $parentVal: Bleak
+		        Tooltip: "[c/93917C:-2 Stellar Nova Energy regeneration]"
+		    }
+		    BadNovaPrefix2: {
+		        $parentVal: Lightless
+		        Tooltip: "[c/93917C:-4 Stellar Nova Energy regeneration]"
+		    }
 		}
 		
 		BiomeName: {
-			
+			BleachedWorldBiome: The Sea of Stars
+			CityBiome: City
+			MoonBiome: The Moon
+			ObservatoryBiome: The Observatory
+			SeaOfStarsBiome: The Sea of Stars
 		}
 
 		

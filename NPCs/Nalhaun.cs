@@ -166,9 +166,7 @@ namespace StarsAbove.NPCs
             // We can use AddRange instead of calling Add multiple times in order to add multiple items at once
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 
-                new FlavorTextBestiaryInfoElement("A once mighty monarch, cursed to live eternally even as his kingdom crumbed around him. " +
-                "The ability to conjure forth powerful monsters was gifted to him by his final retainer ere she breathed her last. " +
-                "He persisted alone on an empty planet until the First Starbearer ended his long and tragic reign.")
+                new FlavorTextBestiaryInfoElement($"Mods.StarsAbove.Bestiary.{Name}")
             });
         }
         public override void ModifyNPCLoot(NPCLoot npcLoot)

@@ -175,10 +175,7 @@ namespace StarsAbove.NPCs
         {
             // We can use AddRange instead of calling Add multiple times in order to add multiple items at once
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-                new FlavorTextBestiaryInfoElement("The Warrior of Light, or the First Starbearer, once championed justice in the galaxy through his actions," +
-                " and the aid of his Starfarer. He once ruled a peaceful world," +
-                " but was forced to watch helplessly as his people met their demise," +
-                " vowing to never again let others share the same fate- no matter the cost.")
+                new FlavorTextBestiaryInfoElement($"Mods.StarsAbove.Bestiary.{Name}")
             });
         }
         public override void ModifyNPCLoot(NPCLoot npcLoot)

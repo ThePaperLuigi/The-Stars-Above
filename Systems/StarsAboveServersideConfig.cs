@@ -34,24 +34,24 @@ namespace StarsAbove
 		//public new string Name => "Stars Above Config (Server)";
 		public override ConfigScope Mode => ConfigScope.ServerSide;
 
-		[Label("Disable damage penalty for Aspected Damage modification")]
-		[Tooltip("10% damage penalty when Aspected Damage modification is enabled is removed.")]
+		[Label("$Mods.StarsAbove.Config.DisableTypePenalty.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.DisableTypePenalty.Tooltip")]
 		public bool DisableTypePenalty;
 
-		[Label("Disable global damage modifiers for mod compatibility")]
-		[Tooltip("Disables the 20% increase to Aspected Weapon damage when the Calamity Mod is enabled.")]
+		[Label("$Mods.StarsAbove.Config.DisableCalamityWeaponBuffs.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.DisableCalamityWeaponBuffs.Tooltip")]
 		public bool DisableCalamityWeaponBuffs;
 
-		[Label("Disable Aspected Weapon restrictions")]
-		[Tooltip("Disables the restriction for Astral and Umbral weapons being wielded by other players.")]
+		[Label("$Mods.StarsAbove.Config.DisableWeaponRestrictions.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.DisableWeaponRestrictions.Tooltip")]
 		public bool DisableWeaponRestrictions;
 
 		[Increment(1)]
 		[Range(5, 60)]
 		[DefaultValue(15)]
 		[Slider] // The Slider attribute makes this field be presented with a slider rather than a text input. The default ticks is 1.
-		[Label("Combat Timer")]
-		[Tooltip("When striking a foe or getting struck, this is the time in seconds you are 'in combat.' Affects Stellar Nova gauge and using the Starfarer Menu.")]
+		[Label("$Mods.StarsAbove.Config.CombatTimer.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.CombatTimer.Tooltip")]
 		public int CombatTimer;
 
 

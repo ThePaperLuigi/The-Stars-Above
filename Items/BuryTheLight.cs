@@ -65,7 +65,7 @@ namespace StarsAbove.Items
 			{
 				if (tooltip != -1)
 				{
-					tooltips.Insert(++tooltip, new TooltipLine(Mod, $"{Mod.Name}:Tooltip12", LangHelper.GetTextValue("ItemTooltip.BuryTheLight.Calamity")));
+					tooltips.Insert(++tooltip, new TooltipLine(Mod, $"{Mod.Name}:Tooltip12", LangHelper.GetTextValue($"ItemTooltip.{Name}.Calamity")));
 				}
 			}
 		}

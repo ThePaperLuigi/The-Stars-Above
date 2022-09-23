@@ -184,11 +184,7 @@ namespace StarsAbove.NPCs
             // We can use AddRange instead of calling Add multiple times in order to add multiple items at once
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 
-                new FlavorTextBestiaryInfoElement("The First Starfarer, Tsukiyomi, who holds dominion over orbiting celestial bodies. " +
-                "The gravitational pull of a planet and its natural satellites gives her power. " +
-                "She led the Warrior of Light astray- " +
-                "using his strength and goodwill to " +
-                "conquer and destroy myriad stars... and yet...")
+                new FlavorTextBestiaryInfoElement($"Mods.StarsAbove.Bestiary.{Name}")
             });
         }
         public override void SetStaticDefaults()
