@@ -27,6 +27,7 @@ using Terraria.UI;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.SceneEffects.CustomSkies;
 using ReLogic.Content;
+using StarsAbove.Utilities;
 
 namespace StarsAbove
 {
@@ -155,85 +156,85 @@ namespace StarsAbove
 				bossChecklist.Call(
 					"AddBoss", //Entry Type
 					this, //Mod Instance
-					"The Warrior of Light", //Boss Name
+					"$Mods.StarsAbove.NPCName.WarriorOfLight", //Boss Name
 					ModContent.NPCType<NPCs.WarriorOfLight>(), //Boss ID
 					18.5f, //Progression
 					(Func<bool>)(() => DownedBossSystem.downedWarrior), //Downed boolean
 					() => true, //Availability
 					new List<int> { ModContent.ItemType<Items.Prisms.PrismOfTheRuinedKing>(), ModContent.ItemType<Items.Prisms.PrismOfTheCosmicPhoenix>(), ModContent.ItemType<Items.Materials.DullTotemOfLight>(), ModContent.ItemType<Items.Materials.TotemOfLightEmpowered>() },//Collection
 					ModContent.ItemType<Items.Consumables.ProgenitorWish>(),//Spawn Item
-					"Dispel the unending Light through defeating this foe, summoned with your Starfarer's help from the Moon Lord's corpse. (The Vagrant of Space and Time must have been defeated.)", //Spawn Item
-					"The Flood of Light has consumed all..." //Despawn Message
+					"$Mods.StarsAbove.BossChecklist.WarriorOfLight.SpawnInfo", //Spawn Item
+					"$Mods.StarsAbove.BossChecklist.WarriorOfLight.DespawnMessage" //Despawn Message
 					); //Boss Portrait
 
 				bossChecklist.Call(
 					"AddBoss", //Entry Type
 					this, //Mod Instance
-					"The Vagrant of Space and Time", //Boss Name
+					"$Mods.StarsAbove.NPCName.VagrantOfSpaceAndTime", //Boss Name
 					ModContent.NPCType<NPCs.VagrantOfSpaceAndTime>(), //Boss ID
 					7.1f, //Progression
 					(Func<bool>)(() => DownedBossSystem.downedVagrant), //Downed boolean
 					() => true, //Availability
 					new List<int> { ModContent.ItemType<Items.Materials.EnigmaticDust>(), ModContent.ItemType<Items.Prisms.SpatialPrism>() },//Collection
 					ModContent.ItemType<Items.Consumables.ShatteredDisk>(),//Spawn Item
-					"Defeat this strange foe through the Shattered Disk, obtained from the Wall of Flesh. This fight will be critical to progression later!", //Spawn Item
-					"Space and time return to normal..." //Despawn Message
+					"$Mods.StarsAbove.BossChecklist.VagrantOfSpaceAndTime.SpawnInfo", //Spawn Item
+					"$Mods.StarsAbove.BossChecklist.VagrantOfSpaceAndTime.DespawnMessage" //Despawn Message
 					); //Boss Portrait
 
 				bossChecklist.Call(
 					"AddBoss", //Entry Type
 					this, //Mod Instance
-					"Nalhaun, the Burnished King", //Boss Name
+					"$Mods.StarsAbove.NPCName.Nalhaun", //Boss Name
 					ModContent.NPCType<NPCs.Nalhaun>(), //Boss ID
 					11.5f, //Progression
 					(Func<bool>)(() => DownedBossSystem.downedNalhaun), //Downed boolean
 					() => true, //Availability
 					new List<int> { ModContent.ItemType<Items.Prisms.BurnishedPrism>() },//Collection
 					ModContent.ItemType<Items.Consumables.AncientShard>(),//Spawn Item
-					"Confront this aged monarch with the Ancient Shard, given to you by your Starfarer after any Mechanical Boss is defeated. (The Vagrant of Space and Time must have been defeated.)", //Spawn Item
-					"The king's crimson blade rings true yet again..." //Despawn Message
+					"$Mods.StarsAbove.BossChecklist.Nalhaun.SpawnInfo", //Spawn Item
+					"$Mods.StarsAbove.BossChecklist.Nalhaun.DespawnMessage" //Despawn Message
 					); //Boss Portrait
 
 				bossChecklist.Call(
 					"AddBoss", //Entry Type
 					this, //Mod Instance
-					"Penthesilea, the Witch of Ink", //Boss Name
+					"$Mods.StarsAbove.NPCName.Penthesilea", //Boss Name
 					ModContent.NPCType<NPCs.Penthesilea>(), //Boss ID
 					12.5f, //Progression
 					(Func<bool>)(() => DownedBossSystem.downedPenth), //Downed boolean
 					() => true, //Availability
 					new List<int> {ModContent.ItemType<Items.Prisms.PaintedPrism>() },//Collection
 					ModContent.ItemType<Items.Consumables.UnsulliedCanvas>(),//Spawn Item
-					"Face this fearsome foe with the Unsullied Canvas, given to you by your Starfarer after Plantera is bested. (The Vagrant of Space and Time must have been defeated.)", //Spawn Item
-					"You have been splattered away..." //Despawn Message
+					"$Mods.StarsAbove.BossChecklist.Penthesilea.SpawnInfo", //Spawn Item
+					"$Mods.StarsAbove.BossChecklist.Penthesilea.DespawnMessage" //Despawn Message
 					); //Boss Portrait
 
 				bossChecklist.Call(
 					"AddBoss", //Entry Type
 					this, //Mod Instance
-					"Arbitration", //Boss Name
+					"$Mods.StarsAbove.NPCName.Arbitration", //Boss Name
 					ModContent.NPCType<NPCs.Arbitration>(), //Boss ID
 					15.5f, //Progression
 					(Func<bool>)(() => DownedBossSystem.downedArbiter), //Downed boolean
 					() => true, //Availability
 					new List<int> { ModContent.ItemType<Items.Prisms.VoidsentPrism>() },//Collection
 					ModContent.ItemType<Items.Consumables.DemonicCrux>(),//Spawn Item
-					"This foe embodies true fear... Obtain the Crux from your Starfarer after Golem is defeated. (The Vagrant of Space and Time must have been defeated.)", //Spawn Item
-					"Chaos and order intertwined hath consumed you whole." //Despawn Message
+					"$Mods.StarsAbove.BossChecklist.Arbitration.SpawnInfo", //Spawn Item
+					"$Mods.StarsAbove.BossChecklist.Arbitration.DespawnMessage" //Despawn Message
 					); //Boss Portrait
 
 				bossChecklist.Call(
 					"AddBoss", //Entry Type
 					this, //Mod Instance
-					"Tsukiyomi, the First Starfarer", //Boss Name
+					"$Mods.StarsAbove.NPCName.Tsukiyomi2", //Boss Name
 					ModContent.NPCType<NPCs.Tsukiyomi2>(), //Boss ID
 					18.9f, //Progression
 					(Func<bool>)(() => DownedBossSystem.downedTsuki), //Downed boolean
 					(Func<bool>)(() => DownedBossSystem.downedWarrior), //Availability
 					new List<int> { ModContent.ItemType<Items.Consumables.SpatialMemoriam>() },//Collection
 					ModContent.ItemType<Items.Consumables.MnemonicSigil>(),//Spawn Item
-					"The time has finally come. Craft all the Mnemonic Traces together to create the Mnemonic Sigil, and use it within the Observatory Hyperborea to be taken to Tsukiyomi's boss arena.", //Spawn Item
-					"..." //Despawn Message
+					"$Mods.StarsAbove.BossChecklist.Tsukiyomi2.SpawnInfo", //Spawn Item
+					"$Mods.StarsAbove.BossChecklist.Tsukiyomi2.DespawnMessage" //Despawn Message
 					); //Boss Portrait
 
 			}

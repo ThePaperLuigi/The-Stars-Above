@@ -30,7 +30,7 @@ namespace StarsAbove.NPCs
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 
 				
-				new FlavorTextBestiaryInfoElement("The latent magical energy of Prismatic Cores can sometimes influence them to drift around the galaxy. Catch one, and you'll be rewarded!")
+				new FlavorTextBestiaryInfoElement($"Mods.StarsAbove.Bestiary.{Name}")
 			});
 		}
 

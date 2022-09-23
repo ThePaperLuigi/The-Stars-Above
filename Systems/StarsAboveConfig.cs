@@ -34,56 +34,56 @@ namespace StarsAbove
 		
 		public override ConfigScope Mode => ConfigScope.ClientSide;
 
-		[Label("Disable Stellar Nova cut-ins")]
-		[Tooltip("Disables the portrait of your Starfarer when activating your Stellar Nova.")]
+		[Label("$Mods.StarsAbove.Config.DisableStellarNovaCutIns.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.DisableStellarNovaCutIns.Tooltip")]
 		public bool DisableStellarNovaCutIns;
 
-		[Label("Disable Stellar Nova dialogue box")]
-		[Tooltip("Disables the dialogue box during the Stellar Nova cut-in.")]
+		[Label("$Mods.StarsAbove.Config.DisableStellarNovaDialogue.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.DisableStellarNovaDialogue.Tooltip")]
 		public bool DisableStellarNovaDialogue;
 
-		[Label("Disable Starfarer commentary")]
-		[Tooltip("Disable Starfarer Prompts entirely.")]
+		[Label("$Mods.StarsAbove.Config.DisableStarfarerCommentary.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.DisableStarfarerCommentary.Tooltip")]
 		public bool DisableStarfarerCommentary;
 
-		[Label("Disable Starfarer commentary on buffs/debuffs")]
-		[Tooltip("You will no longer recieve Starfarer Prompts for getting buffed/debuffed.")]
+		[Label("$Mods.StarsAbove.Config.DisableStarfarerCommentaryBuffs.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.DisableStarfarerCommentaryBuffs.Tooltip")]
 		public bool DisableStarfarerCommentaryBuffs;
 
-		[Label("Disable Starfarer commentary for combat events")]
-		[Tooltip("You will no longer recieve Starfarer Prompts for killing foes, etc.")]
+		[Label("$Mods.StarsAbove.Config.DisableStarfarerCommentaryCombat.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.DisableStarfarerCommentaryCombat.Tooltip")]
 		public bool DisableStarfarerCommentaryCombat;
 
 		[Increment(1)]
 		[Range(1, 60)]
 		[DefaultValue(8)]
 		[Slider] // The Slider attribute makes this field be presented with a slider rather than a text input. The default ticks is 1.
-		[Label("Starfarer Prompt Cooldown")]
-		[Tooltip("The time between Starfarer Prompts in minutes. If a trigger for a prompt occurs during this time, it is ignored. Does not apply to unique prompts (Bosses, etc.)")]
+		[Label("$Mods.StarsAbove.Config.StarfarerPromptCooldown.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.StarfarerPromptCooldown.Tooltip")]
 		public int StarfarerPromptCooldown;
 
 		[Increment(1)]
 		[Range(1, 5)]
 		[DefaultValue(2)]
 		[Slider] // The Slider attribute makes this field be presented with a slider rather than a text input. The default ticks is 1.
-		[Label("Starfarer Text Speed")]
-		[Tooltip("The time for dialogue text to increment in frames. Below 2, it is recommended to disable dialogue sound effects.")]
+		[Label("$Mods.StarsAbove.Config.DialogueScrollValue.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.DialogueScrollValue.Tooltip")]
 		public int DialogueScrollValue;
 
 		[Increment(1)]
 		[Range(1, 5)]
 		[DefaultValue(3)]
 		[Slider] // The Slider attribute makes this field be presented with a slider rather than a text input. The default ticks is 1.
-		[Label("Starfarer Text Sound Effect")]
-		[Tooltip("The sound effect that plays when letters appear during Starfarer Dialogue. 5 is silence.")]
+		[Label("$Mods.StarsAbove.Config.DialogueAudio.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.DialogueAudio.Tooltip")]
 		public int DialogueAudio;
 
-		[Label("Instant Text")]
-		[Tooltip("Ignores the Starfarer Text Speed option; all text will appear instantly.")]
+		[Label("$Mods.StarsAbove.Config.InstantText.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.InstantText.Tooltip")]
 		public bool InstantText;
 
-		[Label("Disable dragging Starfarer Dialogue")]
-		[Tooltip("Starfarer Dialogue is locked in position.")]
+		[Label("$Mods.StarsAbove.Config.DisableDraggingDialogue.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.DisableDraggingDialogue.Tooltip")]
 		public bool DisableDraggingDialogue;
 
 		//[Label("No locked camera in the final boss fight")]
@@ -92,8 +92,8 @@ namespace StarsAbove
 
 		[DefaultValue(typeof(Vector2), "-1360, -510")]
 		[Range(-1920f, 0f)]
-		[Label("Starfarer Prompt positiion")]
-		[Tooltip("Position is measured from the bottom right of the screen!")]
+		[Label("$Mods.StarsAbove.Config.PromptLoc.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.PromptLoc.Tooltip")]
 		public Vector2 PromptLoc { get; set; }
 
 		//[DefaultValue(typeof(Vector2), "-480, -1005")]
@@ -106,28 +106,28 @@ namespace StarsAbove
 		[Range(0, 300)]
 		[DefaultValue(100)]
 		[Slider] // The Slider attribute makes this field be presented with a slider rather than a text input. The default ticks is 1.
-		[Label("Starfarer Battle Commentary timer")]
-		[Tooltip("The time for random Starfarer Prompts to stay on your screen.")]
+		[Label("$Mods.StarsAbove.Config.CommentaryTimer.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.CommentaryTimer.Tooltip")]
 		public int CommentaryTimer;
 
 		/*[Label("Disable Suistrume audio")]
 		[Tooltip("Disables music change from Suistrume's buff.")]//Mute suistrume
 		public bool EnableSuistrumeAudio;*/
 
-		[Label("Disable Stellar Nova voice lines")]
-		[Tooltip("Disables voice lines for Asphodene and Eridani during Stellar Novas. (Courtesy of 15.ai)")]
+		[Label("$Mods.StarsAbove.Config.EnableStarfarerVoices.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.EnableStarfarerVoices.Tooltip")]
 		public bool EnableStarfarerVoices;
 
-		[Label("Weapon music overrides all other music")]
-		[Tooltip("When enabled, weapons that change the game's music will have priority over nearly everything else.")]
+		[Label("$Mods.StarsAbove.Config.EnableMusicOverride.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.EnableMusicOverride.Tooltip")]
 		public bool EnableMusicOverride;
 
-		[Label("Enable Player Progress World Lock")]
-		[Tooltip("Enables character progression being tied to the first world they joined.")]
+		[Label("$Mods.StarsAbove.Config.EnablePlayerWorldLock.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.EnablePlayerWorldLock.Tooltip")]
 		public bool EnablePlayerWorldLock;
 
-		[Label("Enable April Fools mode")]
-		[Tooltip("Adds radical sunglasses to Asphodene and Eridani in the Starfarer menu and during Stellar Novas.")]
+		[Label("$Mods.StarsAbove.Config.EnableAprilFools.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.EnableAprilFools.Tooltip")]
 		public bool EnableAprilFools;
 
 

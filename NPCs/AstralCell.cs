@@ -23,7 +23,7 @@ namespace StarsAbove.NPCs
 
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 
-				new FlavorTextBestiaryInfoElement("A strange blue object summoned by the Vagrant of Space and Time. It eats water vapor.")
+				new FlavorTextBestiaryInfoElement($"Mods.StarsAbove.Bestiary.{Name}")
 			});
 		}
 		public override void SetDefaults() {

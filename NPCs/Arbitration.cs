@@ -163,7 +163,7 @@ namespace StarsAbove.NPCs
             // We can use AddRange instead of calling Add multiple times in order to add multiple items at once
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				
-				new FlavorTextBestiaryInfoElement("A mysterious figure, said to exhibit balance throughout the galaxy. Little is known about this enemy... Was rent asunder by the First Starbearer.")
+				new FlavorTextBestiaryInfoElement($"Mods.StarsAbove.Bestiary.{Name}")
             });
         }
 

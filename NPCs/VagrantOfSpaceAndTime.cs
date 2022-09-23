@@ -163,7 +163,7 @@ namespace StarsAbove.NPCs
 
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 
-                new FlavorTextBestiaryInfoElement("The enigmatic Starfarer Perseus. His outward appearance is that of utmost confidence... but he's just kind of a dork trying to look cool. His sisters agree on this.")
+                new FlavorTextBestiaryInfoElement($"Mods.StarsAbove.Bestiary.{Name}")
                 });
 
         }

@@ -26,7 +26,7 @@ namespace StarsAbove.NPCs
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 
 				new MoonLordPortraitBackgroundProviderBestiaryInfoElement(), // Plain black background
-				new FlavorTextBestiaryInfoElement("An otherworldy hero, summoned forth by the First Starbearer to assail this land.")
+				new FlavorTextBestiaryInfoElement($"Mods.StarsAbove.Bestiary.{Name}")
 			});
 		}
 
