@@ -15468,12 +15468,6 @@ namespace StarsAbove
 
         }
 
-        public const string keyLocation = "Mods.StarsAbove.";
-        //Mods.StarsAbove.Dialogue.EyeOfCthulhuPrompt
-        public static string GetTranslationKey(string key)
-        {
-            return Language.GetTextValue(keyLocation+key);
-        }
 
         public override void ModifyDrawInfo(ref PlayerDrawSet drawInfo)
         {
