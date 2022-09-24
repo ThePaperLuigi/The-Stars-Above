@@ -13,7 +13,8 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+			//WIP
+			/*if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
 			{
 				Tooltip.SetDefault("" +
 				"Can quickly mine Auric Ore" +
@@ -40,10 +41,21 @@ namespace StarsAbove.Items
 				"\nPressing the Weapon Action Key when [Everlasting Gunpowder] is loaded will revert to the original state" +
 				"\n'At the Netherworld's bottom... I'll be waiting'" +
 				$"");
-			}
+			}*/
 			DisplayName.SetDefault("The Everlasting Pickaxe");
-			
-			
+			Tooltip.SetDefault("" +
+				"WORK IN PROGRESS" +
+                "\nCan quickly mine any ore" +
+				"\nRight click to place a dusting of [Everlasting Gunpowder], which lasts for 20 seconds" +
+				"\nSwinging the pickaxe causes consecutive explosions centered on the [Everlasting Gunpowder], destroying tiles " +
+				"\nPress the Weapon Action Key to load [Everlasting Gunpowder] into the pickaxe" +
+				"\nWhen [Everlasting Gunpowder] is loaded, mining is disabled and attacking capabilities are extended" +
+				"\nAttacks swing in an alternating arc, firing a portion of [Everlasting Gunpowder] towards the cursor" +
+				"\nOnce the [Everlasting Gunpowder] makes contact with a tile or an enemy, it will detonate multiple times before disappearing" +
+				"\nPressing the Weapon Action Key when [Everlasting Gunpowder] is loaded will revert to the original state" +
+				"\n'At the Netherworld's bottom... I'll be waiting'" +
+				$"");
+
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
