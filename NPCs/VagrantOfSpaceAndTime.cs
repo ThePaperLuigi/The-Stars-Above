@@ -137,14 +137,7 @@ namespace StarsAbove.NPCs
             potionType = ItemID.HealingPotion;
             
             //Because you can not hit this boss, loot will be dropped seperately.
-            if(Main.expertMode)
-            {
-                int k = Item.NewItem(null, (int)NPC.position.X, (int)NPC.position.Y, 0,0, Mod.Find<ModItem>("VagrantBossBag").Type, 1, false);
-                if (Main.netMode == 1)
-                {
-                    NetMessage.SendData(21, -1, -1, null, k, 1f);
-                }
-            }
+            
 
             NPC.SetEventFlagCleared(ref DownedBossSystem.downedVagrant, -1);
             DownedBossSystem.downedVagrant = true;
@@ -186,9 +179,11 @@ namespace StarsAbove.NPCs
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             // Do NOT misuse the ModifyNPCLoot and OnKill hooks: the former is only used for registering drops, the latter for everything else
+            //Chance for a Prism
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.SpatialPrism>(), 4));
 
             // Add the treasure bag using ItemDropRule.BossBag (automatically checks for expert mode)
-            npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<VagrantBossBag>()));
+            //npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<VagrantBossBag>()));
 
             // Trophies are spawned with 1/10 chance
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.BossLoot.VagrantTrophyItem>(), 10));
@@ -201,6 +196,7 @@ namespace StarsAbove.NPCs
 
             // All our drops here are based on "not expert", meaning we use .OnSuccess() to add them into the rule, which then gets added
             LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
+            LeadingConditionRule ExpertRule = new LeadingConditionRule(new Conditions.IsExpert());
 
             // Notice we use notExpertRule.OnSuccess instead of npcLoot.Add so it only applies in normal mode
             // Boss masks are spawned with 1/7 chance
@@ -223,8 +219,20 @@ namespace StarsAbove.NPCs
             };
 
             notExpertRule.OnSuccess(new DropOneByOne(itemType, parameters));
-            
+            var parametersExpert = new DropOneByOne.Parameters()
+            {
+                ChanceNumerator = 1,
+                ChanceDenominator = 1,
+                MinimumStackPerChunkBase = 1,
+                MaximumStackPerChunkBase = 1,
+                MinimumItemDropsCount = 22,
+                MaximumItemDropsCount = 35,
+            };
+
+            ExpertRule.OnSuccess(new DropOneByOne(itemType, parametersExpert));
+
             // Finally add the leading rule
+            npcLoot.Add(ExpertRule);
             npcLoot.Add(notExpertRule);
         }
 
@@ -235,7 +243,7 @@ namespace StarsAbove.NPCs
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
             scale = 2f;
-            return null;
+            return false;
         }
 
        
