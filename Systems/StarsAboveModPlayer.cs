@@ -4654,7 +4654,7 @@ namespace StarsAbove
         {
             for (int i = 0; i <= Main.maxNPCs; i++)
             {
-                if (Main.npc[i].boss && Main.npc[i].active)
+                if (Main.npc[i].boss && Main.npc[i].active && Main.npc[i].ModNPC?.Mod == ModLoader.GetMod("StarsAbove"))
                 {
                     Player.AddBuff(BuffType<BossEnemySpawnMod>(), 10);
                 }
