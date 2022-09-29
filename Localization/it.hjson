@@ -1,4 +1,7 @@
 Mods: {
+	#Translators: Anato#9005, Velerium#2629
+	#Proofreader: 
+	
 	StarsAbove: {
 		Dialogue:{
 			
@@ -8,33 +11,35 @@ Mods: {
 		Config: {
 			
 			DisableStellarNovaCutIns: {
-				Label: Disable Stellar Nova cut-ins
-				Tooltip: Disables the portrait of your Starfarer when activating your Stellar Nova.
+				Label: Disattivare i intromettersi di Stellar Nova
+				Tooltip: Disattiva il ritratto del Starfarer quando si attiva la Stellar Nova.
 			}
 			
 			DisableStellarNovaDialogue: {
-				Label: Disable Stellar Nova dialogue box
-				Tooltip: Disables the dialogue box during the Stellar Nova cut-in.
+				Label: Disattivare la finestra di dialogo di Stellar Nova
+				Tooltip: Disattiva la finestra di dialogo durante l'intermezzo di Stellar Nova.
 			}
 			
+			#	This block is exactly the same as the DisableStellarNovaCutIns block.
+			# Awaiting.
 			DisableStarfarerCommentary: {
 				Label: Disable Stellar Nova cut-ins
 				Tooltip: Disables the portrait of your Starfarer when activating your Stellar Nova.
 			}
 			
 			DisableStarfarerCommentaryBuffs: {
-				Label: Disable Starfarer commentary on buffs/debuffs
-				Tooltip: You will no longer recieve Starfarer Prompts for getting buffed/debuffed.
+				Label: Disattivare il commentario di Starfarer su buffs/debuffs
+				Tooltip: Non riceverai più avvisi Starfarer di buff/debuff.
 			}
 			
 			DisableStarfarerCommentaryCombat: {
-				Label: Disable Starfarer commentary for combat events
-				Tooltip: You will no longer recieve Starfarer Prompts for killing foes, etc.
+				Label: Disabilita il commentario di Starfarer per gli eventi di combattimento
+				Tooltip: Non riceverai più avvisi Starfarer per l'uccisione dei nemici, ecc.
 			}
 			
 			StarfarerPromptCooldown: {
-			    Label: Starfarer Prompt Cooldown
-			    Tooltip: The time between Starfarer Prompts in minutes. If a trigger for a prompt occurs during this time, it is ignored. Does not apply to unique prompts (Bosses, etc.)
+			    Label: Avvisi di tempo di ricarica del Starfarer
+			    Tooltip: L'intervallo di tempo tra i avvisi di Starfarer, in minuti. Se un'attivazione per un avvisi si verifica durante questo periodo, viene ignorata. Non si applica ai avvisi unici (Boss, ecc.)
 			}
 			
 			DialogueScrollValue: {
