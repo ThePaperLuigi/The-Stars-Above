@@ -7989,6 +7989,10 @@ namespace StarsAbove
                             theofania = 1;
                         }
                     }
+                    if(novaGaugeUnlocked)
+                    {
+                        DownedBossSystem.downedVagrant = true;
+                    }
                     if (DownedBossSystem.downedNalhaun)
                     {
                         if (butchersdozen == 0)
