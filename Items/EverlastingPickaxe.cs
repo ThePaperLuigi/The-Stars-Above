@@ -1,7 +1,9 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs.EverlastingPickaxe;
 using StarsAbove.Projectiles.EverlastingPickaxe;
+using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -13,46 +15,16 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			//WIP
-			/*if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
-			{
-				Tooltip.SetDefault("" +
-				"Can quickly mine Auric Ore" +
-				"\nRight click to place a dusting of [Everlasting Gunpowder], which lasts for 20 seconds" +
-				"\nSwinging the pickaxe causes consecutive explosions centered on the [Everlasting Gunpowder], destroying tiles " +
-				"\nPress the Weapon Action Key to load [Everlasting Gunpowder] into the pickaxe" +
-				"\nWhen [Everlasting Gunpowder] is loaded, mining is disabled and attacking capabilities are extended" +
-				"\nAttacks swing in an alternating arc, firing a portion of [Everlasting Gunpowder] towards the cursor" +
-				"\nOnce the [Everlasting Gunpowder] makes contact with a tile or an enemy, it will detonate multiple times before disappearing" +
-				"\nPressing the Weapon Action Key when [Everlasting Gunpowder] is loaded will revert to the original state" +
-				"\n'At the Netherworld's bottom... I'll be waiting'" +
-				$"");
-			}
-			else
-			{
-				Tooltip.SetDefault("" +
-				"Can quickly mine any ore" +
-				"\nRight click to place a dusting of [Everlasting Gunpowder], which lasts for 20 seconds" +
-				"\nSwinging the pickaxe causes consecutive explosions centered on the [Everlasting Gunpowder], destroying tiles " +
-				"\nPress the Weapon Action Key to load [Everlasting Gunpowder] into the pickaxe" +
-				"\nWhen [Everlasting Gunpowder] is loaded, mining is disabled and attacking capabilities are extended" +
-				"\nAttacks swing in an alternating arc, firing a portion of [Everlasting Gunpowder] towards the cursor" +
-				"\nOnce the [Everlasting Gunpowder] makes contact with a tile or an enemy, it will detonate multiple times before disappearing" +
-				"\nPressing the Weapon Action Key when [Everlasting Gunpowder] is loaded will revert to the original state" +
-				"\n'At the Netherworld's bottom... I'll be waiting'" +
-				$"");
-			}*/
 			DisplayName.SetDefault("The Everlasting Pickaxe");
 			Tooltip.SetDefault("" +
-				"WORK IN PROGRESS" +
-                "\nCan quickly mine any ore" +
-				"\nRight click to place a dusting of [Everlasting Gunpowder], which lasts for 20 seconds" +
-				"\nSwinging the pickaxe causes consecutive explosions centered on the [Everlasting Gunpowder], destroying tiles " +
-				"\nPress the Weapon Action Key to load [Everlasting Gunpowder] into the pickaxe" +
-				"\nWhen [Everlasting Gunpowder] is loaded, mining is disabled and attacking capabilities are extended" +
-				"\nAttacks swing in an alternating arc, firing a portion of [Everlasting Gunpowder] towards the cursor" +
-				"\nOnce the [Everlasting Gunpowder] makes contact with a tile or an enemy, it will detonate multiple times before disappearing" +
-				"\nPressing the Weapon Action Key when [Everlasting Gunpowder] is loaded will revert to the original state" +
+				"\nRight click to place a dusting of [c/82D1D5:Everlasting Gunpowder] on yourself, which lasts for 6 seconds (20 second cooldown)" +
+				"\nSwinging the pickaxe near the [c/82D1D5:Everlasting Gunpowder] causes consecutive explosions towards your cursor, destroying tiles" +
+				"\nPress the Weapon Action Key to load [c/82D1D5:Everlasting Gunpowder] into the pickaxe" +
+				"\nWhen [c/82D1D5:Everlasting Gunpowder] is loaded, mining is disabled but attacking capabilities are extended and damage is increased by 80%" +
+				"\nAttacks swing in an alternating arc, firing a portion of [c/82D1D5:Everlasting Gunpowder] towards the cursor (4 second cooldown)" +
+				"\nOnce the [c/82D1D5:Everlasting Gunpowder] makes contact with an enemy, it will detonate multiple times before disappearing" +
+				"\nIf the [c/82D1D5:Everlasting Gunpowder] lands on a tile, it will explode once and then disappear" +
+				"\nPressing the Weapon Action Key when [c/82D1D5:Everlasting Gunpowder] is loaded will revert to the original state" +
 				"\n'At the Netherworld's bottom... I'll be waiting'" +
 				$"");
 
@@ -63,23 +35,30 @@ namespace StarsAbove.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 99;           //The damage of your weapon
-			Item.DamageType = DamageClass.Melee;          //Is your weapon a melee weapon?
-			Item.width = 100;            //Weapon's texture's width
-			Item.height = 100;           //Weapon's texture's height
-			Item.useTime = 4;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
-			Item.useAnimation = 12;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
-			Item.useStyle = ItemUseStyleID.Swing;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
-			Item.knockBack = 3;         //The force of knockback of the weapon. Maximum is 20
-			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
-			Item.rare = ItemRarityID.Red;              //The rarity of the weapon, from -1 to 13
-			Item.UseSound = SoundID.Item1;      //The sound when the weapon is using
-			Item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
-			Item.shoot = 337;
-			Item.shootSpeed = 4f;
+			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+			{
+				Item.damage = 340;
+			}
+			else
+			{
+				Item.damage = 139;
+			}
+			
+			Item.DamageType = ModContent.GetInstance<Systems.CelestialDamageClass>();
+			Item.width = 100;
+			Item.height = 100;
+			Item.useTime = 4;
+			Item.useAnimation = 12;
+			Item.useStyle = ItemUseStyleID.Swing;
+			Item.knockBack = 3;
+			Item.value = Item.buyPrice(gold: 1);
+			Item.rare = ItemRarityID.Red;
+			Item.UseSound = SoundID.Item1;
+			Item.autoReuse = true;
+			
 			Item.pick = 250;
 			Item.tileBoost += 5;
-			Item.useTurn = true;
+			
 
 
 			
@@ -97,52 +76,101 @@ namespace StarsAbove.Items
 		}
         public override void UpdateInventory(Player player)
         {
-
-			
-        }
-        public override void HoldItem(Player player)
-        {
-			//When the Weapon Action Key is pressed...
-			if (player.whoAmI == Main.myPlayer && StarsAbove.weaponActionKey.JustPressed)
+			if (attackModeEnabled)//Disable mining when in attack mode.
 			{
-				//1. Swap stance (This disables mining, increases use time, and hides the weapon when swung.)
-				if (attackModeEnabled)
-				{
-					attackModeEnabled = false;
-
-				}
-				else
-				{
-					attackModeEnabled = true;
-
-				}
-				//2. Spawn the swap animation projectile. Probably just the sprite of the pickaxe spinning and dust + SFX. Maybe screen shake.
-
-			}
-
-			if(attackModeEnabled)
-            {
-				player.AddBuff(BuffType<EverlastingGunpowderLoaded>(), 10);
 				Item.useTime = 25;
 				Item.useAnimation = 25;
 				Item.useStyle = ItemUseStyleID.Shoot;
 				Item.shootSpeed = 4f;
 				Item.pick = 0;
+				Item.noMelee = true;
+				Item.noUseGraphic = true;
+				Item.useTurn = false;
+				Item.shoot = 10;//Doesn't matter, replaced later.
+				Item.shootSpeed = 11f;
+
 			}
 			else
-            {
+			{
 				Item.useTime = 4;
 				Item.useAnimation = 12;
 				Item.useStyle = ItemUseStyleID.Swing;
 				Item.shootSpeed = 4f;
 				Item.pick = 250;
+				Item.noMelee = false;
+				Item.noUseGraphic = false;
+				Item.useTurn = true;
+				Item.shoot = 0;
+				Item.shootSpeed = 11f;
 			}
 
-        }
+		}
+        public override void HoldItem(Player player)
+        {
+			if (attackModeEnabled)
+			{
+				player.AddBuff(BuffType<EverlastingGunpowderLoaded>(), 10);
+
+				
+
+			}
+			else
+			{
+				
+			}
+			//When the Weapon Action Key is pressed...
+			if (player.whoAmI == Main.myPlayer && StarsAbove.weaponActionKey.JustPressed && !player.HasBuff(BuffType<GunpowderSwapCooldown>()))
+			{
+				//1. Swap stance (This disables mining, increases use time, and hides the weapon when swung.)
+				player.AddBuff(BuffType<GunpowderSwapCooldown>(), 60);
+				SoundEngine.PlaySound(StarsAboveAudio.SFX_HullwroughtLoad, player.Center);
+
+				if (attackModeEnabled)
+				{
+					attackModeEnabled = false;
+					//Smoke vfx
+					for (int g = 0; g < 4; g++)
+					{
+						int goreIndex = Gore.NewGore(null, new Vector2(player.position.X + (float)(player.width / 2) - 24f, player.position.Y + (float)(player.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+						Main.gore[goreIndex].scale = 1f;
+						Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
+						Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
+						goreIndex = Gore.NewGore(null, new Vector2(player.position.X + (float)(player.width / 2) - 24f, player.position.Y + (float)(player.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+						Main.gore[goreIndex].scale = 1f;
+						Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
+						Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
+						goreIndex = Gore.NewGore(null, new Vector2(player.position.X + (float)(player.width / 2) - 24f, player.position.Y + (float)(player.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+						Main.gore[goreIndex].scale = 1f;
+						Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
+						Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
+						goreIndex = Gore.NewGore(null, new Vector2(player.position.X + (float)(player.width / 2) - 24f, player.position.Y + (float)(player.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+						Main.gore[goreIndex].scale = 1f;
+						Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
+						Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
+					}
+				}
+				else
+				{
+					attackModeEnabled = true;
+					//Dust vfx
+					for (int d = 0; d < 14; d++)
+					{
+						Dust.NewDust(player.Center, 0, 0, DustID.FireworkFountain_Yellow, Main.rand.NextFloat(-4, 4), Main.rand.NextFloat(-5, 5), 150, default(Color), 0.8f);
+						Dust.NewDust(player.Center, 0, 0, DustID.FireworkFountain_Red, Main.rand.NextFloat(-7, 7), Main.rand.NextFloat(-7, 7), 150, default(Color), 0.6f);
+
+					}
+				}
+
+			}
+
+			
+
+
+		}
 
 
 
-        public override void MeleeEffects(Player player, Rectangle hitbox)
+		public override void MeleeEffects(Player player, Rectangle hitbox)
 		{
 			
 		}
@@ -151,44 +179,100 @@ namespace StarsAbove.Items
 		{
 			
 		}
-
-		
-		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-		{
-			if (player.altFunctionUse != 2 && attackModeEnabled)
+        public override bool CanUseItem(Player player)
+        {
+			if (player.altFunctionUse == 2 && attackModeEnabled)//When the weapon is in attack mode, disable right-click
 			{
-				if (player.direction == 1)
-				{
-					if (altSwing)
+				return false;
+			}
+
+			return true;
+        }
+        public override bool? UseItem(Player player)
+        {
+			if (player.altFunctionUse == 2)//Spawn the Everlasting Gunpowder
+			{
+				if(!attackModeEnabled)
+                {
+					if (!player.HasBuff(BuffType<EverlastingGunpowderMiningCooldown>()))
 					{
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<EverlastingPickaxeSwing2>(), damage, knockback, player.whoAmI, 0f);
-
-						altSwing = false;
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<MiningModeGunpowder>(), 0, 0, player.whoAmI);
+						player.AddBuff(BuffType<EverlastingGunpowderMiningCooldown>(), 1200);//20 second CD
 					}
-					else
-					{
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<EverlastingPickaxeSwing1>(), damage, knockback, player.whoAmI, 0f);
-
-						altSwing = true;
-					}
-
 				}
-				else
+				
+			}
+			else
+            {
+				if (!attackModeEnabled)
 				{
-					if (altSwing)
-					{
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<EverlastingPickaxeSwing1>(), damage, knockback, player.whoAmI, 0f);
-
-						altSwing = false;
-					}
-					else
-					{
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<EverlastingPickaxeSwing2>(), damage, knockback, player.whoAmI, 0f);
-
-						altSwing = true;
-					}
+					player.AddBuff(BuffType<EverlastingGunpowderMiningTrigger>(), 20);//20 second CD
+					
 				}
 			}
+			
+
+			return base.UseItem(player);
+        }
+
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+		{
+			
+
+			if (attackModeEnabled)
+			{
+				if (player.altFunctionUse != 2)
+				{
+
+					if (player.direction == 1)
+					{
+						if (altSwing)
+						{
+							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<EverlastingPickaxeSwing2>(), damage, knockback, player.whoAmI, 0f);
+
+							altSwing = false;
+						}
+						else
+						{
+							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<EverlastingPickaxeSwing1>(), damage, knockback, player.whoAmI, 0f);
+
+							altSwing = true;
+						}
+
+					}
+					else
+					{
+						if (altSwing)
+						{
+							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<EverlastingPickaxeSwing1>(), damage, knockback, player.whoAmI, 0f);
+
+							altSwing = false;
+						}
+						else
+						{
+							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<EverlastingPickaxeSwing2>(), damage, knockback, player.whoAmI, 0f);
+
+							altSwing = true;
+						}
+					}
+					if(!player.HasBuff(BuffType<EverlastingGunpowderAttackCooldown>()))
+                    {
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, velocity.X, velocity.Y, ProjectileType<AttackModeGunpowder>(), damage, knockback, player.whoAmI);
+
+						player.AddBuff(BuffType<EverlastingGunpowderAttackCooldown>(), 240);
+                    }
+
+
+				}
+
+			}
+			else
+            {
+				//Items that can mine also apparently don't work with projectiles attributed to them.
+			}
+				
+			
+
 
 			return false;
 		}
