@@ -18,7 +18,7 @@ Mods: {
 			}
 			
 			DisableStarfarerCommentary: {
-              			Label: Disable Starfarer commentary
+				Label: Disable Starfarer commentary
 				Tooltip: Disable Starfarer Prompts entirely.
 			}
 			
