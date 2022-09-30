@@ -18,8 +18,8 @@ Mods: {
 			}
 			
 			DisableStarfarerCommentary: {
-				Label: Disable Stellar Nova cut-ins
-				Tooltip: Disables the portrait of your Starfarer when activating your Stellar Nova.
+              			Label: Disable Starfarer commentary
+				Tooltip: Disable Starfarer Prompts entirely.
 			}
 			
 			DisableStarfarerCommentaryBuffs: {
