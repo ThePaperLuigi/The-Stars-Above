@@ -63,8 +63,8 @@ Mods: {
 			}
 			
 			CommentaryTimer: {
-				Label: Starfarer Prompt positiion
-				Tooltip: Position is measured from the bottom right of the screen!
+				Label: Starfarer Prompt Timer
+				Tooltip: Changes the length that Starfarer Prompts stay on screen.
 			}
 			
 			EnableStarfarerVoices: {
