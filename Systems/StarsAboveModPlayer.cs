@@ -50,6 +50,8 @@ namespace StarsAbove
         public string firstJoinedWorldName;
         public static bool enableWorldLock = false;
 
+        public static bool BossEnemySpawnModDisabled = false;
+
         public bool TruesilverSlashing = false;
         public bool LivingDead = false;
         public bool darkHourglass = false;
@@ -729,6 +731,7 @@ namespace StarsAbove
         public int VirtueWeaponDialogue = 0;
         public int RedMageWeaponDialogue = 0;
         public int BlazeWeaponDialogue = 0;
+        public int PickaxeWeaponDialogue = 0;
 
         //Subworld dialogues
         public int observatoryDialogue = 0;
@@ -1343,7 +1346,7 @@ namespace StarsAbove
             tag["VirtueWeaponDialogue"] = VirtueWeaponDialogue;
             tag["RedMageWeaponDialogue"] = RedMageWeaponDialogue;
             tag["BlazeWeaponDialogue"] = BlazeWeaponDialogue;
-
+            tag["PickaxeWeaponDialogue"] = PickaxeWeaponDialogue;
 
 
 
@@ -1596,7 +1599,7 @@ namespace StarsAbove
             VirtueWeaponDialogue = tag.GetInt("VirtueWeaponDialogue");
             RedMageWeaponDialogue = tag.GetInt("RedMageWeaponDialogue");
             BlazeWeaponDialogue = tag.GetInt("BlazeWeaponDialogue");
-
+            PickaxeWeaponDialogue = tag.GetInt("PickaxeWeaponDialogue");
 
 
 
@@ -4652,14 +4655,18 @@ namespace StarsAbove
         }
         public override void PreUpdate()
         {
-            for (int i = 0; i <= Main.maxNPCs; i++)
+            if(!BossEnemySpawnModDisabled)
             {
-                if (Main.npc[i].boss && Main.npc[i].active && Main.npc[i].ModNPC?.Mod == ModLoader.GetMod("StarsAbove"))
+                for (int i = 0; i <= Main.maxNPCs; i++)
                 {
-                    Player.AddBuff(BuffType<BossEnemySpawnMod>(), 10);
-                }
+                    if (Main.npc[i].boss && Main.npc[i].active)
+                    {
+                        Player.AddBuff(BuffType<BossEnemySpawnMod>(), 10);
+                    }
 
+                }
             }
+            
             CelestialCartography();
             GlobalRotation++;
             if (GlobalRotation >= 360)
@@ -6066,6 +6073,13 @@ namespace StarsAbove
                        152,
                        "Defeat the Warrior of Light, then wait.")); //Corresponding dialogue ID.
                     WeaponArchiveList.Add(new WeaponArchiveListing(
+                       "Warrior of Light Weapon", //Name of the archive listing.
+                       $"Grants the Essence for " +
+                       $"[i:{ItemType<Spatial>()}] The Everlasting Pickaxe. ", //Description of the listing.
+                       PickaxeWeaponDialogue == 2, //Unlock requirements.
+                       153,
+                       "Defeat the Warrior of Light, then wait.")); //Corresponding dialogue ID.
+                    WeaponArchiveList.Add(new WeaponArchiveListing(
                         "Tsukiyomi Weapon", //Name of the archive listing.
                         $"Grants the Essence for " +
                         $"[i:{ItemType<Spatial>()}] Architect's Luminance. ", //Description of the listing.
@@ -6981,10 +6995,6 @@ namespace StarsAbove
                     VNCharacter1 = (string)VNScenes.SetupVNSystem(sceneID, sceneProgression)[6];//The active character. If there is a second character, this character will be drawn on the left. If not, they are drawn in the middle.
                     VNCharacter1Pose = (int)VNScenes.SetupVNSystem(sceneID, sceneProgression)[7];
                     VNCharacter1Expression = (int)VNScenes.SetupVNSystem(sceneID, sceneProgression)[8]; //The expression needs the pose to align correctly.
-                                                                                                        //VNCharacter1Position = VisualNovel.Character1Position(SceneID, SceneProgression); All character 1's will be on the left, and character 2's will be on the right.
-
-
-
                     VNCharacter2 = (string)VNScenes.SetupVNSystem(sceneID, sceneProgression)[9];
                     if (VNCharacter2 != "None")//If there is a 2nd character, set up their pose and expression.
                     {
@@ -7000,8 +7010,6 @@ namespace StarsAbove
 
                     if (sceneProgression > sceneLength)
                     {
-
-
                         VNDialogueActive = false;
                         sceneID = -1;
                         sceneProgression = 0;
@@ -7012,8 +7020,6 @@ namespace StarsAbove
 
                         VNDialogueChoice1 = "";
                         VNDialogueChoice2 = "";
-
-
                     }
                     dialogue = Wrap((string)VNScenes.SetupVNSystem(sceneID, sceneProgression)[13], 50);
                     //animatedDialogue = dialogue.Substring(0, dialogueScrollNumber);
@@ -7920,6 +7926,16 @@ namespace StarsAbove
                         if (WarriorOfLightDialogue == 2 && BlazeWeaponDialogue == 0)
                         {
                             BlazeWeaponDialogue = 1;
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            NewDiskDialogue = true;
+                            WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                            return;
+
+                        }
+                        if (WarriorOfLightDialogue == 2 && PickaxeWeaponDialogue == 0)
+                        {
+                            PickaxeWeaponDialogue = 1;
                             if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);

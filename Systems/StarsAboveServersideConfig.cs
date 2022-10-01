@@ -32,6 +32,10 @@ namespace StarsAbove
 		[Tooltip("$Mods.StarsAbove.Config.DisableWeaponRestrictions.Tooltip")]
 		public bool DisableWeaponRestrictions;
 
+		[Label("$Mods.StarsAbove.Config.DisableBossEnemySpawnMod.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.DisableBossEnemySpawnMod.Tooltip")]
+		public bool DisableBossEnemySpawnMod;
+
 		[Increment(1)]
 		[Range(5, 60)]
 		[DefaultValue(15)]
@@ -52,6 +56,7 @@ namespace StarsAbove
 			StarsAboveGlobalItem.disableWeaponRestriction = DisableWeaponRestrictions;
 			StarsAboveGlobalItem.disableCalamityWeaponBuffs = DisableCalamityWeaponBuffs;
 			StarsAbovePlayer.inCombatMax = CombatTimer*60;
+			StarsAbovePlayer.BossEnemySpawnModDisabled = DisableBossEnemySpawnMod;
 		}
 	}
 }
