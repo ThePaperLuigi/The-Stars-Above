@@ -784,7 +784,7 @@ namespace StarsAbove.Items.Consumables
 			if (player.GetModPlayer<StarsAbovePlayer>().vagrantDialogue == 1 && DownedBossSystem.downedVagrant)
 			{
 				if(player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
-                {
+                {//This should be condensed.
 					player.GetModPlayer<StarsAbovePlayer>().dialogueScrollTimer = 0;
 					player.GetModPlayer<StarsAbovePlayer>().dialogueScrollNumber = 0;
 					player.GetModPlayer<StarsAbovePlayer>().sceneID = 9;
@@ -1004,6 +1004,14 @@ namespace StarsAbove.Items.Consumables
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 152;
 				player.GetModPlayer<StarsAbovePlayer>().BlazeWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
+			if (player.GetModPlayer<StarsAbovePlayer>().PickaxeWeaponDialogue == 1)
+			{
+				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 153;
+				player.GetModPlayer<StarsAbovePlayer>().PickaxeWeaponDialogue = 2;
 				activateDialogue(player);
 
 				return true;

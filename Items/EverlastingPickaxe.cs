@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs.EverlastingPickaxe;
+using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles.EverlastingPickaxe;
 using System;
 using Terraria;
@@ -37,7 +38,7 @@ namespace StarsAbove.Items
 		{
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
 			{
-				Item.damage = 340;
+				Item.damage = 280;
 			}
 			else
 			{
@@ -279,17 +280,47 @@ namespace StarsAbove.Items
 
 		public override void AddRecipes()
 		{
-			/*
-			CreateRecipe(1)
-				.AddIngredient(ItemID.ButchersChainsaw, 1)
-				.AddIngredient(ItemID.Chain, 3)
-				.AddIngredient(ItemID.LavaBucket, 1)
-				.AddIngredient(ItemID.LunarBar, 8)
-				.AddIngredient(ItemID.FragmentSolar, 18)
-				.AddIngredient(ItemType<EssenceOfTheOverwhelmingBlaze>())
-				.AddTile(TileID.Anvils)
-				.Register();
-			*/
+			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+			{
+				CreateRecipe(1)
+					.AddIngredient(calamityMod.Find<ModItem>("BlossomPickaxe").Type, 1)
+					.AddIngredient(ItemID.IronPickaxe, 1)
+					.AddIngredient(ItemID.ExplosivePowder, 100)
+					.AddIngredient(ItemID.LunarBar, 10)
+					.AddIngredient(ItemType<EssenceOfTheAbyss>())
+					.AddTile(TileID.Anvils)
+					.Register();
+
+				CreateRecipe(1)
+					.AddIngredient(calamityMod.Find<ModItem>("BlossomPickaxe").Type, 1)
+					.AddIngredient(ItemID.LeadPickaxe, 1)
+					.AddIngredient(ItemID.ExplosivePowder, 100)
+					.AddIngredient(ItemID.LunarBar, 10)
+					.AddIngredient(ItemType<EssenceOfTheAbyss>())
+					.AddTile(TileID.Anvils)
+					.Register();
+
+			}
+			else
+			{
+				CreateRecipe(1)
+					.AddIngredient(ItemID.IronPickaxe, 1)
+					.AddIngredient(ItemID.ExplosivePowder, 100)
+					.AddIngredient(ItemID.LunarBar, 10)
+					.AddIngredient(ItemType<EssenceOfTheAbyss>())
+					.AddTile(TileID.Anvils)
+					.Register();
+
+				CreateRecipe(1)
+					.AddIngredient(ItemID.LeadPickaxe, 1)
+					.AddIngredient(ItemID.ExplosivePowder, 100)
+					.AddIngredient(ItemID.LunarBar, 10)
+					.AddIngredient(ItemType<EssenceOfTheAbyss>())
+					.AddTile(TileID.Anvils)
+					.Register();
+			}
+			
+
 		}
 	}
 }

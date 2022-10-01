@@ -179,6 +179,7 @@ namespace StarsAbove.Projectiles.EverlastingPickaxe
 		private const int ALPHA_REDUCTION = 25;
 		bool firstSpawn = true;
 		int originalDamage = 0;
+		int cosmeticExplosionsTimer;
 		public override void AI()
 		{
 			if(firstSpawn)
@@ -202,10 +203,18 @@ namespace StarsAbove.Projectiles.EverlastingPickaxe
 			dust.noLight = true;
 			dust.alpha = 0;
 
+			if(cosmeticExplosionsTimer >= 30 && !IsStickingToTarget)
+            {
+				cosmeticExplosionsTimer = 0;
+				Projectile.NewProjectile(null, Projectile.Center, Vector2.Zero, ProjectileType<EverlastingPickaxeExplosionSafe>(), 0, 0, Main.player[Projectile.owner].whoAmI);
+				Projectile.NewProjectile(null, new Vector2(Projectile.Center.X, Projectile.Center.Y - 60), Vector2.Zero, ProjectileID.DD2ExplosiveTrapT3Explosion, 0, 0, Main.player[Projectile.owner].whoAmI);
+			}
+			cosmeticExplosionsTimer++;
 			// Run either the Sticky AI or Normal AI
 			// Separating into different methods helps keeps your AI clean
 			if (IsStickingToTarget) StickyAI();
 			else NormalAI();
+
 		}
 
 		private void UpdateAlpha()
