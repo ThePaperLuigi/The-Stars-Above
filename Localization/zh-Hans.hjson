@@ -2,6 +2,8 @@ Mods: {
 	#Translator:Soammer(夏沫),MeireiHakuya(冥岭白夜),chinese translation version made by the two from Koibumi Group.
 	#Textual researcher： （亚砜），assistant of translation：Yukiko（羽曦）
 	StarsAbove: {
+		Dialogue:{
+		}
 		Config: {
 			
 			DisableStellarNovaCutIns: {
