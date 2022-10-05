@@ -99,7 +99,8 @@ namespace StarsAbove.Projectiles.HunterSymphony
 						Player other = Main.player[i];
 						if (other.active && !other.dead && other.team == player.team)
 						{
-
+							player.statLife += 40;
+							other.statLife += 40;
 							NetMessage.SendData(MessageID.PlayerHeal, -1, -1, null, i, 40);
 							NetMessage.SendData(MessageID.AddPlayerBuff, -1, -1, null, i, BuffType<VitalitySong>(), 1200);
 							other.AddBuff(BuffType<VitalitySong>(), 1200, quiet: false); ;  //
