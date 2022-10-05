@@ -8005,10 +8005,10 @@ namespace StarsAbove
                             theofania = 1;
                         }
                     }
-                    if(novaGaugeUnlocked)
+                    /*if(novaGaugeUnlocked && Main.hardMode)
                     {
                         DownedBossSystem.downedVagrant = true;
-                    }
+                    }*/
                     if (DownedBossSystem.downedNalhaun)
                     {
                         if (butchersdozen == 0)
@@ -15447,6 +15447,7 @@ namespace StarsAbove
                 {
                     if (Player.HasBuff(BuffType<Buffs.SkyStrikerBuffs.StrikerAttackBuff>()))
                     {
+                        
                         Player.legs = EquipLoader.GetEquipSlot(Mod, "AfterburnerBottom", EquipType.Legs);
                         Player.body = EquipLoader.GetEquipSlot(Mod, "AfterburnerTop", EquipType.Body);
                         Player.wings = EquipLoader.GetEquipSlot(Mod, "AfterburnerWings", EquipType.Wings);
