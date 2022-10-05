@@ -12,6 +12,8 @@ using Terraria.GameContent.ItemDropRules;
 using SubworldLibrary;
 using StarsAbove.Subworlds;
 using StarsAbove.Items.Prisms;
+using StarsAbove.Items.Consumables;
+using StarsAbove.Items.Accessories;
 
 namespace StarsAbove.NPCs
 {
@@ -536,7 +538,7 @@ namespace StarsAbove.NPCs
 			
 			if (npc.type == NPCID.WallofFlesh)
 			{
-				npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("ShatteredDisk").Type, 1));
+				npcLoot.Add(ItemDropRule.Common(ItemType<ShatteredDisk>(), 1));
 				
 
 			}
@@ -602,30 +604,30 @@ namespace StarsAbove.NPCs
 			}
 			if (npc.type == NPCID.Demon)
 			{
-				npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("Luciferium").Type, 1000));
+				npcLoot.Add(ItemDropRule.Common(ItemType<Luciferium>(), 1000));
 
 
 			}
 			if (npc.type == NPCID.DemonTaxCollector)
 			{
 
-				npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("Luciferium").Type, 1));
+				npcLoot.Add(ItemDropRule.Common(ItemType<Luciferium>(), 1));
 
 			}
 			if (NPC.downedMoonlord)
 			{
-				npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("Glitterglue").Type, 10000));
+				npcLoot.Add(ItemDropRule.Common(ItemType<Glitterglue>(), 10000));
 				
 			}
 			if (npc.lifeMax <= 10 && npc.damage == 0)
 			{
-				npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("ToMurder").Type, 10000));
+				npcLoot.Add(ItemDropRule.Common(ItemType<ToMurder>(), 10000));
 				//npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("PrismaticCore").Type, 10));
 			}
 			if (!npc.SpawnedFromStatue)
 			{
 				
-				npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("PrismaticCore").Type, 100));
+				npcLoot.Add(ItemDropRule.Common(ItemType<PrismaticCore>(), 100));
 				//npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("PrismaticCore").Type, 10));
 			}
 			if (DownedBossSystem.downedVagrant)
@@ -652,17 +654,17 @@ namespace StarsAbove.NPCs
 			
 			VagrantDrops VagrantDropCondition = new VagrantDrops();
 			IItemDropRule conditionalRule = new LeadingConditionRule(VagrantDropCondition);
-			IItemDropRule rule = ItemDropRule.Common(Mod.Find<ModItem>("PrismaticCore").Type, chanceDenominator: 100);
+			IItemDropRule rule = ItemDropRule.Common(ItemType<PrismaticCore>(), chanceDenominator: 100);
 			conditionalRule.OnSuccess(rule);
 			npcLoot.Add(conditionalRule);
 
 			IItemDropRule conditionalRule1 = new LeadingConditionRule(VagrantDropCondition);
-			IItemDropRule rule1 = ItemDropRule.Common(Mod.Find<ModItem>("Starlight").Type, chanceDenominator: 25);
+			IItemDropRule rule1 = ItemDropRule.Common(ItemType<Starlight>(), chanceDenominator: 25);
 			conditionalRule.OnSuccess(rule1);
 			npcLoot.Add(conditionalRule1);
 
 			IItemDropRule conditionalRule2 = new LeadingConditionRule(VagrantDropCondition);
-			IItemDropRule rule2 = ItemDropRule.Common(Mod.Find<ModItem>("PerfectlyGenericAccessory").Type, chanceDenominator: 10000);
+			IItemDropRule rule2 = ItemDropRule.Common(ItemType<PerfectlyGenericAccessory>(), chanceDenominator: 10000);
 			conditionalRule.OnSuccess(rule2);
 			npcLoot.Add(conditionalRule2);
 			
