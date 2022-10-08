@@ -59,7 +59,10 @@ namespace StarsAbove
 				Filters.Scene["Shockwave"] = new Filter(new ScreenShaderData(screenRef, "Shockwave"), EffectPriority.VeryHigh);
 				Filters.Scene["Shockwave"].Load();
 
-
+				GameShaders.Misc["StarsAbove:DeathAnimation"] = new MiscShaderData(
+				  new Ref<Effect>(ModContent.Request<Effect>("StarsAbove/Effects/EffectDeath", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value),
+				  "DeathAnimation"
+				);
 
 			}
 

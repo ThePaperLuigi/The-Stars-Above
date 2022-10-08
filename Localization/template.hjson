@@ -18,8 +18,8 @@ Mods: {
 			}
 			
 			DisableStarfarerCommentary: {
-				Label: Disable Stellar Nova cut-ins
-				Tooltip: Disables the portrait of your Starfarer when activating your Stellar Nova.
+				Label: Disable Starfarer commentary
+				Tooltip: Disable Starfarer Prompts entirely.
 			}
 			
 			DisableStarfarerCommentaryBuffs: {
@@ -63,8 +63,8 @@ Mods: {
 			}
 			
 			CommentaryTimer: {
-				Label: Starfarer Prompt positiion
-				Tooltip: Position is measured from the bottom right of the screen!
+				Label: Starfarer Prompt Timer
+				Tooltip: Changes the length that Starfarer Prompts stay on screen.
 			}
 			
 			EnableStarfarerVoices: {
@@ -3884,7 +3884,11 @@ Mods: {
 			SeaOfStarsBiome: The Sea of Stars
 		}
 
-		
+		GameTips: {
+			StarsAboveTip0: "Aspected Weapons can have their damage type adjusted with the Stellar Array."
+			StarsAboveTip1: "You can drag the Stellar Nova Menu, and you can reset its position by holding the Stellar Nova key."
+			StarsAboveTip2: "Some Stellar Array combinations are better for some fights than others; try experimenting often!"
+		}
 		
 		
 		

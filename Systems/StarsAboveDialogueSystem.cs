@@ -8719,7 +8719,7 @@ namespace StarsAbove
                         expression = 0;
 
                         dialogue = $"Thanks for waiting. " +
-                                  "Here's another Melee-type essence for your use. " +
+                                  "Here's another Melee-type Essence for your use. " +
                                   "While it's deceptively close-ranged, " +
                                   "it has the potential for some crazy burst damage. ";
 
@@ -8745,7 +8745,7 @@ namespace StarsAbove
                 {
                     if (dialoguePrep == true)                                     // |
                     {
-                        dialogueLeft = 3;
+                        dialogueLeft = 2;
                         Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheOverwhelmingBlaze").Type);
                         dialoguePrep = false;
                     }
@@ -8780,7 +8780,75 @@ namespace StarsAbove
                 }
 
 
-            }//Vermilion Riposte
+            }//Burning Desire
+            if (chosenDialogue == 153) //The Everlasting Pickaxe
+            {
+                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 2;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheAbyss").Type);
+                        dialoguePrep = false;
+                    }
+
+
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 0;
+
+                        dialogue = $"Okay, here's an unorthodox Essence for you. " +
+                                  "While it functions as a pretty strong pickaxe, " +
+                                  "it looks like it also has some great damage potential. " +
+                                  " ";
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = $"From my take, it seems to be a great " +
+                                  "off-hand weapon to pump out explosions. " +
+                                  "Everyone loves explosions, right? " +
+                                  "";
+
+
+                        //	" ";
+                    }
+
+
+                }
+                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheAbyss").Type);
+                        dialoguePrep = false;
+                    }
+
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = $"This Essence focuses on excavation as well as damage. " +
+                                  "You can use it to move earth at significant rates, and " +
+                                  "additionally deal powerful explosive damage. " +
+                                  "Sounds like a good deal to me.";
+
+
+                        //	" ";
+                    }
+                   
+
+
+                }
+
+
+            }//The Everlasting Pickaxe
 
             #endregion
             //Boss item dialogues.

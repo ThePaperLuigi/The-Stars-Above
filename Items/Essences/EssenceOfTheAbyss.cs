@@ -3,15 +3,15 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace StarsAbove.Items.Prisms
+namespace StarsAbove.Items.Essences
 {
-    public class CalamitousPrism : ModItem
+    public class EssenceOfTheAbyss : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Calamitous Prism");
-			Tooltip.SetDefault("[c/FF8C6D:Unique Stellar Prism]" +
-				"\nDoes nothing." +
-				"");
+			DisplayName.SetDefault("Essence of the Abyss");
+			Tooltip.SetDefault("A gift from your Starfarer" +
+				"\nUtilized in the creation of 'The Everlasting Pickaxe'" +
+				$"");
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;
 		}
@@ -21,24 +21,13 @@ namespace StarsAbove.Items.Prisms
 			Item.height = 20;
 			Item.value = 100;
 			Item.rare = ItemRarityID.Red;
-			Item.maxStack = 1;
+			Item.maxStack = 999;
 		}
-
-		public override void OnCraft(Recipe recipe)
-		{
-			
-			base.OnCraft(recipe);
-		}
-		
 
 		public override Color? GetAlpha(Color lightColor) {
 			return Color.White;
 		}
 
-		public override void AddRecipes()
-		{
-			
-			
-		}
+		
 	}
 }

@@ -34,9 +34,13 @@ namespace StarsAbove.Projectiles
 			get => Projectile.ai[0];
 			set => Projectile.ai[0] = value;
 		}
+        public override bool PreDraw(ref Color lightColor)
+        {
 
-		
-		public override void AI() {
+            return base.PreDraw(ref lightColor);
+        }
+
+        public override void AI() {
 			if(firstSpawn)
             {
 				Projectile.scale = 6f;
