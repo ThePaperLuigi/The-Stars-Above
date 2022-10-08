@@ -1,12 +1,11 @@
 using Microsoft.Xna.Framework;
-using Terraria;using Terraria.GameContent;
-using Terraria.ID;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles.SkyStriker
 {
-	//
-	public class SkyStrikerSwing1 : ModProjectile
+    //
+    public class SkyStrikerSwing1 : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

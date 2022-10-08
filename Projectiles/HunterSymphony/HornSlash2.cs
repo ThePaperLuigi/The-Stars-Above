@@ -1,14 +1,13 @@
 
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles.HunterSymphony
 {
-	public class HornSlash2 : ModProjectile
+    public class HornSlash2 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Hunter's Symphony");     //The English name of the projectile

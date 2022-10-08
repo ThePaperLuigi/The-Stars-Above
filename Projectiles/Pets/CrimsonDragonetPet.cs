@@ -1,13 +1,10 @@
-using Microsoft.Xna.Framework;
-using StarsAbove;
-using System;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles.Pets
 {
-	public class CrimsonDragonetPet : ModProjectile
+    public class CrimsonDragonetPet : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

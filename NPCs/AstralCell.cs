@@ -1,4 +1,3 @@
-using IL.Terraria.GameContent.Achievements;
 using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.ID;
@@ -6,8 +5,8 @@ using Terraria.ModLoader;
 
 namespace StarsAbove.NPCs
 {
-	// Party Zombie is a pretty basic clone of a vanilla NPC. To learn how to further adapt vanilla NPC behaviors, see https://github.com/tModLoader/tModLoader/wiki/Advanced-Vanilla-Code-Adaption#example-npc-npc-clone-with-modified-projectile-hoplite
-	public class AstralCell : ModNPC
+    // Party Zombie is a pretty basic clone of a vanilla NPC. To learn how to further adapt vanilla NPC behaviors, see https://github.com/tModLoader/tModLoader/wiki/Advanced-Vanilla-Code-Adaption#example-npc-npc-clone-with-modified-projectile-hoplite
+    public class AstralCell : ModNPC
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Astral Cell");
@@ -23,7 +22,7 @@ namespace StarsAbove.NPCs
 
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 
-				new FlavorTextBestiaryInfoElement("A strange blue object summoned by the Vagrant of Space and Time. It eats water vapor.")
+				new FlavorTextBestiaryInfoElement($"Mods.StarsAbove.Bestiary.{Name}")
 			});
 		}
 		public override void SetDefaults() {

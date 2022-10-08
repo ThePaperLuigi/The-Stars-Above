@@ -1,15 +1,13 @@
 ﻿
 using Microsoft.Xna.Framework;
 using System;
-using System.Security.Policy;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.Tsukiyomi
 {
-	public class BulletWormhole3 : ModProjectile
+    public class BulletWormhole3 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Wormhole");

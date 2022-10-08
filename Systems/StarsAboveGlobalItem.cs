@@ -1,7 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using StarsAbove.Buffs.SubworldModifiers;
 using StarsAbove.Items;
 using StarsAbove.Items.Essences;
 using StarsAbove.Prefixes;
@@ -17,12 +16,13 @@ using Terraria.GameContent;
 using StarsAbove.Items.Armor.StarfarerArmor;
 using StarsAbove.Items.Materials;
 using StarsAbove.Systems;
+using StarsAbove.Utilities;
 using Terraria.UI.Chat;
 
 namespace StarsAbove
 {
-	
-	public class StarsAboveGlobalItem : GlobalItem
+
+    public class StarsAboveGlobalItem : GlobalItem
 	{
 		public override bool InstancePerEntity => true;
         public override GlobalItem Clone(Item item, Item itemClone)
@@ -165,6 +165,7 @@ namespace StarsAbove
 			ModContent.ItemType<BloodBlade>(),
 			ModContent.ItemType<RedMage>(),
 			ModContent.ItemType<BurningDesire>(),
+			ModContent.ItemType<EverlastingPickaxe>(),
 
 			ModContent.ItemType<EssenceOfAdagium>(),
 			ModContent.ItemType<EssenceOfBloodshed>(),
@@ -197,6 +198,7 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfLifethirsting>(),
 			ModContent.ItemType<EssenceOfBalance>(),
 			ModContent.ItemType<EssenceOfTheOverwhelmingBlaze>(),
+			ModContent.ItemType<EssenceOfTheAbyss>(),
 		};
 
 		public List<int> Prisms = new List<int>() {
@@ -321,6 +323,7 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfBlood>(),
 			ModContent.ItemType<EssenceOfBalance>(),
 			ModContent.ItemType<EssenceOfTheOverwhelmingBlaze>(),
+			ModContent.ItemType<EssenceOfTheAbyss>(),
 		};
 		public static bool disableAspectPenalty;
 		public static bool disableCalamityWeaponBuffs;
@@ -546,37 +549,37 @@ namespace StarsAbove
 			}
 			if (item.prefix == ModContent.PrefixType<NovaPrefix1>())//Weakest one
 			{
-				TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: NovaPrefix", $"[c/FEE267:+2 Stellar Nova Energy regeneration]") { OverrideColor = Color.White };
+				TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: NovaPrefix", LangHelper.GetTextValue("Prefix.NovaPrefix1.Tooltip")) { OverrideColor = Color.White };
 				tooltips.Add(tooltip);
 				
 			}
 			if (item.prefix == ModContent.PrefixType<NovaPrefix2>())//
 			{
-				TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: NovaPrefix", $"[c/FEE267:+4 Stellar Nova Energy regeneration]") { OverrideColor = Color.White };
+				TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: NovaPrefix", LangHelper.GetTextValue("Prefix.NovaPrefix2.Tooltip")) { OverrideColor = Color.White };
 				tooltips.Add(tooltip);
 
 			}
 			if (item.prefix == ModContent.PrefixType<NovaPrefix3>())//
 			{
-				TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: NovaPrefix", $"[c/FEE267:+6 Stellar Nova Energy regeneration]") { OverrideColor = Color.White };
+				TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: NovaPrefix", LangHelper.GetTextValue("Prefix.NovaPrefix3.Tooltip")) { OverrideColor = Color.White };
 				tooltips.Add(tooltip);
 
 			}
 			if (item.prefix == ModContent.PrefixType<NovaPrefix4>())//Strongest one
 			{
-				TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: NovaPrefix", $"[c/FEE267:+8 Stellar Nova Energy regeneration]") { OverrideColor = Color.White };
+				TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: NovaPrefix", LangHelper.GetTextValue("Prefix.NovaPrefix4.Tooltip")) { OverrideColor = Color.White };
 				tooltips.Add(tooltip);
 
 			}
 			if (item.prefix == ModContent.PrefixType<BadNovaPrefix1>())//Bad 1
 			{
-				TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: NovaPrefix", $"[c/93917C:-2 Stellar Nova Energy regeneration]") { OverrideColor = Color.White };
+				TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: NovaPrefix", LangHelper.GetTextValue("Prefix.BadNovaPrefix1.Tooltip")) { OverrideColor = Color.White };
 				tooltips.Add(tooltip);
 
 			}
 			if (item.prefix == ModContent.PrefixType<BadNovaPrefix2>())//Bad 2
 			{
-				TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: NovaPrefix", $"[c/93917C:-4 Stellar Nova Energy regeneration]") { OverrideColor = Color.White };
+				TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: NovaPrefix", LangHelper.GetTextValue("Prefix.BadNovaPrefix2.Tooltip")) { OverrideColor = Color.White };
 				tooltips.Add(tooltip);
 
 			}

@@ -1,16 +1,13 @@
 ﻿
 using Microsoft.Xna.Framework;
-using System;
-using Terraria;using Terraria.GameContent;
-using Terraria.Graphics.Shaders;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 
 namespace StarsAbove.Projectiles
 {
-	public class InkBlot : ModProjectile
+    public class InkBlot : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Ink Blot");

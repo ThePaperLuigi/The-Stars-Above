@@ -3,13 +3,12 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.Audio;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles.EternalStar
 {
-	public class EmblazonedCerulean : ModProjectile
+    public class EmblazonedCerulean : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Cerulean Star");     //The English name of the projectile

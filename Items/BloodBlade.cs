@@ -1,24 +1,17 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs;
-using StarsAbove.Buffs.CarianDarkMoon;
 using StarsAbove.Items.Essences;
-using StarsAbove.Projectiles;
-using StarsAbove.Projectiles.CarianDarkMoon;
-using System;
-using Terraria;using Terraria.DataStructures;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using Terraria.Audio;
-using StarsAbove.Projectiles.Mercy;
-using StarsAbove.Buffs.Mercy;
 using StarsAbove.Buffs.BloodBlade;
 using StarsAbove.Projectiles.BloodBlade;
 
 namespace StarsAbove.Items
 {
-	public class BloodBlade : ModItem
+    public class BloodBlade : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

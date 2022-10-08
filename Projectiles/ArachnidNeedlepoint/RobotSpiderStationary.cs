@@ -2,9 +2,7 @@
 using Microsoft.Xna.Framework;
 
 using Terraria;
-using Terraria.GameContent;
 using Terraria.ID;
-using Terraria.Graphics.Shaders;
 using static Terraria.ModLoader.ModContent;
 using System;
 using Terraria.ModLoader;
@@ -13,7 +11,7 @@ using StarsAbove.Buffs;
 namespace StarsAbove.Projectiles.ArachnidNeedlepoint
 {
 
-	public class RobotSpiderStationary : ModProjectile
+    public class RobotSpiderStationary : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

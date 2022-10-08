@@ -1,14 +1,13 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using Terraria;using Terraria.GameContent;
-using Terraria.Graphics.Shaders;
-using Terraria.ID;
+using Terraria;
+using Terraria.GameContent;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles
 {
-	public class AstralOrb : ModProjectile
+    public class AstralOrb : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Astral Orb");     //The English name of the projectile

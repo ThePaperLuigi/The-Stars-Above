@@ -5,16 +5,13 @@ using Terraria.GameContent.Creative;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
-using StarsAbove.NPCs;
-using StarsAbove.Items.Materials;
 using StarsAbove.Items.Prisms;
 using System.Collections.Generic;
-using Terraria.GameContent.ItemDropRules;
 
 namespace StarsAbove.Items.Loot
 {
-	// Basic code for a boss treasure bag
-	public class DesertLootBag : ModItem
+    // Basic code for a boss treasure bag
+    public class DesertLootBag : ModItem
 	{
 
 		//This could probably be made into a list, populated in SetDefaults?

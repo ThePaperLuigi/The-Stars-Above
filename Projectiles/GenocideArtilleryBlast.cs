@@ -1,15 +1,13 @@
 ﻿
 using Microsoft.Xna.Framework;
-using System.Security.Policy;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 
 namespace StarsAbove.Projectiles
 {
-	public class GenocideArtilleryBlast : ModProjectile
+    public class GenocideArtilleryBlast : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Genocide");

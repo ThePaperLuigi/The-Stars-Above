@@ -1,21 +1,16 @@
 ﻿
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using StarsAbove.Buffs.Skofnung;
 using StarsAbove.Buffs.TagDamage;
 using System;
-using System.Security.Policy;
 using Terraria;
 using Terraria.Audio;
-using Terraria.GameContent;
-using Terraria.Graphics;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.KeyOfTheKingsLaw
 {
-	public class KeyOfTheKingsLawProjectile : ModProjectile
+    public class KeyOfTheKingsLawProjectile : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

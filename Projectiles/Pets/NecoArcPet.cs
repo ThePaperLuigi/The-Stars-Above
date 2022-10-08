@@ -1,14 +1,10 @@
-using Microsoft.Xna.Framework;
-using StarsAbove;
-using System;
-using Terraria;using Terraria.GameContent;
-using Terraria.Graphics.Shaders;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles.Pets
 {
-	public class NecoArcPet : ModProjectile
+    public class NecoArcPet : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

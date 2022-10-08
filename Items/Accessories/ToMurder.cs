@@ -1,11 +1,9 @@
-﻿using Terraria;using Terraria.DataStructures;
-using Terraria.ID;
+﻿using Terraria;
 using Terraria.ModLoader;
-using Terraria.Utilities;
 
 namespace StarsAbove.Items.Accessories
 {
-	public class ToMurder : ModItem
+    public class ToMurder : ModItem
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("'To Murder'");

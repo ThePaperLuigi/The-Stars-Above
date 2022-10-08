@@ -1,10 +1,9 @@
-using Terraria;using Terraria.ID;
+using Terraria;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Buffs.Kifrosse
 {
-	public class StalwartSnow : ModBuff
+    public class StalwartSnow : ModBuff
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Stalwart Snow");

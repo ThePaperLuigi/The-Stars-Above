@@ -1,11 +1,10 @@
-﻿using Terraria;using Terraria.DataStructures;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Utilities;
 
 namespace StarsAbove.Items.Accessories
 {
-	public class Glitterglue : ModItem
+    public class Glitterglue : ModItem
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Teacup of Glitterglue");

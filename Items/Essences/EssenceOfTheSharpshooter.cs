@@ -1,16 +1,11 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Items.Materials;
-using System.Collections.Generic;
-using System.Linq;
-using Terraria;using Terraria.DataStructures;
-using Terraria.DataStructures;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Items.Essences
 {
-	public class EssenceOfTheSharpshooter : ModItem
+    public class EssenceOfTheSharpshooter : ModItem
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Essence of The Sharpshooter");

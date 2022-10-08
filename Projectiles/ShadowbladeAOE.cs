@@ -1,13 +1,9 @@
-﻿
-using Microsoft.Xna.Framework;
-using System.Security.Policy;
-using Terraria;using Terraria.GameContent;
+﻿using Terraria;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles
 {
-	public class ShadowbladeAOE : ModProjectile
+    public class ShadowbladeAOE : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Shadowblade Indicator");

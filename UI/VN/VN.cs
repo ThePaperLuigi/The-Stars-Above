@@ -1,18 +1,14 @@
 ﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using StarsAbove.Items;
-using StarsAbove.Items.Consumables;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.GameContent.UI.Elements;
-using Terraria.Localization;
-using Terraria.ModLoader;
 using Terraria.UI;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.UI.VN
 {
-	internal class VN : UIState
+    internal class VN : UIState
 	{
 		
 		private UIText text;

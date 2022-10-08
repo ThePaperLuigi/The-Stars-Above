@@ -1,10 +1,10 @@
-using Terraria;using Terraria.ID;
+using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Buffs.SparkblossomBeacon
 {
-	public class FleetingSparkBuff : ModBuff
+    public class FleetingSparkBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Fleeting Spark");

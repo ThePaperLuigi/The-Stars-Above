@@ -3,15 +3,14 @@ using Microsoft.Xna.Framework;
 using Terraria.ID;
 
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
 namespace StarsAbove.Items.Consumables
 {
-	
-	public class StrayMana : ModItem
+
+    public class StrayMana : ModItem
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Stolen Lifeforce");

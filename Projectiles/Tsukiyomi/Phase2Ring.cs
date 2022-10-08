@@ -1,16 +1,13 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
-using Terraria;using Terraria.GameContent;
-using Terraria.Graphics.Shaders;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.Tsukiyomi
 {
-	public class Phase2Ring : ModProjectile
+    public class Phase2Ring : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Tsukiyomi's Channeling Ring");     //The English name of the projectile

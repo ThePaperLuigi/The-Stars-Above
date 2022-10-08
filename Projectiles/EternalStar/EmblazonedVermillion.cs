@@ -3,13 +3,12 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.Audio;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles.EternalStar
 {
-	public class EmblazonedVermillion : ModProjectile
+    public class EmblazonedVermillion : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Vermillion Star");     //The English name of the projectile

@@ -1,11 +1,13 @@
 using Microsoft.Xna.Framework;
- 
+
 using StarsAbove.Items.Essences;
 using StarsAbove.Items.Materials;
 using StarsAbove.Projectiles;
 using System;
-using Terraria;using Terraria.DataStructures;
-using Terraria.Graphics.Effects;
+using System.Collections.Generic;
+using StarsAbove.Utilities;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -14,50 +16,11 @@ using Terraria.GameContent.Creative;
 
 namespace StarsAbove.Items
 {
-	public class BuryTheLight : ModItem
+    public class BuryTheLight : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			if (ModLoader.TryGetMod("CalamityMod", out Mod CalamityMod))
-			{
-				Tooltip.SetDefault("[c/FF5858:This weapon's attacks will slash at your cursor and ignore 100 armor]" +
-				"\nEach strike will restore Health and Mana" +
-				"\nCritical hits will inflict Starblight for 20 seconds" +
-				"\nOn a critical hit, foes that are currently inflicted with Starblight will take extra damage and also be inflicted with Frostburn for 20 seconds" +
-				"\nOn a critical hit, foes that are currently inflicted with Frostburn will take extra damage and also be inflicted with Shadowflame for 20 seconds" +
-				"\nStriking foes and inflicting debuffs will charge the [c/654D9C:Judgement Gauge]" +
-				"\nSwapping off the weapon will drain the [c/654D9C:Judgement Gauge]" +
-				"\nOnce the [c/654D9C:Judgement Gauge] has reached its maximum, right click to unleash [c/902FEC:Judgement Cut], disabling your normal attacks" +
-				"\nAfter a brief charge, [c/902FEC:Judgement Cut] dashes forwards and unleashes a myriad of deadly slices where you were previously" +
-				"\nYou are invincible for the duration of [c/902FEC:Judgement Cut]" +
-				"\nFoes afflicted with Starblight, Frostburn, or Shadowflame will take extra critical damage, purging the debuffs in the process" +
-				"\nThe more debuffs on the foe, the more damage they will take, increasing dramatically" +
-				"\nIf the foe has been inflicted with all three debuffs, [c/902FEC:Judgement Cut] will additionally deal 10% of the enemy's Max HP (Capped at 1,000,000)" +
-				"\n'Now you're motivated'" +
-				$"");  //The (English) text shown below your weapon's name
-			}
-			else
-            {
-				Tooltip.SetDefault("[c/FF5858:This weapon's attacks will slash at your cursor and ignore 100 armor]" +
-				"\nEach strike will restore Health and Mana" +
-				"\nCritical hits will inflict Starblight for 20 seconds" +
-				"\nOn a critical hit, foes that are currently inflicted with Starblight will take extra damage and also be inflicted with Frostburn for 20 seconds" +
-				"\nOn a critical hit, foes that are currently inflicted with Frostburn will take extra damage and also be inflicted with Shadowflame for 20 seconds" +
-				"\nStriking foes and inflicting debuffs will charge the [c/654D9C:Judgement Gauge]" +
-				"\nSwapping off the weapon will drain the [c/654D9C:Judgement Gauge]" +
-				"\nOnce the [c/654D9C:Judgement Gauge] has reached its maximum, right click to unleash [c/902FEC:Judgement Cut], disabling your normal attacks" +
-				"\nAfter a brief charge, [c/902FEC:Judgement Cut] dashes forwards and unleashes a myriad of deadly slices where you were previously" +
-				"\nYou are invincible for the duration of [c/902FEC:Judgement Cut]" +
-				"\nFoes afflicted with Starblight, Frostburn, or Shadowflame will take extra critical damage, purging the debuffs in the process" +
-				"\nThe more debuffs on the foe, the more damage they will take, increasing dramatically" +
-				"\n'Now you're motivated'" +
-				$"");  //The (English) text shown below your weapon's name
-			}
-			
-			
-
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
 		}
 
 		public override void SetDefaults()
@@ -94,6 +57,19 @@ namespace StarsAbove.Items
 			Item.autoReuse = true;
 		}
 		int judgementSlashCharge = 0;
+
+		public override void ModifyTooltips(List<TooltipLine> tooltips)
+		{
+			int tooltip = tooltips.FindLastIndex(x => x.Mod.Equals("Terraria") && x.Name == "Tooltip11");
+			if (ModLoader.TryGetMod("CalamityMod", out _))
+			{
+				if (tooltip != -1)
+				{
+					tooltips.Insert(++tooltip, new TooltipLine(Mod, $"{Mod.Name}:Tooltip12", LangHelper.GetTextValue($"ItemTooltip.{Name}.Calamity")));
+				}
+			}
+		}
+
 		public override bool AltFunctionUse(Player player)
 		{
 			return true;

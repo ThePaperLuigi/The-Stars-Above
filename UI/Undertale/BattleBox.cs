@@ -1,22 +1,15 @@
 ﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using StarsAbove.Items;
- 
-using System;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.GameContent.UI.Elements;
-using Terraria.ModLoader;
 using Terraria.UI;
 using static Terraria.ModLoader.ModContent;
-using Terraria.ModLoader.IO;
-using StarsAbove;
-using Microsoft.Xna.Framework.Audio;
 
 
 namespace StarsAbove.UI.Undertale
 {
-	internal class BattleBox : UIState
+    internal class BattleBox : UIState
 	{
 		// For this bar we'll be using a frame texture and then a gradient inside bar, as it's one of the more simpler approaches while still looking decent.
 		// Once this is all set up make sure to go and do the required stuff for most UI's in the Mod class.

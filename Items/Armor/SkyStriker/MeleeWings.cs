@@ -1,12 +1,11 @@
 
-using Terraria;using Terraria.DataStructures;
+using Terraria;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 using Terraria.ID;
 
 namespace StarsAbove.Items.Armor.SkyStriker
 {
-	[AutoloadEquip(EquipType.Wings)]
+    [AutoloadEquip(EquipType.Wings)]
 	public class MeleeWings : ModItem
 	{
 		

@@ -1,16 +1,13 @@
 ﻿
 using Microsoft.Xna.Framework;
 using System;
-using System.Security.Policy;
-using Terraria;using Terraria.GameContent;
-using Terraria.ID;
+using Terraria;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 
 namespace StarsAbove.Projectiles
 {
-	public class GasterBlaster : ModProjectile
+    public class GasterBlaster : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Gaster Blaster");

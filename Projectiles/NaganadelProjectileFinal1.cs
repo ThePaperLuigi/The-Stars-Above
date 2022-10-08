@@ -1,13 +1,12 @@
 ﻿
 using Microsoft.Xna.Framework;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.Graphics.Shaders;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles
 {
-	public class NaganadelProjectileFinal1 : ModProjectile
+    public class NaganadelProjectileFinal1 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Naganadel");

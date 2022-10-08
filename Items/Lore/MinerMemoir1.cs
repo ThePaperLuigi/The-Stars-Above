@@ -1,15 +1,13 @@
 
-using Terraria;using Terraria.DataStructures;
+using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 
 namespace StarsAbove.Items.Lore
 {
-	
-	public class MinerMemoir1 : ModItem
+
+    public class MinerMemoir1 : ModItem
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("A Miner's Memoir 1");

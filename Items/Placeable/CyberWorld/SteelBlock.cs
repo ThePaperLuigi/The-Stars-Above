@@ -1,14 +1,13 @@
 ﻿
-using Terraria;using Terraria.DataStructures;
+using Terraria;
 using Terraria.ID;
 // If you are using c# 6, you can use: "using static Terraria.Localization.GameCulture;" which would mean you could just write "DisplayName.AddTranslation(German, "");"
-using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Items.Placeable.CyberWorld
 {
-	public class SteelBlock : ModItem
+    public class SteelBlock : ModItem
 	{
 		public override void SetStaticDefaults() {
 			Tooltip.SetDefault("Riveted and bolted");

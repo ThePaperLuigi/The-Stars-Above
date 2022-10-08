@@ -1,13 +1,11 @@
 ﻿
 using Microsoft.Xna.Framework;
-using System.Security.Policy;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles
 {
-	public class reverseRadiate : ModProjectile
+    public class reverseRadiate : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Radiate");
@@ -36,9 +34,13 @@ namespace StarsAbove.Projectiles
 			get => Projectile.ai[0];
 			set => Projectile.ai[0] = value;
 		}
+        public override bool PreDraw(ref Color lightColor)
+        {
 
-		
-		public override void AI() {
+            return base.PreDraw(ref lightColor);
+        }
+
+        public override void AI() {
 			if(firstSpawn)
             {
 				Projectile.scale = 6f;

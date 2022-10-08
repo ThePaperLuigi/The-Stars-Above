@@ -1,15 +1,11 @@
 using Microsoft.Xna.Framework;
-using System.Collections.Generic;
-using System.Linq;
-using Terraria;using Terraria.DataStructures;
-using Terraria.DataStructures;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Items.Essences
 {
-	public class EssenceOfTheAerialAce : ModItem
+    public class EssenceOfTheAerialAce : ModItem
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Essence of the Aerial Ace");

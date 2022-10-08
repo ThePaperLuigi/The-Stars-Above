@@ -2,23 +2,18 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Buffs;
 using System;
-using Terraria;using Terraria.GameContent;
+using Terraria;
+using Terraria.GameContent;
 using Terraria.Enums;
-using Terraria.ModLoader;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using Terraria;using Terraria.GameContent;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.ID;
 
 namespace StarsAbove.Projectiles.TwinStars
 {
-	// The following laser shows a channeled ability, after charging up the laser will be fired
-	// Using custom drawing, dust effects, and custom collision checks for tiles
-	public class TwinStarLaser2 : ModProjectile
+    // The following laser shows a channeled ability, after charging up the laser will be fired
+    // Using custom drawing, dust effects, and custom collision checks for tiles
+    public class TwinStarLaser2 : ModProjectile
 	{
 		// Use a different style for constant so it is very clear in code when a constant is used
 

@@ -1,9 +1,8 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Items.Essences;
-using StarsAbove.Projectiles;
-using Terraria;using Terraria.DataStructures;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
@@ -14,7 +13,7 @@ using System;
 
 namespace StarsAbove.Items
 {
-	public class VermillionDaemon : ModItem
+    public class VermillionDaemon : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

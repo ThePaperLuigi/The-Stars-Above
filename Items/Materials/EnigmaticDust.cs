@@ -1,15 +1,12 @@
 using Microsoft.Xna.Framework;
-using System.Collections.Generic;
-using System.Linq;
-using Terraria;using Terraria.DataStructures;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Items.Materials
 {
-	public class EnigmaticDust : ModItem
+    public class EnigmaticDust : ModItem
 	{
 		public override void SetStaticDefaults() {
 			Tooltip.SetDefault("The residue of a mysterious individual" +

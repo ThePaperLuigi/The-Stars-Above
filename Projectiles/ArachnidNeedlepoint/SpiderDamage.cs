@@ -1,14 +1,9 @@
-﻿
-using Microsoft.Xna.Framework;
-using System.Security.Policy;
-using Terraria;using Terraria.GameContent;
-using Terraria.ID;
+﻿using Terraria;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.ArachnidNeedlepoint
 {
-	public class SpiderDamage : ModProjectile
+    public class SpiderDamage : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Arachnid Needlepoint");

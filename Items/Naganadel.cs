@@ -1,15 +1,15 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles;
-using Terraria;using Terraria.DataStructures;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Items
 {
-	public class Naganadel : ModItem //Naganadel
+    public class Naganadel : ModItem //Naganadel
 	{
 		public override void SetStaticDefaults()
 		{

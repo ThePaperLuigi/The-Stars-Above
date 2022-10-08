@@ -1,16 +1,11 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Audio;
-using StarsAbove.Buffs;
-using static Terraria.ModLoader.ModContent;
-using System;
 
 namespace StarsAbove.Projectiles.RedMage
 {
-	public class Veraero : ModProjectile
+    public class Veraero : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Veraero");     //The English name of the Projectile

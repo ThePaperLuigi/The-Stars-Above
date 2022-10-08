@@ -1,13 +1,13 @@
 ﻿
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs.TagDamage;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles
 {
-	public class ApalistikProjectile : ModProjectile
+    public class ApalistikProjectile : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Apalistik");

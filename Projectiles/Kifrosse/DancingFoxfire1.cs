@@ -1,14 +1,13 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.Kifrosse
 {
-	public class DancingFoxfire1 : ModProjectile
+    public class DancingFoxfire1 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("DancingFoxfire1");     //The English name of the projectile

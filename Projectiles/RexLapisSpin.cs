@@ -1,13 +1,11 @@
 ﻿
 using Microsoft.Xna.Framework;
-using System.Security.Policy;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles
 {
-	public class RexLapisSpin : ModProjectile
+    public class RexLapisSpin : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Rex Lapis");

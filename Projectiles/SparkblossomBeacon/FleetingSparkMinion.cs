@@ -2,20 +2,17 @@
 using Microsoft.Xna.Framework;
 
 using Terraria;
-using Terraria.GameContent;
 using Terraria.ID;
-using Terraria.Graphics.Shaders;
 using static Terraria.ModLoader.ModContent;
 using System;
 using Terraria.ModLoader;
-using StarsAbove.Buffs;
 using StarsAbove.Buffs.SparkblossomBeacon;
 using Terraria.Audio;
 
 namespace StarsAbove.Projectiles.SparkblossomBeacon
 {
 
-	public class FleetingSparkMinion : ModProjectile
+    public class FleetingSparkMinion : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

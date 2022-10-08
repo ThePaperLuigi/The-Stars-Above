@@ -1,16 +1,14 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Items.Essences;
-using System;
-using Terraria;using Terraria.DataStructures;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.UI;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Items
 {
-	public class PhantomInTheMirror : ModItem
+    public class PhantomInTheMirror : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

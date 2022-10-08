@@ -1,9 +1,8 @@
-using Terraria;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Backgrounds
 {
-	public class BleachedWorldBG : ModSurfaceBackgroundStyle
+    public class BleachedWorldBG : ModSurfaceBackgroundStyle
 	{
 		 
 			

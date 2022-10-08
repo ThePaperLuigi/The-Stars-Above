@@ -1,9 +1,8 @@
-using Terraria;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Backgrounds
 {
-	public class SeaOfStarsBG : ModSurfaceBackgroundStyle
+    public class SeaOfStarsBG : ModSurfaceBackgroundStyle
 	{
 		 
 			

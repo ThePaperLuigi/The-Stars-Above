@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,7 +7,7 @@ using Terraria.Audio;
 
 namespace StarsAbove.Projectiles.Takodachi
 {
-	public class TakodachiRound : ModProjectile
+    public class TakodachiRound : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Takonomicon");     //The English name of the projectile

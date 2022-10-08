@@ -1,12 +1,11 @@
 ﻿
 using Microsoft.Xna.Framework;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.SkyStriker
 {
-	public class SkyStrikerRailgun : ModProjectile
+    public class SkyStrikerRailgun : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Armament Of The Sky Striker");

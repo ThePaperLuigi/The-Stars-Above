@@ -1,8 +1,6 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
-using Terraria;using Terraria.GameContent;
-using Terraria.Graphics.Shaders;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -10,7 +8,7 @@ using Terraria.Audio;
 
 namespace StarsAbove.Projectiles.BloodBlade
 {
-	public class BloodArtPrep : ModProjectile
+    public class BloodArtPrep : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Blood Blade");     //The English name of the projectile

@@ -1,15 +1,15 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Items.Essences;
-using Terraria;using Terraria.DataStructures;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 
 namespace StarsAbove.Items
 {
-	public class MementoMuse : ModItem
+    public class MementoMuse : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

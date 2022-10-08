@@ -1,17 +1,15 @@
 ﻿
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs.HunterSymphony;
-using System.Security.Policy;
 using Terraria;
 using Terraria.Audio;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.HunterSymphony
 {
-	public class MusicRadiate : ModProjectile
+    public class MusicRadiate : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Hunter's Symphony");
@@ -54,8 +52,7 @@ namespace StarsAbove.Projectiles.HunterSymphony
 						Player other = Main.player[i];
 						if (other.active && !other.dead && other.team == player.team)
 						{
-							NetMessage.SendData(MessageID.AddPlayerBuff, -1, -1, null, i, BuffType<ChallengerSong>(), 1200);
-							other.AddBuff(BuffType<ChallengerSong>(), 1200);  //
+							other.AddBuff(BuffType<ChallengerSong>(), 1200, quiet:false);  //
 							for (int d = 0; d < 15; d++)
 							{
 								Dust.NewDust(other.Center, 0, 0, DustID.FireworkFountain_Red, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 0.8f);
@@ -80,8 +77,7 @@ namespace StarsAbove.Projectiles.HunterSymphony
 						Player other = Main.player[i];
 						if (other.active && !other.dead && other.team == player.team)
 						{
-							NetMessage.SendData(MessageID.AddPlayerBuff, -1, -1, null, i, BuffType<BracingSong>(), 1200);
-							other.AddBuff(BuffType<BracingSong>(), 1200);  //
+							other.AddBuff(BuffType<BracingSong>(), 1200, quiet: false); ;  //
 							for (int d = 0; d < 15; d++)
 							{
 								Dust.NewDust(other.Center, 0, 0, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 0.8f);
@@ -103,10 +99,11 @@ namespace StarsAbove.Projectiles.HunterSymphony
 						Player other = Main.player[i];
 						if (other.active && !other.dead && other.team == player.team)
 						{
-
+							player.statLife += 40;
+							other.statLife += 40;
 							NetMessage.SendData(MessageID.PlayerHeal, -1, -1, null, i, 40);
 							NetMessage.SendData(MessageID.AddPlayerBuff, -1, -1, null, i, BuffType<VitalitySong>(), 1200);
-							other.AddBuff(BuffType<VitalitySong>(), 1200);  //
+							other.AddBuff(BuffType<VitalitySong>(), 1200, quiet: false); ;  //
 							for (int d = 0; d < 15; d++)
 							{
 								Dust.NewDust(other.Center, 0, 0, DustID.FireworkFountain_Green, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 0.8f);
@@ -128,8 +125,7 @@ namespace StarsAbove.Projectiles.HunterSymphony
 						Player other = Main.player[i];
 						if (other.active && !other.dead && other.team == player.team)
 						{
-							NetMessage.SendData(MessageID.AddPlayerBuff, -1, -1, null, i, BuffType<ExpertiseSong>(), 1200);
-							other.AddBuff(BuffType<ExpertiseSong>(), 1200);  //
+							other.AddBuff(BuffType<ExpertiseSong>(), 1200, quiet: false); ;  //
 																			//p.AddBuff(BuffType<ExpertiseSong>(), 1200);  //
 							for (int d = 0; d < 15; d++)
 							{
@@ -152,8 +148,7 @@ namespace StarsAbove.Projectiles.HunterSymphony
 						Player other = Main.player[i];
 						if (other.active && !other.dead && other.team == player.team)
 						{
-							NetMessage.SendData(MessageID.AddPlayerBuff, -1, -1, null, i, BuffType<InfernalMelody>(), 360);
-							other.AddBuff(BuffType<InfernalMelody>(), 360);
+							other.AddBuff(BuffType<InfernalMelody>(), 360, quiet: false); ;
 							//p.AddBuff(BuffType<ExpertiseSong>(), 1200);  //
 							for (int d = 0; d < 15; d++)
 							{
@@ -172,8 +167,8 @@ namespace StarsAbove.Projectiles.HunterSymphony
 					//player.AddBuff(BuffType<HunterSymphonyCooldown>(), 1200);
 				}
 			}
-			
 
+			Projectile.netUpdate = true;
 			Projectile.damage = 0;
 			if(start)
             {

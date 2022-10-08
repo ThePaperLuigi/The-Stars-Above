@@ -1,29 +1,15 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using ReLogic.Utilities;
 using System;
-
-using Terraria.GameContent;
 
 using Terraria.ID;
 
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-using StarsAbove;
-using StarsAbove.Items;
-using StarsAbove.Projectiles;
-using StarsAbove.Buffs;
-using StarsAbove.NPCs;
-
-using StarsAbove.Items.Prisms;
-using StarsAbove.UI.StellarNova;
-
 namespace StarsAbove.Projectiles.Ozma
 {
-	public class OzmaSpikePortal : ModProjectile
+    public class OzmaSpikePortal : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Ozma Ascendant");     //The English name of the projectile

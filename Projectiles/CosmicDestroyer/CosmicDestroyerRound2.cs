@@ -1,13 +1,12 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 
 namespace StarsAbove.Projectiles.CosmicDestroyer
 {
-	public class CosmicDestroyerRound2 : ModProjectile
+    public class CosmicDestroyerRound2 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Cosmic Destroyer");     //The English name of the projectile

@@ -1,47 +1,16 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using ReLogic.Utilities;
 using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.IO;
-using System.Security.Cryptography;
-using System.Text;
 
 using Terraria.DataStructures;
-using Terraria.Enums;
 using Terraria.GameContent;
-using Terraria.GameContent.Achievements;
-using Terraria.GameContent.Events;
-using Terraria.GameContent.Tile_Entities;
-using Terraria.GameContent.UI;
-using Terraria.GameInput;
-using Terraria.Graphics.Capture;
-using Terraria.Graphics.Effects;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
-using Terraria.IO;
 using Terraria.Localization;
-using Terraria.ObjectData;
-using Terraria.Social;
-using Terraria.UI;
-using Terraria.UI.Chat;
-using Terraria.UI.Gamepad;
-using Terraria.Utilities;
-using Terraria.WorldBuilding;
 using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using Terraria.ModLoader.IO;
-using StarsAbove;
-using StarsAbove.Items;
-using StarsAbove.Projectiles;
 using StarsAbove.Buffs;
-using StarsAbove.NPCs;
-using Microsoft.Xna.Framework.Audio;
-
-using StarsAbove.Dusts;
 
 using Terraria.Audio;
 using Terraria.GameContent.Bestiary;
@@ -167,9 +136,7 @@ namespace StarsAbove.NPCs
             // We can use AddRange instead of calling Add multiple times in order to add multiple items at once
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 
-                new FlavorTextBestiaryInfoElement("An incredibly powerful mage, the Painted Witch once ruled a planet entirely 'drawn' by her. " +
-                "Ever the trickster, she mastered expert magecraft simply to play pranks upon the works of her colleagues, a testament to her ingenuity.  " +
-                "She met her end at the hands of the First Starbearer after a long conflict.")
+                new FlavorTextBestiaryInfoElement($"Mods.StarsAbove.Bestiary.{Name}")
             });
         }
         public override void ModifyNPCLoot(NPCLoot npcLoot)

@@ -1,12 +1,11 @@
 ﻿
 using Microsoft.Xna.Framework;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.TheOnlyThingIKnowForReal
 {
-	public class TheOnlyThingIKnowForRealSheathe : ModProjectile
+    public class TheOnlyThingIKnowForRealSheathe : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("The Only Thing I Know For Real");

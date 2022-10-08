@@ -1,36 +1,14 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
 using Terraria;
-using Terraria.Graphics.Effects;
 using SubworldLibrary;
 using Terraria.WorldBuilding;
 using System.Collections.Generic;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 using static Terraria.ModLoader.ModContent;
-using Terraria.ModLoader.IO;
-using StarsAbove;
-using StarsAbove.Items;
-using StarsAbove.Projectiles;
-using StarsAbove.Buffs;
-using StarsAbove.NPCs;
-using Microsoft.Xna.Framework.Audio;
-
-using StarsAbove.Dusts;
-using StarsAbove.Items.Consumables;
-using System.Diagnostics.Contracts;
-using StarsAbove.Items.Prisms;
-using StarsAbove.UI.StellarNova;
-using SubworldLibrary;
-using StarsAbove.Projectiles.UltimaThule;
-using StarsAbove.Projectiles.Otherworld;
 using Terraria.GameContent.Generation;
 
 namespace StarsAbove
 {
-	public class JungleTower : Subworld
+    public class JungleTower : Subworld
 	{
 		public override int Width => 1750;
 		public override int Height => 750;

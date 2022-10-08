@@ -1,12 +1,11 @@
 ﻿
 using Microsoft.Xna.Framework;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.Ozma
 {
-	public class OzmaAttack5Slash2 : ModProjectile
+    public class OzmaAttack5Slash2 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Ozma Ascendant");

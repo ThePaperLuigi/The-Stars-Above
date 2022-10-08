@@ -1,14 +1,12 @@
 ﻿
 using Microsoft.Xna.Framework;
 using System;
-using System.Security.Policy;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles
 {
-	public class HullwroughtSpinDamage : ModProjectile
+    public class HullwroughtSpinDamage : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Hullwrought");

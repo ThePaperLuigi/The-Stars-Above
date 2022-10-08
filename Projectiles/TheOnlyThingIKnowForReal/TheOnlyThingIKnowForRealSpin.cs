@@ -2,14 +2,13 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.TheOnlyThingIKnowForReal
 {
-	public class TheOnlyThingIKnowForRealSpin : ModProjectile
+    public class TheOnlyThingIKnowForRealSpin : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("The Only Thing I Know For Real");

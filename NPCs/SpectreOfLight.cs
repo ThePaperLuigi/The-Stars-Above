@@ -1,4 +1,3 @@
-using IL.Terraria.GameContent.Achievements;
 using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.ID;
@@ -7,8 +6,8 @@ using Terraria.ModLoader.Utilities;
 
 namespace StarsAbove.NPCs
 {
-	// Party Zombie is a pretty basic clone of a vanilla NPC. To learn how to further adapt vanilla NPC behaviors, see https://github.com/tModLoader/tModLoader/wiki/Advanced-Vanilla-Code-Adaption#example-npc-npc-clone-with-modified-projectile-hoplite
-	public class SpectreOfLight : ModNPC
+    // Party Zombie is a pretty basic clone of a vanilla NPC. To learn how to further adapt vanilla NPC behaviors, see https://github.com/tModLoader/tModLoader/wiki/Advanced-Vanilla-Code-Adaption#example-npc-npc-clone-with-modified-projectile-hoplite
+    public class SpectreOfLight : ModNPC
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Spectre Of Light");
@@ -26,7 +25,7 @@ namespace StarsAbove.NPCs
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 
 				new MoonLordPortraitBackgroundProviderBestiaryInfoElement(), // Plain black background
-				new FlavorTextBestiaryInfoElement("An otherworldy hero, summoned forth by the First Starbearer to assail this land.")
+				new FlavorTextBestiaryInfoElement($"Mods.StarsAbove.Bestiary.{Name}")
 			});
 		}
 

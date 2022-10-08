@@ -1,25 +1,9 @@
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Content;
-using StarsAbove.Backgrounds;
-using SubworldLibrary;
-using System.Collections.Generic;
-using System.IO;
-using Terraria;
 using Terraria.Audio;
-using Terraria.DataStructures;
-using Terraria.GameContent.Generation;
-using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.ModLoader.IO;
-using Terraria.WorldBuilding;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove
 {
-	public class StarsAboveAudio : ModSystem
+    public class StarsAboveAudio : ModSystem
 	{
         #region Starfarer Voice Lines
 

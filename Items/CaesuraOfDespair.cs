@@ -2,17 +2,16 @@
 using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles;
 using System;
-using Terraria;using Terraria.DataStructures;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
-using Terraria.Graphics.Shaders;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Items
 {
-	public class CaesuraOfDespair : ModItem
+    public class CaesuraOfDespair : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

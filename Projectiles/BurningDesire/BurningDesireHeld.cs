@@ -1,22 +1,13 @@
 ﻿
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using StarsAbove.Buffs.MorningStar;
-using StarsAbove.Buffs.RedMage;
-using StarsAbove.Buffs.Skofnung;
-using System;
-using System.Security.Policy;
 using Terraria;
 using Terraria.Audio;
-using Terraria.GameContent;
-using Terraria.Graphics;
-using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.BurningDesire
 {
-	public class BurningDesireHeld : ModProjectile
+    public class BurningDesireHeld : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{
@@ -53,10 +44,10 @@ namespace StarsAbove.Projectiles.BurningDesire
 		}
 		public override void AI()
 		{
-			Player player = Main.player[Projectile.owner];
 			Player projOwner = Main.player[Projectile.owner];
+			Projectile.scale = 0.7f;
 			if (firstSpawn)
-			{
+			{//Place it high up when it first spawns (can be done in setDefaults too)
 				DrawOriginOffsetY = -400;
 				firstSpawn = false;
 			}
@@ -68,17 +59,17 @@ namespace StarsAbove.Projectiles.BurningDesire
             {
 				spawnProgress = 1;
             }
-			//if (Projectile.ai[0] < 10)
-            //{
+			//Lerp towards the player
 			newOffsetY = (int)MathHelper.Lerp(DrawOriginOffsetY, 20, spawnProgress);
 			DrawOriginOffsetY = newOffsetY;
-			
-			//}
+
 			Projectile.ai[0]++;
+
+			//Spawn dust after some time has passed.
 			if(Projectile.ai[0] > 8 && dustSpawn)
             {
-				player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
-				SoundEngine.PlaySound(StarsAboveAudio.SFX_BlazeEquip, player.Center);
+				projOwner.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
+				SoundEngine.PlaySound(StarsAboveAudio.SFX_BlazeEquip, projOwner.Center);
 
 				for (int i = 0; i < 40; i++)
 				{
@@ -116,8 +107,9 @@ namespace StarsAbove.Projectiles.BurningDesire
 				}
 				dustSpawn = false;
 			}
+
 			if(Projectile.ai[0] > 8)
-			{//Intro animation finished...
+			{
 				DrawOriginOffsetX = Main.rand.NextFloat(-1.1f, 1.1f);
 				Projectile.alpha -= 50;
 				
@@ -126,58 +118,48 @@ namespace StarsAbove.Projectiles.BurningDesire
             {
 				Projectile.alpha -= 10;
 			}
-			Projectile.scale = 0.7f;
-			if (!player.GetModPlayer<StarsAbovePlayer>().BurningDesireHeld)
+
+			if (!projOwner.GetModPlayer<StarsAbovePlayer>().BurningDesireHeld)
             {
 				Projectile.Kill();
             }
+
 			Projectile.timeLeft = 10;
-			if(player.ownedProjectileCounts[ProjectileType<BurningDesireStab>()] >= 1 || player.ownedProjectileCounts[ProjectileType<BurningDesireSlash1>()] >= 1 || player.ownedProjectileCounts[ProjectileType<BurningDesireSlash2>()] >= 1)
-            {
+
+			if(projOwner.ownedProjectileCounts[ProjectileType<BurningDesireStab>()] >= 1 || projOwner.ownedProjectileCounts[ProjectileType<BurningDesireSlash1>()] >= 1 || projOwner.ownedProjectileCounts[ProjectileType<BurningDesireSlash2>()] >= 1)
+            {//If an attack is active
 				Projectile.alpha = 255;
             }
 			else
             {
 				//Arms will hold the weapon.
-				player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (player.Center -
+				projOwner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (projOwner.Center -
 					new Vector2(Projectile.Center.X - 10, (Projectile.Center.Y + DrawOriginOffsetY))
 					).ToRotation() + MathHelper.PiOver2);
-				player.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.Full, (player.Center -
+				projOwner.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.Full, (projOwner.Center -
 					new Vector2(Projectile.Center.X + 10, (Projectile.Center.Y + DrawOriginOffsetY))
 					).ToRotation() + MathHelper.PiOver2);
 				
 			}
 			
 
-			player.heldProj = Projectile.whoAmI;
-
-			
-
-			//Smoke vfx.
-			//Dust.NewDust(new Vector2(Projectile.Center.X, Projectile.Center.Y), 60, 0, 31, 0f + Main.rand.Next(-2, 2), 0f + Main.rand.Next(-1, 5), 100, default(Color), 0.6f);
-			
-
+			projOwner.heldProj = Projectile.whoAmI;
 			Vector2 ownerMountedCenter = projOwner.RotatedRelativePoint(projOwner.MountedCenter, true);
+			Projectile.position.Y = ownerMountedCenter.Y - (float)(Projectile.height / 2);
 			Projectile.direction = projOwner.direction;
-			
-			
 			Projectile.spriteDirection = Projectile.direction;
-			Projectile.rotation = player.velocity.X * 0.05f;
+			Projectile.rotation = projOwner.velocity.X * 0.05f;
 
-			//Projectile.position.X = player.Center.X;
 			if (Projectile.spriteDirection == 1)
-			{
-				Projectile.position.X = player.Center.X - 104;
+			{//Adjust when facing the other direction
+				Projectile.position.X = projOwner.Center.X - 104;
 
 			}
 			else
 			{
-				Projectile.position.X = player.Center.X - 144;
+				Projectile.position.X = projOwner.Center.X - 144;
 
 			}
-			Projectile.position.Y = ownerMountedCenter.Y - (float)(Projectile.height / 2);
-
-			//This is 0 unless a auto attack has been initated, in which it'll tick up.
 
 
 			if (Projectile.alpha < 0)
@@ -188,14 +170,6 @@ namespace StarsAbove.Projectiles.BurningDesire
 			{
 				Projectile.alpha = 255;
 			}
-
-
-
-			
-			
-
-
-			
 		}
 		
 		public override void Kill(int timeLeft)

@@ -1,14 +1,13 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Effects;
 using System;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles.TheOnlyThingIKnowForReal
 {
-	public class GuntriggerParryProjectile : ModProjectile
+    public class GuntriggerParryProjectile : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("The Only Thing I Know For Real");     //The English name of the projectile

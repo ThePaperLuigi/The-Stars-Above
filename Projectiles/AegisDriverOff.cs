@@ -1,15 +1,12 @@
 ﻿
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System.Security.Policy;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.Graphics.Shaders;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles
 {
-	public class AegisDriverOff : ModProjectile
+    public class AegisDriverOff : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

@@ -1,47 +1,12 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using ReLogic.Utilities;
 using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.IO;
-using System.Security.Cryptography;
-using System.Text;
-
-using Terraria.DataStructures;
-using Terraria.Enums;
 using Terraria.GameContent;
-using Terraria.GameContent.Achievements;
-using Terraria.GameContent.Events;
-using Terraria.GameContent.Tile_Entities;
-using Terraria.GameContent.UI;
-using Terraria.GameInput;
-using Terraria.Graphics.Capture;
-using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
 using Terraria.ID;
-using Terraria.IO;
 using Terraria.Localization;
-using Terraria.ObjectData;
-using Terraria.Social;
-using Terraria.UI;
-using Terraria.UI.Chat;
-using Terraria.UI.Gamepad;
-using Terraria.Utilities;
-using Terraria.WorldBuilding;
 using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using Terraria.ModLoader.IO;
-using StarsAbove;
-using StarsAbove.Items;
-using StarsAbove.Projectiles;
-using StarsAbove.Buffs;
-using StarsAbove.NPCs;
-using Microsoft.Xna.Framework.Audio;
-
-using StarsAbove.Dusts;
 
 using Terraria.Audio;
 using Terraria.GameContent.Bestiary;
@@ -61,10 +26,10 @@ namespace StarsAbove.NPCs
         {
             NPC.boss = true;
             NPC.aiStyle = 0;
-            NPC.lifeMax = 22000;
+            NPC.lifeMax = 50000;
 
             NPC.damage = 0;
-            NPC.defense = 10;
+            NPC.defense = 0;
             NPC.knockBackResist = 0f;
             NPC.width = 220;
             NPC.height = 270;
@@ -163,13 +128,15 @@ namespace StarsAbove.NPCs
 
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 
-                new FlavorTextBestiaryInfoElement("The enigmatic Starfarer Perseus. His outward appearance is that of utmost confidence... but he's just kind of a dork trying to look cool. His sisters agree on this.")
+                new FlavorTextBestiaryInfoElement($"Mods.StarsAbove.Bestiary.{Name}")
                 });
 
         }
         public override void BossLoot(ref string name, ref int potionType)
         {
             potionType = ItemID.HealingPotion;
+            
+            //Because you can not hit this boss, loot will be dropped seperately.
             
 
             NPC.SetEventFlagCleared(ref DownedBossSystem.downedVagrant, -1);
@@ -212,9 +179,11 @@ namespace StarsAbove.NPCs
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             // Do NOT misuse the ModifyNPCLoot and OnKill hooks: the former is only used for registering drops, the latter for everything else
+            //Chance for a Prism
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.SpatialPrism>(), 4));
 
             // Add the treasure bag using ItemDropRule.BossBag (automatically checks for expert mode)
-            npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<VagrantBossBag>()));
+            //npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<VagrantBossBag>()));
 
             // Trophies are spawned with 1/10 chance
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.BossLoot.VagrantTrophyItem>(), 10));
@@ -227,6 +196,7 @@ namespace StarsAbove.NPCs
 
             // All our drops here are based on "not expert", meaning we use .OnSuccess() to add them into the rule, which then gets added
             LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
+            LeadingConditionRule ExpertRule = new LeadingConditionRule(new Conditions.IsExpert());
 
             // Notice we use notExpertRule.OnSuccess instead of npcLoot.Add so it only applies in normal mode
             // Boss masks are spawned with 1/7 chance
@@ -249,8 +219,20 @@ namespace StarsAbove.NPCs
             };
 
             notExpertRule.OnSuccess(new DropOneByOne(itemType, parameters));
-            
+            var parametersExpert = new DropOneByOne.Parameters()
+            {
+                ChanceNumerator = 1,
+                ChanceDenominator = 1,
+                MinimumStackPerChunkBase = 1,
+                MaximumStackPerChunkBase = 1,
+                MinimumItemDropsCount = 22,
+                MaximumItemDropsCount = 35,
+            };
+
+            ExpertRule.OnSuccess(new DropOneByOne(itemType, parametersExpert));
+
             // Finally add the leading rule
+            npcLoot.Add(ExpertRule);
             npcLoot.Add(notExpertRule);
         }
 
@@ -261,7 +243,7 @@ namespace StarsAbove.NPCs
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
             scale = 2f;
-            return null;
+            return false;
         }
 
        

@@ -1,4 +1,3 @@
-using IL.Terraria.GameContent.Achievements;
 using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.Graphics.Shaders;
@@ -7,8 +6,8 @@ using Terraria.ModLoader;
 
 namespace StarsAbove.NPCs
 {
-	// Party Zombie is a pretty basic clone of a vanilla NPC. To learn how to further adapt vanilla NPC behaviors, see https://github.com/tModLoader/tModLoader/wiki/Advanced-Vanilla-Code-Adaption#example-npc-npc-clone-with-modified-projectile-hoplite
-	public class PaintedAttendantA : ModNPC
+    // Party Zombie is a pretty basic clone of a vanilla NPC. To learn how to further adapt vanilla NPC behaviors, see https://github.com/tModLoader/tModLoader/wiki/Advanced-Vanilla-Code-Adaption#example-npc-npc-clone-with-modified-projectile-hoplite
+    public class PaintedAttendantA : ModNPC
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Living Brush");
@@ -23,7 +22,7 @@ namespace StarsAbove.NPCs
 			// We can use AddRange instead of calling Add multiple times in order to add multiple items at once
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 
-				new FlavorTextBestiaryInfoElement("Utilized by Penthesilea to... smack you in the face. The best mages know when physical violence is the answer.")
+				new FlavorTextBestiaryInfoElement($"Mods.StarsAbove.Bestiary.{Name}")
 			});
 		}
 		public override void SetDefaults() {

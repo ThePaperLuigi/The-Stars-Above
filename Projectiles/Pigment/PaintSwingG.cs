@@ -1,12 +1,11 @@
 using Microsoft.Xna.Framework;
-using Terraria;using Terraria.GameContent;
-using Terraria.ID;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles.Pigment
 {
-	//
-	public class PaintSwingG : ModProjectile
+    //
+    public class PaintSwingG : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

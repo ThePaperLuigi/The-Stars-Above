@@ -1,19 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
-using StarsAbove.Buffs;
 using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles;
-using System.Security.Policy;
-using Terraria;using Terraria.DataStructures;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Items
 {
-	public class Drachenlance : ModItem
+    public class Drachenlance : ModItem
 	{
 		public override void SetStaticDefaults() {
 			Tooltip.SetDefault("Use right click to perform a Jump into the air (12 second cooldown) and become imbued with the [c/6090EC:Blood of the Dragon] for 5 seconds" +

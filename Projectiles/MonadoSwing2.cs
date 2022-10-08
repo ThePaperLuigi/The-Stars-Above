@@ -1,12 +1,11 @@
 using Microsoft.Xna.Framework;
-using Terraria;using Terraria.GameContent;
-using Terraria.ID;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles
 {
-	//
-	public class MonadoSwing2 : ModProjectile
+    //
+    public class MonadoSwing2 : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

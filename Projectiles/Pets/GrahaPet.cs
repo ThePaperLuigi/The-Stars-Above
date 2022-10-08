@@ -1,15 +1,10 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using StarsAbove;
-using System;
-using Terraria;using Terraria.GameContent;
-using Terraria.Graphics.Shaders;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles.Pets
 {
-	public class GrahaPet : ModProjectile
+    public class GrahaPet : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

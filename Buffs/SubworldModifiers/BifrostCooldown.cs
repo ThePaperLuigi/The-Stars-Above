@@ -1,11 +1,5 @@
-﻿using StarsAbove.NPCs;
-using System.Net.WebSockets;
-using Terraria;using Terraria.ID;
+﻿using Terraria;
 using Terraria.ModLoader;
-
-using Terraria;using Terraria.ID;
-using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Buffs.SubworldModifiers
 {

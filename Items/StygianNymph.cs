@@ -1,23 +1,12 @@
 using Microsoft.Xna.Framework;
-using Terraria;using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
-using StarsAbove.Projectiles;
-using StarsAbove.Buffs;
-using static Terraria.ModLoader.ModContent;
-using Microsoft.Xna.Framework;
-using Terraria;using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.Utilities;
-using System.Collections.Generic;
-using System.Linq;
+using Terraria;
 using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
 using StarsAbove.Projectiles;
+using static Terraria.ModLoader.ModContent;
 using System;
-using Terraria.Localization;
 using StarsAbove.Items.Essences;
-using StarsAbove.Items.Prisms;
 using Terraria.Audio;
 
 namespace StarsAbove.Items

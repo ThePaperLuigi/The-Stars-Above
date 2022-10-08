@@ -1,15 +1,13 @@
 
-using Terraria;using Terraria.DataStructures;
+using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 
 namespace StarsAbove.Items
 {
-	
-	public class Umbral : ModItem
+
+    public class Umbral : ModItem
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Umbral Item");

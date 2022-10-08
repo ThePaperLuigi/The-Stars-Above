@@ -1,11 +1,10 @@
-using Microsoft.Xna.Framework;
-using Terraria;using Terraria.ID;
+using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Buffs
 {
-	public class GuilmonPetBuff : ModBuff
+    public class GuilmonPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Digital Monster");

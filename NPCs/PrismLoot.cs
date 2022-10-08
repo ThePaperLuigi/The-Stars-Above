@@ -1,4 +1,3 @@
-using IL.Terraria.GameContent.Achievements;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -11,8 +10,8 @@ using Terraria.ModLoader.Utilities;
 
 namespace StarsAbove.NPCs
 {
-	// Party Zombie is a pretty basic clone of a vanilla NPC. To learn how to further adapt vanilla NPC behaviors, see https://github.com/tModLoader/tModLoader/wiki/Advanced-Vanilla-Code-Adaption#example-npc-npc-clone-with-modified-projectile-hoplite
-	public class PrismLoot : ModNPC
+    // Party Zombie is a pretty basic clone of a vanilla NPC. To learn how to further adapt vanilla NPC behaviors, see https://github.com/tModLoader/tModLoader/wiki/Advanced-Vanilla-Code-Adaption#example-npc-npc-clone-with-modified-projectile-hoplite
+    public class PrismLoot : ModNPC
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Prismatic Core");
@@ -30,7 +29,7 @@ namespace StarsAbove.NPCs
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 
 				
-				new FlavorTextBestiaryInfoElement("The latent magical energy of Prismatic Cores can sometimes influence them to drift around the galaxy. Catch one, and you'll be rewarded!")
+				new FlavorTextBestiaryInfoElement($"Mods.StarsAbove.Bestiary.{Name}")
 			});
 		}
 

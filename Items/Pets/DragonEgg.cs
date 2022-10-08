@@ -1,13 +1,13 @@
 using StarsAbove.Items.Prisms;
-using Terraria;using Terraria.DataStructures;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using StarsAbove.Items.Materials;
-using static Terraria.ModLoader.ModContent; using Microsoft.Xna.Framework;
+using static Terraria.ModLoader.ModContent;
+using Microsoft.Xna.Framework;
 
 namespace StarsAbove.Items.Pets
 {
-	public class DragonEgg : ModItem
+    public class DragonEgg : ModItem
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Draconic Egg");

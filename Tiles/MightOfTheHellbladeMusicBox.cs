@@ -1,13 +1,14 @@
 using Microsoft.Xna.Framework;
-using Terraria;using Terraria.ID;
+using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 using Terraria.ObjectData;
 using Terraria.DataStructures;
+using Terraria.Localization;
 
 namespace StarsAbove.Tiles
 {
-	internal class MightOfTheHellbladeMusicBox : ModTile
+    internal class MightOfTheHellbladeMusicBox : ModTile
 	{
 		public override void SetStaticDefaults()
 		{
@@ -19,9 +20,7 @@ namespace StarsAbove.Tiles
 			TileObjectData.newTile.DrawYOffset = 2;
 			TileObjectData.addTile(Type);
 			TileID.Sets.DisableSmartCursor[Type] = true;
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Music Box");
-			AddMapEntry(new Color(200, 200, 200), name);
+			AddMapEntry(new Color(200, 200, 200), Language.GetText("ItemName.MusicBox"));
 		}
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)

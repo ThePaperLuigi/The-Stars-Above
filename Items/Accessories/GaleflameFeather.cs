@@ -1,11 +1,10 @@
-﻿using Terraria;using Terraria.DataStructures;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Utilities;
 
 namespace StarsAbove.Items.Accessories
 {
-	public class GaleflameFeather : ModItem
+    public class GaleflameFeather : ModItem
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Galeflame Feather");

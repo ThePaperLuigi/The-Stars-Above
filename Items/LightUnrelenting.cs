@@ -1,17 +1,17 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Items.Essences;
 using StarsAbove.Items.Materials;
-using Terraria;using Terraria.DataStructures;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 
 namespace StarsAbove.Items
 {
-	public class LightUnrelenting : ModItem
+    public class LightUnrelenting : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

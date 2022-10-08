@@ -1,17 +1,12 @@
 
 using Microsoft.Xna.Framework;
-using Terraria;using Terraria.DataStructures;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Utilities;
 using static Terraria.ModLoader.ModContent;
-using System.Collections.Generic;
-using System.Linq;
-using Terraria.DataStructures;
-using StarsAbove.Projectiles;
 using System;
 using StarsAbove.Items.Essences;
-using Terraria.Localization;
 using StarsAbove.Projectiles.Takodachi;
 using StarsAbove.Buffs;
 using Terraria.Audio;
@@ -19,7 +14,7 @@ using Terraria.GameContent.Creative;
 
 namespace StarsAbove.Items
 {
-	public class AncientBook : ModItem
+    public class AncientBook : ModItem
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Takonomicon");

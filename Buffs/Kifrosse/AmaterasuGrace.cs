@@ -1,10 +1,9 @@
-using Terraria;using Terraria.ID;
+using Terraria;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Buffs.Kifrosse
 {
-	public class AmaterasuGrace : ModBuff
+    public class AmaterasuGrace : ModBuff
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Amaterasu's Grace");

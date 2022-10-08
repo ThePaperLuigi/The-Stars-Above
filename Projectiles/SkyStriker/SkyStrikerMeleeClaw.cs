@@ -1,12 +1,11 @@
 ﻿
 using Microsoft.Xna.Framework;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.SkyStriker
 {
-	public class SkyStrikerMeleeClaw : ModProjectile
+    public class SkyStrikerMeleeClaw : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Sky Striker Claw");

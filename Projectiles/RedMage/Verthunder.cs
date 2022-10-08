@@ -1,15 +1,11 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Audio;
-using StarsAbove.Buffs;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.RedMage
 {
-	public class Verthunder : ModProjectile
+    public class Verthunder : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Verthunder");     //The English name of the Projectile

@@ -1,25 +1,16 @@
 using Microsoft.Xna.Framework;
-using Terraria;using Terraria.DataStructures;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using StarsAbove.Projectiles;
-using StarsAbove.Buffs;
 using static Terraria.ModLoader.ModContent;
-using Microsoft.Xna.Framework;
-using Terraria;using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.Utilities;
-using System.Collections.Generic;
-using System.Linq;
-using Terraria.DataStructures;
-using Terraria.Localization;
 using StarsAbove.Items.Essences;
 using Terraria.Audio;
 
 namespace StarsAbove.Items
 {
-	public class VoiceOfTheFallen : ModItem
+    public class VoiceOfTheFallen : ModItem
 	{
 		public override void SetStaticDefaults() {
 			Tooltip.SetDefault("Critical strikes deal 15x base damage" +

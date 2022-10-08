@@ -1,24 +1,16 @@
-using StarsAbove;
-using StarsAbove.Dusts;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using Terraria;using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.Utilities;
-using System.Collections.Generic;
-using System.Linq;
+using Terraria;
 using Terraria.DataStructures;
 using static Terraria.ModLoader.ModContent;
-using Terraria.Localization;
 using StarsAbove.Items.Essences;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
 
 namespace StarsAbove.Items
 {
-	public class DerFreischutz : ModItem
+    public class DerFreischutz : ModItem
 	{
 		public override void SetStaticDefaults() {
 			Tooltip.SetDefault("Bullets will fire from your cursor" +

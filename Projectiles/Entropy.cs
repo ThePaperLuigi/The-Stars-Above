@@ -1,15 +1,12 @@
 ﻿
 using Microsoft.Xna.Framework;
-using System;
-using Terraria;using Terraria.GameContent;
-using Terraria.Graphics.Shaders;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles
 {
-	public class Entropy : ModProjectile
+    public class Entropy : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Entropy");

@@ -1,14 +1,11 @@
 ﻿
 using Microsoft.Xna.Framework;
-using System.Security.Policy;
-using Terraria;using Terraria.GameContent;
-using Terraria.ID;
+using Terraria;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.BurningDesire
 {
-	public class ChainsawFollowUpExplosion : ModProjectile
+    public class ChainsawFollowUpExplosion : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Burning Desire");

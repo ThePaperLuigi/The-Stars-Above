@@ -1,14 +1,9 @@
-﻿
-using Microsoft.Xna.Framework;
-using System.Security.Policy;
-using Terraria;using Terraria.GameContent;
-using Terraria.ID;
+﻿using Terraria;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.AshenAmbition
 {
-	public class AshenAmbitionExecute : ModProjectile
+    public class AshenAmbitionExecute : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Ashen Ambition");

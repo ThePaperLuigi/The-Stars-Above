@@ -1,12 +1,10 @@
-using Microsoft.Xna.Framework;
-using Terraria;using Terraria.GameContent;
-using Terraria.ID;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles
 {
-	//
-	public class InugamiRipsaw : ModProjectile
+    //
+    public class InugamiRipsaw : ModProjectile
 	{
 		public override void SetDefaults() {
 			Projectile.width = 26;

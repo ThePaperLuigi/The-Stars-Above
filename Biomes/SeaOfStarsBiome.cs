@@ -1,14 +1,13 @@
 ﻿
 using Microsoft.Xna.Framework;
 using SubworldLibrary;
-using System;
 using Terraria;
 using Terraria.Graphics.Capture;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Biomes
 {
-	public class SeaOfStarsBiome : ModBiome
+    public class SeaOfStarsBiome : ModBiome
 	{
 
 		// Use SetStaticDefaults to assign the display name

@@ -1,14 +1,14 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using Terraria.Audio;
 
 namespace StarsAbove.Projectiles.AshenAmbition
 {
-	public class AshenAmbitionSpear : ModProjectile
+    public class AshenAmbitionSpear : ModProjectile
 	{
 		// The folder path to the flail chain sprite
 		private const string ChainTexturePath = "StarsAbove/Projectiles/AshenAmbition/AshenAmbitionChain";

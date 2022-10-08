@@ -1,10 +1,8 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Items.Essences;
-using StarsAbove.Projectiles;
-using Terraria;using Terraria.DataStructures;
-using Terraria.Graphics.Shaders;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
@@ -12,8 +10,8 @@ using Terraria.GameContent.Creative;
 
 namespace StarsAbove.Items
 {
-	//ported from my tAPI mod because I don't want to make more artwork
-	public class InugamiRipsaw : ModItem
+    //ported from my tAPI mod because I don't want to make more artwork
+    public class InugamiRipsaw : ModItem
 	{
 		public override void SetStaticDefaults() {
 			Tooltip.SetDefault("Right click to activate Berserker Mode for 5 seconds, increasing damage dealt but dealing damage to yourself (20 second cooldown)" +

@@ -3,9 +3,7 @@ using StarsAbove.Items.Essences;
 using System;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.Graphics.Shaders;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
@@ -13,7 +11,7 @@ using Terraria.GameContent.Creative;
 
 namespace StarsAbove.Items
 {
-	public class HollowheartAlbion : ModItem
+    public class HollowheartAlbion : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

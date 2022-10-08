@@ -1,13 +1,10 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Audio;
 
 namespace StarsAbove.Projectiles.SakuraVengeance
 {
-	public class SakuraPetal : ModProjectile
+    public class SakuraPetal : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Sakura's Vengeance");     //The English name of the projectile

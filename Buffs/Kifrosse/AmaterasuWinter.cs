@@ -1,10 +1,9 @@
-using Terraria;using Terraria.ID;
+using Terraria;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Buffs.Kifrosse
 {
-	public class AmaterasuWinter : ModBuff
+    public class AmaterasuWinter : ModBuff
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Amaterasu's Winter");

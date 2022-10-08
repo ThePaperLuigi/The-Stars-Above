@@ -2,16 +2,15 @@ using Microsoft.Xna.Framework;
 using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles.KazimierzSeraphim;
 
-using Terraria;using Terraria.DataStructures;
-using Terraria.Graphics.Shaders;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Items
 {
-	public class KazimierzSeraphim : ModItem
+    public class KazimierzSeraphim : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

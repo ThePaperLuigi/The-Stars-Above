@@ -1,19 +1,17 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles;
-using System;
-using Terraria;using Terraria.DataStructures;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.UI;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
 
 namespace StarsAbove.Items
 {
-	public class CrimsonSakuraAlpha : ModItem
+    public class CrimsonSakuraAlpha : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

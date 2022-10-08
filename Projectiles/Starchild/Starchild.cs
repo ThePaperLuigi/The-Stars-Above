@@ -1,14 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using StarsAbove.Items;
 using System;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.Starchild
 {
-	/*
+    /*
 	 * This file contains all the code necessary for a minion
 	 * - ModItem
 	 *     the weapon which you use to summon the minion with
@@ -22,7 +22,7 @@ namespace StarsAbove.Projectiles.Starchild
 	 * This is NOT an in-depth guide to advanced minion AI
 	 */
 
-	public class StarchildBuff : ModBuff
+    public class StarchildBuff : ModBuff
 	{
 		public override void SetStaticDefaults()
 		{

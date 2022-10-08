@@ -1,17 +1,14 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Audio;
-using StarsAbove.Buffs;
 using static Terraria.ModLoader.ModContent;
 using System;
 using Terraria.GameContent.Drawing;
 
 namespace StarsAbove.Projectiles.RedMage
 {
-	public class Verholy : ModProjectile
+    public class Verholy : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Verholy");     //The English name of the Projectile

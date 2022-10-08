@@ -1,9 +1,9 @@
-﻿using Terraria;using Terraria.ID;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Buffs
 {
-    
+
     public class DreamlikeCharisma : ModBuff
     {
         //public const float buffRadius = 600; // 100ft, same as shared accessory info
@@ -11,7 +11,7 @@ namespace StarsAbove.Buffs
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dreamlike Charisma");
-            Description.SetDefault("Damage is increased, and increased further at max Mana");
+            Description.SetDefault("Damage is increased, and increased further at above 100 Mana");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

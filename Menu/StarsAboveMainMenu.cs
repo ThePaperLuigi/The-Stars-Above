@@ -2,25 +2,14 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
-using StarsAbove.Backgrounds;
-using SubworldLibrary;
-using System;
-using System.Collections.Generic;
-using System.IO;
 using Terraria;
 using Terraria.Audio;
-using Terraria.DataStructures;
-using Terraria.GameContent.Generation;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.ModLoader.IO;
-using Terraria.WorldBuilding;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Menu
 {
-	public class StarsAboveMainMenu : ModMenu
+    public class StarsAboveMainMenu : ModMenu
 	{
 		private const string menuAssetPath = "StarsAbove/Menu"; // Creates a constant variable representing the texture path, so we don't have to write it out multiple Rotation1s
 

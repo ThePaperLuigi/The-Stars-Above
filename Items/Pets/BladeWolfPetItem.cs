@@ -1,14 +1,15 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Items.Prisms;
-using Terraria;using Terraria.DataStructures;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent; using Microsoft.Xna.Framework;
+using static Terraria.ModLoader.ModContent;
 using StarsAbove.Buffs.Pets;
 
 namespace StarsAbove.Items.Pets
 {
-	public class BladeWolfPetItem : ModItem
+    public class BladeWolfPetItem : ModItem
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Prototype Interface");

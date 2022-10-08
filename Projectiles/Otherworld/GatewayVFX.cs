@@ -1,14 +1,11 @@
 ﻿
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using SubworldLibrary;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.Otherworld
 {
-	public class GatewayVFX : ModProjectile
+    public class GatewayVFX : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("StellarGateway");

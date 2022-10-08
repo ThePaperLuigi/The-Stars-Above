@@ -1,82 +1,10 @@
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using SubworldLibrary;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-using Terraria;
-using Terraria.DataStructures;
-using Terraria.GameContent.Generation;
-using Terraria.ID;
-using Terraria.Localization;
-using Terraria.ModLoader;
-using Terraria.ModLoader.IO;
-using Terraria.WorldBuilding;
-using static Terraria.ModLoader.ModContent;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using ReLogic.Utilities;
-using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.IO;
-using System.Security.Cryptography;
-using System.Text;
-using Terraria.Audio;
-using Terraria.DataStructures;
-using Terraria.Enums;
-using Terraria.GameContent;
-using Terraria.GameContent.Achievements;
-using Terraria.GameContent.Events;
-using Terraria.GameContent.Tile_Entities;
-using Terraria.GameContent.UI;
-using Terraria.GameInput;
-using Terraria.Graphics.Capture;
-using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
-using Terraria.ID;
-using Terraria.IO;
-using Terraria.Localization;
-using Terraria.ObjectData;
-using Terraria.Social;
-using Terraria.UI;
-using Terraria.UI.Chat;
-using Terraria.UI.Gamepad;
-using Terraria.Utilities;
-using Terraria.WorldBuilding;
 using Terraria;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
-using Terraria.ModLoader.IO;
-using StarsAbove;
-using StarsAbove.Items;
-using StarsAbove.Projectiles;
-using StarsAbove.Buffs;
-using StarsAbove.NPCs;
-using Microsoft.Xna.Framework.Audio;
-
-using StarsAbove.Dusts;
-using StarsAbove.Items.Consumables;
-using System.Diagnostics.Contracts;
-using StarsAbove.Items.Prisms;
-using StarsAbove.UI.StellarNova;
-using SubworldLibrary;
-using StarsAbove.Buffs.SubworldModifiers;
-using StarsAbove.Projectiles.Otherworld;
-using StarsAbove.Projectiles.Takodachi;
-using StarsAbove.Projectiles.SkyStriker;
-using StarsAbove.Buffs.CosmicDestroyer;
-using StarsAbove.Buffs.CarianDarkMoon;
-using StarsAbove.Buffs.AshenAmbition;
-using StarsAbove.Biomes;
-using StarsAbove.Buffs.TheOnlyThingIKnowForReal;
 
 namespace StarsAbove
 {
-	public static class StarsAboveDialogueSystem
+    public static class StarsAboveDialogueSystem
 	{
 		public static void SetupDialogueSystem(int chosenStarfarer, ref int chosenDialogue, ref bool dialoguePrep, ref int dialogueLeft, ref int expression, ref string dialogue, Player Player, Mod Mod)
 		{
@@ -8791,7 +8719,7 @@ namespace StarsAbove
                         expression = 0;
 
                         dialogue = $"Thanks for waiting. " +
-                                  "Here's another Melee-type essence for your use. " +
+                                  "Here's another Melee-type Essence for your use. " +
                                   "While it's deceptively close-ranged, " +
                                   "it has the potential for some crazy burst damage. ";
 
@@ -8817,7 +8745,7 @@ namespace StarsAbove
                 {
                     if (dialoguePrep == true)                                     // |
                     {
-                        dialogueLeft = 3;
+                        dialogueLeft = 2;
                         Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheOverwhelmingBlaze").Type);
                         dialoguePrep = false;
                     }
@@ -8852,7 +8780,75 @@ namespace StarsAbove
                 }
 
 
-            }//Vermilion Riposte
+            }//Burning Desire
+            if (chosenDialogue == 153) //The Everlasting Pickaxe
+            {
+                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 2;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheAbyss").Type);
+                        dialoguePrep = false;
+                    }
+
+
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 0;
+
+                        dialogue = $"Okay, here's an unorthodox Essence for you. " +
+                                  "While it functions as a pretty strong pickaxe, " +
+                                  "it looks like it also has some great damage potential. " +
+                                  " ";
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = $"From my take, it seems to be a great " +
+                                  "off-hand weapon to pump out explosions. " +
+                                  "Everyone loves explosions, right? " +
+                                  "";
+
+
+                        //	" ";
+                    }
+
+
+                }
+                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheAbyss").Type);
+                        dialoguePrep = false;
+                    }
+
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = $"This Essence focuses on excavation as well as damage. " +
+                                  "You can use it to move earth at significant rates, and " +
+                                  "additionally deal powerful explosive damage. " +
+                                  "Sounds like a good deal to me.";
+
+
+                        //	" ";
+                    }
+                   
+
+
+                }
+
+
+            }//The Everlasting Pickaxe
 
             #endregion
             //Boss item dialogues.

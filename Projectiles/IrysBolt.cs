@@ -1,13 +1,12 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Effects;
-using Terraria;using Terraria.GameContent;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles
 {
-	public class IrysBolt : ModProjectile
+    public class IrysBolt : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Irys Bolt");     //The English name of the projectile
