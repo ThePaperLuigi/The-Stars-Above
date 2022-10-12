@@ -1,9 +1,31 @@
 Mods: {
 	StarsAbove: {
-		Dialogue:{
-			
-			
+		Dialogue: {
+			IdleDialogueHardmode: {
+				Asphodene: Sorry, {0}. Nothing to comment on right now.
+				Eridani: Apologies, {0}.. there's not much to comment on at the moment.
+			}
+			IdleDialogue: {
+				Asphodene: Sorry, there's not much on my mind as of late.
+				Eridani: Sorry. There's not much to say right now...
+			}
+		}
+		VNDialogue: {
 		
+		}
+		StarfarerMenuDialogue: {
+		
+		}
+		StellarArrayDescriptions: {
+		
+		}
+		StellarNova: {
+			StellarNovaDialogue: {
+			
+			}
+			StellarNovaInfo: {
+			
+			}
 		}
 		Config: {
 			

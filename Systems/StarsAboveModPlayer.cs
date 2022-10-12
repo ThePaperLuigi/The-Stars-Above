@@ -8043,7 +8043,7 @@ namespace StarsAbove
                     }
                     if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
                     {
-
+                        
                         baseNovaDamageAdd = 2350;
                         if (astralmantle == 0)
                         {
