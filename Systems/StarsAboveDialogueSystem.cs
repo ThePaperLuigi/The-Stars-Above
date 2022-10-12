@@ -8666,7 +8666,7 @@ namespace StarsAbove
                 {
                     if (dialoguePrep == true)                                     // |
                     {
-                        dialogueLeft = 3;
+                        dialogueLeft = 2;
                         Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfBalance").Type);
                         dialoguePrep = false;
                     }
@@ -8837,7 +8837,7 @@ namespace StarsAbove
                         dialogue = $"This Essence focuses on excavation as well as damage. " +
                                   "You can use it to move earth at significant rates, and " +
                                   "additionally deal powerful explosive damage. " +
-                                  "Sounds like a good deal to me.";
+                                  "";
 
 
                         //	" ";
