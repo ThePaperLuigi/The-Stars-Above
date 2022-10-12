@@ -64,9 +64,12 @@ namespace StarsAbove.Projectiles.BurningDesire
 			DrawOriginOffsetY = newOffsetY;
 
 			Projectile.ai[0]++;
-
+			if (projOwner.dead && !projOwner.active)
+			{//Disappear when player dies
+				Projectile.Kill();
+			}
 			//Spawn dust after some time has passed.
-			if(Projectile.ai[0] > 8 && dustSpawn)
+			if (Projectile.ai[0] > 8 && dustSpawn)
             {
 				projOwner.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_BlazeEquip, projOwner.Center);
