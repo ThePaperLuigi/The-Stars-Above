@@ -149,6 +149,7 @@ namespace StarsAbove.Projectiles.BurningDesire
 			projOwner.heldProj = Projectile.whoAmI;
 			Vector2 ownerMountedCenter = projOwner.RotatedRelativePoint(projOwner.MountedCenter, true);
 			Projectile.position.Y = ownerMountedCenter.Y - (float)(Projectile.height / 2);
+			Projectile.Center += projOwner.gfxOffY * Vector2.UnitY;//Prevent glitchy animation.
 			Projectile.direction = projOwner.direction;
 			Projectile.spriteDirection = Projectile.direction;
 			Projectile.rotation = projOwner.velocity.X * 0.05f;

@@ -59,7 +59,15 @@ namespace StarsAbove.Items
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			
+			for (int d = 0; d < 27; d++)//Visual effects
+			{
+				Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(55));
+				float scale = 3f - (Main.rand.NextFloat() * .3f);
+				perturbedSpeed = perturbedSpeed * scale;
+				int dustIndex = Dust.NewDust(position, 0, 0, 127, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 3f);
+				Main.dust[dustIndex].noGravity = true;
+
+			}
 			return true;
 		}
 
