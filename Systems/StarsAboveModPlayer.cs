@@ -14662,6 +14662,7 @@ namespace StarsAbove
                         seenCity = true;
                     }
                 }
+                promptDialogue = Wrap(promptDialogue, 88);
             }
         }
         public void StellarNovaEnergy()
