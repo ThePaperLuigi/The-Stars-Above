@@ -9,6 +9,160 @@ Mods: {
 				Asphodene: Sorry, there's not much on my mind as of late.
 				Eridani: Sorry. There's not much to say right now...
 			}
+			WeaponDialogue: {
+				Asphodene: {
+					1: Here's another Essence you can use. It'll make a Ranged-type weapon with unique properties. Something tells me it's cursed, so..
+					2: Good luck! I did warn you.
+					3: Here is another Essence for you. This one's from a goddess of the Underworld, or so I'm told. It seems to be a melee weapon. 
+					4: Keep up the good work!
+					5: Here is another Essence for you. Apparently, this originates from 'Midgard.' It looks to be a rather powerful melee weapon. 
+					6: That's it for now. Keep up the good work!
+					7: Another Essence for you. This firey sword is classified as Magic. It seems to explode when sufficiently charged.
+					8: I trust you'll know what to do.
+					9: An Essence is here for your use. This powerful Melee heirloom is said to cleave the way for those less fortunate.
+					10: Good luck in crafting it.
+					11: This Essence is a personal creation of mine! It creates a Magic weapon that lets you enter the 'Butterfly Trance' and gain special bonuses!
+					12: Please, use it if you can. I can always use more data!
+					13: This Essence creates a Ranged gun that perpetuates itself after killing foes! Feel the heat!!
+					14: Ahem. Please consider it in your arsenal.
+					15: This Essence is a Ranged weapon that defeats foes with a swarm of powerful nanites. Truly fearful.
+					16: If your gear supports it, try crafting this weapon!
+					17: This Essence is another Ranged weapon that allows for powerful charged attacks. Fully charged, it splits and hits multiple foes!
+					18: Hey. Aren't we getting too many Ranged weapons? I'll try and find something else next time.
+					19: This is a legendary Melee artifact! The weapon this Essence crafts can inflict a crippling debuff on any foe!
+					20: This Essence will create a support item this time. It'll give powerful buffs to you and your friends if you can keep it up.
+					21: The Warrior of Light has inspired this Essence. It appears to be a key to a gateway of infinite weapons, doing Summon damage.
+					22: If you feel inspired, try referring to your foes as mongrels.
+					23: This Essence creates a Ranged weapon with a high Mana cost, and an incredibly high critical damage modifier.
+					24: Exploitable? Surely. Theorycraft is all you.
+					25: This is a Summon weapon. It seems to have very unique scaling properties, and attacks incredibly quickly.
+					26: It's also a reflection of your heart... or something. I don't really get that stuff.
+					27: This is a Summoner weapon, but you'll use it like a Melee weapon. It has the power to swap places instantly with a set place.
+					28: While dangerous, it looks to be pretty powerful. Surely you won't get hit.. right?
+					29: This is a pretty unique weapon. When using it, it'll follow-up your attacks, and become stronger when you spend Mana.
+					30: This Essence hails from a world embroiled in conflict... It boasts incredible power, but if you get too overzealous, it'll start to hurt you.
+					31: This Essence creates a Melee weapon that can swap between sword, scythe, or gun. You will be able to use it in nearly any situation!
+					32: Okay, here's a new Essence for you. It's a huge Melee lance that can be swap between a lance form and a gun form. It looks to be pretty strong!
+					33: Well {0}, take this Essence. This Melee weapon has an incredible burst, but the refractory period may be dangerous.. Give it a shot, though!
+					34: Here's another Essence you can use! It has incredible synergy with Summons and gets stronger as you do, so if you plan on fighting with allies, this is it!
+					35: Right, I have an Essence for you. It's a Summon weapon that conjures this mysterious sentient star. It's.. too cute. Anyways...
+					36: It looks to be a powerful weapon, but you'll have to collect the Star Bits for full effect- meaning getting in the way of danger. Good luck..!
+					37: Okay. I've got another Essence for you. This Melee weapon can swap between five different forms, granting powerful buffs in the process.
+					38: Here's a Magic-type Essence. It'll make a scythe with incredible reach and balances between light and dark. Now THAT sounds cool. Right? Right.
+					39: Here's another Essence for your use. This powerful Melee blade can deal powerful damage to all foes in your vicinity. How useful is that?
+					40: Here's another Essence you can prepare to use, from Penthesilea's strength. With its magical paint, we should be able to best powerful foes.
+					41: Here you go: an essence for usage in crafting. It looks like it'll apply powerful bouts of flame and frost alike. Not how I'd want to go out, personally.
+					42: Whoa, this is a powerful Essence. It's potential seems to be magnified based on your Aspected Damage Type. How about giving it a go?
+					43: Okay..! Time for another Essence! This looks to be a Ranged weapon with high damage output at close range. 
+					44: This new Essence is great! It's a Ranged weapon with crazy high explosive potential. Just point it towards the bad guys.
+					45: I have a new Essence for you. This is a magical Summon-type weapon that seems to scale with your own potential. Interesting..!
+					46: A Magic Essence is here this time. With cosmic energy, you can blast foes away with superpowered light. Sounds good to me!
+					47: This Melee-type Essence should help. It looks to be a multiple-purpose power-suit with myriad attacks. Now that sounds cool!
+					48: Okay {0}, I have an Essence for you! It seems to create a Magic-type weapon with powerful piercing damage... It sounds rather helpful.
+					49: I've found another Essence you can use... I think. The only thing I can tell is that it makes a Ranged weapon. The rest is up to you.
+					50: Okay- I've got it. Here's a Ranged-type Essence.. it looks to be something pretty powerful! Good luck.
+					51: A Summon weapon's essence is here. It looks suspiciously like a whip... but it also can summon minions? Now that's peak.
+					52: What? 'Peak?' It's new age lingo- You've definitely heard it before. You know? Like.. mountain peak? The top.. of something? Never mind.
+					53: Okay- this is a Melee weapon! My instincts tell me it's perfect for high-defense foes. What are you waiting for?
+					54: This Melee blade can harness the power of the elements themselves. Just having it in your hands is quite something!
+					55: This looks to be a Magic weapon. With its power, you can call down entire stars to defeat your foes!
+					56: You're worried you'll run out eventually? Yeah.. no.
+					57: This looks to be... a Magic weapon. Strange- it feels like an entire armory is contained in this Essence. How's that possible?
+					58: Well, I'll let you figure that one out. Get to it- I'm curious too, you know?
+					59: Here's a Magic weapon for your usage. Looks to me like it's pretty complicated- you're up to the task though, right?
+					60: Right.. Here's a Ranged-type weapon Essence.  I hope you've built up your chemical tolerance- it seems to utilize chemical energy to deal powerful damage.
+					61: Behold- a new Essence! It's Melee damage this time. It has some incredible lifesteal powers- but also seems to drain your health on use? How about giving it a go?
+					62: Here's a Summon weapon. It's.. Well, it's a whip, but it has some unique magical properties. It has good striking power, too! 
+					63: Listen close, {0}! Or not. This Magic weapon is a giant horn, but get this: you can whack people with it! Rad! 
+					64: Careful with this Essence- Apparently, only the worthy can wield it at full strength.
+					65: An ancient civilization's magnum opus, it seems. Don't underestimate its destructive power.
+					66: Look here, another Essence..! It's going to be Magic-type. It seems to revolve around balancing Black and White Mana to attack.
+					67: It seems that they were opposites, at least where this thing came from. Makes you wonder... 
+					68: Thanks for waiting. Here's another Melee-type Essence for your use. While it's deceptively close-ranged, it has the potential for some crazy burst damage. 
+					69: Sure, it'll most likely burn you up from the inside. Just a little, though.
+					70: Okay, here's an unorthodox Essence for you. While it functions as a pretty strong pickaxe, it looks like it also has some great damage potential.  
+					71: From my take, it seems to be a great off-hand weapon to pump out explosions. Everyone loves explosions, right? 
+				}
+				Eridani: {
+					1: Here's a Ranged-type essence. It looks like every fourth shot has increased offensive properties. Whatever the reason, it's powerful.
+					2: Here you are: another Essence. This one will create a Summon-type weapon. I trust you know what that means?
+					3: I'm telling you to try it out.
+					4: You knew that? Never mind then.
+					5: I have quite the unique Essence for you. It looks to be a chainsaw imbued with the strength of a dog god.. Or so it seems.
+					6: Whatever it may be, it should prove useful to you. Ignore the fact that it talks.
+					7: I've gotten an Essence for you. This one will create a Magic-type weapon. Apparently, proper timing is needed to better utilize this weapon.
+					8: I have no doubts you can get a handle on it easily. Okay, saying 'no doubts' would be a lie. Maybe 1/4th of a doubt.
+					9: This Essence is used to craft an upgrade to Death in Four Acts. It will most likely boast incredible Ranged power.
+					10: The weapon made from this Essence is based around music.. Timing your swings will be critical in using this to its fullest.
+					11: Even holding it makes you feel a certain type of beat...
+					12: This Essence will create a legendary weapon made for slaying dragons. Jump into the air and pierce your foes with its strength.
+					13: It's a Melee weapon, so craft it if you can fit it in your arsenal.
+					14: This Magic weapon will gain critical chance when shooting, and each crit will deal increased damage. It's powerful stuff.
+					15: Consider it if you're able.
+					16: This Ranged weapon allows you to enter a Melee stance, dealing more damage to foes you've hit with arrows. It should be quite engaging.
+					17: This powerful Melee relic allows for the expidenture of Mana to teleport and deal powerful damage. It's a new favorite of mine.
+					18: This weapon is made straight from the power of the Moon Lord and its spatial pillars. It'll do good in your hands.
+					19: From the Warrior of Light.. this Essence allows for the usage of Limit Break. It's an incredibly strong Magic weapon.
+					20: \"The Light will cleanse your sins!" Or something like that.
+					21: This weapon can switch between Ranged and Magic. If you time its reload correctly, it always does critical damage.
+					22: I'm sure you can think of something that works around that...
+					23: This powerful weapon allows you to use Skill Orbs to unleash special moves. It also has a super-powered burst window. It's a Melee weapon.
+					24: You'd be well off with it in your hands.. but it does mean you have to get up close. I don't envy you.
+					25: This is a Summon weapon. Holding it summons two cannons to orbit you, and you can fire from both of them. Each of them apply a different debuff.
+					26: The important part is using the other weapon to trigger the other weapon's debuff. You can figure it out.
+					27: Here's another Summon weapon. You can attack normally with it, but striking foes with the Timepieces empowers the weapon's attacks.
+					28: Did I mention you can go back in time? It's powerful, for sure. 
+					29: This Essence allows for the creation of unique dual blades which offer varying effects, and allows you to leave your body to overwhelm foes.
+					30: This Essence is utilized in the creation of a Melee Weapon. What sets it apart is the ability to manifest as a sword, scythe, or gun. 
+					31: Here's a new weapon for you to craft. This lance can swap between close and long range, and it can also be charged to great effect.
+					32: This is for you, {0}. It's a super-powered Melee weapon that has an incredible burst phase, followed by a weakness phase. Good luck using it.
+					33: I have another Essence for you. This weapon is a Summon weapon that works in harmony with minions, and it gets stronger as you do.
+					34: I have another Essence for you to use. This Summon-type wand calls forth this adorable little sentient star, and it just looks so.. squishable..
+					35: ...Looking past that. You'll have to get up close to use the Star Bits, but they do quite a number on foes if you can land them.
+					36: I've given you another Essence. This is a Melee weapon that can morph between five different forms, changing the weapon's usage. Interesting.
+					37: Here is another Essence. For you. This is a Summon weapon that will transform you as well as summon crystal shards that weaken and attack nearby foes.
+					38: Hmm.. It's the Essence of Hope, but is there something else lurking beneath the surface? Who knows.. 
+					39: Right... Here's another Essence. This Melee weapon allows you to damage all nearby foes in a huge area. It should be quite useful.
+					40: This is another Essence you can master. It will allow you to use Penthesilea's ink to supress foes and strike bosses powerfully.
+					41: Okay, I have another Essence for your battles. It summons a mystical fox that burns your enemies with icy energy. They might even deserve it, too.
+					42: It looks like this next Essence is a strong one. Aspected Damage Type seems to empower the weapon further... 
+					43: I've located another Essence for your use. It seems this Ranged-type weapon is hyperfocused on movement. How about pairing it with some mobility tools..?
+					44: Another Essence is yours. It's a strong Ranged weapon with incredibly good room-clearing power. How about that?
+					45: Here's another Essence for you to use. It looks to be a Summon-type weapon that grows in strength with the use of more minion summons.
+					46: Here's a Magic-type Essence. With the power of the stars, you can melt even the strongest of foes. Give it a try..?
+					47: A Melee Essence is here this time. With its strength, you can create a multifaceted weapon that swaps its arsenal instantly in combat.
+					48: I have an Essence for you, {0}. Looks like it'll become a Summon-type weapon... and it gains strength from grazing danger? You'll have to try it.
+					49: This is another powerful Essence. Looks like it's a Melee weapon, and it has the potential to execute foes. Don't underestimate it.
+					50: Time for another essence- this time it's a Ranged-type weapon. Seems to be pretty powerful at general destruction.
+					51: Here's another weapon. Looks to be a summon-type whip that can deploy spider-robots to attack foes.
+					52: They're spiders... but not real spiders. Yep- thinking like that will stop the fight or flight response. Take notes!
+					53: This is a Melee weapon. It has pretty good anti-armor properties- you can definitely put that to good use.
+					54: Another weapon is here. It seems to be a Melee weapon- one that uses the power of the elements to attack foes.
+					55: This Magic-type staff will be incredibly helpful, if I do say so myself. It has the strength to conjure entire stars!
+					56: As long as they aren't REAL stars. There would be... a few problems.
+					57: Here's another weapon- Magic, it seems. There's something strange about it- this Essence seems to hold the strength of myriad weapons together.
+					58: Here's another unique Magic weapon. Looks to be rather complicated, so good luck using it. Don't forget the ABCs- always be casting!
+					59: Although, I'm not too sure that it applies here.   
+					60: This Essence sources a Ranged weapon. It has a high focus on tight mobility, meaning it'll put you into the front lines. The strength should compensate.
+					61: A Melee-type Essence is prepared this time. It seems to me like it sacrifies your health for powerful area-of-effect damage. Use it well, but know the risks. 
+					62: Right, here's a Summon-type whip. It has some magic capability, but it's a bit random in its casting. Try and use it well. 
+					63: Be careful with this Essence- for some reason, it discharges static electricity all the time.  
+					64: It'll create a Summon weapon. Hopefully the electric properties carry over- it's sure to give our foes a shock. 
+					65: This Essence leads to a truly powerful weapon. It bears remnants of an ancient, advanced civilization. 
+					66: Evidently, they bore proficiency in spatial manipulation. I'd like you to give it a try, but it might reject the unworthy. 
+					67: At this point, I wonder if there was a weapon you weren't worthy to wield. Yes, I'm praising you. 
+					68: This Magic-type Essence balances attack and healing through the dual-use of Black and White mana. 
+					69: Two opposite schools of learning, at least in this Essence's original world. Now isn't that thought-provoking. 
+					70: Apologies for the delay- here's an Essence. This Melee weapon has some recoil potential, but in exchange you could deal some explosive amounts of damage.
+					71: I'd ask you to use it in moderation, but I'm sure you'll use it as much as you like. Bring some healing potions, at the very least.
+					72: This Essence focuses on excavation as well as damage. You can use it to move earth at significant rates, and additionally deal powerful explosive damage. 
+				}
+				Perseus: {
+					1: It's good to see you again, {0}. I'm not here to ask for your help- instead, I have a gift for you.
+					2: You have proven yourself as a true warrior; as such, you should have a weapon befitting your strength. 
+					3: So, I bestow this weapon unto you. Good luck, and good hunting.  
+				}
+			}
 			BossDialogue: {
 				KingSlime: {
 					Asphodene: {
@@ -27,7 +181,7 @@ Mods: {
 				}
 				CthulhuEye: {
 					Asphodene: {
-						1: 'Eye of Cthulhu'? 
+						1: \'Eye of Cthulhu'? 
 						2: Doesn't that imply there would be more of this 'Cthulhu'?
 						3: If it ever reared its head, it would be quite the formidable foe indeed.
 						4: Let's prepare for that occasion... Just in case.
@@ -110,7 +264,7 @@ Mods: {
 				}
 				Destroyer: {
 					Asphodene: {
-						1: 'The Destroyer...' I'm not one to talk, but if you name something 'The Destroyer' I'm gonna expect more than a big worm.
+						1: \'The Destroyer...' I'm not one to talk, but if you name something 'The Destroyer' I'm gonna expect more than a big worm.
 						2: Its absurd length was just a detriment to its strength. Take notes, {0}.
 						3: It looks as if another upgrade is available in the Stellar Array.
 						4: I guess that's all I have for now.
@@ -203,7 +357,7 @@ Mods: {
 				}
 				MoonLord: {
 					Asphodene: {
-						1: {0}! You've done it! The Moon Lord.. has been vanquished! I knew you could do it.
+						1: You've done it! The Moon Lord.. has been vanquished! I knew you could do it.
 						2: The Moon Lord's defeat has strengthened your Stellar Array. A reward well deserved.
 						3: We've come a long way. You have grown stronger than I have ever imagined. However, I can sense it isn't over yet.
 						4: The sky's light has grown incredibly harsh. Something's definitely wrong... 
@@ -237,7 +391,7 @@ Mods: {
 				}
 				AllVanillaBosses: {
 					Asphodene: {
-						1: {0}.. You've defeated so many powerful foes- you must be nearing the pinnacle of your powers, for sure.
+						1: You've defeated so many powerful foes- you must be nearing the pinnacle of your powers, for sure.
 						2: How can I tell? Well... there's a new Stellar Array ability available, to boot.
 						3: Here's a little gift, from me to you. It's an Essence of a past Starfarer- you'll be able to use it well.
 					}
@@ -363,14 +517,157 @@ Mods: {
 			CalamityBossDialogue: {
 				DesertScourge: {
 					Asphodene: {
-						1: The Clothier was truly a gigantic evil skeleton monster.. Cute. At the very least, you have access to the Dungeon now.
-						2: And with this, another ability is unlocked in the Stellar Array.
-						3: Well, that's all for now.
+						1: You've defeated that evil serpent. I do wonder, though... Where did it come from?
+						2: Looking closely, it seems to have been an aquatic monster.. once upon a time. So.. why was it in the desert?
+						3: This world's secrets are still a mystery to us. Anyway, good job regardless.
 					}
 					Eridani: {
-						1: That poor Clothier, cursed to become Skeletron. It seems his defeat has granted us access to the Dungeon. This may be in bad taste, but...
-						2: If the embodiment of your emotions is a huge monster... maybe, just maybe, the curse wasn't the sole factor.
-						3: If anyone asks, you didn't hear that from me.
+						1: You've bested the scourge of the sands. As for its origin, your guess is as good as mine. However...
+						2: It definitely was not made for tunneling. Instead, I'd postulate it was originally an aquatic beast. So.. what was it doing here? This world still holds many secrets...
+						3: Anywho... you fought bravely. I believe the loot will serve us well.
+					}
+				}
+				Crabulon: {
+					Asphodene: {
+						1: Okay.. so that just happened. Now that I've got a better look at the corpse of this mushroom crab thing, the truth is revealed- and it's not pretty.
+						2: It looks like the fungus have reanimated the crab's corpse, and paraded it around like a marionette. That's.. disgusting.
+						3: Whatever. No need to dawdle on that not-so-fun-fact. It's dead! Good job on that, by the way.
+					}
+					Eridani: {
+						1: Crabulon is no more. When I first laid eyes on it, I assumed it was some sort of mutated sea beast, akin to the Desert Scourge.
+						2: However... the reality is much more sinister. It looks to me as if parasitic mushrooms were using this giant crab as a host to feed themselves more efficiently.
+						3: Now that I'm reflecting on it, I feel sick. Thanks for putting an end to it.
+					}
+				}
+				HiveMind: {
+					Asphodene: {
+						1: The Hive Mind has been defeated. It isn't the only source of the Corruption, but killing it definitely didn't do the Corruption any favors.
+						2: That's about it for now. 
+					}
+					Eridani: {
+						1: You've rid the world of the Hive Mind. While it isn't the main vector for the Corruption's influence, stifling it has probably helped alleviate some evil.
+						2: Let's keep on the lookout for any more threats the Corruption bears.
+					}
+				}
+				Perforators: {
+					Asphodene: {
+						1: You've bested the Perforator Hive. I wonder what causes the Crimson to coalese its evil in the form of spongy, fleshy monsters.
+						2: It hungered for pure soil, no doubt wanting to spread the world's evil further. Of course, it isn't doing any of that anymore.
+					}
+					Eridani: {
+						1: You've beat the Perforator Hive, and those abhorrent worms that joined it in combat. I'm not sure, but seeing fleshy things seriously makes my skin crawl.
+						2: Well, everything living is made of flesh. Ugh, you know what I mean...
+					}
+				}
+				SlimeGod: {
+					Asphodene: {
+						1: The Slime God is no more! It turns out that those huge red and purple slimes weren't actually part of the Slime God, but just strong minions.
+						2: I'm glad we've defeated it, but I seriously doubt this defeat means the end of all slimes. Sadly, there's just.. so many of them.
+						3: Wait a second.. Why am I worried? They explode in like three seconds! I mean, if we keep killing them, they'll go extinct!
+						4: In a few centuries or so... Ugh. 
+					}
+					Eridani: {
+						1: Finally. The Slime God has been slain. Of course, this doesn't mean the end of slime as we know it. Seriously, they're just everywhere.
+						2: I'm pretty sure they can split to make more. ...I'm no expert on the etymology of slimes or anything.
+						3: It couldn't be a bad way to pass the time, though. Maybe I'll do some light reading. 
+					}
+				}
+				Cryogen: {
+					Asphodene: {
+						1: You've defeated Cryogen! And.. it turns out, 'Cryogen' was a prison for this Archmage fellow. 
+						2: From what he can tell us, it seems he was imprisoned in Cryogen by the Jungle Tyrant Yharim. If I recall correctly, we've heard about him before.
+						3: Whoever they are, it seems they've caused this world no shortage of troubles.
+					}
+					Eridani: {
+						1: Cryogen has been slain. And out from its corpse arrives this Archmage sort. From what he has to say, he was trapped there by an evil king...
+						2: Yharim, the Jungle Tyrant. Their reputation precedes them.. I have a feeling that they've been the source for many of this world's ailments.
+						3: We must endeavor to unravel more of this story. I trust you're in agreement. 
+					}
+				}
+				AquaticScourge: {
+					Asphodene: {
+						1: The Aquatic Scourge is no more, huh? So my hypothesis was correct; the Desert Scourge was displaced and dried... and we just fought its ancestor.
+						2: The Sea King told us of what transpired. Yharim's forces are powerful indeed.. We shouldn't let these misdeeds carry on.
+					}
+					Eridani: {
+						1: The Aquatic Scourge is defeated. So this is what the Desert Scourge could have been, had the ocean not been reduced to a desert.
+						2: From what the Sea King tells us, that was another one of Yharim's doings. They bring destruction wherever they roam... We must put an end to them.
+					}
+				}
+				BrimstoneElemental: {
+					Asphodene: {
+						1: You've defeated the Brimstone Elemental. It seems they were once a revered goddess of the Underworld's mighty civilization, before Calamitas rent it asunder.
+						2: I say we confront her sooner, than later. She must be incredibly powerful, but.. We have to do something, at least. 
+					}
+					Eridani: {
+						1: The fire-borne spirit is no more. The land of brimstone must have been powerful, to worship this spirit as such. We merely fought her at her weakest.
+						2: If what we know is correct, Calamitas was the eventual end of the brimstone kingdom. While I want to put an end to her rampages, we must become stronger first. 
+					}
+				}
+				Calamitas: {
+					Asphodene: {
+						1: ...Calamitas is no more. Or, so we thought. What we faced was naught but a replica of the real thing. Even so, it was an incredibly powerful foe.
+						2: We must endeavor to get stronger. We have to! With things like this roaming the world, who else can stop them..? 
+					}
+					Eridani: {
+						1: We've defeated Calamitas... but.. It was naught but a clone of the real foe. Even as a duplicate, it stood as one of our toughest challenges yet.
+						2: Who knows what the real thing can do.. We have to become stronger.  
+					}
+				}
+				Leviathan: {
+					Asphodene: {
+						1: Finally, we've bested Anahita and her Leviathan. What a thrilling battle... You've fought bravely, even when the fight looked insurmountable.
+						2: Hopefully, what we've obtained from their remains shall help us in the future. Man, we're on a roll! 
+					}
+					Eridani: {
+						1: You've defeated the Leviathan and Anahita. A battle well fought- when the Leviathan appeared, I feared the worst. 
+						2: I'll try not to doubt you in the future. After all, you've got my help.  
+						3: I am helping, right? Right...  
+					}
+				}
+				AstrumAureus: {
+					Asphodene: {
+						1: We've done in Astrum Aureus. It's a good reminder that the Astral Infection consumes indiscriminately. Even modern mechanics aren't safe from it.
+						2: Even so, it's solid proof that we're getting stronger. Can you imagine fighting that right after we fought Skeletron? Exactly!
+					}
+					Eridani: {
+						1: That's that. Astrum Aureus is dead. Even as the Astral Infection made a perversion of the original, it beat with a heart of iron still.
+						2: The Astral Infection... It's dangerous. At least we've made some good progress, though. Don't forget that. 
+					}
+				}
+				PlaguebringerGoliath: {
+					Asphodene: {
+						1: Nice, you've bested the Plaguebringer Goliath. The ingenuity of man never ceases to amaze, even if their knowledge usually is imparted in hyper-active death machines.
+						2: Well, what can you do. There's people like us here to take care of that part.  
+					}
+					Eridani: {
+						1: Seriously.. what's with the Jungle? At least the Plaguebringer Goliath is dead. Even so, I can't shake it out of my mind. I can't handle bugs, like.. at all.
+						2: Bugs, bugs..  They continue to rear their ugly heads wherever I look..! 
+						3: Let's just move on. Good job defeating that foe. 
+					}
+				}
+				Ravager: {
+					Asphodene: {
+						1: The Ravager is gone from this world. It was concieved in retaliation against the conquests of the Jungle Tyrant, but it evidently did little in that regard.
+						2: At the very least, we could finally stop it. If this is what humans were led to, what truly happened all those years ago that could lead to such desperation?
+					}
+					Eridani: {
+						1: We've defeated the Ravager. Once upon a time, it served as a grim last resort employed against the Jungle Tyrant. Now it can finally rest.
+						2: Even in death, it stalked without purpose. I'm glad we bested it, but its existence does nothing but give credence to the tales of Yharim's overwhelming might.
+					}
+				}
+				AstrumDeus: {
+					Asphodene: {
+						1: We've defeated Astrum Deus. Astrum Deus is- or was- one of the many gods that ruled over the universe. As far as I can remember, it was gone before I was born.
+						2: However... Astrum Deus can regenerate itself. Through assimilating life around its corpse, it can eventually return to the cosmos. It's kin to the story of the ouroboros.
+						3: Let's return to what I said earlier. Astrum Deus was a GOD. What we fought was much weaker. What in the world was able to defeat a deity of that caliber?
+						4: This was a well fought victory... Even so, stay vigilant. I have a feeling our culprit is closer than we think.
+					}
+					Eridani: {
+						1: Great work. You've defeated Astrum Deus. I have some personal knowledge, so allow me to share... 
+						2: Astrum Deus is one of many cosmic deities. It disappeared before I was born, but knowledge states that it can assimilate life near its corpse to regenerate itself.
+						3: So, that begs the question.. What could be walking this mortal plane able to befall an actual, literal god? What we fought was but a child in comparison.
+						4: Let's shelve that train of thought. While I have my fears, this is our victory. Congratulations. 
 					}
 				}
 			}
@@ -394,7 +691,7 @@ Mods: {
 					4: Prepare yourself well.   
 				}
 				Warrior: {
-					1: {0}, you can tell as well as I that the situation has turned dire. 
+					1: You can tell as well as I that the situation has turned dire, {0}. 
 					2: The First Starbearer's gaze has been turned to you, and his power has blanketed the world in overwhelming Light. 
 					3: I have given you the 'Progenitor's Wish.' It will serve as a way to draw him out. From then on, it will be your strength against his determination.
 					4: Please, you must win this fight. The stakes have never been higher.  
@@ -463,7 +760,7 @@ Mods: {
 				}
 				NormalIdleDialogue7: {
 					Asphodene: {
-						1: {0}! I have this idea about a weapon..
+						1: I have this idea about a weapon, {0}.
 						2: Wait.
 						3: Uh.. Never mind. Forget I said anything.
 						4: It would be far too large, to boot. And then there's the whole heating problem... 
@@ -508,7 +805,7 @@ Mods: {
 				}
 				HardIdleDialogue2: {
 					Asphodene: {
-						1: Hmm. Maybe I should think of cooler lines to say when I use the Stellar Nova?.
+						1: Hmm. Maybe I should think of cooler lines to say when I use the Stellar Nova?
 						2: I feel like I'm missing something important.. 
 						3: Ah well. No use worrying about what you can't solve, right?
 					}

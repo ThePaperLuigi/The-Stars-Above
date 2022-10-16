@@ -24,7 +24,7 @@ namespace StarsAbove
                     if (dialogueLeft == 6)
                     {
                         expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Greetings! I am Asphodene- a Starfarer, and in turn, that makes you my Starbearer.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Greetings! I am Asphodene- a Starfarer, and in turn, that makes you my Starbearer.
 
                         
 
@@ -32,31 +32,31 @@ namespace StarsAbove
                     if (dialogueLeft == 5)
                     {
                         expression = 1;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //I will lend you my strength so that we may defeat the threats to this world together.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //I will lend you my strength so that we may defeat the threats to this world together.
                         //	" ";
                     }
                     if (dialogueLeft == 4)
                     {
                         expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //You can use the Spatial Disk I've given you to access the Stellar Array, which provides you with powerful abilities after defeating bosses. Nice, right?
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //You can use the Spatial Disk I've given you to access the Stellar Array, which provides you with powerful abilities after defeating bosses. Nice, right?
                         //	" ";
                     }
                     if (dialogueLeft == 3)
                     {
                         expression = 0;
-                       // dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //I've added the 'Bifrost' to your inventory. There's a lot to go over, but in short, it'll let you traverse the galaxy when used. We can talk more about it later.
+                       // dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //I've added the 'Bifrost' to your inventory. There's a lot to go over, but in short, it'll let you traverse the galaxy when used. We can talk more about it later.
                         //	" ";
                     }
                     if (dialogueLeft == 2)
                     {
                         expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Also, I'll supply you with Essences when I can. Think of them as memories of other worlds. You can combine them with materials to create powerful Aspected Weapons.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Also, I'll supply you with Essences when I can. Think of them as memories of other worlds. You can combine them with materials to create powerful Aspected Weapons.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 3;
-                       // dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Right. My power is yours. Let's show this world what we can do.
+                       // dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Right. My power is yours. Let's show this world what we can do.
                         //	" ";
                     }
                 }
@@ -71,35 +71,35 @@ namespace StarsAbove
                     if (dialogueLeft == 6)
                     {
                         expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //It's nice to meet you. My name is Eridani.. a Starfarer. You, in turn, are my Starbearer.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //It's nice to meet you. My name is Eridani.. a Starfarer. You, in turn, are my Starbearer.
                     }
                     if (dialogueLeft == 5)
                     {
                         expression = 2;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Through this contract, we must work together to bring justice to those willing to harm this world.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Through this contract, we must work together to bring justice to those willing to harm this world.
                     }
                     if (dialogueLeft == 4)
                     {
                         expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //You can use the Spatial Disk I've given you to access the Stellar Array. It will become stronger after defeating bosses, and will grant you strength in return.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //You can use the Spatial Disk I've given you to access the Stellar Array. It will become stronger after defeating bosses, and will grant you strength in return.
                         //	" ";
                     }
                     if (dialogueLeft == 3)
                     {
                         expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //I've added the Bifrost to your inventory. At a later date, I can explain what it does, but in short, it will allow traversal of the universe.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //I've added the Bifrost to your inventory. At a later date, I can explain what it does, but in short, it will allow traversal of the universe.
                         //	" ";
                     }
                     if (dialogueLeft == 2)
                     {
                         expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Furthermore, I will grant you Essences. Essences are otherworldy memories that you can combine with this world's materials to forge Aspected Weapons.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Furthermore, I will grant you Essences. Essences are otherworldy memories that you can combine with this world's materials to forge Aspected Weapons.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 6;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //My strength is yours... I will not let you down.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //My strength is yours... I will not let you down.
                     }
                 }
 
@@ -126,7 +126,7 @@ namespace StarsAbove
                         }
                         else
                         {
-                            /*dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Sorry, there's not much on my mind as of late.*/
+                            /*dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Sorry, there's not much on my mind as of late.*/
                             dialogue = LangHelper.GetTextValue($"Dialogue.IdleDialogue.Asphodene");
                         }
 
@@ -1118,37 +1118,37 @@ namespace StarsAbove
                     if (dialogueLeft == 6)
                     {
                         expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //{Player.name}, you've made it! This place is the Observatory Hyperborea; our base of operations, if you will.$4
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //{Player.name}, you've made it! This place is the Observatory Hyperborea; our base of operations, if you will.$4
                         //	" ";
                     }
                     if (dialogueLeft == 5)
                     {
                         expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //There are quite a few Observatories around the galaxy, but we call this one home. It's not the source of our power, but acts like a magnifying glass of sorts.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //There are quite a few Observatories around the galaxy, but we call this one home. It's not the source of our power, but acts like a magnifying glass of sorts.
                         //	" ";
                     }
                     if (dialogueLeft == 4)
                     {
                         expression = 6;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Here, we can search the universe for heavy concentrations of mana, which is usually a bad sign. Think of it like clouds before a storm.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Here, we can search the universe for heavy concentrations of mana, which is usually a bad sign. Think of it like clouds before a storm.
                         //	" ";
                     }
                     if (dialogueLeft == 3)
                     {
                         expression = 6;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Enough about us. You're probably wondering what YOU can do in the Observatory, right? Let me tell you. 
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Enough about us. You're probably wondering what YOU can do in the Observatory, right? Let me tell you. 
                         //	" ";
                     }
                     if (dialogueLeft == 2)
                     {
                         expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //By accessing the Gateway, you can travel to other worlds. I'm sure you can already see the practical purpose of that.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //By accessing the Gateway, you can travel to other worlds. I'm sure you can already see the practical purpose of that.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //There may not be many worlds open right now, but I have a feeling when we defeat powerful foes, more places will be available. Good luck!
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //There may not be many worlds open right now, but I have a feeling when we defeat powerful foes, more places will be available. Good luck!
                         //	" ";
                     }
                 }
@@ -1162,37 +1162,37 @@ namespace StarsAbove
                     if (dialogueLeft == 6)
                     {
                         expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //{Player.name}, welcome. This place is the Observatory Hyperborea; both Asphodene and I live here.$4
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //{Player.name}, welcome. This place is the Observatory Hyperborea; both Asphodene and I live here.$4
                         //	" ";
                     }
                     if (dialogueLeft == 5)
                     {
                         expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //There are a few Observatories located around the galaxy, but this is ours. Its main function is an amplifier for our power, to an extent.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //There are a few Observatories located around the galaxy, but this is ours. Its main function is an amplifier for our power, to an extent.
                         //	" ";
                     }
                     if (dialogueLeft == 4)
                     {
                         expression = 6;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Here, we can search the universe for heavy concentrations of mana, which is kind of like an omen for trouble. It works out more than you'd think.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Here, we can search the universe for heavy concentrations of mana, which is kind of like an omen for trouble. It works out more than you'd think.
                         //	" ";
                     }
                     if (dialogueLeft == 3)
                     {
                         expression = 4;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //You're probably wondering about what you can use this Observatory for, right? Let's see...
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //You're probably wondering about what you can use this Observatory for, right? Let's see...
                         //	" ";
                     }
                     if (dialogueLeft == 2)
                     {
                         expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //By accessing the Gateway, you can travel to other worlds. I needn't elaborate on the utility of that, right?
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //By accessing the Gateway, you can travel to other worlds. I needn't elaborate on the utility of that, right?
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //There may not be many worlds open right now, but I have a feeling when we defeat powerful foes, more worlds will open.. Hopefully.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //There may not be many worlds open right now, but I have a feeling when we defeat powerful foes, more worlds will open.. Hopefully.
                         //	" ";
                     }
                 }
@@ -1211,13 +1211,13 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Yeah, I wondered when you would ask about the crates and stuff around the Observatory. Well, unlike the original owners, we need to eat, obviously.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Yeah, I wondered when you would ask about the crates and stuff around the Observatory. Well, unlike the original owners, we need to eat, obviously.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 4;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Wait, did you seriously think we didn't have to eat? That would be awful.    
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Wait, did you seriously think we didn't have to eat? That would be awful.    
                         //	" ";
                     }
                 }
@@ -1231,13 +1231,13 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Oh, the crates around the Observatory? It's mostly food. Did you think we didn't have to eat? We'd be missing out on a lot.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Oh, the crates around the Observatory? It's mostly food. Did you think we didn't have to eat? We'd be missing out on a lot.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //As long as we plan on staying here, we'll need supplies. Lucky for us, the galaxy has no shortage of abandoned planets to loot. I mean... they're not using it anymore.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //As long as we plan on staying here, we'll need supplies. Lucky for us, the galaxy has no shortage of abandoned planets to loot. I mean... they're not using it anymore.
                         //	" ";
                     }
                 }
@@ -1256,37 +1256,37 @@ namespace StarsAbove
                     if (dialogueLeft == 6)
                     {
                         expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //It's about time I explained Cosmic Voyages. Do you see that blue thing in the Observatory? If you step on it, it'll create a Gateway that you can use the Bifrost on.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //It's about time I explained Cosmic Voyages. Do you see that blue thing in the Observatory? If you step on it, it'll create a Gateway that you can use the Bifrost on.
                         //	" ";
                     }
                     if (dialogueLeft == 5)
                     {
                         expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Once you're on the voyage, you can't break or place anything. Also, you can't fly or mount. If you'd like to get around, try conventional methods, like a grappling hook.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Once you're on the voyage, you can't break or place anything. Also, you can't fly or mount. If you'd like to get around, try conventional methods, like a grappling hook.
                         //	" ";
                     }
                     if (dialogueLeft == 4)
                     {
                         expression = 4;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //You have to use the Bifrost at the Gateway to return to the Observatory. Take care that  you don't get stuck, because.. Self-explanatory. How about keeping a Magic Mirror handy?
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //You have to use the Bifrost at the Gateway to return to the Observatory. Take care that  you don't get stuck, because.. Self-explanatory. How about keeping a Magic Mirror handy?
                         //	" ";
                     }
                     if (dialogueLeft == 3)
                     {
                         expression = 1;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Remember that you're visiting harsh places and not everything is friendly. You'll most likely be inflicted with some sort of Environmental  Turmoil, which will affect your stats.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Remember that you're visiting harsh places and not everything is friendly. You'll most likely be inflicted with some sort of Environmental  Turmoil, which will affect your stats.
                         //	" ";
                     }
                     if (dialogueLeft == 2)
                     {
                         expression = 0;
-                       // dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This is important: any abilities that have become stronger after defeating foes will be significantly weaker. It's the downside of travelling so far away from the Observatory.
+                       // dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //This is important: any abilities that have become stronger after defeating foes will be significantly weaker. It's the downside of travelling so far away from the Observatory.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Once you've initiated the Voyage, it'll take a little while until you can go on another one. Make every journey count. Good luck out there!
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Once you've initiated the Voyage, it'll take a little while until you can go on another one. Make every journey count. Good luck out there!
                         //	" ";
                     }
                 }
@@ -1300,37 +1300,37 @@ namespace StarsAbove
                     if (dialogueLeft == 6)
                     {
                         expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Okay. I'm going to brief you on Cosmic Voyages. Do you see that blue platform? Stepping on it will create a Gateway that you can use the Bifrost on to initiate transit.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Okay. I'm going to brief you on Cosmic Voyages. Do you see that blue platform? Stepping on it will create a Gateway that you can use the Bifrost on to initiate transit.
                         //	" ";
                     }
                     if (dialogueLeft == 5)
                     {
                         expression = 1;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //You can't break or place blocks during the Voyage. Mounts and flying are also a no-go. You'll have to resort to things like a grappling hook to navigate.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //You can't break or place blocks during the Voyage. Mounts and flying are also a no-go. You'll have to resort to things like a grappling hook to navigate.
                         //	" ";
                     }
                     if (dialogueLeft == 4)
                     {
                         expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //If you'd like to return to the Observatory, you have to use the Bifrost near the Gateway. Take care to not get trapped away from the Gateway, or bring a Magic Mirror.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //If you'd like to return to the Observatory, you have to use the Bifrost near the Gateway. Take care to not get trapped away from the Gateway, or bring a Magic Mirror.
                         //	" ";
                     }
                     if (dialogueLeft == 3)
                     {
                         expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Remember that you're visiting harsh locales and not everything is friendly. You'll most likely be inflicted with a kind of Environmental Turmoil, which will affect your physique.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Remember that you're visiting harsh locales and not everything is friendly. You'll most likely be inflicted with a kind of Environmental Turmoil, which will affect your physique.
                         //	" ";
                     }
                     if (dialogueLeft == 2)
                     {
                         expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //After you begin a Cosmic Voyage, you'll have to wait a little while until you can initiate another. You should make every excursion count.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //After you begin a Cosmic Voyage, you'll have to wait a little while until you can initiate another. You should make every excursion count.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //There's one last thing. Anything that has become stronger after defeating powerful foes will be weaker. It's an unfortunate side-effect of travelling so far away from the Observatory.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //There's one last thing. Anything that has become stronger after defeating powerful foes will be weaker. It's an unfortunate side-effect of travelling so far away from the Observatory.
                         //	" ";
                     }
                 }
@@ -1349,13 +1349,13 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 4;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //You're wondering how you can breathe? Simple. The Bifrost is protecting you!
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //You're wondering how you can breathe? Simple. The Bifrost is protecting you!
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 6;
-                       // dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //It draws ambient mana from nearby planets to sustain bodily functions. You can't tell me that doesn't sound neat- just don't fall too far from solid ground.
+                       // dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //It draws ambient mana from nearby planets to sustain bodily functions. You can't tell me that doesn't sound neat- just don't fall too far from solid ground.
                         //	" ";
                     }
                 }
@@ -1369,13 +1369,13 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 4;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Eh? You're wondering how you can breathe? Ah, that would be the Bifrost you used to reach the Observatory. Right.. I should've probably explained that.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Eh? You're wondering how you can breathe? Ah, that would be the Bifrost you used to reach the Observatory. Right.. I should've probably explained that.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //It draws ambient mana from nearby planets and converts it to aether. It should prove ample enough for your journey. Just remember that 'down' is a perspective thing.
+                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //It draws ambient mana from nearby planets and converts it to aether. It should prove ample enough for your journey. Just remember that 'down' is a perspective thing.
                         //	" ";
                     }
                 }
@@ -2892,7 +2892,7 @@ namespace StarsAbove
                     {
                         expression = 1;
                         //dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Vagrant", Player.name); //I see... Please, excuse my test. I know it was crude, but it's the only way I know how to judge someone. 
-                        dialogue = "test";
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //test
                         //	" ";
                     }
                     
@@ -2908,7 +2908,7 @@ namespace StarsAbove
                     if (dialogueLeft == 1)
                     {
                         expression = 1;
-                        dialogue = "test"; //I see... Please, excuse my test. I know it was crude, but it's the only way I know how to judge someone. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //test //I see... Please, excuse my test. I know it was crude, but it's the only way I know how to judge someone. 
 
                         //	" ";
                     }
@@ -3516,19 +3516,19 @@ namespace StarsAbove
                     if (dialogueLeft == 3)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //You've defeated that evil serpent. I do wonder, though... Where did it come from?
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.DesertScourge.Asphodene.1", Player.name); //You've defeated that evil serpent. I do wonder, though... Where did it come from?
                         //	" ";
                     }
                     if (dialogueLeft == 2)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Looking closely, it seems to have been an aquatic monster.. once upon a time. So.. why was it in the desert?
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.DesertScourge.Asphodene.2", Player.name); //Looking closely, it seems to have been an aquatic monster.. once upon a time. So.. why was it in the desert?
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This world's secrets are still a mystery to us. Anyway, good job regardless.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.DesertScourge.Asphodene.3", Player.name); //This world's secrets are still a mystery to us. Anyway, good job regardless.
                         //	" ";
                     }
 
@@ -3546,19 +3546,19 @@ namespace StarsAbove
                     if (dialogueLeft == 3)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //You've bested the scourge of the sands. As for its origin, your guess is as good as mine. However...
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.DesertScourge.Eridani.1", Player.name); //You've bested the scourge of the sands. As for its origin, your guess is as good as mine. However...
                         //	" ";
                     }
                     if (dialogueLeft == 2)
                     {
                         expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //It definitely was not made for tunneling. Instead, I'd postulate it was originally an aquatic beast. So.. what was it doing here? This world still holds many secrets...
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.DesertScourge.Eridani.2", Player.name); //It definitely was not made for tunneling. Instead, I'd postulate it was originally an aquatic beast. So.. what was it doing here? This world still holds many secrets...
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Anywho... you fought bravely. I believe the loot will serve us well.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.DesertScourge.Eridani.3", Player.name); //Anywho... you fought bravely. I believe the loot will serve us well.
 
                         //	" ";
                     }
@@ -3578,19 +3578,19 @@ namespace StarsAbove
                     if (dialogueLeft == 3)
                     {
                         expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Okay.. so that just happened. Now that I've got a better look at the corpse of this mushroom crab thing, the truth is revealed- and it's not pretty.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Crabulon.Asphodene.1", Player.name); //Okay.. so that just happened. Now that I've got a better look at the corpse of this mushroom crab thing, the truth is revealed- and it's not pretty.
                         //	" ";
                     }
                     if (dialogueLeft == 2)
                     {
                         expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //It looks like the fungus have reanimated the crab's corpse, and paraded it around like a marionette. That's.. disgusting.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Crabulon.Asphodene.2", Player.name); //It looks like the fungus have reanimated the crab's corpse, and paraded it around like a marionette. That's.. disgusting.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 4;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Whatever. No need to dawdle on that not-so-fun-fact. It's dead! Good job on that, by the way.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Crabulon.Asphodene.3", Player.name); //Whatever. No need to dawdle on that not-so-fun-fact. It's dead! Good job on that, by the way.
                         //	" ";
                     }
 
@@ -3608,19 +3608,19 @@ namespace StarsAbove
                     if (dialogueLeft == 3)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Crabulon is no more. When I first laid eyes on it, I assumed it was some sort of mutated sea beast, akin to the Desert Scourge.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Crabulon.Eridani.1", Player.name); //Crabulon is no more. When I first laid eyes on it, I assumed it was some sort of mutated sea beast, akin to the Desert Scourge.
                         //	" ";
                     }
                     if (dialogueLeft == 2)
                     {
                         expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //However... the reality is much more sinister. It looks to me as if parasitic mushrooms were using this giant crab as a host to feed themselves more efficiently.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Crabulon.Eridani.2", Player.name); //However... the reality is much more sinister. It looks to me as if parasitic mushrooms were using this giant crab as a host to feed themselves more efficiently.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Now that I'm reflecting on it, I feel sick. Thanks for putting an end to it.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Crabulon.Eridani.3", Player.name); //Now that I'm reflecting on it, I feel sick. Thanks for putting an end to it.
 
                         //	" ";
                     }
@@ -3640,13 +3640,13 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //The Hive Mind has been defeated. It isn't the only source of the Corruption, but killing it definitely didn't do the Corruption any favors.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.HiveMind.Asphodene.1", Player.name); //The Hive Mind has been defeated. It isn't the only source of the Corruption, but killing it definitely didn't do the Corruption any favors.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //That's about it for now. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.HiveMind.Asphodene.2", Player.name); //That's about it for now. 
 
                         //	" ";
                     }
@@ -3666,13 +3666,13 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //You've rid the world of the Hive Mind. While it isn't the main vector for the Corruption's influence, stifling it has probably helped alleviate some evil.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.HiveMind.Eridani.1", Player.name); //You've rid the world of the Hive Mind. While it isn't the main vector for the Corruption's influence, stifling it has probably helped alleviate some evil.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Let's keep on the lookout for any more threats the Corruption bears.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.HiveMind.Eridani.2", Player.name); //Let's keep on the lookout for any more threats the Corruption bears.
                         //	" ";
                     }
 
@@ -3692,13 +3692,13 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //You've bested the Perforator Hive. I wonder what causes the Crimson to coalese its evil in the form of spongy, fleshy monsters.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Perforators.Asphodene.1", Player.name); //You've bested the Perforator Hive. I wonder what causes the Crimson to coalese its evil in the form of spongy, fleshy monsters.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 6;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //It hungered for pure soil, no doubt wanting to spread the world's evil further. Of course, it isn't doing any of that anymore.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Perforators.Asphodene.2", Player.name); //It hungered for pure soil, no doubt wanting to spread the world's evil further. Of course, it isn't doing any of that anymore.
 
                         //	" ";
                     }
@@ -3718,13 +3718,13 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //You've beat the Perforator Hive, and those abhorrent worms that joined it in combat. I'm not sure, but seeing fleshy things seriously makes my skin crawl.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Perforators.Eridani.1", Player.name); //You've beat the Perforator Hive, and those abhorrent worms that joined it in combat. I'm not sure, but seeing fleshy things seriously makes my skin crawl.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Well, everything living is made of flesh. Ugh, you know what I mean...
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Perforators.Eridani.2", Player.name); //Well, everything living is made of flesh. Ugh, you know what I mean...
                         //	" ";
                     }
 
@@ -3744,27 +3744,27 @@ namespace StarsAbove
                     if (dialogueLeft == 4)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //The Slime God is no more! It turns out that those huge red and purple slimes weren't actually part of the Slime God, but just strong minions.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.SlimeGod.Asphodene.1", Player.name); //The Slime God is no more! It turns out that those huge red and purple slimes weren't actually part of the Slime God, but just strong minions.
                         //	" ";
                     }
                     if (dialogueLeft == 3)
                     {
                         expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //I'm glad we've defeated it, but I seriously doubt this defeat means the end of all slimes. Sadly, there's just.. so many of them. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.SlimeGod.Asphodene.2", Player.name); //I'm glad we've defeated it, but I seriously doubt this defeat means the end of all slimes. Sadly, there's just.. so many of them. 
 
                         //	" ";
                     }
                     if (dialogueLeft == 2)
                     {
                         expression = 3;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Wait a second.. Why am I worried? They explode in like three seconds! I mean, if we keep killing them, they'll go extinct!
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.SlimeGod.Asphodene.3", Player.name); //Wait a second.. Why am I worried? They explode in like three seconds! I mean, if we keep killing them, they'll go extinct!
 
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 7;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //In a few centuries or so... Ugh.  
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.SlimeGod.Asphodene.4", Player.name); //In a few centuries or so... Ugh.  
 
                         //	" ";
                     }
@@ -3784,19 +3784,19 @@ namespace StarsAbove
                     if (dialogueLeft == 3)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Finally. The Slime God has been slain. Of course, this doesn't mean the end of slime as we know it. Seriously, they're just everywhere.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.SlimeGod.Eridani.1", Player.name); //Finally. The Slime God has been slain. Of course, this doesn't mean the end of slime as we know it. Seriously, they're just everywhere.
                         //	" ";
                     }
                     if (dialogueLeft == 2)
                     {
                         expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //I'm pretty sure they can split to make more. ...I'm no expert on the etymology of slimes or anything.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.SlimeGod.Eridani.2", Player.name); //I'm pretty sure they can split to make more. ...I'm no expert on the etymology of slimes or anything.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 6;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //It couldn't be a bad way to pass the time, though. Maybe I'll do some light reading. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.SlimeGod.Eridani.3", Player.name); //It couldn't be a bad way to pass the time, though. Maybe I'll do some light reading. 
                         //	" ";
                     }
 
@@ -3817,20 +3817,20 @@ namespace StarsAbove
                     if (dialogueLeft == 3)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //You've defeated Cryogen! And.. it turns out, 'Cryogen' was a prison for the Archmage. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Cryogen.Asphodene.1", Player.name); //You've defeated Cryogen! And.. it turns out, 'Cryogen' was a prison for the Archmage. 
                         //	" ";
                     }
                     if (dialogueLeft == 2)
                     {
                         expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //From what the Archmage can tell us, it seems he was imprisoned in Cryogen by the Jungle Tyrant Yharim. If I recall correctly, we've heard about him before.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Cryogen.Asphodene.2", Player.name); //From what the Archmage can tell us, it seems he was imprisoned in Cryogen by the Jungle Tyrant Yharim. If I recall correctly, we've heard about him before.
 
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Whoever they are, it seems they've caused this world no shortage of troubles. Hopefully, we can begin to unravel more of this mystery as we venture forth.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Cryogen.Asphodene.3", Player.name); //Whoever they are, it seems they've caused this world no shortage of troubles. Hopefully, we can begin to unravel more of this mystery as we venture forth.
 
                         //	" ";
                     }
@@ -3851,19 +3851,19 @@ namespace StarsAbove
                     if (dialogueLeft == 3)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Cryogen has been slain. And out from its corpse arrives this Archmage. From what he has to say, he was trapped there by an evil king...
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Cryogen.Eridani.1", Player.name); //Cryogen has been slain. And out from its corpse arrives this Archmage. From what he has to say, he was trapped there by an evil king...
                         //	" ";
                     }
                     if (dialogueLeft == 2)
                     {
                         expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Yharim, the Jungle Tyrant. Their reputation precedes them.. I have a feeling that they've been the source for all this world's many ailments.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Cryogen.Eridani.2", Player.name); //Yharim, the Jungle Tyrant. Their reputation precedes them.. I have a feeling that they've been the source for all this world's many ailments.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //We must endeavor to unravel more of this story. I trust you're in agreement. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Cryogen.Eridani.3", Player.name); //We must endeavor to unravel more of this story. I trust you're in agreement. 
                         //	" ";
                     }
 
@@ -3884,7 +3884,7 @@ namespace StarsAbove
                     {
 
                         expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //The Aquatic Scourge is no more, huh? So my hypothesis was correct; the Desert Scourge was displaced and dried... and we just fought its ancestor.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AquaticScourge.Asphodene.1", Player.name); //The Aquatic Scourge is no more, huh? So my hypothesis was correct; the Desert Scourge was displaced and dried... and we just fought its ancestor.
 
 
                         //	" ";
@@ -3892,7 +3892,7 @@ namespace StarsAbove
                     if (dialogueLeft == 1)
                     {
                         expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //The Sea King told us of what transpired. Yharim's forces are powerful indeed.. We have to stop their rampant evil! 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AquaticScourge.Asphodene.2", Player.name); //The Sea King told us of what transpired. Yharim's forces are powerful indeed.. We have to stop their rampant evil! 
 
                         //	" ";
                     }
@@ -3914,13 +3914,13 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //The Aquatic Scourge is defeated. So this is what the Desert Scourge could have been, had the ocean not been reduced to a desert.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AquaticScourge.Eridani.1", Player.name); //The Aquatic Scourge is defeated. So this is what the Desert Scourge could have been, had the ocean not been reduced to a desert.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //From what the Sea King tells us, that was another one of Yharim's doings. They bring destruction wherever they roam... We must put an end to them.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AquaticScourge.Eridani.2", Player.name); //From what the Sea King tells us, that was another one of Yharim's doings. They bring destruction wherever they roam... We must put an end to them.
                         //	" ";
                     }
 
@@ -3942,7 +3942,7 @@ namespace StarsAbove
                     {
 
                         expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //You've defeated the Brimstone Elemental. It seems they were once a revered goddess of the Underworld's mighty civilization, before Calamitas rent it asunder.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.BrimstoneElemental.Asphodene.1", Player.name); //You've defeated the Brimstone Elemental. It seems they were once a revered goddess of the Underworld's mighty civilization, before Calamitas rent it asunder.
 
 
                         //	" ";
@@ -3950,7 +3950,7 @@ namespace StarsAbove
                     if (dialogueLeft == 1)
                     {
                         expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //I say we confront her sooner, than later. She must be incredibly powerful, but.. We have to do something, at least. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.BrimstoneElemental.Asphodene.2", Player.name); //I say we confront her sooner, than later. She must be incredibly powerful, but.. We have to do something, at least. 
 
                         //	" ";
                     }
@@ -3972,13 +3972,13 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //The fire-borne spirit is no more. The land of brimstone must have been powerful, to worship this spirit as such. We merely fought her at her weakest.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.BrimstoneElemental.Eridani.1", Player.name); //The fire-borne spirit is no more. The land of brimstone must have been powerful, to worship this spirit as such. We merely fought her at her weakest.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //If what we know is correct, Calamitas was the eventual end of the brimstone kingdom. While I want to put an end to her rampages, we must become stronger first.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.BrimstoneElemental.Eridani.2", Player.name); //If what we know is correct, Calamitas was the eventual end of the brimstone kingdom. While I want to put an end to her rampages, we must become stronger first.
                         //	" ";
                     }
 
@@ -4000,7 +4000,7 @@ namespace StarsAbove
                     {
 
                         expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //...Calamitas is no more. Or, so we thought. What we faced was naught but a replica of the real thing. Even so, it was an incredibly powerful foe.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Calamitas.Asphodene.1", Player.name); //...Calamitas is no more. Or, so we thought. What we faced was naught but a replica of the real thing. Even so, it was an incredibly powerful foe.
 
 
                         //	" ";
@@ -4008,7 +4008,7 @@ namespace StarsAbove
                     if (dialogueLeft == 1)
                     {
                         expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //We must endeavor to get stronger. We have to! With things like this roaming the world, who else can stop them..? 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Calamitas.Asphodene.2", Player.name); //We must endeavor to get stronger. We have to! With things like this roaming the world, who else can stop them..? 
 
                         //	" ";
                     }
@@ -4030,13 +4030,13 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //We've defeated Calamitas... but.. It was naught but a clone of the real foe. Even as a duplicate, it stood as one of our toughest challenges yet.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Calamitas.Eridani.1", Player.name); //We've defeated Calamitas... but.. It was naught but a clone of the real foe. Even as a duplicate, it stood as one of our toughest challenges yet.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Who knows what the real thing can do.. We have to become stronger.  
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Calamitas.Eridani.2", Player.name); //Who knows what the real thing can do.. We have to become stronger.  
                         //	" ";
                     }
 
@@ -4058,7 +4058,7 @@ namespace StarsAbove
                     {
 
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Finally, we've bested Anahita and her Leviathan. What a thrilling battle... You've fought bravely, even when the fight looked insurmountable.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Leviathan.Asphodene.1", Player.name); //Finally, we've bested Anahita and her Leviathan. What a thrilling battle... You've fought bravely, even when the fight looked insurmountable.
 
 
                         //	" ";
@@ -4066,7 +4066,7 @@ namespace StarsAbove
                     if (dialogueLeft == 1)
                     {
                         expression = 6;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Hopefully, what we've obtained from their remains shall help us in the future. Man, we're on a roll! 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Leviathan.Asphodene.2", Player.name); //Hopefully, what we've obtained from their remains shall help us in the future. Man, we're on a roll! 
 
                         //	" ";
                     }
@@ -4088,19 +4088,19 @@ namespace StarsAbove
                     if (dialogueLeft == 3)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //You've defeated the Leviathan and Anahita. A battle well fought- when the Leviathan appeared, I feared the worst. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Leviathan.Eridani.1", Player.name); //You've defeated the Leviathan and Anahita. A battle well fought- when the Leviathan appeared, I feared the worst. 
                         //	" ";
                     }
                     if (dialogueLeft == 2)
                     {
                         expression = 3;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //I'll try not to doubt you in the future. After all, you've got my help.  
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Leviathan.Eridani.2", Player.name); //I'll try not to doubt you in the future. After all, you've got my help.  
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //I am helping, right? Right...  
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Leviathan.Eridani.3", Player.name); //I am helping, right? Right...  
                         //	" ";
                     }
 
@@ -4121,7 +4121,7 @@ namespace StarsAbove
                     {
 
                         expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //We've done in Astrum Aureus. It's a good reminder that the Astral Infection consumes indiscriminately. Even modern mechanics aren't safe from it.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumAureus.Asphodene.1", Player.name); //We've done in Astrum Aureus. It's a good reminder that the Astral Infection consumes indiscriminately. Even modern mechanics aren't safe from it.
 
 
                         //	" ";
@@ -4129,7 +4129,7 @@ namespace StarsAbove
                     if (dialogueLeft == 1)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Even so, it's solid proof that we're getting stronger. Can you imagine fighting that right after we fought Skeletron? Exactly!
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumAureus.Asphodene.2", Player.name); //Even so, it's solid proof that we're getting stronger. Can you imagine fighting that right after we fought Skeletron? Exactly!
 
                         //	" ";
                     }
@@ -4151,13 +4151,13 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //That's that. Astrum Aureus is dead. Even as the Astral Infection made a perversion of the original, it beat with a heart of iron still.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumAureus.Eridani.1", Player.name); //That's that. Astrum Aureus is dead. Even as the Astral Infection made a perversion of the original, it beat with a heart of iron still.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //The Astral Infection... It's dangerous. At least we've made some good progress, though. Don't forget that. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumAureus.Eridani.2", Player.name); //The Astral Infection... It's dangerous. At least we've made some good progress, though. Don't forget that. 
                         //	" ";
                     }
 
@@ -4179,7 +4179,7 @@ namespace StarsAbove
                     {
 
                         expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Nice, you've bested the Plaguebringer Goliath. The ingenuity of man never ceases to amaze, even if their knowledge usually is imparted in hyper-active death machines.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.PlaguebringerGoliath.Asphodene.1", Player.name); //Nice, you've bested the Plaguebringer Goliath. The ingenuity of man never ceases to amaze, even if their knowledge usually is imparted in hyper-active death machines.
 
 
                         //	" ";
@@ -4187,7 +4187,7 @@ namespace StarsAbove
                     if (dialogueLeft == 1)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Well, what can you do. There's people like us here to take care of that part.  
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.PlaguebringerGoliath.Asphodene.2", Player.name); //Well, what can you do. There's people like us here to take care of that part.  
 
                         //	" ";
                     }
@@ -4209,19 +4209,19 @@ namespace StarsAbove
                     if (dialogueLeft == 3)
                     {
                         expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Seriously.. what's with the Jungle? At least the Plaguebringer Goliath is dead. Even so, I can't shake it out of my mind. I can't handle bugs, like.. at all.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.PlaguebringerGoliath.Eridani.1", Player.name); //Seriously.. what's with the Jungle? At least the Plaguebringer Goliath is dead. Even so, I can't shake it out of my mind. I can't handle bugs, like.. at all.
                         //	" ";
                     }
                     if (dialogueLeft == 2)
                     {
                         expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Bugs, bugs..  They continue to rear their ugly heads wherever I look..! 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.PlaguebringerGoliath.Eridani.2", Player.name); //Bugs, bugs..  They continue to rear their ugly heads wherever I look..! 
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Whoops.. I was venting a little. Let's just move on. Good job defeating that foe. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.PlaguebringerGoliath.Eridani.3", Player.name); //Whoops.. I was venting a little. Let's just move on. Good job defeating that foe. 
                         //	" ";
                     }
 
@@ -4243,7 +4243,7 @@ namespace StarsAbove
                     {
 
                         expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //The Ravager is gone from this world. It was concieved in retaliation against the conquests of the Jungle Tyrant, but it evidently did little in that regard.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Ravager.Asphodene.1", Player.name); //The Ravager is gone from this world. It was concieved in retaliation against the conquests of the Jungle Tyrant, but it evidently did little in that regard.
 
 
                         //	" ";
@@ -4251,7 +4251,7 @@ namespace StarsAbove
                     if (dialogueLeft == 1)
                     {
                         expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //At the very least, we could finally let it rest. If this is what humans were led to, what truly happened all those years ago that could lead to such desperation?
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Ravager.Asphodene.2", Player.name); //At the very least, we could finally let it rest. If this is what humans were led to, what truly happened all those years ago that could lead to such desperation?
 
                         //	" ";
                     }
@@ -4274,7 +4274,7 @@ namespace StarsAbove
                     {
 
                         expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //We've defeated the Ravager. Once upon a time, it served as a grim last resort employed against the Jungle Tyrant. Now it can finally rest.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Ravager.Eridani.1", Player.name); //We've defeated the Ravager. Once upon a time, it served as a grim last resort employed against the Jungle Tyrant. Now it can finally rest.
 
 
                         //	" ";
@@ -4282,7 +4282,7 @@ namespace StarsAbove
                     if (dialogueLeft == 1)
                     {
                         expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Even in death, it stalked without purpose. I'm glad we bested it, but its existence does nothing but give credence to the tales of Yharim's overwhelming might.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Ravager.Eridani.2", Player.name); //Even in death, it stalked without purpose. I'm glad we bested it, but its existence does nothing but give credence to the tales of Yharim's overwhelming might.
 
                         //	" ";
                     }
@@ -4305,7 +4305,7 @@ namespace StarsAbove
                     {
 
                         expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //We've defeated Astrum Deus. Astrum Deus is- or was- one of the many gods that ruled over the universe. As far as I can remember, it was gone before I was born.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumDeus.Asphodene.1", Player.name); //We've defeated Astrum Deus. Astrum Deus is- or was- one of the many gods that ruled over the universe. As far as I can remember, it was gone before I was born.
 
 
                         //	" ";
@@ -4313,21 +4313,21 @@ namespace StarsAbove
                     if (dialogueLeft == 3)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //However... Astrum Deus can regenerate itself. Through assimilating life around its corpse, it can eventually return to the cosmos. It's kin to the story of the ouroboros.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumDeus.Asphodene.2", Player.name); //However... Astrum Deus can regenerate itself. Through assimilating life around its corpse, it can eventually return to the cosmos. It's kin to the story of the ouroboros.
 
                         //	" ";
                     }
                     if (dialogueLeft == 2)
                     {
                         expression = 4;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Let's return to what I said earlier. Astrum Deus was a GOD. What we fought was much weaker. What in the world was able to defeat a deity of that caliber?
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumDeus.Asphodene.3", Player.name); //Let's return to what I said earlier. Astrum Deus was a GOD. What we fought was much weaker. What in the world was able to defeat a deity of that caliber?
 
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This was a well fought victory... Even so, stay vigilant. I have a feeling our culprit is closer than we think.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumDeus.Asphodene.4", Player.name); //This was a well fought victory... Even so, stay vigilant. I have a feeling our culprit is closer than we think.
 
                         //	" ";
                     }
@@ -4347,25 +4347,25 @@ namespace StarsAbove
                     if (dialogueLeft == 4)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Great work. You've defeated Astrum Deus. I have some personal knowledge, so allow me to share... 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumDeus.Eridani.1", Player.name); //Great work. You've defeated Astrum Deus. I have some personal knowledge, so allow me to share... 
                         //	" ";
                     }
                     if (dialogueLeft == 3)
                     {
                         expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Astrum Deus is one of many cosmic deities. It disappeared before I was born, but knowledge states that it can assimilate life near its corpse to regenerate itself.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumDeus.Eridani.2", Player.name); //Astrum Deus is one of many cosmic deities. It disappeared before I was born, but knowledge states that it can assimilate life near its corpse to regenerate itself.
                         //	" ";
                     }
                     if (dialogueLeft == 2)
                     {
                         expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //So, that begs the question.. What could be walking this mortal plane able to befall an actual, literal god? What we fought was but a child in comparison.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumDeus.Eridani.3", Player.name); //So, that begs the question.. What could be walking this mortal plane able to befall an actual, literal god? What we fought was but a child in comparison.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Let's shelve that train of thought. While I have my fears, this is our victory. Congratulations. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumDeus.Eridani.4", Player.name); //Let's shelve that train of thought. While I have my fears, this is our victory. Congratulations. 
                         //	" ";
                     }
 
@@ -4392,14 +4392,14 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Here's another Essence you can use. It'll make a Ranged-type weapon with unique properties. Something tells me it's cursed, so..
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.1", Player.name); //Here's another Essence you can use. It'll make a Ranged-type weapon with unique properties. Something tells me it's cursed, so..
 
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 6;
-                        dialogue = "Good luck with that one!";
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.2", Player.name); //Good luck with that one!
 
                         //	" ";
                     }
@@ -4420,7 +4420,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Here's a Ranged-type essence. It looks like every fourth shot has increased offensive properties. Whatever the reason, it's powerful.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.1", Player.name); //Here's a Ranged-type essence. It looks like every fourth shot has increased offensive properties. Whatever the reason, it's powerful.
 
                         //	" ";
                     }
@@ -4443,7 +4443,7 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Here is another Essence for you. This one's from a goddess of the Underworld, or so I'm told. It seems to be a melee weapon. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.3", Player.name); //Here is another Essence for you. This one's from a goddess of the Underworld, or so I'm told. It seems to be a melee weapon. 
 
                         //	" ";
                     }
@@ -4452,7 +4452,7 @@ namespace StarsAbove
                     {
 
                         expression = 0;
-                        dialogue = "Keep up the good work!";
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.4", Player.name); //Keep up the good work!
 
 
                         //	" ";
@@ -4472,7 +4472,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Here you are: another Essence. This one will create a Summon-type weapon. I trust you know what that means? ...
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.2", Player.name); //Here you are: another Essence. This one will create a Summon-type weapon. I trust you know what that means? ...
 
                         //	" ";
                     }
@@ -4482,7 +4482,7 @@ namespace StarsAbove
 
 
                         expression = 3;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //I'm telling you to try it out.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.3", Player.name); //I'm telling you to try it out.
 
 
                         //	" ";
@@ -4492,7 +4492,7 @@ namespace StarsAbove
 
 
                         expression = 4;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //You knew that? Never mind then.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.4", Player.name); //You knew that? Never mind then.
 
 
                         //	" ";
@@ -4515,7 +4515,7 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Here is another Essence for you. Apparently, this originates from 'Midgard.' It looks to be a rather powerful melee weapon. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.5", Player.name); //Here is another Essence for you. Apparently, this originates from 'Midgard.' It looks to be a rather powerful melee weapon. 
 
                         //	" ";
                     }
@@ -4524,7 +4524,7 @@ namespace StarsAbove
                     {
 
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //That's it for now. Keep up the good work!
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.6", Player.name); //That's it for now. Keep up the good work!
 
 
                         //	" ";
@@ -4544,7 +4544,7 @@ namespace StarsAbove
                     {
                         expression = 3;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //I have quite the unique Essence for you. It looks to be a chainsaw imbued with the strength of a dog god.. Or so it seems.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.5", Player.name); //I have quite the unique Essence for you. It looks to be a chainsaw imbued with the strength of a dog god.. Or so it seems.
 
                         //	" ";
                     }
@@ -4554,7 +4554,7 @@ namespace StarsAbove
 
 
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Whatever it may be, it should prove useful to you. Ignore the fact that it talks.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.6", Player.name); //Whatever it may be, it should prove useful to you. Ignore the fact that it talks.
 
 
                         //	" ";
@@ -4577,7 +4577,7 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Another Essence for you. This firey sword is classified as Magic. It seems to explode when sufficiently charged.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.7", Player.name); //Another Essence for you. This firey sword is classified as Magic. It seems to explode when sufficiently charged.
 
                         //	" ";
                     }
@@ -4586,7 +4586,7 @@ namespace StarsAbove
                     {
 
                         expression = 3;
-                        dialogue = "I trust you'll know what to do.";
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.8", Player.name); //I trust you'll know what to do.
 
 
                         //	" ";
@@ -4606,7 +4606,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //I've gotten an Essence for you. This one will create a Magic-type weapon. Apparently, proper timing is needed to better utilize this weapon.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.7", Player.name); //I've gotten an Essence for you. This one will create a Magic-type weapon. Apparently, proper timing is needed to better utilize this weapon.
 
                         //	" ";
                     }
@@ -4616,7 +4616,7 @@ namespace StarsAbove
 
 
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //I have no doubts you can get a handle on it easily. Okay, saying 'no doubts' would be a lie. Maybe 1/4th of a doubt.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.8", Player.name); //I have no doubts you can get a handle on it easily. Okay, saying 'no doubts' would be a lie. Maybe 1/4th of a doubt.
 
 
                         //	" ";
@@ -4639,7 +4639,7 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //An Essence, for you. This powerful Melee heirloom is said to cleave the way for those less fortunate.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.9", Player.name); //An Essence, for you. This powerful Melee heirloom is said to cleave the way for those less fortunate.
 
                         //	" ";
                     }
@@ -4648,7 +4648,7 @@ namespace StarsAbove
                     {
 
                         expression = 0;
-                        dialogue = "Good luck in crafting it.";
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.10", Player.name); //Good luck in crafting it.
 
 
                         //	" ";
@@ -4668,7 +4668,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This Essence is used to craft an upgrade to Death in Four Acts. It will most likely boast incredible Ranged power.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.9", Player.name); //This Essence is used to craft an upgrade to Death in Four Acts. It will most likely boast incredible Ranged power.
 
                         //	" ";
                     }
@@ -4692,7 +4692,7 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 6;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This Essence is a personal creation of mine! It creates a Magic weapon that lets you enter the 'Butterfly Trance' and gain special bonuses!
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.11", Player.name); //This Essence is a personal creation of mine! It creates a Magic weapon that lets you enter the 'Butterfly Trance' and gain special bonuses!
 
                         //	" ";
                     }
@@ -4701,7 +4701,7 @@ namespace StarsAbove
                     {
 
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Please, use it if you can. I can always use more data!
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.12", Player.name); //Please, use it if you can. I can always use more data!
 
 
                         //	" ";
@@ -4721,7 +4721,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //The weapon made from this Essence is based around music.. Timing your swings will be critical in using this to its fullest.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.10", Player.name); //The weapon made from this Essence is based around music.. Timing your swings will be critical in using this to its fullest.
 
                         //	" ";
                     }
@@ -4729,7 +4729,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Also.. Doesn't it make you feel like rapping?
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.11", Player.name); //Also.. Doesn't it make you feel like rapping?
 
                         //	" ";
                     }
@@ -4753,7 +4753,7 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 6;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This Essence creates a Ranged gun that perpetuates itself after killing foes! Feel the heat!!
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.13", Player.name); //This Essence creates a Ranged gun that perpetuates itself after killing foes! Feel the heat!!
 
                         //	" ";
                     }
@@ -4762,7 +4762,7 @@ namespace StarsAbove
                     {
 
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Ahem. Please consider it in your arsenal.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.14", Player.name); //Ahem. Please consider it in your arsenal.
 
 
                         //	" ";
@@ -4782,7 +4782,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This Essence will create a legendary weapon made for slaying dragons. Jump into the air and pierce your foes with its strength.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.12", Player.name); //This Essence will create a legendary weapon made for slaying dragons. Jump into the air and pierce your foes with its strength.
 
                         //	" ";
                     }
@@ -4790,7 +4790,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //It's a Melee weapon, so craft it if you can fit it in your arsenal.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.13", Player.name); //It's a Melee weapon, so craft it if you can fit it in your arsenal.
 
                         //	" ";
                     }
@@ -4814,7 +4814,7 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 6;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This Essence is a Ranged weapon that defeats foes with a swarm of powerful nanites. Truly fearful.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.15", Player.name); //This Essence is a Ranged weapon that defeats foes with a swarm of powerful nanites. Truly fearful.
 
                         //	" ";
                     }
@@ -4823,7 +4823,7 @@ namespace StarsAbove
                     {
 
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //If your gear supports it, try crafting this weapon!
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.16", Player.name); //If your gear supports it, try crafting this weapon!
 
 
                         //	" ";
@@ -4843,7 +4843,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This Magic weapon will gain critical chance when shooting, and each crit will deal increased damage. It's powerful stuff.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.14", Player.name); //This Magic weapon will gain critical chance when shooting, and each crit will deal increased damage. It's powerful stuff.
 
                         //	" ";
                     }
@@ -4851,7 +4851,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = "Consider it if you're able.";
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.15", Player.name); //Consider it if you're able.
 
                         //	" ";
                     }
@@ -4875,7 +4875,7 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 6;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This Essence is another Ranged weapon that allows for powerful charged attacks. Fully charged, it splits and hits multiple foes!
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.17", Player.name); //This Essence is another Ranged weapon that allows for powerful charged attacks. Fully charged, it splits and hits multiple foes!
 
                         //	" ";
                     }
@@ -4884,7 +4884,7 @@ namespace StarsAbove
                     {
 
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Hey. Aren't we getting too many Ranged weapons? I'll try and find something else next time.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.18", Player.name); //Hey. Aren't we getting too many Ranged weapons? I'll try and find something else next time.
 
 
                         //	" ";
@@ -4904,7 +4904,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This Ranged weapon allows you to enter a Melee stance, dealing more damage to foes you've hit with arrows. It should be quite engaging.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.16", Player.name); //This Ranged weapon allows you to enter a Melee stance, dealing more damage to foes you've hit with arrows. It should be quite engaging.
 
                         //	" ";
                     }
@@ -4929,7 +4929,7 @@ namespace StarsAbove
                     if (dialogueLeft == 1)
                     {
                         expression = 6;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This is a legendary Melee artifact! The weapon this Essence crafts can inflict a crippling debuff on any foe!
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.19", Player.name); //This is a legendary Melee artifact! The weapon this Essence crafts can inflict a crippling debuff on any foe!
 
                         //	" ";
                     }
@@ -4950,7 +4950,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This powerful Melee relic allows for the expidenture of Mana to teleport and deal powerful damage. It's a new favorite of mine.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.17", Player.name); //This powerful Melee relic allows for the expidenture of Mana to teleport and deal powerful damage. It's a new favorite of mine.
 
                         //	" ";
                     }
@@ -4975,7 +4975,7 @@ namespace StarsAbove
                     if (dialogueLeft == 1)
                     {
                         expression = 6;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This Essence will create a support item this time. It'll give powerful buffs to you and your friends if you can keep it up.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.20", Player.name); //This Essence will create a support item this time. It'll give powerful buffs to you and your friends if you can keep it up.
 
                         //	" ";
                     }
@@ -4995,7 +4995,7 @@ namespace StarsAbove
                     if (dialogueLeft == 1)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This weapon is made straight from the power of the Moon Lord and its spatial pillars. It'll do good in your hands.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.18", Player.name); //This weapon is made straight from the power of the Moon Lord and its spatial pillars. It'll do good in your hands.
 
 
                         //	" ";
@@ -5023,7 +5023,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //The Warrior of Light has inspired this Essence. It appears to be a key to a gateway of infinite weapons, doing Summon damage.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.21", Player.name); //The Warrior of Light has inspired this Essence. It appears to be a key to a gateway of infinite weapons, doing Summon damage.
 
                         //	" ";
                     }
@@ -5031,7 +5031,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //If you feel inspired, try an evil laugh when firing.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.22", Player.name); //If you feel inspired, try an evil laugh when firing.
 
                         //	" ";
                     }
@@ -5050,14 +5050,14 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 6;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //From the Warrior of Light.. this Essence allows for the usage of Limit Break. It's an incredibly strong Magic weapon.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.19", Player.name); //From the Warrior of Light.. this Essence allows for the usage of Limit Break. It's an incredibly strong Magic weapon.
 
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //'The Light will cleanse your sins!' Or something like that. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.20", Player.name); //'The Light will cleanse your sins!' Or something like that. 
 
                         //	" ";
                     }
@@ -5085,7 +5085,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This Essence creates a Ranged weapon with a high Mana cost, and an incredibly high critical damage modifier.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.23", Player.name); //This Essence creates a Ranged weapon with a high Mana cost, and an incredibly high critical damage modifier.
 
                         //	" ";
                     }
@@ -5093,7 +5093,7 @@ namespace StarsAbove
                     {
                         expression = 6;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Exploitable? Surely. Theorycraft is all you.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.24", Player.name); //Exploitable? Surely. Theorycraft is all you.
 
                         //	" ";
                     }
@@ -5112,14 +5112,14 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This weapon can switch between Ranged and Magic. If you time its reload correctly, it always does critical damage.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.21", Player.name); //This weapon can switch between Ranged and Magic. If you time its reload correctly, it always does critical damage.
 
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //I'm sure you can think of something that works around that... 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.22", Player.name); //I'm sure you can think of something that works around that... 
 
                         //	" ";
                     }
@@ -5147,7 +5147,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This is a Summon weapon. It seems to have very unique scaling properties, and attacks incredibly quickly.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.25", Player.name); //This is a Summon weapon. It seems to have very unique scaling properties, and attacks incredibly quickly.
 
                         //	" ";
                     }
@@ -5155,7 +5155,7 @@ namespace StarsAbove
                     {
                         expression = 1;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //It's also a reflection of your heart... or something. I don't really get that stuff.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.26", Player.name); //It's also a reflection of your heart... or something. I don't really get that stuff.
 
                         //	" ";
                     }
@@ -5174,14 +5174,14 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This powerful weapon allows you to use Skill Orbs to unleash special moves. It also has a super-powered burst window. It's a Melee weapon.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.23", Player.name); //This powerful weapon allows you to use Skill Orbs to unleash special moves. It also has a super-powered burst window. It's a Melee weapon.
 
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //You'd be well off with it in your hands.. but it does mean you have to get up close. I don't envy you.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.24", Player.name); //You'd be well off with it in your hands.. but it does mean you have to get up close. I don't envy you.
 
                         //	" ";
                     }
@@ -5209,7 +5209,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This is a Summoner weapon, but you'll use it like a Melee weapon. It has the power to swap places instantly with a set place.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.27", Player.name); //This is a Summoner weapon, but you'll use it like a Melee weapon. It has the power to swap places instantly with a set place.
 
                         //	" ";
                     }
@@ -5217,7 +5217,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //While dangerous, it looks to be pretty powerful. Surely you won't get hit.. right?
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.28", Player.name); //While dangerous, it looks to be pretty powerful. Surely you won't get hit.. right?
 
                         //	" ";
                     }
@@ -5236,14 +5236,14 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This is a Summon weapon. Holding it summons two cannons to orbit you, and you can fire from both of them. Each of them apply a different debuff.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.25", Player.name); //This is a Summon weapon. Holding it summons two cannons to orbit you, and you can fire from both of them. Each of them apply a different debuff.
 
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //The important part is using the other weapon to trigger the other weapon's debuff. You can figure it out.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.26", Player.name); //The important part is using the other weapon to trigger the other weapon's debuff. You can figure it out.
 
                         //	" ";
                     }
@@ -5271,7 +5271,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This is a pretty unique weapon. When using it, it'll follow-up your attacks, and become stronger when you spend Mana.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.29", Player.name); //This is a pretty unique weapon. When using it, it'll follow-up your attacks, and become stronger when you spend Mana.
 
                         //	" ";
                     }
@@ -5291,14 +5291,14 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Here's another Summon weapon. You can attack normally with it, but striking foes with the Timepieces empowers the weapon's attacks.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.27", Player.name); //Here's another Summon weapon. You can attack normally with it, but striking foes with the Timepieces empowers the weapon's attacks.
 
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 3;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Did I mention you can go back in time? It's powerful, for sure. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.28", Player.name); //Did I mention you can go back in time? It's powerful, for sure. 
 
                         //	" ";
                     }
@@ -5326,7 +5326,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This Essence hails from a world embroiled in conflict... It boasts incredible power, but if you get too overzealous, it'll start to hurt you.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.30", Player.name); //This Essence hails from a world embroiled in conflict... It boasts incredible power, but if you get too overzealous, it'll start to hurt you.
 
                         //	" ";
                     }
@@ -5346,7 +5346,7 @@ namespace StarsAbove
                     if (dialogueLeft == 1)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This Essence allows for the creation of unique dual blades which offer varying effects, and allows you to leave your body to overwhelm foes.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.29", Player.name); //This Essence allows for the creation of unique dual blades which offer varying effects, and allows you to leave your body to overwhelm foes.
 
                         //	" ";
                     }
@@ -5375,7 +5375,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This Essence creates a Melee weapon that can swap between sword, scythe, or gun. You will be able to use it in nearly any situation!
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.31", Player.name); //This Essence creates a Melee weapon that can swap between sword, scythe, or gun. You will be able to use it in nearly any situation!
 
                         //	" ";
                     }
@@ -5395,7 +5395,7 @@ namespace StarsAbove
                     if (dialogueLeft == 1)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This Essence is utilized in the creation of a Melee Weapon. What sets it apart is the ability to manifest as a sword, scythe, or gun. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.30", Player.name); //This Essence is utilized in the creation of a Melee Weapon. What sets it apart is the ability to manifest as a sword, scythe, or gun. 
 
                         //	" ";
                     }
@@ -5424,7 +5424,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Okay, here's a new Essence for you. It's a huge Melee lance that can be swap between a lance form and a gun form. It looks to be pretty strong!
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.32", Player.name); //Okay, here's a new Essence for you. It's a huge Melee lance that can be swap between a lance form and a gun form. It looks to be pretty strong!
 
                         //	" ";
                     }
@@ -5444,7 +5444,7 @@ namespace StarsAbove
                     if (dialogueLeft == 1)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Here's a new weapon for you to craft. This lance can swap between close and long range, and it can also be charged to great effect.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.31", Player.name); //Here's a new weapon for you to craft. This lance can swap between close and long range, and it can also be charged to great effect.
 
                         //	" ";
                     }
@@ -5473,7 +5473,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //{Player.name}, take this Essence. This Melee weapon has an incredible burst, but the refractory period may be dangerous.. Give it a shot, though!
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.33", Player.name); //{Player.name}, take this Essence. This Melee weapon has an incredible burst, but the refractory period may be dangerous.. Give it a shot, though!
 
                         //	" ";
                     }
@@ -5493,7 +5493,7 @@ namespace StarsAbove
                     if (dialogueLeft == 1)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This is for you, {Player.name}. It's a super-powered Melee weapon that has an incredible burst phase, followed by a weakness phase. Good luck using it.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.32", Player.name); //This is for you, {Player.name}. It's a super-powered Melee weapon that has an incredible burst phase, followed by a weakness phase. Good luck using it.
 
                         //	" ";
                     }
@@ -5522,7 +5522,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Here's another Essence you can use! It has incredible synergy with Summons and gets stronger as you do, so if you plan on  fighting with allies, this is it!
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.34", Player.name); //Here's another Essence you can use! It has incredible synergy with Summons and gets stronger as you do, so if you plan on  fighting with allies, this is it!
 
                         //	" ";
                     }
@@ -5542,7 +5542,7 @@ namespace StarsAbove
                     if (dialogueLeft == 1)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //I have another Essence for you. This weapon is a Summon weapon that works in harmony with minions, and it gets stronger as you do.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.33", Player.name); //I have another Essence for you. This weapon is a Summon weapon that works in harmony with minions, and it gets stronger as you do.
 
                         //	" ";
                     }
@@ -5571,7 +5571,7 @@ namespace StarsAbove
                     {
                         expression = 6;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Right, I have an Essence for you. It's a Summon weapon that conjures this mysterious sentient star. It's.. too cute. Anyways...
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.35", Player.name); //Right, I have an Essence for you. It's a Summon weapon that conjures this mysterious sentient star. It's.. too cute. Anyways...
 
                         //	" ";
                     }
@@ -5579,7 +5579,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //It looks to be a powerful weapon, but you'll have to collect the Star Bits for full effect- meaning getting in the  way of danger. Good luck..!
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.36", Player.name); //It looks to be a powerful weapon, but you'll have to collect the Star Bits for full effect- meaning getting in the way of danger. Good luck..!
 
                         //	" ";
                     }
@@ -5598,14 +5598,14 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 6;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //I have another Essence for you to use. This Summon-type wand calls forth this adorable little sentient star, and it just looks so.. squishable..
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.34", Player.name); //I have another Essence for you to use. This Summon-type wand calls forth this adorable little sentient star, and it just looks so.. squishable..
 
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //...Looking past that. You'll have to get up close to use the Star Bits, but they do quite a number on foes if you can land them.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.35", Player.name); //...Looking past that. You'll have to get up close to use the Star Bits, but they do quite a number on foes if you can land them.
 
                         //	" ";
                     }
@@ -5633,7 +5633,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Okay. I've got another Essence for you. This Melee weapon can swap between five different stances, granting powerful buffs in the process.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.37", Player.name); //Okay. I've got another Essence for you. This Melee weapon can swap between five different stances, granting powerful buffs in the process.
 
                         //	" ";
                     }
@@ -5653,7 +5653,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //I've given you another Essence. This is a Melee weapon that can morph between five different forms, changing the weapon's usage. Interesting.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.36", Player.name); //I've given you another Essence. This is a Melee weapon that can morph between five different forms, changing the weapon's usage. Interesting.
 
                         //	" ";
                     }
@@ -5681,7 +5681,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Here's a Magic-type Essence. It'll make a scythe with incredible reach and balances between light and dark. Now THAT sounds cool. Right? Right.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.38", Player.name); //Here's a Magic-type Essence. It'll make a scythe with incredible reach and balances between light and dark. Now THAT sounds cool. Right? Right.
 
                         //	" ";
                     }
@@ -5701,14 +5701,14 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Here is another Essence. For you. This is a Summon weapon that will transform you as well as summon crystal shards that weaken and attack nearby foes.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.37", Player.name); //Here is another Essence. For you. This is a Summon weapon that will transform you as well as summon crystal shards that weaken and attack nearby foes.
 
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 4;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Hmm.. It's the Essence of Hope, but is there something else lurking beneath the surface? Who knows.. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.38", Player.name); //Hmm.. It's the Essence of Hope, but is there something else lurking beneath the surface? Who knows.. 
 
                         //	" ";
                     }
@@ -5736,7 +5736,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Here's another Essence for your use. This powerful Melee blade can deal powerful damage to all foes in your vicinity. How useful is that?
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.39", Player.name); //Here's another Essence for your use. This powerful Melee blade can deal powerful damage to all foes in your vicinity. How useful is that?
 
                         //	" ";
                     }
@@ -5756,7 +5756,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Right... Here's another Essence. This Melee weapon allows you to damage all nearby foes in a huge area. It should be quite useful.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.39", Player.name); //Right... Here's another Essence. This Melee weapon allows you to damage all nearby foes in a huge area. It should be quite useful.
 
                         //	" ";
                     }
@@ -5784,7 +5784,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Here's another Essence you can prepare to use, from Penthesilea's strength. With its magical paint, we should be able to best powerful foes.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.40", Player.name); //Here's another Essence you can prepare to use, from Penthesilea's strength. With its magical paint, we should be able to best powerful foes.
 
                         //	" ";
                     }
@@ -5804,7 +5804,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This is another Essence you can master. It will allow you to use Penthesilea's ink to supress foes and strike bosses powerfully.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.40", Player.name); //This is another Essence you can master. It will allow you to use Penthesilea's ink to supress foes and strike bosses powerfully.
 
                         //	" ";
                     }
@@ -5832,7 +5832,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Here you go: an essence for usage in crafting. It looks like it'll apply powerful bouts of flame and frost alike. Not how I'd want to go out, personally.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.41", Player.name); //Here you go: an essence for usage in crafting. It looks like it'll apply powerful bouts of flame and frost alike. Not how I'd want to go out, personally.
 
 
                         //	" ";
@@ -5853,7 +5853,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Okay, I have another Essence for your battles. It summons a mystical fox that burns your enemies with icy energy. They might even deserve it, too.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.41", Player.name); //Okay, I have another Essence for your battles. It summons a mystical fox that burns your enemies with icy energy. They might even deserve it, too.
 
                         //	" ";
                     }
@@ -5881,7 +5881,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Whoa, this is a powerful Essence. It's potential seems to be magnified based on your Aspected Damage Type. How about giving it a go?
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.42", Player.name); //Whoa, this is a powerful Essence. It's potential seems to be magnified based on your Aspected Damage Type. How about giving it a go?
 
 
                         //	" ";
@@ -5902,7 +5902,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //It looks like this next Essence is a strong one. Aspected Damage Type seems to empower the weapon further... 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.42", Player.name); //It looks like this next Essence is a strong one. Aspected Damage Type seems to empower the weapon further... 
 
                         //	" ";
                     }
@@ -5930,7 +5930,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Okay..! Time for another Essence! This looks to be a Ranged weapon with high damage output at close range. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.43", Player.name); //Okay..! Time for another Essence! This looks to be a Ranged weapon with high damage output at close range. 
 
 
                         //	" ";
@@ -5951,7 +5951,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //I've located another Essence for your use. It seems this Ranged-type weapon is hyperfocused on movement. How about pairing it with some mobility tools..?
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.43", Player.name); //I've located another Essence for your use. It seems this Ranged-type weapon is hyperfocused on movement. How about pairing it with some mobility tools..?
 
                         //	" ";
                     }
@@ -5979,7 +5979,7 @@ namespace StarsAbove
                     {
                         expression = 6;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This new Essence is great! It's a Ranged weapon with crazy high explosive potential. Just point it towards the bad guys.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.44", Player.name); //This new Essence is great! It's a Ranged weapon with crazy high explosive potential. Just point it towards the bad guys.
 
 
                         //	" ";
@@ -6000,7 +6000,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Another Essence is yours. It's a strong Ranged weapon with incredibly good room-clearing power. How about that?
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.44", Player.name); //Another Essence is yours. It's a strong Ranged weapon with incredibly good room-clearing power. How about that?
 
                         //	" ";
                     }
@@ -6028,7 +6028,7 @@ namespace StarsAbove
                     {
                         expression = 6;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //I have a new Essence for you. This is a magical Summon-type weapon that seems to scale with your own potential. Interesting..!
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.45", Player.name); //I have a new Essence for you. This is a magical Summon-type weapon that seems to scale with your own potential. Interesting..!
 
 
                         //	" ";
@@ -6049,7 +6049,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Here's another Essence for you to use. It looks to be a Summon-type weapon that grows in strength with the use of more minion summons.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.45", Player.name); //Here's another Essence for you to use. It looks to be a Summon-type weapon that grows in strength with the use of more minion summons.
 
                         //	" ";
                     }
@@ -6077,7 +6077,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //A Magic Essence is here this time. With cosmic energy, you can blast foes away with superpowered light. Sounds good to me!
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.46", Player.name); //A Magic Essence is here this time. With cosmic energy, you can blast foes away with superpowered light. Sounds good to me!
 
 
                         //	" ";
@@ -6098,7 +6098,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Here's a Magic-type Essence. With the power of the stars, you can melt even the strongest of foes. Give it a try..?
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.46", Player.name); //Here's a Magic-type Essence. With the power of the stars, you can melt even the strongest of foes. Give it a try..?
 
                         //	" ";
                     }
@@ -6126,7 +6126,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This Melee-type Essence should help. It looks to be a multiple-purpose power-suit with myriad attacks. Now that sounds cool!
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.47", Player.name); //This Melee-type Essence should help. It looks to be a multiple-purpose power-suit with myriad attacks. Now that sounds cool!
 
 
                         //	" ";
@@ -6147,7 +6147,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //A Melee Essence is here this time. With its strength, you can create a multifaceted weapon that swaps its arsenal instantly in combat.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.47", Player.name); //A Melee Essence is here this time. With its strength, you can create a multifaceted weapon that swaps its arsenal instantly in combat.
 
                         //	" ";
                     }
@@ -6175,7 +6175,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //{Player.name}, I have an Essence for you! It seems to create a Magic-type weapon with powerful piercing damage... It sounds rather helpful.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.48", Player.name); //{Player.name}, I have an Essence for you! It seems to create a Magic-type weapon with powerful piercing damage... It sounds rather helpful.
 
 
                         //	" ";
@@ -6196,7 +6196,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //{Player.name}, I have an Essence for you. Looks like it'll become a Summon-type weapon... and it gains strength from grazing danger? You'll have to try it.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.48", Player.name); //{Player.name}, I have an Essence for you. Looks like it'll become a Summon-type weapon... and it gains strength from grazing danger? You'll have to try it.
 
                         //	" ";
                     }
@@ -6224,7 +6224,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Okay- I've found another Essence you can use... I think. The only thing I can tell is that it makes a Ranged weapon. The rest is up to you.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.49", Player.name); //Okay- I've found another Essence you can use... I think. The only thing I can tell is that it makes a Ranged weapon. The rest is up to you.
 
 
                         //	" ";
@@ -6245,7 +6245,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This is another powerful Essence. Looks like it's a Melee weapon, and it has the potential to execute foes. Don't underestimate it.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.49", Player.name); //This is another powerful Essence. Looks like it's a Melee weapon, and it has the potential to execute foes. Don't underestimate it.
 
                         //	" ";
                     }
@@ -6273,7 +6273,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Okay- I've got it. Here's a Ranged-type Essence.. it looks to be something pretty powerful! Good luck.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.50", Player.name); //Okay- I've got it. Here's a Ranged-type Essence.. it looks to be something pretty powerful! Good luck.
 
 
                         //	" ";
@@ -6294,7 +6294,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Time for another essence- this time it's a Ranged-type weapon. Seems to be pretty powerful at general destruction.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.50", Player.name); //Time for another essence- this time it's a Ranged-type weapon. Seems to be pretty powerful at general destruction.
 
                         //	" ";
                     }
@@ -6321,7 +6321,7 @@ namespace StarsAbove
                 {
                     expression = 13;
 
-                    dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //{Player.name}, it's good to see you again. I'm not here to ask for your help- instead, I have a gift for you.
+                    dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Perseus.1", Player.name); //{Player.name}, it's good to see you again. I'm not here to ask for your help- instead, I have a gift for you.
 
 
                     //	" ";
@@ -6330,7 +6330,7 @@ namespace StarsAbove
                 {
                     expression = 13;
 
-                    dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //You have proven yourself as a true warrior; as such, you should have a weapon befitting your strength. So, I bestow
+                    dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Perseus.2", Player.name); //You have proven yourself as a true warrior; as such, you should have a weapon befitting your strength. So, I bestow
 
 
                     //	" ";
@@ -6339,7 +6339,7 @@ namespace StarsAbove
                 {
                     expression = 13;
 
-                    dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //this weapon unto you. Good luck, and good hunting.  
+                    dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Perseus.3", Player.name); //this weapon unto you. Good luck, and good hunting.  
 
 
                     //	" ";
@@ -6364,7 +6364,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //A Summon weapon's essence is here. It looks suspiciously like a whip... but it also can summon minions? Now that's peak.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.51", Player.name); //A Summon weapon's essence is here. It looks suspiciously like a whip... but it also can summon minions? Now that's peak.
 
 
                         //	" ";
@@ -6373,7 +6373,7 @@ namespace StarsAbove
                     {
                         expression = 1;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //What? 'Peak?' It's new age lingo- You've definitely heard it before. You know? Like.. mountain peak? The top.. of something? Never mind.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.52", Player.name); //What? 'Peak?' It's new age lingo- You've definitely heard it before. You know? Like.. mountain peak? The top.. of something? Never mind.
 
 
                         //	" ";
@@ -6394,7 +6394,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Here's another weapon. Looks to be a summon-type whip that can deploy spider-robots to attack foes.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.51", Player.name); //Here's another weapon. Looks to be a summon-type whip that can deploy spider-robots to attack foes.
 
                         //	" ";
                     }
@@ -6402,7 +6402,7 @@ namespace StarsAbove
                     {
                         expression = 3;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //They're spiders... but not real spiders. Yep- thinking like that will stop the fight or flight response. Take notes!
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.52", Player.name); //They're spiders... but not real spiders. Yep- thinking like that will stop the fight or flight response. Take notes!
 
                         //	" ";
                     }
@@ -6429,7 +6429,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Okay- this is a Melee weapon! My instincts tell me it's perfect for high-defense foes. What are you waiting for?
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.53", Player.name); //Okay- this is a Melee weapon! My instincts tell me it's perfect for high-defense foes. What are you waiting for?
 
 
                         //	" ";
@@ -6451,7 +6451,8 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = $"This is a Melee weapon. It has pretty good anti-armor properties- you can definitely put that to good use.";
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.53", Player.name);
+                        //dialogue = $"This is a Melee weapon. It has pretty good anti-armor properties- you can definitely put that to good use.";
 
                         //	" ";
                     }
@@ -6479,7 +6480,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This Melee blade can harness the power of the elements themselves. Just having it in your hands is quite something!
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.54", Player.name); //This Melee blade can harness the power of the elements themselves. Just having it in your hands is quite something!
 
 
                         //	" ";
@@ -6501,7 +6502,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Another weapon is here. It seems to be a Melee weapon- one that uses the power of the elements to attack foes.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.54", Player.name); //Another weapon is here. It seems to be a Melee weapon- one that uses the power of the elements to attack foes.
 
                         //	" ";
                     }
@@ -6529,7 +6530,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This looks to be a Magic weapon. With its power, you can call down entire stars to defeat your foes!
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.55", Player.name); //This looks to be a Magic weapon. With its power, you can call down entire stars to defeat your foes!
 
 
                         //	" ";
@@ -6538,7 +6539,7 @@ namespace StarsAbove
                     {
                         expression = 1;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //You're worried you'll run out eventually? Yeah.. no.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.56", Player.name); //You're worried you'll run out eventually? Yeah.. no.
 
 
                         //	" ";
@@ -6559,7 +6560,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This Magic-type staff will be incredibly helpful, if I do say so myself. It has the strength to conjure entire stars!
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.55", Player.name); //This Magic-type staff will be incredibly helpful, if I do say so myself. It has the strength to conjure entire stars!
 
                         //	" ";
                     }
@@ -6567,7 +6568,7 @@ namespace StarsAbove
                     {
                         expression = 1;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //As long as they aren't REAL stars. There would be... a few problems.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.56", Player.name); //As long as they aren't REAL stars. There would be... a few problems.
 
                         //	" ";
                     }
@@ -6594,7 +6595,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This looks to be... a Magic weapon. Strange- it feels like an entire armory is contained in this Essence. How's that possible?
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.57", Player.name); //This looks to be... a Magic weapon. Strange- it feels like an entire armory is contained in this Essence. How's that possible?
 
 
                         //	" ";
@@ -6603,7 +6604,7 @@ namespace StarsAbove
                     {
                         expression = 6;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Well, I'll let you figure that one out. Get to it- I'm curious too, you know?
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.58", Player.name); //Well, I'll let you figure that one out. Get to it- I'm curious too, you know?
 
 
                         //	" ";
@@ -6624,7 +6625,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Here's another weapon- Magic, it seems. There's something strange about it- this Essence seems to hold the strength of myriad weapons together.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.57", Player.name); //Here's another weapon- Magic, it seems. There's something strange about it- this Essence seems to hold the strength of myriad weapons together.
 
                         //	" ";
                     }
@@ -6652,7 +6653,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Here's a Magic weapon for your usage. Looks to me like it's pretty complicated- you're up to the task though, right? 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.59", Player.name); //Here's a Magic weapon for your usage. Looks to me like it's pretty complicated- you're up to the task though, right? 
 
 
                         //	" ";
@@ -6674,7 +6675,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Here's another unique Magic weapon. Looks to be rather complicated, so good luck using it. Don't forget the ABCs- always be casting!
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.58", Player.name); //Here's another unique Magic weapon. Looks to be rather complicated, so good luck using it. Don't forget the ABCs- always be casting!
 
                         //	" ";
                     }
@@ -6682,7 +6683,7 @@ namespace StarsAbove
                     {
                         expression = 5;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Although, I'm not too sure that it applies here.   
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.59", Player.name); //Although, I'm not too sure that it applies here.   
 
                         //	" ";
                     }
@@ -6709,7 +6710,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Right.. Here's a Ranged-type weapon Essence.  I hope you've built up your chemical tolerance- it seems to utilize chemical energy to deal powerful damage.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.60", Player.name); //Right.. Here's a Ranged-type weapon Essence.  I hope you've built up your chemical tolerance- it seems to utilize chemical energy to deal powerful damage.
 
 
                         //	" ";
@@ -6731,7 +6732,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This Essence sources a Ranged weapon. It has a high focus on tight mobility, meaning it'll put you into the front lines. The strength should compensate.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.60", Player.name); //This Essence sources a Ranged weapon. It has a high focus on tight mobility, meaning it'll put you into the front lines. The strength should compensate.
 
                         //	" ";
                     }
@@ -6758,7 +6759,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Behold- a new Essence! It's Melee damage this time. It has some incredible lifesteal powers- but also seems to drain your health on use? How about giving it a go? 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.61", Player.name); //Behold- a new Essence! It's Melee damage this time. It has some incredible lifesteal powers- but also seems to drain your health on use? How about giving it a go? 
 
 
                         //	" ";
@@ -6780,7 +6781,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //A Melee-type Essence is prepared this time. It seems to me like it sacrifies your health for powerful area-of-effect damage. Use it well, but know the risks. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.61", Player.name); //A Melee-type Essence is prepared this time. It seems to me like it sacrifies your health for powerful area-of-effect damage. Use it well, but know the risks. 
 
                         //	" ";
                     }
@@ -6807,7 +6808,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Here's a Summon weapon. It's.. Well, it's a whip, but it has some unique magical properties. It has good striking power, too! 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.62", Player.name); //Here's a Summon weapon. It's.. Well, it's a whip, but it has some unique magical properties. It has good striking power, too! 
 
 
                         //	" ";
@@ -6829,7 +6830,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Right, here's a Summon-type whip. It has some magic capability, but it's a bit random in its casting. Try and use it well. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.62", Player.name); //Right, here's a Summon-type whip. It has some magic capability, but it's a bit random in its casting. Try and use it well. 
 
                         //	" ";
                     }
@@ -6856,7 +6857,7 @@ namespace StarsAbove
                     {
                         expression = 6;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Listen close, {Player.name}! Or not. This Magic weapon is a giant horn, but get this: you can whack people with it! Rad! 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.63", Player.name); //Listen close, {Player.name}! Or not. This Magic weapon is a giant horn, but get this: you can whack people with it! Rad! 
 
 
                         //	" ";
@@ -6878,7 +6879,7 @@ namespace StarsAbove
                     {
                         expression = 1;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Be careful with this Essence- for some reason, it discharges static electricity all the time.  
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.63", Player.name); //Be careful with this Essence- for some reason, it discharges static electricity all the time.  
 
                         //	" ";
                     }
@@ -6886,7 +6887,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //It'll create a Summon weapon.Hopefully the electric properties carry over- it's sure to give our foes a shock. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.64", Player.name); //It'll create a Summon weapon. Hopefully the electric properties carry over- it's sure to give our foes a shock. 
 
                         //	" ";
                     }
@@ -6912,7 +6913,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Careful with this Essence- Apparently, only the worthy can wield it at full strength.  
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.64", Player.name); //Careful with this Essence- Apparently, only the worthy can wield it at full strength.  
 
 
                         //	" ";
@@ -6921,7 +6922,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //An ancient civilization's magnum opus, it seems. Don't underestimate its destructive power. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.65", Player.name); //An ancient civilization's magnum opus, it seems. Don't underestimate its destructive power. 
 
 
                         //	" ";
@@ -6943,7 +6944,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This Essence leads to a truly powerful weapon. It bears remnants of an ancient, advanced civilization. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.65", Player.name); //This Essence leads to a truly powerful weapon. It bears remnants of an ancient, advanced civilization. 
 
 
                         //	" ";
@@ -6952,7 +6953,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Evidently, they bore proficiency in spatial manipulation. I'd like you to give it a try, but it might reject the unworthy. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.66", Player.name); //Evidently, they bore proficiency in spatial manipulation. I'd like you to give it a try, but it might reject the unworthy. 
 
 
                         //	" ";
@@ -6961,7 +6962,7 @@ namespace StarsAbove
                     {
                         expression = 3;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //At this point, I wonder if there was a weapon you weren't worthy to wield. Yes, I'm praising you. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.67", Player.name); //At this point, I wonder if there was a weapon you weren't worthy to wield. Yes, I'm praising you. 
 
 
                         //	" ";
@@ -6988,7 +6989,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Look here, another Essence..! It's going to be Magic-type. It seems to revolve around balancing Black and White Mana to attack. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.66", Player.name); //Look here, another Essence..! It's going to be Magic-type. It seems to revolve around balancing Black and White Mana to attack. 
 
 
                         //	" ";
@@ -6997,7 +6998,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //It seems that they were opposites, at least where this thing came from. Makes you wonder... 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.67", Player.name); //It seems that they were opposites, at least where this thing came from. Makes you wonder... 
 
 
                         //	" ";
@@ -7019,7 +7020,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This Magic-type Essence balances attack and healing through the dual-use of Black and White mana. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.68", Player.name); //This Magic-type Essence balances attack and healing through the dual-use of Black and White mana. 
 
 
                         //	" ";
@@ -7028,7 +7029,7 @@ namespace StarsAbove
                     {
                         expression = 4;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Two opposite schools of learning, at least in this Essence's original world. Now isn't that thought-provoking. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.69", Player.name); //Two opposite schools of learning, at least in this Essence's original world. Now isn't that thought-provoking. 
 
 
                         //	" ";
@@ -7055,7 +7056,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Thanks for waiting. Here's another Melee-type Essence for your use. While it's deceptively close-ranged, it has the potential for some crazy burst damage. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.68", Player.name); //Thanks for waiting. Here's another Melee-type Essence for your use. While it's deceptively close-ranged, it has the potential for some crazy burst damage. 
 
 
                         //	" ";
@@ -7064,7 +7065,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Sure, it'll most likely burn you up from the inside. Just a little, though.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.69", Player.name); //Sure, it'll most likely burn you up from the inside. Just a little, though.
 
 
                         //	" ";
@@ -7086,7 +7087,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Apologies for the delay- here's an Essence. This Melee weapon has some recoil potential, but in exchange you could deal some explosive amounts of damage.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.70", Player.name); //Apologies for the delay- here's an Essence. This Melee weapon has some recoil potential, but in exchange you could deal some explosive amounts of damage.
 
 
                         //	" ";
@@ -7095,7 +7096,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //I'd ask you to use it in moderation, but I'm sure you'll use it as much as you like. Bring some healing potions, at the very least.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.71", Player.name); //I'd ask you to use it in moderation, but I'm sure you'll use it as much as you like. Bring some healing potions, at the very least.
 
 
                         //	" ";
@@ -7122,7 +7123,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //Okay, here's an unorthodox Essence for you. While it functions as a pretty strong pickaxe, it looks like it also has some great damage potential.  
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.70", Player.name); //Okay, here's an unorthodox Essence for you. While it functions as a pretty strong pickaxe, it looks like it also has some great damage potential.  
 
 
                         //	" ";
@@ -7131,7 +7132,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //From my take, it seems to be a great off-hand weapon to pump out explosions. Everyone loves explosions, right? 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.71", Player.name); //From my take, it seems to be a great off-hand weapon to pump out explosions. Everyone loves explosions, right? 
 
 
                         //	" ";
@@ -7153,7 +7154,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.", Player.name); //This Essence focuses on excavation as well as damage. You can use it to move earth at significant rates, and additionally deal powerful explosive damage. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.72", Player.name); //This Essence focuses on excavation as well as damage. You can use it to move earth at significant rates, and additionally deal powerful explosive damage. 
 
 
                         //	" ";
