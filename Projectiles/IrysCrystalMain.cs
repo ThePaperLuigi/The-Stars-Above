@@ -49,7 +49,7 @@ namespace StarsAbove.Projectiles
 			Projectile.direction = projOwner.direction;
 			Projectile.position.X = ownerMountedCenter.X - (float)(Projectile.width / 2);
 			Projectile.position.Y = ownerMountedCenter.Y - (float)(Projectile.height / 2) - 150;
-
+			Projectile.Center += projOwner.gfxOffY * Vector2.UnitY;//Prevent glitchy animation.
 
 			NPC closest = null;
 			float closestDistance = 9999999;
