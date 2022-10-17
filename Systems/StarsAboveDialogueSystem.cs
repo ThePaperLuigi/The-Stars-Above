@@ -2068,7 +2068,7 @@ namespace StarsAbove
                     {
                         expression = 6;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.SkeletronPrime", Player.name); //And that takes care of Skeletron Prime. It certainly looked the part... if you're a total edgelord.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.SkeletronPrime.Eridani.1", Player.name); //And that takes care of Skeletron Prime. It certainly looked the part... if you're a total edgelord.
 
                         //	" ";
                     }
@@ -2077,7 +2077,7 @@ namespace StarsAbove
 
 
                         expression = 4;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.SkeletronPrime", Player.name); //If you took offense, I apologize. You can be as edgy as you want. Uh, I mean.. anyways... 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.SkeletronPrime.Eridani.2", Player.name); //If you took offense, I apologize. You can be as edgy as you want. Uh, I mean.. anyways... 
 
 
                         //	" ";
@@ -2089,13 +2089,12 @@ namespace StarsAbove
                         if (Player.GetModPlayer<StarsAbovePlayer>().bloomingflames == 0)
                         {
                             expression = 0;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.SkeletronPrime", Player.name); //It looks as if yet another upgrade is available in the Stellar Array. How serendipitous.
+                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.SkeletronPrime.Eridani.3", Player.name); //It looks as if yet another upgrade is available in the Stellar Array. How serendipitous.
                         }
                         else
                         {
                             expression = 0;
-                            dialogue = $"That's all for now, {Player.name}." +
-                                $" ";
+                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.SkeletronPrime.Eridani.4", Player.name);
                         }
 
                         //	" ";
@@ -2141,7 +2140,7 @@ namespace StarsAbove
                     {
                         expression = 6;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.AllMechs", Player.name); //It seems that was the last of the Mechanical Bosses. This is a great step forward! 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.AllMechs.Eridani.1", Player.name); //It seems that was the last of the Mechanical Bosses. This is a great step forward! 
 
                         //	" ";
                     }
@@ -2152,7 +2151,7 @@ namespace StarsAbove
 
 
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.AllMechs", Player.name); //This victory has brought another upgrade to the Stellar Array. 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.AllMechs.Eridani.2", Player.name); //This victory has brought another upgrade to the Stellar Array. 
 
 
                         //	" ";
@@ -2298,13 +2297,12 @@ namespace StarsAbove
                         if (Main.expertMode)
                         {
                             expression = 6;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Golem", Player.name); //Another upgrade is now available in the Stellar Array. It will surely be useful.
+                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Golem.Eridani.3", Player.name); //Another upgrade is now available in the Stellar Array. It will surely be useful.
                         }
                         else
                         {
                             expression = 0;
-                            dialogue = $"That's all for now, {Player.name}." +
-                                $" Stay safe.";
+                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Golem.Eridani.4", Player.name);
                         }
 
                         //	" ";
