@@ -1,6 +1,8 @@
 ﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using StarsAbove.Utilities;
+using System;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.UI;
@@ -213,55 +215,46 @@ namespace StarsAbove.UI.StellarNova
 					}
 					if (modPlayer.randomNovaDialogue == 0)
 					{
-						modPlayer.novaDialogue = "Now it's my turn!";
+						modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.1");
 					}
 					if (modPlayer.randomNovaDialogue == 1)
 					{
 						if(modPlayer.chosenStellarNova == 1)
                         {
-							modPlayer.novaDialogue = "I will take the place" +
-							"\nof entropy!";
+							modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.2");
 						}
 						if(modPlayer.chosenStellarNova == 2)
                         {
-							modPlayer.novaDialogue = "Come forth," +
-							"\nblazing blade!";
+							modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.3");
 						}
 						if (modPlayer.chosenStellarNova == 3)
 						{
-							modPlayer.novaDialogue = "This is what you" +
-							"\ndeserve.";
+							modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.4");
 						}
 						if (modPlayer.chosenStellarNova == 4)
 						{
-							modPlayer.novaDialogue = "Don't worry;" +
-							"\nI'll heal you.";
+							modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.5");
 						}
 						if (modPlayer.chosenStellarNova == 5)
 						{
-							modPlayer.novaDialogue = "The power of the" +
-							"\ncosmos!";
+							modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.6");
 						}
 					}
 					if (modPlayer.randomNovaDialogue == 2)
 					{
-						modPlayer.novaDialogue = "I'm not about to" +
-							"\nstop here.";
+						modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.7");
 					}
 					if (modPlayer.randomNovaDialogue == 3)
 					{
-						modPlayer.novaDialogue = "I'll reduce you to" +
-							"\nstardust!";
+						modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.8");
 					}
 					if (modPlayer.randomNovaDialogue == 4)
 					{
-						modPlayer.novaDialogue = "Let's finish this!" +
-							"\n";
+						modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.9");
 					}
 					if (modPlayer.randomNovaDialogue == 5)
 					{
-						modPlayer.novaDialogue = "Don't underestimate" +
-							"\nme.";
+						modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.10");
 					}
 
 
@@ -292,61 +285,52 @@ namespace StarsAbove.UI.StellarNova
 					}
 					if (modPlayer.randomNovaDialogue == 0)
 					{
-						modPlayer.novaDialogue = "Time to finish" +
-							"\nthis.";
+						modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.1");
 					}
 					if (modPlayer.randomNovaDialogue == 1)
 					{
 						if (modPlayer.chosenStellarNova == 1)
 						{
-							modPlayer.novaDialogue = "I am NOT" +
-							"\nlosing to you.";
+							modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.2");
 						}
 						if (modPlayer.chosenStellarNova == 2)
 						{
-							modPlayer.novaDialogue = "I've been waiting" +
-							"\nfor this.";
+							modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.3");
 						}
 						if (modPlayer.chosenStellarNova == 3)
 						{
-							modPlayer.novaDialogue = "You've made a" +
-							"\nfatal mistake.";
+							modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.4");
 						}
 						if (modPlayer.chosenStellarNova == 4)
 						{
-							modPlayer.novaDialogue = "Let's get the upper" +
-							"\nhand.";
+							modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.5");
 						}
 						if (modPlayer.chosenStellarNova == 5)
 						{
-							modPlayer.novaDialogue = "Our victory was" +
-												"\nnever in question.";
+							modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.6");
 						}
 					}
 					if (modPlayer.randomNovaDialogue == 2)
 					{
-						modPlayer.novaDialogue = "The time of parting" +
-							"\nhas come.";
+						modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.7");
 					}
 					if (modPlayer.randomNovaDialogue == 3)
 					{
-						modPlayer.novaDialogue = "Go back to where" +
-							"\nyou belong.";
+						modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.8");
 					}
 					if (modPlayer.randomNovaDialogue == 4)
 					{
-						modPlayer.novaDialogue = "I'm not about to" +
-							"\nstop here.";
+						modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.9");
 					}
 					if (modPlayer.randomNovaDialogue == 5)
 					{
-						modPlayer.novaDialogue = "I won't lose." +
-											"\nNot now, not ever.";
+						modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.10");
 					}
 
+					
 				}
-
-				if(!disableDialogue)
+				modPlayer.novaDialogue = Wrap(modPlayer.novaDialogue, 20);
+				if (!disableDialogue)
                 {
 					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/NovaTextBox"), hitbox, Color.White * (modPlayer.NovaCutInOpacity));
 
@@ -389,8 +373,16 @@ namespace StarsAbove.UI.StellarNova
 
 
 		}
-			
-		
+
+		private static string Wrap(string v, int size)
+		{
+			v = v.TrimStart();
+			if (v.Length <= size) return v;
+			var nextspace = v.LastIndexOf(' ', size);
+			if (-1 == nextspace) nextspace = Math.Min(v.Length, size);
+			return v.Substring(0, nextspace) + ((nextspace >= v.Length) ?
+			"" : "\n" + Wrap(v.Substring(nextspace), size));
+		}
 		public override void Update(GameTime gameTime) {
 			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().NovaCutInTimer > 0 && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer != 0))
 			{

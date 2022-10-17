@@ -1,5 +1,157 @@
 Mods: { 
 	StarsAbove: { 
+		StellarArray: {
+			Misc: {
+				Confirm: Confirm your selection.
+				Reset: Reset your selection.
+			}
+			AspectedDamageType: {
+				Description: If the weapon's type has changed, the weapon deals 10% less damage when active.
+				LockHover: Aspected Weapon damage type is saved even after re-entering the world.
+				Melee: {
+					Name: Change the held Aspected Weapon to [c/FFAB4D:Melee Damage].
+					
+				}
+				Rogue: {
+					Name: Change the held Aspected Weapon to [c/707070:Rogue Damage].
+					
+				}
+				Magic: {
+					Name: Change the held Aspected Weapon to [c/EF4DFF:Magic Damage].
+					
+				}
+				Ranged: {
+					Name: Change the held Aspected Weapon to [c/4DFF5B:Ranged Damage].
+					
+				}
+				Summon: {
+					Name: Change the held Aspected Weapon to [c/00CDFF:Summon Damage].
+					
+				}
+			}
+			Abilities: {
+				Starshield: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Starshield']"
+					Description: When struck, gain 10% of your Max HP as defense for 2 seconds (20 second cooldown.) Additionally, gain 20 mana upon activation, and 20% damage increase for the duration of the shield.
+					Unlock: "[c/9D9D9D:Locked: Defeat the Eye of Cthulhu]"
+				}
+				ButchersDozen: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Butcher's Dozen']"
+					Description: "After 12 kills without leaving combat, gain 5% extra attack damage and 30% faster attack speed."
+					Unlock: "[c/9D9D9D:Locked: Defeat Nalhaun, the Burnished King]"
+				}
+				EvasionMastery: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Evasion Mastery']"
+					Description: When struck, gain 10% of your Max HP as defense for 2 seconds (20 second cooldown.) Additionally, gain 20 mana upon activation, and 20% damage increase for the duration of the shield.
+					Unlock: "[c/9D9D9D:Locked: Defeat the Queen Bee]"
+				}
+				IronWill: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Iron Will']"
+					Description: 3% chance to take 0 damage from an attack. Gain 25% movement speed.
+					Unlock: "[c/9D9D9D:Locked: Defeat the Eater of Worlds or Brain of Cthulhu]"
+				}
+				UmbralEntropy: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Umbral Entropy']"
+					Description: Gain 6 defense. Take 30 less damage from attacks that deal over 100 damage. Below 100 HP, take 20% less damage from all attacks, independent of other defense calculations.
+					Unlock: "[c/9D9D9D:Locked: Defeat the Moon Lord]"
+				}
+				FlashFreeze: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Flash Freeze']"
+					Description: Landing a critical strike will cause foes to explode, taking half the original damage. Additionally, damaging snowflakes will spew from the target, spreading the damage. 4 second cooldown.
+					Unlock: "[c/9D9D9D:Locked: Defeat Arbitration in Expert Mode]"
+				}
+				MysticForging: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Mystic Forging']"
+					Description: Consume 5 mana when hitting a foe with an attack to deal 8% extra damage.
+					Unlock: "[c/9D9D9D:Locked: Defeat Penthesilea, the Witch of Ink]"
+				}
+				InnerAlchemy: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Inner Alchemy']"
+					Description: After not taking damage for 12 seconds, gain 10% increased damage, 25 defense, knockback resistance, and Health Regeneration. Buffs are lost on hit.
+					Unlock: "[c/9D9D9D:Locked: Defeat Skeletron]"
+				}
+				Hikari: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Hikari']"
+					Description: Gain bonus attack and defense proportional to Max HP divided by 20. Taking damage inflicts 'Null Radiance' which reduces outgoing damage by half for 6 seconds.
+					Unlock: "[c/9D9D9D:Locked: Defeat the Ice Queen]"
+				}
+				CelestialEvanesence: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Celestial Evanesence']"
+					Description: Critical strike rate is increased based on current Mana divided by 20. Landing a critical strike grants 5% of the damage dealt as Mana. (Max 5 per hit)
+					Unlock: "[c/9D9D9D:Locked: Defeat the Lunatic Cultist in Expert Mode]"
+				}
+				HealthyConfidence: {
+					Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Healthy Confidence']"
+					Description: Gain 150 extra Maximum HP and powerful health regeneration. Defense is halved below 200 HP.
+					Unlock: "[c/9D9D9D:Locked: Defeat the Wall of Flesh]"
+				}
+				InfernalEnd: {
+					Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Infernal End']"
+					Description: When below 100 HP, gain 50% increased damage and all attacks burn foes. Additionally, these effects will temporarily ignore the HP threshold for 3 seconds after taking damage.
+					Unlock: "[c/9D9D9D:Locked: Defeat any Mechanical Boss]"
+				}
+				AvatarOfLight: {
+					Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Avatar of Light']"
+					Description: Half of Max Mana is added to Max HP. At 500 HP or above, gain 10 defense, 5% damage, and 5 Stellar Nova Energy Regeneration.
+					Unlock: "[c/9D9D9D:Locked: Defeat the Warrior of Light]"
+				}
+				AstralMantle: {
+					Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Astral Mantle']"
+					Description: 1/10th of current Mana is added to Defense. Gain 15 Stellar Nova Energy Regeneration above 200 Mana.
+					Unlock: "[c/9D9D9D:Locked: Defeat all Mechanical bosses]"
+				}
+				Afterburner: {
+					Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Afterburner']"
+					Description: When Mana drops below 40, gain 150 Mana and all attacks critically strike for 4 seconds. 25 second cooldown.
+					Unlock: "[c/9D9D9D:Locked: Defeat Plantera]"
+				}
+				SpatialStratagem: {
+					Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Spatial Stratagem']"
+					Description: Critical strikes roll critical strike chance again. If the attack was critical again, increases damage by 50% and roll one more time.
+					Unlock: "[c/9D9D9D:Locked: Defeat all bosses from The Stars Above except the final boss]"
+				}
+				WeaknessExploit: {
+					Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Weakness Exploit']"
+					Description: Critical strikes hit again for 10% of the original damage as true damage (Will not kill.) Foes below 20% HP or who are Stunned will take 30% damage instead.
+					Unlock: "[c/9D9D9D:Locked: Defeat Golem in Expert Mode]"
+				}
+				Aprismatism: {
+					Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Aprismatism']"
+					Description: Aspected Damage Type changes will now apply to all weapons.
+					Unlock: "[c/9D9D9D:Locked: Defeat all bosses from The Stars Above except the final boss in Expert Mode]"
+				}
+				UnbridledRadiance: {
+					Name: "[c/D82BFF:Tier 3] [c/FFC258:'Unbridled Radiance']"
+					Description: Doubles the recharge rate of Stellar Nova Energy. Stellar Nova Energy does not deplete out of combat.
+					Unlock: "[c/9D9D9D:Locked: Defeat all Terraria bosses and the Warrior of Light in Expert Mode]"
+				}
+				BetweenTheBoundary: {
+					Name: "[c/D82BFF:Tier 3] [c/FFC258:'Between the Boundary']"
+					Description: Every 8 seconds, swap between Ebb (drastic Mana drain) and Flow (infinite Mana Regeneration.) Additionally, gain 40% increased damage and 20% increased attack speed during Flow.
+					Unlock: "[c/9D9D9D:Locked: Defeat all Terraria bosses and all bosses from The Stars Above except the final boss]"
+				}
+				CyclicHunter: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Cyclic Hunter']"
+					Description: When ammo is consumed, gain 8 mana, 10% increased damage, and Movement Speed for half a second. 2 second cooldown.
+					Unlock: "[c/9D9D9D:Locked: Defeat the Slime King in Expert Mode]"
+				}
+				LivingDead: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Living Dead']"
+					Description: Survive most fatal damage for 10 seconds, but if HP is not healed above 150 when the buff ends, you will die. (4 minute cooldown) You need 200+ Max HP to confirm this ability.
+					Unlock: "[c/9D9D9D:Locked: Defeat Pumpking]"
+				}
+				BeyondInfinity: {
+					Name: "[c/D82BFF:Tier 3] [c/FFC258:'Beyond Infinity']"
+					Description: At 500 HP or above, all applicable outgoing damage is doubled. Deal 10% less damage below 500 HP, increased by 10% for each 100 HP.
+					Unlock: "[c/9D9D9D:Locked: Defeat all Terraria bosses]"
+				}
+				KeyOfChronology: {
+					Name: "[c/D82BFF:Tier 3] [c/FFC258:'Key Of Chronology']"
+					Description: Taking over 200 damage at once will instead heal you for that amount and grant 5 seconds of Invincibility. Additionally, all nearby non-boss enemies will be Stunned for 5 seconds. 2 minute cooldown.
+					Unlock: "[c/9D9D9D:Locked: Defeat the Moon Lord in Expert Mode]"
+				}
+			}
+		}
 		Dialogue: {
 			IdleDialogueHardmode: {
 				Asphodene: Sorry, {0}. Nothing to comment on right now.
@@ -1272,18 +1424,224 @@ Mods: {
 		}
 		
 		StarfarerMenuDialogue: {
-			
+			StellarNova: {
+				AfterNovaDialogue: {
+					Asphodene: {
+						1: What's next on the list?
+						2: The Stellar Nova has been updated. What's next?
+						3: Stellar Nova changes are confirmed. Great. Is there anything else you needed?
+					}
+					Eridani: {
+						1: Okay, the Stellar Nova changes went through. What will you do next?
+						2: Finished modifying the Stellar Nova? Great.
+						3: Okay, we've changed the Stellar Nova around. Do you have anything else in mind?
+					}
+				}
+				AfterArrayDialogue: {
+					Asphodene:{
+						1: Okay, that's the Stellar Array taken care of. Anything else you needed?
+						2: I see you've finished your changes with the Stellar Array. Perfect.
+						3: The Stellar Array's done updating. That's all for now, unless you had something else in mind?
+					}
+					Eridani: {
+						1: Good, the Stellar Array has been changed. Next on the list is...
+						2: You're done with the Stellar Array? Great. Anything else?
+						3: Okay, the Stellar Array is changed. Have you finished what you sought to achieve?
+					}
+				}
+			}
+			StarfarerMenuButtons: {
+				Archive: {
+					Asphodene: Right.. What do you want to read about? Dialogue is sorted into 3 groups: idle, boss, and weapon. Cycle through and choose the one you want.
+					Eridani: Okay, what do you want to read about? The dialogues are sorted into 3 groups: idle, boss, and weapon. Feel free to choose which one you want to view.
+				}
+				ExitArchive: {
+					Asphodene: Changed your mind?
+					Eridani: Did you have other plans?
+				}
+				ArchiveHover: {
+					Asphodene: This is the Archive. Just in case you didn't get everything I said, you can read it here. I know, you just can't get enough of my analysis, right? You can also get items you lost, like Essences.
+					Eridani: This is the Archive. If you ever find yourself needing me to repeat what I've said about something, it's here. Additionally, if you lost something like an Essence, you can reacquire it.
+				}
+				Confirm: {
+					Asphodene: {
+						1: Is that everything?
+						2: Okay, finished?
+						3: Done already?
+					}
+					Eridani: {
+						1: Have you done what you needed to?
+						2: Finished?
+						3: Was that all?
+					}
+				}
+				VoyageHover: {
+					Asphodene: Looks like this isn't implemented yet.
+					Eridani: It seems this isn't quite implemented yet.
+				}
+				Locked: {
+					Asphodene: We can't use this yet. 
+					Eridani: We haven't unlocked this yet. 
+				}
+				NovaHover: {
+					Asphodene: This is the Stellar Nova Menu. You can check out Stellar Nova stats, swap it for another one, or equip Stellar Prisms to change what they can do.
+					Eridani: This is the Stellar Nova Menu. You can peruse Stellar Novas, swap between them, or you can equip Stellar Prisms to change what effects Stellar Novas have.
+				}
+				ArrayBoss: {
+					Asphodene: I'd love to let you modify the Stellar Array, but we should probably deal with THAT first. Come on, you know what I mean!!
+					Eridani: I know you'd like to modify the Stellar Array, but there's a much more pressing matter at hand... You ARE aware of this, right?
+				}
+				ArrayHover: {
+					Asphodene: You can access the Stellar Array from here. We can equip passive abilities here, staying mindful of the max cost, as well as changing the damage type of Aspected Weapons.
+					Eridani: This is the Stellar Array. You can equip passive abilities here, as long as the total cost doesn't exceed the maximum. Also, this is where you configure Aspected Weapon type.
+				}
+				StarfarerAttire: {
+					Asphodene: If you have any Starfarer Attire for me, here's the place to put it. It'll be pretty helpful for me, and you by association! And hey- style equals skill!
+					Eridani: You can place Starfarer Attire here. It'll provide me with some helpful boons to assist you better. I know your fashion sense is... unique, so at least try and spare me?
+				}
+				StarfarerVanity: {
+					Asphodene: I'll wear the Starfarer Attire here over the Armor Slot. It's called a vanity slot, or so I'm told.
+					Eridani: This is the vanity slot for Starfarer Attire. Anything placed here will be worn above the armor set.
+				}
+			}
 		}
-		StellarArrayDescriptions: {
-			
-		}
+		
 		StellarNova: {
 			StellarNovaDialogue: {
-			
+				StellarNovaQuotes: {
+					Asphodene: {
+						1: Now it's my turn!
+						2: I will take the place of entropy!
+						3: Come forth, blazing blade!
+						4: This is what you deserve.
+						5: Don't worry; I'll heal you.
+						6: The power of the cosmos!
+						7: I'm not about to stop here.
+						8: I'll reduce you to stardust!
+						9: Let's finish this!
+						10: Don't underestimate me.
+					}
+					Eridani: {
+						1: Time to finish this.
+						2: I am NOT losing to you.
+						3: I've been waiting for this.
+						4: You've made a fatal mistake.
+						5: Let's get the upper hand.
+						6: Our victory was never in question.
+						7: The time of parting has come.
+						8: Go back to where you belong.
+						9: I'm not about to stop here.
+						10: I won't lose. Not now, not ever.
+					}
+				}
+				
+				MiscInfo: {
+					Confirm: {
+						Asphodene: Finished modifying the Stellar Nova?
+						Eridani: Are you finished modifying the Stellar Nova..?
+					}
+					Reset: {
+						Asphodene: Would you like to deselect the current Stellar Nova?
+						Eridani: We can reset the Stellar Nova, if you'd like.
+					}
+				}
+				TheofaniaInanis: {
+					Unlocked: {
+						Asphodene: This is Theofania Inanis, a general use Stellar Nova that applies a powerful debuff.
+						Eridani: This is Theofania Inanis: a general Stellar Nova that can apply a powerful debuff.
+					}
+				}
+				ArsLaevateinn: {
+					Unlocked: {
+						Asphodene: Ars Laevateinn. If you've ever wanted to clear an area fast, this is the Stellar Nova for that.
+						Eridani: This Stellar Nova, Ars Laevateinn, focuses on doing large amounts of damage in a specified area.
+					}
+					Locked: {
+						Asphodene: We don't have access to this yet. I feel we must defeat a certain monarch to get this. But who...?
+						Eridani: We can't use this yet. Something tells me we must defeat a 'regal' enemy to obtain this.
+					}
+				}
+				KiwamiRyuken: {
+					Unlocked: {
+						Asphodene: A powerful counter-attack, Kiwami Ryuken. Time it right, and your foes will be dropped instantly.
+						Eridani: A powerful counterattack: Kiwami Ryuken. You can deal enormous amounts of damage quickly if timed properly.
+					}
+					Locked: {
+						Asphodene: We don't have access to this yet. We must vanquish a true evil.
+						Eridani: We can't use this yet. I feel we must defeat a true evil...
+					}
+				}
+				GardenOfAvalon: {
+					Unlocked: {
+						Asphodene: An influential support Nova, the Garden of Avalon will grant powerful healing and invincibility.
+						Eridani: This Stellar Nova will grant powerful healing over time as well as a brief window of invincibility.
+					}
+					Locked: {
+						Asphodene: We don't have access to this yet. We need to defeat a strong enough magic user...
+						Eridani: We can't use this yet. We need to defeat a powerful magical entity.
+					}
+				}
+				EdinGenesisQuasar: {
+					Unlocked: {
+						Asphodene: With this Stellar Nova, you can imbue your attacks directly, overwriting their stats as well as gaining a new burst attack.
+						Eridani: This Stellar Nova will allow you to change the stats of your weapons as well as gain a new special attack.
+					}
+					Locked: {
+						Asphodene: We don't have access to this yet. We have to defeat a foe with some sort of spatial power.
+						Eridani: We can't use this yet. We have to defeat a foe with spatial powers.
+					}
+				}
 			}
 			StellarNovaInfo: {
-			
+				TheofaniaInanis: {
+					AbilityName: Theofania Inanis
+					AbilitySubName: "[c/C2BDFF:Limitless Starry Void]"
+					AbilityDescription: Conjure a colossal blade to cleave foes in twain. After casting, you will be able to re-cast Theofania Inanis for 10 seconds at no additional cost. Striking foes with Theofania Inanis will inflict Void Atrophy, dealing powerful damage over time. The second cast of Theofania Inanis will double the potency of Void Atrophy, if applicable. This debuff lasts for 30 seconds. If the attack crits, refund a portion of consumed Stellar Nova Energy. Each cast does 50% of Stellar Nova damage.
+					AstralBonus: You may re-cast Theofania Inanis again to a total of 3 times, dealing 25% damage. This cast does not inflict Void Atrophy, nor does it strengthen it.
+					UmbralBonus: The second hit of Theofania Inanis does not strengthen Void Atrophy, but increases self damage output by 400% for 5 seconds.
+				
+				}
+				ArsLaevateinn: {
+					AbilityName: Ars Laevateinn
+					AbilitySubName: "[c/F19559:Shine True, O Burning Bright Star]"
+					AbilityDescription: Wield a blazing greatsword to return foes to ashes. Casting Ars Laevataeinn will mark a colossal region around you with infernal flames. Ars Laevateinn will pulse damage five times in the specified region, dealing 1/5th of the total damage with each hit. During this time, you will be granted 'Surtr's Twilight.' While this buff is active, all attacks will Burn foes for 8 seconds. If Burned foes are struck by Ars Laevateinn, they will take a small portion of Stellar Nova damage as extra damage.
+					AstralBonus: Burning foes take extra damage. If the attack was a critical strike, burning foes take even more damage.
+					UmbralBonus: Surtr's Twilight will additionally grant a 10% attack buff. Gain Mana Regeneration while Surtr's Twilight is active.
+				}
+				KiwamiRyuken: {
+					AbilityName: Kiwami Ryuken
+					AbilitySubName: "[c/36BDEC:Unbridled Essence of the Dragon's Fist]"
+					AbilityDescription: Upon activation of Kiwami Ryuken, you will have a one-second window to take damage from a foe, becoming invincible in the process. If hit, a counterattack will trigger, dealing incredible damage in close proximity, aimed at your cursor. You will be unable to execute the counterattack if the foe is further than melee range, but damage will still be negated. You will be refunded 50% of the Stellar Nova energy cost if you are not hit during Kiwami Ryuken.
+					AstralBonus: The counterattack will always deal critical damage below half health. Restore 5 Stellar Nova Energy upon triggering the counterattack.
+					UmbralBonus: Heal 40 health and mana upon triggering the counterattack. 10 extra Stellar Nova energy will be refunded on failure.
+				}
+				GardenOfAvalon: {
+					AbilityName: Garden of Avalon
+					AbilitySubName: "[c/ECB3FC:The Forever-Sealed Utopia]"
+					AbilityDescription: Call forth the Garden of Avalon, infusing the world with radiant energy. Grant powerful Health and Mana regeneration periodically for 8 seconds, scaling with Stellar Nova Damage. Gain Invincibility for 2 seconds. If the cast would be critical, gain Health, modified by Stellar Nova crit modifiers. Additionally, upon a critical cast, gain the buff 'Solemn Aegis' for 15 seconds, which negates one hit of damage independently of Invincibility.
+					AstralBonus: Invincibility lasts for 4 seconds instead of 2. Instantly heal 100 HP upon casting Garden of Avalon.
+					UmbralBonus: Gain an extra buff on cast: Dreamlike Charisma. (Can not stack.) Dreamlike Charisma increases damage by 16%, doubled above 100 Mana.
+				}
+				EdinGenesisQuasar: {
+					AbilityName: Edin Genesis Quasar
+					AbilitySubName: "[c/00FF93:The Moment a Planet Is Born]"
+					AbilityDescription: Upon cast, become immobile and invincible temporarily. Gain 'Astarte Driver' for 25 seconds. Astarte Driver grants infinite flight and three Cosmic Charges. ALL attacks while Astarte Driver is active will inherit the stats of the Stellar Nova. Pressing the Starfarer Action Key with a Cosmic Charge available will launch a barrage of spatial projectiles (2 second use cooldown.) After activating Astarte Driver's stat-changing effect, the target will be immune for a very short period.
+					AstralBonus: Critical hits do an additional {0} damage in Astarte Driver. You will gain a Cosmic Charge after defeating a foe with a critical hit. (Max 5 charges.)
+					UmbralBonus: Astarte Driver attacks will execute any foe below {0} HP. Gain 1 second of Invincibility when a Cosmic Charge is expended.
+				}
+				
+				BaseDamage: Base Damage
+				BaseEnergyCost: Base Energy Cost
+				Damage: Damage
+				AttackDamage: Attack Damage
+				CritChance: Crit Chance
+				CritDamage: Crit Damage
+				EnergyCost: Energy Cost
+				BaseHealStrength: Base Heal Strength
+				HealStrength: Heal Strength
+				CritHealStrength: Crit Heal Strength
 			}
+			
 		}
 		Config: {
 			
@@ -1389,7 +1747,6 @@ Mods: {
 		}
 		
 		Common: {
-			ChargeText: Hold left click to charge the weapon; if the weapon is fully charged, the attack varies
 			DiskReady: The Spatial Disk begins to resonate. Left click to interact.
 			ArrayAbility: The Stellar Array has gained a new ability!
 		}
@@ -1418,6 +1775,8 @@ Mods: {
 		MapObject: {
 			VendingMachine: Vending Machine
 		}
+		
+		
 		
 		ItemTooltip: {
 		    AlienCoral:

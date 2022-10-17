@@ -5148,11 +5148,13 @@ namespace StarsAbove
             {
 
                 animatedDescription = description.Substring(0, novaDialogueScrollNumber);//Prompt dialogue increment magic
+                animatedDescription = Wrap(animatedDescription, 55);
             }
             if (starfarerMenuActive && chosenStarfarer != 0)
             {
                 novaGauge = 0;
                 animatedStarfarerMenuDialogue = starfarerMenuDialogue.Substring(0, starfarerMenuDialogueScrollNumber);//Prompt dialogue increment magic
+                animatedStarfarerMenuDialogue = Wrap(animatedStarfarerMenuDialogue, 46);
             }
             ammoRecycleCooldown--;
             aprismatismCooldown--;
@@ -6470,36 +6472,27 @@ namespace StarsAbove
                     novaCritChance = 50;
                     novaCritDamage = (int)(baseNovaDamageAdd * 1.45);
 
-                    abilityName = "Theofania Inanis";
-                    abilitySubName = "[c/C2BDFF:Limitless Starry Void]";
-                    abilityDescription = "" +
-                        "Conjure a colossal blade to cleave foes in twain. After casting, you will be able to re-cast" +
-                        "\nTheofania Inanis for 10 seconds at no additional cost. Striking foes with Theofania Inanis" +
-                        "\nwill inflict Void Atrophy, dealing powerful damage over time. The second cast of" +
-                        "\nTheofania Inanis will double the potency of Void Atrophy, if applicable." +
-                        "\nThis debuff lasts for 30 seconds. If the attack crits, refund a portion of consumed " +
-                        "\nStellar Nova Energy. Each cast does 50% of Stellar Nova damage.";
+                    abilityName = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.TheofaniaInanis.AbilityName");
+                    abilitySubName = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.TheofaniaInanis.AbilitySubName");
+                    abilityDescription = starfarerBonus = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.TheofaniaInanis.AbilityDescription");
+
                     if (chosenStarfarer == 1)
                     {
-                        starfarerBonus = $"" +
-                            $"You may re-cast Theofania Inanis again to a total of 3 times, dealing 25% damage." +
-                            $"\nThis cast does not inflict Void Atrophy, nor does it strengthen it.";
+                        starfarerBonus = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.TheofaniaInanis.AstralBonus");
                     }
                     else
                     {
-                        starfarerBonus = $"" +
-                            $"The second hit of Theofania Inanis does not strengthen Void Atrophy, but increases self" +
-                            $"\ndamage output by 400% for 5 seconds.";
+                        starfarerBonus = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.TheofaniaInanis.UmbralBonus");
                     }
 
                     baseStats = "" +
-                        $"{novaDamage} Base Damage" +
-                        $"\n{novaGaugeMax} Base Energy Cost" +
+                        $"{novaDamage} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseDamage") +
+                        $"\n{novaGaugeMax} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseEnergyCost") +
                         $"\n" +//int               0.1(x) double
-                        $"\n{Math.Round(novaDamage * (1 + novaDamageMod), 5)} Damage" +
-                        $"\n{novaCritChance + novaCritChanceMod}% Crit Chance" +
-                        $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod), 5)} Crit Damage" +
-                        $"\n{novaGaugeMax - novaChargeMod} Energy Cost";
+                        $"\n{Math.Round(novaDamage * (1 + novaDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.Damage") +
+                        $"\n{novaCritChance + novaCritChanceMod}% " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritChance") +
+                        $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritDamage") +
+                        $"\n{novaGaugeMax - novaChargeMod} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EnergyCost");
 
 
                 }
@@ -6510,37 +6503,27 @@ namespace StarsAbove
                     novaCritChance = 35;
                     novaCritDamage = (int)(baseNovaDamageAdd * 1.8);
 
-                    abilityName = "Ars Laevateinn";
-                    abilitySubName = "[c/F19559:Shine True, O Burning Bright Star]";
-                    abilityDescription = "" +
-                        "Wield a blazing greatsword to return foes to ashes. Casting Ars Laevataeinn will mark" +
-                        "\na colossal region around you with infernal flames. Ars Laevateinn will pulse damage" +
-                        "\nfive times in the specified region, dealing 1/5th of the total damage with each hit." +
-                        "\nDuring this time, you will be granted 'Surtr's Twilight.' While this buff is active," +
-                        "\nall attacks will Burn foes for 8 seconds. If Burned foes are struck by Ars Laevateinn," +
-                        "\nthey will take a small portion of Stellar Nova damage as extra damage.";
+                    abilityName = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.ArsLaevateinn.AbilityName");
+                    abilitySubName = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.ArsLaevateinn.AbilitySubName");
+                    abilityDescription = starfarerBonus = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.ArsLaevateinn.AbilityDescription");
+
                     if (chosenStarfarer == 1)
                     {
-                        starfarerBonus = $"" +
-                            $"Burning foes take extra damage. If the attack was a critical hit," +
-                            $"\nburning foes take even more damage.";
+                        starfarerBonus = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.ArsLaevateinn.AstralBonus");
                     }
                     else
                     {
-                        starfarerBonus = $"" +
-                            $"Surtr's Twilight will additionally grant a 10% attack buff." +
-                            $"\nGain Mana Regeneration while Surtr's Twilight is active." +
-                            $"\n";
+                        starfarerBonus = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.ArsLaevateinn.UmbralBonus");
                     }
 
                     baseStats = "" +
-                        $"{novaDamage} Base Damage" +
-                        $"\n{novaGaugeMax} Base Energy Cost" +
+                        $"{novaDamage} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseDamage") +
+                        $"\n{novaGaugeMax} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseEnergyCost") +
                         $"\n" +
-                        $"\n{Math.Round(novaDamage * (1 + novaDamageMod), 5)} Damage" +
-                        $"\n{novaCritChance + novaCritChanceMod}% Crit Chance" +
-                        $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod), 5)} Crit Damage" +
-                        $"\n{novaGaugeMax - novaChargeMod} Energy Cost";
+                        $"\n{Math.Round(novaDamage * (1 + novaDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.Damage") +
+                        $"\n{novaCritChance + novaCritChanceMod}% " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritChance") +
+                        $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritDamage") +
+                        $"\n{novaGaugeMax - novaChargeMod} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EnergyCost");
 
 
                 }
@@ -6551,37 +6534,27 @@ namespace StarsAbove
                     novaCritChance = 40;
                     novaCritDamage = (int)(baseNovaDamageAdd);
 
-                    abilityName = "Kiwami Ryuken";//Extreme Dragon Fist
-                    abilitySubName = "[c/36BDEC:Unbridled Essence of the Dragon's Fist]";
-                    abilityDescription = "" +
-                        "Upon activation of Kiwami Ryuken, you will have a one-second window to take" +
-                        "\ndamage from a foe, becoming invincible in the process. If hit, a counterattack will" +
-                        "\ntrigger, dealing incredible damage in close proximity, aimed at your cursor." +
-                        "\nYou will be unable to execute the counterattack if the foe is further than melee" +
-                        "\nrange, but damage will still be negated. You will be refunded 50% of the Stellar Nova" +
-                        "\nenergy cost if you are not hit during Kiwami Ryuken.";
+                    abilityName = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.KiwamiRyuken.AbilityName");
+                    abilitySubName = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.KiwamiRyuken.AbilitySubName");
+                    abilityDescription = starfarerBonus = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.KiwamiRyuken.AbilityDescription");
+
                     if (chosenStarfarer == 1)
                     {
-                        starfarerBonus = $"" +
-                            $"The counterattack will always deal critical damage below half health." +
-                            $"\nRestore 5 Stellar Nova Energy upon triggering the counterattack.";
+                        starfarerBonus = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.KiwamiRyuken.AstralBonus");
                     }
                     else
                     {
-                        starfarerBonus = $"" +
-                            $"Heal 40 health and mana upon triggering the counterattack." +
-                            $"\n10 extra Stellar Nova energy will be refunded on failure." +
-                            $"\n";
+                        starfarerBonus = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.KiwamiRyuken.UmbralBonus");
                     }
 
                     baseStats = "" +
-                        $"{novaDamage} Base Damage" +
-                        $"\n{novaGaugeMax} Base Energy Cost" +
+                        $"{novaDamage} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseDamage") +
+                        $"\n{novaGaugeMax} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseEnergyCost") +
                         $"\n" +
-                        $"\n{Math.Round(novaDamage * (1 + novaDamageMod), 5)} Damage" +
-                        $"\n{novaCritChance + novaCritChanceMod}% Crit Chance" +
-                        $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod), 5)} Crit Damage" +
-                        $"\n{novaGaugeMax - novaChargeMod} Energy Cost";
+                        $"\n{Math.Round(novaDamage * (1 + novaDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.Damage") +
+                        $"\n{novaCritChance + novaCritChanceMod}% " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritChance") +
+                        $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritDamage") +
+                        $"\n{novaGaugeMax - novaChargeMod} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EnergyCost");
 
 
                 }
@@ -6592,37 +6565,26 @@ namespace StarsAbove
                     novaCritChance = 35;
                     novaCritDamage = 100;
 
-                    abilityName = "Garden of Avalon";
-                    abilitySubName = "[c/ECB3FC:The Forever-Sealed Utopia]";
-                    abilityDescription = "" +
-                        "Call forth the Garden of Avalon, infusing the world with radiant energy." +
-                        "\nGrant powerful Health and Mana regeneration periodically for 8 seconds," +
-                        "\nscaling with Stellar Nova Damage. Gain Invincibility for 2 seconds." +
-                        "\nIf the cast would be critical, gain Health, modified by Stellar Nova crit modifiers." +
-                        "\nAdditionally, upon a critical cast, gain the buff 'Solemn Aegis' for 15 seconds," +
-                        "\nwhich negates one hit of damage independently of Invincibility.";
+                    abilityName = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.GardenOfAvalon.AbilityName");
+                    abilitySubName = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.GardenOfAvalon.AbilitySubName");
+                    abilityDescription = starfarerBonus = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.GardenOfAvalon.AbilityDescription");
                     if (chosenStarfarer == 1)
                     {
-                        starfarerBonus = $"" +
-                            $"Invincibility lasts for 4 seconds instead of 2." +
-                            $"\nInstantly heal 100 HP upon casting Garden of Avalon.";//Different debuff.
+                        starfarerBonus = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.GardenOfAvalon.AstralBonus");
                     }
                     else
                     {
-                        starfarerBonus = $"" +
-                            $"Gain an extra buff on cast: Dreamlike Charisma. (Can not stack.)" +
-                            $"\nDreamlike Charisma increases damage by 16%, doubled above 100 Mana." +
-                            $"\n";
+                        starfarerBonus = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.GardenOfAvalon.UmbralBonus");
                     }
 
                     baseStats = "" +
-                        $"{novaDamage} Heal Strength" +
-                        $"\n{novaGaugeMax} Base Energy Cost" +
+                        $"{novaDamage} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseHealStrength") +
+                        $"\n{novaGaugeMax} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseEnergyCost") +
                         $"\n" +
-                        $"\n{Math.Round(novaDamage * (1 + novaDamageMod), 5)} Heal Strength" +
-                        $"\n{novaCritChance + novaCritChanceMod}% Crit Chance" +
-                        $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod), 5)} Crit Heal Strength" +
-                        $"\n{novaGaugeMax - novaChargeMod} Energy Cost";
+                        $"\n{Math.Round(novaDamage * (1 + novaDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.HealStrength") +
+                        $"\n{novaCritChance + novaCritChanceMod}% " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritChance") +
+                        $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritHealStrength") +
+                        $"\n{novaGaugeMax - novaChargeMod} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EnergyCost");
 
 
                 }
@@ -6633,42 +6595,32 @@ namespace StarsAbove
                     novaCritChance = 25;
                     novaCritDamage = (int)((baseNovaDamageAdd / 10) * 1.3);
 
-                    abilityName = "Edin Genesis Quasar";
-                    abilitySubName = "[c/00FF93:The Moment a Planet is Born]";
-                    abilityDescription = "" +
-                        "Upon cast, become immobile and invincible temporarily. Gain 'Astarte Driver' for 25" +
-                        "\nseconds. Astarte Driver grants infinite flight and three Cosmic Charges. ALL attacks" +
-                        "\nwhile Astarte Driver is active will inherit the stats of the Stellar Nova." +
-                        "\nPressing the Starfarer Action Key with a Cosmic Charge available will launch a " +
-                        "\nbarrage of spatial projectiles (2 second use cooldown.) After activating Astarte" +
-                        "\nDriver's stat-changing effect, the target will be immune for a very short period.";
+                    abilityName = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EdinGenesisQuasar.AbilityName");
+                    abilitySubName = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EdinGenesisQuasar.AbilitySubName");
+                    abilityDescription = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EdinGenesisQuasar.AbilityDescription");
 
                     if (chosenStarfarer == 1)
                     {
-                        starfarerBonus = $"" +
-                            $"Critical hits do an additional {baseNovaDamageAdd / 10} damage in Astarte Driver." +
-                            $"\nYou will gain a Cosmic Charge after defeating a foe with a critical hit. (Max 5 charges.)";//Different debuff.
+                        starfarerBonus = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EdinGenesisQuasar.AstralBonus", baseNovaDamageAdd / 10);
                     }
                     else
                     {
-                        starfarerBonus = $"" +
-                            $"Astarte Driver attacks will execute any foe below {baseNovaDamageAdd / 10} HP." +
-                            $"\nGain 1 second of Invincibility when a Cosmic Charge is expended." +
-                            $"\n";
+                        starfarerBonus = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EdinGenesisQuasar.UmbralBonus", baseNovaDamageAdd / 10);
                     }
 
                     baseStats = "" +
-                        $"{novaDamage} Base Hit Damage" +
-                        $"\n{novaGaugeMax} Base Energy Cost" +
+                        $"{novaDamage} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseDamage") +
+                        $"\n{novaGaugeMax} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseEnergyCost") +
                         $"\n" +
-                        $"\n{Math.Round(novaDamage * (1 + novaDamageMod), 5)} Attack Damage" +
-                        $"\n{novaCritChance + novaCritChanceMod}% Crit Chance" +
-                        $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod), 5)} Crit Damage" +
-                        $"\n{novaGaugeMax - novaChargeMod} Energy Cost";
+                        $"\n{Math.Round(novaDamage * (1 + novaDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.AttackDamage") +
+                        $"\n{novaCritChance + novaCritChanceMod}% " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritChance") +
+                        $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritDamage") +
+                        $"\n{novaGaugeMax - novaChargeMod} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EnergyCost");
 
-
+                    
                 }
-
+                abilityDescription = Wrap(abilityDescription, 85);
+                starfarerBonus = Wrap(starfarerBonus, 85);
                 //
                 #endregion
 
@@ -7036,14 +6988,14 @@ namespace StarsAbove
                     if (SubworldSystem.IsActive<Observatory>() && observatoryDialogue == 0)
                     {
                         observatoryDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
 
                     }
                     if (observatoryDialogue == 2 && cosmicVoyageDialogue == 0)
                     {
                         cosmicVoyageDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
 
                     }
@@ -7051,20 +7003,20 @@ namespace StarsAbove
                     if (NPC.downedSlimeKing && slimeDialogue == 0)
                     {
                         slimeDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
                         if (Main.expertMode)
                         {
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                             NewStellarArrayAbility = true;
                         }
                     }
                     if (NPC.downedBoss1 && eyeDialogue == 0)
                     {
                         eyeDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                         NewStellarArrayAbility = true;
 
 
@@ -7072,34 +7024,34 @@ namespace StarsAbove
                     if (NPC.downedBoss2 && corruptBossDialogue == 0)
                     {
                         corruptBossDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                         NewStellarArrayAbility = true;
 
                     }
                     if (NPC.downedQueenBee && BeeBossDialogue == 0)
                     {
                         BeeBossDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                         NewStellarArrayAbility = true;
 
                     }
                     if (NPC.downedBoss3 && SkeletonDialogue == 0)
                     {
                         SkeletonDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                         NewStellarArrayAbility = true;
 
                     }
                     if (NPC.downedDeerclops && DeerclopsDialogue == 0)
                     {
                         DeerclopsDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
 
                     }
@@ -7107,43 +7059,43 @@ namespace StarsAbove
                     {
                         WallOfFleshDialogue = 1;
 
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                         NewStellarArrayAbility = true;
                     }
                     if (WallOfFleshWeaponDialogue == 2 && ForceWeaponDialogue == 0)//Hardmode
                     {
                         ForceWeaponDialogue = 1;
 
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
-                        //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247);}
+                        //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
                     }
                     if (GolemWeaponDialogue == 2 && GenocideWeaponDialogue == 0)//Hardmode
                     {
                         GenocideWeaponDialogue = 1;
 
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
-                        //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247);}
+                        //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
                     }
                     if (CorruptBossWeaponDialogue == 2 && TakodachiWeaponDialogue == 0)//Hardmode
                     {
                         TakodachiWeaponDialogue = 1;
 
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
-                        //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247);}
+                        //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
                     }
                     if (NPC.downedMechBoss1 && TwinsDialogue == 0)//The Twins
                     {
                         TwinsDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
                         if (bloomingflames == 0)
                         {
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                             NewStellarArrayAbility = true;
                         }
 
@@ -7153,17 +7105,17 @@ namespace StarsAbove
                     {
                         SkyStrikerWeaponDialogue = 1;
 
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
-                        //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247);}
+                        //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
                     }
                     if (LunaticCultistWeaponDialogue == 2 && TwinStarsWeaponDialogue == 0)//Hardmode
                     {
                         TwinStarsWeaponDialogue = 1;
 
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
-                        //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247);}
+                        //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
                     }
                     //Dialogue for Calamity Mod bosses.
 
@@ -7172,86 +7124,86 @@ namespace StarsAbove
                     {
                         if ((bool)calamityMod.Call("GetBossDowned", "desertscourge") && desertscourgeDialogue == 0)
                         {
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             desertscourgeDialogue = 1;
                         }
                         if ((bool)calamityMod.Call("GetBossDowned", "crabulon") && crabulonDialogue == 0)
                         {
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             crabulonDialogue = 1;
                         }
                         if ((bool)calamityMod.Call("GetBossDowned", "hivemind") && hivemindDialogue == 0)
                         {
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             hivemindDialogue = 1;
                         }
                         if ((bool)calamityMod.Call("GetBossDowned", "perforator") && perforatorDialogue == 0)
                         {
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             perforatorDialogue = 1;
                         }
                         if ((bool)calamityMod.Call("GetBossDowned", "slimegod") && slimegodDialogue == 0)
                         {
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             slimegodDialogue = 1;
                         }
                         //Hardmode
                         if ((bool)calamityMod.Call("GetBossDowned", "cryogen") && cryogenDialogue == 0)
                         {
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             cryogenDialogue = 1;
                         }
                         if ((bool)calamityMod.Call("GetBossDowned", "aquaticscourge") && aquaticscourgeDialogue == 0)
                         {
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             aquaticscourgeDialogue = 1;
                         }
                         if ((bool)calamityMod.Call("GetBossDowned", "brimstoneelemental") && brimstoneelementalDialogue == 0)
                         {
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             brimstoneelementalDialogue = 1;
                         }
                         if ((bool)calamityMod.Call("GetBossDowned", "calamitas") && calamitasDialogue == 0)
                         {
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             calamitasDialogue = 1;
                         }
                         if ((bool)calamityMod.Call("GetBossDowned", "anahitaleviathan") && leviathanDialogue == 0)
                         {
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             leviathanDialogue = 1;
                         }
                         if ((bool)calamityMod.Call("GetBossDowned", "astrumaureus") && astrumaureusDialogue == 0)
                         {
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             astrumaureusDialogue = 1;
                         }
                         if ((bool)calamityMod.Call("GetBossDowned", "plaguebringergoliath") && plaguebringerDialogue == 0)
                         {
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             plaguebringerDialogue = 1;
                         }
                         if ((bool)calamityMod.Call("GetBossDowned", "ravager") && ravagerDialogue == 0)
                         {
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             ravagerDialogue = 1;
                         }
                         if ((bool)calamityMod.Call("GetBossDowned", "astrumdeus") && astrumdeusDialogue == 0)
                         {
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             astrumdeusDialogue = 1;
                         }
@@ -7260,19 +7212,19 @@ namespace StarsAbove
                     if (NPC.downedQueenSlime && QueenSlimeDialogue == 0)
                     {
                         QueenSlimeDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
 
                     }
                     if (DownedBossSystem.downedNalhaun && nalhaunDialogue == 0)
                     {
                         nalhaunDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
 
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("You have acquired a new Stellar Nova!"), 190, 100, 247); }
                         NewStellarNova = true;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                         NewStellarArrayAbility = true;
 
 
@@ -7280,12 +7232,12 @@ namespace StarsAbove
                     if (DownedBossSystem.downedPenth && penthDialogue == 0)
                     {
                         penthDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
 
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("You have acquired a new Stellar Nova!"), 190, 100, 247); }
                         NewStellarNova = true;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                         NewStellarArrayAbility = true;
 
 
@@ -7293,14 +7245,14 @@ namespace StarsAbove
                     if (DownedBossSystem.downedArbiter && arbiterDialogue == 0)
                     {
                         arbiterDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
 
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("You have acquired a new Stellar Nova!"), 190, 100, 247); }
                         NewStellarNova = true;
                         if (Main.expertMode)
                         {
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                             NewStellarArrayAbility = true;
                         }
 
@@ -7310,7 +7262,7 @@ namespace StarsAbove
                     if (DownedBossSystem.downedTsuki && tsukiyomiDialogue == 0)
                     {
                         tsukiyomiDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
 
 
@@ -7323,11 +7275,11 @@ namespace StarsAbove
                     if (NPC.downedMechBoss2 && DestroyerDialogue == 0)//The Destroyer
                     {
                         DestroyerDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
                         if (bloomingflames == 0)
                         {
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                             NewStellarArrayAbility = true;
                         }
 
@@ -7336,11 +7288,11 @@ namespace StarsAbove
                     if (NPC.downedMechBoss3 && SkeletronPrimeDialogue == 0)//Skeletron Prime
                     {
                         SkeletronPrimeDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
                         if (bloomingflames == 0)
                         {
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                             NewStellarArrayAbility = true;
                         }
 
@@ -7349,7 +7301,7 @@ namespace StarsAbove
                     if (SkeletronPrimeDialogue == 2 && TwinsDialogue == 2 && DestroyerDialogue == 2 && AllMechsDefeatedDialogue == 0)//All Mech Bosses Defeated + Dialogue read
                     {
                         AllMechsDefeatedDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
 
 
@@ -7359,9 +7311,9 @@ namespace StarsAbove
                     if (NPC.downedPlantBoss && PlanteraDialogue == 0)
                     {
                         PlanteraDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                         NewStellarArrayAbility = true;
                         //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("You have acquired a new Stellar Nova!"), 190, 100, 247);}
 
@@ -7369,11 +7321,11 @@ namespace StarsAbove
                     if (NPC.downedGolemBoss && GolemDialogue == 0)
                     {
                         GolemDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
                         if (Main.expertMode)
                         {
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                             NewStellarArrayAbility = true;
                         }
 
@@ -7381,7 +7333,7 @@ namespace StarsAbove
                     if (NPC.downedEmpressOfLight && EmpressDialogue == 0)
                     {
                         EmpressDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
 
 
@@ -7389,11 +7341,11 @@ namespace StarsAbove
                     if (NPC.downedAncientCultist && CultistDialogue == 0)
                     {
                         CultistDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
                         if (Main.expertMode)
                         {
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                             NewStellarArrayAbility = true;
                         }
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("You have acquired a new Stellar Nova!"), 190, 100, 247); }
@@ -7406,10 +7358,10 @@ namespace StarsAbove
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The sky becomes heavy with overwhelming Light..."), 255, 225, 107); }
 
 
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
 
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                         NewStellarArrayAbility = true;
 
 
@@ -7417,7 +7369,7 @@ namespace StarsAbove
                     if (NPC.downedFishron && DukeFishronDialogue == 0)
                     {
                         DukeFishronDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
                     }
                     if (DownedBossSystem.downedWarrior && WarriorOfLightDialogue == 0)
@@ -7431,7 +7383,7 @@ namespace StarsAbove
                         }
 
 
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
                         if (BossChecklist != null)
                         {
@@ -7439,7 +7391,7 @@ namespace StarsAbove
 
                         }
 
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                         NewStellarArrayAbility = true;
 
 
@@ -7449,10 +7401,10 @@ namespace StarsAbove
                         vagrantDialogue = 1;
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("Stellar Novas have been unlocked!"), 255, 225, 107); }
 
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
 
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                         NewStellarArrayAbility = true;
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("You have acquired a new Stellar Nova!"), 190, 100, 247); }
                         NewStellarNova = true;
@@ -7462,10 +7414,10 @@ namespace StarsAbove
                     if (NPC.downedBoss1 && NPC.downedSlimeKing && NPC.downedBoss2 && NPC.downedBoss3 && NPC.downedQueenBee && NPC.downedQueenSlime && NPC.downedEmpressOfLight && Main.hardMode && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && NPC.downedPlantBoss && NPC.downedGolemBoss && NPC.downedFishron && NPC.downedMoonlord && AllVanillaBossesDefeatedDialogue == 0)
                     {
                         AllVanillaBossesDefeatedDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
 
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                         NewStellarArrayAbility = true;
 
 
@@ -7474,10 +7426,10 @@ namespace StarsAbove
                     {
                         //Expert mode only
                         EverythingDefeatedDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
 
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                         NewStellarArrayAbility = true;
 
 
@@ -7486,7 +7438,7 @@ namespace StarsAbove
                     if (Player.ZoneUnderworldHeight && SkeletonWeaponDialogue == 2 && HellWeaponDialogue == 0)
                     {
                         HellWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
 
                     }
@@ -7494,25 +7446,25 @@ namespace StarsAbove
                     if (nalhaunBossItemDialogue == 0 && (SkeletronPrimeDialogue == 2 || TwinsDialogue == 2 || DestroyerDialogue == 2) && vagrantDialogue == 2)
                     {
                         nalhaunBossItemDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 151, 255, 90); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 151, 255, 90); }
 
                     }
                     if (penthBossItemDialogue == 0 && PlanteraDialogue == 2 && vagrantDialogue == 2)
                     {
                         penthBossItemDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 151, 255, 90); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 151, 255, 90); }
 
                     }
                     if (arbiterBossItemDialogue == 0 && GolemDialogue == 2 && vagrantDialogue == 2)
                     {
                         arbiterBossItemDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 151, 255, 90); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 151, 255, 90); }
 
                     }
                     if (warriorBossItemDialogue == 0 && MoonLordDialogue == 2 && vagrantDialogue == 2)
                     {
                         warriorBossItemDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 151, 255, 90); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 151, 255, 90); }
 
                     }
                     if (WeaponDialogueTimer <= 0)//7200 = 2 min in between 
@@ -7520,7 +7472,7 @@ namespace StarsAbove
                         if (SkeletonDialogue == 2 && SkeletonWeaponDialogue == 0)
                         {
                             SkeletonWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                             return;
@@ -7529,7 +7481,7 @@ namespace StarsAbove
                         if (tsukiyomiDialogue == 2 && ArchitectWeaponDialogue == 0)
                         {
                             ArchitectWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
 
 
@@ -7542,7 +7494,7 @@ namespace StarsAbove
                         if (ArchitectWeaponDialogue == 2 && CosmicDestroyerWeaponDialogue == 0)
                         {
                             CosmicDestroyerWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
 
 
@@ -7555,7 +7507,7 @@ namespace StarsAbove
                         if (MurasamaWeaponDialogue == 0 && NPC.downedEmpressOfLight && Main.masterMode && DownedBossSystem.downedVagrant)
                         {
                             MurasamaWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                             return;
@@ -7563,7 +7515,7 @@ namespace StarsAbove
                         if (MercyWeaponDialogue == 0 && NPC.downedGolemBoss)
                         {
                             MercyWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                             return;
@@ -7571,7 +7523,7 @@ namespace StarsAbove
                         if (SakuraWeaponDialogue == 0 && NPC.downedEmpressOfLight)
                         {
                             SakuraWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                             return;
@@ -7579,7 +7531,7 @@ namespace StarsAbove
                         if (EternalWeaponDialogue == 0 && NPC.downedMoonlord)
                         {
                             EternalWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                             return;
@@ -7587,7 +7539,7 @@ namespace StarsAbove
                         if (DaemonWeaponDialogue == 0 && NPC.downedMoonlord)
                         {
                             DaemonWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                             return;
@@ -7595,7 +7547,7 @@ namespace StarsAbove
                         if (OzmaWeaponDialogue == 0 && NPC.downedAncientCultist)
                         {
                             OzmaWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                             return;
@@ -7603,7 +7555,7 @@ namespace StarsAbove
                         if (UrgotWeaponDialogue == 0 && NPC.downedQueenSlime)
                         {
                             UrgotWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                             return;
@@ -7611,7 +7563,7 @@ namespace StarsAbove
                         if (BloodWeaponDialogue == 0 && NPC.downedHalloweenKing)
                         {
                             BloodWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                             return;
@@ -7619,7 +7571,7 @@ namespace StarsAbove
                         if (MorningStarWeaponDialogue == 0 && NPC.downedDeerclops)
                         {
                             MorningStarWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                             return;
@@ -7627,7 +7579,7 @@ namespace StarsAbove
                         if (VirtueWeaponDialogue == 0 && NPC.downedMoonlord)
                         {
                             VirtueWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                             return;
@@ -7635,7 +7587,7 @@ namespace StarsAbove
                         if (QueenSlimeWeaponDialogue == 0 && NPC.downedQueenSlime)
                         {
                             QueenSlimeWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                             return;
@@ -7643,7 +7595,7 @@ namespace StarsAbove
                         if (NeedlepointWeaponDialogue == 0 && NPC.downedEmpressOfLight)
                         {
                             NeedlepointWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                             return;
@@ -7651,7 +7603,7 @@ namespace StarsAbove
                         if (eyeDialogue == 2 && EyeBossWeaponDialogue == 0)
                         {
                             EyeBossWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                             return;
@@ -7660,7 +7612,7 @@ namespace StarsAbove
                         if (corruptBossDialogue == 2 && CorruptBossWeaponDialogue == 0)
                         {
                             CorruptBossWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                             return;
@@ -7669,7 +7621,7 @@ namespace StarsAbove
                         if (nalhaunDialogue == 2 && NalhaunWeaponDialogue == 0)
                         {
                             NalhaunWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -7679,7 +7631,7 @@ namespace StarsAbove
                         if (vagrantDialogue == 2 && VagrantWeaponDialogue == 0)
                         {
                             VagrantWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -7689,7 +7641,7 @@ namespace StarsAbove
                         if (BeeBossDialogue == 2 && QueenBeeWeaponDialogue == 0)
                         {
                             QueenBeeWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -7699,7 +7651,7 @@ namespace StarsAbove
                         if (SkeletonWeaponDialogue == 2 && OceanWeaponDialogue == 0 && seenBeachBiome)
                         {
                             OceanWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -7709,7 +7661,7 @@ namespace StarsAbove
                         if (SkeletonWeaponDialogue == 2 && MiseryWeaponDialogue == 0)
                         {
                             MiseryWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -7719,7 +7671,7 @@ namespace StarsAbove
                         if (slimeDialogue == 2 && KingSlimeWeaponDialogue == 0)
                         {
                             KingSlimeWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -7729,7 +7681,7 @@ namespace StarsAbove
                         if (WallOfFleshDialogue == 2 && WallOfFleshWeaponDialogue == 0)
                         {
                             WallOfFleshWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -7738,7 +7690,7 @@ namespace StarsAbove
                         if (WallOfFleshWeaponDialogue == 2 && LumaWeaponDialogue == 0)
                         {
                             LumaWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -7747,7 +7699,7 @@ namespace StarsAbove
                         if ((TwinsDialogue == 2 || DestroyerDialogue == 2 || SkeletronPrimeDialogue == 2) && MechBossWeaponDialogue == 0)
                         {
                             MechBossWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -7756,7 +7708,7 @@ namespace StarsAbove
                         if (TwinsDialogue == 2 && DestroyerDialogue == 2 && SkeletronPrimeDialogue == 2 && AllMechBossWeaponDialogue == 0 && MechBossWeaponDialogue == 2 && AllMechBossWeaponDialogue == 0)
                         {
                             AllMechBossWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -7766,7 +7718,7 @@ namespace StarsAbove
                         if (MechBossWeaponDialogue == 2 && HullwroughtWeaponDialogue == 0)
                         {
                             HullwroughtWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -7776,7 +7728,7 @@ namespace StarsAbove
                         if (HullwroughtWeaponDialogue == 2 && MonadoWeaponDialogue == 0)
                         {
                             MonadoWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -7787,7 +7739,7 @@ namespace StarsAbove
                         if (PlanteraDialogue == 2 && PlanteraWeaponDialogue == 0)
                         {
                             PlanteraWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -7797,7 +7749,7 @@ namespace StarsAbove
                         if (NPC.downedChristmasIceQueen && FrostMoonWeaponDialogue == 0)
                         {
                             FrostMoonWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -7807,7 +7759,7 @@ namespace StarsAbove
                         if (GolemDialogue == 2 && GolemWeaponDialogue == 0)
                         {
                             GolemWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -7817,7 +7769,7 @@ namespace StarsAbove
                         if (penthDialogue == 2 && PenthesileaWeaponDialogue == 0)
                         {
                             PenthesileaWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -7827,7 +7779,7 @@ namespace StarsAbove
                         if (PenthesileaWeaponDialogue == 2 && MuseWeaponDialogue == 0)
                         {
                             MuseWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -7837,7 +7789,7 @@ namespace StarsAbove
                         if (PlanteraWeaponDialogue == 2 && KifrosseWeaponDialogue == 0)
                         {
                             KifrosseWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -7847,7 +7799,7 @@ namespace StarsAbove
                         if (arbiterDialogue == 2 && ArbitrationWeaponDialogue == 0)
                         {
                             ArbitrationWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -7857,7 +7809,7 @@ namespace StarsAbove
                         if (ArbitrationWeaponDialogue == 2 && ClaimhWeaponDialogue == 0)
                         {
                             ClaimhWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -7867,7 +7819,7 @@ namespace StarsAbove
                         if (DukeFishronDialogue == 2 && DukeFishronWeaponDialogue == 0)
                         {
                             DukeFishronWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -7877,7 +7829,7 @@ namespace StarsAbove
                         if (CultistDialogue == 2 && LunaticCultistWeaponDialogue == 0)
                         {
                             LunaticCultistWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -7887,7 +7839,7 @@ namespace StarsAbove
                         if (MoonLordDialogue == 2 && MoonLordWeaponDialogue == 0)
                         {
                             MoonLordWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -7897,7 +7849,7 @@ namespace StarsAbove
                         if (MoonLordWeaponDialogue == 2 && ShadowlessWeaponDialogue == 0)
                         {
                             ShadowlessWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -7907,7 +7859,7 @@ namespace StarsAbove
                         if (WarriorOfLightDialogue == 2 && WarriorWeaponDialogue == 0)
                         {
                             WarriorWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -7917,7 +7869,7 @@ namespace StarsAbove
                         if (WarriorOfLightDialogue == 2 && RedMageWeaponDialogue == 0)
                         {
                             RedMageWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -7927,7 +7879,7 @@ namespace StarsAbove
                         if (WarriorOfLightDialogue == 2 && BlazeWeaponDialogue == 0)
                         {
                             BlazeWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -7937,7 +7889,7 @@ namespace StarsAbove
                         if (WarriorOfLightDialogue == 2 && PickaxeWeaponDialogue == 0)
                         {
                             PickaxeWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -8048,7 +8000,7 @@ namespace StarsAbove
                         baseNovaDamageAdd = 2350;
                         if (astralmantle == 0)
                         {
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                             NewStellarArrayAbility = true;
                             astralmantle = 1;
                         }
@@ -8149,7 +8101,7 @@ namespace StarsAbove
 
                         if (artofwar == 0)
                         {
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                             NewStellarArrayAbility = true;
                             artofwar = 1;
                         }
@@ -8161,7 +8113,7 @@ namespace StarsAbove
 
                         if (aprismatism == 0)
                         {
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                             NewStellarArrayAbility = true;
                             aprismatism = 1;
                         }
@@ -8190,7 +8142,7 @@ namespace StarsAbove
                     {
                         if (beyondtheboundary == 0)
                         {
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array has gained a new ability!"), 190, 100, 247); }
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                             NewStellarArrayAbility = true;
                             beyondtheboundary = 1;
                         }

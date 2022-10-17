@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Items.Armor.StarfarerArmor;
+using StarsAbove.Utilities;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.UI;
@@ -580,18 +581,12 @@ namespace StarsAbove.UI.StarfarerMenu
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;                                     //|
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "Right.. What do you want to read about?" +
-																							"\nDialogue is sorted into 3 groups: idle, boss," +
-																							"\nand weapon. Cycle through and choose the one" +
-																							"\nyou want.";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.Archive.Asphodene");
 
 				}
-				else
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "Okay, what do you want to read about?" +
-																							"\nThe dialogues are sorted into 3 groups:" +
-																							"\nidle, boss, and weapon. Feel free to choose" +
-																							"\nwhich one you want to view.";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.Archive.Eridani");
 
 				}
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
@@ -604,12 +599,12 @@ namespace StarsAbove.UI.StarfarerMenu
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;                                     //|
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "Changed your mind?";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.ExitArchive.Asphodene");
 
 				}
-				else
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "Did you have other plans?";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.ExitArchive.Eridani");
 
 				}
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
@@ -636,11 +631,11 @@ namespace StarsAbove.UI.StarfarerMenu
 			{
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "Is that everything?";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.Confirm.Asphodene.1");
 				}
-				else
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "Have you done what you needed to?";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.Confirm.Eridani.1");
 				}
 
 			}
@@ -648,22 +643,22 @@ namespace StarsAbove.UI.StarfarerMenu
 			{
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "Okay, finished?";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.Confirm.Asphodene.2");
 				}
-				else
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "Finished?";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.Confirm.Eridani.2");
 				}
 			}
 			if (randomDialogue == 2)
 			{
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "Done already?";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.Confirm.Asphodene.3");
 				}
-				else
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "Was that all?";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.Confirm.Eridani.3");
 				}
 			}
 
@@ -680,18 +675,12 @@ namespace StarsAbove.UI.StarfarerMenu
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)														//|
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = $"This is the Archive. Just in case you didn't get" +
-																					  	$"\neverything I said, you can read it here. I know, " +
-																						$"\nyou just can't get enough of my analysis, right?" +
-																						$"\nYou can also get items you lost, like Essences.";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.ArchiveHover.Asphodene");
 
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = $"This is the Archive. If you ever find yourself" +
-																					  	$"\nneeding me to repeat what I've said about" +
-																						$"\nsomething, it's here. Additionally, if you lost" +
-																						$"\nsomething like an Essence, you can reacquire it.";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.ArchiveHover.Eridani");
 
 			}
 
@@ -709,18 +698,12 @@ namespace StarsAbove.UI.StarfarerMenu
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)                                                     //|
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = $"Looks like this isn't implemented yet." +
-																					  	$"\n" +
-																						$"\n" +
-																						$"\n";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.VoyageHover.Asphodene");
 
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = $"It seems this isn't quite implemented yet." +
-																					  	$"\n" +
-																						$"\n" +
-																						$"\n";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.VoyageHover.Eridani");
 
 			}
 
@@ -740,11 +723,11 @@ namespace StarsAbove.UI.StarfarerMenu
             {
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = $"We can't use this yet.";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.Locked.Asphodene");
 				}
 				else
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = $"We haven't unlocked this yet.";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.Locked.Eridani");
 
 				}
 			}
@@ -752,20 +735,12 @@ namespace StarsAbove.UI.StarfarerMenu
             {
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)//                                                   | Limit
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue =   $"This is the Stellar Nova Menu. You can check" +
-																						      $"\nout Stellar Nova stats, swap it for another" +
-																						      $"\none, or equip Stellar Prisms to change what" +
-																							  $"\nthey can do." +
-																							  $"\n";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.NovaHover.Asphodene");
 
 				}
 				else
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = $"This is the Stellar Nova Menu. You can peruse" +
-																							$"\nStellar Novas, swap between them, or you can" +
-																							$"\nequip Stellar Prisms to change what effects" +
-																							$"\nStellar Novas have." +
-																							$"\n";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.NovaHover.Eridani");
 
 				}
 			}
@@ -786,41 +761,25 @@ namespace StarsAbove.UI.StarfarerMenu
 
 			if (Main.LocalPlayer.HasBuff(BuffType<Buffs.BossEnemySpawnMod>()))
 			{
-				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)//                                                   | Limit
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = $"I'd love to let you modify the Stellar Array," +
-																							  $"\nbut we should probably deal with THAT first." +
-																							  $"\nCome on, you know what I mean!!" +
-																							  $"\n" +
-																							  $"\n";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.ArrayBoss.Asphodene");
 				}
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)//        
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = $"I know you'd like to modify the Stellar Array," +
-																							  $"\nbut there's a much more pressing matter" +
-																							  $"\nat hand... You ARE aware of this, right?" +
-																							  $"\n" +
-																							  $"\n";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.ArrayBoss.Eridani");
 
 				}
 			}
 			else
             {
-				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)//                                                   | Limit
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = $"You can access the Stellar Array from here." +
-																							  $"\nWe can equip passive abilities here, staying" +
-																							  $"\nmindful of the max cost, as well as changing" +
-																							  $"\nthe damage type of Aspected Weapons." +
-																							  $"\n";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.ArrayHover.Asphodene");
 				}
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)//        
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = $"This is the Stellar Array. You can equip" +
-																							  $"\npassive abilities here, as long as the total" +
-																							  $"\ncost doesn't exceed the maximum. Also, this" +
-																							  $"\nis where you configure Aspected Weapon type." +
-																							  $"\n";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.ArrayHover.Eridani");
 
 				}
 			}
@@ -845,21 +804,13 @@ namespace StarsAbove.UI.StarfarerMenu
 			
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)//                                                   | Limit
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = $"If you have any Starfarer Attire for me," +
-																							  $"\nhere's the place to put it." +
-																							  $"\nIt'll be pretty helpful for me, and you" +
-																							  $"\nby association!" +
-																							  $"\nAnd hey- style equals skill!";
-				}
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerAttire.Asphodene");
+			}
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)//        
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = $"You can place Starfarer Attire here." +
-																							  $"\nIt'll provide me with some helpful boons" +
-																							  $"\nto assist you better." +
-																							  $"\nI know your fashion sense is... unique," +	
-																							  $"\nso at least try and spare me?";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerAttire.Eridani");
 
-				}
+			}
 			
 
 
@@ -881,19 +832,11 @@ namespace StarsAbove.UI.StarfarerMenu
 
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)//                                                   | Limit
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = $"I'll wear the Starfarer Attire here" +
-																						  $"\nover the Armor Slot. It's called a vanity slot," +
-																						  $"\nor so I'm told." +
-																						  $"\n" +
-																						  $"\n";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerVanity.Asphodene");
 			}
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)//        
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = $"This is the vanity slot for Starfarer Attire." +
-																						  $"\nAnything placed here will be worn above the" +
-																						  $"\narmor set." +
-																						  $"\n" +
-																						  $"\n";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerVanity.Eridani");
 
 			}
 
