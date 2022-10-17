@@ -14,12 +14,13 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("El Capitan's Hardware");
-			Tooltip.SetDefault("Attacks with this weapon pierce foes and bounce off walls up to 4 times" +
+			Tooltip.SetDefault("WORK IN PROGRESS WEAPON" +
+                "\nAttacks with this weapon pierce foes and bounce off walls up to 4 times" +
 				"\nStriking foes charges the [??? Gauge] (Critical strikes grant more charge)" +
                 "\nOnce the [??? Gauge] is above 50%, right-click to consume the [??? Gauge], swapping weapons and firing a [Gyro Disk]" +
                 "\nThe [Gyro Disk] targets and attacks up to 3 nearby foes, and can be moved by right-clicking" +
                 "\nAfter 10 seconds, the [Gyro Disk] disappears and the [??? Gauge] can gain energy again" +
-                "\nIf the [??? Gauge] is higher than 50% on activation, the [Gyro Disk] gains bonus damage proportional to the amount consumed" +
+                "\nIf the [??? Gauge] is higher than 50% on activation, the [Gyro Disk] gains bonus damage proportional to the extra amount consumed" +
 				"\n'GAME RIGHTS?!'" +
 				$"");
 
