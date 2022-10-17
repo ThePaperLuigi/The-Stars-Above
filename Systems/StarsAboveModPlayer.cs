@@ -6256,70 +6256,90 @@ namespace StarsAbove
                 #region Stellar Novas
 
                 //////////////////////////////////////////////////////////////////////////////////////////// PRISMS
-                if (affix1 == "Refulgent Prism" || affix2 == "Refulgent Prism" || affix3 == "Refulgent Prism")
+                if (affix1 == Mod.Find<ModItem>("RefulgentPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix2 == Mod.Find<ModItem>("RefulgentPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix3 == Mod.Find<ModItem>("RefulgentPrism").DisplayName.GetTranslation(Language.ActiveCulture))
                 {
                     novaDamageMod += 0.2;//20%
                     novaCritChanceMod -= 14;
                     novaCritDamageMod -= 0.1;
                     novaChargeMod += 5;
                 }
-                if (affix1 == "Everflame Prism" || affix2 == "Everflame Prism" || affix3 == "Everflame Prism")
+                if (affix1 == Mod.Find<ModItem>("EverflamePrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix2 == Mod.Find<ModItem>("EverflamePrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix3 == Mod.Find<ModItem>("EverflamePrism").DisplayName.GetTranslation(Language.ActiveCulture))
                 {
                     novaDamageMod += 0.1;
                     novaCritChanceMod += 7;
                     novaCritDamageMod += 0.1;
                     novaChargeMod -= 15;
                 }
-                if (affix1 == "Crystalline Prism" || affix2 == "Crystalline Prism" || affix3 == "Crystalline Prism")
+                if (affix1 == Mod.Find<ModItem>("CrystallinePrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix2 == Mod.Find<ModItem>("CrystallinePrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix3 == Mod.Find<ModItem>("CrystallinePrism").DisplayName.GetTranslation(Language.ActiveCulture))
                 {
                     novaDamageMod -= 0.2;
                     novaCritChanceMod -= 7;
                     novaCritDamageMod += 0.4;
                     //novaChargeMod -= 15;
                 }
-                if (affix1 == "Verdant Prism" || affix2 == "Verdant Prism" || affix3 == "Verdant Prism")
+                if (affix1 == Mod.Find<ModItem>("VerdantPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix2 == Mod.Find<ModItem>("VerdantPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix3 == Mod.Find<ModItem>("VerdantPrism").DisplayName.GetTranslation(Language.ActiveCulture))
                 {
                     //novaDamageMod += 50;
                     novaCritChanceMod += 21;
                     //novaCritDamageMod += 225;
                     novaChargeMod -= 15;
                 }
-                if (affix1 == "Radiant Prism" || affix2 == "Radiant Prism" || affix3 == "Radiant Prism")
+                if (affix1 == Mod.Find<ModItem>("RadiantPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix2 == Mod.Find<ModItem>("RadiantPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix3 == Mod.Find<ModItem>("RadiantPrism").DisplayName.GetTranslation(Language.ActiveCulture))
                 {
                     novaDamageMod -= 0.1;
                     novaCritChanceMod -= 7;
                     novaCritDamageMod -= 0.1;
                     novaChargeMod += 15;
                 }
-                if (affix1 == "Apocryphic Prism" || affix2 == "Apocryphic Prism" || affix3 == "Apocryphic Prism")
+                if (affix1 == Mod.Find<ModItem>("ApocryphicPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix2 == Mod.Find<ModItem>("ApocryphicPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix3 == Mod.Find<ModItem>("ApocryphicPrism").DisplayName.GetTranslation(Language.ActiveCulture))
                 {
                     novaDamageMod += 0.2;
                     novaCritChanceMod -= 14;
                     novaCritDamageMod += 0.1;
                     novaChargeMod -= 5;
                 }
-                if (affix1 == "Alchemic Prism" || affix2 == "Alchemic Prism" || affix3 == "Alchemic Prism")
+                if (affix1 == Mod.Find<ModItem>("AlchemicPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix2 == Mod.Find<ModItem>("AlchemicPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix3 == Mod.Find<ModItem>("AlchemicPrism").DisplayName.GetTranslation(Language.ActiveCulture))
                 {
                     novaDamageMod -= 0.1;
                     novaCritChanceMod += 14;
                     novaCritDamageMod += 0.1;
                     novaChargeMod -= 10;
                 }
-                if (affix1 == "Castellic Prism" || affix2 == "Castellic Prism" || affix3 == "Castellic Prism")
+                if (affix1 == Mod.Find<ModItem>("CastellicPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix2 == Mod.Find<ModItem>("CastellicPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix3 == Mod.Find<ModItem>("CastellicPrism").DisplayName.GetTranslation(Language.ActiveCulture))
                 {
                     novaDamageMod += 0.3;
                     novaCritChanceMod -= 7;
                     novaCritDamageMod -= 0.2;
                     //novaChargeMod -= 10;
                 }
-                if (affix1 == "Lucent Prism" || affix2 == "Lucent Prism" || affix3 == "Lucent Prism")
+                if (affix1 == Mod.Find<ModItem>("LucentPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix2 == Mod.Find<ModItem>("LucentPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix3 == Mod.Find<ModItem>("LucentPrism").DisplayName.GetTranslation(Language.ActiveCulture))
                 {
                     novaDamageMod -= 0.3;
                     //novaCritChanceMod -= 7;
                     novaCritDamageMod += 0.1;
                     novaChargeMod += 10;
                 }
-                if (affix1 == "Phylactic Prism" || affix2 == "Phylactic Prism" || affix3 == "Phylactic Prism")
+                if (affix1 == Mod.Find<ModItem>("PhylacticPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix2 == Mod.Find<ModItem>("PhylacticPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix3 == Mod.Find<ModItem>("PhylacticPrism").DisplayName.GetTranslation(Language.ActiveCulture))
                 {
                     novaDamageMod -= 0.1;
                     novaCritChanceMod += 21;
@@ -6333,7 +6353,9 @@ namespace StarsAbove
                     //novaCritDamageMod += 17775;
                     //novaChargeMod -= 10;
                 }
-                if (affix1 == "Lightsworn Prism" || affix2 == "Lightsworn Prism" || affix3 == "Lightsworn Prism")
+                if (affix1 == Mod.Find<ModItem>("LightswornPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix2 == Mod.Find<ModItem>("LightswornPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix3 == Mod.Find<ModItem>("LightswornPrism").DisplayName.GetTranslation(Language.ActiveCulture))
                 {
                     lightswornPrism = true;
                 }
@@ -6341,7 +6363,9 @@ namespace StarsAbove
                 {
                     lightswornPrism = false;
                 }
-                if (affix1 == "Burnished Prism" || affix2 == "Burnished Prism" || affix3 == "Burnished Prism")
+                if (affix1 == Mod.Find<ModItem>("BurnishedPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix2 == Mod.Find<ModItem>("BurnishedPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix3 == Mod.Find<ModItem>("BurnishedPrism").DisplayName.GetTranslation(Language.ActiveCulture))
                 {
                     burnishedPrism = true;
                 }
@@ -6349,7 +6373,9 @@ namespace StarsAbove
                 {
                     burnishedPrism = false;
                 }
-                if (affix1 == "Spatial Prism" || affix2 == "Spatial Prism" || affix3 == "Spatial Prism")
+                if (affix1 == Mod.Find<ModItem>("SpatialPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix2 == Mod.Find<ModItem>("SpatialPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix3 == Mod.Find<ModItem>("SpatialPrism").DisplayName.GetTranslation(Language.ActiveCulture))
                 {
                     spatialPrism = true;
                 }
@@ -6357,7 +6383,9 @@ namespace StarsAbove
                 {
                     spatialPrism = false;
                 }
-                if (affix1 == "Painted Prism" || affix2 == "Painted Prism" || affix3 == "Painted Prism")
+                if (affix1 == Mod.Find<ModItem>("PaintedPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix2 == Mod.Find<ModItem>("PaintedPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix3 == Mod.Find<ModItem>("PaintedPrism").DisplayName.GetTranslation(Language.ActiveCulture))
                 {
                     paintedPrism = true;
                 }
@@ -6365,12 +6393,16 @@ namespace StarsAbove
                 {
                     paintedPrism = false;
                 }
-                if (affix1 == "Voidsent Prism" || affix2 == "Voidsent Prism" || affix3 == "Voidsent Prism")
+                if (affix1 == Mod.Find<ModItem>("VoidsentPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix2 == Mod.Find<ModItem>("VoidsentPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix3 == Mod.Find<ModItem>("VoidsentPrism").DisplayName.GetTranslation(Language.ActiveCulture))
                 {
                     voidsentPrism = true;
                 }
                 //1.1.6 prisms
-                if (affix1 == "Royal Slime Prism" || affix2 == "Royal Slime Prism" || affix3 == "Royal Slime Prism")
+                if (affix1 == Mod.Find<ModItem>("RoyalSlimePrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix2 == Mod.Find<ModItem>("RoyalSlimePrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix3 == Mod.Find<ModItem>("RoyalSlimePrism").DisplayName.GetTranslation(Language.ActiveCulture))
                 {
                     royalSlimePrism = true;
                 }
@@ -6378,7 +6410,9 @@ namespace StarsAbove
                 {
                     royalSlimePrism = false;
                 }
-                if (affix1 == "Mechanical Prism" || affix2 == "Mechanical Prism" || affix3 == "Mechanical Prism")
+                if (affix1 == Mod.Find<ModItem>("MechanicalPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix2 == Mod.Find<ModItem>("MechanicalPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix3 == Mod.Find<ModItem>("MechanicalPrism").DisplayName.GetTranslation(Language.ActiveCulture))
                 {
                     mechanicalPrism = true;
                 }
@@ -6386,7 +6420,9 @@ namespace StarsAbove
                 {
                     mechanicalPrism = false;
                 }
-                if (affix1 == "Overgrown Prism" || affix2 == "Overgrown Prism" || affix3 == "Overgrown Prism")
+                if (affix1 == Mod.Find<ModItem>("OvergrownPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix2 == Mod.Find<ModItem>("OvergrownPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix3 == Mod.Find<ModItem>("OvergrownPrism").DisplayName.GetTranslation(Language.ActiveCulture))
                 {
                     overgrownPrism = true;
                 }
@@ -6394,7 +6430,9 @@ namespace StarsAbove
                 {
                     overgrownPrism = false;
                 }
-                if (affix1 == "Lihzahrd Prism" || affix2 == "Lihzahrd Prism" || affix3 == "Lihzahrd Prism")
+                if (affix1 == Mod.Find<ModItem>("LihzahrdPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix2 == Mod.Find<ModItem>("LihzahrdPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix3 == Mod.Find<ModItem>("LihzahrdPrism").DisplayName.GetTranslation(Language.ActiveCulture))
                 {
                     lihzahrdPrism = true;
                 }
@@ -6402,7 +6440,9 @@ namespace StarsAbove
                 {
                     lihzahrdPrism = false;
                 }
-                if (affix1 == "Typhoon Prism" || affix2 == "Typhoon Prism" || affix3 == "Typhoon Prism")
+                if (affix1 == Mod.Find<ModItem>("TyphoonPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix2 == Mod.Find<ModItem>("TyphoonPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix3 == Mod.Find<ModItem>("TyphoonPrism").DisplayName.GetTranslation(Language.ActiveCulture))
                 {
                     typhoonPrism = true;
                 }
@@ -6410,7 +6450,9 @@ namespace StarsAbove
                 {
                     typhoonPrism = false;
                 }
-                if (affix1 == "Empress Prism" || affix2 == "Empress Prism" || affix3 == "Empress Prism")
+                if (affix1 == Mod.Find<ModItem>("EmpressPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix2 == Mod.Find<ModItem>("EmpressPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix3 == Mod.Find<ModItem>("EmpressPrism").DisplayName.GetTranslation(Language.ActiveCulture))
                 {
                     empressPrism = true;
                 }
@@ -6418,7 +6460,9 @@ namespace StarsAbove
                 {
                     empressPrism = false;
                 }
-                if (affix1 == "Luminite Prism" || affix2 == "Luminite Prism" || affix3 == "Luminite Prism")
+                if (affix1 == Mod.Find<ModItem>("LuminitePrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix2 == Mod.Find<ModItem>("LuminitePrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                    affix3 == Mod.Find<ModItem>("LuminitePrism").DisplayName.GetTranslation(Language.ActiveCulture))
                 {
                     luminitePrism = true;
                 }
@@ -6427,7 +6471,7 @@ namespace StarsAbove
                     luminitePrism = false;
                 }
                 //Tier 3 Prisms
-                if (affix1 == "Prism of the Ruined King")
+                if (affix1 == Mod.Find<ModItem>("PrismOfTheRuinedKing").DisplayName.GetTranslation(Language.ActiveCulture))
                 {
                     ruinedKingPrism = true;
 
@@ -6437,7 +6481,7 @@ namespace StarsAbove
                     ruinedKingPrism = false;
 
                 }
-                if (affix1 == "Prism of the Cosmic Phoenix")
+                if (affix1 == Mod.Find<ModItem>("PrismOfTheCosmicPhoenix").DisplayName.GetTranslation(Language.ActiveCulture))
                 {
                     cosmicPhoenixPrism = true;
 
