@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Utilities;
+using StarsAbove.Items.Prisms;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.UI;
@@ -938,12 +939,12 @@ namespace StarsAbove.UI.StellarNova
 			}
 			if (!_affixSlot1.Item.IsAir)
 			{
-				if (_affixSlot1.Item.Name == "Prism of the Ruined King")
+				if (_affixSlot1.Item.type == ItemType<PrismOfTheRuinedKing>())
 				{
 					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/affixRuinedKing"), hitbox, Color.White * (modPlayer.novaUIOpacity));
 
 				}
-				else if (_affixSlot1.Item.Name == "Prism of the Cosmic Phoenix")
+				else if (_affixSlot1.Item.type == ItemType<PrismOfTheCosmicPhoenix>())
 				{
 					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/affixCosmicPhoenix"), hitbox, Color.White * (modPlayer.novaUIOpacity));
 
