@@ -19,7 +19,7 @@ If you would like to contribute, there are two categories needed:
 If you would like to contribute to the HJSON file, please look into the template.hjson file in the Localization folder. If you have trouble following the examples, please ask a member of the Discord Server for assistance.
 
 2. Translators:
-If you would like to translate The Stars Above to another language, I really appreciate it, but please wait until the English HJSON file is complete; this will make your job a lot easier.
+If you would like to translate The Stars Above to another language, please look in the Discord Server's #translation-information channel, this will make your job a lot easier.
 
 # Mod Support
 If you're a mod developer, and you'd like Starfarer dialogue for your bosses or biomes, please shoot me a DM on Discord (PaperLuigi#0001) and I'll try to get back to you.
