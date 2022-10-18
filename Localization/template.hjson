@@ -1157,7 +1157,7 @@ Mods: {
 					101: The Astral Infection has corrupted whatever this was. Don't underestimate it. The Infection can do anything...
 					102: Oh, great.. a giant robotic bug. It kind of looks like the Queen Bee, so try and remember her attacks!
 					103: This is.. an amalgamation of flesh and machinery.. Above everything, try and stay away from it!
-					104: This is.. a descendant of a cosmic god! {Player.name}, don't get reckless!
+					104: A descendant of a cosmic god! {0}, don't get reckless!
 					105: Something's reacting to the Profaned Shard! Prepare for a fight!
 					106: You've summoned a draconic monster..! It looks to be incredibly quick!
 					107: The fiery god of both light and dark descends.. No way we're losing to this thing!
@@ -1349,7 +1349,7 @@ Mods: {
 					112: The Devourer of Gods has appeared! You must give this battle your all!
 					113: The Jungle Dragon roars. Let's throw a wrench in Yharim's plans.
 					114: Where's it going? Were we.. not strong enough?
-					115: No way.. Its power is ineffable. {Player.name}.. We have to win this!
+					115: No way.. Its power is ineffable. {0}.. We have to win this!
 					116: Draedon is here... Be mindful of his tactics. His knowledge spans the world over.
 					117: Stay sharp. Multiple foes detected. Draedon's inventions are on the move.
 					118: Quick- find higher ground! A colossal mechanical serpent draws near!
