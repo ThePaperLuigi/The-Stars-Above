@@ -33,122 +33,122 @@ Mods: {
 				Starshield: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Starshield']"
 					Description: When struck, gain 10% of your Max HP as defense for 2 seconds (20 second cooldown.) Additionally, gain 20 mana upon activation, and 20% damage increase for the duration of the shield.
-					Unlock: "[c/9D9D9D:Locked: Defeat the Eye of Cthulhu]"
+					Unlock: "[c/9D9D9D:Locked:] Defeat the Eye of Cthulhu"
 				}
 				ButchersDozen: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Butcher's Dozen']"
 					Description: "After 12 kills without leaving combat, gain 5% extra attack damage and 30% faster attack speed."
-					Unlock: "[c/9D9D9D:Locked: Defeat Nalhaun, the Burnished King]"
+					Unlock: "[c/9D9D9D:Locked:] Defeat Nalhaun, the Burnished King"
 				}
 				EvasionMastery: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Evasion Mastery']"
-					Description: When struck, gain 10% of your Max HP as defense for 2 seconds (20 second cooldown.) Additionally, gain 20 mana upon activation, and 20% damage increase for the duration of the shield.
-					Unlock: "[c/9D9D9D:Locked: Defeat the Queen Bee]"
+					Description: 3% chance to take 0 damage from an attack. Gain 25% movement speed.
+					Unlock: "[c/9D9D9D:Locked:] Defeat the Queen Bee"
 				}
 				IronWill: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Iron Will']"
-					Description: 3% chance to take 0 damage from an attack. Gain 25% movement speed.
-					Unlock: "[c/9D9D9D:Locked: Defeat the Eater of Worlds or Brain of Cthulhu]"
+					Description: Gain 6 defense. Take 30 less damage from attacks that deal over 100 damage. Below 100 HP, take 20% less damage from all attacks, independent of other defense calculations.
+					Unlock: "[c/9D9D9D:Locked:] Defeat the Eater of Worlds or Brain of Cthulhu"
 				}
 				UmbralEntropy: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Umbral Entropy']"
-					Description: Gain 6 defense. Take 30 less damage from attacks that deal over 100 damage. Below 100 HP, take 20% less damage from all attacks, independent of other defense calculations.
-					Unlock: "[c/9D9D9D:Locked: Defeat the Moon Lord]"
+					Description: All projectiles and melee attacks inflict Starblight on a critical strike. Gain Lifesteal on foes inflicted with Starblight. Healing is capped at 5 HP per second.
+					Unlock: "[c/9D9D9D:Locked:] Defeat the Moon Lord"
 				}
 				FlashFreeze: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Flash Freeze']"
 					Description: Landing a critical strike will cause foes to explode, taking half the original damage. Additionally, damaging snowflakes will spew from the target, spreading the damage. 4 second cooldown.
-					Unlock: "[c/9D9D9D:Locked: Defeat Arbitration in Expert Mode]"
+					Unlock: "[c/9D9D9D:Locked:] Defeat Arbitration in Expert Mode"
 				}
 				MysticForging: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Mystic Forging']"
 					Description: Consume 5 mana when hitting a foe with an attack to deal 8% extra damage.
-					Unlock: "[c/9D9D9D:Locked: Defeat Penthesilea, the Witch of Ink]"
+					Unlock: "[c/9D9D9D:Locked:] Defeat Penthesilea, the Witch of Ink"
 				}
 				InnerAlchemy: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Inner Alchemy']"
 					Description: After not taking damage for 12 seconds, gain 10% increased damage, 25 defense, knockback resistance, and Health Regeneration. Buffs are lost on hit.
-					Unlock: "[c/9D9D9D:Locked: Defeat Skeletron]"
+					Unlock: "[c/9D9D9D:Locked:] Defeat Skeletron"
 				}
 				Hikari: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Hikari']"
 					Description: Gain bonus attack and defense proportional to Max HP divided by 20. Taking damage inflicts 'Null Radiance' which reduces outgoing damage by half for 6 seconds.
-					Unlock: "[c/9D9D9D:Locked: Defeat the Ice Queen]"
+					Unlock: "[c/9D9D9D:Locked:] Defeat the Ice Queen"
 				}
 				CelestialEvanesence: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Celestial Evanesence']"
 					Description: Critical strike rate is increased based on current Mana divided by 20. Landing a critical strike grants 5% of the damage dealt as Mana. (Max 5 per hit)
-					Unlock: "[c/9D9D9D:Locked: Defeat the Lunatic Cultist in Expert Mode]"
+					Unlock: "[c/9D9D9D:Locked:] Defeat the Lunatic Cultist in Expert Mode"
 				}
 				HealthyConfidence: {
 					Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Healthy Confidence']"
 					Description: Gain 150 extra Maximum HP and powerful health regeneration. Defense is halved below 200 HP.
-					Unlock: "[c/9D9D9D:Locked: Defeat the Wall of Flesh]"
+					Unlock: "[c/9D9D9D:Locked:] Defeat the Wall of Flesh"
 				}
 				InfernalEnd: {
 					Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Infernal End']"
 					Description: When below 100 HP, gain 50% increased damage and all attacks burn foes. Additionally, these effects will temporarily ignore the HP threshold for 3 seconds after taking damage.
-					Unlock: "[c/9D9D9D:Locked: Defeat any Mechanical Boss]"
+					Unlock: "[c/9D9D9D:Locked:] Defeat any Mechanical Boss"
 				}
 				AvatarOfLight: {
 					Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Avatar of Light']"
 					Description: Half of Max Mana is added to Max HP. At 500 HP or above, gain 10 defense, 5% damage, and 5 Stellar Nova Energy Regeneration.
-					Unlock: "[c/9D9D9D:Locked: Defeat the Warrior of Light]"
+					Unlock: "[c/9D9D9D:Locked:] Defeat the Warrior of Light"
 				}
 				AstralMantle: {
 					Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Astral Mantle']"
 					Description: 1/10th of current Mana is added to Defense. Gain 15 Stellar Nova Energy Regeneration above 200 Mana.
-					Unlock: "[c/9D9D9D:Locked: Defeat all Mechanical bosses]"
+					Unlock: "[c/9D9D9D:Locked:] Defeat all Mechanical bosses"
 				}
 				Afterburner: {
 					Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Afterburner']"
 					Description: When Mana drops below 40, gain 150 Mana and all attacks critically strike for 4 seconds. 25 second cooldown.
-					Unlock: "[c/9D9D9D:Locked: Defeat Plantera]"
+					Unlock: "[c/9D9D9D:Locked:] Defeat Plantera"
 				}
 				SpatialStratagem: {
 					Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Spatial Stratagem']"
 					Description: Critical strikes roll critical strike chance again. If the attack was critical again, increases damage by 50% and roll one more time.
-					Unlock: "[c/9D9D9D:Locked: Defeat all bosses from The Stars Above except the final boss]"
+					Unlock: "[c/9D9D9D:Locked:] Defeat all bosses from The Stars Above except the final boss"
 				}
 				WeaknessExploit: {
 					Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Weakness Exploit']"
 					Description: Critical strikes hit again for 10% of the original damage as true damage (Will not kill.) Foes below 20% HP or who are Stunned will take 30% damage instead.
-					Unlock: "[c/9D9D9D:Locked: Defeat Golem in Expert Mode]"
+					Unlock: "[c/9D9D9D:Locked:] Defeat Golem in Expert Mode"
 				}
 				Aprismatism: {
 					Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Aprismatism']"
 					Description: Aspected Damage Type changes will now apply to all weapons.
-					Unlock: "[c/9D9D9D:Locked: Defeat all bosses from The Stars Above except the final boss in Expert Mode]"
+					Unlock: "[c/9D9D9D:Locked:] Defeat all bosses from The Stars Above except the final boss in Expert Mode"
 				}
 				UnbridledRadiance: {
 					Name: "[c/D82BFF:Tier 3] [c/FFC258:'Unbridled Radiance']"
 					Description: Doubles the recharge rate of Stellar Nova Energy. Stellar Nova Energy does not deplete out of combat.
-					Unlock: "[c/9D9D9D:Locked: Defeat all Terraria bosses and the Warrior of Light in Expert Mode]"
+					Unlock: "[c/9D9D9D:Locked:] Defeat all Terraria bosses and the Warrior of Light in Expert Mode"
 				}
 				BetweenTheBoundary: {
 					Name: "[c/D82BFF:Tier 3] [c/FFC258:'Between the Boundary']"
 					Description: Every 8 seconds, swap between Ebb (drastic Mana drain) and Flow (infinite Mana Regeneration.) Additionally, gain 40% increased damage and 20% increased attack speed during Flow.
-					Unlock: "[c/9D9D9D:Locked: Defeat all Terraria bosses and all bosses from The Stars Above except the final boss]"
+					Unlock: "[c/9D9D9D:Locked:] Defeat all Terraria bosses and all bosses from The Stars Above except the final boss"
 				}
 				CyclicHunter: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Cyclic Hunter']"
 					Description: When ammo is consumed, gain 8 mana, 10% increased damage, and Movement Speed for half a second. 2 second cooldown.
-					Unlock: "[c/9D9D9D:Locked: Defeat the Slime King in Expert Mode]"
+					Unlock: "[c/9D9D9D:Locked:] Defeat the Slime King in Expert Mode"
 				}
 				LivingDead: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Living Dead']"
 					Description: Survive most fatal damage for 10 seconds, but if HP is not healed above 150 when the buff ends, you will die. (4 minute cooldown) You need 200+ Max HP to confirm this ability.
-					Unlock: "[c/9D9D9D:Locked: Defeat Pumpking]"
+					Unlock: "[c/9D9D9D:Locked:] Defeat Pumpking"
 				}
 				BeyondInfinity: {
 					Name: "[c/D82BFF:Tier 3] [c/FFC258:'Beyond Infinity']"
 					Description: At 500 HP or above, all applicable outgoing damage is doubled. Deal 10% less damage below 500 HP, increased by 10% for each 100 HP.
-					Unlock: "[c/9D9D9D:Locked: Defeat all Terraria bosses]"
+					Unlock: "[c/9D9D9D:Locked:] Defeat all Terraria bosses"
 				}
 				KeyOfChronology: {
 					Name: "[c/D82BFF:Tier 3] [c/FFC258:'Key Of Chronology']"
 					Description: Taking over 200 damage at once will instead heal you for that amount and grant 5 seconds of Invincibility. Additionally, all nearby non-boss enemies will be Stunned for 5 seconds. 2 minute cooldown.
-					Unlock: "[c/9D9D9D:Locked: Defeat the Moon Lord in Expert Mode]"
+					Unlock: "[c/9D9D9D:Locked:] Defeat the Moon Lord in Expert Mode"
 				}
 			}
 		}
@@ -1418,9 +1418,133 @@ Mods: {
 				}
 			}
 			VNDialogue: {
-			
-			
-			}
+				SceneID: {
+					3: {
+						Dialogue: {
+							1: Greetings! I am Asphodene- a Starfarer, and in turn, that makes you my Starbearer.
+							2: I will lend you my strength so that we may defeat the threats to this world together- and if things go well, to solve the bigger problems beyond.
+							3: There's more in it for you, though. If you'd like, I can give you the description of what I can help you with. I recommend it!
+						}
+						Choices: {
+							1: I'd like the full explanation.
+							2: I'm good, thanks.
+							3: X
+						}
+						
+					}
+					4: {
+						Dialogue: {
+							1: Okay, where to start... The Spatial Disk you used to form the contract can be used to access the Stellar Array, which provides abilities after defeating bosses. Nice, right?
+							2: The Spatial Disk can do a lot of other things, but for now, the Stellar Array is the most important. Remember to check it often!
+							3: One last thing.. I can turn energy from other worlds into direct power in the form of Essences. Combining these with other materials should be enough to create powerful Aspected Weapons.
+							4: Right, my power is yours. Let's show this world what we can do.
+						}
+						Choices: {
+							1: X
+							2: X
+						}
+					}
+					5: {
+						Dialogue: {
+							1: Well, in that case... My power is yours. Let's show this world what we can do.
+						}
+						Choices: {
+							1: X
+							2: X
+						}
+					}
+					6: {
+						Dialogue: {
+							1: It's nice to meet you. My name is Eridani.. a Starfarer. You, in turn, are my Starbearer.
+							2: Through this contract, we must work together to bring justice to those willing to harm this world- and, if things proceed well, the worlds beyond, as well.
+							3: If you are willing, I can give a description of what I can provide you with. Personally, I recommend it- knowledge is power, after all.
+						}
+						Choices: {
+							1: I'd like the full explanation.
+							2: I'm good, thanks.
+						}
+						
+					}
+					7: {
+						Dialogue: {
+							1: Right. Let's begin. With the Spatial Disk you used, you can access the Stellar Array. With the defeat of powerful foes, it will grant you strength.
+							2: The Spatial Disk has plenty of other uses, but by my hypothesis we don't have access to them yet. Hopefully, as we get stronger, more facets of the Disk will open up to us.
+							3: Umm.. what next..? Right. I can turn latent energy from other worlds into crystallized power- an Essence, if you will. You can turn these Essences into Aspected Weapons.
+							4: That should be everything. My strength is yours... I won't let you down.
+						}
+						Choices: {
+							1: X
+							2: X
+						}
+					}
+					8: {
+						Dialogue: {
+							1: In that case, my power is yours. Let's bring our full might to bear.
+						}
+						Choices: {
+							1: X
+							2: X
+						}
+					}
+					9: {
+						Dialogue: {
+							1: I see... Please, excuse my test. I know it was crude, but it's the only way I know how to judge someone. 
+							2: In reality, I should have known. My sisters would never choose unwisely.  
+							3: Huh? Sister? No way...  
+							4: I apologize, Asphodene. This should help. Ring any bells? 
+							5: Dude. We have GOT to stop meeting like this. The nerve...! 
+							6: Please, let me explain, Starbearer. In tandem with our galaxy's myriad worlds, there exists Starfarers to aid their denizens. You are familiar with what we do.
+							7: As we are conduits of energy, we choose a Starbearer to act as our envoy. You should know that living beings are the best conductors of mana, and we're only partially alive.
+							8: However, the First Starfarer's nominee was... unfitting for their role. This is the First Starbearer. From what I know, they seem to have lost their mind and morals.
+							9: Now, they continue to roam the galaxy, the Starfarer a thrall to their chosen one's whims. They 'pursue good' through any means necessary, often with casualties.
+							10: This is all conjecture, but the destruction is very real. It should go unsaid that we can't let this continue. I'll need your help in the future.
+							11: As it stands now, you have little chance of besting them. However, while Asphodene doesn't know it, all Starfarers have an ace up their sleeve: the Stellar Nova.
+							12: I've already bequeathed the power to her the second you've won our duel. 
+							13: That is all for now. I must continue to track the First Starbearer. Good luck- I will have need of you soon. 
+							14: I know he's a loner, but.. I wish we could have spoken more. Stay safe, Perseus. I can't help but feel he's hiding something from me, though. Just me? 
+							15: Anyways, he was right. I do feel stronger- and my hair's gone all shiny! This power should be an amazing boon going forward. 
+							16: Looks like my Stellar Nova is called 'Theofania Inanis.' Perhaps we'll get to use some more once we defeat more powerful foes?
+							17: After binding the Stellar Nova Key, you should be able to equip the Stellar Nova through the Spatial Disk, like usual.
+							18: You should have some Prismatic Cores already. With their power, I theorize you can upgrade Stellar Novas with crafting.
+							19: This is important. You need Stellar Nova Energy to cast Novas. You gain Nova energy in combat, and it depletes outside of combat.
+							20: OK. A lot has happened, but this is a huge step forward for us. Please use the Novas well! Bye for now.
+						}
+						Choices: {
+							1: X
+							2: X
+						}
+					}
+					10: {
+						Dialogue: {
+							1: I see... Please, excuse my test. I know it was crude, but it's the only way I know how to judge someone. 
+							2: In reality, I should have known. My sisters would never choose unwisely.  
+							3: Did you just say... 'sister?' You've got to be kidding...
+							4: I apologize, Eridani. This should help. Ring any bells? 
+							5: We haven't talked in ages- and you show up now...?
+							6: Please, let me explain, Starbearer. In tandem with our galaxy's myriad worlds, there exists Starfarers to aid their denizens. You are familiar with what we do.
+							7: As we are conduits of energy, we choose a Starbearer to act as our envoy. You should know that living beings are the best conductors of mana, and we're only partially alive.
+							8: However, the First Starfarer's nominee was... unfitting for their role. This is the First Starbearer. From what I know, they seem to have lost their mind and morals.
+							9: Now, they continue to roam the galaxy, the Starfarer a thrall to their chosen one's whims. They 'pursue good' through any means necessary, often with casualties.
+							10: This is all conjecture, but the destruction is very real. It should go unsaid that we can't let this continue. I'll need your help in the future.
+							11: As it stands now, you have little chance of besting them. However, while Eridani doesn't know it, all Starfarers have an ace up their sleeve: the Stellar Nova.
+							12: I've already bequeathed the power to her the second you've won our duel. 
+							13: That is all for now. I must continue to track the First Starbearer. Good luck- I will have need of you soon. 
+							14: Perseus was never one for sticking around. I think he wasn't letting something slip... Anyways, this power is incredible, but I need to get used to it.
+							15: My Stellar Nova is called 'Theofania Inanis.' Perhaps we will be able to utilize more once we become stronger.
+							16: After binding the Stellar Nova Key, you should be able to equip the Stellar Nova through the Spatial Disk, like usual.
+							17: With Prismatic Cores, you can craft upgrades to the Stellar Nova, I believe. You can affix them in the menu directly.
+							18: Don't forget: You need Stellar Nova Energy to cast Stellar Novas. You can only accrue Energy in combat.
+							19: That's about it.. I know it's a lot to process, but please use the Novas well. That's all for now.
+							20: ...Did my hair just change color?
+						}
+						Choices: {
+							1: X
+							2: X
+						}
+					}
+				}
+				
+			}	
 			
 		}
 		

@@ -1,4 +1,6 @@
-﻿namespace StarsAbove
+﻿using StarsAbove.Utilities;
+
+namespace StarsAbove
 {
     //Basic outline of visual novel code: (flowchart)
     /*
@@ -83,11 +85,7 @@
                     name = "Asphodene";
 
                     //What is the dialogue?
-                    dialogue = "" +
-                                  "Test dialogue" +
-                                " Speaker: Asphodene" +
-                                " Pose = 0" +
-                                " Expression = 0";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID."); //Test dialogue Speaker: Asphodene Pose = 0 Expression = 0
                 }
 
             }
@@ -140,11 +138,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = "" +
-                                "Greetings! I am Asphodene- a Starfarer," +
-                              " and in turn, that makes you my Starbearer." +
-                              " " +
-                              " ";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.3.Dialogue.1"); //Greetings! I am Asphodene- a Starfarer, and in turn, that makes you my Starbearer.  
                 }
                 if (sceneProgress == 1)
                 {
@@ -173,11 +167,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = "" +
-                                "I will lend you my strength so that we may" +
-                              " defeat the threats to this world together." +
-                              " " +
-                              " ";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.3.Dialogue.2"); //I will lend you my strength so that we may defeat the threats to this world together.  
                 }
                 if (sceneProgress == 2)
                 {
@@ -206,11 +196,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = "" +
-                                "There's more in it for you, though." +
-                              " If you'd like, I can give you the description" +
-                              " of what I can help you with. I recommend it!" +
-                              " ";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.3.Dialogue.3"); //There's more in it for you, though. If you'd like, I can give you the description of what I can help you with. I recommend it! 
                 }
             }
             //Asphodene's full explanation.
@@ -261,11 +247,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = "" +
-                                "Okay, where to start..." +
-                              " The Spatial Disk you used to form the contract" +
-                              " can be used to access the Stellar Array, which" +
-                              " provides abilities after defeating bosses. Nice, right?";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.4.Dialogue.1"); //Okay, where to start... The Spatial Disk you used to form the contract can be used to access the Stellar Array, which provides abilities after defeating bosses. Nice, right?
                 }
                 if (sceneProgress == 1)
                 {
@@ -295,11 +277,7 @@
 
                     //What is the dialogue?
 
-                    dialogue = "" +
-                                "The Spatial Disk can do a lot of other" +
-                              " things, but for now, the Stellar Array" +
-                              " is the most important. Remember to" +
-                              " check it often!";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.4.Dialogue.2"); //The Spatial Disk can do a lot of other things, but for now, the Stellar Array is the most important. Remember to check it often!
                 }
                 if (sceneProgress == 2)
                 {
@@ -328,11 +306,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = "" +
-                                "One last thing.. I can turn energy from other" +
-                              " worlds into direct power in the form of Essences." +
-                              " Combining these with other materials should be" +
-                              " enough to create powerful Aspected Weapons.";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.4.Dialogue.3"); //One last thing.. I can turn energy from other worlds into direct power in the form of Essences. Combining these with other materials should be enough to create powerful Aspected Weapons.
                 }
                 if (sceneProgress == 3)
                 {
@@ -361,11 +335,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = "" +
-                                $"Right, my power is yours." +
-                              " Let's show this world what we can do." +
-                              " " +
-                              " ";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.4.Dialogue.4"); //Right, my power is yours. Let's show this world what we can do.  
                 }
             }
             //Asphodene's shortened explanation.
@@ -416,11 +386,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = "" +
-                                "Well, in that case..." +
-                              " My power is yours." +
-                              " Let's show this world what we can do." +
-                              " ";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.5.Dialogue.1"); //Well, in that case... My power is yours. Let's show this world what we can do. 
                 }
             }
             //Eridani's new introduction. Leads into 7 and 8.
@@ -471,11 +437,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = "" +
-                              "It's nice to meet you." +
-                            " My name is Eridani.. a Starfarer." +
-                            " You, in turn, are my Starbearer." +
-                            " ";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.6.Dialogue.1"); //It's nice to meet you. My name is Eridani.. a Starfarer. You, in turn, are my Starbearer. 
                 }
                 if (sceneProgress == 1)
                 {
@@ -504,11 +466,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = "" +
-                              "Through this contract, we must work together" +
-                            " to bring justice to those willing to harm" +
-                            " this world." +
-                            " ";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.6.Dialogue.2"); //Through this contract, we must work together to bring justice to those willing to harm this world. 
                 }
                 if (sceneProgress == 2)
                 {
@@ -537,11 +495,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = "" +
-                              "If you are willing, I can give a description" +
-                            " of what I can provide you with. Personally," +
-                            " I recommend it- knowledge is power, after all." +
-                            " ";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.6.Dialogue.3"); //If you are willing, I can give a description of what I can provide you with. Personally, I recommend it- knowledge is power, after all. 
                 }
             }
             //Eridani's full explanation.
@@ -592,11 +546,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = "" +
-                              "Right. Let's begin." +
-                            " With the Spatial Disk you used, you can" +
-                            " access the Stellar Array. With the defeat" +
-                            " of powerful foes, it will grant you strength.";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.7.Dialogue.1"); //Right. Let's begin. With the Spatial Disk you used, you can access the Stellar Array. With the defeat of powerful foes, it will grant you strength.
                 }
                 if (sceneProgress == 1)
                 {
@@ -625,11 +575,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = "" +
-                              "The Spatial Disk has plenty of other uses, but" +
-                            " by my hypothesis we don't have access to them yet." +
-                            " Hopefully, as we get stronger, more facets of the Disk" +
-                            " will open up to us.";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.7.Dialogue.2"); //The Spatial Disk has plenty of other uses, but by my hypothesis we don't have access to them yet. Hopefully, as we get stronger, more facets of the Disk will open up to us.
                 }
                 if (sceneProgress == 2)
                 {
@@ -658,11 +604,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = "" +
-                              "Umm.. what next..? Right." +
-                            " I can turn latent energy from other worlds into" +
-                            " crystallized power- an Essence, if you will." +
-                            " You can turn these Essences into Aspected Weapons.";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.7.Dialogue.3"); //Umm.. what next..? Right. I can turn latent energy from other worlds into crystallized power- an Essence, if you will. You can turn these Essences into Aspected Weapons.
                 }
                 if (sceneProgress == 3)
                 {
@@ -691,11 +633,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = "" +
-                              "That should be everything." +
-                            " My strength is yours... I won't let you down." +
-                            " " +
-                            " ";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.7.Dialogue.4"); //That should be everything. My strength is yours... I won't let you down.  
                 }
             }
             //Eridani's shortened explanation.
@@ -746,11 +684,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = "" +
-                              "In that case.." +
-                            " My power is yours." +
-                            " Let's show this world what we can do." +
-                            " ";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.8.Dialogue.1"); //In that case.. My power is yours. Let's show this world what we can do. 
                 }
             }
 
@@ -802,11 +736,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = "" +
-                              "I see..." +
-                            " Please, excuse my test. I know it was crude," +
-                            " but it's the only way I know how to judge someone." +
-                            " ";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.1"); //I see... Please, excuse my test. I know it was crude, but it's the only way I know how to judge someone. 
                 }
                 if (sceneProgress == 1)
                 {
@@ -835,11 +765,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = "" +
-                              "In reality, I should have known." +
-                            " My sisters would never choose unwisely." +
-                            " " +
-                            " ";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.2"); //In reality, I should have known. My sisters would never choose unwisely.  
                 }
                 if (sceneProgress == 2)
                 {
@@ -868,11 +794,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = "" +
-                              "Huh? Sister?" +
-                            " No way..." +
-                            " " +
-                            " ";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.3"); //Huh? Sister? No way...  
                 }
                 if (sceneProgress == 3)
                 {
@@ -901,11 +823,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = "" +
-                              "I apologize, Asphodene." +
-                            " This should help." +
-                            " Ring any bells?" +
-                            " ";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.4"); //I apologize, Asphodene. This should help. Ring any bells? 
                 }
                 if (sceneProgress == 4)
                 {
@@ -934,11 +852,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = "" +
-                              "Dude. We have GOT to stop" +
-                            " meeting like this." +
-                            " The nerve...!" +
-                            " ";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.5"); //Dude. We have GOT to stop meeting like this. The nerve...! 
                 }
                 if (sceneProgress == 5)
                 {
@@ -967,10 +881,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"Please, let me explain, Starbearer." +
-                            $" In tandem with our galaxy's myriad worlds," +
-                            $" there exists Starfarers to aid their denizens." +
-                            $" You are familiar with what we do.";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.6"); //Please, let me explain, Starbearer. In tandem with our galaxy's myriad worlds, there exists Starfarers to aid their denizens. You are familiar with what we do.
                 }
                 if (sceneProgress == 6)
                 {
@@ -999,10 +910,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"As we are conduits of energy," +
-                           $" we choose a Starbearer to act as our envoy." +
-                           $" They- or you, as it were-" +
-                           $" work kind of like a magnifying glass.";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.7"); //As we are conduits of energy, we choose a Starbearer to act as our envoy. They- or you, as it were- work kind of like a magnifying glass.
                 }
                 if (sceneProgress == 7)
                 {
@@ -1031,10 +939,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"However, the First Starfarer's nominee" +
-                            $" was... unfitting for their role." +
-                            $" This is the First Starbearer. From what I know," +
-                            $" they seem to have lost their mind and morals.";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.8"); //However, the First Starfarer's nominee was... unfitting for their role. This is the First Starbearer. From what I know, they seem to have lost their mind and morals.
                 }
                 if (sceneProgress == 8)
                 {
@@ -1063,10 +968,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"Now, they continue to roam the galaxy," +
-                            $" the Starfarer a thrall to their chosen one's" +
-                            $" whims. They 'pursue good' through any" +
-                            $" means necessary, often with casualties.";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.9"); //Now, they continue to roam the galaxy, the Starfarer a thrall to their chosen one's whims. They 'pursue good' through any means necessary, often with casualties.
                 }
                 if (sceneProgress == 9)
                 {
@@ -1095,10 +997,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"This is all conjecture, but the destruction" +
-                            $" is very real. It should go unsaid that we" +
-                            $" can't let this continue." +
-                            $" I'll need your help in the future.";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.10"); //This is all conjecture, but the destruction is very real. It should go unsaid that we can't let this continue. I'll need your help in the future.
                 }
                 if (sceneProgress == 10)
                 {
@@ -1127,10 +1026,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"As it stands now, you have little chance" +
-                            $" of besting them. However, while Asphodene" +
-                            $" doesn't know it, all Starfarers have an" +
-                            $" ace up their sleeve: the Stellar Nova.";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.11"); //As it stands now, you have little chance of besting them. However, while Asphodene doesn't know it, all Starfarers have an ace up their sleeve: the Stellar Nova.
                 }
                 if (sceneProgress == 11)
                 {
@@ -1159,10 +1055,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"She doesn't know it, but I've" +
-                            $" already bequeathed the power to her" +
-                            $" the second you've won our duel." +
-                            $" ";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.12"); //She doesn't know it, but I've already bequeathed the power to her the second you've won our duel. 
                 }
                 if (sceneProgress == 12)
                 {
@@ -1191,10 +1084,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"That is all for now." +
-                            $" I must continue to track the First Starbearer." +
-                            $" Good luck- I will have need of you soon." +
-                            $" ";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.13"); //That is all for now. I must continue to track the First Starbearer. Good luck- I will have need of you soon. 
                 }
                 if (sceneProgress == 13)
                 {
@@ -1223,10 +1113,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"I know he's a loner, but.." +
-                           $" I wish we could have spoken more." +
-                           $" Stay safe, Perseus." +
-                           $" ";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.14"); //I know he's a loner, but.. I wish we could have spoken more. Stay safe, Perseus. 
                 }
                 if (sceneProgress == 14)
                 {
@@ -1255,10 +1142,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"Huh, he was right. I do feel stronger-" +
-                           $" and my hair's gone all shiny! This power" +
-                           $" should be an amazing boon going forward." +
-                           $" ";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.15"); //Huh, he was right. I do feel stronger- and my hair's gone all shiny! This power should be an amazing boon going forward. 
                 }
                 if (sceneProgress == 15)
                 {
@@ -1287,10 +1171,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"Looks like my Stellar Nova is called" +
-                           $" 'Theofania Inanis.' Perhaps we'll get" +
-                           $" to use some more once we get stronger?" +
-                           $" ";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.16"); //Looks like my Stellar Nova is called 'Theofania Inanis.' Perhaps we'll get to use some more once we get stronger? 
                 }
                 if (sceneProgress == 16)
                 {
@@ -1319,10 +1200,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"After binding the Stellar" +
-                            $" Nova Key, you should be able" +
-                            $" to equip the Stellar Nova through" +
-                            $" the Spatial Disk, like usual.";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.17"); //After binding the Stellar Nova Key, you should be able to equip the Stellar Nova through the Spatial Disk, like usual.
                 }
                 if (sceneProgress == 17)
                 {
@@ -1351,10 +1229,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"You should have some" +
-                            $" Prismatic Cores already. With their" +
-                            $" power, I theorize you can upgrade" +
-                            $" Stellar Novas with crafting.";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.18"); //You should have some Prismatic Cores already. With their power, I theorize you can upgrade Stellar Novas with crafting.
                 }
                 if (sceneProgress == 18)
                 {
@@ -1383,10 +1258,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"This is important. You need" +
-                            $" Stellar Nova energy to cast Novas." +
-                            $" You gain Nova energy in combat." +
-                            $" It depletes outside of combat.";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.19"); //This is important. You need Stellar Nova energy to cast Novas. You gain Nova energy in combat. It depletes outside of combat.
                 }
                 if (sceneProgress == 19)
                 {
@@ -1415,10 +1287,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"OK. A lot has happened," +
-                            $" but this is a huge step forward for" +
-                            $" us. Please use the Novas well!" +
-                            $" Bye for now.";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.20"); //OK. A lot has happened, but this is a huge step forward for us. Please use the Novas well! Bye for now.
                 }
             }
             //Post-Vagrant dialogue (Eridani ver.)
@@ -1469,11 +1338,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = "" +
-                              "I see..." +
-                            " Please, excuse my test. I know it was crude," +
-                            " but it's the only way I know how to judge someone." +
-                            " ";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.1"); //I see... Please, excuse my test. I know it was crude, but it's the only way I know how to judge someone. 
                 }
                 if (sceneProgress == 1)
                 {
@@ -1502,11 +1367,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = "" +
-                              "In reality, I should have known." +
-                            " My sisters would never choose unwisely." +
-                            " " +
-                            " ";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.2"); //In reality, I should have known. My sisters would never choose unwisely.  
                 }
                 if (sceneProgress == 2)
                 {
@@ -1535,9 +1396,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"Did you just say... 'sister'?" +
-                           $" You've got to be kidding..." +
-                           $" ";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.3");
                 }
                 if (sceneProgress == 3)
                 {
@@ -1566,11 +1425,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = "" +
-                              "I apologize, Eridani." +
-                            " This should help." +
-                            " Ring any bells?" +
-                            " ";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.4"); //I apologize, Eridani. This should help. Ring any bells? 
                 }
                 if (sceneProgress == 4)
                 {
@@ -1599,11 +1454,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = "" +
-                              "We haven't talked in ages-" +
-                            " and you show up now...?" +
-                            " " +
-                            " ";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.5"); //We haven't talked in ages- and you show up now...?  
                 }
                 if (sceneProgress == 5)
                 {
@@ -1632,10 +1483,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"Please, let me explain, Starbearer." +
-                            $" In tandem with our galaxy's myriad worlds," +
-                            $" there exists Starfarers to aid their denizens." +
-                            $" You are familiar with what we do.";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.6"); //Please, let me explain, Starbearer. In tandem with our galaxy's myriad worlds, there exists Starfarers to aid their denizens. You are familiar with what we do.
                 }
                 if (sceneProgress == 6)
                 {
@@ -1664,10 +1512,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"As we are conduits of energy," +
-                           $" we choose a Starbearer to act as our envoy." +
-                           $" They- or you, as it were-" +
-                           $" work kind of like a magnifying glass.";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.7"); //As we are conduits of energy, we choose a Starbearer to act as our envoy. They- or you, as it were- work kind of like a magnifying glass.
                 }
                 if (sceneProgress == 7)
                 {
@@ -1696,10 +1541,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"However, the First Starfarer's nominee" +
-                            $" was... unfitting for their role." +
-                            $" This is the First Starbearer. From what I know," +
-                            $" they seem to have lost their mind and morals.";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.8"); //However, the First Starfarer's nominee was... unfitting for their role. This is the First Starbearer. From what I know, they seem to have lost their mind and morals.
                 }
                 if (sceneProgress == 8)
                 {
@@ -1728,10 +1570,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"Now, they continue to roam the galaxy," +
-                            $" the Starfarer a thrall to their chosen one's" +
-                            $" whims. They 'pursue good' through any" +
-                            $" means necessary, often with casualties.";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.9"); //Now, they continue to roam the galaxy, the Starfarer a thrall to their chosen one's whims. They 'pursue good' through any means necessary, often with casualties.
                 }
                 if (sceneProgress == 9)
                 {
@@ -1760,10 +1599,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"This is all conjecture, but the destruction" +
-                            $" is very real. It should go unsaid that we" +
-                            $" can't let this continue." +
-                            $" I'll need your help in the future.";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.10"); //This is all conjecture, but the destruction is very real. It should go unsaid that we can't let this continue. I'll need your help in the future.
                 }
                 if (sceneProgress == 10)
                 {
@@ -1792,10 +1628,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"As it stands now, you have little chance" +
-                            $" of besting them. However, while Eridani" +
-                            $" doesn't know it, all Starfarers have an" +
-                            $" ace up their sleeve: the Stellar Nova.";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.11"); //As it stands now, you have little chance of besting them. However, while Eridani doesn't know it, all Starfarers have an ace up their sleeve: the Stellar Nova.
                 }
                 if (sceneProgress == 11)
                 {
@@ -1824,10 +1657,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"She doesn't know it, but I've" +
-                            $" already bequeathed the power to her" +
-                            $" the second you've won our duel." +
-                            $" ";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.12"); //She doesn't know it, but I've already bequeathed the power to her the second you've won our duel. 
                 }
                 if (sceneProgress == 12)
                 {
@@ -1856,10 +1686,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"That is all for now." +
-                            $" I must continue to track the First Starbearer." +
-                            $" Good luck- I will have need of you soon." +
-                            $" ";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.13"); //That is all for now. I must continue to track the First Starbearer. Good luck- I will have need of you soon. 
                 }
                 if (sceneProgress == 13)
                 {
@@ -1888,10 +1715,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"Perseus was never one for sticking around." +
-                           $" I wish we could have spoken more..." +
-                           $" This power is incredible, but I need to get used to it." +
-                           $" ";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.14"); //Perseus was never one for sticking around. I wish we could have spoken more... This power is incredible, but I need to get used to it. 
                 }
                 if (sceneProgress == 14)
                 {
@@ -1920,10 +1744,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"My Stellar Nova is called" +
-                            $" 'Theofania Inanis.' Perhaps we will" +
-                            $" be able to utilize more once" +
-                            $" we become stronger.";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.15"); //My Stellar Nova is called 'Theofania Inanis.' Perhaps we will be able to utilize more once we become stronger.
                 }
                 if (sceneProgress == 15)
                 {
@@ -1952,10 +1773,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"After binding the Stellar" +
-                             $" Nova Key, you should be able" +
-                             $" to equip the Stellar Nova through" +
-                             $" the Spatial Disk, like usual.";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.16"); //After binding the Stellar Nova Key, you should be able to equip the Stellar Nova through the Spatial Disk, like usual.
                 }
                 if (sceneProgress == 16)
                 {
@@ -1984,10 +1802,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"With Prismatic Cores," +
-                            $" you can craft upgrades to the" +
-                            $" Stellar Nova, I believe. You can affix them" +
-                            $" in the menu directly.";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.17"); //With Prismatic Cores, you can craft upgrades to the Stellar Nova, I believe. You can affix them in the menu directly.
                 }
                 if (sceneProgress == 17)
                 {
@@ -2016,10 +1831,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"Don't forget: You need" +
-                            $" Stellar Nova Energy to cast" +
-                            $" Stellar Novas. You can only" +
-                            $" accrue Energy in combat.";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.18"); //Don't forget: You need Stellar Nova Energy to cast Stellar Novas. You can only accrue Energy in combat.
                 }
                 if (sceneProgress == 18)
                 {
@@ -2048,10 +1860,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"That's about it.." +
-                            $" I know it's a lot to process, but" +
-                            $" please use the Novas well." +
-                            $" That's all for now.";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.19"); //That's about it.. I know it's a lot to process, but please use the Novas well. That's all for now.
                 }
                 if (sceneProgress == 19)
                 {
@@ -2080,10 +1889,7 @@
 
 
                     //What is the dialogue?
-                    dialogue = $"...Did my hair just change color?" +
-                            $" " +
-                            $" " +
-                            $"";
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.20"); //...Did my hair just change color?  
                 }
             }
 
