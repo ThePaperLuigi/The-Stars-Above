@@ -5650,8 +5650,10 @@ Mods: {
 
 		GameTips: {
 			StarsAboveTip0: "Aspected Weapons can have their damage type adjusted with the Stellar Array."
-			StarsAboveTip1: "You can drag the Stellar Nova Menu, and you can reset its position by holding the Stellar Nova key."
+			StarsAboveTip1: "You can drag the Stellar Nova Menu with your mouse, and you can reset its position by holding the Stellar Nova key."
 			StarsAboveTip2: "Some Stellar Array combinations are better for some fights than others; try experimenting often!"
+			StarsAboveTip3: "Celestial damage inherits stat bonuses from all vanilla classes!"
+			StarsAboveTip4: "Check out the Stars Above configuration if you want to adjust certain features!"
 		}
 		
 		
