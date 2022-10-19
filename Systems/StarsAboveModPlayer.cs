@@ -407,6 +407,8 @@ namespace StarsAbove
 
         //Shadowless Cerulean
         public int ceruleanFlameGauge;
+        //El Capitan's Hardware
+        public int renegadeGauge;
 
         //Luminary Wand
         public Vector2 lumaPosition;
@@ -1209,6 +1211,9 @@ namespace StarsAbove
 
             tag["chosenStarfarer"] = chosenStarfarer;
 
+            tag["starfarerOutfit"] = starfarerOutfit;
+            tag["starfarerOutfitVanity"] = starfarerOutfitVanity;
+
             tag["starshower"] = starshower;
             tag["ironskin"] = ironskin;
             tag["evasionmastery"] = evasionmastery;
@@ -1496,6 +1501,10 @@ namespace StarsAbove
 
 
             chosenStarfarer = tag.GetInt("chosenStarfarer");
+
+            starfarerOutfit = tag.GetInt("starfarerOutfit");
+            starfarerOutfitVanity = tag.GetInt("starfarerOutfitVanity");
+
             starfarerIntro = tag.GetBool("starfarerIntro");
             slimeDialogue = tag.GetInt("slimeDialogue");
             eyeDialogue = tag.GetInt("eyeDialogue");

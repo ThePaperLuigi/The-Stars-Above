@@ -1453,11 +1453,11 @@ namespace StarsAbove
                         expression = 6;
                         if (Main.expertMode == true)
                         {
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.KingSlime.3", Player.name); //Something about this foe has unlocked a part of the Stellar Array. Perhaps it was fiercer than usual?
+                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.KingSlime.Eridani.3", Player.name); //Something about this foe has unlocked a part of the Stellar Array. Perhaps it was fiercer than usual?
                         }
                         else
                         {
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.KingSlime.4", Player.name); //However, if it does return, you should be able to easily defeat it anew.
+                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.KingSlime.Eridani.4", Player.name); //However, if it does return, you should be able to easily defeat it anew.
                         }
                         //	" ";
                     }
