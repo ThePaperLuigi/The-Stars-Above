@@ -64,7 +64,7 @@ namespace StarsAbove.Projectiles.ElCapitansHardware
 			SearchForTargets(owner, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter);
 			//Movement(foundTarget, distanceFromTarget, targetCenter, distanceToIdlePosition, vectorToIdlePosition);
 			Visuals();
-			Projectile.velocity *= 0.97f;
+			Projectile.velocity *= 0.98f;
 			if (Projectile.ai[0] > 12)
 			{
 

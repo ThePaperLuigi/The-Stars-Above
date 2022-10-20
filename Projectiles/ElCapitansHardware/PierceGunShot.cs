@@ -52,6 +52,14 @@ namespace StarsAbove.Projectiles.ElCapitansHardware
         {
 			Player projOwner = Main.player[Projectile.owner];
 			projOwner.GetModPlayer<StarsAbovePlayer>().renegadeGauge++;
+			if(crit)
+            {
+				projOwner.GetModPlayer<StarsAbovePlayer>().renegadeGauge++;
+			}
+			if(target.boss)
+            {
+				projOwner.GetModPlayer<StarsAbovePlayer>().renegadeGauge += 2;
+			}
 			if(projOwner.GetModPlayer<StarsAbovePlayer>().renegadeGauge++ > 100)
             {
 				projOwner.GetModPlayer<StarsAbovePlayer>().renegadeGauge = 100;

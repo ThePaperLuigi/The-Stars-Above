@@ -3333,6 +3333,16 @@ Mods: {
                 [c/EC8B35:Orange Pigment] inflicts Ichor / [c/3596EC:Blue Pigment] inflicts Frostburn
                 [c/E4CE55:Yellow Pigment] inflicts Midas / [c/9E35EC:Purple Pigment] inflicts Acid Venom
                 '''
+			ElCapitansHardware:
+                '''
+                Attacks with this weapon pierce foes and bounce off walls up to 4 times
+				Striking foes charges the [c/96BB7F:Renegade Gauge] (Critical strikes grant more charge)
+				Striking bosses grants bonus charge to the [c/96BB7F:Renegade Gauge]
+				Once the [c/96BB7F:Renegade Gauge] is above 50%, right-click to consume the [c/96BB7F:Renegade Gauge], swapping weapons and firing a [c/F9CF49:Gyro Disk] that lasts for 4 seconds
+				The [c/F9CF49:Gyro Disk] automatically targets and attacks nearby foes
+				If the [c/96BB7F:Renegade Gauge] is higher than 50% on activation, the [c/F9CF49:Gyro Disk] gains bonus damage proportional to the extra amount consumed
+				'GAME RIGHTS?!'
+                '''
             Persephone:
                 '''
                 Applies frostburn to foes and fires an icy projectile when in the confines of the underworld

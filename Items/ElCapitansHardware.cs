@@ -15,13 +15,13 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("El Capitan's Hardware");
-			Tooltip.SetDefault("WORK IN PROGRESS WEAPON" +
-                "\nAttacks with this weapon pierce foes and bounce off walls up to 4 times" +
-				"\nStriking foes charges the [Renegade Gauge] (Critical strikes grant more charge)" +
-                "\nOnce the [Renegade Gauge] is above 50%, right-click to consume the [Renegade Gauge], swapping weapons and firing a [Gyro Disk] that lasts for 4 seconds" +
-                "\nThe [Gyro Disk] automatically targets and attacks nearby foes" +
-                "\nAfter 10 seconds, the [Gyro Disk] disappears and the [Renegade Gauge] can gain energy again" +
-                "\nIf the [Renegade Gauge] is higher than 50% on activation, the [Gyro Disk] gains bonus damage proportional to the extra amount consumed" +
+			Tooltip.SetDefault("" +
+                "Attacks with this weapon pierce foes and bounce off walls up to 4 times" +
+				"\nStriking foes charges the [c/96BB7F:Renegade Gauge] (Critical strikes grant more charge)" +
+				"\nStriking bosses grants bonus charge to the [c/96BB7F:Renegade Gauge]" +
+				"\nOnce the [c/96BB7F:Renegade Gauge] is above 50%, right-click to consume the [c/96BB7F:Renegade Gauge], swapping weapons and firing a [c/F9CF49:Gyro Disk] that lasts for 4 seconds" +
+				"\nThe [c/F9CF49:Gyro Disk] automatically targets and attacks nearby foes" +
+				"\nIf the [c/96BB7F:Renegade Gauge] is higher than 50% on activation, the [c/F9CF49:Gyro Disk] gains bonus damage proportional to the extra amount consumed" +
 				"\n'GAME RIGHTS?!'" +
 				$"");
 
@@ -30,7 +30,7 @@ namespace StarsAbove.Items
 		}
 
 		public override void SetDefaults() {
-			Item.damage = 33;
+			Item.damage = 48;
 			Item.DamageType = DamageClass.Ranged;
 			Item.width = 40;
 			Item.height = 20;

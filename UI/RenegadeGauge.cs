@@ -73,7 +73,7 @@ namespace StarsAbove.UI
 			hitbox.Width -= 24;
 			hitbox.Y += 8;
 			hitbox.Height -= 16;
-			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/RenegadeGauge"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);
+			
 			// Now, using this hitbox, we draw a gradient by drawing vertical lines while slowly interpolating between the 2 colors.
 			int left = hitbox.Left;
 			int right = hitbox.Right;
@@ -88,6 +88,7 @@ namespace StarsAbove.UI
 
 				}
 			}
+			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/RenegadeGauge"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);
 			if (modPlayer.renegadeGauge >= 50)
 			{
 				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/RenegadeGaugeGlow"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);
