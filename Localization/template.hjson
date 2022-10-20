@@ -234,6 +234,7 @@ Mods: {
 					69: Sure, it'll most likely burn you up from the inside. Just a little, though.
 					70: Okay, here's an unorthodox Essence for you. While it functions as a pretty strong pickaxe, it looks like it also has some great damage potential.  
 					71: From my take, it seems to be a great off-hand weapon to pump out explosions. Everyone loves explosions, right? 
+					72: Here's a Ranged weapon- it has both a useful primary fire and can unleash strong self-sustaining drones to attack as well.
 				}
 				Eridani: {
 					1: Here's a Ranged-type essence. It looks like every fourth shot has increased offensive properties. Whatever the reason, it's powerful.
@@ -308,6 +309,7 @@ Mods: {
 					70: Apologies for the delay- here's an Essence. This Melee weapon has some recoil potential, but in exchange you could deal some explosive amounts of damage.
 					71: I'd ask you to use it in moderation, but I'm sure you'll use it as much as you like. Bring some healing potions, at the very least.
 					72: This Essence focuses on excavation as well as damage. You can use it to move earth at significant rates, and additionally deal powerful explosive damage. 
+					73: Here's a Ranged weapon- it has both a useful primary fire and can unleash strong self-sustaining drones to attack as well.
 				}
 				Perseus: {
 					1: It's good to see you again, {0}. I'm not here to ask for your help- instead, I have a gift for you.
@@ -4149,6 +4151,8 @@ Mods: {
             Drachenlance: Drachenlance
             DreadnoughtChemtank: Dreadnought Chemtank
             EssenceOfAdagium: Essence of Adagium
+			EssenceOfTheRenegade: Essence of the Renegade
+			ElCapitansHardware: El Capitan's Hardware
             EssenceOfAlpha: Essence of the Alpha
             EssenceOfAsh: Essence of Ash
             EssenceOfAzakana: Essence of Azakana
