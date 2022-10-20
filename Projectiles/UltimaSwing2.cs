@@ -26,7 +26,7 @@ namespace StarsAbove.Projectiles
 			
 			Projectile.hide = false;
 			Projectile.ownerHitCheck = true;
-			Projectile.DamageType = DamageClass.Magic;
+			Projectile.DamageType = ModContent.GetInstance<Systems.CelestialDamageClass>();
 			Projectile.tileCollide = false;
 			Projectile.friendly = true;
 

@@ -27,7 +27,7 @@ namespace StarsAbove.Projectiles.TheOnlyThingIKnowForReal
 			Projectile.timeLeft = 255;
 			Projectile.hide = false;
 			Projectile.ownerHitCheck = true;
-			Projectile.DamageType = DamageClass.Melee;
+			Projectile.DamageType = ModContent.GetInstance<Systems.CelestialDamageClass>();
 			Projectile.tileCollide = false;
 			Projectile.friendly = true;
 
