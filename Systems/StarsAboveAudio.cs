@@ -589,6 +589,30 @@ namespace StarsAbove
 		#endregion
 
 		#region Weapon Sound Effects
+		public static readonly SoundStyle SFX_CatalystIdle = new($"{nameof(StarsAbove)}/Sounds/SFX/CatalystIdle")
+		{
+
+		};
+		public static readonly SoundStyle SFX_CatalystIgnition = new($"{nameof(StarsAbove)}/Sounds/SFX/CatalystIgnition")
+		{
+
+		};
+		public static readonly SoundStyle SFX_CatalystExtinguish = new($"{nameof(StarsAbove)}/Sounds/SFX/CatalystExtinguish")
+		{
+
+		};
+		public static readonly SoundStyle SFX_CatalystSwing = new($"{nameof(StarsAbove)}/Sounds/SFX/CatalystSwing")
+		{
+
+		};
+		public static readonly SoundStyle SFX_PrismicBreak = new($"{nameof(StarsAbove)}/Sounds/SFX/PrismicBreak")
+		{
+
+		};
+		public static readonly SoundStyle SFX_PrismicPowerBreak = new($"{nameof(StarsAbove)}/Sounds/SFX/PrismicPowerBreak")
+		{
+
+		};
 		public static readonly SoundStyle SFX_DealmakerShoot = new($"{nameof(StarsAbove)}/Sounds/SFX/DealmakerShoot")
 		{
 
