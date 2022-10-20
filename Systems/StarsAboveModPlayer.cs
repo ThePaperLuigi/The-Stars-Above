@@ -138,6 +138,9 @@ namespace StarsAbove
         public int powerStrikeStacks;
         public int boilingBloodDamage;
 
+        //Catalyst's Memory
+        public int CatalystMemoryProgress;
+
         //Warrior of Light code //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -735,6 +738,7 @@ namespace StarsAbove
         public int RedMageWeaponDialogue = 0;
         public int BlazeWeaponDialogue = 0;
         public int PickaxeWeaponDialogue = 0;
+        public int HardwareWeaponDialogue = 0;
 
         //Subworld dialogues
         public int observatoryDialogue = 0;
@@ -1353,6 +1357,7 @@ namespace StarsAbove
             tag["RedMageWeaponDialogue"] = RedMageWeaponDialogue;
             tag["BlazeWeaponDialogue"] = BlazeWeaponDialogue;
             tag["PickaxeWeaponDialogue"] = PickaxeWeaponDialogue;
+            tag["HardwareWeaponDialogue"] = HardwareWeaponDialogue;
 
 
 
@@ -1610,7 +1615,7 @@ namespace StarsAbove
             RedMageWeaponDialogue = tag.GetInt("RedMageWeaponDialogue");
             BlazeWeaponDialogue = tag.GetInt("BlazeWeaponDialogue");
             PickaxeWeaponDialogue = tag.GetInt("PickaxeWeaponDialogue");
-
+            HardwareWeaponDialogue = tag.GetInt("HardwareWeaponDialogue");
 
 
             observatoryDialogue = tag.GetInt("observatoryDialogue");
@@ -4678,6 +4683,13 @@ namespace StarsAbove
             }
             
             CelestialCartography();
+
+            if (CatalystMemoryProgress < 0)
+            {
+                CatalystMemoryProgress = 0;
+            }
+            CatalystMemoryProgress--;
+            
             GlobalRotation++;
             if (GlobalRotation >= 360)
             {
@@ -5931,6 +5943,13 @@ namespace StarsAbove
                          HullwroughtWeaponDialogue == 2, //Unlock requirements.
                          121,
                          "Defeat all the mechanical bosses.")); //Corresponding dialogue ID.
+                    WeaponArchiveList.Add(new WeaponArchiveListing(
+                       "All Mechanical Bosses Weapon", //Name of the archive listing.
+                       $"Grants the Essence for " +
+                       $"[i:{ItemType<Spatial>()}] El Capitan's Hardware.", //Description of the listing.
+                       HardwareWeaponDialogue == 2, //Unlock requirements.
+                       154,
+                       "Defeat all the mechanical bosses, then wait.")); //Corresponding dialogue ID.
                     WeaponArchiveList.Add(new WeaponArchiveListing(
                           "Nalhaun Weapon", //Name of the archive listing.
                           $"Grants the Essence for either " +
@@ -7942,6 +7961,16 @@ namespace StarsAbove
                         if (WarriorOfLightDialogue == 2 && PickaxeWeaponDialogue == 0)
                         {
                             PickaxeWeaponDialogue = 1;
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                            NewDiskDialogue = true;
+                            WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                            return;
+
+                        }
+                        if (AllMechsDefeatedDialogue == 2 && HardwareWeaponDialogue == 0)
+                        {
+                            HardwareWeaponDialogue = 1;
                             if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);
