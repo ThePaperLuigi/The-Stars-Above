@@ -41,6 +41,7 @@ using StarsAbove.Buffs.RedMage;
 using StarsAbove.Buffs.TagDamage;
 using StarsAbove.Buffs.BurningDesire;
 using StarsAbove.Utilities;
+using StarsAbove.Buffs.CatalystMemory;
 
 namespace StarsAbove
 {
@@ -139,7 +140,9 @@ namespace StarsAbove
         public int boilingBloodDamage;
 
         //Catalyst's Memory
+        public int CatalystPrismicHP;
         public int CatalystMemoryProgress;
+        public Vector2 CatalystPrismicPosition;
 
         //Warrior of Light code //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -739,6 +742,7 @@ namespace StarsAbove
         public int BlazeWeaponDialogue = 0;
         public int PickaxeWeaponDialogue = 0;
         public int HardwareWeaponDialogue = 0;
+        public int CatalystWeaponDialogue = 0;
 
         //Subworld dialogues
         public int observatoryDialogue = 0;
@@ -1358,7 +1362,7 @@ namespace StarsAbove
             tag["BlazeWeaponDialogue"] = BlazeWeaponDialogue;
             tag["PickaxeWeaponDialogue"] = PickaxeWeaponDialogue;
             tag["HardwareWeaponDialogue"] = HardwareWeaponDialogue;
-
+            tag["CatalystWeaponDialogue"] = CatalystWeaponDialogue;
 
 
             tag["observatoryDialogue"] = observatoryDialogue;
@@ -1616,6 +1620,7 @@ namespace StarsAbove
             BlazeWeaponDialogue = tag.GetInt("BlazeWeaponDialogue");
             PickaxeWeaponDialogue = tag.GetInt("PickaxeWeaponDialogue");
             HardwareWeaponDialogue = tag.GetInt("HardwareWeaponDialogue");
+            CatalystWeaponDialogue = tag.GetInt("CatalystWeaponDialogue");
 
 
             observatoryDialogue = tag.GetInt("observatoryDialogue");
@@ -6058,6 +6063,13 @@ namespace StarsAbove
                         134,
                         "Defeat Lunatic Cultist, then wait.")); //Corresponding dialogue ID.
                     WeaponArchiveList.Add(new WeaponArchiveListing(
+                        "Lunatic Cultist Weapon", //Name of the archive listing.
+                        $"Grants the Essence for " +
+                        $"[i:{ItemType<Spatial>()}] Catalyst's Memory. ", //Description of the listing.
+                        TwinStarsWeaponDialogue == 2, //Unlock requirements.
+                        155,
+                        "Defeat Lunatic Cultist, then wait.")); //Corresponding dialogue ID.
+                    WeaponArchiveList.Add(new WeaponArchiveListing(
                           "Moon Lord Weapon", //Name of the archive listing.
                           $"Grants the Essence for either " +
                           $"[i:{ItemType<Astral>()}] Suistrume " +
@@ -7978,6 +7990,16 @@ namespace StarsAbove
                             return;
 
                         }
+                        if (LunaticCultistWeaponDialogue == 2 && CatalystWeaponDialogue == 0)
+                        {
+                            CatalystWeaponDialogue = 1;
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                            NewDiskDialogue = true;
+                            WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                            return;
+
+                        }
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                     }
@@ -8476,6 +8498,16 @@ namespace StarsAbove
             {
                 Player.maxRunSpeed *= 1.15f;
                 //Player.runAcceleration += 1.15f;
+            }
+            if (Player.HasBuff(BuffType<CatalyzedBlade>()))
+            {
+                Player.maxRunSpeed *= 1.1f;
+                Player.accRunSpeed *= 1.1f;
+            }
+            if (Player.HasBuff(BuffType<Bedazzled>()))
+            {
+                Player.maxRunSpeed *= 1.1f;
+                Player.accRunSpeed *= 1.1f;
             }
             if (Player.HasBuff(BuffType<AmmoRecycle>()))
             {
@@ -11808,10 +11840,33 @@ namespace StarsAbove
             if (!Player.HasBuff(BuffType<StarshieldBuff>()) && !Player.HasBuff(BuffType<StarshieldCooldown>()) && starshower == 2)
             {
                 Player.AddBuff(BuffType<StarshieldBuff>(), 120);
-                Projectile.NewProjectile(null, Player.Center, Vector2.Zero, Mod.Find<ModProjectile>("Starshield").Type, 0, 0, Player.whoAmI);
+                Projectile.NewProjectile(null, Player.Center, Vector2.Zero, ProjectileType<Starshield>(), 0, 0, Player.whoAmI);
                 Player.statMana += 20;
             }
+            if(Player.HasBuff(BuffType<Bedazzled>()))//If the player has a Prismic...
+            {
+                CatalystPrismicHP -= (int)(damage * 0.8);//The Prismic absorbs 80% of the damage taken.
+                damage = (int)(damage * 0.2);
+                //VFX to show the interaction.
+                for (int i = 0; i < 100; i++)
+                {
+                    Vector2 position = Vector2.Lerp(Player.Center, CatalystPrismicPosition, (float)i / 100);
+                    Dust d = Dust.NewDustPerfect(position, DustID.PurpleCrystalShard, null, 240, default(Color), 0.6f);
+                    d.fadeIn = 0.3f;
+                    d.noLight = true;
+                    d.noGravity = true;
 
+                }
+
+                //If the Prismic has less than 1 HP...
+                if (CatalystPrismicHP < 1)
+                {
+                    //The Prismic shatters.
+                    Player.ClearBuff(BuffType<Bedazzled>());
+                    Player.AddBuff(BuffType<DazzlingAria>(), 120);
+                }
+
+            }
 
 
             if (Main.LocalPlayer.HasBuff(BuffType<Buffs.SolemnAegis>()) && !Main.LocalPlayer.HasBuff(BuffType<Buffs.Invincibility>()))
@@ -13193,7 +13248,7 @@ namespace StarsAbove
                         promptExpression = 2;
                         //promptDialogue = $"Heads up, {Player.name}!" +
                         //                $" That machine is blotting out the sky!";
-                        LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.120", Player.name);//Heads up, {0}! Looks like that machine's blotting out the whole sky!
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.120", Player.name);//Heads up, {0}! Looks like that machine's blotting out the whole sky!
                         seenAres = true;
                     }
                     //Fargos Souls Bosses

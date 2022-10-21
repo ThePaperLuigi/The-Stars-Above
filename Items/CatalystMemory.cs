@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs;
 using StarsAbove.Buffs.BurningDesire;
+using StarsAbove.Buffs.CatalystMemory;
 using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles.BurningDesire;
 using StarsAbove.Projectiles.CatalystMemory;
@@ -18,29 +19,59 @@ namespace StarsAbove.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Catalyst's Memory");
-			Tooltip.SetDefault("" +
-                "Holding this weapon activates it, granting the buff [Catalyzed Blade], increasing movement speed by 10%" +
-                "\nAttacks with this weapon barrage foes with myriad stabs, with a 10% chance to fire a [Shimmering Prism] that deals 50% of base damage" +
-                "\nThe [Shimmering Prism] pierces up to 3 foes and deals 30% extra damage to foes below 50% HP" +
-                "\nRight-click to conjure a [Dazzling Prismic] that lasts for 40 seconds (2 minute cooldown)" +
-                "\nGain 10% increased attack, 10 defense, and 10 % movement speed when the [Dazzling Prismic] is present" +//Buff: Bedazzled
-                "\nTaking damage will redirect 50% of the damage to the [Dazzling Prismic], up to 400 HP" +
-                "\nOnce the HP threshold is reached, the [Dazzling Prismic] will shatter, granting [Dazzling Aria] for 2 seconds" +
-                "\n[Dazzling Aria] grants powerful health regeneration and increases defense by 50" +
-                "\nAdditionally, the [Dazzling Prismic] will deal minor damage to foes caught in its radius after shattering for a short duration" +
-                "\nPress the Weapon Action Key when the [Dazzling Prismic] is present to launch the weapon towards it, shattering the [Dazzling Prismic]" +
-                "\nAfter shattering the [Dazzling Prismic] with this method, gain 70 HP instantly and additionally gain [Dazzling Bladedance] for 5 seconds" +
-                "\n[Dazzling Bladedance] increases melee speed by 30%" +
+			
+
+			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+			{
+				Tooltip.SetDefault("" +
+				"Holding this weapon activates it, granting the buff [c/EAC0ED:Catalyzed Blade], increasing movement speed by 10%" +
+				"\nAttacks with this weapon barrage foes with myriad stabs dealing 80% of base damage, with a 10% chance to fire a [c/F581FE:Shimmering Prism] that deals 50% of base damage" +
+				"\nThe [c/F581FE:Shimmering Prism] pierces up to 3 foes and deals 30% extra damage to foes below 50% HP" +
+				"\nRight-click to conjure a [c/7B48CA:Dazzling Prismic] on your cursor that lasts for 20 seconds (1 minute cooldown)" +
+				"\nThe [c/7B48CA:Dazzling Prismic] will shatter if too far away" +
+				"\nGain 10% increased attack, 10 defense, and 10% movement speed when the [c/7B48CA:Dazzling Prismic] is present" +//Buff: Bedazzled
+				"\nTaking damage will redirect 80% of the damage to the [c/7B48CA:Dazzling Prismic], up to 600 HP" +
+				"\nOnce the HP threshold is reached, the [c/7B48CA:Dazzling Prismic] will shatter, granting [c/484CCA:Dazzling Aria] for 2 seconds" +
+				"\n[c/484CCA:Dazzling Aria] grants powerful health regeneration and increases defense by 50" +
+				"\nPress the Weapon Action Key when the [c/7B48CA:Dazzling Prismic] is present to launch the weapon towards it, shattering the [c/7B48CA:Dazzling Prismic]" +
+				"\nAfter shattering the [c/7B48CA:Dazzling Prismic] with this method, gain 70 HP instantly and additionally gain [c/FF61CA:Dazzling Bladedance] for 5 seconds" +
+				"\n[c/FF61CA:Dazzling Bladedance] increases melee speed by 30%" +
+				"\nThe [c/7B48CA:Dazzling Prismic] will deal minor damage to foes caught in its radius after shattering for a short duration" +
 				$"");  //The (English) text shown below your weapon's name
-
-
+			}
+			else
+			{
+				Tooltip.SetDefault("" +
+				"Holding this weapon activates it, granting the buff [c/EAC0ED:Catalyzed Blade], increasing movement speed by 10%" +
+				"\nAttacks with this weapon barrage foes with myriad stabs dealing 80% of base damage, with a 10% chance to fire a [c/F581FE:Shimmering Prism] that deals 50% of base damage" +
+				"\nThe [c/F581FE:Shimmering Prism] pierces up to 3 foes and deals 30% extra damage to foes below 50% HP" +
+				"\nRight-click to conjure a [c/7B48CA:Dazzling Prismic] on your cursor that lasts for 20 seconds (1 minute cooldown)" +
+				"\nThe [c/7B48CA:Dazzling Prismic] will shatter if too far away" +
+				"\nGain 10% increased attack, 10 defense, and 10% movement speed when the [c/7B48CA:Dazzling Prismic] is present" +//Buff: Bedazzled
+				"\nTaking damage will redirect 80% of the damage to the [c/7B48CA:Dazzling Prismic], up to 250 HP" +
+				"\nOnce the HP threshold is reached, the [c/7B48CA:Dazzling Prismic] will shatter, granting [c/484CCA:Dazzling Aria] for 2 seconds" +
+				"\n[c/484CCA:Dazzling Aria] grants powerful health regeneration and increases defense by 50" +
+				"\nPress the Weapon Action Key when the [c/7B48CA:Dazzling Prismic] is present to launch the weapon towards it, shattering the [c/7B48CA:Dazzling Prismic]" +
+				"\nAfter shattering the [c/7B48CA:Dazzling Prismic] with this method, gain 70 HP instantly and additionally gain [c/FF61CA:Dazzling Bladedance] for 5 seconds" +
+				"\n[c/FF61CA:Dazzling Bladedance] increases melee speed by 30%" +
+				"\nThe [c/7B48CA:Dazzling Prismic] will deal minor damage to foes caught in its radius after shattering for a short duration" +
+				$"");  //The (English) text shown below your weapon's name
+			}
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 		}
 
 		public override void SetDefaults()
 		{
-			Item.damage = 99;           //The damage of your weapon
+			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+			{
+				Item.damage = 989;
+			}
+			else
+			{
+				Item.damage = 89;
+			}
+			           //The damage of your weapon
 			Item.DamageType = ModContent.GetInstance<Systems.CelestialDamageClass>();
 			Item.width = 68;            //Weapon's texture's width
 			Item.height = 68;           //Weapon's texture's height
@@ -50,7 +81,7 @@ namespace StarsAbove.Items
 			Item.knockBack = 3;         //The force of knockback of the weapon. Maximum is 20
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
 			Item.rare = ItemRarityID.Red;              //The rarity of the weapon, from -1 to 13
-			Item.UseSound = SoundID.Item1;      //The sound when the weapon is using
+			//Item.UseSound = SoundID.Item1;      //The sound when the weapon is using
 			Item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
 
 			Item.shoot = 337;
@@ -66,6 +97,7 @@ namespace StarsAbove.Items
 		int comboTimer;
 		public override bool AltFunctionUse(Player player)
 		{
+
 			return true;
 		}
         public override void UpdateInventory(Player player)
@@ -76,22 +108,55 @@ namespace StarsAbove.Items
         }
         public override bool CanUseItem(Player player)
 		{
-			
+			if (player.altFunctionUse == 2)
+			{
+				if(!player.HasBuff(BuffType<CatalystMemoryPrismicCooldown>()))
+                {
+					return true;
+                }
+				else
+                {
+					return false;
+                }
+			}
+			else
+			{
+
+			}
 				return base.CanUseItem(player);
 		}
-        public override void HoldItem(Player player)
-        {
-			player.GetModPlayer<StarsAbovePlayer>().CatalystMemoryProgress += 2;
-			if(player.GetModPlayer<StarsAbovePlayer>().CatalystMemoryProgress > 50)
-            {
-				player.GetModPlayer<StarsAbovePlayer>().CatalystMemoryProgress = 50;
+		public override void HoldItem(Player player)
+		{
+			player.GetModPlayer<StarsAbovePlayer>().CatalystMemoryProgress += 2;//Increase animation progress when the weapon is held.
+			if (player.GetModPlayer<StarsAbovePlayer>().CatalystMemoryProgress > 50)
+			{
+				player.GetModPlayer<StarsAbovePlayer>().CatalystMemoryProgress = 50;//Cap it to 50
 
+			}
+			if (player.GetModPlayer<StarsAbovePlayer>().CatalystMemoryProgress > 25)//The blade is drawn.
+			{
+				player.AddBuff(BuffType<CatalyzedBlade>(), 10);
 			}
 			if (player.ownedProjectileCounts[ProjectileType<CatalystHeldBlade>()] < 1)
 			{//Equip animation.
 				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<CatalystHeldBlade>(), 0, 0, player.whoAmI, 0f);
 			}
-			
+
+			//Weapon Action Key
+			if (player.whoAmI == Main.myPlayer && StarsAbove.weaponActionKey.JustPressed && player.itemTime <= 0)
+			{
+				if(player.HasBuff(BuffType<Bedazzled>()))
+                {
+					//Fire the blade towards the prismic's position.
+					//Once the blade is in contact with the prismic it will shatter.
+					SoundEngine.PlaySound(StarsAboveAudio.SFX_CatalystSwing, player.Center);
+					Vector2 direction = Vector2.Normalize(player.GetModPlayer<StarsAbovePlayer>().CatalystPrismicPosition - player.Center);
+					Vector2 velocity = direction * 1f;
+					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, velocity.X, velocity.Y, ProjectileType<CatalystThrow>(), 0, 0, player.whoAmI, 0f);
+					//After that, grant a buff.
+					//player.AddBuff(BuffType<DazzlingBladedance>(), 300);
+				}
+			}
 		}
 
 		public override bool? UseItem(Player player)
@@ -123,7 +188,21 @@ namespace StarsAbove.Items
 			
 			if (player.altFunctionUse == 2)
 			{
-				 
+				if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+				{
+					player.GetModPlayer<StarsAbovePlayer>().CatalystPrismicHP = 250;
+				}
+				else
+                {
+					player.GetModPlayer<StarsAbovePlayer>().CatalystPrismicHP = 600;
+				}
+					
+				player.AddBuff(BuffType<Bedazzled>(), 1800);//Determines if the Prismic is alive or not. Provides buffs.
+				SoundEngine.PlaySound(StarsAboveAudio.SFX_PrismicSpawn, player.Center);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), Main.MouseWorld.X, Main.MouseWorld.Y - 20, 0, 0, ProjectileID.PrincessWeapon, 0, knockback, player.whoAmI);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), Main.MouseWorld.X, Main.MouseWorld.Y, 0, 0, ProjectileType<Prismic>(), damage, knockback, player.whoAmI);
+
+				player.AddBuff(BuffType<CatalystMemoryPrismicCooldown>(), 3600);//Temporary time
 			}
 			else
 			{
@@ -138,10 +217,10 @@ namespace StarsAbove.Items
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, perturbedSpeedNew.X, perturbedSpeedNew.Y, ProjectileType<CatalystStabEffect>(), 0, knockback, player.whoAmI);
 
 				}
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, velocity.X, velocity.Y, ProjectileType<CatalystStabEffectMain>(), damage/3, knockback, player.whoAmI);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, velocity.X, velocity.Y, ProjectileType<CatalystStabEffectMain>(), (int)(damage * 0.8), knockback, player.whoAmI);
 
 				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, velocity.X, velocity.Y, ProjectileType<CatalystStab>(), 0, knockback, player.whoAmI);
-
+				SoundEngine.PlaySound(StarsAboveAudio.SFX_CatalystSwing, player.Center);
 				if (Main.rand.Next(0,100) <= 10)
                 {
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, velocity.X, velocity.Y, ProjectileType<CatalystPrism>(), damage/2, knockback, player.whoAmI);
@@ -154,17 +233,28 @@ namespace StarsAbove.Items
 
 		public override void AddRecipes()
 		{
-			
-			/*CreateRecipe(1)
-				.AddIngredient(ItemID.ButchersChainsaw, 1)
-				.AddIngredient(ItemID.Chain, 3)
-				.AddIngredient(ItemID.LavaBucket, 1)
-				.AddIngredient(ItemID.LunarBar, 8)
-				.AddIngredient(ItemID.FragmentSolar, 18)
-				.AddIngredient(ItemType<EssenceOfTheOverwhelmingBlaze>())
+			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+			{
+				CreateRecipe(1)
+				.AddIngredient(ItemID.PiercingStarlight, 1)
+				.AddIngredient(calamityMod.Find<ModItem>("AuricBar").Type, 5)
+				.AddIngredient(calamityMod.Find<ModItem>("CosmiliteBar").Type, 3)
+				.AddIngredient(ItemID.FragmentSolar, 16)
+				.AddIngredient(ItemType<EssenceOfQuantum>())
 				.AddTile(TileID.Anvils)
-				.Register();*/
-			
+				.Register();
+			}
+			else
+			{
+				CreateRecipe(1)
+				.AddIngredient(ItemID.PiercingStarlight, 1)
+				.AddIngredient(ItemID.FragmentSolar, 16)
+				.AddIngredient(ItemType<EssenceOfQuantum>())
+				.AddTile(TileID.Anvils)
+				.Register();
+			}
+			/**/
+
 		}
 	}
 }

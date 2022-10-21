@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
+using StarsAbove.Buffs.CatalystMemory;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -112,6 +113,7 @@ namespace StarsAbove.Projectiles.CatalystMemory
 					endSound = true;
 					startSound = false;
 				}
+				
 			}
 			else
             {
@@ -168,7 +170,7 @@ namespace StarsAbove.Projectiles.CatalystMemory
 
 			
 
-			if(projOwner.ownedProjectileCounts[ProjectileType<CatalystStab>()] >= 1)//|| projOwner.ownedProjectileCounts[ProjectileType<BurningDesireSlash1>()] >= 1 || projOwner.ownedProjectileCounts[ProjectileType<BurningDesireSlash2>()] >= 1)
+			if(projOwner.ownedProjectileCounts[ProjectileType<CatalystStab>()] >= 1 || projOwner.ownedProjectileCounts[ProjectileType<CatalystThrow>()] >= 1)//|| projOwner.ownedProjectileCounts[ProjectileType<BurningDesireSlash1>()] >= 1 || projOwner.ownedProjectileCounts[ProjectileType<BurningDesireSlash2>()] >= 1)
 			{//If an attack is active
 				Projectile.alpha = 255;
 			}

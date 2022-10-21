@@ -589,6 +589,10 @@ namespace StarsAbove
 		#endregion
 
 		#region Weapon Sound Effects
+		public static readonly SoundStyle SFX_PrismicSpawn = new($"{nameof(StarsAbove)}/Sounds/SFX/PrismicSpawn")
+		{
+
+		};
 		public static readonly SoundStyle SFX_CatalystIdle = new($"{nameof(StarsAbove)}/Sounds/SFX/CatalystIdle")
 		{
 

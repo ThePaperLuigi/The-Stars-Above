@@ -166,6 +166,8 @@ namespace StarsAbove
 			ModContent.ItemType<RedMage>(),
 			ModContent.ItemType<BurningDesire>(),
 			ModContent.ItemType<EverlastingPickaxe>(),
+			ModContent.ItemType<CatalystMemory>(),
+			ModContent.ItemType<ElCapitansHardware>(),
 
 			ModContent.ItemType<EssenceOfAdagium>(),
 			ModContent.ItemType<EssenceOfBloodshed>(),
@@ -199,6 +201,8 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfBalance>(),
 			ModContent.ItemType<EssenceOfTheOverwhelmingBlaze>(),
 			ModContent.ItemType<EssenceOfTheAbyss>(),
+			ModContent.ItemType<EssenceOfTheRenegade>(),
+			ModContent.ItemType<EssenceOfQuantum>(),
 		};
 
 		public List<int> Prisms = new List<int>() {
@@ -324,6 +328,8 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfBalance>(),
 			ModContent.ItemType<EssenceOfTheOverwhelmingBlaze>(),
 			ModContent.ItemType<EssenceOfTheAbyss>(),
+			ModContent.ItemType<EssenceOfTheRenegade>(),
+			ModContent.ItemType<EssenceOfQuantum>(),
 		};
 		public static bool disableAspectPenalty;
 		public static bool disableCalamityWeaponBuffs;

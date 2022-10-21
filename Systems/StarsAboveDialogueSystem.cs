@@ -178,13 +178,13 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 4;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue1.Asphodene.1", Player.name); //What about me? 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue1.Asphodene.2", Player.name); //What about me? 
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
                         expression = 3;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue1.Asphodene.1", Player.name); //As long as they have money, it's a benefit to us, right?
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue1.Asphodene.3", Player.name); //As long as they have money, it's a benefit to us, right?
                         //	" ";
                     }
                 }
@@ -7214,8 +7214,58 @@ namespace StarsAbove
                 }
 
 
-            }//The Everlasting Pickaxe
+            }//El Capitan's Hardware
+            if (chosenDialogue == 155) //Catalyst's Memory
+            {
+                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfQuantum").Type);
+                        dialoguePrep = false;
+                    }
 
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.73", Player.name); //
+
+
+                        //	" ";
+                    }
+
+
+
+                }
+                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfQuantum").Type);
+                        dialoguePrep = false;
+                    }
+
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.74", Player.name); //
+
+
+                        //	" ";
+                    }
+
+
+
+                }
+
+
+            }//Catalyst's Memory
             #endregion
             //Boss item dialogues.
             if (chosenDialogue == 301) //Nalhaun item
