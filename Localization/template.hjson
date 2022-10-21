@@ -235,6 +235,7 @@ Mods: {
 					70: Okay, here's an unorthodox Essence for you. While it functions as a pretty strong pickaxe, it looks like it also has some great damage potential.  
 					71: From my take, it seems to be a great off-hand weapon to pump out explosions. Everyone loves explosions, right? 
 					72: Here's a Ranged weapon- it has both a useful primary fire and can unleash strong self-sustaining drones to attack as well.
+					73: I've got a new weapon for you: it's a powerful mid-range blade, with the ability to conjure a crystal which can alter your combat style. Interesting, huh?
 				}
 				Eridani: {
 					1: Here's a Ranged-type essence. It looks like every fourth shot has increased offensive properties. Whatever the reason, it's powerful.
@@ -310,6 +311,7 @@ Mods: {
 					71: I'd ask you to use it in moderation, but I'm sure you'll use it as much as you like. Bring some healing potions, at the very least.
 					72: This Essence focuses on excavation as well as damage. You can use it to move earth at significant rates, and additionally deal powerful explosive damage. 
 					73: Here's a Ranged weapon- it has both a useful primary fire and can unleash strong self-sustaining drones to attack as well.
+					74: I've a new Celestial weapon for your use. It'll be more powerful when you utilize its strength to summon a Prismic, which can assist you in battle.
 				}
 				Perseus: {
 					1: It's good to see you again, {0}. I'm not here to ask for your help- instead, I have a gift for you.
@@ -2429,6 +2431,22 @@ Mods: {
                 Once [c/FE3727:Magiton Overheat] is either fully consumed or ends, you are inflicted with [c/A56363:Overheated] for 1 second, causing this weapon to become unusable
                 'This isn't... something you see everyday'
                 '''
+			CatalystMemory:
+                '''
+                Holding this weapon activates it, granting the buff [c/EAC0ED:Catalyzed Blade], increasing movement speed by 10%
+				Attacks with this weapon barrage foes with myriad stabs, with a 10% chance to fire a [c/F581FE:Shimmering Prism] that deals 50% of base damage
+				The [c/F581FE:Shimmering Prism] pierces up to 3 foes and deals 30% extra damage to foes below 50% HP
+				Right-click to conjure a [c/7B48CA:Dazzling Prismic] on your cursor that lasts for 20 seconds (1 minute cooldown)
+                The [c/7B48CA:Dazzling Prismic] will shatter if too far away
+                Gain 10% increased attack, 10 defense, and 10% movement speed when the [c/7B48CA:Dazzling Prismic] is present
+                Taking damage will redirect 80% of the damage to the [c/7B48CA:Dazzling Prismic], up to 250 HP
+				Once the HP threshold is reached, the [c/7B48CA:Dazzling Prismic] will shatter, granting [c/484CCA:Dazzling Aria] for 2 seconds
+				[c/484CCA:Dazzling Aria] grants powerful health regeneration and increases defense by 50
+                Press the Weapon Action Key when the [c/7B48CA:Dazzling Prismic] is present to launch the weapon towards it, shattering the [c/7B48CA:Dazzling Prismic]
+				After shattering the [c/7B48CA:Dazzling Prismic] with this method, gain 70 HP instantly and additionally gain [c/FF61CA:Dazzling Bladedance] for 5 seconds
+				[c/FF61CA:Dazzling Bladedance] increases melee speed by 30%
+				The [c/7B48CA:Dazzling Prismic] will deal minor damage to foes caught in its radius after shattering for a short duration
+                '''
             CrimsonKey:
                 '''
                 Calls forth an instance of your rebellious heart
@@ -4152,6 +4170,7 @@ Mods: {
             DreadnoughtChemtank: Dreadnought Chemtank
             EssenceOfAdagium: Essence of Adagium
 			EssenceOfTheRenegade: Essence of the Renegade
+			EssenceOfQuantum: Essence of Quantum
 			ElCapitansHardware: El Capitan's Hardware
             EssenceOfAlpha: Essence of the Alpha
             EssenceOfAsh: Essence of Ash
