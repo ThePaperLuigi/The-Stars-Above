@@ -1172,55 +1172,10 @@ namespace StarsAbove.UI.StarfarerMenu
 			modPlayer.starfarerOutfit = 0;
 			modPlayer.starfarerOutfitVanity = 0;
 
-			if(_starfarerArmorSlot != null)
-            {
-				if (_starfarerArmorSlot.Item.type == ItemType<FaerieVoyagerAttire>())
-				{
-					modPlayer.starfarerOutfit = 1;
-				}
-
-				if (_starfarerArmorSlot.Item.type == ItemType<StellarCasualAttire>())
-				{
-					modPlayer.starfarerOutfit = 2;
-				}
-				
-				if (_starfarerArmorSlot.Item.type == ItemType<CelestialPrincessGenesis>())
-				{
-					modPlayer.starfarerOutfit = 3;
-				}
-				
-				if (_starfarerArmorSlot.Item.type == ItemType<AegisOfHopesLegacy>())
-				{
-					modPlayer.starfarerOutfit = 4;
-				}
-				
-			}
-			if (_starfarerVanitySlot != null)
-			{
-				if (_starfarerVanitySlot.Item.type == ItemType<FaerieVoyagerAttire>())
-				{
-					modPlayer.starfarerOutfitVanity = 1;
-				}
-				if (_starfarerVanitySlot.Item.type == ItemType<StellarCasualAttire>())
-				{
-					modPlayer.starfarerOutfitVanity = 2;
-				}
-				if (_starfarerVanitySlot.Item.type == ItemType<CelestialPrincessGenesis>())
-				{
-					modPlayer.starfarerOutfitVanity = 3;
-				}
-				if (_starfarerVanitySlot.Item.type == ItemType<AegisOfHopesLegacy>())
-				{
-					modPlayer.starfarerOutfitVanity = 4;
-				}
-				if (_starfarerVanitySlot.Item.type == ItemType<FamiliarLookingAttire>())
-				{
-					modPlayer.starfarerOutfitVanity = -1;
-				}
-			}
+			
 
 
-				modPlayer.starfarerVanityEquipped = _starfarerVanitySlot.Item;
+			modPlayer.starfarerVanityEquipped = _starfarerVanitySlot.Item;
 			modPlayer.starfarerArmorEquipped = _starfarerArmorSlot.Item;
 
 			base.Update(gameTime);

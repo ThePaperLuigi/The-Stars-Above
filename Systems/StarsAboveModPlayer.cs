@@ -42,6 +42,7 @@ using StarsAbove.Buffs.TagDamage;
 using StarsAbove.Buffs.BurningDesire;
 using StarsAbove.Utilities;
 using StarsAbove.Buffs.CatalystMemory;
+using StarsAbove.Items.Armor.StarfarerArmor;
 
 namespace StarsAbove
 {
@@ -6532,6 +6533,53 @@ namespace StarsAbove
                 {
                     cosmicPhoenixPrism = false;
 
+                }
+                //Starfarer stuff here.
+                if (starfarerArmorEquipped != null)
+                {
+                    if (starfarerArmorEquipped.type == ItemType<FaerieVoyagerAttire>())
+                    {
+                        starfarerOutfit = 1;
+                    }
+
+                    if (starfarerArmorEquipped.type == ItemType<StellarCasualAttire>())
+                    {
+                        starfarerOutfit = 2;
+                    }
+
+                    if (starfarerArmorEquipped.type == ItemType<CelestialPrincessGenesis>())
+                    {
+                        starfarerOutfit = 3;
+                    }
+
+                    if (starfarerArmorEquipped.type == ItemType<AegisOfHopesLegacy>())
+                    {
+                        starfarerOutfit = 4;
+                    }
+
+                }
+                if (starfarerVanityEquipped != null)
+                {
+                    if (starfarerVanityEquipped.type == ItemType<FaerieVoyagerAttire>())
+                    {
+                        starfarerOutfitVanity = 1;
+                    }
+                    if (starfarerVanityEquipped.type == ItemType<StellarCasualAttire>())
+                    {
+                        starfarerOutfitVanity = 2;
+                    }
+                    if (starfarerVanityEquipped.type == ItemType<CelestialPrincessGenesis>())
+                    {
+                        starfarerOutfitVanity = 3;
+                    }
+                    if (starfarerVanityEquipped.type == ItemType<AegisOfHopesLegacy>())
+                    {
+                        starfarerOutfitVanity = 4;
+                    }
+                    if (starfarerVanityEquipped.type == ItemType<FamiliarLookingAttire>())
+                    {
+                        starfarerOutfitVanity = -1;
+                    }
                 }
                 if (chosenStellarNova == 0)//No Nova selected
                 {
