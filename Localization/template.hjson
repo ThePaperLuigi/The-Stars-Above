@@ -1553,6 +1553,20 @@ Mods: {
 		}
 		
 		StarfarerMenuDialogue: {
+			StarfarerSelection: {
+				Choice: Choose a Starfarer to aid you on your journey.
+				Warning: "[c/E36666:This decision is permanent! (per character)]"
+				ManaIncrease: Maximum mana increased by 20!
+				Talk: The Spatial Disk begins to resonate; looks like someone wants to talk.
+				Asphodene: {
+					1: Asphodene, the [c/6ECDFA:Astral Starfarer]. Bold and energetic, she focuses on [c/FAC16E:flashy, powerful attacks].
+					2: You feel astral energy coursing through you...
+				}
+				Eridani: {
+					1: Eridani, the [c/D06EFA:Umbral Starfarer]. A reserved tactician, she [c/FAC16E:flourishes through deep complexity.]
+					2: You feel umbral energy coursing through you...
+				}
+			}
 			EnterStarfarerMenu: {
 				Asphodene: {
 					1: What's up? Need something?
