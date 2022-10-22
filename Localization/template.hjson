@@ -1553,6 +1553,28 @@ Mods: {
 		}
 		
 		StarfarerMenuDialogue: {
+			EnterStarfarerMenu: {
+				Asphodene: {
+					1: What's up? Need something?
+					2: Let me guess.. You need my help? Well, it IS why I'm here.
+					3: You rang?
+					4: Hey, {0}. Looks like you need my help?
+					5: Right. Let's get started. What do you need?
+					6: Hmm... What do you need?
+					7: Looks like you've unlocked something new. How about trying it out?
+					8: Uh, aren't we still in combat?
+				}
+				Eridani: {
+					1: Do you need something?
+					2: You need my help, right? Of course- anything you need.
+					3: Do you need my help? I just assumed, you know, because... Never mind.
+					4: Did something come up?
+					5: {0}.. I'm assuming you need my help?
+					6: Okay, what do you need?
+					7: It appears you've unlocked something. Let's make good use of it.
+					9: I kind of feel like something else needs your attention right now...
+				}
+			}
 			StellarNova: {
 				AfterNovaDialogue: {
 					Asphodene: {
