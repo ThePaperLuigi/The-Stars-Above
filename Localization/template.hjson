@@ -257,7 +257,7 @@ Mods: {
 					17: This powerful Melee relic allows for the expidenture of Mana to teleport and deal powerful damage. It's a new favorite of mine.
 					18: This weapon is made straight from the power of the Moon Lord and its spatial pillars. It'll do good in your hands.
 					19: From the Warrior of Light.. this Essence allows for the usage of Limit Break. It's an incredibly strong Magic weapon.
-					20: \"The Light will cleanse your sins!" Or something like that.
+					20: The Light will cleanse your sins! Or something like that.
 					21: This weapon can switch between Ranged and Magic. If you time its reload correctly, it always does critical damage.
 					22: I'm sure you can think of something that works around that...
 					23: This powerful weapon allows you to use Skill Orbs to unleash special moves. It also has a super-powered burst window. It's a Melee weapon.
@@ -337,7 +337,7 @@ Mods: {
 				}
 				CthulhuEye: {
 					Asphodene: {
-						1: \'Eye of Cthulhu'? 
+						1: "'Eye of Cthulhu'? "
 						2: Doesn't that imply there would be more of this 'Cthulhu'?
 						3: If it ever reared its head, it would be quite the formidable foe indeed.
 						4: Let's prepare for that occasion... Just in case.
@@ -420,7 +420,7 @@ Mods: {
 				}
 				Destroyer: {
 					Asphodene: {
-						1: \'The Destroyer...' I'm not one to talk, but if you name something 'The Destroyer' I'm gonna expect more than a big worm.
+						1: "'The Destroyer...' I'm not one to talk, but if you name something 'The Destroyer' I'm gonna expect more than a big worm."
 						2: Its absurd length was just a detriment to its strength. Take notes, {0}.
 						3: It looks as if another upgrade is available in the Stellar Array.
 						4: I guess that's all I have for now.
@@ -1071,7 +1071,7 @@ Mods: {
 					11: That's probably not good.
 					12: I hate to break this to you, but you're about to drown.
 					13: You're losing a LOT of blood. Yikes. You can't regenerate health any more.
-					14: \[You can't make out the words- looks like you've been confused.] 
+					14: "[You can't make out the words- looks like you've been confused.] "
 					15: Whoops..
 					16: Sorry, little guy.
 					17: Oops.
@@ -1252,7 +1252,7 @@ Mods: {
 					11: Ouch. That's probably not good.
 					12: You need some air, quick.
 					13: That's a lot of blood.. You aren't regenerating health now, that's for sure.
-					14: \[You can't make out the words- seems you've been confused] 
+					14: "[You can't make out the words- seems you've been confused] "
 					15: Whoops.
 					16: Did you mean to do that?
 					17: Sorry, little one.
@@ -1569,10 +1569,10 @@ Mods: {
 					2: You need my help, right? Of course- anything you need.
 					3: Do you need my help? I just assumed, you know, because... Never mind.
 					4: Did something come up?
-					5: {0}.. I'm assuming you need my help?
+					5: "{0}.. I'm assuming you need my help?"
 					6: Okay, what do you need?
 					7: It appears you've unlocked something. Let's make good use of it.
-					9: I kind of feel like something else needs your attention right now...
+					8: I kind of feel like something else needs your attention right now...
 				}
 			}
 			StellarNova: {
