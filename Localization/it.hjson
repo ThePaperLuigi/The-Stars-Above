@@ -114,163 +114,163 @@ Mods: {
 		}
 		
 		Common: {
-			ChargeText: Hold left click to charge the weapon; if the weapon is fully charged, the attack varies
-			DiskReady: The Spatial Disk begins to resonate. Left click to interact.
-			ArrayAbility: The Stellar Array has gained a new ability!
+			ChargeText: Tieni premuto il sinistro per caricare l'arma; se l'arma è completamente carica, l'attacco cambia.
+			DiskReady: Il Disco Spaziale entra in risonanza. Click sinistro per interagire.
+			ArrayAbility: La Matrice Stellare ha ottenuto una nuova abilità!
 		}
 		
 
 		DamageClass: {
-			CelestialDamageClass: spatial damage
+			CelestialDamageClass: danno spaziale
 		}
 		
 		NPCName: {
             Arbitration: Arbitration
-            AstralCell: Astral Cell
-            DummyEnemy: Dummy Enemy
-            Nalhaun: Nalhaun, The Burnished King
-            PaintedAttendantA: Living Brush
-            PaintedAttendantB: Living Brush
-            Penthesilea: Penthesilea, the Witch of Ink
-            PrismLoot: Prismatic Core
-            SpectreOfLight: Spectre Of Light
-            Tsukiyomi: Tsukiyomi, the First Starfarer
-            Tsukiyomi2: Tsukiyomi, the Progeny of Salvation
-            VagrantOfSpaceAndTime: The Vagrant of Space and Time
-            WarriorOfLight: The Warrior Of Light
+            AstralCell: Cella Astrale
+            DummyEnemy: Manichino
+            Nalhaun: Nalhaun, il Re Imbrunito
+            PaintedAttendantA: Pennello Vivente
+            PaintedAttendantB: Pennello Vivente
+            Penthesilea: Penthesilea, la Strega dell'Inchiostro
+            PrismLoot: Nucleo Prismatico
+            SpectreOfLight: Spettro di Luce
+            Tsukiyomi: Tsukiyomi, Primo Viaggiatore Stellare
+            Tsukiyomi2: Tsukiyomi, Progenie della Salvezza
+            VagrantOfSpaceAndTime: Vagabondo di Spazio e Tempo
+            WarriorOfLight: Guerriero della Luce
         }
 		
 		MapObject: {
-			VendingMachine: Vending Machine
+			VendingMachine: Distributore Automatico
 		}
 		
 		ItemTooltip: {
 		    AlienCoral:
                 '''
-                For each unused Stellar Array Energy point, gain 5% damage
-                Gain 10 defense with a full Stellar Array instead
-                'Can only be described as lava lamp liquid forced to abdicate its throne'
+                Per ogni punto non utilizzato nella Matrice Stellare, aumenta il danno del 5%
+                Se la Matrice Stellare è piena, aumenta la difesa di 10
+                'Può solo essere descritto come una lampada di lava costretta ad abdicare il trono.'
                 '''
             CrystallizedAbsence:
                 '''
-                [c/2DD2FE:Stargazer Relic]
-                Max HP is reduced by 300 and defense is reduced by 20, but damage is doubled
-                Only active when unmodified Max HP is 400 or higher
-                [c/ADEEFF:Only one Stargazer Relic can be equipped at a time]
-                'From a world cursed to fade away'
+                [c/2DD2FE:Reliquia dell'Osservatore Stellare]
+                La vita massima è ridotta di 300 e la difesa di 20, ma infliggi il doppio dei danni
+                Si attiva solo se la vita base, senza modifiche, è di almeno 400
+                [c/ADEEFF:Puoi equipaggiare solo una Reliquia dell'Osservatore Stellare per volta]
+                'Da un mondo maledetto a svanire'
                 '''
             DragonwardTalisman:
                 '''
-                Grants immunity to Silenced, Confused, Bleeding, and Ichor
-                Gain 20 Defense above 500 HP
-                'Prevents aetherical corruption... just don't scratch it!'
+                Previene i seguenti debuff: Silenziamento, Confusione, Sanguinamento e Icore
+                Aumenta la difesa di 20 se gli HP superano 500
+                "Impedisce che l'etere si corrompa... non graffiarlo!"
                 '''
             GaleflameFeather:
                 '''
-                Gain 5% increased damage in the air
-                Immunity frames in the air grant an additional 18% increased damage and Swiftness
-                'Some may say it's overused'
+                Aumenta il danno inflitto a mezz'aria del 5%
+                Durante i frame di invulnerabilità aumenta il danno inflitto del 18% e conferisce il buff Rapidità
+                'Qualcuno potrebbe dire che lo si usa troppo'
                 '''
             Glitterglue:
                 '''
-                Striking foes has a 5% chance to inflict Glitterglue for 4 seconds
-                Attacks on foes inflicted with Glitterglue have a 30% chance to turn non-critical strikes critical
-                'Sniffing not recommended'
+                Il 5% dei colpi andati a segno infliggono il debuff Glitter per 4 secondi.
+                I danni non critici inflitti a nemici affetti da Glitter hanno un 30% di chance di diventare critici
+                'Non sniffatela'
                 '''
             Luciferium:
                 '''
-                Defense is reduced by 30
-                Upon killing an enemy, gain the buff 'Sated Anguish' for 15 seconds
-                During this time, gain 20% increased damage, powerful life regeneration, and defense is restored
-                'Nanomachines of the highest caliber, or so they say'
+                Riduce la difesa di 30
+                Quando un nemico viene ucciso, ottieni il buff 'Angoscia Placata' per 15 secondi
+                Durante questo periodo, il danno inflitto aumenta del 20%, la rigenerazione della vita è aumentata drasticamente e la difesa torna alla normalità
+                'Nanomacchine del calibro più alto, o così dicono'
                 '''
             PerfectlyGenericAccessory:
                 '''
                 Increases the damage of Aspected Weapons by 8%
-                'A bit too perfect'
+                "Un po' troppo perfetto"
                 '''
             ToMurder:
                 '''
-                Activates only when Defense is below 40
-                Gain 10% damage, increased to 45% below 10 Defense
-                Enemies are drastically more likely to target you
-                'Can you get away with it?'
+                Ha effetto solo se la difesa è meno di 40
+                Aumenta il danno inflitto del 10%, o del 45% se la difesa è meno di 10
+                I nemici ti prenderanno di mira più spesso
+                'Riuscirai a cavartela?'
                 '''
             AegisDriver:
                 '''
-                With 40 mana available, this weapon will be thrown with special effects, consuming 40 mana in the process
-                The blade will ignite, dealing increased damage and will burn foes
-                Burning foes will take bonus damage when they are reignited
-                If no mana is available, the weapon will be unpowered and deal half damage
-                Attacking with the powered version of this weapon charges the [c/FF5858:Aegis Gauge]
-                Once the [c/FF5858:Aegis Gauge] is filled, the next attack will explode the foe, dealing massive critical damage while consuming the [c/FF5858:Aegis Gauge]
-                The [c/FF5858:Aegis Gauge] will also slowly charge over time when this weapon is held
-                'This is the Aegis's power!'
+                Se al momento dell'utilizzo il mana è superiore a 40, l'arma verrà lanciata ottenendo effetti speciali e consumando 40 mana
+                La lama prenderà fuoco, infliggendo danni aumentati e ustionando i nemici
+                I nemici ustionati subiranno danno extra quando saranno colpiti di nuovo dalla lama infuocata
+                Se il mana non è sufficiente, l'arma non avrà poteri e infliggerà danno dimezzato
+                Attaccare con l'arma infuocata carica l' [c/FF5858:Indicatore Egida]
+                Quando l' [c/FF5858:Indicatore Egida] è pieno, l'attacco successivo farà esplodere il nemico, infliggendo enorme danni critici e svuotando l' [c/FF5858:Indicatore Egida]
+                L' [c/FF5858:Indicatore Egida] si caricherà lentamente anche solo tenendo in mano quest'arma
+                "Questo è il potere dell'Egida!"
                 '''
             AncientBook:
                 '''
-                Calls forth [c/B875F0:Void Octopi] to assail foes with homing lasers
-                Each [c/B875F0:Void Octopus] summoned increases damage of all minions and summon weapons by 1%
-                Right click to fire [c/E752B3:Eldritch Blast] towards your cursor for 3 seconds, melting foes in a line before you (1 minute cooldown)
-                With at least one [c/B875F0:Void Octopus] summoned, the [c/5652E7:Abyssal Gauge] will appear
-                When [c/B875F0:Void Octopi] or [c/E752B3:Eldritch Blast] deals damage the [c/5652E7:Abyssal Gauge] will increase, even when this weapon is not held
-                When the [c/5652E7:Abyssal Gauge] is full, [c/AC49F5:Ancient One's Summoning] will activate when this weapon is held
-                [c/AC49F5:Ancient One's Summoning] will cause magical portals to surround the nearest foe
-                After a short delay, tentacles will be summoned to strike, inflicting Shadowflame for 7 seconds
-                For each void octopi summoned, the amount of [c/AC49F5:Ancient One's Summoning]'s portals will increase and [c/E752B3:Eldritch Blast] does more damage
-                Damage scales with world progression
-                'We are happy. We are here. We are hype. We are...'
+                Evoca [c/B875F0:Polpi del Vuoto] che attaccano i nemici con laser a ricerca
+                Ogni [c/B875F0:Polpo del Vuoto] evocato aumenta il danno di tutte le evocazioni e relative armi dell' 1%
+                Click destro per sparare un [c/E752B3:Esplosione Arcana] verso il cursore per 3 secondi, sciogliendo i nemici (1 minuto di ricarica)
+                Con almeno un [c/B875F0:Polpo del Vuoto] evocato, l' [c/5652E7:Indicatore Abissale] comparirà
+                Quando i [c/B875F0:Polpi del Vuoto] o l' [c/E752B3:Esplosione Arcana] infliggono danno, l' [c/5652E7:Indicatore Abissale] si riempirà, anche quando si cambia arma.
+                Quando l' [c/5652E7:Indicatore Abissale] è pieno, [c/AC49F5:Evocazione dell'Antico] si attiverà quando quest'arma verrà selezionata.
+                [c/AC49F5:Evocazione dell'Antico] creerà portali magici intorno al nemico più vicino
+                Dopo un breve periodo, usciranno tentacoli ad attaccarlo, infliggendo Ombrofiamma per 7 secondi
+                Per ogni [c/B875F0:Polpo del Vuoto] evocato, i portali di [c/AC49F5:Ancient One's Summoning] aumenteranno e l' [c/E752B3:Esplosione Arcana] infliggerà più danno.
+                Il danno aumenta con la progressione del mondo
+                'Siamo felici. Siamo qui. Siamo esaltati. Siamo...'
                 '''
             Apalistik:
                 '''
-                5 summon tag damage
-                Striking foes with the weapon inflicts [c/4A91FF:Riptide] for 4 seconds
-                When a minion strikes an enemy with [c/4A91FF:Riptide], they take 30% extra damage, removing [c/4A91FF:Riptide]
-                Additionally, with this weapon held, minions have a 10% chance to apply [c/4776A7:Ocean's Culling] for 5 seconds upon striking foes
-                When you strike a foe with [c/4776A7:Ocean's Culling] with this weapon, the foe will detonate, taking damage and spewing damaging bubbles around the area
-                Bubbles count as Minion damage and have a 30% chance to crit
-                If bubbles hit a foe with [c/4A91FF:Riptide], this chance is increased to 100%
-                Damage scales with world progression
+                5 danni extra da evocazione
+                Colpire i nemici con quest'arma infligge [c/4A91FF:Risacca] per 4 secondi
+                Quando un'evocazione colpisce un nemico affetto da [c/4A91FF:Risacca], quell'attacco infligge il 30% di danni in più e rimuove [c/4A91FF:Risacca]
+                Se quest'arma è selezionata, le evocazioni hanno una chance del 10% di infliggere [c/4776A7:Esecuzione Oceanica] per 5 secondi quando colpiscono un nemico.
+                Colpire un nemico affetto da [c/4776A7:Esecuzione Oceanica] con quest'arma lo fa esplodere, subendo danno ed emettendo bolle danneggianti nei dintorni.
+                Le bolle infliggono danno da evocazione e hanno un 30% di chance di infliggere danni critici
+                Se le bolle colpiscono un nemico affetto da [c/4A91FF:Risacca], la chance di critico aumenta al 100%
+                Il danno aumenta con la progressione del mondo
                 '''
             ApalistikUpgraded:
                 '''
-                18 summon tag damage
-                Striking foes with the weapon inflicts [c/4A91FF:Riptide] for 4 seconds
+                18 danni extra da evocazione
+                Colpire i nemici con quest'arma infligge [c/4A91FF:Risacca] per 4 secondi
                 When a minion strikes an enemy with [c/4A91FF:Riptide], they take 30% extra damage, removing [c/4A91FF:Riptide]
-                Additionally, with this weapon held, minions have a 10% chance to apply [c/4776A7:Ocean's Culling] for 5 seconds upon striking foes
-                When you strike a foe with [c/4776A7:Ocean's Culling] with this weapon, the foe will detonate, taking damage and spewing damaging bubbles around the area
-                Bubbles count as Minion damage and have a 30% chance to crit
-                If bubbles hit a foe with [c/4A91FF:Riptide], this chance is increased to 100%
-                Right click to imbue yourself with [c/00FFC1:Seaborn Wrath] for 8 seconds
-                Under the effects of [c/00FFC1:Seaborn Wrath], attacks with this weapon will fire bubbles in a spread pattern
-                Additionally, minions will deal double damage
-                After use, [c/00FFC1:Seaborn Wrath] has a 30 second cooldown
-                Damage scales greatly with world progression
+                Quando un'evocazione colpisce un nemico affetto da [c/4A91FF:Risacca], quell'attacco infligge il 30% di danni in più e rimuove [c/4A91FF:Risacca]
+                Se quest'arma è selezionata, le evocazioni hanno una chance del 10% di infliggere [c/4776A7:Esecuzione Oceanica] per 5 secondi quando colpiscono un nemico.
+                Colpire un nemico affetto da [c/4776A7:Esecuzione Oceanica] con quest'arma lo fa esplodere, subendo danno ed emettendo bolle danneggianti nei dintorni.
+                Le bolle infliggono danno da evocazione e hanno un 30% di chance di infliggere danni critici
+                Se le bolle colpiscono un nemico affetto da [c/4A91FF:Risacca], la chance di critico aumenta al 100%
+                Click destro per infondere in te stesso [c/00FFC1:Furia Marina] per 8 secondi
+                Durante [c/00FFC1:Furia Marina], ogni attacco con quest'arma sparerà bolle in un'area ampia e le evocazioni infliggono danno doppio
+		[c/00FFC1:Furia Marina] ha 30 secondi di ricarica a partire dalla fine del buff
+                Il danno aumenta notevolmente con la progressione del mondo
                 '''
             ArachnidNeedlepoint:
                 '''
-                3 summon tag damage
-                Attacks with this weapon whip in a wide arc while ignoring terrain, targetting foes struck
-                Right click to deploy a [c/83CAEB:Mechanical Arachnid], which will hover and latch onto targets
-                Only one [c/83CAEB:Mechanical Arachnid] can latch onto a target at a time
-                [c/83CAEB:Mechanical Arachnids] will tether to each other when latched on, inflicting damage on foes between them rapidly
-                Double tap DOWN to deploy a stationary [c/83CAEB:Mechanical Arachnid] after at least one non-stationary [c/83CAEB:Mechanical Arachnid] has been summoned
-                Stationary [c/83CAEB:Mechanical Arachnids] deal no damage but non-stationary [c/83CAEB:Mechanical Arachnids] can tether to them to deal damage
-                Striking foes that [c/83CAEB:Mechanical Arachnids] have latched on to with the whip deals critical damage and grants [c/3A8BF3:Web of Needles] for 4 seconds
-                [c/3A8BF3:Web of Needles] increases all minion damage by 30%
+                3 danni extra da evocazione
+                Gli attacchi con quest'arma coprono una larga area conica, ignorando il terreno e marchiando i nemici colpiti
+                Click destro per rilasciare un [c/83CAEB:Ragno Meccanico], che si allaccerà ai nemici marchiati
+                Solo un [c/83CAEB:Ragno Meccanico] alla volta può attaccarsi ad ogni nemico
+                I [c/83CAEB:Ragni Meccanici] si collegheranno tra di loro una volta allacciati a qualcosa, infliggendo rapidamente danni ai nemici in mezzo
+                Premi GIÙ due volte per rilasciare un [c/83CAEB:Ragno Meccanico] fisso dopo averne evocato almeno uno mobile.
+		I [c/83CAEB:Ragni Meccanici] fissi non infliggono danno, ma quelli mobili ci si possono collegare per infliggere danno.
+                Colpire con la frusta i nemici a cui i [c/83CAEB:Ragni Meccanici] si sono allacciati infligge danno critico e conferisce il buff [c/3A8BF3:Ragnatela di Spilli] per 4 secondi.
+                [c/3A8BF3:Ragnatela di Spilli] aumenta il danno di tutte le evocazioni del 30%
                 '''
             ArchitectLuminance:
                 '''
                 "[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty]
-                Holding this weapon will equip yourself with the [c/6EF367:Luminary Armament], increasing defense by 30
-                Right click to summon [c/70D38B:Artifice Siren] for 15 seconds at your cursor (2 minute cooldown)
-                [c/70D38B:Artifice Siren] will obliterate nearby foes with hyperpowered beams of light, even when this weapon is not held
-                The current [c/F592BF:Aspected Damage Type] influences the weapon's attacks
-                [c/FFAB4D:Melee]: The weapon swings much faster and defense is added to critical strike damage
-                [c/EF4DFF:Magic]: Instead of swinging, the weapon will will conjure 6 explosive blasts in a fan pattern dealing 1/3 base damage
-                [c/4DFF5B:Ranged]: Instead of swinging, the weapon will quickly fire piercing shots without consuming ammo, dealing 1/2 base damage
-                [c/00CDFF:Summon]: The [c/6EF367:Luminary Armament] periodically attacks nearby foes independently, dealing half of your current HP as base damage and can crit
-                'For the future!'
+                Tenere quest'arma in mano ti equipaggerà con l' [c/6EF367:Armamento Luminare], aumentando la difesa di 30
+                Click destro per evocare una [c/70D38B:Sirena dell'Artificio] per 15 secondi alla posizione del cursore (2 minuti di ricarica)
+                La [c/70D38B:Sirena dell'Artificio] oblitera i nemici vicini con raggi di luce mortali, anche quando l'arma viene cambiata
+                Il [c/F592BF:tipo di danno] selezionato influenza gli attacchi di quest'arma
+                [c/FFAB4D:Corpo a corpo]: La velocità di attacco aumenta notevolmente e la difesa attuale viene aggiunta ai danni critici
+                [c/EF4DFF:Magico]: Invece di attaccare con la spada, verranno creati 6 colpi esplosivi in un pattern conico, con ogni colpo che infligge 1/3 del danno base
+                [c/4DFF5B:A distanza]: Invece di attaccare con la spada, verranno rapidamente sparati colpi penetranti senza consumare munizioni, con ogni colpo che infligge 1/2 del danno base
+                [c/00CDFF:Evocazione]: L' [c/6EF367:Armamento Luminare] attacca periodicamente, infliggendo danno base pari a metà degli HP attuali; può infliggere danni critici
+                'Per il futuro!'
                 '''
             UrgotLegs: You shouldn't be able to read this!
             AfterburnerBottom: You shouldn't be able to read this!
