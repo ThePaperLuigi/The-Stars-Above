@@ -1,6 +1,8 @@
 ﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using StarsAbove.Utilities;
+using System;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ModLoader;
@@ -395,13 +397,13 @@ namespace StarsAbove.UI.Starfarers
 			passiveTitle.Width.Set(0, 0f);
 			passiveTitle.Height.Set(0, 0f);
 			passiveTitle.Left.Set(54, 0f);
-			passiveTitle.Top.Set(-44, 0f);
+			passiveTitle.Top.Set(-54, 0f);
 
-			description = new UIText("", 0.9f);
+			description = new UIText("", 0.7f);
 			description.Width.Set(0, 0f);
 			description.Height.Set(0, 0f);
 			description.Left.Set(54, 0f);
-			description.Top.Set(-21, 0f);
+			description.Top.Set(-31, 0f);
 
 
 
@@ -505,13 +507,11 @@ namespace StarsAbove.UI.Starfarers
 			{
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "Okay, that's the Stellar Array taken care of." +
-						"\nAnything else you needed?";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StellarNova.AfterArrayDialogue.Asphodene.1", Main.LocalPlayer);
 				}
-				else
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "Good, the Stellar Array has been changed." +
-						"\nNext on the list is...";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StellarNova.AfterArrayDialogue.Eridani.1", Main.LocalPlayer);
 				}
 
 			}
@@ -519,28 +519,22 @@ namespace StarsAbove.UI.Starfarers
 			{
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "I see you've finished your changes with the" +
-						"\nStellar Array. Perfect.";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StellarNova.AfterArrayDialogue.Asphodene.2", Main.LocalPlayer);
 				}
-				else
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "You're done with the Stellar Array?" +
-						"\nGreat. Anything else?";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StellarNova.AfterArrayDialogue.Eridani.2", Main.LocalPlayer);
 				}
 			}
 			if (randomDialogue == 2)
 			{
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "The Stellar Array's done updating. That's all" +
-																							"\nfor now, unless you had something else" +
-																							"\nin mind?";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StellarNova.AfterArrayDialogue.Asphodene.3", Main.LocalPlayer);
 				}
-				else
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "Okay, the Stellar Array is changed." +
-																							"\nHave you finished what you sought" +
-																							"\nto achieve?";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StellarNova.AfterArrayDialogue.Eridani.3", Main.LocalPlayer);
 				}
 			}
 			
@@ -679,7 +673,7 @@ namespace StarsAbove.UI.Starfarers
 		{
 			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArrayVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArray == true))
 				return;
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "Confirm your selection.";
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Misc.Confirm", Main.LocalPlayer);
 
 			// We can do stuff in here!
 		}
@@ -688,7 +682,7 @@ namespace StarsAbove.UI.Starfarers
 		{
 			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArrayVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArray == true))
 				return;
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "Reset your selection.";
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Misc.Reset", Main.LocalPlayer);
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
 
 
@@ -700,15 +694,14 @@ namespace StarsAbove.UI.Starfarers
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starshower == 0)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "[c/9D9D9D:Locked: Defeat the Eye of Cthulhu]";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.Starshield.Unlock", Main.LocalPlayer);
 
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "[c/C2BDFF:Tier 1] [c/FFEED1:'Starshield']";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities.Starshield.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "When struck, gain 10% of your Max HP as defense for 2 seconds (20 second cooldown.)" +
-					"\nAdditionally, gain 20 mana upon activation, and 20% damage increase for the duration of the shield.";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.Starshield.Description", Main.LocalPlayer);
 
 			}
 			
@@ -728,9 +721,9 @@ namespace StarsAbove.UI.Starfarers
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "Change the held Aspected Weapon to [c/FFAB4D:Melee Damage].";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.AspectedDamageType.Melee.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "If the weapon's type has changed, the weapon deals 10% less damage when active.";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.AspectedDamageType.Description", Main.LocalPlayer);
 
 			}
 
@@ -750,11 +743,9 @@ namespace StarsAbove.UI.Starfarers
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "Change the held Aspected Weapon to [c/707070:Rogue Damage].";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.AspectedDamageType.Rogue.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "If the weapon's type has changed, the weapon deals 10% less damage when active." +
-                    "\n";
-
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.AspectedDamageType.Description", Main.LocalPlayer);
 			}
 
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
@@ -773,10 +764,9 @@ namespace StarsAbove.UI.Starfarers
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "Change the held Aspected Weapon to [c/EF4DFF:Magic Damage].";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.AspectedDamageType.Magic.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "If the weapon's type has changed, the weapon deals 10% less damage when active.";
-
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.AspectedDamageType.Description", Main.LocalPlayer);
 			}
 
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
@@ -795,10 +785,9 @@ namespace StarsAbove.UI.Starfarers
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "Change the held Aspected Weapon to [c/4DFF5B:Ranged Damage].";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.AspectedDamageType.Ranged.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "If the weapon's type has changed, the weapon deals 10% less damage when active.";
-
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.AspectedDamageType.Description", Main.LocalPlayer);
 			}
 
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
@@ -817,11 +806,9 @@ namespace StarsAbove.UI.Starfarers
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "Change the held Aspected Weapon to [c/00CDFF:Summon Damage].";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.AspectedDamageType.Summon.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "If the weapon's type has changed, the weapon deals 10% less damage when active." +
-                    "";
-
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.AspectedDamageType.Description", Main.LocalPlayer);
 			}
 
 
@@ -835,7 +822,7 @@ namespace StarsAbove.UI.Starfarers
 			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArrayVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArray == true))
 				return;
 			
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "Aspected Weapon damage type is saved even after re-entering the world.";
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.AspectedDamageType.LockHover", Main.LocalPlayer);
 
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
 
@@ -848,14 +835,14 @@ namespace StarsAbove.UI.Starfarers
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().butchersdozen == 0)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "[c/9D9D9D:Locked: Defeat Nalhaun, the Burnished King]";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.ButchersDozen.Unlock", Main.LocalPlayer);
 
 			}
 			else
-            {
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "[c/C2BDFF:Tier 1] [c/FFEED1:'Butcher's Dozen']";
+			{
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities.ButchersDozen.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "After 12 kills without leaving combat, gain 5% extra attack damage and 30% faster attack speed.";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.ButchersDozen.Description", Main.LocalPlayer);
 
 			}
 
@@ -870,17 +857,17 @@ namespace StarsAbove.UI.Starfarers
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().evasionmastery == 0)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "[c/9D9D9D:Locked: Defeat the Queen Bee]";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.EvasionMastery.Unlock", Main.LocalPlayer);
 
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "[c/C2BDFF:Tier 1] [c/FFEED1:'Evasion Mastery'] ";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities.EvasionMastery.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "3% chance to take 0 damage from an attack. Gain 25% movement speed.";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.EvasionMastery.Description", Main.LocalPlayer);
 
 			}
-			
+
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
 
 
@@ -892,15 +879,14 @@ namespace StarsAbove.UI.Starfarers
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().ironskin == 0)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "[c/9D9D9D:Locked: Defeat the Eater of Worlds or Brain of Cthulhu]";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.IronWill.Unlock", Main.LocalPlayer);
 
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "[c/C2BDFF:Tier 1] [c/FFEED1:'Iron Will'] ";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities.IronWill.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "Gain 6 defense. Take 30 less damage from attacks that deal over 100 damage." +
-					"\nBelow 100 HP, take 20% less damage from all attacks, independent of other defense calculations.";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.IronWill.Description", Main.LocalPlayer);
 
 			}
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
@@ -914,15 +900,14 @@ namespace StarsAbove.UI.Starfarers
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().umbralentropy == 0)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "[c/9D9D9D:Locked: Defeat the Moon Lord]";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.UmbralEntropy.Unlock", Main.LocalPlayer);
 
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "[c/C2BDFF:Tier 1] [c/FFEED1:'Umbral Entropy'] ";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities.UmbralEntropy.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "All projectiles and melee attacks inflict Starblight on a critical strike." +
-					"\nGain Lifesteal on foes inflicted with Starblight. Healing is capped at 5 HP per second.";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.UmbralEntropy.Description", Main.LocalPlayer);
 
 			}
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
@@ -936,15 +921,14 @@ namespace StarsAbove.UI.Starfarers
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().flashfreeze == 0)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "[c/9D9D9D:Locked: Defeat Arbitration in Expert Mode]";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.FlashFreeze.Unlock", Main.LocalPlayer);
 
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "[c/C2BDFF:Tier 1] [c/FFEED1:'Flash Freeze'] ";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities.FlashFreeze.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "Landing a critical strike will cause foes to explode, taking half the original damage." +
-					"\nAdditionally, damaging snowflakes will spew from the target, spreading the damage. 4 second cooldown.";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.FlashFreeze.Description", Main.LocalPlayer);
 
 			}
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
@@ -958,14 +942,14 @@ namespace StarsAbove.UI.Starfarers
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().mysticforging == 0)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "[c/9D9D9D:Locked: Defeat Penthesilea, the Witch of Ink]";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.MysticForging.Unlock", Main.LocalPlayer);
 
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "[c/C2BDFF:Tier 1] [c/FFEED1:'Mystic Forging']";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities.MysticForging.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "Consume 5 mana when hitting a foe with an attack to deal 8% extra damage.";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.MysticForging.Description", Main.LocalPlayer);
 
 			}
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
@@ -979,16 +963,14 @@ namespace StarsAbove.UI.Starfarers
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().inneralchemy == 0)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "[c/9D9D9D:Locked: Defeat Skeletron]";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.InnerAlchemy.Unlock", Main.LocalPlayer);
 
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "[c/C2BDFF:Tier 1] [c/FFEED1:'Inner Alchemy']";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities.InnerAlchemy.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "" +
-					"After not taking damage for 12 seconds, gain 10% increased damage, 25 defense," +
-					"\nknockback resistance, and Health Regeneration. Buffs are lost on hit.";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.InnerAlchemy.Description", Main.LocalPlayer);
 
 			}
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
@@ -1002,15 +984,14 @@ namespace StarsAbove.UI.Starfarers
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().hikari == 0)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "[c/9D9D9D:Locked: Defeat the Ice Queen]";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.Hikari.Unlock", Main.LocalPlayer);
 
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "[c/C2BDFF:Tier 1] [c/FFEED1:'Hikari']";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities.Hikari.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "Gain bonus attack and defense proportional to Max HP divided by 20." +
-					"\nTaking damage inflicts 'Null Radiance' which reduces outgoing damage by half for 6 seconds.";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.Hikari.Description", Main.LocalPlayer);
 
 			}
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
@@ -1024,18 +1005,17 @@ namespace StarsAbove.UI.Starfarers
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().celestialevanesence == 0)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "[c/9D9D9D:Locked: Defeat the Lunatic Cultist in Expert Mode]";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.CelestialEvanesence.Unlock", Main.LocalPlayer);
 
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "[c/C2BDFF:Tier 1] [c/FFEED1:'Celestial Evanesence']";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities.CelestialEvanesence.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "Critical strike rate is increased based on current Mana divided by 20." +
-                    "\nLanding a critical strike grants 5% of the damage dealt as Mana. (Max 5 per hit)";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.CelestialEvanesence.Description", Main.LocalPlayer);
 
 			}
-			
+
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
 
 
@@ -1047,18 +1027,17 @@ namespace StarsAbove.UI.Starfarers
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().bonus100hp == 0)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "[c/9D9D9D:Locked: Defeat the Wall of Flesh]";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.HealthyConfidence.Unlock", Main.LocalPlayer);
 
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "[c/9C4FFF:Tier 2] [c/FFD792:'Healthy Confidence']";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities.HealthyConfidence.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "Gain 150 extra Maximum HP and powerful health regeneration." +
-					"\nDefense is halved below 200 HP.";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.HealthyConfidence.Description", Main.LocalPlayer);
 
 			}
-			
+
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
 
 
@@ -1070,18 +1049,17 @@ namespace StarsAbove.UI.Starfarers
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().bloomingflames == 0)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "[c/9D9D9D:Locked: Defeat any Mechanical Boss]";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.InfernalEnd.Unlock", Main.LocalPlayer);
 
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "[c/9C4FFF:Tier 2] [c/FFD792:'Infernal End']";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities.InfernalEnd.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "When below 100 HP, gain 50% increased damage and all attacks burn foes." +
-					"\nAdditionally, these effects will temporarily ignore the HP threshold for 3 seconds after taking damage.";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.InfernalEnd.Description", Main.LocalPlayer);
 
 			}
-			
+
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
 
 
@@ -1093,15 +1071,14 @@ namespace StarsAbove.UI.Starfarers
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().avataroflight == 0)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "[c/9D9D9D:Locked: Defeat the Warrior of Light]";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.AvatarOfLight.Unlock", Main.LocalPlayer);
 
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "[c/9C4FFF:Tier 2] [c/FFD792:'Avatar of Light']";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities.AvatarOfLight.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "Half of Max Mana is added to Max HP. At 500 HP or above, gain 10 defense, 5% damage, and" +
-					"\n5 Stellar Nova Energy Regeneration.";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.AvatarOfLight.Description", Main.LocalPlayer);
 
 			}
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
@@ -1115,15 +1092,14 @@ namespace StarsAbove.UI.Starfarers
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().astralmantle == 0)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "[c/9D9D9D:Locked: Defeat all Mechanical bosses]";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.AstralMantle.Unlock", Main.LocalPlayer);
 
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "[c/9C4FFF:Tier 2] [c/FFD792:'Astral Mantle']";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities.AstralMantle.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "1/10th of current Mana is added to Defense." +
-                    "\nGain 15 Stellar Nova Energy Regeneration above 200 Mana.";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.AstralMantle.Description", Main.LocalPlayer);
 
 			}
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
@@ -1137,14 +1113,14 @@ namespace StarsAbove.UI.Starfarers
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().afterburner == 0)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "[c/9D9D9D:Locked: Defeat Plantera]";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.Afterburner.Unlock", Main.LocalPlayer);
 
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "[c/9C4FFF:Tier 2] [c/FFD792:'Afterburner']";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities.Afterburner.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "When Mana drops below 40, gain 150 Mana and all attacks critically strike for 4 seconds. 25 second cooldown.";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.Afterburner.Description", Main.LocalPlayer);
 
 			}
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
@@ -1158,15 +1134,14 @@ namespace StarsAbove.UI.Starfarers
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().artofwar == 0)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "[c/9D9D9D:Locked: Defeat all bosses from The Stars Above except the final boss]";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.SpatialStratagem.Unlock", Main.LocalPlayer);
 
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "[c/9C4FFF:Tier 2] [c/FFD792:'Spatial Stratagem']";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities.SpatialStratagem.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "Critical strikes roll critical strike chance again." +
-                    "\nIf the attack was critical again, increases damage by 50% and roll one more time.";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.SpatialStratagem.Description", Main.LocalPlayer);
 
 			}
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
@@ -1180,15 +1155,14 @@ namespace StarsAbove.UI.Starfarers
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().weaknessexploit == 0)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "[c/9D9D9D:Locked: Defeat Golem in Expert Mode]";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.WeaknessExploit.Unlock", Main.LocalPlayer);
 
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "[c/9C4FFF:Tier 2] [c/FFD792:'Weakness Exploit']";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities.WeaknessExploit.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "Critical strikes hit again for 10% of the original damage as true damage (Will not kill.)" +
-                    "\nFoes below 20% HP or who are Stunned will take 30% damage instead.";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.WeaknessExploit.Description", Main.LocalPlayer);
 
 			}
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
@@ -1202,15 +1176,14 @@ namespace StarsAbove.UI.Starfarers
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().aprismatism == 0)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "[c/9D9D9D:Locked: Defeat all bosses from The Stars Above except the final boss in Expert Mode]";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.Aprismatism.Unlock", Main.LocalPlayer);
 
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "[c/9C4FFF:Tier 2] [c/FFD792:'Aprismatism']";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities.Aprismatism.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "Aspected Damage Type changes will now apply to all weapons." +
-					"\n";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.Aprismatism.Description", Main.LocalPlayer);
 
 			}
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
@@ -1224,15 +1197,14 @@ namespace StarsAbove.UI.Starfarers
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().unbridledradiance == 0)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "[c/9D9D9D:Locked: Defeat all Terraria bosses and the Warrior of Light in Expert Mode]";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.UnbridledRadiance.Unlock", Main.LocalPlayer);
 
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "[c/D82BFF:Tier 3] [c/FFC258:'Unbridled Radiance']";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities.UnbridledRadiance.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "Doubles the recharge rate of Stellar Nova Energy." +
-					"\nStellar Nova Energy does not deplete out of combat.";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.UnbridledRadiance.Description", Main.LocalPlayer);
 
 			}
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
@@ -1247,15 +1219,14 @@ namespace StarsAbove.UI.Starfarers
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().beyondtheboundary == 0)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "[c/9D9D9D:Locked: Defeat all Terraria bosses and all bosses from The Stars Above except the final boss]";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.BetweenTheBoundary.Unlock", Main.LocalPlayer);
 
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "[c/D82BFF:Tier 3] [c/FFC258:'Between the Boundary']";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities.BetweenTheBoundary.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "Every 8 seconds, swap between Ebb (drastic Mana drain) and Flow (infinite Mana Regeneration)" +
-                    "\nAdditionally, gain 40% increased damage and 20% increased attack speed during Flow.";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.BetweenTheBoundary.Description", Main.LocalPlayer);
 
 			}
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
@@ -1269,15 +1240,14 @@ namespace StarsAbove.UI.Starfarers
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().aquaaffinity == 0)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "[c/9D9D9D:Locked: Defeat the Slime King in Expert Mode]";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.CyclicHunter.Unlock", Main.LocalPlayer);
 
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "[c/C2BDFF:Tier 1] [c/FFEED1:'Cyclic Hunter']";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities.CyclicHunter.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "When ammo is consumed, gain 8 mana, 10% increased damage, and Movement Speed for half a second." +
-					"\n2 second cooldown.";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.CyclicHunter.Description", Main.LocalPlayer);
 
 			}
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
@@ -1291,15 +1261,14 @@ namespace StarsAbove.UI.Starfarers
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().livingdead == 0)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "[c/9D9D9D:Locked: Defeat Pumpking]";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.LivingDead.Unlock", Main.LocalPlayer);
 
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "[c/C2BDFF:Tier 1] [c/FFEED1:'Living Dead']";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities.LivingDead.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "Survive most fatal damage for 10 seconds, but if HP is not healed above 150 when the buff ends," +
-					"\nyou will die. (4 minute cooldown) You need 200+ Max HP to confirm this ability.";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.LivingDead.Description", Main.LocalPlayer);
 
 			}
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
@@ -1314,15 +1283,14 @@ namespace StarsAbove.UI.Starfarers
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().beyondinfinity == 0)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "[c/9D9D9D:Locked: Defeat all Terraria bosses]";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.BeyondInfinity.Unlock", Main.LocalPlayer);
 
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "[c/D82BFF:Tier 3] [c/FFC258:'Beyond Infinity']";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities.BeyondInfinity.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "At 500 HP or above, all applicable outgoing damage is doubled." +
-					"\nDeal 10% less damage below 500 HP, increased by 10% for each 100 HP.";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.BeyondInfinity.Description", Main.LocalPlayer);
 
 			}
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
@@ -1336,18 +1304,17 @@ namespace StarsAbove.UI.Starfarers
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().keyofchronology == 0)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "[c/9D9D9D:Locked: Defeat the Moon Lord in Expert Mode]";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.KeyOfChronology.Unlock", Main.LocalPlayer);
 
 			}
 			else
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = "[c/D82BFF:Tier 3] [c/FFC258:'Key Of Chronology']";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities.KeyOfChronology.Name", Main.LocalPlayer);
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "Taking over 200 damage at once will instead heal you for that amount and grant 5 seconds of Invincibility. " +
-					"\nAdditionally, all nearby non-boss enemies will be Stunned for 5 seconds. 2 minute cooldown.";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.KeyOfChronology.Description", Main.LocalPlayer);
 
 			}
-			
+
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
 
 
@@ -2278,10 +2245,21 @@ namespace StarsAbove.UI.Starfarers
 			text.SetText($"{modPlayer.stellarGauge}/{modPlayer.stellarGaugeMax}");
 
 			passiveTitle.SetText($"{modPlayer.passiveTitle}");
-			description.SetText($"{modPlayer.description}");
+			description.SetText(Wrap($"{modPlayer.description}", 70));
+			
 
 			//text.SetText($"[c/5970cf:{modPlayer.judgementGauge} / 100]");
 			base.Update(gameTime);
+		}
+
+		private static string Wrap(string v, int size)
+		{
+			v = v.TrimStart();
+			if (v.Length <= size) return v;
+			var nextspace = v.LastIndexOf(' ', size);
+			if (-1 == nextspace) nextspace = Math.Min(v.Length, size);
+			return v.Substring(0, nextspace) + ((nextspace >= v.Length) ?
+			"" : "\n" + Wrap(v.Substring(nextspace), size));
 		}
 	}
 }

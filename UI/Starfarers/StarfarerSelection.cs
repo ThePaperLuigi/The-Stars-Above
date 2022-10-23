@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using StarsAbove.Utilities;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
@@ -86,12 +87,12 @@ namespace StarsAbove.UI.Starfarers
 			Asphodene.Width.Set(0, 0f);
 			Asphodene.Height.Set(0, 0f);*/
 
-			text = new UIText("Choose a Starfarer to aid you on your journey", 1.4f); 
+			text = new UIText("", 1.4f); 
 			text.Width.Set(250, 0f);
 			text.Height.Set(34, 0f);
 			text.Top.Set(490, 0f);
 			text.Left.Set(90, 0f);
-			warning = new UIText("[c/E36666:This decision is permanent! (per character)]", 1f); // text to show stat
+			warning = new UIText("", 1f); // text to show stat
 			warning.Width.Set(250, 0f);
 			warning.Height.Set(34, 0f);
 			warning.Top.Set(530, 0f);
@@ -125,9 +126,9 @@ namespace StarsAbove.UI.Starfarers
 		{
 			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().StarfarerSelectionVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer < 1))
 				return;
-			if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("You feel astral energy coursing through you..."), 0, 100, 175);}
-			if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("Maximum mana increased by 20!"), 0, 100, 175);}
-			if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate; looks like someone wants to talk."), 241, 255, 180);}
+			if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerSelection.Asphodene.2"), 190, 100, 247); }
+			if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerSelection.ManaIncrease"), 190, 100, 247); }
+			if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerSelection.Talk"), 241, 255, 180); }
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarerEffect = true;
 
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer = 1;
@@ -142,7 +143,7 @@ namespace StarsAbove.UI.Starfarers
 				return;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().AsphodeneHighlighted = true;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().AsphodeneXVelocity = 5;
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "Asphodene, the [c/6ECDFA:Astral Starfarer]. Bold and energetic, she focuses on [c/FAC16E:flashy, powerful attacks].";
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerSelection.Asphodene.1");
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
 
@@ -164,9 +165,9 @@ namespace StarsAbove.UI.Starfarers
 		{
 			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().StarfarerSelectionVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer < 1))
 				return;
-			if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("You feel umbral energy coursing through you..."), 190, 100, 247);}
-			if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("Maximum mana increased by 20!"), 190, 100, 247);}
-			if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate; looks like someone wants to talk."), 241, 255, 180);}
+			if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerSelection.Eridani.2"), 190, 100, 247);}
+			if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerSelection.ManaIncrease"), 190, 100, 247);}
+			if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerSelection.Talk"), 241, 255, 180);}
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer = 2;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarerEffect = true;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "";
@@ -179,7 +180,7 @@ namespace StarsAbove.UI.Starfarers
 		{
 			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().StarfarerSelectionVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer < 1))
 				return;
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "Eridani, the [c/D06EFA:Umbral Starfarer]. A reserved tactician, she [c/FAC16E:flourishes through deep complexity.]";
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerSelection.Eridani.1");
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
 
 			description.SetText($"{modPlayer.description}");
@@ -280,7 +281,8 @@ namespace StarsAbove.UI.Starfarers
 			// Setting the text per tick to update and show our resource values.
 
 			description.SetText($"{modPlayer.description}");
-
+			text.SetText(LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerSelection.Choice"));
+			warning.SetText(LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerSelection.Warning"));
 			//text.SetText($"[c/5970cf:{modPlayer.judgementGauge} / 100]");
 			base.Update(gameTime);
 		}

@@ -23,8 +23,6 @@ namespace StarsAbove.Items
 				"\nFire the weapon without bullets to reload" +
 				"\nRight click to fire a [c/EE582F:Blasting Charge] to launch yourself far in the opposite direction (6 second cooldown)" +
 				"\nFiring the [c/EE582F:Blasting Charge] reloads the weapon without cooldown" +
-				""+
-				"" +
 				$"");
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;

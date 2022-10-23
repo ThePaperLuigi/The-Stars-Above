@@ -1,6 +1,8 @@
 ﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using StarsAbove.Utilities;
+using StarsAbove.Items.Prisms;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.UI;
@@ -178,7 +180,7 @@ namespace StarsAbove.UI.StellarNova
 			description = new UIText("", 1f);
 			description.Width.Set(10, 0f);
 			description.Height.Set(10, 0f);
-			description.Top.Set(20, 0f);
+			description.Top.Set(10, 0f);
 			description.Left.Set(20, 0f);
 
 			abilityName = new UIText("", 2.5f);
@@ -372,17 +374,18 @@ namespace StarsAbove.UI.StellarNova
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollNumber = 0;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArrayMoveIn = -15f;
+
+			
 			int randomDialogue = Main.rand.Next(0, 3);
 			if (randomDialogue == 0)
 			{
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "What's next on the list?";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StellarNova.AfterNovaDialogue.Asphodene.1", Main.LocalPlayer);
 				}
-				else
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "Okay, the Stellar Nova changes went through." +
-						"\nWhat will you do next?";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StellarNova.AfterNovaDialogue.Eridani.1", Main.LocalPlayer);
 				}
 
 			}
@@ -390,26 +393,24 @@ namespace StarsAbove.UI.StellarNova
 			{
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "The Stellar Nova has been updated." +
-						"\nWhat's next?";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StellarNova.AfterNovaDialogue.Asphodene.2", Main.LocalPlayer);
+					
 				}
-				else
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "Finished modifying the Stellar Nova? Great." +
-						"\n";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StellarNova.AfterNovaDialogue.Eridani.2", Main.LocalPlayer);
+					
 				}
 			}
 			if (randomDialogue == 2)
 			{
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "Stellar Nova changes are confirmed. Great." +
-						"\nIs there anything else you needed?";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StellarNova.AfterNovaDialogue.Asphodene.3", Main.LocalPlayer);
 				}
-				else
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "Okay, we've changed the Stellar Nova around." +
-						"\nDo you have anything else in mind?";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StellarNova.AfterNovaDialogue.Eridani.3", Main.LocalPlayer);
 				}
 			}
 			//Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().animatedDescription = "";
@@ -545,11 +546,11 @@ namespace StarsAbove.UI.StellarNova
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "You can change the effects of Stellar Novas by affixing" +
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "You can change the effects of Stellar Novas by affixing" +//Unused.
 					"\nStellar Prisms here. Tier 3 Prisms only work in this slot.";
 
 			}
-			else
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 			{
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "You can change the effects of Stellar Novas by affixing" +
 					"\nStellar Prisms here. Tier 3 prisms only work in this slot.";
@@ -567,11 +568,11 @@ namespace StarsAbove.UI.StellarNova
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "You can change the effects of Stellar Novas by affixing" +
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "You can change the effects of Stellar Novas by affixing" +//Unused.
 					"\nStellar Prisms here. Duplicates don't count!";
 
 			}
-			else
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 			{
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "You can change the effects of Stellar Novas by affixing" +
 					"\nStellar Prisms here. Duplicate Prisms don't stack effects.";
@@ -589,11 +590,11 @@ namespace StarsAbove.UI.StellarNova
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "You can change the effects of Stellar Novas by affixing" +
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "You can change the effects of Stellar Novas by affixing" +//Unused.
 					"\nStellar Prisms here. Duplicates don't count!";
 
 			}
-			else
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 			{
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "You can change the effects of Stellar Novas by affixing" +
 					"\nStellar Prisms here. Duplicate Prisms don't stack effects.";
@@ -609,11 +610,11 @@ namespace StarsAbove.UI.StellarNova
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "This Affix slot is reserved for special Stellar Prisms that" +
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "This Affix slot is reserved for special Stellar Prisms that" +//Unused.
 					"\nchange a specific ability entirely.";
 
 			}
-			else
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 			{
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "This Affix slot is reserved for special Stellar Prisms that" +
 					"\nchange a specific ability entirely.";
@@ -628,12 +629,12 @@ namespace StarsAbove.UI.StellarNova
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "Finished modifying the Stellar Nova?";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.MiscInfo.Confirm.Asphodene", Main.LocalPlayer);
 
 			}
-			else
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "Are you finished modifying the Stellar Nova..?";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.MiscInfo.Confirm.Eridani", Main.LocalPlayer);
 
 			}
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
@@ -646,12 +647,12 @@ namespace StarsAbove.UI.StellarNova
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "Would you like to deselect the current Stellar Nova?";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.MiscInfo.Reset.Asphodene", Main.LocalPlayer);
 
 			}
-			else
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "We can reset the Stellar Nova, if you'd like.";
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.MiscInfo.Reset.Eridani", Main.LocalPlayer);
 
 			}
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
@@ -667,28 +668,26 @@ namespace StarsAbove.UI.StellarNova
 			{
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().theofania != 0)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "" +
-						"This is Theofania Inanis, a general use Stellar Nova" +
-						"\nthat applies a powerful debuff.";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.TheofaniaInanis.Unlocked.Asphodene", Main.LocalPlayer);
+
 				}
 				else
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "We don't have access to this yet.";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.TheofaniaInanis.Locked.Asphodene", Main.LocalPlayer);
 
 				}
 
 			}
-			else
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 			{
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().theofania != 0)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "" +
-						"This is Theofania Inanis: a general Stellar Nova that" +
-						"\ncan apply a powerful debuff.";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.TheofaniaInanis.Unlocked.Eridani", Main.LocalPlayer);
+
 				}
 				else
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = $"We can't use this yet.";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.TheofaniaInanis.Locked.Eridani", Main.LocalPlayer);
 
 				}
 
@@ -706,32 +705,26 @@ namespace StarsAbove.UI.StellarNova
 			{
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().laevateinn != 0)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "" +
-						"Ars Laevateinn. If you've ever wanted to clear an area fast," +
-						"\nthis is the Stellar Nova for that.";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.ArsLaevateinn.Unlocked.Asphodene", Main.LocalPlayer);
+
 				}
 				else
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "We don't have access to this yet." +
-						"\nI feel we must defeat a certain monarch to get this." +
-						"\nBut who...?";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.ArsLaevateinn.Locked.Asphodene", Main.LocalPlayer);
 
 				}
 
 			}
-			else
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 			{
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().laevateinn != 0)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "" +
-						"This Stellar Nova, Ars Laevateinn, focuses on doing" +
-						"\nlarge amounts of damage in a specified area.";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.ArsLaevateinn.Unlocked.Eridani", Main.LocalPlayer);
+
 				}
 				else
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = $"We can't use this yet." +
-						$"\nSomething tells me we must defeat a 'regal' enemy to obtain this." +
-						$"\nBut who is this individual..?";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.ArsLaevateinn.Locked.Eridani", Main.LocalPlayer);
 
 				}
 
@@ -749,30 +742,26 @@ namespace StarsAbove.UI.StellarNova
 			{
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().kiwamiryuken != 0)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "" +
-						"A powerful counter-attack, Kiwami Ryuken. Time it right," +
-						"\nand your foes will be dropped instantly.";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.KiwamiRyuken.Unlocked.Asphodene", Main.LocalPlayer);
+					
 				}
 				else
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "We don't have access to this yet." +
-						"\nWe must vanquish a true evil...";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.KiwamiRyuken.Locked.Asphodene", Main.LocalPlayer);
 
 				}
 
 			}
-			else
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 			{
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().kiwamiryuken != 0)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "" +
-						"A powerful counterattack: Kiwami Ryuken. You can deal" +
-						"\nenormous amounts of damage quickly if timed properly.";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.KiwamiRyuken.Unlocked.Eridani", Main.LocalPlayer);
+					
 				}
 				else
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = $"We can't use this yet." +
-						$"\nI feel we must defeat a true evil...";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.KiwamiRyuken.Locked.Eridani", Main.LocalPlayer);
 
 				}
 
@@ -790,30 +779,26 @@ namespace StarsAbove.UI.StellarNova
 			{
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().gardenofavalon != 0)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "" +
-						"An influential support Nova, the Garden of Avalon will" +
-						"\ngrant powerful healing and invincibility.";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.GardenOfAvalon.Unlocked.Asphodene", Main.LocalPlayer);
+					//"With this Stellar Nova, you can imbue your attacks directly," +
+					//	"\noverwriting their stats as well as gaining a new burst attack.";
 				}
 				else
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "We don't have access to this yet." +
-						"\nWe need to defeat a strong enough magic user...";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.GardenOfAvalon.Locked.Asphodene", Main.LocalPlayer);
 
 				}
 
 			}
-			else
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 			{
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().gardenofavalon != 0)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "" +
-						"This Stellar Nova will grant powerful healing over" +
-						"\ntime as well as a brief window of invincibility.";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.GardenOfAvalon.Unlocked.Eridani", Main.LocalPlayer);
 				}
 				else
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = $"We can't use this yet." +
-						$"\nWe need to defeat a powerful magical entity.";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.GardenOfAvalon.Locked.Eridani", Main.LocalPlayer);
 
 				}
 
@@ -831,30 +816,26 @@ namespace StarsAbove.UI.StellarNova
 			{
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().edingenesisquasar != 0)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "" +
-						"With this Stellar Nova, you can imbue your attacks directly," +
-						"\noverwriting their stats as well as gaining a new burst attack.";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.EdinGenesisQuasar.Unlocked.Asphodene", Main.LocalPlayer);
+					//"With this Stellar Nova, you can imbue your attacks directly," +
+					//	"\noverwriting their stats as well as gaining a new burst attack.";
 				}
 				else
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "We don't have access to this yet." +
-						"\nWe have to defeat a foe with spatial powers.";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.EdinGenesisQuasar.Locked.Asphodene", Main.LocalPlayer);
 
 				}
 
 			}
-			else
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 			{
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().edingenesisquasar != 0)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "" +
-						"This Stellar Nova will allow you to change the stats of" +
-						"\nyour weapons as well as gain a new special attack.";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.EdinGenesisQuasar.Unlocked.Eridani", Main.LocalPlayer);
 				}
 				else
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = $"We can't use this yet." +
-						$"\nWe have to defeat a foe with spatial powers.";
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.EdinGenesisQuasar.Locked.Eridani", Main.LocalPlayer);
 
 				}
 
@@ -958,12 +939,12 @@ namespace StarsAbove.UI.StellarNova
 			}
 			if (!_affixSlot1.Item.IsAir)
 			{
-				if (_affixSlot1.Item.Name == "Prism of the Ruined King")
+				if (_affixSlot1.Item.type == ItemType<PrismOfTheRuinedKing>())
 				{
 					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/affixRuinedKing"), hitbox, Color.White * (modPlayer.novaUIOpacity));
 
 				}
-				else if (_affixSlot1.Item.Name == "Prism of the Cosmic Phoenix")
+				else if (_affixSlot1.Item.type == ItemType<PrismOfTheCosmicPhoenix>())
 				{
 					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/affixCosmicPhoenix"), hitbox, Color.White * (modPlayer.novaUIOpacity));
 
@@ -1086,6 +1067,7 @@ namespace StarsAbove.UI.StellarNova
 				modPlayer.prismDescription = "";
 			}
 
+			
 
 
 			modPlayer.affix1 = _affixSlot1.Item.Name;
@@ -1099,6 +1081,8 @@ namespace StarsAbove.UI.StellarNova
 			//text.SetText($"[c/5970cf:{modPlayer.judgementGauge} / 100]");
 			base.Update(gameTime);
 		}
+
+		
 
 	}
 
