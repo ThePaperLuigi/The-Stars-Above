@@ -64,9 +64,12 @@ namespace StarsAbove.Projectiles.BurningDesire
 			DrawOriginOffsetY = newOffsetY;
 
 			Projectile.ai[0]++;
-
+			if (projOwner.dead && !projOwner.active)
+			{//Disappear when player dies
+				Projectile.Kill();
+			}
 			//Spawn dust after some time has passed.
-			if(Projectile.ai[0] > 8 && dustSpawn)
+			if (Projectile.ai[0] > 8 && dustSpawn)
             {
 				projOwner.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_BlazeEquip, projOwner.Center);
@@ -146,6 +149,7 @@ namespace StarsAbove.Projectiles.BurningDesire
 			projOwner.heldProj = Projectile.whoAmI;
 			Vector2 ownerMountedCenter = projOwner.RotatedRelativePoint(projOwner.MountedCenter, true);
 			Projectile.position.Y = ownerMountedCenter.Y - (float)(Projectile.height / 2);
+			Projectile.Center += projOwner.gfxOffY * Vector2.UnitY;//Prevent glitchy animation.
 			Projectile.direction = projOwner.direction;
 			Projectile.spriteDirection = Projectile.direction;
 			Projectile.rotation = projOwner.velocity.X * 0.05f;

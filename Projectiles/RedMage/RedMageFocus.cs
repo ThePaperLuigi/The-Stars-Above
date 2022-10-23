@@ -49,6 +49,10 @@ namespace StarsAbove.Projectiles.RedMage
             {
 				Projectile.Kill();
             }
+			if (player.dead && !player.active)
+			{
+				Projectile.Kill();
+			}
 			Projectile.timeLeft = 10;
 			Projectile.alpha -= 10;
 

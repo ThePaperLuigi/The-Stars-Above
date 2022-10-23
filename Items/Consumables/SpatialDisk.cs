@@ -9,6 +9,7 @@ using static Terraria.ModLoader.ModContent;
 using SubworldLibrary;
 using Terraria.Audio;
 using StarsAbove.Subworlds;
+using StarsAbove.Utilities;
 
 namespace StarsAbove.Items.Consumables
 {
@@ -101,11 +102,11 @@ namespace StarsAbove.Items.Consumables
                 {
 					if(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
                     {
-						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "What's up? Need something?";
+						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Asphodene.1");//1
 					}
-					else
-                    {
-						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "Do you need something?";
+					if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
+					{
+						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Eridani.1", player.name);
 					}
 					
 				}
@@ -113,22 +114,17 @@ namespace StarsAbove.Items.Consumables
                 {
 					if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
 					{
-						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "Let me guess.. You need my help?" +
-							"\nWell, it IS why I'm here.";
+						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Asphodene.2");
 					}
-					else
+					if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)//Eridani
 					{
-						if(DownedBossSystem.downedVagrant)
+						if (DownedBossSystem.downedVagrant)
                         {
-							Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "You need my help, right?" +
-							"\nOf course- anything you need." +
-							"\n";
+							Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Eridani.2", player.name);
 						}
 						else
                         {
-							Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "Do you need my help?" +
-							"\nI just assumed, you know, because.." +
-							"\nNever mind.";
+							Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Eridani.3", player.name);
 						}
 						
 					}
@@ -137,22 +133,22 @@ namespace StarsAbove.Items.Consumables
 				{
 					if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
 					{
-						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "You rang?";
+						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Asphodene.3");
 					}
-					else
+					if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)//Eridani
 					{
-						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "Did something come up?";
+						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Eridani.4", player.name);
 					}
 				}
 				if (randomDialogue == 3)
 				{
 					if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
 					{
-						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = $"Hey, {player.name}. Looks like you need my help?";
+						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Asphodene.4", player.name);
 					}
-					else
+					if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)//Eridani
 					{
-						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = $"{player.name}.. I'm assuming you need my help?";
+						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Eridani.5", player.name);
 					}
 				}
 				if (randomDialogue == 4)
@@ -161,18 +157,17 @@ namespace StarsAbove.Items.Consumables
 					{
 						if (DownedBossSystem.downedVagrant)
 						{
-							Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = $"Right. Let's get started." +
-                                $"\nWhat do you need?";
+							Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Asphodene.5", player.name);
 						}
 						else
 						{
-							Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = $"Hmm... What do you need?";
+							Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Asphodene.6", player.name);
 						}
 						
 					}
-					else
+					if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)//Eridani
 					{
-						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = $"Okay, what do you need?";
+						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Eridani.6", player.name);
 					}
 				}
 				if(player.GetModPlayer<StarsAbovePlayer>().NewDiskDialogue)
@@ -180,27 +175,24 @@ namespace StarsAbove.Items.Consumables
 					if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
 					{
 						
-						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = $"Looks like you've unlocked something new." +
-                            $"\nHow about trying it out?";
-						
+						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Asphodene.7", player.name);
+
 
 					}
-					else
+					if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)//Eridani
 					{
-						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = $"It appears you've unlocked something." +
-                            $"\nLet's make good use of it.";
+						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Eridani.7", player.name);
 					}
 				}
 				if(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().inCombat > 0)
                 {
 					if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
 					{
-						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = $"Uh, aren't we still in combat?";
+						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Asphodene.8", player.name);
 					}
-					else
+					if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)//Eridani
 					{
-						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = $"I kind of feel like something else" +
-							$"\nneeds your attention right now...";
+						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Eridani.8", player.name);
 					}
 
 				}
@@ -838,6 +830,14 @@ namespace StarsAbove.Items.Consumables
 				player.GetModPlayer<StarsAbovePlayer>().WarriorWeaponDialogue = 2;
 				activateDialogue(player);
 				
+				return true;
+			}
+			if (player.GetModPlayer<StarsAbovePlayer>().CatalystWeaponDialogue == 1)
+			{
+				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 155;
+				player.GetModPlayer<StarsAbovePlayer>().CatalystWeaponDialogue = 2;
+				activateDialogue(player);
+
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().VagrantWeaponDialogue == 1)
