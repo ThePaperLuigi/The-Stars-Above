@@ -1702,58 +1702,58 @@ Mods: {
 				
 				MiscInfo: {
 					Confirm: {
-						Asphodene: Finished modifying the Stellar Nova?
-						Eridani: Are you finished modifying the Stellar Nova..?
+						Asphodene: Fatto con le modifiche alla Nova Stellare?
+						Eridani: Hai finito di modificare la Nova Stellare..?
 					}
 					Reset: {
-						Asphodene: Would you like to deselect the current Stellar Nova?
-						Eridani: We can reset the Stellar Nova, if you'd like.
+						Asphodene: Vuoi deselezionare la Nova Stellare attuale?
+						Eridani: Possiamo resettare la Nova Stellare, se vuoi.
 					}
 				}
 				TheofaniaInanis: {
 					Unlocked: {
-						Asphodene: This is Theofania Inanis, a general use Stellar Nova that applies a powerful debuff.
-						Eridani: This is Theofania Inanis: a general Stellar Nova that can apply a powerful debuff.
+						Asphodene: Questa è Theofania Inanis, una Nova Stellare generica che infligge un potente debuff.
+						Eridani: Questa è Theofania Inanis: una Nova Stellare generica in grado di infliggere un potente debuff.
 					}
 				}
 				ArsLaevateinn: {
 					Unlocked: {
-						Asphodene: Ars Laevateinn. If you've ever wanted to clear an area fast, this is the Stellar Nova for that.
-						Eridani: This Stellar Nova, Ars Laevateinn, focuses on doing large amounts of damage in a specified area.
+						Asphodene: Ars Laevateinn. Se hai mai voluto pulire un'area in fretta, questa è la Nova Stellare per te.
+						Eridani: Con questa Nova Stellare, Ars Laevateinn, è possibile infliggere danni ingenti in un'area precisa.
 					}
 					Locked: {
-						Asphodene: We don't have access to this yet. I feel we must defeat a certain monarch to get this. But who...?
-						Eridani: We can't use this yet. Something tells me we must defeat a 'regal' enemy to obtain this.
+						Asphodene: Non possiamo ancora usare questa Nova. Pare che dobbiamo sconfiggere un certo monarca per sbloccarla. Ma chi...?
+						Eridani: Questa Nova è ancora bloccata. Qualcosa mi dice che il segreto per sbloccarla sta nello sconfiggere un nemico 'regale'.
 					}
 				}
 				KiwamiRyuken: {
 					Unlocked: {
-						Asphodene: A powerful counter-attack, Kiwami Ryuken. Time it right, and your foes will be dropped instantly.
-						Eridani: A powerful counterattack: Kiwami Ryuken. You can deal enormous amounts of damage quickly if timed properly.
+						Asphodene: Un potente contrattacco, Kiwami Ryuken. Se lo attiverai con il giusto tempismo, i nemici cadranno come mosche.
+						Eridani: Un potente contrattacco: Kiwami Ryuken. Puoi infliggere danni assurdi con un colpo sferrato al momento giusto.
 					}
 					Locked: {
-						Asphodene: We don't have access to this yet. We must vanquish a true evil.
-						Eridani: We can't use this yet. I feel we must defeat a true evil...
+						Asphodene: Non possiamo ancora usare questa Nova. Dobbiamo sopraffare la malvagità incarnata per sbloccarla.
+						Eridani: Questa Nova è ancora bloccata. Sembra che dovremo vincere un male incredibile...
 					}
 				}
 				GardenOfAvalon: {
 					Unlocked: {
-						Asphodene: An influential support Nova, the Garden of Avalon will grant powerful healing and invincibility.
-						Eridani: This Stellar Nova will grant powerful healing over time as well as a brief window of invincibility.
+						Asphodene: Questa Nova Stellare aumenterà la tua rigenerazione alle stelle, e ti renderà anche invincibile per qualche istante!
+						Eridani: Una Nova di supporto, il Giardino di Avalon conferisce incredibile rigenerazione e un breve periodo di invicibilità.
 					}
 					Locked: {
-						Asphodene: We don't have access to this yet. We need to defeat a strong enough magic user...
-						Eridani: We can't use this yet. We need to defeat a powerful magical entity.
+						Asphodene: Non possiamo ancora usare questa Nova. Dobbiamo sconfiggere un potente stregone...
+						Eridani: Questa Nova è ancora bloccata. Un'entità con grandi poteri magici ci impedisce di accedervi.
 					}
 				}
 				EdinGenesisQuasar: {
 					Unlocked: {
-						Asphodene: With this Stellar Nova, you can imbue your attacks directly, overwriting their stats as well as gaining a new burst attack.
-						Eridani: This Stellar Nova will allow you to change the stats of your weapons as well as gain a new special attack.
+						Asphodene: Con questa Nova Stellare, le tue armi riceveranno temporaneamente nuove statistiche e un attacco esplosivo!
+						Eridani: Questa Stellar Nova renderà possibile il cambiamento momentaneo delle statistiche delle tue armi, e sbloccherà un nuovo attacco.
 					}
 					Locked: {
-						Asphodene: We don't have access to this yet. We have to defeat a foe with some sort of spatial power.
-						Eridani: We can't use this yet. We have to defeat a foe with spatial powers.
+						Asphodene: Non possiamo ancora usare questa Nova. Dobbiamo affrontare e sconfiggere un nemico in possesso di poteri spaziali.
+						Eridani: Questa Nova è ancora bloccata. Sarà disponibile una volta abbattuto un nemico con poteri spaziali a sua disposizione.
 					}
 				}
 			}
@@ -2043,7 +2043,7 @@ Mods: {
                 Se le bolle colpiscono un nemico affetto da [c/4A91FF:Risacca], la chance di critico aumenta al 100%
                 Click destro per infondere in te stesso [c/00FFC1:Furia Marina] per 8 secondi
                 Durante [c/00FFC1:Furia Marina], ogni attacco con quest'arma sparerà bolle in un'area ampia e le evocazioni infliggono danno doppio
-		            [c/00FFC1:Furia Marina] ha 30 secondi di ricarica a partire dalla fine del buff
+		[c/00FFC1:Furia Marina] ha 30 secondi di ricarica a partire dalla fine del buff
                 Il danno aumenta notevolmente con la progressione del mondo
                 '''
             ArachnidNeedlepoint:
@@ -2054,7 +2054,7 @@ Mods: {
                 Solo un [c/83CAEB:Ragno Meccanico] alla volta può attaccarsi ad ogni nemico
                 I [c/83CAEB:Ragni Meccanici] si collegheranno tra di loro una volta allacciati a qualcosa, infliggendo rapidamente danni ai nemici in mezzo
                 Premi GIÙ due volte per rilasciare un [c/83CAEB:Ragno Meccanico] fisso dopo averne evocato almeno uno mobile.
-		            I [c/83CAEB:Ragni Meccanici] fissi non infliggono danno, ma quelli mobili ci si possono collegare per infliggere danno.
+		I [c/83CAEB:Ragni Meccanici] fissi non infliggono danno, ma quelli mobili ci si possono collegare per infliggere danno.
                 Colpire con la frusta i nemici a cui i [c/83CAEB:Ragni Meccanici] si sono allacciati infligge danno critico e conferisce il buff [c/3A8BF3:Ragnatela di Spilli] per 4 secondi.
                 [c/3A8BF3:Ragnatela di Spilli] aumenta il danno di tutte le evocazioni del 30%
                 '''
@@ -2071,89 +2071,89 @@ Mods: {
                 [c/00CDFF:Evocazione]: L' [c/6EF367:Armamento Luminare] attacca periodicamente, infliggendo danno base pari a metà degli HP attuali; può infliggere danni critici
                 'Per il futuro!'
                 '''
-            UrgotLegs: You shouldn't be able to read this!
-            AfterburnerBottom: You shouldn't be able to read this!
-            AfterburnerTop: You shouldn't be able to read this!
-            AfterburnerWings: You shouldn't be able to read this!
-            MeleeBottom: You shouldn't be able to read this!
-            MeleeTop: You shouldn't be able to read this!
-            MeleeWings: You shouldn't be able to read this!
-            ShieldBottom: You shouldn't be able to read this!
-            ShieldTop: You shouldn't be able to read this!
-            ShieldWings: You shouldn't be able to read this!
-            SniperBottom: You shouldn't be able to read this!
-            SniperTop: You shouldn't be able to read this!
-            SniperWings: You shouldn't be able to read this!
-            StarArmorHead: Spatial garb of ages past
-            StarArmorLegs: Spatial garb of ages past
-            StarArmorTop: Spatial garb of ages past
+            UrgotLegs: Non dovresti poter leggere questo testo!
+            AfterburnerBottom: Non dovresti poter leggere questo testo!
+            AfterburnerTop: Non dovresti poter leggere questo testo!
+            AfterburnerWings: Non dovresti poter leggere questo testo!
+            MeleeBottom: Non dovresti poter leggere questo testo!
+            MeleeTop: Non dovresti poter leggere questo testo!
+            MeleeWings: Non dovresti poter leggere questo testo!
+            ShieldBottom: Non dovresti poter leggere questo testo!
+            ShieldTop: Non dovresti poter leggere questo testo!
+            ShieldWings: Non dovresti poter leggere questo testo!
+            SniperBottom: Non dovresti poter leggere questo testo!
+            SniperTop: Non dovresti poter leggere questo testo!
+            SniperWings: Non dovresti poter leggere questo testo!
+            StarArmorHead: Abito spaziale di un'epoca distante
+            StarArmorLegs: Abito spaziale di un'epoca distante
+            StarArmorTop: Abito spaziale di un'epoca distante
             AegisOfHopesLegacy:
                 '''
-                One of the storied garbs from legends past
-                Equip to your Starfarer to gain the following:
-                [c/FFCA5A:Shining Journey]
-                Attacking and taking damage will grant stacks of Hope's Brilliance (Max 100 stacks)
-                Every 10 stacks of Hope's Brilliance increases damage by 2%
-                Striking a foe with the Stellar Nova will consume all stacks of Hope's Brilliance
-                [c/87E3DE:Passage of Arms]
-                Enemies are more likely to target you
-                Taking damage grants Ironskin, Regeneration, and Endurance for 8 seconds
-                Additionally, gain the buff Nascent Aria for 3 seconds, increasing maximum health by 500
-                [c/F94135:Proof of a Hero]
-                Attacks will deal 40% less damage to foes not targetting you
-                [c/8BB9F8:The Echo of Hope]
-                Tier 3 Stellar Array Abilities gain bonus effects
-                Beyond Infinity: Damage is increased by a further 30%
-                Key of Chronology: Cleanse Potion Sickness and gain Heartreach for 30 seconds upon activation
-                Between the Boundary: Gain 40 defense during Flow, and lose 20 defense during Ebb
-                Unbridled Radiance: Stellar Nova Energy can not drop below 10
-                'Stand tall- my friend / May all of the dark deep inside you / Find Light again'
+                Uno degli abiti di cui si narra nelle leggende
+                Equipaggialo alla tua Starfarer per ottenere i seguenti effetti:
+                [c/FFCA5A:Viaggio Radioso]
+                Attaccare e subire danni conferirà cariche di Speranza Risplendente (Massimo 100 cariche)
+                Il danno inflitto aumenta del 2% per ogni 10 cariche di Speranza Risplendente attive
+                Colpire un nemico con una Nova Stellare consuma tutte le cariche di Speranza Risplendente
+                [c/87E3DE:Passaggio di Armi]
+                I nemici ti prenderanno di mira più spesso
+                Subire danno conferisce i buff Pelle di Ferro, Rigenerazione e Resistenza per 8 secondi
+                Inoltre, ottieni il buff Aria Nascente per 3 secondi, aumentando la vita massima di 500
+                [c/F94135:Prova Eroica]
+                I danni inflitti a nemici che non ti stanno prendendo di mira saranno ridotti del 40%
+                [c/8BB9F8:Eco della Speranza]
+                Le abilità di livello 3 della Matrice Stellare ricevono effetti bonus
+                Oltre l'Infinito: Il danno inflitto è aumentato di un ulteriore 30%
+                Chiave della Cronologia: Quando questo effetto si attiva, il Mal di Pozione viene rimosso e ottieni il buff Afferracuori per 30 secondi
+                In Mezzo al Confine: La difesa aumenta di 40 durante Flusso, ed è ridotta di 20 durante Riflusso
+                Luminosità Sconfinata: L'energia della Nova Stellare non può scendere sotto a 10
+                'Testa alta- amico mio / Che tutta l'oscurità dentro di te / Trovi nuovamente la luce'
                 '''
             CelestialPrincessGenesis:
                 '''
-                One of the storied garbs from legends past
-                Equip to your Starfarer to gain the following:
-                [c/FF30AD:Cosmos of the Beginning]
-                The Stellar Nova is locked to Edin Genesis Quasar
-                Attacking foes during Astarte Driver will cause a follow-up attack to occur, dealing 1/3rd original damage again
-                [c/30D6FF:Galactic Spirit Origin]
-                Defeating foes refreshes the duration of Astarte Driver
-                Taking damage charges the Stellar Nova Gauge by 3
-                [c/3068FF:Luminant Starling]
-                Incoming damage is reduced by 10%
-                [c/A55396:Primeval Blasphemy]
-                Deal 70% less damage when Astarte Driver is not active
-                'Know that you are dimensions below me...'
+                Uno degli abiti di cui si narra nelle leggende
+                Equipaggialo alla tua Starfarer per ottenere i seguenti effetti:
+                [c/FF30AD:Cosmo della Genesi]
+                L'unica Stellar Nova disponibile diventa Edin Genesis Quasar
+                Attaccare un nemico durante Astarte Driver sprigiona un secondo attacco che infligge 1/3 del danno originale
+                [c/30D6FF:Origine dello Spirito Galattico]
+                Sconfiggere un nemico resetta la durata di Astarte Driver
+                Subire danno carica la Nova Stellare di 3
+                [c/3068FF:Astro Lucente]
+                Il danno subito viene ridotto del 10%
+                [c/A55396:Blasfemia Primordiale]
+                Il danno inflitto mentre Astarte Driver non è attivo viene ridotto del 70%
+                'Sappi che sei intere dimensioni sotto di me...'
                 '''
             FaerieVoyagerAttire:
                 '''
-                One of the storied garbs from legends past
-                Equip to your Starfarer to gain the following:
-                [c/E69DE9:The Promised Star]
-                Gain 1 Stellar Nova Energy upon defeating foes
-                When your Stellar Nova Gauge is below 50%, gain 1 additional Stellar Nova Energy
-                [c/73E096:A Midsummer Night's Dream]
-                Gain an extra Stellar Array Energy point
-                [c/A185AD:Fleeting Memories]
-                Taking damage inflicts Vulnerable for 4 seconds, halving defense
-                [c/A176F1:Long Sought Paradise]
-                After defeating a boss, gain [c/E1A8F3:Lucent Bliss] for 2 minutes
-                [c/E1A8F3:Lucent Bliss] drastically increases maximum Luck and grants 200% base Luck
-                'Perfect for escapades in dreamland'
+                Uno degli abiti di cui si narra nelle leggende
+                Equipaggialo alla tua Starfarer per ottenere i seguenti effetti:
+                [c/E69DE9:Stella Promessa]
+                Sconfiggere nemici carica la Nova Stellare di 1
+                Quando la tua Nova Stellare è meno carica del 50%, la carica ottenuta in questo modo è raddoppiata
+                [c/73E096:Sogno di Mezz'estate]
+                La Matrice Stellare ottiene un punto extra
+                [c/A185AD:Ricordi Sfuggenti]
+                Subire danno infligge Vulnerabile per 4 secondi, dimezzando la difesa
+                [c/A176F1:Paradiso Ricercato]
+		Dopo aver sconfitto un boss, ottieni [c/E1A8F3:Felicità Luminosa] per 2 minuti
+                [c/E1A8F3:Felicità Luminosa] aumenta drasticamente la fortuna massima e raddoppia la fortuna base
+                'Perfetto per fuggire nella terra dei sogni'
                 '''
             FamiliarLookingAttire:
                 '''
-                One of the storied garbs from legends past
-                Equip to your Starfarer to gain the following:
-                [c/C0C0C0:No effect]
-                Vanity Item
+                Uno degli abiti di cui si narra nelle leggende
+                Equipaggialo alla tua Starfarer per ottenere i seguenti effetti:
+                [c/C0C0C0:Nessun effetto]
+                Costume
                 '''
             StellarCasualAttire:
                 '''
-                One of the storied garbs from legends past
-                Equip to your Starfarer to gain the following:
-                [c/C0C0C0:No effect]
-                Vanity Item
+                Uno degli abiti di cui si narra nelle leggende
+                Equipaggialo alla tua Starfarer per ottenere i seguenti effetti:
+                [c/C0C0C0:Nessun effetto]
+                Costume
                 '''
             AshenAmbition:
                 '''
