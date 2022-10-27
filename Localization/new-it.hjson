@@ -1760,39 +1760,39 @@ Mods: {
 			StellarNovaInfo: {
 				TheofaniaInanis: {
 					AbilityName: Theofania Inanis
-					AbilitySubName: "[c/C2BDFF:Limitless Starry Void]"
-					AbilityDescription: Conjure a colossal blade to cleave foes in twain. After casting, you will be able to re-cast Theofania Inanis for 10 seconds at no additional cost. Striking foes with Theofania Inanis will inflict Void Atrophy, dealing powerful damage over time. The second cast of Theofania Inanis will double the potency of Void Atrophy, if applicable. This debuff lasts for 30 seconds. If the attack crits, refund a portion of consumed Stellar Nova Energy. Each cast does 50% of Stellar Nova damage.
-					AstralBonus: You may re-cast Theofania Inanis again to a total of 3 times, dealing 25% damage. This cast does not inflict Void Atrophy, nor does it strengthen it.
-					UmbralBonus: The second hit of Theofania Inanis does not strengthen Void Atrophy, but increases self damage output by 400% for 5 seconds.
+					AbilitySubName: "[c/C2BDFF:Sconfinato Vuoto Stellato]"
+					AbilityDescription: Evoca una lama colossale, in grado di tagliare ogni cosa a metà. Dopo il primo utilizzo, Theofania Inanis potrà essere rievocata una volta nei 10 secondi successivi, senza costi aggiuntivi. Colpire un nemico con Theofania Inanis causerà Atrofia del Vuoto, che infligge sostanziali danni nel tempo. Il secondo utilizzo di Theofania Inanis raddoppierà la potenza di Atrofia del Vuoto. Il debuff dura 30 secondi. Se Theofania Inanis infligge danni critici, il suo indicatore si ricarica in parte. Ogni utilizzo infligge il 50% del danno della Nova Stellare.
+					AstralBonus: Aumenta le rievocazioni di Theofania Inanis a 3 volte, con ognuna che infligge il 25% del danno base. Gli attacchi successivi al primo non infliggono Atrofia del Vuoto, né la potenziano.
+					UmbralBonus: Il secondo colpo di Theofania Inanis non potenzia Atrofia del Vuoto. Invece, se va a segno, aumenta il danno inflitto dal giocatore del 400% per 5 secondi.
 				
 				}
 				ArsLaevateinn: {
 					AbilityName: Ars Laevateinn
-					AbilitySubName: "[c/F19559:Shine True, O Burning Bright Star]"
-					AbilityDescription: Wield a blazing greatsword to return foes to ashes. Casting Ars Laevataeinn will mark a colossal region around you with infernal flames. Ars Laevateinn will pulse damage five times in the specified region, dealing 1/5th of the total damage with each hit. During this time, you will be granted 'Surtr's Twilight.' While this buff is active, all attacks will Burn foes for 8 seconds. If Burned foes are struck by Ars Laevateinn, they will take a small portion of Stellar Nova damage as extra damage.
-					AstralBonus: Burning foes take extra damage. If the attack was a critical strike, burning foes take even more damage.
-					UmbralBonus: Surtr's Twilight will additionally grant a 10% attack buff. Gain Mana Regeneration while Surtr's Twilight is active.
+					AbilitySubName: "[c/F19559:Brilla, O Ardente Stella Luminosa]"
+					AbilityDescription: Un gigantesco spadone infuocato che incenerisce ogni nemico. Evocare Ars Laevataeinn creerà un' immensa area fiammeggiante intorno al punto in cui è stata utilizzata. Ars Laevateinn colpirà cinque volte in quell'area, infliggendo il 20% del danno totale con ogni attacco. Finché Ars Laevateinn non scompare, ottieni il buff 'Crepuscolo di Surtr', durante cui ogni attacco infliggerà Scottatura ai nemici per 8 secondi. Se un nemico Scottato viene colpito da Ars Laevateinn, subiranno un'ulteriore percentuale del danno base della Stellar Nova.
+					AstralBonus: I nemici Scottati subiscono più danno da ogni attacco, e su di loro i colpi critici sono ancora più efficaci.
+					UmbralBonus: Quando Crepuscolo di Surtr è attivo, i danni inflitti aumentano del 10% e ottieni il buff Rigenerazione del Mana.
 				}
 				KiwamiRyuken: {
 					AbilityName: Kiwami Ryuken
-					AbilitySubName: "[c/36BDEC:Unbridled Essence of the Dragon's Fist]"
-					AbilityDescription: Upon activation of Kiwami Ryuken, you will have a one-second window to take damage from a foe, becoming invincible in the process. If hit, a counterattack will trigger, dealing incredible damage in close proximity, aimed at your cursor. You will be unable to execute the counterattack if the foe is further than melee range, but damage will still be negated. You will be refunded 50% of the Stellar Nova energy cost if you are not hit during Kiwami Ryuken.
-					AstralBonus: The counterattack will always deal critical damage below half health. Restore 5 Stellar Nova Energy upon triggering the counterattack.
-					UmbralBonus: Heal 40 health and mana upon triggering the counterattack. 10 extra Stellar Nova energy will be refunded on failure.
+					AbilitySubName: "[c/36BDEC:Essenza Scatenata del Pugno del Drago]"
+					AbilityDescription: Dopo aver attivato Kiwami Ryuken, per un secondo diventi invulnerabile. Venendo colpiti durante l'invulnerabilità, si attiverà un contrattacco devastante, che infligge danni enormi nel raggio corpo a corpo, mirato verso il cursore. Se il nemico a cui il contrattacco è mirato è più distante della portata massima, non subirà alcun danno, ma l'attacco nemico che lo ha attivato verrà comunque annullato. Se non si viene colpiti durante l'invulnerabilità, Kiwami Ryuken si ricarica del 50%.
+					AstralBonus: Il contrattacco infligge sempre danni critici se la vita attuale di chi lo sferra è sotto la metà. Quando il contrattacco va a segno, ripristina il 5% della carica della Nova Stellare.
+					UmbralBonus: Quando un contrattacco viene attivato, ripristina 40 punti vita e mana. Se fallisce, Kiwami Ryuken ottiene un ulteriore 10% di carica.
 				}
 				GardenOfAvalon: {
-					AbilityName: Garden of Avalon
-					AbilitySubName: "[c/ECB3FC:The Forever-Sealed Utopia]"
-					AbilityDescription: Call forth the Garden of Avalon, infusing the world with radiant energy. Grant powerful Health and Mana regeneration periodically for 8 seconds, scaling with Stellar Nova Damage. Gain Invincibility for 2 seconds. If the cast would be critical, gain Health, modified by Stellar Nova crit modifiers. Additionally, upon a critical cast, gain the buff 'Solemn Aegis' for 15 seconds, which negates one hit of damage independently of Invincibility.
-					AstralBonus: Invincibility lasts for 4 seconds instead of 2. Instantly heal 100 HP upon casting Garden of Avalon.
-					UmbralBonus: Gain an extra buff on cast: Dreamlike Charisma. (Can not stack.) Dreamlike Charisma increases damage by 16%, doubled above 100 Mana.
+					AbilityName: Giardino di Avalon
+					AbilitySubName: "[c/ECB3FC:L'Utopia Sigillata]"
+					AbilityDescription: Il Giardino di Avalon apre i cancelli, infondendo il mondo con energia luminosa. Conferisce invicibilità per 2 secondi, e occasionalmente dei potenti buff di rigenerazione di vita e mana che durano 8 secondi, la cui potenza scala con il danno della Nova Stellare. Se il Giardino di Avalon avesse inflitto un colpo critico, rigenera vita in base ai modificatori di critico della Nova Stellare. Inoltre, con un critico, conferisce il buff 'Egida Solenne' per 15 secondi, che nega un istanza di danno subito a prescindere dall'invincibilità.
+					AstralBonus: L'invincibilita dura il doppio. Ripristina 100 punti vita all'istante quando viene utilizzato.
+					UmbralBonus: L'utilizzo conferisce un ulteriore buff: Carisma Onirico, che aumenta i danni inflitti del 16%, valore che raddoppia sopra i 100 punti mana. Questo buff non è cumulabile.
 				}
 				EdinGenesisQuasar: {
 					AbilityName: Edin Genesis Quasar
-					AbilitySubName: "[c/00FF93:The Moment a Planet Is Born]"
-					AbilityDescription: Upon cast, become immobile and invincible temporarily. Gain 'Astarte Driver' for 25 seconds. Astarte Driver grants infinite flight and three Cosmic Charges. ALL attacks while Astarte Driver is active will inherit the stats of the Stellar Nova. Pressing the Starfarer Action Key with a Cosmic Charge available will launch a barrage of spatial projectiles (2 second use cooldown.) After activating Astarte Driver's stat-changing effect, the target will be immune for a very short period.
-					AstralBonus: Critical hits do an additional {0} damage in Astarte Driver. You will gain a Cosmic Charge after defeating a foe with a critical hit. (Max 5 charges.)
-					UmbralBonus: Astarte Driver attacks will execute any foe below {0} HP. Gain 1 second of Invincibility when a Cosmic Charge is expended.
+					AbilitySubName: "[c/00FF93:Il Momento in cui Nasce un Pianeta]"
+					AbilityDescription: Quando viene utilizzato, Edin Genesis Quasar rende invincibili ed immobili per qualche istante. Conferisce 'Motivazione di Astarte' per 25 secondi, durante cui il volo è illimitato. Ottieni 3 Cariche Cosmiche. TUTTI gli attacchi durante Motivazione di Astarte ottengono le statistiche della Nova Stellare. Utilizzare una Carica Cosmica con il tasto Azione Starfarer farà partire un bombardamento di proiettili spaziali (2 secondi di ricarica).
+					AstralBonus: I colpi critici infliggono {0} danni in più durante Motivazione di Astarte. Una Carica Cosmica verrà ripristinata dopo aver sconfitto un nemico con un colpo critico (Cariche massime: 5).
+					UmbralBonus: Gli attacchi lanciati durante Motivazione di Astarte elimineranno ogni nemico colpito sotto i {0} punti vita. Ogni volta che una Carica Cosmica viene utilizzata, ottieni un secondo di invincibilità.
 				}
 				
 				BaseDamage: Base Damage
