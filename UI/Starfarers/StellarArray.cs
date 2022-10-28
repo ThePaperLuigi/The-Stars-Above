@@ -467,8 +467,7 @@ namespace StarsAbove.UI.Starfarers
 		public override void OnDeactivate()
 		{
 			
-			// Note that in ExamplePerson we call .SetState(new UI.ExamplePersonUI());, thereby creating a new instance of this UIState each time. 
-			// You could go with a different design, keeping around the same UIState instance if you wanted. This would preserve the UIState between opening and closing. Up to you.
+			
 		}
 		private void DragStart(UIMouseEvent evt, UIElement listeningElement)
 		{

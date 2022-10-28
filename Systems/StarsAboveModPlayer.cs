@@ -145,6 +145,11 @@ namespace StarsAbove
         public int CatalystMemoryProgress;
         public Vector2 CatalystPrismicPosition;
 
+        
+        
+
+
+
         //Warrior of Light code //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -744,6 +749,7 @@ namespace StarsAbove
         public int PickaxeWeaponDialogue = 0;
         public int HardwareWeaponDialogue = 0;
         public int CatalystWeaponDialogue = 0;
+        public int SilenceWeaponDialogue = 0;
 
         //Subworld dialogues
         public int observatoryDialogue = 0;
@@ -1364,7 +1370,7 @@ namespace StarsAbove
             tag["PickaxeWeaponDialogue"] = PickaxeWeaponDialogue;
             tag["HardwareWeaponDialogue"] = HardwareWeaponDialogue;
             tag["CatalystWeaponDialogue"] = CatalystWeaponDialogue;
-
+            tag["SilenceWeaponDialogue"] = SilenceWeaponDialogue;
 
             tag["observatoryDialogue"] = observatoryDialogue;
             tag["cosmicVoyageDialogue"] = cosmicVoyageDialogue;
@@ -1622,7 +1628,7 @@ namespace StarsAbove
             PickaxeWeaponDialogue = tag.GetInt("PickaxeWeaponDialogue");
             HardwareWeaponDialogue = tag.GetInt("HardwareWeaponDialogue");
             CatalystWeaponDialogue = tag.GetInt("CatalystWeaponDialogue");
-
+            SilenceWeaponDialogue = tag.GetInt("SilenceWeaponDialogue");
 
             observatoryDialogue = tag.GetInt("observatoryDialogue");
             cosmicVoyageDialogue = tag.GetInt("cosmicVoyageDialogue");
@@ -5374,8 +5380,8 @@ namespace StarsAbove
                           0,
                           "")); //Corresponding dialogue ID.
                     IdleArchiveList.Add(new IdleArchiveListing(
-                   "Default Idle Dialogue", //Name of the archive listing.
-                   "This dialogue appears when you've already seen the normal idle dialogue recently.", //Description of the listing.
+                   LangHelper.GetTextValue($"Archive.DefaultIdleDialogue.Name", Player.name), //Name of the archive listing.
+                   LangHelper.GetTextValue($"Archive.DefaultIdleDialogue.Description", Player.name), //Description of the listing.
                    true, //Unlock requirements.
                    2,
                    "")); //Corresponding dialogue ID.
@@ -6023,6 +6029,13 @@ namespace StarsAbove
                         132,
                         "Defeat Golem, then wait.")); //Corresponding dialogue ID.
                     WeaponArchiveList.Add(new WeaponArchiveListing(
+                        "Golem Weapon", //Name of the archive listing.
+                        $"Grants the Essence for " +
+                        $"[i:{ItemType<Spatial>()}] Gloves of the Black Silence. ", //Description of the listing.
+                        SilenceWeaponDialogue == 2, //Unlock requirements.
+                        156,
+                        "Defeat Golem, then wait.")); //Corresponding dialogue ID.
+                    WeaponArchiveList.Add(new WeaponArchiveListing(
                           "Arbitration Weapon", //Name of the archive listing.
                           $"Grants the Essence for either " +
                           $"[i:{ItemType<Astral>()}] Liberation Blazing " +
@@ -6067,7 +6080,7 @@ namespace StarsAbove
                         "Lunatic Cultist Weapon", //Name of the archive listing.
                         $"Grants the Essence for " +
                         $"[i:{ItemType<Spatial>()}] Catalyst's Memory. ", //Description of the listing.
-                        TwinStarsWeaponDialogue == 2, //Unlock requirements.
+                        CatalystWeaponDialogue == 2, //Unlock requirements.
                         155,
                         "Defeat Lunatic Cultist, then wait.")); //Corresponding dialogue ID.
                     WeaponArchiveList.Add(new WeaponArchiveListing(
@@ -8041,6 +8054,16 @@ namespace StarsAbove
                         if (LunaticCultistWeaponDialogue == 2 && CatalystWeaponDialogue == 0)
                         {
                             CatalystWeaponDialogue = 1;
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                            NewDiskDialogue = true;
+                            WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                            return;
+
+                        }
+                        if (GolemWeaponDialogue == 2 && SilenceWeaponDialogue == 0)
+                        {
+                            SilenceWeaponDialogue = 1;
                             if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                             NewDiskDialogue = true;
                             WeaponDialogueTimer = Main.rand.Next(3600, 7200);

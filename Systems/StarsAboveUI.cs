@@ -37,6 +37,9 @@ namespace StarsAbove
 		private UserInterface _RenegadeGaugeUserInterface;
 		internal RenegadeGauge RenegadeGauge;
 
+		private UserInterface _BlackSilenceGaugeUserInterface;
+		internal BlackSilenceGauge BlackSilenceGauge;
+
 		private UserInterface _VengeanceGaugeUserInterface;
 		internal VengeanceGauge VengeanceGauge;
 
@@ -186,6 +189,10 @@ namespace StarsAbove
 				RhythmGauge = new RhythmGauge();
 				_RhythmGaugeUserInterface = new UserInterface();
 				_RhythmGaugeUserInterface.SetState(RhythmGauge);
+
+				BlackSilenceGauge = new BlackSilenceGauge();
+				_BlackSilenceGaugeUserInterface = new UserInterface();
+				_BlackSilenceGaugeUserInterface.SetState(BlackSilenceGauge);
 
 				RenegadeGauge = new RenegadeGauge();
 				_RenegadeGaugeUserInterface = new UserInterface();
@@ -345,8 +352,8 @@ namespace StarsAbove
 			_ButterflyResourceBarUserInterface?.Update(gameTime);
 			_VengeanceGaugeUserInterface?.Update(gameTime);
 			_EternalGaugeUserInterface?.Update(gameTime);
+			_BlackSilenceGaugeUserInterface?.Update(gameTime);
 			_RenegadeGaugeUserInterface?.Update(gameTime);
-
 			_RhythmGaugeUserInterface?.Update(gameTime);
 
 			_TakodachiGaugeUserInterface?.Update(gameTime);
@@ -480,6 +487,15 @@ namespace StarsAbove
 					delegate
 					{
 						_RhythmGaugeUserInterface.Draw(Main.spriteBatch, new GameTime());
+						return true;
+					},
+					InterfaceScaleType.UI)
+				);
+				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+					"StarsAbove: Black Silence Gauge",
+					delegate
+					{
+						_BlackSilenceGaugeUserInterface.Draw(Main.spriteBatch, new GameTime());
 						return true;
 					},
 					InterfaceScaleType.UI)

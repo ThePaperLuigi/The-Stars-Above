@@ -840,6 +840,14 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
+			if (player.GetModPlayer<StarsAbovePlayer>().SilenceWeaponDialogue == 1)
+			{
+				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 156;
+				player.GetModPlayer<StarsAbovePlayer>().SilenceWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
 			if (player.GetModPlayer<StarsAbovePlayer>().VagrantWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 115;

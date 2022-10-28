@@ -168,6 +168,7 @@ namespace StarsAbove
 			ModContent.ItemType<EverlastingPickaxe>(),
 			ModContent.ItemType<CatalystMemory>(),
 			ModContent.ItemType<ElCapitansHardware>(),
+			ModContent.ItemType<BlackSilenceWeapon>(),
 
 			ModContent.ItemType<EssenceOfAdagium>(),
 			ModContent.ItemType<EssenceOfBloodshed>(),
@@ -203,6 +204,7 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfTheAbyss>(),
 			ModContent.ItemType<EssenceOfTheRenegade>(),
 			ModContent.ItemType<EssenceOfQuantum>(),
+			ModContent.ItemType<EssenceOfSilence>(),
 		};
 
 		public List<int> Prisms = new List<int>() {
@@ -236,7 +238,46 @@ namespace StarsAbove
 
 		};
 
-		public List<int> Outfits = new List<int>() {
+        #region Gifts
+		//Temporary addition, possibly for the 'Rapport' system, kind of like Social Links.
+        public List<int> AsphodeneLikes = new List<int>() {
+
+			//ModContent.ItemType<TotemOfLightEmpowered>(),
+			//ModContent.ItemType<VirtuesEdge>(),
+
+
+		};
+		public List<int> EridaniLikes = new List<int>() {
+
+			//ModContent.ItemType<TotemOfLightEmpowered>(),
+			//ModContent.ItemType<VirtuesEdge>(),
+
+
+		};
+		public List<int> PerseusLikes = new List<int>() {
+
+			//ModContent.ItemType<TotemOfLightEmpowered>(),
+			//ModContent.ItemType<VirtuesEdge>(),
+
+
+		};
+		public List<int> GarridineLikes = new List<int>() {
+
+			//ModContent.ItemType<TotemOfLightEmpowered>(),
+			//ModContent.ItemType<VirtuesEdge>(),
+
+
+		};
+		public List<int> YojimboLikes = new List<int>() {
+
+			//ModContent.ItemType<TotemOfLightEmpowered>(),
+			//ModContent.ItemType<VirtuesEdge>(),
+
+
+		};
+        #endregion
+
+        public List<int> Outfits = new List<int>() {
 
 			ModContent.ItemType<FaerieVoyagerAttire>(),
 			ModContent.ItemType<StellarCasualAttire>(),
@@ -248,6 +289,7 @@ namespace StarsAbove
 		public List<int> GlowingItems = new List<int>() {
 
 			ModContent.ItemType<TotemOfLightEmpowered>(),
+			ModContent.ItemType<BlackSilenceWeapon>(),
 			//ModContent.ItemType<VirtuesEdge>(),
 
 
@@ -330,6 +372,8 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfTheAbyss>(),
 			ModContent.ItemType<EssenceOfTheRenegade>(),
 			ModContent.ItemType<EssenceOfQuantum>(),
+			ModContent.ItemType<EssenceOfSilence>(),
+
 		};
 		public static bool disableAspectPenalty;
 		public static bool disableCalamityWeaponBuffs;
@@ -600,15 +644,20 @@ namespace StarsAbove
 			{
 				if(!disableCalamityWeaponBuffs)
                 {
-					damage += 0.2f;
+					if(Main.hardMode)
+                    {
+						damage += 0.3f;
+					}
+					else
+                    {
+						damage += 0.2f;
+					}
+					
 				}
 				
 
 			}
-			if (item.type == ItemID.Zenith)//Zenith Balance Patch? Nope.
-            {
-				//damage -= 0.3f;
-            }				
+							
 			if ((item.ModItem?.Mod == ModLoader.GetMod("StarsAbove") || player.GetModPlayer<StarsAbovePlayer>().aprismatism == 2) && item.damage > 0)
 			{ //
 				if (player.GetModPlayer<StarsAbovePlayer>().RogueAspect == 2)
