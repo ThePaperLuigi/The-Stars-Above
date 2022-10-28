@@ -55,7 +55,7 @@ namespace StarsAbove.Items
 			Item.useAnimation = 25;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
 			Item.useStyle = ItemUseStyleID.HiddenAnimation;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
 			Item.knockBack = 6;         //The force of knockback of the weapon. Maximum is 20
-			Item.rare = ItemRarityID.Red;              //The rarity of the weapon, from -1 to 13
+			Item.rare = ItemRarityID.Yellow;              //The rarity of the weapon, from -1 to 13
 			//Item.UseSound = SoundID.Item1;      //The sound when the weapon is using
 			Item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
 			Item.shoot = ProjectileType<DurandalSlash1>();
