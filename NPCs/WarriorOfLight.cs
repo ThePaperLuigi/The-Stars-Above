@@ -359,7 +359,7 @@ namespace StarsAbove.NPCs
             //This is the death effect from ExampleMod
             if (NPC.ai[3] > 0f)//This is death effect
             {
-                Music =  MusicLoader.GetMusicSlot(Mod,  "Sounds/Music/BossFinish");
+               
                 NPC.dontTakeDamage = true;
                 NPC.ai[3] += 1f; // increase our death timer.
                                  //npc.velocity = Vector2.UnitY * npc.velocity.Length();
@@ -400,6 +400,11 @@ namespace StarsAbove.NPCs
                 if(!DownedBossSystem.downedWarrior)
                 {
                     NPC.ai[3] += 1000;//If you've seen the cutscene, don't play it again.
+                    //Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/BossFinish");
+                }
+                else
+                {
+                    Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/BossFinish");
                 }
                 if (NPC.ai[3] == 400f)
                 {
