@@ -55,6 +55,7 @@ namespace StarsAbove.Items
 			Item.noMelee = true; 
 			Item.noUseGraphic = true; 
 			Item.autoReuse = true;
+
 		}
 		int judgementSlashCharge = 0;
 

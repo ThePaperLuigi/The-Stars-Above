@@ -53,7 +53,7 @@ namespace StarsAbove.Items
 			
 			Item.knockBack = 7;
 			Item.rare = ItemRarityID.Red;
-
+			Item.value = Item.buyPrice(gold: 1);
 			Item.shoot = ModContent.ProjectileType<VirtueEdgeSlash1>();
 			Item.shootSpeed = 4;
 			Item.autoReuse = true;

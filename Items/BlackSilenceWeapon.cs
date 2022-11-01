@@ -200,6 +200,7 @@ namespace StarsAbove.Items
 
 			return true;
 		}
+		
 		public override void MeleeEffects(Player player, Rectangle hitbox)
 		{
 			
