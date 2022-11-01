@@ -671,7 +671,7 @@ namespace StarsAbove
 							
 						}
 						
-						if (!disableAspectPenalty && !spatialWeapon)
+						if (!disableAspectPenalty && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
 						{
 							damage -= 0.1f;
 						}
@@ -690,7 +690,7 @@ namespace StarsAbove
 					{
 						damage = player.GetTotalDamage(DamageClass.Melee);
 						
-						if (!disableAspectPenalty && !spatialWeapon)
+						if (!disableAspectPenalty && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
 						{
 							damage -= 0.1f;
 						}
@@ -707,7 +707,7 @@ namespace StarsAbove
 					if (oldDamageClass != DamageClass.Magic && oldDamageClass != DamageClass.MagicSummonHybrid)
 					{
 						damage = player.GetTotalDamage(DamageClass.Magic);
-						if (!disableAspectPenalty && !spatialWeapon)
+						if (!disableAspectPenalty && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
 						{
 							damage -= 0.1f;
 						}
@@ -724,7 +724,7 @@ namespace StarsAbove
 					if (oldDamageClass != DamageClass.Ranged)
 					{
 						player.GetTotalDamage(DamageClass.Ranged);
-						if (!disableAspectPenalty && !spatialWeapon)
+						if (!disableAspectPenalty && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
 						{
 							damage -= 0.1f;
 						}
@@ -740,7 +740,7 @@ namespace StarsAbove
 					{
 						damage = player.GetTotalDamage(DamageClass.Summon);
 						
-						if (!disableAspectPenalty && !spatialWeapon)
+						if (!disableAspectPenalty && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
 						{
 							damage -= 0.1f;
 						}
