@@ -50,20 +50,7 @@ namespace StarsAbove.Projectiles.BlackSilence
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-			Player projOwner = Main.player[Projectile.owner];
-			projOwner.GetModPlayer<StarsAbovePlayer>().renegadeGauge++;
-			if(crit)
-            {
-				projOwner.GetModPlayer<StarsAbovePlayer>().renegadeGauge++;
-			}
-			if(target.boss)
-            {
-				projOwner.GetModPlayer<StarsAbovePlayer>().renegadeGauge += 2;
-			}
-			if(projOwner.GetModPlayer<StarsAbovePlayer>().renegadeGauge++ > 100)
-            {
-				projOwner.GetModPlayer<StarsAbovePlayer>().renegadeGauge = 100;
-			}
+			
 
 			base.OnHitNPC(target, damage, knockback, crit);
         }
