@@ -301,13 +301,7 @@ namespace StarsAbove.Items
 
 		public override void AddRecipes()
 		{
-			CreateRecipe(1)
-				.AddIngredient(ItemID.HallowedBar, 6)
-				.AddIngredient(ItemID.SoulofFright, 8)
-				.AddIngredient(ItemID.BlackFairyDust, 2)
-				.AddIngredient(ItemType<EssenceOfLifethirsting>())
-				.AddTile(TileID.Anvils)
-				.Register();
+			
 		}
 	}
 }
