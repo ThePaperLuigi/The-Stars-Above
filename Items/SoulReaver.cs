@@ -8,6 +8,9 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Buffs.BloodBlade;
 using StarsAbove.Projectiles.BloodBlade;
+using System;
+using Terraria.Audio;
+using StarsAbove.Projectiles.SoulReaver;
 
 namespace StarsAbove.Items
 {
@@ -22,10 +25,10 @@ namespace StarsAbove.Items
                 "\nAttacks with this weapon swing in a wide arc and will strike multiple times" +
 				"\nCharging this weapon will execute [Soul Harvest], teleporting you to your cursor and dealing potent damage to foes around you" +
                 "\n[Soul Harvest] will deal 50% increased damage to foes inflicted with Shadowflame" +
-                "\nGain Invincibility for 1 second after use of [Soul Harvest], but become inflicted with Vulnerability for 1 second after, halving defenses" +
+                "\nGain Invincibility for 1 second after use of [Soul Harvest], but become inflicted with Vulnerability for 3 seconds as well, halving defenses" +
                 "\nAfter [Soul Harvest] you will be inflicted with [Soul Split] for 10 seconds, reducing the damage of [Soul Harvest] by 2/3" +
                 "\nCritical strikes with [Soul Harvest] will instead reduce the duration of [Soul Split] to 2 seconds" +
-				"\nDefeating foes will grant a stack of [Dark Soul], granting 2% per stack (capping at 10 stacks)" +
+				"\nDefeating foes will grant a stack of [Dark Soul], granting 2% increased damage per stack (capping at 10 stacks)" +
                 "\nLose all stacks of [Dark Soul] after leaving combat" +
 				$"");  //The (English) text shown below your weapon's name
 
@@ -125,7 +128,160 @@ namespace StarsAbove.Items
         public override void HoldItem(Player player)
         {
 
-			player.AddBuff(BuffType<BloodBladeBuff>(), 2);
+			if (Main.myPlayer == player.whoAmI)
+			{
+				float launchSpeed = 4f + (int)Math.Round(player.GetModPlayer<StarsAbovePlayer>().bowCharge / 30);
+				Vector2 mousePosition = Main.MouseWorld;
+				Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
+				Vector2 arrowVelocity = direction * launchSpeed;
+
+				for (int i = 0; i < 30; i++)
+				{//Circle
+					Vector2 offset = new Vector2();
+					double angle = Main.rand.NextDouble() * 2d * Math.PI;
+					offset.X += (float)(Math.Sin(angle) * (600));
+					offset.Y += (float)(Math.Cos(angle) * (600));
+
+					Dust d2 = Dust.NewDustPerfect(player.MountedCenter + offset, 235, player.velocity, 200, default(Color), 0.5f);
+					d2.fadeIn = 0.1f;
+					d2.noGravity = true;
+				}
+
+
+				if (player.channel)
+				{
+					Item.useTime = 2;
+					Item.useAnimation = 2;
+					player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = true;
+					player.GetModPlayer<StarsAbovePlayer>().bowCharge += 2;
+					if (player.GetModPlayer<StarsAbovePlayer>().bowCharge == 1)
+					{
+						//Main.PlaySound(SoundLoader.customSoundType, (int)player.Center.X, (int)player.Center.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/bowstring"), 0.5f);
+					}
+					if (player.GetModPlayer<StarsAbovePlayer>().bowCharge == 98)
+					{
+						for (int d = 0; d < 32; d++)
+						{
+							Dust.NewDust(player.Center, 0, 0, 235, 0f + Main.rand.Next(-12, 12), 0f + Main.rand.Next(-12, 12), 150, default(Color), 0.8f);
+						}
+						
+						
+						SoundEngine.PlaySound(SoundID.Item113, player.position);
+					}
+					if (player.GetModPlayer<StarsAbovePlayer>().bowCharge == 16)
+					{
+						//Weapon animation.
+						//Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<TheOnlyThingIKnowForRealSheathe>(), 0, 3, player.whoAmI, 0f);
+
+						SoundEngine.PlaySound(SoundID.Item1, player.position);
+					}
+					if (player.GetModPlayer<StarsAbovePlayer>().bowCharge >= 16)
+					{
+						player.velocity = Vector2.Zero;
+					}
+					if (player.GetModPlayer<StarsAbovePlayer>().bowCharge == 40 || player.GetModPlayer<StarsAbovePlayer>().bowCharge == 64)
+					{
+
+						SoundEngine.PlaySound(SoundID.Item1, player.position);
+					}
+					if (player.GetModPlayer<StarsAbovePlayer>().bowCharge < 100)
+					{
+						for (int i = 0; i < 30; i++)
+						{//Circle
+							Vector2 offset = new Vector2();
+							double angle = Main.rand.NextDouble() * 2d * Math.PI;
+							offset.X += (float)(Math.Sin(angle) * (100 - player.GetModPlayer<StarsAbovePlayer>().bowCharge));
+							offset.Y += (float)(Math.Cos(angle) * (100 - player.GetModPlayer<StarsAbovePlayer>().bowCharge));
+
+							Dust d2 = Dust.NewDustPerfect(player.MountedCenter + offset, 235, player.velocity, 200, default(Color), 0.5f);
+							d2.fadeIn = 0.1f;
+							d2.noGravity = true;
+						}
+						//Charge dust
+						Vector2 vector = new Vector2(
+							Main.rand.Next(-28, 28) * (0.003f * 40 - 10),
+							Main.rand.Next(-28, 28) * (0.003f * 40 - 10));
+						Dust d = Main.dust[Dust.NewDust(
+							player.MountedCenter + vector, 1, 1,
+							235, 0, 0, 255,
+							new Color(0.8f, 0.4f, 1f), 0.8f)];
+						d.velocity = -vector / 12;
+						d.velocity -= player.velocity / 8;
+						d.noLight = true;
+						d.noGravity = true;
+
+					}
+					else
+					{
+						Dust.NewDust(player.Center, 0, 0, 235, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 0.8f);
+					}
+				}
+				else
+				{
+					Item.useTime = 25;
+					Item.useAnimation = 25;
+
+					if (player.GetModPlayer<StarsAbovePlayer>().bowCharge >= 98)//If the weapon is fully charged...
+					{
+						
+						player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
+						player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
+						player.AddBuff(BuffType<Invincibility>(), 60);
+
+						SoundEngine.PlaySound(SoundID.Item1, player.position);
+						if (Vector2.Distance(Main.MouseWorld, player.Center) <= 600f)
+						{
+							for (int i = 0; i < 100; i++)
+							{
+								Vector2 position = Vector2.Lerp(player.Center, Main.MouseWorld, (float)i / 100);
+								Dust d = Dust.NewDustPerfect(position, DustID.FireworkFountain_Pink, null, 240, default(Color), 0.9f);
+								d.fadeIn = 0.3f;
+								d.noLight = true;
+								d.noGravity = true;
+
+							}
+							player.Teleport(new Vector2(Main.MouseWorld.X, Main.MouseWorld.Y - 10), 1, 0);
+							NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, (float)player.whoAmI, Main.MouseWorld.X, Main.MouseWorld.Y - 10, 1, 0, 0);
+						}
+
+						/*if (player.HasBuff(BuffType<ImpactRecoil>()))
+						{
+							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<TheOnlyThingIKnowForRealSpin>(), (player.GetWeaponDamage(Item) / 2) / 2, 3, player.whoAmI, 0f);
+
+						}
+						else
+						{
+							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<TheOnlyThingIKnowForRealSpin>(), (player.GetWeaponDamage(Item) / 2), 3, player.whoAmI, 0f);
+
+						}
+						*/
+						player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
+						//player.AddBuff(BuffType<ImpactRecoil>(), 720);
+
+					}
+					else
+					{
+						if (player.GetModPlayer<StarsAbovePlayer>().bowCharge > 0 && player.GetModPlayer<StarsAbovePlayer>().bowCharge <= 30)
+						{//
+						 //SoundEngine.PlaySound(SoundID.Item11, player.position);
+
+							player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
+							player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
+							SoundEngine.PlaySound(SoundID.Item1, player.position);
+
+							
+
+						}
+						else
+						{
+							player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
+							player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
+						}
+					}
+				}
+
+
+			}
 
 			base.HoldItem(player);
         }
@@ -136,37 +292,8 @@ namespace StarsAbove.Items
 			 
 			if(player.altFunctionUse != 2)
             {
-				if (player.direction == 1)
-				{
-					if (altSwing)
-					{
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<BloodSlash2>(), player.GetWeaponDamage(Item), knockback, player.whoAmI, 0f);
-
-						altSwing = false;
-					}
-					else
-					{
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<BloodSlash1>(), player.GetWeaponDamage(Item), knockback, player.whoAmI, 0f);
-
-						altSwing = true;
-					}
-
-				}
-				else
-				{
-					if (altSwing)
-					{
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<BloodSlash1>(), player.GetWeaponDamage(Item), knockback, player.whoAmI, 0f);
-
-						altSwing = false;
-					}
-					else
-					{
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<BloodSlash2>(), player.GetWeaponDamage(Item), knockback, player.whoAmI, 0f);
-
-						altSwing = true;
-					}
-				}
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<SoulReaverSlashEffect1>(), damage, 3, player.whoAmI, 0f);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<SoulReaverSlashEffect2>(), 0, 3, player.whoAmI, 0f);
 			}
 			
 			return false;
