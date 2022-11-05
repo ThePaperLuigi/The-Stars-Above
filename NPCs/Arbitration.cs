@@ -46,12 +46,12 @@ namespace StarsAbove.NPCs
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
             {
                 NPC.lifeMax = 816660;
-                NPC.defense = 115;
+                NPC.defense = 40;
             }
             else
             {
                 NPC.lifeMax = 226660;
-                NPC.defense = 85;
+                NPC.defense = 25;
             }
            
             NPC.boss = true;

@@ -28,13 +28,13 @@ namespace StarsAbove.NPCs
                 if (Main.expertMode)
                 {
                     NPC.lifeMax = 970000;
-                    NPC.defense = 150;
+                    NPC.defense = 40;
 
                 }
                 else
                 {
                     NPC.lifeMax = 840000;
-                    NPC.defense = 100;
+                    NPC.defense = 20;
 
                 }
 
@@ -46,13 +46,13 @@ namespace StarsAbove.NPCs
                 if (Main.expertMode)
                 {
                     NPC.lifeMax = 335000;
-                    NPC.defense = 60;
+                    NPC.defense = 20;
 
                 }
                 else
                 {
                     NPC.lifeMax = 282000;
-                    NPC.defense = 20;
+                    NPC.defense = 10;
 
                 }
             }
