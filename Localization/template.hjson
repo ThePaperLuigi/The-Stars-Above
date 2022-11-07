@@ -1249,6 +1249,15 @@ Mods: {
 					177: We've made it. This planet is strange.. The surface has been wiped clean... What happened?
 					178: She was so close all along... Use the Mnemonic Sigil on the arena's center to begin.
 					179: It looks like we can't explore this yet... Maybe next time.
+					
+					180: Wow, this place is seriously covered in greenery. Looks like a fun trip- let's get to exploring!
+					
+					181: Okay, that slime's stopped holding back. Let's dig in our heels for a fight.
+					182: Not the treasure I was expecting... Prepare yourself, that evil spirit's planning a dastardly attack.
+					183: Something about this foe rubs me the wrong way. Don't let your guard down, lest it do something with this 'Planetarium' thing.
+					184: It's getting seriously cold around you. Heads up: this snowflake-shaped being is coming your way.
+					185: Don't make light of this foe- it's seriously dangerous. Hehe- but seriously, this thing's no joke. Take caution.
+					186: I love throwing explosives as much as the next guy, but it seems you've been punished for that. Prepare for a fight.
 				}
 				Eridani: {
 					1: Uhh.. you're looking a little sick.
@@ -1430,6 +1439,16 @@ Mods: {
 					177: It looks like we can't explore this yet... Maybe next time.
 					178: A being of the apocalypse has appeared. It wields destruction in all its appendages!
 					179: This huge amalgamate draws from the world's evils! Killing one slime will empower the other!
+					
+					180: Looks like this biome's governed mostly by foliage- a bit more tasteful than the Jungle, I'd say. Let's look around.
+					
+					181: Seems like you've bothered that slime enough- it seems to have drastically altered its fighting style.
+					182: A Pharaoh in the depths of a pyramid? That sounds about right- but looks like you'll have to deal with what comes next.
+					183: I'm getting a bad feeling from this enemy... Let's dispatch of it quickly, lest it do something else with this 'Planetarium.'
+					184: Hey, the temperature of your surroundings is dropping dramatically. I'm sure you can see the source of this anomaly- deal with it, fast.
+					185: Whatever this thing is, it's hard to even look at. Be careful, it's powerful and lethal.
+					186: I think whatever you've done must have had some serious repercussions- a strange entity has emerged, and is heading your way.
+					
 					
 				}
 			}
@@ -2220,7 +2239,7 @@ Mods: {
             BuryTheLight: {
                 $parentVal:
                     '''
-                    [c/FF5858:This weapon's attacks will slash at your cursor and ignore 100 armor]
+                    [c/FF5858:This weapon's attacks will slash at your cursor and deal true damage]
                     Each strike will restore Health and Mana
                     Critical hits will inflict Starblight for 20 seconds
                     On a critical hit, foes that are currently inflicted with Starblight will take extra damage and also be inflicted with Frostburn for 20 seconds
