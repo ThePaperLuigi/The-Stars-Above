@@ -1021,6 +1021,9 @@ namespace StarsAbove
         public bool seenGraniteBiome;
         public bool seenMarbleBiome;
 
+        //Verdant
+        public bool seenVerdantBiome;
+
         //Calamity Bosses
         //Pre Hardmode
         public bool seenDesertScourge;
@@ -1073,6 +1076,14 @@ namespace StarsAbove
         public bool seenLich;
         public bool seenAbyssion;
         public bool seenPrimordials;
+
+        //SOTS Bosses
+        public bool seenPutridPinky;
+        public bool seenPharaoh;
+        public bool seenAdvisor;
+        public bool seenPolaris;
+        public bool seenLux;
+        public bool seenSubspaceSerpent;
 
         //Fargos Souls Bosses
         public bool seenTrojanSquirrel;
@@ -1458,6 +1469,13 @@ namespace StarsAbove
             tag["seenAbyssion"] = seenAbyssion;
             tag["seenPrimordials"] = seenPrimordials;
 
+            tag["seenPutridPinky"] = seenPutridPinky;
+            tag["seenPharaoh"] = seenPharaoh;
+            tag["seenAdvisor"] = seenAdvisor;
+            tag["seenPolaris"] = seenPolaris;
+            tag["seenLux"] = seenLux;
+            tag["seenSubspaceSerpent"] = seenSubspaceSerpent;
+
             tag["seenTrojanSquirrel"] = seenTrojanSquirrel;
             tag["seenDeviantt"] = seenDeviantt;
             tag["seenEridanus"] = seenEridanus;
@@ -1490,6 +1508,8 @@ namespace StarsAbove
             tag["seenAquaticDepths"] = seenAquaticDepthsBiome;
             tag["seenGranite"] = seenGraniteBiome;
             tag["seenMarble"] = seenMarbleBiome;
+
+            tag["seenVerdant"] = seenVerdantBiome;
 
 
             tag["affixSlot1"] = StellarNovaUI._affixSlot1.Item;
@@ -1751,6 +1771,13 @@ namespace StarsAbove
             seenAbyssion = tag.GetBool("seenAbyssion");
             seenPrimordials = tag.GetBool("seenPrimordials");
 
+            seenPutridPinky = tag.GetBool("seenPutridPinky");
+            seenPharaoh = tag.GetBool("seenPharaoh");
+            seenAdvisor = tag.GetBool("seenAdvisor");
+            seenPolaris = tag.GetBool("seenPolaris");
+            seenLux = tag.GetBool("seenLux");
+            seenSubspaceSerpent = tag.GetBool("seenSubspaceSerpent");
+
             seenTrojanSquirrel = tag.GetBool("seenTrojanSquirrel");
             seenDeviantt = tag.GetBool("seenDeviantt");
             seenEridanus = tag.GetBool("seenEridanus");
@@ -1785,6 +1812,9 @@ namespace StarsAbove
             seenAquaticDepthsBiome = tag.GetBool("seenAquaticDepths");
             seenGraniteBiome = tag.GetBool("seenGranite");
             seenMarbleBiome = tag.GetBool("seenMarble");
+
+            seenVerdantBiome = tag.GetBool("seenVerdant");
+
 
             affixItem1 = tag.Get<Item>("affixSlot1");
             affixItem2 = tag.Get<Item>("affixSlot2");
@@ -9272,6 +9302,65 @@ namespace StarsAbove
 
             }
 
+            if (ModLoader.TryGetMod("SOTS", out Mod SOTS))
+            {
+                if (NPC.AnyNPCs(SOTS.Find<ModNPC>("PutridPinkyPhase2").Type) && !seenPutridPinky)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onPutridPinky");
+                    seenUnknownBossTimer = 300;
+                }
+                if (NPC.AnyNPCs(SOTS.Find<ModNPC>("PharaohsCurse").Type) && !seenPharaoh)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onPharaoh");
+                    seenUnknownBossTimer = 300;
+                }
+                if (NPC.AnyNPCs(SOTS.Find<ModNPC>("TheAdvisorHead").Type) && !seenAdvisor)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onAdvisor");
+                    seenUnknownBossTimer = 300;
+                }
+                if (NPC.AnyNPCs(SOTS.Find<ModNPC>("Polaris").Type) && !seenPolaris)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onPolaris");
+                    seenUnknownBossTimer = 300;
+                }
+                if (NPC.AnyNPCs(SOTS.Find<ModNPC>("Lux").Type) && !seenLux)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onLux");
+                    seenUnknownBossTimer = 300;
+                }
+                if (NPC.AnyNPCs(SOTS.Find<ModNPC>("SubspaceSerpentBody").Type) && !seenSubspaceSerpent)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onSubspaceSerpent");
+                    seenUnknownBossTimer = 300;
+                }
+
+
+            }
             //Thorium Mod Bosses
             /*
             if (thoriumMod != null)
@@ -9561,8 +9650,18 @@ namespace StarsAbove
 
             //Modded Biomes
 
-
-
+            if (ModLoader.TryGetMod("Verdant", out Mod verdantMod))
+            {
+                if ((bool)verdantMod.Call("InVerdant") && !seenVerdantBiome)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onEnterVerdant");
+                }
+            }
+            
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod9))
             {
                 if ((bool)calamityMod.Call("GetInZone", Main.LocalPlayer, "crags") && !seenCragBiome)
@@ -9708,13 +9807,16 @@ namespace StarsAbove
                     Player.AddBuff(BuffType<LucentBliss>(), 7200);
                 }
             }
+            //
             if (starfarerOutfit == 3)//Celestial
             {
-                if (Player.HasBuff(BuffType<AstarteDriver>()))
+                if (npc.CanBeChasedBy() && !npc.SpawnedFromStatue)
                 {
-                    Player.AddBuff(BuffType<AstarteDriver>(), 1500);
+                    if (Player.HasBuff(BuffType<AstarteDriver>()))
+                    {
+                        Player.AddBuff(BuffType<AstarteDriver>(), 1500);
+                    }
                 }
-
 
             }
         }
@@ -13429,6 +13531,45 @@ namespace StarsAbove
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.136", Player.name); //The elements themselves are on the hunt. Let's show them a thing or two!
                         seenPrimordials = true;
                     }
+
+                    //Secrets of the Shadows
+                    if (eventPrompt == "onPutridPinky")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.181", Player.name); //Watch yourself.. looks like a Borean Strider is nearby.
+                        seenPutridPinky = true;
+                    }
+                    if (eventPrompt == "onPharaoh")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.182", Player.name); //Looks like a Beholder's reacted with the Void Lens. Let's stab it in its big ugly eye..!
+                        seenPharaoh = true;
+                    }
+                    if (eventPrompt == "onAdvisor")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.183", Player.name); //The Grim Harvest Sigil has summoned a powerful foe. I don't know what else you expected!
+                        seenAdvisor = true;
+                    }
+                    if (eventPrompt == "onPolaris")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.184", Player.name); //The Abyssal Shadows are converging! I sense powerful dark magic from this sea creature..
+                        seenPolaris = true;
+                    }
+                    if (eventPrompt == "onLux")
+                    {
+                        promptExpression = 0;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.185", Player.name); //The elements themselves are on the hunt. Let's show them a thing or two!
+                        seenLux = true;
+                    }
+                    if (eventPrompt == "onSubspaceSerpent")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.186", Player.name); //The elements themselves are on the hunt. Let's show them a thing or two!
+                        seenSubspaceSerpent = true;
+                    }
+
                     //Upon entering a biome for the first time..
                     if (eventPrompt == "onEnterDesert")
                     {
@@ -13501,6 +13642,14 @@ namespace StarsAbove
                         promptExpression = 6;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.148", Player.name); //So this is the meteor impact we heard. I bet we can make some crazy stuff with a meteorite.
                         seenMeteoriteBiome = true;
+                    }
+
+                    //Verdant
+                    if (eventPrompt == "onEnterVerdant")
+                    {
+                        promptExpression = 0;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.180", Player.name);
+                        seenVerdantBiome = true;
                     }
 
                     //Calamity Biomes
@@ -14544,6 +14693,44 @@ namespace StarsAbove
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.134", Player.name); //Primordial energy is forming all around you.. The elements themselves are on the attack!
                         seenPrimordials = true;
                     }
+                    //Secrets of the Shadows
+                    if (eventPrompt == "onPutridPinky")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.181", Player.name); //Watch yourself.. looks like a Borean Strider is nearby.
+                        seenPutridPinky = true;
+                    }
+                    if (eventPrompt == "onPharaoh")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.182", Player.name); //Looks like a Beholder's reacted with the Void Lens. Let's stab it in its big ugly eye..!
+                        seenPharaoh = true;
+                    }
+                    if (eventPrompt == "onAdvisor")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.183", Player.name); //The Grim Harvest Sigil has summoned a powerful foe. I don't know what else you expected!
+                        seenAdvisor = true;
+                    }
+                    if (eventPrompt == "onPolaris")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.184", Player.name); //The Abyssal Shadows are converging! I sense powerful dark magic from this sea creature..
+                        seenPolaris = true;
+                    }
+                    if (eventPrompt == "onLux")
+                    {
+                        promptExpression = 0;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.185", Player.name); //The elements themselves are on the hunt. Let's show them a thing or two!
+                        seenLux = true;
+                    }
+                    if (eventPrompt == "onSubspaceSerpent")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.186", Player.name); //The elements themselves are on the hunt. Let's show them a thing or two!
+                        seenSubspaceSerpent = true;
+                    }
+
                     //Upon entering a biome for the first time..
                     if (eventPrompt == "onEnterDesert")
                     {
@@ -14617,6 +14804,15 @@ namespace StarsAbove
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.146", Player.name); //So this is the meteor impact we heard. Wonder what you can make out of it..?
                         seenMeteoriteBiome = true;
                     }
+
+                    //Verdant
+                    if (eventPrompt == "onEnterVerdant")
+                    {
+                        promptExpression = 0;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.180", Player.name);
+                        seenVerdantBiome = true;
+                    }
+
 
                     //Calamity Biomes
                     if (eventPrompt == "onEnterCrag")
@@ -14822,7 +15018,7 @@ namespace StarsAbove
                         seenCity = true;
                     }
                 }
-                promptDialogue = Wrap(promptDialogue, 88);
+                promptDialogue = Wrap(promptDialogue, 78);
             }
         }
         public void StellarNovaEnergy()
