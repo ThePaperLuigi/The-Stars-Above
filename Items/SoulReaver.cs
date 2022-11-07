@@ -175,15 +175,6 @@ namespace StarsAbove.Items
 
 						SoundEngine.PlaySound(SoundID.Item1, player.position);
 					}
-					if (player.GetModPlayer<StarsAbovePlayer>().bowCharge >= 16)
-					{
-						player.velocity = Vector2.Zero;
-					}
-					if (player.GetModPlayer<StarsAbovePlayer>().bowCharge == 40 || player.GetModPlayer<StarsAbovePlayer>().bowCharge == 64)
-					{
-
-						SoundEngine.PlaySound(SoundID.Item1, player.position);
-					}
 					if (player.GetModPlayer<StarsAbovePlayer>().bowCharge < 100)
 					{
 						for (int i = 0; i < 30; i++)
@@ -226,9 +217,15 @@ namespace StarsAbove.Items
 						
 						player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
 						player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
+						//Reset the charge gauge.
+
+						//Grant Invincibility, because you'll be most likely teleporting into the enemy's hitbox.
 						player.AddBuff(BuffType<Invincibility>(), 60);
 
+						//Play the weapon swing sound.
 						SoundEngine.PlaySound(SoundID.Item1, player.position);
+
+						//Draw fireworks from the player's position to the teleport position.
 						if (Vector2.Distance(Main.MouseWorld, player.Center) <= 600f)
 						{
 							for (int i = 0; i < 100; i++)
@@ -240,9 +237,13 @@ namespace StarsAbove.Items
 								d.noGravity = true;
 
 							}
+							//Teleport the player to the teleport position (this would be the mouse)
 							player.Teleport(new Vector2(Main.MouseWorld.X, Main.MouseWorld.Y - 10), 1, 0);
+							//Tell the server you're teleporting
 							NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, (float)player.whoAmI, Main.MouseWorld.X, Main.MouseWorld.Y - 10, 1, 0, 0);
 						}
+
+						//Use a different projectile/deal less or more damage depending on the debuff
 
 						/*if (player.HasBuff(BuffType<ImpactRecoil>()))
 						{
@@ -255,14 +256,18 @@ namespace StarsAbove.Items
 
 						}
 						*/
+
+						//Screen shake
 						player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
+
+						//Add a cooldown debuff
 						//player.AddBuff(BuffType<ImpactRecoil>(), 720);
 
 					}
 					else
 					{
 						if (player.GetModPlayer<StarsAbovePlayer>().bowCharge > 0 && player.GetModPlayer<StarsAbovePlayer>().bowCharge <= 30)
-						{//
+						{//Uncharged attack (lower than the threshold.)
 						 //SoundEngine.PlaySound(SoundID.Item11, player.position);
 
 							player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
@@ -292,8 +297,8 @@ namespace StarsAbove.Items
 			 
 			if(player.altFunctionUse != 2)
             {
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<SoulReaverSlashEffect1>(), damage, 3, player.whoAmI, 0f);
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<SoulReaverSlashEffect2>(), 0, 3, player.whoAmI, 0f);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, velocity.X, velocity.Y, ProjectileType<SoulReaverSlashEffect2>(), 0, 3, player.whoAmI, 0f);;
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, velocity.X, velocity.Y, ProjectileType<SoulReaverSlashEffect1>(), damage, 3, player.whoAmI, 0f);
 			}
 			
 			return false;
