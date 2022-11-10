@@ -169,6 +169,8 @@ namespace StarsAbove
 			ModContent.ItemType<CatalystMemory>(),
 			ModContent.ItemType<ElCapitansHardware>(),
 			ModContent.ItemType<BlackSilenceWeapon>(),
+			ModContent.ItemType<SoulReaver>(),
+
 
 			ModContent.ItemType<EssenceOfAdagium>(),
 			ModContent.ItemType<EssenceOfBloodshed>(),
@@ -205,6 +207,8 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfTheRenegade>(),
 			ModContent.ItemType<EssenceOfQuantum>(),
 			ModContent.ItemType<EssenceOfSilence>(),
+			ModContent.ItemType<EssenceOfSouls>(),
+
 		};
 
 		public List<int> Prisms = new List<int>() {
@@ -373,6 +377,8 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfTheRenegade>(),
 			ModContent.ItemType<EssenceOfQuantum>(),
 			ModContent.ItemType<EssenceOfSilence>(),
+			ModContent.ItemType<EssenceOfSouls>(),
+
 
 		};
 		public static bool disableAspectPenalty;
@@ -840,7 +846,8 @@ namespace StarsAbove
 			if(player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer != 1 && player.whoAmI == Main.myPlayer && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
             {
 				if(AstralWeapons.Contains(item.type) && !disableWeaponRestriction)
-				{            
+				{      
+					//Add this to localization later.
 					if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("The weapon fails to react to your Aspect, rendering it unusable."), 241, 255, 180);}
 
 					return false;

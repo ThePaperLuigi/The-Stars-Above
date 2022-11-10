@@ -856,6 +856,14 @@ namespace StarsAbove.Items.Consumables
 				
 				return true;
 			}
+			if (player.GetModPlayer<StarsAbovePlayer>().SoulWeaponDialogue == 1)
+			{
+				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 157;
+				player.GetModPlayer<StarsAbovePlayer>().SoulWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
 			if (player.GetModPlayer<StarsAbovePlayer>().NalhaunWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 117;

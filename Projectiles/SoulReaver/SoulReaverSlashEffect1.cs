@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles.SoulReaver
@@ -26,11 +27,11 @@ namespace StarsAbove.Projectiles.SoulReaver
 			
 			Projectile.hide = false;
 			Projectile.ownerHitCheck = true;
-			Projectile.DamageType = DamageClass.Magic;
+			Projectile.DamageType = DamageClass.Melee;
 			Projectile.tileCollide = false;
 			Projectile.friendly = true;
 			Projectile.usesLocalNPCImmunity = true;
-			Projectile.localNPCHitCooldown = 5;
+			Projectile.localNPCHitCooldown = -1;
 			DrawOriginOffsetY = 150;
 		}
 
@@ -43,7 +44,36 @@ namespace StarsAbove.Projectiles.SoulReaver
 		}
 
 		// It appears that for this AI, only the ai0 field is used!
-		public override void AI()
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		{
+			for (int d = 0; d < 8; d++)
+			{
+				Dust.NewDust(target.Center, 0, 0, DustID.Clentaminator_Purple, Main.rand.NextFloat(-5, 5), Main.rand.NextFloat(-5, 5), 150, default(Color), 0.4f);
+
+			}
+			for (int d = 0; d < 8; d++)
+			{
+				Dust.NewDust(target.Center, 0, 0, DustID.PurpleCrystalShard, Main.rand.NextFloat(-8, 8), Main.rand.NextFloat(-8, 8), 150, default(Color), 0.5f);
+
+			}
+			for (int d = 0; d < 8; d++)
+			{
+				Dust.NewDust(target.Center, 0, 0, DustID.FireworkFountain_Pink, Main.rand.NextFloat(-7, 7), Main.rand.NextFloat(-7, 7), 150, default(Color), 0.6f);
+
+			}
+
+			base.OnHitNPC(target, damage, knockback, crit);
+		}
+        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+			if(target.HasBuff(BuffID.ShadowFlame))
+            {
+				damage = (int)(damage * 1.5);
+            }
+
+            base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
+        }
+        public override void AI()
 		{
 			Lighting.AddLight(Projectile.Center, new Vector3(1f, 1f, 1f));
 			 
@@ -54,7 +84,6 @@ namespace StarsAbove.Projectiles.SoulReaver
 			// Here we set some of the projectile's owner properties, such as held item and itemtime, along with projectile direction and position based on the player
 			Vector2 ownerMountedCenter = projOwner.RotatedRelativePoint(projOwner.MountedCenter, true);
 			Projectile.direction = projOwner.direction;
-			projOwner.heldProj = Projectile.whoAmI;
 			projOwner.itemTime = projOwner.itemAnimation;
 			Projectile.position.X = ownerMountedCenter.X - (float)(Projectile.width / 2);
 			Projectile.position.Y = ownerMountedCenter.Y - (float)(Projectile.height / 2);

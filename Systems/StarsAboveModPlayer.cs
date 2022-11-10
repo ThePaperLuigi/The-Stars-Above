@@ -434,6 +434,10 @@ namespace StarsAbove
         public Vector2 sirenTarget;
         public Vector2 sirenEnemy;
 
+        //Soul Reaver
+        public bool SoulReaverHeld;
+        public int SoulReaverSouls;
+
         //Stygian Nymph
         public int duality = 100;
 
@@ -750,6 +754,7 @@ namespace StarsAbove
         public int HardwareWeaponDialogue = 0;
         public int CatalystWeaponDialogue = 0;
         public int SilenceWeaponDialogue = 0;
+        public int SoulWeaponDialogue = 0;
 
         //Subworld dialogues
         public int observatoryDialogue = 0;
@@ -1382,6 +1387,8 @@ namespace StarsAbove
             tag["HardwareWeaponDialogue"] = HardwareWeaponDialogue;
             tag["CatalystWeaponDialogue"] = CatalystWeaponDialogue;
             tag["SilenceWeaponDialogue"] = SilenceWeaponDialogue;
+            tag["SoulWeaponDialogue"] = SoulWeaponDialogue;
+
 
             tag["observatoryDialogue"] = observatoryDialogue;
             tag["cosmicVoyageDialogue"] = cosmicVoyageDialogue;
@@ -1649,6 +1656,8 @@ namespace StarsAbove
             HardwareWeaponDialogue = tag.GetInt("HardwareWeaponDialogue");
             CatalystWeaponDialogue = tag.GetInt("CatalystWeaponDialogue");
             SilenceWeaponDialogue = tag.GetInt("SilenceWeaponDialogue");
+            SoulWeaponDialogue = tag.GetInt("SoulWeaponDialogue");
+
 
             observatoryDialogue = tag.GetInt("observatoryDialogue");
             cosmicVoyageDialogue = tag.GetInt("cosmicVoyageDialogue");
@@ -3977,10 +3986,7 @@ namespace StarsAbove
                     }
                 }
             }
-            if (!target.active)
-            {
-                OnKillEnemy(target);
-            }
+           
             base.ModifyHitNPCWithProj(proj, target, ref damage, ref knockback, ref crit, ref hitDirection);
         }
         public override void ModifyScreenPosition()
@@ -4055,7 +4061,7 @@ namespace StarsAbove
             {
                 boilingBloodDamage += damage / 4;
             }
-
+           
 
             if (crit)
             {
@@ -4147,7 +4153,7 @@ namespace StarsAbove
                 if (!target.active && target.lifeMax == 5 && target.CanBeChasedBy())
                 {
 
-
+                    
 
 
                 }
@@ -5252,6 +5258,7 @@ namespace StarsAbove
             if (inCombat < 0)
             {
                 butchersDozenKills = 0;
+                SoulReaverSouls = 0;
             }
             if (butchersDozenKills >= 12 && !Player.dead && Player.active)
             {
@@ -6128,6 +6135,13 @@ namespace StarsAbove
                         $"[i:{ItemType<Spatial>()}] Shadowless Cerulean. ", //Description of the listing.
                         ShadowlessWeaponDialogue == 2, //Unlock requirements.
                         122,
+                        "Defeat Moon Lord, then wait.")); //Corresponding dialogue ID.
+                    WeaponArchiveList.Add(new WeaponArchiveListing(
+                        "Moon Lord Weapon", //Name of the archive listing.
+                        $"Grants the Essence for " +
+                        $"[i:{ItemType<Spatial>()}] Soul Reaver. ", //Description of the listing.
+                        SoulReaverDialogue == 2, //Unlock requirements.
+                        157,
                         "Defeat Moon Lord, then wait.")); //Corresponding dialogue ID.
                     WeaponArchiveList.Add(new WeaponArchiveListing(
                          "Moon Lord Weapon", //Name of the archive listing.
@@ -8101,6 +8115,16 @@ namespace StarsAbove
                             return;
 
                         }
+                        if (GolemWeaponDialogue == 2 && SoulWeaponDialogue == 0)
+                        {
+                            SoulWeaponDialogue = 1;
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                            NewDiskDialogue = true;
+                            WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                            return;
+
+                        }
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                     }
@@ -9818,6 +9842,14 @@ namespace StarsAbove
                     }
                 }
 
+            }
+            if (SoulReaverHeld)
+            {
+                SoulReaverSouls++;
+                if (SoulReaverSouls > 10)
+                {
+                    SoulReaverSouls = 10;
+                }
             }
         }
 
@@ -15346,6 +15378,8 @@ namespace StarsAbove
             SkyStrikerHeld = false;
             IsVoidActive = false;
             euthymiaActive = false;
+            SoulReaverHeld = false;
+
             Player.GetModPlayer<StarsAbovePlayer>().seraphimHeld--;
             Player.GetModPlayer<StarsAbovePlayer>().kroniicHeld--;
             Player.GetModPlayer<StarsAbovePlayer>().albionHeld--;
