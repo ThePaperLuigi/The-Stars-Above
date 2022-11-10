@@ -245,6 +245,7 @@ Mods: {
 					73: I've got a new weapon for you: it's a powerful mid-range blade, with the ability to conjure a crystal which can alter your combat style. Interesting, huh?
 					74: This is an Essence that'll turn into a pair of gloves. Now, I know what you're thinking, but let me explain.
 					75: These gloves can conjure a whole arsenal of weapons for you to wield. Complicated, but it'll be very powerful if used right.
+					76: Right. This Melee Essence dips into the void to defeat foes and absorb them after. Sounds pretty cool to me.
 				}
 				Eridani: {
 					1: Here's a Ranged-type essence. It looks like every fourth shot has increased offensive properties. Whatever the reason, it's powerful.
@@ -324,6 +325,7 @@ Mods: {
 					75: Here's a new weapon for your use. In truth, this Essence is a bit more than that; it's a pair of gloves.
 					76: Of course, that's not the whole story- you can use these gloves to summon an entire arsenal of weapons.
 					77: I know the prospect sounds daunting, but you'll deal some heavy damage if you can manage the weapons well.
+					78: Okay, here's a Melee weapon- with the power of souls, you can cleave huge areas around you and dip into the void itself for instant teleportation.
 				}
 				Perseus: {
 					1: It's good to see you again, {0}. I'm not here to ask for your help- instead, I have a gift for you.
@@ -550,8 +552,8 @@ Mods: {
 					}
 					Eridani: {
 						1: You have brought down the Warrior of Light. He's managed to escape, but nighttime has returned to this world regardless.
-						2: LIt seems we were misguided. The Warrior believed he was saving the universe, but it was, in truth, all lies from his Starfarer.
-						3: With this final Mnemonic Trace.. I see.. It all makes sense now. {0}, I need to you combine all of the Mnemonic Traces together.
+						2: It seems we were misguided. The Warrior believed he was saving the universe, but it was, in truth, all lies from his Starfarer.
+						3: With this final Mnemonic Trace.. I see.. It all makes sense now. {0}, I need you to combine all of the Mnemonic Traces together.
 						4: It will bring the Starfarer straight to us. After that.. We must defeat her. At any cost. Prepare yourself well.
 						5: Not all is lost, however. We've gained some strength from the Warrior of Light in the Stellar Array.
 						6: Remember: the First Starfarer. We can not let this opportunity slip away. This will likely be the fight of our lives.. Prepare yourself well.
