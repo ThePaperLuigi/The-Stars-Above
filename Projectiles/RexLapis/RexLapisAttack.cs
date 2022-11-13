@@ -105,7 +105,7 @@ namespace StarsAbove.Projectiles.RexLapis
 			}
 			if(crit && target.HasBuff(BuffType<Petrified>()))
             {
-				damage *= 4;
+				damage *= 5;
 				target.DelBuff(target.FindBuffIndex(BuffType<Petrified>()));
 				for (int d = 0; d < 14; d++)
 				{
