@@ -4,6 +4,7 @@ Mods: {
 			Misc: {
 				Confirm: Confirm your selection.
 				Reset: Reset your selection.
+				
 			}
 			AspectedDamageType: {
 				Description: If the weapon's type has changed, the weapon deals 10% less damage when active.
@@ -132,7 +133,7 @@ Mods: {
 				}
 				CyclicHunter: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Cyclic Hunter']"
-					Description: When ammo is consumed, gain 8 mana, 10% increased damage, and Movement Speed for half a second. 2 second cooldown.
+					Description: After defeating an enemy, gain 8 mana, 10% increased damage, and 50% increased Movement Speed for half a second. 2 second cooldown.
 					Unlock: "[c/9D9D9D:Locked:] Defeat the Slime King in Expert Mode"
 				}
 				LivingDead: {
@@ -582,7 +583,7 @@ Mods: {
 						4: A new Stellar Array ability is active. Could this be the very last one?
 					}
 					Eridani: {
-						1: I'm in awe... In truth, I've had this Essence locked away- it was far to powerful to wield. However...
+						1: I'm in awe... In truth, I've had this Essence locked away- it was far too powerful to wield. However...
 						2: It would be silly of me to keep it from you now. With everything you've done, it belongs to you now.
 						3: Keep in mind its potential- and good luck crafting it.
 						4: Wait a moment- is this also the last Stellar Array ability, activated? Incredible work.
@@ -1947,11 +1948,13 @@ Mods: {
 		Common: {
 			DiskReady: The Spatial Disk begins to resonate. Left click to interact.
 			ArrayAbility: The Stellar Array has gained a new ability!
+			AstralLocked: The weapon fails to react to your Aspect, rendering it unusable. You can only use Astral weapons with Asphodene.
+			UmbralLocked: The weapon fails to react to your Aspect, rendering it unusable. You can only use Umbral weapons with Eridani.
 		}
 		
 
 		DamageClass: {
-			CelestialDamageClass: spatial damage
+			CelestialDamageClass: celestial damage
 		}
 		
 		NPCName: {

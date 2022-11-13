@@ -245,6 +245,7 @@ Mods: {
 					73: 我为你准备了一把新武器：这是把强大的中距离攻击刀刃，能够召唤出可以改变你的战斗模式的水晶。不是很有趣吗？
                     74: 这种精华，可以变成一副手套。现在，我知道你想到了什么，但让我解释一下。
 					75: 这副手套能变化一大堆武器供你挥舞。怪复杂的，但如果使用得当，会很强。
+                    76: Right. This Melee Essence dips into the void to defeat foes and absorb them after. Sounds pretty cool to me.
 				}
 				Eridani: {
 					1: 这里有一个远程类型精华。看起来每四次射击都会增强一次攻击。不管为何，反正它很强大。
@@ -324,6 +325,7 @@ Mods: {
                     75: 这有一个新武器供你使用。事实上，这个精华的作用不止于一副手套。
 					76: 当然，这还不是全部——你可以用这副手套召唤出一整个武器库。
 					77: 我知道这听起来令人生畏，但如果你能很好地控制这些武器，你就能造成巨量伤害。
+                    78: Okay, here's a Melee weapon- with the power of souls, you can cleave huge areas around you and dip into the void itself for instant teleportation.
 				}
 				Perseus: {
 					1: 很高兴再次见到你，{0}我不是来寻求帮助的，相反，我想给予你一个礼物。
@@ -664,7 +666,6 @@ Mods: {
 						2: 也许如果她站着不动，我就能看得更清楚了。有点烦人，嗯。
 					}
 					Eridani: {
-                        #文本出现问题
 						1: Congratulations, you've bested the Empress of Light. Let's leave the bugs alone now, okay?
 						2: If I had a nickel for bosses summoned with insects... We fought that rather large fish, right? That's two. Not very much, is it. I was hoping for a trend. 
 						3: If I had a nickel for bosses summoned with insects... We fought that rather large fish, right? That's two. Not very much, is it. I was hoping for a trend. Maybe we can count the Queen Bee?
@@ -1250,6 +1251,15 @@ Mods: {
 					177: We've made it. This planet is strange.. The surface has been wiped clean... What happened?
 					178: She was so close all along... Use the Mnemonic Sigil on the arena's center to begin.
 					179: It looks like we can't explore this yet... Maybe next time.
+
+                    180: Wow, this place is seriously covered in greenery. Looks like a fun trip- let's get to exploring!
+
+					181: Okay, that slime's stopped holding back. Let's dig in our heels for a fight.
+					182: Not the treasure I was expecting... Prepare yourself, that evil spirit's planning a dastardly attack.
+					183: Something about this foe rubs me the wrong way. Don't let your guard down, lest it do something with this 'Planetarium' thing.
+					184: It's getting seriously cold around you. Heads up: this snowflake-shaped being is coming your way.
+					185: Don't make light of this foe- it's seriously dangerous. Hehe- but seriously, this thing's no joke. Take caution.
+					186: I love throwing explosives as much as the next guy, but it seems you've been punished for that. Prepare for a fight.
 				}
 				Eridani: {
 					1: Uhh.. you're looking a little sick.
@@ -1431,6 +1441,16 @@ Mods: {
 					177: It looks like we can't explore this yet... Maybe next time.
 					178: A being of the apocalypse has appeared. It wields destruction in all its appendages!
 					179: This huge amalgamate draws from the world's evils! Killing one slime will empower the other!
+
+                    180: Looks like this biome's governed mostly by foliage- a bit more tasteful than the Jungle, I'd say. Let's look around.
+
+					181: Seems like you've bothered that slime enough- it seems to have drastically altered its fighting style.
+					182: A Pharaoh in the depths of a pyramid? That sounds about right- but looks like you'll have to deal with what comes next.
+					183: I'm getting a bad feeling from this enemy... Let's dispatch of it quickly, lest it do something else with this 'Planetarium.'
+					184: Hey, the temperature of your surroundings is dropping dramatically. I'm sure you can see the source of this anomaly- deal with it, fast.
+					185: Whatever this thing is, it's hard to even look at. Be careful, it's powerful and lethal.
+					186: I think whatever you've done must have had some serious repercussions- a strange entity has emerged, and is heading your way.
+
 
                 }
 			}
@@ -2074,7 +2094,7 @@ Mods: {
             ArchitectLuminance:
                 '''
                 [c/F592BF:此武器不受星相武器切换伤害类型的伤害惩罚]
-                手持此武器为你装备[c/6EF367:耀明械装]，增加30防御
+                手持该武器为你装备[c/6EF367:耀明械装]，增加30防御
                 点击右键在光标处召唤[c/70D38B:塞壬]持续15秒（2分钟冷却）
                 [c/70D38B:塞壬]会释放星尘爆发，使用高能光束抹除周围的敌人，且期间无需手持该武器
                 当前你所选的[c/F592BF:星相伤害类型]会影响该武器的攻击效果
@@ -2221,7 +2241,7 @@ Mods: {
             BuryTheLight: {
                 $parentVal:
                     '''
-                    [c/FF5858:该武器攻击时会直接切割光标处的敌人，并忽略其100点护甲]
+                    [c/FF5858:该武器攻击时会直接切割光标处的敌人，并造成真实伤害]
                     每次攻击都将恢复生命值与魔力值
                     暴击伤害将对目标施加星源枯萎减益，持续20秒
                     每次暴击，已受星源枯萎的敌人会受到额外伤害并获得20秒的霜冻
@@ -2261,7 +2281,7 @@ Mods: {
                 '''
             ClaimhSolais:
                 '''
-                使用此武器造成暴击后会获得一层[c/F1AF42:耀光] (Up to 10)
+                使用该武器造成暴击后会获得一层[c/F1AF42:耀光] (Up to 10)
                 在拥有5层[c/F1AF42:耀光]时，点击右键释放[c/F35B43:耀光之魂]，消耗所有[c/F1AF42:耀光]
                 释放[c/F35B43:耀光之魂]后，你获得2秒无敌
                 [c/F35B43:耀光之魂]会对大范围内的敌人造成大量暴击伤害
@@ -2281,7 +2301,7 @@ Mods: {
             Bifrost:
                 '''
                 允许你在宇宙之间穿行
-                使用此物品在主世界和[c/EFB43E:极北之观星台]之间穿梭
+                使用该物品在主世界和[c/EFB43E:极北之观星台]之间穿梭
                 若想离开子世界，打开菜单并点击Return
                 只能在快捷栏中使用
                 在星海旅者菜单打开时无法使用
@@ -2716,7 +2736,7 @@ Mods: {
             EssenceOfLiberation:
                 '''
                 你的星海旅者给予的礼物
-                用于创造'Liberation Blazing'
+                用于创造“解放烈焰”
                 '''
             EssenceOfLifethirsting:
                 '''
@@ -2726,12 +2746,12 @@ Mods: {
             EssenceOfLuminance:
                 '''
                 你的星海旅者给予的礼物
-                用于创造'Architect's Luminance'
+                用于创造“创世纪之辉”
                 '''
             EssenceOfLunarDominion:
                 '''
                 你的星海旅者给予的礼物
-                用于创造'Naganadel'
+                用于创造“纳甘纳德尔”
                 '''
             EssenceOfMisery:
                 '''
@@ -2746,7 +2766,7 @@ Mods: {
             EssenceOfPerfection:
                 '''
                 你的星海旅者给予的礼物
-                用于创造'Every Moment Matters'
+                用于创造“完美谢幕”
                 '''
             EssenceOfRadiance:
                 '''
@@ -2756,7 +2776,7 @@ Mods: {
             EssenceOfSakura:
                 '''
                 你的星海旅者给予的礼物
-                用于创造'Sakura's Vengeance'
+                用于创造“樱之复仇”
                 '''
             EssenceOfSilverAsh:
                 '''
@@ -2771,7 +2791,7 @@ Mods: {
             EssenceOfStarsong:
                 '''
                 你的星海旅者给予的礼物
-                用于创造'Suistrume'
+                用于创造“星声”
                 '''
             EssenceOfStaticShock:
                 '''
@@ -2786,12 +2806,12 @@ Mods: {
             EssenceOfSurpassingLimits:
                 '''
                 你的星海旅者给予的礼物
-                用于创造'Light Unrelenting'
+                用于创造“冷酷之光”
                 '''
             EssenceOfTechnology:
                 '''
                 你的星海旅者给予的礼物
-                用于创造'Arachnid Needlepoint'
+                用于创造“蛛形纲针鞭”
                 '''
             EssenceOfTheAegis:
                 '''
@@ -2836,7 +2856,7 @@ Mods: {
             EssenceOfTheCosmos:
                 '''
                 你的星海旅者给予的礼物
-                用于创造'Ignition Astra'
+                用于创造“燃烬群星”
                 '''
             EssenceOfTheDarkMoon:
                 '''
@@ -2851,7 +2871,7 @@ Mods: {
             EssenceOfTheFallen:
                 '''
                 你的星海旅者给予的礼物
-                用于创造'Voice Of The Fallen'
+                用于创造“蠕虫低语”
                 '''
             EssenceOfTheFreeshooter:
                 '''
@@ -2861,7 +2881,7 @@ Mods: {
             EssenceOfTheFuture:
                 '''
                 你的星海旅者给予的礼物
-                用于创造'Cosmic Destroyer'
+                用于创造“宇宙毁灭者”
                 '''
             EssenceOfTheGardener:
                 '''
@@ -2876,7 +2896,7 @@ Mods: {
             EssenceOfTheHarbinger:
                 '''
                 你的星海旅者给予的礼物
-                用于创造'Tartaglia'
+                用于创造“达达利亚”
                 '''
             EssenceOfTheHawkmoon:
                 '''
@@ -2886,27 +2906,27 @@ Mods: {
             EssenceOfTheHollowheart:
                 '''
                 你的星海旅者给予的礼物
-                用于创造'Hollowheart Albion'
+                用于创造“无人知晓的无垢搏动”
                 '''
             EssenceOfTheHunt:
                 '''
                 你的星海旅者给予的礼物
-                用于创造'Hunter's Symphony'
+                用于创造“猎人的交响乐”
                 '''
             EssenceOfTheMoonlitAdepti:
                 '''
                 你的星海旅者给予的礼物
-                用于创造'Plenilune Gaze'
+                用于创造“循循守月”
                 '''
             EssenceOfTheObservatory:
                 '''
                 你的星海旅者给予的礼物
-                用于创造'Luminary Wand'
+                用于创造“群星魔棒”
                 '''
             EssenceOfTheOcean:
                 '''
                 你的星海旅者给予的礼物
-                用于创造'Apalistik'
+                用于创造“埃帕利斯克”
                 '''
             EssenceOfTheOverwhelmingBlaze:
                 '''
@@ -2926,12 +2946,12 @@ Mods: {
             EssenceOfTheSharpshooter:
                 '''
                 你的星海旅者给予的礼物
-                用于创造'Death in Four Acts'
+                用于创造“四幕之内的死亡”
                 '''
             EssenceOfTheSwarm:
                 '''
                 你的星海旅者给予的礼物
-                用于创造'Crimson Outbreak'
+                用于创造“全面爆发”
                 '''
             EssenceOfTheTreasury:
                 '''
@@ -2951,7 +2971,7 @@ Mods: {
             EssenceOfTime:
                 '''
                 你的星海旅者给予的礼物
-                用于创造'Kroniic Principality'
+                用于创造“Kroniic的国度”
                 '''
             EssenceOfTwinStars:
                 '''
@@ -2971,7 +2991,7 @@ Mods: {
             EternalStar:
                 '''
                 手持该武器会出现一个[c/C2A4AA:永恒计]
-                使用此武器会驱使随机的[c/FFB47A:纹章之星]从空中陨落
+                使用该武器会驱使随机的[c/FFB47A:纹章之星]从空中陨落
                 [c/FFB47A:纹章之星]在破碎前会造成5次伤害
                 破碎的[c/FFB47A:纹章之星]会根据其类型概率碎成[c/FF6988:纹星碎块]
                 当拾取[c/FF6988:纹星碎块]时，会根据种类给予你8秒种的强力增益
@@ -3048,7 +3068,7 @@ Mods: {
                 '''
             HollowheartAlbion:
                 '''
-                手持此武器会召唤[c/D66AAB:梅露辛]和[c/6AD6AF:阿隆戴特]环绕在你的身旁，并向光标攻击
+                手持该武器会召唤[c/D66AAB:梅露辛]和[c/6AD6AF:阿隆戴特]环绕在你的身旁，并向光标攻击
                 点击左键使用[c/D66AAB:梅露辛]进行攻击
                 [c/D66AAB:梅露辛]的攻击会发射一枚有50%几率点燃敌人6秒的导弹
                 用[c/D66AAB:梅露辛]攻击被冻伤的敌人造成额外的暴击伤害并移除冻伤
@@ -3143,7 +3163,7 @@ Mods: {
             KazimierzSeraphim:
                 '''
                 这把剑将进行大幅度的斩击
-                手持此武器会召唤围绕玩家的[c/FF8B00:慑敌辉光]，伤害与其接触的敌人
+                手持该武器会召唤围绕玩家的[c/FF8B00:慑敌辉光]，伤害与其接触的敌人
                 这把剑击中敌人时给予一层[c/F1AF42:耀光] （暴击时改为给予两层，最多10层）
                 当[c/FF8B00:慑敌辉光]攻击敌人时，消耗全部的[c/F1AF42:耀光]，每消耗一层伤害提高5点
                 持有5层以上[c/F1AF42:耀光]时，[c/FF8B00:慑敌辉光]的攻击必定暴击
@@ -3180,7 +3200,7 @@ Mods: {
                 '''
             KonpakuKatana:
                 '''
-                手持此武器会生成半灵攻击敌人
+                手持该武器会生成半灵攻击敌人
                 发射快速的远距弹幕，造成召唤伤害
                 接近敌方弹幕或具有接触伤害的敌人会提供亡舞增益（提高30%伤害），持续2秒
                 右键激活[c/A6F3C4:灵切]，旋转武器环绕自身并造成3倍伤害（8秒冷却）
@@ -3189,8 +3209,8 @@ Mods: {
                 '''
             KroniicAccelerator:
                 '''
-                使用此武器会掷出穿透弹幕
-                手持此武器时额外召唤2个[c/0C65A7:时钟指针]环绕你
+                使用该武器会掷出穿透弹幕
+                手持该武器时额外召唤2个[c/0C65A7:时钟指针]环绕你
                 [c/0C65A7:时钟指针]击中敌人时，你会获得[c/97BCBB:时域热能]，并填充你的[c/EFCE38:时能槽]
                 若[c/EFCE38:时能槽]中的[c/97BCBB:时域热能]，你的武器和[c/0C65A7:时钟指针]都会额外造成60点伤害
                 [c/97BCBB:时域热能]会随着时间推移而逐渐流失
@@ -3230,93 +3250,93 @@ Mods: {
                 '''
             MinerMemoir:
                 '''
-                "After the last shipment. Sat and waited until extraction. He always liked this part."
-                "'This is the only respite we can afford.' Talked big. Didn't save him."
-                "Word says they went bankrupt. Can't afford to send us home. That's fine."
-                "I already sent my last check over. They're in good hands, I tell myself."
-                "Another lie. Like the others."
-                The rest is illegible
+                “在最后一批货物装载完毕，我们坐下等待撤离。他一直很喜欢这一部分。”
+                “‘这是我们所能承受的唯一一个喘息机会’这话说得太满，不能拯救他。”
+                “听说他们破产了，没法把我们送回家，很好。”
+                “我已经把最后一张支票寄过去了，他们会受到很好的照顾，我是这么对我自己说的。”
+                “又是另一个谎言，跟其他的一样”
+                其余部分难以辨认
                 '''
             MinerMemoir1:
                 '''
-                [Part 1 of 2]
-                Consume to unlock the story 'Terraria.ModLoader.ModTranslation' in the Archive
-                Can also be sold for a high price at shops
+                [第1页，共2页]
+                消耗以在档案馆解锁故事：'Terraria.ModLoader.ModTranslation'
+                也可以在商店高价出售
                 '''
             LuminaryWand:
                 '''
-                Holding this weapon will conjure a friendly [c/F1D671:Starchild]
-                Your defense is directly added to the [c/F1D671:Starchild]'s contact damage
-                When the [c/F1D671:Starchild] deals damage to foes, there is a small chance that a [c/71F1CA:Star Bit] will appear
-                If you pick up a [c/71F1CA:Star Bit] while holding this weapon, you will immediately fire a [c/E4559E:Starblast] at your cursor
-                The [c/E4559E:Starblast] counts as Minion damage
-                The [c/E4559E:Starblast] has unique effects depending on the color of [c/71F1CA:Star Bit] acquired
-                [c/E45555:Red Star Bits] have higher base damage
-                [c/EC8B35:Orange Star Bits] inflict Burn for 4 seconds
-                [c/E4CE55:Yellow Star Bits] bind foes for 1 second
-                [c/35EC43:Green Star Bits] have a 30% chance to crit
-                [c/3596EC:Blue Star Bits] restore 10 Mana upon contact with an enemy
-                [c/9E35EC:Purple Star Bits] inflict Starblight for 4 seconds
+                手持该武器会召唤一个友好的[c/F1D671:星之子]
+                你的防御值会等量的为[c/F1D671:星之子]增加接触伤害
+                当[c/F1D671:星之子]对敌人造成伤害时，会有小概率掉落[c/71F1CA:星点]
+                当你手持该武器时，若你拾取[c/71F1CA:星点]，则会朝你光标位置发射一枚[c/E4559E:星星爆弹]
+                [c/E4559E:星星爆弹]视作召唤伤害
+                [c/E4559E:星星爆弹]会根据你所拾取的[c/71F1CA:星点]的颜色产生对应的独特效果
+                [c/E45555:红色星点]有着更高的基础伤害
+                [c/EC8B35:橙色星点]会使敌人燃烧4秒
+                [c/E4CE55:黄色星点]会束缚敌人1秒
+                [c/35EC43:绿色星点]有30%的几率造成暴击
+                [c/3596EC:蓝色星点]命中敌人时为你恢复10点魔力值
+                [c/9E35EC:紫色星点]会对敌人施加4秒的星源枯萎
                 '''
             AegisOfHopesLegacyPrecursor:
                 '''
-                [c/956BE3:Starfarer Attire Precursor]
-                The tattered remains of storied garb from legends past
-                Utilized to craft 'Aegis of Hope's Legacy'
+                [c/956BE3:星海旅者衣装材料]
+                这是源于过去的传说衣装的残骸
+                用于创造“希冀圣遗之佑”
                 '''
             BoltOfStarsilk:
                 '''
-                Utilized to craft Starfarer Attire
-                'A texture akin to twinkling stars'
+                用于创造星海旅者的衣装
+                “它的质地类似于闪烁的群星”
                 '''
             BoltOfTrueStarsilk:
                 '''
-                Utilized to craft Starfarer Attire
-                'Shimmers with cosmic energy'
+                用于创造星海旅者的衣装
+                “闪烁着寰宇的能量”
                 '''
             CelestialPrincessGenesisPrecursor:
                 '''
-                [c/956BE3:Starfarer Attire Precursor]
-                The tattered remains of storied garb from legends past
-                Utilized to craft 'Celestial Princess' Genesis'
+                [c/956BE3:星海旅者衣装材料]
+                这是源于过去的传说衣装的残骸
+                用于创造“源星公主之胄”
                 '''
             DullTotemOfLight:
                 '''
-                An effigy supposedly given form to grant strength to the Warrior of Light
-                用于创造artifacts and weapons
+                这尊雕像被赋予了形体从而给予光之战士力量
+                用于创造衣装和武器
                 '''
             EfflorescentInkwell:
                 '''
-                A bouquet of magical pigments
-                Utilized to craft 'Penthesilea's Muse'
+                一束神奇的颜料
+                用于创造“彭忒希勒娅之灵感”
                 '''
-            EnigmaticDust: The residue of a mysterious individual
+            EnigmaticDust: 一个神秘人的遗留物
             FaerieVoyagerAttirePrecursor:
                 '''
-                [c/956BE3:Starfarer Attire Precursor]
-                The tattered remains of storied garb from legends past
-                Utilized to craft 'Attire of the Faerie Voyager'
+                [c/956BE3:星海旅者衣装材料]
+                这是源于过去的传说衣装的残骸
+                用于创造“精灵旅者衣装”
                 '''
             InertShard:
                 '''
-                A fragment of the past, devoid of both mana and hue alike
-                Can be used to craft a unique accessory
-                [c/FFB47A:Due to the absence of Subworlds, this item can be crafted]
+                一个源于过去的碎片，失去了它的魔力和色彩
+                用于创造一个独特的饰品
+                [c/FFB47A:由于目前没有子世界，所以该物品目前可以被合成]
                 '''
             TotemOfLightEmpowered:
                 '''
-                An effigy supposedly given form to grant strength to the Warrior of Light
-                用于创造incredibly powerful artifacts and weapons
+                这尊雕像被赋予了形体从而给予光之战士力量
+                用于创造异常强大的神器和武器
                 '''
             TwilightNeedle:
                 '''
-                Utilized to craft Starfarer Attire
-                'A mystical implement, oscillating in your hands'
+                用于制作星海旅者的衣装
+                “这个神秘的工具在你的手中不断摆动”
                 '''
             WadOfTenebrium:
                 '''
-                Sold at a very high price to shops
-                'Binded sheets of darkened metal'
+                可在商店卖出极高的价铬
+                “黑色金属的捆扎板”
                 '''
             MementoMuse:
                 '''
@@ -3364,19 +3384,19 @@ Mods: {
                 '''
             Naganadel:
                 '''
-                Use right click to expend 25 mana, summoning up to 5 Aspected Blades
-                Blades deal minor contact damage while idle
-                Attack with blades present to launch them towards the cursor
-                Use right click once all blades are summoned to launch all blades at once, dealing random effects
-                Each blade has unique effects:
-                The [c/54AFDF:Stardust Aspect] will restore 20 mana on hit, but deals half damage
-                The [c/54DF80:Vortex Aspect] travels faster and farther, deals 6x damage on a critical hit and grants Swiftness
-                The [c/DF8454:Solar Aspect] burns foes on hit and deals double damage to flaming enemies, but travels slower and has less range
-                The [c/C654DF:Nebula Aspect] summons a barrage of falling stars from the sky on hit
-                [c/BDD5B5:Naganadel] costs 50 mana to summon instead, but will apply most other effects with a lunar bonus effect
-                If the destination is closer than the maximum range, the blades will deal residual damage as they fade away
-                Blades will vanish when swapping weapons
-                'I have no regrets. This is the only path'
+                点击右键消耗25点魔力值，召唤最多5柄剑刃
+                剑刃在闲置时也会造成少量接触伤害
+                使用剑刃攻击，会使召唤的剑刃朝光标处发射
+                当所有的剑刃都被召唤时，点击右键一次性发射所有剑刃，并产生随机的效果
+                每柄剑刃都有独特的效果：
+                [c/54AFDF:星尘之锋]只造成一半伤害，但命中敌人时会为你恢复20点魔力值
+                [c/54DF80:星旋之锋]发射的更远更快，可以使你获得迅捷，且暴击将会造成6倍伤害
+                [c/DF8454:日耀之锋]射速较慢，射程较短，但是会焚烧命中的敌人，且对处于燃烧的敌人造成双倍伤害
+                [c/C654DF:星云之锋]命中敌人时召唤落星协同攻击
+                [c/BDD5B5:纳甘纳德尔]的召唤需要50点魔力值，但是有以上4种剑刃的所有效果
+                若目标的距离超出了剑刃的射程，剑刃会在消失的过程中造成剩余的伤害
+                切换武器时召唤出来的剑刃会消失
+                “我不会后悔，这是唯一的路”
                 '''
             NeoDealmaker:
                 '''
@@ -3389,9 +3409,9 @@ Mods: {
                 '''
             Ozma:
                 '''
-                手持此武器召唤[c/6A6A6A:增幅器序列]跟随玩家
-                左键使用[c/6A6A6A:增幅器序列]进行独特的五次连击
-                右键消耗60魔力才能发动，按[c/CF2D2D:涡旋极星]、[c/E2BC3D:苦难咫尺]和[c/33AAE6:南十字星]的循环顺序发动信号球技能
+                手持该武器召唤[c/6A6A6A:增幅器序列]跟随玩家
+                点击左键使用[c/6A6A6A:增幅器序列]进行独特的五次连击
+                点击右键消耗60魔力才能发动，按[c/CF2D2D:涡旋极星]、[c/E2BC3D:苦难咫尺]和[c/33AAE6:南十字星]的循环顺序发动信号球技能
                 [c/CF2D2D:涡旋极星]
                 发动时迅速在光标附近造成大量伤害
                 [c/CF2D2D:涡旋极星]发动时，获得2秒的怒气增益
@@ -3422,14 +3442,13 @@ Mods: {
                 '''
 			ElCapitansHardware:
                 '''
-                Attacks with this weapon pierce foes and bounce off walls up to 4 times
-				Striking foes charges the [c/96BB7F:Renegade Gauge] (Critical strikes grant more charge)
-				Striking bosses grants bonus charge to the [c/96BB7F:Renegade Gauge]
-				Once the [c/96BB7F:Renegade Gauge] is above 50%, right-click to consume the [c/96BB7F:Renegade Gauge], swapping weapons and firing a [c/F9CF49:Gyro Disk] that lasts for 4 seconds
-				The [c/F9CF49:Gyro Disk] automatically targets and attacks nearby foes
-				If the [c/96BB7F:Renegade Gauge] is higher than 50% on activation, the [c/F9CF49:Gyro Disk] gains bonus damage proportional to the extra amount consumed
-				'GAME RIGHTS?!'
-                
+                使用该武器可发射能穿透敌人且能反弹最多4次的子弹
+				攻击敌人将会为[c/96BB7F:变节槽]充能（暴击会增加更多充能）
+				命中Boss敌人会额外为[c/96BB7F:变节槽]充能
+				一旦[c/96BB7F:变节槽]的充能满50%，点击右键消耗所有[c/96BB7F:变节槽]能量，切换武器并发射[c/F9CF49:陀螺碟]，持续4秒
+				[c/F9CF49:陀螺碟]会自动瞄准并攻击附近的敌人
+				若在激活该效果时[c/96BB7F:变节槽]高于50%，则会根据多出部分的比例为[c/F9CF49:陀螺碟]增加伤害
+				“游 戏 对 吧 ？！”
                 '''
             Persephone:
                 '''
@@ -3438,27 +3457,27 @@ Mods: {
                 '''
             AegisCrystal:
                 '''
-                Summons the Aegis
-                'Keep this up, and we'll win for sure'
+                召唤天之圣杯
+                “坚持下去，我们一定会赢”
                 '''
-            Astrobread: Summons the Astrogirl
+            Astrobread: 召唤星之少女
             BladeWolfPetItem:
                 '''
-                Summons the Blade Wolf
-                'Alert. Alert rescinded.'
+                召唤刃狼
+                “警戒，警戒取消”
                 '''
             BugHat: 召唤一只……猫？
             CrystalTowerFigure:
                 '''
-                Summons an exarchic mystel
-                'Take him on an adventure!'
+                召唤抽象神秘
+                “带他去冒险！”
                 '''
-            DemonicRibbon: Summons a fox vixen
-            DigiEgg: Summons a digital monster
-            Digivice: Summons a digital pet
-            DragonEgg: Summons a crimson dragonet
-            DustyCartridge: Summons the Hunted Duck and Dog
-            FerryLikeness: Summons a churning ferry
+            DemonicRibbon: 召唤一只狐狸精
+            DigiEgg: 召唤一只数码怪兽
+            Digivice: 召唤一只数码宠物
+            DragonEgg: 召唤一只红色的龙
+            DustyCartridge: 召唤猎鸭和猎狗
+            FerryLikeness: 召唤翻涌的渡轮
             FuneralPass:
                 '''
                 召唤往生堂堂主
@@ -3466,49 +3485,49 @@ Mods: {
                 '''
             GhostPet:
                 '''
-                Summons a mysterious ghost
-                Triggers a sound upon your death
+                召唤一个神秘的机灵
+                在你死亡后播放一个噶点荡音效
                 '''
             HolographicToken:
                 '''
-                Summons the Detective Dog and Bubbled Shark
-                Occupies both normal pet and light pet slots
-                Equipping the item only summons the Bubbled Shark
+                召唤警探犬和泡泡鲨
+                同时占据普通宠物和照明宠物的栏位
+                直接装备该物品只会生成泡泡鲨
                 '''
-            MonochromeKnife: Summons the Monochrome Plush
-            MysticalCore: 召唤菲姆
+            MonochromeKnife: 召唤黑白毛绒玩偶
+            MysticalCore: 召唤芬
             MysticPokeball:
                 '''
-                Summons the twin Mystic Hounds
-                Occupies both normal pet and light pet slots
-                Can't be equipped normally
+                召唤双子神秘猎犬
+                同时占据普通宠物和照明宠物的栏位
+                不能像通常那样装备
                 '''
-            NecoArcItem: Summons a chaotic cat-figure
-            PetalsOfKur: Summons the Princess of Kur
+            NecoArcItem: 召唤一个混沌的猫猫
+            PetalsOfKur: 召唤冥界女神
             ProgenitorShard:
                 '''
-                Summons a discount Warrior of Light
-                'I will transcend you!'
+                召唤一个削弱的光之战士
+                “我会超越你的！”
                 '''
-            RockstarGuitar: Summons a starry-eyed idol
-            SlightlyParanormalCap: Summons a mysterious ghost
+            RockstarGuitar: 召唤一个幻想的偶像
+            SlightlyParanormalCap: 召唤一个神秘的鬼魂
             StarstruckAxe:
                 '''
-                Summons a diamond in the rough
-                'It's still stellar'
+                召唤一个未经雕琢的钻石
+                “他仍是明星”
                 '''
             SweetberryBranch:
                 '''
-                Summons a friendly guardian of civilization
-                'She forgor [i:1274]'
+                召唤友好的文明守护者
+                “她忘了[i:1274]”
                 '''
-            TNTCarrot: Summons a suspicious looking bunny-girl
+            TNTCarrot: 召唤一个看起来很可疑的兔女郎
             ToyDemonfireDagger:
                 '''
-                Summons the Puppy of Shimano
-                Triggers a sound upon your death
+                召唤岛野的野犬
+                在你死亡后播放一个DameDane音效
                 '''
-            TunaMicrophone: Summons an Electronic Vocalist
+            TunaMicrophone: 召唤一个电子歌手
             PhantomInTheMirror:
                 '''
                 8点召唤标记伤害
@@ -3520,7 +3539,6 @@ Mods: {
                 [c/AC5454:血色新月]对你自己和[c/67B6D3:虚影之匕]周围的所有敌怪造成伤害
                 [c/AC5454:血色新月]命中处于霜冻状态下的敌人会造成200点额外伤害并使其失去霜冻减益，同时玩家回复90魔力
                 “为了我——歌唱吧！歌唱吧！歌唱吧！”
-                #私の為に――歌え！歌え！歌え！
                 '''
             ArbitrationBossRelicItem: ""
             ArbitrationTrophyItem: ""
@@ -3528,7 +3546,7 @@ Mods: {
             NalhaunTrophyItem: ""
             PenthBossRelicItem: ""
             PenthTrophyItem: ""
-            SparkOfLuminance: Changes the nearby environment to Light Everlasting
+            SparkOfLuminance: 将附近的环境变更为永恒之光
             VagrantBossRelicItem: ""
             VagrantTrophyItem: ""
             WarriorBossRelicItem: ""
@@ -3599,11 +3617,11 @@ Mods: {
             PleniluneGaze:
                 '''
                 [c/F7D76A:长按左键为武器蓄力；武器蓄力的时间越长，产生的攻击就越强]
-                Charging the bow to its maximum before firing will turn the arrow into a unique [c/8AE6EA:Frostflake Arrow]
-                [c/8AE6EA:Frostflake Arrows] will bloom upon impact, splitting into 5 Frost Arrows that deal double base damage
-                Right click to expend 90 mana, stepping backwards while conjuring an [c/7ED0EA:Ice Lotus] at your location
-                After a short time, the [c/7ED0EA:Ice Lotus] will explode, spawning 8 Frost Arrows
-                'Holding it makes you sleepy'
+                完全蓄力后发射会使箭转化为独特的[c/8AE6EA:霜华矢]
+                [c/8AE6EA:霜华矢]后霜华绽发，且分裂为5支双倍伤害的寒气箭
+                点击右键消耗90魔力，迅速后退并在原地留下一朵[c/7ED0EA:冰莲]
+                一段时间后，[c/7ED0EA:冰莲]会绽放，并绽放出8支寒气箭
+                “如琉璃般飘落”
                 '''
             AlchemicPrism:
                 '''
@@ -3863,49 +3881,50 @@ Mods: {
             RexLapis:
                 '''
                 使用该武器进行攻击会快速向前方刺击
-                Each attack grants [c/F8D496:Bulwark of Jade] for 2 seconds on hit, increasing defenses by 30
-                Right click to consume 150 mana, dropping a colossal earthen meteor from the heavens, dealing 2x base damage
-                This meteor will apply [c/CB8952:Petrification] to foes struck, drastically crippling their movement speed
-                Attacking [c/CB8952:Petrified] foes with this weapon will deal extra damage
-                Critical strikes will [c/F1D078:Shatter] foes that are [c/CB8952:Petrified]
-                [c/F1D078:Shatter] deals 4x base damage while removing [c/CB8952:Petrification]
-                'I will have order!'
+                每次攻击命中都会获得持续2秒的[c/F8D496:玉璋护盾]，为你增加30点防御
+                点击右键消耗150点魔力值，从天召唤一颗巨大的岩星，造成双倍伤害
+                这颗流星使被命中的敌人陷入[c/CB8952:石化]，大幅削减他们的移动速度
+                用该武器攻击陷入[c/CB8952:石化]的敌人会造成额外伤害
+                造成暴击将会[c/F1D078:击碎]被[c/CB8952:石化]的敌人
+                [c/F1D078:击碎][c/CB8952:石化]的敌人时会对其造成4倍伤害
+                “天动万象！”
                 '''
             RideTheBull:
                 '''
-                Sprays a barrage of powerful bullets
-                Killing foes will refill a portion of mana and grant Wrath
-                'Never stop shooting'
+                发射密集的强力子弹
+                击杀敌人为你恢复部分魔力值并使你获得怒气
+                “没有什么是30发子弹解决不了的”
                 '''
             RupturedHeaven:
                 '''
-                WORK IN PROGRESS WEAPONAttacks with this weapon swing in an arc, granting Rage on hit for 2 seconds
-                Right click to whip the weapon, dealing 20% less damage but granting [Tactician's Eye] on critical strikes
-                [Tactician's Eye] grants Dangersense, Hunter, and Heartreach to yourself and nearby allies for 5 seconds
-                Press the Weapon Action Key to cycle between [Instructor's Lectures], granting buffs to nearby allies as long as the weapon is held
-                [c/8EE7E4:Lion's Lecture] increases Melee Damage by 18% and attack speed by 10%
-                [c/B4E93A:Eagle's Lecture] increases Magic Damage by 18% and grants Mana Regeneration
-                [c/F3E63E:Deer's Lecture] increases Ranged Damage by 18% and critical strike chance by 8%
-                'Let the lesson begin!'
+                施 工 中 的 武 器 ！
+                使用该武器进行攻击会以弧形挥舞剑刃，命中敌人时获得2秒怒气
+                点击右键使用鞭武器攻击，造成的伤害减少20%，但是会在暴击时给予[战术家之眼]增益
+                [战术家之眼]使你和你附近的队友获得危险感，猎人和拾心效果，持续5秒
+                按下武器技能键在[教授的课程]之间切换，手持该武器时给予附近盟友增益
+                [c/8EE7E4:雄狮的课程]会提升18%的近战伤害和10%的攻击速度
+                [c/B4E93A:猎鹰的课程]会提升18%的魔法伤害并提升魔力恢复
+                [c/F3E63E:迅鹿的课程]会提升18%的远程伤害和8%的暴击率
+                “开始上课！”
                 '''
             SakuraVengeance:
                 '''
-                Attacks with this weapon swing in a wide arc
-                Every 30 seconds, the weapon cycles through 4 [c/FF71D8:Elemental Arts]
-                [c/55B168:Earthsplitter] increases defense by 10 and grants 25% damage resistance
-                Attacks stun enemies for 1 second (Critical strikes stun enemies for 4 seconds and grant Invincibility briefly)
-                [c/B0BEB3:Heavenly Volley] increases attack and movement speed by 20%
-                Attacks are accompanied by falling stars that inflict Ichor for 8 seconds
-                [c/8AD8E6:Cooling Haze] increases Health and Mana Regeneration and inflicts Frostburn for 2 seconds on hit
-                Nearby foes are inflicted with Frostburn until they leave the radius
-                [c/B9384E:Volcanic Wrath] increases attack and critical strike chance by 20% and inflicts On Fire for 2 seconds on hit
-                Defeating foes will cause them to explode into a shower of flames, inflicting Cursed Flame for 8 seconds
-                Holding this weapon will cause the [c/CE8EBD:Vengeance Gauge] to appear
-                Defeating foes with this weapon will fill the [c/CE8EBD:Vengeance Gauge]
-                Right click to consume the [c/CE8EBD:Vengeance Gauge] and gain the buff [c/DF2AAE:Elemental Chaos] for 14 seconds
-                [c/DF2AAE:Elemental Chaos] grants all [c/FF71D8:Elemental Arts] buffs and the weapon will inflict all [c/FF71D8:Elemental Arts] debuffs on foes
-                [c/DF2AAE:Elemental Chaos] does not grant the unique abilities of each [c/FF71D8:Elemental Art]
-                'Remember those who have passed, and they will forever live on'
+                使用该武器进行攻击会向前方挥舞剑刃
+                每30秒，该武器都会循环变更4种[c/FF71D8:元素技能]
+                [c/55B168:崩裂大地]提升10点防御力并减少受到伤害的25%
+                攻击使敌人眩晕1秒（暴击使敌人眩晕4秒并使你获得1秒无敌）
+                [c/B0BEB3:天坠截击]提升20%的攻击和移动速度
+                攻击会呼唤落星协同攻击，并造成灵液减益，持续8秒
+                [c/8AD8E6:凛冽阴霾]增加生命和魔力恢复，且在命中敌人时造成2秒霜火
+                处于你附近的敌人会持续被霜火灼烧，直到他们离开你周围
+                [c/B9384E:火山暴怒]增加20%的伤害和暴击率，且在命中敌人时使其燃烧2秒
+                击杀敌人将会产生爆炸并生成火炎雨，造成诅咒炎减益，持续8秒
+                手持该武器会出现一个[c/CE8EBD:复仇计]
+                使用该武器击杀敌人会为[c/CE8EBD:复仇计]充能
+                点击右键消耗完全的[c/CE8EBD:复仇计]并进入[c/DF2AAE:元素混沌]状态，持续14秒
+                [c/DF2AAE:元素混沌]给予所有[c/FF71D8:元素技能]的增益且能为敌人施加所有相应的减益
+                [c/DF2AAE:元素混沌]不会赋予每个人独特的[c/FF71D8:元素技能]能力
+                “记住那些逝去的人，他们将会永远活着”
                 '''
             ShadowlessCerulean:
                 '''
@@ -3925,7 +3944,7 @@ Mods: {
             Skofnung:
                 '''
                 这柄剑可以迅速的突刺并将敌人大幅度击退
-                手持此剑会召唤能够自行攻击敌人的[c/395A37:怨念之刃]
+                手持该剑会召唤能够自行攻击敌人的[c/395A37:怨念之刃]
                 [c/395A37:怨念之刃]对接触的敌人每4秒造成玩家防御力一半的伤害 (每个敌人的接触时间单独计算)
                 #说白了就是这个自动寻敌的弹幕打人有240f的独立无敌帧
                 当[c/395A37:怨念之刃]暴击时，给予玩家8秒的[c/7E2626:浴血奋战]增益（伤害增加10%）
@@ -3956,7 +3975,6 @@ Mods: {
                 '''
                 召唤[c/49EAFA:“浮标”]用追踪的电火花攻击敌怪
                 手持时召唤武器无视敌怪15%的护甲
-                #技能开启后浮游单元攻击时有10%概率自爆（回到干员身边）对小范围敌人造成澄闪300%攻击力的法术伤害
                 [c/49EAFA:“浮标”]攻击时有10%概率自爆（回到玩家身边）对小范围敌怪造成400%倍率的暴击
                 [c/49EAFA:“浮标”]自爆时有50%概率生成一颗魔力星
                 [c/49EAFA:“浮标”]每次攻击后攻击力+2%(最多+10%，自爆后重置)
@@ -3966,7 +3984,7 @@ Mods: {
             StygianNymph:
                 '''
                 [c/F7D76A:按住左键来蓄力；如果武器完全蓄力，攻击会有所不同]
-                手持此武器会使[c/8BD1D1:双生意识]出现，开始为100%[c/C7FFFA:表意识]
+                手持该武器会使[c/8BD1D1:双生意识]出现，开始为100%[c/C7FFFA:表意识]
                 未蓄力攻击会在大圆形范围内横扫，并使[c/8BD1D1:双生意识]向[c/C7FFFA:表意识]偏移
                 蓄力攻击向前方敌人造成多次伤害，并使[c/8BD1D1:双生意识]向[c/B60000:里意识]偏移
                 准备蓄力攻击时会快速消耗魔力
@@ -3978,28 +3996,28 @@ Mods: {
                 '''
             Suistrume:
                 '''
-                Use this item to expend mana, filling your [c/c2f4ff:Performance Gauge] and beginning your [c/40b9ff:Stellar Performance]
-                [c/40b9ff:Stellar Performance] will increase all outgoing damage by 15%
-                [c/40b9ff:Stellar Performance] will increase movement speed by 40%
-                [c/40b9ff:Stellar Performance] will grant all nearby team members (including the user) a 5% increase to outgoing damage along with bonus health and mana regeneration
-                The [c/c2f4ff:Performance Gauge] will nautrally deplete over time
-                Moving during [c/40b9ff:Stellar Performance] will increase the [c/c2f4ff:Performance Gauge]
-                The [c/c2f4ff:Performance Gauge] will deplete further according to damage taken (maximum 30% of the gauge lost per hit)
-                If the [c/c2f4ff:Performance Gauge] reaches 0, the [c/40b9ff:Stellar Performance] will end and will have a 2 minute cooldown
-                If the [c/40b9ff:Stellar Performance] is completed in its entirety, you will restore all HP and MP and [c/40b9ff:Stellar Performance] will have its cooldown halved to 1 minute
-                'Whatever you're singing, it's cute as always'
+                使用该武器会消耗魔力值并填充[c/c2f4ff:演唱能量]，随后你的[c/40b9ff:星际演唱会]就要开始了
+                [c/40b9ff:星际演唱会]将会提升15%全种类伤害
+                [c/40b9ff:星际演唱会]将会提升40%的移动速度
+                [c/40b9ff:星际演唱会]将会给附近的玩家（包括演奏者）增加5%的伤害以及额外的生命恢复和魔力恢复效果
+                [c/c2f4ff:演唱能量]会随着时间的推移而逐渐减少
+                在[c/40b9ff:星际演唱会]期间保持移动将会增加[c/c2f4ff:演唱能量]
+                [c/c2f4ff:演唱能量]会根据你受到的伤害而进一步消耗（每次受击最多损失30%的能量）
+                若[c/c2f4ff:演唱能量]归零，则[c/40b9ff:星际演唱会]会提前终止并进入2分钟的冷却
+                若[c/40b9ff:星际演唱会]完整演出，则你恢复所有的生命值和魔力值且[c/40b9ff:星际演唱会]进入1分钟的冷却
+                “不管你唱的是什么，都很可爱捏”
                 '''
             Tartaglia:
                 '''
                 [c/F7D76A:长按左键为武器蓄力；武器蓄力的时间越长，产生的攻击就越强]
-                Charging the bow to its maximum before firing will turn the arrow into a unique [c/25ACF0:Riptide Bolt]
-                [c/25ACF0:Riptide Bolts] will apply [c/4A91FF:Riptide] to foes struck for 12 seconds
-                Right click to consume 200 mana, entering [c/2361C1:Raging Tides] for 8 seconds
-                Within [c/2361C1:Raging Tides], attacks are changed into rapid close-ranged melee strikes that deal double damage and mana will not regenerate
-                Additonally, gain extra Movement Speed for the buff's duration
-                Attacking foes afflicted with [c/4A91FF:Riptide] in this stance will deal extra damage
-                This weapon does not use ammo
-                'Shouldn't let your guard down!'
+                完全蓄力后发射会使箭转化为独特的[c/25ACF0:激流矢]
+                [c/25ACF0:激流矢]会对敌人施加12秒的[c/4A91FF:断流]
+                点击右键消耗200点魔力，进入持续8秒的[c/2361C1:狂澜]状态
+                [c/2361C1:狂澜]状态下，攻击会变为快速的短距离近战攻击，造成双倍伤害且魔力不会再生
+                此外，在该状态下获得额外的移动速度加成
+                该状态下，攻击受到[c/4A91FF:断流]影响的敌人会造成额外伤害
+                不消耗弹药
+                “破绽，稍纵即逝！”
                 '''
             TheOnlyThingIKnowForReal:
                 '''
@@ -4021,7 +4039,7 @@ Mods: {
                 '''
             TwinStars:
                 '''
-                手持此武器时召唤双星环绕你，并提高你100点最大魔力
+                手持该武器时召唤双星环绕你，并提高你100点最大魔力
                 使用时双星会发射强大的穿透激光，同时急剧消耗魔力（无视魔力消耗减免）
                 此武器暴击时你会获得持续一小段时间的[c/47D9E7:二元星等]增益
                 [c/47D9E7:二元星等]生效期间，激光会在路径上留下燃烧弹
@@ -4030,8 +4048,8 @@ Mods: {
                 '''
             UltimaThule:
                 '''
-                按住左键来蓄力；如果武器完全蓄力，攻击会有所不同]
-				手持此武器会产生5颗[c/14E6FF:空间行星]环绕你
+                [c/F7D76A:按住左键来蓄力；如果武器完全蓄力，攻击会有所不同]
+				手持该武器会产生5颗[c/14E6FF:空间行星]环绕你
 				未蓄力攻击会劈砍一块极大区域造成极高空间伤害
 				蓄力攻击会从宇宙召唤星星和一颗[c/FF14A6:死星]坠向敌人
 				[c/14E6FF:空间行星]击中敌人时，它会爆炸成小行星并提供12秒的寰宇操纵增益
@@ -4061,7 +4079,7 @@ Mods: {
 				若前一剑使用的是[c/F10079:亚扎卡纳之剑]，则蓄力攻击会使用凌神斩，对具有错玉断骨减益的敌人造成20倍暴击伤害并清除该减益
 				右键以消耗40点魔力使用[c/8E60D1:破障之锋]
 				[c/8E60D1:破障之锋]会使你并向前冲刺并进入灵体状态8秒，期间你的移动速度将得到提升
-				[c/8E60D1:破障之锋]效果结束时，你附近所有敌人受到你在灵体状态下使用此武器造成的总伤害1/3的伤害
+				[c/8E60D1:破障之锋]效果结束时，你附近所有敌人受到你在灵体状态下使用该武器造成的总伤害1/3的伤害
 				[c/8E60D1:破障之锋]效果结束时，你会强制回到本体所在位置并在短时间内不能攻击
 				[c/8E60D1:破障之锋]有22秒冷却时间
 				“一剑诛恶，一剑镇魂”
@@ -4105,7 +4123,7 @@ Mods: {
                 '''
             VisionOfEuthymia:
                 '''
-                使用此物品会召唤持续40秒的[c/C341E9:雷罚恶曜之眼]
+                使用该物品会召唤持续40秒的[c/C341E9:雷罚恶曜之眼]
 				在[c/C341E9:雷罚恶曜之眼]持续期间再次使用该物品可以刷新持续时间
 				用弹幕暴击敌人时，[c/C341E9:雷罚恶曜之眼]会协同攻击并造成1/5的伤害，上限为100
 				协同攻击有2秒冷却
@@ -4130,7 +4148,7 @@ Mods: {
 				蓄力攻击会造成双倍伤害，且具有强大的击退能力，并且挥舞范围变大
 				蓄力时会持续消耗魔力值
 				在连续两次普通攻击之后，下次蓄力攻击蓄力速度大幅提升
-				点击右键使[c/E35D5D:异度剑艺]在[c/C80000:擊、[c/52BEF3:疾]、[c/E3D55D:盾]、[c/40EF28:翔]、[c/9923CD:斬]形态之间切换
+				点击右键使[c/E35D5D:异度剑艺]在[c/C80000:擊]、[c/52BEF3:疾]、[c/E3D55D:盾]、[c/40EF28:翔]、[c/9923CD:斬]形态之间切换
 				当前的异度剑艺将会根据形式获得不同增益
 				[c/C80000:擊]形态使你获得泰坦增益，且蓄力攻击会变为[c/C80000:Mechon's Bane]，此次攻击必定暴击
 				[c/52BEF3:疾]形态使你获得敏捷增益，期间禁用蓄力攻击，普通攻击将变的更快和更强力
@@ -4195,9 +4213,9 @@ Mods: {
             SniperBottom: 风刀腿
             SniperTop: 风刀身
             SniperWings: 风刀翼
-            StarArmorHead: Stargazing Hero's Hood
-            StarArmorLegs: Stargazing Hero's Greaves
-            StarArmorTop: Stargazing Hero's Mantle
+            StarArmorHead: 观星圣者兜帽
+            StarArmorLegs: 观星圣者之履
+            StarArmorTop: 观星圣者衣钵
             AegisOfHopesLegacy: 希冀圣遗之佑
             CelestialPrincessGenesis: 源星公主之胄
             FaerieVoyagerAttire: 精灵旅者衣装
@@ -4358,60 +4376,60 @@ Mods: {
             Kifrosse: 妖狐灵冬
             KonpakuKatana: 白楼剑
             KroniicAccelerator: Kronii的国度
-            LiberationBlazing: Liberation Blazing
-            LightUnrelenting: Light Unrelenting
-            DesertLootBag: Stellar Spoils (Desert)
-            MinerMemoir: A Miner's Memoir
-            MinerMemoir1: A Miner's Memoir 1
-            LuminaryWand: Luminary Wand
-            AegisOfHopesLegacyPrecursor: Sundered Hero's Attire
-            BoltOfStarsilk: Bolt of Starsilk
-            BoltOfTrueStarsilk: Bolt of True Starsilk
-            CelestialPrincessGenesisPrecursor: Starless Celestial Attire
-            DullTotemOfLight: Totem of Light
-            EfflorescentInkwell: Efflorescent Inkwell
-            EnigmaticDust: Enigmatic Dust
-            FaerieVoyagerAttirePrecursor: Tattered Fae Attire
-            InertShard: Inert Shard
-            TotemOfLightEmpowered: Empowered Totem of Light
-            TwilightNeedle: Twilight Needle
-            WadOfTenebrium: Banded Tenebrium
+            LiberationBlazing: 解放烈焰
+            LightUnrelenting: 冷酷之光
+            DesertLootBag: 星体宝藏袋（沙漠）
+            MinerMemoir: 一位矿工的回忆
+            MinerMemoir1: 一位矿工的回忆·壹
+            LuminaryWand: 群星魔棒
+            AegisOfHopesLegacyPrecursor: 破碎圣人之衣
+            BoltOfStarsilk: 群星丝绸
+            BoltOfTrueStarsilk: 真·群星丝绸
+            CelestialPrincessGenesisPrecursor: 黯淡无星之衣
+            DullTotemOfLight: 光之图腾
+            EfflorescentInkwell: 绽花墨池
+            EnigmaticDust: 神秘尘
+            FaerieVoyagerAttirePrecursor: 破败精灵之衣
+            InertShard: 惰性碎片
+            TotemOfLightEmpowered: 注能光之图腾
+            TwilightNeedle: 暮光针线
+            WadOfTenebrium: 一捆黑渊板
             MementoMuse: 勿忘缪斯
             Mercy: 解脱
             MiserysCompany: 厄运缠身
             MorningStar: 圣鞭晨星
-            Naganadel: Naganadel
+            Naganadel: 纳甘纳德尔
             NeoDealmaker: 成交神器·NEO
             Ozma: 奥兹玛增幅器
             PenthesileaMuse: 彭忒希勒娅之灵感
             Persephone: 帕尔塞福涅
-            AegisCrystal: Aegis Crystal
-            Astrobread: Astrobread
-            BladeWolfPetItem: Prototype Interface
-            BugHat: Cat's Hat
-            CrystalTowerFigure: Crystal Tower Figurine
-            DemonicRibbon: Demonic Ribbon
-            DigiEgg: Digital Egg
-            Digivice: Digital Device
-            DragonEgg: Dragon Egg
-            DustyCartridge: Dusty Cartridge
-            FerryLikeness: Ferry Likeness
-            FuneralPass: Funeral Pass
-            GhostPet: Ghost Pet
-            HolographicToken: Holographic Token
-            MonochromeKnife: Monochrome Knife
-            MysticalCore: Mystical Core
+            AegisCrystal: 天之圣杯水晶
+            Astrobread: 星之面包
+            BladeWolfPetItem: 原型终端
+            BugHat: 猫子
+            CrystalTowerFigure: 水晶图塔
+            DemonicRibbon: 恶魔丝带
+            DigiEgg: 数码蛋
+            Digivice: 数码机
+            DragonEgg: 龙蛋
+            DustyCartridge: 着尘的卡带
+            FerryLikeness: 眼熟的渡轮
+            FuneralPass: 葬礼通行证
+            GhostPet: 机灵宠物
+            HolographicToken: 全息代币
+            MonochromeKnife: 黑白色的刀
+            MysticalCore: 神秘的核心
             MysticPokeball: 神秘怪物球
-            NecoArcItem: Chaotic Cat
+            NecoArcItem: 混沌猫猫
             PetalsOfKur: 冥界之花
             ProgenitorShard: 先祖碎片
             RockstarGuitar: 摇滚巨星吉他
             SlightlyParanormalCap: 超自然帽
-            StarstruckAxe: Starstruck Axe
-            SweetberryBranch: Sweet Berry Branch
+            StarstruckAxe: 击星斧
+            SweetberryBranch: 甜梅枝
             TNTCarrot: TNT胡萝卜
             ToyDemonfireDagger: 玩具恶魔之匕
-            TunaMicrophone: Tuna Microphone
+            TunaMicrophone: 吞拿鱼麦克风
             PhantomInTheMirror: 镜中虚影
             ArbitrationBossRelicItem: 仲裁圣物
             ArbitrationTrophyItem: 仲裁纪念章
@@ -4419,7 +4437,7 @@ Mods: {
             NalhaunTrophyItem: 纳尔赫恩纪念章
             PenthBossRelicItem: 多彩魔女，彭忒希勒娅圣物
             PenthTrophyItem: 多彩魔女，彭忒希勒娅纪念章
-            SparkOfLuminance: Spark of Luminance
+            SparkOfLuminance: 闪光的花火
             VagrantBossRelicItem: 时空流浪者圣物
             VagrantTrophyItem: 时空流浪者纪念章
             WarriorBossRelicItem: 光之战士圣物
@@ -4440,7 +4458,7 @@ Mods: {
             TwoDragonsMusicBox: 音乐盒 （光之战士 - 二阶段）
             UnmatchingPiecesMusicBox: 音乐盒 (Everlasting Light)
             VoyageMusicBox: 音乐盒 （星海）
-            PleniluneGaze: 满月之凝
+            PleniluneGaze: 循循守月
             AlchemicPrism: 炼金棱晶
             ApocryphicPrism: 伪经棱晶
             BurnishedPrism: 抛光棱晶
@@ -4466,13 +4484,13 @@ Mods: {
             SpatialPrism: 空间棱晶
             TyphoonPrism: 台风棱晶
             VerdantPrism: 翠绿棱晶
-            VoidsentPrism: Voidsent Prism
+            VoidsentPrism: 空虚棱晶
             RadGun: 拉德枪
             RedMage: 赤红刺剑
             RexLapis: 贯虹之槊
             RideTheBull: 越橘莓
-            RupturedHeaven: Ruptured Heaven
-            SakuraVengeance: Sakura's Vengeance
+            RupturedHeaven: 破碎天堂
+            SakuraVengeance: 樱之复仇
             ShadowlessCerulean: 影霄
             Skofnung: 斯科夫农
             SkyStrikerArms: 闪刀机关：闪刀机
@@ -4533,7 +4551,7 @@ Mods: {
             AstralOrb: Astral Orb
             bladeWillAttack: blade Will Attack
             BladeWorksProjectile: Unlimited Blade Works
-            Blaster: Tartaglia
+            Blaster: 达达利亚
             BlazingSkies: Blazing Skies
             BladeArtDragon: The Blood Blade
             BloodArtPrep: Blood Blade
@@ -4703,16 +4721,16 @@ Mods: {
             LightningJolt: 晨星
             MorningStarHitBoom: 晨星
             MorningStarWhip: 圣鞭晨星
-            NaganadelProjectile1: Naganadel
-            NaganadelProjectile2: Naganadel
-            NaganadelProjectile3: Naganadel
-            NaganadelProjectile4: Naganadel
-            NaganadelProjectile5: Naganadel
-            NaganadelProjectileFinal1: Naganadel
-            NaganadelProjectileFinal2: Naganadel
-            NaganadelProjectileFinal3: Naganadel
-            NaganadelProjectileFinal4: Naganadel
-            NaganadelProjectileFinal5: Naganadel
+            NaganadelProjectile1: 纳甘纳德尔
+            NaganadelProjectile2: 纳甘纳德尔
+            NaganadelProjectile3: 纳甘纳德尔
+            NaganadelProjectile4: 纳甘纳德尔
+            NaganadelProjectile5: 纳甘纳德尔
+            NaganadelProjectileFinal1: 纳甘纳德尔
+            NaganadelProjectileFinal2: 纳甘纳德尔
+            NaganadelProjectileFinal3: 纳甘纳德尔
+            NaganadelProjectileFinal4: 纳甘纳德尔
+            NaganadelProjectileFinal5: 纳甘纳德尔
             NalhaunSwing: Nalhaun Swing
             NalhaunSwing2: Nalhaun Swing2
             BigShot: 成交神器·NEO
@@ -4763,7 +4781,7 @@ Mods: {
             NecoArcPet: NecoArc
             OmoriPet: Monochrome Plush
             PekoraPet: Suspicious Looking Bunny-Girl
-            PhymPet: 菲姆
+            PhymPet: 芬
             PyraPet: 焰
             SanaPet: Astrogirl
             SuiseiPet: Suisei
@@ -4918,8 +4936,8 @@ Mods: {
             Tentacle2: Takonomicon
             Tentacle3: Takonomicon
             TentacleCircle: Tentacle Circle
-            tartagliaShot: Tartaglia
-            tartagliaSwing: Tartaglia
+            tartagliaShot: 达达利亚
+            tartagliaSwing: 达达利亚
             TemporalTimepiece: Kroniic Principality
             TemporalTimepiece2: Kroniic Principality
             TemporalTimepiece3: Kroniic Principality
@@ -5203,7 +5221,7 @@ Mods: {
             NecoArcPetBuff: Chaotic Cat-Figure
             SanaPetBuff: Astrogirl
             SuiseiPetBuff: Diamond in the Rough
-            PhymPetBuff: 菲姆
+            PhymPetBuff: 芬
             PlasmaGrenadeCooldownBuff: Plasma Grenade Cooldown
             PortalReady: "[c/DE5D5D:Gateway Proximity]"
             PurplePaint: Purple Paint
@@ -5523,7 +5541,7 @@ Mods: {
             NecoArcPetBuff: ？？？
             SanaPetBuff: Without the limiter, she'd cover the whole screen
             SuiseiPetBuff: Don't ask about the axe
-            PhymPetBuff: 菲姆会跟随你
+            PhymPetBuff: 芬会跟随你
             PlasmaGrenadeCooldownBuff: Plasma Grenade fail to activate if this debuff is present
             PortalReady: Use the Bifrost to return from where you came
             PurplePaint: 你被涂上了紫色油漆
