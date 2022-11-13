@@ -26,7 +26,7 @@ namespace StarsAbove.Items
 				"\nGain Wrath for 2 seconds upon activation of [c/CF2D2D:Ruby Execution]" +
 				"\n[c/E2BC3D:Topaz Execution]" +
                 "\nAfter a short delay upon activation, creates piercing attacks at your cursor's location" +
-				"\n[c/E2BC3D:Topaz Execution] attacks stun foes for 2 seconds" +
+				"\n[c/E2BC3D:Topaz Execution] attacks stun foes for a very short duration" +
 				"\n[c/33AAE6:Sapphire Execution]" +
                 "\nUpon activation, create a virus field at your cursor, which deals damage to all foes in its vicinity over time" +
 				"\n[c/33AAE6:Sapphire Execution] turns 10% of damage dealt to health and Mana (Max 5 per tick)" +

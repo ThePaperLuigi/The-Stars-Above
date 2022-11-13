@@ -95,7 +95,7 @@ namespace StarsAbove.Projectiles.Ozma
 				Dust.NewDust(target.Center, 0, 0, DustID.LifeDrain, Main.rand.NextFloat(-7, 7), Main.rand.NextFloat(-7, 7), 150, default(Color), 0.9f);
 
 			}
-			target.AddBuff(BuffType<Stun>(), 120);
+			target.AddBuff(BuffType<Stun>(), 20);
 			Player projOwner = Main.player[Projectile.owner];
 			if (crit)
 			{
