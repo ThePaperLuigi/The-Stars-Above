@@ -666,7 +666,7 @@ namespace StarsAbove
 							
 			if ((item.ModItem?.Mod == ModLoader.GetMod("StarsAbove") || player.GetModPlayer<StarsAbovePlayer>().aprismatism == 2) && item.damage > 0)
 			{ //
-				if (player.GetModPlayer<StarsAbovePlayer>().RogueAspect == 2)
+				if (player.GetModPlayer<StarsAbovePlayer>().RogueAspect == 2 && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
 				{
 					if (oldDamageClass != calamityMod.Find<DamageClass>("RogueDamageClass"))
 					{
@@ -677,7 +677,7 @@ namespace StarsAbove
 							
 						}
 						
-						if (!disableAspectPenalty && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
+						if (!disableAspectPenalty)
 						{
 							damage -= 0.1f;
 						}
@@ -690,13 +690,13 @@ namespace StarsAbove
 
 				}
 				
-				if (player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
+				if (player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2 && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
 				{
 					if (oldDamageClass != DamageClass.Melee && oldDamageClass != DamageClass.MeleeNoSpeed)
 					{
 						damage = player.GetTotalDamage(DamageClass.Melee);
 						
-						if (!disableAspectPenalty && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
+						if (!disableAspectPenalty)
 						{
 							damage -= 0.1f;
 						}
@@ -708,12 +708,12 @@ namespace StarsAbove
 					}
 
 				}
-				if (player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2)
+				if (player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2 && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
 				{
 					if (oldDamageClass != DamageClass.Magic && oldDamageClass != DamageClass.MagicSummonHybrid)
 					{
 						damage = player.GetTotalDamage(DamageClass.Magic);
-						if (!disableAspectPenalty && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
+						if (!disableAspectPenalty)
 						{
 							damage -= 0.1f;
 						}
@@ -725,12 +725,12 @@ namespace StarsAbove
 
 
 				}
-				if (player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
+				if (player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2 && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
 				{
 					if (oldDamageClass != DamageClass.Ranged)
 					{
 						player.GetTotalDamage(DamageClass.Ranged);
-						if (!disableAspectPenalty && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
+						if (!disableAspectPenalty)
 						{
 							damage -= 0.1f;
 						}
@@ -740,13 +740,13 @@ namespace StarsAbove
 
 					}
 				}
-				if (player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2)
+				if (player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2 && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
 				{
 					if (oldDamageClass != DamageClass.Summon && oldDamageClass != DamageClass.MagicSummonHybrid && oldDamageClass != DamageClass.SummonMeleeSpeed)
 					{
 						damage = player.GetTotalDamage(DamageClass.Summon);
 						
-						if (!disableAspectPenalty && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
+						if (!disableAspectPenalty)
 						{
 							damage -= 0.1f;
 						}
@@ -839,17 +839,20 @@ namespace StarsAbove
 			}
 			item.DamageType = oldDamageClass;
 		}
-		
 
-        public override bool CanUseItem(Item item, Player player)
+	
+		public override bool CanUseItem(Item item, Player player)
         {
+			
+		
 			if(player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer != 1 && player.whoAmI == Main.myPlayer && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
             {
 				if(AstralWeapons.Contains(item.type) && !disableWeaponRestriction)
-				{      
-					//Add this to localization later.
-					if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("The weapon fails to react to your Aspect, rendering it unusable."), 241, 255, 180);}
-
+				{
+					//Add this to localization later.($"Common.DiskReady")
+					if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.AstralLocked"), 241, 255, 180);}
+					player.itemTime = 60;
+					
 					return false;
                 }
             }
@@ -857,7 +860,8 @@ namespace StarsAbove
 			{
 				if (UmbralWeapons.Contains(item.type) && !disableWeaponRestriction)
 				{
-					if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("The weapon fails to react to your Aspect, rendering it unusable."), 241, 255, 180); }
+					if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"Common.UmbralLocked"), 241, 255, 180); }
+					player.itemTime = 60;
 
 					return false;
 				}
