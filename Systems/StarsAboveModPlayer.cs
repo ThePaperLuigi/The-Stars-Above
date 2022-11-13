@@ -2877,7 +2877,11 @@ namespace StarsAbove
                 }
                 else
                 {
-                    target.AddBuff(BuffType<Buffs.Petrified>(), 600);
+                    if(crit)
+                    {
+                        target.AddBuff(BuffType<Buffs.Petrified>(), 180);
+                    }    
+                    
 
                 }
 
@@ -6140,7 +6144,7 @@ namespace StarsAbove
                         "Moon Lord Weapon", //Name of the archive listing.
                         $"Grants the Essence for " +
                         $"[i:{ItemType<Spatial>()}] Soul Reaver. ", //Description of the listing.
-                        SoulReaverDialogue == 2, //Unlock requirements.
+                        SoulWeaponDialogue == 2, //Unlock requirements.
                         157,
                         "Defeat Moon Lord, then wait.")); //Corresponding dialogue ID.
                     WeaponArchiveList.Add(new WeaponArchiveListing(
@@ -8593,17 +8597,7 @@ namespace StarsAbove
         }
         public override void OnConsumeAmmo(Item weapon, Item ammo)
         {
-            if (aquaaffinity == 2)
-            {
-
-                if (ammoRecycleCooldown <= 0)
-                {
-                    Player.AddBuff(BuffType<Buffs.AmmoRecycle>(), 30);
-                    ammoRecycleCooldown = 120;
-                    Player.statMana += 8;
-                }
-
-            }
+            
             base.OnConsumeAmmo(weapon, ammo);
         }
         public override void PostUpdateRunSpeeds()
@@ -9819,6 +9813,17 @@ namespace StarsAbove
 
         private void OnKillEnemy(NPC npc)
         {
+            if (aquaaffinity == 2)//Cyclic Hunter
+            {
+
+                if (ammoRecycleCooldown <= 0)
+                {
+                    Player.AddBuff(BuffType<Buffs.AmmoRecycle>(), 30);
+                    ammoRecycleCooldown = 120;
+                    Player.statMana += 8;
+                }
+
+            }
             if (starfarerOutfit == 1)//Faerie Attire
             {
                 novaGauge += 1;
