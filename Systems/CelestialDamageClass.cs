@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using StarsAbove.Utilities;
+using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
@@ -10,7 +11,7 @@ namespace StarsAbove.Systems
 	{
 		public override void SetStaticDefaults()
 		{
-			ClassName.SetDefault(Language.GetTextValue($"DamageClass.CelestialDamageClass"));
+			ClassName.SetDefault(LangHelper.GetTextValue($"DamageClass.CelestialDamageClass"));
 		}
 
 		//public string "Spatial Damage" => DisplayName;
