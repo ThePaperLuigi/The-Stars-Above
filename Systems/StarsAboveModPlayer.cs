@@ -8119,7 +8119,7 @@ namespace StarsAbove
                             return;
 
                         }
-                        if (GolemWeaponDialogue == 2 && SoulWeaponDialogue == 0)
+                        if (MoonLordWeaponDialogue == 2 && SoulWeaponDialogue == 0)
                         {
                             SoulWeaponDialogue = 1;
                             if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
