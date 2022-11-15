@@ -1938,6 +1938,11 @@ Mods: {
                 Label: Disable Aspected Weapon restrictions
                 Tooltip: Disables the restriction for Astral and Umbral weapons being wielded by other players.
             }
+			
+			DisableBossEnemySpawnMod: {
+                Label: Disable Boss Enemy Spawn Mod
+                Tooltip: Disables the buff granted to all players that prevents mob spawning during bosses.
+            }
             
             CombatTimer: {
                 Label: Combat Timer
