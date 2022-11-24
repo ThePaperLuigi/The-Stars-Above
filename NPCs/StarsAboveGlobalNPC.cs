@@ -32,6 +32,7 @@ namespace StarsAbove.NPCs
 		public bool MortalWounds;
 		public bool Glitterglue;
 		public bool InfernalBleed;
+		public bool Hyperburn;
 		public int NanitePlagueLevel = 0;
 
 
@@ -53,7 +54,7 @@ namespace StarsAbove.NPCs
 				//pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.WaywardPaladin>(), 0.1f);
 
 			}
-			if (SubworldSystem.IsActive<Observatory>() || SubworldSystem.IsActive<EternalConfluence>())
+			if (SubworldSystem.IsActive<Observatory>())
 			{
 				pool.Clear();
 				pool.Add(NPCID.Bird, 0.3f);
@@ -105,6 +106,17 @@ namespace StarsAbove.NPCs
 				
 				damage = 30;
 				
+			}
+			if (Hyperburn)
+			{
+				if (npc.lifeRegen > 0)
+				{
+					npc.lifeRegen = 0;
+				}
+				npc.lifeRegen -= 30;
+
+				damage = 30;
+
 			}
 			if (InfernalBleed)
 			{
@@ -166,6 +178,7 @@ namespace StarsAbove.NPCs
 			RyukenStun = false;
 			Glitterglue = false;
 			InfernalBleed = false;
+			Hyperburn = false;
 		}
         public override void PostDraw(NPC npc, SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
@@ -174,6 +187,10 @@ namespace StarsAbove.NPCs
 
 
 				npc.color = Color.LightGoldenrodYellow;
+			}
+			if(Hyperburn)
+            {
+				npc.color = Color.Pink;
 			}
 		}
        
@@ -246,6 +263,28 @@ namespace StarsAbove.NPCs
 					{
 						Main.dust[dust].noGravity = false;
 						Main.dust[dust].scale *= 0.2f;
+					}
+				}
+				Lighting.AddLight(npc.position, 0.1f, 0.2f, 0.7f);
+			}
+			if (Hyperburn)
+			{
+				if (Main.rand.Next(4) < 3)
+				{
+					int dust2 = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, DustID.FireworkFountain_Pink, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color), 1f);
+					Main.dust[dust2].noGravity = true;
+					
+				}
+				if (Main.rand.Next(4) < 3)
+				{
+					int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, DustID.Firework_Pink, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color), 1.1f);
+
+					Main.dust[dust].velocity *= 1.8f;
+					Main.dust[dust].velocity.Y -= 0.5f;
+					if (Main.rand.NextBool(4))
+					{
+
+						Main.dust[dust].scale *= 0.5f;
 					}
 				}
 				Lighting.AddLight(npc.position, 0.1f, 0.2f, 0.7f);
