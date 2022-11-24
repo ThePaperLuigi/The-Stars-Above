@@ -25,7 +25,7 @@ namespace StarsAbove.Items
                 "\nCharged attacks propel you forward while swinging in a large circle around you, dealing double damage" +
                 "\nIn [c/FF7C00:Blasting Form], attacks focus on slow, powerful ranged attacks" +
                 "\nUncharged attacks are disabled" +
-                "\nCharged attacks take much longer to preform, but instead fires a powerful projectile that stuns foes for 1/3rd second on a critical strike" +
+                "\nCharged attacks take much longer to perform, but instead fires a powerful projectile that stuns foes for 1/3rd second on a critical strike" +
                 "\nHolding charge attack enhances the attack every 1/2 second, capping at 10 stacks" +
                 "\nIf the charged attack has 5 stacks or more, it will always be a critical strike" +
                 $"");

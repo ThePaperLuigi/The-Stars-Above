@@ -247,6 +247,7 @@ Mods: {
 					74: This is an Essence that'll turn into a pair of gloves. Now, I know what you're thinking, but let me explain.
 					75: These gloves can conjure a whole arsenal of weapons for you to wield. Complicated, but it'll be very powerful if used right.
 					76: Right. This Melee Essence dips into the void to defeat foes and absorb them after. Sounds pretty cool to me.
+					77: I've acquired a new Essence for your use. It seems to borrow strength from Melee and Magic both- a versatile weapon, I like it!
 				}
 				Eridani: {
 					1: Here's a Ranged-type essence. It looks like every fourth shot has increased offensive properties. Whatever the reason, it's powerful.
@@ -327,6 +328,7 @@ Mods: {
 					76: Of course, that's not the whole story- you can use these gloves to summon an entire arsenal of weapons.
 					77: I know the prospect sounds daunting, but you'll deal some heavy damage if you can manage the weapons well.
 					78: Okay, here's a Melee weapon- with the power of souls, you can cleave huge areas around you and dip into the void itself for instant teleportation.
+					79: Looks to be a new Essence for your use. It uses a unique damage type and powerful charge attacks- but it'll probably have some recoil damage.
 				}
 				Perseus: {
 					1: It's good to see you again, {0}. I'm not here to ask for your help- instead, I have a gift for you.
@@ -1952,6 +1954,7 @@ Mods: {
 		
 		Common: {
 			DiskReady: The Spatial Disk begins to resonate. Left click to interact.
+			DiskReadyLocation: The Spatial Disk begins to resonate at this location specifically. Left click to interact. (Leaving this area will not trigger dialogue.)
 			ArrayAbility: The Stellar Array has gained a new ability!
 			AstralLocked: The weapon fails to react to your Aspect, rendering it unusable. You can only use Astral weapons with Asphodene.
 			UmbralLocked: The weapon fails to react to your Aspect, rendering it unusable. You can only use Umbral weapons with Eridani.
