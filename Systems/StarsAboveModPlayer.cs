@@ -5955,7 +5955,7 @@ namespace StarsAbove
                         $"[i:{ItemType<Spatial>()}] Aurum Edge. ", //Description of the listing.
                         GoldWeaponDialogue == 2, //Unlock requirements.
                         158,
-                        "Defeat Moon Lord, then wait.")); //Corresponding dialogue ID.
+                        "Visit the Hallowed biome.")); //Corresponding dialogue ID.
                     WeaponArchiveList.Add(new WeaponArchiveListing(
                           "Queen Slime Weapon", //Name of the archive listing.
                           $"Grants the Essence for either " +

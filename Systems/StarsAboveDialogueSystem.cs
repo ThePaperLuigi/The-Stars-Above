@@ -7421,7 +7421,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSouls").Type);
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfGold").Type);
                         dialoguePrep = false;
                     }
 
@@ -7429,7 +7429,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.78", Player.name);
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.79", Player.name);
 
 
                         //	" ";
