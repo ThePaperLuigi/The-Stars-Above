@@ -104,6 +104,7 @@ namespace StarsAbove
 			ModContent.ItemType<Naganadel>(),
 			ModContent.ItemType<LightUnrelenting>(),
 			ModContent.ItemType<SparkblossomBeacon>(),
+			ModContent.ItemType<IrminsulDream>(),
 
 			ModContent.ItemType<EssenceOfAlpha>(),
 			ModContent.ItemType<EssenceOfAsh>(),
@@ -170,6 +171,7 @@ namespace StarsAbove
 			ModContent.ItemType<ElCapitansHardware>(),
 			ModContent.ItemType<BlackSilenceWeapon>(),
 			ModContent.ItemType<SoulReaver>(),
+			ModContent.ItemType<GoldenKatana>(),
 
 
 			ModContent.ItemType<EssenceOfAdagium>(),
@@ -208,6 +210,8 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfQuantum>(),
 			ModContent.ItemType<EssenceOfSilence>(),
 			ModContent.ItemType<EssenceOfSouls>(),
+			ModContent.ItemType<EssenceOfGold>(),
+
 
 		};
 
@@ -378,7 +382,7 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfQuantum>(),
 			ModContent.ItemType<EssenceOfSilence>(),
 			ModContent.ItemType<EssenceOfSouls>(),
-
+			ModContent.ItemType<EssenceOfGold>(),
 
 		};
 		public static bool disableAspectPenalty;
