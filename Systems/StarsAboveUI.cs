@@ -15,6 +15,7 @@ using StarsAbove.UI.StarfarerMenu;
 
 using StarsAbove.UI.VN;
 using StarsAbove.UI.CelestialCartography;
+using StarsAbove.UI.IrminsulDream;
 
 namespace StarsAbove
 {
@@ -48,6 +49,9 @@ namespace StarsAbove
 
 		private UserInterface _RadGaugeUserInterface;
 		internal RadGauge RadGauge;
+
+		private UserInterface _IrminsulCursorUserInterface;
+		internal IrminsulCursor IrminsulCursor;
 
 		private UserInterface _RedMageGaugeUserInterface;
 		internal RedMageGauge RedMageGauge;
@@ -202,9 +206,14 @@ namespace StarsAbove
 				_RadGaugeUserInterface = new UserInterface();
 				_RadGaugeUserInterface.SetState(RadGauge);
 
+				IrminsulCursor = new IrminsulCursor();
+				_IrminsulCursorUserInterface = new UserInterface();
+				_IrminsulCursorUserInterface.SetState(IrminsulCursor);
+
 				RedMageGauge = new RedMageGauge();
 				_RedMageGaugeUserInterface = new UserInterface();
 				_RedMageGaugeUserInterface.SetState(RedMageGauge);
+
 				BowCharge = new BowCharge();
 				_BowChargeUserInterface = new UserInterface();
 				_BowChargeUserInterface.SetState(BowCharge);
@@ -359,7 +368,9 @@ namespace StarsAbove
 			_TakodachiGaugeUserInterface?.Update(gameTime);
 
 			_RadGaugeUserInterface?.Update(gameTime);
+			_IrminsulCursorUserInterface?.Update(gameTime);
 			_RedMageGaugeUserInterface?.Update(gameTime);
+
 			_BowChargeUserInterface?.Update(gameTime);
 
 			_PowderGaugeUserInterface?.Update(gameTime);
@@ -402,6 +413,8 @@ namespace StarsAbove
 		{
 
 			int resourceBarIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Interface Logic 2"));
+			int MouseIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Cursor"));
+
 			if (resourceBarIndex != -1)
 			{
 				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
@@ -548,10 +561,19 @@ namespace StarsAbove
 					InterfaceScaleType.UI)
 				);
 				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
-					"StarsAbove: Bow Charge",
+					"StarsAbove: Red Mage Gauge",
 					delegate
 					{
 						_RedMageGaugeUserInterface.Draw(Main.spriteBatch, new GameTime());
+						return true;
+					},
+					InterfaceScaleType.UI)
+				);
+				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+					"StarsAbove: Irminsul Cursor",
+					delegate
+					{
+						_IrminsulCursorUserInterface.Draw(Main.spriteBatch, new GameTime());
 						return true;
 					},
 					InterfaceScaleType.UI)
