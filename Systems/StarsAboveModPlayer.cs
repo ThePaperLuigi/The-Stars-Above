@@ -145,10 +145,14 @@ namespace StarsAbove
         public int CatalystMemoryProgress;
         public Vector2 CatalystPrismicPosition;
 
-        
-        
+        //Golden Katana (Aurum Edge?)
+        public bool GoldenKatanaHeld;
 
-
+        //Irminsul's Dream
+        public bool IrminsulHeld;
+        public bool IrminsulAttackActive;
+        public Vector2 IrminsulBoxStart;
+        public Vector2 IrminsulBoxEnd;
 
         //Warrior of Light code //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -288,6 +292,9 @@ namespace StarsAbove
         public float bowCharge = 0;
         public const int bowChargeMax = 100;
         public bool bowChargeActive = false;
+
+        public float overCharge1 = 0;
+        public float overCharge2 = 0;
 
         //powderGaugeCode ( Kroniic Principality )
         public int powderGauge = 0;
@@ -755,6 +762,7 @@ namespace StarsAbove
         public int CatalystWeaponDialogue = 0;
         public int SilenceWeaponDialogue = 0;
         public int SoulWeaponDialogue = 0;
+        public int GoldWeaponDialogue = 0;
 
         //Subworld dialogues
         public int observatoryDialogue = 0;
@@ -1388,6 +1396,7 @@ namespace StarsAbove
             tag["CatalystWeaponDialogue"] = CatalystWeaponDialogue;
             tag["SilenceWeaponDialogue"] = SilenceWeaponDialogue;
             tag["SoulWeaponDialogue"] = SoulWeaponDialogue;
+            tag["GoldWeaponDialogue"] = GoldWeaponDialogue;
 
 
             tag["observatoryDialogue"] = observatoryDialogue;
@@ -1657,6 +1666,7 @@ namespace StarsAbove
             CatalystWeaponDialogue = tag.GetInt("CatalystWeaponDialogue");
             SilenceWeaponDialogue = tag.GetInt("SilenceWeaponDialogue");
             SoulWeaponDialogue = tag.GetInt("SoulWeaponDialogue");
+            GoldWeaponDialogue = tag.GetInt("GoldWeaponDialogue");
 
 
             observatoryDialogue = tag.GetInt("observatoryDialogue");
@@ -5940,6 +5950,13 @@ namespace StarsAbove
                           131,
                           "Defeat the Wall of Flesh, then wait.")); //Corresponding dialogue ID.
                     WeaponArchiveList.Add(new WeaponArchiveListing(
+                        "Hallowed Biome Weapon", //Name of the archive listing.
+                        $"Grants the Essence for " +
+                        $"[i:{ItemType<Spatial>()}] Aurum Edge. ", //Description of the listing.
+                        GoldWeaponDialogue == 2, //Unlock requirements.
+                        158,
+                        "Defeat Moon Lord, then wait.")); //Corresponding dialogue ID.
+                    WeaponArchiveList.Add(new WeaponArchiveListing(
                           "Queen Slime Weapon", //Name of the archive listing.
                           $"Grants the Essence for either " +
                           $"[i:{ItemType<Astral>()}] Hunter's Symphony " +
@@ -7178,7 +7195,7 @@ namespace StarsAbove
 
                 if (Main.worldID == firstJoinedWorld || !enableWorldLock)
                 {
-                    if (SubworldSystem.IsActive<Observatory>() && observatoryDialogue == 0)
+                  /*  if (SubworldSystem.IsActive<Observatory>() && observatoryDialogue == 0)
                     {
                         observatoryDialogue = 1;
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
@@ -7191,7 +7208,7 @@ namespace StarsAbove
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
 
-                    }
+                    }*/
 
                     if (NPC.downedSlimeKing && slimeDialogue == 0)
                     {
@@ -7658,6 +7675,16 @@ namespace StarsAbove
                     {
                         warriorBossItemDialogue = 1;
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 151, 255, 90); }
+
+                    }
+                    //Zone specific weapons do not have delay
+                    if (Player.ZoneHallow && GoldWeaponDialogue == 0)
+                    {
+                        GoldWeaponDialogue = 1;
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                        NewDiskDialogue = true;
+
+                        return;
 
                     }
                     if (WeaponDialogueTimer <= 0)//7200 = 2 min in between 
@@ -8129,6 +8156,7 @@ namespace StarsAbove
                             return;
 
                         }
+                        
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                     }
@@ -15374,7 +15402,8 @@ namespace StarsAbove
             Observatory = false;
             SeaOfStars = false;
             BurningDesireHeld = false;
-
+            GoldenKatanaHeld = false;
+            IrminsulHeld = false;
             AshenAmbitionHeld = false;
             VermillionDaemonHeld = false;
             SakuraVengeanceHeld = false;
