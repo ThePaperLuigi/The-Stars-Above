@@ -17,13 +17,13 @@ namespace StarsAbove.Items
 		{
 			DisplayName.SetDefault("Irminsul's Dream");
 			Tooltip.SetDefault("" +
-				"WORK IN PROGRESS" +
-                "\nClick and drag to draw a box; releasing left click will execute [Verdant Snapshot] (Attack will end once maximum size is reached)" +
-                "\n[Verdant Snapshot] inflicts damage to all foes in the box while inflicting [Verdant Embrace] for 12 seconds" +
-                "\n[Verdant Embrace] deals minor damage over time and additionally causes subsequent [Verdant Snapshots] to deal 10% increased damage" +
-                "\nAdditionally, when a foe with Verdant Embrace is inflicted with On Fire, Frostburn, Cursed Inferno, or Shadowflame, it will trigger an [Elemental Burst]" +
-                "\nOnly one [Elemental Burst] can occur every 2 seconds per enemy" +
-                "\n[Elemental Burst] will inflict bonus damage equal to 3% of the foe's maximum HP (up to 120 HP per application) but the original debuff will not be applied" +
+				"" +
+				"Click and drag to draw a box; releasing left click will execute [c/6CDA61:Verdant Snapshot] (Attack will end once maximum size is reached)" +
+				"\n[c/6CDA61:Verdant Snapshot] inflicts damage to all foes in the box while inflicting [c/2EB24A:Verdant Embrace] for 12 seconds" +
+				"\n[c/2EB24A:Verdant Embrace] deals minor damage over time" +
+				"\nAdditionally, when a foe with [c/2EB24A:Verdant Embrace] is inflicted with On Fire, Frostburn, Cursed Inferno, or Shadowflame, it will trigger a [c/94EF58:Verdant Burst]" +
+				"\n[c/94EF58:Verdant Burst] will inflict bonus damage equal to 3% of the foe's maximum HP (up to 120 HP per application)" +
+				"\nHowever, both [c/2EB24A:Verdant Embrace] and the debuff that triggered [c/94EF58:Verdant Burst] will be cleansed" +
 				"\n'Let knowledge be yours'" +
 				$"");  //The (English) text shown below your weapon's name
 
@@ -34,14 +34,14 @@ namespace StarsAbove.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 22;          
+			Item.damage = 31;          
 			Item.DamageType = DamageClass.Magic;          
 			Item.width = 40;            
 			Item.mana = 20;
 			Item.height = 40;        
 			Item.useTime = 20;         
 			Item.useAnimation = 20;       
-			Item.useStyle = ItemUseStyleID.HiddenAnimation;          
+			Item.useStyle = ItemUseStyleID.RaiseLamp;          
 			Item.knockBack = 0;       
 			Item.value = Item.buyPrice(gold: 1);          
 			Item.rare = ItemRarityID.Green;           
@@ -73,8 +73,8 @@ namespace StarsAbove.Items
 		public override void HoldItem(Player player)
 		{
 			player.GetModPlayer<StarsAbovePlayer>().IrminsulHeld = true;
-			Main.cursorAlpha = 1f;
-			Main.cursorScale = 0f;
+
+			
 			//player.AddBuff(BuffType<Buffs.TwinStarsBuff>(), 2);
 			if (player.ownedProjectileCounts[ProjectileType<IrminsulHeld>()] < 1)
 			{
@@ -170,7 +170,20 @@ namespace StarsAbove.Items
 						}
 					}
 				}
+				if(player.GetModPlayer<StarsAbovePlayer>().IrminsulAttackActive)
+                {
+					if (player.ownedProjectileCounts[ProjectileType<IrminsulMark1>()] < 1)
+					{
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<IrminsulMark1>(), 0, 4, player.whoAmI, 0f);
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<IrminsulMark2>(), 0, 4, player.whoAmI, 0f);
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<IrminsulMark3>(), 0, 4, player.whoAmI, 0f);
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<IrminsulMark4>(), 0, 4, player.whoAmI, 0f);
 
+
+					}
+					Main.cursorAlpha = 1f;
+					Main.cursorScale = 0f;
+				}
 				if (!Main.mouseLeft || Vector2.Distance(player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxStart, player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxEnd) > 400)
                 {//If no longer holding left click or the box is too big... (The circle will appear above enemies even if the attack isn't used yet.
 					

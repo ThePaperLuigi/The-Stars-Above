@@ -64,7 +64,7 @@ namespace StarsAbove.UI.IrminsulDream
 
 		public override void Draw(SpriteBatch spriteBatch) {
 			// This prevents drawing unless we are using an ExampleDamageItem
-			if (!Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().IrminsulHeld)
+			if (!Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().IrminsulAttackActive)
 				return;
 
 			base.Draw(spriteBatch);
@@ -79,7 +79,7 @@ namespace StarsAbove.UI.IrminsulDream
 		}
 		public override void Update(GameTime gameTime) {
 			//if (!(Main.LocalPlayer.HeldItem.ModItem is HawkmoonRanged) || !(Main.LocalPlayer.HeldItem.ModItem is HawkmoonMagic))
-			if (!Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().IrminsulHeld)
+			if (!Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().IrminsulAttackActive)
 				return;
 
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();

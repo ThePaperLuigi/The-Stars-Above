@@ -1,7 +1,8 @@
-﻿using Terraria;
+﻿using StarsAbove.NPCs;
+using Terraria;
 using Terraria.ModLoader;
 
-namespace StarsAbove.Buffs
+namespace StarsAbove.Buffs.IrminsulDream
 {
     public class VerdantEmbrace : ModBuff
     {
@@ -10,13 +11,19 @@ namespace StarsAbove.Buffs
             DisplayName.SetDefault("Verdant Embrace (Enemy Only)");
             Description.SetDefault("");
             Main.buffNoTimeDisplay[Type] = false;
-            Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
+            Main.debuff[Type] = true; //
         }
 
         public override void Update(Player player, ref int buffIndex)
         {
-             //
             
+        }
+
+        public override void Update(NPC npc, ref int buffIndex)
+        {
+            npc.GetGlobalNPC<StarsAboveGlobalNPC>().VerdantEmbrace = true;
+
+
         }
     }
 }
