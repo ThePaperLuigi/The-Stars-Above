@@ -58,6 +58,8 @@ namespace StarsAbove
 			ModContent.ItemType<Suistrume>(),
 			ModContent.ItemType<KeyOfTheKingsLaw>(),
 			ModContent.ItemType<HunterSymphony>(),
+			ModContent.ItemType<KevesiFarewell>(),
+
 
 			//ModContent.ItemType<EssenceOf>(),
 			ModContent.ItemType<EssenceOfTheDarkMoon>(),
@@ -105,6 +107,7 @@ namespace StarsAbove
 			ModContent.ItemType<LightUnrelenting>(),
 			ModContent.ItemType<SparkblossomBeacon>(),
 			ModContent.ItemType<IrminsulDream>(),
+			ModContent.ItemType<AgnianFarewell>(),
 
 			ModContent.ItemType<EssenceOfAlpha>(),
 			ModContent.ItemType<EssenceOfAsh>(),
@@ -488,10 +491,11 @@ namespace StarsAbove
 			if(Prisms.Contains(item.type) || Outfits.Contains(item.type) || GlowingItems.Contains(item.type) || Essences.Contains(item.type))
             {
 				Texture2D texture = TextureAssets.Item[item.type].Value;
-
-				
-
-
+				for (int i = 0; i < 4; i++)
+				{
+					Vector2 offsetPositon = Vector2.UnitY.RotatedBy(MathHelper.PiOver2 * i) * 2;
+					spriteBatch.Draw(texture, position + offsetPositon, null, Main.DiscoColor, 0, origin, scale, SpriteEffects.None, 0f);
+				}
 
 				float time = Main.GlobalTimeWrappedHourly;
 				float timer = item.timeSinceItemSpawned / 240f + time * 0.04f;
@@ -521,8 +525,8 @@ namespace StarsAbove
 
 				}
 
-
-
+				
+				
 				return true;
 			}
 			return true;
@@ -535,7 +539,7 @@ namespace StarsAbove
 				Texture2D texture = TextureAssets.Item[item.type].Value;
 
 				Rectangle frame;
-
+				
 				if (Main.itemAnimations[item.type] != null)
 				{
 					// In case this item is animated, this picks the correct frame
@@ -549,7 +553,11 @@ namespace StarsAbove
 				Vector2 frameOrigin = frame.Size() / 2f;
 				Vector2 offset = new Vector2(item.width / 2 - frameOrigin.X, item.height - frame.Height);
 				Vector2 drawPos = item.position - Main.screenPosition + frameOrigin + offset;
-
+				for (int i = 0; i < 4; i++)
+				{
+					Vector2 offsetPositon = Vector2.UnitY.RotatedBy(MathHelper.PiOver2 * i) * 2;
+					spriteBatch.Draw(texture, drawPos + offsetPositon, null, Main.DiscoColor, 0, frameOrigin, scale, SpriteEffects.None, 0f);
+				}
 				float time = Main.GlobalTimeWrappedHourly;
 				float timer = item.timeSinceItemSpawned / 240f + time * 0.04f;
 
@@ -576,6 +584,7 @@ namespace StarsAbove
 
 					spriteBatch.Draw(texture, drawPos + new Vector2(0f, 4f).RotatedBy(radians) * time, frame, new Color(140, 120, 255, 77), rotation, frameOrigin, scale, SpriteEffects.None, 0);
 				}
+				
 
 				return true;
 			}
@@ -851,8 +860,13 @@ namespace StarsAbove
 		
 			if(player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer != 1 && player.whoAmI == Main.myPlayer && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
             {
-				if(AstralWeapons.Contains(item.type) && !disableWeaponRestriction)
+				if(AstralWeapons.Contains(item.type) && !disableWeaponRestriction)//Eridani
 				{
+					if(item.type == ItemType<AgnianFarewell>())
+                    {
+						return true;
+                    }
+
 					//Add this to localization later.($"Common.DiskReady")
 					if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.AstralLocked"), 241, 255, 180);}
 					player.itemTime = 60;
@@ -862,8 +876,13 @@ namespace StarsAbove
             }
 			if (player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer != 2 && player.whoAmI == Main.myPlayer && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
 			{
-				if (UmbralWeapons.Contains(item.type) && !disableWeaponRestriction)
+				if (UmbralWeapons.Contains(item.type) && !disableWeaponRestriction)//Asphodene
 				{
+					if (item.type == ItemType<KevesiFarewell>())
+					{
+						return true;
+					}
+
 					if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"Common.UmbralLocked"), 241, 255, 180); }
 					player.itemTime = 60;
 

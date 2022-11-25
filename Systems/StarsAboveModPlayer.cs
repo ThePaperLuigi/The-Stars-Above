@@ -43,6 +43,7 @@ using StarsAbove.Buffs.BurningDesire;
 using StarsAbove.Utilities;
 using StarsAbove.Buffs.CatalystMemory;
 using StarsAbove.Items.Armor.StarfarerArmor;
+using StarsAbove.Buffs.Farewells;
 
 namespace StarsAbove
 {
@@ -509,13 +510,16 @@ namespace StarsAbove
         //Urgot Weapon
         public bool ChemtankHeld;
 
+        //Hunter's Symphony
         public bool HunterSymphonyHeld;
         public int SymphonySongsPlayed;
         public int HunterSongPlaying;
 
         public int GlobalRotation;
 
-
+        //Kevesi and Agnian Farewells
+        public bool KevesiFarewellInInventory;
+        public bool AgnianFarewellInInventory;
 
         //Starfarers ///////////////////////////////////////////////////////////////////////////////////////////////////
         public float StarfarerSelectionVisibility = 0f;
@@ -9876,6 +9880,34 @@ namespace StarsAbove
                 }
 
             }
+            if(Player.HasBuff(BuffType<OffSeersJourney>()))
+            {
+                if (KevesiFarewellInInventory)
+                {
+
+                    for (int d = 0; d < 10; d++)
+                    {
+                        Dust.NewDust(npc.Center, 0, 0, DustType<WaterShine>(), 0f + Main.rand.Next(-3, 3), 0f + Main.rand.Next(-3, 3), 150, default(Color), 1.0f);
+                    }
+
+                    Player.AddBuff(BuffType<FarewellOfFlames>(), 600);
+                }
+                
+            }
+            if (Player.HasBuff(BuffType<OffSeersPurpose>()))
+            {
+                
+                if (AgnianFarewellInInventory)
+                {
+
+                    for (int d = 0; d < 10; d++)
+                    {
+                        Dust.NewDust(npc.Center, 0, 0, DustType<Shine>(), 0f + Main.rand.Next(-3, 3), 0f + Main.rand.Next(-3, 3), 150, default(Color), 1.0f);
+                    }
+
+                    Player.AddBuff(BuffType<FarewellOfFlames>(), 600);
+                }
+            }
             if (SoulReaverHeld)
             {
                 SoulReaverSouls++;
@@ -15398,6 +15430,9 @@ namespace StarsAbove
         public override void ResetEffects()
         {
             CelestialCartographyActive = false;
+
+            KevesiFarewellInInventory = false;
+            AgnianFarewellInInventory = false;
 
             Observatory = false;
             SeaOfStars = false;

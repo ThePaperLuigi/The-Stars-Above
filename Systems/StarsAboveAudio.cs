@@ -589,6 +589,14 @@ namespace StarsAbove
 		#endregion
 
 		#region Weapon Sound Effects
+		public static readonly SoundStyle SFX_KevesiTune = new($"{nameof(StarsAbove)}/Sounds/SFX/KevesiTune")
+		{
+
+		};
+		public static readonly SoundStyle SFX_AgnianTune = new($"{nameof(StarsAbove)}/Sounds/SFX/AgnianTune")
+		{
+
+		};
 		public static readonly SoundStyle SFX_BlackSilencePistol = new($"{nameof(StarsAbove)}/Sounds/SFX/BlackSilencePistol")
 		{
 
