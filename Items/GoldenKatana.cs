@@ -44,7 +44,7 @@ namespace StarsAbove.Items
 		public override void SetDefaults()
 		{
 			
-			Item.damage = 90;
+			Item.damage = 130;
 
 			//The damage of your weapon
 			Item.DamageType = ModContent.GetInstance<Systems.AuricDamageClass>();
