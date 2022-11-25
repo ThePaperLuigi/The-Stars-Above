@@ -4,6 +4,7 @@ Mods: {
 			Misc: {
 				Confirm: 确认你的选择。
 				Reset: 重置你的选择。
+
 			}
 			AspectedDamageType: {
 				Description: 如果武器的种类被更改，那么武器在激活时造成的伤害减少10%
@@ -132,7 +133,7 @@ Mods: {
 				}
 				CyclicHunter: {
 					Name: "[c/C2BDFF:1阶] [c/FFEED1:'Cyclic Hunter']"
-					Description: 当弹药被消耗时，获得8点魔力、10%伤害和移动速度半秒。此效果有2秒冷却时间。
+					Description: 在击败一名敌人时，获得8点魔力、10%伤害和50%移动速度加成半秒。此效果有2秒冷却时间。
 					Unlock: "[c/9D9D9D:已锁定：] 击败困难模式下的史莱姆王"
 				}
 				LivingDead: {
@@ -245,7 +246,8 @@ Mods: {
 					73: 我为你准备了一把新武器：这是把强大的中距离攻击刀刃，能够召唤出可以改变你的战斗模式的水晶。不是很有趣吗？
                     74: 这种精华，可以变成一副手套。现在，我知道你想到了什么，但让我解释一下。
 					75: 这副手套能变化一大堆武器供你挥舞。怪复杂的，但如果使用得当，会很强。
-                    76: Right. This Melee Essence dips into the void to defeat foes and absorb them after. Sounds pretty cool to me.
+                    76: 好。这个近战精华可以遁入虚空并击败敌人，随后吸收他们。我觉得非常酷。
+                    77: I've acquired a new Essence for your use. It seems to borrow strength from Melee and Magic both- a versatile weapon, I like it!
 				}
 				Eridani: {
 					1: 这里有一个远程类型精华。看起来每四次射击都会增强一次攻击。不管为何，反正它很强大。
@@ -325,7 +327,8 @@ Mods: {
                     75: 这有一个新武器供你使用。事实上，这个精华的作用不止于一副手套。
 					76: 当然，这还不是全部——你可以用这副手套召唤出一整个武器库。
 					77: 我知道这听起来令人生畏，但如果你能很好地控制这些武器，你就能造成巨量伤害。
-                    78: Okay, here's a Melee weapon- with the power of souls, you can cleave huge areas around you and dip into the void itself for instant teleportation.
+                    78: 好，这是一个近战武器——借助灵魂的力量，你可以劈开你周围的大片区域，并步入虚空即时传送。
+                    79: Looks to be a new Essence for your use. It uses a unique damage type and powerful charge attacks- but it'll probably have some recoil damage.
 				}
 				Perseus: {
 					1: 很高兴再次见到你，{0}我不是来寻求帮助的，相反，我想给予你一个礼物。
@@ -488,7 +491,7 @@ Mods: {
 				}
 				Golem: {
 					Asphodene: {
-						1: 你做到了！石巨人不复存在。你势不可挡。You've done it! Golem is no more. You're unstoppable.  
+						1: 你做到了！石巨人不复存在。你势不可挡。
 						2: 我感觉下一个敌人……很危险。似乎天体能量在地牢入口周围聚集。
 						3: 天体序列有了另一项升级。看起来很强大。
 					}
@@ -594,25 +597,25 @@ Mods: {
 						1: 所以这就是复光之君。他的刀刃威力惊人，而魔法更是强大。你挺过来了，这也是一次胜利。
 						2: 我看来，复光之君应该算被打败了。此外，这里还有一处疑点。
 						3: 我不知道珀尔修斯为什么要我们和他战斗，甚至不知道为什么我们就要去做。除非……或许帕尔修斯找到了一种办法把精华变成了活物？嗯……
-						4: 我认为我们可以把他的武器据为己有，作为一种新的天体新星使用。也许是因为星海传承者的影响？
+						4: 我认为我们可以把他的武器据为己有，作为一种新的天体新星使用。也许是因为承星者的影响？
 					}
 					Eridani: {
 						1: 复光之君已经倒下了。多么强大的敌人啊。要是我们在他的全盛时期与其战斗，我想都不敢想我们会有怎样的结果。
 						2: 现在看来，复光之君在很久以前就被最初的星海旅者击败了。
 						3: 至于为什么珀尔修斯让我们和他战斗，我不知道。我甚至不知道我们是如何与他战斗的。也许我们只是与赋予生命的精华战斗？
-						4: 他的武器，Ars Laevateinn。我们可以自己使用，作为一种天体新星。也许是因为星海传承者的影响？
+						4: 他的武器，Ars Laevateinn。我们可以自己使用，作为一种天体新星。也许是因为承星者的影响？
 
 					}
 				}
 				Penth: {
 					Asphodene: {
 						1: 彭忒希勒娅，是吗？她是一个难关。多么独特的施展魔力的方式。 
-						2: 她的魔法十分强大。看起来最初的星海传承者的影响就在这里——意味着我们有了新的天体新星。
+						2: 她的魔法十分强大。看起来最初的承星者的影响就在这里——意味着我们有了新的天体新星。
 						3: 这场战斗留下了这个神秘的东西——你可以带着它。
 					}
 					Eridani: {
 						1: 你已经打败了多彩魔女。她是个很强的魔法使，不是吗？她对你有敌意是太可惜了。
-						2: 她强大的魔法……我们可以把它用在自己身上，作为一个新的天体新星。这一定是来自珀尔修斯提到的最初的星海传承者的遗物……
+						2: 她强大的魔法……我们可以把它用在自己身上，作为一个新的天体新星。这一定是来自珀尔修斯提到的最初的承星者的遗物……
 						3: 那场战斗留下了这个神秘的碎片。我把它托付给你。 
 
 					}
@@ -620,13 +623,13 @@ Mods: {
 				Arbitration: {
 					Asphodene: {
 						1: 那个敌人真的很可怕。我很高兴你能打败它——谁知道如果不加控制，它会带来怎样的混乱？
-						2: 我想我们可以重新利用它的力量。它可以成为一个新的天体新星，这要归功于第一位星海传承者的影响。让我们好好利用它吧。
+						2: 我想我们可以重新利用它的力量。它可以成为一个新的天体新星，这要归功于第一位承星者的影响。让我们好好利用它吧。
 						3: 看起来又有一件物品出现了。你能获得它——不管怎么说，它在你手中可能更好。
 
 					}
 					Eridani: {
 						1: 你彻底打败了那个虚无的存在。干得好；我不知道如果我们战败了会发生什么。
-						2: 它的力量已经表现为一个新的天体新星，这要归功于第一位星海传承者的影响。
+						2: 它的力量已经表现为一个新的天体新星，这要归功于第一位承星者的影响。
 						3: 看起来又出现了一个碎片。我把它转交给你了。   
 
 
@@ -666,6 +669,7 @@ Mods: {
 						2: 也许如果她站着不动，我就能看得更清楚了。有点烦人，嗯。
 					}
 					Eridani: {
+                        #文本有问题
 						1: Congratulations, you've bested the Empress of Light. Let's leave the bugs alone now, okay?
 						2: If I had a nickel for bosses summoned with insects... We fought that rather large fish, right? That's two. Not very much, is it. I was hoping for a trend. 
 						3: If I had a nickel for bosses summoned with insects... We fought that rather large fish, right? That's two. Not very much, is it. I was hoping for a trend. Maybe we can count the Queen Bee?
@@ -688,311 +692,312 @@ Mods: {
 			CalamityBossDialogue: {
 				DesertScourge: {
 					Asphodene: {
-						1: You've defeated that evil serpent. I do wonder, though... Where did it come from?
-						2: Looking closely, it seems to have been an aquatic monster.. once upon a time. So.. why was it in the desert?
-						3: This world's secrets are still a mystery to us. Anyway, good job regardless.
+						1: 你击败了那条大虫子。不过我想知道…它是从哪里来的？
+						2: 仔细观察，它似乎是一个水生怪物……至少以前是。那么……它为什么会在沙漠里？
+						3: 这个世界的秘密对我们来说仍然是个谜。不管怎样，干得不错。
 					}
 					Eridani: {
-						1: You've bested the scourge of the sands. As for its origin, your guess is as good as mine. However...
-						2: It definitely was not made for tunneling. Instead, I'd postulate it was originally an aquatic beast. So.. what was it doing here? This world still holds many secrets...
-						3: Anywho... you fought bravely. I believe the loot will serve us well.
+						1: 你已经战胜了荒漠中的灾祸。至于它的起源，你的第六感和我一样好。然而……
+						2: 它绝对不是为了挖隧道而诞生的。相反，我推测它原本是一只水生生物。那么……它在这里做什么？这个世界仍然有很多秘密……
+						3: 不管怎样……你刚刚超勇的。我相信这些战利品会给我们带来好处。
 					}
 				}
 				Crabulon: {
 					Asphodene: {
-						1: Okay.. so that just happened. Now that I've got a better look at the corpse of this mushroom crab thing, the truth is revealed- and it's not pretty.
-						2: It looks like the fungus have reanimated the crab's corpse, and paraded it around like a marionette. That's.. disgusting.
-						3: Whatever. No need to dawdle on that not-so-fun-fact. It's dead! Good job on that, by the way.
+						1: 好吧……所以这才发生了。现在我看清楚了这只蘑菇蟹的尸体，真相大白了，但不太妙的样子。
+						2: 看起来真菌让螃蟹的尸体复活了，并且傀儡般地游荡。这真是……太恶心了。
+						3: 不管怎样。没必要在这个不那么有趣的事实上磨蹭。它已经死过了!顺便，干得好。
 					}
 					Eridani: {
-						1: Crabulon is no more. When I first laid eyes on it, I assumed it was some sort of mutated sea beast, akin to the Desert Scourge.
-						2: However... the reality is much more sinister. It looks to me as if parasitic mushrooms were using this giant crab as a host to feed themselves more efficiently.
-						3: Now that I'm reflecting on it, I feel sick. Thanks for putting an end to it.
+						1: 菌生蟹不复存在。当我第一次看到它时，我以为它是某种变异的海兽，类似于荒漠灾虫。
+						2: 然而……现实要险恶得多。在我看来，仿佛是蘑菇在利用这只被寄生的巨蟹作为宿主，更有效地养活自己。
+						3: 我越想越恶心。谢谢你了结了它。
 					}
 				}
 				HiveMind: {
 					Asphodene: {
-						1: The Hive Mind has been defeated. It isn't the only source of the Corruption, but killing it definitely didn't do the Corruption any favors.
-						2: That's about it for now. 
+						1: 腐巢意志已经被击败了。它并不是腐化的唯一来源，但杀死它肯定对腐化没有任何好处。
+						2: 就说这么多了。
 					}
 					Eridani: {
-						1: You've rid the world of the Hive Mind. While it isn't the main vector for the Corruption's influence, stifling it has probably helped alleviate some evil.
-						2: Let's keep on the lookout for any more threats the Corruption bears.
+						1: 你已经干掉了腐巢意志。虽然它并不是腐化的主要载体，但扼杀它可能有助于减轻一些邪恶。
+						2: 让我们继续关注腐化所带来的任何其他威胁。
 					}
 				}
 				Perforators: {
 					Asphodene: {
-						1: You've bested the Perforator Hive. I wonder what causes the Crimson to coalese its evil in the form of spongy, fleshy monsters.
-						2: It hungered for pure soil, no doubt wanting to spread the world's evil further. Of course, it isn't doing any of that anymore.
+						1: 你已经战胜了血肉宿主。我想知道是什么原因导致猩红以海绵状的血肉怪物凝聚邪恶。
+						2: 它渴求纯净的土壤，无疑是想将世界的邪恶进一步扩散。当然，它现在已经实现不了了。
 					}
 					Eridani: {
-						1: You've beat the Perforator Hive, and those abhorrent worms that joined it in combat. I'm not sure, but seeing fleshy things seriously makes my skin crawl.
-						2: Well, everything living is made of flesh. Ugh, you know what I mean...
+						1: 你已经打败了血肉宿主，还有那些在战斗中加入它的可恶虫子。我不确定，但看到这种血肉物体会让我起鸡皮疙瘩。
+						2: 嗯，所有的生物都是由血肉构成的。呃，你知道我的意思……
 					}
 				}
 				SlimeGod: {
 					Asphodene: {
-						1: The Slime God is no more! It turns out that those huge red and purple slimes weren't actually part of the Slime God, but just strong minions.
-						2: I'm glad we've defeated it, but I seriously doubt this defeat means the end of all slimes. Sadly, there's just.. so many of them.
-						3: Wait a second.. Why am I worried? They explode in like three seconds! I mean, if we keep killing them, they'll go extinct!
-						4: In a few centuries or so... Ugh. 
+						1: 史莱姆之神不再！事实证明，那些巨大的红色和紫色史莱姆其实并不是史莱姆之神的一部分，而是它强大的爪牙。
+						2: 我很高兴我们击败了它，但我严重怀疑这次失败并不代表史莱姆的堙灭。我不好说，他们的数量实在是太多了。
+						3: 等一下。我为什么要担心？它们三秒就会脑花炸裂！我的意思是，如果我们继续杀它们，它们就会灭绝！
+						4: 只要几个世纪内就行……唉。 
 					}
 					Eridani: {
-						1: Finally. The Slime God has been slain. Of course, this doesn't mean the end of slime as we know it. Seriously, they're just everywhere.
-						2: I'm pretty sure they can split to make more. ...I'm no expert on the etymology of slimes or anything.
-						3: It couldn't be a bad way to pass the time, though. Maybe I'll do some light reading. 
+						1: 最终。史莱姆之神已经被杀死了。当然，这并不意味着我们所知的史莱姆的终结。讲真，它们无处不在。
+						2: 我很确定它们可以分裂更多出莱。……我不是研究史莱姆或其他东西的词源的专家。
+						3: 不过，这也不失为一种打发时间的方法。也许我会做一些轻松的阅读。
 					}
 				}
 				Cryogen: {
 					Asphodene: {
-						1: You've defeated Cryogen! And.. it turns out, 'Cryogen' was a prison for this Archmage fellow. 
-						2: From what he can tell us, it seems he was imprisoned in Cryogen by the Jungle Tyrant Yharim. If I recall correctly, we've heard about him before.
-						3: Whoever they are, it seems they've caused this world no shortage of troubles.
+						1: 你打败了极地之灵！而且……事实证明，“极地之灵”是这个大法师的监狱。
+						2: 从他能告诉我们的情况来看，他似乎是被丛林魔君亚利姆囚禁在“极地之灵”里的。如果我没记错的话，我们以前听说过他的事。
+						3: 不管他的势力是什么，他们都给这个世界带来了不小的麻烦。
 					}
 					Eridani: {
-						1: Cryogen has been slain. And out from its corpse arrives this Archmage sort. From what he has to say, he was trapped there by an evil king...
-						2: Yharim, the Jungle Tyrant. Their reputation precedes them.. I have a feeling that they've been the source for many of this world's ailments.
-						3: We must endeavor to unravel more of this story. I trust you're in agreement. 
+						1: 极地之灵已经被杀死了。从它的残骸上，出现了这个大法师。据他所说，他被一个邪恶的魔君困在那里……
+						2: 亚利姆，丛林魔君。他的势力名扬远外。我有一种感觉，他们是这个世界上许多问题的来源。
+						3: 我们必须努力解开这场传说的更多内容。我相信你同意我。
 					}
 				}
 				AquaticScourge: {
 					Asphodene: {
-						1: The Aquatic Scourge is no more, huh? So my hypothesis was correct; the Desert Scourge was displaced and dried... and we just fought its ancestor.
-						2: The Sea King told us of what transpired. Yharim's forces are powerful indeed.. We shouldn't let these misdeeds carry on.
+						1: 渊海灾虫已经不存在了，嗯？所以我的假设是正确的；荒漠灾虫流离失所，干枯了……而我们只是与它的祖辈战斗。
+						2: 海王告诉了我们所发生的事情。亚利姆的势力确实很强大。我们不应该让这些错误继续下去。
 					}
 					Eridani: {
-						1: The Aquatic Scourge is defeated. So this is what the Desert Scourge could have been, had the ocean not been reduced to a desert.
-						2: From what the Sea King tells us, that was another one of Yharim's doings. They bring destruction wherever they roam... We must put an end to them.
+						1: 渊海灾虫被打败了。所以这就是荒漠灾虫的另一种结局，如果海洋不是沦为沙漠的话。
+						2: 从海王告诉我们的情况来看，那是亚利姆的另一个所作所为。他们无论在哪里都会带来毁灭……我们必须给他们一个了结。
 					}
 				}
 				BrimstoneElemental: {
 					Asphodene: {
-						1: You've defeated the Brimstone Elemental. It seems they were once a revered goddess of the Underworld's mighty civilization, before Calamitas rent it asunder.
-						2: I say we confront her sooner, than later. She must be incredibly powerful, but.. We have to do something, at least. 
+						1: 你已经击败了硫磺火元素。看来在灾厄把它撕成碎片之前，它们是地狱的强大文明中受人尊敬的女神。
+						2: 我说我们要尽早与她对峙，而不是迟早。她一定强到离谱，但是……我们至少得做点什么。
 					}
 					Eridani: {
-						1: The fire-borne spirit is no more. The land of brimstone must have been powerful, to worship this spirit as such. We merely fought her at her weakest.
-						2: If what we know is correct, Calamitas was the eventual end of the brimstone kingdom. While I want to put an end to her rampages, we must become stronger first. 
+						1: 烈火燃烧着的灵魂已不复存在。硫磺火的文明一定很强大，才会如此崇拜这种元素。我们只是在她最弱的时候与她战斗。
+						2: 如果我们所知道的是正确的，灾厄是硫磺火王国的终结者。虽然我想结束她的罪行，但我们必须先变得更强大。
 					}
 				}
 				Calamitas: {
 					Asphodene: {
-						1: ...Calamitas is no more. Or, so we thought. What we faced was naught but a replica of the real thing. Even so, it was an incredibly powerful foe.
-						2: We must endeavor to get stronger. We have to! With things like this roaming the world, who else can stop them..? 
+						1: ……灾厄已经不在了。或者，我们只是想象。我们所面对的不过是实物的复制品。即便如此，它也是一个令人难以置信的强大敌人。
+						2: 我们必须努力变得更强大. 我们必须这样做！像这样的东西在世界范围内游荡，还有谁能阻止它们呢……？
 					}
 					Eridani: {
-						1: We've defeated Calamitas... but.. It was naught but a clone of the real foe. Even as a duplicate, it stood as one of our toughest challenges yet.
-						2: Who knows what the real thing can do.. We have to become stronger.  
+						1: 我们已经打败了灾厄……但是……它只不过是真正敌人的复制体。即使是复制体，它也是我们目前最艰难的挑战之一。
+						2: 谁知道真正的它有什么能力…我们必须变得更强大。
 					}
 				}
 				Leviathan: {
 					Asphodene: {
-						1: Finally, we've bested Anahita and her Leviathan. What a thrilling battle... You've fought bravely, even when the fight looked insurmountable.
-						2: Hopefully, what we've obtained from their remains shall help us in the future. Man, we're on a roll! 
+						1: 终于，我们战胜了阿娜希塔和她的利维坦。真是一场惊心动魄的战斗……你勇敢地战斗着，即使看上去是负隅顽抗。
+						2: 希望我们从他们的遗体中得到的东西能在未来帮助我们。伙计，我们正在努力变强！
 					}
 					Eridani: {
-						1: You've defeated the Leviathan and Anahita. A battle well fought- when the Leviathan appeared, I feared the worst. 
-						2: I'll try not to doubt you in the future. After all, you've got my help.  
-						3: I am helping, right? Right...  
+						1: 你已经打败了利维坦和阿娜希塔。出色的战斗——当利维坦出现时，我担心的是最坏的情况。
+						2: 今后我将尽量不怀疑你。毕竟，你已经得到了我的帮助。  
+						3: 我在帮忙战斗，对吗？对……
 					}
 				}
 				AstrumAureus: {
 					Asphodene: {
-						1: We've done in Astrum Aureus. It's a good reminder that the Astral Infection consumes indiscriminately. Even modern mechanics aren't safe from it.
-						2: Even so, it's solid proof that we're getting stronger. Can you imagine fighting that right after we fought Skeletron? Exactly!
+						1: 文明了结了白金星舰。这是一个很好的提醒，星辉瘟疫侵蚀地很快。即使是机械造物也不能幸免于难。
+						2: 即便如此，这也是我们正在变得更强大的坚实证据。你能想象在我们在骷髅王后马上与它战斗会是什么样吗？没错！
 					}
 					Eridani: {
-						1: That's that. Astrum Aureus is dead. Even as the Astral Infection made a perversion of the original, it beat with a heart of iron still.
-						2: The Astral Infection... It's dangerous. At least we've made some good progress, though. Don't forget that. 
+						1: 就这样了。白金星舰已经死了。即使“星辉瘟疫”对原型机械进行了扭曲，它仍然有一颗钢铁之心在跳动。
+						2: 星辉瘟疫……它很危险。不过，至少我们已经取得了一些好的进步。不要忘了。
 					}
 				}
 				PlaguebringerGoliath: {
 					Asphodene: {
-						1: Nice, you've bested the Plaguebringer Goliath. The ingenuity of man never ceases to amaze, even if their knowledge usually is imparted in hyper-active death machines.
-						2: Well, what can you do. There's people like us here to take care of that part.  
+						1: 不错，你打败了瘟疫使者歌莉娅。人类的聪明才智从未停止过，即使他们的知识用在了制造活跃的死亡机器。
+						2: 好吧，你能做什么。有我们这样的人在这照顾这些。
 					}
 					Eridani: {
-						1: Seriously.. what's with the Jungle? At least the Plaguebringer Goliath is dead. Even so, I can't shake it out of my mind. I can't handle bugs, like.. at all.
-						2: Bugs, bugs..  They continue to rear their ugly heads wherever I look..! 
-						3: Let's just move on. Good job defeating that foe. 
+						1: 讲真……这丛林是怎么回事？至少瘟疫使者歌莉娅已经死了。即便如此，我还是无法把它从我的脑海中甩掉。我不会处理虫子，比如……完全不能。
+						2: 虫子，虫子…无论我看向哪里都会看到它们抬起丑陋的头！
+						3: 我们继续前进吧。打败了那个敌人也做的挺好的。
 					}
 				}
 				Ravager: {
 					Asphodene: {
-						1: The Ravager is gone from this world. It was concieved in retaliation against the conquests of the Jungle Tyrant, but it evidently did little in that regard.
-						2: At the very least, we could finally stop it. If this is what humans were led to, what truly happened all those years ago that could lead to such desperation?
+						1: 毁灭魔像已经从这个世界上消失了。它是为了报复丛林魔君的征服诞生的的，但显然它在这方面毫无卵用。
+						2: 至少，最终我们阻止了它。如果这就是人类的结局，那么多年前到底发生了什么，能让人如此绝望？
 					}
 					Eridani: {
-						1: We've defeated the Ravager. Once upon a time, it served as a grim last resort employed against the Jungle Tyrant. Now it can finally rest.
-						2: Even in death, it stalked without purpose. I'm glad we bested it, but its existence does nothing but give credence to the tales of Yharim's overwhelming might.
+						1: 我们已经打败了毁灭魔像。曾几何时，它是用来对付丛林暴君的最后残忍手段。现在它终于可以休息了。
+						2: 即使不是生命，它也毫无目的的跟踪着。我很高兴我们打败了它，但它的存在除了让人相信亚利姆压倒性的力量外，什么也没有。
 					}
 				}
 				AstrumDeus: {
 					Asphodene: {
-						1: We've defeated Astrum Deus. Astrum Deus is- or was- one of the many gods that ruled over the universe. As far as I can remember, it was gone before I was born.
-						2: However... Astrum Deus can regenerate itself. Through assimilating life around its corpse, it can eventually return to the cosmos. It's kin to the story of the ouroboros.
-						3: Let's return to what I said earlier. Astrum Deus was a GOD. What we fought was much weaker. What in the world was able to defeat a deity of that caliber?
-						4: This was a well fought victory... Even so, stay vigilant. I have a feeling our culprit is closer than we think.
+						1: 我们已经打败了星神游龙。星神游龙是——或曾经是——统治宇宙的众神之一。在我的记忆中，它在我出生前就已经消失了。
+						2: 然而……星神游龙可以再生。通过同化其尸体周围的生命，它最终可以归于宇宙。这与衔尾蛇的故事有相似之处。
+						3: 让我们回到我之前所说的。星神游龙是一个神。我们与之战斗的是弱化版。世界上有什么东西能够打败这样的神？
+						4: 这是一场精彩的胜利……即便如此，还是要保持警惕。我有种感觉，我们的罪魁祸首靠近了。
 					}
 					Eridani: {
-						1: Great work. You've defeated Astrum Deus. I have some personal knowledge, so allow me to share... 
-						2: Astrum Deus is one of many cosmic deities. It disappeared before I was born, but knowledge states that it can assimilate life near its corpse to regenerate itself.
-						3: So, that begs the question.. What could be walking this mortal plane able to befall an actual, literal god? What we fought was but a child in comparison.
-						4: Let's shelve that train of thought. While I have my fears, this is our victory. Congratulations. 
+						1: 干得好。你已经打败了星神游龙。我有一些个人知识，请允许我分享……
+						2: 星神游龙是众多宇宙神明之一。它在我出生前就消失了，但知识表明，它可以同化尸体附近的生命，使自己重生。
+						3: 那么，这就产生了一个问题…什么东西在这个平凡的世界，能让一个真真实实的神受到伤害？我们与之战斗的不过是一个神子。
+						4: 我们先不继续想吧。虽然我有所恐惧，但这是我们的胜利。恭喜你。
 					}
 				}
 			}
 			BossItemDialogue: {
 				Nalhaun: {
-					1: We meet again, {0}. I need your help.  
-					2: I've given you the 'Ancient Shard' With it, you can call forth a powerful foe, the Burnished King. 
-					3: If my hypothesis is correct, he may be an important step towards confronting the First Starbearer, and stopping his rampage.
-					4: Prepare yourself: this fight will not be easy.  				
+					1: 我们又见面了，{0}。我需要你的帮助。
+					2: 我给予了你“远古碎片”，有了它，你可以召唤出一个强大的敌人，复光之君。
+					3: 如果我的假设是正确的，他可能是对抗最初的承星者的重要一步，并阻止他的暴行。
+					4: 做好准备：这是一场苦战。
 				}
 				Penth: {
-					1: We meet again, {0}. Again, I need your assistance. 
-					2: This is the 'Unsullied Canvas.' It will draw the Witch of Ink out of hiding. 
-					3: This is another important step in the pursuit of the the First Starbearer. 
-					4: Please prepare yourself. This will be a hard fight.  
+					1: 我们又见面了，{0}。我需要你的援助。 
+					2: 这是“无垢画布”。它将把多彩魔女引诱出来。
+					3: 这是继续追寻最初的承星者的另一重要步骤。
+					4: 做好准备。这是一场苦战。
 				}
 				Arbitration: {
-					1: We meet again, {0}. Again, I have another foe for you to defeat. 
-					2: I've given you the 'Beating Crux' When used, it will call forth a powerful demon. 
-					3: This is another important step in the pursuit of the the First Starbearer. 
-					4: Prepare yourself well.   
+					1: 我们又双见面了，{0}。我又有一个敌人需要你去击败。
+					2: 我给予了你“恶魔十字架”，当使用时，它会召唤出一个强大的恶魔。
+					3: 这是追寻最初的承星者的另一个重要步骤。
+					4: 做好准备。
 				}
 				Warrior: {
-					1: You can tell as well as I that the situation has turned dire, {0}.
-					2: The First Starbearer's gaze has been turned to you, and his power has blanketed the world in overwhelming Light. 
-					3: I have given you the 'Progenitor's Wish.' It will serve as a way to draw him out. From then on, it will be your strength against his determination.
-					4: Please, you must win this fight. The stakes have never been higher.  
+					1: 你和我一样可以看出，情况已经变得很糟糕，{0}。
+					2: 源初承星者的目光已经转向至你，他的力量已经将世界笼罩在垄断一切的光明之中。
+					3: 我给予了你“先祖之愿”。这能引诱他出来。一旦发生，它将成为你对抗他决心的力量。
+					4: 拜托你，必须赢得这场战斗。这是无法估量的一场赌博。
 				}
 			}			
 			RegularIdleDialogue: {
 				NormalIdleDialogue1: {
 					Asphodene: {
-						1: My sister likely despises the undead rising every night.
-						2: What about me?
-						3: As long as they have money, it's a benefit to us, right?
+						1: 我的妹妹很鄙视每晚重新爬出的亡灵。
+						2: 我？
+						3: 只要他们能爆金币，对我们就有好处，不是吗？
 					}
 					Eridani: {
-						1: Those disgusting creatures rising from the earth every night...
-						2: Ew. Let's dispatch of them quickly. And- be mindful of your hygiene after.
+						1: 那些每天晚上从从地下爬出的恶心生物……
+						2: 呃呃。我们赶紧把它们解决掉吧。还有—以后要注意做“清理”。
 					}
 				}
 				NormalIdleDialogue2: {
 					Asphodene: {
-						1: It's fine to relax, but you can't forget our end goal, now.
+						1: 放松是好的，但不能忘记我们现在的最终目标。
 					}
 					Eridani: {
-						1: Rest is important.. Take as much time as you need.
+						1: 休息很重要。多休息休息吧。
 					}
 				}
 				NormalIdleDialogue3: {
 					Asphodene: {
-						1: Honestly, I prefer the flashy weapons. A little 'extra' never hurt anyone.
-						2: Unless you were on the receiving end. 
+						1: 老实说，我更喜欢那些绚丽的武器。一点“额外效果”永远不会伤害任何人。
+						2: 除非你是挨打的那个。
 					}
 					Eridani: {
-						1: Weapon looks? They matter, but utility far outweighs cosmetic value.
-						2: Sometimes, though... The choice is difficult. You get what I mean, right?
+						1: 武器外观？它们很重要，但实用性远超外观价值。
+						2: 有时，虽然……选择是困难的。你明白我的意思，对吗？
 					}
 				}
 				NormalIdleDialogue4: {
 					Asphodene: {
-						1: What is a 'Starfarer' you ask? Hmm, there's a lot to go over.
-						2: In short, we're the manifestation of the universe's will to vanquish threats...?
-						3: Sorry. I think my memory's a little foggy. Just know I'm on your side, whatever may come.
+						1: 你问什么是“星海旅者”？嗯，有很多东西需要知道。
+						2: 简而言之，我们是宇宙意志的体现，以消除威胁……？
+						3: 抱歉。我想我的记忆有点模糊。只要知道，不管会发生什么，我都会站在你这边。
 					}
 					Eridani: {
-						1: What is a 'Starfarer'? Let me see...
-						2: Using your terms, we would be referred to as a sort of demigod. The universe calls us into action when needed.
-						3: That wasn't very helpful? Sorry. I feel like my memories are foggy. Don't fret, though- I'm with you all the way.
+						1: 什么是“星海旅者”？我想想……
+						2: 用你们的说法，我们被称作半神。宇宙在需要时会召唤我们行动。
+						3: 这不是很有帮助吗？抱歉。我觉得我的记忆很模糊。不过没关系，我会一直支持你。
 					}
 				}
 				NormalIdleDialogue5: {
 					Asphodene: {
-						1: Don't forget about the Stellar Array! 
-						2: It would be a shame if you did. I made it for you, after all.
+						1: 别忘了天体序列！
+						2: 你忘了就太可惜了。毕竟这是我为你量身定做的。
 					}
 					Eridani: {
-						1: Have you been utilizing the Stellar Array? It'll help. Wait, forget I said that. Of course you know it'll help...
+						1: 你有在用天体序列吗？它会有所帮助。等等，忘了我说的。你当然知道这有帮助……
 					}
 				}
 				NormalIdleDialogue6: {
 					Asphodene: {
-						1: Hmm... 
-						2: Ah, it's nothing. Keep up the good work.
+						1: 嗯…… 
+						2: 啊，没什么。继续努力。
 					}
 					Eridani: {
-						1: ...Hm.
-						2: Ah.. It's nothing.
+						1: ……嗯。
+						2: 啊…没什么。
 					}
 				}
 				NormalIdleDialogue7: {
 					Asphodene: {
-						1: I have this idea about a weapon, {0}.
-						2: Wait.
-						3: Uh.. Never mind. Forget I said anything.
-						4: It would be far too large, to boot. And then there's the whole heating problem... 
+						1: 我有个武器的点子，{0}。
+						2: 等等。
+						3: 呃…没什么。忘了我说的。
+						4: 这启动起来太大了。然后还有一堆问题……
 					}
 					Eridani: {
-						1: So, there's this weapon idea I was thinking of, {0}.
-						2: Wait.. Actually.. Forget it. Never mind.
-						3: Even if we got past the energy cost, we'd have to deal with the weight... 
+						1: 所以，我有个武器的点子，{0}。
+						2: 等等…实际上…忘了它。别管了。
+						3: 就算我们解决了能源消耗，我们也得解决重量问题……
 					}
 				}
 				NormalIdleDialogue8: {
 					Asphodene: {
-						1: Aren't some of these townspeople kind of awful?
-						2: Everything costs so much! And they all have a monopoly!!
+						1: 这些镇民中的一些是不是很糟糕？
+						2: 什么都卖这么贵！而且还没其他人卖！！
 					}
 					Eridani: {
-						1: These merchants are definitely upselling their wares for far too much!
-						2: Do you think they'd notice if we shortchanged them, just a little? We shouldn't do that? I know... I know.
+						1: 这些商人卖的商品血妈贵！
+						2: 你觉得他们会注意吗，我们少付一点钱，就一点？我们不应该这样做？我知道……我知道。
 					}
 				}
 				NormalIdleDialogue9: {
+                    #和上面貌似重复了
 					Asphodene: {
-						1: Don't forget about the Stellar Array! 
-						2: It would be a shame if you did. I made it for you, after all.
+						1: 别忘了天体序列！
+						2: 你忘了就太可惜了。毕竟这是我为你量身定做的。
 					}
 					Eridani: {
-						1: Have you been utilizing the Stellar Array?
-					}
+						1: 你有在用天体序列吗？
+					}Eridani
 				}
 
 				HardIdleDialogue1: {
 					Asphodene: {
-						1: So, what's next on the agenda? Let's see..
-						2: Have you been working on your town? Up for some mining? Ready for the next boss?
-						3: It's up to you. I'll be here. 
+						1: 那么，下一步的计划是什么？让我们来看看…
+						2: 监狱盖好了吗？矿挖完了吗？准备好打Boss了吗？
+						3: 这都取决于你。我会一直在的。
 					}
 					Eridani: {
-						1: Mind if I suggest your next move? Um...
-						2: If you need more town space, there's that. You might also need some more ores, unless you're ready for the next boss?
-						3: Just suggestions. I trust your judgement.
+						1: 介意我给你的下一步行动提建议吗？嗯……
+						2: 你需要更多监狱。你可能还需要更多矿，除非你已经准备好打Boss过了？
+						3: 只是建议。我相信你的决定。
 					}
 				}
 				HardIdleDialogue2: {
 					Asphodene: {
-						1: Hmm. Maybe I should think of cooler lines to say when I use the Stellar Nova?
-						2: I feel like I'm missing something important.. 
-						3: Ah well. No use worrying about what you can't solve, right?
+						1: 嗯。也许我应该想一些更酷的台词，到时候在用天体新星的时候说出来？
+						2: 我觉得我失去了一些重要的东西…
+						3: 啊，好吧。担心你无法解决的问题是没有用的，对吗？
 					}
 					Eridani: {
-						1: Using the Stellar Novas is rather tiring.
-						2: There's a lot of stories about heroes borrowing powers from others, but they never tell you how hard it is on the other side...
-						3: I feel like I'm missing something important.. 
-						4: It's bothering me, but.. It doesn't look like we can solve it now.
+						1: 用天体新星挺累人的。
+						2: 有很多关于英雄从他人那里借用力量的故事，但他们从未告诉你另一方有多难……
+						3: 觉得我失去了一些重要的东西。
+						4: 这让我很困扰，但是……看起来我们现在无法解决这个问题。
 					}
 				}
 				HardIdleDialogue3: {
 					Asphodene: {
-						1: Ah- I wonder what Eri is doing right about now?
+						1: 啊—我在想埃里现在在做什么呢？
 					}
 					Eridani: {
-						1: I wonder how my sister is faring?  
+						1: 我在想我的姐姐会在干啥呢？
 					}
 				}
 				HardIdleDialogue4: {
@@ -1937,7 +1942,12 @@ Mods: {
                 Label: Disable Aspected Weapon restrictions
                 Tooltip: Disables the restriction for Astral and Umbral weapons being wielded by other players.
             }
-            
+
+            DisableBossEnemySpawnMod: {
+                Label: Disable Boss Enemy Spawn Mod
+                Tooltip: Disables the buff granted to all players that prevents mob spawning during bosses.
+            }
+
             CombatTimer: {
                 Label: Combat Timer
                 Tooltip: When striking a foe or getting struck, this is the time in seconds you are 'in combat.' Affects Stellar Nova gauge and using the Starfarer Menu.
@@ -1947,6 +1957,9 @@ Mods: {
 		Common: {
 			DiskReady: 空间光盘开始共鸣。点击左键以交互。
 			ArrayAbility: 天体阵列获得了一项新能力！
+            AstralLocked: The weapon fails to react to your Aspect, rendering it unusable. You can only use Astral weapons with Asphodene.
+			UmbralLocked: The weapon fails to react to your Aspect, rendering it unusable. You can only use Umbral weapons with Eridani.
+            DiskReadyLocation: The Spatial Disk begins to resonate at this location specifically. Left click to interact. (Leaving this area will not trigger dialogue.)
 		}
 		
 
@@ -2388,7 +2401,7 @@ Mods: {
                 '''
                 被第一位星海旅者击败的世界之记忆
                 可以在[c/EFB43E:极北之观星台]的星门使用，将你带至[c/7FC1EF:永恒汇流]
-                再次在[c/7FC1EF:永恒汇流]的中心使用，将会召唤[c/F1AF42:原初之星海旅者，月读]
+                再次在[c/7FC1EF:永恒汇流]的中心使用，将会召唤[c/F1AF42:源初之星海旅者，月读]
                 [c/7FC1EF:或者，如果无法达到使用条件，也可以直接使用此物品召唤阅月读]
                 不消耗
                 “……”
@@ -4514,7 +4527,7 @@ Mods: {
 		}
 		
 		ProjectileName: {
-            ArachnidNeedlepointWhip: ArachnidNeedlepointWhip
+            ArachnidNeedlepointWhip: 蛛形纲针鞭
             AbsoluteBlade: Absolute Blade
             AbsoluteBlade2: Absolute Blade
             AbsoluteGeometry: Absolute Geometry
@@ -4528,11 +4541,11 @@ Mods: {
             AmiyaSwing2: 影霄
             AmiyaSwingE1: 影霄
             AmiyaSwingE2: 影霄
-            ApalistikProjectile: Apalistik
-            ApalistikUpgradedProjectile: Apalistik
-            RobotSpider: Robot Spider
+            ApalistikProjectile: 埃帕利斯克
+            ApalistikUpgradedProjectile: 埃帕利斯克
+            RobotSpider: 蛛形纲机器
             RobotSpiderStationary: Robot Spider Stationary
-            SpiderDamage: Arachnid Needlepoint
+            SpiderDamage: 蛛形纲针
             ArchitectShoot: Architect's Luminance
             Armament: Armament
             Siren: Artifice Siren
@@ -5049,9 +5062,9 @@ Mods: {
             CallOfTheVoid3: 虚空呼唤
             CallOfTheVoid4: 虚空呼唤
             AsphodeneBlessing: "[c/5DC5DE:星辉共鸣]"
-            AstarteDriver: Astarte Driver
-            AstarteDriverEnemyCooldown: Astarte Driver Enemy Cooldown
-            AstarteDriverPrep: Astarte Driver Prep
+            AstarteDriver: 星体驾驭
+            AstarteDriverEnemyCooldown: 星体驾驭对敌冷却
+            AstarteDriverPrep: 星体驾驭准备
             AstralAspect: 星体调谐
             AstralAspectBow: 星体调谐
             AstralRapture: 星体狂欢
@@ -5116,12 +5129,12 @@ Mods: {
             EridaniBlessing: "[c/9F5DDE:Umbral Resonance]"
             EspeonPetBuff: Mystic Hound
             EverlastingGunpowderLoaded: 无尽火药装填中
-            AmethystBuff: Amethyst Fragment
-            CeruleanBuff: Cerulean Fragment
-            CitrineBuff: Citrine Fragment
+            AmethystBuff: 紫晶碎块
+            CeruleanBuff: 海蓝碎块
+            CitrineBuff: 黄晶碎块
             ImmemorialSupernova: Immemorial Supernova
-            MalachiteBuff: Malachite Fragment
-            VermillionBuff: Vermillion Fragment
+            MalachiteBuff: 孔雀石碎块
+            VermillionBuff: 朱砂碎块
             EverlastingLight: Light Everlasting
             EyeOfEuthymiaBuff: Eye of Euthymia
             FerryPetBuff: Churning Ferry
@@ -5385,7 +5398,6 @@ Mods: {
                 伤害增加{1}%
                 防御增加{2}
                 “听见这链锯的轰鸣了吗？”
-                #悲鸣（划掉）
                 '''
             BloodOfTheDragon: 龙眼的眸光让你能驰骋天际, 增加伤害和移动速度
             BloopPetBuff: "'a'"
@@ -5753,7 +5765,7 @@ Mods: {
 			SpectreOfLight: 一位异界的英雄，被第一位星海旅者召唤来攻击这片大地。
 			Tsukiyomi2: 源初之星海旅者，月读，掌控并运维着天体轨道。行星及其天然卫星的引力给予她力量。她引诱光之战士入歧途——用他的力量和善意征服并摧毁了无数恒星……然而……
 			VagrantOfSpaceAndTime: 神秘的星海旅者珀尔修斯。他的外表展现了自信……但他只是一个装酷的傻瓜。他的姊妹们也认同这点。
-			WarriorOfLight: 光之战士，或者说第一位星海传承者，曾经通过他的行动和他的星海旅者的帮助维护银河的正义。他曾经统治着一个和平的世界，但无助地看着自己的人民走向灭亡。后发誓再也不让其他人共享同样的命运——无论代价。
+			WarriorOfLight: 光之战士，或者说第一位承星者，曾经通过他的行动和他的星海旅者的帮助维护银河的正义。他曾经统治着一个和平的世界，但无助地看着自己的人民走向灭亡。后发誓再也不让其他人共享同样的命运——无论代价。
 		}
 		
 		Prefix: {
