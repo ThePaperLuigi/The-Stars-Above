@@ -1,8 +1,10 @@
 ﻿
 using Microsoft.Xna.Framework;
+using StarsAbove.Buffs.IrminsulDream;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.IrminsulDream
 {
@@ -38,7 +40,20 @@ namespace StarsAbove.Projectiles.IrminsulDream
 
 			base.ModifyDamageHitbox(ref hitbox);
         }
-       
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+			int randomPetals = Main.rand.Next(3, 5);
+			for (int i = 0; i < randomPetals; i++)
+			{
+				// Random upward vector.
+				Vector2 vel = new Vector2(Main.rand.NextFloat(-3, 3), Main.rand.NextFloat(-1, -4));
+				Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center, vel, ProjectileType<IrminsulLeaf>(), 0, 0, Projectile.owner, 0, 1);
+			}
+			target.AddBuff(BuffType<VerdantEmbrace>(), 720);
+
+			base.OnHitNPC(target, damage, knockback, crit);
+        }
+        
         public override void AI() {
 			//Main.PlaySound(SoundLoader.customSoundType, (int)projectile.Center.X, (int)projectile.Center.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/GunbladeImpact"));
 
