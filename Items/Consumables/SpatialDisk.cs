@@ -420,6 +420,14 @@ namespace StarsAbove.Items.Consumables
 				
 				return true;
 			}
+			if (player.GetModPlayer<StarsAbovePlayer>().FarewellWeaponDialogue == 1)
+			{
+				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 159;
+				player.GetModPlayer<StarsAbovePlayer>().FarewellWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
 			if (player.GetModPlayer<StarsAbovePlayer>().WallOfFleshWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 105;

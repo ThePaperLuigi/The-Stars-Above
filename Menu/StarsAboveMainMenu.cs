@@ -131,7 +131,7 @@ namespace StarsAbove.Menu
 
 			Texture2D MenuBG = (Texture2D)ModContent.Request<Texture2D>($"{menuAssetPath}/MenuBackground");//Background
 			Vector2 zero = Vector2.Zero;
-			float width= (float)Main.screenWidth / (float)MenuBG.Width;
+			float width = (float)Main.screenWidth / (float)MenuBG.Width;
 			float height = (float)Main.screenHeight / (float)MenuBG.Height;
 			
 			if (width != height)

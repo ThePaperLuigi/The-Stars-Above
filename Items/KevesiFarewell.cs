@@ -20,7 +20,7 @@ namespace StarsAbove.Items
 				"\n[c/69B5FC:Off-seer's Journey] grants increased Luck and maximum Luck while increasing enemy spawn rates (8 minute cooldown) " +
 				"\nAfter defeating an enemy with the Kevesi Farewell in your inventory while [c/69B5FC:Off-seer's Journey] is active, gain the buff [c/FC6969:Farewell of Flames] for 10 seconds" +
 				"\n[c/FC6969:Farewell of Flames] grants an additional increase to Luck" +
-				"\nIf used while wielding the strength of the Umbral Aspect (through trade), further increase the potency of [c/69B5FC:Off-seer's Journey]'s Luck increase" +
+				"\nIf used while wielding the strength of the Umbral Aspect (through trading in Multiplayer), further increase the potency of [c/69B5FC:Off-seer's Journey]'s Luck increase" +
 				"" +
 				$"");  //The (English) text shown below your weapon's name
 
@@ -58,7 +58,10 @@ namespace StarsAbove.Items
         }
         public override bool CanUseItem(Player player)
 		{
-			
+			if(player.HasBuff(BuffType<FarewellCooldown>()))
+            {
+				return false;
+            }
 			return base.CanUseItem(player);
 		}
 		public override void MeleeEffects(Player player, Rectangle hitbox)
@@ -84,11 +87,14 @@ namespace StarsAbove.Items
 		}
 		public override void AddRecipes()
 		{
-			/*CreateRecipe(1)
-				.AddIngredient(ItemType<DullTotemOfLight>())
-				.AddIngredient(ItemType<EssenceOfTheTreasury>())
+			
+				CreateRecipe(1)
+				.AddIngredient(ItemID.Wood, 8)
+				.AddIngredient(ItemID.Gravestone)
+				.AddIngredient(ItemType<EssenceOfFarewells>())
 				.AddTile(TileID.Anvils)
-				.Register();*/
+				.Register();
+			
 		}
 	}
 

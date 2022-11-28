@@ -7407,7 +7407,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.76", Player.name);
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.77", Player.name);
 
 
                         //	" ";
@@ -7439,7 +7439,64 @@ namespace StarsAbove
                 }
 
 
-            }//Soul Reaver
+            }//Aurum Edge
+            if (chosenDialogue == 159) //Farewells
+            {
+                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfFarewells").Type);
+                        dialoguePrep = false;
+                    }
+
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.78", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+
+                }
+                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 2;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfOffseeing").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.80", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.81", Player.name);
+
+
+                        //	" ";
+                    }
+
+                }
+
+
+            }//Kevesi/Agnian Farewell
             #endregion
             //Boss item dialogues.
             if (chosenDialogue == 301) //Nalhaun item

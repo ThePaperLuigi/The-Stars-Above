@@ -83,6 +83,7 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfTheUnderworldGoddess>(),
 			ModContent.ItemType<EssenceOfTheUnyieldingEarth>(),
 			ModContent.ItemType<EssenceOfTheHunt>(),
+			ModContent.ItemType<EssenceOfFarewells>(),
 		};
 		public List<int> UmbralWeapons = new List<int>() {
 			ModContent.ItemType<KonpakuKatana>(),
@@ -131,6 +132,7 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfTime>(),
 			ModContent.ItemType<EssenceOfStaticShock>(),
 
+			ModContent.ItemType<EssenceOfOffseeing>(),
 		};
 		public List<int> SpatialWeapons = new List<int>(){
 
@@ -386,6 +388,8 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfSilence>(),
 			ModContent.ItemType<EssenceOfSouls>(),
 			ModContent.ItemType<EssenceOfGold>(),
+			ModContent.ItemType<EssenceOfFarewells>(),
+			ModContent.ItemType<EssenceOfOffseeing>(),
 
 		};
 		public static bool disableAspectPenalty;
@@ -862,7 +866,7 @@ namespace StarsAbove
             {
 				if(AstralWeapons.Contains(item.type) && !disableWeaponRestriction)//Eridani
 				{
-					if(item.type == ItemType<AgnianFarewell>())
+					if(item.type == ItemType<KevesiFarewell>())
                     {
 						return true;
                     }
@@ -878,7 +882,7 @@ namespace StarsAbove
 			{
 				if (UmbralWeapons.Contains(item.type) && !disableWeaponRestriction)//Asphodene
 				{
-					if (item.type == ItemType<KevesiFarewell>())
+					if (item.type == ItemType<AgnianFarewell>())
 					{
 						return true;
 					}
