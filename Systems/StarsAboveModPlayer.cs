@@ -54,6 +54,8 @@ namespace StarsAbove
         public string firstJoinedWorldName;
         public static bool enableWorldLock = false;
 
+       
+
         public static bool BossEnemySpawnModDisabled = false;
 
         public bool TruesilverSlashing = false;
@@ -767,6 +769,7 @@ namespace StarsAbove
         public int SilenceWeaponDialogue = 0;
         public int SoulWeaponDialogue = 0;
         public int GoldWeaponDialogue = 0;
+        public int FarewellWeaponDialogue = 0;
 
         //Subworld dialogues
         public int observatoryDialogue = 0;
@@ -1401,6 +1404,7 @@ namespace StarsAbove
             tag["SilenceWeaponDialogue"] = SilenceWeaponDialogue;
             tag["SoulWeaponDialogue"] = SoulWeaponDialogue;
             tag["GoldWeaponDialogue"] = GoldWeaponDialogue;
+            tag["FarewellWeaponDialogue"] = FarewellWeaponDialogue;
 
 
             tag["observatoryDialogue"] = observatoryDialogue;
@@ -1671,6 +1675,7 @@ namespace StarsAbove
             SilenceWeaponDialogue = tag.GetInt("SilenceWeaponDialogue");
             SoulWeaponDialogue = tag.GetInt("SoulWeaponDialogue");
             GoldWeaponDialogue = tag.GetInt("GoldWeaponDialogue");
+            FarewellWeaponDialogue = tag.GetInt("FarewellWeaponDialogue");
 
 
             observatoryDialogue = tag.GetInt("observatoryDialogue");
@@ -4749,6 +4754,7 @@ namespace StarsAbove
             }
             
             CelestialCartography();
+           
 
             if (CatalystMemoryProgress < 0)
             {
@@ -5873,6 +5879,15 @@ namespace StarsAbove
                            EyeBossWeaponDialogue == 2, //Unlock requirements.
                            136,
                            "Defeat Eye of Cthulhu")); //Corresponding dialogue ID.
+                    WeaponArchiveList.Add(new WeaponArchiveListing(
+                        "Graveyard Weapon", //Name of the archive listing.
+                         $"Grants the Essence for either " +
+                           $"[i:{ItemType<Astral>()}] Kevesi Farewell " +
+                           $"or " +
+                           $"[i:{ItemType<Umbral>()}] Agnian Farewell.", //Description of the listing.
+                        FarewellWeaponDialogue == 2, //Unlock requirements.
+                        159,
+                        "Visit a Graveyard biome.")); //Corresponding dialogue ID.
                     WeaponArchiveList.Add(new WeaponArchiveListing(
                           "Corruption/Crimson Boss Weapon", //Name of the archive listing.
                           $"Grants the Essence for either " +
@@ -7691,6 +7706,15 @@ namespace StarsAbove
                         return;
 
                     }
+                    if (Player.ZoneGraveyard && FarewellWeaponDialogue == 0)
+                    {
+                        FarewellWeaponDialogue = 1;
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                        NewDiskDialogue = true;
+
+                        return;
+
+                    }
                     if (WeaponDialogueTimer <= 0)//7200 = 2 min in between 
                     {//The order of these should not matter.
                         if (SkeletonDialogue == 2 && SkeletonWeaponDialogue == 0)
@@ -8548,7 +8572,7 @@ namespace StarsAbove
             }
             return base.Shoot(item, source, position, velocity, type, damage, knockback);
         }
-
+        
         private void CelestialCartography()//Intro and idle animation for the Celestial Cartography UI.
         {
             if (CelestialCartographyActive)
