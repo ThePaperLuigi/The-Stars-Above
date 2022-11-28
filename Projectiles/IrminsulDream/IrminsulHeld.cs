@@ -18,7 +18,7 @@ namespace StarsAbove.Projectiles.IrminsulDream
 		public override void SetDefaults()
 		{
 			
-			AIType = 0;
+			AIType = -1;
 			Projectile.width = 92;
 			Projectile.height = 92;
 			Projectile.minion = false;
