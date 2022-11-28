@@ -77,6 +77,7 @@ namespace StarsAbove.Items
         public override bool? UseItem(Player player)
         {
 			player.AddBuff(BuffType<OffSeersPurpose>(), 7200);
+			player.AddBuff(BuffType<FarewellCooldown>(), 28800);
 
 			return base.UseItem(player);
         }
