@@ -41,7 +41,7 @@ namespace StarsAbove.Items
 			Item.height = 40;        
 			Item.useTime = 20;         
 			Item.useAnimation = 20;       
-			Item.useStyle = ItemUseStyleID.RaiseLamp;          
+			Item.useStyle = ItemUseStyleID.HoldUp;          
 			Item.knockBack = 0;       
 			Item.value = Item.buyPrice(gold: 1);          
 			Item.rare = ItemRarityID.Green;           
@@ -236,7 +236,7 @@ namespace StarsAbove.Items
 			
 			//player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
 
-			return true;
+			return false;
             
 		}
 
