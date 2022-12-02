@@ -44,7 +44,7 @@ namespace StarsAbove.NPCs
             
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
             {
-                NPC.lifeMax = 240000;
+                NPC.lifeMax = 140000;
                 NPC.defense = 25;
             }
             else
@@ -1693,7 +1693,7 @@ namespace StarsAbove.NPCs
             int hpThreshold;
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
             {
-                hpThreshold = 200000;
+                hpThreshold = 100000;
             }
             else
             {
