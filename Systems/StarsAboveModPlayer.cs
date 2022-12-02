@@ -8458,7 +8458,7 @@ namespace StarsAbove
                         if ((bool)calamityMod.Call("GetBossDowned", "devourerofgods"))
                         {
                             stellarGaugeMax++;
-                            baseNovaDamageAdd = 62500;
+                            baseNovaDamageAdd = 52500;
                             if (stellarGaugeUpgraded != 1)
                             {
                                 if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array reaches new heights!"), 255, 0, 115); }
@@ -8467,11 +8467,11 @@ namespace StarsAbove
                         }
                         if ((bool)calamityMod.Call("GetBossDowned", "yharon"))
                         {
-                            baseNovaDamageAdd = 73000;
+                            baseNovaDamageAdd = 63000;
                         }
                         if ((bool)calamityMod.Call("GetBossDowned", "supremecalamitas"))
                         {
-                            baseNovaDamageAdd = 97500;
+                            baseNovaDamageAdd = 77500;
                         }
                     }
 
