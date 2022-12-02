@@ -18,7 +18,7 @@ namespace StarsAbove.Items
 			DisplayName.SetDefault("Agnian Farewell");
 			Tooltip.SetDefault("Playing this instrument grants the buff [c/FFE86A:Off-seer's Purpose] to yourself for 2 minutes" +
 				"\n[c/FFE86A:Off-seer's Purpose] grants increased Luck and maximum Luck while increasing enemy spawn rates (8 minute cooldown) " +
-				"\nAfter defeating an enemy with the Kevesi Farewell in your inventory while [c/FFE86A:Off-seer's Purpose] is active, gain the buff [c/FC6969:Farewell of Flames] for 10 seconds" +
+				"\nAfter defeating an enemy with the Agnian Farewell in your inventory while [c/FFE86A:Off-seer's Purpose] is active, gain the buff [c/FC6969:Farewell of Flames] for 10 seconds" +
 				"\n[c/FC6969:Farewell of Flames] grants an additional increase to Luck" +
 				"\nIf used while wielding the strength of the Astral Aspect (through trading in Multiplayer), further increase the potency of [c/FFE86A:Off-seer's Purpose]'s Luck increase" +
 				"" +
