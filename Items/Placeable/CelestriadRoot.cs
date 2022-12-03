@@ -242,11 +242,7 @@ namespace StarsAbove.Items.Placeable
 
 		public override void AddRecipes()
 		{
-			CreateRecipe(1)
-				.AddIngredient(ItemID.ManaCrystal, 3)
-				.AddIngredient(ItemID.FallenStar, 5)
-				.AddTile(TileID.Anvils)
-				.Register();
+			
 		}
 	}
 }

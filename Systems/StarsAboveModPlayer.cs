@@ -5052,30 +5052,7 @@ namespace StarsAbove
                 eternityGauge++;
             }
             flashFreezeCooldown--;
-            var tilePos = Player.Bottom.ToTileCoordinates16();
-            Tile tile = Framing.GetTileSafely(tilePos.X, tilePos.Y);
-            if (tile.TileType == TileID.AmberGemspark && BleachedWorld && !Player.HasBuff(BuffType<BossCooldown>()))
-            {
-                //player.AddBuff(BuffType<BossCooldown>(), 3600);
-                if (Player.ownedProjectileCounts[ProjectileType<HeldGateway>()] < 1)
-                {
-
-                    //Projectile.NewProjectile(null,player.position.X, player.position.Y, 0, 0, ProjectileType<HeldGateway>(), 0, 4, player.whoAmI, 0f);
-
-
-                }
-            }
-            if (tile.TileType == TileID.SapphireGemspark && SubworldSystem.IsActive<Observatory>())
-            {
-                Player.AddBuff(BuffType<GatewayBuff>(), 2);
-                if (Player.ownedProjectileCounts[ProjectileType<HeldGateway>()] < 1)
-                {
-
-                    Projectile.NewProjectile(null, Player.position.X, Player.position.Y, 0, 0, ProjectileType<HeldGateway>(), 0, 4, Player.whoAmI, 0f);
-
-
-                }
-            }
+            
             seenUnknownBossTimer--;
             starfarerMenuDialogueScrollTimer++;
             if (starfarerMenuDialogueScrollTimer >= dialogueScrollTimerMax && starfarerMenuActive)
@@ -11594,7 +11571,7 @@ namespace StarsAbove
                         Player.AddBuff(BuffType<Buffs.StarshieldCooldown>(), 1200);//
                     }
                 }
-
+            /*
             for (int i = 0; i < Player.CountBuffs(); i++)
                 if (Player.buffType[i] == BuffType<Buffs.Wormhole>())
                 {
@@ -11618,7 +11595,7 @@ namespace StarsAbove
                 }
 
 
-            /*if (player.HasBuff(BuffType<Wormhole>()))
+            if (player.HasBuff(BuffType<Wormhole>()))
             {
                 int index = player.FindBuffIndex(BuffType<Wormhole>());
                 if (index > -1)
@@ -11835,129 +11812,7 @@ namespace StarsAbove
         {
 
 
-            if (Player.InModBiome(ModContent.GetInstance<SeaOfStarsBiome>()))
-            {
-                if (!Player.HasBuff(BuffType<Superimposed>()))
-                {
-
-
-                }
-                Player.AddBuff(BuffType<Superimposed>(), 2);
-                if (SubworldSystem.IsActive<AncientMiningFacility>() || SubworldSystem.IsActive<RuinedSpaceship>() || SubworldSystem.IsActive<SamuraiWar>() || SubworldSystem.IsActive<JungleTower>())
-                {
-                    Player.AddBuff(BuffType<RuinedSpaceshipTurmoil>(), 2);
-                }
-                else
-                {
-                    Player.AddBuff(BuffType<DefaultTurmoil>(), 2);
-                }
-                if (SubworldSystem.IsActive<JungleTower>())
-                {
-
-                }
-                else
-                {
-                    Player.gravity -= 0.3f;
-                }
-                Player.noBuilding = true;
-
-
-                //
-
-                Main.numClouds = 0;
-                Main.numCloudsTemp = 0;
-                Main.cloudBGAlpha = 0f;
-                //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue($"Debug: current Y value:{(int)(player.Center.Y / 16)}"), 250, 100, 247);}
-                if (!SubworldSystem.IsActive<SamuraiWar>())
-                {
-                    if ((int)(Player.Center.Y / 16) > 400)
-                    {
-                        Player.AddBuff(BuffType<SpatialBurn>(), 120);
-
-                        Player.velocity = new Vector2(Player.velocity.X, -17);
-                    }
-                    else
-                    {
-
-
-                    }
-                }
-
-                Player.gravity -= gravityMod;
-            }
-            if (Player.InModBiome(ModContent.GetInstance<CityBiome>()))
-            {
-                if (SubworldSystem.IsActive<GalacticMean>()) //WIP
-                {
-                    Player.AddBuff(BuffType<Superimposed>(), 2);
-                    Player.AddBuff(BuffType<CityTurmoil>(), 2);
-                    Player.noBuilding = true;
-
-
-                }
-            }
-            if (Player.InModBiome(ModContent.GetInstance<BleachedWorldBiome>()))
-            {
-                Player.AddBuff(BuffType<Superimposed>(), 2);
-                Player.AddBuff(BuffType<BleachedWorldTurmoil>(), 2);
-                Player.noBuilding = true;
-
-                if ((int)(Player.Center.Y / 16) > 400)
-                {
-                    Player.AddBuff(BuffType<SpatialBurn>(), 120);
-
-                    Player.velocity = new Vector2(Player.velocity.X, -21);
-                }
-                else
-                {
-
-
-                }
-            }
-            if (Player.InModBiome(ModContent.GetInstance<ObservatoryBiome>()))
-            {
-                if (!Player.HasBuff(BuffType<Superimposed>()))
-                {
-
-
-                }
-                Player.AddBuff(BuffType<Superimposed>(), 2);
-
-
-                Player.noBuilding = true;
-                Main.cloudBGActive = 1f;
-
-                //
-                if (!SubworldSystem.IsActive<EternalConfluence>())
-                {
-                    if ((int)(Player.Center.Y / 16) > 415)
-                    {
-                        //player.AddBuff(BuffType<SpatialBurn>(), 120);
-
-                        Player.velocity = new Vector2(Player.velocity.X, -21);
-
-                    }
-                }
-                if (SubworldSystem.IsActive<EternalConfluence>())
-                {
-                    if ((int)(Player.Center.Y / 16) < 385)
-                    {
-                        //player.AddBuff(BuffType<SpatialBurn>(), 120);
-
-                        Player.velocity = new Vector2(Player.velocity.X, 6);
-
-                    }
-                }
-
-                else
-                {
-
-
-                }
-                Player.gravity -= gravityMod;
-            }
-
-
+            
 
 
 

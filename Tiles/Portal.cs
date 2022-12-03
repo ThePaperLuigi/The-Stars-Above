@@ -15,7 +15,7 @@ namespace StarsAbove.Tiles
 	// Common code for a Master Mode boss relic
 	// Contains comments for optional Item.placeStyle handling if you wish to add more relics but use the same tile type (then it would be wise to name this class something more generic like BossRelic)
 	// And in case of wanting to add more relics but not wanting to go the optional way, scroll down to the bottom of the file
-	public class CelestriadRoot : ModTile
+	public class Portal : ModTile
 	{
 		public const int FrameWidth = 18 * 3;
 		public const int FrameHeight = 18 * 4;
@@ -26,10 +26,10 @@ namespace StarsAbove.Tiles
 
 		// Every relic has its own extra floating part, should be 50x50. Optional: Expand this sheet if you want to add more, stacked vertically
 		// If you do not go the optional way, and you extend from this class, you can override this to point to a different texture
-		public virtual string RelicTextureName => "StarsAbove/Tiles/CelestriadRoot";
+		public virtual string RelicTextureName => "StarsAbove/Tiles/Portal";
 
 		// All relics use the same pedestal texture, this one is copied from vanilla
-		public override string Texture => "StarsAbove/Tiles/CelestriadRootBase";
+		public override string Texture => "StarsAbove/Tiles/InvisibleWallTile";
 
 		public override void Load()
 		{
@@ -87,7 +87,7 @@ namespace StarsAbove.Tiles
 			switch (placeStyle)
 			{
 				case 0:
-					itemType = ModContent.ItemType<Items.Placeable.CelestriadRoot>();
+					//itemType = ModContent.ItemType<Items.Placeable.CelestriadRoot>();
 					break;
 					// Optional: Add more cases here
 			}
@@ -124,6 +124,7 @@ namespace StarsAbove.Tiles
 			}
 		}
 
+		float rotation;
 		public override void SpecialDraw(int i, int j, SpriteBatch spriteBatch)
 		{
 			// This is lighting-mode specific, always include this if you draw tiles manually
@@ -140,6 +141,11 @@ namespace StarsAbove.Tiles
 			{
 				return;
 			}
+			rotation += 0.01f;
+			if(rotation > 360)
+            {
+				rotation = 0;
+            }
 
 			// Get the initial draw parameters
 			Texture2D texture = RelicTexture.Value;
@@ -158,10 +164,10 @@ namespace StarsAbove.Tiles
 			// Some math magic to make it smoothly move up and down over time
 			const float TwoPi = (float)Math.PI * 2f;
 			float offset = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 5f);
-			Vector2 drawPos = worldPos + offScreen - Main.screenPosition + new Vector2(0f, -95f) + new Vector2(0f, offset * 4f);
+			Vector2 drawPos = worldPos + offScreen - Main.screenPosition + new Vector2(0f, -125f) + new Vector2(0f, offset * 4f);
 
 			// Draw the main texture
-			spriteBatch.Draw(texture, drawPos, frame, color, 0f, origin, 1f, effects, 0f);
+			spriteBatch.Draw(texture, drawPos, frame, color, rotation, origin, 1f, effects, 0f);
 
 			// Draw the periodic glow effect
 			float scale = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 2f) * 0.3f + 0.7f;

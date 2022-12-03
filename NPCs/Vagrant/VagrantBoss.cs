@@ -4,6 +4,7 @@ using StarsAbove.Projectiles.Bosses.Vagrant;
 using System;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.Localization;
@@ -470,25 +471,11 @@ namespace StarsAbove.NPCs.Vagrant
 			}
 			if (Main.rand.NextBool(5) && NPC.ai[1] < 420f)
 			{
-				for (int i = 0; i < 40; i++)
-				{
-					// Charging dust
-					Vector2 vector = new Vector2(
-						Main.rand.Next(-2048, 2048) * (0.003f * 200) - 10,
-						Main.rand.Next(-2048, 2048) * (0.003f * 200) - 10);
-					Dust d = Main.dust[Dust.NewDust(
-						NPC.Center + vector, 1, 1,
-						DustID.FireworkFountain_Green, 0, 0, 255,
-						new Color(1f, 1f, 1f), 1.5f)];
-					d.velocity = -vector / 16;
-					d.velocity -= NPC.velocity / 8;
-					d.noLight = true;
-					d.noGravity = true;
-				}
+				
 				// This dust spawn adapted from the Pillar death code in vanilla.
 				for (int dustNumber = 0; dustNumber < 3; dustNumber++)
 				{
-					Dust dust = Main.dust[Dust.NewDust(NPC.Left, NPC.width, NPC.height / 2, DustID.FireworkFountain_Green, 0f, 0f, 0, default(Color), 1f)];
+					Dust dust = Main.dust[Dust.NewDust(NPC.Left, NPC.width, NPC.height / 2, DustID.FireworkFountain_Green, 0f, 0f, 0, default(Color), 0.4f)];
 					dust.position = NPC.Center + Vector2.UnitY.RotatedByRandom(4.1887903213500977) * new Vector2(NPC.width, NPC.height) * 0.8f * (0.8f + Main.rand.NextFloat() * 0.2f);
 					dust.velocity.X = 0f;
 					dust.velocity.Y = -Math.Abs(dust.velocity.Y - (float)dustNumber + NPC.velocity.Y - 4f) * 3f;
