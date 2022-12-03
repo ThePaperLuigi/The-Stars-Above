@@ -32,6 +32,13 @@ namespace StarsAbove.NPCs.Vagrant
 			Idle5,
 			Idle6,
 
+			Prep1,
+			Prep2,
+			Prep3,
+			Prep4,
+			Prep5,
+			Prep6,
+
 			Asleep,
 			Notice,
 			Falling,
@@ -53,7 +60,7 @@ namespace StarsAbove.NPCs.Vagrant
 		{
 			DisplayName.SetDefault("The Vagrant of Space and Time");
 			
-			Main.npcFrameCount[NPC.type] = 7; // make sure to set this for your modnpcs.
+			Main.npcFrameCount[NPC.type] = 13; // make sure to set this for your modnpcs.
 
 			// Specify the debuffs it is immune to
 			NPCID.Sets.DebuffImmunitySets.Add(Type, new NPCDebuffImmunityData
@@ -320,9 +327,37 @@ namespace StarsAbove.NPCs.Vagrant
 						NPC.frameCounter = 0;
 					}
 					break;
-				case (float)ActionState.Asleep:
-					// npc.frame.Y is the goto way of changing animation frames. npc.frame starts from the top left corner in pixel coordinates, so keep that in mind.
-					NPC.frame.Y = (int)Frame.Asleep * frameHeight;
+				case (float)ActionState.Casting:
+					NPC.frameCounter++;
+
+					if (NPC.frameCounter < 10)
+					{
+						NPC.frame.Y = (int)Frame.Prep1 * frameHeight;
+					}
+					else if (NPC.frameCounter < 20)
+					{
+						NPC.frame.Y = (int)Frame.Prep2 * frameHeight;
+					}
+					else if (NPC.frameCounter < 30)
+					{
+						NPC.frame.Y = (int)Frame.Prep3 * frameHeight;
+					}
+					else if (NPC.frameCounter < 40)
+					{
+						NPC.frame.Y = (int)Frame.Prep4 * frameHeight;
+					}
+					else if (NPC.frameCounter < 50)
+					{
+						NPC.frame.Y = (int)Frame.Prep5 * frameHeight;
+					}
+					else if (NPC.frameCounter < 60)
+					{
+						NPC.frame.Y = (int)Frame.Prep6 * frameHeight;
+					}
+					else
+					{
+						//NPC.frameCounter = 0;
+					}
 					break;
 				case (float)ActionState.Notice:
 					// Going from Notice to Asleep makes our npc look like it's crouching to jump.

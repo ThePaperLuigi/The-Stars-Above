@@ -55,13 +55,13 @@ namespace StarsAbove.Projectiles.Bosses.Vagrant
 				Projectile.scale = 0.6f;
 				firstSpawn = false;
             }
-			
+			DrawOriginOffsetY = 25;
 			Player player = Main.player[Projectile.owner];
 			
 			//projectile.timeLeft = 10;
 			
 			
-			Projectile.scale -= 0.005f;
+			Projectile.scale -= 0.008f;
 			if (Projectile.alpha > 255)
             {
 				Projectile.Kill();

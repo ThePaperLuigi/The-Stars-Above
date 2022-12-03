@@ -95,7 +95,7 @@ namespace StarsAbove.Projectiles.Bosses.Vagrant
 			}
 			if(Projectile.frame == 13)
             {
-				Projectile.alpha += 26;
+				Projectile.alpha += 46;
 			}
 			if(Projectile.alpha >= 250)
             {

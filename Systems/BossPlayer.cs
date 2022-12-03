@@ -17,7 +17,7 @@ using StarsAbove.Projectiles;
 using StarsAbove.Buffs;
 using StarsAbove.NPCs;
 using Microsoft.Xna.Framework.Audio;
-
+using StarsAbove.NPCs.Vagrant;
 
 namespace StarsAbove
 {
@@ -43,7 +43,16 @@ namespace StarsAbove
 
         public override void PreUpdate()
         {
-            
+            for (int k = 0; k < 200; k++)
+            {
+                NPC npc = Main.npc[k];
+                if (npc.active && npc.type == NPCType<VagrantBoss>())
+                {
+
+                    VagrantTeleport(npc);
+                    break;
+                }
+            }
         }
         public override void PostUpdate()
         {
@@ -62,9 +71,55 @@ namespace StarsAbove
             VagrantBarActive = false;
             
         }
-        
-       
-        
+
+
+        private void VagrantTeleport(NPC npc)
+        {
+            if (Player.whoAmI == Main.myPlayer)
+            {
+                int halfWidth = VagrantWalls.arenaWidth / 2;
+                int halfHeight = VagrantWalls.arenaHeight / 2;
+                Vector2 newPosition = Player.position;
+                if (Player.position.X <= npc.Center.X - halfWidth)
+                {
+                    newPosition.X = npc.Center.X + halfWidth - Player.width - 1;
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.X -= 16f;
+                    }
+                }
+                else if (Player.position.X + Player.width >= npc.Center.X + halfWidth)
+                {
+                    newPosition.X = npc.Center.X - halfWidth + 1;
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.X += 16f;
+                    }
+                }
+                else if (Player.position.Y <= npc.Center.Y - halfHeight)
+                {
+                    newPosition.Y = npc.Center.Y + halfHeight - Player.height - 1;
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.Y -= 16f;
+                    }
+                }
+                else if (Player.position.Y + Player.height >= npc.Center.Y + halfHeight)
+                {
+                    newPosition.Y = npc.Center.Y - halfHeight + 1;
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.Y += 16f;
+                    }
+                }
+                if (newPosition != Player.position)
+                {
+                    Player.Teleport(newPosition, 1, 0);
+                    NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, Player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
+
+                }
+            }
+        }
 
     }
 

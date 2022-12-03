@@ -240,7 +240,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 
 				modPlayer.NextAttack = "Vorpal Siege";//The name of the attack.
-				npc.ai[3] = 90;//This is the cast time- when this value reaches 0, the cast is finished.
+				npc.ai[3] = 120;//This is the cast time- when this value reaches 0, the cast is finished.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
@@ -624,7 +624,10 @@ namespace StarsAbove.NPCs.AttackLibrary
 		/*
 		 */
 
-		//Stargazer
+		//Celestial Opposition
+
+		//Solar Skipgate
+		//(Beam of light that travels from the right side of the screen to the left- you have to use the teleport walls to avoid it.)
 
 		//Leftward Starfall
 
