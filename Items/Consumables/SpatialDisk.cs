@@ -10,6 +10,7 @@ using SubworldLibrary;
 using Terraria.Audio;
 using StarsAbove.Subworlds;
 using StarsAbove.Utilities;
+using System;
 
 namespace StarsAbove.Items.Consumables
 {
@@ -51,7 +52,29 @@ namespace StarsAbove.Items.Consumables
 			Item.consumable = false;
 		}
 
-		private int randomDialogue;
+        public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+		{// Draw the periodic glow effect
+
+			// Get the initial draw parameters
+			Texture2D texture = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Items/Consumables/SpatialDisk");
+
+			const float TwoPi = (float)Math.PI * 2f;
+			float offset = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 5f);
+
+			SpriteEffects effects = SpriteEffects.None;
+
+			scale = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 2f) * 0.3f + 0.7f;
+			Color effectColor = Color.White;
+			effectColor.A = 0;
+			effectColor = effectColor * 0.06f * scale;
+			for (float num5 = 0f; num5 < 1f; num5 += 355f / (678f * (float)Math.PI))
+			{
+				spriteBatch.Draw(texture,position + (TwoPi * num5).ToRotationVector2() * (2f + offset * 2f), frame, effectColor, 0f,new Vector2(origin.X + 3, origin.Y + 3), 1f, effects, 0f);
+			}
+			base.PostDrawInInventory(spriteBatch, position, frame, drawColor, itemColor, origin, scale);
+        }
+
+        private int randomDialogue;
 
 		public override bool AltFunctionUse(Player player)
 		{
