@@ -10,24 +10,19 @@ using StarsAbove.Projectiles.Otherworld;
 using StarsAbove.Buffs.SubworldModifiers;
 using StarsAbove.Subworlds;
 
-namespace StarsAbove.Items.Consumables
+namespace StarsAbove.Items.Placeable
 {
 
-    public class Bifrost : ModItem
+    public class CelestriadRoot : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("The Bifrost");
+			DisplayName.SetDefault("Celestriad Root");
 			
 
 			Tooltip.SetDefault("" +
-				"Allows for the traversal of the universe" +
-				"\nUse this item to transport between the main world and the [c/EFB43E:Observatory Hyperborea]" +
-				//"\nUse this item with the [c/EFB43E:Observatory Hyperborea]'s portal to travel to distant worlds" +
-				"\nTo leave a subworld, open the menu and press Return" +
-				"\nCan only be used from your hotbar" +
-				"\nCan not be used if the Starfarer Menu is open" +
-				"\n[c/D32C2C:Subworlds have problems in Multiplayer - please wait until further notice!]" +
+				"A sapling from the heart of the universe" +
+				"\nCan be used as a crafting bench to create the Stellaglyph and its upgrades" +
 				"" +
 				"");
 			//
@@ -42,6 +37,8 @@ namespace StarsAbove.Items.Consumables
 
 		public override void SetDefaults()
 		{
+			Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.CelestriadRoot>(), 0);
+
 			Item.width = 20;
 			Item.height = 20;
 			Item.maxStack = 1;
@@ -50,14 +47,14 @@ namespace StarsAbove.Items.Consumables
 			Item.useTime = 20;
 			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.UseSound = SoundID.Item44;
-			Item.consumable = false;
-			Item.noUseGraphic = true;
+			Item.consumable = true;
+			Item.noUseGraphic = false;
 		}
 
 		// We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
 		public override bool CanUseItem(Player player)
 		{
-			
+			return true;
 			if (Main.netMode != NetmodeID.SinglePlayer)
 			{
 				if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("Subworlds have issues in Multiplayer currently. Please wait until further notice."), 190, 100, 247);}
@@ -105,7 +102,7 @@ namespace StarsAbove.Items.Consumables
 		}
 		public override void HoldItem(Player player)
 		{
-			
+			return;
 			if (SubworldSystem.Current == null)//Entering the Observatory
 			{
 				player.AddBuff(BuffType<GatewayBuff>(), 2);
@@ -125,6 +122,7 @@ namespace StarsAbove.Items.Consumables
 		}
 		public override bool? UseItem(Player player)
 		{
+			return true;
 			//string id = "StarsAbove/Observatory";
 			if (!SubworldSystem.AnyActive(Mod) && !player.HasBuff(BuffType<BifrostCooldown>()))
 			{
