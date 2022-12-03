@@ -10,7 +10,7 @@ using static Terraria.ModLoader.ModContent;
 namespace StarsAbove.NPCs.Vagrant
 {
     // Party Zombie is a pretty basic clone of a vanilla NPC. To learn how to further adapt vanilla NPC behaviors, see https://github.com/tModLoader/tModLoader/wiki/Advanced-Vanilla-Code-Adaption#example-npc-npc-clone-with-modified-projectile-hoplite
-    public class VagrantWalls : ModNPC
+    public class VagrantWallsHorizontal : ModNPC
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault(" ");
@@ -32,6 +32,7 @@ namespace StarsAbove.NPCs.Vagrant
 			NPC.timeLeft = 600; 
 			NPC.DeathSound = SoundID.NPCDeath1;
 			NPC.Opacity = 255f;
+			NPC.timeLeft = 240;
 			NPC.value = 0f;
 			NPC.knockBackResist = 0.5f;
 			NPC.aiStyle = 0;
@@ -45,7 +46,7 @@ namespace StarsAbove.NPCs.Vagrant
 			set => NPC.localAI[0] = value;
 		}
 		public static readonly int arenaWidth = (int)(1.2f * 600);
-		public static readonly int arenaHeight = (int)(1.2f * 600);
+		public static readonly int arenaHeight = (int)(1.2f * 40);
 		public override void AI()
 		{
 			NPC.ai[1]++;
@@ -74,6 +75,7 @@ namespace StarsAbove.NPCs.Vagrant
 			{
 				NPC.netUpdate = true;
 				NPC.active = false;
+
 			}
 			NPC.velocity = Vector2.Zero;
 			base.AI();

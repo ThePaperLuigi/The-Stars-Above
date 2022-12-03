@@ -46,10 +46,22 @@ namespace StarsAbove
             for (int k = 0; k < 200; k++)
             {
                 NPC npc = Main.npc[k];
-                if (npc.active && npc.type == NPCType<VagrantBoss>())
+                if (npc.active && npc.type == NPCType<VagrantWalls>())
                 {
 
                     VagrantTeleport(npc);
+                    break;
+                }
+                if (npc.active && npc.type == NPCType<VagrantWallsHorizontal>())
+                {
+
+                    VagrantTeleportHorizontal(npc);
+                    break;
+                }
+                if (npc.active && npc.type == NPCType<VagrantWallsVertical>())
+                {
+
+                    VagrantTeleportVertical(npc);
                     break;
                 }
             }
@@ -57,7 +69,7 @@ namespace StarsAbove
         public override void PostUpdate()
         {
 
-            NextAttack = "";
+            
            
         }
 
@@ -120,7 +132,100 @@ namespace StarsAbove
                 }
             }
         }
+        private void VagrantTeleportVertical(NPC npc)
+        {
+            if (Player.whoAmI == Main.myPlayer)
+            {
+                int halfWidth = VagrantWallsVertical.arenaWidth / 2;
+                int halfHeight = VagrantWallsVertical.arenaHeight / 2;
+                Vector2 newPosition = Player.position;
+                if (Player.position.X <= npc.Center.X - halfWidth)
+                {
+                    newPosition.X = npc.Center.X + halfWidth - Player.width - 1;
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.X -= 16f;
+                    }
+                }
+                else if (Player.position.X + Player.width >= npc.Center.X + halfWidth)
+                {
+                    newPosition.X = npc.Center.X - halfWidth + 1;
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.X += 16f;
+                    }
+                }
+                else if (Player.position.Y <= npc.Center.Y - halfHeight)
+                {
+                    newPosition.Y = npc.Center.Y + halfHeight - Player.height - 1;
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.Y -= 16f;
+                    }
+                }
+                else if (Player.position.Y + Player.height >= npc.Center.Y + halfHeight)
+                {
+                    newPosition.Y = npc.Center.Y - halfHeight + 1;
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.Y += 16f;
+                    }
+                }
+                if (newPosition != Player.position)
+                {
+                    Player.Teleport(newPosition, 1, 0);
+                    NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, Player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
 
+                }
+            }
+        }
+        private void VagrantTeleportHorizontal(NPC npc)
+        {
+            if (Player.whoAmI == Main.myPlayer)
+            {
+                int halfWidth = VagrantWallsHorizontal.arenaWidth / 2;
+                int halfHeight = VagrantWallsHorizontal.arenaHeight / 2;
+                Vector2 newPosition = Player.position;
+                if (Player.position.X <= npc.Center.X - halfWidth)
+                {
+                    newPosition.X = npc.Center.X + halfWidth - Player.width - 1;
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.X -= 16f;
+                    }
+                }
+                else if (Player.position.X + Player.width >= npc.Center.X + halfWidth)
+                {
+                    newPosition.X = npc.Center.X - halfWidth + 1;
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.X += 16f;
+                    }
+                }
+                else if (Player.position.Y <= npc.Center.Y - halfHeight)
+                {
+                    newPosition.Y = npc.Center.Y + halfHeight - Player.height - 1;
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.Y -= 16f;
+                    }
+                }
+                else if (Player.position.Y + Player.height >= npc.Center.Y + halfHeight)
+                {
+                    newPosition.Y = npc.Center.Y - halfHeight + 1;
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.Y += 16f;
+                    }
+                }
+                if (newPosition != Player.position)
+                {
+                    Player.Teleport(newPosition, 1, 0);
+                    NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, Player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
+
+                }
+            }
+        }
     }
 
 };
