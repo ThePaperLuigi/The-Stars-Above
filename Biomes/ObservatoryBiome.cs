@@ -13,7 +13,7 @@ namespace StarsAbove.Biomes
 		// Select all the scenery
 		//public override ModWaterStyle WaterStyle => ModContent.Find<ModWaterStyle>("StarsAbove/ExampleWaterStyle"); // Sets a water style for when inside this biome
 		public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle => ModContent.Find<ModSurfaceBackgroundStyle>("StarsAbove/ObservatoryBackgroundStyle");
-		public override CaptureBiome.TileColorStyle TileColorStyle => CaptureBiome.TileColorStyle.Crimson;
+		public override CaptureBiome.TileColorStyle TileColorStyle => CaptureBiome.TileColorStyle.Normal;
 
 		// Select Music
 		public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/ElpisDay");

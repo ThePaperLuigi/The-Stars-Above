@@ -55,7 +55,7 @@ namespace StarsAbove.UI.CelestialCartography
 		}
 
 		public override void Draw(SpriteBatch spriteBatch) {
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().CelestialCompassVisibility <= 0f)
+			if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCompassVisibility <= 0f)
 				return;
 
 			base.Draw(spriteBatch);
@@ -63,7 +63,7 @@ namespace StarsAbove.UI.CelestialCartography
 
 		protected override void DrawSelf(SpriteBatch spriteBatch) {
 			base.DrawSelf(spriteBatch);
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>();
 			
 
 			Rectangle hitbox = CompassRegion.GetInnerDimensions().ToRectangle();
@@ -193,7 +193,7 @@ namespace StarsAbove.UI.CelestialCartography
 		
 
 		public override void Update(GameTime gameTime) {
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().CelestialCompassVisibility <= 0f)
+			if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCompassVisibility <= 0f)
 				return;
 
 

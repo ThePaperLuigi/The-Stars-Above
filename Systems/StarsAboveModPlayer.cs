@@ -1235,20 +1235,7 @@ namespace StarsAbove
         //public int cachedSpawnX = player.SpawnX;
 
 
-        //Celestial Cartography
-
-        public bool CelestialCartographyActive;
-
-        public float CelestialCompassVisibility;//Also used for compass intro animations. Increases when the menu is active, decreases when it isn't.
-        public int CelestialCompassFrameTimer;
-        public int CelestialCompassFrame;
-        public int CelestialCompassRotation;
-        public float CelestialCompassInitialVelocity = 30f;//This is a flat addition added later (not to CelestialCompassRotation)
-
-        public float CelestialCompassRotation2;//This variable is added to by Velocity 2
-        public float CelestialCompassInitialVelocity2 = 10f;
-
-        public int CelestialCompassRotation3;
+        
 
 
         //player.GetModPlayer<StarsAbovePlayer>().VARIABLENAME = VALUE;
@@ -4753,7 +4740,7 @@ namespace StarsAbove
                 }
             }
             
-            CelestialCartography();
+            
            
 
             if (CatalystMemoryProgress < 0)
@@ -6674,7 +6661,7 @@ namespace StarsAbove
                 if (chosenStellarNova == 1)//Theofania Inanis
                 {
                     novaDamage = baseNovaDamageAdd;
-                    novaGaugeMax = 80;
+                    novaGaugeMax = 90;
                     novaCritChance = 50;
                     novaCritDamage = (int)(baseNovaDamageAdd * 1.45);
 
@@ -6707,7 +6694,7 @@ namespace StarsAbove
                     novaDamage = 250 + baseNovaDamageAdd;
                     novaGaugeMax = 110;
                     novaCritChance = 35;
-                    novaCritDamage = (int)(baseNovaDamageAdd * 1.8);
+                    novaCritDamage = (int)(baseNovaDamageAdd * 2.8);
 
                     abilityName = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.ArsLaevateinn.AbilityName");
                     abilitySubName = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.ArsLaevateinn.AbilitySubName");
@@ -6737,7 +6724,7 @@ namespace StarsAbove
                 {
                     novaDamage = baseNovaDamageAdd / 2;
                     novaGaugeMax = 50;
-                    novaCritChance = 40;
+                    novaCritChance = 70;
                     novaCritDamage = (int)(baseNovaDamageAdd);
 
                     abilityName = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.KiwamiRyuken.AbilityName");
@@ -6796,7 +6783,7 @@ namespace StarsAbove
                 }
                 if (chosenStellarNova == 5)//Edin Genesis Quasar
                 {
-                    novaDamage = baseNovaDamageAdd / 10;
+                    novaDamage = baseNovaDamageAdd / 15;
                     novaGaugeMax = 180;
                     novaCritChance = 25;
                     novaCritDamage = (int)((baseNovaDamageAdd / 10) * 1.3);
@@ -8550,84 +8537,7 @@ namespace StarsAbove
             return base.Shoot(item, source, position, velocity, type, damage, knockback);
         }
         
-        private void CelestialCartography()//Intro and idle animation for the Celestial Cartography UI.
-        {
-            if (CelestialCartographyActive)
-            {
-                CelestialCompassFrameTimer++;
-
-                if (CelestialCompassFrameTimer > 5)
-                {
-                    CelestialCompassFrameTimer = 0;
-                    if (CelestialCompassFrame++ > 7)
-                    {
-                        CelestialCompassFrame = 0;
-                    }
-
-                }
-                CelestialCompassRotation3 += 2;
-                if (CelestialCompassRotation3 > 360)
-                {
-                    CelestialCompassRotation = 0;
-                }
-                CelestialCompassVisibility += 0.1f;
-                if (CelestialCompassVisibility > 1f)
-                {
-                    CelestialCompassVisibility = 1f;//Finished
-                }
-
-                if (CelestialCompassInitialVelocity > 0f)//Slow down the initial rotation.
-                {
-                    CelestialCompassInitialVelocity -= 4f;
-                }
-                else
-                {
-                    CelestialCompassInitialVelocity = 0f;
-                }
-                if (CelestialCompassInitialVelocity2 > 0f)//Slow down the initial rotation.
-                {
-                    CelestialCompassInitialVelocity2 -= 0.4f;
-                }
-                else
-                {
-                    CelestialCompassInitialVelocity2 = 0f;
-                }
-                CelestialCompassRotation2 += CelestialCompassInitialVelocity2;
-
-            }
-            else//UI not active.
-            {
-                CelestialCompassVisibility -= 0.1f;
-                if (CelestialCompassVisibility < 0f)
-                {
-                    CelestialCompassVisibility = 0f;
-                }
-                if (CelestialCompassInitialVelocity < 30f)//Slow down the initial rotation.
-                {
-                    CelestialCompassInitialVelocity += 8f;
-                }
-                else
-                {
-                    CelestialCompassInitialVelocity = 30f;
-                }
-                if (CelestialCompassInitialVelocity2 < 10f)//Slow down the initial rotation.
-                {
-                    CelestialCompassInitialVelocity2 += 1f;
-                }
-                else
-                {
-                    CelestialCompassInitialVelocity2 = 10f;
-                }
-                if (CelestialCompassRotation2 > 0)//Reset second rotation.
-                {
-                    CelestialCompassRotation2 -= 10;
-                }
-                else
-                {
-                    CelestialCompassRotation2 = 0;
-                }
-            }
-        }
+        
         public override void OnConsumeAmmo(Item weapon, Item ammo)
         {
             
@@ -10155,7 +10065,7 @@ namespace StarsAbove
                         for (int i = 0; i < 10; i++)
                         {
                             int type = Main.rand.Next(new int[] { ProjectileID.NebulaBlaze2, ProjectileID.NebulaBlaze2, ProjectileID.NebulaBlaze2, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, });
-                            Projectile.NewProjectile(null, Player.Center.X, Player.Center.Y, mousePosition.X, mousePosition.Y, type, novaDamage / 5, 3, Player.whoAmI, 0f);
+                            Projectile.NewProjectile(null, Player.Center.X, Player.Center.Y, mousePosition.X, mousePosition.Y, type, novaDamage / 10, 3, Player.whoAmI, 0f);
 
                         }
 
@@ -10166,7 +10076,7 @@ namespace StarsAbove
                             Vector2 perturbedSpeed = mousePosition.RotatedByRandom(MathHelper.ToRadians(40));
                             int type = Main.rand.Next(new int[] { ProjectileID.NebulaBlaze2, ProjectileID.NebulaBlaze2, ProjectileID.NebulaBlaze2, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, });
 
-                            Projectile.NewProjectile(null, Player.Center.X, Player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, type, novaDamage / 5, 3, Player.whoAmI);
+                            Projectile.NewProjectile(null, Player.Center.X, Player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, type, novaDamage / 10, 3, Player.whoAmI);
                         }
                         Vector2 shotKnockback = Vector2.Normalize(mousePosition) * 15f * -1f;
                         Player.velocity = shotKnockback;
@@ -15308,7 +15218,7 @@ namespace StarsAbove
         }
         public override void ResetEffects()
         {
-            CelestialCartographyActive = false;
+            
 
             KevesiFarewellInInventory = false;
             AgnianFarewellInInventory = false;

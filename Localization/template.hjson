@@ -1,5 +1,28 @@
 Mods: { 
 	StarsAbove: { 
+		Tiles: {
+			CelestriadRoot: Celestriad Root
+			Gateway: Gateway
+		}
+		
+		CosmicVoyages: {
+			MapText: {
+				Default: Select a location to visit.
+				NoStellaglyph: No Stellaglyph nearby; Travel to the Observatory Hyperborea by selecting it on the map.
+				Observatory: The Observatory Hyperborea
+				BleachedPlanet: Caelum
+				CrimsonPlanet: Scorpius
+				Asteroids: Cygnus Field
+				CorruptedPlanet: Serpens
+				GasGiant: Antlia
+				JunglePlanet: Tucana
+				WaterPlanet: Aquarius
+				VolcanoPlanet: Draco
+				MiningStation: Mining Station Aries
+				AlienPlanet: Lyra
+			}
+		}
+		
 		StellarArray: {
 			Misc: {
 				Confirm: Confirm your selection.
@@ -1680,8 +1703,8 @@ Mods: {
 					}
 				}
 				VoyageHover: {
-					Asphodene: Here's the Astrolabe I gifted you. You can utilize it to travel straight to the Observatory Hyperborea, if you wish; there are items only craftable there. Or... you can just stare at it as it moves.
-					Eridani: This is where the Astrolabe I gave you is. With it, you can travel directly to the Observatory Hyperborea. There are items you can only craft while there, among other things.
+					Asphodene: This is where we can access Celestial Cartography: a magical map of the immediate galaxy with the help of the Astrolabe. Keep in mind you'll still need the Stellaglyph to go anywhere except the Observatory.
+					Eridani: This is where the Astrolabe comes in handy: with its strength, you can access Celestial Cartography, a map of the immediate galaxy. You'll need the Stellaglyph if you want to go further than the Observatory, though.
 				}
 				Locked: {
 					Asphodene: We can't use this yet. 

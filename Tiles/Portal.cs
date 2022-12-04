@@ -9,6 +9,7 @@ using Terraria.Enums;
 using System;
 using ReLogic.Content;
 using Terraria.Localization;
+using StarsAbove.Utilities;
 
 namespace StarsAbove.Tiles
 {
@@ -72,9 +73,9 @@ namespace StarsAbove.Tiles
 			// Register the tile data itself
 			TileObjectData.addTile(Type);
 
-			// Register map name and color
-			// "MapObject.Relic" refers to the translation key for the vanilla "Relic" text
-			//AddMapEntry(new Color(233, 207, 94), Language.GetText("MapObject.Relic"));
+			ModTranslation name = CreateMapEntryName();
+			name.SetDefault(LangHelper.GetTextValue("Tiles.Gateway"));
+			AddMapEntry(new Color(0, 185, 255), name);
 		}
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)

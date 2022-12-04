@@ -1800,7 +1800,7 @@ namespace StarsAbove.UI.StarfarerMenu
 			
 			if(voyage.IsMouseHovering)
             {
-				modPlayer.CelestialCartographyActive = true;
+				//modPlayer.CelestialCartographyActive = true;
             }
 
 			if(modPlayer.archiveActive)

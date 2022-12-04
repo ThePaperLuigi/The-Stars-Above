@@ -2,12 +2,13 @@ using Terraria;
 using Terraria.ModLoader;
 using SubworldLibrary;
 using StarsAbove.Subworlds;
+using Terraria.Graphics.Effects;
 
 namespace StarsAbove.SceneEffects
 {
     public class ObservatoryBackground : ModSceneEffect
 	{
-        public override bool IsSceneEffectActive(Player player) //Disabled for now.
+        public override bool IsSceneEffectActive(Player player) 
         {
             if (!SubworldSystem.IsActive<Observatory>())
             {
@@ -20,9 +21,14 @@ namespace StarsAbove.SceneEffects
             
             return false;
         }
-        
-        
-		//public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/EverlastingLight");
+        public override void SpecialVisuals(Player player, bool isActive)
+        {
+           
+
+
+        }
+
+        //public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/EverlastingLight");
         public override SceneEffectPriority Priority => SceneEffectPriority.Event;
 
 

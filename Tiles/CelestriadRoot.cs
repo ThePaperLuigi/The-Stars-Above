@@ -9,6 +9,7 @@ using Terraria.Enums;
 using System;
 using ReLogic.Content;
 using Terraria.Localization;
+using StarsAbove.Utilities;
 
 namespace StarsAbove.Tiles
 {
@@ -72,9 +73,11 @@ namespace StarsAbove.Tiles
 			// Register the tile data itself
 			TileObjectData.addTile(Type);
 
-			// Register map name and color
-			// "MapObject.Relic" refers to the translation key for the vanilla "Relic" text
-			//AddMapEntry(new Color(233, 207, 94), Language.GetText("MapObject.Relic"));
+			AdjTiles = new int[] { TileID.WorkBenches };
+
+			ModTranslation name = CreateMapEntryName();
+			name.SetDefault(LangHelper.GetTextValue("Tiles.CelestriadRoot"));
+			AddMapEntry(new Color(233, 207, 94), name);
 		}
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
@@ -98,7 +101,6 @@ namespace StarsAbove.Tiles
 				Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, itemType);
 			}
 		}
-
 		public override bool CreateDust(int i, int j, ref int type)
 		{
 			return false;
@@ -118,10 +120,15 @@ namespace StarsAbove.Tiles
 			// Since this tile does not have the hovering part on its sheet, we have to animate it ourselves
 			// Therefore we register the top-left of the tile as a "special point"
 			// This allows us to draw things in SpecialDraw
+			
+
 			if (drawData.tileFrameX % FrameWidth == 0 && drawData.tileFrameY % FrameHeight == 0)
 			{
 				Main.instance.TilesRenderer.AddSpecialLegacyPoint(i, j);
 			}
+
+			
+
 		}
 
 		public override void SpecialDraw(int i, int j, SpriteBatch spriteBatch)

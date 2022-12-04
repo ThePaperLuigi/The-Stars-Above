@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using Terraria.ModLoader;
 
 using static Terraria.ModLoader.ModContent;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.GameContent;
 
 namespace StarsAbove.Subworlds
 {
@@ -22,10 +25,42 @@ namespace StarsAbove.Subworlds
 		public override bool NormalUpdates => false;
 
 		//public override bool noWorldUpdate => true;
+		private const string assetPath = "StarsAbove/Subworlds/LoadingScreens";
 
-        public int variantWorld;
+		public override void DrawMenu(GameTime gameTime)
+        {
+			Texture2D MenuBG = (Texture2D)ModContent.Request<Texture2D>($"{assetPath}/DefaultLS");//Background
+			Vector2 zero = Vector2.Zero;
+			float width = (float)Main.screenWidth / (float)MenuBG.Width;
+			float height = (float)Main.screenHeight / (float)MenuBG.Height;
 
-		public override List<GenPass> Tasks => new List<GenPass>()
+			if (width != height)
+			{
+				if (height > width)
+				{
+					width = height;
+					zero.X -= ((float)MenuBG.Width * width - (float)Main.screenWidth) * 0.5f;
+				}
+				else
+				{
+					zero.Y -= ((float)MenuBG.Height * width - (float)Main.screenHeight) * 0.5f;
+				}
+			}
+
+			Main.spriteBatch.Draw(MenuBG, zero, (Rectangle?)null, Color.White, 0f, Vector2.Zero, width, (SpriteEffects)0, 0f);
+
+			
+			base.DrawMenu(gameTime);
+        }
+        public override void DrawSetup(GameTime gameTime)
+        {
+
+
+
+            base.DrawSetup(gameTime);
+        }
+
+        public override List<GenPass> Tasks => new List<GenPass>()
 		{
 			new SubworldGenPass(delegate
 			{
@@ -83,28 +118,8 @@ namespace StarsAbove.Subworlds
 
 		public override void OnEnter()
         {
+			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "Observatory Hyperborea";
 			
-			for (int i = 0; i < Main.maxPlayers; i++)
-			{
-				Player player = Main.player[i];
-				if (player.active)
-				{
-					player.AddBuff(BuffType<Buffs.Wormhole>(), 20);  //Make sure to replace "buffType" and "timeInFrames" with actual values
-					
-
-
-					
-					if (player.whoAmI == Main.myPlayer)
-					{
-
-
-
-
-					}
-				}
-
-
-			}
 			
         }
 

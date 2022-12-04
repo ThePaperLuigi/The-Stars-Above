@@ -31,7 +31,7 @@ namespace StarsAbove.Items.Consumables
 		}
         public override void HoldItem(Player player)
         {
-			player.GetModPlayer<StarsAbovePlayer>().CelestialCartographyActive = true;
+			player.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = true;
 			//Test
 			SubworldSystem.Exit();
 
