@@ -24,10 +24,9 @@ namespace StarsAbove.Items.Consumables
 				"\nYour [c/F1AF42:Starfarer] will periodically grant you components to powerful Aspected Weapons" +
 				"\nRight click to open the [c/EC356F:Starfarer Menu] and access special abilities" +
 				"\nDefeating bosses will grant powerful passive abilities available in the [c/3599EC:Stellar Array]" +
-				"\nAbilities are sorted into 1 cost, 2 cost, or 3 cost categories" +
-				"\nYou are unable to slot abilities that would total a cost higher than 5" +
-				"\nAdditionally, the damage type of Aspected Weapons can be modified with a 10% damage penalty" +
+                "\nAdditionally, the damage type of Aspected Weapons can be adjusted" +
 				"\n[c/F1AFFF:Once they have been unlocked, Stellar Novas can be modified with the] [c/EC356F:Starfarer Menu]" +
+				"\n[c/F1AFFF:Once it have been unlocked, Celestial Cartography can be accessed with the] [c/EC356F:Starfarer Menu]" +
 				"\nYou can re-acquire lost items and read previous dialogue with the [c/9FEE5E:Archive]" +
 				$"\nThe ability to wield Umbral [i:{ItemType<Umbral>()}] or Astral [i:{ItemType<Astral>()}] weapons depends on your chosen [c/F1AF42:Starfarer]" +
 				"");
@@ -91,6 +90,9 @@ namespace StarsAbove.Items.Consumables
 		}
 		public override bool CanUseItem(Player player) {
 			if (player.GetModPlayer<StarsAbovePlayer>().novaUIActive)
+				return false;
+
+			if (player.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive)
 				return false;
 
 			if (player.altFunctionUse == 2)

@@ -12,7 +12,7 @@ namespace StarsAbove.Items.Placeable
 			DisplayName.SetDefault("Music Box (Stars Above Title Screen)");
 			Tooltip.SetDefault("" +
 				"'Sunset, Stardust' - Stars Above OST" +
-				""
+				"\nOriginal"
 				+ $"");
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

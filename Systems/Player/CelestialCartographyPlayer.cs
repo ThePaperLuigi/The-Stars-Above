@@ -41,30 +41,54 @@ namespace StarsAbove
         public float CelestialCompassRotation2;//This variable is added to by Velocity 2
         public float CelestialCompassInitialVelocity2 = 10f;
 
+        public float StarmapStarsAlpha;//Sparkly stars
+        public float StarmapStarsAlphaTimer;
+
         public int CelestialCompassRotation3;
 
+
+
         public bool locationPopUp;
-        public string locationName;
+        public string locationName = "";//Default name.
+        public string locationMapName = "";
         public float locationPopUpTimer;
         public float locationPopUpProgress;
 
         public float locationPopUpPlacement;
+        public float locationPopUpAlpha = 1;
+
+        public float loadingScreenOpacity = 0f;
+
+        //Stellaglyph
+        public bool nearStellaglyph;
+        public bool nearGateway;
 
         public override void PreUpdate()
         {
             QuadraticFloatAnimation();
             CelestialCartography();
             LocationPopUp();
-            
+            StarmapStarAnimation();
 
         }
 
-
+        private void StarmapStarAnimation()
+        {
+            if(CelestialCartographyActive)
+            {
+                StarmapStarsAlpha = quadraticFloat;
+            }
+            else
+            {
+                StarmapStarsAlpha = 0;
+            }
+        }
         private void LocationPopUp()
         {
-            if (locationName != "")
+            if (locationName != "" && !locationPopUp)
             {
                 locationPopUpTimer = 0;
+                locationPopUpAlpha = 0;
                 locationPopUp = true;
             }
             if(locationPopUpTimer > 1 && locationPopUp)
@@ -72,9 +96,22 @@ namespace StarsAbove
                 locationPopUp = false;
                 locationName = "";
             }
-            locationPopUpProgress = InOutQuad(locationPopUpTimer);
-            locationPopUpPlacement = MathHelper.Lerp(0, 300, locationPopUpProgress);
-            locationPopUpTimer += 0.02f;
+
+            //locationPopUpProgress = InOutQuad(locationPopUpTimer);
+            //locationPopUpPlacement = MathHelper.Lerp(0, 1, locationPopUpProgress);
+
+            if(locationPopUpTimer < 0.3f)
+            {
+                locationPopUpAlpha += 0.1f;
+            }
+            if (locationPopUpTimer > 0.7f)
+            {
+                locationPopUpAlpha -= 0.1f;
+            }
+            Math.Clamp(locationPopUpAlpha, 0, 1);
+
+            locationPopUpTimer += 0.006f;
+            loadingScreenOpacity -= 0.03f;
         }
         
        
@@ -111,11 +148,11 @@ namespace StarsAbove
 
             if (quadraticFloatReverse)
             {
-                quadraticFloatTimer -= 0.005f;
+                quadraticFloatTimer -= 0.02f;
             }
             else
             {
-                quadraticFloatTimer += 0.005f;
+                quadraticFloatTimer += 0.02f;
             }
             if (quadraticFloatTimer > 1f)
             {
@@ -211,7 +248,7 @@ namespace StarsAbove
         }
         public override void ResetEffects()
         {
-            CelestialCartographyActive = false;
+            //locationMapName = "";
         }
     }
 

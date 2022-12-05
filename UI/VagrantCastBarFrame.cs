@@ -51,7 +51,7 @@ namespace StarsAbove.UI
 			gradientB = new Color(255, 166, 83); //
 
 			//area.Append(timeLeft);
-			area.Append(text);
+			barFrame.Append(text);
 			area.Append(barFrame);
 			Append(area);
 		}

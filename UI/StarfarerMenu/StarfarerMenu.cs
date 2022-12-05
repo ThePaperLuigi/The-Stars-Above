@@ -149,7 +149,7 @@ namespace StarsAbove.UI.StarfarerMenu
 			stellarArray.OnMouseOut += HoverOff;
 
 			voyage = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Voyage"));
-			//voyage.OnClick += voyageConfirm;
+			voyage.OnClick += VoyageConfirm;
 			voyage.Width.Set(74, 0f);
 			voyage.Height.Set(50, 0f);
 			voyage.Left.Set(404, 0f);
@@ -467,6 +467,28 @@ namespace StarsAbove.UI.StarfarerMenu
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive = false;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaUIOpacity = 0;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaUIActive = true;
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaDialogueScrollNumber = 0;
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaDialogueScrollTimer = 0;
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollNumber = 0;
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive = false;
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().animatedStarfarerMenuDialogue = "";
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "";
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = false;
+			//Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().animatedDescription = "";
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollNumber = 0;
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;
+
+
+			// We can do stuff in here!
+		}
+		private void VoyageConfirm(UIMouseEvent evt, UIElement listeningElement)
+		{
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaGaugeUnlocked || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive)
+				return;
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive = false;
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaUIOpacity = 0;
+			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = true;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaDialogueScrollNumber = 0;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaDialogueScrollTimer = 0;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollNumber = 0;
@@ -991,6 +1013,9 @@ namespace StarsAbove.UI.StarfarerMenu
 					zero.Y -= ((float)vignette.Height * width - (float)Main.screenHeight) * 0.5f;
 				}
 			}
+
+
+
 			spriteBatch.Draw(vignette, Vector2.Zero, (Rectangle?)null, Color.White * (modPlayer.starfarerMenuUIOpacity), 0f, Vector2.Zero, width, (SpriteEffects)0, 0f);
 
 

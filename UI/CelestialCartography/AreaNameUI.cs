@@ -14,8 +14,6 @@ namespace StarsAbove.UI.CelestialCartography
 		private UIText text;
 		private UIElement area;
 
-		private UIElement CompassRegion;
-		private UIElement GearRegion;
 
 		private UIImage barFrame;
 		private Color gradientA;
@@ -25,39 +23,25 @@ namespace StarsAbove.UI.CelestialCartography
 			// Create a UIElement for all the elements to sit on top of, this simplifies the numbers as nested elements can be positioned relative to the top left corner of this element. 
 			// UIElement is invisible and has no padding. You can use a UIPanel if you wish for a background.
 			area = new UIElement();
-			area.Top.Set(300, 0f); // Placing it just a bit below the top of the screen.
-			area.Width.Set(100, 0f);
-			area.Height.Set(100, 0f);
+			area.Top.Set(000, 0f); // Placing it just a bit below the top of the screen.
+			area.Width.Set(1000, 0f);
+			area.Height.Set(700, 0f);
 			area.HAlign = 0.5f; // 1
 			area.VAlign = 0.5f;
 
-			CompassRegion = new UIElement();//UIImage(Request<Texture2D>("StarsAbove/UI/CelestalCartography/CelestialCompass"));
-			CompassRegion.Left.Set(74, 0f);
-			CompassRegion.Top.Set(125, 0f);
-			CompassRegion.Width.Set(600, 0f);
-			CompassRegion.Height.Set(600, 0f);
-
-			GearRegion = new UIElement();//UIImage(Request<Texture2D>("StarsAbove/UI/CelestalCartography/CelestialCompass"));
-			GearRegion.Left.Set(190, 0f);
-			GearRegion.Top.Set(241, 0f);
-			GearRegion.Width.Set(600, 0f);
-			GearRegion.Height.Set(600, 0f);
-
 			text = new UIText("", 2.5f); // text to show stat
-			text.Width.Set(138, 0f);
+			//text.Width.Set(138, 0f);
 			text.Height.Set(34, 0f);
 			text.Top.Set(0, 0f);
 			text.Left.Set(0, 0f);
 
 			area.Append(text);
-			area.Append(CompassRegion);
-			area.Append(GearRegion);
 			Append(area);
 		}
 
 		public override void Draw(SpriteBatch spriteBatch) {
-			if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationPopUpTimer > 0f)
-				return;
+			//if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationPopUpTimer > 0f)
+			//	return;
 
 			base.Draw(spriteBatch);
 		}
@@ -67,29 +51,72 @@ namespace StarsAbove.UI.CelestialCartography
 			var modPlayer = Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>();
 			
 
-			Rectangle hitbox = CompassRegion.GetInnerDimensions().ToRectangle();
-			Rectangle gearHitbox = GearRegion.GetInnerDimensions().ToRectangle();
+			Rectangle hitbox = area.GetInnerDimensions().ToRectangle();
+			Texture2D vignette = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/vignette");
+			Texture2D screen = (Texture2D)Request<Texture2D>("StarsAbove/Subworlds/LoadingScreens/DefaultLS");
 
-			Vector2 compassCenter = new Vector2(CompassRegion.GetInnerDimensions().Width, CompassRegion.GetInnerDimensions().Height)/2;
-			Vector2 gearCenter = new Vector2(GearRegion.GetInnerDimensions().Width/2, GearRegion.GetInnerDimensions().Height / 2) ;
-			/*spriteBatch.Draw(
-				(Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/CompassCenter"),
+			float width = (float)Main.screenWidth / (float)vignette.Width;
+			float height = (float)Main.screenHeight / (float)vignette.Height;
+
+			float menuWidth = (float)Main.screenWidth / (float)screen.Width;
+			float menuHeight = (float)Main.screenHeight / (float)screen.Height;
+
+			Vector2 zero = Vector2.Zero;
+			if (width != height)
+			{
+				if (height > width)
+				{
+					width = height;
+					zero.X -= ((float)vignette.Width * width - (float)Main.screenWidth) * 0.5f;
+				}
+				else
+				{
+					zero.Y -= ((float)vignette.Height * width - (float)Main.screenHeight) * 0.5f;
+				}
+			}
+			if (menuWidth != menuHeight)
+			{
+				if (menuHeight > menuWidth)
+				{
+					menuWidth = menuHeight;
+					zero.X -= ((float)screen.Width * menuWidth - (float)Main.screenWidth) * 0.5f;
+				}
+				else
+				{
+					zero.Y -= ((float)screen.Height * menuWidth - (float)Main.screenHeight) * 0.5f;
+				}
+			}
+			
+
+			
+			spriteBatch.Draw(vignette, Vector2.Zero, (Rectangle?)null, Color.White * (modPlayer.locationPopUpAlpha), 0f, Vector2.Zero, width, (SpriteEffects)0, 0f);
+			if (modPlayer.locationName != "")
+			{
+				spriteBatch.Draw(
+				(Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationNames/" + modPlayer.locationName),
 				hitbox,
-				Color.White * (modPlayer.CelestialCompassVisibility));*/
-			text.Top.Set(modPlayer.locationPopUpPlacement, 0f);
+				Color.White * (modPlayer.locationPopUpAlpha)
+				);
+			}
+			spriteBatch.Draw(screen, new Vector2(0, -30), (Rectangle?)null, Color.White * (modPlayer.loadingScreenOpacity), 0f, Vector2.Zero, menuWidth, (SpriteEffects)0, 0f);
 			
 
 
+
+			//text.Top.Set(modPlayer.locationPopUpPlacement, 0f);
+
+
+
 		}
-		
+
 
 		public override void Update(GameTime gameTime) {
-			if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationPopUpTimer > 0f)
-				return;
+			//if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationPopUpTimer > 0f)
+			//	return;
 
 
 			// Setting the text per tick to update and show our resource values.
-			text.SetText($"{Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName}Test");
+			//text.SetText($"{Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName}");
 			base.Update(gameTime);
 		}
 	}

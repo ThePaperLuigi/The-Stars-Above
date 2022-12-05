@@ -118,10 +118,11 @@ namespace StarsAbove.Subworlds
 
 		public override void OnEnter()
         {
-			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "Observatory Hyperborea";
-			
-			
-        }
+			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "Observatory";
+			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().loadingScreenOpacity = 1f;
+
+
+		}
 
         public override void OnLoad()
 		{

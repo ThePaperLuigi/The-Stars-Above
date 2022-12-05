@@ -12,7 +12,7 @@ Mods: {
 				Observatory: The Observatory Hyperborea
 				BleachedPlanet: Caelum
 				CrimsonPlanet: Scorpius
-				Asteroids: Cygnus Field
+				CygnusAsteroids: Cygnus Asteroid Field
 				CorruptedPlanet: Serpens
 				GasGiant: Antlia
 				JunglePlanet: Tucana
@@ -1676,6 +1676,10 @@ Mods: {
 						3: Okay, the Stellar Array is changed. Have you finished what you sought to achieve?
 					}
 				}
+				AfterCartographyDialogue: {
+					Asphodene: Changed your mind?
+					Eridani: So you have other plans?
+				}
 			}
 			StarfarerMenuButtons: {
 				Archive: {
@@ -1703,8 +1707,8 @@ Mods: {
 					}
 				}
 				VoyageHover: {
-					Asphodene: This is where we can access Celestial Cartography: a magical map of the immediate galaxy with the help of the Astrolabe. Keep in mind you'll still need the Stellaglyph to go anywhere except the Observatory.
-					Eridani: This is where the Astrolabe comes in handy: with its strength, you can access Celestial Cartography, a map of the immediate galaxy. You'll need the Stellaglyph if you want to go further than the Observatory, though.
+					Asphodene: This is where we can access Celestial Cartography: a magical map of the immediate galaxy with the help of the Astrolabe. Keep in mind you'll still need the Stellaglyph nearby to go anywhere except the Observatory.
+					Eridani: This is where the Astrolabe comes in handy: with its strength, you can access Celestial Cartography, a map of the galaxy. You'll need the Stellaglyph nearby if you want to go further than the Observatory, though.
 				}
 				Locked: {
 					Asphodene: We can't use this yet. 
@@ -2473,10 +2477,9 @@ Mods: {
                 Your [c/F1AF42:Starfarer] will periodically grant you components to powerful Aspected Weapons
                 Right click to open the [c/EC356F:Starfarer Menu] and access special abilities
                 Defeating bosses will grant powerful passive abilities available in the [c/3599EC:Stellar Array]
-                Abilities are sorted into 1 cost, 2 cost, or 3 cost categories
-                You are unable to slot abilities that would total a cost higher than 5
-                Additionally, the damage type of Aspected Weapons can be modified with a 10% damage penalty
+				Additionally, the damage type of Aspected Weapons can be adjusted
                 [c/F1AFFF:Once they have been unlocked, Stellar Novas can be modified with the] [c/EC356F:Starfarer Menu]
+				[c/F1AFFF:Once it have been unlocked, Celestial Cartography can be accessed with the] [c/EC356F:Starfarer Menu]
                 You can re-acquire lost items and read previous dialogue with the [c/9FEE5E:Archive]
                 The ability to wield Umbral [i:StarsAbove/Umbral] or Astral [i:StarsAbove/Astral] weapons depends on your chosen [c/F1AF42:Starfarer]
                 '''

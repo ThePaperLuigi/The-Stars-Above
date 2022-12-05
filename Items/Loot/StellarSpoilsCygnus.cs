@@ -7,28 +7,29 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using StarsAbove.Items.Prisms;
 using System.Collections.Generic;
+using Terraria.GameContent.ItemDropRules;
 
 namespace StarsAbove.Items.Loot
 {
-    // Basic code for a boss treasure bag
-    public class DesertLootBag : ModItem
+    
+    public class StellarSpoilsCygnus : ModItem
 	{
 
 		//This could probably be made into a list, populated in SetDefaults?
 
 		// Item 1
-		int item1ID = ItemID.SandBlock;
+		int item1ID = ModContent.ItemType<PrismaticCore>();
 		// Item amount (max)
-		int item1Max = 100;
+		int item1Max = 3;
 		// Item 1 chance
-		float item1Chance = 0.1f;
+		float item1Chance = 1f;
 
 		// Item 2
-		int item2ID = ItemID.Cactus;
+		int item2ID = ItemID.Marble;
 		// Item amount (max)
-		int item2Max = 100;
+		int item2Max = 20;
 		// Item 2 chance
-		float item2Chance = 0.1f;
+		float item2Chance = 1f;
 
 		// Item 3
 		int item3ID = 0;
@@ -61,7 +62,7 @@ namespace StarsAbove.Items.Loot
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Stellar Spoils (Desert)");
+			DisplayName.SetDefault("Stellar Spoils (Cygnus Asteroid Field)");
 			Tooltip.SetDefault("" +
                 "[Tier 1]" +
 				"\n{$CommonItemTooltip.RightClickToOpen}" +
@@ -79,8 +80,7 @@ namespace StarsAbove.Items.Loot
 			Item.consumable = true;
 			Item.width = 24;
 			Item.height = 24;
-			Item.rare = ItemRarityID.Purple;
-			Item.expert = true; // This makes sure that "Expert" displays in the tooltip and the item name color changes
+			Item.rare = ItemRarityID.Red;
 		}
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
