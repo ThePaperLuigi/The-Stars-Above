@@ -10,7 +10,7 @@ using Terraria.GameContent.Generation;
 
 namespace StarsAbove
 {
-    public class SeaOfStars1 : Subworld
+    public class CygnusAsteroids : Subworld
 	{
 		public override int Width => 1750;
 		public override int Height => 750;
@@ -25,7 +25,7 @@ namespace StarsAbove
 
 		public override List<GenPass> Tasks => new List<GenPass>()
 		{
-			new PassLegacy("The Asteroid Fields", (progress, _) =>
+			new PassLegacy("Cygnus Asteroid Field", (progress, _) =>
 			{
 					progress.Message = "Loading"; //Sets the text above the worldgen progress bar
 					Main.worldSurface = Main.maxTilesY + 250; //Hides the underground layer just out of bounds
@@ -69,28 +69,7 @@ namespace StarsAbove
 
 		public override void Load()
 		{
-			for (int i = 0; i < Main.maxPlayers; i++)
-			{
-				Player player = Main.player[i];
-				if (player.active)
-				{
-					player.AddBuff(BuffType<Buffs.Wormhole>(), 20);  //Make sure to replace "buffType" and "timeInFrames" with actual values
-					Vector2 newPosition = new Vector2(14000, 5955);
-
-
-					player.Teleport(newPosition, 1, 0);
-					NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
-					if (player.whoAmI == Main.myPlayer)
-					{
-
-
-
-
-					}
-				}
-
-
-			}
+			
 			Main.dayTime = false;
 			Main.time = 18000;
 			Main.cloudAlpha = 0f;

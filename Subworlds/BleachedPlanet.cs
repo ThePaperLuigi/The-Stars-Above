@@ -8,7 +8,7 @@ using Terraria.GameContent.Generation;
 
 namespace StarsAbove
 {
-    public class SamuraiWar : Subworld
+    public class BleachedPlanet : Subworld
 	{
 		public override int Width => 1750;
 		public override int Height => 750;
@@ -23,9 +23,9 @@ namespace StarsAbove
 
 		public override List<GenPass> Tasks => new List<GenPass>()
 		{
-			new PassLegacy("The Samurai War", (progress, _) =>
+			new PassLegacy("Bleached World", (progress, _) =>
 			{
-				progress.Message = "Loading"; //Sets the text above the worldgen progress bar
+					progress.Message = "Loading"; //Sets the text above the worldgen progress bar
 				Main.worldSurface = Main.maxTilesY + 250; //Hides the underground layer just out of bounds
 				Main.rockLayer = Main.maxTilesY; //Hides the cavern layer way out of bounds
 
@@ -41,35 +41,31 @@ namespace StarsAbove
 					for (int j = 0; j < Main.maxTilesY; j++)
 					{
 
-						
+
 						progress.Set((j + i * Main.maxTilesY) / (float)(Main.maxTilesX * Main.maxTilesY)); //Controls the progress bar, should only be set between 0f and 1f
 						//Main.tile[i, j].active(true);
 						//Main.tile[i, j].type = TileID.Air;
 					}
-					
+					if(i == (Main.maxTilesX/2) - 250)
+					{
+						StructureHelper.Generator.GenerateStructure("Structures/CitadelPart1", new Terraria.DataStructures.Point16((Main.maxTilesX/2) - 39, (Main.maxTilesY/2) - 169), StarsAbove.Instance);
+					}
 					if(i == Main.maxTilesX/2)
 					{
-						StructureHelper.Generator.GenerateStructure("Structures/SamuraiWar", new Terraria.DataStructures.Point16((Main.maxTilesX/2) - 101, (Main.maxTilesY/2) - 66), StarsAbove.Instance);
+						StructureHelper.Generator.GenerateStructure("Structures/CitadelPart2", new Terraria.DataStructures.Point16((Main.maxTilesX/2) + 110, (Main.maxTilesY/2) - 169), StarsAbove.Instance);
 					}
-					
+					if(i == (Main.maxTilesX/2) + 250)
+					{
+						StructureHelper.Generator.GenerateStructure("Structures/CitadelPart3", new Terraria.DataStructures.Point16((Main.maxTilesX/2) + 260, (Main.maxTilesY/2) - 169), StarsAbove.Instance);
+					}
 				}
 			})
+			
 		};
 
 		public override void Load()
 		{
-			for (int i = 0; i < Main.maxPlayers; i++)
-			{
-				Player player = Main.player[i];
-				if (player.active)
-				{
-					player.AddBuff(BuffType<Buffs.Wormhole>(), 20);  //Make sure to replace "buffType" and "timeInFrames" with actual values
-
-
-				}
-
-
-			}
+			
 			Main.dayTime = false;
 			Main.time = 6000;
 			Main.cloudAlpha = 0f;

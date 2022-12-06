@@ -1119,8 +1119,8 @@ namespace StarsAbove
 
         //Subworlds
         public bool seenObservatory;
-        public bool seenSpaceRuins;
-        public bool seenCitadel;
+        public bool seenCygnusAsteroids;
+        public bool seenBleachedPlanet;
         public bool seenConfluence;
         public bool seenCity;
 
@@ -1494,8 +1494,8 @@ namespace StarsAbove
             tag["seenMutant"] = seenMutant;
 
             tag["seenObservatory"] = seenObservatory;
-            tag["seenSpaceRuins"] = seenSpaceRuins;
-            tag["seenCitadel"] = seenCitadel;
+            tag["seenCygnusAsteroids"] = seenCygnusAsteroids;
+            tag["seenBleachedPlanet"] = seenBleachedPlanet;
 
             tag["seenDesert"] = seenDesertBiome;
             tag["seenHallow"] = seenHallowBiome;
@@ -1800,8 +1800,8 @@ namespace StarsAbove
             seenMutant = tag.GetBool("seenMutant");
 
             seenObservatory = tag.GetBool("seenObservatory");
-            seenSpaceRuins = tag.GetBool("seenSpaceRuins");
-            seenCitadel = tag.GetBool("seenCitadel");
+            seenCygnusAsteroids = tag.GetBool("seenCygnusAsteroids");
+            seenBleachedPlanet = tag.GetBool("seenBleachedPlanet");
 
 
 
@@ -1850,6 +1850,7 @@ namespace StarsAbove
 
         public override void OnEnterWorld(Player player)
         {
+            //SubworldSystem.noReturn = false;
 
             if (player.whoAmI == Main.myPlayer && enableWorldLock)
             {
@@ -9576,7 +9577,7 @@ namespace StarsAbove
                 }
                 starfarerPromptActive("onObservatory");
             }
-            if (SubworldSystem.IsActive<SeaOfStars1>() && !seenSpaceRuins)
+            if (SubworldSystem.IsActive<CygnusAsteroids>() && !seenCygnusAsteroids)
             {
                 if (starfarerPromptCooldown > 0)
                 {
@@ -9584,7 +9585,7 @@ namespace StarsAbove
                 }
                 starfarerPromptActive("onSpaceRuins");
             }
-            if (SubworldSystem.IsActive<TheDyingCitadel>() && !seenCitadel)
+            if (SubworldSystem.IsActive<BleachedPlanet>() && !seenBleachedPlanet)
             {
                 if (starfarerPromptCooldown > 0)
                 {
@@ -9600,14 +9601,7 @@ namespace StarsAbove
                 }
                 starfarerPromptActive("onConfluence");
             }
-            if (SubworldSystem.IsActive<GalacticMean>() && !seenCity)
-            {
-                if (starfarerPromptCooldown > 0)
-                {
-                    starfarerPromptCooldown = 0;
-                }
-                starfarerPromptActive("onCity");
-            }
+            
 
             //Modded Biomes
 
@@ -13720,13 +13714,13 @@ namespace StarsAbove
                     {
                         promptExpression = 0;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.176", Player.name); //Looks like you've arrived.  These are asteroids of interest- let's do some exploring.
-                        seenSpaceRuins = true;
+                        seenCygnusAsteroids = true;
                     }
                     if (eventPrompt == "onCitadel")
                     {
                         promptExpression = 4;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.177", Player.name); //We've made it. This planet is strange.. The surface has been wiped clean... What happened?
-                        seenCitadel = true;
+                        seenBleachedPlanet = true;
                     }
                     if (eventPrompt == "onConfluence")
                     {
@@ -14883,13 +14877,13 @@ namespace StarsAbove
                     {
                         promptExpression = 0;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.174", Player.name); //We've made it. These are asteroids of interest. Let's look around.
-                        seenSpaceRuins = true;
+                        seenCygnusAsteroids = true;
                     }
                     if (eventPrompt == "onCitadel")
                     {
                         promptExpression = 4;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.175", Player.name); //This is it. An entire planet that's devoid of color? The surface looks like it was wiped away somehow...
-                        seenCitadel = true;
+                        seenBleachedPlanet = true;
                     }
                     if (eventPrompt == "onConfluence")
                     {

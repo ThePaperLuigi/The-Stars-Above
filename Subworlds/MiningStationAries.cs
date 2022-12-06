@@ -7,7 +7,7 @@ using static Terraria.ModLoader.ModContent;
 using Terraria.GameContent.Generation;
 namespace StarsAbove
 {
-    public class AncientMiningFacility : Subworld
+    public class MiningStationAries : Subworld
 	{
 		public override int Width => 1750;
 		public override int Height => 750;
@@ -22,7 +22,7 @@ namespace StarsAbove
 
 		public override List<GenPass> Tasks => new List<GenPass>()
 		{
-			new PassLegacy("Ancient Mining Facility", (progress, _) =>
+			new PassLegacy("Mining Station Aries", (progress, _) =>
 			{
 				progress.Message = "Loading"; //Sets the text above the worldgen progress bar
 				Main.worldSurface = Main.maxTilesY + 250; //Hides the underground layer just out of bounds
