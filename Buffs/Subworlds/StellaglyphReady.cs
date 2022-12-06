@@ -1,20 +1,16 @@
 ﻿using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace StarsAbove.Buffs
+namespace StarsAbove.Buffs.Subworlds
 {
-    public class VoyageCooldown : ModBuff
+    public class StellaglyphReady : ModBuff
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Cosmic Voyage Cooldown");
-            Description.SetDefault("Once this debuff expires, you can initiate a Cosmic Voyage again" +
-                "\nAlternatively, ask a friend to initiate one");
-            Main.buffNoTimeDisplay[Type] = false;
-            Main.debuff[Type] = true;
-            Main.persistentBuff[Type] = true;
-            BuffID.Sets.NurseCannotRemoveDebuff[Type] = true;
+            DisplayName.SetDefault("[c/DE5D5D:Stellaglyph Proximity]");
+            Description.SetDefault("The Celestial Cartography menu will allow you to explore the cosmos");
+            Main.buffNoTimeDisplay[Type] = true;
+            Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }
 
         public override void Update(Player player, ref int buffIndex)

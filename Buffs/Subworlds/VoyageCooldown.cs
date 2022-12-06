@@ -1,16 +1,20 @@
 ﻿using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace StarsAbove.Buffs
+namespace StarsAbove.Buffs.Subworlds
 {
-    public class PortalReady : ModBuff
+    public class VoyageCooldown : ModBuff
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("[c/DE5D5D:Gateway Proximity]");
-            Description.SetDefault("Use the Bifrost to return from where you came");
+            DisplayName.SetDefault("Cosmic Voyage Cooldown");
+            Description.SetDefault("" +
+                "");
             Main.buffNoTimeDisplay[Type] = false;
-            Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
+            Main.debuff[Type] = true;
+            Main.persistentBuff[Type] = true;
+            BuffID.Sets.NurseCannotRemoveDebuff[Type] = true;
         }
 
         public override void Update(Player player, ref int buffIndex)

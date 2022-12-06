@@ -332,6 +332,16 @@ namespace StarsAbove.NPCs.Vagrant
 					VorpalSnipe(P, NPC);
 					return;
 				}
+				if (AI_RotationNumber == 29)
+				{
+					GeneralRelativity(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 30)
+				{
+					Microcosmos(P, NPC);
+					return;
+				}
 				else
                 {
 					AI_RotationNumber = 0;

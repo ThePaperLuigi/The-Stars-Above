@@ -10,21 +10,21 @@ using StarsAbove.Projectiles.Otherworld;
 using StarsAbove.Buffs.SubworldModifiers;
 using StarsAbove.Subworlds;
 
-namespace StarsAbove.Items.Placeable
+namespace StarsAbove.Items.Placeable.Stellaglyphs
 {
 
-    public class CelestriadRoot : ModItem
+    public class StellaglyphTier1 : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Celestriad Root");
+			DisplayName.SetDefault("Stellaglyph (Tier 1)");
 			
 
 			Tooltip.SetDefault("" +
-				"A sapling from the heart of the universe" +
-				"\nCan be used as a crafting bench to create the Stellaglyph and its upgrades" +
-				"" +
-				"");
+				"A mystical dias formed by the Celestriad Root" +
+				"\nAllows for the traversal of the cosmos through use of [c/F1AFFF:Celestial Cartography] in the [c/EC356F:Starfarer Menu] once placed" +
+				"\nMust stay in proximity to the Stellaglyph for travel" +
+				"\nCan be upgraded by placing [c/FF1B8D:Stellar Foci] nearby to grant buffs during Cosmic Voyages");
 			//
 			//
 			//"\n[c/D32C2C:Modded chests from mods added after world generation may cease to open once entering a subworld]" +
@@ -37,12 +37,12 @@ namespace StarsAbove.Items.Placeable
 
 		public override void SetDefaults()
 		{
-			Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.CelestriadRoot>(), 0);
+			Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.Stellaglyph.StellaglyphTier1>(), 0);
 
 			Item.width = 20;
 			Item.height = 20;
 			Item.maxStack = 1;
-			Item.rare = ItemRarityID.Red;
+			Item.rare = ItemRarityID.Blue;
 			Item.useAnimation = 20;
 			Item.useTime = 20;
 			Item.useStyle = ItemUseStyleID.HoldUp;
@@ -51,7 +51,6 @@ namespace StarsAbove.Items.Placeable
 			Item.noUseGraphic = false;
 		}
 
-		
 		public override void AddRecipes()
 		{
 			

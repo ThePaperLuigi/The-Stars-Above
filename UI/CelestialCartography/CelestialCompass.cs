@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Subworlds;
 using StarsAbove.Utilities;
 using SubworldLibrary;
+using System;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.UI;
@@ -14,9 +15,14 @@ namespace StarsAbove.UI.CelestialCartography
     internal class CelestialCompass : UIState
 	{
 		
-		private UIText text;
+		private UIText descriptionText;
+		private UIText threatText;
+		private UIText lootText;
+		private UIText requirementText;
+		private UIText titleText;
 		private UIElement area;
 
+		private UIElement TextboxRegion;
 		private UIElement CompassRegion;
 		private UIElement GearRegion;
 
@@ -49,7 +55,12 @@ namespace StarsAbove.UI.CelestialCartography
 			area.Height.Set(700, 0f);
 			area.HAlign = area.VAlign = 0.5f; // 1
 
-			Starmap = new UIImage(Request<Texture2D>("StarsAbove/UI/CelestialCartography/Starmap"));
+			TextboxRegion = new UIElement();
+			TextboxRegion.Width.Set(400,0f);
+			TextboxRegion.Height.Set(400,0f);
+
+
+			Starmap = new UIImage(Request<Texture2D>("StarsAbove/UI/blank"));
 			Starmap.Left.Set(80, 0f);
 			Starmap.Top.Set(0, 0f);
 			Starmap.Width.Set(1000, 0f);
@@ -80,7 +91,7 @@ namespace StarsAbove.UI.CelestialCartography
 			exit.Width.Set(70, 0f);
 			exit.Height.Set(52, 0f);
 			exit.Left.Set(152, 0f);
-			exit.Top.Set(520, 0f);
+			exit.Top.Set(80, 0);
 
 			Home = new UIImageButton(Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Home"));
 			Home.OnClick += TeleportHome;
@@ -159,14 +170,37 @@ namespace StarsAbove.UI.CelestialCartography
 			Tucana.Left.Set(0, 0f);
 			Tucana.Top.Set(0, 0f);
 
-			text = new UIText("", 1.5f); // text to show stat
-			text.Width.Set(1, 0f);
-			text.Height.Set(1, 0f);
-			text.Top.Set(0, 0f);
-			text.Left.Set(0, 0f);
+			titleText = new UIText("", 1.2f); // text to show stat
+			titleText.Width.Set(1, 0f);
+			titleText.Height.Set(1, 0f);
+			titleText.Top.Set(0, 0f);
+			titleText.Left.Set(0, 0f);
 
-			
-			
+			descriptionText = new UIText("", 1f); // text to show stat
+			descriptionText.Width.Set(1, 0f);
+			descriptionText.Height.Set(1, 0f);
+			descriptionText.Top.Set(0, 0f);
+			descriptionText.Left.Set(0, 0f);
+
+			requirementText = new UIText("", 0.8f); // text to show stat
+			requirementText.Width.Set(1, 0f);
+			requirementText.Height.Set(1, 0f);
+			requirementText.Top.Set(0, 0f);
+			requirementText.Left.Set(0, 0f);
+
+			threatText = new UIText("", 0.8f); // text to show stat
+			threatText.Width.Set(1, 0f);
+			threatText.Height.Set(1, 0f);
+			threatText.Top.Set(0, 0f);
+			threatText.Left.Set(0, 0f);
+
+			lootText = new UIText("", 0.8f); // text to show stat
+			lootText.Width.Set(1, 0f);
+			lootText.Height.Set(1, 0f);
+			lootText.Top.Set(0, 0f);
+			lootText.Left.Set(0, 0f);
+
+
 			area.Append(Starmap);
 			area.Append(CompassRegion);
 			area.Append(GearRegion);
@@ -184,7 +218,13 @@ namespace StarsAbove.UI.CelestialCartography
 			area.Append(Serpens);
 			area.Append(Tucana);
 
-			area.Append(text);
+			area.Append(TextboxRegion);
+			area.Append(titleText);
+			area.Append(descriptionText);
+			area.Append(threatText);
+			area.Append(requirementText);
+			area.Append(lootText);
+
 			area.Append(exit);
 			Append(area);
 		}
@@ -268,6 +308,8 @@ namespace StarsAbove.UI.CelestialCartography
 				(Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/CompassCenter"),
 				hitbox,
 				Color.White * (modPlayer.CelestialCompassVisibility));*/
+			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/Starmap"), starmapHitbox, Color.White * modPlayer.CelestialCompassVisibility);
+
 
 			Starmap.Color = Color.White * (modPlayer.CelestialCompassVisibility);
 			
@@ -276,7 +318,7 @@ namespace StarsAbove.UI.CelestialCartography
 			//This will change based on your selected location!
 			if (modPlayer.locationMapName != "")
 			{ 
-				if (modPlayer.locationMapName == "Observatory Hyperborea")
+				if (Observatory.IsMouseHovering)
 				{
 						spriteBatch.Draw(
 					(Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/CompassLocations/CompassObservatory"),
@@ -288,7 +330,7 @@ namespace StarsAbove.UI.CelestialCartography
 					SpriteEffects.None,
 					1f);
 				}
-				if (modPlayer.locationMapName == "Home")
+				if (Home.IsMouseHovering)
 				{
 					spriteBatch.Draw(
 				(Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/CompassLocations/CompassHome"),
@@ -300,7 +342,7 @@ namespace StarsAbove.UI.CelestialCartography
 				SpriteEffects.None,
 				1f);
 				}
-				if (modPlayer.locationMapName == "Cygnus Asteroid Field")
+				if (CygnusAsteroids.IsMouseHovering)
 				{
 					spriteBatch.Draw(
 				(Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/CompassLocations/CompassCygnusAsteroids"),
@@ -312,7 +354,7 @@ namespace StarsAbove.UI.CelestialCartography
 				SpriteEffects.None,
 				1f);
 				}
-				if (modPlayer.locationMapName == "Lyra")
+				if (Lyra.IsMouseHovering)
 				{
 					spriteBatch.Draw(
 				(Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/CompassLocations/CompassLyra"),
@@ -324,7 +366,7 @@ namespace StarsAbove.UI.CelestialCartography
 				SpriteEffects.None,
 				1f);
 				}
-				if (modPlayer.locationMapName == "Serpens")
+				if (Serpens.IsMouseHovering)
 				{
 					spriteBatch.Draw(
 				(Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/CompassLocations/CompassCorruption"),
@@ -336,7 +378,7 @@ namespace StarsAbove.UI.CelestialCartography
 				SpriteEffects.None,
 				1f);
 				}
-				if (modPlayer.locationMapName == "Scorpius")
+				if (Scorpius.IsMouseHovering)
 				{
 					spriteBatch.Draw(
 				(Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/CompassLocations/CompassCrimson"),
@@ -348,7 +390,7 @@ namespace StarsAbove.UI.CelestialCartography
 				SpriteEffects.None,
 				1f);
 				}
-				if (modPlayer.locationMapName == "Caelum")
+				if (Caelum.IsMouseHovering)
 				{
 					spriteBatch.Draw(
 				(Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/CompassLocations/CompassBleached"),
@@ -360,7 +402,7 @@ namespace StarsAbove.UI.CelestialCartography
 				SpriteEffects.None,
 				1f);
 				}
-				if (modPlayer.locationMapName == "Aquarius")
+				if (Aquarius.IsMouseHovering)
 				{
 					spriteBatch.Draw(
 				(Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/CompassLocations/CompassOcean"),
@@ -372,7 +414,7 @@ namespace StarsAbove.UI.CelestialCartography
 				SpriteEffects.None,
 				1f);
 				}
-				if (modPlayer.locationMapName == "Tucana")
+				if (Tucana.IsMouseHovering)
 				{
 					spriteBatch.Draw(
 				(Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/CompassLocations/CompassJungle"),
@@ -384,7 +426,7 @@ namespace StarsAbove.UI.CelestialCartography
 				SpriteEffects.None,
 				1f);
 				}
-				if (modPlayer.locationMapName == "Antlia")
+				if (Antlia.IsMouseHovering)
 				{
 					spriteBatch.Draw(
 				(Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/CompassLocations/CompassGasGiant"),
@@ -396,7 +438,7 @@ namespace StarsAbove.UI.CelestialCartography
 				SpriteEffects.None,
 				1f);
 				}
-				if (modPlayer.locationMapName == "Mining Station Aries")
+				if (MiningStationAries.IsMouseHovering)
 				{
 					spriteBatch.Draw(
 				(Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/CompassLocations/CompassCave"),
@@ -524,6 +566,7 @@ namespace StarsAbove.UI.CelestialCartography
 				compassCenter,
 				SpriteEffects.None,
 				1f);
+			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationDescriptionTextBox"), TextboxRegion.GetInnerDimensions().ToRectangle(), Color.White * modPlayer.locationDescriptionAlpha);
 
 			if (!SubworldSystem.AnyActive<StarsAbove>())
 			{
@@ -535,6 +578,8 @@ namespace StarsAbove.UI.CelestialCartography
 				Main.spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Observatory"), Observatory.GetInnerDimensions().ToRectangle(), Color.White * modPlayer.CelestialCompassVisibility);
 
 			}
+
+			Recalculate();
 		}
 		
 
@@ -553,35 +598,59 @@ namespace StarsAbove.UI.CelestialCartography
 			//Icons are here because they can be easily moved with hot reloads
 			//reset
 			modPlayer.locationMapName = "";
+			modPlayer.locationDescription = "";
+			modPlayer.locationLoot = "";
+			modPlayer.locationThreat = "";
+			modPlayer.locationRequirement = "";
 
 			Home.Top.Set(320, 0);
 			Home.Left.Set(700, 0);
 			if(Home.IsMouseHovering)
             {
-				modPlayer.locationMapName = "Home";
-				
-            }
+				string location = "Home";
+				modPlayer.locationMapName = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Name");
+				modPlayer.locationDescription = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Description");
+				modPlayer.locationThreat = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Threat");
+				modPlayer.locationRequirement = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Requirement");
+				modPlayer.locationLoot = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Loot");
+
+			}
 
 			Observatory.Top.Set(300, 0);
-			Observatory.Left.Set(660, 0);
-			Observatory.Width.Set(60, 0);
+			Observatory.Left.Set(645, 0);
+			Observatory.Width.Set(80, 0);
 			if(Observatory.IsMouseHovering)
             {
-				modPlayer.locationMapName = "Observatory Hyperborea";
+				string location = "Observatory";
+				modPlayer.locationMapName = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Name");
+				modPlayer.locationDescription = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Description");
+				modPlayer.locationThreat = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Threat");
+				modPlayer.locationRequirement = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Requirement");
+				modPlayer.locationLoot = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Loot");
 			}
 			
 			CygnusAsteroids.Top.Set(380, 0);
 			CygnusAsteroids.Left.Set(500, 0);
 			if (CygnusAsteroids.IsMouseHovering)
 			{
-				modPlayer.locationMapName = "Cygnus Asteroid Field";
+				string location = "CygnusAsteroids";
+				modPlayer.locationMapName = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Name");
+				modPlayer.locationDescription = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Description");
+				modPlayer.locationThreat = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Threat");
+				modPlayer.locationRequirement = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Requirement");
+				modPlayer.locationLoot = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Loot");
 			}
 
 			Antlia.Top.Set(380, 0);
 			Antlia.Left.Set(750, 0);
 			if (Antlia.IsMouseHovering)
 			{
-				modPlayer.locationMapName = "Antlia";
+				string location = "GasGiant";
+				modPlayer.locationMapName = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Name");
+				modPlayer.locationDescription = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Description");
+				modPlayer.locationThreat = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Threat");
+				modPlayer.locationRequirement = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Requirement");
+				modPlayer.locationLoot = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Loot");
 
 			}
 
@@ -589,7 +658,12 @@ namespace StarsAbove.UI.CelestialCartography
 			Aquarius.Left.Set(810, 0);
 			if (Aquarius.IsMouseHovering)
 			{
-				modPlayer.locationMapName = "Aquarius";
+				string location = "WaterPlanet";
+				modPlayer.locationMapName = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Name");
+				modPlayer.locationDescription = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Description");
+				modPlayer.locationThreat = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Threat");
+				modPlayer.locationRequirement = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Requirement");
+				modPlayer.locationLoot = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Loot");
 
 			}
 
@@ -597,7 +671,12 @@ namespace StarsAbove.UI.CelestialCartography
 			Caelum.Left.Set(670, 0);
 			if (Caelum.IsMouseHovering)
 			{
-				modPlayer.locationMapName = "Caelum";
+				string location = "BleachedPlanet";
+				modPlayer.locationMapName = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Name");
+				modPlayer.locationDescription = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Description");
+				modPlayer.locationThreat = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Threat");
+				modPlayer.locationRequirement = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Requirement");
+				modPlayer.locationLoot = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Loot");
 
 			}
 
@@ -605,7 +684,12 @@ namespace StarsAbove.UI.CelestialCartography
 			Lyra.Left.Set(750, 0);
 			if (Lyra.IsMouseHovering)
 			{
-				modPlayer.locationMapName = "Lyra";
+				string location = "AlienPlanet";
+				modPlayer.locationMapName = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Name");
+				modPlayer.locationDescription = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Description");
+				modPlayer.locationThreat = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Threat");
+				modPlayer.locationRequirement = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Requirement");
+				modPlayer.locationLoot = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Loot");
 
 			}
 
@@ -613,7 +697,12 @@ namespace StarsAbove.UI.CelestialCartography
 			MiningStationAries.Left.Set(530, 0);
 			if (MiningStationAries.IsMouseHovering)
 			{
-				modPlayer.locationMapName = "Mining Station Aries";
+				string location = "MiningStation";
+				modPlayer.locationMapName = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Name");
+				modPlayer.locationDescription = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Description");
+				modPlayer.locationThreat = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Threat");
+				modPlayer.locationRequirement = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Requirement");
+				modPlayer.locationLoot = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Loot");
 
 			}
 
@@ -621,7 +710,12 @@ namespace StarsAbove.UI.CelestialCartography
 			Scorpius.Left.Set(850, 0);
 			if (Scorpius.IsMouseHovering)
 			{
-				modPlayer.locationMapName = "Scorpius";
+				string location = "CrimsonPlanet";
+				modPlayer.locationMapName = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Name");
+				modPlayer.locationDescription = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Description");
+				modPlayer.locationThreat = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Threat");
+				modPlayer.locationRequirement = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Requirement");
+				modPlayer.locationLoot = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Loot");
 
 			}
 
@@ -629,7 +723,12 @@ namespace StarsAbove.UI.CelestialCartography
 			Serpens.Left.Set(630, 0);
 			if (Serpens.IsMouseHovering)
 			{
-				modPlayer.locationMapName = "Serpens";
+				string location = "CorruptedPlanet";
+				modPlayer.locationMapName = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Name");
+				modPlayer.locationDescription = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Description");
+				modPlayer.locationThreat = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Threat");
+				modPlayer.locationRequirement = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Requirement");
+				modPlayer.locationLoot = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Loot");
 
 			}
 
@@ -637,16 +736,54 @@ namespace StarsAbove.UI.CelestialCartography
 			Tucana.Left.Set(550, 0);
 			if (Tucana.IsMouseHovering)
 			{
-				modPlayer.locationMapName = "Tucana";
+				string location = "JunglePlanet";
+				modPlayer.locationMapName = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Name");
+				modPlayer.locationDescription = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Description");
+				modPlayer.locationThreat = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Threat");
+				modPlayer.locationRequirement = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Requirement");
+				modPlayer.locationLoot = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Loot");
 
 			}
-			//CompassRegion.Top.Set(260, 0);
+			CompassRegion.Top.Set(240 - modPlayer.locationDescriptionAlpha * 100 - modPlayer.quadraticFloat*4, 0);
+			GearRegion.Top.Set(350 - modPlayer.locationDescriptionAlpha * 100 - modPlayer.quadraticFloat*4, 0);
+			area.Left.Set(60, 0);
+			Starmap.Left.Set(80, 0);
 			
-			// Setting the text per tick to update and show our resource values.
-			text.SetText($"");
-			//text.Left.Set(Main.mouseX - 25, 0f); // Place the resource bar to the left of the hearts.
-			//text.Top.Set(Main.mouseY, 0f);
+
+			TextboxRegion.Top.Set(250, 0);
+			TextboxRegion.Left.Set(-195, 0);
+
+			titleText.SetText($"{modPlayer.locationMapName}");
+			titleText.Top.Set(280, 0);
+			titleText.Left.Set(-160,0);
+
+			descriptionText.SetText(Wrap($"{modPlayer.locationDescription}", 40));
+			descriptionText.Top.Set(310, 0);
+			descriptionText.Left.Set(-160, 0);
+
+			threatText.SetText(Wrap($"{modPlayer.locationThreat}", 50));
+			threatText.Top.Set(524, 0);
+			threatText.Left.Set(-135, 0);
+
+			requirementText.SetText(Wrap($"{modPlayer.locationRequirement}", 50));
+			requirementText.Top.Set(546, 0);
+			requirementText.Left.Set(-135, 0);
+
+			lootText.SetText(Wrap($"{modPlayer.locationLoot}", 50));
+			lootText.Top.Set(568, 0);
+			lootText.Left.Set(-135, 0);
+
 			base.Update(gameTime);
+		}
+
+		private static string Wrap(string v, int size)
+		{
+			v = v.TrimStart();
+			if (v.Length <= size) return v;
+			var nextspace = v.LastIndexOf(' ', size);
+			if (-1 == nextspace) nextspace = Math.Min(v.Length, size);
+			return v.Substring(0, nextspace) + ((nextspace >= v.Length) ?
+			"" : "\n" + Wrap(v.Substring(nextspace), size));
 		}
 	}
 }

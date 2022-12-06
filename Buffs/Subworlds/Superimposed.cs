@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 
-namespace StarsAbove.Buffs
+namespace StarsAbove.Buffs.Subworlds
 {
     public class Superimposed : ModBuff
     {

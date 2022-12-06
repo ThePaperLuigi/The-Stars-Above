@@ -21,6 +21,7 @@ using StarsAbove.NPCs.Vagrant;
 using SubworldLibrary;
 using StarsAbove.Biomes;
 using StarsAbove.Subworlds;
+using StarsAbove.Buffs.Subworlds;
 
 namespace StarsAbove
 {

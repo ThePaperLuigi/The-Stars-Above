@@ -17,11 +17,11 @@ using StarsAbove.Projectiles;
 using StarsAbove.Buffs;
 using StarsAbove.NPCs;
 using Microsoft.Xna.Framework.Audio;
-
+using StarsAbove.Buffs.Subworlds;
 
 namespace StarsAbove
 {
-    public class CelestialCartographyPlayer: ModPlayer
+    public class CelestialCartographyPlayer : ModPlayer
     {
         // Animated Starfarer Menu variables.
         public float quadraticFloatTimer;
@@ -50,7 +50,16 @@ namespace StarsAbove
 
         public bool locationPopUp;
         public string locationName = "";//Default name.
+
+        //Information about the location.
         public string locationMapName = "";
+        public string locationDescription = "";
+        public string locationThreat = "";
+        public string locationRequirement = "";
+        public string locationLoot = "";
+
+        public float locationDescriptionAlpha = 1;
+
         public float locationPopUpTimer;
         public float locationPopUpProgress;
 
@@ -63,8 +72,41 @@ namespace StarsAbove
         public bool nearStellaglyph;
         public bool nearGateway;
 
+        public int stellaglyphTier;
+
+        //Stellar Foci
+
+        //Focuses can be made with a Plinth and subworld materials. Possibly stronger Foci will need Power Foci to let them work?
+
+        //These values are set and values reset at the end of all updates.
+
+        //Increases player attack during Cosmic Voyages.
+        public float attackFocus;
+        public bool basicAttackFocusActive;
+
+        //Increases player defense during Cosmic Voyages.
+        public float defenseFocus;
+        public bool basicDefenseFocusActive;
+
+        //Increases the player luck during Cosmic Voyages.
+        public float luckFocus;
+        public bool basicLuckFocusActive;
+
+        //Increases the movement speed during Cosmic Voyages.
+        public float speedFocus;
+        public bool basicSpeedFocusActive;
+        
+        //Increases the potency of other Foci slightly.
+        public bool strengthEnhancerFocus;
+        public bool strengthEnhancerFocusActive;
+
+
         public override void PreUpdate()
         {
+            //This additionally adds the buffs.
+            CheckVoyageEligibility();
+
+            LocationDescriptionAnimation();
             QuadraticFloatAnimation();
             CelestialCartography();
             LocationPopUp();
@@ -72,6 +114,27 @@ namespace StarsAbove
 
         }
 
+        private bool CheckVoyageEligibility()
+        {
+            if (NPC.downedAncientCultist && !NPC.downedMoonlord)
+            {
+                if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("Lunar energy prevents the activation of the Bifrost..."), 255, 255, 100); }
+                return false;
+            }
+            if (nearGateway)
+            {
+                //add buff to signify this
+                Player.AddBuff(BuffType<PortalReady>(), 10);
+                return true;
+            }
+            if (nearStellaglyph)
+            {
+                Player.AddBuff(BuffType<StellaglyphReady>(), 10);
+                return true;
+            }
+            return false;
+        }
+        
         private void StarmapStarAnimation()
         {
             if(CelestialCartographyActive)
@@ -108,13 +171,24 @@ namespace StarsAbove
             {
                 locationPopUpAlpha -= 0.1f;
             }
-            Math.Clamp(locationPopUpAlpha, 0, 1);
-
+            locationPopUpAlpha = Math.Clamp(locationPopUpAlpha, 0, 1);
             locationPopUpTimer += 0.006f;
             loadingScreenOpacity -= 0.03f;
         }
-        
-       
+        private void LocationDescriptionAnimation()
+        {
+           
+            if (locationMapName != "")
+            {
+                locationDescriptionAlpha += 0.1f;
+            }
+            else
+            {
+                locationDescriptionAlpha -= 0.1f;
+            }
+            locationDescriptionAlpha = Math.Clamp(locationDescriptionAlpha, 0, 1);
+        }
+
         public static float InQuad(float t) => t * t;
         public static float OutQuad(float t) => 1 - InQuad(1 - t);
         public static float InOutQuad(float t)
@@ -248,7 +322,8 @@ namespace StarsAbove
         }
         public override void ResetEffects()
         {
-            //locationMapName = "";
+            nearGateway = false;
+            nearStellaglyph = false;
         }
     }
 

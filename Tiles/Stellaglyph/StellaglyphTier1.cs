@@ -11,12 +11,12 @@ using ReLogic.Content;
 using Terraria.Localization;
 using StarsAbove.Utilities;
 
-namespace StarsAbove.Tiles
+namespace StarsAbove.Tiles.Stellaglyph
 {
 	// Common code for a Master Mode boss relic
 	// Contains comments for optional Item.placeStyle handling if you wish to add more relics but use the same tile type (then it would be wise to name this class something more generic like BossRelic)
 	// And in case of wanting to add more relics but not wanting to go the optional way, scroll down to the bottom of the file
-	public class Portal : ModTile
+	public class StellaglyphTier1 : ModTile
 	{
 		public const int FrameWidth = 18 * 3;
 		public const int FrameHeight = 18 * 4;
@@ -27,16 +27,17 @@ namespace StarsAbove.Tiles
 
 		// Every relic has its own extra floating part, should be 50x50. Optional: Expand this sheet if you want to add more, stacked vertically
 		// If you do not go the optional way, and you extend from this class, you can override this to point to a different texture
-		public virtual string RelicTextureName => "StarsAbove/Tiles/Portal";
+		public virtual string RelicTextureName => "StarsAbove/Tiles/Stellaglyph/Portal";
 
 		// All relics use the same pedestal texture, this one is copied from vanilla
-		public override string Texture => "StarsAbove/Tiles/InvisibleWallTile";
+		public override string Texture => "StarsAbove/Tiles/Stellaglyph/StellaglyphTier1Base";
 		public override void NearbyEffects(int i, int j, bool closer)
 		{
 			if (closer)
 			{
 				var modPlayer = Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>();
-				modPlayer.nearGateway = true;
+				modPlayer.nearStellaglyph = true;
+				modPlayer.stellaglyphTier = 1;
 
 			}
 			else
@@ -82,9 +83,9 @@ namespace StarsAbove.Tiles
 			// TileObjectData.newTile.styleLineSkipVisualOverride = 0;
 
 			// Register an alternate tile data with flipped direction
-			TileObjectData.newAlternate.CopyFrom(TileObjectData.newTile); // Copy everything from above, saves us some code
-			TileObjectData.newAlternate.Direction = TileObjectDirection.PlaceRight; // Player faces to the right
-			TileObjectData.addAlternate(1);
+			//TileObjectData.newAlternate.CopyFrom(TileObjectData.newTile); // Copy everything from above, saves us some code
+			//TileObjectData.newAlternate.Direction = TileObjectDirection.PlaceRight; // Player faces to the right
+			//TileObjectData.addAlternate(1);
 
 			// Register the tile data itself
 			TileObjectData.addTile(Type);
@@ -100,7 +101,7 @@ namespace StarsAbove.Tiles
 			// The placeStyle calculated here corresponds to whatever placeStyle you specified on your items that place this tile (Either through Item.placeTile or Item.DefaultToPlacableTile)
 			int placeStyle = frameX / FrameWidth;
 
-			int itemType = 0;
+			int itemType = ModContent.ItemType<Items.Placeable.Stellaglyphs.StellaglyphTier1>();
 			switch (placeStyle)
 			{
 				case 0:
@@ -181,10 +182,10 @@ namespace StarsAbove.Tiles
 			// Some math magic to make it smoothly move up and down over time
 			const float TwoPi = (float)Math.PI * 2f;
 			float offset = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 5f);
-			Vector2 drawPos = worldPos + offScreen - Main.screenPosition + new Vector2(0f, -125f) + new Vector2(0f, offset * 4f);
+			Vector2 drawPos = worldPos + offScreen - Main.screenPosition + new Vector2(0f, -155f) + new Vector2(0f, offset * 4f);
 
 			// Draw the main texture
-			spriteBatch.Draw(texture, drawPos, frame, color, rotation, origin, 1f, effects, 0f);
+			spriteBatch.Draw(texture, drawPos, frame, color, rotation, origin, 0.7f, effects, 0f);
 
 			// Draw the periodic glow effect
 			float scale = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 2f) * 0.3f + 0.7f;
