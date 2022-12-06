@@ -9689,22 +9689,8 @@ namespace StarsAbove
                 }
                 starfarerPromptActive("onObservatory");
             }
-            if (SubworldSystem.IsActive<SeaOfStars1>() && !seenSpaceRuins)
-            {
-                if (starfarerPromptCooldown > 0)
-                {
-                    starfarerPromptCooldown = 0;
-                }
-                starfarerPromptActive("onSpaceRuins");
-            }
-            if (SubworldSystem.IsActive<TheDyingCitadel>() && !seenCitadel)
-            {
-                if (starfarerPromptCooldown > 0)
-                {
-                    starfarerPromptCooldown = 0;
-                }
-                starfarerPromptActive("onCitadel");
-            }
+           
+            
             if (SubworldSystem.IsActive<EternalConfluence>() && !seenConfluence)
             {
                 if (starfarerPromptCooldown > 0)
@@ -9713,14 +9699,7 @@ namespace StarsAbove
                 }
                 starfarerPromptActive("onConfluence");
             }
-            if (SubworldSystem.IsActive<GalacticMean>() && !seenCity)
-            {
-                if (starfarerPromptCooldown > 0)
-                {
-                    starfarerPromptCooldown = 0;
-                }
-                starfarerPromptActive("onCity");
-            }
+           
 
             //Modded Biomes
 
@@ -11843,22 +11822,8 @@ namespace StarsAbove
 
                 }
                 Player.AddBuff(BuffType<Superimposed>(), 2);
-                if (SubworldSystem.IsActive<AncientMiningFacility>() || SubworldSystem.IsActive<RuinedSpaceship>() || SubworldSystem.IsActive<SamuraiWar>() || SubworldSystem.IsActive<JungleTower>())
-                {
-                    Player.AddBuff(BuffType<RuinedSpaceshipTurmoil>(), 2);
-                }
-                else
-                {
-                    Player.AddBuff(BuffType<DefaultTurmoil>(), 2);
-                }
-                if (SubworldSystem.IsActive<JungleTower>())
-                {
-
-                }
-                else
-                {
-                    Player.gravity -= 0.3f;
-                }
+                
+                
                 Player.noBuilding = true;
 
 
@@ -11868,33 +11833,13 @@ namespace StarsAbove
                 Main.numCloudsTemp = 0;
                 Main.cloudBGAlpha = 0f;
                 //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue($"Debug: current Y value:{(int)(player.Center.Y / 16)}"), 250, 100, 247);}
-                if (!SubworldSystem.IsActive<SamuraiWar>())
-                {
-                    if ((int)(Player.Center.Y / 16) > 400)
-                    {
-                        Player.AddBuff(BuffType<SpatialBurn>(), 120);
-
-                        Player.velocity = new Vector2(Player.velocity.X, -17);
-                    }
-                    else
-                    {
-
-
-                    }
-                }
+                
 
                 Player.gravity -= gravityMod;
             }
             if (Player.InModBiome(ModContent.GetInstance<CityBiome>()))
             {
-                if (SubworldSystem.IsActive<GalacticMean>()) //WIP
-                {
-                    Player.AddBuff(BuffType<Superimposed>(), 2);
-                    Player.AddBuff(BuffType<CityTurmoil>(), 2);
-                    Player.noBuilding = true;
-
-
-                }
+                
             }
             if (Player.InModBiome(ModContent.GetInstance<BleachedWorldBiome>()))
             {

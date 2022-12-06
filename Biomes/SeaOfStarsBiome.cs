@@ -34,10 +34,7 @@ namespace StarsAbove.Biomes
 		
 		// Calculate when the biome is active.
 		public override bool IsBiomeActive(Player player) {
-			if(SubworldSystem.IsActive<SeaOfStars1>())
-            {
-				return true;
-            }
+			
 			return false;
 		}
 	}
