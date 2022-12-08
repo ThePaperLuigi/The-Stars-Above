@@ -15,7 +15,7 @@ namespace StarsAbove.SceneEffects
                 SkyManager.Instance.Deactivate("StarsAbove:EverlastingLight");
                 return false;
             }
-            if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior && (SubworldSystem.Current == null || SubworldSystem.IsActive<Observatory>()))
+            if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior && (SubworldSystem.Current == null))
             {
                 return true;
             }

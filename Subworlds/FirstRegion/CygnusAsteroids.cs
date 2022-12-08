@@ -1,22 +1,22 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using SubworldLibrary;
 using Terraria.WorldBuilding;
 using System.Collections.Generic;
-using Terraria.ModLoader;
+using Terraria.ID;
 
 using static Terraria.ModLoader.ModContent;
-using Microsoft.Xna.Framework;
+using Terraria.GameContent.Generation;
 using Microsoft.Xna.Framework.Graphics;
-using Terraria.GameContent;
+using Terraria.ModLoader;
+using Terraria.Utilities;
 
-namespace StarsAbove.Subworlds
+namespace StarsAbove
 {
-    public class Observatory : Subworld
+	public class CygnusAsteroids : Subworld
 	{
-		public override string Name => "Observatory";
-
-		public override int Width => 1750;
-		public override int Height => 750;
+		public override int Width => 1600;
+		public override int Height => 800;
 
 		//public override ModWorld modWorld => ModContent.GetInstance < your modworld here>();
 
@@ -24,11 +24,48 @@ namespace StarsAbove.Subworlds
 		public override bool NoPlayerSaving => false;
 		public override bool NormalUpdates => false;
 
-		//public override bool noWorldUpdate => true;
+		public int variantWorld;
+
+		public override List<GenPass> Tasks => new List<GenPass>()
+		{
+			new PassLegacy("Cygnus Asteroid Field", (progress, _) =>
+			{
+					progress.Message = "Loading"; //Sets the text above the worldgen progress bar
+
+				
+
+					Main.worldSurface = Main.maxTilesY + 250; //Hides the underground layer just out of bounds
+					Main.rockLayer = Main.maxTilesY + 200; //Hides the cavern layer way out of bounds
+
+					//variantWorld = Main.rand.Next(3);
+
+					StructureHelper.Generator.GenerateStructure("Structures/CygnusAsteroidField/CygnusPart1a", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 200, Main.maxTilesY/2 - 80), StarsAbove.Instance);
+					StructureHelper.Generator.GenerateStructure("Structures/CygnusAsteroidField/CygnusPart2", new Terraria.DataStructures.Point16(Main.maxTilesX/2, Main.maxTilesY/2 - 80), StarsAbove.Instance);
+					StructureHelper.Generator.GenerateStructure("Structures/CygnusAsteroidField/CygnusPart3", new Terraria.DataStructures.Point16(Main.maxTilesX/2 + 200, Main.maxTilesY/2 - 80), StarsAbove.Instance);
+
+
+					for (int i = 0; i < Main.maxTilesX; i++)
+					{
+						for (int j = 0; j < Main.maxTilesY; j++)
+						{
+
+
+							progress.Set((j + i * Main.maxTilesY) / (float)(Main.maxTilesX * Main.maxTilesY)); //Controls the progress bar, should only be set between 0f and 1f
+							//Main.tile[i, j].active(true);
+							//Main.tile[i, j].type = TileID.Air;
+						}
+						if(i == Main.maxTilesX/2)
+						{
+
+						}
+					}
+			})
+
+		};
 		private const string assetPath = "StarsAbove/Subworlds/LoadingScreens";
 
 		public override void DrawMenu(GameTime gameTime)
-        {
+		{
 			Texture2D MenuBG = (Texture2D)ModContent.Request<Texture2D>($"{assetPath}/DefaultLS");//Background
 			Vector2 zero = Vector2.Zero;
 			float width = (float)Main.screenWidth / (float)MenuBG.Width;
@@ -46,18 +83,18 @@ namespace StarsAbove.Subworlds
 					zero.Y -= ((float)MenuBG.Height * width - (float)Main.screenHeight) * 0.5f;
 				}
 			}
-			
+
 			Main.spriteBatch.Draw(MenuBG, zero, (Rectangle?)null, Color.White, 0f, Vector2.Zero, width, (SpriteEffects)0, 0f);
 			DrawStarfarerAnimation();
 
 			base.DrawMenu(gameTime);
-        }
+		}
 		int animationTime;
 		int animationTime2;
 		int animationFrame;
 		int animationFrame2;
 		private void DrawStarfarerAnimation()
-        {
+		{
 			Texture2D AsphoRunAnimation = (Texture2D)ModContent.Request<Texture2D>($"StarsAbove/UI/CelestialCartography/RunAnimation/ARun" + animationFrame + "0");
 			Texture2D EriRunAnimation = (Texture2D)ModContent.Request<Texture2D>($"StarsAbove/UI/CelestialCartography/RunAnimation/ERun" + animationFrame2 + "0");
 			animationTime++;
@@ -103,7 +140,7 @@ namespace StarsAbove.Subworlds
 				0f);
 			Main.spriteBatch.Draw(
 				AsphoRunAnimation, //The texture being drawn.
-				new Vector2(Main.screenWidth/2 + 40, Main.screenHeight / 2 - 70), //The position of the texture.
+				new Vector2(Main.screenWidth / 2 + 40, Main.screenHeight / 2 - 70), //The position of the texture.
 				new Rectangle(0, 0, AsphoRunAnimation.Width, AsphoRunAnimation.Height),
 				Color.White, //The color of the texture.
 				0, // The rotation of the texture.
@@ -113,7 +150,7 @@ namespace StarsAbove.Subworlds
 				0f);
 			Main.spriteBatch.Draw(
 				EriRunAnimation, //The texture being drawn.
-				new Vector2(Main.screenWidth/2 - 40, Main.screenHeight / 2 - 70), //The position of the texture.
+				new Vector2(Main.screenWidth / 2 - 40, Main.screenHeight / 2 - 70), //The position of the texture.
 				new Rectangle(0, 0, EriRunAnimation.Width, EriRunAnimation.Height),
 				Color.White, //The color of the texture.
 				0, // The rotation of the texture.
@@ -122,62 +159,38 @@ namespace StarsAbove.Subworlds
 				SpriteEffects.None,
 				0f);
 
-			
+
 		}
-        public override void DrawSetup(GameTime gameTime)
+
+		public override bool GetLight(Tile tile, int x, int y, ref FastRandom rand, ref Vector3 color)
+		{
+			color = new Vector3(0.01f, 0.01f, 0.01f);
+			return base.GetLight(tile, x, y, ref rand, ref color);
+		}
+        public override void OnLoad()
         {
+			//Clear the background.
+			Main.numClouds = 0;
+			Main.numCloudsTemp = 0;
+			Main.cloudBGAlpha = 0f;
 
-
-
-            base.DrawSetup(gameTime);
+			Main.cloudAlpha = 0f;
+			Main.resetClouds = true;
+			Main.moonPhase = 4;
+			
         }
-
-        public override List<GenPass> Tasks => new List<GenPass>()
+        public override void OnEnter()
 		{
-			new SubworldGenPass(delegate
-			{
-				
-				Main.worldSurface = 600.0;
-				Main.rockLayer = Main.maxTilesY;
-				SubworldSystem.hideUnderworld = true;
-				//Main.cloudAlpha = 0f;
-				//Main.resetClouds = true;
 
-				StructureHelper.Generator.GenerateStructure("Structures/Observatory", new Terraria.DataStructures.Point16((Main.maxTilesX/2) - 24, (Main.maxTilesY/2) - 68), StarsAbove.Instance);
-
-			})
-			
-
-		};
-		public override void Load()
-		{
-		
-			
-			
-		}
-		public override void OnEnter()
-        {
-			
-			//DownedBossSystem.downedWarrior = SubworldSystem.ReadCopiedWorldData<bool>("downedWarrior");
-
-			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "Observatory";
+			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "CygnusAsteroidField";
 			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().loadingScreenOpacity = 1f;
 
-
 		}
-
-        public override void OnLoad()
+		public override void Load()
 		{
-
-			Main.dayTime = true;
-			Main.time = 18000;
+			SubworldSystem.noReturn = true;
 
 
-			//Main.cloudAlpha = 0f;
-			//Main.resetClouds = true;
-
-			SubworldSystem.noReturn = false;
-			
 
 		}
 	}

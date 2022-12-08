@@ -38,7 +38,7 @@ namespace StarsAbove.Items.Placeable.Stellaglyphs
 		public override void SetDefaults()
 		{
 			Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.Stellaglyph.StellaglyphTier3>(), 0);
-
+			Item.createTile = ModContent.TileType<Tiles.Stellaglyph.StellaglyphTier3>();
 			Item.width = 20;
 			Item.height = 20;
 			Item.maxStack = 1;
@@ -53,7 +53,14 @@ namespace StarsAbove.Items.Placeable.Stellaglyphs
 
 		public override void AddRecipes()
 		{
-			
+			CreateRecipe(1)
+				.AddIngredient(ItemID.SoulofLight, 15)
+				.AddIngredient(ItemID.SoulofNight, 15)
+				//Some more subworld specific materials. Perhaps the shards from the Bleached world, etc.
+				.AddIngredient(ItemType<Prisms.PrismaticCore>(), 20)
+				.AddIngredient(ItemType<StellaglyphTier2>())
+				.AddTile(TileType<Tiles.CelestriadRoot>())
+				.Register();
 		}
 	}
 }

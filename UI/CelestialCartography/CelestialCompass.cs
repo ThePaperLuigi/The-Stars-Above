@@ -1,12 +1,14 @@
 ﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using StarsAbove.Buffs.Subworlds;
 using StarsAbove.Subworlds;
 using StarsAbove.Utilities;
 using SubworldLibrary;
 using System;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
+using Terraria.ID;
 using Terraria.UI;
 using static Terraria.ModLoader.ModContent;
 
@@ -268,7 +270,7 @@ namespace StarsAbove.UI.CelestialCartography
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive)
 				return;
 
-			//Check to see if this works in Multiplayer after the SubLib update comes out.
+			
 			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 			SubworldSystem.Exit();
 
@@ -278,7 +280,7 @@ namespace StarsAbove.UI.CelestialCartography
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive)
 				return;
 
-			//Check to see if this works in Multiplayer after the SubLib update comes out.
+			
 			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 			SubworldSystem.Enter<Observatory>();
 
@@ -289,9 +291,32 @@ namespace StarsAbove.UI.CelestialCartography
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive)
 				return;
 
-			//Check to see if this works in Multiplayer after the SubLib update comes out.
-			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
-			//SubworldSystem.Enter<Observatory>();
+			
+			if(Main.LocalPlayer.HasBuff(BuffType<PortalReady>()) || Main.LocalPlayer.HasBuff(BuffType<StellaglyphReady>()))
+            {
+				if(Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 1)
+                {
+					SubworldSystem.Enter<CygnusAsteroids>();
+					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
+
+				}
+				else
+                {
+					if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI)
+					{
+						Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.WeakStellaglyph"), 255, 126, 114);
+					}
+				}
+				
+			}
+			else
+            {
+				if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI)
+				{
+					Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.NoPortal"), 255, 126, 114);
+				}
+			}
+			
 
 		}
 		protected override void DrawSelf(SpriteBatch spriteBatch) {

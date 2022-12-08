@@ -6,6 +6,10 @@ Mods: {
 		}
 		
 		CosmicVoyages: {
+			Warnings: {
+				NoPortal: No nearby portal detected!
+				WeakStellaglyph: Your Stellaglyph is not powerful enough to attempt transit!
+			}
 			MapText: {
 				Default: Select a location to visit.
 				NoStellaglyph: No Stellaglyph nearby; Travel to the Observatory Hyperborea by selecting it on the map.
@@ -86,6 +90,20 @@ Mods: {
 					Threat: "Threat Level: B++ Anomaly"
 					Requirement: Tier III Stellaglyph required for transit.
 					Loot: "Resources: ???"
+				}
+				BlackHole: {
+					Name: Moirae's Heart
+					Description: The supermassive black hole that binds the galaxy together. The accretion disk surrounding the black hole is paradoxically the reason that civilization has flocked inwards: the desire for light's warmth.
+					Threat: "Threat Level: EX"
+					Requirement: Transit impossible at this time.
+					Loot: "Resources: N/A"
+				}
+				QuestionMark: {
+					Name: " "
+					Description: Content not yet implemented!
+					Threat: "N/A"
+					Requirement: "N/A"
+					Loot: "N/A"
 				}
 			}
 		}
@@ -5853,6 +5871,7 @@ Mods: {
 			Tsukiyomi2: The First Starfarer, Tsukiyomi, who holds dominion over orbiting celestial bodies. The gravitational pull of a planet and its natural satellites gives her power. She led the Warrior of Light astray- using his strength and goodwill to conquer and destroy myriad stars... and yet...
 			VagrantOfSpaceAndTime: The enigmatic Starfarer Perseus. His outward appearance is that of utmost confidence... but he's just kind of a dork trying to look cool. His sisters agree on this.
 			WarriorOfLight: The Warrior of Light, or the First Starbearer, once championed justice in the galaxy through his actions, and the aid of his Starfarer. He once ruled a peaceful world, but was forced to watch helplessly as his people met their demise, vowing to never again let others share the same fate- no matter the cost.
+			AsteroidWorm: These incredibly hardy creatures have evolved the capability to aimlessly drift through the vacuum of space- perhaps not the best depiction of evolution. While their meals are scarce, their need for food is nigh nonexistant. Gifted with a strong outer shell, but low overall attacking strength.
 		}
 		
 		Prefix: {

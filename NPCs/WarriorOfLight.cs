@@ -397,7 +397,7 @@ namespace StarsAbove.NPCs
                         dust.scale = 1f + Main.rand.NextFloat() + (float)dustNumber * 0.3f;
                     }
                 }
-                if(!DownedBossSystem.downedWarrior)
+                if(DownedBossSystem.downedWarrior)
                 {
                     NPC.ai[3] += 1000;//If you've seen the cutscene, don't play it again.
                     //Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/BossFinish");

@@ -20,7 +20,7 @@ namespace StarsAbove.Biomes
 
 		// Populate the Bestiary Filter
 		public override string BestiaryIcon => base.BestiaryIcon;
-		public override string BackgroundPath => base.BackgroundPath;
+		public override string BackgroundPath => "StarsAbove/Biomes/SeaOfStarsBiomeMapBackground";
 		public override Color? BackgroundColor => base.BackgroundColor;
 
 		// Use SetStaticDefaults to assign the display name

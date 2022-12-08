@@ -1850,7 +1850,7 @@ namespace StarsAbove
 
         public override void OnEnterWorld(Player player)
         {
-            //SubworldSystem.noReturn = false;
+            SubworldSystem.noReturn = false;
 
             if (player.whoAmI == Main.myPlayer && enableWorldLock)
             {
@@ -1881,7 +1881,7 @@ namespace StarsAbove
 
 
             }
-            if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior)
+            if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior && SubworldSystem.Current == null)
             {
                 if (player.whoAmI == Main.myPlayer)
                 {
@@ -4711,10 +4711,7 @@ namespace StarsAbove
         {
 
 
-            if (SubworldSystem.Current != null)
-            {
-                player.AddBuff(BuffType<Invincibility>(), 240);
-            }
+            
             if (luciferium)
             {
                 player.AddBuff(BuffID.PotionSickness, 3600);
@@ -10500,7 +10497,7 @@ namespace StarsAbove
             {
                 Player.AddBuff(BuffType<Buffs.SoulSapping>(), 2);
             }
-            if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior)
+            if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior && SubworldSystem.Current == null)
             {
 
                 Player.AddBuff(BuffType<Buffs.EverlastingLight>(), 2);

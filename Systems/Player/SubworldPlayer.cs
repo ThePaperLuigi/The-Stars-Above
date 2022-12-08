@@ -30,18 +30,27 @@ namespace StarsAbove
 
         public float gravityMod;
 
-
+        
         public override void PreUpdate()
         {
-
+            if (Player.dead && !Player.active && SubworldSystem.Current != null) //Dying in a subworld kicks you out.
+            {
+                SubworldSystem.Exit();
+            }
         }
         public override void PostUpdate()
         {
-
-
+            
 
         }
-
+        public override void OnRespawn(Player player)
+        {
+            if (SubworldSystem.Current != null)
+            {
+                player.AddBuff(BuffType<Invincibility>(), 240);
+            }
+            base.OnRespawn(player);
+        }
         public override void PostUpdateBuffs()
         {
             if (Player.InModBiome(ModContent.GetInstance<SeaOfStarsBiome>()))
@@ -53,13 +62,10 @@ namespace StarsAbove
                 //Space gravity!
                 Player.gravity -= 0.3f;
                
-                //Clear the background.
-                Main.numClouds = 0;
-                Main.numCloudsTemp = 0;
-                Main.cloudBGAlpha = 0f;
+                
 
                 //Fall too far into the void, and you'll be launched back up while taking heavy DoT.
-                if ((int)(Player.Center.Y / 16) > 400)
+                if ((int)(Player.Center.Y / 16) > 500)
                 {
                     Player.AddBuff(BuffType<SpatialBurn>(), 120);
 

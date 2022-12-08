@@ -1,5 +1,6 @@
 
 using Microsoft.Xna.Framework;
+using SubworldLibrary;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -17,6 +18,7 @@ namespace StarsAbove
 
         public override void PreUpdateInvasions()
         {
+
 			if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior)
 			{
 				Main.eclipse = false;

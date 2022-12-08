@@ -1235,7 +1235,7 @@ namespace StarsAbove.Items.Consumables
 					}
 				}
 			}
-			if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior)
+			if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior && SubworldSystem.Current == null)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 21;
 			}

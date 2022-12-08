@@ -38,7 +38,7 @@ namespace StarsAbove.Items.Placeable.Stellaglyphs
 		public override void SetDefaults()
 		{
 			Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.Stellaglyph.StellaglyphTier1>(), 0);
-
+			Item.createTile = ModContent.TileType<Tiles.Stellaglyph.StellaglyphTier1>();
 			Item.width = 20;
 			Item.height = 20;
 			Item.maxStack = 1;
@@ -53,7 +53,15 @@ namespace StarsAbove.Items.Placeable.Stellaglyphs
 
 		public override void AddRecipes()
 		{
-			
+			CreateRecipe(1)
+				.AddIngredient(ItemID.Ruby, 1)
+				.AddIngredient(ItemID.Topaz, 1)
+				.AddIngredient(ItemID.Amber, 1)
+				.AddIngredient(ItemID.Amethyst, 1)
+				.AddIngredient(ItemID.Sapphire, 1)
+				.AddIngredient(ItemID.Emerald, 1)
+				.AddTile(TileType<Tiles.CelestriadRoot>())
+				.Register();
 		}
 	}
 }

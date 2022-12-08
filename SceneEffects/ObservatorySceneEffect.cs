@@ -6,7 +6,7 @@ using Terraria.Graphics.Effects;
 
 namespace StarsAbove.SceneEffects
 {
-    public class ObservatoryBackground : ModSceneEffect
+    public class ObservatorySceneEffect : ModSceneEffect
 	{
         public override bool IsSceneEffectActive(Player player) 
         {
@@ -23,7 +23,14 @@ namespace StarsAbove.SceneEffects
         }
         public override void SpecialVisuals(Player player, bool isActive)
         {
-           
+            if (SubworldSystem.IsActive<Observatory>())
+            {
+                Main.dayTime = true;
+                Main.time = 12000;
+                Main.cloudAlpha = 0f;
+                
+                Main.moonPhase = 4;
+            }
 
 
         }

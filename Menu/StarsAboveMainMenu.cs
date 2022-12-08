@@ -130,6 +130,8 @@ namespace StarsAbove.Menu
 			Vector2 logoDrawPos = new Vector2(Main.screenWidth / 2, 100f);
 
 			Texture2D MenuBG = (Texture2D)ModContent.Request<Texture2D>($"{menuAssetPath}/MenuBackground");//Background
+			Texture2D MenuFG = (Texture2D)ModContent.Request<Texture2D>($"{menuAssetPath}/MenuForeground");//Background
+
 			Vector2 zero = Vector2.Zero;
 			float width = (float)Main.screenWidth / (float)MenuBG.Width;
 			float height = (float)Main.screenHeight / (float)MenuBG.Height;
@@ -148,8 +150,8 @@ namespace StarsAbove.Menu
             }
             spriteBatch.Draw(MenuBG, zero, (Rectangle?)null, Color.White, 0f, Vector2.Zero, width, (SpriteEffects)0, 0f);
 
-			Texture2D AsphoRunAnimation = (Texture2D)ModContent.Request<Texture2D>($"StarsAbove/UI/CelestialCartography/RunAnimation/ARun" + animationFrame + "0");//White Circle
-			Texture2D EriRunAnimation = (Texture2D)ModContent.Request<Texture2D>($"StarsAbove/UI/CelestialCartography/RunAnimation/ERun" + animationFrame2 + "0");//White Circle
+			Texture2D AsphoRunAnimation = (Texture2D)ModContent.Request<Texture2D>($"StarsAbove/UI/CelestialCartography/RunAnimation/ARun" + animationFrame + "0");
+			Texture2D EriRunAnimation = (Texture2D)ModContent.Request<Texture2D>($"StarsAbove/UI/CelestialCartography/RunAnimation/ERun" + animationFrame2 + "0");
 
 
 			if (walkFromScreenEdgeToEdge - AsphoRunAnimation.Width > Main.screenWidth)
@@ -179,26 +181,7 @@ namespace StarsAbove.Menu
 			Texture2D WhiteLine3 = (Texture2D)ModContent.Request<Texture2D>($"{menuAssetPath}/Line3");//White Circle
 			Texture2D WhiteLine4 = (Texture2D)ModContent.Request<Texture2D>($"{menuAssetPath}/Line4");//White Circle
 
-			spriteBatch.Draw(
-				AsphoRunAnimation, //The texture being drawn.
-				new Vector2(walkFromScreenEdgeToEdge, Main.screenHeight - AsphoRunAnimation.Height/2), //The position of the texture.
-				new Rectangle(0, 0, AsphoRunAnimation.Width, AsphoRunAnimation.Height),
-				Color.White, //The color of the texture.
-				0, // The rotation of the texture.
-				AsphoRunAnimation.Size() * 0.5f, //The centerpoint of the texture.
-				1f, //The scale of the texture.
-				SpriteEffects.None,
-				0f);
-			spriteBatch.Draw(
-				EriRunAnimation, //The texture being drawn.
-				new Vector2(walkFromScreenEdgeToEdgeEridani, Main.screenHeight - EriRunAnimation.Height / 2), //The position of the texture.
-				new Rectangle(0, 0, EriRunAnimation.Width, EriRunAnimation.Height),
-				Color.White, //The color of the texture.
-				0, // The rotation of the texture.
-				EriRunAnimation.Size() * 0.5f, //The centerpoint of the texture.
-				1f, //The scale of the texture.
-				SpriteEffects.None,
-				0f);
+			
 
 			#region circle
 			spriteBatch.Draw(
@@ -434,23 +417,31 @@ namespace StarsAbove.Menu
 				0.94f, //The scale of the texture.
 				SpriteEffects.None,
 				0f);
-			/*
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
-			Vector2 Center = new Vector2(drawParams.SourceRectangle.Width, drawParams.SourceRectangle.Height) / 2;
-			spriteBatch.End();
-			spriteBatch.Begin();
+
+			spriteBatch.Draw(MenuFG, zero, (Rectangle?)null, Color.White, 0f, Vector2.Zero, width, (SpriteEffects)0, 0f);
 			spriteBatch.Draw(
-				drawParams.Texture,
-				new Vector2(drawParams.Position.X + 16, drawParams.Position.Y + 16),
-				null,
-				Color.White,
-				MathHelper.ToRadians(modPlayer.GlobalRotation),
-				Center,
-				1f,
+				AsphoRunAnimation, //The texture being drawn.
+				new Vector2(walkFromScreenEdgeToEdge, Main.screenHeight - AsphoRunAnimation.Height / 2), //The position of the texture.
+				new Rectangle(0, 0, AsphoRunAnimation.Width, AsphoRunAnimation.Height),
+				Color.White, //The color of the texture.
+				0, // The rotation of the texture.
+				AsphoRunAnimation.Size() * 0.5f, //The centerpoint of the texture.
+				1f, //The scale of the texture.
 				SpriteEffects.None,
-				1f);*/
+				0f);
+			spriteBatch.Draw(
+				EriRunAnimation, //The texture being drawn.
+				new Vector2(walkFromScreenEdgeToEdgeEridani, Main.screenHeight - EriRunAnimation.Height / 2), //The position of the texture.
+				new Rectangle(0, 0, EriRunAnimation.Width, EriRunAnimation.Height),
+				Color.White, //The color of the texture.
+				0, // The rotation of the texture.
+				EriRunAnimation.Size() * 0.5f, //The centerpoint of the texture.
+				1f, //The scale of the texture.
+				SpriteEffects.None,
+				0f);
 			return true;
 		}
+		
 		
 	}
 }

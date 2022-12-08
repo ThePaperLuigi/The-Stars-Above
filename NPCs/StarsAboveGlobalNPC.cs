@@ -17,6 +17,7 @@ using StarsAbove.Items.Accessories;
 using StarsAbove.Buffs.Farewells;
 using System;
 using StarsAbove.Buffs.IrminsulDream;
+using StarsAbove.Biomes;
 
 namespace StarsAbove.NPCs
 {
@@ -42,11 +43,11 @@ namespace StarsAbove.NPCs
 
         public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
         {
-			if (spawnInfo.Player.GetModPlayer<StarsAbovePlayer>().SeaOfStars)
+			if (spawnInfo.Player.InModBiome<SeaOfStarsBiome>())
 			{
 				pool.Clear();
-				//pool.Add(ModContent.NPCType<NPCs.WaywardStarcell>(), 0.1f);
-				/*pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.WaywardStargazer>(), 0.1f);
+				pool.Add(ModContent.NPCType<NPCs.PrismLoot>(), 0.01f);
+				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.AsteroidWormHead>(), 1f);/*
 				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.WaywardSelenian>(), 0.1f);
 				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.WaywardPredictor>(), 0.1f);
 				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.WaywardVortexian>(), 0.1f);*/
@@ -238,17 +239,20 @@ namespace StarsAbove.NPCs
 		}
         public override void PostDraw(NPC npc, SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
-			if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior && !npc.boss && npc.damage > 0 && !npc.friendly)
+			if (SubworldSystem.Current == null)
 			{
+				if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior && !npc.boss && npc.damage > 0 && !npc.friendly)
+				{
 
 
-				npc.color = Color.LightGoldenrodYellow;
+					npc.color = Color.LightGoldenrodYellow;
+				}
 			}
 			if(Hyperburn)
             {
 				npc.color = Color.Pink;
 			}
-			if (Hyperburn)
+			if (VerdantEmbrace)
 			{
 				npc.color = Color.Green;
 			}
@@ -265,52 +269,56 @@ namespace StarsAbove.NPCs
 
         public override void DrawEffects(NPC npc, ref Color drawColor)
 		{
-			if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior && !npc.boss && npc.damage > 0 && !npc.friendly)
-			{
-				
-				if (Main.rand.Next(2000) < 2)
+			if(SubworldSystem.Current == null)
+            {
+				if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior && !npc.boss && npc.damage > 0 && !npc.friendly)
 				{
-					for (int i = 0; i < 6; i++)
+
+					if (Main.rand.Next(2000) < 2)
 					{
-						// Random upward vector.
-						Vector2 vel = new Vector2(Main.rand.NextFloat(-3, 3), Main.rand.NextFloat(-1, -4));
-						if(Main.netMode != NetmodeID.MultiplayerClient){Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center, vel, ProjectileID.GreekFire3, 40, 0, 0, 0, 1);}
+						for (int i = 0; i < 6; i++)
+						{
+							// Random upward vector.
+							Vector2 vel = new Vector2(Main.rand.NextFloat(-3, 3), Main.rand.NextFloat(-1, -4));
+							if (Main.netMode != NetmodeID.MultiplayerClient) { Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center, vel, ProjectileID.GreekFire3, 40, 0, 0, 0, 1); }
+						}
+						for (int d = 0; d < 8; d++)
+						{
+							int dustIndex = Dust.NewDust(npc.position, npc.width, npc.height, 222, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 1.5f);
+							Main.dust[dustIndex].noGravity = true;
+						}
+
+						npc.life += npc.lifeMax / 10;
+						if (npc.life > npc.lifeMax)
+						{
+							npc.life = npc.lifeMax;
+						}
 					}
-					for (int d = 0; d < 8; d++)
+					if (Main.rand.Next(4) < 3)
 					{
-						int dustIndex = Dust.NewDust(npc.position, npc.width, npc.height, 222, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 1.5f);
-						Main.dust[dustIndex].noGravity = true;
+						int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 158, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color), 1.1f);
+						Main.dust[dust].noGravity = true;
+						Main.dust[dust].velocity *= 1.8f;
+						Main.dust[dust].velocity.Y -= 0.5f;
+
+					}
+					if (Main.rand.Next(12) < 5)
+					{
+						int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 91, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 20, default(Color), 0.2f);
+						Main.dust[dust].noGravity = true;
+						Main.dust[dust].velocity *= 1.8f;
+						Main.dust[dust].velocity.Y -= 0.5f;
+						Main.dust[dust].scale = 0.32f;
+
+
+
 					}
 
-					npc.life += npc.lifeMax / 10;
-					if(npc.life > npc.lifeMax)
-                    {
-						npc.life = npc.lifeMax;
-                    }
+					Lighting.AddLight(npc.position, 0.1f, 0.1f, 0.1f);
+					drawColor = drawColor.MultiplyRGB(Color.Yellow);
 				}
-				if (Main.rand.Next(4) < 3)
-				{
-					int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 158, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color), 1.1f);
-					Main.dust[dust].noGravity = true;
-					Main.dust[dust].velocity *= 1.8f;
-					Main.dust[dust].velocity.Y -= 0.5f;
-					
-				}
-				if (Main.rand.Next(12) < 5)
-				{
-					int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 91, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 20, default(Color), 0.2f);
-					Main.dust[dust].noGravity = true;
-					Main.dust[dust].velocity *= 1.8f;
-					Main.dust[dust].velocity.Y -= 0.5f;
-					Main.dust[dust].scale = 0.32f;
-					
-
-
-				}
-				
-				Lighting.AddLight(npc.position, 0.1f, 0.1f, 0.1f);
-				drawColor = drawColor.MultiplyRGB(Color.Yellow);
 			}
+			
 			if (NanitePlague)
 			{
 				if (Main.rand.Next(4) < 3)
