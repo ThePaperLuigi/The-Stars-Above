@@ -33,7 +33,7 @@ Mods: {
 					Description: It is unknown what sapped this planet of life, but it exists now as a shell of its former self: a chalky white lonely world.
 					Threat: "Threat Level: C"
 					Requirement: Tier II Stellaglyph required for transit.
-					Loot: "Resources: Prismatic Cores"
+					Loot: "Resources: Rare Accessory Components"
 				}
 				CrimsonPlanet: {
 					Name: Scorpius
@@ -51,7 +51,7 @@ Mods: {
 				}
 				CorruptedPlanet: {
 					Name: Serpens
-					Description: A huge asteroid covered in what seems to be strangely evil soil. It is unknown if its orbiting satellites are also demonic in nature, but they are far too volatile to explore.
+					Description: A strange, foreign mass drifting in space. While it appears stable, evidence suggests the entire celestial body is one giant Corrupted organism, perhaps once a part of a Leviathan.
 					Threat: "Threat Level: C+"
 					Requirement: Tier II Stellaglyph required for transit.
 					Loot: "Resources: Corruption enemy drops"
@@ -59,7 +59,7 @@ Mods: {
 				GasGiant: {
 					Name: Antlia
 					Description: A colossal gas giant with no surface. Even close proximity would mean instant death due to the overwhelming force of its gravity.
-					Threat: "Threat Level: A"
+					Threat: "Threat Level: A-"
 					Requirement: Transit impossible at this time.
 					Loot: "Resources: ???"
 				}
@@ -5559,7 +5559,7 @@ Mods: {
             ImmemorialSupernova: ""
             MalachiteBuff: Gain 10% increased critical strike chance and 5% increased damage
             VermillionBuff: Gain 50 armor penetration and 5% increased damage
-            EverlastingLight: Endless light blankets the sky... Foes are empowered and will periodically overflow with Light
+            EverlastingLight: Endless light blankets the sky... Foes are empowered and will periodically overflow with Light. Ask your Starfarer for a means to combat this threat.
             EyeOfEuthymiaBuff: The vision of lightning is with you
             FerryPetBuff: A myserious boat is following you
             FlashOfEternity: The next instance of damage is negated

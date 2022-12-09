@@ -47,7 +47,10 @@ namespace StarsAbove.NPCs
 			{
 				pool.Clear();
 				pool.Add(ModContent.NPCType<NPCs.PrismLoot>(), 0.01f);
-				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.AsteroidWormHead>(), 1f);/*
+				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.AsteroidWormHead>(), 1f);
+				pool.Add(NPCID.BlackSlime, 1f);
+				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.AstralCell>(), 1f);
+				/*
 				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.WaywardSelenian>(), 0.1f);
 				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.WaywardPredictor>(), 0.1f);
 				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.WaywardVortexian>(), 0.1f);*/

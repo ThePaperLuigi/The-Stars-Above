@@ -131,7 +131,7 @@ namespace StarsAbove.UI.CelestialCartography
 			Aquarius.Top.Set(0, 0f);
 
 			Caelum = new UIImageButton(Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Caelum"));
-			//Caelum.OnClick += TeleportCaelum;
+			Caelum.OnClick += TeleportCaelum;
 			Caelum.Width.Set(80, 0f);
 			Caelum.Height.Set(80, 0f);
 			Caelum.Left.Set(0, 0f);
@@ -145,7 +145,7 @@ namespace StarsAbove.UI.CelestialCartography
 			Lyra.Top.Set(0, 0f);
 
 			MiningStationAries = new UIImageButton(Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/MiningStationAries"));
-			//MiningStationAries.OnClick += TeleportMiningStationAries;
+			MiningStationAries.OnClick += TeleportAries;
 			MiningStationAries.Width.Set(80, 0f);
 			MiningStationAries.Height.Set(80, 0f);
 			MiningStationAries.Left.Set(0, 0f);
@@ -317,6 +317,72 @@ namespace StarsAbove.UI.CelestialCartography
 				}
 			}
 			
+
+		}
+		private void TeleportAries(UIMouseEvent evt, UIElement listeningElement)
+		{
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive)
+				return;
+
+
+			if (Main.LocalPlayer.HasBuff(BuffType<PortalReady>()) || Main.LocalPlayer.HasBuff(BuffType<StellaglyphReady>()))
+			{
+				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 1)
+				{
+					SubworldSystem.Enter<MiningStationAries>();
+					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
+
+				}
+				else
+				{
+					if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI)
+					{
+						Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.WeakStellaglyph"), 255, 126, 114);
+					}
+				}
+
+			}
+			else
+			{
+				if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI)
+				{
+					Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.NoPortal"), 255, 126, 114);
+				}
+			}
+
+
+		}
+		private void TeleportCaelum(UIMouseEvent evt, UIElement listeningElement)
+		{
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive)
+				return;
+
+
+			if (Main.LocalPlayer.HasBuff(BuffType<PortalReady>()) || Main.LocalPlayer.HasBuff(BuffType<StellaglyphReady>()))
+			{
+				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2)//Tier 2
+				{
+					SubworldSystem.Enter<BleachedPlanet>();
+					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
+
+				}
+				else
+				{
+					if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI)
+					{
+						Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.WeakStellaglyph"), 255, 126, 114);
+					}
+				}
+
+			}
+			else
+			{
+				if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI)
+				{
+					Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.NoPortal"), 255, 126, 114);
+				}
+			}
+
 
 		}
 		protected override void DrawSelf(SpriteBatch spriteBatch) {

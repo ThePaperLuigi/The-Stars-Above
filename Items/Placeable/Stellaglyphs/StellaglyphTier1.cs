@@ -37,7 +37,7 @@ namespace StarsAbove.Items.Placeable.Stellaglyphs
 
 		public override void SetDefaults()
 		{
-			Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.Stellaglyph.StellaglyphTier1>(), 0);
+			//Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.Stellaglyph.StellaglyphTier1>(), 0);
 			Item.createTile = ModContent.TileType<Tiles.Stellaglyph.StellaglyphTier1>();
 			Item.width = 20;
 			Item.height = 20;
@@ -45,7 +45,7 @@ namespace StarsAbove.Items.Placeable.Stellaglyphs
 			Item.rare = ItemRarityID.Blue;
 			Item.useAnimation = 20;
 			Item.useTime = 20;
-			Item.useStyle = ItemUseStyleID.HoldUp;
+			Item.useStyle = 1;
 			Item.UseSound = SoundID.Item44;
 			Item.consumable = true;
 			Item.noUseGraphic = false;

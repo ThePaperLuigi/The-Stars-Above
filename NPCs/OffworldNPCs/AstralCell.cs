@@ -3,7 +3,7 @@ using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace StarsAbove.NPCs
+namespace StarsAbove.NPCs.OffworldNPCs
 {
     // Party Zombie is a pretty basic clone of a vanilla NPC. To learn how to further adapt vanilla NPC behaviors, see https://github.com/tModLoader/tModLoader/wiki/Advanced-Vanilla-Code-Adaption#example-npc-npc-clone-with-modified-projectile-hoplite
     public class AstralCell : ModNPC
@@ -13,7 +13,7 @@ namespace StarsAbove.NPCs
 			Main.npcFrameCount[NPC.type] = 4;
 			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
-				Hide = false // Hides this NPC from the bestiary
+				Hide = true // Hides this NPC from the bestiary
 			};
 		}
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -38,6 +38,7 @@ namespace StarsAbove.NPCs
 			NPC.value = 0f;
 			NPC.knockBackResist = 0.5f;
 			NPC.aiStyle = 14;
+			NPC.noTileCollide = true;
 			
 		}
 		int nframe;
@@ -66,13 +67,8 @@ namespace StarsAbove.NPCs
 		}
 		public override void AI()
 		{
-			if (!NPC.AnyNPCs(ModContent.NPCType<NPCs.VagrantOfSpaceAndTime>()))
-			{
-				NPC.HitEffect();
-				NPC.life = 0;
-				NPC.active = false;
-				NPC.netUpdate = true;
-			}
+			Lighting.AddLight(NPC.Center, TorchID.Ice);
+
 			base.AI();
 		}
 		public override void HitEffect(int hitDirection, double damage) {

@@ -11,25 +11,25 @@ namespace StarsAbove.Biomes
 	{
 		// Select all the scenery
 		//public override ModWaterStyle WaterStyle => ModContent.Find<ModWaterStyle>("StarsAbove/ExampleWaterStyle"); // Sets a water style for when inside this biome
-		public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle => ModContent.Find<ModSurfaceBackgroundStyle>("StarsAbove/SeaOfStarsBG");
-		public override CaptureBiome.TileColorStyle TileColorStyle => CaptureBiome.TileColorStyle.Crimson;
+		public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle => ModContent.Find<ModSurfaceBackgroundStyle>("StarsAbove/BleachedWorldBackgroundStyle");
+		public override CaptureBiome.TileColorStyle TileColorStyle => CaptureBiome.TileColorStyle.Normal;
 
 		// Select Music
 		public override int Music => MusicLoader.GetMusicSlot(Mod, "Assets/Music/MareLamentorum");
 
 		// Populate the Bestiary Filter
 		public override string BestiaryIcon => base.BestiaryIcon;
-		public override string BackgroundPath => base.BackgroundPath;
+		public override string BackgroundPath => "StarsAbove/Biomes/SeaOfStarsBiomeMapBackground";
 		public override Color? BackgroundColor => base.BackgroundColor;
 
 		// Use SetStaticDefaults to assign the display name
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("The Sea of Stars");
+			DisplayName.SetDefault("The Bleached World");
 		}
 
 		// Calculate when the biome is active.
 		public override bool IsBiomeActive(Player player) {
-			if (SubworldSystem.IsActive <BleachedPlanet>())
+			if (SubworldSystem.IsActive<BleachedPlanet>())
             {
 				return true;
             }

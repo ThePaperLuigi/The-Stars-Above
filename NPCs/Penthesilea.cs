@@ -1658,10 +1658,10 @@ namespace StarsAbove.NPCs
                         nframe = 0;
                         NPC.frameCounter = 0;
                         NPC.frame.Y = 0;
-                        for (int d = 0; d < 12; d++)
-                        {
-                            NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X + Main.rand.Next(-365, 365), (int)NPC.Center.Y + Main.rand.Next(-365, 365), NPCType<NPCs.AstralCell>(), NPC.whoAmI);
-                        }
+                        //for (int d = 0; d < 12; d++)
+                        //{
+                        //    NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X + Main.rand.Next(-365, 365), (int)NPC.Center.Y + Main.rand.Next(-365, 365), NPCType<NPCs.AstralCell>(), NPC.whoAmI);
+                        //}
 
 
 

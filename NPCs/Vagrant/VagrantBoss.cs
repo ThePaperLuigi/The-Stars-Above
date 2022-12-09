@@ -1,5 +1,6 @@
 
 using Microsoft.Xna.Framework;
+using StarsAbove.NPCs.OffworldNPCs;
 using StarsAbove.Projectiles.Bosses.Vagrant;
 using System;
 using Terraria;

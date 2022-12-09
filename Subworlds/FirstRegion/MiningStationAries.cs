@@ -13,9 +13,9 @@ using Terraria.Utilities;
 
 namespace StarsAbove
 {
-	public class BleachedPlanet : Subworld
+	public class MiningStationAries : Subworld
 	{
-		public override int Width => 2200;
+		public override int Width => 1600;
 		public override int Height => 800;
 
 		//public override ModWorld modWorld => ModContent.GetInstance < your modworld here>();
@@ -24,9 +24,11 @@ namespace StarsAbove
 		public override bool NoPlayerSaving => false;
 		public override bool NormalUpdates => false;
 
+		public int variantWorld;
+
 		public override List<GenPass> Tasks => new List<GenPass>()
 		{
-			new PassLegacy("Bleached Planet Caelum", (progress, _) =>
+			new PassLegacy("Mining Station Aries", (progress, _) =>
 			{
 					progress.Message = "Loading"; //Sets the text above the worldgen progress bar
 
@@ -36,13 +38,11 @@ namespace StarsAbove
 					Main.rockLayer = Main.maxTilesY + 200; //Hides the cavern layer way out of bounds
 
 					//variantWorld = Main.rand.Next(3);
-					StructureHelper.Generator.GenerateStructure("Structures/BleachedWorld/BleachedWorld1", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 400, Main.maxTilesY/2 - 80), StarsAbove.Instance);
-					StructureHelper.Generator.GenerateStructure("Structures/BleachedWorld/BleachedWorld2", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 200, Main.maxTilesY/2 - 80), StarsAbove.Instance);
+					StructureHelper.Generator.GenerateStructure("Structures/MiningStationAries/MiningStation1", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 400, Main.maxTilesY/2 - 80), StarsAbove.Instance);
+					StructureHelper.Generator.GenerateStructure("Structures/MiningStationAries/MiningStation2", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 200, Main.maxTilesY/2 - 80), StarsAbove.Instance);
 				//The player will spawn on the leftmost side of this structure below
-					StructureHelper.Generator.GenerateStructure("Structures/BleachedWorld/BleachedWorld3", new Terraria.DataStructures.Point16(Main.maxTilesX/2, Main.maxTilesY/2 - 80), StarsAbove.Instance);
-					StructureHelper.Generator.GenerateStructure("Structures/BleachedWorld/BleachedWorld4", new Terraria.DataStructures.Point16(Main.maxTilesX/2 + 200, Main.maxTilesY/2 - 80), StarsAbove.Instance);
-					StructureHelper.Generator.GenerateStructure("Structures/BleachedWorld/BleachedWorld5", new Terraria.DataStructures.Point16(Main.maxTilesX/2 + 400, Main.maxTilesY/2 - 80), StarsAbove.Instance);
-					StructureHelper.Generator.GenerateStructure("Structures/BleachedWorld/BleachedWorld6", new Terraria.DataStructures.Point16(Main.maxTilesX/2 + 600, Main.maxTilesY/2 - 80), StarsAbove.Instance);
+					StructureHelper.Generator.GenerateStructure("Structures/MiningStationAries/MiningStation3", new Terraria.DataStructures.Point16(Main.maxTilesX/2, Main.maxTilesY/2 - 80), StarsAbove.Instance);
+					StructureHelper.Generator.GenerateStructure("Structures/MiningStationAries/MiningStation4", new Terraria.DataStructures.Point16(Main.maxTilesX/2 + 200, Main.maxTilesY/2 - 80), StarsAbove.Instance);
 
 
 					for (int i = 0; i < Main.maxTilesX; i++)
@@ -183,7 +183,7 @@ namespace StarsAbove
         public override void OnEnter()
 		{
 
-			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "Caelum";
+			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "MiningStationAries";
 			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().loadingScreenOpacity = 1f;
 
 		}

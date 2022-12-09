@@ -22,7 +22,7 @@ namespace StarsAbove.NPCs.OffworldNPCs
 
 			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{ // Influences how the NPC looks in the Bestiary
-				CustomTexturePath = "StarsAbove/NPCs/AsteroidWorm_Bestiary", // If the NPC is multiple parts like a worm, a custom texture for the Bestiary is encouraged.
+				CustomTexturePath = "StarsAbove/Bestiary/AsteroidWorm_Bestiary", // If the NPC is multiple parts like a worm, a custom texture for the Bestiary is encouraged.
 				Position = new Vector2(40f, 24f),
 				PortraitPositionXOverride = 0f,
 				PortraitPositionYOverride = 12f
@@ -48,7 +48,7 @@ namespace StarsAbove.NPCs.OffworldNPCs
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Caverns,
 
 				// Sets the description of this NPC that is listed in the bestiary.
-				new FlavorTextBestiaryInfoElement("")
+				new FlavorTextBestiaryInfoElement($"Mods.StarsAbove.Bestiary.{Name}")
 			});
 		}
 
@@ -130,7 +130,13 @@ namespace StarsAbove.NPCs.OffworldNPCs
 			NPC.aiStyle = -1;
 		}
 
-		public override void Init()
+        public override void AI()
+        {
+			Lighting.AddLight(NPC.Center, TorchID.Purple);
+
+			base.AI();
+        }
+        public override void Init()
 		{
 			AsteroidWormHead.CommonWormInit(this);
 		}
@@ -154,8 +160,14 @@ namespace StarsAbove.NPCs.OffworldNPCs
 			NPC.CloneDefaults(NPCID.DiggerTail);
 			NPC.aiStyle = -1;
 		}
+        public override void AI()
+        {
+			Lighting.AddLight(NPC.Center, TorchID.Purple);
 
-		public override void Init()
+			base.AI();
+
+        }
+        public override void Init()
 		{
 			AsteroidWormHead.CommonWormInit(this);
 		}

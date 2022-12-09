@@ -35,7 +35,7 @@ namespace StarsAbove
         {
             if (Player.dead && !Player.active && SubworldSystem.Current != null) //Dying in a subworld kicks you out.
             {
-                SubworldSystem.Exit();
+                //SubworldSystem.Exit();
             }
         }
         public override void PostUpdate()
@@ -72,7 +72,23 @@ namespace StarsAbove
                     Player.velocity = new Vector2(Player.velocity.X, -17);
                 }
             }
+            if (Player.InModBiome(ModContent.GetInstance<BleachedWorldBiome>()))
+            {
+                //Make sure the player can't do what's not allowed:
+                Player.AddBuff(BuffType<Superimposed>(), 2);
+                Player.noBuilding = true;
 
+                //Space gravity!
+                //Player.gravity -= 0.3f;
+
+                if ((int)(Player.Center.Y / 16) < 100)
+                {
+                    //Player.AddBuff(BuffType<SpatialBurn>(), 120);
+
+                    Player.velocity = new Vector2(Player.velocity.X, +17);
+                }
+
+            }
             //Observatory.
             if (SubworldSystem.IsActive<Observatory>())
             {

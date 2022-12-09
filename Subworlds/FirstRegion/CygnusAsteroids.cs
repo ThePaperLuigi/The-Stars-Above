@@ -38,8 +38,9 @@ namespace StarsAbove
 					Main.rockLayer = Main.maxTilesY + 200; //Hides the cavern layer way out of bounds
 
 					//variantWorld = Main.rand.Next(3);
-
+					StructureHelper.Generator.GenerateStructure("Structures/CygnusAsteroidField/CygnusPart0", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 400, Main.maxTilesY/2 - 80), StarsAbove.Instance);
 					StructureHelper.Generator.GenerateStructure("Structures/CygnusAsteroidField/CygnusPart1a", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 200, Main.maxTilesY/2 - 80), StarsAbove.Instance);
+				//The player will spawn on the leftmost side of this structure below
 					StructureHelper.Generator.GenerateStructure("Structures/CygnusAsteroidField/CygnusPart2", new Terraria.DataStructures.Point16(Main.maxTilesX/2, Main.maxTilesY/2 - 80), StarsAbove.Instance);
 					StructureHelper.Generator.GenerateStructure("Structures/CygnusAsteroidField/CygnusPart3", new Terraria.DataStructures.Point16(Main.maxTilesX/2 + 200, Main.maxTilesY/2 - 80), StarsAbove.Instance);
 

@@ -174,7 +174,7 @@ namespace StarsAbove.Tiles.Stellaglyph
 			Vector2 origin = frame.Size() / 2f;
 			Vector2 worldPos = p.ToWorldCoordinates(24f, 64f);
 
-			Color color = Lighting.GetColor(p.X, p.Y);
+			Color color = Color.White;
 
 			bool direction = tile.TileFrameY / FrameHeight != 0; // This is related to the alternate tile data we registered before
 			SpriteEffects effects = direction ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
