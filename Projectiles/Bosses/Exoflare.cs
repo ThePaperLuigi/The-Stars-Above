@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles.Bosses
 {
-    public class CircleAoE : ModProjectile
+    public class Exoflare : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Adjustable Circle AoE");

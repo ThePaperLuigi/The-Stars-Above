@@ -191,7 +191,10 @@ namespace StarsAbove.NPCs.AttackLibrary
 				Vector2 velocity = new Vector2((float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1));
 				
 				SoundEngine.PlaySound(SoundID.Item124, npc.Center);
-
+				for (int d = 0; d < 30; d++)
+				{
+					Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Green, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
+				}
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					float numberProjectiles = 3;
@@ -301,7 +304,10 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				float rotation = (float)Math.Atan2(StartPosition.Y - (target.position.Y + (target.height * 0.5f)), StartPosition.X - (target.position.X + (target.width * 0.5f)));
 				Vector2 velocity = new Vector2((float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1));
-
+				for (int d = 0; d < 30; d++)
+				{
+					Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Green, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
+				}
 				SoundEngine.PlaySound(SoundID.Item124, npc.Center);
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -416,7 +422,10 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				float rotation = (float)Math.Atan2(StartPosition.Y - (target.position.Y + (target.height * 0.5f)), StartPosition.X - (target.position.X + (target.width * 0.5f)));
 				Vector2 velocity = new Vector2((float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1));
-
+				for (int d = 0; d < 30; d++)
+				{
+					Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Green, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
+				}
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					float numberProjectiles = 5;
@@ -509,7 +518,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					for (int d = 0; d < 5; d += 1)
 					{
 						SoundEngine.PlaySound(SoundID.Item29, new Vector2(position.X - 200 + (d * 100), position.Y));
-						Projectile.NewProjectile(entitySource, new Vector2(position.X - 200 + (d * 100), position.Y), -Vector2.UnitY*2, type, damage, 0f, Main.myPlayer);
+						Projectile.NewProjectile(entitySource, new Vector2(position.X - 200 + (d * 100), position.Y), -Vector2.UnitY*3, type, damage, 0f, Main.myPlayer);
 						for (int ir = 0; ir < 30; ir++)
 						{
 							Vector2 positionNew = Vector2.Lerp(npc.Center, new Vector2(position.X - 200 + (d * 100), position.Y), (float)ir / 30);
@@ -595,7 +604,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					{
 						SoundEngine.PlaySound(SoundID.Item29, new Vector2(position.X - 200 + (d * 100), position.Y));
 
-						Projectile.NewProjectile(entitySource, new Vector2(position.X - 200 + (d * 100), position.Y), Vector2.UnitY*2, type, damage, 0f, Main.myPlayer);
+						Projectile.NewProjectile(entitySource, new Vector2(position.X - 200 + (d * 100), position.Y), Vector2.UnitY*3, type, damage, 0f, Main.myPlayer);
 						for (int ir = 0; ir < 30; ir++)
 						{
 							Vector2 positionNew = Vector2.Lerp(npc.Center, new Vector2(position.X - 200 + (d * 100), position.Y), (float)ir / 30);
@@ -749,7 +758,10 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 					float kitingOffsetX = Utils.Clamp(target.velocity.X * 16, -100, 100);
 					Vector2 position = target.Bottom + new Vector2(kitingOffsetX, -500);
-
+					for (int d = 0; d < 30; d++)
+					{
+						Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Green, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
+					}
 					//Play a sound effect.
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, npc.Center);
 
@@ -788,7 +800,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			}
 		}
 		//Keep your wits about you.
-		public static void UmbralUpsurge(Player target, NPC npc)//
+		public static void UltimaUpsurge(Player target, NPC npc)//
 		{
 			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
@@ -802,13 +814,11 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
-				//Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
+				
 
-				 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.UmbralUpsurge")}", false, false);
 
-				modPlayer.NextAttack = "Umbral Upsurge";//The name of the attack.
+				modPlayer.NextAttack = "Ultima Upsurge";//The name of the attack.
 				npc.ai[3] = 100;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -828,11 +838,14 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
 			{
 				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
-				Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantSlamSprite>(), 0, 0, Main.myPlayer);
+				Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantSwordSprite>(), 0, 0, Main.myPlayer);
 
 
 				#region attack
-
+				for (int d = 0; d < 30; d++)
+				{
+					Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Green, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
+				}
 				if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					// Spawn projectile randomly below target, based on horizontal velocity to make kiting harder, starting velocity 1f upwards

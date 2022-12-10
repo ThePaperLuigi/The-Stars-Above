@@ -166,7 +166,7 @@ namespace StarsAbove.UI.CelestialCartography
 			Serpens.Top.Set(0, 0f);
 
 			Tucana = new UIImageButton(Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Tucana"));
-			//Tucana.OnClick += TeleportTucana;
+			Tucana.OnClick += TeleportTucana;
 			Tucana.Width.Set(80, 0f);
 			Tucana.Height.Set(80, 0f);
 			Tucana.Left.Set(0, 0f);
@@ -363,6 +363,39 @@ namespace StarsAbove.UI.CelestialCartography
 				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2)//Tier 2
 				{
 					SubworldSystem.Enter<BleachedPlanet>();
+					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
+
+				}
+				else
+				{
+					if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI)
+					{
+						Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.WeakStellaglyph"), 255, 126, 114);
+					}
+				}
+
+			}
+			else
+			{
+				if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI)
+				{
+					Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.NoPortal"), 255, 126, 114);
+				}
+			}
+
+
+		}
+		private void TeleportTucana(UIMouseEvent evt, UIElement listeningElement)
+		{
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive)
+				return;
+
+
+			if (Main.LocalPlayer.HasBuff(BuffType<PortalReady>()) || Main.LocalPlayer.HasBuff(BuffType<StellaglyphReady>()))
+			{
+				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2)//Tier 2
+				{
+					SubworldSystem.Enter<Tucana>();
 					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 
 				}

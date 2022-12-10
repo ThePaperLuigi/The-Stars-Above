@@ -230,7 +230,7 @@ namespace StarsAbove.NPCs.Vagrant
 				}
 				if (AI_RotationNumber == 8)
 				{
-					UmbralUpsurge(P, NPC);
+					UltimaUpsurge(P, NPC);
 					return;
 				}
 				if (AI_RotationNumber == 9)
@@ -270,7 +270,7 @@ namespace StarsAbove.NPCs.Vagrant
 				}
 				if (AI_RotationNumber == 16)
 				{
-					UmbralUpsurge(P, NPC);
+					UltimaUpsurge(P, NPC);
 					return;
 				}
 				if (AI_RotationNumber == 17)
@@ -373,6 +373,7 @@ namespace StarsAbove.NPCs.Vagrant
 					|| other.type == ModContent.ProjectileType<VagrantBowSprite>()
 					|| other.type == ModContent.ProjectileType<VagrantSpearSprite>()
 					|| other.type == ModContent.ProjectileType<VagrantSlamSprite>()
+					|| other.type == ModContent.ProjectileType<VagrantSwordSprite>()
 					))
 					
 				{

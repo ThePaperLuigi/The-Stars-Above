@@ -27,7 +27,7 @@ namespace StarsAbove
 {
     public class SubworldPlayer : ModPlayer
     {
-
+        //This is for specific effects WITHIN subworlds, not OUTSIDE of them (entry buffs, etc.)
         public float gravityMod;
 
         
@@ -87,6 +87,17 @@ namespace StarsAbove
 
                     Player.velocity = new Vector2(Player.velocity.X, +17);
                 }
+
+            }
+            if (SubworldSystem.IsActive<Tucana>())
+            {
+                //Make sure the player can't do what's not allowed:
+                Player.AddBuff(BuffType<Superimposed>(), 2);
+                Player.noBuilding = true;
+
+                //Space gravity!
+                Player.gravity -= 0.1f;
+
 
             }
             //Observatory.

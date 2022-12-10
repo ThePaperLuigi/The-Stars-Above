@@ -73,7 +73,7 @@ namespace StarsAbove.Tiles.Stellaglyph
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x4); // Relics are 3x4
 			TileObjectData.newTile.LavaDeath = false; // Does not break when lava touches it
 			TileObjectData.newTile.DrawYOffset = 2; // So the tile sinks into the ground
-			TileObjectData.newTile.Direction = TileObjectDirection.PlaceLeft; // Player faces to the left
+			TileObjectData.newTile.Direction = TileObjectDirection.None;
 			TileObjectData.newTile.StyleHorizontal = false; // Based on how the alternate sprites are positioned on the sprite (by default, true)
 
 			// Optional: If you decide to make your tile utilize different styles through Item.placeStyle, you need these, aswell as the code in SetDrawPositions

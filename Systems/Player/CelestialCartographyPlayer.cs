@@ -18,6 +18,8 @@ using StarsAbove.Buffs;
 using StarsAbove.NPCs;
 using Microsoft.Xna.Framework.Audio;
 using StarsAbove.Buffs.Subworlds;
+using SubworldLibrary;
+using StarsAbove.Utilities;
 
 namespace StarsAbove
 {
@@ -112,13 +114,14 @@ namespace StarsAbove
             LocationPopUp();
             StarmapStarAnimation();
 
+
         }
 
         private bool CheckVoyageEligibility()
         {
             if (NPC.downedAncientCultist && !NPC.downedMoonlord)
             {
-                if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("Lunar energy prevents the activation of the Bifrost..."), 255, 255, 100); }
+                if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.LunarEvents"), 255, 255, 100); }
                 return false;
             }
             if (nearGateway)
@@ -324,6 +327,23 @@ namespace StarsAbove
         {
             nearGateway = false;
             nearStellaglyph = false;
+
+            if(SubworldSystem.Current == null)
+            {
+                attackFocus = 0f;
+                basicAttackFocusActive = false;
+
+                defenseFocus = 0f;
+                basicDefenseFocusActive = false;
+
+                luckFocus = 0f;
+                basicLuckFocusActive = false;
+
+                speedFocus = 0f;
+                basicSpeedFocusActive = false;
+
+                strengthEnhancerFocus = false;
+            }
         }
     }
 

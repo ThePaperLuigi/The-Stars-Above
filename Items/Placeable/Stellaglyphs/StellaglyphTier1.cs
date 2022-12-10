@@ -39,6 +39,7 @@ namespace StarsAbove.Items.Placeable.Stellaglyphs
 		{
 			//Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.Stellaglyph.StellaglyphTier1>(), 0);
 			Item.createTile = ModContent.TileType<Tiles.Stellaglyph.StellaglyphTier1>();
+			Item.useTurn = true;
 			Item.width = 20;
 			Item.height = 20;
 			Item.maxStack = 1;

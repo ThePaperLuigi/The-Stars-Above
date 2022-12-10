@@ -9,6 +9,7 @@ Mods: {
 			Warnings: {
 				NoPortal: No nearby portal detected!
 				WeakStellaglyph: Your Stellaglyph is not powerful enough to attempt transit!
+				LunarEvents: Celestial energy prevents the activation of the Bifrost- try defeating the invading creatures first!
 			}
 			MapText: {
 				Default: Select a location to visit.
@@ -51,7 +52,7 @@ Mods: {
 				}
 				CorruptedPlanet: {
 					Name: Serpens
-					Description: A strange, foreign mass drifting in space. While it appears stable, evidence suggests the entire celestial body is one giant Corrupted organism, perhaps once a part of a Leviathan.
+					Description: A strange, foreign mass drifting in space. While it appears stable, evidence suggests the entire celestial body is one giant Corrupted organism, perhaps once a part of a leviathan-class entity.
 					Threat: "Threat Level: C+"
 					Requirement: Tier II Stellaglyph required for transit.
 					Loot: "Resources: Corruption enemy drops"
@@ -65,7 +66,7 @@ Mods: {
 				}
 				JunglePlanet: {
 					Name: Tucana
-					Description: The selfsame supermassive star providing succor to your home planet has also graced this one- perhaps a bit too much. Lush overgrowth covers the entirety of this world.
+					Description: The selfsame supermassive star providing succor to your home planet has also graced this one- perhaps a bit too much. Below the lush overgrowth layer lies a blue-shaded subregion.
 					Threat: "Threat Level: C"
 					Requirement: Tier II Stellaglyph required for transit.
 					Loot: "Resources: Jungle enemy drops"
@@ -1374,6 +1375,20 @@ Mods: {
 					184: It's getting seriously cold around you. Heads up: this snowflake-shaped being is coming your way.
 					185: Don't make light of this foe- it's seriously dangerous. Hehe- but seriously, this thing's no joke. Take caution.
 					186: I love throwing explosives as much as the next guy, but it seems you've been punished for that. Prepare for a fight.
+					
+					# Cygnus Asteroid Field
+					187: There were definitely living beings here- maybe ten thousand or so years ago. Goes without saying anything they used to own is ours now once we find it!
+					# Mining Station Aries
+					188: While this IS an abandoned mining facility, I doubt they left without picking clean any ore nearby. We might find other useful things, however.
+					# Caelum
+					189: I can't find any trace of ambient mana- someone, or something, must have drained this entire world dry. Let's check out that structure in the distance.
+					# Tucana
+					190: This planet should look a lot like your own Jungle, but it seems you've ended up underground- which decidedly does not look familiar. The monsters here are, though- strange.
+					# Serpens (Corruption)
+					191: This is a pretty large patch of Corruption- but as long as it isn't moving anywhere, it shouldn't be a threat we need to stop. Still, it's a bit of a eyesore.
+					# Scorpius (Crimson)
+					192: An entire moon covered in Crimson- yuck. I wouldn't want to be stranded here, so mind where the Gateway is and you should be fine.
+					
 				}
 				Eridani: {
 					1: Uhh.. you're looking a little sick.
@@ -1565,6 +1580,18 @@ Mods: {
 					185: Whatever this thing is, it's hard to even look at. Be careful, it's powerful and lethal.
 					186: I think whatever you've done must have had some serious repercussions- a strange entity has emerged, and is heading your way.
 					
+					# Cygnus Asteroid Field
+					188: Hmm, it seems to be a cluster of uninhabited asteroids. There was definitely life here, but it must have been thousands of years ago.
+					# Mining Station Aries
+					189: Looks to be an old mining station. From the looks of it, it was abandoned before the Ardor took root. There won't be any ore left, sadly.
+					# Caelum
+					190: What a strange world- it seems its ambient mana has been entirely drained, leaving the place looking pale white- a unique phenomenon.
+					# Tucana
+					191: Looks like you arrived underground- if you can make it to the surface, it'll look more like home. The creatures here are familiar, which is pretty strange.
+					# Serpens (Corruption)
+					192: The Corruption is a known entity in the universe, but this place is different- it feels as if something larger was Corrupted into this object. Stay alert.
+					# Scorpius (Crimson)
+					193: A Crimson-infused moon... After you've gathered what you need, we should excuse ourselves quickly. Every second here... doesn't sit well with me.
 					
 				}
 			}
@@ -5862,15 +5889,15 @@ Mods: {
 		
 		Bestiary: {
 		    Arbitration: A mysterious figure, said to exhibit balance throughout the galaxy. Little is known about this enemy... Was rent asunder by the First Starbearer.
-			AstralCell: A strange blue object summoned by the Vagrant of Space and Time. It eats water vapor.
+			AstralCell: A strange blue object. It eats water vapor.
 			Nalhaun: A once mighty monarch, cursed to live eternally even as his kingdom crumbed around him. The ability to conjure forth powerful monsters was gifted to him by his final retainer ere she breathed her last. He persisted alone on an empty planet until the First Starbearer ended his long and tragic reign.
 			PaintedAttendantA: Utilized by Penthesilea to... smack you in the face. The best mages know when physical violence is the answer.
 			Penthesilea: An incredibly powerful mage, the Painted Witch once ruled a planet entirely 'drawn' by her. Ever the trickster, she mastered expert magecraft simply to play pranks upon the works of her colleagues, a testament to her ingenuity. She met her end at the hands of the First Starbearer after a long conflict.
 			PrismLoot: The latent magical energy of Prismatic Cores can sometimes influence them to drift around the galaxy. Catch one, and you'll be rewarded!
 			SpectreOfLight: An otherworldy hero, summoned forth by the First Starbearer to assail this land.
 			Tsukiyomi2: The First Starfarer, Tsukiyomi, who holds dominion over orbiting celestial bodies. The gravitational pull of a planet and its natural satellites gives her power. She led the Warrior of Light astray- using his strength and goodwill to conquer and destroy myriad stars... and yet...
-			VagrantOfSpaceAndTime: The enigmatic Starfarer Perseus. His outward appearance is that of utmost confidence... but he's just kind of a dork trying to look cool. His sisters agree on this.
-			WarriorOfLight: The Warrior of Light, or the First Starbearer, once championed justice in the galaxy through his actions, and the aid of his Starfarer. He once ruled a peaceful world, but was forced to watch helplessly as his people met their demise, vowing to never again let others share the same fate- no matter the cost.
+			VagrantOfSpaceAndTime: The enigmatic Starfarer Perseus. His outward appearance is that of utmost confidence... but he's just kind of a dork trying to look cool. His sisters agree on this. He continues to have power over spatial distances, but seems to have lost the power to control time (but not the moniker.)
+			WarriorOfLight: The Warrior of Light, or the First Starbearer, once championed justice in the galaxy through his actions and the aid of his Starfarer. He once ruled a peaceful world, but was forced to watch helplessly as his people met their demise, vowing to never again let others share the same fate- no matter the cost.
 			AsteroidWorm: These incredibly hardy creatures have evolved the capability to aimlessly drift through the vacuum of space- perhaps not the best depiction of evolution. While their meals are scarce, their need for food is nigh nonexistant. Gifted with a strong outer shell, but low overall attacking strength.
 		}
 		

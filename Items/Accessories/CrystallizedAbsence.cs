@@ -45,7 +45,7 @@ namespace StarsAbove.Items.Accessories
 
 		public override void AddRecipes() {
 			CreateRecipe(1)
-				.AddIngredient(ItemType<InertShard>(), 3)
+				.AddIngredient(ItemType<InertShard>(), 12)
 				.AddTile(TileID.Anvils)
 				.Register();
 		}
