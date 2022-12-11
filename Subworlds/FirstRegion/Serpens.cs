@@ -13,7 +13,7 @@ using Terraria.Utilities;
 
 namespace StarsAbove
 {
-	public class CygnusAsteroids : Subworld
+	public class Serpens : Subworld
 	{
 		public override int Width => 1600;
 		public override int Height => 800;
@@ -26,7 +26,7 @@ namespace StarsAbove
 
 		public override List<GenPass> Tasks => new List<GenPass>()
 		{
-			new PassLegacy("Cygnus Asteroid Field", (progress, _) =>
+			new PassLegacy("Serpens", (progress, _) =>
 			{
 					progress.Message = "Loading"; //Sets the text above the worldgen progress bar
 
@@ -36,12 +36,8 @@ namespace StarsAbove
 					Main.rockLayer = Main.maxTilesY + 200; //Hides the cavern layer way out of bounds
 
 					//variantWorld = Main.rand.Next(3);
-					StructureHelper.Generator.GenerateStructure("Structures/CygnusAsteroidField/CygnusPart0", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 400, Main.maxTilesY/2 - 80), StarsAbove.Instance);
-					StructureHelper.Generator.GenerateStructure("Structures/CygnusAsteroidField/CygnusPart1a", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 200, Main.maxTilesY/2 - 80), StarsAbove.Instance);
-				//The player will spawn on the leftmost side of this structure below
-					StructureHelper.Generator.GenerateStructure("Structures/CygnusAsteroidField/CygnusPart2", new Terraria.DataStructures.Point16(Main.maxTilesX/2, Main.maxTilesY/2 - 80), StarsAbove.Instance);
-					StructureHelper.Generator.GenerateStructure("Structures/CygnusAsteroidField/CygnusPart3", new Terraria.DataStructures.Point16(Main.maxTilesX/2 + 200, Main.maxTilesY/2 - 80), StarsAbove.Instance);
-
+					StructureHelper.Generator.GenerateStructure("Structures/Serpens/Serpens1", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 200, Main.maxTilesY/2 - 80), StarsAbove.Instance);
+					StructureHelper.Generator.GenerateStructure("Structures/Serpens/Serpens2", new Terraria.DataStructures.Point16(Main.maxTilesX/2, Main.maxTilesY/2 - 80), StarsAbove.Instance);
 
 					for (int i = 0; i < Main.maxTilesX; i++)
 					{
@@ -181,7 +177,7 @@ namespace StarsAbove
         public override void OnEnter()
 		{
 
-			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "CygnusAsteroidField";
+			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "Serpens";
 			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().loadingScreenOpacity = 1f;
 
 		}

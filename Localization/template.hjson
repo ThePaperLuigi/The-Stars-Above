@@ -34,7 +34,7 @@ Mods: {
 					Description: It is unknown what sapped this planet of life, but it exists now as a shell of its former self: a chalky white lonely world.
 					Threat: "Threat Level: C"
 					Requirement: Tier II Stellaglyph required for transit.
-					Loot: "Resources: Rare Accessory Components"
+					Loot: "Resources: Rare accessory components"
 				}
 				CrimsonPlanet: {
 					Name: Scorpius
@@ -92,6 +92,27 @@ Mods: {
 					Requirement: Tier III Stellaglyph required for transit.
 					Loot: "Resources: ???"
 				}
+				OutpostVolans: {
+					Name: Outpost Volans
+					Description: One of the rare outer-rim outposts, hosting a variety of goods. It houses a fusion reactor and several grow vaults to sustain life, but not enough to harbor refugees.
+					Threat: "Threat Level: N/A"
+					Requirement: Tier II Stellaglyph required for transit.
+					Loot: "Resources: Vendor"
+				}
+				FrigateLynx: {
+					Name: Frigate Lynx
+					Description: A long-forgotten frigate-class starship. While the endless march of time has ruined most value, there may still be valuables lying somewhere within.
+					Threat: "Threat Level: C"
+					Requirement: Transit impossible at this time.
+					Loot: "Resources: Vendor"
+				}
+				RefugeeVessel: {
+					Name: Refugee Vessel
+					Description: A substandard spaceship packed to the brim with desperate refugees hoping to escape the encroaching cold.
+					Threat: "Threat Level: N/A"
+					Requirement: Transit impossible at this time.
+					Loot: "Resources: None"
+				}
 				BlackHole: {
 					Name: Moirae's Heart
 					Description: The supermassive black hole that binds the galaxy together. The accretion disk surrounding the black hole is paradoxically the reason that civilization has flocked inwards: the desire for light's warmth.
@@ -101,7 +122,7 @@ Mods: {
 				}
 				QuestionMark: {
 					Name: " "
-					Description: Content not yet implemented!
+					Description: The Stellaglyph can't take you past this point without a relay; a starship will be required to travel to the next region... (Content will be added at a later date!)
 					Threat: "N/A"
 					Requirement: "N/A"
 					Loot: "N/A"

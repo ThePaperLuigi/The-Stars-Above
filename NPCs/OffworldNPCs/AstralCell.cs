@@ -9,7 +9,7 @@ namespace StarsAbove.NPCs.OffworldNPCs
     public class AstralCell : ModNPC
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Astral Cell");
+			DisplayName.SetDefault("Starcell");
 			Main.npcFrameCount[NPC.type] = 4;
 			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{

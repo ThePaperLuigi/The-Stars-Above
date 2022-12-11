@@ -18,6 +18,7 @@ using StarsAbove.Buffs.Farewells;
 using System;
 using StarsAbove.Buffs.IrminsulDream;
 using StarsAbove.Biomes;
+using StarsAbove.Items.Materials;
 
 namespace StarsAbove.NPCs
 {
@@ -55,9 +56,24 @@ namespace StarsAbove.NPCs
 				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.WaywardPredictor>(), 0.1f);
 				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.WaywardVortexian>(), 0.1f);*/
 			}
-			if (spawnInfo.Player.GetModPlayer<StarsAbovePlayer>().BleachedWorld)
+			if (SubworldSystem.IsActive<Serpens>())
 			{
 				pool.Clear();
+				pool.Add(NPCID.EaterofSouls, 1f);
+				pool.Add(NPCID.DevourerHead, 1f);
+				if(Main.hardMode)
+                {
+					pool.Add(NPCID.Corruptor, 0.3f);
+					pool.Add(NPCID.CorruptSlime, 0.3f);
+					pool.Add(NPCID.Slimer, 0.3f);
+					pool.Add(NPCID.DarkMummy, 0.1f);
+				}
+			}
+			if (spawnInfo.Player.InModBiome<BleachedWorldBiome>())
+			{
+				pool.Clear();
+				pool.Add(NPCID.SpikeBall, 0.4f);
+				pool.Add(NPCID.Ghost, 1f);
 				//pool.Add(ModContent.NPCType<NPCs.WaywardStarcell>(), 0.1f);
 				//pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.WaywardPaladin>(), 0.1f);
 
@@ -760,6 +776,12 @@ namespace StarsAbove.NPCs
 			{
 				
 				npcLoot.Add(ItemDropRule.Common(ItemType<PrismaticCore>(), 100));
+				//npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("PrismaticCore").Type, 10));
+			}
+			if (SubworldSystem.IsActive<BleachedPlanet>())
+			{
+
+				//npcLoot.Add(ItemDropRule.Common(ItemType<InertShard>(), 3));
 				//npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("PrismaticCore").Type, 10));
 			}
 			if (DownedBossSystem.downedVagrant)

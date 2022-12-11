@@ -39,9 +39,9 @@ namespace StarsAbove
 					StructureHelper.Generator.GenerateStructure("Structures/BleachedWorld/BleachedWorld1", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 400, Main.maxTilesY/2 - 80), StarsAbove.Instance);
 					StructureHelper.Generator.GenerateStructure("Structures/BleachedWorld/BleachedWorld2", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 200, Main.maxTilesY/2 - 80), StarsAbove.Instance);
 				//The player will spawn on the leftmost side of this structure below
-					StructureHelper.Generator.GenerateStructure("Structures/BleachedWorld/BleachedWorld3a", new Terraria.DataStructures.Point16(Main.maxTilesX/2, Main.maxTilesY/2 - 80), StarsAbove.Instance);
+					StructureHelper.Generator.GenerateStructure("Structures/BleachedWorld/BleachedWorld3", new Terraria.DataStructures.Point16(Main.maxTilesX/2, Main.maxTilesY/2 - 80), StarsAbove.Instance);
 					StructureHelper.Generator.GenerateStructure("Structures/BleachedWorld/BleachedWorld4a", new Terraria.DataStructures.Point16(Main.maxTilesX/2 + 200, Main.maxTilesY/2 - 80), StarsAbove.Instance);
-					StructureHelper.Generator.GenerateStructure("Structures/BleachedWorld/BleachedWorld5", new Terraria.DataStructures.Point16(Main.maxTilesX/2 + 400, Main.maxTilesY/2 - 80), StarsAbove.Instance);
+					StructureHelper.Generator.GenerateStructure("Structures/BleachedWorld/BleachedWorld5a", new Terraria.DataStructures.Point16(Main.maxTilesX/2 + 400, Main.maxTilesY/2 - 80), StarsAbove.Instance);
 					StructureHelper.Generator.GenerateStructure("Structures/BleachedWorld/BleachedWorld6", new Terraria.DataStructures.Point16(Main.maxTilesX/2 + 600, Main.maxTilesY/2 - 80), StarsAbove.Instance);
 
 
