@@ -19,8 +19,9 @@ using System;
 using StarsAbove.Buffs.IrminsulDream;
 using StarsAbove.Biomes;
 using StarsAbove.Items.Materials;
+using StarsAbove.NPCs;
 
-namespace StarsAbove.NPCs
+namespace StarsAbove
 {
     public class StarsAboveGlobalNPC : GlobalNPC
 	{
@@ -44,48 +45,7 @@ namespace StarsAbove.NPCs
 
         public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
         {
-			if (spawnInfo.Player.InModBiome<SeaOfStarsBiome>())
-			{
-				pool.Clear();
-				pool.Add(ModContent.NPCType<NPCs.PrismLoot>(), 0.01f);
-				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.AsteroidWormHead>(), 1f);
-				pool.Add(NPCID.BlackSlime, 1f);
-				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.AstralCell>(), 1f);
-				/*
-				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.WaywardSelenian>(), 0.1f);
-				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.WaywardPredictor>(), 0.1f);
-				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.WaywardVortexian>(), 0.1f);*/
-			}
-			if (SubworldSystem.IsActive<Serpens>())
-			{
-				pool.Clear();
-				pool.Add(NPCID.EaterofSouls, 1f);
-				pool.Add(NPCID.DevourerHead, 1f);
-				if(Main.hardMode)
-                {
-					pool.Add(NPCID.Corruptor, 0.3f);
-					pool.Add(NPCID.CorruptSlime, 0.3f);
-					pool.Add(NPCID.Slimer, 0.3f);
-					pool.Add(NPCID.DarkMummy, 0.1f);
-				}
-			}
-			if (spawnInfo.Player.InModBiome<BleachedWorldBiome>())
-			{
-				pool.Clear();
-				pool.Add(NPCID.SpikeBall, 0.4f);
-				pool.Add(NPCID.Ghost, 1f);
-				//pool.Add(ModContent.NPCType<NPCs.WaywardStarcell>(), 0.1f);
-				//pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.WaywardPaladin>(), 0.1f);
-
-			}
-			if (SubworldSystem.IsActive<Observatory>())
-			{
-				pool.Clear();
-				pool.Add(NPCID.Bird, 0.3f);
-				pool.Add(NPCID.BirdBlue, 0.3f);
-				pool.Add(NPCID.BirdRed, 0.3f);
-				pool.Add(NPCID.GoldBird, 0.01f);
-			}
+			
 
 			base.EditSpawnPool(pool, spawnInfo);
 			
@@ -750,32 +710,33 @@ namespace StarsAbove.NPCs
 
 
 			}
+			//Remove all of these
 			if (npc.type == NPCID.Demon)
 			{
-				npcLoot.Add(ItemDropRule.Common(ItemType<Luciferium>(), 1000));
+				//npcLoot.Add(ItemDropRule.Common(ItemType<Luciferium>(), 1000));
 
 
 			}
 			if (npc.type == NPCID.DemonTaxCollector)
 			{
 
-				npcLoot.Add(ItemDropRule.Common(ItemType<Luciferium>(), 1));
+				//npcLoot.Add(ItemDropRule.Common(ItemType<Luciferium>(), 1));
 
 			}
 			if (NPC.downedMoonlord)
 			{
-				npcLoot.Add(ItemDropRule.Common(ItemType<Glitterglue>(), 10000));
+				//npcLoot.Add(ItemDropRule.Common(ItemType<Glitterglue>(), 10000));
 				
 			}
 			if (npc.lifeMax <= 10 && npc.damage == 0)
 			{
-				npcLoot.Add(ItemDropRule.Common(ItemType<ToMurder>(), 10000));
+				//npcLoot.Add(ItemDropRule.Common(ItemType<ToMurder>(), 10000));
 				//npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("PrismaticCore").Type, 10));
 			}
 			if (!npc.SpawnedFromStatue)
 			{
 				
-				npcLoot.Add(ItemDropRule.Common(ItemType<PrismaticCore>(), 100));
+				//npcLoot.Add(ItemDropRule.Common(ItemType<PrismaticCore>(), 100));
 				//npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("PrismaticCore").Type, 10));
 			}
 			if (SubworldSystem.IsActive<BleachedPlanet>())
@@ -806,6 +767,7 @@ namespace StarsAbove.NPCs
 			}
 
 			
+			
 			VagrantDrops VagrantDropCondition = new VagrantDrops();
 			IItemDropRule conditionalRule = new LeadingConditionRule(VagrantDropCondition);
 			IItemDropRule rule = ItemDropRule.Common(ItemType<PrismaticCore>(), chanceDenominator: 100);
@@ -817,10 +779,10 @@ namespace StarsAbove.NPCs
 			conditionalRule.OnSuccess(rule1);
 			npcLoot.Add(conditionalRule1);
 
-			IItemDropRule conditionalRule2 = new LeadingConditionRule(VagrantDropCondition);
-			IItemDropRule rule2 = ItemDropRule.Common(ItemType<PerfectlyGenericAccessory>(), chanceDenominator: 10000);
-			conditionalRule.OnSuccess(rule2);
-			npcLoot.Add(conditionalRule2);
+			//IItemDropRule conditionalRule2 = new LeadingConditionRule(VagrantDropCondition);
+			//IItemDropRule rule2 = ItemDropRule.Common(ItemType<PerfectlyGenericAccessory>(), chanceDenominator: 10000);
+			//conditionalRule.OnSuccess(rule2);
+			//npcLoot.Add(conditionalRule2);
 			
 
 		}

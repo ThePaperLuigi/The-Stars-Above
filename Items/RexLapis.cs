@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using StarsAbove.Projectiles.RexLapis;
+using StarsAbove.Buffs.RexLapis;
 
 namespace StarsAbove.Items
 {
@@ -17,7 +18,8 @@ namespace StarsAbove.Items
 		{
 			Tooltip.SetDefault("Attacks with this weapon execute rapid stabs" +
 				"\nEach attack grants [c/F8D496:Bulwark of Jade] for 2 seconds on hit, increasing defenses by 30" +
-				"\nRight click to consume 150 mana, dropping a colossal earthen meteor from the heavens, dealing 2x base damage" +
+				"\nRight click to consume 150 mana, dropping a colossal earthen meteor from the heavens, dealing 2x base damage (20 second cooldown)" +
+                "\nAdditionally, this attack will deal bonus damage based on 50% of your Max HP" +
 				"\nThis meteor will apply [c/CB8952:Petrification] to foes struck on a critical strike, drastically crippling their movement speed for 3 seconds" +
 				"\nAttacking [c/CB8952:Petrified] foes with this weapon will deal extra damage" +
 				"\nCritical strikes will [c/F1D078:Shatter] foes that are [c/CB8952:Petrified]" +
@@ -63,7 +65,7 @@ namespace StarsAbove.Items
 			}
 			if(player.altFunctionUse == 2)
             {
-				if(player.statMana >= 150)
+				if(player.statMana >= 150 && !player.HasBuff(BuffType<RexLapisMeteorCooldown>()))
                 {
 					player.statMana -= 150;
 					player.manaRegenDelay = 240;
@@ -117,7 +119,7 @@ namespace StarsAbove.Items
 			{
 
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_spinConstant, player.Center);
-
+				player.AddBuff(BuffType<RexLapisMeteorCooldown>(), 60 * 20);
 				
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_swordStab, player.Center);//DROP
 					Vector2 target = Main.screenPosition + new Vector2((float)Main.mouseX, (float)Main.mouseY);
@@ -143,7 +145,7 @@ namespace StarsAbove.Items
 						heading *= new Vector2(velocity.X, velocity.Y).Length();
 						velocity.X = heading.X;
 						velocity.Y = heading.Y;
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, velocity.X, velocity.Y,ProjectileType<RexLapisMeteor2>(), damage*5, knockback, player.whoAmI, 0f, ceilingLimit);
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, velocity.X, velocity.Y,ProjectileType<RexLapisMeteor2>(), damage*2 + player.statLifeMax/2, knockback, player.whoAmI, 0f, ceilingLimit);
 					}
 				
 			}

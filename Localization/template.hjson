@@ -5,6 +5,18 @@ Mods: {
 			Gateway: Gateway
 		}
 		
+		NPCDialogue: {
+			Talk: Talk
+			Yojimbo: {
+				1: I don't see why you'd need something from ME, of all people, but...
+				2: I'm not a conversationalist, but I'll humor you, I guess.
+				3: I haven't the time for a chat. Yes, I can see that won't dissuade you.
+				4: Y'know, I'm a busy man, right? Fine, fine- but make it quick.
+				5: OK, we can chat for a few seconds. I'll add it to your tab.
+				Leaving: Yojimbo has left!
+			}
+		}
+		
 		CosmicVoyages: {
 			Warnings: {
 				NoPortal: No nearby portal detected!
@@ -15,9 +27,11 @@ Mods: {
 				Default: Select a location to visit.
 				NoStellaglyph: No Stellaglyph nearby; Travel to the Observatory Hyperborea by selecting it on the map.
 				
+				
+				
 				Home: {
 					Name: Homeworld
-					Description: While well outside the habitable region due to the Ardor, this lucky outer planet was saved by a nearby supermassive star heating the region enough to harbor life.
+					Description: While well outside the habitable region due to the Ardor, this lucky outer planet was salvaged by a nearby supermassive star heating the region enough to harbor life.
 					Threat: "Threat Level: N/A"
 					Requirement: Stellaglyph not required for transit.
 					Loot: "Resources: N/A"
@@ -31,7 +45,7 @@ Mods: {
 				}
 				BleachedPlanet: {
 					Name: Caelum
-					Description: It is unknown what sapped this planet of life, but it exists now as a shell of its former self: a chalky white lonely world.
+					Description: It is unknown what sapped this planet of life, but it exists now as a shell of its former self: a chalky white lonely world. Only a small portion of the surface is traversable: the rest crumbles at any touch.
 					Threat: "Threat Level: C"
 					Requirement: Tier II Stellaglyph required for transit.
 					Loot: "Resources: Rare accessory components"
@@ -45,7 +59,7 @@ Mods: {
 				}
 				CygnusAsteroids: {
 					Name: Cygnus Asteroid Field
-					Description: A collection of marble asteroids, notable for their strange foreign ruins. Possibly a clue to their original inhabitants, yet the passage has time has rendered archeology impossible.
+					Description: A collection of marble asteroids, notable for their strange foreign ruins- possibly a clue to their original inhabitants, yet the passage has time has rendered archeology impossible.
 					Threat: "Threat Level: D"
 					Requirement: Tier I Stellaglyph required for transit.
 					Loot: "Resources: Prismatic Cores"
@@ -82,8 +96,8 @@ Mods: {
 					Name: Aquarius
 					Description: An ocean planet convered entirely in water. While it does not sustain intelligent life, the geothermal conduction beneath the waves means life can still persist, even deep within the Ardor.
 					Threat: "Threat Level: C-"
-					Requirement: Tier II Stellaglyph required for transit.
-					Loot: "Resources: Prismatic Cores"
+					Requirement: Transit impossible at this time.
+					Loot: "Resources: ???"
 				}
 				AlienPlanet: {
 					Name: Lyra (Anomaly Iota)
@@ -99,12 +113,12 @@ Mods: {
 					Requirement: Tier II Stellaglyph required for transit.
 					Loot: "Resources: Vendor"
 				}
-				FrigateLynx: {
-					Name: Frigate Lynx
-					Description: A long-forgotten frigate-class starship. While the endless march of time has ruined most value, there may still be valuables lying somewhere within.
-					Threat: "Threat Level: C"
-					Requirement: Transit impossible at this time.
-					Loot: "Resources: Vendor"
+				Auriga: {
+					Name: Auriga
+					Description: The ruined, war-torn ashes of what was once a thriving planet. While this tragedy occured predating the Ardor, the sheer cold has snuffed out any remaining lives on the planet.
+					Threat: "Threat Level: B"
+					Requirement: Tier III Stellaglyph required for transit.
+					Loot: "Resources: Rare accessory components"
 				}
 				RefugeeVessel: {
 					Name: Refugee Vessel
@@ -5919,7 +5933,9 @@ Mods: {
 			Tsukiyomi2: The First Starfarer, Tsukiyomi, who holds dominion over orbiting celestial bodies. The gravitational pull of a planet and its natural satellites gives her power. She led the Warrior of Light astray- using his strength and goodwill to conquer and destroy myriad stars... and yet...
 			VagrantOfSpaceAndTime: The enigmatic Starfarer Perseus. His outward appearance is that of utmost confidence... but he's just kind of a dork trying to look cool. His sisters agree on this. He continues to have power over spatial distances, but seems to have lost the power to control time (but not the moniker.)
 			WarriorOfLight: The Warrior of Light, or the First Starbearer, once championed justice in the galaxy through his actions and the aid of his Starfarer. He once ruled a peaceful world, but was forced to watch helplessly as his people met their demise, vowing to never again let others share the same fate- no matter the cost.
-			AsteroidWorm: These incredibly hardy creatures have evolved the capability to aimlessly drift through the vacuum of space- perhaps not the best depiction of evolution. While their meals are scarce, their need for food is nigh nonexistant. Gifted with a strong outer shell, but low overall attacking strength.
+			AsteroidWorm: These incredibly hardy creatures have grown the capability to aimlessly drift through the vacuum of space- perhaps not the best depiction of evolution. While their meals are scarce, their need for food is nigh nonexistant. Gifted with a strong outer shell, but low overall attacking strength.
+			Soulless: An unfortunate victim of whatever apocalypse befell Caelum. While mana keeps their incarnation alive, whatever trace of thought they may have once had has long since departed.
+			Yojimbo: A mysterious lumenkin, his name seems to change depending on when and where you come across him. He's a bounty hunter, but is willing to part with some of his quarry's belongings for a price.
 		}
 		
 		Prefix: {

@@ -53,8 +53,8 @@ namespace StarsAbove.Items.Consumables
 				int type = ModContent.NPCType<VagrantBoss>();
 				int type2 = ModContent.NPCType<VagrantWalls>();
 
-				if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("Reality's fabric gives way to a mysterious being..."), 210, 100, 175); }
-				if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("The Vagrant of Space and Time descends!"), 200, 150, 125); }
+				//if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("Reality's fabric gives way to a mysterious being..."), 210, 100, 175); }
+				//if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("The Vagrant of Space and Time descends!"), 200, 150, 125); }
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					// If the player is not in multiplayer, spawn directly

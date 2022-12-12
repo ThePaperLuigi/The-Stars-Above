@@ -65,7 +65,7 @@ namespace StarsAbove.Items
 		{
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
 			{
-				Item.damage = 989;
+				Item.damage = 489;
 			}
 			else
 			{

@@ -230,7 +230,7 @@ namespace StarsAbove.NPCs.Vagrant
 				}
 				if (AI_RotationNumber == 8)
 				{
-					UltimaUpsurge(P, NPC);
+					StarSundering(P, NPC);
 					return;
 				}
 				if (AI_RotationNumber == 9)
@@ -260,7 +260,7 @@ namespace StarsAbove.NPCs.Vagrant
 				}
 				if (AI_RotationNumber == 14)
 				{
-					VorpalAssault(P, NPC);
+					VorpalBarrage(P, NPC);
 					return;
 				}
 				if (AI_RotationNumber == 15)
@@ -270,7 +270,7 @@ namespace StarsAbove.NPCs.Vagrant
 				}
 				if (AI_RotationNumber == 16)
 				{
-					UltimaUpsurge(P, NPC);
+					StarSundering(P, NPC);
 					return;
 				}
 				if (AI_RotationNumber == 17)
@@ -340,7 +340,7 @@ namespace StarsAbove.NPCs.Vagrant
 				}
 				if (AI_RotationNumber == 30)
 				{
-					Microcosmos(P, NPC);
+					StarSundering(P, NPC);
 					return;
 				}
 				else
@@ -591,11 +591,19 @@ namespace StarsAbove.NPCs.Vagrant
 
 			//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
 			Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, 0, 0, ModContent.ProjectileType<VagrantSlamSprite>(), 0, 0, Main.myPlayer);
-
 			
+			for (int i = 0; i < Main.maxPlayers; i++)
+			{
+				Player player = Main.player[i];
+				if (player.active && player.Distance(NPC.Center) < 300)
+				{
+					player.velocity = Vector2.Normalize(NPC.Center - player.Center) * -10f;
+				}
+			}
+
 
 			NPC.position.X = Main.player[NPC.target].position.X;
-			NPC.position.Y = Main.player[NPC.target].position.Y;
+			NPC.position.Y = Main.player[NPC.target].position.Y-160;
 			NPC.netUpdate = true;
 
 			AI_State = (float)ActionState.Idle;

@@ -154,7 +154,7 @@ namespace StarsAbove.UI.CelestialCartography
 			MiningStationAries.Top.Set(0, 0f);
 
 			Scorpius = new UIImageButton(Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Scorpius"));
-			//Scorpius.OnClick += TeleportScorpius;
+			Scorpius.OnClick += TeleportScorpius;
 			Scorpius.Width.Set(80, 0f);
 			Scorpius.Height.Set(80, 0f);
 			Scorpius.Left.Set(0, 0f);
@@ -407,6 +407,39 @@ namespace StarsAbove.UI.CelestialCartography
 				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2)//Tier 2
 				{
 					SubworldSystem.Enter<Serpens>();
+					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
+
+				}
+				else
+				{
+					if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI)
+					{
+						Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.WeakStellaglyph"), 255, 126, 114);
+					}
+				}
+
+			}
+			else
+			{
+				if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI)
+				{
+					Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.NoPortal"), 255, 126, 114);
+				}
+			}
+
+
+		}
+		private void TeleportScorpius(UIMouseEvent evt, UIElement listeningElement)
+		{
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive)
+				return;
+
+
+			if (Main.LocalPlayer.HasBuff(BuffType<PortalReady>()) || Main.LocalPlayer.HasBuff(BuffType<StellaglyphReady>()))
+			{
+				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2)//Tier 2
+				{
+					SubworldSystem.Enter<Scorpius>();
 					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 
 				}
@@ -758,7 +791,36 @@ namespace StarsAbove.UI.CelestialCartography
 				Main.spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Observatory"), Observatory.GetInnerDimensions().ToRectangle(), Color.White * modPlayer.CelestialCompassVisibility);
 
 			}
+			if (SubworldSystem.IsActive<CygnusAsteroids>())
+			{
+				Main.spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/CygnusAsteroids"), CygnusAsteroids.GetInnerDimensions().ToRectangle(), Color.White * modPlayer.CelestialCompassVisibility);
 
+			}
+			if (SubworldSystem.IsActive<MiningStationAries>())
+			{
+				Main.spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/MiningStationAries"), MiningStationAries.GetInnerDimensions().ToRectangle(), Color.White * modPlayer.CelestialCompassVisibility);
+
+			}
+			if (SubworldSystem.IsActive<Tucana>())
+			{
+				Main.spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Tucana"), Tucana.GetInnerDimensions().ToRectangle(), Color.White * modPlayer.CelestialCompassVisibility);
+
+			}
+			if (SubworldSystem.IsActive<Serpens>())
+			{
+				Main.spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Serpens"), Serpens.GetInnerDimensions().ToRectangle(), Color.White * modPlayer.CelestialCompassVisibility);
+
+			}
+			if (SubworldSystem.IsActive<BleachedPlanet>())
+			{
+				Main.spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Caelum"), Caelum.GetInnerDimensions().ToRectangle(), Color.White * modPlayer.CelestialCompassVisibility);
+
+			}
+			if (SubworldSystem.IsActive<Scorpius>())
+			{
+				Main.spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Scorpius"), Scorpius.GetInnerDimensions().ToRectangle(), Color.White * modPlayer.CelestialCompassVisibility);
+
+			}
 			Recalculate();
 		}
 		

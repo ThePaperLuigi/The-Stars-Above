@@ -518,7 +518,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					for (int d = 0; d < 5; d += 1)
 					{
 						SoundEngine.PlaySound(SoundID.Item29, new Vector2(position.X - 200 + (d * 100), position.Y));
-						Projectile.NewProjectile(entitySource, new Vector2(position.X - 200 + (d * 100), position.Y), -Vector2.UnitY*3, type, damage, 0f, Main.myPlayer);
+						Projectile.NewProjectile(entitySource, new Vector2(position.X - 200 + (d * 100), position.Y), -Vector2.UnitY*4, type, damage, 0f, Main.myPlayer);
 						for (int ir = 0; ir < 30; ir++)
 						{
 							Vector2 positionNew = Vector2.Lerp(npc.Center, new Vector2(position.X - 200 + (d * 100), position.Y), (float)ir / 30);
@@ -604,7 +604,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					{
 						SoundEngine.PlaySound(SoundID.Item29, new Vector2(position.X - 200 + (d * 100), position.Y));
 
-						Projectile.NewProjectile(entitySource, new Vector2(position.X - 200 + (d * 100), position.Y), Vector2.UnitY*3, type, damage, 0f, Main.myPlayer);
+						Projectile.NewProjectile(entitySource, new Vector2(position.X - 200 + (d * 100), position.Y), Vector2.UnitY*4, type, damage, 0f, Main.myPlayer);
 						for (int ir = 0; ir < 30; ir++)
 						{
 							Vector2 positionNew = Vector2.Lerp(npc.Center, new Vector2(position.X - 200 + (d * 100), position.Y), (float)ir / 30);
@@ -800,7 +800,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			}
 		}
 		//Keep your wits about you.
-		public static void UltimaUpsurge(Player target, NPC npc)//
+		public static void StarSundering(Player target, NPC npc)//
 		{
 			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
@@ -814,12 +814,27 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				
+
+				if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
+				{
+					// Spawn projectile randomly below target, based on horizontal velocity to make kiting harder, starting velocity 1f upwards
+					// (The projectiles accelerate from their initial velocity)
+
+
+					int type = ProjectileType<VagrantPlanetslash>();
+					int damage = 10;
+					var entitySource = npc.GetSource_FromAI();
+
+					Projectile.NewProjectile(entitySource, new Vector2(npc.Center.X, npc.Center.Y - 150), Vector2.Zero, ProjectileID.PrincessWeapon, 0, 0f, Main.myPlayer);
+					Projectile.NewProjectile(entitySource, new Vector2(npc.Center.X, npc.Center.Y - 150), Vector2.Zero, type, damage, 0f, Main.myPlayer);
+
+				}
+
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.UmbralUpsurge")}", false, false);
 
-				modPlayer.NextAttack = "Ultima Upsurge";//The name of the attack.
-				npc.ai[3] = 100;//This is the time it takes for the cast to finish.
+				modPlayer.NextAttack = "Star Sundering";//The name of the attack.
+				npc.ai[3] = 130;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
 				npc.netUpdate = true;//NetUpdate for good measure.
@@ -846,24 +861,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				{
 					Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Green, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
 				}
-				if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
-				{
-					// Spawn projectile randomly below target, based on horizontal velocity to make kiting harder, starting velocity 1f upwards
-					// (The projectiles accelerate from their initial velocity)
-
-					float kitingOffsetX = Utils.Clamp(target.velocity.X * 16, -100, 100);
-					Vector2 position = target.Bottom + new Vector2(kitingOffsetX, 400);
-
-					int type = ProjectileType<VagrantStar>();
-					int damage = 30;
-					var entitySource = npc.GetSource_FromAI();
-					for (int d = 0; d < 5; d += 1)
-					{
-						Projectile.NewProjectile(entitySource, new Vector2(position.X - 200 + (d * 100), position.Y), -Vector2.UnitY, type, damage, 0f, Main.myPlayer);
-
-					}
-					
-				}
+				
 
 
 				#endregion

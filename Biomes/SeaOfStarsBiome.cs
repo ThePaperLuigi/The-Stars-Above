@@ -34,7 +34,10 @@ namespace StarsAbove.Biomes
 		
 		// Calculate when the biome is active.
 		public override bool IsBiomeActive(Player player) {
-			if(SubworldSystem.IsActive<CygnusAsteroids>() || SubworldSystem.IsActive<MiningStationAries>() || SubworldSystem.IsActive<Serpens>())
+			if(SubworldSystem.IsActive<CygnusAsteroids>() 
+				|| SubworldSystem.IsActive<MiningStationAries>() 
+				|| SubworldSystem.IsActive<Serpens>() 
+				|| SubworldSystem.IsActive<Scorpius>())
             {
 				return true;
             }
