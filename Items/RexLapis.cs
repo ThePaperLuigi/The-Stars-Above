@@ -34,6 +34,7 @@ namespace StarsAbove.Items
 		{
 			Item.damage = 199;           //The damage of your weapon
 			Item.DamageType = DamageClass.Melee;          //Is your weapon a melee weapon?
+			Item.crit = 30;
 			Item.width = 80;            //Weapon's texture's width
 			Item.height = 80;           //Weapon's texture's height
 			Item.useTime = 14;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
@@ -48,6 +49,7 @@ namespace StarsAbove.Items
 			Item.noUseGraphic = true; // Important, it's kind of wired if people see two spears at one time. This prevents the melee animation of this item.
 			Item.autoReuse = true;
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
+			Item.UseSound = SoundID.Item1;
 		}
 		 
 		public override bool AltFunctionUse(Player player)

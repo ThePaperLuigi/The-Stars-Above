@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using StarsAbove.Biomes;
 using StarsAbove.Utilities;
 
-namespace ExampleMod.Content.NPCs
+namespace StarsAbove.NPCs.TownNPCs
 {
 	/// <summary>
 	/// The main focus of this NPC is to show how to make something similar to the vanilla bone merchant;

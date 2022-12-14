@@ -603,6 +603,7 @@ namespace StarsAbove
         public int sceneLength;
 
         public bool VNDialogueActive;
+        public bool VNDialogueThirdOption;
 
         public string VNCharacter1;
         public int VNCharacter1Pose;
@@ -621,6 +622,7 @@ namespace StarsAbove
 
         public string VNDialogueChoice1 = "";
         public string VNDialogueChoice2 = "";
+        public string VNDialogueChoice3 = "";
 
 
         //Shockwave
@@ -1158,7 +1160,7 @@ namespace StarsAbove
         //The dialogues start at 1, not 0.
         // Once a dialogue has been selected, the Starfarer Menu will close, and the dialogue will appear.
         //The Starfarer Menu will shift to the left to make room. Otherwise, it's centered.
-        public int archiveChosenList = 0; //0 = Idle | 1 = Boss | 2 = Weapon | 3 = Prompts
+        public int archiveChosenList = 0; //0 = Idle | 1 = Boss | 2 = Weapon | 3 = VN
 
         public int archiveListNumber = 1;//This is reset to 1 after you've chosen a different list.
         public int archiveListMax = 1;//This is the total amount of dialogues available.
@@ -1171,11 +1173,14 @@ namespace StarsAbove
         public List<BossArchiveListing> BossArchiveList = new List<BossArchiveListing>();
         public List<BossArchiveListingCalamity> BossArchiveListCalamity = new List<BossArchiveListingCalamity>();
         public List<WeaponArchiveListing> WeaponArchiveList = new List<WeaponArchiveListing>();
+        public List<VNArchiveListing> VNArchiveList = new List<VNArchiveListing>();
+
 
         public int IdleArchiveListMax = 2;
         public int BossArchiveListMax = 2;
         public int BossArchiveListMaxCalamity = 2;
         public int WeaponArchiveListMax = 2;
+        public int VNArchiveListMax = 2;
 
         //Lore list?
         //
@@ -4738,7 +4743,10 @@ namespace StarsAbove
                 }
             }
             
-            
+            if(VNDialogueActive || starfarerDialogue)
+            {
+                Player.AddBuff(BuffType<Conversationalist>(), 10);
+            }
            
 
             if (CatalystMemoryProgress < 0)
@@ -5118,7 +5126,8 @@ namespace StarsAbove
                 novaDialogueScrollTimer = 0;
             }
             dialogueScrollTimer++;
-            if (dialogueScrollTimer >= dialogueScrollTimerMax && dialogueLeft > 0)
+
+            if (dialogueScrollTimer >= dialogueScrollTimerMax)
             {
                 if (instantText)
                 {
@@ -5157,6 +5166,7 @@ namespace StarsAbove
                 }
                 dialogueScrollTimer = 0;
             }
+           
             promptDialogueScrollTimer++;
             if (promptDialogueScrollTimer >= dialogueScrollTimerMax && promptIsActive)
             {
@@ -5696,12 +5706,6 @@ namespace StarsAbove
                            warriorBossItemDialogue == 2, //Unlock requirements.
                            304,
                            "???")); //Corresponding dialogue ID.
-                    BossArchiveList.Add(new BossArchiveListing(
-                           "Vagrant of Space and Time Challenged", //Name of the archive listing.
-                           "Unlocked after 'defeating' the Vagrant of Space and Time.", //Description of the listing.
-                           vagrantDialogue == 2, //Unlock requirements.
-                           69,
-                           "Defeat the Vagrant of Space and Time.")); //Corresponding dialogue ID.
                     BossArchiveList.Add(new BossArchiveListing(
                            "Nalhaun Kneeled", //Name of the archive listing.
                            "Unlocked after defeating Nalhaun, the Burnished King. Grants a material needed for confronting the final boss.", //Description of the listing.
@@ -6268,11 +6272,41 @@ namespace StarsAbove
                         "Defeat Deerclops, then wait. ")); //Corresponding dialogue ID.
                                                            //Corresponding dialogue ID.
 
-
-
+                    //VN
+                    VNArchiveList.Add(new VNArchiveListing(
+                          "", //Name of the archive listing.
+                          $"", //Description of the listing.
+                          false, //Unlock requirements.
+                          0,
+                          "")); //Corresponding dialogue ID.
+                    VNArchiveList.Add(new VNArchiveListing(
+                           "Intro Dialogue", //Name of the archive listing.
+                           $"The Starfarer's introduction dialogue.", //Description of the listing.
+                           chosenStarfarer == 1, //Unlock requirements.
+                           3,
+                           "Asphodene's intro dialogue.")); //Corresponding dialogue ID.
+                    VNArchiveList.Add(new VNArchiveListing(
+                           "Eridani's Intro Dialogue", //Name of the archive listing.
+                           $"The Starfarer's introduction dialogue.", //Description of the listing.
+                           chosenStarfarer == 2, //Unlock requirements.
+                           6,
+                           "Eridani's intro dialogue.")); //Corresponding dialogue ID.
+                    VNArchiveList.Add(new VNArchiveListing(
+                           "Vagrant Post-Battle (Asphodene)", //Name of the archive listing.
+                           $"Perseus's introduction.", //Description of the listing.
+                           chosenStarfarer == 1 && DownedBossSystem.downedVagrant, //Unlock requirements.
+                           9,
+                           "Defeat the Vagrant of Space and Time. (Asphodene)")); //Corresponding dialogue ID.
+                    VNArchiveList.Add(new VNArchiveListing(
+                           "Vagrant Post-Battle (Eridani)", //Name of the archive listing.
+                           $"Perseus's introduction.", //Description of the listing.
+                           chosenStarfarer == 2 && DownedBossSystem.downedVagrant, //Unlock requirements.
+                           10,
+                           "Defeat the Vagrant of Space and Time. (Eridani)")); //Corresponding dialogue ID.
                     IdleArchiveListMax = IdleArchiveList.Count;
                     BossArchiveListMax = BossArchiveList.Count;
                     WeaponArchiveListMax = WeaponArchiveList.Count;
+                    VNArchiveListMax = VNArchiveList.Count;
                     archivePopulated = true;
                 }
 
@@ -6283,7 +6317,7 @@ namespace StarsAbove
                 }
                 if (archiveChosenList == 1)//0 is idle, 1 is boss, 2 is weapon, (prompts use the OnEvent system.)
                 {
-                    archiveListMax = BossArchiveListMax - 1;//23 (Missing Deerclops, Empress, QueenSlime
+                    archiveListMax = BossArchiveListMax - 1;//23
                 }
                 if (archiveChosenList == 2)//0 is idle, 1 is boss, 2 is weapon, (prompts use the OnEvent system.)
                 {
@@ -6291,7 +6325,7 @@ namespace StarsAbove
                 }
                 if (archiveChosenList == 3)//This will be the VN style dialogue archive. It doesn't have to be implemented on 1.1, as nothing is locked behind it except dialogue.
                 {
-                    archiveListMax = 5;//?? Not yet implemented.
+                    archiveListMax = VNArchiveListMax - 1;//
                 }
 
 
@@ -6341,6 +6375,21 @@ namespace StarsAbove
                         {
                             canViewArchive = false;
                             archiveListInfo = Wrap(WeaponArchiveList[archiveListNumber].UnlockConditions, 25);
+                        }
+
+                    }
+                    if (archiveChosenList == 3)
+                    {
+                        if (VNArchiveList[archiveListNumber].IsViewable)
+                        {
+                            canViewArchive = true;
+                            archiveListInfo = Wrap("" + VNArchiveList[archiveListNumber].Name + ":" + "\n" + VNArchiveList[archiveListNumber].ListInformation, 25);
+
+                        }
+                        else
+                        {
+                            canViewArchive = false;
+                            archiveListInfo = Wrap(VNArchiveList[archiveListNumber].UnlockConditions, 25);
                         }
 
                     }
@@ -7110,30 +7159,16 @@ namespace StarsAbove
 
                 if (chosenDialogue != 0)
                 {
-                    //Dialogue will be translated manually. It's not the best system, but it will have to do.
+                    StarsAboveDialogueSystem.SetupDialogueSystem(chosenStarfarer, ref chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, Player, Mod);
 
-                    if (Language.ActiveCulture.LegacyId != 7 || Language.ActiveCulture.LegacyId != 6)//English
-                    {
-                        StarsAboveDialogueSystem.SetupDialogueSystem(chosenStarfarer, ref chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, Player, Mod);
 
-                    }
-                    if (Language.ActiveCulture.LegacyId == 7)//Chinese
-                    {
-                        //StarsAboveDialogueSystem.SetupDialogueSystemCN(chosenStarfarer, ref chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, Player, Mod);
-
-                    }
-                    if (Language.ActiveCulture.LegacyId == 6)//Russian
-                    {
-                        //StarsAboveDialogueSystem.SetupDialogueSystemRU(chosenStarfarer, ref chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, Player, Mod);
-
-                    }
                 }
 
                 #endregion
 
                 #region VNDialogue
                 //Set up the VN Dialogue.
-                if (sceneID != -1 && VNDialogueActive)//All this boils down to moving the crazy amount of dialogue lines outside of StarsAbovePlayer.
+                if (sceneID != -1 && VNDialogueActive)//All this boils down to moving the crazy amount of dialogue lines outside of StarsAbovePlayer. Future me knows that you could've just made another StarsAbovePlayer. Oops.
                 {
                     sceneLength = (int)VNScenes.SetupVNSystem(sceneID, sceneProgression)[0];
                     VNCharacter1 = (string)VNScenes.SetupVNSystem(sceneID, sceneProgression)[6];//The active character. If there is a second character, this character will be drawn on the left. If not, they are drawn in the middle.
@@ -7152,18 +7187,22 @@ namespace StarsAbove
                     }
                     VNDialogueVisibleName = (string)VNScenes.SetupVNSystem(sceneID, sceneProgression)[12];//The name that shows up in the text box.
 
+                    VNDialogueThirdOption = (bool)VNScenes.SetupVNSystem(sceneID, sceneProgression)[14];//If the third option is available.
+                    
                     if (sceneProgression > sceneLength)
                     {
                         VNDialogueActive = false;
+                        VNDialogueChoiceActive = false;
                         sceneID = -1;
                         sceneProgression = 0;
                         sceneLength = 0;
                         dialogue = "";
                         dialogueScrollTimer = 0;
                         dialogueScrollNumber = 0;
-
+                        
                         VNDialogueChoice1 = "";
                         VNDialogueChoice2 = "";
+                        VNDialogueThirdOption = false;
                     }
                     dialogue = Wrap((string)VNScenes.SetupVNSystem(sceneID, sceneProgression)[13], 50);
                     //animatedDialogue = dialogue.Substring(0, dialogueScrollNumber);

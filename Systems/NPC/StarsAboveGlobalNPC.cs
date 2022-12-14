@@ -63,6 +63,10 @@ namespace StarsAbove
 			{
 				spawnRate += 10;
 			}
+			if (player.HasBuff(BuffType<Conversationalist>()))
+			{
+				spawnRate -= 30;
+			}
 			base.EditSpawnRate(player, ref spawnRate, ref maxSpawns);
         }
         public override void UpdateLifeRegen(NPC npc, ref int damage)

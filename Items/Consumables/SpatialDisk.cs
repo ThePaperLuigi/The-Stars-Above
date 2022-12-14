@@ -812,8 +812,8 @@ namespace StarsAbove.Items.Consumables
                 {//This should be condensed.
 					player.GetModPlayer<StarsAbovePlayer>().dialogueScrollTimer = 0;
 					player.GetModPlayer<StarsAbovePlayer>().dialogueScrollNumber = 0;
-					player.GetModPlayer<StarsAbovePlayer>().sceneID = 9;
 					player.GetModPlayer<StarsAbovePlayer>().sceneProgression = 0;
+					player.GetModPlayer<StarsAbovePlayer>().sceneID = 9;
 					player.GetModPlayer<StarsAbovePlayer>().VNDialogueActive = true;
 					player.GetModPlayer<StarsAbovePlayer>().vagrantDialogue = 2;
 				}
@@ -821,8 +821,8 @@ namespace StarsAbove.Items.Consumables
 				{
 					player.GetModPlayer<StarsAbovePlayer>().dialogueScrollTimer = 0;
 					player.GetModPlayer<StarsAbovePlayer>().dialogueScrollNumber = 0;
-					player.GetModPlayer<StarsAbovePlayer>().sceneID = 10;
 					player.GetModPlayer<StarsAbovePlayer>().sceneProgression = 0;
+					player.GetModPlayer<StarsAbovePlayer>().sceneID = 10;
 					player.GetModPlayer<StarsAbovePlayer>().VNDialogueActive = true;
 					player.GetModPlayer<StarsAbovePlayer>().vagrantDialogue = 2;
 				}

@@ -105,9 +105,9 @@ namespace StarsAbove.NPCs.Vagrant
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 12000;
+			NPC.lifeMax = 32000;
 			NPC.damage = 0;
-			NPC.defense = 0;
+			NPC.defense = 20;
 			NPC.knockBackResist = 0f;
 			NPC.width = 160;
 			NPC.height = 160;
@@ -285,17 +285,17 @@ namespace StarsAbove.NPCs.Vagrant
 				}
 				if (AI_RotationNumber == 19)
 				{
-					Starfall(P, NPC);
+					HypertunedStarfall(P, NPC);
 					return;
 				}
 				if (AI_RotationNumber == 20)
 				{
-					InverseStarfall(P, NPC);
+					HypertunedInverseStarfall(P, NPC);
 					return;
 				}
 				if (AI_RotationNumber == 21)
 				{
-					Starfall(P, NPC);
+					HypertunedStarfall(P, NPC);
 					return;
 				}
 				if (AI_RotationNumber == 22)

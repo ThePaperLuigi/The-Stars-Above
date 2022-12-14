@@ -50,11 +50,12 @@ namespace StarsAbove.Projectiles.SparkblossomBeacon
 		}
 		public override bool PreDraw(ref Color lightColor)
 		{
-			if(Projectile.alpha > 160)
+			if(Projectile.alpha < 160)
             {
-				return false;
+				default(Effects.SmallBlueTrail).Draw(Projectile);
+				return true;
 			}
-			default(Effects.SmallBlueTrail).Draw(Projectile);
+			
 
 			return true;
 		}
@@ -80,10 +81,12 @@ namespace StarsAbove.Projectiles.SparkblossomBeacon
 			Movement(foundTarget, distanceFromTarget, targetCenter, distanceToIdlePosition, vectorToIdlePosition);
 			Visuals();
 			Projectile.alpha -= 3;
-			if (Projectile.ai[0] > 60)
+			Projectile.scale += 0.02f;
+			Projectile.scale = Math.Clamp(Projectile.scale, 0, 1);
+			if (Projectile.ai[0] > 90)
 			{
 
-				if (foundTarget)
+				if (foundTarget && distanceFromTarget < 110)
 				{
 					Projectile.ai[0] = 0;
 					int type = ProjectileType<FleetingSparkBullet>();
@@ -91,11 +94,14 @@ namespace StarsAbove.Projectiles.SparkblossomBeacon
 
 					Vector2 position = Projectile.Center;
 
-					float launchSpeed = 36f;
+					float launchSpeed = 55f;
 					Vector2 direction = Vector2.Normalize(targetCenter - Projectile.Center);
 					Vector2 velocity = direction * launchSpeed;
 
 					int index = Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y, type, (int)(Projectile.damage * damageBonus), 0f, owner.whoAmI);
+					Projectile.alpha = 255;
+					Projectile.scale = 0;
+					Projectile.ai[1] = Main.rand.Next(0, 360);
 					damageBonus += 0.02f;
 					if(damageBonus > 1.1f)
                     {
@@ -104,6 +110,7 @@ namespace StarsAbove.Projectiles.SparkblossomBeacon
 					if(Main.rand.Next(0,100) < 10)
                     {
 						//Explode
+						Projectile.Center = targetCenter;
 						Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0, Mod.Find<ModProjectile>("SparkExplosion").Type, Projectile.damage*2, 0f, owner.whoAmI, 0);
 						Projectile.alpha = 255;
 
@@ -241,12 +248,9 @@ namespace StarsAbove.Projectiles.SparkblossomBeacon
 						float between = Vector2.Distance(npc.Center, Projectile.Center);
 						bool closest = Vector2.Distance(Projectile.Center, targetCenter) > between;
 						bool inRange = between < distanceFromTarget;
-						bool lineOfSight = Collision.CanHitLine(Projectile.position, Projectile.width, Projectile.height, npc.position, npc.width, npc.height);
-						// Additional check for this specific minion behavior, otherwise it will stop attacking once it dashed through an enemy while flying though tiles afterwards
-						// The number depends on various parameters seen in the movement code below. Test different ones out until it works alright
-						bool closeThroughWall = between < 100f;
+						
 
-						if (((closest && inRange) || !foundTarget) && (lineOfSight || closeThroughWall))
+						if (((closest && inRange) || !foundTarget))
 						{
 							distanceFromTarget = between;
 							targetCenter = npc.Center;
@@ -266,7 +270,7 @@ namespace StarsAbove.Projectiles.SparkblossomBeacon
 		private void Movement(bool foundTarget, float distanceFromTarget, Vector2 targetCenter, float distanceToIdlePosition, Vector2 vectorToIdlePosition)
 		{
 			// Default movement parameters (here for attacking)
-			float speed = 8f;
+			float speed = 12f;
 			float inertia = 20f;
 
 			if (Projectile.alpha > 200)
@@ -277,7 +281,7 @@ namespace StarsAbove.Projectiles.SparkblossomBeacon
 			if (foundTarget)
 			{
 				// Minion has a target: attack (here, fly towards the enemy)
-				if (distanceFromTarget > 80f)
+				if (distanceFromTarget > 140f)
 				{
 					// The immediate range around the target (so it doesn't latch onto it when close)
 					Vector2 direction = targetCenter - Projectile.Center;
@@ -286,47 +290,56 @@ namespace StarsAbove.Projectiles.SparkblossomBeacon
 
 					Projectile.velocity = (Projectile.velocity * (inertia - 1) + direction) / inertia;
 				}
+                else
+                {
+					//Orbit the enemy
+					
+					//Factors for calculations
+					double deg = Projectile.ai[1]; //The degrees, you can multiply projectile.ai[1] to make it orbit faster, may be choppy depending on the value
+					double rad = deg * (Math.PI / 180); //Convert degrees to radians
+					double dist = 100; //Distance away from the target
+					Vector2 adjustedPosition = targetCenter;
+
+					/*Position the player based on where the player is, the Sin/Cos of the angle times the /
+					/distance for the desired distance away from the player minus the projectile's width   /
+					/and height divided by two so the center of the projectile is at the right place.     */
+					Projectile.position.X = adjustedPosition.X - (int)(Math.Cos(rad) * dist) - Projectile.width / 2;
+					Projectile.position.Y = adjustedPosition.Y - (int)(Math.Sin(rad) * dist) - Projectile.height / 2;
+
+					//Increase the counter/angle in degrees by 1 point, you can change the rate here too, but the orbit may look choppy depending on the value
+					//Projectile.ai[1] += 0.9f;
+
+					Projectile.rotation = Vector2.Normalize(targetCenter - Projectile.Center).ToRotation() + MathHelper.ToRadians(90f);
+
+				}
 			}
 			else
 			{
-				// Minion doesn't have a target: return to player and idle
-				if (distanceToIdlePosition > 600f)
-				{
-					// Speed up the minion if it's away from the player
-					speed = 12f;
-					inertia = 60f;
-				}
-				else
-				{
-					// Slow down the minion if closer to the player
-					speed = 4f;
-					inertia = 80f;
-				}
+				Projectile.alpha = 170;
+				//Factors for calculations
+				double deg = Projectile.ai[1]; //The degrees, you can multiply projectile.ai[1] to make it orbit faster, may be choppy depending on the value
+				double rad = deg * (Math.PI / 180); //Convert degrees to radians
+				double dist = 100; //Distance away from the target
+				Vector2 adjustedPosition = Main.player[Projectile.owner].Center;
 
-				if (distanceToIdlePosition > 20f)
-				{
-					// The immediate range around the player (when it passively floats about)
+				/*Position the player based on where the player is, the Sin/Cos of the angle times the /
+				/distance for the desired distance away from the player minus the projectile's width   /
+				/and height divided by two so the center of the projectile is at the right place.     */
+				Projectile.position.X = adjustedPosition.X - (int)(Math.Cos(rad) * dist) - Projectile.width / 2;
+				Projectile.position.Y = adjustedPosition.Y - (int)(Math.Sin(rad) * dist) - Projectile.height / 2;
 
-					// This is a simple movement formula using the two parameters and its desired direction to create a "homing" movement
-					vectorToIdlePosition.Normalize();
-					vectorToIdlePosition *= speed;
-					Projectile.velocity = (Projectile.velocity * (inertia - 1) + vectorToIdlePosition) / inertia;
-				}
-				else if (Projectile.velocity == Vector2.Zero)
-				{
-					// If there is a case where it's not moving at all, give it a little "poke"
-					Projectile.velocity.X = -0.15f;
-					Projectile.velocity.Y = -0.05f;
-				}
+				//Increase the counter/angle in degrees by 1 point, you can change the rate here too, but the orbit may look choppy depending on the value
+				Projectile.ai[1] += 0.9f;
+
+				Projectile.rotation = Vector2.Normalize(Main.MouseWorld - Projectile.Center).ToRotation() + MathHelper.ToRadians(90f);
 			}
 		}
 
 		private void Visuals()
 		{
-			// So it will lean slightly towards the direction it's moving
-			Projectile.rotation = Projectile.velocity.X * 0.05f;
+			//Projectile.rotation = Projectile.velocity.X * 0.05f;
 
-			Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
+			//Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
 			// This is a simple "loop through all frames from top to bottom" animation
 			int frameSpeed = 5;
 

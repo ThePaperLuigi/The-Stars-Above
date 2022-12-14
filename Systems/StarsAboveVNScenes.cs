@@ -39,6 +39,9 @@ namespace StarsAbove
             int character2Expression = 0; //11
             string name = ""; //12
             string dialogue = ""; //13
+            bool thirdOption = false;//14
+            string sceneChoice3 = "";//15
+            int choice3Scene = 0;//16
 
             //Test scene. Does not work.
             if (sceneID == 0)
@@ -101,9 +104,9 @@ namespace StarsAbove
 
                 //What appears in the choice boxes?
                 sceneChoice1 =
-                  "I'd like the full explanation.";
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.3.Choices.1");
                 sceneChoice2 =
-                  "I'm good, thanks.";
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.3.Choices.2");
 
                 //What does the scene change to when you choose the first option?
                 choice1Scene = 4;
@@ -400,9 +403,9 @@ namespace StarsAbove
 
                 //What appears in the choice boxes?
                 sceneChoice1 =
-                "I'd like the full explanation.";
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.6.Choices.1");
                 sceneChoice2 =
-                "I'm good, thanks.";
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.6.Choices.2");
 
                 //What does the scene change to when you choose the first option?
                 choice1Scene = 7;
@@ -1910,7 +1913,10 @@ namespace StarsAbove
             character2Pose,
             character2Expression,
             name,
-            dialogue
+            dialogue,
+            thirdOption,
+            sceneChoice3,
+            choice3Scene
             };
         }
 

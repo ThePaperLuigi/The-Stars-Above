@@ -1755,6 +1755,92 @@ Mods: {
 							2: X
 						}
 					}
+					# Asphodene introducing the Astrolabe.
+					11: {
+						Dialogue: {
+							1: Hmm, feel like you're ready for the next step of your journey yet?
+							2: Well, either way, I'm going to give you this: the Astrolabe. If you check the Stellar Nova Menu, you'll see a new option has opened up.
+							3: I'll be brief, but the Astrolabe will allow you to explore the universe (with a few extra steps.) If you're interested, use the Astrolabe to visit the Observatory Hyperborea.
+							4: That's all for now. I'll be waiting!
+						}
+						Choices: {
+							1: X
+							2: X
+						}
+					}
+					# Eridani doing the same thing.
+					12: {
+						Dialogue: {
+							1: Looks like you're getting stronger- and quickly. While I originally feared for your health, it seems you're strong enough to utilize this.
+							2: This is the Astrolabe. If you check the Stellar Nova Menu, the previously locked option has become available, as it's yours now.
+							3: The Astrolabe will allow you to explore the universe- with the proper setup, of course. I can explain more once you've used it to go to the Observatory Hyperborea.
+							4: When you're ready, feel free to visit. I'll be awaiting your arrival.
+						}
+						Choices: {
+							1: X
+							2: X
+						}
+					}
+					# Asphodene explaining lore and how to use Stellaglyphs
+					13: {
+						Dialogue: {
+							1: You finally made it! This is the Observatory Hyperborea- the home of the Starfarers. Not all of them, mind you, but Eri and I.
+							2: Actually, the Observatories weren't intended for Starfarers at all, but we're... squatting, I guess. The original inhabitants are long gone.
+							3: I might not look it, but we aren't native to this galaxy. We came together after- well, it's hard to explain if you can't see it.
+							4: Let's pretend the universe is a lake, right? Okay, good. Now imagine someone started pouring oil into the lake- you really can't miss that.
+							5: Hopefully that explains what's going on here. Eri and I sensed something unimaginable within this galaxy, and we ended up with this:
+							6: The galaxy- the Moirae galaxy- is freezing over. It's not happening all at once, but the farther away from the center you go, things get worse.
+							7: Not only is the galaxy freezing, but mana is being drained as well. It's almost as if the galaxy was alive, and then started to die... but that's impossible.
+							8: The only reason why I met you is because this planet is full of life, even this far away from the galaxy's center. You can thank your Sun for that.
+							9: This isn't something we can deal with alone... which is why I'm working with you now.
+						}
+						Choices: {
+							1: How are we going to solve this...?
+							2: Aren't there other people solving this problem already?
+							3: Well, looks like things are good here.
+						}
+					}
+					# Dialogue 13 option 1
+					14: {
+						Dialogue: {
+							1: I'd love to give you a direct answer... but I don't know.
+							2: However, with the Astrolabe I gave you, you'll be able to explore the cosmos with a working Stellaglyph once you make one.
+							3: I can run you through the basics, if you need it. It's not too complicated, but you might get lost quickly.
+							
+						}
+						Choices: {
+							1: Sure, lay it on me.
+							2: Actually, I think I can figure it out on my own.
+						}
+					}
+					# Option 2
+					15: {
+						Dialogue: {
+							1: Well, we thought that too, but it seems most of the galaxy's population has moved inwards to escape the cold.
+							2: Starfarers can extract Essences from ambient mana, but from the brief worlds we've visited, I've only been able to learn the galaxy's name: Moirae.
+							3: Anyways, with the Astrolabe I gave you, you'll be able to explore the cosmos with a working Stellaglyph once you make one.
+							4: I can run you through the basics, if you need it. It's not too complicated, but you might get lost quickly.
+							
+							
+						}
+						Choices: {
+							1: Sure, lay it on me.
+							2: Actually, I think I can figure it out on my own.
+						}
+					}
+					# Option 3
+					16: {
+						Dialogue: {
+							1: Of course they are- didn't I just say your Sun is warming the planet up? Jeez...
+							2: Anyways, with the Astrolabe I gave you, you'll be able to explore the cosmos with a working Stellaglyph once you make one.
+							3: I can run you through the basics, if you need it. It's not too complicated, but you might get lost quickly. 
+							
+						}
+						Choices: {
+							1: Sure, lay it on me.
+							2: Actually, I think I can figure it out on my own.
+						}
+					}
 				}
 				
 			}	
@@ -1830,8 +1916,8 @@ Mods: {
 			}
 			StarfarerMenuButtons: {
 				Archive: {
-					Asphodene: Right.. What do you want to read about? Dialogue is sorted into 3 groups: idle, boss, and weapon. Cycle through and choose the one you want.
-					Eridani: Okay, what do you want to read about? The dialogues are sorted into 3 groups: idle, boss, and weapon. Feel free to choose which one you want to view.
+					Asphodene: Right.. What do you want to read about? Dialogue is sorted into 4 groups: idle, boss, weapon, and long-form. Cycle through and choose the one you want.
+					Eridani: Okay, what do you want to read about? The dialogues are sorted into 4 groups: idle, boss, weapon, and long-form. Feel free to choose which one you want to view.
 				}
 				ExitArchive: {
 					Asphodene: Changed your mind?

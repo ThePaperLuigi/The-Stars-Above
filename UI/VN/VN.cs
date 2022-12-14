@@ -16,6 +16,7 @@ namespace StarsAbove.UI.VN
 
 		private UIText choice1Text;
 		private UIText choice2Text;
+		private UIText choice3Text;
 
 		private UIElement area;
 		private UIElement character1;
@@ -27,6 +28,7 @@ namespace StarsAbove.UI.VN
 
 		private UIImageButton dialogueOption1;
 		private UIImageButton dialogueOption2;
+		private UIImageButton dialogueOption3;
 
 		private Vector2 offset;
 
@@ -88,6 +90,13 @@ namespace StarsAbove.UI.VN
 			choice2Text.Left.Set(173, 0f);
 			choice2Text.IgnoresMouseInteraction = true;
 
+			choice3Text = new UIText("", 1f);
+			choice3Text.Width.Set(456, 0f);
+			choice3Text.Height.Set(1, 0f);
+			choice3Text.Top.Set(341, 0f);
+			choice3Text.Left.Set(173, 0f);
+			choice3Text.IgnoresMouseInteraction = true;
+
 
 			barFrame = new UIImage(Request<Texture2D>("StarsAbove/UI/Starfarers/blank"));
 			barFrame.Left.Set(22, 0f);
@@ -116,6 +125,13 @@ namespace StarsAbove.UI.VN
 			dialogueOption2.Top.Set(282, 0f);
 			dialogueOption2.Width.Set(512, 0f);
 			dialogueOption2.Height.Set(32, 0f);
+
+			dialogueOption3 = new UIImageButton(Request<Texture2D>("StarsAbove/UI/VN/choiceButton"));
+			dialogueOption3.OnClick += DialogueOption3Click;
+			dialogueOption3.Left.Set(144, 0f);
+			dialogueOption3.Top.Set(332, 0f);
+			dialogueOption3.Width.Set(512, 0f);
+			dialogueOption3.Height.Set(32, 0f);
 
 			area.Append(text);
 			area.Append(speakerName);
@@ -229,6 +245,23 @@ namespace StarsAbove.UI.VN
 			modPlayer.sceneProgression = 0;
 			
 			
+			modPlayer.VNDialogueActive = true;
+			modPlayer.VNDialogueChoiceActive = false;
+
+
+		}
+
+		private void DialogueOption3Click(UIMouseEvent evt, UIElement listeningElement)
+		{
+			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().VNDialogueChoiceActive))
+				return;
+			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			modPlayer.dialogueScrollTimer = 0;
+			modPlayer.dialogueScrollNumber = 0;
+			modPlayer.sceneID = (int)VNScenes.SetupVNSystem(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneID, Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneProgression)[16];
+			modPlayer.sceneProgression = 0;
+
+
 			modPlayer.VNDialogueActive = true;
 			modPlayer.VNDialogueChoiceActive = false;
 
@@ -517,6 +550,17 @@ namespace StarsAbove.UI.VN
 
 			choice1Text.SetText($"{modPlayer.VNDialogueChoice1}");
 			choice2Text.SetText($"{modPlayer.VNDialogueChoice2}");
+			if(modPlayer.VNDialogueThirdOption)
+            {
+				area.Append(choice3Text);
+				area.Append(dialogueOption3);
+				choice3Text.SetText($"{modPlayer.VNDialogueChoice3}");
+			}
+            else
+            {
+				choice3Text.Remove();
+				dialogueOption3.Remove();
+            }
 
 
 			base.Update(gameTime);
