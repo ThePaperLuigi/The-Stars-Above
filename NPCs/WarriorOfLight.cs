@@ -397,7 +397,7 @@ namespace StarsAbove.NPCs
                         dust.scale = 1f + Main.rand.NextFloat() + (float)dustNumber * 0.3f;
                     }
                 }
-                if(!DownedBossSystem.downedWarrior)
+                if(DownedBossSystem.downedWarrior)
                 {
                     NPC.ai[3] += 1000;//If you've seen the cutscene, don't play it again.
                     //Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/BossFinish");
@@ -434,7 +434,11 @@ namespace StarsAbove.NPCs
                     {
                         Dust.NewDust(NPC.Center, 0, 0, 21, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
                     }
-                    SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_WarriorOfLightDefeated, NPC.Center);
+                    if (!DownedBossSystem.downedWarrior)
+                    {
+                        SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_WarriorOfLightDefeated, NPC.Center);
+                    }
+                        
                     NPC.life = 0;
                     NPC.HitEffect(0, 0);
                     NPC.checkDead(); // This will trigger ModNPC.CheckDead the second time, causing the real death.
