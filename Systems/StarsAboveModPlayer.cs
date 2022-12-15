@@ -13344,13 +13344,13 @@ namespace StarsAbove
                     if (eventPrompt == "onTrojanSquirrel")
                     {
                         promptExpression = 0;
-                        LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.121", Player.name);//Whoa, look at this thing. What a go-getter! Oh, right- strategy. Looks like you can aim for its arms, so try that.
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.121", Player.name);//Whoa, look at this thing. What a go-getter! Oh, right- strategy. Looks like you can aim for its arms, so try that.
                         seenTrojanSquirrel = true;
                     }
                     if (eventPrompt == "onDeviantt")
                     {
                         promptExpression = 0;
-                        LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.122", Player.name);
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.122", Player.name);
                         //promptDialogue = $"Aww, this pint-sized witch wants a fight? Alright then!" +
                         //                $" It looks like you'll be barraged with debuffs- Get the heals ready.";
                         seenDeviantt = true;
@@ -13358,7 +13358,7 @@ namespace StarsAbove
                     if (eventPrompt == "onEridanus")
                     {
                         promptExpression = 2;
-                        LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.123", Player.name);
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.123", Player.name);
                         //promptDialogue = $"Hah? Just look at this muppet... thinking he's better than us or something!" +
                         //                $" Give him a good whallop!";
                         seenEridanus = true;
@@ -13366,7 +13366,7 @@ namespace StarsAbove
                     if (eventPrompt == "onAbominationn")
                     {
                         promptExpression = 0;
-                        LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.124", Player.name);
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.124", Player.name);
                         //promptDialogue = $"Let's get this show started!" +
                         //                $" He'll be attacking with the power of worldly invaders, if you remember those!";
                         seenAbominationn = true;
@@ -13374,7 +13374,7 @@ namespace StarsAbove
                     if (eventPrompt == "onMutant")
                     {
                         promptExpression = 2;
-                        LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.125", Player.name);
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.125", Player.name);
                         //promptDialogue = $"If I had a nickel for times you've thrown voodoo dolls into lava... Never mind." +
                         //                $" Mutant's super upset, super strong, and super coming straight for you.";
                         seenMutant = true;

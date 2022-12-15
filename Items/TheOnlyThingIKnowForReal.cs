@@ -52,8 +52,8 @@ namespace StarsAbove.Items
 			Item.knockBack = 4;
 
 			Item.rare = ItemRarityID.Purple;
-			Item.master = true;
-			Item.masterOnly = true;
+			Item.master = false;
+			Item.masterOnly = false;
 			//item.UseSound = SoundID.Item11;
 			Item.autoReuse = true;
 			Item.channel = true;//Important for all "bows"
