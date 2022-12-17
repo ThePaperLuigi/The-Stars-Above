@@ -47,6 +47,9 @@ namespace StarsAbove
 		private UserInterface _EternalGaugeUserInterface;
 		internal EternalGauge EternalGauge;
 
+		private UserInterface _EmotionGaugeUserInterface;
+		internal EmotionGauge EmotionGauge;
+
 		private UserInterface _RadGaugeUserInterface;
 		internal RadGauge RadGauge;
 
@@ -193,6 +196,10 @@ namespace StarsAbove
 				EternalGauge = new EternalGauge();
 				_EternalGaugeUserInterface = new UserInterface();
 				_EternalGaugeUserInterface.SetState(EternalGauge);
+
+				EmotionGauge = new EmotionGauge();
+				_EmotionGaugeUserInterface = new UserInterface();
+				_EmotionGaugeUserInterface.SetState(EmotionGauge);
 
 				RhythmGauge = new RhythmGauge();
 				_RhythmGaugeUserInterface = new UserInterface();
@@ -369,6 +376,8 @@ namespace StarsAbove
 			_ButterflyResourceBarUserInterface?.Update(gameTime);
 			_VengeanceGaugeUserInterface?.Update(gameTime);
 			_EternalGaugeUserInterface?.Update(gameTime);
+			_EmotionGaugeUserInterface?.Update(gameTime);
+
 			_BlackSilenceGaugeUserInterface?.Update(gameTime);
 			_RenegadeGaugeUserInterface?.Update(gameTime);
 			_RhythmGaugeUserInterface?.Update(gameTime);
@@ -550,7 +559,15 @@ namespace StarsAbove
 					},
 					InterfaceScaleType.UI)
 				);
-
+				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+					"StarsAbove: Emotion Gauge",
+					delegate
+					{
+						_EmotionGaugeUserInterface.Draw(Main.spriteBatch, new GameTime());
+						return true;
+					},
+					InterfaceScaleType.UI)
+				);
 				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
 					"StarsAbove: Takodachi Gauge",
 					delegate

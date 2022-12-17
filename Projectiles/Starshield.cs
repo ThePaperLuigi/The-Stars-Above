@@ -3,6 +3,8 @@ using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace StarsAbove.Projectiles
 {
@@ -12,7 +14,7 @@ namespace StarsAbove.Projectiles
 			DisplayName.SetDefault("Starshield");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode
-			Main.projFrames[Projectile.type] = 2;
+			Main.projFrames[Projectile.type] = 1;
 			
 		}
 
@@ -25,7 +27,7 @@ namespace StarsAbove.Projectiles
 			Projectile.minion = false;
 			Projectile.penetrate = -1;           //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
 			Projectile.timeLeft = 10;          //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
-			Projectile.alpha = 0;             //The transparency of the projectile, 255 for completely transparent. (aiStyle 1 quickly fades the projectile in) Make sure to delete this if you aren't using an aiStyle that fades in. You'll wonder why your projectile is invisible.
+			Projectile.alpha = 120;             //The transparency of the projectile, 255 for completely transparent. (aiStyle 1 quickly fades the projectile in) Make sure to delete this if you aren't using an aiStyle that fades in. You'll wonder why your projectile is invisible.
 			Projectile.light = 2f;            //How much light emit around the projectile
 			Projectile.ignoreWater = true;          //Does the projectile's speed be influenced by water?
 			Projectile.tileCollide = false;          //Can the projectile collide with tiles?
@@ -33,7 +35,28 @@ namespace StarsAbove.Projectiles
 			DrawOriginOffsetY = -15;
 			DrawOffsetX = -26;
 		}
-		float rotationSpeed = 10f;
+
+		public override bool PreDraw(ref Color lightColor)
+		{
+
+			Texture2D texture = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Starshield");
+
+			const float TwoPi = (float)Math.PI * 2f;
+			float offset = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 5f);
+
+			SpriteEffects effects = SpriteEffects.None;
+
+			float scale = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 2f) * 0.3f + 0.7f;
+			Color effectColor = Color.White;
+			effectColor.A = 0;
+			effectColor = effectColor * 0.06f * scale;
+			for (float num5 = 0f; num5 < 1f; num5 += 355f / (678f * (float)Math.PI))
+			{
+				Main.spriteBatch.Draw(texture, Projectile.Center + (TwoPi * num5).ToRotationVector2() * (2f + offset), Projectile.getRect(), effectColor, 0f, Projectile.Center, 1f, effects, 0f);
+			}
+
+			return base.PreDraw(ref lightColor);
+		}
 		public override void AI()
 		{
 			Projectile.timeLeft = 10;
@@ -53,7 +76,7 @@ namespace StarsAbove.Projectiles
 			Projectile.direction = projOwner.direction;
 			Projectile.position.X = ownerMountedCenter.X - (float)(Projectile.width / 2);
 			Projectile.position.Y = ownerMountedCenter.Y - (float)(Projectile.height / 2);
-			Projectile.spriteDirection = Projectile.direction;
+			//Projectile.spriteDirection = Projectile.direction;
 			Projectile.rotation += Projectile.velocity.X / 20f;
 
 			

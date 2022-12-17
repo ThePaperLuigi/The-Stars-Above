@@ -60,13 +60,13 @@ namespace StarsAbove
         public string locationRequirement = "";
         public string locationLoot = "";
 
-        public float locationDescriptionAlpha = 1;
+        public float locationDescriptionAlpha = 0;
 
         public float locationPopUpTimer;
         public float locationPopUpProgress;
 
         public float locationPopUpPlacement;
-        public float locationPopUpAlpha = 1;
+        public float locationPopUpAlpha = 0;
 
         public float loadingScreenOpacity = 0f;
 
