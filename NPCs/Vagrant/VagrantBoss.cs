@@ -164,7 +164,31 @@ namespace StarsAbove.NPCs.Vagrant
 			{
 				NPC.TargetClosest(true);
 			}
-
+			if (Main.player[NPC.target].dead)
+			{
+				//Leave if all players are dead.
+				Vector2 vector8 = new Vector2(NPC.Center.X, NPC.Center.Y);
+				for (int d = 0; d < 100; d++)
+				{
+					Dust.NewDust(vector8, 0, 0, 269, 0f + Main.rand.Next(-40, 40), 0f + Main.rand.Next(-40, 40), 150, default(Color), 1.5f);
+				}
+				for (int d = 0; d < 65; d++)
+				{
+					Dust.NewDust(vector8, 0, 0, 21, 0f + Main.rand.Next(-45, 45), 0f + Main.rand.Next(-45, 45), 150, default(Color), 1.5f);
+				}
+				for (int d = 0; d < 35; d++)
+				{
+					Dust.NewDust(vector8, 0, 0, 50, 0f + Main.rand.Next(-45, 45), 0f + Main.rand.Next(-45, 45), 150, default(Color), 1.5f);
+				}
+				for (int d = 0; d < 35; d++)
+				{
+					Dust.NewDust(vector8, 0, 0, 55, 0f + Main.rand.Next(-45, 45), 0f + Main.rand.Next(-45, 45), 150, default(Color), 1.5f);
+				}
+				NPC.active = false;
+				modPlayer.VagrantActive = false;
+				modPlayer.VagrantBarActive = false;
+				
+			}
 			if (NPC.ai[0] == (float)ActionState.Dying)
 			{
 				DeathAnimation();//The boss is in its dying animation. No other AI code will run.

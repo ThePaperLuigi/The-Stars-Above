@@ -48,10 +48,15 @@ namespace StarsAbove
 			if (spawnInfo.Player.InModBiome<SeaOfStarsBiome>())
 			{
 				pool.Clear();
-				pool.Add(ModContent.NPCType<NPCs.PrismLoot>(), 0.01f);
+				pool.Add(ModContent.NPCType<NPCs.PrismLoot>(), 0.05f);
 				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.AsteroidWormHead>(), 1f);
 				pool.Add(NPCID.BlackSlime, 1f);
 				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.AstralCell>(), 1f);
+				if(!NPC.AnyNPCs(ModContent.NPCType<NPCs.TownNPCs.Yojimbo>()))
+                {
+					pool.Add(ModContent.NPCType<NPCs.TownNPCs.Yojimbo>(), 0.1f);
+
+				}
 				/*
 				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.WaywardSelenian>(), 0.1f);
 				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.WaywardPredictor>(), 0.1f);

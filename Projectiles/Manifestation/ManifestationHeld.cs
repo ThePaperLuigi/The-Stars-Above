@@ -82,9 +82,9 @@ namespace StarsAbove.Projectiles.Manifestation
 				deg = Projectile.ai[1];
 				double rad = deg * (Math.PI / 180);
 				double dist = 2;
-				
 
-				if (projOwner.ownedProjectileCounts[ProjectileType<ManifestationSwordSlash1>()] >= 1 || projOwner.ownedProjectileCounts[ProjectileType<ManifestationSwordSlash2>()] >= 1)//|| projOwner.ownedProjectileCounts[ProjectileType<BurningDesireSlash1>()] >= 1 || projOwner.ownedProjectileCounts[ProjectileType<BurningDesireSlash2>()] >= 1)
+
+				if (projOwner.ownedProjectileCounts[ProjectileType<ManifestationSwordSlash1>()] >= 1 || projOwner.ownedProjectileCounts[ProjectileType<ManifestationSwordSlash2>()] >= 1 || projOwner.ownedProjectileCounts[ProjectileType<SplitVertical>()] >= 1)//|| projOwner.ownedProjectileCounts[ProjectileType<BurningDesireSlash1>()] >= 1 || projOwner.ownedProjectileCounts[ProjectileType<BurningDesireSlash2>()] >= 1)
 				{//If an attack is active
 					Projectile.alpha = 255;
 				}
@@ -129,7 +129,7 @@ namespace StarsAbove.Projectiles.Manifestation
 				Projectile.position.X = projOwner.Center.X - (int)(Math.Cos(rad) * dist) - Projectile.width / 2;
 				Projectile.position.Y = projOwner.Center.Y - (int)(Math.Sin(rad) * dist) - Projectile.height / 2;
 
-				if (projOwner.ownedProjectileCounts[ProjectileType<ManifestationSwordSlash1>()] >= 1 || projOwner.ownedProjectileCounts[ProjectileType<ManifestationSwordSlash2>()] >= 1)//|| projOwner.ownedProjectileCounts[ProjectileType<BurningDesireSlash1>()] >= 1 || projOwner.ownedProjectileCounts[ProjectileType<BurningDesireSlash2>()] >= 1)
+				if (projOwner.ownedProjectileCounts[ProjectileType<ManifestationSwordSlash1>()] >= 1 || projOwner.ownedProjectileCounts[ProjectileType<ManifestationSwordSlash2>()] >= 1 || projOwner.ownedProjectileCounts[ProjectileType<SplitVertical>()] >= 1)//|| projOwner.ownedProjectileCounts[ProjectileType<BurningDesireSlash1>()] >= 1 || projOwner.ownedProjectileCounts[ProjectileType<BurningDesireSlash2>()] >= 1)
 				{//If an attack is active
 					Projectile.alpha = 255;
 				}

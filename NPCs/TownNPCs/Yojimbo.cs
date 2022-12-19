@@ -26,7 +26,7 @@ namespace StarsAbove.NPCs.TownNPCs
 			NPCID.Sets.ExtraFramesCount[Type] = 9; // Generally for Town NPCs, but this is how the NPC does extra things such as sitting in a chair and talking to other NPCs.
 			NPCID.Sets.AttackFrameCount[Type] = 4;
 			NPCID.Sets.DangerDetectRange[Type] = 700; // The amount of pixels away from the center of the npc that it tries to attack enemies.
-			NPCID.Sets.AttackType[Type] = 0;
+			NPCID.Sets.AttackType[Type] = 1;
 			NPCID.Sets.AttackTime[Type] = 90; // The amount of time it takes for the NPC's attack animation to be over once it starts.
 			NPCID.Sets.AttackAverageChance[Type] = 30;
 			NPCID.Sets.HatOffsetY[Type] = 4; // For when a party is active, the party hat spawns at a Y offset.
@@ -66,6 +66,7 @@ namespace StarsAbove.NPCs.TownNPCs
 			NPC.HitSound = SoundID.NPCHit1;
 			NPC.DeathSound = SoundID.NPCDeath1;
 			NPC.knockBackResist = 0.5f;
+			
 
 			AnimationType = NPCID.Guide;
 		}
@@ -89,8 +90,15 @@ namespace StarsAbove.NPCs.TownNPCs
 				new FlavorTextBestiaryInfoElement("Mods.StarsAbove.Bestiary.Yojimbo")
 			});
 		}
+        public override bool PreKill()
+        {
+			NPC.life = 1;
+			return false;
 
-		public override void HitEffect(int hitDirection, double damage)
+        }
+        
+
+        public override void HitEffect(int hitDirection, double damage)
 		{
 			// Causes dust to spawn when the NPC takes damage.
 			int num = 3;
@@ -117,12 +125,7 @@ namespace StarsAbove.NPCs.TownNPCs
 		public override List<string> SetNPCNameList()
 		{
 			return new List<string> {
-				"Yojimbo",
-				"Arsene",
-				"Loki",
-				"Robin Hood",
-				"Goemon",
-				"???"
+				"Yojimbo"
 			};
 		}//Let's see... If I'm with the Empire today, my name is Loki. Actually, this far out from Empire turf, you can call me whatever you like- I don't care.
 
@@ -131,7 +134,7 @@ namespace StarsAbove.NPCs.TownNPCs
 			//If any player is underground and has an example item in their inventory, the example bone merchant will have a slight chance to spawn.
 			if (spawnInfo.Player.InModBiome<SeaOfStarsBiome>())
 			{
-				return 0.04f;
+				//return 0.04f;
 			}
 
 			//Else, the example bone merchant will not spawn if the above conditions are not met.
@@ -144,23 +147,41 @@ namespace StarsAbove.NPCs.TownNPCs
 
 			
 			chat.Add(LangHelper.GetTextValue("NPCDialogue.Yojimbo.1"));
-			chat.Add(Language.GetTextValue("NPCDialogue.Yojimbo.2"));
-			chat.Add(Language.GetTextValue("NPCDialogue.Yojimbo.3"));
-			chat.Add(Language.GetTextValue("NPCDialogue.Yojimbo.4"));
-			chat.Add(Language.GetTextValue("NPCDialogue.Yojimbo.5"));
+			chat.Add(LangHelper.GetTextValue("NPCDialogue.Yojimbo.2"));
+			chat.Add(LangHelper.GetTextValue("NPCDialogue.Yojimbo.3"));
+			chat.Add(LangHelper.GetTextValue("NPCDialogue.Yojimbo.4"));
+			chat.Add(LangHelper.GetTextValue("NPCDialogue.Yojimbo.5"));
 			return chat; // chat is implicitly cast to a string.
 		}
 
 		public override void SetChatButtons(ref string button, ref string button2)
 		{ // What the chat buttons are when you open up the chat UI
-			button = LangHelper.GetTextValue("NPCDialogue.Talk"); //This is the key to the word "Shop"
+			button = LangHelper.GetTextValue("NPCDialogue.Talk");
 		}
         public override void AI()
         {
+			Lighting.AddLight(NPC.Center, TorchID.Ice);
+			for (int k = 0; k < Main.maxNPCs; k++)
+			{
+				NPC npc = Main.npc[k];
+				if (npc.active && npc.type == ModContent.NPCType<Yojimbo>() && npc.whoAmI != NPC.whoAmI)
+				{
+					//npc.active = false;
+
+				}
+				else
+				{
+					//NPC.active = false;
+
+				}
+			}
+			//Only 1 Yojimbo at a time, how?
+
+
 			//If a player gets close to him, and he hasn't met them yet, play a special dialogue.
 
 
-            base.AI();
+			base.AI();
         }
         public override void OnChatButtonClicked(bool firstButton, ref bool shop)
 		{
@@ -191,5 +212,11 @@ namespace StarsAbove.NPCs.TownNPCs
 			multiplier = 12f;
 			randomOffset = 2f;
 		}
-	}
+        public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
+        {
+			projType = ProjectileID.ChlorophyteBullet;
+
+            base.TownNPCAttackProj(ref projType, ref attackDelay);
+        }
+    }
 }

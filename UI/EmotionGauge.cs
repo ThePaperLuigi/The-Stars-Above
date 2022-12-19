@@ -27,7 +27,7 @@ namespace StarsAbove.UI
 
 		private Color finalColor;
 
-
+		private UIElement swordArea;
 
 		private Vector2 offset;
 		public bool dragging = false;
@@ -35,7 +35,7 @@ namespace StarsAbove.UI
 
 		public static Vector2 NovaGaugePos;
 
-		public static bool Draggable;
+		public static bool AnimationDisabled = false;
 
 		int returnTimer;
 		public override void OnInitialize() {
@@ -48,7 +48,10 @@ namespace StarsAbove.UI
 			area.HAlign = area.VAlign = 0.5f; // 1
 											  //area.IgnoresMouseInteraction = true;
 
-
+			swordArea = new UIElement();
+			//swordArea.Top.Set(120, 0f);
+			swordArea.Height.Set(1920, 0f);
+			swordArea.Width.Set(1080, 0f);
 
 			barFrame = new UIImage(Request<Texture2D>("StarsAbove/UI/blank"));
 			barFrame.Left.Set(0, 0f);
@@ -74,9 +77,10 @@ namespace StarsAbove.UI
 
 			finalColor = new Color(255, 0, 0);
 
-			
+
 
 			//area.Append(text);
+			area.Append(swordArea);
 			area.Append(barFrame);
 			Append(area);
 		}
@@ -122,18 +126,16 @@ namespace StarsAbove.UI
 			// Calculate quotient
 			float quotient = (float)modPlayer.emotionGauge / (float)modPlayer.emotionGaugeMax; // Creating a quotient that represents the difference of your currentResource vs your maximumResource, resulting in a float of 0-1f.
 			quotient = Utils.Clamp(quotient, 0f, 1f); // Clamping it to 0-1f so it doesn't go over that.
-			
+
+			barFrame.Left.Set(20, 0);
+
 			// Here we get the screen dimensions of the barFrame element, then tweak the resulting rectangle to arrive at a rectangle within the barFrame texture that we will draw the gradient. These values were measured in a drawing program.
 			Rectangle hitbox = barFrame.GetInnerDimensions().ToRectangle();
 			hitbox.X += 12;
 			hitbox.Width -= 24;
 			hitbox.Y += 12;
 			hitbox.Height -= 16;
-			Rectangle animationHitbox = barFrame.GetInnerDimensions().ToRectangle();
-			animationHitbox.X -= 50;
-			animationHitbox.Width += 102;
-			animationHitbox.Y -= 112;
-			animationHitbox.Height += 200;
+			
 			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/EmotionGaugeBack"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);
 
 			if (quotient == 1f)
@@ -163,11 +165,20 @@ namespace StarsAbove.UI
 				spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y, 1, 12), Color.Lerp(TopMiddleGradient1, TopMiddleGradient2, percent));//1 above the bottom.
 				spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y + 4, 1, 4), Color.Lerp(TopGradient1, TopGradient2, percent));
 				spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y + 8, 1, 2), Color.White);
+				spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y, 1, 18), Color.White * modPlayer.gaugeChangeAlpha);
 
 
 			}
 			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/EmotionGauge"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);
+
+			if(AnimationDisabled)
+            {
+				return;
+            }
+
 			Texture2D Blackscreen = (Texture2D)Request<Texture2D>("StarsAbove/UI/Blackscreen");
+			Texture2D HorizontalBG = (Texture2D)Request<Texture2D>("StarsAbove/UI/Manifestation/HorizontalBG");
+			Texture2D HorizontalSlash = (Texture2D)Request<Texture2D>("StarsAbove/UI/Manifestation/HorizontalSlash");
 
 			Texture2D VerticalSlash1 = (Texture2D)Request<Texture2D>("StarsAbove/UI/Manifestation/Vertical1");
 			Texture2D VerticalSlash2 = (Texture2D)Request<Texture2D>("StarsAbove/UI/Manifestation/Vertical2");
@@ -175,6 +186,9 @@ namespace StarsAbove.UI
 			Texture2D VerticalSlash4 = (Texture2D)Request<Texture2D>("StarsAbove/UI/Manifestation/Vertical4");
 			Texture2D VerticalSlash5 = (Texture2D)Request<Texture2D>("StarsAbove/UI/Manifestation/Vertical5");
 
+			Texture2D HorizontalSlash1 = (Texture2D)Request<Texture2D>("StarsAbove/UI/Manifestation/Horizontal1");
+			Texture2D HorizontalSlash2 = (Texture2D)Request<Texture2D>("StarsAbove/UI/Manifestation/Horizontal2");
+			Texture2D HorizontalSlash3 = (Texture2D)Request<Texture2D>("StarsAbove/UI/Manifestation/Horizontal3");
 
 
 			float width = (float)Main.screenWidth / (float)Blackscreen.Width;
@@ -221,6 +235,56 @@ namespace StarsAbove.UI
 				spriteBatch.Draw(VerticalSlash1, Vector2.Zero, (Rectangle?)null, Color.White, 0f, Vector2.Zero, width, (SpriteEffects)0, 0f);
 
 			}
+
+			spriteBatch.Draw(Blackscreen, Vector2.Zero, (Rectangle?)null, Color.White * modPlayer.greatSplitHorizontalAlpha, 0f, Vector2.Zero, width, (SpriteEffects)0, 0f);
+			Rectangle swordBox = swordArea.GetInnerDimensions().ToRectangle();
+			Vector2 swordCenter = new Vector2(swordArea.GetInnerDimensions().Width, swordArea.GetInnerDimensions().Height) / 2;
+
+			if (modPlayer.greatSplitHorizontalTimer > 20)
+            {
+				spriteBatch.Draw(HorizontalBG, Vector2.Zero, (Rectangle?)null, Color.White * (1 - modPlayer.greatSplitAnimationRotationTimer), 0f, Vector2.Zero, width, (SpriteEffects)0, 0f);
+
+				spriteBatch.Draw(
+				(Texture2D)Request<Texture2D>("StarsAbove/UI/Manifestation/HorizontalSlash"), //The texture being drawn.
+				new Vector2(2280,-300),
+				null,
+				Color.White,
+				MathHelper.ToRadians(modPlayer.greatSplitAnimationRotation),
+				new Vector2(swordCenter.X + 1780,swordCenter.Y),
+				1.4f,
+				SpriteEffects.None,
+				1f);
+
+				
+			}
+
+			//Horziontal
+			if (modPlayer.greatSplitHorizontalTimer > 0 && modPlayer.greatSplitHorizontalTimer <= 2)
+			{
+				spriteBatch.Draw(HorizontalSlash3, Vector2.Zero, (Rectangle?)null, Color.White, 0f, Vector2.Zero, width, (SpriteEffects)0, 0f);
+
+			}
+			if (modPlayer.greatSplitHorizontalTimer > 2 && modPlayer.greatSplitHorizontalTimer < 4)
+			{
+				//Flash to black
+			}
+			if (modPlayer.greatSplitHorizontalTimer > 4 && modPlayer.greatSplitHorizontalTimer <= 6)
+			{
+				spriteBatch.Draw(HorizontalSlash2, Vector2.Zero, (Rectangle?)null, Color.White, 0f, Vector2.Zero, width, (SpriteEffects)0, 0f);
+
+			}
+			if (modPlayer.greatSplitHorizontalTimer > 6 && modPlayer.greatSplitHorizontalTimer <= 8)
+			{
+				//Flash to black
+
+			}
+			if (modPlayer.greatSplitHorizontalTimer > 8 && modPlayer.greatSplitHorizontalTimer <= 10)
+			{
+				spriteBatch.Draw(HorizontalSlash1, Vector2.Zero, (Rectangle?)null, Color.White, 0f, Vector2.Zero, width, (SpriteEffects)0, 0f);
+
+			}
+			//Above 10 play the sword swing animation
+
 		}
 		public override void Update(GameTime gameTime) {
 			if (!(Main.LocalPlayer.GetModPlayer<ManifestationPlayer>().manifestationHeld == true))

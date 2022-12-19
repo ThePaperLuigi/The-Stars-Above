@@ -65,8 +65,16 @@ namespace StarsAbove
         public bool EGOManifested;
         public int EGOLossTimer;
 
+        public float gaugeChangeAlpha = 0f;
+
         public int greaterSplitTimer;//This decays to 0 once a greater split is executed
         public float greaterSplitAlpha = 0f;
+
+        public int greatSplitHorizontalTimer;
+        public float greatSplitHorizontalAlpha = 0f;
+
+        public float greatSplitAnimationRotation;
+        public float greatSplitAnimationRotationTimer;
 
         public override void PreUpdate()
         {
@@ -97,6 +105,15 @@ namespace StarsAbove
 
             emotionGaugeDecayTimer--;
             greaterSplitTimer--;
+            greatSplitHorizontalTimer--;
+
+            if(!manifestationHeld)
+            {
+                emotionGauge = 0;
+            }
+
+            gaugeChangeAlpha -= 0.1f;
+
             greaterSplitAlpha = Math.Clamp(greaterSplitAlpha, 0f, 1f);
             greaterSplitAlpha -= 0.1f;
             if(greaterSplitTimer > 0)
@@ -104,7 +121,28 @@ namespace StarsAbove
                 greaterSplitAlpha += 0.1f;
             }
 
-            if(Player.HasBuff(BuffType<EGOManifestedBuff>()))
+            greatSplitHorizontalAlpha = Math.Clamp(greatSplitHorizontalAlpha, 0f, 1f);
+            greatSplitHorizontalAlpha -= 0.1f;
+            if (greatSplitHorizontalTimer > 0)
+            {
+                greatSplitHorizontalAlpha += 0.1f;
+            }
+
+
+            if(greatSplitHorizontalTimer > 30)
+            {
+                greatSplitAnimationRotationTimer += 0.02f;
+
+            }
+            else
+            {
+                greatSplitAnimationRotationTimer += 0.1f;
+
+            }
+            greatSplitAnimationRotation = MathHelper.Lerp(20, -20, greatSplitAnimationRotationTimer);
+           
+
+            if (Player.HasBuff(BuffType<EGOManifestedBuff>()))
             {
                 timeSpentInEGO++;
                 if(emotionGaugeDecayTimer < 0)
@@ -201,6 +239,11 @@ namespace StarsAbove
             }
         }
         
+        public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit, int cooldownCounter)
+        {
+            
+        }
+        
         public override void PreUpdateBuffs()
         {
            
@@ -212,6 +255,17 @@ namespace StarsAbove
         public override void ResetEffects()
         {
             manifestationHeld = false;
+        }
+        public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource, ref int cooldownCounter)
+        {
+            if (manifestationHeld)
+            {
+               
+            }
+            gaugeChangeAlpha = 1f;
+
+            emotionGauge += 2;
+            return base.PreHurt(pvp, quiet, ref damage, ref hitDirection, ref crit, ref customDamage, ref playSound, ref genGore, ref damageSource, ref cooldownCounter);
         }
         public override void FrameEffects()
         {
@@ -248,6 +302,7 @@ namespace StarsAbove
             if(manifestationHeld)
             {
                 emotionGauge++;
+                gaugeChangeAlpha = 1f;
                 if (crit)
                 {
                     if(Player.statLife < 200)

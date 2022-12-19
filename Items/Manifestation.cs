@@ -25,17 +25,17 @@ namespace StarsAbove.Items
 			DisplayName.SetDefault("Manifestation");
 			Tooltip.SetDefault("" +
 				"[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes at 70% efficiency, but inherits 150% from critical strike chance modifiers]" +
-                "\nAttacks sweep in a colossal arc; all critical strike damage is increased by 20%" +
+                "\nAttacks rapidly sweep in a colossal arc; all critical strike damage is increased by 20%" +
 				"\nTaking or dealing damage grants [c/D53B3B:Emotional Turbulence] (Critical strikes grant double [c/D53B3B:Emotional Turbulence] below 200 HP)" +
 				"\nDefeating foes increases [c/D53B3B:Emotional Turbulence] by 5% (doubled below 200 HP)" +
 				"\nOnce [c/D53B3B:Emotional Turbulence] is full, automatically gain the buff [c/AE0000:E.G.O. Manifestation] while becoming Invincible for 2 seconds" +
-				"\n[c/AE0000:E.G.O. Manifestation] grants 30% increased damage, 40% increased attack speed and 90% increased movement speed, but reduces defense by 30" +
-				"\nIf Manifestation of E.G.O. is active, unique [c/F75252:Greater Split] attacks can be preformed" +
-				"\nExecute [c/F75252:Great Split: Vertical] with right click or [c/F75252:Great Split: Horizontal] with the Weapon Action Key (Both attacks share a 1 minute cooldown)" +
-				"\n[c/F75252:Great Split: Vertical] will teleport you to your cursor and grant Invincibility for 1 second and deal 5x guaranteed critical damage after a short delay" +
-				"\n[c/F75252:Great Split: Horizontal] will deal guaranteed critical damage to all foes in a colossal radius around you after a short delay" +
-				"\nBoth [c/F75252:Greater Split] attacks will execute any non-boss enemy below 30% HP and additionally refill [c/D53B3B:Emotional Turbulence] to full on use" +
-                "\nIf [c/AE0000:E.G.O. Manifestation] is active, [c/D53B3B:Emotional Turbulence] will passively decrease over time (Decreases rapidly out of combat)" +
+				"\n[c/AE0000:E.G.O. Manifestation] grants 30% increased damage, 40% increased attack speed, and 90% increased movement speed, but reduces defense by 30" +
+				"\nIf [c/AE0000:E.G.O. Manifestation] is active, unique [c/FF0046:Great Split] attacks can be performed" +
+				"\nExecute [c/FF0046:Great Split: Vertical] with right click or [c/FF0046:Great Split: Horizontal] with the Weapon Action Key (Both attacks share a 1 minute cooldown)" +
+				"\n[c/FF0046:Great Split: Vertical] will grant Invincibility for 1 second and deal 5x guaranteed close-ranged critical damage after a short delay" +
+				"\n[c/FF0046:Great Split: Horizontal] will deal 3x guaranteed critical damage to all foes on the screen after a short delay" +
+				"\nBoth [c/FF0046:Great Split] attacks will execute any non-boss enemy below 30% HP and additionally refill [c/D53B3B:Emotional Turbulence] to full upon activation" +
+                "\nIf [c/AE0000:E.G.O. Manifestation] is active, [c/D53B3B:Emotional Turbulence] will passively decrease over time (Resets when not holding the weapon)" +
 				"\nThe longer [c/AE0000:E.G.O. Manifestation] lasts, the faster [c/D53B3B:Emotional Turbulence] will drain" +
                 "\nIf [c/D53B3B:Emotional Turbulence] is below 10% for 3 seconds, [c/AE0000:E.G.O. Manifestation] will end and you will be inflicted with Vulnerability for 10 seconds" +
 				"\n'Let's start this for real- I'll crush you all...'" +
@@ -49,7 +49,7 @@ namespace StarsAbove.Items
 		public override void SetDefaults()
 		{
 			
-			Item.damage = 211;           //The damage of your weapon
+			Item.damage = 111;           //The damage of your weapon
 			Item.DamageType = ModContent.GetInstance<Systems.PsychomentDamageClass>();
 			Item.width = 108;            //Weapon's texture's width
 			Item.height = 108;           //Weapon's texture's height
@@ -82,7 +82,10 @@ namespace StarsAbove.Items
 
 		public override bool CanUseItem(Player player)
 		{
-			
+			if (player.ownedProjectileCounts[ProjectileType<SplitVertical>()] >= 1)
+			{//If an attack is active
+				return false;
+			}
 			return true;
 		}
 		public override void MeleeEffects(Player player, Rectangle hitbox)
@@ -110,6 +113,12 @@ namespace StarsAbove.Items
         public override void HoldItem(Player player)
         {
 			player.GetModPlayer<ManifestationPlayer>().manifestationHeld = true;
+
+			float launchSpeed = 140f;
+			Vector2 mousePosition = Main.MouseWorld;
+			Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
+			Vector2 velocity = direction * launchSpeed;
+
 			if (player.ownedProjectileCounts[ProjectileType<ManifestationHeld>()] < 1)
 			{//Equip animation.
 				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<ManifestationHeld>(), 0, 0, player.whoAmI, 0f);
@@ -122,6 +131,37 @@ namespace StarsAbove.Items
 			{//Equip animation.
 				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<ManifestationHeadVFX2>(), 0, 0, player.whoAmI, 0f);
 			}
+
+			//If the great split timer is about to expire, execute the Great Split
+			if (player.GetModPlayer<ManifestationPlayer>().greaterSplitTimer == 0)
+			{
+				player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
+
+				player.GetModPlayer<ManifestationPlayer>().gaugeChangeAlpha = 1f;
+				player.GetModPlayer<ManifestationPlayer>().emotionGauge = player.GetModPlayer<ManifestationPlayer>().emotionGaugeMax;
+				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, velocity.X, velocity.Y, ProjectileType<SplitVertical>(), player.GetWeaponDamage(Item)*5, 0, player.whoAmI, 0f);
+			}
+			if (player.GetModPlayer<ManifestationPlayer>().greatSplitHorizontalTimer == 0)
+            {
+				player.GetModPlayer<ManifestationPlayer>().gaugeChangeAlpha = 1f;
+				player.GetModPlayer<ManifestationPlayer>().emotionGauge = player.GetModPlayer<ManifestationPlayer>().emotionGaugeMax;
+				player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
+				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, velocity.X, velocity.Y, ProjectileType<SplitHorizontal>(), player.GetWeaponDamage(Item)*3, 0, player.whoAmI, 0f);
+				int index2 = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, velocity.X, velocity.Y, ProjectileType<SplitVertical>(), 0, 0, player.whoAmI, 0f);
+			}
+
+			//If the player presses the Weapon Action key... play the UI animation, and then attack all enemies on screen.
+			if (player.whoAmI == Main.myPlayer && StarsAbove.weaponActionKey.JustPressed && player.HasBuff(BuffType<EGOManifestedBuff>()) && !player.HasBuff(BuffType<GreatSplitCooldown>()))
+			{
+				player.GetModPlayer<ManifestationPlayer>().greatSplitHorizontalAlpha = 1f;
+				player.GetModPlayer<ManifestationPlayer>().greatSplitAnimationRotationTimer = 0f;
+
+				player.GetModPlayer<ManifestationPlayer>().greatSplitHorizontalTimer = 40;
+				SoundEngine.PlaySound(StarsAboveAudio.SFX_BlackSilenceGreatsword, player.Center);
+				player.AddBuff(BuffType<GreatSplitCooldown>(), 3600);
+
+			}
+
 			base.HoldItem(player);
         }
 
@@ -168,8 +208,16 @@ namespace StarsAbove.Items
 			}
 			else
             {
-				player.GetModPlayer<ManifestationPlayer>().greaterSplitTimer = 25;
-				player.GetModPlayer<ManifestationPlayer>().greaterSplitAlpha = 1;
+				if(player.HasBuff(BuffType<EGOManifestedBuff>()) && !player.HasBuff(BuffType<GreatSplitCooldown>()))
+                {
+					//Great Split: Vertical
+					player.GetModPlayer<ManifestationPlayer>().greaterSplitTimer = 25;
+					player.GetModPlayer<ManifestationPlayer>().greaterSplitAlpha = 1;
+					player.AddBuff(BuffType<GreatSplitCooldown>(), 3600);
+
+					SoundEngine.PlaySound(StarsAboveAudio.SFX_BlackSilenceGreatsword, player.Center);
+				}
+				
 
 			}
 			return false;
