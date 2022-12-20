@@ -32,7 +32,7 @@ namespace StarsAbove.Items
 				"\n[c/AE0000:E.G.O. Manifestation] grants 30% increased damage, 40% increased attack speed, and 90% increased movement speed, but reduces defense by 30" +
 				"\nIf [c/AE0000:E.G.O. Manifestation] is active, unique [c/FF0046:Great Split] attacks can be performed" +
 				"\nExecute [c/FF0046:Great Split: Vertical] with right click or [c/FF0046:Great Split: Horizontal] with the Weapon Action Key (Both attacks share a 1 minute cooldown)" +
-				"\n[c/FF0046:Great Split: Vertical] will grant Invincibility for 1 second and deal 5x guaranteed close-ranged critical damage after a short delay" +
+				"\n[c/FF0046:Great Split: Vertical] will grant Invincibility for 1 second and deal 8x guaranteed close-ranged critical damage after a short delay" +
 				"\n[c/FF0046:Great Split: Horizontal] will deal 3x guaranteed critical damage to all foes on the screen after a short delay" +
 				"\nBoth [c/FF0046:Great Split] attacks will execute any non-boss enemy below 30% HP and additionally refill [c/D53B3B:Emotional Turbulence] to full upon activation" +
                 "\nIf [c/AE0000:E.G.O. Manifestation] is active, [c/D53B3B:Emotional Turbulence] will passively decrease over time (Resets when not holding the weapon)" +
@@ -49,7 +49,7 @@ namespace StarsAbove.Items
 		public override void SetDefaults()
 		{
 			
-			Item.damage = 111;           //The damage of your weapon
+			Item.damage = 88;           //The damage of your weapon
 			Item.DamageType = ModContent.GetInstance<Systems.PsychomentDamageClass>();
 			Item.width = 108;            //Weapon's texture's width
 			Item.height = 108;           //Weapon's texture's height
@@ -139,7 +139,7 @@ namespace StarsAbove.Items
 
 				player.GetModPlayer<ManifestationPlayer>().gaugeChangeAlpha = 1f;
 				player.GetModPlayer<ManifestationPlayer>().emotionGauge = player.GetModPlayer<ManifestationPlayer>().emotionGaugeMax;
-				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, velocity.X, velocity.Y, ProjectileType<SplitVertical>(), player.GetWeaponDamage(Item)*5, 0, player.whoAmI, 0f);
+				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, velocity.X, velocity.Y, ProjectileType<SplitVertical>(), player.GetWeaponDamage(Item)*8, 0, player.whoAmI, 0f);
 			}
 			if (player.GetModPlayer<ManifestationPlayer>().greatSplitHorizontalTimer == 0)
             {

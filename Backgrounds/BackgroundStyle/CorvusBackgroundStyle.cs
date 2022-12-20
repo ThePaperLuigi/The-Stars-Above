@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace StarsAbove.Backgrounds
 {
-    public class TucanaBackgroundStyle : ModSurfaceBackgroundStyle
+    public class CorvusBackgroundStyle : ModSurfaceBackgroundStyle
 	{
 
 
@@ -33,7 +33,7 @@ namespace StarsAbove.Backgrounds
 
 
 		public override int ChooseFarTexture() {
-			return BackgroundTextureLoader.GetBackgroundSlot("StarsAbove/Backgrounds/TucanaBGFar");
+			return BackgroundTextureLoader.GetBackgroundSlot("StarsAbove/Backgrounds/CorvusBGFar");
 			//return -1;
 		}
 
@@ -57,13 +57,13 @@ namespace StarsAbove.Backgrounds
 					return -1;
 			}*/
 			//return -1;
-			return BackgroundTextureLoader.GetBackgroundSlot("StarsAbove/Backgrounds/TucanaBGMid");
+			return BackgroundTextureLoader.GetBackgroundSlot("StarsAbove/Backgrounds/CorvusBGMid");
 
 		}
 
 		public override int ChooseCloseTexture(ref float scale, ref double parallax, ref float a, ref float b) {
 			//return -1;
-			return BackgroundTextureLoader.GetBackgroundSlot("StarsAbove/Backgrounds/TucanaBGClose");
+			return BackgroundTextureLoader.GetBackgroundSlot("StarsAbove/Backgrounds/CorvusBGClose");
 		}
 	}
 }

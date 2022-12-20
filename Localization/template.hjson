@@ -94,36 +94,29 @@ Mods: {
 				}
 				WaterPlanet: {
 					Name: Aquarius
-					Description: An ocean planet convered entirely in water. While it does not sustain intelligent life, the geothermal conduction beneath the waves means life can still persist, even deep within the Ardor.
+					Description: An ocean planet convered entirely in water. While it does not sustain intelligent life, the geothermal conduction beneath the waves means some life can still persist, even deep within the Ardor.
 					Threat: "Threat Level: C-"
 					Requirement: Transit impossible at this time.
 					Loot: "Resources: ???"
 				}
 				AlienPlanet: {
-					Name: Lyra (Anomaly Iota)
+					Name: Lyra
 					Description: A strange planet known as Anomaly Iota. It is recorded emitting strange, powerful vibrations periodically akin to a beating heart. Exploration is limited due to a highly acidic surface.
 					Threat: "Threat Level: B++ Anomaly"
 					Requirement: Tier III Stellaglyph required for transit.
-					Loot: "Resources: ???"
+					Loot: "Resources: Prismatic Cores"
 				}
-				OutpostVolans: {
-					Name: Outpost Volans
-					Description: One of the rare outer-rim outposts, hosting a variety of goods. It houses a fusion reactor and several grow vaults to sustain life, but not enough to harbor refugees.
-					Threat: "Threat Level: N/A"
-					Requirement: Tier II Stellaglyph required for transit.
-					Loot: "Resources: Vendor"
-				}
-				Auriga: {
-					Name: Auriga
-					Description: The ruined, war-torn ashes of what was once a thriving planet. While this tragedy occured predating the Ardor, the sheer cold has snuffed out any remaining lives on the planet.
+				Corvus: {
+					Name: Corvus
+					Description: Deep within the Ardor, dwindling resources led to this ruined, war-torn ashen planet. A grim reminder that while war could kill you, the cold will.
 					Threat: "Threat Level: B"
-					Requirement: Tier III Stellaglyph required for transit.
-					Loot: "Resources: Rare accessory components"
+					Requirement: Tier II Stellaglyph required for transit.
+					Loot: "Resources: Unique upgrade materials"
 				}
-				RefugeeVessel: {
-					Name: Refugee Vessel
-					Description: A substandard spaceship packed to the brim with desperate refugees hoping to escape the encroaching cold.
-					Threat: "Threat Level: N/A"
+				Sagitta: {
+					Name: Sagitta
+					Description: A picturesque planet, with a pleasant atmosphere and awe-inspiring giant rock formations. However, the lack of water leaves this planet devoid of anything but long-petrified foliage.
+					Threat: "Threat Level: D"
 					Requirement: Transit impossible at this time.
 					Loot: "Resources: None"
 				}
@@ -136,7 +129,7 @@ Mods: {
 				}
 				QuestionMark: {
 					Name: " "
-					Description: The Stellaglyph can't take you past this point without a relay; a starship will be required to travel to the next region... (Content will be added at a later date!)
+					Description: The Stellaglyph can't take you past this point yet... (Content will be added at a later date!)
 					Threat: "N/A"
 					Requirement: "N/A"
 					Loot: "N/A"

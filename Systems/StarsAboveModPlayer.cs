@@ -1855,7 +1855,7 @@ namespace StarsAbove
 
         public override void OnEnterWorld(Player player)
         {
-            SubworldSystem.noReturn = false;
+            SubworldSystem.noReturn = false; //Fix missing save and quit bug?
 
             if (player.whoAmI == Main.myPlayer && enableWorldLock)
             {

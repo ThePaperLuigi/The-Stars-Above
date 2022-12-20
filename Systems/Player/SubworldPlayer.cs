@@ -22,6 +22,7 @@ using SubworldLibrary;
 using StarsAbove.Biomes;
 using StarsAbove.Subworlds;
 using StarsAbove.Buffs.Subworlds;
+using StarsAbove.Buffs.SubworldModifiers;
 
 namespace StarsAbove
 {
@@ -56,7 +57,7 @@ namespace StarsAbove
             if (Player.InModBiome(ModContent.GetInstance<SeaOfStarsBiome>()))
             {
                 //Make sure the player can't do what's not allowed:
-                Player.AddBuff(BuffType<Superimposed>(), 2);
+                Player.AddBuff(BuffType<Superimposed>(), 10);
                 Player.noBuilding = true;
 
                 //Space gravity!
@@ -72,10 +73,30 @@ namespace StarsAbove
                     Player.velocity = new Vector2(Player.velocity.X, -17);
                 }
             }
+            if (Player.InModBiome(ModContent.GetInstance<CorvusBiome>()))
+            {
+                //Make sure the player can't do what's not allowed:
+
+                //Add this later.
+                //Player.AddBuff(BuffType<Superimposed>(), 2);
+                //Player.noBuilding = true;
+
+                Player.AddBuff(BuffType<ArdorInfluence>(), 10);
+
+
+
+                //Fall too far into the void, and you'll be launched back up while taking heavy DoT.
+                if ((int)(Player.Center.Y / 16) > 500)
+                {
+                    Player.AddBuff(BuffType<SpatialBurn>(), 120);
+
+                    Player.velocity = new Vector2(Player.velocity.X, -17);
+                }
+            }
             if (Player.InModBiome(ModContent.GetInstance<BleachedWorldBiome>()))
             {
                 //Make sure the player can't do what's not allowed:
-                Player.AddBuff(BuffType<Superimposed>(), 2);
+                Player.AddBuff(BuffType<Superimposed>(), 10);
                 Player.noBuilding = true;
 
                 //Space gravity!
@@ -92,7 +113,7 @@ namespace StarsAbove
             if (SubworldSystem.IsActive<Tucana>())
             {
                 //Make sure the player can't do what's not allowed:
-                Player.AddBuff(BuffType<Superimposed>(), 2);
+                Player.AddBuff(BuffType<Superimposed>(), 10);
                 Player.noBuilding = true;
 
                 //Space gravity!
@@ -103,7 +124,7 @@ namespace StarsAbove
             //Observatory.
             if (SubworldSystem.IsActive<Observatory>())
             {
-                Player.AddBuff(BuffType<Superimposed>(), 2);
+                Player.AddBuff(BuffType<Superimposed>(), 10);
                 Player.noBuilding = true;
                 Main.cloudBGActive = 1f;
 
@@ -119,7 +140,7 @@ namespace StarsAbove
             //Final boss arena.
             if (SubworldSystem.IsActive<EternalConfluence>())
             {
-                Player.AddBuff(BuffType<Superimposed>(), 2);
+                Player.AddBuff(BuffType<Superimposed>(), 10);
                 Player.noBuilding = true;
                 Main.cloudBGActive = 1f;
 

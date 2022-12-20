@@ -5,12 +5,13 @@ using Terraria.ModLoader;
 
 namespace StarsAbove.Items.Materials
 {
-    public class WadOfTenebrium : ModItem
+    public class BandedTenebrium : ModItem
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Banded Tenebrium");
-			Tooltip.SetDefault("Sold at a very high price to shops" +
-                "\n'Binded sheets of darkened metal'" +
+			Tooltip.SetDefault("Utilized to upgrade the Stellaglyph and craft certain Stellar Foci" +
+                "\nObtained on a war-torn urban planet" +
+                "\n'Cold to the heat'" +
 				"");
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;
