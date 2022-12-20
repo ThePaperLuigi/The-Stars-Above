@@ -1,4 +1,6 @@
-﻿using Terraria;
+﻿using StarsAbove.Utilities;
+using Terraria;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Systems

@@ -76,7 +76,7 @@ namespace StarsAbove.Subworlds
 		};
 		public override void Load()
 		{
-			ModTypeLookup<Subworld>.Register(this);
+			
 			
 			
 		}

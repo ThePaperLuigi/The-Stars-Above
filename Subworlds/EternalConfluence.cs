@@ -29,7 +29,7 @@ namespace StarsAbove
 				progress.Message = "..."; //Sets the text above the worldgen progress bar
 				Main.worldSurface = Main.maxTilesY + 250; //Hides the underground layer just out of bounds
 				Main.rockLayer = Main.maxTilesY; //Hides the cavern layer way out of bounds
-				SubworldSystem.hideUnderworld = false;
+				SubworldSystem.hideUnderworld = true;
 				//variantWorld = Main.rand.Next(3);
 
 				StructureHelper.Generator.GenerateStructure("Structures/FinalBossArena", new Terraria.DataStructures.Point16((Main.maxTilesX/2) - 40, (Main.maxTilesY/2)), StarsAbove.Instance);
@@ -58,7 +58,7 @@ namespace StarsAbove
 
 		public override void Load()
 		{
-			ModTypeLookup<Subworld>.Register(this);
+			
 
 
 		}

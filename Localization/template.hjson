@@ -4,6 +4,7 @@ Mods: {
 			Misc: {
 				Confirm: Confirm your selection.
 				Reset: Reset your selection.
+				
 			}
 			AspectedDamageType: {
 				Description: If the weapon's type has changed, the weapon deals 10% less damage when active.
@@ -132,7 +133,7 @@ Mods: {
 				}
 				CyclicHunter: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Cyclic Hunter']"
-					Description: When ammo is consumed, gain 8 mana, 10% increased damage, and Movement Speed for half a second. 2 second cooldown.
+					Description: After defeating an enemy, gain 8 mana, 10% increased damage, and 50% increased Movement Speed for half a second. 2 second cooldown.
 					Unlock: "[c/9D9D9D:Locked:] Defeat the Slime King in Expert Mode"
 				}
 				LivingDead: {
@@ -152,6 +153,13 @@ Mods: {
 				}
 			}
 		}
+		Archive: {
+			DefaultIdleDialogue: {
+				Name: Default Idle Dialogue
+				Description: This dialogue appears when you've already seen the normal idle dialogue recently.
+			}
+		}
+		
 		Dialogue: {
 			IdleDialogueHardmode: {
 				Asphodene: Sorry, {0}. Nothing to comment on right now.
@@ -236,6 +244,11 @@ Mods: {
 					71: From my take, it seems to be a great off-hand weapon to pump out explosions. Everyone loves explosions, right? 
 					72: Here's a Ranged weapon- it has both a useful primary fire and can unleash strong self-sustaining drones to attack as well.
 					73: I've got a new weapon for you: it's a powerful mid-range blade, with the ability to conjure a crystal which can alter your combat style. Interesting, huh?
+					74: This is an Essence that'll turn into a pair of gloves. Now, I know what you're thinking, but let me explain.
+					75: These gloves can conjure a whole arsenal of weapons for you to wield. Complicated, but it'll be very powerful if used right.
+					76: Right. This Melee Essence dips into the void to defeat foes and absorb them after. Sounds pretty cool to me.
+					77: I've acquired a new Essence for your use. It seems to borrow strength from Melee and Magic both- a versatile weapon, I like it!
+					78: Looks like this Graveyard seems to have some connection to this Essence. Hopefully all these graves weren't just from you dying, right?
 				}
 				Eridani: {
 					1: Here's a Ranged-type essence. It looks like every fourth shot has increased offensive properties. Whatever the reason, it's powerful.
@@ -312,6 +325,13 @@ Mods: {
 					72: This Essence focuses on excavation as well as damage. You can use it to move earth at significant rates, and additionally deal powerful explosive damage. 
 					73: Here's a Ranged weapon- it has both a useful primary fire and can unleash strong self-sustaining drones to attack as well.
 					74: I've a new Celestial weapon for your use. It'll be more powerful when you utilize its strength to summon a Prismic, which can assist you in battle.
+					75: Here's a new weapon for your use. In truth, this Essence is a bit more than that; it's a pair of gloves.
+					76: Of course, that's not the whole story- you can use these gloves to summon an entire arsenal of weapons.
+					77: I know the prospect sounds daunting, but you'll deal some heavy damage if you can manage the weapons well.
+					78: Okay, here's a Melee weapon- with the power of souls, you can cleave huge areas around you and dip into the void itself for instant teleportation.
+					79: Looks to be a new Essence for your use. It uses a unique damage type and powerful charge attacks- but it'll probably have some recoil damage.
+					80: This Graveyard seems to have connected to this Essence. I hope it'll help you avoid creating the Graveyard in the first place.
+					81: While powerful, I believe it's a utility item, and not a weapon this time.
 				}
 				Perseus: {
 					1: It's good to see you again, {0}. I'm not here to ask for your help- instead, I have a gift for you.
@@ -538,8 +558,8 @@ Mods: {
 					}
 					Eridani: {
 						1: You have brought down the Warrior of Light. He's managed to escape, but nighttime has returned to this world regardless.
-						2: LIt seems we were misguided. The Warrior believed he was saving the universe, but it was, in truth, all lies from his Starfarer.
-						3: With this final Mnemonic Trace.. I see.. It all makes sense now. {0}, I need to you combine all of the Mnemonic Traces together.
+						2: It seems we were misguided. The Warrior believed he was saving the universe, but it was, in truth, all lies from his Starfarer.
+						3: With this final Mnemonic Trace.. I see.. It all makes sense now. {0}, I need you to combine all of the Mnemonic Traces together.
 						4: It will bring the Starfarer straight to us. After that.. We must defeat her. At any cost. Prepare yourself well.
 						5: Not all is lost, however. We've gained some strength from the Warrior of Light in the Stellar Array.
 						6: Remember: the First Starfarer. We can not let this opportunity slip away. This will likely be the fight of our lives.. Prepare yourself well.
@@ -568,7 +588,7 @@ Mods: {
 						4: A new Stellar Array ability is active. Could this be the very last one?
 					}
 					Eridani: {
-						1: I'm in awe... In truth, I've had this Essence locked away- it was far to powerful to wield. However...
+						1: I'm in awe... In truth, I've had this Essence locked away- it was far too powerful to wield. However...
 						2: It would be silly of me to keep it from you now. With everything you've done, it belongs to you now.
 						3: Keep in mind its potential- and good luck crafting it.
 						4: Wait a moment- is this also the last Stellar Array ability, activated? Incredible work.
@@ -652,7 +672,7 @@ Mods: {
 						2: Maybe if she stood still at all, I'd have gotten a better glimpse. Kind of annoying, huh.
 					}
 					Eridani: {
-						1: You have brought down the Warrior of Light. He's managed to escape, but nighttime has returned to this world regardless.
+						1: Congratulations, you've bested the Empress of Light. Let's leave the bugs alone now, okay?   
 						2: If I had a nickel for bosses summoned with insects... We fought that rather large fish, right? That's two. Not very much, is it. I was hoping for a trend. 
 						3: If I had a nickel for bosses summoned with insects... We fought that rather large fish, right? That's two. Not very much, is it. I was hoping for a trend. Maybe we can count the Queen Bee?
 						4: Somehow... I feel like there's yet another boss we'll have to use an insect to summon. That's going to be rather bothersome. 
@@ -1237,6 +1257,15 @@ Mods: {
 					177: We've made it. This planet is strange.. The surface has been wiped clean... What happened?
 					178: She was so close all along... Use the Mnemonic Sigil on the arena's center to begin.
 					179: It looks like we can't explore this yet... Maybe next time.
+					
+					180: Wow, this place is seriously covered in greenery. Looks like a fun trip- let's get to exploring!
+					
+					181: Okay, that slime's stopped holding back. Let's dig in our heels for a fight.
+					182: Not the treasure I was expecting... Prepare yourself, that evil spirit's planning a dastardly attack.
+					183: Something about this foe rubs me the wrong way. Don't let your guard down, lest it do something with this 'Planetarium' thing.
+					184: It's getting seriously cold around you. Heads up: this snowflake-shaped being is coming your way.
+					185: Don't make light of this foe- it's seriously dangerous. Hehe- but seriously, this thing's no joke. Take caution.
+					186: I love throwing explosives as much as the next guy, but it seems you've been punished for that. Prepare for a fight.
 				}
 				Eridani: {
 					1: Uhh.. you're looking a little sick.
@@ -1418,6 +1447,16 @@ Mods: {
 					177: It looks like we can't explore this yet... Maybe next time.
 					178: A being of the apocalypse has appeared. It wields destruction in all its appendages!
 					179: This huge amalgamate draws from the world's evils! Killing one slime will empower the other!
+					
+					180: Looks like this biome's governed mostly by foliage- a bit more tasteful than the Jungle, I'd say. Let's look around.
+					
+					181: Seems like you've bothered that slime enough- it seems to have drastically altered its fighting style.
+					182: A Pharaoh in the depths of a pyramid? That sounds about right- but looks like you'll have to deal with what comes next.
+					183: I'm getting a bad feeling from this enemy... Let's dispatch of it quickly, lest it do something else with this 'Planetarium.'
+					184: Hey, the temperature of your surroundings is dropping dramatically. I'm sure you can see the source of this anomaly- deal with it, fast.
+					185: Whatever this thing is, it's hard to even look at. Be careful, it's powerful and lethal.
+					186: I think whatever you've done must have had some serious repercussions- a strange entity has emerged, and is heading your way.
+					
 					
 				}
 			}
@@ -1904,6 +1943,11 @@ Mods: {
                 Label: Disable Aspected Weapon restrictions
                 Tooltip: Disables the restriction for Astral and Umbral weapons being wielded by other players.
             }
+			
+			DisableBossEnemySpawnMod: {
+                Label: Disable Boss Enemy Spawn Mod
+                Tooltip: Disables the buff granted to all players that prevents mob spawning during bosses.
+            }
             
             CombatTimer: {
                 Label: Combat Timer
@@ -1914,11 +1958,13 @@ Mods: {
 		Common: {
 			DiskReady: The Spatial Disk begins to resonate. Left click to interact.
 			ArrayAbility: The Stellar Array has gained a new ability!
+			`: The weapon fails to react to your Aspect, rendering it unusable. You can only use Astral weapons with Asphodene.
+			UmbralLocked: The weapon fails to react to your Aspect, rendering it unusable. You can only use Umbral weapons with Eridani.
 		}
 		
 
 		DamageClass: {
-			CelestialDamageClass: spatial damage
+			CelestialDamageClass: celestial damage
 		}
 		
 		NPCName: {
@@ -2208,7 +2254,7 @@ Mods: {
             BuryTheLight: {
                 $parentVal:
                     '''
-                    [c/FF5858:This weapon's attacks will slash at your cursor and ignore 100 armor]
+                    [c/FF5858:This weapon's attacks will slash at your cursor and deal true damage]
                     Each strike will restore Health and Mana
                     Critical hits will inflict Starblight for 20 seconds
                     On a critical hit, foes that are currently inflicted with Starblight will take extra damage and also be inflicted with Frostburn for 20 seconds
@@ -2483,6 +2529,26 @@ Mods: {
 				[c/FF61CA:Dazzling Bladedance] increases melee speed by 30%
 				The [c/7B48CA:Dazzling Prismic] will deal minor damage to foes caught in its radius after shattering for a short duration
                 '''
+			BlackSilenceWeapon:
+				'''
+				Right-click to choose from 3 random weapons from a pool of 9 different weapons, each with unique attack patterns (5 second cooldown)
+				After choosing a weapon, gain a unique buff based on the chosen weapon that lasts for 12 seconds
+				[c/6C6C6C:Durandal]: Attack in a wide arc with a high critical strike chance; gain 50% bonus critical strike damage against foes below 50% HP
+				[c/6C6C6C:Zelkova]: Alternate between axe and mace, healing for a portion of damage dealt; deal 30% bonus damage to foes below 50% HP
+				[c/6C6C6C:Ranga]: Dash a fixed distance towards your cursor, damaging foes for half base damage (Cooldown after attacking); deal 30% increased critical strike damage
+				[c/6C6C6C:Old Boys]: Throw a returning hammer that hits twice at max range, dealing 2x base damage to foes below 50% HP; gain 20 defense
+				[c/6C6C6C:Allas]: Attack with a piercing mid-ranged stab with wide range and no knockback; gain 30% increased Movement Speed
+				[c/6C6C6C:Mook]: Execute a barrage of close-ranged slashes per attack (Cooldown after attacking); inflict Bleed on hit for 4 seconds
+				[c/6C6C6C:Atelier Logic]: Attack with ranged bullets (every third attack deals 40% increased damage); gain 20% Armor Penetration
+				[c/6C6C6C:Crystal Atelier]: Slash in a mid-ranged arc, dealing damage twice per hit; reflect 80% of damage taken
+				[c/6C6C6C:Wheels Industry]: Slam the weapon into the ground, dealing 25% increased damage to all nearby enemies; deal 10% increased damage
+				Once all 9 weapons are chosen, use the Weapon Action Key to activate [c/525252:Furioso], gaining the buff [c/323232:Black Silence] for 12 seconds
+				[c/323232:Black Silence] causes all weapons to be cycled through upon attacking
+				An icon will display near weapons you have not used for the activation of [c/525252:Furioso] during selection
+				[c/323232:Black Silence] will additionally grant all unique weapon buffs without the need for prior activation when active
+				'It can't be helped. That's that, and this is this'
+				'''
+			
             CrimsonKey:
                 '''
                 Calls forth an instance of your rebellious heart
@@ -2953,13 +3019,13 @@ Mods: {
             EverlastingPickaxe:
                 '''
                 Can quickly mine any ore
-                Right click to place a dusting of [Everlasting Gunpowder], which lasts for 20 seconds
-                Swinging the pickaxe causes consecutive explosions centered on the [Everlasting Gunpowder], destroying tiles
-                Press the Weapon Action Key to load [Everlasting Gunpowder] into the pickaxe
-                When [Everlasting Gunpowder] is loaded, mining is disabled and attacking capabilities are extended
-                Attacks swing in an alternating arc, firing a portion of [Everlasting Gunpowder] towards the cursor
-                Once the [Everlasting Gunpowder] makes contact with a tile or an enemy, it will detonate multiple times before disappearing
-                Pressing the Weapon Action Key when [Everlasting Gunpowder] is loaded will revert to the original state
+                Right click to place a dusting of [c/82D1D5:Everlasting Gunpowder], which lasts for 20 seconds
+                Swinging the pickaxe causes consecutive explosions centered on the [c/82D1D5:Everlasting Gunpowder], destroying tiles
+                Press the Weapon Action Key to load [c/82D1D5:Everlasting Gunpowder] into the pickaxe
+                When [c/82D1D5:Everlasting Gunpowder] is loaded, mining is disabled and attacking capabilities are extended
+                Attacks swing in an alternating arc, firing a portion of [c/82D1D5:Everlasting Gunpowder] towards the cursor
+                Once the [c/82D1D5:Everlasting Gunpowder] makes contact with a tile or an enemy, it will detonate multiple times before disappearing
+                Pressing the Weapon Action Key when [c/82D1D5:Everlasting Gunpowder] is loaded will revert to the original state
                 'At the Netherworld's bottom... I'll be waiting'
                 '''
             EveryMomentMatters:
@@ -4108,6 +4174,21 @@ Mods: {
                 If you attempt to teleport to an unaccessable location, you will consume the [c/CB8EE3:Lightning Stiletto] without teleporting but still prepare [c/B703FF:Driving Thunder]
                 'Woven from lightning itself, from a land where gods roam free'
                 '''
+		}
+		
+		UIElements: {
+			BlackSilence: {
+				Durandal: Durandal
+				Zelkova: Zelkova
+				Ranga: Ranga
+				OldBoys: Old Boys
+				Allas: Allas
+				Mook: Mook
+				AtelierLogic: Atelier Logic
+				CrystalAtelier: Crystal Atelier
+				WheelsIndustry: Wheels Industry
+				FuriosoReady: Furioso is ready!
+			}
 		}
 		
 		ItemName: {

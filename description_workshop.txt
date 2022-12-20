@@ -15,7 +15,7 @@ Use the promo code "starsabove" to get 25% off your first month- and help suppor
 [img]https://i.imgur.com/giHAnWT.jpg[/img]
 
 
-The Stars Above is a Terraria expansion mod that adds a new important game mechanic:
+The Stars Above is a Terraria expansion mod that adds a ton of content and a new important game mechanic:
 the Starfarer system. With over 1 million downloads in less than a year, The Stars Above guarantees a unique experience for any playthrough.
 
 Choose between either the Umbral or Astral Aspect, and unlock unique equippable abilities
@@ -69,7 +69,10 @@ Casted Attacks. Adapt and learn to defeat these formidable enemies!
 
 The features of The Stars Above doesn't stop here; express yourself with unique pets or empower yourself with the mod's unique accessories.
 
-Additionally, fans of the Calamity Mod will see custom dialogue for Calamity bosses and scaling to compensate!
+Your Starfarers will have unique dialogue for content from the following mods:
+Calamity, Secrets of the Shadows, Verdant, Fargo's Souls, Thorium (1.3 only.) More will come soon!
+Additionally, some separate scaling is present for the Calamity Mod. (This can be disabled in the Mod Settings.)
+
 
 [img]https://i.imgur.com/BEnNDqm.png[/img]
 

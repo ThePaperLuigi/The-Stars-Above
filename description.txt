@@ -8,8 +8,6 @@ This mod includes:
    lines of dialogue and custom UI to support it
 - Modular, upgradable ultimate abilities that scale
    with boss progression
-- Pre-made instanced explorable dungeons
-   set amongst the stars
 - 24 custom unlockable passive abilities present in a
    unique weight-based system
 - 50+ special weapons that have malleable damage types,

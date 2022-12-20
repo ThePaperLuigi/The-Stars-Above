@@ -29,10 +29,7 @@ namespace StarsAbove.Biomes
 
 		// Calculate when the biome is active.
 		public override bool IsBiomeActive(Player player) {
-			if(SubworldSystem.IsActive<GalacticMean>())
-            {
-				return true;
-            }
+			
 			return false;
 		}
 	}

@@ -420,6 +420,14 @@ namespace StarsAbove.Items.Consumables
 				
 				return true;
 			}
+			if (player.GetModPlayer<StarsAbovePlayer>().FarewellWeaponDialogue == 1)
+			{
+				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 159;
+				player.GetModPlayer<StarsAbovePlayer>().FarewellWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
 			if (player.GetModPlayer<StarsAbovePlayer>().WallOfFleshWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 105;
@@ -840,12 +848,36 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
+			if (player.GetModPlayer<StarsAbovePlayer>().SilenceWeaponDialogue == 1)
+			{
+				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 156;
+				player.GetModPlayer<StarsAbovePlayer>().SilenceWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
 			if (player.GetModPlayer<StarsAbovePlayer>().VagrantWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 115;
 				player.GetModPlayer<StarsAbovePlayer>().VagrantWeaponDialogue = 2;
 				activateDialogue(player);
 				
+				return true;
+			}
+			if (player.GetModPlayer<StarsAbovePlayer>().SoulWeaponDialogue == 1)
+			{
+				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 157;
+				player.GetModPlayer<StarsAbovePlayer>().SoulWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
+			if (player.GetModPlayer<StarsAbovePlayer>().GoldWeaponDialogue == 1)
+			{
+				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 158;
+				player.GetModPlayer<StarsAbovePlayer>().GoldWeaponDialogue = 2;
+				activateDialogue(player);
+
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().NalhaunWeaponDialogue == 1)
@@ -982,6 +1014,14 @@ namespace StarsAbove.Items.Consumables
 				player.GetModPlayer<StarsAbovePlayer>().TakodachiWeaponDialogue = 2;
 				activateDialogue(player);
 				
+				return true;
+			}
+			if (player.GetModPlayer<StarsAbovePlayer>().HardwareWeaponDialogue == 1)
+			{
+				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 154;
+				player.GetModPlayer<StarsAbovePlayer>().HardwareWeaponDialogue = 2;
+				activateDialogue(player);
+
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().TwinStarsWeaponDialogue == 1)
@@ -1192,11 +1232,11 @@ namespace StarsAbove.Items.Consumables
         {
 			if(player.GetModPlayer<StarsAbovePlayer>().NewDiskDialogue)
             {
-				ItemID.Sets.ItemIconPulse[Item.type] = true;
+				//ItemID.Sets.ItemIconPulse[Item.type] = true;
 			}
 			else
             {
-				ItemID.Sets.ItemIconPulse[Item.type] = false;
+				//ItemID.Sets.ItemIconPulse[Item.type] = false;
 			}
 			
 

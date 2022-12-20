@@ -45,7 +45,7 @@ namespace StarsAbove.Items
 			Item.damage = 25;
 			Item.knockBack = 7;
 			Item.rare = ItemRarityID.LightRed;
-
+			Item.value = Item.buyPrice(gold: 1);
 			Item.shoot = ModContent.ProjectileType<MorningStarWhip>();
 			Item.shootSpeed = 4;
 			Item.autoReuse = true;

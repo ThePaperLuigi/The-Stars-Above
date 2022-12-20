@@ -43,6 +43,7 @@ using StarsAbove.Buffs.BurningDesire;
 using StarsAbove.Utilities;
 using StarsAbove.Buffs.CatalystMemory;
 using StarsAbove.Items.Armor.StarfarerArmor;
+using StarsAbove.Buffs.Farewells;
 
 namespace StarsAbove
 {
@@ -52,6 +53,8 @@ namespace StarsAbove
         public int firstJoinedWorld = 0;//Sets the world so progress doesn't get overwritten by joining other worlds.
         public string firstJoinedWorldName;
         public static bool enableWorldLock = false;
+
+       
 
         public static bool BossEnemySpawnModDisabled = false;
 
@@ -144,6 +147,15 @@ namespace StarsAbove
         public int CatalystPrismicHP;
         public int CatalystMemoryProgress;
         public Vector2 CatalystPrismicPosition;
+
+        //Golden Katana (Aurum Edge?)
+        public bool GoldenKatanaHeld;
+
+        //Irminsul's Dream
+        public bool IrminsulHeld;
+        public bool IrminsulAttackActive;
+        public Vector2 IrminsulBoxStart;
+        public Vector2 IrminsulBoxEnd;
 
         //Warrior of Light code //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -283,6 +295,9 @@ namespace StarsAbove
         public float bowCharge = 0;
         public const int bowChargeMax = 100;
         public bool bowChargeActive = false;
+
+        public float overCharge1 = 0;
+        public float overCharge2 = 0;
 
         //powderGaugeCode ( Kroniic Principality )
         public int powderGauge = 0;
@@ -429,6 +444,10 @@ namespace StarsAbove
         public Vector2 sirenTarget;
         public Vector2 sirenEnemy;
 
+        //Soul Reaver
+        public bool SoulReaverHeld;
+        public int SoulReaverSouls;
+
         //Stygian Nymph
         public int duality = 100;
 
@@ -493,13 +512,16 @@ namespace StarsAbove
         //Urgot Weapon
         public bool ChemtankHeld;
 
+        //Hunter's Symphony
         public bool HunterSymphonyHeld;
         public int SymphonySongsPlayed;
         public int HunterSongPlaying;
 
         public int GlobalRotation;
 
-
+        //Kevesi and Agnian Farewells
+        public bool KevesiFarewellInInventory;
+        public bool AgnianFarewellInInventory;
 
         //Starfarers ///////////////////////////////////////////////////////////////////////////////////////////////////
         public float StarfarerSelectionVisibility = 0f;
@@ -744,6 +766,10 @@ namespace StarsAbove
         public int PickaxeWeaponDialogue = 0;
         public int HardwareWeaponDialogue = 0;
         public int CatalystWeaponDialogue = 0;
+        public int SilenceWeaponDialogue = 0;
+        public int SoulWeaponDialogue = 0;
+        public int GoldWeaponDialogue = 0;
+        public int FarewellWeaponDialogue = 0;
 
         //Subworld dialogues
         public int observatoryDialogue = 0;
@@ -1015,6 +1041,9 @@ namespace StarsAbove
         public bool seenGraniteBiome;
         public bool seenMarbleBiome;
 
+        //Verdant
+        public bool seenVerdantBiome;
+
         //Calamity Bosses
         //Pre Hardmode
         public bool seenDesertScourge;
@@ -1067,6 +1096,14 @@ namespace StarsAbove
         public bool seenLich;
         public bool seenAbyssion;
         public bool seenPrimordials;
+
+        //SOTS Bosses
+        public bool seenPutridPinky;
+        public bool seenPharaoh;
+        public bool seenAdvisor;
+        public bool seenPolaris;
+        public bool seenLux;
+        public bool seenSubspaceSerpent;
 
         //Fargos Souls Bosses
         public bool seenTrojanSquirrel;
@@ -1364,6 +1401,10 @@ namespace StarsAbove
             tag["PickaxeWeaponDialogue"] = PickaxeWeaponDialogue;
             tag["HardwareWeaponDialogue"] = HardwareWeaponDialogue;
             tag["CatalystWeaponDialogue"] = CatalystWeaponDialogue;
+            tag["SilenceWeaponDialogue"] = SilenceWeaponDialogue;
+            tag["SoulWeaponDialogue"] = SoulWeaponDialogue;
+            tag["GoldWeaponDialogue"] = GoldWeaponDialogue;
+            tag["FarewellWeaponDialogue"] = FarewellWeaponDialogue;
 
 
             tag["observatoryDialogue"] = observatoryDialogue;
@@ -1452,6 +1493,13 @@ namespace StarsAbove
             tag["seenAbyssion"] = seenAbyssion;
             tag["seenPrimordials"] = seenPrimordials;
 
+            tag["seenPutridPinky"] = seenPutridPinky;
+            tag["seenPharaoh"] = seenPharaoh;
+            tag["seenAdvisor"] = seenAdvisor;
+            tag["seenPolaris"] = seenPolaris;
+            tag["seenLux"] = seenLux;
+            tag["seenSubspaceSerpent"] = seenSubspaceSerpent;
+
             tag["seenTrojanSquirrel"] = seenTrojanSquirrel;
             tag["seenDeviantt"] = seenDeviantt;
             tag["seenEridanus"] = seenEridanus;
@@ -1484,6 +1532,8 @@ namespace StarsAbove
             tag["seenAquaticDepths"] = seenAquaticDepthsBiome;
             tag["seenGranite"] = seenGraniteBiome;
             tag["seenMarble"] = seenMarbleBiome;
+
+            tag["seenVerdant"] = seenVerdantBiome;
 
 
             tag["affixSlot1"] = StellarNovaUI._affixSlot1.Item;
@@ -1622,6 +1672,10 @@ namespace StarsAbove
             PickaxeWeaponDialogue = tag.GetInt("PickaxeWeaponDialogue");
             HardwareWeaponDialogue = tag.GetInt("HardwareWeaponDialogue");
             CatalystWeaponDialogue = tag.GetInt("CatalystWeaponDialogue");
+            SilenceWeaponDialogue = tag.GetInt("SilenceWeaponDialogue");
+            SoulWeaponDialogue = tag.GetInt("SoulWeaponDialogue");
+            GoldWeaponDialogue = tag.GetInt("GoldWeaponDialogue");
+            FarewellWeaponDialogue = tag.GetInt("FarewellWeaponDialogue");
 
 
             observatoryDialogue = tag.GetInt("observatoryDialogue");
@@ -1745,6 +1799,13 @@ namespace StarsAbove
             seenAbyssion = tag.GetBool("seenAbyssion");
             seenPrimordials = tag.GetBool("seenPrimordials");
 
+            seenPutridPinky = tag.GetBool("seenPutridPinky");
+            seenPharaoh = tag.GetBool("seenPharaoh");
+            seenAdvisor = tag.GetBool("seenAdvisor");
+            seenPolaris = tag.GetBool("seenPolaris");
+            seenLux = tag.GetBool("seenLux");
+            seenSubspaceSerpent = tag.GetBool("seenSubspaceSerpent");
+
             seenTrojanSquirrel = tag.GetBool("seenTrojanSquirrel");
             seenDeviantt = tag.GetBool("seenDeviantt");
             seenEridanus = tag.GetBool("seenEridanus");
@@ -1779,6 +1840,9 @@ namespace StarsAbove
             seenAquaticDepthsBiome = tag.GetBool("seenAquaticDepths");
             seenGraniteBiome = tag.GetBool("seenGranite");
             seenMarbleBiome = tag.GetBool("seenMarble");
+
+            seenVerdantBiome = tag.GetBool("seenVerdant");
+
 
             affixItem1 = tag.Get<Item>("affixSlot1");
             affixItem2 = tag.Get<Item>("affixSlot2");
@@ -2832,7 +2896,11 @@ namespace StarsAbove
                 }
                 else
                 {
-                    target.AddBuff(BuffType<Buffs.Petrified>(), 600);
+                    if(crit)
+                    {
+                        target.AddBuff(BuffType<Buffs.Petrified>(), 180);
+                    }    
+                    
 
                 }
 
@@ -3941,10 +4009,7 @@ namespace StarsAbove
                     }
                 }
             }
-            if (!target.active)
-            {
-                OnKillEnemy(target);
-            }
+           
             base.ModifyHitNPCWithProj(proj, target, ref damage, ref knockback, ref crit, ref hitDirection);
         }
         public override void ModifyScreenPosition()
@@ -4019,7 +4084,7 @@ namespace StarsAbove
             {
                 boilingBloodDamage += damage / 4;
             }
-
+           
 
             if (crit)
             {
@@ -4111,7 +4176,7 @@ namespace StarsAbove
                 if (!target.active && target.lifeMax == 5 && target.CanBeChasedBy())
                 {
 
-
+                    
 
 
                 }
@@ -4689,6 +4754,7 @@ namespace StarsAbove
             }
             
             CelestialCartography();
+           
 
             if (CatalystMemoryProgress < 0)
             {
@@ -5216,6 +5282,7 @@ namespace StarsAbove
             if (inCombat < 0)
             {
                 butchersDozenKills = 0;
+                SoulReaverSouls = 0;
             }
             if (butchersDozenKills >= 12 && !Player.dead && Player.active)
             {
@@ -5374,8 +5441,8 @@ namespace StarsAbove
                           0,
                           "")); //Corresponding dialogue ID.
                     IdleArchiveList.Add(new IdleArchiveListing(
-                   "Default Idle Dialogue", //Name of the archive listing.
-                   "This dialogue appears when you've already seen the normal idle dialogue recently.", //Description of the listing.
+                   LangHelper.GetTextValue($"Archive.DefaultIdleDialogue.Name", Player.name), //Name of the archive listing.
+                   LangHelper.GetTextValue($"Archive.DefaultIdleDialogue.Description", Player.name), //Description of the listing.
                    true, //Unlock requirements.
                    2,
                    "")); //Corresponding dialogue ID.
@@ -5813,6 +5880,15 @@ namespace StarsAbove
                            136,
                            "Defeat Eye of Cthulhu")); //Corresponding dialogue ID.
                     WeaponArchiveList.Add(new WeaponArchiveListing(
+                        "Graveyard Weapon", //Name of the archive listing.
+                         $"Grants the Essence for either " +
+                           $"[i:{ItemType<Astral>()}] Kevesi Farewell " +
+                           $"or " +
+                           $"[i:{ItemType<Umbral>()}] Agnian Farewell.", //Description of the listing.
+                        FarewellWeaponDialogue == 2, //Unlock requirements.
+                        159,
+                        "Visit a Graveyard biome.")); //Corresponding dialogue ID.
+                    WeaponArchiveList.Add(new WeaponArchiveListing(
                           "Corruption/Crimson Boss Weapon", //Name of the archive listing.
                           $"Grants the Essence for either " +
                           $"[i:{ItemType<Astral>()}] Neo Dealmaker " +
@@ -5892,6 +5968,13 @@ namespace StarsAbove
                           ForceWeaponDialogue == 2, //Unlock requirements.
                           131,
                           "Defeat the Wall of Flesh, then wait.")); //Corresponding dialogue ID.
+                    WeaponArchiveList.Add(new WeaponArchiveListing(
+                        "Hallowed Biome Weapon", //Name of the archive listing.
+                        $"Grants the Essence for " +
+                        $"[i:{ItemType<Spatial>()}] Aurum Edge. ", //Description of the listing.
+                        GoldWeaponDialogue == 2, //Unlock requirements.
+                        158,
+                        "Visit the Hallowed biome.")); //Corresponding dialogue ID.
                     WeaponArchiveList.Add(new WeaponArchiveListing(
                           "Queen Slime Weapon", //Name of the archive listing.
                           $"Grants the Essence for either " +
@@ -6023,6 +6106,13 @@ namespace StarsAbove
                         132,
                         "Defeat Golem, then wait.")); //Corresponding dialogue ID.
                     WeaponArchiveList.Add(new WeaponArchiveListing(
+                        "Golem Weapon", //Name of the archive listing.
+                        $"Grants the Essence for " +
+                        $"[i:{ItemType<Spatial>()}] Gloves of the Black Silence. ", //Description of the listing.
+                        SilenceWeaponDialogue == 2, //Unlock requirements.
+                        156,
+                        "Defeat Golem, then wait.")); //Corresponding dialogue ID.
+                    WeaponArchiveList.Add(new WeaponArchiveListing(
                           "Arbitration Weapon", //Name of the archive listing.
                           $"Grants the Essence for either " +
                           $"[i:{ItemType<Astral>()}] Liberation Blazing " +
@@ -6067,7 +6157,7 @@ namespace StarsAbove
                         "Lunatic Cultist Weapon", //Name of the archive listing.
                         $"Grants the Essence for " +
                         $"[i:{ItemType<Spatial>()}] Catalyst's Memory. ", //Description of the listing.
-                        TwinStarsWeaponDialogue == 2, //Unlock requirements.
+                        CatalystWeaponDialogue == 2, //Unlock requirements.
                         155,
                         "Defeat Lunatic Cultist, then wait.")); //Corresponding dialogue ID.
                     WeaponArchiveList.Add(new WeaponArchiveListing(
@@ -6085,6 +6175,13 @@ namespace StarsAbove
                         $"[i:{ItemType<Spatial>()}] Shadowless Cerulean. ", //Description of the listing.
                         ShadowlessWeaponDialogue == 2, //Unlock requirements.
                         122,
+                        "Defeat Moon Lord, then wait.")); //Corresponding dialogue ID.
+                    WeaponArchiveList.Add(new WeaponArchiveListing(
+                        "Moon Lord Weapon", //Name of the archive listing.
+                        $"Grants the Essence for " +
+                        $"[i:{ItemType<Spatial>()}] Soul Reaver. ", //Description of the listing.
+                        SoulWeaponDialogue == 2, //Unlock requirements.
+                        157,
                         "Defeat Moon Lord, then wait.")); //Corresponding dialogue ID.
                     WeaponArchiveList.Add(new WeaponArchiveListing(
                          "Moon Lord Weapon", //Name of the archive listing.
@@ -7117,7 +7214,7 @@ namespace StarsAbove
 
                 if (Main.worldID == firstJoinedWorld || !enableWorldLock)
                 {
-                    if (SubworldSystem.IsActive<Observatory>() && observatoryDialogue == 0)
+                  /*  if (SubworldSystem.IsActive<Observatory>() && observatoryDialogue == 0)
                     {
                         observatoryDialogue = 1;
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
@@ -7130,7 +7227,7 @@ namespace StarsAbove
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
 
-                    }
+                    }*/
 
                     if (NPC.downedSlimeKing && slimeDialogue == 0)
                     {
@@ -7599,6 +7696,25 @@ namespace StarsAbove
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 151, 255, 90); }
 
                     }
+                    //Zone specific weapons do not have delay
+                    if (Player.ZoneHallow && GoldWeaponDialogue == 0)
+                    {
+                        GoldWeaponDialogue = 1;
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                        NewDiskDialogue = true;
+
+                        return;
+
+                    }
+                    if (Player.ZoneGraveyard && FarewellWeaponDialogue == 0)
+                    {
+                        FarewellWeaponDialogue = 1;
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                        NewDiskDialogue = true;
+
+                        return;
+
+                    }
                     if (WeaponDialogueTimer <= 0)//7200 = 2 min in between 
                     {//The order of these should not matter.
                         if (SkeletonDialogue == 2 && SkeletonWeaponDialogue == 0)
@@ -8048,6 +8164,27 @@ namespace StarsAbove
                             return;
 
                         }
+                        if (GolemWeaponDialogue == 2 && SilenceWeaponDialogue == 0)
+                        {
+                            SilenceWeaponDialogue = 1;
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                            NewDiskDialogue = true;
+                            WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                            return;
+
+                        }
+                        if (MoonLordWeaponDialogue == 2 && SoulWeaponDialogue == 0)
+                        {
+                            SoulWeaponDialogue = 1;
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                            NewDiskDialogue = true;
+                            WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                            return;
+
+                        }
+                        
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                     }
@@ -8321,7 +8458,7 @@ namespace StarsAbove
                         if ((bool)calamityMod.Call("GetBossDowned", "devourerofgods"))
                         {
                             stellarGaugeMax++;
-                            baseNovaDamageAdd = 62500;
+                            baseNovaDamageAdd = 52500;
                             if (stellarGaugeUpgraded != 1)
                             {
                                 if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array reaches new heights!"), 255, 0, 115); }
@@ -8330,11 +8467,11 @@ namespace StarsAbove
                         }
                         if ((bool)calamityMod.Call("GetBossDowned", "yharon"))
                         {
-                            baseNovaDamageAdd = 73000;
+                            baseNovaDamageAdd = 63000;
                         }
                         if ((bool)calamityMod.Call("GetBossDowned", "supremecalamitas"))
                         {
-                            baseNovaDamageAdd = 97500;
+                            baseNovaDamageAdd = 77500;
                         }
                     }
 
@@ -8435,7 +8572,7 @@ namespace StarsAbove
             }
             return base.Shoot(item, source, position, velocity, type, damage, knockback);
         }
-
+        
         private void CelestialCartography()//Intro and idle animation for the Celestial Cartography UI.
         {
             if (CelestialCartographyActive)
@@ -8516,17 +8653,7 @@ namespace StarsAbove
         }
         public override void OnConsumeAmmo(Item weapon, Item ammo)
         {
-            if (aquaaffinity == 2)
-            {
-
-                if (ammoRecycleCooldown <= 0)
-                {
-                    Player.AddBuff(BuffType<Buffs.AmmoRecycle>(), 30);
-                    ammoRecycleCooldown = 120;
-                    Player.statMana += 8;
-                }
-
-            }
+            
             base.OnConsumeAmmo(weapon, ammo);
         }
         public override void PostUpdateRunSpeeds()
@@ -9249,6 +9376,65 @@ namespace StarsAbove
 
             }
 
+            if (ModLoader.TryGetMod("SOTS", out Mod SOTS))
+            {
+                if (NPC.AnyNPCs(SOTS.Find<ModNPC>("PutridPinkyPhase2").Type) && !seenPutridPinky)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onPutridPinky");
+                    seenUnknownBossTimer = 300;
+                }
+                if (NPC.AnyNPCs(SOTS.Find<ModNPC>("PharaohsCurse").Type) && !seenPharaoh)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onPharaoh");
+                    seenUnknownBossTimer = 300;
+                }
+                if (NPC.AnyNPCs(SOTS.Find<ModNPC>("TheAdvisorHead").Type) && !seenAdvisor)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onAdvisor");
+                    seenUnknownBossTimer = 300;
+                }
+                if (NPC.AnyNPCs(SOTS.Find<ModNPC>("Polaris").Type) && !seenPolaris)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onPolaris");
+                    seenUnknownBossTimer = 300;
+                }
+                if (NPC.AnyNPCs(SOTS.Find<ModNPC>("Lux").Type) && !seenLux)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onLux");
+                    seenUnknownBossTimer = 300;
+                }
+                if (NPC.AnyNPCs(SOTS.Find<ModNPC>("SubspaceSerpentBody").Type) && !seenSubspaceSerpent)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onSubspaceSerpent");
+                    seenUnknownBossTimer = 300;
+                }
+
+
+            }
             //Thorium Mod Bosses
             /*
             if (thoriumMod != null)
@@ -9503,22 +9689,8 @@ namespace StarsAbove
                 }
                 starfarerPromptActive("onObservatory");
             }
-            if (SubworldSystem.IsActive<SeaOfStars1>() && !seenSpaceRuins)
-            {
-                if (starfarerPromptCooldown > 0)
-                {
-                    starfarerPromptCooldown = 0;
-                }
-                starfarerPromptActive("onSpaceRuins");
-            }
-            if (SubworldSystem.IsActive<TheDyingCitadel>() && !seenCitadel)
-            {
-                if (starfarerPromptCooldown > 0)
-                {
-                    starfarerPromptCooldown = 0;
-                }
-                starfarerPromptActive("onCitadel");
-            }
+           
+            
             if (SubworldSystem.IsActive<EternalConfluence>() && !seenConfluence)
             {
                 if (starfarerPromptCooldown > 0)
@@ -9527,19 +9699,22 @@ namespace StarsAbove
                 }
                 starfarerPromptActive("onConfluence");
             }
-            if (SubworldSystem.IsActive<GalacticMean>() && !seenCity)
-            {
-                if (starfarerPromptCooldown > 0)
-                {
-                    starfarerPromptCooldown = 0;
-                }
-                starfarerPromptActive("onCity");
-            }
+           
 
             //Modded Biomes
 
-
-
+            if (ModLoader.TryGetMod("Verdant", out Mod verdantMod))
+            {
+                if ((bool)verdantMod.Call("InVerdant") && !seenVerdantBiome)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onEnterVerdant");
+                }
+            }
+            
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod9))
             {
                 if ((bool)calamityMod.Call("GetInZone", Main.LocalPlayer, "crags") && !seenCragBiome)
@@ -9673,6 +9848,17 @@ namespace StarsAbove
 
         private void OnKillEnemy(NPC npc)
         {
+            if (aquaaffinity == 2)//Cyclic Hunter
+            {
+
+                if (ammoRecycleCooldown <= 0)
+                {
+                    Player.AddBuff(BuffType<Buffs.AmmoRecycle>(), 30);
+                    ammoRecycleCooldown = 120;
+                    Player.statMana += 8;
+                }
+
+            }
             if (starfarerOutfit == 1)//Faerie Attire
             {
                 novaGauge += 1;
@@ -9685,14 +9871,53 @@ namespace StarsAbove
                     Player.AddBuff(BuffType<LucentBliss>(), 7200);
                 }
             }
+            //
             if (starfarerOutfit == 3)//Celestial
             {
-                if (Player.HasBuff(BuffType<AstarteDriver>()))
+                if (npc.CanBeChasedBy() && !npc.SpawnedFromStatue)
                 {
-                    Player.AddBuff(BuffType<AstarteDriver>(), 1500);
+                    if (Player.HasBuff(BuffType<AstarteDriver>()))
+                    {
+                        Player.AddBuff(BuffType<AstarteDriver>(), 1500);
+                    }
                 }
 
+            }
+            if(Player.HasBuff(BuffType<OffSeersJourney>()))
+            {
+                if (KevesiFarewellInInventory)
+                {
 
+                    for (int d = 0; d < 10; d++)
+                    {
+                        Dust.NewDust(npc.Center, 0, 0, DustType<WaterShine>(), 0f + Main.rand.Next(-3, 3), 0f + Main.rand.Next(-3, 3), 150, default(Color), 1.0f);
+                    }
+
+                    Player.AddBuff(BuffType<FarewellOfFlames>(), 600);
+                }
+                
+            }
+            if (Player.HasBuff(BuffType<OffSeersPurpose>()))
+            {
+                
+                if (AgnianFarewellInInventory)
+                {
+
+                    for (int d = 0; d < 10; d++)
+                    {
+                        Dust.NewDust(npc.Center, 0, 0, DustType<Shine>(), 0f + Main.rand.Next(-3, 3), 0f + Main.rand.Next(-3, 3), 150, default(Color), 1.0f);
+                    }
+
+                    Player.AddBuff(BuffType<FarewellOfFlames>(), 600);
+                }
+            }
+            if (SoulReaverHeld)
+            {
+                SoulReaverSouls++;
+                if (SoulReaverSouls > 10)
+                {
+                    SoulReaverSouls = 10;
+                }
             }
         }
 
@@ -11597,22 +11822,8 @@ namespace StarsAbove
 
                 }
                 Player.AddBuff(BuffType<Superimposed>(), 2);
-                if (SubworldSystem.IsActive<AncientMiningFacility>() || SubworldSystem.IsActive<RuinedSpaceship>() || SubworldSystem.IsActive<SamuraiWar>() || SubworldSystem.IsActive<JungleTower>())
-                {
-                    Player.AddBuff(BuffType<RuinedSpaceshipTurmoil>(), 2);
-                }
-                else
-                {
-                    Player.AddBuff(BuffType<DefaultTurmoil>(), 2);
-                }
-                if (SubworldSystem.IsActive<JungleTower>())
-                {
-
-                }
-                else
-                {
-                    Player.gravity -= 0.3f;
-                }
+                
+                
                 Player.noBuilding = true;
 
 
@@ -11622,33 +11833,13 @@ namespace StarsAbove
                 Main.numCloudsTemp = 0;
                 Main.cloudBGAlpha = 0f;
                 //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue($"Debug: current Y value:{(int)(player.Center.Y / 16)}"), 250, 100, 247);}
-                if (!SubworldSystem.IsActive<SamuraiWar>())
-                {
-                    if ((int)(Player.Center.Y / 16) > 400)
-                    {
-                        Player.AddBuff(BuffType<SpatialBurn>(), 120);
-
-                        Player.velocity = new Vector2(Player.velocity.X, -17);
-                    }
-                    else
-                    {
-
-
-                    }
-                }
+                
 
                 Player.gravity -= gravityMod;
             }
             if (Player.InModBiome(ModContent.GetInstance<CityBiome>()))
             {
-                if (SubworldSystem.IsActive<GalacticMean>()) //WIP
-                {
-                    Player.AddBuff(BuffType<Superimposed>(), 2);
-                    Player.AddBuff(BuffType<CityTurmoil>(), 2);
-                    Player.noBuilding = true;
-
-
-                }
+                
             }
             if (Player.InModBiome(ModContent.GetInstance<BleachedWorldBiome>()))
             {
@@ -13303,13 +13494,13 @@ namespace StarsAbove
                     if (eventPrompt == "onTrojanSquirrel")
                     {
                         promptExpression = 0;
-                        LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.121", Player.name);//Whoa, look at this thing. What a go-getter! Oh, right- strategy. Looks like you can aim for its arms, so try that.
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.121", Player.name);//Whoa, look at this thing. What a go-getter! Oh, right- strategy. Looks like you can aim for its arms, so try that.
                         seenTrojanSquirrel = true;
                     }
                     if (eventPrompt == "onDeviantt")
                     {
                         promptExpression = 0;
-                        LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.122", Player.name);
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.122", Player.name);
                         //promptDialogue = $"Aww, this pint-sized witch wants a fight? Alright then!" +
                         //                $" It looks like you'll be barraged with debuffs- Get the heals ready.";
                         seenDeviantt = true;
@@ -13317,7 +13508,7 @@ namespace StarsAbove
                     if (eventPrompt == "onEridanus")
                     {
                         promptExpression = 2;
-                        LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.123", Player.name);
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.123", Player.name);
                         //promptDialogue = $"Hah? Just look at this muppet... thinking he's better than us or something!" +
                         //                $" Give him a good whallop!";
                         seenEridanus = true;
@@ -13325,7 +13516,7 @@ namespace StarsAbove
                     if (eventPrompt == "onAbominationn")
                     {
                         promptExpression = 0;
-                        LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.124", Player.name);
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.124", Player.name);
                         //promptDialogue = $"Let's get this show started!" +
                         //                $" He'll be attacking with the power of worldly invaders, if you remember those!";
                         seenAbominationn = true;
@@ -13333,7 +13524,7 @@ namespace StarsAbove
                     if (eventPrompt == "onMutant")
                     {
                         promptExpression = 2;
-                        LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.125", Player.name);
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.125", Player.name);
                         //promptDialogue = $"If I had a nickel for times you've thrown voodoo dolls into lava... Never mind." +
                         //                $" Mutant's super upset, super strong, and super coming straight for you.";
                         seenMutant = true;
@@ -13406,6 +13597,45 @@ namespace StarsAbove
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.136", Player.name); //The elements themselves are on the hunt. Let's show them a thing or two!
                         seenPrimordials = true;
                     }
+
+                    //Secrets of the Shadows
+                    if (eventPrompt == "onPutridPinky")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.181", Player.name); //Watch yourself.. looks like a Borean Strider is nearby.
+                        seenPutridPinky = true;
+                    }
+                    if (eventPrompt == "onPharaoh")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.182", Player.name); //Looks like a Beholder's reacted with the Void Lens. Let's stab it in its big ugly eye..!
+                        seenPharaoh = true;
+                    }
+                    if (eventPrompt == "onAdvisor")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.183", Player.name); //The Grim Harvest Sigil has summoned a powerful foe. I don't know what else you expected!
+                        seenAdvisor = true;
+                    }
+                    if (eventPrompt == "onPolaris")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.184", Player.name); //The Abyssal Shadows are converging! I sense powerful dark magic from this sea creature..
+                        seenPolaris = true;
+                    }
+                    if (eventPrompt == "onLux")
+                    {
+                        promptExpression = 0;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.185", Player.name); //The elements themselves are on the hunt. Let's show them a thing or two!
+                        seenLux = true;
+                    }
+                    if (eventPrompt == "onSubspaceSerpent")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.186", Player.name); //The elements themselves are on the hunt. Let's show them a thing or two!
+                        seenSubspaceSerpent = true;
+                    }
+
                     //Upon entering a biome for the first time..
                     if (eventPrompt == "onEnterDesert")
                     {
@@ -13478,6 +13708,14 @@ namespace StarsAbove
                         promptExpression = 6;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.148", Player.name); //So this is the meteor impact we heard. I bet we can make some crazy stuff with a meteorite.
                         seenMeteoriteBiome = true;
+                    }
+
+                    //Verdant
+                    if (eventPrompt == "onEnterVerdant")
+                    {
+                        promptExpression = 0;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.180", Player.name);
+                        seenVerdantBiome = true;
                     }
 
                     //Calamity Biomes
@@ -14521,6 +14759,44 @@ namespace StarsAbove
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.134", Player.name); //Primordial energy is forming all around you.. The elements themselves are on the attack!
                         seenPrimordials = true;
                     }
+                    //Secrets of the Shadows
+                    if (eventPrompt == "onPutridPinky")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.181", Player.name); //Watch yourself.. looks like a Borean Strider is nearby.
+                        seenPutridPinky = true;
+                    }
+                    if (eventPrompt == "onPharaoh")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.182", Player.name); //Looks like a Beholder's reacted with the Void Lens. Let's stab it in its big ugly eye..!
+                        seenPharaoh = true;
+                    }
+                    if (eventPrompt == "onAdvisor")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.183", Player.name); //The Grim Harvest Sigil has summoned a powerful foe. I don't know what else you expected!
+                        seenAdvisor = true;
+                    }
+                    if (eventPrompt == "onPolaris")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.184", Player.name); //The Abyssal Shadows are converging! I sense powerful dark magic from this sea creature..
+                        seenPolaris = true;
+                    }
+                    if (eventPrompt == "onLux")
+                    {
+                        promptExpression = 0;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.185", Player.name); //The elements themselves are on the hunt. Let's show them a thing or two!
+                        seenLux = true;
+                    }
+                    if (eventPrompt == "onSubspaceSerpent")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.186", Player.name); //The elements themselves are on the hunt. Let's show them a thing or two!
+                        seenSubspaceSerpent = true;
+                    }
+
                     //Upon entering a biome for the first time..
                     if (eventPrompt == "onEnterDesert")
                     {
@@ -14594,6 +14870,15 @@ namespace StarsAbove
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.146", Player.name); //So this is the meteor impact we heard. Wonder what you can make out of it..?
                         seenMeteoriteBiome = true;
                     }
+
+                    //Verdant
+                    if (eventPrompt == "onEnterVerdant")
+                    {
+                        promptExpression = 0;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.180", Player.name);
+                        seenVerdantBiome = true;
+                    }
+
 
                     //Calamity Biomes
                     if (eventPrompt == "onEnterCrag")
@@ -14799,7 +15084,7 @@ namespace StarsAbove
                         seenCity = true;
                     }
                 }
-                promptDialogue = Wrap(promptDialogue, 88);
+                promptDialogue = Wrap(promptDialogue, 78);
             }
         }
         public void StellarNovaEnergy()
@@ -15115,10 +15400,14 @@ namespace StarsAbove
         {
             CelestialCartographyActive = false;
 
+            KevesiFarewellInInventory = false;
+            AgnianFarewellInInventory = false;
+
             Observatory = false;
             SeaOfStars = false;
             BurningDesireHeld = false;
-
+            GoldenKatanaHeld = false;
+            IrminsulHeld = false;
             AshenAmbitionHeld = false;
             VermillionDaemonHeld = false;
             SakuraVengeanceHeld = false;
@@ -15127,6 +15416,8 @@ namespace StarsAbove
             SkyStrikerHeld = false;
             IsVoidActive = false;
             euthymiaActive = false;
+            SoulReaverHeld = false;
+
             Player.GetModPlayer<StarsAbovePlayer>().seraphimHeld--;
             Player.GetModPlayer<StarsAbovePlayer>().kroniicHeld--;
             Player.GetModPlayer<StarsAbovePlayer>().albionHeld--;

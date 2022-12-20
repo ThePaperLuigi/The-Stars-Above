@@ -29,10 +29,7 @@ namespace StarsAbove.Biomes
 
 		// Calculate when the biome is active.
 		public override bool IsBiomeActive(Player player) {
-			if(SubworldSystem.IsActive<TheDyingCitadel>())
-            {
-				return true;
-            }
+			
 			return false;
 		}
 	}

@@ -42,7 +42,8 @@ namespace StarsAbove.Projectiles.CatalystMemory
 			Dust.NewDust(Projectile.Center, 0, 0, DustID.GemAmethyst, Main.rand.NextFloat(-1, 1), Main.rand.NextFloat(-1, 1), 150, default(Color), 0.5f);
 			Dust.NewDust(Projectile.Center, 0, 0, DustID.PurpleCrystalShard, Main.rand.NextFloat(-2, 2), Main.rand.NextFloat(-2, 2), 150, default(Color), 0.7f);
 
-
+			Color projcolor = new Color(174, 0, 255);
+			Lighting.AddLight(Projectile.Center, projcolor.ToVector3());
 
 			base.AI();
 
