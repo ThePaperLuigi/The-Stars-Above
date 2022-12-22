@@ -35,7 +35,7 @@ namespace StarsAbove.Biomes
             }
 
 			//Debug
-			return true;
+			//return true;
 			return false;
 		}
 	}

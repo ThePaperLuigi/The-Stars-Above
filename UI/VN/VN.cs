@@ -494,7 +494,9 @@ namespace StarsAbove.UI.VN
 				choice1Text.Remove();
 				choice2Text.Remove();
 				dialogueOption2.Remove();
-				
+				choice3Text.Remove();
+				dialogueOption3.Remove();
+
 				area.Append(imageButton);
 				
 
@@ -508,9 +510,15 @@ namespace StarsAbove.UI.VN
 				area.Append(choice1Text);
 				area.Append(dialogueOption2);
 				area.Append(choice2Text);
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().VNDialogueThirdOption)
+				{
+					area.Append(choice3Text);
+					area.Append(dialogueOption3);
+					choice3Text.SetText($"{Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().VNDialogueChoice3}");
+				}
 				
 			}
-
+			
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
 
 			if (modPlayer.VNCharacter1 == modPlayer.VNDialogueVisibleName)
@@ -552,14 +560,12 @@ namespace StarsAbove.UI.VN
 			choice2Text.SetText($"{modPlayer.VNDialogueChoice2}");
 			if(modPlayer.VNDialogueThirdOption)
             {
-				area.Append(choice3Text);
-				area.Append(dialogueOption3);
+				
 				choice3Text.SetText($"{modPlayer.VNDialogueChoice3}");
 			}
             else
             {
-				choice3Text.Remove();
-				dialogueOption3.Remove();
+				
             }
 
 

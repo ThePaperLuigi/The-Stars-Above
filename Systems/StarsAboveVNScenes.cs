@@ -104,9 +104,9 @@ namespace StarsAbove
 
                 //What appears in the choice boxes?
                 sceneChoice1 =
-                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.3.Choices.1");
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.1");
                 sceneChoice2 =
-                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.3.Choices.2");
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.2");
 
                 //What does the scene change to when you choose the first option?
                 choice1Scene = 4;
@@ -141,7 +141,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.3.Dialogue.1"); //Greetings! I am Asphodene- a Starfarer, and in turn, that makes you my Starbearer.  
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID."+ sceneID +".Dialogue." + sceneProgress);
                 }
                 if (sceneProgress == 1)
                 {
@@ -170,7 +170,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.3.Dialogue.2"); //I will lend you my strength so that we may defeat the threats to this world together.  
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
                 }
                 if (sceneProgress == 2)
                 {
@@ -199,7 +199,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.3.Dialogue.3"); //There's more in it for you, though. If you'd like, I can give you the description of what I can help you with. I recommend it! 
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
                 }
             }
             //Asphodene's full explanation.
@@ -250,7 +250,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.4.Dialogue.1"); //Okay, where to start... The Spatial Disk you used to form the contract can be used to access the Stellar Array, which provides abilities after defeating bosses. Nice, right?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
                 }
                 if (sceneProgress == 1)
                 {
@@ -280,7 +280,7 @@ namespace StarsAbove
 
                     //What is the dialogue?
 
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.4.Dialogue.2"); //The Spatial Disk can do a lot of other things, but for now, the Stellar Array is the most important. Remember to check it often!
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
                 }
                 if (sceneProgress == 2)
                 {
@@ -309,7 +309,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.4.Dialogue.3"); //One last thing.. I can turn energy from other worlds into direct power in the form of Essences. Combining these with other materials should be enough to create powerful Aspected Weapons.
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
                 }
                 if (sceneProgress == 3)
                 {
@@ -338,7 +338,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.4.Dialogue.4"); //Right, my power is yours. Let's show this world what we can do.  
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
                 }
             }
             //Asphodene's shortened explanation.
@@ -389,7 +389,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.5.Dialogue.1"); //Well, in that case... My power is yours. Let's show this world what we can do. 
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
                 }
             }
             //Eridani's new introduction. Leads into 7 and 8.
@@ -440,7 +440,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.6.Dialogue.1"); //It's nice to meet you. My name is Eridani.. a Starfarer. You, in turn, are my Starbearer. 
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
                 }
                 if (sceneProgress == 1)
                 {
@@ -469,7 +469,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.6.Dialogue.2"); //Through this contract, we must work together to bring justice to those willing to harm this world. 
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID."+ sceneID +".Dialogue." + sceneProgress);
                 }
                 if (sceneProgress == 2)
                 {
@@ -498,7 +498,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.6.Dialogue.3"); //If you are willing, I can give a description of what I can provide you with. Personally, I recommend it- knowledge is power, after all. 
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
                 }
             }
             //Eridani's full explanation.
@@ -549,7 +549,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.7.Dialogue.1"); //Right. Let's begin. With the Spatial Disk you used, you can access the Stellar Array. With the defeat of powerful foes, it will grant you strength.
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
                 }
                 if (sceneProgress == 1)
                 {
@@ -578,7 +578,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.7.Dialogue.2"); //The Spatial Disk has plenty of other uses, but by my hypothesis we don't have access to them yet. Hopefully, as we get stronger, more facets of the Disk will open up to us.
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
                 }
                 if (sceneProgress == 2)
                 {
@@ -607,7 +607,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.7.Dialogue.3"); //Umm.. what next..? Right. I can turn latent energy from other worlds into crystallized power- an Essence, if you will. You can turn these Essences into Aspected Weapons.
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
                 }
                 if (sceneProgress == 3)
                 {
@@ -636,7 +636,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.7.Dialogue.4"); //That should be everything. My strength is yours... I won't let you down.  
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
                 }
             }
             //Eridani's shortened explanation.
@@ -687,7 +687,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.8.Dialogue.1"); //In that case.. My power is yours. Let's show this world what we can do. 
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
                 }
             }
 
@@ -1895,9 +1895,560 @@ namespace StarsAbove
                     dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.20"); //...Did my hair just change color?  
                 }
             }
+            //Asphodene introduces the Astrolabe.
+            if (sceneID == 11)
+            {
+                //How long is the scene? (Scenes start at 0!)
+                sceneLength = 3;
 
-            //dialogue = 
+                //Does this scene have a dialouge choice at the end of it?
+                sceneHasChoice = false;
 
+                //Does this scene have a third dialogue option?
+                thirdOption = true;
+
+                //What appears in the choice boxes?
+                sceneChoice1 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.1");
+                sceneChoice2 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.2");
+                sceneChoice3 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.3");
+
+
+                //What does the scene change to when you choose the first option?
+                choice1Scene = 4;
+
+                //What does the scene change to when you choose the second option?
+                choice2Scene = 5;
+
+                //Same for the third scene?
+                choice3Scene = 6;
+
+                if (sceneProgress == 0)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Asphodene";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
+                }
+                if (sceneProgress == 1)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 4;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Asphodene";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
+                }
+                if (sceneProgress == 2)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 4;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Asphodene";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
+                }
+                if (sceneProgress == 3)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 4;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Asphodene";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
+                }
+            }
+            //Eridani introduces the Astrolabe
+            if (sceneID == 12)
+            {
+                //How long is the scene? (Scenes start at 0!)
+                sceneLength = 3;
+
+                //Does this scene have a dialouge choice at the end of it?
+                sceneHasChoice = false;
+
+                //Does this scene have a third dialogue option?
+                thirdOption = true;
+
+                //What appears in the choice boxes?
+                sceneChoice1 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.1");
+                sceneChoice2 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.2");
+                sceneChoice3 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.3");
+
+
+                //What does the scene change to when you choose the first option?
+                choice1Scene = 4;
+
+                //What does the scene change to when you choose the second option?
+                choice2Scene = 5;
+
+                if (sceneProgress == 0)
+                {
+                    //Who is the main character?
+                    character1 = "Eridani";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Eridani";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
+                }
+                if (sceneProgress == 1)
+                {
+                    //Who is the main character?
+                    character1 = "Eridani";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 4;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Eridani";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
+                }
+                if (sceneProgress == 2)
+                {
+                    //Who is the main character?
+                    character1 = "Eridani";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 4;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Eridani";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
+                }
+                if (sceneProgress == 3)
+                {
+                    //Who is the main character?
+                    character1 = "Eridani";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 4;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Eridani";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
+                }
+            }
+            //The Starfarers introduce Cosmic Voyages.
+            if (sceneID == 13)
+            {
+                //How long is the scene? (Scenes start at 0!)
+                sceneLength = 7;
+
+                //Does this scene have a dialouge choice at the end of it?
+                sceneHasChoice = true;
+
+                //Does this scene have a third dialogue option?
+                thirdOption = true;
+
+                //What appears in the choice boxes?
+                sceneChoice1 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.1");
+                sceneChoice2 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.2");
+                sceneChoice3 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.3");
+
+
+                //What does the scene change to when you choose the first option?
+                choice1Scene = 14;
+
+                //What does the scene change to when you choose the second option?
+                choice2Scene = 15;
+
+                //Same for the third scene?
+                choice3Scene = 16;
+
+                if (sceneProgress == 0)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Eridani";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Asphodene";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
+                }
+                if (sceneProgress == 1)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Eridani";
+
+                    //What is their pose?
+                    character2Pose = 1;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Eridani";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
+                }
+                if (sceneProgress == 2)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Eridani";
+
+                    //What is their pose?
+                    character2Pose = 1;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Eridani";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
+                }
+                if (sceneProgress == 3)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 4;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Eridani";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Eridani";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
+                }
+                if (sceneProgress == 4)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 2;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Eridani";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Asphodene";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
+                }
+                if (sceneProgress == 5)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 1;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Eridani";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Asphodene";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
+                }
+                if (sceneProgress == 6)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 3;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Eridani";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Asphodene";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
+                }
+                if (sceneProgress == 7)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 3;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Eridani";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Eridani";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
+                }
+            }
 
             return new object[] {
             sceneLength,

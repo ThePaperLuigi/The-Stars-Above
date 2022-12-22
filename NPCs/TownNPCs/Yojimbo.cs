@@ -9,6 +9,7 @@ using Terraria.GameContent.Bestiary;
 using System.Collections.Generic;
 using StarsAbove.Biomes;
 using StarsAbove.Utilities;
+using StarsAbove.Projectiles.SkyStriker;
 
 namespace StarsAbove.NPCs.TownNPCs
 {
@@ -26,7 +27,7 @@ namespace StarsAbove.NPCs.TownNPCs
 			NPCID.Sets.ExtraFramesCount[Type] = 9; // Generally for Town NPCs, but this is how the NPC does extra things such as sitting in a chair and talking to other NPCs.
 			NPCID.Sets.AttackFrameCount[Type] = 4;
 			NPCID.Sets.DangerDetectRange[Type] = 700; // The amount of pixels away from the center of the npc that it tries to attack enemies.
-			NPCID.Sets.AttackType[Type] = 1;
+			NPCID.Sets.AttackType[Type] = 0;
 			NPCID.Sets.AttackTime[Type] = 90; // The amount of time it takes for the NPC's attack animation to be over once it starts.
 			NPCID.Sets.AttackAverageChance[Type] = 30;
 			NPCID.Sets.HatOffsetY[Type] = 4; // For when a party is active, the party hat spawns at a Y offset.
@@ -197,26 +198,25 @@ namespace StarsAbove.NPCs.TownNPCs
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)
 		{
-			damage = 20;
+			damage = 100;
 			knockback = 4f;
 		}
 
 		public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)
 		{
-			cooldown = 30;
-			randExtraCooldown = 30;
+			cooldown = 120;
+			randExtraCooldown = 120;
 		}
 
 		public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
 		{
-			multiplier = 12f;
-			randomOffset = 2f;
+			multiplier = 22f;
+			randomOffset = 0f;
 		}
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-			projType = ProjectileID.ChlorophyteBullet;
-
-            base.TownNPCAttackProj(ref projType, ref attackDelay);
+			projType = ModContent.ProjectileType<SkyStrikerRailgunRound>();
+			attackDelay = 1;
         }
     }
 }

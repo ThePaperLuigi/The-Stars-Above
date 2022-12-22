@@ -31,7 +31,7 @@ namespace StarsAbove.Biomes
 		public override bool IsBiomeActive(Player player) {
 			if (SubworldSystem.IsActive<Tucana>())
             {
-				return true;
+				return false;
             }
 			return false;
 		}

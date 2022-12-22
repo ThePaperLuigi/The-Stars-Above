@@ -56,6 +56,7 @@ namespace StarsAbove.Items.Placeable.Stellaglyphs
 				.AddIngredient(ItemID.Diamond, 3)
 				.AddIngredient(ItemID.DemoniteBar, 20)
 				.AddIngredient(ItemType<Prisms.PrismaticCore>(), 20)
+				.AddIngredient(ItemType<Materials.BandedTenebrium>(), 20)
 				.AddIngredient(ItemType<StellaglyphTier1>())
 				.AddTile(TileType<Tiles.CelestriadRoot>())
 				.Register();
@@ -64,6 +65,7 @@ namespace StarsAbove.Items.Placeable.Stellaglyphs
 				.AddIngredient(ItemID.Diamond, 3)
 				.AddIngredient(ItemID.CrimtaneBar, 20)
 				.AddIngredient(ItemType<Prisms.PrismaticCore>(), 20)
+				.AddIngredient(ItemType<Materials.BandedTenebrium>(), 20)
 				.AddIngredient(ItemType<StellaglyphTier1>())
 				.AddTile(TileType<Tiles.CelestriadRoot>())
 				.Register();

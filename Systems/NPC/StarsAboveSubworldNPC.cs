@@ -62,6 +62,52 @@ namespace StarsAbove
 				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.WaywardPredictor>(), 0.1f);
 				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.WaywardVortexian>(), 0.1f);*/
 			}
+			/*if (spawnInfo.Player.InModBiome<SeaOfStarsBiome>()) // Anomaly planet stuff
+			{
+				pool.Clear();
+
+				pool.Add(NPCID.Crawdad, 1f);
+				pool.Add(NPCID.Salamander, 1f);
+				pool.Add(NPCID.GiantShelly, 1f);
+
+				pool.Add(NPCID.GoldDragonfly, 0.1f);
+				pool.Add(NPCID.EnchantedNightcrawler, 0.5f);
+
+				pool.Add(ModContent.NPCType<NPCs.PrismLoot>(), 0.3f);
+
+				pool.Add(NPCID.GemBunnyAmethyst, 0.4f);
+
+				pool.Add(NPCID.GemBunnyAmber, 0.4f);
+
+				pool.Add(NPCID.GemBunnyDiamond, 0.4f);
+
+				pool.Add(NPCID.GemBunnyEmerald, 0.4f);
+
+				pool.Add(NPCID.GemBunnyRuby, 0.4f);
+
+				pool.Add(NPCID.GemBunnySapphire, 0.4f);
+
+				pool.Add(NPCID.GemBunnyTopaz, 0.4f);
+
+
+
+			}*/
+			if (spawnInfo.Player.InModBiome<CorvusBiome>())
+			{
+				pool.Clear();
+				pool.Add(ModContent.NPCType<NPCs.PrismLoot>(), 0.05f);
+				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.AmethystHeadpiercer>(), 1f);
+				pool.Add(NPCID.BlackSlime, 1f);
+				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.AmethystSwordsinner>(), 1f);
+				pool.Add(NPCID.DemonEye, 0.4f);
+
+				if (!NPC.AnyNPCs(ModContent.NPCType<NPCs.TownNPCs.Yojimbo>()))
+				{
+					pool.Add(ModContent.NPCType<NPCs.TownNPCs.Yojimbo>(), 0.1f);
+
+				}
+				
+			}
 			if (SubworldSystem.IsActive<Serpens>())
 			{
 				pool.Clear();

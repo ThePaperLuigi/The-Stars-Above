@@ -23,6 +23,7 @@ using StarsAbove.Biomes;
 using StarsAbove.Subworlds;
 using StarsAbove.Buffs.Subworlds;
 using StarsAbove.Buffs.SubworldModifiers;
+using StarsAbove.NPCs.OffworldNPCs;
 
 namespace StarsAbove
 {
@@ -78,20 +79,14 @@ namespace StarsAbove
                 //Make sure the player can't do what's not allowed:
 
                 //Add this later.
-                //Player.AddBuff(BuffType<Superimposed>(), 2);
-                //Player.noBuilding = true;
+                Player.AddBuff(BuffType<Superimposed>(), 10);
+                Player.noBuilding = true;
 
                 Player.AddBuff(BuffType<ArdorInfluence>(), 10);
 
 
 
-                //Fall too far into the void, and you'll be launched back up while taking heavy DoT.
-                if ((int)(Player.Center.Y / 16) > 500)
-                {
-                    Player.AddBuff(BuffType<SpatialBurn>(), 120);
-
-                    Player.velocity = new Vector2(Player.velocity.X, -17);
-                }
+                
             }
             if (Player.InModBiome(ModContent.GetInstance<BleachedWorldBiome>()))
             {
@@ -154,6 +149,21 @@ namespace StarsAbove
             }
 
             base.PostUpdateBuffs();
+        }
+
+        public override void ModifyHitByProjectile(Projectile proj, ref int damage, ref bool crit)
+        {
+            if (SubworldSystem.Current != null) //Within subworlds...
+            {
+                if (proj.type == ProjectileID.VortexLaser)
+                {
+                    damage /= 6;
+                }
+
+            }
+
+
+            base.ModifyHitByProjectile(proj, ref damage, ref crit);
         }
 
         public override void ResetEffects()

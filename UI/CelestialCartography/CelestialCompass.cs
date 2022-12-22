@@ -45,6 +45,7 @@ namespace StarsAbove.UI.CelestialCartography
 		private UIImageButton Scorpius;
 		private UIImageButton Serpens;
 		private UIImageButton Tucana;
+		private UIImageButton Corvus;
 
 		private UIImageButton QuestionMark;
 
@@ -174,6 +175,13 @@ namespace StarsAbove.UI.CelestialCartography
 			Tucana.Left.Set(0, 0f);
 			Tucana.Top.Set(0, 0f);
 
+			Corvus = new UIImageButton(Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Corvus"));
+			Corvus.OnClick += TeleportCorvus;
+			Corvus.Width.Set(80, 0f);
+			Corvus.Height.Set(80, 0f);
+			Corvus.Left.Set(0, 0f);
+			Corvus.Top.Set(0, 0f);
+
 			QuestionMark = new UIImageButton(Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/QuestionMark"));
 			//QuestionMark.OnClick += TeleportTucana;
 			QuestionMark.Width.Set(80, 0f);
@@ -228,6 +236,8 @@ namespace StarsAbove.UI.CelestialCartography
 			area.Append(Scorpius);
 			area.Append(Serpens);
 			area.Append(Tucana);
+			area.Append(Corvus);
+
 
 			area.Append(QuestionMark);
 
@@ -495,6 +505,39 @@ namespace StarsAbove.UI.CelestialCartography
 
 
 		}
+		private void TeleportCorvus(UIMouseEvent evt, UIElement listeningElement)
+		{
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive)
+				return;
+
+
+			if (Main.LocalPlayer.HasBuff(BuffType<PortalReady>()) || Main.LocalPlayer.HasBuff(BuffType<StellaglyphReady>()))
+			{
+				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2)//Tier 2
+				{
+					SubworldSystem.Enter<Corvus>();
+					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
+
+				}
+				else
+				{
+					if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI)
+					{
+						Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.WeakStellaglyph"), 255, 126, 114);
+					}
+				}
+
+			}
+			else
+			{
+				if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI)
+				{
+					Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.NoPortal"), 255, 126, 114);
+				}
+			}
+
+
+		}
 		protected override void DrawSelf(SpriteBatch spriteBatch) {
 			base.DrawSelf(spriteBatch);
 			var modPlayer = Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>();
@@ -619,6 +662,18 @@ namespace StarsAbove.UI.CelestialCartography
 				{
 					spriteBatch.Draw(
 				(Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/CompassLocations/CompassJungle"),
+				hitbox,
+				null,
+				Color.White * (modPlayer.CelestialCompassVisibility),
+				MathHelper.ToRadians(0),
+				compassCenter,
+				SpriteEffects.None,
+				1f);
+				}
+				if (Corvus.IsMouseHovering)
+				{
+					spriteBatch.Draw(
+				(Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/CompassLocations/CompassCorvus"),
 				hitbox,
 				null,
 				Color.White * (modPlayer.CelestialCompassVisibility),
@@ -806,6 +861,11 @@ namespace StarsAbove.UI.CelestialCartography
 				Main.spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Tucana"), Tucana.GetInnerDimensions().ToRectangle(), Color.White * modPlayer.CelestialCompassVisibility);
 
 			}
+			if (SubworldSystem.IsActive<Corvus>())
+			{
+				Main.spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Corvus"), Corvus.GetInnerDimensions().ToRectangle(), Color.White * modPlayer.CelestialCompassVisibility);
+
+			}
 			if (SubworldSystem.IsActive<Serpens>())
 			{
 				Main.spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Serpens"), Serpens.GetInnerDimensions().ToRectangle(), Color.White * modPlayer.CelestialCompassVisibility);
@@ -883,8 +943,10 @@ namespace StarsAbove.UI.CelestialCartography
 				modPlayer.locationLoot = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Loot");
 			}
 
-			Antlia.Top.Set(380, 0);
-			Antlia.Left.Set(750, 0);
+			//Antlia.Top.Set(380, 0);
+			//Antlia.Left.Set(750, 0);
+			Antlia.Top.Set(444, 0);
+			Antlia.Left.Set(400, 0);
 			if (Antlia.IsMouseHovering)
 			{
 				string location = "GasGiant";
@@ -922,7 +984,7 @@ namespace StarsAbove.UI.CelestialCartography
 
 			}
 
-			Lyra.Top.Set(460, 0);
+			Lyra.Top.Set(180, 0);
 			Lyra.Left.Set(750, 0);
 			if (Lyra.IsMouseHovering)
 			{
@@ -979,6 +1041,21 @@ namespace StarsAbove.UI.CelestialCartography
 			if (Tucana.IsMouseHovering)
 			{
 				string location = "JunglePlanet";
+				modPlayer.locationMapName = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Name");
+				modPlayer.locationDescription = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Description");
+				modPlayer.locationThreat = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Threat");
+				modPlayer.locationRequirement = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Requirement");
+				modPlayer.locationLoot = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Loot");
+
+			}
+
+			//Corvus.Top.Set(444, 0);
+			//Corvus.Left.Set(400, 0);
+			Corvus.Top.Set(410, 0);
+			Corvus.Left.Set(770, 0);
+			if (Corvus.IsMouseHovering)
+			{
+				string location = "Corvus";
 				modPlayer.locationMapName = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Name");
 				modPlayer.locationDescription = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Description");
 				modPlayer.locationThreat = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Threat");

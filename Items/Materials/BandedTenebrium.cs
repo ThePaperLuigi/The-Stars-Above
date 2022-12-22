@@ -10,7 +10,7 @@ namespace StarsAbove.Items.Materials
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Banded Tenebrium");
 			Tooltip.SetDefault("Utilized to upgrade the Stellaglyph and craft certain Stellar Foci" +
-                "\nObtained on a war-torn urban planet" +
+                "" +
                 "\n'Cold to the heat'" +
 				"");
 

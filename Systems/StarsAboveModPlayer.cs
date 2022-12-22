@@ -706,6 +706,12 @@ namespace StarsAbove
         public int yharonDespawnDialogue;
         public int supremeCalamitasDialogue;
 
+        //Long-form dialogue
+        public int astrolabeIntroDialogue;
+        public int observatoryIntroDialogue;
+        public int yojimboIntroDialogue;
+        public int garridineIntroDialogue;
+        
 
 
         //Weapon lines
@@ -1338,6 +1344,14 @@ namespace StarsAbove
             tag["ravagerDialogue"] = ravagerDialogue;
             tag["astrumdeusDialogue"] = astrumdeusDialogue;
 
+            //Long form dialogue
+            tag["astrolabeIntroDialogue"] = astrolabeIntroDialogue;
+            tag["observatoryIntroDialogue"] = observatoryIntroDialogue;
+            tag["yojimboIntroDialogue"] = yojimboIntroDialogue;
+            tag["garridineIntroDialogue"] = garridineIntroDialogue;
+
+
+
             tag["EyeBossWeaponDialogue"] = EyeBossWeaponDialogue;
             tag["CorruptBossWeaponDialogue"] = CorruptBossWeaponDialogue;
             tag["SkeletonWeaponDialogue"] = SkeletonWeaponDialogue;
@@ -1609,6 +1623,12 @@ namespace StarsAbove
             plaguebringerDialogue = tag.GetInt("plaguebringerDialogue");
             ravagerDialogue = tag.GetInt("ravagerDialogue");
             astrumdeusDialogue = tag.GetInt("astrumdeusDialogue");
+
+            astrolabeIntroDialogue = tag.GetInt("astrolabeIntroDialogue");
+            observatoryIntroDialogue = tag.GetInt("observatoryIntroDialogue");
+            yojimboIntroDialogue = tag.GetInt("yojimboIntroDialogue");
+            garridineIntroDialogue = tag.GetInt("garridineIntroDialogue");
+
 
             EyeBossWeaponDialogue = tag.GetInt("EyeBossWeaponDialogue");
             CorruptBossWeaponDialogue = tag.GetInt("CorruptBossWeaponDialogue");
@@ -6303,6 +6323,54 @@ namespace StarsAbove
                            chosenStarfarer == 2 && DownedBossSystem.downedVagrant, //Unlock requirements.
                            10,
                            "Defeat the Vagrant of Space and Time. (Eridani)")); //Corresponding dialogue ID.
+                    VNArchiveList.Add(new VNArchiveListing(
+                           "The Astrolabe (Asphodene)", //Name of the archive listing.
+                           $"Acquisition of the Astrolabe.", //Description of the listing.
+                           chosenStarfarer == 1 && astrolabeIntroDialogue == 2, //Unlock requirements.
+                           11,
+                           "Defeat the Eye of Cthulhu.")); //Corresponding dialogue ID.
+                    VNArchiveList.Add(new VNArchiveListing(
+                           "The Astrolabe (Eridani)", //Name of the archive listing.
+                           $"Acquisition of the Astrolabe.", //Description of the listing.
+                           chosenStarfarer == 2 && astrolabeIntroDialogue == 2, //Unlock requirements.
+                           12,
+                           "Defeat the Eye of Cthulhu.")); //Corresponding dialogue ID.
+                    VNArchiveList.Add(new VNArchiveListing(
+                           "The Observatory's Introduction", //Name of the archive listing.
+                           $"Explaining Cosmic Voyages and the Astrolabe.", //Description of the listing.
+                           observatoryIntroDialogue == 2, //Unlock requirements.
+                           13,
+                           "Visit the Observatory.")); //Corresponding dialogue ID.
+                    VNArchiveList.Add(new VNArchiveListing(
+                           "Yojimbo's Introduction (Asphodene)", //Name of the archive listing.
+                           $"Yojimbo, the lumenkin bounty hunter, makes his appearance.", //Description of the listing.
+                           yojimboIntroDialogue == 2, //Unlock requirements.
+                           00,
+                           "Meet ??? during a Cosmic Voyage. (Asphodene)")); //Corresponding dialogue ID.
+                    VNArchiveList.Add(new VNArchiveListing(
+                           "Yojimbo's Introduction (Eridani)", //Name of the archive listing.
+                           $"Yojimbo, the lumenkin bounty hunter, makes his appearance.", //Description of the listing.
+                           yojimboIntroDialogue == 2, //Unlock requirements.
+                           00,
+                           "Meet ??? during a Cosmic Voyage. (Eridani)")); //Corresponding dialogue ID.
+                    VNArchiveList.Add(new VNArchiveListing(
+                           "Yojimbo: About the galaxy...", //Name of the archive listing.
+                           $"Yojimbo's comments on the state of the galaxy.", //Description of the listing.
+                           false,//yojimboIntroDialogue == 2, //Unlock requirements.
+                           00,
+                           "Talk to Yojimbo during a Cosmic Voyage. (Random unlock)")); //Corresponding dialogue ID.
+                    VNArchiveList.Add(new VNArchiveListing(
+                           "Garridine's Introduction (Asphodene)", //Name of the archive listing.
+                           $"Garridine, the lupine machinist, makes her appearance.", //Description of the listing.
+                           garridineIntroDialogue == 2, //Unlock requirements.
+                           00,
+                           "Meet ??? during a Cosmic Voyage. (Asphodene)")); //Corresponding dialogue ID.
+                    VNArchiveList.Add(new VNArchiveListing(
+                           "Garridine's Introduction (Eridani)", //Name of the archive listing.
+                           $"Garridine, the lupine machinist, makes her appearance.", //Description of the listing.
+                           garridineIntroDialogue == 2, //Unlock requirements.
+                           00,
+                           "Meet ??? during a Cosmic Voyage. (Eridani)")); //Corresponding dialogue ID.
                     IdleArchiveListMax = IdleArchiveList.Count;
                     BossArchiveListMax = BossArchiveList.Count;
                     WeaponArchiveListMax = WeaponArchiveList.Count;
@@ -7185,6 +7253,7 @@ namespace StarsAbove
                         VNCharacter2Pose = -1;
                         VNCharacter2Expression = -1;
                     }
+
                     VNDialogueVisibleName = (string)VNScenes.SetupVNSystem(sceneID, sceneProgression)[12];//The name that shows up in the text box.
 
                     VNDialogueThirdOption = (bool)VNScenes.SetupVNSystem(sceneID, sceneProgression)[14];//If the third option is available.
@@ -7202,6 +7271,8 @@ namespace StarsAbove
                         
                         VNDialogueChoice1 = "";
                         VNDialogueChoice2 = "";
+                        VNDialogueChoice3 = "";
+
                         VNDialogueThirdOption = false;
                     }
                     dialogue = Wrap((string)VNScenes.SetupVNSystem(sceneID, sceneProgression)[13], 50);
@@ -7248,6 +7319,24 @@ namespace StarsAbove
                         NewDiskDialogue = true;
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                         NewStellarArrayAbility = true;
+
+
+                    }
+                    if (eyeDialogue == 2 && astrolabeIntroDialogue == 0)
+                    {
+                        astrolabeIntroDialogue = 1;
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                        NewDiskDialogue = true;
+                        
+
+
+                    }
+                    if (observatoryIntroDialogue == 0 && astrolabeIntroDialogue == 2 && SubworldSystem.IsActive<Observatory>())
+                    {
+                        observatoryIntroDialogue = 1;
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                        NewDiskDialogue = true;
+
 
 
                     }

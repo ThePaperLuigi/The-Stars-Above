@@ -24,7 +24,18 @@ namespace StarsAbove.SceneEffects
         {
             if (player.InModBiome<CorvusBiome>())
             {
-                if(player.GetModPlayer<StarsAbovePlayer>().inCombat > 0)
+                Main.dayTime = false;
+                Main.time = 18000;
+                Main.cloudAlpha = 0f;
+
+                Main.numClouds = 0;
+                Main.numCloudsTemp = 0;
+                Main.cloudBGAlpha = 0f;
+
+                Main.moonPhase = 4;
+                
+                player.ZoneSnow = false;
+                if (player.GetModPlayer<StarsAbovePlayer>().inCombat > 0)
                 {
                     player.ManageSpecialBiomeVisuals("Blizzard", Main.UseStormEffects);
                     //In combat, change the music and add the Blizzard effect.

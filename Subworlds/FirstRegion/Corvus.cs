@@ -15,8 +15,8 @@ namespace StarsAbove
 {
 	public class Corvus : Subworld
 	{
-		public override int Width => 2600;
-		public override int Height => 2600;
+		public override int Width => 3600;
+		public override int Height => 1800;
 
 		//public override ModWorld modWorld => ModContent.GetInstance < your modworld here>();
 
@@ -33,19 +33,26 @@ namespace StarsAbove
 
 				
 
-					Main.worldSurface = Main.maxTilesY/2 - 120; 
-					Main.rockLayer = Main.maxTilesY/2; 
+					Main.worldSurface = Main.maxTilesY/2 + 420; 
+					Main.rockLayer = Main.maxTilesY/2 + 600;
+
+				int tileAdjustment = 100;
 
 					//variantWorld = Main.rand.Next(3);
-					StructureHelper.Generator.GenerateStructure("Structures/Tucana/Tucana1a", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 400, Main.maxTilesY/2 - 80), StarsAbove.Instance);
-					StructureHelper.Generator.GenerateStructure("Structures/Tucana/Tucana2a", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 200, Main.maxTilesY/2 - 80), StarsAbove.Instance);
-				//The player will spawn on the leftmost side of this structure below
-					StructureHelper.Generator.GenerateStructure("Structures/Tucana/Tucana3a", new Terraria.DataStructures.Point16(Main.maxTilesX/2, Main.maxTilesY/2 - 80), StarsAbove.Instance);
-					StructureHelper.Generator.GenerateStructure("Structures/Tucana/Tucana4", new Terraria.DataStructures.Point16(Main.maxTilesX/2 + 200, Main.maxTilesY/2 - 80), StarsAbove.Instance);
+					StructureHelper.Generator.GenerateStructure("Structures/Corvus/Corvus1", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 1000, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
+					StructureHelper.Generator.GenerateStructure("Structures/Corvus/Corvus2", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 800, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
+					StructureHelper.Generator.GenerateStructure("Structures/Corvus/Corvus3", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 600, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
 
-					StructureHelper.Generator.GenerateStructure("Structures/Tucana/TucanaTop1", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 400, Main.maxTilesY/2 - 278), StarsAbove.Instance);
-					StructureHelper.Generator.GenerateStructure("Structures/Tucana/TucanaTop2", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 200, Main.maxTilesY/2 - 278), StarsAbove.Instance);
-					StructureHelper.Generator.GenerateStructure("Structures/Tucana/TucanaTop3", new Terraria.DataStructures.Point16(Main.maxTilesX/2, Main.maxTilesY/2 - 278), StarsAbove.Instance);
+					StructureHelper.Generator.GenerateStructure("Structures/Corvus/Corvus4", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 400, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
+
+					StructureHelper.Generator.GenerateStructure("Structures/Corvus/Corvus5", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 200, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
+
+				//The player will spawn on the leftmost side of this structure below
+					StructureHelper.Generator.GenerateStructure("Structures/Corvus/Corvus6", new Terraria.DataStructures.Point16(Main.maxTilesX/2, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
+					StructureHelper.Generator.GenerateStructure("Structures/Corvus/Corvus7", new Terraria.DataStructures.Point16(Main.maxTilesX/2 + 200, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);                  StructureHelper.Generator.GenerateStructure("Structures/Corvus/Corvus7", new Terraria.DataStructures.Point16(Main.maxTilesX/2 + 200, Main.maxTilesY/2 - 80), StarsAbove.Instance);
+					StructureHelper.Generator.GenerateStructure("Structures/Corvus/Corvus8", new Terraria.DataStructures.Point16(Main.maxTilesX/2 + 400, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
+					StructureHelper.Generator.GenerateStructure("Structures/Corvus/Corvus9", new Terraria.DataStructures.Point16(Main.maxTilesX/2 + 600, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
+					StructureHelper.Generator.GenerateStructure("Structures/Corvus/Corvus10", new Terraria.DataStructures.Point16(Main.maxTilesX/2 + 800, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
 
 					for (int i = 0; i < Main.maxTilesX; i++)
 					{

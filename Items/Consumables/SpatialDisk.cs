@@ -253,22 +253,36 @@ namespace StarsAbove.Items.Consumables
 
 			}
 			//Subworld dialogue tutorials come first.
-			if (player.GetModPlayer<StarsAbovePlayer>().observatoryDialogue == 1)
+			if (player.GetModPlayer<StarsAbovePlayer>().astrolabeIntroDialogue == 1)
 			{
-				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 22;
-				player.GetModPlayer<StarsAbovePlayer>().observatoryDialogue = 2;
-				activateDialogue(player);
+				
+				if (player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
+				{
+					player.GetModPlayer<StarsAbovePlayer>().sceneID = 11;
+				}
+				if (player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
+				{
+					player.GetModPlayer<StarsAbovePlayer>().sceneID = 12;
+				}
+
+				activateVNDialogue(player);
+				player.GetModPlayer<StarsAbovePlayer>().astrolabeIntroDialogue = 2;
 				
 				return true;
 			}
-			if (player.GetModPlayer<StarsAbovePlayer>().cosmicVoyageDialogue == 1)
+			if (player.GetModPlayer<StarsAbovePlayer>().observatoryIntroDialogue == 1)
 			{
-				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 24;
-				player.GetModPlayer<StarsAbovePlayer>().cosmicVoyageDialogue = 2;
-				activateDialogue(player);
-				
+				player.GetModPlayer<StarsAbovePlayer>().sceneID = 13;
+
+				activateVNDialogue(player);
+				player.GetModPlayer<StarsAbovePlayer>().observatoryIntroDialogue = 2;
+
 				return true;
 			}
+
+			//End of Subworld dialogue.
+
+
 			if (player.GetModPlayer<StarsAbovePlayer>().desertscourgeDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 201;
@@ -1252,6 +1266,16 @@ namespace StarsAbove.Items.Consumables
 			player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
 			player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
 		}
+		private void activateVNDialogue(Player player)
+        {
+			
+				player.GetModPlayer<StarsAbovePlayer>().dialogueScrollTimer = 0;
+				player.GetModPlayer<StarsAbovePlayer>().dialogueScrollNumber = 0;
+				player.GetModPlayer<StarsAbovePlayer>().sceneProgression = 0;
+				player.GetModPlayer<StarsAbovePlayer>().VNDialogueActive = true;
+			
+		}
+
 
         public override void UpdateInventory(Player player)
         {

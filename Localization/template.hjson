@@ -80,7 +80,7 @@ Mods: {
 				}
 				JunglePlanet: {
 					Name: Tucana
-					Description: The selfsame supermassive star providing succor to your home planet has also graced this one- perhaps a bit too much. Below the lush overgrowth layer lies a blue-shaded subregion.
+					Description: The selfsame supermassive star providing succor to your home planet has also graced this one- perhaps a bit too much. Below the lush overgrowth layer lies the cerulean undergrowth.
 					Threat: "Threat Level: C"
 					Requirement: Tier II Stellaglyph required for transit.
 					Loot: "Resources: Jungle enemy drops"
@@ -108,7 +108,7 @@ Mods: {
 				}
 				Corvus: {
 					Name: Corvus
-					Description: Deep within the Ardor, dwindling resources led to this ruined, war-torn ashen planet. A grim reminder that while war could kill you, the cold will.
+					Description: Deep within the Ardor, dwindling resources led to this ruined, war-torn ashen planet. A grim reminder that while war could kill you, the cold will. While its citizens are long gone, lawless raiders roam the ruins.
 					Threat: "Threat Level: B"
 					Requirement: Tier II Stellaglyph required for transit.
 					Loot: "Resources: Unique upgrade materials"
@@ -1627,9 +1627,9 @@ Mods: {
 				SceneID: {
 					3: {
 						Dialogue: {
-							1: Greetings! I am Asphodene- a Starfarer, and in turn, that makes you my Starbearer.
-							2: I will lend you my strength so that we may defeat the threats to this world together- and if things go well, to solve the bigger problems beyond.
-							3: There's more in it for you, though. If you'd like, I can give you the description of what I can help you with. I recommend it!
+							0: Greetings! I am Asphodene- a Starfarer, and in turn, that makes you my Starbearer.
+							1: I will lend you my strength so that we may defeat the threats to this world together- and if things go well, to solve the bigger problems beyond.
+							2: There's more in it for you, though. If you'd like, I can give you the description of what I can help you with. I recommend it!
 						}
 						Choices: {
 							1: I'd like the full explanation.
@@ -1640,10 +1640,10 @@ Mods: {
 					}
 					4: {
 						Dialogue: {
-							1: Okay, where to start... The Spatial Disk you used to form the contract can be used to access the Stellar Array, which provides abilities after defeating bosses. Nice, right?
-							2: The Spatial Disk can do a lot of other things, but for now, the Stellar Array is the most important. Remember to check it often!
-							3: One last thing.. I can turn energy from other worlds into direct power in the form of Essences. Combining these with other materials should be enough to create powerful Aspected Weapons.
-							4: Right, my power is yours. Let's show this world what we can do.
+							0: Okay, where to start... The Spatial Disk you used to form the contract can be used to access the Stellar Array, which provides abilities after defeating bosses. Nice, right?
+							1: The Spatial Disk can do a lot of other things, but for now, the Stellar Array is the most important. Remember to check it often!
+							2: One last thing.. I can turn energy from other worlds into direct power in the form of Essences. Combining these with other materials should be enough to create powerful Aspected Weapons.
+							3: Right, my power is yours. Let's show this world what we can do.
 						}
 						Choices: {
 							1: X
@@ -1652,7 +1652,7 @@ Mods: {
 					}
 					5: {
 						Dialogue: {
-							1: Well, in that case... My power is yours. Let's show this world what we can do.
+							0: Well, in that case... My power is yours. Let's show this world what we can do.
 						}
 						Choices: {
 							1: X
@@ -1661,9 +1661,9 @@ Mods: {
 					}
 					6: {
 						Dialogue: {
-							1: It's nice to meet you. My name is Eridani.. a Starfarer. You, in turn, are my Starbearer.
-							2: Through this contract, we must work together to bring justice to those willing to harm this world- and, if things proceed well, the worlds beyond, as well.
-							3: If you are willing, I can give a description of what I can provide you with. Personally, I recommend it- knowledge is power, after all.
+							0: It's nice to meet you. My name is Eridani.. a Starfarer. You, in turn, are my Starbearer.
+							1: Through this contract, we must work together to bring justice to those willing to harm this world- and, if things proceed well, the worlds beyond, as well.
+							2: If you are willing, I can give a description of what I can provide you with. Personally, I recommend it- knowledge is power, after all.
 						}
 						Choices: {
 							1: I'd like the full explanation.
@@ -1673,10 +1673,10 @@ Mods: {
 					}
 					7: {
 						Dialogue: {
-							1: Right. Let's begin. With the Spatial Disk you used, you can access the Stellar Array. With the defeat of powerful foes, it will grant you strength.
-							2: The Spatial Disk has plenty of other uses, but by my hypothesis we don't have access to them yet. Hopefully, as we get stronger, more facets of the Disk will open up to us.
-							3: Umm.. what next..? Right. I can turn latent energy from other worlds into crystallized power- an Essence, if you will. You can turn these Essences into Aspected Weapons.
-							4: That should be everything. My strength is yours... I won't let you down.
+							0: Right. Let's begin. With the Spatial Disk you used, you can access the Stellar Array. With the defeat of powerful foes, it will grant you strength.
+							1: The Spatial Disk has plenty of other uses, but by my hypothesis we don't have access to them yet. Hopefully, as we get stronger, more facets of the Disk will open up to us.
+							2: Umm.. what next..? Right. I can turn latent energy from other worlds into crystallized power- an Essence, if you will. You can turn these Essences into Aspected Weapons.
+							3: That should be everything. My strength is yours... I won't let you down.
 						}
 						Choices: {
 							1: X
@@ -1685,7 +1685,7 @@ Mods: {
 					}
 					8: {
 						Dialogue: {
-							1: In that case, my power is yours. Let's bring our full might to bear.
+							0: In that case, my power is yours. Let's bring our full might to bear.
 						}
 						Choices: {
 							1: X
@@ -1694,26 +1694,26 @@ Mods: {
 					}
 					9: {
 						Dialogue: {
-							1: I see... Please, excuse my test. I know it was crude, but it's the only way I know how to judge someone. 
-							2: In reality, I should have known. My sisters would never choose unwisely.  
-							3: Huh? Sister? No way...  
-							4: I apologize, Asphodene. This should help. Ring any bells? 
-							5: Dude. We have GOT to stop meeting like this. The nerve...! 
-							6: Please, let me explain, Starbearer. In tandem with our galaxy's myriad worlds, there exists Starfarers to aid their denizens. You are familiar with what we do.
-							7: As we are conduits of energy, we choose a Starbearer to act as our envoy. You should know that living beings are the best conductors of mana, and we're only partially alive.
-							8: However, the First Starfarer's nominee was... unfitting for their role. This is the First Starbearer. From what I know, they seem to have lost their mind and morals.
-							9: Now, they continue to roam the galaxy, the Starfarer a thrall to their chosen one's whims. They 'pursue good' through any means necessary, often with casualties.
-							10: This is all conjecture, but the destruction is very real. It should go unsaid that we can't let this continue. I'll need your help in the future.
-							11: As it stands now, you have little chance of besting them. However, while Asphodene doesn't know it, all Starfarers have an ace up their sleeve: the Stellar Nova.
-							12: I've already bequeathed the power to her the second you've won our duel. 
-							13: That is all for now. I must continue to track the First Starbearer. Good luck- I will have need of you soon. 
-							14: I know he's a loner, but.. I wish we could have spoken more. Stay safe, Perseus. I can't help but feel he's hiding something from me, though. Just me? 
-							15: Anyways, he was right. I do feel stronger- and my hair's gone all shiny! This power should be an amazing boon going forward. 
-							16: Looks like my Stellar Nova is called 'Theofania Inanis.' Perhaps we'll get to use some more once we defeat more powerful foes?
-							17: After binding the Stellar Nova Key, you should be able to equip the Stellar Nova through the Spatial Disk, like usual.
-							18: You should have some Prismatic Cores already. With their power, I theorize you can upgrade Stellar Novas with crafting.
-							19: This is important. You need Stellar Nova Energy to cast Novas. You gain Nova energy in combat, and it depletes outside of combat.
-							20: OK. A lot has happened, but this is a huge step forward for us. Please use the Novas well! Bye for now.
+							0: I see... Please, excuse my test. I know it was crude, but it's the only way I know how to judge someone. 
+							1: In reality, I should have known. My sisters would never choose unwisely.  
+							2: Huh? Sister? No way...  
+							3: I apologize, Asphodene. This should help. Ring any bells? 
+							4: Dude. We have GOT to stop meeting like this. The nerve...! 
+							5: Please, let me explain, Starbearer. In tandem with our galaxy's myriad worlds, there exists Starfarers to aid their denizens. You are familiar with what we do.
+							6: As we are conduits of energy, we choose a Starbearer to act as our envoy. You should know that living beings are the best conductors of mana, and we're only partially alive.
+							7: However, the First Starfarer's nominee was... unfitting for their role. This is the First Starbearer. From what I know, they seem to have lost their mind and morals.
+							8: Now, they continue to roam the galaxy, the Starfarer a thrall to their chosen one's whims. They 'pursue good' through any means necessary, often with casualties.
+							9: This is all conjecture, but the destruction is very real. It should go unsaid that we can't let this continue. I'll need your help in the future.
+							10: As it stands now, you have little chance of besting them. However, while Asphodene doesn't know it, all Starfarers have an ace up their sleeve: the Stellar Nova.
+							11: I've already bequeathed the power to her the second you've won our duel. 
+							12: That is all for now. I must continue to track the First Starbearer. Good luck- I will have need of you soon. 
+							13: I know he's a loner, but.. I wish we could have spoken more. Stay safe, Perseus. I can't help but feel he's hiding something from me, though. Just me? 
+							14: Anyways, he was right. I do feel stronger- and my hair's gone all shiny! This power should be an amazing boon going forward. 
+							15: Looks like my Stellar Nova is called 'Theofania Inanis.' Perhaps we'll get to use some more once we defeat more powerful foes?
+							16: After binding the Stellar Nova Key, you should be able to equip the Stellar Nova through the Spatial Disk, like usual.
+							17: You should have some Prismatic Cores already. With their power, I theorize you can upgrade Stellar Novas with crafting.
+							18: This is important. You need Stellar Nova Energy to cast Novas. You gain Nova energy in combat, and it depletes outside of combat.
+							19: OK. A lot has happened, but this is a huge step forward for us. Please use the Novas well! Bye for now.
 						}
 						Choices: {
 							1: X
@@ -1722,26 +1722,26 @@ Mods: {
 					}
 					10: {
 						Dialogue: {
-							1: I see... Please, excuse my test. I know it was crude, but it's the only way I know how to judge someone. 
-							2: In reality, I should have known. My sisters would never choose unwisely.  
-							3: Did you just say... 'sister?' You've got to be kidding...
-							4: I apologize, Eridani. This should help. Ring any bells? 
-							5: We haven't talked in ages- and you show up now...?
-							6: Please, let me explain, Starbearer. In tandem with our galaxy's myriad worlds, there exists Starfarers to aid their denizens. You are familiar with what we do.
-							7: As we are conduits of energy, we choose a Starbearer to act as our envoy. You should know that living beings are the best conductors of mana, and we're only partially alive.
-							8: However, the First Starfarer's nominee was... unfitting for their role. This is the First Starbearer. From what I know, they seem to have lost their mind and morals.
-							9: Now, they continue to roam the galaxy, the Starfarer a thrall to their chosen one's whims. They 'pursue good' through any means necessary, often with casualties.
-							10: This is all conjecture, but the destruction is very real. It should go unsaid that we can't let this continue. I'll need your help in the future.
-							11: As it stands now, you have little chance of besting them. However, while Eridani doesn't know it, all Starfarers have an ace up their sleeve: the Stellar Nova.
-							12: I've already bequeathed the power to her the second you've won our duel. 
-							13: That is all for now. I must continue to track the First Starbearer. Good luck- I will have need of you soon. 
-							14: Perseus was never one for sticking around. I think he wasn't letting something slip... Anyways, this power is incredible, but I need to get used to it.
-							15: My Stellar Nova is called 'Theofania Inanis.' Perhaps we will be able to utilize more once we become stronger.
-							16: After binding the Stellar Nova Key, you should be able to equip the Stellar Nova through the Spatial Disk, like usual.
-							17: With Prismatic Cores, you can craft upgrades to the Stellar Nova, I believe. You can affix them in the menu directly.
-							18: Don't forget: You need Stellar Nova Energy to cast Stellar Novas. You can only accrue Energy in combat.
-							19: That's about it.. I know it's a lot to process, but please use the Novas well. That's all for now.
-							20: ...Did my hair just change color?
+							0: I see... Please, excuse my test. I know it was crude, but it's the only way I know how to judge someone. 
+							1: In reality, I should have known. My sisters would never choose unwisely.  
+							2: Did you just say... 'sister?' You've got to be kidding...
+							3: I apologize, Eridani. This should help. Ring any bells? 
+							4: We haven't talked in ages- and you show up now...?
+							5: Please, let me explain, Starbearer. In tandem with our galaxy's myriad worlds, there exists Starfarers to aid their denizens. You are familiar with what we do.
+							6: As we are conduits of energy, we choose a Starbearer to act as our envoy. You should know that living beings are the best conductors of mana, and we're only partially alive.
+							7: However, the First Starfarer's nominee was... unfitting for their role. This is the First Starbearer. From what I know, they seem to have lost their mind and morals.
+							8: Now, they continue to roam the galaxy, the Starfarer a thrall to their chosen one's whims. They 'pursue good' through any means necessary, often with casualties.
+							9: This is all conjecture, but the destruction is very real. It should go unsaid that we can't let this continue. I'll need your help in the future.
+							10: As it stands now, you have little chance of besting them. However, while Eridani doesn't know it, all Starfarers have an ace up their sleeve: the Stellar Nova.
+							11: I've already bequeathed the power to her the second you've won our duel. 
+							12: That is all for now. I must continue to track the First Starbearer. Good luck- I will have need of you soon. 
+							13: Perseus was never one for sticking around. I think he wasn't letting something slip... Anyways, this power is incredible, but I need to get used to it.
+							14: My Stellar Nova is called 'Theofania Inanis.' Perhaps we will be able to utilize more once we become stronger.
+							15: After binding the Stellar Nova Key, you should be able to equip the Stellar Nova through the Spatial Disk, like usual.
+							16: With Prismatic Cores, you can craft upgrades to the Stellar Nova, I believe. You can affix them in the menu directly.
+							17: Don't forget: You need Stellar Nova Energy to cast Stellar Novas. You can only accrue Energy in combat.
+							18: That's about it.. I know it's a lot to process, but please use the Novas well. That's all for now.
+							19: ...Did my hair just change color?
 						}
 						Choices: {
 							1: X
@@ -1751,10 +1751,10 @@ Mods: {
 					# Asphodene introducing the Astrolabe.
 					11: {
 						Dialogue: {
-							1: Hmm, feel like you're ready for the next step of your journey yet?
-							2: Well, either way, I'm going to give you this: the Astrolabe. If you check the Stellar Nova Menu, you'll see a new option has opened up.
-							3: I'll be brief, but the Astrolabe will allow you to explore the universe (with a few extra steps.) If you're interested, use the Astrolabe to visit the Observatory Hyperborea.
-							4: That's all for now. I'll be waiting!
+							0: Hmm, feel like you're ready for the next step of your journey yet?
+							1: Well, either way, I'm going to give you this: the Astrolabe. If you check the Stellar Nova Menu, you'll see a new option has opened up.
+							2: I'll be brief, but the Astrolabe will allow you to explore the universe (with a few extra steps.) If you're interested, use the Astrolabe to visit the Observatory Hyperborea.
+							3: That's all for now. I'll be waiting! Oh, and Eri will be there too.
 						}
 						Choices: {
 							1: X
@@ -1764,30 +1764,38 @@ Mods: {
 					# Eridani doing the same thing.
 					12: {
 						Dialogue: {
-							1: Looks like you're getting stronger- and quickly. While I originally feared for your health, it seems you're strong enough to utilize this.
-							2: This is the Astrolabe. If you check the Stellar Nova Menu, the previously locked option has become available, as it's yours now.
-							3: The Astrolabe will allow you to explore the universe- with the proper setup, of course. I can explain more once you've used it to go to the Observatory Hyperborea.
-							4: When you're ready, feel free to visit. I'll be awaiting your arrival.
+							0: Looks like you're getting stronger- and quickly. While I originally feared for your well-being, it seems you're strong enough to utilize this now.
+							1: This is the Astrolabe. If you check the Stellar Nova Menu, the previously locked option has become available.
+							2: The Astrolabe will allow you to explore the universe- with the proper setup, of course. I can explain more once you've used it to go to the Observatory Hyperborea.
+							3: When you're ready, feel free to visit. I'll be awaiting your arrival- and Asphodene as well.
 						}
 						Choices: {
 							1: X
 							2: X
 						}
 					}
-					# Asphodene explaining lore and how to use Stellaglyphs
+					# Asphodene and Eridani explaining lore and how to use Stellaglyphs
 					13: {
 						Dialogue: {
-							1: You finally made it! This is the Observatory Hyperborea- the home of the Starfarers. Not all of them, mind you, but Eri and I.
-							2: Actually, the Observatories weren't intended for Starfarers at all, but we're... squatting, I guess. The original inhabitants are long gone.
-							3: We might not look it, but we aren't native to this galaxy. We came together after- well, it's hard to explain straight out.
-							4: Let's pretend the universe is a lake, right? Okay, good. Now imagine someone started pouring oil into the lake- who could miss that?
-							5: Hopefully that explains what's going on here. We ended up with this:
-							6: This galaxy- the Moirae galaxy- is freezing over. It's not happening all at once, but the farther away from the center you go, things get worse.
-							7: Not only is the galaxy freezing, but all mana is being drained as well. It's almost as if the galaxy was alive, and then started to die... but that's impossible.
-							8: The only reason why I met you is because this planet is full of life, even this far away from the galaxy's center. You can thank your Sun for that.
+						# Asphodene
+							0: You finally made it! This is the Observatory Hyperborea- the home of the Starfarers. Not all of them, mind you, but Eri and I.
+						# Eridani
+							1: Right. Actually, the Observatories weren't intended for us at all, but we're... keeping the place clean. The original inhabitants are long gone anyways.
+						# Eridani
+							2: We might not look it, but we aren't native to this galaxy. We came after- well, it's hard to explain straight out.
+						# Eridani
+							3: Let's pretend the universe is a lake, right? Okay, good. Now imagine someone started pouring oil into the lake- not something you could miss.
+						# Asphodene
+							4: Hopefully that explains what's going on here. We ended up discovering this:
+						# Asphodene
+							5: This galaxy- the Moirae galaxy- is freezing over. It's not happening all at once, but the farther away from the center you go, things get worse.
+						# Asphodene
+							6: The only reason why I met you is because this planet is uniquely habitable, even this far away from the galaxy's center. You can thank your Sun for that.
+						# Eridani
+							7: The Observatory has defined this disaster as the Ardor, so we'll be referring to it as such.
 						}
 						Choices: {
-							1: How are we going to solve this...?
+							1: How are we going to solve this?
 							2: Aren't there other people solving this problem already?
 							3: Well, I haven't noticed anything out of the ordinary.
 						}
@@ -1795,9 +1803,14 @@ Mods: {
 					# Dialogue 13 option 1
 					14: {
 						Dialogue: {
-							1: I'd love to give you a direct answer... but I don't know.
-							2: However, with the Astrolabe I gave you, you'll be able to explore the cosmos with a working Stellaglyph once you make one.
-							3: I can run you through the basics, if you need it. It's not too complicated, but you might get lost quickly.
+						# Asphodene
+							0: I'd love to give you a direct answer... but I don't know.
+						# Eridani
+							1: It's a pressing issue, but we need to become stronger before any rash decisions.
+						# Eridani
+							2: With the Astrolabe, you'll be able to explore the cosmos with a working Stellaglyph once you make one.
+						# Asphodene
+							3: We can run you through the basics, if you need it. It's not too complicated, but you might get lost quickly.
 							
 						}
 						Choices: {
@@ -1808,10 +1821,16 @@ Mods: {
 					# Option 2
 					15: {
 						Dialogue: {
-							1: Well, we thought that too, but it seems most of the galaxy's population has moved inwards to escape the cold.
-							2: Starfarers can extract Essences from ambient mana, but from the brief worlds we've visited, I've only been able to learn the galaxy's name: Moirae.
-							3: Anyways, with the Astrolabe I gave you, you'll be able to explore the cosmos with a working Stellaglyph once you make one.
-							4: I can run you through the basics, if you need it. It's not too complicated, but you might get lost quickly.
+						# Asphodene
+							0: Well, we thought that too, but it seems most of the galaxy's population has moved inwards to escape the cold.
+						# Eridani
+							1: Starfarers can extract Essences from ambient mana, but from the brief worlds we've visited, I've only been able to learn the galaxy's name: Moirae.
+						# Asphodene
+							2: While it IS important, we have to get stronger before making any moves.
+						# Eridani
+							3: With the Astrolabe, you'll be able to explore the cosmos with a working Stellaglyph once you make one.
+						# Asphodene
+							4: We can run you through the basics, if you need it. It's not too complicated, but you might get lost quickly.
 							
 							
 						}
@@ -1823,9 +1842,12 @@ Mods: {
 					# Option 3
 					16: {
 						Dialogue: {
-							1: Of course you didn't- didn't I just say your Sun is warming the planet up? Jeez...
-							2: Anyways, with the Astrolabe I gave you, you'll be able to explore the cosmos with a working Stellaglyph once you make one.
-							3: I can run you through the basics, if you need it. It's not too complicated, but you might get lost quickly. 
+						# Asphodene
+							0: Of course you didn't- didn't I just say your Sun is warming the planet up? Jeez...
+						# Eridani
+							1: Anyways, with the Astrolabe, you'll be able to explore the cosmos with a working Stellaglyph once you make one.
+						# Asphodene
+							2: We can run you through the basics, if you need it. It's not too complicated, but you might get lost quickly. 
 							
 						}
 						Choices: {
@@ -1833,23 +1855,33 @@ Mods: {
 							2: Actually, I think I can figure it out on my own.
 						}
 					}
-					# Asphodene explaining Cosmic Voyages.
+					# Cosmic Voyage explaining.
 					17: {
 						Dialogue: {
-							1: Alright. To get started, you'll need to craft a structure called a Stellaglyph.
-							2: Within the Observatory is something called the Celestriad Root. In the interest of keeping this brief, you can use it like a crafting table.
-							3: Simply combine one of each type of gemstone to create the Stellaglyph. That's pretty much the hardest part taken care of.
-							4: Now, placing the Stellaglyph in your home will open up a Gateway you can use with the Celestial Cartography menu to explore the galaxy in what we call a Cosmic Voyage.
-							5: Simply select a destination to teleport directly there- quite a novel way of travel, right?
-							6: Of course, there's a few downsides. We're transposing you there instead of normal travel (like with a starship) so you'll have most movement abilities unavailable.
-							7: I'd recommend taking something like a grappling hook to service you on the Cosmic Voyages.
-							8: Keep in mind you'll need to be near the Gateway to go back home or to visit other locations.
-							9: Speaking of locations... any loot you find won't be replenished when you visit again, except for Anomalies.
-							10: Anomaly locations have much greater loot and rarer enemies, but if you stay for too long... Well, there's a whole host of nasties in the galaxy, and they love visiting these places.
+						# Eridani
+							0: Alright. To get started, you'll need to craft a structure called a Stellaglyph.
+							1: Within the Observatory is something called the Celestriad Root. In the interest of keeping this brief, you can use it like a crafting table.
+							2: Simply combine one of each type of gemstone to create the Stellaglyph. That's pretty much the hardest part taken care of.
+						# Asphodene
+							3: Now, placing the Stellaglyph in your home will open up a Gateway you can use with the Celestial Cartography menu to explore the galaxy in what we call a Cosmic Voyage.
+							4: Simply select a destination to teleport directly there- quite a novel way of travel, right?
+						# Eridani
+							5: Of course, there's a few downsides. We're transposing you there instead of normal travel (like with a starship) so you'll have most movement abilities unavailable.
+						# Asphodene.
+							6: Oh, I recommend taking something like a grappling hook to service you on the Cosmic Voyages. Trust me on this one.
+						# Eridani.
+							7: That makes sense. Keep in mind you'll need to be near the Gateway to go back home or to visit other locations.
+							8: Speaking of locations... any loot you find won't be replenished when you visit again, except for Anomalies.
+							9: Anomaly locations have much greater loot and rarer enemies, but if you stay for too long...
+						# Asphodene.
+							10: Let's just say there's a whole host of nasties in the galaxy, and they love visiting these places. Once they're alerted to your presence, they'll come hunting.
+						# Eridani.
 							11: After visiting an Anomaly, there'll be a long cooldown before you can visit again, so make every visit count.
+						# Asphodene
 							12: Through upgrading the Stellaglyph, you can access more Cosmic Voyage Locations, but you'll have to craft the Stellaglyph upgrades yourself- using the Celestriad Root, of course.
 							13: One last thing- there exists certain structures called Stellar Foci, which, when placed near your Stellaglyph, will make you stronger during Cosmic Voyages.
 							14: You can find precursor materials for Stellar Foci within Cosmic Voyages.
+						# Asphodene
 							15: Okay, that's it! Did you get all that?
 							
 						}
@@ -1861,7 +1893,17 @@ Mods: {
 					# End Cosmic Voyage explaination (Asphodene)
 					18: {
 						Dialogue: {
-							1: Perfect. Good luck out there!
+							0: Perfect. Good luck out there!
+						}
+						Choices: {
+							1: X
+							2: X
+						}
+					}
+					# End Cosmic Voyage explaination (Eridani)
+					19: {
+						Dialogue: {
+							0: Well, that's good. Good luck.
 						}
 						Choices: {
 							1: X
@@ -6053,8 +6095,10 @@ Mods: {
 			VagrantOfSpaceAndTime: The enigmatic Starfarer Perseus. His outward appearance is that of utmost confidence... but he's just kind of a dork trying to look cool. His sisters agree on this. He continues to have power over spatial distances, but seems to have lost the power to control time (but not the moniker.)
 			WarriorOfLight: The Warrior of Light, or the First Starbearer, once championed justice in the galaxy through his actions and the aid of his Starfarer. He once ruled a peaceful world, but was forced to watch helplessly as his people met their demise, vowing to never again let others share the same fate- no matter the cost.
 			AsteroidWorm: These incredibly hardy creatures have grown the capability to aimlessly drift through the vacuum of space- perhaps not the best depiction of evolution. While their meals are scarce, their need for food is nigh nonexistant. Gifted with a strong outer shell, but low overall attacking strength.
-			Soulless: An unfortunate victim of whatever apocalypse befell Caelum. While mana keeps their incarnation alive, whatever trace of thought they may have once had has long since departed.
-			Yojimbo: A mysterious lumenkin, his name seems to change depending on when and where you come across him. He's a bounty hunter, but is willing to part with some of his quarry's belongings for a price.
+			Soulless: An unfortunate victim of whatever apocalypse befell Caelum. Mana keeps their incarnation alive, but whatever trace of thought they may have once had has long since departed.
+			Yojimbo: A mysterious lumenkin, his name seems to change depending on when and where you come across him. He's a bounty hunter, but is willing to part with some knowledge if you pry enough...
+			AmethystHeadpiercer: Foot soldier of a wide-reaching paramilitary organization, referred to as the Amethyst. Equipped with a Vortexian powersuit fitted with a jetpack for ease of travel, even in the vacuum of space.
+			AmethystSwordsinner: Foot soldier of a wide-reaching paramilitary organization, referred to as the Amethyst. Utilizes a hardlight blade with ferocious efficiency, specifically for countering ranged offense.
 		}
 		
 		Prefix: {
