@@ -663,19 +663,13 @@ namespace StarsAbove
 		}
 		public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {
+			//damage += 0.2f;
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
 			{
-				if(!disableCalamityWeaponBuffs)
+				if(!disableCalamityWeaponBuffs && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
                 {
-					if(Main.hardMode)
-                    {
-						damage += 0.3f;
-					}
-					else
-                    {
-						damage += 0.2f;
-					}
-					
+					damage += 0.2f;
+
 				}
 				
 
