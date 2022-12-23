@@ -665,7 +665,7 @@ namespace StarsAbove
         {
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
 			{
-				if(!disableCalamityWeaponBuffs)
+				if(!disableCalamityWeaponBuffs && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
                 {
 					if(Main.hardMode)
                     {
