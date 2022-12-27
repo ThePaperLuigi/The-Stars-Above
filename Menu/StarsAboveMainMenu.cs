@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -45,6 +46,9 @@ namespace StarsAbove.Menu
 		int animationFrame2;
 		float walkFromScreenEdgeToEdge;
 		float walkFromScreenEdgeToEdgeEridani;
+
+		float MousePositionFloatX;
+		float MousePositionFloatY;
 		public override void OnSelected()
 		{
 			menuTime = 0;
@@ -148,7 +152,7 @@ namespace StarsAbove.Menu
 					zero.Y -= ((float)MenuBG.Height * width - (float)Main.screenHeight) * 0.5f;
                 }
             }
-            spriteBatch.Draw(MenuBG, zero, (Rectangle?)null, Color.White, 0f, Vector2.Zero, width, (SpriteEffects)0, 0f);
+			spriteBatch.Draw(MenuBG, new Vector2(zero.X + MathHelper.Lerp(-98, -82, MousePositionFloatX), zero.Y + MathHelper.Lerp(-95, -90, MousePositionFloatY)), (Rectangle?)null, Color.White, 0f, Vector2.Zero, width * 1.1f, (SpriteEffects)0, 0f);
 
 			Texture2D AsphoRunAnimation = (Texture2D)ModContent.Request<Texture2D>($"StarsAbove/UI/CelestialCartography/RunAnimation/ARun" + animationFrame + "0");
 			Texture2D EriRunAnimation = (Texture2D)ModContent.Request<Texture2D>($"StarsAbove/UI/CelestialCartography/RunAnimation/ERun" + animationFrame2 + "0");
@@ -181,7 +185,18 @@ namespace StarsAbove.Menu
 			Texture2D WhiteLine3 = (Texture2D)ModContent.Request<Texture2D>($"{menuAssetPath}/Line3");//White Circle
 			Texture2D WhiteLine4 = (Texture2D)ModContent.Request<Texture2D>($"{menuAssetPath}/Line4");//White Circle
 
-			
+			//Float from 0 to 1 from left to right side of the screen
+			MousePositionFloatX = ((Math.Min(Main.screenWidth, Main.MouseScreen.X) - 0) * 100) / (Main.screenWidth - 0) / 100;
+			MousePositionFloatY = ((Math.Min(Main.screenHeight, Main.MouseScreen.Y) - 0) * 100) / (Main.screenHeight - 0) / 100;
+
+			if (MousePositionFloatX < 0)
+			{
+				MousePositionFloatX = 0;
+			}
+			if (MousePositionFloatY < 0)
+			{
+				MousePositionFloatY = 0;
+			}
 
 			#region circle
 			spriteBatch.Draw(
@@ -418,7 +433,9 @@ namespace StarsAbove.Menu
 				SpriteEffects.None,
 				0f);
 
-			spriteBatch.Draw(MenuFG, zero, (Rectangle?)null, Color.White, 0f, Vector2.Zero, width, (SpriteEffects)0, 0f);
+
+			spriteBatch.Draw(MenuFG, new Vector2(zero.X + MathHelper.Lerp(-93, -87, MousePositionFloatX), zero.Y + MathHelper.Lerp(-93, -92, MousePositionFloatY)), (Rectangle?)null, Color.White, 0f, Vector2.Zero, width * 1.1f, (SpriteEffects)0, 0f);
+
 			spriteBatch.Draw(
 				AsphoRunAnimation, //The texture being drawn.
 				new Vector2(walkFromScreenEdgeToEdge, Main.screenHeight - AsphoRunAnimation.Height / 2), //The position of the texture.

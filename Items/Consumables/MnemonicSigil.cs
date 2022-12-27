@@ -18,9 +18,9 @@ namespace StarsAbove.Items.Consumables
 		{
 			DisplayName.SetDefault("Mnemonic Sigil");
 			Tooltip.SetDefault("The combined memories of worlds defeated by the First Starfarer" +
-				"\nCan be used with [c/EFB43E:Observatory Hyperborea]'s portal to be taken to the [c/7FC1EF:Eternal Confluence]" +
+				"\nCan be used to be taken to the [c/7FC1EF:Eternal Confluence]" +
 				"\nUse again within the center of the [c/7FC1EF:Eternal Confluence] to summon [c/F1AF42:Tsukiyomi, the First Starfarer]" +
-				"\n[c/7FC1EF:Alternatively, use this item normally to summon Tsukiyomi, if other methods are not available]" +
+				//"\n[c/7FC1EF:Alternatively, use this item normally to summon Tsukiyomi in the Overworld, if other methods are not available]" +
 				"\nIs not consumed upon use" +
 				"\n'...'" +
 				"\n");
@@ -62,22 +62,7 @@ namespace StarsAbove.Items.Consumables
 		public override bool? UseItem(Player player)
 		{
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
-			if (SubworldSystem.IsActive<Observatory>() && player.HasBuff(BuffType<GatewayBuff>())) //Entering a Cosmic Voyage
-			{
-				if (Main.netMode != NetmodeID.SinglePlayer)
-				{
-					if (player.whoAmI == Main.myPlayer)
-					{
-						SubworldSystem.Enter("StarsAbove/EternalConfluence");
-						//SubworldSystem.Enter<Observatory>();
-					}
-				}
-				else
-                {
-					SubworldSystem.Enter("StarsAbove/EternalConfluence");
-				}
-				return true;
-			}
+			
 			int type = ModContent.NPCType<NPCs.Tsukiyomi>();
 
 			var tilePos = player.Bottom.ToTileCoordinates16();
@@ -99,8 +84,12 @@ namespace StarsAbove.Items.Consumables
 					NetMessage.SendData(MessageID.SpawnBoss, number: player.whoAmI, number2: type);
 				}
 			}
+			else
+            {
+				SubworldSystem.Enter("StarsAbove/EternalConfluence");
+			}
 
-			if(!SubworldSystem.IsActive<EternalConfluence>())
+			/*if(!SubworldSystem.IsActive<EternalConfluence>())
             {
 				if (Main.netMode == NetmodeID.MultiplayerClient)
 				{
@@ -113,7 +102,7 @@ namespace StarsAbove.Items.Consumables
 				}
 			}
 			
-
+			*/
 			
 			
 
@@ -128,7 +117,6 @@ namespace StarsAbove.Items.Consumables
 				.AddIngredient(ItemType<MnemonicTrace>())
 				.AddIngredient(ItemType<MnemonicTrace2>())
 				.AddIngredient(ItemType<MnemonicTrace3>())
-				.AddIngredient(ItemType<MnemonicTrace4>())
 				.AddTile(TileID.Anvils)
 				.Register();
 		}

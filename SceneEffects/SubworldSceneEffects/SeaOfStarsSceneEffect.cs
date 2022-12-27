@@ -15,7 +15,11 @@ namespace StarsAbove.SceneEffects
         }
         public override void SpecialVisuals(Player player, bool isActive)
         {
-            if (SubworldSystem.IsActive<CygnusAsteroids>() || SubworldSystem.IsActive<MiningStationAries>() || SubworldSystem.IsActive<BleachedPlanet>())
+            if (SubworldSystem.IsActive<CygnusAsteroids>()
+                || SubworldSystem.IsActive<MiningStationAries>()
+                || SubworldSystem.IsActive<BleachedPlanet>()
+                || SubworldSystem.IsActive<Pyxis>()
+                )
             {
                 Main.dayTime = false;
                 Main.time = 18000;

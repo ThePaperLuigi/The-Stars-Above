@@ -286,7 +286,7 @@ namespace StarsAbove.NPCs
             //This is the death effect from ExampleMod
             if (NPC.ai[3] > 0f)//This is death effect
             {
-                SoundEngine.PlaySound(StarsAboveAudio.Arbitration_WasIsAndWillForeverBe, NPC.Center);
+                
                 Music =  MusicLoader.GetMusicSlot(Mod,  "Sounds/Music/silence");
                 NPC.dontTakeDamage = true;
                 NPC.ai[3] += 2f; // increase our death timer.
@@ -342,7 +342,7 @@ namespace StarsAbove.NPCs
                     {
                         Dust.NewDust(NPC.Center, 0, 0, 21, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
                     }
-                    
+                    SoundEngine.PlaySound(StarsAboveAudio.Arbitration_WasIsAndWillForeverBe, NPC.Center);
                     //Main.PlaySound(SoundLoader.customSoundType, (int)npc.Center.X, (int)npc.Center.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/ArbiterDefeated"));
                     NPC.life = 0;
                     NPC.HitEffect(0, 0);

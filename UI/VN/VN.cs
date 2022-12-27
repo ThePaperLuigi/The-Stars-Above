@@ -195,6 +195,7 @@ namespace StarsAbove.UI.VN
 					{
 						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().VNDialogueChoice1 = (string)VNScenes.SetupVNSystem(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneID, Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneProgression)[2];
 						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().VNDialogueChoice2 = (string)VNScenes.SetupVNSystem(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneID, Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneProgression)[3];
+						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().VNDialogueChoice3 = (string)VNScenes.SetupVNSystem(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneID, Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneProgression)[15];
 
 						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().VNDialogueChoiceActive = true;
 					}
@@ -512,9 +513,10 @@ namespace StarsAbove.UI.VN
 				area.Append(choice2Text);
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().VNDialogueThirdOption)
 				{
-					area.Append(choice3Text);
-					area.Append(dialogueOption3);
 					choice3Text.SetText($"{Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().VNDialogueChoice3}");
+
+					area.Append(dialogueOption3);
+					area.Append(choice3Text);
 				}
 				
 			}

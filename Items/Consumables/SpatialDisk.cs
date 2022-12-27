@@ -1232,9 +1232,13 @@ namespace StarsAbove.Items.Consumables
 			}
 			else
 			{
-				if(SubworldSystem.Current == null)
+
+				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 2; //Default idle line.
+
+				/*
+				if (SubworldSystem.Current == null)
                 {
-					player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 2; //Default idle line.
+					
 
 				}
 				else
@@ -1247,7 +1251,7 @@ namespace StarsAbove.Items.Consumables
 					{
 						player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 25;
 					}
-				}
+				}*/
 			}
 			if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior && SubworldSystem.Current == null)
 			{

@@ -1155,7 +1155,7 @@ namespace StarsAbove
 
         public bool starfarerMenuActive;
 
-        public float starfarerMenuUIOpacity;
+        public float starfarerMenuUIOpacity = 0f;
         public float costumeChangeOpacity;
         int starfarerOutfitSaved = 0;
 
@@ -5714,12 +5714,7 @@ namespace StarsAbove
                            penthBossItemDialogue == 2, //Unlock requirements.
                            302,
                            "???")); //Corresponding dialogue ID.
-                    BossArchiveList.Add(new BossArchiveListing(
-                           "Perseus's Appeal: The Arbiter", //Name of the archive listing.
-                           "Grants the item to summon Arbitration.", //Description of the listing.
-                           arbiterBossItemDialogue == 2, //Unlock requirements.
-                           303,
-                           "???")); //Corresponding dialogue ID.
+                    
                     BossArchiveList.Add(new BossArchiveListing(
                            "Perseus's Appeal: The Warrior of Light", //Name of the archive listing.
                            "Grants the item to summon the Warrior of Light.", //Description of the listing.
@@ -5738,12 +5733,6 @@ namespace StarsAbove
                            penthDialogue == 2, //Unlock requirements.
                            71,
                            "Defeat Penthesilea, the Witch of Ink.")); //Corresponding dialogue ID.
-                    BossArchiveList.Add(new BossArchiveListing(
-                           "Arbitration Purified", //Name of the archive listing.
-                           "Unlocked after defeating Arbitration. Grants a material needed for confronting the final boss.", //Description of the listing.
-                           arbiterDialogue == 2, //Unlock requirements.
-                           72,
-                           "Defeat Arbitration.")); //Corresponding dialogue ID.
                     BossArchiveList.Add(new BossArchiveListing(
                            "Warrior of Light Vanquished", //Name of the archive listing.
                            "Unlocked after defeating the Warrior of Light. Grants a material needed for confronting the final boss.", //Description of the listing.
@@ -6345,20 +6334,32 @@ namespace StarsAbove
                            "Yojimbo's Introduction (Asphodene)", //Name of the archive listing.
                            $"Yojimbo, the lumenkin bounty hunter, makes his appearance.", //Description of the listing.
                            yojimboIntroDialogue == 2, //Unlock requirements.
-                           00,
+                           19,
                            "Meet ??? during a Cosmic Voyage. (Asphodene)")); //Corresponding dialogue ID.
                     VNArchiveList.Add(new VNArchiveListing(
                            "Yojimbo's Introduction (Eridani)", //Name of the archive listing.
                            $"Yojimbo, the lumenkin bounty hunter, makes his appearance.", //Description of the listing.
                            yojimboIntroDialogue == 2, //Unlock requirements.
-                           00,
+                           20,
                            "Meet ??? during a Cosmic Voyage. (Eridani)")); //Corresponding dialogue ID.
                     VNArchiveList.Add(new VNArchiveListing(
                            "Yojimbo: About the galaxy...", //Name of the archive listing.
                            $"Yojimbo's comments on the state of the galaxy.", //Description of the listing.
                            false,//yojimboIntroDialogue == 2, //Unlock requirements.
                            00,
-                           "Talk to Yojimbo during a Cosmic Voyage. (Random unlock)")); //Corresponding dialogue ID.
+                           "Talk to ??? during a Cosmic Voyage. (Random unlock)")); //Corresponding dialogue ID.
+                    VNArchiveList.Add(new VNArchiveListing(
+                          "Yojimbo: About the Empire...", //Name of the archive listing.
+                          $"Yojimbo's comments on the state of the galaxy.", //Description of the listing.
+                          false,//yojimboIntroDialogue == 2, //Unlock requirements.
+                          00,
+                          "Talk to ??? during a Cosmic Voyage. (Random unlock)")); //Corresponding dialogue ID.
+                    VNArchiveList.Add(new VNArchiveListing(
+                          "Yojimbo: About the Ardor...", //Name of the archive listing.
+                          $"Yojimbo's comments on the state of the galaxy.", //Description of the listing.
+                          false,//yojimboIntroDialogue == 2, //Unlock requirements.
+                          00,
+                          "Talk to ??? during a Cosmic Voyage. (Random unlock)")); //Corresponding dialogue ID.
                     VNArchiveList.Add(new VNArchiveListing(
                            "Garridine's Introduction (Asphodene)", //Name of the archive listing.
                            $"Garridine, the lupine machinist, makes her appearance.", //Description of the listing.
@@ -7775,9 +7776,10 @@ namespace StarsAbove
 
                     }
                     if (arbiterBossItemDialogue == 0 && GolemDialogue == 2 && vagrantDialogue == 2)
-                    {
-                        arbiterBossItemDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 151, 255, 90); }
+                    {//Arbitration is no longer centric to the progression.
+
+                        //arbiterBossItemDialogue = 1;
+                        //if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 151, 255, 90); }
 
                     }
                     if (warriorBossItemDialogue == 0 && MoonLordDialogue == 2 && vagrantDialogue == 2)
@@ -8134,7 +8136,7 @@ namespace StarsAbove
                             return;
 
                         }
-                        if (arbiterDialogue == 2 && ArbitrationWeaponDialogue == 0)
+                        if (LunaticCultistWeaponDialogue == 2 && ArbitrationWeaponDialogue == 0)
                         {
                             ArbitrationWeaponDialogue = 1;
                             if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }

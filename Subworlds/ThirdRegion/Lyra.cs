@@ -13,21 +13,21 @@ using Terraria.Utilities;
 
 namespace StarsAbove
 {
-	public class Corvus : Subworld
+	public class Lyra : Subworld
 	{
 		public override int Width => 3600;
 		public override int Height => 1800;
 
 		//public override ModWorld modWorld => ModContent.GetInstance < your modworld here>();
 
-		public override bool ShouldSave => true;
+		public override bool ShouldSave => false;//Anomalies don't save.
 		public override bool NoPlayerSaving => false;
 		public override bool NormalUpdates => false;
 
 
 		public override List<GenPass> Tasks => new List<GenPass>()
 		{
-			new PassLegacy("Corvus", (progress, _) =>
+			new PassLegacy("Lyra", (progress, _) =>
 			{
 					progress.Message = "Loading"; //Sets the text above the worldgen progress bar
 
@@ -36,23 +36,26 @@ namespace StarsAbove
 					Main.worldSurface = Main.maxTilesY/2 + 420; 
 					Main.rockLayer = Main.maxTilesY/2 + 600;
 
-				int tileAdjustment = 100;
+				    int tileAdjustment = 200;
 
 					//variantWorld = Main.rand.Next(3);
-					StructureHelper.Generator.GenerateStructure("Structures/Corvus/Corvus1", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 1000, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
-					StructureHelper.Generator.GenerateStructure("Structures/Corvus/Corvus2", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 800, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
-					StructureHelper.Generator.GenerateStructure("Structures/Corvus/Corvus3", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 600, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
+					StructureHelper.Generator.GenerateStructure("Structures/Lyra/Lyra1", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 1200, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
+					StructureHelper.Generator.GenerateStructure("Structures/Lyra/Lyra2", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 1000, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
+					StructureHelper.Generator.GenerateStructure("Structures/Lyra/Lyra3", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 800, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
 
-					StructureHelper.Generator.GenerateStructure("Structures/Corvus/Corvus4", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 400, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
+					StructureHelper.Generator.GenerateStructure("Structures/Lyra/Lyra4", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 600, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
 
-					StructureHelper.Generator.GenerateStructure("Structures/Corvus/Corvus5", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 200, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
+					StructureHelper.Generator.GenerateStructure("Structures/Lyra/Lyra5", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 400, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
+					StructureHelper.Generator.GenerateStructure("Structures/Lyra/Lyra5Extra", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 200, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
 
-				//The player will spawn on the leftmost side of this structure below
-					StructureHelper.Generator.GenerateStructure("Structures/Corvus/Corvus6", new Terraria.DataStructures.Point16(Main.maxTilesX/2, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
-					StructureHelper.Generator.GenerateStructure("Structures/Corvus/Corvus7", new Terraria.DataStructures.Point16(Main.maxTilesX/2 + 200, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);                  StructureHelper.Generator.GenerateStructure("Structures/Corvus/Corvus7", new Terraria.DataStructures.Point16(Main.maxTilesX/2 + 200, Main.maxTilesY/2 - 80), StarsAbove.Instance);
-					StructureHelper.Generator.GenerateStructure("Structures/Corvus/Corvus8", new Terraria.DataStructures.Point16(Main.maxTilesX/2 + 400, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
-					StructureHelper.Generator.GenerateStructure("Structures/Corvus/Corvus9", new Terraria.DataStructures.Point16(Main.maxTilesX/2 + 600, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
-					StructureHelper.Generator.GenerateStructure("Structures/Corvus/Corvus10", new Terraria.DataStructures.Point16(Main.maxTilesX/2 + 800, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
+					StructureHelper.Generator.GenerateStructure("Structures/Lyra/Lyra6a", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 200, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
+								//The player will spawn on the leftmost side of this structure below
+
+					StructureHelper.Generator.GenerateStructure("Structures/Lyra/Lyra7", new Terraria.DataStructures.Point16(Main.maxTilesX/2, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);  
+					StructureHelper.Generator.GenerateStructure("Structures/Lyra/Lyra8", new Terraria.DataStructures.Point16(Main.maxTilesX/2 + 200, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
+					StructureHelper.Generator.GenerateStructure("Structures/Lyra/Lyra9", new Terraria.DataStructures.Point16(Main.maxTilesX/2 + 400, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
+					StructureHelper.Generator.GenerateStructure("Structures/Lyra/Lyra10", new Terraria.DataStructures.Point16(Main.maxTilesX/2 + 600, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
+					StructureHelper.Generator.GenerateStructure("Structures/Lyra/Lyra11", new Terraria.DataStructures.Point16(Main.maxTilesX/2 + 800, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
 
 					for (int i = 0; i < Main.maxTilesX; i++)
 					{
@@ -192,7 +195,7 @@ namespace StarsAbove
         public override void OnEnter()
 		{
 
-			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "Corvus";
+			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "Lyra";
 			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().loadingScreenOpacity = 1f;
 
 		}

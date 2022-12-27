@@ -62,13 +62,16 @@ namespace StarsAbove
 				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.WaywardPredictor>(), 0.1f);
 				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.WaywardVortexian>(), 0.1f);*/
 			}
-			/*if (spawnInfo.Player.InModBiome<SeaOfStarsBiome>()) // Anomaly planet stuff
+
+			if (spawnInfo.Player.InModBiome<LyraBiome>()) // Anomaly planet stuff
 			{
 				pool.Clear();
 
-				pool.Add(NPCID.Crawdad, 1f);
-				pool.Add(NPCID.Salamander, 1f);
-				pool.Add(NPCID.GiantShelly, 1f);
+				pool.Add(NPCID.Pinky, 1f);
+
+				pool.Add(NPCID.Crawdad, 0.4f);
+				pool.Add(NPCID.Salamander, 0.4f);
+				pool.Add(NPCID.GiantShelly, 0.4f);
 
 				pool.Add(NPCID.GoldDragonfly, 0.1f);
 				pool.Add(NPCID.EnchantedNightcrawler, 0.5f);
@@ -90,8 +93,20 @@ namespace StarsAbove
 				pool.Add(NPCID.GemBunnyTopaz, 0.4f);
 
 
+				if(spawnInfo.Player.GetModPlayer<SubworldPlayer>().anomalyTimer >= 7200)
+                {
+					if (!NPC.AnyNPCs(ModContent.NPCType<NPCs.Arbitration>()))
+					{
+						pool.Add(ModContent.NPCType<NPCs.Arbitration>(), 0.5f);
 
-			}*/
+					}
+					
+
+				}
+
+
+
+			}
 			if (spawnInfo.Player.InModBiome<CorvusBiome>())
 			{
 				pool.Clear();
@@ -106,6 +121,11 @@ namespace StarsAbove
 					pool.Add(ModContent.NPCType<NPCs.TownNPCs.Yojimbo>(), 0.1f);
 
 				}
+				
+			}
+			if (SubworldSystem.IsActive<Pyxis>())
+			{
+				pool.Clear();
 				
 			}
 			if (SubworldSystem.IsActive<Serpens>())

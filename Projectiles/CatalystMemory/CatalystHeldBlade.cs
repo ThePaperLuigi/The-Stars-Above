@@ -83,8 +83,8 @@ namespace StarsAbove.Projectiles.CatalystMemory
 
 			if (projOwner.GetModPlayer<StarsAbovePlayer>().CatalystMemoryProgress > 5 && projOwner.GetModPlayer<StarsAbovePlayer>().CatalystMemoryProgress < 40)
             {
-				projOwner.itemTime = 10;
-				projOwner.itemAnimation = 10;
+				//projOwner.itemTime = 10;
+				//projOwner.itemAnimation = 10;
 				spawnProgress += 0.1f;
 				
 			}

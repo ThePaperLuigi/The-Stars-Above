@@ -70,14 +70,7 @@ namespace StarsAbove.Items.Consumables
 		}
 		public override void AddRecipes()
 		{
-			//ModRecipe recipe = new ModRecipe(mod);
-			//recipe.AddIngredient(ItemID.HallowedBar, 3);
-			//recipe.AddIngredient(ItemID.DarkShard, 1);
-			//recipe.AddIngredient(ItemID.Bone, 12);
-			//recipe.AddIngredient(ItemID.ManaCrystal, 5);
-			//recipe.AddTile(TileID.WorkBenches);
-			//recipe.SetResult(this);
-			//recipe.AddRecipe();
+			
 		}
 	}
 }

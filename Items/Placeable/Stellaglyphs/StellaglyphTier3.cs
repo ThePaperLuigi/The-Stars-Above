@@ -55,8 +55,8 @@ namespace StarsAbove.Items.Placeable.Stellaglyphs
 			CreateRecipe(1)
 				.AddIngredient(ItemID.SoulofLight, 15)
 				.AddIngredient(ItemID.SoulofNight, 15)
-				//Some more subworld specific materials. Perhaps the shards from the Bleached world, etc.
-				.AddIngredient(ItemType<Prisms.PrismaticCore>(), 30)
+				.AddIngredient(ItemType<Materials.BandedTenebrium>(), 20)
+				.AddIngredient(ItemType<Prisms.PrismaticCore>(), 10)
 				.AddIngredient(ItemType<StellaglyphTier2>())
 				.AddTile(TileType<Tiles.CelestriadRoot>())
 				.Register();

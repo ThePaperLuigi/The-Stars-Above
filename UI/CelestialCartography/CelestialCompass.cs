@@ -41,6 +41,8 @@ namespace StarsAbove.UI.CelestialCartography
 		private UIImageButton Aquarius;
 		private UIImageButton Caelum;
 		private UIImageButton Lyra;
+		private UIImageButton Pyxis;
+
 		private UIImageButton MiningStationAries;
 		private UIImageButton Scorpius;
 		private UIImageButton Serpens;
@@ -141,11 +143,18 @@ namespace StarsAbove.UI.CelestialCartography
 			Caelum.Top.Set(0, 0f);
 
 			Lyra = new UIImageButton(Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Lyra"));
-			//Lyra.OnClick += TeleportLyra;
+			Lyra.OnClick += TeleportLyra;
 			Lyra.Width.Set(80, 0f);
 			Lyra.Height.Set(80, 0f);
 			Lyra.Left.Set(0, 0f);
 			Lyra.Top.Set(0, 0f);
+
+			Pyxis = new UIImageButton(Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Pyxis"));
+			Pyxis.OnClick += TeleportPyxis;
+			Pyxis.Width.Set(80, 0f);
+			Pyxis.Height.Set(80, 0f);
+			Pyxis.Left.Set(0, 0f);
+			Pyxis.Top.Set(0, 0f);
 
 			MiningStationAries = new UIImageButton(Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/MiningStationAries"));
 			MiningStationAries.OnClick += TeleportAries;
@@ -232,6 +241,7 @@ namespace StarsAbove.UI.CelestialCartography
 			area.Append(Aquarius);
 			area.Append(Caelum);
 			area.Append(Lyra);
+			area.Append(Pyxis);
 			area.Append(MiningStationAries);
 			area.Append(Scorpius);
 			area.Append(Serpens);
@@ -538,6 +548,85 @@ namespace StarsAbove.UI.CelestialCartography
 
 
 		}
+		private void TeleportPyxis(UIMouseEvent evt, UIElement listeningElement)
+		{
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive)
+				return;
+
+
+			if (Main.LocalPlayer.HasBuff(BuffType<PortalReady>()) || Main.LocalPlayer.HasBuff(BuffType<StellaglyphReady>()))
+			{
+				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2)//Tier 2
+				{
+					SubworldSystem.Enter<Pyxis>();
+					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
+
+				}
+				else
+				{
+					if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI)
+					{
+						Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.WeakStellaglyph"), 255, 126, 114);
+					}
+				}
+
+			}
+			else
+			{
+				if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI)
+				{
+					Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.NoPortal"), 255, 126, 114);
+				}
+			}
+
+
+		}
+		private void TeleportLyra(UIMouseEvent evt, UIElement listeningElement)
+		{
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive)
+				return;
+
+
+			if (Main.LocalPlayer.HasBuff(BuffType<PortalReady>()) || Main.LocalPlayer.HasBuff(BuffType<StellaglyphReady>()))
+			{
+				if (Main.LocalPlayer.HasBuff(BuffType<VoyageCooldown>()))
+				{
+					if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI)
+					{
+						Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.AnomalyCooldown"), 255, 126, 114);
+					}
+
+				}
+				else
+                {
+					if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 3)//Tier 3
+					{
+						SubworldSystem.Enter<Lyra>();
+						Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
+						Main.LocalPlayer.AddBuff(BuffType<VoyageCooldown>(), 108000);
+
+					}
+					else
+					{
+						if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI)
+						{
+							Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.WeakStellaglyph"), 255, 126, 114);
+						}
+					}
+				}
+				
+
+			}
+			else
+			{
+				if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI)
+				{
+					Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.NoPortal"), 255, 126, 114);
+				}
+			}
+
+
+		}
 		protected override void DrawSelf(SpriteBatch spriteBatch) {
 			base.DrawSelf(spriteBatch);
 			var modPlayer = Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>();
@@ -602,6 +691,18 @@ namespace StarsAbove.UI.CelestialCartography
 				{
 					spriteBatch.Draw(
 				(Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/CompassLocations/CompassLyra"),
+				hitbox,
+				null,
+				Color.White * (modPlayer.CelestialCompassVisibility),
+				MathHelper.ToRadians(0),
+				compassCenter,
+				SpriteEffects.None,
+				1f);
+				}
+				if (Pyxis.IsMouseHovering)
+				{
+					spriteBatch.Draw(
+				(Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/CompassLocations/CompassPyxis"),
 				hitbox,
 				null,
 				Color.White * (modPlayer.CelestialCompassVisibility),
@@ -866,6 +967,16 @@ namespace StarsAbove.UI.CelestialCartography
 				Main.spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Corvus"), Corvus.GetInnerDimensions().ToRectangle(), Color.White * modPlayer.CelestialCompassVisibility);
 
 			}
+			if (SubworldSystem.IsActive<Lyra>())
+			{
+				Main.spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Lyra"), Lyra.GetInnerDimensions().ToRectangle(), Color.White * modPlayer.CelestialCompassVisibility);
+
+			}
+			if (SubworldSystem.IsActive<Pyxis>())
+			{
+				Main.spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Pyxis"), Pyxis.GetInnerDimensions().ToRectangle(), Color.White * modPlayer.CelestialCompassVisibility);
+
+			}
 			if (SubworldSystem.IsActive<Serpens>())
 			{
 				Main.spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Serpens"), Serpens.GetInnerDimensions().ToRectangle(), Color.White * modPlayer.CelestialCompassVisibility);
@@ -989,6 +1100,19 @@ namespace StarsAbove.UI.CelestialCartography
 			if (Lyra.IsMouseHovering)
 			{
 				string location = "AlienPlanet";
+				modPlayer.locationMapName = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Name");
+				modPlayer.locationDescription = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Description");
+				modPlayer.locationThreat = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Threat");
+				modPlayer.locationRequirement = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Requirement");
+				modPlayer.locationLoot = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Loot");
+
+			}
+
+			Pyxis.Top.Set(380, 0);
+			Pyxis.Left.Set(350, 0);
+			if (Pyxis.IsMouseHovering)
+			{
+				string location = "Pyxis";
 				modPlayer.locationMapName = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Name");
 				modPlayer.locationDescription = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Description");
 				modPlayer.locationThreat = LangHelper.GetTextValue("CosmicVoyages.MapText." + location + ".Threat");

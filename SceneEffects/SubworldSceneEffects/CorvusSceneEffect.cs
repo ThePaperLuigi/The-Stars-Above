@@ -37,6 +37,7 @@ namespace StarsAbove.SceneEffects
                 player.ZoneSnow = false;
                 if (player.GetModPlayer<StarsAbovePlayer>().inCombat > 0)
                 {
+                    
                     player.ManageSpecialBiomeVisuals("Blizzard", Main.UseStormEffects);
                     //In combat, change the music and add the Blizzard effect.
                 }

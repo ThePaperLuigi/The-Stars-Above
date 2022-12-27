@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using StarsAbove.Biomes;
 using StarsAbove.Utilities;
 using StarsAbove.Projectiles.SkyStriker;
+using Microsoft.Xna.Framework;
 
 namespace StarsAbove.NPCs.TownNPCs
 {
@@ -75,7 +76,7 @@ namespace StarsAbove.NPCs.TownNPCs
 		//Make sure to allow your NPC to chat, since being "like a town NPC" doesn't automatically allow for chatting.
 		public override bool CanChat()
 		{
-			return true;
+			return false;
 		}
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -162,22 +163,19 @@ namespace StarsAbove.NPCs.TownNPCs
         public override void AI()
         {
 			Lighting.AddLight(NPC.Center, TorchID.Ice);
-			for (int k = 0; k < Main.maxNPCs; k++)
+			for (int i = 0; i < Main.maxPlayers; i++)
 			{
-				NPC npc = Main.npc[k];
-				if (npc.active && npc.type == ModContent.NPCType<Yojimbo>() && npc.whoAmI != NPC.whoAmI)
+				Player p = Main.player[i];
+				if (p.active && p.Distance(NPC.Center) < 150)
 				{
-					//npc.active = false;
 
+					NPC.velocity = Vector2.Zero;
 				}
-				else
-				{
-					//NPC.active = false;
 
-				}
+
+
 			}
-			//Only 1 Yojimbo at a time, how?
-
+			
 
 			//If a player gets close to him, and he hasn't met them yet, play a special dialogue.
 
