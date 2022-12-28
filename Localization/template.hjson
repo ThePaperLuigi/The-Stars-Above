@@ -1,10 +1,7 @@
 {
   "Mods": {
     "StarsAbove": {
-      "Tiles": {
-        "CelestriadRoot": "Celestriad Root",
-        "Gateway": "Gateway"
-      },
+      
       "NPCDialogue": {
         "Talk": "Right click to talk!",
         "Yojimbo": {
@@ -2472,7 +2469,7 @@
       "Common": {
         "DiskReady": "The Spatial Disk begins to resonate. Left click to interact.",
         "ArrayAbility": "The Stellar Array has gained a new ability!",
-        "`": "The weapon fails to react to your Aspect, rendering it unusable. You can only use Astral weapons with Asphodene.",
+        "AstralLocked": "The weapon fails to react to your Aspect, rendering it unusable. You can only use Astral weapons with Asphodene.",
         "UmbralLocked": "The weapon fails to react to your Aspect, rendering it unusable. You can only use Umbral weapons with Eridani."
       },
       "DamageClass": {
@@ -2495,6 +2492,8 @@
       },
       "MapObject": {
         "VendingMachine": "Vending Machine"
+        "CelestriadRoot": "Celestriad Root",
+        "Gateway": "Gateway"
       },
       "ItemTooltip": {
         "AlienCoral": "For each unused Stellar Array Energy point, gain 5% damage\nGain 10 defense with a full Stellar Array instead\n'Can only be described as lava lamp liquid forced to abdicate its throne'",

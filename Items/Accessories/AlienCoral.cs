@@ -9,7 +9,7 @@ namespace StarsAbove.Items.Accessories
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Alien Coral");
 
-			Tooltip.SetDefault("[c/2DD2FE:Stargazer Relic]" +//In the future, only one Dungeon accessory can be worn at a time. (There's only one for now.)
+			Tooltip.SetDefault("[c/2DD2FE:Stargazer Relic]" +
 				"\nFor each unused Stellar Array Energy point, gain 15% increased damage" +
 				"\nGain 40 defense with a full Stellar Array instead" +
 				"\n[c/ADEEFF:Only one Stargazer Relic can be equipped at a time]" +

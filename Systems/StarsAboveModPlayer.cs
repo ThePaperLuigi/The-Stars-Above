@@ -6217,13 +6217,6 @@ namespace StarsAbove
                         140,
                         "Defeat the Empress of Light.")); //Corresponding dialogue ID.
                     WeaponArchiveList.Add(new WeaponArchiveListing(
-                        "Empress of Light Weapon EX", //Name of the archive listing.
-                        $"Grants the Essence for " +
-                        $"[i:{ItemType<Spatial>()}] The Only Thing I Know For Real. ", //Description of the listing.
-                        MurasamaWeaponDialogue == 2, //Unlock requirements.
-                        139,
-                        "Defeat the Empress of Light in Master Mode.")); //Corresponding dialogue ID.
-                    WeaponArchiveList.Add(new WeaponArchiveListing(
                         "Golem Weapon", //Name of the archive listing.
                         $"Grants the Essence for " +
                         $"[i:{ItemType<Spatial>()}] Mercy. ", //Description of the listing.
@@ -7846,11 +7839,13 @@ namespace StarsAbove
                         }
                         if (MurasamaWeaponDialogue == 0 && NPC.downedEmpressOfLight && Main.masterMode && DownedBossSystem.downedVagrant)
                         {
-                            MurasamaWeaponDialogue = 1;
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
-                            NewDiskDialogue = true;
-                            WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                            return;
+                            //Obtained from Arbitration now.
+
+                            //MurasamaWeaponDialogue = 1;
+                            //if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                            //NewDiskDialogue = true;
+                            //WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                            //return;
                         }
                         if (MercyWeaponDialogue == 0 && NPC.downedGolemBoss)
                         {

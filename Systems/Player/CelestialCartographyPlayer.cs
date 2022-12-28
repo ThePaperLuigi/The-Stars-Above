@@ -20,9 +20,64 @@ using Microsoft.Xna.Framework.Audio;
 using StarsAbove.Buffs.Subworlds;
 using SubworldLibrary;
 using StarsAbove.Utilities;
+using StarsAbove.Tiles.StellarFoci;
 
 namespace StarsAbove
 {
+    public class CountStellarFoci : ModSystem
+    {
+        public int ResistanceT1;
+        public int ResistanceT2;
+        public int ResistanceT3;
+
+        public int AgilityT1;
+        public int AgilityT2;
+        public int AgilityT3;
+
+        public int LuckT1;
+        public int LuckT2;
+        public int LuckT3;
+
+        public int PowerT1;
+        public int PowerT2;
+        public int PowerT3;
+
+        public int WealthT1;
+        public int WealthT2;
+        public int WealthT3;
+
+        public int ConstitutionT1;
+        public int ConstitutionT2;
+        public int ConstitutionT3;
+
+        public override void TileCountsAvailable(ReadOnlySpan<int> tileCounts)
+        {
+            ResistanceT1 = tileCounts[ModContent.TileType<ResistanceFocusTier1Tile>()] / 12;
+            ResistanceT2 = tileCounts[ModContent.TileType<ResistanceFocusTier2Tile>()] / 12;
+            ResistanceT3 = tileCounts[ModContent.TileType<ResistanceFocusTier3Tile>()] / 12;
+
+            AgilityT1 = tileCounts[ModContent.TileType<AgilityFocusTier1Tile>()] / 12;
+            AgilityT2 = tileCounts[ModContent.TileType<AgilityFocusTier2Tile>()] / 12;
+            AgilityT3 = tileCounts[ModContent.TileType<AgilityFocusTier3Tile>()] / 12;
+
+            LuckT1 = tileCounts[ModContent.TileType<LuckFocusTier1Tile>()] / 12;
+            LuckT2 = tileCounts[ModContent.TileType<LuckFocusTier2Tile>()] / 12;
+            LuckT3 = tileCounts[ModContent.TileType<LuckFocusTier3Tile>()] / 12;
+
+            WealthT1 = tileCounts[ModContent.TileType<WealthFocusTier1Tile>()] / 12;
+            WealthT2 = tileCounts[ModContent.TileType<WealthFocusTier2Tile>()] / 12;
+            WealthT3 = tileCounts[ModContent.TileType<WealthFocusTier3Tile>()] / 12;
+
+            PowerT1 = tileCounts[ModContent.TileType<PowerFocusTier1Tile>()] / 12;
+            PowerT2 = tileCounts[ModContent.TileType<PowerFocusTier2Tile>()] / 12;
+            PowerT3 = tileCounts[ModContent.TileType<PowerFocusTier3Tile>()] / 12;
+
+            ConstitutionT1 = tileCounts[ModContent.TileType<ConstitutionFocusTier1Tile>()] / 12;
+            ConstitutionT2 = tileCounts[ModContent.TileType<ConstitutionFocusTier2Tile>()] / 12;
+            ConstitutionT3 = tileCounts[ModContent.TileType<ConstitutionFocusTier3Tile>()] / 12;
+
+        }
+    }
     public class CelestialCartographyPlayer : ModPlayer
     {
         // Animated Starfarer Menu variables.
@@ -82,31 +137,42 @@ namespace StarsAbove
 
         //These values are set and values reset at the end of all updates.
 
-        //Increases player attack during Cosmic Voyages.
-        public float attackFocus;
-        public bool basicAttackFocusActive;
+        //The amount of Stellar Foci. If the amount of Stellar Foci exceed the limit of the current Stellaglyph, all buffs will be disabled.
+        public int stellarFociAmount = 0;
 
-        //Increases player defense during Cosmic Voyages.
-        public float defenseFocus;
-        public bool basicDefenseFocusActive;
+        //Changes depending on the Stellaglyph.
+        public int stellarFociMax = 0;
 
-        //Increases the player luck during Cosmic Voyages.
-        public float luckFocus;
-        public bool basicLuckFocusActive;
+        //Increases player attack during Cosmic Voyages. (Ruby)
+        public float attackFocus = 0f;
 
-        //Increases the movement speed during Cosmic Voyages.
-        public float speedFocus;
-        public bool basicSpeedFocusActive;
-        
-        //Increases the potency of other Foci slightly.
-        public bool strengthEnhancerFocus;
-        public bool strengthEnhancerFocusActive;
+        //Increases player defense during Cosmic Voyages. (Sapphire)
+        public int defenseFocus = 0;
+
+        //Increases the player luck during Cosmic Voyages. (Diamond)
+        public float luckFocus = 0f;
+
+        //Increases the movement speed during Cosmic Voyages. (Emerald)
+        public float speedFocus = 0f;
+
+        //Increases Max HP and MP during Cosmic Voyages. (Amethyst)
+        public int maxStatFocus = 0;
+        // +5 HP, +20 MP per Tier 1 Focus
+
+        //Increases money dropped during Cosmic Voyages. (Topaz)
+        public int moneyFocus = 0;
 
 
         public override void PreUpdate()
         {
             //This additionally adds the buffs.
             CheckVoyageEligibility();
+
+
+            //Recalculate all the Stellar Foci passives.
+            CalculateStellarFoci();
+
+            
 
             LocationDescriptionAnimation();
             QuadraticFloatAnimation();
@@ -116,6 +182,144 @@ namespace StarsAbove
 
 
         }
+        public override void PostUpdate()
+        {
+            if (stellarFociAmount > stellarFociMax && Player.HasBuff(BuffType<StellaglyphReady>()))
+            {
+                //A buff to signify you're above the limit.
+                Player.AddBuff(BuffType<StellarFocusOverlimit>(), 10);
+
+            }
+            if (stellarFociAmount <= stellarFociMax && SubworldSystem.Current != null)
+            {
+
+                Player.statLifeMax2 += maxStatFocus / 2;
+                Player.statManaMax2 += maxStatFocus;
+
+
+            }
+
+        }
+        public override void PostUpdateRunSpeeds()
+        {
+            ManageFociBuffs();
+
+        }
+
+        private void CalculateStellarFoci()
+        {
+            if (SubworldSystem.Current == null)
+            {
+                stellarFociAmount = 0;
+
+                attackFocus = 0f;
+
+                defenseFocus = 0;
+
+                luckFocus = 0f;
+
+                speedFocus = 0f;
+
+                maxStatFocus = 0;
+
+                moneyFocus = 0;
+
+
+            }
+
+            //Increase defense by 3 for each Tier 1 Resistance Focus
+            defenseFocus += ModContent.GetInstance<CountStellarFoci>().ResistanceT1 * 3;
+            //Increase by 5
+            defenseFocus += ModContent.GetInstance<CountStellarFoci>().ResistanceT2 * 5;
+            //Increase by 7
+            defenseFocus += ModContent.GetInstance<CountStellarFoci>().ResistanceT3 * 7;
+
+            attackFocus += ModContent.GetInstance<CountStellarFoci>().PowerT1 * 0.02f;
+            attackFocus += ModContent.GetInstance<CountStellarFoci>().PowerT2 * 0.03f;
+            attackFocus += ModContent.GetInstance<CountStellarFoci>().PowerT3 * 0.04f;
+
+            luckFocus += ModContent.GetInstance<CountStellarFoci>().LuckT1 * 0.04f;
+            luckFocus += ModContent.GetInstance<CountStellarFoci>().LuckT2 * 0.08f;
+            luckFocus += ModContent.GetInstance<CountStellarFoci>().LuckT3 * 0.12f;
+
+            speedFocus += ModContent.GetInstance<CountStellarFoci>().AgilityT1 * 0.03f;
+            speedFocus += ModContent.GetInstance<CountStellarFoci>().AgilityT2 * 0.05f;
+            speedFocus += ModContent.GetInstance<CountStellarFoci>().AgilityT3 * 0.07f;
+
+            moneyFocus += ModContent.GetInstance<CountStellarFoci>().LuckT1 * 7;
+            moneyFocus += ModContent.GetInstance<CountStellarFoci>().LuckT2 * 15;
+            moneyFocus += ModContent.GetInstance<CountStellarFoci>().LuckT3 * 30;
+
+            maxStatFocus += ModContent.GetInstance<CountStellarFoci>().ConstitutionT1 * 10;
+            maxStatFocus += ModContent.GetInstance<CountStellarFoci>().ConstitutionT2 * 16;
+            maxStatFocus += ModContent.GetInstance<CountStellarFoci>().ConstitutionT3 * 24;
+
+
+            stellarFociAmount +=
+                ModContent.GetInstance<CountStellarFoci>().ResistanceT1 +
+                ModContent.GetInstance<CountStellarFoci>().ResistanceT2 +
+                ModContent.GetInstance<CountStellarFoci>().ResistanceT3 +
+                ModContent.GetInstance<CountStellarFoci>().PowerT1 +
+                ModContent.GetInstance<CountStellarFoci>().PowerT2 +
+                ModContent.GetInstance<CountStellarFoci>().PowerT3 +
+                ModContent.GetInstance<CountStellarFoci>().LuckT1 +
+                ModContent.GetInstance<CountStellarFoci>().LuckT2 +
+                ModContent.GetInstance<CountStellarFoci>().LuckT3 +
+                ModContent.GetInstance<CountStellarFoci>().ConstitutionT1 +
+                ModContent.GetInstance<CountStellarFoci>().ConstitutionT2 +
+                ModContent.GetInstance<CountStellarFoci>().ConstitutionT3 +
+                ModContent.GetInstance<CountStellarFoci>().WealthT1 +
+                ModContent.GetInstance<CountStellarFoci>().WealthT2 +
+                ModContent.GetInstance<CountStellarFoci>().WealthT3 +
+                ModContent.GetInstance<CountStellarFoci>().AgilityT1 +
+                ModContent.GetInstance<CountStellarFoci>().AgilityT2 +
+                ModContent.GetInstance<CountStellarFoci>().AgilityT3;
+        }
+
+        private void ManageFociBuffs()
+        {
+            if (stellarFociAmount <= stellarFociMax && SubworldSystem.Current != null)
+            {
+
+                Player.GetDamage(DamageClass.Generic) += attackFocus;
+
+                Player.statDefense += defenseFocus;
+
+                Player.maxRunSpeed *= 1 + speedFocus;
+                Player.accRunSpeed *= 1 + speedFocus;
+
+                Player.luck += luckFocus;
+
+            }
+
+
+        }
+
+        public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
+        {
+            CalculateMoneyFocus(target);
+        }
+        public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
+        {
+            CalculateMoneyFocus(target);
+        }
+
+        private void CalculateMoneyFocus(NPC target)
+        {
+            if (!target.active)//On kill
+            {
+                if (stellarFociAmount <= stellarFociMax && SubworldSystem.Current != null && moneyFocus > 0)
+                {
+                    int k = Item.NewItem(null, (int)target.position.X + Main.rand.Next(-3, 3), (int)target.position.Y + Main.rand.Next(-3, 3), target.width, target.height, ItemID.SilverCoin,
+                        moneyFocus, //Money drop.
+                        false);
+                    if (Main.netMode == NetmodeID.MultiplayerClient)
+                    {
+                        NetMessage.SendData(MessageID.SyncItem, -1, -1, null, k, 1f);
+                    }
+                }
+            }
+        }
 
         private bool CheckVoyageEligibility()
         {
@@ -124,19 +328,24 @@ namespace StarsAbove
                 if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.LunarEvents"), 255, 255, 100); }
                 return false;
             }
+            
             if (nearGateway)
             {
                 //add buff to signify this
                 Player.AddBuff(BuffType<PortalReady>(), 10);
+                
                 return true;
             }
             if (nearStellaglyph)
             {
                 Player.AddBuff(BuffType<StellaglyphReady>(), 10);
+                
                 return true;
             }
+            
             return false;
         }
+        
         
         private void StarmapStarAnimation()
         {
@@ -328,22 +537,7 @@ namespace StarsAbove
             nearGateway = false;
             nearStellaglyph = false;
 
-            if(SubworldSystem.Current == null)
-            {
-                attackFocus = 0f;
-                basicAttackFocusActive = false;
 
-                defenseFocus = 0f;
-                basicDefenseFocusActive = false;
-
-                luckFocus = 0f;
-                basicLuckFocusActive = false;
-
-                speedFocus = 0f;
-                basicSpeedFocusActive = false;
-
-                strengthEnhancerFocus = false;
-            }
         }
     }
 

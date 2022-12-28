@@ -38,6 +38,7 @@ namespace StarsAbove.Tiles.Stellaglyph
 				var modPlayer = Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>();
 				modPlayer.nearStellaglyph = true;
 				modPlayer.stellaglyphTier = 2;
+				modPlayer.stellarFociMax = 8;
 
 			}
 			else

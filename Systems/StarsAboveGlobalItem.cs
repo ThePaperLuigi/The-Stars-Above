@@ -157,6 +157,7 @@ namespace StarsAbove
 			ModContent.ItemType<Ozma>(),
 			ModContent.ItemType<ClaimhSolais>(),
 			ModContent.ItemType<MorningStar>(),
+			ModContent.ItemType<Manifestation>(),
 
 			ModContent.ItemType<EternalStar>(),
 			ModContent.ItemType<VermillionDaemon>(),
@@ -216,6 +217,7 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfSilence>(),
 			ModContent.ItemType<EssenceOfSouls>(),
 			ModContent.ItemType<EssenceOfGold>(),
+						ModContent.ItemType<EssenceOfMimicry>(),
 
 
 		};
@@ -390,7 +392,7 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfGold>(),
 			ModContent.ItemType<EssenceOfFarewells>(),
 			ModContent.ItemType<EssenceOfOffseeing>(),
-
+			ModContent.ItemType<EssenceOfMimicry>(),
 		};
 		public static bool disableAspectPenalty;
 		public static bool disableCalamityWeaponBuffs;

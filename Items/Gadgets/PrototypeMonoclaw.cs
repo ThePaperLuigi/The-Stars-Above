@@ -88,13 +88,6 @@ namespace StarsAbove.Items.Gadgets
 		public override void AddRecipes()
 		{
 			
-				CreateRecipe(1)
-
-				.AddIngredient(ItemID.Wood, 8)
-				.AddIngredient(ItemID.Gravestone)
-				.AddIngredient(ItemType<EssenceOfOffseeing>())
-				.AddTile(TileID.Anvils)
-				.Register();
 			
 			
 		}

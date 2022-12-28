@@ -42,7 +42,7 @@ namespace StarsAbove.Items.Placeable
 			Item.width = 20;
 			Item.height = 20;
 			Item.maxStack = 1;
-			Item.rare = ItemRarityID.Red;
+			Item.rare = ModContent.GetInstance<Systems.StellarRarity>().Type; // Custom Rarity
 			Item.useAnimation = 20;
 			Item.useTime = 20;
 			Item.useStyle = ItemUseStyleID.HoldUp;

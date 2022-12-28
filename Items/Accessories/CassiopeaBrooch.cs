@@ -13,7 +13,7 @@ namespace StarsAbove.Items.Accessories
 			DisplayName.SetDefault("Cassiopea's Brooch");
 
 			Tooltip.SetDefault("[c/2DD2FE:Stargazer Relic]" +
-				"\nNo effect" +
+				"\nNo effect..?" +
 				"\n[c/ADEEFF:Only one Stargazer Relic can be equipped at a time]" +
 				"\n'The Empire's Queen sleeps, waiting to live forever'");
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
