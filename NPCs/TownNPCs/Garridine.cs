@@ -180,6 +180,10 @@ namespace StarsAbove.NPCs.TownNPCs
 
 					NPC.velocity = Vector2.Zero;
 				}
+				else
+                {
+					
+				}
 
 
 

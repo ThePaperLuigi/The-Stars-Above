@@ -18,7 +18,8 @@ namespace StarsAbove.Items
 		public override void SetStaticDefaults()
 		{
 			Tooltip.SetDefault("" +
-                "[c/F7D76A:Hold left click to charge the weapon; the longer the weapon is charged, the stronger the resulting attack will become]" +
+				"[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes]" +
+                "\n[c/F7D76A:Hold left click to charge the weapon; the longer the weapon is charged, the stronger the resulting attack will become]" +
 				"\nUncharged attacks with this weapon swing in the cursor's direction" +
 				"\nStriking foes with the tip of the blade deals damage twice" +
 				"\nCharged attacks will execute [c/8D0404:Guntrigger Execution], teleporting to your cursor (in range), granting Invincibility for 2 seconds, and slashing foes around you" +

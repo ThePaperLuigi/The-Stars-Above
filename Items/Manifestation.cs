@@ -49,7 +49,7 @@ namespace StarsAbove.Items
 		public override void SetDefaults()
 		{
 			
-			Item.damage = 88;           //The damage of your weapon
+			Item.damage = 99;           //The damage of your weapon
 			Item.DamageType = ModContent.GetInstance<Systems.PsychomentDamageClass>();
 			Item.width = 108;            //Weapon's texture's width
 			Item.height = 108;           //Weapon's texture's height
@@ -225,7 +225,27 @@ namespace StarsAbove.Items
 
 		public override void AddRecipes()
 		{
-			
+			CreateRecipe(1)
+				.AddIngredient(ItemID.HallowedBar, 10)
+				.AddIngredient(ItemID.SoulofFright, 10)
+				.AddIngredient(ItemID.FleshBlock, 40)
+				.AddIngredient(ItemID.Vertebrae, 30)
+				.AddIngredient(ItemID.TissueSample, 8)
+				.AddIngredient(ItemID.BrokenHeroSword, 1)
+				.AddIngredient(ItemType<EssenceOfBloodshed>())
+				.AddTile(TileID.Anvils)
+				.Register();
+
+			CreateRecipe(1)
+				.AddIngredient(ItemID.HallowedBar, 10)
+				.AddIngredient(ItemID.SoulofFright, 10)
+				.AddIngredient(ItemID.LesionBlock, 40)
+				.AddIngredient(ItemID.Vertebrae, 30)
+				.AddIngredient(ItemID.TissueSample, 8)
+				.AddIngredient(ItemID.BrokenHeroSword, 1)
+				.AddIngredient(ItemType<EssenceOfBloodshed>())
+				.AddTile(TileID.Anvils)
+				.Register();
 		}
 	}
 }

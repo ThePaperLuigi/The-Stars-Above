@@ -20,8 +20,8 @@ namespace StarsAbove.Items
         public override void SetStaticDefaults()
         {
             Tooltip.SetDefault("" +
-                "" +
-                "[c/F7D76A:Hold left click to charge the weapon; if the weapon is fully charged, the attack varies]" +
+                "[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes]" +
+                "\n[c/F7D76A:Hold left click to charge the weapon; if the weapon is fully charged, the attack varies]" +
                 "\nHolding this weapon will conjure 5 [c/14E6FF:Spatial Planets] to orbit you" +
                 "\nUncharged attacks cleave a colossal area with powerful spatial damage" +
                 "\nCharged attacks conjure stars and a [c/FF14A6:Vorpal Planet] from the cosmos to descend upon your foes" +

@@ -339,6 +339,14 @@ namespace StarsAbove.Items.Consumables
 				
 				return true;
 			}
+			if (player.GetModPlayer<StarsAbovePlayer>().Stellaglyph2WeaponDialogue == 1)
+			{
+				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 160;
+				player.GetModPlayer<StarsAbovePlayer>().Stellaglyph2WeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
 			if (player.GetModPlayer<StarsAbovePlayer>().hivemindDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 203;

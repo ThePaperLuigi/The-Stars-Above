@@ -26,6 +26,7 @@ using StarsAbove.Buffs.SubworldModifiers;
 using StarsAbove.NPCs.OffworldNPCs;
 using StarsAbove.NPCs.TownNPCs;
 using StarsAbove.Utilities;
+using StarsAbove.Items.Loot;
 
 namespace StarsAbove
 {
@@ -38,9 +39,25 @@ namespace StarsAbove
         public bool inGarridineRange;
 
         public int anomalyTimer; //When this reaches a specific value, Arbitration will spawn.
-       
+
+        public int GarridineQuest;
+        public bool AcceptedGarridineQuest;//Turns to true once you've read the new quest objective. It doesn't save.
+        public int GarridineQuestLimit = 1;//The amount of Garridine Quests available.
+
+        public int GarridineQuestCooldown;
 
         //When entering the range of a friendly NPC, use CombatText that says "Right click to initiate conversation!"
+        public override void SaveData(TagCompound tag)
+        {
+            tag["GQuest"] = GarridineQuest;
+
+        }
+
+        public override void LoadData(TagCompound tag)
+        {
+            GarridineQuest = tag.GetInt("GQuest");
+            
+        }
 
 
         public override void PreUpdate()
@@ -50,6 +67,7 @@ namespace StarsAbove
                 
             }
 
+            GarridineQuestCooldown--;
             DoYojimboDialogue();
             DoGarridineDialogue();
 
@@ -151,13 +169,86 @@ namespace StarsAbove
 
                     if (Player.GetModPlayer<StarsAbovePlayer>().garridineIntroDialogue == 2)
                     {
-                        
+                        //After the intro.
 
+                        //If a quest has been completed in the last 5 minutes...
+                        if (GarridineQuestCooldown > 0)
+                        {
+                            Player.GetModPlayer<StarsAbovePlayer>().sceneID = 199;
+                            ActivateVNDialogue(Player);
+                            return;
+                        }
+
+
+                        //If there is no current quest, assign one at random. These are player specific so no multiplayer nonsense.
+                        GarridineQuestLimit = 12;
+                        //If no quest...
+                        //GarridineQuest = 1;
+                        if (GarridineQuest == 0)
+                        {
+                            GarridineQuest = Main.rand.Next(1, GarridineQuestLimit + 1);//Pick randomly from a list of 10 quests.
+
+                            //debugging
+                            //GarridineQuest = 2;
+                        }
+                        else
+                        {
+
+                        }
+                        //Depending on the quest, check for the specified item, and then reward the player.
+                        if(GarridineQuest == 1)
+                        {
+                            ActivateQuest(new int[] { ItemID.WaterBolt });
+                        }
+                        if (GarridineQuest == 2)
+                        {
+                            ActivateQuest(new int[] { ModContent.ItemType<AgnianFarewell>(), ModContent.ItemType<KevesiFarewell>() });
+                        }
+                        if (GarridineQuest == 3)
+                        {
+                            ActivateQuest(new int[] { ItemID.GoldButterfly });
+                        }
+                        if (GarridineQuest == 4)
+                        {
+                            ActivateQuest(new int[] { ItemID.FlyingCarpet });
+                        }
+                        if (GarridineQuest == 5)
+                        {
+                            ActivateQuest(new int[] { ItemID.LavaCharm });
+                        }
+                        if (GarridineQuest == 6)
+                        {
+                            ActivateQuest(new int[] { ItemID.LifeformAnalyzer });
+                        }
+                        if (GarridineQuest == 7)
+                        {
+                            ActivateQuest(new int[] { ItemID.MechanicalLens });
+                        }
+                        if (GarridineQuest == 8)
+                        {
+                            ActivateQuest(new int[] { ItemID.ManaFlower });
+                        }
+                        if (GarridineQuest == 9)
+                        {
+                            ActivateQuest(new int[] { 887 });
+                        }
+                        if (GarridineQuest == 10)
+                        {
+                            ActivateQuest(new int[] { ItemID.Umbrella, ItemID.TragicUmbrella, ItemID.UmbrellaHat });
+                        }
+                        if (GarridineQuest == 11)
+                        {
+                            ActivateQuest(new int[] { ItemID.Actuator });
+                        }
+                        if (GarridineQuest == 12)
+                        {
+                            ActivateQuest(new int[] { ItemID.BoneTorch });
+                        }
                     }
                     else
                     {
 
-                        //Player.GetModPlayer<StarsAbovePlayer>().garridineIntroDialogue = 2;
+                        Player.GetModPlayer<StarsAbovePlayer>().garridineIntroDialogue = 2;
                         if (Player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
                         {
                             Player.GetModPlayer<StarsAbovePlayer>().sceneID = 21;
@@ -187,6 +278,50 @@ namespace StarsAbove
             }
         }
 
+        public void ActivateQuest(int[] NeededItem)
+        {
+            if (!AcceptedGarridineQuest)
+            {
+                //Explain your objective.
+                Player.GetModPlayer<StarsAbovePlayer>().sceneID = 200 + GarridineQuest;
+                ActivateVNDialogue(Player);
+
+                AcceptedGarridineQuest = true;
+                return;
+            }
+            //Looking for "a magical book with the capability to spurt out water"
+            for (int i = 0; i < Player.inventory.Length; i++)
+            {
+                if (Player.inventory[i].type == NeededItem[0])//Change me!
+                {
+                    //The correct item!
+
+                    //Play the good job dialouge.
+                    Player.GetModPlayer<StarsAbovePlayer>().sceneID = 200;
+                    ActivateVNDialogue(Player);
+
+                    //Give the player the reward, a tier 1 Bag
+                    Player.QuickSpawnItem(null, ModContent.ItemType<StellarFociGrabBagTier1>());
+
+                    //Reset values.
+                    AcceptedGarridineQuest = false;
+                    GarridineQuest = 0;
+
+                    //Garridine goes on cooldown!
+                    GarridineQuestCooldown = 18000;//5 minute cooldown.
+                    return;
+                }
+                else
+                {
+
+                }
+            }
+            //If the item wasn't found...
+
+            // If the item wasn't found, play the quest dialogue again. (This won't appear if the item is found because of the return statement.
+            Player.GetModPlayer<StarsAbovePlayer>().sceneID = 200 + GarridineQuest;
+            ActivateVNDialogue(Player);
+        }
 
         public override void PostUpdate()
         {

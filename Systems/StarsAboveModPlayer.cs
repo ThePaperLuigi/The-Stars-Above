@@ -720,6 +720,7 @@ namespace StarsAbove
         public int EyeBossWeaponDialogue = 0;
         public int CorruptBossWeaponDialogue = 0;
         public int SkeletonWeaponDialogue = 0;
+        public int Stellaglyph2WeaponDialogue = 0;
         public int HellWeaponDialogue = 0;//After reaching the Underworld for the first time after Skeletron has been slain.
         public int QueenBeeWeaponDialogue = 0;//After talking with the Starfarer about the Hell Weapons
         public int KingSlimeWeaponDialogue = 0;//After KingSlimeWeaponDialogue
@@ -1355,6 +1356,7 @@ namespace StarsAbove
             tag["EyeBossWeaponDialogue"] = EyeBossWeaponDialogue;
             tag["CorruptBossWeaponDialogue"] = CorruptBossWeaponDialogue;
             tag["SkeletonWeaponDialogue"] = SkeletonWeaponDialogue;
+            tag["BeeWeaponDialogue"] = Stellaglyph2WeaponDialogue;
             tag["HellWeaponDialogue"] = HellWeaponDialogue;
             tag["QueenBeeWeaponDialogue"] = QueenBeeWeaponDialogue;
             tag["KingSlimeWeaponDialogue"] = KingSlimeWeaponDialogue;
@@ -1633,6 +1635,7 @@ namespace StarsAbove
             EyeBossWeaponDialogue = tag.GetInt("EyeBossWeaponDialogue");
             CorruptBossWeaponDialogue = tag.GetInt("CorruptBossWeaponDialogue");
             SkeletonWeaponDialogue = tag.GetInt("SkeletonWeaponDialogue");
+            Stellaglyph2WeaponDialogue = tag.GetInt("BeeWeaponDialogue");
             HellWeaponDialogue = tag.GetInt("HellWeaponDialogue");
             QueenBeeWeaponDialogue = tag.GetInt("QueenBeeWeaponDialogue");
             KingSlimeWeaponDialogue = tag.GetInt("KingSlimeWeaponDialogue");
@@ -5889,6 +5892,15 @@ namespace StarsAbove
                           103,
                           "Defeat the Queen Bee.")); //Corresponding dialogue ID.
                     WeaponArchiveList.Add(new WeaponArchiveListing(
+                          "Tier 2 Stellaglyph Weapon", //Name of the archive listing.
+                          $"Grants the Essence for either " +
+                          $"[i:{ItemType<Umbral>()}] Irminsul's Dream " +
+                          $"or " +
+                          $"[i:{ItemType<Astral>()}] Pod Zero-42.", //Description of the listing.
+                          Stellaglyph2WeaponDialogue == 2, //Unlock requirements.
+                          160,
+                          "Obtain a Tier 2 Stellaglyph.")); //Corresponding dialogue ID.
+                    WeaponArchiveList.Add(new WeaponArchiveListing(
                           "Skeletron Weapon", //Name of the archive listing.
                           $"Grants the Essence for either " +
                           $"[i:{ItemType<Umbral>()}] Death in Four Acts " +
@@ -7259,13 +7271,13 @@ namespace StarsAbove
                         sceneID = -1;
                         sceneProgression = 0;
                         sceneLength = 0;
-                        dialogue = "";
+                        dialogue = " ";
                         dialogueScrollTimer = 0;
                         dialogueScrollNumber = 0;
                         
-                        VNDialogueChoice1 = "";
-                        VNDialogueChoice2 = "";
-                        VNDialogueChoice3 = "";
+                        VNDialogueChoice1 = " ";
+                        VNDialogueChoice2 = " ";
+                        VNDialogueChoice3 = " ";
 
                         VNDialogueThirdOption = false;
                     }
@@ -7751,6 +7763,13 @@ namespace StarsAbove
                     if (Player.ZoneUnderworldHeight && SkeletonWeaponDialogue == 2 && HellWeaponDialogue == 0)
                     {
                         HellWeaponDialogue = 1;
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                        NewDiskDialogue = true;
+
+                    }
+                    if (Player.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2 && Stellaglyph2WeaponDialogue == 0)
+                    {
+                        Stellaglyph2WeaponDialogue = 1;
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
 

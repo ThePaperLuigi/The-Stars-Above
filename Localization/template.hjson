@@ -377,7 +377,9 @@
             "75": "These gloves can conjure a whole arsenal of weapons for you to wield. Complicated, but it'll be very powerful if used right.",
             "76": "Right. This Melee Essence dips into the void to defeat foes and absorb them after. Sounds pretty cool to me.",
             "77": "I've acquired a new Essence for your use. It seems to borrow strength from Melee and Magic both- a versatile weapon, I like it!",
-            "78": "Looks like this Graveyard seems to have some connection to this Essence. Hopefully all these graves weren't just from you dying, right?"
+            "78": "Looks like this Graveyard seems to have some connection to this Essence. Hopefully all these graves weren't just from you dying, right?",
+            "79": "Hmm... this Summon-type Essence will create some sort of controllable drone- I wonder if it can talk?"
+
           },
           "Eridani": {
             "1": "Here's a Ranged-type essence. It looks like every fourth shot has increased offensive properties. Whatever the reason, it's powerful.",
@@ -460,7 +462,9 @@
             "78": "Okay, here's a Melee weapon- with the power of souls, you can cleave huge areas around you and dip into the void itself for instant teleportation.",
             "79": "Looks to be a new Essence for your use. It uses a unique damage type and powerful charge attacks- but it'll probably have some recoil damage.",
             "80": "This Graveyard seems to have connected to this Essence. I hope it'll help you avoid creating the Graveyard in the first place.",
-            "81": "While powerful, I believe it's a utility item, and not a weapon this time."
+            "81": "While powerful, I believe it's a utility item, and not a weapon this time.",
+            "82": "This Magic Essence, while aspected to nature, seems rather volatile. Perhaps you'd be able to better use it in tandem with other weapons?"
+
           },
           "Perseus": {
             "1": "It's good to see you again, {0}. I'm not here to ask for your help- instead, I have a gift for you.",
@@ -1374,7 +1378,9 @@
             "189": "I can't find any trace of ambient mana- someone, or something, must have drained this entire world dry. Let's check out that structure in the distance.",
             "190": "This planet should look a lot like your own Jungle, but it seems you've ended up underground- which decidedly does not look familiar. The monsters here are, though- strange.",
             "191": "This is a pretty large patch of Corruption- but as long as it isn't moving anywhere, it shouldn't be a threat we need to stop. Still, it's a bit of a eyesore.",
-            "192": "An entire moon covered in Crimson- yuck. I wouldn't want to be stranded here, so mind where the Gateway is and you should be fine."
+            "192": "An entire moon covered in Crimson- yuck. I wouldn't want to be stranded here, so mind where the Gateway is and you should be fine.",
+            "193": "Isn't this strange? Nobody would seriously think of making a space station out of wood, right? Huh- I could have sworn there was someone living here...?"
+
           },
           "Eridani": {
             "1": "Uhh.. you're looking a little sick.",
@@ -1563,12 +1569,16 @@
             "184": "Hey, the temperature of your surroundings is dropping dramatically. I'm sure you can see the source of this anomaly- deal with it, fast.",
             "185": "Whatever this thing is, it's hard to even look at. Be careful, it's powerful and lethal.",
             "186": "I think whatever you've done must have had some serious repercussions- a strange entity has emerged, and is heading your way.",
+
             "188": "Hmm, it seems to be a cluster of uninhabited asteroids. There was definitely life here, but it must have been thousands of years ago.",
             "189": "Looks to be an old mining station. From the looks of it, it was abandoned before the Ardor took root. There won't be any ore left, sadly.",
             "190": "What a strange world- it seems its ambient mana has been entirely drained, leaving the place looking pale white- a unique phenomenon.",
             "191": "Looks like you arrived underground- if you can make it to the surface, it'll look more like home. The creatures here are familiar, which is pretty strange.",
             "192": "The Corruption is a known entity in the universe, but this place is different- it feels as if something larger was Corrupted into this object. Stay alert.",
-            "193": "A Crimson-infused moon... After you've gathered what you need, we should excuse ourselves quickly. Every second here... doesn't sit well with me."
+            "193": "A Crimson-infused moon... After you've gathered what you need, we should excuse ourselves quickly.",
+            "194": "Seems this place has been completely overturned by the Ardor... What a horrible fate.",
+            "194": "Never would I ever have thought I'd see a wooden space-station, of all things... Hold on a moment- is someone still living here?",
+
           }
         },
         "VNDialogue": {
@@ -1787,7 +1797,7 @@
                 "11": "After visiting an Anomaly, there'll be a long cooldown before you can visit again, so make every visit count.",
                 "12": "Through upgrading the Stellaglyph, you can access more Cosmic Voyage Locations, but you'll have to craft the Stellaglyph upgrades yourself- using the Celestriad Root, of course.",
                 "13": "One last thing- there exists certain structures called Stellar Foci, which, when placed near your Stellaglyph, will make you stronger during Cosmic Voyages.",
-                "14": "You can find precursor materials for Stellar Foci within Cosmic Voyages.",
+                "14": "They'll be super helpful in the long run, but they're pretty difficult to craft. Maybe we'll find a source somewhere?",
                 "15": "Okay, that's it! Did you get all that?"
               },
               "Choices": {
@@ -1806,7 +1816,7 @@
             },
             "19": {
               "Dialogue": {
-                "0": "My eyes betrayin' me? A landwalker and a familiar, all the way out'n deep space?",
+                "0": "My eyes betrayin' me? A landwalker and a... familiar, all the way out'n deep space?",
                 "1": "You're one to talk! If you weren't aware, you're glowing BRIGHT BLUE. Also, I kind of take offense to the term familiar...",
                 "2": "'Pologies, not tryin' to start anythin'- Anywho, never met'n a lumenkin before, eh? Now that's a sparker. Name's... uh... Yojimbo.",
                 "3": "Settin' aside your magical companion, I'm thinkin' you hail from somewhere nearby... Guess the Ardor ain't cleared this region fully yet.",
@@ -1845,13 +1855,16 @@
                 "2": "Truly? No matter- I am nothing if not the forgiving sort... I think. Wait, forget that last bit.",
                 "3": "Ahem. Friendly faces scant wander this far, so offering hospitality is the least I can do- to a Starfarer, as well. My name is Garridine.",
                 "4": "In truth, automatons prove not the most capable of conversationalists. I would not be opposed to your visits.",
-                "5": "Yep, done deal- right, {0}? From the looks of it, she can certainly help us out.",
-                "6": "I am grateful. If you have time in spades, I would be honored if you would lend me your aid- of course, only if you are willing.",
-                "7": "I hesitate to say it, but she's really cute... we simply HAVE to help her out. Not to mention, with her machining tools I see, she might help us in the long run."
+                "5": "Yep, done deal- right, {0}? I hesitate to say it, but she's really cute... we simply HAVE to help her out.",
+                "6": "Did you say something? No? In that case... I would appreciate it if you would allow me to analyze your equipment and weapons you have created.",
+                "7": "I haven't had occassion to learn about recent advancements, owing in no small part to the Ardor- if I were to get a glimpse, it would be quite the boon.",
+                "8": "To make this worth your time, I'll craft some Stellar Foci for you after a visit.",
+                "9": "Bit of a strange ask, but it shouldn't be too difficult- getting some Stellar Foci without having to make them ourselves would be very helpful.",
+                "10": "Wonderful. Let us hope this relationship is a fruitful one."
               },
               "Choices": {
-                "1": "Sure, we can help her out.",
-                "2": "Uhh... maybe some other time."
+                "1": "X",
+                "2": "X"
               }
             },
             "22": {
@@ -1862,128 +1875,20 @@
                 "3": "Ahem. Friendly faces scant wander this far, so offering hospitality is the least I can do- to a Starfarer, as well. My name is Garridine.",
                 "4": "In truth, automatons prove not the most capable of conversationalists. I would not be opposed to your visits.",
                 "5": "That sounds great to me. Finding a friendly face so far from civilization is a great help to us as well.",
-                "6": "I am grateful. If you have time in spades, I would be honored if you would lend me your aid- of course, only if you are willing.",
-                "7": "Hmm... having an ally like this should prove useful- especially with what looks like machining tools here. What do you think, {0}?"
-              },
-              "Choices": {
-                "1": "Sounds good to me; let's give her a hand.",
-                "2": "I'm kind of tied up right now- maybe some other time."
-              }
-            },
-            "23": {
-              "Dialogue": {
-                "0": "I understand- you seem the hardworking sort, and your answer is completely within reason. No matter- if you're still willing, please return anon at your behest."
+                "6": "In that case... I would appreciate it if you would allow me to analyze your equipment and weapons you have created.",
+                "7": "I haven't had occassion to learn about recent advancements, owing in no small part to the Ardor- if I were to get a glimpse, it would be quite the boon.",
+                "8": "To make this worth your time, I'll craft some Stellar Foci for you after a visit.",
+                "9": "Hmm... that would prove useful- especially avoiding having to craft them ourselves.",
+                "10": "Wonderful. Let us hope this relationship is a fruitful one."
               },
               "Choices": {
                 "1": "X",
                 "2": "X"
               }
             },
-            "24": {
-              "Dialogue": {
-                "0": "Great- I knew you'd get me. So, what is it you'd have us do?",
-                "1": "I am thankful- truly. Let us review.",
-                "2": "There's a manner of materials that I sadly can't acquire myself, limited as my movement is. My retainers have been making ventures, but...",
-                "3": "With the Ardor in its entirety at my shipstep, procuring research materials has never been harder.",
-                "4": "If you would be so kind as to deliver unto me some special items to study, I will be ever grateful.",
-                "5": "Upon the occasion you discover an item I'm looking for, simply send a letter and I'll be on my way.",
-                "6": "So... how is that letter going to reach you, exactly?",
-                "7": "Oh, I see. Yep. Well, you'll have to just come back here, then. Sorry. I mean- Apologies for the trouble.",
-                "8": "I'll have to take the item for analysis of course. This isn't quite fair to you, so...",
-                "9": "In return, as you are in the company of a Starfarer, I can forge upgrades to your Stellar Foci, if you do utilize them.",
-                "10": "That sounds... rather helpful, actually. Come to think of it, how do you know what Starfarers are? We aren't really from around here, you know.",
-                "11": "Ah. This topic is a little pointed, so please excuse me from answering at the time...",
-                "12": "Eh, doesn't bother me. So... how would we know what items we should be searching for?",
-                "13": "I'll inform you specifically- if you end up forgetting, please visit anon- simply exchanging words should jog your memory.",
-                "14": "Could't you just... tell us?"
-                "15": "So I could. At any rate, I'm correct in my assumption, that should be all I have to discuss. You'll have to visit another time- a preparation period would be appreciated."
-              },
-              "Choices": {
-                "1": "X",
-                "2": "X"
-              }
-            },
-            "25": {
-              "Dialogue": {
-                "0": "Good choice.",
-                "1": "I am thankful- truly. Let us review.",
-                "2": "There's a manner of materials that I sadly can't acquire myself, limited as my movement is. My retainers have been making ventures, but...",
-                "3": "With the Ardor in its entirety at my shipstep, procuring research materials has never been harder.",
-                "4": "If you would be so kind as to deliver unto me some special items to study, I will be ever grateful.",
-                "5": "Upon the occasion you discover an item I'm looking for, simply send a letter and I'll be on my way.",
-                "6": "That would make sense, except... how would a letter even reach you?",
-                "7": "Oh, I see. Yep. Well, you'll have to just come back here, then. Sorry. I mean- Apologies for the trouble.",
-                "8": "I'll have to take the item for analysis of course. This isn't quite fair to you, so...",
-                "9": "In return, as you are in the company of a Starfarer, I can forge upgrades to your Stellar Foci, if you do utilize them.",
-                "10": "That sounds... rather helpful, actually. Now that you mention it, how do you know what Starfarers are? We hail from an entirely different locale.",
-                "11": "Ah. This topic is a little pointed, so please excuse me from answering at the time...",
-                "12": "Well, I guess that's fine. On another note, how would we know what items we should be searching for?",
-                "13": "I'll inform you specifically- if you end up forgetting, please visit anon- simply exchanging words should jog your memory.",
-                "14": "Correct me if I'm wrong, but... you could just tell us."
-                "15": "So I could. At any rate, I'm correct in my assumption, that should be all I have to discuss. You'll have to visit another time- a preparation period would be appreciated."
-              },
-              "Choices": {
-                "1": "X",
-                "2": "X"
-              }
-            },
-            "26": {
-              "Dialogue": {
-                "0": "I take it your return signals your willingness to assist?",
-                "1": "I am thankful- truly. Let us review.",
-                "2": "There's a manner of materials that I sadly can't acquire myself, limited as my movement is. My retainers have been making ventures, but...",
-                "3": "With the Ardor in its entirety at my shipstep, procuring research materials has never been harder.",
-                "4": "If you would be so kind as to deliver unto me some special items to study, I will be ever grateful.",
-                "5": "Upon the occasion you discover an item I'm looking for, simply send a letter and I'll be on my way.",
-                "6": "That would make sense, except... how would a letter even reach you?",
-                "7": "Oh, I see. Yep. Well, you'll have to just come back here, then. Sorry. I mean- Apologies for the trouble.",
-                "8": "I'll have to take the item for analysis of course. This isn't quite fair to you, so...",
-                "9": "In return, as you are in the company of a Starfarer, I can forge upgrades to your Stellar Foci, if you do utilize them.",
-                "10": "That sounds... rather helpful, actually. Come to think of it, how do you know what Starfarers are? We aren't really from around here, you know.",
-                "11": "Ah. This topic is a little pointed, so please excuse me from answering at the time...",
-                "12": "Eh, doesn't bother me. So... how would we know what items we should be searching for?",
-                "13": "I'll inform you specifically- if you end up forgetting, please visit anon- simply exchanging words should jog your memory.",
-                "14": "Could't you just... tell us?"
-                "15": "So I could. At any rate, I'm correct in my assumption, that should be all I have to discuss. You'll have to visit another time- a preparation period would be appreciated."
-              },
-              "Choices": {
-                "1": "X",
-                "2": "X"
-              }
-            },
-            "27": {
-              "Dialogue": {
-                "0": "I take it your return signals your willingness to assist?",
-                "1": "I am thankful- truly. Let us review.",
-                "2": "There's a manner of materials that I sadly can't acquire myself, limited as my movement is. My retainers have been making ventures, but...",
-                "3": "With the Ardor in its entirety at my shipstep, procuring research materials has never been harder.",
-                "4": "If you would be so kind as to deliver unto me some special items to study, I will be ever grateful.",
-                "5": "Upon the occasion you discover an item I'm looking for, simply send a letter and I'll be on my way.",
-                "6": "That would make sense, except... how would a letter even reach you?",
-                "7": "Oh, I see. Yep. Well, you'll have to just come back here, then. Sorry. I mean- Apologies for the trouble.",
-                "8": "I'll have to take the item for analysis of course. This isn't quite fair to you, so...",
-                "9": "In return, as you are in the company of a Starfarer, I can forge upgrades to your Stellar Foci, if you do utilize them.",
-                "10": "That sounds... rather helpful, actually. Now that you mention it, how do you know what Starfarers are? We hail from an entirely different locale.",
-                "11": "Ah. This topic is a little pointed, so please excuse me from answering at the time...",
-                "12": "Well, I guess that's fine. On another note, how would we know what items we should be searching for?",
-                "13": "I'll inform you specifically- if you end up forgetting, please visit anon- simply exchanging words should jog your memory.",
-                "14": "Correct me if I'm wrong, but... you could just tell us."
-                "15": "So I could. At any rate, I'm correct in my assumption, that should be all I have to discuss. You'll have to visit another time- a preparation period would be appreciated."
-              },
-              "Choices": {
-                "1": "X",
-                "2": "X"
-              }
-            },
-            "28": {
-              "Dialogue": {
-                "0": "My apologies- I must indeed request for additional time to prepare. However, know that your willingness does not go unappreciated."
-              },
-              "Choices": {
-                "1": "X",
-                "2": "X"
-              }
-            },
+            
+
+            
             "100": {
               "Dialogue": {
                 "0": "Best be gettin' a clear picture of the Ardor, if you'd be interested in fixin' it. How 'bout a history lesson, eh?",
@@ -2010,9 +1915,9 @@
                 "3": "Are they in the business o' snuffin' lives? Nah, but you'd be booted to a rimworld faster than a ray o' light.",
                 "4": "Outside the inner system, you'd best believe thing's be different. Nobody's feedin' their family without workin' with the xenos.",
                 "5": "Sure, the Empire's gotten themselves an ol' no-tolerance party, but patrols ain't turnin' down bribes, last time I did some checkin'.",
-                "6": "Their tech is peak, an' the inner system is paradise made real 'n all, but I ain't interested",
-                "7": "'Course, there are xenos who are, and humans sidin' with 'em, to boot. Even heard the crown prince is on their side.",
-                "8": "All that nonsense is deep within First Region turf, an' like I said earlier, best I'd be stayin' far away- ain't passin' for a human lookin' like this, I tell ya.",
+                "6": "Their tech is is a right marvel, an' the inner system is paradise made real 'n all, but I ain't interested.",
+                "7": "'Course, there are xenos who ARE innta that sort, and humans sidin' with 'em, to boot. Even heard the crown prince is on their side.",
+                "8": "All that nonsense is deep within First Region turf, an' like I said earlier, best I'd be stayin' far away- ain't passin' for a human lookin' like this, I tell ya. Tried.",
                 "9": "You're human, o' course, and your flyin' princess over yonder passes for 'un, so you'd best be lookin' their way for more info- nobody'd turn you down.",
                 "10": "'Pologies, but that'd be all I've got on this one."
               },
@@ -2050,16 +1955,16 @@
             },
             "104": {
               "Dialogue": {
-                "0": " "
+                "0": ""
               },
               "Choices": {
-                "1": "X",
-                "2": "X"
+                "1": "",
+                "2": ""
               }
             },
             "105": {
               "Dialogue": {
-                "0": " "
+                "0": ""
               },
               "Choices": {
                 "1": "X",
@@ -2075,48 +1980,147 @@
                 "2": "X"
               }
             },
-            "200": {
+
+            "199": {
               "Dialogue": {
-                "0": "Thank you for your timely arrival. I'm looking specifically for an 'Actuator.' Could you perhaps provide this?"
+                "0": "While I do appreciate the eagerness, I still have yet to analyze the data you've brought me.",
+                "1": "Perhaps return anon, once progress has been made. Five minutes of your timescale should suffice."
               },
               "Choices": {
-                "1": "I've already got it.",
-                "2": "Okay, I'll keep an eye out."
+                "1": "X",
+                "2": "X"
+              }
+            },
+            "200": {
+              "Dialogue": {
+                "0": "Your timely arrival is much appreciated. This is exactly what I wanted, thank you.",
+                "1": "As promised, I've bequeathed a pouch containing a Stellar Foci. I have a... regrettable habit of forgetting to label my creations, so this must do."
+              },
+              "Choices": {
+                "1": "X",
+                "2": "X"
               }
             },
             "201": {
               "Dialogue": {
-                "0": "This is quite the wonderous specimen- thank you for your efforts. As promised, here is one of my Protocores."
+                "0": "I'm curious about the potency of Magic on your homeworld. I've heard of a mystical book that conjures water from thin air...",
+                "1": "Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble."
               },
               "Choices": {
-                "1": "Thank you for the help.",
-                "2": "Wait, what's a Protocore?"
+                "1": "X",
+                "2": "X"
               }
             },
             "202": {
               "Dialogue": {
-                "0": "Ah, you're interested? This bodes well. A Protocore is quite like a set of blueprints that can build upon itself.",
-                "1": "Acting like its own crafting reagents, you can simply utilize any crafting bench to form one of my Gadgets.",
-                "2": "Furthermore, my Gadgets are Overclocked; this means extra traits will be applied to them upon creation, out of my control.",
-                "3": "These will most likely be both positive and negative. You can utilize a Protocore to adjust an existing Gadget's Overlock, to hopefully acquire a better combination.",
-                "4": "Of course, if you've no need for the Protocores, they would probably prove a rather expensive sell. Worry not for my feelings- if I can be of help in any form, it brings me contentment.",
-                "5": "This marks the end of my briefing. I hope my Protocores will serve you well."
+                "0": "A strange implement has come to my attention; an instrument meant for saying farewell to the deceased. I'm curious on how it functions.",
+                "1": "Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble."
               },
               "Choices": {
                 "1": "X",
                 "2": "X"
               }
             },
-            # No item.
             "203": {
               "Dialogue": {
-                "0": "I apologize in advance, but... I don't believe it's on your person. When you do find it, however, please consider our deal."
+                "0": "If it isn't too drastic of a request, I would love to see one of those golden butterflies. How do they sustain flight as solid gold..?",
+                "1": "Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble."
               },
               "Choices": {
                 "1": "X",
                 "2": "X"
               }
-            }
+            },
+            "204": {
+              "Dialogue": {
+                "0": "I would be very grateful if you were to show me a 'flying carpet.' I have my obvious doubts on the efficiency of such a movement tool.",
+                "1": "Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble."
+              },
+              "Choices": {
+                "1": "X",
+                "2": "X"
+              }
+            },
+            "205": {
+              "Dialogue": {
+                "0": "I have caught wind of quite the unique specimen: a magical trinket that allows for temporary lava immunity...",
+                "1": "Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble."
+              },
+              "Choices": {
+                "1": "X",
+                "2": "X"
+              }
+            },
+            "206": {
+              "Dialogue": {
+                "0": "If you have an accessory that can track nearby rare foes, I would be quite interested in taking a 'peek' as they say.",
+                "1": "Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble."
+              },
+              "Choices": {
+                "1": "X",
+                "2": "X"
+              }
+            },
+            "207": {
+              "Dialogue": {
+                "0": "I wished to add an implement to my toolbox, but I seem to have little experience with crafting magnification tools. Would you be able to find a lens that can see wiring?",
+                "1": "Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble."
+              },
+              "Choices": {
+                "1": "X",
+                "2": "X"
+              }
+            },
+            "208": {
+              "Dialogue": {
+                "0": "There's a rare bloom located in a Jungle-type environment that apparently causes mana to flow better.",
+                "1": "Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble."
+              },
+              "Choices": {
+                "1": "X",
+                "2": "X"
+              }
+            },
+            "209": {
+              "Dialogue": {
+                "0": "From my hypothesis, there's a type of slime that can apparently negate the effects of poison when equipped.",
+                "1": "Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble."
+              },
+              "Choices": {
+                "1": "X",
+                "2": "X"
+              }
+            },
+            "210": {
+              "Dialogue": {
+                "0": "Some planets seem to have liquid water fall from the sky, and there is apparently a tool that shields the user from this terrifying assault.",
+                "1": "Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble."
+              },
+              "Choices": {
+                "1": "X",
+                "2": "X"
+              }
+            },
+            "211": {
+              "Dialogue": {
+                "0": "There's a strange object that, when placed on blocks, can 'deactivate' them, rendering them passable.",
+                "1": "Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble."
+              },
+              "Choices": {
+                "1": "X",
+                "2": "X"
+              }
+            },
+            "212": {
+              "Dialogue": {
+                "0": "Torches are quite the archaic implement, but there exists one that burns through an actual bone.",
+                "1": "Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble."
+              },
+              "Choices": {
+                "1": "X",
+                "2": "X"
+              }
+            },
             
           }
         }

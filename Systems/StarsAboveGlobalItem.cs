@@ -393,6 +393,9 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfFarewells>(),
 			ModContent.ItemType<EssenceOfOffseeing>(),
 			ModContent.ItemType<EssenceOfMimicry>(),
+			ModContent.ItemType<EssenceOfTheAutomaton>(),
+			ModContent.ItemType<EssenceOfNature>(),
+
 		};
 		public static bool disableAspectPenalty;
 		public static bool disableCalamityWeaponBuffs;

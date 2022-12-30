@@ -34,7 +34,7 @@ namespace StarsAbove.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 31;          
+			Item.damage = 39;          
 			Item.DamageType = DamageClass.Magic;          
 			Item.width = 40;            
 			Item.mana = 20;
@@ -241,14 +241,13 @@ namespace StarsAbove.Items
 		}
 
 		public override void AddRecipes()
-		{/*
+		{
 			CreateRecipe(1)
-				.AddIngredient(ItemID.FallenStar, 20)
-				.AddIngredient(ItemID.MeteoriteBar, 30)
-				.AddIngredient(ItemType<PrismaticCore>(), 6)
-				.AddIngredient(ItemType<EssenceOfTwinStars>())
+				.AddIngredient(ItemID.DjinnLamp, 1)
+				.AddIngredient(ItemID.JungleSpores, 5)
+				.AddIngredient(ItemType<EssenceOfNature>())
 				.AddTile(TileID.Anvils)
-				.Register();*/
+				.Register();
 		}
 	}
 }

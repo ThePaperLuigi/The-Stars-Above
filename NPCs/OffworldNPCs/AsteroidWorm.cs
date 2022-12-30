@@ -6,6 +6,8 @@ using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.GameContent.ItemDropRules;
+using StarsAbove.Items.Materials;
 
 namespace StarsAbove.NPCs.OffworldNPCs
 {
@@ -38,7 +40,13 @@ namespace StarsAbove.NPCs.OffworldNPCs
 			
 			NPC.aiStyle = -1;
 		}
+		public override void ModifyNPCLoot(NPCLoot npcLoot)
+		{
 
+			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Accessories.AlienCoral>(), 100, 1, 1));
+
+
+		}
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			// We can use AddRange instead of calling Add multiple times in order to add multiple items at once

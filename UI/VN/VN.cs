@@ -203,9 +203,12 @@ namespace StarsAbove.UI.VN
 				}
 				else
                 {
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneProgression++;
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueScrollTimer = 0;
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueScrollNumber = 0;
+					
+						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneProgression++;
+						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueScrollTimer = 0;
+						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueScrollNumber = 0;
+					
+					
 
 				}
 
@@ -346,15 +349,19 @@ namespace StarsAbove.UI.VN
 					//Draw the expression, accounting for pose.
 					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter1.Substring(0, 2) + modPlayer.VNCharacter1Pose + modPlayer.VNCharacter1Expression), hitbox1, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));//Base character's expression
 				}
-				if(modPlayer.VNCharacter1 != "Asphodene" && modPlayer.VNCharacter1 != "Eridani")//Non-main characters get simplified drawing.
-					//Input: Perseus, Pose 1, Expression 1
-					//Output:
-					//StarsAbove/UI/VN/Pe1 (2 letters to avoid conflicts)
-					//StarsAbove/UI/VN/Pe11 (Expression takes into account current pose, remember expressions start at 0)
-				{
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter1.Substring(0, 2) + modPlayer.VNCharacter1Pose), hitbox1, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter1.Substring(0, 2) + modPlayer.VNCharacter1Pose + modPlayer.VNCharacter1Expression), hitbox1, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));
+				if(modPlayer.VNDialogueActive)
+                {
+					if (modPlayer.VNCharacter1 != "Asphodene" && modPlayer.VNCharacter1 != "Eridani" && modPlayer.VNCharacter1 != "")//Non-main characters get simplified drawing.
+																									 //Input: Perseus, Pose 1, Expression 1
+																									 //Output:
+																									 //StarsAbove/UI/VN/Pe1 (2 letters to avoid conflicts)
+																									 //StarsAbove/UI/VN/Pe11 (Expression takes into account current pose, remember expressions start at 0)
+					{
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter1.Substring(0, 2) + modPlayer.VNCharacter1Pose), hitbox1, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter1.Substring(0, 2) + modPlayer.VNCharacter1Pose + modPlayer.VNCharacter1Expression), hitbox1, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));
+					}
 				}
+				
 			}
 			if(modPlayer.VNCharacter1 == "Asphodene" || modPlayer.VNCharacter1 == "Eridani")//Only the main characters can blink
             {
@@ -477,7 +484,7 @@ namespace StarsAbove.UI.VN
 			
 		
 		public override void Update(GameTime gameTime) {
-			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerVNDialogueVisibility > 0))
+			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().VNDialogueActive))
 			{
 				area.Remove();
 				return;

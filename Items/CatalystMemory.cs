@@ -24,7 +24,8 @@ namespace StarsAbove.Items
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
 			{
 				Tooltip.SetDefault("" +
-				"Holding this weapon activates it, granting the buff [c/EAC0ED:Catalyzed Blade], increasing movement speed by 10%" +
+				"[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes]" +
+				"\nHolding this weapon activates it, granting the buff [c/EAC0ED:Catalyzed Blade], increasing movement speed by 10%" +
 				"\nAttacks with this weapon barrage foes with myriad stabs dealing 80% of base damage, with a 10% chance to fire a [c/F581FE:Shimmering Prism] that deals 50% of base damage" +
 				"\nThe [c/F581FE:Shimmering Prism] pierces up to 3 foes and deals 30% extra damage to foes below 50% HP" +
 				"\nRight-click to conjure a [c/7B48CA:Dazzling Prismic] on your cursor that lasts for 20 seconds (1 minute cooldown)" +
@@ -42,7 +43,8 @@ namespace StarsAbove.Items
 			else
 			{
 				Tooltip.SetDefault("" +
-				"Holding this weapon activates it, granting the buff [c/EAC0ED:Catalyzed Blade], increasing movement speed by 10%" +
+				"[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes]" +
+				"\nHolding this weapon activates it, granting the buff [c/EAC0ED:Catalyzed Blade], increasing movement speed by 10%" +
 				"\nAttacks with this weapon barrage foes with myriad stabs dealing 80% of base damage, with a 10% chance to fire a [c/F581FE:Shimmering Prism] that deals 50% of base damage" +
 				"\nThe [c/F581FE:Shimmering Prism] pierces up to 3 foes and deals 30% extra damage to foes below 50% HP" +
 				"\nRight-click to conjure a [c/7B48CA:Dazzling Prismic] on your cursor that lasts for 20 seconds (1 minute cooldown)" +
