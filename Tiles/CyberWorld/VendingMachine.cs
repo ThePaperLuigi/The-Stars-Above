@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.DataStructures;
+using StarsAbove.Utilities;
 
 namespace StarsAbove.Tiles.CyberWorld
 {
@@ -20,9 +21,9 @@ namespace StarsAbove.Tiles.CyberWorld
 			TileObjectData.newTile.StyleHorizontal = true;
 			TileObjectData.newTile.StyleWrapLimit = 36;
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Vending Machine");
-            AddMapEntry(new Color(200, 200, 200), name);
+
+			AddMapEntry(new Color(200, 200, 111), CreateMapEntryName());
+
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			AdjTiles = new int[]{ TileID.Books };
 		}

@@ -180,7 +180,7 @@ namespace StarsAbove
                         }
 
 
-                        //If there is no current quest, assign one at random. These are player specific so no multiplayer nonsense.
+                        //If there is no current quest, assign one at random. These are player specific so no multiplayer nonsense. (hopefully)
                         GarridineQuestLimit = 12;
                         //If no quest...
                         //GarridineQuest = 1;

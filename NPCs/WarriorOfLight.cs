@@ -1717,7 +1717,7 @@ namespace StarsAbove.NPCs
             }
             if (NPC.life <= hpThreshold2ndPhase && phase == 1)
             {
-                NPC.ai[1] += 20;
+                //NPC.ai[1] += 20;
                 NPC.dontTakeDamage = true;
             }
             //Movement code

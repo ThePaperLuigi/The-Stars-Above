@@ -89,8 +89,8 @@ namespace StarsAbove.Tiles.StellarFoci
             TileObjectData.addTile(Type);
 
             ModTranslation name = CreateMapEntryName();
-            name.SetDefault(LangHelper.GetTextValue("Tiles.Gateway"));
-            AddMapEntry(new Color(0, 185, 255), name);
+            name.SetDefault(LangHelper.GetTextValue("MapObject.StellarFoci"));
+            //AddMapEntry(new Color(0, 185, 255),  CreateMapEntryName());
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
@@ -250,8 +250,8 @@ namespace StarsAbove.Tiles.StellarFoci
             TileObjectData.addTile(Type);
 
             ModTranslation name = CreateMapEntryName();
-            name.SetDefault(LangHelper.GetTextValue("Tiles.Gateway"));
-            AddMapEntry(new Color(0, 185, 255), name);
+            name.SetDefault(LangHelper.GetTextValue("MapObject.StellarFoci"));
+            //AddMapEntry(new Color(0, 185, 255),  CreateMapEntryName());
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
@@ -410,8 +410,8 @@ namespace StarsAbove.Tiles.StellarFoci
             TileObjectData.addTile(Type);
 
             ModTranslation name = CreateMapEntryName();
-            name.SetDefault(LangHelper.GetTextValue("Tiles.Gateway"));
-            AddMapEntry(new Color(0, 185, 255), name);
+            name.SetDefault(LangHelper.GetTextValue("MapObject.StellarFoci"));
+            //AddMapEntry(new Color(0, 185, 255),  CreateMapEntryName());
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)

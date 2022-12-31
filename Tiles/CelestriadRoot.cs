@@ -75,9 +75,8 @@ namespace StarsAbove.Tiles
 
 			AdjTiles = new int[] { TileID.WorkBenches };
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault(LangHelper.GetTextValue("Tiles.CelestriadRoot"));
-			AddMapEntry(new Color(233, 207, 94), name);
+			
+			AddMapEntry(new Color(233, 207, 94), CreateMapEntryName());
 		}
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)

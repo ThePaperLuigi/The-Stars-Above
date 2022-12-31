@@ -91,9 +91,8 @@ namespace StarsAbove.Tiles.Stellaglyph
 			// Register the tile data itself
 			TileObjectData.addTile(Type);
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault(LangHelper.GetTextValue("Tiles.Gateway"));
-			AddMapEntry(new Color(0, 185, 255), name);
+			
+			AddMapEntry(new Color(0, 185, 255),  CreateMapEntryName());
 		}
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StarsAbove.NPCs;
+using System;
 using System.ComponentModel;
 using Terraria.ModLoader.Config;
 
@@ -36,6 +37,10 @@ namespace StarsAbove
 		[Tooltip("$Mods.StarsAbove.Config.DisableBossEnemySpawnMod.Tooltip")]
 		public bool DisableBossEnemySpawnMod;
 
+		[Label("$Mods.StarsAbove.Config.ColorblindBoss.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.ColorblindBoss.Tooltip")]
+		public bool ColorblindBoss;
+
 		[Increment(1)]
 		[Range(5, 60)]
 		[DefaultValue(15)]
@@ -57,6 +62,7 @@ namespace StarsAbove
 			StarsAboveGlobalItem.disableCalamityWeaponBuffs = DisableCalamityWeaponBuffs;
 			StarsAbovePlayer.inCombatMax = CombatTimer*60;
 			StarsAbovePlayer.BossEnemySpawnModDisabled = DisableBossEnemySpawnMod;
+			Penthesilea.ColorblindEnabled = ColorblindBoss;
 		}
 	}
 }

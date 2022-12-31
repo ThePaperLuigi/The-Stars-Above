@@ -848,6 +848,11 @@ namespace StarsAbove
         //Calamity
         public int RogueAspect;
 
+        //Thorium
+        public int BardAspect;
+        public int HealerAspect;
+        public int ThrowerAspect;
+
         public int unbridledRadianceStack = 0;//Will increase every 1000 kills.
 
         int aprismatismCooldown;
@@ -4822,6 +4827,18 @@ namespace StarsAbove
                 {
                     RogueAspect = 1;
                 }
+                if (HealerAspect == 0)
+                {
+                    HealerAspect = 1;
+                }
+                if (BardAspect == 0)
+                {
+                    BardAspect = 1;
+                }
+                if (ThrowerAspect == 0)
+                {
+                    ThrowerAspect = 1;
+                }
             }
             if (AspectLocked != 0)
             {
@@ -4831,6 +4848,12 @@ namespace StarsAbove
                     MagicAspect = 1;
                     RangedAspect = 1;
                     SummonAspect = 1;
+                    RogueAspect = 1;
+
+                    BardAspect = 1;
+                    HealerAspect = 1;
+                    ThrowerAspect = 1;
+
                 }
                 if (AspectLocked == 2)
                 {
@@ -4838,6 +4861,11 @@ namespace StarsAbove
                     MagicAspect = 2;
                     RangedAspect = 1;
                     SummonAspect = 1;
+                    RogueAspect = 1;
+
+                    BardAspect = 1;
+                    HealerAspect = 1;
+                    ThrowerAspect = 1;
                 }
                 if (AspectLocked == 3)
                 {
@@ -4845,6 +4873,11 @@ namespace StarsAbove
                     MagicAspect = 1;
                     RangedAspect = 2;
                     SummonAspect = 1;
+                    RogueAspect = 1;
+
+                    BardAspect = 1;
+                    HealerAspect = 1;
+                    ThrowerAspect = 1;
                 }
                 if (AspectLocked == 4)
                 {
@@ -4852,6 +4885,14 @@ namespace StarsAbove
                     MagicAspect = 1;
                     RangedAspect = 1;
                     SummonAspect = 2;
+
+                    RogueAspect = 1;
+
+                    BardAspect = 1;
+                    HealerAspect = 1;
+                    ThrowerAspect = 1;
+
+
                 }
                 if (AspectLocked == 5)
                 {
@@ -4864,21 +4905,117 @@ namespace StarsAbove
                         SummonAspect = 1;
                         RogueAspect = 2;
 
+                        BardAspect = 1;
+                        HealerAspect = 1;
+                        ThrowerAspect = 1;
+
                     }
                     else
                     {
+                        AspectLocked = 0;
+
                         MeleeAspect = 1;
                         MagicAspect = 1;
                         RangedAspect = 1;
                         SummonAspect = 1;
                         RogueAspect = 1;
+                        
+                    }
+
+                }
+                if (AspectLocked == 6)
+                {
+                    if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+                    {
+
+                        MeleeAspect = 1;
+                        MagicAspect = 1;
+                        RangedAspect = 1;
+                        SummonAspect = 1;
+                        RogueAspect = 1;
+                        BardAspect = 2;
+                        HealerAspect = 1;
+                        ThrowerAspect = 1;
+                    }
+                    else
+                    {
                         AspectLocked = 0;
+
+                        MeleeAspect = 1;
+                        MagicAspect = 1;
+                        RangedAspect = 1;
+                        SummonAspect = 1;
+                        RogueAspect = 1;
+                        
+                        BardAspect = 1;
+                        HealerAspect = 1;
+                        ThrowerAspect = 1;
+                    }
+
+                }
+                if (AspectLocked == 7)
+                {
+                    if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+                    {
+
+                        MeleeAspect = 1;
+                        MagicAspect = 1;
+                        RangedAspect = 1;
+                        SummonAspect = 1;
+                        RogueAspect = 1;
+                        BardAspect = 1;
+                        HealerAspect = 2;
+                        ThrowerAspect = 1;
+                    }
+                    else
+                    {
+                        AspectLocked = 0;
+
+                        MeleeAspect = 1;
+                        MagicAspect = 1;
+                        RangedAspect = 1;
+                        SummonAspect = 1;
+                        RogueAspect = 1;
+
+                        BardAspect = 1;
+                        HealerAspect = 1;
+                        ThrowerAspect = 1;
+                    }
+
+                }
+                if (AspectLocked == 8)
+                {
+                    if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+                    {
+
+                        MeleeAspect = 1;
+                        MagicAspect = 1;
+                        RangedAspect = 1;
+                        SummonAspect = 1;
+                        RogueAspect = 1;
+                        BardAspect = 1;
+                        HealerAspect = 1;
+                        ThrowerAspect = 2;
+                    }
+                    else
+                    {
+                        AspectLocked = 0;
+
+                        MeleeAspect = 1;
+                        MagicAspect = 1;
+                        RangedAspect = 1;
+                        SummonAspect = 1;
+                        RogueAspect = 1;
+
+                        BardAspect = 1;
+                        HealerAspect = 1;
+                        ThrowerAspect = 1;
                     }
 
                 }
 
-
             }
+
             if (Player.HasBuff(BuffType<OzmaAttack>()))
             {
                 OzmaSpikeVFXProgression += 3;
@@ -6340,43 +6477,43 @@ namespace StarsAbove
                            $"Yojimbo, the lumenkin bounty hunter, makes his appearance.", //Description of the listing.
                            yojimboIntroDialogue == 2, //Unlock requirements.
                            19,
-                           "Meet ??? during a Cosmic Voyage. (Asphodene)")); //Corresponding dialogue ID.
+                           "Meet Yojimbo during a Cosmic Voyage. (Asphodene)")); //Corresponding dialogue ID.
                     VNArchiveList.Add(new VNArchiveListing(
                            "Yojimbo's Introduction (Eridani)", //Name of the archive listing.
                            $"Yojimbo, the lumenkin bounty hunter, makes his appearance.", //Description of the listing.
                            yojimboIntroDialogue == 2, //Unlock requirements.
                            20,
-                           "Meet ??? during a Cosmic Voyage. (Eridani)")); //Corresponding dialogue ID.
+                           "Meet Yojimbo during a Cosmic Voyage. (Eridani)")); //Corresponding dialogue ID.
                     VNArchiveList.Add(new VNArchiveListing(
                            "Yojimbo: About the galaxy...", //Name of the archive listing.
                            $"Yojimbo's comments on the state of the galaxy.", //Description of the listing.
                            false,//yojimboIntroDialogue == 2, //Unlock requirements.
                            00,
-                           "Talk to ??? during a Cosmic Voyage. (Random unlock)")); //Corresponding dialogue ID.
+                           "Talk to Yojimbo during a Cosmic Voyage. (Random unlock)")); //Corresponding dialogue ID.
                     VNArchiveList.Add(new VNArchiveListing(
                           "Yojimbo: About the Empire...", //Name of the archive listing.
                           $"Yojimbo's comments on the state of the galaxy.", //Description of the listing.
                           false,//yojimboIntroDialogue == 2, //Unlock requirements.
                           00,
-                          "Talk to ??? during a Cosmic Voyage. (Random unlock)")); //Corresponding dialogue ID.
+                          "Talk to Yojimbo during a Cosmic Voyage. (Random unlock)")); //Corresponding dialogue ID.
                     VNArchiveList.Add(new VNArchiveListing(
                           "Yojimbo: About the Ardor...", //Name of the archive listing.
                           $"Yojimbo's comments on the state of the galaxy.", //Description of the listing.
                           false,//yojimboIntroDialogue == 2, //Unlock requirements.
                           00,
-                          "Talk to ??? during a Cosmic Voyage. (Random unlock)")); //Corresponding dialogue ID.
+                          "Talk to Yojimbo during a Cosmic Voyage. (Random unlock)")); //Corresponding dialogue ID.
                     VNArchiveList.Add(new VNArchiveListing(
                            "Garridine's Introduction (Asphodene)", //Name of the archive listing.
                            $"Garridine, the lupine machinist, makes her appearance.", //Description of the listing.
                            garridineIntroDialogue == 2, //Unlock requirements.
                            00,
-                           "Meet ??? during a Cosmic Voyage. (Asphodene)")); //Corresponding dialogue ID.
+                           "Meet Garridine during a Cosmic Voyage. (Asphodene)")); //Corresponding dialogue ID.
                     VNArchiveList.Add(new VNArchiveListing(
                            "Garridine's Introduction (Eridani)", //Name of the archive listing.
                            $"Garridine, the lupine machinist, makes her appearance.", //Description of the listing.
                            garridineIntroDialogue == 2, //Unlock requirements.
                            00,
-                           "Meet ??? during a Cosmic Voyage. (Eridani)")); //Corresponding dialogue ID.
+                           "Meet Garridine during a Cosmic Voyage. (Eridani)")); //Corresponding dialogue ID.
                     IdleArchiveListMax = IdleArchiveList.Count;
                     BossArchiveListMax = BossArchiveList.Count;
                     WeaponArchiveListMax = WeaponArchiveList.Count;
@@ -9465,8 +9602,8 @@ namespace StarsAbove
 
             }
             //Thorium Mod Bosses
-            /*
-            if (thoriumMod != null)
+            
+            if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
             {
                 if (NPC.AnyNPCs(thoriumMod.Find<ModNPC>("TheGrandThunderBirdv2").Type) && !seenGrandThunderBird)
                 {
@@ -9569,7 +9706,7 @@ namespace StarsAbove
                     starfarerPromptActive("onPrimordials");
                     seenUnknownBossTimer = 300;
                 }
-            }*/
+            }
             //If the boss isn't listed...
             for (int i = 0; i < Main.maxNPCs; i++)
             {

@@ -774,9 +774,10 @@ namespace StarsAbove
 			
 			VagrantDrops VagrantDropCondition = new VagrantDrops();
 			IItemDropRule conditionalRule = new LeadingConditionRule(VagrantDropCondition);
-			IItemDropRule rule = ItemDropRule.Common(ItemType<PrismaticCore>(), chanceDenominator: 100);
+
+			/*IItemDropRule rule = ItemDropRule.Common(ItemType<PrismaticCore>(), chanceDenominator: 100);
 			conditionalRule.OnSuccess(rule);
-			npcLoot.Add(conditionalRule);
+			npcLoot.Add(conditionalRule);*/
 
 			IItemDropRule conditionalRule1 = new LeadingConditionRule(VagrantDropCondition);
 			IItemDropRule rule1 = ItemDropRule.Common(ItemType<Starlight>(), chanceDenominator: 25);

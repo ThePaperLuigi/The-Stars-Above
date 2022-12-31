@@ -50,7 +50,7 @@ namespace StarsAbove.Items
 			Item.useStyle = 5;
 			Item.noMelee = true;
 			Item.knockBack = 6;
-			Item.rare = ItemRarityID.LightRed;
+			Item.rare = ItemRarityID.Green;
 			Item.UseSound = SoundID.Item44;
 			Item.shoot = ProjectileType<PodMinion>();
 			Item.buffType = BuffType<Buffs.Pod.PodBuff>(); //The buff added to player after used the item

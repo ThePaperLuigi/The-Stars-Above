@@ -690,28 +690,95 @@ namespace StarsAbove
 			{ //
 				if (player.GetModPlayer<StarsAbovePlayer>().RogueAspect == 2 && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
 				{
-					if (oldDamageClass != calamityMod.Find<DamageClass>("RogueDamageClass"))
+					if (ModLoader.TryGetMod("CalamityMod", out Mod calamityModX))
 					{
-						if (ModLoader.TryGetMod("CalamityMod", out Mod calamityModx))
+						if (oldDamageClass != calamityMod.Find<DamageClass>("RogueDamageClass"))
 						{
-							damage = player.GetTotalDamage(calamityMod.Find<DamageClass>("RogueDamageClass"));
+							if (ModLoader.TryGetMod("CalamityMod", out Mod calamityModx))
+							{
+								damage = player.GetTotalDamage(calamityMod.Find<DamageClass>("RogueDamageClass"));
 
-							
+
+							}
+
+							if (!disableAspectPenalty)
+							{
+								damage -= 0.1f;
+							}
+
 						}
-						
-						if (!disableAspectPenalty)
+						else
 						{
-							damage -= 0.1f;
+
 						}
-
-					}
-					else
-					{
-
 					}
 
 				}
-				
+
+				if (player.GetModPlayer<StarsAbovePlayer>().BardAspect == 2 && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
+				{
+					if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+					{
+						if (oldDamageClass != thoriumMod.Find<DamageClass>("BardDamage"))
+						{
+							damage = player.GetTotalDamage(thoriumMod.Find<DamageClass>("BardDamage"));
+
+							if (!disableAspectPenalty)
+							{
+								damage -= 0.1f;
+							}
+
+						}
+						else
+						{
+
+						}
+					}
+
+				}
+				if (player.GetModPlayer<StarsAbovePlayer>().HealerAspect == 2 && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
+				{
+					if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+					{
+						if (oldDamageClass != thoriumMod.Find<DamageClass>("HealerDamage"))
+						{
+							damage = player.GetTotalDamage(thoriumMod.Find<DamageClass>("HealerDamage"));
+
+							if (!disableAspectPenalty)
+							{
+								damage -= 0.1f;
+							}
+
+						}
+						else
+						{
+
+						}
+					}
+
+				}
+				if (player.GetModPlayer<StarsAbovePlayer>().ThrowerAspect == 2 && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
+				{
+					if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+					{
+						if (oldDamageClass != DamageClass.Throwing)
+						{
+							damage = player.GetTotalDamage(DamageClass.Throwing);
+
+							if (!disableAspectPenalty)
+							{
+								damage -= 0.1f;
+							}
+
+						}
+						else
+						{
+
+						}
+					}
+
+				}
+
 				if (player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2 && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
 				{
 					if (oldDamageClass != DamageClass.Melee && oldDamageClass != DamageClass.MeleeNoSpeed)
@@ -844,8 +911,36 @@ namespace StarsAbove
 					}
 					
 				}
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().BardAspect == 2)
+				{
+					if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+					{
 
-				
+						item.DamageType = thoriumMod.Find<DamageClass>("BardDamage");
+
+					}
+
+				}
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().HealerAspect == 2)
+				{
+					if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+					{
+
+						item.DamageType = thoriumMod.Find<DamageClass>("HealerDamage");
+
+					}
+
+				}
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().ThrowerAspect == 2)
+				{
+					if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+					{
+
+						item.DamageType = DamageClass.Throwing;
+
+					}
+
+				}
 
 
 			}

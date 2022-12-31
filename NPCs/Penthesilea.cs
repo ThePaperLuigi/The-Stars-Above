@@ -26,6 +26,8 @@ namespace StarsAbove.NPCs
         public static readonly int arenaWidth = (int)(1.2f * 2000);
         public static readonly int arenaHeight = (int)(1.2f * 1000);
 
+        public static bool ColorblindEnabled = false;
+
         public override void SetDefaults()
         {
             NPC.boss = true;
@@ -2627,30 +2629,45 @@ namespace StarsAbove.NPCs
                         castTimeMax = 100;
                         isCasting = true;
                         int nextType = 0;
-                        for (int d = 0; d < 5040; d += 420)
+                        if (!ColorblindEnabled)
                         {
+                            for (int d = 0; d < 5040; d += 420)
+                            {
 
-                            Vector2 placement = new Vector2((NPC.Center.X) + d, NPC.position.Y);
-                            int type;
-                            if (nextType == 1)
-                            {
-                                type = Mod.Find<ModProjectile>("RedSplatter").Type;
-                                if(Main.netMode != NetmodeID.MultiplayerClient){Projectile.NewProjectile(NPC.GetSource_FromAI(),placement.X - 2500, placement.Y, 0, 0,type,0,0f,Main.myPlayer);}
-                            }
-                            if (nextType == 2)
-                            {
-                                type = Mod.Find<ModProjectile>("BlueSplatter").Type;
-                                if(Main.netMode != NetmodeID.MultiplayerClient){Projectile.NewProjectile(NPC.GetSource_FromAI(),placement.X - 2500, placement.Y, 0, 0,type,0,0f,Main.myPlayer);}
-                            }
-                            if (nextType == 3)
-                            {
-                                type = Mod.Find<ModProjectile>("YellowSplatter").Type;
-                                if(Main.netMode != NetmodeID.MultiplayerClient){Projectile.NewProjectile(NPC.GetSource_FromAI(),placement.X - 2500, placement.Y, 0, 0,type,0,0f,Main.myPlayer);}
-                                nextType = 0;
-                            }
+                                Vector2 placement = new Vector2((NPC.Center.X) + d, NPC.position.Y);
+                                int type;
+                                if (nextType == 1)
+                                {
+                                    type = Mod.Find<ModProjectile>("RedSplatter").Type;
+                                    if (Main.netMode != NetmodeID.MultiplayerClient) { Projectile.NewProjectile(NPC.GetSource_FromAI(), placement.X - 2500, placement.Y, 0, 0, type, 0, 0f, Main.myPlayer); }
+                                }
+                                if (nextType == 2)
+                                {
+                                    type = Mod.Find<ModProjectile>("BlueSplatter").Type;
+                                    if (Main.netMode != NetmodeID.MultiplayerClient) { Projectile.NewProjectile(NPC.GetSource_FromAI(), placement.X - 2500, placement.Y, 0, 0, type, 0, 0f, Main.myPlayer); }
+                                }
+                                if (nextType == 3)
+                                {
+                                    type = Mod.Find<ModProjectile>("YellowSplatter").Type;
+                                    if (Main.netMode != NetmodeID.MultiplayerClient) { Projectile.NewProjectile(NPC.GetSource_FromAI(), placement.X - 2500, placement.Y, 0, 0, type, 0, 0f, Main.myPlayer); }
+                                    nextType = 0;
+                                }
 
-                            nextType++;
+                                nextType++;
+                            }
                         }
+                        else
+                        {
+                            for (int d = 0; d < 3500; d += 500)
+                            {
+
+                                Vector2 placement = new Vector2((NPC.Center.X) + d, NPC.position.Y);
+                                int type;
+                                type = Mod.Find<ModProjectile>("RendHeaven").Type;
+                                if (Main.netMode != NetmodeID.MultiplayerClient) { Projectile.NewProjectile(NPC.GetSource_FromAI(), placement.X - 1500, placement.Y, 0, 0, type, 0, 0f, Main.myPlayer); }
+                            }
+                        }
+                        
                     }
                     if (!isCasting)
                     {

@@ -150,6 +150,15 @@
           "Rogue": {
             "Name": "Change the held Aspected Weapon to [c/707070:Rogue Damage]."
           },
+          "Healer": {
+            "Name": "Change the held Aspected Weapon to [c/FCEE72:Radiant Damage]."
+          },
+          "Bard": {
+            "Name": "Change the held Aspected Weapon to [c/FD5656:Symphonic Damage]."
+          },
+          "Thrower": {
+            "Name": "Change the held Aspected Weapon to [c/83EA53:Throwing Damage]."
+          },
           "Magic": {
             "Name": "Change the held Aspected Weapon to [c/EF4DFF:Magic Damage]."
           },
@@ -1854,7 +1863,7 @@
                 "1": "Sorry... We would have knocked, but to be honest, we thought this place was... uh... abandoned.",
                 "2": "Truly? No matter- I am nothing if not the forgiving sort... I think. Wait, forget that last bit.",
                 "3": "Ahem. Friendly faces scant wander this far, so offering hospitality is the least I can do- to a Starfarer, as well. My name is Garridine.",
-                "4": "In truth, automatons prove not the most capable of conversationalists. I would not be opposed to your visits.",
+                "4": "In truth, automatons prove not the most capable of conversationalists. I would not be opposed to your visits. In fact, I would petition your aid for a certain matter...",
                 "5": "Yep, done deal- right, {0}? I hesitate to say it, but she's really cute... we simply HAVE to help her out.",
                 "6": "Did you say something? No? In that case... I would appreciate it if you would allow me to analyze your equipment and weapons you have created.",
                 "7": "I haven't had occassion to learn about recent advancements, owing in no small part to the Ardor- if I were to get a glimpse, it would be quite the boon.",
@@ -2465,9 +2474,13 @@
           "Label": "Disable Boss Enemy Spawn Mod",
           "Tooltip": "Disables the buff granted to all players that prevents mob spawning during bosses."
         },
+        "ColorblindBoss": {
+          "Label": "Enable colorblind-friendly Penthesilea fight",
+          "Tooltip": "Replaces certain color-based mechanics in the Penthesilea boss fight. Untested."
+        },
         "CombatTimer": {
           "Label": "Combat Timer",
-          "Tooltip": "When striking a foe or getting struck, this is the time in seconds you are 'in combat.' Affects Stellar Nova gauge and using the Starfarer Menu."
+          "Tooltip": "When striking a foe or getting struck, this is the time in seconds you are 'in combat.'"
         }
       },
       "Common": {
@@ -2497,7 +2510,12 @@
       "MapObject": {
         "VendingMachine": "Vending Machine"
         "CelestriadRoot": "Celestriad Root",
-        "Gateway": "Gateway"
+        "Portal": "Gateway"
+        "StellarFoci": "Stellar Foci"
+        "StellaglyphTier1": "Stellaglyph (Tier 1)"
+        "StellaglyphTier2": "Stellaglyph (Tier 2)"
+        "StellaglyphTier3": "Stellaglyph (Tier 3)"
+        
       },
       "ItemTooltip": {
         "AlienCoral": "For each unused Stellar Array Energy point, gain 5% damage\nGain 10 defense with a full Stellar Array instead\n'Can only be described as lava lamp liquid forced to abdicate its throne'",
@@ -4386,7 +4404,7 @@
         "StarsAboveTip3": "Celestial damage inherits stat bonuses from all vanilla classes!",
         "StarsAboveTip4": "Check out the Stars Above configuration if you want to adjust certain features!",
         "StarsAboveTip5": "You can obtain Prismatic Cores by going on Cosmic Voyages!",
-        "StarsAboveTip6": "Don't forget to craft Stellar Foci to upgrade your Stellaglyph!",
+        "StarsAboveTip6": "Crafting Stellar Foci to upgrade your Stellaglyph could mean the difference between life and death!",
         "StarsAboveTip7": "Don't stay for too long on Anomaly planets- an incredibly dangerous foe will appear! Defeating it may offer great rewards, however..."
       }
     }

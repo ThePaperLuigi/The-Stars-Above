@@ -486,7 +486,7 @@ namespace StarsAbove.UI.StarfarerMenu
 		}
 		private void VoyageConfirm(UIMouseEvent evt, UIElement listeningElement)
 		{
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaGaugeUnlocked || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive)
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().astrolabeIntroDialogue != 2 || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive)
 				return;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive = false;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaUIOpacity = 0;
@@ -697,7 +697,7 @@ namespace StarsAbove.UI.StarfarerMenu
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.ArchiveHover.Asphodene");
 
 			}
-			else
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 			{
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.ArchiveHover.Eridani");
 
@@ -715,16 +715,34 @@ namespace StarsAbove.UI.StarfarerMenu
 				return;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollNumber = 0;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)                                                     //|
-			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.VoyageHover.Asphodene");
 
+			if(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().astrolabeIntroDialogue != 2)
+            {
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
+				{
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.Locked.Asphodene");
+				}
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
+				{
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.Locked.Eridani");
+
+				}
 			}
 			else
-			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.VoyageHover.Eridani");
+            {
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)                                                     //|
+				{
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.VoyageHover.Asphodene");
 
+				}
+				else
+				{
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.VoyageHover.Eridani");
+
+				}
 			}
+
+				
 
 
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
@@ -744,7 +762,7 @@ namespace StarsAbove.UI.StarfarerMenu
 				{
 					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.Locked.Asphodene");
 				}
-				else
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 				{
 					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.Locked.Eridani");
 
@@ -757,7 +775,7 @@ namespace StarsAbove.UI.StarfarerMenu
 					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.NovaHover.Asphodene");
 
 				}
-				else
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 				{
 					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.NovaHover.Eridani");
 
