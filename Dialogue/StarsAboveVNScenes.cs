@@ -740,7 +740,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.1"); //I see... Please, excuse my test. I know it was crude, but it's the only way I know how to judge someone. 
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 1)
                 {
@@ -769,7 +769,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.2"); //In reality, I should have known. My sisters would never choose unwisely.  
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 2)
                 {
@@ -798,7 +798,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.3"); //Huh? Sister? No way...  
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 3)
                 {
@@ -827,7 +827,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.4"); //I apologize, Asphodene. This should help. Ring any bells? 
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 4)
                 {
@@ -856,7 +856,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.5"); //Dude. We have GOT to stop meeting like this. The nerve...! 
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 5)
                 {
@@ -885,7 +885,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.6"); //Please, let me explain, Starbearer. In tandem with our galaxy's myriad worlds, there exists Starfarers to aid their denizens. You are familiar with what we do.
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 6)
                 {
@@ -914,7 +914,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.7"); //As we are conduits of energy, we choose a Starbearer to act as our envoy. They- or you, as it were- work kind of like a magnifying glass.
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 7)
                 {
@@ -943,7 +943,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.8"); //However, the First Starfarer's nominee was... unfitting for their role. This is the First Starbearer. From what I know, they seem to have lost their mind and morals.
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 8)
                 {
@@ -972,7 +972,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.9"); //Now, they continue to roam the galaxy, the Starfarer a thrall to their chosen one's whims. They 'pursue good' through any means necessary, often with casualties.
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 9)
                 {
@@ -1001,7 +1001,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.10"); //This is all conjecture, but the destruction is very real. It should go unsaid that we can't let this continue. I'll need your help in the future.
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 10)
                 {
@@ -1030,7 +1030,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.11"); //As it stands now, you have little chance of besting them. However, while Asphodene doesn't know it, all Starfarers have an ace up their sleeve: the Stellar Nova.
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 11)
                 {
@@ -1059,7 +1059,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.12"); //She doesn't know it, but I've already bequeathed the power to her the second you've won our duel. 
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 12)
                 {
@@ -1088,7 +1088,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.13"); //That is all for now. I must continue to track the First Starbearer. Good luck- I will have need of you soon. 
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 13)
                 {
@@ -1117,7 +1117,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.14"); //I know he's a loner, but.. I wish we could have spoken more. Stay safe, Perseus. 
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 14)
                 {
@@ -1146,7 +1146,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.15"); //Huh, he was right. I do feel stronger- and my hair's gone all shiny! This power should be an amazing boon going forward. 
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 15)
                 {
@@ -1175,7 +1175,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.16"); //Looks like my Stellar Nova is called 'Theofania Inanis.' Perhaps we'll get to use some more once we get stronger? 
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 16)
                 {
@@ -1204,7 +1204,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.17"); //After binding the Stellar Nova Key, you should be able to equip the Stellar Nova through the Spatial Disk, like usual.
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 17)
                 {
@@ -1233,7 +1233,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.18"); //You should have some Prismatic Cores already. With their power, I theorize you can upgrade Stellar Novas with crafting.
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 18)
                 {
@@ -1262,7 +1262,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.19"); //This is important. You need Stellar Nova energy to cast Novas. You gain Nova energy in combat. It depletes outside of combat.
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 19)
                 {
@@ -1291,7 +1291,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.9.Dialogue.20"); //OK. A lot has happened, but this is a huge step forward for us. Please use the Novas well! Bye for now.
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
             }
             //Post-Vagrant dialogue (Eridani ver.)
@@ -1342,7 +1342,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.1"); //I see... Please, excuse my test. I know it was crude, but it's the only way I know how to judge someone. 
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 1)
                 {
@@ -1371,7 +1371,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.2"); //In reality, I should have known. My sisters would never choose unwisely.  
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 2)
                 {
@@ -1400,7 +1400,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.3");
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 3)
                 {
@@ -1429,7 +1429,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.4"); //I apologize, Eridani. This should help. Ring any bells? 
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 4)
                 {
@@ -1458,7 +1458,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.5"); //We haven't talked in ages- and you show up now...?  
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 5)
                 {
@@ -1487,7 +1487,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.6"); //Please, let me explain, Starbearer. In tandem with our galaxy's myriad worlds, there exists Starfarers to aid their denizens. You are familiar with what we do.
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 6)
                 {
@@ -1516,7 +1516,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.7"); //As we are conduits of energy, we choose a Starbearer to act as our envoy. They- or you, as it were- work kind of like a magnifying glass.
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 7)
                 {
@@ -1545,7 +1545,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.8"); //However, the First Starfarer's nominee was... unfitting for their role. This is the First Starbearer. From what I know, they seem to have lost their mind and morals.
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 8)
                 {
@@ -1574,7 +1574,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.9"); //Now, they continue to roam the galaxy, the Starfarer a thrall to their chosen one's whims. They 'pursue good' through any means necessary, often with casualties.
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 9)
                 {
@@ -1603,7 +1603,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.10"); //This is all conjecture, but the destruction is very real. It should go unsaid that we can't let this continue. I'll need your help in the future.
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 10)
                 {
@@ -1632,7 +1632,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.11"); //As it stands now, you have little chance of besting them. However, while Eridani doesn't know it, all Starfarers have an ace up their sleeve: the Stellar Nova.
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 11)
                 {
@@ -1661,7 +1661,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.12"); //She doesn't know it, but I've already bequeathed the power to her the second you've won our duel. 
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 12)
                 {
@@ -1690,7 +1690,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.13"); //That is all for now. I must continue to track the First Starbearer. Good luck- I will have need of you soon. 
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 13)
                 {
@@ -1719,7 +1719,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.14"); //Perseus was never one for sticking around. I wish we could have spoken more... This power is incredible, but I need to get used to it. 
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 14)
                 {
@@ -1748,7 +1748,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.15"); //My Stellar Nova is called 'Theofania Inanis.' Perhaps we will be able to utilize more once we become stronger.
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 15)
                 {
@@ -1777,7 +1777,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.16"); //After binding the Stellar Nova Key, you should be able to equip the Stellar Nova through the Spatial Disk, like usual.
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 16)
                 {
@@ -1806,7 +1806,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.17"); //With Prismatic Cores, you can craft upgrades to the Stellar Nova, I believe. You can affix them in the menu directly.
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 17)
                 {
@@ -1835,7 +1835,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.18"); //Don't forget: You need Stellar Nova Energy to cast Stellar Novas. You can only accrue Energy in combat.
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 18)
                 {
@@ -1864,7 +1864,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.19"); //That's about it.. I know it's a lot to process, but please use the Novas well. That's all for now.
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
                 if (sceneProgress == 19)
                 {
@@ -1893,7 +1893,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID.10.Dialogue.20"); //...Did my hair just change color?  
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
             }
             //Asphodene introduces the Astrolabe.

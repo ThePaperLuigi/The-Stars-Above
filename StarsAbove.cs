@@ -7,6 +7,7 @@ using Terraria.Graphics.Shaders;
 using Terraria.ModLoader;
 using StarsAbove.SceneEffects.CustomSkies;
 using ReLogic.Content;
+using Microsoft.Xna.Framework;
 
 namespace StarsAbove
 {
@@ -155,15 +156,19 @@ namespace StarsAbove
 					"AddBoss", //Entry Type
 					this, //Mod Instance
 					"$Mods.StarsAbove.NPCName.VagrantOfSpaceAndTime", //Boss Name
-					ModContent.NPCType<NPCs.VagrantOfSpaceAndTime>(), //Boss ID
+					ModContent.NPCType<NPCs.Vagrant.VagrantBoss>(), //Boss ID
 					7.1f, //Progression
 					(Func<bool>)(() => DownedBossSystem.downedVagrant), //Downed boolean
 					() => true, //Availability
 					new List<int> { ModContent.ItemType<Items.Materials.EnigmaticDust>(), ModContent.ItemType<Items.Prisms.SpatialPrism>() },//Collection
 					ModContent.ItemType<Items.Consumables.ShatteredDisk>(),//Spawn Item
 					"$Mods.StarsAbove.BossChecklist.VagrantOfSpaceAndTime.SpawnInfo", //Spawn Item
-					"$Mods.StarsAbove.BossChecklist.VagrantOfSpaceAndTime.DespawnMessage" //Despawn Message
-					); //Boss Portrait
+					"$Mods.StarsAbove.BossChecklist.VagrantOfSpaceAndTime.DespawnMessage", //Despawn Message
+					(SpriteBatch sb, Rectangle rect, Color color) => {
+						Texture2D texture = ModContent.Request<Texture2D>("Texture/File/Path/Here").Value;
+						Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
+						sb.Draw(texture, centered, color);
+					}); //Boss Portrait
 
 				bossChecklist.Call(
 					"AddBoss", //Entry Type

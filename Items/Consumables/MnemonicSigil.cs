@@ -20,7 +20,7 @@ namespace StarsAbove.Items.Consumables
 			Tooltip.SetDefault("The combined memories of worlds defeated by the First Starfarer" +
 				"\nCan be used to be taken to the [c/7FC1EF:Eternal Confluence]" +
 				"\nUse again within the center of the [c/7FC1EF:Eternal Confluence] to summon [c/F1AF42:Tsukiyomi, the First Starfarer]" +
-				//"\n[c/7FC1EF:Alternatively, use this item normally to summon Tsukiyomi in the Overworld, if other methods are not available]" +
+				"\n[c/7FC1EF:Will summon Tsukiyomi normally in Multiplayer]" +
 				"\nIs not consumed upon use" +
 				"\n'...'" +
 				"\n");
@@ -65,29 +65,38 @@ namespace StarsAbove.Items.Consumables
 			
 			int type = ModContent.NPCType<NPCs.Tsukiyomi>();
 
-			var tilePos = player.Bottom.ToTileCoordinates16();
-			Tile tile = Framing.GetTileSafely(tilePos.X, tilePos.Y);
-			if (tile.TileType == TileID.AmethystGemspark && SubworldSystem.IsActive<EternalConfluence>())
-            {
-
-				if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("The expanse around you begins to contract..."), 210, 100, 175);}
-				if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("Tsukiyomi appears before you!"), 200, 150, 125);}
-				if (Main.netMode != NetmodeID.MultiplayerClient)
-				{
-					// If the player is not in multiplayer, spawn directly
-					NPC.SpawnOnPlayer(player.whoAmI, type);
-				}
-				else
-				{
-					// If the player is in multiplayer, request a spawn
-
-					NetMessage.SendData(MessageID.SpawnBoss, number: player.whoAmI, number2: type);
-				}
+			if (Main.netMode == NetmodeID.MultiplayerClient)
+			{
+				NetMessage.SendData(MessageID.SpawnBoss, number: player.whoAmI, number2: type);
 			}
 			else
             {
-				SubworldSystem.Enter("StarsAbove/EternalConfluence");
+				var tilePos = player.Bottom.ToTileCoordinates16();
+				Tile tile = Framing.GetTileSafely(tilePos.X, tilePos.Y);
+				if (tile.TileType == TileID.AmethystGemspark && SubworldSystem.IsActive<EternalConfluence>())
+				{
+
+					if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("The expanse around you begins to contract..."), 210, 100, 175); }
+					if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("Tsukiyomi appears before you!"), 200, 150, 125); }
+					if (Main.netMode != NetmodeID.MultiplayerClient)
+					{
+						// If the player is not in multiplayer, spawn directly
+						NPC.SpawnOnPlayer(player.whoAmI, type);
+					}
+					else
+					{
+						// If the player is in multiplayer, request a spawn
+
+						NetMessage.SendData(MessageID.SpawnBoss, number: player.whoAmI, number2: type);
+					}
+				}
+				else
+				{
+					SubworldSystem.Enter("StarsAbove/EternalConfluence");
+				}
+
 			}
+
 
 			/*if(!SubworldSystem.IsActive<EternalConfluence>())
             {
@@ -103,8 +112,8 @@ namespace StarsAbove.Items.Consumables
 			}
 			
 			*/
-			
-			
+
+
 
 
 

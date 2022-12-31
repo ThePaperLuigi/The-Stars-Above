@@ -325,7 +325,6 @@ namespace StarsAbove
         {
             if (NPC.downedAncientCultist && !NPC.downedMoonlord)
             {
-                if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.LunarEvents"), 255, 255, 100); }
                 return false;
             }
             

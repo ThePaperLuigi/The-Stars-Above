@@ -5,6 +5,7 @@ using StarsAbove.Items.Armor.StarfarerArmor;
 using StarsAbove.Utilities;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
+using Terraria.ID;
 using Terraria.UI;
 using static Terraria.ModLoader.ModContent;
 
@@ -488,6 +489,13 @@ namespace StarsAbove.UI.StarfarerMenu
 		{
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().astrolabeIntroDialogue != 2 || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive)
 				return;
+
+			if (NPC.downedAncientCultist && !NPC.downedMoonlord)
+			{
+				if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.LunarEvents"), 255, 255, 100); }
+				return;
+			}
+
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive = false;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaUIOpacity = 0;
 			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = true;

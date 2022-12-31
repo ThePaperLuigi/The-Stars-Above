@@ -2,6 +2,11 @@
   "Mods": {
     "StarsAbove": {
       
+      "SubworldName": {
+        "Observatory": Observatory Hyperborea
+
+      }
+
       "NPCDialogue": {
         "Talk": "Right click to talk!",
         "Yojimbo": {
@@ -17,7 +22,10 @@
           "NoPortal": "No nearby portal detected!",
           "WeakStellaglyph": "Your Stellaglyph is not powerful enough to attempt transit!",
           "AnomalyCooldown": "Anomaly voyages are currently on cooldown."
-          "LunarEvents": "Celestial energy prevents the activation of the Bifrost- try defeating the invading creatures first!"
+          "LunarEvents": "Celestial energy prevents the Astrolabe from functioning- try defeating the invading creatures first!"
+          "MultiplayerCompatibility": "Multiplayer compatibility mode enabled; spawning relevant items instead of attempting transit."
+          "MultiplayerNoLoot": "Multiplayer compatibility mode enabled; transit disabled at this time."
+          "LootCooldown": "Loot still on cooldown!"
         },
         "MapText": {
           "Default": "Select a location to visit.",
@@ -2477,6 +2485,10 @@
         "ColorblindBoss": {
           "Label": "Enable colorblind-friendly Penthesilea fight",
           "Tooltip": "Replaces certain color-based mechanics in the Penthesilea boss fight. Untested."
+        },
+        "SubworldCompatibility": {
+          "Label": "Disable Multiplayer Compatibility-Fix for Cosmic Voyages",
+          "Tooltip": "Allows for users in Multiplayer to undertake Cosmic Voyages- this is known to cause issues. When this is toggled off, causes items to drop instead."
         },
         "CombatTimer": {
           "Label": "Combat Timer",

@@ -15606,61 +15606,6 @@ namespace StarsAbove
             AlienCoral = false;
 
         }
-        public override void clientClone(ModPlayer clientClone)
-        {
-            StarsAbovePlayer clone = clientClone as StarsAbovePlayer;
-            // Here we would make a backup clone of values that are only correct on the local players Player instance.
-            // Some examples would be RPG stats from a GUI, Hotkey states, and Extra Item Slots
-            clone.stellarPerformanceActive = stellarPerformanceActive;
-            clone.stellarPerformanceCooldown = stellarPerformanceCooldown;
-
-            clone.SkyStrikerForm = SkyStrikerForm;
-
-        }
-        public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
-        {
-            /*public bool WarriorBarActive;
-		public int WarriorCastTime = 0;
-		public int WarriorCastTimeMax = 100;
-		public bool WarriorOfLightActive;
-		public string WarriorOfLightNextAttack;
-		public bool LostToWarriorOfLight = false;*/
-
-            ModPacket packet = Mod.GetPacket();
-            packet.Write(stellarPerformanceStart);
-            packet.Write(stellarPerformanceActive);
-            packet.Write(stellarPerformanceCooldown);
-            packet.Write(WarriorBarActive);
-            packet.Write(WarriorCastTime);
-            packet.Write(WarriorCastTimeMax);
-            packet.Write(WarriorOfLightActive);
-            packet.Write(WarriorOfLightNextAttack);
-            packet.Write(LostToWarriorOfLight);
-            packet.Write(SkyStrikerForm);
-            base.SyncPlayer(toWho, fromWho, newPlayer);
-        }
-        public override void SendClientChanges(ModPlayer clientPlayer)
-        {
-            // Here we would sync something like an RPG stat whenever the player changes it.
-            StarsAbovePlayer clone = clientPlayer as StarsAbovePlayer;
-            if (clone.stellarPerformanceActive != stellarPerformanceActive)
-            {
-                // Send a Mod Packet with the changes.
-                var packet = Mod.GetPacket();
-                packet.Write((byte)Player.whoAmI);
-                packet.Write(stellarPerformanceActive);
-                packet.Write(stellarPerformanceCooldown);
-                packet.Send();
-            }
-            if (clone.SkyStrikerForm != SkyStrikerForm)
-            {
-                // Send a Mod Packet with the changes.
-                var packet = Mod.GetPacket();
-                packet.Write((byte)Player.whoAmI);
-                packet.Write(SkyStrikerForm);
-                packet.Send();
-            }
-        }
         public override void FrameEffects()
         {
             if (Player.active && !Player.dead)

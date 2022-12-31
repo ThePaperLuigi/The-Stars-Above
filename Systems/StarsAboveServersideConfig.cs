@@ -1,4 +1,5 @@
 ﻿using StarsAbove.NPCs;
+using StarsAbove.UI.CelestialCartography;
 using System;
 using System.ComponentModel;
 using Terraria.ModLoader.Config;
@@ -41,6 +42,10 @@ namespace StarsAbove
 		[Tooltip("$Mods.StarsAbove.Config.ColorblindBoss.Tooltip")]
 		public bool ColorblindBoss;
 
+		[Label("$Mods.StarsAbove.Config.SubworldCompatibility.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.SubworldCompatibility.Tooltip")]
+		public bool DisableCompatibilityMode;
+
 		[Increment(1)]
 		[Range(5, 60)]
 		[DefaultValue(15)]
@@ -63,6 +68,7 @@ namespace StarsAbove
 			StarsAbovePlayer.inCombatMax = CombatTimer*60;
 			StarsAbovePlayer.BossEnemySpawnModDisabled = DisableBossEnemySpawnMod;
 			Penthesilea.ColorblindEnabled = ColorblindBoss;
+			CelestialCompass.DisableMultiplayerCompatibility = DisableCompatibilityMode;
 		}
 	}
 }

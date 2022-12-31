@@ -232,7 +232,7 @@ namespace StarsAbove.Items
 				.AddIngredient(ItemID.Vertebrae, 30)
 				.AddIngredient(ItemID.TissueSample, 8)
 				.AddIngredient(ItemID.BrokenHeroSword, 1)
-				.AddIngredient(ItemType<EssenceOfBloodshed>())
+				.AddIngredient(ItemType<EssenceOfMimicry>())
 				.AddTile(TileID.Anvils)
 				.Register();
 
@@ -243,7 +243,7 @@ namespace StarsAbove.Items
 				.AddIngredient(ItemID.Vertebrae, 30)
 				.AddIngredient(ItemID.TissueSample, 8)
 				.AddIngredient(ItemID.BrokenHeroSword, 1)
-				.AddIngredient(ItemType<EssenceOfBloodshed>())
+				.AddIngredient(ItemType<EssenceOfMimicry>())
 				.AddTile(TileID.Anvils)
 				.Register();
 		}

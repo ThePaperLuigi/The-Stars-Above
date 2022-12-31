@@ -2,6 +2,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Buffs.Subworlds;
+using StarsAbove.Items.Materials;
+using StarsAbove.Items.Placeable;
+using StarsAbove.Items.Prisms;
 using StarsAbove.Subworlds;
 using StarsAbove.Utilities;
 using SubworldLibrary;
@@ -9,6 +12,7 @@ using System;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
+using Terraria.ModLoader;
 using Terraria.UI;
 using static Terraria.ModLoader.ModContent;
 
@@ -50,6 +54,8 @@ namespace StarsAbove.UI.CelestialCartography
 		private UIImageButton Corvus;
 
 		private UIImageButton QuestionMark;
+
+		public static bool DisableMultiplayerCompatibility = false;
 
 		public override void OnInitialize() {
 			// Create a UIElement for all the elements to sit on top of, this simplifies the numbers as nested elements can be positioned relative to the top left corner of this element. 
@@ -311,7 +317,22 @@ namespace StarsAbove.UI.CelestialCartography
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive)
 				return;
 
-			
+			if (Main.netMode == NetmodeID.MultiplayerClient && !DisableMultiplayerCompatibility)
+			{
+				if(!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
+                {
+					Main.LocalPlayer.QuickSpawnItem(null, ModContent.ItemType<CelestriadRoot>());
+					Main.LocalPlayer.AddBuff(BuffType<SubworldLootCooldown>(), 36000);
+					Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.MultiplayerCompatibility"), 215, 215, 255);
+				}
+				else
+                {
+					Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.LootCooldown"), 215, 215, 255);
+				}
+				return;
+
+			}
+
 			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 			SubworldSystem.Enter<Observatory>();
 
@@ -325,8 +346,25 @@ namespace StarsAbove.UI.CelestialCartography
 			
 			if(Main.LocalPlayer.HasBuff(BuffType<PortalReady>()) || Main.LocalPlayer.HasBuff(BuffType<StellaglyphReady>()))
             {
-				if(Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 1)
-                {
+				
+				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 1)
+				{
+					if (Main.netMode == NetmodeID.MultiplayerClient && !DisableMultiplayerCompatibility)
+					{
+						if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
+						{
+							Main.LocalPlayer.QuickSpawnItem(null, ModContent.ItemType<PrismaticCore>(), 5);
+							Main.LocalPlayer.AddBuff(BuffType<SubworldLootCooldown>(), 36000);
+							Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.MultiplayerCompatibility"), 215, 215, 255);
+						}
+						else
+						{
+							Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.LootCooldown"), 215, 215, 255);
+						}
+						return;
+
+					}
+
 					SubworldSystem.Enter<CygnusAsteroids>();
 					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 
@@ -355,11 +393,32 @@ namespace StarsAbove.UI.CelestialCartography
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive)
 				return;
 
+			if (NPC.downedAncientCultist && !NPC.downedMoonlord)
+			{
+				if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.LunarEvents"), 255, 255, 100); }
+				return;
+			}
 
 			if (Main.LocalPlayer.HasBuff(BuffType<PortalReady>()) || Main.LocalPlayer.HasBuff(BuffType<StellaglyphReady>()))
 			{
 				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 1)
 				{
+					if (Main.netMode == NetmodeID.MultiplayerClient && !DisableMultiplayerCompatibility)
+					{
+						if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
+						{
+							Main.LocalPlayer.QuickSpawnItem(null, ModContent.ItemType<PrismaticCore>(), 5);
+							Main.LocalPlayer.AddBuff(BuffType<SubworldLootCooldown>(), 36000);
+							Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.MultiplayerCompatibility"), 215, 215, 255);
+						}
+						else
+						{
+							Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.LootCooldown"), 215, 215, 255);
+						}
+						return;
+
+					}
+
 					SubworldSystem.Enter<MiningStationAries>();
 					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 
@@ -393,6 +452,21 @@ namespace StarsAbove.UI.CelestialCartography
 			{
 				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2)//Tier 2
 				{
+					if (Main.netMode == NetmodeID.MultiplayerClient && !DisableMultiplayerCompatibility)
+					{
+						if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
+						{
+							Main.LocalPlayer.QuickSpawnItem(null, ModContent.ItemType<InertShard>(), 5);
+							Main.LocalPlayer.AddBuff(BuffType<SubworldLootCooldown>(), 36000);
+							Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.MultiplayerCompatibility"), 215, 215, 255);
+						}
+						else
+						{
+							Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.LootCooldown"), 215, 215, 255);
+						}
+						return;
+
+					}
 					SubworldSystem.Enter<BleachedPlanet>();
 					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 
@@ -426,6 +500,23 @@ namespace StarsAbove.UI.CelestialCartography
 			{
 				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2)//Tier 2
 				{
+					if (Main.netMode == NetmodeID.MultiplayerClient && !DisableMultiplayerCompatibility)
+					{
+						if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
+						{
+							Main.LocalPlayer.QuickSpawnItem(null, ItemID.VilePowder, 15);
+							Main.LocalPlayer.QuickSpawnItem(null, ItemID.RottenChunk, 15);
+
+							Main.LocalPlayer.AddBuff(BuffType<SubworldLootCooldown>(), 36000);
+							Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.MultiplayerCompatibility"), 215, 215, 255);
+						}
+						else
+						{
+							Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.LootCooldown"), 215, 215, 255);
+						}
+						return;
+
+					}
 					SubworldSystem.Enter<Serpens>();
 					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 
@@ -459,6 +550,24 @@ namespace StarsAbove.UI.CelestialCartography
 			{
 				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2)//Tier 2
 				{
+					if (Main.netMode == NetmodeID.MultiplayerClient && !DisableMultiplayerCompatibility)
+					{
+						if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
+						{
+							Main.LocalPlayer.QuickSpawnItem(null, ItemID.Vertebrae, 15);
+							Main.LocalPlayer.QuickSpawnItem(null, ItemID.ViciousPowder, 15);
+
+
+							Main.LocalPlayer.AddBuff(BuffType<SubworldLootCooldown>(), 36000);
+							Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.MultiplayerCompatibility"), 215, 215, 255);
+						}
+						else
+						{
+							Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.LootCooldown"), 215, 215, 255);
+						}
+						return;
+
+					}
 					SubworldSystem.Enter<Scorpius>();
 					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 
@@ -492,6 +601,23 @@ namespace StarsAbove.UI.CelestialCartography
 			{
 				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2)//Tier 2
 				{
+					if (Main.netMode == NetmodeID.MultiplayerClient && !DisableMultiplayerCompatibility)
+					{
+						if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
+						{
+							Main.LocalPlayer.QuickSpawnItem(null, ItemID.JungleSpores, 15);
+							Main.LocalPlayer.QuickSpawnItem(null, ItemID.Stinger, 5);
+
+							Main.LocalPlayer.AddBuff(BuffType<SubworldLootCooldown>(), 36000);
+							Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.MultiplayerCompatibility"), 215, 215, 255);
+						}
+						else
+						{
+							Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.LootCooldown"), 215, 215, 255);
+						}
+						return;
+
+					}
 					SubworldSystem.Enter<Tucana>();
 					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 
@@ -525,6 +651,22 @@ namespace StarsAbove.UI.CelestialCartography
 			{
 				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2)//Tier 2
 				{
+					if (Main.netMode == NetmodeID.MultiplayerClient && !DisableMultiplayerCompatibility)
+					{
+						if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
+						{
+							Main.LocalPlayer.QuickSpawnItem(null, ModContent.ItemType<BandedTenebrium>(), 5);
+
+							Main.LocalPlayer.AddBuff(BuffType<SubworldLootCooldown>(), 36000);
+							Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.MultiplayerCompatibility"), 215, 215, 255);
+						}
+						else
+						{
+							Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.LootCooldown"), 215, 215, 255);
+						}
+						return;
+
+					}
 					SubworldSystem.Enter<Corvus>();
 					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 
@@ -558,9 +700,17 @@ namespace StarsAbove.UI.CelestialCartography
 			{
 				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2)//Tier 2
 				{
-					SubworldSystem.Enter<Pyxis>();
-					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
+					if (Main.netMode == NetmodeID.MultiplayerClient && !DisableMultiplayerCompatibility)
+					{
+						if (Main.myPlayer == Main.LocalPlayer.whoAmI)
+						{
+							Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.MultiplayerNoLoot"), 215, 215, 255);
+							return;
 
+						}
+						SubworldSystem.Enter<Pyxis>();
+						Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
+					}
 				}
 				else
 				{
@@ -601,6 +751,23 @@ namespace StarsAbove.UI.CelestialCartography
                 {
 					if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 3)//Tier 3
 					{
+						if (Main.netMode == NetmodeID.MultiplayerClient && !DisableMultiplayerCompatibility)
+						{
+							if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
+							{
+								Main.LocalPlayer.QuickSpawnItem(null, ModContent.ItemType<Items.Consumables.DemonicCrux>(), 1);
+								Main.LocalPlayer.QuickSpawnItem(null, ModContent.ItemType<Items.Accessories.AlienCoral>(), 1);
+
+								Main.LocalPlayer.AddBuff(BuffType<SubworldLootCooldown>(), 36000);
+								Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.MultiplayerCompatibility"), 215, 215, 255);
+							}
+							else
+							{
+								Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.LootCooldown"), 215, 215, 255);
+							}
+							return;
+
+						}
 						SubworldSystem.Enter<Lyra>();
 						Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 						Main.LocalPlayer.AddBuff(BuffType<VoyageCooldown>(), 108000);

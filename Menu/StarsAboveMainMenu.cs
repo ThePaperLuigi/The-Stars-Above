@@ -152,7 +152,7 @@ namespace StarsAbove.Menu
 					zero.Y -= ((float)MenuBG.Height * width - (float)Main.screenHeight) * 0.5f;
                 }
             }
-			spriteBatch.Draw(MenuBG, new Vector2(zero.X + MathHelper.Lerp(-98, -82, MousePositionFloatX), zero.Y + MathHelper.Lerp(-95, -90, MousePositionFloatY)), (Rectangle?)null, Color.White, 0f, Vector2.Zero, width * 1.1f, (SpriteEffects)0, 0f);
+			spriteBatch.Draw(MenuBG, new Vector2(zero.X + MathHelper.Lerp(-98, -82, MousePositionFloatX), zero.Y + MathHelper.Lerp(-50, -47, MousePositionFloatY)), (Rectangle?)null, Color.White, 0f, Vector2.Zero, width * 1.1f, (SpriteEffects)0, 0f);
 
 			Texture2D AsphoRunAnimation = (Texture2D)ModContent.Request<Texture2D>($"StarsAbove/UI/CelestialCartography/RunAnimation/ARun" + animationFrame + "0");
 			Texture2D EriRunAnimation = (Texture2D)ModContent.Request<Texture2D>($"StarsAbove/UI/CelestialCartography/RunAnimation/ERun" + animationFrame2 + "0");
@@ -434,7 +434,7 @@ namespace StarsAbove.Menu
 				0f);
 
 
-			spriteBatch.Draw(MenuFG, new Vector2(zero.X + MathHelper.Lerp(-93, -87, MousePositionFloatX), zero.Y + MathHelper.Lerp(-93, -92, MousePositionFloatY)), (Rectangle?)null, Color.White, 0f, Vector2.Zero, width * 1.1f, (SpriteEffects)0, 0f);
+			spriteBatch.Draw(MenuFG, new Vector2(zero.X + MathHelper.Lerp(-93, -87, MousePositionFloatX), zero.Y + MathHelper.Lerp(-78, -77, MousePositionFloatY)), (Rectangle?)null, Color.White, 0f, Vector2.Zero, width * 1.1f, (SpriteEffects)0, 0f);
 
 			spriteBatch.Draw(
 				AsphoRunAnimation, //The texture being drawn.
