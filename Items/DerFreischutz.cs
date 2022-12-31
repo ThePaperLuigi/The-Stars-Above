@@ -13,11 +13,12 @@ namespace StarsAbove.Items
     public class DerFreischutz : ModItem
 	{
 		public override void SetStaticDefaults() {
-			Tooltip.SetDefault("Bullets will fire from your cursor" +
+			Tooltip.SetDefault("[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes at 70% efficiency, but inherits 150% from critical strike chance modifiers]" +
+                "\nBullets will fire from your cursor" +
 				"\nLine of sight is not required, but bullets will inherit direction" +
-				"\nCritical rate and damage will increase with the amount of bullets fired, but the seventh shot will have recoil damage and damage friends" +
+				"\nCritical rate and damage will increase with the amount of bullets fired, but the seventh shot will have recoil damage and damage allies" +
 				"\nIf the recoil damage would kill you, the gun will misfire" +
-				"\n'It is said he could never miss, but the seventh bullet always struck those he loved'" +
+				"\n'This magical bullet can truly hit anyone- just like you say'" +
 				$"");
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -26,7 +27,7 @@ namespace StarsAbove.Items
 
 		public override void SetDefaults() {
 			Item.damage = 29;
-			Item.DamageType = DamageClass.Ranged;
+			Item.DamageType = ModContent.GetInstance<Systems.PsychomentDamageClass>();
 			Item.width = 40;
 			Item.height = 20;
 			Item.useTime = 20;

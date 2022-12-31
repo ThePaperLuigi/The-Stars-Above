@@ -43,7 +43,7 @@ namespace StarsAbove.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 80;           //The damage of your weapon
+			Item.damage = 70;           //The damage of your weapon
 			Item.DamageType = DamageClass.Melee;          //Is your weapon a melee weapon?
 			Item.width = 68;            //Weapon's texture's width
 			Item.height = 68;           //Weapon's texture's height
@@ -71,8 +71,8 @@ namespace StarsAbove.Items
 			if(player.GetModPlayer<StarsAbovePlayer>().SkyStrikerForm == 1) //Red Firey attacks
             {
 
-				Item.useTime = 25;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
-				Item.useAnimation = 25;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
+				Item.useTime = 30;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
+				Item.useAnimation = 30;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
 				Item.useStyle = 5;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
 				Item.knockBack = 4;         //The force of knockback of the weapon. Maximum is 20
 				Item.channel = false;
@@ -104,8 +104,8 @@ namespace StarsAbove.Items
 			if (player.GetModPlayer<StarsAbovePlayer>().SkyStrikerForm == 3)//Close Combat melee
 			{
 
-				Item.useTime = 15;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
-				Item.useAnimation = 15;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
+				Item.useTime = 12;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
+				Item.useAnimation = 12;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
 				Item.useStyle = ItemUseStyleID.Rapier;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
 				Item.knockBack = 4;         //The force of knockback of the weapon. Maximum is 20
 				Item.channel = false;

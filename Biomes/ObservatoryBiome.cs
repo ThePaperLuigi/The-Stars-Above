@@ -13,14 +13,14 @@ namespace StarsAbove.Biomes
 		// Select all the scenery
 		//public override ModWaterStyle WaterStyle => ModContent.Find<ModWaterStyle>("StarsAbove/ExampleWaterStyle"); // Sets a water style for when inside this biome
 		public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle => ModContent.Find<ModSurfaceBackgroundStyle>("StarsAbove/ObservatoryBackgroundStyle");
-		public override CaptureBiome.TileColorStyle TileColorStyle => CaptureBiome.TileColorStyle.Crimson;
+		public override CaptureBiome.TileColorStyle TileColorStyle => CaptureBiome.TileColorStyle.Normal;
 
 		// Select Music
 		public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/ElpisDay");
 
 		// Populate the Bestiary Filter
 		public override string BestiaryIcon => base.BestiaryIcon;
-		public override string BackgroundPath => base.BackgroundPath;
+		public override string BackgroundPath => "StarsAbove/Biomes/SeaOfStarsBiomeMapBackground";
 		public override Color? BackgroundColor => base.BackgroundColor;
 
 		// Use SetStaticDefaults to assign the display name

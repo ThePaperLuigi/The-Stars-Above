@@ -51,13 +51,13 @@ namespace StarsAbove.UI
 			gradientB = new Color(255, 166, 83); //
 
 			//area.Append(timeLeft);
-			area.Append(text);
+			barFrame.Append(text);
 			area.Append(barFrame);
 			Append(area);
 		}
 
 		public override void Draw(SpriteBatch spriteBatch) {
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
 			if (modPlayer.VagrantBarActive == false)
 				return;
@@ -68,9 +68,9 @@ namespace StarsAbove.UI
 		protected override void DrawSelf(SpriteBatch spriteBatch) {
 			base.DrawSelf(spriteBatch);
 
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 			// Calculate quotient
-			float quotient = (float)modPlayer.VagrantCastTime / (float)modPlayer.VagrantCastTimeMax; // Creating a quotient that represents the difference of your currentResource vs your maximumResource, resulting in a float of 0-1f.
+			float quotient = (float)modPlayer.CastTime / (float)modPlayer.CastTimeMax; // Creating a quotient that represents the difference of your currentResource vs your maximumResource, resulting in a float of 0-1f.
 			quotient = Utils.Clamp(quotient, 0f, 1f); // Clamping it to 0-1f so it doesn't go over that.
 
 			// Here we get the screen dimensions of the barFrame element, then tweak the resulting rectangle to arrive at a rectangle within the barFrame texture that we will draw the gradient. These values were measured in a drawing program.
@@ -79,7 +79,7 @@ namespace StarsAbove.UI
 			hitbox.Width -= 24;
 			hitbox.Y += 8;
 			hitbox.Height -= 16;
-
+			
 			// Now, using this hitbox, we draw a gradient by drawing vertical lines while slowly interpolating between the 2 colors.
 			int left = hitbox.Left;
 			int right = hitbox.Right;
@@ -91,14 +91,14 @@ namespace StarsAbove.UI
 			}
 		}
 		public override void Update(GameTime gameTime) {
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
 			if (modPlayer.VagrantBarActive == false)
 				return;
 
 
-			// Setting the text per tick to update and show our resource values.
-			text.SetText($"[c/93A0FC:{modPlayer.VagrantNextAttack}]");
+			text.SetText($"[c/93A0FC:{modPlayer.NextAttack} ]");
+
 
 
 			timeLeft.SetText($"[c/FF9D4B:{modPlayer.vagrantTimeLeft / 60}] seconds left to survive!");

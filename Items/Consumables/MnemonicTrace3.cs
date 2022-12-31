@@ -30,9 +30,7 @@ namespace StarsAbove.Items.Consumables
 			Item.consumable = false;
 		}
 
-		int availableWeapons = 0;
-		int weapon;
-
+		
 		// We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
 
 		public override void HoldItem(Player player)

@@ -43,12 +43,7 @@ namespace StarsAbove.Items.Accessories
 		
 
 		public override void AddRecipes() {
-			CreateRecipe(1)
-				.AddIngredient(ItemID.SoulofFlight, 2)
-				.AddIngredient(ItemID.SoulofLight, 12)
-				.AddIngredient(ItemID.FireFeather, 1)
-				.AddTile(TileID.Anvils)
-				.Register();
+			
 		}
 	}
 }

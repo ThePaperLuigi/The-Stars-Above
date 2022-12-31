@@ -31,7 +31,7 @@ namespace StarsAbove.Items.Armor.StarfarerArmor
 				"\n[c/87E3DE:Passage of Arms]" +
                 "\nEnemies are more likely to target you" +
                 "\nTaking damage grants Ironskin, Regeneration, and Endurance for 8 seconds" +
-                "\nAdditionally, gain the buff Nascent Aria for 3 seconds, increasing maximum health by 500" +
+                "\nAdditionally, gain the buff Nascent Aria for 3 seconds, increasing defense by 20 and boosting health regen" +
 				"\n[c/F94135:Proof of a Hero]" +
                 "\nAttacks will deal 40% less damage to foes not targetting you" +
 				"\n[c/8BB9F8:The Echo of Hope]" +
@@ -41,8 +41,7 @@ namespace StarsAbove.Items.Armor.StarfarerArmor
                 "\nBetween the Boundary: Gain 40 defense during Flow, and lose 20 defense during Ebb" +
                 "\nUnbridled Radiance: Stellar Nova Energy can not drop below 10" +
 				"\n'Stand tall- my friend / May all of the dark deep inside you / Find Light again' " +
-				//"\n[c/E572A1:Land of Miracles]" +
-				//"\nStarfarer Voyages on 'Radiant Planets' will always succeed, are 50% faster, and gain 80% increased Riches" +
+				
                 "");
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;

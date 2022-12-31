@@ -1,9 +1,12 @@
 
 using Microsoft.Xna.Framework;
+using StarsAbove.NPCs.OffworldNPCs;
 using StarsAbove.Projectiles.Bosses.Vagrant;
 using System;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -32,12 +35,15 @@ namespace StarsAbove.NPCs.Vagrant
 			Idle5,
 			Idle6,
 
-			Asleep,
-			Notice,
-			Falling,
-			Flutter1,
-			Flutter2,
-			Flutter3
+			Prep1,
+			Prep2,
+			Prep3,
+			Prep4,
+			Prep5,
+			Prep6,
+
+			Defeat
+
 		}
 
 		// These are reference properties. One, for example, lets us write AI_State as if it's NPC.ai[0], essentially giving the index zero our own name.
@@ -47,23 +53,25 @@ namespace StarsAbove.NPCs.Vagrant
 		public ref float AI_Timer => ref NPC.ai[1];
 
 		public ref float AI_RotationNumber => ref NPC.ai[2];//Where the boss is in its rotation.
-		public ref float AI_CastTimer => ref NPC.ai[3];//Continually ticks down from the value given by the attack; at zero, the cast is finished.
+		public ref float AI_CastTimerMax => ref NPC.ai[3];//Continually ticks down from the value given by the attack; at zero, the cast is finished.
+		public ref float AI_CastTimer => ref NPC.localAI[3];//Continually ticks down from the value given by the attack; at zero, the cast is finished.
+
 
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("The Vagrant of Space and Time");
 			
-			Main.npcFrameCount[NPC.type] = 7; // make sure to set this for your modnpcs.
+			Main.npcFrameCount[NPC.type] = 14; // make sure to set this for your modnpcs.
 
 			// Specify the debuffs it is immune to
-			NPCID.Sets.DebuffImmunitySets.Add(Type, new NPCDebuffImmunityData
+			/*NPCID.Sets.DebuffImmunitySets.Add(Type, new NPCDebuffImmunityData
 			{
 				SpecificallyImmuneTo = new int[] {
 					BuffID.Poisoned // This NPC will be immune to the Poisoned debuff.
 				}
-			});
-			/*
-			DisplayName.SetDefault("The Vagrant of Space and Time");
+			});*/
+			
+			
 			NPCID.Sets.MPAllowedEnemies[NPC.type] = true;
 			// By default enemies gain health and attack if hardmode is reached. this NPC should not be affected by that
 			NPCID.Sets.DontDoHardmodeScaling[Type] = true;
@@ -81,14 +89,25 @@ namespace StarsAbove.NPCs.Vagrant
 				PortraitPositionYOverride = 58f
 			};
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifier);
-			*/
+
+		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+		{
+			int associatedNPCType = ModContent.NPCType<AstralCell>();
+			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[associatedNPCType], quickUnlock: true);
+
+			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+
+				new FlavorTextBestiaryInfoElement($"Mods.StarsAbove.Bestiary.{Name}")
+				});
+
 		}
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 12000;
+			NPC.lifeMax = 32000;
 			NPC.damage = 0;
-			NPC.defense = 0;
+			NPC.defense = 20;
 			NPC.knockBackResist = 0f;
 			NPC.width = 160;
 			NPC.height = 160;
@@ -111,9 +130,6 @@ namespace StarsAbove.NPCs.Vagrant
 			//Music =  mod.GetSoundSlot(SoundType.Music, "Sounds/Music/CosmicWill");
 			NPC.netAlways = true;
 		}
-
-		int castTime;
-		int castTimeMax;
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
@@ -148,7 +164,31 @@ namespace StarsAbove.NPCs.Vagrant
 			{
 				NPC.TargetClosest(true);
 			}
-
+			if (Main.player[NPC.target].dead)
+			{
+				//Leave if all players are dead.
+				Vector2 vector8 = new Vector2(NPC.Center.X, NPC.Center.Y);
+				for (int d = 0; d < 100; d++)
+				{
+					Dust.NewDust(vector8, 0, 0, 269, 0f + Main.rand.Next(-40, 40), 0f + Main.rand.Next(-40, 40), 150, default(Color), 1.5f);
+				}
+				for (int d = 0; d < 65; d++)
+				{
+					Dust.NewDust(vector8, 0, 0, 21, 0f + Main.rand.Next(-45, 45), 0f + Main.rand.Next(-45, 45), 150, default(Color), 1.5f);
+				}
+				for (int d = 0; d < 35; d++)
+				{
+					Dust.NewDust(vector8, 0, 0, 50, 0f + Main.rand.Next(-45, 45), 0f + Main.rand.Next(-45, 45), 150, default(Color), 1.5f);
+				}
+				for (int d = 0; d < 35; d++)
+				{
+					Dust.NewDust(vector8, 0, 0, 55, 0f + Main.rand.Next(-45, 45), 0f + Main.rand.Next(-45, 45), 150, default(Color), 1.5f);
+				}
+				NPC.active = false;
+				modPlayer.VagrantActive = false;
+				modPlayer.VagrantBarActive = false;
+				
+			}
 			if (NPC.ai[0] == (float)ActionState.Dying)
 			{
 				DeathAnimation();//The boss is in its dying animation. No other AI code will run.
@@ -199,7 +239,7 @@ namespace StarsAbove.NPCs.Vagrant
 				}
 				if (AI_RotationNumber == 5)
 				{
-					VorpalSiege(P, NPC);
+					TheofaniaInanis(P, NPC);
 					return;
 				}
 				if (AI_RotationNumber == 6)
@@ -214,7 +254,7 @@ namespace StarsAbove.NPCs.Vagrant
 				}
 				if (AI_RotationNumber == 8)
 				{
-					UmbralUpsurge(P, NPC);
+					StarSundering(P, NPC);
 					return;
 				}
 				if (AI_RotationNumber == 9)
@@ -222,40 +262,122 @@ namespace StarsAbove.NPCs.Vagrant
 					MeteorShower(P, NPC);
 					return;
 				}
+				if (AI_RotationNumber == 10)//Add this later in the fight (early for testing)
+				{
+					GeneralRelativity(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 11)
+				{
+					Starfall(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 12)
+				{
+					MeteorShower(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 13)
+				{
+					VorpalAssault(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 14)
+				{
+					VorpalBarrage(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 15)
+				{
+					Microcosmos(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 16)
+				{
+					StarSundering(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 17)
+				{
+					MeteorShower(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 18)
+				{
+					AdvancedRelativityHorizontal(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 19)
+				{
+					HypertunedStarfall(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 20)
+				{
+					HypertunedInverseStarfall(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 21)
+				{
+					HypertunedStarfall(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 22)
+				{
+					MeteorShower(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 23)
+				{
+					VorpalSiege(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 24)
+				{
+					VorpalAssault(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 25)
+				{
+					AdvancedRelativityVertical(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 26)
+				{
+					VorpalBarrage(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 27)
+				{
+					VorpalSiege(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 28)
+				{
+					VorpalSnipe(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 29)
+				{
+					GeneralRelativity(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 30)
+				{
+					StarSundering(P, NPC);
+					return;
+				}
 				else
                 {
-					Starfall(P, NPC);
-					if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI) { Main.NewText(Language.GetTextValue($"Execute Attack Else"), 220, 100, 247); }
+					AI_RotationNumber = 0;
 					return;
 				}
 				
 
-				/*
-				if (AI_RotationNumber == 1)
-				{
-					VorpalAssault(P, NPC);
-					if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI) { Main.NewText(Language.GetTextValue($"Attack 1"), 220, 100, 247); }
-
-				}
-				if (AI_RotationNumber == 2)
-				{
-					VorpalAssault(P, NPC);
-					if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI) { Main.NewText(Language.GetTextValue($"Attack 2"), 220, 100, 247); }
-
-				}
-				if (AI_RotationNumber == 3)
-				{
-					VorpalAssault(P, NPC);
-					if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI) { Main.NewText(Language.GetTextValue($"Attack 3"), 220, 100, 247); }
-
-				}//Fix this tomorrow. Only works if it's an else statement.. why?
-				
-				*/
-
 			}
-			if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI) { Main.NewText(Language.GetTextValue($"Rotation Number {AI_RotationNumber}"), 220, 100, 247); }
-			if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI) { Main.NewText(Language.GetTextValue($"Timer {AI_Timer}"), 220, 100, 247); }
-			if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI) { Main.NewText(Language.GetTextValue($"State {AI_State}"), 220, 100, 247); }
+			//if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI) { Main.NewText(Language.GetTextValue($"Rotation Number {AI_RotationNumber}"), 220, 100, 247); }
+			//if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI) { Main.NewText(Language.GetTextValue($"Timer {AI_Timer}"), 220, 100, 247); }
+			//if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI) { Main.NewText(Language.GetTextValue($"State {AI_State}"), 220, 100, 247); }
 			
 		}
 
@@ -275,6 +397,7 @@ namespace StarsAbove.NPCs.Vagrant
 					|| other.type == ModContent.ProjectileType<VagrantBowSprite>()
 					|| other.type == ModContent.ProjectileType<VagrantSpearSprite>()
 					|| other.type == ModContent.ProjectileType<VagrantSlamSprite>()
+					|| other.type == ModContent.ProjectileType<VagrantSwordSprite>()
 					))
 					
 				{
@@ -320,49 +443,40 @@ namespace StarsAbove.NPCs.Vagrant
 						NPC.frameCounter = 0;
 					}
 					break;
-				case (float)ActionState.Asleep:
-					// npc.frame.Y is the goto way of changing animation frames. npc.frame starts from the top left corner in pixel coordinates, so keep that in mind.
-					NPC.frame.Y = (int)Frame.Asleep * frameHeight;
-					break;
-				case (float)ActionState.Notice:
-					// Going from Notice to Asleep makes our npc look like it's crouching to jump.
-					if (AI_Timer < 10)
-					{
-						NPC.frame.Y = (int)Frame.Notice * frameHeight;
-					}
-					else
-					{
-						NPC.frame.Y = (int)Frame.Asleep * frameHeight;
-					}
-
-					break;
-				case (float)ActionState.Jump:
-					NPC.frame.Y = (int)Frame.Falling * frameHeight;
-					break;
-				case (float)ActionState.Hover:
-					// Here we have 3 frames that we want to cycle through.
+				case (float)ActionState.Casting:
 					NPC.frameCounter++;
 
 					if (NPC.frameCounter < 10)
 					{
-						NPC.frame.Y = (int)Frame.Flutter1 * frameHeight;
+						NPC.frame.Y = (int)Frame.Prep1 * frameHeight;
 					}
 					else if (NPC.frameCounter < 20)
 					{
-						NPC.frame.Y = (int)Frame.Flutter2 * frameHeight;
+						NPC.frame.Y = (int)Frame.Prep2 * frameHeight;
 					}
 					else if (NPC.frameCounter < 30)
 					{
-						NPC.frame.Y = (int)Frame.Flutter3 * frameHeight;
+						NPC.frame.Y = (int)Frame.Prep3 * frameHeight;
+					}
+					else if (NPC.frameCounter < 40)
+					{
+						NPC.frame.Y = (int)Frame.Prep4 * frameHeight;
+					}
+					else if (NPC.frameCounter < 50)
+					{
+						NPC.frame.Y = (int)Frame.Prep5 * frameHeight;
+					}
+					else if (NPC.frameCounter < 60)
+					{
+						NPC.frame.Y = (int)Frame.Prep6 * frameHeight;
 					}
 					else
 					{
-						NPC.frameCounter = 0;
+						//NPC.frameCounter = 0;
 					}
-
 					break;
-				case (float)ActionState.Fall:
-					NPC.frame.Y = (int)Frame.Falling * frameHeight;
+				case (float)ActionState.Dying:
+					NPC.frame.Y = (int)Frame.Defeat * frameHeight;
 					break;
 			}
 		}
@@ -393,26 +507,12 @@ namespace StarsAbove.NPCs.Vagrant
 			}
 			if (Main.rand.NextBool(5) && NPC.ai[1] < 420f)
 			{
-				for (int i = 0; i < 40; i++)
-				{
-					// Charging dust
-					Vector2 vector = new Vector2(
-						Main.rand.Next(-2048, 2048) * (0.003f * 200) - 10,
-						Main.rand.Next(-2048, 2048) * (0.003f * 200) - 10);
-					Dust d = Main.dust[Dust.NewDust(
-						NPC.Center + vector, 1, 1,
-						269, 0, 0, 255,
-						new Color(1f, 1f, 1f), 1.5f)];
-					d.velocity = -vector / 16;
-					d.velocity -= NPC.velocity / 8;
-					d.noLight = true;
-					d.noGravity = true;
-				}
+				
 				// This dust spawn adapted from the Pillar death code in vanilla.
 				for (int dustNumber = 0; dustNumber < 3; dustNumber++)
 				{
-					Dust dust = Main.dust[Dust.NewDust(NPC.Left, NPC.width, NPC.height / 2, 242, 0f, 0f, 0, default(Color), 1f)];
-					dust.position = NPC.Center + Vector2.UnitY.RotatedByRandom(4.1887903213500977) * new Vector2(NPC.width * 1.5f, NPC.height * 1.1f) * 0.8f * (0.8f + Main.rand.NextFloat() * 0.2f);
+					Dust dust = Main.dust[Dust.NewDust(NPC.Left, NPC.width, NPC.height / 2, DustID.FireworkFountain_Green, 0f, 0f, 0, default(Color), 0.4f)];
+					dust.position = NPC.Center + Vector2.UnitY.RotatedByRandom(4.1887903213500977) * new Vector2(NPC.width, NPC.height) * 0.8f * (0.8f + Main.rand.NextFloat() * 0.2f);
 					dust.velocity.X = 0f;
 					dust.velocity.Y = -Math.Abs(dust.velocity.Y - (float)dustNumber + NPC.velocity.Y - 4f) * 3f;
 					dust.noGravity = true;
@@ -425,7 +525,7 @@ namespace StarsAbove.NPCs.Vagrant
 			{
 				for (int d = 0; d < 305; d++)
 				{
-					Dust.NewDust(NPC.Center, 0, 0, 21, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+					Dust.NewDust(NPC.Center, 0, 0, DustID.FireworkFountain_Green, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
 				}
 
 				DownedBossSystem.downedVagrant = true;
@@ -444,6 +544,70 @@ namespace StarsAbove.NPCs.Vagrant
 			}
 			return;
 		}
+		public override void ModifyNPCLoot(NPCLoot npcLoot)
+		{
+			// Do NOT misuse the ModifyNPCLoot and OnKill hooks: the former is only used for registering drops, the latter for everything else
+			//Chance for a Prism
+			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.SpatialPrism>(), 4));
+
+			// Add the treasure bag using ItemDropRule.BossBag (automatically checks for expert mode)
+			//npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<VagrantBossBag>()));
+
+			// Trophies are spawned with 1/10 chance
+			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.BossLoot.VagrantTrophyItem>(), 10));
+
+			// ItemDropRule.MasterModeCommonDrop for the relic
+			npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<Items.Placeable.BossLoot.VagrantBossRelicItem>()));
+
+			// ItemDropRule.MasterModeDropOnAllPlayers for the pet
+			//npcLoot.Add(ItemDropRule.MasterModeDropOnAllPlayers(ModContent.ItemType<MinionBossPetItem>(), 4));
+
+			// All our drops here are based on "not expert", meaning we use .OnSuccess() to add them into the rule, which then gets added
+			LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
+			LeadingConditionRule ExpertRule = new LeadingConditionRule(new Conditions.IsExpert());
+
+			// Notice we use notExpertRule.OnSuccess instead of npcLoot.Add so it only applies in normal mode
+			// Boss masks are spawned with 1/7 chance
+			//notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<MinionBossMask>(), 7));
+
+			notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.SpatialPrism>(), 4));
+
+			// This part is not required for a boss and is just showcasing some advanced stuff you can do with drop rules to control how items spawn
+			// We make 12-15 ExampleItems spawn randomly in all directions, like the lunar pillar fragments. Hereby we need the DropOneByOne rule,
+			// which requires these parameters to be defined
+			int itemType = ModContent.ItemType<Items.Materials.EnigmaticDust>();
+			var parameters = new DropOneByOne.Parameters()
+			{
+				ChanceNumerator = 1,
+				ChanceDenominator = 1,
+				MinimumStackPerChunkBase = 1,
+				MaximumStackPerChunkBase = 1,
+				MinimumItemDropsCount = 3,
+				MaximumItemDropsCount = 6,
+			};
+
+			notExpertRule.OnSuccess(new DropOneByOne(itemType, parameters));
+			var parametersExpert = new DropOneByOne.Parameters()
+			{
+				ChanceNumerator = 1,
+				ChanceDenominator = 1,
+				MinimumStackPerChunkBase = 1,
+				MaximumStackPerChunkBase = 1,
+				MinimumItemDropsCount = 4,
+				MaximumItemDropsCount = 12,
+			};
+
+			ExpertRule.OnSuccess(new DropOneByOne(itemType, parametersExpert));
+
+			// Finally add the leading rule
+			npcLoot.Add(ExpertRule);
+			npcLoot.Add(notExpertRule);
+		}
+		public override void OnKill()
+		{
+			NPC.SetEventFlagCleared(ref DownedBossSystem.downedVagrant, -1);
+
+		}
 		private void SpawnAnimation()
 		{
 			//This will play the "superman landing" animation, knock back all players, and begin the fight. Note that unlike the old Vagrant this one can be hit.
@@ -451,6 +615,20 @@ namespace StarsAbove.NPCs.Vagrant
 
 			//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
 			Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, 0, 0, ModContent.ProjectileType<VagrantSlamSprite>(), 0, 0, Main.myPlayer);
+			
+			for (int i = 0; i < Main.maxPlayers; i++)
+			{
+				Player player = Main.player[i];
+				if (player.active && player.Distance(NPC.Center) < 300)
+				{
+					player.velocity = Vector2.Normalize(NPC.Center - player.Center) * -10f;
+				}
+			}
+
+
+			NPC.position.X = Main.player[NPC.target].position.X;
+			NPC.position.Y = Main.player[NPC.target].position.Y-160;
+			NPC.netUpdate = true;
 
 			AI_State = (float)ActionState.Idle;
 		}
@@ -467,76 +645,16 @@ namespace StarsAbove.NPCs.Vagrant
 		private void Casting()
 		{
 			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
-			NPC.ai[3]--;
+			NPC.localAI[3]++;
 			NPC.direction = (Main.player[NPC.target].Center.X < NPC.Center.X).ToDirectionInt();//Face the target.
-			modPlayer.CastTime = (int)NPC.ai[3];
+			modPlayer.CastTime = (int)NPC.localAI[3];
+			modPlayer.CastTimeMax = (int)NPC.ai[3];
 		}
 		private void PersistentCast()
 		{
 			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
 		}
-
-		private void FallAsleep()
-		{
-			// TargetClosest sets npc.target to the player.whoAmI of the closest player.
-			// The faceTarget parameter means that npc.direction will automatically be 1 or -1 if the targeted player is to the right or left.
-			// This is also automatically flipped if npc.confused.
-			NPC.TargetClosest(true);
-
-			// Now we check the make sure the target is still valid and within our specified notice range (500)
-			if (NPC.HasValidTarget && Main.player[NPC.target].Distance(NPC.Center) < 500f)
-			{
-				// Since we have a target in range, we change to the Notice state. (and zero out the Timer for good measure)
-				AI_State = (float)ActionState.Notice;
-				AI_Timer = 0;
-			}
-		}
-
-		private void Notice()
-		{
-			// If the targeted player is in attack range (250).
-			if (Main.player[NPC.target].Distance(NPC.Center) < 250f)
-			{
-				// Here we use our Timer to wait .33 seconds before actually jumping. In FindFrame you'll notice AI_Timer also being used to animate the pre-jump crouch
-				AI_Timer++;
-
-				if (AI_Timer >= 20)
-				{
-					AI_State = (float)ActionState.Jump;
-					AI_Timer = 0;
-				}
-			}
-			else
-			{
-				NPC.TargetClosest(true);
-
-				if (!NPC.HasValidTarget || Main.player[NPC.target].Distance(NPC.Center) > 500f)
-				{
-					// Out targeted player seems to have left our range, so we'll go back to sleep.
-					AI_State = (float)ActionState.Asleep;
-					AI_Timer = 0;
-				}
-			}
-		}
-
-		private void Jump()
-		{
-			AI_Timer++;
-
-			if (AI_Timer == 1)
-			{
-				// We apply an initial velocity the first tick we are in the Jump frame. Remember that -Y is up.
-				NPC.velocity = new Vector2(NPC.direction * 2, -10f);
-			}
-			else if (AI_Timer > 40)
-			{
-				// after .66 seconds, we go to the hover state. //TODO, gravity?
-				AI_State = (float)ActionState.Hover;
-				AI_Timer = 0;
-			}
-		}
-
 
 	}
 }

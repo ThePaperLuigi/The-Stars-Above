@@ -47,7 +47,7 @@ namespace StarsAbove.UI.StarfarerMenu
 		private UIImageButton IdleDialogue;
 		private UIImageButton BossDialogue;
 		private UIImageButton WeaponDialogue;
-		private UIImageButton PromptDialogue;
+		private UIImageButton VNDialogue;
 
 		private UIImageButton leftButton;
 		private UIImageButton rightButton;
@@ -149,7 +149,7 @@ namespace StarsAbove.UI.StarfarerMenu
 			stellarArray.OnMouseOut += HoverOff;
 
 			voyage = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Voyage"));
-			//voyage.OnClick += voyageConfirm;
+			voyage.OnClick += VoyageConfirm;
 			voyage.Width.Set(74, 0f);
 			voyage.Height.Set(50, 0f);
 			voyage.Left.Set(404, 0f);
@@ -210,12 +210,12 @@ namespace StarsAbove.UI.StarfarerMenu
 			WeaponDialogue.Left.Set(774, 0f);
 			WeaponDialogue.Top.Set(236, 0f);
 
-			PromptDialogue = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/PromptDialogue"));
-			PromptDialogue.OnClick += PromptDialogueConfirm;
-			PromptDialogue.Width.Set(74, 0f);
-			PromptDialogue.Height.Set(50, 0f);
-			PromptDialogue.Left.Set(844, 0f);
-			PromptDialogue.Top.Set(236, 0f);
+			VNDialogue = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/VNDialogue"));
+			VNDialogue.OnClick += VNDialogueConfirm;
+			VNDialogue.Width.Set(74, 0f);
+			VNDialogue.Height.Set(50, 0f);
+			VNDialogue.Left.Set(844, 0f);
+			VNDialogue.Top.Set(236, 0f);
 
 			HoverArmorArea = new UIElement();
 			HoverArmorArea.Left.Set(323, 0f);
@@ -413,7 +413,9 @@ namespace StarsAbove.UI.StarfarerMenu
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveListNumber = 1;
 
 		}
-		private void PromptDialogueConfirm(UIMouseEvent evt, UIElement listeningElement)
+		
+
+		private void VNDialogueConfirm(UIMouseEvent evt, UIElement listeningElement)
 		{
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive)
 				return;
@@ -482,6 +484,28 @@ namespace StarsAbove.UI.StarfarerMenu
 
 			// We can do stuff in here!
 		}
+		private void VoyageConfirm(UIMouseEvent evt, UIElement listeningElement)
+		{
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().astrolabeIntroDialogue != 2 || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive)
+				return;
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive = false;
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaUIOpacity = 0;
+			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = true;
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaDialogueScrollNumber = 0;
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaDialogueScrollTimer = 0;
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollNumber = 0;
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive = false;
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().animatedStarfarerMenuDialogue = "";
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "";
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = false;
+			//Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().animatedDescription = "";
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollNumber = 0;
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;
+
+
+			// We can do stuff in here!
+		}
 		private void StellarArrayConfirm(UIMouseEvent evt, UIElement listeningElement)
 		{
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive)
@@ -524,33 +548,10 @@ namespace StarsAbove.UI.StarfarerMenu
 			}
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveChosenList == 1)
 			{
-				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveListNumber == 19)
-				{
-					if (modPlayer.chosenStarfarer == 1)
-					{
-						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueScrollTimer = 0;
-						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueScrollNumber = 0;
-						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneID = 9;
-						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneProgression = 0;
-						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().VNDialogueActive = true;
-					}
-					if (modPlayer.chosenStarfarer == 2)
-					{
-						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueScrollTimer = 0;
-						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueScrollNumber = 0;
-						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneID = 10;
-						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneProgression = 0;
-						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().VNDialogueActive = true;
-					}
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenDialogue = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().BossArchiveList[Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveListNumber].DialogueID;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
 
-				}
-				else
-                {
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenDialogue = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().BossArchiveList[Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveListNumber].DialogueID;
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
-				}
-				
 			}
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveChosenList == 2)
 			{
@@ -558,8 +559,19 @@ namespace StarsAbove.UI.StarfarerMenu
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
 			}
-			
-			
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveChosenList == 3)
+			{
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueScrollTimer = 0;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueScrollNumber = 0;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneProgression = 0;
+
+
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneID = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().VNArchiveList[Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveListNumber].DialogueID;
+
+
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().VNDialogueActive = true;
+			}
+
 			#endregion
 
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive = false;
@@ -685,7 +697,7 @@ namespace StarsAbove.UI.StarfarerMenu
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.ArchiveHover.Asphodene");
 
 			}
-			else
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 			{
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.ArchiveHover.Eridani");
 
@@ -703,16 +715,34 @@ namespace StarsAbove.UI.StarfarerMenu
 				return;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollNumber = 0;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)                                                     //|
-			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.VoyageHover.Asphodene");
 
+			if(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().astrolabeIntroDialogue != 2)
+            {
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
+				{
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.Locked.Asphodene");
+				}
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
+				{
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.Locked.Eridani");
+
+				}
 			}
 			else
-			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.VoyageHover.Eridani");
+            {
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)                                                     //|
+				{
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.VoyageHover.Asphodene");
 
+				}
+				else
+				{
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.VoyageHover.Eridani");
+
+				}
 			}
+
+				
 
 
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
@@ -732,7 +762,7 @@ namespace StarsAbove.UI.StarfarerMenu
 				{
 					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.Locked.Asphodene");
 				}
-				else
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 				{
 					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.Locked.Eridani");
 
@@ -745,7 +775,7 @@ namespace StarsAbove.UI.StarfarerMenu
 					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.NovaHover.Asphodene");
 
 				}
-				else
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 				{
 					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.NovaHover.Eridani");
 
@@ -991,6 +1021,9 @@ namespace StarsAbove.UI.StarfarerMenu
 					zero.Y -= ((float)vignette.Height * width - (float)Main.screenHeight) * 0.5f;
 				}
 			}
+
+
+
 			spriteBatch.Draw(vignette, Vector2.Zero, (Rectangle?)null, Color.White * (modPlayer.starfarerMenuUIOpacity), 0f, Vector2.Zero, width, (SpriteEffects)0, 0f);
 
 
@@ -1684,7 +1717,7 @@ namespace StarsAbove.UI.StarfarerMenu
 				}
 				if (modPlayer.archiveChosenList == 3)
 				{
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/PromptSelected"), hitbox, Color.White * (modPlayer.starfarerMenuUIOpacity));
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/VNSelected"), hitbox, Color.White * (modPlayer.starfarerMenuUIOpacity));
 				}
 			}
 			
@@ -1774,6 +1807,7 @@ namespace StarsAbove.UI.StarfarerMenu
 				IdleDialogue.Remove();
 				BossDialogue.Remove();
 				WeaponDialogue.Remove();
+				VNDialogue.Remove();
 			}
 			else
 			{
@@ -1781,6 +1815,7 @@ namespace StarsAbove.UI.StarfarerMenu
 				area.Append(IdleDialogue);
 				area.Append(BossDialogue);
 				area.Append(WeaponDialogue);
+				area.Append(VNDialogue);
 				if(modPlayer.canViewArchive)
                 {
 					area.Append(confirmDialogue);
@@ -1800,7 +1835,7 @@ namespace StarsAbove.UI.StarfarerMenu
 			
 			if(voyage.IsMouseHovering)
             {
-				modPlayer.CelestialCartographyActive = true;
+				//modPlayer.CelestialCartographyActive = true;
             }
 
 			if(modPlayer.archiveActive)

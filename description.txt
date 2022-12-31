@@ -8,12 +8,16 @@ This mod includes:
    lines of dialogue and custom UI to support it
 - Modular, upgradable ultimate abilities that scale
    with boss progression
+- Explore many unique premade locations throughout
+   the galaxy with help from Subworld Library
 - 24 custom unlockable passive abilities present in a
    unique weight-based system
-- 50+ special weapons that have malleable damage types,
+- 70+ special weapons that have malleable damage types,
    alternate abilities, charged attacks, etc.
 - 6 unique bosses each with their own special
    cast-centric AI
+- And much more!
+
 [c/D64935:*** Requires Subworld Library! ***]
 Full description below...
 
@@ -44,48 +48,11 @@ Defeat six powerful unqiue bosses boasting a custom AI system:
 Casted Attacks. Adapt and learn to defeat these powerful foes!
 
 The adventure doesn't stop with your home planet. Journey
-to the stars above, exploring ancient ruins, alien relics,
-and more.
+to the stars above, exploring ancient ruins, collecting alien
+relics, and more.
 
 This mod grants nearly limitless player agency; you decide
 how you want to play.
-
-[c/BC84FF:WEAPONS]
-
-Along with the Stellar Array mechanic, there are a myriad of
-new weapons exclusive to your respective Aspect carefully made
-with unique gameplay in mind. This mod embraces quality over
-quantity; each weapon can be qualified as a legendary
-artifact by itself, and you may recognize some of them...
-
-[c/BC84FF:BOSSES]
-
-Once you have defeated the Wall of Flesh, you can challenge The Vagrant of Space and Time.
-Defeating this boss will unlock the next step of your powers, the utilization of Stellar Novas.
-
-During your journey, square off against legendary foes such as Nalhaun, the Burnished King,
-Penthesilea, the Witch of Ink, and Arbitration.
-Prepare yourself for their myriad attacks, and erase them from this world!
-
-At the end of your journey, The Stars Above has one last challenge for you: The Warrior of Light.
-This fight, one of the most unique Terraria bosses ever, will pit you against the pinnacle of heroes, testing
-your strength and willpower. It will push you to your Limit- and beyond.
-
-Once you've bested all the bosses of the Stars Above, a new foe will make itself known.
-Prepare for the fight of your life...
-
-In Expert Mode, prepare for a challenge that will test every ounce of your abilities.
-
-[c/BC84FF:CROSSOVER CONTENT]
-
-For enjoyers of the Calamity Mod:
-Several weapons are custom-tailored to suit the post-Moon Lord endgame the Calamity Mod offers.
-Furthermore, Stellar Novas will scale automatically to Calamity progress.
-
-Custom dialogue is present for Thorium bosses as well!
-Even if the mod does not support a modded boss, there will still be dialogue!
-
-[c/BC84FF:EXTRA]
 
 Thank you to Subworld Library and Scalar's Structurizer for resources used to create subworlds!
 
@@ -93,7 +60,8 @@ This mod is meant to be utilized in tandem with other mods to enhance the gamepl
 
 Fully compatible with multiplayer, but there may be some desync issues.
 Compatible with saves, but highly recommended to start a new playthrough.
-If any incompatibilities arise, they will be mentioned ingame.
+
+For a complete description, please defer to the mod's Discord or Steam Workshop.
 
 Please consider donating to The Stars Above if you're able!
 [c/ECAD1B:https://www.patreon.com/starsabove]

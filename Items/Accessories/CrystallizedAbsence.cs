@@ -3,15 +3,15 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Items.Materials;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Accessories
 {
-    public class CrystallizedAbsence : ModItem
+    public class CrystallizedAbsence : StargazerRelic
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Crystallized Absence");
-
-			Tooltip.SetDefault("[c/2DD2FE:Stargazer Relic]" +//In the future, only one Dungeon accessory can be worn at a time. (There's only one for now.)
+			Tooltip.SetDefault("[c/2DD2FE:Stargazer Relic]" +
 				"\nMax HP is reduced by 300 and defense is reduced by 20, but damage is doubled" +
 				"\nOnly active when unmodified Max HP is 400 or higher" +
 				"\n[c/ADEEFF:Only one Stargazer Relic can be equipped at a time]" +
@@ -21,11 +21,11 @@ namespace StarsAbove.Items.Accessories
 		}
 
 		public override void SetDefaults() {
-			Item.width = 28;
-			Item.height = 28;
+			Item.width = 32;
+			Item.height = 32;
 			Item.accessory = true;
-			Item.value = Item.sellPrice(silver: 30);
-			Item.rare = ItemRarityID.Cyan;
+			Item.value = Item.sellPrice(gold: 10);
+			Item.rare = ModContent.GetInstance<StellarRarity>().Type; // Custom Rarity
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual) {
@@ -45,7 +45,7 @@ namespace StarsAbove.Items.Accessories
 
 		public override void AddRecipes() {
 			CreateRecipe(1)
-				.AddIngredient(ItemType<InertShard>(), 3)
+				.AddIngredient(ItemType<InertShard>(), 12)
 				.AddTile(TileID.Anvils)
 				.Register();
 		}

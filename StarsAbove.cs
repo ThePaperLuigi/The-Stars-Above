@@ -47,6 +47,8 @@ namespace StarsAbove
 				SkyManager.Instance["StarsAbove:Void"] = new VoidSky();
 				//Filters.Scene["StarsAbove:EverlastingLight"] = new Filter(new ScreenShaderData("FilterMoonLord"), EffectPriority.Low);
 				SkyManager.Instance["StarsAbove:EverlastingLight"] = new EverlastingLightSky();
+				SkyManager.Instance["StarsAbove:CorvusSky"] = new CorvusSky();
+
 				SkyManager.Instance["StarsAbove:ObservatorySkyDay"] = new ObservatorySkyDay();
 				SkyManager.Instance["StarsAbove:ObservatorySkyNight"] = new ObservatorySkyNight();
 
@@ -191,7 +193,7 @@ namespace StarsAbove
 					"$Mods.StarsAbove.BossChecklist.Penthesilea.DespawnMessage" //Despawn Message
 					); //Boss Portrait
 
-				bossChecklist.Call(
+				/*bossChecklist.Call(
 					"AddBoss", //Entry Type
 					this, //Mod Instance
 					"$Mods.StarsAbove.NPCName.Arbitration", //Boss Name
@@ -204,7 +206,7 @@ namespace StarsAbove
 					"$Mods.StarsAbove.BossChecklist.Arbitration.SpawnInfo", //Spawn Item
 					"$Mods.StarsAbove.BossChecklist.Arbitration.DespawnMessage" //Despawn Message
 					); //Boss Portrait
-
+				*/
 				bossChecklist.Call(
 					"AddBoss", //Entry Type
 					this, //Mod Instance

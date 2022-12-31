@@ -52,7 +52,7 @@ namespace StarsAbove.Projectiles.Bosses.Vagrant
 		{
 			if(firstSpawn)
             {
-				Projectile.scale = 0.6f;
+				Projectile.scale = 0.8f;
 				firstSpawn = false;
             }
 			
@@ -61,7 +61,7 @@ namespace StarsAbove.Projectiles.Bosses.Vagrant
 			//projectile.timeLeft = 10;
 			
 			
-			Projectile.scale -= 0.005f;
+			Projectile.scale -= 0.013f;
 			if (Projectile.alpha > 255)
             {
 				Projectile.Kill();

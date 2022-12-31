@@ -20,8 +20,8 @@ namespace StarsAbove.Biomes
 
 		// Select all the scenery
 		//public override ModWaterStyle WaterStyle => ModContent.Find<ModWaterStyle>("StarsAbove/ExampleWaterStyle"); // Sets a water style for when inside this biome
-		public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle => ModContent.Find<ModSurfaceBackgroundStyle>("Backgrounds/SeaOfStarsBG");
-		public override CaptureBiome.TileColorStyle TileColorStyle => CaptureBiome.TileColorStyle.Crimson;
+		public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle => ModContent.Find<ModSurfaceBackgroundStyle>("StarsAbove/SeaOfStarsBackgroundStyle");
+		public override CaptureBiome.TileColorStyle TileColorStyle => CaptureBiome.TileColorStyle.Normal;
 
 		// Select Music
 		public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/MareLamentorum");
@@ -34,7 +34,13 @@ namespace StarsAbove.Biomes
 		
 		// Calculate when the biome is active.
 		public override bool IsBiomeActive(Player player) {
-			
+			if(SubworldSystem.IsActive<CygnusAsteroids>() 
+				|| SubworldSystem.IsActive<MiningStationAries>() 
+				|| SubworldSystem.IsActive<Serpens>() 
+				|| SubworldSystem.IsActive<Scorpius>())
+            {
+				return true;
+            }
 			return false;
 		}
 	}

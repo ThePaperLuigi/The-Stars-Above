@@ -118,6 +118,9 @@ namespace StarsAbove
 		[Tooltip("$Mods.StarsAbove.Config.EnableAprilFools.Tooltip")]
 		public bool EnableAprilFools;
 
+		[Label("$Mods.StarsAbove.Config.DisableWeaponCutIn.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.DisableWeaponCutIn.Tooltip")]
+		public bool DisableWeaponCutIns;
 
 		//[Label("Show mod origin in tooltip")]
 		//public bool ShowModOriginTooltip;
@@ -128,6 +131,7 @@ namespace StarsAbove
 			// We maintain both ExampleUI.visible and ShowCoinUI as separate values so ShowCoinUI can act as a default while ExampleUI.visible can change within a play session.
 			UI.StarfarerMenu.StarfarerMenu.ShadesVisible = EnableAprilFools;
 			UI.StellarNova.StellarNovaCutIn.ShadesVisible = EnableAprilFools;
+			UI.EmotionGauge.AnimationDisabled = DisableWeaponCutIns;
 
 			UI.Starfarers.StarfarerPrompt.PromptPos = PromptLoc;
 			//UI.StellarNovaGauge.NovaGaugePos = NovaGaugeLoc;
@@ -152,6 +156,8 @@ namespace StarsAbove
 				SceneEffects.SuistrumeAudioEasterEgg.setPriority = SceneEffectPriority.BossHigh + 1;
 				SceneEffects.TheOnlyThingIKnowForRealAudio.setPriority = SceneEffectPriority.BossHigh + 1;
 				SceneEffects.TheOnlyThingIKnowForRealAudioLow.setPriority = SceneEffectPriority.BossHigh + 1;
+				SceneEffects.ManifestationAudio.setPriority = SceneEffectPriority.BossHigh + 1;
+
 
 			}
 			//StarsAbove.sharedAudio = EnableSuistrumeAudio;
