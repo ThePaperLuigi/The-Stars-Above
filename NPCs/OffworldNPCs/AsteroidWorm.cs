@@ -36,7 +36,7 @@ namespace StarsAbove.NPCs.OffworldNPCs
 		{
 			// Head is 10 defence, body 20, tail 30.
 			NPC.CloneDefaults(NPCID.DiggerHead);
-			NPC.defense = 30;
+			NPC.defense = 0;
 			
 			NPC.aiStyle = -1;
 		}
@@ -134,7 +134,7 @@ namespace StarsAbove.NPCs.OffworldNPCs
 		public override void SetDefaults()
 		{
 			NPC.CloneDefaults(NPCID.DiggerBody);
-			NPC.defense = 30;
+			NPC.defense =  0;
 			NPC.aiStyle = -1;
 		}
 

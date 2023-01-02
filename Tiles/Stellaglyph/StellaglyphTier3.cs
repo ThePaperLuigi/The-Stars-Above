@@ -50,6 +50,19 @@ namespace StarsAbove.Tiles.Stellaglyph
 
 			base.NearbyEffects(i, j, closer);
 		}
+		public override bool RightClick(int i, int j)
+		{
+			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = true;
+			return true;
+		}
+		public override void MouseOver(int i, int j)
+		{
+			int whoAmI = 0;
+			Player player = Main.player[whoAmI];
+			player.noThrow = 2;
+			player.cursorItemIconEnabled = true;
+			player.cursorItemIconID = Mod.Find<ModItem>("StellaglyphTier3").Type;
+		}
 		public override void Load()
 		{
 			if (!Main.dedServ)

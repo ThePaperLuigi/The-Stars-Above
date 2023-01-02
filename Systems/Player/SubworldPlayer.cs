@@ -339,152 +339,160 @@ namespace StarsAbove
         }
         public override void PostUpdateBuffs()
         {
-            
-
-            if (Player.InModBiome(ModContent.GetInstance<LyraBiome>()))
+            if (SubworldSystem.Current == null)
             {
-                //Make sure the player can't do what's not allowed:
-                Player.AddBuff(BuffType<Superimposed>(), 10);
-                Player.AddBuff(BuffType<AnomalyBuff>(), 10);
+                //If not in a subworld
 
-                Player.noBuilding = true;
-                Lighting.AddLight(Player.Center, TorchID.Pink);
-
-                //Lyra has really low gravity.
-                Player.gravity -= 0.35f;
-
-                //The anomaly's evil approaches!
-                anomalyTimer++;
-
-                if(anomalyTimer > 7200)
-                {
-                    Player.AddBuff(BuffType<ApproachingEvilBuff>(), 10);
-
-                }
             }
             else
             {
-                anomalyTimer = 0;
-            }
-            if (Player.InModBiome(ModContent.GetInstance <FriendlySpaceBiome>()))
-            {
-                //Make sure the player can't do what's not allowed:
-                Player.AddBuff(BuffType<Superimposed>(), 10);
-                Player.noBuilding = true;
-
-                //Will change if new friendly space places are added.
-                if (!NPC.AnyNPCs(ModContent.NPCType<NPCs.TownNPCs.Garridine>()) && Player.velocity.Y == 0)//Make sure Garridine isn't already there, and also check if you're standing.
+                if (Player.InModBiome(ModContent.GetInstance<LyraBiome>()))
                 {
-                    int index = NPC.NewNPC(null, (int)Player.Center.X + 1150, (int)Player.Center.Y, ModContent.NPCType<Garridine>());
-                    NPC GarridineNPC = Main.npc[index];
+                    //Make sure the player can't do what's not allowed:
+                    Player.AddBuff(BuffType<Superimposed>(), 10);
+                    Player.AddBuff(BuffType<AnomalyBuff>(), 10);
 
-                    // Finally, syncing, only sync on server and if the NPC actually exists (Main.maxNPCs is the index of a dummy NPC, there is no point syncing it)
-                    if (Main.netMode == NetmodeID.Server && index < Main.maxNPCs)
+                    Player.noBuilding = true;
+                    Lighting.AddLight(Player.Center, TorchID.Pink);
+
+                    //Lyra has really low gravity.
+                    Player.gravity -= 0.35f;
+
+                    //The anomaly's evil approaches!
+                    anomalyTimer++;
+
+                    if (anomalyTimer > 7200)
                     {
-                        NetMessage.SendData(MessageID.SyncNPC, number: index);
+                        Player.AddBuff(BuffType<ApproachingEvilBuff>(), 10);
+
+                    }
+                }
+                else
+                {
+                    anomalyTimer = 0;
+                }
+                if (Player.InModBiome(ModContent.GetInstance<FriendlySpaceBiome>()))
+                {
+                    //Make sure the player can't do what's not allowed:
+                    Player.AddBuff(BuffType<Superimposed>(), 10);
+                    Player.noBuilding = true;
+
+                    //Will change if new friendly space places are added.
+                    if (!NPC.AnyNPCs(ModContent.NPCType<NPCs.TownNPCs.Garridine>()) && Player.velocity.Y == 0)//Make sure Garridine isn't already there, and also check if you're standing.
+                    {
+                        int index = NPC.NewNPC(null, (int)Player.Center.X + 1150, (int)Player.Center.Y, ModContent.NPCType<Garridine>());
+                        NPC GarridineNPC = Main.npc[index];
+
+                        // Finally, syncing, only sync on server and if the NPC actually exists (Main.maxNPCs is the index of a dummy NPC, there is no point syncing it)
+                        if (Main.netMode == NetmodeID.Server && index < Main.maxNPCs)
+                        {
+                            NetMessage.SendData(MessageID.SyncNPC, number: index);
+                        }
+
+                    }
+
+
+                    //Fall too far into the void, and you'll be launched back up while taking heavy DoT.
+                    if ((int)(Player.Center.Y / 16) > 500)
+                    {
+                        Player.AddBuff(BuffType<SpatialBurn>(), 120);
+
+                        Player.velocity = new Vector2(Player.velocity.X, -17);
+                    }
+                }
+                if (Player.InModBiome(ModContent.GetInstance<SeaOfStarsBiome>()))
+                {
+                    //Make sure the player can't do what's not allowed:
+                    Player.AddBuff(BuffType<Superimposed>(), 10);
+                    Player.noBuilding = true;
+
+                    //Space gravity!
+                    Player.gravity -= 0.3f;
+
+                    //Fall too far into the void, and you'll be launched back up while taking heavy DoT.
+                    if ((int)(Player.Center.Y / 16) > 500)
+                    {
+                        Player.AddBuff(BuffType<SpatialBurn>(), 120);
+
+                        Player.velocity = new Vector2(Player.velocity.X, -17);
+                    }
+                }
+                if (Player.InModBiome(ModContent.GetInstance<CorvusBiome>()))
+                {
+                    //Make sure the player can't do what's not allowed:
+
+                    //Add this later.
+                    Player.AddBuff(BuffType<Superimposed>(), 10);
+                    Player.noBuilding = true;
+
+                    Player.AddBuff(BuffType<ArdorInfluence>(), 10);
+
+
+
+
+                }
+                if (Player.InModBiome(ModContent.GetInstance<BleachedWorldBiome>()))
+                {
+                    //Make sure the player can't do what's not allowed:
+                    Player.AddBuff(BuffType<Superimposed>(), 10);
+                    Player.noBuilding = true;
+
+                    //Space gravity!
+                    //Player.gravity -= 0.3f;
+
+                    if ((int)(Player.Center.Y / 16) < 100)
+                    {
+                        //Player.AddBuff(BuffType<SpatialBurn>(), 120);
+
+                        Player.velocity = new Vector2(Player.velocity.X, +17);
                     }
 
                 }
-
-
-                //Fall too far into the void, and you'll be launched back up while taking heavy DoT.
-                if ((int)(Player.Center.Y / 16) > 500)
+                if (SubworldSystem.IsActive<Tucana>())
                 {
-                    Player.AddBuff(BuffType<SpatialBurn>(), 120);
+                    //Make sure the player can't do what's not allowed:
+                    Player.AddBuff(BuffType<Superimposed>(), 10);
+                    Player.noBuilding = true;
 
-                    Player.velocity = new Vector2(Player.velocity.X, -17);
-                }
-            }
-            if (Player.InModBiome(ModContent.GetInstance<SeaOfStarsBiome>()))
-            {
-                //Make sure the player can't do what's not allowed:
-                Player.AddBuff(BuffType<Superimposed>(), 10);
-                Player.noBuilding = true;
+                    //Space gravity!
+                    Player.gravity -= 0.1f;
 
-                //Space gravity!
-                Player.gravity -= 0.3f;
-               
-                //Fall too far into the void, and you'll be launched back up while taking heavy DoT.
-                if ((int)(Player.Center.Y / 16) > 500)
-                {
-                    Player.AddBuff(BuffType<SpatialBurn>(), 120);
-
-                    Player.velocity = new Vector2(Player.velocity.X, -17);
-                }
-            }
-            if (Player.InModBiome(ModContent.GetInstance<CorvusBiome>()))
-            {
-                //Make sure the player can't do what's not allowed:
-
-                //Add this later.
-                Player.AddBuff(BuffType<Superimposed>(), 10);
-                Player.noBuilding = true;
-
-                Player.AddBuff(BuffType<ArdorInfluence>(), 10);
-
-
-
-                
-            }
-            if (Player.InModBiome(ModContent.GetInstance<BleachedWorldBiome>()))
-            {
-                //Make sure the player can't do what's not allowed:
-                Player.AddBuff(BuffType<Superimposed>(), 10);
-                Player.noBuilding = true;
-
-                //Space gravity!
-                //Player.gravity -= 0.3f;
-
-                if ((int)(Player.Center.Y / 16) < 100)
-                {
-                    //Player.AddBuff(BuffType<SpatialBurn>(), 120);
-
-                    Player.velocity = new Vector2(Player.velocity.X, +17);
-                }
-
-            }
-            if (SubworldSystem.IsActive<Tucana>())
-            {
-                //Make sure the player can't do what's not allowed:
-                Player.AddBuff(BuffType<Superimposed>(), 10);
-                Player.noBuilding = true;
-
-                //Space gravity!
-                Player.gravity -= 0.1f;
-
-
-            }
-            //Observatory.
-            if (SubworldSystem.IsActive<Observatory>())
-            {
-                Player.AddBuff(BuffType<Superimposed>(), 10);
-                Player.noBuilding = true;
-                Main.cloudBGActive = 1f;
-
-                if ((int)(Player.Center.Y / 16) > 415)
-                {
-                    Player.velocity = new Vector2(Player.velocity.X, -21);
 
                 }
-
-                Player.gravity -= gravityMod;
-            }
-
-            //Final boss arena.
-            if (SubworldSystem.IsActive<EternalConfluence>())
-            {
-                Player.AddBuff(BuffType<Superimposed>(), 10);
-                Player.noBuilding = true;
-                Main.cloudBGActive = 1f;
-
-                if ((int)(Player.Center.Y / 16) < 385)
+                //Observatory.
+                if (SubworldSystem.IsActive<Observatory>())
                 {
-                    //player.AddBuff(BuffType<SpatialBurn>(), 120);
+                    Player.AddBuff(BuffType<Superimposed>(), 10);
+                    Player.noBuilding = true;
+                    Main.cloudBGActive = 1f;
 
-                    Player.velocity = new Vector2(Player.velocity.X, 6);
+                    if ((int)(Player.Center.Y / 16) > 415)
+                    {
+                        Player.velocity = new Vector2(Player.velocity.X, -21);
 
+                    }
+
+                    Player.gravity -= gravityMod;
+                }
+
+                //Final boss arena.
+                if (SubworldSystem.IsActive<EternalConfluence>())
+                {
+                    Player.AddBuff(BuffType<Superimposed>(), 10);
+                    Player.noBuilding = true;
+                    Main.cloudBGActive = 1f;
+
+                    if ((int)(Player.Center.Y / 16) < 385)
+                    {
+                        //player.AddBuff(BuffType<SpatialBurn>(), 120);
+
+                        Player.velocity = new Vector2(Player.velocity.X, 6);
+
+                    }
                 }
             }
+
+            
 
             base.PostUpdateBuffs();
         }

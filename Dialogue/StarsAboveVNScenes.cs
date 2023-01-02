@@ -3798,7 +3798,7 @@ namespace StarsAbove
 
 
                     //Who's name should be in the dialogue box?
-                    name = "Eridani";
+                    name = "Yojimbo";
 
 
                     //What is the dialogue?

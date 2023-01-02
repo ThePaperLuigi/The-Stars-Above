@@ -165,7 +165,7 @@ namespace StarsAbove
 					"$Mods.StarsAbove.BossChecklist.VagrantOfSpaceAndTime.SpawnInfo", //Spawn Item
 					"$Mods.StarsAbove.BossChecklist.VagrantOfSpaceAndTime.DespawnMessage", //Despawn Message
 					(SpriteBatch sb, Rectangle rect, Color color) => {
-						Texture2D texture = ModContent.Request<Texture2D>("Texture/File/Path/Here").Value;
+						Texture2D texture = ModContent.Request<Texture2D>("StarsAbove/Bestiary/PerseusBossChecklist").Value;
 						Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
 						sb.Draw(texture, centered, color);
 					}); //Boss Portrait

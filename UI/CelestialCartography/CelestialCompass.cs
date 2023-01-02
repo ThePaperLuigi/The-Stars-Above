@@ -708,9 +708,10 @@ namespace StarsAbove.UI.CelestialCartography
 							return;
 
 						}
-						SubworldSystem.Enter<Pyxis>();
-						Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
+						
 					}
+					SubworldSystem.Enter<Pyxis>();
+					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 				}
 				else
 				{

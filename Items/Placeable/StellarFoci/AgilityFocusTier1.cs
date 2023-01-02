@@ -56,7 +56,7 @@ namespace StarsAbove.Items.Placeable.StellarFoci
 		public override void AddRecipes()
 		{
 			CreateRecipe(1)
-				.AddIngredient(ItemID.LargeRuby, 1)
+				.AddIngredient(ItemID.LargeEmerald, 1)
 				.AddIngredient(ModContent.ItemType<StellarFocusBaseTier1>(), 1)
 				.AddTile(TileType<Tiles.CelestriadRoot>())
 				.Register();
