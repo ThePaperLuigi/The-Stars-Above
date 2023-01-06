@@ -114,7 +114,15 @@ namespace StarsAbove
 					npc.DelBuff(npc.FindBuffIndex(BuffID.OnFire));
 					npc.DelBuff(npc.FindBuffIndex(BuffType<VerdantEmbrace>()));
 
-					npc.life -= Math.Min((int)(npc.lifeMax * 0.03), 120);
+					if (npc.life > Math.Min((int)(npc.lifeMax * 0.03), 120))
+					{
+						npc.life -= Math.Min((int)(npc.lifeMax * 0.03), 120);
+					}
+					else
+					{
+						npc.life = 1;
+					}
+
 					Rectangle textPos = new Rectangle((int)npc.position.X, (int)npc.position.Y - 20, npc.width, npc.height);
 					CombatText.NewText(textPos, new Color(230, 164, 164, 240), $"{Math.Min((int)(npc.lifeMax * 0.03), 120)}", false, false);
 				}
@@ -123,7 +131,15 @@ namespace StarsAbove
 					npc.DelBuff(npc.FindBuffIndex(BuffID.Frostburn));
 					npc.DelBuff(npc.FindBuffIndex(BuffType<VerdantEmbrace>()));
 
-					npc.life -= Math.Min((int)(npc.lifeMax * 0.03), 120);
+					if(npc.life > Math.Min((int)(npc.lifeMax * 0.03), 120))
+                    {
+						npc.life -= Math.Min((int)(npc.lifeMax * 0.03), 120);
+					}
+					else
+                    {
+						npc.life = 1;
+					}
+
 					Rectangle textPos = new Rectangle((int)npc.position.X, (int)npc.position.Y - 20, npc.width, npc.height);
 					CombatText.NewText(textPos, new Color(164, 220, 230, 240), $"{Math.Min((int)(npc.lifeMax * 0.03), 120)}", false, false);
 				}
@@ -132,7 +148,14 @@ namespace StarsAbove
 					npc.DelBuff(npc.FindBuffIndex(BuffType<VerdantEmbrace>()));
 
 					npc.DelBuff(npc.FindBuffIndex(BuffID.CursedInferno));
-					npc.life -= Math.Min((int)(npc.lifeMax * 0.03), 120);
+					if (npc.life > Math.Min((int)(npc.lifeMax * 0.03), 120))
+					{
+						npc.life -= Math.Min((int)(npc.lifeMax * 0.03), 120);
+					}
+					else
+					{
+						npc.life = 1;
+					}
 					Rectangle textPos = new Rectangle((int)npc.position.X, (int)npc.position.Y - 20, npc.width, npc.height);
 					CombatText.NewText(textPos, new Color(193, 230, 164, 240), $"{Math.Min((int)(npc.lifeMax * 0.03), 120)}", false, false);
 				}
@@ -141,7 +164,15 @@ namespace StarsAbove
 					npc.DelBuff(npc.FindBuffIndex(BuffType<VerdantEmbrace>()));
 
 					npc.DelBuff(npc.FindBuffIndex(BuffID.ShadowFlame));
-					npc.life -= Math.Min((int)(npc.lifeMax * 0.03), 120);
+					if (npc.life > Math.Min((int)(npc.lifeMax * 0.03), 120))
+					{
+						npc.life -= Math.Min((int)(npc.lifeMax * 0.03), 120);
+					}
+					else
+					{
+						npc.life = 1;
+					}
+
 					Rectangle textPos = new Rectangle((int)npc.position.X, (int)npc.position.Y - 20, npc.width, npc.height);
 					CombatText.NewText(textPos, new Color(211, 164, 230, 240), $"{Math.Min((int)(npc.lifeMax * 0.03), 120)}", false, false);
 				}

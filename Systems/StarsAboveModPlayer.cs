@@ -7684,7 +7684,6 @@ namespace StarsAbove
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
 
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("You have acquired a new Stellar Nova!"), 190, 100, 247); }
                         NewStellarNova = true;
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                         NewStellarArrayAbility = true;
@@ -7697,7 +7696,6 @@ namespace StarsAbove
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
 
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("You have acquired a new Stellar Nova!"), 190, 100, 247); }
                         NewStellarNova = true;
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                         NewStellarArrayAbility = true;
@@ -7710,7 +7708,6 @@ namespace StarsAbove
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
 
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("You have acquired a new Stellar Nova!"), 190, 100, 247); }
                         NewStellarNova = true;
                         if (Main.expertMode)
                         {
@@ -7810,7 +7807,6 @@ namespace StarsAbove
                             if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                             NewStellarArrayAbility = true;
                         }
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("You have acquired a new Stellar Nova!"), 190, 100, 247); }
                         NewStellarNova = true;
 
                     }
@@ -7868,7 +7864,6 @@ namespace StarsAbove
 
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                         NewStellarArrayAbility = true;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("You have acquired a new Stellar Nova!"), 190, 100, 247); }
                         NewStellarNova = true;
 
 
@@ -8598,7 +8593,7 @@ namespace StarsAbove
                         }
 
                     }
-                    if (DownedBossSystem.downedArbiter)
+                    if (NPC.downedMechBossAny)
                     {
                         if (kiwamiryuken == 0)
                         {
@@ -8607,7 +8602,7 @@ namespace StarsAbove
 
 
                     }
-                    if (DownedBossSystem.downedArbiter && Main.expertMode)
+                    if (DownedBossSystem.downedPenth && Main.expertMode)
                     {
                         if (flashfreeze == 0)
                         {

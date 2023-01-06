@@ -1,8 +1,7 @@
 {
   Mods:
   {
-    StarsAbove:
-    {
+    StarsAbove: {
       SubworldName:
       {
         Observatory: Observatory Hyperborea
@@ -246,7 +245,7 @@
           {
             Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Flash Freeze']"
             Description: Landing a critical strike will cause foes to explode, taking half the original damage. Additionally, damaging snowflakes will spew from the target, spreading the damage. 4 second cooldown.
-            Unlock: "[c/9D9D9D:Locked:] Defeat Arbitration in Expert Mode"
+            Unlock: "[c/9D9D9D:Locked:] Defeat Penthesilea in Expert Mode"
           }
           MysticForging:
           {
@@ -887,14 +886,14 @@
             Asphodene:
             {
               1: That foe was truly fearful. I'm glad you were able to defeat it- who knows what chaos it would bring if left unchecked?
-              2: We can re-appropriate its strength, I think. It can become a new Stellar Nova, thanks to the First Starbearer's influence. Let's use it well.
-              3: It looks like another item has appeared. You can have it- it's probably better off in your hands, anyways.
+              2: Just goes to show how horrifiying Anomalies can be...!
+              3: Looks like it condensed itself into an Essence- no work needed by me. Isn't that strange?
             }
             Eridani:
             {
               1: You have thoroughly defeated that voidsent being. Good work; I had no clue what would've happened had we lost.
-              2: Its strength has manifested as a new Stellar Nova, thanks to the First Starbearer's influence.
-              3: It looks like another shard has appeared. I'll leave it to you.
+              2: Truly, the horrors of Anomaly locations can not be understated.
+              3: Even without my intervention, an Essence has appeared... it must be strong, to originate from such a fiend.
             }
           }
           Tsukiyomi:
@@ -2735,8 +2734,8 @@
             }
             Locked:
             {
-              Asphodene: We don't have access to this yet. We must vanquish a true evil.
-              Eridani: We can't use this yet. I feel we must defeat a true evil...
+              Asphodene: We don't have access to this yet... Looks like we'll have to defeat a mechanical menace.
+              Eridani: We can't use this yet. Looks like we'll have to defeat a mechanical menace.
             }
           }
           GardenOfAvalon:

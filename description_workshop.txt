@@ -97,5 +97,7 @@ View the official Fandom wiki here!
 [url=https://terrariamods.wiki.gg/wiki/The_Stars_Above] The Stars Above Wiki (wiki.gg ver.) [/url]
 As of now, the wiki is lacking a lot of articles; feel free to contribute (Even one article is a lot!) Thanks again!
 
-Thank you to Soammer(夏沫), MeireiHakuya(冥岭白夜), (亚砜), and Yukiko (羽曦), for the original translation of The Stars Above.
-A full Chinese translation is coming soon. Thank you, and please be patient- a lot of the mod is translated already!
+The mod includes localization for Chinese and Spanish, thanks to these individuals:
+Chinese translation team:  Soammer(夏沫), MeireiHakuya(冥岭白夜), (亚砜), and Yukiko (羽曦)
+Spanish translation team: Bluefire72, Haturok, Aka Tofu, Karus
+Thank you, translators!

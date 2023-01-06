@@ -22,7 +22,7 @@ namespace StarsAbove.Items
 				"\n[c/6CDA61:Verdant Snapshot] inflicts damage to all foes in the box while inflicting [c/2EB24A:Verdant Embrace] for 12 seconds" +
 				"\n[c/2EB24A:Verdant Embrace] deals minor damage over time" +
 				"\nAdditionally, when a foe with [c/2EB24A:Verdant Embrace] is inflicted with On Fire, Frostburn, Cursed Inferno, or Shadowflame, it will trigger a [c/94EF58:Verdant Burst]" +
-				"\n[c/94EF58:Verdant Burst] will inflict bonus damage equal to 3% of the foe's maximum HP (up to 120 HP per application)" +
+				"\n[c/94EF58:Verdant Burst] will inflict bonus damage equal to 3% of the foe's maximum HP (up to 120 HP per application, can not kill)" +
 				"\nHowever, both [c/2EB24A:Verdant Embrace] and the debuff that triggered [c/94EF58:Verdant Burst] will be cleansed" +
 				"\n'Let knowledge be yours'" +
 				$"");  //The (English) text shown below your weapon's name
@@ -34,7 +34,7 @@ namespace StarsAbove.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 39;          
+			Item.damage = 49;          
 			Item.DamageType = DamageClass.Magic;          
 			Item.width = 40;            
 			Item.mana = 20;

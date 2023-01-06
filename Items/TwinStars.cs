@@ -112,6 +112,8 @@ namespace StarsAbove.Items
 		{
 			CreateRecipe(1)
 				.AddIngredient(ItemID.FallenStar, 20)
+				.AddIngredient(ItemID.FragmentSolar, 2)
+				.AddIngredient(ItemID.FragmentStardust, 2)
 				.AddIngredient(ItemID.MeteoriteBar, 30)
 				.AddIngredient(ItemType<PrismaticCore>(), 6)
 				.AddIngredient(ItemType<EssenceOfTwinStars>())

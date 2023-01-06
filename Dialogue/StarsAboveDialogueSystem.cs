@@ -3106,7 +3106,7 @@ namespace StarsAbove
                 {
                     if (dialoguePrep == true)
                     {
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("MnemonicTrace4").Type);
+                        //Player.QuickSpawnItem(null, Mod.Find<ModItem>("MnemonicTrace4").Type);
                         dialogueLeft = 3;
                         dialoguePrep = false;
                     }
