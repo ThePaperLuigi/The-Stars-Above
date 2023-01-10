@@ -243,7 +243,8 @@ namespace StarsAbove.Items
 		public override void AddRecipes()
 		{
 			CreateRecipe(1)
-				.AddIngredient(ItemID.DjinnLamp, 1)
+				.AddIngredient(ItemID.Book, 20)
+				.AddIngredient(ItemID.Vine, 3)
 				.AddIngredient(ItemID.JungleSpores, 5)
 				.AddIngredient(ItemType<EssenceOfNature>())
 				.AddTile(TileID.Anvils)

@@ -217,7 +217,7 @@ namespace StarsAbove.Projectiles.SparkblossomBeacon
 		private void SearchForTargets(Player owner, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter)
 		{
 			// Starting search distance
-			distanceFromTarget = 700f;
+			distanceFromTarget = 200f;
 			targetCenter = Projectile.position;
 			foundTarget = false;
 
@@ -228,7 +228,7 @@ namespace StarsAbove.Projectiles.SparkblossomBeacon
 				float between = Vector2.Distance(npc.Center, Projectile.Center);
 
 				// Reasonable distance away so it doesn't target across multiple screens
-				if (between < 2000f)
+				if (between < 600f)
 				{
 					distanceFromTarget = between;
 					targetCenter = npc.Center;

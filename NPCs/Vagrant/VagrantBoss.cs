@@ -15,6 +15,7 @@ using static StarsAbove.NPCs.AttackLibrary.AttackLibrary;
 
 namespace StarsAbove.NPCs.Vagrant
 {
+	[AutoloadBossHead]
 
 	public class VagrantBoss : ModNPC
 	{
@@ -118,22 +119,25 @@ namespace StarsAbove.NPCs.Vagrant
 			NPC.noGravity = false;
 			NPC.noTileCollide = false;
 			DrawOffsetY = -2;
+
 			NPC.HitSound = SoundID.NPCHit54;
 			NPC.DeathSound = SoundID.NPCDeath52;
 
 			NPC.value = Item.buyPrice(0, 1, 75, 45);
 
 			Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/CosmicWill");
-
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
-
-			//Music =  mod.GetSoundSlot(SoundType.Music, "Sounds/Music/CosmicWill");
 			NPC.netAlways = true;
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			return 0f;
+		}
+		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		{
+			NPC.lifeMax = (int)(NPC.lifeMax * bossLifeScale * numPlayers);
+			//NPC.defense *= numPlayers * 5;
 		}
 
 		public override bool CheckDead()
@@ -150,7 +154,6 @@ namespace StarsAbove.NPCs.Vagrant
 			return true;
 		}
 
-		// Our AI here makes our NPC sit waiting for a player to enter range, jumps to attack, flutter mid-fall to stay afloat a little longer, then falls to the ground. Note that animation should happen in FindFrame
 		public override void AI()
 		{
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();

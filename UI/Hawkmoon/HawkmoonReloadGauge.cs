@@ -42,7 +42,7 @@ namespace StarsAbove.UI.Hawkmoon
 			text.Left.Set(65, 0f);
 			
 			colorA = new Color(88, 88, 88); // Bad
-			colorB = new Color(205, 100, 50); // Good
+			colorB = new Color(255, 100, 50); // Good
 
 			area.Append(text);
 			area.Append(barFrame);

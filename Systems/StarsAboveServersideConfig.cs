@@ -36,6 +36,7 @@ namespace StarsAbove
 
 		[Label("$Mods.StarsAbove.Config.DisableBossEnemySpawnMod.Label")]
 		[Tooltip("$Mods.StarsAbove.Config.DisableBossEnemySpawnMod.Tooltip")]
+		//[DefaultValue(true)]
 		public bool DisableBossEnemySpawnMod;
 
 		[Label("$Mods.StarsAbove.Config.ColorblindBoss.Label")]
