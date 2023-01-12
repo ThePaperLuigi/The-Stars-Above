@@ -86,7 +86,7 @@
 					GasGiant:
 					{
 						Name: 唧筒星
-						Description: 一个没有表面的气态巨行星，即使只是靠近，也会被其巨大的引力吸引撕碎导致理科死亡。
+						Description: 一个没有表面的气态巨行星，即使只是靠近，也会被其巨大的引力吸引撕碎导致立刻死亡。
 						Threat: 威胁等级：A-
 						Requirement: 目前无法在此旅行。
 						Loot: 资源：？？？
@@ -125,7 +125,7 @@
 					}
 					Pyxis:
 					{
-						Name: 罗盘
+						Name: 罗盘号
 						Description: 一小块集中了魔力的空间，仔细观察能发现这似乎是一个人造结构，即简陋同时又有很惊人的创新。
 						Threat: 威胁等级：N/A
 						Requirement: 本次旅行需要二阶旅星符台。
@@ -178,35 +178,35 @@
 					LockHover: 星相武器的伤害类型即使是重新加载世界也会被保存。
 					Melee:
 					{
-						Name: "更改手持的星相武器的伤害类型为[c/FFAB4D:近战伤害]。"
+						Name: 更改手持的星相武器的伤害类型为[c/FFAB4D:近战伤害]。
 					}
 					Rogue:
 					{
-						Name: "更改手持的星相武器的伤害类型为[c/707070:盗贼伤害]。"
+						Name: 更改手持的星相武器的伤害类型为[c/707070:盗贼伤害]。
 					}
 					Healer:
 					{
-						Name: "更改手持的星相武器的伤害类型为[c/FCEE72:光辉伤害]."
+						Name: 更改手持的星相武器的伤害类型为[c/FCEE72:光辉伤害].
 					}
 					Bard:
 					{
-						Name: "更改手持的星相武器的伤害类型为[c/FD5656:音波伤害]."
+						Name: 更改手持的星相武器的伤害类型为[c/FD5656:音波伤害].
 					}
 					Thrower:
 					{
-						Name: "更改手持的星相武器的伤害类型为[c/83EA53:投掷伤害]."
+						Name: 更改手持的星相武器的伤害类型为[c/83EA53:投掷伤害].
 					}
 					Magic:
 					{
-						Name: "更改手持的星相武器的伤害类型为[c/EF4DFF:魔法伤害]。"
+						Name: 更改手持的星相武器的伤害类型为[c/EF4DFF:魔法伤害]。
 					}
 					Ranged:
 					{
-						Name: "更改手持的星相武器的伤害类型为[c/4DFF5B:远程伤害]。"
+						Name: 更改手持的星相武器的伤害类型为[c/4DFF5B:远程伤害]。
 					}
 					Summon:
 					{
-						Name: "更改手持的星相武器的伤害类型为[c/00CDFF:召唤伤害]。"
+						Name: 更改手持的星相武器的伤害类型为[c/00CDFF:召唤伤害]。
 					}
 				}
 				Abilities:
@@ -403,13 +403,13 @@
 						20: 这个精华将创造一个辅助物品。如果你能活下去，它将给你和你的队友带来强大的增益。
 						21: 光之战士给了我这个精华的灵感。它似乎是一把通往无限武器的宝库的钥匙，能造成召唤伤害
 						22: 如果你感觉灵感来了，试着把你的敌人If you feel inspired, try referring to your foes as mongrels.
-						23: 这个精华能创造一个具有高法力消耗的远程武器，拥有极高的暴击伤害修正。
+						23: 这个精华能创造一个具有高魔力消耗的远程武器，拥有极高的暴击伤害修正。
 						24: 可以用吗？当然可以。理论这全都是你的。
 						25: 这是一件召唤武器。它似乎有非常独特的缩放属性，而且攻击速度惊人。
 						26: 这也是你内心的反映……或者什么。我不太明白这些。
 						27: 这是一件召唤武器，但你会像近战武器一样使用它。它具有与标点瞬移互换的能力。
 						28: 虽然危险，它看起来很强大。但你肯定不会被击中……对吗？
-						29: 这是个相当独特的武器。当使用它时，它伴随你一起攻击，并在你能够消耗法力时变得更强。
+						29: 这是个相当独特的武器。当使用它时，它伴随你一起攻击，并在你能够消耗魔力时变得更强。
 						30: 这个精华来自一个陷入冲突的世界……它拥有难以置信强大的力量，但如果你使用过多，它就会开始伤害你。
 						31: 这个精华可以制成一种能在剑、镰刀、枪之间切换的近战武器。你几乎能在任何情况下使用它！
 						32: 好了，现在有个新精华。它是把巨大的近战长矛且可以在枪和矛之间切换。它看起来很强大！
@@ -463,7 +463,11 @@
 					}
 					Eridani:
 					{
-						1: 这里有一个远程类型精华。看起来每四次射击都会增强一次攻击。不管为何，反正它很强大。
+						1: 
+						'''
+						这里有一个远程类型精华。看起来每四次射击
+						都会增强一次攻击。不管为何，反正它很强大。
+						'''
 						2: 给你另一种精华。这个将创造一个召唤类型武器。我相信你明白这意味着什么吧？
 						3: 我是指让你去试试。
 						4: 你已经明白了？那当我没说。
@@ -479,7 +483,7 @@
 						14: 这把魔法武器射击时有概率会心一击，每次会心一击都会造成更高伤害。它是很强大的。
 						15: 你可以考虑一下。
 						16: 这种远程武器能进入近战模式，会对你射中过的敌人造成更多伤害。挺吸引人的。
-						17: 这个强大的近战遗物允许消耗法力来传送并造成强大的伤害。我真挺喜欢它的。
+						17: 这个强大的近战遗物允许消耗魔力来传送并造成强大的伤害。我真挺喜欢它的。
 						18: 这个武器是由月亮领主的力量和它的天体柱直接制成的。它在你手中会有不错的表现。
 						19: 来自光之战士……这个精华允许Limit Break。是一个非常强大的魔法武器。
 						20: 光明会洗涤你的罪过！或类似的东西。
@@ -530,7 +534,7 @@
 						65: 这个精华会带来一把真正强大的武器。它承载着一个古老但先进的文明。
 						66: 显然，他们精通空间操纵。希望你能试试，但它可能会拒绝不配的人。
 						67: 就这点，我想知道是否有一种武器你不配挥舞。啊对，我是夸你。
-						68: 这种魔法类型精华通过平衡使用黑与白的双重法力来攻击和治疗。
+						68: 这种魔法类型精华通过平衡使用黑与白的双重魔力来攻击和治疗。
 						69: 两种对立的学习流派，至少在这个精华原来的世界是这样。现在不也发人深省吗。
 						70: 抱歉耽搁了，精华在这。这把近战武器有些后坐力，但作为补偿，你能造成一些爆炸性的伤害。
 						71: 我期望你适度使用它，但我相信你迟早掌握随心所欲地使用它。记得至少要带些治疗药水。
@@ -542,9 +546,9 @@
 						77: 我知道这听起来令人生畏，但如果你能很好地控制这些武器，你就能造成巨量伤害。
 						78: 好，这是一个近战武器——借助灵魂的力量，你可以劈开你周围的大片区域，并步入虚空即时传送。
 						79: 看来有一种新的精华可供你使用了。它能造成一种独特的伤害并释放 It uses a unique damage type and powerful charge attacks- but it'll probably have some recoil damage.
-						80: 这片墓地似乎和这种精华有所联系。 I hope it'll help you avoid creating the Graveyard in the first place.
-						81: While powerful, I believe it's a utility item, and not a weapon this time.
-						82: This Magic Essence, while aspected to nature, seems rather volatile. Perhaps you'd be able to better use it in tandem with other weapons?
+						80: 这片墓地似乎和这种精华有所联系。希望它能帮助你避免一开始就死出一片墓地。
+						81: 虽然它很强大，但我相信它是一把实用的工具，而不是武器。
+						82: 这种魔法精华虽然和自然有关，但它似乎相当不稳定。也许你最好把它和其它武器搭配着使用。This Magic Essence, while aspected to nature, seems rather volatile. Perhaps you'd be able to better use it in tandem with other weapons?
 					}
 					Perseus:
 					{
@@ -863,7 +867,7 @@
 							1: 复光之君已经倒下了。多么强大的敌人啊。要是我们在他的全盛时期与其战斗，我想都不敢想我们会有怎样的结果。
 							2: 现在看来，复光之君在很久以前就被最初的星海旅者击败了。
 							3: 至于为什么珀尔修斯让我们和他战斗，我不知道。我甚至不知道我们是如何与他战斗的。也许我们只是与赋予生命的精华战斗？
-							4: 他的武器，Ars Laevateinn。我们可以自己使用，作为一种天体新星。也许是因为承星者的影响？
+							4: 他的武器，魔剑·莱瓦汀。我们可以自己使用，作为一种天体新星。也许是因为承星者的影响？
 						}
 					}
 					Penth:
@@ -938,10 +942,10 @@
 						}
 						Eridani:
 						{
-							1: Congratulations, you've bested the Empress of Light. Let's leave the bugs alone now, okay?
-							2: If I had a nickel for bosses summoned with insects... We fought that rather large fish, right? That's two. Not very much, is it. I was hoping for a trend.
-							3: If I had a nickel for bosses summoned with insects... We fought that rather large fish, right? That's two. Not very much, is it. I was hoping for a trend. Maybe we can count the Queen Bee?
-							4: Somehow... I feel like there's yet another boss we'll have to use an insect to summon. That's going to be rather bothersome.
+							1: 恭喜，你击败了光之女皇。我们先别管虫子了，好吗？
+							2: 如果每次用虫子召唤boss时我都能得到五块钱……我们还和那条巨大的猪龙鱼搏斗过，对吗？这就算两个了。好吧，不是很多，我倒希望这成为一种趋势。
+							3: 如果每次用虫子召唤boss时我都能得到五块钱……我们还和那条巨大的猪龙鱼搏斗过，对吗？这就算两个了。好吧，不是很多，我倒希望这成为一种趋势。或许我们可以把蜂王也算上？
+							4: 不知怎么的……我觉得还有另一只boss需要用虫子来召唤。那会是个大麻烦。
 						}
 					}
 					Deerclops:
@@ -1452,7 +1456,7 @@
 				{
 					Asphodene:
 					{
-						1: 看上去你中毒了。我会给你寄张祝福卡的。
+						1: 看上去你中毒了。我会给你寄张慰问卡的。
 						2: 看上去你的防御降低了！当心！
 						3: 你被沉默了，暂时没法释放魔法了。
 						4: 我觉得你被诅咒了。那可……真糟糕。你暂时什么都用不了。
@@ -1493,7 +1497,7 @@
 						39: 真的很糟糕。
 						40: 感谢上帝，我们及时把它干掉了。
 						41: 终于！你做到了！
-						42: 这样问题就差不多解决了。
+						42: 问题差不多解决了。
 						43: 强而有力的一击。
 						44: 决定性的一击！
 						45: 让他们尝尝这个！
@@ -1507,7 +1511,7 @@
 						53: 那一点也不好……
 						54: 事后你该接受治疗。
 						55: 毫发无伤……对吧？
-						56: 这不应该发生的……
+						56: 这本不该发生的……
 						57: 我觉得你是逃不掉的。
 						58: ……哎哟
 						59: 一位强大的敌人接近了！我们不会输的。
@@ -1566,7 +1570,7 @@
 						112: 一只怪物从硫磺海中冲出来了！等到它疲软时再发动攻击！
 						113: 神明吞噬者降临了！战吧！全力以赴地迎战！
 						114: 亚利姆的忠诚伙伴……活生生的！让我们给这个暴君一点下马威！
-						115: 蛤？发生什么事了？我们正忙着呢！
+						115: 哈？发生什么事了？我们正忙着呢！
 						116: 我们不会向任何人低头！让我们把这个女巫打的落花流水！
 						117: 他是亚利姆手下的忠实工匠，掌握的知识无穷无尽……保持谨慎。
 						118: 一对机械魔眼——来势汹汹。不要再不知所措了……！
@@ -1574,7 +1578,7 @@
 						120: 小心，{0}！那台巨械简直遮天蔽日！
 						121: 哇哦，快看这个。真是个能干的家伙！正确的策略。看上去你可以瞄准它的手臂，试试吧。
 						122: 哇哦，这个小女巫想要打一架?好吧！看上去你会中大量的减益——做好治疗的准备。
-						123: 蛤？看看这个木偶……还以为自己比我们强什么的！给它一点颜色看看！
+						123: 哈？看看这个木偶……还以为自己比我们强什么的！给它一点颜色看看！
 						124: 好戏开场了！如果你还记得的话，他会借助世界入侵者的力量发动攻击。
 						125: 如果每次你把巫毒娃娃扔进岩浆时我都能得到五块钱……那我现在已经……别在意。突变体非常恼火，突变体非常强大，突变体朝你冲过来了！
 						126: 一只雷鸟接近了！虽然它没那么强大，但是不要掉以轻心。
@@ -1616,7 +1620,7 @@
 						162: 时光倒流……！
 						163: 不灭的怒火……！
 						164: 只是皮肉伤而已。
-						165: 拥抱深渊！放飞自我！
+						165: 拥抱深渊！解放自我！
 						166: 没人能逃得掉！
 						167: 它们就像待宰的羔羊！
 						168: 杀光它们！
@@ -1632,141 +1636,142 @@
 						178: 她一直都近在咫尺……试着使用这片区域中央的追忆印记吧。
 						179: 看起来我们还没办法探索这里……也许下次吧。
 						180: 哇哦，这里被浓郁的绿色覆盖了。看上去是场有趣的旅行——让我们开始探索吧！
-						181: OK，那只史莱姆不再退缩了。让我们下定决心开战吧。
+						181: OK，那只史莱姆不再逃跑了。让我们下定决心开战吧。
 						182: 这里并没有我幻想中的金银珠宝……做好准备，那个恶灵正准备发起偷袭。
-						183: 这名敌人让我很恼火。不要放松警惕，免得它用那个“星象仪”做手脚。
+						183: 这名敌人让我很恼火。不要放松警惕，免得它用那个“星象仪”做什么手脚。
 						184: 你周围变得寒冷刺骨。小心，那只雪花状的生物正朝你靠近。
 						185: 不要小瞧这名敌人——它极其危险。呵呵——我不是在开玩笑，谨慎行事。
 						186: 我也和别人一样喜欢扔爆炸物，但你似乎要因此受到惩戒了。准备战斗。
-						187: 这里曾经肯定有生物生活——也许一千年或更久以前吧。不必说，一旦被我们发现，它们曾经的东西就是我们的了！There were definitely living beings here- maybe ten thousand or so years ago. Goes without saying anything they used to own is ours now once we find it!
-						188: While this IS an abandoned mining facility, I doubt they left without picking clean any ore nearby. We might find other useful things, however.
-						189: I can't find any trace of ambient mana- someone, or something, must have drained this entire world dry. Let's check out that structure in the distance.
-						190: This planet should look a lot like your own Jungle, but it seems you've ended up underground- which decidedly does not look familiar. The monsters here are, though- strange.
-						191: This is a pretty large patch of Corruption- but as long as it isn't moving anywhere, it shouldn't be a threat we need to stop. Still, it's a bit of a eyesore.
-						192: An entire moon covered in Crimson- yuck. I wouldn't want to be stranded here, so mind where the Gateway is and you should be fine.
-						193: Isn't this strange? Nobody would seriously think of making a space station out of wood, right? Huh- I could have sworn there was someone living here...?
+						187: 这里曾经肯定有生物生活——也许一千年或更久以前吧。不必说，一旦被我们发现，它们曾经的东西就是我们的了！
+						188: 虽然这处采矿设施已经被废弃，但我怀疑它们离开时没有开采完附近所有的矿产。不过，我们还可能找到其它有用的东西。
+						189: 我在周围感受不到任何魔法的气息——一定有某人，或者说什么东西把整个世界的魔力吸干了。让我们去远处的建筑物里看看吧
+						190: 这颗星球看上去很像母星的丛林，但你似乎正身处地下——这显然看起来不大熟悉。尽管这里的生物都很眼熟——真是奇怪。
+						191: 这颗星球有一大片腐化之地，但只要它不四处扩散，就暂时构不成威胁。不过，这还是有些碍眼。
+						192: 整颗月亮都被猩红覆盖了——真是恶心。我可不想被困在这里，所以留意传送门的位置，你不会有事的。
+						193: 这不是很奇怪吗？没人会认真考虑用木头搭一座空间站，对吧？呃——我发誓有人住在这里……？
 					}
 					Eridani:
 					{
 						1: 呃……你看上去不太舒服……
-					        2: 你的防御被灵液降低了。当心。
-					        3: 你被沉默了……暂时放不出魔法了。
-					        4: 你像是中了诅咒……你现在没法使用物品……
-					        5: 看上去不妙。你被冻住了。
-					        6: 你正在被霜火灼烧！这有点……让人摸不清头脑。
-					        7: 哎哟——你被蛛网缠得动弹不得。
-					        8: 你被石化了……
-					        9: 你被高温表面灼伤了！
-					        10: 你快要死了。想办法离开那里。
-					        11: 哎呦。那可能不太好。
-					        12: 你需要一些空气，快点。
-					        13: 你出了好多血……想必你暂时没法回血了。
-					        14: “[你看不清这些字了——看来你被困惑了。]”
-					        15: 哎呀。
-					        16: 你是故意的吗？
-					        17: 抱歉，小家伙。
-					        18: 干得漂亮。
-					        19: 又一名敌人倒下了。
-					        20: 漂亮的一仗。
-					        21: 又一名敌人倒下了。
-					        22: 你还挺擅长这个的。
-					        23: 干得不错。
-					        24: 它们永远都别想打败我们。
-					        25: 你打败它了。
-					        26: 让他们瞧瞧我们的厉害。
-					        27: 精彩的战斗。
-					        28: 简简单单。
-					        29: 不费吹灰之力。
-					        30: 不足为患。
-					        31: 问题解决了。
-					        32: 事态良好。
-					        33: 对，就是那样。
-					        34: 我们怎么可能会输？
-					        35: 结束了。
-					        36: 别再那样了。
-					        37: 一次美好的邂逅。
-					        38: 太惊险了……
-					        39: 事情过去了，但我们仍然有麻烦。
-					        40: 好险。
-					        41: 终于。它被你打败了。
-					        42: 你终于战胜它了。干得漂亮。
-					        43: 多么强大的敌人……
-					        44: 完美的一击！
-					        45: 致命一击！
-					        46: 绝妙的一击！
-					        47: 漂亮，你击中它们的弱点了。
-					        48: 干的漂亮！
-					        49: 决定性的一击！
-					        50: 哎呦。那看上去很疼。
-					        51: 你还好吗？
-					        52: 那看上去不太妙。
-					        53: 事情原本没这么糟……
-					        54: 哎呦……
-					        55: 哎呀。
-					        56: 这可……真糟糕……
-					        57: 这可不太妙……
-					        58: 它们会为此付出代价的……
-					        59: 一位强大的敌人接近了。让我们送它回老家吧。
-					        60: 我能感受到一位强大的敌人正在接近。无论你是否准备好了，都是时候开战了。
-					        61: 一位强大的对手接近了。做好准备。
-					        62: 保持警惕，{0}。一位强大的敌人正在接近。
-					        63: 危险接近了。我们绝不留情。
-					        65: 那是……一只巨型史莱姆。它似乎能迅速移动，当心这一招。
-					        66: 这一定就是世界吞噬者。它会从下方发动突然袭击。
-					        67: 当心。它正尝试攻击你的思维。留意那些幻象。
-					        68: 这只巨大的蜜蜂发起进攻了！当心别陷到蜂蜜里！
-					        69: 这个裁缝变成了……这家伙……离它的手臂和头远点。
-					        70: 这家伙真是难以置信的强大……无论如何，继续跑下去……！
-					        71: 克苏鲁之眼又回来了？等等，怎么有两只……！尽可能先集火其中一只！
-					        72: 这是只独眼巨人……等等……它长着鹿角……这是只鹿吗？还是说两者兼备？
-					        73: 看上去是另一种巨型史莱姆。我有预感它将召唤许多随从执行它的命令。
-					        74: 神圣之地的某只危险生物被惊醒了……看上去它将在白天汲取强大的力量。
-					        75: 毁灭者正在接近……让我们试着用群体攻击对付它。
-					        76: 骷髅王回来了，而且变得更强！优先处理它的肢体。
-					        77: 丛林之惧吓发起进攻了……！别被周围的地形卡住了！
-					        78: 这头丛林蜥蜴巨兽苏醒了！战斗时小心神庙中的机关。
-					        79: 你钓出了一只危险的敌人！待在海边以防它发狂！
-					        80: 是月之邪教徒……在它们带来灾难前阻止它们！
-					        81: 月球领主……我们将直面神明。我们必须得赢，别无选择！
-					        82: 光之战士就要来了……挣脱桎梏的他无比强大！
-					        83: 这名敌人似乎有点眼熟……攻击不起作用了;尽可能长的生存下去！
-					        84: 不要低估这位先古之君！夺回那些失窃的生命力！
-					        85: 她用颜料将你覆盖了。留意你所沾染的颜色。
-						86: It seems to be able to swap forms! Try to memorize its attacks..!
-						87: Something's tunneling in the sand..! Try and get off the ground!
-						88: A mycelium beast, huh? It's spewing mushrooms everywhere...
-						89: The corruption has spewed out a new beast. Look out for its barrage of minions.
-						90: Flesh beasts draw near..! Focus your attention on the Hive!
-						91: This foe radiates mystic ice. Stay away from it- those icy spikes are not for show.
-						92: The Desert Scourge makes a return... I knew it- This was what it once was.
+						2: 你的防御被灵液降低了。当心。
+						3: 你被沉默了……暂时放不出魔法了。
+						4: 你像是中了诅咒……你现在没法使用物品……
+						5: 看上去不妙。你被冻住了。
+						6: 你正在被霜火灼烧！这有点……让人摸不清头脑。
+						7: 哎哟——你被蛛网缠得动弹不得。
+						8: 你被石化了……
+						9: 你被高温表面灼伤了！
+						10: 你快要死了。想办法离开那里。
+						11: 哎呦。那可能不太妙。
+						12: 你需要一些空气，快点。
+						13: 你出了好多血……想必你暂时没法回血了。
+						14: “[你看不清这些字了——看来你被困惑了。]”
+						15: 哎呀。
+						16: 你是故意的吗？
+						17: 抱歉，小家伙。
+						18: 干得漂亮。
+						19: 又一名敌人倒下了。
+						20: 漂亮的一仗。
+						21: 又一名敌人倒下了。
+						22: 你还挺擅长这个的。
+						23: 干得不错。
+						24: 它们永远都别想打败我们。
+						25: 你打败它了。
+						26: 让他们瞧瞧我们的厉害。
+						27: 精彩的战斗。
+						28: 简简单单。
+						29: 不费吹灰之力。
+						30: 不足为患。
+						31: 问题解决了。
+						32: 事态良好。
+						33: 对，就是那样。
+						34: 我们怎么可能会输？
+						35: 结束了。
+						36: 别再那样了。
+						37: 一次美好的邂逅。
+						38: 太惊险了……
+						39: 事情过去了，但我们仍然有麻烦。
+						40: 好险。
+						41: 终于。它被你打败了。
+						42: 你终于战胜它了。干得漂亮。
+						43: 多么强大的敌人……
+						44: 完美的一击！
+						45: 致命一击！
+						46: 绝妙的一击！
+						47: 漂亮，你击中它们的弱点了。
+						48: 干的漂亮！
+						49: 决定性的一击！
+						50: 哎呦。那看上去很疼。
+						51: 你还好吗？
+						52: 那看上去不太妙。
+						53: 事情原本没这么糟……
+						54: 哎呦……
+						55: 哎呀。
+						56: 这可……真糟糕……
+						57: 这可不太妙……
+						58: 它们会为此付出代价的……
+						59: 一位强大的敌人接近了。让我们送它回老家吧。
+						60: 我能感受到一位强大的敌人正在接近。无论你是否准备好了，都是时候开战了。
+						61: 一位强大的对手接近了。做好准备。
+						62: 保持警惕，{0}。一位强大的敌人正在接近。
+						63: 危险接近了。我们绝不留情。
+                   				64: 它来了。无论是什么，它都极度危险。小心，它濒死时会更加疯狂。
+						65: 那是……一只巨型史莱姆。它似乎能迅速移动，当心这一招。
+						66: 这一定就是世界吞噬者了。它会从下方发动突然袭击。
+						67: 当心。它正尝试攻击你的思维。留意那些幻象。
+						68: 这只巨大的蜜蜂发起进攻了！当心别陷到蜂蜜里！
+						69: 这个裁缝变成了……这家伙……离它的手臂和头远点。
+						70: 这家伙真是难以置信的强大……无论如何，继续跑下去……！
+						71: 克苏鲁之眼又回来了？等等，怎么有两只……！尽可能先集火其中一只！
+						72: 这是只独眼巨人……等等……它长着鹿角……这是只鹿吗？还是说两者兼备？
+						73: 看上去是另一种巨型史莱姆。我有预感它将召唤许多随从执行它的命令。
+						74: 神圣之地的某只危险生物被惊醒了……看上去它将在白天汲取强大的力量。
+						75: 毁灭者正在接近……让我们试着用群体攻击对付它。
+						76: 骷髅王回来了，而且变得更强！试试优先处理它的肢体。
+						77: 丛林之发起进攻了……！别被周围的地形卡住了！
+						78: 这头丛林蜥蜴巨兽苏醒了！战斗时留意神庙中的那些机关。
+						79: 你钓出了一只危险的敌人！待在海边以防它发狂！
+						80: 是月之邪教徒……在它们带来灾难前阻止它们！
+						81: 月球领主……我们将直面神明。我们必须得赢，别无选择！
+						82: 光之战士就要来了……挣脱桎梏的他无比强大！
+						83: 这名敌人似乎有点眼熟……攻击不起作用了；尽可能长的生存下去！
+						84: 不要低估这位先古之君！夺回那些失窃的生命力！
+						85: 她用颜料将你覆盖了。留意你所沾染的颜色。
+						86: 它似乎能够变化形态！试着记住它的攻击方式……！
+						87: 有什么东西在黄沙中穿行……尽可能远离地面！
+						88: 一头真菌巨兽，不是吗？它把蘑菇喷的到处都是……
+						89: 腐化滋生了一头新的巨兽。当心它接二连三召唤的随从。
+						90: 一头血肉巨兽接近了……！当心那个瘤囊！
+						91: 这名敌人散发出神秘的凛冽气息。离它远点，那些冰锥可不是摆设。
+						92: 荒漠灾虫又回来了……我认得它——这是它曾经的样子。
 						93: A colossal serpent makes its way towards us.. It may overwhelm you.. don't get reckless.
-						94: That Charred Idol has summoned a flaming spirit.. It can teleport everywhere- don't lose track of it.
-						95: Calamitas.. With a name like that, it begs respect. We've seen what it can do. You musn't lose this fight.
-						96: It's Anahita singing again. Do you want to fight her once more?
-						97: Can you hear that, {0}? Something's singing in the ocean?
-						98: Ah.. It looks like you've angered her. I hope you're prepared for a fight..
-						99: What in the world.. It's massive! Take caution; the playing field has changed!
-						100: It's a mechanical beast, but it's been corrupted by the Astral Infection. Stay cautious.
-						101: Ugh. It's a disgusting bug, but now it has artillery. When it gets wounded, those missiles will likely detonate.
-						102: Yuck. It's a huge pile of flesh and bones. From what I can tell, getting too close will end you fast.
-						103: This is a descendant of a cosmic god! We can't lose to something like this!
-						104: The Profaned Shard has summoned something! Prepare for a fight!
-						105: Hey, those pheromones.. Looks like it attracted a feral beast.
-						106: A deity of light and darkness approaches!. We musn't lose this..!
-						107: Something just entered the upper atmosphere! Brace for impact!
-						108: Wait. I sense something from the Dungeon's depths. Prepare yourself for a fight!
-						109: A demon is approaching..! Watch out! Whatever it wants, it'll kill you for it!
-						110: The ghosts of the dungeon.. They're fusing together! Prepare yourself!
-						111: Something descends from the acid rain! It's looking for a fight!
-						112: The Devourer of Gods has appeared! You must give this battle your all!
-						113: The Jungle Dragon roars. Let's throw a wrench in Yharim's plans.
-						114: Where's it going? Were we.. not strong enough?
-						115: No way.. Its power is ineffable. {0}.. We have to win this!
-						116: Draedon is here... Be mindful of his tactics. His knowledge spans the world over.
-						117: Stay sharp. Multiple foes detected. Draedon's inventions are on the move.
-						118: Quick- find higher ground! A colossal mechanical serpent draws near!
-						119: ...Never mind the absurdity of the giant mechanical squirrel. Focus on attacking its head and arms to stop its most dangerous attacks.
-						120: Huh? She looks weak, but she's actually kind of powerful... If you get hit, you'll be slammed with debuffs; keep your healing ready.
+						94: 焦炭玩偶召唤出了某个灼热的灵魂……它可以随意传送——别追丢了。
+						95: 灾厄……一个值得尊重的名字。我们已经见证了她的力量。此战，有胜无败。
+						96: 又是阿娜希塔的歌声。你想再次挑战她吗？
+						97: 你听见了吗，{0}？有谁在海里唱歌吗？
+						98: 呃……看上去你把她激怒了。希望你已经做好战斗的准备了……
+						99: 那究竟是什么……真是个大家伙！小心，战斗环境改变了！
+						100: 一头机械巨兽，但它已经被星辉瘟疫侵染了。保持谨慎。
+						101: 呃。一只令人作呕的飞虫，但它现在装载了火炮。当它受伤时，那些导弹可能会被引爆。
+						102: 呃呃，这儿有一大堆血肉与骸骨。在我看来，过于接近它可能会葬送你的生命。
+						103: 这是一只宇宙之神的后裔！我们不会输给它的！
+						104: 亵渎碎片召唤出了什么东西！准备战斗！
+						105: 嘿，那些信息素……看上去它吸引了一只凶猛的野兽！
+						106: 光明与黑暗之神降临了！……我们绝不能输！
+						107: 有什么东西进入高层大气了！小心它的冲撞！
+						108: 等等。我感觉地牢深处有什么东西。做好战斗准备！
+						109: 一只恶魔正在接近……！当心！无论它想要的是什么，它都会为此杀了你！
+						110: 那些地牢中的幽魂……它们融合在一起了！做好准备！
+						111: 有什么东西随着酸雨落下来了！它渴望战斗！
+						112: 神明吞噬者降临了！这场战斗你必须竭尽全力！
+						113: 丛林龙在咆哮。让我们破坏亚利姆的计划。
+						114: 它要去哪？是我们……不够强大吗？
+						115: 不可能……它的力量无法形容。{0}……我们必须得赢！
+						116: 嘉登来了……当心他的战术，他的知识足以通晓世界。
+						117: 保持警惕，侦测到多个敌人，嘉登的造物们正在高速接近。
+						118: 快点——找一处高地！一条机械巨蛇正在接近！
+						119: ……不要在意这只机械松鼠是何等的荒谬。击中攻击它的头部和手臂来阻止它最危险的攻击。
+						120: 哈？她看上去弱不禁风，但实际上很强大……如果你被击中了，你会获得各种减益；做好治疗的准备。
 						121: Who does this guy think he is, wielding celestial power all willy-nilly? Not to mention... Ugh- I don't have to spell it out, do I?
 						122: Well, no time like the present. His arsenal revolves around invader events- we've seen our share of those.
 						123: Oh, you just HAD to throw that thing into lava, did you? Well, good luck, because Mutant is pissed. Didn't see that coming- wait, I did.
@@ -1851,9 +1856,9 @@
 						{
 							Dialogue:
 							{
-								0: Greetings! I am Asphodene- a Starfarer, and in turn, that makes you my Starbearer.
-								1: 幸会！我是爱丝福德妮——一位星海旅者，相对地，你就是我的星之传承者。
-								2: 我将赋予你力量，以便我们能共同清除世界上的威胁——如果事态良好的话，我们还能解决更严重的问题。
+								0: 幸会！我是爱丝福德妮——一位星海旅者，相对地，你就是我的星之传承者。
+								1: 我将赋予你力量，以便我们能共同清除世界上的威胁——如果事态良好的话，我们还能解决更严重的问题。
+								2: 不过对你来说还会有更多的好处。若你愿意，我可以帮你描述一下我还能做什么。我比较推荐！
 							}
 							Choices:
 							{
@@ -1866,10 +1871,10 @@
 						{
 							Dialogue:
 							{
-								0: Okay, where to start... The Spatial Disk you used to form the contract can be used to access the Stellar Array, which provides abilities after defeating bosses. Nice, right?
-								1: OK，从哪里开始呢…你可以通过我们缔约的空间光盘访问天体序列，它会在你击败boss后提供各种能力。挺不错的，不是吗？
-								2: 空间光盘还有许多功能，但天体序列无疑是当下最重要的。记得经常检查它！
-								3: 最后一件事……我可以将来自异界的能量转化为精华，把它们和其它材料相结合，应该足以创造出强大的星海武器。
+								0: OK，从哪里开始呢…你可以通过我们缔约的空间光盘访问天体序列，它会在你击败boss后提供各种能力。挺不错的，不是吗？
+								1: 空间光盘还有许多功能，但天体序列无疑是当下最重要的。记得经常检查它！
+								2: 最后一件事……我可以将来自异界的能量转化为精华，把它们和其它材料相结合，应该足以创造出强大的星相武器。
+								3: 好了，我的力量属于你了。让这个世界看看我们能做到什么！
 							}
 							Choices:
 							{
@@ -1881,7 +1886,7 @@
 						{
 							Dialogue:
 							{
-								0: Well, in that case... My power is yours. Let's show this world what we can do.
+								0: 好吧，那样的话……我的力量属于你了。让这个世界看看我们能做到什么。
 							}
 							Choices:
 							{
@@ -1893,9 +1898,9 @@
 						{
 							Dialogue:
 							{
-								0: It's nice to meet you. My name is Eridani.. a Starfarer. You, in turn, are my Starbearer.
-								1: 幸会。我是埃里达妮…一位星海旅者。相对地，你就是我的星之传承者。
-								2: 根据签订的契约，我们必须齐心协力，向任何胆敢破坏这个世界的生物施以正义裁决——如果事态良好，我们还要拯救更多世界。
+								0: 幸会。我是埃里达妮…一位星海旅者。相对地，你就是我的星之传承者。
+								1: 根据签订的契约，我们必须齐心协力，向任何胆敢破坏这个世界的生物施以正义裁决——如果事态良好，我们还要拯救更多世界。
+								2: 如果你愿意，我可以为你描述一下我能做到些什么。就我个人而言，我还是比较推荐的——毕竟知识就是力量
 							}
 							Choices:
 							{
@@ -1907,10 +1912,10 @@
 						{
 							Dialogue:
 							{
-								0: Right. Let's begin. With the Spatial Disk you used, you can access the Stellar Array. With the defeat of powerful foes, it will grant you strength.
-								1: 好的，让我们开始吧。通过那个空间磁盘，你可以访问天体序列。随着强大的敌人被你击败，它将赋予你力量。
-								2: 空间磁盘还有很多用处，但据我所知，它们尚未向你开放。不过随着你变得更强，磁盘的更多部分会向你开放。
-								3: emmm……接下来……？ 如果你愿意的话，我可以把异界的能量转化为力量的结晶——精华。你可以将它们制作成星海武器。
+								0: 好的，让我们开始吧。通过那个空间光盘，你可以访问天体序列。随着强大的敌人被你击败，它将赋予你力量。
+								1: 空间光盘还有很多用处，但据我所知，它们尚未向你开放。不过随着你变得更强，磁盘的更多部分会向你开放。
+								2: emmm……接下来……？ 如果你愿意的话，我可以把异界的能量转化为力量的结晶——精华。你可以将它们制作成星相武器。
+								3: 这就是全部了。我的力量属于你了……我不会让你失望的。
 							}
 							Choices:
 							{
@@ -1922,7 +1927,7 @@
 						{
 							Dialogue:
 							{
-								0: In that case, my power is yours. Let's bring our full might to bear.
+								0: 那这样的话，我的力量现在属于你了。让我们一起全力以赴。
 							}
 							Choices:
 							{
@@ -1934,26 +1939,26 @@
 						{
 							Dialogue:
 							{
-								0: I see... Please, excuse my test. I know it was crude, but it's the only way I know how to judge someone.
+								0: 我明白了……请原谅我的先前的测试。我知道这很粗鲁，但这是我所知的评判某人的唯一方法。
 								1: 我明白了……请原谅我的先前的测试。我知道这很粗鲁，但这是我所知的评判某人的唯一方法。
 								2: 事实上，我早该知道的。我的妹妹绝不会做出不明智的选择。
-								3: 蛤? 妹妹? 没门……
+								3: 哈？你叫我妹妹？没门……
 								4: 抱歉，爱丝福德妮。这应该会有所帮助，想起来了吗？
-								5: Dude. We have GOT to stop meeting like this. The nerve...!
+								5: 伙计，我们不该像这样会面的。Dude. We have GOT to stop meeting like this. The nerve...!
 								6: 听我解释，星之传承者。 在这个星系的大千世界中，存在着以帮助那里的居民为己任的星海旅者。你应该知道我们都做些什么。
-								7: 身为能量的集合体，星海旅者们会选择各自的星之传承者作为使者。你应该清楚生物是最佳的法力导体，而我们严格来说算不上生命体。
+								7: 身为能量的集合体，星海旅者们会选择各自的星之传承者作为使者。你应该清楚生物是最佳的魔力导体，而我们严格来说算不上生命体。
 								8: 然而，初代星海旅者有些……名不副实。这是第一位星之传承者。据我所知，她们似乎已经丧失了心智与道德。
 								9: 如今，她们继续在星系中漫游。这位星海旅者受制于她的星之传承者，她们不择手段所追求的“正义”常常为人们带来灾难。
-								10: This is all conjecture, but the destruction is very real. It should go unsaid that we can't let this continue. I'll need your help in the future.
-								11: As it stands now, you have little chance of besting them. However, while Asphodene doesn't know it, all Starfarers have an ace up their sleeve: the Stellar Nova.
-								12: I've already bequeathed the power to her the second you've won our duel.
-								13: That is all for now. I must continue to track the First Starbearer. Good luck- I will have need of you soon.
-								14: I know he's a loner, but.. I wish we could have spoken more. Stay safe, Perseus. I can't help but feel he's hiding something from me, though. Just me?
-								15: Anyways, he was right. I do feel stronger- and my hair's gone all shiny! This power should be an amazing boon going forward.
-								16: Looks like my Stellar Nova is called 'Theofania Inanis.' Perhaps we'll get to use some more once we defeat more powerful foes?
-								17: After binding the Stellar Nova Key, you should be able to equip the Stellar Nova through the Spatial Disk, like usual.
-								18: You should have some Prismatic Cores already. With their power, I theorize you can upgrade Stellar Novas with crafting.
-								19: This is important. You need Stellar Nova Energy to cast Novas. You gain Nova energy in combat, and it depletes outside of combat.
+								10: 这些都是猜想，但她们造成的破坏却是实际存在的。不必说，我们不能让这种情况再继续下去了。未来我需要你的帮助。
+								11: 就目前的情况来看，你战胜她们的机会微乎其微。但爱丝福德妮不知道的是，所有星海旅者都有自己的底牌——天体新星。
+								12: 在你赢得这场决斗时，我已经将这种力量传承给她了。
+								13: 目前就这些了。我必须继续追踪初代星海旅者。祝你好运——我很快就会需要你的帮助。
+								14: 我知道他是个独行侠，但是……我希望我们能多些交流。保重，珀尔修斯。不过，我总感觉他有事瞒着我。只有我吗？
+								15: 无论如何，他说的很对。我确实感觉自己变强了——我的头发也在闪烁！这种力量对于我们前行来说再好不过了。
+								16: 看上去我的天体新星叫做“Theofania Inanis”。也许随着我们不断击败强大的敌人，还会有更多能力供我们使用。
+								17: 绑定天体新星钥匙之后，你就能通过空间光盘装备天体新星了，就像平时一样。
+								18: 你应该已经有一些Prismatic Cores了。凭借它们的力量，我猜你可以通过锻造来升级天体新星。
+								19: 这很重要，你需要天体新星能量来投射星体。天体新星能量会在战斗中累积，当你脱战时则会快速减少。
 							}
 							Choices:
 							{
@@ -1965,26 +1970,26 @@
 						{
 							Dialogue:
 							{
-								0: I see... Please, excuse my test. I know it was crude, but it's the only way I know how to judge someone.
-								1: I see... Please, excuse my test. I know it was crude, but it's the only way I know how to judge someone.
-								2: In reality, I should have known. My sisters would never choose unwisely.
+								0: 我明白了……请原谅我的先前的测试。我知道这很粗鲁，但这是我所知的评判某人的唯一方法。
+								1: 我明白了……请原谅我的先前的测试。我知道这很粗鲁，但这是我所知的评判某人的唯一方法。
+								2: 事实上，我早该知道的。我的妹妹绝不会做出不明智的选择。
 								3: 你刚才叫我“姐姐”？ 你一定是在开玩笑……
-								4: I apologize, Eridani. This should help. Ring any bells?
-								5: We haven't talked in ages- and you show up now...?
-								6: Please, let me explain, Starbearer. In tandem with our galaxy's myriad worlds, there exists Starfarers to aid their denizens. You are familiar with what we do.
-								7: As we are conduits of energy, we choose a Starbearer to act as our envoy. You should know that living beings are the best conductors of mana, and we're only partially alive.
-								8: However, the First Starfarer's nominee was... unfitting for their role. This is the First Starbearer. From what I know, they seem to have lost their mind and morals.
-								9: Now, they continue to roam the galaxy, the Starfarer a thrall to their chosen one's whims. They 'pursue good' through any means necessary, often with casualties.
-								10: This is all conjecture, but the destruction is very real. It should go unsaid that we can't let this continue. I'll need your help in the future.
-								11: As it stands now, you have little chance of besting them. However, while Eridani doesn't know it, all Starfarers have an ace up their sleeve: the Stellar Nova.
-								12: I've already bequeathed the power to her the second you've won our duel.
-								13: That is all for now. I must continue to track the First Starbearer. Good luck- I will have need of you soon.
-								14: Perseus was never one for sticking around. I think he wasn't letting something slip... Anyways, this power is incredible, but I need to get used to it.
-								15: My Stellar Nova is called 'Theofania Inanis.' Perhaps we will be able to utilize more once we become stronger.
-								16: After binding the Stellar Nova Key, you should be able to equip the Stellar Nova through the Spatial Disk, like usual.
-								17: With Prismatic Cores, you can craft upgrades to the Stellar Nova, I believe. You can affix them in the menu directly.
-								18: Don't forget: You need Stellar Nova Energy to cast Stellar Novas. You can only accrue Energy in combat.
-								19: That's about it.. I know it's a lot to process, but please use the Novas well. That's all for now.
+								4:  抱歉，埃里达妮。这应该会有所帮助，想起来了吗？
+								5: 我们好久没说过话了——你怎么突然出现了……？
+								6: 听我解释，星之传承者。 在这个星系的大千世界中，存在着以帮助那里的居民为己任的星海旅者。你应该知道我们都做些什么。
+								7: 身为能量的集合体，星海旅者们会选择各自的星之传承者作为使者。你应该清楚生物是最佳的魔力导体，而我们严格来说算不上生命体。
+								8: 然而，初代星海旅者有些……名不副实。这是第一位星之传承者。据我所知，她们似乎已经丧失了心智与道德。
+								9: 如今，她们继续在星系中漫游。这位星海旅者受制于她的星之传承者，她们不择手段所追求的“正义”常常为人们带来灾难。
+								10: 这些都是猜想，但她们造成的破坏却是实际存在的。不必说，我们不能让这种情况再继续下去了。未来我需要你的帮助。
+								11: 就目前的情况来看，你战胜她们的机会微乎其微。但埃里达妮不知道的是，所有星海旅者都有自己的底牌——天体新星。
+								12: 在你赢得这场决斗时，我已经将这种力量传承给她了。
+								13: 目前就这些了。我必须继续追踪初代星海旅者。祝你好运——我很快就会需要你的帮助。
+								14: 珀尔修斯不喜欢过多逗留。我觉得他没有失言……无论如何，这股力量真是难以置信，但我需要一点时间来熟悉它。
+								15: 我的天体新星叫做“Theofania Inanis”。也许随着我们变强，我们能使用更多能力。
+								16: 绑定天体新星钥匙之后，你就能通过空间光盘装备天体新星了，就像平时一样。
+								17: 你可以通过Prismatic Cores来锻造并升级你的天体新星，我想。你可以直接把它们添加到菜单上。 
+								18: 别忘了：你需要天体新星能量来投射星体。天体新星能量只会在战斗中积累。
+								19: 差不多就是这样……我知道这有点难以接受，但请善用你的天体新星。暂时就这么多了。
 							}
 							Choices:
 							{
@@ -1996,10 +2001,10 @@
 						{
 							Dialogue:
 							{
-								0: Hmm, feel like you're ready for the next step of your journey yet?
-								1: Well, either way, I'm going to give you this: the Astrolabe. If you check the Stellar Nova Menu, you'll see a new option has opened up.
-								2: I'll be brief, but the Astrolabe will allow you to explore the galaxy (with a few extra steps.) If you're interested, use the Astrolabe to visit the Observatory Hyperborea.
-								3: That's all for now. I'll be waiting! Oh, and Eri will be there too.
+								0: 嗯，看来你已经准备好继续前行了？
+								1: 无论如何，我要把the Astrolabe交给你。当你访问天体新星菜单时，你会看到新解锁的选项。
+								2: 简而言之，Astrolabe可以让你探索星海（需要一些额外的步骤）。如果你对此感兴趣，就通过Astrolabe来拜访极北天文台吧。
+								3: 暂时只有这些了。我随时恭候你的到来！哦，埃里也在那里等着你。
 							}
 							Choices:
 							{
@@ -2011,10 +2016,10 @@
 						{
 							Dialogue:
 							{
-								0: Looks like you're getting stronger- and quickly. While I originally feared for your well-being, it seems you're strong enough to utilize this now.
-								1: This is the Astrolabe. If you check the Stellar Nova Menu, the previously locked option has become available.
-								2: The Astrolabe will allow you to explore the galaxy- with the proper setup, of course. I can explain more once you've used it to go to the Observatory Hyperborea.
-								3: When you're ready, feel free to visit. I'll be awaiting your arrival- and Asphodene as well.
+								0: 看起来你变得更强了——并且更加迅速。虽然我原本很担心你的安危，但你现在已经足以驾驭这个了。
+								1: 这是Astrolabe。如果你访问天体新星菜单，你会发现原本锁定的选项已经可用了。
+								2: Astrolabe可以让你探索星海——当然，需要适当的设置。等你通过它抵达极北天文台时，我再向你作详细的解释。
+								3: 等你做好准备，随时可以来访。我在此恭候你的到来——爱丝福德妮也是。
 							}
 							Choices:
 							{
@@ -2026,7 +2031,7 @@
 						{
 							Dialogue:
 							{
-								0: You finally made it! This is the Observatory Hyperborea- the home of the Starfarers. Not all of them, mind you, but Eri and I.
+								0: 你做到了！欢迎来到极北天文台——星海旅者之家。注意，不是所有人的，只是我和埃里的家。
 								1: Right. Actually, the Observatories weren't intended for us at all, but we're... keeping the place clean. The original inhabitants are long gone anyways.
 								2: We might not look it, but we aren't native to this galaxy. We came after- well, it's hard to explain straight out.
 								3: Let's pretend the universe is a lake, right? Okay, good. Now imagine someone started pouring oil into the lake- not something you could miss.
@@ -2513,15 +2518,15 @@
 					Choice: 选择一个在你的旅途中帮助你的星海旅者
 					Warning: "[c/E36666:该选择是永久的 （对每个角色而言）]"
 					ManaIncrease: 最大魔力值增加了20点
-					Talk: 空间磁盘开始产生共鸣；似乎有人想要和你交流
+					Talk: 空间光盘开始产生共鸣；似乎有人想要和你交流
 					Asphodene:
 					{
-						1: "爱丝福德妮，[c/6ECDFA:星体星海旅者]。大胆且充满活力的她专注于使用 [c/FAC16E:闪耀而强力的攻击。]"
+						1: 爱丝福德妮，[c/6ECDFA:星体星海旅者]。大胆且充满活力的她专注于使用 [c/FAC16E:闪耀而强力的攻击。]
 						2: 你感到星体的能量在你体内流淌…
 					}
 					Eridani:
 					{
-						1: "埃里达妮，[c/D06EFA:本影星海旅者]。一位矜持的战术大师, 她[c/FAC16E:从深度复杂的谋略中蓄势待发。]"
+						1: 埃里达妮，[c/D06EFA:本影星海旅者]。一位矜持的战术大师, 她[c/FAC16E:从深度复杂的谋略中蓄势待发。]
 						2: 你感到本影的能量在你体内流淌…
 					}
 				}
@@ -2715,8 +2720,8 @@
 					{
 						Unlocked:
 						{
-							Asphodene: Ars Laevateinn. If you've ever wanted to clear an area fast, this is the Stellar Nova for that.
-							Eridani: This Stellar Nova, Ars Laevateinn, focuses on doing large amounts of damage in a specified area.
+							Asphodene: 魔剑·莱瓦汀. If you've ever wanted to clear an area fast, this is the Stellar Nova for that.
+							Eridani: This Stellar Nova, 魔剑·莱瓦汀, focuses on doing large amounts of damage in a specified area.
 						}
 						Locked:
 						{
@@ -2768,43 +2773,43 @@
 				{
 					TheofaniaInanis:
 					{
-						AbilityName: Theofania Inanis
-						AbilitySubName: "[c/C2BDFF:Limitless Starry Void]"
-						AbilityDescription: Conjure a colossal blade to cleave foes in twain. After casting, you will be able to re-cast Theofania Inanis for 10 seconds at no additional cost. Striking foes with Theofania Inanis will inflict Void Atrophy, dealing powerful damage over time. The second cast of Theofania Inanis will double the potency of Void Atrophy, if applicable. This debuff lasts for 30 seconds. If the attack crits, refund a portion of consumed Stellar Nova Energy. Each cast does 50% of Stellar Nova damage.
-						AstralBonus: You may re-cast Theofania Inanis again to a total of 3 times, dealing 25% damage. This cast does not inflict Void Atrophy, nor does it strengthen it.
-						UmbralBonus: The second hit of Theofania Inanis does not strengthen Void Atrophy, but increases self damage output by 400% for 5 seconds.
+						AbilityName: 虚无圣刃
+						AbilitySubName: "[c/C2BDFF:无垠空虚之星空]"
+						AbilityDescription: 召唤一柄巨大的剑刃将敌人劈成两瓣。释放后，你可以在10秒内不消耗能量再释放一次。虚无圣刃命中敌人会造成虚空枯萎减益，在短时间内造成大量伤害。第二次释放的虚无圣刃再次命中会使得虚空枯萎的效果翻倍。该减益持续30秒，若造成暴击，则退还部分消耗的天体新星能量。每次造成50%的天体新星伤害。
+						AstralBonus: 你可以再多释放一次虚无圣刃，造成25%的天体新星伤害。这次施放不会施加减益，也不会强化减益。
+						UmbralBonus: 虚无圣刃的第二次攻击不会强化虚空枯萎减益，但是剑刃会使自身的伤害提升400%，持续5秒。
 					}
 					ArsLaevateinn:
 					{
-						AbilityName: Ars Laevateinn
-						AbilitySubName: "[c/F19559:Shine True, O Burning Bright Star]"
-						AbilityDescription: Wield a blazing greatsword to return foes to ashes. Casting Ars Laevataeinn will mark a colossal region around you with infernal flames. Ars Laevateinn will pulse damage five times in the specified region, dealing 1/5th of the total damage with each hit. During this time, you will be granted 'Surtr's Twilight.' While this buff is active, all attacks will Burn foes for 8 seconds. If Burned foes are struck by Ars Laevateinn, they will take a small portion of Stellar Nova damage as extra damage.
-						AstralBonus: Burning foes take extra damage. If the attack was a critical strike, burning foes take even more damage.
-						UmbralBonus: Surtr's Twilight will additionally grant a 10% attack buff. Gain Mana Regeneration while Surtr's Twilight is active.
+						AbilityName: 魔剑·莱瓦汀
+						AbilitySubName: "[c/F19559:照耀真实，灼烧的明星]"
+						AbilityDescription: 挥舞一把炽热的传说巨剑将敌人化为灰烬。释放魔剑·莱瓦汀会使你在周围巨大范围内留下地狱之火。魔剑·莱瓦汀会在指定范围内间断造成共计5次伤害。在此期间，你会获得“史尔特尔的黄昏”增益。当该增益激活时，所有的攻击都会点燃敌人8秒。若被点燃的敌人受到魔剑·莱瓦汀的攻击，则会额外受到一部分天体新星伤害。
+						AstralBonus: 处于燃烧状态的敌人受到额外的伤害。若造成暴击，则其会受到更多伤害。
+						UmbralBonus: “史尔特尔的黄昏”状态下你获得10%的伤害加成。在“史尔特尔的黄昏”状态下，你的魔力会得到持续回复。
 					}
 					KiwamiRyuken:
 					{
-						AbilityName: Kiwami Ryuken
-						AbilitySubName: "[c/36BDEC:Unbridled Essence of the Dragon's Fist]"
-						AbilityDescription: Upon activation of Kiwami Ryuken, you will have a one-second window to take damage from a foe, becoming invincible in the process. If hit, a counterattack will trigger, dealing incredible damage in close proximity, aimed at your cursor. You will be unable to execute the counterattack if the foe is further than melee range, but damage will still be negated. You will be refunded 50% of the Stellar Nova energy cost if you are not hit during Kiwami Ryuken.
-						AstralBonus: The counterattack will always deal critical damage below half health. Restore 5 Stellar Nova Energy upon triggering the counterattack.
-						UmbralBonus: Heal 40 health and mana upon triggering the counterattack. 10 extra Stellar Nova energy will be refunded on failure.
+						AbilityName: 极意龙拳
+						AbilitySubName: "[c/36BDEC:无拘无束的龙拳之极意]"
+						AbilityDescription: 激活极意龙拳后，在接下来的1秒内你可以受到敌人的伤害，且期间你获得无敌。在此期间若你被击中，则对你近距离光标方向造成大量伤害。若敌人在近距离范围外，则不会触发反击，但依旧会为你抵消伤害。若你在极意龙拳释放期间没有被命中，则退还50%的天体新星能量。
+						AstralBonus: 反击在你生命值低于50%时必定造成暴击，且反击生效后为你回复5点天体新星能量。
+						UmbralBonus: 触发反击时额外为你回复40点生命值和魔力值。释放失败时额外退还10点天体新星能量。
 					}
 					GardenOfAvalon:
 					{
-						AbilityName: Garden of Avalon
-						AbilitySubName: "[c/ECB3FC:The Forever-Sealed Utopia]"
-						AbilityDescription: Call forth the Garden of Avalon, infusing the world with radiant energy. Grant powerful Health and Mana regeneration periodically for 8 seconds, scaling with Stellar Nova Damage. Gain Invincibility for 2 seconds. If the cast would be critical, gain Health, modified by Stellar Nova crit modifiers. Additionally, upon a critical cast, gain the buff 'Solemn Aegis' for 15 seconds, which negates one hit of damage independently of Invincibility.
-						AstralBonus: Invincibility lasts for 4 seconds instead of 2. Instantly heal 100 HP upon casting Garden of Avalon.
-						UmbralBonus: Gain an extra buff on cast: Dreamlike Charisma. (Can not stack.) Dreamlike Charisma increases damage by 16%, doubled above 100 Mana.
+						AbilityName: 阿瓦隆之庭
+						AbilitySubName: "[c/ECB3FC:永世隔绝的理想乡]"
+						AbilityDescription: 召唤出阿瓦隆之庭，像世界挥洒温暖的辉光。定期给予你大量生命回复和魔力回复，持续8秒，回复的数值以天体新星伤害计算。获得无敌，持续2秒。若本次释放产生暴击，则额外恢复生命值，概率取决于天体新星暴击率。此外，在暴击释放时，还会获得“庄严之盾”，会为你在无敌以外的时间抵挡一次伤害，持续15秒。
+						AstralBonus: 无敌时间由2秒提升至4秒。使用阿瓦隆之庭时立即回复100点生命值。
+						UmbralBonus: 释放时额外获得增益：“梦幻魅力”（无法叠加）。“梦幻魅力“会为你增加16%的伤害，若你的魔力值高于100点，该加成效果翻倍。
 					}
 					EdinGenesisQuasar:
 					{
-						AbilityName: Edin Genesis Quasar
-						AbilitySubName: "[c/00FF93:The Moment a Planet Is Born]"
-						AbilityDescription: Upon cast, become immobile and invincible temporarily. Gain 'Astarte Driver' for 25 seconds. Astarte Driver grants infinite flight and three Cosmic Charges. ALL attacks while Astarte Driver is active will inherit the stats of the Stellar Nova. Pressing the Starfarer Action Key with a Cosmic Charge available will launch a barrage of spatial projectiles (2 second use cooldown.) After activating Astarte Driver's stat-changing effect, the target will be immune for a very short period.
-						AstralBonus: Critical hits do an additional {0} damage in Astarte Driver. You will gain a Cosmic Charge after defeating a foe with a critical hit. (Max 5 charges.)
-						UmbralBonus: Astarte Driver attacks will execute any foe below {0} HP. Gain 1 second of Invincibility when a Cosmic Charge is expended.
+						AbilityName: 闪耀于原始宇宙的创世纪
+						AbilitySubName: "[c/00FF93:行星诞生之刻]"
+						AbilityDescription: 释放时，进入无敌且缓慢飞升。进入“阿斯塔蒂驾驭”状态，持续25秒。“阿斯塔蒂驾驭”会给予你无限的飞行时间和3个寰宇充能。在“阿斯塔蒂驾驭”状态下，你的所有攻击都会附加天体新星伤害。在存有寰宇充能的状态下，按下武器技能键会发射一串空间弹幕（2秒冷却）。在激活“阿斯塔蒂驾驭”的属性转换效果后，目标会获得极短时间的免疫。
+						AstralBonus: 在“阿斯塔蒂驾驭”状态下造成暴击将会额外造成 {0} 点伤害。使用暴击击杀敌人后，你会获得一层寰宇充能（最多5层）。
+						UmbralBonus: 在“阿斯塔蒂驾驭”状态下将会处决任何生命值低于 {0} 的敌人。消耗寰宇充能时获得1秒无敌。
 					}
 					BaseDamage: 基础伤害
 					BaseEnergyCost: 基础能量消耗
@@ -2977,7 +2982,6 @@
 				StellaglyphTier1: 旅星符台（一阶）
 				StellaglyphTier2: 旅星符台（二阶）
 				StellaglyphTier3: 旅星符台（三阶）
-			}
 			ItemTooltip:
 			{
 				AlienCoral:
@@ -3138,7 +3142,7 @@
 					[c/F94135:英雄之证]
 					敌人没有以你为目标的攻击伤害减少40%
 					[c/8BB9F8:希冀回音]
-					三阶星体阵列获得额外效果
+					三阶天体序列获得额外效果
 					超越无限：伤害进一步提升30%
 					年表之钥：激活后净化药水疾病，并获得30秒的拾心，持续30秒
 					边界之间：潮涌时获得40点防御，潮落时损失20点防御
@@ -3169,7 +3173,7 @@
 					击败敌人获得1点天体新星能量
 					当你的天体新星能量低于50%时，每次还会额外获得1点天体新星能量
 					[c/73E096:仲夏夜之梦]
-					获得额外的星体阵列上限
+					获得额外的天体序列上限
 					[c/A185AD:流年往事]
 					受到伤害会获得脆弱减益，使你的防御力减半，持续4秒
 					[c/A176F1:久盼天堂]
@@ -3339,8 +3343,8 @@
 					'''
 				DebugDisk:
 					'''
-					移除所有玩家在星海之上模组内的数据
-					包括星海旅者、星体阵列、对话和天体新星
+					移除所有玩家在星海苍穹模组内的数据
+					包括星海旅者、天体序列、对话和天体新星
 					将会影响所有在线玩家
 					在寰宇之旅中不会生效
 					可能会产生一些问题；这是一个Debug物品
@@ -5573,8 +5577,8 @@
 				PenthCastingPage: Penthesilea's Muse
 				PenthSpin: Penthesilea's Brush
 				BossGarden: The Garden of Avalon
-				BossLaevateinn: Ars Laevateinn
-				BossLaevateinnDamage: Ars Laevateinn
+				BossLaevateinn: 魔剑·莱瓦汀
+				BossLaevateinnDamage: 魔剑·莱瓦汀
 				BossTheofania: Theofania Inanis
 				BrushStroke: Brush Stroke
 				BrushStrokeDamage: Brush Stroke
@@ -5920,8 +5924,8 @@
 				GardenOfAvalon: The Garden of Avalon
 				kiwamiryukenconfirm: Kiwami Ryuken
 				kiwamiryukenstun: Kiwami Ryuken Stun
-				Laevateinn: Ars Laevateinn
-				LaevateinnDamage: Ars Laevateinn
+				Laevateinn: 魔剑·莱瓦汀
+				LaevateinnDamage: 魔剑·莱瓦汀
 				SpaceBurstFX: NovaFX
 				SpaceBurstFX2: NovaFX2
 				Theofania: Theofania Inanis
