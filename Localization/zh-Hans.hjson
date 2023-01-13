@@ -459,7 +459,7 @@
 						76: 好。这个近战精华可以遁入虚空并击败敌人，随后吸收他们。我觉得非常酷。
 						77: 我为你搞来了一种新精华。它似乎能同时借用近战与魔法的力量——一把多功能武器,我爱死它了！
 						78: 这片墓地似乎和这种精华有所联系。希望这些墓碑不是你死后留下的，对吧？
-						79: Hmm... this Summon-type Essence will create some sort of controllable drone- I wonder if it can talk?
+						79: 嗯……这个召唤武器的精华可以用于制造某种遥控无人机——我想知道能不能和它们交流。
 					}
 					Eridani:
 					{
@@ -545,10 +545,10 @@
 						76: 当然，这还不是全部——你可以用这副手套召唤出一整个武器库。
 						77: 我知道这听起来令人生畏，但如果你能很好地控制这些武器，你就能造成巨量伤害。
 						78: 好，这是一个近战武器——借助灵魂的力量，你可以劈开你周围的大片区域，并步入虚空即时传送。
-						79: 看来有一种新的精华可供你使用了。它能造成一种独特的伤害并释放 It uses a unique damage type and powerful charge attacks- but it'll probably have some recoil damage.
+						79: 看来有一种新的精华可供你使用了。它能造成一种独特的伤害并释放强大的蓄力攻击——但它可能有一点后坐力。
 						80: 这片墓地似乎和这种精华有所联系。希望它能帮助你避免一开始就死出一片墓地。
 						81: 虽然它很强大，但我相信它是一把实用的工具，而不是武器。
-						82: 这种魔法精华虽然和自然有关，但它似乎相当不稳定。也许你最好把它和其它武器搭配着使用。This Magic Essence, while aspected to nature, seems rather volatile. Perhaps you'd be able to better use it in tandem with other weapons?
+						82: 这种魔法精华虽然和自然有关，但它似乎相当不稳定。也许你最好把它和其它武器搭配着使用。
 					}
 					Perseus:
 					{
@@ -1549,7 +1549,7 @@
 						91: 这就是世间所有史莱姆的源头。不要草率，我敢肯定那些史莱姆被击中后会分裂！
 						92: 我觉得它有点不太对劲，但我说不上来。当心别被冻住了……我想你应该已经知道了。
 						93: 嘿，是荒漠灾虫——但是没那么干燥！我们之前见过一只，这只又能有多糟糕呢？
-						94: 一条巨大的海蛇！等等……这家伙很危险！
+						94: It's a giant sea serpent! Hang on... This thing is SERIOUSLY dangerous!
 						95: 火焰孕育出了这只恶魔般的元素之灵！当心脚下，别掉进熔岩里了！
 						96: 它是毁灭的征兆……你知道它会带来多大的破坏。别输了……！
 						97: ……又是阿娜希塔。你打算挑战利维坦吗？
@@ -1581,17 +1581,17 @@
 						123: 哈？看看这个木偶……还以为自己比我们强什么的！给它一点颜色看看！
 						124: 好戏开场了！如果你还记得的话，他会借助世界入侵者的力量发动攻击。
 						125: 如果每次你把巫毒娃娃扔进岩浆时我都能得到五块钱……那我现在已经……别在意。突变体非常恼火，突变体非常强大，突变体朝你冲过来了！
-						126: 一只雷鸟接近了！虽然它没那么强大，但是不要掉以轻心。
+						126: 惊雷王鹰接近了！虽然它没那么强大，但是不要掉以轻心。
 						127: 嘿，那只水母是不是有点太大了？无论它的目的如何，它正在朝这边靠近！
 						128: 呃，那是什么东西？一只吸血鬼？快找一些银器来！或者说那是狼人……？
 						129: 看上去那块花岗岩苏醒了……？是时候让它回归自然了。
 						130: 那名角斗士看起来比他的同伴更强壮。让我们给他长长记性！
 						131: 一艘外星飞船！看起来它残血时会变得更强！
-						132: 当心……看起来寒风爬行者就在附近。
-						133: 看上去一位监视者对虚空透镜起了反应。让我们捅穿它又大又丑的眼睛……！
+						132: 当心……看起来极地遁蛛就在附近。
+						133: 看上去一位注视者对虚空透镜起了反应。让我们捅穿它又大又丑的眼睛……！
 						134: 饥荒魔符召唤出了一位强大的敌人。我不知道你还在期待什么！
 						135: 深渊之影在收缩！我从这只海洋生物身上感受到了一股强大的黑魔法气息……
-						136: 这些元素们正在狩猎。让他们见识下我们的厉害！
+						136: 这些元素正在狩猎。让他们见识下我们的厉害！
 						137: 这里太热了。沙漠里所有地方都是这样，我猜。
 						138: 这里就是丛林了。四处探索的时候当心点。呃，前提是确保你能探索全面。
 						139: 嗯，这里就是海洋了……你想让我说点别的？这就是片海。
@@ -1600,9 +1600,9 @@
 						142: 腐化已经蔓延到了这里。不要久留。
 						143: 这里的地面就像血肉一样。显然——我们不该在这里逗留……
 						144: 是雪地！我一直都很喜欢雪。当然，是水变成的那种。
-						145: 是神圣之地，传说中的地方。尽管这里的一切都想干掉我们。太扫兴了。
+						145: 是神圣之地，传说中的地方。尽管这里的一切都想干掉我们。真是太扫兴了。
 						146: 哇哦！这地方真特别。你不是每天都能看见这些蘑菇的。
-						147: 这里有成千上万的骷髅！你难道不享受那么一丁点的危险吗？我还蛮喜欢的。
+						147: 这里有一髅子敌人！你难道不享受那么一丁点的危险吗？我还蛮喜欢的。
 						148: 这就是我们听见的那颗落地的陨石。我打赌我们能用陨石做一些酷毙了的东西。
 						149: 这里是……硫火之崖。这里曾发生过一些可怕的事情。
 						150: 这里就是星辉瘟疫。我曾经读到过它，但亲眼所见还是第一次。
@@ -1636,8 +1636,8 @@
 						178: 她一直都近在咫尺……试着使用这片区域中央的追忆印记吧。
 						179: 看起来我们还没办法探索这里……也许下次吧。
 						180: 哇哦，这里被浓郁的绿色覆盖了。看上去是场有趣的旅行——让我们开始探索吧！
-						181: OK，那只史莱姆不再逃跑了。让我们下定决心开战吧。
-						182: 这里并没有我幻想中的金银珠宝……做好准备，那个恶灵正准备发起偷袭。
+						181: OK，那只史莱姆不再逃跑了。让我们做好准备开战吧。
+						182: 这里并没有我想象中的金银珠宝……做好准备，那只恶灵正准备发起偷袭。
 						183: 这名敌人让我很恼火。不要放松警惕，免得它用那个“星象仪”做什么手脚。
 						184: 你周围变得寒冷刺骨。小心，那只雪花状的生物正朝你靠近。
 						185: 不要小瞧这名敌人——它极其危险。呵呵——我不是在开玩笑，谨慎行事。
@@ -1766,22 +1766,22 @@
 						112: 神明吞噬者降临了！这场战斗你必须竭尽全力！
 						113: 丛林龙在咆哮。让我们破坏亚利姆的计划。
 						114: 它要去哪？是我们……不够强大吗？
-						115: 不可能……它的力量无法形容。{0}……我们必须得赢！
+						115: 难以置信……她的力量无法形容的强大。{0}……我们必须得赢！
 						116: 嘉登来了……当心他的战术，他的知识足以通晓世界。
-						117: 保持警惕，侦测到多个敌人，嘉登的造物们正在高速接近。
+						117: 保持警惕，侦测到多个敌人！嘉登的造物们正在高速接近。
 						118: 快点——找一处高地！一条机械巨蛇正在接近！
-						119: ……不要在意这只机械松鼠是何等的荒谬。击中攻击它的头部和手臂来阻止它最危险的攻击。
-						120: 哈？她看上去弱不禁风，但实际上很强大……如果你被击中了，你会获得各种减益；做好治疗的准备。
-						121: Who does this guy think he is, wielding celestial power all willy-nilly? Not to mention... Ugh- I don't have to spell it out, do I?
-						122: Well, no time like the present. His arsenal revolves around invader events- we've seen our share of those.
-						123: Oh, you just HAD to throw that thing into lava, did you? Well, good luck, because Mutant is pissed. Didn't see that coming- wait, I did.
-						124: The Storm Flare has called something down! Hmm? It looks to be lightning-aspected.
-						125: Some sort of jellyfish monster is approaching. It looks like there's someone trapped inside..?
-						126: It's a giant vampire bat! Mind yourself...
-						127: The cavern's energy has congealed into a monster! What in the world..?
-						128: A knight has arisen from the marble cave! Look out- it's prepared to fight!
-						129: It's an alien spaceship! It looks like it'll be stronger on low HP!
-						130: Do you see that..? It looks like a giant snow spider! Let's kill it quickly..
+						119: ……不要在意这只机械松鼠是何等的荒谬。集中攻击它的头部和手臂来阻止它最危险的攻击。
+						120: 哈？她看上去弱不禁风，但实际上她很强大……如果你被击中了，你将获得大量的减益；做好治疗的准备。
+						121: 这家伙以为他是谁？天界能量的掌控者吗？不必说……呃——我没必要说出来，对吧？
+						122: 唔，现在是最佳时机了。他的武器库围绕着入侵事件展开——我们已经看到其中属于我们的那一份了。
+						123: 哦，你一定要把这东西扔进岩浆，对吗？唔，祝你好运，突变体被激怒了。你难道没看见他正朝这边来吗——等等，我看见了。
+						124: 风暴信号弹叫来了什么东西！嗯？它看上去像团闪电。
+						125: 某种水母怪物正在接近。看起来有人被困在里面了……？
+						126: 一只巨大的吸血蝙蝠！当心……
+						127: 洞穴中的能量汇聚出了一只怪物！这究竟是什么东西……？
+						128: 一位战士从大理石洞穴中出现了！当心——他准备好战斗了！
+						129: 一艘外星飞船！看起来它残血时会变得更强！
+						130: 你看见了吗……？那看上去是一只巨型极地遁蛛！让我们速战速决……
 						131: A Beholder..? Don't get reckless.. These foes are incredibly fearsome!
 						132: That sigil you used.. I can sense an undead beast approaching! Get ready for a fight!
 						133: The Abyssal Shadows are converging..! This sea monster holds dominion over dark magic!
@@ -1814,13 +1814,13 @@
 						160: Chronal reversal complete..!
 						161: March forth, and keep fighting!
 						162: We're not about to stop here!
-						163: Embrace the abyss! Set yourself free!
+						163: 拥抱深渊！解放自我！
 						164: They'll all fall before us.
 						165: Like lambs to slaughter!
 						166: We'll finish them all off!
 						167: I'm ready when you are.
 						168: The Stellar Nova is ready!
-						169: I'm ready. Are you?
+						169: 我准备好了，你呢？
 						170: Let's do this.
 						171: Just tell me when.
 						172: Let's find an opening.
