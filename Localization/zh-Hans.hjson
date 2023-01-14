@@ -459,7 +459,7 @@
 						76: 好。这个近战精华可以遁入虚空并击败敌人，随后吸收他们。我觉得非常酷。
 						77: 我为你搞来了一种新精华。它似乎能同时借用近战与魔法的力量——一把多功能武器,我爱死它了！
 						78: 这片墓地似乎和这种精华有所联系。希望这些墓碑不是你死后留下的，对吧？
-						79: Hmm... this Summon-type Essence will create some sort of controllable drone- I wonder if it can talk?
+						79: 嗯……这个召唤武器的精华可以用于制造某种遥控无人机——我想知道能不能和它们交流。
 					}
 					Eridani:
 					{
@@ -485,7 +485,7 @@
 						16: 这种远程武器能进入近战模式，会对你射中过的敌人造成更多伤害。挺吸引人的。
 						17: 这个强大的近战遗物允许消耗魔力来传送并造成强大的伤害。我真挺喜欢它的。
 						18: 这个武器是由月亮领主的力量和它的天体柱直接制成的。它在你手中会有不错的表现。
-						19: 来自光之战士……这个精华允许Limit Break。是一个非常强大的魔法武器。
+						19: 来自光之战士……这个精华能让你突破极限。是一个非常强大的魔法武器。
 						20: 光明会洗涤你的罪过！或类似的东西。
 						21: 这把武器可以在远程和魔法之间切换。如果你能卡住装弹的时间点，它就能造成暴击。
 						22: 我相信你能想出办法来解决这个问题……
@@ -545,10 +545,10 @@
 						76: 当然，这还不是全部——你可以用这副手套召唤出一整个武器库。
 						77: 我知道这听起来令人生畏，但如果你能很好地控制这些武器，你就能造成巨量伤害。
 						78: 好，这是一个近战武器——借助灵魂的力量，你可以劈开你周围的大片区域，并步入虚空即时传送。
-						79: 看来有一种新的精华可供你使用了。它能造成一种独特的伤害并释放 It uses a unique damage type and powerful charge attacks- but it'll probably have some recoil damage.
+						79: 看来有一种新的精华可供你使用了。它能造成一种独特的伤害并释放强大的蓄力攻击——但它可能有一点后坐力。
 						80: 这片墓地似乎和这种精华有所联系。希望它能帮助你避免一开始就死出一片墓地。
 						81: 虽然它很强大，但我相信它是一把实用的工具，而不是武器。
-						82: 这种魔法精华虽然和自然有关，但它似乎相当不稳定。也许你最好把它和其它武器搭配着使用。This Magic Essence, while aspected to nature, seems rather volatile. Perhaps you'd be able to better use it in tandem with other weapons?
+						82: 这种魔法精华虽然和自然有关，但它似乎相当不稳定。也许你最好把它和其它武器搭配着使用。
 					}
 					Perseus:
 					{
@@ -1549,7 +1549,7 @@
 						91: 这就是世间所有史莱姆的源头。不要草率，我敢肯定那些史莱姆被击中后会分裂！
 						92: 我觉得它有点不太对劲，但我说不上来。当心别被冻住了……我想你应该已经知道了。
 						93: 嘿，是荒漠灾虫——但是没那么干燥！我们之前见过一只，这只又能有多糟糕呢？
-						94: 一条巨大的海蛇！等等……这家伙很危险！
+						94: It's a giant sea serpent! Hang on... This thing is SERIOUSLY dangerous!
 						95: 火焰孕育出了这只恶魔般的元素之灵！当心脚下，别掉进熔岩里了！
 						96: 它是毁灭的征兆……你知道它会带来多大的破坏。别输了……！
 						97: ……又是阿娜希塔。你打算挑战利维坦吗？
@@ -1581,17 +1581,17 @@
 						123: 哈？看看这个木偶……还以为自己比我们强什么的！给它一点颜色看看！
 						124: 好戏开场了！如果你还记得的话，他会借助世界入侵者的力量发动攻击。
 						125: 如果每次你把巫毒娃娃扔进岩浆时我都能得到五块钱……那我现在已经……别在意。突变体非常恼火，突变体非常强大，突变体朝你冲过来了！
-						126: 一只雷鸟接近了！虽然它没那么强大，但是不要掉以轻心。
+						126: 惊雷王鹰接近了！虽然它没那么强大，但是不要掉以轻心。
 						127: 嘿，那只水母是不是有点太大了？无论它的目的如何，它正在朝这边靠近！
 						128: 呃，那是什么东西？一只吸血鬼？快找一些银器来！或者说那是狼人……？
 						129: 看上去那块花岗岩苏醒了……？是时候让它回归自然了。
 						130: 那名角斗士看起来比他的同伴更强壮。让我们给他长长记性！
 						131: 一艘外星飞船！看起来它残血时会变得更强！
-						132: 当心……看起来寒风爬行者就在附近。
-						133: 看上去一位监视者对虚空透镜起了反应。让我们捅穿它又大又丑的眼睛……！
+						132: 当心……看起来极地遁蛛就在附近。
+						133: 看上去一位注视者对虚空透镜起了反应。让我们捅穿它又大又丑的眼睛……！
 						134: 饥荒魔符召唤出了一位强大的敌人。我不知道你还在期待什么！
 						135: 深渊之影在收缩！我从这只海洋生物身上感受到了一股强大的黑魔法气息……
-						136: 这些元素们正在狩猎。让他们见识下我们的厉害！
+						136: 这些元素正在狩猎。让他们见识下我们的厉害！
 						137: 这里太热了。沙漠里所有地方都是这样，我猜。
 						138: 这里就是丛林了。四处探索的时候当心点。呃，前提是确保你能探索全面。
 						139: 嗯，这里就是海洋了……你想让我说点别的？这就是片海。
@@ -1600,9 +1600,9 @@
 						142: 腐化已经蔓延到了这里。不要久留。
 						143: 这里的地面就像血肉一样。显然——我们不该在这里逗留……
 						144: 是雪地！我一直都很喜欢雪。当然，是水变成的那种。
-						145: 是神圣之地，传说中的地方。尽管这里的一切都想干掉我们。太扫兴了。
+						145: 是神圣之地，传说中的地方。尽管这里的一切都想干掉我们。真是太扫兴了。
 						146: 哇哦！这地方真特别。你不是每天都能看见这些蘑菇的。
-						147: 这里有成千上万的骷髅！你难道不享受那么一丁点的危险吗？我还蛮喜欢的。
+						147: 这里有一髅子敌人！你难道不享受那么一丁点的危险吗？我还蛮喜欢的。
 						148: 这就是我们听见的那颗落地的陨石。我打赌我们能用陨石做一些酷毙了的东西。
 						149: 这里是……硫火之崖。这里曾发生过一些可怕的事情。
 						150: 这里就是星辉瘟疫。我曾经读到过它，但亲眼所见还是第一次。
@@ -1615,7 +1615,7 @@
 						157: 看起来开始下雨了。希望这不会扫了你的兴……呃乌。
 						158: 一场暴风雪！别被冻伤了，那会很麻烦的。
 						159: 沙尘暴来了。当心，它无处不在。
-						160: 时间与空间都屈服于我的意志！
+						160: 时间与空间都将屈服于我的意志！
 						161: 这不在我的管辖范围内！
 						162: 时光倒流……！
 						163: 不灭的怒火……！
@@ -1636,8 +1636,8 @@
 						178: 她一直都近在咫尺……试着使用这片区域中央的追忆印记吧。
 						179: 看起来我们还没办法探索这里……也许下次吧。
 						180: 哇哦，这里被浓郁的绿色覆盖了。看上去是场有趣的旅行——让我们开始探索吧！
-						181: OK，那只史莱姆不再逃跑了。让我们下定决心开战吧。
-						182: 这里并没有我幻想中的金银珠宝……做好准备，那个恶灵正准备发起偷袭。
+						181: OK，那只史莱姆不再逃跑了。让我们做好准备开战吧。
+						182: 这里并没有我想象中的金银珠宝……做好准备，那只恶灵正准备发起偷袭。
 						183: 这名敌人让我很恼火。不要放松警惕，免得它用那个“星象仪”做什么手脚。
 						184: 你周围变得寒冷刺骨。小心，那只雪花状的生物正朝你靠近。
 						185: 不要小瞧这名敌人——它极其危险。呵呵——我不是在开玩笑，谨慎行事。
@@ -1715,7 +1715,7 @@
 						61: 一位强大的对手接近了。做好准备。
 						62: 保持警惕，{0}。一位强大的敌人正在接近。
 						63: 危险接近了。我们绝不留情。
-                   				64: 它来了。无论是什么，它都极度危险。小心，它濒死时会更加疯狂。
+                   		64: 它来了。无论是什么，它都极度危险。小心，它濒死时会更加疯狂。
 						65: 那是……一只巨型史莱姆。它似乎能迅速移动，当心这一招。
 						66: 这一定就是世界吞噬者了。它会从下方发动突然袭击。
 						67: 当心。它正尝试攻击你的思维。留意那些幻象。
@@ -1766,86 +1766,86 @@
 						112: 神明吞噬者降临了！这场战斗你必须竭尽全力！
 						113: 丛林龙在咆哮。让我们破坏亚利姆的计划。
 						114: 它要去哪？是我们……不够强大吗？
-						115: 不可能……它的力量无法形容。{0}……我们必须得赢！
+						115: 难以置信……她的力量无法形容的强大。{0}……我们必须得赢！
 						116: 嘉登来了……当心他的战术，他的知识足以通晓世界。
-						117: 保持警惕，侦测到多个敌人，嘉登的造物们正在高速接近。
+						117: 保持警惕，侦测到多个敌人！嘉登的造物们正在高速接近。
 						118: 快点——找一处高地！一条机械巨蛇正在接近！
-						119: ……不要在意这只机械松鼠是何等的荒谬。击中攻击它的头部和手臂来阻止它最危险的攻击。
-						120: 哈？她看上去弱不禁风，但实际上很强大……如果你被击中了，你会获得各种减益；做好治疗的准备。
-						121: Who does this guy think he is, wielding celestial power all willy-nilly? Not to mention... Ugh- I don't have to spell it out, do I?
-						122: Well, no time like the present. His arsenal revolves around invader events- we've seen our share of those.
-						123: Oh, you just HAD to throw that thing into lava, did you? Well, good luck, because Mutant is pissed. Didn't see that coming- wait, I did.
-						124: The Storm Flare has called something down! Hmm? It looks to be lightning-aspected.
-						125: Some sort of jellyfish monster is approaching. It looks like there's someone trapped inside..?
-						126: It's a giant vampire bat! Mind yourself...
-						127: The cavern's energy has congealed into a monster! What in the world..?
-						128: A knight has arisen from the marble cave! Look out- it's prepared to fight!
-						129: It's an alien spaceship! It looks like it'll be stronger on low HP!
-						130: Do you see that..? It looks like a giant snow spider! Let's kill it quickly..
-						131: A Beholder..? Don't get reckless.. These foes are incredibly fearsome!
-						132: That sigil you used.. I can sense an undead beast approaching! Get ready for a fight!
-						133: The Abyssal Shadows are converging..! This sea monster holds dominion over dark magic!
-						134: Primordial energy is forming all around you.. The elements themselves are on the attack!
-						135: It's a desert. Seriously.. I'm no fan of heat- and it's hot.
-						136: This verdant environment must be the Jungle. This place is dangerous, but also rewarding.
-						137: You're nearing the limit of breathable air. I do not recommend burning up in the atmosphere. Don't ask.
-						138: So this is the place where the dead rest. Let's see what we can find.
-						139: It's the ocean... We can't cross it, so best leave it be.
-						140: I can feel the evil aura radiating from this place. I wouldn't mind leaving as soon as possible.
-						141: This place is.. disgusting. Let's not stay longer than we have to.
-						142: It's a typical boreal forest. Not that I dislike snowy places.
-						143: We've stepped straight into fairytale land. It would be prettier if everything here wasn't hostile.
-						144: Giant glowing mushrooms.. It feels rather.. welcoming? We should take some back home, just in case.
-						145: I can feel traps everywhere. Strong weapons are buried here as well. Stay ready.
-						146: So this is the meteor impact we heard. Wonder what you can make out of it..?
-						147: The Brimstone Crag.. I can feel the horrors of the past..
-						148: This is the Astral Infection. A subject I'm all too familiar with...
-						149: This place is quite beautiful. Who knew it would be under the desert..?
-						150: This was once a pleasant coastline. What happened here..?
-						151: You've decided to breach the ocean's depths. Please consider how dangerous this really is..
-						152: This cavern seems to be all granite. Some rouge spirits have made their home here.
-						153: So this is a Marble Cavern. Perhaps we can use the material to build?
-						154: We're very deep in the ocean. These waters are trouble, I can tell that much.
-						155: It's raining. Hopefully nothing important gets too wet.
-						156: Looks like it's a blizzard. 'Cold' doesn't begin to cover it.
-						157: A sandstorm has kicked up. Mind your eyes.
-						158: Time and space bend to my will!
-						159: Let's try that again, shall we?
-						160: Chronal reversal complete..!
-						161: March forth, and keep fighting!
-						162: We're not about to stop here!
-						163: Embrace the abyss! Set yourself free!
-						164: They'll all fall before us.
-						165: Like lambs to slaughter!
-						166: We'll finish them all off!
-						167: I'm ready when you are.
-						168: The Stellar Nova is ready!
-						169: I'm ready. Are you?
-						170: Let's do this.
-						171: Just tell me when.
-						172: Let's find an opening.
-						173: Celestial coordinates established. Welcome to the Observatory Hyperborea.
-						174: We've made it. These are asteroids of interest. Let's look around.
-						175: This is it. An entire planet that's devoid of color? The surface looks like it was wiped away somehow...
-						176: She was here the whole time...? Well.. I'm ready when you are. Use the Sigil in the middle.
-						177: It looks like we can't explore this yet... Maybe next time.
-						178: A being of the apocalypse has appeared. It wields destruction in all its appendages!
-						179: This huge amalgamate draws from the world's evils! Killing one slime will empower the other!
-						180: Looks like this biome's governed mostly by foliage- a bit more tasteful than the Jungle, I'd say. Let's look around.
-						181: Seems like you've bothered that slime enough- it seems to have drastically altered its fighting style.
-						182: A Pharaoh in the depths of a pyramid? That sounds about right- but looks like you'll have to deal with what comes next.
-						183: I'm getting a bad feeling from this enemy... Let's dispatch of it quickly, lest it do something else with this 'Planetarium.'
-						184: Hey, the temperature of your surroundings is dropping dramatically. I'm sure you can see the source of this anomaly- deal with it, fast.
-						185: Whatever this thing is, it's hard to even look at. Be careful, it's powerful and lethal.
-						186: I think whatever you've done must have had some serious repercussions- a strange entity has emerged, and is heading your way.
-						188: Hmm, it seems to be a cluster of uninhabited asteroids. There was definitely life here, but it must have been thousands of years ago.
-						189: Looks to be an old mining station. From the looks of it, it was abandoned before the Ardor took root. There won't be any ore left, sadly.
-						190: What a strange world- it seems its ambient mana has been entirely drained, leaving the place looking pale white- a unique phenomenon.
-						191: Looks like you arrived underground- if you can make it to the surface, it'll look more like home. The creatures here are familiar, which is pretty strange.
+						119: ……不要在意这只机械松鼠是何等的荒谬。集中攻击它的头部和手臂来阻止它最危险的攻击。
+						120: 哈？她看上去弱不禁风，但实际上她很强大……如果你被击中了，你将获得大量的减益；做好治疗的准备。
+						121: 这家伙以为他是谁？天界能量的掌控者吗？不必说……呃——我没必要说出来，对吧？
+						122: 唔，现在是最佳时机了。他的武器库围绕着入侵事件展开——我们已经看到其中属于我们的那一份了。
+						123: 哦，你一定要把这东西扔进岩浆，对吗？唔，祝你好运，突变体被激怒了。你难道没看见他正朝这边来吗——等等，我看见了。
+						124: 风暴信号弹叫来了什么东西！嗯？它看上去像团闪电。
+						125: 某种水母怪物正在接近。看起来有人被困在里面了……？
+						126: 一只巨大的吸血蝙蝠！当心……
+						127: 洞穴中的能量汇聚出了一只怪物！这究竟是什么东西……？
+						128: 一位战士自大理石洞穴中现身了！当心——他准备好战斗了！
+						129: 一艘外星飞船！看起来它残血时会变得更强！
+						130: 你看见它了吗……？那看上去是一只巨型极地遁蛛！让我们速战速决……
+						131: 一只堕落注视者……？别大意……这些敌人非常可怕！!
+						132: 你使用的那个符文……我感受到一只不死的凶兽正在接近！做好战斗准备！
+						133: 深渊之影在聚拢……！这头海怪掌控着黑魔法之力！
+						134: 始生灾灵正在你周围成形……这些元素将要发起进攻了！
+						135: 一片沙漠。说实话……我不喜欢高温——而这里很热。
+						136: 这片苍翠的群系一定就是丛林了。这里很危险，但收获同样丰厚。
+						137: 你已经接近可呼吸的大气边缘了。我不建议你在大气中坠燃，别问为什么。
+						138: 这里是死者们的安息之地。让我们看看能找到些什么。
+						139: 是海洋……我们没法横渡它，所以最好随它去吧。
+						140: 我能感受到这里散发的邪恶气息。我不介意尽快离开这里。
+						141: 这地方可真……让人作呕。我们还是尽快离开吧。
+						142: 一片典型的针叶林。我并非不喜欢雪地。
+						143: 我们踏入了一片童话世界。如果不是这里的一切都怀揣着敌意的话，这里还能变得更加美好。
+						144: 一片巨型发光蘑菇林……它们感觉起来相当……友好？我们应该带一些回家，以备不时之需。
+						145: 这里到处都是陷阱，但也埋藏着强大的武器。做好准备。
+						146: 这就是我们听见的那颗落地的陨石。我想知道我们能用它做些什么……？
+						147: 硫火之崖……我能感受到来自过去的恐惧……
+						148: 这里就是星辉瘟疫。我对它再熟悉不过了……
+						149: 这里的景色真是太美了。谁能想到在沙漠地下竟有这样一片地方呢……？
+						150: 这里曾经是一片宜人的海岸线。到底发生了什么……？
+						151: 你正决定前往海洋深处。请慎重考虑此行的危险性……
+						152: 这个洞穴似乎整个由花岗岩构成，一些游魂在这里安了家。
+						153: 这里是大理石洞穴，也许我们可以把这些材料用于建筑？
+						154: 我们已经在海洋的深处了。看得出来，这片水域是个大麻烦。
+						155: 下雨了。希望重要的东西不会被打湿。
+						156: 看上去是场暴风雪。“寒冷”已经不足以形容它了。
+						157: 沙尘暴来袭了。当心你的眼睛。
+						158: 时间与空间都将屈服于我的意志！
+						159: 让我们再试一次，好吗？
+						160: 时空回溯完成……！
+						161: 勇往直前，继续战斗！
+						162: 我们不会止步于此的！
+						163: 拥抱深渊！解放自我！
+						164: 它们都将倒在我们面前。
+						165: 它们就像待宰的羔羊！
+						166: 我们会干掉它们所有人！
+						167: 我随时做好准备。
+						168: 天体新星准备好了！
+						169: 我准备好了，你呢？
+						170: 让我们开始吧。
+						171: 告诉我什么时候出发。
+						172: 让我们出发吧。
+						173: 天体坐标设立完毕。欢迎来到极北天文台。
+						174: 我们做到了。这里有一些有趣的小行星。让我们四处看看吧。
+						175: 我们到了。这颗星球看上去黯淡无色？不知为何，它的表面似乎被抹去了。
+						176: 她一直在这里……？嗯……我随时做好准备。使用区域中央的追忆印记吧。
+						177: 看起来我们还没办法探索这里……也许下次吧。
+						178: 一位昭示灾难的存在现身了。It wields destruction in all its appendages!
+						179: 这只庞然巨物汇聚了世界上的邪恶力量！杀死其中一只史莱姆会增强另一只！
+						180: 看起来这片生物群系被植物覆盖着——要我说，这比丛林更有品味。让我们四处看看吧。
+						181: 看上去那只史莱姆已经受够你了——它似乎彻底改变了自己的战斗风格。
+						182: 金字塔深处的法老？听起来没错，但看上去你得解决接下来的麻烦了
+						183: 这名敌人让我有不祥的预感……让我们快点送走它，以免它用那个“星系仪”做什么手脚。
+						184: 嘿，你周围的温度正在急剧降低。我觉得你已经看到这种异常现象的始作俑者了——干掉它，快点。
+						185: 无论这家伙是什么，都简直不堪入目。当心，它极其强大且致命！
+						186: 我想无论是你做了什么，都引发了挺严重的后果——一个奇怪的家伙出现了，它正朝你这边过来。
+						188: 唔，这似乎是一片无人居住的小行星。这里肯定有生命存在，但起码是几千年前的事了。
+						189: 看上去是座古老的采矿基地。从外观上看来，它在Ardor扎根于此前就被遗弃了。遗憾的是，没有任何剩下的矿石。
+						190: 真是个奇怪的世界——周围的魔力似乎完全干涸了，只剩下一片苍白——多么独特的现象。
+						191: 看起来你正身处地下——如果你能回到地面的话，周围的环境会和母星更加相似。这里的生物看起来都很眼熟——真是奇怪。
 						192: The Corruption is a known entity in the universe, but this place is different- it feels as if something larger was Corrupted into this object. Stay alert.
-						193: A Crimson-infused moon... After you've gathered what you need, we should excuse ourselves quickly.
-						194: Seems this place has been completely overturned by the Ardor... What a horrible fate.
-						195: Never would I ever have thought I'd see a wooden space-station, of all things... Hold on a moment- is someone still living here?
+						193: 深红色的月亮……等你收集好需要的东西后，我们应该尽快离开。
+						194: 这里似乎已经被Ardor完全颠覆了……多么可怕的命运。
+						195: 我从来没想过能看到一座木制的空间站……等等，这里还有人住吗？
 					}
 				}
 				VNDialogue:
@@ -1858,7 +1858,7 @@
 							{
 								0: 幸会！我是爱丝福德妮——一位星海旅者，相对地，你就是我的星之传承者。
 								1: 我将赋予你力量，以便我们能共同清除世界上的威胁——如果事态良好的话，我们还能解决更严重的问题。
-								2: 不过对你来说还会有更多的好处。若你愿意，我可以帮你描述一下我还能做什么。我比较推荐！
+								2: 不过对你来说还会有更多的好处。若你愿意，我可以帮你描述一下我还能做什么。我比较推荐你听一听！
 							}
 							Choices:
 							{
@@ -1939,12 +1939,12 @@
 						{
 							Dialogue:
 							{
-								0: 我明白了……请原谅我的先前的测试。我知道这很粗鲁，但这是我所知的评判某人的唯一方法。
-								1: 我明白了……请原谅我的先前的测试。我知道这很粗鲁，但这是我所知的评判某人的唯一方法。
+								0: 我明白了……请原谅我先前的考验。我知道这很粗鲁，但这是我所知的评判某人的唯一方法。
+								1: 我明白了……请原谅我先前的考验。我知道这很粗鲁，但这是我所知的评判某人的唯一方法。
 								2: 事实上，我早该知道的。我的妹妹绝不会做出不明智的选择。
 								3: 哈？你叫我妹妹？没门……
 								4: 抱歉，爱丝福德妮。这应该会有所帮助，想起来了吗？
-								5: 伙计，我们不该像这样会面的。Dude. We have GOT to stop meeting like this. The nerve...!
+								5: 伙计，我们不该像这样会面的。这太冒失了……！
 								6: 听我解释，星之传承者。 在这个星系的大千世界中，存在着以帮助那里的居民为己任的星海旅者。你应该知道我们都做些什么。
 								7: 身为能量的集合体，星海旅者们会选择各自的星之传承者作为使者。你应该清楚生物是最佳的魔力导体，而我们严格来说算不上生命体。
 								8: 然而，初代星海旅者有些……名不副实。这是第一位星之传承者。据我所知，她们似乎已经丧失了心智与道德。
@@ -1955,9 +1955,9 @@
 								13: 目前就这些了。我必须继续追踪初代星海旅者。祝你好运——我很快就会需要你的帮助。
 								14: 我知道他是个独行侠，但是……我希望我们能多些交流。保重，珀尔修斯。不过，我总感觉他有事瞒着我。只有我吗？
 								15: 无论如何，他说的很对。我确实感觉自己变强了——我的头发也在闪烁！这种力量对于我们前行来说再好不过了。
-								16: 看上去我的天体新星叫做“Theofania Inanis”。也许随着我们不断击败强大的敌人，还会有更多能力供我们使用。
+								16: 看上去我的天体新星叫做“虚无圣刃”。也许随着我们不断击败强大的敌人，还会有更多能力供我们使用。
 								17: 绑定天体新星钥匙之后，你就能通过空间光盘装备天体新星了，就像平时一样。
-								18: 你应该已经有一些Prismatic Cores了。凭借它们的力量，我猜你可以通过锻造来升级天体新星。
+								18: 你应该已经有一些棱镜核心了。凭借它们的力量，我猜你可以通过锻造来升级天体新星。
 								19: 这很重要，你需要天体新星能量来投射星体。天体新星能量会在战斗中累积，当你脱战时则会快速减少。
 							}
 							Choices:
@@ -1970,8 +1970,8 @@
 						{
 							Dialogue:
 							{
-								0: 我明白了……请原谅我的先前的测试。我知道这很粗鲁，但这是我所知的评判某人的唯一方法。
-								1: 我明白了……请原谅我的先前的测试。我知道这很粗鲁，但这是我所知的评判某人的唯一方法。
+								0: 我明白了……请原谅我先前的考验。我知道这很粗鲁，但这是我所知的评判某人的唯一方法。
+								1: 我明白了……请原谅我先前的考验。我知道这很粗鲁，但这是我所知的评判某人的唯一方法。
 								2: 事实上，我早该知道的。我的妹妹绝不会做出不明智的选择。
 								3: 你刚才叫我“姐姐”？ 你一定是在开玩笑……
 								4:  抱歉，埃里达妮。这应该会有所帮助，想起来了吗？
@@ -1984,10 +1984,10 @@
 								11: 就目前的情况来看，你战胜她们的机会微乎其微。但埃里达妮不知道的是，所有星海旅者都有自己的底牌——天体新星。
 								12: 在你赢得这场决斗时，我已经将这种力量传承给她了。
 								13: 目前就这些了。我必须继续追踪初代星海旅者。祝你好运——我很快就会需要你的帮助。
-								14: 珀尔修斯不喜欢过多逗留。我觉得他没有失言……无论如何，这股力量真是难以置信，但我需要一点时间来熟悉它。
-								15: 我的天体新星叫做“Theofania Inanis”。也许随着我们变强，我们能使用更多能力。
+								14: 珀尔修斯不喜欢过多逗留。我觉得他说的没错……无论如何，这股力量真是难以置信，但我需要一点时间来熟悉它。
+								15: 我的天体新星叫做“虚无圣刃”。也许随着我们变强，我们能使用更多能力。
 								16: 绑定天体新星钥匙之后，你就能通过空间光盘装备天体新星了，就像平时一样。
-								17: 你可以通过Prismatic Cores来锻造并升级你的天体新星，我想。你可以直接把它们添加到菜单上。 
+								17: 你可以通过棱镜核心来锻造并升级你的天体新星，我想。你可以直接把它们添加到菜单上。 
 								18: 别忘了：你需要天体新星能量来投射星体。天体新星能量只会在战斗中积累。
 								19: 差不多就是这样……我知道这有点难以接受，但请善用你的天体新星。暂时就这么多了。
 							}
@@ -2562,8 +2562,8 @@
 						Asphodene:
 						{
 							1: 列表上下一个是什么？
-							2: 天体新星已经升级了。下一步呢？The Stellar Nova has been updated. What's next?
-							3: Stellar Nova changes are confirmed. Great. Is there anything else you needed?
+							2: 天体新星已经升级了。下一步呢？
+							3: 天体新星更改完成。干的漂亮。你还需要什么吗？
 						}
 						Eridani:
 						{
