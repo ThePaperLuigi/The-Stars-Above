@@ -1825,11 +1825,11 @@
 						171: 告诉我什么时候出发。
 						172: 让我们出发吧。
 						173: 天体坐标设立完毕。欢迎来到极北天文台。
-						174: 我们做到了。这里有一些有趣的小行星。让我们四处看看吧。We've made it. These are asteroids of interest. Let's look around.
-						175: 我们到了。This is it. An entire planet that's devoid of color? The surface looks like it was wiped away somehow...
-						176: She was here the whole time...? Well.. I'm ready when you are. Use the Sigil in the middle.
-						177: It looks like we can't explore this yet... Maybe next time.
-						178: A being of the apocalypse has appeared. It wields destruction in all its appendages!
+						174: 我们做到了。这里有一些有趣的小行星。让我们四处看看吧。
+						175: 我们到了。这颗星球看上去黯淡无色？不知为何，它的表面似乎被抹去了。
+						176: 她一直在这里……？嗯……我随时做好准备。使用区域中央的追忆印记吧。
+						177: 看起来我们还没办法探索这里……也许下次吧。
+						178: 一位昭示灾难的存在现身了。A being of the apocalypse has appeared. It wields destruction in all its appendages!
 						179: This huge amalgamate draws from the world's evils! Killing one slime will empower the other!
 						180: Looks like this biome's governed mostly by foliage- a bit more tasteful than the Jungle, I'd say. Let's look around.
 						181: Seems like you've bothered that slime enough- it seems to have drastically altered its fighting style.
@@ -1858,7 +1858,7 @@
 							{
 								0: 幸会！我是爱丝福德妮——一位星海旅者，相对地，你就是我的星之传承者。
 								1: 我将赋予你力量，以便我们能共同清除世界上的威胁——如果事态良好的话，我们还能解决更严重的问题。
-								2: 不过对你来说还会有更多的好处。若你愿意，我可以帮你描述一下我还能做什么。我比较推荐！
+								2: 不过对你来说还会有更多的好处。若你愿意，我可以帮你描述一下我还能做什么。我比较推荐你听一听！
 							}
 							Choices:
 							{
