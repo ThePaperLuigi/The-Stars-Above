@@ -1799,7 +1799,7 @@
             149: This place is quite beautiful. Who knew it would be under the desert..?
             150: This was once a pleasant coastline. What happened here..?
             151: You've decided to breach the ocean's depths. Please consider how dangerous this really is..
-            152: This cavern seems to be all granite. Some rouge spirits have made their home here.
+            152: This cavern seems to be all granite. Some rogue spirits have made their home here.
             153: So this is a Marble Cavern. Perhaps we can use the material to build?
             154: We're very deep in the ocean. These waters are trouble, I can tell that much.
             155: It's raining. Hopefully nothing important gets too wet.
@@ -2821,6 +2821,9 @@
       }
       Config:
       {
+        StellarNovaHeader: "[c/EE9DE0:Stellar Nova Settings]"
+        PopUpDialogueHeader: "[c/C076DF:Pop-up Dialogue Settings]"
+
         DisableStellarNovaCutIns:
         {
           Label: Disable Stellar Nova cut-ins

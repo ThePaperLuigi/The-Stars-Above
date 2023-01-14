@@ -38,7 +38,7 @@ namespace StarsAbove.Items
 				"\nOnce all 9 weapons are chosen, use the Weapon Action Key to activate [c/525252:Furioso], gaining the buff [c/323232:Black Silence] for 12 seconds" +
 				"\n[c/323232:Black Silence] causes all weapons to be cycled through upon attacking" +//All buffs already account for Furioso.
 				"\nAn icon will display near weapons you have not used for the activation of [c/525252:Furioso] during selection" +
-				"\n[c/323232:Black Silence] will additionally grant all unique weapon buffs without the need for prior activation when active" +
+				"\n[c/323232:Black Silence] will additionally increase damage by 30% and activate all unique weapon buffs" +
 				"\n'It can't be helped. That's that, and this is this'" +
 				$"");  //The (English) text shown below your weapon's name
 
@@ -48,7 +48,7 @@ namespace StarsAbove.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 80;           //The damage of your weapon
+			Item.damage = 70;           //The damage of your weapon
 			Item.DamageType = ModContent.GetInstance<Systems.CelestialDamageClass>();          //Is your weapon a melee weapon?
 			Item.width = 40;            //Weapon's texture's width
 			Item.height = 40;           //Weapon's texture's height
