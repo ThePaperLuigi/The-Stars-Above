@@ -1615,7 +1615,7 @@
 						157: 看起来开始下雨了。希望这不会扫了你的兴……呃乌。
 						158: 一场暴风雪！别被冻伤了，那会很麻烦的。
 						159: 沙尘暴来了。当心，它无处不在。
-						160: 时间与空间都屈服于我的意志！
+						160: 时间与空间都将屈服于我的意志！
 						161: 这不在我的管辖范围内！
 						162: 时光倒流……！
 						163: 不灭的怒火……！
@@ -1805,28 +1805,28 @@
 						151: 你正决定前往海洋深处。请慎重考虑此行的危险性……
 						152: 这个洞穴似乎整个由花岗岩构成，一些游魂在这里安了家。
 						153: 这里是大理石洞穴，也许我们可以把这些材料用于建筑？
-						154: We're very deep in the ocean. These waters are trouble, I can tell that much.
-						155: It's raining. Hopefully nothing important gets too wet.
-						156: Looks like it's a blizzard. 'Cold' doesn't begin to cover it.
-						157: A sandstorm has kicked up. Mind your eyes.
-						158: Time and space bend to my will!
-						159: Let's try that again, shall we?
-						160: Chronal reversal complete..!
-						161: March forth, and keep fighting!
-						162: We're not about to stop here!
+						154: 我们已经在海洋的深处了。看得出来，这片水域是个大麻烦。
+						155: 下雨了。希望重要的东西不会被打湿。
+						156: 看上去是场暴风雪。“寒冷”已经不足以形容它了。
+						157: 沙尘暴来袭了。当心你的眼睛。
+						158: 时间与空间都将屈服于我的意志！
+						159: 让我们再试一次，好吗？
+						160: 时空回溯完成……！
+						161: 勇往直前，继续战斗！
+						162: 我们不会止步于此的！
 						163: 拥抱深渊！解放自我！
-						164: They'll all fall before us.
-						165: Like lambs to slaughter!
-						166: We'll finish them all off!
-						167: I'm ready when you are.
-						168: The Stellar Nova is ready!
+						164: 它们都将倒在我们面前。
+						165: 它们就像待宰的羔羊！
+						166: 我们会干掉它们所有人！
+						167: 我随时做好准备。
+						168: 天体新星准备好了！
 						169: 我准备好了，你呢？
-						170: Let's do this.
-						171: Just tell me when.
-						172: Let's find an opening.
-						173: Celestial coordinates established. Welcome to the Observatory Hyperborea.
-						174: We've made it. These are asteroids of interest. Let's look around.
-						175: This is it. An entire planet that's devoid of color? The surface looks like it was wiped away somehow...
+						170: 让我们开始吧。
+						171: 告诉我什么时候出发。
+						172: 让我们出发吧。
+						173: 天体坐标设立完毕。欢迎来到极北天文台。
+						174: 我们做到了。这里有一些有趣的小行星。让我们四处看看吧。We've made it. These are asteroids of interest. Let's look around.
+						175: 我们到了。This is it. An entire planet that's devoid of color? The surface looks like it was wiped away somehow...
 						176: She was here the whole time...? Well.. I'm ready when you are. Use the Sigil in the middle.
 						177: It looks like we can't explore this yet... Maybe next time.
 						178: A being of the apocalypse has appeared. It wields destruction in all its appendages!
@@ -1955,9 +1955,9 @@
 								13: 目前就这些了。我必须继续追踪初代星海旅者。祝你好运——我很快就会需要你的帮助。
 								14: 我知道他是个独行侠，但是……我希望我们能多些交流。保重，珀尔修斯。不过，我总感觉他有事瞒着我。只有我吗？
 								15: 无论如何，他说的很对。我确实感觉自己变强了——我的头发也在闪烁！这种力量对于我们前行来说再好不过了。
-								16: 看上去我的天体新星叫做“Theofania Inanis”。也许随着我们不断击败强大的敌人，还会有更多能力供我们使用。
+								16: 看上去我的天体新星叫做“虚无圣刃”。也许随着我们不断击败强大的敌人，还会有更多能力供我们使用。
 								17: 绑定天体新星钥匙之后，你就能通过空间光盘装备天体新星了，就像平时一样。
-								18: 你应该已经有一些Prismatic Cores了。凭借它们的力量，我猜你可以通过锻造来升级天体新星。
+								18: 你应该已经有一些棱镜核心了。凭借它们的力量，我猜你可以通过锻造来升级天体新星。
 								19: 这很重要，你需要天体新星能量来投射星体。天体新星能量会在战斗中累积，当你脱战时则会快速减少。
 							}
 							Choices:
@@ -1985,9 +1985,9 @@
 								12: 在你赢得这场决斗时，我已经将这种力量传承给她了。
 								13: 目前就这些了。我必须继续追踪初代星海旅者。祝你好运——我很快就会需要你的帮助。
 								14: 珀尔修斯不喜欢过多逗留。我觉得他说的没错……无论如何，这股力量真是难以置信，但我需要一点时间来熟悉它。
-								15: 我的天体新星叫做“Theofania Inanis”。也许随着我们变强，我们能使用更多能力。
+								15: 我的天体新星叫做“虚无圣刃”。也许随着我们变强，我们能使用更多能力。
 								16: 绑定天体新星钥匙之后，你就能通过空间光盘装备天体新星了，就像平时一样。
-								17: 你可以通过Prismatic Cores来锻造并升级你的天体新星，我想。你可以直接把它们添加到菜单上。 
+								17: 你可以通过棱镜核心来锻造并升级你的天体新星，我想。你可以直接把它们添加到菜单上。 
 								18: 别忘了：你需要天体新星能量来投射星体。天体新星能量只会在战斗中积累。
 								19: 差不多就是这样……我知道这有点难以接受，但请善用你的天体新星。暂时就这么多了。
 							}
