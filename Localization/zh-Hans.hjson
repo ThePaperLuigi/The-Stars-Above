@@ -1645,10 +1645,10 @@
 						187: 这里曾经肯定有生物生活——也许一千年或更久以前吧。不必说，一旦被我们发现，它们曾经的东西就是我们的了！
 						188: 虽然这处采矿设施已经被废弃，但我怀疑它们离开时没有开采完附近所有的矿产。不过，我们还可能找到其它有用的东西。
 						189: 我在周围感受不到任何魔法的气息——一定有某人，或者说什么东西把整个世界的魔力吸干了。让我们去远处的建筑物里看看吧
-						190: 这颗星球看上去很像母星的丛林，但你似乎正身处地下——这显然看起来不大熟悉。尽管这里的生物都很眼熟——真是奇怪。
+						190: 这颗星球看上去很像母星的丛林，但你似乎正身处地下——这显然有些陌生，尽管这里的生物都很眼熟——真是奇怪。
 						191: 这颗星球有一大片腐化之地，但只要它不四处扩散，就暂时构不成威胁。不过，这还是有些碍眼。
 						192: 整颗月亮都被猩红覆盖了——真是恶心。我可不想被困在这里，所以留意传送门的位置，你不会有事的。
-						193: 这不是很奇怪吗？没人会认真考虑用木头搭一座空间站，对吧？呃——我发誓有人住在这里……？
+						193: 这不是很奇怪吗？没有人会考虑用木头搭一座空间站，对吧？呃——我发誓有人住在这里……？
 					}
 					Eridani:
 					{
@@ -1841,11 +1841,11 @@
 						188: 唔，这似乎是一片无人居住的小行星。这里肯定有生命存在，但起码是几千年前的事了。
 						189: 看上去是座古老的采矿基地。从外观上看来，它在Ardor扎根于此前就被遗弃了。遗憾的是，没有任何剩下的矿石。
 						190: 真是个奇怪的世界——周围的魔力似乎完全干涸了，只剩下一片苍白——多么独特的现象。
-						191: 看起来你正身处地下——如果你能回到地面的话，周围的环境会和母星更加相似。这里的生物看起来都很眼熟——真是奇怪。
+						191: 看起来你正身处地下——如果你能回到地面的话，周围的环境会和母星更相似一些。这里的生物看起来都很眼熟——真是奇怪。
 						192: The Corruption is a known entity in the universe, but this place is different- it feels as if something larger was Corrupted into this object. Stay alert.
 						193: 深红色的月亮……等你收集好需要的东西后，我们应该尽快离开。
 						194: 这里似乎已经被Ardor完全颠覆了……多么可怕的命运。
-						195: 我从来没想过能看到一座木制的空间站……等等，这里还有人住吗？
+						195: 我从来没想过能看到一座木制的空间站……等等，有人住在这儿吗？
 					}
 				}
 				VNDialogue:
@@ -1858,7 +1858,7 @@
 							{
 								0: 幸会！我是爱丝福德妮——一位星海旅者，相对地，你就是我的星之传承者。
 								1: 我将赋予你力量，以便我们能共同清除世界上的威胁——如果事态良好的话，我们还能解决更严重的问题。
-								2: 不过对你来说还会有更多的好处。若你愿意，我可以帮你描述一下我还能做什么。我比较推荐你听一听！
+								2: 不过对你来说还会有更多的好处。若你愿意，我可以向你描述一下我能做些什么。我强烈推荐你听一听！
 							}
 							Choices:
 							{
@@ -1900,7 +1900,7 @@
 							{
 								0: 幸会。我是埃里达妮…一位星海旅者。相对地，你就是我的星之传承者。
 								1: 根据签订的契约，我们必须齐心协力，向任何胆敢破坏这个世界的生物施以正义裁决——如果事态良好，我们还要拯救更多世界。
-								2: 如果你愿意，我可以为你描述一下我能做到些什么。就我个人而言，我还是比较推荐的——毕竟知识就是力量
+								2: 如果你愿意，我可以为你描述一下我能做些什么。就我个人而言，我强烈推荐你听一听——毕竟知识就是力量
 							}
 							Choices:
 							{
@@ -2038,7 +2038,7 @@
 								4: 希望这能解释清楚这里正在发生的事情。我们最终发现了一件事：
 								5: 这个星系——the Moirae星系——正在冻结。虽然这不会立即发生，但距离星系中心越远，情况就越发恶化。
 								6: 虽然这里远离星系中心，但你所在的星球格外宜居，这就是我们邂逅的原因
-								7: 天文台将这种灾难定义为Ardor，所以我们就这么称呼它。The Observatory has defined this disaster as the Ardor, so we'll be referring to it as such.
+								7: 天文台将这种灾难定义为Ardor，所以我们以此来称呼它。The Observatory has defined this disaster as the Ardor, so we'll be referring to it as such.
 							}
 							Choices:
 							{
@@ -2053,13 +2053,13 @@
 							{
 								0: 我想给你一个确切的回答……很抱歉我也不知道。
 								1: 这是个紧迫的问题，但是在做出任何潦草的决定之前，我们得变得更强。
-								2: 一旦你做出旅星符台，你就能通过通过Astrolabe探索宇宙了。
-								3: 如果你需要，我可以给你讲一些基本设定。这说不上复杂，但你可能很快就糊涂了。
+								2: 等你做出旅星符台，你就能通过通过Astrolabe探索宇宙了。
+								3: 如果你需要，我可以给你讲一些基本流程。这说不上复杂，但你可能很快就会糊涂了。
 							}
 							Choices:
 							{
 								1: 是的，请给我讲讲。
-								2: 我觉得我可以自行摸索。
+								2: 事实上，我觉得我可以自行摸索。
 							}
 						}
 						15:
@@ -2069,36 +2069,36 @@
 								0: 唔，我们也这么想，但星系中的大多数人似乎都倾向于向中心迁移，以逃离被冻结的命运。
 								1: 星海旅者能够从周围的魔力中提取精华，但从我们游历过的几个世界中，我只是了解到这个星系的名字：Moirae。
 								2: 虽然这很重要，但是在我们采取任何行动之前，我们得变得更强才行。While it IS important, we have to get stronger before making any moves.
-								3: 一旦你做出旅星符台，你就能通过通过Astrolabe探索宇宙了。
-								4: 如果你需要，我可以向你介绍一些基本设定。这说不上复杂，但你可能很快就糊涂了。
+								3: 等你做出旅星符台，你就能通过通过Astrolabe探索宇宙了。
+								4: 如果你需要，我可以向你介绍一些基本流程。这说不上复杂，但你可能很快就会糊涂了。
 							}
 							Choices:
 							{
 								1: 是的，请给我讲讲。
-								2: 我觉得我可以自行摸索。
+								2: 事实上，我觉得我可以自行摸索。
 							}
 						}
 						16:
 						{
 							Dialogue:
 							{
-								0: Of course you didn't- didn't I just say your Sun is warming the planet up? Jeez...
-								1: Anyways, with the Astrolabe, you'll be able to explore the cosmos with a working Stellaglyph once you make one.
-								2: We can run you through the basics, if you need it. It's not too complicated, but you might get lost quickly.
+								0: 你当然感觉不到——我不是刚说过有太阳给这里提供热量吗？捏猫猫的……
+								1: 不管怎样，等你做出旅星符台，你就能通过通过Astrolabe探索宇宙了。
+								2: 如果你需要，我可以向你介绍一些基本流程。这说不上复杂，但你可能很快就会糊涂了。
 							}
 							Choices:
 							{
-								1: Sure, lay it on me.
-								2: Actually, I think I can figure it out on my own.
+								1: 是的，请给我讲讲。
+								2: 事实上，我觉得我可以自行摸索。
 							}
 						}
 						17:
 						{
 							Dialogue:
 							{
-								0: Alright. To get started, you'll need to craft a structure called a Stellaglyph.
-								1: Within the Observatory is the Celestriad Root. In the interest of keeping this brief, you can use it like a crafting table. It's on a plinth surrounded by stone pillars.
-								2: Simply combine one of each type of gemstone to create the Stellaglyph. That's pretty much the hardest part taken care of.
+								0: 好吧。首先，你需要制作一座名为“旅星符台”的建筑。
+								1: 在天文台内部有一座天神锚点，为了简化流程，你可以把它当做合成站来使用。它就坐落在一个由石柱环绕的基座上。
+								2: 你只需要从每种宝石中各取其一，并将他们简单结合，就能制作出旅星符台了。这也是流程中最麻烦的部分。
 								3: Now, placing the Stellaglyph in your home will open up a Gateway you can use with the Celestial Cartography menu to explore the galaxy in what we call a Cosmic Voyage.
 								4: Simply select a destination to teleport directly there- quite a novel way of travel, right?
 								5: Of course, there's a few downsides. We're transposing you there instead of normal travel (like with a starship) so you'll have most movement abilities unavailable.
