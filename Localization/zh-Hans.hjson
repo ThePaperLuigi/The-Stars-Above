@@ -1874,7 +1874,7 @@
 								0: OK，从哪里开始呢…你可以通过我们缔约的空间光盘访问天体序列，它会在你击败boss后提供各种能力。挺不错的，不是吗？
 								1: 空间光盘还有许多功能，但天体序列无疑是当下最重要的。记得经常检查它！
 								2: 最后一件事……我可以将来自异界的能量转化为精华，把它们和其它材料相结合，应该足以创造出强大的星相武器。
-								3: 好了，我的力量属于你了。让这个世界看看我们能做到什么！
+								3: 好了，我的力量属于你了。让这个世界看看我们能做些什么！
 							}
 							Choices:
 							{
@@ -1886,7 +1886,7 @@
 						{
 							Dialogue:
 							{
-								0: 好吧，那样的话……我的力量属于你了。让这个世界看看我们能做到什么。
+								0: 好吧，那样的话……我的力量属于你了。让这个世界看看我们能做些什么。
 							}
 							Choices:
 							{
@@ -1927,7 +1927,7 @@
 						{
 							Dialogue:
 							{
-								0: 那这样的话，我的力量现在属于你了。让我们一起全力以赴。
+								0: 这样的话，我的力量属于你了。让我们一起全力以赴。
 							}
 							Choices:
 							{
@@ -2032,50 +2032,50 @@
 							Dialogue:
 							{
 								0: 你做到了！欢迎来到极北天文台——星海旅者之家。注意，不是所有人的，只是我和埃里的家。
-								1: 实际上，这座天文台根本不是为我们而建立的，我们只是……保持这里的环境整洁。原来的居民们早就不在了。
-								2: 也许看上去很像，但我们不是这片星空的原住民。我们只是后来者——嗯，挺难直接解释清楚的。We might not look it, but we aren't native to this galaxy. We came after- well, it's hard to explain straight out.
-								3: 让我们把宇宙假设成一个湖，好吗？好，就是这样。现在想象一下有人开始向湖中倒油——这件事和你息息相关。Let's pretend the universe is a lake, right? Okay, good. Now imagine someone started pouring oil into the lake- not something you could miss.
-								4: 希望这能解释清楚这里正在发生什么。我们最终发现了一件事：
-								5: This galaxy- the Moirae galaxy- is freezing over. It's not happening all at once, but the farther away from the center you go, things get worse.
-								6: The only reason why I met you is because this planet is uniquely habitable, even this far away from the galaxy's center. You can thank your Sun for that.
-								7: The Observatory has defined this disaster as the Ardor, so we'll be referring to it as such.
+								1: 实际上，这座天文台原本不是为我们而建立的，我们只是……努力保持这里的环境整洁。原来的居民们早就不在了。
+								2: 也许我们看上去很像，但我们不是这片星空的原住民。我们只是后来者——嗯，挺难直接解释清楚的。
+								3: 让我们把宇宙假设成一个湖，好吗？好，就是这样。现在想象一下有人开始向湖里倒油——你不可能对此熟视无睹。
+								4: 希望这能解释清楚这里正在发生的事情。我们最终发现了一件事：
+								5: 这个星系——the Moirae星系——正在冻结。虽然这不会立即发生，但距离星系中心越远，情况就越发恶化。
+								6: 虽然这里远离星系中心，但你所在的星球格外宜居，这就是我们邂逅的原因
+								7: 天文台将这种灾难定义为Ardor，所以我们就这么称呼它。The Observatory has defined this disaster as the Ardor, so we'll be referring to it as such.
 							}
 							Choices:
 							{
-								1: How are we going to solve this?
-								2: Aren't there other people solving this problem already?
-								3: Well, I haven't noticed anything out of the ordinary.
+								1: 我们要怎么解决这个问题？
+								2: 难道没有其它人着手解决这个问题吗？
+								3: emmm……我感觉一切没什么两样。
 							}
 						}
 						14:
 						{
 							Dialogue:
 							{
-								0: I'd love to give you a direct answer... but I don't know.
-								1: It's a pressing issue, but we need to become stronger before any rash decisions.
-								2: With the Astrolabe, you'll be able to explore the cosmos with a working Stellaglyph once you make one.
-								3: We can run you through the basics, if you need it. It's not too complicated, but you might get lost quickly.
+								0: 我想给你一个确切的回答……很抱歉我也不知道。
+								1: 这是个紧迫的问题，但是在做出任何潦草的决定之前，我们得变得更强。
+								2: 一旦你做出旅星符台，你就能通过通过Astrolabe探索宇宙了。
+								3: 如果你需要，我可以给你讲一些基本设定。这说不上复杂，但你可能很快就糊涂了。
 							}
 							Choices:
 							{
-								1: Sure, lay it on me.
-								2: Actually, I think I can figure it out on my own.
+								1: 是的，请给我讲讲。
+								2: 我觉得我可以自行摸索。
 							}
 						}
 						15:
 						{
 							Dialogue:
 							{
-								0: Well, we thought that too, but it seems most of the galaxy's population has moved inwards to escape the cold.
-								1: Starfarers can extract Essences from ambient mana, but from the brief worlds we've visited, I've only been able to learn the galaxy's name: Moirae.
-								2: While it IS important, we have to get stronger before making any moves.
-								3: With the Astrolabe, you'll be able to explore the cosmos with a working Stellaglyph once you make one.
-								4: We can run you through the basics, if you need it. It's not too complicated, but you might get lost quickly.
+								0: 唔，我们也这么想，但星系中的大多数人似乎都倾向于向中心迁移，以逃离被冻结的命运。
+								1: 星海旅者能够从周围的魔力中提取精华，但从我们游历过的几个世界中，我只是了解到这个星系的名字：Moirae。
+								2: 虽然这很重要，但是在我们采取任何行动之前，我们得变得更强才行。While it IS important, we have to get stronger before making any moves.
+								3: 一旦你做出旅星符台，你就能通过通过Astrolabe探索宇宙了。
+								4: 如果你需要，我可以向你介绍一些基本设定。这说不上复杂，但你可能很快就糊涂了。
 							}
 							Choices:
 							{
-								1: Sure, lay it on me.
-								2: Actually, I think I can figure it out on my own.
+								1: 是的，请给我讲讲。
+								2: 我觉得我可以自行摸索。
 							}
 						}
 						16:
