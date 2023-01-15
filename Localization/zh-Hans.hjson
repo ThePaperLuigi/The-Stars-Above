@@ -2038,7 +2038,7 @@
 								4: 希望这能解释清楚这里正在发生的事情。我们最终发现了一件事：
 								5: 这个星系——the Moirae星系——正在冻结。虽然这不会立即发生，但距离星系中心越远，情况就越发恶化。
 								6: 虽然这里远离星系中心，但你所在的星球格外宜居，这就是我们邂逅的原因
-								7: 天文台将这种灾难定义为Ardor，所以我们以此来称呼它。The Observatory has defined this disaster as the Ardor, so we'll be referring to it as such.
+								7: The Observatory has defined this disaster as the Ardor, so we'll be referring to it as such.
 							}
 							Choices:
 							{
@@ -2067,8 +2067,8 @@
 							Dialogue:
 							{
 								0: 唔，我们也这么想，但星系中的大多数人似乎都倾向于向中心迁移，以逃离被冻结的命运。
-								1: 星海旅者能够从周围的魔力中提取精华，但从我们游历过的几个世界中，我只是了解到这个星系的名字：Moirae。
-								2: 虽然这很重要，但是在我们采取任何行动之前，我们得变得更强才行。While it IS important, we have to get stronger before making any moves.
+								1: 星海旅者能够从周围的魔力中提取精华，但在我们游历过的几个世界中，我只是了解到这个星系的名字：Moirae。
+								2: 虽然这很重要，但是在采取任何行动之前，我们得变得更强才行。While it IS important, we have to get stronger before making any moves.
 								3: 等你做出旅星符台，你就能通过通过Astrolabe探索宇宙了。
 								4: 如果你需要，我可以向你介绍一些基本流程。这说不上复杂，但你可能很快就会糊涂了。
 							}
@@ -2096,14 +2096,14 @@
 						{
 							Dialogue:
 							{
-								0: 好吧。首先，你需要制作一座名为“旅星符台”的建筑。
+								0: 好吧。首先，你需要制作一座“旅星符台”。
 								1: 在天文台内部有一座天神锚点，为了简化流程，你可以把它当做合成站来使用。它就坐落在一个由石柱环绕的基座上。
-								2: 你只需要从每种宝石中各取其一，并将他们简单结合，就能制作出旅星符台了。这也是流程中最麻烦的部分。
-								3: Now, placing the Stellaglyph in your home will open up a Gateway you can use with the Celestial Cartography menu to explore the galaxy in what we call a Cosmic Voyage.
-								4: Simply select a destination to teleport directly there- quite a novel way of travel, right?
-								5: Of course, there's a few downsides. We're transposing you there instead of normal travel (like with a starship) so you'll have most movement abilities unavailable.
-								6: Oh, I recommend taking something like a grappling hook to service you on the Cosmic Voyages. Trust me on this one.
-								7: That makes sense. Keep in mind you'll need to be near the Gateway to go to other locations- but if you get stuck, you can just teleport home or the Observatory.
+								2: 你只需要从每种宝石中各取其一，并将它们简单结合，就能制作出旅星符台了。这也是流程中最麻烦的部分。
+								3: 现在，你只需要把旅星符台安置在家里，就能打开一道传送门。随后你就能通过天体星图探索星海了，我们称之为——寰宇之旅。
+								4: 你只需要选择一个目的地，就能直接传送到那儿——很新奇的旅行方式，对吧？
+								5: 当然，这种方式也存在一些弊端。我们通过非常规的手段把你传送到目的地（而不是用宇宙飞船），所以你绝大部分的机动能力都没法使用了。
+								6: 唔，我推荐你在寰宇之旅途中带上钩爪之类的东西。在这一点上，相信我总没错的。
+								7: 言之有理。记住：你只有在传送门附近才能传送到其它目的地——但如果你被困住了，你可以选择传送回家或是回到天文台。
 								8: Speaking of locations... any loot you find won't be replenished when you visit again, except for Anomalies.
 								9: Anomaly locations have much greater loot and rarer enemies, but if you stay for too long...
 								10: Let's just say there's a whole host of nasties in the galaxy, and they love visiting these places. Once they're alerted to your presence, they'll come hunting.
@@ -2114,16 +2114,16 @@
 								15: Okay, that's it! Did you get all that?
 							}
 							Choices:
-							{
-								1: Sounds good to me.
-								2: Can you run that by me again?
+							{——
+								1: 听起来挺不错的。
+								2: 你能再说一遍吗？
 							}
 						}
 						18:
 						{
 							Dialogue:
 							{
-								0: Perfect. Good luck out there!
+								0: 真是太好了。祝你好运！
 							}
 							Choices:
 							{
