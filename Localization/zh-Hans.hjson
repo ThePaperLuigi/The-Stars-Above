@@ -1745,12 +1745,12 @@
 						91: 这名敌人散发出神秘的凛冽气息。离它远点，那些冰锥可不是摆设。
 						92: 荒漠灾虫又回来了……我认得它——这是它曾经的样子。
 						93: A colossal serpent makes its way towards us.. It may overwhelm you.. don't get reckless.
-						94: 焦炭玩偶召唤出了某个灼热的灵魂……它可以随意传送——别追丢了。
+						94: 焦炭玩偶召唤出了这只炽热的元素之灵……它可以四处传送——可别追丢了。
 						95: 灾厄……一个值得尊重的名字。我们已经见证了她的力量。此战，有胜无败。
 						96: 又是阿娜希塔的歌声。你想再次挑战她吗？
 						97: 你听见了吗，{0}？有谁在海里唱歌吗？
 						98: 呃……看上去你把她激怒了。希望你已经做好战斗的准备了……
-						99: 那究竟是什么……真是个大家伙！小心，战斗环境改变了！
+						99: 那究竟是什么……真是个大家伙！小心，局势改变了！
 						100: 一头机械巨兽，但它已经被星辉瘟疫侵染了。保持谨慎。
 						101: 呃。一只令人作呕的飞虫，但它现在装载了火炮。当它受伤时，那些导弹可能会被引爆。
 						102: 呃呃，这儿有一大堆血肉与骸骨。在我看来，过于接近它可能会葬送你的生命。
@@ -1766,7 +1766,7 @@
 						112: 神明吞噬者降临了！这场战斗你必须竭尽全力！
 						113: 丛林龙在咆哮。让我们破坏亚利姆的计划。
 						114: 它要去哪？是我们……不够强大吗？
-						115: 难以置信……她的力量无法形容的强大。{0}……我们必须得赢！
+						115: 难以置信……她的力量无可言表。{0}……我们必须得赢！
 						116: 嘉登来了……当心他的战术，他的知识足以通晓世界。
 						117: 保持警惕，侦测到多个敌人！嘉登的造物们正在高速接近。
 						118: 快点——找一处高地！一条机械巨蛇正在接近！
@@ -1775,7 +1775,7 @@
 						121: 这家伙以为他是谁？天界能量的掌控者吗？不必说……呃——我没必要说出来，对吧？
 						122: 唔，现在是最佳时机了。他的武器库围绕着入侵事件展开——我们已经看到其中属于我们的那一份了。
 						123: 哦，你一定要把这东西扔进岩浆，对吗？唔，祝你好运，突变体被激怒了。你难道没看见他正朝这边来吗——等等，我看见了。
-						124: 风暴信号弹叫来了什么东西！嗯？它看上去像团闪电。
+						124: 风暴信号弹叫来了什么东西！嗯？它似乎是雷属性的。
 						125: 某种水母怪物正在接近。看起来有人被困在里面了……？
 						126: 一只巨大的吸血蝙蝠！当心……
 						127: 洞穴中的能量汇聚出了一只怪物！这究竟是什么东西……？
@@ -1795,7 +1795,7 @@
 						141: 这地方可真……让人作呕。我们还是尽快离开吧。
 						142: 一片典型的针叶林。我并非不喜欢雪地。
 						143: 我们踏入了一片童话世界。如果不是这里的一切都怀揣着敌意的话，这里还能变得更加美好。
-						144: 一片巨型发光蘑菇林……它们感觉起来相当……友好？我们应该带一些回家，以备不时之需。
+						144: 一片巨型发光蘑菇林……感觉起来相当……温馨？我们应该带一些回家，以备不时之需。
 						145: 这里到处都是陷阱，但也埋藏着强大的武器。做好准备。
 						146: 这就是我们听见的那颗落地的陨石。我想知道我们能用它做些什么……？
 						147: 硫火之崖……我能感受到来自过去的恐惧……
@@ -1939,15 +1939,15 @@
 						{
 							Dialogue:
 							{
-								0: 我明白了……请原谅我先前的考验。我知道这很粗鲁，但这是我所知的评判某人的唯一方法。
-								1: 事实上，我早该知道的。我的妹妹绝不会做出不明智的选择。
-								2: 哈？你叫我妹妹？没门……
-								3: I apologize, Asphodene. This should help. Ring any bells?
+								0: 我明白了……请原谅我对你的考验。我知道这很粗鲁，但这是我所知的评判某人的唯一方法。
+								1: 事实上，我早该知道的。我的姐妹绝不会做出草率的决定。
+								2: 哈？你叫我姐妹？没门……
+								3: 抱歉，爱丝福德妮。这应该会有所帮助。你想起来了吗？
 								4: 拜托，我们不该像这样会面的。这太冒失了……！
-								5: 听我解释，星之传承者。 在这个星系的大千世界中，存在着以帮助那里的居民为己任的星海旅者。你应该知道我们都做些什么。
+								5: 听我解释，星之传承者。在这个星系的大千世界中，存在着以帮助那里的居民为己任的星海旅者。你应该知道我们都做些什么。
 								6: 身为能量的集合体，星海旅者们会选择各自的星之传承者作为使者。你应该清楚生物是最佳的魔力导体，而我们严格来说算不上生命体。
-								7: 然而，初代星海旅者的伙伴有些……名不副实。他就是第一位星之传承者。据我所知，他们已经丧失了心智与道德。
-								8: 如今，他们继续在星海中漫游。这位星海旅者受制于她的星之传承者，她们不择手段所追求的“正义”常常为人们带来不必要的灾难。
+								7: 然而，初代星海旅者所选之人有些……德不配位。那就是第一位星之传承者。据我所知，他们已经丧失了心智与道德。
+								8: 如今，他们继续在星海中漫游。这位星海旅者受制于她的星之传承者，她们不择手段所追求的“善行”常常为人们带来不必要的灾难。
 								9: 这些都是猜想，但他们确实带来了大量的毁灭。不必说，我们不能让这种情况再继续下去了。总有一天我需要你的帮助。
 								10: 就目前的情况来看，你战胜他们的机会微乎其微。但爱丝福德妮不知道的是，所有星海旅者都有自己的底牌——天体新星。
 								11: 在你通过这场考验时，我已经将这种力量传承给她了。
@@ -1972,12 +1972,12 @@
 							{
 								0: 我明白了……请原谅我先前的考验。我知道这很粗鲁，但这是我所知的评判某人的唯一方法。
 								1: 事实上，我早该知道的。我的妹妹绝不会做出不明智的选择。
-								2: 你刚才叫我“姐姐”？ 你一定是在开玩笑……
+								2: 你刚才叫我“姐妹”？ 你一定是在开玩笑……
 								3: 抱歉，埃里达妮。这应该会有所帮助，想起来了吗？
 								4: 我们好久没说过话了——你怎么突然出现了……？
-								5: 听我解释，星之传承者。 在这个星系的大千世界中，存在着以帮助那里的居民为己任的星海旅者。你应该知道我们都做些什么。
+								5: 听我解释，星之传承者。在这个星系的大千世界中，存在着以帮助那里的居民为己任的星海旅者。你应该知道我们都做些什么。
 								6: 身为能量的集合体，星海旅者们会选择各自的星之传承者作为使者。你应该清楚生物是最佳的魔力导体，而我们严格来说算不上生命体。
-								7: 然而，初代星海旅者有些……名不副实。这是第一位星之传承者。据我所知，她们似乎已经丧失了心智与道德。
+								7: 然而，初代星海旅者所选之人有些……德不配位。那就是第一位星之传承者。据我所知，他们已经丧失了心智与道德。
 								8: 如今，她们继续在星系中漫游。这位星海旅者受制于她的星之传承者，她们不择手段所追求的“正义”常常为人们带来灾难。
 								9: 这些都是猜想，但她们造成的破坏却是实际存在的。不必说，我们不能让这种情况再继续下去了。总有一天我需要你的帮助。
 								10: 就目前的情况来看，你战胜她们的机会微乎其微。但埃里达妮不知道的是，所有星海旅者都有自己的底牌——天体新星。
@@ -2038,7 +2038,7 @@
 								4: 希望这能解释清楚这里正在发生的事情。我们最终发现了一件事：
 								5: 这个星系——the Moirae星系——正在冻结。虽然这不会立即发生，但距离星系中心越远，情况就越发恶化。
 								6: 虽然这里远离星系中心，但你所在的星球格外宜居，这就是我们邂逅的原因
-								7: The Observatory has defined this disaster as the Ardor, so we'll be referring to it as such.
+								7: 天文台将这种灾难称为Ardor，于是我们就以此称呼它。
 							}
 							Choices:
 							{
@@ -2109,7 +2109,7 @@
 								10: 这么说吧，星海中潜藏着大量讨厌的家伙，这些特异点深受他们的青睐。一旦它们注意到你的存在，他们就会前来猎杀你。
 								11: 对特异点的探索之间有很长的冷却时间，因此每次探索都至关重要。
 								12: 通过升级你的旅星符台，寰宇之旅可以抵达更多目的地，但你必须自己给旅星符台升级，当然了，要使用天神锚点。
-								13: 最后一点——有一些名为“星体聚焦”的架构，当它们被安置在旅星符台附近时，会在寰宇之旅途中给予你强化。
+								13: 最后一点——有一些名为“星体聚焦”的雕塑，当它们被安置在旅星符台附近时，会在寰宇之旅途中给予你强化。
 								14: 那在长途旅行中非常有用，但它们很难制作。或许我们能在某处找到一点线索？
 								15: 好了，我说完了！你听明白了吗？
 							}
@@ -2135,15 +2135,15 @@
 						{
 							Dialogue:
 							{
-								0: My eyes betrayin' me? A landwalker and a... familiar, all the way out'n deep space?
-								1: You're one to talk! If you weren't aware, you're glowing BRIGHT BLUE. Also, I kind of take offense to the term familiar...
-								2: "'Pologies, not tryin' to start anythin'- Anywho, never met'n a lumenkin before, eh? Now that's a sparker. Name's... uh... Yojimbo."
-								3: Settin' aside your magical companion, I'm thinkin' you hail from somewhere nearby... Guess the Ardor ain't cleared this region fully yet.
-								4: "'ell, this'll be ash. Contracts out here are already a chore, so if you plan on gettin' in the way, it'd be makin' my job a great deal harder."
-								5: No, we weren't planning on fighting you... Actually, if you have any help you can offer, we'll take it.
-								6: Do I seriously give off the impression that I'd be givin' you a hand? Good, because I'm feelin' mighty generous this time.
-								7: If you're really in the business of needin' help, next time you see me I'll give you a few pointers to stayin' sharp out 'ere.
-								8: I'm feelin' like I've just gone an' made a huge mistake. Why am I the sort to keep doin' this to myself?
+								0: 是我眼花了吗？一个旅行者和一只……幽灵？她们从外太空来？
+								1: 你还好意思说！如果你没意识到，你正在发出耀眼的蓝光！此外，我对幽灵这个称呼有些反感。
+								2: “抱兼欠，我无意 挑起事端——你们从来 没遇到过Lumenkin，对吗？和你们 说话的 人叫做……呃……Yojimbo。”
+								3: 抛开 你的魔法伙伴不言，我想 你来自附近的某个地方……看来Ardor尚未席卷整片区域。
+								4:  “好吧，这都 无关紧要。这里的 合同已经是一件苦差事了，如果你打算 挡道，可能会给我的 工作带来更多的 麻烦。”
+								5: 不，我们无意和你为敌。实际上，如果你能提供任何形式的帮助，我们很乐意接受它。
+								6: 我真的给你们一种 我会帮你们的感觉 吗？好吧，因为这次我能感受到自己无上的 慷慨。
+								7: 如果你真的需要 帮助，下次见面时我会给你们一些指示，帮你们 在这里保持敏锐的头脑。
+								8: 我感觉自己 犯了个大错误。我为什么总是这么 对自己？
 							}
 							Choices:
 							{
@@ -2155,15 +2155,15 @@
 						{
 							Dialogue:
 							{
-								0: My eyes betrayin' me? A human and a... familiar, all the way out'n deep space?
-								1: First off, I am NOT a familiar. Secondly, if you're what this region calls normal, this galaxy is much more exotic than I thought.
-								2: "'Pologies, not tryin' to start anythin'- Anywho, never met'n a lumenkin before, eh? Now that's a sparker. Name's... uh... Yojimbo."
-								3: Settin' aside your magical companion, I'm thinkin' you hail from somewhere nearby... Guess the Ardor ain't cleared this region fully yet.
-								4: "'ell, this'll be ash. Contracts out here are already a chore, so if you plan on gettin' in the way, it'd be makin' my job a great deal harder."
-								5: Well, I certainly wasn't gunning for a fight. On the other hand, we'll accept any offer of assistance you can provide.
-								6: Do I seriously give off the impression that I'd be givin' you a hand? Good, because I'm feelin' mighty generous this time.
-								7: If you're really in the business of needin' help, next time you see me I'll give you a few pointers to stayin' sharp out 'ere.
-								8: I'm feelin' like I've just gone an' made a huge mistake. Why am I the sort to keep doin' this to myself?
+								0: 是我眼花了吗？一个旅行者和一只……幽灵？她们从外太空来？
+								1: 首先，我不是幽灵。其次，如果你算得上这片区域所谓的“普通人”，那么这个星系要比我想象的奇异的多。
+								2: “抱兼欠，我无意 挑起事端——你们从来 没遇到过Lumenkin，对吗？和你们 说话的 人叫做……呃……Yojimbo。”
+								3: 抛开 你的魔法伙伴不言，我想 你来自附近的某个地方……看来Ardor尚未席卷整片区域。
+								4: “好吧，这都 无关紧要。这里的 合同已经是一件苦差事了，如果你打算 挡道，可能会给我的 工作带来更多的 麻烦。”
+								5: 一方面，我们无意和你为敌。另一方面，我们乐于接受你提供的任何帮助。
+								6: 我真的给你们一种 我会帮你们的感觉 吗？好吧，因为这次我能感受到自己无上的 慷慨。
+								7: 如果你真的需要 帮助，下次见面时我会给你们一些指示，帮你们 在这里保持敏锐的头脑。
+								8: 我感觉自己 犯了个大错误。我为什么总是这么 对自己？
 							}
 							Choices:
 							{
@@ -2589,7 +2589,7 @@
 					}
 					AfterCartographyDialogue:
 					{
-						Asphodene: 你改变注意了吗？
+						Asphodene: 你改变主意了吗？
 						Eridani: 你还有其它打算吗？
 					}
 				}
@@ -2597,17 +2597,17 @@
 				{
 					Archive:
 					{
-						Asphodene: 唔……你想浏览哪方面的内容？对话分为三部分：闲置状态，Boss对话以及获得精华。点选你想要浏览的部分。
-						Eridani: Okay, what do you want to read about? The dialogues are sorted into 3 groups: idle, boss, and weapon. Feel free to choose which one you want to view.
+						Asphodene: 唔……你想浏览哪方面的内容？对话分为四部分：闲置状态，Boss对话，武器对话和长篇对话。大致浏览一遍，然后点选你感兴趣的部分。
+						Eridani: 好的……你想浏览哪方面的内容？对话分为四部分：闲置状态，Boss对话，武器对话和长篇对话。请随意选择你想要浏览的部分。
 					}
 					ExitArchive:
 					{
-						Asphodene: Changed your mind?
-						Eridani: Did you have other plans?
+						Asphodene: 你改变主意了吗？
+						Eridani: 你还有其它打算吗？
 					}
 					ArchiveHover:
 					{
-						Asphodene: This is the Archive. Just in case you didn't get everything I said, you can read it here. I know, you just can't get enough of my analysis, right? You can also get items you lost, like Essences.
+						Asphodene: 这里是档案his is the Archive. Just in case you didn't get everything I said, you can read it here. I know, you just can't get enough of my analysis, right? You can also get items you lost, like Essences.
 						Eridani: This is the Archive. If you ever find yourself needing me to repeat what I've said about something, it's here. Additionally, if you lost something like an Essence, you can reacquire it.
 					}
 					Confirm:
