@@ -2157,7 +2157,7 @@
 							{
 								0: 是我眼花了吗？一个旅行者和一只……幽灵？她们从外太空来？
 								1: 首先，我不是幽灵。其次，如果你算得上这片区域所谓的“普通人”，那么这个星系要比我想象的奇异的多。
-								2: “抱兼欠，我无意 挑起事端——你们从来 没遇到过Lumenkin，对吗？和你们 说话的 人叫做……呃……Yojimbo。”
+								2: “抱兼欠，我无意 挑起事端——你们从来 没遇到过流光眷族，对吗？和你们 说话的 人叫做……呃……Yojimbo。”
 								3: 抛开 你的魔法伙伴不言，我想 你来自附近的某个地方……看来Ardor尚未席卷整片区域。
 								4: “好吧，这都 无关紧要。这里的 合同已经是一件苦差事了，如果你打算 挡道，可能会给我的 工作带来更多的 麻烦。”
 								5: 一方面，我们无意和你为敌。另一方面，我们乐于接受你提供的任何帮助。
@@ -2175,10 +2175,10 @@
 						{
 							Dialogue:
 							{
-								0: I see- this far from the Heart people are no stranger to a lack of courtesy- barging into one's home like so. Am I correct?
-								1: Sorry... We would have knocked, but to be honest, we thought this place was... uh... abandoned.
-								2: Truly? No matter- I am nothing if not the forgiving sort... I think. Wait, forget that last bit.
-								3: Ahem. Friendly faces scant wander this far, so offering hospitality is the least I can do- to a Starfarer, as well. My name is Garridine.
+								0: 我明白了——在内心深处，人们对这种无理的行为已经见怪不怪了——比如像这样闯进别人家里。我说的对吗？
+								1: 很抱歉……我们本该敲门的，但说实话，我们以为这地方已经……呃……被废弃了。
+								2: 真的吗？没关系——我是个宽容的人……至少我这么认为。等等，忘了最后那句。
+								3: 咳咳，这么偏远的地方很少能看见友善的面孔，所以我起码应该提供周到的款待——对星海旅者也是如此。我是Garridine。
 								4: In truth, automatons prove not the most capable of conversationalists. I would not be opposed to your visits. In fact, I would petition your aid for a certain matter...
 								5: Yep, done deal- right, {0}? I hesitate to say it, but she's really cute... we simply HAVE to help her out.
 								6: Did you say something? No? In that case... I would appreciate it if you would allow me to analyze your equipment and weapons you have created.
@@ -2197,9 +2197,9 @@
 						{
 							Dialogue:
 							{
-								0: I see- this far from the Heart people are no stranger to a lack of courtesy- barging into one's home like so. Am I correct?
+								0: 我明白了——在内心深处，人们对这种无理的行为已经见怪不怪了——比如像这样闯进别人家里。我说的对吗？
 								1: I'm so sorry... We thought, you know, because everything else is abandoned around here, this place would be too... Sorry.
-								2: Truly? No matter- I am nothing if not the forgiving sort... I think. Wait, forget that last bit.
+								2:真的吗？没关系——我是个宽容的人……至少我这么认为。等等，忘了最后那句。
 								3: Ahem. Friendly faces scant wander this far, so offering hospitality is the least I can do- to a Starfarer, as well. My name is Garridine.
 								4: In truth, automatons prove not the most capable of conversationalists. I would not be opposed to your visits.
 								5: That sounds great to me. Finding a friendly face so far from civilization is a great help to us as well.
