@@ -2157,13 +2157,13 @@
 							{
 								0: 是我眼花了吗？一个旅行者和一只……幽灵？她们从外太空来？
 								1: 首先，我不是幽灵。其次，如果你算得上这片区域所谓的“普通人”，那么这个星系要比我想象的奇异的多。
-								2: “抱兼欠，我无意 挑起事端——你们从来 没遇到过流光眷族，对吗？和你们 说话的 人叫做……呃……Yojimbo。”
-								3: 抛开 你的魔法伙伴不言，我想 你来自附近的某个地方……看来Ardor尚未席卷整片区域。
-								4: “好吧，这都 无关紧要。这里的 合同已经是一件苦差事了，如果你打算 挡道，可能会给我的 工作带来更多的 麻烦。”
+								2: “抱歉，我无意挑起争端——你们从来都没遇到过流光眷族，对吗？和你们说话的人叫做……呃……Yojimbo。”
+								3: 抛开你的魔法伙伴不言，我想，你来自附近的某个地方……看来Ardor尚未席卷整片区域。
+								4: “好吧，这都无关紧要。这里的合同已经是一件苦差事了，如果你打算挡道，可能会给我的工作带来更多的麻烦。”
 								5: 一方面，我们无意和你为敌。另一方面，我们乐于接受你提供的任何帮助。
-								6: 我真的给你们一种 我会帮你们的感觉 吗？好吧，因为这次我能感受到自己无上的 慷慨。
+								6: 我真的给你们一种 我会帮你们的感觉 吗？好吧，因为这次我能感受到自己无上的慷慨。
 								7: 如果你真的需要 帮助，下次见面时我会给你们一些指示，帮你们 在这里保持敏锐的头脑。
-								8: 我感觉自己 犯了个大错误。我为什么总是这么 对自己？
+								8: 我感觉自己犯了个大错误。我为什么总是这么对自己？
 							}
 							Choices:
 							{
@@ -2178,9 +2178,9 @@
 								0: 我明白了——在内心深处，人们对这种无理的行为已经见怪不怪了——比如像这样闯进别人家里。我说的对吗？
 								1: 很抱歉……我们本该敲门的，但说实话，我们以为这地方已经……呃……被废弃了。
 								2: 真的吗？没关系——我是个宽容的人……至少我这么认为。等等，忘了最后那句。
-								3: 咳咳，这么偏远的地方很少能看见友善的面孔，所以我起码应该提供周到的款待——对星海旅者也是如此。我是Garridine。
-								4: In truth, automatons prove not the most capable of conversationalists. I would not be opposed to your visits. In fact, I would petition your aid for a certain matter...
-								5: Yep, done deal- right, {0}? I hesitate to say it, but she's really cute... we simply HAVE to help her out.
+								3: 咳咳，这么偏远的地方很少能看见友善的面孔，所以我起码应该提供周到的款待——对星海旅者也是如此。幸会，我是Garridine。
+								4: 实际上，之前到访的那些死板的家伙并不善谈，所以我不反对你们的到来——事实上，我想为某些事请求你们的帮助。
+								5: 好吧，那就说定了——对吧，{0}？我原本挺犹豫的，但是她真的太！可！爱！了……我们只需要帮帮她。Yep, done deal- right, {0}? I hesitate to say it, but she's really cute... we simply HAVE to help her out.
 								6: Did you say something? No? In that case... I would appreciate it if you would allow me to analyze your equipment and weapons you have created.
 								7: I haven't had occassion to learn about recent advancements, owing in no small part to the Ardor- if I were to get a glimpse, it would be quite the boon.
 								8: To make this worth your time, I'll craft some Stellar Foci for you after a visit.
@@ -2739,7 +2739,7 @@
 						Locked:
 						{
 							Asphodene: 我们还没有使用它的权利……看来我们得打败一个机械威胁了。
-							Eridani: 我们还不能使用他。看来我们至少得打败一个机械威胁。
+							Eridani: 我们还不能使用它。看来我们至少得打败一个机械威胁。
 						}
 					}
 					GardenOfAvalon:
