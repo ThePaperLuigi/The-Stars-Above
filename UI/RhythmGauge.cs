@@ -77,7 +77,8 @@ namespace StarsAbove.UI
 			int left = hitbox.Left;
 			int right = hitbox.Right;
 			int steps = (int)((right - left) * quotient);
-			
+			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/RhythmGaugeFrameBack"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);
+
 			if (modPlayer.RhythmTiming > 40 && modPlayer.RhythmTiming < 60)
 			{
 				UsedColor = colorB;

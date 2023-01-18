@@ -31,7 +31,8 @@ namespace StarsAbove.Projectiles.Bosses.Vagrant
 		}
 		int timer;
 		int fadeIn = 0;
-		
+
+		bool firstTurn = true;
 		float projectileVelocity = 15;
 
 		// In here the AI uses this example, to make the code more organized and readable
@@ -45,18 +46,27 @@ namespace StarsAbove.Projectiles.Bosses.Vagrant
         // It appears that for this AI, only the ai0 field is used!
         public override bool PreAI()
         {
-			for (int i = 0; i < Main.maxNPCs; i++)//The sprite will always face what the boss is facing.
-			{
-				NPC other = Main.npc[i];
-
-				if (other.active && other.type == ModContent.NPCType<VagrantBoss>())
+			if(firstTurn)
+            {
+				firstTurn = false;
+				for (int i = 0; i < Main.maxNPCs; i++)//The sprite will always face what the boss is facing.
 				{
-					Projectile.position = new Vector2(other.position.X, other.position.Y + 80);
-					Projectile.direction = (Main.player[other.target].Center.X < Projectile.Center.X).ToDirectionInt();
-					Projectile.spriteDirection = Projectile.direction;
-					return true;
+					NPC other = Main.npc[i];
+
+					if (other.active && other.type == ModContent.NPCType<VagrantBoss>())
+					{
+						Projectile.position = new Vector2(other.position.X, other.position.Y + 80);
+						Projectile.direction = (Main.player[other.target].Center.X < Projectile.Center.X).ToDirectionInt();
+						Projectile.spriteDirection = Projectile.direction;
+						return true;
+					}
 				}
 			}
+			else
+            {
+
+            }
+			
 			return base.PreAI();
         }
         public override void AI() {

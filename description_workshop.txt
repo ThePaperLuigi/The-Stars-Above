@@ -1,13 +1,13 @@
-"Conquer the world's evils, Starfarers at your side.."
+"Conquer the galaxy's evils, Starfarers at your side..."
 
 
 
 
 [h1]Join the Discord Server for The Stars Above!
-[url=https://discord.gg/starsabove] Discord Server [/url][/h1] 
+[url=https://discord.gg/kFURRZZszD] Discord Server [/url][/h1] 
 The Discord Server will be updated with the latest information pertaining to the mod, as well as previews of upcoming content!
 
-[img]https://i.imgur.com/qZrrnoe.gif[/img]
+[img]https://i.imgur.com/spyB2tu.gif[/img]
 
 [h2]Get high quality Terraria servers, modded or not, with Bisect Hosting!
 Use the promo code "starsabove" to get 25% off your first month- and help support me as well! Thank you![/h2]
@@ -15,11 +15,13 @@ Use the promo code "starsabove" to get 25% off your first month- and help suppor
 [img]https://i.imgur.com/giHAnWT.jpg[/img]
 
 
-The Stars Above is a Terraria expansion mod that adds a ton of content and a new important game mechanic:
+The Stars Above is a Terraria expansion mod that adds a wide variety of content and a new important game mechanic:
 the Starfarer system. With over 1 million downloads in less than a year, The Stars Above guarantees a unique experience for any playthrough.
 
 Choose between either the Umbral or Astral Aspect, and unlock unique equippable abilities
 within the Stellar Array, mixing and matching them to perfect your build.
+
+With the latest update, explore pre-designed dungeons seperate from the original world through the magic of Cosmic Voyages, meeting new allies and challenging new foes. Bring your friends along too!
 
 Converse with your Starfarer with hundreds of unique dialogue lines- you will become stronger side-by-side with them,
 and arm yourselves for the challenges to come.
@@ -65,9 +67,17 @@ Casted Attacks. Adapt and learn to defeat these formidable enemies!
 
 [img]https://i.imgur.com/BEnNDqm.png[/img]
 
+[h1]COSMIC VOYAGES[/h1]
+
+Explore the Moirae Galaxy through a brand-new system added in Beyond: Celestial Cartography. Obtain rare materials, powerful accessories, and more.
+
+[img]https://i.imgur.com/BEnNDqm.png[/img]
+
 [h1]ADDITIONAL CONTENT / MOD CROSSOVER CONTENT[/h1]
 
 The features of The Stars Above doesn't stop here; express yourself with unique pets or empower yourself with the mod's unique accessories.
+
+Turn Aspected weapons to Rogue Damage from Calamity, or Symphonic/Radiant/Throwing Damage from Thorium!
 
 Your Starfarers will have unique dialogue for content from the following mods:
 Calamity, Secrets of the Shadows, Verdant, Fargo's Souls, Thorium (1.3 only.) More will come soon!
@@ -84,7 +94,10 @@ Additionally, some separate scaling is present for the Calamity Mod. (This can b
 
 View the official Fandom wiki here!
 [url=https://terrariamods.fandom.com/wiki/The_Stars_Above] The Stars Above Wiki [/url]
+[url=https://terrariamods.wiki.gg/wiki/The_Stars_Above] The Stars Above Wiki (wiki.gg ver.) [/url]
 As of now, the wiki is lacking a lot of articles; feel free to contribute (Even one article is a lot!) Thanks again!
-Thank you to Soammer(夏沫), MeireiHakuya(冥岭白夜), (亚砜), and Yukiko (羽曦), for the original translation of The Stars Above.
 
-A full Chinese translation is coming soon. Thank you, and please be patient.
+The mod includes localization for Chinese and Spanish, thanks to these individuals:
+Chinese translation team:  Soammer(夏沫), MeireiHakuya(冥岭白夜), (亚砜), and Yukiko (羽曦)
+Spanish translation team: Bluefire72, Haturok, Aka Tofu, Karus
+Thank you, translators!

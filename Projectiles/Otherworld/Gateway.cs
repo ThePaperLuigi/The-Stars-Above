@@ -46,15 +46,6 @@ namespace StarsAbove.Projectiles.Otherworld
 	
 		public override void AI()
 		{
-			for (int i = 0; i < Main.maxPlayers; i++)
-            {
-				Player p = Main.player[i];
-				if (p.active && !p.dead && p.Distance(Projectile.Center) < 220f)
-                {
-					p.AddBuff(BuffType<PortalReady>(), 2);
-                }
-
-            }
 			
 			
 			

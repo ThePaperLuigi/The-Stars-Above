@@ -22,6 +22,8 @@ namespace StarsAbove
 		
 		public override ConfigScope Mode => ConfigScope.ClientSide;
 
+		[Header("$Mods.StarsAbove.Config.StellarNovaHeader")]
+
 		[Label("$Mods.StarsAbove.Config.DisableStellarNovaCutIns.Label")]
 		[Tooltip("$Mods.StarsAbove.Config.DisableStellarNovaCutIns.Tooltip")]
 		public bool DisableStellarNovaCutIns;
@@ -29,6 +31,8 @@ namespace StarsAbove
 		[Label("$Mods.StarsAbove.Config.DisableStellarNovaDialogue.Label")]
 		[Tooltip("$Mods.StarsAbove.Config.DisableStellarNovaDialogue.Tooltip")]
 		public bool DisableStellarNovaDialogue;
+
+		[Header("$Mods.StarsAbove.Config.PopUpDialogueHeader")]
 
 		[Label("$Mods.StarsAbove.Config.DisableStarfarerCommentary.Label")]
 		[Tooltip("$Mods.StarsAbove.Config.DisableStarfarerCommentary.Tooltip")]
@@ -118,6 +122,9 @@ namespace StarsAbove
 		[Tooltip("$Mods.StarsAbove.Config.EnableAprilFools.Tooltip")]
 		public bool EnableAprilFools;
 
+		[Label("$Mods.StarsAbove.Config.DisableWeaponCutIn.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.DisableWeaponCutIn.Tooltip")]
+		public bool DisableWeaponCutIns;
 
 		//[Label("Show mod origin in tooltip")]
 		//public bool ShowModOriginTooltip;
@@ -128,6 +135,7 @@ namespace StarsAbove
 			// We maintain both ExampleUI.visible and ShowCoinUI as separate values so ShowCoinUI can act as a default while ExampleUI.visible can change within a play session.
 			UI.StarfarerMenu.StarfarerMenu.ShadesVisible = EnableAprilFools;
 			UI.StellarNova.StellarNovaCutIn.ShadesVisible = EnableAprilFools;
+			UI.EmotionGauge.AnimationDisabled = DisableWeaponCutIns;
 
 			UI.Starfarers.StarfarerPrompt.PromptPos = PromptLoc;
 			//UI.StellarNovaGauge.NovaGaugePos = NovaGaugeLoc;
@@ -152,6 +160,8 @@ namespace StarsAbove
 				SceneEffects.SuistrumeAudioEasterEgg.setPriority = SceneEffectPriority.BossHigh + 1;
 				SceneEffects.TheOnlyThingIKnowForRealAudio.setPriority = SceneEffectPriority.BossHigh + 1;
 				SceneEffects.TheOnlyThingIKnowForRealAudioLow.setPriority = SceneEffectPriority.BossHigh + 1;
+				SceneEffects.ManifestationAudio.setPriority = SceneEffectPriority.BossHigh + 1;
+
 
 			}
 			//StarsAbove.sharedAudio = EnableSuistrumeAudio;

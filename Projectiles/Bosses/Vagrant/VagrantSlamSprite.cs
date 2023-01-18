@@ -1,4 +1,5 @@
-﻿using StarsAbove.NPCs.Vagrant;
+﻿using Microsoft.Xna.Framework;
+using StarsAbove.NPCs.Vagrant;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -28,7 +29,7 @@ namespace StarsAbove.Projectiles.Bosses.Vagrant
 		}
 		int timer;
 		int fadeIn = 0;
-		
+		bool effectUsed = false;
 		float projectileVelocity = 15;
 
 		// In here the AI uses this example, to make the code more organized and readable
@@ -43,6 +44,7 @@ namespace StarsAbove.Projectiles.Bosses.Vagrant
 		
 		public override void AI() {
 			DrawOriginOffsetY = -38;
+			DrawOffsetX = -20;
 			timer++;
 			
 			fadeIn += 5;
@@ -82,6 +84,34 @@ namespace StarsAbove.Projectiles.Bosses.Vagrant
 
 				}
 
+			}
+			if(Projectile.frame == 3 && !effectUsed)
+            {
+				effectUsed = true;
+				for (int i = 0; i < 10; i++)
+				{
+					int dustIndex = Dust.NewDust(new Vector2(Projectile.Center.X, Projectile.Center.Y + 24), 0, 0, DustID.Smoke, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 0), 100, default(Color), 2f);
+					Main.dust[dustIndex].velocity *= 1.4f;
+				}
+				for (int g = 0; g < 4; g++)
+				{
+					int goreIndex = Gore.NewGore(null, new Vector2(Projectile.position.X + (float)(Projectile.width / 2) - 24f, Projectile.position.Y + (float)(Projectile.height / 2) + 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+					Main.gore[goreIndex].scale = 1.5f;
+					Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
+					Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
+					goreIndex = Gore.NewGore(null, new Vector2(Projectile.position.X + (float)(Projectile.width / 2) - 24f, Projectile.position.Y + (float)(Projectile.height / 2) + 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+					Main.gore[goreIndex].scale = 1.5f;
+					Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
+					Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
+					goreIndex = Gore.NewGore(null, new Vector2(Projectile.position.X + (float)(Projectile.width / 2) - 24f, Projectile.position.Y + (float)(Projectile.height / 2) + 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+					Main.gore[goreIndex].scale = 1.5f;
+					Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
+					Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
+					goreIndex = Gore.NewGore(null, new Vector2(Projectile.position.X + (float)(Projectile.width / 2) - 24f, Projectile.position.Y + (float)(Projectile.height / 2) + 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+					Main.gore[goreIndex].scale = 1.5f;
+					Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
+					Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
+				}
 			}
 			if (Projectile.frame == 5)
 			{

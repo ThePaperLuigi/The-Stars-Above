@@ -23,7 +23,8 @@ namespace StarsAbove.Items
 		{
 			DisplayName.SetDefault("Gloves of the Black Silence");
 			Tooltip.SetDefault("" +
-                "Right-click to choose from 3 random weapons from a pool of 9 different weapons, each with unique attack patterns (5 second cooldown)" +
+				"[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes]" +
+				"\nRight-click to choose from 3 random weapons from a pool of 9 different weapons, each with unique attack patterns (5 second cooldown)" +
 				"\nAfter choosing a weapon, gain a unique buff based on the chosen weapon that lasts for 12 seconds" +
 				"\n[c/6C6C6C:Durandal]: Attack in a wide arc with a high critical strike chance; gain 50% bonus critical strike damage against foes below 50% HP" + //Done.
 				"\n[c/6C6C6C:Zelkova]: Alternate between axe and mace, healing for a portion of damage dealt; deal 30% bonus damage to foes below 50% HP" + //Done.
@@ -37,7 +38,7 @@ namespace StarsAbove.Items
 				"\nOnce all 9 weapons are chosen, use the Weapon Action Key to activate [c/525252:Furioso], gaining the buff [c/323232:Black Silence] for 12 seconds" +
 				"\n[c/323232:Black Silence] causes all weapons to be cycled through upon attacking" +//All buffs already account for Furioso.
 				"\nAn icon will display near weapons you have not used for the activation of [c/525252:Furioso] during selection" +
-				"\n[c/323232:Black Silence] will additionally grant all unique weapon buffs without the need for prior activation when active" +
+				"\n[c/323232:Black Silence] will additionally increase damage by 30% and activate all unique weapon buffs" +
 				"\n'It can't be helped. That's that, and this is this'" +
 				$"");  //The (English) text shown below your weapon's name
 
@@ -47,7 +48,7 @@ namespace StarsAbove.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 100;           //The damage of your weapon
+			Item.damage = 70;           //The damage of your weapon
 			Item.DamageType = ModContent.GetInstance<Systems.CelestialDamageClass>();          //Is your weapon a melee weapon?
 			Item.width = 40;            //Weapon's texture's width
 			Item.height = 40;           //Weapon's texture's height

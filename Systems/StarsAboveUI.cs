@@ -47,6 +47,9 @@ namespace StarsAbove
 		private UserInterface _EternalGaugeUserInterface;
 		internal EternalGauge EternalGauge;
 
+		private UserInterface _EmotionGaugeUserInterface;
+		internal EmotionGauge EmotionGauge;
+
 		private UserInterface _RadGaugeUserInterface;
 		internal RadGauge RadGauge;
 
@@ -56,6 +59,9 @@ namespace StarsAbove
 		private UserInterface _RedMageGaugeUserInterface;
 		internal RedMageGauge RedMageGauge;
 
+		private UserInterface _AreaNameUIUserInterface;
+		internal AreaNameUI AreaNameUI;
+
 		private UserInterface _BowChargeUserInterface;
 		internal BowCharge BowCharge;
 
@@ -64,6 +70,7 @@ namespace StarsAbove
 
 		private UserInterface _StellarPerformanceBarUserInterface;
 		internal StellarPerformanceBar StellarPerformanceBar;
+
 
 		private UserInterface _WarriorCastBarUserInterface;
 		internal WarriorCastBar WarriorCastBar;
@@ -190,6 +197,10 @@ namespace StarsAbove
 				_EternalGaugeUserInterface = new UserInterface();
 				_EternalGaugeUserInterface.SetState(EternalGauge);
 
+				EmotionGauge = new EmotionGauge();
+				_EmotionGaugeUserInterface = new UserInterface();
+				_EmotionGaugeUserInterface.SetState(EmotionGauge);
+
 				RhythmGauge = new RhythmGauge();
 				_RhythmGaugeUserInterface = new UserInterface();
 				_RhythmGaugeUserInterface.SetState(RhythmGauge);
@@ -209,6 +220,10 @@ namespace StarsAbove
 				IrminsulCursor = new IrminsulCursor();
 				_IrminsulCursorUserInterface = new UserInterface();
 				_IrminsulCursorUserInterface.SetState(IrminsulCursor);
+
+				AreaNameUI = new AreaNameUI();
+				_AreaNameUIUserInterface = new UserInterface();
+				_AreaNameUIUserInterface.SetState(AreaNameUI);
 
 				RedMageGauge = new RedMageGauge();
 				_RedMageGaugeUserInterface = new UserInterface();
@@ -361,6 +376,8 @@ namespace StarsAbove
 			_ButterflyResourceBarUserInterface?.Update(gameTime);
 			_VengeanceGaugeUserInterface?.Update(gameTime);
 			_EternalGaugeUserInterface?.Update(gameTime);
+			_EmotionGaugeUserInterface?.Update(gameTime);
+
 			_BlackSilenceGaugeUserInterface?.Update(gameTime);
 			_RenegadeGaugeUserInterface?.Update(gameTime);
 			_RhythmGaugeUserInterface?.Update(gameTime);
@@ -369,6 +386,7 @@ namespace StarsAbove
 
 			_RadGaugeUserInterface?.Update(gameTime);
 			_IrminsulCursorUserInterface?.Update(gameTime);
+			_AreaNameUIUserInterface?.Update(gameTime);
 			_RedMageGaugeUserInterface?.Update(gameTime);
 
 			_BowChargeUserInterface?.Update(gameTime);
@@ -541,7 +559,15 @@ namespace StarsAbove
 					},
 					InterfaceScaleType.UI)
 				);
-
+				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+					"StarsAbove: Emotion Gauge",
+					delegate
+					{
+						_EmotionGaugeUserInterface.Draw(Main.spriteBatch, new GameTime());
+						return true;
+					},
+					InterfaceScaleType.UI)
+				);
 				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
 					"StarsAbove: Takodachi Gauge",
 					delegate
@@ -565,6 +591,15 @@ namespace StarsAbove
 					delegate
 					{
 						_RedMageGaugeUserInterface.Draw(Main.spriteBatch, new GameTime());
+						return true;
+					},
+					InterfaceScaleType.UI)
+				);
+				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+					"StarsAbove: Area Name",
+					delegate
+					{
+						_AreaNameUIUserInterface.Draw(Main.spriteBatch, new GameTime());
 						return true;
 					},
 					InterfaceScaleType.UI)

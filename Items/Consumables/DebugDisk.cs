@@ -216,8 +216,8 @@ namespace StarsAbove.Items.Consumables
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().observatoryDialogue = 0;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().cosmicVoyageDialogue = 0;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().seenObservatory = false;
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().seenSpaceRuins = false;
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().seenCitadel = false;
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().seenCygnusAsteroids = false;
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().seenBleachedPlanet = false;
 
 
 			//Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().savedNovaGaugeLocation = Microsoft.Xna.Framework.Vector2.Zero;

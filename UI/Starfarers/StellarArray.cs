@@ -57,6 +57,11 @@ namespace StarsAbove.UI.Starfarers
 		private UIImageButton RangedAspect;
 		private UIImageButton SummonAspect;
 		private UIImageButton RogueAspect;
+
+		private UIImageButton BardAspect;
+		private UIImageButton HealerAspect;
+		private UIImageButton ThrowerAspect;
+
 		private UIImageButton Lock;
 
 		private UIImageButton confirm;
@@ -143,6 +148,33 @@ namespace StarsAbove.UI.Starfarers
 			RogueAspect.Top.Set(314, 0f);
 			RogueAspect.OnMouseOver += RogueAspectHover;
 			RogueAspect.OnMouseOut += HoverOff;
+
+			BardAspect = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Symphonic"));
+			BardAspect.OnClick += BardAspectClick;
+			BardAspect.Width.Set(32, 0f);
+			BardAspect.Height.Set(44, 0f);
+			BardAspect.Left.Set(128, 0f);
+			BardAspect.Top.Set(314, 0f);
+			BardAspect.OnMouseOver += BardAspectHover;
+			BardAspect.OnMouseOut += HoverOff;
+
+			HealerAspect = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Radiant"));
+			HealerAspect.OnClick += HealerAspectClick;
+			HealerAspect.Width.Set(32, 0f);
+			HealerAspect.Height.Set(44, 0f);
+			HealerAspect.Left.Set(212, 0f);
+			HealerAspect.Top.Set(314, 0f);
+			HealerAspect.OnMouseOver += HealerAspectHover;
+			HealerAspect.OnMouseOut += HoverOff;
+
+			ThrowerAspect = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Thrower"));
+			ThrowerAspect.OnClick += ThrowerAspectClick;
+			ThrowerAspect.Width.Set(32, 0f);
+			ThrowerAspect.Height.Set(44, 0f);
+			ThrowerAspect.Left.Set(170, 0f);
+			ThrowerAspect.Top.Set(314, 0f);
+			ThrowerAspect.OnMouseOver += ThrowerAspectHover;
+			ThrowerAspect.OnMouseOut += HoverOff;
 
 			MagicAspect = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Magic") );
 			MagicAspect.OnClick += MagicAspectClick;
@@ -450,7 +482,14 @@ namespace StarsAbove.UI.Starfarers
 			{
 				area.Append(RogueAspect);
 			}
+			if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+			{
+				area.Append(BardAspect);
+				area.Append(HealerAspect);
+				area.Append(ThrowerAspect);
 
+
+			}
 			area.Append(Lock);
 
 			area.Append(passiveTitle);
@@ -752,6 +791,71 @@ namespace StarsAbove.UI.Starfarers
 
 			// We can do stuff in here!
 		}
+
+		private void BardAspectHover(UIMouseEvent evt, UIElement listeningElement)
+		{
+			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArrayVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArray == true))
+				return;
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RogueAspect == 0)
+			{
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "[c/9D9D9D:Locked: Obtain an Aspected Weapon]";
+
+			}
+			else
+			{
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.AspectedDamageType.Bard.Name", Main.LocalPlayer);
+
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.AspectedDamageType.Description", Main.LocalPlayer);
+			}
+
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
+
+
+			// We can do stuff in here!
+		}
+		private void HealerAspectHover(UIMouseEvent evt, UIElement listeningElement)
+		{
+			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArrayVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArray == true))
+				return;
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RogueAspect == 0)
+			{
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "[c/9D9D9D:Locked: Obtain an Aspected Weapon]";
+
+			}
+			else
+			{
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.AspectedDamageType.Healer.Name", Main.LocalPlayer);
+
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.AspectedDamageType.Description", Main.LocalPlayer);
+			}
+
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
+
+
+			// We can do stuff in here!
+		}
+		private void ThrowerAspectHover(UIMouseEvent evt, UIElement listeningElement)
+		{
+			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArrayVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArray == true))
+				return;
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RogueAspect == 0)
+			{
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "[c/9D9D9D:Locked: Obtain an Aspected Weapon]";
+
+			}
+			else
+			{
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().passiveTitle = LangHelper.GetTextValue($"StellarArray.AspectedDamageType.Thrower.Name", Main.LocalPlayer);
+
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.AspectedDamageType.Description", Main.LocalPlayer);
+			}
+
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
+
+
+			// We can do stuff in here!
+		}
+
 		private void MagicAspectHover(UIMouseEvent evt, UIElement listeningElement)
 		{
 			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArrayVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArray == true))
@@ -1350,7 +1454,99 @@ namespace StarsAbove.UI.Starfarers
 
 			// We can do stuff in here!
 		}
+		private void BardAspectClick(UIMouseEvent evt, UIElement listeningElement)
+		{
+			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArrayVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArray == true))
+				return;
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().BardAspect == 1)
+			{
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().MeleeAspect = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SummonAspect = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RangedAspect = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().MagicAspect = 1;
 
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RogueAspect = 1;
+
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().BardAspect = 2;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().HealerAspect = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().ThrowerAspect = 1;
+				return;
+			}
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().BardAspect == 2)
+			{
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().BardAspect = 1;
+				return;
+
+			}
+
+
+
+
+
+			// We can do stuff in here!
+		}
+		private void HealerAspectClick(UIMouseEvent evt, UIElement listeningElement)
+		{
+			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArrayVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArray == true))
+				return;
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().HealerAspect == 1)
+			{
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().MeleeAspect = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SummonAspect = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RangedAspect = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().MagicAspect = 1;
+
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RogueAspect = 1;
+
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().BardAspect = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().HealerAspect = 2;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().ThrowerAspect = 1;
+				return;
+			}
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().HealerAspect == 2)
+			{
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().HealerAspect = 1;
+				return;
+
+			}
+
+
+
+
+
+			// We can do stuff in here!
+		}
+		private void ThrowerAspectClick(UIMouseEvent evt, UIElement listeningElement)
+		{
+			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArrayVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArray == true))
+				return;
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().ThrowerAspect == 1)
+			{
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().MeleeAspect = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SummonAspect = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RangedAspect = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().MagicAspect = 1;
+
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RogueAspect = 1;
+
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().BardAspect = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().HealerAspect = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().ThrowerAspect = 2;
+				return;
+			}
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().ThrowerAspect == 2)
+			{
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().ThrowerAspect = 1;
+				return;
+
+			}
+
+
+
+
+
+			// We can do stuff in here!
+		}
 		private void MeleeAspectClick(UIMouseEvent evt, UIElement listeningElement)
 		{
 			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArrayVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArray == true))
@@ -1361,7 +1557,12 @@ namespace StarsAbove.UI.Starfarers
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SummonAspect = 1;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RangedAspect = 1;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().MagicAspect = 1;
+
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RogueAspect = 1;
+
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().BardAspect = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().HealerAspect = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().ThrowerAspect = 1;
 				return;
 			}
 			if(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
@@ -1388,6 +1589,9 @@ namespace StarsAbove.UI.Starfarers
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RangedAspect = 1;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().MagicAspect = 1;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RogueAspect = 2;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().BardAspect = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().HealerAspect = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().ThrowerAspect = 1;
 				return;
 			}
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RogueAspect == 2)
@@ -1414,6 +1618,9 @@ namespace StarsAbove.UI.Starfarers
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RangedAspect = 2;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().MagicAspect = 1;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RogueAspect = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().BardAspect = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().HealerAspect = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().ThrowerAspect = 1;
 				return;
 			}
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
@@ -1439,6 +1646,9 @@ namespace StarsAbove.UI.Starfarers
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RangedAspect = 1;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().MagicAspect = 2;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RogueAspect = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().BardAspect = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().HealerAspect = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().ThrowerAspect = 1;
 				return;
 			}
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2)
@@ -1464,6 +1674,9 @@ namespace StarsAbove.UI.Starfarers
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RangedAspect = 1;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().MagicAspect = 1;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RogueAspect = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().BardAspect = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().HealerAspect = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().ThrowerAspect = 1;
 				return;
 			}
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2)
@@ -1509,6 +1722,18 @@ namespace StarsAbove.UI.Starfarers
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RogueAspect == 2)
 				{
 					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().AspectLocked = 5;
+				}
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().BardAspect == 2)
+				{
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().AspectLocked = 6;
+				}
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().HealerAspect == 2)
+				{
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().AspectLocked = 7;
+				}
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().ThrowerAspect == 2)
+				{
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().AspectLocked = 8;
 				}
 				return;
 
@@ -2063,6 +2288,11 @@ namespace StarsAbove.UI.Starfarers
 			Rectangle MagicAspectArea = MagicAspect.GetInnerDimensions().ToRectangle();
 			Rectangle RangedAspectArea = RangedAspect.GetInnerDimensions().ToRectangle();
 			Rectangle RogueAspectArea = RogueAspect.GetInnerDimensions().ToRectangle();
+
+			Rectangle BardAspectArea = BardAspect.GetInnerDimensions().ToRectangle();
+			Rectangle HealerAspectArea = HealerAspect.GetInnerDimensions().ToRectangle();
+			Rectangle ThrowerAspectArea = ThrowerAspect.GetInnerDimensions().ToRectangle();
+
 			Rectangle LockArea = Lock.GetInnerDimensions().ToRectangle();
 			//Rectangle indicator = new Rectangle((600), (280), (700), (440));
 			//indicator.X += 0;
@@ -2096,6 +2326,20 @@ namespace StarsAbove.UI.Starfarers
 			{
 				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/Rogue"), RogueAspectArea, Color.White * modPlayer.stellarArrayVisibility);
 			}
+
+			if (modPlayer.BardAspect == 2)
+			{
+				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/Symphonic"), BardAspectArea, Color.White * modPlayer.stellarArrayVisibility);
+			}
+			if (modPlayer.HealerAspect == 2)
+			{
+				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/Radiant"), HealerAspectArea, Color.White * modPlayer.stellarArrayVisibility);
+			}
+			if (modPlayer.ThrowerAspect == 2)
+			{
+				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/Thrower"), ThrowerAspectArea, Color.White * modPlayer.stellarArrayVisibility);
+			}
+
 			if (modPlayer.MagicAspect == 2)
 			{
 				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/Magic"), MagicAspectArea, Color.White * modPlayer.stellarArrayVisibility);
@@ -2237,7 +2481,21 @@ namespace StarsAbove.UI.Starfarers
 				RogueAspect.Remove();
 
 			}
+			if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+			{
+				area.Append(BardAspect);
+				area.Append(HealerAspect);
+				area.Append(ThrowerAspect);
 
+			}
+			else
+			{
+				BardAspect.Remove();
+				HealerAspect.Remove();
+				ThrowerAspect.Remove();
+
+
+			}
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
 
 			// Setting the text per tick to update and show our resource values.

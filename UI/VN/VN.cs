@@ -16,6 +16,7 @@ namespace StarsAbove.UI.VN
 
 		private UIText choice1Text;
 		private UIText choice2Text;
+		private UIText choice3Text;
 
 		private UIElement area;
 		private UIElement character1;
@@ -27,6 +28,7 @@ namespace StarsAbove.UI.VN
 
 		private UIImageButton dialogueOption1;
 		private UIImageButton dialogueOption2;
+		private UIImageButton dialogueOption3;
 
 		private Vector2 offset;
 
@@ -88,6 +90,13 @@ namespace StarsAbove.UI.VN
 			choice2Text.Left.Set(173, 0f);
 			choice2Text.IgnoresMouseInteraction = true;
 
+			choice3Text = new UIText("", 1f);
+			choice3Text.Width.Set(456, 0f);
+			choice3Text.Height.Set(1, 0f);
+			choice3Text.Top.Set(341, 0f);
+			choice3Text.Left.Set(173, 0f);
+			choice3Text.IgnoresMouseInteraction = true;
+
 
 			barFrame = new UIImage(Request<Texture2D>("StarsAbove/UI/Starfarers/blank"));
 			barFrame.Left.Set(22, 0f);
@@ -116,6 +125,13 @@ namespace StarsAbove.UI.VN
 			dialogueOption2.Top.Set(282, 0f);
 			dialogueOption2.Width.Set(512, 0f);
 			dialogueOption2.Height.Set(32, 0f);
+
+			dialogueOption3 = new UIImageButton(Request<Texture2D>("StarsAbove/UI/VN/choiceButton"));
+			dialogueOption3.OnClick += DialogueOption3Click;
+			dialogueOption3.Left.Set(144, 0f);
+			dialogueOption3.Top.Set(332, 0f);
+			dialogueOption3.Width.Set(512, 0f);
+			dialogueOption3.Height.Set(32, 0f);
 
 			area.Append(text);
 			area.Append(speakerName);
@@ -179,6 +195,7 @@ namespace StarsAbove.UI.VN
 					{
 						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().VNDialogueChoice1 = (string)VNScenes.SetupVNSystem(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneID, Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneProgression)[2];
 						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().VNDialogueChoice2 = (string)VNScenes.SetupVNSystem(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneID, Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneProgression)[3];
+						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().VNDialogueChoice3 = (string)VNScenes.SetupVNSystem(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneID, Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneProgression)[15];
 
 						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().VNDialogueChoiceActive = true;
 					}
@@ -186,9 +203,12 @@ namespace StarsAbove.UI.VN
 				}
 				else
                 {
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneProgression++;
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueScrollTimer = 0;
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueScrollNumber = 0;
+					
+						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneProgression++;
+						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueScrollTimer = 0;
+						Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueScrollNumber = 0;
+					
+					
 
 				}
 
@@ -229,6 +249,23 @@ namespace StarsAbove.UI.VN
 			modPlayer.sceneProgression = 0;
 			
 			
+			modPlayer.VNDialogueActive = true;
+			modPlayer.VNDialogueChoiceActive = false;
+
+
+		}
+
+		private void DialogueOption3Click(UIMouseEvent evt, UIElement listeningElement)
+		{
+			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().VNDialogueChoiceActive))
+				return;
+			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			modPlayer.dialogueScrollTimer = 0;
+			modPlayer.dialogueScrollNumber = 0;
+			modPlayer.sceneID = (int)VNScenes.SetupVNSystem(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneID, Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneProgression)[16];
+			modPlayer.sceneProgression = 0;
+
+
 			modPlayer.VNDialogueActive = true;
 			modPlayer.VNDialogueChoiceActive = false;
 
@@ -312,15 +349,19 @@ namespace StarsAbove.UI.VN
 					//Draw the expression, accounting for pose.
 					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter1.Substring(0, 2) + modPlayer.VNCharacter1Pose + modPlayer.VNCharacter1Expression), hitbox1, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));//Base character's expression
 				}
-				if(modPlayer.VNCharacter1 != "Asphodene" && modPlayer.VNCharacter1 != "Eridani")//Non-main characters get simplified drawing.
-					//Input: Perseus, Pose 1, Expression 1
-					//Output:
-					//StarsAbove/UI/VN/Pe1 (2 letters to avoid conflicts)
-					//StarsAbove/UI/VN/Pe11 (Expression takes into account current pose, remember expressions start at 0)
-				{
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter1.Substring(0, 2) + modPlayer.VNCharacter1Pose), hitbox1, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter1.Substring(0, 2) + modPlayer.VNCharacter1Pose + modPlayer.VNCharacter1Expression), hitbox1, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));
+				if(modPlayer.VNDialogueActive)
+                {
+					if (modPlayer.VNCharacter1 != "Asphodene" && modPlayer.VNCharacter1 != "Eridani" && modPlayer.VNCharacter1 != "")//Non-main characters get simplified drawing.
+																									 //Input: Perseus, Pose 1, Expression 1
+																									 //Output:
+																									 //StarsAbove/UI/VN/Pe1 (2 letters to avoid conflicts)
+																									 //StarsAbove/UI/VN/Pe11 (Expression takes into account current pose, remember expressions start at 0)
+					{
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter1.Substring(0, 2) + modPlayer.VNCharacter1Pose), hitbox1, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter1.Substring(0, 2) + modPlayer.VNCharacter1Pose + modPlayer.VNCharacter1Expression), hitbox1, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));
+					}
 				}
+				
 			}
 			if(modPlayer.VNCharacter1 == "Asphodene" || modPlayer.VNCharacter1 == "Eridani")//Only the main characters can blink
             {
@@ -443,7 +484,7 @@ namespace StarsAbove.UI.VN
 			
 		
 		public override void Update(GameTime gameTime) {
-			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerVNDialogueVisibility > 0))
+			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().VNDialogueActive))
 			{
 				area.Remove();
 				return;
@@ -461,7 +502,9 @@ namespace StarsAbove.UI.VN
 				choice1Text.Remove();
 				choice2Text.Remove();
 				dialogueOption2.Remove();
-				
+				choice3Text.Remove();
+				dialogueOption3.Remove();
+
 				area.Append(imageButton);
 				
 
@@ -475,9 +518,16 @@ namespace StarsAbove.UI.VN
 				area.Append(choice1Text);
 				area.Append(dialogueOption2);
 				area.Append(choice2Text);
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().VNDialogueThirdOption)
+				{
+					choice3Text.SetText($"{Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().VNDialogueChoice3}");
+
+					area.Append(dialogueOption3);
+					area.Append(choice3Text);
+				}
 				
 			}
-
+			
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
 
 			if (modPlayer.VNCharacter1 == modPlayer.VNDialogueVisibleName)
@@ -517,6 +567,15 @@ namespace StarsAbove.UI.VN
 
 			choice1Text.SetText($"{modPlayer.VNDialogueChoice1}");
 			choice2Text.SetText($"{modPlayer.VNDialogueChoice2}");
+			if(modPlayer.VNDialogueThirdOption)
+            {
+				
+				choice3Text.SetText($"{modPlayer.VNDialogueChoice3}");
+			}
+            else
+            {
+				
+            }
 
 
 			base.Update(gameTime);

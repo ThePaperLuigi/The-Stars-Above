@@ -137,6 +137,7 @@ namespace StarsAbove.UI
 			animationHitbox.Width += 102;
 			animationHitbox.Y -= 112;
 			animationHitbox.Height += 200;
+			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNovaGaugeBack"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);
 
 			if (quotient == 1f)
 			{

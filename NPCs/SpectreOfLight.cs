@@ -1,3 +1,4 @@
+using SubworldLibrary;
 using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.ID;
@@ -49,7 +50,7 @@ namespace StarsAbove.NPCs
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-			if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior)
+			if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior & SubworldSystem.Current == null)
             {
 				return SpawnCondition.OverworldDaySlime.Chance;
 			}

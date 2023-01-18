@@ -72,7 +72,7 @@ namespace StarsAbove.NPCs
 		}
 		public override void AI()
 		{
-			
+			Lighting.AddLight(NPC.Center, TorchID.Rainbow);
 			base.AI();
 		}
 
