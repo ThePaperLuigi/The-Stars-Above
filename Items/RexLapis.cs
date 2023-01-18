@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using StarsAbove.Projectiles.RexLapis;
+using StarsAbove.Buffs.RexLapis;
 
 namespace StarsAbove.Items
 {
@@ -17,11 +18,12 @@ namespace StarsAbove.Items
 		{
 			Tooltip.SetDefault("Attacks with this weapon execute rapid stabs" +
 				"\nEach attack grants [c/F8D496:Bulwark of Jade] for 2 seconds on hit, increasing defenses by 30" +
-				"\nRight click to consume 150 mana, dropping a colossal earthen meteor from the heavens, dealing 2x base damage" +
-				"\nThis meteor will apply [c/CB8952:Petrification] to foes struck, drastically crippling their movement speed" +
+				"\nRight click to consume 150 mana, dropping a colossal earthen meteor from the heavens, dealing 2x base damage (20 second cooldown)" +
+                "\nAdditionally, this attack will deal bonus damage based on 50% of your Max HP" +
+				"\nThis meteor will apply [c/CB8952:Petrification] to foes struck on a critical strike, drastically crippling their movement speed for 3 seconds" +
 				"\nAttacking [c/CB8952:Petrified] foes with this weapon will deal extra damage" +
 				"\nCritical strikes will [c/F1D078:Shatter] foes that are [c/CB8952:Petrified]" +
-				"\n[c/F1D078:Shatter] deals 4x base damage while removing [c/CB8952:Petrification]" +
+				"\n[c/F1D078:Shatter] deals 5x base damage while removing [c/CB8952:Petrification]" +
 				"\n'I will have order!'" +
 				$"");  //The (English) text shown below your weapon's name
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -32,6 +34,7 @@ namespace StarsAbove.Items
 		{
 			Item.damage = 199;           //The damage of your weapon
 			Item.DamageType = DamageClass.Melee;          //Is your weapon a melee weapon?
+			Item.crit = 30;
 			Item.width = 80;            //Weapon's texture's width
 			Item.height = 80;           //Weapon's texture's height
 			Item.useTime = 14;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
@@ -46,6 +49,7 @@ namespace StarsAbove.Items
 			Item.noUseGraphic = true; // Important, it's kind of wired if people see two spears at one time. This prevents the melee animation of this item.
 			Item.autoReuse = true;
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
+			Item.UseSound = SoundID.Item1;
 		}
 		 
 		public override bool AltFunctionUse(Player player)
@@ -63,7 +67,7 @@ namespace StarsAbove.Items
 			}
 			if(player.altFunctionUse == 2)
             {
-				if(player.statMana >= 150)
+				if(player.statMana >= 150 && !player.HasBuff(BuffType<RexLapisMeteorCooldown>()))
                 {
 					player.statMana -= 150;
 					player.manaRegenDelay = 240;
@@ -117,7 +121,7 @@ namespace StarsAbove.Items
 			{
 
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_spinConstant, player.Center);
-
+				player.AddBuff(BuffType<RexLapisMeteorCooldown>(), 60 * 20);
 				
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_swordStab, player.Center);//DROP
 					Vector2 target = Main.screenPosition + new Vector2((float)Main.mouseX, (float)Main.mouseY);
@@ -143,7 +147,7 @@ namespace StarsAbove.Items
 						heading *= new Vector2(velocity.X, velocity.Y).Length();
 						velocity.X = heading.X;
 						velocity.Y = heading.Y;
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, velocity.X, velocity.Y,ProjectileType<RexLapisMeteor2>(), damage*5, knockback, player.whoAmI, 0f, ceilingLimit);
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, velocity.X, velocity.Y,ProjectileType<RexLapisMeteor2>(), damage*2 + player.statLifeMax/2, knockback, player.whoAmI, 0f, ceilingLimit);
 					}
 				
 			}

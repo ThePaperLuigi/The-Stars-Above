@@ -589,6 +589,49 @@ namespace StarsAbove
 		#endregion
 
 		#region Weapon Sound Effects
+		public static readonly SoundStyle SFX_KevesiTune = new($"{nameof(StarsAbove)}/Sounds/SFX/KevesiTune")
+		{
+
+		};
+		public static readonly SoundStyle SFX_AgnianTune = new($"{nameof(StarsAbove)}/Sounds/SFX/AgnianTune")
+		{
+
+		};
+		public static readonly SoundStyle SFX_BlackSilencePistol = new($"{nameof(StarsAbove)}/Sounds/SFX/BlackSilencePistol")
+		{
+
+		};
+		public static readonly SoundStyle SFX_BlackSilenceRifle = new($"{nameof(StarsAbove)}/Sounds/SFX/BlackSilenceRifle")
+		{
+
+		};
+		public static readonly SoundStyle SFX_BlackSilenceMace = new($"{nameof(StarsAbove)}/Sounds/SFX/BlackSilenceMace")
+		{
+
+		};
+		public static readonly SoundStyle SFX_BlackSilenceAxe = new($"{nameof(StarsAbove)}/Sounds/SFX/BlackSilenceAxe")
+		{
+
+		};
+		public static readonly SoundStyle SFX_BlackSilenceKatana = new($"{nameof(StarsAbove)}/Sounds/SFX/BlackSilenceKatana")
+		{
+
+		};
+		public static readonly SoundStyle SFX_BlackSilenceGreatsword = new($"{nameof(StarsAbove)}/Sounds/SFX/BlackSilenceGreatsword")
+		{
+
+		};
+		public static readonly SoundStyle SFX_BlackSilenceSwing = new($"{nameof(StarsAbove)}/Sounds/SFX/BlackSilenceSwing")
+		{
+
+		};
+		public static readonly SoundStyle SFX_BlackSilenceDurandalHit = new($"{nameof(StarsAbove)}/Sounds/SFX/BlackSilenceDurandalHit")
+		{
+
+		};
+
+
+
 		public static readonly SoundStyle SFX_PrismicSpawn = new($"{nameof(StarsAbove)}/Sounds/SFX/PrismicSpawn")
 		{
 

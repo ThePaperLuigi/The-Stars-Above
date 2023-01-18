@@ -28,7 +28,7 @@ namespace StarsAbove.Items
 			
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
 			{
-				Item.damage = 2355;
+				Item.damage = 599;
 			}
 			else
 			{
@@ -55,6 +55,7 @@ namespace StarsAbove.Items
 			Item.noMelee = true; 
 			Item.noUseGraphic = true; 
 			Item.autoReuse = true;
+
 		}
 		int judgementSlashCharge = 0;
 
@@ -204,7 +205,7 @@ namespace StarsAbove.Items
 
 				}
 				//
-				player.GetArmorPenetration(DamageClass.Generic) += 100;
+				player.GetArmorPenetration(DamageClass.Generic) = 1f;
 			}
 
 			

@@ -45,13 +45,13 @@ namespace StarsAbove.NPCs
             
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
             {
-                NPC.lifeMax = 816660;
-                NPC.defense = 115;
+                NPC.lifeMax = 444666;
+                NPC.defense = 40;
             }
             else
             {
                 NPC.lifeMax = 226660;
-                NPC.defense = 85;
+                NPC.defense = 25;
             }
            
             NPC.boss = true;
@@ -156,6 +156,9 @@ namespace StarsAbove.NPCs
             //notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<MinionBossMask>(), 7));
 
             notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.VoidsentPrism>(), 4));
+
+            notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Essences.EssenceOfBloodshed>(), 2)).OnFailedRoll(ItemDropRule.Common(ModContent.ItemType<Items.Essences.EssenceOfMimicry>(), 2));
+
 
             // This part is not required for a boss and is just showcasing some advanced stuff you can do with drop rules to control how items spawn
             // We make 12-15 ExampleItems spawn randomly in all directions, like the lunar pillar fragments. Hereby we need the DropOneByOne rule,
@@ -286,7 +289,7 @@ namespace StarsAbove.NPCs
             //This is the death effect from ExampleMod
             if (NPC.ai[3] > 0f)//This is death effect
             {
-                SoundEngine.PlaySound(StarsAboveAudio.Arbitration_WasIsAndWillForeverBe, NPC.Center);
+                
                 Music =  MusicLoader.GetMusicSlot(Mod,  "Sounds/Music/silence");
                 NPC.dontTakeDamage = true;
                 NPC.ai[3] += 2f; // increase our death timer.
@@ -342,7 +345,7 @@ namespace StarsAbove.NPCs
                     {
                         Dust.NewDust(NPC.Center, 0, 0, 21, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
                     }
-                    
+                    SoundEngine.PlaySound(StarsAboveAudio.Arbitration_WasIsAndWillForeverBe, NPC.Center);
                     //Main.PlaySound(SoundLoader.customSoundType, (int)npc.Center.X, (int)npc.Center.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/ArbiterDefeated"));
                     NPC.life = 0;
                     NPC.HitEffect(0, 0);
@@ -1920,7 +1923,7 @@ namespace StarsAbove.NPCs
                         NPC.frame.Y = 0;
                         for (int d = 0; d < 12; d++)
                         {
-                            NPC.NewNPC(NPC.GetSource_FromAI(),(int)NPC.Center.X + Main.rand.Next(-365, 365), (int)NPC.Center.Y + Main.rand.Next(-365, 365), NPCType<NPCs.AstralCell>(), NPC.whoAmI);
+                            NPC.NewNPC(NPC.GetSource_FromAI(),(int)NPC.Center.X + Main.rand.Next(-365, 365), (int)NPC.Center.Y + Main.rand.Next(-365, 365), NPCType<NPCs.OffworldNPCs.AstralCell>(), NPC.whoAmI);
                         }
 
 
@@ -2417,7 +2420,7 @@ namespace StarsAbove.NPCs
             int hpThreshold;
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
             {
-                hpThreshold = 510000;
+                hpThreshold = 210000;
             }
             else
             {

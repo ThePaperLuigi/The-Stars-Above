@@ -61,7 +61,12 @@ namespace StarsAbove.Items
 
 		public override bool CanUseItem(Player player)
 		{
-			
+			if (player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer != 2 && player.whoAmI == Main.myPlayer)
+			{
+				
+				return false;
+				
+			}
 
 
 			int damage = player.GetWeaponDamage(Item);
@@ -168,6 +173,7 @@ namespace StarsAbove.Items
 		}
 		public override void HoldItem(Player player)
 		{
+			
 			player.GetModPlayer<StarsAbovePlayer>().albionHeld = 10;
 			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Melusine>()] < 1)
 			{

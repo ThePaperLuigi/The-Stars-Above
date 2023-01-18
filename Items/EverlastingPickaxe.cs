@@ -17,7 +17,7 @@ namespace StarsAbove.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("The Everlasting Pickaxe");
-			Tooltip.SetDefault("" +
+			Tooltip.SetDefault("[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes]" +
 				"\nRight click to place a dusting of [c/82D1D5:Everlasting Gunpowder] on yourself, which lasts for 6 seconds (20 second cooldown)" +
 				"\nSwinging the pickaxe near the [c/82D1D5:Everlasting Gunpowder] causes consecutive explosions towards your cursor, destroying tiles" +
 				"\nPress the Weapon Action Key to load [c/82D1D5:Everlasting Gunpowder] into the pickaxe" +

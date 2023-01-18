@@ -95,7 +95,10 @@ namespace StarsAbove.Items
                     }
                 }
             */
-
+            if (!player.inventory[58].IsAir)
+            {
+                return false;
+            }
             if (player.altFunctionUse == 2)
             {
                 if(swapCooldown <= 0)

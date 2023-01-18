@@ -50,10 +50,11 @@ namespace StarsAbove.Items
 				Item.damage = 225;
 			}
 			Item.DamageType = ModContent.GetInstance<Systems.CelestialDamageClass>();
-			
+			Item.width = 30;
+			Item.height = 30;
 			Item.knockBack = 7;
 			Item.rare = ItemRarityID.Red;
-
+			Item.value = Item.buyPrice(gold: 1);
 			Item.shoot = ModContent.ProjectileType<VirtueEdgeSlash1>();
 			Item.shootSpeed = 4;
 			Item.autoReuse = true;

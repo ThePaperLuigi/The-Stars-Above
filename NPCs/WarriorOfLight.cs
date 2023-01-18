@@ -359,7 +359,7 @@ namespace StarsAbove.NPCs
             //This is the death effect from ExampleMod
             if (NPC.ai[3] > 0f)//This is death effect
             {
-                Music =  MusicLoader.GetMusicSlot(Mod,  "Sounds/Music/BossFinish");
+               
                 NPC.dontTakeDamage = true;
                 NPC.ai[3] += 1f; // increase our death timer.
                                  //npc.velocity = Vector2.UnitY * npc.velocity.Length();
@@ -397,9 +397,14 @@ namespace StarsAbove.NPCs
                         dust.scale = 1f + Main.rand.NextFloat() + (float)dustNumber * 0.3f;
                     }
                 }
-                if(!DownedBossSystem.downedWarrior)
+                if(DownedBossSystem.downedWarrior)
                 {
                     NPC.ai[3] += 1000;//If you've seen the cutscene, don't play it again.
+                    //Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/BossFinish");
+                }
+                else
+                {
+                    Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/BossFinish");
                 }
                 if (NPC.ai[3] == 400f)
                 {
@@ -429,7 +434,11 @@ namespace StarsAbove.NPCs
                     {
                         Dust.NewDust(NPC.Center, 0, 0, 21, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
                     }
-                    SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_WarriorOfLightDefeated, NPC.Center);
+                    if (!DownedBossSystem.downedWarrior)
+                    {
+                        SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_WarriorOfLightDefeated, NPC.Center);
+                    }
+                        
                     NPC.life = 0;
                     NPC.HitEffect(0, 0);
                     NPC.checkDead(); // This will trigger ModNPC.CheckDead the second time, causing the real death.
@@ -1712,7 +1721,7 @@ namespace StarsAbove.NPCs
             }
             if (NPC.life <= hpThreshold2ndPhase && phase == 1)
             {
-                NPC.ai[1] += 20;
+                //NPC.ai[1] += 20;
                 NPC.dontTakeDamage = true;
             }
             //Movement code

@@ -44,8 +44,45 @@ namespace StarsAbove
 
 					}
 				}
+				if (Main.player[projectile.owner].GetModPlayer<StarsAbovePlayer>().BardAspect == 2)
+				{
+					if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+					{
+						projectile.DamageType = thoriumMod.Find<DamageClass>("BardDamage");
+						if (!projectile.minion)
+						{
+
+						}
 
 
+					}
+				}
+				if (Main.player[projectile.owner].GetModPlayer<StarsAbovePlayer>().HealerAspect == 2)
+				{
+					if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+					{
+						projectile.DamageType = thoriumMod.Find<DamageClass>("HealerDamage");
+						if (!projectile.minion)
+						{
+
+						}
+
+
+					}
+				}
+				if (Main.player[projectile.owner].GetModPlayer<StarsAbovePlayer>().BardAspect == 2)
+				{
+					if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+					{
+						projectile.DamageType = DamageClass.Throwing;
+						if (!projectile.minion)
+						{
+
+						}
+
+
+					}
+				}
 			}
 
 

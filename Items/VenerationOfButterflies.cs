@@ -16,7 +16,7 @@ namespace StarsAbove.Items
 				"\nProjectiles inflict Confusion and deal bonus damage to Confused foes" +
 				"\nOnce the [c/F59EEF:Butterfly Gauge] is at its maximum, use right click to enter [c/9B88D7:Butterfly Trance] for 5 seconds" +
 				"\nDuring [c/9B88D7:Butterfly Trance], the Mana cost of Veneration of Butterflies drops to zero and you can shoot twice as fast" +
-				"\nYou will also gain 50% damage reduction and slow falling" +
+				"\nAdditionally, gain 50% damage reduction and slow falling" +
 				$"");
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -31,7 +31,7 @@ namespace StarsAbove.Items
 			Item.height = 38;
 			Item.useTime = 20;
 			Item.useAnimation = 20;
-			Item.useStyle = 5;
+			Item.useStyle = 12;
 			Item.noMelee = true; //so the item's animation doesn't do damage
 			Item.knockBack = 3;
 			Item.rare = ItemRarityID.LightPurple;

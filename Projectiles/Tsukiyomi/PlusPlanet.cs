@@ -55,11 +55,11 @@ namespace StarsAbove.Projectiles.Tsukiyomi
 			}
 			if(Main.expertMode)
             {
-				damage = 290;
+				damage = 100;
             }
 			else
             {
-				damage = 100;
+				damage = 40;
             }
 			if (Projectile.timeLeft > 50)
             {

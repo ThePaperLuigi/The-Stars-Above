@@ -18,6 +18,10 @@ namespace StarsAbove.UI
 		private UIImage barFrame;
 		private Color gradientA;
 		private Color gradientB;
+		private Color gradientC;
+		private Color gradientD;
+		private Color gradientE;
+		private Color gradientF;
 		private Color finalColor;
 
 		public override void OnInitialize() {
@@ -43,6 +47,13 @@ namespace StarsAbove.UI
 
 			gradientA = new Color(205, 205, 180); // 
 			gradientB = new Color(245, 205, 77); // 
+
+			gradientC = new Color(203, 160, 213); // 
+			gradientD = new Color(221, 80, 255); // 
+
+			gradientE = new Color(255, 181, 181); // 
+			gradientF = new Color(255, 67, 67); //
+
 			finalColor = new Color(255, 197, 0);
 
 
@@ -67,6 +78,12 @@ namespace StarsAbove.UI
 			float quotient = (float)modPlayer.bowCharge / 100; // Creating a quotient that represents the difference of your currentResource vs your maximumResource, resulting in a float of 0-1f.
 			quotient = Utils.Clamp(quotient, 0f, 1f); // Clamping it to 0-1f so it doesn't go over that.
 
+			float quotientOvercharge1 = (float)modPlayer.overCharge1 / 100; // Creating a quotient that represents the difference of your currentResource vs your maximumResource, resulting in a float of 0-1f.
+			quotientOvercharge1 = Utils.Clamp(quotientOvercharge1, 0f, 1f); // Clamping it to 0-1f so it doesn't go over that.
+
+			float quotientOvercharge2 = (float)modPlayer.overCharge2 / 100; // Creating a quotient that represents the difference of your currentResource vs your maximumResource, resulting in a float of 0-1f.
+			quotientOvercharge2 = Utils.Clamp(quotientOvercharge2, 0f, 1f); // Clamping it to 0-1f so it doesn't go over that.
+
 			// Here we get the screen dimensions of the barFrame element, then tweak the resulting rectangle to arrive at a rectangle within the barFrame texture that we will draw the gradient. These values were measured in a drawing program.
 			Rectangle hitbox = barFrame.GetInnerDimensions().ToRectangle();
 			hitbox.X += 12;
@@ -82,6 +99,30 @@ namespace StarsAbove.UI
 				//float percent = (float)i / steps; // Alternate Gradient Approach
 				float percent = (float)i / (right - left);
 				spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height), Color.Lerp(gradientA, gradientB, percent));
+				if (i >= 113)
+				{
+					spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left, hitbox.Y, 113, hitbox.Height), finalColor);
+
+				}
+			}
+
+			//Overcharge 1
+			int stepsOvercharge1 = (int)((right - left) * quotientOvercharge1);
+			for (int i = 0; i < stepsOvercharge1; i += 1)
+			{
+				//float percent = (float)i / steps; // Alternate Gradient Approach
+				float percent = (float)i / (right - left);
+				spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height), Color.Lerp(gradientC, gradientD, percent));
+				
+			}
+
+			//Overcharge 2
+			int stepsOvercharge2 = (int)((right - left) * quotientOvercharge2);
+			for (int i = 0; i < stepsOvercharge2; i += 1)
+			{
+				//float percent = (float)i / steps; // Alternate Gradient Approach
+				float percent = (float)i / (right - left);
+				spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height), Color.Lerp(gradientE, gradientF, percent));
 				if (i >= 113)
 				{
 					spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left, hitbox.Y, 113, hitbox.Height), finalColor);

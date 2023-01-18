@@ -43,6 +43,8 @@ namespace StarsAbove.Projectiles.CatalystMemory
 		bool floatUpOrDown; //false is Up, true is Down
 		public override void AI()
 		{
+			Color projcolor = new Color(174, 0, 255);
+			Lighting.AddLight(Projectile.Center, projcolor.ToVector3());
 			Projectile.scale = 1.1f;
 			Projectile.timeLeft = 10;
 			Player projOwner = Main.player[Projectile.owner];

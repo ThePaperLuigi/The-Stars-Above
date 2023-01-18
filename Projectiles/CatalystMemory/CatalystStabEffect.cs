@@ -40,7 +40,11 @@ namespace StarsAbove.Projectiles.CatalystMemory
 		bool firstSpawn = true;
 		// It appears that for this AI, only the ai0 field is used!
 		public override void AI() {
-			if(firstSpawn)
+
+			Color projcolor = new Color(174, 0, 255);
+			Lighting.AddLight(Projectile.Center, projcolor.ToVector3());
+
+			if (firstSpawn)
             {
 				Projectile.scale = Main.rand.NextFloat(0.1f, 2.3f);
             }

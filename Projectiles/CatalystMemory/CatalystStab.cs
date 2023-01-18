@@ -42,6 +42,9 @@ namespace StarsAbove.Projectiles.CatalystMemory
 
 		// It appears that for this AI, only the ai0 field is used!
 		public override void AI() {
+
+			
+
 			// Since we access the owner player instance so much, it's useful to create a helper local variable for this
 			// Sadly, Projectile/ModProjectile does not have its own
 			Projectile.scale = 0.7f;

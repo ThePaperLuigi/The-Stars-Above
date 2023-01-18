@@ -58,6 +58,8 @@ namespace StarsAbove
 			ModContent.ItemType<Suistrume>(),
 			ModContent.ItemType<KeyOfTheKingsLaw>(),
 			ModContent.ItemType<HunterSymphony>(),
+			ModContent.ItemType<KevesiFarewell>(),
+
 
 			//ModContent.ItemType<EssenceOf>(),
 			ModContent.ItemType<EssenceOfTheDarkMoon>(),
@@ -81,6 +83,7 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfTheUnderworldGoddess>(),
 			ModContent.ItemType<EssenceOfTheUnyieldingEarth>(),
 			ModContent.ItemType<EssenceOfTheHunt>(),
+			ModContent.ItemType<EssenceOfFarewells>(),
 		};
 		public List<int> UmbralWeapons = new List<int>() {
 			ModContent.ItemType<KonpakuKatana>(),
@@ -104,6 +107,8 @@ namespace StarsAbove
 			ModContent.ItemType<Naganadel>(),
 			ModContent.ItemType<LightUnrelenting>(),
 			ModContent.ItemType<SparkblossomBeacon>(),
+			ModContent.ItemType<IrminsulDream>(),
+			ModContent.ItemType<AgnianFarewell>(),
 
 			ModContent.ItemType<EssenceOfAlpha>(),
 			ModContent.ItemType<EssenceOfAsh>(),
@@ -127,6 +132,7 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfTime>(),
 			ModContent.ItemType<EssenceOfStaticShock>(),
 
+			ModContent.ItemType<EssenceOfOffseeing>(),
 		};
 		public List<int> SpatialWeapons = new List<int>(){
 
@@ -151,6 +157,7 @@ namespace StarsAbove
 			ModContent.ItemType<Ozma>(),
 			ModContent.ItemType<ClaimhSolais>(),
 			ModContent.ItemType<MorningStar>(),
+			ModContent.ItemType<Manifestation>(),
 
 			ModContent.ItemType<EternalStar>(),
 			ModContent.ItemType<VermillionDaemon>(),
@@ -168,6 +175,10 @@ namespace StarsAbove
 			ModContent.ItemType<EverlastingPickaxe>(),
 			ModContent.ItemType<CatalystMemory>(),
 			ModContent.ItemType<ElCapitansHardware>(),
+			ModContent.ItemType<BlackSilenceWeapon>(),
+			ModContent.ItemType<SoulReaver>(),
+			ModContent.ItemType<GoldenKatana>(),
+
 
 			ModContent.ItemType<EssenceOfAdagium>(),
 			ModContent.ItemType<EssenceOfBloodshed>(),
@@ -203,6 +214,12 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfTheAbyss>(),
 			ModContent.ItemType<EssenceOfTheRenegade>(),
 			ModContent.ItemType<EssenceOfQuantum>(),
+			ModContent.ItemType<EssenceOfSilence>(),
+			ModContent.ItemType<EssenceOfSouls>(),
+			ModContent.ItemType<EssenceOfGold>(),
+						ModContent.ItemType<EssenceOfMimicry>(),
+
+
 		};
 
 		public List<int> Prisms = new List<int>() {
@@ -236,7 +253,46 @@ namespace StarsAbove
 
 		};
 
-		public List<int> Outfits = new List<int>() {
+        #region Gifts
+		//Temporary addition, possibly for the 'Rapport' system, kind of like Social Links.
+        public List<int> AsphodeneLikes = new List<int>() {
+
+			//ModContent.ItemType<TotemOfLightEmpowered>(),
+			//ModContent.ItemType<VirtuesEdge>(),
+
+
+		};
+		public List<int> EridaniLikes = new List<int>() {
+
+			//ModContent.ItemType<TotemOfLightEmpowered>(),
+			//ModContent.ItemType<VirtuesEdge>(),
+
+
+		};
+		public List<int> PerseusLikes = new List<int>() {
+
+			//ModContent.ItemType<TotemOfLightEmpowered>(),
+			//ModContent.ItemType<VirtuesEdge>(),
+
+
+		};
+		public List<int> GarridineLikes = new List<int>() {
+
+			//ModContent.ItemType<TotemOfLightEmpowered>(),
+			//ModContent.ItemType<VirtuesEdge>(),
+
+
+		};
+		public List<int> YojimboLikes = new List<int>() {
+
+			//ModContent.ItemType<TotemOfLightEmpowered>(),
+			//ModContent.ItemType<VirtuesEdge>(),
+
+
+		};
+        #endregion
+
+        public List<int> Outfits = new List<int>() {
 
 			ModContent.ItemType<FaerieVoyagerAttire>(),
 			ModContent.ItemType<StellarCasualAttire>(),
@@ -248,6 +304,7 @@ namespace StarsAbove
 		public List<int> GlowingItems = new List<int>() {
 
 			ModContent.ItemType<TotemOfLightEmpowered>(),
+			ModContent.ItemType<BlackSilenceWeapon>(),
 			//ModContent.ItemType<VirtuesEdge>(),
 
 
@@ -330,6 +387,15 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfTheAbyss>(),
 			ModContent.ItemType<EssenceOfTheRenegade>(),
 			ModContent.ItemType<EssenceOfQuantum>(),
+			ModContent.ItemType<EssenceOfSilence>(),
+			ModContent.ItemType<EssenceOfSouls>(),
+			ModContent.ItemType<EssenceOfGold>(),
+			ModContent.ItemType<EssenceOfFarewells>(),
+			ModContent.ItemType<EssenceOfOffseeing>(),
+			ModContent.ItemType<EssenceOfMimicry>(),
+			ModContent.ItemType<EssenceOfTheAutomaton>(),
+			ModContent.ItemType<EssenceOfNature>(),
+
 		};
 		public static bool disableAspectPenalty;
 		public static bool disableCalamityWeaponBuffs;
@@ -434,10 +500,11 @@ namespace StarsAbove
 			if(Prisms.Contains(item.type) || Outfits.Contains(item.type) || GlowingItems.Contains(item.type) || Essences.Contains(item.type))
             {
 				Texture2D texture = TextureAssets.Item[item.type].Value;
-
-				
-
-
+				for (int i = 0; i < 4; i++)
+				{
+					Vector2 offsetPositon = Vector2.UnitY.RotatedBy(MathHelper.PiOver2 * i) * 2;
+					spriteBatch.Draw(texture, position + offsetPositon, null, Main.DiscoColor, 0, origin, scale, SpriteEffects.None, 0f);
+				}
 
 				float time = Main.GlobalTimeWrappedHourly;
 				float timer = item.timeSinceItemSpawned / 240f + time * 0.04f;
@@ -467,8 +534,8 @@ namespace StarsAbove
 
 				}
 
-
-
+				
+				
 				return true;
 			}
 			return true;
@@ -481,7 +548,7 @@ namespace StarsAbove
 				Texture2D texture = TextureAssets.Item[item.type].Value;
 
 				Rectangle frame;
-
+				
 				if (Main.itemAnimations[item.type] != null)
 				{
 					// In case this item is animated, this picks the correct frame
@@ -495,7 +562,11 @@ namespace StarsAbove
 				Vector2 frameOrigin = frame.Size() / 2f;
 				Vector2 offset = new Vector2(item.width / 2 - frameOrigin.X, item.height - frame.Height);
 				Vector2 drawPos = item.position - Main.screenPosition + frameOrigin + offset;
-
+				for (int i = 0; i < 4; i++)
+				{
+					Vector2 offsetPositon = Vector2.UnitY.RotatedBy(MathHelper.PiOver2 * i) * 2;
+					spriteBatch.Draw(texture, drawPos + offsetPositon, null, Main.DiscoColor, 0, frameOrigin, scale, SpriteEffects.None, 0f);
+				}
 				float time = Main.GlobalTimeWrappedHourly;
 				float timer = item.timeSinceItemSpawned / 240f + time * 0.04f;
 
@@ -522,6 +593,7 @@ namespace StarsAbove
 
 					spriteBatch.Draw(texture, drawPos + new Vector2(0f, 4f).RotatedBy(radians) * time, frame, new Color(140, 120, 255, 77), rotation, frameOrigin, scale, SpriteEffects.None, 0);
 				}
+				
 
 				return true;
 			}
@@ -596,52 +668,118 @@ namespace StarsAbove
 		}
 		public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {
+			//damage += 0.2f;
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
 			{
-				if(!disableCalamityWeaponBuffs)
+				if(!disableCalamityWeaponBuffs && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
                 {
 					damage += 0.2f;
+
 				}
 				
 
 			}
-			if (item.type == ItemID.Zenith)//Zenith Balance Patch? Nope.
-            {
-				//damage -= 0.3f;
-            }				
+							
 			if ((item.ModItem?.Mod == ModLoader.GetMod("StarsAbove") || player.GetModPlayer<StarsAbovePlayer>().aprismatism == 2) && item.damage > 0)
 			{ //
-				if (player.GetModPlayer<StarsAbovePlayer>().RogueAspect == 2)
+				if (player.GetModPlayer<StarsAbovePlayer>().RogueAspect == 2 && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
 				{
-					if (oldDamageClass != calamityMod.Find<DamageClass>("RogueDamageClass"))
+					if (ModLoader.TryGetMod("CalamityMod", out Mod calamityModX))
 					{
-						if (ModLoader.TryGetMod("CalamityMod", out Mod calamityModx))
+						if (oldDamageClass != calamityMod.Find<DamageClass>("RogueDamageClass"))
 						{
-							damage = player.GetTotalDamage(calamityMod.Find<DamageClass>("RogueDamageClass"));
+							if (ModLoader.TryGetMod("CalamityMod", out Mod calamityModx))
+							{
+								damage = player.GetTotalDamage(calamityMod.Find<DamageClass>("RogueDamageClass"));
 
-							
+
+							}
+
+							if (!disableAspectPenalty)
+							{
+								damage -= 0.1f;
+							}
+
 						}
-						
-						if (!disableAspectPenalty && !spatialWeapon)
+						else
 						{
-							damage -= 0.1f;
+
 						}
-
-					}
-					else
-					{
-
 					}
 
 				}
-				
-				if (player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
+
+				if (player.GetModPlayer<StarsAbovePlayer>().BardAspect == 2 && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
+				{
+					if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+					{
+						if (oldDamageClass != thoriumMod.Find<DamageClass>("BardDamage"))
+						{
+							damage = player.GetTotalDamage(thoriumMod.Find<DamageClass>("BardDamage"));
+
+							if (!disableAspectPenalty)
+							{
+								damage -= 0.1f;
+							}
+
+						}
+						else
+						{
+
+						}
+					}
+
+				}
+				if (player.GetModPlayer<StarsAbovePlayer>().HealerAspect == 2 && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
+				{
+					if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+					{
+						if (oldDamageClass != thoriumMod.Find<DamageClass>("HealerDamage"))
+						{
+							damage = player.GetTotalDamage(thoriumMod.Find<DamageClass>("HealerDamage"));
+
+							if (!disableAspectPenalty)
+							{
+								damage -= 0.1f;
+							}
+
+						}
+						else
+						{
+
+						}
+					}
+
+				}
+				if (player.GetModPlayer<StarsAbovePlayer>().ThrowerAspect == 2 && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
+				{
+					if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+					{
+						if (oldDamageClass != DamageClass.Throwing)
+						{
+							damage = player.GetTotalDamage(DamageClass.Throwing);
+
+							if (!disableAspectPenalty)
+							{
+								damage -= 0.1f;
+							}
+
+						}
+						else
+						{
+
+						}
+					}
+
+				}
+
+				if (player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2 && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
 				{
 					if (oldDamageClass != DamageClass.Melee && oldDamageClass != DamageClass.MeleeNoSpeed)
 					{
 						damage = player.GetTotalDamage(DamageClass.Melee);
 						
-						if (!disableAspectPenalty && !spatialWeapon)
+						if (!disableAspectPenalty)
 						{
 							damage -= 0.1f;
 						}
@@ -653,12 +791,12 @@ namespace StarsAbove
 					}
 
 				}
-				if (player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2)
+				if (player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2 && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
 				{
 					if (oldDamageClass != DamageClass.Magic && oldDamageClass != DamageClass.MagicSummonHybrid)
 					{
 						damage = player.GetTotalDamage(DamageClass.Magic);
-						if (!disableAspectPenalty && !spatialWeapon)
+						if (!disableAspectPenalty)
 						{
 							damage -= 0.1f;
 						}
@@ -670,12 +808,12 @@ namespace StarsAbove
 
 
 				}
-				if (player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
+				if (player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2 && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
 				{
 					if (oldDamageClass != DamageClass.Ranged)
 					{
 						player.GetTotalDamage(DamageClass.Ranged);
-						if (!disableAspectPenalty && !spatialWeapon)
+						if (!disableAspectPenalty)
 						{
 							damage -= 0.1f;
 						}
@@ -685,13 +823,13 @@ namespace StarsAbove
 
 					}
 				}
-				if (player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2)
+				if (player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2 && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
 				{
 					if (oldDamageClass != DamageClass.Summon && oldDamageClass != DamageClass.MagicSummonHybrid && oldDamageClass != DamageClass.SummonMeleeSpeed)
 					{
 						damage = player.GetTotalDamage(DamageClass.Summon);
 						
-						if (!disableAspectPenalty && !spatialWeapon)
+						if (!disableAspectPenalty)
 						{
 							damage -= 0.1f;
 						}
@@ -767,8 +905,36 @@ namespace StarsAbove
 					}
 					
 				}
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().BardAspect == 2)
+				{
+					if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+					{
 
-				
+						item.DamageType = thoriumMod.Find<DamageClass>("BardDamage");
+
+					}
+
+				}
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().HealerAspect == 2)
+				{
+					if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+					{
+
+						item.DamageType = thoriumMod.Find<DamageClass>("HealerDamage");
+
+					}
+
+				}
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().ThrowerAspect == 2)
+				{
+					if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+					{
+
+						item.DamageType = DamageClass.Throwing;
+
+					}
+
+				}
 
 
 			}
@@ -784,24 +950,39 @@ namespace StarsAbove
 			}
 			item.DamageType = oldDamageClass;
 		}
-		
 
-        public override bool CanUseItem(Item item, Player player)
+	
+		public override bool CanUseItem(Item item, Player player)
         {
+			
+		
 			if(player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer != 1 && player.whoAmI == Main.myPlayer && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
             {
-				if(AstralWeapons.Contains(item.type) && !disableWeaponRestriction)
-				{            
-					if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("The weapon fails to react to your Aspect, rendering it unusable."), 241, 255, 180);}
+				if(AstralWeapons.Contains(item.type) && !disableWeaponRestriction)//Eridani
+				{
+					if(item.type == ItemType<KevesiFarewell>())
+                    {
+						return true;
+                    }
 
+					//Add this to localization later.($"Common.DiskReady")
+					if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.AstralLocked"), 241, 255, 180);}
+					player.itemTime = 60;
+					
 					return false;
                 }
             }
 			if (player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer != 2 && player.whoAmI == Main.myPlayer && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
 			{
-				if (UmbralWeapons.Contains(item.type) && !disableWeaponRestriction)
+				if (UmbralWeapons.Contains(item.type) && !disableWeaponRestriction)//Asphodene
 				{
-					if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("The weapon fails to react to your Aspect, rendering it unusable."), 241, 255, 180); }
+					if (item.type == ItemType<AgnianFarewell>())
+					{
+						return true;
+					}
+
+					if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"Common.UmbralLocked"), 241, 255, 180); }
+					player.itemTime = 60;
 
 					return false;
 				}

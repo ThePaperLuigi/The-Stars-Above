@@ -36,7 +36,7 @@ namespace StarsAbove.NPCs
                     NPC.lifeMax = 900000;
 
                 }
-                NPC.defense = 200;
+                NPC.defense = 50;
 
             }
             else
@@ -52,10 +52,11 @@ namespace StarsAbove.NPCs
                     NPC.lifeMax = 300000;
 
                 }
+                NPC.defense = 30;
+
             }
-            
-            
-            NPC.defense = 60;
+
+
             NPC.boss = true;
             NPC.aiStyle = 0;
             
@@ -496,7 +497,7 @@ namespace StarsAbove.NPCs
                                         //Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
                     Vector2 vector8 = new Vector2(P.position.X + Main.rand.Next(500, 600), P.position.Y - 800);
                     Vector2 vector9 = new Vector2(P.position.X - Main.rand.Next(500, 600), P.position.Y - 800);
-                    int damage = 60;  //projectile damage
+                    int damage = 30;  //projectile damage
                     int type;
 
                     type = Mod.Find<ModProjectile>("ThreadsOfFate").Type;
@@ -1270,7 +1271,7 @@ namespace StarsAbove.NPCs
                         float Speed = 24f;  //projectile speed
                                             //Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
                         Vector2 vector8 = new Vector2(P.position.X + Main.rand.Next(-300, 300), P.position.Y - 800);
-                        int damage = 60;  //projectile damage
+                        int damage = 40;  //projectile damage
                         int type = Mod.Find<ModProjectile>("BossTheofania").Type;
 
                         float rotation = (float)Math.Atan2(vector8.Y - (P.position.Y + (P.height * 0.5f)), vector8.X - (P.position.X + (P.width * 0.5f)));
@@ -1726,7 +1727,7 @@ namespace StarsAbove.NPCs
                             float Speed = Main.rand.NextFloat(2, 8);  //projectile speed
                                                                       //Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
                             Vector2 vector8 = new Vector2(P.position.X + Main.rand.Next(-800, 800), P.position.Y - 500);
-                            int damage = 80;  //projectile damage
+                            int damage = 35;  //projectile damage
                             int type = ProjectileType<TsukiyomiStar>();
 
                             float rotation = (float)Math.Atan2(vector8.Y - (P.position.Y + (P.height * 0.5f)), vector8.X - (P.position.X + (P.width * 0.5f)));
@@ -2193,22 +2194,7 @@ namespace StarsAbove.NPCs
 
 
                     }
-                    if (nextAttack == "Galactic Swarm")
-                    {
-                        isCasting = false;
-                        lastAttack = nextAttack;
-                        nextAttack = "";
-                        nframe = 0;
-                        NPC.frameCounter = 0;
-                        NPC.frame.Y = 0;
-                        for (int d = 0; d < 12; d++)
-                        {
-                            NPC.NewNPC(NPC.GetSource_FromAI(),(int)NPC.Center.X + Main.rand.Next(-365, 365), (int)NPC.Center.Y + Main.rand.Next(-365, 365), NPCType<NPCs.AstralCell>(), NPC.whoAmI);
-                        }
-
-
-
-                    }
+                    
                     if (nextAttack == "Concentrativity")
                     {
                         isCasting = false;
@@ -2420,7 +2406,7 @@ namespace StarsAbove.NPCs
                 float Speed = 3f;  //projectile speed
                                    //Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
                 Vector2 vector8 = new Vector2(P.position.X + Main.rand.Next(-1200, 1200), P.position.Y - 800);
-                int damage = 60;  //projectile damage
+                int damage = 40;  //projectile damage
                 int type = Mod.Find<ModProjectile>("Starmatter").Type;
                 
 
@@ -2465,7 +2451,7 @@ namespace StarsAbove.NPCs
                 float Speed = 8f;  //projectile speed
                                    //Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
                 Vector2 vector8 = new Vector2(P.position.X + Main.rand.Next(-1200, 1200), P.position.Y - 800);
-                int damage = 60;  //projectile damage
+                int damage = 30;  //projectile damage
                 int type = Mod.Find<ModProjectile>("BulletWormhole2").Type;
 
 

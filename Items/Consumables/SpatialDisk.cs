@@ -10,6 +10,7 @@ using SubworldLibrary;
 using Terraria.Audio;
 using StarsAbove.Subworlds;
 using StarsAbove.Utilities;
+using System;
 
 namespace StarsAbove.Items.Consumables
 {
@@ -23,10 +24,9 @@ namespace StarsAbove.Items.Consumables
 				"\nYour [c/F1AF42:Starfarer] will periodically grant you components to powerful Aspected Weapons" +
 				"\nRight click to open the [c/EC356F:Starfarer Menu] and access special abilities" +
 				"\nDefeating bosses will grant powerful passive abilities available in the [c/3599EC:Stellar Array]" +
-				"\nAbilities are sorted into 1 cost, 2 cost, or 3 cost categories" +
-				"\nYou are unable to slot abilities that would total a cost higher than 5" +
-				"\nAdditionally, the damage type of Aspected Weapons can be modified with a 10% damage penalty" +
+                "\nAdditionally, the damage type of Aspected Weapons can be adjusted" +
 				"\n[c/F1AFFF:Once they have been unlocked, Stellar Novas can be modified with the] [c/EC356F:Starfarer Menu]" +
+				"\n[c/F1AFFF:Once it have been unlocked, Celestial Cartography can be accessed with the] [c/EC356F:Starfarer Menu]" +
 				"\nYou can re-acquire lost items and read previous dialogue with the [c/9FEE5E:Archive]" +
 				$"\nThe ability to wield Umbral [i:{ItemType<Umbral>()}] or Astral [i:{ItemType<Astral>()}] weapons depends on your chosen [c/F1AF42:Starfarer]" +
 				"");
@@ -51,7 +51,29 @@ namespace StarsAbove.Items.Consumables
 			Item.consumable = false;
 		}
 
-		private int randomDialogue;
+        public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+		{// Draw the periodic glow effect
+
+			// Get the initial draw parameters
+			Texture2D texture = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Items/Consumables/SpatialDisk");
+
+			const float TwoPi = (float)Math.PI * 2f;
+			float offset = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 5f);
+
+			SpriteEffects effects = SpriteEffects.None;
+
+			scale = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 2f) * 0.3f + 0.7f;
+			Color effectColor = Color.White;
+			effectColor.A = 0;
+			effectColor = effectColor * 0.06f * scale;
+			for (float num5 = 0f; num5 < 1f; num5 += 355f / (678f * (float)Math.PI))
+			{
+				spriteBatch.Draw(texture,position + (TwoPi * num5).ToRotationVector2() * (2f + offset * 2f), frame, effectColor, 0f,new Vector2(origin.X + 3, origin.Y + 3), 1f, effects, 0f);
+			}
+			base.PostDrawInInventory(spriteBatch, position, frame, drawColor, itemColor, origin, scale);
+        }
+
+        private int randomDialogue;
 
 		public override bool AltFunctionUse(Player player)
 		{
@@ -68,6 +90,9 @@ namespace StarsAbove.Items.Consumables
 		}
 		public override bool CanUseItem(Player player) {
 			if (player.GetModPlayer<StarsAbovePlayer>().novaUIActive)
+				return false;
+
+			if (player.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive)
 				return false;
 
 			if (player.altFunctionUse == 2)
@@ -228,22 +253,36 @@ namespace StarsAbove.Items.Consumables
 
 			}
 			//Subworld dialogue tutorials come first.
-			if (player.GetModPlayer<StarsAbovePlayer>().observatoryDialogue == 1)
+			if (player.GetModPlayer<StarsAbovePlayer>().astrolabeIntroDialogue == 1)
 			{
-				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 22;
-				player.GetModPlayer<StarsAbovePlayer>().observatoryDialogue = 2;
-				activateDialogue(player);
+				
+				if (player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
+				{
+					player.GetModPlayer<StarsAbovePlayer>().sceneID = 11;
+				}
+				if (player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
+				{
+					player.GetModPlayer<StarsAbovePlayer>().sceneID = 12;
+				}
+
+				activateVNDialogue(player);
+				player.GetModPlayer<StarsAbovePlayer>().astrolabeIntroDialogue = 2;
 				
 				return true;
 			}
-			if (player.GetModPlayer<StarsAbovePlayer>().cosmicVoyageDialogue == 1)
+			if (player.GetModPlayer<StarsAbovePlayer>().observatoryIntroDialogue == 1)
 			{
-				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 24;
-				player.GetModPlayer<StarsAbovePlayer>().cosmicVoyageDialogue = 2;
-				activateDialogue(player);
-				
+				player.GetModPlayer<StarsAbovePlayer>().sceneID = 13;
+
+				activateVNDialogue(player);
+				player.GetModPlayer<StarsAbovePlayer>().observatoryIntroDialogue = 2;
+
 				return true;
 			}
+
+			//End of Subworld dialogue.
+
+
 			if (player.GetModPlayer<StarsAbovePlayer>().desertscourgeDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 201;
@@ -298,6 +337,14 @@ namespace StarsAbove.Items.Consumables
 				player.GetModPlayer<StarsAbovePlayer>().CorruptBossWeaponDialogue = 2;
 				activateDialogue(player);
 				
+				return true;
+			}
+			if (player.GetModPlayer<StarsAbovePlayer>().Stellaglyph2WeaponDialogue == 1)
+			{
+				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 160;
+				player.GetModPlayer<StarsAbovePlayer>().Stellaglyph2WeaponDialogue = 2;
+				activateDialogue(player);
+
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().hivemindDialogue == 1)
@@ -418,6 +465,14 @@ namespace StarsAbove.Items.Consumables
 				player.GetModPlayer<StarsAbovePlayer>().WallOfFleshDialogue = 2;
 				activateDialogue(player);
 				
+				return true;
+			}
+			if (player.GetModPlayer<StarsAbovePlayer>().FarewellWeaponDialogue == 1)
+			{
+				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 159;
+				player.GetModPlayer<StarsAbovePlayer>().FarewellWeaponDialogue = 2;
+				activateDialogue(player);
+
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().WallOfFleshWeaponDialogue == 1)
@@ -779,8 +834,8 @@ namespace StarsAbove.Items.Consumables
                 {//This should be condensed.
 					player.GetModPlayer<StarsAbovePlayer>().dialogueScrollTimer = 0;
 					player.GetModPlayer<StarsAbovePlayer>().dialogueScrollNumber = 0;
-					player.GetModPlayer<StarsAbovePlayer>().sceneID = 9;
 					player.GetModPlayer<StarsAbovePlayer>().sceneProgression = 0;
+					player.GetModPlayer<StarsAbovePlayer>().sceneID = 9;
 					player.GetModPlayer<StarsAbovePlayer>().VNDialogueActive = true;
 					player.GetModPlayer<StarsAbovePlayer>().vagrantDialogue = 2;
 				}
@@ -788,8 +843,8 @@ namespace StarsAbove.Items.Consumables
 				{
 					player.GetModPlayer<StarsAbovePlayer>().dialogueScrollTimer = 0;
 					player.GetModPlayer<StarsAbovePlayer>().dialogueScrollNumber = 0;
-					player.GetModPlayer<StarsAbovePlayer>().sceneID = 10;
 					player.GetModPlayer<StarsAbovePlayer>().sceneProgression = 0;
+					player.GetModPlayer<StarsAbovePlayer>().sceneID = 10;
 					player.GetModPlayer<StarsAbovePlayer>().VNDialogueActive = true;
 					player.GetModPlayer<StarsAbovePlayer>().vagrantDialogue = 2;
 				}
@@ -840,12 +895,36 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
+			if (player.GetModPlayer<StarsAbovePlayer>().SilenceWeaponDialogue == 1)
+			{
+				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 156;
+				player.GetModPlayer<StarsAbovePlayer>().SilenceWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
 			if (player.GetModPlayer<StarsAbovePlayer>().VagrantWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 115;
 				player.GetModPlayer<StarsAbovePlayer>().VagrantWeaponDialogue = 2;
 				activateDialogue(player);
 				
+				return true;
+			}
+			if (player.GetModPlayer<StarsAbovePlayer>().SoulWeaponDialogue == 1)
+			{
+				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 157;
+				player.GetModPlayer<StarsAbovePlayer>().SoulWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
+			if (player.GetModPlayer<StarsAbovePlayer>().GoldWeaponDialogue == 1)
+			{
+				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 158;
+				player.GetModPlayer<StarsAbovePlayer>().GoldWeaponDialogue = 2;
+				activateDialogue(player);
+
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().NalhaunWeaponDialogue == 1)
@@ -982,6 +1061,14 @@ namespace StarsAbove.Items.Consumables
 				player.GetModPlayer<StarsAbovePlayer>().TakodachiWeaponDialogue = 2;
 				activateDialogue(player);
 				
+				return true;
+			}
+			if (player.GetModPlayer<StarsAbovePlayer>().HardwareWeaponDialogue == 1)
+			{
+				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 154;
+				player.GetModPlayer<StarsAbovePlayer>().HardwareWeaponDialogue = 2;
+				activateDialogue(player);
+
 				return true;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().TwinStarsWeaponDialogue == 1)
@@ -1153,9 +1240,13 @@ namespace StarsAbove.Items.Consumables
 			}
 			else
 			{
-				if(SubworldSystem.Current == null)
+
+				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 2; //Default idle line.
+
+				/*
+				if (SubworldSystem.Current == null)
                 {
-					player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 2; //Default idle line.
+					
 
 				}
 				else
@@ -1168,9 +1259,9 @@ namespace StarsAbove.Items.Consumables
 					{
 						player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 25;
 					}
-				}
+				}*/
 			}
-			if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior)
+			if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior && SubworldSystem.Current == null)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 21;
 			}
@@ -1187,16 +1278,26 @@ namespace StarsAbove.Items.Consumables
 			player.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
 			player.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
 		}
+		private void activateVNDialogue(Player player)
+        {
+			
+				player.GetModPlayer<StarsAbovePlayer>().dialogueScrollTimer = 0;
+				player.GetModPlayer<StarsAbovePlayer>().dialogueScrollNumber = 0;
+				player.GetModPlayer<StarsAbovePlayer>().sceneProgression = 0;
+				player.GetModPlayer<StarsAbovePlayer>().VNDialogueActive = true;
+			
+		}
+
 
         public override void UpdateInventory(Player player)
         {
 			if(player.GetModPlayer<StarsAbovePlayer>().NewDiskDialogue)
             {
-				ItemID.Sets.ItemIconPulse[Item.type] = true;
+				//ItemID.Sets.ItemIconPulse[Item.type] = true;
 			}
 			else
             {
-				ItemID.Sets.ItemIconPulse[Item.type] = false;
+				//ItemID.Sets.ItemIconPulse[Item.type] = false;
 			}
 			
 

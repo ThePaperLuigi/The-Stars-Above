@@ -7,6 +7,7 @@ using Terraria.Graphics.Shaders;
 using Terraria.ModLoader;
 using StarsAbove.SceneEffects.CustomSkies;
 using ReLogic.Content;
+using Microsoft.Xna.Framework;
 
 namespace StarsAbove
 {
@@ -47,6 +48,8 @@ namespace StarsAbove
 				SkyManager.Instance["StarsAbove:Void"] = new VoidSky();
 				//Filters.Scene["StarsAbove:EverlastingLight"] = new Filter(new ScreenShaderData("FilterMoonLord"), EffectPriority.Low);
 				SkyManager.Instance["StarsAbove:EverlastingLight"] = new EverlastingLightSky();
+				SkyManager.Instance["StarsAbove:CorvusSky"] = new CorvusSky();
+
 				SkyManager.Instance["StarsAbove:ObservatorySkyDay"] = new ObservatorySkyDay();
 				SkyManager.Instance["StarsAbove:ObservatorySkyNight"] = new ObservatorySkyNight();
 
@@ -153,15 +156,19 @@ namespace StarsAbove
 					"AddBoss", //Entry Type
 					this, //Mod Instance
 					"$Mods.StarsAbove.NPCName.VagrantOfSpaceAndTime", //Boss Name
-					ModContent.NPCType<NPCs.VagrantOfSpaceAndTime>(), //Boss ID
+					ModContent.NPCType<NPCs.Vagrant.VagrantBoss>(), //Boss ID
 					7.1f, //Progression
 					(Func<bool>)(() => DownedBossSystem.downedVagrant), //Downed boolean
 					() => true, //Availability
 					new List<int> { ModContent.ItemType<Items.Materials.EnigmaticDust>(), ModContent.ItemType<Items.Prisms.SpatialPrism>() },//Collection
 					ModContent.ItemType<Items.Consumables.ShatteredDisk>(),//Spawn Item
 					"$Mods.StarsAbove.BossChecklist.VagrantOfSpaceAndTime.SpawnInfo", //Spawn Item
-					"$Mods.StarsAbove.BossChecklist.VagrantOfSpaceAndTime.DespawnMessage" //Despawn Message
-					); //Boss Portrait
+					"$Mods.StarsAbove.BossChecklist.VagrantOfSpaceAndTime.DespawnMessage", //Despawn Message
+					(SpriteBatch sb, Rectangle rect, Color color) => {
+						Texture2D texture = ModContent.Request<Texture2D>("StarsAbove/Bestiary/PerseusBossChecklist").Value;
+						Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
+						sb.Draw(texture, centered, color);
+					}); //Boss Portrait
 
 				bossChecklist.Call(
 					"AddBoss", //Entry Type
@@ -191,7 +198,7 @@ namespace StarsAbove
 					"$Mods.StarsAbove.BossChecklist.Penthesilea.DespawnMessage" //Despawn Message
 					); //Boss Portrait
 
-				bossChecklist.Call(
+				/*bossChecklist.Call(
 					"AddBoss", //Entry Type
 					this, //Mod Instance
 					"$Mods.StarsAbove.NPCName.Arbitration", //Boss Name
@@ -204,7 +211,7 @@ namespace StarsAbove
 					"$Mods.StarsAbove.BossChecklist.Arbitration.SpawnInfo", //Spawn Item
 					"$Mods.StarsAbove.BossChecklist.Arbitration.DespawnMessage" //Despawn Message
 					); //Boss Portrait
-
+				*/
 				bossChecklist.Call(
 					"AddBoss", //Entry Type
 					this, //Mod Instance

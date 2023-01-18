@@ -29,6 +29,7 @@ namespace StarsAbove.Projectiles.CatalystMemory
 			Projectile.minionSlots = 0f;
 			Projectile.timeLeft = 240;
 			Projectile.penetrate = -1;
+			Projectile.light = 0.3f;
 			Projectile.hide = false;
 			Projectile.alpha = 0;
 			Projectile.netImportant = true;
@@ -55,6 +56,8 @@ namespace StarsAbove.Projectiles.CatalystMemory
 		}
 		public override void AI()
 		{
+			
+
 			Player projOwner = Main.player[Projectile.owner];
 			Projectile.scale = 0.7f;
 
@@ -80,8 +83,8 @@ namespace StarsAbove.Projectiles.CatalystMemory
 
 			if (projOwner.GetModPlayer<StarsAbovePlayer>().CatalystMemoryProgress > 5 && projOwner.GetModPlayer<StarsAbovePlayer>().CatalystMemoryProgress < 40)
             {
-				projOwner.itemTime = 10;
-				projOwner.itemAnimation = 10;
+				//projOwner.itemTime = 10;
+				//projOwner.itemAnimation = 10;
 				spawnProgress += 0.1f;
 				
 			}
