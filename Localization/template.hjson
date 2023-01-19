@@ -1,7 +1,8 @@
 {
   Mods:
   {
-    StarsAbove: {
+    StarsAbove:
+    {
       SubworldName:
       {
         Observatory: Observatory Hyperborea
@@ -2823,6 +2824,9 @@
       {
         StellarNovaHeader: "[c/EE9DE0:Stellar Nova Settings]"
         PopUpDialogueHeader: "[c/C076DF:Pop-up Dialogue Settings]"
+        DialogueHeader: "[c/75C792:Disk Dialogue Settings]"
+        StarfarerPromptHeader: "[c/FFC376:Pop-up Prompts Settings]"
+        MiscHeader: "[c/7A76FF:Miscellaneous Settings]"
 
         DisableStellarNovaCutIns:
         {
