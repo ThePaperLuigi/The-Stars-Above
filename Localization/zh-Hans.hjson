@@ -2180,12 +2180,12 @@
 								2: 真的吗？没关系——我是个宽容的人……至少我这么认为。等等，忘了最后那句。
 								3: 咳咳，这么偏远的地方很少能看见友善的面孔，所以我起码应该提供周到的款待——对星海旅者也是如此。幸会，我是Garridine。
 								4: 实际上，之前到访的那些死板的家伙并不善谈，所以我不反对你们的到来——事实上，我想为某些事请求你们的帮助。
-								5: 好吧，那就说定了——对吧，{0}？我原本挺犹豫的，但是她真的太！可！爱！了……我们只需要帮帮她。Yep, done deal- right, {0}? I hesitate to say it, but she's really cute... we simply HAVE to help her out.
-								6: Did you say something? No? In that case... I would appreciate it if you would allow me to analyze your equipment and weapons you have created.
-								7: I haven't had occassion to learn about recent advancements, owing in no small part to the Ardor- if I were to get a glimpse, it would be quite the boon.
-								8: To make this worth your time, I'll craft some Stellar Foci for you after a visit.
-								9: Bit of a strange ask, but it shouldn't be too difficult- getting some Stellar Foci without having to make them ourselves would be very helpful.
-								10: Wonderful. Let us hope this relationship is a fruitful one.
+								5: 好吧，那就说定了——对吧，{0}？我原本挺犹豫的，但是她真的太！可！爱！了……我们只需要帮帮她就行。
+								6: 你们刚才说什么了吗？没有吗？这样的话……如果能允许我分析一下你们制造的装备和武器，我将不胜感激。
+								7: 我很久没能了解到最新的技术进展了，很大程度上是由于Ardor的影响。如果能让我看一眼，那就再好不过了。
+								8: 作为耽搁你们时间的回报，下次到访时，我会为你们制作一些天体聚焦。
+								9: 这个请求有点奇怪，但也算不上多难——能得到一些天体聚焦总比自己动手做要强。
+								10: 那真是太好了。真心祝愿我们的友谊长存。
 							}
 							Choices:
 							{
@@ -2198,16 +2198,16 @@
 							Dialogue:
 							{
 								0: 我明白了——在内心深处，人们对这种无理的行为已经见怪不怪了——比如像这样闯进别人家里。我说的对吗？
-								1: I'm so sorry... We thought, you know, because everything else is abandoned around here, this place would be too... Sorry.
-								2:真的吗？没关系——我是个宽容的人……至少我这么认为。等等，忘了最后那句。
-								3: Ahem. Friendly faces scant wander this far, so offering hospitality is the least I can do- to a Starfarer, as well. My name is Garridine.
-								4: In truth, automatons prove not the most capable of conversationalists. I would not be opposed to your visits.
-								5: That sounds great to me. Finding a friendly face so far from civilization is a great help to us as well.
-								6: In that case... I would appreciate it if you would allow me to analyze your equipment and weapons you have created.
-								7: I haven't had occassion to learn about recent advancements, owing in no small part to the Ardor- if I were to get a glimpse, it would be quite the boon.
-								8: To make this worth your time, I'll craft some Stellar Foci for you after a visit.
-								9: Hmm... that would prove useful- especially avoiding having to craft them ourselves.
-								10: Wonderful. Let us hope this relationship is a fruitful one.
+								1: 很抱歉……我们原以为，你知道的，因为周围的一切都被废弃了，所以这里也……对不起。
+								2: 真的吗？没关系——我是个宽容的人……至少我这么认为。等等，忘了最后那句。
+								3: 咳咳，这么偏远的地方很少能看见友善的面孔，所以我起码应该提供周到的款待——对星海旅者也是如此。幸会，我是Garridine。
+								4: 实际上，之前到访的那些死板的家伙并不善谈，所以我不反对你们的到来。
+								5: 那真是太好了。能在如此偏远的地方遇见一位友人，对我们而言也是莫大的帮助。
+								6: 这样的话……如果能允许我分析一下你们制造的装备和武器，我将不胜感激。
+								7: 我很久没能了解到最新的技术进展了，很大程度上是由于Ardor的影响。如果能让我看一眼，那就再好不过了。
+								8: 作为耽搁你们时间的回报，下次到访时，我会为你们制作一些天体聚焦。
+								9: 唔……它们还是很有用的——尤其是不必自己动手制作的时候。
+								10: 那真是太好了。真心祝愿我们的友谊长存。
 							}
 							Choices:
 							{
@@ -2219,8 +2219,8 @@
 						{
 							Dialogue:
 							{
-								0: Best be gettin' a clear picture of the Ardor, if you'd be interested in fixin' it. How 'bout a history lesson, eh?
-								1: In the beginnin' there'd just be a few rimworlds 'n the outskirts cuttin' contact- nobody batted 'n eye.
+								0: 如果你有兴趣解决Ardor，最好先弄清楚它的情况。来上一堂历史课怎么样，嗯？
+								1: 起初只有几个边缘世界与外界失去联系——没有人把这件事放在心上。
 								2: When the southern urbworld of Corvus went dark, heads 'n the like started their turnin'. Nothin' but the talk o' the outposts for months, lemme tell ya.
 								3: It wasn't the prettiest place 'n all, but was important 'n such to the Empire, seems like. The Ardor takin' it was big in their eyes.
 								4: Outposts 'n the Third Region stopped gettin' their rations, an' that'd be the end of it. Trade ships ain't stayin' w'en the breadwinners are movin' inwards.
@@ -2282,7 +2282,7 @@
 						{
 							Dialogue:
 							{
-								0: Hey now, don' get too 'head of yourself. Talkin' too much makes them beasties wary, y'know? Ain't too good for me.
+								0: 嘿，别太得意忘形了。说的太多可能会引起猎物的警戒，你知道吗？这对我很不利。
 							}
 							Choices:
 							{
