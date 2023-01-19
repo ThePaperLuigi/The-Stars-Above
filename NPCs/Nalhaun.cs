@@ -1503,28 +1503,12 @@ namespace StarsAbove.NPCs
                     //blazingSkiesTimer++;
                 }
             }
-            if (blazingSkiesTimer >= 30)
+            if (blazingSkiesTimer >= 60)
             {
                 strayManaTimer++;
                 
 
-                float Speed = 3f;  //projectile speed
-                                    //Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
-                Vector2 vector8 = new Vector2(P.position.X + Main.rand.Next(-300, 300), P.position.Y - 800);
-                int damage = 30;  //projectile damage
-                int type;
                 
-                type = ProjectileID.LostSoulHostile;
-                   
-                
-                vector8 = new Vector2(P.position.X + Main.rand.Next(-900, 900), P.position.Y - 800);
-                
-                
-
-                float rotation = (float)Math.Atan2(vector8.Y - (P.position.Y + (P.height * 0.5f)), vector8.X - (P.position.X + (P.width * 0.5f)));
-
-                if(Main.netMode != NetmodeID.MultiplayerClient){if(Main.netMode != NetmodeID.MultiplayerClient){Projectile.NewProjectile(NPC.GetSource_FromAI(),vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1),type,damage,0f,Main.myPlayer);}}
-               
                 blazingSkiesTimer = 0;
                 blazingSkies--;
 

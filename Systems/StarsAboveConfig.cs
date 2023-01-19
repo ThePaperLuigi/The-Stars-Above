@@ -22,6 +22,8 @@ namespace StarsAbove
 		
 		public override ConfigScope Mode => ConfigScope.ClientSide;
 
+		[Header("$Mods.StarsAbove.Config.StellarNovaHeader")]
+
 		[Label("$Mods.StarsAbove.Config.DisableStellarNovaCutIns.Label")]
 		[Tooltip("$Mods.StarsAbove.Config.DisableStellarNovaCutIns.Tooltip")]
 		public bool DisableStellarNovaCutIns;
@@ -29,6 +31,8 @@ namespace StarsAbove
 		[Label("$Mods.StarsAbove.Config.DisableStellarNovaDialogue.Label")]
 		[Tooltip("$Mods.StarsAbove.Config.DisableStellarNovaDialogue.Tooltip")]
 		public bool DisableStellarNovaDialogue;
+
+		[Header("$Mods.StarsAbove.Config.PopUpDialogueHeader")]
 
 		[Label("$Mods.StarsAbove.Config.DisableStarfarerCommentary.Label")]
 		[Tooltip("$Mods.StarsAbove.Config.DisableStarfarerCommentary.Tooltip")]

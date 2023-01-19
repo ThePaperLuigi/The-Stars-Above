@@ -15,7 +15,7 @@ namespace StarsAbove.Buffs.BlackSilence
 
         public override void Update(Player player, ref int buffIndex)
         {
-            //Do this in ModPlayer so Furioso can activate them all.
+            player.GetDamage(DamageClass.Generic) += 0.3f;
             
         }
     }
