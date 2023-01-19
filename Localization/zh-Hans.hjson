@@ -2219,16 +2219,16 @@
 						{
 							Dialogue:
 							{
-								0: 如果你有兴趣解决Ardor，最好先弄清楚它的情况。来上一堂历史课怎么样，嗯？
-								1: 起初只有几个边缘世界与外界失去联系——没有人把这件事放在心上。
-								2: When the southern urbworld of Corvus went dark, heads 'n the like started their turnin'. Nothin' but the talk o' the outposts for months, lemme tell ya.
-								3: It wasn't the prettiest place 'n all, but was important 'n such to the Empire, seems like. The Ardor takin' it was big in their eyes.
-								4: Outposts 'n the Third Region stopped gettin' their rations, an' that'd be the end of it. Trade ships ain't stayin' w'en the breadwinners are movin' inwards.
-								5: Followin' that, more an' more planets froze over. There'd be a time where a whole Empire fleet went with all their smart types to try and find out the happenin'.
-								6: I try 'n stay away from the bigwigs, so I can't give any info 'bout that. Best be knowin' Empire fleets don't go places lightly 'n all. Even heard wind of a Knight comin' with em.
-								7: All I know 'bout that is them figurin' out that the mana, y'see, ain't replenishin' like normal. Nothin' but tech is gonna be workin' at this rate- an' the Empire uses magic 'n tech both.
-								8: That'd be leadin' the story to now. The fleet's gone an' left, an' anyone holdin' out worth their salt with 'em. I'm in the business of followin' the money, which leads me to these backwaters.
-								9: Pay's great 'cause no one else can do it, but the beasties are big, an' help ain't comin', so I stay on my toes. That'd be about all.
+								0: 如果你有兴趣解决Ardor的话，最好先弄清楚它的情况。来上一堂历史课怎么样，嗯？
+								1: 起初，只有几个边缘世界与外界失去联系——没有人把这件事放在心上。
+								2: 直到乌鸦星西南部的都会爆发了Ardor，人们才开始将目光转向这场浩劫。有关前哨站的讨论持续了数月，让我给你讲讲当时的经过。
+								3: 也许那里不是景色最优美的地方，却对当时的帝国至关重要。Ardor的爆发在他们眼中是件大事。
+								4: 第三区的前哨部队得不到补给，他们的使命就此终结。商船不再在此停靠，难民们纷纷向星系中央进发。
+								5: 随后，越来越多的星球难逃被冰封的命运。曾有一段时期，整只帝国舰队带着他们的智囊团启程，试图找到灾难的源头。
+								6: 我不想和某些大人物产生纠葛，所以我不便透露任何消息。你只要知道帝国舰队不会轻举妄动就行了。我甚至听说有wind of a Knight与他们同行。
+								7: 据我了解，他们发现魔力无法得到正常补充，这样下去，只有机械造物才能发挥作用——而帝国同时发展魔法与科技。
+								8: 这件事一直延续到现在。帝国的舰队离开了，带走了那些坚守在此的人。我的工作是跟着钱走，钱把我带进了这个烂摊子里。
+								9: 我的报酬很丰厚，因为没人能胜任这个职位，但这里的猎物很难缠，又没有人来帮忙，所以我得小心行事。差不多就这些事了。
 							}
 							Choices:
 							{
@@ -2240,7 +2240,7 @@
 						{
 							Dialogue:
 							{
-								0: You'd be interested in the Empire, I'd wager. Good, 'cause I'll spare a moment for a chat.
+								0: 我敢打赌，你一定会对“帝国”感兴趣的。很好，那我就抽时间跟你聊聊天。You'd be interested in the Empire, I'd wager. Good, 'cause I'll spare a moment for a chat.
 								1: In terms of big ol' space empires, ours, Mare Luminis, ain't that bad- if you're human.
 								2: They tolerate xenos and such, but you'd never find yourself safe 'n the inner system.
 								3: Are they in the business o' snuffin' lives? Nah, but you'd be booted to a rimworld faster than a ray o' light.
