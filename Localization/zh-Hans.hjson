@@ -2240,17 +2240,17 @@
 						{
 							Dialogue:
 							{
-								0: 我敢打赌，你一定会对“帝国”感兴趣的。很好，那我就抽时间跟你聊聊天。You'd be interested in the Empire, I'd wager. Good, 'cause I'll spare a moment for a chat.
-								1: In terms of big ol' space empires, ours, Mare Luminis, ain't that bad- if you're human.
-								2: They tolerate xenos and such, but you'd never find yourself safe 'n the inner system.
-								3: Are they in the business o' snuffin' lives? Nah, but you'd be booted to a rimworld faster than a ray o' light.
-								4: Outside the inner system, you'd best believe thing's be different. Nobody's feedin' their family without workin' with the xenos.
-								5: Sure, the Empire's gotten themselves an ol' no-tolerance party, but patrols ain't turnin' down bribes, last time I did some checkin'.
-								6: Their tech is is a right marvel, an' the inner system is paradise made real 'n all, but I ain't interested.
-								7: "'Course, there are xenos who ARE innta that sort, and humans sidin' with 'em, to boot. Even heard the crown prince is on their side."
-								8: All that nonsense is deep within First Region turf, an' like I said earlier, best I'd be stayin' far away- ain't passin' for a human lookin' like this, I tell ya. Tried.
-								9: You're human, o' course, and your flyin' princess over yonder passes for 'un, so you'd best be lookin' their way for more info- nobody'd turn you down.
-								10: "'Pologies, but that'd be all I've got on this one."
+								0: 我敢打赌，你一定会对“帝国”感兴趣的。很好，那我就抽时间跟你聊聊天。
+								1: 对一个庞大的太空帝国而言，我们这些流光眷族并没有那么糟糕——如果你是人类的话。
+								2: 他们能够容忍异族的存在，但这并不意味着你能在帝国内部找到安身之所。
+								3: 他们在扼杀异族的生命吗？当然不是。但你会比一束光还快地被踢到边缘世界。
+								4: 在帝国之外，情况变得截然不同。不和星空异族合作，没人能养活他们的家人。
+								5: 当然，帝国成立了驱逐星空异族的组织，但这些巡逻队不拒绝贿赂，上次我就行了些方便。
+								6: 帝国的科技水平简直是个奇迹，他们的内部环境则宛若天堂，但我对这些都提不起兴趣。
+								7: “当然，有的异族不在被驱逐的范围内，他们和人类站在一方。甚至有传言帝国皇储也站在他们一方。”
+								8: 那些不切实际的东西都集中在第一区，就像我之前说过的，我最好离那里远点。我跟你说，我这样的人不会被批准进入那里的。我已经试过了。
+								9: 当然了，你是人类，你的伙伴也能获许进入那里。所以你最好朝着他们的方向寻找更多信息——没人会拒绝你的。
+								10: “抱歉，这是我唯一能说的了。”
 							}
 							Choices:
 							{
@@ -2262,15 +2262,15 @@
 						{
 							Dialogue:
 							{
-								0: You'd be wantin' a better grasp of your own galaxy? Ain't your home a bit too behind them times?
-								1: Guess it ain't my place to start anythin'- I do go aroun' soundin' like an' old timer... Time spent in the Third Region, innit.
-								2: No problem. Moirae'd be probably what you'd go an' call normal- well, barrin' the Ardor.
-								3: The Empire segments the galaxy into three Regions, ta better keep tabs 'n the galaxy. Best believe they'd be keepin' the First Region on high watch.
-								4: We'd be in the Third Region, but nobody's headed to re-chart them stars with the Ardor in full force out here 'n all. They ain't stayin' still, thats for sure.
-								5: Anywhos, the secon' region is a big ol' mess right now. With all them xenos movin' inwards 'cause of the cold, people simply ain't got 'nuff room- who can blame 'em.
-								6: Nothin' major yet- and I'm no bettin' man- but there'd be no suprisin' me if a big ol' conflict sparked up soon like.
-								7: Will the Empire barge on in is anyone's guess, I wager. They're in their own ashpile of troubles already, with the drainin' mana too. Thing's 're lookin' bleak, but it ain't my problem.
-								8: All I gotta do is stay alive 'n kill monsters. I s'pose you'd call me one o' the lucky 'uns- mayhaps 'cause I just don't give 'nuff of a care.
+								0: 你想更好地了解你的所在的星系？你的母星是不是有点太落伍了？
+								1: 看来这里不是我开口的地方——我听起来像个老家伙……我在第三区过得太久了，不是吗？
+								2: 没关系。命运星系可能是你所说的“正常”的地方——好吧，除了那些Ardor爆发的区域。
+								3: 帝国将命运星系划分为三个区域，以便更好地监视整片星系。你最好相信它们对第一区保持着高度监视。
+								4: 我们正处在第三区，但是在Ardor肆虐的情况下，没人愿意重绘这里的星图。显而易见，人们不愿坐以待毙。
+								5: 无论如何，第二区已经乱成一锅粥了。为了躲避寒冷，大量的星空异族向内迁入，人们根本找不到足够的容身之地——谁又能责怪他们呢。
+								6: 暂时还没什么大事发生——我不敢保证——但如果那里很快就爆发一场巨大的冲突，我也不会感到惊讶。
+								7: 我敢保证，谁也说不准帝国会不会插手。他们正处在自己的麻烦之中，魔力正在不断流失。但无论事情是悲观还是乐观，一切都与我无关。
+								8: 我要做的就是活下去，杀死这些怪物。想必你会说我是个幸运儿，也许是因为我根本就不在乎这些。
 							}
 							Choices:
 							{
@@ -2330,8 +2330,8 @@
 						{
 							Dialogue:
 							{
-								0: While I do appreciate the eagerness, I still have yet to analyze the data you've brought me.
-								1: Perhaps return anon, once progress has been made. Five minutes of your timescale should suffice.
+								0: 我能理解你们的急切，但我还没分析完你们带来的数据。
+								1: 等我的研究取得进展，我马上就回来。只要五分钟就行。
 							}
 							Choices:
 							{
@@ -2343,8 +2343,8 @@
 						{
 							Dialogue:
 							{
-								0: Your timely arrival is much appreciated. This is exactly what I wanted, thank you.
-								1: As promised, I've bequeathed a pouch containing a Stellar Foci. I have a... regrettable habit of forgetting to label my creations, so this must do.
+								0: 感谢你们的及时到来。这正是我想要的，谢谢你们。
+								1: 正如我承诺的那样，我会给你们一个装有星体聚焦的包裹。我总是忘记给自己的作品贴标签，这次一定不会了。
 							}
 							Choices:
 							{
