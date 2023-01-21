@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Buffs.BloodBlade;
 using StarsAbove.Projectiles.BloodBlade;
+using StarsAbove.Projectiles.Umbra;
 
 namespace StarsAbove.Items
 {
@@ -17,14 +18,17 @@ namespace StarsAbove.Items
 		{
 			DisplayName.SetDefault("Umbra");
 			Tooltip.SetDefault("" +
-				"Attacks with this weapon will sweep in an arc and fire [Umbral Blades]" +
-                "\n[Umbral Blades] deal bonus damage if foes have above 100 defense" +
-                "\n[Umbral Blades] will pierce foes up to 3 times, losing 30% damage per pierce" +
-                "\nUpon defeating an enemy with an [Umbral Blade], fill the [Umbral Gauge] by 25%" +
-                "\nRight click with a full [Umbral Gauge] to unleash an enhanced [Umbral Blade]" +
-                "\nThis attack can pierce up to 20 times and has no damage falloff" +
-                "" +
-				"" +
+				"Attacks with this weapon will sweep in an arc and unleash fast, piercing [c/A75BD9:Timeless Blades]" +
+                "\nDealing damage with the weapon swing will grant [c/AF32CF:Timeless Potential] for 4 seconds" +
+                "\n[c/AF32CF:Timeless Potential] causes non-critical strikes to have a 30% chance to become critical and additionally grants a 10% chance to dodge attacks when active" +
+                "\nAdditionally, if you would die due to taking lethal damage, [c/AF32CF:Timeless Potential] will be consumed, resurrecting you with 50 HP and 2 seconds of Invincibility" +
+                "\nIf [c/AF32CF:Timeless Potential] is used to resurrect you, [c/AF32CF:Timeless Potential] will have a 2 minute cooldown until it can be obtained again" +
+				"\n[c/A75BD9:Timeless Blades] fill the [c/4A91FF:Timeless Gauge] by 2% upon striking a foe (Halved when [c/4A91FF:Timeless Gauge] is above 50%" +
+				"\n[c/A75BD9:Timeless Blades] will pierce foes up to 3 times and have no damage falloff" +
+				"\nRight click to consume half of the [c/4A91FF:Timeless Gauge] to unleash an enhanced [c/A75BD9:Timeless Blade] that does not fill the [c/4A91FF:Timeless Gauge]" +
+				"\nEnhanced [c/A75BD9:Timeless Blades] are faster, can pierce up to 5 times, and deal 30% increased damage" +
+                "\nCritical strikes with enhanced [c/A75BD9:Timeless Blades] will additionally conjure additional [c/A75BD9:Timeless Blades] to strike the foe" +
+                "\nThe amount of [c/A75BD9:Timeless Blades] summoned depend on the remaining pierces of the enhanced [c/A75BD9:Timeless Blade]" +
 				$"");  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -34,20 +38,20 @@ namespace StarsAbove.Items
 		public override void SetDefaults()
 		{
 			
-			Item.damage = 65;           //The damage of your weapon
+			Item.damage = 144;           //The damage of your weapon
 			Item.DamageType = DamageClass.Melee;         //Is your weapon a melee weapon?
 			Item.width = 108;            //Weapon's texture's width
 			Item.height = 108;           //Weapon's texture's height
-			Item.useTime = 18;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
-			Item.useAnimation = 18;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
-			Item.useStyle = 5;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
+			Item.useTime = 22;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
+			Item.useAnimation = 22;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
+			Item.useStyle = ItemUseStyleID.HiddenAnimation;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
 			Item.knockBack = 0;         //The force of knockback of the weapon. Maximum is 20
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
-			Item.rare = ItemRarityID.Yellow;              //The rarity of the weapon, from -1 to 13
+			Item.rare = ItemRarityID.Cyan;              //The rarity of the weapon, from -1 to 13
 			Item.UseSound = SoundID.Item1;      //The sound when the weapon is using
 			Item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
 			Item.shoot = 337;
-			Item.shootSpeed = 0f;
+			Item.shootSpeed = 55f;
 			Item.noMelee = true;
 			Item.noUseGraphic = true;
 		}
@@ -78,25 +82,20 @@ namespace StarsAbove.Items
 
 			if (player.altFunctionUse == 2)
 			{
-				if(!player.HasBuff(BuffType<Buffs.BloodBlade.BladeArtDragonPrepBuff>()) && !player.HasBuff(BuffType<Buffs.BloodBlade.BladeArtDragonCooldown>()) && player.statLife > (int)(player.statLifeMax*0.2) + 1)
+				if(modPlayer.UmbraGauge >= 50)
                 {
-					player.AddBuff(BuffType<BladeArtDragonCooldown>(), 1200);
-					player.AddBuff(BuffType<Invincibility>(), 50);
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, 0, 0, ProjectileType<BloodArtPrep>(), player.GetWeaponDamage(Item)*4, 3, player.whoAmI, 0f);
-					player.statLife -= (int)(player.statLifeMax * 0.2);
+					modPlayer.UmbraGauge -= 50;
 
-					
-					return true;
-				}
+                }
 				else
                 {
 					return false;
                 }
-				
 			}
 			else
             {
-				
+
+				return true;
             }
 			
 			return true;
@@ -122,8 +121,9 @@ namespace StarsAbove.Items
         }
         public override void HoldItem(Player player)
         {
+			//player.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.Full, (player.Center - Main.MouseWorld).ToRotation() + MathHelper.PiOver2);
+			//Testing
 
-			player.AddBuff(BuffType<BloodBladeBuff>(), 2);
 
 			base.HoldItem(player);
         }
@@ -131,20 +131,27 @@ namespace StarsAbove.Items
        
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			 
-			if(player.altFunctionUse != 2)
-            {
+			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 60f;
+			position = new Vector2(position.X, position.Y + 7);
+			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+			{
+				position += muzzleOffset;
+			}
+			if (player.altFunctionUse != 2)
+			{
+				Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileType<UmbraSwordShoot>(), damage, knockback, player.whoAmI, 0f);
+
 				if (player.direction == 1)
 				{
 					if (altSwing)
 					{
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<BloodSlash2>(), player.GetWeaponDamage(Item), knockback, player.whoAmI, 0f);
+						Projectile.NewProjectile(source, player.Center.X, player.Center.Y, 0, 0, ProjectileType<UmbraSlash2>(), damage, knockback, player.whoAmI, 0f);
 
 						altSwing = false;
 					}
 					else
 					{
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<BloodSlash1>(), player.GetWeaponDamage(Item), knockback, player.whoAmI, 0f);
+						Projectile.NewProjectile(source, player.Center.X, player.Center.Y, 0, 0, ProjectileType<UmbraSlash1>(), damage, knockback, player.whoAmI, 0f);
 
 						altSwing = true;
 					}
@@ -154,19 +161,24 @@ namespace StarsAbove.Items
 				{
 					if (altSwing)
 					{
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<BloodSlash1>(), player.GetWeaponDamage(Item), knockback, player.whoAmI, 0f);
+						Projectile.NewProjectile(source, player.Center.X, player.Center.Y, 0, 0, ProjectileType<UmbraSlash1>(), damage, knockback, player.whoAmI, 0f);
 
 						altSwing = false;
 					}
 					else
 					{
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<BloodSlash2>(), player.GetWeaponDamage(Item), knockback, player.whoAmI, 0f);
+						Projectile.NewProjectile(source, player.Center.X, player.Center.Y, 0, 0, ProjectileType<UmbraSlash2>(), damage, knockback, player.whoAmI, 0f);
 
 						altSwing = true;
 					}
 				}
 			}
-			
+			else
+            {
+				Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileType<EnhancedUmbraSwordShoot>(), (int)(damage * 1.3), knockback, player.whoAmI, 0f);
+
+			}
+
 			return false;
 		}
 

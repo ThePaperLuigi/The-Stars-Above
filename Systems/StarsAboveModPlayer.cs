@@ -44,6 +44,7 @@ using StarsAbove.Utilities;
 using StarsAbove.Buffs.CatalystMemory;
 using StarsAbove.Items.Armor.StarfarerArmor;
 using StarsAbove.Buffs.Farewells;
+using StarsAbove.Buffs.Umbra;
 
 namespace StarsAbove
 {
@@ -522,6 +523,12 @@ namespace StarsAbove
         //Kevesi and Agnian Farewells
         public bool KevesiFarewellInInventory;
         public bool AgnianFarewellInInventory;
+
+        //Umbra
+        public int UmbraGauge;
+
+        //
+        public float gaugeChangeAlpha = 0f;
 
         //Starfarers ///////////////////////////////////////////////////////////////////////////////////////////////////
         public float StarfarerSelectionVisibility = 0f;
@@ -2371,7 +2378,7 @@ namespace StarsAbove
                 }
 
             }
-            if (target.HasBuff(BuffType<Glitterglued>()))
+            if (target.HasBuff(BuffType<Glitterglued>()) || Player.HasBuff(BuffType<TimelessPotential>()))
             {
                 if (!crit)
                 {
@@ -4782,7 +4789,7 @@ namespace StarsAbove
                 CatalystMemoryProgress = 0;
             }
             CatalystMemoryProgress--;
-            
+            gaugeChangeAlpha -= 0.1f;
             GlobalRotation++;
             if (GlobalRotation >= 360)
             {
@@ -12243,6 +12250,22 @@ namespace StarsAbove
                     Player.immuneTime = 30;
                     return false;
                 }
+            }
+            if (Player.HasBuff(BuffType<TimelessPotential>()))
+            {
+                if (damage > Player.statLife)
+                {
+                    Player.statLife = 50;
+                    Player.AddBuff(BuffType<Invincibility>(), 120);
+                    Player.AddBuff(BuffType<TimelessPotentialCooldown>(), 7200);
+                    return false;
+                }
+                if (Main.rand.Next(0, 101) <= 10)
+                {
+                    Player.immuneTime = 30;
+                    return false;
+                }
+                
             }
             if (hikari == 2)
             {
