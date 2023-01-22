@@ -12,7 +12,7 @@ namespace StarsAbove.Items.Accessories
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Crystallized Absence");
 			Tooltip.SetDefault("[c/2DD2FE:Stargazer Relic]" +
-				"\nMax HP is reduced by 300 and defense is reduced by 20, but damage is doubled" +
+				"\nMax HP is reduced by 300 and defense is reduced by 20, but damage is increased by 100%" +
 				"\nOnly active when unmodified Max HP is 400 or higher" +
 				"\n[c/ADEEFF:Only one Stargazer Relic can be equipped at a time]" +
 				"\n'From a world cursed to fade away'");
