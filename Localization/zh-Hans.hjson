@@ -2607,58 +2607,58 @@
 					}
 					ArchiveHover:
 					{
-						Asphodene: This is the Archive. Just in case you didn't get everything I said, you can read it here. I know, you just can't get enough of my analysis, right? You can also get items you lost, like Essences.
-						Eridani: This is the Archive. If you ever find yourself needing me to repeat what I've said about something, it's here. Additionally, if you lost something like an Essence, you can reacquire it.
+						Asphodene: 这里是档案库。如果你没听清我说的话，你可以到这里再听一遍。我知道，你不可能完全听懂我的分析，对吧？你也可以在这里获取遗失的物品，譬如精华。
+						Eridani: 这里是档案库。如果你需要我重复说过的话，就到这里来吧。此外，如果你弄丢了精华之类的东西，你也可以到这里重新获取。
 					}
 					Confirm:
 					{
 						Asphodene:
 						{
-							1: Is that everything?
-							2: Okay, finished?
-							3: Done already?
+							1: 就这些吗？
+							2: 好了，你完成了吗？
+							3: 你打算好了吗？
 						}
 						Eridani:
 						{
-							1: Have you done what you needed to?
-							2: Finished?
-							3: Was that all?
+							1: 你做好打算了吗？
+							2: 你打算好了吗？
+							3: 就这些吗？
 						}
 					}
 					VoyageHover:
 					{
-						Asphodene: Looks like this isn't implemented yet.
-						Eridani: It seems this isn't quite implemented yet.
+						Asphodene: 看上去这里还没有实装。
+						Eridani: 这里似乎还没有实装。
 					}
 					Locked:
 					{
-						Asphodene: We can't use this yet.
-						Eridani: We haven't unlocked this yet.
+						Asphodene: 我们还没法抵达这里。
+						Eridani: 我们还没解锁这里呢。
 					}
 					NovaHover:
 					{
-						Asphodene: This is the Stellar Nova Menu. You can check out Stellar Nova stats, swap it for another one, or equip Stellar Prisms to change what they can do.
-						Eridani: This is the Stellar Nova Menu. You can peruse Stellar Novas, swap between them, or you can equip Stellar Prisms to change what effects Stellar Novas have.
+						Asphodene: 这里是天体新星菜单。你可以在此查看、更换你的天体新星，或为天体新星镶嵌天体棱晶以改变它的属性。
+						Eridani: 这里是天体新星菜单。你可以在此查看并更换你的天体新星，或为天体新星镶嵌天体棱晶以改变它的效果。
 					}
 					ArrayBoss:
 					{
-						Asphodene: I'd love to let you modify the Stellar Array, but we should probably deal with THAT first. Come on, you know what I mean!!
-						Eridani: I know you'd like to modify the Stellar Array, but there's a much more pressing matter at hand... You ARE aware of this, right?
+						Asphodene: 我很乐意让你更改天体阵列，但你可能得先处理完“那家伙”。拜托，你知道我指的是谁！！！
+						Eridani: 我知道你迫不及待想要更改天体阵列了，但我们手头有更紧要的事……你明白这一点，对吗？
 					}
 					ArrayHover:
 					{
-						Asphodene: You can access the Stellar Array from here. We can equip passive abilities here, staying mindful of the max cost, as well as changing the damage type of Aspected Weapons.
-						Eridani: This is the Stellar Array. You can equip passive abilities here, as long as the total cost doesn't exceed the maximum. Also, this is where you configure Aspected Weapon type.
+						Asphodene: 你可以由此进入天体阵列。我们可以在这里装备被动技能，留意它们消耗的栏位数。我们也可以在此更改星相武器的类型。
+						Eridani: 这里是天体阵列。你可以在这儿装备被动技能，只要它们消耗的栏位没有达到上限。此外，你可以在这里更改星相武器的类型。
 					}
 					StarfarerAttire:
 					{
-						Asphodene: If you have any Starfarer Attire for me, here's the place to put it. It'll be pretty helpful for me, and you by association! And hey- style equals skill!
-						Eridani: You can place Starfarer Attire here. It'll provide me with some helpful boons to assist you better. I know your fashion sense is... unique, so at least try and spare me?
+						Asphodene: 如果你替我准备了星海旅者衣装，把它放在这里。这对我们俩都很有帮助！还有——服装风格和附带的技能有关！
+						Eridani: 你可以把星海旅者衣装放在这儿。它会提供给我一些益处，以便我能更好的帮助你。我知道你的时尚品味有些……独一无二，所以还是放过我吧。
 					}
 					StarfarerVanity:
 					{
-						Asphodene: I'll wear the Starfarer Attire here over the Armor Slot. It's called a vanity slot, or so I'm told.
-						Eridani: This is the vanity slot for Starfarer Attire. Anything placed here will be worn above the armor set.
+						Asphodene: 我会把星海旅者衣装穿在盔甲外面。这叫时装栏，至少别人是这么告诉我的。
+						Eridani: 这是用于装备星海旅者衣装的时装栏。装备在这里的服装将会显示在盔甲之上。
 					}
 				}
 			}
