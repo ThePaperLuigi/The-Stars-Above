@@ -179,6 +179,8 @@ namespace StarsAbove
 			ModContent.ItemType<SoulReaver>(),
 			ModContent.ItemType<GoldenKatana>(),
 
+			ModContent.ItemType<Umbra>(),
+
 
 			ModContent.ItemType<EssenceOfAdagium>(),
 			ModContent.ItemType<EssenceOfBloodshed>(),
@@ -217,7 +219,8 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfSilence>(),
 			ModContent.ItemType<EssenceOfSouls>(),
 			ModContent.ItemType<EssenceOfGold>(),
-						ModContent.ItemType<EssenceOfMimicry>(),
+			ModContent.ItemType<EssenceOfMimicry>(),
+			ModContent.ItemType<EssenceOfTheTimeless>(),
 
 
 		};
@@ -395,6 +398,7 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfMimicry>(),
 			ModContent.ItemType<EssenceOfTheAutomaton>(),
 			ModContent.ItemType<EssenceOfNature>(),
+			ModContent.ItemType<EssenceOfTheTimeless>(),
 
 		};
 		public static bool disableAspectPenalty;

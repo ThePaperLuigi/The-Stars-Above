@@ -23,7 +23,7 @@ namespace StarsAbove.Items
                 "\n[c/AF32CF:Timeless Potential] causes non-critical strikes to have a 30% chance to become critical and additionally grants a 10% chance to dodge attacks when active" +
                 "\nAdditionally, if you would die due to taking lethal damage, [c/AF32CF:Timeless Potential] will be consumed, resurrecting you with 50 HP and 2 seconds of Invincibility" +
                 "\nIf [c/AF32CF:Timeless Potential] is used to resurrect you, [c/AF32CF:Timeless Potential] will have a 2 minute cooldown until it can be obtained again" +
-				"\n[c/A75BD9:Timeless Blades] fill the [c/4A91FF:Timeless Gauge] by 2% upon striking a foe (Halved when [c/4A91FF:Timeless Gauge] is above 50%" +
+				"\n[c/A75BD9:Timeless Blades] fill the [c/4A91FF:Timeless Gauge] by 2% upon striking a foe (Halved when [c/4A91FF:Timeless Gauge] is above 50%)" +
 				"\n[c/A75BD9:Timeless Blades] will pierce foes up to 3 times and have no damage falloff" +
 				"\nRight click to consume half of the [c/4A91FF:Timeless Gauge] to unleash an enhanced [c/A75BD9:Timeless Blade] that does not fill the [c/4A91FF:Timeless Gauge]" +
 				"\nEnhanced [c/A75BD9:Timeless Blades] are faster, can pierce up to 5 times, and deal 30% increased damage" +
@@ -175,6 +175,8 @@ namespace StarsAbove.Items
 			}
 			else
             {
+				Projectile.NewProjectile(source, player.Center.X, player.Center.Y, 0, 0, ProjectileType<UmbraSlashSlow>(), damage, knockback, player.whoAmI, 0f);
+
 				Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileType<EnhancedUmbraSwordShoot>(), (int)(damage * 1.3), knockback, player.whoAmI, 0f);
 
 			}
@@ -184,7 +186,15 @@ namespace StarsAbove.Items
 
 		public override void AddRecipes()
 		{
-			
+			CreateRecipe(1)
+				.AddIngredient(ItemType<EssenceOfTheTimeless>(), 1)
+				.AddIngredient(ItemID.Cardinal, 1)
+				.AddIngredient(ItemID.HallowedBar, 15)
+				.AddIngredient(ItemID.SoulofFlight, 30)
+				.AddIngredient(ItemID.LargeAmethyst, 1)
+				.AddIngredient(ItemID.GoldWatch, 1)
+				.AddTile(TileID.Anvils)
+				.Register();
 		}
 	}
 }

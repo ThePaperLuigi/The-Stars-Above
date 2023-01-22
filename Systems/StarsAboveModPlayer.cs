@@ -786,6 +786,7 @@ namespace StarsAbove
         public int SoulWeaponDialogue = 0;
         public int GoldWeaponDialogue = 0;
         public int FarewellWeaponDialogue = 0;
+        public int UmbraWeaponDialogue = 0;
 
         //Subworld dialogues
         public int observatoryDialogue = 0;
@@ -1425,6 +1426,7 @@ namespace StarsAbove
             tag["SoulWeaponDialogue"] = SoulWeaponDialogue;
             tag["GoldWeaponDialogue"] = GoldWeaponDialogue;
             tag["FarewellWeaponDialogue"] = FarewellWeaponDialogue;
+            tag["UmbraWeaponDialogue"] = UmbraWeaponDialogue;
 
 
             tag["observatoryDialogue"] = observatoryDialogue;
@@ -1703,6 +1705,7 @@ namespace StarsAbove
             SoulWeaponDialogue = tag.GetInt("SoulWeaponDialogue");
             GoldWeaponDialogue = tag.GetInt("GoldWeaponDialogue");
             FarewellWeaponDialogue = tag.GetInt("FarewellWeaponDialogue");
+            UmbraWeaponDialogue = tag.GetInt("UmbraWeaponDialogue");
 
 
             observatoryDialogue = tag.GetInt("observatoryDialogue");
@@ -6292,6 +6295,13 @@ namespace StarsAbove
                         155,
                         "Defeat Lunatic Cultist, then wait.")); //Corresponding dialogue ID.
                     WeaponArchiveList.Add(new WeaponArchiveListing(
+                        "Lunatic Cultist Weapon", //Name of the archive listing.
+                        $"Grants the Essence for " +
+                        $"[i:{ItemType<Spatial>()}] Umbra. ", //Description of the listing.
+                        UmbraWeaponDialogue == 2, //Unlock requirements.
+                        161,
+                        "Defeat Lunatic Cultist, then wait.")); //Corresponding dialogue ID.
+                    WeaponArchiveList.Add(new WeaponArchiveListing(
                           "Moon Lord Weapon", //Name of the archive listing.
                           $"Grants the Essence for either " +
                           $"[i:{ItemType<Astral>()}] Suistrume " +
@@ -8409,6 +8419,16 @@ namespace StarsAbove
                             return;
 
                         }
+                        if (CatalystWeaponDialogue == 2 && UmbraWeaponDialogue == 0)
+                        {
+                            UmbraWeaponDialogue = 1;
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                            NewDiskDialogue = true;
+                            WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                            return;
+
+                        }
                         if (GolemWeaponDialogue == 2 && SilenceWeaponDialogue == 0)
                         {
                             SilenceWeaponDialogue = 1;
@@ -10037,7 +10057,9 @@ namespace StarsAbove
                 {
                     Player.AddBuff(BuffType<Buffs.AmmoRecycle>(), 30);
                     ammoRecycleCooldown = 120;
-                    Player.statMana += 8;
+                    Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                    CombatText.NewText(textPos, new Color(81, 62, 247, 240), $"{12 + (int)(npc.lifeMax * 0.05)}", false, false);
+                    Player.statMana += 12 + (int)(npc.lifeMax * 0.05);
                 }
 
             }
