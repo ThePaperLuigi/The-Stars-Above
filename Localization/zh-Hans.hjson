@@ -2356,8 +2356,8 @@
 						{
 							Dialogue:
 							{
-								0: I'm curious about the potency of Magic on your homeworld. I've heard of a mystical book that conjures water from thin air...
-								1: Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble.
+								0: 我很好奇你们母星上魔法的力量。听说有一本魔法书能从稀薄的空气中变出水来。
+								1: 你能帮我找来一本吗？很抱歉给你们带来麻烦。
 							}
 							Choices:
 							{
@@ -2369,8 +2369,8 @@
 						{
 							Dialogue:
 							{
-								0: A strange implement has come to my attention; an instrument meant for saying farewell to the deceased. I'm curious on how it functions.
-								1: Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble.
+								0: 我注意到一件奇怪的工具；一把用来送别死者的乐器。我很好奇它的构造。
+								1: 你能帮我找来一件吗？很抱歉给你们带来麻烦。
 							}
 							Choices:
 							{
@@ -2382,8 +2382,8 @@
 						{
 							Dialogue:
 							{
-								0: If it isn't too drastic of a request, I would love to see one of those golden butterflies. How do they sustain flight as solid gold..?
-								1: Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble.
+								0: 如果这个要求不算太过分的话，我希望能亲眼看看那些金蝴蝶。那些纯金生物是怎么飞起来的？
+								1: 你能帮我找来一只吗？很抱歉给你们带来麻烦。
 							}
 							Choices:
 							{
@@ -2395,8 +2395,8 @@
 						{
 							Dialogue:
 							{
-								0: I would be very grateful if you were to show me a 'flying carpet.' I have my obvious doubts on the efficiency of such a movement tool.
-								1: Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble.
+								0: 如果你们能带给我一张“飞毯”，我将不胜感激。我对它的移动效率表示明显的怀疑。
+								1: 你能帮我找来一张吗？很抱歉给你们带来麻烦。
 							}
 							Choices:
 							{
@@ -2408,8 +2408,8 @@
 						{
 							Dialogue:
 							{
-								0: I have caught wind of quite the unique specimen: a magical trinket that allows for temporary lava immunity...
-								1: Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble.
+								0: 我听说了一件神奇的饰品：一个能提供暂时熔岩免疫的护身符……
+								1: 你能帮我找来一个吗？很抱歉给你们带来麻烦。
 							}
 							Choices:
 							{
@@ -2421,8 +2421,8 @@
 						{
 							Dialogue:
 							{
-								0: If you have an accessory that can track nearby rare foes, I would be quite interested in taking a 'peek' as they say.
-								1: Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble.
+								0: 如果你有一件能追踪周围稀有生物的饰品，我会很乐意看看它的。
+								1: 你能帮我找来一个吗？很抱歉给你们带来麻烦。
 							}
 							Choices:
 							{
@@ -2434,8 +2434,8 @@
 						{
 							Dialogue:
 							{
-								0: I wished to add an implement to my toolbox, but I seem to have little experience with crafting magnification tools. Would you be able to find a lens that can see wiring?
-								1: Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble.
+								0: 我希望能向工具箱里再添加一件工具，但我对如何制作显微器具所知甚浅。你能帮我找来一片用于观察电路的棱镜吗？
+								1: 你能帮我找来一件吗？很抱歉给你们带来麻烦。
 							}
 							Choices:
 							{
@@ -2447,8 +2447,8 @@
 						{
 							Dialogue:
 							{
-								0: There's a rare bloom located in a Jungle-type environment that apparently causes mana to flow better.
-								1: Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble.
+								0: 丛林中有一种罕见的花，显然它能使魔力流动更加顺畅。
+								1: 你能帮我找来一朵吗？很抱歉给你们带来麻烦。
 							}
 							Choices:
 							{
@@ -2460,8 +2460,8 @@
 						{
 							Dialogue:
 							{
-								0: From my hypothesis, there's a type of slime that can apparently negate the effects of poison when equipped.
-								1: Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble.
+								0: 据我假设，有一种粘液在装备时能显著抵抗毒素的影响。
+								1: 你能帮我找来一个吗？很抱歉给你们带来麻烦。
 							}
 							Choices:
 							{
@@ -2473,8 +2473,8 @@
 						{
 							Dialogue:
 							{
-								0: Some planets seem to have liquid water fall from the sky, and there is apparently a tool that shields the user from this terrifying assault.
-								1: Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble.
+								0: 有些行星上似乎有水从天而降，显然有一种工具能抵御这种可怕的攻击。
+								1: 你能帮我找来一件吗？很抱歉给你们带来麻烦。
 							}
 							Choices:
 							{
@@ -2486,8 +2486,8 @@
 						{
 							Dialogue:
 							{
-								0: There's a strange object that, when placed on blocks, can 'deactivate' them, rendering them passable.
-								1: Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble.
+								0: 有一种奇怪的物体，当它们放置在其它方块上时，可以“虚化”它们来让方块变得可通过。
+								1: 你能帮我找来一个吗？很抱歉给你们带来麻烦。
 							}
 							Choices:
 							{
@@ -2499,8 +2499,8 @@
 						{
 							Dialogue:
 							{
-								0: Torches are quite the archaic implement, but there exists one that burns through an actual bone.
-								1: Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble.
+								0: 火把是一种非常古老的照明工具了，据说存在着一种由真正的骨头制成的火把。
+								1: 你能帮我找来一根吗？很抱歉给你们带来麻烦。
 							}
 							Choices:
 							{
