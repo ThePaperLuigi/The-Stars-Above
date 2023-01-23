@@ -1,7 +1,8 @@
 {
   Mods:
   {
-    StarsAbove: {
+    StarsAbove:
+    {
       SubworldName:
       {
         Observatory: Observatory Hyperborea
@@ -11,157 +12,157 @@
         Talk: Right click to talk!
         Yojimbo:
         {
-          1: I don't see why you'd need somethin' from ME, of all people, but...
-          Leaving: Yojimbo has left!
+          1: Non ho idea del perché tu stia parlando con me, ma...
+          Leaving: Yojimbo è svanito!
         }
         Garridine:
         {
-          1: You needn't have come all this way- a letter would have sufficed. Hmm, how would the letter arrive? I see.
+          1: Non c'era bisogno che venissi fin qui, una lettera sarebbe bastata. Credi che non sarebbe mai arrivata? Hmm, potresti avere ragione.
         }
       }
       CosmicVoyages:
       {
         Warnings:
         {
-          NoPortal: No nearby portal detected!
-          WeakStellaglyph: Your Stellaglyph is not powerful enough to attempt transit!
-          AnomalyCooldown: Anomaly voyages are currently on cooldown.
-          LunarEvents: Celestial energy prevents the Astrolabe from functioning- try defeating the invading creatures first!
-          MultiplayerCompatibility: Multiplayer compatibility mode enabled; spawning relevant items instead of attempting transit.
-          MultiplayerNoLoot: Multiplayer compatibility mode enabled; transit disabled at this time.
-          LootCooldown: Loot still on cooldown!
+          NoPortal: Nessun portale rilevato nelle vicinanze!
+          WeakStellaglyph: Il tuo Stellaglifo non è abbastanza potente per questo viaggio!
+          AnomalyCooldown: Non è passato abbastanza tempo dal tuo ultimo viaggio in un Anomalia.
+          LunarEvents: Grandi quantità di energia celestiale impediscono il funzionamento dell'Astrolabio- sconfiggi gli invasori!
+          MultiplayerCompatibility: Modalità compatibilità attivata; invece di trasportarti verranno spawnati gli oggetti chiave della destinazione selezionata.
+          MultiplayerNoLoot: Modalità compatibilità attivata; transito temporaneamente disattivato.
+          LootCooldown: Le ricompense si stanno ancora rigenerando!
         }
         MapText:
         {
-          Default: Select a location to visit.
-          NoStellaglyph: No Stellaglyph nearby; Travel to the Observatory Hyperborea by selecting it on the map.
+          Default: Scegli una destinazione.
+          NoStellaglyph: Nessuno Stellaglifo nei dintorni- puoi comunque spostarti all'Osservatorio Iperborea selezionandolo sulla mappa.
           Home:
           {
-            Name: Homeworld
-            Description: While well outside the habitable region due to the Ardor, this lucky outer planet was salvaged by a nearby supermassive star heating the region enough to harbor life.
-            Threat: Threat Level: N/A
-            Requirement: Stellaglyph not required for transit.
-            Loot: Resources: N/A
+            Name: Pianeta Natale
+            Description: Nonostante questo pianeta sia ben al di fuori della zona rimasta abitabile a causa dell'Ardore, è stato salvato da una stella supergigante che riscaldando a sufficienza l'area circostante lo ha reso abitabile.
+            Threat: Livello pericolo: N/A
+            Requirement: Stellaglifo non richiesto per il transito
+            Loot: Risorse disponibili: N/A
           }
           Observatory:
           {
-            Name: Observatory Hyperborea
-            Description: One of the many observatories dotting the Moirae Galaxy- and one your Starfarer calls home. Each Observatory is home to a magical conduit called a Celestriad Root.
-            Threat: Threat Level: N/A
-            Requirement: Stellaglyph not required for transit.
-            Loot: Resources: Celestriad Root (Crafting)
+            Name: Osservatorio Iperborea
+            Description: Uno dei tanti Osservatori che costellano la Galassia delle Moire- quello che la tua Viaggiatrice Stellare chiama casa. In ogni Osservatorio è presente un condotto magico chiamato Radice Celestiale.
+            Threat: Livello pericolo: N/A
+            Requirement: Stellaglifo non richiesto per il transito
+            Loot: Risorse disponibili: Radice Celestiale (Crafting)
           }
           BleachedPlanet:
           {
             Name: Caelum
-            Description: It is unknown what sapped this planet of life, but it exists now as a shell of its former self: a chalky white lonely world. Only a small portion of the surface is traversable: the rest crumbles at any touch.
-            Threat: Threat Level: C
-            Requirement: Tier II Stellaglyph required for transit.
-            Loot: Resources: Rare accessory components
+            Description: Nessuno sa cosa ha svuotato di vita questo pianeta, ora solo un'ombra di ciò che era: un mondo triste, bianco come un cencio. Solo una piccola parte della superficie rimane intatta quando la si attraversa: il resto si sbriciola al tatto.
+            Threat: Livello pericolo: C
+            Requirement: Stellaglifo al livello II necessario per il transito.
+            Loot: Risorse disponibili: Componenti Rari per Accessori
           }
           CrimsonPlanet:
           {
             Name: Scorpius
-            Description: A moon long abandoned by its home star covered in eerie Crimson. It is unknown whether this celestial body is related to the blood moon phenomenon at this time.
-            Threat: Threat Level: C+
-            Requirement: Tier II Stellaglyph required for transit.
-            Loot: Resources: Crimson enemy drops
+            Description: Una luna abbandonata da eoni, invasa fino al midollo dal Cremisi. Al momento non si sa se sia correlata al fenomeno della Luna di Sangue.
+            Threat: Livello pericolo: C+
+            Requirement: Stellaglifo al livello II necessario per il transito.
+            Loot: Risorse disponibili: Drop dai nemici del Cremisi
           }
           CygnusAsteroids:
           {
-            Name: Cygnus Asteroid Field
-            Description: A collection of marble asteroids, notable for their strange foreign ruins- possibly a clue to their original inhabitants, yet the passage has time has rendered archeology impossible.
-            Threat: Threat Level: D
-            Requirement: Tier I Stellaglyph required for transit.
-            Loot: Resources: Prismatic Cores
+            Name: Cintura Asteroidale Cygnus
+            Description: Un gruppo di asteroidi in marmo, conosciuti per le strane rovine contenute al loro interno- probabilmente un indizio a chi, in passato, li abitava. Il passare del tempo, tuttavia, ha reso impossibile qualsiasi scoperta archeologica.
+	    Threat: Livello pericolo: D
+            Requirement: Stellaglifo al livello I necessario per il transito.
+            Loot: Risorse disponibili: Nuclei Prismatici
           }
           CorruptedPlanet:
           {
             Name: Serpens
-            Description: A strange, foreign mass drifting in space. While it appears stable, evidence suggests the entire celestial body is one giant Corrupted organism, perhaps once a part of a leviathan-class entity.
-            Threat: Threat Level: C+
-            Requirement: Tier II Stellaglyph required for transit.
-            Loot: Resources: Corruption enemy drops
+            Description: Una strana massa fluttuante. Per quanto stabile appaia, alcune prove sembrano dimostrare che l'intera struttura sia in realtà un singolo gigantesco organismo Corrotto, un tempo parte di un'entità di classe Leviatano.
+	    Threat: Livello pericolo: C+
+            Requirement: Stellaglifo al livello II necessario per il transito.
+            Loot: Risorse disponibili: Drop dai nemici della Corruzione
           }
           GasGiant:
           {
             Name: Antlia
-            Description: A colossal gas giant with no surface. Even close proximity would mean instant death due to the overwhelming force of its gravity.
-            Threat: Threat Level: A-
-            Requirement: Transit impossible at this time.
-            Loot: Resources: ???
+            Description: Un gigante gassoso senza superficie. Anche solo esserci vicino sottoporrebbe il corpo umano a forze gravitazionali estreme, portando a morte istantanea.
+	    Threat: Livello pericolo: A-
+            Requirement: Transito al momento impossibile.
+            Loot: Risorse disponibili: ???
           }
           JunglePlanet:
           {
             Name: Tucana
-            Description: The selfsame supermassive star providing succor to your home planet has also graced this one- perhaps a bit too much. Below the lush overgrowth layer lies the cerulean undergrowth.
-            Threat: Threat Level: C
-            Requirement: Tier II Stellaglyph required for transit.
-            Loot: Resources: Jungle enemy drops
+            Description: La stessa supergigante che ha portato la vita sul tuo pianeta natale ha anche graziato questo; forse un po' troppo. Sotto al rigoglioso strato superficiale si è formata una distesa cerulea.
+	    Threat: Livello pericolo: C
+            Requirement: Stellaglifo al livello II necessario per il transito.
+            Loot: Risorse disponibili: Drop dai nemici nella Giungla
           }
           MiningStation:
           {
-            Name: Mining Station Aries
-            Description: A long-abandoned mining station positioned on the hollowed-out husk of a forgotten planet. Sights like this are common the further away you stray from the galaxy's center.
-            Threat: Threat Level: D+
-            Requirement: Tier I Stellaglyph required for transit.
-            Loot: Resources: Prismatic Cores
+            Name: Stazione Mineraria Aries
+            Description: Una stazione mineraria abbandonata da tempo, posizionata sulla superficie di un pianeta ormai dimenticato. Allontanandosi dal centro della galassia è sempre più comune trovare relitti simili.
+	    Threat: Livello pericolo: D+
+            Requirement: Stellaglifo al livello I necessario per il transito.
+            Loot: Risorse disponibili: Nuclei Prismatici
           }
           WaterPlanet:
           {
             Name: Aquarius
-            Description: An ocean planet convered entirely in water. While it does not sustain intelligent life, the geothermal conduction beneath the waves means some life can still persist, even deep within the Ardor.
-            Threat: Threat Level: C-
-            Requirement: Transit impossible at this time.
-            Loot: Resources: ???
+            Description: Un pianeta oceanico interamente sommerso. Per quanto non vi sia traccia di vita intelligente, in profondità la conduzione geotermica fa sì che non tutta la fauna locale vada estinta, nonostante la distanza dalla fonte di calore più vicina.
+	    Threat: Livello pericolo: C-
+            Requirement: Transito al momento impossibile.
+            Loot: Risorse disponibili: ???
           }
           AlienPlanet:
           {
             Name: Lyra
-            Description: A strange planet known as Anomaly Iota. It is recorded emitting strange, powerful vibrations periodically akin to a beating heart. Exploration is limited due to a highly acidic surface.
-            Threat: Threat Level: B++ Anomaly
-            Requirement: Tier III Stellaglyph required for transit.
-            Loot: Resources: Prismatic Cores
+            Description: Uno strano pianeta conosciuto come Anomalia Iota. Emette regolari vibrazioni, simili al battito di un cuore. L'esplorazione non è resa facile, a causa di una superficie estremamente acida.
+	    Threat: Livello pericolo: B++ Anomalia
+            Requirement: Stellaglifo al livello III necessario per il transito.
+            Loot: Risorse disponibili: Nuclei Prismatici
           }
           Pyxis:
           {
             Name: Pyxis
-            Description: A tiny mana-concentrated region of space. Closer inspection reveals what seems to be a man-made structure, both rudimentary and stunningly innovative.
-            Threat: Threat Level: N/A
-            Requirement: Tier II Stellaglyph required for transit.
-            Loot: Resources: ???
+            Description: In questa minuscola area è presente una densa concentrazione di mana. Osservando più da vicino, si tratta di una struttura artificiale, allo stesso tempo rudimentaria e innovativa.
+	    Threat: Livello pericolo: N/A
+            Requirement: Stellaglifo al livello II necessario per il transito.
+            Loot: Risorse disponibili: ???
           }
           Corvus:
           {
             Name: Corvus
-            Description: Deep within the Ardor, dwindling resources led to this ruined, war-torn ashen planet. A grim reminder that while war could kill you, the cold will. While its citizens are long gone, lawless raiders roam the ruins.
-            Threat: Threat Level: B
-            Requirement: Tier II Stellaglyph required for transit.
-            Loot: Resources: Unique upgrade materials
+            Description: Nascosto nelle profondità dell'Ardore, lo scarseggiare di risorse ha portato all'autodistruzione quasi totale di questo pianeta. Un funesto metodo di ricordarti che anche se non fosse la guerra ad ucciderti, sarà il freddo. I suoi abitanti sono spariti da un pezzo, ma le rovine sono invase da feroci banditi.
+	    Threat: Livello pericolo: B
+            Requirement: Stellaglifo al livello II necessario per il transito.
+            Loot: Risorse disponibili: Materiali unici
           }
           Sagitta:
           {
             Name: Sagitta
-            Description: A picturesque planet, with a pleasant atmosphere and awe-inspiring giant rock formations. However, the lack of water leaves this planet devoid of anything but long-petrified foliage.
-            Threat: Threat Level: D
-            Requirement: Transit impossible at this time.
-            Loot: Resources: None
+            Description: Un pianeta pittoresco, con un'atmosfera piacevole e immense formazioni rocciose da lasciare a bocca aperta. Purtroppo la completa mancanza di acqua rende la vita impossibile, e tutto ciò che resta della flora locale sono arbusti pietrificati.
+	    Threat: Livello pericolo: D
+            Requirement: Transito al momento impossibile.
+            Loot: Risorse disponibili: Nessuna
           }
           BlackHole:
           {
-            Name: Moirae's Heart
-            Description: The supermassive black hole that binds the galaxy together. The accretion disk surrounding the black hole is paradoxically the reason that civilization has flocked inwards: the desire for light's warmth.
-            Threat: Threat Level: EX
-            Requirement: Transit impossible at this time.
-            Loot: Resources: N/A
+            Name: Cuore delle Moire
+            Description: Il buco nero supergigante che tiene insieme la galassia. Paradossalmente, il disco di accrescimento che circonda il buco nero è il motivo per cui la civiltà si sta spostando verso il centro: in cerca del calore che la luce può offrire.
+	    Threat: Livello pericolo: EX
+	    Requirement: Transito al momento impossibile.
+            Loot: Risorse disponibili: N/A
           }
           QuestionMark:
           {
             Name: " "
-            Description: The Stellaglyph can't take you past this point yet... (Content will be added at a later date!)
-            Threat: N/A
+            Description: Lo Stellaglifo non può ancora portarti oltre questo punto... (Altro contenuto verrà aggiunto in un futuro prossimo!)
+            Threat: Livello pericolo: N/A
             Requirement: N/A
-            Loot: N/A
+            Loot: Risorse disponibili: N/A
           }
         }
       }
@@ -334,7 +335,7 @@
           CyclicHunter:
           {
             Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Cyclic Hunter']"
-            Description: After defeating an enemy, gain 8 mana, 10% increased damage, and 50% increased Movement Speed for half a second. 2 second cooldown.
+            Description: After defeating an enemy, gain 10% increased damage, and 50% increased Movement Speed for half a second. Additionally, gain Mana based on 5% of the foe's Max HP + 12. 2 second cooldown.
             Unlock: "[c/9D9D9D:Locked:] Defeat the Slime King in Expert Mode"
           }
           LivingDead:
@@ -460,6 +461,7 @@
             77: I've acquired a new Essence for your use. It seems to borrow strength from Melee and Magic both- a versatile weapon, I like it!
             78: Looks like this Graveyard seems to have some connection to this Essence. Hopefully all these graves weren't just from you dying, right?
             79: Hmm... this Summon-type Essence will create some sort of controllable drone- I wonder if it can talk?
+	    80: This is certainly a Melee weapon- furthermore, it seems to be one that excels at a distance, as well as providing extra firepower in close combat. Nice.
           }
           Eridani:
           {
@@ -545,6 +547,7 @@
             80: This Graveyard seems to have connected to this Essence. I hope it'll help you avoid creating the Graveyard in the first place.
             81: While powerful, I believe it's a utility item, and not a weapon this time.
             82: This Magic Essence, while aspected to nature, seems rather volatile. Perhaps you'd be able to better use it in tandem with other weapons?
+	    83: This Melee weapon harnesses an aspect of time itself to help you in combat. It seems to have some impressive range, as well.
           }
           Perseus:
           {
@@ -739,6 +742,7 @@
               1: You've done it! Golem is no more. You're unstoppable.
               2: Something about our next enemy feels.. dangerous. It seems spatial energy has congregated around the Dungeon's entrance.
               3: Another upgrade is now available in the Stellar Array. Looks pretty strong.
+	      4: Well, that's about everything.
             }
             Eridani:
             {
@@ -2802,6 +2806,8 @@
       {
         StellarNovaHeader: "[c/EE9DE0:Stellar Nova Settings]"
         PopUpDialogueHeader: "[c/C076DF:Pop-up Dialogue Settings]"
+	DialogueHeader: "[c/75C792:Disk Dialogue Settings]"
+	MiscHeader: "[c/7A76FF:Miscellaneous Settings]"
 
         DisableStellarNovaCutIns:
         {
@@ -2925,8 +2931,8 @@
         }
       }
       Common: {
-			  DiskReady: Il Disco Spaziale entra in risonanza. Click sinistro per interagire.
-			  ArrayAbility: La Matrice Stellare ha ottenuto una nuova abilità!
+	DiskReady: Il Disco Spaziale entra in risonanza. Click sinistro per interagire.
+	ArrayAbility: La Matrice Stellare ha ottenuto una nuova abilità!
         AstralLocked: The weapon fails to react to your Aspect, rendering it unusable. You can only use Astral weapons with Asphodene.
         UmbralLocked: The weapon fails to react to your Aspect, rendering it unusable. You can only use Umbral weapons with Eridani.
       }
