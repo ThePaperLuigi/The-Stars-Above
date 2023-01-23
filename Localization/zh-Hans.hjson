@@ -1339,10 +1339,10 @@
 						}
 						Eridani:
 						{
-							1: 用天体新星挺累人的。
-							2: 有很多关于英雄从他人那里借用力量的故事，但他们从未告诉你另一方有多难……
-							3: 觉得我失去了一些重要的东西。
-							4: 这让我很困扰，但是……看起来我们现在无法解决这个问题。
+							1: 使用天体新星真的挺累人的。
+							2: 有很多关于英雄从他人那里借用力量的故事，但他们从未告诉你另一方有多累……
+							3: 我觉得自己好像失去了一些重要的东西。
+							4: 这让我很困扰，但是……看起来我们还没法无法解决这个问题。
 						}
 					}
 					HardIdleDialogue3:
@@ -1365,90 +1365,90 @@
 						}
 						Eridani:
 						{
-							1: 你的盔甲合格了吗？看来你很明智，嗯……还可以。
-							2: 呃，我先说好了，要是你对我的穿着指指点点的话……
-							3: 我就哭给你看。
-							4: 什么？我说真的。
+							1: 你的盔甲达标了吗？\n看起来，它……大概通过检验了。
+							2: 呃，我先说好了，要是你对我的装束指指点点的话……
+							3: 我很可能会哭出来。
+							4: 怎么了？这是真心话。
 						}
 					}
 					HardIdleDialogue5:
 					{
 						Asphodene:
 						{
-							1: 等一切都结束之后，要不要考虑加入我们？想想我们一起度过的那些美好时光。
-							2: 呃呃，好吧。大部分都是战斗的事情。
+							1: 在所有这些事情结束后，\n你有没有想过加入我？\n想想我们已经经历的那么多美好时光！
+							2: 呃，确实，它们中的大部分\n都只是和其它东西战斗。
 							3: 但是——嘿！那也挺有趣的，不是吗？
 						}
 						Eridani:
 						{
-							1: 在未来我会需要你的帮助的……你不会介意和我一起吧？
-							2: ……或许我们该回到正题了。我们还有很长的路要走。
+							1: 在将来的日子里，我也需要你的帮助……\n你应该不会介意加入我吧？对吧？
+							2: ……也许我们应该之后再谈这个。\n我们仍然有很长的路要走。
 						}
 					}
 					HardIdleDialogue6:
 					{
 						Asphodene:
 						{
-							1: 你变得越来越强大了！你觉得你能打赢我吗？
-							2: 那不过是个玩笑，你或许……可以吧。
+							1: 你正在变得越来越强！\n你认为你能在战斗中打败我吗？
+							2: 开个玩笑。\n你可能真的行。
 						}
 						Eridani:
 						{
-							1: 你变的越来越强大了，不是吗？我得努力追上你才行。
-							2: 不管是不是这样，理论上来说，我也有可能赢过你。你不觉得吗？
-							3: 不过还是打消你那些有趣的念头吧。我们是一伙的，不是吗？
-							4: （我想知道他们有没有发现我在虚张声势……）
+							1: 你正在变得越来越强啦。\n我需要更努力，这样才能跟上你。
+							2: 或者不需要。理论上来说，\n如果我们两个打一架，\n我大概会赢。不是吗？
+							3: 不过别动什么歪脑筋。\n我们命中注定属于同一阵线。
+							4: （我很好奇他有没有被\n我的虚张声势吓到……）
 						}
 					}
 					HardIdleDialogue7:
 					{
 						Asphodene:
 						{
-							1: 很难想象这些怪物是从哪里来的。
-							2: 或许这是某些法师吃了毒蘑菇后找乐子的产物，不是吗？或者说它们来自某个通向原始维度的传送门？
+							1: 我很难想象某些怪物\n是从哪里来的。
+							2: 是某些地方的某个巫妖\n吃了些坏蘑菇然后就进城啦？\n或者是来自某个原始汤羹维度的传送门？
 						}
 						Eridani:
 						{
-							1: 创造出这些家伙的人一定不缺乏想象力……
+							1: 无论是谁，想出这种敌人的人\n肯定不缺乏想象力……
 						}
 					}
 					HardIdleDialogue8:
 					{
 						Asphodene:
 						{
-							1: 实际上……神圣之地不过是个巧妙的伪装。
-							2: 这样一个美丽的生物群系真 的 很 想 杀 掉 你。
+							1: 确实……神圣之地只是表象而已。
+							2: 这环境多么美丽，\n但它却 真 的 很 想把你杀了。
 						}
 						Eridani:
 						{
-							1: 剥开神圣之地的伪装，它甚至比地下世界更加严酷。
-							2: 如果你打算去刷光明之魂，请务必保证自身的安全。即使准备充足也可能被打个措手不及。
+							1: 如果揭开神圣之地的虚伪表象的话，你会发现它可能比地狱本身更加残酷。
+							2: 如果你将要去获取灵魂的话，记得注意安全。就算是最强的人也可能会被打个措手不及。
 						}
 					}
 					HardIdleDialogue9:
 					{
 						Asphodene:
 						{
-							1: 我们已经走了很长一段路了……你不觉得吗？
-							2: 但这并不意味着我们应该停下来！
+							1: 我们已经走过了一段漫长的路程……\n不是吗？
+							2: 但我们仍然有很多\n事情要去完成。
 						}
 						Eridani:
 						{
-							1: 回顾一下这段旅程……我们已经走了很远了。
-							2: 前方的道路还在不断延伸，所以说，不要停下来啊！
+							1: 回望我们的征程……\n我们已经行走甚远。
+							2: 但这不意味着我们可以在此止步了！
 						}
 					}
 					LightIdleDialogue:
 					{
 						Asphodene:
 						{
-							1: 这无尽的光芒令人恐惧……一定有什么方法停止它。
-							2: 珀尔修斯让我们使用“先祖之愿”，也许这就是关键所在？
+							1: 这无尽的光辉太糟糕了……\n肯定有某种方法能结束这一切。
+							2: 珀尔修斯让我们使用“先祖之愿”。或许，\n它就是关键？
 						}
 						Eridani:
 						{
-							1: 这永恒的光芒令人战栗……
-							2: 珀尔修斯给了我们“先祖之愿”。我有预感那就是解决问题的关键所在。
+							1: 这永恒的光辉令人恐惧……
+							2: 珀尔修斯给了我们“先祖之愿”。我感觉，\n它是解开这一谜团的钥匙。
 						}
 					}
 				}
@@ -1549,7 +1549,7 @@
 						91: 这就是世间所有史莱姆的源头。不要草率，我敢肯定那些史莱姆被击中后会分裂！
 						92: 我觉得它有点不太对劲，但我说不上来。当心别被冻住了……我想你应该已经知道了。
 						93: 嘿，是荒漠灾虫——但是没那么干燥！我们之前见过一只，这只又能有多糟糕呢？
-						94: It's a giant sea serpent! Hang on... This thing is SERIOUSLY dangerous!
+						94: 一条巨型海蛇！当心……这家伙很危险！
 						95: 火焰孕育出了这只恶魔般的元素之灵！当心脚下，别掉进熔岩里了！
 						96: 它是毁灭的征兆……你知道它会带来多大的破坏。别输了……！
 						97: ……又是阿娜希塔。你打算挑战利维坦吗？
@@ -1744,7 +1744,7 @@
 						90: 一头血肉巨兽接近了……！当心那个瘤囊！
 						91: 这名敌人散发出神秘的凛冽气息。离它远点，那些冰锥可不是摆设。
 						92: 荒漠灾虫又回来了……我认得它——这是它曾经的样子。
-						93: A colossal serpent makes its way towards us.. It may overwhelm you.. don't get reckless.
+						93: 一条巨大的海蛇朝我们游过来了……当心……他可能会吞掉你……
 						94: 焦炭玩偶召唤出了这只炽热的元素之灵……它可以四处传送——可别追丢了。
 						95: 灾厄……一个值得尊重的名字。我们已经见证了她的力量。此战，有胜无败。
 						96: 又是阿娜希塔的歌声。你想再次挑战她吗？
@@ -1829,7 +1829,7 @@
 						175: 我们到了。这颗星球看上去黯淡无色？不知为何，它的表面似乎被抹去了。
 						176: 她一直在这里……？嗯……我随时做好准备。使用区域中央的追忆印记吧。
 						177: 看起来我们还没办法探索这里……也许下次吧。
-						178: 一位昭示灾难的存在现身了。It wields destruction in all its appendages!
+						178: 一位昭示灾难的存在现身了。它那些附肢操纵着毁灭之力！
 						179: 这只庞然巨物汇聚了世界上的邪恶力量！杀死其中一只史莱姆会增强另一只！
 						180: 看起来这片生物群系被植物覆盖着——要我说，这比丛林更有品味。让我们四处看看吧。
 						181: 看上去那只史莱姆已经受够你了——它似乎彻底改变了自己的战斗风格。
@@ -1842,7 +1842,7 @@
 						189: 看上去是座古老的采矿基地。从外观上看来，它在Ardor扎根于此前就被遗弃了。遗憾的是，没有任何剩下的矿石。
 						190: 真是个奇怪的世界——周围的魔力似乎完全干涸了，只剩下一片苍白——多么独特的现象。
 						191: 看起来你正身处地下——如果你能回到地面的话，周围的环境会和母星更相似一些。这里的生物看起来都很眼熟——真是奇怪。
-						192: The Corruption is a known entity in the universe, but this place is different- it feels as if something larger was Corrupted into this object. Stay alert.
+						192:  腐化之地已经被世人所熟知，但这地方不同——似乎有什么更大的东西在其中腐败……保持警惕。
 						193: 深红色的月亮……等你收集好需要的东西后，我们应该尽快离开。
 						194: 这里似乎已经被Ardor完全颠覆了……多么可怕的命运。
 						195: 我从来没想过能看到一座木制的空间站……等等，有人住在这儿吗？
@@ -1943,7 +1943,7 @@
 								1: 事实上，我早该知道的。我的姐妹绝不会做出草率的决定。
 								2: 哈？你叫我姐妹？没门……
 								3: 抱歉，爱丝福德妮。这应该会有所帮助。你想起来了吗？
-								4: 拜托，我们不该像这样会面的。这太冒失了……！
+								4: 拜托，我们不该像这样会面的。这太突然了……！
 								5: 听我解释，星之传承者。在这个星系的大千世界中，存在着以帮助那里的居民为己任的星海旅者。你应该知道我们都做些什么。
 								6: 身为能量的集合体，星海旅者们会选择各自的星之传承者作为使者。你应该清楚生物是最佳的魔力导体，而我们严格来说算不上生命体。
 								7: 然而，初代星海旅者所选之人有些……德不配位。那就是第一位星之传承者。据我所知，他们已经丧失了心智与道德。
@@ -1952,13 +1952,13 @@
 								10: 就目前的情况来看，你战胜他们的机会微乎其微。但爱丝福德妮不知道的是，所有星海旅者都有自己的底牌——天体新星。
 								11: 在你通过这场考验时，我已经将这种力量传承给她了。
 								12: 目前就这些了。我必须继续追踪初代星之传承者。祝你好运——我很快就会需要你的帮助。
-								13: 我知道他是个独行侠，但是……我希望我们能多些交流。保重，珀尔修斯。不过，我总感觉他有事瞒着我。只有我吗？
-								14: 无论如何，他说的很对。我确实感觉自己变强了——我的头发也在闪烁！这种力量对于我们前行来说再好不过了。
+								13: 我知道他有些孤僻，但是……我希望我们能多些交流。保重，珀尔修斯。不过，我总感觉他有事瞒着我？只是对我这样吗？
+								14: 无论如何，他说的很有道理。我确实感觉自己变强了——我的头发也在闪烁！这种力量对于我们前行来说再好不过啦。
 								15: 看上去我的天体新星叫做“虚无圣刃”。也许随着我们不断击败强大的敌人，还会有更多能力供我们使用。
 								16: 绑定天体新星之钥后，你就能通过空间光盘装备天体新星了，就像平时一样。
 								17: 你应该已经有一些棱镜核心了。凭借它们的力量，我想你可以通过锻造来升级天体新星。
 								18: 重要的是，你需要天体新星能量来投射星体。天体新星能量会在战斗中累积，当你脱战时则会快速减少。
-								19: 唔，最近发生了不少事情，但这也是我们向前迈进的一大步。请务必善用天体新星的力量，我们后会有期。
+								19: 好吧，刚刚发生了许多事情，但我们可是前进了一大步呢。记得好好利用天体新星！拜拜啦！"
 							}
 							Choices:
 							{
@@ -2036,7 +2036,7 @@
 								2: 也许我们看上去很像，但我们不是这片星空的原住民。我们只是后来者——嗯，挺难直接解释清楚的。
 								3: 让我们把宇宙假设成一个湖，好吗？好，就是这样。现在想象一下有人开始向湖里倒油——你不可能对此熟视无睹。
 								4: 希望这能解释清楚这里正在发生的事情。我们最终发现了一件事：
-								5: 这个星系——the Moirae星系——正在冻结。虽然这不会立即发生，但距离星系中心越远，情况就越发恶化。
+								5: 这个星系——命运星系——正在冻结。虽然这不会立即发生，但距离星系中心越远，情况就越发恶化。
 								6: 虽然这里远离星系中心，但你所在的星球格外宜居，这就是我们邂逅的原因
 								7: 天文台将这种灾难称为Ardor，于是我们就以此称呼它。
 							}
@@ -2067,7 +2067,7 @@
 							Dialogue:
 							{
 								0: 唔，我们也这么想，但星系中的大多数人似乎都倾向于向中心迁移，以逃离被冻结的命运。
-								1: 星海旅者能够从周围的魔力中提取精华，但在我们游历过的几个世界中，我只是了解到这个星系的名字：Moirae。
+								1: 星海旅者能够从周围的魔力中提取精华，但在我们游历过的几个世界中，我只是了解到这个星系的名字：命运。
 								2: 虽然这很重要，但是在采取任何行动之前，我们得变得更强才行。
 								3: 等你做出旅星符台，你就能通过通过Astrolabe探索宇宙了。
 								4: 如果你需要，我可以向你介绍一些基本流程。这说不上复杂，但你可能很快就会糊涂了。
@@ -2225,9 +2225,9 @@
 								3: 也许那里不是景色最优美的地方，却对当时的帝国至关重要。Ardor的爆发在他们眼中是件大事。
 								4: 第三区的前哨部队得不到补给，他们的使命就此终结。商船不再在此停靠，难民们纷纷向星系中央进发。
 								5: 随后，越来越多的星球难逃被冰封的命运。曾有一段时期，整只帝国舰队带着他们的智囊团启程，试图找到灾难的源头。
-								6: 我不想和某些大人物产生纠葛，所以我不便透露任何消息。你只要知道帝国舰队不会轻举妄动就行了。我甚至听说有wind of a Knight与他们同行。
-								7: 据我了解，他们发现魔力无法得到正常补充，这样下去，只有机械造物才能发挥作用——而帝国同时发展魔法与科技。
-								8: 这件事一直延续到现在。帝国的舰队离开了，带走了那些坚守在此的人。我的工作是跟着钱走，钱把我带进了这个烂摊子里。
+								6: 我不想和某些大人物产生纠葛，所以我不便透露任何消息。你只要知道帝国舰队不会轻举妄动就行了。我甚至听说风之骑士团与他们一同前去。
+								7: 据我了解，他们发现魔力无法得到正常补充，这样下去，只有机械造物才能发挥作用——而帝国同时发展着魔法与科技。
+								8: 这件事一直延续到现在。帝国的舰队离开了，带走了那些坚守在此的人。我的工作是跟着钱走，钱把我带进了这个烂摊子。
 								9: 我的报酬很丰厚，因为没人能胜任这个职位，但这里的猎物很难缠，又没有人来帮忙，所以我得小心行事。差不多就这些事了。
 							}
 							Choices:
@@ -2670,71 +2670,71 @@
 					{
 						Asphodene:
 						{
-							1: Now it's my turn!
-							2: I will take the place of entropy!
-							3: Come forth, blazing blade!
-							4: This is what you deserve.
-							5: Don't worry; I'll heal you.
-							6: The power of the cosmos!
-							7: I'm not about to stop here.
-							8: I'll reduce you to stardust!
-							9: Let's finish this!
-							10: Don't underestimate me.
+							1: 现在是我的回合！
+							2: 我将取代混乱！
+							3: 灼炎之刃，听我号令！
+							4: 这是你应得的！
+							5: 无须忧虑，我将治愈你的伤痛。
+							6: 寰宇之力！
+							7: 我不会止步于此！
+							8: 汝等即刻降作星尘！
+							9: 让我们了结这一切吧！
+							10: 不要小瞧我！
 						}
 						Eridani:
 						{
-							1: Time to finish this.
-							2: I am NOT losing to you.
-							3: I've been waiting for this.
-							4: You've made a fatal mistake.
-							5: Let's get the upper hand.
-							6: Our victory was never in question.
-							7: The time of parting has come.
-							8: Go back to where you belong.
-							9: I'm not about to stop here.
-							10: I won't lose. Not now, not ever.
+							1: 是时候做个了断了。
+							2: 我 不 会 输 给 你 ！
+							3: 这一刻我等了很久了！
+							4: 致命失误！
+							5: 让我们乘胜追击！
+							6: 毫无疑问，胜利属于我们！
+							7: 此即终结之日！
+							8: 哪里来的，滚回哪去！
+							9: 我们不会止步于此！
+							10: 我不会输的！此刻如此，此后亦然！
 						}
 					}
 					MiscInfo:
 					{
 						Confirm:
 						{
-							Asphodene: Finished modifying the Stellar Nova?
-							Eridani: Are you finished modifying the Stellar Nova..?
+							Asphodene: 你修改好天体新星了吗？
+							Eridani: 你修改好天体新星了吗……？
 						}
 						Reset:
 						{
-							Asphodene: Would you like to deselect the current Stellar Nova?
-							Eridani: We can reset the Stellar Nova, if you'd like.
+							Asphodene: 你想重置当前的天体新星吗？
+							Eridani: 如果你想的话，我们可以重置你所选的天体新星。
 						}
 					}
 					TheofaniaInanis:
 					{
 						Unlocked:
 						{
-							Asphodene: This is Theofania Inanis, a general use Stellar Nova that applies a powerful debuff.
-							Eridani: This is Theofania Inanis: a general Stellar Nova that can apply a powerful debuff.
+							Asphodene: 虚无圣刃，通用天体新星。它能施加一种强力减益。
+							Eridani: 虚无圣刃，通用天体新星。它能施加一种强力减益。
 						}
 					}
 					ArsLaevateinn:
 					{
 						Unlocked:
 						{
-							Asphodene: 魔剑·莱瓦汀. If you've ever wanted to clear an area fast, this is the Stellar Nova for that.
-							Eridani: This Stellar Nova, 魔剑·莱瓦汀, focuses on doing large amounts of damage in a specified area.
+							Asphodene: 魔剑·莱瓦汀。如果你想要快速地清理一片区域，这个天体新星就很适合。
+							Eridani: 这个天体新星，魔剑·莱瓦汀，擅长于在一片指定的区域中造成大量的伤害。
 						}
 						Locked:
 						{
-							Asphodene: We don't have access to this yet. I feel we must defeat a certain monarch to get this. But who...?
-							Eridani: We can't use this yet. Something tells me we must defeat a 'regal' enemy to obtain this.
+							Asphodene: 我们还不能使用这个。我感觉我们必须击败某位君主才能使用它。但是是谁呢……？
+							Eridani: 我们还不能使用这个。有什么告诉我我们必须击败一位拥有“王权”的敌人来获得它。但那会是谁呢……？
 						}
 					}
 					KiwamiRyuken:
 					{
 						Unlocked:
 						{
-							Asphodene: A powerful counter-attack, Kiwami Ryuken. Time it right, and your foes will be dropped instantly.
-							Eridani: A powerful counterattack: Kiwami Ryuken. You can deal enormous amounts of damage quickly if timed properly.
+							Asphodene: 霸龙灭世拳，强力的反击技能。施放时机准确的话，你的敌人将会被瞬间击倒
+							Eridani: 强力的反击技能：霸龙灭世拳。如果时机准确，你可以在瞬间造成巨大伤害。
 						}
 						Locked:
 						{
@@ -2746,26 +2746,26 @@
 					{
 						Unlocked:
 						{
-							Asphodene: An influential support Nova, the Garden of Avalon will grant powerful healing and invincibility.
-							Eridani: This Stellar Nova will grant powerful healing over time as well as a brief window of invincibility.
+							Asphodene: 阿瓦隆花园。这个天体新星会为友方提供强力的祝福，\n以及短暂的无敌效果。
+							Eridani: 阿瓦隆花园。这个天体新星会为友方提供强力的祝福，\n以及短暂的无敌效果。
 						}
 						Locked:
 						{
-							Asphodene: We don't have access to this yet. We need to defeat a strong enough magic user...
-							Eridani: We can't use this yet. We need to defeat a powerful magical entity.
+							Asphodene: 我们还不能使用这个。我们必须击败一名足够强大的魔法使……
+							Eridani: 我们还不能使用这个。我们必须击败一名强大的魔法使……
 						}
 					}
 					EdinGenesisQuasar:
 					{
 						Unlocked:
 						{
-							Asphodene: With this Stellar Nova, you can imbue your attacks directly, overwriting their stats as well as gaining a new burst attack.
-							Eridani: This Stellar Nova will allow you to change the stats of your weapons as well as gain a new special attack.
+							Asphodene: 有了这个天体新星，你就能直接增强你的武器，改变它们的属性并获得一个新的爆发攻击招式。
+							Eridani: 这个天体新星能改变你的武器的属性，同时获得一个新的特殊攻击。
 						}
 						Locked:
 						{
-							Asphodene: We don't have access to this yet. We have to defeat a foe with some sort of spatial power.
-							Eridani: We can't use this yet. We have to defeat a foe with spatial powers.
+							Asphodene: 我们还不能使用这个。我们需要击败一个具有空间能力的敌人。
+							Eridani: 我们还不能使用这个。我们需要击败一个具有空间能力的敌人。
 						}
 					}
 				}
