@@ -10,7 +10,6 @@ namespace StarsAbove
 		public static void SetupDialogueSystem(int chosenStarfarer, ref int chosenDialogue, ref bool dialoguePrep, ref int dialogueLeft, ref int expression, ref string dialogue, Player Player, Mod Mod)
 		{
            
-
             if (chosenDialogue == 1) // Introduction dialogue. Unused.
             {
                 if (chosenStarfarer == 1) // Asphodene
@@ -7547,6 +7546,55 @@ namespace StarsAbove
 
 
             }
+            if (chosenDialogue == 161) 
+            {
+                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheTimeless").Type);
+                        dialoguePrep = false;
+                    }
+
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.80", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+
+                }
+                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheTimeless").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.83", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+
+
+            }//Umbra
             #endregion
             //Boss item dialogues.
             if (chosenDialogue == 301) //Nalhaun item

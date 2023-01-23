@@ -50,6 +50,9 @@ namespace StarsAbove
 		private UserInterface _EmotionGaugeUserInterface;
 		internal EmotionGauge EmotionGauge;
 
+		private UserInterface _UmbraGaugeUserInterface;
+		internal UmbraGauge UmbraGauge;
+
 		private UserInterface _RadGaugeUserInterface;
 		internal RadGauge RadGauge;
 
@@ -196,6 +199,10 @@ namespace StarsAbove
 				EternalGauge = new EternalGauge();
 				_EternalGaugeUserInterface = new UserInterface();
 				_EternalGaugeUserInterface.SetState(EternalGauge);
+
+				UmbraGauge = new UmbraGauge();
+				_UmbraGaugeUserInterface = new UserInterface();
+				_UmbraGaugeUserInterface.SetState(UmbraGauge);
 
 				EmotionGauge = new EmotionGauge();
 				_EmotionGaugeUserInterface = new UserInterface();
@@ -376,6 +383,7 @@ namespace StarsAbove
 			_ButterflyResourceBarUserInterface?.Update(gameTime);
 			_VengeanceGaugeUserInterface?.Update(gameTime);
 			_EternalGaugeUserInterface?.Update(gameTime);
+			_UmbraGaugeUserInterface?.Update(gameTime);
 			_EmotionGaugeUserInterface?.Update(gameTime);
 
 			_BlackSilenceGaugeUserInterface?.Update(gameTime);
@@ -555,6 +563,15 @@ namespace StarsAbove
 					delegate
 					{
 						_EternalGaugeUserInterface.Draw(Main.spriteBatch, new GameTime());
+						return true;
+					},
+					InterfaceScaleType.UI)
+				);
+				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+					"StarsAbove: Umbra Gauge",
+					delegate
+					{
+						_UmbraGaugeUserInterface.Draw(Main.spriteBatch, new GameTime());
 						return true;
 					},
 					InterfaceScaleType.UI)
