@@ -54,6 +54,23 @@ namespace StarsAbove
 		[Tooltip("$Mods.StarsAbove.Config.StarfarerPromptCooldown.Tooltip")]
 		public int StarfarerPromptCooldown;
 
+		[Increment(5)]
+		[Range(0, 300)]
+		[DefaultValue(100)]
+		[Slider] // The Slider attribute makes this field be presented with a slider rather than a text input. The default ticks is 1.
+		[Label("$Mods.StarsAbove.Config.CommentaryTimer.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.CommentaryTimer.Tooltip")]
+		public int CommentaryTimer;
+
+		[DefaultValue(typeof(Vector2), "-1360, -510")]
+		[Range(-1920f, 0f)]
+		[Label("$Mods.StarsAbove.Config.PromptLoc.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.PromptLoc.Tooltip")]
+		public Vector2 PromptLoc { get; set; }
+
+
+		[Header("$Mods.StarsAbove.Config.DialogueHeader")]
+
 		[Increment(1)]
 		[Range(1, 5)]
 		[DefaultValue(2)]
@@ -76,35 +93,11 @@ namespace StarsAbove
 
 		[Label("$Mods.StarsAbove.Config.DisableDraggingDialogue.Label")]
 		[Tooltip("$Mods.StarsAbove.Config.DisableDraggingDialogue.Tooltip")]
+		[DefaultValue(true)]
 		public bool DisableDraggingDialogue;
 
-		//[Label("No locked camera in the final boss fight")]
-		//[Tooltip("Disables the locked camera in the final boss fight.")]
-		//public bool DisableLockedCamera;
 
-		[DefaultValue(typeof(Vector2), "-1360, -510")]
-		[Range(-1920f, 0f)]
-		[Label("$Mods.StarsAbove.Config.PromptLoc.Label")]
-		[Tooltip("$Mods.StarsAbove.Config.PromptLoc.Tooltip")]
-		public Vector2 PromptLoc { get; set; }
-
-		//[DefaultValue(typeof(Vector2), "-480, -1005")]
-		//[Range(-1920f, 0f)]
-		//[Label("Stellar Nova Gauge positiion")]
-		//[Tooltip("Position is measured from the bottom right of the screen! Sliders move much farther than you'd expect.")]
-		//public Vector2 NovaGaugeLoc { get; set; }
-
-		[Increment(5)]
-		[Range(0, 300)]
-		[DefaultValue(100)]
-		[Slider] // The Slider attribute makes this field be presented with a slider rather than a text input. The default ticks is 1.
-		[Label("$Mods.StarsAbove.Config.CommentaryTimer.Label")]
-		[Tooltip("$Mods.StarsAbove.Config.CommentaryTimer.Tooltip")]
-		public int CommentaryTimer;
-
-		/*[Label("Disable Suistrume audio")]
-		[Tooltip("Disables music change from Suistrume's buff.")]//Mute suistrume
-		public bool EnableSuistrumeAudio;*/
+		[Header("$Mods.StarsAbove.Config.MiscHeader")]
 
 		[Label("$Mods.StarsAbove.Config.EnableStarfarerVoices.Label")]
 		[Tooltip("$Mods.StarsAbove.Config.EnableStarfarerVoices.Tooltip")]
