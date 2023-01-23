@@ -5,11 +5,11 @@
     {
       SubworldName:
       {
-        Observatory: Observatory Hyperborea
+        Observatory: Osservatorio Iperborea
       }
       NPCDialogue:
       {
-        Talk: Right click to talk!
+        Talk: Click destro per parlare!
         Yojimbo:
         {
           1: Non ho idea del perché tu stia parlando con me, ma...
