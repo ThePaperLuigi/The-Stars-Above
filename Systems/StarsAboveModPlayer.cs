@@ -4144,7 +4144,7 @@ namespace StarsAbove
 
 
             }
-            if (Player.HasBuff(BuffType<AstarteDriver>()) && starfarerOutfit == 3)
+            if (Player.HasBuff(BuffType<AstarteDriver>()) && starfarerOutfit == 3 && projectile.type != ProjectileType<StarfarerFollowUp>())
             {
                 Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0f, 0f, ProjectileType<StarfarerFollowUp>(), damage / 3, knockback, Player.whoAmI);
 
@@ -10078,7 +10078,8 @@ namespace StarsAbove
             //
             if (starfarerOutfit == 3)//Celestial
             {
-                if (npc.CanBeChasedBy() && !npc.SpawnedFromStatue)
+                
+                if (!npc.SpawnedFromStatue)
                 {
                     if (Player.HasBuff(BuffType<AstarteDriver>()))
                     {
