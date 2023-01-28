@@ -200,47 +200,47 @@ namespace StarsAbove
                         {
                             ActivateQuest(new int[] { ItemID.WaterBolt });
                         }
-                        if (GarridineQuest == 2)
+                        else if (GarridineQuest == 2)
                         {
                             ActivateQuest(new int[] { ModContent.ItemType<AgnianFarewell>(), ModContent.ItemType<KevesiFarewell>() });
                         }
-                        if (GarridineQuest == 3)
+                        else if(GarridineQuest == 3)
                         {
                             ActivateQuest(new int[] { ItemID.GoldButterfly });
                         }
-                        if (GarridineQuest == 4)
+                        else if(GarridineQuest == 4)
                         {
                             ActivateQuest(new int[] { ItemID.FlyingCarpet });
                         }
-                        if (GarridineQuest == 5)
+                        else if (GarridineQuest == 5)
                         {
                             ActivateQuest(new int[] { ItemID.LavaCharm });
                         }
-                        if (GarridineQuest == 6)
+                        else if (GarridineQuest == 6)
                         {
                             ActivateQuest(new int[] { ItemID.LifeformAnalyzer });
                         }
-                        if (GarridineQuest == 7)
+                        else if (GarridineQuest == 7)
                         {
                             ActivateQuest(new int[] { ItemID.MechanicalLens });
                         }
-                        if (GarridineQuest == 8)
+                        else if (GarridineQuest == 8)
                         {
-                            ActivateQuest(new int[] { ItemID.ManaFlower });
+                            ActivateQuest(new int[] { ItemID.ManaFlower, ItemID.NaturesGift });
                         }
-                        if (GarridineQuest == 9)
+                        else if (GarridineQuest == 9)
                         {
                             ActivateQuest(new int[] { 887 });
                         }
-                        if (GarridineQuest == 10)
+                        else if (GarridineQuest == 10)
                         {
                             ActivateQuest(new int[] { ItemID.Umbrella, ItemID.TragicUmbrella, ItemID.UmbrellaHat });
                         }
-                        if (GarridineQuest == 11)
+                        else if (GarridineQuest == 11)
                         {
                             ActivateQuest(new int[] { ItemID.Actuator });
                         }
-                        if (GarridineQuest == 12)
+                        else if (GarridineQuest == 12)
                         {
                             ActivateQuest(new int[] { ItemID.BoneTorch });
                         }

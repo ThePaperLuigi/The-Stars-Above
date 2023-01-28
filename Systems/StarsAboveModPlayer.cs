@@ -527,6 +527,9 @@ namespace StarsAbove
         //Umbra
         public int UmbraGauge;
 
+        //Saltwater Scourge
+        public bool SaltwaterScourgeHeld;
+
         //
         public float gaugeChangeAlpha = 0f;
 
@@ -7725,11 +7728,11 @@ namespace StarsAbove
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
 
-                        NewStellarNova = true;
+                        //NewStellarNova = true;
                         if (Main.expertMode)
                         {
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
-                            NewStellarArrayAbility = true;
+                            //if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                            //NewStellarArrayAbility = true;
                         }
 
 
@@ -15537,6 +15540,8 @@ namespace StarsAbove
 
             KevesiFarewellInInventory = false;
             AgnianFarewellInInventory = false;
+
+            SaltwaterScourgeHeld = false;
 
             Observatory = false;
             SeaOfStars = false;
