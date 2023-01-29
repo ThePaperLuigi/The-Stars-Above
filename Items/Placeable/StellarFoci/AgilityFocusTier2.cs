@@ -24,7 +24,7 @@ namespace StarsAbove.Items.Placeable.StellarFoci
 			Tooltip.SetDefault("" +
 				"[c/FF1B8D:Stellar Foci]" +
 				"\nOnce placed near a Stellaglyph:" +
-				"\nIncreases damage dealt by 5% during a Cosmic Voyage" +
+				"\nIncreases movement speed by 5% during a Cosmic Voyage" +
 				"");
 			//
 			//
