@@ -790,6 +790,8 @@ namespace StarsAbove
         public int GoldWeaponDialogue = 0;
         public int FarewellWeaponDialogue = 0;
         public int UmbraWeaponDialogue = 0;
+        public int SaltwaterWeaponDialogue = 0;
+
 
         //Subworld dialogues
         public int observatoryDialogue = 0;
@@ -1430,6 +1432,7 @@ namespace StarsAbove
             tag["GoldWeaponDialogue"] = GoldWeaponDialogue;
             tag["FarewellWeaponDialogue"] = FarewellWeaponDialogue;
             tag["UmbraWeaponDialogue"] = UmbraWeaponDialogue;
+            tag["SaltwaterWeaponDialogue"] = SaltwaterWeaponDialogue;
 
 
             tag["observatoryDialogue"] = observatoryDialogue;
@@ -1709,6 +1712,7 @@ namespace StarsAbove
             GoldWeaponDialogue = tag.GetInt("GoldWeaponDialogue");
             FarewellWeaponDialogue = tag.GetInt("FarewellWeaponDialogue");
             UmbraWeaponDialogue = tag.GetInt("UmbraWeaponDialogue");
+            SaltwaterWeaponDialogue = tag.GetInt("SaltwaterWeaponDialogue");
 
 
             observatoryDialogue = tag.GetInt("observatoryDialogue");
@@ -6113,6 +6117,13 @@ namespace StarsAbove
                         158,
                         "Visit the Hallowed biome.")); //Corresponding dialogue ID.
                     WeaponArchiveList.Add(new WeaponArchiveListing(
+                        "Pirate Invasion Weapon", //Name of the archive listing.
+                        $"Grants the Essence for " +
+                        $"[i:{ItemType<Spatial>()}] Saltwater Scourge. ", //Description of the listing.
+                        SaltwaterWeaponDialogue == 2, //Unlock requirements.
+                        162,
+                        "Defeat a pirate invasion, then wait.")); //Corresponding dialogue ID.
+                    WeaponArchiveList.Add(new WeaponArchiveListing(
                           "Queen Slime Weapon", //Name of the archive listing.
                           $"Grants the Essence for either " +
                           $"[i:{ItemType<Astral>()}] Hunter's Symphony " +
@@ -8154,7 +8165,7 @@ namespace StarsAbove
                             return;
 
                         }
-                        if (SkeletonWeaponDialogue == 2 && OceanWeaponDialogue == 0 && seenBeachBiome)
+                        if (SkeletonWeaponDialogue == 2 && OceanWeaponDialogue == 0 && Player.ZoneBeach)
                         {
                             OceanWeaponDialogue = 1;
                             if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
@@ -8432,6 +8443,15 @@ namespace StarsAbove
                             return;
 
                         }
+                        if(SaltwaterWeaponDialogue == 0 && NPC.downedPirates)
+                        {
+                            SaltwaterWeaponDialogue = 1;
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                            NewDiskDialogue = true;
+                            WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                            return;
+                        }
                         if (GolemWeaponDialogue == 2 && SilenceWeaponDialogue == 0)
                         {
                             SilenceWeaponDialogue = 1;
@@ -8652,7 +8672,7 @@ namespace StarsAbove
                             keyofchronology = 1;
                         }
                     }
-                    if (DownedBossSystem.downedWarrior && DownedBossSystem.downedVagrant && DownedBossSystem.downedPenth && DownedBossSystem.downedNalhaun && DownedBossSystem.downedArbiter)
+                    if (DownedBossSystem.downedWarrior && DownedBossSystem.downedVagrant && DownedBossSystem.downedPenth && DownedBossSystem.downedNalhaun )
                     {
 
 
@@ -8664,7 +8684,7 @@ namespace StarsAbove
                         }
 
                     }
-                    if (DownedBossSystem.downedWarrior && DownedBossSystem.downedVagrant && DownedBossSystem.downedPenth && DownedBossSystem.downedNalhaun && DownedBossSystem.downedArbiter && Main.expertMode == true)
+                    if (DownedBossSystem.downedWarrior && DownedBossSystem.downedVagrant && DownedBossSystem.downedPenth && DownedBossSystem.downedNalhaun && Main.expertMode == true)
                     {
 
 
@@ -8695,7 +8715,7 @@ namespace StarsAbove
                         }
 
                     }
-                    if (NPC.downedBoss1 && NPC.downedSlimeKing && NPC.downedBoss2 && NPC.downedBoss3 && NPC.downedQueenBee && Main.hardMode && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && NPC.downedPlantBoss && NPC.downedGolemBoss && NPC.downedFishron && NPC.downedMoonlord && DownedBossSystem.downedWarrior && DownedBossSystem.downedVagrant && DownedBossSystem.downedPenth && DownedBossSystem.downedNalhaun && DownedBossSystem.downedArbiter)
+                    if (NPC.downedBoss1 && NPC.downedSlimeKing && NPC.downedBoss2 && NPC.downedBoss3 && NPC.downedQueenBee && Main.hardMode && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && NPC.downedPlantBoss && NPC.downedGolemBoss && NPC.downedFishron && NPC.downedMoonlord && DownedBossSystem.downedWarrior && DownedBossSystem.downedVagrant && DownedBossSystem.downedPenth && DownedBossSystem.downedNalhaun)
                     {
                         if (beyondtheboundary == 0)
                         {
