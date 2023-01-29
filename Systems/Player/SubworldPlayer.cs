@@ -428,6 +428,17 @@ namespace StarsAbove
                     Player.AddBuff(BuffType<ArdorInfluence>(), 10);
 
 
+                    if ((int)(Player.Center.Y / 16) < 830)
+                    {
+                        //Main.NewText(Language.GetTextValue($"{Player.Center.Y / 16}"), 255, 255, 247);
+
+                        Player.velocity = new Vector2(Player.velocity.X, 17);
+                    }
+                    else
+                    {
+                        //Main.NewText(Language.GetTextValue($"{Player.Center.Y / 16}"), 220, 100, 247);
+
+                    }
 
 
                 }
@@ -440,11 +451,16 @@ namespace StarsAbove
                     //Space gravity!
                     //Player.gravity -= 0.3f;
 
-                    if ((int)(Player.Center.Y / 16) < 100)
+                    if ((int)(Player.Center.Y / 16) < 320)
                     {
-                        //Player.AddBuff(BuffType<SpatialBurn>(), 120);
+                        //Main.NewText(Language.GetTextValue($"{Player.Center.Y / 16}"), 255, 255, 247);
 
-                        Player.velocity = new Vector2(Player.velocity.X, +17);
+                        Player.velocity = new Vector2(Player.velocity.X, 17);
+                    }
+                    else
+                    {
+                        //Main.NewText(Language.GetTextValue($"{Player.Center.Y / 16}"), 220, 100, 247);
+
                     }
 
                 }
@@ -457,7 +473,17 @@ namespace StarsAbove
                     //Space gravity!
                     Player.gravity -= 0.1f;
 
+                    if ((int)(Player.Center.Y / 16) < 570)
+                    {
+                        //Main.NewText(Language.GetTextValue($"{Player.Center.Y / 16}"), 255, 255, 247);
 
+                        Player.velocity = new Vector2(Player.velocity.X, 17);
+                    }
+                    else
+                    {
+                        //Main.NewText(Language.GetTextValue($"{Player.Center.Y / 16}"), 220, 100, 247);
+
+                    }
                 }
                 //Observatory.
                 if (SubworldSystem.IsActive<Observatory>())
