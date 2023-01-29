@@ -180,6 +180,7 @@ namespace StarsAbove
 			ModContent.ItemType<GoldenKatana>(),
 
 			ModContent.ItemType<Umbra>(),
+			ModContent.ItemType<SaltwaterScourge>(),
 
 
 			ModContent.ItemType<EssenceOfAdagium>(),
@@ -221,6 +222,7 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfGold>(),
 			ModContent.ItemType<EssenceOfMimicry>(),
 			ModContent.ItemType<EssenceOfTheTimeless>(),
+			ModContent.ItemType<EssenceOfPiracy>(),
 
 
 		};
@@ -399,6 +401,8 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfTheAutomaton>(),
 			ModContent.ItemType<EssenceOfNature>(),
 			ModContent.ItemType<EssenceOfTheTimeless>(),
+			ModContent.ItemType<EssenceOfPiracy>(),
+
 
 		};
 		public static bool disableAspectPenalty;
