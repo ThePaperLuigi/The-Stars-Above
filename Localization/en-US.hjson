@@ -12,11 +12,13 @@
         Talk: Right click to talk!
         Yojimbo:
         {
+          #These are pretty much debug lines just in case something breaks.
           1: I don't see why you'd need somethin' from ME, of all people, but...
           Leaving: Yojimbo has left!
         }
         Garridine:
         {
+          #These are pretty much debug lines just in case something breaks.
           1: You needn't have come all this way- a letter would have sufficed. Hmm, how would the letter arrive? I see.
         }
       }
@@ -293,7 +295,7 @@
           AstralMantle:
           {
             Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Astral Mantle']"
-            Description: 1/10th of current Mana is added to Defense. Gain 15 Stellar Nova Energy Regeneration above 200 Mana.
+            Description: 1/10th of current Mana is added to Defense (Max 5% of current Max HP.) Gain 15 Stellar Nova Energy Regeneration above 200 Mana.
             Unlock: "[c/9D9D9D:Locked:] Defeat all Mechanical bosses"
           }
           Afterburner:
