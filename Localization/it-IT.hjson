@@ -170,191 +170,191 @@
       {
         Misc:
         {
-          Confirm: Confirm your selection.
-          Reset: Reset your selection.
+          Confirm: Conferma
+          Reset: Azzera
         }
         AspectedDamageType:
         {
-          Description: If the weapon's type has changed, the weapon deals 10% less damage when active.
-          LockHover: Aspected Weapon damage type is saved even after re-entering the world.
+          Description: Se il tipo di danno dell'arma selezionato non è quello base, questa infligge il 10% del danno in meno.
+          LockHover: Riavviare il mondo non cancella la selezione del tipo di danno.
           Melee:
           {
-            Name: Change the held Aspected Weapon to [c/FFAB4D:Melee Damage].
+            Name: Cambia il tipo di danno inflitto a [c/FFAB4D:Danno da Mischia].
           }
           Rogue:
           {
-            Name: Change the held Aspected Weapon to [c/707070:Rogue Damage].
+            Name: Cambia il tipo di danno inflitto a [c/707070:Danno da Bandito].
           }
           Healer:
           {
-            Name: Change the held Aspected Weapon to [c/FCEE72:Radiant Damage].
+            Name: Cambia il tipo di danno inflitto a [c/FCEE72:Danno Radioso].
           }
           Bard:
           {
-            Name: Change the held Aspected Weapon to [c/FD5656:Symphonic Damage].
+            Name: Cambia il tipo di danno inflitto a [c/FD5656:Danno Sinfonico].
           }
           Thrower:
           {
-            Name: Change the held Aspected Weapon to [c/83EA53:Throwing Damage].
+            Name: Cambia il tipo di danno inflitto a [c/83EA53:Danno da Lancio].
           }
           Magic:
           {
-            Name: Change the held Aspected Weapon to [c/EF4DFF:Magic Damage].
+            Name: Cambia il tipo di danno inflitto a [c/EF4DFF:Danno Magico].
           }
           Ranged:
           {
-            Name: Change the held Aspected Weapon to [c/4DFF5B:Ranged Damage].
+            Name: Cambia il tipo di danno inflitto a [c/4DFF5B:Danno a Distanza].
           }
           Summon:
           {
-            Name: Change the held Aspected Weapon to [c/00CDFF:Summon Damage].
+            Name: Cambia il tipo di danno inflitto a [c/00CDFF:Danno da Evocazione].
           }
         }
         Abilities:
         {
           Starshield:
           {
-            Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Starshield']"
-            Description: When struck, gain 10% of your Max HP as defense for 2 seconds (20 second cooldown.) Additionally, gain 20 mana upon activation, and 20% damage increase for the duration of the shield.
-            Unlock: "[c/9D9D9D:Locked:] Defeat the Eye of Cthulhu"
+            Name: "[c/C2BDFF:Livello 1] [c/FFEED1:'Scudo Stellare']"
+            Description: Quando vieni colpito, la difesa aumenta del 10% della tua vita massima per 2 secondi. (20 secondi di ricarica.) Inoltre, ripristina 20 mana quando quest'abilità si attiva, e aumenta del 20% il danno inflitto finché lo scudo è presente.
+            Unlock: "[c/9D9D9D:Bloccato:] Sconfiggi l'Occhio di Cthulhu"
           }
           ButchersDozen:
           {
-            Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Butcher's Dozen']"
-            Description: After 12 kills without leaving combat, gain 5% extra attack damage and 30% faster attack speed.
-            Unlock: "[c/9D9D9D:Locked:] Defeat Nalhaun, the Burnished King"
+            Name: "[c/C2BDFF:Livello 1] [c/FFEED1:'Dozzina del Macellaio']"
+            Description: Dopo 12 uccisioni senza uscire dal combattimento, aumenta del 5% il danno inflitto e del 30% la velocità d'attacco.
+            Unlock: "[c/9D9D9D:Bloccato:] Sconfiggi Nalhaun, il Re Imbrunito"
           }
           EvasionMastery:
           {
-            Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Evasion Mastery']"
-            Description: 3% chance to take 0 damage from an attack. Gain 25% movement speed.
-            Unlock: "[c/9D9D9D:Locked:] Defeat the Queen Bee"
+            Name: "[c/C2BDFF:Livello 1] [c/FFEED1:'Maestro della Schivata']"
+            Description: 3% di possibilità di subire 0 danni da un qualsiasi attacco. Aumenta del 25% la velocità di movimento.
+            Unlock: "[c/9D9D9D:Bloccato:] Sconfiggi l'Ape Regina"
           }
           IronWill:
           {
-            Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Iron Will']"
-            Description: Gain 6 defense. Take 30 less damage from attacks that deal over 100 damage. Below 100 HP, take 20% less damage from all attacks, independent of other defense calculations.
-            Unlock: "[c/9D9D9D:Locked:] Defeat the Eater of Worlds or Brain of Cthulhu"
+            Name: "[c/C2BDFF:Livello 1] [c/FFEED1:'Volontà Ferrea']"
+            Description: Aumenta la difesa di 6. Subisci 30 danni in meno dagli attacchi che infliggono più di 100 danni. Se hai meno di 100 punti vita, subisci il 20% di danno in meno da ogni attacco, calcolato dopo le difese.
+            Unlock: "[c/9D9D9D:Bloccato:] Sconfiggi il Mangiatore di Mondi o il Cervello di Cthulhu"
           }
           UmbralEntropy:
           {
-            Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Umbral Entropy']"
-            Description: All projectiles and melee attacks inflict Starblight on a critical strike. Gain Lifesteal on foes inflicted with Starblight. Healing is capped at 5 HP per second.
-            Unlock: "[c/9D9D9D:Locked:] Defeat the Moon Lord"
+            Name: "[c/C2BDFF:Livello 1] [c/FFEED1:'Entropia Oscura']"
+            Description: Tutti i proiettili e gli attacchi in mischia, su colpo critico, infliggono Infezione Astrale. Colpire un nemico affetto da Infezione Astrale rigenera la tua vita. Max 5 punti vita al secondo.
+            Unlock: "[c/9D9D9D:Bloccato:] Sconfiggi il Signore della Luna"
           }
           FlashFreeze:
           {
-            Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Flash Freeze']"
-            Description: Landing a critical strike will cause foes to explode, taking half the original damage. Additionally, damaging snowflakes will spew from the target, spreading the damage. 4 second cooldown.
-            Unlock: "[c/9D9D9D:Locked:] Defeat Penthesilea in Expert Mode"
+            Name: "[c/C2BDFF:Livello 1] [c/FFEED1:'Congelamento Istantaneo']"
+            Description: I colpi critici inflitti fanno esplodere i nemici, infliggendo il 50% del danno base nell'area circostante. Inoltre, vengono generati fiocchi di neve dal nemico colpito, allargando ulteriormente l'area in cui il danno viene inflitto. 4 secondi di ricarica.
+            Unlock: "[c/9D9D9D:Bloccato:] Sconfiggi Penthesilea in Modalità Esperto"
           }
           MysticForging:
           {
-            Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Mystic Forging']"
-            Description: Consume 5 mana when hitting a foe with an attack to deal 8% extra damage.
-            Unlock: "[c/9D9D9D:Locked:] Defeat Penthesilea, the Witch of Ink"
+            Name: "[c/C2BDFF:Livello 1] [c/FFEED1:'Forgiatura Mistica']"
+            Description: Ogni attacco sferrato consuma 5 mana e infligge l'8% di danno extra (se il mana attuale è inferiore a 5, nessun effetto).
+            Unlock: "[c/9D9D9D:Bloccato:] Sconfiggi Penthesilea, la Strega dell'Inchiostro"
           }
           InnerAlchemy:
           {
-            Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Inner Alchemy']"
-            Description: After not taking damage for 12 seconds, gain 10% increased damage, 25 defense, knockback resistance, and Health Regeneration. Buffs are lost on hit.
-            Unlock: "[c/9D9D9D:Locked:] Defeat Skeletron"
+            Name: "[c/C2BDFF:Livello 1] [c/FFEED1:'Alchimia Interiore']"
+            Description: Dopo 12 secondi senza subire danni, ottieni un buff che aumenta il danno inflitto del 10%, la difesa di 25, conferisce Resistenza allo Spintone e Rigenerazione Salute. Il buff viene rimosso quando vieni colpito.
+            Unlock: "[c/9D9D9D:Bloccato:] Sconfiggi Skeletron"
           }
           Hikari:
           {
-            Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Hikari']"
-            Description: Gain bonus attack and defense proportional to Max HP divided by 20. Taking damage inflicts 'Null Radiance' which reduces outgoing damage by half for 6 seconds.
-            Unlock: "[c/9D9D9D:Locked:] Defeat the Ice Queen"
+            Name: "[c/C2BDFF:Livello 1] [c/FFEED1:'Hikari']"
+            Description: Aumenta danno inflitto e difesa di (Vita Massima/20). Subire danno applica il debuff 'Luce Tenue', che riduce il danno inflitto del 50% per 6 secondi.
+            Unlock: "[c/9D9D9D:Bloccato:] Sconfiggi la Regina del Ghiaccio"
           }
           CelestialEvanesence:
           {
-            Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Celestial Evanesence']"
-            Description: Critical strike rate is increased based on current Mana divided by 20. Landing a critical strike grants 5% of the damage dealt as Mana. (Max 5 per hit)
-            Unlock: "[c/9D9D9D:Locked:] Defeat the Lunatic Cultist in Expert Mode"
+            Name: "[c/C2BDFF:Livello 1] [c/FFEED1:'Evanescenza Celestiale']"
+            Description: La probabilità di infliggere colpi critici aumenta del (Mana Attuale/20)% . Ogni colpo critico ripristina mana pari al 5% del danno inflitto. (Max 5 mana)
+            Unlock: "[c/9D9D9D:Bloccato:] Sconfiggi il Cultista Lunatico in Modalità Esperto"
           }
           HealthyConfidence:
           {
-            Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Healthy Confidence']"
-            Description: Gain 150 extra Maximum HP and powerful health regeneration. Defense is halved below 200 HP.
-            Unlock: "[c/9D9D9D:Locked:] Defeat the Wall of Flesh"
+            Name: "[c/9C4FFF:Livello 2] [c/FFD792:'Sana Autostima']"
+            Description: Aumenta la vita massima di 150 e ottieni un potente buff di rigenerazione. La difesa viene dimezzata se hai meno di 200 punti vita.
+            Unlock: "[c/9D9D9D:Bloccato:] Sconfiggi il Muro di Carne"
           }
           InfernalEnd:
           {
-            Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Infernal End']"
-            Description: When below 100 HP, gain 50% increased damage and all attacks burn foes. Additionally, these effects will temporarily ignore the HP threshold for 3 seconds after taking damage.
-            Unlock: "[c/9D9D9D:Locked:] Defeat any Mechanical Boss"
+            Name: "[c/9C4FFF:Livello 2] [c/FFD792:'Fine Infernale']"
+            Description: Quando hai meno di 100 punti vita, infliggi il 50% di danni in più e tutti gli attacchi bruciano i nemici. Inoltre, quando subisci danno, per 3 secondi questi effetti vengono applicati a prescindere dalla vita attuale.
+            Unlock: "[c/9D9D9D:Bloccato:] Sconfiggi un qualsiasi Boss Meccanico"
           }
           AvatarOfLight:
           {
-            Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Avatar of Light']"
-            Description: Half of Max Mana is added to Max HP. At 500 HP or above, gain 10 defense, 5% damage, and 5 Stellar Nova Energy Regeneration.
-            Unlock: "[c/9D9D9D:Locked:] Defeat the Warrior of Light"
+            Name: "[c/9C4FFF:Livello 2] [c/FFD792:'Avatar di Luce']"
+            Description: Aumenta la vita massima di (Mana massimo/2). Se la vita massima supera 500, ottieni 10 difesa, 5% inflitti in più e rigenerazione della Stellar Nova (5 punti al secondo).
+            Unlock: "[c/9D9D9D:Bloccato:] Sconfiggi il Guerriero di Luce"
           }
           AstralMantle:
           {
-            Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Astral Mantle']"
-            Description: 1/10th of current Mana is added to Defense. Gain 15 Stellar Nova Energy Regeneration above 200 Mana.
-            Unlock: "[c/9D9D9D:Locked:] Defeat all Mechanical bosses"
+            Name: "[c/9C4FFF:Livello 2] [c/FFD792:'Mantello Astrale']"
+            Description: Aumenta la difesa di (Mana attuale/10). Rigenera la Stellar Nova di 15 punti al secondo quando hai più di 200 mana.
+            Unlock: "[c/9D9D9D:Bloccato:] Sconfiggi tutti i Boss Meccanici"
           }
           Afterburner:
           {
-            Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Afterburner']"
-            Description: When Mana drops below 40, gain 150 Mana and all attacks critically strike for 4 seconds. 25 second cooldown.
-            Unlock: "[c/9D9D9D:Locked:] Defeat Plantera"
+            Name: "[c/9C4FFF:Livello 2] [c/FFD792:'Postcombustore']"
+            Description: Quando hai meno di 40 mana, ottieni 150 mana e tutti gli attacchi sono critici per 4 secondi. 25 secondi di ricarica.
+            Unlock: "[c/9D9D9D:Bloccato:] Sconfiggi Plantera"
           }
           SpatialStratagem:
           {
-            Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Spatial Stratagem']"
-            Description: Critical strikes roll critical strike chance again. If the attack was critical again, increases damage by 50% and roll one more time.
-            Unlock: "[c/9D9D9D:Locked:] Defeat all bosses from The Stars Above except the final boss"
+            Name: "[c/9C4FFF:Livello 2] [c/FFD792:'Stratagemma Spaziale']"
+            Description: I colpi critici hanno una chance di essere super-critici pari alla tua chance di colpo critico. Un attacco super-critico infligge il 50% di danno extra e ha una chance pari alla tua chance di colpo critico di essere un ultra-critico! (ulteriore 50% di danno)
+            Unlock: "[c/9D9D9D:Bloccato:] Sconfiggi tutti i boss della The Stars Above, eccetto il boss finale"
           }
           WeaknessExploit:
           {
-            Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Weakness Exploit']"
-            Description: Critical strikes hit again for 10% of the original damage as true damage (Will not kill.) Foes below 20% HP or who are Stunned will take 30% damage instead.
-            Unlock: "[c/9D9D9D:Locked:] Defeat Golem in Expert Mode"
+            Name: "[c/9C4FFF:Livello 2] [c/FFD792:'Sfrutta Debolezza']"
+            Description: I colpi critici infliggono danno extra puro, pari al 10% del danno iniziale (non può uccidere). I nemici con meno del 20% della vita o che sono storditi subiscono il 30% di danno extra.
+            Unlock: "[c/9D9D9D:Bloccato:] Sconfiggi Golem in Modalità Esperto"
           }
           Aprismatism:
           {
-            Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Aprismatism']"
-            Description: Aspected Damage Type changes will now apply to all weapons.
-            Unlock: "[c/9D9D9D:Locked:] Defeat all bosses from The Stars Above except the final boss in Expert Mode"
+            Name: "[c/9C4FFF:Livello 2] [c/FFD792:'Aprismatismo']"
+            Description: Puoi cambiare il tipo di danno infltto da tutte le armi (anche quelle non della mod) tramite la Matrice Stellare.
+            Unlock: "[c/9D9D9D:Bloccato:] Sconfiggi tutti i boss della The Stars Above, eccetto il boss finale in Modalità Esperto"
           }
           UnbridledRadiance:
           {
-            Name: "[c/D82BFF:Tier 3] [c/FFC258:'Unbridled Radiance']"
-            Description: Doubles the recharge rate of Stellar Nova Energy. Stellar Nova Energy does not deplete out of combat.
-            Unlock: "[c/9D9D9D:Locked:] Defeat all Terraria bosses and the Warrior of Light in Expert Mode"
+            Name: "[c/D82BFF:Livello 3] [c/FFC258:'Luminosità Sconfinata']"
+            Description: Raddoppia la rigenerazione della Stellar Nova. La Stellar Nova non si scarica al di fuori del combattimento.
+            Unlock: "[c/9D9D9D:Bloccato:] Sconfiggi tutti i boss di Terraria e il Guerriero di Luce in Modalità Esperto"
           }
           BetweenTheBoundary:
           {
-            Name: "[c/D82BFF:Tier 3] [c/FFC258:'Between the Boundary']"
-            Description: Every 8 seconds, swap between Ebb (drastic Mana drain) and Flow (infinite Mana Regeneration.) Additionally, gain 40% increased damage and 20% increased attack speed during Flow.
-            Unlock: "[c/9D9D9D:Locked:] Defeat all Terraria bosses and all bosses from The Stars Above except the final boss"
+            Name: "[c/D82BFF:Livello 3] [c/FFC258:'In Mezzo al Confine']"
+            Description: Ogni 8 secondi, cambia stato tra Flusso (rigenerazione del mana infinita) e Riflusso (rapido prosciugamento mana). Inoltre, durante Flusso, infliggi il 40% danno in più e aumenta la velocità d'attacco del 20%.
+            Unlock: "[c/9D9D9D:Bloccato:] Sconfiggi tutti i boss di Terraria e tutti i boss della The Stars Above, eccetto il boss finale"
           }
           CyclicHunter:
           {
-            Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Cyclic Hunter']"
-            Description: After defeating an enemy, gain 10% increased damage, and 50% increased Movement Speed for half a second. Additionally, gain Mana based on 5% of the foe's Max HP + 12. 2 second cooldown.
-            Unlock: "[c/9D9D9D:Locked:] Defeat the Slime King in Expert Mode"
+            Name: "[c/C2BDFF:Livello 1] [c/FFEED1:'Cacciatore Ciclico']"
+            Description: Dopo aver sconfitto un nemico, infliggi il 10% di danno in più e aumenta la velocità di movimento del 50% per mezzo secondo. Inoltre, ripristina (5% della vita massima del nemico + 12) mana. 2 secondi di ricarica.
+            Unlock: "[c/9D9D9D:Bloccato:] Sconfiggi lo Slime Re in Modalità Esperto"
           }
           LivingDead:
           {
-            Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Living Dead']"
-            Description: Survive most fatal damage for 10 seconds, but if HP is not healed above 150 when the buff ends, you will die. (4 minute cooldown) You need 200+ Max HP to confirm this ability.
-            Unlock: "[c/9D9D9D:Locked:] Defeat Pumpking"
+            Name: "[c/C2BDFF:Livello 1] [c/FFEED1:'Morto Vivente']"
+            Description: Quando ricevi danno fatale, per 10 secondi non puoi morire. Se quando il buff finisce la tua vita non è almeno 150, muori (4 minuti di ricarica). Non puoi attivare quest'abilità se la tua vita massima non è almeno 200.
+            Unlock: "[c/9D9D9D:Bloccato:] Sconfiggi Re Zucca"
           }
           BeyondInfinity:
           {
-            Name: "[c/D82BFF:Tier 3] [c/FFC258:'Beyond Infinity']"
-            Description: At 500 HP or above, all applicable outgoing damage is doubled. Deal 10% less damage below 500 HP, increased by 10% for each 100 HP.
-            Unlock: "[c/9D9D9D:Locked:] Defeat all Terraria bosses"
+            Name: "[c/D82BFF:Livello 3] [c/FFC258:'Oltre l'Infinito']"
+            Description: Quando la tua vita attuale è più di 500, infliggi doppio danno. Se è meno di 500, infliggi meno danno meno vita hai, 10% in meno ogni 100 punti vita mancanti.
+            Unlock: "[c/9D9D9D:Bloccato:] Sconfiggi tutti i boss di Terraria"
           }
           KeyOfChronology:
           {
-            Name: "[c/D82BFF:Tier 3] [c/FFC258:'Key Of Chronology']"
-            Description: Taking over 200 damage at once will instead heal you for that amount and grant 5 seconds of Invincibility. Additionally, all nearby non-boss enemies will be Stunned for 5 seconds. 2 minute cooldown.
-            Unlock: "[c/9D9D9D:Locked:] Defeat the Moon Lord in Expert Mode"
+            Name: "[c/D82BFF:Livello 3] [c/FFC258:'Chiave della Cronologia']"
+            Description: Invece di subire un attacco da almeno 200 danni, ripristina altrettanta vita e diventa Invulnerabile per 5 secondi. Inoltre, tutti i nemici non-boss nei dintorni vengono storditi per 5 secondi. 2 minuti di ricarica.
+            Unlock: "[c/9D9D9D:Bloccato:] Sconfiggi il Signore della Luna in Modalità Esperto"
           }
         }
       }
@@ -362,21 +362,21 @@
       {
         DefaultIdleDialogue:
         {
-          Name: Default Idle Dialogue
-          Description: This dialogue appears when you've already seen the normal idle dialogue recently.
+          Name: Dialogo default
+          Description: Questo dialogo appare quando quello normale è stato visto recentemente.
         }
       }
       Dialogue:
       {
         IdleDialogueHardmode:
         {
-          Asphodene: Sorry, {0}. Nothing to comment on right now.
-          Eridani: Apologies, {0}.. there's not much to comment on at the moment.
+          Asphodene: Scusami, {0}. Non ho niente da dire ora come ora.
+          Eridani: Chiedo scusa, {0}... non c'è molto da dire al momento.
         }
         IdleDialogue:
         {
-          Asphodene: Sorry, there's not much on my mind as of late.
-          Eridani: Sorry. There's not much to say right now...
+          Asphodene: Scusami, non mi va di parlare ora.
+          Eridani: Perdonami. Non c'è molto di cui parlare, per ora...
         }
         WeaponDialogue:
         {
@@ -2713,7 +2713,7 @@
 				}
 				ArsLaevateinn: {
 					Unlocked: {
-						Asphodene: Ars Laevateinn. Se hai mai voluto pulire un'area in fretta, questa è la Nova Stellare per te.
+						Asphodene: Ars Laevateinn. Se hai mai voluto obliterare un'area in fretta, questa è la Nova Stellare per te.
 						Eridani: Con questa Nova Stellare, Ars Laevateinn, è possibile infliggere danni ingenti in un'area.
 					}
 					Locked: {
@@ -2744,7 +2744,7 @@
 				EdinGenesisQuasar: {
 					Unlocked: {
 						Asphodene: Con questa Nova Stellare, le tue armi riceveranno temporaneamente nuove statistiche e un attacco esplosivo!
-						Eridani: Questa Stellar Nova renderà possibile il cambiamento momentaneo delle statistiche delle tue armi, e sbloccherà un nuovo attacco.
+						Eridani: Questa Nova Stellare renderà possibile il cambiamento momentaneo delle statistiche delle tue armi, e sbloccherà un nuovo attacco.
 					}
 					Locked: {
 						Asphodene: Non possiamo ancora usare questa Nova. Dobbiamo affrontare e sconfiggere un nemico in possesso di poteri spaziali.
@@ -2790,24 +2790,24 @@
 					UmbralBonus: Gli attacchi lanciati durante Motivazione di Astarte elimineranno ogni nemico colpito sotto i {0} punti vita. Ogni volta che una Carica Cosmica viene utilizzata, ottieni un secondo di invincibilità.
 				}
 
-          BaseDamage: Base Damage
-          BaseEnergyCost: Base Energy Cost
-          Damage: Damage
-          AttackDamage: Attack Damage
-          CritChance: Crit Chance
-          CritDamage: Crit Damage
-          EnergyCost: Energy Cost
-          BaseHealStrength: Base Heal Strength
-          HealStrength: Heal Strength
-          CritHealStrength: Crit Heal Strength
+          BaseDamage: Danno Base
+          BaseEnergyCost: Costo Energia Base
+          Damage: Danno
+          AttackDamage: Danno
+          CritChance: Probabilità di critico
+          CritDamage: Danno Critico
+          EnergyCost: Costo Energia
+          BaseHealStrength: Cura Base
+          HealStrength: Cura
+          CritHealStrength: Cura Critica
         }
       }
       Config:
       {
-        StellarNovaHeader: "[c/EE9DE0:Stellar Nova Settings]"
-        PopUpDialogueHeader: "[c/C076DF:Pop-up Dialogue Settings]"
-	DialogueHeader: "[c/75C792:Disk Dialogue Settings]"
-	MiscHeader: "[c/7A76FF:Miscellaneous Settings]"
+        StellarNovaHeader: "[c/EE9DE0:Impostazioni Nova Stellare]"
+        PopUpDialogueHeader: "[c/C076DF:Impostazioni Dialoghi Pop-up]"
+	DialogueHeader: "[c/75C792:Impostazioni Dialoghi Disco]"
+	MiscHeader: "[c/7A76FF:Impostazioni Varie]"
 
         DisableStellarNovaCutIns:
         {
