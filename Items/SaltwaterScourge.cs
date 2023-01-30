@@ -27,7 +27,7 @@ namespace StarsAbove.Items
                 "\nSword attacks burn foes for 2 seconds on hit, deal 50% increased damage, and additionally grant Swiftness for 4 seconds" +
 				"\nRight click to consume 50 mana to place a [c/BB3B27:Powder Keg] on your cursor within range" +
                 "\nThis mana cost can not be negated by any means" +
-				"\nYou can have up to 3 [c/BB3B27:Powder Kegs] active at the same time, and kegs disappear after 20 seconds or when not holding this weapon" +
+				"\nYou can have up to 2 [c/BB3B27:Powder Kegs] active at the same time, and kegs disappear after 20 seconds or when not holding this weapon" +
 				"\nAfter a short delay, the [c/BB3B27:Powder Keg] becomes active, and attacking it with this weapon will cause it to explode" +
                 "\nThis explosion deals 4x damage while additionally granting Swiftness for 8 seconds" +
 				"\nAdditionally, nearby [c/BB3B27:Powder Kegs] will also explode, dealing 50% more damage than if exploded directly" +
@@ -45,7 +45,7 @@ namespace StarsAbove.Items
 		public override void SetDefaults()
 		{
 			
-			Item.damage = 55;           //The damage of your weapon
+			Item.damage = 65;           //The damage of your weapon
 			Item.DamageType = DamageClass.Ranged;         //Is your weapon a melee weapon?
 			Item.width = 108;            //Weapon's texture's width
 			Item.height = 108;           //Weapon's texture's height
