@@ -92,10 +92,9 @@ Additionally, some separate scaling is present for the Calamity Mod. (This can b
 
 [img]https://i.imgur.com/BEnNDqm.png[/img]
 
-View the official Fandom wiki here!
-[url=https://terrariamods.fandom.com/wiki/The_Stars_Above] The Stars Above Wiki [/url]
-[url=https://terrariamods.wiki.gg/wiki/The_Stars_Above] The Stars Above Wiki (wiki.gg ver.) [/url]
-As of now, the wiki is lacking a lot of articles; feel free to contribute (Even one article is a lot!) Thanks again!
+View the official wiki here!
+[url=https://terrariamods.wiki.gg/wiki/The_Stars_Above] The Stars Above Wiki[/url]
+Feel free to contribute (Even one article is a lot!) Thanks again!
 
 The mod includes localization for Chinese and Spanish, thanks to these individuals:
 Chinese translation team:  Soammer(夏沫), MeireiHakuya(冥岭白夜), (亚砜), and Yukiko (羽曦)
