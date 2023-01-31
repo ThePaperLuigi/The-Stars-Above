@@ -13,6 +13,7 @@ using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using StarsAbove.Projectiles.Pod;
 using StarsAbove.Items.Prisms;
+using StarsAbove.Projectiles.Adornment;
 
 namespace StarsAbove.Items
 {
@@ -20,14 +21,14 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Adornment of the Chaotic God");
-			Tooltip.SetDefault("WORK IN PROGRESS WEAPON" +
-                "\nSummons an [Adornment Manifest] to assail your foes (Only one can be summoned at a time)" +
+			Tooltip.SetDefault("" +
+                "Summons an [Adornment Manifest] to assail your foes (Only one can be summoned at a time)" +
                 "\nThe [Adornment Manifest] will fire chaotic blasts of magic with unpredictable effects" +
-                "\nAdditionally, other random attacks may occur with unique effects" +
+                "\nAdditionally, other random objects may be fired on occasion" +
                 "\nRight click to roll the dice, activating a [Pure Chaos] effect for 6 seconds (12 second cooldown)" +
                 "\n60% chance [Positive Chaos]: Double [Adornment Manifest] attack speed, guarantee critical strikes, or gain Invincibility" +
-                "\n30% chance [Negative Chaos]: Inflict random debuffs on self" +
-                "\n10% chance to apply all effects at once at doubled potency" +
+                "\n30% chance [Negative Chaos]: Inflict random debuffs on self, cause all projectiles to be random objects" +
+                "\n10% chance to apply all effects at the same time" +
 				"\nFire rate increases by 5% based on the amount of minions summoned" +
 				"\n'Chaos can giveth, and chaos can taketh'"
 				+ $"");
@@ -54,8 +55,8 @@ namespace StarsAbove.Items
 			Item.knockBack = 6;
 			Item.rare = ItemRarityID.Green;
 			Item.UseSound = SoundID.Item44;
-			Item.shoot = ProjectileType<PodMinion>();
-			Item.buffType = BuffType<Buffs.Pod.PodBuff>(); //The buff added to player after used the item
+			Item.shoot = ProjectileType<AdornmentMinion>();
+			Item.buffType = BuffType<Buffs.Adornment.AdornmentMinionBuff>(); //The buff added to player after used the item
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
 		}
 		public override bool AltFunctionUse(Player player)
