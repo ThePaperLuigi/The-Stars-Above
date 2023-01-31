@@ -475,6 +475,22 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
+			if (player.GetModPlayer<StarsAbovePlayer>().UmbraWeaponDialogue == 1)
+			{
+				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 161;
+				player.GetModPlayer<StarsAbovePlayer>().UmbraWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
+			if (player.GetModPlayer<StarsAbovePlayer>().SaltwaterWeaponDialogue == 1)
+			{
+				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 162;
+				player.GetModPlayer<StarsAbovePlayer>().SaltwaterWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
 			if (player.GetModPlayer<StarsAbovePlayer>().WallOfFleshWeaponDialogue == 1)
 			{
 				player.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 105;

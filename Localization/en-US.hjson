@@ -1,7 +1,8 @@
 {
   Mods:
   {
-    StarsAbove: {
+    StarsAbove:
+    {
       SubworldName:
       {
         Observatory: Observatory Hyperborea
@@ -11,11 +12,13 @@
         Talk: Right click to talk!
         Yojimbo:
         {
+          #These are pretty much debug lines just in case something breaks.
           1: I don't see why you'd need somethin' from ME, of all people, but...
           Leaving: Yojimbo has left!
         }
         Garridine:
         {
+          #These are pretty much debug lines just in case something breaks.
           1: You needn't have come all this way- a letter would have sufficed. Hmm, how would the letter arrive? I see.
         }
       }
@@ -292,7 +295,7 @@
           AstralMantle:
           {
             Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Astral Mantle']"
-            Description: 1/10th of current Mana is added to Defense. Gain 15 Stellar Nova Energy Regeneration above 200 Mana.
+            Description: 1/10th of current Mana is added to Defense (Max 5% of current Max HP.) Gain 15 Stellar Nova Energy Regeneration above 200 Mana.
             Unlock: "[c/9D9D9D:Locked:] Defeat all Mechanical bosses"
           }
           Afterburner:
@@ -334,7 +337,7 @@
           CyclicHunter:
           {
             Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Cyclic Hunter']"
-            Description: After defeating an enemy, gain 8 mana, 10% increased damage, and 50% increased Movement Speed for half a second. 2 second cooldown.
+            Description: After defeating an enemy, gain 10% increased damage, and 50% increased Movement Speed for half a second. Additionally, gain Mana based on 5% of the foe's Max HP + 12. 2 second cooldown.
             Unlock: "[c/9D9D9D:Locked:] Defeat the Slime King in Expert Mode"
           }
           LivingDead:
@@ -460,6 +463,9 @@
             77: I've acquired a new Essence for your use. It seems to borrow strength from Melee and Magic both- a versatile weapon, I like it!
             78: Looks like this Graveyard seems to have some connection to this Essence. Hopefully all these graves weren't just from you dying, right?
             79: Hmm... this Summon-type Essence will create some sort of controllable drone- I wonder if it can talk?
+            80: This is certainly a Melee weapon- furthermore, it seems to be one that excels at a distance, as well as providing extra firepower in close combat. Nice.
+            81: I plundered a Ranged-sort of essence from the likeness of those pirates. Sea... water... Actually, looks like I'm nearly dry with ocean jokes, so I'll anchor myself now.
+
           }
           Eridani:
           {
@@ -545,6 +551,8 @@
             80: This Graveyard seems to have connected to this Essence. I hope it'll help you avoid creating the Graveyard in the first place.
             81: While powerful, I believe it's a utility item, and not a weapon this time.
             82: This Magic Essence, while aspected to nature, seems rather volatile. Perhaps you'd be able to better use it in tandem with other weapons?
+            83: This Melee weapon harnesses an aspect of time itself to help you in combat. It seems to have some impressive range, as well.
+            84: How about it; that previous... um, let's say 'get-together' with those pirates has churned up an Essence- Ranged damage, from what I can tell. Here you are.
           }
           Perseus:
           {
@@ -739,6 +747,7 @@
               1: You've done it! Golem is no more. You're unstoppable.
               2: Something about our next enemy feels.. dangerous. It seems spatial energy has congregated around the Dungeon's entrance.
               3: Another upgrade is now available in the Stellar Array. Looks pretty strong.
+              4: Well, that's about everything.
             }
             Eridani:
             {
@@ -2823,6 +2832,8 @@
       {
         StellarNovaHeader: "[c/EE9DE0:Stellar Nova Settings]"
         PopUpDialogueHeader: "[c/C076DF:Pop-up Dialogue Settings]"
+        DialogueHeader: "[c/75C792:Disk Dialogue Settings]"
+        MiscHeader: "[c/7A76FF:Miscellaneous Settings]"
 
         DisableStellarNovaCutIns:
         {

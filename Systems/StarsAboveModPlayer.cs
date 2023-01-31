@@ -44,6 +44,7 @@ using StarsAbove.Utilities;
 using StarsAbove.Buffs.CatalystMemory;
 using StarsAbove.Items.Armor.StarfarerArmor;
 using StarsAbove.Buffs.Farewells;
+using StarsAbove.Buffs.Umbra;
 
 namespace StarsAbove
 {
@@ -523,6 +524,15 @@ namespace StarsAbove
         public bool KevesiFarewellInInventory;
         public bool AgnianFarewellInInventory;
 
+        //Umbra
+        public int UmbraGauge;
+
+        //Saltwater Scourge
+        public bool SaltwaterScourgeHeld;
+
+        //
+        public float gaugeChangeAlpha = 0f;
+
         //Starfarers ///////////////////////////////////////////////////////////////////////////////////////////////////
         public float StarfarerSelectionVisibility = 0f;
 
@@ -779,6 +789,9 @@ namespace StarsAbove
         public int SoulWeaponDialogue = 0;
         public int GoldWeaponDialogue = 0;
         public int FarewellWeaponDialogue = 0;
+        public int UmbraWeaponDialogue = 0;
+        public int SaltwaterWeaponDialogue = 0;
+
 
         //Subworld dialogues
         public int observatoryDialogue = 0;
@@ -1418,6 +1431,8 @@ namespace StarsAbove
             tag["SoulWeaponDialogue"] = SoulWeaponDialogue;
             tag["GoldWeaponDialogue"] = GoldWeaponDialogue;
             tag["FarewellWeaponDialogue"] = FarewellWeaponDialogue;
+            tag["UmbraWeaponDialogue"] = UmbraWeaponDialogue;
+            tag["SaltwaterWeaponDialogue"] = SaltwaterWeaponDialogue;
 
 
             tag["observatoryDialogue"] = observatoryDialogue;
@@ -1696,6 +1711,8 @@ namespace StarsAbove
             SoulWeaponDialogue = tag.GetInt("SoulWeaponDialogue");
             GoldWeaponDialogue = tag.GetInt("GoldWeaponDialogue");
             FarewellWeaponDialogue = tag.GetInt("FarewellWeaponDialogue");
+            UmbraWeaponDialogue = tag.GetInt("UmbraWeaponDialogue");
+            SaltwaterWeaponDialogue = tag.GetInt("SaltwaterWeaponDialogue");
 
 
             observatoryDialogue = tag.GetInt("observatoryDialogue");
@@ -2371,7 +2388,7 @@ namespace StarsAbove
                 }
 
             }
-            if (target.HasBuff(BuffType<Glitterglued>()))
+            if (target.HasBuff(BuffType<Glitterglued>()) || Player.HasBuff(BuffType<TimelessPotential>()))
             {
                 if (!crit)
                 {
@@ -4134,7 +4151,7 @@ namespace StarsAbove
 
 
             }
-            if (Player.HasBuff(BuffType<AstarteDriver>()) && starfarerOutfit == 3)
+            if (Player.HasBuff(BuffType<AstarteDriver>()) && starfarerOutfit == 3 && projectile.type != ProjectileType<StarfarerFollowUp>())
             {
                 Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0f, 0f, ProjectileType<StarfarerFollowUp>(), damage / 3, knockback, Player.whoAmI);
 
@@ -4782,7 +4799,7 @@ namespace StarsAbove
                 CatalystMemoryProgress = 0;
             }
             CatalystMemoryProgress--;
-            
+            gaugeChangeAlpha -= 0.1f;
             GlobalRotation++;
             if (GlobalRotation >= 360)
             {
@@ -6100,6 +6117,13 @@ namespace StarsAbove
                         158,
                         "Visit the Hallowed biome.")); //Corresponding dialogue ID.
                     WeaponArchiveList.Add(new WeaponArchiveListing(
+                        "Pirate Invasion Weapon", //Name of the archive listing.
+                        $"Grants the Essence for " +
+                        $"[i:{ItemType<Spatial>()}] Saltwater Scourge. ", //Description of the listing.
+                        SaltwaterWeaponDialogue == 2, //Unlock requirements.
+                        162,
+                        "Defeat a pirate invasion, then wait.")); //Corresponding dialogue ID.
+                    WeaponArchiveList.Add(new WeaponArchiveListing(
                           "Queen Slime Weapon", //Name of the archive listing.
                           $"Grants the Essence for either " +
                           $"[i:{ItemType<Astral>()}] Hunter's Symphony " +
@@ -6283,6 +6307,13 @@ namespace StarsAbove
                         $"[i:{ItemType<Spatial>()}] Catalyst's Memory. ", //Description of the listing.
                         CatalystWeaponDialogue == 2, //Unlock requirements.
                         155,
+                        "Defeat Lunatic Cultist, then wait.")); //Corresponding dialogue ID.
+                    WeaponArchiveList.Add(new WeaponArchiveListing(
+                        "Lunatic Cultist Weapon", //Name of the archive listing.
+                        $"Grants the Essence for " +
+                        $"[i:{ItemType<Spatial>()}] Umbra. ", //Description of the listing.
+                        UmbraWeaponDialogue == 2, //Unlock requirements.
+                        161,
                         "Defeat Lunatic Cultist, then wait.")); //Corresponding dialogue ID.
                     WeaponArchiveList.Add(new WeaponArchiveListing(
                           "Moon Lord Weapon", //Name of the archive listing.
@@ -7708,11 +7739,11 @@ namespace StarsAbove
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
 
-                        NewStellarNova = true;
+                        //NewStellarNova = true;
                         if (Main.expertMode)
                         {
-                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
-                            NewStellarArrayAbility = true;
+                            //if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                            //NewStellarArrayAbility = true;
                         }
 
 
@@ -8134,7 +8165,7 @@ namespace StarsAbove
                             return;
 
                         }
-                        if (SkeletonWeaponDialogue == 2 && OceanWeaponDialogue == 0 && seenBeachBiome)
+                        if (SkeletonWeaponDialogue == 2 && OceanWeaponDialogue == 0 && Player.ZoneBeach)
                         {
                             OceanWeaponDialogue = 1;
                             if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
@@ -8402,6 +8433,25 @@ namespace StarsAbove
                             return;
 
                         }
+                        if (CatalystWeaponDialogue == 2 && UmbraWeaponDialogue == 0)
+                        {
+                            UmbraWeaponDialogue = 1;
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                            NewDiskDialogue = true;
+                            WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                            return;
+
+                        }
+                        if(SaltwaterWeaponDialogue == 0 && NPC.downedPirates)
+                        {
+                            SaltwaterWeaponDialogue = 1;
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                            NewDiskDialogue = true;
+                            WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                            return;
+                        }
                         if (GolemWeaponDialogue == 2 && SilenceWeaponDialogue == 0)
                         {
                             SilenceWeaponDialogue = 1;
@@ -8622,7 +8672,7 @@ namespace StarsAbove
                             keyofchronology = 1;
                         }
                     }
-                    if (DownedBossSystem.downedWarrior && DownedBossSystem.downedVagrant && DownedBossSystem.downedPenth && DownedBossSystem.downedNalhaun && DownedBossSystem.downedArbiter)
+                    if (DownedBossSystem.downedWarrior && DownedBossSystem.downedVagrant && DownedBossSystem.downedPenth && DownedBossSystem.downedNalhaun )
                     {
 
 
@@ -8634,7 +8684,7 @@ namespace StarsAbove
                         }
 
                     }
-                    if (DownedBossSystem.downedWarrior && DownedBossSystem.downedVagrant && DownedBossSystem.downedPenth && DownedBossSystem.downedNalhaun && DownedBossSystem.downedArbiter && Main.expertMode == true)
+                    if (DownedBossSystem.downedWarrior && DownedBossSystem.downedVagrant && DownedBossSystem.downedPenth && DownedBossSystem.downedNalhaun && Main.expertMode == true)
                     {
 
 
@@ -8665,7 +8715,7 @@ namespace StarsAbove
                         }
 
                     }
-                    if (NPC.downedBoss1 && NPC.downedSlimeKing && NPC.downedBoss2 && NPC.downedBoss3 && NPC.downedQueenBee && Main.hardMode && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && NPC.downedPlantBoss && NPC.downedGolemBoss && NPC.downedFishron && NPC.downedMoonlord && DownedBossSystem.downedWarrior && DownedBossSystem.downedVagrant && DownedBossSystem.downedPenth && DownedBossSystem.downedNalhaun && DownedBossSystem.downedArbiter)
+                    if (NPC.downedBoss1 && NPC.downedSlimeKing && NPC.downedBoss2 && NPC.downedBoss3 && NPC.downedQueenBee && Main.hardMode && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && NPC.downedPlantBoss && NPC.downedGolemBoss && NPC.downedFishron && NPC.downedMoonlord && DownedBossSystem.downedWarrior && DownedBossSystem.downedVagrant && DownedBossSystem.downedPenth && DownedBossSystem.downedNalhaun)
                     {
                         if (beyondtheboundary == 0)
                         {
@@ -10030,7 +10080,9 @@ namespace StarsAbove
                 {
                     Player.AddBuff(BuffType<Buffs.AmmoRecycle>(), 30);
                     ammoRecycleCooldown = 120;
-                    Player.statMana += 8;
+                    Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                    CombatText.NewText(textPos, new Color(81, 62, 247, 240), $"{12 + (int)(npc.lifeMax * 0.05)}", false, false);
+                    Player.statMana += 12 + (int)(npc.lifeMax * 0.05);
                 }
 
             }
@@ -10049,7 +10101,8 @@ namespace StarsAbove
             //
             if (starfarerOutfit == 3)//Celestial
             {
-                if (npc.CanBeChasedBy() && !npc.SpawnedFromStatue)
+                
+                if (!npc.SpawnedFromStatue)
                 {
                     if (Player.HasBuff(BuffType<AstarteDriver>()))
                     {
@@ -12243,6 +12296,22 @@ namespace StarsAbove
                     Player.immuneTime = 30;
                     return false;
                 }
+            }
+            if (Player.HasBuff(BuffType<TimelessPotential>()))
+            {
+                if (damage > Player.statLife)
+                {
+                    Player.statLife = 50;
+                    Player.AddBuff(BuffType<Invincibility>(), 120);
+                    Player.AddBuff(BuffType<TimelessPotentialCooldown>(), 7200);
+                    return false;
+                }
+                if (Main.rand.Next(0, 101) <= 10)
+                {
+                    Player.immuneTime = 30;
+                    return false;
+                }
+                
             }
             if (hikari == 2)
             {
@@ -15491,6 +15560,8 @@ namespace StarsAbove
 
             KevesiFarewellInInventory = false;
             AgnianFarewellInInventory = false;
+
+            SaltwaterScourgeHeld = false;
 
             Observatory = false;
             SeaOfStars = false;
