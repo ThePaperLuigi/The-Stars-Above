@@ -7,12 +7,8 @@ Please read these short messages before viewing and/or utilizing any code in thi
 3. I develop this mod for free, and my time is limited. As I have to balance between art, programming, writing, and testing, sometimes I take concessions with programming. I will reiterate: please only use this mod's code sparingly and with prior knowledge in C#. Let me speak from experience: don't try to teach yourself programming with Terraria code. It isn't worth it- take a real class!
 
 # Translation
-If you would like to help translate The Stars Above, thank you! There are two categories needed:
+If you would like to help translate The Stars Above, thank you! However, tModloader 1.4.4 is going to change localization drastically, so the translation environment may change drastically.
 
-1. English Transcribers:
-If you would like to contribute to the HJSON file, please look into the template.hjson file in the Localization folder. If you have trouble following the examples, please ask a member of the Discord Server for assistance.
-
-2. Translators:
 If you would like to translate The Stars Above to another language, please look in the Discord Server's #translation-information channel, this will make your job a lot easier.
 
 # Mod Support
