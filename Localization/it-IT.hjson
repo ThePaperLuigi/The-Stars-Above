@@ -12,11 +12,13 @@
         Talk: Click destro per parlare!
         Yojimbo:
         {
+	  #Per il debug se si rompesse qualcosa.
           1: Non ho idea del perché tu stia parlando con me, ma...
           Leaving: Yojimbo è svanito!
         }
         Garridine:
         {
+	  #Per il debug se si rompesse qualcosa.
           1: Non c'era bisogno che venissi fin qui, una lettera sarebbe bastata. Credi che non sarebbe mai arrivata? Hmm, potresti avere ragione.
         }
       }
@@ -287,13 +289,13 @@
           AvatarOfLight:
           {
             Name: "[c/9C4FFF:Livello 2] [c/FFD792:'Avatar di Luce']"
-            Description: Aumenta la vita massima di (Mana massimo/2). Se la vita massima supera 500, ottieni 10 difesa, 5% inflitti in più e rigenerazione della Stellar Nova (5 punti al secondo).
+            Description: Aumenta la vita massima di (Mana massimo/2). Se la vita massima supera 500, ottieni 10 difesa, 5% inflitti in più e rigenerazione della Nova Stellare (5 punti al secondo).
             Unlock: "[c/9D9D9D:Bloccato:] Sconfiggi il Guerriero di Luce"
           }
           AstralMantle:
           {
             Name: "[c/9C4FFF:Livello 2] [c/FFD792:'Mantello Astrale']"
-            Description: Aumenta la difesa di (Mana attuale/10). Rigenera la Stellar Nova di 15 punti al secondo quando hai più di 200 mana.
+            Description: Aumenta la difesa del 10% del tuo mana attuale (fino ad un massimo del 5% della vita massima). Rigenera la Nova Stellare di 15 punti al secondo quando hai più di 200 mana.
             Unlock: "[c/9D9D9D:Bloccato:] Sconfiggi tutti i Boss Meccanici"
           }
           Afterburner:
@@ -305,7 +307,7 @@
           SpatialStratagem:
           {
             Name: "[c/9C4FFF:Livello 2] [c/FFD792:'Stratagemma Spaziale']"
-            Description: I colpi critici hanno una chance di essere super-critici pari alla tua chance di colpo critico. Un attacco super-critico infligge il 50% di danno extra e ha una chance pari alla tua chance di colpo critico di essere un ultra-critico! (ulteriore 50% di danno)
+            Description: I colpi critici hanno una chance pari alla tua chance di colpo critico di essere super-critici. Un attacco super-critico infligge il 50% di danno extra e ha una chance pari alla tua chance di colpo critico di essere un ultra-critico! (ulteriore 50% di danno)
             Unlock: "[c/9D9D9D:Bloccato:] Sconfiggi tutti i boss della The Stars Above, eccetto il boss finale"
           }
           WeaknessExploit:
@@ -382,56 +384,56 @@
         {
           Asphodene:
           {
-            1: Here's another Essence you can use. It'll make a Ranged-type weapon with unique properties. Something tells me it's cursed, so..
-            2: Good luck! I did warn you.
-            3: Here is another Essence for you. This one's from a goddess of the Underworld, or so I'm told. It seems to be a melee weapon.
-            4: Keep up the good work!
-            5: Here is another Essence for you. Apparently, this originates from 'Midgard.' It looks to be a rather powerful melee weapon.
-            6: That's it for now. Keep up the good work!
-            7: Another Essence for you. This firey sword is classified as Magic. It seems to explode when sufficiently charged.
-            8: I trust you'll know what to do.
-            9: An Essence is here for your use. This powerful Melee heirloom is said to cleave the way for those less fortunate.
-            10: Good luck in crafting it.
-            11: This Essence is a personal creation of mine! It creates a Magic weapon that lets you enter the 'Butterfly Trance' and gain special bonuses!
-            12: Please, use it if you can. I can always use more data!
-            13: This Essence creates a Ranged gun that perpetuates itself after killing foes! Feel the heat!!
-            14: Ahem. Please consider it in your arsenal.
-            15: This Essence is a Ranged weapon that defeats foes with a swarm of powerful nanites. Truly fearful.
-            16: If your gear supports it, try crafting this weapon!
-            17: This Essence is another Ranged weapon that allows for powerful charged attacks. Fully charged, it splits and hits multiple foes!
-            18: Hey. Aren't we getting too many Ranged weapons? I'll try and find something else next time.
-            19: This is a legendary Melee artifact! The weapon this Essence crafts can inflict a crippling debuff on any foe!
-            20: This Essence will create a support item this time. It'll give powerful buffs to you and your friends if you can keep it up.
-            21: The Warrior of Light has inspired this Essence. It appears to be a key to a gateway of infinite weapons, doing Summon damage.
-            22: If you feel inspired, try referring to your foes as mongrels.
-            23: This Essence creates a Ranged weapon with a high Mana cost, and an incredibly high critical damage modifier.
-            24: Exploitable? Surely. Theorycraft is all you.
-            25: This is a Summon weapon. It seems to have very unique scaling properties, and attacks incredibly quickly.
-            26: It's also a reflection of your heart... or something. I don't really get that stuff.
-            27: This is a Summoner weapon, but you'll use it like a Melee weapon. It has the power to swap places instantly with a set place.
-            28: While dangerous, it looks to be pretty powerful. Surely you won't get hit.. right?
-            29: This is a pretty unique weapon. When using it, it'll follow-up your attacks, and become stronger when you spend Mana.
-            30: This Essence hails from a world embroiled in conflict... It boasts incredible power, but if you get too overzealous, it'll start to hurt you.
-            31: This Essence creates a Melee weapon that can swap between sword, scythe, or gun. You will be able to use it in nearly any situation!
-            32: Okay, here's a new Essence for you. It's a huge Melee lance that can be swap between a lance form and a gun form. It looks to be pretty strong!
-            33: Well {0}, take this Essence. This Melee weapon has an incredible burst, but the refractory period may be dangerous.. Give it a shot, though!
-            34: Here's another Essence you can use! It has incredible synergy with Summons and gets stronger as you do, so if you plan on fighting with allies, this is it!
-            35: Right, I have an Essence for you. It's a Summon weapon that conjures this mysterious sentient star. It's.. too cute. Anyways...
-            36: It looks to be a powerful weapon, but you'll have to collect the Star Bits for full effect- meaning getting in the way of danger. Good luck..!
-            37: Okay. I've got another Essence for you. This Melee weapon can swap between five different forms, granting powerful buffs in the process.
-            38: Here's a Magic-type Essence. It'll make a scythe with incredible reach and balances between light and dark. Now THAT sounds cool. Right? Right.
-            39: Here's another Essence for your use. This powerful Melee blade can deal powerful damage to all foes in your vicinity. How useful is that?
-            40: Here's another Essence you can prepare to use, from Penthesilea's strength. With its magical paint, we should be able to best powerful foes.
-            41: Here you go: an essence for usage in crafting. It looks like it'll apply powerful bouts of flame and frost alike. Not how I'd want to go out, personally.
-            42: Whoa, this is a powerful Essence. It's potential seems to be magnified based on your Aspected Damage Type. How about giving it a go?
-            43: Okay..! Time for another Essence! This looks to be a Ranged weapon with high damage output at close range.
-            44: This new Essence is great! It's a Ranged weapon with crazy high explosive potential. Just point it towards the bad guys.
-            45: I have a new Essence for you. This is a magical Summon-type weapon that seems to scale with your own potential. Interesting..!
-            46: A Magic Essence is here this time. With cosmic energy, you can blast foes away with superpowered light. Sounds good to me!
-            47: This Melee-type Essence should help. It looks to be a multiple-purpose power-suit with myriad attacks. Now that sounds cool!
-            48: Okay {0}, I have an Essence for you! It seems to create a Magic-type weapon with powerful piercing damage... It sounds rather helpful.
-            49: I've found another Essence you can use... I think. The only thing I can tell is that it makes a Ranged weapon. The rest is up to you.
-            50: Okay- I've got it. Here's a Ranged-type Essence.. it looks to be something pretty powerful! Good luck.
+            1: Ecco un'altra Essenza per te! Puoi farci un'arma a distanza molto particolare. Anche se qualcosa mi dice che sia maledetta...
+            2: In bocca al lupo! Fai attenzione!
+            3: Un'altra Essenza per te. Questa viene da una dea infernale, o così sembra. Pare che sia un'arma da mischia!
+            4: Continua così!
+            5: Ecco un'altra Essenza per te. A quanto pare, arriva direttamente da... 'Midgard'? Wow, sembra potente!
+            6: È tutto per ora. Continua così!
+            7: Altra Essenza in arrivo. Questa spada infuocata infligge danni magici. Causa un'esplosione quando viene caricata a sufficienza!
+            8: Confido che tu sappia cosa fare.
+            9: Ho un'Essenza per te. Questo cimelio contiene un potere in grado di aprire la strada ai meno fortunati.
+            10: Buona fortuna nel crearlo.
+            11: Questa Essenza l'ho creata io! Crea un'arma magica che ti permette di entrare in 'Trance di Farfalla' e ottenere bonus speciali!
+            12: Se puoi, usala! Non sarebbe male vedere il risultato.
+            13: Quest'Essenza può essere usata per un'arma a distanza che incoraggia a non mollare mai il grilletto. Ra-ta-ta-ta-ta!!
+            14: Ahem. Potrebbe esserti d'aiuto!
+            15: Da quest'Essenza può uscire un capolavoro a distanza in grado di lanciare grandi quantità di Naniti. Fa paura!
+            16: Se hai un posto dove metterla, provala!
+            17: Altra Essenza, altra arma a distanza. Puoi caricarne i colpi per far sì che si dividano e colpiscano molti nemici allo stesso tempo!
+            18: Hey, non credi che ci siano un po' troppe opzioni a distanza? Proverò a trovare qualcos'altro.
+            19: Un artefatto da mischia leggendario! Con quest'Essenza potresti produrre un'arma in grado di indebolire seriamente ogni nemico.
+            20: Per una volta, ho un'Essenza per un oggetto di supporto. Genera potenziamenti non da poco per tutto il team, continuando ad usarlo.
+            21: Quest'Essenza da evocatore è ispirata al Guerriero di Luce. Pare essere la chiave d'accesso ad una dimensione contenente un numero infinito di armi!
+            22: Già che ci sei, potresti insultare i tuoi nemici chiamandoli mezzosangue.
+            23: Da quest'Essenza può uscire un'arma a distanza fenomenale, che costa mana per essere utilizzata, ma che possiede un moltiplicatore critico enorme!
+            24: Dici che si può abusare? Già, è vero. Ma è una scelta tua.
+            25: Questa è un'arma per un evocatore. Il suo danno scala in maniera strana, e sferra colpi ad una velocità pazzesca.
+            26: Pare che sia anche il riflesso del tuo cuore...? O qualcosa di simile, non ho idea di cosa voglia dire.
+            27: Un'altra arma per evocatori, anche se va usata in mischia. Ha il potere di trasportarti in un istante in una posizione predefinita.
+            28: Un'abilità simile è pericolosa, ma altrettanto utile... Basta non farsi colpire, giusto?
+            29: Quest'arma è particolare. Usarla replicherà i tuoi attacchi, e diventerà ancora più forte usando un po' di mana.
+            30: Quest'Essenza è di un mondo costantemente in guerra... Ha un potere enorme, ma usarla senza riserbo farà del male anche a te.
+            31: Con quest'Essenza puoi produrre un'arma da mischia che può cambiare forma tra spada, falce e arma da fuoco. A dir poco versatile!
+            32: Okay, ecco un'Essenza da mischia. Si tratta di una gigantesca lancia in grado di trasformarsi in un cannone! Che potenza!
+            33: Hey {0}, questa è per te. È un'arma da mischia che infligge un danno pauroso per un breve periodo, lasciandoti vulnerabile in seguito... Vale la pena provarla!
+            34: Ecco un'altra Essenza che potresti usare! Ha una sinergia incredibile con le evocazioni e si potenzia insieme a te, quindi è il compagno ideale se vuoi combattere insieme a qualcuno!
+            35: Ed ecco un'altra Essenza! Quest'arma da evocatore farà apparire una misteriosa stellina senziente... È troppo carina... Comunque...
+            36: Sembra essere abbastanza forte, ma per sprigionare il suo pieno potere dovrai raccogliere dei Frammenti Stellari, che potrebbe rivelarsi pericoloso. In bocca al lupo!
+            37: Okay. Con quest'Essenza puoi creare un'arma da mischia in grado di assumere ben cinque forme uniche, con ognuna che conferisce potenziamenti diversi.
+            38: Tieni, un'Essenza per un'arma magica! È una falce con una portata fuori dal mondo, in equilibrio tra luce e ombra. Incredibile, vero? Vero??
+            39: Ecco, un'altra Essenza. Questa lama infligge potente danno da mischia a tutti i nemici nei dintorni. Piuttosto utile, no?
+            40: Sconfiggendo Penthesilea, hai ottenuto quest'Essenza! Grazie alla sua vernice magica, saremo sicuramente in grado di sconfiggere potenti nemici.
+            41: Un'altra Essenza in arrivo! Con quest'arma i nemici verranno avvolti da ondate di fuoco e gelo alternate! Se dovessi scegliere come morire, non sarebbe in questo modo.
+            42: Whoa, questa si che è un'Essenza! Pare che il suo potenziale cambi completamente in base al tipo di danno che deciderai di applicarle. Merita di essere provata, secondo me!
+            43: Okay, è il momento di un'altra Essenza! Stavolta è un'arma a distanza, che però infligge più danno a bruciapelo.
+            44: Quest'Essenza è fantastica! È un'arma a distanza con un potenziale esplosivo spaventoso. Occhio a dove miri...
+            45: Ho una nuova Essenza per te. Sembra che il potere di quest'arma da evocatore cresca insieme a te... Mica male!
+            46: Ho un'Essenza per un'arma magica pronta! È in grado di concentrare l'energia cosmica circostante in un iperraggio di luce. Quasi eccessivo!
+            47: Sicuramente quest'Essenza da mischia ti aiuterà. Sembra essere una... tuta? Armata fino ai denti! Il futuro è qui!
+            48: Okay {0}, ho un'Essenza per te! Puoi crearci un'arma magica capace di perforare le difese nemiche. Potrebbe tornare utile!
+            49: Credo di aver trovato un'altra Essenza? Puoi crearci un'arma a distanza, ma non so dirti altro, mi spiace. Dovrai scoprirlo da te.
+            50: Okay- Ci sono. Ecco un'Essenza per un'arma a distanza. Sembra essere piuttosto potente! Buona fortuna!
             51: A Summon weapon's essence is here. It looks suspiciously like a whip... but it also can summon minions? Now that's peak.
             52: What? 'Peak?' It's new age lingo- You've definitely heard it before. You know? Like.. mountain peak? The top.. of something? Never mind.
             53: Okay- this is a Melee weapon! My instincts tell me it's perfect for high-defense foes. What are you waiting for?
@@ -551,9 +553,9 @@
           }
           Perseus:
           {
-            1: It's good to see you again, {0}. I'm not here to ask for your help- instead, I have a gift for you.
-            2: You have proven yourself as a true warrior; as such, you should have a weapon befitting your strength.
-            3: So, I bestow this weapon unto you. Good luck, and good hunting.
+            1: Ci incontriamo di nuovo, {0}. Non sono qui per chiedere il tuo aiuto, anzi. Ho un regalo per te.
+            2: Hai dimostrato di essere un grande guerriero. Pertanto, meriti di possedere uno strumento adatto alla tua forza.
+            3: Ragion per cui, ora quest'arma è tua. Buona fortuna, e buona caccia.
           }
         }
         BossDialogue:
