@@ -290,32 +290,38 @@ namespace StarsAbove
                 return;
             }
             //Looking for "a magical book with the capability to spurt out water"
-            for (int i = 0; i < Player.inventory.Length; i++)
+            for (int b = 0; b < NeededItem.Length; b++)
             {
-                if (Player.inventory[i].type == NeededItem[0])//Change me!
-                {
-                    //The correct item!
-
-                    //Play the good job dialouge.
-                    Player.GetModPlayer<StarsAbovePlayer>().sceneID = 200;
-                    ActivateVNDialogue(Player);
-
-                    //Give the player the reward, a tier 1 Bag
-                    Player.QuickSpawnItem(null, ModContent.ItemType<StellarFociGrabBagTier1>());
-
-                    //Reset values.
-                    AcceptedGarridineQuest = false;
-                    GarridineQuest = 0;
-
-                    //Garridine goes on cooldown!
-                    GarridineQuestCooldown = 18000;//5 minute cooldown.
-                    return;
-                }
-                else
+                for (int i = 0; i < Player.inventory.Length; i++)
                 {
 
+                    if (Player.inventory[i].type == NeededItem[b])//Change me!
+                    {
+                        //The correct item!
+
+                        //Play the good job dialouge.
+                        Player.GetModPlayer<StarsAbovePlayer>().sceneID = 200;
+                        ActivateVNDialogue(Player);
+
+                        //Give the player the reward, a tier 1 Bag
+                        Player.QuickSpawnItem(null, ModContent.ItemType<StellarFociGrabBagTier1>());
+
+                        //Reset values.
+                        AcceptedGarridineQuest = false;
+                        GarridineQuest = 0;
+
+                        //Garridine goes on cooldown!
+                        GarridineQuestCooldown = 18000;//5 minute cooldown.
+                        return;
+                    }
+                    else
+                    {
+
+                    }
                 }
             }
+                
+            
             //If the item wasn't found...
 
             // If the item wasn't found, play the quest dialogue again. (This won't appear if the item is found because of the return statement.

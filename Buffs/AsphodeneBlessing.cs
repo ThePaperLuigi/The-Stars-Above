@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using System;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -75,8 +76,8 @@ namespace StarsAbove.Buffs
                 }
                 if (player.GetModPlayer<StarsAbovePlayer>().astralmantle == 2)
                 {
-                    
-                        player.statDefense += player.statMana/10;
+                    player.statDefense += Math.Min(player.statMana / 10, (int)(player.statLifeMax2 * 0.05));
+                        
                     
                 }
                 if (player.GetModPlayer<StarsAbovePlayer>().beyondinfinity == 2)

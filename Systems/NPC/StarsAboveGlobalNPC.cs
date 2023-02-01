@@ -125,6 +125,7 @@ namespace StarsAbove
 
 					Rectangle textPos = new Rectangle((int)npc.position.X, (int)npc.position.Y - 20, npc.width, npc.height);
 					CombatText.NewText(textPos, new Color(230, 164, 164, 240), $"{Math.Min((int)(npc.lifeMax * 0.03), 120)}", false, false);
+					return;
 				}
 				if (npc.HasBuff(BuffID.Frostburn))
 				{
@@ -142,6 +143,7 @@ namespace StarsAbove
 
 					Rectangle textPos = new Rectangle((int)npc.position.X, (int)npc.position.Y - 20, npc.width, npc.height);
 					CombatText.NewText(textPos, new Color(164, 220, 230, 240), $"{Math.Min((int)(npc.lifeMax * 0.03), 120)}", false, false);
+					return;
 				}
 				if (npc.HasBuff(BuffID.CursedInferno))
 				{
@@ -158,6 +160,7 @@ namespace StarsAbove
 					}
 					Rectangle textPos = new Rectangle((int)npc.position.X, (int)npc.position.Y - 20, npc.width, npc.height);
 					CombatText.NewText(textPos, new Color(193, 230, 164, 240), $"{Math.Min((int)(npc.lifeMax * 0.03), 120)}", false, false);
+					return;
 				}
 				if (npc.HasBuff(BuffID.ShadowFlame))
 				{
@@ -175,6 +178,7 @@ namespace StarsAbove
 
 					Rectangle textPos = new Rectangle((int)npc.position.X, (int)npc.position.Y - 20, npc.width, npc.height);
 					CombatText.NewText(textPos, new Color(211, 164, 230, 240), $"{Math.Min((int)(npc.lifeMax * 0.03), 120)}", false, false);
+					return;
 				}
 			}
 			if (Hyperburn)
