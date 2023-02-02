@@ -50,6 +50,9 @@ namespace StarsAbove
 {
     public class StarsAbovePlayer : ModPlayer
     {
+        //Includes Stellar Array values, Dialogue flags, and Stellar Nova stuff.
+
+        //Also includes (OLD) Boss variables
 
         public int firstJoinedWorld = 0;//Sets the world so progress doesn't get overwritten by joining other worlds.
         public string firstJoinedWorldName;
@@ -464,6 +467,7 @@ namespace StarsAbove
         public int FarewellWeaponDialogue = 0;
         public int UmbraWeaponDialogue = 0;
         public int SaltwaterWeaponDialogue = 0;
+        public int ChaosWeaponDialogue = 0;
 
 
         //Subworld dialogues
@@ -1033,6 +1037,7 @@ namespace StarsAbove
             tag["FarewellWeaponDialogue"] = FarewellWeaponDialogue;
             tag["UmbraWeaponDialogue"] = UmbraWeaponDialogue;
             tag["SaltwaterWeaponDialogue"] = SaltwaterWeaponDialogue;
+            tag["ChaosWeaponDialogue"] = ChaosWeaponDialogue;
 
 
             tag["observatoryDialogue"] = observatoryDialogue;
@@ -1313,6 +1318,7 @@ namespace StarsAbove
             FarewellWeaponDialogue = tag.GetInt("FarewellWeaponDialogue");
             UmbraWeaponDialogue = tag.GetInt("UmbraWeaponDialogue");
             SaltwaterWeaponDialogue = tag.GetInt("SaltwaterWeaponDialogue");
+            ChaosWeaponDialogue = tag.GetInt("ChaosWeaponDialogue");
 
 
             observatoryDialogue = tag.GetInt("observatoryDialogue");
@@ -3774,6 +3780,15 @@ namespace StarsAbove
                     if (SaltwaterWeaponDialogue == 0 && NPC.downedPirates)
                     {
                         SaltwaterWeaponDialogue = 1;
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                        NewDiskDialogue = true;
+                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                        return;
+                    }
+                    if (ChaosWeaponDialogue == 0 && NPC.downedQueenSlime)
+                    {
+                        ChaosWeaponDialogue = 1;
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);

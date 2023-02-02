@@ -612,6 +612,13 @@ namespace StarsAbove
                       149,//Corresponding dialogue ID.
                       "Defeat Queen Slime."));
                 WeaponArchiveList.Add(new WeaponArchiveListing(
+                     "Queen Slime Weapon", //Name of the archive listing.
+                     $"Grants the Essence for " +
+                     $"[i:{ItemType<Spatial>()}] Adornment of the Chaotic God.", //Description of the listing.
+                     player.ChaosWeaponDialogue == 2, //Unlock requirements.
+                     163,
+                     "Defeat Queen Slime, then wait.")); //Corresponding dialogue ID.
+                WeaponArchiveList.Add(new WeaponArchiveListing(
                       "Vagrant of Space and Time Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Astral>()}] Izanagi's Edge " +
