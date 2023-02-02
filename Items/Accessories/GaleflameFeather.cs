@@ -26,7 +26,7 @@ namespace StarsAbove.Items.Accessories
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual) {
-			player.GetModPlayer<StarsAbovePlayer>().GaleflameFeather = true;
+			player.GetModPlayer<WeaponPlayer>().GaleflameFeather = true;
 			if(player.velocity.Y != 0)
             {
 				player.GetDamage(DamageClass.Generic) += 0.05f;

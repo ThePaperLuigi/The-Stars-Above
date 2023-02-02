@@ -26,7 +26,7 @@ namespace StarsAbove.Items.Accessories
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual) {
-			player.GetModPlayer<StarsAbovePlayer>().ToMurder = true;
+			player.GetModPlayer<WeaponPlayer>().ToMurder = true;
 
 			if (player.statDefense < 30)
 			{

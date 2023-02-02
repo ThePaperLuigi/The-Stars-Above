@@ -74,7 +74,7 @@ namespace StarsAbove.Projectiles.VirtuesEdge
 			{
 				player.AddBuff(BuffType<CelestialVoidBuff>(), 480);
 
-				player.GetModPlayer<StarsAbovePlayer>().BlackHolePosition = Projectile.Center;
+				player.GetModPlayer<WeaponPlayer>().BlackHolePosition = Projectile.Center;
 				player.GetModPlayer<StarsAbovePlayer>().activateBlackHoleShockwaveEffect = true;
 				Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0, Mod.Find<ModProjectile>("CelestialVoidVFX").Type, 0, 0f, 0, 0);
 

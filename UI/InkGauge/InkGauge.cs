@@ -107,18 +107,18 @@ namespace StarsAbove.UI
 		}
 
 		public override void Draw(SpriteBatch spriteBatch) {
-			if (!(Main.LocalPlayer.HeldItem.ModItem is PenthesileaMuse) && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().paintVisible == true)
+			if (!(Main.LocalPlayer.HeldItem.ModItem is PenthesileaMuse) && Main.LocalPlayer.GetModPlayer<WeaponPlayer>().paintVisible == true)
 				return;
 
 			base.Draw(spriteBatch);
 		}
 		private void redClick(UIMouseEvent evt, UIElement listeningElement)
 		{
-			if (!(Main.LocalPlayer.HeldItem.ModItem is PenthesileaMuse && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().paintVisible == true))
+			if (!(Main.LocalPlayer.HeldItem.ModItem is PenthesileaMuse && Main.LocalPlayer.GetModPlayer<WeaponPlayer>().paintVisible == true))
 				return;
 			
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenColor = 0;
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().paintVisible = false;
+			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().chosenColor = 0;
+			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().paintVisible = false;
 			
 
 
@@ -128,11 +128,11 @@ namespace StarsAbove.UI
 		}
 		private void orangeClick(UIMouseEvent evt, UIElement listeningElement)
 		{
-			if (!(Main.LocalPlayer.HeldItem.ModItem is PenthesileaMuse && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().paintVisible == true))
+			if (!(Main.LocalPlayer.HeldItem.ModItem is PenthesileaMuse && Main.LocalPlayer.GetModPlayer<WeaponPlayer>().paintVisible == true))
 				return;
 
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenColor = 1;
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().paintVisible = false;
+			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().chosenColor = 1;
+			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().paintVisible = false;
 
 
 
@@ -142,11 +142,11 @@ namespace StarsAbove.UI
 		}
 		private void yellowClick(UIMouseEvent evt, UIElement listeningElement)
 		{
-			if (!(Main.LocalPlayer.HeldItem.ModItem is PenthesileaMuse && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().paintVisible == true))
+			if (!(Main.LocalPlayer.HeldItem.ModItem is PenthesileaMuse && Main.LocalPlayer.GetModPlayer<WeaponPlayer>().paintVisible == true))
 				return;
 
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenColor = 2;
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().paintVisible = false;
+			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().chosenColor = 2;
+			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().paintVisible = false;
 
 
 
@@ -156,11 +156,11 @@ namespace StarsAbove.UI
 		}
 		private void greenClick(UIMouseEvent evt, UIElement listeningElement)
 		{
-			if (!(Main.LocalPlayer.HeldItem.ModItem is PenthesileaMuse && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().paintVisible == true))
+			if (!(Main.LocalPlayer.HeldItem.ModItem is PenthesileaMuse && Main.LocalPlayer.GetModPlayer<WeaponPlayer>().paintVisible == true))
 				return;
 
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenColor = 3;
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().paintVisible = false;
+			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().chosenColor = 3;
+			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().paintVisible = false;
 
 
 
@@ -170,11 +170,11 @@ namespace StarsAbove.UI
 		}
 		private void blueClick(UIMouseEvent evt, UIElement listeningElement)
 		{
-			if (!(Main.LocalPlayer.HeldItem.ModItem is PenthesileaMuse && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().paintVisible == true))
+			if (!(Main.LocalPlayer.HeldItem.ModItem is PenthesileaMuse && Main.LocalPlayer.GetModPlayer<WeaponPlayer>().paintVisible == true))
 				return;
 
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenColor = 4;
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().paintVisible = false;
+			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().chosenColor = 4;
+			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().paintVisible = false;
 
 
 
@@ -184,11 +184,11 @@ namespace StarsAbove.UI
 		}
 		private void purpleClick(UIMouseEvent evt, UIElement listeningElement)
 		{
-			if (!(Main.LocalPlayer.HeldItem.ModItem is PenthesileaMuse && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().paintVisible == true))
+			if (!(Main.LocalPlayer.HeldItem.ModItem is PenthesileaMuse && Main.LocalPlayer.GetModPlayer<WeaponPlayer>().paintVisible == true))
 				return;
 
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenColor = 5;
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().paintVisible = false;
+			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().chosenColor = 5;
+			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().paintVisible = false;
 
 
 
@@ -199,7 +199,7 @@ namespace StarsAbove.UI
 		protected override void DrawSelf(SpriteBatch spriteBatch) {
 			base.DrawSelf(spriteBatch);
 
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			
 			Rectangle redArea = red.GetInnerDimensions().ToRectangle();
 			Rectangle orangeArea = orange.GetInnerDimensions().ToRectangle();
@@ -237,7 +237,7 @@ namespace StarsAbove.UI
 			
 		}
 		public override void Update(GameTime gameTime) {
-			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().paintVisible == true))
+			if (!(Main.LocalPlayer.GetModPlayer<WeaponPlayer>().paintVisible == true))
 			{
 				area.Remove();
 				return;

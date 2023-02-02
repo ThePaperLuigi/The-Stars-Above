@@ -15,7 +15,7 @@ namespace StarsAbove.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.GetModPlayer<StarsAbovePlayer>().euthymiaActive = true;
+            player.GetModPlayer<WeaponPlayer>().euthymiaActive = true;
         }
     }
 }

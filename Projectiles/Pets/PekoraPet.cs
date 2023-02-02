@@ -31,7 +31,7 @@ namespace StarsAbove.Projectiles.Pets
 		public override void AI()
 		{
 			Player player = Main.player[Projectile.owner];
-			StarsAbovePlayer modPlayer = player.GetModPlayer<StarsAbovePlayer>();
+			WeaponPlayer modPlayer = player.GetModPlayer<WeaponPlayer>();
 			if (player.dead)
 			{
 				modPlayer.PekoraPet = false;

@@ -72,7 +72,7 @@ namespace StarsAbove.Projectiles.Adornment
 					Projectile.ai[1]++;
 
 				}
-				Projectile.ai[1] += 1 + (player.GetModPlayer<StarsAbovePlayer>().activeMinions * 0.05f);//Increase attack speed by 5% per each minion summoned.
+				Projectile.ai[1] += 1 + (player.GetModPlayer<WeaponPlayer>().activeMinions * 0.05f);//Increase attack speed by 5% per each minion summoned.
 				float rotation = (float)Math.Atan2(Projectile.Center.Y - (targetCenter.Y), Projectile.Center.X - (targetCenter.X)) + MathHelper.ToRadians(-90);
 				Projectile.rotation = rotation;
 			}

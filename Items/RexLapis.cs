@@ -61,7 +61,7 @@ namespace StarsAbove.Items
 		public override bool CanUseItem(Player player)
 		{
 			
-			if (player.GetModPlayer<StarsAbovePlayer>().comboCooldown > 0)
+			if (player.GetModPlayer<WeaponPlayer>().comboCooldown > 0)
 			{
 				return false;
 			}

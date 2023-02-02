@@ -64,7 +64,7 @@ namespace StarsAbove.Projectiles.TwinStars
             {
 				Projectile.Kill();
             }
-			player.GetModPlayer<StarsAbovePlayer>().starPosition2 = Projectile.Center;
+			player.GetModPlayer<WeaponPlayer>().starPosition2 = Projectile.Center;
 			//player.heldProj = projectile.whoAmI;
 			Vector2 ownerMountedCenter = player.RotatedRelativePoint(player.MountedCenter, true);
 			Projectile.direction = player.direction;
@@ -87,7 +87,7 @@ namespace StarsAbove.Projectiles.TwinStars
 
 			//Increase the counter/angle in degrees by 1 point, you can change the rate here too, but the orbit may look choppy depending on the value
 			Projectile.ai[1] += 0.5f;
-			Projectile.rotation = Vector2.Normalize(player.GetModPlayer<StarsAbovePlayer>().starPosition1 - Projectile.Center).ToRotation();
+			Projectile.rotation = Vector2.Normalize(player.GetModPlayer<WeaponPlayer>().starPosition1 - Projectile.Center).ToRotation();
 
 
 			for (int i = 0; i < 30; i++)

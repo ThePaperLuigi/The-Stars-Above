@@ -74,7 +74,7 @@ namespace StarsAbove.Items
 			Vector2 arrowVelocity2 = direction * launchSpeed2;
 			Vector2 arrowVelocity3 = direction * launchSpeed3;
 
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			if (player.altFunctionUse == 2)
 			{
 				if (modPlayer.ceruleanFlameGauge >= 100)

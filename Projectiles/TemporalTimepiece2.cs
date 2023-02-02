@@ -34,7 +34,7 @@ namespace StarsAbove.Projectiles
 		{
 			Projectile.timeLeft = 10;
 			Player player = Main.player[Projectile.owner];
-			if (player.dead && !player.active || player.GetModPlayer<StarsAbovePlayer>().kroniicHeld < 0)
+			if (player.dead && !player.active || player.GetModPlayer<WeaponPlayer>().kroniicHeld < 0)
 			{
 				Projectile.Kill();
 			}
@@ -58,7 +58,7 @@ namespace StarsAbove.Projectiles
 
 			//Increase the counter/angle in degrees by 1 point, you can change the rate here too, but the orbit may look choppy depending on the value
 			//Increase the counter/angle in degrees by 1 point, you can change the rate here too, but the orbit may look choppy depending on the value
-			if (player.GetModPlayer<StarsAbovePlayer>().kroniicTeleport)
+			if (player.GetModPlayer<WeaponPlayer>().kroniicTeleport)
 			{
 				Projectile.ai[1] += -3f;
 			}

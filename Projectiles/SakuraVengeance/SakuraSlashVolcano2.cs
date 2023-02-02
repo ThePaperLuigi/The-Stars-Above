@@ -58,7 +58,7 @@ namespace StarsAbove.Projectiles.SakuraVengeance
             }
 			//projectile.timeLeft = 10;
 			
-			//if (player.dead && !player.active || player.GetModPlayer<StarsAbovePlayer>().kroniicHeld < 0)
+			//if (player.dead && !player.active || player.GetModPlayer<WeaponPlayer>().kroniicHeld < 0)
 			if (player.dead && !player.active)
 			{
 				Projectile.Kill();
@@ -132,10 +132,10 @@ namespace StarsAbove.Projectiles.SakuraVengeance
 
 			if (!target.active)//On kill
 			{
-				player.GetModPlayer<StarsAbovePlayer>().VengeanceGauge += 8;
-				if (player.GetModPlayer<StarsAbovePlayer>().VengeanceGauge >= 100)
+				player.GetModPlayer<WeaponPlayer>().VengeanceGauge += 8;
+				if (player.GetModPlayer<WeaponPlayer>().VengeanceGauge >= 100)
 				{
-					player.GetModPlayer<StarsAbovePlayer>().VengeanceGauge = 100;
+					player.GetModPlayer<WeaponPlayer>().VengeanceGauge = 100;
 
 				}
 				for (int i = 0; i < 8; i++)

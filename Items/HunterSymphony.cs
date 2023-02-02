@@ -72,7 +72,7 @@ namespace StarsAbove.Items
 
 		public override bool CanUseItem(Player player)
 		{
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			if (player.altFunctionUse == 2)
 			{
 				if (modPlayer.SymphonySongsPlayed >= 3)
@@ -111,7 +111,7 @@ namespace StarsAbove.Items
 		}
         public override bool? UseItem(Player player)
         {
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			if (player.altFunctionUse == 2)
 			{
 				
@@ -121,7 +121,7 @@ namespace StarsAbove.Items
         public override void HoldItem(Player player)
         {
 			//weaponInUseTimer = 180;
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			modPlayer.HunterSymphonyHeld = true;
 			weaponInUseTimer--;
 			if(weaponInUseTimer < 0)
@@ -151,7 +151,7 @@ namespace StarsAbove.Items
        
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			if (player.altFunctionUse != 2)
             {
 				if (player.direction == 1)

@@ -58,7 +58,7 @@ namespace StarsAbove.Items
 		}
 		public override bool CanUseItem(Player player)
 		{
-			var modPlayer = player.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = player.GetModPlayer<WeaponPlayer>();
 			if (player.altFunctionUse == 2)
 			{
 				if (modPlayer.renegadeGauge >= 50)
@@ -150,9 +150,9 @@ namespace StarsAbove.Items
 			SoundEngine.PlaySound(StarsAboveAudio.SFX_HuckleberryShoot, player.Center);
 			if (player.altFunctionUse == 2)
 			{
-				damage += (player.GetModPlayer<StarsAbovePlayer>().renegadeGauge - 50);
+				damage += (player.GetModPlayer<WeaponPlayer>().renegadeGauge - 50);
 				Projectile.NewProjectile(source, position.X, position.Y, Disk.X, Disk.Y, ProjectileType<GyroDisk>(), damage, knockback, player.whoAmI);
-				player.GetModPlayer<StarsAbovePlayer>().renegadeGauge = 0;
+				player.GetModPlayer<WeaponPlayer>().renegadeGauge = 0;
 			}
 			else
 			{

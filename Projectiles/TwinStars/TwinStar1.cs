@@ -64,7 +64,7 @@ namespace StarsAbove.Projectiles.TwinStars
             {
 				Projectile.Kill();
             }
-			player.GetModPlayer<StarsAbovePlayer>().starPosition1 = Projectile.Center;
+			player.GetModPlayer<WeaponPlayer>().starPosition1 = Projectile.Center;
 			//player.heldProj = projectile.whoAmI;
 			Vector2 ownerMountedCenter = player.RotatedRelativePoint(player.MountedCenter, true);
 			Projectile.direction = player.direction;

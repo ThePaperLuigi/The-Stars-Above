@@ -45,7 +45,7 @@ namespace StarsAbove.Projectiles
 					Projectile.alpha = 100;
 				}
 
-			if (projOwner.GetModPlayer<StarsAbovePlayer>().yunlaiTeleport == false)
+			if (projOwner.GetModPlayer<WeaponPlayer>().yunlaiTeleport == false)
 			{
 				Projectile.Kill();
 			}

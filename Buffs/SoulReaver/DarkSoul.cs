@@ -15,7 +15,7 @@ namespace StarsAbove.Buffs.SoulReaver
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.GetDamage(DamageClass.Generic) += (float)(player.GetModPlayer<StarsAbovePlayer>().SoulReaverSouls * 0.02);
+            player.GetDamage(DamageClass.Generic) += (float)(player.GetModPlayer<WeaponPlayer>().SoulReaverSouls * 0.02);
         }
     }
 }

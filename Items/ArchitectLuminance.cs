@@ -146,7 +146,7 @@ namespace StarsAbove.Items
 		{
 			// 
 			// 60 frames = 1 second
-			//player.GetModPlayer<StarsAbovePlayer>().radiance++;
+			//player.GetModPlayer<WeaponPlayer>().radiance++;
 			
 		}
 

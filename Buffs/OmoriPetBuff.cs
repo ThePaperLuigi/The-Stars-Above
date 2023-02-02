@@ -9,13 +9,13 @@ namespace StarsAbove.Buffs
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Monochrome Plush");
-			Description.SetDefault("A monochrome plush is following you");
+			Description.SetDefault("It's been here as long as you can remember");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}
 
 		public override void Update(Player player, ref int buffIndex) {
-			player.GetModPlayer<StarsAbovePlayer>().OmoriPet = true;
+			player.GetModPlayer<WeaponPlayer>().OmoriPet = true;
 			player.buffTime[buffIndex] = 18000;
 			bool petProjectileNotSpawned = player.ownedProjectileCounts[ProjectileType<Projectiles.Pets.OmoriPet>()] <= 0;
 			if (petProjectileNotSpawned && player.whoAmI == Main.myPlayer) {

@@ -53,13 +53,13 @@ namespace StarsAbove.Items
 			
 			if (player.altFunctionUse == 2)
 			{
-				if (player.statMana >= 40 && player.GetModPlayer<StarsAbovePlayer>().RadTimerEnabled == false && player.GetModPlayer<StarsAbovePlayer>().RadBullets <= 0)
+				if (player.statMana >= 40 && player.GetModPlayer<WeaponPlayer>().RadTimerEnabled == false && player.GetModPlayer<WeaponPlayer>().RadBullets <= 0)
 				{
-					player.GetModPlayer<StarsAbovePlayer>().RadReload = false;
+					player.GetModPlayer<WeaponPlayer>().RadReload = false;
 					player.statMana -= 40;
 					player.manaRegenDelay = 220;
-					player.GetModPlayer<StarsAbovePlayer>().RadTimer = 0;
-					player.GetModPlayer<StarsAbovePlayer>().RadTimerEnabled = true;
+					player.GetModPlayer<WeaponPlayer>().RadTimer = 0;
+					player.GetModPlayer<WeaponPlayer>().RadTimerEnabled = true;
 					if (combo < 8)
 					{
 						combo++;
@@ -67,23 +67,23 @@ namespace StarsAbove.Items
 				}
 				else
 				{
-					if (player.GetModPlayer<StarsAbovePlayer>().RadTimer > 40 && player.GetModPlayer<StarsAbovePlayer>().RadTimer < 60 && player.GetModPlayer<StarsAbovePlayer>().RadTimerEnabled == true && player.GetModPlayer<StarsAbovePlayer>().RadBullets <= 0)//Success!
+					if (player.GetModPlayer<WeaponPlayer>().RadTimer > 40 && player.GetModPlayer<WeaponPlayer>().RadTimer < 60 && player.GetModPlayer<WeaponPlayer>().RadTimerEnabled == true && player.GetModPlayer<WeaponPlayer>().RadBullets <= 0)//Success!
 					{
 						SoundEngine.PlaySound(StarsAboveAudio.SFX_RadGunSuccess, player.Center);
 						player.statMana += 20;
-						player.GetModPlayer<StarsAbovePlayer>().RadTimerEnabled = false;
-						player.GetModPlayer<StarsAbovePlayer>().RadBullets = 12;
-						player.GetModPlayer<StarsAbovePlayer>().RadReload = true;
+						player.GetModPlayer<WeaponPlayer>().RadTimerEnabled = false;
+						player.GetModPlayer<WeaponPlayer>().RadBullets = 12;
+						player.GetModPlayer<WeaponPlayer>().RadReload = true;
 						return true;
 					}
 					else
 					{
-						if (player.GetModPlayer<StarsAbovePlayer>().RadTimer > 20 && player.GetModPlayer<StarsAbovePlayer>().RadTimer < 40 || player.GetModPlayer<StarsAbovePlayer>().RadTimer > 60 && player.GetModPlayer<StarsAbovePlayer>().RadTimerEnabled == true && player.GetModPlayer<StarsAbovePlayer>().RadBullets <= 0)//Failure
+						if (player.GetModPlayer<WeaponPlayer>().RadTimer > 20 && player.GetModPlayer<WeaponPlayer>().RadTimer < 40 || player.GetModPlayer<WeaponPlayer>().RadTimer > 60 && player.GetModPlayer<WeaponPlayer>().RadTimerEnabled == true && player.GetModPlayer<WeaponPlayer>().RadBullets <= 0)//Failure
 						{
-							player.GetModPlayer<StarsAbovePlayer>().RadTimerEnabled = false;
+							player.GetModPlayer<WeaponPlayer>().RadTimerEnabled = false;
 							SoundEngine.PlaySound(StarsAboveAudio.SFX_RadGunFail, player.Center);
-							player.GetModPlayer<StarsAbovePlayer>().RadBullets = 12;
-							player.GetModPlayer<StarsAbovePlayer>().RadTimer = 0;
+							player.GetModPlayer<WeaponPlayer>().RadBullets = 12;
+							player.GetModPlayer<WeaponPlayer>().RadTimer = 0;
 							combo = 0;
 							return true;
 						}
@@ -94,9 +94,9 @@ namespace StarsAbove.Items
 					}
 				}
 			}
-			if (player.GetModPlayer<StarsAbovePlayer>().RadBullets > 0)
+			if (player.GetModPlayer<WeaponPlayer>().RadBullets > 0)
 			{
-				player.GetModPlayer<StarsAbovePlayer>().RadBullets--;
+				player.GetModPlayer<WeaponPlayer>().RadBullets--;
 				return true;
 			}
 			else
@@ -109,18 +109,18 @@ namespace StarsAbove.Items
 		public override void HoldItem(Player player)
 		{
 			
-			if (player.GetModPlayer<StarsAbovePlayer>().RadTimer >= 100 && player.GetModPlayer<StarsAbovePlayer>().RadTimerEnabled)//fail
+			if (player.GetModPlayer<WeaponPlayer>().RadTimer >= 100 && player.GetModPlayer<WeaponPlayer>().RadTimerEnabled)//fail
 			{
-				player.GetModPlayer<StarsAbovePlayer>().RadTimerEnabled = false;
+				player.GetModPlayer<WeaponPlayer>().RadTimerEnabled = false;
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_RadGunFail, player.Center);
-				player.GetModPlayer<StarsAbovePlayer>().RadBullets = 12;
-				player.GetModPlayer<StarsAbovePlayer>().RadTimer = 0;
+				player.GetModPlayer<WeaponPlayer>().RadBullets = 12;
+				player.GetModPlayer<WeaponPlayer>().RadTimer = 0;
 				combo = 0;
 				
 			}
-			if (player.GetModPlayer<StarsAbovePlayer>().RadTimerEnabled)
+			if (player.GetModPlayer<WeaponPlayer>().RadTimerEnabled)
 			{
-				player.GetModPlayer<StarsAbovePlayer>().RadTimer+= 2 + (combo / 70);
+				player.GetModPlayer<WeaponPlayer>().RadTimer+= 2 + (combo / 70);
 			}
 			
 			base.HoldItem(player);
@@ -141,7 +141,7 @@ namespace StarsAbove.Items
 			}
 			else
 			{
-				if (player.GetModPlayer<StarsAbovePlayer>().RadReload)
+				if (player.GetModPlayer<WeaponPlayer>().RadReload)
 				{
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, velocity.X, velocity.Y,ProjectileType<RadRound>(), damage * 1 + (combo * 6), knockback * 2, player.whoAmI, 0f);
 

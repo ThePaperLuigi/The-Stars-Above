@@ -73,7 +73,7 @@ namespace StarsAbove.Projectiles
 			}
 			Projectile.timeLeft = 10;
 			Player player = Main.player[Projectile.owner];
-			if (player.dead && !player.active || !player.GetModPlayer<StarsAbovePlayer>().euthymiaActive)
+			if (player.dead && !player.active || !player.GetModPlayer<WeaponPlayer>().euthymiaActive)
 			{
 				Projectile.Kill();
 			}

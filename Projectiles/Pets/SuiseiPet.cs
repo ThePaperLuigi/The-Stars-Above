@@ -40,7 +40,7 @@ namespace StarsAbove.Projectiles.Pets
 		{
 			Projectile.velocity.X *= 1.00f;
 			Player player = Main.player[Projectile.owner];
-			StarsAbovePlayer modPlayer = player.GetModPlayer<StarsAbovePlayer>();
+			WeaponPlayer modPlayer = player.GetModPlayer<WeaponPlayer>();
 
 			
 

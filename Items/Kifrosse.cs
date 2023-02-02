@@ -83,7 +83,7 @@ namespace StarsAbove.Items
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) {
 
-			//if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue($"{player.GetModPlayer<StarsAbovePlayer>().activeMinions} minions out of a max of {player.maxMinions}"), 250, 100, 247);}
+			//if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue($"{player.GetModPlayer<WeaponPlayer>().activeMinions} minions out of a max of {player.maxMinions}"), 250, 100, 247);}
 			for (int l = 0; l < Main.projectile.Length; l++)
 			{
 				Projectile proj = Main.projectile[l];
@@ -107,7 +107,7 @@ namespace StarsAbove.Items
 			
 			position = Main.MouseWorld;
 
-			if (player.GetModPlayer<StarsAbovePlayer>().activeMinions + 9 <= player.maxMinions)
+			if (player.GetModPlayer<WeaponPlayer>().activeMinions + 9 <= player.maxMinions)
 			{
 				//if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue($"Tried 9"), 250, 100, 247);}
 
@@ -118,7 +118,7 @@ namespace StarsAbove.Items
 				Main.projectile[index].originalDamage = damage;
 				return false;
 			}
-			if (player.GetModPlayer<StarsAbovePlayer>().activeMinions + 8 == player.maxMinions)
+			if (player.GetModPlayer<WeaponPlayer>().activeMinions + 8 == player.maxMinions)
 			{
 				player.AddBuff(BuffType<Buffs.Kifrosse.KifrosseBuff8>(), 2);
 				
@@ -127,7 +127,7 @@ namespace StarsAbove.Items
 				Main.projectile[index].originalDamage = damage;
 				return false;
 			}
-			if(player.GetModPlayer<StarsAbovePlayer>().activeMinions + 7 == player.maxMinions)
+			if(player.GetModPlayer<WeaponPlayer>().activeMinions + 7 == player.maxMinions)
 			{
 				player.AddBuff(BuffType<Buffs.Kifrosse.KifrosseBuff7>(), 2);
 				
@@ -136,7 +136,7 @@ namespace StarsAbove.Items
 				Main.projectile[index].originalDamage = damage;
 				return false;
 			}
-			if(player.GetModPlayer<StarsAbovePlayer>().activeMinions + 6 == player.maxMinions)
+			if(player.GetModPlayer<WeaponPlayer>().activeMinions + 6 == player.maxMinions)
 			{
 				player.AddBuff(BuffType<Buffs.Kifrosse.KifrosseBuff6>(), 2);
 				
@@ -145,7 +145,7 @@ namespace StarsAbove.Items
 				Main.projectile[index].originalDamage = damage;
 				return false;
 			}
-			if(player.GetModPlayer<StarsAbovePlayer>().activeMinions + 5 == player.maxMinions)
+			if(player.GetModPlayer<WeaponPlayer>().activeMinions + 5 == player.maxMinions)
 			{
 				player.AddBuff(BuffType<Buffs.Kifrosse.KifrosseBuff5>(), 2);
 				
@@ -154,7 +154,7 @@ namespace StarsAbove.Items
 				Main.projectile[index].originalDamage = damage;
 				return false;
 			}
-			if (player.GetModPlayer<StarsAbovePlayer>().activeMinions + 4 == player.maxMinions)
+			if (player.GetModPlayer<WeaponPlayer>().activeMinions + 4 == player.maxMinions)
 			{
 				player.AddBuff(BuffType<Buffs.Kifrosse.KifrosseBuff4>(), 2);
 				
@@ -163,7 +163,7 @@ namespace StarsAbove.Items
 				Main.projectile[index].originalDamage = damage;
 				return false;
 			}
-			if (player.GetModPlayer<StarsAbovePlayer>().activeMinions + 3 == player.maxMinions)
+			if (player.GetModPlayer<WeaponPlayer>().activeMinions + 3 == player.maxMinions)
 			{
 				player.AddBuff(BuffType<Buffs.Kifrosse.KifrosseBuff3>(), 2);
 				
@@ -172,7 +172,7 @@ namespace StarsAbove.Items
 				Main.projectile[index].originalDamage = damage;
 				return false;
 			}
-			if (player.GetModPlayer<StarsAbovePlayer>().activeMinions + 2 == player.maxMinions)
+			if (player.GetModPlayer<WeaponPlayer>().activeMinions + 2 == player.maxMinions)
 			{
 				//if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue($"Tried 2"), 250, 100, 247);}
 
@@ -183,7 +183,7 @@ namespace StarsAbove.Items
 				Main.projectile[index].originalDamage = damage;
 				return false;
 			}
-			if (player.GetModPlayer<StarsAbovePlayer>().activeMinions + 1 == player.maxMinions)
+			if (player.GetModPlayer<WeaponPlayer>().activeMinions + 1 == player.maxMinions)
 			{
 				//if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue($"Tried 1"), 250, 100, 247);}
 

@@ -37,7 +37,7 @@ namespace StarsAbove.Projectiles.IrminsulDream
 			Player player = Main.player[Projectile.owner];
 
 			//Projectile.scale = 0.7f;
-			if (!player.GetModPlayer<StarsAbovePlayer>().IrminsulAttackActive)
+			if (!player.GetModPlayer<WeaponPlayer>().IrminsulAttackActive)
             {
 				Projectile.Kill();
             }
@@ -48,8 +48,8 @@ namespace StarsAbove.Projectiles.IrminsulDream
 			Projectile.timeLeft = 10;
 			Projectile.alpha -= 10;
 
-			Projectile.position.X = player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxEnd.X - 17;
-			Projectile.position.Y = player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxEnd.Y - 17;
+			Projectile.position.X = player.GetModPlayer<WeaponPlayer>().IrminsulBoxEnd.X - 17;
+			Projectile.position.Y = player.GetModPlayer<WeaponPlayer>().IrminsulBoxEnd.Y - 17;
 
 			//This is 0 unless a auto attack has been initated, in which it'll tick up.
 

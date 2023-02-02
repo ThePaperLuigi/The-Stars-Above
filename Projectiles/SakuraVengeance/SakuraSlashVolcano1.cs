@@ -108,10 +108,10 @@ namespace StarsAbove.Projectiles.SakuraVengeance
 
 			if (!target.active)//On kill
 			{
-				player.GetModPlayer<StarsAbovePlayer>().VengeanceGauge += 8;
-				if (player.GetModPlayer<StarsAbovePlayer>().VengeanceGauge >= 100)
+				player.GetModPlayer<WeaponPlayer>().VengeanceGauge += 8;
+				if (player.GetModPlayer<WeaponPlayer>().VengeanceGauge >= 100)
 				{
-					player.GetModPlayer<StarsAbovePlayer>().VengeanceGauge = 100;
+					player.GetModPlayer<WeaponPlayer>().VengeanceGauge = 100;
 
 				}
 				for (int i = 0; i < 8; i++)

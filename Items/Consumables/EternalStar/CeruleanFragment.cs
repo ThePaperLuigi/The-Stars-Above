@@ -51,7 +51,7 @@ namespace StarsAbove.Items.Consumables.EternalStar
 			Rectangle textPos = new Rectangle((int)player.position.X, (int)player.position.Y - 20, player.width, player.height);
 			CombatText.NewText(textPos, new Color(81, 62, 247, 240), "120", false, false);
 			player.AddBuff(BuffType<CeruleanBuff>(), 480);
-			player.GetModPlayer<StarsAbovePlayer>().EternalGauge += 5;
+			player.GetModPlayer<WeaponPlayer>().EternalGauge += 5;
 			player.statMana += 120;
 			return false;
 		}

@@ -97,8 +97,8 @@ namespace StarsAbove.Items
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
 			Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, velocity.X, velocity.Y,ProjectileType<Projectiles.TwinStars.TwinStarLaser2>(), damage, 0f, player.whoAmI);
-			Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.GetModPlayer<StarsAbovePlayer>().starPosition1, Vector2.Zero, ProjectileType<Projectiles.TwinStars.TwinStarShine1>(), 0, 0f, player.whoAmI);
-			Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.GetModPlayer<StarsAbovePlayer>().starPosition2, Vector2.Zero, ProjectileType<Projectiles.TwinStars.TwinStarShine2>(), 0, 0f, player.whoAmI);
+			Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.GetModPlayer<WeaponPlayer>().starPosition1, Vector2.Zero, ProjectileType<Projectiles.TwinStars.TwinStarShine1>(), 0, 0f, player.whoAmI);
+			Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.GetModPlayer<WeaponPlayer>().starPosition2, Vector2.Zero, ProjectileType<Projectiles.TwinStars.TwinStarShine2>(), 0, 0f, player.whoAmI);
 
 
 			player.manaRegenDelay = 240;

@@ -53,17 +53,17 @@ namespace StarsAbove.Items
 		{
 			
 
-			if (player.GetModPlayer<StarsAbovePlayer>().stellarPerformanceCooldown == true)
+			if (player.GetModPlayer<WeaponPlayer>().stellarPerformanceCooldown == true)
 			{
-				player.GetModPlayer<StarsAbovePlayer>().stellarPerformanceStart = false;
+				player.GetModPlayer<WeaponPlayer>().stellarPerformanceStart = false;
 				return false;
 			}
 			else
 			{
-				if (player.GetModPlayer<StarsAbovePlayer>().stellarPerformanceActive == false)
+				if (player.GetModPlayer<WeaponPlayer>().stellarPerformanceActive == false)
 				{
 
-					player.GetModPlayer<StarsAbovePlayer>().stellarPerformanceStart = true;
+					player.GetModPlayer<WeaponPlayer>().stellarPerformanceStart = true;
 
 					return true;
 				}

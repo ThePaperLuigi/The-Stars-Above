@@ -81,7 +81,7 @@ namespace StarsAbove.Projectiles
 
 
 
-			if (projOwner.GetModPlayer<StarsAbovePlayer>().rexLapisSpear == false) {
+			if (projOwner.GetModPlayer<WeaponPlayer>().rexLapisSpear == false) {
 				if (inGround == false)
 				{
 

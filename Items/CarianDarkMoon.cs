@@ -69,7 +69,7 @@ namespace StarsAbove.Items
 			
 			
 
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			if (player.altFunctionUse == 2 && !player.HasBuff(BuffType<MoonlitGreatblade>()) && !player.HasBuff(BuffType<MoonlitCooldown>()))
 			{
 				if (player.statMana >= 100)

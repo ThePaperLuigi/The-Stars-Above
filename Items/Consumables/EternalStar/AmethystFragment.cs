@@ -49,7 +49,7 @@ namespace StarsAbove.Items.Consumables.EternalStar
 		public override bool OnPickup(Player player)
 		{
 			player.AddBuff(BuffType<AmethystBuff>(), 480);
-			player.GetModPlayer<StarsAbovePlayer>().EternalGauge += 5;
+			player.GetModPlayer<WeaponPlayer>().EternalGauge += 5;
 			return false;
 		}
 		public override bool CanUseItem(Player player) {

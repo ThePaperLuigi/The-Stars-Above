@@ -27,7 +27,7 @@ namespace StarsAbove.Items.Accessories
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual) {
-			player.GetModPlayer<StarsAbovePlayer>().Glitterglue = true;
+			player.GetModPlayer<WeaponPlayer>().Glitterglue = true;
 		}
 
 		

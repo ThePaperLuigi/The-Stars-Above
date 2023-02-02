@@ -78,7 +78,7 @@ namespace StarsAbove.Items
 			Vector2 arrowVelocity = direction * 26f;
 			
 
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 
 			if (player.altFunctionUse == 2)
 			{

@@ -119,29 +119,29 @@ namespace StarsAbove.Items
 				//When charging the attack, show the rapier.
 				//int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<RedMageRapier>(), 0, 0, player.whoAmI, 0f);
 			}
-			if(player.GetModPlayer<StarsAbovePlayer>().blackMana > 100)
+			if(player.GetModPlayer<WeaponPlayer>().blackMana > 100)
             {	
 				
-				player.GetModPlayer<StarsAbovePlayer>().blackMana = 100;
+				player.GetModPlayer<WeaponPlayer>().blackMana = 100;
 			}
-			if (player.GetModPlayer<StarsAbovePlayer>().whiteMana > 100)
+			if (player.GetModPlayer<WeaponPlayer>().whiteMana > 100)
 			{
-				player.GetModPlayer<StarsAbovePlayer>().whiteMana = 100;
+				player.GetModPlayer<WeaponPlayer>().whiteMana = 100;
 			}
-			if (player.GetModPlayer<StarsAbovePlayer>().blackMana < 0)
+			if (player.GetModPlayer<WeaponPlayer>().blackMana < 0)
 			{
 
-				player.GetModPlayer<StarsAbovePlayer>().blackMana = 0;
+				player.GetModPlayer<WeaponPlayer>().blackMana = 0;
 			}
-			if (player.GetModPlayer<StarsAbovePlayer>().whiteMana < 0)
+			if (player.GetModPlayer<WeaponPlayer>().whiteMana < 0)
 			{
-				player.GetModPlayer<StarsAbovePlayer>().whiteMana = 0;
+				player.GetModPlayer<WeaponPlayer>().whiteMana = 0;
 			}
 			if (player.whoAmI == Main.myPlayer && StarsAbove.weaponActionKey.JustPressed)
 			{
 				
 
-				if (player.GetModPlayer<StarsAbovePlayer>().blackMana >= 50 && player.GetModPlayer<StarsAbovePlayer>().whiteMana >= 50)
+				if (player.GetModPlayer<WeaponPlayer>().blackMana >= 50 && player.GetModPlayer<WeaponPlayer>().whiteMana >= 50)
 				{
 					for (int d = 0; d < 28; d++)
 					{
@@ -149,25 +149,25 @@ namespace StarsAbove.Items
 						Dust.NewDust(player.Center, 0, 0, DustID.FireworkFountain_Red, Main.rand.NextFloat(-5, 5), Main.rand.NextFloat(-5, 5), 150, default(Color), 0.3f);
 
 					}
-					player.GetModPlayer<StarsAbovePlayer>().blackManaDrain = 50;
-					player.GetModPlayer<StarsAbovePlayer>().whiteManaDrain = 50;
-					if (player.GetModPlayer<StarsAbovePlayer>().blackMana > player.GetModPlayer<StarsAbovePlayer>().whiteMana)
+					player.GetModPlayer<WeaponPlayer>().blackManaDrain = 50;
+					player.GetModPlayer<WeaponPlayer>().whiteManaDrain = 50;
+					if (player.GetModPlayer<WeaponPlayer>().blackMana > player.GetModPlayer<WeaponPlayer>().whiteMana)
                     {//Black Enchantment
 						Rectangle textPos = new Rectangle((int)player.position.X, (int)player.position.Y - 20, player.width, player.height);
 						CombatText.NewText(textPos, new Color(241, 105, 255, 240), $"{Language.GetTextValue("Black Enchantment!")}", false, false);
 						player.AddBuff(BuffType<BlackEnchantment>(), 1200);
-						player.GetModPlayer<StarsAbovePlayer>().manaStack = 3;
+						player.GetModPlayer<WeaponPlayer>().manaStack = 3;
 
 					}
-					if (player.GetModPlayer<StarsAbovePlayer>().whiteMana > player.GetModPlayer<StarsAbovePlayer>().blackMana)
+					if (player.GetModPlayer<WeaponPlayer>().whiteMana > player.GetModPlayer<WeaponPlayer>().blackMana)
 					{//White Enchantment
 						Rectangle textPos = new Rectangle((int)player.position.X, (int)player.position.Y - 20, player.width, player.height);
 						CombatText.NewText(textPos, new Color(241, 105, 255, 240), $"{Language.GetTextValue("White Enchantment!")}", false, false);
 						player.AddBuff(BuffType<WhiteEnchantment>(), 1200);
-						player.GetModPlayer<StarsAbovePlayer>().manaStack = 3;
+						player.GetModPlayer<WeaponPlayer>().manaStack = 3;
 
 					}
-					if (player.GetModPlayer<StarsAbovePlayer>().whiteMana == player.GetModPlayer<StarsAbovePlayer>().blackMana)
+					if (player.GetModPlayer<WeaponPlayer>().whiteMana == player.GetModPlayer<WeaponPlayer>().blackMana)
 					{//Random Enchantment + 1 less Mana Stack
 						if(Main.rand.NextBool(1))
                         {
@@ -181,7 +181,7 @@ namespace StarsAbove.Items
 							CombatText.NewText(textPos, new Color(241, 105, 255, 240), $"{Language.GetTextValue("White Enchantment!")}", false, false);
 							player.AddBuff(BuffType<WhiteEnchantment>(), 1200);
 						}
-						player.GetModPlayer<StarsAbovePlayer>().manaStack = 2;
+						player.GetModPlayer<WeaponPlayer>().manaStack = 2;
 
 					}
 				}
@@ -190,8 +190,8 @@ namespace StarsAbove.Items
 				//int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), Main.MouseWorld, Vector2.Zero, Mod.Find<ModProjectile>("AlucardSword").Type, 0, 0, player.whoAmI);
 				//Main.projectile[index].originalDamage = 0;
 			}
-			//player.GetModPlayer<StarsAbovePlayer>().blackMana--;
-			//player.GetModPlayer<StarsAbovePlayer>().whiteMana--;
+			//player.GetModPlayer<WeaponPlayer>().blackMana--;
+			//player.GetModPlayer<WeaponPlayer>().whiteMana--;
 			base.HoldItem(player);
 		}
         public override bool? UseItem(Player player)
@@ -222,7 +222,7 @@ namespace StarsAbove.Items
 		{
 			if(player.HasBuff(BuffType<WhiteEnchantment>()))
             {
-				if(player.GetModPlayer<StarsAbovePlayer>().manaStack == 3)
+				if(player.GetModPlayer<WeaponPlayer>().manaStack == 3)
                 {//Reprise
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_Reprise, player.Center);
 					player.AddBuff(BuffType<Invincibility>(), 120);
@@ -231,30 +231,30 @@ namespace StarsAbove.Items
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, velocity.X, velocity.Y, ProjectileType<RedMageStab>(), damage, 0, player.whoAmI, 0f);
 
 				}
-				if (player.GetModPlayer<StarsAbovePlayer>().manaStack == 2)
+				if (player.GetModPlayer<WeaponPlayer>().manaStack == 2)
 				{//Verholy
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<RedMageRapierFast>(), 0, 0, player.whoAmI, 0f);
 
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_Verholy, player.Center);
 					Projectile.NewProjectile(source, player.GetModPlayer<StarsAbovePlayer>().playerMousePos.X, player.GetModPlayer<StarsAbovePlayer>().playerMousePos.Y, 0, 0, ProjectileType<Verholy>(), damage, 0, player.whoAmI, 0f);
 				}
-				if (player.GetModPlayer<StarsAbovePlayer>().manaStack == 1)
+				if (player.GetModPlayer<WeaponPlayer>().manaStack == 1)
 				{//Resolution
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_Resolution, player.Center);
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<ResolutionMagicCircle>(), damage, 0, player.whoAmI, 0f);
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<ResolutionMagicCircle2>(), 0, 0, player.whoAmI, 0f);
 
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<RedMageRapierFast>(), 0, 0, player.whoAmI, 0f);
-					player.GetModPlayer<StarsAbovePlayer>().whiteMana += 11;
+					player.GetModPlayer<WeaponPlayer>().whiteMana += 11;
 					player.ClearBuff(BuffType<WhiteEnchantment>());
 				}
 				player.AddBuff(BuffType<RedMageCastDelay>(), 80);
-				player.GetModPlayer<StarsAbovePlayer>().manaStack--;
+				player.GetModPlayer<WeaponPlayer>().manaStack--;
 				return false;
 			}
 			if (player.HasBuff(BuffType<BlackEnchantment>()))
 			{
-				if (player.GetModPlayer<StarsAbovePlayer>().manaStack == 3)
+				if (player.GetModPlayer<WeaponPlayer>().manaStack == 3)
 				{
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_Redoublement, player.Center);
 
@@ -262,7 +262,7 @@ namespace StarsAbove.Items
 					//Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<RedMageRapierFast>(), 0, 0, player.whoAmI, 0f);
 
 				}
-				if (player.GetModPlayer<StarsAbovePlayer>().manaStack == 2)
+				if (player.GetModPlayer<WeaponPlayer>().manaStack == 2)
 				{
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<RedMageRapierFast>(), 0, 0, player.whoAmI, 0f);
 
@@ -270,17 +270,17 @@ namespace StarsAbove.Items
 					Projectile.NewProjectile(source, player.GetModPlayer<StarsAbovePlayer>().playerMousePos.X, player.GetModPlayer<StarsAbovePlayer>().playerMousePos.Y, 0, 0, ProjectileType<Verflare>(), damage, 0, player.whoAmI, 0f);
 
 				}
-				if (player.GetModPlayer<StarsAbovePlayer>().manaStack == 1)
+				if (player.GetModPlayer<WeaponPlayer>().manaStack == 1)
 				{
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_Scorch, player.Center);
 					Projectile.NewProjectile(source, player.GetModPlayer<StarsAbovePlayer>().playerMousePos.X, player.GetModPlayer<StarsAbovePlayer>().playerMousePos.Y, 0, 0, ProjectileType<ScorchPrep>(), damage, 0, player.whoAmI, 0f);
 
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<RedMageRapierFast>(), 0, 0, player.whoAmI, 0f);
-					player.GetModPlayer<StarsAbovePlayer>().blackMana += 11;
+					player.GetModPlayer<WeaponPlayer>().blackMana += 11;
 					player.ClearBuff(BuffType<BlackEnchantment>());
 				}
 				player.AddBuff(BuffType<RedMageCastDelay>(), 80);
-				player.GetModPlayer<StarsAbovePlayer>().manaStack--;
+				player.GetModPlayer<WeaponPlayer>().manaStack--;
 				return false;
 			}
 
@@ -291,7 +291,7 @@ namespace StarsAbove.Items
 				{
 					player.ClearBuff(BuffType<Dualcast>());
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<RedMageRapierFast>(), 0, 0, player.whoAmI, 0f);
-					player.GetModPlayer<StarsAbovePlayer>().whiteMana += 5;
+					player.GetModPlayer<WeaponPlayer>().whiteMana += 5;
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_RDMCast, player.Center);
 
 					Projectile.NewProjectile(source, player.Center.X, player.Center.Y, velocity.X, velocity.Y, ProjectileType<Veraero>(), damage, 0, player.whoAmI, 0f);
@@ -301,7 +301,7 @@ namespace StarsAbove.Items
 				else
                 {//Verstone
 					player.AddBuff(BuffType<VerstoneCasting>(), 60);
-					player.GetModPlayer<StarsAbovePlayer>().whiteMana += 5;
+					player.GetModPlayer<WeaponPlayer>().whiteMana += 5;
 					//Spawn the rapier
 					int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<RedMageRapier>(), damage, 0, player.whoAmI, 0f);
 					if (Main.rand.NextBool(2))
@@ -328,7 +328,7 @@ namespace StarsAbove.Items
 				if (player.HasBuff(BuffType<Dualcast>()))//Verthunder
 				{
 					player.ClearBuff(BuffType<Dualcast>());
-					player.GetModPlayer<StarsAbovePlayer>().blackMana += 6;
+					player.GetModPlayer<WeaponPlayer>().blackMana += 6;
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<RedMageRapierFast>(), 0, 0, player.whoAmI, 0f);
 
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_RDMCast, player.Center);
@@ -340,7 +340,7 @@ namespace StarsAbove.Items
 				 //Spawn the rapier
 					int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<RedMageRapier>(), damage, 0, player.whoAmI, 0f);
 					player.AddBuff(BuffType<VerfireCasting>(), 60);
-					player.GetModPlayer<StarsAbovePlayer>().blackMana += 5;
+					player.GetModPlayer<WeaponPlayer>().blackMana += 5;
 					if(Main.rand.NextBool(2))
                     {
 						player.AddBuff(BuffType<Dualcast>(), 240);

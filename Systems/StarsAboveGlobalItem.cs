@@ -869,7 +869,7 @@ namespace StarsAbove
 				}
 
 			}
-			if (player.GetModPlayer<StarsAbovePlayer>().PerfectlyGenericAccessory && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove") && item.damage > 0)
+			if (player.GetModPlayer<WeaponPlayer>().PerfectlyGenericAccessory && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove") && item.damage > 0)
 			{
 				damage += 0.08f;
 			}

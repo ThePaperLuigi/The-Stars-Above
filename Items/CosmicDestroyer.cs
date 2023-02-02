@@ -63,14 +63,14 @@ namespace StarsAbove.Items
 		{
 			if (player.altFunctionUse == 2)
 			{
-				if (player.GetModPlayer<StarsAbovePlayer>().CosmicDestroyerGauge >= 100)
+				if (player.GetModPlayer<WeaponPlayer>().CosmicDestroyerGauge >= 100)
 				{
 					player.AddBuff(BuffType<Buffs.CosmicDestroyer.MagitonOverheat>(), 480);
 					
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, player.Center);
 					player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
-					player.GetModPlayer<StarsAbovePlayer>().CosmicDestroyerRounds = 11;
-					player.GetModPlayer<StarsAbovePlayer>().CosmicDestroyerGauge = 0;
+					player.GetModPlayer<WeaponPlayer>().CosmicDestroyerRounds = 11;
+					player.GetModPlayer<WeaponPlayer>().CosmicDestroyerGauge = 0;
 
 					Vector2 position = Main.LocalPlayer.position;
 					int playerWidth = Main.LocalPlayer.width;
@@ -133,9 +133,9 @@ namespace StarsAbove.Items
 
 			
 			SoundEngine.PlaySound(SoundID.Item11, player.position);
-			if(player.HasBuff(BuffType<Buffs.CosmicDestroyer.MagitonOverheat>()) && player.GetModPlayer<StarsAbovePlayer>().CosmicDestroyerRounds > 0)
+			if(player.HasBuff(BuffType<Buffs.CosmicDestroyer.MagitonOverheat>()) && player.GetModPlayer<WeaponPlayer>().CosmicDestroyerRounds > 0)
             {
-				player.GetModPlayer<StarsAbovePlayer>().CosmicDestroyerRounds--;
+				player.GetModPlayer<WeaponPlayer>().CosmicDestroyerRounds--;
 				damage *= 3;
 				type = ProjectileType<CosmicDestroyerRound2>();
 
@@ -180,7 +180,7 @@ namespace StarsAbove.Items
 			}
 			else
             {
-				player.GetModPlayer<StarsAbovePlayer>().CosmicDestroyerGaugeVisibility = 2f;
+				player.GetModPlayer<WeaponPlayer>().CosmicDestroyerGaugeVisibility = 2f;
 
 				for (int d = 0; d < 21; d++)
 				{

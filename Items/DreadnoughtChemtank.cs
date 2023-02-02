@@ -111,7 +111,7 @@ namespace StarsAbove.Items
 		{
 			
 			player.AddBuff(BuffType<Buffs.Chemtank.ChemtankBuff>(), 2);
-			player.GetModPlayer<StarsAbovePlayer>().ChemtankHeld = true;
+			player.GetModPlayer<WeaponPlayer>().ChemtankHeld = true;
 			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Chemtank.ChemtankMarker1>()] < 1)
 			{
 				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Chemtank.ChemtankMarker1>(), 10, 4, player.whoAmI, 0f);
@@ -240,7 +240,7 @@ namespace StarsAbove.Items
 		public override void ResetEffects()
 		{
 			// Reset our equipped flag. If the accessory is equipped somewhere, ExampleShield.UpdateAccessory will be called and set the flag before PreUpdateMovement
-			DashAccessoryEquipped = Player.GetModPlayer<StarsAbovePlayer>().ChemtankHeld;
+			DashAccessoryEquipped = Player.GetModPlayer<WeaponPlayer>().ChemtankHeld;
 
 			// ResetEffects is called not long after player.doubleTapCardinalTimer's values have been set
 			// When a directional key is pressed and released, vanilla starts a 15 tick (1/4 second) timer during which a second press activates a dash

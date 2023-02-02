@@ -50,7 +50,7 @@ namespace StarsAbove.Items
 		{
 			
 
-			Item.crit = -10 + player.GetModPlayer<StarsAbovePlayer>().whisperShotCount*4;
+			Item.crit = -10 + player.GetModPlayer<WeaponPlayer>().whisperShotCount*4;
 		 
 		}
 
@@ -70,7 +70,7 @@ namespace StarsAbove.Items
 		{
 			Vector2 shotKnockback = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 3f * -1f;
 			player.velocity += shotKnockback;
-			player.GetModPlayer<StarsAbovePlayer>().whisperShotCount++;
+			player.GetModPlayer<WeaponPlayer>().whisperShotCount++;
 			SoundEngine.PlaySound(StarsAboveAudio.SFX_WhisperShot, player.Center);
 			return true; // return true to allow tmodloader to call Projectile.NewProjectile as normal
 		}
