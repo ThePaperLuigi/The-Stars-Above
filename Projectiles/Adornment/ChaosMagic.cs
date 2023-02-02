@@ -1,7 +1,9 @@
 using Microsoft.Xna.Framework;
+using StarsAbove.Buffs.Adornment;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.Adornment
 {
@@ -167,8 +169,12 @@ namespace StarsAbove.Projectiles.Adornment
 		}
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
+			Player player = Main.player[Projectile.owner];
 			//target.AddBuff(BuffID.OnFire, 240);
-            
+			if (player.HasBuff(BuffType<AdornmentCritBuff>()))
+            {
+				crit = true;
+            }
         }
         
 	}

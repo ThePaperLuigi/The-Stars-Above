@@ -3,6 +3,15 @@
   {
     StarsAbove:
     {
+      CombatText:
+      {
+        Adornment: 
+        {
+          Positive: Positive Chaos!
+          Negative: Negative Chaos!
+          
+        }
+      }
       SubworldName:
       {
         Observatory: Observatory Hyperborea

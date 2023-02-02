@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
+using StarsAbove.Buffs.Adornment;
 using StarsAbove.Buffs.RedMage;
 using System;
 using Terraria;
@@ -66,7 +67,12 @@ namespace StarsAbove.Projectiles.Adornment
 
 			if (foundTarget)
 			{
-				Projectile.ai[1]++;
+				if(player.HasBuff(BuffType<AdornmentAttackSpeedBuff>()))
+                {
+					Projectile.ai[1]++;
+
+				}
+				Projectile.ai[1] += 1 + (player.GetModPlayer<StarsAbovePlayer>().activeMinions * 0.05f);//Increase attack speed by 5% per each minion summoned.
 				float rotation = (float)Math.Atan2(Projectile.Center.Y - (targetCenter.Y), Projectile.Center.X - (targetCenter.X)) + MathHelper.ToRadians(-90);
 				Projectile.rotation = rotation;
 			}
@@ -74,8 +80,8 @@ namespace StarsAbove.Projectiles.Adornment
             {
 				Projectile.rotation = player.velocity.X * 0.05f;
 			}
-
-			if (Projectile.ai[1] > 24)
+			
+			if (Projectile.ai[1] > 30)
 			{
 
 				Projectile.ai[1] = 0;
@@ -85,69 +91,75 @@ namespace StarsAbove.Projectiles.Adornment
 				Vector2 direction = Vector2.Normalize(targetCenter - Projectile.Center);
 				Vector2 velocity = direction * launchSpeed;
 
-				if (Main.rand.NextBool(2))
-				{
-
+				if(player.HasBuff(BuffType<AdornmentRandomObjectsBuff>()))
+                {
 					SoundEngine.PlaySound(SoundID.DD2_DarkMageAttack, Projectile.Center);
 
+					type = ProjectileID.PewMaticHornShot;
+					launchSpeed = Main.rand.NextFloat(5, 20);
+					velocity = direction * launchSpeed;
 
-					if (Main.rand.NextBool(2))
-					{
-						type = ProjectileID.PewMaticHornShot;
-						launchSpeed = Main.rand.NextFloat(5, 20);
-						velocity = direction * launchSpeed;
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y, type, Projectile.damage/2, 0f, projOwner.whoAmI, Main.rand.Next(Main.projFrames[ProjectileID.PewMaticHornShot]), Main.rand.Next(Main.projFrames[ProjectileID.PewMaticHornShot]));
 
-						Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y, type, Projectile.damage, 0f, projOwner.whoAmI, Main.rand.Next(Main.projFrames[ProjectileID.PewMaticHornShot]), Main.rand.Next(Main.projFrames[ProjectileID.PewMaticHornShot]));
-
-						Projectile.ai[1] = 20;
-
-					}
-					else
-                    {
-						type = ProjectileType<ChaosObject>();
-						Vector2 target = targetCenter;
-						float radius = Vector2.Distance(Projectile.Center, target) / 2;
-						Vector2 midpoint = target + (Projectile.Center - target) / 2;
-
-						int proj = Projectile.NewProjectile(null, position.X, position.Y, velocity.X, velocity.Y, type, Projectile.damage, 0f, player.whoAmI);
-						ChaosObject mp = Main.projectile[proj].ModProjectile as ChaosObject;
-						mp.MidPoint = midpoint;  //'midpoint' is the calculated midpoint
-						mp.Radius = radius;      //'radius' is just half the distance to the mouse
-						if (MathHelper.ToDegrees(Projectile.rotation) > -180)
-						{
-							mp.RotateClockwise = false;  //'clockwise' is self-explanatory
-
-						}
-						else
-						{
-							mp.RotateClockwise = true;  //'clockwise' is self-explanatory
-
-						}
-						//mp.RotateClockwise = true;  //'clockwise' is self-explanatory
-						mp.InitialDirection = player.DirectionFrom(midpoint);  //used to make the rotation look good
-						mp.Target = target;
-					}
+					Projectile.ai[1] = 20;
 					
 
 				}
 				else
                 {
-					SoundEngine.PlaySound(SoundID.DD2_DarkMageAttack, Projectile.Center);
-					
-					Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y, type, Projectile.damage, 0f, projOwner.whoAmI, Main.rand.Next(Main.projFrames[ProjectileID.PewMaticHornShot]), Main.rand.Next(Main.projFrames[ProjectileID.PewMaticHornShot]));
-					
-					float rotation = (float)Math.Atan2(Projectile.Center.Y - (targetCenter.Y), Projectile.Center.X - (targetCenter.X));
-
-					for (int d = 0; d < 25; d++)
+					if (Main.rand.NextBool(2))
 					{
-						float Speed2 = Main.rand.NextFloat(10, 18);  //projectile speed
-						Vector2 perturbedSpeed = new Vector2((float)((Math.Cos(rotation) * Speed2) * -1), (float)((Math.Sin(rotation) * Speed2) * -1)).RotatedByRandom(MathHelper.ToRadians(15)); // 30 degree spread.
-						int dustIndex = Dust.NewDust(Projectile.Center, 0, 0, DustID.GreenFairy, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 1f);
-						Main.dust[dustIndex].noGravity = true;
-					}
-					
 
+						
+						if (Main.rand.NextBool(2))
+						{
+							SoundEngine.PlaySound(SoundID.DD2_DarkMageAttack, Projectile.Center);
+
+							type = ProjectileID.PewMaticHornShot;
+							launchSpeed = Main.rand.NextFloat(5, 20);
+							velocity = direction * launchSpeed;
+
+							Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y, type, Projectile.damage, 0f, projOwner.whoAmI, Main.rand.Next(Main.projFrames[ProjectileID.PewMaticHornShot]), Main.rand.Next(Main.projFrames[ProjectileID.PewMaticHornShot]));
+
+							Projectile.ai[1] = 25;
+
+						}
+						else
+						{
+							SoundEngine.PlaySound(SoundID.DD2_DarkMageAttack, Projectile.Center);
+
+							type = ProjectileType<ChaosObject>();
+							launchSpeed = Main.rand.NextFloat(7, 15);
+							velocity = direction * launchSpeed;
+
+							Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y, type, Projectile.damage, 0f, projOwner.whoAmI, Main.rand.Next(Main.projFrames[ProjectileID.PewMaticHornShot]), Main.rand.Next(Main.projFrames[ProjectileID.PewMaticHornShot]));
+
+							Projectile.ai[1] = 25;
+						}
+
+
+					}
+					else
+					{
+						SoundEngine.PlaySound(SoundID.DD2_DarkMageAttack, Projectile.Center);
+
+						Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y, type, Projectile.damage, 0f, projOwner.whoAmI, Main.rand.Next(Main.projFrames[ProjectileID.PewMaticHornShot]), Main.rand.Next(Main.projFrames[ProjectileID.PewMaticHornShot]));
+
+						float rotation = (float)Math.Atan2(Projectile.Center.Y - (targetCenter.Y), Projectile.Center.X - (targetCenter.X));
+
+						for (int d = 0; d < 25; d++)
+						{
+							float Speed2 = Main.rand.NextFloat(10, 18);  //projectile speed
+							Vector2 perturbedSpeed = new Vector2((float)((Math.Cos(rotation) * Speed2) * -1), (float)((Math.Sin(rotation) * Speed2) * -1)).RotatedByRandom(MathHelper.ToRadians(15)); // 30 degree spread.
+							int dustIndex = Dust.NewDust(Projectile.Center, 0, 0, DustID.GreenFairy, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 1f);
+							Main.dust[dustIndex].noGravity = true;
+						}
+
+
+					}
 				}
+
+				
 
 
 

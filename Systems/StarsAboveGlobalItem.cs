@@ -181,7 +181,7 @@ namespace StarsAbove
 
 			ModContent.ItemType<Umbra>(),
 			ModContent.ItemType<SaltwaterScourge>(),
-
+			ModContent.ItemType<AdornmentOfTheChaoticGod>(),
 
 			ModContent.ItemType<EssenceOfAdagium>(),
 			ModContent.ItemType<EssenceOfBloodshed>(),
@@ -223,7 +223,7 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfMimicry>(),
 			ModContent.ItemType<EssenceOfTheTimeless>(),
 			ModContent.ItemType<EssenceOfPiracy>(),
-
+			ModContent.ItemType<EssenceOfAbsoluteChaos>(),
 
 		};
 
@@ -310,7 +310,7 @@ namespace StarsAbove
 
 			ModContent.ItemType<TotemOfLightEmpowered>(),
 			ModContent.ItemType<BlackSilenceWeapon>(),
-			//ModContent.ItemType<VirtuesEdge>(),
+			ModContent.ItemType<AdornmentOfTheChaoticGod>(),
 
 
 		};
@@ -402,6 +402,7 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfNature>(),
 			ModContent.ItemType<EssenceOfTheTimeless>(),
 			ModContent.ItemType<EssenceOfPiracy>(),
+			ModContent.ItemType<EssenceOfAbsoluteChaos>(),
 
 
 		};
