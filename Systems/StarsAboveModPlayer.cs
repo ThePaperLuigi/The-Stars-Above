@@ -2510,8 +2510,8 @@ namespace StarsAbove
                 GlobalRotation = 0;
             }
 
+            
             DrillMountBug();
-
             BossEnemySpawnModifier();
             DialogueEnemySpawnModifier();
 
@@ -2731,6 +2731,7 @@ namespace StarsAbove
                     rippleSpeed = 60;
                     rippleSize = 35;
                     activateShockwaveEffect = false;
+                    //This may be a bug. Investigate. Host crash?
                     if (Main.netMode != NetmodeID.Server && !Filters.Scene["Shockwave"].IsActive())
                     {
                         Filters.Scene.Activate("Shockwave", Player.Center).GetShader().UseColor(rippleCount, rippleSize, rippleSpeed).UseTargetPosition(Player.Center);
@@ -6731,57 +6732,7 @@ namespace StarsAbove
         {
             if (Main.LocalPlayer.active && !Main.LocalPlayer.dead)
             {
-
-
-
-                //Edin Genesis Quasar Casts
-                if (chosenStellarNova == 5 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && astarteDriverAttacks > 0 && Main.LocalPlayer.HasBuff(BuffType<Buffs.AstarteDriver>()) && astarteDriverCooldown < 0)
-                {
-
-                    if (Player.whoAmI == Main.myPlayer)
-                    {
-                        //
-                        astarteDriverCooldown = 120;
-                        astarteDriverAttacks--;
-
-                        for (int d = 0; d < 105; d++)
-                        {
-                            Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
-                        }
-                        for (int d = 0; d < 105; d++)
-                        {
-                            Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
-                        }
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, Player.Center);
-                        Vector2 mousePosition = Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos) * Main.rand.Next(20, 22);
-                        for (int i = 0; i < 10; i++)
-                        {
-                            int type = Main.rand.Next(new int[] { ProjectileID.NebulaBlaze2, ProjectileID.NebulaBlaze2, ProjectileID.NebulaBlaze2, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, });
-                            Projectile.NewProjectile(null, Player.Center.X, Player.Center.Y, mousePosition.X, mousePosition.Y, type, novaDamage / 10, 3, Player.whoAmI, 0f);
-
-                        }
-
-
-                        int numberProjectiles = 10;
-                        for (int i = 0; i < numberProjectiles; i++)
-                        {
-                            Vector2 perturbedSpeed = mousePosition.RotatedByRandom(MathHelper.ToRadians(40));
-                            int type = Main.rand.Next(new int[] { ProjectileID.NebulaBlaze2, ProjectileID.NebulaBlaze2, ProjectileID.NebulaBlaze2, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, });
-
-                            Projectile.NewProjectile(null, Player.Center.X, Player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, type, novaDamage / 10, 3, Player.whoAmI);
-                        }
-                        Vector2 shotKnockback = Vector2.Normalize(mousePosition) * 15f * -1f;
-                        Player.velocity = shotKnockback;
-                        if (chosenStarfarer == 2)
-                        {
-                            Player.AddBuff(BuffType<Buffs.Invincibility>(), 60);
-                        }
-                        //Vector2 mousePosition = Main.MouseWorld;
-                        //Projectile.NewProjectile(null,new Vector2(player.Center.X - 100, player.Center.Y), Vector2.Zero, mod.ProjectileType("Theofania2"), novaDamage + novaDamageMod, 4, player.whoAmI, 0, 1);                                                                                                                                                                                                                                                                                                                                             //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
-                        //Projectile.NewProjectile(null,player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
-
-                    }
-                }
+                EdinGenesisQuasar();
                 if (chosenStellarNova == 1 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && chosenStellarNova != 0 && Main.LocalPlayer.HasBuff(BuffType<Buffs.TheofaniaTricast>()))//Theofania Tricast
                 {
 
@@ -6882,112 +6833,7 @@ namespace StarsAbove
                 else
                 if (novaGauge == trueNovaGaugeMax && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && chosenStellarNova != 0)
                 {
-                    Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().NovaCutInTimer = 140;
-                    Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().NovaCutInVelocity = 20;
-                    Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().NovaCutInX = 0;
-                    Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().NovaCutInOpacity = 0;
-                    Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().randomNovaDialogue = Main.rand.Next(0, 6);
-                    if (!voicesEnabled)
-                    {
-
-                        if (chosenStarfarer == 1)
-                        {
-                            if (randomNovaDialogue == 0)
-                            {
-                                SoundEngine.PlaySound(StarsAboveAudio.AN0, Player.Center);
-                            }
-                            if (randomNovaDialogue == 1)
-                            {
-                                if (chosenStellarNova == 1)
-                                {
-                                    SoundEngine.PlaySound(StarsAboveAudio.AN11, Player.Center);
-                                }
-                                if (chosenStellarNova == 2)
-                                {
-                                    SoundEngine.PlaySound(StarsAboveAudio.AN12, Player.Center);
-                                }
-                                if (chosenStellarNova == 3)
-                                {
-                                    SoundEngine.PlaySound(StarsAboveAudio.AN13, Player.Center);
-                                }
-                                if (chosenStellarNova == 4)
-                                {
-                                    SoundEngine.PlaySound(StarsAboveAudio.AN14, Player.Center);
-                                }
-                                if (chosenStellarNova == 5)
-                                {
-                                    SoundEngine.PlaySound(StarsAboveAudio.AN15, Player.Center);
-                                }
-
-                            }
-                            if (randomNovaDialogue == 2)
-                            {
-                                SoundEngine.PlaySound(StarsAboveAudio.AN2, Player.Center);
-                            }
-                            if (randomNovaDialogue == 3)
-                            {
-                                SoundEngine.PlaySound(StarsAboveAudio.AN3, Player.Center);
-                            }
-                            if (randomNovaDialogue == 4)
-                            {
-                                SoundEngine.PlaySound(StarsAboveAudio.AN4, Player.Center);
-                            }
-                            if (randomNovaDialogue == 5)
-                            {
-                                SoundEngine.PlaySound(StarsAboveAudio.AN5, Player.Center);
-                            }
-
-                        }
-                        if (chosenStarfarer == 2)
-                        {
-                            if (randomNovaDialogue == 0)
-                            {
-                                SoundEngine.PlaySound(StarsAboveAudio.EN0, Player.Center);
-                            }
-                            if (randomNovaDialogue == 1)
-                            {
-                                if (chosenStellarNova == 1)
-                                {
-                                    SoundEngine.PlaySound(StarsAboveAudio.EN11, Player.Center);
-                                }
-                                if (chosenStellarNova == 2)
-                                {
-                                    SoundEngine.PlaySound(StarsAboveAudio.EN12, Player.Center);
-                                }
-                                if (chosenStellarNova == 3)
-                                {
-                                    SoundEngine.PlaySound(StarsAboveAudio.EN13, Player.Center);
-                                }
-                                if (chosenStellarNova == 4)
-                                {
-                                    SoundEngine.PlaySound(StarsAboveAudio.EN14, Player.Center);
-                                }
-                                if (chosenStellarNova == 5)
-                                {
-                                    SoundEngine.PlaySound(StarsAboveAudio.EN15, Player.Center);
-                                }
-
-                            }
-                            if (randomNovaDialogue == 2)
-                            {
-                                SoundEngine.PlaySound(StarsAboveAudio.EN2, Player.Center);
-                            }
-                            if (randomNovaDialogue == 3)
-                            {
-                                SoundEngine.PlaySound(StarsAboveAudio.EN3, Player.Center);
-                            }
-                            if (randomNovaDialogue == 4)
-                            {
-                                SoundEngine.PlaySound(StarsAboveAudio.EN4, Player.Center);
-                            }
-                            if (randomNovaDialogue == 5)
-                            {
-                                SoundEngine.PlaySound(StarsAboveAudio.EN5, Player.Center);
-                            }
-
-                        }
-
-                    }
+                    StellarNovaCutIn();
                     Player.GetModPlayer<StarsAbovePlayer>().activateShockwaveEffect = true;
 
 
@@ -7110,6 +6956,299 @@ namespace StarsAbove
                                                                                                                                                                                              //Projectile.NewProjectile(null,player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
                         }
                     }
+
+                }
+            }
+        }
+
+        private void StellarNovaCutIn()
+        {
+            NovaCutInTimer = 140;
+            NovaCutInVelocity = 20;
+            NovaCutInX = 0;
+            NovaCutInOpacity = 0;
+
+
+            StellarNovaVoice();
+        }
+
+        private void StellarNovaVoice()
+        {
+            
+            //If the ModConfig's voices are enabled, continue.
+            if (!voicesEnabled)
+            {
+                if(Main.rand.NextBool(5))//1 in 5 chance to play a Nova specific line.
+                {
+                    novaDialogue = LangHelper.Wrap(LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + ".Special" + $"{chosenStellarNova}"), 20);
+
+                    if (chosenStellarNova == 1)
+                    {
+
+                        if (chosenStarfarer == 1)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.ANSpecial1, Player.Center);
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.ENSpecial1, Player.Center);
+
+                        }
+
+                    }
+                    if (chosenStellarNova == 2)
+                    {
+                        if (chosenStarfarer == 1)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.ANSpecial2, Player.Center);
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.ENSpecial2, Player.Center);
+
+                        }
+
+                    }
+                    if (chosenStellarNova == 3)
+                    {
+                        if (chosenStarfarer == 1)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.ANSpecial3, Player.Center);
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.ENSpecial3, Player.Center);
+
+                        }
+
+                    }
+                    if (chosenStellarNova == 4)
+                    {
+                        if (chosenStarfarer == 1)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.ANSpecial4, Player.Center);
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.ENSpecial4, Player.Center);
+
+                        }
+
+                    }
+                    if (chosenStellarNova == 5)
+                    {
+                        if (chosenStarfarer == 1)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.ANSpecial5, Player.Center);
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.ENSpecial5, Player.Center);
+
+                        }
+
+                    }
+                }
+                else
+                {
+                    if(Main.rand.NextBool(20))
+                    {
+                        novaDialogue = LangHelper.Wrap(LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + $".10"), 20);
+
+                        //1 in 20 chance for a rare line to play.
+                        if (chosenStarfarer == 1)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.AN10, Player.Center);
+
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.EN10, Player.Center);
+
+                        }
+                        return;
+                    }
+                    else
+                    {
+                        randomNovaDialogue = Main.rand.Next(0, 9);
+                        novaDialogue = LangHelper.Wrap(LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + $".{randomNovaDialogue + 1}"), 20);
+
+                        
+
+                    }
+                    if (randomNovaDialogue == 0)
+                    {
+                        if (chosenStarfarer == 1)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.AN1, Player.Center);
+
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.EN1, Player.Center);
+
+                        }
+                    }
+                    else if (randomNovaDialogue == 1)
+                    {
+                        if (chosenStarfarer == 1)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.AN2, Player.Center);
+
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.EN2, Player.Center);
+
+                        }
+                    }
+                    else if(randomNovaDialogue == 2)
+                    {
+                        if (chosenStarfarer == 1)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.AN3, Player.Center);
+
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.EN3, Player.Center);
+
+                        }
+                    }
+                    else if(randomNovaDialogue == 3)
+                    {
+                        if (chosenStarfarer == 1)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.AN4, Player.Center);
+
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.EN4, Player.Center);
+
+                        }
+                    }
+                    else if(randomNovaDialogue == 4)
+                    {
+                        if (chosenStarfarer == 1)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.AN5, Player.Center);
+
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.EN5, Player.Center);
+
+                        }
+                    }
+                    else if(randomNovaDialogue == 5)
+                    {
+                        if (chosenStarfarer == 1)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.AN6, Player.Center);
+
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.EN6, Player.Center);
+
+                        }
+                    }
+                    else if(randomNovaDialogue == 6)
+                    {
+                        if (chosenStarfarer == 1)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.AN7, Player.Center);
+
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.EN7, Player.Center);
+
+                        }
+                    }
+                    else if(randomNovaDialogue == 7)
+                    {
+                        if (chosenStarfarer == 1)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.AN8, Player.Center);
+
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.EN8, Player.Center);
+
+                        }
+                    }
+                    else if(randomNovaDialogue == 8)
+                    {
+                        if (chosenStarfarer == 1)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.AN9, Player.Center);
+
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.EN9, Player.Center);
+
+                        }
+                    }
+                    else if(randomNovaDialogue == 9)
+                    {
+                        
+                    }
+
+                }
+            }
+        }
+
+        private void EdinGenesisQuasar()
+        {
+            //Edin Genesis Quasar Casts
+            if (chosenStellarNova == 5 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && astarteDriverAttacks > 0 && Main.LocalPlayer.HasBuff(BuffType<Buffs.AstarteDriver>()) && astarteDriverCooldown < 0)
+            {
+
+                if (Player.whoAmI == Main.myPlayer)
+                {
+                    //
+                    astarteDriverCooldown = 120;
+                    astarteDriverAttacks--;
+
+                    for (int d = 0; d < 105; d++)
+                    {
+                        Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                    }
+                    for (int d = 0; d < 105; d++)
+                    {
+                        Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                    }
+                    SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, Player.Center);
+                    Vector2 mousePosition = Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos) * Main.rand.Next(20, 22);
+                    for (int i = 0; i < 10; i++)
+                    {
+                        int type = Main.rand.Next(new int[] { ProjectileID.NebulaBlaze2, ProjectileID.NebulaBlaze2, ProjectileID.NebulaBlaze2, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, });
+                        Projectile.NewProjectile(null, Player.Center.X, Player.Center.Y, mousePosition.X, mousePosition.Y, type, novaDamage / 10, 3, Player.whoAmI, 0f);
+
+                    }
+
+
+                    int numberProjectiles = 10;
+                    for (int i = 0; i < numberProjectiles; i++)
+                    {
+                        Vector2 perturbedSpeed = mousePosition.RotatedByRandom(MathHelper.ToRadians(40));
+                        int type = Main.rand.Next(new int[] { ProjectileID.NebulaBlaze2, ProjectileID.NebulaBlaze2, ProjectileID.NebulaBlaze2, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, });
+
+                        Projectile.NewProjectile(null, Player.Center.X, Player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, type, novaDamage / 10, 3, Player.whoAmI);
+                    }
+                    Vector2 shotKnockback = Vector2.Normalize(mousePosition) * 15f * -1f;
+                    Player.velocity = shotKnockback;
+                    if (chosenStarfarer == 2)
+                    {
+                        Player.AddBuff(BuffType<Buffs.Invincibility>(), 60);
+                    }
+                    //Vector2 mousePosition = Main.MouseWorld;
+                    //Projectile.NewProjectile(null,new Vector2(player.Center.X - 100, player.Center.Y), Vector2.Zero, mod.ProjectileType("Theofania2"), novaDamage + novaDamageMod, 4, player.whoAmI, 0, 1);                                                                                                                                                                                                                                                                                                                                             //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
+                    //Projectile.NewProjectile(null,player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
 
                 }
             }
@@ -7934,114 +8073,9 @@ namespace StarsAbove
                 }
                 if (Main.LocalPlayer.HasBuff(BuffType<Buffs.KiwamiRyuken>()))
                 {
-                    Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().NovaCutInTimer = 140;
-                    Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().NovaCutInVelocity = 20;
-                    Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().NovaCutInX = 0;
-                    Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().NovaCutInOpacity = 0;
-                    Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().randomNovaDialogue = Main.rand.Next(0, 6);
-                    if (!voicesEnabled)
-                    {
-
-                        if (chosenStarfarer == 1)
-                        {
-                            if (randomNovaDialogue == 0)
-                            {
-                                SoundEngine.PlaySound(StarsAboveAudio.AN0, Player.Center);
-                            }
-                            if (randomNovaDialogue == 1)
-                            {
-                                if (chosenStellarNova == 0)
-                                {
-                                    SoundEngine.PlaySound(StarsAboveAudio.AN11, Player.Center);
-                                }
-                                if (chosenStellarNova == 0)
-                                {
-                                    SoundEngine.PlaySound(StarsAboveAudio.AN12, Player.Center);
-                                }
-                                if (chosenStellarNova == 0)
-                                {
-                                    SoundEngine.PlaySound(StarsAboveAudio.AN13, Player.Center);
-                                }
-                                if (chosenStellarNova == 0)
-                                {
-                                    SoundEngine.PlaySound(StarsAboveAudio.AN14, Player.Center);
-                                }
-                                if (chosenStellarNova == 0)
-                                {
-                                    SoundEngine.PlaySound(StarsAboveAudio.AN15, Player.Center);
-                                }
-
-                            }
-                            if (randomNovaDialogue == 2)
-                            {
-                                SoundEngine.PlaySound(StarsAboveAudio.AN2, Player.Center);
-                            }
-                            if (randomNovaDialogue == 3)
-                            {
-                                SoundEngine.PlaySound(StarsAboveAudio.AN3, Player.Center);
-                            }
-                            if (randomNovaDialogue == 4)
-                            {
-                                SoundEngine.PlaySound(StarsAboveAudio.AN4, Player.Center);
-                            }
-                            if (randomNovaDialogue == 5)
-                            {
-                                SoundEngine.PlaySound(StarsAboveAudio.AN5, Player.Center);
-                            }
-
-                        }
-                        if (chosenStarfarer == 2)
-                        {
-                            if (randomNovaDialogue == 0)
-                            {
-                                SoundEngine.PlaySound(StarsAboveAudio.EN0, Player.Center);
-                            }
-                            if (randomNovaDialogue == 1)
-                            {
-                                if (chosenStellarNova == 0)
-                                {
-                                    SoundEngine.PlaySound(StarsAboveAudio.EN11, Player.Center);
-                                }
-                                if (chosenStellarNova == 0)
-                                {
-                                    SoundEngine.PlaySound(StarsAboveAudio.EN12, Player.Center);
-                                }
-                                if (chosenStellarNova == 0)
-                                {
-                                    SoundEngine.PlaySound(StarsAboveAudio.EN13, Player.Center);
-                                }
-                                if (chosenStellarNova == 0)
-                                {
-                                    SoundEngine.PlaySound(StarsAboveAudio.EN14, Player.Center);
-                                }
-                                if (chosenStellarNova == 0)
-                                {
-                                    SoundEngine.PlaySound(StarsAboveAudio.EN15, Player.Center);
-                                }
-
-                            }
-                            if (randomNovaDialogue == 2)
-                            {
-                                SoundEngine.PlaySound(StarsAboveAudio.EN2, Player.Center);
-                            }
-                            if (randomNovaDialogue == 3)
-                            {
-                                SoundEngine.PlaySound(StarsAboveAudio.EN3, Player.Center);
-                            }
-                            if (randomNovaDialogue == 4)
-                            {
-                                SoundEngine.PlaySound(StarsAboveAudio.EN4, Player.Center);
-                            }
-                            if (randomNovaDialogue == 5)
-                            {
-                                SoundEngine.PlaySound(StarsAboveAudio.EN5, Player.Center);
-                            }
-
-                        }
-
-
-
-                    }
+                   
+                    
+                    StellarNovaCutIn();
                     ryukenTimer = 60;
                     int index = Player.FindBuffIndex(BuffType<KiwamiRyuken>());
                     if (index > -1)
