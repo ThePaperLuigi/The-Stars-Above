@@ -71,7 +71,7 @@ namespace StarsAbove
     {
         /* Miscellaneous weapon code (gauges, projectiles, etc.)
          * Also includes accessories.
-         * Moved from StarsAbovePlayer because honestly, that file is incredibly bloated.
+         * Moved from StarsAbovePlayer because honestly, that file was incredibly bloated.
          * */
 
         #region Weapon/Accessory Variables
