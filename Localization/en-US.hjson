@@ -2684,31 +2684,41 @@
         {
           StellarNovaQuotes:
           {
-            Asphodene:
+            1: #Asphodene
             {
-              1: Now it's my turn!
-              2: I will take the place of entropy!
-              3: Come forth, blazing blade!
-              4: This is what you deserve.
-              5: Don't worry; I'll heal you.
-              6: The power of the cosmos!
-              7: I'm not about to stop here.
-              8: I'll reduce you to stardust!
-              9: Let's finish this!
-              10: Don't underestimate me.
+              Special1: I'll never back down!
+              Special2: Don't even think about running.
+              Special3: With only one strike!
+              Special4: Your wish is my command.
+              Special5: Just give up! At this point, even I can't stop myself.
+              1: Finally- I've been waiting for this moment!
+              2: I am not about to stop here.
+              3: I'll reduce you to stardust!
+              4: Let's finish this!
+              5: Underestimate me if you want.
+              6: Why hold back when you can solve the problem right now?
+              7: Accept your fate.
+              8: Your fate was sealed when you rose against us.
+              9: I'll show you what I can really do.
+              10: Wait, which one were we using again? ...Was that it?
             }
-            Eridani:
+            2: #Eridani
             {
+              Special1: Time to prove myself.
+              Special2: Don't even think about running.
+              Special3: Didn't see that one coming, huh?
+              Special4: I'll show you the domain of the soul.
+              Special5: Know that you are dimensions below me.
               1: Time to finish this.
-              2: I am NOT losing to you.
-              3: I've been waiting for this.
-              4: You've made a fatal mistake.
-              5: Let's get the upper hand.
-              6: Our victory was never in question.
-              7: The time of parting has come.
-              8: Go back to where you belong.
-              9: I'm not about to stop here.
-              10: I won't lose. Not now, not ever.
+              2: Go back to where you belong.
+              3: Submit to entropy.
+              4: I'm not about to stop here.
+              5: Let the stars consume you.
+              6: Losing was never an option.
+              7: Accept your fate. There is nothing else you can do.
+              8: Wow. Is that really all you've got?
+              9: I'll show you what I can really do.
+              10: Um, how did it go again? Something something... special attack? Or something like that?
             }
           }
           MiscInfo:
