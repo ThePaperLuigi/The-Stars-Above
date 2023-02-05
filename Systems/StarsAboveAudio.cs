@@ -22,86 +22,129 @@ namespace StarsAbove
             }
 		};*/ //This is a good system, but in order to sync the voice lines with the dialogue box, I can't use it.
 
-        public static readonly SoundStyle AN0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/AN0")
+        public static readonly SoundStyle AN1 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/AN1")
 		{
 
 		};
-		public static readonly SoundStyle AN11 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/AN11")
+		public static readonly SoundStyle AN2 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/AN2")
 		{
 
 		};
-		public static readonly SoundStyle AN12 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/AN12")
+		public static readonly SoundStyle AN3 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/AN3")
 		{
 
 		};
-		public static readonly SoundStyle AN13 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/AN13")
+		public static readonly SoundStyle AN4 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/AN4")
 		{
 
 		};
-		public static readonly SoundStyle AN14 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/AN14")
+		public static readonly SoundStyle AN5 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/AN5")
 		{
 
 		};
-		public static readonly SoundStyle AN15 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/AN15")
+		public static readonly SoundStyle AN6 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/AN6")
 		{
 
 		};
-		public static readonly SoundStyle AN2 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/AN2")
+		public static readonly SoundStyle AN7 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/AN7")
 		{
 
 		};
-		public static readonly SoundStyle AN3 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/AN3")
+		public static readonly SoundStyle AN8 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/AN8")
 		{
 
 		};
-		public static readonly SoundStyle AN4 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/AN4")
+		public static readonly SoundStyle AN9 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/AN9")
 		{
 
 		};
-		public static readonly SoundStyle AN5 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/AN5")
+		public static readonly SoundStyle AN10 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/AN10")
 		{
 
 		};
+
+		public static readonly SoundStyle ANSpecial1 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/UniqueLines/ANSpecial1")
+		{
+
+		};
+		public static readonly SoundStyle ANSpecial2 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/UniqueLines/ANSpecial2")
+		{
+
+		};
+		public static readonly SoundStyle ANSpecial3 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/UniqueLines/ANSpecial3")
+		{
+
+		};
+		public static readonly SoundStyle ANSpecial4 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/UniqueLines/ANSpecial4")
+		{
+
+		};
+		public static readonly SoundStyle ANSpecial5 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/UniqueLines/ANSpecial5")
+		{
+
+		};
+
 
 		#endregion
 		#region Eridani Voice Lines
-		public static readonly SoundStyle EN0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/EN0")
+		public static readonly SoundStyle EN1 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/EN1")
 		{
 
 		};
-		public static readonly SoundStyle EN11 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/EN11")
+		public static readonly SoundStyle EN2 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/EN2")
 		{
 
 		};
-		public static readonly SoundStyle EN12 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/EN12")
+		public static readonly SoundStyle EN3 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/EN3")
 		{
 
 		};
-		public static readonly SoundStyle EN13 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/EN13")
+		public static readonly SoundStyle EN4 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/EN4")
 		{
 
 		};
-		public static readonly SoundStyle EN14 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/EN14")
+		public static readonly SoundStyle EN5 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/EN5")
 		{
 
 		};
-		public static readonly SoundStyle EN15 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/EN15")
+		public static readonly SoundStyle EN6 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/EN6")
 		{
 
 		};
-		public static readonly SoundStyle EN2 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/EN2")
+		public static readonly SoundStyle EN7 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/EN7")
 		{
 
 		};
-		public static readonly SoundStyle EN3 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/EN3")
+		public static readonly SoundStyle EN8 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/EN8")
 		{
 
 		};
-		public static readonly SoundStyle EN4 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/EN4")
+		public static readonly SoundStyle EN9 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/EN9")
 		{
 
 		};
-		public static readonly SoundStyle EN5 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/EN5")
+		public static readonly SoundStyle EN10 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/EN10")
+		{
+
+		};
+
+		public static readonly SoundStyle ENSpecial1 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/UniqueLines/ENSpecial1")
+		{
+
+		};
+		public static readonly SoundStyle ENSpecial2 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/UniqueLines/ENSpecial2")
+		{
+
+		};
+		public static readonly SoundStyle ENSpecial3 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/UniqueLines/ENSpecial3")
+		{
+
+		};
+		public static readonly SoundStyle ENSpecial4 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/UniqueLines/ENSpecial4")
+		{
+
+		};
+		public static readonly SoundStyle ENSpecial5 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/UniqueLines/ENSpecial5")
 		{
 
 		};
