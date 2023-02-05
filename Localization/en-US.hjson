@@ -2684,14 +2684,14 @@
         {
           StellarNovaQuotes:
           {
-            1: #Asphodene
+            1:
             {
               Special1: I'll never back down!
               Special2: Don't even think about running.
               Special3: With only one strike!
               Special4: Your wish is my command.
               Special5: Just give up! At this point, even I can't stop myself.
-              1: Finally- I've been waiting for this moment!
+              1: I've been waiting for this exact moment!
               2: I am not about to stop here.
               3: I'll reduce you to stardust!
               4: Let's finish this!
@@ -2702,7 +2702,7 @@
               9: I'll show you what I can really do.
               10: Wait, which one were we using again? ...Was that it?
             }
-            2: #Eridani
+            2:
             {
               Special1: Time to prove myself.
               Special2: Don't even think about running.
@@ -2718,7 +2718,7 @@
               7: Accept your fate. There is nothing else you can do.
               8: Wow. Is that really all you've got?
               9: I'll show you what I can really do.
-              10: Um, how did it go again? Something something... special attack? Or something like that?
+              10: Um, how did it go again? Something something...
             }
           }
           MiscInfo:
@@ -2919,7 +2919,7 @@
         EnableStarfarerVoices:
         {
           Label: Disable Stellar Nova voice lines
-          Tooltip: Disables voice lines for Asphodene and Eridani during Stellar Novas. (Courtesy of 15.ai)
+          Tooltip: Disables the AI voice lines for Asphodene and Eridani during Stellar Novas.
         }
         EnableMusicOverride:
         {
