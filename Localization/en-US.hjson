@@ -82,7 +82,7 @@
           CygnusAsteroids:
           {
             Name: Cygnus Asteroid Field
-            Description: A collection of marble asteroids, notable for their strange foreign ruins- possibly a clue to their original inhabitants, yet the passage has time has rendered archeology impossible.
+            Description: A collection of marble asteroids, notable for their strange foreign ruins- possibly a clue to their original inhabitants, yet the passage of time has rendered archeology impossible.
             Threat: Threat Level: D
             Requirement: Tier I Stellaglyph required for transit.
             Loot: Resources: Prismatic Cores
@@ -122,7 +122,7 @@
           WaterPlanet:
           {
             Name: Aquarius
-            Description: An ocean planet convered entirely in water. While it does not sustain intelligent life, the geothermal conduction beneath the waves means some life can still persist, even deep within the Ardor.
+            Description: An ocean planet covered entirely in water. While it does not sustain intelligent life, the geothermal conduction beneath the waves means some life can still persist, even deep within the Ardor.
             Threat: Threat Level: C-
             Requirement: Transit impossible at this time.
             Loot: Resources: ???
