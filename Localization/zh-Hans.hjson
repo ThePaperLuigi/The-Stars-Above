@@ -3,6 +3,15 @@
   {
     StarsAbove:
     {
+      CombatText:
+      {
+        Adornment: 
+        {
+          Positive: Positive Chaos!
+          Negative: Negative Chaos!
+          
+        }
+      }
       SubworldName:
       {
         Observatory: 极北天文台
@@ -12,11 +21,13 @@
         Talk: 点击右键进行对话！
         Yojimbo:
         {
+          #These are pretty much debug lines just in case something breaks.
           1: 我不明白你为什么要试图从我这里得到些什么，但是……
           Leaving: Yojimbo离开了！
         }
         Garridine:
         {
+          #These are pretty much debug lines just in case something breaks.
           1: 你其实可以不必大老远的跑过来，只需要写封信就行。嗯……信件怎么送过来？好吧……
         }
       }
@@ -461,14 +472,14 @@
             77: 我为你搞来了一种新精华。它似乎能同时借用近战与魔法的力量——一把多功能武器,我爱死它了！
             78: 这片墓地似乎和这种精华有所联系。希望这些墓碑不是你死后留下的，对吧？
             79: 嗯……这个召唤武器的精华可以用于制造某种遥控无人机——我想知道能不能和它们交流。
+            80: This is certainly a Melee weapon- furthermore, it seems to be one that excels at a distance, as well as providing extra firepower in close combat. Nice.
+            81: I plundered a Ranged-sort of essence from the likeness of those pirates. Sea... water... Actually, looks like I'm nearly dry with ocean jokes, so I'll anchor myself now.
+            82: Well, I'm not sure what to make of this Essence, other than that it's a Summon weapon. Best you give it a go, before anything else goes haywire.
+
           }
           Eridani:
           {
-            1:
-              '''
-              这里有一个远程类型精华。看起来每四次射击
-              都会增强一次攻击。不管为何，反正它很强大。
-              '''
+            1: 这里有一个远程类型精华。看起来每四次射击都会增强一次攻击。不管为何，反正它很强大。
             2: 给你另一种精华。这个将创造一个召唤类型武器。我相信你明白这意味着什么吧？
             3: 我是指让你去试试。
             4: 你已经明白了？那当我没说。
@@ -550,6 +561,9 @@
             80: 这片墓地似乎和这种精华有所联系。希望它能帮助你避免一开始就死出一片墓地。
             81: 虽然它很强大，但我相信它是一把实用的工具，而不是武器。
             82: 这种魔法精华虽然和自然有关，但它似乎相当不稳定。也许你最好把它和其它武器搭配着使用。
+            83: This Melee weapon harnesses an aspect of time itself to help you in combat. It seems to have some impressive range, as well.
+            84: How about it; that previous... um, let's say 'get-together' with those pirates has churned up an Essence- Ranged damage, from what I can tell. Here you are.
+            85: I'm not sure how to define this Summon-type Essence, so I'll leave it as an exercise for you. Well... good luck.
           }
           Perseus:
           {
@@ -744,6 +758,7 @@
               1: 你做到了！石巨人不复存在。你势不可挡。
               2: 我感觉下一个敌人……很危险。似乎天体能量在地牢入口周围聚集。
               3: 天体序列有了另一项升级。看起来很强大。
+              4: Well, that's about everything.
             }
             Eridani:
             {
@@ -2598,8 +2613,8 @@
         {
           Archive:
           {
-            Asphodene: Right.. What do you want to read about? Dialogue is sorted into 3 groups: idle, boss, and weapon. Cycle through and choose the one you want.
-            Eridani: Okay, what do you want to read about? The dialogues are sorted into 3 groups: idle, boss, and weapon. Feel free to choose which one you want to view.
+            Asphodene: Right.. What do you want to read about? Dialogue is sorted into 4 groups: idle, boss, weapon, and long-form. Cycle through and choose the one you want.
+            Eridani: Okay, what do you want to read about? The dialogues are sorted into 4 groups: idle, boss, weapon, and long-form. Feel free to choose which one you want to view.
           }
           ExitArchive:
           {
@@ -2628,8 +2643,8 @@
           }
           VoyageHover:
           {
-            Asphodene: Looks like this isn't implemented yet.
-            Eridani: It seems this isn't quite implemented yet.
+            Asphodene: This is where we can access Celestial Cartography: a magical map of the immediate galaxy with the help of the Astrolabe. Keep in mind you'll still need the Stellaglyph nearby to go anywhere except the Observatory.
+            Eridani: This is where the Astrolabe comes in handy: with its strength, you can access Celestial Cartography, a map of the galaxy. You'll need the Stellaglyph nearby if you want to go further than the Observatory, though.
           }
           Locked:
           {
@@ -2669,31 +2684,41 @@
         {
           StellarNovaQuotes:
           {
-            Asphodene:
+            1:
             {
-              1: Now it's my turn!
-              2: I will take the place of entropy!
-              3: Come forth, blazing blade!
-              4: This is what you deserve.
-              5: Don't worry; I'll heal you.
-              6: The power of the cosmos!
-              7: I'm not about to stop here.
-              8: I'll reduce you to stardust!
-              9: Let's finish this!
-              10: Don't underestimate me.
+              Special1: I'll never back down!
+              Special2: Don't even think about running.
+              Special3: With only one strike!
+              Special4: Your wish is my command.
+              Special5: Just give up! At this point, even I can't stop myself.
+              1: I've been waiting for this exact moment!
+              2: I am not about to stop here.
+              3: I'll reduce you to stardust!
+              4: Let's finish this!
+              5: Underestimate me if you want.
+              6: Why hold back when you can solve the problem right now?
+              7: Accept your fate.
+              8: Your fate was sealed when you rose against us.
+              9: I'll show you what I can really do.
+              10: Wait, which one were we using again? ...Was that it?
             }
-            Eridani:
+            2:
             {
+              Special1: Time to prove myself.
+              Special2: Don't even think about running.
+              Special3: Didn't see that one coming, huh?
+              Special4: I'll show you the domain of the soul.
+              Special5: Know that you are dimensions below me.
               1: Time to finish this.
-              2: I am NOT losing to you.
-              3: I've been waiting for this.
-              4: You've made a fatal mistake.
-              5: Let's get the upper hand.
-              6: Our victory was never in question.
-              7: The time of parting has come.
-              8: Go back to where you belong.
-              9: I'm not about to stop here.
-              10: I won't lose. Not now, not ever.
+              2: Go back to where you belong.
+              3: Submit to entropy.
+              4: I'm not about to stop here.
+              5: Let the stars consume you.
+              6: Losing was never an option.
+              7: Accept your fate. There is nothing else you can do.
+              8: Wow. Is that really all you've got?
+              9: I'll show you what I can really do.
+              10: Um, how did it go again? Something something...
             }
           }
           MiscInfo:
@@ -2826,6 +2851,11 @@
       }
       Config:
       {
+        StellarNovaHeader: "[c/EE9DE0:Stellar Nova Settings]"
+        PopUpDialogueHeader: "[c/C076DF:Pop-up Dialogue Settings]"
+        DialogueHeader: "[c/75C792:Disk Dialogue Settings]"
+        MiscHeader: "[c/7A76FF:Miscellaneous Settings]"
+
         DisableStellarNovaCutIns:
         {
           Label: 禁用天体新星立绘切入
