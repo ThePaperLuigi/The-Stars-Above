@@ -16,7 +16,7 @@ namespace StarsAbove.Buffs.Chronoclock
         }
 
         public override void Update(Player player, ref int buffIndex)
-        {
+        {/*
             StarsAbovePlayer modPlayer = player.GetModPlayer<StarsAbovePlayer>();
             if (player.ownedProjectileCounts[ProjectileType<Projectiles.Chronoclock.ChronoclockMinion>()] > 0)
             {
@@ -29,7 +29,7 @@ namespace StarsAbove.Buffs.Chronoclock
             }
             
 
-
+            */
         }
     }
 }
