@@ -16,16 +16,23 @@ using StarsAbove.Items.Prisms;
 using StarsAbove.Projectiles.Adornment;
 using StarsAbove.Buffs.Adornment;
 using StarsAbove.Utilities;
+using StarsAbove.Buffs.Chronoclock;
 
 namespace StarsAbove.Items
 {
     public class Chronoclock : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Work in progress weapon");
+			DisplayName.SetDefault("Chronoclock");
 			Tooltip.SetDefault("" +
-				"???" +
-				"\n''"
+				"Summons a [Fragment of Time] to aid you in combat, granting immunity to Slow (Only one can be summoned at a time)" +
+                "\nThe [Fragment of Time] will nurture a [Time Bubble], which grows over time" +
+                "\nThe [Time Bubble] will pop upon contact with an enemy, exploding in a [Time Pulse]" +
+                "\nThe [Time Pulse] deals damage in a large area, increasing in potency with the size of the [Time Bubble]" +
+                "\nAdditionally, at max size, the [Time Pulse] gains 18 summon tag damage" +
+                "\nAdditionally, taking damage within the [Time Bubble] will cause it to pop, preventing the damage" +
+                "\nThe [Time Bubble] will be recast five seconds after popping" +
+				"\n'Well, that sounds like a waste of time'"
 				+ $"");
 
 			ItemID.Sets.GamepadWholeScreenUseRange[Item.type] = true;
@@ -38,9 +45,9 @@ namespace StarsAbove.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 30;
+			Item.damage = 60;
 			Item.DamageType = DamageClass.Summon;
-			Item.mana = 10;
+			Item.mana = 60;
 			Item.width = 21;
 			Item.height = 21;
 			Item.useTime = 36;
@@ -52,7 +59,7 @@ namespace StarsAbove.Items
 			Item.rare = ItemRarityID.Green;
 			Item.UseSound = SoundID.Item44;
 			Item.shoot = ProjectileType<AdornmentMinion>();
-			Item.buffType = BuffType<AdornmentMinionBuff>(); //The buff added to player after used the item
+			Item.buffType = BuffType<ChronoclockMinionBuff>(); //The buff added to player after used the item
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
 		}
 		public override bool AltFunctionUse(Player player)
