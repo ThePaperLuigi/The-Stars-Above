@@ -17,6 +17,7 @@ using StarsAbove.Projectiles.Adornment;
 using StarsAbove.Buffs.Adornment;
 using StarsAbove.Utilities;
 using StarsAbove.Buffs.Chronoclock;
+using StarsAbove.Projectiles.Chronoclock;
 
 namespace StarsAbove.Items
 {
@@ -26,11 +27,11 @@ namespace StarsAbove.Items
 			DisplayName.SetDefault("Chronoclock");
 			Tooltip.SetDefault("" +
 				"Summons a [Fragment of Time] to aid you in combat, granting immunity to Slow (Only one can be summoned at a time)" +
-                "\nThe [Fragment of Time] will nurture a [Time Bubble], which grows over time" +
-                "\nThe [Time Bubble] will pop upon contact with an enemy, exploding in a [Time Pulse]" +
-                "\nThe [Time Pulse] deals damage in a large area, increasing in potency with the size of the [Time Bubble]" +
-                "\nAdditionally, at max size, the [Time Pulse] gains 18 summon tag damage" +
-                "\nAdditionally, taking damage within the [Time Bubble] will cause it to pop, preventing the damage" +
+                "\nThe [Fragment of Time] will periodically nurture a [Time Bubble] centered on herself, which grows over time" +
+                "\nThe [Time Bubble] will pop upon contact with an enemy, dealing damage and additionally exploding in a [Time Pulse]" +
+				"\nThe [Time Pulse] deals damage in a large area, increasing in potency with the size of the [Time Bubble] and inflicts 18 summon tag damage" +
+                "\nAt max size, the [Time Pulse] explodes automatically" +
+                "\nTaking damage within the [Time Bubble] will pop the [Time Bubble] preventing that instance of damage" +
                 "\nThe [Time Bubble] will be recast five seconds after popping" +
 				"\n'Well, that sounds like a waste of time'"
 				+ $"");
@@ -56,9 +57,9 @@ namespace StarsAbove.Items
 			Item.noMelee = true;
 			Item.knockBack = 6;
 			Item.noUseGraphic = true;
-			Item.rare = ItemRarityID.Green;
+			Item.rare = ItemRarityID.Pink;
 			Item.UseSound = SoundID.Item44;
-			Item.shoot = ProjectileType<AdornmentMinion>();
+			Item.shoot = ProjectileType<FragmentOfTimeMinion>();
 			Item.buffType = BuffType<ChronoclockMinionBuff>(); //The buff added to player after used the item
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
 		}
@@ -70,123 +71,7 @@ namespace StarsAbove.Items
         {
 			if (player.altFunctionUse == 2)
 			{
-				if (!player.HasBuff(BuffType<PureChaosCooldown>()))
-                {
-					for (int i = 0; i < 30; i++)
-					{
-						int dustIndex = Dust.NewDust(player.Center, 0, 0, 220, Main.rand.NextFloat(-25, 25), Main.rand.NextFloat(-25, 25), 100, default(Color), 1f);
-						Main.dust[dustIndex].noGravity = true;
-
-						dustIndex = Dust.NewDust(player.Center, 0, 0, 220, Main.rand.NextFloat(-20, 20), Main.rand.NextFloat(-20, 20), 100, default(Color), 2f);
-						Main.dust[dustIndex].velocity *= 3f;
-					}
-					player.AddBuff(BuffType<PureChaosCooldown>(), 12 * 60);
-					int chaos = Main.rand.Next(0, 10);
-					if (chaos == 0)//10% bonus, all effects at once
-					{
-						Rectangle textPos = new Rectangle((int)player.position.X, (int)player.position.Y - 20, player.width, player.height);
-						CombatText.NewText(textPos, new Color(114, 237, 119, 240), $"{LangHelper.GetTextValue($"CombatText.Adornment.Positive")}", false, false);
-
-						player.AddBuff(BuffType<AdornmentCritBuff>(), 180);
-
-						player.AddBuff(BuffType<AdornmentAttackSpeedBuff>(), 180);
-
-						player.AddBuff(BuffType<Invincibility>(), 180);
-
-					}
-					else if (chaos >= 1 && chaos < 4)//1,2,3 30%
-					{
-						Rectangle textPos = new Rectangle((int)player.position.X, (int)player.position.Y - 20, player.width, player.height);
-						CombatText.NewText(textPos, new Color(237, 114, 114, 240), $"{LangHelper.GetTextValue($"CombatText.Adornment.Negative")}", false, false);
-
-						if (Main.rand.NextBool())
-						{//Random debuffs
-							if (Main.rand.NextBool())
-							{
-								player.AddBuff(BuffID.Poisoned, 60);
-							}
-							if (Main.rand.NextBool())
-							{
-								player.AddBuff(BuffID.Darkness, 60);
-
-							}
-							if (Main.rand.NextBool())
-							{
-								player.AddBuff(BuffID.Cursed, 60);
-
-							}
-							if (Main.rand.NextBool())
-							{
-								player.AddBuff(BuffID.OnFire, 60);
-
-							}
-							if (Main.rand.NextBool())
-							{
-								player.AddBuff(BuffID.Bleeding, 60);
-
-							}
-							if (Main.rand.NextBool())
-							{
-								player.AddBuff(BuffID.Slow, 60);
-
-							}
-							if (Main.rand.NextBool())
-							{
-								player.AddBuff(BuffID.Confused, 60);
-
-							}
-							if (Main.rand.NextBool())
-							{
-								player.AddBuff(BuffID.Weak, 60);
-
-							}
-							if (Main.rand.NextBool())
-							{
-								player.AddBuff(BuffID.BrokenArmor, 60);
-
-							}
-							if (Main.rand.NextBool())
-							{
-								player.AddBuff(BuffID.Chilled, 60);
-
-							}
-							if (Main.rand.NextBool())
-							{
-								player.AddBuff(BuffID.Frozen, 60);
-
-							}
-						}
-						else
-						{//Random objects
-							player.AddBuff(BuffType<AdornmentRandomObjectsBuff>(), 360);
-						}
-					}
-					else if (chaos >= 4 && chaos <= 9)//4,5,6,7,8,9 60%
-					{
-						Rectangle textPos = new Rectangle((int)player.position.X, (int)player.position.Y - 20, player.width, player.height);
-						CombatText.NewText(textPos, new Color(114, 237, 119, 240), $"{LangHelper.GetTextValue($"CombatText.Adornment.Positive")}", false, false);
-
-						int goodChaos = (Main.rand.Next(3));
-						if (goodChaos == 0)
-						{
-							player.AddBuff(BuffType<AdornmentCritBuff>(), 360);
-						}
-						else if (goodChaos == 1)
-						{
-							player.AddBuff(BuffType<AdornmentAttackSpeedBuff>(), 360);
-						}
-						else if (goodChaos == 2)
-						{
-							player.AddBuff(BuffType<Invincibility>(), 360);
-						}
-					}
-					return true;
-                }
-				else
-                {
-					return false;
-                }
-
+				
 			}
 
 			return base.CanUseItem(player);
@@ -216,10 +101,7 @@ namespace StarsAbove.Items
         {
 			
         }
-        public override Vector2? HoldoutOffset()
-		{
-			return new Vector2(-3, 4);
-		}
+        
 
 		
        

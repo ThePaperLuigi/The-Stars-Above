@@ -157,7 +157,6 @@ namespace StarsAbove
 			ModContent.ItemType<Ozma>(),
 			ModContent.ItemType<ClaimhSolais>(),
 			ModContent.ItemType<MorningStar>(),
-			ModContent.ItemType<Manifestation>(),
 
 			ModContent.ItemType<EternalStar>(),
 			ModContent.ItemType<VermillionDaemon>(),
@@ -178,10 +177,13 @@ namespace StarsAbove
 			ModContent.ItemType<BlackSilenceWeapon>(),
 			ModContent.ItemType<SoulReaver>(),
 			ModContent.ItemType<GoldenKatana>(),
+			ModContent.ItemType<Manifestation>(),
 
+			//Stars Above v1.3
 			ModContent.ItemType<Umbra>(),
 			ModContent.ItemType<SaltwaterScourge>(),
 			ModContent.ItemType<AdornmentOfTheChaoticGod>(),
+			ModContent.ItemType<Chronoclock>(),
 
 			ModContent.ItemType<EssenceOfAdagium>(),
 			ModContent.ItemType<EssenceOfBloodshed>(),
@@ -311,7 +313,7 @@ namespace StarsAbove
 			ModContent.ItemType<TotemOfLightEmpowered>(),
 			ModContent.ItemType<BlackSilenceWeapon>(),
 			ModContent.ItemType<AdornmentOfTheChaoticGod>(),
-
+			ModContent.ItemType<Chronoclock>(),
 
 		};
 		public List<int> Essences = new List<int>() {
