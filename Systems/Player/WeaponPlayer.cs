@@ -64,6 +64,8 @@ using StarsAbove.Buffs.CatalystMemory;
 using StarsAbove.Items.Armor.StarfarerArmor;
 using StarsAbove.Buffs.Farewells;
 using StarsAbove.Buffs.Umbra;
+using StarsAbove.Projectiles.Chronoclock;
+using StarsAbove.Buffs.Chronoclock;
 
 namespace StarsAbove
 {
@@ -1833,6 +1835,11 @@ namespace StarsAbove
                 Player.maxRunSpeed *= 1.15f;
                 //Player.runAcceleration += 1.15f;
             }
+            if (Player.HasBuff(BuffType<Alacrity>()))
+            {
+                Player.maxRunSpeed *= 1.1f;
+                Player.accRunSpeed *= 1.1f;
+            }
             if (Player.HasBuff(BuffType<CatalyzedBlade>()))
             {
                 Player.maxRunSpeed *= 1.1f;
@@ -3167,12 +3174,30 @@ namespace StarsAbove
         }
         public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource, ref int cooldownCounter)
         {
-
-
             if (Main.LocalPlayer.HasBuff(BuffType<Buffs.Invincibility>()))
             {
                 return false;
             }
+
+            if(Player.ownedProjectileCounts[ProjectileType<FragmentOfTimeMinion>()] >= 1 && !Player.HasBuff(BuffType<TimeBubbleCooldown>()))
+            {
+                for (int i = 0; i < Main.maxProjectiles; i++)
+                {
+                    Projectile proj = Main.projectile[i];
+
+                    if (proj.owner == Player.whoAmI &&
+                        (proj.type == ProjectileType<TimePulse>()) && proj.Distance(Player.Center) <= proj.ai[0] && proj.active)
+                    {
+                        Player.AddBuff(BuffType<Invincibility>(), 20);
+                        Player.AddBuff(BuffType<TimeBubbleCooldown>(), 1200);
+                        proj.Kill();
+                        return false;
+                    }
+                }
+            }
+            
+
+
             if (Player.HasBuff(BuffType<GuntriggerParry>()))
             {
 

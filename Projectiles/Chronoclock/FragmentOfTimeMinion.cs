@@ -16,7 +16,7 @@ namespace StarsAbove.Projectiles.Chronoclock
 			DisplayName.SetDefault("Fragment of Time");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
-			Main.projFrames[Projectile.type] = 3;
+			Main.projFrames[Projectile.type] = 11;
 		}
 
 		public override void SetDefaults()
@@ -58,6 +58,9 @@ namespace StarsAbove.Projectiles.Chronoclock
             Player player = Main.player[Projectile.owner];
             Player projOwner = Main.player[Projectile.owner];
 
+			//When active, immunity to slow
+			projOwner.buffImmune[BuffID.Slow] = true;
+
             Projectile.scale = 1f;
             if (!player.HasBuff(BuffType<Buffs.Chronoclock.ChronoclockMinionBuff>()))
             {
@@ -91,12 +94,12 @@ namespace StarsAbove.Projectiles.Chronoclock
             }
 
 
-            if (Projectile.ai[1] > 600)//Fire the Time Pulse
+            if (Projectile.ai[1] > 300)//Fire the Time Pulse
             {
 
                 Projectile.ai[1] = 0;
-                int type = ProjectileType<TimePulse>();//Temp
-                SoundEngine.PlaySound(SoundID.DD2_DarkMageAttack, Projectile.Center);
+                int type = ProjectileType<TimePulse>();
+                SoundEngine.PlaySound(SoundID.Item6, Projectile.Center);
 
 
                 Vector2 position = Projectile.Center;
@@ -139,33 +142,86 @@ namespace StarsAbove.Projectiles.Chronoclock
 				for (int i = 0; i < 2; i++)
 				{
 					// Charging dust
-					Vector2 vector = new Vector2(
+					Vector2 vector2 = new Vector2(
 						Main.rand.Next(-2048, 2048) * (0.003f * 100) - 10,
 						Main.rand.Next(-2048, 2048) * (0.003f * 100) - 10);
-					Dust d = Main.dust[Dust.NewDust(
-						Projectile.Center + vector, 1, 1,
+					Dust d2 = Main.dust[Dust.NewDust(
+						Projectile.Center + vector2, 1, 1,
 						132, 0, 0, 255,
 						new Color(1f, 1f, 1f), 0.5f)];
 					
-					d.velocity = -vector / 16;
-					d.velocity -= Projectile.velocity / 8;
-					d.noLight = true;
-					d.noGravity = true;
+					d2.velocity = -vector2 / 16;
+					d2.velocity -= Projectile.velocity / 8;
+					d2.noLight = true;
+					d2.noGravity = true;
 				}
+				Vector2 vector = new Vector2(
+					  Main.rand.Next(-2048, 2048) * (0.003f * 100) - 10,
+					  Main.rand.Next(-2048, 2048) * (0.003f * 100) - 10);
+				Dust d = Main.dust[Dust.NewDust(
+					Projectile.Center + vector, 1, 1,
+					DustID.TreasureSparkle, 0, 0, 255,
+					new Color(1f, 1f, 1f), 0.5f)];
+
+				d.velocity = -vector / 16;
+				d.velocity -= Projectile.velocity / 8;
+				d.noLight = true;
+				d.noGravity = true;
 			}
             else
             {
-				if ((idleAnimation >= 65 && idleAnimation < 70) || (idleAnimation >= 215 && idleAnimation < 220) || (idleAnimation >= 225 && idleAnimation < 230))
+				if (Math.Abs(Projectile.velocity.X) >= 1 || Math.Abs(Projectile.velocity.Y) >= 1)//If moving
 				{
-					Projectile.frame = 1;
+					if(Projectile.frame < 3)
+                    {
+						Projectile.frame = 3;
+                    }
+					// This is a simple "loop through all frames from top to bottom" animation
+					int frameSpeed = 5;
 
+					Projectile.frameCounter++;
+
+					if (Projectile.frameCounter >= frameSpeed)
+					{
+						Projectile.frameCounter = 0;
+						Projectile.frame++;
+
+						if (Projectile.frame >= 7)
+						{
+							Projectile.frame = 3;
+						}
+					}
 				}
 				else
-				{
-					Projectile.frame = 0;
-				}
-                
+                {//Idle animation (blinking, etc.)
+					if ((idleAnimation >= 65 && idleAnimation < 70) || (idleAnimation >= 215 && idleAnimation < 220) || (idleAnimation >= 225 && idleAnimation < 230))
+					{
+						Projectile.frame = 1;
 
+					}
+					else
+					{
+						if (Projectile.frame < 7)
+						{
+							Projectile.frame = 7;
+						}
+						// This is a simple "loop through all frames from top to bottom" animation
+						int frameSpeed = 8;
+
+						Projectile.frameCounter++;
+
+						if (Projectile.frameCounter >= frameSpeed)
+						{
+							Projectile.frameCounter = 0;
+							Projectile.frame++;
+
+							if (Projectile.frame >= Main.projFrames[Projectile.type])
+							{
+								Projectile.frame = 7;
+							}
+						}
+					}
+				}
             }
             if (idleAnimation > 250)
             {
@@ -291,11 +347,12 @@ namespace StarsAbove.Projectiles.Chronoclock
 			float inertia = 20f;
 			if (projOwner.ownedProjectileCounts[ProjectileType<TimePulse>()] >= 1)
 			{
-				UpdateMovement();
+				HoverAnimation();
 				Projectile.velocity = Vector2.Zero;
 			}
 			else
 			{
+				DrawOriginOffsetY = 0;
 				// Minion doesn't have a target: return to player and idle
 				if (distanceToIdlePosition > 600f)
 				{
@@ -334,21 +391,7 @@ namespace StarsAbove.Projectiles.Chronoclock
 			// So it will lean slightly towards the direction it's moving
 			Projectile.rotation = Projectile.velocity.X * 0.05f;
 
-			// This is a simple "loop through all frames from top to bottom" animation
-			int frameSpeed = 5;
-
-			Projectile.frameCounter++;
-
-			if (Projectile.frameCounter >= frameSpeed)
-			{
-				Projectile.frameCounter = 0;
-				Projectile.frame++;
-
-				if (Projectile.frame >= Main.projFrames[Projectile.type])
-				{
-					Projectile.frame = 0;
-				}
-			}
+			
 
 			if (Projectile.velocity.X > 0f)
 			{
@@ -358,11 +401,12 @@ namespace StarsAbove.Projectiles.Chronoclock
 			{
 				Projectile.spriteDirection = Projectile.direction = 1;
 			}
+			
 
 			// Some visuals here
 			Lighting.AddLight(Projectile.Center, Color.White.ToVector3() * 0.78f);
 		}
-		private void UpdateMovement()
+		private void HoverAnimation()
 		{
 			if (floatUpOrDown)//Up
 			{

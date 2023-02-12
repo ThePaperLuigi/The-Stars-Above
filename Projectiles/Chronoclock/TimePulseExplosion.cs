@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
+using StarsAbove.Buffs.TagDamage;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -16,8 +17,9 @@ namespace StarsAbove.Projectiles.Chronoclock
 		}
 
 		public override void SetDefaults() {
-			Projectile.width = 400;
-			Projectile.height = 400;
+			Projectile.width = 600;
+			Projectile.height = 600;
+			Projectile.DamageType = DamageClass.Summon;
 			Projectile.aiStyle = 0;
 			Projectile.timeLeft = 1;
 			Projectile.penetrate = -1;
@@ -53,7 +55,7 @@ namespace StarsAbove.Projectiles.Chronoclock
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
 
-
+			target.AddBuff(BuffType<ChronoclockTagDamage>(), 240);
            
         }
         public override void Kill(int timeLeft)
@@ -70,12 +72,12 @@ namespace StarsAbove.Projectiles.Chronoclock
 			}
 			for (int d = 0; d < 30; d++)
 			{
-				Dust.NewDust(Projectile.Center, 0, 0, DustID.BlueFairy, 0f + Main.rand.Next(-13, 13), 0f + Main.rand.Next(-13, 13), 150, default(Color), 1.5f);
+				Dust.NewDust(Projectile.Center, 0, 0, DustID.TreasureSparkle, 0f + Main.rand.Next(-13, 13), 0f + Main.rand.Next(-13, 13), 150, default(Color), 1.5f);
 			}
 			
 			for (int d = 0; d < 50; d++)
 			{
-				Dust.NewDust(Projectile.Center, 0, 0, DustID.BlueTorch, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1.5f);
+				Dust.NewDust(Projectile.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1.5f);
 			}
 			base.Kill(timeLeft);
         }

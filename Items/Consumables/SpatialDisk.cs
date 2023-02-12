@@ -505,6 +505,14 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
+			if (modPlayer.ClockWeaponDialogue == 1)
+			{
+				modPlayer.chosenDialogue = 164;
+				modPlayer.ClockWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
 			if (modPlayer.WallOfFleshWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 105;

@@ -26,13 +26,13 @@ namespace StarsAbove.Items
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Chronoclock");
 			Tooltip.SetDefault("" +
-				"Summons a [Fragment of Time] to aid you in combat, granting immunity to Slow (Only one can be summoned at a time)" +
-                "\nThe [Fragment of Time] will periodically nurture a [Time Bubble] centered on herself, which grows over time" +
-                "\nThe [Time Bubble] will pop upon contact with an enemy, dealing damage and additionally exploding in a [Time Pulse]" +
-				"\nThe [Time Pulse] deals damage in a large area, increasing in potency with the size of the [Time Bubble] and inflicts 18 summon tag damage" +
-                "\nAt max size, the [Time Pulse] explodes automatically" +
-                "\nTaking damage within the [Time Bubble] will pop the [Time Bubble] preventing that instance of damage" +
-                "\nThe [Time Bubble] will be recast five seconds after popping" +
+				"Summons a [c/EB9FDA:Fragment of Time] to aid you in combat, granting immunity to Slow (Only one can be summoned at a time)" +
+				"\nThe [c/EB9FDA:Fragment of Time] will periodically nurture a [c/52BFDF:Time Bubble] centered on herself, which grows over time" +
+				"\nThe [c/52BFDF:Time Bubble] will pop upon contact with an enemy, dealing damage and additionally exploding in a [c/9FD9EB:Time Pulse]" +
+				"\nThe [c/9FD9EB:Time Pulse] deals damage in a large area, increasing in potency with the size of the [c/52BFDF:Time Bubble], and inflicts 18 summon tag damage" +
+				"\nAfter 10 seconds at max size, the [c/52BFDF:Time Bubble] explodes automatically (Can be manually detonated by pressing the Weapon Action Key)" +
+				"\nStanding within the [c/52BFDF:Time Bubble] will grant [c/E8579B:Alacrity], increasing attack speed by 20% and movement speed by 10%" +
+				"\nAdditionally, taking damage within the [c/52BFDF:Time Bubble] will pop the [c/52BFDF:Time Bubble] prematurely, preventing that instance of damage (20 second cooldown)" +
 				"\n'Well, that sounds like a waste of time'"
 				+ $"");
 
@@ -55,7 +55,7 @@ namespace StarsAbove.Items
 			Item.useAnimation = 36;
 			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.noMelee = true;
-			Item.knockBack = 6;
+			Item.knockBack = 0;
 			Item.noUseGraphic = true;
 			Item.rare = ItemRarityID.Pink;
 			Item.UseSound = SoundID.Item44;
@@ -136,7 +136,24 @@ namespace StarsAbove.Items
 		}
 		public override void AddRecipes()
 		{
-		
+			CreateRecipe(1)
+					.AddIngredient(ItemType<PrismaticCore>(), 3)
+					.AddIngredient(ItemID.GoldWatch, 1)
+					.AddIngredient(ItemID.Silk, 8)
+					.AddIngredient(ItemID.SoulofLight, 3)
+					.AddIngredient(ItemType<EssenceOfTheWatch>())
+					.AddTile(TileID.Anvils)
+					.Register();
+
+			CreateRecipe(1)
+					.AddIngredient(ItemType<PrismaticCore>(), 3)
+					.AddIngredient(ItemID.PlatinumWatch, 1)	
+					.AddIngredient(ItemID.Silk, 8)
+					.AddIngredient(ItemID.SoulofLight, 3)
+					.AddIngredient(ItemType<EssenceOfTheWatch>())
+					.AddTile(TileID.Anvils)
+					.Register();
+			
 		}
 
 	}

@@ -468,6 +468,7 @@ namespace StarsAbove
         public int UmbraWeaponDialogue = 0;
         public int SaltwaterWeaponDialogue = 0;
         public int ChaosWeaponDialogue = 0;
+        public int ClockWeaponDialogue = 0;
 
 
         //Subworld dialogues
@@ -1038,6 +1039,7 @@ namespace StarsAbove
             tag["UmbraWeaponDialogue"] = UmbraWeaponDialogue;
             tag["SaltwaterWeaponDialogue"] = SaltwaterWeaponDialogue;
             tag["ChaosWeaponDialogue"] = ChaosWeaponDialogue;
+            tag["ClockWeaponDialogue"] = ClockWeaponDialogue;
 
 
             tag["observatoryDialogue"] = observatoryDialogue;
@@ -1319,6 +1321,7 @@ namespace StarsAbove
             UmbraWeaponDialogue = tag.GetInt("UmbraWeaponDialogue");
             SaltwaterWeaponDialogue = tag.GetInt("SaltwaterWeaponDialogue");
             ChaosWeaponDialogue = tag.GetInt("ChaosWeaponDialogue");
+            ClockWeaponDialogue = tag.GetInt("ClockWeaponDialogue");
 
 
             observatoryDialogue = tag.GetInt("observatoryDialogue");
@@ -2725,6 +2728,7 @@ namespace StarsAbove
 
                     chosenStarfarerEffect = false;
                 }
+                
                 if (activateShockwaveEffect)
                 {
                     rippleCount = 4;
@@ -3781,6 +3785,15 @@ namespace StarsAbove
                     if (SaltwaterWeaponDialogue == 0 && NPC.downedPirates)
                     {
                         SaltwaterWeaponDialogue = 1;
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                        NewDiskDialogue = true;
+                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                        return;
+                    }
+                    if (ClockWeaponDialogue == 0 && VagrantWeaponDialogue == 2)
+                    {
+                        ClockWeaponDialogue = 1;
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);

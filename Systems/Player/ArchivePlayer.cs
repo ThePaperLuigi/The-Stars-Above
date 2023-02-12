@@ -628,6 +628,13 @@ namespace StarsAbove
                       115,
                       "Defeat the Vagrant of Space and Time.")); //Corresponding dialogue ID.
                 WeaponArchiveList.Add(new WeaponArchiveListing(
+                      "Vagrant of Space and Time Weapon", //Name of the archive listing.
+                      $"Grants the Essence for " +
+                     $"[i:{ItemType<Spatial>()}] Chronoclock. ", //Description of the listing.
+                      player.ClockWeaponDialogue == 2, //Unlock requirements.
+                      164,
+                      "Defeat the Vagrant of Space and Time.")); //Corresponding dialogue ID.
+                WeaponArchiveList.Add(new WeaponArchiveListing(
                       "Any Mechanical Boss Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Astral>()}] Veneration of Butterflies " +
