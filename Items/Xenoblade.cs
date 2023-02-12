@@ -357,9 +357,19 @@ namespace StarsAbove.Items
                         player.velocity = leap;
                         SoundEngine.PlaySound(SoundID.Item1, player.position);
                         player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
-                        player.statMana -= 40;
+                        if(player.statMana >= 40)
+                        {
+                            player.statMana -= 40;
+                            Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity2.X, arrowVelocity2.Y, ProjectileType<MonadoEmpoweredSwing>(), player.GetWeaponDamage(Item) * 2, 14, player.whoAmI, 0f);
+
+                        }
+                        else
+                        {
+                            Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity2.X, arrowVelocity2.Y, ProjectileType<MonadoSwing1>(), player.GetWeaponDamage(Item), 14, player.whoAmI, 0f);
+
+                        }
+
                         player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
-                        Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity2.X, arrowVelocity2.Y, ProjectileType<MonadoEmpoweredSwing>(), player.GetWeaponDamage(Item) * 2, 14, player.whoAmI, 0f);
                         comboTimer = 0;
                         attackCooldown = 20;
                     }
