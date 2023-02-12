@@ -238,31 +238,31 @@ namespace StarsAbove.Items
 				if (bladeNumber == 0)
 				{
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, velocity.X, velocity.Y,ProjectileType<NaganadelProjectile1>(), damage / 10, knockback, player.whoAmI);
-					player.GetModPlayer<StarsAbovePlayer>().naganadelWeapon1Summoned = true;
+					player.GetModPlayer<WeaponPlayer>().naganadelWeapon1Summoned = true;
 
 				}
 				if (bladeNumber == 1)
 				{
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, velocity.X, velocity.Y,ProjectileType<NaganadelProjectile2>(), damage / 10, knockback, player.whoAmI);
-					player.GetModPlayer<StarsAbovePlayer>().naganadelWeapon2Summoned = true;
+					player.GetModPlayer<WeaponPlayer>().naganadelWeapon2Summoned = true;
 					
 				}
 				if (bladeNumber == 2)
 				{
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, velocity.X, velocity.Y,ProjectileType<NaganadelProjectile3>(), damage / 10, knockback, player.whoAmI);
-					player.GetModPlayer<StarsAbovePlayer>().naganadelWeapon3Summoned = true;
+					player.GetModPlayer<WeaponPlayer>().naganadelWeapon3Summoned = true;
 					
 				}
 				if (bladeNumber == 3)
 				{
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, velocity.X, velocity.Y,ProjectileType<NaganadelProjectile4>(), damage / 10, knockback, player.whoAmI);
-					player.GetModPlayer<StarsAbovePlayer>().naganadelWeapon4Summoned = true;
+					player.GetModPlayer<WeaponPlayer>().naganadelWeapon4Summoned = true;
 					
 				}
 				if (bladeNumber == 4)
 				{
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, velocity.X, velocity.Y,ProjectileType<NaganadelProjectile5>(), damage / 10, knockback, player.whoAmI);
-					player.GetModPlayer<StarsAbovePlayer>().naganadelWeapon5Summoned = true;
+					player.GetModPlayer<WeaponPlayer>().naganadelWeapon5Summoned = true;
 					
 				}
 				bladeNumber++;
@@ -276,28 +276,28 @@ namespace StarsAbove.Items
 				if (bladeNumber == 1)
 				{
 					
-					player.GetModPlayer<StarsAbovePlayer>().naganadelWeapon1Summoned = false;
+					player.GetModPlayer<WeaponPlayer>().naganadelWeapon1Summoned = false;
 
 				}
 				if (bladeNumber == 2)
 				{
 					
-					player.GetModPlayer<StarsAbovePlayer>().naganadelWeapon2Summoned = false;
+					player.GetModPlayer<WeaponPlayer>().naganadelWeapon2Summoned = false;
 				}
 				if (bladeNumber == 3)
 				{
 					
-					player.GetModPlayer<StarsAbovePlayer>().naganadelWeapon3Summoned = false;
+					player.GetModPlayer<WeaponPlayer>().naganadelWeapon3Summoned = false;
 				}
 				if (bladeNumber == 4)
 				{
 					
-					player.GetModPlayer<StarsAbovePlayer>().naganadelWeapon4Summoned = false;
+					player.GetModPlayer<WeaponPlayer>().naganadelWeapon4Summoned = false;
 				}
 				if (bladeNumber == 5)
 				{
 					
-					player.GetModPlayer<StarsAbovePlayer>().naganadelWeapon5Summoned = false;
+					player.GetModPlayer<WeaponPlayer>().naganadelWeapon5Summoned = false;
 				}
 				bladeNumber--;
 				
@@ -308,20 +308,20 @@ namespace StarsAbove.Items
 			{
 				
 
-					player.GetModPlayer<StarsAbovePlayer>().naganadelWeapon1Summoned = false;
+					player.GetModPlayer<WeaponPlayer>().naganadelWeapon1Summoned = false;
 
 				
 
-					player.GetModPlayer<StarsAbovePlayer>().naganadelWeapon2Summoned = false;
+					player.GetModPlayer<WeaponPlayer>().naganadelWeapon2Summoned = false;
 				
 
-					player.GetModPlayer<StarsAbovePlayer>().naganadelWeapon3Summoned = false;
+					player.GetModPlayer<WeaponPlayer>().naganadelWeapon3Summoned = false;
 				
 
-					player.GetModPlayer<StarsAbovePlayer>().naganadelWeapon4Summoned = false;
+					player.GetModPlayer<WeaponPlayer>().naganadelWeapon4Summoned = false;
 				
 
-					player.GetModPlayer<StarsAbovePlayer>().naganadelWeapon5Summoned = false;
+					player.GetModPlayer<WeaponPlayer>().naganadelWeapon5Summoned = false;
 
 					
 				

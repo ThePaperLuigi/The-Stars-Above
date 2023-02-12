@@ -28,6 +28,10 @@ namespace StarsAbove
 		[Tooltip("$Mods.StarsAbove.Config.DisableStellarNovaCutIns.Tooltip")]
 		public bool DisableStellarNovaCutIns;
 
+		[Label("$Mods.StarsAbove.Config.EnableStarfarerVoices.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.EnableStarfarerVoices.Tooltip")]
+		public bool EnableStarfarerVoices;
+
 		[Label("$Mods.StarsAbove.Config.DisableStellarNovaDialogue.Label")]
 		[Tooltip("$Mods.StarsAbove.Config.DisableStellarNovaDialogue.Tooltip")]
 		public bool DisableStellarNovaDialogue;
@@ -98,10 +102,6 @@ namespace StarsAbove
 
 
 		[Header("$Mods.StarsAbove.Config.MiscHeader")]
-
-		[Label("$Mods.StarsAbove.Config.EnableStarfarerVoices.Label")]
-		[Tooltip("$Mods.StarsAbove.Config.EnableStarfarerVoices.Tooltip")]
-		public bool EnableStarfarerVoices;
 
 		[Label("$Mods.StarsAbove.Config.EnableMusicOverride.Label")]
 		[Tooltip("$Mods.StarsAbove.Config.EnableMusicOverride.Tooltip")]

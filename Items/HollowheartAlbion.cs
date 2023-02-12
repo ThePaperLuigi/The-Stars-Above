@@ -61,12 +61,7 @@ namespace StarsAbove.Items
 
 		public override bool CanUseItem(Player player)
 		{
-			if (player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer != 2 && player.whoAmI == Main.myPlayer)
-			{
-				
-				return false;
-				
-			}
+			
 
 
 			int damage = player.GetWeaponDamage(Item);
@@ -75,14 +70,14 @@ namespace StarsAbove.Items
 			{
 
 				type = ProjectileType<Projectiles.ArondightBeam>();
-				position = player.GetModPlayer<StarsAbovePlayer>().arondightPosition;
+				position = player.GetModPlayer<WeaponPlayer>().arondightPosition;
 
 				float Speed = 28f;  //projectile speed
 
-				Vector2 vector8 = player.GetModPlayer<StarsAbovePlayer>().arondightPosition;
+				Vector2 vector8 = player.GetModPlayer<WeaponPlayer>().arondightPosition;
 				float launchSpeed = 36f;
 				Vector2 mousePosition = player.GetModPlayer<StarsAbovePlayer>().playerMousePos;
-				Vector2 direction = Vector2.Normalize(mousePosition - player.GetModPlayer<StarsAbovePlayer>().arondightPosition);
+				Vector2 direction = Vector2.Normalize(mousePosition - player.GetModPlayer<WeaponPlayer>().arondightPosition);
 				Vector2 velocity = direction * launchSpeed;
 				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, velocity.X, velocity.Y, type, damage, 0f, player.whoAmI);
 
@@ -113,12 +108,12 @@ namespace StarsAbove.Items
 				type = ProjectileType<Projectiles.MelusineBeam>();
 				float Speed = 28f;
 
-				position = player.GetModPlayer<StarsAbovePlayer>().melusinePosition;//Synced from the projectile
+				position = player.GetModPlayer<WeaponPlayer>().melusinePosition;//Synced from the projectile
 				float rotation = (float)Math.Atan2(position.Y - (Main.MouseWorld.Y), position.X - (Main.MouseWorld.X));//Aim towards mouse
 
 				float launchSpeed = 36f;
 				Vector2 mousePosition = player.GetModPlayer<StarsAbovePlayer>().playerMousePos;
-				Vector2 direction = Vector2.Normalize(mousePosition - player.GetModPlayer<StarsAbovePlayer>().melusinePosition);
+				Vector2 direction = Vector2.Normalize(mousePosition - player.GetModPlayer<WeaponPlayer>().melusinePosition);
 				Vector2 velocity = direction * launchSpeed;
 
 				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, velocity.X, velocity.Y, type, damage, 0f, player.whoAmI);
@@ -174,7 +169,7 @@ namespace StarsAbove.Items
 		public override void HoldItem(Player player)
 		{
 			
-			player.GetModPlayer<StarsAbovePlayer>().albionHeld = 10;
+			player.GetModPlayer<WeaponPlayer>().albionHeld = 10;
 			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Melusine>()] < 1)
 			{
 				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Melusine>(), 0, 4, player.whoAmI, 0f);
@@ -189,12 +184,12 @@ namespace StarsAbove.Items
 			}
 			for (int i = 0; i < 50; i++)
 			{
-				Vector2 position = Vector2.Lerp(player.Center, player.GetModPlayer<StarsAbovePlayer>().arondightPosition, (float)i / 50);
+				Vector2 position = Vector2.Lerp(player.Center, player.GetModPlayer<WeaponPlayer>().arondightPosition, (float)i / 50);
 				Dust d = Dust.NewDustPerfect(position, 92, null, 240, default(Color), 0.3f);
 				d.fadeIn = 0.3f;
 				d.noLight = true;
 				d.noGravity = true;
-				Vector2 position2 = Vector2.Lerp(player.Center, player.GetModPlayer<StarsAbovePlayer>().melusinePosition, (float)i / 50);
+				Vector2 position2 = Vector2.Lerp(player.Center, player.GetModPlayer<WeaponPlayer>().melusinePosition, (float)i / 50);
 				Dust d2 = Dust.NewDustPerfect(position2, 71, null, 240, default(Color), 0.3f);
 				d2.fadeIn = 0.3f;
 				d2.noLight = true;
@@ -216,7 +211,7 @@ namespace StarsAbove.Items
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
 			 
-			position = player.GetModPlayer<StarsAbovePlayer>().melusinePosition;
+			position = player.GetModPlayer<WeaponPlayer>().melusinePosition;
 			return false;
 		}
 

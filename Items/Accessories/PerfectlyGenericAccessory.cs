@@ -25,7 +25,7 @@ namespace StarsAbove.Items.Accessories
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual) {
-			player.GetModPlayer<StarsAbovePlayer>().PerfectlyGenericAccessory = true;
+			player.GetModPlayer<WeaponPlayer>().PerfectlyGenericAccessory = true;
 
 			//player.GetDamage(DamageClass.Generic) += 0.12f;
 			//player.respawnTimer += 600;

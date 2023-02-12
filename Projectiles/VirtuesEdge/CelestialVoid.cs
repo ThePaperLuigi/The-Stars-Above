@@ -120,7 +120,7 @@ namespace StarsAbove.Projectiles.VirtuesEdge
 			projOwner.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -70;
 			
 			// Play explosion sound
-			if (projOwner.GetModPlayer<StarsAbovePlayer>().VirtueGauge >= 100)
+			if (projOwner.GetModPlayer<WeaponPlayer>().VirtueGauge >= 100)
             {
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_HolyStab, Projectile.Center);
 				Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0, Mod.Find<ModProjectile>("CelestialVoidburst").Type, Projectile.damage * 5, 0f, 0, 0);
@@ -153,7 +153,7 @@ namespace StarsAbove.Projectiles.VirtuesEdge
 					Dust.NewDust(Projectile.Center, 0, 0, DustID.Firework_Blue, 0f + Main.rand.Next(-7, 7), 0f + Main.rand.Next(-7, 7), 150, default(Color), 1.5f);
 				}
 			}
-			projOwner.GetModPlayer<StarsAbovePlayer>().VirtueGauge = 0;
+			projOwner.GetModPlayer<WeaponPlayer>().VirtueGauge = 0;
 
 
 

@@ -60,7 +60,7 @@ namespace StarsAbove.Projectiles.Takodachi
             {
 				float launchSpeed = 12f;
 				Vector2 mousePosition = player.GetModPlayer<StarsAbovePlayer>().playerMousePos;
-				Vector2 direction = Vector2.Normalize(player.GetModPlayer<StarsAbovePlayer>().takoMinionTarget - player.Center);
+				Vector2 direction = Vector2.Normalize(player.GetModPlayer<WeaponPlayer>().takoMinionTarget - player.Center);
 				Vector2 velocity = direction * launchSpeed;
 				float Speed = 15f;
 				int type = Main.rand.Next(new int[] { ProjectileType<Tentacle1>(), ProjectileType<Tentacle2>(), ProjectileType<Tentacle3>() });
@@ -91,7 +91,7 @@ namespace StarsAbove.Projectiles.Takodachi
 			Projectile.spriteDirection = Projectile.direction;
 			if(Projectile.timeLeft == 180)
             {
-				Projectile.rotation = Vector2.Normalize(player.GetModPlayer<StarsAbovePlayer>().takoMinionTarget - Projectile.Center).ToRotation();//+ MathHelper.ToRadians(-135f)
+				Projectile.rotation = Vector2.Normalize(player.GetModPlayer<WeaponPlayer>().takoMinionTarget - Projectile.Center).ToRotation();//+ MathHelper.ToRadians(-135f)
 
 			}
 

@@ -93,7 +93,7 @@ namespace StarsAbove.Items
 		}
 		public override void HoldItem(Player player)
 		{
-			float launchSpeed = 2f + (int)Math.Round(player.GetModPlayer<StarsAbovePlayer>().bowCharge / 10);
+			float launchSpeed = 2f + (int)Math.Round(player.GetModPlayer<WeaponPlayer>().bowCharge / 10);
 			Vector2 mousePosition = Main.MouseWorld;
 			Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
 			Vector2 arrowVelocity = direction * launchSpeed;
@@ -109,14 +109,14 @@ namespace StarsAbove.Items
 					{
 						Item.useTime = 2;
 						Item.useAnimation = 2;
-						player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = true;
-						player.GetModPlayer<StarsAbovePlayer>().bowCharge++;
+						player.GetModPlayer<WeaponPlayer>().bowChargeActive = true;
+						player.GetModPlayer<WeaponPlayer>().bowCharge++;
 
-						if (player.GetModPlayer<StarsAbovePlayer>().bowCharge == 1)
+						if (player.GetModPlayer<WeaponPlayer>().bowCharge == 1)
 						{
 							SoundEngine.PlaySound(StarsAboveAudio.SFX_bowstring, player.Center);
 						}
-						if (player.GetModPlayer<StarsAbovePlayer>().bowCharge == 99)
+						if (player.GetModPlayer<WeaponPlayer>().bowCharge == 99)
 						{
 							for (int d = 0; d < 22; d++)
 							{
@@ -132,14 +132,14 @@ namespace StarsAbove.Items
 							}
 							SoundEngine.PlaySound(SoundID.Item29, player.position);
 						}
-						if (player.GetModPlayer<StarsAbovePlayer>().bowCharge < 100)
+						if (player.GetModPlayer<WeaponPlayer>().bowCharge < 100)
 						{
 							for (int i = 0; i < 30; i++)
 							{//Circle
 								Vector2 offset = new Vector2();
 								double angle = Main.rand.NextDouble() * 2d * Math.PI;
-								offset.X += (float)(Math.Sin(angle) * (100 - player.GetModPlayer<StarsAbovePlayer>().bowCharge));
-								offset.Y += (float)(Math.Cos(angle) * (100 - player.GetModPlayer<StarsAbovePlayer>().bowCharge));
+								offset.X += (float)(Math.Sin(angle) * (100 - player.GetModPlayer<WeaponPlayer>().bowCharge));
+								offset.Y += (float)(Math.Cos(angle) * (100 - player.GetModPlayer<WeaponPlayer>().bowCharge));
 
 								Dust d2 = Dust.NewDustPerfect(player.MountedCenter + offset, 20, player.velocity, 200, default(Color), 0.5f);
 								d2.fadeIn = 0.1f;
@@ -169,31 +169,31 @@ namespace StarsAbove.Items
 						Item.useTime = 40;
 						Item.useAnimation = 40;
 
-						if (player.GetModPlayer<StarsAbovePlayer>().bowCharge >= 100)
+						if (player.GetModPlayer<WeaponPlayer>().bowCharge >= 100)
 						{
 							SoundEngine.PlaySound(SoundID.Item9, player.position);
 							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity.X, arrowVelocity.Y, ProjectileType<FrostflakeArrow>(), 140, 4, player.whoAmI, 0f);
-							player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-							player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
+							player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+							player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
 							ammoConsumed = false;
 
 						}
 						else
 						{
-							if (player.GetModPlayer<StarsAbovePlayer>().bowCharge > 0)
+							if (player.GetModPlayer<WeaponPlayer>().bowCharge > 0)
 							{//
 								SoundEngine.PlaySound(SoundID.Item5, player.position);
 
-								player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-								player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
+								player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+								player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
 								ammoConsumed = false;
-								Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity.X, arrowVelocity.Y, ProjectileID.FrostArrow, 86 + (int)Math.Round(player.GetModPlayer<StarsAbovePlayer>().bowCharge / 10), 4 + (int)Math.Round(player.GetModPlayer<StarsAbovePlayer>().bowCharge / 10), player.whoAmI, 0f);
+								Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity.X, arrowVelocity.Y, ProjectileID.FrostArrow, 86 + (int)Math.Round(player.GetModPlayer<WeaponPlayer>().bowCharge / 10), 4 + (int)Math.Round(player.GetModPlayer<WeaponPlayer>().bowCharge / 10), player.whoAmI, 0f);
 							}
 						}
 					}
 				}
 			}
-			//item.shootSpeed = 8f + (int)Math.Round(player.GetModPlayer<StarsAbovePlayer>().bowCharge / 10);
+			//item.shootSpeed = 8f + (int)Math.Round(player.GetModPlayer<WeaponPlayer>().bowCharge / 10);
 		}
 
 		

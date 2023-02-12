@@ -29,7 +29,7 @@ namespace StarsAbove.Items.Accessories
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual) {
-			player.GetModPlayer<StarsAbovePlayer>().luciferium = true;
+			player.GetModPlayer<WeaponPlayer>().luciferium = true;
 			if(player.HasBuff(BuffType<SatedAnguish>()))
             {
 				player.GetDamage(DamageClass.Generic) += 0.20f;

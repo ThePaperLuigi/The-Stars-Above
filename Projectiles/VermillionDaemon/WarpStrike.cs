@@ -63,7 +63,7 @@ namespace StarsAbove.Projectiles.VermillionDaemon
 			if (target.HasBuff(BuffType<CrimsonMark>()))
 			{
 
-				player.GetModPlayer<StarsAbovePlayer>().SpectralArsenal++;
+				player.GetModPlayer<WeaponPlayer>().SpectralArsenal++;
 				target.DelBuff(target.FindBuffIndex(BuffType<CrimsonMark>()));
 			}
 			for (int i = 0; i < 100; i++)

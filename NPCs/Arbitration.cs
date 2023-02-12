@@ -443,7 +443,7 @@ namespace StarsAbove.NPCs
                                         //Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
                     Vector2 vector8 = new Vector2(P.position.X + Main.rand.Next(500, 600), P.position.Y - 800);
                     Vector2 vector9 = new Vector2(P.position.X - Main.rand.Next(500, 600), P.position.Y - 800);
-                    int damage = 60;  //projectile damage
+                    int damage = 90;  //projectile damage
                     int type;
 
                     type = Mod.Find<ModProjectile>("ThreadsOfFate").Type;
@@ -2119,7 +2119,7 @@ namespace StarsAbove.NPCs
                 float Speed = 3f;  //projectile speed
                                    //Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
                 Vector2 vector8 = new Vector2(P.position.X + Main.rand.Next(-1200, 1200), P.position.Y - 800);
-                int damage = 60;  //projectile damage
+                int damage = 80;  //projectile damage
                 int type = ProjectileID.FlamingScythe;
                 if(phase == 2)
                 {
@@ -2168,7 +2168,7 @@ namespace StarsAbove.NPCs
                 float Speed = 10f;  //projectile speed
                                     //Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
                 Vector2 vector8 = new Vector2(NPC.Center.X, NPC.Center.Y);
-                int damage = 60;  //projectile damage
+                int damage = 80;  //projectile damage
                 int type = 302;
 
                 float rotation = (float)Math.Atan2(vector8.Y - (P.position.Y + (P.height * 0.5f)), vector8.X - (P.position.X + (P.width * 0.5f)));

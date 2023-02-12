@@ -14,6 +14,8 @@ using Terraria.GameContent.Creative;
 using StarsAbove.Projectiles.Pod;
 using StarsAbove.Items.Prisms;
 using StarsAbove.Projectiles.Adornment;
+using StarsAbove.Buffs.Adornment;
+using StarsAbove.Utilities;
 
 namespace StarsAbove.Items
 {
@@ -22,14 +24,14 @@ namespace StarsAbove.Items
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Adornment of the Chaotic God");
 			Tooltip.SetDefault("" +
-                "Summons an [Adornment Manifest] to assail your foes (Only one can be summoned at a time)" +
-                "\nThe [Adornment Manifest] will fire chaotic blasts of magic with unpredictable effects" +
+				"Summons an [c/6DE552:Adornment Manifest] to assail your foes (Only one can be summoned at a time)" +
+				"\nThe [c/6DE552:Adornment Manifest] will fire magical [c/CAF5C1:Chaos Bolts] with unpredictable effects" +
                 "\nAdditionally, other random objects may be fired on occasion" +
-                "\nRight click to roll the dice, activating a [Pure Chaos] effect for 6 seconds (12 second cooldown)" +
-                "\n60% chance [Positive Chaos]: Double [Adornment Manifest] attack speed, guarantee critical strikes, or gain Invincibility" +
-                "\n30% chance [Negative Chaos]: Inflict random debuffs on self, cause all projectiles to be random objects" +
-                "\n10% chance to apply all effects at the same time" +
-				"\nFire rate increases by 5% based on the amount of minions summoned" +
+				"\nRight click to roll the dice, activating a [c/2AFBA9:Pure Chaos] effect on the [c/6DE552:Adornment Manifest] for 6 seconds (12 second cooldown)" +
+				"\n60% chance [c/00D8AE:Positive Chaos]: Double attack speed, guarantee [c/CAF5C1:Chaos Bolt] critical strikes, or gain Invincibility" +
+				"\n30% chance [c/B700D8:Negative Chaos]: Inflict random debuffs on self for a short duration, or cause all projectiles to be random objects and damage is halved" +
+                "\n10% chance to apply all positive effects at the same time for half the duration" +
+				"\nFire rate increases slightly based on the amount of minions summoned" +
 				"\n'Chaos can giveth, and chaos can taketh'"
 				+ $"");
 
@@ -50,24 +52,156 @@ namespace StarsAbove.Items
 			Item.height = 21;
 			Item.useTime = 36;
 			Item.useAnimation = 36;
-			Item.useStyle = 5;
+			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.noMelee = true;
 			Item.knockBack = 6;
+			Item.noUseGraphic = true;
 			Item.rare = ItemRarityID.Green;
 			Item.UseSound = SoundID.Item44;
 			Item.shoot = ProjectileType<AdornmentMinion>();
-			Item.buffType = BuffType<Buffs.Adornment.AdornmentMinionBuff>(); //The buff added to player after used the item
+			Item.buffType = BuffType<AdornmentMinionBuff>(); //The buff added to player after used the item
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
 		}
 		public override bool AltFunctionUse(Player player)
 		{
 			return true;
 		}
-
-		public override bool? UseItem(Player player)
+        public override bool CanUseItem(Player player)
         {
-			
+			if (player.altFunctionUse == 2)
+			{
+				if (!player.HasBuff(BuffType<PureChaosCooldown>()))
+                {
+					for (int i = 0; i < 30; i++)
+					{
+						int dustIndex = Dust.NewDust(player.Center, 0, 0, 220, Main.rand.NextFloat(-25, 25), Main.rand.NextFloat(-25, 25), 100, default(Color), 1f);
+						Main.dust[dustIndex].noGravity = true;
 
+						dustIndex = Dust.NewDust(player.Center, 0, 0, 220, Main.rand.NextFloat(-20, 20), Main.rand.NextFloat(-20, 20), 100, default(Color), 2f);
+						Main.dust[dustIndex].velocity *= 3f;
+					}
+					player.AddBuff(BuffType<PureChaosCooldown>(), 12 * 60);
+					int chaos = Main.rand.Next(0, 10);
+					if (chaos == 0)//10% bonus, all effects at once
+					{
+						Rectangle textPos = new Rectangle((int)player.position.X, (int)player.position.Y - 20, player.width, player.height);
+						CombatText.NewText(textPos, new Color(114, 237, 119, 240), $"{LangHelper.GetTextValue($"CombatText.Adornment.Positive")}", false, false);
+
+						player.AddBuff(BuffType<AdornmentCritBuff>(), 180);
+
+						player.AddBuff(BuffType<AdornmentAttackSpeedBuff>(), 180);
+
+						player.AddBuff(BuffType<Invincibility>(), 180);
+
+					}
+					else if (chaos >= 1 && chaos < 4)//1,2,3 30%
+					{
+						Rectangle textPos = new Rectangle((int)player.position.X, (int)player.position.Y - 20, player.width, player.height);
+						CombatText.NewText(textPos, new Color(237, 114, 114, 240), $"{LangHelper.GetTextValue($"CombatText.Adornment.Negative")}", false, false);
+
+						if (Main.rand.NextBool())
+						{//Random debuffs
+							if (Main.rand.NextBool())
+							{
+								player.AddBuff(BuffID.Poisoned, 60);
+							}
+							if (Main.rand.NextBool())
+							{
+								player.AddBuff(BuffID.Darkness, 60);
+
+							}
+							if (Main.rand.NextBool())
+							{
+								player.AddBuff(BuffID.Cursed, 60);
+
+							}
+							if (Main.rand.NextBool())
+							{
+								player.AddBuff(BuffID.OnFire, 60);
+
+							}
+							if (Main.rand.NextBool())
+							{
+								player.AddBuff(BuffID.Bleeding, 60);
+
+							}
+							if (Main.rand.NextBool())
+							{
+								player.AddBuff(BuffID.Slow, 60);
+
+							}
+							if (Main.rand.NextBool())
+							{
+								player.AddBuff(BuffID.Confused, 60);
+
+							}
+							if (Main.rand.NextBool())
+							{
+								player.AddBuff(BuffID.Weak, 60);
+
+							}
+							if (Main.rand.NextBool())
+							{
+								player.AddBuff(BuffID.BrokenArmor, 60);
+
+							}
+							if (Main.rand.NextBool())
+							{
+								player.AddBuff(BuffID.Chilled, 60);
+
+							}
+							if (Main.rand.NextBool())
+							{
+								player.AddBuff(BuffID.Frozen, 60);
+
+							}
+						}
+						else
+						{//Random objects
+							player.AddBuff(BuffType<AdornmentRandomObjectsBuff>(), 360);
+						}
+					}
+					else if (chaos >= 4 && chaos <= 9)//4,5,6,7,8,9 60%
+					{
+						Rectangle textPos = new Rectangle((int)player.position.X, (int)player.position.Y - 20, player.width, player.height);
+						CombatText.NewText(textPos, new Color(114, 237, 119, 240), $"{LangHelper.GetTextValue($"CombatText.Adornment.Positive")}", false, false);
+
+						int goodChaos = (Main.rand.Next(3));
+						if (goodChaos == 0)
+						{
+							player.AddBuff(BuffType<AdornmentCritBuff>(), 360);
+						}
+						else if (goodChaos == 1)
+						{
+							player.AddBuff(BuffType<AdornmentAttackSpeedBuff>(), 360);
+						}
+						else if (goodChaos == 2)
+						{
+							player.AddBuff(BuffType<Invincibility>(), 360);
+						}
+					}
+					return true;
+                }
+				else
+                {
+					return false;
+                }
+
+			}
+
+			return base.CanUseItem(player);
+        }
+
+        public override bool? UseItem(Player player)
+        {
+			if (player.altFunctionUse == 2)
+			{
+				
+			}
+			else
+			{
+			
+			}
 
 			return base.UseItem(player);
         }
@@ -120,7 +254,13 @@ namespace StarsAbove.Items
 		}
 		public override void AddRecipes()
 		{
-			
+			CreateRecipe(1)
+				.AddIngredient(ItemID.ZapinatorOrange, 1)
+				.AddIngredient(ItemID.TopHat, 1)
+				.AddIngredient(ItemID.GreenDye, 1)
+				.AddIngredient(ItemType<EssenceOfAbsoluteChaos>())
+				.AddTile(TileID.Anvils)
+				.Register();
 		}
 
 	}

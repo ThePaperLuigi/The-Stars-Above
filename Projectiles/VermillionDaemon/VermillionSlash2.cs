@@ -56,7 +56,6 @@ namespace StarsAbove.Projectiles.VermillionDaemon
             }
 			//projectile.timeLeft = 10;
 			
-			//if (player.dead && !player.active || player.GetModPlayer<StarsAbovePlayer>().kroniicHeld < 0)
 			if (player.dead && !player.active)
 			{
 				Projectile.Kill();

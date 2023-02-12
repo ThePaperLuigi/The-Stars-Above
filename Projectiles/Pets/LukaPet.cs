@@ -38,7 +38,7 @@ namespace StarsAbove.Projectiles.Pets
 		{
 			Projectile.velocity.X *= 1.00f;
 			Player player = Main.player[Projectile.owner];
-			StarsAbovePlayer modPlayer = player.GetModPlayer<StarsAbovePlayer>();
+			WeaponPlayer modPlayer = player.GetModPlayer<WeaponPlayer>();
 			/*if (projectile.velocity.Y >= 0.3 || projectile.velocity.X >= 0.3 || projectile.velocity.Y <= -0.3 || projectile.velocity.X <= -0.3)
 			{
 				if (projectile.frameCounter++ >= 10)

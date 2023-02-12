@@ -54,11 +54,11 @@ namespace StarsAbove.Items
 			if (player.altFunctionUse == 2)
 			{
 
-				if (player.GetModPlayer<StarsAbovePlayer>().ButterflyResourceCurrent == 100)
+				if (player.GetModPlayer<WeaponPlayer>().ButterflyResourceCurrent == 100)
 				{
 					if (!Main.LocalPlayer.HasBuff(BuffType<Buffs.ButterflyTrance>()))
 					{
-						player.GetModPlayer<StarsAbovePlayer>().ButterflyResourceCurrent = 0;
+						player.GetModPlayer<WeaponPlayer>().ButterflyResourceCurrent = 0;
 						player.AddBuff(BuffType<Buffs.ButterflyTrance>(), 300);
 
 						for (int d = 0; d < 10; d++)
@@ -106,14 +106,14 @@ namespace StarsAbove.Items
 		{
 			if (!Main.LocalPlayer.HasBuff(BuffType<Buffs.ButterflyTrance>()))
 			{
-				player.GetModPlayer<StarsAbovePlayer>().ButterflyResourceCurrent += 5;
+				player.GetModPlayer<WeaponPlayer>().ButterflyResourceCurrent += 5;
 
 
 			}
 			
-			if (player.GetModPlayer<StarsAbovePlayer>().ButterflyResourceCurrent > 100)
+			if (player.GetModPlayer<WeaponPlayer>().ButterflyResourceCurrent > 100)
 			{
-				player.GetModPlayer<StarsAbovePlayer>().ButterflyResourceCurrent = 100;
+				player.GetModPlayer<WeaponPlayer>().ButterflyResourceCurrent = 100;
 			}
 			
 			

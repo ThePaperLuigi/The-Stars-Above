@@ -63,7 +63,7 @@ namespace StarsAbove.UI.JudgementGauge
 
 		public override void Draw(SpriteBatch spriteBatch) {
 			// This prevents drawing unless we are using an ExampleDamageItem
-			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().judgementGaugeVisibility > 0))
+			if (!(Main.LocalPlayer.GetModPlayer<WeaponPlayer>().judgementGaugeVisibility > 0))
 				return;
 
 			base.Draw(spriteBatch);
@@ -73,7 +73,7 @@ namespace StarsAbove.UI.JudgementGauge
 		{
 			base.DrawSelf(spriteBatch);
 
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			// Calculate quotient
 			float quotient = (float)modPlayer.judgementGauge / 100; // Creating a quotient that represents the difference of your currentResource vs your maximumResource, resulting in a float of 0-1f.
 			quotient = Utils.Clamp(quotient, 0f, 1f); // Clamping it to 0-1f so it doesn't go over that.
@@ -108,36 +108,36 @@ namespace StarsAbove.UI.JudgementGauge
 
 				}
 			}
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().judgementGaugeVisibility == 8)
+			if (Main.LocalPlayer.GetModPlayer<WeaponPlayer>().judgementGaugeVisibility == 8)
 			{
 				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/JudgementGauge/JudgementGauge8"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);
 			}
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().judgementGaugeVisibility == 7)
+			if (Main.LocalPlayer.GetModPlayer<WeaponPlayer>().judgementGaugeVisibility == 7)
 			{
 				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/JudgementGauge/JudgementGauge7"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);
 			}
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().judgementGaugeVisibility == 6)
+			if (Main.LocalPlayer.GetModPlayer<WeaponPlayer>().judgementGaugeVisibility == 6)
 			{
 				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/JudgementGauge/JudgementGauge6"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);
 			}
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().judgementGaugeVisibility == 5)
+			if (Main.LocalPlayer.GetModPlayer<WeaponPlayer>().judgementGaugeVisibility == 5)
 			{
 				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/JudgementGauge/JudgementGauge5"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);
 			}
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().judgementGaugeVisibility == 4)
+			if (Main.LocalPlayer.GetModPlayer<WeaponPlayer>().judgementGaugeVisibility == 4)
 			{
 				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/JudgementGauge/JudgementGauge4"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);
 			}
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().judgementGaugeVisibility == 3)
+			if (Main.LocalPlayer.GetModPlayer<WeaponPlayer>().judgementGaugeVisibility == 3)
 			{
 				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/JudgementGauge/JudgementGauge3"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);
 			}
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().judgementGaugeVisibility == 2)
+			if (Main.LocalPlayer.GetModPlayer<WeaponPlayer>().judgementGaugeVisibility == 2)
 			{
 				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/JudgementGauge/JudgementGauge2"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);
 			}
 
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().judgementGaugeVisibility == 1)
+			if (Main.LocalPlayer.GetModPlayer<WeaponPlayer>().judgementGaugeVisibility == 1)
 			{
 				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/JudgementGauge/JudgementGauge1"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);
 			}
@@ -146,10 +146,10 @@ namespace StarsAbove.UI.JudgementGauge
 			
 		
 		public override void Update(GameTime gameTime) {
-			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().judgementGaugeVisibility>0))
+			if (!(Main.LocalPlayer.GetModPlayer<WeaponPlayer>().judgementGaugeVisibility>0))
 				return;
 
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			// Setting the text per tick to update and show our resource values.
 			text.SetText($"");
 

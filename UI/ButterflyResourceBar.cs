@@ -59,7 +59,7 @@ namespace StarsAbove.UI
 		protected override void DrawSelf(SpriteBatch spriteBatch) {
 			base.DrawSelf(spriteBatch);
 
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			// Calculate quotient
 			float quotient = (float)modPlayer.ButterflyResourceCurrent / 100; // Creating a quotient that represents the difference of your currentResource vs your maximumResource, resulting in a float of 0-1f.
 			quotient = Utils.Clamp(quotient, 0f, 1f); // Clamping it to 0-1f so it doesn't go over that.
@@ -85,7 +85,7 @@ namespace StarsAbove.UI
 			if (!(Main.LocalPlayer.HeldItem.ModItem is VenerationOfButterflies))
 				return;
 
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			// Setting the text per tick to update and show our resource values.
 			text.SetText($"[c/F59EEF:{modPlayer.ButterflyResourceCurrent} / 100]");
 			base.Update(gameTime);

@@ -17,12 +17,12 @@ namespace StarsAbove.Buffs.BurningDesire
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.GetDamage(DamageClass.Generic) += (player.GetModPlayer<StarsAbovePlayer>().powerStrikeStacks * 0.05f);
-            player.statDefense += player.GetModPlayer<StarsAbovePlayer>().powerStrikeStacks * 5;
+            player.GetDamage(DamageClass.Generic) += (player.GetModPlayer<WeaponPlayer>().powerStrikeStacks * 0.05f);
+            player.statDefense += player.GetModPlayer<WeaponPlayer>().powerStrikeStacks * 5;
         }
         public override void ModifyBuffTip(ref string tip, ref int rare)
         {
-            int powerStrikeStacks = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().powerStrikeStacks;
+            int powerStrikeStacks = Main.LocalPlayer.GetModPlayer<WeaponPlayer>().powerStrikeStacks;
             tip = LangHelper.GetTextValue("BuffDescription.PowerStrikeBuff", powerStrikeStacks, powerStrikeStacks * 5,
                 powerStrikeStacks * 5);
 

@@ -72,18 +72,18 @@ namespace StarsAbove.Items
 			{
 				if (!player.HasBuff(BuffType<BlastingChargeCooldownBuff>()))
 				{
-					player.GetModPlayer<StarsAbovePlayer>().forceBullets = 2;
+					player.GetModPlayer<WeaponPlayer>().forceBullets = 2;
 					return true;
 					
 				}
 				return false;
 
 			}
-			if (player.GetModPlayer<StarsAbovePlayer>().forceBullets <= 0)
+			if (player.GetModPlayer<WeaponPlayer>().forceBullets <= 0)
 			{
 				
 				
-					player.GetModPlayer<StarsAbovePlayer>().forceBullets = 2;
+					player.GetModPlayer<WeaponPlayer>().forceBullets = 2;
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.Center.X, player.Center.Y, Vector2.Zero.X, Vector2.Zero.Y, ProjectileType<ForceOfNatureReload>(), 0, 0, player.whoAmI);
 					player.AddBuff(BuffType<ForceOfNatureReloadBuff>(), 40);
 					return false;
@@ -135,7 +135,7 @@ namespace StarsAbove.Items
 				player.velocity = Lunge;
 				
 				player.AddBuff(BuffType<BlastingChargeCooldownBuff>(), 360);
-				//player.GetModPlayer<StarsAbovePlayer>().forceBullets--;
+				//player.GetModPlayer<WeaponPlayer>().forceBullets--;
 				for (int d = 0; d < 27; d++)
 				{
 					Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(55));
@@ -150,7 +150,7 @@ namespace StarsAbove.Items
 
 
 			}
-			if (player.GetModPlayer<StarsAbovePlayer>().forceBullets > 0)
+			if (player.GetModPlayer<WeaponPlayer>().forceBullets > 0)
             {
 				
 				
@@ -165,7 +165,7 @@ namespace StarsAbove.Items
 					}
 					Vector2 Lunge = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * -8f;
 					player.velocity = Lunge;
-					player.GetModPlayer<StarsAbovePlayer>().forceBullets--;
+					player.GetModPlayer<WeaponPlayer>().forceBullets--;
 
 
 					for (int d = 0; d < 21; d++)

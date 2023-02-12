@@ -74,10 +74,10 @@ namespace StarsAbove.Items
 			//item.damage = 120 + player.statLifeMax2 / 20 + player.statManaMax2 / 20 + (Math.Max(Math.Max(Math.Max(player.meleeCrit, player.magicCrit), player.rangedCrit), player.thrownCrit));
             base.HoldItem(player);
 
-			//player.GetModPlayer<StarsAbovePlayer>().takodachiGauge++;//Debug.
+			//player.GetModPlayer<WeaponPlayer>().takodachiGauge++;//Debug.
 			Vector2 position = player.Center;
 
-			float rotation = (float)Math.Atan2(position.Y - (player.GetModPlayer<StarsAbovePlayer>().takoTarget.Y), position.X - (player.GetModPlayer<StarsAbovePlayer>().takoTarget.X));//Aim towards mouse
+			float rotation = (float)Math.Atan2(position.Y - (player.GetModPlayer<WeaponPlayer>().takoTarget.Y), position.X - (player.GetModPlayer<WeaponPlayer>().takoTarget.X));//Aim towards mouse
 
 
 			//If gauge is full, attack nearby foes with tentacles!
@@ -101,8 +101,8 @@ namespace StarsAbove.Items
 
 
 			}
-			player.GetModPlayer<StarsAbovePlayer>().takoMinionTarget = closest.Center;
-			if (player.GetModPlayer<StarsAbovePlayer>().takodachiGauge >= 100)
+			player.GetModPlayer<WeaponPlayer>().takoMinionTarget = closest.Center;
+			if (player.GetModPlayer<WeaponPlayer>().takodachiGauge >= 100)
 			{
 
 				if (closest.CanBeChasedBy() && closestDistance < 1200f)//If the enemy is a reasonable distance away and is hostile (projectile.ai[0] is the amount of bounces left (Should start at 3.)
@@ -121,7 +121,7 @@ namespace StarsAbove.Items
 					Vector2 mousePosition = player.GetModPlayer<StarsAbovePlayer>().playerMousePos;
 					Vector2 direction = Vector2.Normalize(closest.position - player.Center);
 					Vector2 velocity = direction * launchSpeed;
-					Vector2 targetPosition = new Vector2(player.GetModPlayer<StarsAbovePlayer>().takoMinionTarget.X , player.GetModPlayer<StarsAbovePlayer>().takoMinionTarget.Y + Main.rand.Next(-70, 70));
+					Vector2 targetPosition = new Vector2(player.GetModPlayer<WeaponPlayer>().takoMinionTarget.X , player.GetModPlayer<WeaponPlayer>().takoMinionTarget.Y + Main.rand.Next(-70, 70));
 
 					for (int l = 0; l < player.ownedProjectileCounts[Item.shoot]; l++)
 					{
@@ -135,7 +135,7 @@ namespace StarsAbove.Items
 					
 
 
-					player.GetModPlayer<StarsAbovePlayer>().takodachiGauge = 0;
+					player.GetModPlayer<WeaponPlayer>().takodachiGauge = 0;
 				}
 			}
 
@@ -231,7 +231,7 @@ namespace StarsAbove.Items
 				if (!player.HasBuff(BuffType<TakodachiLaserBuff>()) && !player.HasBuff(BuffType<TakodachiLaserBuffCooldown>()))
 				{
 					player.AddBuff(BuffType<Buffs.TakodachiLaserBuff>(), 180);
-					player.GetModPlayer<StarsAbovePlayer>().takoTarget = Main.MouseWorld;
+					player.GetModPlayer<WeaponPlayer>().takoTarget = Main.MouseWorld;
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, player.Center);
 					
 					

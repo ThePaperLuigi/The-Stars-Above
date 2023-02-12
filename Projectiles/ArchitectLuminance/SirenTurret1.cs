@@ -49,13 +49,13 @@ namespace StarsAbove.Projectiles.ArchitectLuminance
 				Projectile.velocity.Y = 16f;
 			}
 			Player p = Main.player[Projectile.owner];
-			player.GetModPlayer<StarsAbovePlayer>().sirenTurretCenter1 = Projectile.Center;
+			player.GetModPlayer<WeaponPlayer>().sirenTurretCenter1 = Projectile.Center;
 
 			//Factors for calculations
 			double deg = Projectile.ai[1]; //The degrees, you can multiply projectile.ai[1] to make it orbit faster, may be choppy depending on the value
 			double rad = deg * (Math.PI / 180); //Convert degrees to radians
 			double dist = 128; //Distance away from the player
-			Vector2 adjustedPosition = new Vector2(player.GetModPlayer<StarsAbovePlayer>().sirenCenter.X, player.GetModPlayer<StarsAbovePlayer>().sirenCenter.Y - 20);
+			Vector2 adjustedPosition = new Vector2(player.GetModPlayer<WeaponPlayer>().sirenCenter.X, player.GetModPlayer<WeaponPlayer>().sirenCenter.Y - 20);
 
 			/*Position the player based on where the player is, the Sin/Cos of the angle times the /
             /distance for the desired distance away from the player minus the projectile's width   /
@@ -72,7 +72,7 @@ namespace StarsAbove.Projectiles.ArchitectLuminance
 			bool rotateClockwise = true;
 
 			
-			Projectile.rotation = Vector2.Normalize(player.GetModPlayer<StarsAbovePlayer>().sirenTarget - Projectile.Center).ToRotation() + MathHelper.ToRadians(-135f);
+			Projectile.rotation = Vector2.Normalize(player.GetModPlayer<WeaponPlayer>().sirenTarget - Projectile.Center).ToRotation() + MathHelper.ToRadians(-135f);
 			Projectile.ai[0]++;
 			
 			

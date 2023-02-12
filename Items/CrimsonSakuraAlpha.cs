@@ -75,17 +75,17 @@ namespace StarsAbove.Items
 			
 			if (player.altFunctionUse == 2)
 			{
-				if(bladeWillTriggerBlue > 0 && bladeWillTriggerRed > 0 && bladeWillTriggerYellow > 0 && !player.GetModPlayer<StarsAbovePlayer>().Player.GetModPlayer<StarsAbovePlayer>().bladeWill && !player.HasBuff(BuffType<Buffs.BladeWillCooldown>()))
+				if(bladeWillTriggerBlue > 0 && bladeWillTriggerRed > 0 && bladeWillTriggerYellow > 0 && !player.GetModPlayer<WeaponPlayer>().Player.GetModPlayer<WeaponPlayer>().bladeWill && !player.HasBuff(BuffType<Buffs.BladeWillCooldown>()))
                 {
 					Rectangle textPos = new Rectangle((int)player.position.X, (int)player.position.Y - 20, player.width, player.height);
 					CombatText.NewText(textPos, new Color(255, 0, 125, 240), "Blade Will activated!", false, false);
-					player.GetModPlayer<StarsAbovePlayer>().bladeWill = true;
+					player.GetModPlayer<WeaponPlayer>().bladeWill = true;
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, player.Center);
 					return true;
 					
 
 				}
-				if (!player.GetModPlayer<StarsAbovePlayer>().bladeWill)
+				if (!player.GetModPlayer<WeaponPlayer>().bladeWill)
 				for (int i = 0; i < player.CountBuffs(); i++)
 				{
 					if (player.buffType[i] == BuffType<Buffs.YellowOrb>())
@@ -163,20 +163,20 @@ namespace StarsAbove.Items
 
 		public override void HoldItem(Player player)
 		{
-			player.GetModPlayer<StarsAbovePlayer>().sakuraHeld = true;
+			player.GetModPlayer<WeaponPlayer>().sakuraHeld = true;
 			bladeWillTriggerRed--;
 			bladeWillTriggerBlue--;
 			bladeWillTriggerYellow--;
 			if(player.statMana <= 0)
             {
 				Main.LocalPlayer.AddBuff(BuffType<Buffs.BladeWillCooldown>(), 3600);
-				player.GetModPlayer<StarsAbovePlayer>().bladeWill = false;
+				player.GetModPlayer<WeaponPlayer>().bladeWill = false;
             }
 			else
             {
 				
             }
-			if (player.GetModPlayer<StarsAbovePlayer>().bladeWill)
+			if (player.GetModPlayer<WeaponPlayer>().bladeWill)
 			{
 				bladeWillTimer++;
 				
@@ -237,7 +237,7 @@ namespace StarsAbove.Items
 			}
 			else
 			{
-				if (player.GetModPlayer<StarsAbovePlayer>().bladeWill)
+				if (player.GetModPlayer<WeaponPlayer>().bladeWill)
 				{
 					Item.UseSound = StarsAboveAudio.SFX_YunlaiSwing1;
 					return true;

@@ -83,23 +83,23 @@ namespace StarsAbove.Projectiles.Umbra
 
 			}
 			Player player = Main.player[Projectile.owner];
-			if(player.GetModPlayer<StarsAbovePlayer>().UmbraGauge > 50)
+			if(player.GetModPlayer<WeaponPlayer>().UmbraGauge > 50)
             {
-				player.GetModPlayer<StarsAbovePlayer>().UmbraGauge += 1;
+				player.GetModPlayer<WeaponPlayer>().UmbraGauge += 1;
 
 			}
 			else
             {
-				player.GetModPlayer<StarsAbovePlayer>().UmbraGauge += 2;
+				player.GetModPlayer<WeaponPlayer>().UmbraGauge += 2;
 
 			}
-			if (player.GetModPlayer<StarsAbovePlayer>().UmbraGauge >= 100)
+			if (player.GetModPlayer<WeaponPlayer>().UmbraGauge >= 100)
             {
-				player.GetModPlayer<StarsAbovePlayer>().UmbraGauge = 100;
+				player.GetModPlayer<WeaponPlayer>().UmbraGauge = 100;
 
 			}
 
-			player.GetModPlayer<StarsAbovePlayer>().gaugeChangeAlpha = 1f;
+			player.GetModPlayer<WeaponPlayer>().gaugeChangeAlpha = 1f;
 
 			base.OnHitNPC(target, damage, knockback, crit);
         }

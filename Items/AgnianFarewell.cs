@@ -51,7 +51,7 @@ namespace StarsAbove.Items
 		int randomBuff;
         public override void UpdateInventory(Player player)
         {
-			player.GetModPlayer<StarsAbovePlayer>().AgnianFarewellInInventory = true;
+			player.GetModPlayer<WeaponPlayer>().AgnianFarewellInInventory = true;
 
 
             base.UpdateInventory(player);

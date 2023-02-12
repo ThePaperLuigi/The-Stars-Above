@@ -40,7 +40,7 @@ namespace StarsAbove.Projectiles.Kifrosse
 			
 			Projectile.timeLeft = 999;
 			Player player = Main.player[Projectile.owner];
-			StarsAbovePlayer modPlayer = player.GetModPlayer<StarsAbovePlayer>();
+			WeaponPlayer modPlayer = player.GetModPlayer<WeaponPlayer>();
 			if (player.dead && !player.active)
 			{
 				

@@ -53,7 +53,7 @@ namespace StarsAbove.Projectiles
 			Projectile.alpha -= 10;
 			
 			
-			if (projOwner.GetModPlayer<StarsAbovePlayer>().soulUnboundActive == false)
+			if (projOwner.GetModPlayer<WeaponPlayer>().soulUnboundActive == false)
 			{
 				
 				Projectile.Kill();

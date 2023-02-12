@@ -60,7 +60,7 @@ namespace StarsAbove.Projectiles
 				
 					
 				float speed = 50f;
-				Vector2 velocity = (projOwner.GetModPlayer<StarsAbovePlayer>().naganadelWeaponPosition - Projectile.Center).SafeNormalize(-Vector2.UnitY) * speed;
+				Vector2 velocity = (projOwner.GetModPlayer<WeaponPlayer>().naganadelWeaponPosition - Projectile.Center).SafeNormalize(-Vector2.UnitY) * speed;
 				Projectile.velocity = velocity;
 			}
 			if (++Projectile.frameCounter >= 2)

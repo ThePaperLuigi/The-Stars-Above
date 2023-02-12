@@ -48,17 +48,17 @@ namespace StarsAbove.Projectiles.SoulReaver
 				
 				firstSpawn = false;
 			}
-			if (player.dead && !player.active || player.GetModPlayer<StarsAbovePlayer>().bowCharge <= 0)
+			if (player.dead && !player.active || player.GetModPlayer<WeaponPlayer>().bowCharge <= 0)
 			{
 				Projectile.Kill();
 			}
 			if (player.HasBuff(BuffType<Buffs.SoulReaver.SoulSplit>()))
 			{
-				orbit = (int)MathHelper.Lerp(300, 0, player.GetModPlayer<StarsAbovePlayer>().bowCharge / 100);
+				orbit = (int)MathHelper.Lerp(300, 0, player.GetModPlayer<WeaponPlayer>().bowCharge / 100);
 			}
 			else
 			{
-				orbit = (int)MathHelper.Lerp(700, 0, player.GetModPlayer<StarsAbovePlayer>().bowCharge / 100);
+				orbit = (int)MathHelper.Lerp(700, 0, player.GetModPlayer<WeaponPlayer>().bowCharge / 100);
 			}
 			if (orbit <= 10)
 			{

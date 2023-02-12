@@ -85,7 +85,7 @@ namespace StarsAbove.Items
 			Vector2 arrowVelocity = direction * 26f;
 			
 
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 
 			if (player.altFunctionUse == 2)
 			{
@@ -120,7 +120,7 @@ namespace StarsAbove.Items
         }
         public override void HoldItem(Player player)
         {
-			player.GetModPlayer<StarsAbovePlayer>().SoulReaverHeld = true;
+			player.GetModPlayer<WeaponPlayer>().SoulReaverHeld = true;
 
 			for (int i = 0; i < Main.maxNPCs; i++)
 			{
@@ -159,7 +159,7 @@ namespace StarsAbove.Items
             {
 				soulHarvestRange = 700;
             }
-			if(player.GetModPlayer<StarsAbovePlayer>().SoulReaverSouls > 0)
+			if(player.GetModPlayer<WeaponPlayer>().SoulReaverSouls > 0)
             {
 				player.AddBuff(BuffType<DarkSoul>(), 10);
             }
@@ -190,13 +190,13 @@ namespace StarsAbove.Items
 						Item.useTime = 10;
 						Item.useAnimation = 10;
 						player.AddBuff(BuffType<SoulReaverCharging>(), 10);
-						player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = true;
-						player.GetModPlayer<StarsAbovePlayer>().bowCharge += 2;
-						if (player.GetModPlayer<StarsAbovePlayer>().bowCharge == 1)
+						player.GetModPlayer<WeaponPlayer>().bowChargeActive = true;
+						player.GetModPlayer<WeaponPlayer>().bowCharge += 2;
+						if (player.GetModPlayer<WeaponPlayer>().bowCharge == 1)
 						{
 							//Main.PlaySound(SoundLoader.customSoundType, (int)player.Center.X, (int)player.Center.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/bowstring"), 0.5f);
 						}
-						if (player.GetModPlayer<StarsAbovePlayer>().bowCharge == 98)
+						if (player.GetModPlayer<WeaponPlayer>().bowCharge == 98)
 						{
 							for (int d = 0; d < 32; d++)
 							{
@@ -206,7 +206,7 @@ namespace StarsAbove.Items
 
 
 						}
-						if (player.GetModPlayer<StarsAbovePlayer>().bowCharge == 16)
+						if (player.GetModPlayer<WeaponPlayer>().bowCharge == 16)
 						{
 							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, 0, 0, ProjectileType<SoulReaverVFX1>(), 0, 3, player.whoAmI, 0f);
 							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, 0, 0, ProjectileType<SoulReaverVFX2>(), 0, 3, player.whoAmI, 0f);
@@ -214,14 +214,14 @@ namespace StarsAbove.Items
 
 							SoundEngine.PlaySound(SoundID.DD2_DarkMageCastHeal, player.position);
 						}
-						if (player.GetModPlayer<StarsAbovePlayer>().bowCharge < 100)
+						if (player.GetModPlayer<WeaponPlayer>().bowCharge < 100)
 						{
 							for (int i = 0; i < 30; i++)
 							{//Circle
 								Vector2 offset = new Vector2();
 								double angle = Main.rand.NextDouble() * 2d * Math.PI;
-								offset.X += (float)(Math.Sin(angle) * (100 - player.GetModPlayer<StarsAbovePlayer>().bowCharge));
-								offset.Y += (float)(Math.Cos(angle) * (100 - player.GetModPlayer<StarsAbovePlayer>().bowCharge));
+								offset.X += (float)(Math.Sin(angle) * (100 - player.GetModPlayer<WeaponPlayer>().bowCharge));
+								offset.Y += (float)(Math.Cos(angle) * (100 - player.GetModPlayer<WeaponPlayer>().bowCharge));
 
 								Dust d2 = Dust.NewDustPerfect(player.MountedCenter + offset, DustID.Clentaminator_Purple, player.velocity, 200, default(Color), 0.5f);
 								d2.fadeIn = 0.1f;
@@ -251,11 +251,11 @@ namespace StarsAbove.Items
 						Item.useTime = 25;
 						Item.useAnimation = 25;
 
-						if (player.GetModPlayer<StarsAbovePlayer>().bowCharge >= 98)//If the weapon is fully charged...
+						if (player.GetModPlayer<WeaponPlayer>().bowCharge >= 98)//If the weapon is fully charged...
 						{
 
-							player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-							player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
+							player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+							player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
 							//Reset the charge gauge.
 
 
@@ -327,12 +327,12 @@ namespace StarsAbove.Items
 						}
 						else
 						{
-							if (player.GetModPlayer<StarsAbovePlayer>().bowCharge > 0 && player.GetModPlayer<StarsAbovePlayer>().bowCharge <= 30)
+							if (player.GetModPlayer<WeaponPlayer>().bowCharge > 0 && player.GetModPlayer<WeaponPlayer>().bowCharge <= 30)
 							{//Uncharged attack (lower than the threshold.)
 							 //SoundEngine.PlaySound(SoundID.Item11, player.position);
 
-								player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-								player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
+								player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+								player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
 								SoundEngine.PlaySound(SoundID.Item1, player.position);
 
 								if (player.direction == 1)
@@ -352,8 +352,8 @@ namespace StarsAbove.Items
 							}
 							else
 							{
-								player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-								player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
+								player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+								player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
 							}
 						}
 					}

@@ -90,14 +90,14 @@ namespace StarsAbove.Items
 
 			Vector2 muzzleOffset = Vector2.Normalize(projectile) * 50f;
 
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 
 			if (player.altFunctionUse == 2)
 			{
 				if(modPlayer.SpectralArsenal >= 3)
                 {
 					player.AddBuff(BuffType<Retribution>(), 180);
-					modPlayer.screenShakeTimerGlobal = -90;
+					player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
                 }
 				else
                 {
@@ -244,7 +244,7 @@ namespace StarsAbove.Items
 		{
 			player.manaRegen = 0;
 			player.manaRegenDelay = 20;
-			player.GetModPlayer<StarsAbovePlayer>().VermillionDaemonHeld = true;
+			player.GetModPlayer<WeaponPlayer>().VermillionDaemonHeld = true;
 			bladeRotationTimer++;
 			if(currentSwing != 0)
             {
@@ -295,7 +295,7 @@ namespace StarsAbove.Items
 				}
 				if (bladeRotationTimer > 6)
 				{
-					player.GetModPlayer<StarsAbovePlayer>().DaemonGlobalRotation++;
+					player.GetModPlayer<WeaponPlayer>().DaemonGlobalRotation++;
 				}
 			}
 			if (player.HasBuff(BuffType<SpectralArsenal2>()))
@@ -308,7 +308,7 @@ namespace StarsAbove.Items
 				}
 				if (bladeRotationTimer > 4)
 				{
-					player.GetModPlayer<StarsAbovePlayer>().DaemonGlobalRotation++;
+					player.GetModPlayer<WeaponPlayer>().DaemonGlobalRotation++;
 				}
 			}
 			if (player.HasBuff(BuffType<SpectralArsenal3>()))
@@ -321,19 +321,19 @@ namespace StarsAbove.Items
 				}
 				if (bladeRotationTimer > 2)
 				{
-					player.GetModPlayer<StarsAbovePlayer>().DaemonGlobalRotation++;
+					player.GetModPlayer<WeaponPlayer>().DaemonGlobalRotation++;
 				}
 			}
 			if (player.HasBuff(BuffType<Retribution>()))
 			{
 				
-				player.GetModPlayer<StarsAbovePlayer>().DaemonGlobalRotation+=7;
+				player.GetModPlayer<WeaponPlayer>().DaemonGlobalRotation+=7;
 				
 			}
 
-			if (player.GetModPlayer<StarsAbovePlayer>().DaemonGlobalRotation > 360)
+			if (player.GetModPlayer<WeaponPlayer>().DaemonGlobalRotation > 360)
             {
-				player.GetModPlayer<StarsAbovePlayer>().DaemonGlobalRotation = 0;
+				player.GetModPlayer<WeaponPlayer>().DaemonGlobalRotation = 0;
 
 			}
 

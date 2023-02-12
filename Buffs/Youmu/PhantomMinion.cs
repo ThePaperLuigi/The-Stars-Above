@@ -16,7 +16,7 @@ namespace StarsAbove.Buffs.Youmu
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-			StarsAbovePlayer modPlayer = player.GetModPlayer<StarsAbovePlayer>();
+			WeaponPlayer modPlayer = player.GetModPlayer<WeaponPlayer>();
 			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Youmu.YoumuSpirit>()] > 0)
 			{
 				modPlayer.YoumuMinion = true;
