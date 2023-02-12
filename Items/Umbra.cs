@@ -195,6 +195,16 @@ namespace StarsAbove.Items
 				.AddIngredient(ItemID.GoldWatch, 1)
 				.AddTile(TileID.Anvils)
 				.Register();
+
+			CreateRecipe(1)
+				.AddIngredient(ItemType<EssenceOfTheTimeless>(), 1)
+				.AddIngredient(ItemID.Cardinal, 1)
+				.AddIngredient(ItemID.HallowedBar, 15)
+				.AddIngredient(ItemID.SoulofFlight, 30)
+				.AddIngredient(ItemID.LargeAmethyst, 1)
+				.AddIngredient(ItemID.PlatinumWatch, 1)
+				.AddTile(TileID.Anvils)
+				.Register();
 		}
 	}
 }
