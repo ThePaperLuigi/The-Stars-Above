@@ -16,9 +16,9 @@ namespace StarsAbove.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.armorEffectDrawShadow = true;
-             
-            player.velocity = new Vector2(0, -2);
+            //player.armorEffectDrawShadow = true;
+            player.velocity = Vector2.Zero;
+            //player.velocity = new Vector2(0, -2);
             player.immune = true;
             player.immuneTime = 20;
 

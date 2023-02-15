@@ -16,6 +16,7 @@ using StarsAbove.UI.StarfarerMenu;
 using StarsAbove.UI.VN;
 using StarsAbove.UI.CelestialCartography;
 using StarsAbove.UI.IrminsulDream;
+using StarsAbove.UI.CutsceneUI;
 
 namespace StarsAbove
 {
@@ -27,7 +28,10 @@ namespace StarsAbove
 
 
 		public static ModKeybind novaKey;
-		
+
+
+		private UserInterface _CutsceneUI;
+		internal CutsceneUI CutsceneUI;
 
 		private UserInterface _ButterflyResourceBarUserInterface;
 		internal ButterflyResourceBar ButterflyResourceBar;
@@ -177,12 +181,9 @@ namespace StarsAbove
 			
 			if (!Main.dedServ)
 			{
-
-
-
-
-
-				
+				CutsceneUI = new CutsceneUI();
+				_CutsceneUI = new UserInterface();
+				_CutsceneUI.SetState(CutsceneUI);
 
 				ButterflyResourceBar = new ButterflyResourceBar();
 				_ButterflyResourceBarUserInterface = new UserInterface();
@@ -379,7 +380,7 @@ namespace StarsAbove
 		{
 
 
-
+			_CutsceneUI?.Update(gameTime);
 			_ButterflyResourceBarUserInterface?.Update(gameTime);
 			_VengeanceGaugeUserInterface?.Update(gameTime);
 			_EternalGaugeUserInterface?.Update(gameTime);
@@ -898,6 +899,22 @@ namespace StarsAbove
 					},
 					InterfaceScaleType.UI)
 				);
+			}
+
+			int TopIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Interface Logic 4"));
+			if (TopIndex != -1)
+			{
+				
+				layers.Insert(TopIndex, new LegacyGameInterfaceLayer(
+					"StarsAbove: Cutscene UI",
+					delegate
+					{
+						_CutsceneUI.Draw(Main.spriteBatch, new GameTime());
+						return true;
+					},
+					InterfaceScaleType.UI)
+				);
+				
 			}
 		}
 	}

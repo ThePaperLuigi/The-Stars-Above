@@ -14,6 +14,10 @@ public class UIVideo : UIElement
 	private bool pendingResize;
 
 	public bool ScaleToFit { get; set; }
+	public bool DoLoop { get; set; } = true;
+	public bool WaitForStart { get; set; } = false;
+	public bool StartVideo { get; set; } = true;
+	public bool FinishedVideo { get; set; } = false;
 	public bool AllowResizingDimensions { get; set; } = true;
 	public bool RemoveFloatingPointsFromDrawPosition { get; set; }
 	public float ImageScale { get; set; } = 1f;
@@ -37,12 +41,53 @@ public class UIVideo : UIElement
 
 		EnsureInitialized();
 
-		if (videoPlayer!.State != MediaState.Playing)
-		{
-			videoPlayer.IsLooped = true;
+		
+		//true
+		if (WaitForStart) //If you need to prompt the video to begin...
+        {
+			//false
+			if (DoLoop && videoPlayer.IsLooped)//If DoLoop is true and the video looped once.
+			{
+				if (videoPlayer!.State != MediaState.Playing)
+				{
+					videoPlayer.Play(video);
+				}
+				//videoPlayer.IsLooped = false;
+			}
+			else
+			{
+				if (videoPlayer.IsLooped && !StartVideo) //Stop the video after the first loop.
+				{
+					videoPlayer.Stop();
+				}
+			}
+			if (StartVideo) //If the video should start.
+			{
+				StartVideo = false;
+				videoPlayer.IsLooped = false;
+				FinishedVideo = false;
 
-			videoPlayer.Play(video);
+				videoPlayer.Play(video);
+			}
+			if (videoPlayer!.State != MediaState.Playing) //If the video ended.
+			{
+				videoPlayer.Stop();
+
+				FinishedVideo = true;
+				videoPlayer.IsLooped = true;
+			}
 		}
+		else //If the video loops forever.
+		{
+			if (videoPlayer!.State != MediaState.Playing)
+			{
+				videoPlayer.IsLooped = true;
+
+				videoPlayer.Play(video);
+			}
+		}
+		
+		
 
 		// Perhaps this should be done in Update() instead.
 		if (pendingResize && AllowResizingDimensions)

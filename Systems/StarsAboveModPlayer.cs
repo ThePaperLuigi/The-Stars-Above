@@ -640,6 +640,9 @@ namespace StarsAbove
         public int gardenofavalon; //0 = LOCKED, 1 = UNLOCKED, 2 = SELECTED 2 does not matter really
         public int edingenesisquasar; //0 = LOCKED, 1 = UNLOCKED, 2 = SELECTED 2 does not matter really
 
+        //Cutscenes, new feature
+        public int astarteCutsceneProgress = 0;
+
         public int astarteDriverAttacks; //Amount of attacks left after casting Edin Genesis Quasar
         public int astarteDriverCooldown;
 
@@ -2518,6 +2521,8 @@ namespace StarsAbove
             BossEnemySpawnModifier();
             DialogueEnemySpawnModifier();
 
+            CutsceneProgress();
+
             //Stellar Array Values
             InnerAlchemy();
             BetweenTheBoundary();
@@ -2794,6 +2799,10 @@ namespace StarsAbove
             }
 
             
+        }
+        private void CutsceneProgress()
+        {
+            astarteCutsceneProgress--;
         }
         private void StellarDiskDialogue()
         {
@@ -6962,9 +6971,10 @@ namespace StarsAbove
                         {
 
 
-                            //Projectile.NewProjectile(null,new Vector2(player.Center.X, player.Center.Y - 860), Vector2.Zero, mod.ProjectileType("Laevateinn"), novaDamage + novaDamageMod, 4, player.whoAmI, 0, 1);//The 1 here means that ai1 will be set to 1. this is good for the first cast.
-
+                            onActivateStellarNova();
+                            astarteCutsceneProgress = 180;
                             Player.AddBuff(BuffType<Buffs.AstarteDriverPrep>(), 180);                                                                                                        //Vector2 mousePosition = Main.MouseWorld;
+                            Player.AddBuff(BuffType<Buffs.Invincibility>(), 400);                                                                                                        //Vector2 mousePosition = Main.MouseWorld;
                                                                                                                                                                                              //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
                                                                                                                                                                                              //Projectile.NewProjectile(null,player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
                         }
@@ -7724,12 +7734,10 @@ namespace StarsAbove
             for (int i = 0; i < Player.CountBuffs(); i++)
                 if (Player.buffType[i] == BuffType<Buffs.AstarteDriverPrep>())
                 {
-
-
-
                     if (Player.buffTime[i] == 1)
                     {
-                        onActivateStellarNova();
+                        //Change
+
                         astarteDriverAttacks = 3;
                         Player.AddBuff(BuffType<Buffs.AstarteDriver>(), 1500);
                         SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, Player.Center);
