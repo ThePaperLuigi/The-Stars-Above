@@ -8,6 +8,11 @@ using Terraria.ModLoader;
 using StarsAbove.SceneEffects.CustomSkies;
 using ReLogic.Content;
 using Microsoft.Xna.Framework;
+using Terraria.ID;
+using StarsAbove.Items;
+using ReLogic.Content.Sources;
+
+using StarsAbove.Systems;
 
 namespace StarsAbove
 {
@@ -20,15 +25,18 @@ namespace StarsAbove
 		public static ModKeybind weaponActionKey;
 
 		public static bool sharedAudio;
-
-	
-
-
 		public static StarsAbove Instance { get; set; }
 		
 		public StarsAbove() => Instance = this;
 
-		
+		//Video player code sourced from Terraria Overhaul- I can't thank you enough!
+		public override IContentSource CreateDefaultContentSource()
+		{
+			AddContent(new OgvReader());
+
+			return base.CreateDefaultContentSource();
+		}
+
 		public override void Load()
 		{
 			Logger.InfoFormat("'I've always wanted to write text in crash logs!' -A", Name);
@@ -37,10 +45,10 @@ namespace StarsAbove
 			ModLoader.TryGetMod("Wikithis", out Mod wikithis);
 			if(wikithis != null && !Main.dedServ)
             {
-				wikithis.Call("AddModURL", this, "terrariamods.fandom.com$The_Stars_Above");
+				wikithis.Call("AddModURL", this, "terrariamods.wiki.gg$The_Stars_Above");
             }
 
-			if (!Main.dedServ)
+			if (Main.netMode != NetmodeID.Server)
 			{
 				
 				//GameShaders.Misc["StarsAbove:DeathAnimation"] = new MiscShaderData(new Ref<Effect>(ModContent.Request<Effect>("Effects/EffectDeath").Value), "DeathAnimation");
@@ -59,11 +67,14 @@ namespace StarsAbove
 
 
 				Ref<Effect> screenRef = new Ref<Effect>(ModContent.Request<Effect>("StarsAbove/Effects/ShockwaveEffect", AssetRequestMode.ImmediateLoad).Value); // The path to the compiled shader file.
-				Filters.Scene["Shockwave"] = new Filter(new ScreenShaderData(screenRef, "Shockwave"), EffectPriority.VeryHigh);
+				Filters.Scene["Shockwave"] = new Filter(new ScreenShaderData(screenRef, "Shockwave"), EffectPriority.High);
 				Filters.Scene["Shockwave"].Load();
 
+				//Ref<Effect> dyeRef = new Ref<Effect>(ModContent.Request<Effect>("StarsAbove/Effects/Shader", AssetRequestMode.ImmediateLoad).Value);
+				//GameShaders.Armor.BindShader(ModContent.ItemType<Spatial>(), new ArmorShaderData(dyeRef, "GalaxyPass")).UseImage("StarsAbove/Effects/GalaxyTest");
+
 				GameShaders.Misc["StarsAbove:DeathAnimation"] = new MiscShaderData(
-				  new Ref<Effect>(ModContent.Request<Effect>("StarsAbove/Effects/EffectDeath", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value),
+				  new Ref<Effect>(ModContent.Request<Effect>("StarsAbove/Effects/EffectDeath", AssetRequestMode.ImmediateLoad).Value),
 				  "DeathAnimation"
 				);
 

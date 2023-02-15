@@ -226,6 +226,8 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfTheTimeless>(),
 			ModContent.ItemType<EssenceOfPiracy>(),
 			ModContent.ItemType<EssenceOfAbsoluteChaos>(),
+			ModContent.ItemType<EssenceOfTheWatch>(),
+
 
 		};
 
@@ -405,6 +407,7 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfTheTimeless>(),
 			ModContent.ItemType<EssenceOfPiracy>(),
 			ModContent.ItemType<EssenceOfAbsoluteChaos>(),
+			ModContent.ItemType<EssenceOfTheWatch>(),
 
 
 		};

@@ -1,11 +1,14 @@
 ﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 using StarsAbove.Items.Armor.StarfarerArmor;
+using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
+using Terraria.ModLoader;
 using Terraria.UI;
 using static Terraria.ModLoader.ModContent;
 
@@ -60,6 +63,8 @@ namespace StarsAbove.UI.StarfarerMenu
 		private UIText baseStats;
 		private UIText adjustedStats;
 
+		private UIVideo video;
+
 		static public VanillaItemSlotWrapper _starfarerArmorSlot;
 		static public VanillaItemSlotWrapper _starfarerVanitySlot;
 
@@ -102,9 +107,16 @@ namespace StarsAbove.UI.StarfarerMenu
 			area2.Width.Set(1000, 0f);
 			area2.Height.Set(650, 0f);
 			area2.HAlign = area.VAlign = 0.5f; // 1
-											  //area2.OnMouseDown += new UIElement.MouseEvent(DragStart);
-											  //area.OnMouseUp += new UIElement.MouseEvent(DragEnd);
-											  //area2.HAlign = area.VAlign = 0.5f; // 1
+											   //area2.OnMouseDown += new UIElement.MouseEvent(DragStart);
+											   //area.OnMouseUp += new UIElement.MouseEvent(DragEnd);
+											   //area2.HAlign = area.VAlign = 0.5f; // 1
+
+			video = new UIVideo(Request<Video>("StarsAbove/Video/TestVideo"));
+			video.Left.Set(0, 0f); // Place the resource bar to the left of the hearts.
+								   //area.Top.Set(0, 0f);
+			video.Width.Set(1000, 0f);
+			video.Height.Set(650, 0f);
+			video.HAlign = area.VAlign = 0.5f;
 
 			barFrame = new UIImage(Request<Texture2D>("StarsAbove/UI/Starfarers/blank"));
 			barFrame.Left.Set(318, 0f);
@@ -121,6 +133,10 @@ namespace StarsAbove.UI.StarfarerMenu
 			bg2.Top.Set(380, 0f);
 			bg2.Width.Set(840, 0f);
 			bg2.Height.Set(810, 0f);*/
+			
+
+
+			
 
 			confirm = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Confirm"));
 			confirm.OnClick += Confirm;
@@ -336,6 +352,9 @@ namespace StarsAbove.UI.StarfarerMenu
 
 			area.Append(_starfarerArmorSlot);
 			area.Append(_starfarerVanitySlot);
+
+			//Temp
+			area.Append(video);
 
 			area.Append(archive);
 			area.Append(voyage);
