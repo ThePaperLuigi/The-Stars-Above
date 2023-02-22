@@ -24,7 +24,7 @@ namespace StarsAbove
     public class BossPlayer: ModPlayer
     {
         public bool VagrantBarActive = false;//This changes depending on the boss
-        //public bool NalhaunBarActive = false; //etc.
+        public bool NalhaunBarActive = false;
 
         //These cast values are recycled for every boss. There should be a function that prevents bosses from overlapping.
         public int CastTime = 0;
@@ -37,7 +37,7 @@ namespace StarsAbove
 
         public bool VagrantActive = false; //This can be replaced with a npc check.
         public bool LostToVagrant = false; //This can probably be removed.
-        public int vagrantTimeLeft; //This can probably be removed.
+
         
 
 
@@ -79,7 +79,8 @@ namespace StarsAbove
         {
             CastTime = 0;
             CastTimeMax = 100;
-            
+
+            NalhaunBarActive = false;
             VagrantBarActive = false;
             
         }

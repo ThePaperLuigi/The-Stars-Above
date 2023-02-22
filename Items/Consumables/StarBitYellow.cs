@@ -74,7 +74,7 @@ namespace StarsAbove.Items.Consumables
 					Main.dust[dustIndex].noGravity = true;
 				}//Dust
 
-				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, 60, 0, player.whoAmI);
+				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, player.GetWeaponDamage(player.HeldItem), 0, player.whoAmI);
 
 
 				Main.projectile[index].originalDamage = 60;

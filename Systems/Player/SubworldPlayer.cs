@@ -295,7 +295,7 @@ namespace StarsAbove
                 for (int i = 0; i < Player.inventory.Length; i++)
                 {
 
-                    if (Player.inventory[i].type == NeededItem[b])//Change me!
+                    if (Player.inventory[i].type == NeededItem[b])
                     {
                         //The correct item!
 
@@ -416,7 +416,7 @@ namespace StarsAbove
                     Player.gravity -= 0.3f;
 
                     //Fall too far into the void, and you'll be launched back up while taking heavy DoT.
-                    if ((int)(Player.Center.Y / 16) > 500)
+                    if ((int)(Player.Center.Y / 16) > 520)
                     {
                         Player.AddBuff(BuffType<SpatialBurn>(), 120);
 

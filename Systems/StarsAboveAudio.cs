@@ -632,6 +632,7 @@ namespace StarsAbove
 		#endregion
 
 		#region Weapon Sound Effects
+		
 		public static readonly SoundStyle SFX_KevesiTune = new($"{nameof(StarsAbove)}/Sounds/SFX/KevesiTune")
 		{
 
@@ -770,6 +771,10 @@ namespace StarsAbove
 		#endregion
 
 		#region Miscellaneous Sound Effects
+		public static readonly SoundStyle SFX_Laevateinn = new($"{nameof(StarsAbove)}/Sounds/SFX/Laevateinn")
+		{
+			PitchVariance = 0.1f,
+		};
 		public static readonly SoundStyle SFX_GuntriggerParryPrep = new($"{nameof(StarsAbove)}/Sounds/SFX/GuntriggerParryPrep")
 		{
 

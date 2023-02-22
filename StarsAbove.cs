@@ -59,7 +59,7 @@ namespace StarsAbove
 				SkyManager.Instance["StarsAbove:CorvusSky"] = new CorvusSky();
 
 				SkyManager.Instance["StarsAbove:ObservatorySkyDay"] = new ObservatorySkyDay();
-				SkyManager.Instance["StarsAbove:ObservatorySkyNight"] = new ObservatorySkyNight();
+				SkyManager.Instance["StarsAbove:EdinGenesisQuasarSky"] = new EdinGenesisQuasarSky();
 
 
 				Filters.Scene["StarsAbove:MoonSky"] = new Filter(new ScreenShaderData("FilterTower").UseColor(0f, 0.5f, 1f).UseOpacity(0.5f), EffectPriority.High);
@@ -185,7 +185,7 @@ namespace StarsAbove
 					"AddBoss", //Entry Type
 					this, //Mod Instance
 					"$Mods.StarsAbove.NPCName.Nalhaun", //Boss Name
-					ModContent.NPCType<NPCs.Nalhaun>(), //Boss ID
+					ModContent.NPCType<NPCs.Nalhaun.NalhaunBoss>(), //Boss ID
 					11.5f, //Progression
 					(Func<bool>)(() => DownedBossSystem.downedNalhaun), //Downed boolean
 					() => true, //Availability

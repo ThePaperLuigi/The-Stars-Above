@@ -67,7 +67,13 @@ namespace StarsAbove.UI.CutsceneUI
 				
 			}
 			
-			CutsceneExitAlpha -= 0.01f;
+			CutsceneExitAlpha -= 0.02f;
+			if(modPlayer.WhiteFade >= 20)
+            {
+				CutsceneExitAlpha = 1f;
+
+			}
+			
 
 			if (modPlayer.astarteCutsceneProgress == 1)
             {

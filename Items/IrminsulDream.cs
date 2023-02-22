@@ -83,7 +83,7 @@ namespace StarsAbove.Items
 
 			}
 			
-			if(player.GetModPlayer<WeaponPlayer>().IrminsulAttackActive)
+			if(player.GetModPlayer<WeaponPlayer>().IrminsulAttackActive && player.whoAmI == Main.myPlayer)
             {
 				player.GetModPlayer<WeaponPlayer>().IrminsulBoxEnd = Main.MouseWorld;
 

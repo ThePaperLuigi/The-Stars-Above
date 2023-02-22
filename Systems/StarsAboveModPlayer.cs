@@ -45,6 +45,7 @@ using StarsAbove.Buffs.CatalystMemory;
 using StarsAbove.Items.Armor.StarfarerArmor;
 using StarsAbove.Buffs.Farewells;
 using StarsAbove.Buffs.Umbra;
+using StarsAbove.NPCs.Nalhaun;
 
 namespace StarsAbove
 {
@@ -645,6 +646,8 @@ namespace StarsAbove
 
         public int astarteDriverAttacks; //Amount of attacks left after casting Edin Genesis Quasar
         public int astarteDriverCooldown;
+
+        public int WhiteFade;
 
         public bool ruinedKingPrism;//Tier 3
         public bool cosmicPhoenixPrism;
@@ -1603,7 +1606,7 @@ namespace StarsAbove
             {
                 inWarriorOfLightFightTimer = 4200;
             }
-            if (target.type == NPCType<Nalhaun>())
+            if (target.type == NPCType<NalhaunBoss>())
             {
                 inNalhaunFightTimer = 1200;
 
@@ -1803,7 +1806,7 @@ namespace StarsAbove
             {
                 inWarriorOfLightFightTimer = 4200;
             }
-            if (target.type == NPCType<Nalhaun>())
+            if (target.type == NPCType<NalhaunBoss>())
             {
                 inNalhaunFightTimer = 1200;
                 if (isNalhaunInvincible)
@@ -2803,6 +2806,7 @@ namespace StarsAbove
         private void CutsceneProgress()
         {
             astarteCutsceneProgress--;
+            WhiteFade--;
         }
         private void StellarDiskDialogue()
         {
@@ -3988,10 +3992,7 @@ namespace StarsAbove
                 if (NPC.downedAncientCultist)
                 {
                     baseNovaDamageAdd = 5200;
-                    if (edingenesisquasar == 0)
-                    {
-                        edingenesisquasar = 1;
-                    }
+                    
                 }
                 if (NPC.downedAncientCultist && Main.expertMode == true)
                 {
@@ -4036,6 +4037,10 @@ namespace StarsAbove
                     if (keyofchronology == 0)
                     {
                         keyofchronology = 1;
+                    }
+                    if (edingenesisquasar == 0)
+                    {
+                        edingenesisquasar = 1;
                     }
                 }
                 if (DownedBossSystem.downedWarrior && DownedBossSystem.downedVagrant && DownedBossSystem.downedPenth && DownedBossSystem.downedNalhaun)
@@ -6463,7 +6468,7 @@ namespace StarsAbove
                 starfarerPromptActive("onWarriorOfLight");
                 seenUnknownBossTimer = 300;
             }
-            if (NPC.AnyNPCs(ModContent.NPCType<NPCs.VagrantOfSpaceAndTime>()) && !seenVagrant)
+            if (NPC.AnyNPCs(ModContent.NPCType<NPCs.Vagrant.VagrantBoss>()) && !seenVagrant)
             {
                 if (starfarerPromptCooldown > 0)
                 {
@@ -6472,7 +6477,7 @@ namespace StarsAbove
                 starfarerPromptActive("onVagrant");
                 seenUnknownBossTimer = 300;
             }
-            if (NPC.AnyNPCs(ModContent.NPCType<NPCs.Nalhaun>()) && !seenNalhaun)
+            if (NPC.AnyNPCs(ModContent.NPCType<NPCs.Nalhaun.NalhaunBoss>()) && !seenNalhaun)
             {
                 if (starfarerPromptCooldown > 0)
                 {
@@ -6580,53 +6585,7 @@ namespace StarsAbove
                 }
             }
         }
-        private void VagrantTeleport(NPC npc)
-        {
-            if (Player.whoAmI == Main.myPlayer)
-            {
-                int halfWidth = VagrantOfSpaceAndTime.arenaWidth / 2;
-                int halfHeight = VagrantOfSpaceAndTime.arenaHeight / 2;
-                Vector2 newPosition = Player.position;
-                if (Player.position.X <= npc.Center.X - halfWidth)
-                {
-                    newPosition.X = npc.Center.X + halfWidth - Player.width - 1;
-                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
-                    {
-                        newPosition.X -= 16f;
-                    }
-                }
-                else if (Player.position.X + Player.width >= npc.Center.X + halfWidth)
-                {
-                    newPosition.X = npc.Center.X - halfWidth + 1;
-                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
-                    {
-                        newPosition.X += 16f;
-                    }
-                }
-                else if (Player.position.Y <= npc.Center.Y - halfHeight)
-                {
-                    newPosition.Y = npc.Center.Y + halfHeight - Player.height - 1;
-                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
-                    {
-                        newPosition.Y -= 16f;
-                    }
-                }
-                else if (Player.position.Y + Player.height >= npc.Center.Y + halfHeight)
-                {
-                    newPosition.Y = npc.Center.Y - halfHeight + 1;
-                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
-                    {
-                        newPosition.Y += 16f;
-                    }
-                }
-                if (newPosition != Player.position)
-                {
-                    Player.Teleport(newPosition, 1, 0);
-                    NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, Player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
-
-                }
-            }
-        }
+       
         private void WarriorTeleport(NPC npc)
         {
             if (inWarriorOfLightFightTimer > 0)
@@ -7281,16 +7240,7 @@ namespace StarsAbove
         {
 
             
-            for (int k = 0; k < 200; k++)
-            {
-                NPC npc = Main.npc[k];
-                if (npc.active && npc.type == NPCType<VagrantOfSpaceAndTime>())
-                {
-
-                    VagrantTeleport(npc);
-                    break;
-                }
-            }
+            
             for (int k = 0; k < 200; k++)
             {
                 NPC npc = Main.npc[k];
@@ -7330,11 +7280,6 @@ namespace StarsAbove
                     PenthTeleport(npc);
                     break;
                 }
-            }
-
-            if (NPC.AnyNPCs(ModContent.NPCType<NPCs.Nalhaun>()))
-            {
-                Player.AddBuff(BuffType<Buffs.SoulSapping>(), 2);
             }
             if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior && SubworldSystem.Current == null)
             {
@@ -7741,21 +7686,20 @@ namespace StarsAbove
                         astarteDriverAttacks = 3;
                         Player.AddBuff(BuffType<Buffs.AstarteDriver>(), 1500);
                         SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, Player.Center);
-                        for (int d = 0; d < 105; d++)
-                        {
-                            Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
-                        }
-                        for (int d = 0; d < 105; d++)
-                        {
-                            Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
-                        }
+                        
                     }
 
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
                 if (Player.buffType[i] == BuffType<Buffs.AstarteDriver>())
                 {
-
+                    if (Player.buffTime[i] == 1)
+                    {
+                        //Change
+                        WhiteFade = 20;
+                        
+                        
+                    }
                     for (int a = 0; a < 15; a++)
                     {//Circle
                         Vector2 vector = new Vector2(
@@ -8269,85 +8213,7 @@ namespace StarsAbove
 
                 }
             }
-            //Localize me later.
-            if (NPC.AnyNPCs(Mod.Find<ModNPC>("WarriorOfLight").Type))
-            {
-                if (inWarriorOfLightFightTimer <= 0)
-                {
-
-                }
-                else
-                {
-                    damageSource = PlayerDeathReason.ByCustomReason(Player.name + " was struck down during their duel with The Warrior Of Light.");
-                }
-
-                return true;
-            }
-            if (NPC.AnyNPCs(Mod.Find<ModNPC>("Penthesilea").Type))
-            {
-                if (inPenthFightTimer <= 0)
-                {
-
-                }
-                else
-                {
-                    damageSource = PlayerDeathReason.ByCustomReason(Player.name + " faltered during their fight with the Witch of Ink.");
-                }
-
-                return true;
-            }
-            if (NPC.AnyNPCs(Mod.Find<ModNPC>("Nalhaun").Type))
-            {
-                if (inNalhaunFightTimer <= 0)
-                {
-
-                }
-                else
-                {
-                    damageSource = PlayerDeathReason.ByCustomReason(Player.name + " was cleaved in twain by the Burnished King.");
-                }
-
-                return true;
-            }
-            if (NPC.AnyNPCs(Mod.Find<ModNPC>("Arbitration").Type))
-            {
-                if (inArbiterFightTimer <= 0)
-                {
-
-                }
-                else
-                {
-                    damageSource = PlayerDeathReason.ByCustomReason(Player.name + " was found wanting.");
-                }
-
-                return true;
-            }
-            if (NPC.AnyNPCs(Mod.Find<ModNPC>("Tsukiyomi").Type))
-            {
-                if (inTsukiyomiFightTimer <= 0)
-                {
-
-                }
-                else
-                {
-                    damageSource = PlayerDeathReason.ByCustomReason(Player.name + " has been completely reduced to elementary particles.");
-                }
-
-                return true;
-            }
-            if (NPC.AnyNPCs(Mod.Find<ModNPC>("VagrantOfSpaceAndTime").Type))
-            {
-                if (inVagrantFightTimer <= 0)
-                {
-
-                }
-                else
-                {
-                    damageSource = PlayerDeathReason.ByCustomReason(Player.name + " was rent asunder by the Vagrant of Space and Time.");
-                }
-
-                return true;
-            }
+            
             if (Main.LocalPlayer.HasBuff(BuffType<Buffs.LivingDead>()))
             {
                 playSound = false;

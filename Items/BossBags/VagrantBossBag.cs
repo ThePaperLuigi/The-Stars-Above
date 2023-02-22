@@ -16,7 +16,7 @@ namespace StarsAbove.Items.BossBags
 	public class VagrantBossBag : ModItem
 	{
 		// Sets the associated NPC this treasure bag is dropped from
-		public override int BossBagNPC => ModContent.NPCType<VagrantOfSpaceAndTime>();
+		//public override int BossBagNPC => ModContent.NPCType<VagrantOfSpaceAndTime>();
 
 		public override void SetStaticDefaults()
 		{
@@ -50,7 +50,7 @@ namespace StarsAbove.Items.BossBags
 			//itemLoot.Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<LightswornPrism>(), 7));
 			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<SpatialPrism>(), 4, 1, 1));
 			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<EnigmaticDust>(), 1, 8, 20));
-			itemLoot.Add(ItemDropRule.CoinsBasedOnNPCValue(ModContent.NPCType<VagrantOfSpaceAndTime>()));
+			//itemLoot.Add(ItemDropRule.CoinsBasedOnNPCValue(ModContent.NPCType<VagrantOfSpaceAndTime>()));
 		}
 		
 

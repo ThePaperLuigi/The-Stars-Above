@@ -11,6 +11,10 @@
           Negative: Negative Chaos!
           
         }
+        Nalhaun:
+        {
+          ManifestBlade: The Burnished King channels energy into Laevateinn, leaving his defenses drastically lowered!
+        }
       }
       SubworldName:
       {
@@ -6776,9 +6780,9 @@
       {
         Arbitration: A horrifying figure encountered upon an Anomaly planet. While it appears evil to a human, eldritch anomalies such as these know not the concept of malice, only how to consume.
         AstralCell: A strange blue object. It eats water vapor.
-        Nalhaun: A once mighty monarch, cursed to live eternally even as his kingdom crumbed around him. The ability to conjure forth powerful monsters was gifted to him by his final retainer ere she breathed her last. He persisted alone on an empty planet until the First Starbearer ended his long and tragic reign.
+        Nalhaun: A once mighty monarch, cursed to live eternally even as his kingdom crumbed around him. The last of his race and the last of his people, he retains his lucidity due to his incredible willpower. He persisted alone on an empty planet until the First Starbearer ended his long and tragic reign, as he would be able to interfere with his plans...
         PaintedAttendantA: Utilized by Penthesilea to... smack you in the face. The best mages know when physical violence is the answer.
-        Penthesilea: An incredibly powerful mage, the Painted Witch once ruled a planet entirely 'drawn' by her. Ever the trickster, she mastered expert magecraft simply to play pranks upon the works of her colleagues, a testament to her ingenuity. She met her end at the hands of the First Starbearer after a long conflict.
+        Penthesilea: An incredibly powerful mage, the Painted Witch once ruled a planet entirely 'drawn' by her. Ever the trickster, she mastered expert magecraft simply to play pranks upon the works of her colleagues, a testament to her ingenuity. She met her end at the hands of the First Starbearer after a long conflict- if she were to persist, she would interfere with his plans...
         PrismLoot: The latent magical energy of Prismatic Cores can sometimes influence them to drift around the galaxy. Catch one, and you'll be rewarded!
         SpectreOfLight: An otherworldy hero, summoned forth by the First Starbearer to assail this land.
         Tsukiyomi2: The First Starfarer, Tsukiyomi, who holds dominion over orbiting celestial bodies. The gravitational pull of a planet and its natural satellites gives her power. She led the Warrior of Light astray- using his strength and goodwill to conquer and destroy myriad stars... and yet...
@@ -6787,7 +6791,7 @@
         AsteroidWorm: These incredibly hardy creatures have grown the capability to aimlessly drift through the vacuum of space- perhaps not the best depiction of evolution. While their meals are scarce, their need for food is nigh nonexistant. Gifted with a strong outer shell, but low overall attacking strength.
         Soulless: An unfortunate victim of whatever apocalypse befell Caelum. Mana keeps their incarnation alive, but whatever trace of thought they may have once had has long since departed.
         Yojimbo: A mysterious lumenkin, his name seems to change depending on when and where you come across him. He's a bounty hunter, but is willing to part with some knowledge if you pry enough...
-        Garridine: A lupine demihuman you discovered residing on a far-flung starship, a blacksmith and gadgeteer. Her manner of speaking belies a high-class upbringing, but the facade tends to drop when she flubs her words (which is often.)
+        Garridine: A lupine demihuman you discovered residing on a far-flung starship, a blacksmith and gadgeteer. Her manner of speaking belies a high-class upbringing, but the facade tends to drop when she flubs her words (which is often.) Strangely protective of the watch by her side.
         AmethystHeadpiercer: Foot soldier of a wide-reaching paramilitary organization, referred to as the Amethyst. Equipped with a Vortexian powersuit fitted with a jetpack for ease of travel, even in the vacuum of space.
         AmethystSwordsinner: Foot soldier of a wide-reaching paramilitary organization, referred to as the Amethyst. Utilizes a hardlight blade with ferocious efficiency, specifically for countering ranged offense.
       }

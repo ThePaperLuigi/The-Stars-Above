@@ -17,17 +17,13 @@ namespace StarsAbove.SceneEffects
         {
             if (player.HasBuff<AstarteDriver>())
             {
-                //SkyManager.Instance.Activate("StarsAbove:MoonSky");
-                Main.dayTime = false;
-                Main.time = 18000;
-                Main.cloudAlpha = 0f;
-                //Main.resetClouds = true;
-                Main.moonPhase = 4;
+                SkyManager.Instance.Activate("StarsAbove:EdinGenesisQuasarSky");
+                
             }
 
-            if (!player.HasBuff<AstarteDriver>() && !player.HasBuff<MoonTurmoil>())
+            if (!player.HasBuff<AstarteDriver>())
             {
-               //SkyManager.Instance.Deactivate("StarsAbove:MoonSky");
+               SkyManager.Instance.Deactivate("StarsAbove:EdinGenesisQuasarSky");
             }
         }
         

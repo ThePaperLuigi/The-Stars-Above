@@ -32,7 +32,7 @@ namespace StarsAbove.Biomes
 		public override bool IsBiomeActive(Player player) {
 			if(player.HasBuff<AstarteDriver>())
 			{
-				return true;//true
+				//return true;//true
             }
 			return false;
 		}
