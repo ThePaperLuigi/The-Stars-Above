@@ -1506,7 +1506,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 
 		}
-		//Nalhaun attack.
+	
 		//4 consecutive rotating slashes.
 		public static void Bladework1(Player target, NPC npc)
 		{
@@ -2141,7 +2141,228 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 
 		}
+		public static void IvoryStake1(Player target, NPC npc)//
+		{
+			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
+			//Each attack in the Library has 3 important segments.
+			//Part 1: Name of the attack and cast time. (ActionState.Idle)
+			//Part 2: The actual execution of the attack. (ActionState.Casting)
+			//Part 3: If the attack lasts longer than the initial attack, execute the active code. (ActionState.PersistentCast)
+
+			//Global attack-specific variables
+
+			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
+			{
+
+				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
+				Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<NalhaunCastSprite>(), 0, 0, Main.myPlayer, 80);
+				SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
+
+				modPlayer.NextAttack = "Ivory Admonishment";//The name of the attack.
+				npc.ai[3] = 80;//This is the time it takes for the cast to finish.
+				npc.localAI[3] = 0;//This resets the cast time.
+				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
+				npc.netUpdate = true;//NetUpdate for good measure.
+									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
+									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
+
+
+
+				return;
+			}
+			if (npc.ai[0] == (float)ActionState.PersistentCast)//If an attack lasts, it'll be moved to PersistentCast until the cast finishes.
+			{
+
+				return;
+			}
+			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
+			{
+
+				#region attack
+
+				if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
+				{
+					// Spawn projectile randomly below target, based on horizontal velocity to make kiting harder, starting velocity 1f upwards
+					// (The projectiles accelerate from their initial velocity)
+
+					float kitingOffsetX = Utils.Clamp(target.velocity.X * 16, -100, 100);
+					Vector2 position = target.Bottom + new Vector2(kitingOffsetX, -500);
+
+					int type = ProjectileType<IvoryStake>();
+					int damage = 50;
+					var entitySource = npc.GetSource_FromAI();
+
+					float Speed = 30f;  //projectile speed
+					Vector2 StartPosition1 = new Vector2(target.Center.X - 1000, target.Center.Y - 400);
+					Vector2 StartPosition2 = new Vector2(target.Center.X + 1000, target.Center.Y - 400);
+
+
+
+
+					for (int d = 0; d < 30; d++)
+					{
+						Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
+					}
+
+					for (int i = 0; i < 4; i++)
+					{
+						float rotation1 = (float)Math.Atan2(StartPosition1.Y - (target.position.Y + (target.height * 0.5f)), StartPosition1.X - (target.position.X + (target.width * 0.5f)));
+						float rotation2 = (float)Math.Atan2(StartPosition2.Y - (target.position.Y + (target.height * 0.5f)), StartPosition2.X - (target.position.X + (target.width * 0.5f)));
+
+						Vector2 velocity1 = new Vector2((float)((Math.Cos(rotation1) * Speed) * -1 - i), (float)((Math.Sin(rotation1) * Speed) * -1 - i));
+						Vector2 velocity2 = new Vector2((float)((Math.Cos(rotation2) * Speed) * -1 - i), (float)((Math.Sin(rotation2) * Speed) * -1 - i));
+
+						float numberProjectiles = 4;
+						float adjustedRotation = MathHelper.ToRadians(15);
+
+						Vector2 perturbedSpeed1 = new Vector2(velocity1.X, velocity1.Y).RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f * (i+1); // Watch out for dividing by 0 if there is only 1 projectile.
+						
+						Vector2 perturbedSpeed2 = new Vector2(velocity2.X, velocity2.Y).RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f * (i+1); // Watch out for dividing by 0 if there is only 1 projectile.
+
+						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition1.X, StartPosition1.Y, perturbedSpeed1.X, perturbedSpeed1.Y, type, damage, 0, Main.myPlayer);
+						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition2.X, StartPosition2.Y, perturbedSpeed2.X, perturbedSpeed2.Y, type, damage, 0, Main.myPlayer);
+
+						
+						Vector2 positionNew = Vector2.Lerp(new Vector2(target.Center.X - 600, target.Center.Y - 500), new Vector2(target.Center.X + 600, target.Center.Y - 500), (float)i / 10);
+						
+						//SoundEngine.PlaySound(SoundID.Item29, positionNew);
+
+						
+						
+
+					}
+
+				}
+
+
+				#endregion
+
+
+				//After the attack ends, we do some cleanup.
+				ResetAttack(target, npc);
+
+				npc.ai[0] = (float)ActionState.Idle;//If the attack continues, change ActionState to PersistentCast instead
+				modPlayer.NextAttack = "";//Empty the UI text.
+				npc.localAI[3] = 0;//Reset the cast.
+				npc.ai[1] = 50;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
+				npc.ai[2] += 1;//Increment the rotation counter.
+				npc.netUpdate = true;//NetUpdate for good measure.
+
+				return;
+			}
+		}
+		public static void IvoryStake2(Player target, NPC npc)//
+		{
+			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
+
+			//Each attack in the Library has 3 important segments.
+			//Part 1: Name of the attack and cast time. (ActionState.Idle)
+			//Part 2: The actual execution of the attack. (ActionState.Casting)
+			//Part 3: If the attack lasts longer than the initial attack, execute the active code. (ActionState.PersistentCast)
+
+			//Global attack-specific variables
+
+			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
+			{
+
+				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
+				Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<NalhaunCastSprite>(), 0, 0, Main.myPlayer, 80);
+				SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
+
+				modPlayer.NextAttack = "Ivory Admonishment";//The name of the attack.
+				npc.ai[3] = 80;//This is the time it takes for the cast to finish.
+				npc.localAI[3] = 0;//This resets the cast time.
+				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
+				npc.netUpdate = true;//NetUpdate for good measure.
+									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
+									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
+
+
+
+				return;
+			}
+			if (npc.ai[0] == (float)ActionState.PersistentCast)//If an attack lasts, it'll be moved to PersistentCast until the cast finishes.
+			{
+
+				return;
+			}
+			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
+			{
+
+				#region attack
+
+				if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
+				{
+					// Spawn projectile randomly below target, based on horizontal velocity to make kiting harder, starting velocity 1f upwards
+					// (The projectiles accelerate from their initial velocity)
+
+					float kitingOffsetX = Utils.Clamp(target.velocity.X * 16, -100, 100);
+					Vector2 position = target.Bottom + new Vector2(kitingOffsetX, -500);
+
+					int type = ProjectileType<IvoryStake>();
+					int damage = 50;
+					var entitySource = npc.GetSource_FromAI();
+
+					float Speed = 30f;  //projectile speed
+					Vector2 StartPosition1 = new Vector2(target.Center.X - 1000, target.Center.Y - 400);
+					Vector2 StartPosition2 = new Vector2(target.Center.X + 1000, target.Center.Y - 400);
+
+
+
+
+					for (int d = 0; d < 30; d++)
+					{
+						Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
+					}
+
+					for (int i = 0; i < 3; i++)
+					{
+						float rotation1 = (float)Math.Atan2(StartPosition1.Y - (target.position.Y + (target.height * 0.5f)), StartPosition1.X - (target.position.X + (target.width * 0.5f)));
+						float rotation2 = (float)Math.Atan2(StartPosition2.Y - (target.position.Y + (target.height * 0.5f)), StartPosition2.X - (target.position.X + (target.width * 0.5f)));
+
+						Vector2 velocity1 = new Vector2((float)((Math.Cos(rotation1) * Speed) * -1 - i), (float)((Math.Sin(rotation1) * Speed) * -1 - i));
+						Vector2 velocity2 = new Vector2((float)((Math.Cos(rotation2) * Speed) * -1 - i), (float)((Math.Sin(rotation2) * Speed) * -1 - i));
+
+						float numberProjectiles = 3;
+						float adjustedRotation = MathHelper.ToRadians(15);
+
+						Vector2 perturbedSpeed1 = new Vector2(velocity1.X, velocity1.Y).RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f * (i + 1); // Watch out for dividing by 0 if there is only 1 projectile.
+
+						Vector2 perturbedSpeed2 = new Vector2(velocity2.X, velocity2.Y).RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f * (i + 1); // Watch out for dividing by 0 if there is only 1 projectile.
+
+						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition1.X, StartPosition1.Y, perturbedSpeed1.X, perturbedSpeed1.Y, type, damage, 0, Main.myPlayer);
+						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition2.X, StartPosition2.Y, perturbedSpeed2.X, perturbedSpeed2.Y, type, damage, 0, Main.myPlayer);
+
+
+						Vector2 positionNew = Vector2.Lerp(new Vector2(target.Center.X - 600, target.Center.Y - 500), new Vector2(target.Center.X + 600, target.Center.Y - 500), (float)i / 10);
+
+						//SoundEngine.PlaySound(SoundID.Item29, positionNew);
+
+
+
+
+					}
+
+				}
+
+
+				#endregion
+
+
+				//After the attack ends, we do some cleanup.
+				ResetAttack(target, npc);
+
+				npc.ai[0] = (float)ActionState.Idle;//If the attack continues, change ActionState to PersistentCast instead
+				modPlayer.NextAttack = "";//Empty the UI text.
+				npc.localAI[3] = 0;//Reset the cast.
+				npc.ai[1] = 50;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
+				npc.ai[2] += 1;//Increment the rotation counter.
+				npc.netUpdate = true;//NetUpdate for good measure.
+
+				return;
+			}
+		}
 		public static void ResetAttack(Player target, NPC npc)
         {
 			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();

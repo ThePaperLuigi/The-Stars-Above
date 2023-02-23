@@ -222,9 +222,16 @@ namespace StarsAbove.NPCs.Nalhaun
 				if (AI_RotationNumber == 0)
 				{
 					//
-					ManifestBlade(P, NPC);
+					IvoryStake1(P, NPC);
 					return;
 				}
+				if (AI_RotationNumber == 1)
+				{
+					//
+					IvoryStake2(P, NPC);
+					return;
+				}
+				/*
 				else if (AI_RotationNumber == 1)
 				{
 					Bladework1(P, NPC);
@@ -275,7 +282,7 @@ namespace StarsAbove.NPCs.Nalhaun
 				{
 					RelinquishBlade(P, NPC);
 					return;
-				}
+				}*/
 				else
                 {
 					AI_RotationNumber = 0;
@@ -305,7 +312,7 @@ namespace StarsAbove.NPCs.Nalhaun
 				if (other.active && (other.type == ModContent.ProjectileType<NalhaunSwordSprite>()
 					|| other.type == ModContent.ProjectileType<NalhaunSwordAttackSprite>()
 					|| other.type == ModContent.ProjectileType<NalhaunLoseSwordSprite>()
-					|| other.type == ModContent.ProjectileType<VagrantSlamSprite>()
+					|| other.type == ModContent.ProjectileType<NalhaunCastSprite>()
 					|| other.type == ModContent.ProjectileType<VagrantSwordSprite>()
 					&& other.alpha < 1))
 					

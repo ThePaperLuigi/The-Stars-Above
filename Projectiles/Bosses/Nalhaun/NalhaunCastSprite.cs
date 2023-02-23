@@ -9,11 +9,11 @@ using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles.Bosses.Nalhaun
 {
-    public class NalhaunSwordSprite : ModProjectile
+    public class NalhaunCastSprite : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Nalhaun, the Burnished King");
-			Main.projFrames[Projectile.type] = 10;
+			//Main.projFrames[Projectile.type] = 10;
 		}
 
 		public override void SetDefaults() {
@@ -25,9 +25,7 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 			Projectile.alpha = 0;
 			Projectile.damage = 0;
 			Projectile.hide = false;
-			Projectile.ownerHitCheck = true;
 			Projectile.tileCollide = false;
-			Projectile.friendly = true;
 			
 		}
 		int timer;
@@ -36,31 +34,29 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 		public override void AI() {
 			DrawOriginOffsetY = 26;
 			DrawOffsetX = 0;
-			
-			if (++Projectile.frameCounter >= 8)
+
+			for (int d = 0; d < 2; d++)
 			{
-				Projectile.frameCounter = 0;
-				if (++Projectile.frame >= 9)
-				{
-
-					Projectile.frame = 9;
-
-				}
-
+				Dust.NewDust(new Vector2(Projectile.Center.X + 70, Projectile.Center.Y - 15), 0, 0, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(-3, 3), 0f + Main.rand.Next(-3, 3), 150, default(Color), 0.8f);
 			}
-			if(Projectile.frame >= 5)
-            {
-				for (int d = 0; d < 2; d++)
-				{
-					Dust.NewDust(new Vector2(Projectile.Center.X, Projectile.Center.Y + 15), 0, 0, DustID.FireworkFountain_Red, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-1, 1), 150, default(Color), 1.5f);
-				}
-			}
-			if (Projectile.frame == 9)
+			for (int i = 0; i < 2; i++)
 			{
-				timer++;
-				
+				// Charging dust
+				Vector2 vector = new Vector2(
+					Main.rand.Next(-2048, 2048) * (0.003f * 100) + 175,
+					Main.rand.Next(-2048, 2048) * (0.003f * 100) - 175);
+				Dust d = Main.dust[Dust.NewDust(
+					Projectile.Center + vector, 1, 1,
+					DustID.Firework_Blue, 0, 0, 155,
+					new Color(1f, 1f, 1f), 0.7f)];
+				d.velocity = -vector / 16;
+				d.velocity -= Projectile.velocity / 8;
+				d.noLight = true;
+				d.noGravity = true;
 			}
-			if (timer >= 20)
+
+			timer++;
+			if (timer >= Projectile.ai[0])
 			{
 				Projectile.alpha += 1;
 			}
