@@ -7,6 +7,7 @@ using StarsAbove.Projectiles;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Items.Essences;
 using Terraria.Audio;
+using StarsAbove.Projectiles.KissOfDeath;
 
 namespace StarsAbove.Items
 {
@@ -16,16 +17,16 @@ namespace StarsAbove.Items
 		{
 			DisplayName.SetDefault("The Kiss of Death");
 			Tooltip.SetDefault("Right click to cycle between [c/CE4A3F:Skyfish], [c/3FCCCE:Thunderbird], and [c/CE3FAD:Behemoth Typhoon] with a 2 second cooldown" +
-				"\n[c/CE4A3F:Skyfish] fires a powerful minigun, dealing bonus damage to Debilitated foes" +
-                "\nEach bullet will consume 1 mana" +
+				"\n[c/CE4A3F:Skyfish] fires a powerful minigun, rapidly firing bullets that pierce once" +
+                "\nEach bullet will consume 1 mana (This mana cost can not be negated by any means)" +
                 "\nBullets will apply [Security Level], marking the target" +
 				"\n[c/3FCCCE:Thunderbird] allows for the deployment of seeking bombs, dealing damage in an area around the target" +
                 "\nExplosions will restore 5 mana on impact and additionally apply [Security Level], marking the target" +
-				"\n[c/CE3FAD:Behemoth Typhoon] slowly swings a massive coffin, dealing 50% increased damage and Debilitates foes for 6 seconds, reducing attack and defense by 20%" +
-				"\nAttacks on foes with [Security Level] cleanses the debuff and additionally and charges the [Overdrive Gauge]" +
-				"\nWhile the [c/CE3FAD:Behemoth Typhoon] is equipped, holding left-click will charge a powerful attack, consuming the [Overdrive Gauge]" +
-                "\nReleasing left-click unleashes a powerful uppercut, increasing in power with the amount of [Overdrive Gauge] consumed" +
-                "\nIf over half of the [Overdrive Gauge] is consumed, the attack becomes a critical strike" +
+				"\n[c/CE3FAD:Behemoth Typhoon] swings a massive coffin, dealing 3x damage when released" +
+				"\nAttacks on foes with [Security Level] using [c/CE3FAD:Behemoth Typhoon]'s released attack cleanses the debuff, charging the [Overdrive Gauge]" +
+				"\nWhile the [c/CE3FAD:Behemoth Typhoon] is equipped, holding the Weapon Action Key will charge a powerful attack, consuming the [Overdrive Gauge]" +
+                "\nReleasing the Weapon Action Key unleashes a powerful uppercut, increasing in power with the amount of [Overdrive Gauge] consumed" +
+                "\nIf over half of the [Overdrive Gauge] is consumed, the attack is guaranteed to be a critical strike" +
                 "\n'It's not a big deal'" +
 				$"");
 
@@ -35,7 +36,7 @@ namespace StarsAbove.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 66;          
+			Item.damage = 88;          
 			Item.DamageType = DamageClass.Ranged;          
 			Item.width = 108;          
 			Item.height = 118;         
@@ -44,8 +45,9 @@ namespace StarsAbove.Items
 			Item.useStyle = 1;         
 			Item.knockBack = 5;        
 			Item.value = Item.buyPrice(gold: 1);          
-			Item.rare = ItemRarityID.Orange;             
-														 
+			Item.rare = ItemRarityID.Orange;
+			Item.noMelee = true;
+			Item.noUseGraphic = true;
 			Item.scale = 2f;
 			Item.autoReuse = true;
 			Item.shoot = ProjectileType<TruesilverSlash>();
@@ -56,6 +58,10 @@ namespace StarsAbove.Items
 		int swapCooldown;
 		public override bool CanUseItem(Player player)
 		{
+			if(mode == 0 && player.statMana <= 0 && player.altFunctionUse != 2)
+            {
+				return false;
+            }
 			if (player.altFunctionUse == 2 )//Did the player right click?
 			{
 				
@@ -117,33 +123,34 @@ namespace StarsAbove.Items
 			swapCooldown--;
 			if(mode == 0)
             {
-				Item.useStyle = 1;
-				Item.shootSpeed = 10f;
-				Item.useTime = 20;
-				Item.useAnimation = 20;
-				Item.noMelee = false;
-				Item.noUseGraphic = false;
+				Item.useStyle = ItemUseStyleID.Swing;
+				
+				Item.shootSpeed = 18f;
+				Item.useTime = 5;
+				Item.useAnimation = 5;
 				Item.autoReuse = true;
+				Item.channel = false;
 			}
 			if (mode == 1)
 			{
-				Item.useStyle = 1;
-				Item.shootSpeed = 8f;
-				Item.useTime = 85;
-				Item.useAnimation = 85;
-				Item.noMelee = true;
-				Item.noUseGraphic = true;
+				//
+				Item.useStyle = ItemUseStyleID.HiddenAnimation;
+				Item.shootSpeed = 10f;
+				Item.useTime = 20;
+				Item.useAnimation = 20;
+
 				Item.autoReuse = true;
+				Item.channel = false;
 			}
 			if (mode == 2)
 			{
-				Item.useStyle = 5;
+				Item.useStyle = ItemUseStyleID.Shoot;
 				Item.shootSpeed = 9f;
-				Item.useTime = 30;
-				Item.useAnimation = 30;
-				Item.noMelee = true;
-				Item.noUseGraphic = true;
+				Item.useTime = 14;
+				Item.useAnimation = 14;
+				
 				Item.autoReuse = true;
+				Item.channel = true;
 			}
 
 			base.HoldItem(player);
@@ -160,52 +167,59 @@ namespace StarsAbove.Items
 			}
 			else
             {
+				
+				if (mode == 0)
+				{
+					if(player.statMana >= 1)
+                    {
+						player.statMana--;
+						player.manaRegenDelay = 240;
+						Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 120f;
+						if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+						{
+							position += muzzleOffset;
+						}
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, velocity.X, velocity.Y, ProjectileType<KissOfDeathMinigun>(), 0, knockback, player.whoAmI);
+						int numberProjectiles = 1; //random shots
+						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(2)); // 30 degree spread.
+
+						float scale = 1f - (Main.rand.NextFloat() * .3f);
+						perturbedSpeed = perturbedSpeed * scale;
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, ProjectileType<MiseryRound>(), damage / 2, knockback, player.whoAmI);
+						
+						for (int d = 0; d < 21; d++)
+						{
+							Vector2 perturbedSpeedA = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(47));
+							float scaleA = 2f - (Main.rand.NextFloat() * .9f);
+							perturbedSpeedA = perturbedSpeedA * scaleA;
+							int dustIndex = Dust.NewDust(position, 0, 0, 127, perturbedSpeedA.X, perturbedSpeedA.Y, 150, default(Color), 2f);
+							Main.dust[dustIndex].noGravity = true;
+
+						}
+						for (int d = 0; d < 16; d++)
+						{
+							Vector2 perturbedSpeedB = new Vector2(velocity.X / 2, velocity.Y / 2).RotatedByRandom(MathHelper.ToRadians(47));
+							float scaleB = 2f - (Main.rand.NextFloat() * .9f);
+							perturbedSpeedB = perturbedSpeedB * scaleB;
+							int dustIndex = Dust.NewDust(position, 0, 0, 31, perturbedSpeedB.X, perturbedSpeedB.Y, 150, default(Color), 1f);
+							Main.dust[dustIndex].noGravity = true;
+						}
+						SoundEngine.PlaySound(SoundID.Item11, player.position);
+					}
+					
+				}
 				if (mode == 1)
 				{
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, velocity.X, velocity.Y,ProjectileType<MiseryScythe>(), damage, knockback, player.whoAmI);
 					SoundEngine.PlaySound(SoundID.Item1, player.position);
 				}
 				if (mode == 2)
 				{
-					Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 25f;
-					if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
-					{
-						position += muzzleOffset;
-					}
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, velocity.X, velocity.Y,ProjectileType<MiseryShotgun>(), 0, knockback, player.whoAmI);
-					int numberProjectiles = 3 + Main.rand.Next(4); //random shots
-					for (int i = 0; i < numberProjectiles; i++)
-					{
-						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(15)); // 30 degree spread.
-																														
-																														float scale = 1f - (Main.rand.NextFloat() * .3f);
-																														perturbedSpeed = perturbedSpeed * scale; 
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, ProjectileType<MiseryRound>(), damage/2, knockback, player.whoAmI);
-					}
-					for (int d = 0; d < 21; d++)
-					{
-						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(47));
-						float scale = 2f - (Main.rand.NextFloat() * .9f);
-						perturbedSpeed = perturbedSpeed * scale;
-						int dustIndex = Dust.NewDust(position, 0, 0, 127, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 2f);
-						Main.dust[dustIndex].noGravity = true;
-
-					}
-					for (int d = 0; d < 16; d++)
-					{
-						Vector2 perturbedSpeed = new Vector2(velocity.X / 2, velocity.Y / 2).RotatedByRandom(MathHelper.ToRadians(47));
-						float scale = 2f - (Main.rand.NextFloat() * .9f);
-						perturbedSpeed = perturbedSpeed * scale;
-						int dustIndex = Dust.NewDust(position, 0, 0, 31, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 1f);
-						Main.dust[dustIndex].noGravity = true;
-					}
-					SoundEngine.PlaySound(SoundID.Item11, player.position);
+					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, velocity.X, velocity.Y,ProjectileType<KissOfDeathCoffin>(), damage, knockback, player.whoAmI);
+					SoundEngine.PlaySound(SoundID.Item1, player.position);
 				}
+				
 			}
-			if(mode == 0)
-            {
-				SoundEngine.PlaySound(SoundID.Item1, player.position);
-			}
+			
 			
 			return false;
 		}
