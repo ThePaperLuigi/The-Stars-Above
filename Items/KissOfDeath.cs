@@ -281,8 +281,14 @@ namespace StarsAbove.Items
 		public override void AddRecipes()
 		{
 			CreateRecipe(1)
-				.AddIngredient(ItemType<EssenceOfMisery>())
-				.AddIngredient(ItemID.Diamond, 3)
+				.AddIngredient(ItemType<EssenceOfTheBehemothTyphoon>())
+				.AddIngredient(ItemID.MartianChest, 1)
+				.AddIngredient(ItemID.FallenStar, 3)
+				.AddIngredient(ItemID.HallowedBar, 8)
+				.AddIngredient(ItemID.MeteoriteBar, 5)
+				.AddIngredient(ItemID.Megashark, 1)
+				.AddIngredient(ItemID.Grenade, 12)
+
 				.AddTile(TileID.Anvils)
 				.Register();
 		}

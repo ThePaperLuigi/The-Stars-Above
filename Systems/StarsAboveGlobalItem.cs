@@ -184,6 +184,7 @@ namespace StarsAbove
 			ModContent.ItemType<SaltwaterScourge>(),
 			ModContent.ItemType<AdornmentOfTheChaoticGod>(),
 			ModContent.ItemType<Chronoclock>(),
+			ModContent.ItemType<KissOfDeath>(),
 
 			ModContent.ItemType<EssenceOfAdagium>(),
 			ModContent.ItemType<EssenceOfBloodshed>(),
@@ -226,6 +227,7 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfTheTimeless>(),
 			ModContent.ItemType<EssenceOfPiracy>(),
 			ModContent.ItemType<EssenceOfAbsoluteChaos>(),
+						ModContent.ItemType<EssenceOfTheBehemothTyphoon>(),
 
 		};
 
@@ -405,6 +407,7 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfTheTimeless>(),
 			ModContent.ItemType<EssenceOfPiracy>(),
 			ModContent.ItemType<EssenceOfAbsoluteChaos>(),
+			ModContent.ItemType<EssenceOfTheBehemothTyphoon>(),
 
 
 		};
