@@ -124,7 +124,7 @@ namespace StarsAbove.Items
 			swapCooldown--;
 			if(mode == 0)
             {
-				Item.useStyle = ItemUseStyleID.Swing;
+
 				Item.useStyle = ItemUseStyleID.HiddenAnimation;
 
 				Item.shootSpeed = 18f;
@@ -140,7 +140,7 @@ namespace StarsAbove.Items
 				Item.shootSpeed = 10f;
 				Item.useTime = 30;
 				Item.useAnimation = 30;
-
+				Item.channel = false;
 				Item.autoReuse = true;
 			}
 			if (mode == 2)
@@ -152,6 +152,7 @@ namespace StarsAbove.Items
 				Item.noMelee = true;
 				Item.noUseGraphic = true;
 				Item.autoReuse = true;
+				Item.channel = true;
 			}
 
 			
