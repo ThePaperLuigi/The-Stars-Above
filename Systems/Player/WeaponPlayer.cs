@@ -107,7 +107,9 @@ namespace StarsAbove
         public bool naganadelWeapon5Summoned;
         public Vector2 naganadelWeaponPosition;
 
-        
+        //The Kiss of Death
+        public bool KissOfDeathHeld;
+        public int overdriveGauge;
 
         //Yunlai Stilletto
         public bool yunlaiTeleport;
@@ -3483,7 +3485,7 @@ namespace StarsAbove
 
             SaltwaterScourgeHeld = false;
 
-           
+            KissOfDeathHeld = false;
             BurningDesireHeld = false;
             GoldenKatanaHeld = false;
             IrminsulHeld = false;
