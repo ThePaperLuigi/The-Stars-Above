@@ -266,45 +266,13 @@ namespace StarsAbove.Items
 				}
 				if (mode == 2)
 				{
-					Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 25f;
-					if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
-					{
-						position += muzzleOffset;
-					}
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, velocity.X, velocity.Y,ProjectileType<MiseryShotgun>(), 0, knockback, player.whoAmI);
-					int numberProjectiles = 3 + Main.rand.Next(4); //random shots
-					for (int i = 0; i < numberProjectiles; i++)
-					{
-						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(15)); // 30 degree spread.
-																														
-																														float scale = 1f - (Main.rand.NextFloat() * .3f);
-																														perturbedSpeed = perturbedSpeed * scale; 
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, ProjectileType<MiseryRound>(), damage/2, knockback, player.whoAmI);
-					}
-					for (int d = 0; d < 21; d++)
-					{
-						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(47));
-						float scale = 2f - (Main.rand.NextFloat() * .9f);
-						perturbedSpeed = perturbedSpeed * scale;
-						int dustIndex = Dust.NewDust(position, 0, 0, 127, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 2f);
-						Main.dust[dustIndex].noGravity = true;
+					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, velocity.X, velocity.Y, ProjectileType<KissOfDeathCoffin>(), damage, knockback, player.whoAmI);
 
-					}
-					for (int d = 0; d < 16; d++)
-					{
-						Vector2 perturbedSpeed = new Vector2(velocity.X / 2, velocity.Y / 2).RotatedByRandom(MathHelper.ToRadians(47));
-						float scale = 2f - (Main.rand.NextFloat() * .9f);
-						perturbedSpeed = perturbedSpeed * scale;
-						int dustIndex = Dust.NewDust(position, 0, 0, 31, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 1f);
-						Main.dust[dustIndex].noGravity = true;
-					}
-					SoundEngine.PlaySound(SoundID.Item11, player.position);
+					SoundEngine.PlaySound(SoundID.Item1, player.position);
+					
 				}
 			}
-			if(mode == 0)
-            {
-				SoundEngine.PlaySound(SoundID.Item1, player.position);
-			}
+			
 			
 			return false;
 		}
