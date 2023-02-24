@@ -6454,7 +6454,7 @@ namespace StarsAbove
                 starfarerPromptActive("onWarriorOfLight");
                 seenUnknownBossTimer = 300;
             }
-            if (NPC.AnyNPCs(ModContent.NPCType<NPCs.VagrantOfSpaceAndTime>()) && !seenVagrant)
+            if (NPC.AnyNPCs(ModContent.NPCType<NPCs.Vagrant.VagrantBoss>()) && !seenVagrant)
             {
                 if (starfarerPromptCooldown > 0)
                 {
