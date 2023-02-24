@@ -55,7 +55,7 @@ namespace StarsAbove.Items.Consumables
 				Vector2 position = player.GetModPlayer<WeaponPlayer>().lumaPosition;
 
 				float Speed = 28f;  //projectile speed
-
+				float AdjustedSpeed = 40f;
 				Vector2 vector8 = player.Center;
 				float rotation = (float)Math.Atan2(vector8.Y - (Main.MouseWorld.Y), vector8.X - (Main.MouseWorld.X));
 				for (int d = 0; d < 25; d++)
@@ -73,7 +73,7 @@ namespace StarsAbove.Items.Consumables
 					Main.dust[dustIndex].noGravity = true;
 				}//Dust
 
-				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, 60, 0, player.whoAmI);
+				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, player.GetWeaponDamage(player.HeldItem), 0, player.whoAmI);
 
 
 				Main.projectile[index].originalDamage = 60;
