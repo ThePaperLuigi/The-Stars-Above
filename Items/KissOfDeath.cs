@@ -7,11 +7,8 @@ using StarsAbove.Projectiles;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Items.Essences;
 using Terraria.Audio;
-<<<<<<< Updated upstream
-=======
 using StarsAbove.Projectiles.KissOfDeath;
 using StarsAbove.Utilities;
->>>>>>> Stashed changes
 
 namespace StarsAbove.Items
 {
@@ -20,19 +17,6 @@ namespace StarsAbove.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("The Kiss of Death");
-<<<<<<< Updated upstream
-			Tooltip.SetDefault("Right click to cycle between [c/CE4A3F:Skyfish], [c/3FCCCE:Thunderbird], and [c/CE3FAD:Behemoth Typhoon] with a 2 second cooldown" +
-				"\n[c/CE4A3F:Skyfish] fires a powerful minigun, dealing bonus damage to Debilitated foes" +
-                "\nEach bullet will consume 1 mana" +
-                "\nBullets will apply [Security Level], marking the target" +
-				"\n[c/3FCCCE:Thunderbird] allows for the deployment of seeking bombs, dealing damage in an area around the target" +
-                "\nExplosions will restore 5 mana on impact and additionally apply [Security Level], marking the target" +
-				"\n[c/CE3FAD:Behemoth Typhoon] slowly swings a massive coffin, dealing 50% increased damage and Debilitates foes for 6 seconds, reducing attack and defense by 20%" +
-				"\nAttacks on foes with [Security Level] cleanses the debuff and additionally and charges the [Overdrive Gauge]" +
-				"\nWhile the [c/CE3FAD:Behemoth Typhoon] is equipped, holding left-click will charge a powerful attack, consuming the [Overdrive Gauge]" +
-                "\nReleasing left-click unleashes a powerful uppercut, increasing in power with the amount of [Overdrive Gauge] consumed" +
-                "\nIf over half of the [Overdrive Gauge] is consumed, the attack becomes a critical strike" +
-=======
 			Tooltip.SetDefault("Right click to cycle between [c/F54F0C:Skyfish], [c/CF3C32:Thunderbird], and [c/CF1826:Behemoth Typhoon] with a short cooldown" +
 				"\n[c/F54F0C:Skyfish] unleashes a powerful minigun, rapidly firing piercing bullets that deal 20% increased damage to foes above 50% HP" +
                 "\nEach bullet will consume 2 mana (This mana cost can not be negated by any means)" +
@@ -44,7 +28,6 @@ namespace StarsAbove.Items
 				"\nHolding the Weapon Action Key will charge a powerful attack, consuming the [c/EB936A:Overdrive Gauge]" +
 				"\nReleasing the Weapon Action Key executes a powerful close-ranged strike, increasing in power with the amount of [c/EB936A:Overdrive Gauge] consumed" +
 				"\nIf over half of the [c/EB936A:Overdrive Gauge] is consumed, the attack is guaranteed to be a critical strike" +
->>>>>>> Stashed changes
                 "\n'It's not a big deal'" +
 				$"");
 
@@ -63,14 +46,9 @@ namespace StarsAbove.Items
 			Item.useStyle = 1;         
 			Item.knockBack = 5;        
 			Item.value = Item.buyPrice(gold: 1);          
-<<<<<<< Updated upstream
-			Item.rare = ItemRarityID.Orange;             
-														 
-=======
 			Item.rare = ItemRarityID.Yellow;
 			Item.noMelee = true;
 			Item.noUseGraphic = true;
->>>>>>> Stashed changes
 			Item.scale = 2f;
 			Item.autoReuse = true;
 			Item.shoot = ProjectileType<TruesilverSlash>();
@@ -146,24 +124,6 @@ namespace StarsAbove.Items
 			swapCooldown--;
 			if(mode == 0)
             {
-<<<<<<< Updated upstream
-				Item.useStyle = 1;
-				Item.shootSpeed = 10f;
-				Item.useTime = 20;
-				Item.useAnimation = 20;
-				Item.noMelee = false;
-				Item.noUseGraphic = false;
-				Item.autoReuse = true;
-			}
-			if (mode == 1)
-			{
-				Item.useStyle = 1;
-				Item.shootSpeed = 8f;
-				Item.useTime = 85;
-				Item.useAnimation = 85;
-				Item.noMelee = true;
-				Item.noUseGraphic = true;
-=======
 				Item.useStyle = ItemUseStyleID.Swing;
 				Item.useStyle = ItemUseStyleID.HiddenAnimation;
 
@@ -181,7 +141,6 @@ namespace StarsAbove.Items
 				Item.useTime = 30;
 				Item.useAnimation = 30;
 
->>>>>>> Stashed changes
 				Item.autoReuse = true;
 			}
 			if (mode == 2)
@@ -258,11 +217,6 @@ namespace StarsAbove.Items
 			}
 			else
             {
-<<<<<<< Updated upstream
-				if (mode == 1)
-				{
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, velocity.X, velocity.Y,ProjectileType<MiseryScythe>(), damage, knockback, player.whoAmI);
-=======
 				
 				if (mode == 0)
 				{
@@ -308,7 +262,6 @@ namespace StarsAbove.Items
 				{
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, velocity.X, velocity.Y, ProjectileType<KissOfDeathBomb>(), damage, knockback, player.whoAmI);
 
->>>>>>> Stashed changes
 					SoundEngine.PlaySound(SoundID.Item1, player.position);
 				}
 				if (mode == 2)
