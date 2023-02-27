@@ -37,23 +37,35 @@ internal static class LangHelper
 	{
 		const int MaxNewLine = 8;
 
-		// Just try 2.2f and found it fits
+		// Just try 2.275f and found it fits
 		limit = (GameCulture.CultureName)Language.ActiveCulture.LegacyId switch
 		{
-			GameCulture.CultureName.Chinese => (int)(limit / 2.2f),
+			GameCulture.CultureName.Chinese => (int)(limit / 2.275f),
 			_ => limit,
 		};
-		text = text.TrimStart();
+		text = text.Trim();
 		int start = 0;
 		StringBuilder stringBuilder = new StringBuilder(text.Length + MaxNewLine);
 		while (limit + start < text.Length)
 		{
-			// Maybe English dont lack of ' ' and Chinese dont contains ' '
-			int index = Math.Min(limit + start, text.Slice(start, limit).LastIndexOf(' ') & 0x7FFFFFFF);
-
-			// AppendLine dont support ReadOnlySpan???
-			stringBuilder.Append(text[start..index]).AppendLine();
-			start = index + 1;
+			var line = text.Slice(start, limit);
+			int length = line.Length, skip = 0;
+			for (int i = 0; i < line.Length; i++)
+			{
+				if (line[i] == '\n')
+				{
+					length = i;
+					skip = 1;
+					break;
+				}
+				else if (char.IsWhiteSpace(line[i]))
+				{
+					length = i;
+					skip = 1;
+				}
+			}
+			stringBuilder.Append(line[..length]).AppendLine();
+			start += length + skip;
 		}
 		stringBuilder.Append(text[start..]);
 
