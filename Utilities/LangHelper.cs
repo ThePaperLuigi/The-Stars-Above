@@ -46,7 +46,7 @@ internal static class LangHelper
 		text = text.TrimStart();
 		int start = 0;
 		StringBuilder stringBuilder = new StringBuilder(text.Length + MaxNewLine);
-		while (limit + start <= text.Length)
+		while (limit + start < text.Length)
 		{
 			// Maybe English dont lack of ' ' and Chinese dont contains ' '
 			int index = Math.Min(limit + start, text.Slice(start, limit).LastIndexOf(' ') & 0x7FFFFFFF);
