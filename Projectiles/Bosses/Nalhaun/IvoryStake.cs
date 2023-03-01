@@ -15,7 +15,7 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 		}
 
 		public override void SetDefaults() {
-			Projectile.width = 200;               //The width of projectile hitbox
+			Projectile.width = 32;               //The width of projectile hitbox
 			Projectile.height = 32;              //The height of projectile hitbox
 			Projectile.aiStyle = 1;             //The ai style of the projectile, please reference the source code of Terraria
 			Projectile.friendly = false;         //Can the projectile deal damage to enemies?
@@ -38,6 +38,7 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 		float randomRotate;
         public override void AI()
         {
+			DrawOffsetX = -90;
 			if(firstSpawn)
             {
 				Projectile.frame = Main.rand.Next(0, 6);

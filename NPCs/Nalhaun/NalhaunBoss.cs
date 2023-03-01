@@ -17,6 +17,8 @@ using static Terraria.ModLoader.ModContent;
 
 using static StarsAbove.NPCs.AttackLibrary.AttackLibrary;
 using StarsAbove.Buffs.Boss;
+using Terraria.GameContent;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace StarsAbove.NPCs.Nalhaun
 {
@@ -24,9 +26,16 @@ namespace StarsAbove.NPCs.Nalhaun
 
 	public class NalhaunBoss : ModNPC
 	{
-		public static readonly int arenaWidth = (int)(1.2f * 960);
+
+		private int portalFrame
+		{
+			get => (int)NPC.localAI[0];
+			set => NPC.localAI[0] = value;
+		}
+		public static readonly int arenaWidth = (int)(1.2f * 1000);
 		public static readonly int arenaHeight = (int)(1.2f * 600);
 
+		
 
 
 		// Our texture is 36x36 with 2 pixels of padding vertically, so 38 is the vertical spacing.
@@ -158,77 +167,110 @@ namespace StarsAbove.NPCs.Nalhaun
 		}
 
 		public override void AI()
-		{
+        {
+			if (!Main.dedServ)
+			{
+				portalFrame++;
+				portalFrame %= 6 * Main.projFrames[ProjectileID.PortalGunGate];
+			}
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
-			var bossPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
+            var bossPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
-			bossPlayer.NalhaunBarActive = true;
-			NPC.velocity *= 0.98f; //So the dashes don't propel the boss away
+            bossPlayer.NalhaunBarActive = true;
+            NPC.velocity *= 0.98f; //So the dashes don't propel the boss away
 
-			Player P = Main.player[NPC.target];//THIS IS THE BOSS'S MAIN TARGET
-			if (NPC.target < 0 || NPC.target == 255 || Main.player[NPC.target].dead || !Main.player[NPC.target].active)
-			{
-				NPC.TargetClosest(true);
-			}
-			if (Main.player[NPC.target].dead)
-			{
-				//Leave if all players are dead.
-				Vector2 vector8 = new Vector2(NPC.Center.X, NPC.Center.Y);
-				for (int d = 0; d < 100; d++)
-				{
-					Dust.NewDust(vector8, 0, 0, 269, 0f + Main.rand.Next(-40, 40), 0f + Main.rand.Next(-40, 40), 150, default(Color), 1.5f);
-				}
-				for (int d = 0; d < 65; d++)
-				{
-					Dust.NewDust(vector8, 0, 0, 21, 0f + Main.rand.Next(-45, 45), 0f + Main.rand.Next(-45, 45), 150, default(Color), 1.5f);
-				}
-				for (int d = 0; d < 35; d++)
-				{
-					Dust.NewDust(vector8, 0, 0, 50, 0f + Main.rand.Next(-45, 45), 0f + Main.rand.Next(-45, 45), 150, default(Color), 1.5f);
-				}
-				for (int d = 0; d < 35; d++)
-				{
-					Dust.NewDust(vector8, 0, 0, 55, 0f + Main.rand.Next(-45, 45), 0f + Main.rand.Next(-45, 45), 150, default(Color), 1.5f);
-				}
-				NPC.active = false;
-				
-				
-			}
-			if (NPC.ai[0] == (float)ActionState.Dying)
-			{
-				DeathAnimation();//The boss is in its dying animation. No other AI code will run.
-				
-				return;
-			}
-			switch (AI_State)
-			{
-				case (float)ActionState.Spawning:
-					SpawnAnimation();
-					break;
-				case (float)ActionState.PersistentCast:
-					PersistentCast();
-					break;
-				case (float)ActionState.Casting:
-					Casting();
-					break;
-				case (float)ActionState.Idle:
-					Idle();
-					break;
-			}
-			if (AI_Timer >= 120) //An attack is active.
-			{
-				
-				//Attacks begin here.
-				if (AI_RotationNumber == 0)
-				{
-					//
-					IvoryStake1(P, NPC);
-					return;
-				}
+            Player P = Main.player[NPC.target];//THIS IS THE BOSS'S MAIN TARGET
+            FindTargetPlayer();
+            IfAllPlayersAreDead();
+            if (NPC.ai[0] == (float)ActionState.Dying)
+            {
+                DeathAnimation();//The boss is in its dying animation. No other AI code will run.
+
+                return;
+            }
+            switch (AI_State)
+            {
+                case (float)ActionState.Spawning:
+                    SpawnAnimation();
+                    break;
+                case (float)ActionState.PersistentCast:
+                    PersistentCast();
+                    break;
+                case (float)ActionState.Casting:
+                    Casting();
+                    break;
+                case (float)ActionState.Idle:
+                    Idle();
+                    break;
+            }
+            if (AI_Timer >= 120) //An attack is active.
+            {
+
+                //Attacks begin here.
+                if (AI_RotationNumber == 0)
+                {
+                    //
+                    RightwardRend(P, NPC);
+                    return;
+                }
 				if (AI_RotationNumber == 1)
 				{
 					//
-					IvoryStake2(P, NPC);
+					InnerAgony(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 2)
+				{
+					//
+					OuterAgony(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 3)
+				{
+					//
+					MonarchFeint(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 4)
+				{
+					//
+					FakeRightwardRend(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 5)
+				{
+					//
+					DelayedInnerAgony(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 6)
+				{
+					//
+					LeftwardRend(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 7)
+				{
+					//
+					DelayedRightwardRend(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 8)
+				{
+					//
+					OuterAgony(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 9)
+				{
+					//
+					MonarchFeint(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 10)
+				{
+					//
+					FakeOuterAgony(P, NPC);
 					return;
 				}
 				/*
@@ -285,21 +327,59 @@ namespace StarsAbove.NPCs.Nalhaun
 				}*/
 				else
                 {
-					AI_RotationNumber = 0;
-					return;
-				}
-				
+                    AI_RotationNumber = 0;
+                    return;
+                }
 
-			}
+
+            }
 			//if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI) { Main.NewText(Language.GetTextValue($"Rotation Number {AI_RotationNumber}"), 220, 100, 247); }
 			//if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI) { Main.NewText(Language.GetTextValue($"Timer {AI_Timer}"), 220, 100, 247); }
 			//if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI) { Main.NewText(Language.GetTextValue($"State {AI_State}"), 220, 100, 247); }
 			
+			//Animate the border.
+			
 		}
 
-		// Here in FindFrame, we want to set the animation frame our npc will use depending on what it is doing.
-		// We set npc.frame.Y to x * frameHeight where x is the xth frame in our spritesheet, counting from 0. For convenience, we have defined a enum above.
-		public override void FindFrame(int frameHeight)
+        private void FindTargetPlayer()
+        {
+            if (NPC.target < 0 || NPC.target == 255 || Main.player[NPC.target].dead || !Main.player[NPC.target].active)
+            {
+                NPC.TargetClosest(true);
+            }
+        }
+
+        private void IfAllPlayersAreDead()
+        {
+            if (Main.player[NPC.target].dead)
+            {
+                //Leave if all players are dead.
+                Vector2 vector8 = new Vector2(NPC.Center.X, NPC.Center.Y);
+                for (int d = 0; d < 100; d++)
+                {
+                    Dust.NewDust(vector8, 0, 0, 269, 0f + Main.rand.Next(-40, 40), 0f + Main.rand.Next(-40, 40), 150, default(Color), 1.5f);
+                }
+                for (int d = 0; d < 65; d++)
+                {
+                    Dust.NewDust(vector8, 0, 0, 21, 0f + Main.rand.Next(-45, 45), 0f + Main.rand.Next(-45, 45), 150, default(Color), 1.5f);
+                }
+                for (int d = 0; d < 35; d++)
+                {
+                    Dust.NewDust(vector8, 0, 0, 50, 0f + Main.rand.Next(-45, 45), 0f + Main.rand.Next(-45, 45), 150, default(Color), 1.5f);
+                }
+                for (int d = 0; d < 35; d++)
+                {
+                    Dust.NewDust(vector8, 0, 0, 55, 0f + Main.rand.Next(-45, 45), 0f + Main.rand.Next(-45, 45), 150, default(Color), 1.5f);
+                }
+                NPC.active = false;
+
+
+            }
+        }
+
+        // Here in FindFrame, we want to set the animation frame our npc will use depending on what it is doing.
+        // We set npc.frame.Y to x * frameHeight where x is the xth frame in our spritesheet, counting from 0. For convenience, we have defined a enum above.
+        public override void FindFrame(int frameHeight)
 		{
 			// This makes the sprite flip horizontally in conjunction with the npc.direction.
 			//NPC.spriteDirection = NPC.direction;
@@ -623,6 +703,33 @@ namespace StarsAbove.NPCs.Nalhaun
 			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
 		}
-
+		//Draw the portal
+		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+		{
+			int portalWidth = 48;
+			int portalDepth = 18;
+			Color color = new Color(181, 43, 43);
+			int centerX = (int)NPC.Center.X;
+			int centerY = (int)NPC.Center.Y;
+			Main.instance.LoadProjectile(ProjectileID.PortalGunGate);
+			for (int x = centerX - arenaWidth / 2; x < centerX + arenaWidth / 2; x += portalWidth)
+			{
+				int frameNum = (portalFrame / 6 + x / portalWidth) % Main.projFrames[ProjectileID.PortalGunGate];
+				Rectangle frame = new Rectangle(0, frameNum * (portalWidth + 2), portalDepth, portalWidth);
+				Vector2 drawPos = new Vector2(x + portalWidth / 2, centerY - arenaHeight / 2) - Main.screenPosition;
+				spriteBatch.Draw((Texture2D)TextureAssets.Projectile[ProjectileID.PortalGunGate], drawPos, frame, color, (float)-Math.PI / 2f, new Vector2(portalDepth / 2, portalWidth / 2), 1f, SpriteEffects.None, 0f);
+				drawPos.Y += arenaHeight;
+				spriteBatch.Draw((Texture2D)TextureAssets.Projectile[ProjectileID.PortalGunGate], drawPos, frame, color, (float)Math.PI / 2f, new Vector2(portalDepth / 2, portalWidth / 2), 1f, SpriteEffects.None, 0f);
+			}
+			for (int y = centerY - arenaHeight / 2; y < centerY + arenaHeight / 2; y += portalWidth)
+			{
+				int frameNum = (portalFrame / 6 + y / portalWidth) % Main.projFrames[ProjectileID.PortalGunGate];
+				Rectangle frame = new Rectangle(0, frameNum * (portalWidth + 2), portalDepth, portalWidth);
+				Vector2 drawPos = new Vector2(centerX - arenaWidth / 2, y + portalWidth / 2) - Main.screenPosition;
+				spriteBatch.Draw((Texture2D)TextureAssets.Projectile[ProjectileID.PortalGunGate], drawPos, frame, color, (float)Math.PI, new Vector2(portalDepth / 2, portalWidth / 2), 1f, SpriteEffects.None, 0f);
+				drawPos.X += arenaWidth;
+				spriteBatch.Draw((Texture2D)TextureAssets.Projectile[ProjectileID.PortalGunGate], drawPos, frame, color, 0f, new Vector2(portalDepth / 2, portalWidth / 2), 1f, SpriteEffects.None, 0f);
+			}
+		}
 	}
 }

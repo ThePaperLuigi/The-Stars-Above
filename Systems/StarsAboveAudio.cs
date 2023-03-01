@@ -509,10 +509,11 @@ namespace StarsAbove
 		#endregion
 
 		#region Tsukiyomi Voice Lines
-		public static readonly SoundStyle Tsukiyomi_DontMakeThisHarderForMe = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/DontMakeThisHarderForMe")
+		public static readonly SoundStyle Tsukiyomi_DeathOfAThousandStars = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/ThousandStars")
 		{
 
 		};
+		/*
 		public static readonly SoundStyle Tsukiyomi_ThisMessIsMine = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/ThisMessIsMine")
 		{
 
@@ -625,7 +626,7 @@ namespace StarsAbove
 		public static readonly SoundStyle Tsukiyomi_YouveComeToDefeatMe = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/YouveComeToDefeatMe")
 		{
 
-		};
+		};*/
 		#endregion
 
 

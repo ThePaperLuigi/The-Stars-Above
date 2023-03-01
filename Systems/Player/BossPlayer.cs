@@ -18,6 +18,7 @@ using StarsAbove.Buffs;
 using StarsAbove.NPCs;
 using Microsoft.Xna.Framework.Audio;
 using StarsAbove.NPCs.Vagrant;
+using StarsAbove.NPCs.Nalhaun;
 
 namespace StarsAbove
 {
@@ -46,22 +47,28 @@ namespace StarsAbove
             for (int k = 0; k < 200; k++)
             {
                 NPC npc = Main.npc[k];
-                if (npc.active && npc.type == NPCType<VagrantWalls>())
+                if (npc.active && npc.type == NPCType<VagrantWalls>() && Player.Distance(npc.Center) < 2000)
                 {
 
                     VagrantTeleport(npc);
                     break;
                 }
-                if (npc.active && npc.type == NPCType<VagrantWallsHorizontal>())
+                if (npc.active && npc.type == NPCType<VagrantWallsHorizontal>() && Player.Distance(npc.Center) < 2000)
                 {
 
                     VagrantTeleportHorizontal(npc);
                     break;
                 }
-                if (npc.active && npc.type == NPCType<VagrantWallsVertical>())
+                if (npc.active && npc.type == NPCType<VagrantWallsVertical>() && Player.Distance(npc.Center) < 2000)
                 {
 
                     VagrantTeleportVertical(npc);
+                    break;
+                }
+                if (npc.active && npc.type == NPCType<NalhaunBoss>() && Player.Distance(npc.Center) < 2000)
+                {
+                    //If nearby the boss.
+                    NalhaunWalls(npc);
                     break;
                 }
             }
@@ -224,6 +231,60 @@ namespace StarsAbove
                     Player.Teleport(newPosition, 1, 0);
                     NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, Player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
 
+                }
+            }
+        }
+
+        private void NalhaunWalls(NPC npc)
+        {
+            if (Player.whoAmI == Main.myPlayer)
+            {
+                int halfWidth = NalhaunBoss.arenaWidth / 2;
+                int halfHeight = NalhaunBoss.arenaHeight / 2;
+                Vector2 newPosition = Player.position;
+                if (Player.position.X <= npc.Center.X - halfWidth)//Left wall
+                {
+                    newPosition.X = npc.Center.X - halfWidth - Player.width - 1;
+                    Player.velocity = new Vector2(8, Player.velocity.Y);
+                    // if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("1"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.X -= 8f;
+
+                    }
+                }
+                else if (Player.position.X + Player.width >= npc.Center.X + halfWidth)//Right Wall
+                {
+                    newPosition.X = npc.Center.X + halfWidth + 1;
+                    Player.velocity = new Vector2(-8, Player.velocity.Y);
+                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("2"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.X += 8f;
+
+                    }
+                }
+                else if (Player.position.Y <= npc.Center.Y - halfHeight)//Top
+                {
+                    newPosition.Y = npc.Center.Y - halfHeight - Player.height - 1;
+                    Player.velocity = new Vector2(Player.velocity.X, 8);
+                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("3"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.Y -= 8f;
+
+                    }
+                }
+                else if (Player.position.Y + Player.height >= npc.Center.Y + halfHeight)//Bottom
+                {
+                    newPosition.Y = npc.Center.Y + halfHeight + 1;
+                    Player.velocity = new Vector2(Player.velocity.X, -8);
+                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("4"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+
+                        newPosition.Y += 8f;
+                    }
                 }
             }
         }
