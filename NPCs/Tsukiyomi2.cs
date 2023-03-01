@@ -258,7 +258,7 @@ namespace StarsAbove.NPCs
                 if(Main.netMode != NetmodeID.MultiplayerClient){Projectile.NewProjectile(NPC.GetSource_FromAI(),placement2.X + 30, placement2.Y - 80, 0, 0,Mod.Find<ModProjectile>("Wormhole").Type,0,0f,Main.myPlayer);}
                 if(Main.netMode != NetmodeID.MultiplayerClient){Projectile.NewProjectile(NPC.GetSource_FromAI(),placement2.X, placement2.Y - 33, 0, 0,Mod.Find<ModProjectile>("TsukiyomiTeleport").Type,0,0f,Main.myPlayer);}
                 if(Main.netMode != NetmodeID.MultiplayerClient){Projectile.NewProjectile(NPC.GetSource_FromAI(),placement2.X, placement2.Y, 0, 0,Mod.Find<ModProjectile>("radiate").Type,0,0f,Main.myPlayer);}
-                SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_PerhapsIWasWrong, NPC.Center);
+                //SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_PerhapsIWasWrong, NPC.Center);
 
                 NPC.ai[3] = 1f;
                 NPC.damage = 0;
@@ -372,7 +372,7 @@ namespace StarsAbove.NPCs
             
             if (introAnimation == 250)
             {
-                SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_JustGettingStarted, NPC.Center);
+                //SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_JustGettingStarted, NPC.Center);
                 Vector2 placement2 = new Vector2((NPC.Center.X), NPC.Center.Y);
                 if(Main.netMode != NetmodeID.MultiplayerClient){Projectile.NewProjectile(NPC.GetSource_FromAI(),placement2.X + 10, placement2.Y - 60, 0, 0,Mod.Find<ModProjectile>("Phase2Ring").Type,0,0f,Main.myPlayer);}
                 if(Main.netMode != NetmodeID.MultiplayerClient){Projectile.NewProjectile(NPC.GetSource_FromAI(),placement2.X, placement2.Y, 0, 0,Mod.Find<ModProjectile>("radiate").Type,0,0f,Main.myPlayer);}
@@ -448,7 +448,7 @@ namespace StarsAbove.NPCs
 
                 if (fightLost == false)
                 {
-                    SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_JustGiveUp, NPC.Center);
+                    //SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_JustGiveUp, NPC.Center);
                     if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("The galaxy stands still once more..."), 210, 60, 60);}
                     Vector2 vector8 = new Vector2(NPC.Center.X, NPC.Center.Y);
                     for (int d = 0; d < 100; d++)
@@ -487,7 +487,7 @@ namespace StarsAbove.NPCs
 
             if (nextAttack == "Concentrativity" && castTime == 65)
             {
-                SoundEngine.PlaySound(StarsAboveAudio.SFX_WarriorStun, NPC.Center);
+                //SoundEngine.PlaySound(StarsAboveAudio.SFX_WarriorStun, NPC.Center);
             }
             if (nextAttack == "Hypertuned Threads of Fate" && castTime == 28)
             {
@@ -768,7 +768,7 @@ namespace StarsAbove.NPCs
                         Vector2 vector8 = new Vector2(P.position.X - 1200, P.position.Y);
                         int damage = 90;  //projectile damage
                         int type;
-                        SoundEngine.PlaySound(SoundID.Roar, vector8);
+                        //SoundEngine.PlaySound(SoundID.Roar, vector8);
                         type = Mod.Find<ModProjectile>("PlanteraProjectile").Type;
 
 
@@ -1275,7 +1275,7 @@ namespace StarsAbove.NPCs
                         int type = Mod.Find<ModProjectile>("BossTheofania").Type;
 
                         float rotation = (float)Math.Atan2(vector8.Y - (P.position.Y + (P.height * 0.5f)), vector8.X - (P.position.X + (P.width * 0.5f)));
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, NPC.Center);
+                        //SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, NPC.Center);
 
                         if(Main.netMode != NetmodeID.MultiplayerClient){Projectile.NewProjectile(NPC.GetSource_FromAI(),vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1),type,damage,0f,Main.myPlayer);}
 
@@ -1490,7 +1490,7 @@ namespace StarsAbove.NPCs
                     }
                     if (nextAttack == "Rend Heaven")
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_GunbladeImpact, NPC.Center);
+                        //SoundEngine.PlaySound(StarsAboveAudio.SFX_GunbladeImpact, NPC.Center);
 
                         isCasting = false;
                         lastAttack = nextAttack;
@@ -1510,7 +1510,7 @@ namespace StarsAbove.NPCs
                     }
                     if (nextAttack == "Splattered Sundering")
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_splat, NPC.Center);
+                        //SoundEngine.PlaySound(StarsAboveAudio.SFX_splat, NPC.Center);
                         isCasting = false;
                         lastAttack = nextAttack;
                         nextAttack = "";
@@ -1529,7 +1529,7 @@ namespace StarsAbove.NPCs
                     }
                     if (nextAttack == "To The Limit")
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakCharge, NPC.Center);
+                        //SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakCharge, NPC.Center);
                         isCasting = false;
                         lastAttack = nextAttack;
                         nextAttack = "";
@@ -1545,7 +1545,7 @@ namespace StarsAbove.NPCs
                     }
                     if (nextAttack == "Hypertuned Titanomachy")
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_TitanCast, NPC.Center);
+                        //SoundEngine.PlaySound(StarsAboveAudio.SFX_TitanCast, NPC.Center);
                         isCasting = false;
                         lastAttack = nextAttack;
                         nextAttack = "";
@@ -1664,7 +1664,7 @@ namespace StarsAbove.NPCs
                     }
                     if (nextAttack == "Radiant Desperado")
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, NPC.Center);
+                        //SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, NPC.Center);
                         isCasting = false;
                         lastAttack = nextAttack;
                         nextAttack = "";
@@ -1744,7 +1744,7 @@ namespace StarsAbove.NPCs
 
                         float rotation1 = (float)Math.Atan2(vector81.Y - (P.position.Y + (P.height * 0.5f)), vector81.X - (P.position.X + (P.width * 0.5f)));
                         float rotation2 = (float)Math.Atan2(vector82.Y - (P.position.Y + (P.height * 0.5f)), vector82.X - (P.position.X + (P.width * 0.5f)));
-                        SoundEngine.PlaySound(SoundID.Shatter, vector81);
+                        //SoundEngine.PlaySound(SoundID.Shatter, vector81);
                         if(Main.netMode != NetmodeID.MultiplayerClient){Projectile.NewProjectile(NPC.GetSource_FromAI(),vector81.X, vector81.Y, (float)((Math.Cos(rotation1) * Speed1) * -1), (float)((Math.Sin(rotation1) * Speed1) * -1),type1,damage1,0f,Main.myPlayer);}
                         if(Main.netMode != NetmodeID.MultiplayerClient){Projectile.NewProjectile(NPC.GetSource_FromAI(),vector82.X, vector82.Y, (float)((Math.Cos(rotation2) * Speed1) * -1), (float)((Math.Sin(rotation2) * Speed1) * -1),type1,damage1,0f,Main.myPlayer);}
 
@@ -1851,7 +1851,7 @@ namespace StarsAbove.NPCs
                         int type = Mod.Find<ModProjectile>("BossTheofania").Type;
 
                         float rotation = (float)Math.Atan2(vector8.Y - (P.position.Y + (P.height * 0.5f)), vector8.X - (P.position.X + (P.width * 0.5f)));
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, NPC.Center);
+                        //SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, NPC.Center);
 
                         if(Main.netMode != NetmodeID.MultiplayerClient){Projectile.NewProjectile(NPC.GetSource_FromAI(),vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1),type,damage,0f,Main.myPlayer);}
 
@@ -1938,7 +1938,7 @@ namespace StarsAbove.NPCs
                         int type = Mod.Find<ModProjectile>("SpatialRip").Type;
 
                         float rotation = (float)Math.Atan2(vector8.Y - (P.position.Y + (P.height * 0.5f)), vector8.X - (P.position.X + (P.width * 0.5f)));
-                        SoundEngine.PlaySound(SoundID.Shatter, vector8);
+                        //SoundEngine.PlaySound(SoundID.Shatter, vector8);
                         if(Main.netMode != NetmodeID.MultiplayerClient){Projectile.NewProjectile(NPC.GetSource_FromAI(),vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1),type,damage,0f,Main.myPlayer);}
 
                     }
@@ -2113,7 +2113,7 @@ namespace StarsAbove.NPCs
                     }
                     if (nextAttack == "Order through Chaos")
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, NPC.Center);
+                        //SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, NPC.Center);
 
                         alignment = 1;
                         Vector2 placement2 = new Vector2((NPC.Center.X), NPC.Center.Y);
@@ -2144,7 +2144,7 @@ namespace StarsAbove.NPCs
                     }
                     if (nextAttack == "Chaos through Order")
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, NPC.Center);
+                        //SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, NPC.Center);
                         Vector2 placement2 = new Vector2((NPC.Center.X), NPC.Center.Y);
                         if(Main.netMode != NetmodeID.MultiplayerClient){Projectile.NewProjectile(NPC.GetSource_FromAI(),placement2.X, placement2.Y, 0, 0,Mod.Find<ModProjectile>("radiateChaos").Type,0,0f,Main.myPlayer);}
                         alignment = 0;
@@ -2174,7 +2174,7 @@ namespace StarsAbove.NPCs
                     }
                     if (nextAttack == "Starlit Channeling")
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, NPC.Center);
+                        //SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, NPC.Center);
 
                         stardust = true;
                         isCasting = false;
@@ -2240,7 +2240,7 @@ namespace StarsAbove.NPCs
                         nframe = 0;
                         NPC.frameCounter = 0;
                         NPC.frame.Y = 0;
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_PhaseChange, NPC.Center);
+                        //SoundEngine.PlaySound(StarsAboveAudio.SFX_PhaseChange, NPC.Center);
                         for (int i = 0; i < Main.maxPlayers; i++)
                         {
                             Player player = Main.player[i];
@@ -2270,7 +2270,7 @@ namespace StarsAbove.NPCs
                         nframe = 0;
                         NPC.frameCounter = 0;
                         NPC.frame.Y = 0;
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_PhaseChange, NPC.Center);
+                        //SoundEngine.PlaySound(StarsAboveAudio.SFX_PhaseChange, NPC.Center);
                         for (int i = 0; i < Main.maxPlayers; i++)
                         {
                             Player player = Main.player[i];
@@ -2411,7 +2411,7 @@ namespace StarsAbove.NPCs
                 
 
                 float rotation = (float)Math.Atan2(vector8.Y - (P.position.Y + (P.height * 0.5f)), vector8.X - (P.position.X + (P.width * 0.5f)));
-                //SoundEngine.PlaySound(SoundID.Item, vector8);
+                ////SoundEngine.PlaySound(SoundID.Item, vector8);
                 if(Main.netMode != NetmodeID.MultiplayerClient){Projectile.NewProjectile(NPC.GetSource_FromAI(),vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1),type,damage,0f,Main.myPlayer);}
                 eyeProjectileTimer = 0;
                 eyeProjectile--;
@@ -2456,7 +2456,7 @@ namespace StarsAbove.NPCs
 
 
                 float rotation = (float)Math.Atan2(0, 0);
-                //SoundEngine.PlaySound(SoundID.Item, vector8);
+                ////SoundEngine.PlaySound(SoundID.Item, vector8);
                 if(Main.netMode != NetmodeID.MultiplayerClient){Projectile.NewProjectile(NPC.GetSource_FromAI(),vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1),type,damage,0f,Main.myPlayer);}
 
                 desperadoTimer = 0;
@@ -2713,7 +2713,7 @@ namespace StarsAbove.NPCs
                             usedDesperation = true;
                             if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("Cosmic energy begins to coalese around you!"), 11, 241, 158);}
                             //Main.PlaySound(SoundLoader.customSoundType, (int)npc.Center.X, (int)npc.Center.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/EnterDarkness"));
-                            SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_IRefuseToLetYouWin, NPC.Center);
+                            //SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_IRefuseToLetYouWin, NPC.Center);
                             castDelay = 0;
                             phaseTransition = true;
                             castTime = 0;
@@ -2731,7 +2731,7 @@ namespace StarsAbove.NPCs
 
                             castAnimation = 70;
 
-                            SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_YouAreNothing, NPC.Center);
+                            //SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_YouAreNothing, NPC.Center);
                             modPlayer.tsukiyomiPrompt6 = true;
                             castDelay = 0;
                             nextAttack = "Blade of the End";
@@ -2745,7 +2745,7 @@ namespace StarsAbove.NPCs
 
                             castAnimation = 70;
 
-                            SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_HaveToTryHarder, NPC.Center);
+                            //SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_HaveToTryHarder, NPC.Center);
 
                             castDelay = 0;
                             nextAttack = "Macrocosmos";
@@ -2758,7 +2758,7 @@ namespace StarsAbove.NPCs
 
                             castAnimation = 70;
 
-                            SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_HaveToTryHarder, NPC.Center);
+                            //SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_HaveToTryHarder, NPC.Center);
 
                             castDelay = 0;
                             nextAttack = "Microcosmos";
@@ -2793,7 +2793,7 @@ namespace StarsAbove.NPCs
                         {
 
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Struggle, NPC.Center);
+                            //SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Struggle, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Anosios Triumverate";
                             castTime = 0;
@@ -2815,7 +2815,7 @@ namespace StarsAbove.NPCs
                         {
 
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_TearYouApart, NPC.Center);
+                            //SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_TearYouApart, NPC.Center);
 
                             castDelay = 0;
                             nextAttack = "Hypertuned Titanomachy";
@@ -2860,7 +2860,7 @@ namespace StarsAbove.NPCs
                         {
                             castAnimation = 70;
 
-                            SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_IWillBridgeTheGap, NPC.Center);
+                            //SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_IWillBridgeTheGap, NPC.Center);
 
                             castDelay = 0;
                             nextAttack = "Gateway";
@@ -2918,7 +2918,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Starfield")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_YouCantKeepDodging, NPC.Center);
+                            //SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_YouCantKeepDodging, NPC.Center);
 
                             castDelay = 0;
                             nextAttack = "Starfield";
@@ -2929,7 +2929,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Galactic Swarm")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_YouCantKeepDodging, NPC.Center);
+                            //SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_YouCantKeepDodging, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Galactic Swarm";
                             castTime = 0;
@@ -2951,7 +2951,7 @@ namespace StarsAbove.NPCs
                         {
                             castAnimation = 70;
 
-                            SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_AreYouGettingTired, NPC.Center);
+                            //SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_AreYouGettingTired, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Aetherial Subduction";
                             castTime = 0;
@@ -2962,7 +2962,7 @@ namespace StarsAbove.NPCs
                         {
                             castAnimation = 70;
 
-                            SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_ToDustYouWillReturn, NPC.Center);
+                            //SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_ToDustYouWillReturn, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Elechos Unforgotten";
                             castTime = 0;
@@ -3013,7 +3013,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Gravitational Anomaly")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_JustGiveUp, NPC.Center);
+                            //SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_JustGiveUp, NPC.Center);
 
                             castDelay = 0;
                             nextAttack = "Gravitational Anomaly";
@@ -3121,7 +3121,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Malefic IV")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_ThereIsNowhereYouCanRun, NPC.Center);
+                            //SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_ThereIsNowhereYouCanRun, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Malefic IV";
                             castTime = 0;
