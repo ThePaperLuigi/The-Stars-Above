@@ -472,12 +472,12 @@
             77: 我为你搞来了一种新精华。它似乎能同时借用近战与魔法的力量——一把多功能武器,我爱死它了！
             78: 这片墓地似乎和这种精华有所联系。希望这些墓碑不是你死后留下的，对吧？
             79: 嗯……这个召唤武器的精华可以用于制造某种遥控无人机——我想知道能不能和它们交流。
-            80: This is certainly a Melee weapon- furthermore, it seems to be one that excels at a distance, as well as providing extra firepower in close combat. Nice.
+            80: 这确实是一把近战武器——此外，它似乎在远距离表现出色,也能在近身搏斗中提供额外火力。真不错。
             81: I plundered a Ranged-sort of essence from the likeness of those pirates. Sea... water... Actually, looks like I'm nearly dry with ocean jokes, so I'll anchor myself now.
-            82: Well, I'm not sure what to make of this Essence, other than that it's a Summon weapon. Best you give it a go, before anything else goes haywire.
-            83: This watch is a Summon-type weapon- looks like it'll call forth a cute time-aspected ally. She'll help with support if you can work with her combat style.
-            84: Hmm... Perhaps you could even use it to dodge incoming attacks...?
-	    85: It looks to me like this Ranged-weapon has the ability to down hordes of foes pretty easily. Sounds like it'll come in handy- especially the giant coffin swings!
+            82: 呃呃，我不确定这个精华能做出什么东西，只知道它是把召唤武器。你最好亲自试试，免得你搞砸了。
+            83: 这个时钟是一把召唤武器-看起来它会召唤出一只可爱的时间盟友。如果你能适应她的战斗风格，她会给你提供很大的帮助。
+            84: 唔……也许你能用它躲开来袭的攻击……？
+	    85: 看上去这把远程武器能轻易击溃成群的敌人。听起来它能派上用场——尤其是那个摆动的巨型棺木。
 
           }
           Eridani:
@@ -564,11 +564,11 @@
             80: 这片墓地似乎和这种精华有所联系。希望它能帮助你避免一开始就死出一片墓地。
             81: 虽然它很强大，但我相信它是一把实用的工具，而不是武器。
             82: 这种魔法精华虽然和自然有关，但它似乎相当不稳定。也许你最好把它和其它武器搭配着使用。
-            83: This Melee weapon harnesses an aspect of time itself to help you in combat. It seems to have some impressive range, as well.
-            84: How about it; that previous... um, let's say 'get-together' with those pirates has churned up an Essence- Ranged damage, from what I can tell. Here you are.
-            85: I'm not sure how to define this Summon-type Essence, so I'll leave it as an exercise for you. Well... good luck.
-            86: This Summon-type weapon conjures a rather charming time-aspected being. She'll help with both offensive and defensive duties.
-	    87: This essence is a Ranged-type weapon, but it seems to have a lot of close-ranged action. Don't get overzealous, but do try to make the most of it.
+            83: 这把近战武器调动时空之力协助你作战。此外，它具备着令人印象深刻的攻击范围。
+            84: 这个怎么样；据我所知，我们和之前那些海盗……呃，算是“合作”制造出了这个精华，它造成远程伤害。接好了。
+            85: 我不知道该怎么定义这个召唤类型的精华，所以我准备把它留给你练手。呃……祝你好运。
+            86: 这把召唤武器能召唤出一只迷人的时间生物，它同时兼顾了攻击与防御。
+	    87: 这个精华对应了一把远程武器，但它似乎更适合在近距离发挥作用。别靠的太近了，但尽量发挥出它的特性。
           }
           Perseus:
           {
@@ -1559,7 +1559,7 @@
             80: 一位疯狂的邪教徒……在它们带来灾难前阻止它们……！
             81: 真是难以置信……是……月球领主！这是最后的决战了！我们必须得赢！
             82: 光之战士就要来了……等到它挣脱桎梏，请务必做好准备！
-            83: 这个敌人似乎有点眼熟……Look out for his sword- seems it can take on different forms!
+            83: 这个敌人似乎有点眼熟……当心它的巨刃——它似乎可以转变形态！
             84: 不要低估这名敌人……！抓住那些从你身上偷走的生命力！
             85: 这位魔女凭借绘画发动攻击！留意你所沾染的颜色！
             86: 这家伙会改变它的攻击方式！留意它的姿态什么的。
@@ -1755,7 +1755,7 @@
             80: 是月之邪教徒……在它们带来灾难前阻止它们！
             81: 月球领主……我们将直面神明。我们必须得赢，别无选择！
             82: 光之战士就要来了……挣脱桎梏的他无比强大！
-            83: 这名敌人似乎有点眼熟……Looks like he can manipulate space to some extent!
+            83: 这名敌人似乎有点眼熟……看上去它可以在某种程度上操纵空间！
             84: 不要低估这位先古之君！夺回那些失窃的生命力！
             85: 她用颜料将你覆盖了。留意你所沾染的颜色。
             86: 它似乎能够变化形态！试着记住它的攻击方式……！
