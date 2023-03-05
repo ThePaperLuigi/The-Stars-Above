@@ -16,8 +16,10 @@ namespace StarsAbove.UI.CutsceneUI
 	{
 		private UIElement area;
 		private UIImage edinGenesisQuasarTransition;
+
 		private UIVideo edinGenesisQuasarVideo;
-		public override void OnInitialize() {
+        private UIVideo nalhaunCutsceneVideo;
+        public override void OnInitialize() {
 			
 			area = new UIElement();
 			area.Top.Set(0, 0f);
@@ -30,13 +32,22 @@ namespace StarsAbove.UI.CutsceneUI
 			edinGenesisQuasarTransition.Width.Set(Main.screenWidth, 0f);
 			edinGenesisQuasarTransition.Height.Set(Main.screenHeight, 0f);
 
-			edinGenesisQuasarVideo = new UIVideo(Request<Video>("StarsAbove/Video/EdinGenesisQuasar"));
-			edinGenesisQuasarVideo.ScaleToFit = true;
-			edinGenesisQuasarVideo.WaitForStart = true;
-			edinGenesisQuasarVideo.DoLoop = false;
+            edinGenesisQuasarVideo = new UIVideo(Request<Video>("StarsAbove/Video/EdinGenesisQuasar"))
+            {
+                ScaleToFit = true,
+                WaitForStart = true,
+                DoLoop = false
+            };
 
-			//area.Append(edinGenesisQuasarVideo);
-			Append(area);
+            nalhaunCutsceneVideo = new UIVideo(Request<Video>("StarsAbove/Video/NalhaunBossCutscene"))
+            {
+                ScaleToFit = true,
+                WaitForStart = true,
+                DoLoop = false
+            };
+
+            //area.Append(edinGenesisQuasarVideo);
+            Append(area);
 		}
 
 		public override void Draw(SpriteBatch spriteBatch) {
@@ -48,56 +59,105 @@ namespace StarsAbove.UI.CutsceneUI
 		bool CutsceneExit = false;
 		protected override void DrawSelf(SpriteBatch spriteBatch) {
 			base.DrawSelf(spriteBatch);
+            var bossPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
 			
 			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/CutsceneUI/EdinGenesisQuasarTransition"), area.GetInnerDimensions().ToRectangle(), Color.White * CutsceneIntroAlpha);
-			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/CutsceneUI/EdinGenesisQuasarTransition2"), area.GetInnerDimensions().ToRectangle(), Color.White * CutsceneExitAlpha);
+			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/CutsceneUI/WhiteScreen"), area.GetInnerDimensions().ToRectangle(), Color.White * CutsceneExitAlpha);
 
-		}
-		public override void Update(GameTime gameTime) {
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/CutsceneUI/BlackScreen"), area.GetInnerDimensions().ToRectangle(), Color.White * bossPlayer.BlackAlpha);
 
-			CutsceneIntroAlpha = MathHelper.Clamp(CutsceneIntroAlpha, 0f, 1f);
-			CutsceneExitAlpha = MathHelper.Clamp(CutsceneExitAlpha, 0f, 1f);
+            spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/CutsceneUI/WhiteScreen"), area.GetInnerDimensions().ToRectangle(), Color.White * bossPlayer.WhiteAlpha);
+        }
+		public override void Update(GameTime gameTime)
+        {
+            var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            var bossPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
-			if (modPlayer.astarteCutsceneProgress <= 60 && modPlayer.astarteCutsceneProgress > 0)
-			{
-				CutsceneIntroAlpha += 0.05f;
-				
-			}
-			
-			CutsceneExitAlpha -= 0.02f;
-			if(modPlayer.WhiteFade >= 20)
+            CutsceneIntroAlpha = MathHelper.Clamp(CutsceneIntroAlpha, 0f, 1f);
+            CutsceneExitAlpha = MathHelper.Clamp(CutsceneExitAlpha, 0f, 1f);
+
+            AstarteDriver(modPlayer);
+            NalhaunCutscene(bossPlayer);
+
+            base.Update(gameTime);
+        }
+
+        private void AstarteDriver(StarsAbovePlayer modPlayer)
+        {
+            if (modPlayer.astarteCutsceneProgress <= 60 && modPlayer.astarteCutsceneProgress > 0)
             {
-				CutsceneExitAlpha = 1f;
+                CutsceneIntroAlpha += 0.05f;
 
-			}
-			
+            }
 
-			if (modPlayer.astarteCutsceneProgress == 1)
+            CutsceneExitAlpha -= 0.02f;
+            if (modPlayer.WhiteFade >= 20)
             {
-				CutsceneIntroAlpha = 0f;
-				
-				edinGenesisQuasarVideo.FinishedVideo = false;
-				edinGenesisQuasarVideo.StartVideo = true;
-				CutsceneExit = true;
-				area.Append(edinGenesisQuasarVideo);
-				
-			}		
-			if(edinGenesisQuasarVideo.FinishedVideo)
-            {
-				if(CutsceneExit)
-                {
-					CutsceneExitAlpha = 1f;
-					CutsceneExit = false;
-                }
-				
-				edinGenesisQuasarVideo.Remove();
+                CutsceneExitAlpha = 1f;
+
             }
 
 
-			base.Update(gameTime);
-		}
-	}
+            if (modPlayer.astarteCutsceneProgress == 1)
+            {
+                CutsceneIntroAlpha = 0f;
+
+                edinGenesisQuasarVideo.FinishedVideo = false;
+                edinGenesisQuasarVideo.StartVideo = true;
+                CutsceneExit = true;
+                area.Append(edinGenesisQuasarVideo);
+
+            }
+            if (edinGenesisQuasarVideo.FinishedVideo)
+            {
+                if (CutsceneExit)
+                {
+                    CutsceneExitAlpha = 1f;
+                    CutsceneExit = false;
+                }
+
+                edinGenesisQuasarVideo.Remove();
+            }
+        }
+        
+        private void NalhaunCutscene(BossPlayer modPlayer)
+        {
+            UIVideo Video = nalhaunCutsceneVideo;
+
+            if (modPlayer.nalhaunCutsceneProgress <= 60 && modPlayer.nalhaunCutsceneProgress > 0)
+            {
+                modPlayer.BlackAlpha += 0.05f;
+            }
+            else
+            {
+                modPlayer.BlackAlpha -= 0.1f;
+            }
+            
+
+            
+
+
+            if (modPlayer.nalhaunCutsceneProgress == 1)
+            {
+
+                Video.FinishedVideo = false;
+                Video.StartVideo = true;
+                CutsceneExit = true;
+                area.Append(Video);
+
+            }
+            if (Video.FinishedVideo)
+            {
+                if (CutsceneExit)
+                {
+                    modPlayer.BlackAlpha = 1f;
+                    CutsceneExit = false;
+                }
+
+                Video.Remove();
+            }
+        }
+    }
 }

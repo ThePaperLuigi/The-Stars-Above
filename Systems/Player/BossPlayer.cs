@@ -34,6 +34,10 @@ namespace StarsAbove
 
         public int inVagrantFightTimer; //Check to see if you've recently hit the boss.
 
+        public int nalhaunCutsceneProgress = 0;
+
+        public float WhiteAlpha;
+        public float BlackAlpha;
 
 
         public bool VagrantActive = false; //This can be replaced with a npc check.
@@ -71,7 +75,19 @@ namespace StarsAbove
                     NalhaunWalls(npc);
                     break;
                 }
+                if (npc.active && npc.type == NPCType<NalhaunPhase2WallsNPC>() && Player.Distance(npc.Center) < 2000)
+                {
+                    //If nearby the boss.
+                    NalhaunPhase2Walls(npc);
+                    break;
+                }
             }
+
+            nalhaunCutsceneProgress--;
+
+            BlackAlpha = Math.Clamp(BlackAlpha, 0, 1);
+            WhiteAlpha = Math.Clamp(WhiteAlpha, 0, 1);
+
         }
         public override void PostUpdate()
         {
@@ -241,6 +257,59 @@ namespace StarsAbove
             {
                 int halfWidth = NalhaunBoss.arenaWidth / 2;
                 int halfHeight = NalhaunBoss.arenaHeight / 2;
+                Vector2 newPosition = Player.position;
+                if (Player.position.X <= npc.Center.X - halfWidth)//Left wall
+                {
+                    newPosition.X = npc.Center.X - halfWidth - Player.width - 1;
+                    Player.velocity = new Vector2(8, Player.velocity.Y);
+                    // if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("1"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.X -= 8f;
+
+                    }
+                }
+                else if (Player.position.X + Player.width >= npc.Center.X + halfWidth)//Right Wall
+                {
+                    newPosition.X = npc.Center.X + halfWidth + 1;
+                    Player.velocity = new Vector2(-8, Player.velocity.Y);
+                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("2"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.X += 8f;
+
+                    }
+                }
+                else if (Player.position.Y <= npc.Center.Y - halfHeight)//Top
+                {
+                    newPosition.Y = npc.Center.Y - halfHeight - Player.height - 1;
+                    Player.velocity = new Vector2(Player.velocity.X, 8);
+                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("3"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.Y -= 8f;
+
+                    }
+                }
+                else if (Player.position.Y + Player.height >= npc.Center.Y + halfHeight)//Bottom
+                {
+                    newPosition.Y = npc.Center.Y + halfHeight + 1;
+                    Player.velocity = new Vector2(Player.velocity.X, -8);
+                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("4"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+
+                        newPosition.Y += 8f;
+                    }
+                }
+            }
+        }
+        private void NalhaunPhase2Walls(NPC npc)
+        {
+            if (Player.whoAmI == Main.myPlayer)
+            {
+                int halfWidth = NalhaunPhase2WallsNPC.arenaWidth / 2;
+                int halfHeight = NalhaunPhase2WallsNPC.arenaHeight / 2;
                 Vector2 newPosition = Player.position;
                 if (Player.position.X <= npc.Center.X - halfWidth)//Left wall
                 {

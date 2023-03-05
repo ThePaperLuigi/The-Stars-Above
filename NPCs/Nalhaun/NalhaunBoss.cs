@@ -19,6 +19,8 @@ using static StarsAbove.NPCs.AttackLibrary.AttackLibrary;
 using StarsAbove.Buffs.Boss;
 using Terraria.GameContent;
 using Microsoft.Xna.Framework.Graphics;
+using StarsAbove.Buffs;
+using StarsAbove.Utilities;
 
 namespace StarsAbove.NPCs.Nalhaun
 {
@@ -118,7 +120,7 @@ namespace StarsAbove.NPCs.Nalhaun
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 84000;
+			NPC.lifeMax = 64000;
 			NPC.damage = 0;
 			NPC.defense = 125;
 			NPC.knockBackResist = 0f;
@@ -130,12 +132,12 @@ namespace StarsAbove.NPCs.Nalhaun
 			NPC.lavaImmune = true;
 			NPC.noGravity = false;
 			NPC.noTileCollide = false;
+			NPC.value = 0f;
 			DrawOffsetY = 42;
 
 			NPC.HitSound = SoundID.NPCHit54;
 			NPC.DeathSound = SoundID.NPCDeath52;
 
-			NPC.value = Item.buyPrice(0, 1, 75, 45);
 
 			Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/ShadowsCastByTheMighty");
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
@@ -151,8 +153,15 @@ namespace StarsAbove.NPCs.Nalhaun
 			NPC.lifeMax = (int)(NPC.lifeMax * bossLifeScale * numPlayers);
 			//NPC.defense *= numPlayers * 5;
 		}
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+			
+			potionType = ItemID.None;
 
-		public override bool CheckDead()
+
+			base.BossLoot(ref name, ref potionType);
+        }
+        public override bool CheckDead()
 		{
 			if (NPC.ai[0] != (float)ActionState.Dying) //If the boss is defeated, but the death animation hasn't played yet, play the death animation.
 			{
@@ -210,121 +219,229 @@ namespace StarsAbove.NPCs.Nalhaun
                 if (AI_RotationNumber == 0)
                 {
                     //
-                    RightwardRend(P, NPC);
+                    IvoryStake1(P, NPC);
                     return;
                 }
-				if (AI_RotationNumber == 1)
+				else if (AI_RotationNumber == 1)
+				{
+					//
+					RightwardRend(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 2)
+				{
+					//
+					OuterAgony(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 3)
+				{
+					//
+					IvoryStake2(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 4)
+				{
+					//
+					VelvetApogee(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 5)
 				{
 					//
 					InnerAgony(P, NPC);
 					return;
 				}
-				if (AI_RotationNumber == 2)
-				{
-					//
-					OuterAgony(P, NPC);
-					return;
-				}
-				if (AI_RotationNumber == 3)
-				{
-					//
-					MonarchFeint(P, NPC);
-					return;
-				}
-				if (AI_RotationNumber == 4)
-				{
-					//
-					FakeRightwardRend(P, NPC);
-					return;
-				}
-				if (AI_RotationNumber == 5)
-				{
-					//
-					DelayedInnerAgony(P, NPC);
-					return;
-				}
-				if (AI_RotationNumber == 6)
+				else if (AI_RotationNumber == 6)
 				{
 					//
 					LeftwardRend(P, NPC);
 					return;
 				}
-				if (AI_RotationNumber == 7)
+				else if (AI_RotationNumber == 7)
 				{
 					//
-					DelayedRightwardRend(P, NPC);
+					VelvetAzimuth(P, NPC);
 					return;
 				}
-				if (AI_RotationNumber == 8)
+				else if (AI_RotationNumber == 8)
 				{
 					//
-					OuterAgony(P, NPC);
+					DelayedOuterAgony(P, NPC);
 					return;
 				}
-				if (AI_RotationNumber == 9)
+				else if (AI_RotationNumber == 9)
+				{
+					//
+					LeftwardRend(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 10)
 				{
 					//
 					MonarchFeint(P, NPC);
 					return;
 				}
-				if (AI_RotationNumber == 10)
+				else if (AI_RotationNumber == 11)
 				{
 					//
+					FakeRightwardRend(P, NPC);
+					return;
+				}
+				else if(AI_RotationNumber == 12)
+				{
+					//
+					VelvetApogee(P, NPC);
+					return;
+				}
+				else if(AI_RotationNumber == 13)
+				{
+					//
+					IvoryStake1(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 14)
+				{
+					//
+					IvoryStake2(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 15)
+				{
+					DelayedLeftwardRend(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 16)
+				{
+					InnerAgony(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 17)
+				{
+					CarrionCall2(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 18)
+				{
+					VelvetApogee(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 19)
+				{
+					MonarchFeint(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 20)
+				{
 					FakeOuterAgony(P, NPC);
 					return;
 				}
-				/*
-				else if (AI_RotationNumber == 1)
+				else if (AI_RotationNumber == 21)
+				{
+					VelvetAzimuth(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 22)
+				{
+					DelayedRightwardRend(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 23)
+				{
+					MonarchFeint(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 24)
+				{
+					FakeRightwardRend(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 25)
+				{
+					IvoryStake1(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 26)
+				{
+					CarrionCall(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 27)
+				{
+					DelayedRightwardRend(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 28)
+				{
+					MonarchFeint(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 29)
+				{
+					FakeInnerAgony(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 30)
+				{
+					ManifestBlade(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 31)
 				{
 					Bladework1(P, NPC);
 					return;
 				}
-				else if(AI_RotationNumber == 2)
+				else if(AI_RotationNumber == 32)
 				{
 					Bladework2(P, NPC);
 					return;
 				}
-				else if(AI_RotationNumber == 3)
+				else if(AI_RotationNumber == 33)
 				{
 					Bladework3(P, NPC);
 					return;
 				}
-				else if(AI_RotationNumber == 4)
+				else if(AI_RotationNumber == 34)
 				{
 					
 					BladeworkStrong2(P, NPC);
 					return;
 				}
-				else if (AI_RotationNumber == 5)
+				else if (AI_RotationNumber == 35)
 				{
 					Bladework2(P, NPC);
 					return;
 				}
-				else if (AI_RotationNumber == 6)
+				else if (AI_RotationNumber == 36)
 				{
 					BladeworkStrong1(P, NPC);
 					return;
 				}
-				else if (AI_RotationNumber == 7)
+				else if (AI_RotationNumber == 37)
 				{
 					BladeworkStrong3(P, NPC);
 					return;
 				}
-				else if (AI_RotationNumber == 8)
+				else if (AI_RotationNumber == 38)
 				{
 					Bladework1(P, NPC);
 					return;
 				}
-				else if (AI_RotationNumber == 9)
+				else if (AI_RotationNumber == 39)
 				{
 					BladeworkStrong4(P, NPC);
 					return;
 				}
-				else if (AI_RotationNumber == 10)
+				else if (AI_RotationNumber == 40)
 				{
 					RelinquishBlade(P, NPC);
 					return;
-				}*/
+				}
+				else if (AI_RotationNumber == 41)
+				{
+					CarrionCall(P, NPC);
+					return;
+				}
 				else
                 {
                     AI_RotationNumber = 0;
@@ -578,7 +695,7 @@ namespace StarsAbove.NPCs.Nalhaun
 			{
 				NPC.velocity.Y = NPC.velocity.Y - 0.01f;
 			}
-			if (Main.rand.NextBool(5) && NPC.ai[1] < 420f)
+			if (Main.rand.NextBool(5) && NPC.ai[1] < 120f)
 			{
 				
 				// This dust spawn adapted from the Pillar death code in vanilla.
@@ -594,21 +711,31 @@ namespace StarsAbove.NPCs.Nalhaun
 				}
 			}
 
-			if (NPC.ai[1] >= 480f)
+			if (NPC.ai[1] >= 120f)
 			{
 				for (int d = 0; d < 305; d++)
 				{
-					Dust.NewDust(NPC.Center, 0, 0, DustID.FireworkFountain_Red, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+					Dust.NewDust(NPC.Center, 0, 0, DustID.FireworkFountain_Red, 0f + Main.rand.Next(-45, 45), 0f + Main.rand.Next(-45, 45), 150, default(Color), 1.5f);
 				}
-				SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_NalhaunDeathQuote, NPC.Center);
+				
+				//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_TheGodsWillNotBeWatching, NPC.Center);
+				Main.LocalPlayer.GetModPlayer<BossPlayer>().nalhaunCutsceneProgress = 60;
+				if (!NPC.AnyNPCs(NPCType<NalhaunBossPhase2>()))
+				{
+					NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, NPCType<NalhaunBossPhase2>());
+					NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, NPCType<NalhaunPhase2WallsNPC>());
+
+				}
+				/*
+				
 
 				DownedBossSystem.downedNalhaun = true;
+				*/
 				if (Main.netMode == NetmodeID.Server)
 				{
 					NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
 				}
-				modPlayer.NalhaunActive = false;
-				modPlayer.NalhaunBarActive = false;
+				
 
 				NPC.life = 0;
 				NPC.HitEffect(0, 0);
@@ -619,7 +746,8 @@ namespace StarsAbove.NPCs.Nalhaun
 			return;
 		}
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
-		{
+		{/*
+		  * 
 			// Do NOT misuse the ModifyNPCLoot and OnKill hooks: the former is only used for registering drops, the latter for everything else
 			//Chance for a Prism
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.BurnishedPrism>(), 4));
@@ -648,13 +776,10 @@ namespace StarsAbove.NPCs.Nalhaun
 
 			// Finally add the leading rule
 			npcLoot.Add(ExpertRule);
-			npcLoot.Add(notExpertRule);
+			npcLoot.Add(notExpertRule);*/
+			npcLoot.RemoveWhere(rule => true);
 		}
-		public override void OnKill()
-		{
-			NPC.SetEventFlagCleared(ref DownedBossSystem.downedVagrant, -1);
-
-		}
+		
 		private void SpawnAnimation()
 		{
 			
@@ -673,10 +798,34 @@ namespace StarsAbove.NPCs.Nalhaun
 			}
 
 
-			NPC.position.X = Main.player[NPC.target].position.X;
+			NPC.position.X = Main.player[NPC.target].Center.X - 80;
 			NPC.position.Y = Main.player[NPC.target].position.Y-160;
 			NPC.netUpdate = true;
 			SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_NalhaunIntroQuote, NPC.Center);
+			for (int d = 0; d < 130; d++)
+			{
+				Dust.NewDust(NPC.Center, 0, 0, 0, 0f + Main.rand.Next(-30, 30), 0f + Main.rand.Next(-30, 30), 150, default(Color), 1.5f);
+			}
+			for (int d = 0; d < 144; d++)
+			{
+				Dust.NewDust(NPC.Center, 0, 0, 0, 0f + Main.rand.Next(-35, 35), 0f + Main.rand.Next(-35, 35), 150, default(Color), 1.5f);
+			}
+			for (int d = 0; d < 126; d++)
+			{
+				Dust.NewDust(NPC.Center, 0, 0, 133, 0f + Main.rand.Next(-36, 36), 0f + Main.rand.Next(-36, 36), 150, default(Color), 1.5f);
+			}
+			for (int d = 0; d < 130; d++)
+			{
+				Dust.NewDust(NPC.Center, 0, 0, 7, 0f + Main.rand.Next(-33, 33), 0f + Main.rand.Next(-33, 33), 150, default(Color), 1.5f);
+			}
+			for (int d = 0; d < 140; d++)
+			{
+				Dust.NewDust(NPC.Center, 0, 0, 269, 0f + Main.rand.Next(-33, 33), 0f + Main.rand.Next(-33, 33), 150, default(Color), 1.5f);
+			}
+			for (int d = 0; d < 150; d++)
+			{
+				Dust.NewDust(NPC.Center, 0, 0, 78, 0f + Main.rand.Next(-35, 35), 0f + Main.rand.Next(-35, 35), 150, default(Color), 1.5f);
+			}
 
 			AI_State = (float)ActionState.Idle;
 		}

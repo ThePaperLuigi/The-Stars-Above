@@ -1191,7 +1191,7 @@
           Nalhaun:
           {
             1: We meet again, {0}. I need your help.
-            2: I've given you the 'Ancient Shard' With it, you can call forth a powerful foe, the Burnished King.
+            2: I've given you the 'Ancient Crown.' With it, you can call forth a powerful foe, the Burnished King.
             3: If my hypothesis is correct, he may be an important step towards confronting the First Starbearer, and stopping his rampage.
             4: Prepare yourself: this fight will not be easy.
           }
@@ -5271,7 +5271,7 @@
         CaesuraOfDespair: Cæsura of Despair
         CarianDarkMoon: Carian Dark Moon
         ClaimhSolais: Claimh Solais
-        AncientShard: The Ancient Shard
+        AncientShard: The Ancient Crown
         Bifrost: Bifrost
         BladeOrb: Blade Orb
         BlueOrb: Blue Orb
@@ -6757,7 +6757,7 @@
         }
         Nalhaun:
         {
-          SpawnInfo: Confront this aged monarch with the Ancient Shard, given to you by your Starfarer after any Mechanical Boss is defeated. (The Vagrant of Space and Time must have been defeated.)
+          SpawnInfo: Confront this aged monarch with the Ancient Crown, given to you by your Starfarer after any Mechanical Boss is defeated. (The Vagrant of Space and Time must have been defeated.)
           DespawnMessage: The king's crimson blade rings true yet again...
         }
         Penthesilea:
@@ -6772,7 +6772,7 @@
         }
         Tsukiyomi2:
         {
-          SpawnInfo: The time has finally come. Craft all the Mnemonic Traces together to create the Mnemonic Sigil, and use it within the Observatory Hyperborea to be taken to Tsukiyomi's boss arena.
+          SpawnInfo: The time has finally come. Craft all the Mnemonic Traces together with the Celestriad Root to create the Mnemonic Sigil, and use it to be taken to Tsukiyomi's boss arena.
           DespawnMessage: ...
         }
       }

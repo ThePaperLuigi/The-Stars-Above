@@ -95,13 +95,14 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 			if(Projectile.ai[0] == 0)
 			{
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_Laevateinn, Projectile.Center);
+				Projectile.NewProjectile(null, Projectile.Center,Vector2.Zero, ModContent.ProjectileType<OuterAgonyAnimation>(), 0, 0f, Main.myPlayer);
 
 				for (int i = 0; i < 55; i++)
 				{
 					// Charging dust
 					Vector2 vector = new Vector2(
-						Main.rand.Next(-548, 548) * (0.003f * 200) - 10,
-						Main.rand.Next(-548, 548) * (0.003f * 200) - 10);
+						Main.rand.Next(-548, 548) * (0.003f * 100) - 10,
+						Main.rand.Next(-548, 548) * (0.003f * 100) - 10);
 					Dust d = Main.dust[Dust.NewDust(
 						Projectile.Center + vector, 1, 1,
 						DustID.Flare, 0, 0, 255,
@@ -116,8 +117,8 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 				{
 					// Charging dust
 					Vector2 vector = new Vector2(
-						Main.rand.Next(-548, 548) * (0.003f * 200) - 10,
-						Main.rand.Next(-548, 548) * (0.003f * 200) - 10);
+						Main.rand.Next(-548, 548) * (0.003f * 100) - 10,
+						Main.rand.Next(-548, 548) * (0.003f * 100) - 10);
 					Dust d = Main.dust[Dust.NewDust(
 						Projectile.Center + vector, 1, 1,
 						DustID.FireworkFountain_Red, 0, 0, 255,

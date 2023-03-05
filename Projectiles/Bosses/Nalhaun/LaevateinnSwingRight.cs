@@ -58,7 +58,7 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 				
 				firstSpawn = false;
             }
-			if (!NPC.AnyNPCs(ModContent.NPCType<NalhaunBoss>()))
+			if (!NPC.AnyNPCs(ModContent.NPCType<NalhaunBoss>()) && !NPC.AnyNPCs(ModContent.NPCType<NalhaunBossPhase2>()))
 			{
 
 				Projectile.Kill();
@@ -92,13 +92,13 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_Laevateinn, Projectile.Center);
 
 				int type = ProjectileType<NalhaunCleave>();
-				int damage = 100;
+				int damage = 50;
 
 				for (int ir = 0; ir < Main.maxNPCs; ir++)
 				{
 					NPC npc = Main.npc[ir];
 
-					if (npc.active && npc.type == ModContent.NPCType<NalhaunBoss>())
+					if (npc.active && (npc.type == ModContent.NPCType<NalhaunBoss>() || npc.type == ModContent.NPCType<NalhaunBossPhase2>()))
 					{
 						var entitySource = npc.GetSource_FromAI();
 
@@ -142,7 +142,7 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 			{
 				NPC other = Main.npc[i];
 
-				if (other.active && other.type == ModContent.NPCType<NalhaunBoss>())
+				if (other.active && (other.type == ModContent.NPCType<NalhaunBoss>() || other.type == ModContent.NPCType<NalhaunBossPhase2>()))
 				{
 					Projectile.position.X = other.Center.X - (int)(Math.Cos(rad) * dist) - Projectile.width / 2;
 					Projectile.position.Y = other.Center.Y - (int)(Math.Sin(rad) * dist) - Projectile.height / 2;

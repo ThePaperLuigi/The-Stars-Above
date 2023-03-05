@@ -36,7 +36,11 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 		public override void AI() {
 			DrawOriginOffsetY = 24;
 			DrawOffsetX = 0;
+			if (!NPC.AnyNPCs(ModContent.NPCType<NalhaunBoss>()))
+			{
 
+				Projectile.Kill();
+			}
 			if (++Projectile.frameCounter >= 8)
 			{
 				Projectile.frameCounter = 0;

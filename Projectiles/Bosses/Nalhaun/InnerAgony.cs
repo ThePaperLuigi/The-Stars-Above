@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -93,8 +94,10 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 
 			Projectile.ai[0]--;
 			if(Projectile.ai[0] == 0)
-            {
-				for (int i = 0; i < 25; i++)
+			{
+				SoundEngine.PlaySound(StarsAboveAudio.SFX_Laevateinn, Projectile.Center);
+
+				for (int i = 0; i < 45; i++)
 				{
 					Dust.NewDust(new Vector2(Projectile.Center.X, Projectile.Center.Y), 0, 0, DustID.FireworkFountain_Red, 0f + Main.rand.Next(-18, 18), 0f + Main.rand.Next(-18, 18), 150, default(Color), 1.7f);
 
@@ -104,7 +107,7 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 					Dust.NewDust(new Vector2(Projectile.Center.X, Projectile.Center.Y), 0, 0, DustID.Flare, 0f + Main.rand.Next(-28, 28), 0f + Main.rand.Next(-28, 28), 150, default(Color), 3.7f);
 
 				}
-				for (int i = 0; i < 23; i++)
+				for (int i = 0; i < 43; i++)
 				{
 					Dust.NewDust(new Vector2(Projectile.Center.X, Projectile.Center.Y), 0, 0, DustID.LifeDrain, 0f + Main.rand.Next(-18, 18), 0f + Main.rand.Next(-18, 18), 150, default(Color), 2.7f);
 

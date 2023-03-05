@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -22,15 +23,22 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 			Projectile.alpha = 255;
 			Projectile.damage = 200;
 			Projectile.penetrate = -1;
+			Projectile.hide = true;
 			Projectile.hostile = true;
 			Projectile.tileCollide = false;
 
 		}
+		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+		{
 
-		
+			behindNPCsAndTiles.Add(index);
+
+		}
+
 		public override void AI() {
 
-			
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
+
 			/*
 			for (int d = 0; d < 130; d++)
 			{
@@ -57,10 +65,10 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 				Dust.NewDust(Projectile.Center, 0, 0, 78, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-150, 150), 150, default(Color), 1.5f);
 			}
 			*/
-			Projectile.alpha--;
-				if (Projectile.alpha < 100)
+			Projectile.alpha -= 10;
+				if (Projectile.alpha < 200)
 				{
-					Projectile.alpha = 100;
+					Projectile.alpha = 200;
 				}
 
 			

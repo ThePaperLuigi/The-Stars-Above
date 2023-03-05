@@ -34,7 +34,11 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 		public override void AI() {
 			DrawOriginOffsetY = 26;
 			DrawOffsetX = 0;
+			if (!NPC.AnyNPCs(ModContent.NPCType<NalhaunBoss>()))
+			{
 
+				Projectile.Kill();
+			}
 			for (int d = 0; d < 2; d++)
 			{
 				Dust.NewDust(new Vector2(Projectile.Center.X + 70, Projectile.Center.Y - 15), 0, 0, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(-3, 3), 0f + Main.rand.Next(-3, 3), 150, default(Color), 0.8f);
