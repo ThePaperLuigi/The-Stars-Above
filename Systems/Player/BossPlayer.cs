@@ -19,6 +19,7 @@ using StarsAbove.NPCs;
 using Microsoft.Xna.Framework.Audio;
 using StarsAbove.NPCs.Vagrant;
 using StarsAbove.NPCs.Nalhaun;
+using StarsAbove.NPCs.Tsukiyomi;
 
 namespace StarsAbove
 {
@@ -26,6 +27,7 @@ namespace StarsAbove
     {
         public bool VagrantBarActive = false;//This changes depending on the boss
         public bool NalhaunBarActive = false;
+        public bool TsukiyomiBarActive = false;
 
         //These cast values are recycled for every boss. There should be a function that prevents bosses from overlapping.
         public int CastTime = 0;
@@ -35,6 +37,7 @@ namespace StarsAbove
         public int inVagrantFightTimer; //Check to see if you've recently hit the boss.
 
         public int nalhaunCutsceneProgress = 0;
+        public int tsukiCutsceneProgress = 0;
 
         public float WhiteAlpha;
         public float BlackAlpha;
@@ -81,9 +84,17 @@ namespace StarsAbove
                     NalhaunPhase2Walls(npc);
                     break;
                 }
+                if (npc.active && (npc.type == NPCType<NPCs.Tsukiyomi.TsukiyomiBoss>()))
+                {
+                    //If nearby the boss.
+                    TsukiyomiTeleport(npc);
+                    break;
+                }
+                
             }
 
             nalhaunCutsceneProgress--;
+            tsukiCutsceneProgress--;
 
             BlackAlpha = Math.Clamp(BlackAlpha, 0, 1);
             WhiteAlpha = Math.Clamp(WhiteAlpha, 0, 1);
@@ -105,6 +116,7 @@ namespace StarsAbove
 
             NalhaunBarActive = false;
             VagrantBarActive = false;
+            TsukiyomiBarActive = false;
             
         }
 
@@ -354,6 +366,43 @@ namespace StarsAbove
 
                         newPosition.Y += 8f;
                     }
+                }
+            }
+        }
+
+        private void TsukiyomiTeleport(NPC npc)
+        {
+            if (Player.whoAmI == Main.myPlayer)
+            {
+                int halfWidth = 900;
+                int halfHeight = 1800;
+                Vector2 newPosition = Player.position;
+                if (Player.position.X <= npc.Center.X - halfWidth)
+                {
+                    newPosition.X = npc.Center.X;
+
+                }
+                else if (Player.position.X + Player.width >= npc.Center.X + halfWidth)
+                {
+                    newPosition.X = npc.Center.X;
+
+                }
+                else if (Player.position.Y <= npc.Center.Y - halfHeight)
+                {
+                    newPosition.Y = npc.Center.Y;
+
+                }
+                else if (Player.position.Y + Player.height >= npc.Center.Y + halfHeight)
+                {
+                    newPosition.Y = npc.Center.Y;
+
+                }
+                if (newPosition != Player.position)
+                {
+                    Player.AddBuff(BuffType<Invincibility>(), 10);
+                    Player.Teleport(newPosition, 1, 0);
+                    NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, Player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
+
                 }
             }
         }

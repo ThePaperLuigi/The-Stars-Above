@@ -19,6 +19,7 @@ namespace StarsAbove.UI.CutsceneUI
 
 		private UIVideo edinGenesisQuasarVideo;
         private UIVideo nalhaunCutsceneVideo;
+        private UIVideo tsukiCutsceneVideo;
         public override void OnInitialize() {
 			
 			area = new UIElement();
@@ -40,6 +41,12 @@ namespace StarsAbove.UI.CutsceneUI
             };
 
             nalhaunCutsceneVideo = new UIVideo(Request<Video>("StarsAbove/Video/NalhaunBossCutscene"))
+            {
+                ScaleToFit = true,
+                WaitForStart = true,
+                DoLoop = false
+            };
+            tsukiCutsceneVideo = new UIVideo(Request<Video>("StarsAbove/Video/TsukiyomiBossCutscene"))
             {
                 ScaleToFit = true,
                 WaitForStart = true,
@@ -80,6 +87,7 @@ namespace StarsAbove.UI.CutsceneUI
 
             AstarteDriver(modPlayer);
             NalhaunCutscene(bossPlayer);
+            TsukiCutscene(bossPlayer);
 
             base.Update(gameTime);
         }
@@ -125,8 +133,9 @@ namespace StarsAbove.UI.CutsceneUI
         private void NalhaunCutscene(BossPlayer modPlayer)
         {
             UIVideo Video = nalhaunCutsceneVideo;
+            var cutsceneProgress = modPlayer.nalhaunCutsceneProgress;
 
-            if (modPlayer.nalhaunCutsceneProgress <= 60 && modPlayer.nalhaunCutsceneProgress > 0)
+            if (cutsceneProgress <= 60 && cutsceneProgress > 0)
             {
                 modPlayer.BlackAlpha += 0.05f;
             }
@@ -135,11 +144,7 @@ namespace StarsAbove.UI.CutsceneUI
                 modPlayer.BlackAlpha -= 0.1f;
             }
             
-
-            
-
-
-            if (modPlayer.nalhaunCutsceneProgress == 1)
+            if (cutsceneProgress == 1)
             {
 
                 Video.FinishedVideo = false;
@@ -153,6 +158,65 @@ namespace StarsAbove.UI.CutsceneUI
                 if (CutsceneExit)
                 {
                     modPlayer.BlackAlpha = 1f;
+                    CutsceneExit = false;
+                }
+
+                Video.Remove();
+            }
+        }
+        private void TsukiCutscene(BossPlayer modPlayer)
+        {
+            UIVideo Video = tsukiCutsceneVideo;
+            var cutsceneProgress = modPlayer.tsukiCutsceneProgress;
+            bool introWhite = true; //If true, intro is white. If false, intro is black.
+            bool outroWhite = false; //If true, outro is white. If false, outro is black.
+
+            if (cutsceneProgress <= 60 && cutsceneProgress > 0)
+            {//If the cutscene hasn't started yet, give time for the screen to fade.
+
+                if(introWhite)
+                {
+                    modPlayer.WhiteAlpha += 0.05f;
+                }
+                else
+                {
+                    modPlayer.BlackAlpha += 0.05f;
+                }
+                
+                
+            }
+            else
+            {
+                modPlayer.WhiteAlpha -= 0.05f;
+                modPlayer.BlackAlpha -= 0.05f;
+            }
+
+
+
+
+
+            if (cutsceneProgress == 1)
+            {
+
+                Video.FinishedVideo = false;
+                Video.StartVideo = true;
+                CutsceneExit = true;
+                area.Append(Video);
+
+            }
+            if (Video.FinishedVideo)
+            {
+                if (CutsceneExit)
+                {
+                    if(outroWhite)
+                    {
+                        modPlayer.WhiteAlpha = 1f;
+                    }
+                    else
+                    {
+                        modPlayer.BlackAlpha = 1f;
+
+                    }
                     CutsceneExit = false;
                 }
 

@@ -294,12 +294,12 @@ namespace StarsAbove.NPCs.Nalhaun
 				}
 				else if (AI_RotationNumber == 16)
 				{
-					Transplacement(P, NPC);
+					IvoryStake2(P, NPC);
 					return;
 				}
 				else if (AI_RotationNumber == 17)
 				{
-					DelayedOuterAgony(P, NPC);
+					VelvetAzimuth(P, NPC);
 					return;
 				}
 				else if (AI_RotationNumber == 18)
@@ -319,12 +319,12 @@ namespace StarsAbove.NPCs.Nalhaun
 				}
 				else if (AI_RotationNumber == 21)
 				{
-					VelvetAzimuth(P, NPC);
+					Bladework3(P, NPC);
 					return;
 				}
 				else if (AI_RotationNumber == 22)
 				{
-					Bladework3(P, NPC);
+					DelayedInnerAgony(P, NPC);
 					return;
 				}
 				else if (AI_RotationNumber == 23)

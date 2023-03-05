@@ -97,24 +97,17 @@ namespace StarsAbove.NPCs.Nalhaun
 			// Automatically group with other bosses
 			NPCID.Sets.BossBestiaryPriority.Add(Type);
 
-			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
-			{ // Influences how the NPC looks in the Bestiary
-				CustomTexturePath = "StarsAbove/Bestiary/PerseusPortrait", // If the NPC is multiple parts like a worm, a custom texture for the Bestiary is encouraged.
-				Position = new Vector2(0f, 0f),
-				PortraitScale = 1f,
-				PortraitPositionXOverride = 0f,
-				PortraitPositionYOverride = 0f
+			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			{
+				Hide = true // Hides this NPC from the bestiary
 			};
-			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifier);
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, bestiaryData);
 
 		}
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
 			
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-
-				new FlavorTextBestiaryInfoElement($"Mods.StarsAbove.Bestiary.{Name}")
-				});
+			
 
 		}
 		public override void SetDefaults()
@@ -136,7 +129,7 @@ namespace StarsAbove.NPCs.Nalhaun
 			DrawOffsetY = 42;
 
 			NPC.HitSound = SoundID.NPCHit54;
-			NPC.DeathSound = SoundID.NPCDeath52;
+			//NPC.DeathSound = SoundID.NPCDeath52;
 
 
 			Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/ShadowsCastByTheMighty");
@@ -682,6 +675,7 @@ namespace StarsAbove.NPCs.Nalhaun
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
 			Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/silence");
 			NPC.dontTakeDamage = true;
+			
 			NPC.ai[1] += 1f; // increase our death timer.
 							 //npc.velocity = Vector2.UnitY * npc.velocity.Length();
 			NPC.velocity.X *= 0.95f; // lose inertia
@@ -695,7 +689,8 @@ namespace StarsAbove.NPCs.Nalhaun
 			{
 				NPC.velocity.Y = NPC.velocity.Y - 0.01f;
 			}
-			if (Main.rand.NextBool(5) && NPC.ai[1] < 120f)
+			
+			if (Main.rand.NextBool(5) && NPC.ai[1] < 20f)
 			{
 				
 				// This dust spawn adapted from the Pillar death code in vanilla.
@@ -711,15 +706,16 @@ namespace StarsAbove.NPCs.Nalhaun
 				}
 			}
 
-			if (NPC.ai[1] >= 120f)
+			if (NPC.ai[1] >= 20f)
 			{
+				Main.LocalPlayer.GetModPlayer<BossPlayer>().nalhaunCutsceneProgress = 10;
 				for (int d = 0; d < 305; d++)
 				{
 					Dust.NewDust(NPC.Center, 0, 0, DustID.FireworkFountain_Red, 0f + Main.rand.Next(-45, 45), 0f + Main.rand.Next(-45, 45), 150, default(Color), 1.5f);
 				}
 				
 				//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_TheGodsWillNotBeWatching, NPC.Center);
-				Main.LocalPlayer.GetModPlayer<BossPlayer>().nalhaunCutsceneProgress = 60;
+				
 				if (!NPC.AnyNPCs(NPCType<NalhaunBossPhase2>()))
 				{
 					NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, NPCType<NalhaunBossPhase2>());

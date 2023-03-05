@@ -1611,11 +1611,7 @@ namespace StarsAbove
                 inNalhaunFightTimer = 1200;
 
             }
-            if (target.type == NPCType<Tsukiyomi>())
-            {
-                inTsukiyomiFightTimer = 1200;
-
-            }
+            
             if (target.type == NPCType<Arbitration>())
             {
                 inArbiterFightTimer = 1200;
@@ -1814,11 +1810,7 @@ namespace StarsAbove
 
                 }
             }
-            if (target.type == NPCType<Tsukiyomi>())
-            {
-                inTsukiyomiFightTimer = 1200;
-
-            }
+            
             if (target.type == NPCType<Arbitration>())
             {
                 inArbiterFightTimer = 1200;
@@ -7241,16 +7233,7 @@ namespace StarsAbove
 
             
             
-            for (int k = 0; k < 200; k++)
-            {
-                NPC npc = Main.npc[k];
-                if (npc.active && npc.type == NPCType<Tsukiyomi>())
-                {
-
-                    TsukiyomiTeleport(npc);
-                    break;
-                }
-            }
+            
             for (int k = 0; k < 200; k++)
             {
                 NPC npc = Main.npc[k];
