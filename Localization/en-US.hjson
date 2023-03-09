@@ -3001,14 +3001,14 @@
         Arbitration: Arbitration
         AstralCell: Astral Cell
         DummyEnemy: Dummy Enemy
-        Nalhaun: Nalhaun, The Burnished King
+        NalhaunBoss: Nalhaun, The Burnished King
+        NalhaunBossPhase2: Nalhaun, Ruler of the Hollow World
         PaintedAttendantA: Living Brush
         PaintedAttendantB: Living Brush
         Penthesilea: Penthesilea, the Witch of Ink
         PrismLoot: Prismatic Core
         SpectreOfLight: Spectre Of Light
-        Tsukiyomi: Tsukiyomi, the First Starfarer
-        Tsukiyomi2: Tsukiyomi, the Progeny of Salvation
+        TsukiyomiBoss: Tsukiyomi, the First Starfarer
         VagrantOfSpaceAndTime: The Vagrant of Space and Time
         WarriorOfLight: The Warrior Of Light
       }
@@ -6770,7 +6770,7 @@
           SpawnInfo: This foe embodies true fear... Obtain the Crux from your Starfarer after Golem is defeated. (The Vagrant of Space and Time must have been defeated.)
           DespawnMessage: ...
         }
-        Tsukiyomi2:
+        TsukiyomiBoss:
         {
           SpawnInfo: The time has finally come. Craft all the Mnemonic Traces together with the Celestriad Root to create the Mnemonic Sigil, and use it to be taken to Tsukiyomi's boss arena.
           DespawnMessage: ...
@@ -6786,7 +6786,7 @@
         Penthesilea: An incredibly powerful mage, the Painted Witch once ruled a planet entirely 'drawn' by her. Ever the trickster, she mastered expert magecraft simply to play pranks upon the works of her colleagues, a testament to her ingenuity. She met her end at the hands of the First Starbearer after a long conflict- if she were to persist, she would interfere with his plans...
         PrismLoot: The latent magical energy of Prismatic Cores can sometimes influence them to drift around the galaxy. Catch one, and you'll be rewarded!
         SpectreOfLight: An otherworldy hero, summoned forth by the First Starbearer to assail this land.
-        Tsukiyomi2: The First Starfarer, Tsukiyomi, who holds dominion over orbiting celestial bodies. The gravitational pull of a planet and its natural satellites gives her power. She led the Warrior of Light astray- using his strength and goodwill to conquer and destroy myriad stars... and yet...
+        TsukiyomiBoss: The First Starfarer, Tsukiyomi, who holds dominion over orbiting celestial bodies. The gravitational pull of a planet and its natural satellites gives her power. She led the Warrior of Light astray- using his strength and goodwill to conquer and destroy myriad stars... and yet...
         VagrantOfSpaceAndTime: The enigmatic Starfarer Perseus. His outward appearance is that of utmost confidence... but he's just kind of a dork trying to look cool. His sisters agree on this. He continues to have power over spatial distances, but seems to have lost the power to control time (but not the moniker.)
         WarriorOfLight: The Warrior of Light, or the First Starbearer, once championed justice in the galaxy through his actions and the aid of his Starfarer. He once ruled a peaceful world, but was forced to watch helplessly as his people met their demise, vowing to never again let others share the same fate- no matter the cost.
         AsteroidWorm: These incredibly hardy creatures have grown the capability to aimlessly drift through the vacuum of space- perhaps not the best depiction of evolution. While their meals are scarce, their need for food is nigh nonexistant. Gifted with a strong outer shell, but low overall attacking strength.

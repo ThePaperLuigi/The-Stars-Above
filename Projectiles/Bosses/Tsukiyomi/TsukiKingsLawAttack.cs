@@ -7,21 +7,21 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 {
-    public class TsukiStarchild : ModProjectile
+    public class TsukiKingsLawAttack : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Luminary Wand");     //The English name of the projectile
+			DisplayName.SetDefault("Caesura of Despair");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 50;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
-			Main.projFrames[Projectile.type] = 4;
 		}
 
 		public override void SetDefaults() {
-			Projectile.width = 44;               //The width of projectile hitbox
-			Projectile.height = 44;              //The height of projectile hitbox
+			Projectile.width = 68;               //The width of projectile hitbox
+			Projectile.height = 68;              //The height of projectile hitbox
 			Projectile.aiStyle = -1;             //The ai style of the projectile, please reference the source code of Terraria
 			Projectile.friendly = false;         //Can the projectile deal damage to enemies?
 			Projectile.hostile = false;         //Can the projectile deal damage to the player?
@@ -37,7 +37,7 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 		}
 		public override bool PreDraw(ref Color lightColor)
 		{
-			default(Effects.WhiteTrail).Draw(Projectile);
+			default(Effects.PinkTrail).Draw(Projectile);
 
 			return true;
 		}
@@ -54,7 +54,11 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 		{
 			Player player = Main.player[Projectile.owner];
 
-			//Orbit. ai[1] is the rotation starting position
+			Projectile.ai[0]--;
+			if(Projectile.ai[0] <= 0)
+            {
+				Projectile.Kill();
+            }
 
 			if (firstSpawn)
 			{
@@ -68,85 +72,38 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 
 				Projectile.Kill();
 			}
-			if (spawnProgress < 0.8)
-			{
-				Projectile.hostile = false;
-				spawnProgress += 0.03f;
-
-			}
-			else
-			{
-				
-				spawnProgress += 0.01f;
-				//Projectile.alpha += 35;
-			}
-			spawnProgress = Math.Clamp(spawnProgress, 0, 1f);
-			if (spawnProgress >= 1f)
-            {
-				Projectile.hostile = true;
-			}
+			
 			if (Projectile.alpha > 250)
 			{
 				Projectile.Kill();
 			}
 			
-			deg = Projectile.ai[1];
-			Projectile.ai[1] += 0.6f;
-
-			//deg = 10;
-
-			double rad = deg * (Math.PI / 180);
-			double dist = MathHelper.Lerp(1200, 100, EaseHelper.InOutQuad(spawnProgress));
-			
-			for (int i = 0; i < Main.maxNPCs; i++)
-			{
-				NPC other = Main.npc[i];
-
-				if (other.active && (other.type == ModContent.NPCType<TsukiyomiBoss>() || other.type == ModContent.NPCType<NalhaunBossPhase2>()))
-
-				{
-					Projectile.position.X = other.Center.X - (int)(Math.Cos(rad) * dist) - Projectile.width / 2;
-					Projectile.position.Y = other.Center.Y - (int)(Math.Sin(rad) * dist) - Projectile.height / 2;
-					//Projectile.rotation = Vector2.Normalize(other.Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(0f);
-					
-				}
-			}
-
-			Projectile.ai[0]++;
+			Projectile.ai[1]++;
 
 			SearchForTargets(out bool foundTarget, out Vector2 targetCenter);
 
-			if (Projectile.ai[0] >= 60)
+			if (Projectile.ai[1] >= 60)
 			{
-				int type = ModContent.ProjectileType<TsukiBolt>();
-				SoundEngine.PlaySound(StarsAboveAudio.SFX_StarbitShoot, Projectile.Center);
+
+				float speed = 30f;
+				int type = ProjectileType<TsukiKingsLawProjectile>();
+				int damage = 40;
 
 
-				float launchSpeed = 8f;
-				Vector2 direction = Vector2.Normalize(targetCenter - Projectile.Center);
-				Vector2 velocity = direction * launchSpeed;
 
-				Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, velocity.X,velocity.Y, type, 25, 0f, Main.myPlayer);
-
-				Projectile.ai[0] = 0;
-			}
-
-
-			// Some visuals here
-			int frameSpeed = 5;
-			Projectile.frameCounter++;
-			if (Projectile.frameCounter >= frameSpeed)
-			{
-				Projectile.frameCounter = 0;
-				Projectile.frame++;
-				if (Projectile.frame >= Main.projFrames[Projectile.type])
+				for (int ir = 0; ir < 5; ir++)
 				{
-					Projectile.frame = 0;
-				}
-			}
+					Vector2 positionNew = Vector2.Lerp(new Vector2(targetCenter.X - 600, targetCenter.Y - 800), new Vector2(targetCenter.X + 700, targetCenter.Y - 800), (float)ir / 5);
+					float rotation = (float)Math.Atan2(positionNew.Y - (targetCenter.Y + (5 * 0.5f)), positionNew.X - (targetCenter.X + (5 * 0.5f)));
+					Vector2 velocity = new Vector2((float)((Math.Cos(rotation) * speed) * -1), (float)((Math.Sin(rotation) * speed) * -1));
+					Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y) * .2f;
 
-			
-			Lighting.AddLight(Projectile.Center, Color.White.ToVector3() * 0.78f);
+					Projectile.NewProjectile(null, positionNew, perturbedSpeed, type, damage, 0f, Main.myPlayer);
+
+
+				}
+				Projectile.ai[1] = 0;
+			}
 
 		}
 		private void SearchForTargets(out bool foundTarget, out Vector2 targetCenter)
@@ -176,26 +133,13 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 		}
 		public override void Kill(int timeLeft)
 		{
-			// This code and the similar code above in OnTileCollide spawn dust from the tiles collided with. SoundID.Item10 is the bounce sound you hear.
-			//Collision.HitTiles(projectile.position + projectile.velocity, projectile.velocity, projectile.width, projectile.height);
-			for (int d = 0; d < 12; d++)
-			{
-				Dust.NewDust(new Vector2(Projectile.Center.X, Projectile.Center.Y), 0, 0, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(-3, 3), 0f + Main.rand.Next(-3, 3), 150, default(Color), 1.5f);
-			}
-			// Play explosion sound
-			//Main.PlaySound(SoundID.Drown, projectile.position);
-			// Smoke Dust spawn
-
-			// Fire Dust spawn (CHANGE TO ICE DUST)
-
-			// Large Smoke Gore spawn
+			
 
 
 		}
 		public override void OnHitPlayer(Player target, int damage, bool crit)
 		{
-			target.AddBuff(BuffID.OnFire, 60);
-			base.OnHitPlayer(target, damage, crit);
+			
 		}
 	}
 }

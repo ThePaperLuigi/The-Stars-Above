@@ -96,7 +96,7 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 
 
 
-						Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y - 20, 40, 0, type, Projectile.damage*3, 0f, Main.myPlayer);
+						Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y - 20, 40, 0, type, Projectile.damage, 0f, Main.myPlayer);
 						for (int d = 0; d < 10; d++)
 						{
 							Dust.NewDust(Projectile.Center, 0, 0, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(0, 20), 0f + Main.rand.Next(0, 20), 150, default(Color), 1.5f);
@@ -118,7 +118,7 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 							{
 								Dust.NewDust(Projectile.Center, 0, 0, DustID.LifeDrain, 0f + Main.rand.Next(-3, 3), 0f + Main.rand.Next(-3, 3), 150, default(Color), 1.5f);
 							}
-
+							
 						}
 					}
 					else
@@ -132,9 +132,9 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 
 
 
-						Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y - 17, 20, 0, type, Projectile.damage/3, 0f, Main.myPlayer);
-						Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X - 80, position.Y - 17, 19, 0, type, Projectile.damage/3, 0f, Main.myPlayer);
-						Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X - 140, position.Y - 17, 18, 0, type, Projectile.damage/3, 0f, Main.myPlayer);
+						Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y - 17, 20, 0, type, Projectile.damage, 0f, Main.myPlayer);
+						Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X - 80, position.Y - 17, 19, 0, type, Projectile.damage, 0f, Main.myPlayer);
+						Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X - 140, position.Y - 17, 18, 0, type, Projectile.damage, 0f, Main.myPlayer);
 
 						for (int d = 0; d < 20; d++)
 						{

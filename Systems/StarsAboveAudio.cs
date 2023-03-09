@@ -537,6 +537,10 @@ namespace StarsAbove
 		{
 
 		};
+		public static readonly SoundStyle Tsukiyomi_Stronger = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/StrongerThanIHoped")
+		{
+
+		};
 		//Aspected weapon voice lines.
 		public static readonly SoundStyle Tsukiyomi_CarianDarkMoon = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/CarianDarkMoon")
 		{
@@ -580,6 +584,10 @@ namespace StarsAbove
 
 		};
 		public static readonly SoundStyle Tsukiyomi_Takonomicon = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/Takonomicon")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_KeyOfTheKingsLaw = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/KeyOfTheKingsLaw")
 		{
 
 		};

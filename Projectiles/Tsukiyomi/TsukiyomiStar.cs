@@ -36,7 +36,14 @@ namespace StarsAbove.Projectiles.Tsukiyomi
 			
 			return false;
 		}
+		public override void ModifyDamageHitbox(ref Rectangle hitbox)
+		{
+			hitbox.Width /= 2;
+			hitbox.Height /= 2;
 
+
+			base.ModifyDamageHitbox(ref hitbox);
+		}
 		public override void AI()
 		{
 			

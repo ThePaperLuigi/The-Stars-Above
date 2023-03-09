@@ -3022,7 +3022,7 @@ namespace StarsAbove
                 {
                     if (Player.buffTime[i] == 1)
                     {
-                        Player.AddBuff(BuffType<Buffs.ArtificeSirenCooldown>(), 7200);//7200 is 2 minutes
+                        Player.AddBuff(BuffType<Buffs.ArtificeSirenCooldown>(), 3600);//3600 is 1 min
                     }
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
