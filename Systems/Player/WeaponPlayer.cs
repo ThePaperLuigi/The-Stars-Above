@@ -2911,7 +2911,7 @@ namespace StarsAbove
 
             }
 
-            if (Player.HasBuff(BuffType<Buffs.FlashOfEternity>()))
+            if (Player.HasBuff(BuffType<Buffs.FlashOfEternity>()) && Player.whoAmI == Main.myPlayer)
             {
                 for (int i = 0; i < 2; i++)
                 {

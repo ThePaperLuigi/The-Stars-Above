@@ -58,9 +58,6 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 
 			Projectile.ai[0]++;
 			
-			float Speed = 1f;
-			float Speed2 = -1f;
-
 			SearchForTargets(out bool foundTarget, out Vector2 targetCenter);
 
 			if (Projectile.ai[0] >= 30)
@@ -110,11 +107,6 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 				}
 			}
 
-			// friendly needs to be set to true so the minion can deal contact damage
-			// friendly needs to be set to false so it doesn't damage things like target dummies while idling
-			// Both things depend on if it has a target or not, so it's just one assignment here
-			// You don't need this assignment if your minion is shooting things instead of dealing contact damage
-			//Projectile.friendly = foundTarget;
 		}
 
 		public override void Kill(int timeLeft)

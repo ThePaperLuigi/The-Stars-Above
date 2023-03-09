@@ -68,8 +68,8 @@ namespace StarsAbove.UI
 			// Here we get the screen dimensions of the barFrame element, then tweak the resulting rectangle to arrive at a rectangle within the barFrame texture that we will draw the gradient. These values were measured in a drawing program.
 			Rectangle hitbox = barFrame.GetInnerDimensions().ToRectangle();
 			hitbox.X += 22;
-			hitbox.Width -= 38;
-			hitbox.Y += 10;
+			hitbox.Width -= 42;
+			hitbox.Y += 14;
 			hitbox.Height -= 24;
 
 			// Now, using this hitbox, we draw a gradient by drawing vertical lines while slowly interpolating between the 2 colors.

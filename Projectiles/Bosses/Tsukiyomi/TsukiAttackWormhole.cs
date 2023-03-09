@@ -3,9 +3,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace StarsAbove.Projectiles.Tsukiyomi
+namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 {
-    public class WormholeLong : ModProjectile
+    public class TsukiAttackWormhole : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Tsukiyomi's Gateway");     //The English name of the projectile

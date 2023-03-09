@@ -2316,7 +2316,7 @@ namespace StarsAbove
             Vector2 centerScreen = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
             if (lookAtTsukiyomi)
             {
-                screenCache = Vector2.Lerp(screenCache, TsukiyomiLocation - centerScreen, 0.1f);
+                screenCache = Vector2.Lerp(screenCache, new Vector2(TsukiyomiLocation.X, TsukiyomiLocation.Y + 200) - centerScreen, 0.1f);
                 Main.screenPosition = screenCache;
 
             }

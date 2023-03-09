@@ -72,9 +72,10 @@ namespace StarsAbove.Items.Consumables
 			}
 			else
             {
-				var tilePos = player.Bottom.ToTileCoordinates16();
-				Tile tile = Framing.GetTileSafely(tilePos.X, tilePos.Y);
-				if (tile.TileType == TileID.AmethystGemspark && SubworldSystem.IsActive<EternalConfluence>())
+				//var tilePos = player.Bottom.ToTileCoordinates16();
+				//Tile tile = Framing.GetTileSafely(tilePos.X, tilePos.Y);
+				//tile.TileType == TileID.AmethystGemspark &&
+				if (SubworldSystem.IsActive<EternalConfluence>())
 				{
 
 					if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("The expanse around you begins to contract..."), 210, 100, 175); }
