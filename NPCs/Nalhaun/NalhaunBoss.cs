@@ -713,14 +713,17 @@ namespace StarsAbove.NPCs.Nalhaun
 				{
 					Dust.NewDust(NPC.Center, 0, 0, DustID.FireworkFountain_Red, 0f + Main.rand.Next(-45, 45), 0f + Main.rand.Next(-45, 45), 150, default(Color), 1.5f);
 				}
-				
-				//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_TheGodsWillNotBeWatching, NPC.Center);
-				
-				if (!NPC.AnyNPCs(NPCType<NalhaunBossPhase2>()))
-				{
-					NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, NPCType<NalhaunBossPhase2>());
-					NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, NPCType<NalhaunPhase2WallsNPC>());
 
+				//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_TheGodsWillNotBeWatching, NPC.Center);
+
+				if (Main.netMode != NetmodeID.MultiplayerClient)
+				{
+					if (!NPC.AnyNPCs(NPCType<NalhaunBossPhase2>()))
+					{
+						NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, NPCType<NalhaunBossPhase2>());
+						NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, NPCType<NalhaunPhase2WallsNPC>());
+
+					}
 				}
 				/*
 				

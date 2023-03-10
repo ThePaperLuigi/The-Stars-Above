@@ -97,6 +97,12 @@ namespace StarsAbove
 		private UserInterface _TsukiyomiCastBarUserInterface;
 		internal TsukiyomiCastBar TsukiyomiCastBar;
 
+		private UserInterface _CastorCastBarUserInterface;
+		internal CastorCastBar CastorCastBar;
+
+		private UserInterface _PolluxCastBarUserInterface;
+		internal PolluxCastBar PolluxCastBar;
+
 		private UserInterface _lifeForceBarUserInterface;
 		internal lifeForceBar lifeForceBar;
 
@@ -273,6 +279,14 @@ namespace StarsAbove
 				_TsukiyomiCastBarUserInterface = new UserInterface();
 				_TsukiyomiCastBarUserInterface.SetState(TsukiyomiCastBar);
 
+				CastorCastBar = new CastorCastBar();
+				_CastorCastBarUserInterface = new UserInterface();
+				_CastorCastBarUserInterface.SetState(CastorCastBar);
+
+				PolluxCastBar = new PolluxCastBar();
+				_PolluxCastBarUserInterface = new UserInterface();
+				_PolluxCastBarUserInterface.SetState(PolluxCastBar);
+
 				lifeForceBar = new lifeForceBar();
 				_lifeForceBarUserInterface = new UserInterface();
 				_lifeForceBarUserInterface.SetState(lifeForceBar);
@@ -427,6 +441,8 @@ namespace StarsAbove
 			_NalhaunCastBarUserInterface?.Update(gameTime);
 			_ArbiterCastBarUserInterface?.Update(gameTime);
 			_TsukiyomiCastBarUserInterface?.Update(gameTime);
+			_CastorCastBarUserInterface?.Update(gameTime);
+			_PolluxCastBarUserInterface?.Update(gameTime);
 			_VagrantCastBarUserInterface?.Update(gameTime);
 			_PenthCastBarUserInterface?.Update(gameTime);
 			_lifeForceBarUserInterface?.Update(gameTime);
@@ -816,6 +832,24 @@ namespace StarsAbove
 					delegate
 					{
 						_TsukiyomiCastBarUserInterface.Draw(Main.spriteBatch, new GameTime());
+						return true;
+					},
+					InterfaceScaleType.UI)
+				);
+				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+					"StarsAbove: Castor Cast Bar",
+					delegate
+					{
+						_CastorCastBarUserInterface.Draw(Main.spriteBatch, new GameTime());
+						return true;
+					},
+					InterfaceScaleType.UI)
+				);
+				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+					"StarsAbove: Pollux Cast Bar",
+					delegate
+					{
+						_PolluxCastBarUserInterface.Draw(Main.spriteBatch, new GameTime());
 						return true;
 					},
 					InterfaceScaleType.UI)

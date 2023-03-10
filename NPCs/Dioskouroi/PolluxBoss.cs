@@ -25,12 +25,13 @@ using Terraria.Graphics.Shaders;
 using StarsAbove.Projectiles.Bosses.Tsukiyomi;
 using StarsAbove.Projectiles;
 using SubworldLibrary;
+using StarsAbove.Projectiles.Bosses.Dioskouroi;
 
-namespace StarsAbove.NPCs.Tsukiyomi
+namespace StarsAbove.NPCs.Dioskouroi
 {
 	[AutoloadBossHead]
 
-	public class TsukiyomiBoss : ModNPC
+	public class PolluxBoss : ModNPC
 	{
 
 		
@@ -41,16 +42,9 @@ namespace StarsAbove.NPCs.Tsukiyomi
 		{
 			Empty,
 			Idle1,
-			Idle2,
-			Idle3,
-			Idle4,
-			Idle5,
-
+			
 			Cast1,
-			Cast2,
-			Cast3,
-			Cast4,
-			Cast5,
+			
 
 			Defeat
 
@@ -69,9 +63,9 @@ namespace StarsAbove.NPCs.Tsukiyomi
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Tsukiyomi, the First Starfarer");
+			DisplayName.SetDefault("Pollux, Baleborn Force");
 			
-			Main.npcFrameCount[NPC.type] = 11; // make sure to set this for your modnpcs.
+			Main.npcFrameCount[NPC.type] = 3; // make sure to set this for your modnpcs.
 
 			// Specify the debuffs it is immune to
 			/*NPCID.Sets.DebuffImmunitySets.Add(Type, new NPCDebuffImmunityData
@@ -98,7 +92,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 		}
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
-			int associatedNPCType = ModContent.NPCType<WarriorOfLight>();
+			int associatedNPCType = ModContent.NPCType<CastorBoss>();
 			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[associatedNPCType], quickUnlock: true);
 
 			// We can use AddRange instead of calling Add multiple times in order to add multiple items at once
@@ -111,20 +105,20 @@ namespace StarsAbove.NPCs.Tsukiyomi
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 1450000;
+			NPC.lifeMax = 150000;
 			NPC.damage = 0;
 			NPC.defense = 15;
 			NPC.knockBackResist = 0f;
-			NPC.width = 150;
-			NPC.height = 150;
+			NPC.width = 100;
+			NPC.height = 100;
 			NPC.scale = 1f;
 			NPC.npcSlots = 1f;
 			NPC.aiStyle = -1;
 			NPC.lavaImmune = true;
-			NPC.noGravity = true;
+			NPC.noGravity = false;
 			NPC.noTileCollide = false;
 			NPC.value = 0f;
-			DrawOffsetY = 42;
+			//DrawOffsetY = 42;
 
 			//NPC.HitSound = SoundID.NPCHit54;
 			//NPC.DeathSound = SoundID.NPCDeath52;
@@ -172,7 +166,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
             var bossPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
-            bossPlayer.TsukiyomiBarActive = true;
+            bossPlayer.PolluxBarActive = true;
 
             NPC.velocity *= 0.98f; //So the dashes don't propel the boss away
 
@@ -206,256 +200,14 @@ namespace StarsAbove.NPCs.Tsukiyomi
 				switch (AI_RotationNumber)
                 {
 					case 0:
-						ThreadsOfFate1(P, NPC);
+						ClashPollux(P, NPC);
 						break;
 					case 1:
-						Anosios1(P, NPC);
+						ClashPollux(P, NPC);
 						break;
-					case 2:
-						ThreadsOfFate2(P, NPC);
-						break;
-					case 3:
-						ThreadsOfFate1(P, NPC);
-						break;
-					case 4:
-						CelestialOpposition(P, NPC);
-						break;
-					case 5:
-						HypertunedMeteorShower(P, NPC);
-						break;
-					case 6:
-						ThreadsOfFate1(P, NPC);
-						break;
-					case 7:
-						OriginStarfall(P, NPC);
-						break;
-					case 8:
-						ThreadsOfFate3(P, NPC);
-						break;
-					case 9:
-						GraspingVoid(P, NPC);
-						break;
-					case 10:
-						HypertunedMeteorShower(P, NPC);
-						break;
-					case 11:
-						ThreadsOfFate3(P, NPC);
-						break;
-					case 12:
-						CosmicUpsurge(P, NPC);
-						break;
-					case 13:
-						ThreadsOfFate1(P, NPC);
-						break;
-					case 14:
-						OriginStarfall2(P, NPC);
-						break;
-					case 15:
-						AI_RotationNumber = 27; //Skip ahead because this phase takes too long
-						break;
-					case 16:
-						CelestialOpposition(P, NPC);
-						break;
-					case 17:
-						ThreadsOfFate1(P, NPC);
-						break;
-					case 18:
-						GraspingVoid(P, NPC);
-						break;
-					case 19:
-						ThreadsOfFate2(P, NPC);
-						break;
-					case 20:
-						CosmicUpsurge(P, NPC);
-						break;
-					case 21:
-						ThreadsOfFate1(P, NPC);
-						break;
-					case 22:
-						AethericDisruption(P, NPC);
-						break;
-					case 23:
-						ThreadsOfFate3(P, NPC);
-						break;
-					case 24:
-						Anosios1(P, NPC);
-						break;
-					case 25:
-						CelestialOpposition(P, NPC);
-						break;
-					case 26:
-						ThreadsOfFate1(P, NPC);
-						break;
-					case 27:
-						TsukiyomiPhaseChange(P, NPC); //Transition into Phase 2
-						break;
-					case 28:
-						TsukiyomiAspectedWeapons(P, NPC); //Bury The Light will always follow her voice line
-						break;
-					case 29:
-						BuryTheLight1(P, NPC);
-						break;
-					case 30:
-						CosmicUpsurge(P, NPC);
-						break;
-					case 31:
-						DeathInFourActs1(P, NPC);
-						break;
-					case 32:
-						TheOnlyThingIKnowForReal1(P, NPC);
-						break;
-					case 33:
-						StygianMemento(P, NPC);
-						break;
-					case 34:
-						GraspingVoid(P, NPC);
-						break;
-					case 35:
-						CarianDarkMoon1(P, NPC);
-						break;
-					case 36:
-						Takonomicon1(P, NPC);
-						break;
-					case 37:
-						OriginStarfall(P, NPC);
-						break;
-					case 38:
-						ShadowlessCerulean1(P, NPC);
-						break;
-					case 39:
-						KeyOfTheKingsLaw1(P, NPC);
-						break;
-					case 40:
-						VoiceOfTheOutbreak(P, NPC);
-						break;
-					case 41:
-						BuryTheLight2(P, NPC);
-						break;
-					case 42:
-						HypertunedMeteorShower(P, NPC);
-						break;
-					case 43:
-						Anosios1(P, NPC);
-						break;
-					case 44:
-						Takonomicon2(P, NPC);
-						break;
-					case 45:
-						TheOnlyThingIKnowForReal1(P, NPC);
-						break;
-					case 46:
-						ThreadsOfFate3(P, NPC);
-						break;
-					case 47:
-						LuminaryWand(P, NPC);
-						break;
-					case 48:
-						CarianDarkMoon1(P, NPC);
-						break;
-					case 49:
-						CosmicUpsurgeFast(P, NPC);
-						break;
-					case 50:
-						DeathInFourActs1(P, NPC);
-						break;
-					case 51:
-						CelestialOpposition(P, NPC);
-						break;
-					case 52:
-						ThreadsOfFate2(P, NPC);
-						break;
-					case 53:
-						BuryTheLight1(P, NPC);
-						break;
-					case 54:
-						CaesuraOfDespair(P, NPC);
-						break;
-					case 55:
-						TheOnlyThingIKnowForReal1(P, NPC);
-						break;
-					case 56:
-						KeyOfTheKingsLaw1(P, NPC);
-						break;
-					case 57:
-						ThreadsOfFate3(P, NPC);
-						break;
-					case 58:
-						ThreadsOfFate2(P, NPC);
-						break;
-					case 59:
-						Takonomicon2(P, NPC);
-						break;
-					case 60:
-						CarianDarkMoon1(P, NPC);
-						break;
-					case 61:
-						CaesuraOfDespair(P, NPC);
-						break;
-					case 62:
-						ShadowlessCerulean1(P, NPC);
-						break;
-					case 63:
-						OriginStarfall2(P, NPC);
-						break;
-					case 64:
-						OriginStarfall(P, NPC);
-						break;
-					case 65:
-						LuminaryWand(P, NPC);
-						break;
-					case 66:
-						ThreadsOfFate3(P, NPC);
-						break;
-					case 67:
-						Anosios1(P, NPC);
-						break;
-					case 68:
-						StygianMemento(P, NPC);
-						break;
-					case 69:
-						Anosios1(P, NPC);
-						break;
-					case 70:
-						VoiceOfTheOutbreak(P, NPC);
-						break;
-					case 71:
-						DeathInFourActs1(P, NPC);
-						break;
-					case 72:
-						CosmicUpsurgeFast(P, NPC);
-						break;
-					case 73:
-						Takonomicon1(P, NPC);
-						break;
-					case 74:
-						Takonomicon2(P, NPC);
-						break;
-					case 75:
-						TheOnlyThingIKnowForReal1(P, NPC);
-						break;
-					case 76:
-						OriginStarfall2(P, NPC);
-						break;
-					case 77:
-						CelestialOpposition(P, NPC);
-						break;
-					case 78:
-						CarianDarkMoon1(P, NPC);
-						break;
-					case 79:
-						CaesuraOfDespair(P, NPC);
-						break;
-					case 80:
-						KeyOfTheKingsLaw1(P, NPC);
-						break;
-					case 81:
-						CosmicUpsurge(P, NPC);
-						break;
-					case 82:
-						DeathInFourActs1(P, NPC);
-						break;
+
 					default:
-						AI_RotationNumber = 29;//She'll never go back to phase 1 mechanics. (usually the mechanic right after TsukiyomiAspectedWeapons)
+						AI_RotationNumber = 0;
 						return;
 
 				}
@@ -465,82 +217,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 		}
 		private void BossVisuals()
         {
-			for (int i = 0; i < Main.maxPlayers; i++)
-			{
-				Player player = Main.player[i];
-				if (player.active)
-				{
-					//If boss is in phase 2...
-					if (NPC.localAI[0] == 1)
-					{
-						player.AddBuff(BuffType<Buffs.SubworldModifiers.MoonTurmoil>(), 10);
-
-					}
-					
-
-					player.GetModPlayer<StarsAbovePlayer>().TsukiyomiLocation = NPC.Center;
-					player.GetModPlayer<StarsAbovePlayer>().lookAtTsukiyomi = true;
-
-				}
-
-
-			}
-			if (NPC.localAI[0] == 1)
-			{
-				Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TheExtreme");
-
-			}
-			else
-            {
-				Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TheExtremeIntro");
-
-			}
-
-
-			//Returning from the teleport.
-			int index = NPC.FindBuffIndex(BuffType<TsukiyomiTeleport>());
-			if (index >= 0)
-            {
-				NPC.dontTakeDamage = true;
-				if (NPC.buffTime[index] == 60)
-				{
-					if (Main.netMode != NetmodeID.MultiplayerClient)
-					{
-
-						Projectile.NewProjectile(null, new Vector2(NPC.Center.X, NPC.Center.Y + 44), Vector2.Zero, ProjectileType<reverseRadiate>(), 0, 0f, Main.myPlayer);
-
-					}
-					
-				}
-				if (NPC.buffTime[index] == 1)
-                {
-					SoundEngine.PlaySound(SoundID.Item6, NPC.Center);
-
-					for (int g = 0; g < 4; g++)
-					{
-						int goreIndex = Gore.NewGore(null, new Vector2(NPC.position.X + (float)(NPC.width / 2) - 24f, NPC.position.Y + (float)(NPC.height / 2) + 44f), default(Vector2), Main.rand.Next(61, 64), 1f);
-						Main.gore[goreIndex].scale = 1.5f;
-						Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
-						Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
-						goreIndex = Gore.NewGore(null, new Vector2(NPC.position.X + (float)(NPC.width / 2) - 24f, NPC.position.Y + (float)(NPC.height / 2) + 44f), default(Vector2), Main.rand.Next(61, 64), 1f);
-						Main.gore[goreIndex].scale = 1.5f;
-						Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
-						Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
-						goreIndex = Gore.NewGore(null, new Vector2(NPC.position.X + (float)(NPC.width / 2) - 24f, NPC.position.Y + (float)(NPC.height / 2) + 44f), default(Vector2), Main.rand.Next(61, 64), 1f);
-						Main.gore[goreIndex].scale = 1.5f;
-						Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
-						Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
-						goreIndex = Gore.NewGore(null, new Vector2(NPC.position.X + (float)(NPC.width / 2) - 24f, NPC.position.Y + (float)(NPC.height / 2) + 44f), default(Vector2), Main.rand.Next(61, 64), 1f);
-						Main.gore[goreIndex].scale = 1.5f;
-						Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
-						Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
-					}
-				}
-            }
-			else
-            {
-				NPC.dontTakeDamage = false;
-            }
+			
 		}
 		private void FindTargetPlayer()
         {
@@ -582,26 +259,20 @@ namespace StarsAbove.NPCs.Tsukiyomi
         // We set npc.frame.Y to x * frameHeight where x is the xth frame in our spritesheet, counting from 0. For convenience, we have defined a enum above.
         public override void FindFrame(int frameHeight)
 		{
-			// This makes the sprite flip horizontally in conjunction with the npc.direction.
-			//NPC.spriteDirection = NPC.direction;
-			if(NPC.HasBuff(BuffType<TsukiyomiTeleport>()))
-            {
-				NPC.frame.Y = (int)Frame.Empty * frameHeight;
-				return;
-			}
+			
 
 			//If a projectile that replaces the boss sprite appears, hide the boss sprite.
 			for (int i = 0; i < Main.maxProjectiles; i++)
 			{
 				Projectile other = Main.projectile[i];
 
-				if (other.active && (other.type == ModContent.ProjectileType<TsukiBloodshedSheathe>()
-					|| other.type == ModContent.ProjectileType<TsukiBuryTheLight>()
-					|| other.type == ModContent.ProjectileType<TsukiTakonomicon>()
-					|| other.type == ModContent.ProjectileType<TsukiShadowlessCerulean>()
-					|| other.type == ModContent.ProjectileType<TsukiDeathInFourActs>()
-					|| other.type == ModContent.ProjectileType<TsukiLuminaryWand>()
-					|| other.type == ModContent.ProjectileType<TsukiKeyOfTheKingsLaw>()
+				if (other.active && (other.type == ModContent.ProjectileType<PolluxClashProjectile>()
+					//|| other.type == ModContent.ProjectileType<TsukiBuryTheLight>()
+					//|| other.type == ModContent.ProjectileType<TsukiTakonomicon>()
+					//|| other.type == ModContent.ProjectileType<TsukiShadowlessCerulean>()
+					//|| other.type == ModContent.ProjectileType<TsukiDeathInFourActs>()
+					//|| other.type == ModContent.ProjectileType<TsukiLuminaryWand>()
+					//|| other.type == ModContent.ProjectileType<TsukiKeyOfTheKingsLaw>()
 					&& other.alpha < 1))
 					
 				{
@@ -629,62 +300,12 @@ namespace StarsAbove.NPCs.Tsukiyomi
 			switch (AI_State)
 			{
 				case (float)ActionState.Idle:
-					NPC.frameCounter++;
-					
-						if (NPC.frameCounter < 10)
-						{
-							NPC.frame.Y = (int)Frame.Idle1 * frameHeight;
-						}
-						else if (NPC.frameCounter < 20)
-						{
-							NPC.frame.Y = (int)Frame.Idle2 * frameHeight;
-						}
-						else if (NPC.frameCounter < 30)
-						{
-							NPC.frame.Y = (int)Frame.Idle3 * frameHeight;
-						}
-						else if (NPC.frameCounter < 40)
-						{
-							NPC.frame.Y = (int)Frame.Idle4 * frameHeight;
-						}
-						else if (NPC.frameCounter < 50)
-						{
-							NPC.frame.Y = (int)Frame.Idle5 * frameHeight;
-						}
-						else
-						{
-							NPC.frameCounter = 0;
-						}
-					
-					
-				break;
-				case (float)ActionState.Casting:
-					NPC.frameCounter++;
+					NPC.frame.Y = (int)Frame.Idle1 * frameHeight;
 
-					if (NPC.frameCounter < 10)
-					{
-						NPC.frame.Y = (int)Frame.Cast1 * frameHeight;
-					}
-					else if (NPC.frameCounter < 20)
-					{
-						NPC.frame.Y = (int)Frame.Cast2 * frameHeight;
-					}
-					else if (NPC.frameCounter < 30)
-					{
-						NPC.frame.Y = (int)Frame.Cast3 * frameHeight;
-					}
-					else if (NPC.frameCounter < 40)
-					{
-						NPC.frame.Y = (int)Frame.Cast4 * frameHeight;
-					}
-					else if (NPC.frameCounter < 50)
-					{
-						NPC.frame.Y = (int)Frame.Cast5 * frameHeight;
-					}
-					else
-					{
-						NPC.frameCounter = 0;
-					}
+
+					break;
+				case (float)ActionState.Casting:
+					NPC.frame.Y = (int)Frame.Cast1 * frameHeight;
 
 					break;
 			}
@@ -704,46 +325,22 @@ namespace StarsAbove.NPCs.Tsukiyomi
 			
 			NPC.localAI[1] += 1f;
 			
-
-
-			
 			if(NPC.localAI[1] == 10)
             {
-				NPC.AddBuff(BuffType<TsukiyomiTeleport>(), 240);
-				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Stronger, NPC.Center);
-
-				if (Main.netMode != NetmodeID.MultiplayerClient)
-				{
-					
-
-					Projectile.NewProjectile(null, new Vector2(NPC.Center.X + 30, NPC.Center.Y - 35), Vector2.Zero, ProjectileType<TsukiWormhole>(), 0, 0f, Main.myPlayer);
-					Projectile.NewProjectile(null, NPC.Center, Vector2.Zero, ProjectileType<TsukiTeleport>(), 0, 0f, Main.myPlayer);
-
-
-
-
-				}
+				//Death animation here.
 			}
 			if (NPC.localAI[1] >= 240f)
 			{
 				
 
 
-				DownedBossSystem.downedTsuki = true;
+				//DownedBossSystem.downedTsuki = true;
 				
 				if (Main.netMode == NetmodeID.Server)
 				{
 					NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
 				}
 
-				SubworldSystem.Exit();
-
-				if (modPlayer.tsukiyomiDialogue == 0)
-				{
-					if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
-					modPlayer.tsukiyomiDialogue = 1;
-				}
-				
 				NPC.life = 0;
 				NPC.HitEffect(0, 0);
 				NPC.checkDead(); // This will trigger ModNPC.CheckDead the second time, causing the real death.
@@ -795,17 +392,11 @@ namespace StarsAbove.NPCs.Tsukiyomi
 			//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
 			//Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, 0, 0, ModContent.ProjectileType<VagrantSlamSprite>(), 0, 0, Main.myPlayer);
 
-			if(SubworldSystem.AnyActive<StarsAbove>())
-            {
-				Vector2 initialMoveTo = new Vector2(14184, 6445);
+			
+				Vector2 initialMoveTo = new Vector2(Main.player[NPC.target].Center.X + 400, Main.player[NPC.target].Center.Y - 80);
 				NPC.position = initialMoveTo;
-			}
-			else
-            {
-				Vector2 initialMoveTo = new Vector2(Main.player[NPC.target].Center.X - 80, Main.player[NPC.target].Center.Y - 350);
-				NPC.position = initialMoveTo;
-			}
-			SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Journey, NPC.Center);
+			
+			//SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Journey, NPC.Center);
 
 
 
@@ -833,6 +424,8 @@ namespace StarsAbove.NPCs.Tsukiyomi
 			modPlayer.NextAttack = "";
 			NPC.direction = (Main.player[NPC.target].Center.X < NPC.Center.X).ToDirectionInt();//Face the target.
 
+			
+
 			AI_Timer++;//The boss's rotation timer ticks upwards.
 
 
@@ -847,32 +440,10 @@ namespace StarsAbove.NPCs.Tsukiyomi
 
 			if(NPC.frame.Y != (int)Frame.Empty)
             {
-				for (int i = 0; i < 5; i++)
-				{//Circle
-
-
-					Dust d = Main.dust[Dust.NewDust(new Vector2(NPC.Center.X + 29, NPC.Center.Y + 24), 0, 2, 20, Main.rand.NextFloat(-0.2f, 0.2f), Main.rand.NextFloat(-0.5f, -4.5f), 20, default(Color), 0.7f)];
-					d.shader = GameShaders.Armor.GetSecondaryShader(114, Main.LocalPlayer);
-					d.fadeIn = 1f;
-					d.noGravity = true;
-				}
-
-				for (int i = 0; i < 3; i++)
-				{
-					// Charging dust
-					Vector2 vector = new Vector2(
-						Main.rand.Next(-2048, 2048) * (0.003f * 200) - 10,
-						Main.rand.Next(-2048, 2048) * (0.003f * 200) - 10);
-					Dust d = Main.dust[Dust.NewDust(
-						NPC.Center + vector, 1, 1,
-						20, 0, 0, 255,
-						new Color(1f, 1f, 1f), 1.5f)];
-					d.shader = GameShaders.Armor.GetSecondaryShader(114, Main.LocalPlayer);
-					d.velocity = -vector / 16;
-					d.velocity -= NPC.velocity / 8;
-					d.noLight = true;
-					d.noGravity = true;
-				}
+				//Idle dust because they're made out of magic.
+				Dust d = Main.dust[Dust.NewDust(new Vector2(NPC.Center.X, NPC.Center.Y + 34), 0, 2, DustID.FireworkFountain_Blue, Main.rand.NextFloat(-0.2f, 0.2f), Main.rand.NextFloat(-0.5f, -4.5f), 20, default(Color), 0.1f)];
+				d.fadeIn = 1f;
+				d.noGravity = true;
 			}
 			
 			//Casting Dust

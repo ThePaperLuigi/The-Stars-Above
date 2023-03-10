@@ -20,6 +20,7 @@ using Microsoft.Xna.Framework.Audio;
 using StarsAbove.NPCs.Vagrant;
 using StarsAbove.NPCs.Nalhaun;
 using StarsAbove.NPCs.Tsukiyomi;
+using StarsAbove.NPCs.Dioskouroi;
 
 namespace StarsAbove
 {
@@ -29,10 +30,18 @@ namespace StarsAbove
         public bool NalhaunBarActive = false;
         public bool TsukiyomiBarActive = false;
 
+        public bool CastorBarActive = false;
+        public bool PolluxBarActive = false;
+
         //These cast values are recycled for every boss. There should be a function that prevents bosses from overlapping.
         public int CastTime = 0;
         public int CastTimeMax = 100;
         public string NextAttack = "";
+
+        //Duo boss Dioskouroi needs more CastTimes.
+        public int CastTimeAlt = 0;
+        public int CastTimeMaxAlt = 100;
+        public string NextAttackAlt = "";
 
         public int inVagrantFightTimer; //Check to see if you've recently hit the boss.
 
@@ -90,7 +99,13 @@ namespace StarsAbove
                     TsukiyomiTeleport(npc);
                     break;
                 }
-                
+                if (npc.active && (npc.type == NPCType<NPCs.Dioskouroi.DioskouroiWallsNPC>()))
+                {
+                    //If nearby the boss.
+                    DioskouroiWalls(npc);
+                    break;
+                }
+
             }
 
             nalhaunCutsceneProgress--;
@@ -114,9 +129,15 @@ namespace StarsAbove
             CastTime = 0;
             CastTimeMax = 100;
 
+            CastTimeAlt = 0;
+            CastTimeMaxAlt = 100;
+
             NalhaunBarActive = false;
             VagrantBarActive = false;
             TsukiyomiBarActive = false;
+
+            CastorBarActive = false;
+            PolluxBarActive = false;
             
         }
 
@@ -369,7 +390,59 @@ namespace StarsAbove
                 }
             }
         }
+        private void DioskouroiWalls(NPC npc)
+        {
+            if (Player.whoAmI == Main.myPlayer)
+            {
+                int halfWidth = DioskouroiWallsNPC.arenaWidth / 2;
+                int halfHeight = DioskouroiWallsNPC.arenaHeight / 2;
+                Vector2 newPosition = Player.position;
+                if (Player.position.X <= npc.Center.X - halfWidth)//Left wall
+                {
+                    newPosition.X = npc.Center.X - halfWidth - Player.width - 1;
+                    Player.velocity = new Vector2(8, Player.velocity.Y);
+                    // if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("1"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.X -= 8f;
 
+                    }
+                }
+                else if (Player.position.X + Player.width >= npc.Center.X + halfWidth)//Right Wall
+                {
+                    newPosition.X = npc.Center.X + halfWidth + 1;
+                    Player.velocity = new Vector2(-8, Player.velocity.Y);
+                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("2"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.X += 8f;
+
+                    }
+                }
+                else if (Player.position.Y <= npc.Center.Y - halfHeight)//Top
+                {
+                    newPosition.Y = npc.Center.Y - halfHeight - Player.height - 1;
+                    Player.velocity = new Vector2(Player.velocity.X, 8);
+                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("3"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.Y -= 8f;
+
+                    }
+                }
+                else if (Player.position.Y + Player.height >= npc.Center.Y + halfHeight)//Bottom
+                {
+                    newPosition.Y = npc.Center.Y + halfHeight + 1;
+                    Player.velocity = new Vector2(Player.velocity.X, -8);
+                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("4"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+
+                        newPosition.Y += 8f;
+                    }
+                }
+            }
+        }
         private void TsukiyomiTeleport(NPC npc)
         {
             if (Player.whoAmI == Main.myPlayer)
