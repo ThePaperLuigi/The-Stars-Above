@@ -21,6 +21,7 @@ using StarsAbove.NPCs.Vagrant;
 using StarsAbove.NPCs.Nalhaun;
 using StarsAbove.NPCs.Tsukiyomi;
 using StarsAbove.NPCs.Dioskouroi;
+using StarsAbove.Projectiles.Bosses;
 
 namespace StarsAbove
 {
@@ -32,6 +33,9 @@ namespace StarsAbove
 
         public bool CastorBarActive = false;
         public bool PolluxBarActive = false;
+
+        public static bool disableBossAggro = false;
+        public int hasBossAggro = 0;
 
         //These cast values are recycled for every boss. There should be a function that prevents bosses from overlapping.
         public int CastTime = 0;
@@ -60,6 +64,29 @@ namespace StarsAbove
 
         public override void PreUpdate()
         {
+            //Aggro marker.
+            if(Main.netMode != NetmodeID.SinglePlayer && !disableBossAggro)
+            {
+                for (int i = 0; i <= Main.maxNPCs; i++)
+                {
+                    if (Main.npc[i].boss && Main.npc[i].active && Main.npc[i].target == Main.myPlayer)
+                    {
+                        hasBossAggro = 10;
+                    }
+
+                }
+
+            }
+            
+            hasBossAggro--;
+            hasBossAggro = Math.Clamp(hasBossAggro, 0, 10);
+            if(hasBossAggro > 0 && Player.ownedProjectileCounts[ProjectileType<BossAggroMarker>()] < 1)
+            {
+                Projectile.NewProjectile(null, Player.Center, Vector2.Zero, ProjectileType<BossAggroMarker>(), 0, 0, Player.whoAmI);
+
+            }
+
+
             for (int k = 0; k < 200; k++)
             {
                 NPC npc = Main.npc[k];
@@ -81,7 +108,7 @@ namespace StarsAbove
                     VagrantTeleportVertical(npc);
                     break;
                 }
-                if (npc.active && npc.type == NPCType<NalhaunBoss>() && Player.Distance(npc.Center) < 2000)
+                if (npc.active && npc.type == NPCType<NPCs.Nalhaun.NalhaunBoss>() && Player.Distance(npc.Center) < 2000)
                 {
                     //If nearby the boss.
                     NalhaunWalls(npc);
@@ -138,7 +165,7 @@ namespace StarsAbove
 
             CastorBarActive = false;
             PolluxBarActive = false;
-            
+
         }
 
 
@@ -288,8 +315,8 @@ namespace StarsAbove
         {
             if (Player.whoAmI == Main.myPlayer)
             {
-                int halfWidth = NalhaunBoss.arenaWidth / 2;
-                int halfHeight = NalhaunBoss.arenaHeight / 2;
+                int halfWidth = NPCs.Nalhaun.NalhaunBoss.arenaWidth / 2;
+                int halfHeight = NPCs.Nalhaun.NalhaunBoss.arenaHeight / 2;
                 Vector2 newPosition = Player.position;
                 if (Player.position.X <= npc.Center.X - halfWidth)//Left wall
                 {
