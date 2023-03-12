@@ -59,7 +59,7 @@ namespace StarsAbove.Projectiles.VirtuesEdge
             }
 			//projectile.timeLeft = 10;
 			
-			//if (player.dead && !player.active || player.GetModPlayer<StarsAbovePlayer>().kroniicHeld < 0)
+			//if (player.dead && !player.active || player.GetModPlayer<WeaponPlayer>().kroniicHeld < 0)
 			if (player.dead && !player.active)
 			{
 				Projectile.Kill();
@@ -123,17 +123,17 @@ namespace StarsAbove.Projectiles.VirtuesEdge
 
 			}
 			Player player = Main.player[Projectile.owner];
-			player.GetModPlayer<StarsAbovePlayer>().VirtueGauge+=3;
+			player.GetModPlayer<WeaponPlayer>().VirtueGauge+=3;
 			if (player.HasBuff(BuffType<Buffs.VirtuesEdge.CelestialVoidBuff>()))
 			{
-				player.GetModPlayer<StarsAbovePlayer>().VirtueGauge += 3;
+				player.GetModPlayer<WeaponPlayer>().VirtueGauge += 3;
 			}
 			if (crit)
 			{
-				player.GetModPlayer<StarsAbovePlayer>().VirtueGauge += 6;
+				player.GetModPlayer<WeaponPlayer>().VirtueGauge += 6;
 				if (player.HasBuff(BuffType<Buffs.VirtuesEdge.CelestialVoidBuff>()))
 				{
-					player.GetModPlayer<StarsAbovePlayer>().VirtueGauge += 4;
+					player.GetModPlayer<WeaponPlayer>().VirtueGauge += 4;
 				}
 			}
 		}

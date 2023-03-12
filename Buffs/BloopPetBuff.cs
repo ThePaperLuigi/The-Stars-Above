@@ -15,7 +15,7 @@ namespace StarsAbove.Buffs
 		}
 
 		public override void Update(Player player, ref int buffIndex) {
-			player.GetModPlayer<StarsAbovePlayer>().BloopPet = true;
+			player.GetModPlayer<WeaponPlayer>().BloopPet = true;
 			player.buffTime[buffIndex] = 18000;
 			bool petProjectileNotSpawned = player.ownedProjectileCounts[ProjectileType<Projectiles.Pets.BloopPet>()] <= 0;
 			if (petProjectileNotSpawned && player.whoAmI == Main.myPlayer) {

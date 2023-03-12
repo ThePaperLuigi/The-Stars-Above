@@ -80,7 +80,7 @@ namespace StarsAbove.Items
             {
                 return false;
             }
-            //if (player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1) // Asphodene
+            //if (player.GetModPlayer<WeaponPlayer>().chosenStarfarer == 1) // Asphodene
             //{
             //    if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("The weapon fails to react to your Aspect, rendering it unusable."), 241, 255, 180);}
             //    return false;
@@ -200,14 +200,14 @@ namespace StarsAbove.Items
                     comboTimer++;
                     if(form != 1)
                     {
-                        player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = true;
+                        player.GetModPlayer<WeaponPlayer>().bowChargeActive = true;
                     }
                     else
                     {
-                        player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
+                        player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
                     }
                    
-                    if (form == 2 && player.GetModPlayer<StarsAbovePlayer>().bowCharge >= 100)
+                    if (form == 2 && player.GetModPlayer<WeaponPlayer>().bowCharge >= 100)
                     {
                         player.statDefense += 18;
                         player.statMana++;
@@ -218,25 +218,25 @@ namespace StarsAbove.Items
                     }
                     if (swing1 && swing2 && form != 1)
                     {
-                        player.GetModPlayer<StarsAbovePlayer>().bowCharge += 10;
+                        player.GetModPlayer<WeaponPlayer>().bowCharge += 10;
 
                     }
                     else
                     {
                         if(form ==4)
                         {
-                            player.GetModPlayer<StarsAbovePlayer>().bowCharge += 4;
+                            player.GetModPlayer<WeaponPlayer>().bowCharge += 4;
                         }
                         else
                         {
                             if(form == 1)
                             {
-                                player.GetModPlayer<StarsAbovePlayer>().bowCharge = 1;
+                                player.GetModPlayer<WeaponPlayer>().bowCharge = 1;
                                 player.statMana++;
                             }
                             else
                             {
-                                player.GetModPlayer<StarsAbovePlayer>().bowCharge += 2;
+                                player.GetModPlayer<WeaponPlayer>().bowCharge += 2;
                             }
                             
                         }
@@ -246,12 +246,12 @@ namespace StarsAbove.Items
                     
 
 
-                    if (player.GetModPlayer<StarsAbovePlayer>().bowCharge == 1)
+                    if (player.GetModPlayer<WeaponPlayer>().bowCharge == 1)
                     {
 
                         //Main.PlaySound(SoundLoader.customSoundType, (int)player.Center.X, (int)player.Center.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/bowstring"), 0.5f);
                     }
-                    if (player.GetModPlayer<StarsAbovePlayer>().bowCharge == 99)
+                    if (player.GetModPlayer<WeaponPlayer>().bowCharge == 99)
                     {
 
                         for (int d = 0; d < 88; d++)
@@ -260,7 +260,7 @@ namespace StarsAbove.Items
                         }
                         //Main.PlaySound(SoundID.Item52, player.position);
                     }
-                    if (player.GetModPlayer<StarsAbovePlayer>().bowCharge < 100)
+                    if (player.GetModPlayer<WeaponPlayer>().bowCharge < 100)
                     {
 
                         
@@ -308,12 +308,12 @@ namespace StarsAbove.Items
                     }
                   
 
-                    if (player.GetModPlayer<StarsAbovePlayer>().bowCharge >= 100 && form == 0)//Smash
+                    if (player.GetModPlayer<WeaponPlayer>().bowCharge >= 100 && form == 0)//Smash
                     {
 
                         SoundEngine.PlaySound(SoundID.Item1, player.position);
-                        player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-                        player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
+                        player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+                        player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
                         Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity2.X, arrowVelocity2.Y, ProjectileType<MonadoEmpoweredCritSwing>(), player.GetWeaponDamage(Item)*2, 14, player.whoAmI, 0f);
                         comboTimer = 0;
                         attackCooldown = 20;
@@ -324,12 +324,12 @@ namespace StarsAbove.Items
                     }
                     else
                     {
-                        if (player.GetModPlayer<StarsAbovePlayer>().bowCharge > 0 && form == 0)//Smash
+                        if (player.GetModPlayer<WeaponPlayer>().bowCharge > 0 && form == 0)//Smash
                         {//
                             SoundEngine.PlaySound(SoundID.Item1, player.position);
 
-                            player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-                            player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
+                            player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+                            player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
                             player.statMana += 3;
                             if(currentSwing == 0)
                             {
@@ -350,30 +350,40 @@ namespace StarsAbove.Items
 
                         }
                     }
-                    if (player.GetModPlayer<StarsAbovePlayer>().bowCharge >= 100 && form == 3)//Jump Charged
+                    if (player.GetModPlayer<WeaponPlayer>().bowCharge >= 100 && form == 3)//Jump Charged
                     {
                         Vector2 mousePosition2 = player.DirectionTo(player.GetModPlayer<StarsAbovePlayer>().playerMousePos) * Main.rand.Next(20, 22);
                         Vector2 leap = Vector2.Normalize(mousePosition2) * 12f;
                         player.velocity = leap;
                         SoundEngine.PlaySound(SoundID.Item1, player.position);
-                        player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-                        player.statMana -= 40;
-                        player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
-                        Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity2.X, arrowVelocity2.Y, ProjectileType<MonadoEmpoweredSwing>(), player.GetWeaponDamage(Item) * 2, 14, player.whoAmI, 0f);
+                        player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+                        if(player.statMana >= 40)
+                        {
+                            player.statMana -= 40;
+                            Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity2.X, arrowVelocity2.Y, ProjectileType<MonadoEmpoweredSwing>(), player.GetWeaponDamage(Item) * 2, 14, player.whoAmI, 0f);
+
+                        }
+                        else
+                        {
+                            Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity2.X, arrowVelocity2.Y, ProjectileType<MonadoSwing1>(), player.GetWeaponDamage(Item), 14, player.whoAmI, 0f);
+
+                        }
+
+                        player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
                         comboTimer = 0;
                         attackCooldown = 20;
                     }
                     else
                     {
-                        if (player.GetModPlayer<StarsAbovePlayer>().bowCharge > 0 && form == 3)//Jump Uncharged
+                        if (player.GetModPlayer<WeaponPlayer>().bowCharge > 0 && form == 3)//Jump Uncharged
                         {//
                          //Main.PlaySound(SoundID.Item1, player.position);
 
 
                             SoundEngine.PlaySound(SoundID.Item1, player.position);
                             player.statMana += 3;
-                            player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-                            player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
+                            player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+                            player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
                             if (currentSwing == 0)
                             {
                                 comboTimer = 60;
@@ -391,27 +401,27 @@ namespace StarsAbove.Items
 
                         }
                     }
-                    if (player.GetModPlayer<StarsAbovePlayer>().bowCharge >= 100 && form == 2)//Shield Form Charged
+                    if (player.GetModPlayer<WeaponPlayer>().bowCharge >= 100 && form == 2)//Shield Form Charged
                     {
 
                         SoundEngine.PlaySound(SoundID.Item1, player.position);
-                        player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-                        player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
+                        player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+                        player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
                         Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity2.X, arrowVelocity2.Y, ProjectileType<MonadoEmpoweredSwing>(), player.GetWeaponDamage(Item) * 2, 14, player.whoAmI, 0f);
                         comboTimer = 0;
                         attackCooldown = 20;
                     }
                     else
                     {
-                        if (player.GetModPlayer<StarsAbovePlayer>().bowCharge > 0 && form == 2)//Shield Form Uncharged
+                        if (player.GetModPlayer<WeaponPlayer>().bowCharge > 0 && form == 2)//Shield Form Uncharged
                         {//
                          //Main.PlaySound(SoundID.Item1, player.position);
 
 
                             SoundEngine.PlaySound(SoundID.Item1, player.position);
                             player.statMana += 3;
-                            player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-                            player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
+                            player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+                            player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
                             if (currentSwing == 0)
                             {
                                 comboTimer = 60;
@@ -429,22 +439,22 @@ namespace StarsAbove.Items
 
                         }
                     }
-                    if (player.GetModPlayer<StarsAbovePlayer>().bowCharge >= 100 && form == 1)//Speed
+                    if (player.GetModPlayer<WeaponPlayer>().bowCharge >= 100 && form == 1)//Speed
                     {
 
                         
                     }
                     else
                     {
-                        if (player.GetModPlayer<StarsAbovePlayer>().bowCharge > 0 && form == 1)//Speed
+                        if (player.GetModPlayer<WeaponPlayer>().bowCharge > 0 && form == 1)//Speed
                         {//
                          //Main.PlaySound(SoundID.Item1, player.position);
 
 
                             SoundEngine.PlaySound(SoundID.Item1, player.position);
                             player.statMana += 3;
-                            player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-                            player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
+                            player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+                            player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
                             if (currentSwing == 0)
                             {
                                 comboTimer = 60;
@@ -469,23 +479,23 @@ namespace StarsAbove.Items
                         }
 
                     }
-                    if (player.GetModPlayer<StarsAbovePlayer>().bowCharge >= 100 && form == 4)//Buster Charged
+                    if (player.GetModPlayer<WeaponPlayer>().bowCharge >= 100 && form == 4)//Buster Charged
                     {
 
                         SoundEngine.PlaySound(SoundID.Item1, player.position);
-                        player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-                        player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
+                        player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+                        player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
                         Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity2.X, arrowVelocity2.Y, ProjectileType<MonadoEmpoweredSwing>(), player.GetWeaponDamage(Item) * 2, 14, player.whoAmI, 0f);
                         comboTimer = 0;
                         attackCooldown = 20;
                     }
                     else
                     {
-                        if (player.GetModPlayer<StarsAbovePlayer>().bowCharge > 0 && form == 4)//Buster Uncharged
+                        if (player.GetModPlayer<WeaponPlayer>().bowCharge > 0 && form == 4)//Buster Uncharged
                         {//
                          //Main.PlaySound(SoundID.Item1, player.position);
-                            player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-                            player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
+                            player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+                            player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
 
 
 
@@ -494,7 +504,7 @@ namespace StarsAbove.Items
                 }
 
 
-                //item.shootSpeed = 8f + (int)Math.Round(player.GetModPlayer<StarsAbovePlayer>().bowCharge / 10);
+                //item.shootSpeed = 8f + (int)Math.Round(player.GetModPlayer<WeaponPlayer>().bowCharge / 10);
             }
         }
 

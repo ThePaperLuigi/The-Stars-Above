@@ -55,14 +55,14 @@ namespace StarsAbove.Items
 		{
 			if (player.altFunctionUse == 2)
 			{
-				if (player.GetModPlayer<StarsAbovePlayer>().radiance >= 5)
+				if (player.GetModPlayer<WeaponPlayer>().radiance >= 5)
 				{
 					player.AddBuff(BuffType<Buffs.Invincibility>(), 120);
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),new Vector2(player.Center.X, player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("ErinysFX").Type, 0, 0, player.whoAmI, 0, 1);
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, player.Center);
 
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),new Vector2(player.Center.X, player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("Erinys").Type, 0, 0, player.whoAmI, Item.damage + (player.GetModPlayer<StarsAbovePlayer>().radiance * 10) + player.statDefense/2, 1);
-					player.GetModPlayer<StarsAbovePlayer>().radiance = 0;
+					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),new Vector2(player.Center.X, player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("Erinys").Type, 0, 0, player.whoAmI, Item.damage + (player.GetModPlayer<WeaponPlayer>().radiance * 10) + player.statDefense/2, 1);
+					player.GetModPlayer<WeaponPlayer>().radiance = 0;
 					return false;
 				}
 				else
@@ -90,7 +90,7 @@ namespace StarsAbove.Items
 		public override void HoldItem(Player player)
 		{
 			Item.scale = 1f + (player.statDefense / 250f);
-			if (player.GetModPlayer<StarsAbovePlayer>().radiance >= 5)
+			if (player.GetModPlayer<WeaponPlayer>().radiance >= 5)
 			{
 				Dust dust;
 				for (int d = 0; d < 2; d++)
@@ -105,7 +105,7 @@ namespace StarsAbove.Items
 		{
 			// 
 			// 60 frames = 1 second
-			//player.GetModPlayer<StarsAbovePlayer>().radiance++;
+			//player.GetModPlayer<WeaponPlayer>().radiance++;
 			
 		}
 

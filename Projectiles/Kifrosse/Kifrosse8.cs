@@ -44,7 +44,7 @@ namespace StarsAbove.Projectiles.Kifrosse
 		{
 			Projectile.velocity.X *= 1.00f;
 			Player player = Main.player[Projectile.owner];
-			StarsAbovePlayer modPlayer = player.GetModPlayer<StarsAbovePlayer>();
+			WeaponPlayer modPlayer = player.GetModPlayer<WeaponPlayer>();
 			modPlayer.KifrossePosition = Projectile.Center;
 			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Kifrosse.BlizzardFoxfire1>()] < 1)
 			{

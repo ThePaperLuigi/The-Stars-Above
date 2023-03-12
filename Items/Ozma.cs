@@ -93,7 +93,7 @@ namespace StarsAbove.Items
 
 			Vector2 muzzleOffset = Vector2.Normalize(projectile) * 50f;
 
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			Vector2 skyDirection1 = Vector2.Normalize(Main.MouseWorld - new Vector2(player.Center.X - 100, player.Center.Y - 400));
 			Vector2 skyDirection2 = Vector2.Normalize(Main.MouseWorld - new Vector2(player.Center.X, player.Center.Y - 400));
 			Vector2 skyDirection3 = Vector2.Normalize(Main.MouseWorld - new Vector2(player.Center.X + 100, player.Center.Y - 400));
@@ -175,7 +175,7 @@ namespace StarsAbove.Items
 						}
 						if (currentExecution == 2)//Sapphire
 						{
-							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), modPlayer.playerMousePos.X, modPlayer.playerMousePos.Y, 0, 0, ProjectileType<OzmaDrainAttack>(), player.GetWeaponDamage(Item)/5, 3, player.whoAmI, 0f);
+							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.GetModPlayer<StarsAbovePlayer>().playerMousePos.X, player.GetModPlayer<StarsAbovePlayer>().playerMousePos.Y, 0, 0, ProjectileType<OzmaDrainAttack>(), player.GetWeaponDamage(Item)/5, 3, player.whoAmI, 0f);
 
 							currentExecution = 0;
 							return true;
@@ -248,8 +248,8 @@ namespace StarsAbove.Items
 				}
 				if (currentSwing >= 4)
                 {
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), modPlayer.playerMousePos.X, modPlayer.playerMousePos.Y, 0, 0, ProjectileType<OzmaAttack5>(), 0, 3, player.whoAmI, 0f);
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), modPlayer.playerMousePos.X+50, modPlayer.playerMousePos.Y+50, 0, 0, ProjectileType<OzmaAttack5Slash>(), (player.GetWeaponDamage(Item)), 3, player.whoAmI, 0f);
+					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.GetModPlayer<StarsAbovePlayer>().playerMousePos.X, player.GetModPlayer<StarsAbovePlayer>().playerMousePos.Y, 0, 0, ProjectileType<OzmaAttack5>(), 0, 3, player.whoAmI, 0f);
+					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.GetModPlayer<StarsAbovePlayer>().playerMousePos.X+50, player.GetModPlayer<StarsAbovePlayer>().playerMousePos.Y+50, 0, 0, ProjectileType<OzmaAttack5Slash>(), (player.GetWeaponDamage(Item)), 3, player.whoAmI, 0f);
 					SoundEngine.PlaySound(SoundID.Item1, player.position);
 					player.AddBuff(BuffType<OzmaAttack>(), 40);
 
@@ -283,7 +283,7 @@ namespace StarsAbove.Items
 		public override void HoldItem(Player player)
 		{
 			
-			player.GetModPlayer<StarsAbovePlayer>().OzmaHeld = true;
+			player.GetModPlayer<WeaponPlayer>().OzmaHeld = true;
 			player.AddBuff(BuffType<OzmaBuff>(),10);
 			if(currentSwing != 0)
             {

@@ -48,7 +48,7 @@ namespace StarsAbove.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 70;           //The damage of your weapon
+			Item.damage = 100;           //The damage of your weapon
 			Item.DamageType = ModContent.GetInstance<Systems.CelestialDamageClass>();          //Is your weapon a melee weapon?
 			Item.width = 40;            //Weapon's texture's width
 			Item.height = 40;           //Weapon's texture's height

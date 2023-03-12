@@ -122,7 +122,7 @@ namespace StarsAbove.Projectiles.BurningDesire
 				Projectile.alpha -= 10;
 			}
 
-			if (!projOwner.GetModPlayer<StarsAbovePlayer>().BurningDesireHeld)
+			if (!projOwner.GetModPlayer<WeaponPlayer>().BurningDesireHeld)
             {
 				Projectile.Kill();
             }

@@ -79,7 +79,7 @@ namespace StarsAbove.Items
 		{
 			if (player.altFunctionUse == 2)
 			{
-				if (player.GetModPlayer<StarsAbovePlayer>().judgementGauge >= 100)
+				if (player.GetModPlayer<WeaponPlayer>().judgementGauge >= 100)
 				{
 					judgementSlashCharge = 100;
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_BuryTheLightPrep, player.Center);
@@ -93,7 +93,7 @@ namespace StarsAbove.Items
 			}
 			else
 			{
-				if (judgementSlashCharge > 0 || player.GetModPlayer<StarsAbovePlayer>().judgementCutTimer > 0)
+				if (judgementSlashCharge > 0 || player.GetModPlayer<WeaponPlayer>().judgementCutTimer > 0)
 				{
 					return false;
 				}
@@ -114,8 +114,8 @@ namespace StarsAbove.Items
 		{
 			if (player.inventory[58].IsAir)
 			{
-				player.GetModPlayer<StarsAbovePlayer>().judgementGaugeVisibility++;
-				if (player.GetModPlayer<StarsAbovePlayer>().judgementGaugeVisibility >= 8)
+				player.GetModPlayer<WeaponPlayer>().judgementGaugeVisibility++;
+				if (player.GetModPlayer<WeaponPlayer>().judgementGaugeVisibility >= 8)
 				{
 					Vector2 vector = new Vector2(
 						Main.rand.Next(-28, 28) * (0.003f * 40 - 10),
@@ -128,15 +128,15 @@ namespace StarsAbove.Items
 					d.velocity -= player.velocity / 8;
 					d.noLight = true;
 					d.noGravity = true;
-					player.GetModPlayer<StarsAbovePlayer>().judgementGaugeVisibility = 8;
+					player.GetModPlayer<WeaponPlayer>().judgementGaugeVisibility = 8;
 				}
 
 				if (judgementSlashCharge > 1)
 				{
-					player.GetModPlayer<StarsAbovePlayer>().judgementGauge -= 2;
-					if (player.GetModPlayer<StarsAbovePlayer>().judgementGauge < 0)
+					player.GetModPlayer<WeaponPlayer>().judgementGauge -= 2;
+					if (player.GetModPlayer<WeaponPlayer>().judgementGauge < 0)
 					{
-						player.GetModPlayer<StarsAbovePlayer>().judgementGauge = 0;
+						player.GetModPlayer<WeaponPlayer>().judgementGauge = 0;
 					}
 
 
@@ -170,7 +170,7 @@ namespace StarsAbove.Items
 				{
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_iceCracking, player.Center);
 
-					player.GetModPlayer<StarsAbovePlayer>().judgementCutTimer = 100;
+					player.GetModPlayer<WeaponPlayer>().judgementCutTimer = 100;
 					float launchSpeed = 12f;
 					Vector2 mousePosition = Main.MouseWorld;
 					Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
@@ -180,7 +180,7 @@ namespace StarsAbove.Items
 					{
 					}
 				}
-				if (player.GetModPlayer<StarsAbovePlayer>().judgementCutTimer > 60)
+				if (player.GetModPlayer<WeaponPlayer>().judgementCutTimer > 60)
 				{
 					SoundEngine.PlaySound(SoundID.Item1, player.Center);
 					player.immune = true;
@@ -188,10 +188,10 @@ namespace StarsAbove.Items
 					Projectile.NewProjectile(null, player.Center.X + Main.rand.Next(-50, 50), player.Center.Y + Main.rand.Next(-50, 50), 0, 0, ProjectileType<BuryTheLightSlash2Pre>(), 0, 0, player.whoAmI);
 
 				}
-				if (player.GetModPlayer<StarsAbovePlayer>().judgementCutTimer == 1)
+				if (player.GetModPlayer<WeaponPlayer>().judgementCutTimer == 1)
 				{
 
-					//player.GetModPlayer<StarsAbovePlayer>().activateShockwaveEffect = true;
+					//player.GetModPlayer<WeaponPlayer>().activateShockwaveEffect = true;
 					player.immune = false;
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_LegendarySlash, player.Center);
 					for (int d = 0; d < 40; d++)

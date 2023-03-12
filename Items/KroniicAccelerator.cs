@@ -71,17 +71,17 @@ namespace StarsAbove.Items
 			
 			if (player.altFunctionUse == 2)
 			{
-				if (player.GetModPlayer<StarsAbovePlayer>().powderGaugeIndicatorOn == false && blastingChargeTimer < 0 && !Main.LocalPlayer.HasBuff(BuffType<Buffs.KroniicPrincipalityCooldown>()))
+				if (player.GetModPlayer<WeaponPlayer>().powderGaugeIndicatorOn == false && blastingChargeTimer < 0 && !Main.LocalPlayer.HasBuff(BuffType<Buffs.KroniicPrincipalityCooldown>()))
 				{
-					if (player.statMana >= 50 && player.GetModPlayer<StarsAbovePlayer>().powderGauge >= 80)
+					if (player.statMana >= 50 && player.GetModPlayer<WeaponPlayer>().powderGauge >= 80)
 					{
-						player.GetModPlayer<StarsAbovePlayer>().powderGauge -= 80;
+						player.GetModPlayer<WeaponPlayer>().powderGauge -= 80;
 						player.statMana -= 50;
 						blastingChargeTimer = 180;
-						player.GetModPlayer<StarsAbovePlayer>().kroniicSavedPosition = player.position;
-						player.GetModPlayer<StarsAbovePlayer>().kroniicSavedHP = player.statLife;
-						player.GetModPlayer<StarsAbovePlayer>().kroniicSavedMP = player.statMana;
-						player.GetModPlayer<StarsAbovePlayer>().kroniicTeleport = true;
+						player.GetModPlayer<WeaponPlayer>().kroniicSavedPosition = player.position;
+						player.GetModPlayer<WeaponPlayer>().kroniicSavedHP = player.statLife;
+						player.GetModPlayer<WeaponPlayer>().kroniicSavedMP = player.statMana;
+						player.GetModPlayer<WeaponPlayer>().kroniicTeleport = true;
 						return true;
 					}
 					else
@@ -91,7 +91,7 @@ namespace StarsAbove.Items
 				}
 				else
 				{
-					if(player.GetModPlayer<StarsAbovePlayer>().powderGaugeIndicatorOn == true)
+					if(player.GetModPlayer<WeaponPlayer>().powderGaugeIndicatorOn == true)
 					{
 						return true;
 					}
@@ -109,7 +109,7 @@ namespace StarsAbove.Items
 		public override void HoldItem(Player player)
 		{
 			
-			player.GetModPlayer<StarsAbovePlayer>().kroniicHeld = 10;
+			player.GetModPlayer<WeaponPlayer>().kroniicHeld = 10;
 			if (player.ownedProjectileCounts[ProjectileType<Projectiles.TemporalTimepiece2>()] < 1)
 			{
 				
@@ -131,15 +131,15 @@ namespace StarsAbove.Items
 			blastingChargeTimer--;
 			if (blastingChargeTimer == 0)
 			{
-				player.GetModPlayer<StarsAbovePlayer>().kroniicTimer = 360;
-				player.GetModPlayer<StarsAbovePlayer>().powderGaugeIndicatorOn = true;
+				player.GetModPlayer<WeaponPlayer>().kroniicTimer = 360;
+				player.GetModPlayer<WeaponPlayer>().powderGaugeIndicatorOn = true;
 			}
-			if (player.GetModPlayer<StarsAbovePlayer>().powderGauge > 0)
+			if (player.GetModPlayer<WeaponPlayer>().powderGauge > 0)
 			{
 				heatDrain++;
 				if (heatDrain >= 10)
 				{
-					player.GetModPlayer<StarsAbovePlayer>().powderGauge--;
+					player.GetModPlayer<WeaponPlayer>().powderGauge--;
 					heatDrain = 0;
 				}
 			}
@@ -186,16 +186,16 @@ namespace StarsAbove.Items
 		{
 			if (player.altFunctionUse == 2)
 			{
-				if (player.GetModPlayer<StarsAbovePlayer>().powderGaugeIndicatorOn == true)
+				if (player.GetModPlayer<WeaponPlayer>().powderGaugeIndicatorOn == true)
 				{
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_TimeEffect, player.Center);
 					player.AddBuff(BuffType<Buffs.KroniicPrincipalityCooldown>(), 3600);//7200 is 2 minutes
-					player.Teleport(player.GetModPlayer<StarsAbovePlayer>().kroniicSavedPosition, 1, 0);
-					player.statLife = player.GetModPlayer<StarsAbovePlayer>().kroniicSavedHP;
-					player.statMana = player.GetModPlayer<StarsAbovePlayer>().kroniicSavedMP;
-					player.GetModPlayer<StarsAbovePlayer>().kroniicTeleport = false;
+					player.Teleport(player.GetModPlayer<WeaponPlayer>().kroniicSavedPosition, 1, 0);
+					player.statLife = player.GetModPlayer<WeaponPlayer>().kroniicSavedHP;
+					player.statMana = player.GetModPlayer<WeaponPlayer>().kroniicSavedMP;
+					player.GetModPlayer<WeaponPlayer>().kroniicTeleport = false;
 					NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, (float)player.whoAmI, savedPosition.X, savedPosition.Y, 1, 0, 0);
-					player.GetModPlayer<StarsAbovePlayer>().powderGaugeIndicatorOn = false;
+					player.GetModPlayer<WeaponPlayer>().powderGaugeIndicatorOn = false;
 
 					for (int d = 0; d < 30; d++)
 					{
@@ -224,7 +224,7 @@ namespace StarsAbove.Items
 			}
 			else
 			{
-				if(player.GetModPlayer<StarsAbovePlayer>().powderGauge >= 80)
+				if(player.GetModPlayer<WeaponPlayer>().powderGauge >= 80)
                 {
 					int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, velocity.X, velocity.Y, ProjectileType<TemporalTimepiece>(), damage += 60, knockback, player.whoAmI, 0f);
 

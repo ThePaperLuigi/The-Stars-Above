@@ -51,7 +51,7 @@ namespace StarsAbove.UI.Hawkmoon
 
 		public override void Draw(SpriteBatch spriteBatch) {
 			// This prevents drawing unless we are using an ExampleDamageItem
-			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().hawkmoonReloadTimerEnabled == true))
+			if (!(Main.LocalPlayer.GetModPlayer<WeaponPlayer>().hawkmoonReloadTimerEnabled == true))
 				return;
 
 			base.Draw(spriteBatch);
@@ -62,7 +62,7 @@ namespace StarsAbove.UI.Hawkmoon
 			//area.Left.Set(Main.mouseX - 80, 0f); // Place the resource bar to the left of the hearts.
 			//area.Top.Set(Main.mouseY + 20, 0f); // Placing it just a bit below the top of the screen.
 			//Recalculate();
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			// Calculate quotient
 			float quotient = (float)modPlayer.hawkmoonReloadTimer / 100; // Creating a quotient that represents the difference of your currentResource vs your maximumResource, resulting in a float of 0-1f.
 			quotient = Utils.Clamp(quotient, 0f, 1f); // Clamping it to 0-1f so it doesn't go over that.
@@ -94,10 +94,10 @@ namespace StarsAbove.UI.Hawkmoon
 			//}
 		}
 		public override void Update(GameTime gameTime) {
-			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().hawkmoonReloadTimerEnabled == true))
+			if (!(Main.LocalPlayer.GetModPlayer<WeaponPlayer>().hawkmoonReloadTimerEnabled == true))
 				return;
 
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			// Setting the text per tick to update and show our resource values.
 			text.SetText($"");
 			base.Update(gameTime);

@@ -72,7 +72,7 @@ namespace StarsAbove.UI.Hawkmoon
 		protected override void DrawSelf(SpriteBatch spriteBatch) {
 			base.DrawSelf(spriteBatch);
 
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			// Calculate quotient
 			float quotient = (float)modPlayer.powderGauge / 100; // Creating a quotient that represents the difference of your currentResource vs your maximumResource, resulting in a float of 0-1f.
 			quotient = Utils.Clamp(quotient, 0f, 1f); // Clamping it to 0-1f so it doesn't go over that.
@@ -90,7 +90,7 @@ namespace StarsAbove.UI.Hawkmoon
 			indicator.Y += 0;
 			indicator.Height -= 0;
 
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().powderGaugeIndicatorOn == true)
+			if (Main.LocalPlayer.GetModPlayer<WeaponPlayer>().powderGaugeIndicatorOn == true)
 			{
 				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/PowderGaugeIndicatorOn"), indicator, Color.White);
 			}
@@ -118,7 +118,7 @@ namespace StarsAbove.UI.Hawkmoon
 			//if (!(Main.LocalPlayer.HeldItem.ModItem is FarEdgeOfFate))
 				return;
 
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			// Setting the text per tick to update and show our resource values.
 			text.SetText($"");
 

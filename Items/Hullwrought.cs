@@ -74,7 +74,7 @@ namespace StarsAbove.Items
             {
                 return false;
             }
-            //if (player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1) // Asphodene
+            //if (player.GetModPlayer<WeaponPlayer>().chosenStarfarer == 1) // Asphodene
             //{
             //    if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("The weapon fails to react to your Aspect, rendering it unusable."), 241, 255, 180);}
             //    return false;
@@ -152,26 +152,26 @@ namespace StarsAbove.Items
                     Item.useTime = 2;
                     Item.useAnimation = 2;
 
-                    player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = true;
+                    player.GetModPlayer<WeaponPlayer>().bowChargeActive = true;
                     if (form == 0)
                     {
-                        player.GetModPlayer<StarsAbovePlayer>().bowCharge += 2;
+                        player.GetModPlayer<WeaponPlayer>().bowCharge += 2;
 
                     }
                     else
                     {
-                        player.GetModPlayer<StarsAbovePlayer>().bowCharge += 1;
+                        player.GetModPlayer<WeaponPlayer>().bowCharge += 1;
 
                     }
                     
 
 
-                    if (player.GetModPlayer<StarsAbovePlayer>().bowCharge == 1)
+                    if (player.GetModPlayer<WeaponPlayer>().bowCharge == 1)
                     {
 
                         //Main.PlaySound(SoundLoader.customSoundType, (int)player.Center.X, (int)player.Center.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/bowstring"), 0.5f);
                     }
-                    if (player.GetModPlayer<StarsAbovePlayer>().bowCharge == 99)
+                    if (player.GetModPlayer<WeaponPlayer>().bowCharge == 99)
                     {
 
                         for (int d = 0; d < 88; d++)
@@ -180,15 +180,15 @@ namespace StarsAbove.Items
                         }
                         //Main.PlaySound(SoundID.Item52, player.position);
                     }
-                    if (player.GetModPlayer<StarsAbovePlayer>().bowCharge < 100)
+                    if (player.GetModPlayer<WeaponPlayer>().bowCharge < 100)
                     {
 
                         for (int i = 0; i < 30; i++)
                         {//Circle
                             Vector2 offset = new Vector2();
                             double angle = Main.rand.NextDouble() * 2d * Math.PI;
-                            offset.X += (float)(Math.Sin(angle) * (100 - player.GetModPlayer<StarsAbovePlayer>().bowCharge));
-                            offset.Y += (float)(Math.Cos(angle) * (100 - player.GetModPlayer<StarsAbovePlayer>().bowCharge));
+                            offset.X += (float)(Math.Sin(angle) * (100 - player.GetModPlayer<WeaponPlayer>().bowCharge));
+                            offset.Y += (float)(Math.Cos(angle) * (100 - player.GetModPlayer<WeaponPlayer>().bowCharge));
 
                             Dust d2 = Dust.NewDustPerfect(player.MountedCenter + offset, 20, player.velocity, 200, default(Color), 0.5f);
                             d2.fadeIn = 0.1f;
@@ -210,7 +210,7 @@ namespace StarsAbove.Items
                     }
                     else
                     {
-                        if (player.GetModPlayer<StarsAbovePlayer>().empoweredHullwroughtShot >= 5)
+                        if (player.GetModPlayer<WeaponPlayer>().empoweredHullwroughtShot >= 5)
                         {
                             Dust.NewDust(player.Center, 0, 0, 159, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 0.8f);
                         }
@@ -222,20 +222,20 @@ namespace StarsAbove.Items
                         if (form == 1 && chargeCooldown <= 0)
                         {
                             chargeCooldown = 30;
-                            if (player.GetModPlayer<StarsAbovePlayer>().empoweredHullwroughtShot < 10)
+                            if (player.GetModPlayer<WeaponPlayer>().empoweredHullwroughtShot < 10)
                             {
-                                player.GetModPlayer<StarsAbovePlayer>().empoweredHullwroughtShot++;
+                                player.GetModPlayer<WeaponPlayer>().empoweredHullwroughtShot++;
                                 if (player.whoAmI == Main.myPlayer)
                                 {
-                                    if(player.GetModPlayer<StarsAbovePlayer>().empoweredHullwroughtShot >= 5)
+                                    if(player.GetModPlayer<WeaponPlayer>().empoweredHullwroughtShot >= 5)
                                     {
                                         Rectangle textPos = new Rectangle((int)player.position.X, (int)player.position.Y - 20, player.width, player.height);
-                                        CombatText.NewText(textPos, new Color(255, 255, 0, 240), $"{player.GetModPlayer<StarsAbovePlayer>().empoweredHullwroughtShot}", false, false);
+                                        CombatText.NewText(textPos, new Color(255, 255, 0, 240), $"{player.GetModPlayer<WeaponPlayer>().empoweredHullwroughtShot}", false, false);
                                     }
                                     else
                                     {
                                         Rectangle textPos = new Rectangle((int)player.position.X, (int)player.position.Y - 20, player.width, player.height);
-                                        CombatText.NewText(textPos, new Color(122, 122, 0, 240), $"{player.GetModPlayer<StarsAbovePlayer>().empoweredHullwroughtShot}", false, false);
+                                        CombatText.NewText(textPos, new Color(122, 122, 0, 240), $"{player.GetModPlayer<WeaponPlayer>().empoweredHullwroughtShot}", false, false);
                                     }
                                     SoundEngine.PlaySound(StarsAboveAudio.SFX_HullwroughtLoad, player.Center);
                                     
@@ -265,12 +265,12 @@ namespace StarsAbove.Items
                     Item.useTime = 20;
                     Item.useAnimation = 20;
 
-                    if (player.GetModPlayer<StarsAbovePlayer>().bowCharge >= 100 && form == 0)//Fully Charged Normal attack
+                    if (player.GetModPlayer<WeaponPlayer>().bowCharge >= 100 && form == 0)//Fully Charged Normal attack
                     {
 
                         SoundEngine.PlaySound(SoundID.Item1, player.position);
-                        player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-                        player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
+                        player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+                        player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
                         Vector2 mousePosition2 = player.DirectionTo(player.GetModPlayer<StarsAbovePlayer>().playerMousePos) * Main.rand.Next(20, 22);
                         Vector2 leap = Vector2.Normalize(mousePosition2) * 15f;
                         player.velocity = leap;
@@ -283,12 +283,12 @@ namespace StarsAbove.Items
                     }
                     else
                     {
-                        if (player.GetModPlayer<StarsAbovePlayer>().bowCharge > 0 && form == 0)//Not Fully Charged normal
+                        if (player.GetModPlayer<WeaponPlayer>().bowCharge > 0 && form == 0)//Not Fully Charged normal
                         {//
                             SoundEngine.PlaySound(SoundID.Item1, player.position);
 
-                            player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-                            player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
+                            player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+                            player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
                             if(currentSwing == 0)
                             {
                                 Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity3.X, arrowVelocity3.Y, ProjectileType<HullwroughtSwing1>(), player.GetWeaponDamage(Item), 3, player.whoAmI, 0f);
@@ -304,16 +304,16 @@ namespace StarsAbove.Items
 
                         }
                     }
-                    if (player.GetModPlayer<StarsAbovePlayer>().bowCharge >= 100 && form == 1)//Fully Charged Right Click
+                    if (player.GetModPlayer<WeaponPlayer>().bowCharge >= 100 && form == 1)//Fully Charged Right Click
                     {
-                        player.GetModPlayer<StarsAbovePlayer>().savedHullwroughtShot = player.GetModPlayer<StarsAbovePlayer>().empoweredHullwroughtShot;
-                        player.GetModPlayer<StarsAbovePlayer>().empoweredHullwroughtShot = 0;
+                        player.GetModPlayer<WeaponPlayer>().savedHullwroughtShot = player.GetModPlayer<WeaponPlayer>().empoweredHullwroughtShot;
+                        player.GetModPlayer<WeaponPlayer>().empoweredHullwroughtShot = 0;
                         Vector2 mousePosition2 = player.DirectionTo(player.GetModPlayer<StarsAbovePlayer>().playerMousePos) * Main.rand.Next(20, 22);
                         Vector2 leap = Vector2.Normalize(mousePosition2) * -6f;
                         player.velocity += leap;
                         SoundEngine.PlaySound(SoundID.Item1, player.position);
-                        player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-                        player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
+                        player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+                        player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
 
                         SoundEngine.PlaySound(StarsAboveAudio.SFX_HullwroughtBlast, player.Center);
                         Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity2.X, arrowVelocity2.Y, ProjectileType<HullwroughtRound>(), player.GetWeaponDamage(Item), 3, player.whoAmI, 0f);
@@ -324,13 +324,13 @@ namespace StarsAbove.Items
                     }
                     else
                     {
-                        if (player.GetModPlayer<StarsAbovePlayer>().bowCharge > 0 && form == 1)//Not Fully Charged Right Click
+                        if (player.GetModPlayer<WeaponPlayer>().bowCharge > 0 && form == 1)//Not Fully Charged Right Click
                         {//
                          //Main.PlaySound(SoundID.Item1, player.position);
 
 
-                            player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-                            player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
+                            player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+                            player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
 
                             //Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity.X, arrowVelocity.Y, ProjectileType<SteelTempestSwing>(), player.GetWeaponDamage(Item) / 2, 3, player.whoAmI, 0f);
 
@@ -340,7 +340,7 @@ namespace StarsAbove.Items
                 }
 
 
-                //item.shootSpeed = 8f + (int)Math.Round(player.GetModPlayer<StarsAbovePlayer>().bowCharge / 10);
+                //item.shootSpeed = 8f + (int)Math.Round(player.GetModPlayer<WeaponPlayer>().bowCharge / 10);
             }
         }
 

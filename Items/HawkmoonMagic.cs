@@ -59,18 +59,18 @@ namespace StarsAbove.Items
 			
 			if (player.altFunctionUse == 2)
 			{
-				if (player.GetModPlayer<StarsAbovePlayer>().hawkmoonReloadTimerEnabled == false && player.GetModPlayer<StarsAbovePlayer>().hawkmoonRounds <= 0)
+				if (player.GetModPlayer<WeaponPlayer>().hawkmoonReloadTimerEnabled == false && player.GetModPlayer<WeaponPlayer>().hawkmoonRounds <= 0)
 				{
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_HuckleberryReload, player.Center);
-					player.GetModPlayer<StarsAbovePlayer>().hawkmoonPerfectReload = false;
+					player.GetModPlayer<WeaponPlayer>().hawkmoonPerfectReload = false;
 	
-					player.GetModPlayer<StarsAbovePlayer>().hawkmoonReloadTimer = 0;
-					player.GetModPlayer<StarsAbovePlayer>().hawkmoonReloadTimerEnabled = true;
+					player.GetModPlayer<WeaponPlayer>().hawkmoonReloadTimer = 0;
+					player.GetModPlayer<WeaponPlayer>().hawkmoonReloadTimerEnabled = true;
 
 				}
 				else
 				{
-					if (player.GetModPlayer<StarsAbovePlayer>().hawkmoonReloadTimer >= 85 && player.GetModPlayer<StarsAbovePlayer>().hawkmoonReloadTimer < 100 && player.GetModPlayer<StarsAbovePlayer>().hawkmoonReloadTimerEnabled == true)//Success!
+					if (player.GetModPlayer<WeaponPlayer>().hawkmoonReloadTimer >= 85 && player.GetModPlayer<WeaponPlayer>().hawkmoonReloadTimer < 100 && player.GetModPlayer<WeaponPlayer>().hawkmoonReloadTimerEnabled == true)//Success!
 					{
 						//Main.PlaySound(SoundLoader.customSoundType, (int)player.Center.X, (int)player.Center.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/RadGunSuccess"), 0.5f);
 						for (int d = 0; d < 22; d++)
@@ -85,19 +85,19 @@ namespace StarsAbove.Items
 						{
 							Dust.NewDust(player.Center, 0, 0, 135, 0f + Main.rand.Next(-12, 12), 0f + Main.rand.Next(-12, 12), 150, default(Color), 0.8f);
 						}
-						player.GetModPlayer<StarsAbovePlayer>().hawkmoonReloadTimerEnabled = false;
-						player.GetModPlayer<StarsAbovePlayer>().hawkmoonRounds = 12;
-						player.GetModPlayer<StarsAbovePlayer>().hawkmoonPerfectReload = true;
+						player.GetModPlayer<WeaponPlayer>().hawkmoonReloadTimerEnabled = false;
+						player.GetModPlayer<WeaponPlayer>().hawkmoonRounds = 12;
+						player.GetModPlayer<WeaponPlayer>().hawkmoonPerfectReload = true;
 						return true;
 					}
 					else
 					{
-						if (player.GetModPlayer<StarsAbovePlayer>().hawkmoonReloadTimer > 20 && player.GetModPlayer<StarsAbovePlayer>().hawkmoonReloadTimer < 85 && player.GetModPlayer<StarsAbovePlayer>().hawkmoonReloadTimerEnabled == true)//Failure
+						if (player.GetModPlayer<WeaponPlayer>().hawkmoonReloadTimer > 20 && player.GetModPlayer<WeaponPlayer>().hawkmoonReloadTimer < 85 && player.GetModPlayer<WeaponPlayer>().hawkmoonReloadTimerEnabled == true)//Failure
 						{
-							player.GetModPlayer<StarsAbovePlayer>().hawkmoonReloadTimerEnabled = false;
+							player.GetModPlayer<WeaponPlayer>().hawkmoonReloadTimerEnabled = false;
 							//Main.PlaySound(SoundLoader.customSoundType, (int)player.Center.X, (int)player.Center.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/RadGunFail"), 0.5f);
-							player.GetModPlayer<StarsAbovePlayer>().hawkmoonRounds = 12;
-							player.GetModPlayer<StarsAbovePlayer>().hawkmoonReloadTimer = 0;
+							player.GetModPlayer<WeaponPlayer>().hawkmoonRounds = 12;
+							player.GetModPlayer<WeaponPlayer>().hawkmoonReloadTimer = 0;
 							
 							return true;
 						}
@@ -111,9 +111,9 @@ namespace StarsAbove.Items
 			}
 			else
 			{
-				if (player.GetModPlayer<StarsAbovePlayer>().hawkmoonRounds > 0)
+				if (player.GetModPlayer<WeaponPlayer>().hawkmoonRounds > 0)
 				{
-					player.GetModPlayer<StarsAbovePlayer>().hawkmoonRounds--;
+					player.GetModPlayer<WeaponPlayer>().hawkmoonRounds--;
 					return true;
 				}
 				else
@@ -126,20 +126,20 @@ namespace StarsAbove.Items
 		}
 		public override void HoldItem(Player player)
 		{
-			if (player.GetModPlayer<StarsAbovePlayer>().hawkmoonReloadTimer >= 100 && player.GetModPlayer<StarsAbovePlayer>().hawkmoonReloadTimerEnabled)//fail
+			if (player.GetModPlayer<WeaponPlayer>().hawkmoonReloadTimer >= 100 && player.GetModPlayer<WeaponPlayer>().hawkmoonReloadTimerEnabled)//fail
 			{
-				player.GetModPlayer<StarsAbovePlayer>().hawkmoonReloadTimerEnabled = false;
+				player.GetModPlayer<WeaponPlayer>().hawkmoonReloadTimerEnabled = false;
 				//Main.PlaySound(SoundLoader.customSoundType, (int)player.Center.X, (int)player.Center.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/HuckleberryReload"), 1f);
-				player.GetModPlayer<StarsAbovePlayer>().hawkmoonRounds = 12;
-				player.GetModPlayer<StarsAbovePlayer>().hawkmoonReloadTimer = 0;
+				player.GetModPlayer<WeaponPlayer>().hawkmoonRounds = 12;
+				player.GetModPlayer<WeaponPlayer>().hawkmoonReloadTimer = 0;
 				
 
 			}
-			if (player.GetModPlayer<StarsAbovePlayer>().hawkmoonReloadTimerEnabled)
+			if (player.GetModPlayer<WeaponPlayer>().hawkmoonReloadTimerEnabled)
 			{
-				player.GetModPlayer<StarsAbovePlayer>().hawkmoonReloadTimer += 3;
+				player.GetModPlayer<WeaponPlayer>().hawkmoonReloadTimer += 3;
 			}
-			float launchSpeed = 2f + (int)Math.Round(player.GetModPlayer<StarsAbovePlayer>().bowCharge / 10);
+			float launchSpeed = 2f + (int)Math.Round(player.GetModPlayer<WeaponPlayer>().bowCharge / 10);
 			Vector2 mousePosition = Main.MouseWorld;
 			Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
 			Vector2 arrowVelocity = direction * launchSpeed;
@@ -153,7 +153,7 @@ namespace StarsAbove.Items
 
 
 			}
-			//item.shootSpeed = 8f + (int)Math.Round(player.GetModPlayer<StarsAbovePlayer>().bowCharge / 10);
+			//item.shootSpeed = 8f + (int)Math.Round(player.GetModPlayer<WeaponPlayer>().bowCharge / 10);
 		}
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
@@ -163,7 +163,7 @@ namespace StarsAbove.Items
 			}
 			else
 			{
-				if(player.GetModPlayer<StarsAbovePlayer>().hawkmoonPerfectReload == true)
+				if(player.GetModPlayer<WeaponPlayer>().hawkmoonPerfectReload == true)
 				{
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, velocity.X, velocity.Y,ProjectileType<HawkmoonRound>(), damage, knockback, player.whoAmI, 1f);
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_HuckleberryShoot, player.Center);

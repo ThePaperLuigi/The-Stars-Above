@@ -81,8 +81,8 @@ namespace StarsAbove.Projectiles.TwinStars
 			/*Position the player based on where the player is, the Sin/Cos of the angle times the /
             /distance for the desired distance away from the player minus the projectile's width   /
             /and height divided by two so the center of the projectile is at the right place.     */
-			Projectile.position.X = player.GetModPlayer<StarsAbovePlayer>().starPosition1.X - (int)(Math.Cos(rad) * dist) - Projectile.width / 2;
-			Projectile.position.Y = player.GetModPlayer<StarsAbovePlayer>().starPosition1.Y - (int)(Math.Sin(rad) * dist) - Projectile.height / 2;
+			Projectile.position.X = player.GetModPlayer<WeaponPlayer>().starPosition1.X - (int)(Math.Cos(rad) * dist) - Projectile.width / 2;
+			Projectile.position.Y = player.GetModPlayer<WeaponPlayer>().starPosition1.Y - (int)(Math.Sin(rad) * dist) - Projectile.height / 2;
 
 			//Increase the counter/angle in degrees by 1 point, you can change the rate here too, but the orbit may look choppy depending on the value
 			

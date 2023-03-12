@@ -75,7 +75,7 @@ namespace StarsAbove.Items
 		}
 		public override void HoldItem(Player player)
 		{
-			//player.GetModPlayer<StarsAbovePlayer>().seraphimHeld = 10;
+			//player.GetModPlayer<WeaponPlayer>().seraphimHeld = 10;
 			if (player.ownedProjectileCounts[ProjectileType<Starchild>()] < 1)
 			{
 				player.AddBuff(BuffType<StarchildBuff>(), 999);

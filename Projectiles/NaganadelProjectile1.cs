@@ -109,7 +109,7 @@ namespace StarsAbove.Projectiles
 			// Change the spear position based off of the velocity and the movementFactor
 			Projectile.position += Projectile.velocity * movementFactor;
 			// When we reach the end of the animation, we can kill the spear projectile
-			if (projOwner.GetModPlayer<StarsAbovePlayer>().naganadelWeapon1Summoned == false) {
+			if (projOwner.GetModPlayer<WeaponPlayer>().naganadelWeapon1Summoned == false) {
 				if (Projectile.owner == Main.myPlayer)
 				{
 					
@@ -118,7 +118,7 @@ namespace StarsAbove.Projectiles
 						float speedX = Projectile.velocity.X;
 						float speedY = Projectile.velocity.Y; // This is Vanilla code, a little more obscure.
 															  // Spawn the Projectile.
-					projOwner.GetModPlayer<StarsAbovePlayer>().naganadelWeaponPosition = Main.MouseWorld;
+					projOwner.GetModPlayer<WeaponPlayer>().naganadelWeaponPosition = Main.MouseWorld;
 					Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.position.X + (Projectile.width / 2), Projectile.position.Y + (Projectile.height / 2), (Main.MouseWorld).ToRotation(), (Main.MouseWorld).ToRotation(), ProjectileType<NaganadelProjectileFinal1>(), (int)(Projectile.damage * 10), 0f, Projectile.owner, 0f, 0f);
 					
 				}

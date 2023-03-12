@@ -73,7 +73,7 @@ namespace StarsAbove.Items
 		}
 		public override void HoldItem(Player player)
 		{
-			player.GetModPlayer<StarsAbovePlayer>().seraphimHeld = 10;
+			player.GetModPlayer<WeaponPlayer>().seraphimHeld = 10;
 			if (player.ownedProjectileCounts[ProjectileType<Projectiles.KazimierzSeraphimProjectile>()] < 1)
 			{
 				
@@ -94,7 +94,7 @@ namespace StarsAbove.Items
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			StarsAbovePlayer modPlayer = player.GetModPlayer<StarsAbovePlayer>();
+			WeaponPlayer modPlayer = player.GetModPlayer<WeaponPlayer>();
 			if (player.altFunctionUse != 2)
 			{
 				if (player.direction == 1)

@@ -63,7 +63,7 @@ namespace StarsAbove.Items
 
 			if (player.altFunctionUse == 2)
 			{
-				if (!player.HasBuff(BuffType<Buffs.EternalStar.ImmemorialSupernova>()) && player.GetModPlayer<StarsAbovePlayer>().EternalGauge >= 100)
+				if (!player.HasBuff(BuffType<Buffs.EternalStar.ImmemorialSupernova>()) && player.GetModPlayer<WeaponPlayer>().EternalGauge >= 100)
 				{
 					/*for (int d = 0; d < 10; d++)
 					{
@@ -74,7 +74,7 @@ namespace StarsAbove.Items
 						Dust.NewDust(player.Center, 0, 0, DustType<Dusts.bubble>(), 0f + Main.rand.Next(-25, 25), 0f + Main.rand.Next(-15, 15), 0, default(Color), 1.5f);
 					}*/
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), Main.MouseWorld, Vector2.Zero, Mod.Find<ModProjectile>("ImmemorialSupernovaProjectile").Type, player.GetWeaponDamage(Item), 0, player.whoAmI);
-					player.GetModPlayer<StarsAbovePlayer>().EternalGauge = 0;
+					player.GetModPlayer<WeaponPlayer>().EternalGauge = 0;
 					player.AddBuff(BuffType<Buffs.EternalStar.ImmemorialSupernova>(), 300);
 					return true;
 				}

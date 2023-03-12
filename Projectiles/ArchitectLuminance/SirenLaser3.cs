@@ -52,7 +52,7 @@ namespace StarsAbove.Projectiles.ArchitectLuminance
 		public override bool PreDraw(ref Color lightColor) {
 			// We start drawing the laser if we have charged up
 			if (IsAtMaxCharge) {
-				DrawLaser(Main.spriteBatch, (Texture2D)TextureAssets.Projectile[Projectile.type], Main.player[Projectile.owner].GetModPlayer<StarsAbovePlayer>().sirenTurretCenter3,
+				DrawLaser(Main.spriteBatch, (Texture2D)TextureAssets.Projectile[Projectile.type], Main.player[Projectile.owner].GetModPlayer<WeaponPlayer>().sirenTurretCenter3,
 					Projectile.velocity, 10, Projectile.damage, -1.57f, 1f, 1000f, Color.White, (int)MOVE_DISTANCE);
 			}
 			return false;
@@ -90,8 +90,8 @@ namespace StarsAbove.Projectiles.ArchitectLuminance
 			float point = 0f;
 			// Run an AABB versus Line check to look for collisions, look up AABB collision first to see how it works
 			// It will look for collisions on the given line using AABB
-			return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), player.GetModPlayer<StarsAbovePlayer>().sirenTurretCenter3,
-				player.GetModPlayer<StarsAbovePlayer>().sirenTurretCenter3 + unit * Distance, 22, ref point);
+			return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), player.GetModPlayer<WeaponPlayer>().sirenTurretCenter3,
+				player.GetModPlayer<WeaponPlayer>().sirenTurretCenter3 + unit * Distance, 22, ref point);
 		}
 
 		// Set custom immunity time on hitting an NPC
@@ -102,7 +102,7 @@ namespace StarsAbove.Projectiles.ArchitectLuminance
 		// The AI of the projectile
 		public override void AI() {
 			Player player = Main.player[Projectile.owner];
-			Projectile.position = player.GetModPlayer<StarsAbovePlayer>().sirenTurretCenter3 + Projectile.velocity * MOVE_DISTANCE;
+			Projectile.position = player.GetModPlayer<WeaponPlayer>().sirenTurretCenter3 + Projectile.velocity * MOVE_DISTANCE;
 			//projectile.timeLeft = 2;
 
 			// By separating large AI into methods it becomes very easy to see the flow of the AI in a broader sense
@@ -125,7 +125,7 @@ namespace StarsAbove.Projectiles.ArchitectLuminance
 		private void SpawnDusts(Player player)
 		{
 			Vector2 unit = Projectile.velocity * -1;
-			Vector2 dustPos = player.GetModPlayer<StarsAbovePlayer>().sirenTurretCenter3 + Projectile.velocity * Distance;
+			Vector2 dustPos = player.GetModPlayer<WeaponPlayer>().sirenTurretCenter3 + Projectile.velocity * Distance;
 
 			for (int i = 0; i < 2; ++i) {
 				float num1 = Projectile.velocity.ToRotation() + (Main.rand.Next(2) == 1 ? -1.0f : 1.0f) * 1.57f;
@@ -134,7 +134,7 @@ namespace StarsAbove.Projectiles.ArchitectLuminance
 				Dust dust = Main.dust[Dust.NewDust(dustPos, 0, 0, 226, dustVel.X, dustVel.Y)];
 				dust.noGravity = true;
 				dust.scale = 1.2f;
-				dust = Dust.NewDustDirect(Main.player[Projectile.owner].GetModPlayer<StarsAbovePlayer>().sirenTurretCenter3, 0, 0, 31,
+				dust = Dust.NewDustDirect(Main.player[Projectile.owner].GetModPlayer<WeaponPlayer>().sirenTurretCenter3, 0, 0, 31,
 					-unit.X * Distance, -unit.Y * Distance);
 				dust.fadeIn = 0f;
 				dust.noGravity = true;
@@ -152,8 +152,8 @@ namespace StarsAbove.Projectiles.ArchitectLuminance
 		{
 			for (Distance = MOVE_DISTANCE; Distance <= 2200f; Distance += 5f)
 			{
-				var start = player.GetModPlayer<StarsAbovePlayer>().sirenTurretCenter3 + Projectile.velocity * Distance;
-				if (!Collision.CanHit(player.GetModPlayer<StarsAbovePlayer>().sirenTurretCenter3, 1, 1, start, 1, 1)) {
+				var start = player.GetModPlayer<WeaponPlayer>().sirenTurretCenter3 + Projectile.velocity * Distance;
+				if (!Collision.CanHit(player.GetModPlayer<WeaponPlayer>().sirenTurretCenter3, 1, 1, start, 1, 1)) {
 					Distance -= 5f;
 					break;
 				}
@@ -176,7 +176,7 @@ namespace StarsAbove.Projectiles.ArchitectLuminance
 				}*/
 				Vector2 offset = Projectile.velocity;
 				offset *= MOVE_DISTANCE - 20;
-				Vector2 pos = player.GetModPlayer<StarsAbovePlayer>().sirenTurretCenter3 + offset - new Vector2(10, 10);
+				Vector2 pos = player.GetModPlayer<WeaponPlayer>().sirenTurretCenter3 + offset - new Vector2(10, 10);
 				if (Charge < MAX_CHARGE)
 				{
 					Charge++;
@@ -200,10 +200,10 @@ namespace StarsAbove.Projectiles.ArchitectLuminance
 		{
 			// Multiplayer support here, only run this code if the client running it is the owner of the projectile
 			if (Projectile.owner == Main.myPlayer) {
-				Vector2 diff = player.GetModPlayer<StarsAbovePlayer>().sirenTarget - player.GetModPlayer<StarsAbovePlayer>().sirenTurretCenter3;
+				Vector2 diff = player.GetModPlayer<WeaponPlayer>().sirenTarget - player.GetModPlayer<WeaponPlayer>().sirenTurretCenter3;
 				diff.Normalize();
 				Projectile.velocity = diff;
-				Projectile.direction = player.GetModPlayer<StarsAbovePlayer>().sirenTarget.X > player.GetModPlayer<StarsAbovePlayer>().sirenTurretCenter3.X ? 1 : -1;
+				Projectile.direction = player.GetModPlayer<WeaponPlayer>().sirenTarget.X > player.GetModPlayer<WeaponPlayer>().sirenTurretCenter3.X ? 1 : -1;
 				Projectile.netUpdate = true;
 			}
 			int dir = Projectile.direction;

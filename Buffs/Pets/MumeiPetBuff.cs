@@ -14,7 +14,7 @@ namespace StarsAbove.Buffs.Pets
 		}
 
 		public override void Update(Player player, ref int buffIndex) {
-			player.GetModPlayer<StarsAbovePlayer>().MumeiPet = true;
+			player.GetModPlayer<WeaponPlayer>().MumeiPet = true;
 			player.buffTime[buffIndex] = 18000;
 			bool petProjectileNotSpawned = player.ownedProjectileCounts[ProjectileType<Projectiles.Pets.MumeiPet>()] <= 0;
 			if (petProjectileNotSpawned && player.whoAmI == Main.myPlayer) {

@@ -129,13 +129,13 @@ namespace StarsAbove.Items
 		}
 		public override void HoldItem(Player player)
 		{
-			player.GetModPlayer<StarsAbovePlayer>().CatalystMemoryProgress += 2;//Increase animation progress when the weapon is held.
-			if (player.GetModPlayer<StarsAbovePlayer>().CatalystMemoryProgress > 50)
+			player.GetModPlayer<WeaponPlayer>().CatalystMemoryProgress += 2;//Increase animation progress when the weapon is held.
+			if (player.GetModPlayer<WeaponPlayer>().CatalystMemoryProgress > 50)
 			{
-				player.GetModPlayer<StarsAbovePlayer>().CatalystMemoryProgress = 50;//Cap it to 50
+				player.GetModPlayer<WeaponPlayer>().CatalystMemoryProgress = 50;//Cap it to 50
 
 			}
-			if (player.GetModPlayer<StarsAbovePlayer>().CatalystMemoryProgress > 25)//The blade is drawn.
+			if (player.GetModPlayer<WeaponPlayer>().CatalystMemoryProgress > 25)//The blade is drawn.
 			{
 				player.AddBuff(BuffType<CatalyzedBlade>(), 10);
 			}
@@ -152,7 +152,7 @@ namespace StarsAbove.Items
 					//Fire the blade towards the prismic's position.
 					//Once the blade is in contact with the prismic it will shatter.
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_CatalystSwing, player.Center);
-					Vector2 direction = Vector2.Normalize(player.GetModPlayer<StarsAbovePlayer>().CatalystPrismicPosition - player.Center);
+					Vector2 direction = Vector2.Normalize(player.GetModPlayer<WeaponPlayer>().CatalystPrismicPosition - player.Center);
 					Vector2 velocity = direction * 1f;
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, velocity.X, velocity.Y, ProjectileType<CatalystThrow>(), 0, 0, player.whoAmI, 0f);
 					//After that, grant a buff.
@@ -163,7 +163,7 @@ namespace StarsAbove.Items
 
 		public override bool? UseItem(Player player)
         {
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			/*if (player.altFunctionUse == 2 && !player.HasBuff(BuffType<BoilingBloodBuff>()))
 			{
 				
@@ -192,11 +192,11 @@ namespace StarsAbove.Items
 			{
 				if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
 				{
-					player.GetModPlayer<StarsAbovePlayer>().CatalystPrismicHP = 250;
+					player.GetModPlayer<WeaponPlayer>().CatalystPrismicHP = 250;
 				}
 				else
                 {
-					player.GetModPlayer<StarsAbovePlayer>().CatalystPrismicHP = 600;
+					player.GetModPlayer<WeaponPlayer>().CatalystPrismicHP = 600;
 				}
 					
 				player.AddBuff(BuffType<Bedazzled>(), 1800);//Determines if the Prismic is alive or not. Provides buffs.

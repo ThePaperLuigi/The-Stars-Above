@@ -104,8 +104,8 @@ namespace StarsAbove.Projectiles.KazimierzSeraphim
 
 			}
 			Player player = Main.player[Projectile.owner];
-			player.GetModPlayer<StarsAbovePlayer>().radiance++;
-			if (player.GetModPlayer<StarsAbovePlayer>().radiance >= 5)
+			player.GetModPlayer<WeaponPlayer>().radiance++;
+			if (player.GetModPlayer<WeaponPlayer>().radiance >= 5)
 			{
 				Dust dust;
 				for (int d = 0; d < 40; d++)

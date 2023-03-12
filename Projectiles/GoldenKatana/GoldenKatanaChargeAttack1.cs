@@ -100,7 +100,7 @@ namespace StarsAbove.Projectiles.GoldenKatana
 			{
 				Projectile.Kill();
 			}
-			if (projOwner.GetModPlayer<StarsAbovePlayer>().bowCharge > 0)
+			if (projOwner.GetModPlayer<WeaponPlayer>().bowCharge > 0)
 			{
 				Projectile.Kill();
 			}

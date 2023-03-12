@@ -78,7 +78,7 @@ namespace StarsAbove.Items
 			Vector2 arrowVelocity = direction * 26f;
 			
 
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 
 			if (player.altFunctionUse == 2)
 			{
@@ -193,6 +193,16 @@ namespace StarsAbove.Items
 				.AddIngredient(ItemID.SoulofFlight, 30)
 				.AddIngredient(ItemID.LargeAmethyst, 1)
 				.AddIngredient(ItemID.GoldWatch, 1)
+				.AddTile(TileID.Anvils)
+				.Register();
+
+			CreateRecipe(1)
+				.AddIngredient(ItemType<EssenceOfTheTimeless>(), 1)
+				.AddIngredient(ItemID.Cardinal, 1)
+				.AddIngredient(ItemID.HallowedBar, 15)
+				.AddIngredient(ItemID.SoulofFlight, 30)
+				.AddIngredient(ItemID.LargeAmethyst, 1)
+				.AddIngredient(ItemID.PlatinumWatch, 1)
 				.AddTile(TileID.Anvils)
 				.Register();
 		}

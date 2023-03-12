@@ -24,7 +24,7 @@ namespace StarsAbove.Items.Placeable.Stellaglyphs
 				"A mystical dias formed by the Celestriad Root" +
 				"\nAllows for the traversal of the cosmos through use of [c/F1AFFF:Celestial Cartography] in the [c/EC356F:Starfarer Menu] once placed" +
 				"\nMust stay in proximity to the Stellaglyph for travel" +
-				"\nCan be upgraded by placing [c/FF1B8D:Stellar Foci] nearby to grant buffs during Cosmic Voyages" +
+				"\nCan be enhanced by placing [c/FF1B8D:Stellar Foci] nearby to grant buffs during Cosmic Voyages" +
 				"\nAble to sustain 12 [c/FF1B8D:Stellar Foci]");
 			//
 			//

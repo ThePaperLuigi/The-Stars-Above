@@ -62,7 +62,7 @@ namespace StarsAbove.Items
         public override void HoldItem(Player player)
         {
 			//player.AddBuff(BuffType<MorningStarHeld>(), 10);
-			StarsAbovePlayer modPlayer = player.GetModPlayer<StarsAbovePlayer>();
+			WeaponPlayer modPlayer = player.GetModPlayer<WeaponPlayer>();
 
 			if(lecture == 0)//
             {

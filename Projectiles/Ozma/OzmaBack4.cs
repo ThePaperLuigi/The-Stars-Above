@@ -81,8 +81,8 @@ namespace StarsAbove.Projectiles.Ozma
             }
 
 			UpdateMovement();
-			DrawOriginOffsetY += -projOwner.GetModPlayer<StarsAbovePlayer>().OzmaSpikeVFXProgression*3;
-			Projectile.alpha = projOwner.GetModPlayer<StarsAbovePlayer>().OzmaSpikeVFXProgression * 10;
+			DrawOriginOffsetY += -projOwner.GetModPlayer<WeaponPlayer>().OzmaSpikeVFXProgression*3;
+			Projectile.alpha = projOwner.GetModPlayer<WeaponPlayer>().OzmaSpikeVFXProgression * 10;
 
 
 

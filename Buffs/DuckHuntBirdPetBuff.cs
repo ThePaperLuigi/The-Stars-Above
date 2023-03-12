@@ -14,7 +14,7 @@ namespace StarsAbove.Buffs
 		}
 
 		public override void Update(Player player, ref int buffIndex) {
-			player.GetModPlayer<StarsAbovePlayer>().DuckHuntBirdPet = true;
+			player.GetModPlayer<WeaponPlayer>().DuckHuntBirdPet = true;
 			player.buffTime[buffIndex] = 18000;
 			bool petProjectileNotSpawned = player.ownedProjectileCounts[ProjectileType<Projectiles.Pets.DuckHuntBirdPet>()] <= 0;
 			if (petProjectileNotSpawned && player.whoAmI == Main.myPlayer) {

@@ -63,7 +63,7 @@ namespace StarsAbove.Items
 			//reloadTimer--;
 			reloadDuration--;
 
-			if(player.GetModPlayer<StarsAbovePlayer>().genocideBullets == 1)
+			if(player.GetModPlayer<WeaponPlayer>().genocideBullets == 1)
             {
 				Item.useAnimation = 120;
 				Item.useTime = 120;
@@ -108,7 +108,7 @@ namespace StarsAbove.Items
 			{
 				if (!player.HasBuff(BuffType<PlasmaGrenadeCooldownBuff>()))
 				{
-					//player.GetModPlayer<StarsAbovePlayer>().genocideBullets = 2;
+					//player.GetModPlayer<WeaponPlayer>().genocideBullets = 2;
 					return true;
 					
 				}
@@ -217,9 +217,9 @@ namespace StarsAbove.Items
 
 
 			}
-			if (player.GetModPlayer<StarsAbovePlayer>().genocideBullets > 0)
+			if (player.GetModPlayer<WeaponPlayer>().genocideBullets > 0)
             {
-				if(player.GetModPlayer<StarsAbovePlayer>().genocideBullets == 1)
+				if(player.GetModPlayer<WeaponPlayer>().genocideBullets == 1)
                 {
 					Projectile.NewProjectile(source,position.X, position.Y, velocity.X, velocity.Y,type, damage*2, knockback, player.whoAmI, 1);
 
@@ -254,7 +254,7 @@ namespace StarsAbove.Items
 					mp.Target = target;
 				}
 
-				player.GetModPlayer<StarsAbovePlayer>().genocideBullets--;
+				player.GetModPlayer<WeaponPlayer>().genocideBullets--;
 
 
 				for (int d = 0; d < 10; d++)
@@ -285,10 +285,10 @@ namespace StarsAbove.Items
 
 
 				//If the gun ran out of bullets on this shot, trigger the reload animation.
-				if (player.GetModPlayer<StarsAbovePlayer>().genocideBullets <= 0)
+				if (player.GetModPlayer<WeaponPlayer>().genocideBullets <= 0)
                 {
 					reloadDuration = 120;
-					player.GetModPlayer<StarsAbovePlayer>().genocideBullets = 6;
+					player.GetModPlayer<WeaponPlayer>().genocideBullets = 6;
 					//Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.Center.X, player.Center.Y, velocity.X/100, velocity.Y/100, ProjectileType<GenocideReload>(), 0, 0, player.whoAmI);
 					//player.AddBuff(BuffType<GenocideReloadBuff>(), 60);
 				}

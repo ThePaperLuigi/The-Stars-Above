@@ -62,7 +62,7 @@ namespace StarsAbove.Projectiles.HunterSymphony
 
 
 					}
-					player.GetModPlayer<StarsAbovePlayer>().SymphonySongsPlayed++;
+					player.GetModPlayer<WeaponPlayer>().SymphonySongsPlayed++;
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_HuntingHornBasic, player.Center);
 					player.AddBuff(BuffType<HunterSymphonyCooldown>(), 1200);
 
@@ -87,7 +87,7 @@ namespace StarsAbove.Projectiles.HunterSymphony
 
 
 					}
-					player.GetModPlayer<StarsAbovePlayer>().SymphonySongsPlayed++;
+					player.GetModPlayer<WeaponPlayer>().SymphonySongsPlayed++;
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_HuntingHornBasic, player.Center);
 					player.AddBuff(BuffType<HunterSymphonyCooldown>(), 1200);
 				}
@@ -113,7 +113,7 @@ namespace StarsAbove.Projectiles.HunterSymphony
 
 
 					}
-					player.GetModPlayer<StarsAbovePlayer>().SymphonySongsPlayed++;
+					player.GetModPlayer<WeaponPlayer>().SymphonySongsPlayed++;
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_HuntingHornBasic, player.Center);
 					player.AddBuff(BuffType<HunterSymphonyCooldown>(), 1200);
 				}
@@ -136,7 +136,7 @@ namespace StarsAbove.Projectiles.HunterSymphony
 
 
 					}
-					player.GetModPlayer<StarsAbovePlayer>().SymphonySongsPlayed++;
+					player.GetModPlayer<WeaponPlayer>().SymphonySongsPlayed++;
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_HuntingHornBasic, player.Center);
 					player.AddBuff(BuffType<HunterSymphonyCooldown>(), 1200);
 				}
@@ -162,7 +162,7 @@ namespace StarsAbove.Projectiles.HunterSymphony
 
 
 					}
-					//player.GetModPlayer<StarsAbovePlayer>().SymphonySongsPlayed++;
+					//player.GetModPlayer<WeaponPlayer>().SymphonySongsPlayed++;
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_HuntingHornFinal, player.Center);
 					//player.AddBuff(BuffType<HunterSymphonyCooldown>(), 1200);
 				}

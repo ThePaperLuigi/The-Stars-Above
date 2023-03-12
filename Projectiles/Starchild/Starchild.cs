@@ -106,7 +106,7 @@ namespace StarsAbove.Projectiles.Starchild
 		public override void AI()
 		{
 			Player player = Main.player[Projectile.owner];
-			player.GetModPlayer<StarsAbovePlayer>().lumaPosition = Projectile.Center;
+			player.GetModPlayer<WeaponPlayer>().lumaPosition = Projectile.Center;
 			#region Active check
 			// This is the "active check", makes sure the minion is alive while the player is alive, and despawns if not
 			if (player.dead || !player.active)

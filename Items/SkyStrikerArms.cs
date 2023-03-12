@@ -67,8 +67,8 @@ namespace StarsAbove.Items
 		}
         public override void HoldItem(Player player)
         {
-			player.GetModPlayer<StarsAbovePlayer>().SkyStrikerHeld = true;
-			if(player.GetModPlayer<StarsAbovePlayer>().SkyStrikerForm == 1) //Red Firey attacks
+			player.GetModPlayer<WeaponPlayer>().SkyStrikerHeld = true;
+			if(player.GetModPlayer<WeaponPlayer>().SkyStrikerForm == 1) //Red Firey attacks
             {
 
 				Item.useTime = 30;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
@@ -84,7 +84,7 @@ namespace StarsAbove.Items
 
 				player.AddBuff(BuffType<StrikerAttackBuff>(), 2);
             }
-			if (player.GetModPlayer<StarsAbovePlayer>().SkyStrikerForm == 2)//Blue Shield
+			if (player.GetModPlayer<WeaponPlayer>().SkyStrikerForm == 2)//Blue Shield
 			{
 
 				Item.useTime = 25;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
@@ -96,12 +96,12 @@ namespace StarsAbove.Items
 				Item.shootSpeed = 14f;
 				player.AddBuff(BuffType<StrikerShieldBuff>(), 2);
 				Item.UseSound = SoundID.Item1;
-				player.GetModPlayer<StarsAbovePlayer>().SkyStrikerCombo = 0;
+				player.GetModPlayer<WeaponPlayer>().SkyStrikerCombo = 0;
 
 				
 
 			}
-			if (player.GetModPlayer<StarsAbovePlayer>().SkyStrikerForm == 3)//Close Combat melee
+			if (player.GetModPlayer<WeaponPlayer>().SkyStrikerForm == 3)//Close Combat melee
 			{
 
 				Item.useTime = 12;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
@@ -113,10 +113,10 @@ namespace StarsAbove.Items
 				Item.shootSpeed = 3f;
 				player.AddBuff(BuffType<StrikerMeleeBuff>(), 2);
 				Item.UseSound = SoundID.Item1;
-				player.GetModPlayer<StarsAbovePlayer>().SkyStrikerCombo = 0;
+				player.GetModPlayer<WeaponPlayer>().SkyStrikerCombo = 0;
 
 			}
-			if (player.GetModPlayer<StarsAbovePlayer>().SkyStrikerForm == 4)//Railgun
+			if (player.GetModPlayer<WeaponPlayer>().SkyStrikerForm == 4)//Railgun
 			{
 
 				Item.useTime = 75;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
@@ -128,7 +128,7 @@ namespace StarsAbove.Items
 				Item.shootSpeed = 34f;
 				player.AddBuff(BuffType<StrikerSniperBuff>(), 2);
 				Item.UseSound = SoundID.Item125;
-				player.GetModPlayer<StarsAbovePlayer>().SkyStrikerCombo = 0;
+				player.GetModPlayer<WeaponPlayer>().SkyStrikerCombo = 0;
 
 			}
 
@@ -142,9 +142,9 @@ namespace StarsAbove.Items
 			if (player.altFunctionUse == 2)
 			{
 
-				if (!player.GetModPlayer<StarsAbovePlayer>().SkyStrikerMenuVisible)
+				if (!player.GetModPlayer<WeaponPlayer>().SkyStrikerMenuVisible)
 				{
-					player.GetModPlayer<StarsAbovePlayer>().SkyStrikerMenuVisible = true;
+					player.GetModPlayer<WeaponPlayer>().SkyStrikerMenuVisible = true;
 
 				}
 				
@@ -155,7 +155,7 @@ namespace StarsAbove.Items
 				
 
 			}
-			if(player.GetModPlayer<StarsAbovePlayer>().SkyStrikerForm == 0)
+			if(player.GetModPlayer<WeaponPlayer>().SkyStrikerForm == 0)
             {
 				return false;
             }
@@ -183,20 +183,20 @@ namespace StarsAbove.Items
 			Vector2 Railgun = direction * launchSpeed2;
 
 
-			if (player.GetModPlayer<StarsAbovePlayer>().SkyStrikerForm == 1) //Attacking
+			if (player.GetModPlayer<WeaponPlayer>().SkyStrikerForm == 1) //Attacking
 			{
 
-				if (player.GetModPlayer<StarsAbovePlayer>().SkyStrikerCombo == 1)
+				if (player.GetModPlayer<WeaponPlayer>().SkyStrikerCombo == 1)
 				{
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, MeleeSwing.X, MeleeSwing.Y,ProjectileType<SkyStrikerSwing2>(), damage, knockback, player.whoAmI);
-					player.GetModPlayer<StarsAbovePlayer>().SkyStrikerCombo = 0;
+					player.GetModPlayer<WeaponPlayer>().SkyStrikerCombo = 0;
 					return false;
 
 				}
-				if (player.GetModPlayer<StarsAbovePlayer>().SkyStrikerCombo == 0)
+				if (player.GetModPlayer<WeaponPlayer>().SkyStrikerCombo == 0)
 				{
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, MeleeSwing.X, MeleeSwing.Y,ProjectileType<SkyStrikerSwing1>(), damage, knockback, player.whoAmI);
-					player.GetModPlayer<StarsAbovePlayer>().SkyStrikerCombo++;
+					player.GetModPlayer<WeaponPlayer>().SkyStrikerCombo++;
 					return false;
 				}
 				
@@ -206,12 +206,12 @@ namespace StarsAbove.Items
 			}
 
 
-			if (player.GetModPlayer<StarsAbovePlayer>().SkyStrikerForm == 2) //Shield
+			if (player.GetModPlayer<WeaponPlayer>().SkyStrikerForm == 2) //Shield
 			{
 				
 				return true;
 			}
-			if (player.GetModPlayer<StarsAbovePlayer>().SkyStrikerForm == 3) //Punches
+			if (player.GetModPlayer<WeaponPlayer>().SkyStrikerForm == 3) //Punches
 			{
 				Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(25));
 				velocity.X = perturbedSpeed.X;
@@ -220,7 +220,7 @@ namespace StarsAbove.Items
 
 				return false;
 			}
-			if (player.GetModPlayer<StarsAbovePlayer>().SkyStrikerForm == 4) //Gun
+			if (player.GetModPlayer<WeaponPlayer>().SkyStrikerForm == 4) //Gun
 			{
 				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, Railgun.X, Railgun.Y,ProjectileType<SkyStrikerRailgun>(), 0, knockback, player.whoAmI);
 				Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 25f;

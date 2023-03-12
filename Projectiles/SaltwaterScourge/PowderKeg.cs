@@ -58,7 +58,7 @@ namespace StarsAbove.Projectiles.SaltwaterScourge
 			
 			DoExplosion();
 
-			if (!projOwner.GetModPlayer<StarsAbovePlayer>().SaltwaterScourgeHeld)
+			if (!projOwner.GetModPlayer<WeaponPlayer>().SaltwaterScourgeHeld)
 			{
 				Projectile.Kill();
 			}

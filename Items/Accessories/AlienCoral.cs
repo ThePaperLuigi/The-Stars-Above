@@ -28,7 +28,7 @@ namespace StarsAbove.Items.Accessories
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual) {
-			player.GetModPlayer<StarsAbovePlayer>().AlienCoral = true;
+			player.GetModPlayer<WeaponPlayer>().AlienCoral = true;
 			if(player.GetModPlayer<StarsAbovePlayer>().stellarGauge < player.GetModPlayer<StarsAbovePlayer>().stellarGaugeMax)
             {
 				player.GetDamage(DamageClass.Generic) += 0.15f * (player.GetModPlayer<StarsAbovePlayer>().stellarGaugeMax - player.GetModPlayer<StarsAbovePlayer>().stellarGauge);

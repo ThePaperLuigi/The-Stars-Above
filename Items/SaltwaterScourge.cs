@@ -79,7 +79,7 @@ namespace StarsAbove.Items
 		public override bool CanUseItem(Player player)
 		{
 			
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 
 			if (player.altFunctionUse == 2)
 			{
@@ -125,7 +125,7 @@ namespace StarsAbove.Items
         {
 			//player.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.Full, (player.Center - Main.MouseWorld).ToRotation() + MathHelper.PiOver2);
 			//Testing
-			player.GetModPlayer<StarsAbovePlayer>().SaltwaterScourgeHeld = true;
+			player.GetModPlayer<WeaponPlayer>().SaltwaterScourgeHeld = true;
 
 			debuffCleanseTimer++;
 			if(debuffCleanseTimer >= 240)
