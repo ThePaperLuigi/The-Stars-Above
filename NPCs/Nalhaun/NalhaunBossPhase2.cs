@@ -87,10 +87,15 @@ namespace StarsAbove.NPCs.Nalhaun
 			// Enemies can pick up coins, let's prevent it for this NPC
 			NPCID.Sets.CantTakeLunchMoney[Type] = true;
 			// Automatically group with other bosses
-			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
-			{
-				Hide = true // Hides this NPC from the bestiary
+			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			{ // Influences how the NPC looks in the Bestiary
+				CustomTexturePath = "StarsAbove/Bestiary/Nalhaun_Bestiary", // If the NPC is multiple parts like a worm, a custom texture for the Bestiary is encouraged.
+				Position = new Vector2(0f, 0f),
+				PortraitScale = 1f,
+				PortraitPositionXOverride = 0f,
+				PortraitPositionYOverride = 0f
 			};
+			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifier);
 
 		}
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -105,7 +110,7 @@ namespace StarsAbove.NPCs.Nalhaun
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 50000;
+			NPC.lifeMax = 330000;
 			NPC.damage = 0;
 			NPC.defense = 35;
 			NPC.knockBackResist = 0f;
@@ -169,7 +174,21 @@ namespace StarsAbove.NPCs.Nalhaun
             bossPlayer.NalhaunBarActive = true;
             NPC.velocity *= 0.98f; //So the dashes don't propel the boss away
 
-            Player P = Main.player[NPC.target];//THIS IS THE BOSS'S MAIN TARGET
+			for (int i = 0; i < Main.maxPlayers; i++)
+			{
+				Player player = Main.player[i];
+				if (player.active)
+				{
+					//If boss is in phase 2...
+					if (NPC.localAI[0] == 1)
+					{
+						player.AddBuff(BuffType<Buffs.Boss.MonarchPresence>(), 10);
+
+					}
+				}
+			}
+
+			Player P = Main.player[NPC.target];//THIS IS THE BOSS'S MAIN TARGET
             FindTargetPlayer();
             IfAllPlayersAreDead();
             if (NPC.ai[0] == (float)ActionState.Dying)
