@@ -349,11 +349,13 @@ namespace StarsAbove
         public int AllVanillaBossesDefeatedDialogue = 0;
         public int EverythingDefeatedDialogue = 0;
         public int vagrantDialogue = 0;
+        public int dioskouroiDialogue = 0;
         public int nalhaunDialogue = 0;
         public int penthDialogue = 0;
         public int arbiterDialogue = 0;
         public int tsukiyomiDialogue = 0;
 
+        public int dioskouroiBossItemDialogue = 0;
         public int nalhaunBossItemDialogue = 0;
         public int penthBossItemDialogue = 0;
         public int arbiterBossItemDialogue = 0;
@@ -948,7 +950,7 @@ namespace StarsAbove
             tag["arbiterDialogue"] = arbiterDialogue;
             tag["tsukiyomiDialogue"] = tsukiyomiDialogue;
 
-
+            tag["dioskouroiitem"] = dioskouroiBossItemDialogue;
             tag["nalhaunitem"] = nalhaunBossItemDialogue;
             tag["penthitem"] = penthBossItemDialogue;
             tag["arbiteritem"] = arbiterBossItemDialogue;
@@ -1232,7 +1234,7 @@ namespace StarsAbove
             arbiterDialogue = tag.GetInt("arbiterDialogue");
             tsukiyomiDialogue = tag.GetInt("tsukiyomiDialogue");
 
-
+            dioskouroiBossItemDialogue = tag.GetInt("dioskouroiitem");
             nalhaunBossItemDialogue = tag.GetInt("nalhaunitem");
             penthBossItemDialogue = tag.GetInt("penthitem");
             arbiterBossItemDialogue = tag.GetInt("arbiteritem");
@@ -1606,7 +1608,7 @@ namespace StarsAbove
             {
                 inWarriorOfLightFightTimer = 4200;
             }
-            if (target.type == NPCType<NalhaunBoss>())
+            if (target.type == NPCType<CastorBoss>())
             {
                 inNalhaunFightTimer = 1200;
 
@@ -1802,7 +1804,7 @@ namespace StarsAbove
             {
                 inWarriorOfLightFightTimer = 4200;
             }
-            if (target.type == NPCType<NalhaunBoss>())
+            if (target.type == NPCType<CastorBoss>())
             {
                 inNalhaunFightTimer = 1200;
                 if (isNalhaunInvincible)
@@ -3282,9 +3284,9 @@ namespace StarsAbove
 
                 }
                 //Boss Spawn items
-                if (nalhaunBossItemDialogue == 0 && (SkeletronPrimeDialogue == 2 || TwinsDialogue == 2 || DestroyerDialogue == 2) && vagrantDialogue == 2)
+                if (dioskouroiBossItemDialogue == 0 && (SkeletronPrimeDialogue == 2 || TwinsDialogue == 2 || DestroyerDialogue == 2) && vagrantDialogue == 2)
                 {
-                    nalhaunBossItemDialogue = 1;
+                    dioskouroiBossItemDialogue = 1;
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 151, 255, 90); }
 
                 }
@@ -3294,11 +3296,11 @@ namespace StarsAbove
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 151, 255, 90); }
 
                 }
-                if (arbiterBossItemDialogue == 0 && GolemDialogue == 2 && vagrantDialogue == 2)
-                {//Arbitration is no longer centric to the progression.
+                if (nalhaunBossItemDialogue == 0 && GolemDialogue == 2 && vagrantDialogue == 2)
+                {
 
-                    //arbiterBossItemDialogue = 1;
-                    //if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 151, 255, 90); }
+                    nalhaunBossItemDialogue = 1;
+                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 151, 255, 90); }
 
                 }
                 if (warriorBossItemDialogue == 0 && MoonLordDialogue == 2 && vagrantDialogue == 2)
@@ -3479,7 +3481,8 @@ namespace StarsAbove
                         return;
 
                     }
-                    if (nalhaunDialogue == 2 && NalhaunWeaponDialogue == 0)
+                    //Nalhaun weapons have been moved...
+                    if (dioskouroiDialogue == 2 && NalhaunWeaponDialogue == 0)
                     {
                         NalhaunWeaponDialogue = 1;
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
@@ -3657,7 +3660,8 @@ namespace StarsAbove
                         return;
 
                     }
-                    if (LunaticCultistWeaponDialogue == 2 && ArbitrationWeaponDialogue == 0)
+                    //Moved from Arbitration to Nalhaun.
+                    if (nalhaunDialogue == 2 && ArbitrationWeaponDialogue == 0)
                     {
                         ArbitrationWeaponDialogue = 1;
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
@@ -6469,7 +6473,7 @@ namespace StarsAbove
                 starfarerPromptActive("onVagrant");
                 seenUnknownBossTimer = 300;
             }
-            if (NPC.AnyNPCs(ModContent.NPCType<NPCs.Nalhaun.NalhaunBoss>()) && !seenNalhaun)
+            if (NPC.AnyNPCs(ModContent.NPCType<NPCs.Nalhaun.CastorBoss>()) && !seenNalhaun)
             {
                 if (starfarerPromptCooldown > 0)
                 {

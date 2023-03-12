@@ -339,18 +339,23 @@ namespace StarsAbove
                        68,
                        "Defeat all vanilla bosses and the Warrior of Light in Expert Mode."));
                 BossArchiveList.Add(new BossArchiveListing(
-                       "Perseus's Appeal: The Burnished King", //Name of the archive listing.
-                       "Grants the item to summon the Burnished King.", //Description of the listing.
-                       player.nalhaunBossItemDialogue == 2, //Unlock requirements.
-                       301,
-                       "???")); //Corresponding dialogue ID.
+                      "Perseus's Appeal: The Twin Forces", //Name of the archive listing.
+                      "Grants the item to summon the Twin Forces.", //Description of the listing.
+                      player.dioskouroiBossItemDialogue == 2, //Unlock requirements.
+                      305,
+                      "???")); //Corresponding dialogue ID.
                 BossArchiveList.Add(new BossArchiveListing(
                        "Perseus's Appeal: The Witch of Ink", //Name of the archive listing.
                        "Grants the item to summon the Witch of Ink", //Description of the listing.
                        player.penthBossItemDialogue == 2, //Unlock requirements.
                        302,
                        "???")); //Corresponding dialogue ID.
-
+                BossArchiveList.Add(new BossArchiveListing(
+                       "Perseus's Appeal: The Burnished King", //Name of the archive listing.
+                       "Grants the item to summon the Burnished King.", //Description of the listing.
+                       player.nalhaunBossItemDialogue == 2, //Unlock requirements.
+                       301,
+                       "???")); //Corresponding dialogue ID.
                 BossArchiveList.Add(new BossArchiveListing(
                        "Perseus's Appeal: The Warrior of Light", //Name of the archive listing.
                        "Grants the item to summon the Warrior of Light.", //Description of the listing.

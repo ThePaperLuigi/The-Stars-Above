@@ -71,7 +71,7 @@ namespace StarsAbove.NPCs.Dioskouroi
 		{
 			int portalWidth = 48;
 			int portalDepth = 18;
-			Color color = new Color(181, 43, 43);
+			Color color = new Color(255, 255, 255);
 			int centerX = (int)NPC.Center.X;
 			int centerY = (int)NPC.Center.Y;
 			Main.instance.LoadProjectile(ProjectileID.PortalGunGate);

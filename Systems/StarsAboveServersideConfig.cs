@@ -26,6 +26,10 @@ namespace StarsAbove
 		[Tooltip("$Mods.StarsAbove.Config.DisableTypePenalty.Tooltip")]
 		public bool DisableTypePenalty;
 
+		[Label("$Mods.StarsAbove.Config.DisableBossAggro.Label")]
+		[Tooltip("$Mods.StarsAbove.Config.DisableBossAggro.Tooltip")]
+		public bool DisableBossAggro;
+
 		[Label("$Mods.StarsAbove.Config.DisableCalamityWeaponBuffs.Label")]
 		[Tooltip("$Mods.StarsAbove.Config.DisableCalamityWeaponBuffs.Tooltip")]
 		public bool DisableCalamityWeaponBuffs;
@@ -68,6 +72,7 @@ namespace StarsAbove
 			StarsAboveGlobalItem.disableCalamityWeaponBuffs = DisableCalamityWeaponBuffs;
 			StarsAbovePlayer.inCombatMax = CombatTimer*60;
 			StarsAbovePlayer.BossEnemySpawnModDisabled = DisableBossEnemySpawnMod;
+			BossPlayer.disableBossAggro = DisableBossAggro;
 			Penthesilea.ColorblindEnabled = ColorblindBoss;
 			CelestialCompass.DisableMultiplayerCompatibility = DisableCompatibilityMode;
 		}

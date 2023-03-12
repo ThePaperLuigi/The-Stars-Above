@@ -42,7 +42,11 @@ namespace StarsAbove.NPCs.Dioskouroi
 		{
 			Empty,
 			Idle1,
-			
+			Idle2,
+			Idle3,
+			Idle4,
+			Idle5,
+
 			Cast1,
 			
 
@@ -65,7 +69,7 @@ namespace StarsAbove.NPCs.Dioskouroi
 		{
 			DisplayName.SetDefault("Castor, Baleborn Force");
 			
-			Main.npcFrameCount[NPC.type] = 3; // make sure to set this for your modnpcs.
+			Main.npcFrameCount[NPC.type] = 7; // make sure to set this for your modnpcs.
 
 			// Specify the debuffs it is immune to
 			/*NPCID.Sets.DebuffImmunitySets.Add(Type, new NPCDebuffImmunityData
@@ -103,7 +107,7 @@ namespace StarsAbove.NPCs.Dioskouroi
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 150000;
+			NPC.lifeMax = 250000;
 			NPC.damage = 0;
 			NPC.defense = 15;
 			NPC.knockBackResist = 0f;
@@ -195,14 +199,29 @@ namespace StarsAbove.NPCs.Dioskouroi
             }
             if (AI_Timer >= 120) //An attack is active. (Temp 480, usually 120, or 2 seconds)
             {
-				//If the other Baleborn is dead, cast an enrage attack instead. (Phyrric Victory)
+				//If the other Baleborn is dead, cast an enrage attack instead. (Phyrric Gemini)
 
 				switch (AI_RotationNumber)
                 {
 					case 0:
-						ClashCastor(P, NPC);
+						Exoflare(P, NPC);
 						break;
 					case 1:
+						ClashCastor(P, NPC);
+						break;
+					case 2:
+						IgnitionRite(P, NPC);
+						break;
+					case 3:
+						Balefire(P, NPC);
+						break;
+					case 4:
+						BlazingSky(P, NPC);
+						break;
+					case 5:
+						Eruption(P, NPC);
+						break;
+					case 6:
 						ClashCastor(P, NPC);
 						break;
 					default:
@@ -299,7 +318,32 @@ namespace StarsAbove.NPCs.Dioskouroi
 			switch (AI_State)
 			{
 				case (float)ActionState.Idle:
-					NPC.frame.Y = (int)Frame.Idle1 * frameHeight;
+					NPC.frameCounter++;
+
+					if (NPC.frameCounter < 10)
+					{
+						NPC.frame.Y = (int)Frame.Idle1 * frameHeight;
+					}
+					else if (NPC.frameCounter < 20)
+					{
+						NPC.frame.Y = (int)Frame.Idle2 * frameHeight;
+					}
+					else if (NPC.frameCounter < 30)
+					{
+						NPC.frame.Y = (int)Frame.Idle3 * frameHeight;
+					}
+					else if (NPC.frameCounter < 40)
+					{
+						NPC.frame.Y = (int)Frame.Idle4 * frameHeight;
+					}
+					else if (NPC.frameCounter < 50)
+					{
+						NPC.frame.Y = (int)Frame.Idle5 * frameHeight;
+					}
+					else
+					{
+						NPC.frameCounter = 0;
+					}
 
 
 					break;
@@ -349,20 +393,25 @@ namespace StarsAbove.NPCs.Dioskouroi
 			return;
 		}
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
-		{/*
-		  * 
+		{
+			LeadingConditionRule leadingConditionRule = new LeadingConditionRule(new MissingDioskouroiTwin());
+
+			//leadingConditionRule.OnSuccess(/*Additional rules as new lines*/);
+			npcLoot.Add(leadingConditionRule);
+
+
 			// Do NOT misuse the ModifyNPCLoot and OnKill hooks: the former is only used for registering drops, the latter for everything else
 			//Chance for a Prism
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.BurnishedPrism>(), 4));
+			//leadingConditionRule.OnSuccess(npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.GeminiPrism>(), 4)));
 
 			// Add the treasure bag using ItemDropRule.BossBag (automatically checks for expert mode)
 			//npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<VagrantBossBag>()));
 
 			// Trophies are spawned with 1/10 chance
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.BossLoot.NalhaunTrophyItem>(), 10));
+			//leadingConditionRule.OnSuccess(npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.BossLoot.DioskouroiTrophyItem>(), 10)));
 
 			// ItemDropRule.MasterModeCommonDrop for the relic
-			npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<Items.Placeable.BossLoot.NalhaunBossRelicItem>()));
+			//leadingConditionRule.OnSuccess(npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<Items.Placeable.BossLoot.DioskouroiBossRelicItem>())));
 
 			// ItemDropRule.MasterModeDropOnAllPlayers for the pet
 			//npcLoot.Add(ItemDropRule.MasterModeDropOnAllPlayers(ModContent.ItemType<MinionBossPetItem>(), 4));
@@ -375,14 +424,36 @@ namespace StarsAbove.NPCs.Dioskouroi
 			// Boss masks are spawned with 1/7 chance
 			//notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<MinionBossMask>(), 7));
 
-			notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.BurnishedPrism>(), 4));
+			//leadingConditionRule.OnSuccess(notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.GeminiPrism>(), 4)));
 
 			// Finally add the leading rule
 			npcLoot.Add(ExpertRule);
-			npcLoot.Add(notExpertRule);*/
+			npcLoot.Add(notExpertRule);
 			npcLoot.RemoveWhere(rule => true);
 		}
-		
+		public class MissingDioskouroiTwin : IItemDropRuleCondition, IProvideItemConditionDescription
+		{
+			public bool CanDrop(DropAttemptInfo info)
+			{
+				int type = NPCType<PolluxBoss>();//If this is called on Castor, check if Pollux is dead.
+				if (info.npc.type == NPCType<PolluxBoss>()) //If the npc is Pollux (this is called when Pollux dies.)
+				{
+					type = NPCType<CastorBoss>();//Check for Castor instead.
+				}
+				return !NPC.AnyNPCs(type);//If both Castor and Pollux are dead.
+			}
+
+			public bool CanShowItemDropInUI()
+			{
+				return true;
+			}
+
+			public string GetConditionDescription()
+			{
+				return null;
+			}
+		}
+
 		private void SpawnAnimation()
 		{
 

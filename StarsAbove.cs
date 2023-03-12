@@ -180,13 +180,30 @@ namespace StarsAbove
 						Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
 						sb.Draw(texture, centered, color);
 					}); //Boss Portrait
+				bossChecklist.Call(
+					"AddBoss", //Entry Type
+					this, //Mod Instance
+					"$Mods.StarsAbove.NPCName.Dioskouroi", //Boss Name
+					ModContent.NPCType<NPCs.Dioskouroi.PolluxBoss>(), //Boss ID
+					11.5f, //Progression
+					(Func<bool>)(() => DownedBossSystem.downedDioskouroi), //Downed boolean
+					() => true, //Availability
+					new List<int> { ModContent.ItemType<Items.Prisms.BurnishedPrism>() },//Collection
+					ModContent.ItemType<Items.Consumables.TwincruxPendant>(),//Spawn Item
+					"$Mods.StarsAbove.BossChecklist.Dioskouroi.SpawnInfo", //Spawn Item
+					"$Mods.StarsAbove.BossChecklist.Dioskouroi.DespawnMessage", //Despawn Message
+					(SpriteBatch sb, Rectangle rect, Color color) => {
+						Texture2D texture = ModContent.Request<Texture2D>("StarsAbove/Bestiary/Dioskouroi_Bestiary").Value;
+						Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
+						sb.Draw(texture, centered, color);
+					}); //Boss Portrait //Boss Portrait
 
 				bossChecklist.Call(
 					"AddBoss", //Entry Type
 					this, //Mod Instance
 					"$Mods.StarsAbove.NPCName.Nalhaun", //Boss Name
 					ModContent.NPCType<NPCs.Nalhaun.NalhaunBossPhase2>(), //Boss ID
-					11.5f, //Progression
+					15.5f, //Progression
 					(Func<bool>)(() => DownedBossSystem.downedNalhaun), //Downed boolean
 					() => true, //Availability
 					new List<int> { ModContent.ItemType<Items.Prisms.BurnishedPrism>() },//Collection

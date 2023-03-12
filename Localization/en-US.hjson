@@ -13,7 +13,7 @@
         }
         Nalhaun:
         {
-          ManifestBlade: The Burnished King channels energy into Laevateinn, leaving his defenses drastically lowered!
+          ManifestBlade: The Burnished King channels energy into his blade, leaving his defenses drastically lowered!
           Feint: The Burnished King reverses the next attack!
         }
       }
@@ -877,20 +877,37 @@
               4: Wait a moment- is this also the last Stellar Array ability, activated? Incredible work.
             }
           }
+          Dioskouroi:
+          {
+            Asphodene:
+            {
+              1: Now that was a strange fight... I don't even think those twins even realized we were there!
+              2: They weren't human, but probably a sort of demonkin. I felt some Starfarer trace on them- perhaps the First Starbearer defeated them in the past.
+              3: I don't know why Perseus told US to fight them, or even how we were able to. Unless... maybe Perseus found a way to turn Essences into living beings? Hmm...
+              4: Our battle seems to have left a strange remnant object- I'll leave it in your care. You should probably take care of it.
+            }
+            Eridani:
+            {
+              1: Even though we're the ones who bested them, those demon twins barely even gave us a glance.
+              2: From the remnant mana on them, those twins were most likely laid low by the First Starbearer ages ago.
+              3: As for why Perseus told us to fight them... I don't know. I'm not even sure how we were able to fight them- Perhaps we fought an Essence given form?
+              4: There's this strange object left over after the battle. I would take good care of it, if I were you. I believe it will be useful later.
+            }
+          }
           Nalhaun:
           {
             Asphodene:
             {
               1: So that was the Burnished King. His blade was incredibly powerful, not to mention the magic at his disposal. It was a triumph you survived that.
               2: From what I can tell, it looks like the Burnished King was defeated by the First Starbearer. Also, there's this strange item here, too.
-              3: I don't know why Perseus told US to fight him, or even how we were able to. Unless... maybe Perseus found a way to turn Essences into living beings? Hmm...
+              3: I guess we'll add it to the collection- no harm in that.
               4: I think we can reuse his attacks as a weapon in our arsenal, as a new Stellar Nova. Maybe because of the Starbearer's influence?
             }
             Eridani:
             {
               1: The Burnished King has fallen. What a powerful foe. I shudder to think how we would have fared had we fought him in his prime.
-              2: From what it looks like, The Burnished King was laid low by the First Starbearer ages ago.
-              3: As for why Perseus told us to fight him, I don't know. I'm not even sure how we were able to fight him. Perhaps we fought an Essence given form?
+              2: From what it looks like, The Burnished King was laid low by the First Starbearer nigh on a hundred years prior.
+              3: Let's take care of this strange object- it must have some significance. While we're on the topic...
               4: His weapon, Ars Laevateinn. We can use it for ourselves, as a Stellar Nova. Maybe because of the Starbearer's influence?
             }
           }
@@ -1202,11 +1219,11 @@
             3: This is another important step in the pursuit of the the First Starbearer.
             4: Please prepare yourself. This will be a hard fight.
           }
-          Arbitration:
+          Dioskouroi:
           {
             1: We meet again, {0}. Again, I have another foe for you to defeat.
-            2: I've given you the 'Beating Crux' When used, it will call forth a powerful demon.
-            3: This is another important step in the pursuit of the the First Starbearer.
+            2: I've given you the 'Twincrux Pendant' When used, it will call forth powerful warring demons.
+            3: If my hypothesis is correct, their defeat will resonate a clue to the First Starbearer's location.
             4: Prepare yourself well.
           }
           Warrior:
@@ -2954,6 +2971,11 @@
           Label: Disable damage penalty for Aspected Damage modification
           Tooltip: 10% damage penalty when Aspected Damage modification is enabled is removed.
         }
+        DisableBossAggro:
+        {
+          Label: Disable Boss Aggro Marker
+          Tooltip: Disables the marker that appears over a player's head when a boss targets them.
+        }
         DisableCalamityWeaponBuffs:
         {
           Label: Disable global damage modifiers for mod compatibility
@@ -3001,6 +3023,9 @@
         Arbitration: Arbitration
         AstralCell: Astral Cell
         DummyEnemy: Dummy Enemy
+        PolluxBoss: Pollux, Baleborn of Ice
+        CastorBoss: Castor, Baleborn of Fire
+        Dioskouroi: Dioskouroi, the Twin Forces
         NalhaunBoss: Nalhaun, The Burnished King
         NalhaunBossPhase2: Nalhaun, Ruler of the Hollow World
         PaintedAttendantA: Living Brush
@@ -6765,9 +6790,14 @@
           SpawnInfo: Face this fearsome foe with the Unsullied Canvas, given to you by your Starfarer after Plantera is bested. (The Vagrant of Space and Time must have been defeated.)
           DespawnMessage: You have been splattered away...
         }
+        Dioskouroi:
+        {
+          SpawnInfo: Duel(?) these powerful twin demons through defeating Golem and obtaining the Twincrux Pendant.
+          DespawnMessage: Without binds, the Dioskouroi move their conflict elsewhere...
+        }
         Arbitration:
         {
-          SpawnInfo: This foe embodies true fear... Obtain the Crux from your Starfarer after Golem is defeated. (The Vagrant of Space and Time must have been defeated.)
+          SpawnInfo: This foe embodies true fear... Discover this foe through visiting an Anomaly location with the Astrolabe's help.
           DespawnMessage: ...
         }
         TsukiyomiBoss:
