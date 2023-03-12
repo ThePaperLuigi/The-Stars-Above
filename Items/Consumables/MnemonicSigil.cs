@@ -128,6 +128,7 @@ namespace StarsAbove.Items.Consumables
 				.AddIngredient(ItemType<MnemonicTrace>())
 				.AddIngredient(ItemType<MnemonicTrace2>())
 				.AddIngredient(ItemType<MnemonicTrace3>())
+				.AddIngredient(ItemType<MnemonicTrace4>())
 				.AddTile(TileType<Tiles.CelestriadRoot>())
 				.Register();
 		}
