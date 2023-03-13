@@ -32,7 +32,7 @@ namespace StarsAbove.Items.BossBags
 		{
 			Item.maxStack = 999;
 			Item.consumable = true;
-			Item.width = 24;
+			Item.width = 64;
 			Item.height = 24;
 			Item.rare = ItemRarityID.Purple;
 			Item.expert = true; // This makes sure that "Expert" displays in the tooltip and the item name color changes
