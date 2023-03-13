@@ -709,6 +709,7 @@ internal class StellarArray : UIState
         // Remember to add to here
     }
 
+<<<<<<< HEAD
     private void ConfirmHover(UIMouseEvent evt, UIElement listeningElement)
     {
         if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArrayVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArray == true))
@@ -2512,6 +2513,24 @@ internal class StellarArray : UIState
         //text.SetText($"[c/5970cf:{modPlayer.judgementGauge} / 100]");
         base.Update(gameTime);
     }
+=======
+			passiveTitle.SetText($"{modPlayer.passiveTitle}");
+			description.SetText(Wrap($"{modPlayer.description}", 70));
+			
+>>>>>>> parent of beab749 (wrap method fix)
 
 
+<<<<<<< HEAD
+=======
+		private static string Wrap(string v, int size)
+		{
+			v = v.TrimStart();
+			if (v.Length <= size) return v;
+			var nextspace = v.LastIndexOf(' ', size);
+			if (-1 == nextspace) nextspace = Math.Min(v.Length, size);
+			return v.Substring(0, nextspace) + ((nextspace >= v.Length) ?
+			"" : "\n" + Wrap(v.Substring(nextspace), size));
+		}
+	}
+>>>>>>> parent of beab749 (wrap method fix)
 }
