@@ -7861,6 +7861,7 @@ namespace StarsAbove
             if (-1 == nextspace) nextspace = Math.Min(v.Length, size);
             return v.Substring(0, nextspace) + ((nextspace >= v.Length) ?
             "" : "\n" + Wrap(v.Substring(nextspace), size));
+            dialogue = LangHelper.Wrap(dialogue, 44);
         }
     }
 }
