@@ -20,9 +20,13 @@ internal static class LangHelper
         return Language.GetTextValue($"Mods.{mod.Name}.{key}", args);
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 <<<<<<< HEAD
+=======
+
+>>>>>>> parent of beab749 (wrap method fix)
     public static string Wrap(string v, int size)
     {
         v = v.TrimStart();
@@ -32,6 +36,7 @@ internal static class LangHelper
         return v.Substring(0, nextspace) + ((nextspace >= v.Length) ?
         "" : "\n" + Wrap(v.Substring(nextspace), size));
     }
+<<<<<<< HEAD
 >>>>>>> parent of beab749 (wrap method fix)
 =======
 	private static string GetModTextValue(Mod mod, string key, params object[] args)
@@ -83,4 +88,6 @@ internal static class LangHelper
 		return stringBuilder.ToString();
 	}
 >>>>>>> parent of 15de04d (small wrap fix)
+=======
+>>>>>>> parent of beab749 (wrap method fix)
 }
