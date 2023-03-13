@@ -11,6 +11,17 @@
           Negative: Negative Chaos!
           
         }
+        KissOfDeath:
+        {
+          Skyfish: Skyfish deployed!
+          Thunderbird: Thunderbird deployed!
+          BehemothTyphoon: Behemoth Typhoon deployed!
+          FullyCharged: Uppercut fully charged!
+        }
+        Nalhaun:
+        {
+          ManifestBlade: The Burnished King channels energy into Laevateinn, leaving his defenses drastically lowered!
+        }
       }
       SubworldName:
       {
@@ -477,6 +488,7 @@
             82: Well, I'm not sure what to make of this Essence, other than that it's a Summon weapon. Best you give it a go, before anything else goes haywire.
             83: This watch is a Summon-type weapon- looks like it'll call forth a cute time-aspected ally. She'll help with support if you can work with her combat style.
             84: Hmm... Perhaps you could even use it to dodge incoming attacks...?
+            85: It looks to me like this Ranged-weapon has the ability to down hordes of foes pretty easily. Sounds like it'll come in handy- especially the giant coffin swings!
 
           }
           Eridani:
@@ -567,6 +579,7 @@
             84: How about it; that previous... um, let's say 'get-together' with those pirates has churned up an Essence- Ranged damage, from what I can tell. Here you are.
             85: I'm not sure how to define this Summon-type Essence, so I'll leave it as an exercise for you. Well... good luck.
             86: This Summon-type weapon conjures a rather charming time-aspected being. She'll help with both offensive and defensive duties.
+            87: This essence is a Ranged-type weapon, but it seems to have a lot of close-ranged action. Don't get overzealous, but do try to make the most of it.
           }
           Perseus:
           {
@@ -1557,7 +1570,7 @@
             80: It's one of those Lunatic Cultists.. Stop them before they unleash a calamity..!
             81: I can't believe it.. it's the Moon Lord! This is the final battle! We have to win this!
             82: The Warrior of Light approaches.. When he breaks his limits, prepare yourself!
-            83: Something about this foe seems familiar... Attacks won't work; just survive for as long as you can!
+            83: Something about this foe seems familiar... Look out for his sword- seems it can take on different forms!
             84: Don't underestimate this foe..! Keep grabbing the stolen lifeforce he's taking from you!
             85: This witch attacks with paint! Mind what color you're doused in!
             86: This thing changes its attack patterns! Take note of its stances, or else!
@@ -1753,7 +1766,7 @@
             80: It's a Lunatic Cultist.. You have to defeat them before they can summon calamity!
             81: The Moon Lord.. We come face to face with a god. We have to win this! There's no other option!
             82: The Warrior of Light approaches.. His Limit Breaks are incredibly strong!
-            83: Something about this foe seems familiar... Your attacks won't work; just try and survive!
+            83: Something about this foe seems familiar... Looks like he can manipulate space to some extent!
             84: Don't underestimate this king of eld! Take back the lifeforce he's stealing!
             85: She's covering you with paint. Take careful note of your color!
             86: It seems to be able to swap forms! Try to memorize its attacks..!
