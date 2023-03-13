@@ -26,6 +26,7 @@ using StarsAbove.Projectiles.Bosses.Tsukiyomi;
 using StarsAbove.Projectiles;
 using SubworldLibrary;
 using StarsAbove.Projectiles.Bosses.Dioskouroi;
+using StarsAbove.Items.BossBags;
 
 namespace StarsAbove.NPCs.Dioskouroi
 {
@@ -113,7 +114,7 @@ namespace StarsAbove.NPCs.Dioskouroi
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 250000;
+			NPC.lifeMax = 155000;
 			NPC.damage = 0;
 			NPC.defense = 15;
 			NPC.knockBackResist = 0f;
@@ -131,8 +132,8 @@ namespace StarsAbove.NPCs.Dioskouroi
 			//NPC.HitSound = SoundID.NPCHit54;
 			//NPC.DeathSound = SoundID.NPCDeath52;
 
+			Music = MusicID.OtherworldlyBoss1;
 
-			Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TheExtremeIntro");
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
 			NPC.netAlways = true;
 		}
@@ -205,36 +206,66 @@ namespace StarsAbove.NPCs.Dioskouroi
             }
             if (AI_Timer >= 120) //An attack is active. (Temp 480, usually 120, or 2 seconds)
             {
-				switch (AI_RotationNumber)
+				if(!NPC.AnyNPCs(NPCType<CastorBoss>()))
                 {
-					case 0:
-						FreezingSky(P, NPC);
-						break;
-					case 1:
-						ChillingHail(P, NPC);
-						break;
-					case 2:
-						ClashPollux(P, NPC);
-						break;
-					case 3:
-						DiamondDust(P, NPC);
-						break;
-					case 4:
-						FreezingSky(P, NPC);
-						break;
-					case 5:
-						FrozenArsenal(P, NPC);
-						break;
-					case 6:
-						ClashPollux(P, NPC);
-						break;
-					default:
-						AI_RotationNumber = 0;
-						return;
+					PolluxEnrage(P, NPC);
+				}
+				else
+                {
+					switch (AI_RotationNumber)
+					{
+						case 0:
+							FreezingSky(P, NPC);
+							break;
+						case 1:
+							ChillingHail(P, NPC);
+							break;
+						case 2:
+							ClashPollux(P, NPC);
+							break;
+						case 3:
+							DiamondDust(P, NPC);
+							break;
+						case 4:
+							FreezingSky(P, NPC);
+							break;
+						case 5:
+							FrozenArsenal(P, NPC);
+							break;
+						case 6:
+							ClashPollux(P, NPC);
+							break;
+						case 7:
+							ArmoryOfIce(P, NPC);
+							break;
+						case 8:
+							DiamondDust(P, NPC);
+							break;
+						case 9:
+							ClashPollux(P, NPC);
+							break;
+						case 10:
+							ArmoryOfIce(P, NPC);
+							break;
+						case 11:
+							FreezingSky(P, NPC);
+							break;
+						case 12:
+							DiamondDust(P, NPC);
+							break;
+						case 13:
+							FrozenArsenal(P, NPC);
+							break;
+						default:
+							AI_RotationNumber = 0;
+							return;
+
+					}
 
 				}
 
-            }
+
+			}
 			
 		}
 		private void BossVisuals()
@@ -378,15 +409,18 @@ namespace StarsAbove.NPCs.Dioskouroi
 			}
 			if (NPC.localAI[1] >= 240f)
 			{
-				
 
-
-				DownedBossSystem.downedDioskouroi = true;
-				
-				if (Main.netMode == NetmodeID.Server)
-				{
-					NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
+				if(!NPC.AnyNPCs(NPCType<CastorBoss>()))
+                {
+					DownedBossSystem.downedDioskouroi = true;
+					if (Main.netMode == NetmodeID.Server)
+					{
+						NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
+					}
 				}
+				
+				
+				
 
 				NPC.life = 0;
 				NPC.HitEffect(0, 0);
@@ -406,16 +440,16 @@ namespace StarsAbove.NPCs.Dioskouroi
 
 			// Do NOT misuse the ModifyNPCLoot and OnKill hooks: the former is only used for registering drops, the latter for everything else
 			//Chance for a Prism
-			//leadingConditionRule.OnSuccess(npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.GeminiPrism>(), 4)));
+			leadingConditionRule.OnSuccess(npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.GeminiPrism>(), 4)));
 
 			// Add the treasure bag using ItemDropRule.BossBag (automatically checks for expert mode)
-			//npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<VagrantBossBag>()));
+			leadingConditionRule.OnSuccess(npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<DioskouroiBossBag>())));
 
 			// Trophies are spawned with 1/10 chance
 			//leadingConditionRule.OnSuccess(npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.BossLoot.DioskouroiTrophyItem>(), 10)));
 
 			// ItemDropRule.MasterModeCommonDrop for the relic
-			//leadingConditionRule.OnSuccess(npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<Items.Placeable.BossLoot.DioskouroiBossRelicItem>())));
+			leadingConditionRule.OnSuccess(npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<Items.Placeable.BossLoot.DioskouroiBossRelicItem>())));
 
 			// ItemDropRule.MasterModeDropOnAllPlayers for the pet
 			//npcLoot.Add(ItemDropRule.MasterModeDropOnAllPlayers(ModContent.ItemType<MinionBossPetItem>(), 4));

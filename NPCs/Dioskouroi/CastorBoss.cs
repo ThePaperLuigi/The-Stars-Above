@@ -26,6 +26,7 @@ using StarsAbove.Projectiles.Bosses.Tsukiyomi;
 using StarsAbove.Projectiles;
 using SubworldLibrary;
 using StarsAbove.Projectiles.Bosses.Dioskouroi;
+using StarsAbove.Items.BossBags;
 
 namespace StarsAbove.NPCs.Dioskouroi
 {
@@ -107,7 +108,7 @@ namespace StarsAbove.NPCs.Dioskouroi
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 250000;
+			NPC.lifeMax = 155000;
 			NPC.damage = 0;
 			NPC.defense = 15;
 			NPC.knockBackResist = 0f;
@@ -124,9 +125,9 @@ namespace StarsAbove.NPCs.Dioskouroi
 
 			//NPC.HitSound = SoundID.NPCHit54;
 			//NPC.DeathSound = SoundID.NPCDeath52;
+			Music = MusicID.OtherworldlyBoss1;
 
-
-			Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TheExtremeIntro");
+			//Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TheExtremeIntro");
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
 			NPC.netAlways = true;
 		}
@@ -200,34 +201,64 @@ namespace StarsAbove.NPCs.Dioskouroi
             if (AI_Timer >= 120) //An attack is active. (Temp 480, usually 120, or 2 seconds)
             {
 				//If the other Baleborn is dead, cast an enrage attack instead. (Phyrric Gemini)
+				if (!NPC.AnyNPCs(NPCType<PolluxBoss>()))
+				{
+					CastorEnrage(P, NPC);
+				}
+				else
+				{
+					switch (AI_RotationNumber)
+					{
+						case 0:
+							Exoflare(P, NPC);
+							break;
+						case 1:
+							ClashCastor(P, NPC);//1st Clash
+							break;
+						case 2:
+							IgnitionRite(P, NPC);
+							break;
+						case 3:
+							Balefire(P, NPC);
+							break;
+						case 4:
+							BlazingSky(P, NPC);
+							break;
+						case 5:
+							Eruption(P, NPC);
+							break;
+						case 6:
+							ClashCastor(P, NPC);//2nd Clash
+							break;
+						case 7:
+							IgnitionWall(P, NPC);//2nd Clash
+							break;
+						case 8:
+							BlazingIgnition(P, NPC);//2nd Clash
+							break;
+						case 9:
+							ClashCastor(P, NPC);//2nd Clash
+							break;
+						case 10:
+							IgnitionRite(P, NPC);//2nd Clash
+							break;
+						case 11:
+							BlazingSky(P, NPC);//2nd Clash
+							break;
+						case 12:
+							Eruption(P, NPC);//2nd Clash
+							break;
+						case 13:
+							IgnitionRite(P, NPC);//2nd Clash
+							break;
+						case 14:
+							IgnitionWall(P, NPC);//2nd Clash
+							break;
+						default:
+							AI_RotationNumber = 0;
+							return;
 
-				switch (AI_RotationNumber)
-                {
-					case 0:
-						Exoflare(P, NPC);
-						break;
-					case 1:
-						ClashCastor(P, NPC);
-						break;
-					case 2:
-						IgnitionRite(P, NPC);
-						break;
-					case 3:
-						Balefire(P, NPC);
-						break;
-					case 4:
-						BlazingSky(P, NPC);
-						break;
-					case 5:
-						Eruption(P, NPC);
-						break;
-					case 6:
-						ClashCastor(P, NPC);
-						break;
-					default:
-						AI_RotationNumber = 0;
-						return;
-
+					}
 				}
 
             }
@@ -374,14 +405,16 @@ namespace StarsAbove.NPCs.Dioskouroi
 			}
 			if (NPC.localAI[1] >= 240f)
 			{
-				
 
 
-				//DownedBossSystem.downedTsuki = true;
-				
-				if (Main.netMode == NetmodeID.Server)
+
+				if (!NPC.AnyNPCs(NPCType<PolluxBoss>()))
 				{
-					NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
+					DownedBossSystem.downedDioskouroi = true;
+					if (Main.netMode == NetmodeID.Server)
+					{
+						NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
+					}
 				}
 
 				NPC.life = 0;
@@ -402,16 +435,16 @@ namespace StarsAbove.NPCs.Dioskouroi
 
 			// Do NOT misuse the ModifyNPCLoot and OnKill hooks: the former is only used for registering drops, the latter for everything else
 			//Chance for a Prism
-			//leadingConditionRule.OnSuccess(npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.GeminiPrism>(), 4)));
+			leadingConditionRule.OnSuccess(npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.GeminiPrism>(), 4)));
 
 			// Add the treasure bag using ItemDropRule.BossBag (automatically checks for expert mode)
-			//npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<VagrantBossBag>()));
+			leadingConditionRule.OnSuccess(npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<DioskouroiBossBag>())));
 
 			// Trophies are spawned with 1/10 chance
 			//leadingConditionRule.OnSuccess(npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.BossLoot.DioskouroiTrophyItem>(), 10)));
 
 			// ItemDropRule.MasterModeCommonDrop for the relic
-			//leadingConditionRule.OnSuccess(npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<Items.Placeable.BossLoot.DioskouroiBossRelicItem>())));
+			leadingConditionRule.OnSuccess(npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<Items.Placeable.BossLoot.DioskouroiBossRelicItem>())));
 
 			// ItemDropRule.MasterModeDropOnAllPlayers for the pet
 			//npcLoot.Add(ItemDropRule.MasterModeDropOnAllPlayers(ModContent.ItemType<MinionBossPetItem>(), 4));

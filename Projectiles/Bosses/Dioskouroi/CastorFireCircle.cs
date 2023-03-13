@@ -30,7 +30,7 @@ namespace StarsAbove.Projectiles.Bosses.Dioskouroi
 			Projectile.minion = false;
 			Projectile.penetrate = -1;           //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
 			Projectile.timeLeft = 60;          //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
-			Projectile.alpha = 250;             //The transparency of the projectile, 255 for completely transparent. (aiStyle 1 quickly fades the projectile in) Make sure to delete this if you aren't using an aiStyle that fades in. You'll wonder why your projectile is invisible.
+			Projectile.alpha = 200;             //The transparency of the projectile, 255 for completely transparent. (aiStyle 1 quickly fades the projectile in) Make sure to delete this if you aren't using an aiStyle that fades in. You'll wonder why your projectile is invisible.
 			Projectile.light = 2f;            //How much light emit around the projectile
 			Projectile.ignoreWater = true;          //Does the projectile's speed be influenced by water?
 			Projectile.tileCollide = false;          //Can the projectile collide with tiles?
@@ -55,7 +55,7 @@ namespace StarsAbove.Projectiles.Bosses.Dioskouroi
 			}
 			if (Projectile.ai[0] < 20)
 			{
-				Projectile.alpha += 20;
+				Projectile.alpha += 5;
 				Projectile.scale -= 0.03f;
 			}
 			else
@@ -71,7 +71,7 @@ namespace StarsAbove.Projectiles.Bosses.Dioskouroi
 			{
 				SoundEngine.PlaySound(SoundID.Item15, Projectile.Center);
 
-				float Speed = 15f;
+				float Speed = 3f;
 				int type = ProjectileType<CastorBolt>();
 				attack = true;
 				

@@ -660,6 +660,7 @@ namespace StarsAbove
         public bool paintedPrism;
         public bool burnishedPrism;
         public bool voidsentPrism;
+        public bool geminiPrism;
 
         public bool royalSlimePrism;
         public bool mechanicalPrism;
@@ -945,6 +946,10 @@ namespace StarsAbove
             tag["MoonLordDialogue"] = MoonLordDialogue;
             tag["WarriorOfLightDialogue"] = WarriorOfLightDialogue;
             tag["vagrantDialogue"] = vagrantDialogue;
+
+            tag["dioskouroiDialogue"] = dioskouroiDialogue;
+
+
             tag["nalhaunDialogue"] = nalhaunDialogue;
             tag["penthDialogue"] = penthDialogue;
             tag["arbiterDialogue"] = arbiterDialogue;
@@ -1229,6 +1234,8 @@ namespace StarsAbove
             MoonLordDialogue = tag.GetInt("MoonLordDialogue");
             WarriorOfLightDialogue = tag.GetInt("WarriorOfLightDialogue");
             vagrantDialogue = tag.GetInt("vagrantDialogue");
+            dioskouroiDialogue = tag.GetInt("dioskouroiDialogue");
+
             nalhaunDialogue = tag.GetInt("nalhaunDialogue");
             penthDialogue = tag.GetInt("penthDialogue");
             arbiterDialogue = tag.GetInt("arbiterDialogue");
@@ -1608,11 +1615,7 @@ namespace StarsAbove
             {
                 inWarriorOfLightFightTimer = 4200;
             }
-            if (target.type == NPCType<CastorBoss>())
-            {
-                inNalhaunFightTimer = 1200;
-
-            }
+           
             
             if (target.type == NPCType<Arbitration>())
             {
@@ -1804,14 +1807,7 @@ namespace StarsAbove
             {
                 inWarriorOfLightFightTimer = 4200;
             }
-            if (target.type == NPCType<CastorBoss>())
-            {
-                inNalhaunFightTimer = 1200;
-                if (isNalhaunInvincible)
-                {
-
-                }
-            }
+            
             
             if (target.type == NPCType<Arbitration>())
             {
@@ -3010,7 +3006,7 @@ namespace StarsAbove
                         NewDiskDialogue = true;
                         brimstoneelementalDialogue = 1;
                     }
-                    if ((bool)calamityMod.Call("GetBossDowned", "calamitas") && calamitasDialogue == 0)
+                    if ((bool)calamityMod.Call("GetBossDowned", "calamitasClone") && calamitasDialogue == 0)
                     {
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
@@ -3064,6 +3060,18 @@ namespace StarsAbove
                     NewStellarNova = true;
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                     NewStellarArrayAbility = true;
+
+
+                }
+                if (DownedBossSystem.downedDioskouroi && dioskouroiDialogue == 0)
+                {
+                    dioskouroiDialogue = 1;
+                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                    NewDiskDialogue = true;
+
+                    //NewStellarNova = true;
+                    //if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                    //NewStellarArrayAbility = true;
 
 
                 }
@@ -4034,10 +4042,7 @@ namespace StarsAbove
                     {
                         keyofchronology = 1;
                     }
-                    if (edingenesisquasar == 0)
-                    {
-                        edingenesisquasar = 1;
-                    }
+                    
                 }
                 if (DownedBossSystem.downedWarrior && DownedBossSystem.downedVagrant && DownedBossSystem.downedPenth && DownedBossSystem.downedNalhaun)
                 {
@@ -4514,6 +4519,16 @@ namespace StarsAbove
             else
             {
                 burnishedPrism = false;
+            }
+            if (affix1 == Mod.Find<ModItem>("GeminiPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                affix2 == Mod.Find<ModItem>("GeminiPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
+                affix3 == Mod.Find<ModItem>("GeminiPrism").DisplayName.GetTranslation(Language.ActiveCulture))
+            {
+                geminiPrism = true;
+            }
+            else
+            {
+                geminiPrism = false;
             }
             if (affix1 == Mod.Find<ModItem>("SpatialPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
                 affix2 == Mod.Find<ModItem>("SpatialPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
@@ -6473,7 +6488,7 @@ namespace StarsAbove
                 starfarerPromptActive("onVagrant");
                 seenUnknownBossTimer = 300;
             }
-            if (NPC.AnyNPCs(ModContent.NPCType<NPCs.Nalhaun.CastorBoss>()) && !seenNalhaun)
+            if (NPC.AnyNPCs(ModContent.NPCType<NPCs.Nalhaun.NalhaunBoss>()) && !seenNalhaun)
             {
                 if (starfarerPromptCooldown > 0)
                 {
@@ -7408,7 +7423,15 @@ namespace StarsAbove
                     }
                 }
 
-            
+            for (int i = 0; i < Player.CountBuffs(); i++)
+                if (Player.buffType[i] == BuffType<Buffs.TwincastActive>())
+                {
+                    if (Player.buffTime[i] == 1)
+                    {
+                        novaGauge += trueNovaGaugeMax / 2;
+
+                    }
+                }
             if (Main.LocalPlayer.HasBuff(BuffType<Buffs.LeftDebuff>()))
             {
                 for (int i = 0; i < 2; i++)
@@ -7951,7 +7974,7 @@ namespace StarsAbove
             }
             if (evasionmastery == 2)
             {
-                if (Main.rand.Next(0, 101) <= 3)
+                if (Main.rand.Next(0, 101) <= 3 && Player.immuneTime <= 0)
                 {
                     Player.immuneTime = 30;
                     return false;
@@ -10842,13 +10865,7 @@ namespace StarsAbove
             {
                 Player.AddBuff(BuffType<Buffs.Lightblessed>(), 480);
             }
-            if (burnishedPrism)
-            {
-                Player.AddBuff(BuffID.Rage, 720);
-                Player.AddBuff(BuffID.Wrath, 720);
-                Player.AddBuff(BuffID.Titan, 720);
-                Player.AddBuff(BuffID.Endurance, 720);
-            }
+            
             if (spatialPrism)
             {
                 Player.AddBuff(BuffID.Regeneration, 720);
@@ -10875,7 +10892,19 @@ namespace StarsAbove
             {
                 Player.AddBuff(BuffType<MechanicalPrismBuff>(), 600);
             }
+            if (geminiPrism)
+            {
+                if(!Player.HasBuff(BuffType<GeminiPrismCooldown>()))
+                {
+                    Player.AddBuff(BuffType<GeminiPrismCooldown>(), 7200);
 
+                    Player.AddBuff(BuffType<TwincastActive>(), 300);
+
+
+                    //novaGauge = trueNovaGaugeMax / 2;
+                }
+
+            }
 
         }
         private void onEnemyHitWithNova(NPC target, int nova, ref int damage, ref bool crit)
@@ -10899,6 +10928,15 @@ namespace StarsAbove
             {
                 target.AddBuff(BuffID.Ichor, 720);
                 target.AddBuff(BuffID.Frostburn, 720);
+                target.AddBuff(BuffID.Poisoned, 720);
+                target.AddBuff(BuffID.OnFire, 720);
+                target.AddBuff(BuffID.Bleeding, 720);
+                target.AddBuff(BuffID.Confused, 720);
+                target.AddBuff(BuffID.Poisoned, 720);
+                target.AddBuff(BuffID.BetsysCurse, 720);
+                target.AddBuff(BuffID.Venom, 720);
+                target.AddBuff(BuffID.ShadowFlame, 720);
+                target.AddBuff(BuffID.Midas, 720);
                 target.AddBuff(BuffID.Oiled, 720);
 
             }
@@ -10935,7 +10973,18 @@ namespace StarsAbove
             {
                 if (trueNovaGaugeMax >= 200)
                 {
-                    damage += (int)(damage * 1.5);
+                    damage = (int)(damage * 1.5);
+                }
+            }
+            if (burnishedPrism)
+            {
+                if(target.boss)
+                {
+                    crit = false;
+                }
+                else
+                {
+                    damage = (int)(damage * 1.4);
                 }
             }
         }

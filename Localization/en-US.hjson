@@ -16,6 +16,10 @@
           ManifestBlade: The Burnished King channels energy into his blade, leaving his defenses drastically lowered!
           Feint: The Burnished King reverses the next attack!
         }
+        Dioskouroi:
+        {
+          Clash: The Dioskouroi clash, equalizing their HP!
+        }
       }
       SubworldName:
       {
@@ -883,14 +887,14 @@
             {
               1: Now that was a strange fight... I don't even think those twins even realized we were there!
               2: They weren't human, but probably a sort of demonkin. I felt some Starfarer trace on them- perhaps the First Starbearer defeated them in the past.
-              3: I don't know why Perseus told US to fight them, or even how we were able to. Unless... maybe Perseus found a way to turn Essences into living beings? Hmm...
+              3: I don't know why Perseus told US to fight them, or even how we were able to. Unless... maybe Perseus found a way to turn Essences into their past selves? Hmm...
               4: Our battle seems to have left a strange remnant object- I'll leave it in your care. You should probably take care of it.
             }
             Eridani:
             {
               1: Even though we're the ones who bested them, those demon twins barely even gave us a glance.
               2: From the remnant mana on them, those twins were most likely laid low by the First Starbearer ages ago.
-              3: As for why Perseus told us to fight them... I don't know. I'm not even sure how we were able to fight them- Perhaps we fought an Essence given form?
+              3: As for why Perseus told us to fight them... I don't know. I'm not even sure how we were able to fight them- Perhaps we fought an Essence given agency?
               4: There's this strange object left over after the battle. I would take good care of it, if I were you. I believe it will be useful later.
             }
           }
@@ -1207,9 +1211,9 @@
         {
           Nalhaun:
           {
-            1: We meet again, {0}. I need your help.
+            1: We meet again, {0}. Again, I have another foe for you to defeat.
             2: I've given you the 'Ancient Crown.' With it, you can call forth a powerful foe, the Burnished King.
-            3: If my hypothesis is correct, he may be an important step towards confronting the First Starbearer, and stopping his rampage.
+            3: If my hypothesis is correct, his defeat will resonate a clue towards the First Starbearer's location.
             4: Prepare yourself: this fight will not be easy.
           }
           Penth:
@@ -1221,9 +1225,9 @@
           }
           Dioskouroi:
           {
-            1: We meet again, {0}. Again, I have another foe for you to defeat.
-            2: I've given you the 'Twincrux Pendant' When used, it will call forth powerful warring demons.
-            3: If my hypothesis is correct, their defeat will resonate a clue to the First Starbearer's location.
+            1: We meet again, {0}. I need your help.
+            2: This is the 'Twincrux Pendant.' When used, it will call forth powerful warring demons.
+            3: There may be an important step towards confronting the First Starbearer and stopping his rampage during this encounter.
             4: Prepare yourself well.
           }
           Warrior:

@@ -39,7 +39,7 @@ namespace StarsAbove.Projectiles.Bosses.Dioskouroi
 		}
 		public override bool PreDraw(ref Color lightColor)
 		{
-			default(Effects.YellowTrail).Draw(Projectile);
+			default(Effects.LightBlueTrail).Draw(Projectile);
 
 			return true;
 		}
@@ -88,8 +88,8 @@ namespace StarsAbove.Projectiles.Bosses.Dioskouroi
 		{
 			for (int d = 0; d < 18; d++)
 			{
-				Dust.NewDust(Projectile.Center, 0, 0, DustID.AmberBolt, Main.rand.NextFloat(-5, 5), Main.rand.NextFloat(-5, 5), 150, default(Color), 0.7f);
-				Dust.NewDust(Projectile.Center, 0, 0, DustID.FireworkFountain_Yellow, Main.rand.NextFloat(-5, 5), Main.rand.NextFloat(-5, 5), 150, default(Color), 0.3f);
+				Dust.NewDust(Projectile.Center, 0, 0, DustID.IceTorch, Main.rand.NextFloat(-5, 5), Main.rand.NextFloat(-5, 5), 150, default(Color), 0.7f);
+				Dust.NewDust(Projectile.Center, 0, 0, DustID.FireworkFountain_Blue, Main.rand.NextFloat(-5, 5), Main.rand.NextFloat(-5, 5), 150, default(Color), 0.3f);
 
 			}
 
