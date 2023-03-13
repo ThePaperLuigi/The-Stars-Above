@@ -51,6 +51,7 @@ namespace StarsAbove
 
         public int nalhaunCutsceneProgress = 0;
         public int tsukiCutsceneProgress = 0;
+        public int tsukiCutscene2Progress = 0;
 
         public float WhiteAlpha;
         public float BlackAlpha;
@@ -137,10 +138,11 @@ namespace StarsAbove
 
             nalhaunCutsceneProgress--;
             tsukiCutsceneProgress--;
-
+            tsukiCutscene2Progress--;
+            
             BlackAlpha = Math.Clamp(BlackAlpha, 0, 1);
             WhiteAlpha = Math.Clamp(WhiteAlpha, 0, 1);
-
+            //Main.NewText(Language.GetTextValue($"Black Alpha{BlackAlpha} WhiteAlpha {WhiteAlpha}"), 220, 100, 247);
         }
         public override void PostUpdate()
         {

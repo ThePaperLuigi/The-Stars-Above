@@ -129,8 +129,8 @@ namespace StarsAbove.NPCs.Tsukiyomi
 			//NPC.HitSound = SoundID.NPCHit54;
 			//NPC.DeathSound = SoundID.NPCDeath52;
 
-
 			Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TheExtremeIntro");
+
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
 			NPC.netAlways = true;
 		}
@@ -203,261 +203,603 @@ namespace StarsAbove.NPCs.Tsukiyomi
             }
             if (AI_Timer >= 120) //An attack is active. (Temp 480, usually 120, or 2 seconds)
             {
-				switch (AI_RotationNumber)
-                {
-					case 0:
-						ThreadsOfFate1(P, NPC);
-						break;
-					case 1:
-						Anosios1(P, NPC);
-						break;
-					case 2:
-						ThreadsOfFate2(P, NPC);
-						break;
-					case 3:
-						ThreadsOfFate1(P, NPC);
-						break;
-					case 4:
-						CelestialOpposition(P, NPC);
-						break;
-					case 5:
-						HypertunedMeteorShower(P, NPC);
-						break;
-					case 6:
-						ThreadsOfFate1(P, NPC);
-						break;
-					case 7:
-						OriginStarfall(P, NPC);
-						break;
-					case 8:
-						ThreadsOfFate3(P, NPC);
-						break;
-					case 9:
-						GraspingVoid(P, NPC);
-						break;
-					case 10:
-						HypertunedMeteorShower(P, NPC);
-						break;
-					case 11:
-						ThreadsOfFate3(P, NPC);
-						break;
-					case 12:
-						CosmicUpsurge(P, NPC);
-						break;
-					case 13:
-						ThreadsOfFate1(P, NPC);
-						break;
-					case 14:
-						OriginStarfall2(P, NPC);
-						break;
-					case 15:
-						AI_RotationNumber = 27; //Skip ahead because this phase takes too long
-						break;
-					case 16:
-						CelestialOpposition(P, NPC);
-						break;
-					case 17:
-						ThreadsOfFate1(P, NPC);
-						break;
-					case 18:
-						GraspingVoid(P, NPC);
-						break;
-					case 19:
-						ThreadsOfFate2(P, NPC);
-						break;
-					case 20:
-						CosmicUpsurge(P, NPC);
-						break;
-					case 21:
-						ThreadsOfFate1(P, NPC);
-						break;
-					case 22:
-						AethericDisruption(P, NPC);
-						break;
-					case 23:
-						ThreadsOfFate3(P, NPC);
-						break;
-					case 24:
-						Anosios1(P, NPC);
-						break;
-					case 25:
-						CelestialOpposition(P, NPC);
-						break;
-					case 26:
-						ThreadsOfFate1(P, NPC);
-						break;
-					case 27:
-						TsukiyomiPhaseChange(P, NPC); //Transition into Phase 2
-						break;
-					case 28:
-						TsukiyomiAspectedWeapons(P, NPC); //Bury The Light will always follow her voice line
-						break;
-					case 29:
-						BuryTheLight1(P, NPC);
-						break;
-					case 30:
-						CosmicUpsurge(P, NPC);
-						break;
-					case 31:
-						DeathInFourActs1(P, NPC);
-						break;
-					case 32:
-						TheOnlyThingIKnowForReal1(P, NPC);
-						break;
-					case 33:
-						StygianMemento(P, NPC);
-						break;
-					case 34:
-						GraspingVoid(P, NPC);
-						break;
-					case 35:
-						CarianDarkMoon1(P, NPC);
-						break;
-					case 36:
-						Takonomicon1(P, NPC);
-						break;
-					case 37:
-						OriginStarfall(P, NPC);
-						break;
-					case 38:
-						ShadowlessCerulean1(P, NPC);
-						break;
-					case 39:
-						KeyOfTheKingsLaw1(P, NPC);
-						break;
-					case 40:
-						VoiceOfTheOutbreak(P, NPC);
-						break;
-					case 41:
-						BuryTheLight2(P, NPC);
-						break;
-					case 42:
-						HypertunedMeteorShower(P, NPC);
-						break;
-					case 43:
-						Anosios1(P, NPC);
-						break;
-					case 44:
-						Takonomicon2(P, NPC);
-						break;
-					case 45:
-						TheOnlyThingIKnowForReal1(P, NPC);
-						break;
-					case 46:
-						ThreadsOfFate3(P, NPC);
-						break;
-					case 47:
-						LuminaryWand(P, NPC);
-						break;
-					case 48:
-						CarianDarkMoon1(P, NPC);
-						break;
-					case 49:
-						CosmicUpsurgeFast(P, NPC);
-						break;
-					case 50:
-						DeathInFourActs1(P, NPC);
-						break;
-					case 51:
-						CelestialOpposition(P, NPC);
-						break;
-					case 52:
-						ThreadsOfFate2(P, NPC);
-						break;
-					case 53:
-						BuryTheLight1(P, NPC);
-						break;
-					case 54:
-						CaesuraOfDespair(P, NPC);
-						break;
-					case 55:
-						TheOnlyThingIKnowForReal1(P, NPC);
-						break;
-					case 56:
-						KeyOfTheKingsLaw1(P, NPC);
-						break;
-					case 57:
-						ThreadsOfFate3(P, NPC);
-						break;
-					case 58:
-						ThreadsOfFate2(P, NPC);
-						break;
-					case 59:
-						Takonomicon2(P, NPC);
-						break;
-					case 60:
-						CarianDarkMoon1(P, NPC);
-						break;
-					case 61:
-						CaesuraOfDespair(P, NPC);
-						break;
-					case 62:
-						ShadowlessCerulean1(P, NPC);
-						break;
-					case 63:
-						OriginStarfall2(P, NPC);
-						break;
-					case 64:
-						OriginStarfall(P, NPC);
-						break;
-					case 65:
-						LuminaryWand(P, NPC);
-						break;
-					case 66:
-						ThreadsOfFate3(P, NPC);
-						break;
-					case 67:
-						Anosios1(P, NPC);
-						break;
-					case 68:
-						StygianMemento(P, NPC);
-						break;
-					case 69:
-						Anosios1(P, NPC);
-						break;
-					case 70:
-						VoiceOfTheOutbreak(P, NPC);
-						break;
-					case 71:
-						DeathInFourActs1(P, NPC);
-						break;
-					case 72:
-						CosmicUpsurgeFast(P, NPC);
-						break;
-					case 73:
-						Takonomicon1(P, NPC);
-						break;
-					case 74:
-						Takonomicon2(P, NPC);
-						break;
-					case 75:
-						TheOnlyThingIKnowForReal1(P, NPC);
-						break;
-					case 76:
-						OriginStarfall2(P, NPC);
-						break;
-					case 77:
-						CelestialOpposition(P, NPC);
-						break;
-					case 78:
-						CarianDarkMoon1(P, NPC);
-						break;
-					case 79:
-						CaesuraOfDespair(P, NPC);
-						break;
-					case 80:
-						KeyOfTheKingsLaw1(P, NPC);
-						break;
-					case 81:
-						CosmicUpsurge(P, NPC);
-						break;
-					case 82:
-						DeathInFourActs1(P, NPC);
-						break;
-					default:
-						AI_RotationNumber = 29;//She'll never go back to phase 1 mechanics. (usually the mechanic right after TsukiyomiAspectedWeapons)
-						return;
+				if (Main.expertMode)
+				{
+					switch (AI_RotationNumber)
+					{
 
+						case 0:
+							AI_RotationNumber = 54;//ThreadsOfFate1(P, NPC);
+							break;
+						case 1:
+							Anosios1(P, NPC);
+							break;
+						case 2:
+							ThreadsOfFate2(P, NPC);
+							break;
+						case 3:
+							ThreadsOfFate1(P, NPC);
+							break;
+						case 4:
+							CelestialOpposition(P, NPC);
+							break;
+						case 5:
+							HypertunedMeteorShower(P, NPC);
+							break;
+						case 6:
+							ThreadsOfFate1(P, NPC);
+							break;
+						case 7:
+							OriginStarfall(P, NPC);
+							break;
+						case 8:
+							ThreadsOfFate3(P, NPC);
+							break;
+						case 9:
+							GraspingVoid(P, NPC);
+							break;
+						case 10:
+							HypertunedMeteorShower(P, NPC);
+							break;
+						case 11:
+							ThreadsOfFate3(P, NPC);
+							break;
+						case 12:
+							CosmicUpsurge(P, NPC);
+							break;
+						case 13:
+							ThreadsOfFate1(P, NPC);
+							break;
+						case 14:
+							OriginStarfall2(P, NPC);
+							break;
+						case 15:
+							AI_RotationNumber = 26; //Skip ahead because this phase takes too long
+							break;
+						case 16:
+							CelestialOpposition(P, NPC);
+							break;
+						case 17:
+							ThreadsOfFate1(P, NPC);
+							break;
+						case 18:
+							GraspingVoid(P, NPC);
+							break;
+						case 19:
+							ThreadsOfFate2(P, NPC);
+							break;
+						case 20:
+							CosmicUpsurge(P, NPC);
+							break;
+						case 21:
+							ThreadsOfFate1(P, NPC);
+							break;
+						case 22:
+							AethericDisruption(P, NPC);
+							break;
+						case 23:
+							ThreadsOfFate3(P, NPC);
+							break;
+						case 24:
+							Anosios1(P, NPC);
+							break;
+						case 25:
+							CelestialOpposition(P, NPC);
+							break;
+						case 26:
+							ThreadsOfFate1(P, NPC);
+							break;
+						case 27:
+							TsukiyomiPhaseChange(P, NPC); //Transition into Phase 2
+							break;
+						case 28:
+							TsukiyomiAspectedWeapons(P, NPC);
+							break;
+						case 29:
+							CarianDarkMoon1(P, NPC);
+							break;
+						case 30:
+							CosmicUpsurge(P, NPC);
+							break;
+						case 31:
+							DeathInFourActs1(P, NPC);
+							break;
+						case 32:
+							ThreadsOfFate1(P, NPC);
+							break;
+						case 33:
+							StygianMemento(P, NPC);
+							break;
+						case 34:
+							GraspingVoid(P, NPC);
+							break;
+						case 35:
+							CaesuraOfDespair(P, NPC);
+							break;
+						case 36:
+							Takonomicon1(P, NPC);
+							break;
+						case 37:
+							OriginStarfall(P, NPC);
+							break;
+						case 38:
+							ShadowlessCerulean1(P, NPC);
+							break;
+						case 39:
+							KeyOfTheKingsLaw1(P, NPC);
+							break;
+						case 40:
+							VoiceOfTheOutbreak(P, NPC);
+							break;
+						case 41:
+							ThreadsOfFate2(P, NPC);
+							break;
+						case 42:
+							HypertunedMeteorShower(P, NPC);
+							break;
+						case 43:
+							Anosios1(P, NPC);
+							break;
+						case 44:
+							Takonomicon2(P, NPC);
+							break;
+						case 45:
+							ThreadsOfFate1(P, NPC);
+							break;
+						case 46:
+							ThreadsOfFate3(P, NPC);
+							break;
+						case 47:
+							LuminaryWand(P, NPC);
+							break;
+						case 48:
+							CaesuraOfDespair(P, NPC);
+							break;
+						case 49:
+							CosmicUpsurgeFast(P, NPC);
+							break;
+						case 50:
+							DeathInFourActs1(P, NPC);
+							break;
+						case 51:
+							CelestialOpposition(P, NPC);
+							break;
+						case 52:
+							ThreadsOfFate2(P, NPC);
+							break;
+						case 53:
+							ThreadsOfFate1(P, NPC);
+							break;
+						case 54:
+							TsukiyomiPhaseChange2(P, NPC); //Final phase transition
+							break;
+						case 55:
+							BuryTheLight1(P, NPC);
+							break;
+						case 56:
+							CosmicUpsurge(P, NPC);
+							break;
+						case 57:
+							DeathInFourActs1(P, NPC);
+							break;
+						case 58:
+							TheOnlyThingIKnowForReal1(P, NPC);
+							break;
+						case 59:
+							StygianMemento(P, NPC);
+							break;
+						case 60:
+							GraspingVoid(P, NPC);
+							break;
+						case 61:
+							CarianDarkMoon1(P, NPC);
+							break;
+						case 62:
+							Takonomicon1(P, NPC);
+							break;
+						case 63:
+							OriginStarfall(P, NPC);
+							break;
+						case 64:
+							ShadowlessCerulean1(P, NPC);
+							break;
+						case 65:
+							KeyOfTheKingsLaw1(P, NPC);
+							break;
+						case 66:
+							VoiceOfTheOutbreak(P, NPC);
+							break;
+						case 67:
+							BuryTheLight2(P, NPC);
+							break;
+						case 68:
+							HypertunedMeteorShower(P, NPC);
+							break;
+						case 69:
+							Anosios1(P, NPC);
+							break;
+						case 70:
+							Takonomicon2(P, NPC);
+							break;
+						case 71: //Why can't I delete this [61] ???????????????
+							ThreadsOfFate1(P, NPC);
+							break;
+						case 72:
+							ThreadsOfFate3(P, NPC);
+							break;
+						case 73:
+							LuminaryWand(P, NPC);
+							break;
+						case 74:
+							CarianDarkMoon1(P, NPC);
+							break;
+						case 75:
+							CosmicUpsurgeFast(P, NPC);
+							break;
+						case 76:
+							DeathInFourActs1(P, NPC);
+							break;
+						case 77:
+							CelestialOpposition(P, NPC);
+							break;
+						case 78:
+							ThreadsOfFate2(P, NPC);
+							break;
+						case 79:
+							BuryTheLight1(P, NPC);
+							break;
+						case 80:
+							CaesuraOfDespair(P, NPC);
+							break;
+						case 81:
+							TheOnlyThingIKnowForReal1(P, NPC);
+							break;
+						case 82:
+							KeyOfTheKingsLaw1(P, NPC);
+							break;
+						case 83:
+							ThreadsOfFate3(P, NPC);
+							break;
+						case 84:
+							ThreadsOfFate2(P, NPC);
+							break;
+						case 85:
+							Takonomicon2(P, NPC);
+							break;
+						case 86:
+							CarianDarkMoon1(P, NPC);
+							break;
+						case 87:
+							CaesuraOfDespair(P, NPC);
+							break;
+						case 88:
+							ShadowlessCerulean1(P, NPC);
+							break;
+						case 89:
+							OriginStarfall2(P, NPC);
+							break;
+						case 90:
+							OriginStarfall(P, NPC);
+							break;
+						case 91:
+							LuminaryWand(P, NPC);
+							break;
+						case 92:
+							ThreadsOfFate3(P, NPC);
+							break;
+						case 93:
+							Anosios1(P, NPC);
+							break;
+						case 94:
+							StygianMemento(P, NPC);
+							break;
+						case 95:
+							Anosios1(P, NPC);
+							break;
+						case 96:
+							VoiceOfTheOutbreak(P, NPC);
+							break;
+						case 97:
+							DeathInFourActs1(P, NPC);
+							break;
+						case 98:
+							CosmicUpsurgeFast(P, NPC);
+							break;
+						case 99:
+							Takonomicon1(P, NPC);
+							break;
+						case 100:
+							Takonomicon2(P, NPC);
+							break;
+						case 101:
+							TheOnlyThingIKnowForReal1(P, NPC);
+							break;
+						case 102:
+							OriginStarfall2(P, NPC);
+							break;
+						case 103:
+							CelestialOpposition(P, NPC);
+							break;
+						case 104:
+							CarianDarkMoon1(P, NPC);
+							break;
+						case 105:
+							CaesuraOfDespair(P, NPC);
+							break;
+						case 106:
+							KeyOfTheKingsLaw1(P, NPC);
+							break;
+						case 107:
+							CosmicUpsurge(P, NPC);
+							break;
+						case 108:
+							DeathInFourActs1(P, NPC);
+							break;
+						default:
+							AI_RotationNumber = 55;//She'll never go back to phase 1 mechanics. (usually the mechanic right after TsukiyomiAspectedWeapons)
+							return;
+
+					}
+				}
+				else
+                {
+					switch (AI_RotationNumber)
+					{
+
+						case 0:
+							ThreadsOfFate1(P, NPC);
+							break;
+						case 1:
+							Anosios1(P, NPC);
+							break;
+						case 2:
+							ThreadsOfFate2(P, NPC);
+							break;
+						case 3:
+							ThreadsOfFate1(P, NPC);
+							break;
+						case 4:
+							CelestialOpposition(P, NPC);
+							break;
+						case 5:
+							HypertunedMeteorShower(P, NPC);
+							break;
+						case 6:
+							ThreadsOfFate1(P, NPC);
+							break;
+						case 7:
+							OriginStarfall(P, NPC);
+							break;
+						case 8:
+							ThreadsOfFate3(P, NPC);
+							break;
+						case 9:
+							GraspingVoid(P, NPC);
+							break;
+						case 10:
+							HypertunedMeteorShower(P, NPC);
+							break;
+						case 11:
+							ThreadsOfFate3(P, NPC);
+							break;
+						case 12:
+							CosmicUpsurge(P, NPC);
+							break;
+						case 13:
+							ThreadsOfFate1(P, NPC);
+							break;
+						case 14:
+							OriginStarfall2(P, NPC);
+							break;
+						case 15:
+							AI_RotationNumber = 27; //Skip ahead because this phase takes too long
+							break;
+						case 16:
+							CelestialOpposition(P, NPC);
+							break;
+						case 17:
+							ThreadsOfFate1(P, NPC);
+							break;
+						case 18:
+							GraspingVoid(P, NPC);
+							break;
+						case 19:
+							ThreadsOfFate2(P, NPC);
+							break;
+						case 20:
+							CosmicUpsurge(P, NPC);
+							break;
+						case 21:
+							ThreadsOfFate1(P, NPC);
+							break;
+						case 22:
+							AethericDisruption(P, NPC);
+							break;
+						case 23:
+							ThreadsOfFate3(P, NPC);
+							break;
+						case 24:
+							Anosios1(P, NPC);
+							break;
+						case 25:
+							CelestialOpposition(P, NPC);
+							break;
+						case 26:
+							ThreadsOfFate1(P, NPC);
+							break;
+						case 27:
+							TsukiyomiPhaseChange(P, NPC); //Transition into Phase 2
+							break;
+						case 28:
+							TsukiyomiAspectedWeapons(P, NPC); //Bury The Light will always follow her voice line
+							break;
+						case 29:
+							BuryTheLight1(P, NPC);
+							break;
+						case 30:
+							CosmicUpsurge(P, NPC);
+							break;
+						case 31:
+							DeathInFourActs1(P, NPC);
+							break;
+						case 32:
+							TheOnlyThingIKnowForReal1(P, NPC);
+							break;
+						case 33:
+							StygianMemento(P, NPC);
+							break;
+						case 34:
+							GraspingVoid(P, NPC);
+							break;
+						case 35:
+							CarianDarkMoon1(P, NPC);
+							break;
+						case 36:
+							Takonomicon1(P, NPC);
+							break;
+						case 37:
+							OriginStarfall(P, NPC);
+							break;
+						case 38:
+							ShadowlessCerulean1(P, NPC);
+							break;
+						case 39:
+							KeyOfTheKingsLaw1(P, NPC);
+							break;
+						case 40:
+							VoiceOfTheOutbreak(P, NPC);
+							break;
+						case 41:
+							BuryTheLight2(P, NPC);
+							break;
+						case 42:
+							HypertunedMeteorShower(P, NPC);
+							break;
+						case 43:
+							Anosios1(P, NPC);
+							break;
+						case 44:
+							Takonomicon2(P, NPC);
+							break;
+						case 45:
+							TheOnlyThingIKnowForReal1(P, NPC);
+							break;
+						case 46:
+							ThreadsOfFate3(P, NPC);
+							break;
+						case 47:
+							LuminaryWand(P, NPC);
+							break;
+						case 48:
+							CarianDarkMoon1(P, NPC);
+							break;
+						case 49:
+							CosmicUpsurgeFast(P, NPC);
+							break;
+						case 50:
+							DeathInFourActs1(P, NPC);
+							break;
+						case 51:
+							CelestialOpposition(P, NPC);
+							break;
+						case 52:
+							ThreadsOfFate2(P, NPC);
+							break;
+						case 53:
+							BuryTheLight1(P, NPC);
+							break;
+						case 54:
+							CaesuraOfDespair(P, NPC);
+							break;
+						case 55:
+							TheOnlyThingIKnowForReal1(P, NPC);
+							break;
+						case 56:
+							KeyOfTheKingsLaw1(P, NPC);
+							break;
+						case 57:
+							ThreadsOfFate3(P, NPC);
+							break;
+						case 58:
+							ThreadsOfFate2(P, NPC);
+							break;
+						case 59:
+							Takonomicon2(P, NPC);
+							break;
+						case 60:
+							CarianDarkMoon1(P, NPC);
+							break;
+						case 61:
+							CaesuraOfDespair(P, NPC);
+							break;
+						case 62:
+							ShadowlessCerulean1(P, NPC);
+							break;
+						case 63:
+							OriginStarfall2(P, NPC);
+							break;
+						case 64:
+							OriginStarfall(P, NPC);
+							break;
+						case 65:
+							LuminaryWand(P, NPC);
+							break;
+						case 66:
+							ThreadsOfFate3(P, NPC);
+							break;
+						case 67:
+							Anosios1(P, NPC);
+							break;
+						case 68:
+							StygianMemento(P, NPC);
+							break;
+						case 69:
+							Anosios1(P, NPC);
+							break;
+						case 70:
+							VoiceOfTheOutbreak(P, NPC);
+							break;
+						case 71:
+							DeathInFourActs1(P, NPC);
+							break;
+						case 72:
+							CosmicUpsurgeFast(P, NPC);
+							break;
+						case 73:
+							Takonomicon1(P, NPC);
+							break;
+						case 74:
+							Takonomicon2(P, NPC);
+							break;
+						case 75:
+							TheOnlyThingIKnowForReal1(P, NPC);
+							break;
+						case 76:
+							OriginStarfall2(P, NPC);
+							break;
+						case 77:
+							CelestialOpposition(P, NPC);
+							break;
+						case 78:
+							CarianDarkMoon1(P, NPC);
+							break;
+						case 79:
+							CaesuraOfDespair(P, NPC);
+							break;
+						case 80:
+							KeyOfTheKingsLaw1(P, NPC);
+							break;
+						case 81:
+							CosmicUpsurge(P, NPC);
+							break;
+						case 82:
+							DeathInFourActs1(P, NPC);
+							break;
+						default:
+							AI_RotationNumber = 29;//She'll never go back to phase 1 mechanics. (usually the mechanic right after TsukiyomiAspectedWeapons)
+							return;
+
+					}
 				}
 
             }
@@ -471,12 +813,17 @@ namespace StarsAbove.NPCs.Tsukiyomi
 				if (player.active)
 				{
 					//If boss is in phase 2...
-					if (NPC.localAI[0] == 1)
+					if (NPC.localAI[0] == 1 || NPC.localAI[0] == 2)
 					{
 						player.AddBuff(BuffType<Buffs.SubworldModifiers.MoonTurmoil>(), 10);
 
 					}
-					
+					//If boss is in phase 2...
+					if (NPC.localAI[0] == 2)
+					{
+						player.AddBuff(BuffType<Buffs.SubworldModifiers.ChaosTurmoil>(), 10);
+
+					}
 
 					player.GetModPlayer<StarsAbovePlayer>().TsukiyomiLocation = NPC.Center;
 					player.GetModPlayer<StarsAbovePlayer>().lookAtTsukiyomi = true;
@@ -485,16 +832,39 @@ namespace StarsAbove.NPCs.Tsukiyomi
 
 
 			}
-			if (NPC.localAI[0] == 1)
-			{
-				Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TheExtreme");
+			if(Main.expertMode)
+            {
+				if (NPC.localAI[0] == 2)
+				{
+					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Angela3");
 
+				}
+				else if (NPC.localAI[0] == 1)
+				{
+					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Angela2");
+
+				}
+				else
+                {
+					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Angela1");
+
+
+				}
 			}
 			else
             {
-				Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TheExtremeIntro");
+				if (NPC.localAI[0] != 0)
+				{
+					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TheExtreme");
 
+				}
+				else
+				{
+					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TheExtremeIntro");
+
+				}
 			}
+			
 
 
 			//Returning from the teleport.
@@ -738,8 +1108,10 @@ namespace StarsAbove.NPCs.Tsukiyomi
 
 				SubworldSystem.Exit();
 
+
 				if (modPlayer.tsukiyomiDialogue == 0)
 				{
+					modPlayer.edingenesisquasar = 1;
 					if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
 					modPlayer.tsukiyomiDialogue = 1;
 				}

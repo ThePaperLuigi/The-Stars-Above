@@ -601,6 +601,14 @@ namespace StarsAbove.Items.Consumables
 				
 				return true;
 			}
+			if (modPlayer.dioskouroiDialogue == 1 && DownedBossSystem.downedVagrant)
+			{
+				modPlayer.chosenDialogue = 69;
+				modPlayer.dioskouroiDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
 			if (modPlayer.dioskouroiBossItemDialogue == 1 && DownedBossSystem.downedVagrant)
 			{
 				modPlayer.chosenDialogue = 305;

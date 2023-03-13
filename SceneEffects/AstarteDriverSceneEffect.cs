@@ -15,13 +15,13 @@ namespace StarsAbove.SceneEffects
         }
         public override void SpecialVisuals(Player player, bool isActive)
         {
-            if (player.HasBuff<AstarteDriver>())
+            if (player.HasBuff<AstarteDriver>() || player.HasBuff<ChaosTurmoil>())
             {
                 SkyManager.Instance.Activate("StarsAbove:EdinGenesisQuasarSky");
                 
             }
 
-            if (!player.HasBuff<AstarteDriver>())
+            if (!player.HasBuff<AstarteDriver>() || player.HasBuff<ChaosTurmoil>())
             {
                SkyManager.Instance.Deactivate("StarsAbove:EdinGenesisQuasarSky");
             }
