@@ -754,6 +754,13 @@ namespace StarsAbove
                     156,
                     "Defeat Golem, then wait.")); //Corresponding dialogue ID.
                 WeaponArchiveList.Add(new WeaponArchiveListing(
+                      "Martian Madness Weapon", //Name of the archive listing.
+                      $"Grants the Essence for " +
+                     $"[i:{ItemType<Spatial>()}] The Kiss of Death. ", //Description of the listing.
+                      player.GoldlewisWeaponDialogue == 2, //Unlock requirements.
+                      165,
+                      "Defeat the martian invaders.")); //Corresponding dialogue ID.
+                WeaponArchiveList.Add(new WeaponArchiveListing(
                       "Arbitration Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Astral>()}] Liberation Blazing " +

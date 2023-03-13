@@ -513,6 +513,14 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
+			if (modPlayer.GoldlewisWeaponDialogue == 1)
+			{
+				modPlayer.chosenDialogue = 165;
+				modPlayer.GoldlewisWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
 			if (modPlayer.WallOfFleshWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 105;
