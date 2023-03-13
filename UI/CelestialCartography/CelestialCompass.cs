@@ -625,7 +625,6 @@ internal class CelestialCompass : UIState
                 SubworldSystem.Enter<Tucana>();
                 Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 
-<<<<<<< HEAD
             }
             else
             {
@@ -1408,35 +1407,4 @@ internal class CelestialCompass : UIState
         base.Update(gameTime);
     }
 
-=======
-			descriptionText.SetText(Wrap($"{modPlayer.locationDescription}", 40));
-			descriptionText.Top.Set(310, 0);
-			descriptionText.Left.Set(-160, 0);
-
-			threatText.SetText(Wrap($"{modPlayer.locationThreat}", 50));
-			threatText.Top.Set(524, 0);
-			threatText.Left.Set(-135, 0);
-
-			requirementText.SetText(Wrap($"{modPlayer.locationRequirement}", 50));
-			requirementText.Top.Set(546, 0);
-			requirementText.Left.Set(-135, 0);
-
-			lootText.SetText(Wrap($"{modPlayer.locationLoot}", 50));
-			lootText.Top.Set(568, 0);
-			lootText.Left.Set(-135, 0);
-
-			base.Update(gameTime);
-		}
-
-		private static string Wrap(string v, int size)
-		{
-			v = v.TrimStart();
-			if (v.Length <= size) return v;
-			var nextspace = v.LastIndexOf(' ', size);
-			if (-1 == nextspace) nextspace = Math.Min(v.Length, size);
-			return v.Substring(0, nextspace) + ((nextspace >= v.Length) ?
-			"" : "\n" + Wrap(v.Substring(nextspace), size));
-		}
-	}
->>>>>>> parent of beab749 (wrap method fix)
 }
