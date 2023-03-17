@@ -20,6 +20,7 @@ using StarsAbove.Buffs.Boss;
 using Terraria.GameContent;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Buffs;
+using StarsAbove.Items.BossBags;
 
 namespace StarsAbove.NPCs.Nalhaun
 {
@@ -740,7 +741,7 @@ namespace StarsAbove.NPCs.Nalhaun
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.BurnishedPrism>(), 4));
 
 			// Add the treasure bag using ItemDropRule.BossBag (automatically checks for expert mode)
-			//npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<VagrantBossBag>()));
+			npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<NalhaunBossBag>()));
 
 			// Trophies are spawned with 1/10 chance
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.BossLoot.NalhaunTrophyItem>(), 10));

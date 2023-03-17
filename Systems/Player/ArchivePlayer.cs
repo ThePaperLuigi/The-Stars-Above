@@ -786,14 +786,14 @@ namespace StarsAbove
                       $"[i:{ItemType<Umbral>()}] Unforgotten.", //Description of the listing.
                       player.ArbitrationWeaponDialogue == 2, //Unlock requirements.
                       119,
-                      "Defeat Arbitration.")); //Corresponding dialogue ID.
+                      "Defeat Nalhaun, the Burnished King.")); //Corresponding dialogue ID.
                 WeaponArchiveList.Add(new WeaponArchiveListing(
                     "Nalhaun Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Claimh Solais. ", //Description of the listing.
                     player.ClaimhWeaponDialogue == 2, //Unlock requirements.
                     127,
-                    "Defeat Arbitration, then wait.")); //Corresponding dialogue ID.
+                    "Defeat Nalhaun, then wait.")); //Corresponding dialogue ID.
                 WeaponArchiveList.Add(new WeaponArchiveListing(
                      "Nalhaun Weapon", //Name of the archive listing.
                      $"Grants the Essence for " +

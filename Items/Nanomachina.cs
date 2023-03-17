@@ -135,13 +135,13 @@ namespace StarsAbove.Items
 		}
 		public override void AddRecipes()
 		{
-			/*CreateRecipe(1)
-				.AddIngredient(ItemID.ZapinatorOrange, 1)
-				.AddIngredient(ItemID.TopHat, 1)
-				.AddIngredient(ItemID.GreenDye, 1)
-				.AddIngredient(ItemType<EssenceOfAbsoluteChaos>())
+			CreateRecipe(1)
+				.AddIngredient(ItemID.MeteoriteBar, 15)
+				.AddIngredient(ItemID.Solidifier, 1)
+				.AddIngredient(ItemID.IronskinPotion, 1)
+				.AddIngredient(ItemType<EssenceOfNanomachines>())
 				.AddTile(TileID.Anvils)
-				.Register();*/
+				.Register();
 		}
 
 	}

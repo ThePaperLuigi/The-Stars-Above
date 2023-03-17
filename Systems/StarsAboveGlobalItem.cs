@@ -186,6 +186,11 @@ namespace StarsAbove
 			ModContent.ItemType<Chronoclock>(),
 			ModContent.ItemType<KissOfDeath>(),
 
+			//Stars Above v1.4
+			ModContent.ItemType<Nanomachina>(),
+			ModContent.ItemType<LevinstormAxe>(),
+
+
 			ModContent.ItemType<EssenceOfAdagium>(),
 			ModContent.ItemType<EssenceOfBloodshed>(),
 			ModContent.ItemType<EssenceOfChemtech>(),
@@ -232,8 +237,8 @@ namespace StarsAbove
 
 
 			ModContent.ItemType<EssenceOfTheBehemothTyphoon>(),
-ModContent.ItemType<EssenceOfLightning>(),
-ModContent.ItemType<EssenceOfNanomachines>(),
+			ModContent.ItemType<EssenceOfLightning>(),
+			ModContent.ItemType<EssenceOfNanomachines>(),
 		};
 
 		public List<int> Prisms = new List<int>() {

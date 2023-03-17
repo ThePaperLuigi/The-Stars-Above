@@ -113,7 +113,7 @@ namespace StarsAbove.NPCs.Nalhaun
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 144000;
+			NPC.lifeMax = 214000;
 			NPC.damage = 0;
 			NPC.defense = 125;
 			NPC.knockBackResist = 0f;

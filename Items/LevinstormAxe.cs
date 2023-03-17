@@ -258,16 +258,14 @@ namespace StarsAbove.Items
 
 		public override void AddRecipes()
 		{
-			/*CreateRecipe(1)
-				.AddIngredient(ItemID.ChlorophyteBar, 8)
-				.AddIngredient(ItemID.BrokenHeroSword, 1)
-				.AddIngredient(ItemID.Ectoplasm, 10)
-				.AddIngredient(ItemID.SoulofLight, 12)
-				.AddIngredient(ItemID.LunarBar, 12)
-				.AddIngredient(ItemType<AegisCrystal>())
-				.AddIngredient(ItemType<EssenceOfLuminance>())
+			CreateRecipe(1)
+				.AddIngredient(ItemID.ShroomiteBar, 8)
+				.AddIngredient(ItemID.HallowedBar, 4)
+				.AddIngredient(ItemID.PickaxeAxe, 1)
+				.AddIngredient(ItemID.DD2LightningAuraT3Popper, 12)
+				.AddIngredient(ItemType<EssenceOfLightning>())
 				.AddTile(TileID.Anvils)
-				.Register();*/
+				.Register();
 		}
 	}
 }
