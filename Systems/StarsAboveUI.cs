@@ -57,6 +57,9 @@ namespace StarsAbove
 		private UserInterface _EmotionGaugeUserInterface;
 		internal EmotionGauge EmotionGauge;
 
+		private UserInterface _OverdriveGaugeUserInterface;
+		internal OverdriveGauge OverdriveGauge;
+
 		private UserInterface _UmbraGaugeUserInterface;
 		internal UmbraGauge UmbraGauge;
 
@@ -221,6 +224,10 @@ namespace StarsAbove
 				EmotionGauge = new EmotionGauge();
 				_EmotionGaugeUserInterface = new UserInterface();
 				_EmotionGaugeUserInterface.SetState(EmotionGauge);
+
+				OverdriveGauge = new OverdriveGauge();
+				_OverdriveGaugeUserInterface = new UserInterface();
+				_OverdriveGaugeUserInterface.SetState(OverdriveGauge);
 
 				RhythmGauge = new RhythmGauge();
 				_RhythmGaugeUserInterface = new UserInterface();
@@ -409,6 +416,7 @@ namespace StarsAbove
 			_EternalGaugeUserInterface?.Update(gameTime);
 			_UmbraGaugeUserInterface?.Update(gameTime);
 			_EmotionGaugeUserInterface?.Update(gameTime);
+			_OverdriveGaugeUserInterface?.Update(gameTime);
 
 			_BlackSilenceGaugeUserInterface?.Update(gameTime);
 			_RenegadeGaugeUserInterface?.Update(gameTime);
@@ -615,6 +623,15 @@ namespace StarsAbove
 					delegate
 					{
 						_EmotionGaugeUserInterface.Draw(Main.spriteBatch, new GameTime());
+						return true;
+					},
+					InterfaceScaleType.UI)
+				);
+				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+					"StarsAbove: Overdrive Gauge",
+					delegate
+					{
+						_OverdriveGaugeUserInterface.Draw(Main.spriteBatch, new GameTime());
 						return true;
 					},
 					InterfaceScaleType.UI)
