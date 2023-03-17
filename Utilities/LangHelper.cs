@@ -1,4 +1,6 @@
-﻿using System;
+
+using System;
+
 using System.Text;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -7,15 +9,26 @@ namespace StarsAbove.Utilities;
 
 internal static class LangHelper
 {
-    internal static string GetTextValue(string key, params object[] args)
-    {
-        return GetModTextValue(StarsAbove.Instance, key, args);
-    }
-    
-    private static string GetModTextValue(Mod mod, string key, params object[] args)
-    {
-        return Language.GetTextValue($"Mods.{mod.Name}.{key}", args);
-    }
+
+	internal static string GetTextValue(string key, params object[] args)
+	{
+		return GetModTextValue(StarsAbove.Instance, key, args);
+	}
+	private static string GetModTextValue(Mod mod, string key, params object[] args)
+	{
+		return Language.GetTextValue($"Mods.{mod.Name}.{key}", args);
+	}
+
+	//public static string Wrap(string v, int size)
+	//{
+	//    v = v.TrimStart();
+	//    if (v.Length <= size) return v;
+	//    var nextspace = v.LastIndexOf(' ', size);
+	//    if (-1 == nextspace) nextspace = Math.Min(v.Length, size);
+	//    return v.Substring(0, nextspace) + ((nextspace >= v.Length) ?
+	//    "" : "\n" + Wrap(v.Substring(nextspace), size));
+	//}
+
 	/// <summary>
 	/// Auto add newline according to <paramref name="limit" />
 	/// </summary>
@@ -25,6 +38,7 @@ internal static class LangHelper
 	internal static string Wrap(ReadOnlySpan<char> text, int limit)
 	{
 		const int MaxNewLine = 8;
+
 
 		// Just try 2.275f and found it fits
 		limit = (GameCulture.CultureName)Language.ActiveCulture.LegacyId switch
@@ -61,14 +75,5 @@ internal static class LangHelper
 		//Bad memory copy
 		return stringBuilder.ToString();
 	}
-	/*
-    public static string Wrap(string v, int size)
-    {
-        v = v.TrimStart();
-        if (v.Length <= size) return v;
-        var nextspace = v.LastIndexOf(' ', size);
-        if (-1 == nextspace) nextspace = Math.Min(v.Length, size);
-        return v.Substring(0, nextspace) + ((nextspace >= v.Length) ?
-        "" : "\n" + Wrap(v.Substring(nextspace), size));
-    }*/
+
 }

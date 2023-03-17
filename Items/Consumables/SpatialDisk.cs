@@ -513,6 +513,7 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
+
 			if (modPlayer.NanomachineWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 167;
@@ -525,6 +526,12 @@ namespace StarsAbove.Items.Consumables
 			{
 				modPlayer.chosenDialogue = 166;
 				modPlayer.LevinstormWeaponDialogue = 2;
+
+			if (modPlayer.GoldlewisWeaponDialogue == 1)
+			{
+				modPlayer.chosenDialogue = 165;
+				modPlayer.GoldlewisWeaponDialogue = 2;
+
 				activateDialogue(player);
 
 				return true;

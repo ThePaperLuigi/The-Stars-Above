@@ -7819,16 +7819,14 @@ namespace StarsAbove
 
 
             }//Chronoclock
-
-
-            if (chosenDialogue == 167)
+           if (chosenDialogue == 165)
             {
                 if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfNanomachines").Type);
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheBehemothTyphoon").Type);
                         dialoguePrep = false;
                     }
 
@@ -7851,7 +7849,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfNanomachines").Type);
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheBehemothTyphoon").Type);
                         dialoguePrep = false;
                     }
 
@@ -7919,6 +7917,55 @@ namespace StarsAbove
 
 
             }//Boltstorm Axe
+           if (chosenDialogue == 167)
+            {
+                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfNanomachines").Type);
+                        dialoguePrep = false;
+                    }
+
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.87", Player.name);
+
+
+                        //	" ";
+                    }
+                    
+
+
+                }
+                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfNanomachines").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.89", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+
+
+            }//Nanomachina Reactor
             #endregion
             //Boss item dialogues.
             if (chosenDialogue == 301) //Nalhaun item
@@ -8169,15 +8216,10 @@ namespace StarsAbove
                     //	" ";
                 }
 
-
-
-
-
             }//Warrior item
 
             dialogue = LangHelper.Wrap(dialogue, 44);
         }
 
-        
     }
 }

@@ -472,8 +472,12 @@ namespace StarsAbove
         public int SaltwaterWeaponDialogue = 0;
         public int ChaosWeaponDialogue = 0;
         public int ClockWeaponDialogue = 0;
+
         public int NanomachineWeaponDialogue = 0;
         public int LevinstormWeaponDialogue = 0;
+
+        public int GoldlewisWeaponDialogue = 0;
+
 
 
         //Subworld dialogues
@@ -1055,8 +1059,12 @@ namespace StarsAbove
             tag["SaltwaterWeaponDialogue"] = SaltwaterWeaponDialogue;
             tag["ChaosWeaponDialogue"] = ChaosWeaponDialogue;
             tag["ClockWeaponDialogue"] = ClockWeaponDialogue;
+
             tag["NanomachineWeaponDialogue"] = NanomachineWeaponDialogue;
             tag["LevinstormWeaponDialogue"] = LevinstormWeaponDialogue;
+
+            tag["GoldlewisWeaponDialogue"] = GoldlewisWeaponDialogue;
+
 
 
             tag["observatoryDialogue"] = observatoryDialogue;
@@ -1341,8 +1349,12 @@ namespace StarsAbove
             SaltwaterWeaponDialogue = tag.GetInt("SaltwaterWeaponDialogue");
             ChaosWeaponDialogue = tag.GetInt("ChaosWeaponDialogue");
             ClockWeaponDialogue = tag.GetInt("ClockWeaponDialogue");
+
             LevinstormWeaponDialogue = tag.GetInt("LevinstormWeaponDialogue");
             NanomachineWeaponDialogue = tag.GetInt("NanomachineWeaponDialogue");
+
+            GoldlewisWeaponDialogue = tag.GetInt("GoldlewisWeaponDialogue");
+
 
 
             observatoryDialogue = tag.GetInt("observatoryDialogue");
@@ -3834,6 +3846,15 @@ namespace StarsAbove
                     if (ClockWeaponDialogue == 0 && VagrantWeaponDialogue == 2)
                     {
                         ClockWeaponDialogue = 1;
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                        NewDiskDialogue = true;
+                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                        return;
+                    }
+                    if (GoldlewisWeaponDialogue == 0 && NPC.downedMartians)
+                    {
+                        GoldlewisWeaponDialogue = 1;
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
