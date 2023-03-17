@@ -10,7 +10,7 @@ namespace StarsAbove.Buffs.SubworldModifiers
             DisplayName.SetDefault("[c/EFB43E:Environmental Turmoil]");
             Description.SetDefault("Temporarily transposed to an orbiting celestial body" +
                 "\n" +
-                "\nDefenses have been reduced by 50" +
+                "\nDefenses have been reduced by 10" +
                 "\nOutgoing damage is reduced by 20%" +
                 "\n");
             Main.buffNoTimeDisplay[Type] = true;
@@ -21,7 +21,7 @@ namespace StarsAbove.Buffs.SubworldModifiers
         {
             
             
-            player.statDefense -= 50;
+            player.statDefense -= 10;
             player.GetDamage(DamageClass.Generic) -= 0.2f;
         }
         public override void Update(NPC npc, ref int buffIndex)

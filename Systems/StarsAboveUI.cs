@@ -16,6 +16,7 @@ using StarsAbove.UI.StarfarerMenu;
 using StarsAbove.UI.VN;
 using StarsAbove.UI.CelestialCartography;
 using StarsAbove.UI.IrminsulDream;
+using StarsAbove.UI.CutsceneUI;
 
 namespace StarsAbove
 {
@@ -27,10 +28,16 @@ namespace StarsAbove
 
 
 		public static ModKeybind novaKey;
-		
+
+
+		private UserInterface _CutsceneUI;
+		internal CutsceneUI CutsceneUI;
 
 		private UserInterface _ButterflyResourceBarUserInterface;
 		internal ButterflyResourceBar ButterflyResourceBar;
+
+		private UserInterface _NanomachinaGaugeUserInterface;
+		internal NanomachinaGauge NanomachinaGauge;
 
 		private UserInterface _RhythmGaugeUserInterface;
 		internal RhythmGauge RhythmGauge;
@@ -95,6 +102,12 @@ namespace StarsAbove
 
 		private UserInterface _TsukiyomiCastBarUserInterface;
 		internal TsukiyomiCastBar TsukiyomiCastBar;
+
+		private UserInterface _CastorCastBarUserInterface;
+		internal CastorCastBar CastorCastBar;
+
+		private UserInterface _PolluxCastBarUserInterface;
+		internal PolluxCastBar PolluxCastBar;
 
 		private UserInterface _lifeForceBarUserInterface;
 		internal lifeForceBar lifeForceBar;
@@ -180,21 +193,22 @@ namespace StarsAbove
 			
 			if (!Main.dedServ)
 			{
-
-
-
-
-
-				
+				CutsceneUI = new CutsceneUI();
+				_CutsceneUI = new UserInterface();
+				_CutsceneUI.SetState(CutsceneUI);
 
 				ButterflyResourceBar = new ButterflyResourceBar();
 				_ButterflyResourceBarUserInterface = new UserInterface();
 				_ButterflyResourceBarUserInterface.SetState(ButterflyResourceBar);
 
+				NanomachinaGauge = new NanomachinaGauge();
+				_NanomachinaGaugeUserInterface = new UserInterface();
+				_NanomachinaGaugeUserInterface.SetState(NanomachinaGauge);
 
 				TakodachiGauge = new TakodachiGauge();
 				_TakodachiGaugeUserInterface = new UserInterface();
 				_TakodachiGaugeUserInterface.SetState(TakodachiGauge);
+
 				VengeanceGauge = new VengeanceGauge();
 				_VengeanceGaugeUserInterface = new UserInterface();
 				_VengeanceGaugeUserInterface.SetState(VengeanceGauge);
@@ -278,6 +292,14 @@ namespace StarsAbove
 				TsukiyomiCastBar = new TsukiyomiCastBar();
 				_TsukiyomiCastBarUserInterface = new UserInterface();
 				_TsukiyomiCastBarUserInterface.SetState(TsukiyomiCastBar);
+
+				CastorCastBar = new CastorCastBar();
+				_CastorCastBarUserInterface = new UserInterface();
+				_CastorCastBarUserInterface.SetState(CastorCastBar);
+
+				PolluxCastBar = new PolluxCastBar();
+				_PolluxCastBarUserInterface = new UserInterface();
+				_PolluxCastBarUserInterface.SetState(PolluxCastBar);
 
 				lifeForceBar = new lifeForceBar();
 				_lifeForceBarUserInterface = new UserInterface();
@@ -386,8 +408,10 @@ namespace StarsAbove
 		{
 
 
-
+			_CutsceneUI?.Update(gameTime);
+			_NanomachinaGaugeUserInterface?.Update(gameTime);
 			_ButterflyResourceBarUserInterface?.Update(gameTime);
+
 			_VengeanceGaugeUserInterface?.Update(gameTime);
 			_EternalGaugeUserInterface?.Update(gameTime);
 			_UmbraGaugeUserInterface?.Update(gameTime);
@@ -434,6 +458,8 @@ namespace StarsAbove
 			_NalhaunCastBarUserInterface?.Update(gameTime);
 			_ArbiterCastBarUserInterface?.Update(gameTime);
 			_TsukiyomiCastBarUserInterface?.Update(gameTime);
+			_CastorCastBarUserInterface?.Update(gameTime);
+			_PolluxCastBarUserInterface?.Update(gameTime);
 			_VagrantCastBarUserInterface?.Update(gameTime);
 			_PenthCastBarUserInterface?.Update(gameTime);
 			_lifeForceBarUserInterface?.Update(gameTime);
@@ -520,6 +546,15 @@ namespace StarsAbove
 				
 
 				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+					"StarsAbove: Nanomachina Gauge",
+					delegate
+					{
+						_NanomachinaGaugeUserInterface.Draw(Main.spriteBatch, new GameTime());
+						return true;
+					},
+					InterfaceScaleType.UI)
+				);
+				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
 					"StarsAbove: Butterfly Resource Bar",
 					delegate
 					{
@@ -528,7 +563,6 @@ namespace StarsAbove
 					},
 					InterfaceScaleType.UI)
 				);
-				
 				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
 					"StarsAbove: Rhythm Gauge",
 					delegate
@@ -837,6 +871,24 @@ namespace StarsAbove
 					InterfaceScaleType.UI)
 				);
 				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+					"StarsAbove: Castor Cast Bar",
+					delegate
+					{
+						_CastorCastBarUserInterface.Draw(Main.spriteBatch, new GameTime());
+						return true;
+					},
+					InterfaceScaleType.UI)
+				);
+				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+					"StarsAbove: Pollux Cast Bar",
+					delegate
+					{
+						_PolluxCastBarUserInterface.Draw(Main.spriteBatch, new GameTime());
+						return true;
+					},
+					InterfaceScaleType.UI)
+				);
+				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
 					"StarsAbove: Life Force Bar",
 					delegate
 					{
@@ -915,6 +967,22 @@ namespace StarsAbove
 					},
 					InterfaceScaleType.UI)
 				);
+			}
+
+			int TopIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Interface Logic 4"));
+			if (TopIndex != -1)
+			{
+				
+				layers.Insert(TopIndex, new LegacyGameInterfaceLayer(
+					"StarsAbove: Cutscene UI",
+					delegate
+					{
+						_CutsceneUI.Draw(Main.spriteBatch, new GameTime());
+						return true;
+					},
+					InterfaceScaleType.UI)
+				);
+				
 			}
 		}
 	}

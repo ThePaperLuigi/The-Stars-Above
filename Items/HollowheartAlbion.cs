@@ -64,6 +64,27 @@ namespace StarsAbove.Items
 			
 
 
+			
+
+
+			return base.CanUseItem(player);
+
+		}
+
+		public override void MeleeEffects(Player player, Rectangle hitbox)
+		{
+			if (Main.rand.NextBool(3))
+			{
+				//Emit dusts when swing the sword
+
+				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 269);
+
+
+
+			}
+		}
+		public override bool? UseItem(Player player)
+		{
 			int damage = player.GetWeaponDamage(Item);
 
 			if (player.altFunctionUse == 2)
@@ -140,27 +161,6 @@ namespace StarsAbove.Items
 
 				return true;
 			}
-
-
-
-			return base.CanUseItem(player);
-
-		}
-
-		public override void MeleeEffects(Player player, Rectangle hitbox)
-		{
-			if (Main.rand.NextBool(3))
-			{
-				//Emit dusts when swing the sword
-
-				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 269);
-
-
-
-			}
-		}
-		public override bool? UseItem(Player player)
-		{
 
 
 

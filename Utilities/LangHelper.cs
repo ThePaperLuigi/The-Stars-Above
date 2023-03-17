@@ -1,4 +1,6 @@
+
 using System;
+
 using System.Text;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -7,6 +9,7 @@ namespace StarsAbove.Utilities;
 
 internal static class LangHelper
 {
+
 	internal static string GetTextValue(string key, params object[] args)
 	{
 		return GetModTextValue(StarsAbove.Instance, key, args);
@@ -35,6 +38,7 @@ internal static class LangHelper
 	internal static string Wrap(ReadOnlySpan<char> text, int limit)
 	{
 		const int MaxNewLine = 8;
+
 
 		// Just try 2.275f and found it fits
 		limit = (GameCulture.CultureName)Language.ActiveCulture.LegacyId switch
@@ -71,4 +75,5 @@ internal static class LangHelper
 		//Bad memory copy
 		return stringBuilder.ToString();
 	}
+
 }

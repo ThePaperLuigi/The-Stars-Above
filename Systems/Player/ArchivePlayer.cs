@@ -339,18 +339,23 @@ namespace StarsAbove
                        68,
                        "Defeat all vanilla bosses and the Warrior of Light in Expert Mode."));
                 BossArchiveList.Add(new BossArchiveListing(
-                       "Perseus's Appeal: The Burnished King", //Name of the archive listing.
-                       "Grants the item to summon the Burnished King.", //Description of the listing.
-                       player.nalhaunBossItemDialogue == 2, //Unlock requirements.
-                       301,
-                       "???")); //Corresponding dialogue ID.
+                      "Perseus's Appeal: The Twin Forces", //Name of the archive listing.
+                      "Grants the item to summon the Twin Forces.", //Description of the listing.
+                      player.dioskouroiBossItemDialogue == 2, //Unlock requirements.
+                      305,
+                      "???")); //Corresponding dialogue ID.
                 BossArchiveList.Add(new BossArchiveListing(
                        "Perseus's Appeal: The Witch of Ink", //Name of the archive listing.
                        "Grants the item to summon the Witch of Ink", //Description of the listing.
                        player.penthBossItemDialogue == 2, //Unlock requirements.
                        302,
                        "???")); //Corresponding dialogue ID.
-
+                BossArchiveList.Add(new BossArchiveListing(
+                       "Perseus's Appeal: The Burnished King", //Name of the archive listing.
+                       "Grants the item to summon the Burnished King.", //Description of the listing.
+                       player.nalhaunBossItemDialogue == 2, //Unlock requirements.
+                       301,
+                       "???")); //Corresponding dialogue ID.
                 BossArchiveList.Add(new BossArchiveListing(
                        "Perseus's Appeal: The Warrior of Light", //Name of the archive listing.
                        "Grants the item to summon the Warrior of Light.", //Description of the listing.
@@ -358,10 +363,10 @@ namespace StarsAbove
                        304,
                        "???")); //Corresponding dialogue ID.
                 BossArchiveList.Add(new BossArchiveListing(
-                       "Nalhaun Kneeled", //Name of the archive listing.
-                       "Unlocked after defeating Nalhaun, the Burnished King. Grants a material needed for confronting the final boss.", //Description of the listing.
-                       player.nalhaunDialogue == 2, //Unlock requirements.
-                       70,
+                       "Dioskouroi Defeated", //Name of the archive listing.
+                       "Unlocked after defeating Dioskouroi, the Twin Forces. Grants a material needed for confronting the final boss.", //Description of the listing.
+                       player.dioskouroiDialogue == 2, //Unlock requirements.
+                       69,
                        "Defeat Nalhaun, the Burnished King.")); //Corresponding dialogue ID.
                 BossArchiveList.Add(new BossArchiveListing(
                        "Penthesilea Washed", //Name of the archive listing.
@@ -369,6 +374,12 @@ namespace StarsAbove
                        player.penthDialogue == 2, //Unlock requirements.
                        71,
                        "Defeat Penthesilea, the Witch of Ink.")); //Corresponding dialogue ID.
+                BossArchiveList.Add(new BossArchiveListing(
+                      "Nalhaun Kneeled", //Name of the archive listing.
+                      "Unlocked after defeating Nalhaun, the Burnished King. Grants a material needed for confronting the final boss.", //Description of the listing.
+                      player.nalhaunDialogue == 2, //Unlock requirements.
+                      70,
+                      "Defeat Nalhaun, the Burnished King.")); //Corresponding dialogue ID.
                 BossArchiveList.Add(new BossArchiveListing(
                        "Warrior of Light Vanquished", //Name of the archive listing.
                        "Unlocked after defeating the Warrior of Light. Grants a material needed for confronting the final boss.", //Description of the listing.
@@ -550,6 +561,13 @@ namespace StarsAbove
                       120,
                       "Defeat Skeletron, then wait.")); //Corresponding dialogue ID.
                 WeaponArchiveList.Add(new WeaponArchiveListing(
+                     "Skeletron Weapon", //Name of the archive listing.
+                     $"Grants the Essence for " +
+                     $"[i:{ItemType<Spatial>()}] Nanomachina Reactor. ", //Description of the listing.
+                     player.NanomachineWeaponDialogue == 2, //Unlock requirements.
+                     167,
+                     "Defeat Skeletron, then wait.")); //Corresponding dialogue ID.
+                WeaponArchiveList.Add(new WeaponArchiveListing(
                       "Skeletron Weapon", //Name of the archive listing.
                       $"Grants the Essence for " +
                       $"[i:{ItemType<Spatial>()}] Apalistik. ", //Description of the listing.
@@ -681,7 +699,7 @@ namespace StarsAbove
                    154,
                    "Defeat all the mechanical bosses, then wait.")); //Corresponding dialogue ID.
                 WeaponArchiveList.Add(new WeaponArchiveListing(
-                      "Nalhaun Weapon", //Name of the archive listing.
+                      "Dioskouroi Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Astral>()}] Phantom in the Mirror " +
                       $"or " +
@@ -761,7 +779,7 @@ namespace StarsAbove
                       165,
                       "Defeat the martian invaders.")); //Corresponding dialogue ID.
                 WeaponArchiveList.Add(new WeaponArchiveListing(
-                      "Arbitration Weapon", //Name of the archive listing.
+                        "Nalhaun Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Astral>()}] Liberation Blazing " +
                       $"or " +
@@ -770,12 +788,19 @@ namespace StarsAbove
                       119,
                       "Defeat Arbitration.")); //Corresponding dialogue ID.
                 WeaponArchiveList.Add(new WeaponArchiveListing(
-                    "Arbitration Weapon", //Name of the archive listing.
+                    "Nalhaun Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Claimh Solais. ", //Description of the listing.
                     player.ClaimhWeaponDialogue == 2, //Unlock requirements.
                     127,
                     "Defeat Arbitration, then wait.")); //Corresponding dialogue ID.
+                WeaponArchiveList.Add(new WeaponArchiveListing(
+                     "Nalhaun Weapon", //Name of the archive listing.
+                     $"Grants the Essence for " +
+                     $"[i:{ItemType<Spatial>()}] Boltstorm Axe. ", //Description of the listing.
+                     player.LevinstormWeaponDialogue == 2, //Unlock requirements.
+                     166,
+                     "Defeat Nalhaun, then wait.")); //Corresponding dialogue ID.
                 WeaponArchiveList.Add(new WeaponArchiveListing(
                       "Duke Fishron Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +

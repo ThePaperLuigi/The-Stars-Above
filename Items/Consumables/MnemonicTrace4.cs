@@ -11,7 +11,7 @@ namespace StarsAbove.Items.Consumables
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Mnemonic Trace");
-			Tooltip.SetDefault("A trace of the First Starbearer's rampage (Deprecated)" +
+			Tooltip.SetDefault("A trace of the First Starbearer's rampage" +
 				"\n'Memories of catastrophe'" +
 				"\n");
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.

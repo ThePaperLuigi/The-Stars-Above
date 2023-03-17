@@ -393,7 +393,7 @@ namespace StarsAbove.UI.CelestialCartography
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive)
 				return;
 
-			if (NPC.downedAncientCultist && !NPC.downedMoonlord)
+			if (NPC.LunarApocalypseIsUp)
 			{
 				if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.LunarEvents"), 255, 255, 100); }
 				return;
@@ -1400,5 +1400,6 @@ namespace StarsAbove.UI.CelestialCartography
 
 			base.Update(gameTime);
 		}
+
 	}
 }

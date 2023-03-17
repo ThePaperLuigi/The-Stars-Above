@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
 	public class Blaster : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Tartaglia");     //The English name of the projectile
+			DisplayName.SetDefault("Beam of Light");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode
 		}

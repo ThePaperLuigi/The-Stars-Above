@@ -513,10 +513,25 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
+
+			if (modPlayer.NanomachineWeaponDialogue == 1)
+			{
+				modPlayer.chosenDialogue = 167;
+				modPlayer.NanomachineWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
+			if (modPlayer.LevinstormWeaponDialogue == 1)
+			{
+				modPlayer.chosenDialogue = 166;
+				modPlayer.LevinstormWeaponDialogue = 2;
+
 			if (modPlayer.GoldlewisWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 165;
 				modPlayer.GoldlewisWeaponDialogue = 2;
+
 				activateDialogue(player);
 
 				return true;
@@ -607,6 +622,22 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.nalhaunBossItemDialogue = 2;
 				activateDialogue(player);
 				
+				return true;
+			}
+			if (modPlayer.dioskouroiDialogue == 1 && DownedBossSystem.downedVagrant)
+			{
+				modPlayer.chosenDialogue = 69;
+				modPlayer.dioskouroiDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
+			if (modPlayer.dioskouroiBossItemDialogue == 1 && DownedBossSystem.downedVagrant)
+			{
+				modPlayer.chosenDialogue = 305;
+				modPlayer.dioskouroiBossItemDialogue = 2;
+				activateDialogue(player);
+
 				return true;
 			}
 			if (modPlayer.brimstoneelementalDialogue == 1)

@@ -44,23 +44,9 @@ namespace StarsAbove.Projectiles.Tsukiyomi
 		// It appears that for this AI, only the ai0 field is used!
 		public override void AI() {
 			Lighting.AddLight(Projectile.Center, new Vector3(0.99f, 0.6f, 0.3f));
+
+			Projectile.velocity *= 0.96f;
 			
-			if(Projectile.velocity.Y > 0)
-            {
-				Projectile.velocity.Y -= 0.1f;
-            }
-			if (Projectile.velocity.Y < 0)
-			{
-				Projectile.velocity.Y += 0.1f;
-			}
-			if(Main.expertMode)
-            {
-				damage = 100;
-            }
-			else
-            {
-				damage = 40;
-            }
 			if (Projectile.timeLeft > 50)
             {
 				Projectile.damage = 0;

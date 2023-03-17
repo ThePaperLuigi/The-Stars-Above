@@ -509,10 +509,97 @@ namespace StarsAbove
 		#endregion
 
 		#region Tsukiyomi Voice Lines
-		public static readonly SoundStyle Tsukiyomi_DontMakeThisHarderForMe = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/DontMakeThisHarderForMe")
+		public static readonly SoundStyle Tsukiyomi_DeathOfAThousandStars = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/ThousandStars")
 		{
 
 		};
+		public static readonly SoundStyle Tsukiyomi_Struggle = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/Struggle")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_NowhereYouCanRun = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/NowhereYouCanRun")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_AfraidOfTheDark = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/AfraidOfTheDark")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_TryHarder = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/TryHarderThanThat")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_ForgettingSomething = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/ForgettingSomething")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_Journey = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/EndOfYourJourney")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_Stronger = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/StrongerThanIHoped")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_Insignificant = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/Insignificant")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_TakeThisOutside = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/TakeThisOutside")
+		{
+
+		};
+		//Aspected weapon voice lines.
+		public static readonly SoundStyle Tsukiyomi_CarianDarkMoon = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/CarianDarkMoon")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_BuryTheLight = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/BuryTheLight")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_TheOnlyThingIKnowForReal = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/TheOnlyThingIKnowForReal")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_VoiceOfTheOutbreak = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/VoiceOfTheOutbreak")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_ShadowlessCerulean = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/ShadowlessCerulean")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_DeathInFourActs = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/DeathInFourActs")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_CaesuraOfDespair = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/CaesuraOfDespair")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_StygianNymph = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/StygianNymph")
+		{
+
+
+		};
+		public static readonly SoundStyle Tsukiyomi_MementoMuse = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/MementoMuse")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_LuminaryWand = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/LuminaryWand")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_Takonomicon = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/Takonomicon")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_KeyOfTheKingsLaw = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/KeyOfTheKingsLaw")
+		{
+
+		};
+		/*
 		public static readonly SoundStyle Tsukiyomi_ThisMessIsMine = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/ThisMessIsMine")
 		{
 
@@ -625,13 +712,14 @@ namespace StarsAbove
 		public static readonly SoundStyle Tsukiyomi_YouveComeToDefeatMe = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/YouveComeToDefeatMe")
 		{
 
-		};
+		};*/
 		#endregion
 
 
 		#endregion
 
 		#region Weapon Sound Effects
+
 		public static readonly SoundStyle SFX_KevesiTune = new($"{nameof(StarsAbove)}/Sounds/SFX/KevesiTune")
 		{
 
@@ -770,6 +858,10 @@ namespace StarsAbove
 		#endregion
 
 		#region Miscellaneous Sound Effects
+		public static readonly SoundStyle SFX_Laevateinn = new($"{nameof(StarsAbove)}/Sounds/SFX/Laevateinn")
+		{
+			PitchVariance = 0.1f,
+		};
 		public static readonly SoundStyle SFX_GuntriggerParryPrep = new($"{nameof(StarsAbove)}/Sounds/SFX/GuntriggerParryPrep")
 		{
 

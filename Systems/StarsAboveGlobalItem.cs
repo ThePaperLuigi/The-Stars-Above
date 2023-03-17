@@ -227,8 +227,13 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfTheTimeless>(),
 			ModContent.ItemType<EssenceOfPiracy>(),
 			ModContent.ItemType<EssenceOfAbsoluteChaos>(),
-						ModContent.ItemType<EssenceOfTheBehemothTyphoon>(),
 
+			ModContent.ItemType<EssenceOfTheWatch>(),
+
+
+			ModContent.ItemType<EssenceOfTheBehemothTyphoon>(),
+ModContent.ItemType<EssenceOfLightning>(),
+ModContent.ItemType<EssenceOfNanomachines>(),
 		};
 
 		public List<int> Prisms = new List<int>() {
@@ -407,7 +412,13 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfTheTimeless>(),
 			ModContent.ItemType<EssenceOfPiracy>(),
 			ModContent.ItemType<EssenceOfAbsoluteChaos>(),
+
+			ModContent.ItemType<EssenceOfTheWatch>(),
+
 			ModContent.ItemType<EssenceOfTheBehemothTyphoon>(),
+			ModContent.ItemType<EssenceOfLightning>(),
+			ModContent.ItemType<EssenceOfNanomachines>(),
+
 
 
 		};
@@ -865,6 +876,14 @@ namespace StarsAbove
 				{
 					damage += 0.1f;
 				}
+			}
+			if (player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
+			{
+				if (item.ModItem is LevinstormAxe && !disableAspectPenalty) //Ranged weapons
+				{
+					damage += 0.1f;
+				}
+
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
 			{

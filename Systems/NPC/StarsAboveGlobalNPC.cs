@@ -20,6 +20,7 @@ using StarsAbove.Buffs.IrminsulDream;
 using StarsAbove.Biomes;
 using StarsAbove.Items.Materials;
 using StarsAbove.NPCs;
+using StarsAbove.Buffs.Boss;
 
 namespace StarsAbove
 {
@@ -677,7 +678,22 @@ namespace StarsAbove
 
             base.OnHitByItem(npc, player, item, damage, knockback, crit);
         }
-		
+        public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+			if (npc.HasBuff<NalhaunSword>())
+			{
+				damage *= 2;
+			}
+			base.ModifyHitByProjectile(npc, projectile, ref damage, ref knockback, ref crit, ref hitDirection);
+        }
+        public override void ModifyHitByItem(NPC npc, Player player, Item item, ref int damage, ref float knockback, ref bool crit)
+        {
+			if(npc.HasBuff<NalhaunSword>())
+            {
+				damage *= 2;
+            }
+            base.ModifyHitByItem(npc, player, item, ref damage, ref knockback, ref crit);
+        }
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
 
@@ -719,92 +735,7 @@ namespace StarsAbove
 				npcLoot.Add(ItemDropRule.Common(ItemType<LuminitePrism>(), 4));
 				npcLoot.Add(ItemDropRule.Common(ItemType<Items.Materials.CelestialPrincessGenesisPrecursor>(), 4));
 			}
-			if (npc.type == NPCType<VagrantOfSpaceAndTime>())
-			{
-				//npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("SpatialPrism").Type, 2));
-				//npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("EnigmaticDust").Type, 1,3,12));
-
-
-
-
-			}
-			if (npc.type == NPCType<Nalhaun>())
-			{
-				//npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("BurnishedPrism").Type, 2));
-
-
-
-			}
-			if (npc.type == NPCType<Penthesilea>())
-			{
-				//npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("PaintedPrism").Type, 2));
-
-
-
-			}
-			if (npc.type == NPCType<Arbitration>())
-			{
-				//npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("VoidsentPrism").Type, 2));
-
-
-
-			}
-			//Remove all of these
-			if (npc.type == NPCID.Demon)
-			{
-				//npcLoot.Add(ItemDropRule.Common(ItemType<Luciferium>(), 1000));
-
-
-			}
-			if (npc.type == NPCID.DemonTaxCollector)
-			{
-
-				//npcLoot.Add(ItemDropRule.Common(ItemType<Luciferium>(), 1));
-
-			}
-			if (NPC.downedMoonlord)
-			{
-				//npcLoot.Add(ItemDropRule.Common(ItemType<Glitterglue>(), 10000));
-				
-			}
-			if (npc.lifeMax <= 10 && npc.damage == 0)
-			{
-				//npcLoot.Add(ItemDropRule.Common(ItemType<ToMurder>(), 10000));
-				//npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("PrismaticCore").Type, 10));
-			}
-			if (!npc.SpawnedFromStatue)
-			{
-				
-				//npcLoot.Add(ItemDropRule.Common(ItemType<PrismaticCore>(), 100));
-				//npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("PrismaticCore").Type, 10));
-			}
-			if (SubworldSystem.IsActive<BleachedPlanet>())
-			{
-
-				//npcLoot.Add(ItemDropRule.Common(ItemType<InertShard>(), 3));
-				//npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("PrismaticCore").Type, 10));
-			}
-			if (DownedBossSystem.downedVagrant)
-			{
-				//npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("PrismaticCore").Type, 1));//Temp
-				//npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("Starlight").Type, 25));
-				//npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("PerfectlyGenericAccessory").Type, 10000));
-				
-				//Disabled normally
-				/*
-				npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("RadiantPrism").Type, 10000));
-				npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("RefulgentPrism").Type, 10000));
-				npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("VerdantPrism").Type, 10000));
-				npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("EverflamePrism").Type, 10000));
-				npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("CrystallinePrism").Type, 10000));
-				npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("CastellicPrism").Type, 10000));
-				npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("AlchemicPrism").Type, 10000));
-				npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("ApocryphicPrism").Type, 10000));
-				npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("LucentPrism").Type, 10000));
-				npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("PhylacticPrism").Type, 10000));
-				*/
-			}
-
+			
 			
 			
 			VagrantDrops VagrantDropCondition = new VagrantDrops();

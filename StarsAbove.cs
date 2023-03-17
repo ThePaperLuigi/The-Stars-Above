@@ -8,6 +8,11 @@ using Terraria.ModLoader;
 using StarsAbove.SceneEffects.CustomSkies;
 using ReLogic.Content;
 using Microsoft.Xna.Framework;
+using Terraria.ID;
+using StarsAbove.Items;
+using ReLogic.Content.Sources;
+
+using StarsAbove.Systems;
 
 namespace StarsAbove
 {
@@ -20,15 +25,18 @@ namespace StarsAbove
 		public static ModKeybind weaponActionKey;
 
 		public static bool sharedAudio;
-
-	
-
-
 		public static StarsAbove Instance { get; set; }
 		
 		public StarsAbove() => Instance = this;
 
-		
+		//Video player code sourced from Terraria Overhaul- I can't thank you enough!
+		public override IContentSource CreateDefaultContentSource()
+		{
+			AddContent(new OgvReader());
+
+			return base.CreateDefaultContentSource();
+		}
+
 		public override void Load()
 		{
 			Logger.InfoFormat("'I've always wanted to write text in crash logs!' -A", Name);
@@ -37,10 +45,10 @@ namespace StarsAbove
 			ModLoader.TryGetMod("Wikithis", out Mod wikithis);
 			if(wikithis != null && !Main.dedServ)
             {
-				wikithis.Call("AddModURL", this, "terrariamods.fandom.com$The_Stars_Above");
+				wikithis.Call("AddModURL", this, "terrariamods.wiki.gg$The_Stars_Above");
             }
 
-			if (!Main.dedServ)
+			if (Main.netMode != NetmodeID.Server)
 			{
 				
 				//GameShaders.Misc["StarsAbove:DeathAnimation"] = new MiscShaderData(new Ref<Effect>(ModContent.Request<Effect>("Effects/EffectDeath").Value), "DeathAnimation");
@@ -51,7 +59,7 @@ namespace StarsAbove
 				SkyManager.Instance["StarsAbove:CorvusSky"] = new CorvusSky();
 
 				SkyManager.Instance["StarsAbove:ObservatorySkyDay"] = new ObservatorySkyDay();
-				SkyManager.Instance["StarsAbove:ObservatorySkyNight"] = new ObservatorySkyNight();
+				SkyManager.Instance["StarsAbove:EdinGenesisQuasarSky"] = new EdinGenesisQuasarSky();
 
 
 				Filters.Scene["StarsAbove:MoonSky"] = new Filter(new ScreenShaderData("FilterTower").UseColor(0f, 0.5f, 1f).UseOpacity(0.5f), EffectPriority.High);
@@ -59,11 +67,14 @@ namespace StarsAbove
 
 
 				Ref<Effect> screenRef = new Ref<Effect>(ModContent.Request<Effect>("StarsAbove/Effects/ShockwaveEffect", AssetRequestMode.ImmediateLoad).Value); // The path to the compiled shader file.
-				Filters.Scene["Shockwave"] = new Filter(new ScreenShaderData(screenRef, "Shockwave"), EffectPriority.VeryHigh);
+				Filters.Scene["Shockwave"] = new Filter(new ScreenShaderData(screenRef, "Shockwave"), EffectPriority.High);
 				Filters.Scene["Shockwave"].Load();
 
+				//Ref<Effect> dyeRef = new Ref<Effect>(ModContent.Request<Effect>("StarsAbove/Effects/Shader", AssetRequestMode.ImmediateLoad).Value);
+				//GameShaders.Armor.BindShader(ModContent.ItemType<Spatial>(), new ArmorShaderData(dyeRef, "GalaxyPass")).UseImage("StarsAbove/Effects/GalaxyTest");
+
 				GameShaders.Misc["StarsAbove:DeathAnimation"] = new MiscShaderData(
-				  new Ref<Effect>(ModContent.Request<Effect>("StarsAbove/Effects/EffectDeath", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value),
+				  new Ref<Effect>(ModContent.Request<Effect>("StarsAbove/Effects/EffectDeath", AssetRequestMode.ImmediateLoad).Value),
 				  "DeathAnimation"
 				);
 
@@ -169,20 +180,41 @@ namespace StarsAbove
 						Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
 						sb.Draw(texture, centered, color);
 					}); //Boss Portrait
+				bossChecklist.Call(
+					"AddBoss", //Entry Type
+					this, //Mod Instance
+					"$Mods.StarsAbove.NPCName.Dioskouroi", //Boss Name
+					ModContent.NPCType<NPCs.Dioskouroi.PolluxBoss>(), //Boss ID
+					11.5f, //Progression
+					(Func<bool>)(() => DownedBossSystem.downedDioskouroi), //Downed boolean
+					() => true, //Availability
+					new List<int> { ModContent.ItemType<Items.Prisms.BurnishedPrism>() },//Collection
+					ModContent.ItemType<Items.Consumables.TwincruxPendant>(),//Spawn Item
+					"$Mods.StarsAbove.BossChecklist.Dioskouroi.SpawnInfo", //Spawn Item
+					"$Mods.StarsAbove.BossChecklist.Dioskouroi.DespawnMessage", //Despawn Message
+					(SpriteBatch sb, Rectangle rect, Color color) => {
+						Texture2D texture = ModContent.Request<Texture2D>("StarsAbove/Bestiary/Dioskouroi_Bestiary").Value;
+						Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
+						sb.Draw(texture, centered, color);
+					}); //Boss Portrait //Boss Portrait
 
 				bossChecklist.Call(
 					"AddBoss", //Entry Type
 					this, //Mod Instance
 					"$Mods.StarsAbove.NPCName.Nalhaun", //Boss Name
-					ModContent.NPCType<NPCs.Nalhaun>(), //Boss ID
-					11.5f, //Progression
+					ModContent.NPCType<NPCs.Nalhaun.NalhaunBossPhase2>(), //Boss ID
+					15.5f, //Progression
 					(Func<bool>)(() => DownedBossSystem.downedNalhaun), //Downed boolean
 					() => true, //Availability
 					new List<int> { ModContent.ItemType<Items.Prisms.BurnishedPrism>() },//Collection
 					ModContent.ItemType<Items.Consumables.AncientShard>(),//Spawn Item
 					"$Mods.StarsAbove.BossChecklist.Nalhaun.SpawnInfo", //Spawn Item
-					"$Mods.StarsAbove.BossChecklist.Nalhaun.DespawnMessage" //Despawn Message
-					); //Boss Portrait
+					"$Mods.StarsAbove.BossChecklist.Nalhaun.DespawnMessage", //Despawn Message
+					(SpriteBatch sb, Rectangle rect, Color color) => {
+						Texture2D texture = ModContent.Request<Texture2D>("StarsAbove/Bestiary/Nalhaun_Bestiary").Value;
+						Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
+						sb.Draw(texture, centered, color);
+					}); //Boss Portrait //Boss Portrait
 
 				bossChecklist.Call(
 					"AddBoss", //Entry Type
@@ -215,8 +247,8 @@ namespace StarsAbove
 				bossChecklist.Call(
 					"AddBoss", //Entry Type
 					this, //Mod Instance
-					"$Mods.StarsAbove.NPCName.Tsukiyomi2", //Boss Name
-					ModContent.NPCType<NPCs.Tsukiyomi2>(), //Boss ID
+					"$Mods.StarsAbove.NPCName.TsukiyomiBoss", //Boss Name
+					ModContent.NPCType<NPCs.Tsukiyomi.TsukiyomiBoss>(), //Boss ID
 					18.9f, //Progression
 					(Func<bool>)(() => DownedBossSystem.downedTsuki), //Downed boolean
 					(Func<bool>)(() => DownedBossSystem.downedWarrior), //Availability

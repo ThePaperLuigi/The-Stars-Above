@@ -8,6 +8,7 @@ using Terraria.GameContent;
 using StarsAbove.NPCs;
 using StarsAbove.Items.Prisms;
 using Terraria.GameContent.ItemDropRules;
+using StarsAbove.NPCs.Nalhaun;
 
 namespace StarsAbove.Items.BossBags
 {
@@ -15,7 +16,7 @@ namespace StarsAbove.Items.BossBags
     public class NalhaunBossBag : ModItem
 	{
 		// Sets the associated NPC this treasure bag is dropped from
-		public override int BossBagNPC => ModContent.NPCType<Nalhaun>();
+		public override int BossBagNPC => ModContent.NPCType<NalhaunBoss>();
 
 		public override void SetStaticDefaults()
 		{
@@ -31,7 +32,7 @@ namespace StarsAbove.Items.BossBags
 		{
 			Item.maxStack = 999;
 			Item.consumable = true;
-			Item.width = 24;
+			Item.width = 64;
 			Item.height = 24;
 			Item.rare = ItemRarityID.Purple;
 			Item.expert = true; // This makes sure that "Expert" displays in the tooltip and the item name color changes
@@ -47,7 +48,7 @@ namespace StarsAbove.Items.BossBags
 
 			//itemLoot.Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<LightswornPrism>(), 7));
 			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<BurnishedPrism>(), 4, 1, 1));
-			itemLoot.Add(ItemDropRule.CoinsBasedOnNPCValue(ModContent.NPCType<Nalhaun>()));
+			itemLoot.Add(ItemDropRule.CoinsBasedOnNPCValue(ModContent.NPCType<NalhaunBoss>()));
 		}
 		
 

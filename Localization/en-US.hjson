@@ -11,6 +11,16 @@
           Negative: Negative Chaos!
           
         }
+
+        Nalhaun:
+        {
+          ManifestBlade: The Burnished King channels energy into his blade, leaving his defenses drastically lowered!
+          Feint: The Burnished King reverses the next attack!
+        }
+        Dioskouroi:
+        {
+          Clash: The Dioskouroi clash, equalizing their HP!
+        }
         KissOfDeath:
         {
           Skyfish: Skyfish deployed!
@@ -18,10 +28,7 @@
           BehemothTyphoon: Behemoth Typhoon deployed!
           FullyCharged: Uppercut fully charged!
         }
-        Nalhaun:
-        {
-          ManifestBlade: The Burnished King channels energy into Laevateinn, leaving his defenses drastically lowered!
-        }
+        
       }
       SubworldName:
       {
@@ -488,7 +495,9 @@
             82: Well, I'm not sure what to make of this Essence, other than that it's a Summon weapon. Best you give it a go, before anything else goes haywire.
             83: This watch is a Summon-type weapon- looks like it'll call forth a cute time-aspected ally. She'll help with support if you can work with her combat style.
             84: Hmm... Perhaps you could even use it to dodge incoming attacks...?
+            86: Looks like this Essence is both Magic and Melee aspected- it crackles with lightning already. How about giving it a shot?
             85: It looks to me like this Ranged-weapon has the ability to down hordes of foes pretty easily. Sounds like it'll come in handy- especially the giant coffin swings!
+            87: How about this Essence? It'll give you an enhanced barrier, able to protect yourself while helping you deal some damage without worry of repercussions.
 
           }
           Eridani:
@@ -580,6 +589,8 @@
             85: I'm not sure how to define this Summon-type Essence, so I'll leave it as an exercise for you. Well... good luck.
             86: This Summon-type weapon conjures a rather charming time-aspected being. She'll help with both offensive and defensive duties.
             87: This essence is a Ranged-type weapon, but it seems to have a lot of close-ranged action. Don't get overzealous, but do try to make the most of it.
+            88: Seems like this is a Melee and Magic type Essence in tandem. From what I can see, it'll make a powerful weapon that channels the power of lightning.
+            89: This Essence is a support-type item. It'll provide a powerful barrier and allow you to sap life energy from your foes as well... It'll be quite the powerful tool.
           }
           Perseus:
           {
@@ -885,20 +896,37 @@
               4: Wait a moment- is this also the last Stellar Array ability, activated? Incredible work.
             }
           }
+          Dioskouroi:
+          {
+            Asphodene:
+            {
+              1: Now that was a strange fight... I don't even think those twins even realized we were there!
+              2: They weren't human, but probably a sort of demonkin. I felt some Starfarer trace on them- perhaps the First Starbearer defeated them in the past.
+              3: I don't know why Perseus told US to fight them, or even how we were able to. Unless... maybe Perseus found a way to turn Essences into their past selves? Hmm...
+              4: Our battle seems to have left a strange remnant object- I'll leave it in your care. You should probably take care of it.
+            }
+            Eridani:
+            {
+              1: Even though we're the ones who bested them, those demon twins barely even gave us a glance.
+              2: From the remnant mana on them, those twins were most likely laid low by the First Starbearer ages ago.
+              3: As for why Perseus told us to fight them... I don't know. I'm not even sure how we were able to fight them- Perhaps we fought an Essence given agency?
+              4: There's this strange object left over after the battle. I would take good care of it, if I were you. I believe it will be useful later.
+            }
+          }
           Nalhaun:
           {
             Asphodene:
             {
               1: So that was the Burnished King. His blade was incredibly powerful, not to mention the magic at his disposal. It was a triumph you survived that.
               2: From what I can tell, it looks like the Burnished King was defeated by the First Starbearer. Also, there's this strange item here, too.
-              3: I don't know why Perseus told US to fight him, or even how we were able to. Unless... maybe Perseus found a way to turn Essences into living beings? Hmm...
+              3: I guess we'll add it to the collection- no harm in that.
               4: I think we can reuse his attacks as a weapon in our arsenal, as a new Stellar Nova. Maybe because of the Starbearer's influence?
             }
             Eridani:
             {
               1: The Burnished King has fallen. What a powerful foe. I shudder to think how we would have fared had we fought him in his prime.
-              2: From what it looks like, The Burnished King was laid low by the First Starbearer ages ago.
-              3: As for why Perseus told us to fight him, I don't know. I'm not even sure how we were able to fight him. Perhaps we fought an Essence given form?
+              2: From what it looks like, The Burnished King was laid low by the First Starbearer nigh on a hundred years prior.
+              3: Let's take care of this strange object- it must have some significance. While we're on the topic...
               4: His weapon, Ars Laevateinn. We can use it for ourselves, as a Stellar Nova. Maybe because of the Starbearer's influence?
             }
           }
@@ -1198,9 +1226,9 @@
         {
           Nalhaun:
           {
-            1: We meet again, {0}. I need your help.
-            2: I've given you the 'Ancient Shard' With it, you can call forth a powerful foe, the Burnished King.
-            3: If my hypothesis is correct, he may be an important step towards confronting the First Starbearer, and stopping his rampage.
+            1: We meet again, {0}. Again, I have another foe for you to defeat.
+            2: I've given you the 'Ancient Crown.' With it, you can call forth a powerful foe, the Burnished King.
+            3: If my hypothesis is correct, his defeat will resonate a clue towards the First Starbearer's location.
             4: Prepare yourself: this fight will not be easy.
           }
           Penth:
@@ -1210,11 +1238,11 @@
             3: This is another important step in the pursuit of the the First Starbearer.
             4: Please prepare yourself. This will be a hard fight.
           }
-          Arbitration:
+          Dioskouroi:
           {
-            1: We meet again, {0}. Again, I have another foe for you to defeat.
-            2: I've given you the 'Beating Crux' When used, it will call forth a powerful demon.
-            3: This is another important step in the pursuit of the the First Starbearer.
+            1: We meet again, {0}. I need your help.
+            2: This is the 'Twincrux Pendant.' When used, it will call forth powerful warring demons.
+            3: There may be an important step towards confronting the First Starbearer and stopping his rampage during this encounter.
             4: Prepare yourself well.
           }
           Warrior:
@@ -2962,6 +2990,11 @@
           Label: Disable damage penalty for Aspected Damage modification
           Tooltip: 10% damage penalty when Aspected Damage modification is enabled is removed.
         }
+        DisableBossAggro:
+        {
+          Label: Disable Boss Aggro Marker
+          Tooltip: Disables the marker that appears over a player's head when a boss targets them.
+        }
         DisableCalamityWeaponBuffs:
         {
           Label: Disable global damage modifiers for mod compatibility
@@ -2977,10 +3010,15 @@
           Label: Disable Boss Enemy Spawn Mod
           Tooltip: Disables the buff granted to all players that prevents mob spawning during bosses.
         }
+        DisableManaSicknessChange:
+        {
+          Label: Disable Mana Sickness Change
+          Tooltip: Disables the change to Mana Sickness that applies the damage reduction to all damage and not just Magic.
+        }
         ColorblindBoss:
         {
           Label: Enable colorblind-friendly Penthesilea fight
-          Tooltip: Replaces certain color-based mechanics in the Penthesilea boss fight. Untested.
+          Tooltip: Replaces certain color-based mechanics in the Penthesilea boss fight.
         }
         SubworldCompatibility:
         {
@@ -3009,14 +3047,17 @@
         Arbitration: Arbitration
         AstralCell: Astral Cell
         DummyEnemy: Dummy Enemy
-        Nalhaun: Nalhaun, The Burnished King
+        PolluxBoss: Pollux, Baleborn of Ice
+        CastorBoss: Castor, Baleborn of Fire
+        Dioskouroi: Dioskouroi, the Twin Forces
+        NalhaunBoss: Nalhaun, The Burnished King
+        NalhaunBossPhase2: Nalhaun, Ruler of the Hollow World
         PaintedAttendantA: Living Brush
         PaintedAttendantB: Living Brush
         Penthesilea: Penthesilea, the Witch of Ink
         PrismLoot: Prismatic Core
         SpectreOfLight: Spectre Of Light
-        Tsukiyomi: Tsukiyomi, the First Starfarer
-        Tsukiyomi2: Tsukiyomi, the Progeny of Salvation
+        TsukiyomiBoss: Tsukiyomi, the First Starfarer
         VagrantOfSpaceAndTime: The Vagrant of Space and Time
         WarriorOfLight: The Warrior Of Light
       }
@@ -5279,7 +5320,7 @@
         CaesuraOfDespair: Cæsura of Despair
         CarianDarkMoon: Carian Dark Moon
         ClaimhSolais: Claimh Solais
-        AncientShard: The Ancient Shard
+        AncientShard: The Ancient Crown
         Bifrost: Bifrost
         BladeOrb: Blade Orb
         BlueOrb: Blue Orb
@@ -6385,6 +6426,7 @@
       }
       BuffDescription:
       {
+        ManaSicknessAlter: All damage reduced by {0}%
         Afterburner: All attacks will crit
         AfterburnerCooldown: Afterburner will fail to activate if this debuff is present
         AmmoRecycle: Move much faster and gain 10% increased damage
@@ -6765,7 +6807,7 @@
         }
         Nalhaun:
         {
-          SpawnInfo: Confront this aged monarch with the Ancient Shard, given to you by your Starfarer after any Mechanical Boss is defeated. (The Vagrant of Space and Time must have been defeated.)
+          SpawnInfo: Confront this aged monarch with the Ancient Crown, given to you by your Starfarer after any Mechanical Boss is defeated. (The Vagrant of Space and Time must have been defeated.)
           DespawnMessage: The king's crimson blade rings true yet again...
         }
         Penthesilea:
@@ -6773,14 +6815,19 @@
           SpawnInfo: Face this fearsome foe with the Unsullied Canvas, given to you by your Starfarer after Plantera is bested. (The Vagrant of Space and Time must have been defeated.)
           DespawnMessage: You have been splattered away...
         }
+        Dioskouroi:
+        {
+          SpawnInfo: Duel(?) these powerful twin demons through defeating Golem and obtaining the Twincrux Pendant.
+          DespawnMessage: Without binds, the Dioskouroi move their conflict elsewhere...
+        }
         Arbitration:
         {
-          SpawnInfo: This foe embodies true fear... Obtain the Crux from your Starfarer after Golem is defeated. (The Vagrant of Space and Time must have been defeated.)
+          SpawnInfo: This foe embodies true fear... Discover this foe through visiting an Anomaly location with the Astrolabe's help.
           DespawnMessage: ...
         }
-        Tsukiyomi2:
+        TsukiyomiBoss:
         {
-          SpawnInfo: The time has finally come. Craft all the Mnemonic Traces together to create the Mnemonic Sigil, and use it within the Observatory Hyperborea to be taken to Tsukiyomi's boss arena.
+          SpawnInfo: The time has finally come. Craft all the Mnemonic Traces together with the Celestriad Root to create the Mnemonic Sigil, and use it to be taken to Tsukiyomi's boss arena.
           DespawnMessage: ...
         }
       }
@@ -6789,18 +6836,20 @@
       {
         Arbitration: A horrifying figure encountered upon an Anomaly planet. While it appears evil to a human, eldritch anomalies such as these know not the concept of malice, only how to consume.
         AstralCell: A strange blue object. It eats water vapor.
-        Nalhaun: A once mighty monarch, cursed to live eternally even as his kingdom crumbed around him. The ability to conjure forth powerful monsters was gifted to him by his final retainer ere she breathed her last. He persisted alone on an empty planet until the First Starbearer ended his long and tragic reign.
+        Nalhaun: A once mighty monarch, cursed to live eternally by means of a betrayal from his royal court. He persisted alone on an empty planet until the First Starbearer ended his long and tragic reign, as he would be able to interfere with his plans. While he may have stood a chance at his full might, he was burdened by a dreadful civil war tearing his world apart.
         PaintedAttendantA: Utilized by Penthesilea to... smack you in the face. The best mages know when physical violence is the answer.
-        Penthesilea: An incredibly powerful mage, the Painted Witch once ruled a planet entirely 'drawn' by her. Ever the trickster, she mastered expert magecraft simply to play pranks upon the works of her colleagues, a testament to her ingenuity. She met her end at the hands of the First Starbearer after a long conflict.
+        Penthesilea: An incredibly powerful mage, the Painted Witch once ruled a planet entirely 'drawn' by her. Ever the trickster, she mastered expert magecraft simply to play pranks upon the works of her colleagues, a testament to her ingenuity. She met her end at the hands of the First Starbearer after a long conflict- if she were to persist, she would interfere with his plans...
         PrismLoot: The latent magical energy of Prismatic Cores can sometimes influence them to drift around the galaxy. Catch one, and you'll be rewarded!
         SpectreOfLight: An otherworldy hero, summoned forth by the First Starbearer to assail this land.
-        Tsukiyomi2: The First Starfarer, Tsukiyomi, who holds dominion over orbiting celestial bodies. The gravitational pull of a planet and its natural satellites gives her power. She led the Warrior of Light astray- using his strength and goodwill to conquer and destroy myriad stars... and yet...
+        TsukiyomiBoss: The First Starfarer, Tsukiyomi, who holds dominion over orbiting celestial bodies. The gravitational pull of a planet and its natural satellites gives her power. She led the Warrior of Light astray- using his strength and goodwill to conquer and destroy myriad stars... and yet...
+        CastorBoss: The Force of Fire, a Baleborn. The Baleborn are an incredibly competitive race of demonkin, and their blood relations have served only to further kindle the fires of conflict. They are completely engrossed in their duel, aware of nothing but their opponent's actions. Ironically, this has made them quite mediocre fighters against any other opponent. They were utterly destroyed by the First Starbearer, attacking him as he unwittingly interfered with their eternal battle. 
+        PolluxBoss: The Force of Ice, a Baleborn. The Baleborn are an incredibly competitive race of demonkin, and their blood relations have served only to further kindle the fires of conflict. They are completely engrossed in their duel, aware of nothing but their opponent's actions. Ironically, this has made them quite mediocre fighters against any other opponent. They were utterly destroyed by the First Starbearer, attacking him as he unwittingly interfered with their eternal battle. 
         VagrantOfSpaceAndTime: The enigmatic Starfarer Perseus. His outward appearance is that of utmost confidence... but he's just kind of a dork trying to look cool. His sisters agree on this. He continues to have power over spatial distances, but seems to have lost the power to control time (but not the moniker.)
         WarriorOfLight: The Warrior of Light, or the First Starbearer, once championed justice in the galaxy through his actions and the aid of his Starfarer. He once ruled a peaceful world, but was forced to watch helplessly as his people met their demise, vowing to never again let others share the same fate- no matter the cost.
         AsteroidWorm: These incredibly hardy creatures have grown the capability to aimlessly drift through the vacuum of space- perhaps not the best depiction of evolution. While their meals are scarce, their need for food is nigh nonexistant. Gifted with a strong outer shell, but low overall attacking strength.
         Soulless: An unfortunate victim of whatever apocalypse befell Caelum. Mana keeps their incarnation alive, but whatever trace of thought they may have once had has long since departed.
         Yojimbo: A mysterious lumenkin, his name seems to change depending on when and where you come across him. He's a bounty hunter, but is willing to part with some knowledge if you pry enough...
-        Garridine: A lupine demihuman you discovered residing on a far-flung starship, a blacksmith and gadgeteer. Her manner of speaking belies a high-class upbringing, but the facade tends to drop when she flubs her words (which is often.)
+        Garridine: A lupine demihuman you discovered residing on a far-flung starship, a blacksmith and gadgeteer. Her manner of speaking belies a high-class upbringing, but the facade tends to drop when she flubs her words (which is often.) Strangely protective of the watch by her side.
         AmethystHeadpiercer: Foot soldier of a wide-reaching paramilitary organization, referred to as the Amethyst. Equipped with a Vortexian powersuit fitted with a jetpack for ease of travel, even in the vacuum of space.
         AmethystSwordsinner: Foot soldier of a wide-reaching paramilitary organization, referred to as the Amethyst. Utilizes a hardlight blade with ferocious efficiency, specifically for countering ranged offense.
       }

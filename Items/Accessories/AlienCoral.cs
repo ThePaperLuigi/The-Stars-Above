@@ -10,8 +10,8 @@ namespace StarsAbove.Items.Accessories
 			DisplayName.SetDefault("Alien Coral");
 
 			Tooltip.SetDefault("[c/2DD2FE:Stargazer Relic]" +
-				"\nFor each unused Stellar Array Energy point, gain 15% increased damage" +
-				"\nGain 40 defense with a full Stellar Array instead" +
+				"\nFor each unused Stellar Array Energy point, gain 8% increased damage" +
+				"\nGain 8 defense with a full Stellar Array instead" +
 				"\n[c/ADEEFF:Only one Stargazer Relic can be equipped at a time]" +
 				"\n'From a world alien beyond belief'");
 			
@@ -31,11 +31,11 @@ namespace StarsAbove.Items.Accessories
 			player.GetModPlayer<WeaponPlayer>().AlienCoral = true;
 			if(player.GetModPlayer<StarsAbovePlayer>().stellarGauge < player.GetModPlayer<StarsAbovePlayer>().stellarGaugeMax)
             {
-				player.GetDamage(DamageClass.Generic) += 0.15f * (player.GetModPlayer<StarsAbovePlayer>().stellarGaugeMax - player.GetModPlayer<StarsAbovePlayer>().stellarGauge);
+				player.GetDamage(DamageClass.Generic) += 0.08f * (player.GetModPlayer<StarsAbovePlayer>().stellarGaugeMax - player.GetModPlayer<StarsAbovePlayer>().stellarGauge);
 			}
 			else
             {
-				player.statDefense += 40;
+				player.statDefense += 8;
             }
 			
 			//player.lifeRegen += 2;

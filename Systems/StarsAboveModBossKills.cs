@@ -13,6 +13,7 @@ namespace StarsAbove
 		public static bool downedArbiter = false;
 		public static bool downedNalhaun = false;
 		public static bool downedTsuki = false;
+		public static bool downedDioskouroi = false;
 
 		public override void OnWorldLoad()
 		{
@@ -22,6 +23,8 @@ namespace StarsAbove
 			downedArbiter = false;
 			downedNalhaun = false;
 			downedTsuki = false;
+			downedDioskouroi = false;
+
 		}
 
 		public override void OnWorldUnload()
@@ -32,6 +35,7 @@ namespace StarsAbove
 			downedArbiter = false;
 			downedNalhaun = false;
 			downedTsuki = false;
+			downedDioskouroi = false;
 		}
 		public override void SaveWorldData(TagCompound tag)
 		{
@@ -59,7 +63,10 @@ namespace StarsAbove
 			{
 				tag["downedTsuki"] = true;
 			}
-
+			if (downedDioskouroi)
+			{
+				tag["downedDioskouroi"] = true;
+			}
 			// if (downedOtherBoss) {
 			//	tag["downedOtherBoss"] = true;
 			// }
@@ -73,6 +80,7 @@ namespace StarsAbove
 			downedPenth = tag.ContainsKey("downedPenth");
 			downedArbiter = tag.ContainsKey("downedArbiter");
 			downedTsuki = tag.ContainsKey("downedTsuki");
+			downedDioskouroi = tag.ContainsKey("downedDioskouroi");
 		}
 
 		public override void NetSend(BinaryWriter writer)
@@ -85,6 +93,8 @@ namespace StarsAbove
 			flags[3] = downedPenth;
 			flags[4] = downedArbiter;
 			flags[5] = downedTsuki;
+			flags[6] = downedDioskouroi;
+
 			writer.Write(flags);
 
 		}
@@ -99,7 +109,7 @@ namespace StarsAbove
 			downedPenth = flags[3];
 			downedArbiter = flags[4];
 			downedTsuki = flags[5];
-
+			downedDioskouroi = flags[6];
 		}
 	}
 }
