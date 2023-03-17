@@ -53,9 +53,10 @@ namespace StarsAbove
         public int tsukiCutsceneProgress = 0;
         public int tsukiCutscene2Progress = 0;
 
-        public float WhiteAlpha;
-        public float BlackAlpha;
-
+        public float WhiteAlpha = 0f;
+        public float BlackAlpha = 0f;
+        public float VideoAlpha = 0f;
+        public int VideoDuration = -1;
 
         public bool VagrantActive = false; //This can be replaced with a npc check.
         public bool LostToVagrant = false; //This can probably be removed.
@@ -139,9 +140,12 @@ namespace StarsAbove
             nalhaunCutsceneProgress--;
             tsukiCutsceneProgress--;
             tsukiCutscene2Progress--;
+            VideoDuration--;
             
             BlackAlpha = Math.Clamp(BlackAlpha, 0, 1);
             WhiteAlpha = Math.Clamp(WhiteAlpha, 0, 1);
+
+            VideoAlpha = Math.Clamp(VideoAlpha, 0, 1);
             //Main.NewText(Language.GetTextValue($"Black Alpha{BlackAlpha} WhiteAlpha {WhiteAlpha}"), 220, 100, 247);
         }
         public override void PostUpdate()

@@ -13,6 +13,7 @@ public class UIVideo : UIElement
 	private VideoPlayer? videoPlayer;
 	private bool pendingResize;
 
+	
 	public bool ScaleToFit { get; set; }
 	public bool DoLoop { get; set; } = true;
 	public bool WaitForStart { get; set; } = false;
@@ -40,7 +41,6 @@ public class UIVideo : UIElement
 		}
 
 		EnsureInitialized();
-
 		
 		//true
 		if (WaitForStart) //If you need to prompt the video to begin...

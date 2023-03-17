@@ -101,12 +101,10 @@ namespace StarsAbove.NPCs.Dioskouroi
 		}
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
-			int associatedNPCType = ModContent.NPCType<CastorBoss>();
-			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[associatedNPCType], quickUnlock: true);
-
+			
 			// We can use AddRange instead of calling Add multiple times in order to add multiple items at once
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-
+					
 				new FlavorTextBestiaryInfoElement($"Mods.StarsAbove.Bestiary.{Name}")
 			});
 		}
@@ -114,7 +112,7 @@ namespace StarsAbove.NPCs.Dioskouroi
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 155000;
+			NPC.lifeMax = 85000;
 			NPC.damage = 0;
 			NPC.defense = 15;
 			NPC.knockBackResist = 0f;
@@ -126,7 +124,8 @@ namespace StarsAbove.NPCs.Dioskouroi
 			NPC.lavaImmune = true;
 			NPC.noGravity = false;
 			NPC.noTileCollide = false;
-			NPC.value = 0f;
+			NPC.value = Item.buyPrice(0, 3, 75, 45);
+
 			//DrawOffsetY = 42;
 
 			//NPC.HitSound = SoundID.NPCHit54;
@@ -208,7 +207,55 @@ namespace StarsAbove.NPCs.Dioskouroi
             {
 				if(!NPC.AnyNPCs(NPCType<CastorBoss>()))
                 {
-					PolluxEnrage(P, NPC);
+					switch (AI_RotationNumber)
+					{
+						case 0:
+							FreezingSky(P, NPC);
+							break;
+						case 1:
+							ChillingHail(P, NPC);
+							break;
+						case 2:
+							FreezingSky(P, NPC);
+							break;
+						case 3:
+							DiamondDust(P, NPC);
+							break;
+						case 4:
+							FreezingSky(P, NPC);
+							break;
+						case 5:
+							FrozenArsenal(P, NPC);
+							break;
+						case 6:
+							FreezingSky(P, NPC);
+							break;
+						case 7:
+							ArmoryOfIce(P, NPC);
+							break;
+						case 8:
+							DiamondDust(P, NPC);
+							break;
+						case 9:
+							FreezingSky(P, NPC);
+							break;
+						case 10:
+							ArmoryOfIce(P, NPC);
+							break;
+						case 11:
+							FreezingSky(P, NPC);
+							break;
+						case 12:
+							DiamondDust(P, NPC);
+							break;
+						case 13:
+							FrozenArsenal(P, NPC);
+							break;
+						default:
+							AI_RotationNumber = 0;
+							return;
+
+					}
 				}
 				else
                 {
@@ -435,7 +482,7 @@ namespace StarsAbove.NPCs.Dioskouroi
 			LeadingConditionRule leadingConditionRule = new LeadingConditionRule(new MissingDioskouroiTwin());
 
 			//leadingConditionRule.OnSuccess(/*Additional rules as new lines*/);
-			npcLoot.Add(leadingConditionRule);
+			
 
 
 			// Do NOT misuse the ModifyNPCLoot and OnKill hooks: the former is only used for registering drops, the latter for everything else
@@ -463,16 +510,17 @@ namespace StarsAbove.NPCs.Dioskouroi
 			//notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<MinionBossMask>(), 7));
 
 			//leadingConditionRule.OnSuccess(notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.GeminiPrism>(), 4)));
-
+			npcLoot.Add(leadingConditionRule);
 			// Finally add the leading rule
 			npcLoot.Add(ExpertRule);
 			npcLoot.Add(notExpertRule);
-			npcLoot.RemoveWhere(rule => true);
+			//npcLoot.RemoveWhere(rule => true);
 		}
 		public class MissingDioskouroiTwin : IItemDropRuleCondition, IProvideItemConditionDescription
 		{
 			public bool CanDrop(DropAttemptInfo info)
 			{
+
 				int type = NPCType<PolluxBoss>();//If this is called on Castor, check if Pollux is dead.
 				if (info.npc.type == NPCType<PolluxBoss>()) //If the npc is Pollux (this is called when Pollux dies.)
 				{

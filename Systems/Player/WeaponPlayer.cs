@@ -66,6 +66,7 @@ using StarsAbove.Buffs.Farewells;
 using StarsAbove.Buffs.Umbra;
 using StarsAbove.Projectiles.Chronoclock;
 using StarsAbove.Buffs.Chronoclock;
+using StarsAbove.Buffs.Nanomachina;
 
 namespace StarsAbove
 {
@@ -107,6 +108,10 @@ namespace StarsAbove
         public bool naganadelWeapon5Summoned;
         public Vector2 naganadelWeaponPosition;
 
+        //Nanomachina
+        public int nanomachinaShieldHP;
+        public int nanomachinaShieldHPMax;
+        public float nanomachinaGauge;
         
 
         //Yunlai Stilletto
@@ -462,6 +467,8 @@ namespace StarsAbove
         {
             var player = Player.GetModPlayer<StarsAbovePlayer>();
 
+            
+
             if (item.ModItem is LiberationBlazing)
             {
                 if (Player.HasBuff(BuffType<Buffs.CoreOfFlames>()))
@@ -566,7 +573,22 @@ namespace StarsAbove
             {
                 Player.AddBuff(BuffType<SatedAnguish>(), 900);
             }
-           
+
+            if (Player.HasBuff(BuffType<RealizedNanomachinaBuff>()))
+            {
+                if (!Player.HasBuff(BuffType<NanomachinaLeechCooldown>()))
+                {
+                    Player.statLife += 5;
+                    Player.statMana += 5;
+                    Player.HealEffect(5);
+                    Player.ManaEffect(5);
+                    nanomachinaGauge++;
+                    Player.AddBuff(BuffType<NanomachinaLeechCooldown>(), 60);
+                }
+
+                
+
+            }
             if (Player.HasBuff(BuffType<Buffs.Kifrosse.AmaterasuGrace>()) && target.HasBuff(BuffID.Frostburn))
             {
                 damage = damage + (damage / 2);
@@ -605,7 +627,21 @@ namespace StarsAbove
                     }
                 }
             }
+            if (Player.HasBuff(BuffType<RealizedNanomachinaBuff>()))
+            {
+                if (!Player.HasBuff(BuffType<NanomachinaLeechCooldown>()))
+                {
+                    Player.statLife += 5;
+                    Player.statMana += 5;
+                    Player.HealEffect(5);
+                    Player.ManaEffect(5);
+                    nanomachinaGauge++;
+                    Player.AddBuff(BuffType<NanomachinaLeechCooldown>(), 60);
+                }
 
+               
+
+            }
             if (proj.type == Mod.Find<ModProjectile>("AshenAmbitionExecute").Type)
             {
                 if (target.life <= AshenAmbitionExecuteThreshold)
@@ -2452,38 +2488,9 @@ namespace StarsAbove
                 HunterSongPlaying = 0;
             }
 
-            judgementCutTimer--;
-            
-
-            if (judgementCutTimer == 0)
-            {
-                judgementCut = true;
-            }
-            else
-            {
-                judgementCut = false;
-            }
-            if (Main.LocalPlayer.HeldItem.ModItem is BuryTheLight)
-            {
-
-            }
-            else
-            {
-                judgementGauge = 0;
-                judgementGaugeVisibility--;
-                if (judgementGaugeVisibility < 0)
-                {
-                    judgementGaugeVisibility = 0;
-                }
-                else
-                {
-
-                    //Filters.Scene.Deactivate("Shockwave");
-
-
-                }
-            }
            
+
+            BuryTheLight();
 
             if (NPC.downedMechBoss1 || NPC.downedMechBoss2 || NPC.downedMechBoss3)
             {
@@ -2513,7 +2520,7 @@ namespace StarsAbove
                 Main.LocalPlayer.AddBuff(BuffID.WellFed, 1);
 
             }
-            
+
 
             if (celestialFoci)
             {
@@ -2758,7 +2765,7 @@ namespace StarsAbove
             }
             if (Main.LocalPlayer.HasBuff(BuffType<Buffs.StellarPerformanceCooldown>()))
             {
-               stellarPerformanceCooldown = true;
+                stellarPerformanceCooldown = true;
 
             }
             else
@@ -2766,7 +2773,7 @@ namespace StarsAbove
                 stellarPerformanceCooldown = false;
 
             }
-            
+
             if (Main.LocalPlayer.HasBuff(BuffType<Buffs.BloodOfTheDragon>()))
             {
 
@@ -2782,8 +2789,8 @@ namespace StarsAbove
 
 
             }
-           
-            
+
+
             if (Main.LocalPlayer.HasBuff(BuffType<Buffs.LifeOfTheDragon>()))
             {
 
@@ -2935,7 +2942,7 @@ namespace StarsAbove
                 }
 
             }
-           
+
             for (int i = 0; i < Player.CountBuffs(); i++)
                 if (Player.buffType[i] == BuffType<Buffs.EyeOfEuthymiaBuff>())
                 {
@@ -2998,7 +3005,7 @@ namespace StarsAbove
 
                     }
                 }
-            
+
             for (int i = 0; i < Player.CountBuffs(); i++)
                 if (Player.buffType[i] == BuffType<Buffs.BurningDesire.BoilingBloodBuff>())
                 {
@@ -3060,7 +3067,7 @@ namespace StarsAbove
                         else
                         {
                             CallOfTheVoid = 0;
-                            NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, (float)Player.whoAmI, AshenAmbitionOldPosition.X,AshenAmbitionOldPosition.Y, 1, 0, 0);
+                            NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, (float)Player.whoAmI, AshenAmbitionOldPosition.X, AshenAmbitionOldPosition.Y, 1, 0, 0);
                         }
                         Player.Teleport(AshenAmbitionOldPosition, 1, 0);
 
@@ -3100,8 +3107,8 @@ namespace StarsAbove
                         Player.AddBuff(BuffType<Buffs.StarshieldCooldown>(), 1200);//
                     }
                 }
-            
-            
+
+
             for (int i = 0; i < Player.CountBuffs(); i++)
                 if (Player.buffType[i] == BuffType<MoonlitGreatblade>())
                 {
@@ -3121,10 +3128,44 @@ namespace StarsAbove
                     }
                 }
 
-            
-           
-            
+
+
+
         }
+
+        private void BuryTheLight()
+        {
+            judgementCutTimer--;
+            if (judgementCutTimer == 0)
+            {
+                judgementCut = true;
+            }
+            else
+            {
+                judgementCut = false;
+            }
+            if (Main.LocalPlayer.HeldItem.ModItem is BuryTheLight)
+            {
+
+            }
+            else
+            {
+                judgementGauge = 0;
+                judgementGaugeVisibility--;
+                if (judgementGaugeVisibility < 0)
+                {
+                    judgementGaugeVisibility = 0;
+                }
+                else
+                {
+
+                    //Filters.Scene.Deactivate("Shockwave");
+
+
+                }
+            }
+        }
+
         public override void PostUpdateBuffs()
         {
             applySuistrumeBuff();
@@ -3174,11 +3215,65 @@ namespace StarsAbove
         }
         public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource, ref int cooldownCounter)
         {
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.Invincibility>()))
+            if (Player.HasBuff(BuffType<Buffs.Invincibility>()))
             {
                 return false;
             }
+            if(Player.HasBuff(BuffType<RealizedNanomachinaBuff>()))
+            {
+                if(nanomachinaShieldHP > 0)
+                {
+                    if (damage > nanomachinaShieldHP)
+                    {
+                        Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                        CombatText.NewText(textPos, new Color(122, 113, 153, 255), $"-{nanomachinaShieldHP}", false, false);
 
+                        damage -= nanomachinaShieldHP;
+                        Player.ClearBuff(BuffType<RealizedNanomachinaBuff>());
+                        //The shield breaks!
+                        for (int d = 0; d < 32; d++)
+                        {
+                            Dust.NewDust(Player.Center, 0, 0, DustID.Flare, 0f + Main.rand.Next(-12, 12), 0f + Main.rand.Next(-12, 12), 150, default(Color), 1f);
+                        }
+                        for (int d = 0; d < 12; d++)
+                        {
+                            Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-2, 2), 150, default(Color), 0.5f);
+                        }
+                        SoundEngine.PlaySound(SoundID.NPCHit34, Player.Center);
+
+                    }
+                    else
+                    {
+                        if (damage - nanomachinaShieldHP <= 0) //If shield is more than the damage...
+                        {
+                            Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                            CombatText.NewText(textPos, new Color(122, 113, 153, 255), $"-{damage}", false, false);
+                            nanomachinaShieldHP -= damage;
+                            //Mimic I-frames
+                            Player.immune = true;
+                            Player.immuneTime = 60;
+
+                            //Clash sound effects and dust
+                            for (int d = 0; d < 12; d++)
+                            {
+                                Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-2, 2), 150, default(Color), 0.5f);
+                            }
+                            for (int d = 0; d < 12; d++)
+                            {
+                                Dust.NewDust(Player.Center, 0, 0, DustID.Flare, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-2, 2), 150, default(Color), 0.5f);
+                            }
+                            SoundEngine.PlaySound(SoundID.NPCHit53, Player.Center);
+
+                            return false;
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    
+                }
+            }
             if(Player.ownedProjectileCounts[ProjectileType<FragmentOfTimeMinion>()] >= 1 && !Player.HasBuff(BuffType<TimeBubbleCooldown>()))
             {
                 for (int i = 0; i < Main.maxProjectiles; i++)
@@ -3661,7 +3756,10 @@ namespace StarsAbove
         }
         private void OnKillEnemy(NPC npc)
         {
-            
+            if(Player.HasBuff(BuffType<RealizedNanomachinaBuff>()))
+            {
+                nanomachinaGauge += 5;
+            }
             if (Player.HasBuff(BuffType<OffSeersJourney>()))
             {
                 if (KevesiFarewellInInventory)
@@ -3712,6 +3810,7 @@ namespace StarsAbove
             if (player.inCombat < 0)
             {
                 SoulReaverSouls = 0;
+                //nanomachinaGauge = 0;
             }
 
             //Weapon PreUpdates
@@ -3730,6 +3829,7 @@ namespace StarsAbove
             EyeOfEuthymia();
             PhantomInTheMirror();
             KroniicPrincipality();
+            Nanomachina();
 
             //Radiance cap (used by certain weapons.)
             if (radiance > 10)
@@ -3737,8 +3837,30 @@ namespace StarsAbove
                 radiance = 10;
             }
 
-            
 
+
+        }
+
+        private void Nanomachina()
+        {
+            if (!Player.HasBuff(BuffType<RealizedNanomachinaBuff>()))
+            {
+                nanomachinaGauge = 0;
+                nanomachinaShieldHP = 0;
+                nanomachinaShieldHPMax = 0;
+            }
+            if (nanomachinaGauge >= 100)
+            {
+                //Shield was restored!!
+                for (int d = 0; d < 32; d++)
+                {
+                    Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-12, 12), 0f + Main.rand.Next(-12, 12), 150, default(Color), 1f);
+                }
+                SoundEngine.PlaySound(StarsAboveAudio.SFX_GuntriggerParryPrep, Player.Center);
+                Player.AddBuff(BuffType<RealizedNanomachinaBuff>(), 1200);
+                nanomachinaShieldHP = nanomachinaShieldHPMax;
+                nanomachinaGauge = 0;
+            }
         }
 
         private void PhantomInTheMirror()

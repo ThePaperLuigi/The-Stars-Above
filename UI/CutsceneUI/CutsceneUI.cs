@@ -84,6 +84,7 @@ namespace StarsAbove.UI.CutsceneUI
 
             spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/CutsceneUI/WhiteScreen"), area.GetInnerDimensions().ToRectangle(), Color.White * bossPlayer.WhiteAlpha);
         }
+        bool alphaFade;
 		public override void Update(GameTime gameTime)
         {
             var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
@@ -92,15 +93,34 @@ namespace StarsAbove.UI.CutsceneUI
             CutsceneIntroAlpha = MathHelper.Clamp(CutsceneIntroAlpha, 0f, 1f);
             CutsceneExitAlpha = MathHelper.Clamp(CutsceneExitAlpha, 0f, 1f);
 
+            bool introWhite = false; //If true, intro is white. If false, intro is black.
+            bool outroWhite = false; //If true, outro is white. If false, outro is black.
+
             AstarteDriver(modPlayer);
             NalhaunCutscene(bossPlayer);
-            TsukiCutscene(bossPlayer);
-            TsukiCutscene2(bossPlayer);
+            TsukiCutscene(bossPlayer, ref introWhite, ref outroWhite);
+            TsukiCutscene2(bossPlayer, ref introWhite, ref outroWhite);
+
+            if (bossPlayer.VideoDuration == 0)
+            {
+                if (outroWhite)
+                {
+                    bossPlayer.BlackAlpha = 0f;
+                    bossPlayer.WhiteAlpha = 1f;
+                }
+                else
+                {
+                    bossPlayer.WhiteAlpha = 0f;
+                    bossPlayer.BlackAlpha = 1f;
+
+                }
 
 
-
-            bossPlayer.WhiteAlpha -= 0.005f;
-            bossPlayer.BlackAlpha -= 0.005f;
+            }
+            bossPlayer.WhiteAlpha -= 0.01f;
+            bossPlayer.BlackAlpha -= 0.01f;
+            
+            
 
             base.Update(gameTime);
         }
@@ -178,79 +198,14 @@ namespace StarsAbove.UI.CutsceneUI
                 Video.Remove();
             }
         }
-        private void TsukiCutscene(BossPlayer modPlayer)
+        private void TsukiCutscene(BossPlayer modPlayer, ref bool introWhite, ref bool outroWhite)
         {
             UIVideo Video = tsukiCutsceneVideo;
             var cutsceneProgress = modPlayer.tsukiCutsceneProgress;
-            bool introWhite = true; //If true, intro is white. If false, intro is black.
-            bool outroWhite = false; //If true, outro is white. If false, outro is black.
-            bool CutsceneExit = false;
-            if (cutsceneProgress <= 60 && cutsceneProgress > 0)
-            {//If the cutscene hasn't started yet, give time for the screen to fade.
 
-                if(introWhite)
-                {
-                    modPlayer.WhiteAlpha += 0.1f;
-                }
-                else
-                {
-                    modPlayer.BlackAlpha += 0.1f;
-                }
-                
-                
-            }
-            else
-            {
-                
-                //modPlayer.WhiteAlpha -= 0.05f;
-                //modPlayer.BlackAlpha -= 0.05f;
-            }
+            introWhite = true;
+            outroWhite = false;
 
-
-
-
-
-            if (cutsceneProgress == 1)
-            {
-                
-                Video.FinishedVideo = false;
-                Video.StartVideo = true;
-                CutsceneExit = true;
-                area.Append(Video);
-
-            }
-            if (Video.FinishedVideo)
-            {
-                
-                if (CutsceneExit)
-                {
-                    if (outroWhite)
-                    {
-                        modPlayer.WhiteAlpha = 1f;
-                    }
-                    else
-                    {
-                        modPlayer.BlackAlpha = 1f;
-
-                    }
-                    CutsceneExit = false;
-                }
-
-                Video.Remove();
-            }
-            else
-            {
-                
-            }
-        }
-        private void TsukiCutscene2(BossPlayer modPlayer)
-        {
-            UIVideo Video = tsukiCutsceneVideo2;
-            var cutsceneProgress = modPlayer.tsukiCutscene2Progress;
-
-            bool introWhite = false; //If true, intro is white. If false, intro is black.
-            bool outroWhite = true; //If true, outro is white. If false, outro is black.
-            bool CutsceneExit = false;
             if (cutsceneProgress <= 60 && cutsceneProgress > 0)
             {//If the cutscene hasn't started yet, give time for the screen to fade.
 
@@ -267,46 +222,63 @@ namespace StarsAbove.UI.CutsceneUI
             }
             else
             {
-                
-                //modPlayer.WhiteAlpha -= 0.05f;
-                //modPlayer.BlackAlpha -= 0.05f;
+
             }
-
-
-
-
-
             if (cutsceneProgress == 1)
             {
-                
+
                 Video.FinishedVideo = false;
                 Video.StartVideo = true;
-                CutsceneExit = true;
+
                 area.Append(Video);
 
             }
             if (Video.FinishedVideo)
             {
-                
-                if (CutsceneExit)
-                {
-                    if (outroWhite)
-                    {
-                        modPlayer.WhiteAlpha = 1f;
-                        //
-                    }
-                    else
-                    {
-                        // 
-
-                        modPlayer.BlackAlpha = 1f;
-                    
-                    }
-                    CutsceneExit = false;
-                }
-
                 Video.Remove();
             }
+        }
+        private void TsukiCutscene2(BossPlayer modPlayer, ref bool introWhite, ref bool outroWhite)
+        {
+            UIVideo Video = tsukiCutsceneVideo2;
+            var cutsceneProgress = modPlayer.tsukiCutscene2Progress;
+
+            introWhite = false;
+            outroWhite = true;
+
+            if (cutsceneProgress <= 60 && cutsceneProgress > 0)
+            {//If the cutscene hasn't started yet, give time for the screen to fade.
+
+                if (introWhite)
+                {
+                    modPlayer.WhiteAlpha += 0.1f;
+                }
+                else
+                {
+                    modPlayer.BlackAlpha += 0.1f;
+                }
+
+
+            }
+            else
+            {
+
+            }
+            if (cutsceneProgress == 1)
+            {
+
+                Video.FinishedVideo = false;
+                Video.StartVideo = true;
+
+                area.Append(Video);
+
+            }
+            if(Video.FinishedVideo)
+            {
+                Video.Remove();
+            }
+            
+            
         }
     }
 }

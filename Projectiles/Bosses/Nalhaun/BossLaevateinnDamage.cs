@@ -48,13 +48,7 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 		public override void AI() {
 
 			
-			// Fade in
-			Projectile.alpha--;
-				if (Projectile.alpha < 100)
-				{
-					Projectile.alpha = 100;
-				}
-
+			
 			
 		}
 	}

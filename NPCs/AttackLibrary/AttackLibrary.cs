@@ -4312,7 +4312,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 
 				modPlayer.NextAttackAlt = "Phyrric Gemini";//The name of the attack.
-				npc.ai[3] = 600;//This is the time it takes for the cast to finish.
+				npc.ai[3] = 1200;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
 				npc.netUpdate = true;//NetUpdate for good measure.
@@ -5092,7 +5092,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 
 				modPlayer.NextAttack = "Phyrric Gemini";//The name of the attack.
-				npc.ai[3] = 600;//This is the time it takes for the cast to finish.
+				npc.ai[3] = 1200;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
 				npc.netUpdate = true;//NetUpdate for good measure.
@@ -5753,11 +5753,17 @@ namespace StarsAbove.NPCs.AttackLibrary
 					{
 
 						player.GetModPlayer<BossPlayer>().tsukiCutsceneProgress = 270;
+						player.GetModPlayer<BossPlayer>().VideoDuration = 600 + 270;
 					}
 
 
 				}
+				if (Main.netMode != NetmodeID.MultiplayerClient)
+				{
 
+					SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_TakeThisOutside, npc.Center);
+
+				}
 
 
 				return;
@@ -5834,6 +5840,8 @@ namespace StarsAbove.NPCs.AttackLibrary
 					{
 
 						player.GetModPlayer<BossPlayer>().tsukiCutscene2Progress = 210;
+						player.GetModPlayer<BossPlayer>().VideoDuration = 180 + 210;
+
 					}
 
 

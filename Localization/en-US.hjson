@@ -486,6 +486,8 @@
             82: Well, I'm not sure what to make of this Essence, other than that it's a Summon weapon. Best you give it a go, before anything else goes haywire.
             83: This watch is a Summon-type weapon- looks like it'll call forth a cute time-aspected ally. She'll help with support if you can work with her combat style.
             84: Hmm... Perhaps you could even use it to dodge incoming attacks...?
+            85: How about this Essence? It'll give you an enhanced barrier, able to protect yourself while helping you deal some damage without worry of repercussions.
+            86: Looks like this Essence is both Magic and Melee aspected- it crackles with lightning already. How about giving it a shot?
 
           }
           Eridani:
@@ -576,6 +578,8 @@
             84: How about it; that previous... um, let's say 'get-together' with those pirates has churned up an Essence- Ranged damage, from what I can tell. Here you are.
             85: I'm not sure how to define this Summon-type Essence, so I'll leave it as an exercise for you. Well... good luck.
             86: This Summon-type weapon conjures a rather charming time-aspected being. She'll help with both offensive and defensive duties.
+            87: This Essence is a support-type item. It'll provide a powerful barrier and allow you to sap life energy from your foes as well... It'll be quite the powerful tool.
+            88: Seems like this is a Melee and Magic type Essence in tandem. From what I can see, it'll make a powerful weapon that channels the power of lightning.
           }
           Perseus:
           {
@@ -2995,10 +2999,15 @@
           Label: Disable Boss Enemy Spawn Mod
           Tooltip: Disables the buff granted to all players that prevents mob spawning during bosses.
         }
+        DisableManaSicknessChange:
+        {
+          Label: Disable Mana Sickness Change
+          Tooltip: Disables the change to Mana Sickness that applies the damage reduction to all damage and not just Magic.
+        }
         ColorblindBoss:
         {
           Label: Enable colorblind-friendly Penthesilea fight
-          Tooltip: Replaces certain color-based mechanics in the Penthesilea boss fight. Untested.
+          Tooltip: Replaces certain color-based mechanics in the Penthesilea boss fight.
         }
         SubworldCompatibility:
         {
@@ -6406,6 +6415,7 @@
       }
       BuffDescription:
       {
+        ManaSicknessAlter: All damage reduced by {0}%
         Afterburner: All attacks will crit
         AfterburnerCooldown: Afterburner will fail to activate if this debuff is present
         AmmoRecycle: Move much faster and gain 10% increased damage

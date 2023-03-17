@@ -111,7 +111,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 1450000;
+			NPC.lifeMax = 1950000;
 			NPC.damage = 0;
 			NPC.defense = 15;
 			NPC.knockBackResist = 0f;
@@ -209,7 +209,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 					{
 
 						case 0:
-							AI_RotationNumber = 54;//ThreadsOfFate1(P, NPC);
+							ThreadsOfFate1(P, NPC);
 							break;
 						case 1:
 							Anosios1(P, NPC);
@@ -421,7 +421,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 						case 70:
 							Takonomicon2(P, NPC);
 							break;
-						case 71: //Why can't I delete this [61] ???????????????
+						case 71:
 							ThreadsOfFate1(P, NPC);
 							break;
 						case 72:

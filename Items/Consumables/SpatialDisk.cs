@@ -513,6 +513,22 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
+			if (modPlayer.NanomachineWeaponDialogue == 1)
+			{
+				modPlayer.chosenDialogue = 165;
+				modPlayer.NanomachineWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
+			if (modPlayer.LevinstormWeaponDialogue == 1)
+			{
+				modPlayer.chosenDialogue = 166;
+				modPlayer.LevinstormWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
 			if (modPlayer.WallOfFleshWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 105;

@@ -57,7 +57,7 @@ namespace StarsAbove.Items.Consumables
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
 			//return !NPC.AnyNPCs(NPCType<NPCs.Tsukiyomi>());
 			
-			return (!NPC.AnyNPCs(NPCType<TsukiyomiBoss>()) && !NPC.AnyNPCs(NPCType<NPCs.Tsukiyomi2>()));
+			return (!NPC.AnyNPCs(NPCType<TsukiyomiBoss>()));
 		}
 
 		public override bool? UseItem(Player player)

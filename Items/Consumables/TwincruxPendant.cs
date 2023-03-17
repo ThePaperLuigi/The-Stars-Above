@@ -15,7 +15,7 @@ namespace StarsAbove.Items.Consumables
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("The Twincrux Pendant");
 			Tooltip.SetDefault("This charm appears to be pulling itself apart" +
-				"\n[c/F1AF42:Summons Dioskouroi]" +
+				"\n[c/F1AF42:Summons Dioskouroi, the Twin Forces]" +
 				"\nThis boss is available early, but you may find it much too difficult" +
 				"\nPrepare accordingly, and consider postponing this fight until you are stronger" +
 				"\nIs not consumed upon use");
@@ -37,7 +37,7 @@ namespace StarsAbove.Items.Consumables
 		// We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
 		public override bool CanUseItem(Player player) {
 
-			return !NPC.AnyNPCs(NPCType<NPCs.Arbitration>()) && SubworldSystem.Current == null;
+			return !NPC.AnyNPCs(NPCType<NPCs.Dioskouroi.CastorBoss>()) && SubworldSystem.Current == null;
 		}
 
 		public override bool? UseItem(Player player) {

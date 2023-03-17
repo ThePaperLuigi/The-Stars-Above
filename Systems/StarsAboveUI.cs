@@ -36,6 +36,9 @@ namespace StarsAbove
 		private UserInterface _ButterflyResourceBarUserInterface;
 		internal ButterflyResourceBar ButterflyResourceBar;
 
+		private UserInterface _NanomachinaGaugeUserInterface;
+		internal NanomachinaGauge NanomachinaGauge;
+
 		private UserInterface _RhythmGaugeUserInterface;
 		internal RhythmGauge RhythmGauge;
 
@@ -195,10 +198,14 @@ namespace StarsAbove
 				_ButterflyResourceBarUserInterface = new UserInterface();
 				_ButterflyResourceBarUserInterface.SetState(ButterflyResourceBar);
 
+				NanomachinaGauge = new NanomachinaGauge();
+				_NanomachinaGaugeUserInterface = new UserInterface();
+				_NanomachinaGaugeUserInterface.SetState(NanomachinaGauge);
 
 				TakodachiGauge = new TakodachiGauge();
 				_TakodachiGaugeUserInterface = new UserInterface();
 				_TakodachiGaugeUserInterface.SetState(TakodachiGauge);
+
 				VengeanceGauge = new VengeanceGauge();
 				_VengeanceGaugeUserInterface = new UserInterface();
 				_VengeanceGaugeUserInterface.SetState(VengeanceGauge);
@@ -395,7 +402,9 @@ namespace StarsAbove
 
 
 			_CutsceneUI?.Update(gameTime);
+			_NanomachinaGaugeUserInterface?.Update(gameTime);
 			_ButterflyResourceBarUserInterface?.Update(gameTime);
+
 			_VengeanceGaugeUserInterface?.Update(gameTime);
 			_EternalGaugeUserInterface?.Update(gameTime);
 			_UmbraGaugeUserInterface?.Update(gameTime);
@@ -529,6 +538,15 @@ namespace StarsAbove
 				
 
 				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+					"StarsAbove: Nanomachina Gauge",
+					delegate
+					{
+						_NanomachinaGaugeUserInterface.Draw(Main.spriteBatch, new GameTime());
+						return true;
+					},
+					InterfaceScaleType.UI)
+				);
+				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
 					"StarsAbove: Butterfly Resource Bar",
 					delegate
 					{
@@ -537,7 +555,6 @@ namespace StarsAbove
 					},
 					InterfaceScaleType.UI)
 				);
-				
 				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
 					"StarsAbove: Rhythm Gauge",
 					delegate

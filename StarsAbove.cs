@@ -247,8 +247,8 @@ namespace StarsAbove
 				bossChecklist.Call(
 					"AddBoss", //Entry Type
 					this, //Mod Instance
-					"$Mods.StarsAbove.NPCName.Tsukiyomi2", //Boss Name
-					ModContent.NPCType<NPCs.Tsukiyomi2>(), //Boss ID
+					"$Mods.StarsAbove.NPCName.TsukiyomiBoss", //Boss Name
+					ModContent.NPCType<NPCs.Tsukiyomi.TsukiyomiBoss>(), //Boss ID
 					18.9f, //Progression
 					(Func<bool>)(() => DownedBossSystem.downedTsuki), //Downed boolean
 					(Func<bool>)(() => DownedBossSystem.downedWarrior), //Availability

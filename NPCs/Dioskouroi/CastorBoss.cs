@@ -90,14 +90,16 @@ namespace StarsAbove.NPCs.Dioskouroi
 			//Phase 1, so no bestiary
 			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
-				Hide = false // Hides this NPC from the bestiary
+				Hide = true // Hides this NPC from the bestiary
 			};
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, bestiaryData);
 
 		}
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
-			
+			int associatedNPCType = ModContent.NPCType<PolluxBoss>();
+			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[associatedNPCType], quickUnlock: true);
+
 			// We can use AddRange instead of calling Add multiple times in order to add multiple items at once
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 
@@ -108,7 +110,7 @@ namespace StarsAbove.NPCs.Dioskouroi
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 155000;
+			NPC.lifeMax = 85000;
 			NPC.damage = 0;
 			NPC.defense = 15;
 			NPC.knockBackResist = 0f;
@@ -120,7 +122,8 @@ namespace StarsAbove.NPCs.Dioskouroi
 			NPC.lavaImmune = true;
 			NPC.noGravity = false;
 			NPC.noTileCollide = false;
-			NPC.value = 0f;
+			NPC.value = Item.buyPrice(0, 3, 75, 45);
+
 			//DrawOffsetY = 42;
 
 			//NPC.HitSound = SoundID.NPCHit54;
@@ -203,7 +206,58 @@ namespace StarsAbove.NPCs.Dioskouroi
 				//If the other Baleborn is dead, cast an enrage attack instead. (Phyrric Gemini)
 				if (!NPC.AnyNPCs(NPCType<PolluxBoss>()))
 				{
-					CastorEnrage(P, NPC);
+					switch (AI_RotationNumber)
+					{
+						case 0:
+							Exoflare(P, NPC);
+							break;
+						case 1:
+							BlazingSky(P, NPC);//1st Clash
+							break;
+						case 2:
+							IgnitionRite(P, NPC);
+							break;
+						case 3:
+							Balefire(P, NPC);
+							break;
+						case 4:
+							BlazingSky(P, NPC);
+							break;
+						case 5:
+							Eruption(P, NPC);
+							break;
+						case 6:
+							BlazingSky(P, NPC);//2nd Clash
+							break;
+						case 7:
+							IgnitionWall(P, NPC);//2nd Clash
+							break;
+						case 8:
+							BlazingIgnition(P, NPC);//2nd Clash
+							break;
+						case 9:
+							BlazingSky(P, NPC);//2nd Clash
+							break;
+						case 10:
+							IgnitionRite(P, NPC);//2nd Clash
+							break;
+						case 11:
+							BlazingSky(P, NPC);//2nd Clash
+							break;
+						case 12:
+							Eruption(P, NPC);//2nd Clash
+							break;
+						case 13:
+							IgnitionRite(P, NPC);//2nd Clash
+							break;
+						case 14:
+							IgnitionWall(P, NPC);//2nd Clash
+							break;
+						default:
+							AI_RotationNumber = 0;
+							return;
+
+					}
 				}
 				else
 				{
@@ -430,7 +484,6 @@ namespace StarsAbove.NPCs.Dioskouroi
 			LeadingConditionRule leadingConditionRule = new LeadingConditionRule(new MissingDioskouroiTwin());
 
 			//leadingConditionRule.OnSuccess(/*Additional rules as new lines*/);
-			npcLoot.Add(leadingConditionRule);
 
 
 			// Do NOT misuse the ModifyNPCLoot and OnKill hooks: the former is only used for registering drops, the latter for everything else
@@ -438,7 +491,7 @@ namespace StarsAbove.NPCs.Dioskouroi
 			leadingConditionRule.OnSuccess(npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.GeminiPrism>(), 4)));
 
 			// Add the treasure bag using ItemDropRule.BossBag (automatically checks for expert mode)
-			leadingConditionRule.OnSuccess(npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<DioskouroiBossBag>())));
+			//leadingConditionRule.OnSuccess(npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<DioskouroiBossBag>())));
 
 			// Trophies are spawned with 1/10 chance
 			//leadingConditionRule.OnSuccess(npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.BossLoot.DioskouroiTrophyItem>(), 10)));
@@ -459,10 +512,11 @@ namespace StarsAbove.NPCs.Dioskouroi
 
 			//leadingConditionRule.OnSuccess(notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.GeminiPrism>(), 4)));
 
-			// Finally add the leading rule
+			npcLoot.Add(leadingConditionRule);
+
 			npcLoot.Add(ExpertRule);
 			npcLoot.Add(notExpertRule);
-			npcLoot.RemoveWhere(rule => true);
+			//npcLoot.RemoveWhere(rule => true);
 		}
 		public class MissingDioskouroiTwin : IItemDropRuleCondition, IProvideItemConditionDescription
 		{
@@ -474,6 +528,7 @@ namespace StarsAbove.NPCs.Dioskouroi
 					type = NPCType<CastorBoss>();//Check for Castor instead.
 				}
 				return !NPC.AnyNPCs(type);//If both Castor and Pollux are dead.
+
 			}
 
 			public bool CanShowItemDropInUI()

@@ -127,7 +127,7 @@ namespace StarsAbove.NPCs.Nalhaun
 			NPC.HitSound = SoundID.NPCHit54;
 			NPC.DeathSound = SoundID.NPCDeath52;
 
-			NPC.value = Item.buyPrice(0, 1, 75, 45);
+			NPC.value = Item.buyPrice(0, 20, 75, 45);
 
 			Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TheMightOfTheHellblade");
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
@@ -318,7 +318,7 @@ namespace StarsAbove.NPCs.Nalhaun
 				}
 				else if (AI_RotationNumber == 17)
 				{
-					VelvetAzimuth(P, NPC);
+					VelvetApogee(P, NPC);
 					return;
 				}
 				else if (AI_RotationNumber == 18)

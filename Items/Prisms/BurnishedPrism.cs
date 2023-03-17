@@ -12,7 +12,7 @@ namespace StarsAbove.Items.Prisms
 			Tooltip.SetDefault("[c/FF5934:Tier 2 Stellar Prism]" +
 				"\nAffix to a Stellar Nova to gain the following ability:" +
 				"\n[c/9C3B3B:Might of the King]" +
-				"\nThe Stellar Nova deals 40% increased damage to non-boss enemies, but can no longer deal critical strikes on bosses" +
+				"\nThe Stellar Nova deals 40% increased damage to non-boss enemies, but can no longer deal critical strikes to bosses" +
 				"\n" + //0
 				"");
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;

@@ -472,6 +472,8 @@ namespace StarsAbove
         public int SaltwaterWeaponDialogue = 0;
         public int ChaosWeaponDialogue = 0;
         public int ClockWeaponDialogue = 0;
+        public int NanomachineWeaponDialogue = 0;
+        public int LevinstormWeaponDialogue = 0;
 
 
         //Subworld dialogues
@@ -1053,6 +1055,8 @@ namespace StarsAbove
             tag["SaltwaterWeaponDialogue"] = SaltwaterWeaponDialogue;
             tag["ChaosWeaponDialogue"] = ChaosWeaponDialogue;
             tag["ClockWeaponDialogue"] = ClockWeaponDialogue;
+            tag["NanomachineWeaponDialogue"] = NanomachineWeaponDialogue;
+            tag["LevinstormWeaponDialogue"] = LevinstormWeaponDialogue;
 
 
             tag["observatoryDialogue"] = observatoryDialogue;
@@ -1337,6 +1341,8 @@ namespace StarsAbove
             SaltwaterWeaponDialogue = tag.GetInt("SaltwaterWeaponDialogue");
             ChaosWeaponDialogue = tag.GetInt("ChaosWeaponDialogue");
             ClockWeaponDialogue = tag.GetInt("ClockWeaponDialogue");
+            LevinstormWeaponDialogue = tag.GetInt("LevinstormWeaponDialogue");
+            NanomachineWeaponDialogue = tag.GetInt("NanomachineWeaponDialogue");
 
 
             observatoryDialogue = tag.GetInt("observatoryDialogue");
@@ -3291,6 +3297,13 @@ namespace StarsAbove
                     NewDiskDialogue = true;
 
                 }
+                if (SkeletonWeaponDialogue == 2 && NanomachineWeaponDialogue == 0)
+                {
+                    NanomachineWeaponDialogue = 1;
+                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                    NewDiskDialogue = true;
+
+                }
                 //Boss Spawn items
                 if (dioskouroiBossItemDialogue == 0 && (SkeletronPrimeDialogue == 2 || TwinsDialogue == 2 || DestroyerDialogue == 2) && vagrantDialogue == 2)
                 {
@@ -3672,6 +3685,16 @@ namespace StarsAbove
                     if (nalhaunDialogue == 2 && ArbitrationWeaponDialogue == 0)
                     {
                         ArbitrationWeaponDialogue = 1;
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                        NewDiskDialogue = true;
+                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                        return;
+
+                    }
+                    if (ArbitrationWeaponDialogue == 2 && LevinstormWeaponDialogue == 0)
+                    {
+                        LevinstormWeaponDialogue = 1;
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
@@ -7250,19 +7273,7 @@ namespace StarsAbove
         public override void PreUpdateBuffs()
         {
 
-            
-            
-            
-            for (int k = 0; k < 200; k++)
-            {
-                NPC npc = Main.npc[k];
-                if (npc.active && npc.type == NPCType<Tsukiyomi2>())
-                {
-
-                    TsukiyomiTeleport(npc);
-                    break;
-                }
-            }
+           
             for (int k = 0; k < 200; k++)
             {
                 NPC npc = Main.npc[k];
