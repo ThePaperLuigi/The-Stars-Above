@@ -565,7 +565,7 @@ namespace StarsAbove
                      $"Grants the Essence for " +
                      $"[i:{ItemType<Spatial>()}] Nanomachina Reactor. ", //Description of the listing.
                      player.NanomachineWeaponDialogue == 2, //Unlock requirements.
-                     165,
+                     167,
                      "Defeat Skeletron, then wait.")); //Corresponding dialogue ID.
                 WeaponArchiveList.Add(new WeaponArchiveListing(
                       "Skeletron Weapon", //Name of the archive listing.

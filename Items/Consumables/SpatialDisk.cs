@@ -515,7 +515,7 @@ namespace StarsAbove.Items.Consumables
 			}
 			if (modPlayer.NanomachineWeaponDialogue == 1)
 			{
-				modPlayer.chosenDialogue = 165;
+				modPlayer.chosenDialogue = 167;
 				modPlayer.NanomachineWeaponDialogue = 2;
 				activateDialogue(player);
 

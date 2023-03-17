@@ -7819,7 +7819,9 @@ namespace StarsAbove
 
 
             }//Chronoclock
-            if (chosenDialogue == 165)
+
+
+            if (chosenDialogue == 167)
             {
                 if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
                 {
