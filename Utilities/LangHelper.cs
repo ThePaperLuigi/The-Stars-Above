@@ -6,9 +6,11 @@ using Terraria.ModLoader;
 namespace StarsAbove.Utilities;
 
 internal static class LangHelper
->>>>>>> parent of beab749 (wrap method fix)
-=======
 {
+	internal static string GetTextValue(string key, params object[] args)
+	{
+		return GetModTextValue(StarsAbove.Instance, key, args);
+	}
 	private static string GetModTextValue(Mod mod, string key, params object[] args)
 	{
 		return Language.GetTextValue($"Mods.{mod.Name}.{key}", args);
@@ -69,5 +71,4 @@ internal static class LangHelper
 		//Bad memory copy
 		return stringBuilder.ToString();
 	}
->>>>>>> parent of 15de04d (small wrap fix)
 }
