@@ -7090,7 +7090,8 @@ namespace StarsAbove
                 {
                     if(Main.rand.NextBool(20))
                     {
-                        novaDialogue = LangHelper.Wrap(LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + $".10"), 20);
+                        string novaQuote = (LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + $".10"));
+                        novaDialogue = LangHelper.Wrap(novaQuote, 20);
 
                         //1 in 20 chance for a rare line to play.
                         if (chosenStarfarer == 1)
@@ -7108,7 +7109,8 @@ namespace StarsAbove
                     else
                     {
                         randomNovaDialogue = Main.rand.Next(0, 9);
-                        novaDialogue = LangHelper.Wrap(LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + $".{randomNovaDialogue + 1}"), 20);
+                        string novaQuote = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + $".{randomNovaDialogue + 1}");
+                        novaDialogue = LangHelper.Wrap(novaQuote, 20);
 
                         
 

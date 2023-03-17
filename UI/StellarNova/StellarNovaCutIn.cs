@@ -213,49 +213,7 @@ namespace StarsAbove.UI.StellarNova
 						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/AE3"), hitbox, Color.White * (modPlayer.NovaCutInOpacity));
 
 					}
-					if (modPlayer.randomNovaDialogue == 0)
-					{
-						modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.1");
-					}
-					if (modPlayer.randomNovaDialogue == 1)
-					{
-						if(modPlayer.chosenStellarNova == 1)
-                        {
-							modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.2");
-						}
-						if(modPlayer.chosenStellarNova == 2)
-                        {
-							modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.3");
-						}
-						if (modPlayer.chosenStellarNova == 3)
-						{
-							modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.4");
-						}
-						if (modPlayer.chosenStellarNova == 4)
-						{
-							modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.5");
-						}
-						if (modPlayer.chosenStellarNova == 5)
-						{
-							modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.6");
-						}
-					}
-					if (modPlayer.randomNovaDialogue == 2)
-					{
-						modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.7");
-					}
-					if (modPlayer.randomNovaDialogue == 3)
-					{
-						modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.8");
-					}
-					if (modPlayer.randomNovaDialogue == 4)
-					{
-						modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.9");
-					}
-					if (modPlayer.randomNovaDialogue == 5)
-					{
-						modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.10");
-					}
+					
 
 
 				}
@@ -283,53 +241,9 @@ namespace StarsAbove.UI.StellarNova
 						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/EE3"), hitbox, Color.White * (modPlayer.NovaCutInOpacity));
 
 					}
-					if (modPlayer.randomNovaDialogue == 0)
-					{
-						modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.1");
-					}
-					if (modPlayer.randomNovaDialogue == 1)
-					{
-						if (modPlayer.chosenStellarNova == 1)
-						{
-							modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.2");
-						}
-						if (modPlayer.chosenStellarNova == 2)
-						{
-							modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.3");
-						}
-						if (modPlayer.chosenStellarNova == 3)
-						{
-							modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.4");
-						}
-						if (modPlayer.chosenStellarNova == 4)
-						{
-							modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.5");
-						}
-						if (modPlayer.chosenStellarNova == 5)
-						{
-							modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.6");
-						}
-					}
-					if (modPlayer.randomNovaDialogue == 2)
-					{
-						modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.7");
-					}
-					if (modPlayer.randomNovaDialogue == 3)
-					{
-						modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.8");
-					}
-					if (modPlayer.randomNovaDialogue == 4)
-					{
-						modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.9");
-					}
-					if (modPlayer.randomNovaDialogue == 5)
-					{
-						modPlayer.novaDialogue = LangHelper.GetTextValue("StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.10");
-					}
-
+					
 					
 				}
-				modPlayer.novaDialogue = LangHelper.Wrap(modPlayer.novaDialogue, 20);
 				if (!disableDialogue)
                 {
 					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/NovaTextBox"), hitbox, Color.White * (modPlayer.NovaCutInOpacity));
