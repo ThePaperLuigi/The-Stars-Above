@@ -1128,13 +1128,13 @@
           {
             Asphodene:
             {
-              1: You've defeated the Brimstone Elemental. It seems they were once a revered goddess of the Underworld's mighty civilization, before Calamitas rent it asunder.
-              2: I say we confront her sooner, than later. She must be incredibly powerful, but.. We have to do something, at least.
+              1: You've defeated the Brimstone Elemental. It seems they were once a revered goddess of the Underworld's mighty civilization, before it was destroyed.
+              2: Whoever did this must be a fearsome foe, indeed. While I do like a challenge, there's no beating around the bush: we have to get stronger.
             }
             Eridani:
             {
               1: The fire-borne spirit is no more. The land of brimstone must have been powerful, to worship this spirit as such. We merely fought her at her weakest.
-              2: If what we know is correct, Calamitas was the eventual end of the brimstone kingdom. While I want to put an end to her rampages, we must become stronger first.
+              2: Whatever caused this destruction has to be stopped... but we must get stronger to do so.
             }
           }
           Calamitas:

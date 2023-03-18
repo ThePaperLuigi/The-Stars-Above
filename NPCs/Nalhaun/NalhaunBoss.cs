@@ -716,13 +716,19 @@ namespace StarsAbove.NPCs.Nalhaun
 
 				//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_TheGodsWillNotBeWatching, NPC.Center);
 
-				if (Main.netMode != NetmodeID.MultiplayerClient)
+				if (!NPC.AnyNPCs(NPCType<NalhaunBossPhase2>()))
 				{
-					if (!NPC.AnyNPCs(NPCType<NalhaunBossPhase2>()))
-					{
-						NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, NPCType<NalhaunBossPhase2>());
-						NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, NPCType<NalhaunPhase2WallsNPC>());
+					int index = NPC.NewNPC(null, (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<NalhaunBossPhase2>(), NPC.whoAmI);
+					int index2 = NPC.NewNPC(null, (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<NalhaunPhase2WallsNPC>(), NPC.whoAmI);
 
+
+					if (Main.netMode == NetmodeID.Server && index < Main.maxNPCs)
+					{
+						NetMessage.SendData(MessageID.SyncNPC, number: index);
+					}
+					if (Main.netMode == NetmodeID.Server && index < Main.maxNPCs)
+					{
+						NetMessage.SendData(MessageID.SyncNPC, number: index2);
 					}
 				}
 				/*

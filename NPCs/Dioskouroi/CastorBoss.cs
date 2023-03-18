@@ -464,6 +464,8 @@ namespace StarsAbove.NPCs.Dioskouroi
 
 				if (!NPC.AnyNPCs(NPCType<PolluxBoss>()))
 				{
+					NPC.SetEventFlagCleared(ref DownedBossSystem.downedDioskouroi, -1);
+
 					DownedBossSystem.downedDioskouroi = true;
 					if (Main.netMode == NetmodeID.Server)
 					{

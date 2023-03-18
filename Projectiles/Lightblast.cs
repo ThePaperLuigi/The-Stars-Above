@@ -10,8 +10,7 @@ namespace StarsAbove.Projectiles
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Lightblast");
-			DrawOriginOffsetY = -25;
-			DrawOffsetX = -25;
+			
 			Main.projFrames[Projectile.type] = 11;
 		}
 
@@ -30,7 +29,8 @@ namespace StarsAbove.Projectiles
 			Projectile.hostile = true;
 			Projectile.netUpdate = true;
 			AIType = ProjectileID.Bullet;
-
+			DrawOriginOffsetY = -25;
+			DrawOffsetX = -25;
 		}
 		bool finished;
 		

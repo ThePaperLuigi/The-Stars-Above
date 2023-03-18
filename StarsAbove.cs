@@ -189,7 +189,7 @@ namespace StarsAbove
 					this, //Mod Instance
 					"$Mods.StarsAbove.NPCName.Dioskouroi", //Boss Name
 					ModContent.NPCType<NPCs.Dioskouroi.PolluxBoss>(), //Boss ID
-					11.5f, //Progression
+					9.1f, //Progression
 					(Func<bool>)(() => DownedBossSystem.downedDioskouroi), //Downed boolean
 					() => true, //Availability
 					new List<int> { ModContent.ItemType<Items.Prisms.BurnishedPrism>() },//Collection
@@ -205,7 +205,7 @@ namespace StarsAbove
 				bossChecklist.Call(
 					"AddBoss", //Entry Type
 					this, //Mod Instance
-					"$Mods.StarsAbove.NPCName.Nalhaun", //Boss Name
+					"$Mods.StarsAbove.NPCName.NalhaunBoss", //Boss Name
 					ModContent.NPCType<NPCs.Nalhaun.NalhaunBossPhase2>(), //Boss ID
 					15.5f, //Progression
 					(Func<bool>)(() => DownedBossSystem.downedNalhaun), //Downed boolean
