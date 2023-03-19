@@ -87,7 +87,7 @@ namespace StarsAbove.Tiles.BossLoot
 			switch (placeStyle)
 			{
 				case 0:
-					itemType = ModContent.ItemType<Items.Placeable.BossLoot.ArbitrationBossRelicItem>();
+					itemType = ModContent.ItemType<Items.Placeable.BossLoot.DioskouroiBossRelicItem>();
 					break;
 					// Optional: Add more cases here
 			}
