@@ -262,7 +262,7 @@ namespace StarsAbove.Items
 				.AddIngredient(ItemID.ShroomiteBar, 8)
 				.AddIngredient(ItemID.HallowedBar, 4)
 				.AddIngredient(ItemID.PickaxeAxe, 1)
-				.AddIngredient(ItemID.DD2LightningAuraT3Popper, 12)
+				.AddIngredient(ItemID.DD2LightningAuraT1Popper, 1)
 				.AddIngredient(ItemType<EssenceOfLightning>())
 				.AddTile(TileID.Anvils)
 				.Register();
