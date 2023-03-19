@@ -50,14 +50,14 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 			{
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_DeathInFourActsShoot, Projectile.Center);
 
-				Projectile.NewProjectile(Projectile.GetSource_FromThis(), new Vector2(Projectile.Center.X, Projectile.Center.Y + 30), new Vector2(-7, 0), ModContent.ProjectileType<TsukiTrackingBolt>(), 20, 0f, 0);
+				Projectile.NewProjectile(Projectile.GetSource_FromThis(), new Vector2(Projectile.Center.X, Projectile.Center.Y + 30), new Vector2(-7, 0), ModContent.ProjectileType<TsukiTrackingBolt>(), 40, 0f, 0);
 
 			}
 			if (Projectile.ai[0] == 0)
 			{
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_DeathInFourActsFinish, Projectile.Center);
 
-				Projectile.NewProjectile(Projectile.GetSource_FromThis(), new Vector2(Projectile.Center.X, Projectile.Center.Y + 30), new Vector2(-7, 0), ModContent.ProjectileType<TsukiTrackingBoltStrong>(), 30, 0f, 0);
+				Projectile.NewProjectile(Projectile.GetSource_FromThis(), new Vector2(Projectile.Center.X, Projectile.Center.Y + 30), new Vector2(-7, 0), ModContent.ProjectileType<TsukiTrackingBoltStrong>(), 50, 0f, 0);
 
 			}
 		}

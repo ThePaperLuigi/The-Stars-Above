@@ -57,7 +57,7 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_Laevateinn, Projectile.Center);
 
 					int type = ProjectileType<TsukiBloodshedAttack>();
-					int damage = 50;
+					int damage = 70;
 
 					Projectile.NewProjectile(null, new Vector2(Projectile.Center.X, Projectile.Center.Y), Vector2.Zero, type, damage, 0f, Main.myPlayer, 0f, 0f);
 

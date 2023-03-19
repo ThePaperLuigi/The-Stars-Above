@@ -87,7 +87,7 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 
 				float speed = 30f;
 				int type = ProjectileType<TsukiKingsLawProjectile>();
-				int damage = 40;
+				int damage = 60;
 
 
 

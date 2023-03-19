@@ -107,11 +107,10 @@ namespace StarsAbove.NPCs.Tsukiyomi
 				new FlavorTextBestiaryInfoElement($"Mods.StarsAbove.Bestiary.{Name}")
 			});
 		}
-
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 1950000;
+			NPC.lifeMax = 1350000;
 			NPC.damage = 0;
 			NPC.defense = 15;
 			NPC.knockBackResist = 0f;
