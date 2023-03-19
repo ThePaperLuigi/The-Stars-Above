@@ -6249,7 +6249,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.ai[0] = (float)ActionState.Idle;//If the attack continues, change ActionState to PersistentCast instead
 				modPlayer.NextAttack = "";//Empty the UI text.
 				npc.localAI[3] = 0;//Reset the cast.
-				npc.ai[1] = 0;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
+				npc.ai[1] = 60;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
 				npc.ai[2] += 1;//Increment the rotation counter.
 				npc.netUpdate = true;//NetUpdate for good measure.
 
@@ -7058,7 +7058,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				float Speed = 10f;  //projectile speed
 				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-				int damage = 55;  //projectile damage
+				int damage = 75;  //projectile damage
 				int type = ProjectileType<TsukiMoonlightAttack>(); //Type of projectile
 
 				float rotation = (float)Math.Atan2(StartPosition.Y - (target.position.Y + (target.height * 0.5f)), StartPosition.X - (target.position.X + (target.width * 0.5f)));
@@ -7093,7 +7093,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.ai[0] = (float)ActionState.Idle;//If the attack continues, change ActionState to PersistentCast instead
 				modPlayer.NextAttack = "";//Empty the UI text.
 				npc.localAI[3] = 0;//Reset the cast.
-				npc.ai[1] = 0;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
+				npc.ai[1] = 60;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
 				npc.ai[2] += 1;//Increment the rotation counter.
 				npc.netUpdate = true;//NetUpdate for good measure.
 
@@ -7684,7 +7684,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
 				}
 				int type = ProjectileType<TsukiTentacleCircle>();
-				int damage = 20;
+				int damage = 50;
 				var entitySource = npc.GetSource_FromAI();
 
 
@@ -7775,7 +7775,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
 				}
 				int type = ProjectileType<TsukiTentacleCircle>();
-				int damage = 20;
+				int damage = 30;
 				var entitySource = npc.GetSource_FromAI();
 
 
