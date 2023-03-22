@@ -112,7 +112,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 			NPC.boss = true;
 			NPC.lifeMax = 1350000;
 			NPC.damage = 0;
-			NPC.defense = 15;
+			NPC.defense = 25;
 			NPC.knockBackResist = 0f;
 			NPC.width = 150;
 			NPC.height = 150;
@@ -208,7 +208,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 					{
 
 						case 0:
-							ThreadsOfFate1(P, NPC);
+                            AI_RotationNumber = 26;//ThreadsOfFate1(P, NPC);
 							break;
 						case 1:
 							Anosios1(P, NPC);
@@ -376,46 +376,46 @@ namespace StarsAbove.NPCs.Tsukiyomi
 							BuryTheLight1(P, NPC);
 							break;
 						case 56:
-							CosmicUpsurge(P, NPC);
+							CosmicUpsurgeFast(P, NPC);
 							break;
 						case 57:
-							DeathInFourActs1(P, NPC);
+							HypertunedKeyOfTheKingsLaw(P, NPC);
 							break;
 						case 58:
 							TheOnlyThingIKnowForReal1(P, NPC);
 							break;
 						case 59:
-							StygianMemento(P, NPC);
+							HypertunedStygianMemento(P, NPC);
 							break;
 						case 60:
-							GraspingVoid(P, NPC);
+							Pandaemonium1(P, NPC);
 							break;
 						case 61:
-							CarianDarkMoon1(P, NPC);
+							CarianDarkMoon2(P, NPC);
 							break;
 						case 62:
-							Takonomicon1(P, NPC);
+							Takonomicon2(P, NPC);
 							break;
 						case 63:
-							OriginStarfall(P, NPC);
+							Anosios2(P, NPC);
 							break;
 						case 64:
 							ShadowlessCerulean1(P, NPC);
 							break;
 						case 65:
-							KeyOfTheKingsLaw1(P, NPC);
+							HypertunedCelestialOpposition(P, NPC);
 							break;
 						case 66:
-							VoiceOfTheOutbreak(P, NPC);
+							HypertunedVoiceOfTheOutbreak(P, NPC);
 							break;
 						case 67:
 							BuryTheLight2(P, NPC);
 							break;
 						case 68:
-							HypertunedMeteorShower(P, NPC);
+							HypertunedDeathInFourActs(P, NPC);
 							break;
 						case 69:
-							Anosios1(P, NPC);
+							Anosios2(P, NPC);
 							break;
 						case 70:
 							Takonomicon2(P, NPC);
@@ -430,16 +430,16 @@ namespace StarsAbove.NPCs.Tsukiyomi
 							LuminaryWand(P, NPC);
 							break;
 						case 74:
-							CarianDarkMoon1(P, NPC);
+							CarianDarkMoon2(P, NPC);
 							break;
 						case 75:
 							CosmicUpsurgeFast(P, NPC);
 							break;
 						case 76:
-							DeathInFourActs1(P, NPC);
+							Pandaemonium2 (P, NPC);
 							break;
 						case 77:
-							CelestialOpposition(P, NPC);
+							HypertunedCelestialOpposition(P, NPC);
 							break;
 						case 78:
 							ThreadsOfFate2(P, NPC);
@@ -454,19 +454,19 @@ namespace StarsAbove.NPCs.Tsukiyomi
 							TheOnlyThingIKnowForReal1(P, NPC);
 							break;
 						case 82:
-							KeyOfTheKingsLaw1(P, NPC);
+							HypertunedKeyOfTheKingsLaw(P, NPC);
 							break;
 						case 83:
 							ThreadsOfFate3(P, NPC);
 							break;
 						case 84:
-							ThreadsOfFate2(P, NPC);
+							HypertunedDeathInFourActs(P, NPC);
 							break;
 						case 85:
-							Takonomicon2(P, NPC);
+							TheOnlyThingIKnowForReal1(P, NPC);
 							break;
 						case 86:
-							CarianDarkMoon1(P, NPC);
+							CarianDarkMoon2(P, NPC);
 							break;
 						case 87:
 							CaesuraOfDespair(P, NPC);
@@ -478,37 +478,37 @@ namespace StarsAbove.NPCs.Tsukiyomi
 							OriginStarfall2(P, NPC);
 							break;
 						case 90:
-							OriginStarfall(P, NPC);
+							TheOnlyThingIKnowForReal1(P, NPC);
 							break;
 						case 91:
 							LuminaryWand(P, NPC);
 							break;
 						case 92:
-							ThreadsOfFate3(P, NPC);
+							Pandaemonium1(P, NPC);
 							break;
 						case 93:
-							Anosios1(P, NPC);
+							Anosios2(P, NPC);
 							break;
 						case 94:
-							StygianMemento(P, NPC);
+							HypertunedStygianMemento(P, NPC);
 							break;
 						case 95:
-							Anosios1(P, NPC);
+							Anosios2(P, NPC);
 							break;
 						case 96:
-							VoiceOfTheOutbreak(P, NPC);
+							HypertunedVoiceOfTheOutbreak(P, NPC);
 							break;
 						case 97:
-							DeathInFourActs1(P, NPC);
+							HypertunedDeathInFourActs(P, NPC);
 							break;
 						case 98:
 							CosmicUpsurgeFast(P, NPC);
 							break;
 						case 99:
-							Takonomicon1(P, NPC);
+							Takonomicon2(P, NPC);
 							break;
 						case 100:
-							Takonomicon2(P, NPC);
+							Pandaemonium2(P, NPC);
 							break;
 						case 101:
 							TheOnlyThingIKnowForReal1(P, NPC);
@@ -517,22 +517,22 @@ namespace StarsAbove.NPCs.Tsukiyomi
 							OriginStarfall2(P, NPC);
 							break;
 						case 103:
-							CelestialOpposition(P, NPC);
+							HypertunedCelestialOpposition(P, NPC);
 							break;
 						case 104:
-							CarianDarkMoon1(P, NPC);
+							CarianDarkMoon2(P, NPC);
 							break;
 						case 105:
 							CaesuraOfDespair(P, NPC);
 							break;
 						case 106:
-							KeyOfTheKingsLaw1(P, NPC);
+							HypertunedKeyOfTheKingsLaw(P, NPC);
 							break;
 						case 107:
-							CosmicUpsurge(P, NPC);
+							CosmicUpsurgeFast(P, NPC);
 							break;
 						case 108:
-							DeathInFourActs1(P, NPC);
+							HypertunedDeathInFourActs(P, NPC);
 							break;
 						default:
 							AI_RotationNumber = 55;//She'll never go back to phase 1 mechanics. (usually the mechanic right after TsukiyomiAspectedWeapons)
@@ -633,22 +633,22 @@ namespace StarsAbove.NPCs.Tsukiyomi
 							TsukiyomiAspectedWeapons(P, NPC); //Bury The Light will always follow her voice line
 							break;
 						case 29:
-							BuryTheLight1(P, NPC);
+							CarianDarkMoon1(P, NPC);
 							break;
 						case 30:
-							CosmicUpsurge(P, NPC);
+							CosmicUpsurgeFast(P, NPC);
 							break;
 						case 31:
-							DeathInFourActs1(P, NPC);
+							KeyOfTheKingsLaw1(P, NPC);
 							break;
 						case 32:
-							TheOnlyThingIKnowForReal1(P, NPC);
+							ThreadsOfFate1(P, NPC);
 							break;
 						case 33:
 							StygianMemento(P, NPC);
 							break;
 						case 34:
-							GraspingVoid(P, NPC);
+							CosmicUpsurgeFast(P, NPC);
 							break;
 						case 35:
 							CarianDarkMoon1(P, NPC);
@@ -672,16 +672,16 @@ namespace StarsAbove.NPCs.Tsukiyomi
 							BuryTheLight2(P, NPC);
 							break;
 						case 42:
-							HypertunedMeteorShower(P, NPC);
+							CelestialOpposition(P, NPC);
 							break;
 						case 43:
 							Anosios1(P, NPC);
 							break;
 						case 44:
-							Takonomicon2(P, NPC);
+							Takonomicon1(P, NPC);
 							break;
 						case 45:
-							TheOnlyThingIKnowForReal1(P, NPC);
+							Takonomicon2(P, NPC);
 							break;
 						case 46:
 							ThreadsOfFate3(P, NPC);
@@ -735,7 +735,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 							ShadowlessCerulean1(P, NPC);
 							break;
 						case 63:
-							OriginStarfall2(P, NPC);
+							CelestialOpposition(P, NPC);
 							break;
 						case 64:
 							OriginStarfall(P, NPC);
@@ -771,7 +771,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 							Takonomicon2(P, NPC);
 							break;
 						case 75:
-							TheOnlyThingIKnowForReal1(P, NPC);
+							ThreadsOfFate2(P, NPC);
 							break;
 						case 76:
 							OriginStarfall2(P, NPC);
@@ -792,7 +792,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 							CosmicUpsurge(P, NPC);
 							break;
 						case 82:
-							DeathInFourActs1(P, NPC);
+							Anosios1(P, NPC);
 							break;
 						default:
 							AI_RotationNumber = 29;//She'll never go back to phase 1 mechanics. (usually the mechanic right after TsukiyomiAspectedWeapons)
@@ -821,8 +821,12 @@ namespace StarsAbove.NPCs.Tsukiyomi
 					if (NPC.localAI[0] == 2)
 					{
 						player.AddBuff(BuffType<Buffs.SubworldModifiers.ChaosTurmoil>(), 10);
-
+						
 					}
+                    else
+                    {
+						
+                    }
 
 					player.GetModPlayer<StarsAbovePlayer>().TsukiyomiLocation = NPC.Center;
 					player.GetModPlayer<StarsAbovePlayer>().lookAtTsukiyomi = true;
@@ -836,17 +840,17 @@ namespace StarsAbove.NPCs.Tsukiyomi
 				if (NPC.localAI[0] == 2)
 				{
 					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Angela3");
-
+					NPC.defense = 25;
 				}
 				else if (NPC.localAI[0] == 1)
 				{
 					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Angela2");
-
+					NPC.defense = 120;
 				}
 				else
                 {
 					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Angela1");
-
+					NPC.defense = 120;
 
 				}
 			}
@@ -855,12 +859,12 @@ namespace StarsAbove.NPCs.Tsukiyomi
 				if (NPC.localAI[0] != 0)
 				{
 					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TheExtreme");
-
+					NPC.defense = 5;
 				}
 				else
 				{
 					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TheExtremeIntro");
-
+					NPC.defense = 120;
 				}
 			}
 			
@@ -969,6 +973,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 					|| other.type == ModContent.ProjectileType<TsukiTakonomicon>()
 					|| other.type == ModContent.ProjectileType<TsukiShadowlessCerulean>()
 					|| other.type == ModContent.ProjectileType<TsukiDeathInFourActs>()
+					|| other.type == ModContent.ProjectileType<TsukiDeathInFourActs2>()
 					|| other.type == ModContent.ProjectileType<TsukiLuminaryWand>()
 					|| other.type == ModContent.ProjectileType<TsukiKeyOfTheKingsLaw>()
 					&& other.alpha < 1))
@@ -1107,10 +1112,13 @@ namespace StarsAbove.NPCs.Tsukiyomi
 
 				SubworldSystem.Exit();
 
+				if(modPlayer.edingenesisquasar == 0)
+                {
+					modPlayer.edingenesisquasar = 1;
 
+				}
 				if (modPlayer.tsukiyomiDialogue == 0)
 				{
-					modPlayer.edingenesisquasar = 1;
 					if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
 					modPlayer.tsukiyomiDialogue = 1;
 				}

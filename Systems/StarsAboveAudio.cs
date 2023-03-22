@@ -549,6 +549,10 @@ namespace StarsAbove
 		{
 
 		};
+		public static readonly SoundStyle Tsukiyomi_ThousandStars = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/ThousandStars")
+		{
+
+		};
 		//Aspected weapon voice lines.
 		public static readonly SoundStyle Tsukiyomi_CarianDarkMoon = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/CarianDarkMoon")
 		{
