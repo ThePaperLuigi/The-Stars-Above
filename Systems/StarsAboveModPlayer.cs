@@ -3132,6 +3132,13 @@ namespace StarsAbove
 
 
                 }
+                if(tsukiyomiDialogue >= 1)
+                {
+                    if(edingenesisquasar == 0)
+                    {
+                        edingenesisquasar = 1;
+                    }
+                }
 
 
                 if (NPC.downedMechBoss2 && DestroyerDialogue == 0)//The Destroyer
