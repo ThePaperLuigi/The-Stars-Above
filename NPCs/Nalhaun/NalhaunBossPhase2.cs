@@ -785,7 +785,11 @@ namespace StarsAbove.NPCs.Nalhaun
 			//NPC.position.Y = Main.player[NPC.target].position.Y-160;
 			//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_NalhaunIntroQuote, NPC.Center);
 			NPC.netUpdate = true;
-			NPC.dontTakeDamage = true;
+			if(Main.netMode == NetmodeID.SinglePlayer)
+			{
+				NPC.dontTakeDamage = true;
+
+			}
 			for (int i = 0; i < Main.maxPlayers; i++)
 			{
 				Player player = Main.player[i];
