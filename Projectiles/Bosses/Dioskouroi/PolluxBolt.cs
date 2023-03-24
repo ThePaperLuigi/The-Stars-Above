@@ -70,7 +70,13 @@ namespace StarsAbove.Projectiles.Bosses.Dioskouroi
 		}
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
-        {
+		{
+			if (target.GetModPlayer<BossPlayer>().temperatureGaugeCold > 0)
+			{
+				target.GetModPlayer<BossPlayer>().temperatureGaugeCold += 10;
+
+			}
+
 			target.AddBuff(BuffID.Frostburn, 60);
             base.OnHitPlayer(target, damage, crit);
         }

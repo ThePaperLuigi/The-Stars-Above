@@ -177,6 +177,12 @@ namespace StarsAbove.Projectiles.Bosses.Dioskouroi
 		}
 		public override void OnHitPlayer(Player target, int damage, bool crit)
 		{
+			if (target.GetModPlayer<BossPlayer>().temperatureGaugeHot > 0)
+			{
+				target.GetModPlayer<BossPlayer>().temperatureGaugeHot += 10;
+
+			}
+
 			target.AddBuff(BuffID.OnFire, 60);
 			base.OnHitPlayer(target, damage, crit);
 		}

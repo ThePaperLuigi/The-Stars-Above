@@ -60,7 +60,18 @@ namespace StarsAbove.Projectiles.Bosses.Dioskouroi
 
 			return false;
         }
-        public override void AI() {
+		public override void OnHitPlayer(Player target, int damage, bool crit)
+		{
+			if(target.GetModPlayer<BossPlayer>().temperatureGaugeCold > 0)
+            {
+				target.GetModPlayer<BossPlayer>().temperatureGaugeCold += 20;
+
+			}
+
+			target.AddBuff(BuffID.Frostburn, 60);
+			base.OnHitPlayer(target, damage, crit);
+		}
+		public override void AI() {
 
 			Projectile.timeLeft = 10;
 			Projectile.ai[1]--;

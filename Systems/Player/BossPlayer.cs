@@ -34,6 +34,9 @@ namespace StarsAbove
         public bool CastorBarActive = false;
         public bool PolluxBarActive = false;
 
+        public float temperatureGaugeHot;
+        public float temperatureGaugeCold;
+
         public static bool disableBossAggro = false;
         public int hasBossAggro = 0;
 
@@ -146,7 +149,60 @@ namespace StarsAbove
             WhiteAlpha = Math.Clamp(WhiteAlpha, 0, 1);
 
             VideoAlpha = Math.Clamp(VideoAlpha, 0, 1);
-            //Main.NewText(Language.GetTextValue($"Black Alpha{BlackAlpha} WhiteAlpha {WhiteAlpha}"), 220, 100, 247);
+
+            for (int k = 0; k < 200; k++)
+            {
+                NPC npc = Main.npc[k];
+                if (npc.active && (npc.type == NPCType<NPCs.Dioskouroi.DioskouroiWallsNPC>()))
+                {
+                    //Closer to Pollux
+                    if(Player.position.X > npc.position.X)
+                    {
+                        if(temperatureGaugeHot <= 0)
+                        {
+                            temperatureGaugeCold += 0.3f;
+                        }
+                        else
+                        {
+                            temperatureGaugeHot -= 0.3f;
+
+                        }
+                    }
+                    //Closer to Castor
+                    if (Player.position.X < npc.position.X)
+                    {
+                        if (temperatureGaugeCold <= 0)
+                        {
+                            temperatureGaugeHot += 0.3f;
+                        }
+                        else
+                        {
+                            temperatureGaugeCold -= 0.3f;
+
+                        }
+                    }
+                    break;
+                }
+
+            }
+            temperatureGaugeCold = Math.Clamp(temperatureGaugeCold,0, 100);
+            temperatureGaugeHot = Math.Clamp(temperatureGaugeHot, 0, 100);
+
+            if (!NPC.AnyNPCs(NPCType<NPCs.Dioskouroi.CastorBoss>()) && !NPC.AnyNPCs(NPCType<NPCs.Dioskouroi.PolluxBoss>()))
+            {
+                temperatureGaugeHot = 0;
+                temperatureGaugeCold = 0;
+            }
+            if(temperatureGaugeHot >= 90)
+            {
+                Player.AddBuff(BuffID.OnFire, 10);
+            }
+            if(temperatureGaugeCold >= 90)
+            {
+                Player.AddBuff(BuffID.Frostburn, 10);
+            }
+
+            //Main.NewText(Language.GetTextValue($"H{temperatureGaugeHot} C{temperatureGaugeCold}"), 220, 100, 247);
         }
         public override void PostUpdate()
         {

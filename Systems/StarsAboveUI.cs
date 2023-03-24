@@ -57,6 +57,9 @@ namespace StarsAbove
 		private UserInterface _EmotionGaugeUserInterface;
 		internal EmotionGauge EmotionGauge;
 
+		private UserInterface _TemperatureGaugeUserInterface;
+		internal TemperatureGauge TemperatureGauge;
+
 		private UserInterface _OverdriveGaugeUserInterface;
 		internal OverdriveGauge OverdriveGauge;
 
@@ -224,6 +227,10 @@ namespace StarsAbove
 				EmotionGauge = new EmotionGauge();
 				_EmotionGaugeUserInterface = new UserInterface();
 				_EmotionGaugeUserInterface.SetState(EmotionGauge);
+
+				TemperatureGauge = new TemperatureGauge();
+				_TemperatureGaugeUserInterface = new UserInterface();
+				_TemperatureGaugeUserInterface.SetState(TemperatureGauge);
 
 				OverdriveGauge = new OverdriveGauge();
 				_OverdriveGaugeUserInterface = new UserInterface();
@@ -416,6 +423,8 @@ namespace StarsAbove
 			_EternalGaugeUserInterface?.Update(gameTime);
 			_UmbraGaugeUserInterface?.Update(gameTime);
 			_EmotionGaugeUserInterface?.Update(gameTime);
+			_TemperatureGaugeUserInterface?.Update(gameTime);
+
 			_OverdriveGaugeUserInterface?.Update(gameTime);
 
 			_BlackSilenceGaugeUserInterface?.Update(gameTime);
@@ -623,6 +632,15 @@ namespace StarsAbove
 					delegate
 					{
 						_EmotionGaugeUserInterface.Draw(Main.spriteBatch, new GameTime());
+						return true;
+					},
+					InterfaceScaleType.UI)
+				);
+				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+					"StarsAbove: Temperature Gauge",
+					delegate
+					{
+						_TemperatureGaugeUserInterface.Draw(Main.spriteBatch, new GameTime());
 						return true;
 					},
 					InterfaceScaleType.UI)
