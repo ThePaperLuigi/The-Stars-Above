@@ -208,7 +208,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 					{
 
 						case 0:
-                            AI_RotationNumber = 26;//ThreadsOfFate1(P, NPC);
+                            ThreadsOfFate1(P, NPC);
 							break;
 						case 1:
 							Anosios1(P, NPC);
