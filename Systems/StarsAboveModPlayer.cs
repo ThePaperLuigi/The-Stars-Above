@@ -1747,7 +1747,7 @@ namespace StarsAbove
                     }
                 }
                 onEnemyHitWithNova(target, 5, ref damage, ref crit);
-                target.AddBuff(BuffType<Buffs.AstarteDriverEnemyCooldown>(), 20);
+                target.AddBuff(BuffType<Buffs.AstarteDriverEnemyCooldown>(), 60);
             }
             if (target.HasBuff(BuffType<Buffs.Starblight>()) && umbralentropy == 2)
             {
@@ -2323,7 +2323,7 @@ namespace StarsAbove
                     }
                 }
                 onEnemyHitWithNova(target, 5, ref damage, ref crit);
-                target.AddBuff(BuffType<Buffs.AstarteDriverEnemyCooldown>(), 20);
+                target.AddBuff(BuffType<Buffs.AstarteDriverEnemyCooldown>(), 60);
             }
         }
 
@@ -4164,12 +4164,12 @@ namespace StarsAbove
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "allsentinel"))
                     {
-                        baseNovaDamageAdd = 39000;
+                        baseNovaDamageAdd = 24000;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "devourerofgods"))
                     {
                         stellarGaugeMax++;
-                        baseNovaDamageAdd = 62500;
+                        baseNovaDamageAdd = 27500;
                         if (stellarGaugeUpgraded != 1)
                         {
                             if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array reaches new heights!"), 255, 0, 115); }
@@ -4178,11 +4178,11 @@ namespace StarsAbove
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "yharon"))
                     {
-                        baseNovaDamageAdd = 73000;
+                        baseNovaDamageAdd = 33000;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "supremecalamitas"))
                     {
-                        baseNovaDamageAdd = 97500;
+                        baseNovaDamageAdd = 47500;
                     }
                 }
 
