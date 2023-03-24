@@ -37,7 +37,7 @@ namespace StarsAbove.Items.Consumables
 		// We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
 		public override bool CanUseItem(Player player) {
 
-			return !NPC.AnyNPCs(NPCType<NPCs.Nalhaun.NalhaunBoss>()) && SubworldSystem.Current == null;
+			return !NPC.AnyNPCs(NPCType<NPCs.Nalhaun.NalhaunBoss>()) && !NPC.AnyNPCs(NPCType<NPCs.Nalhaun.NalhaunBossPhase2>()) && SubworldSystem.Current == null;
 		}
 
 		public override bool? UseItem(Player player) {
