@@ -2744,7 +2744,7 @@
               7: Accept your fate.
               8: Your fate was sealed when you rose against us.
               9: I'll show you what I can really do.
-              10: Wait, which one were we using again? ...Was that it?
+              10: Wait, which one were we using again?
             }
             2:
             {
@@ -6817,7 +6817,7 @@
         }
         Dioskouroi:
         {
-          SpawnInfo: Duel(?) these powerful twin demons through defeating Golem and obtaining the Twincrux Pendant.
+          SpawnInfo: Duel(?) these powerful twin demons through defeating a mechanical boss and obtaining the Twincrux Pendant.
           DespawnMessage: Without binds, the Dioskouroi move their conflict elsewhere...
         }
         Arbitration:
