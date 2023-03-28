@@ -589,7 +589,7 @@ namespace StarsAbove
                     Player.HealEffect(5);
                     Player.ManaEffect(5);
                     nanomachinaGauge++;
-                    Player.AddBuff(BuffType<NanomachinaLeechCooldown>(), 60);
+                    Player.AddBuff(BuffType<NanomachinaLeechCooldown>(), 360);
                 }
 
                 
@@ -642,7 +642,7 @@ namespace StarsAbove
                     Player.HealEffect(5);
                     Player.ManaEffect(5);
                     nanomachinaGauge++;
-                    Player.AddBuff(BuffType<NanomachinaLeechCooldown>(), 60);
+                    Player.AddBuff(BuffType<NanomachinaLeechCooldown>(), 360);
                 }
 
                

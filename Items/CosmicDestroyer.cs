@@ -33,11 +33,11 @@ namespace StarsAbove.Items
 			
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
 			{
-				Item.damage = 642;
+				Item.damage = 530;
 			}
 			else
 			{
-				Item.damage = 338;
+				Item.damage = 270;
 			}
 
 			Item.DamageType = DamageClass.Ranged;

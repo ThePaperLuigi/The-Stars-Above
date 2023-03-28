@@ -32,7 +32,7 @@ namespace StarsAbove.Items
 			}
 			else
 			{
-				Item.damage = 320;
+				Item.damage = 222;
 			}
 			Item.DamageType = ModContent.GetInstance<Systems.CelestialDamageClass>(); // Makes our item use our custom damage type.
 

@@ -21,6 +21,10 @@
         {
           Clash: The Dioskouroi clash, equalizing their HP!
         }
+        Tsukiyomi:
+        {
+          FinalPhase: The Starfarer before you unleashes her true might, empowering her attacks but leaving her defenses open!
+        }
         KissOfDeath:
         {
           Skyfish: Skyfish deployed!
@@ -704,7 +708,7 @@
             Asphodene:
             {
               1: So someone went and made two Eyes instead of one? Good for them, but in my opinion, the design is kind of ruined already.
-              2: If you're going to make a robot eye, try and hide the obvious weak spot where the iris is. Well, I don't create giant evil robotic eyes, so maybe they know something..?
+              2: If you're going to make a robot eye, try and hide the obvious weak spot where the iris is. Well, I don't create giant evil robotic eyes, so they got me there.
               3: It looks as if another upgrade is available in the Stellar Array. That's it for now.
               4: That's about all for now.
             }
@@ -2998,7 +3002,7 @@
         DisableCalamityWeaponBuffs:
         {
           Label: Disable global damage modifiers for mod compatibility
-          Tooltip: Disables the 20% increase to Aspected Weapon damage when the Calamity Mod is enabled.
+          Tooltip: Disables the 30% increase to Aspected Weapon damage when the Calamity Mod is enabled.
         }
         DisableWeaponRestrictions:
         {
@@ -6822,12 +6826,12 @@
         }
         Arbitration:
         {
-          SpawnInfo: This foe embodies true fear... Discover this foe through visiting an Anomaly location with the Astrolabe's help.
+          SpawnInfo: This foe embodies true fear... Discover this foe through visiting an Anomaly location with the Astrolabe's help. Due to this boss being fought within a Subworld under normal conditions, Boss Checklist progress must be manual.
           DespawnMessage: ...
         }
         TsukiyomiBoss:
         {
-          SpawnInfo: The time has finally come. Craft all the Mnemonic Traces together with the Celestriad Root to create the Mnemonic Sigil, and use it to be taken to Tsukiyomi's boss arena.
+          SpawnInfo: The time has finally come. Craft all the Mnemonic Traces together with the Celestriad Root to create the Mnemonic Sigil, and use it to be taken to Tsukiyomi's boss arena. Due to this boss being fought within a Subworld under normal conditions, Boss Checklist progress must be manual.
           DespawnMessage: ...
         }
       }

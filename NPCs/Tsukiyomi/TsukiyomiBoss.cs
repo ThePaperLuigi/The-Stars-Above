@@ -1262,7 +1262,55 @@ namespace StarsAbove.NPCs.Tsukiyomi
 			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
 		}
-		//Draw the portal
-		
-	}
+
+        public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+			//Zenith resistance.
+			if(projectile.type == ProjectileID.FinalFractal)
+            {
+				damage = (int)(damage * 0.2f);
+            }
+
+			if (Main.expertMode)
+			{
+				if (NPC.localAI[0] == 2)
+				{
+					//Phase 3 (Final Phase)
+
+				}
+				else if (NPC.localAI[0] == 1)
+				{
+					//Phase 2
+					damage = (int)(damage * 0.7f);
+
+				}
+				else
+				{
+					//Phase 1
+					damage = (int)(damage * 0.7f);
+
+				}
+			}
+			else
+			{
+				if (NPC.localAI[0] != 0)
+				{
+					//Phase 2
+					damage = (int)(damage * 0.7f);
+
+				}
+				else
+				{
+					//Phase 1
+					damage = (int)(damage * 0.7f);
+
+				}
+			}
+		}
+        public override void ModifyHitByItem(Player player, Item item, ref int damage, ref float knockback, ref bool crit)
+        {
+
+        }
+
+    }
 }

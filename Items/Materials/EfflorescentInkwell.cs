@@ -11,6 +11,7 @@ namespace StarsAbove.Items.Materials
 			DisplayName.SetDefault("Efflorescent Inkwell");
 			Tooltip.SetDefault("A bouquet of magical pigments" +
 				"\nUtilized to craft 'Penthesilea's Muse'");
+			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;
 		}

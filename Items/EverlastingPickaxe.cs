@@ -38,11 +38,11 @@ namespace StarsAbove.Items
 		{
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
 			{
-				Item.damage = 280;
+				Item.damage = 200;
 			}
 			else
 			{
-				Item.damage = 139;
+				Item.damage = 99;
 			}
 			
 			Item.DamageType = ModContent.GetInstance<Systems.CelestialDamageClass>();

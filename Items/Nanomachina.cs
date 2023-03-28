@@ -27,9 +27,10 @@ namespace StarsAbove.Items
 			DisplayName.SetDefault("Nanomachina Reactor");
 			Tooltip.SetDefault("" +
 				"Use this item when at max Mana to consume all Mana and gain the buff [c/FF0046:Realized Nanomachina] for 20 seconds (12 second cooldown)" +
-				"\nWhile [c/FF0046:Realized Nanomachina] is active: gain a barrier proportional to 40% of Max HP, gain 10% damage reduction, and gain knockback immunity" +
+				"\nWhile [c/FF0046:Realized Nanomachina] is active: gain a barrier proportional to 20% of Max HP (Max 100 HP), gain 10% damage reduction, and gain knockback immunity" +
+                "\nAdditionally, for 2 seconds after activation, gain an additional 40% damage reduction" +
                 "\nTaking damage will subtract from the barrier, negating oncoming damage and granting 1 second of immunity" +
-				"\nWhile [c/FF0046:Realized Nanomachina] is active, striking foes will restore 5 HP and 5 Mana (1 second cooldown)" +
+				"\nWhile [c/FF0046:Realized Nanomachina] is active, striking foes will restore 5 HP and 5 Mana (6 second cooldown)" +
 				"\nAdditionally, striking enemies will slowly fill the [c/A00F0F:Nanomachine Gauge]; once full, automatically restore the duration and barrier HP of [c/FF0046:Realized Nanomachina]" +
 				"\nDefeating foes increases the [c/A00F0F:Nanomachine Gauge] by 5%" +
 				"\nWhen [c/FF0046:Realized Nanomachina] ends, the [c/A00F0F:Nanomachine Gauge] is emptied (Will also empty out of combat)" +
@@ -80,13 +81,15 @@ namespace StarsAbove.Items
         {
 			player.AddBuff(BuffType<RealizedNanomachinaBuff>(), 1200);
 			player.AddBuff(BuffType<RealizedNanomachinaCooldownBuff>(), 720);
+			player.AddBuff(BuffType<RealizedNanomachinaActivation>(), 120);
+
 
 			SoundEngine.PlaySound(StarsAboveAudio.SFX_GuntriggerParryPrep, player.Center);
 
 			Projectile.NewProjectile(null, player.Center, Vector2.Zero, ProjectileType<NanomachinaShieldProjectile>(), 0, 0, player.whoAmI);
 			player.statMana = 0;
 			player.manaRegenDelay = 600;
-			player.GetModPlayer<WeaponPlayer>().nanomachinaShieldHPMax = (int)(player.statLifeMax2 * 0.4);
+			player.GetModPlayer<WeaponPlayer>().nanomachinaShieldHPMax = (int)MathHelper.Min((float)(player.statLifeMax2 * 0.2), 100f);
 			player.GetModPlayer<WeaponPlayer>().nanomachinaShieldHP = player.GetModPlayer<WeaponPlayer>().nanomachinaShieldHPMax;
 
 

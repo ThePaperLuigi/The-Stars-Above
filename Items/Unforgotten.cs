@@ -38,7 +38,7 @@ namespace StarsAbove.Items
 
         public override void SetDefaults()
         {
-            Item.damage = 236;
+            Item.damage = 189;
             Item.DamageType = DamageClass.Melee;
             Item.width = 65;
             Item.height = 70;

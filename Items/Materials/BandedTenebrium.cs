@@ -13,6 +13,7 @@ namespace StarsAbove.Items.Materials
                 "" +
                 "\n'Cold to the heat'" +
 				"");
+			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;
 		}

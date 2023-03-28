@@ -158,7 +158,7 @@ namespace StarsAbove
 					this, //Mod Instance
 					"$Mods.StarsAbove.NPCName.WarriorOfLight", //Boss Name
 					ModContent.NPCType<NPCs.WarriorOfLight>(), //Boss ID
-					18.5f, //Progression
+					18.1f, //Progression
 					(Func<bool>)(() => DownedBossSystem.downedWarrior), //Downed boolean
 					() => true, //Availability
 					new List<int> { ModContent.ItemType<Items.Prisms.PrismOfTheRuinedKing>(), ModContent.ItemType<Items.Prisms.PrismOfTheCosmicPhoenix>(), ModContent.ItemType<Items.Materials.DullTotemOfLight>(), ModContent.ItemType<Items.Materials.TotemOfLightEmpowered>() },//Collection
@@ -189,7 +189,7 @@ namespace StarsAbove
 					this, //Mod Instance
 					"$Mods.StarsAbove.NPCName.Dioskouroi", //Boss Name
 					ModContent.NPCType<NPCs.Dioskouroi.PolluxBoss>(), //Boss ID
-					13.1f, //Progression
+					11.9f, //Progression
 					(Func<bool>)(() => DownedBossSystem.downedDioskouroi), //Downed boolean
 					() => true, //Availability
 					new List<int> { ModContent.ItemType<Items.Prisms.GeminiPrism>() },//Collection
@@ -207,7 +207,7 @@ namespace StarsAbove
 					this, //Mod Instance
 					"$Mods.StarsAbove.NPCName.NalhaunBoss", //Boss Name
 					ModContent.NPCType<NPCs.Nalhaun.NalhaunBossPhase2>(), //Boss ID
-					17.5f, //Progression
+					17.1f, //Progression
 					(Func<bool>)(() => DownedBossSystem.downedNalhaun), //Downed boolean
 					() => true, //Availability
 					new List<int> { ModContent.ItemType<Items.Prisms.BurnishedPrism>() },//Collection
@@ -225,7 +225,7 @@ namespace StarsAbove
 					this, //Mod Instance
 					"$Mods.StarsAbove.NPCName.Penthesilea", //Boss Name
 					ModContent.NPCType<NPCs.Penthesilea>(), //Boss ID
-					12.5f, //Progression
+					14.1f, //Progression
 					(Func<bool>)(() => DownedBossSystem.downedPenth), //Downed boolean
 					() => true, //Availability
 					new List<int> {ModContent.ItemType<Items.Prisms.PaintedPrism>() },//Collection
@@ -253,7 +253,7 @@ namespace StarsAbove
 					this, //Mod Instance
 					"$Mods.StarsAbove.NPCName.TsukiyomiBoss", //Boss Name
 					ModContent.NPCType<NPCs.Tsukiyomi.TsukiyomiBoss>(), //Boss ID
-					18.9f, //Progression
+					18.3f, //Progression
 					(Func<bool>)(() => DownedBossSystem.downedTsuki), //Downed boolean
 					(Func<bool>)(() => DownedBossSystem.downedWarrior), //Availability
 					new List<int> { ModContent.ItemType<Items.Consumables.SpatialMemoriam>() },//Collection

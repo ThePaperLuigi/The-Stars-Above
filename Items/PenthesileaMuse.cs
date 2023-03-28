@@ -44,7 +44,7 @@ namespace StarsAbove.Items
 			}
 			else
 			{
-				Item.damage = 255;
+				Item.damage = 211;
 			}
 			
 			//The damage of your weapon

@@ -17,6 +17,8 @@ namespace StarsAbove.Items.Consumables
 	{
 		public override void SetStaticDefaults()
 		{
+			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+
 			DisplayName.SetDefault("Mnemonic Sigil");
 			Tooltip.SetDefault("The combined memories of worlds defeated by the First Starfarer" +
 				"\nCan be used to be taken to the [c/7FC1EF:Eternal Confluence]" +

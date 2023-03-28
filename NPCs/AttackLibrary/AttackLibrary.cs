@@ -5741,7 +5741,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-
+				
 				for (int i = 0; i < Main.maxPlayers; i++)
 				{
 					Player player = Main.player[i];
@@ -5756,11 +5756,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				}
 				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_TakeThisOutside, npc.Center);
 
-				if (Main.netMode != NetmodeID.MultiplayerClient)
-				{
-
-
-				}
+				
 
 
 				return;
@@ -5792,7 +5788,12 @@ namespace StarsAbove.NPCs.AttackLibrary
 					npc.Center = moveTo;
 
 				}
-				
+
+				if (!Main.expertMode && !Main.masterMode)
+				{
+					if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CombatText.Tsukiyomi.FinalPhase"), 241, 255, 180); }
+				}
+
 				//After the attack ends, we do some cleanup.
 				ResetAttack(target, npc);
 
@@ -5830,6 +5831,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
+
 
 				for (int i = 0; i < Main.maxPlayers; i++)
 				{
@@ -5873,6 +5875,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;
 				#endregion
 
+				if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CombatText.Tsukiyomi.FinalPhase"), 241, 255, 180); }
 
 				//After the attack ends, we do some cleanup.
 				ResetAttack(target, npc);
@@ -7544,7 +7547,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
 				}
 
-				float Speed = 30f;  //projectile speed
+				float Speed = 20f;  //projectile speed
 				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
 				int damage = 55;  //projectile damage
 				int type = ProjectileType<TsukiMoonlightAttack>(); //Type of projectile
