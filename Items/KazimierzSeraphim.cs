@@ -14,7 +14,7 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Attacks with this weapons wing in a wide arc" +
+			Tooltip.SetDefault("Attacks with this weapons swing in a wide arc" +
 				"\nHolding this weapon will conjure a [c/FF8B00:Brilliant Spark] to orbit you, dealing contact damage" +
 				"\nStriking foes with this weapon grants stacks of [c/F1AF42:Radiance] (Up to 10)" +
 				"\nCritical strikes grant two stacks of [c/F1AF42:Radiance]" +

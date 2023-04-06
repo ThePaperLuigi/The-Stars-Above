@@ -64,8 +64,12 @@ namespace StarsAbove
         public bool VagrantActive = false; //This can be replaced with a npc check.
         public bool LostToVagrant = false; //This can probably be removed.
 
-        
+        public static bool DisableDamageModifier;
 
+        float bossReductionMod;
+        float decayRate = 0.8f;
+        float stress;
+        float damageReductionAmount;
 
         public override void PreUpdate()
         {
@@ -160,11 +164,11 @@ namespace StarsAbove
                     {
                         if(temperatureGaugeHot <= 0)
                         {
-                            temperatureGaugeCold += 0.3f;
+                            temperatureGaugeCold += 0.4f;
                         }
                         else
                         {
-                            temperatureGaugeHot -= 0.3f;
+                            temperatureGaugeHot -= 0.4f;
 
                         }
                     }
@@ -173,11 +177,11 @@ namespace StarsAbove
                     {
                         if (temperatureGaugeCold <= 0)
                         {
-                            temperatureGaugeHot += 0.3f;
+                            temperatureGaugeHot += 0.4f;
                         }
                         else
                         {
-                            temperatureGaugeCold -= 0.3f;
+                            temperatureGaugeCold -= 0.4f;
 
                         }
                     }
@@ -229,8 +233,82 @@ namespace StarsAbove
             PolluxBarActive = false;
 
         }
+        public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
+        {
 
+            BossDamageModifier(target,ref damage);
+        }
+        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            //Main.NewText(Language.GetTextValue($"Damage Pre-Modifier: {damage}"), 60, 170, 247);
 
+            BossDamageModifier(target,ref damage);
+        }
+
+        
+
+        private void BossDamageModifier(NPC npc, ref int damage)
+        {
+            if (!DisableDamageModifier)
+            {
+                bossReductionMod = 0;
+                if (npc.type == ModContent.NPCType<DummyEnemy>())
+                {
+                    bossReductionMod = 500;
+                }
+                if (npc.type == ModContent.NPCType<VagrantBoss>())
+                {
+                    bossReductionMod = 700;
+
+                }
+                if (npc.type == ModContent.NPCType<CastorBoss>() || npc.type == ModContent.NPCType<PolluxBoss>())
+                {
+                    bossReductionMod = 1000;
+
+                }
+                if (npc.type == ModContent.NPCType<Penthesilea>())
+                {
+                    bossReductionMod = 1100;
+
+                }
+                if (npc.type == ModContent.NPCType<NalhaunBoss>() || npc.type == ModContent.NPCType<NalhaunBossPhase2>())
+                {
+                    bossReductionMod = 1400;
+
+                }
+                if (npc.type == ModContent.NPCType<WarriorOfLight>())
+                {
+                    bossReductionMod = 1800;
+
+                }
+                if (npc.type == ModContent.NPCType<Arbitration>())
+                {
+                    bossReductionMod = 500;
+
+                }
+                if (npc.type == ModContent.NPCType<TsukiyomiBoss>())
+                {
+                    bossReductionMod = 2000;
+
+                }
+                if (bossReductionMod > 0)
+                {
+                    decayRate = 0.8f;
+                    //Main.NewText(Language.GetTextValue($"Damage Pre-Modifier: {damage}"), 60, 170, 247);
+
+                    damage = (int)(damage * (1 - damageReductionAmount));
+                    stress += damage;
+                    stress *= decayRate;
+                    damageReductionAmount = (float)Math.Tanh(stress / bossReductionMod);
+
+                    //Main.NewText(Language.GetTextValue($"Damage: {damage}"), 120, 100, 147);
+                    //Main.NewText(Language.GetTextValue($"Stress: {stress}"), 150, 150, 247);
+                    //Main.NewText(Language.GetTextValue($"Damage Reduction: {damageReductionAmount}"), 220, 100, 247);
+                }
+
+                
+            }
+        }
         private void VagrantTeleport(NPC npc)
         {
             if (Player.whoAmI == Main.myPlayer)

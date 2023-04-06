@@ -1268,7 +1268,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 			//Zenith resistance.
 			if(projectile.type == ProjectileID.FinalFractal)
             {
-				damage = (int)(damage * 0.2f);
+				//damage = (int)(damage * 0.2f);
             }
 
 			if (Main.expertMode)

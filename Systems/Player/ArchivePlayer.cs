@@ -607,6 +607,13 @@ namespace StarsAbove
                       131,
                       "Defeat the Wall of Flesh, then wait.")); //Corresponding dialogue ID.
                 WeaponArchiveList.Add(new WeaponArchiveListing(
+                     "Guide Voodoo Doll Weapon", //Name of the archive listing.
+                     $"Grants the Essence for " +
+                     $"[i:{ItemType<Spatial>()}] Sanguine Despair.", //Description of the listing.
+                     player.SanguineWeaponDialogue == 2, //Unlock requirements.
+                     168,
+                     "Find a Guide Voodoo Doll on a Hardcore character.")); //Corresponding dialogue ID.
+                WeaponArchiveList.Add(new WeaponArchiveListing(
                     "Hallowed Biome Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Aurum Edge. ", //Description of the listing.

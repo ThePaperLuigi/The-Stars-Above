@@ -189,6 +189,7 @@ namespace StarsAbove
 			//Stars Above v1.4
 			ModContent.ItemType<Nanomachina>(),
 			ModContent.ItemType<LevinstormAxe>(),
+			ModContent.ItemType<SanguineDespair>(),
 
 
 			ModContent.ItemType<EssenceOfAdagium>(),
@@ -232,13 +233,12 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfTheTimeless>(),
 			ModContent.ItemType<EssenceOfPiracy>(),
 			ModContent.ItemType<EssenceOfAbsoluteChaos>(),
-
 			ModContent.ItemType<EssenceOfTheWatch>(),
-
-
 			ModContent.ItemType<EssenceOfTheBehemothTyphoon>(),
 			ModContent.ItemType<EssenceOfLightning>(),
 			ModContent.ItemType<EssenceOfNanomachines>(),
+			ModContent.ItemType<EssenceOfDespair>(),
+
 		};
 
 		public List<int> Prisms = new List<int>() {
@@ -417,9 +417,8 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfTheTimeless>(),
 			ModContent.ItemType<EssenceOfPiracy>(),
 			ModContent.ItemType<EssenceOfAbsoluteChaos>(),
-
 			ModContent.ItemType<EssenceOfTheWatch>(),
-
+			ModContent.ItemType<EssenceOfDespair>(),
 			ModContent.ItemType<EssenceOfTheBehemothTyphoon>(),
 			ModContent.ItemType<EssenceOfLightning>(),
 			ModContent.ItemType<EssenceOfNanomachines>(),

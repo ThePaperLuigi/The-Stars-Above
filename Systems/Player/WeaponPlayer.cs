@@ -3386,7 +3386,7 @@ namespace StarsAbove
             
             if (Player.HasBuff(BuffType<TimelessPotential>()))
             {
-                if (damage > Player.statLife)
+                if (damage > Player.statLife && !Player.HasBuff(BuffType<TimelessPotentialCooldown>()))
                 {
                     Player.statLife = 50;
                     Player.AddBuff(BuffType<Invincibility>(), 120);

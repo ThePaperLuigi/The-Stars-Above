@@ -3,6 +3,10 @@
   {
     StarsAbove:
     {
+      DeathReason:
+      {
+        SanguineDespair:  drained themselves of all life.
+      }
       CombatText:
       {
         Adornment: 
@@ -278,13 +282,13 @@
           FlashFreeze:
           {
             Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Flash Freeze']"
-            Description: Landing a critical strike will cause foes to explode, taking half the original damage. Additionally, damaging snowflakes will spew from the target, spreading the damage. 4 second cooldown.
+            Description: Landing a critical strike will cause foes to explode, taking half the original damage. Additionally, damaging snowflakes will spew from the target, spreading the damage. 8 second cooldown.
             Unlock: "[c/9D9D9D:Locked:] Defeat Penthesilea in Expert Mode"
           }
           MysticForging:
           {
             Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Mystic Forging']"
-            Description: Consume 5 mana when hitting a foe with an attack to deal 8% extra damage.
+            Description: Critical strike chance is converted into on-hit damage at a 1%:0.5% ratio (Ignores critical strike chance above 100%); Critical strikes are disabled unless triggered by a bonus effect.
             Unlock: "[c/9D9D9D:Locked:] Defeat Penthesilea, the Witch of Ink"
           }
           InnerAlchemy:
@@ -308,7 +312,7 @@
           HealthyConfidence:
           {
             Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Healthy Confidence']"
-            Description: Gain 150 extra Maximum HP and powerful health regeneration. Defense is halved below 200 HP.
+            Description: 25% of damage taken is restored as HP over time (30% of stored HP per second.)
             Unlock: "[c/9D9D9D:Locked:] Defeat the Wall of Flesh"
           }
           InfernalEnd:
@@ -338,13 +342,13 @@
           SpatialStratagem:
           {
             Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Spatial Stratagem']"
-            Description: Critical strikes roll critical strike chance again. If the attack was critical again, increases damage by 50% and roll one more time.
+            Description: Every 15 seconds, activate a 2 second window; when struck during this time, ignore damage taken and gain 80% increased damage for 2 seconds.
             Unlock: "[c/9D9D9D:Locked:] Defeat all bosses from The Stars Above except the final boss"
           }
           WeaknessExploit:
           {
             Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Weakness Exploit']"
-            Description: Critical strikes hit again for 10% of the original damage as true damage (Will not kill.) Foes below 20% HP or who are Stunned will take 30% damage instead.
+            Description: Critical strike damage is reduced by 20%. 10% of critical strike damage is converted to true damage (Will not kill.) Attacking foes inflicted with certain debuffs will deal 10% more true damage.
             Unlock: "[c/9D9D9D:Locked:] Defeat Golem in Expert Mode"
           }
           Aprismatism:
@@ -380,7 +384,7 @@
           BeyondInfinity:
           {
             Name: "[c/D82BFF:Tier 3] [c/FFC258:'Beyond Infinity']"
-            Description: At 500 HP or above, all applicable outgoing damage is doubled. Deal 10% less damage below 500 HP, increased by 10% for each 100 HP.
+            Description: When a boss is active, gain 10% increased damage. If you do not take damage for 20 seconds, this damage buff is increased to 150%. Damage buff is lost upon taking damage.
             Unlock: "[c/9D9D9D:Locked:] Defeat all Terraria bosses"
           }
           KeyOfChronology:
@@ -502,6 +506,8 @@
             86: Looks like this Essence is both Magic and Melee aspected- it crackles with lightning already. How about giving it a shot?
             85: It looks to me like this Ranged-weapon has the ability to down hordes of foes pretty easily. Sounds like it'll come in handy- especially the giant coffin swings!
             87: How about this Essence? It'll give you an enhanced barrier, able to protect yourself while helping you deal some damage without worry of repercussions.
+            88: Seems that this Essence came from that voodoo doll we found in the Underworld- a strange sight. Are you certain that using a weapon like this is worth the risk?
+            89: Who am I kidding- of course you're certain! You're MY Starbearer, after all! Just don't get TOO reckless, now. I don't think resurrection is something I can pull off on you.
 
           }
           Eridani:
@@ -595,6 +601,7 @@
             87: This essence is a Ranged-type weapon, but it seems to have a lot of close-ranged action. Don't get overzealous, but do try to make the most of it.
             88: Seems like this is a Melee and Magic type Essence in tandem. From what I can see, it'll make a powerful weapon that channels the power of lightning.
             89: This Essence is a support-type item. It'll provide a powerful barrier and allow you to sap life energy from your foes as well... It'll be quite the powerful tool.
+            90: This Essence seems to have resonated from that strange poppet we found in the Underworld. Beware its dangers- your affinity with resurrection is... tentative.
           }
           Perseus:
           {

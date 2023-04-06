@@ -21,6 +21,7 @@ using StarsAbove.Biomes;
 using StarsAbove.Items.Materials;
 using StarsAbove.NPCs;
 using StarsAbove.Buffs.Boss;
+using StarsAbove.NPCs.Vagrant;
 
 namespace StarsAbove
 {
@@ -670,31 +671,40 @@ namespace StarsAbove
         {
 
 
-            base.OnHitNPC(npc, target, damage, knockback, crit);
         }
         public override void OnHitByItem(NPC npc, Player player, Item item, int damage, float knockback, bool crit)
         {
 			
 
-            base.OnHitByItem(npc, player, item, damage, knockback, crit);
         }
         public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
-			if (npc.HasBuff<NalhaunSword>())
-			{
-				damage *= 2;
-			}
-			base.ModifyHitByProjectile(npc, projectile, ref damage, ref knockback, ref crit, ref hitDirection);
+            if (npc.HasBuff<NalhaunSword>())
+            {
+                damage *= 2;
+            }
+
+           
+
         }
+
+        
+
         public override void ModifyHitByItem(NPC npc, Player player, Item item, ref int damage, ref float knockback, ref bool crit)
         {
 			if(npc.HasBuff<NalhaunSword>())
             {
 				damage *= 2;
             }
-            base.ModifyHitByItem(npc, player, item, ref damage, ref knockback, ref crit);
-        }
-        public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
+
+			
+
+		}
+
+		
+
+
+		public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
 
 			
