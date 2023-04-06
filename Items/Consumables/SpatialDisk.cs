@@ -526,6 +526,14 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
+			if (modPlayer.SanguineWeaponDialogue == 1)
+			{
+				modPlayer.chosenDialogue = 168;
+				modPlayer.SanguineWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
 			if (modPlayer.LevinstormWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 166;
