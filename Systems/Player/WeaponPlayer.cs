@@ -1299,7 +1299,7 @@ namespace StarsAbove
                 }
 
             }
-            if (proj.type == Mod.Find<ModProjectile>("Starchild").Type)
+            if (proj.type == Mod.Find<ModProjectile>("Starchild").Type && target.type != NPCID.TargetDummy)
             {
                 if (Main.rand.Next(25) == 1)
                 {

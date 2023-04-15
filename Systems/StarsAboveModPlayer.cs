@@ -1637,8 +1637,7 @@ namespace StarsAbove
             if (mysticforging == 2)
             {
                 crit = false;
-                damage = (int)(damage * (Player.GetCritChance(DamageClass.Generic)));
-                Main.NewText(Language.GetTextValue($"Crit chance: {Player.GetCritChance(DamageClass.Generic)}"), 60, 170, 247);
+                damage = (int)(damage * (1 + (MathHelper.Lerp(0, 1, Player.GetCritChance(DamageClass.Generic) / 100)) / 2));
             }
 
             if (target.type == NPCType<WarriorOfLight>())
@@ -1769,7 +1768,7 @@ namespace StarsAbove
                 }
                 if (weaknessexploit == 2)
                 {
-                    damage = (int)(damage * 0.7);
+                    damage = (int)(damage * 0.9);
                     if (target.HasBuff(BuffID.Confused)
                         || target.HasBuff(BuffID.CursedInferno)
                         || target.HasBuff(BuffID.Ichor)
@@ -1781,11 +1780,11 @@ namespace StarsAbove
                         || target.HasBuff(BuffID.Frostburn)
                         || target.HasBuff(BuffID.ShadowFlame))
                     {
-                        if (damage + (damage * 0.2) < target.life)
+                        if (damage + (damage * 0.25) < target.life)
                         {
                             Rectangle textPos = new Rectangle((int)target.position.X, (int)target.position.Y - 20, target.width, target.height);
                             CombatText.NewText(textPos, new Color(255, 30, 30, 240), $"{Math.Round(damage * 0.2)}", false, false);
-                            target.life -= (int)(damage * 0.2);
+                            target.life -= (int)(damage * 0.25);
                         }
                     }
                     else if (damage + (damage * 0.1) < target.life)
@@ -1902,7 +1901,7 @@ namespace StarsAbove
                 }
                 if (weaknessexploit == 2)
                 {
-                    damage = (int)(damage * 0.7);
+                    damage = (int)(damage * 0.9);
                     if (target.HasBuff(BuffID.Confused)
                         || target.HasBuff(BuffID.CursedInferno)
                         || target.HasBuff(BuffID.Ichor)
@@ -4474,7 +4473,6 @@ namespace StarsAbove
             novaCritDamageMod = 0;
             novaChargeMod = 0;
 
-            //Prisms (yes I know this code sucks)
             if (affix1 == Mod.Find<ModItem>("RefulgentPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
                 affix2 == Mod.Find<ModItem>("RefulgentPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
                 affix3 == Mod.Find<ModItem>("RefulgentPrism").DisplayName.GetTranslation(Language.ActiveCulture))
@@ -4778,11 +4776,7 @@ namespace StarsAbove
 
             }
 
-            ////////////////////////////////////////////////////////////////////////////////////////////////
-            ///PRISM DESCRIPTIONS HAVE BEEN REMOVED (HOVERTEXT NOW)
-            ///
-
-            //////////////////////////////////
+            //PLEASE REFACTOR ME!!
             if (chosenStellarNova == 1)//Theofania Inanis
             {
                 novaDamage = baseNovaDamageAdd;
@@ -5176,13 +5170,14 @@ namespace StarsAbove
                             Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurst").Type, 0, 0, Player.whoAmI, 0, 1);
 
                     }*/
-                    if (starfarerPromptCooldown > 0)
+                    if (starfarerPromptCooldown <= 0)
                     {
-                        starfarerPromptCooldown = 0;
+                        starfarerPromptActive("onButchersDozen");
                     }
-                    starfarerPromptActive("onButchersDozen");
+                    
                 }
-                Player.AddBuff(BuffType<Buffs.ButchersDozen>(), 2);
+                Player.AddBuff(BuffType<Buffs.ButchersDozen>(), 240);
+                butchersDozenKills = 0;
             }
         }
         private void BetweenTheBoundary()
@@ -5216,13 +5211,13 @@ namespace StarsAbove
                     if(healthyConfidenceHealTimer >= 60)
                     {
                         healthyConfidenceHealTimer = 0;
-                        Player.statLife += (int)(healthyConfidenceHealAmount * 0.3);
-                        if((int)(healthyConfidenceHealAmount * 0.3) > 0)
+                        Player.statLife += (int)(healthyConfidenceHealAmount * 0.1);
+                        if((int)(healthyConfidenceHealAmount * 0.1) > 0)
                         {
-                            Player.HealEffect((int)(healthyConfidenceHealAmount * 0.3));
+                            Player.HealEffect((int)(healthyConfidenceHealAmount * 0.1));
 
                         }
-                        healthyConfidenceHealAmount -= (int)(healthyConfidenceHealAmount * 0.3);
+                        healthyConfidenceHealAmount -= (int)(healthyConfidenceHealAmount * 0.1);
                         
                     }
                 }
@@ -8088,13 +8083,20 @@ namespace StarsAbove
             {
                 return false;
             }
-            
-            if(Player.HasBuff(BuffType<SpatialStratagem>()))
+
+            if (Player.HasBuff(BuffType<SpatialStratagemCooldown>()) && artofwar == 2)
+            {
+                
+                Player.AddBuff(BuffType<SpatialStratagemCooldown>(), 1800);
+                
+            }
+            if (!Player.HasBuff(BuffType<SpatialStratagemCooldown>()) && artofwar == 2)
             {
                 Player.immune = true;
-                Player.immuneTime = 30;
+                Player.immuneTime = 120;
+                Player.AddBuff(BuffType<SpatialStratagemCooldown>(), 1800);
+                Player.AddBuff(BuffType<SpatialStratagem>(), 120);
                 Player.AddBuff(BuffType<SpatialStratagemActive>(), 120);
-                Player.ClearBuff(BuffType<SpatialStratagem>());
                 damage = 0;
                 return false;
             }
@@ -8106,7 +8108,7 @@ namespace StarsAbove
             }
             if(bonus100hp == 2)
             {//Healthy Confidence
-                healthyConfidenceHealAmount += (int)(damage * 0.25);
+                healthyConfidenceHealAmount += (int)(damage * 0.15);
             }
             if (Main.LocalPlayer.HasBuff(BuffType<Buffs.SolemnAegis>()) && !Main.LocalPlayer.HasBuff(BuffType<Buffs.Invincibility>()))
             {

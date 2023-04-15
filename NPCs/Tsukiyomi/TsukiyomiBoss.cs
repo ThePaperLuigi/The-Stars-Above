@@ -591,7 +591,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 							OriginStarfall2(P, NPC);
 							break;
 						case 15:
-							AI_RotationNumber = 27; //Skip ahead because this phase takes too long
+							AI_RotationNumber = 26; //Skip ahead because this phase takes too long
 							break;
 						case 16:
 							CelestialOpposition(P, NPC);

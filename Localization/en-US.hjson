@@ -258,7 +258,7 @@
           ButchersDozen:
           {
             Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Butcher's Dozen']"
-            Description: After 12 kills without leaving combat, gain 5% extra attack damage and 30% faster attack speed.
+            Description: After 12 kills without leaving combat, gain 5% extra attack damage and 30% faster attack speed for 4 seconds (Kill counter will reset.)
             Unlock: "[c/9D9D9D:Locked:] Defeat Nalhaun, the Burnished King"
           }
           EvasionMastery:
@@ -312,7 +312,7 @@
           HealthyConfidence:
           {
             Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Healthy Confidence']"
-            Description: 25% of damage taken is restored as HP over time (30% of stored HP per second.)
+            Description: 15% of damage taken is restored as HP over time (10% of stored HP per second.)
             Unlock: "[c/9D9D9D:Locked:] Defeat the Wall of Flesh"
           }
           InfernalEnd:
@@ -342,13 +342,13 @@
           SpatialStratagem:
           {
             Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Spatial Stratagem']"
-            Description: Every 15 seconds, activate a 2 second window; when struck during this time, ignore damage taken and gain 80% increased damage for 2 seconds.
+            Description: Upon taking damage, ignore damage taken for 2 seconds and gain 20% increased damage for 4 seconds. 30 second cooldown. (Taking damage during the cooldown resets the cooldown)
             Unlock: "[c/9D9D9D:Locked:] Defeat all bosses from The Stars Above except the final boss"
           }
           WeaknessExploit:
           {
             Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Weakness Exploit']"
-            Description: Critical strike damage is reduced by 20%. 10% of critical strike damage is converted to true damage (Will not kill.) Attacking foes inflicted with certain debuffs will deal 10% more true damage.
+            Description: 10% of critical strike damage is converted to true damage (Will not kill.) Attacking foes inflicted with vanilla debuffs will deal 15% bonus true damage.
             Unlock: "[c/9D9D9D:Locked:] Defeat Golem in Expert Mode"
           }
           Aprismatism:
@@ -372,7 +372,7 @@
           CyclicHunter:
           {
             Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Cyclic Hunter']"
-            Description: After defeating an enemy, gain 10% increased damage, and 50% increased Movement Speed for half a second. Additionally, gain Mana based on 5% of the foe's Max HP + 12. 2 second cooldown.
+            Description: After defeating an enemy, gain 10% increased damage for half a second. Additionally, gain Mana based on 5% of the foe's Max HP + 12. 2 second cooldown.
             Unlock: "[c/9D9D9D:Locked:] Defeat the Slime King in Expert Mode"
           }
           LivingDead:
@@ -384,7 +384,7 @@
           BeyondInfinity:
           {
             Name: "[c/D82BFF:Tier 3] [c/FFC258:'Beyond Infinity']"
-            Description: When a boss is active, gain 10% increased damage. If you do not take damage for 20 seconds, this damage buff is increased to 150%. Damage buff is lost upon taking damage.
+            Description: Gain a 10% chance to Collapse an enemy after striking them, dealing 400% base damage
             Unlock: "[c/9D9D9D:Locked:] Defeat all Terraria bosses"
           }
           KeyOfChronology:
