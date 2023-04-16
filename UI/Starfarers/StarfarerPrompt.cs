@@ -207,7 +207,7 @@ namespace StarsAbove.UI.Starfarers
 			{
 				if (modPlayer.starfarerOutfitVisible != 0)
 				{
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/AOutfit" + modPlayer.starfarerOutfitVisible), hitbox, Color.White * modPlayer.promptVisibility);
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/AOutfit" + modPlayer.starfarerOutfitVisible), hitbox, Color.White * modPlayer.promptVisibility);
 
 				}
 			}
@@ -215,7 +215,7 @@ namespace StarsAbove.UI.Starfarers
 			{
 				if (modPlayer.starfarerOutfitVisible != 0)
 				{
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/EOutfit" + modPlayer.starfarerOutfitVisible), hitbox, Color.White * modPlayer.promptVisibility);
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/EOutfit" + modPlayer.starfarerOutfitVisible), hitbox, Color.White * modPlayer.promptVisibility);
 
 				}
 			}
