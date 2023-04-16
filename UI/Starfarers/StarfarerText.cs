@@ -8,7 +8,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.UI.Starfarers
 {
-    internal class AsphodeneText : UIState
+    internal class StarfarerText : UIState
 	{
 		// For this bar we'll be using a frame texture and then a gradient inside bar, as it's one of the more simpler approaches while still looking decent.
 		// Once this is all set up make sure to go and do the required stuff for most UI's in the Mod class.
@@ -90,7 +90,7 @@ namespace StarsAbove.UI.Starfarers
 		}
 		private void DragStart(UIMouseEvent evt, UIElement listeningElement)
 		{
-			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogueVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogue == true && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1) && Draggable)
+			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogueVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogue == true) && Draggable)
 				return;
 			if (!Draggable)
 			{
@@ -101,7 +101,7 @@ namespace StarsAbove.UI.Starfarers
 
 		private void DragEnd(UIMouseEvent evt, UIElement listeningElement)
 		{
-			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogueVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogue == true && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1) && Draggable)
+			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogueVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogue == true) && Draggable)
 				return;
 			if (!Draggable)
 			{
@@ -116,7 +116,7 @@ namespace StarsAbove.UI.Starfarers
 		}
 		private void MouseClickA(UIMouseEvent evt, UIElement listeningElement)
 		{
-			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogueVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogue == true && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1))
+			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogueVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogue == true))
 				return;
 
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueScrollNumber < Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogue.Length)
@@ -148,7 +148,7 @@ namespace StarsAbove.UI.Starfarers
 
 		public override void Draw(SpriteBatch spriteBatch) {
 			// This prevents drawing unless we are using an ExampleDamageItem
-			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogueVisibility > 0 && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1))
+			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogueVisibility > 0))
 				return;
 
 			base.Draw(spriteBatch);
@@ -173,39 +173,85 @@ namespace StarsAbove.UI.Starfarers
 
 
 			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/Dialogue"), hitbox, Color.White * modPlayer.starfarerDialogueVisibility);
-			if (modPlayer.vagrantDialogue == 2)
-			{
-				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/HA" + modPlayer.expression), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
-			}
-			else
-			{
-				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/A" + modPlayer.expression), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
-
-			}
-			if(modPlayer.starfarerOutfitVisible != 0 && modPlayer.expression < 10)
+			if(modPlayer.chosenStarfarer == 1)
             {
-				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/AOutfit" + modPlayer.starfarerOutfitVisible), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+				if (modPlayer.vagrantDialogue == 2)
+				{
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/HABase"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+				}
+				else
+				{
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/ABase"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
 
+				}
+				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/A" + modPlayer.expression), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+
+				if (modPlayer.starfarerOutfitVisible != 0 && modPlayer.expression < 10)
+				{
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/AOutfit" + modPlayer.starfarerOutfitVisible), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+
+				}
+				if (modPlayer.expression == 0 || modPlayer.expression == 1 || modPlayer.expression == 2 || modPlayer.expression == 3 || modPlayer.expression == 4 || modPlayer.expression == 6)
+				{
+					if (modPlayer.blinkTimer > 70 && modPlayer.blinkTimer < 75)
+					{
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/ABlink"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+					}
+					if (modPlayer.blinkTimer > 320 && modPlayer.blinkTimer < 325)
+					{
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/ABlink"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+					}
+					if (modPlayer.blinkTimer > 420 && modPlayer.blinkTimer < 425)
+					{
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/ABlink"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+					}
+					if (modPlayer.blinkTimer > 428 && modPlayer.blinkTimer < 433)
+					{
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/ABlink"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+					}
+				}
 			}
-			if (modPlayer.expression == 0 || modPlayer.expression == 1 || modPlayer.expression == 2 || modPlayer.expression == 3 || modPlayer.expression == 4 || modPlayer.expression == 6)
-			{
-				if (modPlayer.blinkTimer > 70 && modPlayer.blinkTimer < 75)
+			if(modPlayer.chosenStarfarer == 2)
+            {
+				if (modPlayer.vagrantDialogue == 2)
 				{
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/ABlink"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/HEBase"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
 				}
-				if (modPlayer.blinkTimer > 320 && modPlayer.blinkTimer < 325)
+				else
 				{
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/ABlink"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/EBase"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+
 				}
-				if (modPlayer.blinkTimer > 420 && modPlayer.blinkTimer < 425)
+				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/E" + modPlayer.expression), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+
+				if (modPlayer.starfarerOutfitVisible != 0 && modPlayer.expression < 10)
 				{
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/ABlink"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/EOutfit" + modPlayer.starfarerOutfitVisible), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+
 				}
-				if (modPlayer.blinkTimer > 428 && modPlayer.blinkTimer < 433)
+				if (modPlayer.expression == 0 || modPlayer.expression == 1 || modPlayer.expression == 2 || modPlayer.expression == 4 || modPlayer.expression == 5 || modPlayer.expression == 6)
 				{
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/ABlink"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+					if (modPlayer.blinkTimer > 70 && modPlayer.blinkTimer < 75)
+					{
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/EBlink"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+					}
+					if (modPlayer.blinkTimer > 320 && modPlayer.blinkTimer < 325)
+					{
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/EBlink"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+					}
+					if (modPlayer.blinkTimer > 420 && modPlayer.blinkTimer < 425)
+					{
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/EBlink"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+					}
+					if (modPlayer.blinkTimer > 428 && modPlayer.blinkTimer < 433)
+					{
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/EBlink"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+					}
 				}
 			}
+			
+			
+			
 
 			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialogueTop"), hitbox, Color.White * modPlayer.starfarerDialogueVisibility);
 
@@ -218,7 +264,7 @@ namespace StarsAbove.UI.Starfarers
 			
 		
 		public override void Update(GameTime gameTime) {
-			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogueVisibility > 0 && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1))
+			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogueVisibility > 0))
 			{
 				area.Remove();
 				return;

@@ -134,8 +134,7 @@ namespace StarsAbove
 			//UI.StellarNovaGauge.NovaGaugePos = NovaGaugeLoc;
 			UI.StellarNova.StellarNovaCutIn.Visible = DisableStellarNovaCutIns;
 			UI.StellarNova.StellarNovaCutIn.disableDialogue = DisableStellarNovaDialogue;
-			UI.Starfarers.AsphodeneText.Draggable = DisableDraggingDialogue;
-			UI.Starfarers.EridaniText.Draggable = DisableDraggingDialogue;
+			UI.Starfarers.StarfarerText.Draggable = DisableDraggingDialogue;
 			//StarsAbovePlayer.noLockedCamera = DisableLockedCamera;
 			StarsAbovePlayer.disablePrompts = DisableStarfarerCommentary;
 			StarsAbovePlayer.starfarerPromptCooldownMax = StarfarerPromptCooldown;

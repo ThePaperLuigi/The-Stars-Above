@@ -560,6 +560,8 @@ namespace StarsAbove
         int flashFreezeCooldown;
         int healthyConfidenceHealAmount;
         int healthyConfidenceHealTimer;
+        int beyondInfinityTimer;
+        float beyondInfinityDamageMod;
 
         int timeAfterGettingHit;
 
@@ -1640,6 +1642,11 @@ namespace StarsAbove
                 damage = (int)(damage * (1 + (MathHelper.Lerp(0, 1, Player.GetCritChance(DamageClass.Generic) / 100)) / 2));
             }
 
+            if(beyondinfinity == 2 && beyondInfinityDamageMod > 0)
+            {
+                damage = (int)(damage * (1 + beyondInfinityDamageMod));
+                beyondInfinityDamageMod = 0;
+            }
             if (target.type == NPCType<WarriorOfLight>())
             {
                 inWarriorOfLightFightTimer = 4200;
@@ -1820,6 +1827,11 @@ namespace StarsAbove
                 crit = false;
                 damage = (int)(damage * (1 + (MathHelper.Lerp(0,1,Player.GetCritChance(DamageClass.Generic)/100))/2));
                 //Main.NewText(Language.GetTextValue($"Modified damage: {damage}"), 60, 170, 247);
+            }
+            if (beyondinfinity == 2 && beyondInfinityDamageMod > 0)
+            {
+                damage = (int)(damage * (1 + beyondInfinityDamageMod));
+                beyondInfinityDamageMod = 0;
             }
             if (target.lifeMax > 5)
             {
@@ -2502,7 +2514,7 @@ namespace StarsAbove
 
             //Stellar Array Values
             HealthyConfidence();
-            SpatialStratagem();
+            BeyondInfinity();
             InnerAlchemy();
             BetweenTheBoundary();
             flashFreezeCooldown--;
@@ -5223,13 +5235,22 @@ namespace StarsAbove
                 }
             }
         }
-        private void SpatialStratagem()
+        private void BeyondInfinity()
         {
-            spatialStratagemTimer++;
-            if (spatialStratagemTimer >= 900 && artofwar == 2)
+            if (inCombat > 0 && beyondinfinity == 2)
             {
-                spatialStratagemTimer = 0;
-                Player.AddBuff(BuffType<SpatialStratagem>(), 120);
+                beyondInfinityTimer++;
+            }
+            if(inCombat <= 0)
+            {
+                beyondInfinityTimer = 0;
+                beyondInfinityDamageMod = 0;
+            }
+            if (beyondInfinityTimer >= 120 && beyondinfinity == 2)
+            {
+                beyondInfinityTimer = 0;
+                beyondInfinityDamageMod += 0.1f;
+                beyondInfinityDamageMod = MathHelper.Clamp(beyondInfinityDamageMod, 0, 1f);
             }
         }
         private void InnerAlchemy()
@@ -7369,24 +7390,7 @@ namespace StarsAbove
 
 
                 }
-                if (beyondinfinity == 2)
-                {
-                    for (int i = 0; i <= Main.maxNPCs; i++)
-                    {
-                        if (Main.npc[i].boss && Main.npc[i].active)
-                        {
-                            Player.GetDamage(DamageClass.Generic) += 0.1f;
-                            if (timeAfterGettingHit >= 1200)
-                            {
-                                Player.GetDamage(DamageClass.Generic) += 1.4f;
-
-                            }
-                        }
-
-                    }
-                    
-                }
-               
+                
                 if (avataroflight == 2)
                 {
                     Player.statLifeMax2 += (Player.statManaMax2 / 2);
@@ -8083,7 +8087,10 @@ namespace StarsAbove
             {
                 return false;
             }
-
+            if(beyondInfinityDamageMod > 0)
+            {
+                beyondInfinityDamageMod = 0;
+            }    
             if (Player.HasBuff(BuffType<SpatialStratagemCooldown>()) && artofwar == 2)
             {
                 
@@ -8092,13 +8099,17 @@ namespace StarsAbove
             }
             if (!Player.HasBuff(BuffType<SpatialStratagemCooldown>()) && artofwar == 2)
             {
-                Player.immune = true;
-                Player.immuneTime = 120;
                 Player.AddBuff(BuffType<SpatialStratagemCooldown>(), 1800);
                 Player.AddBuff(BuffType<SpatialStratagem>(), 120);
                 Player.AddBuff(BuffType<SpatialStratagemActive>(), 120);
-                damage = 0;
-                return false;
+                damage /= 2;
+                
+            }
+            if (Player.HasBuff(BuffType<SpatialStratagem>()))
+            {
+               
+                damage /= 2;
+
             }
             if (!Player.HasBuff(BuffType<StarshieldBuff>()) && !Player.HasBuff(BuffType<StarshieldCooldown>()) && starshower == 2)
             {

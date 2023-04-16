@@ -228,11 +228,11 @@ namespace StarsAbove
 
             if (!idleAnimationActive)
             {
-                AsphodeneEyeMovementRX = MathHelper.Lerp(0, 6, MousePositionFloatX);
-                AsphodeneEyeMovementLX = MathHelper.Lerp(0, 2, MousePositionFloatX);
+                AsphodeneEyeMovementRX = MathHelper.Lerp(0, 2, MousePositionFloatX);
+                AsphodeneEyeMovementLX = MathHelper.Lerp(0, 1, MousePositionFloatX);
                 AsphodeneEyeMovementY = MathHelper.Lerp(-1, 1, MousePositionFloatY);
 
-                EridaniEyeMovementLX = MathHelper.Lerp(-2, 2, MousePositionFloatX);
+                EridaniEyeMovementLX = MathHelper.Lerp(0, 2, MousePositionFloatX);
                 EridaniEyeMovementRX = MathHelper.Lerp(-1, 1, MousePositionFloatX);
                 EridaniEyeMovementY = MathHelper.Lerp(-1, 1, MousePositionFloatY);
 
@@ -241,14 +241,14 @@ namespace StarsAbove
             {
                 if(modPlayer.chosenStarfarer == 1)//Asphodene's idle animation; she looks down on her summoned sword.
                 {
-                    AsphodeneEyeMovementRX = MathHelper.Lerp(2, 6, idleAnimationProgressAlt);
-                    AsphodeneEyeMovementLX = MathHelper.Lerp(1, 3, idleAnimationProgressAlt);
-                    AsphodeneEyeMovementY = MathHelper.Lerp(2, 0, idleAnimationProgressAlt);
+                    AsphodeneEyeMovementRX = MathHelper.Lerp(1, 3, idleAnimationProgressAlt);
+                    AsphodeneEyeMovementLX = MathHelper.Lerp(0, 2, idleAnimationProgressAlt);
+                    AsphodeneEyeMovementY = MathHelper.Lerp(1, 0, idleAnimationProgressAlt);
                 }
 
                 if (modPlayer.chosenStarfarer == 2)//Eridani's idle animation; she summons a book and begins to read.
                 {
-                    EridaniEyeMovementLX = MathHelper.Lerp(2, -2, idleAnimationReading);
+                    EridaniEyeMovementLX = MathHelper.Lerp(1, -2, idleAnimationReading);
                     EridaniEyeMovementRX = MathHelper.Lerp(1, -1, idleAnimationReading);
                     EridaniEyeMovementY = 2;
                 }

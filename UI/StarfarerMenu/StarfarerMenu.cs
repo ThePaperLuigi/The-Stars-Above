@@ -957,6 +957,7 @@ namespace StarsAbove.UI.StarfarerMenu
 			//Step 3: draw Head
 			//Step 4: draw Hair in front of body
 			//Step 5: draw Menu
+			Texture2D AsphodeneEyeBase = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/AEyeBase");
 
 			Texture2D AsphodeneHeadBase = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/AHeadBase");
 			Texture2D AsphodeneHairBehindHead = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/AHairBehindHead");
@@ -1197,7 +1198,37 @@ namespace StarsAbove.UI.StarfarerMenu
 					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/ABody" + modPlayer.starfarerOutfitVisible + "W"), AsphodeneBodyPosition, Color.White * (modPlayer.costumeChangeOpacity));
 
 				}
-
+				//Draw the eyes.
+				spriteBatch.Draw(
+					AsphodeneEyeBase, //The texture being drawn.
+					AsphodeneHeadPosition, //The position of the texture.
+					new Rectangle(0, 0, AsphodeneHeadBase.Width, AsphodeneHeadBase.Height), //The source rectangle.
+					Color.White * (modPlayer.starfarerMenuUIOpacity), //The color of the texture.
+					MathHelper.ToRadians(animationModPlayer.StarfarerMenuHeadRotation), // The rotation of the texture.
+					AsphodeneHeadBase.Size() * 0.5f, //The centerpoint of the texture.
+					1f, //The scale of the texture.
+					SpriteEffects.None,
+					0f);
+				spriteBatch.Draw(
+					AsphodeneEyeLeft, //The texture being drawn.
+					AsphodeneEyeLeftPosition, //The position of the texture.
+					new Rectangle(0, 0, AsphodeneHeadBase.Width, AsphodeneHeadBase.Height), //The source rectangle.
+					Color.White * (modPlayer.starfarerMenuUIOpacity), //The color of the texture.
+					MathHelper.ToRadians(animationModPlayer.StarfarerMenuHeadRotation), // The rotation of the texture.
+					AsphodeneHeadBase.Size() * 0.5f, //The centerpoint of the texture.
+					1f, //The scale of the texture.
+					SpriteEffects.None,
+					0f);
+				spriteBatch.Draw(
+					AsphodeneEyeRight, //The texture being drawn.
+					AsphodeneEyeRightPosition, //The position of the texture.
+					new Rectangle(0, 0, AsphodeneHeadBase.Width, AsphodeneHeadBase.Height), //The source rectangle.
+					Color.White * (modPlayer.starfarerMenuUIOpacity), //The color of the texture.
+					MathHelper.ToRadians(animationModPlayer.StarfarerMenuHeadRotation), // The rotation of the texture.
+					AsphodeneHeadBase.Size() * 0.5f, //The centerpoint of the texture.
+					1f, //The scale of the texture.
+					SpriteEffects.None,
+					0f);
 				if (modPlayer.vagrantDialogue == 2)
 				{
 					//Draw the head.
@@ -1226,27 +1257,7 @@ namespace StarsAbove.UI.StarfarerMenu
 					SpriteEffects.None,
 					0f);
 				}
-				//Draw the eyes.
-				spriteBatch.Draw(
-					AsphodeneEyeLeft, //The texture being drawn.
-					AsphodeneEyeLeftPosition, //The position of the texture.
-					new Rectangle(0, 0, AsphodeneHeadBase.Width, AsphodeneHeadBase.Height), //The source rectangle.
-					Color.White * (modPlayer.starfarerMenuUIOpacity), //The color of the texture.
-					MathHelper.ToRadians(animationModPlayer.StarfarerMenuHeadRotation), // The rotation of the texture.
-					AsphodeneHeadBase.Size() * 0.5f, //The centerpoint of the texture.
-					1f, //The scale of the texture.
-					SpriteEffects.None,
-					0f);
-				spriteBatch.Draw(
-					AsphodeneEyeRight, //The texture being drawn.
-					AsphodeneEyeRightPosition, //The position of the texture.
-					new Rectangle(0, 0, AsphodeneHeadBase.Width, AsphodeneHeadBase.Height), //The source rectangle.
-					Color.White * (modPlayer.starfarerMenuUIOpacity), //The color of the texture.
-					MathHelper.ToRadians(animationModPlayer.StarfarerMenuHeadRotation), // The rotation of the texture.
-					AsphodeneHeadBase.Size() * 0.5f, //The centerpoint of the texture.
-					1f, //The scale of the texture.
-					SpriteEffects.None,
-					0f);
+				
 
 
 				//Idle animation.
@@ -1345,6 +1356,8 @@ namespace StarsAbove.UI.StarfarerMenu
 			}
 
 			//Eridani's code.
+			Texture2D EridaniEyeBase = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/EEyeBase");
+
 			Texture2D EridaniHeadBase = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/EHeadBase");
 			Texture2D EridaniMouthAlt = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/EMouthVariant");
 
@@ -1530,6 +1543,38 @@ namespace StarsAbove.UI.StarfarerMenu
 					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/EBody" + modPlayer.starfarerOutfitVisible), EridaniBodyPosition, Color.White * (modPlayer.starfarerMenuUIOpacity));
 					
 				}
+				//Draw the eyes.
+				spriteBatch.Draw(
+					EridaniEyeBase, //The texture being drawn.
+					EridaniHeadPosition, //The position of the texture.
+					new Rectangle(0, 0, EridaniHeadBase.Width, EridaniHeadBase.Height), //The source rectangle.
+					Color.White * (modPlayer.starfarerMenuUIOpacity), //The color of the texture.
+					MathHelper.ToRadians(animationModPlayer.StarfarerMenuHeadRotation), // The rotation of the texture.
+					EridaniHeadBase.Size() * 0.5f, //The centerpoint of the texture.
+					1f, //The scale of the texture.
+					SpriteEffects.None,
+					0f);
+				//Draw the eyes.
+				spriteBatch.Draw(
+					EridaniEyeLeft, //The texture being drawn.
+					EridaniEyeLeftPosition, //The position of the texture.
+					new Rectangle(0, 0, EridaniHeadBase.Width, EridaniHeadBase.Height), //The source rectangle.
+					Color.White * (modPlayer.starfarerMenuUIOpacity), //The color of the texture.
+					MathHelper.ToRadians(animationModPlayer.StarfarerMenuHeadRotation), // The rotation of the texture.
+					EridaniHeadBase.Size() * 0.5f, //The centerpoint of the texture.
+					1f, //The scale of the texture.
+					SpriteEffects.None,
+					0f);
+				spriteBatch.Draw(
+					EridaniEyeRight, //The texture being drawn.
+					EridaniEyeRightPosition, //The position of the texture.
+					new Rectangle(0, 0, EridaniHeadBase.Width, EridaniHeadBase.Height), //The source rectangle.
+					Color.White * (modPlayer.starfarerMenuUIOpacity), //The color of the texture.
+					MathHelper.ToRadians(animationModPlayer.StarfarerMenuHeadRotation), // The rotation of the texture.
+					EridaniHeadBase.Size() * 0.5f, //The centerpoint of the texture.
+					1f, //The scale of the texture.
+					SpriteEffects.None,
+					0f);
 
 				if (modPlayer.vagrantDialogue == 2)
 				{
@@ -1560,28 +1605,7 @@ namespace StarsAbove.UI.StarfarerMenu
 					0f);
 				}
 					
-				//Draw the eyes.
-				spriteBatch.Draw(
-					EridaniEyeLeft, //The texture being drawn.
-					EridaniEyeLeftPosition, //The position of the texture.
-					new Rectangle(0, 0, EridaniHeadBase.Width, EridaniHeadBase.Height), //The source rectangle.
-					Color.White * (modPlayer.starfarerMenuUIOpacity), //The color of the texture.
-					MathHelper.ToRadians(animationModPlayer.StarfarerMenuHeadRotation), // The rotation of the texture.
-					EridaniHeadBase.Size() * 0.5f, //The centerpoint of the texture.
-					1f, //The scale of the texture.
-					SpriteEffects.None,
-					0f);
-				spriteBatch.Draw(
-					EridaniEyeRight, //The texture being drawn.
-					EridaniEyeRightPosition, //The position of the texture.
-					new Rectangle(0, 0, EridaniHeadBase.Width, EridaniHeadBase.Height), //The source rectangle.
-					Color.White * (modPlayer.starfarerMenuUIOpacity), //The color of the texture.
-					MathHelper.ToRadians(animationModPlayer.StarfarerMenuHeadRotation), // The rotation of the texture.
-					EridaniHeadBase.Size() * 0.5f, //The centerpoint of the texture.
-					1f, //The scale of the texture.
-					SpriteEffects.None,
-					0f);
-
+				
 
 				//Idle animation.
 				

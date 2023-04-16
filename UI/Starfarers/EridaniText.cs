@@ -89,7 +89,6 @@ namespace StarsAbove.UI.Starfarers
 
 		private void DragStart(UIMouseEvent evt, UIElement listeningElement)
 		{
-			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogueVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogue == true && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2) && Draggable)
 				return;
 			if (!Draggable)
 			{
@@ -100,7 +99,6 @@ namespace StarsAbove.UI.Starfarers
 
 		private void DragEnd(UIMouseEvent evt, UIElement listeningElement)
 		{
-			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogueVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogue == true && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2) && Draggable)
 				return;
 			if (!Draggable)
 			{
@@ -117,7 +115,6 @@ namespace StarsAbove.UI.Starfarers
 
 		private void MouseClickA(UIMouseEvent evt, UIElement listeningElement)
 		{
-			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogueVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogue == true && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2))
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueScrollNumber < Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogue.Length)
 			{
@@ -147,7 +144,6 @@ namespace StarsAbove.UI.Starfarers
 
 		public override void Draw(SpriteBatch spriteBatch) {
 			// This prevents drawing unless we are using an ExampleDamageItem
-			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogueVisibility > 0 && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2))
 				return;
 
 			base.Draw(spriteBatch);
@@ -251,17 +247,9 @@ namespace StarsAbove.UI.Starfarers
 			
 		
 		public override void Update(GameTime gameTime) {
-			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogueVisibility > 0 && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2))
-			{
-				area.Remove();
-				return;
+			area.Remove();
+			return; 
 
-			}
-			else
-			{
-				Append(area);
-			}
-			
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
 
 			// Setting the text per tick to update and show our resource values.
