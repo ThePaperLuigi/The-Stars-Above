@@ -254,6 +254,9 @@ namespace StarsAbove
         public Vector2 takoMinionTarget;
         public Vector2 takoTarget;
 
+        //Sunset of the Sun God
+        public Vector2 KarnaTarget;
+
         //Sparkblossom's Beacon
         public bool FleetingSparkMinion = false;
 
@@ -3828,6 +3831,7 @@ namespace StarsAbove
             Takonomicon(player);
             TwinStarsOfAlbiero(player);
             AshenAmbition();
+            SunsetOfTheSunGod();
             VermilionDaemon();
             SakuraVengenace();
             ArmamentsOfTheSkyStriker();
@@ -3844,6 +3848,11 @@ namespace StarsAbove
             }
 
 
+
+        }
+        private void SunsetOfTheSunGod()
+        {
+            KarnaTarget = Vector2.Lerp(KarnaTarget, Main.MouseWorld, 0.01f);
 
         }
 

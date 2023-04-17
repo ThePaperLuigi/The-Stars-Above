@@ -47,7 +47,7 @@ namespace StarsAbove.Projectiles.SunsetOfTheSunGod
 
 			DelegateMethods.v3_1 = new Vector3(0.6f, 1f, 1f) * 0.2f;
 			Utils.PlotTileLine(Projectile.Center, Projectile.Center + Projectile.velocity * 10f, 8f, DelegateMethods.CastLightOpen);
-			
+
 			
 			// Here we set some of the projectile's owner properties, such as held item and itemtime, along with projectile direction and position based on the player
 			Vector2 ownerMountedCenter = projOwner.RotatedRelativePoint(projOwner.MountedCenter, true);
@@ -106,7 +106,7 @@ namespace StarsAbove.Projectiles.SunsetOfTheSunGod
 			if (firstSpawn)
 			{
 				firstSpawn = false;
-				SoundEngine.PlaySound(SoundID.Item1, Projectile.Center);
+				SoundEngine.PlaySound(SoundID.DD2_JavelinThrowersAttack, projOwner.position);
 
 				float dustAmount = 16f;
 				for (int i = 0; (float)i < dustAmount; i++)
@@ -129,13 +129,28 @@ namespace StarsAbove.Projectiles.SunsetOfTheSunGod
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-			for (int d = 0; d < 8; d++)
-			{
-				Dust.NewDust(target.Center, 0, 0, DustID.LifeDrain, Main.rand.NextFloat(-5, 5), Main.rand.NextFloat(-5, 5), 150, default(Color), 0.4f);
-				Dust.NewDust(target.Center, 0, 0, DustID.FireworkFountain_Red, Main.rand.NextFloat(-8, 8), Main.rand.NextFloat(-8, 8), 150, default(Color), 0.6f);
-			}
+			KarnaOnHitDust(target);
+
 
 			base.OnHitNPC(target, damage, knockback, crit);
+		}
+
+		private void KarnaOnHitDust(NPC target)
+		{
+			
+			float dustAmount = 33f;
+			float randomConstant = MathHelper.ToRadians(Main.rand.Next(0, 360));
+			for (int i = 0; (float)i < dustAmount; i++)
+			{
+				Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+				spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(18f, 1f);
+				spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+				int dust = Dust.NewDust(target.Center, 0, 0, DustID.LifeDrain);
+				Main.dust[dust].scale = 1.5f;
+				Main.dust[dust].noGravity = true;
+				Main.dust[dust].position = target.Center + spinningpoint5;
+				Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 6f;
+			}
 		}
 	}
 

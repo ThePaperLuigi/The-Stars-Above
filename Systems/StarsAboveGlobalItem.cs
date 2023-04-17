@@ -880,6 +880,10 @@ namespace StarsAbove
 				{
 					damage += 0.1f;
 				}
+				if (item.ModItem is SunsetOfTheSunGod && !disableAspectPenalty)
+				{
+					damage += 0.1f;
+				}
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
 			{
