@@ -724,6 +724,18 @@ namespace StarsAbove
 
 		#region Weapon Sound Effects
 
+		public static readonly SoundStyle SFX_ManiacalSlash = new($"{nameof(StarsAbove)}/Sounds/SFX/ManiacalSlash")
+		{
+
+		};
+		public static readonly SoundStyle SFX_ManiacalSlashWarning = new($"{nameof(StarsAbove)}/Sounds/SFX/ManiacalSlashWarning")
+		{
+
+		};
+		public static readonly SoundStyle SFX_ManiacalSlashSpecial = new($"{nameof(StarsAbove)}/Sounds/SFX/ManiacalSlashSpecial")
+		{
+
+		};
 		public static readonly SoundStyle SFX_KevesiTune = new($"{nameof(StarsAbove)}/Sounds/SFX/KevesiTune")
 		{
 

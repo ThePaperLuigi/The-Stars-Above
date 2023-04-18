@@ -41,6 +41,7 @@ namespace StarsAbove
 		public bool Glitterglue;
 		public bool InfernalBleed;
 		public bool Hyperburn;
+		public bool KarmicRetribution;
 		public bool VerdantEmbrace;
 		public int NanitePlagueLevel = 0;
 
@@ -181,17 +182,28 @@ namespace StarsAbove
 					Rectangle textPos = new Rectangle((int)npc.position.X, (int)npc.position.Y - 20, npc.width, npc.height);
 					CombatText.NewText(textPos, new Color(211, 164, 230, 240), $"{Math.Min((int)(npc.lifeMax * 0.03), 120)}", false, false);
 					return;
-				}
-			}
-			if (Hyperburn)
+                }
+            }
+            if (Hyperburn)
+            {
+                if (npc.lifeRegen > 0)
+                {
+                    npc.lifeRegen = 0;
+                }
+                npc.lifeRegen -= 30;
+
+                damage = 30;
+
+            }
+			if (KarmicRetribution)
 			{
 				if (npc.lifeRegen > 0)
 				{
 					npc.lifeRegen = 0;
 				}
-				npc.lifeRegen -= 30;
+				npc.lifeRegen -= 10;
 
-				damage = 30;
+				damage = 1;
 
 			}
 			if (InfernalBleed)
@@ -256,6 +268,7 @@ namespace StarsAbove
 			InfernalBleed = false;
 			VerdantEmbrace = false;
 			Hyperburn = false;
+			KarmicRetribution = false;
 		}
         public override void PostDraw(NPC npc, SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
@@ -362,6 +375,28 @@ namespace StarsAbove
 					int dust2 = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, DustID.FireworkFountain_Pink, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color), 1f);
 					Main.dust[dust2].noGravity = true;
 					
+				}
+				if (Main.rand.Next(4) < 3)
+				{
+					int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, DustID.Firework_Pink, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color), 1.1f);
+
+					Main.dust[dust].velocity *= 1.8f;
+					Main.dust[dust].velocity.Y -= 0.5f;
+					if (Main.rand.NextBool(4))
+					{
+
+						Main.dust[dust].scale *= 0.5f;
+					}
+				}
+				Lighting.AddLight(npc.position, 0.1f, 0.2f, 0.7f);
+			}
+			if (KarmicRetribution)
+			{
+				if (Main.rand.Next(4) < 3)
+				{
+					int dust2 = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, DustID.FireworkFountain_Pink, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color), 1f);
+					Main.dust[dust2].noGravity = true;
+
 				}
 				if (Main.rand.Next(4) < 3)
 				{

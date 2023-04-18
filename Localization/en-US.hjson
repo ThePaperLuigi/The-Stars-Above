@@ -15,7 +15,13 @@
           Negative: Negative Chaos!
           
         }
-
+        ManiacalJustice:
+        {
+          Stack20: LV: 20
+          Stack50: LV: 50
+          Stack100: LV: MAX
+          NotEnoughStacks: LV: {0}/100
+        }
         Nalhaun:
         {
           ManifestBlade: The Burnished King channels energy into his blade, leaving his defenses drastically lowered!
@@ -6484,6 +6490,26 @@
           Damage increased by {1}%
           Defense increased by {2}
           'Do you hear the roar of this chainsaw?'
+          '''
+        LVBuff:
+          '''
+          {0}/100 LV
+          Currently active buffs:
+          '''
+        LVBuff20:
+          '''
+          Attack speed increased by 20%
+          Cooldown of Slaughtering Slash halved
+          '''
+        LVBuff50:
+          '''
+          Attack speed increased by 30%
+          Cooldown of Slaughtering Slash halved
+          Attacks inflict Karmic Retribution for 10 seconds
+          '''
+        LVBuff100:
+          '''
+          Able to unleash a Special Attack upon pressing the Weapon Action Key
           '''
         BloodOfTheDragon: The gaze of the first brood grants mastery over the skies, resulting in increased damage and movement speed
         BloopPetBuff: "'a'"

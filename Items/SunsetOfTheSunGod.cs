@@ -22,7 +22,7 @@ namespace StarsAbove.Items
 			DisplayName.SetDefault("Sunset of the Sun God");
 			Tooltip.SetDefault("" +
 				"[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty]" +
-				"\nRight click to unleash [c/FFC500:Vasavi Shakti], leaping into the air, gaining Featherfall and Invincibility for 2 seconds (2 minute cooldown)" +
+				"\nRight click to unleash [c/FFC500:Vasavi Shakti], leaping into the air, gaining Featherfall and Invincibility for 2 seconds (1 minute cooldown)" +
 				"\n[c/FFC500:Vasavi Shakti] channels a powerful beam of energy towards your cursor for 2 seconds" +
 				"\n[c/FFC500:Vasavi Shakti] will conclude with a colossal explosion, dealing 2x guaranteed critical damage and inflicting Daybroken for 8 seconds" +
 				"\nThe current [c/F592BF:Aspected Damage Type] influences the weapon's attacks (Weapon can not be used without [c/F592BF:Aspected Damage Type])" +
@@ -78,7 +78,7 @@ namespace StarsAbove.Items
 			
 			if (player.altFunctionUse == 2)
 			{
-				if (!player.HasBuff(BuffType<KarnaLaserBuff>()) && !player.HasBuff(BuffType<TakodachiLaserBuffCooldown>()))
+				if (!player.HasBuff(BuffType<KarnaLaserBuff>()) && !player.HasBuff(BuffType<KarnaCooldown>()))
 				{
 					float launchSpeed = 8f;
 					Vector2 mousePosition = Main.MouseWorld;
@@ -87,7 +87,7 @@ namespace StarsAbove.Items
 					player.velocity = new Vector2(player.velocity.X, player.velocity.Y - 10);
 					player.AddBuff(BuffType<Invincibility>(), 120);
 					player.AddBuff(BuffID.Featherfall, 120);
-
+					player.AddBuff(BuffType<KarnaCooldown>(), 60 * 60);
 					player.AddBuff(BuffType<KarnaLaserBuff>(), 120);
 					player.GetModPlayer<WeaponPlayer>().KarnaTarget = Main.MouseWorld;
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, player.Center);

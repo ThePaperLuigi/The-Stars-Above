@@ -67,6 +67,7 @@ using StarsAbove.Buffs.Umbra;
 using StarsAbove.Projectiles.Chronoclock;
 using StarsAbove.Buffs.Chronoclock;
 using StarsAbove.Buffs.Nanomachina;
+using StarsAbove.Buffs.ManiacalJustice;
 
 namespace StarsAbove
 {
@@ -312,6 +313,9 @@ namespace StarsAbove
 
         //Force of Nature
         public int forceBullets = 2;
+
+        //Maniacal Justice
+        public int LVStacks = 0;
 
         //Genocide
         public int genocideBullets = 6;
@@ -2824,7 +2828,16 @@ namespace StarsAbove
 
                     }
                 }
+            for (int i = 0; i < Player.CountBuffs(); i++)
+                if (Player.buffType[i] == BuffType<SpecialAttackBuff>())
+                {
+                    if (Player.buffTime[i] == 1)
+                    {
+                        Player.AddBuff(BuffType<ManiacalJusticeCooldown>(), 60 * 30);
 
+
+                    }
+                }
             for (int i = 0; i < Player.CountBuffs(); i++)
                 if (Player.buffType[i] == BuffType<Buffs.CosmicConception>())
                 {
@@ -3227,6 +3240,21 @@ namespace StarsAbove
             if (Player.HasBuff(BuffType<Buffs.Invincibility>()))
             {
                 return false;
+            }
+            if(Player.HasBuff(BuffType<SpecialAttackBuff>()))
+            {
+                if(Main.rand.Next(0,101) <= 25)
+                {
+                    Player.immune = true;
+                    Player.immuneTime = 30;
+                    return false;
+                }
+                damage *= 3;
+            }
+            if(LVStacks > 0)
+            {
+                damage -= LVStacks;
+                LVStacks = 0;
             }
             if(Player.HasBuff(BuffType<RealizedNanomachinaBuff>()))
             {
@@ -3818,6 +3846,11 @@ namespace StarsAbove
             //Values that reset out of combat
             if (player.inCombat < 0)
             {
+                LVStacks--;
+                if(LVStacks < 0)
+                {
+                    LVStacks = 0;
+                }
                 SoulReaverSouls = 0;
                 //nanomachinaGauge = 0;
             }
