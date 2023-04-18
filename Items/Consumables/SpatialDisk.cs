@@ -817,6 +817,22 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
+			if (modPlayer.KarnaWeaponDialogue == 1)
+			{
+				modPlayer.chosenDialogue = 169;
+				modPlayer.KarnaWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
+			if (modPlayer.ManiacalWeaponDialogue == 1)
+			{
+				modPlayer.chosenDialogue = 170;
+				modPlayer.ManiacalWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
 			if (modPlayer.BloodWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 147;

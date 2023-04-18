@@ -818,6 +818,13 @@ namespace StarsAbove
                       116,
                       "Defeat Duke Fishron.")); //Corresponding dialogue ID.
                 WeaponArchiveList.Add(new WeaponArchiveListing(
+                    "Duke Fishron Weapon", //Name of the archive listing.
+                    $"Grants the Essence for " +
+                    $"[i:{ItemType<Spatial>()}] Maniacal Justice. ", //Description of the listing.
+                    player.ManiacalWeaponDialogue == 2, //Unlock requirements.
+                    170,
+                    "Defeat Duke Fishron, then wait.")); //Corresponding dialogue ID.
+                WeaponArchiveList.Add(new WeaponArchiveListing(
                       "Lunatic Cultist Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Astral>()}] Rex Lapis " +
@@ -918,8 +925,15 @@ namespace StarsAbove
                     "Tsukiyomi Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Cosmic Destroyer. ", //Description of the listing.
-                    player.CosmicDestroyerWeaponDialogue == 2, //Unlock requirements.
+                    player.CosmicDestroyerWeaponDialogue == 2, //Unlock requirements.i
                     138,
+                    "Defeat ???")); //Corresponding dialogue ID.
+                WeaponArchiveList.Add(new WeaponArchiveListing(
+                    "Tsukiyomi Weapon", //Name of the archive listing.
+                    $"Grants the Essence for " +
+                    $"[i:{ItemType<Spatial>()}] Sunset of the Sun God. ", //Description of the listing.
+                    player.KarnaWeaponDialogue == 2, //Unlock requirements.
+                    169,
                     "Defeat ???")); //Corresponding dialogue ID.
                 WeaponArchiveList.Add(new WeaponArchiveListing(
                     "Empress of Light Weapon", //Name of the archive listing.

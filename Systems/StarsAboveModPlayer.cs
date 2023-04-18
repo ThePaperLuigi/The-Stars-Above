@@ -476,6 +476,8 @@ namespace StarsAbove
         public int LevinstormWeaponDialogue = 0;
         public int GoldlewisWeaponDialogue = 0;
         public int SanguineWeaponDialogue = 0;
+        public int KarnaWeaponDialogue = 0;
+        public int ManiacalWeaponDialogue = 0;
 
 
 
@@ -1071,6 +1073,8 @@ namespace StarsAbove
             tag["GoldlewisWeaponDialogue"] = GoldlewisWeaponDialogue;
 
             tag["SanguineWeaponDialogue"] = SanguineWeaponDialogue;
+            tag["KarnaWeaponDialogue"] = KarnaWeaponDialogue;
+            tag["ManiacalWeaponDialogue"] = ManiacalWeaponDialogue;
 
 
             tag["observatoryDialogue"] = observatoryDialogue;
@@ -1361,6 +1365,8 @@ namespace StarsAbove
 
             GoldlewisWeaponDialogue = tag.GetInt("GoldlewisWeaponDialogue");
             SanguineWeaponDialogue = tag.GetInt("SanguineWeaponDialogue");
+            KarnaWeaponDialogue = tag.GetInt("KarnaWeaponDialogue");
+            ManiacalWeaponDialogue = tag.GetInt("ManiacalWeaponDialogue");
 
 
 
@@ -3465,6 +3471,19 @@ namespace StarsAbove
 
 
                     }
+                    if (CosmicDestroyerWeaponDialogue == 2 && KarnaWeaponDialogue == 0)
+                    {
+                        KarnaWeaponDialogue = 1;
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                        NewDiskDialogue = true;
+
+
+                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                        return;
+
+
+
+                    }
                     if (MurasamaWeaponDialogue == 0 && NPC.downedEmpressOfLight && Main.masterMode && DownedBossSystem.downedVagrant)
                     {
                         //Obtained from Arbitration now.
@@ -3794,6 +3813,16 @@ namespace StarsAbove
                     if (DukeFishronDialogue == 2 && DukeFishronWeaponDialogue == 0)
                     {
                         DukeFishronWeaponDialogue = 1;
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                        NewDiskDialogue = true;
+                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                        return;
+
+                    }
+                    if (DukeFishronWeaponDialogue == 2 && ManiacalWeaponDialogue == 0)
+                    {
+                        ManiacalWeaponDialogue = 1;
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
