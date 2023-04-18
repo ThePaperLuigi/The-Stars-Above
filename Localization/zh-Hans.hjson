@@ -3,6 +3,10 @@
   {
     StarsAbove:
     {
+      DeathReason:
+      {
+        SanguineDespair:  drained themselves of all life.
+      }
       CombatText:
       {
         Adornment: 
@@ -11,6 +15,24 @@
           Negative: Negative Chaos!
           
         }
+
+        Nalhaun:
+        {
+          ManifestBlade: The Burnished King channels energy into his blade, leaving his defenses drastically lowered!
+          Feint: The Burnished King reverses the next attack!
+        }
+        Dioskouroi:
+        {
+          Clash: The Dioskouroi clash, equalizing their HP!
+        }
+        KissOfDeath:
+        {
+          Skyfish: Skyfish deployed!
+          Thunderbird: Thunderbird deployed!
+          BehemothTyphoon: Behemoth Typhoon deployed!
+          FullyCharged: Uppercut fully charged!
+        }
+
       }
       SubworldName:
       {
@@ -232,7 +254,7 @@
           ButchersDozen:
           {
             Name: "[c/C2BDFF:1阶] [c/FFEED1:“屠夫之家”]"
-            Description: 在未脱战的情况下击杀12名敌人时，获得5%额外的攻击伤害和30%攻击速度。
+            Description: 在未脱战的情况下击杀12名敌人时，获得5%额外的攻击伤害和30%攻击速度，持续4秒（触发后会重置击杀计数器）。
             Unlock: "[c/9D9D9D:已锁定：] 击败复光之君，纳尔赫恩"
           }
           EvasionMastery:
@@ -256,13 +278,13 @@
           FlashFreeze:
           {
             Name: "[c/C2BDFF:1阶] [c/FFEED1:“冰结闪光”]"
-            Description: 攻击造成暴击时会导致敌人爆炸，爆炸会造成攻击伤害的一半。此外，伤害性雪花会从目标处涌出，扩散伤害。此效果有4秒冷却时间。
+            Description: 攻击造成暴击时会导致敌人爆炸，爆炸会造成攻击伤害的一半。此外，伤害性雪花会从目标处涌出，扩散伤害。此效果有8秒冷却时间。
             Unlock: "[c/9D9D9D:已锁定：] 击败专家模式下的多彩魔女，彭忒希勒娅"
           }
           MysticForging:
           {
             Name: "[c/C2BDFF:1阶] [c/FFEED1:“秘术锻铸”]"
-            Description: 攻击击中敌人时会消耗5点魔力值并额外造成8%伤害。
+            Description: 将暴击率以1%：0.5%的比例转化为命中伤害（无视100%以上的暴击率）；除非有额外效果的触发，否则你无法再造成暴击。
             Unlock: "[c/9D9D9D:已锁定：] 击败多彩魔女，彭忒希勒娅"
           }
           InnerAlchemy:
@@ -274,7 +296,7 @@
           Hikari:
           {
             Name: "[c/C2BDFF:1阶] [c/FFEED1:“光”]"
-            Description: 获得与最大生命值除以20的结果成比例的攻击和防御加成。受到伤害时会造成'Null Radiance'，其会减半造成的伤害6秒。
+            Description: 获得与最大生命值除以20的结果成比例的攻击和防御加成。受到伤害时会减半造成的伤害6秒。
             Unlock: "[c/9D9D9D:已锁定：] 击败冰霜女王"
           }
           CelestialEvanesence:
@@ -286,7 +308,7 @@
           HealthyConfidence:
           {
             Name: "[c/9C4FFF:2阶] [c/FFD792:“健康秘诀”]"
-            Description: 额外获得150点最大生命值和强大的生命再生。生命值低于200点时防御减半。
+            Description: 所受伤害的15%伤害值会持续转化为生命值（每秒回复储存的生命值的10%）
             Unlock: "[c/9D9D9D:已锁定：] 击败血肉墙"
           }
           InfernalEnd:
@@ -316,13 +338,13 @@
           SpatialStratagem:
           {
             Name: "[c/9C4FFF:2阶] [c/FFD792:“空间谋略”]"
-            Description: 攻击造成暴击时会再次进行暴击判定。如果此次判定再次暴击，提升50%伤害并再次判定一次。
+            Description: 受到伤害后会减半受到的伤害（包括触发该效果的伤害），持续2秒，并获得20%伤害，持续4秒。此效果有30秒冷却时间。（在冷却时间内受到伤害时会重置冷却时间）
             Unlock: "[c/9D9D9D:已锁定：] 击败来自星海苍穹的除了最终Boss以外的所有Boss"
           }
           WeaknessExploit:
           {
             Name: "[c/9C4FFF:2阶] [c/FFD792:“弱点特效”]"
-            Description: 攻击造成暴击时会以原伤害10%的真实伤害额外命中一次（不会击杀）。生命值低于20%或眩晕的敌人则会受到30%伤害。
+            Description: 暴击伤害的10%会转化为真实伤害（不会造成击杀），用原版的减益攻击敌人时会额外造成15%真实伤害。
             Unlock: "[c/9D9D9D:已锁定：] 击败专家模式下的石巨人"
           }
           Aprismatism:
@@ -346,7 +368,7 @@
           CyclicHunter:
           {
             Name: "[c/C2BDFF:1阶] [c/FFEED1:“循环猎手”]"
-            Description: 在击败一名敌人时，获得8点魔力、10%伤害和50%移动速度加成半秒。此效果有2秒冷却时间。
+            Description: 在击败一名敌人时，获得8点魔力和10%伤害加成半秒。此效果有2秒冷却时间。
             Unlock: "[c/9D9D9D:已锁定：] 击败困难模式下的史莱姆王"
           }
           LivingDead:
@@ -358,7 +380,7 @@
           BeyondInfinity:
           {
             Name: "[c/D82BFF:3阶] [c/FFC258:“超越无限”]"
-            Description: 当生命值达到500或更高时，所有造成的伤害都会翻倍。当生命值低于500点时降低10%造成的伤害，每100点生命值都会使数值提高10%。
+            Description: 当处于战斗状态时，每过两秒便会获得10%伤害加成，至多获得100%伤害加成。伤害加成会在你造成伤害时降低，且受到伤害时会重置伤害加成。
             Unlock: "[c/9D9D9D:已锁定：] 击败所有泰拉瑞亚Boss"
           }
           KeyOfChronology:
@@ -414,7 +436,7 @@
             19: 这是一件传说中的近战神器！这个精华所制成的武器可以对任何敌人造成crippling减益！
             20: 这个精华将创造一个辅助物品。如果你能活下去，它将给你和你的队友带来强大的增益。
             21: 光之战士给了我这个精华的灵感。它似乎是一把通往无限武器的宝库的钥匙，能造成召唤伤害
-            22: 如果你感觉灵感来了，试着把你的敌人If you feel inspired, try referring to your foes as mongrels.
+            22: 如果你感觉灵感来了，试着把你的敌人称作杂种。
             23: 这个精华能创造一个具有高魔力消耗的远程武器，拥有极高的暴击伤害修正。
             24: 可以用吗？当然可以。理论这全都是你的。
             25: 这是一件召唤武器。它似乎有非常独特的缩放属性，而且攻击速度惊人。
@@ -473,11 +495,16 @@
             78: 这片墓地似乎和这种精华有所联系。希望这些墓碑不是你死后留下的，对吧？
             79: 嗯……这个召唤武器的精华可以用于制造某种遥控无人机——我想知道能不能和它们交流。
             80: 这确实是一把近战武器——此外，它似乎在远距离表现出色,也能在近身搏斗中提供额外火力。真不错。
-            81: I plundered a Ranged-sort of essence from the likeness of those pirates. Sea... water... Actually, looks like I'm nearly dry with ocean jokes, so I'll anchor myself now.
+            81: 我从那些像是海盗的家伙手里抢来了这个远程精华。……礁礁这石什么！呃……讲真的，我的航海笑话快讲干了，我现在该抛锚补货了。
             82: 呃呃，我不确定这个精华能做出什么东西，只知道它是把召唤武器。你最好亲自试试，免得你搞砸了。
             83: 这个时钟是一把召唤武器-看起来它会召唤出一只可爱的时间盟友。如果你能适应她的战斗风格，她会给你提供很大的帮助。
             84: 唔……也许你能用它躲开来袭的攻击……？
-	    85: 看上去这把远程武器能轻易击溃成群的敌人。听起来它能派上用场——尤其是那个摆动的巨型棺木。
+            85: 看上去这把远程武器能轻易击溃成群的敌人。听起来它能派上用场——尤其是那个摆动的巨型棺木！
+            86: 看上去这个精华兼备了魔法与近战——它已经开始噼啪作响了。试一试怎么样？
+            85: 看上去这把远程武器能轻易击溃成群的敌人。听起来它能派上用场——尤其是那个摆动的巨型棺木！
+            87: 这个精华怎么样？它将给予你一层附魔屏障，保护你免受伤害而无后顾之忧。
+	    88: Seems that this Essence came from that voodoo doll we found in the Underworld- a strange sight. Are you certain that using a weapon like this is worth the risk?
+            89: Who am I kidding- of course you're certain! You're MY Starbearer, after all! Just don't get TOO reckless, now. I don't think resurrection is something I can pull off on you.
 
           }
           Eridani:
@@ -490,7 +517,7 @@
             6: 不管它是什么，它应该对你有用。忽略它说的事实。
             7: 我为你准备了一种精华。它能创造一个魔法类型武器。显然，为了更好地运用这把武器，你需要卡点。
             8: 我相信你能轻易掌握它。好吧，“相信”是个谎言。也许有1/4的怀疑。
-            9: 这个精华是用来制作 "Death in Four Acts "的升级版。它很可能拥有很强大的远程强度。
+            9: 这个精华是用来制作 "四幕之内的死亡"的升级版。它很可能拥有很强大的远程强度。
             10: 此精华制成的武器是基于音乐的…卡好挥舞的时机才能完美使用它。
             11: 就算只是拿着它也会让你感受到某种节奏……
             12: 这个精华将创造一个屠龙的传说武器。跃至空中，用它的力量刺穿你的敌人。
@@ -568,7 +595,10 @@
             84: 这个怎么样；据我所知，我们和之前那些海盗……呃，算是“合作”制造出了这个精华，它造成远程伤害。接好了。
             85: 我不知道该怎么定义这个召唤类型的精华，所以我准备把它留给你练手。呃……祝你好运。
             86: 这把召唤武器能召唤出一只迷人的时间生物，它同时兼顾了攻击与防御。
-	    87: 这个精华对应了一把远程武器，但它似乎更适合在近距离发挥作用。别靠的太近了，但尽量发挥出它的特性。
+            87: 这个精华对应了一把远程武器，但它似乎更适合在近距离发挥作用。别靠的太近了，但尽量发挥出它的特性。
+            88: 它似乎将一个近战精华和远程精华的串联起来了。就我看，它能制作出一把掌控雷霆之力的强大武器。
+            89: 这个精华对应了一件辅助工具。它将赋予你一层牢固的屏障，并从你的敌人那里汲取生命能量……这将是一件得力的工具。
+	    90: This Essence seems to have resonated from that strange poppet we found in the Underworld. Beware its dangers- your affinity with resurrection is... tentative.
           }
           Perseus:
           {
@@ -763,7 +793,7 @@
               1: 你做到了！石巨人不复存在。你势不可挡。
               2: 我感觉下一个敌人……很危险。似乎天体能量在地牢入口周围聚集。
               3: 天体序列有了另一项升级。看起来很强大。
-              4: Well, that's about everything.
+              4: 嗯，差不多就这些了。
             }
             Eridani:
             {
@@ -874,20 +904,37 @@
               4: 等等，这是最后的天体序列能力，被激活了？真令人难以置信。
             }
           }
+          Dioskouroi:
+          {
+            Asphodene:
+            {
+              1: Now that was a strange fight... I don't even think those twins even realized we were there!
+              2: They weren't human, but probably a sort of demonkin. I felt some Starfarer trace on them- perhaps the First Starbearer defeated them in the past.
+              3: I don't know why Perseus told US to fight them, or even how we were able to. Unless... maybe Perseus found a way to turn Essences into their past selves? Hmm...
+              4: Our battle seems to have left a strange remnant object- I'll leave it in your care. You should probably take care of it.
+            }
+            Eridani:
+            {
+              1: Even though we're the ones who bested them, those demon twins barely even gave us a glance.
+              2: From the remnant mana on them, those twins were most likely laid low by the First Starbearer ages ago.
+              3: As for why Perseus told us to fight them... I don't know. I'm not even sure how we were able to fight them- Perhaps we fought an Essence given agency?
+              4: There's this strange object left over after the battle. I would take good care of it, if I were you. I believe it will be useful later.
+            }
+          }
           Nalhaun:
           {
             Asphodene:
             {
               1: 所以这就是复光之君。他的刀刃威力惊人，而魔法更是强大。你挺过来了，这也是一次胜利。
               2: 我看来，复光之君应该算被打败了。此外，这里还有一处疑点。
-              3: 我不知道珀尔修斯为什么要我们和他战斗，甚至不知道为什么我们就要去做。除非……或许帕尔修斯找到了一种办法把精华变成了活物？嗯……
+              3: 我想我们该把它加入到我们的收藏中——这没什么坏处。
               4: 我认为我们可以把他的武器据为己有，作为一种新的天体新星使用。也许是因为承星者的影响？
             }
             Eridani:
             {
               1: 复光之君已经倒下了。多么强大的敌人啊。要是我们在他的全盛时期与其战斗，我想都不敢想我们会有怎样的结果。
               2: 现在看来，复光之君在很久以前就被最初的星海旅者击败了。
-              3: 至于为什么珀尔修斯让我们和他战斗，我不知道。我甚至不知道我们是如何与他战斗的。也许我们只是与赋予生命的精华战斗？
+              3: 来看看这个奇怪的物体——它一定有什么意义。既然我们谈到了这个话题……
               4: 他的武器，魔剑·莱瓦汀。我们可以自己使用，作为一种天体新星。也许是因为承星者的影响？
             }
           }
@@ -1089,13 +1136,13 @@
           {
             Asphodene:
             {
-              1: 你已经击败了硫磺火元素。看来在灾厄把它撕成碎片之前，它们是地狱的强大文明中受人尊敬的女神。
-              2: 我说我们要尽早与她对峙，而不是迟早。她一定强到离谱，但是……我们至少得做点什么。
+              1: 你战胜了硫磺火元素。在这里被付之一炬前，她似乎曾是地狱强大文明所崇拜的女神。
+              2: 施下这场暴行的定是一位可怕的敌人。尽管我喜欢挑战，但实话实说：我们必须得变得更强。
             }
             Eridani:
             {
               1: 烈火燃烧着的灵魂已不复存在。硫磺火的文明一定很强大，才会如此崇拜这种元素。我们只是在她最弱的时候与她战斗。
-              2: 如果我们所知道的是正确的，灾厄是硫磺火王国的终结者。虽然我想结束她的罪行，但我们必须先变得更强大。
+             2: 造成这场破坏的根源必须被遏制……我们必须变得更强才能做到。
             }
           }
           Calamitas:
@@ -1187,9 +1234,9 @@
         {
           Nalhaun:
           {
-            1: 我们又见面了，{0}。我需要你的帮助。
-            2: 我给予了你“远古碎片”，有了它，你可以召唤出一个强大的敌人，复光之君。
-            3: 如果我的假设是正确的，他可能是对抗最初的承星者的重要一步，并阻止他的暴行。
+            1: 我们又见面了，{0}。又一次，还有一个敌人需要你打败。
+            2: I've given you the 'Ancient Crown.' With it, you can call forth a powerful foe, the Burnished King.
+            3: If my hypothesis is correct, his defeat will resonate a clue towards the First Starbearer's location.
             4: 做好准备：这是一场苦战。
           }
           Penth:
@@ -1199,11 +1246,11 @@
             3: 这是继续追寻最初的承星者的另一重要步骤。
             4: 做好准备。这是一场苦战。
           }
-          Arbitration:
+          Dioskouroi:
           {
-            1: 我们又双见面了，{0}。我又有一个敌人需要你去击败。
-            2: 我给予了你“恶魔十字架”，当使用时，它会召唤出一个强大的恶魔。
-            3: 这是追寻最初的承星者的另一个重要步骤。
+            1: We meet again, {0}. I need your help.
+            2: This is the 'Twincrux Pendant.' When used, it will call forth powerful warring demons.
+            3: There may be an important step towards confronting the First Starbearer and stopping his rampage during this encounter.
             4: 做好准备。
           }
           Warrior:
@@ -1877,7 +1924,7 @@
             {
               Dialogue:
               {
-                0: 幸会！我是爱丝福德妮——一位星海旅者，相对地，你就是我的星之传承者。
+                0: 幸会！我是爱丝福德妮——一位星海旅者，相对地，你就是我的承星者。
                 1: 我将赋予你力量，以便我们能共同清除世界上的威胁——如果事态良好的话，我们还能解决更严重的问题。
                 2: 不过对你来说还会有更多的好处。若你愿意，我可以帮你描述一下我还能做什么。我比较推荐你听一听！
               }
@@ -1977,7 +2024,7 @@
                 14: 我知道他有些孤僻，但是……我希望我们能多些交流。保重，珀尔修斯。不过，我总感觉他有事瞒着我？只是对我这样吗？
                 15: 无论如何，他说的很有道理。我确实感觉自己变强了——我的头发也在闪烁！这种力量对于我们前行来说再好不过啦。
                 16: 看上去我的天体新星叫做“虚无圣刃”。也许随着我们不断击败强大的敌人，还会有更多能力供我们使用。
-                17: 绑定天体新星钥匙之后，你就能通过空间光盘装备天体新星了，就像平时一样。
+                17: 绑定天体新星键之后，你就能通过空间光盘装备天体新星了，就像平时那样。
                 18: 你应该已经有一些棱镜核心了。凭借它们的力量，我猜你可以通过锻造来升级天体新星。
                 19: 这很重要，你需要天体新星能量来投射星体。天体新星能量会在战斗中累积，当你脱战时则会快速减少。
               }
@@ -2007,7 +2054,7 @@
                 13: 目前就这些了。我必须继续追踪初代星海旅者。祝你好运——我很快就会需要你的帮助。
                 14: 珀尔修斯不喜欢过多逗留。我觉得他说的没错……无论如何，这股力量真是难以置信，但我需要一点时间来熟悉它。
                 15: 我的天体新星叫做“虚无圣刃”。也许随着我们变强，我们能使用更多能力。
-                16: 绑定天体新星钥匙之后，你就能通过空间光盘装备天体新星了，就像平时一样。
+                16: 绑定天体新星键之后，你就能通过空间光盘装备天体新星了，就像平时一样。
                 17: 你可以通过棱镜核心来锻造并升级你的天体新星，我想。你可以直接把它们添加到菜单上。
                 18: 别忘了：你需要天体新星能量来投射星体。天体新星能量只会在战斗中积累。
                 19: 差不多就是这样……我知道这有点难以接受，但请善用你的天体新星。暂时就这么多了。
@@ -2365,7 +2412,7 @@
               Dialogue:
               {
                 0: 感谢你们的及时到来。这正是我想要的，谢谢你们。
-								1: 正如我承诺的那样，我会给你们一个装有星体聚焦的包裹。我总是忘记给自己的作品贴标签，这次一定不会了。
+                1: 正如我承诺的那样，我会给你们一个装有星体聚焦的包裹。我总是忘记给自己的作品贴标签，这次一定不会了。
               }
               Choices:
               {
@@ -2378,7 +2425,7 @@
               Dialogue:
               {
                 0: 我很好奇你们母星上魔法的力量。听说有一本魔法书能从稀薄的空气中变出水来。
-								1: 你能帮我找来一本吗？很抱歉给你们带来麻烦。
+                1: 你能帮我找来一本吗？很抱歉给你们带来麻烦。
               }
               Choices:
               {
@@ -2391,7 +2438,7 @@
               Dialogue:
               {
                 0: 我注意到一件奇怪的工具；一把用来送别死者的乐器。我很好奇它的构造。
-								1: 你能帮我找来一件吗？很抱歉给你们带来麻烦。
+                1: 你能帮我找来一件吗？很抱歉给你们带来麻烦。
               }
               Choices:
               {
@@ -2404,7 +2451,7 @@
               Dialogue:
               {
                 0: 如果这个要求不算太过分的话，我希望能亲眼看看那些金蝴蝶。那些纯金生物是怎么飞起来的？
-								1: 你能帮我找来一只吗？很抱歉给你们带来麻烦。
+                1: 你能帮我找来一只吗？很抱歉给你们带来麻烦。
               }
               Choices:
               {
@@ -2417,7 +2464,7 @@
               Dialogue:
               {
                 0: 如果你们能带给我一张“飞毯”，我将不胜感激。我对它的移动效率表示明显怀疑。
-								1: 你能帮我找来一张吗？很抱歉给你们带来麻烦。
+                1: 你能帮我找来一张吗？很抱歉给你们带来麻烦。
               }
               Choices:
               {
@@ -2430,7 +2477,7 @@
               Dialogue:
               {
                 0: 我听说了一件神奇的饰品：一个能提供暂时熔岩免疫的护身符……
-								1: 你能帮我找来一个吗？很抱歉给你们带来麻烦。
+                1: 你能帮我找来一个吗？很抱歉给你们带来麻烦。
               }
               Choices:
               {
@@ -2443,7 +2490,7 @@
               Dialogue:
               {
                 0: 如果你有一件能追踪周围稀有生物的饰品，我会很乐意看看它的。
-								1: 你能帮我找来一个吗？很抱歉给你们带来麻烦。
+                1: 你能帮我找来一个吗？很抱歉给你们带来麻烦。
               }
               Choices:
               {
@@ -2589,8 +2636,8 @@
             Eridani:
             {
               1: 清单上下一条是什么？
-							2: 天体新星更新完毕。下一步呢？
-							3: 天体新星变更已确认。干的漂亮。你还需要什么吗？
+              2: 天体新星更新完毕。下一步呢？
+              3: 天体新星变更已确认。干的漂亮。你还需要什么吗？
             }
           }
           AfterArrayDialogue:
@@ -2598,20 +2645,20 @@
             Asphodene:
             {
               1: 好了，天体新星更改完成。你接下来要做什么？
-							2: 天体新星更改完毕了？干得漂亮。
-							3: 天体新星更改完毕。你还有别的打算吗？
+              2: 天体新星更改完毕了？干得漂亮。
+              3: 天体新星更改完毕。你还有别的打算吗？
             }
             Eridani:
             {
               1: 好了，天体阵列更改完成。你还需要什么吗？
-							2: 看来你已经完成了天体阵列的修改，干得漂亮。
-							3: 天体阵列更改完毕。暂时就这么多了，除非你还有别的想法？
+              2: 看来你已经完成了天体阵列的修改，干得漂亮。
+              3: 天体阵列更改完毕。暂时就这么多了，除非你还有别的想法？
             }
           }
           AfterCartographyDialogue:
           {
             Asphodene: 你改变主意了吗？
-						Eridani: 你还有其它打算吗？
+            Eridani: 你还有其它打算吗？
           }
         }
         StarfarerMenuButtons:
@@ -2705,7 +2752,7 @@
               7: 接受你的命运。
               8: 从你反抗的那一刻起，你的命运已然注定了。
               9: 我会让你见证我真正的力量。
-              10: 等等，我们又在用哪一招了？……是这个吗？
+              10: 等等，我们又在用哪一招了？
             }
             2:
             {
@@ -2966,6 +3013,11 @@
           Label: Disable Boss Enemy Spawn Mod
           Tooltip: Disables the buff granted to all players that prevents mob spawning during bosses.
         }
+        DisableManaSicknessChange:
+        {
+          Label: Disable Mana Sickness Change
+          Tooltip: Disables the change to Mana Sickness that applies the damage reduction to all damage and not just Magic.
+        }
         ColorblindBoss:
         {
           Label: Enable colorblind-friendly Penthesilea fight
@@ -2998,14 +3050,17 @@
         Arbitration: 仲裁
         AstralCell: 群星细胞
         DummyEnemy: 假想木偶
-        Nalhaun: 复光之君，纳尔赫恩
+        PolluxBoss: Pollux, Baleborn of Ice
+        CastorBoss: Castor, Baleborn of Fire
+        Dioskouroi: Dioskouroi, the Twin Forces
+        NalhaunBoss: 复光之君，纳尔赫恩
+        NalhaunBossPhase2: 空洞世界的统治者，纳尔赫恩
         PaintedAttendantA: 复生画刷
         PaintedAttendantB: 复生画刷
         Penthesilea: 多彩魔女，彭忒希勒娅
         PrismLoot: 棱镜核心
         SpectreOfLight: 光之幽灵
-        Tsukiyomi: 源初之星海旅者，月读
-        Tsukiyomi2: 救赎之裔，月读
+        TsukiyomiBoss: 源初之星海旅者，月读
         VagrantOfSpaceAndTime: 时空流浪者
         WarriorOfLight: 光之战士
       }
@@ -3434,7 +3489,7 @@
           被第一位星海旅者击败的世界之记忆
           可以在[c/EFB43E:极北之观星台]的星门使用，将你带至[c/7FC1EF:永恒汇流]
           再次在[c/7FC1EF:永恒汇流]的中心使用，将会召唤[c/F1AF42:源初之星海旅者，月读]
-          [c/7FC1EF:或者，如果无法达到使用条件，也可以直接使用此物品召唤阅月读]
+          [c/7FC1EF:或者，如果无法达到使用条件，也可以直接使用此物品召唤月读]
           不消耗
           “……”
           '''
@@ -5275,7 +5330,7 @@
         CaesuraOfDespair: 《绝望之苏拉》
         CarianDarkMoon: 卡利亚的暗月
         ClaimhSolais: 克劳索拉斯
-        AncientShard: 远古碎片
+        AncientShard: 远古王冠
         Bifrost: 寰宇虹桥
         BladeOrb: 剑意球
         BlueOrb: 蓝色信号球
@@ -5502,7 +5557,7 @@
         PleniluneGaze: 循循守月
         AlchemicPrism: 炼金棱晶
         ApocryphicPrism: 伪经棱晶
-        BurnishedPrism: 抛光棱晶
+        BurnishedPrism: 复光棱晶
         CalamitousPrism: 灾难棱晶
         CastellicPrism: 种姓棱晶
         CrystallinePrism: 水晶棱晶
@@ -6381,6 +6436,7 @@
       }
       BuffDescription:
       {
+        ManaSicknessAlter: 所有的伤害降低{0}%
         Afterburner: 所有的攻击都必定暴击
         AfterburnerCooldown: 不能发动加力燃烧
         AmmoRecycle: 移动速度大幅增加并增加10%伤害
@@ -6761,7 +6817,7 @@
         }
         Nalhaun:
         {
-          SpawnInfo: 通过击败任一机械Boss从你的星海旅者获取的远古碎片来击败这个年迈的君主。(前提是时空流浪者被击败。)
+          SpawnInfo: 通过击败任一机械Boss从你的星海旅者获取的远古王冠来击败这个年迈的君主。(前提是时空流浪者被击败。)
           DespawnMessage: 君主的绯红之刃再度回响……
         }
         Penthesilea:
@@ -6769,14 +6825,19 @@
           SpawnInfo: 通过击败世纪之花从你的星海旅者获取的无垢画布来面对这位敌人。(前提是时空流浪者被击败。)
           DespawnMessage: 你被洒开了……
         }
+        Dioskouroi:
+        {
+          SpawnInfo: Duel(?) these powerful twin demons through defeating a mechanical boss and obtaining the Twincrux Pendant.
+          DespawnMessage: Without binds, the Dioskouroi move their conflict elsewhere...
+        }
         Arbitration:
         {
-          SpawnInfo: 这个敌人具现了真正的恐惧……在石巨人被击败后从你的星海旅者获取恶魔十字架。 (前提是时空流浪者被击败。)
+          SpawnInfo: SpawnInfo: This foe embodies true fear... Discover this foe through visiting an Anomaly location with the Astrolabe's help.
           DespawnMessage: 混沌与秩序交织吞噬了你。
         }
-        Tsukiyomi2:
+        TsukiyomiBoss:
         {
-          SpawnInfo: 最终一刻终于到来。用所有的追忆之迹创造追忆之符，并在天文台使用它来被带入月读的Boss战斗场地。
+          SpawnInfo: The time has finally come. Craft all the Mnemonic Traces together with the Celestriad Root to create the Mnemonic Sigil, and use it to be taken to Tsukiyomi's boss arena.
           DespawnMessage: ……
         }
       }
@@ -6785,18 +6846,20 @@
       {
         Arbitration: 一个神秘的声影，据说是宇宙之平衡的具现。对这个敌人所知甚少……被第一位星海旅者撕成碎片。
         AstralCell: 时空流浪者召唤的奇怪蓝色物体。它的食物是水汽。
-        Nalhaun: 一位强大的君主，被诅咒为永生，即使他的王国分崩离析。他的最后一位侍从在她临终前赋予了他召唤强大怪物的能力。他孑然一身在荒芜的星球上直到第一位星海旅者结束了他漫长而悲惨的统治。
+        Nalhaun: A once mighty monarch, cursed to live eternally by means of a betrayal from his royal court. He persisted alone on an empty planet until the First Starbearer ended his long and tragic reign, as he would be able to interfere with his plans. While he may have stood a chance at his full might, he was burdened by a dreadful civil war tearing his world apart.
         PaintedAttendantA: 被彭忒希勒娅用来……打你的脸。最好的法师知道什么何时暴力才是唯一解。
-        Penthesilea: 一位杰出的魔女, 多彩魔女曾经统治着完全由她“绘制”的星球。作为骗术师，她掌握了专业的魔法技能，仅为了对同事的作品恶作剧，也正证明了她的才智。但在长时间的冲突后，第一位星海旅者造就了这位魔女的末路。
+        Penthesilea: An incredibly powerful mage, the Painted Witch once ruled a planet entirely 'drawn' by her. Ever the trickster, she mastered expert magecraft simply to play pranks upon the works of her colleagues, a testament to her ingenuity. She met her end at the hands of the First Starbearer after a long conflict- if she were to persist, she would interfere with his plans...
         PrismLoot: 棱晶状的潜在魔法能量有会影响它们在银河中的漂泊。抓住一个，你就会得到奖励！
         SpectreOfLight: 一位异界的英雄，被第一位星海旅者召唤来攻击这片大地。
-        Tsukiyomi2: 源初之星海旅者，月读，掌控并运维着天体轨道。行星及其天然卫星的引力给予她力量。她引诱光之战士入歧途——用他的力量和善意征服并摧毁了无数恒星……然而……
+        TsukiyomiBoss: The First Starfarer, Tsukiyomi, who holds dominion over orbiting celestial bodies. The gravitational pull of a planet and its natural satellites gives her power. She led the Warrior of Light astray- using his strength and goodwill to conquer and destroy myriad stars... and yet...
+        CastorBoss: The Force of Fire, a Baleborn. The Baleborn are an incredibly competitive race of demonkin, and their blood relations have served only to further kindle the fires of conflict. They are completely engrossed in their duel, aware of nothing but their opponent's actions. Ironically, this has made them quite mediocre fighters against any other opponent. They were utterly destroyed by the First Starbearer, attacking him as he unwittingly interfered with their eternal battle. 
+        PolluxBoss: The Force of Ice, a Baleborn. The Baleborn are an incredibly competitive race of demonkin, and their blood relations have served only to further kindle the fires of conflict. They are completely engrossed in their duel, aware of nothing but their opponent's actions. Ironically, this has made them quite mediocre fighters against any other opponent. They were utterly destroyed by the First Starbearer, attacking him as he unwittingly interfered with their eternal battle. 
         VagrantOfSpaceAndTime: 神秘的星海旅者珀尔修斯。他的外表展现了自信……但他只是一个装酷的傻瓜。他的姊妹们也认同这点。
         WarriorOfLight: 光之战士，或者说第一位承星者，曾经通过他的行动和他的星海旅者的帮助维护银河的正义。他曾经统治着一个和平的世界，但无助地看着自己的人民走向灭亡。后发誓再也不让其他人共享同样的命运——无论代价。
         AsteroidWorm: 这些令人难以置信的极端耐寒生物已经获得了在真空中漫无目的漂流的能力——这也许不是关于它们的进化的最佳描述。虽然他、它们的食物很少，但是它们对食物的需求也很低。它们有着强韧的外壳，但是没有什么攻击能力。
         Soulless: 无论“天启”是否降临至雕具星上，它们都是不幸的受害者。漫游的魔力使他们的肉身得以存活，但它们曾经所拥有的任何思维的痕迹已然不见踪影。
         Yojimbo: 一位神秘的流光眷族，他的名字似乎随着你遇到他的时间和地点而改变。他是一位赏金猎人，但是只要你打探的够多，他愿意与你分享一些知识……
-        Garridine: 一位在一个遥远的星际飞船上发现的半狼人，也是一位铁匠和一些奇怪小玩意儿的制造者。她说话的方式掩盖了一些来自上流社会的教养，但是只要当她说错话时（这常常发生），这种现象就会消失。
+        Garridine: A lupine demihuman you discovered residing on a far-flung starship, a blacksmith and gadgeteer. Her manner of speaking belies a high-class upbringing, but the facade tends to drop when she flubs her words (which is often.) Strangely protective of the watch by her side.
         AmethystHeadpiercer: 一个广泛分布的准军事组织的士兵，其被称为紫水晶。统一配备涡轮动力服和喷气背包，使它们即便在真空之中也可以轻松行动。
         AmethystSwordsinner: 一个广泛分布的准军事组织的士兵，其被称为紫水晶。使用强力的光刃攻击，特别擅长反弹远程武器弹幕。
       }
