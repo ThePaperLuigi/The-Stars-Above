@@ -39,7 +39,16 @@ namespace StarsAbove.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 220;
+			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+			{
+				Item.damage = 1500;
+			}
+			else
+			{
+				Item.damage = 277;
+
+			}
+			
 			Item.DamageType = DamageClass.Melee;
 			Item.useStyle = ItemUseStyleID.HiddenAnimation;
 			Item.width = 46;
@@ -329,17 +338,28 @@ namespace StarsAbove.Items
 
 		public override void AddRecipes()
 		{
-			/*
-			CreateRecipe(1)
-				.AddIngredient(ItemID.ChlorophyteBar, 8)
-				.AddIngredient(ItemID.BrokenHeroSword, 1)
-				.AddIngredient(ItemID.Ectoplasm, 10)
-				.AddIngredient(ItemID.SoulofLight, 12)
-				.AddIngredient(ItemID.LunarBar, 12)
-				.AddIngredient(ItemType<AegisCrystal>())
-				.AddIngredient(ItemType<EssenceOfLuminance>())
+			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+			{
+				CreateRecipe(1)
+					.AddIngredient(calamityMod.Find<ModItem>("HellcasterFragment").Type, 15)
+					.AddIngredient(ItemType<EssenceOfSurya>())
+					.AddIngredient(ItemID.DayBreak)
+					.AddIngredient(ItemID.FragmentSolar, 30)
+					.AddTile(TileID.Anvils)
+					.Register();
+
+			}
+			else
+			{
+
+
+				CreateRecipe(1)
+				.AddIngredient(ItemType<EssenceOfSurya>())
+				.AddIngredient(ItemID.DayBreak)
+				.AddIngredient(ItemID.FragmentSolar, 30)
 				.AddTile(TileID.Anvils)
-				.Register();*/
+				.Register();
+			}
 		}
 	}
 }

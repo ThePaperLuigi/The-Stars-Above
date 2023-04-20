@@ -514,6 +514,8 @@
             87: How about this Essence? It'll give you an enhanced barrier, able to protect yourself while helping you deal some damage without worry of repercussions.
             88: Seems that this Essence came from that voodoo doll we found in the Underworld- a strange sight. Are you certain that using a weapon like this is worth the risk?
             89: Who am I kidding- of course you're certain! You're MY Starbearer, after all! Just don't get TOO reckless, now. I don't think resurrection is something I can pull off on you.
+            90: This Essence is aspected to this world's star- your sun! Needless to say, the power of the sun would be quite the boon- let's see this thing in action!
+            91: Hmm, I'd advise healthy amounts of caution with this Essence- it's a Melee essence with high potential, but it looks like you're leaving your defenses open for it.
 
           }
           Eridani:
@@ -608,6 +610,8 @@
             88: Seems like this is a Melee and Magic type Essence in tandem. From what I can see, it'll make a powerful weapon that channels the power of lightning.
             89: This Essence is a support-type item. It'll provide a powerful barrier and allow you to sap life energy from your foes as well... It'll be quite the powerful tool.
             90: This Essence seems to have resonated from that strange poppet we found in the Underworld. Beware its dangers- your affinity with resurrection is... tentative.
+            91: An Essence attuned to the power of our Sun- and it is quite radiant, indeed. Let's make good use of it.
+            92: This Essence exudes an unhealthy amount of madness- it's a Melee weapon that trades defensive prowess for offensive might. Do be careful.
           }
           Perseus:
           {
@@ -829,34 +833,34 @@
           {
             Asphodene:
             {
-              1: This really isn't good... The Celestial Pillars have appeared. They herald the coming of the end.. The Moon Lord.
-              2: Don't lose hope, though. We can beat this. Just another foe to defeat, right?
-              3: At the very least, you have another ability ready in the Stellar Array. It will definitely help.
-              4: No time to tarry. Let's get this over with.
+              1: These Celestial Pillars, they can't be good news- we really can't catch a break.
+              2: Don't lose hope, though... we can beat this. Just another foe to defeat, right? Haha...
+              3: Before you go, there's something else I need to tell you. I can sense something else other than the Pillars.
+              4: I can't quite place it, but I have the feeling like you should take advantage of nighttime soon.
             }
             Eridani:
             {
-              1: I knew it.. the Celestial Pillars have descended. This does not bode well.
-              2: With our current circumstances, I think you're the only one with a good enough shot at besting the Moon Lord.
-              3: With this next Stellar Array upgrade, hopefully it'll be enough.
-              4: There's no time to lose. Let's get going.
+              1: I knew it.. something wasn't right about that Cultist. These Celestial Pillars do not inspire confidence.
+              2: With our current circumstances, I think you're the only one with a good enough shot at besting this threat.
+              3: One more thing: I can sense something other than the Pillars approaching. It is entirely different in nature.
+              4: This is only a hunch, but I would advise you to proceed with any tasks that require the night soon.
             }
           }
           MoonLord:
           {
             Asphodene:
             {
-              1: You've done it! The Moon Lord.. has been vanquished! I knew you could do it.
+              1: You've done it! The Moon Lord has been vanquished! I knew you could do it.
               2: The Moon Lord's defeat has strengthened your Stellar Array. A reward well deserved.
               3: We've come a long way. You have grown stronger than I have ever imagined. However, I can sense it isn't over yet.
               4: The sky's light has grown incredibly harsh. Something's definitely wrong...
             }
             Eridani:
             {
-              1: The Moon Lord has been defeated.. What a wonderful victory.
+              1: The Moon Lord has been defeated... What a wonderful victory.
               2: Looks like its defeat has granted the Stellar Array even more power.
               3: I fear our journey isn't over yet. We must press onwards. In fact...
-              4: The light has grown incredibly harsh. Something's definitely wrong...
+              4: The light has grown incredibly harsh. Something's definitely wrong.
             }
           }
           WarriorOfLight:
@@ -1259,14 +1263,14 @@
           {
             1: We meet again, {0}. I need your help.
             2: This is the 'Twincrux Pendant.' When used, it will call forth powerful warring demons.
-            3: There may be an important step towards confronting the First Starbearer and stopping his rampage during this encounter.
+            3: This foe was once bested by the First Starbearer. My hope is that by studying your conflict with this simulacrum, we may yet find clues to his location.
             4: Prepare yourself well.
           }
           Warrior:
           {
-            1: You can tell as well as I that the situation has turned dire, {0}.
-            2: The First Starbearer's gaze has been turned to you, and his power has blanketed the world in overwhelming Light.
-            3: I have given you the 'Progenitor's Wish.' It will serve as a way to draw him out. From then on, it will be your strength against his determination.
+            1: You can tell as well as I that the situation has turned dire, {0}. The Celestial Pillars has drawn the ire of our greatest foe.
+            2: The First Starbearer's gaze has been turned to this realm, and his power has blanketed the world in overwhelming Light...
+            3: I have given you an artifact fashioned from the Essences of your past battles. It will serve as a way to draw him out.
             4: Please, you must win this fight. The stakes have never been higher.
           }
         }

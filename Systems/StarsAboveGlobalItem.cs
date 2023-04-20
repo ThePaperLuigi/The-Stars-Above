@@ -190,7 +190,8 @@ namespace StarsAbove
 			ModContent.ItemType<Nanomachina>(),
 			ModContent.ItemType<LevinstormAxe>(),
 			ModContent.ItemType<SanguineDespair>(),
-
+			ModContent.ItemType<SunsetOfTheSunGod>(),
+			ModContent.ItemType<ManiacalJustice>(),
 
 			ModContent.ItemType<EssenceOfAdagium>(),
 			ModContent.ItemType<EssenceOfBloodshed>(),
@@ -238,7 +239,8 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfLightning>(),
 			ModContent.ItemType<EssenceOfNanomachines>(),
 			ModContent.ItemType<EssenceOfDespair>(),
-
+			ModContent.ItemType<EssenceOfMania>(),
+			ModContent.ItemType<EssenceOfSurya>(),
 		};
 
 		public List<int> Prisms = new List<int>() {
@@ -422,6 +424,8 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfTheBehemothTyphoon>(),
 			ModContent.ItemType<EssenceOfLightning>(),
 			ModContent.ItemType<EssenceOfNanomachines>(),
+			ModContent.ItemType<EssenceOfMania>(),
+			ModContent.ItemType<EssenceOfSurya>(),
 
 
 

@@ -60,6 +60,8 @@ namespace StarsAbove
 				SkyManager.Instance["StarsAbove:Void"] = new VoidSky();
 				//Filters.Scene["StarsAbove:EverlastingLight"] = new Filter(new ScreenShaderData("FilterMoonLord"), EffectPriority.Low);
 				SkyManager.Instance["StarsAbove:EverlastingLight"] = new EverlastingLightSky();
+				SkyManager.Instance["StarsAbove:EverlastingLightPreview"] = new EverlastingLightSkyPreview();
+
 				SkyManager.Instance["StarsAbove:CorvusSky"] = new CorvusSky();
 
 				SkyManager.Instance["StarsAbove:ObservatorySkyDay"] = new ObservatorySkyDay();

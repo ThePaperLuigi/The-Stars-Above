@@ -220,11 +220,11 @@ namespace StarsAbove.Items
 		public override void AddRecipes()
 		{
 			CreateRecipe(1)
-				.AddIngredient(ItemID.BrokenHeroSword, 1)
-				.AddIngredient(ItemID.Ruby, 1)
-				.AddIngredient(ItemID.Sapphire, 1)
-				.AddIngredient(ItemID.LunarBar, 20)
-				.AddIngredient(ItemType<EssenceOfTheChimera>())
+				.AddIngredient(ItemID.PsychoKnife, 1)
+				.AddIngredient(ItemID.Bone, 12)
+				.AddIngredient(ItemID.Skull, 1)
+				.AddIngredient(ItemID.BoneSword, 1)
+				.AddIngredient(ItemType<EssenceOfMania>())
 				.AddTile(TileID.Anvils)
 				.Register();
 		}

@@ -8030,7 +8030,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheSun").Type);
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSurya").Type);
                         dialoguePrep = false;
                     }
 
@@ -8053,7 +8053,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheSun").Type);
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSurya").Type);
                         dialoguePrep = false;
                     }
 

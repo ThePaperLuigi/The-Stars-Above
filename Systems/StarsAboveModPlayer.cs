@@ -7472,6 +7472,13 @@ namespace StarsAbove
                     break;
                 }
             }
+            if (NPC.downedAncientCultist && !NPC.downedMoonlord && SubworldSystem.Current == null)
+            {
+
+                Player.AddBuff(BuffType<Buffs.EverlastingLightPreview>(), 2);
+                
+
+            }
             if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior && SubworldSystem.Current == null)
             {
 
