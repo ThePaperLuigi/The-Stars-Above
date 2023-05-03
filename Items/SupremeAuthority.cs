@@ -1,7 +1,14 @@
 using Microsoft.Xna.Framework;
+using StarsAbove.Buffs;
+using StarsAbove.Buffs.SupremeAuthority;
 using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles.EternalStar;
+using StarsAbove.Projectiles.LevinstormAxe;
+using StarsAbove.Projectiles.SupremeAuthority;
+using StarsAbove.Utilities;
+using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
@@ -17,16 +24,17 @@ namespace StarsAbove.Items
 			DisplayName.SetDefault("Supreme Authority");
 			Tooltip.SetDefault("" +
                 "Attacks with this weapon swing in a close-ranged arc" +
-                "\nRight click friendly NPCs to mark them as a [Sacrifice]" +
+                "\nRight click friendly NPCs to mark them as a [Sacrifice] for 5 minutes" +
                 "\nPressing the Weapon Action Key will consume all [Sacrifices] and grant [Deified] for 60 seconds (Unable to mark or consume [Sacrifices] when [Deified])" +
-                "\nWhile [Deified], maximum HP and damage taken is halved while gaining immunity to most debuffs" +
+                "\nWhile [Deified], maximum HP and damage taken are halved, and most debuffs are resisted" +
                 "\nAdditionally, gain stacks of [Dark Aura] depending on the amount of [Sacrifices] consumed" +
                 "\n[Deified] grants 10% increased attack speed and attacks grant up to two stacks of [Encroaching]" +
-                "\nWith two stacks of [Encroaching], right click to unleash [Disappear],  dealing bonus damage based on [Dark Aura]" +
+                "\nWith two stacks of [Encroaching], right click to unleash [Disappear], dealing bonus damage based on [Dark Aura]" +
                 "\nAdditionally, [Disappear] deals 1% of the foe's Max HP in bonus damage, increased with [Dark Aura]" +
-                "\nPresing the Weapon Action Key while [Deified] will extend the duration by 30 seconds, but will drain HP (Can be activated multiple times)" +
-                "\nDying while [Deified] has been extended will curse the world, causing nearby to deal 20% more damage to all players for 10 minutes" +//[playername] returned to the void.
-				"\nAdditionally, if [Deified] ends while a boss is active, inflict [Mortality], slowing movement speed and doubling damage recieved" +
+                "\nPresing the Weapon Action Key while [Deified] will extend the duration by 30 seconds, but will consume 50% of current HP (Can be activated multiple times)" +
+                "\nAdditionally, you will be inflicted with [Atrophied Deity], preventing natural health regeneration" +
+                "\nDying with [Atrophied Deity] will curse all allies with Potion Sickness for 2 minutes" +//[playername] returned to the void.
+				"\nAdditionally, if [Deified] ends while a boss is active, inflict [Mortality] for 15 seconds, slowing movement speed and doubling damage recieved" +
 				$"");  //The (English) text shown below your weapon's name
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -35,18 +43,19 @@ namespace StarsAbove.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 442;           //The damage of your weapon
+			Item.damage = 120;           //The damage of your weapon
 			Item.DamageType = DamageClass.Magic;          //Is your weapon a melee weapon?
-			Item.mana = 90;
+			Item.mana = 0;
 			Item.width = 40;            //Weapon's texture's width
 			Item.height = 40;           //Weapon's texture's height
-			Item.useTime = 60;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
-			Item.useAnimation = 60;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
-			Item.useStyle = 5;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
-			Item.knockBack = 6;         //The force of knockback of the weapon. Maximum is 20
+			Item.useTime = 20;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
+			Item.useAnimation = 20;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
+			Item.useStyle = ItemUseStyleID.HiddenAnimation;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
+			Item.knockBack = 0;         //The force of knockback of the weapon. Maximum is 20
 			Item.rare = ItemRarityID.Purple;              //The rarity of the weapon, from -1 to 13
 			Item.UseSound = SoundID.Item1;      //The sound when the weapon is using
 			Item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
+			Item.noUseGraphic = true;
 			Item.shoot = ProjectileType<EmblazonedCitrine>();
 			Item.shootSpeed = 15f;
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
@@ -61,25 +70,7 @@ namespace StarsAbove.Items
 
 			if (player.altFunctionUse == 2)
 			{
-				if (!player.HasBuff(BuffType<Buffs.EternalStar.ImmemorialSupernova>()) && player.GetModPlayer<WeaponPlayer>().EternalGauge >= 100)
-				{
-					/*for (int d = 0; d < 10; d++)
-					{
-						Dust.NewDust(player.Center, 0, 0, 15, 0f + Main.rand.Next(-10, 10), 0f + Main.rand.Next(-5, 5), 150, default(Color), 1.5f);
-					}
-					for (int d = 0; d < 28; d++)
-					{
-						Dust.NewDust(player.Center, 0, 0, DustType<Dusts.bubble>(), 0f + Main.rand.Next(-25, 25), 0f + Main.rand.Next(-15, 15), 0, default(Color), 1.5f);
-					}*/
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), Main.MouseWorld, Vector2.Zero, Mod.Find<ModProjectile>("ImmemorialSupernovaProjectile").Type, player.GetWeaponDamage(Item), 0, player.whoAmI);
-					player.GetModPlayer<WeaponPlayer>().EternalGauge = 0;
-					player.AddBuff(BuffType<Buffs.EternalStar.ImmemorialSupernova>(), 300);
-					return true;
-				}
-				else
-				{
-					return false;
-				}
+				
 
 			}
 			return base.CanUseItem(player);
@@ -91,62 +82,110 @@ namespace StarsAbove.Items
 
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
 		{
-			// Add Onfire buff to the NPC for 1 second
-			// 60 frames = 1 second
 			
 		}
-		public override Vector2? HoldoutOffset()
-		{
-			return new Vector2(-18, -15);
-		}
-		public override bool? UseItem(Player player)
+        public override void HoldItem(Player player)
         {
-			
+			if (player.whoAmI == Main.myPlayer && StarsAbove.weaponActionKey.JustPressed)
+			{
+				//Spawn the eye. After a short delay it consumes all marked NPCs and grants Deified. Logic goes there.
+				if (!player.HasBuff(BuffType<DeifiedBuff>()))
+				{
+					if (player.ownedProjectileCounts[ProjectileType<SupremeAuthorityEye>()] < 1)
+					{
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<SupremeAuthorityEye>(), 0, 0, player.whoAmI, 0f);
 
+
+					}
+				}
+
+			}
+
+			base.HoldItem(player);
+        }
+
+        public override bool? UseItem(Player player)
+        {
+			if(player.altFunctionUse == 2 && !player.HasBuff(BuffType<DeifiedBuff>()))
+            {
+				for (int i = 0; i < Main.maxNPCs; i++)
+				{
+					NPC npc = Main.npc[i];
+					if (npc.active && npc.friendly && npc.townNPC && npc.Distance(player.GetModPlayer<StarsAbovePlayer>().playerMousePos) < 30)
+					{
+						npc.AddBuff(BuffType<AuthoritySacrificeMark>(), 18000);
+					}
+				}
+				float dustAmount = 24f;
+				for (int i = 0; (float)i < dustAmount; i++)
+				{
+					Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+					spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(14f, 14f);
+					//spinningpoint5 = spinningpoint5.RotatedBy(player.velocity.ToRotation());
+					int dust = Dust.NewDust(player.Center, 0, 0, DustID.GemTopaz);
+					Main.dust[dust].scale = 2f;
+					Main.dust[dust].noGravity = true;
+					Main.dust[dust].position = player.Center + spinningpoint5;
+					Main.dust[dust].velocity = player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 15f;
+				}
+			}
 			return base.UseItem(player);
         }
 
-        
-        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+		bool altSwing = false;
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
 			if (player.altFunctionUse != 2)
 			{
-				 
-				Vector2 target = Main.screenPosition + new Vector2((float)Main.mouseX, (float)Main.mouseY);
-				float ceilingLimit = target.Y;
-				type = Main.rand.Next(new int[] { ProjectileType<EmblazonedCerulean>(), ProjectileType<EmblazonedAmethyst>(), ProjectileType<EmblazonedCitrine>(), ProjectileType<EmblazonedVermillion>(), ProjectileType<EmblazonedMalachite>() });
-				position = player.Center + new Vector2((-(float)Main.rand.Next(-100, 101) * player.direction), 50f);
-				position.Y -= (700);
-				Vector2 heading = target - position;
-				if (heading.Y < 0f)
+				if (player.direction == 1)
 				{
-					heading.Y *= -1f;
+					if (altSwing)
+					{
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<AuthoritySwing2>(), damage, knockback, player.whoAmI, 0f);
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<AuthorityVFX2>(), 0, knockback, player.whoAmI, 0f);
+
+						altSwing = false;
+					}
+					else
+					{
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<AuthoritySwing1>(), damage, knockback, player.whoAmI, 0f);
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<AuthorityVFX1>(), 0, knockback, player.whoAmI, 0f);
+
+						altSwing = true;
+					}
+
 				}
-				if (heading.Y < 20f)
+				else
 				{
-					heading.Y = 20f;
+					if (altSwing)
+					{
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<AuthoritySwing1>(), damage, knockback, player.whoAmI, 0f);
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<AuthorityVFX1>(), 0, knockback, player.whoAmI, 0f);
+
+						altSwing = false;
+					}
+					else
+					{
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<AuthoritySwing2>(), damage, knockback, player.whoAmI, 0f);
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<AuthorityVFX2>(), 0, knockback, player.whoAmI, 0f);
+
+
+						altSwing = true;
+					}
 				}
-				heading.Normalize();
-				heading *= new Vector2(velocity.X, velocity.Y).Length();
-				velocity.X = heading.X;
-				velocity.Y = heading.Y + Main.rand.Next(-40, 41) * 0.02f;
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI, 0f, ceilingLimit);
+
+				return false;
 
 			}
-			
-			return false;
+			else
+			{
+				return false;
+
+			}
 		}
 		public override void AddRecipes()
 		{
-			CreateRecipe(1)
-				.AddIngredient(ItemID.FragmentSolar, 15)
-				.AddIngredient(ItemID.FragmentStardust, 15)
-				.AddIngredient(ItemID.FragmentVortex, 15)
-				.AddIngredient(ItemID.FragmentNebula, 15)
-				.AddIngredient(ItemID.WandofSparking, 1)
-				.AddIngredient(ItemType<EssenceOfEternity>())
-				.AddTile(TileID.Anvils)
-				.Register();
+			
 		}
 	}
 

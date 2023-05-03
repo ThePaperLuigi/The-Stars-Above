@@ -68,6 +68,7 @@ using StarsAbove.Projectiles.Chronoclock;
 using StarsAbove.Buffs.Chronoclock;
 using StarsAbove.Buffs.Nanomachina;
 using StarsAbove.Buffs.ManiacalJustice;
+using StarsAbove.Buffs.SupremeAuthority;
 
 namespace StarsAbove
 {
@@ -219,6 +220,9 @@ namespace StarsAbove
         public int hawkmoonGaugeAnimateIn = 0;
         public int hawkmoonGaugeAnimateOut = 0;
 
+        //Supreme Authority
+        public int SupremeAuthorityConsumedNPCs;
+        
         //Bury The Light
         public int judgementCutTimer = -1000;
         public bool judgementCut = false;
@@ -2500,7 +2504,6 @@ namespace StarsAbove
                 Player.AddBuff(BuffType<HunterSymphonyCooldown>(), 1200);
                 HunterSongPlaying = 0;
             }
-
            
 
             BuryTheLight();
@@ -2527,13 +2530,6 @@ namespace StarsAbove
             {
                 judgementGauge = 100;
             }
-
-            if (corn)
-            {
-                Main.LocalPlayer.AddBuff(BuffID.WellFed, 1);
-
-            }
-
 
             if (celestialFoci)
             {
@@ -3241,7 +3237,11 @@ namespace StarsAbove
             {
                 return false;
             }
-            if(Player.HasBuff(BuffType<SpecialAttackBuff>()))
+            if (Player.HasBuff(BuffType<DeifiedBuff>()))
+            {
+                damage /= 2;
+            }
+            if (Player.HasBuff(BuffType<SpecialAttackBuff>()))
             {
                 if(Main.rand.Next(0,101) <= 25)
                 {
@@ -3866,6 +3866,7 @@ namespace StarsAbove
             AshenAmbition();
             SunsetOfTheSunGod();
             VermilionDaemon();
+            SupremeAuthority();
             SakuraVengenace();
             ArmamentsOfTheSkyStriker();
             StygianNymph();
@@ -3881,6 +3882,15 @@ namespace StarsAbove
             }
 
 
+
+        }
+        private void SupremeAuthority()
+        {
+            if(!Player.HasBuff(BuffType<DeifiedBuff>()))
+            {
+                SupremeAuthorityConsumedNPCs = 0;
+
+            }
 
         }
         private void SunsetOfTheSunGod()

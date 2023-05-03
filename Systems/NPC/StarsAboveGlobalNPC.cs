@@ -43,10 +43,12 @@ namespace StarsAbove
 		public bool Hyperburn;
 		public bool KarmicRetribution;
 		public bool VerdantEmbrace;
+		public bool AuthoritySacrificeMark;
 		public int NanitePlagueLevel = 0;
 
+		int dustTimer = 0;
 
-        public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
+		public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
         {
 			
 
@@ -267,6 +269,7 @@ namespace StarsAbove
 			Glitterglue = false;
 			InfernalBleed = false;
 			VerdantEmbrace = false;
+			AuthoritySacrificeMark = false;
 			Hyperburn = false;
 			KarmicRetribution = false;
 		}
@@ -433,6 +436,30 @@ namespace StarsAbove
 					}
 				}
 				Lighting.AddLight(npc.position, 0.1f, 0.2f, 0.7f);
+			}
+			
+
+			if (AuthoritySacrificeMark)
+			{
+				dustTimer++;
+				if(dustTimer > 10)
+                {
+					float dustAmount = 6f;
+					for (int i = 0; (float)i < dustAmount; i++)
+					{
+						Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+						spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+						spinningpoint5 = spinningpoint5.RotatedBy(npc.velocity.ToRotation());
+						int dust = Dust.NewDust(npc.Center, 0, 0, DustID.GemTopaz);
+						Main.dust[dust].scale = 2f;
+						Main.dust[dust].noGravity = true;
+						Main.dust[dust].position = npc.Center + spinningpoint5;
+						Main.dust[dust].velocity = npc.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 4f;
+					}
+					dustTimer = 0;
+                }					
+				
+
 			}
 			if (MortalWounds)
 			{
