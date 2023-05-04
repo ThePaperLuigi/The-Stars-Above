@@ -222,6 +222,7 @@ namespace StarsAbove
 
         //Supreme Authority
         public int SupremeAuthorityConsumedNPCs;
+        public int SupremeAuthorityEncroachingStacks;
         
         //Bury The Light
         public int judgementCutTimer = -1000;
@@ -1883,6 +1884,11 @@ namespace StarsAbove
         }
         public override void PostUpdateRunSpeeds()
         {
+            if(Player.HasBuff(BuffType<Mortality>()))
+            {
+                Player.maxRunSpeed *= 0.9f;
+                Player.accRunSpeed *= 0.9f;
+            }
             if (Player.HasBuff(BuffType<VitalitySong>()))
             {
                 Player.maxRunSpeed *= 1.15f;
@@ -2825,6 +2831,24 @@ namespace StarsAbove
                     }
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
+                if (Player.buffType[i] == BuffType<DeifiedBuff>())
+                {
+                    if (Player.buffTime[i] == 1)
+                    {
+                        for (int ib = 0; ib < Main.maxNPCs; ++ib)
+                        {
+                            NPC npc = Main.npc[ib];
+                            if (npc.active && npc.boss)
+                            {
+                                Player.AddBuff(BuffType<Mortality>(), 60*15);
+
+                            }
+                        }
+
+
+                    }
+                }
+            for (int i = 0; i < Player.CountBuffs(); i++)
                 if (Player.buffType[i] == BuffType<SpecialAttackBuff>())
                 {
                     if (Player.buffTime[i] == 1)
@@ -3237,6 +3261,10 @@ namespace StarsAbove
             {
                 return false;
             }
+            if (Player.HasBuff(BuffType<Mortality>()))
+            {
+                damage *= 2;
+            }
             if (Player.HasBuff(BuffType<DeifiedBuff>()))
             {
                 damage /= 2;
@@ -3507,7 +3535,22 @@ namespace StarsAbove
 
                 }
             }
+            if(Player.HasBuff(BuffType<AtrophiedDeifiedBuff>()))
+            {
+                damageSource = PlayerDeathReason.ByCustomReason(Player.name + " " + LangHelper.GetTextValue($"DeathReason.SupremeAuthority"));
+                for (int i = 0; i < Main.maxPlayers; i++)
+                {
+                    Player player = Main.player[i];
+                    if (player.active)
+                    {
+                        player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
+                        player.AddBuff(BuffID.PotionSickness, 60 * 120);
+                        player.potionDelayTime = 60 * 120;
+                    }
 
+
+                }
+            }
             if (Main.LocalPlayer.HasBuff(BuffType<Buffs.LivingDead>()))
             {
                 playSound = false;
@@ -3889,9 +3932,32 @@ namespace StarsAbove
             if(!Player.HasBuff(BuffType<DeifiedBuff>()))
             {
                 SupremeAuthorityConsumedNPCs = 0;
+                
+            }
+            if(SupremeAuthorityConsumedNPCs > 0)
+            {
+                Player.AddBuff(BuffType<DarkAura>(), 10);
+            }
+            if (Player.GetModPlayer<WeaponPlayer>().SupremeAuthorityEncroachingStacks > 1)
+            {
+                if (Player.ownedProjectileCounts[ProjectileType<Projectiles.SupremeAuthority.AuthorityLantern2>()] < 1)
+                {
+                    Projectile.NewProjectile(null, Player.Center.X, Player.Center.Y, 0, 0, ProjectileType<Projectiles.SupremeAuthority.AuthorityLantern2>(), 0, 0, Player.whoAmI, 0f);
+
+
+                }
 
             }
+            if (Player.GetModPlayer<WeaponPlayer>().SupremeAuthorityEncroachingStacks > 0)
+            {
+                if (Player.ownedProjectileCounts[ProjectileType<Projectiles.SupremeAuthority.AuthorityLantern1>()] < 1)
+                {
+                    Projectile.NewProjectile(null, Player.Center.X, Player.Center.Y, 0, 0, ProjectileType<Projectiles.SupremeAuthority.AuthorityLantern1>(), 0, 0, Player.whoAmI, 0f);
 
+                }
+
+
+            }
         }
         private void SunsetOfTheSunGod()
         {

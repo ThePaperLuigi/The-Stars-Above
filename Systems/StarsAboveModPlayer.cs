@@ -70,6 +70,7 @@ namespace StarsAbove
         public int GlobalRotation;
 
         public bool activateShockwaveEffect = false;
+        public bool activateAuthorityShockwaveEffect = false;
         public bool activateUltimaShockwaveEffect = false;
         public bool activateBlackHoleShockwaveEffect = false;
 
@@ -2738,22 +2739,21 @@ namespace StarsAbove
                     rippleSpeed = 60;
                     rippleSize = 35;
                     activateShockwaveEffect = false;
-                    //This may be a bug. Investigate. Host crash?
                     if (Main.netMode != NetmodeID.Server && !Filters.Scene["Shockwave"].IsActive())
                     {
                         Filters.Scene.Activate("Shockwave", Player.Center).GetShader().UseColor(rippleCount, rippleSize, rippleSpeed).UseTargetPosition(Player.Center);
                     }
                     shockwaveProgress = 0;
                 }
-                if (activateUltimaShockwaveEffect)
+                if (activateAuthorityShockwaveEffect)
                 {
-                    rippleCount = 1;
-                    rippleSpeed = 15;
-                    rippleSize = 3;
-                    activateUltimaShockwaveEffect = false;
+                    rippleCount = 2;
+                    rippleSpeed = 35;
+                    rippleSize = 30;
+                    activateAuthorityShockwaveEffect = false;
                     if (Main.netMode != NetmodeID.Server && !Filters.Scene["Shockwave"].IsActive())
                     {
-                        Filters.Scene.Activate("Shockwave", Player.Center).GetShader().UseColor(rippleCount, rippleSize, rippleSpeed).UseTargetPosition(Player.Center);
+                        Filters.Scene.Activate("Shockwave", Player.Center).GetShader().UseColor(rippleCount, rippleSize, rippleSpeed).UseTargetPosition(new Vector2(Player.Center.X, Player.Center.Y - 300));
                     }
                     shockwaveProgress = 0;
                 }

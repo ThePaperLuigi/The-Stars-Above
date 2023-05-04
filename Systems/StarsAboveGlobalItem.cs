@@ -59,6 +59,7 @@ namespace StarsAbove
 			ModContent.ItemType<KeyOfTheKingsLaw>(),
 			ModContent.ItemType<HunterSymphony>(),
 			ModContent.ItemType<KevesiFarewell>(),
+			ModContent.ItemType<PodZero42>(),
 
 
 			//ModContent.ItemType<EssenceOf>(),
@@ -84,6 +85,8 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfTheUnyieldingEarth>(),
 			ModContent.ItemType<EssenceOfTheHunt>(),
 			ModContent.ItemType<EssenceOfFarewells>(),
+			ModContent.ItemType<EssenceOfTheAutomaton>(),
+
 		};
 		public List<int> UmbralWeapons = new List<int>() {
 			ModContent.ItemType<KonpakuKatana>(),

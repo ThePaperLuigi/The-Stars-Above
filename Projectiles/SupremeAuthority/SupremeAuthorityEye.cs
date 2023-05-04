@@ -3,6 +3,7 @@ using StarsAbove.Buffs.SupremeAuthority;
 using StarsAbove.Utilities;
 using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -108,12 +109,17 @@ namespace StarsAbove.Projectiles.SupremeAuthority
 
 			//Consume targets.
 			if (Projectile.timeLeft == 120)
-            {
+			{
+				SoundEngine.PlaySound(StarsAboveAudio.SFX_Deify, player.Center);
+				player.GetModPlayer<StarsAbovePlayer>().activateAuthorityShockwaveEffect = true;
+
 				for (int i = 0; i < Main.maxNPCs; i++)
 				{
 					NPC npc = Main.npc[i];
 					if (npc.active && npc.friendly && npc.HasBuff(BuffType<AuthoritySacrificeMark>()))
 					{
+						player.AddBuff(BuffType<DeifiedBuff>(), 60 * 60);
+
 						//Dust visuals.
 						for (int ir = 0; ir < 50; ir++)
 						{

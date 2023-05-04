@@ -6,6 +6,7 @@
       DeathReason:
       {
         SanguineDespair:  drained themselves of all life.
+        SupremeAuthority: returned to the void.
       }
       CombatText:
       {
@@ -6494,6 +6495,10 @@
           Damage increased by {1}%
           Defense increased by {2}
           'Do you hear the roar of this chainsaw?'
+          '''
+        DarkAuraBuff:
+          '''
+          {0} sacrifice(s) have been consumed
           '''
         LVBuff:
           '''

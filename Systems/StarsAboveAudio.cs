@@ -723,7 +723,18 @@ namespace StarsAbove
 		#endregion
 
 		#region Weapon Sound Effects
+		public static readonly SoundStyle SFX_Deify = new($"{nameof(StarsAbove)}/Sounds/SFX/Deify")
+		{
 
+		};
+		public static readonly SoundStyle SFX_Disappear = new($"{nameof(StarsAbove)}/Sounds/SFX/Disappear")
+		{
+
+		};
+		public static readonly SoundStyle SFX_AbsoluteEye = new($"{nameof(StarsAbove)}/Sounds/SFX/AbsoluteEye")
+		{
+
+		};
 		public static readonly SoundStyle SFX_ManiacalSlash = new($"{nameof(StarsAbove)}/Sounds/SFX/ManiacalSlash")
 		{
 
