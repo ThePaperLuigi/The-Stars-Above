@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Buffs.Ozma;
 using System;
+using StarsAbove.Buffs.SupremeAuthority;
 
 namespace StarsAbove.Projectiles.SupremeAuthority
 {
@@ -14,7 +15,7 @@ namespace StarsAbove.Projectiles.SupremeAuthority
 			DisplayName.SetDefault("Supreme Authority");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode
-			Main.projFrames[Projectile.type] = 1;
+			Main.projFrames[Projectile.type] = 2;
 			
 		}
 
@@ -46,7 +47,7 @@ namespace StarsAbove.Projectiles.SupremeAuthority
 			Projectile.timeLeft = 10;
 			Player projOwner = Main.player[Projectile.owner];
 			Player player = Main.player[Projectile.owner];
-			if (projOwner.dead && !projOwner.active || projOwner.GetModPlayer<WeaponPlayer>().SupremeAuthorityEncroachingStacks < 1)
+			if (projOwner.dead && !projOwner.active || !projOwner.HasBuff(BuffType<DeifiedBuff>()))
 			{
 				Projectile.Kill();
 			}
@@ -75,7 +76,14 @@ namespace StarsAbove.Projectiles.SupremeAuthority
 			Projectile.spriteDirection = Projectile.direction;
 			Projectile.rotation = player.velocity.X * 0.05f;
 
-			
+			if (projOwner.GetModPlayer<WeaponPlayer>().SupremeAuthorityEncroachingStacks >= 1)
+			{
+				Projectile.frame = 1;
+			}
+			else
+			{
+				Projectile.frame = 0;
+			}
 
 			if (Projectile.alpha < 0)
 			{

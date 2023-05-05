@@ -731,6 +731,10 @@ namespace StarsAbove
 		{
 
 		};
+		public static readonly SoundStyle SFX_DisappearPrep = new($"{nameof(StarsAbove)}/Sounds/SFX/DisappearPrep")
+		{
+
+		};
 		public static readonly SoundStyle SFX_AbsoluteEye = new($"{nameof(StarsAbove)}/Sounds/SFX/AbsoluteEye")
 		{
 

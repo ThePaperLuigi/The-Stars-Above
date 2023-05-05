@@ -1,9 +1,14 @@
 ﻿
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
+using Terraria.Audio;
+using Terraria.GameContent;
+using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.SupremeAuthority
 {
@@ -19,7 +24,7 @@ namespace StarsAbove.Projectiles.SupremeAuthority
 			Projectile.width = 100;
 			Projectile.height = 100;
 			Projectile.aiStyle = 0;
-			Projectile.timeLeft = 90;
+			Projectile.timeLeft = 150;
 			Projectile.penetrate = -1;
 			Projectile.scale = 1f;
 			Projectile.DamageType = DamageClass.Magic;
@@ -44,15 +49,17 @@ namespace StarsAbove.Projectiles.SupremeAuthority
 			get => Projectile.ai[0];
 			set => Projectile.ai[0] = value;
 		}
-		int frameWait = 60;
+		int frameWait = 120;
 		float rotationValue;
 
 		public override void AI() {
+			Player projOwner = Main.player[Projectile.owner];
 
 			Projectile.scale += 0.005f;
 			if (Projectile.ai[0] == 0)
 			{
-				rotationValue = MathHelper.ToRadians(Main.rand.Next(0, 364));
+				Projectile.scale += MathHelper.Min(projOwner.GetModPlayer<WeaponPlayer>().SupremeAuthorityConsumedNPCs/5, 2f);
+				rotationValue = Projectile.ai[1];
 				Projectile.rotation += rotationValue - MathHelper.ToRadians(90);
 				for (int d = 0; d < 8; d++)
 				{
@@ -86,11 +93,11 @@ namespace StarsAbove.Projectiles.SupremeAuthority
 			Projectile.ai[0] += 1f;
 			if(Projectile.frame < 3)
             {
-				float dustAmount = 150f;
+				float dustAmount = 300f;
 				for (int i = 0; (float)i < dustAmount; i++)
 				{
 					Vector2 spinningpoint5 = Vector2.UnitX * 0f;
-					spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(155f + Projectile.scale * 85, 11f);
+					spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(1f + Projectile.scale * 195, 6f + Projectile.scale * 8);
 					spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation() + rotationValue);
 					int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.GemAmethyst);
 					Main.dust[dust].scale = 1f;
@@ -123,6 +130,12 @@ namespace StarsAbove.Projectiles.SupremeAuthority
 
 			if (Projectile.frame == 1 && frameWait > 0)
             {
+				
+				if(frameWait == 60)
+                {
+					SoundEngine.PlaySound(StarsAboveAudio.SFX_Disappear, Projectile.Center);
+
+				}
 				frameWait--;
             }
 			else
@@ -151,23 +164,34 @@ namespace StarsAbove.Projectiles.SupremeAuthority
 			
 
 		}
-        public override void Kill(int timeLeft)
-        {
+		public static Texture2D texture;
+		
+		public override void Kill(int timeLeft)
+		{
+			Player projOwner = Main.player[Projectile.owner];
+
 			for (int d1 = 0; d1 < 15; d1++)
 			{
 				Dust.NewDust(Projectile.Center, 0, 0, DustID.GemAmethyst, 0f + Main.rand.Next(-13, 13), 0f + Main.rand.Next(-13, 13), 150, default(Color), 1f);
 
 
 			}
+			Projectile.NewProjectile(null, Projectile.Center.X, Projectile.Center.Y, 0, 0, ProjectileType<SwordstormFinish>(), Projectile.damage, 0, projOwner.whoAmI, 0f);
+
 			base.Kill(timeLeft);
         }
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
 			Player projOwner = Main.player[Projectile.owner];
 
-			damage += (int)(target.lifeMax * 0.01f + (MathHelper.Min(projOwner.GetModPlayer<WeaponPlayer>().SupremeAuthorityConsumedNPCs, 5))/100);
+			damage = (int)(damage * (target.lifeMax * 0.01f + (MathHelper.Min(projOwner.GetModPlayer<WeaponPlayer>().SupremeAuthorityConsumedNPCs, 5))/100));
+			if(projOwner.GetModPlayer<WeaponPlayer>().SupremeAuthorityConsumedNPCs > 5)
+            {
+				damage = (int)(damage * (1 + ((projOwner.GetModPlayer<WeaponPlayer>().SupremeAuthorityConsumedNPCs - 5) * 0.01f)));
+            }
+			damage /= 10; //The attack hits multiple times.
 
-            base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
+			base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
         }
     }
 }

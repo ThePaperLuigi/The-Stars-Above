@@ -3934,30 +3934,22 @@ namespace StarsAbove
                 SupremeAuthorityConsumedNPCs = 0;
                 
             }
-            if(SupremeAuthorityConsumedNPCs > 0)
-            {
-                Player.AddBuff(BuffType<DarkAura>(), 10);
-            }
-            if (Player.GetModPlayer<WeaponPlayer>().SupremeAuthorityEncroachingStacks > 1)
+            else
             {
                 if (Player.ownedProjectileCounts[ProjectileType<Projectiles.SupremeAuthority.AuthorityLantern2>()] < 1)
                 {
                     Projectile.NewProjectile(null, Player.Center.X, Player.Center.Y, 0, 0, ProjectileType<Projectiles.SupremeAuthority.AuthorityLantern2>(), 0, 0, Player.whoAmI, 0f);
-
-
                 }
-
-            }
-            if (Player.GetModPlayer<WeaponPlayer>().SupremeAuthorityEncroachingStacks > 0)
-            {
                 if (Player.ownedProjectileCounts[ProjectileType<Projectiles.SupremeAuthority.AuthorityLantern1>()] < 1)
                 {
                     Projectile.NewProjectile(null, Player.Center.X, Player.Center.Y, 0, 0, ProjectileType<Projectiles.SupremeAuthority.AuthorityLantern1>(), 0, 0, Player.whoAmI, 0f);
-
                 }
-
-
             }
+            if(SupremeAuthorityConsumedNPCs > 0)
+            {
+                Player.AddBuff(BuffType<DarkAura>(), 10);
+            }
+           
         }
         private void SunsetOfTheSunGod()
         {

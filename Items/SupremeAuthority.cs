@@ -27,14 +27,15 @@ namespace StarsAbove.Items
 				"\nRight click friendly NPCs to mark them as a [c/F1D761:Sacrifice] for 5 minutes" +//Done
 				"\nPressing the Weapon Action Key will consume all [c/F1D761:Sacrifices] and grant [c/DE8A2A:Deified] for 60 seconds (Unable to mark or consume [c/F1D761:Sacrifices] when [c/DE8A2A:Deified])" +//Done
 				"\nWhile [c/DE8A2A:Deified], maximum HP and damage taken are halved, and most debuffs are resisted" +//Done
-				"\nAdditionally, directly gain stacks of [c/7A17C8:Dark Aura] depending on the amount of [c/F1D761:Sacrifices] consumed, up to 200 bonus damage" +//Done
+				"\nAdditionally, directly gain stacks of [c/7A17C8:Dark Aura] depending on the amount of [c/F1D761:Sacrifices] consumed" +//Done
 				"\n[c/DE8A2A:Deified] critical strikes grant stacks of [c/BE60E7:Encroaching] (Max 2 stacks)" + //Done?
-				"\nWith two stacks of [c/BE60E7:Encroaching], right click to unleash [c/C100FF:Disappear] on your cursor" +//Done
-				"\nAdditionally, [c/C100FF:Disappear] deals 1% of the foe's Max HP in bonus damage, increased with [c/7A17C8:Dark Aura] up to 5%" +//Done
+				"\nWith two stacks of [c/BE60E7:Encroaching], right click to unleash [c/C100FF:Disappear] on your cursor after a short delay, gaining up to 200 bonus damage with [c/7A17C8:Dark Aura]" +//Done
+				"\nAdditionally, [c/C100FF:Disappear] deals 1% of the foe's Max HP in bonus damage, increased with [c/7A17C8:Dark Aura] up to 5% (Extra [c/7A17C8:Dark Aura] increases total damage by 0.1% per stack)" +//Done
 				"\nPresing the Weapon Action Key while [c/DE8A2A:Deified] will reset the duration, but will consume 50% of current HP (Can be activated multiple times)" + //Done
 				"\nAdditionally, you will be inflicted with [c/903F3F:Atrophied Deification], preventing natural health regeneration" + //Done
 				"\nDying with [c/903F3F:Atrophied Deification] will curse all allies with Potion Sickness for 2 minutes" + //Done
-				"\nIf [c/DE8A2A:Deified] ends while a boss is active, inflict [c/5E5050:Mortality] for 15 seconds, slowing movement speed and doubling damage recieved" + //Done
+				"\nIf [c/DE8A2A:Deified] ends while a boss is active, inflict [c/5E5050:Mortality] for 15 seconds, slowing movement speed and doubling damage recieved" +
+                "\n'Be afraid, sinner.'" + //Done
 				$"");  //The (English) text shown below your weapon's name
 			//SFX
 
@@ -48,9 +49,10 @@ namespace StarsAbove.Items
 			Item.DamageType = DamageClass.Magic;          //Is your weapon a melee weapon?
 			Item.mana = 0;
 			Item.width = 40;            //Weapon's texture's width
+			Item.crit = 26;
 			Item.height = 40;           //Weapon's texture's height
-			Item.useTime = 20;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
-			Item.useAnimation = 20;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
+			Item.useTime = 40;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
+			Item.useAnimation = 40;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
 			Item.useStyle = ItemUseStyleID.HiddenAnimation;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
 			Item.knockBack = 0;         //The force of knockback of the weapon. Maximum is 20
 			Item.rare = ItemRarityID.Purple;              //The rarity of the weapon, from -1 to 13
@@ -60,7 +62,8 @@ namespace StarsAbove.Items
 			Item.shootSpeed = 15f;
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
 		}
-		int randomBuff;
+		int activateSwordstormTimer;
+		Vector2 savedSwordstormPosition;
 		public override bool AltFunctionUse(Player player)
 		{
 			return true;
@@ -86,15 +89,17 @@ namespace StarsAbove.Items
 		}
         public override void HoldItem(Player player)
         {
+			activateSwordstormTimer--;
 			if (player.whoAmI == Main.myPlayer && StarsAbove.weaponActionKey.JustPressed)
 			{
 				//Spawn the eye. After a short delay it consumes all marked NPCs and grants Deified. Logic goes there.
 				if (!player.HasBuff(BuffType<DeifiedBuff>()))
 				{
-					SoundEngine.PlaySound(StarsAboveAudio.SFX_AbsoluteEye, player.Center);
 
 					if (player.ownedProjectileCounts[ProjectileType<SupremeAuthorityEye>()] < 1)
 					{
+						SoundEngine.PlaySound(StarsAboveAudio.SFX_AbsoluteEye, player.Center);
+
 						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<SupremeAuthorityEye>(), 0, 0, player.whoAmI, 0f);
 
 
@@ -129,6 +134,21 @@ namespace StarsAbove.Items
 			if(player.HasBuff(BuffType<DeifiedBuff>()))
             {
 				Dust.NewDust(player.Center, 0, 0, DustID.GemAmethyst, 0f + Main.rand.Next(-2, 2), 0f + Main.rand.Next(-3, 3), 150, default(Color), 0.4f);
+
+			}
+			if (activateSwordstormTimer == 1)
+			{
+				int unifiedRandom = (int)MathHelper.ToRadians(Main.rand.Next(0, 364));
+				//Swordstorm
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), savedSwordstormPosition.X, savedSwordstormPosition.Y, 0, 0, ProjectileType<AuthoritySwordstorm>(), player.GetWeaponDamage(Item) + (int)MathHelper.Min(200, (player.GetModPlayer<WeaponPlayer>().SupremeAuthorityConsumedNPCs * 5)), 0, player.whoAmI, 0f, unifiedRandom);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), savedSwordstormPosition.X, savedSwordstormPosition.Y, 0, 0, ProjectileType<AuthoritySwordstormVFX>(), 0, 0, player.whoAmI, 0f, unifiedRandom);
+
+				float dustAmount = 28f;
+				for (int i = 0; (float)i < dustAmount; i++)
+				{
+					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), savedSwordstormPosition.X, savedSwordstormPosition.Y, Main.rand.Next(-15, 15), Main.rand.Next(-15, 15), ProjectileType<SwordstormEffect>(), 0, 0, player.whoAmI, 0f);
+
+				}
 
 			}
 			base.HoldItem(player);
@@ -168,16 +188,10 @@ namespace StarsAbove.Items
                 {
 					if(player.GetModPlayer<WeaponPlayer>().SupremeAuthorityEncroachingStacks >= 2)
                     {
-						//Swordstorm
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), Main.MouseWorld.X, Main.MouseWorld.Y, 0, 0, ProjectileType<AuthoritySwordstorm>(), player.GetWeaponDamage(Item) + (int)MathHelper.Min(200,(player.GetModPlayer<WeaponPlayer>().SupremeAuthorityConsumedNPCs * 5)), 0, player.whoAmI, 0f);
-						float dustAmount = 16f;
-						for (int i = 0; (float)i < dustAmount; i++)
-						{
-							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), Main.MouseWorld.X, Main.MouseWorld.Y, Main.rand.Next(-10,10), Main.rand.Next(-10, 10), ProjectileType<SwordstormEffect>(), 0, 0, player.whoAmI, 0f);
+						activateSwordstormTimer = 20;
 
-						}
-						SoundEngine.PlaySound(StarsAboveAudio.SFX_Disappear, player.Center);
-
+						SoundEngine.PlaySound(StarsAboveAudio.SFX_DisappearPrep, player.Center);
+						savedSwordstormPosition = Main.MouseWorld;
 						player.GetModPlayer<WeaponPlayer>().SupremeAuthorityEncroachingStacks = 0;
 					}
 				}
