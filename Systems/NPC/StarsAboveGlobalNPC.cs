@@ -20,6 +20,8 @@ using StarsAbove.Buffs.IrminsulDream;
 using StarsAbove.Biomes;
 using StarsAbove.Items.Materials;
 using StarsAbove.NPCs;
+using StarsAbove.Buffs.Boss;
+using StarsAbove.NPCs.Vagrant;
 
 namespace StarsAbove
 {
@@ -39,11 +41,14 @@ namespace StarsAbove
 		public bool Glitterglue;
 		public bool InfernalBleed;
 		public bool Hyperburn;
+		public bool KarmicRetribution;
 		public bool VerdantEmbrace;
+		public bool AuthoritySacrificeMark;
 		public int NanitePlagueLevel = 0;
 
+		int dustTimer = 0;
 
-        public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
+		public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
         {
 			
 
@@ -179,17 +184,28 @@ namespace StarsAbove
 					Rectangle textPos = new Rectangle((int)npc.position.X, (int)npc.position.Y - 20, npc.width, npc.height);
 					CombatText.NewText(textPos, new Color(211, 164, 230, 240), $"{Math.Min((int)(npc.lifeMax * 0.03), 120)}", false, false);
 					return;
-				}
-			}
-			if (Hyperburn)
+                }
+            }
+            if (Hyperburn)
+            {
+                if (npc.lifeRegen > 0)
+                {
+                    npc.lifeRegen = 0;
+                }
+                npc.lifeRegen -= 30;
+
+                damage = 30;
+
+            }
+			if (KarmicRetribution)
 			{
 				if (npc.lifeRegen > 0)
 				{
 					npc.lifeRegen = 0;
 				}
-				npc.lifeRegen -= 30;
+				npc.lifeRegen -= 10;
 
-				damage = 30;
+				damage = 1;
 
 			}
 			if (InfernalBleed)
@@ -253,7 +269,9 @@ namespace StarsAbove
 			Glitterglue = false;
 			InfernalBleed = false;
 			VerdantEmbrace = false;
+			AuthoritySacrificeMark = false;
 			Hyperburn = false;
+			KarmicRetribution = false;
 		}
         public override void PostDraw(NPC npc, SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
@@ -375,6 +393,28 @@ namespace StarsAbove
 				}
 				Lighting.AddLight(npc.position, 0.1f, 0.2f, 0.7f);
 			}
+			if (KarmicRetribution)
+			{
+				if (Main.rand.Next(4) < 3)
+				{
+					int dust2 = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, DustID.FireworkFountain_Pink, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color), 1f);
+					Main.dust[dust2].noGravity = true;
+
+				}
+				if (Main.rand.Next(4) < 3)
+				{
+					int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, DustID.Firework_Pink, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color), 1.1f);
+
+					Main.dust[dust].velocity *= 1.8f;
+					Main.dust[dust].velocity.Y -= 0.5f;
+					if (Main.rand.NextBool(4))
+					{
+
+						Main.dust[dust].scale *= 0.5f;
+					}
+				}
+				Lighting.AddLight(npc.position, 0.1f, 0.2f, 0.7f);
+			}
 			if (VerdantEmbrace)
 			{
 				if (Main.rand.Next(4) < 3)
@@ -396,6 +436,30 @@ namespace StarsAbove
 					}
 				}
 				Lighting.AddLight(npc.position, 0.1f, 0.2f, 0.7f);
+			}
+			
+
+			if (AuthoritySacrificeMark)
+			{
+				dustTimer++;
+				if(dustTimer > 10)
+                {
+					float dustAmount = 6f;
+					for (int i = 0; (float)i < dustAmount; i++)
+					{
+						Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+						spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+						spinningpoint5 = spinningpoint5.RotatedBy(npc.velocity.ToRotation());
+						int dust = Dust.NewDust(npc.Center, 0, 0, DustID.GemTopaz);
+						Main.dust[dust].scale = 2f;
+						Main.dust[dust].noGravity = true;
+						Main.dust[dust].position = npc.Center + spinningpoint5;
+						Main.dust[dust].velocity = npc.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 4f;
+					}
+					dustTimer = 0;
+                }					
+				
+
 			}
 			if (MortalWounds)
 			{
@@ -669,16 +733,40 @@ namespace StarsAbove
         {
 
 
-            base.OnHitNPC(npc, target, damage, knockback, crit);
         }
         public override void OnHitByItem(NPC npc, Player player, Item item, int damage, float knockback, bool crit)
         {
 			
 
-            base.OnHitByItem(npc, player, item, damage, knockback, crit);
         }
+        public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            if (npc.HasBuff<NalhaunSword>())
+            {
+                damage *= 2;
+            }
+
+           
+
+        }
+
+        
+
+        public override void ModifyHitByItem(NPC npc, Player player, Item item, ref int damage, ref float knockback, ref bool crit)
+        {
+			if(npc.HasBuff<NalhaunSword>())
+            {
+				damage *= 2;
+            }
+
+			
+
+		}
+
 		
-        public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
+
+
+		public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
 
 			
@@ -719,92 +807,7 @@ namespace StarsAbove
 				npcLoot.Add(ItemDropRule.Common(ItemType<LuminitePrism>(), 4));
 				npcLoot.Add(ItemDropRule.Common(ItemType<Items.Materials.CelestialPrincessGenesisPrecursor>(), 4));
 			}
-			if (npc.type == NPCType<VagrantOfSpaceAndTime>())
-			{
-				//npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("SpatialPrism").Type, 2));
-				//npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("EnigmaticDust").Type, 1,3,12));
-
-
-
-
-			}
-			if (npc.type == NPCType<Nalhaun>())
-			{
-				//npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("BurnishedPrism").Type, 2));
-
-
-
-			}
-			if (npc.type == NPCType<Penthesilea>())
-			{
-				//npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("PaintedPrism").Type, 2));
-
-
-
-			}
-			if (npc.type == NPCType<Arbitration>())
-			{
-				//npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("VoidsentPrism").Type, 2));
-
-
-
-			}
-			//Remove all of these
-			if (npc.type == NPCID.Demon)
-			{
-				//npcLoot.Add(ItemDropRule.Common(ItemType<Luciferium>(), 1000));
-
-
-			}
-			if (npc.type == NPCID.DemonTaxCollector)
-			{
-
-				//npcLoot.Add(ItemDropRule.Common(ItemType<Luciferium>(), 1));
-
-			}
-			if (NPC.downedMoonlord)
-			{
-				//npcLoot.Add(ItemDropRule.Common(ItemType<Glitterglue>(), 10000));
-				
-			}
-			if (npc.lifeMax <= 10 && npc.damage == 0)
-			{
-				//npcLoot.Add(ItemDropRule.Common(ItemType<ToMurder>(), 10000));
-				//npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("PrismaticCore").Type, 10));
-			}
-			if (!npc.SpawnedFromStatue)
-			{
-				
-				//npcLoot.Add(ItemDropRule.Common(ItemType<PrismaticCore>(), 100));
-				//npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("PrismaticCore").Type, 10));
-			}
-			if (SubworldSystem.IsActive<BleachedPlanet>())
-			{
-
-				//npcLoot.Add(ItemDropRule.Common(ItemType<InertShard>(), 3));
-				//npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("PrismaticCore").Type, 10));
-			}
-			if (DownedBossSystem.downedVagrant)
-			{
-				//npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("PrismaticCore").Type, 1));//Temp
-				//npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("Starlight").Type, 25));
-				//npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("PerfectlyGenericAccessory").Type, 10000));
-				
-				//Disabled normally
-				/*
-				npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("RadiantPrism").Type, 10000));
-				npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("RefulgentPrism").Type, 10000));
-				npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("VerdantPrism").Type, 10000));
-				npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("EverflamePrism").Type, 10000));
-				npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("CrystallinePrism").Type, 10000));
-				npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("CastellicPrism").Type, 10000));
-				npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("AlchemicPrism").Type, 10000));
-				npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("ApocryphicPrism").Type, 10000));
-				npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("LucentPrism").Type, 10000));
-				npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("PhylacticPrism").Type, 10000));
-				*/
-			}
-
+			
 			
 			
 			VagrantDrops VagrantDropCondition = new VagrantDrops();

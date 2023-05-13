@@ -83,18 +83,7 @@ namespace StarsAbove.Projectiles.ArchitectLuminance
 
 
 			}
-
-			if (closest.CanBeChasedBy() && closestDistance < 1200f)
-			{
-				/*for (int i3 = 0; i3 < 50; i3++)
-				{
-					Vector2 position2 = Vector2.Lerp(projectile.Center, closest.Center, (float)i3 / 50);
-					Dust d = Dust.NewDustPerfect(position2, 183, null, 240, default(Color), 0.3f);
-					d.fadeIn = 0.4f;
-					d.noLight = true;
-					d.noGravity = true;
-				}*/
-			}
+			
 
 			if (Projectile.ai[0] > 40)
 			{

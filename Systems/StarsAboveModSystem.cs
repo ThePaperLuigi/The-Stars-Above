@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 namespace StarsAbove
 {
 
+
     public class StarsAboveModSystem : ModSystem
 	{
         

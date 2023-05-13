@@ -101,7 +101,7 @@ namespace StarsAbove.UI
 
 
 
-			timeLeft.SetText($"[c/FF9D4B:{modPlayer.vagrantTimeLeft / 60}] seconds left to survive!");
+			
 			base.Update(gameTime);
 		}
 	}

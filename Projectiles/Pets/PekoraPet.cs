@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.Pets
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Suspicious Looking Bunny-Girl"); // Automatic from .lang files
-			Main.projFrames[Projectile.type] = 1;
+			Main.projFrames[Projectile.type] = 4;
 			Main.projPet[Projectile.type] = true;
 			ProjectileID.Sets.LightPet[Projectile.type] = true;
 		}
@@ -32,6 +32,14 @@ namespace StarsAbove.Projectiles.Pets
 		{
 			Player player = Main.player[Projectile.owner];
 			WeaponPlayer modPlayer = player.GetModPlayer<WeaponPlayer>();
+			if (Projectile.frameCounter++ >= 10)
+			{
+
+				if (Projectile.frame++ > 6)
+				{
+					Projectile.frame = 1;
+				}
+			}
 			if (player.dead)
 			{
 				modPlayer.PekoraPet = false;

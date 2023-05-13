@@ -188,6 +188,10 @@ namespace StarsAbove.UI.StellarNova
 
 				}
 				//spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/supernovaText"), cutIn, Color.White * (modPlayer.NovaCutInOpacity));
+				Texture2D AsphodeneEye0 = (Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/AE0");
+				Texture2D AsphodeneEye1 = (Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/AE1");
+				Texture2D AsphodeneEye2 = (Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/AE2");
+				Texture2D AsphodeneEye3 = (Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/AE3");
 
 				if (modPlayer.chosenStarfarer == 1)
 				{
@@ -195,54 +199,61 @@ namespace StarsAbove.UI.StellarNova
 
 					if (modPlayer.NovaCutInTimer >= 100)
 					{
-						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/AE0"), hitbox, Color.White * (modPlayer.NovaCutInOpacity));
+						spriteBatch.Draw(AsphodeneEye0, hitbox, Color.White * (modPlayer.NovaCutInOpacity));
 
 					}
 					if (modPlayer.NovaCutInTimer < 100 && modPlayer.NovaCutInTimer > 97)
 					{
-						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/AE1"), hitbox, Color.White * (modPlayer.NovaCutInOpacity));
+						spriteBatch.Draw(AsphodeneEye1, hitbox, Color.White * (modPlayer.NovaCutInOpacity));
 
 					}
 					if (modPlayer.NovaCutInTimer <= 97 && modPlayer.NovaCutInTimer > 95)
 					{
-						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/AE2"), hitbox, Color.White * (modPlayer.NovaCutInOpacity));
+						spriteBatch.Draw(AsphodeneEye2, hitbox, Color.White * (modPlayer.NovaCutInOpacity));
 
 					}
 					if (modPlayer.NovaCutInTimer <= 95)
 					{
-						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/AE3"), hitbox, Color.White * (modPlayer.NovaCutInOpacity));
+						spriteBatch.Draw(AsphodeneEye3, hitbox, Color.White * (modPlayer.NovaCutInOpacity));
 
 					}
 					
 
+
 				}
-				if(modPlayer.chosenStarfarer == 2)
+				Texture2D EridaniEye0 = (Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/EE0");
+				Texture2D EridaniEye1 = (Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/EE1");
+				Texture2D EridaniEye2 = (Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/EE2");
+				Texture2D EridaniEye3 = (Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/EE3");
+
+
+				if (modPlayer.chosenStarfarer == 2)
 				{
 					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/E" + modPlayer.starfarerOutfitVisible), hitbox, Color.White * (modPlayer.NovaCutInOpacity));
 
 					if (modPlayer.NovaCutInTimer >= 100)
 					{
-						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/EE0"), hitbox, Color.White * (modPlayer.NovaCutInOpacity));
+						spriteBatch.Draw(EridaniEye0, hitbox, Color.White * (modPlayer.NovaCutInOpacity));
 
 					}
 					if (modPlayer.NovaCutInTimer < 100 && modPlayer.NovaCutInTimer > 97)
 					{
-						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/EE1"), hitbox, Color.White * (modPlayer.NovaCutInOpacity));
+						spriteBatch.Draw(EridaniEye1, hitbox, Color.White * (modPlayer.NovaCutInOpacity));
 
 					}
 					if (modPlayer.NovaCutInTimer <= 97 && modPlayer.NovaCutInTimer > 95)
 					{
-						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/EE2"), hitbox, Color.White * (modPlayer.NovaCutInOpacity));
+						spriteBatch.Draw(EridaniEye2, hitbox, Color.White * (modPlayer.NovaCutInOpacity));
 
 					}
 					if (modPlayer.NovaCutInTimer <= 95)
 					{
-						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/EE3"), hitbox, Color.White * (modPlayer.NovaCutInOpacity));
+						spriteBatch.Draw(EridaniEye3, hitbox, Color.White * (modPlayer.NovaCutInOpacity));
 
 					}
 					
+					
 				}
-				
 				if (!disableDialogue)
                 {
 					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/NovaTextBox"), hitbox, Color.White * (modPlayer.NovaCutInOpacity));
@@ -287,6 +298,7 @@ namespace StarsAbove.UI.StellarNova
 
 		}
 
+		
 		public override void Update(GameTime gameTime) {
 			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().NovaCutInTimer > 0 && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer != 0))
 			{

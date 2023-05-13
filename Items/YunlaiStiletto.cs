@@ -29,7 +29,7 @@ namespace StarsAbove.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 136;           //The damage of your weapon
+			Item.damage = 99;           //The damage of your weapon
 			Item.DamageType = DamageClass.Melee;          //Is your weapon a melee weapon?
 			Item.width = 68;            //Weapon's texture's width
 			Item.height = 68;           //Weapon's texture's height

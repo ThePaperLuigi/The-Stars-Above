@@ -12,6 +12,7 @@ namespace StarsAbove.Items.Materials
 			Tooltip.SetDefault("[c/956BE3:Starfarer Attire Precursor]" +
                 "\nThe tattered remains of storied garb from legends past" +
 				"\nUtilized to craft 'Celestial Princess' Genesis'");
+			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;
 		}

@@ -15,16 +15,17 @@ using System;
 namespace StarsAbove.Items.Consumables
 {
 
-    public class SpatialDisk : ModItem
+	public class SpatialDisk : ModItem
 	{
-		public override void SetStaticDefaults() {
+		public override void SetStaticDefaults()
+		{
 			DisplayName.SetDefault("Spatial Disk");
 			Tooltip.SetDefault("This mysterious artifact allows you to make contact with your [c/F1AF42:Starfarer]" +
 				"\nLeft click to initiate contact with your [c/F1AF42:Starfarer]" +
 				"\nYour [c/F1AF42:Starfarer] will periodically grant you components to powerful Aspected Weapons" +
 				"\nRight click to open the [c/EC356F:Starfarer Menu] and access special abilities" +
 				"\nDefeating bosses will grant powerful passive abilities available in the [c/3599EC:Stellar Array]" +
-                "\nAdditionally, the damage type of Aspected Weapons can be adjusted" +
+				"\nAdditionally, the damage type of Aspected Weapons can be adjusted" +
 				"\n[c/F1AFFF:Once they have been unlocked, Stellar Novas can be modified with the] [c/EC356F:Starfarer Menu]" +
 				"\n[c/F1AFFF:Once it have been unlocked, Celestial Cartography can be accessed with the] [c/EC356F:Starfarer Menu]" +
 				"\nYou can re-acquire lost items and read previous dialogue with the [c/9FEE5E:Archive]" +
@@ -38,7 +39,8 @@ namespace StarsAbove.Items.Consumables
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 		}
 		int pingCooldown;
-		public override void SetDefaults() {
+		public override void SetDefaults()
+		{
 			Item.width = 20;
 			Item.height = 20;
 			Item.maxStack = 1;
@@ -51,7 +53,7 @@ namespace StarsAbove.Items.Consumables
 			Item.consumable = false;
 		}
 
-        public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+		public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
 		{// Draw the periodic glow effect
 
 			// Get the initial draw parameters
@@ -68,12 +70,12 @@ namespace StarsAbove.Items.Consumables
 			effectColor = effectColor * 0.06f * scale;
 			for (float num5 = 0f; num5 < 1f; num5 += 355f / (678f * (float)Math.PI))
 			{
-				spriteBatch.Draw(texture,position + (TwoPi * num5).ToRotationVector2() * (2f + offset * 2f), frame, effectColor, 0f,new Vector2(origin.X + 3, origin.Y + 3), 1f, effects, 0f);
+				spriteBatch.Draw(texture, position + (TwoPi * num5).ToRotationVector2() * (2f + offset * 2f), frame, effectColor, 0f, new Vector2(origin.X + 3, origin.Y + 3), 1f, effects, 0f);
 			}
 			base.PostDrawInInventory(spriteBatch, position, frame, drawColor, itemColor, origin, scale);
-        }
+		}
 
-        private int randomDialogue;
+		private int randomDialogue;
 
 		public override bool AltFunctionUse(Player player)
 		{
@@ -90,7 +92,8 @@ namespace StarsAbove.Items.Consumables
 			}
 			base.HoldItem(player);
 		}
-		public override bool CanUseItem(Player player) {
+		public override bool CanUseItem(Player player)
+		{
 			var modPlayer = player.GetModPlayer<StarsAbovePlayer>();
 
 			if (modPlayer.novaUIActive)
@@ -103,10 +106,10 @@ namespace StarsAbove.Items.Consumables
 			{
 				if (modPlayer.chosenStarfarer != 0 && modPlayer.starfarerDialogue == false && modPlayer.stellarArray == false && modPlayer.novaUIActive == false && modPlayer.starfarerMenuActive == false && modPlayer.VNDialogueActive == false)
 				{
-					
-						return true;
-					
-					
+
+					return true;
+
+
 				}
 				else
 				{
@@ -119,9 +122,10 @@ namespace StarsAbove.Items.Consumables
 				return true;
 			}
 			else
-			return false;
+				return false;
 		}
-		public override bool? UseItem(Player player) {
+		public override bool? UseItem(Player player)
+		{
 			var modPlayer = player.GetModPlayer<StarsAbovePlayer>();
 
 			if (player.altFunctionUse == 2 && !modPlayer.starfarerIntro)
@@ -129,20 +133,20 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.starfarerMenuDialogueScrollNumber = 0;
 				modPlayer.starfarerMenuDialogueScrollTimer = 0;
 				int randomDialogue = Main.rand.Next(0, 5);
-				if(randomDialogue == 0)
-                {
-					if(modPlayer.chosenStarfarer == 1)
-                    {
+				if (randomDialogue == 0)
+				{
+					if (modPlayer.chosenStarfarer == 1)
+					{
 						modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Asphodene.1");//1
 					}
 					if (modPlayer.chosenStarfarer == 2)
 					{
 						modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Eridani.1", player.name);
 					}
-					
+
 				}
-				if(randomDialogue == 1)
-                {
+				if (randomDialogue == 1)
+				{
 					if (modPlayer.chosenStarfarer == 1)
 					{
 						modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Asphodene.2");
@@ -150,14 +154,14 @@ namespace StarsAbove.Items.Consumables
 					if (modPlayer.chosenStarfarer == 2)//Eridani
 					{
 						if (DownedBossSystem.downedVagrant)
-                        {
+						{
 							modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Eridani.2", player.name);
 						}
 						else
-                        {
+						{
 							modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Eridani.3", player.name);
 						}
-						
+
 					}
 				}
 				if (randomDialogue == 2)
@@ -194,18 +198,18 @@ namespace StarsAbove.Items.Consumables
 						{
 							modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Asphodene.6", player.name);
 						}
-						
+
 					}
 					if (modPlayer.chosenStarfarer == 2)//Eridani
 					{
 						modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Eridani.6", player.name);
 					}
 				}
-				if(modPlayer.NewDiskDialogue)
-                {
+				if (modPlayer.NewDiskDialogue)
+				{
 					if (modPlayer.chosenStarfarer == 1)
 					{
-						
+
 						modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Asphodene.7", player.name);
 
 
@@ -215,8 +219,8 @@ namespace StarsAbove.Items.Consumables
 						modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Eridani.7", player.name);
 					}
 				}
-				if(modPlayer.inCombat > 0)
-                {
+				if (modPlayer.inCombat > 0)
+				{
 					if (modPlayer.chosenStarfarer == 1)
 					{
 						modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Asphodene.8", player.name);
@@ -242,14 +246,14 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.sceneProgression = 0;
 
 				if (modPlayer.chosenStarfarer == 1)
-                {
+				{
 					modPlayer.sceneID = 3;
 				}
 				if (modPlayer.chosenStarfarer == 2)
 				{
 					modPlayer.sceneID = 6;
 				}
-				
+
 				modPlayer.VNDialogueActive = true;
 
 				modPlayer.starfarerIntro = false;
@@ -261,7 +265,7 @@ namespace StarsAbove.Items.Consumables
 			//Subworld dialogue tutorials come first.
 			if (modPlayer.astrolabeIntroDialogue == 1)
 			{
-				
+
 				if (modPlayer.chosenStarfarer == 1)
 				{
 					modPlayer.sceneID = 11;
@@ -273,7 +277,7 @@ namespace StarsAbove.Items.Consumables
 
 				activateVNDialogue(player);
 				modPlayer.astrolabeIntroDialogue = 2;
-				
+
 				return true;
 			}
 			if (modPlayer.observatoryIntroDialogue == 1)
@@ -294,7 +298,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 201;
 				modPlayer.desertscourgeDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.slimeDialogue == 1)
@@ -302,7 +306,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 51;
 				modPlayer.slimeDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.eyeDialogue == 1)
@@ -310,7 +314,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 52;
 				modPlayer.eyeDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.EyeBossWeaponDialogue == 1)
@@ -318,7 +322,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 136;
 				modPlayer.EyeBossWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.crabulonDialogue == 1)
@@ -326,7 +330,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 202;
 				modPlayer.crabulonDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.corruptBossDialogue == 1)
@@ -334,7 +338,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 53;
 				modPlayer.corruptBossDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.CorruptBossWeaponDialogue == 1)
@@ -342,7 +346,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 137;
 				modPlayer.CorruptBossWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.Stellaglyph2WeaponDialogue == 1)
@@ -358,7 +362,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 203;
 				modPlayer.hivemindDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.perforatorDialogue == 1)
@@ -366,7 +370,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 204;
 				modPlayer.perforatorDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.BeeBossDialogue == 1)
@@ -374,7 +378,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 54;
 				modPlayer.BeeBossDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.QueenSlimeWeaponDialogue == 1)
@@ -382,7 +386,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 149;
 				modPlayer.QueenSlimeWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.VirtueWeaponDialogue == 1)
@@ -390,7 +394,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 150;
 				modPlayer.VirtueWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.SkeletonDialogue == 1)
@@ -398,7 +402,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 55;
 				modPlayer.SkeletonDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.slimegodDialogue == 1)
@@ -406,7 +410,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 205;
 				modPlayer.slimegodDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.SkeletonWeaponDialogue == 1)
@@ -414,7 +418,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 101;
 				modPlayer.SkeletonWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.HellWeaponDialogue == 1)
@@ -422,7 +426,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 102;
 				modPlayer.HellWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.QueenBeeWeaponDialogue == 1)
@@ -430,7 +434,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 103;
 				modPlayer.QueenBeeWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.MiseryWeaponDialogue == 1)
@@ -438,7 +442,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 120;
 				modPlayer.MiseryWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.OceanWeaponDialogue == 1)
@@ -446,7 +450,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 123;
 				modPlayer.OceanWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.DeerclopsDialogue == 1)
@@ -454,7 +458,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 76;
 				modPlayer.DeerclopsDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.KingSlimeWeaponDialogue == 1)
@@ -462,7 +466,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 104;
 				modPlayer.KingSlimeWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.WallOfFleshDialogue == 1)
@@ -470,7 +474,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 56;
 				modPlayer.WallOfFleshDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.FarewellWeaponDialogue == 1)
@@ -513,12 +517,48 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
+
+			if (modPlayer.NanomachineWeaponDialogue == 1)
+			{
+				modPlayer.chosenDialogue = 167;
+				modPlayer.NanomachineWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
+			if (modPlayer.SanguineWeaponDialogue == 1)
+			{
+				modPlayer.chosenDialogue = 168;
+				modPlayer.SanguineWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
+			if (modPlayer.LevinstormWeaponDialogue == 1)
+			{
+				modPlayer.chosenDialogue = 166;
+				modPlayer.LevinstormWeaponDialogue = 2;
+
+				activateDialogue(player);
+
+				return true;
+			}
+
+			if (modPlayer.GoldlewisWeaponDialogue == 1)
+			{
+				modPlayer.chosenDialogue = 165;
+				modPlayer.GoldlewisWeaponDialogue = 2;
+
+				activateDialogue(player);
+
+				return true;
+			}
 			if (modPlayer.WallOfFleshWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 105;
 				modPlayer.WallOfFleshWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.LumaWeaponDialogue == 1)
@@ -526,7 +566,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 124;
 				modPlayer.LumaWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.QueenSlimeDialogue == 1)
@@ -534,7 +574,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 74;
 				modPlayer.QueenSlimeDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.UrgotWeaponDialogue == 1)
@@ -542,7 +582,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 146;
 				modPlayer.UrgotWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.MorningStarWeaponDialogue == 1)
@@ -550,7 +590,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 148;
 				modPlayer.MorningStarWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.cryogenDialogue == 1)
@@ -558,7 +598,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 206;
 				modPlayer.cryogenDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.TwinsDialogue == 1)
@@ -566,7 +606,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 57;
 				modPlayer.TwinsDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.aquaticscourgeDialogue == 1)
@@ -574,7 +614,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 207;
 				modPlayer.aquaticscourgeDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.MechBossWeaponDialogue == 1)
@@ -582,7 +622,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 106;
 				modPlayer.MechBossWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.DestroyerDialogue == 1)
@@ -590,7 +630,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 58;
 				modPlayer.DestroyerDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.nalhaunBossItemDialogue == 1 && DownedBossSystem.downedVagrant)
@@ -598,7 +638,23 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 301;
 				modPlayer.nalhaunBossItemDialogue = 2;
 				activateDialogue(player);
-				
+
+				return true;
+			}
+			if (modPlayer.dioskouroiDialogue == 1 && DownedBossSystem.downedVagrant)
+			{
+				modPlayer.chosenDialogue = 69;
+				modPlayer.dioskouroiDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
+			if (modPlayer.dioskouroiBossItemDialogue == 1 && DownedBossSystem.downedVagrant)
+			{
+				modPlayer.chosenDialogue = 305;
+				modPlayer.dioskouroiBossItemDialogue = 2;
+				activateDialogue(player);
+
 				return true;
 			}
 			if (modPlayer.brimstoneelementalDialogue == 1)
@@ -606,7 +662,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 208;
 				modPlayer.brimstoneelementalDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.SkeletronPrimeDialogue == 1)
@@ -614,7 +670,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 59;
 				modPlayer.SkeletronPrimeDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.EmpressDialogue == 1)
@@ -622,7 +678,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 75;
 				modPlayer.EmpressDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.SkyStrikerWeaponDialogue == 1)
@@ -630,7 +686,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 135;
 				modPlayer.SkyStrikerWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.OzmaWeaponDialogue == 1)
@@ -638,7 +694,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 145;
 				modPlayer.OzmaWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.calamitasDialogue == 1)
@@ -646,7 +702,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 209;
 				modPlayer.calamitasDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.AllMechsDefeatedDialogue == 1)
@@ -654,7 +710,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 60;
 				modPlayer.AllMechsDefeatedDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.AllMechBossWeaponDialogue == 1)
@@ -662,7 +718,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 107;
 				modPlayer.AllMechBossWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.HullwroughtWeaponDialogue == 1)
@@ -670,7 +726,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 121;
 				modPlayer.HullwroughtWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.MonadoWeaponDialogue == 1)
@@ -678,7 +734,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 125;
 				modPlayer.MonadoWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.PlanteraDialogue == 1)
@@ -686,7 +742,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 61;
 				modPlayer.PlanteraDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.FrostMoonWeaponDialogue == 1)
@@ -694,7 +750,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 126;
 				modPlayer.FrostMoonWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.penthBossItemDialogue == 1 && DownedBossSystem.downedVagrant)
@@ -702,7 +758,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 302;
 				modPlayer.penthBossItemDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.leviathanDialogue == 1)
@@ -710,7 +766,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 210;
 				modPlayer.leviathanDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.astrumaureusDialogue == 1)
@@ -718,7 +774,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 211;
 				modPlayer.astrumaureusDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.PlanteraWeaponDialogue == 1)
@@ -726,7 +782,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 108;
 				modPlayer.PlanteraWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.GolemDialogue == 1)
@@ -734,7 +790,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 62;
 				modPlayer.GolemDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.arbiterBossItemDialogue == 1 && DownedBossSystem.downedVagrant)
@@ -742,7 +798,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 303;
 				modPlayer.arbiterBossItemDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.plaguebringerDialogue == 1)
@@ -750,7 +806,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 212;
 				modPlayer.plaguebringerDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.GolemWeaponDialogue == 1)
@@ -758,7 +814,23 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 109;
 				modPlayer.GolemWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
+				return true;
+			}
+			if (modPlayer.KarnaWeaponDialogue == 1)
+			{
+				modPlayer.chosenDialogue = 169;
+				modPlayer.KarnaWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
+			if (modPlayer.ManiacalWeaponDialogue == 1)
+			{
+				modPlayer.chosenDialogue = 170;
+				modPlayer.ManiacalWeaponDialogue = 2;
+				activateDialogue(player);
+
 				return true;
 			}
 			if (modPlayer.BloodWeaponDialogue == 1)
@@ -766,7 +838,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 147;
 				modPlayer.BloodWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.DukeFishronDialogue == 1)
@@ -774,7 +846,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 63;
 				modPlayer.DukeFishronDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.ravagerDialogue == 1)
@@ -782,7 +854,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 213;
 				modPlayer.ravagerDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.DukeFishronWeaponDialogue == 1)
@@ -790,7 +862,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 116;
 				modPlayer.DukeFishronWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.CultistDialogue == 1)
@@ -798,7 +870,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 64;
 				modPlayer.CultistDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.astrumdeusDialogue == 1)
@@ -806,7 +878,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 214;
 				modPlayer.astrumdeusDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.LunaticCultistWeaponDialogue == 1)
@@ -814,7 +886,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 110;
 				modPlayer.LunaticCultistWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.MoonLordDialogue == 1)
@@ -822,7 +894,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 65;
 				modPlayer.MoonLordDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.warriorBossItemDialogue == 1 && DownedBossSystem.downedVagrant)
@@ -830,7 +902,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 304;
 				modPlayer.warriorBossItemDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.tsukiyomiDialogue == 1)
@@ -838,7 +910,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 73;
 				modPlayer.tsukiyomiDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.MoonLordWeaponDialogue == 1)
@@ -846,7 +918,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 111;
 				modPlayer.MoonLordWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.ShadowlessWeaponDialogue == 1)
@@ -854,7 +926,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 122;
 				modPlayer.ShadowlessWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.WarriorOfLightDialogue == 1)
@@ -862,14 +934,14 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 66;
 				modPlayer.WarriorOfLightDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
-				
+
 			}
 			if (modPlayer.vagrantDialogue == 1 && DownedBossSystem.downedVagrant)
 			{
-				if(modPlayer.chosenStarfarer == 1)
-                {//This should be condensed.
+				if (modPlayer.chosenStarfarer == 1)
+				{//This should be condensed.
 					modPlayer.dialogueScrollTimer = 0;
 					modPlayer.dialogueScrollNumber = 0;
 					modPlayer.sceneProgression = 0;
@@ -886,7 +958,7 @@ namespace StarsAbove.Items.Consumables
 					modPlayer.VNDialogueActive = true;
 					modPlayer.vagrantDialogue = 2;
 				}
-				
+
 				return true;
 
 			}
@@ -895,7 +967,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 70;
 				modPlayer.nalhaunDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 
 			}
@@ -904,7 +976,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 71;
 				modPlayer.penthDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 
 			}
@@ -913,7 +985,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 72;
 				modPlayer.arbiterDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 
 			}
@@ -922,7 +994,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 112;
 				modPlayer.WarriorWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.CatalystWeaponDialogue == 1)
@@ -946,7 +1018,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 115;
 				modPlayer.VagrantWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.SoulWeaponDialogue == 1)
@@ -970,7 +1042,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 117;
 				modPlayer.NalhaunWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.PenthesileaWeaponDialogue == 1)
@@ -978,7 +1050,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 118;
 				modPlayer.PenthesileaWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.ArbitrationWeaponDialogue == 1)
@@ -986,7 +1058,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 119;
 				modPlayer.ArbitrationWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.ClaimhWeaponDialogue == 1)
@@ -994,7 +1066,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 127;
 				modPlayer.ClaimhWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.MuseWeaponDialogue == 1)
@@ -1002,7 +1074,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 128;
 				modPlayer.MuseWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.KifrosseWeaponDialogue == 1)
@@ -1010,7 +1082,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 129;
 				modPlayer.KifrosseWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.ArchitectWeaponDialogue == 1)
@@ -1018,7 +1090,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 130;
 				modPlayer.ArchitectWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.MurasamaWeaponDialogue == 1 && DownedBossSystem.downedVagrant)
@@ -1026,7 +1098,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 139;
 				modPlayer.MurasamaWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.MercyWeaponDialogue == 1)
@@ -1034,7 +1106,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 141;
 				modPlayer.MercyWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.SakuraWeaponDialogue == 1)
@@ -1042,7 +1114,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 142;
 				modPlayer.SakuraWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.EternalWeaponDialogue == 1)
@@ -1050,7 +1122,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 143;
 				modPlayer.EternalWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.DaemonWeaponDialogue == 1)
@@ -1058,7 +1130,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 144;
 				modPlayer.DaemonWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.NeedlepointWeaponDialogue == 1)
@@ -1066,7 +1138,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 140;
 				modPlayer.NeedlepointWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.CosmicDestroyerWeaponDialogue == 1)
@@ -1074,7 +1146,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 138;
 				modPlayer.CosmicDestroyerWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.ForceWeaponDialogue == 1)
@@ -1082,7 +1154,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 131;
 				modPlayer.ForceWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.GenocideWeaponDialogue == 1)
@@ -1090,7 +1162,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 132;
 				modPlayer.GenocideWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.TakodachiWeaponDialogue == 1)
@@ -1098,7 +1170,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 133;
 				modPlayer.TakodachiWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.HardwareWeaponDialogue == 1)
@@ -1114,7 +1186,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 134;
 				modPlayer.TwinStarsWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.RedMageWeaponDialogue == 1)
@@ -1122,7 +1194,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 151;
 				modPlayer.RedMageWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.BlazeWeaponDialogue == 1)
@@ -1146,7 +1218,7 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 67;
 				modPlayer.AllVanillaBossesDefeatedDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.EverythingDefeatedDialogue == 1)
@@ -1154,15 +1226,15 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 68;
 				modPlayer.EverythingDefeatedDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
-			if (modPlayer. AllVanillaBossesDefeatedWeaponDialogue== 1)
+			if (modPlayer.AllVanillaBossesDefeatedWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 113;
 				modPlayer.AllVanillaBossesDefeatedWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 			if (modPlayer.EverythingDefeatedWeaponDialogue == 1)
@@ -1170,17 +1242,17 @@ namespace StarsAbove.Items.Consumables
 				modPlayer.chosenDialogue = 114;
 				modPlayer.EverythingDefeatedWeaponDialogue = 2;
 				activateDialogue(player);
-				
+
 				return true;
 			}
 
-			
+
 
 			if (modPlayer.uniqueDialogueTimer <= 0)
 			{
 				modPlayer.uniqueDialogueTimer = Main.rand.Next(1800, 3600);
 				randomDialogue = Main.rand.Next(1, 9); //1-20 are idle lines, 50+ are boss dialogue lines, and 100+ is items available to be crafted (1 less than max)
-				if(Main.hardMode)
+				if (Main.hardMode)
 				{
 					randomDialogue += 9;//New dialogue when Hardmode is reached
 				}
@@ -1283,12 +1355,12 @@ namespace StarsAbove.Items.Consumables
 
 				/*
 				if (SubworldSystem.Current == null)
-                {
-					
+				{
+
 
 				}
 				else
-                {
+				{
 					if (SubworldSystem.IsActive<Observatory>())
 					{
 						modPlayer.chosenDialogue = 23;
@@ -1303,14 +1375,15 @@ namespace StarsAbove.Items.Consumables
 			{
 				modPlayer.chosenDialogue = 21;
 			}
-			
+
 			//
 			modPlayer.dialoguePrep = true;
 			modPlayer.starfarerDialogue = true;
 			return true;
+
 		}
 		private void activateDialogue(Player player)
-        {
+		{
 			var modPlayer = player.GetModPlayer<StarsAbovePlayer>();
 
 			modPlayer.NewDiskDialogue = false;
@@ -1318,38 +1391,38 @@ namespace StarsAbove.Items.Consumables
 			modPlayer.starfarerDialogue = true;
 		}
 		private void activateVNDialogue(Player player)
-        {
+		{
 			var modPlayer = player.GetModPlayer<StarsAbovePlayer>();
 
 			modPlayer.dialogueScrollTimer = 0;
-				modPlayer.dialogueScrollNumber = 0;
-				modPlayer.sceneProgression = 0;
-				modPlayer.VNDialogueActive = true;
-			
+			modPlayer.dialogueScrollNumber = 0;
+			modPlayer.sceneProgression = 0;
+			modPlayer.VNDialogueActive = true;
+
 		}
 
 
-        public override void UpdateInventory(Player player)
+		public override void UpdateInventory(Player player)
 		{
 			var modPlayer = player.GetModPlayer<StarsAbovePlayer>();
 
 			if (modPlayer.NewDiskDialogue)
-            {
+			{
 				//ItemID.Sets.ItemIconPulse[Item.type] = true;
 			}
 			else
-            {
+			{
 				//ItemID.Sets.ItemIconPulse[Item.type] = false;
 			}
-			
+
 
 			base.UpdateInventory(player);
-        }
+		}
 
 
 
 
-        public override void AddRecipes()
+		public override void AddRecipes()
 		{
 			CreateRecipe(1)
 				.AddIngredient(ItemID.FallenStar, 1)
@@ -1357,7 +1430,7 @@ namespace StarsAbove.Items.Consumables
 				.Register();
 		}
 
-		
+
 
 		public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
 		{
@@ -1366,7 +1439,7 @@ namespace StarsAbove.Items.Consumables
 			{
 				itemColor = Color.Black * 255;
 			}
-			
+
 			return base.PreDrawInInventory(spriteBatch, position, frame, drawColor, itemColor, origin, scale);
 		}
 	}

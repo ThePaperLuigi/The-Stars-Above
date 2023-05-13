@@ -26,7 +26,7 @@ namespace StarsAbove.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 44;           //The damage of your weapon
+			Item.damage = 22;           //The damage of your weapon
 			Item.DamageType = DamageClass.Melee;          //Is your weapon a melee weapon?
 			Item.width = 68;            //Weapon's texture's width
 			Item.height = 68;           //Weapon's texture's height
@@ -75,7 +75,7 @@ namespace StarsAbove.Items
 			player.AddBuff(BuffType<Buffs.Skofnung.SkofnungBuff>(), 2);
 			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Skofnung.SkofnungSummon>()] < 1)
 			{
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Skofnung.SkofnungSummon>(), 10, 4, player.whoAmI, 0f);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Skofnung.SkofnungSummon>(), 8, 4, player.whoAmI, 0f);
 
 
 			}

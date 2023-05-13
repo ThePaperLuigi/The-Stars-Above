@@ -8,7 +8,7 @@ namespace StarsAbove.Buffs
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Cyclic Hunter");
-            Description.SetDefault("Move much faster and gain 10% increased damage");
+            Description.SetDefault("Gain 10% increased damage");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

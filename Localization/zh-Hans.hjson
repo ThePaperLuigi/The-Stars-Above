@@ -3,6 +3,37 @@
   {
     StarsAbove:
     {
+      DeathReason:
+      {
+        SanguineDespair:  drained themselves of all life.
+      }
+      CombatText:
+      {
+        Adornment: 
+        {
+          Positive: Positive Chaos!
+          Negative: Negative Chaos!
+          
+        }
+
+        Nalhaun:
+        {
+          ManifestBlade: The Burnished King channels energy into his blade, leaving his defenses drastically lowered!
+          Feint: The Burnished King reverses the next attack!
+        }
+        Dioskouroi:
+        {
+          Clash: The Dioskouroi clash, equalizing their HP!
+        }
+        KissOfDeath:
+        {
+          Skyfish: Skyfish deployed!
+          Thunderbird: Thunderbird deployed!
+          BehemothTyphoon: Behemoth Typhoon deployed!
+          FullyCharged: Uppercut fully charged!
+        }
+
+      }
       SubworldName:
       {
         Observatory: 极北天文台
@@ -12,11 +43,13 @@
         Talk: 点击右键进行对话！
         Yojimbo:
         {
+          #These are pretty much debug lines just in case something breaks.
           1: 我不明白你为什么要试图从我这里得到些什么，但是……
           Leaving: Yojimbo离开了！
         }
         Garridine:
         {
+          #These are pretty much debug lines just in case something breaks.
           1: 你其实可以不必大老远的跑过来，只需要写封信就行。嗯……信件怎么送过来？好吧……
         }
       }
@@ -221,7 +254,7 @@
           ButchersDozen:
           {
             Name: "[c/C2BDFF:1阶] [c/FFEED1:“屠夫之家”]"
-            Description: 在未脱战的情况下击杀12名敌人时，获得5%额外的攻击伤害和30%攻击速度。
+            Description: 在未脱战的情况下击杀12名敌人时，获得5%额外的攻击伤害和30%攻击速度，持续4秒（触发后会重置击杀计数器）。
             Unlock: "[c/9D9D9D:已锁定：] 击败复光之君，纳尔赫恩"
           }
           EvasionMastery:
@@ -245,13 +278,13 @@
           FlashFreeze:
           {
             Name: "[c/C2BDFF:1阶] [c/FFEED1:“冰结闪光”]"
-            Description: 攻击造成暴击时会导致敌人爆炸，爆炸会造成攻击伤害的一半。此外，伤害性雪花会从目标处涌出，扩散伤害。此效果有4秒冷却时间。
+            Description: 攻击造成暴击时会导致敌人爆炸，爆炸会造成攻击伤害的一半。此外，伤害性雪花会从目标处涌出，扩散伤害。此效果有8秒冷却时间。
             Unlock: "[c/9D9D9D:已锁定：] 击败专家模式下的多彩魔女，彭忒希勒娅"
           }
           MysticForging:
           {
             Name: "[c/C2BDFF:1阶] [c/FFEED1:“秘术锻铸”]"
-            Description: 攻击击中敌人时会消耗5点魔力值并额外造成8%伤害。
+            Description: 将暴击率以1%：0.5%的比例转化为命中伤害（无视100%以上的暴击率）；除非有额外效果的触发，否则你无法再造成暴击。
             Unlock: "[c/9D9D9D:已锁定：] 击败多彩魔女，彭忒希勒娅"
           }
           InnerAlchemy:
@@ -263,7 +296,7 @@
           Hikari:
           {
             Name: "[c/C2BDFF:1阶] [c/FFEED1:“光”]"
-            Description: 获得与最大生命值除以20的结果成比例的攻击和防御加成。受到伤害时会造成'Null Radiance'，其会减半造成的伤害6秒。
+            Description: 获得与最大生命值除以20的结果成比例的攻击和防御加成。受到伤害时会减半造成的伤害6秒。
             Unlock: "[c/9D9D9D:已锁定：] 击败冰霜女王"
           }
           CelestialEvanesence:
@@ -275,7 +308,7 @@
           HealthyConfidence:
           {
             Name: "[c/9C4FFF:2阶] [c/FFD792:“健康秘诀”]"
-            Description: 额外获得150点最大生命值和强大的生命再生。生命值低于200点时防御减半。
+            Description: 所受伤害的15%伤害值会持续转化为生命值（每秒回复储存的生命值的10%）
             Unlock: "[c/9D9D9D:已锁定：] 击败血肉墙"
           }
           InfernalEnd:
@@ -305,13 +338,13 @@
           SpatialStratagem:
           {
             Name: "[c/9C4FFF:2阶] [c/FFD792:“空间谋略”]"
-            Description: 攻击造成暴击时会再次进行暴击判定。如果此次判定再次暴击，提升50%伤害并再次判定一次。
+            Description: 受到伤害后会减半受到的伤害（包括触发该效果的伤害），持续2秒，并获得20%伤害，持续4秒。此效果有30秒冷却时间。（在冷却时间内受到伤害时会重置冷却时间）
             Unlock: "[c/9D9D9D:已锁定：] 击败来自星海苍穹的除了最终Boss以外的所有Boss"
           }
           WeaknessExploit:
           {
             Name: "[c/9C4FFF:2阶] [c/FFD792:“弱点特效”]"
-            Description: 攻击造成暴击时会以原伤害10%的真实伤害额外命中一次（不会击杀）。生命值低于20%或眩晕的敌人则会受到30%伤害。
+            Description: 暴击伤害的10%会转化为真实伤害（不会造成击杀），用原版的减益攻击敌人时会额外造成15%真实伤害。
             Unlock: "[c/9D9D9D:已锁定：] 击败专家模式下的石巨人"
           }
           Aprismatism:
@@ -335,7 +368,7 @@
           CyclicHunter:
           {
             Name: "[c/C2BDFF:1阶] [c/FFEED1:“循环猎手”]"
-            Description: 在击败一名敌人时，获得8点魔力、10%伤害和50%移动速度加成半秒。此效果有2秒冷却时间。
+            Description: 在击败一名敌人时，获得8点魔力和10%伤害加成半秒。此效果有2秒冷却时间。
             Unlock: "[c/9D9D9D:已锁定：] 击败困难模式下的史莱姆王"
           }
           LivingDead:
@@ -347,7 +380,7 @@
           BeyondInfinity:
           {
             Name: "[c/D82BFF:3阶] [c/FFC258:“超越无限”]"
-            Description: 当生命值达到500或更高时，所有造成的伤害都会翻倍。当生命值低于500点时降低10%造成的伤害，每100点生命值都会使数值提高10%。
+            Description: 当处于战斗状态时，每过两秒便会获得10%伤害加成，至多获得100%伤害加成。伤害加成会在你造成伤害时降低，且受到伤害时会重置伤害加成。
             Unlock: "[c/9D9D9D:已锁定：] 击败所有泰拉瑞亚Boss"
           }
           KeyOfChronology:
@@ -403,7 +436,7 @@
             19: 这是一件传说中的近战神器！这个精华所制成的武器可以对任何敌人造成crippling减益！
             20: 这个精华将创造一个辅助物品。如果你能活下去，它将给你和你的队友带来强大的增益。
             21: 光之战士给了我这个精华的灵感。它似乎是一把通往无限武器的宝库的钥匙，能造成召唤伤害
-            22: 如果你感觉灵感来了，试着把你的敌人If you feel inspired, try referring to your foes as mongrels.
+            22: 如果你感觉灵感来了，试着把你的敌人称作杂种。
             23: 这个精华能创造一个具有高魔力消耗的远程武器，拥有极高的暴击伤害修正。
             24: 可以用吗？当然可以。理论这全都是你的。
             25: 这是一件召唤武器。它似乎有非常独特的缩放属性，而且攻击速度惊人。
@@ -461,14 +494,22 @@
             77: 我为你搞来了一种新精华。它似乎能同时借用近战与魔法的力量——一把多功能武器,我爱死它了！
             78: 这片墓地似乎和这种精华有所联系。希望这些墓碑不是你死后留下的，对吧？
             79: 嗯……这个召唤武器的精华可以用于制造某种遥控无人机——我想知道能不能和它们交流。
+            80: 这确实是一把近战武器——此外，它似乎在远距离表现出色,也能在近身搏斗中提供额外火力。真不错。
+            81: 我从那些像是海盗的家伙手里抢来了这个远程精华。……礁礁这石什么！呃……讲真的，我的航海笑话快讲干了，我现在该抛锚补货了。
+            82: 呃呃，我不确定这个精华能做出什么东西，只知道它是把召唤武器。你最好亲自试试，免得你搞砸了。
+            83: 这个时钟是一把召唤武器-看起来它会召唤出一只可爱的时间盟友。如果你能适应她的战斗风格，她会给你提供很大的帮助。
+            84: 唔……也许你能用它躲开来袭的攻击……？
+            85: 看上去这把远程武器能轻易击溃成群的敌人。听起来它能派上用场——尤其是那个摆动的巨型棺木！
+            86: 看上去这个精华兼备了魔法与近战——它已经开始噼啪作响了。试一试怎么样？
+            85: 看上去这把远程武器能轻易击溃成群的敌人。听起来它能派上用场——尤其是那个摆动的巨型棺木！
+            87: 这个精华怎么样？它将给予你一层附魔屏障，保护你免受伤害而无后顾之忧。
+	    88: Seems that this Essence came from that voodoo doll we found in the Underworld- a strange sight. Are you certain that using a weapon like this is worth the risk?
+            89: Who am I kidding- of course you're certain! You're MY Starbearer, after all! Just don't get TOO reckless, now. I don't think resurrection is something I can pull off on you.
+
           }
           Eridani:
           {
-            1:
-              '''
-              这里有一个远程类型精华。看起来每四次射击
-              都会增强一次攻击。不管为何，反正它很强大。
-              '''
+            1: 这里有一个远程类型精华。看起来每四次射击都会增强一次攻击。不管为何，反正它很强大。
             2: 给你另一种精华。这个将创造一个召唤类型武器。我相信你明白这意味着什么吧？
             3: 我是指让你去试试。
             4: 你已经明白了？那当我没说。
@@ -476,7 +517,7 @@
             6: 不管它是什么，它应该对你有用。忽略它说的事实。
             7: 我为你准备了一种精华。它能创造一个魔法类型武器。显然，为了更好地运用这把武器，你需要卡点。
             8: 我相信你能轻易掌握它。好吧，“相信”是个谎言。也许有1/4的怀疑。
-            9: 这个精华是用来制作 "Death in Four Acts "的升级版。它很可能拥有很强大的远程强度。
+            9: 这个精华是用来制作 "四幕之内的死亡"的升级版。它很可能拥有很强大的远程强度。
             10: 此精华制成的武器是基于音乐的…卡好挥舞的时机才能完美使用它。
             11: 就算只是拿着它也会让你感受到某种节奏……
             12: 这个精华将创造一个屠龙的传说武器。跃至空中，用它的力量刺穿你的敌人。
@@ -550,6 +591,14 @@
             80: 这片墓地似乎和这种精华有所联系。希望它能帮助你避免一开始就死出一片墓地。
             81: 虽然它很强大，但我相信它是一把实用的工具，而不是武器。
             82: 这种魔法精华虽然和自然有关，但它似乎相当不稳定。也许你最好把它和其它武器搭配着使用。
+            83: 这把近战武器调动时空之力协助你作战。此外，它具备着令人印象深刻的攻击范围。
+            84: 这个怎么样；据我所知，我们和之前那些海盗……呃，算是“合作”制造出了这个精华，它造成远程伤害。接好了。
+            85: 我不知道该怎么定义这个召唤类型的精华，所以我准备把它留给你练手。呃……祝你好运。
+            86: 这把召唤武器能召唤出一只迷人的时间生物，它同时兼顾了攻击与防御。
+            87: 这个精华对应了一把远程武器，但它似乎更适合在近距离发挥作用。别靠的太近了，但尽量发挥出它的特性。
+            88: 它似乎将一个近战精华和远程精华的串联起来了。就我看，它能制作出一把掌控雷霆之力的强大武器。
+            89: 这个精华对应了一件辅助工具。它将赋予你一层牢固的屏障，并从你的敌人那里汲取生命能量……这将是一件得力的工具。
+	    90: This Essence seems to have resonated from that strange poppet we found in the Underworld. Beware its dangers- your affinity with resurrection is... tentative.
           }
           Perseus:
           {
@@ -744,6 +793,7 @@
               1: 你做到了！石巨人不复存在。你势不可挡。
               2: 我感觉下一个敌人……很危险。似乎天体能量在地牢入口周围聚集。
               3: 天体序列有了另一项升级。看起来很强大。
+              4: 嗯，差不多就这些了。
             }
             Eridani:
             {
@@ -854,20 +904,37 @@
               4: 等等，这是最后的天体序列能力，被激活了？真令人难以置信。
             }
           }
+          Dioskouroi:
+          {
+            Asphodene:
+            {
+              1: Now that was a strange fight... I don't even think those twins even realized we were there!
+              2: They weren't human, but probably a sort of demonkin. I felt some Starfarer trace on them- perhaps the First Starbearer defeated them in the past.
+              3: I don't know why Perseus told US to fight them, or even how we were able to. Unless... maybe Perseus found a way to turn Essences into their past selves? Hmm...
+              4: Our battle seems to have left a strange remnant object- I'll leave it in your care. You should probably take care of it.
+            }
+            Eridani:
+            {
+              1: Even though we're the ones who bested them, those demon twins barely even gave us a glance.
+              2: From the remnant mana on them, those twins were most likely laid low by the First Starbearer ages ago.
+              3: As for why Perseus told us to fight them... I don't know. I'm not even sure how we were able to fight them- Perhaps we fought an Essence given agency?
+              4: There's this strange object left over after the battle. I would take good care of it, if I were you. I believe it will be useful later.
+            }
+          }
           Nalhaun:
           {
             Asphodene:
             {
               1: 所以这就是复光之君。他的刀刃威力惊人，而魔法更是强大。你挺过来了，这也是一次胜利。
               2: 我看来，复光之君应该算被打败了。此外，这里还有一处疑点。
-              3: 我不知道珀尔修斯为什么要我们和他战斗，甚至不知道为什么我们就要去做。除非……或许帕尔修斯找到了一种办法把精华变成了活物？嗯……
+              3: 我想我们该把它加入到我们的收藏中——这没什么坏处。
               4: 我认为我们可以把他的武器据为己有，作为一种新的天体新星使用。也许是因为承星者的影响？
             }
             Eridani:
             {
               1: 复光之君已经倒下了。多么强大的敌人啊。要是我们在他的全盛时期与其战斗，我想都不敢想我们会有怎样的结果。
               2: 现在看来，复光之君在很久以前就被最初的星海旅者击败了。
-              3: 至于为什么珀尔修斯让我们和他战斗，我不知道。我甚至不知道我们是如何与他战斗的。也许我们只是与赋予生命的精华战斗？
+              3: 来看看这个奇怪的物体——它一定有什么意义。既然我们谈到了这个话题……
               4: 他的武器，魔剑·莱瓦汀。我们可以自己使用，作为一种天体新星。也许是因为承星者的影响？
             }
           }
@@ -1069,13 +1136,13 @@
           {
             Asphodene:
             {
-              1: 你已经击败了硫磺火元素。看来在灾厄把它撕成碎片之前，它们是地狱的强大文明中受人尊敬的女神。
-              2: 我说我们要尽早与她对峙，而不是迟早。她一定强到离谱，但是……我们至少得做点什么。
+              1: 你战胜了硫磺火元素。在这里被付之一炬前，她似乎曾是地狱强大文明所崇拜的女神。
+              2: 施下这场暴行的定是一位可怕的敌人。尽管我喜欢挑战，但实话实说：我们必须得变得更强。
             }
             Eridani:
             {
               1: 烈火燃烧着的灵魂已不复存在。硫磺火的文明一定很强大，才会如此崇拜这种元素。我们只是在她最弱的时候与她战斗。
-              2: 如果我们所知道的是正确的，灾厄是硫磺火王国的终结者。虽然我想结束她的罪行，但我们必须先变得更强大。
+             2: 造成这场破坏的根源必须被遏制……我们必须变得更强才能做到。
             }
           }
           Calamitas:
@@ -1167,9 +1234,9 @@
         {
           Nalhaun:
           {
-            1: 我们又见面了，{0}。我需要你的帮助。
-            2: 我给予了你“远古碎片”，有了它，你可以召唤出一个强大的敌人，复光之君。
-            3: 如果我的假设是正确的，他可能是对抗最初的承星者的重要一步，并阻止他的暴行。
+            1: 我们又见面了，{0}。又一次，还有一个敌人需要你打败。
+            2: I've given you the 'Ancient Crown.' With it, you can call forth a powerful foe, the Burnished King.
+            3: If my hypothesis is correct, his defeat will resonate a clue towards the First Starbearer's location.
             4: 做好准备：这是一场苦战。
           }
           Penth:
@@ -1179,11 +1246,11 @@
             3: 这是继续追寻最初的承星者的另一重要步骤。
             4: 做好准备。这是一场苦战。
           }
-          Arbitration:
+          Dioskouroi:
           {
-            1: 我们又双见面了，{0}。我又有一个敌人需要你去击败。
-            2: 我给予了你“恶魔十字架”，当使用时，它会召唤出一个强大的恶魔。
-            3: 这是追寻最初的承星者的另一个重要步骤。
+            1: We meet again, {0}. I need your help.
+            2: This is the 'Twincrux Pendant.' When used, it will call forth powerful warring demons.
+            3: There may be an important step towards confronting the First Starbearer and stopping his rampage during this encounter.
             4: 做好准备。
           }
           Warrior:
@@ -1340,10 +1407,10 @@
             }
             Eridani:
             {
-              1: 用天体新星挺累人的。
-              2: 有很多关于英雄从他人那里借用力量的故事，但他们从未告诉你另一方有多难……
-              3: 觉得我失去了一些重要的东西。
-              4: 这让我很困扰，但是……看起来我们现在无法解决这个问题。
+              1: 使用天体新星真的挺累人的。
+              2: 有很多关于英雄从他人那里借用力量的故事，但他们从未告诉你另一方有多累……
+              3: 我觉得自己好像失去了一些重要的东西。
+              4: 这让我很困扰，但是……看起来我们还没法解决这个问题。
             }
           }
           HardIdleDialogue3:
@@ -1366,24 +1433,24 @@
             }
             Eridani:
             {
-              1: 你的盔甲合格了吗？看来你很明智，嗯……还可以。
-              2: 呃，我先说好了，要是你对我的穿着指指点点的话……
-              3: 我就哭给你看。
-              4: 什么？我说真的。
+              1: 你的盔甲达标了吗？看起来，它……大概通过检验了。
+              2: 呃，我先说好了，要是你对我的装束指指点点的话……
+              3: 我很可能会哭出来。
+              4: 怎么了？这是真心话。
             }
           }
           HardIdleDialogue5:
           {
             Asphodene:
             {
-              1: 等一切都结束之后，要不要考虑加入我们？想想我们一起度过的那些美好时光。
+              1: 在所有这些事情结束后，你有没有想过加入我？想想我们已经经历的那么多美好时光！
               2: 呃呃，好吧。大部分都是战斗的事情。
               3: 但是——嘿！那也挺有趣的，不是吗？
             }
             Eridani:
             {
-              1: 在未来我会需要你的帮助的……你不会介意和我一起吧？
-              2: ……或许我们该回到正题了。我们还有很长的路要走。
+              1: 在将来的日子里，我也需要你的帮助……你应该不会介意加入我吧？对吧？
+              2: ……也许我们应该之后再谈这个。我们仍然有很长的路要走。
             }
           }
           HardIdleDialogue6:
@@ -1391,14 +1458,14 @@
             Asphodene:
             {
               1: 你变得越来越强大了！你觉得你能打赢我吗？
-              2: 那不过是个玩笑，你或许……可以吧。
+              2: 开个玩笑。你可能真的行。
             }
             Eridani:
             {
               1: 你变的越来越强大了，不是吗？我得努力追上你才行。
-              2: 不管是不是这样，理论上来说，我也有可能赢过你。你不觉得吗？
-              3: 不过还是打消你那些有趣的念头吧。我们是一伙的，不是吗？
-              4: （我想知道他们有没有发现我在虚张声势……）
+              2: 不管是不是这样，理论上来说，如果我们两个打一架，我大概会赢。不是吗？
+              3: 不过别动什么歪脑筋。我们命中注定属于同一阵线。
+              4: （我很好奇他有没有被我的虚张声势吓到……）
             }
           }
           HardIdleDialogue7:
@@ -1406,7 +1473,7 @@
             Asphodene:
             {
               1: 很难想象这些怪物是从哪里来的。
-              2: 或许这是某些法师吃了毒蘑菇后找乐子的产物，不是吗？或者说它们来自某个通向原始维度的传送门？
+              2: 是某些地方的某个巫妖吃了些坏蘑菇然后就进城啦？或者是来自某个原始汤羹维度的传送门？
             }
             Eridani:
             {
@@ -1417,13 +1484,13 @@
           {
             Asphodene:
             {
-              1: 实际上……神圣之地不过是个巧妙的伪装。
-              2: 这样一个美丽的生物群系真 的 很 想 杀 掉 你。
+              1: 确实……神圣之地只是表象而已。
+              2: 这环境多么美丽，但它却 真 的 很 想把你杀了。
             }
             Eridani:
             {
-              1: 剥开神圣之地的伪装，它甚至比地下世界更加严酷。
-              2: 如果你打算去刷光明之魂，请务必保证自身的安全。即使准备充足也可能被打个措手不及。
+              1: 如果揭开神圣之地的虚伪表象的话，你会发现它可能比地狱本身更加残酷。
+              2: 如果你将要去获取灵魂的话，记得注意安全。就算是最强的人也可能会被打个措手不及。
             }
           }
           HardIdleDialogue9:
@@ -1539,7 +1606,7 @@
             80: 一位疯狂的邪教徒……在它们带来灾难前阻止它们……！
             81: 真是难以置信……是……月球领主！这是最后的决战了！我们必须得赢！
             82: 光之战士就要来了……等到它挣脱桎梏，请务必做好准备！
-            83: 这个敌人似乎有点眼熟……攻击不起作用了；尽可能长的生存下去！
+            83: 这个敌人似乎有点眼熟……当心它的巨刃——它似乎可以转变形态！
             84: 不要低估这名敌人……！抓住那些从你身上偷走的生命力！
             85: 这位魔女凭借绘画发动攻击！留意你所沾染的颜色！
             86: 这家伙会改变它的攻击方式！留意它的姿态什么的。
@@ -1550,7 +1617,7 @@
             91: 这就是世间所有史莱姆的源头。不要草率，我敢肯定那些史莱姆被击中后会分裂！
             92: 我觉得它有点不太对劲，但我说不上来。当心别被冻住了……我想你应该已经知道了。
             93: 嘿，是荒漠灾虫——但是没那么干燥！我们之前见过一只，这只又能有多糟糕呢？
-            94: It's a giant sea serpent! Hang on... This thing is SERIOUSLY dangerous!
+            94: 一条巨型海蛇！当心……这家伙很危险！
             95: 火焰孕育出了这只恶魔般的元素之灵！当心脚下，别掉进熔岩里了！
             96: 它是毁灭的征兆……你知道它会带来多大的破坏。别输了……！
             97: ……又是阿娜希塔。你打算挑战利维坦吗？
@@ -1735,7 +1802,7 @@
             80: 是月之邪教徒……在它们带来灾难前阻止它们！
             81: 月球领主……我们将直面神明。我们必须得赢，别无选择！
             82: 光之战士就要来了……挣脱桎梏的他无比强大！
-            83: 这名敌人似乎有点眼熟……攻击不起作用了；尽可能长的生存下去！
+            83: 这名敌人似乎有点眼熟……看上去它可以在某种程度上操纵空间！
             84: 不要低估这位先古之君！夺回那些失窃的生命力！
             85: 她用颜料将你覆盖了。留意你所沾染的颜色。
             86: 它似乎能够变化形态！试着记住它的攻击方式……！
@@ -1745,7 +1812,7 @@
             90: 一头血肉巨兽接近了……！当心那个瘤囊！
             91: 这名敌人散发出神秘的凛冽气息。离它远点，那些冰锥可不是摆设。
             92: 荒漠灾虫又回来了……我认得它——这是它曾经的样子。
-            93: A colossal serpent makes its way towards us.. It may overwhelm you.. don't get reckless.
+            93: 一条巨大的海蛇朝我们游过来了……当心……他可能会吞掉你……
             94: 焦炭玩偶召唤出了某个灼热的灵魂……它可以随意传送——别追丢了。
             95: 灾厄……一个值得尊重的名字。我们已经见证了她的力量。此战，有胜无败。
             96: 又是阿娜希塔的歌声。你想再次挑战她吗？
@@ -1830,7 +1897,7 @@
             175: 我们到了。这颗星球看上去黯淡无色？不知为何，它的表面似乎被抹去了。
             176: 她一直在这里……？嗯……我随时做好准备。使用区域中央的追忆印记吧。
             177: 看起来我们还没办法探索这里……也许下次吧。
-            178: 一位昭示灾难的存在现身了。It wields destruction in all its appendages!
+            178: 一位昭示灾难的存在现身了。它那些附肢操纵着毁灭之力！
             179: 这只庞然巨物汇聚了世界上的邪恶力量！杀死其中一只史莱姆会增强另一只！
             180: 看起来这片生物群系被植物覆盖着——要我说，这比丛林更有品味。让我们四处看看吧。
             181: 看上去那只史莱姆已经受够你了——它似乎彻底改变了自己的战斗风格。
@@ -1843,7 +1910,7 @@
             189: 看上去是座古老的采矿基地。从外观上看来，它在Ardor扎根于此前就被遗弃了。遗憾的是，没有任何剩下的矿石。
             190: 真是个奇怪的世界——周围的魔力似乎完全干涸了，只剩下一片苍白——多么独特的现象。
             191: 看起来你正身处地下——如果你能回到地面的话，周围的环境会和母星更加相似。这里的生物看起来都很眼熟——真是奇怪。
-            192: The Corruption is a known entity in the universe, but this place is different- it feels as if something larger was Corrupted into this object. Stay alert.
+            192: 尽管腐化之地的存在已经被世人所熟知，但这地方不同——似乎有什么更大的东西在其中腐败……保持警惕。
             193: 深红色的月亮……等你收集好需要的东西后，我们应该尽快离开。
             194: 这里似乎已经被Ardor完全颠覆了……多么可怕的命运。
             195: 我从来没想过能看到一座木制的空间站……等等，这里还有人住吗？
@@ -1857,7 +1924,7 @@
             {
               Dialogue:
               {
-                0: 幸会！我是爱丝福德妮——一位星海旅者，相对地，你就是我的星之传承者。
+                0: 幸会！我是爱丝福德妮——一位星海旅者，相对地，你就是我的承星者。
                 1: 我将赋予你力量，以便我们能共同清除世界上的威胁——如果事态良好的话，我们还能解决更严重的问题。
                 2: 不过对你来说还会有更多的好处。若你愿意，我可以帮你描述一下我还能做什么。我比较推荐你听一听！
               }
@@ -1945,7 +2012,7 @@
                 2: 事实上，我早该知道的。我的妹妹绝不会做出不明智的选择。
                 3: 哈？你叫我妹妹？没门……
                 4: 抱歉，爱丝福德妮。这应该会有所帮助，想起来了吗？
-                5: 伙计，我们不该像这样会面的。这太冒失了……！
+                5: 伙计，我们不该像这样会面的。这太突然了……！
                 6: 听我解释，星之传承者。 在这个星系的大千世界中，存在着以帮助那里的居民为己任的星海旅者。你应该知道我们都做些什么。
                 7: 身为能量的集合体，星海旅者们会选择各自的星之传承者作为使者。你应该清楚生物是最佳的魔力导体，而我们严格来说算不上生命体。
                 8: 然而，初代星海旅者有些……名不副实。这是第一位星之传承者。据我所知，她们似乎已经丧失了心智与道德。
@@ -1954,10 +2021,10 @@
                 11: 就目前的情况来看，你战胜她们的机会微乎其微。但爱丝福德妮不知道的是，所有星海旅者都有自己的底牌——天体新星。
                 12: 在你赢得这场决斗时，我已经将这种力量传承给她了。
                 13: 目前就这些了。我必须继续追踪初代星海旅者。祝你好运——我很快就会需要你的帮助。
-                14: 我知道他是个独行侠，但是……我希望我们能多些交流。保重，珀尔修斯。不过，我总感觉他有事瞒着我。只有我吗？
-                15: 无论如何，他说的很对。我确实感觉自己变强了——我的头发也在闪烁！这种力量对于我们前行来说再好不过了。
+                14: 我知道他有些孤僻，但是……我希望我们能多些交流。保重，珀尔修斯。不过，我总感觉他有事瞒着我？只是对我这样吗？
+                15: 无论如何，他说的很有道理。我确实感觉自己变强了——我的头发也在闪烁！这种力量对于我们前行来说再好不过啦。
                 16: 看上去我的天体新星叫做“虚无圣刃”。也许随着我们不断击败强大的敌人，还会有更多能力供我们使用。
-                17: 绑定天体新星钥匙之后，你就能通过空间光盘装备天体新星了，就像平时一样。
+                17: 绑定天体新星键之后，你就能通过空间光盘装备天体新星了，就像平时那样。
                 18: 你应该已经有一些棱镜核心了。凭借它们的力量，我猜你可以通过锻造来升级天体新星。
                 19: 这很重要，你需要天体新星能量来投射星体。天体新星能量会在战斗中累积，当你脱战时则会快速减少。
               }
@@ -1987,7 +2054,7 @@
                 13: 目前就这些了。我必须继续追踪初代星海旅者。祝你好运——我很快就会需要你的帮助。
                 14: 珀尔修斯不喜欢过多逗留。我觉得他说的没错……无论如何，这股力量真是难以置信，但我需要一点时间来熟悉它。
                 15: 我的天体新星叫做“虚无圣刃”。也许随着我们变强，我们能使用更多能力。
-                16: 绑定天体新星钥匙之后，你就能通过空间光盘装备天体新星了，就像平时一样。
+                16: 绑定天体新星键之后，你就能通过空间光盘装备天体新星了，就像平时一样。
                 17: 你可以通过棱镜核心来锻造并升级你的天体新星，我想。你可以直接把它们添加到菜单上。
                 18: 别忘了：你需要天体新星能量来投射星体。天体新星能量只会在战斗中积累。
                 19: 差不多就是这样……我知道这有点难以接受，但请善用你的天体新星。暂时就这么多了。
@@ -2033,98 +2100,98 @@
               Dialogue:
               {
                 0: 你做到了！欢迎来到极北天文台——星海旅者之家。注意，不是所有人的，只是我和埃里的家。
-                1: Right. Actually, the Observatories weren't intended for us at all, but we're... keeping the place clean. The original inhabitants are long gone anyways.
-                2: We might not look it, but we aren't native to this galaxy. We came after- well, it's hard to explain straight out.
-                3: Let's pretend the universe is a lake, right? Okay, good. Now imagine someone started pouring oil into the lake- not something you could miss.
-                4: Hopefully that explains what's going on here. We ended up discovering this:
-                5: This galaxy- the Moirae galaxy- is freezing over. It's not happening all at once, but the farther away from the center you go, things get worse.
-                6: The only reason why I met you is because this planet is uniquely habitable, even this far away from the galaxy's center. You can thank your Sun for that.
-                7: The Observatory has defined this disaster as the Ardor, so we'll be referring to it as such.
+                1: 实际上，这座天文台原本不是为我们而建立的，我们只是……努力保持这里的环境整洁。原来的居民们早就不在了。
+                2: 也许我们看上去很像，但我们不是这片星空的原住民。我们只是后来者——嗯，挺难直接解释清楚的。
+                3: 让我们把宇宙假设成一个湖，好吗？好，就是这样。现在想象一下有人开始向湖里倒油——你不可能对此熟视无睹。
+                4: 希望这能解释清楚这里正在发生的事情。我们最终发现了一件事：
+                5: 这个星系——命运星系——正在冻结。虽然这不会立即发生，但距离星系中心越远，情况就越发恶化。
+								6: 虽然这里远离星系中心，但你所在的星球格外宜居，这就是我们邂逅的原因
+								7: 天文台将这种灾难定义为为Ardor，于是我们以此来称呼它。
               }
               Choices:
               {
-                1: How are we going to solve this?
-                2: Aren't there other people solving this problem already?
-                3: Well, I haven't noticed anything out of the ordinary.
+                1: 我们要怎么解决这个问题？
+								2: 难道没有其它人着手解决这个问题吗？
+								3: emmm……我感觉一切没什么两样。
               }
             }
             14:
             {
               Dialogue:
               {
-                0: I'd love to give you a direct answer... but I don't know.
-                1: It's a pressing issue, but we need to become stronger before any rash decisions.
-                2: With the Astrolabe, you'll be able to explore the cosmos with a working Stellaglyph once you make one.
-                3: We can run you through the basics, if you need it. It's not too complicated, but you might get lost quickly.
+                0: 我想给你一个确切的回答……很抱歉我也不知道。
+								1: 这是个紧迫的问题，但是在做出任何潦草的决定之前，我们得变得更强。
+								2: 等你做出旅星符台，你就能通过通过Astrolabe探索宇宙了。
+								3: 如果你需要，我可以给你讲一些基本流程。这说不上复杂，但你可能很快就会糊涂了。
               }
               Choices:
               {
-                1: Sure, lay it on me.
-                2: Actually, I think I can figure it out on my own.
+                1: 是的，请给我讲讲。
+								2: 事实上，我觉得我可以自行摸索。
               }
             }
             15:
             {
               Dialogue:
               {
-                0: Well, we thought that too, but it seems most of the galaxy's population has moved inwards to escape the cold.
-                1: Starfarers can extract Essences from ambient mana, but from the brief worlds we've visited, I've only been able to learn the galaxy's name: Moirae.
-                2: While it IS important, we have to get stronger before making any moves.
-                3: With the Astrolabe, you'll be able to explore the cosmos with a working Stellaglyph once you make one.
-                4: We can run you through the basics, if you need it. It's not too complicated, but you might get lost quickly.
+                0: 唔，我们也这么想，但星系中的大多数人似乎都倾向于向中心迁移，以逃离被冻结的命运。
+								1: 星海旅者能够从周围的魔力中提取精华，但在我们游历过的几个世界中，我只是了解到这个星系的名字：命运。
+								2: 虽然这很重要，但是在采取任何行动之前，我们得变得更强才行。
+								3: 等你做出旅星符台，你就能通过通过Astrolabe探索宇宙了。
+								4: 如果你需要，我可以向你介绍一些基本流程。这说不上复杂，但你可能很快就会糊涂了。
               }
               Choices:
               {
-                1: Sure, lay it on me.
-                2: Actually, I think I can figure it out on my own.
+                1: 是的，请给我讲讲。
+								2: 事实上，我觉得我可以自行摸索。
               }
             }
             16:
             {
               Dialogue:
               {
-                0: Of course you didn't- didn't I just say your Sun is warming the planet up? Jeez...
-                1: Anyways, with the Astrolabe, you'll be able to explore the cosmos with a working Stellaglyph once you make one.
-                2: We can run you through the basics, if you need it. It's not too complicated, but you might get lost quickly.
+                0: 你当然感觉不到——我不是刚说过有太阳给这里提供热量吗？捏猫猫的……
+								1: 不管怎样，等你做出旅星符台，你就能通过通过Astrolabe探索宇宙了。
+								2: 如果你需要，我可以向你介绍一些基本流程。这说不上复杂，但你可能很快就会糊涂了。
               }
               Choices:
               {
-                1: Sure, lay it on me.
-                2: Actually, I think I can figure it out on my own.
+                1: 是的，请给我讲讲。
+								2: 事实上，我觉得我可以自行摸索。
               }
             }
             17:
             {
               Dialogue:
               {
-                0: Alright. To get started, you'll need to craft a structure called a Stellaglyph.
-                1: Within the Observatory is the Celestriad Root. In the interest of keeping this brief, you can use it like a crafting table. It's on a plinth surrounded by stone pillars.
-                2: Simply combine one of each type of gemstone to create the Stellaglyph. That's pretty much the hardest part taken care of.
-                3: Now, placing the Stellaglyph in your home will open up a Gateway you can use with the Celestial Cartography menu to explore the galaxy in what we call a Cosmic Voyage.
-                4: Simply select a destination to teleport directly there- quite a novel way of travel, right?
-                5: Of course, there's a few downsides. We're transposing you there instead of normal travel (like with a starship) so you'll have most movement abilities unavailable.
-                6: Oh, I recommend taking something like a grappling hook to service you on the Cosmic Voyages. Trust me on this one.
-                7: That makes sense. Keep in mind you'll need to be near the Gateway to go to other locations- but if you get stuck, you can just teleport home or the Observatory.
-                8: Speaking of locations... any loot you find won't be replenished when you visit again, except for Anomalies.
-                9: Anomaly locations have much greater loot and rarer enemies, but if you stay for too long...
-                10: Let's just say there's a whole host of nasties in the galaxy, and they love visiting these places. Once they're alerted to your presence, they'll come hunting.
-                11: After visiting an Anomaly, there'll be a long cooldown before you can visit again, so make every visit count.
-                12: Through upgrading the Stellaglyph, you can access more Cosmic Voyage Locations, but you'll have to craft the Stellaglyph upgrades yourself- using the Celestriad Root, of course.
-                13: One last thing- there exists certain structures called Stellar Foci, which, when placed near your Stellaglyph, will make you stronger during Cosmic Voyages.
-                14: They'll be super helpful in the long run, but they're pretty difficult to craft. Maybe we'll find a source somewhere?
-                15: Okay, that's it! Did you get all that?
+                0: 好吧。首先，你需要制作一座“旅星符台”。
+								1: 在天文台内部有一座天神锚点，为了简化流程，你可以把它当做合成站来使用。它就坐落在一个由石柱环绕的基座上。
+								2: 你只需要从每种宝石中各取其一，并将它们简单结合，就能制作出旅星符台了。这也是流程中最麻烦的部分。
+								3: 现在，你只需要把旅星符台安置在家里，就能打开一道传送门。随后你就能通过天体星图探索星海了，我们称之为——寰宇之旅。
+								4: 你只需要选择一个目的地，就能直接传送到那儿——很新奇的旅行方式，对吧？
+								5: 当然，这种方式也存在一些弊端。我们通过非常规的手段把你传送到目的地（而不是用宇宙飞船），所以你绝大部分的机动能力都没法使用了。
+								6: 唔，我推荐你在寰宇之旅途中带上钩爪之类的东西。相信我总没错的。
+								7: 这一点言之有理。记住：你只有在传送门附近才能传送到其它目的地——但如果你被困住了，你就只能选择传送回家或回到天文台。
+								8: 说起目的地……除了某些特异点，你探索途中发现的任何战利品都不会在你再次探索时刷新。
+								9: 特异点中有着更丰富的资源和更稀有的敌人，但如果你停留太久……
+								10: 这么说吧，星海中潜藏着大量讨厌的家伙，这些特异点深受他们的青睐。一旦它们注意到你的存在，他们就会前来猎杀你。
+								11: 对特异点的探索之间有很长的冷却时间，因此每次探索都至关重要。
+								12: 通过升级你的旅星符台，寰宇之旅可以抵达更多目的地，但你必须自己给旅星符台升级，当然了，要使用天神锚点。
+								13: 最后一点——有一些名为“星体聚焦”的雕塑，当它们被安置在旅星符台附近时，会在寰宇之旅途中给予你强化。
+								14: 那在长途旅行中非常有用，但它们很难制作。或许我们能在某处找到一点线索？
+								15: 好了，我说完了！你听明白了吗？
               }
               Choices:
               {
-                1: Sounds good to me.
-                2: Can you run that by me again?
+                1: 听起来挺不错的。
+								2: 你能再说一遍吗？
               }
             }
             18:
             {
               Dialogue:
               {
-                0: Perfect. Good luck out there!
+                0: 那真是太好了。祝你好运！
               }
               Choices:
               {
@@ -2136,15 +2203,15 @@
             {
               Dialogue:
               {
-                0: My eyes betrayin' me? A landwalker and a... familiar, all the way out'n deep space?
-                1: You're one to talk! If you weren't aware, you're glowing BRIGHT BLUE. Also, I kind of take offense to the term familiar...
-                2: "'Pologies, not tryin' to start anythin'- Anywho, never met'n a lumenkin before, eh? Now that's a sparker. Name's... uh... Yojimbo."
-                3: Settin' aside your magical companion, I'm thinkin' you hail from somewhere nearby... Guess the Ardor ain't cleared this region fully yet.
-                4: "'ell, this'll be ash. Contracts out here are already a chore, so if you plan on gettin' in the way, it'd be makin' my job a great deal harder."
-                5: No, we weren't planning on fighting you... Actually, if you have any help you can offer, we'll take it.
-                6: Do I seriously give off the impression that I'd be givin' you a hand? Good, because I'm feelin' mighty generous this time.
-                7: If you're really in the business of needin' help, next time you see me I'll give you a few pointers to stayin' sharp out 'ere.
-                8: I'm feelin' like I've just gone an' made a huge mistake. Why am I the sort to keep doin' this to myself?
+                0: 是我眼花了吗？一个旅行者和一只……幽灵？她们从外太空来？
+								1: 你还好意思说！如果你没意识到，你正在发出耀眼的蓝光！此外，我对幽灵这个称呼有些反感。
+								2: “抱兼欠，我无意 挑起事端——你们从来 没遇到过Lumenkin，对吗？和你们 说话的 人叫做……呃……Yojimbo。”
+								3: 抛开 你的魔法伙伴不言，我想 你来自附近的某个地方……看来Ardor尚未席卷整片区域。
+								4:  “好吧，这都 无关紧要。这里的 合同已经是一件苦差事了，如果你打算 挡道，可能会给我的 工作带来更多的 麻烦。”
+								5: 不，我们无意和你为敌。实际上，如果你能提供任何形式的帮助，我们很乐意接受它。
+								6: 我真的给你们一种 我会帮你们的感觉 吗？好吧，因为这次我能感受到自己无上的 慷慨。
+								7: 如果你真的需要 帮助，下次见面时我会给你们一些指示，帮你们 在这里保持敏锐的头脑。
+								8: 我感觉自己 犯了个大错误。我为什么总是这么 对自己？
               }
               Choices:
               {
@@ -2156,15 +2223,15 @@
             {
               Dialogue:
               {
-                0: My eyes betrayin' me? A human and a... familiar, all the way out'n deep space?
-                1: First off, I am NOT a familiar. Secondly, if you're what this region calls normal, this galaxy is much more exotic than I thought.
-                2: "'Pologies, not tryin' to start anythin'- Anywho, never met'n a lumenkin before, eh? Now that's a sparker. Name's... uh... Yojimbo."
-                3: Settin' aside your magical companion, I'm thinkin' you hail from somewhere nearby... Guess the Ardor ain't cleared this region fully yet.
-                4: "'ell, this'll be ash. Contracts out here are already a chore, so if you plan on gettin' in the way, it'd be makin' my job a great deal harder."
-                5: Well, I certainly wasn't gunning for a fight. On the other hand, we'll accept any offer of assistance you can provide.
-                6: Do I seriously give off the impression that I'd be givin' you a hand? Good, because I'm feelin' mighty generous this time.
-                7: If you're really in the business of needin' help, next time you see me I'll give you a few pointers to stayin' sharp out 'ere.
-                8: I'm feelin' like I've just gone an' made a huge mistake. Why am I the sort to keep doin' this to myself?
+                0: 是我眼花了吗？一个旅行者和一只……幽灵？她们从外太空来？
+								1: 首先，我不是幽灵。其次，如果你算得上这片区域所谓的“普通人”，那么这个星系要比我想象的奇异的多。
+								2: “抱歉，我无意挑起争端——你们从来都没遇到过流光眷族，对吗？和你们说话的人叫做……呃……Yojimbo。”
+								3: 抛开你的魔法伙伴不言，我想，你来自附近的某个地方……看来Ardor尚未席卷整片区域。
+								4: “好吧，这都无关紧要。这里的合同已经是一件苦差事了，如果你打算挡道，可能会给我的工作带来更多的麻烦。”
+								5: 一方面，我们无意和你为敌。另一方面，我们乐于接受你提供的任何帮助。
+								6: 我真的给你们一种 我会帮你们的感觉 吗？好吧，因为这次我能感受到自己无上的慷慨。
+								7: 如果你真的需要 帮助，下次见面时我会给你们一些指示，帮你们 在这里保持敏锐的头脑。
+								8: 我感觉自己犯了个大错误。我为什么总是这么对自己？
               }
               Choices:
               {
@@ -2176,17 +2243,17 @@
             {
               Dialogue:
               {
-                0: I see- this far from the Heart people are no stranger to a lack of courtesy- barging into one's home like so. Am I correct?
-                1: Sorry... We would have knocked, but to be honest, we thought this place was... uh... abandoned.
-                2: Truly? No matter- I am nothing if not the forgiving sort... I think. Wait, forget that last bit.
-                3: Ahem. Friendly faces scant wander this far, so offering hospitality is the least I can do- to a Starfarer, as well. My name is Garridine.
-                4: In truth, automatons prove not the most capable of conversationalists. I would not be opposed to your visits. In fact, I would petition your aid for a certain matter...
-                5: Yep, done deal- right, {0}? I hesitate to say it, but she's really cute... we simply HAVE to help her out.
-                6: Did you say something? No? In that case... I would appreciate it if you would allow me to analyze your equipment and weapons you have created.
-                7: I haven't had occassion to learn about recent advancements, owing in no small part to the Ardor- if I were to get a glimpse, it would be quite the boon.
-                8: To make this worth your time, I'll craft some Stellar Foci for you after a visit.
-                9: Bit of a strange ask, but it shouldn't be too difficult- getting some Stellar Foci without having to make them ourselves would be very helpful.
-                10: Wonderful. Let us hope this relationship is a fruitful one.
+                0: 我明白了——在内心深处，人们对这种无理的行为已经见怪不怪了——比如像这样闯进别人家里。我说的对吗？
+								1: 很抱歉……我们本该敲门的，但说实话，我们以为这地方已经……呃……被废弃了。
+								2: 真的吗？没关系——我是个宽容的人……至少我这么认为。等等，忘了最后那句。
+								3: 咳咳，这么偏远的地方很少能看见友善的面孔，所以我起码应该提供周到的款待——对星海旅者也是如此。幸会，我是Garridine。
+								4: 实际上，之前到访的那些死板的家伙并不善谈，所以我不反对你们的到来——事实上，我想为某些事请求你们的帮助。
+								5: 好吧，那就说定了——对吧，{0}？我原本挺犹豫的，但是她真的太！可！爱！了……我们只需要帮帮她就行。
+								6: 你们刚才说什么了吗？没有吗？这样的话……如果能允许我分析一下你们制造的装备和武器，我将不胜感激。
+								7: 我很久没能了解到最新的技术进展了，很大程度上是由于Ardor的影响。如果能让我看一眼，那就再好不过了。
+								8: 作为耽搁你们时间的回报，下次到访时，我会为你们制作一些天体聚焦。
+								9: 这个请求有点奇怪，但也算不上多难——能得到一些天体聚焦总比自己动手做要强。
+								10: 那真是太好了。真心祝愿我们的友谊长存。
               }
               Choices:
               {
@@ -2198,17 +2265,17 @@
             {
               Dialogue:
               {
-                0: I see- this far from the Heart people are no stranger to a lack of courtesy- barging into one's home like so. Am I correct?
-                1: I'm so sorry... We thought, you know, because everything else is abandoned around here, this place would be too... Sorry.
-                2: Truly? No matter- I am nothing if not the forgiving sort... I think. Wait, forget that last bit.
-                3: Ahem. Friendly faces scant wander this far, so offering hospitality is the least I can do- to a Starfarer, as well. My name is Garridine.
-                4: In truth, automatons prove not the most capable of conversationalists. I would not be opposed to your visits.
-                5: That sounds great to me. Finding a friendly face so far from civilization is a great help to us as well.
-                6: In that case... I would appreciate it if you would allow me to analyze your equipment and weapons you have created.
-                7: I haven't had occassion to learn about recent advancements, owing in no small part to the Ardor- if I were to get a glimpse, it would be quite the boon.
-                8: To make this worth your time, I'll craft some Stellar Foci for you after a visit.
-                9: Hmm... that would prove useful- especially avoiding having to craft them ourselves.
-                10: Wonderful. Let us hope this relationship is a fruitful one.
+                0: 我明白了——在内心深处，人们对这种无理的行为已经见怪不怪了——比如像这样闯进别人家里。我说的对吗？
+								1: 很抱歉……我们原以为，你知道的，因为周围的一切都被废弃了，所以这里也……对不起。
+								2: 真的吗？没关系——我是个宽容的人……至少我这么认为。等等，忘了最后那句。
+								3: 咳咳，这么偏远的地方很少能看见友善的面孔，所以我起码应该提供周到的款待——对星海旅者也是如此。幸会，我是Garridine。
+								4: 实际上，之前到访的那些死板的家伙并不善谈，所以我不反对你们的到来。
+								5: 那真是太好了。能在如此偏远的地方遇见一位友人，对我们而言也是莫大的帮助。
+								6: 这样的话……如果能允许我分析一下你们制造的装备和武器，我将不胜感激。
+								7: 我很久没能了解到最新的技术进展了，很大程度上是由于Ardor的影响。如果能让我看一眼，那就再好不过了。
+								8: 作为耽搁你们时间的回报，下次到访时，我会为你们制作一些天体聚焦。
+								9: 唔……它们还是很有用的——尤其是不必自己动手制作的时候。
+								10: 那真是太好了。真心祝愿我们的友谊长存。
               }
               Choices:
               {
@@ -2220,16 +2287,16 @@
             {
               Dialogue:
               {
-                0: Best be gettin' a clear picture of the Ardor, if you'd be interested in fixin' it. How 'bout a history lesson, eh?
-                1: In the beginnin' there'd just be a few rimworlds 'n the outskirts cuttin' contact- nobody batted 'n eye.
-                2: When the southern urbworld of Corvus went dark, heads 'n the like started their turnin'. Nothin' but the talk o' the outposts for months, lemme tell ya.
-                3: It wasn't the prettiest place 'n all, but was important 'n such to the Empire, seems like. The Ardor takin' it was big in their eyes.
-                4: Outposts 'n the Third Region stopped gettin' their rations, an' that'd be the end of it. Trade ships ain't stayin' w'en the breadwinners are movin' inwards.
-                5: Followin' that, more an' more planets froze over. There'd be a time where a whole Empire fleet went with all their smart types to try and find out the happenin'.
-                6: I try 'n stay away from the bigwigs, so I can't give any info 'bout that. Best be knowin' Empire fleets don't go places lightly 'n all. Even heard wind of a Knight comin' with em.
-                7: All I know 'bout that is them figurin' out that the mana, y'see, ain't replenishin' like normal. Nothin' but tech is gonna be workin' at this rate- an' the Empire uses magic 'n tech both.
-                8: That'd be leadin' the story to now. The fleet's gone an' left, an' anyone holdin' out worth their salt with 'em. I'm in the business of followin' the money, which leads me to these backwaters.
-                9: Pay's great 'cause no one else can do it, but the beasties are big, an' help ain't comin', so I stay on my toes. That'd be about all.
+                0: 如果你有兴趣解决Ardor的话，最好先弄清楚它的情况。来上一堂历史课怎么样，嗯？
+								1: 起初，只有几个边缘世界与外界失去联系——没有人把这件事放在心上。
+								2: 直到乌鸦星西南部的都会爆发了Ardor，人们才开始将目光转向这场浩劫。有关前哨站的讨论持续了数月，让我给你讲讲当时的经过。
+								3: 也许那里不是景色最优美的地方，却对当时的帝国至关重要。Ardor的爆发在他们眼中是件大事。
+								4: 第三区的前哨部队得不到补给，他们的使命就此终结。商船不再在此停靠，难民们纷纷向星系中央进发。
+								5: 随后，越来越多的星球难逃被冰封的命运。曾有一段时期，整只帝国舰队带着他们的智囊团启程，试图找到灾难的源头。
+								6: 我不想和某些大人物产生纠葛，所以我不便透露任何消息。你只要知道帝国舰队不会轻举妄动就行了。我甚至听说风之骑士团与他们一同前去。
+								7: 据我了解，他们发现魔力无法得到正常补充，这样下去，只有机械造物才能发挥作用——而帝国同时发展着魔法与科技。
+								8: 这件事一直延续到现在。帝国的舰队离开了，带走了那些坚守在此的人。我的工作是跟着钱走，钱把我带进了这个烂摊子。
+								9: 我的报酬很丰厚，因为没人能胜任这个职位，但这里的猎物很难缠，又没有人来帮忙，所以我得小心行事。差不多就这些事了。
               }
               Choices:
               {
@@ -2241,17 +2308,17 @@
             {
               Dialogue:
               {
-                0: You'd be interested in the Empire, I'd wager. Good, 'cause I'll spare a moment for a chat.
-                1: In terms of big ol' space empires, ours, Mare Luminis, ain't that bad- if you're human.
-                2: They tolerate xenos and such, but you'd never find yourself safe 'n the inner system.
-                3: Are they in the business o' snuffin' lives? Nah, but you'd be booted to a rimworld faster than a ray o' light.
-                4: Outside the inner system, you'd best believe thing's be different. Nobody's feedin' their family without workin' with the xenos.
-                5: Sure, the Empire's gotten themselves an ol' no-tolerance party, but patrols ain't turnin' down bribes, last time I did some checkin'.
-                6: Their tech is is a right marvel, an' the inner system is paradise made real 'n all, but I ain't interested.
-                7: "'Course, there are xenos who ARE innta that sort, and humans sidin' with 'em, to boot. Even heard the crown prince is on their side."
-                8: All that nonsense is deep within First Region turf, an' like I said earlier, best I'd be stayin' far away- ain't passin' for a human lookin' like this, I tell ya. Tried.
-                9: You're human, o' course, and your flyin' princess over yonder passes for 'un, so you'd best be lookin' their way for more info- nobody'd turn you down.
-                10: "'Pologies, but that'd be all I've got on this one."
+                0: 我敢打赌，你一定会对“帝国”感兴趣的。很好，那我就抽时间跟你聊聊天。
+								1: 对一个庞大的太空帝国而言，我们这些流光眷族并没有那么糟糕——如果你是人类的话。
+								2: 他们能够容忍异族的存在，但这并不意味着你能在帝国内部找到安身之所。
+								3: 他们在扼杀异族的生命吗？当然不是。但你会比一束光还快地被踢到边缘世界。
+								4: 在帝国之外，情况变得截然不同。不和星空异族合作，没人能养活他们的家人。
+								5: 当然，帝国成立了驱逐星空异族的组织，但这些巡逻队不拒绝贿赂，上次我就行了些方便。
+								6: 帝国的科技水平简直是个奇迹，他们的内部环境则宛若天堂，但我对这些都提不起兴趣。
+								7: “当然，有的异族不在被驱逐的范围内，他们和人类站在一方。甚至有传言帝国皇储也站在他们一方。”
+								8: 那些不切实际的东西都集中在第一区，就像我之前说过的，我最好离那里远点。我跟你说，我这样的人不会被批准进入那里的。我已经试过了。
+								9: 当然了，你是人类，你的伙伴也能获许进入那里。所以你最好朝着他们的方向寻找更多信息——没人会拒绝你的。
+								10: “抱歉，这是我唯一能说的了。”
               }
               Choices:
               {
@@ -2263,15 +2330,15 @@
             {
               Dialogue:
               {
-                0: You'd be wantin' a better grasp of your own galaxy? Ain't your home a bit too behind them times?
-                1: Guess it ain't my place to start anythin'- I do go aroun' soundin' like an' old timer... Time spent in the Third Region, innit.
-                2: No problem. Moirae'd be probably what you'd go an' call normal- well, barrin' the Ardor.
-                3: The Empire segments the galaxy into three Regions, ta better keep tabs 'n the galaxy. Best believe they'd be keepin' the First Region on high watch.
-                4: We'd be in the Third Region, but nobody's headed to re-chart them stars with the Ardor in full force out here 'n all. They ain't stayin' still, thats for sure.
-                5: Anywhos, the secon' region is a big ol' mess right now. With all them xenos movin' inwards 'cause of the cold, people simply ain't got 'nuff room- who can blame 'em.
-                6: Nothin' major yet- and I'm no bettin' man- but there'd be no suprisin' me if a big ol' conflict sparked up soon like.
-                7: Will the Empire barge on in is anyone's guess, I wager. They're in their own ashpile of troubles already, with the drainin' mana too. Thing's 're lookin' bleak, but it ain't my problem.
-                8: All I gotta do is stay alive 'n kill monsters. I s'pose you'd call me one o' the lucky 'uns- mayhaps 'cause I just don't give 'nuff of a care.
+                0: 你想更好地了解你的所在的星系？你的母星是不是有点太落伍了？
+								1: 看来这里不是我开口的地方——我听起来像个老家伙……我在第三区过得太久了，不是吗？
+								2: 没关系。命运星系可能是你所说的“正常”的地方——好吧，除了那些Ardor爆发的区域。
+								3: 帝国将命运星系划分为三个区域，以便更好地监视整片星系。你最好相信它们对第一区保持着高度监视。
+								4: 我们正处在第三区，但是在Ardor肆虐的情况下，没人愿意重绘这里的星图。显而易见，人们不愿坐以待毙。
+								5: 无论如何，第二区已经乱成一锅粥了。为了躲避寒冷，大量的星空异族向内迁入，人们根本找不到足够的容身之地——谁又能责怪他们呢。
+								6: 暂时还没什么大事发生——我不敢保证——但如果那里很快就爆发一场巨大的冲突，我也不会感到惊讶。
+								7: 我敢保证，谁也说不准帝国会不会插手。他们正处在自己的麻烦之中，魔力正在不断流失。但无论事情是悲观还是乐观，一切都与我无关。
+								8: 我要做的就是活下去，杀死这些怪物。想必你会说我是个幸运儿，也许是因为我根本就不在乎这些。
               }
               Choices:
               {
@@ -2283,7 +2350,7 @@
             {
               Dialogue:
               {
-                0: Hey now, don' get too 'head of yourself. Talkin' too much makes them beasties wary, y'know? Ain't too good for me.
+                0: 嘿，别太得意忘形了。说的太多可能会引起猎物的警戒，你知道吗？这对我很不利。
               }
               Choices:
               {
@@ -2331,8 +2398,8 @@
             {
               Dialogue:
               {
-                0: While I do appreciate the eagerness, I still have yet to analyze the data you've brought me.
-                1: Perhaps return anon, once progress has been made. Five minutes of your timescale should suffice.
+                0: 我能理解你们的急切，但我还没分析完你们带来的数据。
+                1: 等我的研究取得进展，我马上就回来。只要五分钟就行。
               }
               Choices:
               {
@@ -2344,8 +2411,8 @@
             {
               Dialogue:
               {
-                0: Your timely arrival is much appreciated. This is exactly what I wanted, thank you.
-                1: As promised, I've bequeathed a pouch containing a Stellar Foci. I have a... regrettable habit of forgetting to label my creations, so this must do.
+                0: 感谢你们的及时到来。这正是我想要的，谢谢你们。
+                1: 正如我承诺的那样，我会给你们一个装有星体聚焦的包裹。我总是忘记给自己的作品贴标签，这次一定不会了。
               }
               Choices:
               {
@@ -2357,8 +2424,8 @@
             {
               Dialogue:
               {
-                0: I'm curious about the potency of Magic on your homeworld. I've heard of a mystical book that conjures water from thin air...
-                1: Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble.
+                0: 我很好奇你们母星上魔法的力量。听说有一本魔法书能从稀薄的空气中变出水来。
+                1: 你能帮我找来一本吗？很抱歉给你们带来麻烦。
               }
               Choices:
               {
@@ -2370,8 +2437,8 @@
             {
               Dialogue:
               {
-                0: A strange implement has come to my attention; an instrument meant for saying farewell to the deceased. I'm curious on how it functions.
-                1: Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble.
+                0: 我注意到一件奇怪的工具；一把用来送别死者的乐器。我很好奇它的构造。
+                1: 你能帮我找来一件吗？很抱歉给你们带来麻烦。
               }
               Choices:
               {
@@ -2383,8 +2450,8 @@
             {
               Dialogue:
               {
-                0: If it isn't too drastic of a request, I would love to see one of those golden butterflies. How do they sustain flight as solid gold..?
-                1: Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble.
+                0: 如果这个要求不算太过分的话，我希望能亲眼看看那些金蝴蝶。那些纯金生物是怎么飞起来的？
+                1: 你能帮我找来一只吗？很抱歉给你们带来麻烦。
               }
               Choices:
               {
@@ -2396,8 +2463,8 @@
             {
               Dialogue:
               {
-                0: I would be very grateful if you were to show me a 'flying carpet.' I have my obvious doubts on the efficiency of such a movement tool.
-                1: Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble.
+                0: 如果你们能带给我一张“飞毯”，我将不胜感激。我对它的移动效率表示明显怀疑。
+                1: 你能帮我找来一张吗？很抱歉给你们带来麻烦。
               }
               Choices:
               {
@@ -2409,8 +2476,8 @@
             {
               Dialogue:
               {
-                0: I have caught wind of quite the unique specimen: a magical trinket that allows for temporary lava immunity...
-                1: Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble.
+                0: 我听说了一件神奇的饰品：一个能提供暂时熔岩免疫的护身符……
+                1: 你能帮我找来一个吗？很抱歉给你们带来麻烦。
               }
               Choices:
               {
@@ -2422,8 +2489,8 @@
             {
               Dialogue:
               {
-                0: If you have an accessory that can track nearby rare foes, I would be quite interested in taking a 'peek' as they say.
-                1: Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble.
+                0: 如果你有一件能追踪周围稀有生物的饰品，我会很乐意看看它的。
+                1: 你能帮我找来一个吗？很抱歉给你们带来麻烦。
               }
               Choices:
               {
@@ -2435,8 +2502,8 @@
             {
               Dialogue:
               {
-                0: I wished to add an implement to my toolbox, but I seem to have little experience with crafting magnification tools. Would you be able to find a lens that can see wiring?
-                1: Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble.
+                0: 我希望能向工具箱里再添加一件工具，但我对如何制作显微器具所知甚浅。你能帮我找来一片用于观察电路的棱镜吗？
+								1: 你能帮我找来一件吗？很抱歉给你们带来麻烦。
               }
               Choices:
               {
@@ -2448,8 +2515,8 @@
             {
               Dialogue:
               {
-                0: There's a rare bloom located in a Jungle-type environment that apparently causes mana to flow better.
-                1: Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble.
+                0: 丛林中有一种罕见的花，显然它能使魔力流动更加顺畅。
+								1: 你能帮我找来一朵吗？很抱歉给你们带来麻烦。
               }
               Choices:
               {
@@ -2461,8 +2528,8 @@
             {
               Dialogue:
               {
-                0: From my hypothesis, there's a type of slime that can apparently negate the effects of poison when equipped.
-                1: Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble.
+                0: 据我假设，有一种粘液在装备时能显著抵抗毒素的影响。
+								1: 你能帮我找来一个吗？很抱歉给你们带来麻烦。
               }
               Choices:
               {
@@ -2474,8 +2541,8 @@
             {
               Dialogue:
               {
-                0: Some planets seem to have liquid water fall from the sky, and there is apparently a tool that shields the user from this terrifying assault.
-                1: Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble.
+                0: 有些行星上似乎有水从天而降，显然有一种工具能抵御这种可怕的攻击。
+								1: 你能帮我找来一件吗？很抱歉给你们带来麻烦。
               }
               Choices:
               {
@@ -2487,8 +2554,8 @@
             {
               Dialogue:
               {
-                0: There's a strange object that, when placed on blocks, can 'deactivate' them, rendering them passable.
-                1: Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble.
+                0: 有一种奇怪的物体，当它们放置在其它方块上时，可以“虚化”它们来让方块变得可通过。
+								1: 你能帮我找来一个吗？很抱歉给你们带来麻烦。
               }
               Choices:
               {
@@ -2500,8 +2567,8 @@
             {
               Dialogue:
               {
-                0: Torches are quite the archaic implement, but there exists one that burns through an actual bone.
-                1: Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble.
+                0: 火把是一种非常古老的照明工具了，据说存在着一种由真正的骨头制成的火把。
+								1: 你能帮我找来一根吗？很抱歉给你们带来麻烦。
               }
               Choices:
               {
@@ -2568,98 +2635,98 @@
             }
             Eridani:
             {
-              1: Okay, the Stellar Nova changes went through. What will you do next?
-              2: Finished modifying the Stellar Nova? Great.
-              3: Okay, we've changed the Stellar Nova around. Do you have anything else in mind?
+              1: 清单上下一条是什么？
+              2: 天体新星更新完毕。下一步呢？
+              3: 天体新星变更已确认。干的漂亮。你还需要什么吗？
             }
           }
           AfterArrayDialogue:
           {
             Asphodene:
             {
-              1: Okay, that's the Stellar Array taken care of. Anything else you needed?
-              2: I see you've finished your changes with the Stellar Array. Perfect.
-              3: The Stellar Array's done updating. That's all for now, unless you had something else in mind?
+              1: 好了，天体新星更改完成。你接下来要做什么？
+              2: 天体新星更改完毕了？干得漂亮。
+              3: 天体新星更改完毕。你还有别的打算吗？
             }
             Eridani:
             {
-              1: Good, the Stellar Array has been changed. Next on the list is...
-              2: You're done with the Stellar Array? Great. Anything else?
-              3: Okay, the Stellar Array is changed. Have you finished what you sought to achieve?
+              1: 好了，天体阵列更改完成。你还需要什么吗？
+              2: 看来你已经完成了天体阵列的修改，干得漂亮。
+              3: 天体阵列更改完毕。暂时就这么多了，除非你还有别的想法？
             }
           }
           AfterCartographyDialogue:
           {
-            Asphodene: Changed your mind?
-            Eridani: So you have other plans?
+            Asphodene: 你改变主意了吗？
+            Eridani: 你还有其它打算吗？
           }
         }
         StarfarerMenuButtons:
         {
           Archive:
           {
-            Asphodene: Right.. What do you want to read about? Dialogue is sorted into 3 groups: idle, boss, and weapon. Cycle through and choose the one you want.
-            Eridani: Okay, what do you want to read about? The dialogues are sorted into 3 groups: idle, boss, and weapon. Feel free to choose which one you want to view.
+           Asphodene: 唔……你想浏览哪方面的内容？对话分为四部分：闲置状态，Boss对话，武器对话和长篇对话。大致浏览一遍，然后点选你感兴趣的部分。
+						Eridani: 好的……你想浏览哪方面的内容？对话分为四部分：闲置状态，Boss对话，武器对话和长篇对话。请随意选择你想要浏览的部分。
           }
           ExitArchive:
           {
-            Asphodene: Changed your mind?
-            Eridani: Did you have other plans?
+            Asphodene: 你改变主意了吗？
+						Eridani: 你还有其它打算吗？
           }
           ArchiveHover:
           {
-            Asphodene: This is the Archive. Just in case you didn't get everything I said, you can read it here. I know, you just can't get enough of my analysis, right? You can also get items you lost, like Essences.
-            Eridani: This is the Archive. If you ever find yourself needing me to repeat what I've said about something, it's here. Additionally, if you lost something like an Essence, you can reacquire it.
+            Asphodene: 这里是档案库。如果你没听清我说的话，你可以到这里再听一遍。我知道，你不可能完全听懂我的分析，对吧？你也可以在这里获取遗失的物品，譬如精华。
+						Eridani: 这里是档案库。如果你需要我重复说过的话，就到这里来吧。此外，如果你弄丢了精华之类的东西，你也可以到这里重新获取。
           }
           Confirm:
           {
             Asphodene:
             {
-              1: Is that everything?
-              2: Okay, finished?
-              3: Done already?
+              1: 就这些吗？
+							2: 好了，你完成了吗？
+							3: 你打算好了吗？
             }
             Eridani:
             {
-              1: Have you done what you needed to?
-              2: Finished?
-              3: Was that all?
+              1: 你做好打算了吗？
+							2: 你打算好了吗？
+							3: 就这些吗？
             }
           }
           VoyageHover:
           {
-            Asphodene: Looks like this isn't implemented yet.
-            Eridani: It seems this isn't quite implemented yet.
+            Asphodene: 我们可以在此访问天体星图：一张借助Astrolabe之力即时投射星空的魔法地图。注意，你仍需处在旅星符台附近才能前往极北天文台之外的区域。
+            Eridani: 这里就是Astrolabe起作用的地方：借助它的力量，你可以访问天体星图，一张星空地图。你仍需处在旅星符台附近才能前往极北天文台之外的区域。
           }
           Locked:
           {
-            Asphodene: We can't use this yet.
-            Eridani: We haven't unlocked this yet.
+            Asphodene: 我们还不能访问这里。
+            Eridani: 我们还没解锁这个呢。
           }
           NovaHover:
           {
-            Asphodene: This is the Stellar Nova Menu. You can check out Stellar Nova stats, swap it for another one, or equip Stellar Prisms to change what they can do.
-            Eridani: This is the Stellar Nova Menu. You can peruse Stellar Novas, swap between them, or you can equip Stellar Prisms to change what effects Stellar Novas have.
+            Asphodene: 这里是天体新星菜单。你可以在此查看、更换你的天体新星，或为天体新星镶嵌天体棱晶以改变它的属性。
+            Eridani: 这里是天体新星菜单。你可以在此查看并更换你的天体新星，或为天体新星镶嵌天体棱晶以改变它的效果。
           }
           ArrayBoss:
           {
-            Asphodene: I'd love to let you modify the Stellar Array, but we should probably deal with THAT first. Come on, you know what I mean!!
-            Eridani: I know you'd like to modify the Stellar Array, but there's a much more pressing matter at hand... You ARE aware of this, right?
+            Asphodene: 我很乐意让你更改天体阵列，但你可能得先处理完“那家伙”。拜托，你知道我指的是谁！！！
+            Eridani: 我知道你迫不及待想要更改天体阵列了，但我们手头有更紧要的事……你明白这一点，对吗？
           }
           ArrayHover:
           {
-            Asphodene: You can access the Stellar Array from here. We can equip passive abilities here, staying mindful of the max cost, as well as changing the damage type of Aspected Weapons.
-            Eridani: This is the Stellar Array. You can equip passive abilities here, as long as the total cost doesn't exceed the maximum. Also, this is where you configure Aspected Weapon type.
+           Asphodene: 你可以由此进入天体阵列。我们可以在这里装备被动技能，但请留意它们消耗的栏位数。我们也可以在此更改星相武器的类型。
+						Eridani: 这里是天体阵列。你可以在这儿装备被动技能，只要它们消耗的栏位没有达到上限。此外，你可以在这里更改星相武器的类型。
           }
           StarfarerAttire:
           {
-            Asphodene: If you have any Starfarer Attire for me, here's the place to put it. It'll be pretty helpful for me, and you by association! And hey- style equals skill!
-            Eridani: You can place Starfarer Attire here. It'll provide me with some helpful boons to assist you better. I know your fashion sense is... unique, so at least try and spare me?
+            Asphodene: 如果你替我准备了星海旅者衣装，把它放在这里。这对我们俩都很有帮助！还有——服装风格和附带的技能有关！
+						Eridani: 你可以把星海旅者衣装放在这儿。它会提供给我一些益处，以便我能更好的帮助你。我知道你的时尚品味有些……独一无二，所以还是放过我吧。
           }
           StarfarerVanity:
           {
-            Asphodene: I'll wear the Starfarer Attire here over the Armor Slot. It's called a vanity slot, or so I'm told.
-            Eridani: This is the vanity slot for Starfarer Attire. Anything placed here will be worn above the armor set.
+            Asphodene: 我会把星海旅者衣装穿在盔甲外面。这叫时装栏，至少别人是这么告诉我的。
+						Eridani: 这是用于装备星海旅者衣装的时装栏。装备在这里的服装将会显示在盔甲之上。
           }
         }
       }
@@ -2669,104 +2736,114 @@
         {
           StellarNovaQuotes:
           {
-            Asphodene:
+            1:
             {
-              1: Now it's my turn!
-              2: I will take the place of entropy!
-              3: Come forth, blazing blade!
-              4: This is what you deserve.
-              5: Don't worry; I'll heal you.
-              6: The power of the cosmos!
-              7: I'm not about to stop here.
-              8: I'll reduce you to stardust!
-              9: Let's finish this!
-              10: Don't underestimate me.
+              Special1: 我绝不会放弃！
+              Special2: 别想逃。
+              Special3: 只此一击！
+              Special4: 听从你的号令。
+              Special5: 放弃挣扎吧！在这一点上，即使我也阻止不了自己。
+              1: 我等这一刻很久了！
+              2: 我绝不会止步于此。
+              3: 汝等即刻散作星尘！
+              4: 让我们了解这一切吧！
+              5: 看你是否还敢低估我。
+              6: 既然此刻能解决问题，又何必再犹豫呢？
+              7: 接受你的命运。
+              8: 从你反抗的那一刻起，你的命运已然注定了。
+              9: 我会让你见证我真正的力量。
+              10: 等等，我们又在用哪一招了？
             }
-            Eridani:
+            2:
             {
-              1: Time to finish this.
-              2: I am NOT losing to you.
-              3: I've been waiting for this.
-              4: You've made a fatal mistake.
-              5: Let's get the upper hand.
-              6: Our victory was never in question.
-              7: The time of parting has come.
-              8: Go back to where you belong.
-              9: I'm not about to stop here.
-              10: I won't lose. Not now, not ever.
+              Special1: 是时候证明我的实力了。
+              Special2: 别想逃。
+              Special3: 你想不到会有这一天，对吧？
+              Special4: 我将向你展示灵魂之领域。
+              Special5: 要知道我的维度比你更高。
+              1: 此即终结之日！
+              2: 哪里来的，滚回哪去！
+              3: 服从混乱吧。
+              4: 我绝不会止步于此。
+              5: 群星将吞噬你。
+              6: 我的字典里没有认输。
+              7: 接受你的命运吧。你已经无能为力了。
+              8: 哇哦。你就只有这点本事吗？
+              9: 我会让你见证我真正的力量。
+              10: 呃乌，怎么还是这一招？这是什么……什么……
             }
           }
           MiscInfo:
           {
             Confirm:
             {
-              Asphodene: Finished modifying the Stellar Nova?
-              Eridani: Are you finished modifying the Stellar Nova..?
+              Asphodene: 你修改好天体新星了吗？
+							Eridani: 你修改好天体新星了吗……？
             }
             Reset:
             {
-              Asphodene: Would you like to deselect the current Stellar Nova?
-              Eridani: We can reset the Stellar Nova, if you'd like.
+              Asphodene: 你想重置当前的天体新星吗？
+							Eridani: 如果你想的话，我们可以重置你所选的天体新星。
             }
           }
           TheofaniaInanis:
           {
             Unlocked:
             {
-              Asphodene: This is Theofania Inanis, a general use Stellar Nova that applies a powerful debuff.
-              Eridani: This is Theofania Inanis: a general Stellar Nova that can apply a powerful debuff.
+              Asphodene: 虚无圣刃，通用天体新星。它能施加一种强力减益。
+							Eridani: 虚无圣刃，通用天体新星。它能施加一种强力减益。
             }
           }
           ArsLaevateinn:
           {
             Unlocked:
             {
-              Asphodene: 魔剑·莱瓦汀. If you've ever wanted to clear an area fast, this is the Stellar Nova for that.
-              Eridani: This Stellar Nova, 魔剑·莱瓦汀, focuses on doing large amounts of damage in a specified area.
+              Asphodene: 魔剑·莱瓦汀。如果你想要快速地清理一片区域，这个天体新星就很适合。
+							Eridani: 这个天体新星，魔剑·莱瓦汀，擅长于在一片指定的区域中造成大量的伤害。
             }
             Locked:
             {
-              Asphodene: We don't have access to this yet. I feel we must defeat a certain monarch to get this. But who...?
-              Eridani: We can't use this yet. Something tells me we must defeat a 'regal' enemy to obtain this.
+              Asphodene: 我们还不能使用这个。我感觉我们必须击败某位君主才能使用它。但是是谁呢……？
+							Eridani: 我们还不能使用这个。有什么告诉我我们必须击败一位拥有“王权”的敌人来获得它。但那会是谁呢……？
             }
           }
           KiwamiRyuken:
           {
             Unlocked:
             {
-              Asphodene: A powerful counter-attack, Kiwami Ryuken. Time it right, and your foes will be dropped instantly.
-              Eridani: A powerful counterattack: Kiwami Ryuken. You can deal enormous amounts of damage quickly if timed properly.
+              Asphodene: 霸龙灭世拳，强力的反击技能。施放时机准确的话，你的敌人将会被瞬间击倒
+							Eridani: 强力的反击技能：霸龙灭世拳。如果时机准确，你可以在瞬间造成巨大伤害。
             }
             Locked:
             {
               Asphodene: 我们还没有使用它的权利……看来我们得打败一个机械威胁了。
-              Eridani: 我们还不能使用他。看来我们至少得打败一个机械威胁。
+              Eridani: 我们还不能使用它。看来我们至少得打败一个机械威胁。
             }
           }
           GardenOfAvalon:
           {
             Unlocked:
             {
-              Asphodene: An influential support Nova, the Garden of Avalon will grant powerful healing and invincibility.
-              Eridani: This Stellar Nova will grant powerful healing over time as well as a brief window of invincibility.
+              Asphodene: 阿瓦隆花园。这个天体新星会为友方提供强力的祝福，以及短暂的无敌效果。
+							Eridani: 阿瓦隆花园。这个天体新星会为友方提供强力的祝福，以及短暂的无敌效果。
             }
             Locked:
             {
-              Asphodene: We don't have access to this yet. We need to defeat a strong enough magic user...
-              Eridani: We can't use this yet. We need to defeat a powerful magical entity.
+              Asphodene: 我们还不能使用这个。我们必须击败一名足够强大的魔法使……
+							Eridani: 我们还不能使用这个。我们必须击败一名强大的魔法使……
             }
           }
           EdinGenesisQuasar:
           {
             Unlocked:
             {
-              Asphodene: With this Stellar Nova, you can imbue your attacks directly, overwriting their stats as well as gaining a new burst attack.
-              Eridani: This Stellar Nova will allow you to change the stats of your weapons as well as gain a new special attack.
+              Asphodene: 有了这个天体新星，你就能直接增强你的武器，改变它们的属性并获得一个新的爆发攻击招式。
+							Eridani: 这个天体新星能改变你的武器的属性，同时获得一个新的特殊攻击。
             }
             Locked:
             {
-              Asphodene: We don't have access to this yet. We have to defeat a foe with some sort of spatial power.
-              Eridani: We can't use this yet. We have to defeat a foe with spatial powers.
+              Asphodene: 我们还不能使用这个。我们需要击败一个具有空间能力的敌人。
+							Eridani: 我们还不能使用这个。我们需要击败一个具有空间能力的敌人。
             }
           }
         }
@@ -2826,6 +2903,11 @@
       }
       Config:
       {
+        StellarNovaHeader: "[c/EE9DE0:Stellar Nova Settings]"
+        PopUpDialogueHeader: "[c/C076DF:Pop-up Dialogue Settings]"
+        DialogueHeader: "[c/75C792:Disk Dialogue Settings]"
+        MiscHeader: "[c/7A76FF:Miscellaneous Settings]"
+
         DisableStellarNovaCutIns:
         {
           Label: 禁用天体新星立绘切入
@@ -2931,6 +3013,11 @@
           Label: Disable Boss Enemy Spawn Mod
           Tooltip: Disables the buff granted to all players that prevents mob spawning during bosses.
         }
+        DisableManaSicknessChange:
+        {
+          Label: Disable Mana Sickness Change
+          Tooltip: Disables the change to Mana Sickness that applies the damage reduction to all damage and not just Magic.
+        }
         ColorblindBoss:
         {
           Label: Enable colorblind-friendly Penthesilea fight
@@ -2963,14 +3050,17 @@
         Arbitration: 仲裁
         AstralCell: 群星细胞
         DummyEnemy: 假想木偶
-        Nalhaun: 复光之君，纳尔赫恩
+        PolluxBoss: Pollux, Baleborn of Ice
+        CastorBoss: Castor, Baleborn of Fire
+        Dioskouroi: Dioskouroi, the Twin Forces
+        NalhaunBoss: 复光之君，纳尔赫恩
+        NalhaunBossPhase2: 空洞世界的统治者，纳尔赫恩
         PaintedAttendantA: 复生画刷
         PaintedAttendantB: 复生画刷
         Penthesilea: 多彩魔女，彭忒希勒娅
         PrismLoot: 棱镜核心
         SpectreOfLight: 光之幽灵
-        Tsukiyomi: 源初之星海旅者，月读
-        Tsukiyomi2: 救赎之裔，月读
+        TsukiyomiBoss: 源初之星海旅者，月读
         VagrantOfSpaceAndTime: 时空流浪者
         WarriorOfLight: 光之战士
       }
@@ -3399,7 +3489,7 @@
           被第一位星海旅者击败的世界之记忆
           可以在[c/EFB43E:极北之观星台]的星门使用，将你带至[c/7FC1EF:永恒汇流]
           再次在[c/7FC1EF:永恒汇流]的中心使用，将会召唤[c/F1AF42:源初之星海旅者，月读]
-          [c/7FC1EF:或者，如果无法达到使用条件，也可以直接使用此物品召唤阅月读]
+          [c/7FC1EF:或者，如果无法达到使用条件，也可以直接使用此物品召唤月读]
           不消耗
           “……”
           '''
@@ -5240,7 +5330,7 @@
         CaesuraOfDespair: 《绝望之苏拉》
         CarianDarkMoon: 卡利亚的暗月
         ClaimhSolais: 克劳索拉斯
-        AncientShard: 远古碎片
+        AncientShard: 远古王冠
         Bifrost: 寰宇虹桥
         BladeOrb: 剑意球
         BlueOrb: 蓝色信号球
@@ -5467,7 +5557,7 @@
         PleniluneGaze: 循循守月
         AlchemicPrism: 炼金棱晶
         ApocryphicPrism: 伪经棱晶
-        BurnishedPrism: 抛光棱晶
+        BurnishedPrism: 复光棱晶
         CalamitousPrism: 灾难棱晶
         CastellicPrism: 种姓棱晶
         CrystallinePrism: 水晶棱晶
@@ -6346,6 +6436,7 @@
       }
       BuffDescription:
       {
+        ManaSicknessAlter: 所有的伤害降低{0}%
         Afterburner: 所有的攻击都必定暴击
         AfterburnerCooldown: 不能发动加力燃烧
         AmmoRecycle: 移动速度大幅增加并增加10%伤害
@@ -6726,7 +6817,7 @@
         }
         Nalhaun:
         {
-          SpawnInfo: 通过击败任一机械Boss从你的星海旅者获取的远古碎片来击败这个年迈的君主。(前提是时空流浪者被击败。)
+          SpawnInfo: 通过击败任一机械Boss从你的星海旅者获取的远古王冠来击败这个年迈的君主。(前提是时空流浪者被击败。)
           DespawnMessage: 君主的绯红之刃再度回响……
         }
         Penthesilea:
@@ -6734,14 +6825,19 @@
           SpawnInfo: 通过击败世纪之花从你的星海旅者获取的无垢画布来面对这位敌人。(前提是时空流浪者被击败。)
           DespawnMessage: 你被洒开了……
         }
+        Dioskouroi:
+        {
+          SpawnInfo: Duel(?) these powerful twin demons through defeating a mechanical boss and obtaining the Twincrux Pendant.
+          DespawnMessage: Without binds, the Dioskouroi move their conflict elsewhere...
+        }
         Arbitration:
         {
-          SpawnInfo: 这个敌人具现了真正的恐惧……在石巨人被击败后从你的星海旅者获取恶魔十字架。 (前提是时空流浪者被击败。)
+          SpawnInfo: SpawnInfo: This foe embodies true fear... Discover this foe through visiting an Anomaly location with the Astrolabe's help.
           DespawnMessage: 混沌与秩序交织吞噬了你。
         }
-        Tsukiyomi2:
+        TsukiyomiBoss:
         {
-          SpawnInfo: 最终一刻终于到来。用所有的追忆之迹创造追忆之符，并在天文台使用它来被带入月读的Boss战斗场地。
+          SpawnInfo: The time has finally come. Craft all the Mnemonic Traces together with the Celestriad Root to create the Mnemonic Sigil, and use it to be taken to Tsukiyomi's boss arena.
           DespawnMessage: ……
         }
       }
@@ -6750,18 +6846,20 @@
       {
         Arbitration: 一个神秘的声影，据说是宇宙之平衡的具现。对这个敌人所知甚少……被第一位星海旅者撕成碎片。
         AstralCell: 时空流浪者召唤的奇怪蓝色物体。它的食物是水汽。
-        Nalhaun: 一位强大的君主，被诅咒为永生，即使他的王国分崩离析。他的最后一位侍从在她临终前赋予了他召唤强大怪物的能力。他孑然一身在荒芜的星球上直到第一位星海旅者结束了他漫长而悲惨的统治。
+        Nalhaun: A once mighty monarch, cursed to live eternally by means of a betrayal from his royal court. He persisted alone on an empty planet until the First Starbearer ended his long and tragic reign, as he would be able to interfere with his plans. While he may have stood a chance at his full might, he was burdened by a dreadful civil war tearing his world apart.
         PaintedAttendantA: 被彭忒希勒娅用来……打你的脸。最好的法师知道什么何时暴力才是唯一解。
-        Penthesilea: 一位杰出的魔女, 多彩魔女曾经统治着完全由她“绘制”的星球。作为骗术师，她掌握了专业的魔法技能，仅为了对同事的作品恶作剧，也正证明了她的才智。但在长时间的冲突后，第一位星海旅者造就了这位魔女的末路。
+        Penthesilea: An incredibly powerful mage, the Painted Witch once ruled a planet entirely 'drawn' by her. Ever the trickster, she mastered expert magecraft simply to play pranks upon the works of her colleagues, a testament to her ingenuity. She met her end at the hands of the First Starbearer after a long conflict- if she were to persist, she would interfere with his plans...
         PrismLoot: 棱晶状的潜在魔法能量有会影响它们在银河中的漂泊。抓住一个，你就会得到奖励！
         SpectreOfLight: 一位异界的英雄，被第一位星海旅者召唤来攻击这片大地。
-        Tsukiyomi2: 源初之星海旅者，月读，掌控并运维着天体轨道。行星及其天然卫星的引力给予她力量。她引诱光之战士入歧途——用他的力量和善意征服并摧毁了无数恒星……然而……
+        TsukiyomiBoss: The First Starfarer, Tsukiyomi, who holds dominion over orbiting celestial bodies. The gravitational pull of a planet and its natural satellites gives her power. She led the Warrior of Light astray- using his strength and goodwill to conquer and destroy myriad stars... and yet...
+        CastorBoss: The Force of Fire, a Baleborn. The Baleborn are an incredibly competitive race of demonkin, and their blood relations have served only to further kindle the fires of conflict. They are completely engrossed in their duel, aware of nothing but their opponent's actions. Ironically, this has made them quite mediocre fighters against any other opponent. They were utterly destroyed by the First Starbearer, attacking him as he unwittingly interfered with their eternal battle. 
+        PolluxBoss: The Force of Ice, a Baleborn. The Baleborn are an incredibly competitive race of demonkin, and their blood relations have served only to further kindle the fires of conflict. They are completely engrossed in their duel, aware of nothing but their opponent's actions. Ironically, this has made them quite mediocre fighters against any other opponent. They were utterly destroyed by the First Starbearer, attacking him as he unwittingly interfered with their eternal battle. 
         VagrantOfSpaceAndTime: 神秘的星海旅者珀尔修斯。他的外表展现了自信……但他只是一个装酷的傻瓜。他的姊妹们也认同这点。
         WarriorOfLight: 光之战士，或者说第一位承星者，曾经通过他的行动和他的星海旅者的帮助维护银河的正义。他曾经统治着一个和平的世界，但无助地看着自己的人民走向灭亡。后发誓再也不让其他人共享同样的命运——无论代价。
         AsteroidWorm: 这些令人难以置信的极端耐寒生物已经获得了在真空中漫无目的漂流的能力——这也许不是关于它们的进化的最佳描述。虽然他、它们的食物很少，但是它们对食物的需求也很低。它们有着强韧的外壳，但是没有什么攻击能力。
         Soulless: 无论“天启”是否降临至雕具星上，它们都是不幸的受害者。漫游的魔力使他们的肉身得以存活，但它们曾经所拥有的任何思维的痕迹已然不见踪影。
         Yojimbo: 一位神秘的流光眷族，他的名字似乎随着你遇到他的时间和地点而改变。他是一位赏金猎人，但是只要你打探的够多，他愿意与你分享一些知识……
-        Garridine: 一位在一个遥远的星际飞船上发现的半狼人，也是一位铁匠和一些奇怪小玩意儿的制造者。她说话的方式掩盖了一些来自上流社会的教养，但是只要当她说错话时（这常常发生），这种现象就会消失。
+        Garridine: A lupine demihuman you discovered residing on a far-flung starship, a blacksmith and gadgeteer. Her manner of speaking belies a high-class upbringing, but the facade tends to drop when she flubs her words (which is often.) Strangely protective of the watch by her side.
         AmethystHeadpiercer: 一个广泛分布的准军事组织的士兵，其被称为紫水晶。统一配备涡轮动力服和喷气背包，使它们即便在真空之中也可以轻松行动。
         AmethystSwordsinner: 一个广泛分布的准军事组织的士兵，其被称为紫水晶。使用强力的光刃攻击，特别擅长反弹远程武器弹幕。
       }

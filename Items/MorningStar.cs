@@ -126,7 +126,7 @@ namespace StarsAbove.Items
 		{
 			if (player.altFunctionUse == 2)
 			{
-				if (!player.HasBuff(BuffType<ArcaneArtCooldown>()))
+				if (!player.HasBuff(BuffType<ArcaneArtCooldown>()) && player.statMana >= 20)
 				{
 					player.statMana -= 20;
 					player.manaRegenDelay = 480;

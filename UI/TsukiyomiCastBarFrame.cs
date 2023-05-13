@@ -9,7 +9,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.UI
 {
-    internal class TsukiyomiCastBar : UIState
+    internal class OldTsukiyomiCastBar : UIState
 	{
 		// For this bar we'll be using a frame texture and then a gradient inside bar, as it's one of the more simpler approaches while still looking decent.
 		// Once this is all set up make sure to go and do the required stuff for most UI's in the Mod class.
@@ -78,7 +78,7 @@ namespace StarsAbove.UI
 			hitbox.X += 12;
 			hitbox.Width -= 24;
 			hitbox.Y += 8;
-			hitbox.Height -= 16;
+			hitbox.Height -= 18;
 
 			// Now, using this hitbox, we draw a gradient by drawing vertical lines while slowly interpolating between the 2 colors.
 			int left = hitbox.Left;

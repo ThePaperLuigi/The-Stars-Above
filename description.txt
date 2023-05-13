@@ -14,7 +14,7 @@ This mod includes:
    unique weight-based system
 - 70+ special weapons that have malleable damage types,
    alternate abilities, charged attacks, etc.
-- 6 unique bosses each with their own special
+- 7 unique bosses each with their own special
    cast-centric AI
 - And much more!
 

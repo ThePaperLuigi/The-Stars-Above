@@ -33,7 +33,7 @@ namespace StarsAbove.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 190;           //The damage of your weapon
+			Item.damage = 110;           //The damage of your weapon
 			Item.DamageType = DamageClass.Summon;
 			Item.width = 220;            //Weapon's texture's width
 			Item.height = 68;           //Weapon's texture's height
@@ -64,6 +64,27 @@ namespace StarsAbove.Items
 			
 
 
+			
+
+
+			return base.CanUseItem(player);
+
+		}
+
+		public override void MeleeEffects(Player player, Rectangle hitbox)
+		{
+			if (Main.rand.NextBool(3))
+			{
+				//Emit dusts when swing the sword
+
+				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 269);
+
+
+
+			}
+		}
+		public override bool? UseItem(Player player)
+		{
 			int damage = player.GetWeaponDamage(Item);
 
 			if (player.altFunctionUse == 2)
@@ -140,27 +161,6 @@ namespace StarsAbove.Items
 
 				return true;
 			}
-
-
-
-			return base.CanUseItem(player);
-
-		}
-
-		public override void MeleeEffects(Player player, Rectangle hitbox)
-		{
-			if (Main.rand.NextBool(3))
-			{
-				//Emit dusts when swing the sword
-
-				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 269);
-
-
-
-			}
-		}
-		public override bool? UseItem(Player player)
-		{
 
 
 

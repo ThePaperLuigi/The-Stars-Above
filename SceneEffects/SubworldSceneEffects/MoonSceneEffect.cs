@@ -14,7 +14,7 @@ namespace StarsAbove.SceneEffects
         }
         public override void SpecialVisuals(Player player, bool isActive)
         {
-            if (player.HasBuff<MoonTurmoil>())
+            if (player.HasBuff<MoonTurmoil>() && !player.HasBuff<ChaosTurmoil>())
             {
                 SkyManager.Instance.Activate("StarsAbove:MoonSky");
                 Main.dayTime = false;
@@ -24,7 +24,7 @@ namespace StarsAbove.SceneEffects
                 Main.moonPhase = 4;
             }
 
-            if (!player.HasBuff<MoonTurmoil>())
+            if (!player.HasBuff<MoonTurmoil>() || player.HasBuff<ChaosTurmoil>())
             {
                 SkyManager.Instance.Deactivate("StarsAbove:MoonSky");
             }

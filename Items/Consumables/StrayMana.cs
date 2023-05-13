@@ -41,19 +41,13 @@ namespace StarsAbove.Items.Consumables
         public override void Update(ref float gravity, ref float maxFallSpeed)
         {
 			
-			if (!NPC.AnyNPCs(ModContent.NPCType<NPCs.Nalhaun>()))
-			{
-				//item.TurnToAir();
-			}
+			
 			base.Update(ref gravity, ref maxFallSpeed);
         }
 
         public override bool CanPickup(Player player)
 		{
-			if (!NPC.AnyNPCs(ModContent.NPCType<NPCs.Nalhaun>()))
-			{
-				//return false;
-			}
+			
 			return true;
 		}
 		public override Color? GetAlpha(Color lightColor)

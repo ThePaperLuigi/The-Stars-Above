@@ -118,11 +118,14 @@ namespace StarsAbove.Projectiles.ArchitectLuminance
 
 
 			}
-
-			if (closest.CanBeChasedBy() && closestDistance < 1200f)
-			{
-				projOwner.GetModPlayer<WeaponPlayer>().sirenEnemy = closest.Center;
+			if(closest != null)
+            {
+				if (closest.CanBeChasedBy() && closestDistance < 1200f)
+				{
+					projOwner.GetModPlayer<WeaponPlayer>().sirenEnemy = closest.Center;
+				}
 			}
+			
 			
 			
 			
