@@ -24,7 +24,7 @@ namespace StarsAbove.Items
 			DisplayName.SetDefault("Supreme Authority");
 			Tooltip.SetDefault("" +
                 "Attacks with this weapon swing in a close-ranged arc" +//Done
-				"\nRight click friendly NPCs to mark them as a [c/F1D761:Sacrifice] for 5 minutes" +//Done
+				"\nRight click friendly town NPCs to mark them as a [c/F1D761:Sacrifice] for 5 minutes" +//Done
 				"\nPressing the Weapon Action Key will consume all [c/F1D761:Sacrifices] and grant [c/DE8A2A:Deified] for 60 seconds (Unable to mark or consume [c/F1D761:Sacrifices] when [c/DE8A2A:Deified])" +//Done
 				"\nWhile [c/DE8A2A:Deified], maximum HP and damage taken are halved, and most debuffs are resisted" +//Done
 				"\nAdditionally, directly gain stacks of [c/7A17C8:Dark Aura] depending on the amount of [c/F1D761:Sacrifices] consumed" +//Done
@@ -257,7 +257,15 @@ namespace StarsAbove.Items
 		}
 		public override void AddRecipes()
 		{
-			
+			CreateRecipe(1)
+				.AddIngredient(ItemID.TopazStaff, 1)
+				.AddIngredient(ItemID.Silk, 8)
+				.AddIngredient(ItemID.NebulaLantern, 1)
+				.AddIngredient(ItemID.SoulofMight, 12)
+				.AddIngredient(ItemID.LunarBar, 5)
+				.AddIngredient(ItemType<EssenceOfAuthority>())
+				.AddTile(TileID.Anvils)
+				.Register();
 		}
 	}
 

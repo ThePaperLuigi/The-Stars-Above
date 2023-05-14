@@ -34,6 +34,13 @@ namespace StarsAbove.Projectiles.StellarNovas
 			Projectile.localNPCHitCooldown = -1;
 		}
 		float spin = 0;
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		{
+			Projectile.damage /= 2;
+
+			base.OnHitNPC(target, damage, knockback, crit);
+
+		}
 		public override void AI()
 		{
 			

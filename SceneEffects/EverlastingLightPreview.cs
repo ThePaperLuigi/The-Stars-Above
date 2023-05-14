@@ -10,12 +10,10 @@ namespace StarsAbove.SceneEffects
 	{
         public override bool IsSceneEffectActive(Player player)
         {
-            if (NPC.downedMoonlord)
-            {
-                SkyManager.Instance.Deactivate("StarsAbove:EverlastingLightPreview");
-                return false;
-            }
-            if (NPC.downedAncientCultist && !NPC.downedMoonlord && (SubworldSystem.Current == null))
+            SkyManager.Instance.Deactivate("StarsAbove:EverlastingLightPreview");
+
+           
+            if (EverlastingLightEvent.isEverlastingLightPreviewActive && !EverlastingLightEvent.isEverlastingLightActive && (SubworldSystem.Current == null))
             {
                 SkyManager.Instance.Activate("StarsAbove:EverlastingLightPreview");
 

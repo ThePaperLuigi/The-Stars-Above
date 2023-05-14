@@ -1,3 +1,4 @@
+using StarsAbove.Utilities;
 using SubworldLibrary;
 using Terraria;
 using Terraria.ID;
@@ -15,6 +16,7 @@ namespace StarsAbove.Items.Consumables
 			DisplayName.SetDefault("The Progenitor's Wish");
 			Tooltip.SetDefault("This shard is the culmination of billions of ferverent prayers" +
 				"\n[c/F1AF42:Summons The Warrior of Light]" +
+                "\nIf Light Everlasting is not at its peak, magnifies the effect of Light Everlasting" +
 				"\nIs not consumed upon use");
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -40,7 +42,7 @@ namespace StarsAbove.Items.Consumables
 		}
 
 		public override bool? UseItem(Player player) {
-			if (player.whoAmI == Main.myPlayer)
+			if (player.whoAmI == Main.myPlayer && EverlastingLightEvent.isEverlastingLightActive)
 			{
 				// If the player using the item is the client
 				// (explicitely excluded serverside here)
@@ -48,8 +50,8 @@ namespace StarsAbove.Items.Consumables
 
 				int type = ModContent.NPCType<NPCs.WarriorOfLight>();
 
-				if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("The echoes of past eons begins to ebb and flow..."), 210, 100, 175);}
-				if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("The Warrior of Light descends!"), 200, 150, 125);}
+				if (Main.netMode != NetmodeID.Server && Main.myPlayer == player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Boss.WarriorOfLight"), 241, 255, 180); }
+
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					// If the player is not in multiplayer, spawn directly
@@ -62,7 +64,12 @@ namespace StarsAbove.Items.Consumables
 					NetMessage.SendData(MessageID.SpawnBoss, number: player.whoAmI, number2: type);
 				}
 			}
-			
+			if(EverlastingLightEvent.isEverlastingLightPreviewActive)
+            {
+				EverlastingLightEvent.daysAfterMoonLord = EverlastingLightEvent.daysUntilEverlastingLight;
+				if (Main.netMode != NetmodeID.Server && Main.myPlayer == player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.SpeedUpLight"), 241, 255, 180); }
+
+			}
 			//NPC.NewNPC(null, (int)player.Center.X,(int)player.Center.Y, NPCType<NPCs.WarriorOfLight>());
 			//Main.PlaySound(SoundID.Roar, player.position, 0);
 			return true;

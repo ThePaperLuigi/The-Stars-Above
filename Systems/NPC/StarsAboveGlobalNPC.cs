@@ -277,7 +277,7 @@ namespace StarsAbove
         {
 			if (SubworldSystem.Current == null)
 			{
-				if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior && !npc.boss && npc.damage > 0 && !npc.friendly)
+				if (EverlastingLightEvent.isEverlastingLightActive && !npc.boss && npc.damage > 0 && !npc.friendly)
 				{
 
 
@@ -307,7 +307,7 @@ namespace StarsAbove
 		{
 			if(SubworldSystem.Current == null)
             {
-				if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior && !npc.boss && npc.damage > 0 && !npc.friendly)
+				if (EverlastingLightEvent.isEverlastingLightActive && !npc.boss && npc.damage > 0 && !npc.friendly)
 				{
 
 					if (Main.rand.Next(2000) < 2)
@@ -805,11 +805,11 @@ namespace StarsAbove
 			if (npc.type == NPCID.MoonLordCore)
 			{
 				npcLoot.Add(ItemDropRule.Common(ItemType<LuminitePrism>(), 4));
-				npcLoot.Add(ItemDropRule.Common(ItemType<Items.Materials.CelestialPrincessGenesisPrecursor>(), 4));
+
 			}
-			
-			
-			
+
+
+
 			VagrantDrops VagrantDropCondition = new VagrantDrops();
 			IItemDropRule conditionalRule = new LeadingConditionRule(VagrantDropCondition);
 

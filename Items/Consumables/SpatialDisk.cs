@@ -833,6 +833,14 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
+			if (modPlayer.AuthorityWeaponDialogue == 1)
+			{
+				modPlayer.chosenDialogue = 171;
+				modPlayer.AuthorityWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
 			if (modPlayer.BloodWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 147;
@@ -1371,7 +1379,7 @@ namespace StarsAbove.Items.Consumables
 					}
 				}*/
 			}
-			if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior && SubworldSystem.Current == null)
+			if (EverlastingLightEvent.isEverlastingLightActive && SubworldSystem.Current == null)
 			{
 				modPlayer.chosenDialogue = 21;
 			}
