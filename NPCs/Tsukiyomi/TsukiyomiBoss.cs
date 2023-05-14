@@ -814,13 +814,13 @@ namespace StarsAbove.NPCs.Tsukiyomi
 					//If boss is in phase 2...
 					if (NPC.localAI[0] == 1 || NPC.localAI[0] == 2)
 					{
-						player.AddBuff(BuffType<Buffs.SubworldModifiers.MoonTurmoil>(), 10);
+						player.AddBuff(BuffType<Buffs.SubworldModifiers.MoonTurmoil>(), 18000);//5 minutes
 
 					}
-					//If boss is in phase 2...
+					//If boss is in phase 3...
 					if (NPC.localAI[0] == 2)
 					{
-						player.AddBuff(BuffType<Buffs.SubworldModifiers.ChaosTurmoil>(), 10);
+						player.AddBuff(BuffType<Buffs.SubworldModifiers.ChaosTurmoil>(), 18000);
 						
 					}
                     else
@@ -1110,7 +1110,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 					NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
 				}
 
-				SubworldSystem.Exit();
+				//SubworldSystem.Exit();
 
 				if(modPlayer.edingenesisquasar == 0)
                 {
@@ -1136,7 +1136,6 @@ namespace StarsAbove.NPCs.Tsukiyomi
 		  * 
 			// Do NOT misuse the ModifyNPCLoot and OnKill hooks: the former is only used for registering drops, the latter for everything else
 			//Chance for a Prism
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.BurnishedPrism>(), 4));
 
 			// Add the treasure bag using ItemDropRule.BossBag (automatically checks for expert mode)
 			//npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<VagrantBossBag>()));
@@ -1163,7 +1162,8 @@ namespace StarsAbove.NPCs.Tsukiyomi
 			// Finally add the leading rule
 			npcLoot.Add(ExpertRule);
 			npcLoot.Add(notExpertRule);*/
-			npcLoot.RemoveWhere(rule => true);
+			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Materials.CelestialPrincessGenesisPrecursor>(), 4));
+
 		}
 		
 		private void SpawnAnimation()

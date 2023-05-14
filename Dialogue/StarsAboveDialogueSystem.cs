@@ -8118,7 +8118,54 @@ namespace StarsAbove
                 }
 
 
-            }//Maniacal Justice
+            }
+            if (chosenDialogue == 171)
+            {
+                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfAuthority").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 3;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.92", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfAuthority").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.93", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+
+
+            }
             #endregion
             //Boss item dialogues.
             if (chosenDialogue == 301) //Nalhaun item
@@ -8275,49 +8322,247 @@ namespace StarsAbove
             if (chosenDialogue == 304) //Warrior item
             {
 
-                if (dialoguePrep == true)                                     // |
+                
+
+                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
                 {
-                    dialogueLeft = 4;
-                    Player.QuickSpawnItem(null, Mod.Find<ModItem>("ProgenitorWish").Type);
-                    dialoguePrep = false;
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 12;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("ProgenitorWish").Type);
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 12)
+                    {
+                        expression = 4;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.1", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 11)
+                    {
+                        expression = 12;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.2", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 10)
+                    {
+                        expression = 2;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.3", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 9)
+                    {
+                        expression = 12;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.4", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 8)
+                    {
+                        expression = 2;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.5", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 7)
+                    {
+                        expression = 12;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.6", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 6)
+                    {
+                        expression = 1;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.7", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 5)
+                    {
+                        expression = 12;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.8", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 4)
+                    {
+                        expression = 12;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.9", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 3)
+                    {
+                        expression = 12;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.10", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 12;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.11", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 5;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.12", Player.name);
+
+
+                        //	" ";
+                    }
+
+
                 }
-
-
-                if (dialogueLeft == 4)
+                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
                 {
-                    expression = 12;
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 12;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("ProgenitorWish").Type);
+                        dialoguePrep = false;
+                    }
 
-                    dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.Warrior.1", Player.name); //{0}, you can tell as well as I that the situation has turned dire.  
+                    if (dialogueLeft == 12)
+                    {
+                        expression = 4;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.1", Player.name);
 
 
+                        //	" ";
+                    }
+                    if (dialogueLeft == 11)
+                    {
+                        expression = 12;
 
-                    //	" ";
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.2", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 10)
+                    {
+                        expression = 2;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.3", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 9)
+                    {
+                        expression = 12;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.4", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 8)
+                    {
+                        expression = 2;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.5", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 7)
+                    {
+                        expression = 12;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.6", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 6)
+                    {
+                        expression = 1;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.7", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 5)
+                    {
+                        expression = 12;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.8", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 4)
+                    {
+                        expression = 12;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.9", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 3)
+                    {
+                        expression = 12;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.10", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 12;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.11", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 5;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.12", Player.name);
+
+
+                        //	" ";
+                    }
+
                 }
-                if (dialogueLeft == 3)
-                {
-                    expression = 12;
-
-                    dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.Warrior.2", Player.name); //The First Starbearer's gaze has been turned to you, and his power has blanketed the world in overwhelming Light. 
-
-                    //	" ";
-                }
-                if (dialogueLeft == 2)
-                {
-                    expression = 12;
-                    dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.Warrior.3", Player.name); //I have given you the 'Progenitor's Wish.' It will serve as a way to draw him out. From then on, it will be your strength against his determination.
-
-
-                    //	" ";
-                }
-                if (dialogueLeft == 1)
-                {
-                    expression = 12;
-
-                    dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.Warrior.4", Player.name); //Please, you must win this fight. The stakes have never been higher.  
-
-                    //	" ";
-                }
-
+                
 
 
 
@@ -8369,7 +8614,7 @@ namespace StarsAbove
                     //	" ";
                 }
 
-            }//Warrior item
+            }//Dioskouroi item
 
             dialogue = LangHelper.Wrap(dialogue, 44);
         }

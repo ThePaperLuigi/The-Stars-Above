@@ -27,7 +27,10 @@ namespace StarsAbove.Projectiles.StellarNovas
 			Projectile.tileCollide = false;          //Can the projectile collide with tiles?
 			Projectile.extraUpdates = 0;            //Set to above 0 if you want the projectile to update multiple time in a frame
 			Projectile.alpha = 120;
-			
+
+			Projectile.usesLocalNPCImmunity = true;
+			Projectile.localNPCHitCooldown = -1;
+
 		}
 		float spin = 0;
 		public override void AI()
@@ -125,7 +128,13 @@ namespace StarsAbove.Projectiles.StellarNovas
 			
 			return false;
 		}
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		{
+			Projectile.damage /= 2;
+			
+			base.OnHitNPC(target, damage, knockback, crit);
 
+		}
 		public override bool PreDraw(ref Color lightColor)
 		{
 			//default(Effects.TheofaniaTrail).Draw(Projectile);

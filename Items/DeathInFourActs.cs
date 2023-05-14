@@ -47,14 +47,8 @@ namespace StarsAbove.Items
 			
 			return base.CanUseItem(player);
 		}
-		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-		{
-			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 25f;
-			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
-			{
-				position += muzzleOffset;
-			}
-
+        public override bool? UseItem(Player player)
+        {
 			shotCount++;
 
 			if (shotCount == 4)
@@ -94,6 +88,16 @@ namespace StarsAbove.Items
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_DeathInFourActsShoot, player.Center);
 				}
 			}
+			return base.UseItem(player);
+        }
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+		{
+			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 25f;
+			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+			{
+				position += muzzleOffset;
+			}
+
 
 			return true;
 		}

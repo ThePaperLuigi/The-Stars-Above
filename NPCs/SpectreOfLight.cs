@@ -50,7 +50,7 @@ namespace StarsAbove.NPCs
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-			if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior & SubworldSystem.Current == null)
+			if (EverlastingLightEvent.isEverlastingLightActive && SubworldSystem.Current == null)
             {
 				return SpawnCondition.OverworldDaySlime.Chance;
 			}
@@ -65,7 +65,7 @@ namespace StarsAbove.NPCs
 		{
 			if (!NPC.AnyNPCs(ModContent.NPCType<NPCs.WarriorOfLight>()))
 			{
-				if(!(NPC.downedMoonlord && !DownedBossSystem.downedWarrior))
+				if(!EverlastingLightEvent.isEverlastingLightActive)
                 {
 					NPC.HitEffect();
 					NPC.life = 0;

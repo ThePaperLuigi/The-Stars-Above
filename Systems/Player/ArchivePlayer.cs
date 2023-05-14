@@ -901,6 +901,13 @@ namespace StarsAbove
                     151,
                     "Defeat the Warrior of Light, then wait.")); //Corresponding dialogue ID.
                 WeaponArchiveList.Add(new WeaponArchiveListing(
+                    "Warrior of Light Weapon", //Name of the archive listing.
+                    $"Grants the Essence for " +
+                    $"[i:{ItemType<Spatial>()}] Supreme Authority. ", //Description of the listing.
+                    player.AuthorityWeaponDialogue == 2, //Unlock requirements.
+                    171,
+                    "Defeat the Warrior of Light, then wait.")); //Corresponding dialogue ID.
+                WeaponArchiveList.Add(new WeaponArchiveListing(
                    "Warrior of Light Weapon", //Name of the archive listing.
                    $"Grants the Essence for " +
                    $"[i:{ItemType<Spatial>()}] Burning Desire. ", //Description of the listing.

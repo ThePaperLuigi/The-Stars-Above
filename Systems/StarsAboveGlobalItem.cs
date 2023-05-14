@@ -195,6 +195,7 @@ namespace StarsAbove
 			ModContent.ItemType<SanguineDespair>(),
 			ModContent.ItemType<SunsetOfTheSunGod>(),
 			ModContent.ItemType<ManiacalJustice>(),
+			ModContent.ItemType<SupremeAuthority>(),
 
 			ModContent.ItemType<EssenceOfAdagium>(),
 			ModContent.ItemType<EssenceOfBloodshed>(),
@@ -244,6 +245,8 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfDespair>(),
 			ModContent.ItemType<EssenceOfMania>(),
 			ModContent.ItemType<EssenceOfSurya>(),
+			ModContent.ItemType<EssenceOfAuthority>(),
+
 		};
 
 		public List<int> Prisms = new List<int>() {

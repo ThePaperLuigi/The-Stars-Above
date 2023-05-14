@@ -9,8 +9,8 @@ namespace StarsAbove.Buffs
         {
             DisplayName.SetDefault("Light Everlasting");
             Description.SetDefault("Endless light blankets the sky... Foes are empowered and will periodically overflow with Light" +
-                "\nAsk your Starfarer for a means to combat this threat.");
-            Main.buffNoTimeDisplay[Type] = false;
+                "\nAsk your Starfarer for a means to combat this threat");
+            Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }
 

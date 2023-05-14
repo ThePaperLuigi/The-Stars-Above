@@ -46,6 +46,7 @@ using StarsAbove.Items.Armor.StarfarerArmor;
 using StarsAbove.Buffs.Farewells;
 using StarsAbove.Buffs.Umbra;
 using StarsAbove.NPCs.Nalhaun;
+using StarsAbove.NPCs.Tsukiyomi;
 
 namespace StarsAbove
 {
@@ -77,6 +78,7 @@ namespace StarsAbove
 
         //Warrior of Light code //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        public bool onEverlastingLightText = false;
 
         public bool WarriorBarActive = false;
         public int WarriorCastTime = 0;
@@ -479,6 +481,7 @@ namespace StarsAbove
         public int SanguineWeaponDialogue = 0;
         public int KarnaWeaponDialogue = 0;
         public int ManiacalWeaponDialogue = 0;
+        public int AuthorityWeaponDialogue = 0;
 
 
 
@@ -1076,6 +1079,7 @@ namespace StarsAbove
             tag["SanguineWeaponDialogue"] = SanguineWeaponDialogue;
             tag["KarnaWeaponDialogue"] = KarnaWeaponDialogue;
             tag["ManiacalWeaponDialogue"] = ManiacalWeaponDialogue;
+            tag["AuthorityWeaponDialogue"] = AuthorityWeaponDialogue;
 
 
             tag["observatoryDialogue"] = observatoryDialogue;
@@ -1368,6 +1372,7 @@ namespace StarsAbove
             SanguineWeaponDialogue = tag.GetInt("SanguineWeaponDialogue");
             KarnaWeaponDialogue = tag.GetInt("KarnaWeaponDialogue");
             ManiacalWeaponDialogue = tag.GetInt("ManiacalWeaponDialogue");
+            AuthorityWeaponDialogue = tag.GetInt("AuthorityWeaponDialogue");
 
 
 
@@ -1587,16 +1592,7 @@ namespace StarsAbove
 
 
             }
-            if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior && SubworldSystem.Current == null)
-            {
-                if (player.whoAmI == Main.myPlayer)
-                {
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The world is shrouded with Light!"), 190, 100, 247); }
-
-
-                }
-
-            }
+           
             if (novaGaugeUnlocked)
             {
                 StellarNovaUI._affixSlot1.Item = affixItem1;
@@ -2528,6 +2524,7 @@ namespace StarsAbove
             ammoRecycleCooldown--;
             aprismatismCooldown--;
             ButchersDozen();
+            MysticForging();
             umbralEntropyCooldown--;
 
 
@@ -3289,7 +3286,6 @@ namespace StarsAbove
                 if (NPC.downedMoonlord && MoonLordDialogue == 0)
                 {
                     MoonLordDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The sky becomes heavy with overwhelming Light..."), 255, 225, 107); }
 
 
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
@@ -3306,10 +3302,24 @@ namespace StarsAbove
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                     NewDiskDialogue = true;
                 }
+                if(EverlastingLightEvent.isEverlastingLightPreviewActive && warriorBossItemDialogue == 0 && vagrantDialogue == 2)
+                {
+                    warriorBossItemDialogue = 1;
+                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue("Common.HarshLight"), 239, 221, 106); }
+                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+
+                }
+                if (EverlastingLightEvent.isEverlastingLightActive && !onEverlastingLightText)
+                {
+                    onEverlastingLightText = true;
+                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue("Common.EverlastingLight"), 239, 221, 106); }
+                
+
+                }
                 if (DownedBossSystem.downedWarrior && WarriorOfLightDialogue == 0)
                 {
                     WarriorOfLightDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Light flooding this world has been cleansed!"), 255, 225, 107); }
+                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue("Common.EverlastingLightEnd"), 239, 221, 106); }
                     if (ModLoader.TryGetMod("BossChecklist", out Mod BossChecklist))
                     {
 
@@ -3321,7 +3331,7 @@ namespace StarsAbove
                     NewDiskDialogue = true;
                     if (BossChecklist != null)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Boss Checklist updates to reveal a hidden foe..!"), 141, 155, 180); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.TsukiyomiBossChecklist"), 241, 255, 180); }
 
                     }
 
@@ -3409,12 +3419,7 @@ namespace StarsAbove
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 151, 255, 90); }
 
                 }
-                if (warriorBossItemDialogue == 0 && MoonLordDialogue == 2 && vagrantDialogue == 2)
-                {
-                    warriorBossItemDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 151, 255, 90); }
-
-                }
+                
                 //Zone specific weapons do not have delay
                 if (Player.ZoneHallow && GoldWeaponDialogue == 0)
                 {
@@ -3863,6 +3868,16 @@ namespace StarsAbove
                     if (WarriorOfLightDialogue == 2 && WarriorWeaponDialogue == 0)
                     {
                         WarriorWeaponDialogue = 1;
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                        NewDiskDialogue = true;
+                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                        return;
+
+                    }
+                    if (WarriorOfLightDialogue == 2 && AuthorityWeaponDialogue == 0)
+                    {
+                        AuthorityWeaponDialogue = 1;
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
@@ -5185,6 +5200,14 @@ namespace StarsAbove
                     }
 
                 }
+
+            }
+        }
+        private void MysticForging()
+        {
+            if(mysticforging == 2)
+            {
+                Player.GetAttackSpeed(DamageClass.Generic) += (MathHelper.Lerp(0f, 0.15f, Player.GetCritChance(DamageClass.Generic) / 100));
 
             }
         }
@@ -7393,6 +7416,26 @@ namespace StarsAbove
 
         public override void PreUpdateBuffs()
         {
+            if(SubworldSystem.Current != null)
+            {
+
+            }
+            else
+            {
+                if(!NPC.AnyNPCs(NPCType<TsukiyomiBoss>()))
+                {
+                    if (Player.HasBuff(BuffType<MoonTurmoil>()))
+                    {
+                        Player.ClearBuff(BuffType<MoonTurmoil>());
+                    }
+                    if (Player.HasBuff(BuffType<ChaosTurmoil>()))
+                    {
+                        Player.ClearBuff(BuffType<ChaosTurmoil>());
+                    }
+                }
+                
+            }
+
             if (stellarArray == false)
             {
                 
@@ -7472,23 +7515,7 @@ namespace StarsAbove
                     break;
                 }
             }
-            if (NPC.downedAncientCultist && !NPC.downedMoonlord && SubworldSystem.Current == null)
-            {
-
-                Player.AddBuff(BuffType<Buffs.EverlastingLightPreview>(), 2);
-                
-
-            }
-            if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior && SubworldSystem.Current == null)
-            {
-
-                Player.AddBuff(BuffType<Buffs.EverlastingLight>(), 2);
-                if (inWarriorOfLightFightTimer > 0)
-                {
-                    Player.AddBuff(BuffType<Buffs.Determination>(), 2);
-                }
-
-            }
+            
             if (stellarSickness == true)
             {
                 Player.AddBuff(BuffType<Buffs.StellarSickness>(), 3600);
@@ -7536,25 +7563,9 @@ namespace StarsAbove
 
             }
 
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.EverlastingLight>()) || lightMonolith)
+            if (inWarriorOfLightFightTimer > 0)
             {
-
-                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-                Vector2 position = Main.LocalPlayer.position;
-                int playerWidth = Main.LocalPlayer.width;
-                int playerHeight = Main.LocalPlayer.height;
-                if (Main.LocalPlayer.ZoneOverworldHeight)
-                {
-                    Dust.NewDust(new Vector2(position.X - 1200, position.Y - 550), 2200, 1, 64, 0f, 4f, 64, default(Color), 1.5f);
-                    Dust.NewDust(new Vector2(position.X - 1200, position.Y - 550), 2200, 1, 64, 0f, 4f, 64, default(Color), 1.3f);
-                    Dust.NewDust(new Vector2(position.X - 1200, position.Y - 550), 2200, 1, 64, 0f, 4f, 64, default(Color), 0.9f);
-                    Dust.NewDust(new Vector2(position.X - 1200, position.Y - 550), 2200, 1, 64, 0f, 4f, 64, default(Color), 2f);
-                }
-
-
-
-
-
+                Player.AddBuff(BuffType<Buffs.Determination>(), 2);
             }
 
             if (Main.LocalPlayer.HasBuff(BuffType<Buffs.LivingDead>()))
