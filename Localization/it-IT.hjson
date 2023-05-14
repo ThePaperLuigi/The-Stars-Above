@@ -8,6 +8,10 @@
         SanguineDespair: drained themselves of all life.
 	SupremeAuthority: returned to the void.
       }
+      Boss:
+      {
+        WarriorOfLight: The Warrior of Light descends!
+      }
       CombatText:
       {
         Adornment: 
@@ -295,7 +299,7 @@
           MysticForging:
           {
             Name: "[c/C2BDFF:Livello 1] [c/FFEED1:'Forgiatura Mistica']"
-            Description: Converte la chance di colpi critici in danno extra (1% critico = 0.5% danni extra). I colpi critici sono disabilitati, a meno che non siano causati da un effetto speciale.
+            Description: Converte la chance di colpi critici in danno extra (1% critico = 0.5% danni extra, max 50%). I colpi critici sono disabilitati, a meno che non siano causati da un effetto speciale. Aumenta la velocità d'attacco fino al 15% in base alla chance di critico.
             Unlock: "[c/9D9D9D:Bloccato:] Sconfiggi Penthesilea, la Strega dell'Inchiostro"
           }
           InnerAlchemy:
@@ -517,6 +521,8 @@
             89: Who am I kidding- of course you're certain! You're MY Starbearer, after all! Just don't get TOO reckless, now. I don't think resurrection is something I can pull off on you.
             90: This Essence is aspected to this world's star- your sun! Needless to say, the power of the sun would be quite the boon- let's see this thing in action!
             91: Hmm, I'd advise healthy amounts of caution with this Essence- it's a Melee essence with high potential, but it looks like you're leaving your defenses open for it.
+	    92: Looks to me like this Magic Essence has some powerful potential, but I'm not quite sure what it requires in turn... Perhaps you should give it a look.
+	    
           }
           Eridani:
           {
@@ -612,6 +618,7 @@
             90: This Essence seems to have resonated from that strange poppet we found in the Underworld. Beware its dangers- your affinity with resurrection is... tentative.
             91: An Essence attuned to the power of our Sun- and it is quite radiant, indeed. Let's make good use of it.
             92: This Essence exudes an unhealthy amount of madness- it's a Melee weapon that trades defensive prowess for offensive might. Do be careful.
+	    93: A Magic-type essence. It seems to harbor incredible power, but it also seems to require sacrifices in return...
           }
           Perseus:
           {
@@ -850,25 +857,25 @@
           {
             Asphodene:
             {
-              1: You've done it! The Moon Lord has been vanquished! I knew you could do it.
+              1: You've done it! The Moon Lord has been vanquished- I knew you could do it.
               2: The Moon Lord's defeat has strengthened your Stellar Array. A reward well deserved.
-              3: We've come a long way. You have grown stronger than I have ever imagined. However, I can sense it isn't over yet.
-              4: The sky's light has grown incredibly harsh. Something's definitely wrong...
+              3: We've come a long way... You have grown stronger than I've ever imagined!
+              4: We deserve a well-earned break. Somehow, I feel like our troubles aren't quite over yet...
             }
             Eridani:
             {
               1: The Moon Lord has been defeated... What a wonderful victory.
               2: Looks like its defeat has granted the Stellar Array even more power.
               3: I fear our journey isn't over yet. We must press onwards. In fact...
-              4: The light has grown incredibly harsh. Something's definitely wrong.
+              4: I have a sneaking suspicion that things aren't going to stay peaceful for long. Let's stay vigilant.
             }
           }
           WarriorOfLight:
           {
             Asphodene:
             {
-              1: I see we were wrong.. The Warrior thought he was saving the galaxy, but it was truly the lies of the First Starfarer.. How cruel.
-              2: The Warrior of Light. He managed to get away, but... Night has returned to this world, finally!
+              1: I see we were wrong... The Warrior thought he was saving the galaxy, but it was truly the lies of the First Starfarer... How cruel.
+              2: Anyways, the Warrior of Light. He managed to get away, but... Night has returned to this world, finally!
               3: We finally have the last piece of the puzzle. The First Starfarer showed her hand, and this means we have a chance.
               4: The Stellar Array is yet stronger- something we'll need in the coming conflict, I believe.
               5: Once you've collected all the Mnemonic Traces, craft them together with use of the Celestriad Root.
@@ -1266,13 +1273,36 @@
             3: This foe was once bested by the First Starbearer. My hope is that by studying your conflict with this simulacrum, we may yet find clues to his location.
             4: Prepare yourself well.
           }
-          Warrior:
+         WarriorAsphodene:
           {
-            1: You can tell as well as I that the situation has turned dire, {0}. The Celestial Pillars has drawn the ire of our greatest foe.
-            2: The First Starbearer's gaze has been turned to this realm, and his power has blanketed the world in overwhelming Light...
-            3: I have given you an artifact fashioned from the Essences of your past battles. It will serve as a way to draw him out.
-            4: Please, you must win this fight. The stakes have never been higher.
+            1: Something's really wrong with the sky... What could be going on...?
+            2: The answer you seek isn't the answer you are hoping for.
+            3: Wh-
+            4: Let me finish, Asphodene- Time is of the essence. The First Starbearer has descended on this world.
+            5: Are you kidding me? After all that searching we did, he just waltzes up to us?
+            6: He must have noticed your defeat of the Moon Lord- an eldritch beast such as it does not fall lightly.
+            7: Yeah, we could tell. So... I assume you have a plan, or something?
+            8: From what I can derive, there's only a few more days until his grip over this world reaches its peak.
+            9: If you have resources that require the night to acquire, I implore you acquire them soon.
+            10: I've given you an artifact from his homeworld; while I know not its purpose, I believe it will hasten his arrival.
+            11: Use it only if you are prepared. The stakes have never been higher.
+            12: ...
           }
+          WarriorEridani:
+          {
+            1: You can see it too, right? The sky is abnormally bright.
+            2: The answer you seek isn't the answer you are hoping for.
+            3: Perseus. I-
+            4: Let me finish, Eridani- Time is of the essence. The First Starbearer has descended on this world.
+            5: We were searching for him for so long- why has he come to us instead?
+            6: He must have noticed your defeat of the Moon Lord- an eldritch beast such as it does not fall lightly.
+            7: That makes sense, albeit in a way that makes us seem at fault... Anyways, do you have some sort of plan?
+            8: From what I can derive, there's only a few more days until his grip over this world reaches its peak.
+            9: If you have resources that require the night to acquire, I implore you acquire them soon.
+            10: I've given you an artifact from his homeworld; while I know not its purpose, I believe it will hasten his arrival.
+            11: Use it only if you are prepared. The stakes have never been higher.
+            12: ...
+	  }
         }
         RegularIdleDialogue:
         {
@@ -2596,19 +2626,19 @@
       {
         StarfarerSelection:
         {
-          Choice: Choose a Starfarer to aid you on your journey.
-          Warning: "[c/E36666:This decision is permanent! (per character)]"
-          ManaIncrease: Maximum mana increased by 20!
-          Talk: The Spatial Disk begins to resonate; looks like someone wants to talk.
+          Choice: Scegli un Viaggiatore Stellare che ti accompagni nel tuo viaggio.
+          Warning: "[c/E36666:Una volta scelta la propria compagna, non sarà più possibile cambiarla!]"
+          ManaIncrease: Mana massimo aumentato di 20!
+          Talk: Il Disco Spaziale inizia a risuonare; sembra che qualcuno stia provando a comunicare.
           Asphodene:
           {
-            1: Asphodene, the [c/6ECDFA:Astral Starfarer]. Bold and energetic, she focuses on [c/FAC16E:flashy, powerful attacks].
-            2: You feel astral energy coursing through you...
+            1: Asphodene, la [c/6ECDFA:Viaggiatrice Stellare Astrale]. Sfacciata e piena di energia, eccelle in [c/FAC16E:attacchi potenti e appariscenti].
+            2: Energia astrale ti pervade...
           }
           Eridani:
           {
-            1: Eridani, the [c/D06EFA:Umbral Starfarer]. A reserved tactician, she [c/FAC16E:flourishes through deep complexity.]
-            2: You feel umbral energy coursing through you...
+            1: Eridani, la [c/D06EFA:Viaggiatrice Stellare Oscura]. Una mente timida e strategica, da il meglio di se tramite [c/FAC16E:meccaniche più complesse.]
+            2: Energia oscura ti pervade...
           }
         }
         EnterStarfarerMenu:
@@ -3034,8 +3064,13 @@
       Common: {
 	DiskReady: Il Disco Spaziale entra in risonanza. Click sinistro per interagire.
 	ArrayAbility: La Matrice Stellare ha ottenuto una nuova abilità!
-        AstralLocked: The weapon fails to react to your Aspect, rendering it unusable. You can only use Astral weapons with Asphodene.
-        UmbralLocked: The weapon fails to react to your Aspect, rendering it unusable. You can only use Umbral weapons with Eridani.
+        AstralLocked: L'arma non reagisce al tuo Aspetto e resta inerme. Le armi Astrali possono essere utilizzate solo con Asphodene al tuo fianco.
+        UmbralLocked: L'arma non reagisce al tuo Aspetto e resta inerme. Le armi Oscure possono essere utilizzate solo con Eridani al tuo fianco.
+	HarshLight: La luce solare diventa insopportabile...
+        EverlastingLight: Il cielo brilla di una luce così forte da impedire alla notte di discendere...
+        EverlastingLightEnd: Il mondo è stato purificato dalla Luce Eterna!
+        SpeedUpLight: La Luce Eerna viene catalizzata, impedendo la discesa della notte...
+        TsukiyomiBossChecklist: La Lista dei Boss si aggiorna, rivelando un nemico nascosto!
       }
 
       DamageClass:
@@ -3050,7 +3085,7 @@
             DummyEnemy: Manichino
 	    PolluxBoss: Pollux, Baleborn of Ice
             CastorBoss: Castor, Baleborn of Fire
-            Dioskouroi: Dioskouroi, the Twin Forces
+            Dioskouroi: Dioskouroi, le Forze Gemelle
             Nalhaun: Nalhaun, il Re Imbrunito
 	    NalhaunBossPhase2: Nalhaun, Sovrano del Mondo Vuoto
             PaintedAttendantA: Pennello Vivente
