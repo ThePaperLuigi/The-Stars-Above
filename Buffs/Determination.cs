@@ -15,7 +15,8 @@ namespace StarsAbove.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            
+            player.GetDamage(DamageClass.Generic) *= 2f;
+
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
             {
                 if (Main.expertMode)
@@ -24,25 +25,25 @@ namespace StarsAbove.Buffs
                     {
                         if ((bool)calamityMod.Call("GetDifficultyActive", "malice") || (bool)calamityMod.Call("GetDifficultyActive", "death"))
                         {
-                            player.GetDamage(DamageClass.Generic) *= 1.25f;
+                            
                             player.statDefense += 5;
                         }
                         else
                         {
-                            player.GetDamage(DamageClass.Generic) *= 1.5f;
+                            
                             player.statDefense += 12;
                         }
                     }
                     else
                     {
-                        player.GetDamage(DamageClass.Generic) *= 1.5f;
+                        
                         player.statDefense += 25;
                     }
                     
                 }
                 else
                 {
-                    player.GetDamage(DamageClass.Generic) *= 2f;
+                   
                     player.statDefense += 50;
                 }
             }
@@ -50,12 +51,12 @@ namespace StarsAbove.Buffs
             {
                 if (Main.expertMode)
                 {
-                    player.GetDamage(DamageClass.Generic) *= 1.5f;
+                    
                     player.statDefense += 25;
                 }
                 else
                 {
-                    player.GetDamage(DamageClass.Generic) *= 2f;
+                    
                     player.statDefense += 50;
                 }
             }

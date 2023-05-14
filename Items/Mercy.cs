@@ -27,7 +27,7 @@ namespace StarsAbove.Items
 				"\nCritical strikes with this weapon's basic attacks instantly cleanse the cooldown of [c/DC3961:Edge of Anguish]" +
 				"\nAllies striking foes under the influence of [c/FF3200:Infernal Hemorrhage] with projectiles grants Rage for 8 seconds" +
                 "\nAdditionally, these attacks deal 2% of the foe's missing HP as bonus true damage (Up to 250)" +
-				"\n'From the Depths of Noxian Streets'" +
+				"\n'From the depths of Noxian streets'" +
 				"" +
 				$"");  //The (English) text shown below your weapon's name
 
@@ -38,7 +38,7 @@ namespace StarsAbove.Items
 		public override void SetDefaults()
 		{
 			
-			Item.damage = 89;           //The damage of your weapon
+			Item.damage = 40;           //The damage of your weapon
 			Item.DamageType = DamageClass.Melee;         //Is your weapon a melee weapon?
 			Item.width = 108;            //Weapon's texture's width
 			Item.height = 108;           //Weapon's texture's height
@@ -77,7 +77,7 @@ namespace StarsAbove.Items
 			Vector2 arrowVelocity = direction * 26f;
 			
 
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 
 			if (player.altFunctionUse == 2)
 			{

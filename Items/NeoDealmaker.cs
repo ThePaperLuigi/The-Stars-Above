@@ -31,7 +31,7 @@ namespace StarsAbove.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 30;
+			Item.damage = 18;
 			Item.DamageType = DamageClass.Ranged;
 			Item.width = 64;
 			Item.height = 32;
@@ -75,7 +75,7 @@ namespace StarsAbove.Items
 		{
 			if (Main.myPlayer == player.whoAmI)
 			{
-				float launchSpeed = 10f + (int)Math.Round(player.GetModPlayer<StarsAbovePlayer>().bowCharge / 30);
+				float launchSpeed = 10f + (int)Math.Round(player.GetModPlayer<WeaponPlayer>().bowCharge / 30);
 				Vector2 mousePosition = Main.MouseWorld;
 				Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
 				Vector2 arrowVelocity = direction * launchSpeed;
@@ -87,13 +87,13 @@ namespace StarsAbove.Items
 				{
 					Item.useTime = 2;
 					Item.useAnimation = 2;
-					player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = true;
-					player.GetModPlayer<StarsAbovePlayer>().bowCharge += 3;
-					if (player.GetModPlayer<StarsAbovePlayer>().bowCharge == 1)
+					player.GetModPlayer<WeaponPlayer>().bowChargeActive = true;
+					player.GetModPlayer<WeaponPlayer>().bowCharge += 3;
+					if (player.GetModPlayer<WeaponPlayer>().bowCharge == 1)
 					{
 						//Main.PlaySound(SoundLoader.customSoundType, (int)player.Center.X, (int)player.Center.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/bowstring"), 0.5f);
 					}
-					if (player.GetModPlayer<StarsAbovePlayer>().bowCharge == 99)
+					if (player.GetModPlayer<WeaponPlayer>().bowCharge == 99)
 					{
 						for (int d = 0; d < 22; d++)
 						{
@@ -102,14 +102,14 @@ namespace StarsAbove.Items
 
 						SoundEngine.PlaySound(SoundID.CoinPickup, player.position);
 					}
-					if (player.GetModPlayer<StarsAbovePlayer>().bowCharge < 100)
+					if (player.GetModPlayer<WeaponPlayer>().bowCharge < 100)
 					{
 						for (int i = 0; i < 30; i++)
 						{//Circle
 							Vector2 offset = new Vector2();
 							double angle = Main.rand.NextDouble() * 2d * Math.PI;
-							offset.X += (float)(Math.Sin(angle) * (100 - player.GetModPlayer<StarsAbovePlayer>().bowCharge));
-							offset.Y += (float)(Math.Cos(angle) * (100 - player.GetModPlayer<StarsAbovePlayer>().bowCharge));
+							offset.X += (float)(Math.Sin(angle) * (100 - player.GetModPlayer<WeaponPlayer>().bowCharge));
+							offset.Y += (float)(Math.Cos(angle) * (100 - player.GetModPlayer<WeaponPlayer>().bowCharge));
 
 							Dust d2 = Dust.NewDustPerfect(player.MountedCenter + offset, 159, player.velocity, 200, default(Color), 0.5f);
 							d2.fadeIn = 0.1f;
@@ -139,24 +139,24 @@ namespace StarsAbove.Items
 					Item.useTime = 15;
 					Item.useAnimation = 15;
 
-					if (player.GetModPlayer<StarsAbovePlayer>().bowCharge >= 100)
+					if (player.GetModPlayer<WeaponPlayer>().bowCharge >= 100)
 					{
 						SoundEngine.PlaySound(StarsAboveAudio.SFX_DealmakerCharged, player.Center);
 						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity.X, arrowVelocity.Y, ProjectileType<BigShot>(), player.GetWeaponDamage(Item) * 2, 5, player.whoAmI, 0f);
-						player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-						player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
+						player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+						player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
 
 
 					}
 					else
 					{
-						if (player.GetModPlayer<StarsAbovePlayer>().bowCharge > 0)
+						if (player.GetModPlayer<WeaponPlayer>().bowCharge > 0)
 						{//
 
 							SoundEngine.PlaySound(StarsAboveAudio.SFX_DealmakerShoot, player.Center);
 
-							player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-							player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
+							player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+							player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
 
 							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity.X, arrowVelocity.Y, ProjectileType<SmallShot>(), player.GetWeaponDamage(Item), 3, player.whoAmI, 0f);
 						}

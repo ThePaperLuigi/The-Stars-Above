@@ -109,7 +109,7 @@ namespace StarsAbove.UI
 		protected override void DrawSelf(SpriteBatch spriteBatch) {
 			base.DrawSelf(spriteBatch);
 
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			// Calculate quotient
 			float quotient1 = (float)modPlayer.blackMana / 100; // Creating a quotient1 that represents the difference of your currentResource vs your maximumResource, resulting in a float of 0-1f.
 			quotient1 = Utils.Clamp(quotient1, 0f, 1f); // Clamping it to 0-1f so it doesn't go over that.
@@ -147,34 +147,34 @@ namespace StarsAbove.UI
 			}
 			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/RedMage/emptyGem"), area.GetInnerDimensions().ToRectangle(), Color.White);
 			
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().blackMana > Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().whiteMana)
+			if (Main.LocalPlayer.GetModPlayer<WeaponPlayer>().blackMana > Main.LocalPlayer.GetModPlayer<WeaponPlayer>().whiteMana)
 			{
 				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/RedMage/blackGem"), area.GetInnerDimensions().ToRectangle(), Color.White);
 			}
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().whiteMana > Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().blackMana)
+			if (Main.LocalPlayer.GetModPlayer<WeaponPlayer>().whiteMana > Main.LocalPlayer.GetModPlayer<WeaponPlayer>().blackMana)
 			{
 				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/RedMage/whiteGem"), area.GetInnerDimensions().ToRectangle(), Color.White);
 			}
-			if ((Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().whiteMana == Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().blackMana
-				&& Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().blackMana + Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().whiteMana != 0)
-				&& (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().blackMana >= 50
-				&& Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().whiteMana >= 50)
-				|| (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().blackMana >= 50
-				&& Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().whiteMana >= 50))
+			if ((Main.LocalPlayer.GetModPlayer<WeaponPlayer>().whiteMana == Main.LocalPlayer.GetModPlayer<WeaponPlayer>().blackMana
+				&& Main.LocalPlayer.GetModPlayer<WeaponPlayer>().blackMana + Main.LocalPlayer.GetModPlayer<WeaponPlayer>().whiteMana != 0)
+				&& (Main.LocalPlayer.GetModPlayer<WeaponPlayer>().blackMana >= 50
+				&& Main.LocalPlayer.GetModPlayer<WeaponPlayer>().whiteMana >= 50)
+				|| (Main.LocalPlayer.GetModPlayer<WeaponPlayer>().blackMana >= 50
+				&& Main.LocalPlayer.GetModPlayer<WeaponPlayer>().whiteMana >= 50))
 			{
 				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/RedMage/redGem"), area.GetInnerDimensions().ToRectangle(), Color.White);
 			}
 			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/RedMage/manaStackEmpty"), area.GetInnerDimensions().ToRectangle(), Color.White);
 
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().manaStack == 3)
+			if (Main.LocalPlayer.GetModPlayer<WeaponPlayer>().manaStack == 3)
 			{
 				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/RedMage/manaStack3"), area.GetInnerDimensions().ToRectangle(), Color.White);
 			}
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().manaStack == 2)
+			if (Main.LocalPlayer.GetModPlayer<WeaponPlayer>().manaStack == 2)
 			{
 				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/RedMage/manaStack2"), area.GetInnerDimensions().ToRectangle(), Color.White);
 			}
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().manaStack == 1)
+			if (Main.LocalPlayer.GetModPlayer<WeaponPlayer>().manaStack == 1)
 			{
 				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/RedMage/manaStack1"), area.GetInnerDimensions().ToRectangle(), Color.White);
 			}
@@ -182,7 +182,7 @@ namespace StarsAbove.UI
 		public override void Update(GameTime gameTime) {
 			if (!(Main.LocalPlayer.HeldItem.ModItem is RedMage))
 				return;
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 
 			blackMana.SetText($"{modPlayer.blackMana}");
 			whiteMana.SetText($"{modPlayer.whiteMana}");

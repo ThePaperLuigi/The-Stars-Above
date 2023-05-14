@@ -55,7 +55,7 @@ namespace StarsAbove.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 99;           //The damage of your weapon
+			Item.damage = 77;           //The damage of your weapon
 			Item.DamageType = DamageClass.Melee;          //Is your weapon a melee weapon?
 			Item.width = 68;            //Weapon's texture's width
 			Item.height = 68;           //Weapon's texture's height
@@ -122,7 +122,7 @@ namespace StarsAbove.Items
 
 			if (player.altFunctionUse == 2)
 			{
-				if ((player.GetModPlayer<StarsAbovePlayer>().powerStrikeStacks == 5 && !player.HasBuff(BuffType<BoilingBloodCooldown>()))|| player.HasBuff(BuffType<BoilingBloodBuff>()))
+				if ((player.GetModPlayer<WeaponPlayer>().powerStrikeStacks == 5 && !player.HasBuff(BuffType<BoilingBloodCooldown>()))|| player.HasBuff(BuffType<BoilingBloodBuff>()))
 				{
 					return true;
 				}
@@ -139,18 +139,18 @@ namespace StarsAbove.Items
 		}
         public override void HoldItem(Player player)
         {
-			player.GetModPlayer<StarsAbovePlayer>().BurningDesireHeld = true;
+			player.GetModPlayer<WeaponPlayer>().BurningDesireHeld = true;
 			if (player.ownedProjectileCounts[ProjectileType<BurningDesireHeld>()] < 1)
 			{//Equip animation.
 				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<BurningDesireHeld>(), 0, 0, player.whoAmI, 0f);
 			}
-			if(player.GetModPlayer<StarsAbovePlayer>().powerStrikeStacks > 0)
+			if(player.GetModPlayer<WeaponPlayer>().powerStrikeStacks > 0)
             {
 				player.AddBuff(BuffType<PowerStrikeBuff>(), 2);
             }
-			if(player.GetModPlayer<StarsAbovePlayer>().powerStrikeStacks > 5)
+			if(player.GetModPlayer<WeaponPlayer>().powerStrikeStacks > 5)
             {
-				player.GetModPlayer<StarsAbovePlayer>().powerStrikeStacks = 5;
+				player.GetModPlayer<WeaponPlayer>().powerStrikeStacks = 5;
 
 			}
 			if (currentSwing != 0)
@@ -177,7 +177,7 @@ namespace StarsAbove.Items
 
 		public override bool? UseItem(Player player)
         {
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			if (player.altFunctionUse == 2 && !player.HasBuff(BuffType<BoilingBloodBuff>()))
 			{
 				modPlayer.powerStrikeStacks = 0;
@@ -222,11 +222,11 @@ namespace StarsAbove.Items
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_BoilingBloodEnd, player.Center);
 
 					Projectile.NewProjectile(source, position.X, position.Y, 0, 0, ProjectileType<BoilingBurstPrep1>(),
-						damage + player.GetModPlayer<StarsAbovePlayer>().boilingBloodDamage + (int)((player.statLifeMax2 - player.statLife) / player.statLifeMax2),
+						damage + player.GetModPlayer<WeaponPlayer>().boilingBloodDamage + (int)((player.statLifeMax2 - player.statLife) / player.statLifeMax2),
 						0, player.whoAmI, 0f);
 					Projectile.NewProjectile(source, position.X, position.Y, 0, 0, ProjectileType<BoilingBurstPrep2>(),0,0, player.whoAmI, 0f);
 					player.AddBuff(BuffType<BoilingBloodCooldown>(), 1200);
-					player.GetModPlayer<StarsAbovePlayer>().boilingBloodDamage = 0;
+					player.GetModPlayer<WeaponPlayer>().boilingBloodDamage = 0;
 					player.ClearBuff(BuffType<BoilingBloodBuff>());
 					return false;
 				}
@@ -296,7 +296,7 @@ namespace StarsAbove.Items
 					}
 					else
                     {
-						player.GetModPlayer<StarsAbovePlayer>().powerStrikeStacks++;
+						player.GetModPlayer<WeaponPlayer>().powerStrikeStacks++;
 					}
 					
 					player.AddBuff(BuffType<ComboCooldown>(), 50);

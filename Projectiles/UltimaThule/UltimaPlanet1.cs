@@ -5,6 +5,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.Graphics.Shaders;
 
 namespace StarsAbove.Projectiles.UltimaThule
 {
@@ -223,8 +225,7 @@ namespace StarsAbove.Projectiles.UltimaThule
 
 		public override bool PreDraw(ref Color lightColor)
 		{
-			//default(Effects.UltimaYellowTrail).Draw(Projectile);
-
+			
 			return true;
 		}
 

@@ -1,11 +1,16 @@
 using Microsoft.Xna.Framework;
-using Terraria;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
+using Terraria;using Terraria.GameContent;
+using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.Tsukiyomi
 {
-    public class WormholeLong : ModProjectile
+	public class WormholeLong : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Tsukiyomi's Gateway");     //The English name of the projectile

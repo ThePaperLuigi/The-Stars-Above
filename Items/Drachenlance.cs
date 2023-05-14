@@ -36,10 +36,10 @@ namespace StarsAbove.Items
 		}
 
 		public override void SetDefaults() {
-			Item.damage = 88;
+			Item.damage = 55;
 			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.useAnimation = 30;
-			Item.useTime = 30;
+			Item.useAnimation = 25;
+			Item.useTime = 25;
 			Item.shootSpeed = 3.7f;
 			Item.knockBack = 6.5f;
 			Item.width = 32;

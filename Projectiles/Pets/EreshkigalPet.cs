@@ -8,30 +8,67 @@ namespace StarsAbove.Projectiles.Pets
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Princess of Kur"); // Automatic from .lang files
-			Main.projFrames[Projectile.type] = 1;
+			//
+			//DrawOffsetX = -20;
+			DisplayName.SetDefault("Ereshkigal"); // Automatic from .lang files
+			Main.projFrames[Projectile.type] = 13;
+
 			Main.projPet[Projectile.type] = true;
 			ProjectileID.Sets.LightPet[Projectile.type] = true;
 		}
-
+		int idleAnimation;
 		public override void SetDefaults()
 		{
-			Projectile.CloneDefaults(ProjectileID.ZephyrFish);
-			AIType = ProjectileID.ZephyrFish;
+			Projectile.CloneDefaults(ProjectileID.MiniMinotaur);
+			AIType = ProjectileID.MiniMinotaur;
+			//AnimationType = ProjectileID.BabyDino;
 			Projectile.light = 1f;
+			DrawOriginOffsetY = -8;
+			DrawOffsetX = -20;
 		}
 
 		public override bool PreAI()
 		{
 			Player player = Main.player[Projectile.owner];
-			player.zephyrfish = false; // Relic from AIType
+			player.miniMinotaur = false; // Relic from AIType
 			return true;
 		}
 
 		public override void AI()
 		{
+			Projectile.velocity.X *= 1.00f;
 			Player player = Main.player[Projectile.owner];
-			StarsAbovePlayer modPlayer = player.GetModPlayer<StarsAbovePlayer>();
+			WeaponPlayer modPlayer = player.GetModPlayer<WeaponPlayer>();
+
+
+
+			if (Projectile.velocity.X == 0)
+			{
+				idleAnimation++;
+				if (idleAnimation >= 60 && idleAnimation < 70)
+				{
+					Projectile.frame = 10;
+				}
+				if (idleAnimation >= 70 && idleAnimation < 80)
+				{
+					Projectile.frame = 11;
+				}
+				if (idleAnimation >= 80 && idleAnimation < 90)
+				{
+					Projectile.frame = 12;
+				}
+
+
+				if (idleAnimation > 700)
+				{
+					idleAnimation = 0;
+				}
+			}
+			else
+			{
+				idleAnimation = 0;
+			}
+
 			if (player.dead)
 			{
 				modPlayer.EreshkigalPet = false;
@@ -41,6 +78,8 @@ namespace StarsAbove.Projectiles.Pets
 				Projectile.timeLeft = 2;
 			}
 		}
+
+
 	}
-	
+
 }

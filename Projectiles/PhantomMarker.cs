@@ -46,12 +46,12 @@ namespace StarsAbove.Projectiles
 			// Fade in
 			Projectile.alpha -= 10;
 			
-			if(projOwner.GetModPlayer<StarsAbovePlayer>().phantomKill == true)
+			if(projOwner.GetModPlayer<WeaponPlayer>().phantomKill == true)
             {
-				Projectile.Center = projOwner.GetModPlayer<StarsAbovePlayer>().phantomSavedPosition;
-				projOwner.GetModPlayer<StarsAbovePlayer>().phantomKill = false;
+				Projectile.Center = projOwner.GetModPlayer<WeaponPlayer>().phantomSavedPosition;
+				projOwner.GetModPlayer<WeaponPlayer>().phantomKill = false;
 			}
-			if (projOwner.GetModPlayer<StarsAbovePlayer>().phantomTeleport == false || projOwner.statMana <= 0)
+			if (projOwner.GetModPlayer<WeaponPlayer>().phantomTeleport == false || projOwner.statMana <= 0)
 			{
 				
 				Projectile.Kill();

@@ -52,7 +52,7 @@ namespace StarsAbove.Projectiles
 			Player projOwner = Main.player[Projectile.owner];
 			Projectile.ai[0] += 1f;
 
-			if (projOwner.GetModPlayer<StarsAbovePlayer>().judgementCutTimer < 0)
+			if (projOwner.GetModPlayer<WeaponPlayer>().judgementCutTimer < 0)
 			{
 				//if (projectile.ai[0] > 100)
 				//{

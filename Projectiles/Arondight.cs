@@ -34,11 +34,11 @@ namespace StarsAbove.Projectiles
 		{
 			Projectile.timeLeft = 10;
 			Player player = Main.player[Projectile.owner];
-			if (player.dead && !player.active || player.GetModPlayer<StarsAbovePlayer>().albionHeld < 0)
+			if (player.dead && !player.active || player.GetModPlayer<WeaponPlayer>().albionHeld < 0)
 			{
 				Projectile.Kill();
 			}
-			player.GetModPlayer<StarsAbovePlayer>().arondightPosition = Projectile.Center;
+			player.GetModPlayer<WeaponPlayer>().arondightPosition = Projectile.Center;
 			Projectile.rotation = (Main.MouseWorld - Projectile.Center).ToRotation();
 			if (Projectile.velocity.Y > 16f)
 			{

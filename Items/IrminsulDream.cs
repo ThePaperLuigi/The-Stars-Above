@@ -72,7 +72,7 @@ namespace StarsAbove.Items
 		}
 		public override void HoldItem(Player player)
 		{
-			player.GetModPlayer<StarsAbovePlayer>().IrminsulHeld = true;
+			player.GetModPlayer<WeaponPlayer>().IrminsulHeld = true;
 
 			
 			//player.AddBuff(BuffType<Buffs.TwinStarsBuff>(), 2);
@@ -83,16 +83,16 @@ namespace StarsAbove.Items
 
 			}
 			
-			if(player.GetModPlayer<StarsAbovePlayer>().IrminsulAttackActive)
+			if(player.GetModPlayer<WeaponPlayer>().IrminsulAttackActive && player.whoAmI == Main.myPlayer)
             {
-				player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxEnd = Main.MouseWorld;
+				player.GetModPlayer<WeaponPlayer>().IrminsulBoxEnd = Main.MouseWorld;
 
 				//Draw the 4 lines of the box...
 				for (int i = 0; i < 20; i++)//Bottom line
 				{
 					Vector2 position = Vector2.Lerp(
-						new Vector2(player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxStart.X, player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxStart.Y), 
-						new Vector2(player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxEnd.X, player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxStart.Y),
+						new Vector2(player.GetModPlayer<WeaponPlayer>().IrminsulBoxStart.X, player.GetModPlayer<WeaponPlayer>().IrminsulBoxStart.Y), 
+						new Vector2(player.GetModPlayer<WeaponPlayer>().IrminsulBoxEnd.X, player.GetModPlayer<WeaponPlayer>().IrminsulBoxStart.Y),
 						(float)i / 20);
 					Dust d = Dust.NewDustPerfect(position, DustID.FireworkFountain_Green, null, 240, default(Color), 0.5f);
 					d.fadeIn = 0.1f;
@@ -104,8 +104,8 @@ namespace StarsAbove.Items
 				for (int i = 0; i < 20; i++)//Top line
 				{
 					Vector2 position = Vector2.Lerp(
-						new Vector2(player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxStart.X, player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxEnd.Y),
-						new Vector2(player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxEnd.X, player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxEnd.Y),
+						new Vector2(player.GetModPlayer<WeaponPlayer>().IrminsulBoxStart.X, player.GetModPlayer<WeaponPlayer>().IrminsulBoxEnd.Y),
+						new Vector2(player.GetModPlayer<WeaponPlayer>().IrminsulBoxEnd.X, player.GetModPlayer<WeaponPlayer>().IrminsulBoxEnd.Y),
 						(float)i / 20);
 					Dust d = Dust.NewDustPerfect(position, DustID.FireworkFountain_Green, null, 240, default(Color), 0.5f);
 					d.fadeIn = 0.1f;
@@ -116,8 +116,8 @@ namespace StarsAbove.Items
 				for (int i = 0; i < 20; i++)//Left line
 				{
 					Vector2 position = Vector2.Lerp(
-						new Vector2(player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxStart.X, player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxStart.Y),
-						new Vector2(player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxStart.X, player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxEnd.Y),
+						new Vector2(player.GetModPlayer<WeaponPlayer>().IrminsulBoxStart.X, player.GetModPlayer<WeaponPlayer>().IrminsulBoxStart.Y),
+						new Vector2(player.GetModPlayer<WeaponPlayer>().IrminsulBoxStart.X, player.GetModPlayer<WeaponPlayer>().IrminsulBoxEnd.Y),
 						(float)i / 20);
 					Dust d = Dust.NewDustPerfect(position, DustID.FireworkFountain_Green, null, 240, default(Color), 0.5f);
 					d.fadeIn = 0.1f;
@@ -129,8 +129,8 @@ namespace StarsAbove.Items
 				for (int i = 0; i < 20; i++)//Right line
 				{
 					Vector2 position = Vector2.Lerp(
-						new Vector2(player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxEnd.X, player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxStart.Y),
-						new Vector2(player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxEnd.X, player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxEnd.Y),
+						new Vector2(player.GetModPlayer<WeaponPlayer>().IrminsulBoxEnd.X, player.GetModPlayer<WeaponPlayer>().IrminsulBoxStart.Y),
+						new Vector2(player.GetModPlayer<WeaponPlayer>().IrminsulBoxEnd.X, player.GetModPlayer<WeaponPlayer>().IrminsulBoxEnd.Y),
 						(float)i / 20);
 					Dust d = Dust.NewDustPerfect(position, DustID.FireworkFountain_Green, null, 240, default(Color), 0.5f);
 					d.fadeIn = 0.1f;
@@ -140,14 +140,14 @@ namespace StarsAbove.Items
 					d.noGravity = true;
 				}
 
-				Vector2 centerOfBox = Vector2.Lerp(player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxStart, player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxEnd, 0.5f);
+				Vector2 centerOfBox = Vector2.Lerp(player.GetModPlayer<WeaponPlayer>().IrminsulBoxStart, player.GetModPlayer<WeaponPlayer>().IrminsulBoxEnd, 0.5f);
 
 				int width = (int)Math.Abs(Vector2.Distance(//find the X difference
-								new Vector2(player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxStart.X, 0),
-								new Vector2(player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxEnd.X, 0))) / 2;
+								new Vector2(player.GetModPlayer<WeaponPlayer>().IrminsulBoxStart.X, 0),
+								new Vector2(player.GetModPlayer<WeaponPlayer>().IrminsulBoxEnd.X, 0))) / 2;
 				int height = (int)Math.Abs(Vector2.Distance(//find the Y difference
-								new Vector2(0, player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxStart.Y),
-								new Vector2(0, player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxEnd.Y))) / 2;
+								new Vector2(0, player.GetModPlayer<WeaponPlayer>().IrminsulBoxStart.Y),
+								new Vector2(0, player.GetModPlayer<WeaponPlayer>().IrminsulBoxEnd.Y))) / 2;
 
 				for (int i = 0; i < Main.maxNPCs; i++)
 				{
@@ -170,7 +170,7 @@ namespace StarsAbove.Items
 						}
 					}
 				}
-				if(player.GetModPlayer<StarsAbovePlayer>().IrminsulAttackActive)
+				if(player.GetModPlayer<WeaponPlayer>().IrminsulAttackActive)
                 {
 					if (player.ownedProjectileCounts[ProjectileType<IrminsulMark1>()] < 1)
 					{
@@ -184,7 +184,7 @@ namespace StarsAbove.Items
 					Main.cursorAlpha = 1f;
 					Main.cursorScale = 0f;
 				}
-				if (!Main.mouseLeft || Vector2.Distance(player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxStart, player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxEnd) > 400)
+				if (!Main.mouseLeft || Vector2.Distance(player.GetModPlayer<WeaponPlayer>().IrminsulBoxStart, player.GetModPlayer<WeaponPlayer>().IrminsulBoxEnd) > 400)
                 {//If no longer holding left click or the box is too big... (The circle will appear above enemies even if the attack isn't used yet.
 					
 					for (int i = 0; i < Main.maxNPCs; i++)
@@ -199,7 +199,7 @@ namespace StarsAbove.Items
 							   ProjectileType<VerdantSnapshot>(), player.GetWeaponDamage(Item), 0, player.whoAmI);
 						}
 					}
-					player.GetModPlayer<StarsAbovePlayer>().IrminsulAttackActive = false;
+					player.GetModPlayer<WeaponPlayer>().IrminsulAttackActive = false;
 
 				}
 			}				
@@ -209,14 +209,14 @@ namespace StarsAbove.Items
 		}
         public override bool? UseItem(Player player)
         {
-			if(player.GetModPlayer<StarsAbovePlayer>().IrminsulAttackActive)
+			if(player.GetModPlayer<WeaponPlayer>().IrminsulAttackActive)
             {
 
             }
 			else
             {//Upon activation
-				player.GetModPlayer<StarsAbovePlayer>().IrminsulBoxStart = Main.MouseWorld;
-				player.GetModPlayer<StarsAbovePlayer>().IrminsulAttackActive = true;
+				player.GetModPlayer<WeaponPlayer>().IrminsulBoxStart = Main.MouseWorld;
+				player.GetModPlayer<WeaponPlayer>().IrminsulAttackActive = true;
 			}
 
 

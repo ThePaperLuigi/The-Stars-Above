@@ -25,6 +25,7 @@ namespace StarsAbove.Buffs.TheOnlyThingIKnowForReal
             if(player.statLife<=100)
             {
                 player.GetDamage(DamageClass.Generic) += 0.2f;
+                player.lifeRegenTime = 10;//Disable natural life regeneration.
 
             }
             //player.statDefense -= 30;

@@ -53,7 +53,7 @@ namespace StarsAbove.Projectiles.CatalystMemory
 			{
 				Projectile.Kill();
 			}
-			projOwner.GetModPlayer<StarsAbovePlayer>().CatalystPrismicPosition = Projectile.Center;
+			projOwner.GetModPlayer<WeaponPlayer>().CatalystPrismicPosition = Projectile.Center;
 			Vector2 ownerMountedCenter = projOwner.RotatedRelativePoint(projOwner.MountedCenter, true);
 			//Projectile.direction = projOwner.direction;
 			//Projectile.position.X = ownerMountedCenter.X - (float)(Projectile.width / 2);

@@ -13,6 +13,7 @@ namespace StarsAbove.Items.Materials
 			DisplayName.SetDefault("Bolt of True Starsilk");
 			Tooltip.SetDefault("Utilized to craft Starfarer Attire" +
 				"\n'Shimmers with cosmic energy'");
+			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;
 		}

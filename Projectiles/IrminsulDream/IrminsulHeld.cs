@@ -46,7 +46,7 @@ namespace StarsAbove.Projectiles.IrminsulDream
 			Player projOwner = Main.player[Projectile.owner];
 
 			Projectile.scale = 0.6f;
-			if (!player.GetModPlayer<StarsAbovePlayer>().IrminsulHeld)
+			if (!player.GetModPlayer<WeaponPlayer>().IrminsulHeld)
 			{
 				Projectile.Kill();
 			}

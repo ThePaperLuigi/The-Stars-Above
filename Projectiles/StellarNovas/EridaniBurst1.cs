@@ -24,6 +24,7 @@ namespace StarsAbove.Projectiles.StellarNovas
 			Projectile.ownerHitCheck = true;
 			Projectile.tileCollide = false;
 			Projectile.friendly = true;
+			Projectile.light = 2f;
 		}
 		int timer;
 		
@@ -58,7 +59,7 @@ namespace StarsAbove.Projectiles.StellarNovas
 			}
 			if (Projectile.frame != 13)
 			{
-				Projectile.position.Y = ownerMountedCenter.Y - (float)(Projectile.height / 2) - 110;
+				Projectile.position.Y = ownerMountedCenter.Y - (float)(Projectile.height / 2) - 105;
 			}
 			if (timer >= 60)
             {

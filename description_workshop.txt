@@ -32,16 +32,16 @@ Wield over 60 incredibly diverse weapons, with charged attacks, alternate abilit
 
 [img]https://i.imgur.com/BEnNDqm.png[/img]
 
-[img]https://i.imgur.com/5Nyk0kz.png[/img]
+[img]https://i.imgur.com/zSGK89U.png[/img]
 
 [h1]STARFARERS[/h1]
 
-The Stars Above's flagship feature: Meet Eridani and Asphodene, masters of Umbral and Astral respectively.
+The Stars Above's flagship feature: Meet Asphodene and Eridani, masters of Astral and Umbral respectively.
 Empowered by their strength and led by their guidance, you will be able to challenge any foe Terraria has to offer. These charismatic deuteragonists boast over 2000+ lines of unique dialogue for bosses, biomes, and more.
 
 [img]https://i.imgur.com/BEnNDqm.png[/img]
 
-[img]https://i.imgur.com/fadrk2y.png[/img]
+[img]https://i.imgur.com/u9x6xLX.png[/img]
 
 [h1]WEAPONS[/h1]
 
@@ -58,18 +58,20 @@ With 24 powerful passive abilities separated into 3 distinct tiers, you can mix 
 
 [img]https://i.imgur.com/BEnNDqm.png[/img]
 
-[img]https://i.imgur.com/QknHspY.png[/img]
+[img]https://i.imgur.com/xXcCnNS.png[/img]
 
 [h1]BOSSES[/h1]
 
-Defeat six powerful unique bosses boasting a custom AI system:
+Defeat seven powerful unique bosses boasting a custom AI system:
 Casted Attacks. Adapt and learn to defeat these formidable enemies!
 
 [img]https://i.imgur.com/BEnNDqm.png[/img]
 
+[img]https://i.imgur.com/r4JTPlO.png[/img]
+
 [h1]COSMIC VOYAGES[/h1]
 
-Explore the Moirae Galaxy through a brand-new system added in Beyond: Celestial Cartography. Obtain rare materials, powerful accessories, and more.
+Explore the Moirae Galaxy through a brand-new system added in The Stars Above: Celestial Cartography. With the help of Subworld Library, obtain rare materials, powerful accessories, and more. (Alternate material sources are provided in Multiplayer!)
 
 [img]https://i.imgur.com/BEnNDqm.png[/img]
 
@@ -80,7 +82,7 @@ The features of The Stars Above doesn't stop here; express yourself with unique 
 Turn Aspected weapons to Rogue Damage from Calamity, or Symphonic/Radiant/Throwing Damage from Thorium!
 
 Your Starfarers will have unique dialogue for content from the following mods:
-Calamity, Secrets of the Shadows, Verdant, Fargo's Souls, Thorium (1.3 only.) More will come soon!
+Calamity, Secrets of the Shadows, Verdant, Fargo's Souls, and the Thorium Mod. More will come soon!
 Additionally, some separate scaling is present for the Calamity Mod. (This can be disabled in the Mod Settings.)
 
 
@@ -92,10 +94,9 @@ Additionally, some separate scaling is present for the Calamity Mod. (This can b
 
 [img]https://i.imgur.com/BEnNDqm.png[/img]
 
-View the official Fandom wiki here!
-[url=https://terrariamods.fandom.com/wiki/The_Stars_Above] The Stars Above Wiki [/url]
-[url=https://terrariamods.wiki.gg/wiki/The_Stars_Above] The Stars Above Wiki (wiki.gg ver.) [/url]
-As of now, the wiki is lacking a lot of articles; feel free to contribute (Even one article is a lot!) Thanks again!
+View the official wiki here!
+[url=https://terrariamods.wiki.gg/wiki/The_Stars_Above] The Stars Above Wiki[/url]
+Feel free to contribute (Even one article is a lot!) Thanks again!
 
 The mod includes localization for Chinese and Spanish, thanks to these individuals:
 Chinese translation team:  Soammer(夏沫), MeireiHakuya(冥岭白夜), (亚砜), and Yukiko (羽曦)

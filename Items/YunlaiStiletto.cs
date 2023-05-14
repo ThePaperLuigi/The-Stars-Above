@@ -29,7 +29,7 @@ namespace StarsAbove.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 136;           //The damage of your weapon
+			Item.damage = 99;           //The damage of your weapon
 			Item.DamageType = DamageClass.Melee;          //Is your weapon a melee weapon?
 			Item.width = 68;            //Weapon's texture's width
 			Item.height = 68;           //Weapon's texture's height
@@ -58,13 +58,13 @@ namespace StarsAbove.Items
 			
 			if (player.altFunctionUse == 2)
 			{
-				if (player.GetModPlayer<StarsAbovePlayer>().yunlaiTeleport == false)
+				if (player.GetModPlayer<WeaponPlayer>().yunlaiTeleport == false)
 				{
 					if (player.statMana >= 80)
 					{
 						player.statMana -= 80;
 						player.manaRegenDelay = 220;
-						player.GetModPlayer<StarsAbovePlayer>().yunlaiTeleport = true;
+						player.GetModPlayer<WeaponPlayer>().yunlaiTeleport = true;
 						SoundEngine.PlaySound(StarsAboveAudio.SFX_TeleportPrep, player.Center);
 						Vector2 teleportPosition = Main.MouseWorld;
 						
@@ -96,7 +96,7 @@ namespace StarsAbove.Items
 								NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, (float)player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
 
 							}
-						player.GetModPlayer<StarsAbovePlayer>().yunlaiTeleport = false;
+						player.GetModPlayer<WeaponPlayer>().yunlaiTeleport = false;
 						powerSwingReady = true;
 						
 					}
@@ -145,7 +145,7 @@ namespace StarsAbove.Items
 				
 			}
 
-			if(player.GetModPlayer<StarsAbovePlayer>().yunlaiTeleport)
+			if(player.GetModPlayer<WeaponPlayer>().yunlaiTeleport)
 			{
 				
 				for (int i = 0; i < 50; i++)

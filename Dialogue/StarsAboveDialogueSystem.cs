@@ -2882,34 +2882,103 @@ namespace StarsAbove
                 {
                     if (dialoguePrep == true)
                     {
-                        dialogueLeft = 1;
+                        dialogueLeft = 4;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("MnemonicTrace4").Type);
                         dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 4)
+                    {
+                        expression = 1;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Dioskouroi.Asphodene.1", Player.name); //So that was the Burnished King. His blade was incredibly powerful, not to mention the magic at his disposal. It was a triumph you survived that.
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 3)
+                    {
+
+
+
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Dioskouroi.Asphodene.2", Player.name); //From what Perseus told me, it looks like the Burnished King was defeated by the First Starbearer. 
+
+
+
+                    }
+                    if (dialogueLeft == 2)
+                    {
+
+
+
+                        expression = 4;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Dioskouroi.Asphodene.3", Player.name); //As for why he told US to fight, I don't know. However.. I found this shard of power after the battle. I'll let you hold on to it. Anyways..
+
+
+
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 1;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Vagrant", Player.name); //I see... Please, excuse my test. I know it was crude, but it's the only way I know how to judge someone. 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //test
-                        //	" ";
+
+
+
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Dioskouroi.Asphodene.4", Player.name); //I think we can reuse his attacks as a weapon in our arsenal, as a new Stellar Nova. Maybe because of the Starbearer's influence?
+
+
+
                     }
-                    
+
 
                 }
                 if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
                 {
                     if (dialoguePrep == true)
                     {
-                        dialogueLeft = 1;
+                        dialogueLeft = 4;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("MnemonicTrace4").Type);
                         dialoguePrep = false;
                     }
-                    if (dialogueLeft == 1)
+                    if (dialogueLeft == 4)
                     {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //test //I see... Please, excuse my test. I know it was crude, but it's the only way I know how to judge someone. 
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Dioskouroi.Eridani.1", Player.name); //The Burnished King has fallen. What a powerful foe. I shudder to think how we would have fared had we fought him in his prime.
 
                         //	" ";
                     }
-                    
+                    if (dialogueLeft == 3)
+                    {
+
+
+
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Dioskouroi.Eridani.2", Player.name); //From what Perseus told me, The Burnished King was laid low by the First Starbearer ages ago. 
+
+
+
+                    }
+                    if (dialogueLeft == 2)
+                    {
+
+
+
+                        expression = 1;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Dioskouroi.Eridani.3", Player.name); //As for why he told us to fight him, I don't know. However.. I found this shard after the battle. I'll let you hold on to it. Anyways..
+
+
+
+                    }
+                    if (dialogueLeft == 1)
+                    {
+
+
+
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Dioskouroi.Eridani.4", Player.name); //His weapon, Ars Laevateinn. We can use it for ourselves, as a Stellar Nova. Maybe because of the Starbearer's influence?
+
+
+                        //	" ";
+                    }
+
                 }
             }//Vagrant 19 Unused
             if (chosenDialogue == 70) // Boss dialogue - Nalhaun
@@ -3144,7 +3213,7 @@ namespace StarsAbove
                 {
                     if (dialoguePrep == true)
                     {
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("MnemonicTrace4").Type);
+                        //Player.QuickSpawnItem(null, Mod.Find<ModItem>("MnemonicTrace4").Type);
                         dialogueLeft = 3;
                         dialoguePrep = false;
                     }
@@ -7595,6 +7664,508 @@ namespace StarsAbove
 
 
             }//Umbra
+            if (chosenDialogue == 162)
+            {
+                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfPiracy").Type);
+                        dialoguePrep = false;
+                    }
+
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.81", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+
+                }
+                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfPiracy").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.84", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+
+
+            }//Saltwater Scourge
+            if (chosenDialogue == 163)
+            {
+                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfAbsoluteChaos").Type);
+                        dialoguePrep = false;
+                    }
+
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.82", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+
+                }
+                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfAbsoluteChaos").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.85", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+
+
+            }//
+            if (chosenDialogue == 164)
+            {
+                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 2;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheWatch").Type);
+                        dialoguePrep = false;
+                    }
+
+
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.83", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 4;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.84", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheWatch").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.86", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+
+
+            }//Chronoclock
+           if (chosenDialogue == 165)
+            {
+                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheBehemothTyphoon").Type);
+                        dialoguePrep = false;
+                    }
+
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.85", Player.name);
+
+
+                        //	" ";
+                    }
+                    
+
+
+                }
+                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheBehemothTyphoon").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.87", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+
+
+            }//Nanomachina Reactor
+            if (chosenDialogue == 166)
+            {
+                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfLightning").Type);
+                        dialoguePrep = false;
+                    }
+
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.86", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+
+                }
+                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfLightning").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.88", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+
+
+            }//Boltstorm Axe
+           if (chosenDialogue == 167)
+            {
+                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfNanomachines").Type);
+                        dialoguePrep = false;
+                    }
+
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.87", Player.name);
+
+
+                        //	" ";
+                    }
+                    
+
+
+                }
+                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfNanomachines").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.89", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+
+
+            }//Nanomachina Reactor
+            if (chosenDialogue == 168)
+            {
+                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 2;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfDespair").Type);
+                        dialoguePrep = false;
+                    }
+
+
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.88", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 3;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.89", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfDespair").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.90", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+
+
+            }//Sanguine Despair
+            if (chosenDialogue == 169)
+            {
+                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSurya").Type);
+                        dialoguePrep = false;
+                    }
+
+
+                   
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.90", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSurya").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.91", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+
+
+            }//Sunset of the Sun God
+            if (chosenDialogue == 170)
+            {
+                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfMania").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 3;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.91", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfMania").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.92", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+
+
+            }
+            if (chosenDialogue == 171)
+            {
+                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfAuthority").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 3;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.92", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfAuthority").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.93", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+
+
+            }
             #endregion
             //Boss item dialogues.
             if (chosenDialogue == 301) //Nalhaun item
@@ -7751,10 +8322,259 @@ namespace StarsAbove
             if (chosenDialogue == 304) //Warrior item
             {
 
+                
+
+                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 12;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("ProgenitorWish").Type);
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 12)
+                    {
+                        expression = 4;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.1", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 11)
+                    {
+                        expression = 12;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.2", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 10)
+                    {
+                        expression = 2;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.3", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 9)
+                    {
+                        expression = 12;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.4", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 8)
+                    {
+                        expression = 2;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.5", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 7)
+                    {
+                        expression = 12;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.6", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 6)
+                    {
+                        expression = 1;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.7", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 5)
+                    {
+                        expression = 12;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.8", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 4)
+                    {
+                        expression = 12;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.9", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 3)
+                    {
+                        expression = 12;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.10", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 12;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.11", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 5;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.12", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 12;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("ProgenitorWish").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 12)
+                    {
+                        expression = 4;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.1", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 11)
+                    {
+                        expression = 12;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.2", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 10)
+                    {
+                        expression = 2;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.3", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 9)
+                    {
+                        expression = 12;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.4", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 8)
+                    {
+                        expression = 2;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.5", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 7)
+                    {
+                        expression = 12;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.6", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 6)
+                    {
+                        expression = 1;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.7", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 5)
+                    {
+                        expression = 12;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.8", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 4)
+                    {
+                        expression = 12;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.9", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 3)
+                    {
+                        expression = 12;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.10", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 12;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.11", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 5;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.12", Player.name);
+
+
+                        //	" ";
+                    }
+
+                }
+                
+
+
+
+
+            }//Warrior item
+            if (chosenDialogue == 305) //Dioskouroi Item
+            {
+
                 if (dialoguePrep == true)                                     // |
                 {
                     dialogueLeft = 4;
-                    Player.QuickSpawnItem(null, Mod.Find<ModItem>("ProgenitorWish").Type);
+                    Player.QuickSpawnItem(null, Mod.Find<ModItem>("TwincruxPendant").Type);
                     dialoguePrep = false;
                 }
 
@@ -7763,7 +8583,7 @@ namespace StarsAbove
                 {
                     expression = 12;
 
-                    dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.Warrior.1", Player.name); //{0}, you can tell as well as I that the situation has turned dire.  
+                    dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.Dioskouroi.1", Player.name); //{0}, you can tell as well as I that the situation has turned dire.  
 
 
 
@@ -7773,14 +8593,14 @@ namespace StarsAbove
                 {
                     expression = 12;
 
-                    dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.Warrior.2", Player.name); //The First Starbearer's gaze has been turned to you, and his power has blanketed the world in overwhelming Light. 
+                    dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.Dioskouroi.2", Player.name); //The First Starbearer's gaze has been turned to you, and his power has blanketed the world in overwhelming Light. 
 
                     //	" ";
                 }
                 if (dialogueLeft == 2)
                 {
                     expression = 12;
-                    dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.Warrior.3", Player.name); //I have given you the 'Progenitor's Wish.' It will serve as a way to draw him out. From then on, it will be your strength against his determination.
+                    dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.Dioskouroi.3", Player.name); //I have given you the 'Progenitor's Wish.' It will serve as a way to draw him out. From then on, it will be your strength against his determination.
 
 
                     //	" ";
@@ -7789,29 +8609,15 @@ namespace StarsAbove
                 {
                     expression = 12;
 
-                    dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.Warrior.4", Player.name); //Please, you must win this fight. The stakes have never been higher.  
+                    dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.Dioskouroi.4", Player.name); //Please, you must win this fight. The stakes have never been higher.  
 
                     //	" ";
                 }
 
+            }//Dioskouroi item
 
-
-
-
-            }//Warrior item
-
-           
-            dialogue = Wrap(dialogue, 44);
+            dialogue = LangHelper.Wrap(dialogue, 44);
         }
 
-        private static string Wrap(string v, int size)
-        {
-            v = v.TrimStart();
-            if (v.Length <= size) return v;
-            var nextspace = v.LastIndexOf(' ', size);
-            if (-1 == nextspace) nextspace = Math.Min(v.Length, size);
-            return v.Substring(0, nextspace) + ((nextspace >= v.Length) ?
-            "" : "\n" + Wrap(v.Substring(nextspace), size));
-        }
     }
 }

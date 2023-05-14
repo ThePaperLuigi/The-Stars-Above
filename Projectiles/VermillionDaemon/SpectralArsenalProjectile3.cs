@@ -51,7 +51,7 @@ namespace StarsAbove.Projectiles.VermillionDaemon
 			}
 			Projectile.timeLeft = 10;
 			Player player = Main.player[Projectile.owner];
-			if (player.GetModPlayer<StarsAbovePlayer>().SpectralArsenal > 0)
+			if (player.GetModPlayer<WeaponPlayer>().SpectralArsenal > 0)
 			{
 				Projectile.alpha -= 10;
 				if (Projectile.alpha < 105)
@@ -59,7 +59,7 @@ namespace StarsAbove.Projectiles.VermillionDaemon
 					Projectile.alpha = 105;
 				}
 			}
-			if (player.dead && !player.active || player.GetModPlayer<StarsAbovePlayer>().SpectralArsenal <= 0)
+			if (player.dead && !player.active || player.GetModPlayer<WeaponPlayer>().SpectralArsenal <= 0)
 			{
 				Projectile.alpha += 30;
 			}
@@ -80,7 +80,7 @@ namespace StarsAbove.Projectiles.VermillionDaemon
 			//The rotation is set here
 
 
-			Projectile.rotation = MathHelper.ToRadians(player.GetModPlayer<StarsAbovePlayer>().DaemonGlobalRotation) + MathHelper.ToRadians(60);
+			Projectile.rotation = MathHelper.ToRadians(player.GetModPlayer<WeaponPlayer>().DaemonGlobalRotation) + MathHelper.ToRadians(60);
 
 
 

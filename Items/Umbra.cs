@@ -38,7 +38,7 @@ namespace StarsAbove.Items
 		public override void SetDefaults()
 		{
 			
-			Item.damage = 144;           //The damage of your weapon
+			Item.damage = 119;           //The damage of your weapon
 			Item.DamageType = DamageClass.Melee;         //Is your weapon a melee weapon?
 			Item.width = 108;            //Weapon's texture's width
 			Item.height = 108;           //Weapon's texture's height
@@ -78,7 +78,7 @@ namespace StarsAbove.Items
 			Vector2 arrowVelocity = direction * 26f;
 			
 
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 
 			if (player.altFunctionUse == 2)
 			{
@@ -193,6 +193,16 @@ namespace StarsAbove.Items
 				.AddIngredient(ItemID.SoulofFlight, 30)
 				.AddIngredient(ItemID.LargeAmethyst, 1)
 				.AddIngredient(ItemID.GoldWatch, 1)
+				.AddTile(TileID.Anvils)
+				.Register();
+
+			CreateRecipe(1)
+				.AddIngredient(ItemType<EssenceOfTheTimeless>(), 1)
+				.AddIngredient(ItemID.Cardinal, 1)
+				.AddIngredient(ItemID.HallowedBar, 15)
+				.AddIngredient(ItemID.SoulofFlight, 30)
+				.AddIngredient(ItemID.LargeAmethyst, 1)
+				.AddIngredient(ItemID.PlatinumWatch, 1)
 				.AddTile(TileID.Anvils)
 				.Register();
 		}

@@ -27,8 +27,8 @@ namespace StarsAbove.Projectiles
 			Projectile.scale = 1f;
 			Projectile.penetrate = -1;           //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
 			Projectile.timeLeft = 190;          //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
-			Projectile.alpha = 250;             //The transparency of the projectile, 255 for completely transparent. (aiStyle 1 quickly fades the projectile in) Make sure to delete this if you aren't using an aiStyle that fades in. You'll wonder why your projectile is invisible.
-			Projectile.light = 0.5f;            //How much light emit around the projectile
+			Projectile.alpha = 0;             //The transparency of the projectile, 255 for completely transparent. (aiStyle 1 quickly fades the projectile in) Make sure to delete this if you aren't using an aiStyle that fades in. You'll wonder why your projectile is invisible.
+			Projectile.light = 1f;            //How much light emit around the projectile
 			Projectile.hide = true;
 
 			Projectile.ignoreWater = true;          //Does the projectile's speed be influenced by water?
@@ -57,7 +57,7 @@ namespace StarsAbove.Projectiles
 
 
 
-			Projectile.alpha -= 5;
+			
 			if (!NPC.AnyNPCs(NPCType<NPCs.WarriorOfLight>()))
 			{
 

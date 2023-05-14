@@ -15,7 +15,7 @@ namespace StarsAbove.Buffs
 		}
 
 		public override void Update(Player player, ref int buffIndex) {
-			player.GetModPlayer<StarsAbovePlayer>().Ghost = true;
+			player.GetModPlayer<WeaponPlayer>().Ghost = true;
 			player.buffTime[buffIndex] = 18000;
 			bool petProjectileNotSpawned = player.ownedProjectileCounts[ProjectileType<Projectiles.Pets.Ghost>()] <= 0;
 			if (petProjectileNotSpawned && player.whoAmI == Main.myPlayer) {

@@ -54,11 +54,7 @@ namespace StarsAbove.Projectiles.Tsukiyomi
 		{
 
 			Projectile.alpha-= 5;
-			if (!NPC.AnyNPCs(NPCType<NPCs.Tsukiyomi2>()))
-			{
-
-				Projectile.Kill();
-			}
+			
 			Projectile.timeLeft = 10;
 
 			float rotationsPerSecond = rotationSpeed;

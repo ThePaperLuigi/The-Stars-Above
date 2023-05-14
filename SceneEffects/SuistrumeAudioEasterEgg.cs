@@ -10,7 +10,7 @@ namespace StarsAbove.SceneEffects
         public static SceneEffectPriority setPriority = SceneEffectPriority.BossMedium;
         public override bool IsSceneEffectActive(Player player)
         {
-            if (player.GetModPlayer<StarsAbovePlayer>().stellarPerformanceActive && player.HasBuff(BuffType<SuiseiPetBuff>()))
+            if (player.GetModPlayer<WeaponPlayer>().stellarPerformanceActive && player.HasBuff(BuffType<SuiseiPetBuff>()))
             {
                 return true;
             }

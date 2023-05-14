@@ -12,11 +12,12 @@ namespace StarsAbove.SceneEffects
         {
             if (DownedBossSystem.downedWarrior)
             {
-                SkyManager.Instance.Deactivate("StarsAbove:EverlastingLight");
-                return false;
+                //SkyManager.Instance.Deactivate("StarsAbove:EverlastingLight");
+                //return false;
             }
-            if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior && (SubworldSystem.Current == null))
+            if (EverlastingLightEvent.isEverlastingLightActive && (SubworldSystem.Current == null))
             {
+                SkyManager.Instance.Activate("StarsAbove:EverlastingLight");
                 return true;
             }
             
@@ -27,7 +28,7 @@ namespace StarsAbove.SceneEffects
         {
             if (isActive)
             {
-                SkyManager.Instance.Activate("StarsAbove:EverlastingLight");
+                
 
                 Main.time = 18000;
                 Main.dayTime = true;

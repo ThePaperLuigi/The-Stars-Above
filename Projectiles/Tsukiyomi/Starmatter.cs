@@ -32,7 +32,14 @@ namespace StarsAbove.Projectiles.Tsukiyomi
 
 		}
 		bool finished;
-		
+		public override void ModifyDamageHitbox(ref Rectangle hitbox)
+		{
+			hitbox.Width /= 2;
+			hitbox.Height /= 2;
+
+
+			base.ModifyDamageHitbox(ref hitbox);
+		}
 		// In here the AI uses this example, to make the code more organized and readable
 		// Also showcased in ExampleJavelinProjectile.cs
 		public float movementFactor // Change this value to alter how fast the spear moves

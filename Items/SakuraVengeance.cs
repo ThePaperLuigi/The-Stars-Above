@@ -42,7 +42,7 @@ namespace StarsAbove.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 260;
+			Item.damage = 220;
 			Item.DamageType = DamageClass.Melee;          //Is your weapon a melee weapon?
 			Item.width = 130;            //Weapon's texture's width
 			Item.height = 130;           //Weapon's texture's height
@@ -76,7 +76,7 @@ namespace StarsAbove.Items
             {
 				return false;
             }
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			Vector2 skyDirection = Vector2.Normalize(Main.MouseWorld - new Vector2(player.Center.X, player.Center.Y - 600));
 			Vector2 meteorVelocity = skyDirection * 25f;
 			if (player.altFunctionUse == 2 && !player.HasBuff(BuffType<ElementalChaos>()))
@@ -84,7 +84,7 @@ namespace StarsAbove.Items
 				if(modPlayer.VengeanceGauge >= 100)
                 {
 					player.AddBuff(BuffType<ElementalChaos>(), 840);
-					modPlayer.screenShakeTimerGlobal = -90;
+					player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
 					modPlayer.VengeanceGauge = 0;
 					for (int d = 0; d < 18; d++)
 					{
@@ -134,7 +134,7 @@ namespace StarsAbove.Items
 		}
 		public override bool? UseItem(Player player)
 		{
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			Vector2 skyDirection = Vector2.Normalize(Main.MouseWorld - new Vector2(player.Center.X, player.Center.Y - 600));
 			Vector2 meteorVelocity = skyDirection * 25f;
 			if (currentSwing == 0)
@@ -303,7 +303,7 @@ namespace StarsAbove.Items
 		}
 		public override void HoldItem(Player player)
 		{
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 
 			modPlayer.SakuraVengeanceHeld = true;
 

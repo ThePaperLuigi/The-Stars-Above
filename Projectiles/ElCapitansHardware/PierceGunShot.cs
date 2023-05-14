@@ -51,18 +51,18 @@ namespace StarsAbove.Projectiles.ElCapitansHardware
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
 			Player projOwner = Main.player[Projectile.owner];
-			projOwner.GetModPlayer<StarsAbovePlayer>().renegadeGauge++;
+			projOwner.GetModPlayer<WeaponPlayer>().renegadeGauge++;
 			if(crit)
             {
-				projOwner.GetModPlayer<StarsAbovePlayer>().renegadeGauge++;
+				projOwner.GetModPlayer<WeaponPlayer>().renegadeGauge++;
 			}
 			if(target.boss)
             {
-				projOwner.GetModPlayer<StarsAbovePlayer>().renegadeGauge += 2;
+				projOwner.GetModPlayer<WeaponPlayer>().renegadeGauge += 2;
 			}
-			if(projOwner.GetModPlayer<StarsAbovePlayer>().renegadeGauge++ > 100)
+			if(projOwner.GetModPlayer<WeaponPlayer>().renegadeGauge++ > 100)
             {
-				projOwner.GetModPlayer<StarsAbovePlayer>().renegadeGauge = 100;
+				projOwner.GetModPlayer<WeaponPlayer>().renegadeGauge = 100;
 			}
 
 			base.OnHitNPC(target, damage, knockback, crit);

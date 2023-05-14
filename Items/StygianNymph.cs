@@ -35,7 +35,7 @@ namespace StarsAbove.Items
 
         public override void SetDefaults()
         {
-            Item.damage = 216;
+            Item.damage = 167;
             Item.DamageType = DamageClass.Magic;
             Item.width = 65;
             Item.height = 70;
@@ -76,7 +76,7 @@ namespace StarsAbove.Items
             {
                 return false;
             }
-            //if (player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1) // Asphodene
+            //if (player.GetModPlayer<WeaponPlayer>().chosenStarfarer == 1) // Asphodene
             //{
             //    if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("The weapon fails to react to your Aspect, rendering it unusable."), 241, 255, 180);}
             //    return false;
@@ -93,7 +93,7 @@ namespace StarsAbove.Items
             */
             if(player.altFunctionUse == 2)
             {
-                if (player.GetModPlayer<StarsAbovePlayer>().duality >= 50 && !player.HasBuff(BuffType<Buffs.FlashOfEternityCooldown>()))
+                if (player.GetModPlayer<WeaponPlayer>().duality >= 50 && !player.HasBuff(BuffType<Buffs.FlashOfEternityCooldown>()))
                 {
                     Vector2 mousePosition2 = player.DirectionTo(player.GetModPlayer<StarsAbovePlayer>().playerMousePos) * Main.rand.Next(20, 22);
                     Vector2 leap = Vector2.Normalize(mousePosition2) * 15f;
@@ -114,7 +114,7 @@ namespace StarsAbove.Items
         {
             if (player.whoAmI == Main.myPlayer)
             {
-                if(player.GetModPlayer<StarsAbovePlayer>().duality < 50)
+                if(player.GetModPlayer<WeaponPlayer>().duality < 50)
                 {
                     player.AddBuff(BuffType<Buffs.ClawsOfNyx>(), 2);
                 }
@@ -139,19 +139,19 @@ namespace StarsAbove.Items
                     Item.useTime = 2;
                     Item.useAnimation = 2;
 
-                    player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = true;
+                    player.GetModPlayer<WeaponPlayer>().bowChargeActive = true;
                     
-                    player.GetModPlayer<StarsAbovePlayer>().bowCharge += 6;
+                    player.GetModPlayer<WeaponPlayer>().bowCharge += 6;
 
                     
 
 
-                    if (player.GetModPlayer<StarsAbovePlayer>().bowCharge == 1)
+                    if (player.GetModPlayer<WeaponPlayer>().bowCharge == 1)
                     {
 
                         //Main.PlaySound(SoundLoader.customSoundType, (int)player.Center.X, (int)player.Center.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/bowstring"), 0.5f);
                     }
-                    if (player.GetModPlayer<StarsAbovePlayer>().bowCharge == 99)
+                    if (player.GetModPlayer<WeaponPlayer>().bowCharge == 99)
                     {
 
                         for (int d = 0; d < 88; d++)
@@ -160,15 +160,15 @@ namespace StarsAbove.Items
                         }
                         //Main.PlaySound(SoundID.Item52, player.position);
                     }
-                    if (player.GetModPlayer<StarsAbovePlayer>().bowCharge < 100)
+                    if (player.GetModPlayer<WeaponPlayer>().bowCharge < 100)
                     {
 
                         for (int i = 0; i < 30; i++)
                         {//Circle
                             Vector2 offset = new Vector2();
                             double angle = Main.rand.NextDouble() * 2d * Math.PI;
-                            offset.X += (float)(Math.Sin(angle) * (100 - player.GetModPlayer<StarsAbovePlayer>().bowCharge));
-                            offset.Y += (float)(Math.Cos(angle) * (100 - player.GetModPlayer<StarsAbovePlayer>().bowCharge));
+                            offset.X += (float)(Math.Sin(angle) * (100 - player.GetModPlayer<WeaponPlayer>().bowCharge));
+                            offset.Y += (float)(Math.Cos(angle) * (100 - player.GetModPlayer<WeaponPlayer>().bowCharge));
 
                             Dust d2 = Dust.NewDustPerfect(player.MountedCenter + offset, 20, player.velocity, 200, default(Color), 0.5f);
                             d2.fadeIn = 0.1f;
@@ -197,12 +197,12 @@ namespace StarsAbove.Items
                     Item.useTime = 30;
                     Item.useAnimation = 30;
 
-                    if (player.GetModPlayer<StarsAbovePlayer>().bowCharge >= 100)//Fully Charged Normal attack
+                    if (player.GetModPlayer<WeaponPlayer>().bowCharge >= 100)//Fully Charged Normal attack
                     {
 
                         SoundEngine.PlaySound(SoundID.Item1, player.position);
-                        player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-                        player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
+                        player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+                        player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
                         //Vector2 mousePosition2 = player.DirectionTo(player.GetModPlayer<StarsAbovePlayer>().playerMousePos) * Main.rand.Next(20, 22);
                         //Vector2 leap = Vector2.Normalize(mousePosition2) * 15f;
                         //player.velocity = leap;
@@ -210,22 +210,22 @@ namespace StarsAbove.Items
                         
                         Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity3.X, arrowVelocity2.Y, ProjectileType<StygianSwing3>(), player.GetWeaponDamage(Item)/6, 3, player.whoAmI, 0f);
                         Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity3.X, arrowVelocity2.Y, ProjectileType<StygianSwing4>(), 0, 3, player.whoAmI, 0f);
-                        player.GetModPlayer<StarsAbovePlayer>().duality -= 10;
+                        player.GetModPlayer<WeaponPlayer>().duality -= 10;
 
                     }
                     else
                     {
-                        if (player.GetModPlayer<StarsAbovePlayer>().bowCharge > 0)//Not Fully Charged normal
+                        if (player.GetModPlayer<WeaponPlayer>().bowCharge > 0)//Not Fully Charged normal
                         {//
                             SoundEngine.PlaySound(SoundID.Item1, player.position);
 
-                            player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-                            player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
+                            player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+                            player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
 
                             
                             Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity3.X, arrowVelocity3.Y, ProjectileType<StygianSwing2>(), 0, 3, player.whoAmI, 0f);
                             Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity3.X, arrowVelocity3.Y, ProjectileType<StygianSwing1>(), player.GetWeaponDamage(Item), 3, player.whoAmI, 0f);
-                            player.GetModPlayer<StarsAbovePlayer>().duality += 10;
+                            player.GetModPlayer<WeaponPlayer>().duality += 10;
 
 
                         }
@@ -234,7 +234,7 @@ namespace StarsAbove.Items
                 }
 
 
-                //item.shootSpeed = 8f + (int)Math.Round(player.GetModPlayer<StarsAbovePlayer>().bowCharge / 10);
+                //item.shootSpeed = 8f + (int)Math.Round(player.GetModPlayer<WeaponPlayer>().bowCharge / 10);
             }
         }
 

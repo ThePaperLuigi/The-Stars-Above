@@ -65,7 +65,7 @@ namespace StarsAbove.Items
         public override void HoldItem(Player player)
         {
 			player.AddBuff(BuffType<MorningStarHeld>(), 10);
-			StarsAbovePlayer modPlayer = player.GetModPlayer<StarsAbovePlayer>();
+			WeaponPlayer modPlayer = player.GetModPlayer<WeaponPlayer>();
 
 			if (player.whoAmI == Main.myPlayer && StarsAbove.weaponActionKey.JustPressed)
 			{
@@ -88,7 +88,7 @@ namespace StarsAbove.Items
 				
 				
 
-				if (player.GetModPlayer<StarsAbovePlayer>().activeMinions + 3 <= player.maxMinions)
+				if (player.GetModPlayer<WeaponPlayer>().activeMinions + 3 <= player.maxMinions)
 				{
 					player.AddBuff(BuffType<Buffs.MorningStar.AlucardSwordBuff3>(), 2);
 
@@ -97,7 +97,7 @@ namespace StarsAbove.Items
 					Main.projectile[index].originalDamage = player.GetWeaponDamage(player.HeldItem);
 
 				}
-				if (player.GetModPlayer<StarsAbovePlayer>().activeMinions + 2 == player.maxMinions)
+				if (player.GetModPlayer<WeaponPlayer>().activeMinions + 2 == player.maxMinions)
 				{
 					//if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue($"Tried 2"), 250, 100, 247);}
 
@@ -107,7 +107,7 @@ namespace StarsAbove.Items
 					Main.projectile[index1].originalDamage = player.GetWeaponDamage(player.HeldItem);
 
 				}
-				if (player.GetModPlayer<StarsAbovePlayer>().activeMinions + 1 == player.maxMinions)
+				if (player.GetModPlayer<WeaponPlayer>().activeMinions + 1 == player.maxMinions)
 				{
 					//if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue($"Tried 1"), 250, 100, 247);}
 
@@ -126,7 +126,7 @@ namespace StarsAbove.Items
 		{
 			if (player.altFunctionUse == 2)
 			{
-				if (!player.HasBuff(BuffType<ArcaneArtCooldown>()))
+				if (!player.HasBuff(BuffType<ArcaneArtCooldown>()) && player.statMana >= 20)
 				{
 					player.statMana -= 20;
 					player.manaRegenDelay = 480;

@@ -58,7 +58,7 @@ namespace StarsAbove.Projectiles.KazimierzSeraphim
             }
 			//projectile.timeLeft = 10;
 			
-			//if (player.dead && !player.active || player.GetModPlayer<StarsAbovePlayer>().kroniicHeld < 0)
+			//if (player.dead && !player.active || player.GetModPlayer<WeaponPlayer>().kroniicHeld < 0)
 			if (player.dead && !player.active)
 			{
 				Projectile.Kill();
@@ -122,8 +122,8 @@ namespace StarsAbove.Projectiles.KazimierzSeraphim
 
 			}
 			Player player = Main.player[Projectile.owner];
-			player.GetModPlayer<StarsAbovePlayer>().radiance++;
-			if (player.GetModPlayer<StarsAbovePlayer>().radiance >= 5)
+			player.GetModPlayer<WeaponPlayer>().radiance++;
+			if (player.GetModPlayer<WeaponPlayer>().radiance >= 5)
 			{
 				Dust dust;
 				for (int d = 0; d < 40; d++)

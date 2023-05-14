@@ -45,7 +45,7 @@ namespace StarsAbove.Items
 
         public void WhipDefaults(int projectileId, int dmg, float kb, float shootspeed, bool reuse = true, int animationTotalTime = 30)
         {
-            Item.damage = 69;
+            Item.damage = 44;
             //If the Whip is going to be Reusable
             Item.autoReuse = reuse;
             //The Whip name color

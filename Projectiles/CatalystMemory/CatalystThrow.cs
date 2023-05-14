@@ -78,7 +78,7 @@ namespace StarsAbove.Projectiles.CatalystMemory
 			Projectile.position += Projectile.velocity * movementFactor;
 			// When we reach the end of the animation, we can kill the spear projectile
 			
-			float distance = Vector2.Distance(projOwner.GetModPlayer<StarsAbovePlayer>().CatalystPrismicPosition, Projectile.Center);
+			float distance = Vector2.Distance(projOwner.GetModPlayer<WeaponPlayer>().CatalystPrismicPosition, Projectile.Center);
 			
 			if (distance < 30f)
 			{

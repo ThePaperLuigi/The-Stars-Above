@@ -75,7 +75,7 @@ namespace StarsAbove.UI.Hawkmoon
 			area.Left.Set(Main.mouseX - 25, 0f); // Place the resource bar to the left of the hearts.
 			area.Top.Set(Main.mouseY, 0f); // Placing it just a bit below the top of the screen.
 			Recalculate();
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			// Calculate quotient
 			float quotient = (float)modPlayer.powderGauge / 100; // Creating a quotient that represents the difference of your currentResource vs your maximumResource, resulting in a float of 0-1f.
 			quotient = Utils.Clamp(quotient, 0f, 1f); // Clamping it to 0-1f so it doesn't go over that.
@@ -105,7 +105,7 @@ namespace StarsAbove.UI.Hawkmoon
 			if (!(Main.LocalPlayer.HeldItem.ModItem is HawkmoonRanged || Main.LocalPlayer.HeldItem.ModItem is HawkmoonMagic))
 				return;
 
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			// Setting the text per tick to update and show our resource values.
 			//text.SetText($"");
 

@@ -59,6 +59,7 @@ namespace StarsAbove
 			ModContent.ItemType<KeyOfTheKingsLaw>(),
 			ModContent.ItemType<HunterSymphony>(),
 			ModContent.ItemType<KevesiFarewell>(),
+			ModContent.ItemType<PodZero42>(),
 
 
 			//ModContent.ItemType<EssenceOf>(),
@@ -84,6 +85,8 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfTheUnyieldingEarth>(),
 			ModContent.ItemType<EssenceOfTheHunt>(),
 			ModContent.ItemType<EssenceOfFarewells>(),
+			ModContent.ItemType<EssenceOfTheAutomaton>(),
+
 		};
 		public List<int> UmbralWeapons = new List<int>() {
 			ModContent.ItemType<KonpakuKatana>(),
@@ -157,7 +160,6 @@ namespace StarsAbove
 			ModContent.ItemType<Ozma>(),
 			ModContent.ItemType<ClaimhSolais>(),
 			ModContent.ItemType<MorningStar>(),
-			ModContent.ItemType<Manifestation>(),
 
 			ModContent.ItemType<EternalStar>(),
 			ModContent.ItemType<VermillionDaemon>(),
@@ -178,9 +180,22 @@ namespace StarsAbove
 			ModContent.ItemType<BlackSilenceWeapon>(),
 			ModContent.ItemType<SoulReaver>(),
 			ModContent.ItemType<GoldenKatana>(),
+			ModContent.ItemType<Manifestation>(),
 
+			//Stars Above v1.3
 			ModContent.ItemType<Umbra>(),
+			ModContent.ItemType<SaltwaterScourge>(),
+			ModContent.ItemType<AdornmentOfTheChaoticGod>(),
+			ModContent.ItemType<Chronoclock>(),
+			ModContent.ItemType<KissOfDeath>(),
 
+			//Stars Above v1.4
+			ModContent.ItemType<Nanomachina>(),
+			ModContent.ItemType<LevinstormAxe>(),
+			ModContent.ItemType<SanguineDespair>(),
+			ModContent.ItemType<SunsetOfTheSunGod>(),
+			ModContent.ItemType<ManiacalJustice>(),
+			ModContent.ItemType<SupremeAuthority>(),
 
 			ModContent.ItemType<EssenceOfAdagium>(),
 			ModContent.ItemType<EssenceOfBloodshed>(),
@@ -221,7 +236,16 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfGold>(),
 			ModContent.ItemType<EssenceOfMimicry>(),
 			ModContent.ItemType<EssenceOfTheTimeless>(),
-
+			ModContent.ItemType<EssenceOfPiracy>(),
+			ModContent.ItemType<EssenceOfAbsoluteChaos>(),
+			ModContent.ItemType<EssenceOfTheWatch>(),
+			ModContent.ItemType<EssenceOfTheBehemothTyphoon>(),
+			ModContent.ItemType<EssenceOfLightning>(),
+			ModContent.ItemType<EssenceOfNanomachines>(),
+			ModContent.ItemType<EssenceOfDespair>(),
+			ModContent.ItemType<EssenceOfMania>(),
+			ModContent.ItemType<EssenceOfSurya>(),
+			ModContent.ItemType<EssenceOfAuthority>(),
 
 		};
 
@@ -308,8 +332,8 @@ namespace StarsAbove
 
 			ModContent.ItemType<TotemOfLightEmpowered>(),
 			ModContent.ItemType<BlackSilenceWeapon>(),
-			//ModContent.ItemType<VirtuesEdge>(),
-
+			ModContent.ItemType<AdornmentOfTheChaoticGod>(),
+			ModContent.ItemType<Chronoclock>(),
 
 		};
 		public List<int> Essences = new List<int>() {
@@ -399,6 +423,17 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfTheAutomaton>(),
 			ModContent.ItemType<EssenceOfNature>(),
 			ModContent.ItemType<EssenceOfTheTimeless>(),
+			ModContent.ItemType<EssenceOfPiracy>(),
+			ModContent.ItemType<EssenceOfAbsoluteChaos>(),
+			ModContent.ItemType<EssenceOfTheWatch>(),
+			ModContent.ItemType<EssenceOfDespair>(),
+			ModContent.ItemType<EssenceOfTheBehemothTyphoon>(),
+			ModContent.ItemType<EssenceOfLightning>(),
+			ModContent.ItemType<EssenceOfNanomachines>(),
+			ModContent.ItemType<EssenceOfMania>(),
+			ModContent.ItemType<EssenceOfSurya>(),
+
+
 
 		};
 		public static bool disableAspectPenalty;
@@ -677,7 +712,7 @@ namespace StarsAbove
 			{
 				if(!disableCalamityWeaponBuffs && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
                 {
-					damage += 0.2f;
+					damage += 0.3f;
 
 				}
 				
@@ -855,6 +890,18 @@ namespace StarsAbove
 				{
 					damage += 0.1f;
 				}
+				if (item.ModItem is SunsetOfTheSunGod && !disableAspectPenalty)
+				{
+					damage += 0.1f;
+				}
+			}
+			if (player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
+			{
+				if (item.ModItem is LevinstormAxe && !disableAspectPenalty) //Ranged weapons
+				{
+					damage += 0.1f;
+				}
+
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
 			{
@@ -864,7 +911,7 @@ namespace StarsAbove
 				}
 
 			}
-			if (player.GetModPlayer<StarsAbovePlayer>().PerfectlyGenericAccessory && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove") && item.damage > 0)
+			if (player.GetModPlayer<WeaponPlayer>().PerfectlyGenericAccessory && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove") && item.damage > 0)
 			{
 				damage += 0.08f;
 			}

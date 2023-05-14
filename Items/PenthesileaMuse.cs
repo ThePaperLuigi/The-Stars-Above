@@ -44,7 +44,7 @@ namespace StarsAbove.Items
 			}
 			else
 			{
-				Item.damage = 255;
+				Item.damage = 211;
 			}
 			
 			//The damage of your weapon
@@ -85,7 +85,7 @@ namespace StarsAbove.Items
 			Vector2 arrowVelocity2 = direction * launchSpeed2;
 			Vector2 arrowVelocity3 = direction * launchSpeed3;
 
-			var modPlayer = player.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = player.GetModPlayer<WeaponPlayer>();
 			if (player.altFunctionUse == 2)
 			{
 				if (modPlayer.paintVisible)
@@ -141,7 +141,7 @@ namespace StarsAbove.Items
 			Vector2 arrowVelocity = direction * launchSpeed;
 			Vector2 arrowVelocity2 = direction * launchSpeed2;
 			Vector2 arrowVelocity3 = direction * launchSpeed3;
-			var modPlayer = player.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = player.GetModPlayer<WeaponPlayer>();
 
 			if (modPlayer.chosenColor == 0) //Red
 			{
@@ -187,7 +187,7 @@ namespace StarsAbove.Items
         }
         public override void HoldItem(Player player)
 		{
-			var modPlayer = player.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = player.GetModPlayer<WeaponPlayer>();
 			
 			inkEnemyCooldown--;
 			splatterCooldown--;

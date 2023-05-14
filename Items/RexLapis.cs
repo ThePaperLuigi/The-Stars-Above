@@ -32,7 +32,7 @@ namespace StarsAbove.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 199;           //The damage of your weapon
+			Item.damage = 144;           //The damage of your weapon
 			Item.DamageType = DamageClass.Melee;          //Is your weapon a melee weapon?
 			Item.crit = 30;
 			Item.width = 80;            //Weapon's texture's width
@@ -61,7 +61,7 @@ namespace StarsAbove.Items
 		public override bool CanUseItem(Player player)
 		{
 			
-			if (player.GetModPlayer<StarsAbovePlayer>().comboCooldown > 0)
+			if (player.GetModPlayer<WeaponPlayer>().comboCooldown > 0)
 			{
 				return false;
 			}

@@ -13,13 +13,15 @@ namespace StarsAbove.Items.Consumables
     public class AncientShard : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("The Ancient Shard");
-			Tooltip.SetDefault("This shard howls with power" +
+			DisplayName.SetDefault("The Ancient Crown");
+			Tooltip.SetDefault("This crown howls with power" +
 				"\n[c/F1AF42:Summons Nalhaun, the Burnished King]" +
 				"\nThis boss is available early, but you may find it much too difficult" +
 				"\nPrepare accordingly, and consider postponing this fight until you are stronger" +
 				"\nIs not consumed upon use");
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
+			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+
 		}
 
 		public override void SetDefaults() {
@@ -37,7 +39,7 @@ namespace StarsAbove.Items.Consumables
 		// We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
 		public override bool CanUseItem(Player player) {
 
-			return !NPC.AnyNPCs(NPCType<NPCs.Nalhaun>()) && SubworldSystem.Current == null;
+			return !NPC.AnyNPCs(NPCType<NPCs.Nalhaun.NalhaunBoss>()) && !NPC.AnyNPCs(NPCType<NPCs.Nalhaun.NalhaunBossPhase2>()) && SubworldSystem.Current == null;
 		}
 
 		public override bool? UseItem(Player player) {
@@ -48,9 +50,9 @@ namespace StarsAbove.Items.Consumables
 				// (explicitely excluded serverside here)
 
 
-				int type = ModContent.NPCType<NPCs.Nalhaun>();
+				int type = ModContent.NPCType<NPCs.Nalhaun.NalhaunBoss>();
 
-				if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("A mysterious throne descends from the heavens..."), 210, 100, 175);}
+				//if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("A mysterious throne descends from the heavens..."), 210, 100, 175);}
 				if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("Nalhaun, the Burnished King appears!"), 200, 150, 125);}
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{

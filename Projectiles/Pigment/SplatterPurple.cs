@@ -56,7 +56,8 @@ namespace StarsAbove.Projectiles.Pigment
 
 		public override bool PreDraw(ref Color lightColor) {
 			//Redraw the projectile with the color not influenced by light
-			
+			lightColor = Color.White;
+
 			return true;
 		}
 

@@ -1,5 +1,6 @@
 
 using StarsAbove.Buffs;
+using StarsAbove.NPCs.Tsukiyomi;
 using StarsAbove.Subworlds;
 using SubworldLibrary;
 using Terraria;
@@ -16,6 +17,8 @@ namespace StarsAbove.Items.Consumables
 	{
 		public override void SetStaticDefaults()
 		{
+			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+
 			DisplayName.SetDefault("Mnemonic Sigil");
 			Tooltip.SetDefault("The combined memories of worlds defeated by the First Starfarer" +
 				"\nCan be used to be taken to the [c/7FC1EF:Eternal Confluence]" +
@@ -56,14 +59,14 @@ namespace StarsAbove.Items.Consumables
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
 			//return !NPC.AnyNPCs(NPCType<NPCs.Tsukiyomi>());
 			
-			return (!NPC.AnyNPCs(NPCType<NPCs.Tsukiyomi>()) && !NPC.AnyNPCs(NPCType<NPCs.Tsukiyomi2>()));
+			return (!NPC.AnyNPCs(NPCType<TsukiyomiBoss>()));
 		}
 
 		public override bool? UseItem(Player player)
 		{
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
 			
-			int type = ModContent.NPCType<NPCs.Tsukiyomi>();
+			int type = ModContent.NPCType<TsukiyomiBoss>();
 
 			if (Main.netMode == NetmodeID.MultiplayerClient)
 			{
@@ -71,13 +74,14 @@ namespace StarsAbove.Items.Consumables
 			}
 			else
             {
-				var tilePos = player.Bottom.ToTileCoordinates16();
-				Tile tile = Framing.GetTileSafely(tilePos.X, tilePos.Y);
-				if (tile.TileType == TileID.AmethystGemspark && SubworldSystem.IsActive<EternalConfluence>())
+				//var tilePos = player.Bottom.ToTileCoordinates16();
+				//Tile tile = Framing.GetTileSafely(tilePos.X, tilePos.Y);
+				//tile.TileType == TileID.AmethystGemspark &&
+				if (SubworldSystem.IsActive<EternalConfluence>())
 				{
 
 					if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("The expanse around you begins to contract..."), 210, 100, 175); }
-					if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("Tsukiyomi appears before you!"), 200, 150, 125); }
+					//if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("Tsukiyomi appears before you!"), 200, 150, 125); }
 					if (Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						// If the player is not in multiplayer, spawn directly
@@ -126,6 +130,7 @@ namespace StarsAbove.Items.Consumables
 				.AddIngredient(ItemType<MnemonicTrace>())
 				.AddIngredient(ItemType<MnemonicTrace2>())
 				.AddIngredient(ItemType<MnemonicTrace3>())
+				.AddIngredient(ItemType<MnemonicTrace4>())
 				.AddTile(TileType<Tiles.CelestriadRoot>())
 				.Register();
 		}

@@ -37,7 +37,7 @@ namespace StarsAbove.Items
 		public override void SetDefaults()
 		{
 			
-			Item.damage = 65;           //The damage of your weapon
+			Item.damage = 55;           //The damage of your weapon
 			Item.DamageType = DamageClass.Melee;         //Is your weapon a melee weapon?
 			Item.width = 108;            //Weapon's texture's width
 			Item.height = 108;           //Weapon's texture's height
@@ -77,7 +77,7 @@ namespace StarsAbove.Items
 			Vector2 arrowVelocity = direction * 26f;
 			
 
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 
 			if (player.altFunctionUse == 2)
 			{

@@ -174,36 +174,40 @@ namespace StarsAbove.UI.Starfarers
 			{
 				if (modPlayer.chosenStarfarer == 1)
 				{
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/HA" + modPlayer.promptExpression), hitbox, Color.White * (modPlayer.promptVisibility - 0.3f));
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/HABase"), hitbox, Color.White * (modPlayer.promptVisibility - 0.3f));
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/A" + modPlayer.promptExpression), hitbox, Color.White * (modPlayer.promptVisibility - 0.3f));
 
 				}
 				else
                 {
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/HE" + modPlayer.promptExpression), hitbox, Color.White * (modPlayer.promptVisibility - 0.3f));
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/HEBase"), hitbox, Color.White * (modPlayer.promptVisibility - 0.3f));
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/E" + modPlayer.promptExpression), hitbox, Color.White * (modPlayer.promptVisibility - 0.3f));
 
 				}
-				
+
 			}
 			else
 			{
 				if (modPlayer.chosenStarfarer == 1)
 				{
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/A" + modPlayer.promptExpression), hitbox, Color.White * (modPlayer.promptVisibility - 0.3f));
-					
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/ABase"), hitbox, Color.White * (modPlayer.promptVisibility - 0.3f));
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/A" + modPlayer.promptExpression), hitbox, Color.White * (modPlayer.promptVisibility - 0.3f));
+
 				}
 				else
                 {
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/E" + modPlayer.promptExpression), hitbox, Color.White * (modPlayer.promptVisibility - 0.3f));
-					
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/EBase"), hitbox, Color.White * (modPlayer.promptVisibility - 0.3f));
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/E" + modPlayer.promptExpression), hitbox, Color.White * (modPlayer.promptVisibility - 0.3f));
+
 				}
-				
+
 			}
 
 			if (modPlayer.chosenStarfarer == 1)
 			{
 				if (modPlayer.starfarerOutfitVisible != 0)
 				{
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/AOutfit" + modPlayer.starfarerOutfitVisible), hitbox, Color.White * modPlayer.promptVisibility);
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/AOutfit" + modPlayer.starfarerOutfitVisible), hitbox, Color.White * modPlayer.promptVisibility);
 
 				}
 			}
@@ -211,7 +215,7 @@ namespace StarsAbove.UI.Starfarers
 			{
 				if (modPlayer.starfarerOutfitVisible != 0)
 				{
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/EOutfit" + modPlayer.starfarerOutfitVisible), hitbox, Color.White * modPlayer.promptVisibility);
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/EOutfit" + modPlayer.starfarerOutfitVisible), hitbox, Color.White * modPlayer.promptVisibility);
 
 				}
 			}

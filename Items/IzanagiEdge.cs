@@ -33,7 +33,7 @@ namespace StarsAbove.Items
 		}
 
 		public override void SetDefaults() {
-			Item.damage = 140;
+			Item.damage = 80;
 			Item.DamageType = DamageClass.Ranged;
 			Item.width = 106;
 			Item.height = 40;
@@ -71,9 +71,9 @@ namespace StarsAbove.Items
 			}
 
 			shotCount++;
-			if (player.GetModPlayer<StarsAbovePlayer>().edgeHoned)
+			if (player.GetModPlayer<WeaponPlayer>().edgeHoned)
 			{
-				player.GetModPlayer<StarsAbovePlayer>().edgeHoned = false;
+				player.GetModPlayer<WeaponPlayer>().edgeHoned = false;
 			}
 
 			if (shotCount == 4)
@@ -83,7 +83,7 @@ namespace StarsAbove.Items
 					
 
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_izanagiShootBuff, player.Center);
-					player.GetModPlayer<StarsAbovePlayer>().edgeHoned = true;
+					player.GetModPlayer<WeaponPlayer>().edgeHoned = true;
 					edgeHonedPrep = 0;
 					Item.useTime = 70;
 					Item.useAnimation = 70;
@@ -101,7 +101,7 @@ namespace StarsAbove.Items
 				Item.crit = 100;
 
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_izanagiShoot, player.Center);
-				if (player.GetModPlayer<StarsAbovePlayer>().izanagiPerfect >= 3)
+				if (player.GetModPlayer<WeaponPlayer>().izanagiPerfect >= 3)
 				{
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_izanagiReloadBuff, player.Center);
 					edgeHonedPrep = 1;
@@ -122,7 +122,7 @@ namespace StarsAbove.Items
 				
 				
 				
-				player.GetModPlayer<StarsAbovePlayer>().izanagiPerfect = 0;
+				player.GetModPlayer<WeaponPlayer>().izanagiPerfect = 0;
 
 			}
 			else

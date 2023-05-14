@@ -46,8 +46,8 @@ namespace StarsAbove.Projectiles.ArchitectLuminance
 			//projOwner.heldProj = projectile.whoAmI;
 
 			//projectile.scale += 0.001f;
-			projOwner.GetModPlayer<StarsAbovePlayer>().sirenCenter = Projectile.Center;
-			projOwner.GetModPlayer<StarsAbovePlayer>().sirenCenterAdjusted = new Vector2(Projectile.Center.X, Projectile.Center.Y - 200);
+			projOwner.GetModPlayer<WeaponPlayer>().sirenCenter = Projectile.Center;
+			projOwner.GetModPlayer<WeaponPlayer>().sirenCenterAdjusted = new Vector2(Projectile.Center.X, Projectile.Center.Y - 200);
 			if (Projectile.frame == 1)
             {
 				if(firstTick)
@@ -118,11 +118,14 @@ namespace StarsAbove.Projectiles.ArchitectLuminance
 
 
 			}
-
-			if (closest.CanBeChasedBy() && closestDistance < 1200f)
-			{
-				projOwner.GetModPlayer<StarsAbovePlayer>().sirenEnemy = closest.Center;
+			if(closest != null)
+            {
+				if (closest.CanBeChasedBy() && closestDistance < 1200f)
+				{
+					projOwner.GetModPlayer<WeaponPlayer>().sirenEnemy = closest.Center;
+				}
 			}
+			
 			
 			
 			
@@ -136,7 +139,7 @@ namespace StarsAbove.Projectiles.ArchitectLuminance
             {
 				Projectile.direction = 1;
             }
-			//projectile.direction = projOwner.GetModPlayer<StarsAbovePlayer>().sirenTarget.X > projectile.direction ? 1 : -1;
+			//projectile.direction = projOwner.GetModPlayer<WeaponPlayer>().sirenTarget.X > projectile.direction ? 1 : -1;
 			Projectile.spriteDirection = Projectile.direction;
 
 		}

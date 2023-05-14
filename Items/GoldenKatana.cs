@@ -104,8 +104,8 @@ namespace StarsAbove.Items
 		}
 		public override void HoldItem(Player player)
 		{
-			player.GetModPlayer<StarsAbovePlayer>().GoldenKatanaHeld = true;
-			player.GetModPlayer<StarsAbovePlayer>().CatalystMemoryProgress += 2;//Increase animation progress when the weapon is held.
+			player.GetModPlayer<WeaponPlayer>().GoldenKatanaHeld = true;
+			player.GetModPlayer<WeaponPlayer>().CatalystMemoryProgress += 2;//Increase animation progress when the weapon is held.
 			
 			if (player.ownedProjectileCounts[ProjectileType<GoldenKatanaSheath>()] < 1)
 			{//Equip animation.
@@ -132,17 +132,17 @@ namespace StarsAbove.Items
 					{
 						Item.useTime = 10;
 						Item.useAnimation = 10;
-						player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = true;
-						player.GetModPlayer<StarsAbovePlayer>().bowCharge += 1.5f;
+						player.GetModPlayer<WeaponPlayer>().bowChargeActive = true;
+						player.GetModPlayer<WeaponPlayer>().bowCharge += 1.5f;
 						if (player.ownedProjectileCounts[ProjectileType<GoldenKatanaHeld>()] < 1)
 						{//Equip animation.
 							int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<GoldenKatanaHeld>(), 0, 0, player.whoAmI, 0f);
 						}
-						if (player.GetModPlayer<StarsAbovePlayer>().bowCharge == 1)
+						if (player.GetModPlayer<WeaponPlayer>().bowCharge == 1)
 						{
 							//Main.PlaySound(SoundLoader.customSoundType, (int)player.Center.X, (int)player.Center.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/bowstring"), 0.5f);
 						}
-						if (player.GetModPlayer<StarsAbovePlayer>().bowCharge == 97.5)//First gauge full
+						if (player.GetModPlayer<WeaponPlayer>().bowCharge == 97.5)//First gauge full
 						{
 							for (int d = 0; d < 32; d++)
 							{
@@ -151,7 +151,7 @@ namespace StarsAbove.Items
 							
 							SoundEngine.PlaySound(SoundID.Item116, player.position);
 						}
-						if (player.GetModPlayer<StarsAbovePlayer>().overCharge1 == 97.5)//Second gauge full
+						if (player.GetModPlayer<WeaponPlayer>().overCharge1 == 97.5)//Second gauge full
 						{
 							for (int d = 0; d < 12; d++)
 							{
@@ -170,7 +170,7 @@ namespace StarsAbove.Items
 							}
 							SoundEngine.PlaySound(SoundID.Item117, player.position);
 						}
-						if (player.GetModPlayer<StarsAbovePlayer>().overCharge2 == 97.5)//Third gauge full
+						if (player.GetModPlayer<WeaponPlayer>().overCharge2 == 97.5)//Third gauge full
 						{
 							for (int d = 0; d < 12; d++)
 							{
@@ -193,7 +193,7 @@ namespace StarsAbove.Items
                             }
 							SoundEngine.PlaySound(SoundID.Item105, player.position);
 						}
-						if (player.GetModPlayer<StarsAbovePlayer>().bowCharge == 16.5)
+						if (player.GetModPlayer<WeaponPlayer>().bowCharge == 16.5)
 						{
 							//Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, 0, 0, ProjectileType<SoulReaverVFX1>(), 0, 3, player.whoAmI, 0f);
 							SoundEngine.PlaySound(SoundID.DD2_DarkMageCastHeal, player.position);
@@ -201,16 +201,16 @@ namespace StarsAbove.Items
 							//
 						}
 						
-						if (player.GetModPlayer<StarsAbovePlayer>().bowCharge < 100)
+						if (player.GetModPlayer<WeaponPlayer>().bowCharge < 100)
 						{
 							for (int i = 0; i < 30; i++)
 							{//Circle
 								Vector2 offset = new Vector2();
 								double angle = Main.rand.NextDouble() * 2d * Math.PI;
-								offset.X += (float)(Math.Sin(angle) * (100 - player.GetModPlayer<StarsAbovePlayer>().bowCharge));
-								offset.Y += (float)(Math.Cos(angle) * (100 - player.GetModPlayer<StarsAbovePlayer>().bowCharge));
+								offset.X += (float)(Math.Sin(angle) * (100 - player.GetModPlayer<WeaponPlayer>().bowCharge));
+								offset.Y += (float)(Math.Cos(angle) * (100 - player.GetModPlayer<WeaponPlayer>().bowCharge));
 								
-								if(player.GetModPlayer<StarsAbovePlayer>().overCharge2 > 0)
+								if(player.GetModPlayer<WeaponPlayer>().overCharge2 > 0)
                                 {
 									Dust d2 = Dust.NewDustPerfect(player.MountedCenter + offset, DustID.FireworkFountain_Pink, player.velocity, 200, default(Color), 0.8f);
 									d2.fadeIn = 0.1f;
@@ -218,7 +218,7 @@ namespace StarsAbove.Items
 								}
 								else
                                 {
-									if (player.GetModPlayer<StarsAbovePlayer>().overCharge1 > 0)
+									if (player.GetModPlayer<WeaponPlayer>().overCharge1 > 0)
 									{
 										Dust d2 = Dust.NewDustPerfect(player.MountedCenter + offset, DustID.Clentaminator_Purple, player.velocity, 200, default(Color), 0.5f);
 										d2.fadeIn = 0.1f;
@@ -268,9 +268,9 @@ namespace StarsAbove.Items
 							d4.noLight = true;
 							d4.noGravity = true;
 							
-							if (player.GetModPlayer<StarsAbovePlayer>().overCharge2 > 0)
+							if (player.GetModPlayer<WeaponPlayer>().overCharge2 > 0)
                             {
-								if(player.GetModPlayer<StarsAbovePlayer>().overCharge2 >= 100)
+								if(player.GetModPlayer<WeaponPlayer>().overCharge2 >= 100)
                                 {
 									Dust.NewDust(player.Center, 0, 0, DustID.FireworkFountain_Pink, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 0.5f);
 									Dust d = Main.dust[Dust.NewDust(
@@ -297,10 +297,10 @@ namespace StarsAbove.Items
 
 							}
 							//If charge is above 100, start Overcharging
-							player.GetModPlayer<StarsAbovePlayer>().overCharge1 += 1.5f;
-							if (player.GetModPlayer<StarsAbovePlayer>().overCharge1 >= 100)
+							player.GetModPlayer<WeaponPlayer>().overCharge1 += 1.5f;
+							if (player.GetModPlayer<WeaponPlayer>().overCharge1 >= 100)
 							{
-								player.GetModPlayer<StarsAbovePlayer>().overCharge2 += 1.5f;
+								player.GetModPlayer<WeaponPlayer>().overCharge2 += 1.5f;
 							}
 						}
 					}
@@ -309,12 +309,12 @@ namespace StarsAbove.Items
 						Item.useTime = 25;
 						Item.useAnimation = 25;
 						//SoundEngine.PlaySound(SoundID.Item1, player.position);
-						if (player.GetModPlayer<StarsAbovePlayer>().overCharge2 >= 98)//If the weapon is fully overcharged 2
+						if (player.GetModPlayer<WeaponPlayer>().overCharge2 >= 98)//If the weapon is fully overcharged 2
 						{
-							player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-							player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
-							player.GetModPlayer<StarsAbovePlayer>().overCharge1 = 0;
-							player.GetModPlayer<StarsAbovePlayer>().overCharge2 = 0;
+							player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+							player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
+							player.GetModPlayer<WeaponPlayer>().overCharge1 = 0;
+							player.GetModPlayer<WeaponPlayer>().overCharge2 = 0;
 							//Reset the charge gauge.
 							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity.X, arrowVelocity.Y, 
 								ProjectileType<GoldenKatanaChargeAttack3>(), player.GetWeaponDamage(Item)*2, 3, player.whoAmI, 0f);
@@ -323,12 +323,12 @@ namespace StarsAbove.Items
 						else //If the weapon is fully overcharged 1
 						{
 
-							if (player.GetModPlayer<StarsAbovePlayer>().overCharge1 >= 98)
+							if (player.GetModPlayer<WeaponPlayer>().overCharge1 >= 98)
 							{
-								player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-								player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
-								player.GetModPlayer<StarsAbovePlayer>().overCharge1 = 0;
-								player.GetModPlayer<StarsAbovePlayer>().overCharge2 = 0;
+								player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+								player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
+								player.GetModPlayer<WeaponPlayer>().overCharge1 = 0;
+								player.GetModPlayer<WeaponPlayer>().overCharge2 = 0;
 								//Reset the charge gauge.
 
 								Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity.X, arrowVelocity.Y,
@@ -337,12 +337,12 @@ namespace StarsAbove.Items
 							}
 							else //If the weapon is fully charged...
 							{
-								if (player.GetModPlayer<StarsAbovePlayer>().bowCharge >= 98)
+								if (player.GetModPlayer<WeaponPlayer>().bowCharge >= 98)
 								{
-									player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-									player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
-									player.GetModPlayer<StarsAbovePlayer>().overCharge1 = 0;
-									player.GetModPlayer<StarsAbovePlayer>().overCharge2 = 0;
+									player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+									player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
+									player.GetModPlayer<WeaponPlayer>().overCharge1 = 0;
+									player.GetModPlayer<WeaponPlayer>().overCharge2 = 0;
 									//Reset the charge gauge.
 
 									Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity.X, arrowVelocity.Y,
@@ -351,14 +351,14 @@ namespace StarsAbove.Items
 								}
 								else //Uncharged attack (lower than the threshold.)
 								{
-									if (player.GetModPlayer<StarsAbovePlayer>().bowCharge > 0 && player.GetModPlayer<StarsAbovePlayer>().bowCharge <= 30)
+									if (player.GetModPlayer<WeaponPlayer>().bowCharge > 0 && player.GetModPlayer<WeaponPlayer>().bowCharge <= 30)
 									{
 									 //SoundEngine.PlaySound(SoundID.Item11, player.position);
 
-										player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-										player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
-										player.GetModPlayer<StarsAbovePlayer>().overCharge1 = 0;
-										player.GetModPlayer<StarsAbovePlayer>().overCharge2 = 0;
+										player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+										player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
+										player.GetModPlayer<WeaponPlayer>().overCharge1 = 0;
+										player.GetModPlayer<WeaponPlayer>().overCharge2 = 0;
 
 										if (player.direction == 1)
 										{
@@ -377,8 +377,8 @@ namespace StarsAbove.Items
 									}
 									else //If it was charged partway but prematurely stopped
 									{
-										player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-										player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
+										player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+										player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
 									}
 								}
 							}
@@ -393,7 +393,7 @@ namespace StarsAbove.Items
 
 		public override bool? UseItem(Player player)
         {
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			/*if (player.altFunctionUse == 2 && !player.HasBuff(BuffType<BoilingBloodBuff>()))
 			{
 				

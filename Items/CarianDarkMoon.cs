@@ -33,7 +33,7 @@ namespace StarsAbove.Items
 		public override void SetDefaults()
 		{
 			
-			Item.damage = 28;          
+			Item.damage = 19;          
 			Item.DamageType = DamageClass.Magic;
 			Item.width = 108;           
 			Item.height = 108;          
@@ -69,7 +69,7 @@ namespace StarsAbove.Items
 			
 			
 
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			if (player.altFunctionUse == 2 && !player.HasBuff(BuffType<MoonlitGreatblade>()) && !player.HasBuff(BuffType<MoonlitCooldown>()))
 			{
 				if (player.statMana >= 100)

@@ -48,7 +48,7 @@ namespace StarsAbove.Items
              
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
             {
-                Item.damage = 4100;
+                Item.damage = 2500;
             }
             else
             {
@@ -101,7 +101,7 @@ namespace StarsAbove.Items
             {
                 return false;
             }
-            //if (player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1) // Asphodene
+            //if (player.GetModPlayer<WeaponPlayer>().chosenStarfarer == 1) // Asphodene
             //{
             //    if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("The weapon fails to react to your Aspect, rendering it unusable."), 241, 255, 180);}
             //    return false;
@@ -126,7 +126,7 @@ namespace StarsAbove.Items
                     Vector2 placement2 = new Vector2((player.Center.X), player.Center.Y);
                     //Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),placement2.X, placement2.Y, 0, 0, mod.ProjectileType("radiate"), 0, 0f, 0);
                     player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
-                    //player.GetModPlayer<StarsAbovePlayer>().activateUltimaShockwaveEffect = true;
+                    //player.GetModPlayer<WeaponPlayer>().activateUltimaShockwaveEffect = true;
                     #region vfx
                     for (int d = 0; d < 30; d++)
                     {
@@ -370,19 +370,19 @@ namespace StarsAbove.Items
                     Item.useTime = 2;
                     Item.useAnimation = 2;
 
-                    player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = true;
+                    player.GetModPlayer<WeaponPlayer>().bowChargeActive = true;
                     
-                    player.GetModPlayer<StarsAbovePlayer>().bowCharge += 6;
+                    player.GetModPlayer<WeaponPlayer>().bowCharge += 6;
 
                     
 
 
-                    if (player.GetModPlayer<StarsAbovePlayer>().bowCharge == 1)
+                    if (player.GetModPlayer<WeaponPlayer>().bowCharge == 1)
                     {
 
                         //Main.PlaySound(SoundLoader.customSoundType, (int)player.Center.X, (int)player.Center.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/bowstring"), 0.5f);
                     }
-                    if (player.GetModPlayer<StarsAbovePlayer>().bowCharge == 99)
+                    if (player.GetModPlayer<WeaponPlayer>().bowCharge == 99)
                     {
 
                         for (int d = 0; d < 88; d++)
@@ -391,15 +391,15 @@ namespace StarsAbove.Items
                         }
                         //Main.PlaySound(SoundID.Item52, player.position);
                     }
-                    if (player.GetModPlayer<StarsAbovePlayer>().bowCharge < 100)
+                    if (player.GetModPlayer<WeaponPlayer>().bowCharge < 100)
                     {
 
                         for (int i = 0; i < 30; i++)
                         {//Circle
                             Vector2 offset = new Vector2();
                             double angle = Main.rand.NextDouble() * 2d * Math.PI;
-                            offset.X += (float)(Math.Sin(angle) * (100 - player.GetModPlayer<StarsAbovePlayer>().bowCharge));
-                            offset.Y += (float)(Math.Cos(angle) * (100 - player.GetModPlayer<StarsAbovePlayer>().bowCharge));
+                            offset.X += (float)(Math.Sin(angle) * (100 - player.GetModPlayer<WeaponPlayer>().bowCharge));
+                            offset.Y += (float)(Math.Cos(angle) * (100 - player.GetModPlayer<WeaponPlayer>().bowCharge));
 
                             Dust d2 = Dust.NewDustPerfect(player.MountedCenter + offset, 20, player.velocity, 200, default(Color), 0.5f);
                             d2.fadeIn = 0.1f;
@@ -428,14 +428,14 @@ namespace StarsAbove.Items
                     Item.useTime = 30;
                     Item.useAnimation = 30;
 
-                    if (player.GetModPlayer<StarsAbovePlayer>().bowCharge >= 100)//Fully Charged Normal attack
+                    if (player.GetModPlayer<WeaponPlayer>().bowCharge >= 100)//Fully Charged Normal attack
                     {
 
 
-                        //player.GetModPlayer<StarsAbovePlayer>().duality += 10;
+                        //player.GetModPlayer<WeaponPlayer>().duality += 10;
                         SoundEngine.PlaySound(SoundID.Item1, player.position);
-                        player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-                        player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
+                        player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+                        player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
                         //Vector2 mousePosition2 = player.DirectionTo(player.GetModPlayer<StarsAbovePlayer>().playerMousePos) * Main.rand.Next(20, 22);
                         //Vector2 leap = Vector2.Normalize(mousePosition2) * 15f;
                         //player.velocity = leap;
@@ -545,17 +545,17 @@ namespace StarsAbove.Items
                             perturbedSpeed = perturbedSpeed * scale;
                             Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X + Main.rand.Next(-100, 100), player.MountedCenter.Y - 600, perturbedSpeed.X, perturbedSpeed.Y, ProjectileID.FairyQueenRangedItemShot, player.GetWeaponDamage(Item) / 3, 5, player.whoAmI);
                         }
-                        //player.GetModPlayer<StarsAbovePlayer>().duality -= 10;
+                        //player.GetModPlayer<WeaponPlayer>().duality -= 10;
 
                     }
                     else
                     {
-                        if (player.GetModPlayer<StarsAbovePlayer>().bowCharge > 0)//Not Fully Charged normal
+                        if (player.GetModPlayer<WeaponPlayer>().bowCharge > 0)//Not Fully Charged normal
                         {//
                             SoundEngine.PlaySound(SoundID.Item1, player.position);
 
-                            player.GetModPlayer<StarsAbovePlayer>().bowChargeActive = false;
-                            player.GetModPlayer<StarsAbovePlayer>().bowCharge = 0;
+                            player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+                            player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
 
 
                             Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity3.X, arrowVelocity3.Y, ProjectileType<UltimaSwing2>(), 0, 3, player.whoAmI, 0f);

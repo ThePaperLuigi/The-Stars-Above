@@ -36,7 +36,7 @@ namespace StarsAbove.Projectiles.Pets
 			idleTimer++;
 			Projectile.velocity.X *= 1f;
 			Player player = Main.player[Projectile.owner];
-			StarsAbovePlayer modPlayer = player.GetModPlayer<StarsAbovePlayer>();
+			WeaponPlayer modPlayer = player.GetModPlayer<WeaponPlayer>();
 			if(Projectile.velocity.Y >= 0.3 || Projectile.velocity.X >= 0.3 || Projectile.velocity.Y <= -0.3 || Projectile.velocity.X <= -0.3)
             {
 

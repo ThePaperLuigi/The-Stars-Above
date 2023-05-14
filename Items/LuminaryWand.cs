@@ -35,7 +35,7 @@ namespace StarsAbove.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 83;           //The damage of your weapon
+			Item.damage = 50;           //The damage of your weapon
 			Item.DamageType = DamageClass.Summon;          //Is your weapon a melee weapon?
 			Item.width = 52;            //Weapon's texture's width
 			Item.height = 52;           //Weapon's texture's height
@@ -75,7 +75,7 @@ namespace StarsAbove.Items
 		}
 		public override void HoldItem(Player player)
 		{
-			//player.GetModPlayer<StarsAbovePlayer>().seraphimHeld = 10;
+			//player.GetModPlayer<WeaponPlayer>().seraphimHeld = 10;
 			if (player.ownedProjectileCounts[ProjectileType<Starchild>()] < 1)
 			{
 				player.AddBuff(BuffType<StarchildBuff>(), 999);

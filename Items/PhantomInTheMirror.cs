@@ -29,7 +29,7 @@ namespace StarsAbove.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 126;           //The damage of your weapon
+			Item.damage = 102;           //The damage of your weapon
 			Item.DamageType = DamageClass.Summon;          //Is your weapon a melee weapon?
 			Item.width = 74;            //Weapon's texture's width
 			Item.height = 74;           //Weapon's texture's height
@@ -63,13 +63,13 @@ namespace StarsAbove.Items
 			{
 				if (teleportCooldown <= 0)
 				{
-					if (player.GetModPlayer<StarsAbovePlayer>().phantomTeleport == false)
+					if (player.GetModPlayer<WeaponPlayer>().phantomTeleport == false)
 					{
 						if (player.statMana > 100)
 						{
 
 
-							player.GetModPlayer<StarsAbovePlayer>().phantomTeleport = true;
+							player.GetModPlayer<WeaponPlayer>().phantomTeleport = true;
 							//Main.PlaySound(SoundLoader.customSoundType, (int)player.Center.X, (int)player.Center.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/TeleportPrep"));
 							Vector2 teleportPosition = Main.MouseWorld;
 
@@ -95,10 +95,10 @@ namespace StarsAbove.Items
 					{
 						if (Main.myPlayer == player.whoAmI)//weaponout code
 						{
-							player.GetModPlayer<StarsAbovePlayer>().phantomTeleport = false;
+							player.GetModPlayer<WeaponPlayer>().phantomTeleport = false;
 							//Main.PlaySound(SoundLoader.customSoundType, (int)player.Center.X, (int)player.Center.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/TeleportPrep"));
-							player.GetModPlayer<StarsAbovePlayer>().phantomKill = true;
-							player.GetModPlayer<StarsAbovePlayer>().phantomSavedPosition = new Vector2(player.Center.X, player.Center.Y - 5);
+							player.GetModPlayer<WeaponPlayer>().phantomKill = true;
+							player.GetModPlayer<WeaponPlayer>().phantomSavedPosition = new Vector2(player.Center.X, player.Center.Y - 5);
 							Vector2 teleportPosition = new Vector2(player.Center.X, player.Center.Y - 5);
 							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.Center.X, player.Center.Y, 0, 0, ProjectileType<Projectiles.BloodstainedCrescent>(), 90, 0, player.whoAmI, 0f);
 
@@ -110,8 +110,8 @@ namespace StarsAbove.Items
 
 							teleportCooldown = 30;
 							vector32 = teleportPosition;
-							player.GetModPlayer<StarsAbovePlayer>().phantomTeleport = true;
-							//player.GetModPlayer<StarsAbovePlayer>().phantomTeleport = false;
+							player.GetModPlayer<WeaponPlayer>().phantomTeleport = true;
+							//player.GetModPlayer<WeaponPlayer>().phantomTeleport = false;
 
 
 						}
@@ -168,7 +168,7 @@ namespace StarsAbove.Items
 				
 			}
 			*/
-			if(player.GetModPlayer<StarsAbovePlayer>().phantomTeleport)
+			if(player.GetModPlayer<WeaponPlayer>().phantomTeleport)
 			{
 				
 				for (int i = 0; i < 50; i++)

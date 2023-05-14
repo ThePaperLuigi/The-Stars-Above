@@ -95,7 +95,7 @@ namespace StarsAbove.Items
 					player.AddBuff(BuffType<Invincibility>(), 120);
 					player.AddBuff(BuffType<Invisibility>(), 30);
 
-					player.GetModPlayer<StarsAbovePlayer>().AshenAmbitionOldPosition = player.position;
+					player.GetModPlayer<WeaponPlayer>().AshenAmbitionOldPosition = player.position;
 					for (int g = 0; g < 4; g++)
 					{
 						int goreIndex = Gore.NewGore(null,new Vector2(player.position.X + (float)(player.width / 2) - 24f, player.position.Y + (float)(player.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
@@ -143,7 +143,7 @@ namespace StarsAbove.Items
 		}
         public override void HoldItem(Player player)
         {
-			player.GetModPlayer<StarsAbovePlayer>().AshenAmbitionHeld = true;
+			player.GetModPlayer<WeaponPlayer>().AshenAmbitionHeld = true;
 			for (int i = 0; i < Main.maxNPCs; i++)
 			{
 				NPC npc = Main.npc[i];
@@ -154,7 +154,7 @@ namespace StarsAbove.Items
 					npc.active 
 					&& npc.Distance(player.Center) < 1000f 
 					&& npc.CanBeChasedBy() 
-					&& npc.life <= player.GetModPlayer<StarsAbovePlayer>().AshenAmbitionExecuteThreshold 
+					&& npc.life <= player.GetModPlayer<WeaponPlayer>().AshenAmbitionExecuteThreshold 
 					&& !player.HasBuff(BuffType<AshenAmbitionCooldown>())
 					)
 				{
@@ -193,7 +193,7 @@ namespace StarsAbove.Items
 						NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, (float)player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
 
 					
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.Center.X, player.Center.Y, 0, 0, ProjectileType<AshenAmbitionExecute>(), player.GetModPlayer<StarsAbovePlayer>().AshenAmbitionExecuteThreshold, 0, player.whoAmI);
+					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.Center.X, player.Center.Y, 0, 0, ProjectileType<AshenAmbitionExecute>(), player.GetModPlayer<WeaponPlayer>().AshenAmbitionExecuteThreshold, 0, player.whoAmI);
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_LegendarySlash, player.Center);
 					for (int d = 0; d < 20; d++)
 					{
@@ -262,7 +262,7 @@ namespace StarsAbove.Items
 			return false;*/
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			player.GetModPlayer<StarsAbovePlayer>().AshenAmbitionExecuteThreshold = damage * 5;
+			player.GetModPlayer<WeaponPlayer>().AshenAmbitionExecuteThreshold = damage * 5;
 
 			if (player.altFunctionUse == 2)
 			{

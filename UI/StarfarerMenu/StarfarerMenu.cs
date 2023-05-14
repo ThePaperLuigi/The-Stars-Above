@@ -1,11 +1,14 @@
 ﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+
 using StarsAbove.Items.Armor.StarfarerArmor;
+using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
+using Terraria.ModLoader;
 using Terraria.UI;
 using static Terraria.ModLoader.ModContent;
 
@@ -60,6 +63,8 @@ namespace StarsAbove.UI.StarfarerMenu
 		private UIText baseStats;
 		private UIText adjustedStats;
 
+		
+
 		static public VanillaItemSlotWrapper _starfarerArmorSlot;
 		static public VanillaItemSlotWrapper _starfarerVanitySlot;
 
@@ -102,9 +107,11 @@ namespace StarsAbove.UI.StarfarerMenu
 			area2.Width.Set(1000, 0f);
 			area2.Height.Set(650, 0f);
 			area2.HAlign = area.VAlign = 0.5f; // 1
-											  //area2.OnMouseDown += new UIElement.MouseEvent(DragStart);
-											  //area.OnMouseUp += new UIElement.MouseEvent(DragEnd);
-											  //area2.HAlign = area.VAlign = 0.5f; // 1
+											   //area2.OnMouseDown += new UIElement.MouseEvent(DragStart);
+											   //area.OnMouseUp += new UIElement.MouseEvent(DragEnd);
+											   //area2.HAlign = area.VAlign = 0.5f; // 1
+
+			
 
 			barFrame = new UIImage(Request<Texture2D>("StarsAbove/UI/Starfarers/blank"));
 			barFrame.Left.Set(318, 0f);
@@ -121,6 +128,10 @@ namespace StarsAbove.UI.StarfarerMenu
 			bg2.Top.Set(380, 0f);
 			bg2.Width.Set(840, 0f);
 			bg2.Height.Set(810, 0f);*/
+			
+
+
+			
 
 			confirm = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Confirm"));
 			confirm.OnClick += Confirm;
@@ -373,7 +384,7 @@ namespace StarsAbove.UI.StarfarerMenu
 		{
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive)
 				return;
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive = false;
+			Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveActive = false;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollNumber = 0;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive = false;
@@ -392,8 +403,8 @@ namespace StarsAbove.UI.StarfarerMenu
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive)
 				return;
 
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveChosenList = 0;
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveListNumber = 1;
+			Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveChosenList = 0;
+			Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveListNumber = 1;
 		
 		}
 		private void BossDialogueConfirm(UIMouseEvent evt, UIElement listeningElement)
@@ -401,8 +412,8 @@ namespace StarsAbove.UI.StarfarerMenu
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive)
 				return;
 
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveChosenList = 1;
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveListNumber = 1;
+			Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveChosenList = 1;
+			Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveListNumber = 1;
 
 		}
 		private void WeaponDialogueConfirm(UIMouseEvent evt, UIElement listeningElement)
@@ -410,8 +421,8 @@ namespace StarsAbove.UI.StarfarerMenu
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive)
 				return;
 
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveChosenList = 2;
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveListNumber = 1;
+			Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveChosenList = 2;
+			Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveListNumber = 1;
 
 		}
 		
@@ -421,8 +432,8 @@ namespace StarsAbove.UI.StarfarerMenu
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive)
 				return;
 
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveChosenList = 3;
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveListNumber = 1;
+			Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveChosenList = 3;
+			Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveListNumber = 1;
 
 		}
 
@@ -430,14 +441,14 @@ namespace StarsAbove.UI.StarfarerMenu
 		{
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive)
 				return;
-			if(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveListNumber > 1)
+			if(Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveListNumber > 1)
             {
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveListNumber--;
+				Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveListNumber--;
 				return;
 			}
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveListNumber == 1)
+			if (Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveListNumber == 1)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveListNumber = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveListMax;
+				Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveListNumber = Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveListMax;
 			}
 
 
@@ -449,14 +460,14 @@ namespace StarsAbove.UI.StarfarerMenu
 		{
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive)
 				return;
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveListNumber < Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveListMax)
+			if (Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveListNumber < Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveListMax)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveListNumber++;
+				Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveListNumber++;
 				return;
 			}
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveListNumber == Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveListMax)
+			if (Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveListNumber == Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveListMax)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveListNumber = 1;
+				Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveListNumber = 1;
 			}
 
 
@@ -465,9 +476,9 @@ namespace StarsAbove.UI.StarfarerMenu
 		}
 		private void StellarNovaConfirm(UIMouseEvent evt, UIElement listeningElement)
 		{
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaGaugeUnlocked || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive)
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaGaugeUnlocked || Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveActive)
 				return;
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive = false;
+			Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveActive = false;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaUIOpacity = 0;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaUIActive = true;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaDialogueScrollNumber = 0;
@@ -487,7 +498,7 @@ namespace StarsAbove.UI.StarfarerMenu
 		}
 		private void VoyageConfirm(UIMouseEvent evt, UIElement listeningElement)
 		{
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().astrolabeIntroDialogue != 2 || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive)
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().astrolabeIntroDialogue != 2 || Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveActive)
 				return;
 
 			if (NPC.downedAncientCultist && !NPC.downedMoonlord)
@@ -496,7 +507,7 @@ namespace StarsAbove.UI.StarfarerMenu
 				return;
 			}
 
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive = false;
+			Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveActive = false;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaUIOpacity = 0;
 			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = true;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaDialogueScrollNumber = 0;
@@ -516,12 +527,12 @@ namespace StarsAbove.UI.StarfarerMenu
 		}
 		private void StellarArrayConfirm(UIMouseEvent evt, UIElement listeningElement)
 		{
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive)
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveActive)
 				return;
 
 			if(!Main.LocalPlayer.HasBuff(BuffType<Buffs.BossEnemySpawnMod>()))
             {
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive = false;
+				Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveActive = false;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArrayMoveIn = 15f;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArray = true;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollNumber = 0;
@@ -548,33 +559,33 @@ namespace StarsAbove.UI.StarfarerMenu
 			#region dialogue
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
 
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveChosenList == 0)
+			if (Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveChosenList == 0)
             {
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenDialogue = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().IdleArchiveList[Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveListNumber].DialogueID;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenDialogue = Main.LocalPlayer.GetModPlayer<ArchivePlayer>().IdleArchiveList[Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveListNumber].DialogueID;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
 			}
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveChosenList == 1)
+			if (Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveChosenList == 1)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenDialogue = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().BossArchiveList[Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveListNumber].DialogueID;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenDialogue = Main.LocalPlayer.GetModPlayer<ArchivePlayer>().BossArchiveList[Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveListNumber].DialogueID;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
 
 			}
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveChosenList == 2)
+			if (Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveChosenList == 2)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenDialogue = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().WeaponArchiveList[Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveListNumber].DialogueID;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenDialogue = Main.LocalPlayer.GetModPlayer<ArchivePlayer>().WeaponArchiveList[Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveListNumber].DialogueID;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialoguePrep = true;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = true;
 			}
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveChosenList == 3)
+			if (Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveChosenList == 3)
 			{
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueScrollTimer = 0;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueScrollNumber = 0;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneProgression = 0;
 
 
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneID = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().VNArchiveList[Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveListNumber].DialogueID;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneID = Main.LocalPlayer.GetModPlayer<ArchivePlayer>().VNArchiveList[Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveListNumber].DialogueID;
 
 
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().VNDialogueActive = true;
@@ -582,7 +593,7 @@ namespace StarsAbove.UI.StarfarerMenu
 
 			#endregion
 
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive = false;
+			Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveActive = false;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollNumber = 0;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive = false;
@@ -599,11 +610,11 @@ namespace StarsAbove.UI.StarfarerMenu
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive)
 				return;
 
-			if (!Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive)
+			if (!Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveActive)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive = true;
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveChosenList = 0;
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveListNumber = 1;
+				Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveActive = true;
+				Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveChosenList = 0;
+				Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveListNumber = 1;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollNumber = 0;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;                                     //|
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
@@ -621,7 +632,7 @@ namespace StarsAbove.UI.StarfarerMenu
 			}
 			else
             {
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive = false;
+				Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveActive = false;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollNumber = 0;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;                                     //|
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
@@ -696,7 +707,7 @@ namespace StarsAbove.UI.StarfarerMenu
 
 		private void ArchiveHover(UIMouseEvent evt, UIElement listeningElement)
 		{
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive)
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveActive)
 				return;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollNumber = 0;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;
@@ -719,7 +730,7 @@ namespace StarsAbove.UI.StarfarerMenu
 		}
 		private void voyageHover(UIMouseEvent evt, UIElement listeningElement)
 		{
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive)
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveActive)
 				return;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollNumber = 0;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;
@@ -760,7 +771,7 @@ namespace StarsAbove.UI.StarfarerMenu
 		}
 		private void StellarNovaHover(UIMouseEvent evt, UIElement listeningElement)
 		{
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive)
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveActive)
 				return;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollNumber = 0;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;
@@ -799,7 +810,7 @@ namespace StarsAbove.UI.StarfarerMenu
 		}
 		private void StellarArrayHover(UIMouseEvent evt, UIElement listeningElement)
 		{
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive)
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveActive)
 				return;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollNumber = 0;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;
@@ -841,7 +852,7 @@ namespace StarsAbove.UI.StarfarerMenu
 
 		private void ArmorSlotHover(UIMouseEvent evt, UIElement listeningElement)
 		{
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive)
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveActive)
 				return;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollNumber = 0;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;
@@ -869,7 +880,7 @@ namespace StarsAbove.UI.StarfarerMenu
 		}
 		private void VanitySlotHover(UIMouseEvent evt, UIElement listeningElement)
 		{
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive)
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveActive)
 				return;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollNumber = 0;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;
@@ -922,6 +933,8 @@ namespace StarsAbove.UI.StarfarerMenu
 
 			base.DrawSelf(spriteBatch);
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var archivePlayer = Main.LocalPlayer.GetModPlayer<ArchivePlayer>();
+
 			var animationModPlayer = Main.LocalPlayer.GetModPlayer<StarfarerMenuAnimation>();
 
 			Rectangle hitbox = area.GetInnerDimensions().ToRectangle();
@@ -944,6 +957,7 @@ namespace StarsAbove.UI.StarfarerMenu
 			//Step 3: draw Head
 			//Step 4: draw Hair in front of body
 			//Step 5: draw Menu
+			Texture2D AsphodeneEyeBase = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/AEyeBase");
 
 			Texture2D AsphodeneHeadBase = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/AHeadBase");
 			Texture2D AsphodeneHairBehindHead = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/AHairBehindHead");
@@ -991,7 +1005,7 @@ namespace StarsAbove.UI.StarfarerMenu
 			Vector2 AsphodeneEyeRightPosition = new Vector2(Main.screenWidth / 2 - 96 + animationModPlayer.AsphodeneEyeMovementRX, Main.screenHeight / 2 - 118 + animationModPlayer.StarfarerMenuIdleMovement + animationModPlayer.AsphodeneEyeMovementY);
 			Vector2 AsphodeneEyeLeftPosition = new Vector2(Main.screenWidth / 2 - 96 + animationModPlayer.AsphodeneEyeMovementLX, Main.screenHeight / 2 - 118 + animationModPlayer.StarfarerMenuIdleMovement + animationModPlayer.AsphodeneEyeMovementY);
 
-			if (modPlayer.archiveActive)
+			if (archivePlayer.archiveActive)
             {
 				AsphodeneHeadPosition.X -= 200;
 				AsphodeneBodyPosition.X -= 200;
@@ -1184,7 +1198,37 @@ namespace StarsAbove.UI.StarfarerMenu
 					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/ABody" + modPlayer.starfarerOutfitVisible + "W"), AsphodeneBodyPosition, Color.White * (modPlayer.costumeChangeOpacity));
 
 				}
-
+				//Draw the eyes.
+				spriteBatch.Draw(
+					AsphodeneEyeBase, //The texture being drawn.
+					AsphodeneHeadPosition, //The position of the texture.
+					new Rectangle(0, 0, AsphodeneHeadBase.Width, AsphodeneHeadBase.Height), //The source rectangle.
+					Color.White * (modPlayer.starfarerMenuUIOpacity), //The color of the texture.
+					MathHelper.ToRadians(animationModPlayer.StarfarerMenuHeadRotation), // The rotation of the texture.
+					AsphodeneHeadBase.Size() * 0.5f, //The centerpoint of the texture.
+					1f, //The scale of the texture.
+					SpriteEffects.None,
+					0f);
+				spriteBatch.Draw(
+					AsphodeneEyeLeft, //The texture being drawn.
+					AsphodeneEyeLeftPosition, //The position of the texture.
+					new Rectangle(0, 0, AsphodeneHeadBase.Width, AsphodeneHeadBase.Height), //The source rectangle.
+					Color.White * (modPlayer.starfarerMenuUIOpacity), //The color of the texture.
+					MathHelper.ToRadians(animationModPlayer.StarfarerMenuHeadRotation), // The rotation of the texture.
+					AsphodeneHeadBase.Size() * 0.5f, //The centerpoint of the texture.
+					1f, //The scale of the texture.
+					SpriteEffects.None,
+					0f);
+				spriteBatch.Draw(
+					AsphodeneEyeRight, //The texture being drawn.
+					AsphodeneEyeRightPosition, //The position of the texture.
+					new Rectangle(0, 0, AsphodeneHeadBase.Width, AsphodeneHeadBase.Height), //The source rectangle.
+					Color.White * (modPlayer.starfarerMenuUIOpacity), //The color of the texture.
+					MathHelper.ToRadians(animationModPlayer.StarfarerMenuHeadRotation), // The rotation of the texture.
+					AsphodeneHeadBase.Size() * 0.5f, //The centerpoint of the texture.
+					1f, //The scale of the texture.
+					SpriteEffects.None,
+					0f);
 				if (modPlayer.vagrantDialogue == 2)
 				{
 					//Draw the head.
@@ -1213,27 +1257,7 @@ namespace StarsAbove.UI.StarfarerMenu
 					SpriteEffects.None,
 					0f);
 				}
-				//Draw the eyes.
-				spriteBatch.Draw(
-					AsphodeneEyeLeft, //The texture being drawn.
-					AsphodeneEyeLeftPosition, //The position of the texture.
-					new Rectangle(0, 0, AsphodeneHeadBase.Width, AsphodeneHeadBase.Height), //The source rectangle.
-					Color.White * (modPlayer.starfarerMenuUIOpacity), //The color of the texture.
-					MathHelper.ToRadians(animationModPlayer.StarfarerMenuHeadRotation), // The rotation of the texture.
-					AsphodeneHeadBase.Size() * 0.5f, //The centerpoint of the texture.
-					1f, //The scale of the texture.
-					SpriteEffects.None,
-					0f);
-				spriteBatch.Draw(
-					AsphodeneEyeRight, //The texture being drawn.
-					AsphodeneEyeRightPosition, //The position of the texture.
-					new Rectangle(0, 0, AsphodeneHeadBase.Width, AsphodeneHeadBase.Height), //The source rectangle.
-					Color.White * (modPlayer.starfarerMenuUIOpacity), //The color of the texture.
-					MathHelper.ToRadians(animationModPlayer.StarfarerMenuHeadRotation), // The rotation of the texture.
-					AsphodeneHeadBase.Size() * 0.5f, //The centerpoint of the texture.
-					1f, //The scale of the texture.
-					SpriteEffects.None,
-					0f);
+				
 
 
 				//Idle animation.
@@ -1332,6 +1356,8 @@ namespace StarsAbove.UI.StarfarerMenu
 			}
 
 			//Eridani's code.
+			Texture2D EridaniEyeBase = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/EEyeBase");
+
 			Texture2D EridaniHeadBase = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/EHeadBase");
 			Texture2D EridaniMouthAlt = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/EMouthVariant");
 
@@ -1374,7 +1400,7 @@ namespace StarsAbove.UI.StarfarerMenu
 			Vector2 EridaniBookPosition = new Vector2(Main.screenWidth / 2 - 126, Main.screenHeight / 2 + 12 + animationModPlayer.StarfarerMenuHeadRotation / 2);
 			Vector2 EridaniArmsCrossedPosition = new Vector2(Main.screenWidth / 2 - 102, Main.screenHeight / 2 - 42 + animationModPlayer.StarfarerMenuIdleMovement);
 
-			if (modPlayer.archiveActive)
+			if (archivePlayer.archiveActive)
 			{
 				EridaniHeadPosition.X -= 200;
 				EridaniBodyPosition.X -= 200;
@@ -1517,6 +1543,38 @@ namespace StarsAbove.UI.StarfarerMenu
 					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/EBody" + modPlayer.starfarerOutfitVisible), EridaniBodyPosition, Color.White * (modPlayer.starfarerMenuUIOpacity));
 					
 				}
+				//Draw the eyes.
+				spriteBatch.Draw(
+					EridaniEyeBase, //The texture being drawn.
+					EridaniHeadPosition, //The position of the texture.
+					new Rectangle(0, 0, EridaniHeadBase.Width, EridaniHeadBase.Height), //The source rectangle.
+					Color.White * (modPlayer.starfarerMenuUIOpacity), //The color of the texture.
+					MathHelper.ToRadians(animationModPlayer.StarfarerMenuHeadRotation), // The rotation of the texture.
+					EridaniHeadBase.Size() * 0.5f, //The centerpoint of the texture.
+					1f, //The scale of the texture.
+					SpriteEffects.None,
+					0f);
+				//Draw the eyes.
+				spriteBatch.Draw(
+					EridaniEyeLeft, //The texture being drawn.
+					EridaniEyeLeftPosition, //The position of the texture.
+					new Rectangle(0, 0, EridaniHeadBase.Width, EridaniHeadBase.Height), //The source rectangle.
+					Color.White * (modPlayer.starfarerMenuUIOpacity), //The color of the texture.
+					MathHelper.ToRadians(animationModPlayer.StarfarerMenuHeadRotation), // The rotation of the texture.
+					EridaniHeadBase.Size() * 0.5f, //The centerpoint of the texture.
+					1f, //The scale of the texture.
+					SpriteEffects.None,
+					0f);
+				spriteBatch.Draw(
+					EridaniEyeRight, //The texture being drawn.
+					EridaniEyeRightPosition, //The position of the texture.
+					new Rectangle(0, 0, EridaniHeadBase.Width, EridaniHeadBase.Height), //The source rectangle.
+					Color.White * (modPlayer.starfarerMenuUIOpacity), //The color of the texture.
+					MathHelper.ToRadians(animationModPlayer.StarfarerMenuHeadRotation), // The rotation of the texture.
+					EridaniHeadBase.Size() * 0.5f, //The centerpoint of the texture.
+					1f, //The scale of the texture.
+					SpriteEffects.None,
+					0f);
 
 				if (modPlayer.vagrantDialogue == 2)
 				{
@@ -1547,28 +1605,7 @@ namespace StarsAbove.UI.StarfarerMenu
 					0f);
 				}
 					
-				//Draw the eyes.
-				spriteBatch.Draw(
-					EridaniEyeLeft, //The texture being drawn.
-					EridaniEyeLeftPosition, //The position of the texture.
-					new Rectangle(0, 0, EridaniHeadBase.Width, EridaniHeadBase.Height), //The source rectangle.
-					Color.White * (modPlayer.starfarerMenuUIOpacity), //The color of the texture.
-					MathHelper.ToRadians(animationModPlayer.StarfarerMenuHeadRotation), // The rotation of the texture.
-					EridaniHeadBase.Size() * 0.5f, //The centerpoint of the texture.
-					1f, //The scale of the texture.
-					SpriteEffects.None,
-					0f);
-				spriteBatch.Draw(
-					EridaniEyeRight, //The texture being drawn.
-					EridaniEyeRightPosition, //The position of the texture.
-					new Rectangle(0, 0, EridaniHeadBase.Width, EridaniHeadBase.Height), //The source rectangle.
-					Color.White * (modPlayer.starfarerMenuUIOpacity), //The color of the texture.
-					MathHelper.ToRadians(animationModPlayer.StarfarerMenuHeadRotation), // The rotation of the texture.
-					EridaniHeadBase.Size() * 0.5f, //The centerpoint of the texture.
-					1f, //The scale of the texture.
-					SpriteEffects.None,
-					0f);
-
+				
 
 				//Idle animation.
 				
@@ -1707,23 +1744,23 @@ namespace StarsAbove.UI.StarfarerMenu
 
 
 
-			if (modPlayer.archiveActive)
+			if (archivePlayer.archiveActive)
 			{
 				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/ArchiveMenu"), hitbox, Color.White * (modPlayer.starfarerMenuUIOpacity));
 				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Archive"), archive.GetInnerDimensions().ToRectangle(), Color.White * (modPlayer.starfarerMenuUIOpacity));
-				if (modPlayer.archiveChosenList == 0)
+				if (archivePlayer.archiveChosenList == 0)
 				{
 					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/IdleSelected"), hitbox, Color.White * (modPlayer.starfarerMenuUIOpacity));
 				}
-				if (modPlayer.archiveChosenList == 1)
+				if (archivePlayer.archiveChosenList == 1)
 				{
 					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/BossSelected"), hitbox, Color.White * (modPlayer.starfarerMenuUIOpacity));
 				}
-				if (modPlayer.archiveChosenList == 2)
+				if (archivePlayer.archiveChosenList == 2)
 				{
 					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/WeaponSelected"), hitbox, Color.White * (modPlayer.starfarerMenuUIOpacity));
 				}
-				if (modPlayer.archiveChosenList == 3)
+				if (archivePlayer.archiveChosenList == 3)
 				{
 					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/VNSelected"), hitbox, Color.White * (modPlayer.starfarerMenuUIOpacity));
 				}
@@ -1802,8 +1839,14 @@ namespace StarsAbove.UI.StarfarerMenu
 				Append(area);
 			}
 
+			
+		
+
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
-			if (!Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().archiveActive)
+			var archivePlayer = Main.LocalPlayer.GetModPlayer<ArchivePlayer>();
+
+
+			if (!Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveActive)
 			{
 				//area2.Remove();
 				hoverText.Remove();
@@ -1824,7 +1867,7 @@ namespace StarsAbove.UI.StarfarerMenu
 				area.Append(BossDialogue);
 				area.Append(WeaponDialogue);
 				area.Append(VNDialogue);
-				if(modPlayer.canViewArchive)
+				if(archivePlayer.canViewArchive)
                 {
 					area.Append(confirmDialogue);
 				}
@@ -1846,7 +1889,7 @@ namespace StarsAbove.UI.StarfarerMenu
 				//modPlayer.CelestialCartographyActive = true;
             }
 
-			if(modPlayer.archiveActive)
+			if(archivePlayer.archiveActive)
             {
 				area.Left.Set(0, 0f);
             }
@@ -1856,9 +1899,9 @@ namespace StarsAbove.UI.StarfarerMenu
 			}
 			// Setting the text per tick to update and show our resource values.
 
-			hoverText.SetText($"{modPlayer.archiveListNumber}/{modPlayer.archiveListMax}");
+			hoverText.SetText($"{archivePlayer.archiveListNumber}/{archivePlayer.archiveListMax}");
 			text.SetText($"{modPlayer.animatedStarfarerMenuDialogue}");
-			description.SetText($"{modPlayer.archiveListInfo}");
+			description.SetText($"{archivePlayer.archiveListInfo}");
 			//abilityName.SetText($"{modPlayer.abilityName}");
 			//abilitySubName.SetText($"{modPlayer.abilitySubName}");
 			//abilityDescription.SetText($"{modPlayer.abilityDescription}");

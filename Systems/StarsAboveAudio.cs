@@ -22,86 +22,129 @@ namespace StarsAbove
             }
 		};*/ //This is a good system, but in order to sync the voice lines with the dialogue box, I can't use it.
 
-        public static readonly SoundStyle AN0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/AN0")
+        public static readonly SoundStyle AN1 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/AN1")
 		{
 
 		};
-		public static readonly SoundStyle AN11 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/AN11")
+		public static readonly SoundStyle AN2 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/AN2")
 		{
 
 		};
-		public static readonly SoundStyle AN12 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/AN12")
+		public static readonly SoundStyle AN3 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/AN3")
 		{
 
 		};
-		public static readonly SoundStyle AN13 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/AN13")
+		public static readonly SoundStyle AN4 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/AN4")
 		{
 
 		};
-		public static readonly SoundStyle AN14 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/AN14")
+		public static readonly SoundStyle AN5 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/AN5")
 		{
 
 		};
-		public static readonly SoundStyle AN15 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/AN15")
+		public static readonly SoundStyle AN6 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/AN6")
 		{
 
 		};
-		public static readonly SoundStyle AN2 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/AN2")
+		public static readonly SoundStyle AN7 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/AN7")
 		{
 
 		};
-		public static readonly SoundStyle AN3 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/AN3")
+		public static readonly SoundStyle AN8 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/AN8")
 		{
 
 		};
-		public static readonly SoundStyle AN4 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/AN4")
+		public static readonly SoundStyle AN9 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/AN9")
 		{
 
 		};
-		public static readonly SoundStyle AN5 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/AN5")
+		public static readonly SoundStyle AN10 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/AN10")
 		{
 
 		};
+
+		public static readonly SoundStyle ANSpecial1 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/UniqueLines/ANSpecial1")
+		{
+
+		};
+		public static readonly SoundStyle ANSpecial2 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/UniqueLines/ANSpecial2")
+		{
+
+		};
+		public static readonly SoundStyle ANSpecial3 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/UniqueLines/ANSpecial3")
+		{
+
+		};
+		public static readonly SoundStyle ANSpecial4 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/UniqueLines/ANSpecial4")
+		{
+
+		};
+		public static readonly SoundStyle ANSpecial5 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/UniqueLines/ANSpecial5")
+		{
+
+		};
+
 
 		#endregion
 		#region Eridani Voice Lines
-		public static readonly SoundStyle EN0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/EN0")
+		public static readonly SoundStyle EN1 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/EN1")
 		{
 
 		};
-		public static readonly SoundStyle EN11 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/EN11")
+		public static readonly SoundStyle EN2 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/EN2")
 		{
 
 		};
-		public static readonly SoundStyle EN12 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/EN12")
+		public static readonly SoundStyle EN3 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/EN3")
 		{
 
 		};
-		public static readonly SoundStyle EN13 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/EN13")
+		public static readonly SoundStyle EN4 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/EN4")
 		{
 
 		};
-		public static readonly SoundStyle EN14 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/EN14")
+		public static readonly SoundStyle EN5 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/EN5")
 		{
 
 		};
-		public static readonly SoundStyle EN15 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/EN15")
+		public static readonly SoundStyle EN6 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/EN6")
 		{
 
 		};
-		public static readonly SoundStyle EN2 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/EN2")
+		public static readonly SoundStyle EN7 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/EN7")
 		{
 
 		};
-		public static readonly SoundStyle EN3 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/EN3")
+		public static readonly SoundStyle EN8 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/EN8")
 		{
 
 		};
-		public static readonly SoundStyle EN4 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/EN4")
+		public static readonly SoundStyle EN9 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/EN9")
 		{
 
 		};
-		public static readonly SoundStyle EN5 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/EN5")
+		public static readonly SoundStyle EN10 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/EN10")
+		{
+
+		};
+
+		public static readonly SoundStyle ENSpecial1 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/UniqueLines/ENSpecial1")
+		{
+
+		};
+		public static readonly SoundStyle ENSpecial2 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/UniqueLines/ENSpecial2")
+		{
+
+		};
+		public static readonly SoundStyle ENSpecial3 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/UniqueLines/ENSpecial3")
+		{
+
+		};
+		public static readonly SoundStyle ENSpecial4 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/UniqueLines/ENSpecial4")
+		{
+
+		};
+		public static readonly SoundStyle ENSpecial5 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/UniqueLines/ENSpecial5")
 		{
 
 		};
@@ -466,10 +509,101 @@ namespace StarsAbove
 		#endregion
 
 		#region Tsukiyomi Voice Lines
-		public static readonly SoundStyle Tsukiyomi_DontMakeThisHarderForMe = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/DontMakeThisHarderForMe")
+		public static readonly SoundStyle Tsukiyomi_DeathOfAThousandStars = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/ThousandStars")
 		{
 
 		};
+		public static readonly SoundStyle Tsukiyomi_Struggle = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/Struggle")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_NowhereYouCanRun = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/NowhereYouCanRun")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_AfraidOfTheDark = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/AfraidOfTheDark")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_TryHarder = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/TryHarderThanThat")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_ForgettingSomething = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/ForgettingSomething")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_Journey = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/EndOfYourJourney")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_Stronger = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/StrongerThanIHoped")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_Insignificant = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/Insignificant")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_TakeThisOutside = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/TakeThisOutside")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_ThousandStars = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/ThousandStars")
+		{
+
+		};
+		//Aspected weapon voice lines.
+		public static readonly SoundStyle Tsukiyomi_CarianDarkMoon = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/CarianDarkMoon")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_BuryTheLight = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/BuryTheLight")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_TheOnlyThingIKnowForReal = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/TheOnlyThingIKnowForReal")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_VoiceOfTheOutbreak = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/VoiceOfTheOutbreak")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_ShadowlessCerulean = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/ShadowlessCerulean")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_DeathInFourActs = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/DeathInFourActs")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_CaesuraOfDespair = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/CaesuraOfDespair")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_StygianNymph = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/StygianNymph")
+		{
+
+
+		};
+		public static readonly SoundStyle Tsukiyomi_MementoMuse = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/MementoMuse")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_LuminaryWand = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/LuminaryWand")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_Takonomicon = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/Takonomicon")
+		{
+
+		};
+		public static readonly SoundStyle Tsukiyomi_KeyOfTheKingsLaw = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/KeyOfTheKingsLaw")
+		{
+
+		};
+		/*
 		public static readonly SoundStyle Tsukiyomi_ThisMessIsMine = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/ThisMessIsMine")
 		{
 
@@ -582,13 +716,41 @@ namespace StarsAbove
 		public static readonly SoundStyle Tsukiyomi_YouveComeToDefeatMe = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/YouveComeToDefeatMe")
 		{
 
-		};
+		};*/
 		#endregion
 
 
 		#endregion
 
 		#region Weapon Sound Effects
+		public static readonly SoundStyle SFX_Deify = new($"{nameof(StarsAbove)}/Sounds/SFX/Deify")
+		{
+
+		};
+		public static readonly SoundStyle SFX_Disappear = new($"{nameof(StarsAbove)}/Sounds/SFX/Disappear")
+		{
+
+		};
+		public static readonly SoundStyle SFX_DisappearPrep = new($"{nameof(StarsAbove)}/Sounds/SFX/DisappearPrep")
+		{
+
+		};
+		public static readonly SoundStyle SFX_AbsoluteEye = new($"{nameof(StarsAbove)}/Sounds/SFX/AbsoluteEye")
+		{
+
+		};
+		public static readonly SoundStyle SFX_ManiacalSlash = new($"{nameof(StarsAbove)}/Sounds/SFX/ManiacalSlash")
+		{
+
+		};
+		public static readonly SoundStyle SFX_ManiacalSlashWarning = new($"{nameof(StarsAbove)}/Sounds/SFX/ManiacalSlashWarning")
+		{
+
+		};
+		public static readonly SoundStyle SFX_ManiacalSlashSpecial = new($"{nameof(StarsAbove)}/Sounds/SFX/ManiacalSlashSpecial")
+		{
+
+		};
 		public static readonly SoundStyle SFX_KevesiTune = new($"{nameof(StarsAbove)}/Sounds/SFX/KevesiTune")
 		{
 
@@ -727,6 +889,10 @@ namespace StarsAbove
 		#endregion
 
 		#region Miscellaneous Sound Effects
+		public static readonly SoundStyle SFX_Laevateinn = new($"{nameof(StarsAbove)}/Sounds/SFX/Laevateinn")
+		{
+			PitchVariance = 0.1f,
+		};
 		public static readonly SoundStyle SFX_GuntriggerParryPrep = new($"{nameof(StarsAbove)}/Sounds/SFX/GuntriggerParryPrep")
 		{
 

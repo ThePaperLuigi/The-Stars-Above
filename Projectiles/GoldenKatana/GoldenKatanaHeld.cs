@@ -81,7 +81,7 @@ namespace StarsAbove.Projectiles.GoldenKatana
 			}
 
 
-			if (projOwner.GetModPlayer<StarsAbovePlayer>().bowCharge > 5)
+			if (projOwner.GetModPlayer<WeaponPlayer>().bowCharge > 5)
             {
 				projOwner.itemTime = 10;
 				projOwner.itemAnimation = 10;
@@ -94,7 +94,7 @@ namespace StarsAbove.Projectiles.GoldenKatana
 			}
 
 
-			if (projOwner.GetModPlayer<StarsAbovePlayer>().overCharge2 >= 100)//2nd stage Overcharge fully charged
+			if (projOwner.GetModPlayer<WeaponPlayer>().overCharge2 >= 100)//2nd stage Overcharge fully charged
 			{
 				int frameSpeed = 6;
 				Projectile.frameCounter++;
@@ -120,7 +120,7 @@ namespace StarsAbove.Projectiles.GoldenKatana
 			}
 			else
             {
-				if (projOwner.GetModPlayer<StarsAbovePlayer>().overCharge1 >= 100)//1st stage Overcharge fully charged
+				if (projOwner.GetModPlayer<WeaponPlayer>().overCharge1 >= 100)//1st stage Overcharge fully charged
 				{
 					int frameSpeed = 6;
 					Projectile.frameCounter++;
@@ -147,7 +147,7 @@ namespace StarsAbove.Projectiles.GoldenKatana
 				}
 				else
                 {
-					if (projOwner.GetModPlayer<StarsAbovePlayer>().bowCharge >= 100)//Normal fully charged
+					if (projOwner.GetModPlayer<WeaponPlayer>().bowCharge >= 100)//Normal fully charged
 					{
 						int frameSpeed = 6;
 						Projectile.frameCounter++;
@@ -229,7 +229,7 @@ namespace StarsAbove.Projectiles.GoldenKatana
 
 			
 
-			if (projOwner.GetModPlayer<StarsAbovePlayer>().bowCharge <= 0)
+			if (projOwner.GetModPlayer<WeaponPlayer>().bowCharge <= 0)
             {
 				Projectile.Kill();
             }

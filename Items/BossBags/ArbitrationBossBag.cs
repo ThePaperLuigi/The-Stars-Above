@@ -8,6 +8,7 @@ using Terraria.GameContent;
 using StarsAbove.NPCs;
 using StarsAbove.Items.Prisms;
 using Terraria.GameContent.ItemDropRules;
+using StarsAbove.Items.Materials;
 
 namespace StarsAbove.Items.BossBags
 {
@@ -48,6 +49,8 @@ namespace StarsAbove.Items.BossBags
 			//itemLoot.Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<LightswornPrism>(), 7));
 
 			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<VoidsentPrism>(), 4, 1, 1));
+			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<TwilightNeedle>(), 4, 1, 1));
+
 			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Essences.EssenceOfBloodshed>(), 2, 1, 1)).OnFailedRoll(ItemDropRule.Common(ModContent.ItemType<Essences.EssenceOfMimicry>(), 1, 1, 1));
 
 			itemLoot.Add(ItemDropRule.CoinsBasedOnNPCValue(ModContent.NPCType<Arbitration>()));

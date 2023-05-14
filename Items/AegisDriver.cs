@@ -30,7 +30,7 @@ namespace StarsAbove.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 24;           //The damage of your weapon
+			Item.damage = 19;           //The damage of your weapon
 			Item.DamageType = DamageClass.Magic;          //Is your weapon a melee weapon?
 			Item.width = 72;            //Weapon's texture's width
 			Item.height = 72;           //Weapon's texture's height
@@ -64,7 +64,7 @@ namespace StarsAbove.Items
 			
 			if (cooldown >= 20)
 			{
-				player.GetModPlayer<StarsAbovePlayer>().aegisGauge += 1;
+				player.GetModPlayer<WeaponPlayer>().aegisGauge += 1;
 				cooldown = 0;
 			}
 			
@@ -110,7 +110,7 @@ namespace StarsAbove.Items
 		{
 			if (player.statMana >= 40)
 			{
-				player.GetModPlayer<StarsAbovePlayer>().aegisGauge += 10;
+				player.GetModPlayer<WeaponPlayer>().aegisGauge += 10;
 				player.statMana -= 40;
 				player.manaRegenDelay = 300;
 				Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y,ProjectileType<AegisDriverOn>(), damage, knockback, player.whoAmI);

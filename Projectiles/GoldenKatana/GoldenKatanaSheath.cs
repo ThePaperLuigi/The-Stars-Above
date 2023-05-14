@@ -104,7 +104,7 @@ namespace StarsAbove.Projectiles.GoldenKatana
 			
 			Projectile.ai[0]++;
 
-			if ((projOwner.dead && !projOwner.active) || !projOwner.GetModPlayer<StarsAbovePlayer>().GoldenKatanaHeld)
+			if ((projOwner.dead && !projOwner.active) || !projOwner.GetModPlayer<WeaponPlayer>().GoldenKatanaHeld)
 			{//Disappear when player dies
 				Projectile.Kill();
 			}

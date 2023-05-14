@@ -20,7 +20,7 @@ namespace StarsAbove.Items
 			Tooltip.SetDefault("" +
 				"[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty]" +
 				"\nHolding this weapon will equip yourself with the [c/6EF367:Luminary Armament], increasing defense by 30" +
-				"\nRight click to summon [c/70D38B:Artifice Siren] for 15 seconds at your cursor (2 minute cooldown)" +
+				"\nRight click to summon [c/70D38B:Artifice Siren] for 15 seconds at your cursor (1 minute cooldown)" +
 				"\n[c/70D38B:Artifice Siren] will obliterate nearby foes with hyperpowered beams of light, even when this weapon is not held" +
 				"\nThe current [c/F592BF:Aspected Damage Type] influences the weapon's attacks" +
 				"\n[c/FFAB4D:Melee]: The weapon swings much faster and defense is added to critical strike damage" +
@@ -36,7 +36,7 @@ namespace StarsAbove.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 342;           //The damage of your weapon
+			Item.damage = 242;           //The damage of your weapon
 			Item.DamageType = DamageClass.Melee;          //Is your weapon a melee weapon?
 			Item.width = 158;            //Weapon's texture's width
 			Item.height = 158;           //Weapon's texture's height
@@ -146,7 +146,7 @@ namespace StarsAbove.Items
 		{
 			// 
 			// 60 frames = 1 second
-			//player.GetModPlayer<StarsAbovePlayer>().radiance++;
+			//player.GetModPlayer<WeaponPlayer>().radiance++;
 			
 		}
 

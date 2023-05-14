@@ -52,7 +52,7 @@ namespace StarsAbove.Items.Consumables
 			if (player.HeldItem.ModItem is LuminaryWand)
 			{
 				int type = ProjectileType<Projectiles.Starchild.BlueStarBit>();
-				Vector2 position = player.GetModPlayer<StarsAbovePlayer>().lumaPosition;
+				Vector2 position = player.GetModPlayer<WeaponPlayer>().lumaPosition;
 
 				float Speed = 28f;  //projectile speed
 
@@ -75,7 +75,7 @@ namespace StarsAbove.Items.Consumables
 				}//Dust
 
 				
-				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, 60, 0, player.whoAmI);
+				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, player.GetWeaponDamage(player.HeldItem), 0, player.whoAmI);
 
 
 				Main.projectile[index].originalDamage = 60;

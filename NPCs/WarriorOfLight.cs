@@ -196,6 +196,7 @@ namespace StarsAbove.NPCs
             
             NPC.SetEventFlagCleared(ref DownedBossSystem.downedWarrior, -1);
             DownedBossSystem.downedWarrior = true;
+
             if (Main.netMode == NetmodeID.Server)
             {
                 NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
@@ -314,7 +315,6 @@ namespace StarsAbove.NPCs
                 
                 SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_WarriorOfLightDeathQuote, NPC.Center);
 
-                SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_WarriorOfLightDeathQuote, NPC.Center);
                 
 
                 NPC.ai[3] = 1f;
@@ -397,14 +397,17 @@ namespace StarsAbove.NPCs
                         dust.scale = 1f + Main.rand.NextFloat() + (float)dustNumber * 0.3f;
                     }
                 }
-                if(DownedBossSystem.downedWarrior)
+                Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/BossFinish");
+
+                if (DownedBossSystem.downedWarrior)
                 {
                     NPC.ai[3] += 1000;//If you've seen the cutscene, don't play it again.
-                    //Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/BossFinish");
                 }
                 else
                 {
-                    Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/BossFinish");
+                    if (!DownedBossSystem.downedWarrior)
+                    {
+                    }
                 }
                 if (NPC.ai[3] == 400f)
                 {
@@ -434,20 +437,21 @@ namespace StarsAbove.NPCs
                     {
                         Dust.NewDust(NPC.Center, 0, 0, 21, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
                     }
-                    if (!DownedBossSystem.downedWarrior)
+                    SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_WarriorOfLightDefeated, NPC.Center);
+
+                    NPC.SetEventFlagCleared(ref DownedBossSystem.downedWarrior, -1);
+                    DownedBossSystem.downedWarrior = true;
+
+                    if (Main.netMode == NetmodeID.Server)
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_WarriorOfLightDefeated, NPC.Center);
+                        NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
                     }
-                        
                     NPC.life = 0;
                     NPC.HitEffect(0, 0);
                     NPC.checkDead(); // This will trigger ModNPC.CheckDead the second time, causing the real death.
+
                     
-                       DownedBossSystem.downedWarrior = true;
-                        if (Main.netMode == NetmodeID.Server)
-                        {
-                            NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
-                        }
+
                     modPlayer.lookAtWarrior = false;
                     modPlayer.WarriorOfLightActive = false;
                     modPlayer.WarriorBarActive = false;

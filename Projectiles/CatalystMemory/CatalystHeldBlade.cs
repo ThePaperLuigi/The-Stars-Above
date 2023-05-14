@@ -81,7 +81,7 @@ namespace StarsAbove.Projectiles.CatalystMemory
 			}
 
 
-			if (projOwner.GetModPlayer<StarsAbovePlayer>().CatalystMemoryProgress > 5 && projOwner.GetModPlayer<StarsAbovePlayer>().CatalystMemoryProgress < 40)
+			if (projOwner.GetModPlayer<WeaponPlayer>().CatalystMemoryProgress > 5 && projOwner.GetModPlayer<WeaponPlayer>().CatalystMemoryProgress < 40)
             {
 				//projOwner.itemTime = 10;
 				//projOwner.itemAnimation = 10;
@@ -95,7 +95,7 @@ namespace StarsAbove.Projectiles.CatalystMemory
 
 
 
-			if(projOwner.GetModPlayer<StarsAbovePlayer>().CatalystMemoryProgress > 20)
+			if(projOwner.GetModPlayer<WeaponPlayer>().CatalystMemoryProgress > 20)
             {
 				int frameSpeed = 3;
 
@@ -187,7 +187,7 @@ namespace StarsAbove.Projectiles.CatalystMemory
 
 			}
 
-			if (projOwner.GetModPlayer<StarsAbovePlayer>().CatalystMemoryProgress < 0)
+			if (projOwner.GetModPlayer<WeaponPlayer>().CatalystMemoryProgress < 0)
             {
 				Projectile.Kill();
             }

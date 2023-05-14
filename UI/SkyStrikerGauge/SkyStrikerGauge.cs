@@ -106,20 +106,20 @@ namespace StarsAbove.UI
 		}
 
 		public override void Draw(SpriteBatch spriteBatch) {
-			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SkyStrikerHeld) && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SkyStrikerMenuVisible == true)
+			if (!(Main.LocalPlayer.GetModPlayer<WeaponPlayer>().SkyStrikerHeld) && Main.LocalPlayer.GetModPlayer<WeaponPlayer>().SkyStrikerMenuVisible == true)
 				return;
 
 			base.Draw(spriteBatch);
 		}
 		private void redClick(UIMouseEvent evt, UIElement listeningElement)
 		{
-			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SkyStrikerHeld && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SkyStrikerMenuVisible == true))
+			if (!(Main.LocalPlayer.GetModPlayer<WeaponPlayer>().SkyStrikerHeld && Main.LocalPlayer.GetModPlayer<WeaponPlayer>().SkyStrikerMenuVisible == true))
 				return;
 			
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SkyStrikerForm = 1;
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SkyStrikerTransformPrep = true;
+			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().SkyStrikerForm = 1;
+			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().SkyStrikerTransformPrep = true;
 
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SkyStrikerMenuVisible = false;
+			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().SkyStrikerMenuVisible = false;
 			
 
 
@@ -130,13 +130,13 @@ namespace StarsAbove.UI
 		
 		private void yellowClick(UIMouseEvent evt, UIElement listeningElement)
 		{
-			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SkyStrikerHeld && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SkyStrikerMenuVisible == true))
+			if (!(Main.LocalPlayer.GetModPlayer<WeaponPlayer>().SkyStrikerHeld && Main.LocalPlayer.GetModPlayer<WeaponPlayer>().SkyStrikerMenuVisible == true))
 				return;
 
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SkyStrikerForm = 2;
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SkyStrikerTransformPrep = true;
+			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().SkyStrikerForm = 2;
+			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().SkyStrikerTransformPrep = true;
 
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SkyStrikerMenuVisible = false;
+			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().SkyStrikerMenuVisible = false;
 
 
 
@@ -146,12 +146,12 @@ namespace StarsAbove.UI
 		}
 		private void greenClick(UIMouseEvent evt, UIElement listeningElement)
 		{
-			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SkyStrikerHeld && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SkyStrikerMenuVisible == true))
+			if (!(Main.LocalPlayer.GetModPlayer<WeaponPlayer>().SkyStrikerHeld && Main.LocalPlayer.GetModPlayer<WeaponPlayer>().SkyStrikerMenuVisible == true))
 				return;
 
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SkyStrikerForm = 3;
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SkyStrikerTransformPrep = true;
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SkyStrikerMenuVisible = false;
+			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().SkyStrikerForm = 3;
+			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().SkyStrikerTransformPrep = true;
+			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().SkyStrikerMenuVisible = false;
 
 
 
@@ -165,13 +165,13 @@ namespace StarsAbove.UI
 		
 		private void purpleClick(UIMouseEvent evt, UIElement listeningElement)
 		{
-			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SkyStrikerHeld && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SkyStrikerMenuVisible == true))
+			if (!(Main.LocalPlayer.GetModPlayer<WeaponPlayer>().SkyStrikerHeld && Main.LocalPlayer.GetModPlayer<WeaponPlayer>().SkyStrikerMenuVisible == true))
 				return;
 
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SkyStrikerForm = 4;
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SkyStrikerTransformPrep = true;
+			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().SkyStrikerForm = 4;
+			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().SkyStrikerTransformPrep = true;
 
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SkyStrikerMenuVisible = false;
+			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().SkyStrikerMenuVisible = false;
 
 
 
@@ -182,7 +182,7 @@ namespace StarsAbove.UI
 		protected override void DrawSelf(SpriteBatch spriteBatch) {
 			base.DrawSelf(spriteBatch);
 
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			
 			Rectangle redArea = red.GetInnerDimensions().ToRectangle();
 			Rectangle orangeArea = orange.GetInnerDimensions().ToRectangle();
@@ -213,7 +213,7 @@ namespace StarsAbove.UI
 			
 		}
 		public override void Update(GameTime gameTime) {
-			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SkyStrikerMenuVisible == true))
+			if (!(Main.LocalPlayer.GetModPlayer<WeaponPlayer>().SkyStrikerMenuVisible == true))
 			{
 				area.Remove();
 				return;

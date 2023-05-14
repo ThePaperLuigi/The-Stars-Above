@@ -137,37 +137,14 @@ namespace StarsAbove
         {
             
         }
-        public static float InQuad(float t) => t * t;
-        public static float OutQuad(float t) => 1 - InQuad(1 - t);
-        public static float InOutQuad(float t)
-        {
-            if (t < 0.5) return InQuad(t * 2) / 2;
-            return 1 - InQuad((1 - t) * 2) / 2;
-        }
-
-        public static float EaseIn(float t)
-        {
-            return t * t;
-        }
-        static float Flip(float x)
-        {
-            return 1 - x;
-        }
-        public static float EaseOut(float t)
-        {
-            return Flip((float)Math.Sqrt(Flip(t)));
-        }
-        public static float EaseInOut(float t)
-        {
-            return MathHelper.Lerp(EaseIn(t), EaseOut(t), t);
-        }
+        
         bool quadraticFloatReverse = false;
 
         private void QuadraticFloatAnimation()
         {
 
-            quadraticFloat = InOutQuad(quadraticFloatTimer);
-            quadraticFloatIdle = InOutQuad(idleAnimationProgressAlt);
+            quadraticFloat = Utilities.EaseHelper.InOutQuad(quadraticFloatTimer);
+            quadraticFloatIdle = Utilities.EaseHelper.InOutQuad(idleAnimationProgressAlt);
 
             if (quadraticFloatReverse)
             {
@@ -251,11 +228,11 @@ namespace StarsAbove
 
             if (!idleAnimationActive)
             {
-                AsphodeneEyeMovementRX = MathHelper.Lerp(0, 6, MousePositionFloatX);
-                AsphodeneEyeMovementLX = MathHelper.Lerp(0, 2, MousePositionFloatX);
+                AsphodeneEyeMovementRX = MathHelper.Lerp(0, 2, MousePositionFloatX);
+                AsphodeneEyeMovementLX = MathHelper.Lerp(0, 1, MousePositionFloatX);
                 AsphodeneEyeMovementY = MathHelper.Lerp(-1, 1, MousePositionFloatY);
 
-                EridaniEyeMovementLX = MathHelper.Lerp(-2, 2, MousePositionFloatX);
+                EridaniEyeMovementLX = MathHelper.Lerp(0, 2, MousePositionFloatX);
                 EridaniEyeMovementRX = MathHelper.Lerp(-1, 1, MousePositionFloatX);
                 EridaniEyeMovementY = MathHelper.Lerp(-1, 1, MousePositionFloatY);
 
@@ -264,14 +241,14 @@ namespace StarsAbove
             {
                 if(modPlayer.chosenStarfarer == 1)//Asphodene's idle animation; she looks down on her summoned sword.
                 {
-                    AsphodeneEyeMovementRX = MathHelper.Lerp(2, 6, idleAnimationProgressAlt);
-                    AsphodeneEyeMovementLX = MathHelper.Lerp(1, 3, idleAnimationProgressAlt);
-                    AsphodeneEyeMovementY = MathHelper.Lerp(2, 0, idleAnimationProgressAlt);
+                    AsphodeneEyeMovementRX = MathHelper.Lerp(1, 3, idleAnimationProgressAlt);
+                    AsphodeneEyeMovementLX = MathHelper.Lerp(0, 2, idleAnimationProgressAlt);
+                    AsphodeneEyeMovementY = MathHelper.Lerp(1, 0, idleAnimationProgressAlt);
                 }
 
                 if (modPlayer.chosenStarfarer == 2)//Eridani's idle animation; she summons a book and begins to read.
                 {
-                    EridaniEyeMovementLX = MathHelper.Lerp(2, -2, idleAnimationReading);
+                    EridaniEyeMovementLX = MathHelper.Lerp(1, -2, idleAnimationReading);
                     EridaniEyeMovementRX = MathHelper.Lerp(1, -1, idleAnimationReading);
                     EridaniEyeMovementY = 2;
                 }

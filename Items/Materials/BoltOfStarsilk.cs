@@ -11,6 +11,7 @@ namespace StarsAbove.Items.Materials
 			DisplayName.SetDefault("Bolt of Starsilk");
 			Tooltip.SetDefault("Utilized to craft Starfarer Attire" +
 				"\n'A texture akin to twinkling stars'");
+			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;
 		}

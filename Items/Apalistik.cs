@@ -57,35 +57,35 @@ namespace StarsAbove.Items
         {
 			if (NPC.downedSlimeKing)
 			{
-				Item.damage = 17;
+				Item.damage = 8;
 			}
 			if (NPC.downedBoss1)
 			{
-				Item.damage = 22;
+				Item.damage = 12;
 			}
 			if (NPC.downedBoss2)
 			{
-				Item.damage = 25;
+				Item.damage = 14;
 			}
 			if (NPC.downedQueenBee)
 			{
-				Item.damage = 28;
+				Item.damage = 19;
 			}
 			if (NPC.downedBoss3)
 			{
-				Item.damage = 34;
+				Item.damage = 22;
 			}
 			if (Main.hardMode)
 			{
-				Item.damage = 39;
+				Item.damage = 26;
 			}
 			if (NPC.downedMechBossAny)
 			{
-				Item.damage = 40;
+				Item.damage = 35;
 			}
 			if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
 			{
-				Item.damage = 55;
+				Item.damage = 44;
 			}
 			if (NPC.downedPlantBoss)
 			{

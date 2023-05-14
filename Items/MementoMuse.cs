@@ -61,7 +61,7 @@ namespace StarsAbove.Items
 				{
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_MuseFinish, player.Center);
 					rhythmBurstReady = false;
-					player.GetModPlayer<StarsAbovePlayer>().RhythmCombo = 0;
+					player.GetModPlayer<WeaponPlayer>().RhythmCombo = 0;
 					rhythmBurstDuration = 120;
 				}
 				else
@@ -73,15 +73,15 @@ namespace StarsAbove.Items
 			{
 
 
-				if (player.GetModPlayer<StarsAbovePlayer>().RhythmTiming > 40 && player.GetModPlayer<StarsAbovePlayer>().RhythmTiming < 60)//Success!
+				if (player.GetModPlayer<WeaponPlayer>().RhythmTiming > 40 && player.GetModPlayer<WeaponPlayer>().RhythmTiming < 60)//Success!
 				{
 
 					return true;
 				}
 				else
 				{//Fail
-					player.GetModPlayer<StarsAbovePlayer>().RhythmTiming = 0;
-					player.GetModPlayer<StarsAbovePlayer>().RhythmCombo = 0;
+					player.GetModPlayer<WeaponPlayer>().RhythmTiming = 0;
+					player.GetModPlayer<WeaponPlayer>().RhythmCombo = 0;
 				}
 			}  
 			return true;
@@ -90,24 +90,24 @@ namespace StarsAbove.Items
 		public override void HoldItem(Player player)
 		{
 			rhythmBurstDuration--;
-			if (player.GetModPlayer<StarsAbovePlayer>().RhythmTiming == 40)//
+			if (player.GetModPlayer<WeaponPlayer>().RhythmTiming == 40)//
 			{
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_MusePing, player.Center);
 			}
 			if (rhythmBurstDuration <= 0)
 			{
-				player.GetModPlayer<StarsAbovePlayer>().RhythmTiming += 2;
+				player.GetModPlayer<WeaponPlayer>().RhythmTiming += 2;
 			}
 			else
 			{
-				player.GetModPlayer<StarsAbovePlayer>().RhythmTiming = 48;
+				player.GetModPlayer<WeaponPlayer>().RhythmTiming = 48;
 			}
-			if (player.GetModPlayer<StarsAbovePlayer>().RhythmTiming > 100)
+			if (player.GetModPlayer<WeaponPlayer>().RhythmTiming > 100)
 			{
-				player.GetModPlayer<StarsAbovePlayer>().RhythmCombo = 0;
-				player.GetModPlayer<StarsAbovePlayer>().RhythmTiming = 0;
+				player.GetModPlayer<WeaponPlayer>().RhythmCombo = 0;
+				player.GetModPlayer<WeaponPlayer>().RhythmTiming = 0;
 			}
-			Item.crit = (player.GetModPlayer<StarsAbovePlayer>().RhythmCombo *2);
+			Item.crit = (player.GetModPlayer<WeaponPlayer>().RhythmCombo *2);
 			
 				
 			
@@ -126,7 +126,7 @@ namespace StarsAbove.Items
 
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
 		{
-			if (player.GetModPlayer<StarsAbovePlayer>().RhythmTiming > 40 && player.GetModPlayer<StarsAbovePlayer>().RhythmTiming < 60)//Success!
+			if (player.GetModPlayer<WeaponPlayer>().RhythmTiming > 40 && player.GetModPlayer<WeaponPlayer>().RhythmTiming < 60)//Success!
 			{
 				
 				
@@ -142,22 +142,22 @@ namespace StarsAbove.Items
 		
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			if (player.GetModPlayer<StarsAbovePlayer>().RhythmTiming > 40 && player.GetModPlayer<StarsAbovePlayer>().RhythmTiming < 60)
+			if (player.GetModPlayer<WeaponPlayer>().RhythmTiming > 40 && player.GetModPlayer<WeaponPlayer>().RhythmTiming < 60)
 			{
 				
 				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y + 8, velocity.X, velocity.Y,type, damage * 2, knockback * 2, player.whoAmI, 0f);
 				
-				if (player.GetModPlayer<StarsAbovePlayer>().RhythmCombo < 12 && rhythmBurstDuration <= 0)
+				if (player.GetModPlayer<WeaponPlayer>().RhythmCombo < 12 && rhythmBurstDuration <= 0)
 				{
-					player.GetModPlayer<StarsAbovePlayer>().RhythmCombo++;
-					if (player.GetModPlayer<StarsAbovePlayer>().RhythmCombo == 12)
+					player.GetModPlayer<WeaponPlayer>().RhythmCombo++;
+					if (player.GetModPlayer<WeaponPlayer>().RhythmCombo == 12)
 					{
 						rhythmBurstReady = true;
 					}
 						
 
 				}
-				player.GetModPlayer<StarsAbovePlayer>().RhythmTiming = 0;
+				player.GetModPlayer<WeaponPlayer>().RhythmTiming = 0;
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_YunlaiSwing1, player.Center);
 				for (int d = 0; d < 2; d++)
 				{
