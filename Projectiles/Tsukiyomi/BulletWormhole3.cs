@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.Tsukiyomi
     public class BulletWormhole3 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Wormhole");
+			// DisplayName.SetDefault("Wormhole");
 			
 		}
 

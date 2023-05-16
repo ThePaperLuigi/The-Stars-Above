@@ -15,8 +15,8 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("The Blood Blade");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("The Blood Blade");
+			/* Tooltip.SetDefault("" +
 				"Attacks with this weapon will rapidly sweep in an arc" +
                 "\nStriking foes with this attack will heal a small portion of damage dealt as HP (Max 5 HP)" +
 				"\nGain the buff [c/A20000:Bloodthirsting Blade] when wielding this weapon" +
@@ -28,7 +28,7 @@ namespace StarsAbove.Items
 				"\n[c/FF1B00:Blade Art: Dragon] deals 4x damage to all foes in a wide radius around you" +
 				"\nDefeating a foe with [c/FF1B00:Blade Art: Dragon] instantly refreshes the cooldown" +
 				"\n'So, let all become ash!'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -109,7 +109,7 @@ namespace StarsAbove.Items
 			
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 
 			

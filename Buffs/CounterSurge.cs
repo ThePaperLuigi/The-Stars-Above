@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Counter Surge");
-            Description.SetDefault("The Xenoblade's charged attack has been drastically empowered");
+            // DisplayName.SetDefault("Counter Surge");
+            // Description.SetDefault("The Xenoblade's charged attack has been drastically empowered");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //
         }

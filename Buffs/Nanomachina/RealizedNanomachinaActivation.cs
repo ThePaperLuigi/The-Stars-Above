@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.Nanomachina
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Realized Nanomachina Activation");
-            Description.SetDefault("Nanomachines have been recently deployed, granting powerful damage reduction");
+            // DisplayName.SetDefault("Realized Nanomachina Activation");
+            // Description.SetDefault("Nanomachines have been recently deployed, granting powerful damage reduction");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

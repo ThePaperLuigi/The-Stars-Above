@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Infernal Hemorrhage");
-            Description.SetDefault("Taking lethal damage over time");
+            // DisplayName.SetDefault("Infernal Hemorrhage");
+            // Description.SetDefault("Taking lethal damage over time");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

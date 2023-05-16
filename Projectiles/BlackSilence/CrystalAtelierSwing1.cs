@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.BlackSilence
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gloves of the Black Silence");
+			// DisplayName.SetDefault("Gloves of the Black Silence");
 			Main.projFrames[Projectile.type] = 4;
 			//DrawOriginOffsetY = 30;
 			//DrawOffsetX = -60;
@@ -42,7 +42,7 @@ namespace StarsAbove.Projectiles.BlackSilence
 		}
 
         // It appears that for this AI, only the ai0 field is used!
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 
 			Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0, 0, ProjectileType<CrystalAtelierFollowUp>(), Projectile.damage, 0, Main.player[Projectile.owner].whoAmI, 0f);

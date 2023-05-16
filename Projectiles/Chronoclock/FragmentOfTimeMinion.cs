@@ -13,7 +13,7 @@ namespace StarsAbove.Projectiles.Chronoclock
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Fragment of Time");
+			// DisplayName.SetDefault("Fragment of Time");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30;
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
 			Main.projFrames[Projectile.type] = 11;

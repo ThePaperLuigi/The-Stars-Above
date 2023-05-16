@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.SoulReaver
     public class SoulReaverVFX1 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Soul Reaver");     //The English name of the projectile
+			// DisplayName.SetDefault("Soul Reaver");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 150;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
 		}

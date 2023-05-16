@@ -8,13 +8,13 @@ namespace StarsAbove.Items.Prisms
     public class OvergrownPrism : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Overgrown Prism");
-			Tooltip.SetDefault("[c/FF5934:Tier 2 Stellar Prism]" +
+			// DisplayName.SetDefault("Overgrown Prism");
+			/* Tooltip.SetDefault("[c/FF5934:Tier 2 Stellar Prism]" +
 				"\nAffix to a Stellar Nova to gain the following ability:" +
 				"\n[c/48BD2E:Uncontrollable Overgrowth]" +
 				"\nUpon cast of the Stellar Nova, gain 100 HP and Wrath for 20 seconds" +
 				"\nHowever, inflict yourself with Vulnerable for the same duration, halving defense" + //0
-				"");
+				""); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;

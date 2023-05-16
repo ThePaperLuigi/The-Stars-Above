@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Butcher's Dozen");
-            Description.SetDefault("Attack damage and swing speed has been increased");
+            // DisplayName.SetDefault("Butcher's Dozen");
+            // Description.SetDefault("Attack damage and swing speed has been increased");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

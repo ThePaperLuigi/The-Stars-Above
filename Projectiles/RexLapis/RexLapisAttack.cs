@@ -12,7 +12,7 @@ namespace StarsAbove.Projectiles.RexLapis
     public class RexLapisAttack : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Rex Lapis");
+			// DisplayName.SetDefault("Rex Lapis");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 70;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
 
@@ -94,7 +94,7 @@ namespace StarsAbove.Projectiles.RexLapis
 
 			return true;
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Player projOwner = Main.player[Projectile.owner];
 			projOwner.AddBuff(BuffType<BulwarkOfJade>(), 120);

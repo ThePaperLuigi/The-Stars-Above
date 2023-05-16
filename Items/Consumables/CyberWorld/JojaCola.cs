@@ -10,10 +10,10 @@ namespace StarsAbove.Items.Consumables.CyberWorld
     public class JojaCola : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Foreign Soda Pop");
-			Tooltip.SetDefault("A questionable beverage" +
+			// DisplayName.SetDefault("Foreign Soda Pop");
+			/* Tooltip.SetDefault("A questionable beverage" +
 				"\nHas no effect" +
-				"\n'Property of Joja Offworld'");
+				"\n'Property of Joja Offworld'"); */
 			//ItemID.Sets.SortingPriorityBossSpawns[item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 		}
 

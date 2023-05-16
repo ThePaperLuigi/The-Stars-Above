@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs.ManiacalJustice
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Karmic Retribution");
-            Description.SetDefault("Sins are causing a drastic loss in health");
+            // DisplayName.SetDefault("Karmic Retribution");
+            // Description.SetDefault("Sins are causing a drastic loss in health");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //
         }

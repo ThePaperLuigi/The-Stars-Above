@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Hyperburn");
-            Description.SetDefault("Intense flames are causing a drastic loss in health");
+            // DisplayName.SetDefault("Hyperburn");
+            // Description.SetDefault("Intense flames are causing a drastic loss in health");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //
         }

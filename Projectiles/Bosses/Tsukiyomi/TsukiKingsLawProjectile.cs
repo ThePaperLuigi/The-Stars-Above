@@ -14,7 +14,7 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Key Of The King's Law");
+			// DisplayName.SetDefault("Key Of The King's Law");
 			Main.projFrames[Projectile.type] = 14;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;

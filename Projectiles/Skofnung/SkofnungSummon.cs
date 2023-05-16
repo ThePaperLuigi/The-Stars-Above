@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.Skofnung
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Skofnung");
+			// DisplayName.SetDefault("Skofnung");
 		}
 
 		public override void SetDefaults()
@@ -60,7 +60,7 @@ namespace StarsAbove.Projectiles.Skofnung
 
         // While there are several different ways to change how our projectile could behave differently, lets make it so
         // when our projectile finally dies, it will explode into 4 regular Meowmere projectiles.
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 			Player player = Main.player[Projectile.owner];
 			

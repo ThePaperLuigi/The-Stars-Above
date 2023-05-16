@@ -11,8 +11,8 @@ namespace StarsAbove.Items.Prisms
     public class PrismOfTheCosmicPhoenix : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Prism of the Cosmic Phoenix");
-			Tooltip.SetDefault("[c/FF4F9F:Tier 3 Stellar Prism]" +
+			// DisplayName.SetDefault("Prism of the Cosmic Phoenix");
+			/* Tooltip.SetDefault("[c/FF4F9F:Tier 3 Stellar Prism]" +
 				"\nAffix to a Stellar Nova to gain the following abilities:" +
 				"\n[c/C05CC8:Stellar Drive]" +
 				"\nInstantly gain 100 Mana when casting the Stellar Nova" +
@@ -24,7 +24,7 @@ namespace StarsAbove.Items.Prisms
 				"\nLose the ability to fly below 40 Mana" +//0
 				"\n[c/C77878:Tier 3 Prisms can only be slotted in the first slot of the Stellar Nova Menu]" +
 				"\n'I'm not about to stop here!'" + //-3
-				"");
+				""); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(7, 8));

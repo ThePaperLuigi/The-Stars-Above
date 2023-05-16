@@ -17,8 +17,8 @@ namespace StarsAbove.Items
     public class AncientBook : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Takonomicon");
-			Tooltip.SetDefault("Calls forth [c/B875F0:Void Octopi] to assail foes with homing lasers" +
+			// DisplayName.SetDefault("Takonomicon");
+			/* Tooltip.SetDefault("Calls forth [c/B875F0:Void Octopi] to assail foes with homing lasers" +
 				"\nEach [c/B875F0:Void Octopus] summoned increases damage of all minions and summon weapons by 1%" +
 				"\nRight click to fire [c/E752B3:Eldritch Blast] towards your cursor for 3 seconds, melting foes in a line before you (1 minute cooldown)" +
 				"\nWith at least one [c/B875F0:Void Octopus] summoned, the [c/5652E7:Abyssal Gauge] will appear" +
@@ -29,7 +29,7 @@ namespace StarsAbove.Items
 				"\nFor each void octopi summoned, the amount of [c/AC49F5:Ancient One's Summoning]'s portals will increase and [c/E752B3:Eldritch Blast] does more damage" +
                 "\nDamage scales with world progression" +
 				"\n'We are happy. We are here. We are hype. We are...'"
-				+ $"");
+				+ $""); */
 
 			ItemID.Sets.GamepadWholeScreenUseRange[Item.type] = true;
 			ItemID.Sets.LockOnIgnoresCollision[Item.type] = true;

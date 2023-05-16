@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
     public class NalhaunOrbitingBolt : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Heatbolt");     //The English name of the projectile
+			// DisplayName.SetDefault("Heatbolt");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 50;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
 		}
@@ -128,7 +128,7 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 
 
 		}
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
 			target.AddBuff(BuffID.OnFire, 60);
 			base.OnHitPlayer(target, damage, crit);

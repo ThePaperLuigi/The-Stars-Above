@@ -10,11 +10,11 @@ namespace StarsAbove.Items.Pets
     public class HolographicToken : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Holographic Token");
-			Tooltip.SetDefault("Summons the Detective Dog and Bubbled Shark" +
+			// DisplayName.SetDefault("Holographic Token");
+			/* Tooltip.SetDefault("Summons the Detective Dog and Bubbled Shark" +
 				"\nOccupies both normal pet and light pet slots" +
 				"\nEquipping the item only summons the Bubbled Shark" +
-                "");
+                ""); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

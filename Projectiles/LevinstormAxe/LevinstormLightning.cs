@@ -16,7 +16,7 @@ namespace StarsAbove.Projectiles.LevinstormAxe
     public class LevinstormLightning : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Levinstorm Axe");     //The English name of the projectile
+			// DisplayName.SetDefault("Levinstorm Axe");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = ProjectileID.Sets.TrailCacheLength[ProjectileID.VortexLightning];    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 1;        //The recording mode
 			//DrawOffsetX = 40;
@@ -225,7 +225,7 @@ namespace StarsAbove.Projectiles.LevinstormAxe
 
 			return true;
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			for (int d = 0; d < 8; d++)
 			{

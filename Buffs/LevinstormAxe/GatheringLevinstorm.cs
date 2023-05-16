@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.LevinstormAxe
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Gathering Levinstorm");
-            Description.SetDefault("Overcharged electrical energy is enhancing certain attacks");
+            // DisplayName.SetDefault("Gathering Levinstorm");
+            // Description.SetDefault("Overcharged electrical energy is enhancing certain attacks");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false;
         }

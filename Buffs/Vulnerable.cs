@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Vulnerability Up");
-            Description.SetDefault("Your defenses are drastically reduced");
+            // DisplayName.SetDefault("Vulnerability Up");
+            // Description.SetDefault("Your defenses are drastically reduced");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

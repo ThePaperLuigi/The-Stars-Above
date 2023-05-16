@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles
     public class reverseRadiate : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Radiate");
+			// DisplayName.SetDefault("Radiate");
 			
 		}
 

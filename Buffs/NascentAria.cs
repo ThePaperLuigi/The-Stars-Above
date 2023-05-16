@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Nascent Aria");
-            Description.SetDefault("Inner resolve is increasing defense and Health Regeneration");
+            // DisplayName.SetDefault("Nascent Aria");
+            // Description.SetDefault("Inner resolve is increasing defense and Health Regeneration");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

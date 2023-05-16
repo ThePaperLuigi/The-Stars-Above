@@ -10,8 +10,8 @@ namespace StarsAbove.Items.Pets
     public class DragonEgg : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Draconic Egg");
-			Tooltip.SetDefault("Summons a crimson dragonet");
+			// DisplayName.SetDefault("Draconic Egg");
+			// Tooltip.SetDefault("Summons a crimson dragonet");
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

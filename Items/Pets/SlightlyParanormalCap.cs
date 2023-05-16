@@ -10,8 +10,8 @@ namespace StarsAbove.Items.Pets
     public class SlightlyParanormalCap : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Slightly Paranormal Cap");
-			Tooltip.SetDefault("Summons a mysterious ghost");
+			// DisplayName.SetDefault("Slightly Paranormal Cap");
+			// Tooltip.SetDefault("Summons a mysterious ghost");
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

@@ -13,12 +13,12 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Attacks with this weapon stab rapidly and have high knockback" +
+			/* Tooltip.SetDefault("Attacks with this weapon stab rapidly and have high knockback" +
 				"\nHolding this weapon conjures the [c/395A37:Blade of Grudges], which will target and attack foes" +
 				"\nThe [c/395A37:Blade of Grudges] does half of your defense as damage to foes every 4 seconds (calculated seperately)" +
 				"\nWhen the [c/395A37:Blade of Grudges] inflicts a critical strike, gain [c/7E2626:Bloodstained Belone] for 8 seconds" +
 				"\n[c/7E2626:Bloodstained Belone] increases damage by 10%" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -90,7 +90,7 @@ namespace StarsAbove.Items
 			}
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			// 
 			// 60 frames = 1 second

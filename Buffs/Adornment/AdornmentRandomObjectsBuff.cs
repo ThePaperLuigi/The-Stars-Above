@@ -9,8 +9,8 @@ namespace StarsAbove.Buffs.Adornment
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Pure Chaos (Random Objects)");
-            Description.SetDefault("Chaotic energy has granted a bane");
+            // DisplayName.SetDefault("Pure Chaos (Random Objects)");
+            // Description.SetDefault("Chaotic energy has granted a bane");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

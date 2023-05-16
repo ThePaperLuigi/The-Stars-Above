@@ -6,7 +6,7 @@ namespace StarsAbove.Projectiles
     public class SaberAOE2 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Saber AOE Indicator");
+			// DisplayName.SetDefault("Saber AOE Indicator");
 			
 		}
 

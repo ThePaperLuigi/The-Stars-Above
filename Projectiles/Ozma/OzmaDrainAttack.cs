@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.Ozma
     public class OzmaDrainAttack : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Ozma Ascendant");     //The English name of the projectile
+			// DisplayName.SetDefault("Ozma Ascendant");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode
 			Main.projFrames[Projectile.type] = 1;
@@ -84,7 +84,7 @@ namespace StarsAbove.Projectiles.Ozma
 
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			for (int d = 0; d < 2; d++)
 			{

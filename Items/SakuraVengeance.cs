@@ -17,8 +17,8 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sakura's Vengeance");
-			Tooltip.SetDefault("Attacks with this weapon swing in a wide arc" +
+			// DisplayName.SetDefault("Sakura's Vengeance");
+			/* Tooltip.SetDefault("Attacks with this weapon swing in a wide arc" +
 				"\nEvery 30 seconds, the weapon cycles through 4 [c/FF71D8:Elemental Arts]" +
 				"\n[c/55B168:Earthsplitter] increases defense by 10 and grants 25% damage resistance" +
                 "\nAttacks stun enemies for 1 second (Critical strikes stun enemies for 4 seconds and grant Invincibility briefly)" +
@@ -34,7 +34,7 @@ namespace StarsAbove.Items
 				"\n[c/DF2AAE:Elemental Chaos] grants all [c/FF71D8:Elemental Arts] buffs and the weapon will inflict all [c/FF71D8:Elemental Arts] debuffs on foes" +
 				"\n[c/DF2AAE:Elemental Chaos] does not grant the unique abilities of each [c/FF71D8:Elemental Art]" +
 				"\n'Remember those who have passed, and they will forever live on'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -127,7 +127,7 @@ namespace StarsAbove.Items
 
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 
 

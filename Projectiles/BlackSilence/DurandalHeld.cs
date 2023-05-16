@@ -14,7 +14,7 @@ namespace StarsAbove.Projectiles.BlackSilence
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gloves of the Black Silence");
+			// DisplayName.SetDefault("Gloves of the Black Silence");
 			
 		}
 

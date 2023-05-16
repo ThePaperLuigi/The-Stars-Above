@@ -8,10 +8,10 @@ namespace StarsAbove.Items.Essences
     public class EssenceOfLiberation : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Essence of Liberation");
-			Tooltip.SetDefault("A gift from your Starfarer" +
+			// DisplayName.SetDefault("Essence of Liberation");
+			/* Tooltip.SetDefault("A gift from your Starfarer" +
 				"\nUtilized in the creation of 'Liberation Blazing'" +
-				$"");
+				$""); */
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;
 		}

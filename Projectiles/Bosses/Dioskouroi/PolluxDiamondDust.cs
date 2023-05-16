@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.Bosses.Dioskouroi
     public class PolluxDiamondDust : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Diamond Dust");
+			// DisplayName.SetDefault("Diamond Dust");
 			
 		}
 
@@ -60,7 +60,7 @@ namespace StarsAbove.Projectiles.Bosses.Dioskouroi
 
 			return false;
         }
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
 			if(target.GetModPlayer<BossPlayer>().temperatureGaugeCold > 0)
             {

@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles
     public class AbsoluteRendHeavenDamage : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Absolute Rend Heaven");
+			// DisplayName.SetDefault("Absolute Rend Heaven");
 			
 		}
 

@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.Pets
 		public override void SetStaticDefaults()
 		{
 			
-			DisplayName.SetDefault("Umbreon"); // Automatic from .lang files
+			// DisplayName.SetDefault("Umbreon"); // Automatic from .lang files
 			Main.projFrames[Projectile.type] = 2;
 			Main.projPet[Projectile.type] = true;
 			ProjectileID.Sets.LightPet[Projectile.type] = true;

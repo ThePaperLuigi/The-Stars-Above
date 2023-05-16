@@ -10,9 +10,9 @@ namespace StarsAbove.Items.Pets
     public class DustyCartridge : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Dusty Cartridge");
-			Tooltip.SetDefault("Summons the Hunted Duck and Dog" +
-				"\n");
+			// DisplayName.SetDefault("Dusty Cartridge");
+			/* Tooltip.SetDefault("Summons the Hunted Duck and Dog" +
+				"\n"); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

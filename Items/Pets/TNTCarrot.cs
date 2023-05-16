@@ -10,8 +10,8 @@ namespace StarsAbove.Items.Pets
     public class TNTCarrot : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("TNT-Bound Carrot");
-			Tooltip.SetDefault("Summons a suspicious looking bunny-girl");
+			// DisplayName.SetDefault("TNT-Bound Carrot");
+			// Tooltip.SetDefault("Summons a suspicious looking bunny-girl");
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

@@ -15,8 +15,8 @@ namespace StarsAbove.Items.Armor.Manifestation
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("E.G.O. Cape/Tail");
-			Tooltip.SetDefault("Unobtainable; vanity by using 'Manifestation'");
+			// DisplayName.SetDefault("E.G.O. Cape/Tail");
+			// Tooltip.SetDefault("Unobtainable; vanity by using 'Manifestation'");
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}

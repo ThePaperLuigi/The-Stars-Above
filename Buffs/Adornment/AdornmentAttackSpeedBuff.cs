@@ -9,8 +9,8 @@ namespace StarsAbove.Buffs.Adornment
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Pure Chaos (Attack Speed)");
-            Description.SetDefault("Chaotic energy has granted a boon");
+            // DisplayName.SetDefault("Pure Chaos (Attack Speed)");
+            // Description.SetDefault("Chaotic energy has granted a boon");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false;
         }

@@ -8,13 +8,13 @@ namespace StarsAbove.Items.Prisms
     public class EmpressPrism : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Empress Prism");
-			Tooltip.SetDefault("[c/FF5934:Tier 2 Stellar Prism]" +
+			// DisplayName.SetDefault("Empress Prism");
+			/* Tooltip.SetDefault("[c/FF5934:Tier 2 Stellar Prism]" +
 				"\nAffix to a Stellar Nova to gain the following ability:" +
 				"\n[c/E516A0:Envoy of the Hallowed]" +
 				"\nAfter damage calculation, all Stellar Nova hits become critical, but damage is reduced by 70%" +
 				"" + //0
-				"");
+				""); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;

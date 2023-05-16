@@ -15,7 +15,7 @@ namespace StarsAbove.Items
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("" +
+            /* Tooltip.SetDefault("" +
                 "[c/F7D76A:Hold left click to charge the weapon; if the weapon is fully charged, the attack varies]" +
                 "\nHolding the weapon will cause the [c/8BD1D1:Duality Gauge] to appear, beginning 100% [c/C7FFFA:Sanctified]" +
                 "\nUncharged attacks sweep in a colossal area and influences the [c/8BD1D1:Duality Gauge] towards [c/C7FFFA:Sanctification]" +
@@ -27,7 +27,7 @@ namespace StarsAbove.Items
                 "\nThe first instance of damage taken during [c/C7FFFA:Flash of Eternity] is negated" +
                 "\n[c/B60000:Claws of Nyx] increases damage by 40% and crit chance by 20%" +
                 "\n'Darkness comes from within'" +
-                $"");
+                $""); */
 
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

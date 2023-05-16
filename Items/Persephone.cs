@@ -12,9 +12,9 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Applies frostburn to foes and fires an icy projectile when in the confines of the underworld" +
+			/* Tooltip.SetDefault("Applies frostburn to foes and fires an icy projectile when in the confines of the underworld" +
 				"\n'Only thorns left on this rose'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -54,7 +54,7 @@ namespace StarsAbove.Items
 			}
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			// 
 			// 60 frames = 1 second

@@ -12,7 +12,7 @@ namespace StarsAbove.Projectiles.MorningStar
     public class LightningJolt : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("The Morning Star");     //The English name of the projectile
+			// DisplayName.SetDefault("The Morning Star");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 70;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode
 		}
@@ -80,7 +80,7 @@ namespace StarsAbove.Projectiles.MorningStar
 
 			base.AI();
         }
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 
 			target.AddBuff(BuffID.Ichor, 180);

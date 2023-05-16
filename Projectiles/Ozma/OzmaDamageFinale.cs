@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.Ozma
     public class OzmaDamageFinale : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Ozma Ascendant");
+			// DisplayName.SetDefault("Ozma Ascendant");
 			
 		}
 
@@ -58,7 +58,7 @@ namespace StarsAbove.Projectiles.Ozma
 			
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			for (int d = 0; d < 8; d++)
 			{

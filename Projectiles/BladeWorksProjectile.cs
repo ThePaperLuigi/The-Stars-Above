@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles
     public class BladeWorksProjectile : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Unlimited Blade Works");
+			// DisplayName.SetDefault("Unlimited Blade Works");
 			Main.projFrames[Projectile.type] = 10;
 		}
 

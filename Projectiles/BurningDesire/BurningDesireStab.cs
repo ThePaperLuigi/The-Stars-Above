@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.BurningDesire
     public class BurningDesireStab : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Burning Desire");
+			// DisplayName.SetDefault("Burning Desire");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 70;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
 
@@ -107,7 +107,7 @@ namespace StarsAbove.Projectiles.BurningDesire
 
 			return true;
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Player projOwner = Main.player[Projectile.owner];
 			for (int d = 0; d < 5; d++)

@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.StellarNovas
     public class SpaceBurstFX : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("NovaFX");
+			// DisplayName.SetDefault("NovaFX");
 			//Main.projFrames[projectile.type] = 14;
 		}
 

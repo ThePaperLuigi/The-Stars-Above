@@ -14,12 +14,12 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Misery's Company");
-			Tooltip.SetDefault("Right click to cycle between [c/CE4A3F:Blade Mode], [c/3FCCCE:Scythe Mode], and [c/CE3FAD:Shotgun Mode] with a 2 second cooldown" +
+			// DisplayName.SetDefault("Misery's Company");
+			/* Tooltip.SetDefault("Right click to cycle between [c/CE4A3F:Blade Mode], [c/3FCCCE:Scythe Mode], and [c/CE3FAD:Shotgun Mode] with a 2 second cooldown" +
 				"\n[c/CE4A3F:Blade Mode] allows for quick swings at close range" +
 				"\n[c/3FCCCE:Scythe Mode] throws a scythe with very long reach that can bypass walls with a cooldown" +
 				"\n[c/CE3FAD:Shotgun Mode] fires bullets in a spread pattern that does not use ammo, doing half damage per shot" +
-				$"");
+				$""); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -140,7 +140,7 @@ namespace StarsAbove.Items
 
 			base.HoldItem(player);
         }
-        public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 
 		}

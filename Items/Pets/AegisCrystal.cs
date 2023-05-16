@@ -9,9 +9,9 @@ namespace StarsAbove.Items.Pets
     public class AegisCrystal : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Aegis Crystal");
-			Tooltip.SetDefault("Summons the Aegis" +
-				"\n'Keep this up, and we'll win for sure'");
+			// DisplayName.SetDefault("Aegis Crystal");
+			/* Tooltip.SetDefault("Summons the Aegis" +
+				"\n'Keep this up, and we'll win for sure'"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 		}

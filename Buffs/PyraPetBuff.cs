@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     public class PyraPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Aegis");
-			Description.SetDefault("Keep this up, and we'll win for sure!");
+			// DisplayName.SetDefault("Aegis");
+			// Description.SetDefault("Keep this up, and we'll win for sure!");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}

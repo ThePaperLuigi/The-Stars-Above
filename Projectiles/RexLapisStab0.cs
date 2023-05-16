@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles
     public class RexLapisStab0 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Rex Lapis");
+			// DisplayName.SetDefault("Rex Lapis");
 			Main.projFrames[Projectile.type] = 10;
 		}
 

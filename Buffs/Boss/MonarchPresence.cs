@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.Boss
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("The Monarch's Presence");
-            Description.SetDefault("Proximity to a powerful foe is lowering defense by 20");
+            // DisplayName.SetDefault("The Monarch's Presence");
+            // Description.SetDefault("Proximity to a powerful foe is lowering defense by 20");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

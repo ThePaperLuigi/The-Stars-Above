@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles
     public class IceLotus : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Ice Lotus");
+			// DisplayName.SetDefault("Ice Lotus");
 			
 		}
 

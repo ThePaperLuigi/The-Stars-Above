@@ -13,11 +13,11 @@ namespace StarsAbove.Items
     public class RadGun : ModItem
 	{
 		public override void SetStaticDefaults() {
-			Tooltip.SetDefault("Right click to load 12 bullets into the magazine with 40 mana" +
+			/* Tooltip.SetDefault("Right click to load 12 bullets into the magazine with 40 mana" +
 				"\nTiming the reload perfectly will boost damage up to 8 times and refund 20 mana" +
 				"\nFailing to time the reload perfectly will reset the bonus" +
 				"\n'Are you a bad enough dude?'" +
-				$"");
+				$""); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

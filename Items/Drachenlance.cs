@@ -13,7 +13,7 @@ namespace StarsAbove.Items
     public class Drachenlance : ModItem
 	{
 		public override void SetStaticDefaults() {
-			Tooltip.SetDefault("Use right click to perform a Jump into the air (12 second cooldown) and become imbued with the [c/6090EC:Blood of the Dragon] for 5 seconds" +
+			/* Tooltip.SetDefault("Use right click to perform a Jump into the air (12 second cooldown) and become imbued with the [c/6090EC:Blood of the Dragon] for 5 seconds" +
 				"\nYou will also be granted Featherfall for 1 second" +
 				"\n[c/6090EC:Blood of the Dragon] will apply the following effects:" +
 				"\nDuring [c/6090EC:Blood of the Dragon], the next attack will launch you towards your cursor after Featherfall ends" +
@@ -29,7 +29,7 @@ namespace StarsAbove.Items
 				"\nDuring [c/EC6060:Life of the Dragon], you will take no fall damage" +
 				"\nJump counters will be reset when swapping off this weapon" +
 				"\n'Born amidst the timeless conflict between men and dragons, forged that they might better pierce the scaled hides of their mortal foes'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -239,7 +239,7 @@ namespace StarsAbove.Items
 			
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.LocalPlayer.HasBuff(BuffType<Buffs.BloodOfTheDragon>()))
 			{

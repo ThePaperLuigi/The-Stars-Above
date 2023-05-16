@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles
     public class HullwroughtStab2 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Hullwrought");
+			// DisplayName.SetDefault("Hullwrought");
 
 		}
 

@@ -28,7 +28,7 @@ namespace StarsAbove.Projectiles
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Threads of Fate");//Thank you to WeaponOut
+            // DisplayName.SetDefault("Threads of Fate");//Thank you to WeaponOut
 
         }
         public override void SetDefaults()

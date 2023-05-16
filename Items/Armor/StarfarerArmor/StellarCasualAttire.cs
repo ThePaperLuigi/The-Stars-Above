@@ -20,15 +20,15 @@ namespace StarsAbove.Items.Armor.StarfarerArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Perfected Stellar Casual");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Perfected Stellar Casual");
+			/* Tooltip.SetDefault("" +
                 "One of the storied garbs from legends past" +
 				"\nEquip to your Starfarer to gain the following:" +
 				"\n[c/C0C0C0:No effect]" +
 				"\nVanity Item" +
 				//"\n[c/E572A1:Land of Miracles]" +
 				//"\nStarfarer Voyages on 'Radiant Planets' will always succeed, are 50% faster, and gain 80% increased Riches" +
-				"");
+				""); */
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}

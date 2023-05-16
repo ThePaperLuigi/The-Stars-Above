@@ -8,11 +8,11 @@ namespace StarsAbove.Buffs.SupremeAuthority
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Atrophied Deification");
-            Description.SetDefault("" +
+            // DisplayName.SetDefault("Atrophied Deification");
+            /* Description.SetDefault("" +
                 "Natural life regeneration has been disabled" +
                 "\nDeath will have magnified consequences" +
-                "\nCan not be removed by right-click");
+                "\nCan not be removed by right-click"); */
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

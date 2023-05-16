@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.Takodachi
     public class Tentacle2 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Takonomicon");
+			// DisplayName.SetDefault("Takonomicon");
 
 		}
 
@@ -85,7 +85,7 @@ namespace StarsAbove.Projectiles.Takodachi
 
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			for (int d = 0; d < 8; d++)
 			{

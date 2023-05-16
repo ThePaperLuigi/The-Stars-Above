@@ -12,7 +12,7 @@ namespace StarsAbove.Projectiles.ManiacalJustice
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Maniacal Justice");
+			// DisplayName.SetDefault("Maniacal Justice");
 			Main.projFrames[Projectile.type] = 3;
 			;
 			//DrawOffsetX = -60;
@@ -74,7 +74,7 @@ namespace StarsAbove.Projectiles.ManiacalJustice
 
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			KarnaOnHitDust(target);
 			base.OnHitNPC(target, damage, knockback, crit);

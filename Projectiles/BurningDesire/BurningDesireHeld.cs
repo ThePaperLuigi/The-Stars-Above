@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.BurningDesire
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Burning Desire");
+			// DisplayName.SetDefault("Burning Desire");
 		}
 
 		public override void SetDefaults()

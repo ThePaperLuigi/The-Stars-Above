@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
     public class InnerAgony : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Inner Agony");
+			// DisplayName.SetDefault("Inner Agony");
 			
 		}
 

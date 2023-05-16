@@ -10,8 +10,8 @@ namespace StarsAbove.Items.Pets
     public class Digivice : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Friendly Digital Device");
-			Tooltip.SetDefault("Summons a digital pet");
+			// DisplayName.SetDefault("Friendly Digital Device");
+			// Tooltip.SetDefault("Summons a digital pet");
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

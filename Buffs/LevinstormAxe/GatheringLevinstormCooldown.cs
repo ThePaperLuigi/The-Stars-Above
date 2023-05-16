@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.LevinstormAxe
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Gathering Levinstorm Cooldown");
-            Description.SetDefault("");
+            // DisplayName.SetDefault("Gathering Levinstorm Cooldown");
+            // Description.SetDefault("");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
             Main.persistentBuff[Type] = true;

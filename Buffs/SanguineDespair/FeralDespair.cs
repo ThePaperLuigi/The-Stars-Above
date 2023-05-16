@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs.SanguineDespair
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Feral Despair");
-            Description.SetDefault("Sanguine energy ebbs and flows in tandem with your life, granting increased damage based on missing HP");
+            // DisplayName.SetDefault("Feral Despair");
+            // Description.SetDefault("Sanguine energy ebbs and flows in tandem with your life, granting increased damage based on missing HP");
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false;
         }

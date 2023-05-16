@@ -15,8 +15,8 @@ namespace StarsAbove.Items
 	{//Umbral
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Irminsul's Dream");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Irminsul's Dream");
+			/* Tooltip.SetDefault("" +
 				"" +
 				"Click and drag to draw a box; releasing left click will execute [c/6CDA61:Verdant Snapshot] (Attack will end once maximum size is reached)" +
 				"\n[c/6CDA61:Verdant Snapshot] inflicts damage to all foes in the box while inflicting [c/2EB24A:Verdant Embrace] for 12 seconds" +
@@ -25,7 +25,7 @@ namespace StarsAbove.Items
 				"\n[c/94EF58:Verdant Burst] will inflict bonus damage equal to 3% of the foe's maximum HP (up to 120 HP per application, can not kill)" +
 				"\nHowever, both [c/2EB24A:Verdant Embrace] and the debuff that triggered [c/94EF58:Verdant Burst] will be cleansed" +
 				"\n'Let knowledge be yours'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 			Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 4));
@@ -222,7 +222,7 @@ namespace StarsAbove.Items
 
             return base.UseItem(player);
         }
-        public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			// 
 			// 60 frames = 1 second

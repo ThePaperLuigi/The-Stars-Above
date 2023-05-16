@@ -15,14 +15,14 @@ namespace StarsAbove.Items
 		public override void SetStaticDefaults()
 		{
 			
-			Tooltip.SetDefault("Attacks with this weapon quickly fire close-ranged shotgun blasts" +
+			/* Tooltip.SetDefault("Attacks with this weapon quickly fire close-ranged shotgun blasts" +
 				"\nHolding this weapon surrounds you with six [c/5ADC54:Purge Markers]" +
 				"\nAttacking with this weapon in the direction of a [c/5ADC54:Purge Marker] will activate it, unleashing [c/28A223:Echoing Flames]" +
 				"\n[c/28A223:Echoing Flames] deals 5% of the foe's Max HP (Max 250) and additionally inflicts Cursed Inferno for 3 seconds" +
 				"\nAfter activation, each [c/5ADC54:Purge Marker] has a seperate 8 second cooldown" +
 				"\nDouble tap any cardinal direction to activate [c/5CB068:Disdain], performing a quick dash in the specified direction (1 second cooldown)" +
 				"\nGain 20 defense for a very short time upon activation of [c/5CB068:Disdain]" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -150,7 +150,7 @@ namespace StarsAbove.Items
 			}
 		}
 		
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			// 
 			// 60 frames = 1 second

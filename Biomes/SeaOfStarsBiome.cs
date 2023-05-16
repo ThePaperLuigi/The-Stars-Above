@@ -13,7 +13,7 @@ namespace StarsAbove.Biomes
 		// Use SetStaticDefaults to assign the display name
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("The Sea of Stars");
+			// DisplayName.SetDefault("The Sea of Stars");
 
 		}
 

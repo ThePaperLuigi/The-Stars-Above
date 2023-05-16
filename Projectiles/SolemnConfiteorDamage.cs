@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
     public class SolemnConfiteorDamage : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Solemn Confiteor");
+			// DisplayName.SetDefault("Solemn Confiteor");
 			
 		}
 

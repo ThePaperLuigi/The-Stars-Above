@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Null Radiance");
-            Description.SetDefault("Your light has gone dim, reducing outgoing damage by half");
+            // DisplayName.SetDefault("Null Radiance");
+            // Description.SetDefault("Your light has gone dim, reducing outgoing damage by half");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

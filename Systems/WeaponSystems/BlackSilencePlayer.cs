@@ -143,7 +143,7 @@ namespace StarsAbove
             }
             base.PostUpdateRunSpeeds();
         }
-        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Projectile, consider using ModifyHitNPC instead */
         {
            
             if (Player.HasBuff(BuffType<MookBuff>()) || Player.HasBuff(BuffType<FuriosoBuff>()))
@@ -277,7 +277,7 @@ namespace StarsAbove
             base.FrameEffects();
 
         }
-        public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Projectile, consider using OnHitNPC instead */
         {
             if(BlackSilenceHeld)
             {

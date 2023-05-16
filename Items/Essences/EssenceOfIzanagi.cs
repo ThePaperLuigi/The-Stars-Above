@@ -8,10 +8,10 @@ namespace StarsAbove.Items.Essences
     public class EssenceOfIzanagi : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Essence of Izanagi");
-			Tooltip.SetDefault("A gift from your Starfarer" +
+			// DisplayName.SetDefault("Essence of Izanagi");
+			/* Tooltip.SetDefault("A gift from your Starfarer" +
 				"\nUtilized in the creation of 'Izanagi's Edge'" +
-				$"");
+				$""); */
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;
 		}

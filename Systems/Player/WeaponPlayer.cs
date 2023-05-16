@@ -481,7 +481,7 @@ namespace StarsAbove
         public bool MumeiPet;
         public bool GrahaPet;
         #endregion
-        public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Item, consider using OnHitNPC instead */
         {
             var player = Player.GetModPlayer<StarsAbovePlayer>();
 
@@ -582,9 +582,9 @@ namespace StarsAbove
             {
                 OnKillEnemy(target);
             }
-            base.OnHitNPC(item, target, damage, knockback, crit);
+            base.OnHitNPCWithItem(item, target, damage, knockback, crit);
         }
-        public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
+        public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Item, consider using ModifyHitNPC instead */
         {
             var player = Player.GetModPlayer<StarsAbovePlayer>();
             if (!target.active && luciferium)
@@ -632,7 +632,7 @@ namespace StarsAbove
 
             base.OnConsumeMana(item, manaConsumed);
         }
-        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Projectile, consider using ModifyHitNPC instead */
         {
             //Crit rerolling
             if (target.HasBuff(BuffType<Glitterglued>()) || Player.HasBuff(BuffType<TimelessPotential>()))
@@ -1967,7 +1967,7 @@ namespace StarsAbove
 
             base.ModifyScreenPosition();
         }
-        public override void OnHitNPCWithProj(Projectile projectile, NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Projectile, consider using OnHitNPC instead */
         {
             var player = Player.GetModPlayer<StarsAbovePlayer>();
             if (Player.HasBuff(BuffType<BoilingBloodBuff>()))
@@ -2406,7 +2406,7 @@ namespace StarsAbove
                 }
 
                 // Play explosion sound
-                SoundEngine.PlaySound(SoundID.Item89, projectile.position);
+                SoundEngine.PlaySound(SoundID.Item89);
                 // Smoke Dust spawn
                 for (int i = 0; i < 70; i++)
                 {
@@ -3033,7 +3033,7 @@ namespace StarsAbove
                         Projectile.NewProjectile(null, placement2.X, placement2.Y, 0, 0, Mod.Find<ModProjectile>("UnforgottenBurst").Type, soulUnboundDamage / 3, 0f, 0);
                         Player.AddBuff(BuffType<Buffs.SoulUnboundCooldown>(), 1320);
                         Player.Teleport(soulUnboundLocation, 1, 0);
-                        NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, (float)Player.whoAmI, soulUnboundLocation.X, soulUnboundLocation.Y, 1, 0, 0);
+                        NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float)Player.whoAmI, soulUnboundLocation.X, soulUnboundLocation.Y, 1, 0, 0);
                         soulUnboundActive = false;
                         soulUnboundDamage = 0;
                     }
@@ -3109,7 +3109,7 @@ namespace StarsAbove
                         else
                         {
                             CallOfTheVoid = 0;
-                            NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, (float)Player.whoAmI, AshenAmbitionOldPosition.X, AshenAmbitionOldPosition.Y, 1, 0, 0);
+                            NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float)Player.whoAmI, AshenAmbitionOldPosition.X, AshenAmbitionOldPosition.Y, 1, 0, 0);
                         }
                         Player.Teleport(AshenAmbitionOldPosition, 1, 0);
 
@@ -3255,7 +3255,7 @@ namespace StarsAbove
 
             return true;
         }
-        public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource, ref int cooldownCounter)
+        public override void ModifyHurt(ref Player.HurtModifiers modifiers)/* tModPorter Override ImmuneTo, FreeDodge or ConsumableDodge instead to prevent taking damage */
         {
             if (Player.HasBuff(BuffType<Buffs.Invincibility>()))
             {
@@ -3637,16 +3637,16 @@ namespace StarsAbove
             return true;
         }
 
-        public override void OnRespawn(Player player)
+        public override void OnRespawn()
         {
 
 
 
             if (luciferium)
             {
-                player.AddBuff(BuffID.PotionSickness, 3600);
+                Player.AddBuff(BuffID.PotionSickness, 3600);
             }
-            base.OnRespawn(player);
+            base.OnRespawn(Player);
 
         }
         public override void ResetEffects()

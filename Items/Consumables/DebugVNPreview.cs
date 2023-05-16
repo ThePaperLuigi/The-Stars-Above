@@ -9,9 +9,9 @@ namespace StarsAbove.Items.Consumables
     public class DebugVNPreview : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Debug VN Tester");
-			Tooltip.SetDefault("Used for VN dialogue testing" +
-				"\nThis is a debug item!");
+			// DisplayName.SetDefault("Debug VN Tester");
+			/* Tooltip.SetDefault("Used for VN dialogue testing" +
+				"\nThis is a debug item!"); */
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 		}
 

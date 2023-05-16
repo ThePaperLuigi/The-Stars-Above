@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.GoldenKatana
     public class GoldenKatanaSwing1 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Aurum Edge");     //The English name of the projectile
+			// DisplayName.SetDefault("Aurum Edge");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode
 			//DrawOffsetX = 40;

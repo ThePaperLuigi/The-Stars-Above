@@ -335,13 +335,13 @@ namespace StarsAbove
            
            
         }
-        public override void OnRespawn(Player player)
+        public override void OnRespawn()
         {
             if (SubworldSystem.Current != null)
             {
-                player.AddBuff(BuffType<Invincibility>(), 240);
+                Player.AddBuff(BuffType<Invincibility>(), 240);
             }
-            base.OnRespawn(player);
+            base.OnRespawn(Player);
         }
         public override void PostUpdateBuffs()
         {
@@ -529,7 +529,7 @@ namespace StarsAbove
             base.PostUpdateBuffs();
         }
 
-        public override void ModifyHitByProjectile(Projectile proj, ref int damage, ref bool crit)
+        public override void ModifyHitByProjectile(Projectile proj, ref Player.HurtModifiers modifiers)
         {
             if (SubworldSystem.Current != null) //Within subworlds...
             {

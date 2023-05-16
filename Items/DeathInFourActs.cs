@@ -13,9 +13,9 @@ namespace StarsAbove.Items
     public class DeathInFourActs : ModItem
 	{
 		public override void SetStaticDefaults() {
-			Tooltip.SetDefault("Every fourth shot will always deal critical damage and grant Swiftness\nAfter the fourth shot is taken, the gun will take time to reload" +
+			/* Tooltip.SetDefault("Every fourth shot will always deal critical damage and grant Swiftness\nAfter the fourth shot is taken, the gun will take time to reload" +
                 "\n'In carnage, I bloom, like a flower in the dawn'" +
-				$"");
+				$""); */
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 		}

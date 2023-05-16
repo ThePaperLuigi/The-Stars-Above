@@ -6,8 +6,8 @@ namespace StarsAbove.Items.Placeable.CyberWorld
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Foreign Vending Machine");
-			Tooltip.SetDefault("");
+			// DisplayName.SetDefault("Foreign Vending Machine");
+			// Tooltip.SetDefault("");
 			
         }
 

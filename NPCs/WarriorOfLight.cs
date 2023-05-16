@@ -26,7 +26,7 @@ namespace StarsAbove.NPCs
             // DisplayName.SetDefault("Example Person");
             Main.npcFrameCount[NPC.type] = 15;
             NPCID.Sets.MPAllowedEnemies[NPC.type] = true;
-            DisplayName.SetDefault("The Warrior Of Light");
+            // DisplayName.SetDefault("The Warrior Of Light");
             // By default enemies gain health and attack if hardmode is reached. this NPC should not be affected by that
             NPCID.Sets.DontDoHardmodeScaling[Type] = true;
             // Enemies can pick up coins, let's prevent it for this NPC
@@ -203,7 +203,7 @@ namespace StarsAbove.NPCs
             }
             //also maybe Totems of Light to craft more stuff?
         }
-        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */
         {
             NPC.defense += numPlayers * 10;
         }

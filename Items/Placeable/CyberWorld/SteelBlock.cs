@@ -10,7 +10,7 @@ namespace StarsAbove.Items.Placeable.CyberWorld
     public class SteelBlock : ModItem
 	{
 		public override void SetStaticDefaults() {
-			Tooltip.SetDefault("Riveted and bolted");
+			// Tooltip.SetDefault("Riveted and bolted");
 			
 
 			

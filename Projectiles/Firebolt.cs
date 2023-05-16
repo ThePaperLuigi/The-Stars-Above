@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Firebolt");
+			// DisplayName.SetDefault("Firebolt");
 			Main.projFrames[Projectile.type] = 10;
 		}
 		public override void SetDefaults()

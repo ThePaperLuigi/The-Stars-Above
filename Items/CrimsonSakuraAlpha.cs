@@ -15,7 +15,7 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Striking foes cause [c/B08FFC:Skill Orbs] to drop" +
+			/* Tooltip.SetDefault("Striking foes cause [c/B08FFC:Skill Orbs] to drop" +
 				"\nRight click after picking up a [c/B08FFC:Skill Orb] to unleash a special ability" +
 				"\n[c/B08FFC:Skill Orbs] last for 20 seconds after picking them up and do not stack" +
 				"\nPick up a [c/FC8F8F:Red Orb] to unleash [c/FC8F8F:Flickering Strike]: Slash the area around you in a wide attack for double damage" +
@@ -31,7 +31,7 @@ namespace StarsAbove.Items
 				"\n[c/F04040:Blade Will]'s projectiles will not spawn [c/A7A7A7:Blade Orbs]" +
 				"\nYou are unable to use special abilities while under [c/F04040:Blade Will]" +
 				"\n'This is the final journey'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -223,7 +223,7 @@ namespace StarsAbove.Items
 
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			
 

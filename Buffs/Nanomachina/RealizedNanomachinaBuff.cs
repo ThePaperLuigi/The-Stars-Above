@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.Nanomachina
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Realized Nanomachina");
-            Description.SetDefault("Nanomachines are strengthening defenses, granting a barrier, damage reduction, and empowered attacks");
+            // DisplayName.SetDefault("Realized Nanomachina");
+            // Description.SetDefault("Nanomachines are strengthening defenses, granting a barrier, damage reduction, and empowered attacks");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

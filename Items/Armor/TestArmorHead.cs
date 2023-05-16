@@ -14,8 +14,8 @@ namespace StarsAbove.Items.Armor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Test armor");
-			Tooltip.SetDefault("");
+			// DisplayName.SetDefault("Test armor");
+			// Tooltip.SetDefault("");
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}

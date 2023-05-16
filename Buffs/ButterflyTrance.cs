@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Butterfly Trance");
-            Description.SetDefault("Entranced by butterflies, your damage taken is reduced by 50%, you fall slowly, and Veneration of Butterflies has no cost");
+            // DisplayName.SetDefault("Butterfly Trance");
+            // Description.SetDefault("Entranced by butterflies, your damage taken is reduced by 50%, you fall slowly, and Veneration of Butterflies has no cost");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

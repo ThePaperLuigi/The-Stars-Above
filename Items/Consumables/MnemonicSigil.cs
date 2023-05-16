@@ -19,14 +19,14 @@ namespace StarsAbove.Items.Consumables
 		{
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
-			DisplayName.SetDefault("Mnemonic Sigil");
-			Tooltip.SetDefault("The combined memories of worlds defeated by the First Starfarer" +
+			// DisplayName.SetDefault("Mnemonic Sigil");
+			/* Tooltip.SetDefault("The combined memories of worlds defeated by the First Starfarer" +
 				"\nCan be used to be taken to the [c/7FC1EF:Eternal Confluence]" +
 				"\nUse again within the center of the [c/7FC1EF:Eternal Confluence] to summon [c/F1AF42:Tsukiyomi, the First Starfarer]" +
 				"\n[c/7FC1EF:Will summon Tsukiyomi normally in Multiplayer]" +
 				"\nIs not consumed upon use" +
 				"\n'...'" +
-				"\n");
+				"\n"); */
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 		}
 
@@ -70,7 +70,7 @@ namespace StarsAbove.Items.Consumables
 
 			if (Main.netMode == NetmodeID.MultiplayerClient)
 			{
-				NetMessage.SendData(MessageID.SpawnBoss, number: player.whoAmI, number2: type);
+				NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: type);
 			}
 			else
             {
@@ -91,7 +91,7 @@ namespace StarsAbove.Items.Consumables
 					{
 						// If the player is in multiplayer, request a spawn
 
-						NetMessage.SendData(MessageID.SpawnBoss, number: player.whoAmI, number2: type);
+						NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: type);
 					}
 				}
 				else

@@ -8,12 +8,12 @@ namespace StarsAbove.Buffs.SubworldModifiers
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("[c/EFB43E:Environmental Turmoil]");
-            Description.SetDefault("Exploring a planet bleached clean of ambient energy" +
+            // DisplayName.SetDefault("[c/EFB43E:Environmental Turmoil]");
+            /* Description.SetDefault("Exploring a planet bleached clean of ambient energy" +
                 "\n" +
                 "\nNatural life regeneration is disabled" +
                 "\nBelow 100 HP, you become Slowed" +
-                "\n");
+                "\n"); */
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

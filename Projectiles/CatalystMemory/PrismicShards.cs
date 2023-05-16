@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.CatalystMemory
     public class PrismicShards : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Catalyst's Memory");     //The English name of the projectile
+			// DisplayName.SetDefault("Catalyst's Memory");     //The English name of the projectile
 
 			Main.projFrames[Projectile.type] = 6;
 		}

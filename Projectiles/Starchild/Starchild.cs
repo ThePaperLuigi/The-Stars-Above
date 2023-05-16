@@ -26,8 +26,8 @@ namespace StarsAbove.Projectiles.Starchild
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starchild");
-			Description.SetDefault("The starchild is aiding you");
+			// DisplayName.SetDefault("Starchild");
+			// Description.SetDefault("The starchild is aiding you");
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}
@@ -58,7 +58,7 @@ namespace StarsAbove.Projectiles.Starchild
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Starchild");
+			// DisplayName.SetDefault("Starchild");
 			// Sets the amount of frames this minion has on its spritesheet
 			Main.projFrames[Projectile.type] = 4;
 			// This is necessary for right-click targeting

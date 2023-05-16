@@ -10,8 +10,8 @@ namespace StarsAbove.Buffs
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Stellar Listener");
-            Description.SetDefault("The nearby performance invigorates you, granting an increase to damage, mana regeneration, and health regeneration");
+            // DisplayName.SetDefault("Stellar Listener");
+            // Description.SetDefault("The nearby performance invigorates you, granting an increase to damage, mana regeneration, and health regeneration");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

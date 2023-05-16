@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles
     public class RedSplatterDamage : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Red Splatter Damage");
+			// DisplayName.SetDefault("Red Splatter Damage");
 			
 		}
 

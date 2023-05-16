@@ -14,8 +14,8 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Eternal Star");
-			Tooltip.SetDefault("Holding this weapon causes the [c/C2A4AA:Eternal Gauge] to appear" +
+			// DisplayName.SetDefault("Eternal Star");
+			/* Tooltip.SetDefault("Holding this weapon causes the [c/C2A4AA:Eternal Gauge] to appear" +
                 "\nConjure powerful random types of [c/FFB47A:Emblazoned Stars] from the sky to obliterate foes" +
 				"\n[c/FFB47A:Emblazoned Stars] deal damage 5 times before shattering" +
 				"\nShattered [c/FFB47A:Emblazoned Stars] have a chance to leave behind [c/FF6988:Emblazoned Fragments] based on the type of star" +
@@ -29,7 +29,7 @@ namespace StarsAbove.Items
 				"\nOnce the [c/C2A4AA:Eternal Gauge] is full, right click to conjure the [c/59FFCD:Immemorial Supernova] at your cursor's location, draining the [c/C2A4AA:Eternal Gauge]" +
 				"\nThe [c/59FFCD:Immemorial Supernova] will persist for 5 seconds, dealing damage to all foes in its vicinity" +
 				"\nOnce the [c/59FFCD:Immemorial Supernova] expires, it will explode, dealing 5x base damage damage to nearby foes" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -91,7 +91,7 @@ namespace StarsAbove.Items
 			
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			// Add Onfire buff to the NPC for 1 second
 			// 60 frames = 1 second

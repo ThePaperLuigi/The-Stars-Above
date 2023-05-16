@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
     public class TsukiWhisperRound : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Voice of the Fallen");     //The English name of the projectile
+			// DisplayName.SetDefault("Voice of the Fallen");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 50;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
 		}

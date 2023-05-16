@@ -10,8 +10,8 @@ namespace StarsAbove.Items.Pets
     public class BugHat : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Cat's Hat");
-			Tooltip.SetDefault("Summons a cat..?");
+			// DisplayName.SetDefault("Cat's Hat");
+			// Tooltip.SetDefault("Summons a cat..?");
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 		}

@@ -8,10 +8,10 @@ namespace StarsAbove.Buffs.SupremeAuthority
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Deified");
-            Description.SetDefault("" +
+            // DisplayName.SetDefault("Deified");
+            /* Description.SetDefault("" +
                 "Sacrifices has halved Max HP, but incoming damage is halved and most debuffs are resisted" +
-                "\nCan not be removed by right-click");
+                "\nCan not be removed by right-click"); */
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

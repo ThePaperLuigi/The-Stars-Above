@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     public class BubbaPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Detective Dog");
-			Description.SetDefault("A smart dog is following you");
+			// DisplayName.SetDefault("Detective Dog");
+			// Description.SetDefault("A smart dog is following you");
 			Main.buffNoTimeDisplay[Type] = true;
 			//Main.pet[Type] = true;
 		}

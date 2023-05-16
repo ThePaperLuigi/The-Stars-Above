@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.SoulReaver
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Soul Reaver");
+			// DisplayName.SetDefault("Soul Reaver");
 			Main.projFrames[Projectile.type] = 4;
 			//DrawOriginOffsetY = 30;
 			//DrawOffsetX = -60;
@@ -77,7 +77,7 @@ namespace StarsAbove.Projectiles.SoulReaver
 				Projectile.rotation -= MathHelper.ToRadians(180f);
 			}
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			for (int d = 0; d < 8; d++)
 			{

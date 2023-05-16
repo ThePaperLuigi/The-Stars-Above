@@ -43,7 +43,7 @@ namespace StarsAbove.UI
 			barFrame.Height.Set(34, 0f);*/
 
 			red = new UIImageButton(Request<Texture2D>("StarsAbove/UI/SkyStrikerGauge/Red"));//Red
-			red.OnClick += redClick;
+			red.OnLeftClick += redClick;
 			red.Width.Set(30, 0f);
 			red.Height.Set(30, 0f);
 			red.Left.Set(40, 0f);
@@ -57,14 +57,14 @@ namespace StarsAbove.UI
 			orange.Top.Set(10, 0f);//
 
 			yellow = new UIImageButton(Request<Texture2D>("StarsAbove/UI/SkyStrikerGauge/Yellow"));//Blue
-			yellow.OnClick += yellowClick;
+			yellow.OnLeftClick += yellowClick;
 			yellow.Width.Set(30, 0f);
 			yellow.Height.Set(30, 0f);
 			yellow.Left.Set(128, 0f);
 			yellow.Top.Set(52, 0f);//
 
 			green = new UIImageButton(Request<Texture2D>("StarsAbove/UI/SkyStrikerGauge/Green"));//Yellow
-			green.OnClick += greenClick;
+			green.OnLeftClick += greenClick;
 			green.Width.Set(30, 0f);
 			green.Height.Set(30, 0f);
 			green.Left.Set(40, 0f);
@@ -78,7 +78,7 @@ namespace StarsAbove.UI
 			blue.Top.Set(135, 0f);//
 
 			purple = new UIImageButton(Request<Texture2D>("StarsAbove/UI/SkyStrikerGauge/Purple"));//Green
-			purple.OnClick += purpleClick;
+			purple.OnLeftClick += purpleClick;
 			purple.Width.Set(30, 0f);
 			purple.Height.Set(30, 0f);
 			purple.Left.Set(128, 0f);

@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.Pets
 		{
 			//
 			//DrawOffsetX = -20;
-			DisplayName.SetDefault("Ereshkigal"); // Automatic from .lang files
+			// DisplayName.SetDefault("Ereshkigal"); // Automatic from .lang files
 			Main.projFrames[Projectile.type] = 13;
 
 			Main.projPet[Projectile.type] = true;

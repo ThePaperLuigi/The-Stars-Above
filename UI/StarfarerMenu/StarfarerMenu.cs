@@ -134,7 +134,7 @@ namespace StarsAbove.UI.StarfarerMenu
 			
 
 			confirm = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Confirm"));
-			confirm.OnClick += Confirm;
+			confirm.OnLeftClick += Confirm;
 			confirm.Width.Set(70, 0f);
 			confirm.Height.Set(52, 0f);
 			confirm.Left.Set(18, 0f);
@@ -143,7 +143,7 @@ namespace StarsAbove.UI.StarfarerMenu
 			confirm.OnMouseOut += HoverOff;
 
 			stellarNova = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/StellarNova"));
-			stellarNova.OnClick += StellarNovaConfirm;
+			stellarNova.OnLeftClick += StellarNovaConfirm;
 			stellarNova.Width.Set(74, 0f);
 			stellarNova.Height.Set(50, 0f);
 			stellarNova.Left.Set(404, 0f);
@@ -152,7 +152,7 @@ namespace StarsAbove.UI.StarfarerMenu
 			stellarNova.OnMouseOut += HoverOff;
 
 			stellarArray = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/StellarArray"));
-			stellarArray.OnClick += StellarArrayConfirm;
+			stellarArray.OnLeftClick += StellarArrayConfirm;
 			stellarArray.Width.Set(74, 0f);
 			stellarArray.Height.Set(50, 0f);
 			stellarArray.Left.Set(404, 0f);
@@ -161,7 +161,7 @@ namespace StarsAbove.UI.StarfarerMenu
 			stellarArray.OnMouseOut += HoverOff;
 
 			voyage = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Voyage"));
-			voyage.OnClick += VoyageConfirm;
+			voyage.OnLeftClick += VoyageConfirm;
 			voyage.Width.Set(74, 0f);
 			voyage.Height.Set(50, 0f);
 			voyage.Left.Set(404, 0f);
@@ -171,7 +171,7 @@ namespace StarsAbove.UI.StarfarerMenu
 			
 
 			archive = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Archive"));
-			archive.OnClick += ArchiveConfirm;
+			archive.OnLeftClick += ArchiveConfirm;
 			archive.Width.Set(74, 0f);
 			archive.Height.Set(50, 0f);
 			archive.Left.Set(404, 0f);
@@ -180,21 +180,21 @@ namespace StarsAbove.UI.StarfarerMenu
 			archive.OnMouseOut += HoverOff;
 
 			confirmDialogue = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/ConfirmArchive"));
-			confirmDialogue.OnClick += DialogueConfirm;
+			confirmDialogue.OnLeftClick += DialogueConfirm;
 			confirmDialogue.Width.Set(74, 0f);
 			confirmDialogue.Height.Set(50, 0f);
 			confirmDialogue.Left.Set(808, 0f);
 			confirmDialogue.Top.Set(380, 0f);
 
 			leftButton = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/LeftButton"));
-			leftButton.OnClick += LeftButton;
+			leftButton.OnLeftClick += LeftButton;
 			leftButton.Width.Set(28, 0f);
 			leftButton.Height.Set(28, 0f);
 			leftButton.Left.Set(780, 0f);
 			leftButton.Top.Set(322, 0f);
 
 			rightButton = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/RightButton"));
-			rightButton.OnClick += RightButton;
+			rightButton.OnLeftClick += RightButton;
 			rightButton.Width.Set(28, 0f);
 			rightButton.Height.Set(28, 0f);
 			rightButton.Left.Set(878, 0f);
@@ -202,28 +202,28 @@ namespace StarsAbove.UI.StarfarerMenu
 
 			//
 			IdleDialogue = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/IdleDialogue"));
-			IdleDialogue.OnClick += IdleDialogueConfirm;
+			IdleDialogue.OnLeftClick += IdleDialogueConfirm;
 			IdleDialogue.Width.Set(74, 0f);
 			IdleDialogue.Height.Set(50, 0f);
 			IdleDialogue.Left.Set(774, 0f);
 			IdleDialogue.Top.Set(182, 0f);
 
 			BossDialogue = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/BossDialogue"));
-			BossDialogue.OnClick += BossDialogueConfirm;
+			BossDialogue.OnLeftClick += BossDialogueConfirm;
 			BossDialogue.Width.Set(74, 0f);
 			BossDialogue.Height.Set(50, 0f);
 			BossDialogue.Left.Set(844, 0f);
 			BossDialogue.Top.Set(182, 0f);
 
 			WeaponDialogue = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/WeaponDialogue"));
-			WeaponDialogue.OnClick += WeaponDialogueConfirm;
+			WeaponDialogue.OnLeftClick += WeaponDialogueConfirm;
 			WeaponDialogue.Width.Set(74, 0f);
 			WeaponDialogue.Height.Set(50, 0f);
 			WeaponDialogue.Left.Set(774, 0f);
 			WeaponDialogue.Top.Set(236, 0f);
 
 			VNDialogue = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/VNDialogue"));
-			VNDialogue.OnClick += VNDialogueConfirm;
+			VNDialogue.OnLeftClick += VNDialogueConfirm;
 			VNDialogue.Width.Set(74, 0f);
 			VNDialogue.Height.Set(50, 0f);
 			VNDialogue.Left.Set(844, 0f);

@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Seaborn Wrath");
-            Description.SetDefault("The ocean currents grant your minions extra damage and your weapon is strengthened");
+            // DisplayName.SetDefault("Seaborn Wrath");
+            // Description.SetDefault("The ocean currents grant your minions extra damage and your weapon is strengthened");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //
         }

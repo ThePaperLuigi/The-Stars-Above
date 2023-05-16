@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles
 	public class HullwroughtRound : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Hullwrought");     //The English name of the projectile
+			// DisplayName.SetDefault("Hullwrought");     //The English name of the projectile
 			
 		}
 

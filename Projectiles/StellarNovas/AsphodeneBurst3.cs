@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.StellarNovas
     public class AsphodeneBurst3 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Asphodene");
+			// DisplayName.SetDefault("Asphodene");
 			Main.projFrames[Projectile.type] = 14;
 		}
 

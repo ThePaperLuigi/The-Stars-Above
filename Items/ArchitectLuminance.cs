@@ -16,8 +16,8 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Architect's Luminance");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Architect's Luminance");
+			/* Tooltip.SetDefault("" +
 				"[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty]" +
 				"\nHolding this weapon will equip yourself with the [c/6EF367:Luminary Armament], increasing defense by 30" +
 				"\nRight click to summon [c/70D38B:Artifice Siren] for 15 seconds at your cursor (1 minute cooldown)" +
@@ -28,7 +28,7 @@ namespace StarsAbove.Items
 				"\n[c/4DFF5B:Ranged]: Instead of swinging, the weapon will quickly fire piercing shots without consuming ammo, dealing 1/2 base damage" +
 				"\n[c/00CDFF:Summon]: The [c/6EF367:Luminary Armament] periodically attacks nearby foes independently, dealing half of your current HP as base damage and can crit" +
 				"\n'For the future!'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -142,7 +142,7 @@ namespace StarsAbove.Items
 
 				base.HoldItem(player);
 		}
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			// 
 			// 60 frames = 1 second

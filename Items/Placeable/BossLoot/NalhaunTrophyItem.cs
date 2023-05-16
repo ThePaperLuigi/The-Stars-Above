@@ -9,7 +9,7 @@ namespace StarsAbove.Items.Placeable.BossLoot
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Nalhaun Trophy");
+			// DisplayName.SetDefault("Nalhaun Trophy");
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}

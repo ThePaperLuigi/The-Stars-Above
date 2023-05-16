@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.Bosses.Vagrant
     public class VagrantSwordSprite : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("The Vagrant of Space and Time");
+			// DisplayName.SetDefault("The Vagrant of Space and Time");
 			Main.projFrames[Projectile.type] = 2;
 		}
 

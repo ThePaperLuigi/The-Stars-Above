@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
     public class MementoMuseProjectile : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Memento Muse");
+			// DisplayName.SetDefault("Memento Muse");
 			
 		}
 

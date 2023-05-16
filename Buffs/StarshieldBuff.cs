@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Starshield");
-            Description.SetDefault("A stellar barrier protects you, granting 10% of Max HP as defense as well as 20% increased damage");
+            // DisplayName.SetDefault("Starshield");
+            // Description.SetDefault("A stellar barrier protects you, granting 10% of Max HP as defense as well as 20% increased damage");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

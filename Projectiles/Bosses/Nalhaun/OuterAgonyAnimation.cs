@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
     public class OuterAgonyAnimation : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Radiate");
+			// DisplayName.SetDefault("Radiate");
 			
 		}
 

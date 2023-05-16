@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs.Subworlds
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Subworld Loot Cooldown");
-            Description.SetDefault("Subworld Loot can not be claimed until this buff expires.");
+            // DisplayName.SetDefault("Subworld Loot Cooldown");
+            // Description.SetDefault("Subworld Loot can not be claimed until this buff expires.");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true;
             Main.persistentBuff[Type] = true;

@@ -8,10 +8,10 @@ namespace StarsAbove.Items.Essences
     public class EssenceOfTheDarkMoon : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Essence of the Dark Moon");
-			Tooltip.SetDefault("A gift from your Starfarer" +
+			// DisplayName.SetDefault("Essence of the Dark Moon");
+			/* Tooltip.SetDefault("A gift from your Starfarer" +
 				"\nUtilized in the creation of 'Carian Dark Moon'" +
-				$"");
+				$""); */
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;
 		}

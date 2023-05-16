@@ -44,7 +44,7 @@ namespace StarsAbove.Projectiles.KissOfDeath
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("The Kiss of Death");
+			// DisplayName.SetDefault("The Kiss of Death");
 
 			// These lines facilitate the trail drawing
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
@@ -449,7 +449,7 @@ namespace StarsAbove.Projectiles.KissOfDeath
 			return base.Colliding(projHitbox, targetHitbox);
 		}
 
-		public override void ModifyDamageScaling(ref float damageScale)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
 			// Flails do 20% more damage while spinning
 			if (CurrentAIState == AIState.Spinning)
@@ -463,7 +463,7 @@ namespace StarsAbove.Projectiles.KissOfDeath
 			}
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
 			// Flails do a few custom things, you'll want to keep these to have the same feel as vanilla flails.
 			Player projOwner = Main.player[Projectile.owner];

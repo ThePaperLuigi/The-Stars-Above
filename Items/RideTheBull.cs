@@ -13,10 +13,10 @@ namespace StarsAbove.Items
     public class RideTheBull : ModItem
 	{
 		public override void SetStaticDefaults() {
-			Tooltip.SetDefault("Sprays a barrage of powerful bullets" +
+			/* Tooltip.SetDefault("Sprays a barrage of powerful bullets" +
 				"\nKilling foes will refill a portion of mana and grant Wrath" +
 				"\n'Never stop shooting'" +
-				$"");
+				$""); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

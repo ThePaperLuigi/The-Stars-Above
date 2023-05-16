@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.LevinstormAxe
     public class LevinstormExplosion : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Boltstorm Axe");
+			// DisplayName.SetDefault("Boltstorm Axe");
 			
 		}
 
@@ -82,14 +82,14 @@ namespace StarsAbove.Projectiles.LevinstormAxe
 			
 		}
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 
 			
 			
         }
 
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 
            

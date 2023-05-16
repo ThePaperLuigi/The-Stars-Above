@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.RedMage
     public class Verholy : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Verholy");     //The English name of the Projectile
+			// DisplayName.SetDefault("Verholy");     //The English name of the Projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode
 		}
@@ -40,7 +40,7 @@ namespace StarsAbove.Projectiles.RedMage
 			return true; // return false because we are handling collision
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
 		}
 

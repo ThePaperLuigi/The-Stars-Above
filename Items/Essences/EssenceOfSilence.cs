@@ -8,10 +8,10 @@ namespace StarsAbove.Items.Essences
     public class EssenceOfSilence : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Essence of Silence");
-			Tooltip.SetDefault("A gift from your Starfarer" +
+			// DisplayName.SetDefault("Essence of Silence");
+			/* Tooltip.SetDefault("A gift from your Starfarer" +
 				"\nUtilized in the creation of 'Gloves of the Black Silence'" +
-				$"");
+				$""); */
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;
 		}

@@ -8,10 +8,10 @@ namespace StarsAbove.Items.Essences
     public class EssenceOfTheChimera : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Essence of the Chimera");
-			Tooltip.SetDefault("A gift from your Starfarer" +
+			// DisplayName.SetDefault("Essence of the Chimera");
+			/* Tooltip.SetDefault("A gift from your Starfarer" +
 				"\nUtilized in the creation of 'Shadowless Cerulean'" +
-				$"");
+				$""); */
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;
 		}

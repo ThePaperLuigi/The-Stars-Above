@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.Skofnung
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Bloodstained Belone");
-            Description.SetDefault("Damage has been increased by 10%");
+            // DisplayName.SetDefault("Bloodstained Belone");
+            // Description.SetDefault("Damage has been increased by 10%");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

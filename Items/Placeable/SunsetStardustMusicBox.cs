@@ -9,11 +9,11 @@ namespace StarsAbove.Items.Placeable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Music Box (Stars Above Title Screen)");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Music Box (Stars Above Title Screen)");
+			/* Tooltip.SetDefault("" +
 				"'Sunset, Stardust' - Stars Above OST" +
 				"\nOriginal"
-				+ $"");
+				+ $""); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/SunsetStardust"), ModContent.ItemType<SunsetStardustMusicBox>(), ModContent.TileType<Tiles.SunsetStardustMusicBox>());

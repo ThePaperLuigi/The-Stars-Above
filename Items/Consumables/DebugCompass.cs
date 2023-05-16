@@ -10,10 +10,10 @@ namespace StarsAbove.Items.Consumables
     public class DebugCompass : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Debug Compass");
-			Tooltip.SetDefault("Activates Celestial Cartography menu when held" +
+			// DisplayName.SetDefault("Debug Compass");
+			/* Tooltip.SetDefault("Activates Celestial Cartography menu when held" +
 				"\n[c/F1AF42:Debug item]" +
-				"\n");
+				"\n"); */
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 		}
 

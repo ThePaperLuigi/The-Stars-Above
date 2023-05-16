@@ -13,7 +13,7 @@ namespace StarsAbove.Projectiles.ManiacalJustice
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Maniacal Justice");
+			// DisplayName.SetDefault("Maniacal Justice");
 			Main.projFrames[Projectile.type] = 3;
 			;
 			//DrawOffsetX = -60;
@@ -75,11 +75,11 @@ namespace StarsAbove.Projectiles.ManiacalJustice
 			Projectile.rotation = Projectile.velocity.ToRotation() + (Projectile.spriteDirection == 1 ? 0f : MathHelper.Pi);
 
 		}
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
             base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
         }
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Main.player[Projectile.owner].GetModPlayer<WeaponPlayer>().LVStacks++;
 			if(crit)

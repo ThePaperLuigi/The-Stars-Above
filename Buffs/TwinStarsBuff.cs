@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Twin Stars");
-            Description.SetDefault("Twin stars radiate near you");
+            // DisplayName.SetDefault("Twin Stars");
+            // Description.SetDefault("Twin stars radiate near you");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

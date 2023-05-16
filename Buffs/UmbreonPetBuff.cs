@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     public class UmbreonPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Mystic Hound");
-			Description.SetDefault("A pair of mystic hounds are following you");
+			// DisplayName.SetDefault("Mystic Hound");
+			// Description.SetDefault("A pair of mystic hounds are following you");
 			Main.buffNoTimeDisplay[Type] = true;
 			//Main.pet[Type] = true;
 		}

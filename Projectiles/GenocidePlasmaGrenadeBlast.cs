@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles
     public class GenocidePlasmaGrenadeBlast : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Genocide");
+			// DisplayName.SetDefault("Genocide");
 			
 		}
 
@@ -37,7 +37,7 @@ namespace StarsAbove.Projectiles
 			get => Projectile.ai[0];
 			set => Projectile.ai[0] = value;
 		}
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
 
 			target.AddBuff(BuffType<Buffs.MortalWounds>(), 720);

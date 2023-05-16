@@ -8,8 +8,8 @@ namespace StarsAbove.Items.Armor.Manifestation
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Red Mist Body");
-			Tooltip.SetDefault("Unobtainable; vanity by using 'Manifestation'");
+			// DisplayName.SetDefault("Red Mist Body");
+			// Tooltip.SetDefault("Unobtainable; vanity by using 'Manifestation'");
         }
 
 		public override void SetDefaults()

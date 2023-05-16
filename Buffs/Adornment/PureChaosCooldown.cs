@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.Adornment
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Pure Chaos Cooldown");
-            Description.SetDefault("Pure Chaos will fail to activate if this debuff is present");
+            // DisplayName.SetDefault("Pure Chaos Cooldown");
+            // Description.SetDefault("Pure Chaos will fail to activate if this debuff is present");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

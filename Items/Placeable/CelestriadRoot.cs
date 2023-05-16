@@ -17,14 +17,14 @@ namespace StarsAbove.Items.Placeable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Celestriad Root");
+			// DisplayName.SetDefault("Celestriad Root");
 			
 
-			Tooltip.SetDefault("" +
+			/* Tooltip.SetDefault("" +
 				"A sapling from the heart of the universe" +
 				"\nCan be used as a crafting bench to create the Stellaglyph and its upgrades" +
 				"" +
-				"");
+				""); */
 			//
 			//
 			//"\n[c/D32C2C:Modded chests from mods added after world generation may cease to open once entering a subworld]" +

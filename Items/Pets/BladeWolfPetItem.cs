@@ -12,9 +12,9 @@ namespace StarsAbove.Items.Pets
     public class BladeWolfPetItem : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Prototype Interface");
-			Tooltip.SetDefault("Summons the Blade Wolf" +
-				"\n'Alert. Alert rescinded.'");
+			// DisplayName.SetDefault("Prototype Interface");
+			/* Tooltip.SetDefault("Summons the Blade Wolf" +
+				"\n'Alert. Alert rescinded.'"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 		}

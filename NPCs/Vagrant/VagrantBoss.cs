@@ -60,7 +60,7 @@ namespace StarsAbove.NPCs.Vagrant
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("The Vagrant of Space and Time");
+			// DisplayName.SetDefault("The Vagrant of Space and Time");
 			
 			Main.npcFrameCount[NPC.type] = 14; // make sure to set this for your modnpcs.
 
@@ -134,7 +134,7 @@ namespace StarsAbove.NPCs.Vagrant
 		{
 			return 0f;
 		}
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */
 		{
 			NPC.lifeMax = (int)(NPC.lifeMax * bossLifeScale * numPlayers);
 			//NPC.defense *= numPlayers * 5;

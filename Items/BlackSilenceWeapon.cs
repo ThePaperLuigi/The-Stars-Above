@@ -21,8 +21,8 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gloves of the Black Silence");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Gloves of the Black Silence");
+			/* Tooltip.SetDefault("" +
 				"[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes]" +
 				"\nRight-click to choose from 3 random weapons from a pool of 9 different weapons, each with unique attack patterns (5 second cooldown)" +
 				"\nAfter choosing a weapon, gain a unique buff based on the chosen weapon that lasts for 12 seconds" +
@@ -40,7 +40,7 @@ namespace StarsAbove.Items
 				"\nAn icon will display near weapons you have not used for the activation of [c/525252:Furioso] during selection" +
 				"\n[c/323232:Black Silence] will additionally increase damage by 30% and activate all unique weapon buffs" +
 				"\n'It can't be helped. That's that, and this is this'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -207,7 +207,7 @@ namespace StarsAbove.Items
 			
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			
 		}
@@ -351,7 +351,7 @@ namespace StarsAbove.Items
 
 						}
 						player.Teleport(new Vector2(position.X, position.Y - 10), 1, 0);
-						NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, (float)player.whoAmI, position.X, position.Y - 10, 1, 0, 0);
+						NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float)player.whoAmI, position.X, position.Y - 10, 1, 0, 0);
 						
 
 						SoundEngine.PlaySound(StarsAboveAudio.SFX_BlackSilenceSwing, Main.LocalPlayer.Center);

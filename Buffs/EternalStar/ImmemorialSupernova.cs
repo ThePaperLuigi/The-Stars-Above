@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.EternalStar
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Immemorial Supernova");
-            Description.SetDefault("");
+            // DisplayName.SetDefault("Immemorial Supernova");
+            // Description.SetDefault("");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

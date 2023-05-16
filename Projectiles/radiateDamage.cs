@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles
     public class radiateDamage : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Radiate");
+			// DisplayName.SetDefault("Radiate");
 			
 		}
 

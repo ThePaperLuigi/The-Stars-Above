@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.Ozma
     public class OzmaAttack5Slash2 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Ozma Ascendant");
+			// DisplayName.SetDefault("Ozma Ascendant");
 			//DrawOriginOffsetY = 12;
 			Main.projFrames[Projectile.type] = 8;
 

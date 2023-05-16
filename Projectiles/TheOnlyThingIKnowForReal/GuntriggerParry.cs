@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.TheOnlyThingIKnowForReal
     public class GuntriggerParryProjectile : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("The Only Thing I Know For Real");     //The English name of the projectile
+			// DisplayName.SetDefault("The Only Thing I Know For Real");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode
 			//DrawOffsetX = 40;

@@ -16,7 +16,7 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Attacks with this weapon execute rapid stabs" +
+			/* Tooltip.SetDefault("Attacks with this weapon execute rapid stabs" +
 				"\nEach attack grants [c/F8D496:Bulwark of Jade] for 2 seconds on hit, increasing defenses by 30" +
 				"\nRight click to consume 150 mana, dropping a colossal earthen meteor from the heavens, dealing 2x base damage (20 second cooldown)" +
                 "\nAdditionally, this attack will deal bonus damage based on 50% of your Max HP" +
@@ -25,7 +25,7 @@ namespace StarsAbove.Items
 				"\nCritical strikes will [c/F1D078:Shatter] foes that are [c/CB8952:Petrified]" +
 				"\n[c/F1D078:Shatter] deals 5x base damage while removing [c/CB8952:Petrification]" +
 				"\n'I will have order!'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 		}
@@ -107,7 +107,7 @@ namespace StarsAbove.Items
 			
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			// 
 			// 60 frames = 1 second

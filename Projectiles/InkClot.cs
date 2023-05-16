@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles
     public class InkClot : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Ink Clot");
+			// DisplayName.SetDefault("Ink Clot");
 			Main.projFrames[Projectile.type] = 11;
 		}
 

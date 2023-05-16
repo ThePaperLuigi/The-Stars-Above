@@ -14,8 +14,8 @@ namespace StarsAbove.Items.Armor.Manifestation
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Red Mist's Helmet");
-			Tooltip.SetDefault("Unobtainable; vanity by using 'Manifestation'");
+			// DisplayName.SetDefault("Red Mist's Helmet");
+			// Tooltip.SetDefault("Unobtainable; vanity by using 'Manifestation'");
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 			ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = false;

@@ -6,7 +6,7 @@ namespace StarsAbove.Projectiles
     public class BrushStrokeDamage : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Brush Stroke");
+			// DisplayName.SetDefault("Brush Stroke");
 			
 		}
 

@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
     public class Geometry : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Geometry");
+			// DisplayName.SetDefault("Geometry");
 			Main.projFrames[Projectile.type] = 7;
 		}
 

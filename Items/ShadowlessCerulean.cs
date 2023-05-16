@@ -16,7 +16,7 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("" +
+			/* Tooltip.SetDefault("" +
 				"Attacks with this weapon will sweep in a wide arc and charge the [c/3CC7FF:Cerulean Flame Gauge]" +
 				"\nCritical hits charge the [c/3CC7FF:Cerulean Flame Gauge] much faster" +
 				"\nOnce the [c/3CC7FF:Cerulean Flame Gauge] is at maximum, right click to unleash [c/007BEE:Shadowless Ignition]" +
@@ -29,7 +29,7 @@ namespace StarsAbove.Items
 				"\nOnce [c/EE007E:Wrathful Cerulean Flame] ends, you will be inflicted with [c/9E7F90:Burnout], lowering defensive and offensive stats by 50% for 20 seconds" +
 				"\nYou can not charge the [c/3CC7FF:Cerulean Flame Gauge] while under the effects of [c/9E7F90:Burnout]" +
 				"\n'You will understand my choice one day... Forgive me'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -105,7 +105,7 @@ namespace StarsAbove.Items
 					player.AddBuff(BuffType<Buffs.Invincibility>(), 60);
 					Vector2 teleportPosition = new Vector2(player.GetModPlayer<StarsAbovePlayer>().playerMousePos.X, player.GetModPlayer<StarsAbovePlayer>().playerMousePos.Y - 5);
 					player.Teleport(teleportPosition, 1, 0);
-					NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, (float)player.whoAmI, player.GetModPlayer<StarsAbovePlayer>().playerMousePos.X, player.GetModPlayer<StarsAbovePlayer>().playerMousePos.Y, 1, 0, 0);
+					NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float)player.whoAmI, player.GetModPlayer<StarsAbovePlayer>().playerMousePos.X, player.GetModPlayer<StarsAbovePlayer>().playerMousePos.Y, 1, 0, 0);
 					slashDuration = 62;
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_AmiyaSlash, player.Center);
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, 0, 0, ProjectileType<AmiyaSlash>(), player.GetWeaponDamage(Item) * 4, 0, player.whoAmI, 0f);
@@ -130,7 +130,7 @@ namespace StarsAbove.Items
 			
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 
 			

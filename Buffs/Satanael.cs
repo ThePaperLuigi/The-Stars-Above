@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     public class Satanael : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Satanael");
-			Description.SetDefault("'You would slay gods to protect the justice you believe in...'");
+			// DisplayName.SetDefault("Satanael");
+			// Description.SetDefault("'You would slay gods to protect the justice you believe in...'");
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}

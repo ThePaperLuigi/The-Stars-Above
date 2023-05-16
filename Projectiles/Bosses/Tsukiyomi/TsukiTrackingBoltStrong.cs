@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
     public class TsukiTrackingBoltStrong : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Death In Four Acts");     //The English name of the projectile
+			// DisplayName.SetDefault("Death In Four Acts");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 50;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
 		}
@@ -109,7 +109,7 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 
 
 		}
-        public override void OnHitPlayer(Player target, int damage, bool crit)
+        public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
 			target.AddBuff(BuffID.OnFire, 60);
             base.OnHitPlayer(target, damage, crit);

@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.KissOfDeath
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("The Kiss of Death");
+			// DisplayName.SetDefault("The Kiss of Death");
 			Main.projFrames[Projectile.type] = 10;
 		}
 		public override void SetDefaults()
@@ -107,7 +107,7 @@ namespace StarsAbove.Projectiles.KissOfDeath
 			
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Player projOwner = Main.player[Projectile.owner];
 			projOwner.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
@@ -131,7 +131,7 @@ namespace StarsAbove.Projectiles.KissOfDeath
 
 			base.OnHitNPC(target, damage, knockback, crit);
 		}
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 			if(Projectile.ai[1] > 0)
             {

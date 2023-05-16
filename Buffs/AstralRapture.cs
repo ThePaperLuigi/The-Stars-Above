@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Astral Rapture");
-            Description.SetDefault("Gain HP and Invincibility on Asphodene's tiles");
+            // DisplayName.SetDefault("Astral Rapture");
+            // Description.SetDefault("Gain HP and Invincibility on Asphodene's tiles");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

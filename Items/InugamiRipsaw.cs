@@ -14,9 +14,9 @@ namespace StarsAbove.Items
     public class InugamiRipsaw : ModItem
 	{
 		public override void SetStaticDefaults() {
-			Tooltip.SetDefault("Right click to activate Berserker Mode for 5 seconds, increasing damage dealt but dealing damage to yourself (20 second cooldown)" +
+			/* Tooltip.SetDefault("Right click to activate Berserker Mode for 5 seconds, increasing damage dealt but dealing damage to yourself (20 second cooldown)" +
 				"\n'It preys on stray fingers'" +
-				$"");
+				$""); */
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

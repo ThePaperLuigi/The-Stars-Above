@@ -20,7 +20,7 @@ namespace StarsAbove.NPCs.OffworldNPCs
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Stardigrade");
+			// DisplayName.SetDefault("Stardigrade");
 
 			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{ // Influences how the NPC looks in the Bestiary
@@ -122,7 +122,7 @@ namespace StarsAbove.NPCs.OffworldNPCs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Stardigrade");
+			// DisplayName.SetDefault("Stardigrade");
 
 			NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
@@ -154,7 +154,7 @@ namespace StarsAbove.NPCs.OffworldNPCs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Stardigrade");
+			// DisplayName.SetDefault("Stardigrade");
 
 			NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{

@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Cosmic Conception");
-            Description.SetDefault("Spatial mass is coalescing into the singularity");
+            // DisplayName.SetDefault("Cosmic Conception");
+            // Description.SetDefault("Spatial mass is coalescing into the singularity");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

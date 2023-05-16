@@ -21,9 +21,9 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Aurum Edge");
+			// DisplayName.SetDefault("Aurum Edge");
 			
-				Tooltip.SetDefault("" +
+				/* Tooltip.SetDefault("" +
                 "[c/F7D76A:Hold left click to charge the weapon; if the weapon is fully charged, the attack varies]" +
 				"\n[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from both Melee and Magic damage]" +
 				"\nAdditionally, this weapon can be [c/F7D76A:Overcharged], causing additional effects to occur" +
@@ -35,7 +35,7 @@ namespace StarsAbove.Items
 				"\nAt maximum [c/F7D76A:Overcharge], consume an additional 30 HP but guarantees a critical strike and inflict [c/FF4DF4:Hyperburn] for 4 seconds" +
 				"\n[c/FF4DF4:Hyperburn] deals powerful damage over time and ignores most resistances" +
 				"" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 			
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -407,7 +407,7 @@ namespace StarsAbove.Items
 			
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			
 		}

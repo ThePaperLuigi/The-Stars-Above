@@ -20,8 +20,8 @@ namespace StarsAbove.Items.Armor.StarfarerArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Attire of the Faerie Voyager");
-			Tooltip.SetDefault("One of the storied garbs from legends past" +
+			// DisplayName.SetDefault("Attire of the Faerie Voyager");
+			/* Tooltip.SetDefault("One of the storied garbs from legends past" +
                 "\nEquip to your Starfarer to gain the following:" +
 				"\n[c/E69DE9:The Promised Star]" +
 				"\nGain 1 Stellar Nova Energy upon defeating foes" +
@@ -36,7 +36,7 @@ namespace StarsAbove.Items.Armor.StarfarerArmor
 				"\n[c/E1A8F3:Lucent Bliss] drastically increases maximum Luck and grants 200% base Luck" +
 				//"\n[c/E572A1:Land of Miracles]" +
 				//"\nStarfarer Voyages on 'Radiant Planets' will always succeed, are 50% faster, and gain 80% increased Riches" +
-                "\n'Perfect for escapades in dreamland'");
+                "\n'Perfect for escapades in dreamland'"); */
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}

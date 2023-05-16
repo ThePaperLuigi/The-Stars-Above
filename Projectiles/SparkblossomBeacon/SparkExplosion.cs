@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.SparkblossomBeacon
     public class SparkExplosion : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Sparkblossom's Beacon");
+			// DisplayName.SetDefault("Sparkblossom's Beacon");
 			
 		}
 
@@ -37,7 +37,7 @@ namespace StarsAbove.Projectiles.SparkblossomBeacon
 			set => Projectile.ai[0] = value;
 		}
 
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 			crit = true;
             

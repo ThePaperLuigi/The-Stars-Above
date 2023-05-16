@@ -16,8 +16,8 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ozma Ascendant");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Ozma Ascendant");
+			/* Tooltip.SetDefault("" +
 				"Holding this weapon conjures the [c/6A6A6A:Ascendant Array] to follow you" +
                 "\nAttacks with this weapon will execute a unique five-hit combo attack utilizing the [c/6A6A6A:Ascendant Array]" +
 				"\nRight click to consume 60 Mana, cycling through [c/CF2D2D:Ruby Execution], [c/E2BC3D:Topaz Execution], and [c/33AAE6:Sapphire Execution] attacks in order" +
@@ -36,7 +36,7 @@ namespace StarsAbove.Items
 				"\nFoes caught between [c/B98080:Finale Descends] will take powerful damage over time until the attack resolves" +
 				"\nAdditionally, [c/B98080:Finale Descends] inflicts Stun for 1 second per hit" +
 				"\n'I am.. a monster..'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 
@@ -266,7 +266,7 @@ namespace StarsAbove.Items
 
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 
 

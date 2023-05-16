@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.Tsukiyomi
     public class TsukiyomiStar : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Protostar");     //The English name of the projectile
+			// DisplayName.SetDefault("Protostar");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode
 		}

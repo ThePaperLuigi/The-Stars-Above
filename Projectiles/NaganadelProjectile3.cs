@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles
     public class NaganadelProjectile3 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Naganadel");
+			// DisplayName.SetDefault("Naganadel");
 			Main.projFrames[Projectile.type] = 10;
 		}
 

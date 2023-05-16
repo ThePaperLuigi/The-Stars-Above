@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.Youmu
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Phantom Slash Cooldown");
-            Description.SetDefault("When this buff expires, you can use Phantom Slash again");
+            // DisplayName.SetDefault("Phantom Slash Cooldown");
+            // Description.SetDefault("When this buff expires, you can use Phantom Slash again");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

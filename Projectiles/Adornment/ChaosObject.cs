@@ -12,7 +12,7 @@ namespace StarsAbove.Projectiles.Adornment
     public class ChaosObject : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Adornment of the Chaotic God");     //The English name of the projectile
+			// DisplayName.SetDefault("Adornment of the Chaotic God");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode
 			Main.projFrames[Projectile.type] = 4;
@@ -115,7 +115,7 @@ namespace StarsAbove.Projectiles.Adornment
 			}
 			base.Kill(timeLeft);
         }
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 			for (int d = 0; d < 8; d++)
 			{
@@ -137,7 +137,7 @@ namespace StarsAbove.Projectiles.Adornment
 
 			return true;
 		}
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 
         }

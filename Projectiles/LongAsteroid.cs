@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles
     public class LongAsteroid : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Ultima Thule");     //The English name of the projectile
+			// DisplayName.SetDefault("Ultima Thule");     //The English name of the projectile
 
 			Main.projFrames[Projectile.type] = 6;
 		}

@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
     public class NalhaunCleave : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Rend");
+			// DisplayName.SetDefault("Rend");
 			
 		}
 

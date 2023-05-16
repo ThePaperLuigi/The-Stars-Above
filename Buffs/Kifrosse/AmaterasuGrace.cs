@@ -6,8 +6,8 @@ namespace StarsAbove.Buffs.Kifrosse
     public class AmaterasuGrace : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Amaterasu's Grace");
-			Description.SetDefault("Mystic energy grants effective damage against foes inflicted with frostburn");
+			// DisplayName.SetDefault("Amaterasu's Grace");
+			// Description.SetDefault("Mystic energy grants effective damage against foes inflicted with frostburn");
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
 		}

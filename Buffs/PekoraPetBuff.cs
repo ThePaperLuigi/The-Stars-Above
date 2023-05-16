@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs
     public class PekoraPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Suspicious Looking Bunny-Girl");
-			Description.SetDefault("HA ^ HA v HA ^ HA v HA");
+			// DisplayName.SetDefault("Suspicious Looking Bunny-Girl");
+			// Description.SetDefault("HA ^ HA v HA ^ HA v HA");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}

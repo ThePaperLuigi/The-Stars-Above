@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.ArchitectLuminance
     public class ArchitectShoot : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Architect's Luminance");
+			// DisplayName.SetDefault("Architect's Luminance");
 
 		}
 

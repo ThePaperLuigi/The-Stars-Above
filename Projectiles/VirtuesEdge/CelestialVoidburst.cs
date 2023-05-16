@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.VirtuesEdge
     public class CelestialVoidburst : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Virtue's Edge");
+			// DisplayName.SetDefault("Virtue's Edge");
 			
 		}
 

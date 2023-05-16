@@ -100,28 +100,28 @@ namespace StarsAbove.UI.CelestialCartography
 			GearRegion.Height.Set(600, 0f);
 
 			exit = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Reset"));
-			exit.OnClick += ExitMenu;
+			exit.OnLeftClick += ExitMenu;
 			exit.Width.Set(70, 0f);
 			exit.Height.Set(52, 0f);
 			exit.Left.Set(152, 0f);
 			exit.Top.Set(80, 0);
 
 			Home = new UIImageButton(Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Home"));
-			Home.OnClick += TeleportHome;
+			Home.OnLeftClick += TeleportHome;
 			Home.Width.Set(80, 0f);
 			Home.Height.Set(80, 0f);
 			Home.Left.Set(0, 0f);
 			Home.Top.Set(0, 0f);
 
 			Observatory = new UIImageButton(Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Observatory"));
-			Observatory.OnClick += TeleportObservatory;
+			Observatory.OnLeftClick += TeleportObservatory;
 			Observatory.Width.Set(80, 0f);
 			Observatory.Height.Set(80, 0f);
 			Observatory.Left.Set(0, 0f);
 			Observatory.Top.Set(0, 0f);
 
 			CygnusAsteroids = new UIImageButton(Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/CygnusAsteroids"));
-			CygnusAsteroids.OnClick += TeleportCygnus;
+			CygnusAsteroids.OnLeftClick += TeleportCygnus;
 			CygnusAsteroids.Width.Set(80, 0f);
 			CygnusAsteroids.Height.Set(80, 0f);
 			CygnusAsteroids.Left.Set(0, 0f);
@@ -142,56 +142,56 @@ namespace StarsAbove.UI.CelestialCartography
 			Aquarius.Top.Set(0, 0f);
 
 			Caelum = new UIImageButton(Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Caelum"));
-			Caelum.OnClick += TeleportCaelum;
+			Caelum.OnLeftClick += TeleportCaelum;
 			Caelum.Width.Set(80, 0f);
 			Caelum.Height.Set(80, 0f);
 			Caelum.Left.Set(0, 0f);
 			Caelum.Top.Set(0, 0f);
 
 			Lyra = new UIImageButton(Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Lyra"));
-			Lyra.OnClick += TeleportLyra;
+			Lyra.OnLeftClick += TeleportLyra;
 			Lyra.Width.Set(80, 0f);
 			Lyra.Height.Set(80, 0f);
 			Lyra.Left.Set(0, 0f);
 			Lyra.Top.Set(0, 0f);
 
 			Pyxis = new UIImageButton(Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Pyxis"));
-			Pyxis.OnClick += TeleportPyxis;
+			Pyxis.OnLeftClick += TeleportPyxis;
 			Pyxis.Width.Set(80, 0f);
 			Pyxis.Height.Set(80, 0f);
 			Pyxis.Left.Set(0, 0f);
 			Pyxis.Top.Set(0, 0f);
 
 			MiningStationAries = new UIImageButton(Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/MiningStationAries"));
-			MiningStationAries.OnClick += TeleportAries;
+			MiningStationAries.OnLeftClick += TeleportAries;
 			MiningStationAries.Width.Set(80, 0f);
 			MiningStationAries.Height.Set(80, 0f);
 			MiningStationAries.Left.Set(0, 0f);
 			MiningStationAries.Top.Set(0, 0f);
 
 			Scorpius = new UIImageButton(Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Scorpius"));
-			Scorpius.OnClick += TeleportScorpius;
+			Scorpius.OnLeftClick += TeleportScorpius;
 			Scorpius.Width.Set(80, 0f);
 			Scorpius.Height.Set(80, 0f);
 			Scorpius.Left.Set(0, 0f);
 			Scorpius.Top.Set(0, 0f);
 
 			Serpens = new UIImageButton(Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Serpens"));
-			Serpens.OnClick += TeleportSerpens;
+			Serpens.OnLeftClick += TeleportSerpens;
 			Serpens.Width.Set(80, 0f);
 			Serpens.Height.Set(80, 0f);
 			Serpens.Left.Set(0, 0f);
 			Serpens.Top.Set(0, 0f);
 
 			Tucana = new UIImageButton(Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Tucana"));
-			Tucana.OnClick += TeleportTucana;
+			Tucana.OnLeftClick += TeleportTucana;
 			Tucana.Width.Set(80, 0f);
 			Tucana.Height.Set(80, 0f);
 			Tucana.Left.Set(0, 0f);
 			Tucana.Top.Set(0, 0f);
 
 			Corvus = new UIImageButton(Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationIcons/Corvus"));
-			Corvus.OnClick += TeleportCorvus;
+			Corvus.OnLeftClick += TeleportCorvus;
 			Corvus.Width.Set(80, 0f);
 			Corvus.Height.Set(80, 0f);
 			Corvus.Left.Set(0, 0f);

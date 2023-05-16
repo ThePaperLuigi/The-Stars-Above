@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.VermillionDaemon
     public class RetributionAttacks : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Vermillion Daemon");     //The English name of the projectile
+			// DisplayName.SetDefault("Vermillion Daemon");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 60;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode
 			Main.projFrames[Projectile.type] = 12;

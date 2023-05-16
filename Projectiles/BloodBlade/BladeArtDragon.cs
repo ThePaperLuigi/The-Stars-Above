@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.BloodBlade
     public class BladeArtDragon : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("The Blood Blade");
+			// DisplayName.SetDefault("The Blood Blade");
 			
 		}
 
@@ -111,7 +111,7 @@ namespace StarsAbove.Projectiles.BloodBlade
 			
 		}
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 
 			if (!target.active && Main.player[Projectile.owner].HasBuff(BuffType<Buffs.BloodBlade.BladeArtDragonCooldown>()) && !target.SpawnedFromStatue && target.damage > 0)
@@ -121,7 +121,7 @@ namespace StarsAbove.Projectiles.BloodBlade
 			
         }
 
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 
 

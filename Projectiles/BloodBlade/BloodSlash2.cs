@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.BloodBlade
     public class BloodSlash2 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("The Blood Blade");     //The English name of the projectile
+			// DisplayName.SetDefault("The Blood Blade");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode
 			//DrawOffsetX = 40;
@@ -108,7 +108,7 @@ namespace StarsAbove.Projectiles.BloodBlade
 			
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			for (int d = 0; d < 8; d++)
 			{

@@ -17,14 +17,14 @@ namespace StarsAbove.Items.Placeable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("PortalPlacer");
+			// DisplayName.SetDefault("PortalPlacer");
 			
 
-			Tooltip.SetDefault("" +
+			/* Tooltip.SetDefault("" +
 				"Debug only." +
 				"" +
 				"" +
-				"");
+				""); */
 			//
 			//
 			//"\n[c/D32C2C:Modded chests from mods added after world generation may cease to open once entering a subworld]" +

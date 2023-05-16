@@ -11,7 +11,7 @@ namespace StarsAbove.NPCs.OffworldNPCs
     public class AmethystSwordsinner : ModNPC
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Amethyst Swordsinner");
+			// DisplayName.SetDefault("Amethyst Swordsinner");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.SolarSolenian];
 			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
@@ -67,7 +67,7 @@ namespace StarsAbove.NPCs.OffworldNPCs
 			return 0f;
 		}
 		
-		public override void HitEffect(int hitDirection, double damage) {
+		public override void HitEffect(NPC.HitInfo hit) {
 			for (int i = 0; i < 10; i++) {
 				int dustType = DustID.RedMoss;
 				int dustIndex = Dust.NewDust(NPC.position, NPC.width, NPC.height, dustType);

@@ -14,13 +14,13 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Key of the King's Law");
-			Tooltip.SetDefault("22 summon tag damage" +
+			// DisplayName.SetDefault("Key of the King's Law");
+			/* Tooltip.SetDefault("22 summon tag damage" +
                 "\nRapidly summon powerful blades towards your cursor" +
                 "\nWhen a minion deals tag damage, additionally inflict a random debuff on the foe for 2 seconds" +
 				"\nUsing this weapon grants a random combat-oriented buff for 2 seconds" +
 				"\n'I see your luck has run out, mongrel!'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -58,7 +58,7 @@ namespace StarsAbove.Items
 			}
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			
 		}

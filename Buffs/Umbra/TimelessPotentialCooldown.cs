@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.Umbra
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Timeless Potential Cooldown");
-            Description.SetDefault("Timeless Potential will fail to be obtained if this debuff is present");
+            // DisplayName.SetDefault("Timeless Potential Cooldown");
+            // Description.SetDefault("Timeless Potential will fail to be obtained if this debuff is present");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
             Main.persistentBuff[Type] = true;

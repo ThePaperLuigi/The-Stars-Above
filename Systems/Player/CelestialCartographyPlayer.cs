@@ -295,11 +295,11 @@ namespace StarsAbove
 
         }
 
-        public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Projectile, consider using OnHitNPC instead */
         {
             CalculateMoneyFocus(target);
         }
-        public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Item, consider using OnHitNPC instead */
         {
             CalculateMoneyFocus(target);
         }

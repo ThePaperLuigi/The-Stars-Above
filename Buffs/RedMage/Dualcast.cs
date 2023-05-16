@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.RedMage
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dualcast");
-            Description.SetDefault("Next attack will be executed without delay");
+            // DisplayName.SetDefault("Dualcast");
+            // Description.SetDefault("Next attack will be executed without delay");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

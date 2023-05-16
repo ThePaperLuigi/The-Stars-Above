@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Hullwrought");
+			// DisplayName.SetDefault("Hullwrought");
 			Main.projFrames[Projectile.type] = 3;
 			
 			//DrawOffsetX = -60;

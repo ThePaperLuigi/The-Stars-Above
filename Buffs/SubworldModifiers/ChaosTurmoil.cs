@@ -7,12 +7,12 @@ namespace StarsAbove.Buffs.SubworldModifiers
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("[c/EFB43E:Chaos Turmoil]");
-            Description.SetDefault("" +
+            // DisplayName.SetDefault("[c/EFB43E:Chaos Turmoil]");
+            /* Description.SetDefault("" +
                 "\n" +
                 "\n" +
                 "\n" +
-                "\n");
+                "\n"); */
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

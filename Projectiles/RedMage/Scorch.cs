@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.RedMage
     public class Scorch : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Vermilion Riposte");
+			// DisplayName.SetDefault("Vermilion Riposte");
 			
 		}
 
@@ -111,14 +111,14 @@ namespace StarsAbove.Projectiles.RedMage
 			
 		}
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 
 			
 			
         }
 
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 
 

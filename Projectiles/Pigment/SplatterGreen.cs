@@ -7,7 +7,7 @@ namespace StarsAbove.Projectiles.Pigment
     public class SplatterGreen : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Penthesila's Muse");     //The English name of the projectile
+			// DisplayName.SetDefault("Penthesila's Muse");     //The English name of the projectile
 
 			Main.projFrames[Projectile.type] = 5;
 		}

@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.HunterSymphony
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Bracing Song");
-            Description.SetDefault("Powerful melodies grant 12 Defense and Knockback Resistance");
+            // DisplayName.SetDefault("Bracing Song");
+            // Description.SetDefault("Powerful melodies grant 12 Defense and Knockback Resistance");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

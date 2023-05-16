@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Inner Alchemy");
-            Description.SetDefault("Inner balance has been found, granting 10% increased damage, 25 defense, knockback resistance, and Health Regeneration");
+            // DisplayName.SetDefault("Inner Alchemy");
+            // Description.SetDefault("Inner balance has been found, granting 10% increased damage, 25 defense, knockback resistance, and Health Regeneration");
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

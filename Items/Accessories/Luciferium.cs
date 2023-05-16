@@ -9,13 +9,13 @@ namespace StarsAbove.Items.Accessories
     public class Luciferium : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Lucifer's Bargain");
+			// DisplayName.SetDefault("Lucifer's Bargain");
 
-			Tooltip.SetDefault("" +
+			/* Tooltip.SetDefault("" +
 				"Defense is reduced by 30" +
                 "\nUpon killing an enemy, gain the buff 'Sated Anguish' for 15 seconds" +
                 "\nDuring this time, gain 20% increased damage, powerful life regeneration, and defense is restored" +
-				"\n'Nanomachines of the highest caliber, or so they say'");
+				"\n'Nanomachines of the highest caliber, or so they say'"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 			//The (English) text shown below your weapon's name
 		}

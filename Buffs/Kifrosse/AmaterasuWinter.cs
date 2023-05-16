@@ -6,8 +6,8 @@ namespace StarsAbove.Buffs.Kifrosse
     public class AmaterasuWinter : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Amaterasu's Winter");
-			Description.SetDefault("Mystic energy empowers the Blizzard Foxfires");
+			// DisplayName.SetDefault("Amaterasu's Winter");
+			// Description.SetDefault("Mystic energy empowers the Blizzard Foxfires");
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
 		}

@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Superimposition");
-            Description.SetDefault("Corporeal form has transcended dimensions, granting invincibility and drastic life regen but preventing movement");
+            // DisplayName.SetDefault("Superimposition");
+            // Description.SetDefault("Corporeal form has transcended dimensions, granting invincibility and drastic life regen but preventing movement");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

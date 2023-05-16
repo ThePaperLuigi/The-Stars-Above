@@ -10,8 +10,8 @@ namespace StarsAbove.Buffs.Manifestation
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Great Split: Vertical");
-            Description.SetDefault("");
+            // DisplayName.SetDefault("Great Split: Vertical");
+            // Description.SetDefault("");
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

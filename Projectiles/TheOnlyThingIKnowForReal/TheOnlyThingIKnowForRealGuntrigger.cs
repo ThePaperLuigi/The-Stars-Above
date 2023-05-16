@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.TheOnlyThingIKnowForReal
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("The Only Thing I Know For Real");
+			// DisplayName.SetDefault("The Only Thing I Know For Real");
 			Main.projFrames[Projectile.type] = 4;
 			//DrawOriginOffsetY = 30;
 			//DrawOffsetX = -60;

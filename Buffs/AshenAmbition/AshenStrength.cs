@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.AshenAmbition
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ashen Strength");
-            Description.SetDefault("Long-lost ashes are granting massive buffs to health regeneration and damage");
+            // DisplayName.SetDefault("Ashen Strength");
+            // Description.SetDefault("Long-lost ashes are granting massive buffs to health regeneration and damage");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

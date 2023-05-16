@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.Pets
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Crimson Dragonet"); // Automatic from .lang files
+			// DisplayName.SetDefault("Crimson Dragonet"); // Automatic from .lang files
 			Main.projFrames[Projectile.type] = 6;
 			Main.projPet[Projectile.type] = true;
 			ProjectileID.Sets.LightPet[Projectile.type] = true;

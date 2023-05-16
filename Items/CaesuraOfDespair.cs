@@ -15,8 +15,8 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cæsura of Despair");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Cæsura of Despair");
+			/* Tooltip.SetDefault("" +
 				"Holding this weapon will transform you into a [c/E03166:Fae Nephilim]" +
 				"\nAttacks will pierce enemies and deal minion damage" +
 				"\nFlight time is infinite as a [c/E03166:Fae Nephilim] " +
@@ -25,7 +25,7 @@ namespace StarsAbove.Items
 				"\nThe [c/D36F9C:Irys] will inflict [c/D7367F:Irys Gaze] on one nearby enemy, ignoring player targetting" +
 				"\nFoes affected by [c/D7367F:Irys Gaze] take 50 extra damage from all sources and allows for minions to crit at a 15% chance" +
 				"\n'Hope has descended'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -114,7 +114,7 @@ namespace StarsAbove.Items
 
 			base.HoldItem(player);
 		}
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			// 
 			// 60 frames = 1 second

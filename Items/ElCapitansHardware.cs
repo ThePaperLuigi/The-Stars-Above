@@ -14,8 +14,8 @@ namespace StarsAbove.Items
     public class ElCapitansHardware : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("El Capitan's Hardware");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("El Capitan's Hardware");
+			/* Tooltip.SetDefault("" +
                 "Attacks with this weapon pierce foes and bounce off walls up to 4 times" +
 				"\nStriking foes charges the [c/96BB7F:Renegade Gauge] (Critical strikes grant more charge)" +
 				"\nStriking bosses grants bonus charge to the [c/96BB7F:Renegade Gauge]" +
@@ -23,7 +23,7 @@ namespace StarsAbove.Items
 				"\nThe [c/F9CF49:Gyro Disk] automatically targets and attacks nearby foes" +
 				"\nIf the [c/96BB7F:Renegade Gauge] is higher than 50% on activation, the [c/F9CF49:Gyro Disk] gains bonus damage proportional to the extra amount consumed" +
 				"\n'GAME RIGHTS?!'" +
-				$"");
+				$""); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

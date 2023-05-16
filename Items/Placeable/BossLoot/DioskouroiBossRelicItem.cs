@@ -9,7 +9,7 @@ namespace StarsAbove.Items.Placeable.BossLoot
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dioskouroi Relic");
+			// DisplayName.SetDefault("Dioskouroi Relic");
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}

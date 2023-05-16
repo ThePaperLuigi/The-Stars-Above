@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Tartaglia");
+			// DisplayName.SetDefault("Tartaglia");
 			Main.projFrames[Projectile.type] = 28;
 		}
 		public override void SetDefaults()

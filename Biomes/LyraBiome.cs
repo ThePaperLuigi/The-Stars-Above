@@ -24,7 +24,7 @@ namespace StarsAbove.Biomes
 
 		// Use SetStaticDefaults to assign the display name
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Lyra");
+			// DisplayName.SetDefault("Lyra");
 		}
 
 		// Calculate when the biome is active.

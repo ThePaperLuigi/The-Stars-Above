@@ -15,10 +15,10 @@ namespace StarsAbove.Items.Consumables.EternalStar
     public class VermillionFragment : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Vermillion Fragment");
-			Tooltip.SetDefault("Shattered star fragments" +
+			// DisplayName.SetDefault("Vermillion Fragment");
+			/* Tooltip.SetDefault("Shattered star fragments" +
 				"\n[c/F1AF42:Should not be able to be read.]" +
-				"\n");
+				"\n"); */
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 		}
 

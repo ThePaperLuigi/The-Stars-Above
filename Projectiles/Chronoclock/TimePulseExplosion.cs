@@ -12,7 +12,7 @@ namespace StarsAbove.Projectiles.Chronoclock
     public class TimePulseExplosion : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Time Pulse");
+			// DisplayName.SetDefault("Time Pulse");
 			
 		}
 
@@ -45,14 +45,14 @@ namespace StarsAbove.Projectiles.Chronoclock
 			
 		}
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 
 			
 			
         }
 
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 
 			target.AddBuff(BuffType<ChronoclockTagDamage>(), 240);

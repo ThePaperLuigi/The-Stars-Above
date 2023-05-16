@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.CatalystMemory
     public class CatalystStabEffectMain : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Catalyst's Memory");
+			// DisplayName.SetDefault("Catalyst's Memory");
 
 		}
 
@@ -82,7 +82,7 @@ namespace StarsAbove.Projectiles.CatalystMemory
 
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			for (int d = 0; d < 8; d++)
 			{

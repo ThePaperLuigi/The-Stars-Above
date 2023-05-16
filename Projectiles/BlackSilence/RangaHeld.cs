@@ -15,7 +15,7 @@ namespace StarsAbove.Projectiles.BlackSilence
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gloves of the Black Silence");
+			// DisplayName.SetDefault("Gloves of the Black Silence");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 50;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
 		}

@@ -8,13 +8,13 @@ namespace StarsAbove.Items.Prisms
     public class TyphoonPrism : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Typhoon Prism");
-			Tooltip.SetDefault("[c/FF5934:Tier 2 Stellar Prism]" +
+			// DisplayName.SetDefault("Typhoon Prism");
+			/* Tooltip.SetDefault("[c/FF5934:Tier 2 Stellar Prism]" +
 				"\nAffix to a Stellar Nova to gain the following ability:" +
 				"\n[c/50B6D7:Breech Blast]" +
 				"\nCritical strikes with the Stellar Nova deal an additional 5% of the foe's Max HP (Max 40,000 damage)" +
 				"\nThis ability can only activate every 4 seconds" + //0
-				"");
+				""); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;

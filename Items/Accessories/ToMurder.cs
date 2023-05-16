@@ -6,13 +6,13 @@ namespace StarsAbove.Items.Accessories
     public class ToMurder : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("'To Murder'");
+			// DisplayName.SetDefault("'To Murder'");
 
-			Tooltip.SetDefault("" +
+			/* Tooltip.SetDefault("" +
 				"Activates only when Defense is below 40" +
                 "\nGain 10% damage, increased to 45% below 10 Defense" +
 				"\nEnemies are drastically more likely to target you"+
-				"\n'Can you get away with it?'");
+				"\n'Can you get away with it?'"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 			//The (English) text shown below your weapon's name
 		}

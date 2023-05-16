@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Overwhelming Presence");
-            Description.SetDefault("The powerful foe before you prevents natural enemy spawns");
+            // DisplayName.SetDefault("Overwhelming Presence");
+            // Description.SetDefault("The powerful foe before you prevents natural enemy spawns");
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

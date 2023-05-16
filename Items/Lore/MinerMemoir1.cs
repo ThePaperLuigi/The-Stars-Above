@@ -10,10 +10,10 @@ namespace StarsAbove.Items.Lore
     public class MinerMemoir1 : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("A Miner's Memoir 1");
-			Tooltip.SetDefault("[Part 1 of 2]" +
+			// DisplayName.SetDefault("A Miner's Memoir 1");
+			/* Tooltip.SetDefault("[Part 1 of 2]" +
 				$"\nConsume to unlock the story '{DisplayName.ToString}' in the Archive" +
-                "\nCan also be sold for a high price at shops");
+                "\nCan also be sold for a high price at shops"); */
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 		}
 

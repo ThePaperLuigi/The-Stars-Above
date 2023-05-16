@@ -13,11 +13,11 @@ namespace StarsAbove.Items.Consumables
     public class ProgenitorWish : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("The Progenitor's Wish");
-			Tooltip.SetDefault("This shard is the culmination of billions of ferverent prayers" +
+			// DisplayName.SetDefault("The Progenitor's Wish");
+			/* Tooltip.SetDefault("This shard is the culmination of billions of ferverent prayers" +
 				"\n[c/F1AF42:Summons The Warrior of Light]" +
                 "\nIf Light Everlasting is not at its peak, magnifies the effect of Light Everlasting" +
-				"\nIs not consumed upon use");
+				"\nIs not consumed upon use"); */
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -61,7 +61,7 @@ namespace StarsAbove.Items.Consumables
 				{
 					// If the player is in multiplayer, request a spawn
 					// This will only work if NPCID.Sets.MPAllowedEnemies[type] is true, which we set in MinionBossBody
-					NetMessage.SendData(MessageID.SpawnBoss, number: player.whoAmI, number2: type);
+					NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: type);
 				}
 			}
 			if(EverlastingLightEvent.isEverlastingLightPreviewActive)

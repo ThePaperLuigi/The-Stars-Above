@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs
     public class VitchPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Fox Vixen");
-			Description.SetDefault("She'll kill you and charge extra for disposal");
+			// DisplayName.SetDefault("Fox Vixen");
+			// Description.SetDefault("She'll kill you and charge extra for disposal");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}

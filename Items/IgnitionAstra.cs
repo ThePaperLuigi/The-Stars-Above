@@ -15,7 +15,7 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Wielding this blade will suffuse your surroundings with the power of the Astral or Umbral Aspect" +
+			/* Tooltip.SetDefault("Wielding this blade will suffuse your surroundings with the power of the Astral or Umbral Aspect" +
 				"\nSwitch between aspects with right click (2 second cooldown)" +
 				"\nDuring [c/5dc2e3:Astral Aspect], striking foes will restore a portion of mana" +
 				"\nDuring [c/5dc2e3:Astral Aspect], Mana will be regenerated passively at an increased rate" +
@@ -24,7 +24,7 @@ namespace StarsAbove.Items
 				"\nDuring [c/b03fed:Umbral Aspect], foes struck with the blade will be cursed with Starblight permanently until they are defeated" +
 				"\nDuring [c/b03fed:Umbral Aspect], Mana will be continuously drained and Mana regeneration will be disabled, but attack will be increased" +
 				"\n'The universe stands at the precipice of the end. At the center of it stands Ignition Astra'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -218,7 +218,7 @@ namespace StarsAbove.Items
 
 		}
 		
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 
 			if (aspect == 1)

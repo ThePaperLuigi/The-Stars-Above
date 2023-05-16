@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.NeoDealmaker
     public class BigShot : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Neo Dealmaker");     //The English name of the projectile
+			// DisplayName.SetDefault("Neo Dealmaker");     //The English name of the projectile
 			Main.projFrames[Projectile.type] = 1;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 40;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
@@ -46,7 +46,7 @@ namespace StarsAbove.Projectiles.NeoDealmaker
 
 			return true;
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if(!target.active)
             {
@@ -59,7 +59,7 @@ namespace StarsAbove.Projectiles.NeoDealmaker
 
 			base.OnHitNPC(target, damage, knockback, crit);
 		}
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 			if (target.HasBuff(BuffID.Midas))
             {

@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.ElCapitansHardware
     public class PierceGun : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("El Capitan's Hardware");
+			// DisplayName.SetDefault("El Capitan's Hardware");
 			
 		}
 

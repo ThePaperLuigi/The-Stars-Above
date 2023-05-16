@@ -14,8 +14,8 @@ namespace StarsAbove.Items.Armor.BlackSilence
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Black Silence's Gloves");
-			Tooltip.SetDefault("Unobtainable; vanity by using 'Gloves of the Black Silence'");
+			// DisplayName.SetDefault("Black Silence's Gloves");
+			// Tooltip.SetDefault("Unobtainable; vanity by using 'Gloves of the Black Silence'");
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}

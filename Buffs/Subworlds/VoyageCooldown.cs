@@ -8,9 +8,9 @@ namespace StarsAbove.Buffs.Subworlds
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Anomaly Voyage Cooldown");
-            Description.SetDefault("You can not visit another Anomaly until this debuff expires" +
-                "");
+            // DisplayName.SetDefault("Anomaly Voyage Cooldown");
+            /* Description.SetDefault("You can not visit another Anomaly until this debuff expires" +
+                ""); */
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true;
             Main.persistentBuff[Type] = true;

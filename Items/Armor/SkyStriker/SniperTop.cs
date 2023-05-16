@@ -8,8 +8,8 @@ namespace StarsAbove.Items.Armor.SkyStriker
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sky Striker Armor");
-			Tooltip.SetDefault("You shouldn't be able to read this!");
+			// DisplayName.SetDefault("Sky Striker Armor");
+			// Tooltip.SetDefault("You shouldn't be able to read this!");
         }
 
 		public override void SetDefaults()

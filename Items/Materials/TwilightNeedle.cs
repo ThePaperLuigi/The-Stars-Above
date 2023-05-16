@@ -8,11 +8,11 @@ namespace StarsAbove.Items.Materials
     public class TwilightNeedle : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Twilight Needle");
-			Tooltip.SetDefault("Utilized to craft Starfarer Attire" +
+			// DisplayName.SetDefault("Twilight Needle");
+			/* Tooltip.SetDefault("Utilized to craft Starfarer Attire" +
                 "\nObtained through crafting or through defeating a powerful celestial foe" +
                 "\n'A mystical implement, oscillating in your hands'" +
-				"");
+				""); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;

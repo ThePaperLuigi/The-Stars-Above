@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles
     public class KeyOfChronologyBurst : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Key of Chronology");
+			// DisplayName.SetDefault("Key of Chronology");
 			
 		}
 
@@ -73,7 +73,7 @@ namespace StarsAbove.Projectiles
 			
 		}
 
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 			target.AddBuff(BuffType<Buffs.Stun>(), 300);
 

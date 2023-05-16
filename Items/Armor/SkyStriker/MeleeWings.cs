@@ -11,7 +11,7 @@ namespace StarsAbove.Items.Armor.SkyStriker
 		
 
 		public override void SetStaticDefaults() {
-			Tooltip.SetDefault("You shouldn't be able to read this!");
+			// Tooltip.SetDefault("You shouldn't be able to read this!");
 		}
 
 		public override void SetDefaults() {

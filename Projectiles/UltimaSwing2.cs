@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ultima Thule");
+			// DisplayName.SetDefault("Ultima Thule");
 			Main.projFrames[Projectile.type] = 3;
 			//DrawOriginOffsetY = 30;
 			//DrawOffsetX = -60;

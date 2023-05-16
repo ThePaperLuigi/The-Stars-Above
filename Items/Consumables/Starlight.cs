@@ -13,10 +13,10 @@ namespace StarsAbove.Items.Consumables
     public class Starlight : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Starlight");
-			Tooltip.SetDefault("Some stray starlight" +
+			// DisplayName.SetDefault("Starlight");
+			/* Tooltip.SetDefault("Some stray starlight" +
 				"\n[c/F1AF42:Charges the Stellar Nova slightly when acquired]" +
-				"\n");
+				"\n"); */
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 		}
 

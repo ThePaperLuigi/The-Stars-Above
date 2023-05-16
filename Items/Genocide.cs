@@ -15,9 +15,9 @@ namespace StarsAbove.Items
     public class Genocide : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Genocide");
+			// DisplayName.SetDefault("Genocide");
 
-			Tooltip.SetDefault("Attacks fire powerful explosive grenades with high knockback" +
+			/* Tooltip.SetDefault("Attacks fire powerful explosive grenades with high knockback" +
 				"\nStriking an enemy with an attack grants 25% increased movement and critical strike chance for 4 seconds" +
 				"\nWill automatically take time to reload after 6 shots" +
 				"\nThe final shot before reloading has a larger explosion radius and deals 2x base damage" +
@@ -28,7 +28,7 @@ namespace StarsAbove.Items
 				"\nEnemies struck by the [c/4BF0DE:Plasma Grenade] are inflicted with Mortal Wounds for 12 seconds, increasing damage taken from this weapon by 50%" +
 				"\nThe [c/4BF0DE:Plasma Grenade] can not bounce to a foe with Mortal Wounds" +
 				"\n'Keep your mouth shut and eyes open!'" +
-				$"");
+				$""); */
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

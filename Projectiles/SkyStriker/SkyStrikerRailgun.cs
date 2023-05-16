@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.SkyStriker
     public class SkyStrikerRailgun : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Armament Of The Sky Striker");
+			// DisplayName.SetDefault("Armament Of The Sky Striker");
 			
 		}
 

@@ -18,14 +18,14 @@ namespace StarsAbove.Items.Placeable.StellarFoci
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Luck Focus (Tier 2)");
+			// DisplayName.SetDefault("Luck Focus (Tier 2)");
 			
 
-			Tooltip.SetDefault("" +
+			/* Tooltip.SetDefault("" +
 				"[c/FF1B8D:Stellar Foci]" +
 				"\nOnce placed near a Stellaglyph:" +
 				"\nIncreases luck by 8% during a Cosmic Voyage" +
-				"");
+				""); */
 			//
 			//
 			//"\n[c/D32C2C:Modded chests from mods added after world generation may cease to open once entering a subworld]" +

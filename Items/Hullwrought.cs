@@ -17,7 +17,7 @@ namespace StarsAbove.Items
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("" +
+            /* Tooltip.SetDefault("" +
                 "[c/F7D76A:Hold left click to charge the weapon; if the weapon is fully charged, the attack varies]" +
                 "\nRight click to swap between [c/FF7C00:Blasting Form] and [c/00CDFF:Striking Form] with 1/3rd second cooldown" +
                 "\nIn [c/00CDFF:Striking Form], attacks focus on close-ranged damage" +
@@ -28,7 +28,7 @@ namespace StarsAbove.Items
                 "\nCharged attacks take much longer to perform, but instead fires a powerful projectile that stuns foes for 1/3rd second on a critical strike" +
                 "\nHolding charge attack enhances the attack every 1/2 second, capping at 10 stacks" +
                 "\nIf the charged attack has 5 stacks or more, it will always be a critical strike" +
-                $"");
+                $""); */
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

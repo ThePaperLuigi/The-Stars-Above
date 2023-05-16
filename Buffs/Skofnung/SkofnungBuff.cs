@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.Skofnung
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Blade of Grudges");
-            Description.SetDefault("The Blade of Grudges serves you");
+            // DisplayName.SetDefault("Blade of Grudges");
+            // Description.SetDefault("The Blade of Grudges serves you");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

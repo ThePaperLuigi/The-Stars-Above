@@ -15,7 +15,7 @@ namespace StarsAbove.Projectiles.SkyStriker
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Armament of the Sky Striker"); // Set the projectile name to Example Flail Ball
+			// DisplayName.SetDefault("Armament of the Sky Striker"); // Set the projectile name to Example Flail Ball
 		}
 
 		public override void SetDefaults()

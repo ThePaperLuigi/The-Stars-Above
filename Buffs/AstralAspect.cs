@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Astral Attunement");
-            Description.SetDefault("The Astral Aspect grants 10 extra defense and imbues attacks with the ability to drain Mana from foes at the cost of half your damage");
+            // DisplayName.SetDefault("Astral Attunement");
+            // Description.SetDefault("The Astral Aspect grants 10 extra defense and imbues attacks with the ability to drain Mana from foes at the cost of half your damage");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

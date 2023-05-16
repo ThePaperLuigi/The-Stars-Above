@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.BlackSilence
     public class AllasStab : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Gloves of the Black Silence");
+			// DisplayName.SetDefault("Gloves of the Black Silence");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 76;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode
 		}

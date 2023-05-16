@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs.ManiacalJustice
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("LV");
-            Description.SetDefault("");
+            // DisplayName.SetDefault("LV");
+            // Description.SetDefault("");
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }
@@ -33,7 +33,7 @@ namespace StarsAbove.Buffs.ManiacalJustice
 
             }
         }
-        public override void ModifyBuffTip(ref string tip, ref int rare)
+        public override void ModifyBuffText(ref string buffName, ref string tip, ref int rare)
         {
             int LVAmount = Main.LocalPlayer.GetModPlayer<WeaponPlayer>().LVStacks;
             tip = LangHelper.GetTextValue("BuffDescription.LVBuff", LVAmount);
@@ -52,7 +52,7 @@ namespace StarsAbove.Buffs.ManiacalJustice
 
             }
 
-            base.ModifyBuffTip(ref tip, ref rare);
+            base.ModifyBuffText(ref tip, ref rare);
         }
     }
 }

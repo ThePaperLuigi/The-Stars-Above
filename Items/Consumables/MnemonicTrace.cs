@@ -10,10 +10,10 @@ namespace StarsAbove.Items.Consumables
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mnemonic Trace");
-			Tooltip.SetDefault("A trace of the First Starfarer's rampage" +
+			// DisplayName.SetDefault("Mnemonic Trace");
+			/* Tooltip.SetDefault("A trace of the First Starfarer's rampage" +
 				"\n'Memories of salvation'" +
-				"\n");
+				"\n"); */
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

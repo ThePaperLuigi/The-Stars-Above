@@ -13,8 +13,8 @@ namespace StarsAbove.Items.Armor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Stargazing Hero's Mantle");
-			Tooltip.SetDefault("Spatial garb of ages past");
+			// DisplayName.SetDefault("Stargazing Hero's Mantle");
+			// Tooltip.SetDefault("Spatial garb of ages past");
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

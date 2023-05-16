@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.MorningStar
     public class AlucardSwordBuff1 : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Alucard's Sword");
-			Description.SetDefault("A powerful blade is aiding you");
+			// DisplayName.SetDefault("Alucard's Sword");
+			// Description.SetDefault("A powerful blade is aiding you");
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}

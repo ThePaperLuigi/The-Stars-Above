@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.CosmicDestroyer
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Magiton Overheat");
-            Description.SetDefault("Cosmic Destroyer is imbued with overwhelming strength");
+            // DisplayName.SetDefault("Magiton Overheat");
+            // Description.SetDefault("Cosmic Destroyer is imbued with overwhelming strength");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

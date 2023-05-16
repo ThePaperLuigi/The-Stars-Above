@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.SkyStriker
     public class SkyStrikerShieldDamage : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Armament of the Sky Striker");
+			// DisplayName.SetDefault("Armament of the Sky Striker");
 			
 		}
 

@@ -6,7 +6,7 @@ namespace StarsAbove.Projectiles.StellarNovas
     public class LaevateinnDamage : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Ars Laevateinn");
+			// DisplayName.SetDefault("Ars Laevateinn");
 			
 		}
 

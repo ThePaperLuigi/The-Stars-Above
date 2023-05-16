@@ -11,11 +11,11 @@ namespace StarsAbove.Items.Consumables
     public class StarfarerSwapper : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Starfarer Swapper");
-			Tooltip.SetDefault("DEBUG ITEM" +
+			// DisplayName.SetDefault("Starfarer Swapper");
+			/* Tooltip.SetDefault("DEBUG ITEM" +
                 "\nSwaps your current Starfarer between Asphodene and Eridani" +
 				"\n[c/F1AF42:Don't use this in multiplayer!]" +
-				"\n");
+				"\n"); */
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 		}
 

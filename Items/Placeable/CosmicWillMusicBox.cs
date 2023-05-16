@@ -9,11 +9,11 @@ namespace StarsAbove.Items.Placeable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Music Box (The Vagrant of Space and Time)");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Music Box (The Vagrant of Space and Time)");
+			/* Tooltip.SetDefault("" +
 				"'Cosmic Will' - The Stars Above OST" +
 				"\nOriginal"
-				+ $"\n");
+				+ $"\n"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/CosmicWill"), ModContent.ItemType<CosmicWillMusicBox>(), ModContent.TileType<Tiles.CosmicWillMusicBox>());

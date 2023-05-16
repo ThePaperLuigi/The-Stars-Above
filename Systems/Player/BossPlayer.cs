@@ -233,12 +233,12 @@ namespace StarsAbove
             PolluxBarActive = false;
 
         }
-        public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
+        public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Item, consider using ModifyHitNPC instead */
         {
 
             BossDamageModifier(target,ref damage);
         }
-        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Projectile, consider using ModifyHitNPC instead */
         {
             //Main.NewText(Language.GetTextValue($"Damage Pre-Modifier: {damage}"), 60, 170, 247);
 
@@ -351,7 +351,7 @@ namespace StarsAbove
                 if (newPosition != Player.position)
                 {
                     Player.Teleport(newPosition, 1, 0);
-                    NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, Player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
+                    NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, Player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
 
                 }
             }
@@ -398,7 +398,7 @@ namespace StarsAbove
                 if (newPosition != Player.position)
                 {
                     Player.Teleport(newPosition, 1, 0);
-                    NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, Player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
+                    NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, Player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
 
                 }
             }
@@ -445,7 +445,7 @@ namespace StarsAbove
                 if (newPosition != Player.position)
                 {
                     Player.Teleport(newPosition, 1, 0);
-                    NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, Player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
+                    NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, Player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
 
                 }
             }
@@ -641,7 +641,7 @@ namespace StarsAbove
                 {
                     Player.AddBuff(BuffType<Invincibility>(), 10);
                     Player.Teleport(newPosition, 1, 0);
-                    NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, Player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
+                    NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, Player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
 
                 }
             }

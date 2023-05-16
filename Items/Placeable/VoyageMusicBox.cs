@@ -9,11 +9,11 @@ namespace StarsAbove.Items.Placeable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Music Box (The Sea of Stars)");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Music Box (The Sea of Stars)");
+			/* Tooltip.SetDefault("" +
 				"'One Small Step' - FFXIV Endwalker OST" +
 				"\nComposed by Masayoshi Soken"
-				+ $"\n");
+				+ $"\n"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/MareLamentorum"),

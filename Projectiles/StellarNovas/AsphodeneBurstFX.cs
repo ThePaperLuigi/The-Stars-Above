@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.StellarNovas
     public class AsphodeneBurstFX : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("AsphodeneFX");
+			// DisplayName.SetDefault("AsphodeneFX");
 			//Main.projFrames[projectile.type] = 14;
 		}
 

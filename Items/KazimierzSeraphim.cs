@@ -14,7 +14,7 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Attacks with this weapons swing in a wide arc" +
+			/* Tooltip.SetDefault("Attacks with this weapons swing in a wide arc" +
 				"\nHolding this weapon will conjure a [c/FF8B00:Brilliant Spark] to orbit you, dealing contact damage" +
 				"\nStriking foes with this weapon grants stacks of [c/F1AF42:Radiance] (Up to 10)" +
 				"\nCritical strikes grant two stacks of [c/F1AF42:Radiance]" +
@@ -22,7 +22,7 @@ namespace StarsAbove.Items
 				"\nEach stack of [c/F1AF42:Radiance] will contribute 5 extra damage" +
 				"\nAt 5 or more stacks, the attack will always crit" +
 				"\n'The light holds resolute here!'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -85,7 +85,7 @@ namespace StarsAbove.Items
 			}
 			base.HoldItem(player);
 		}
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			// 
 			// 60 frames = 1 second

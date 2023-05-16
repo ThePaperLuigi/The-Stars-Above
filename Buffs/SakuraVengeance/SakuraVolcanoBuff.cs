@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.SakuraVengeance
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Volcanic Wrath");
-            Description.SetDefault("");
+            // DisplayName.SetDefault("Volcanic Wrath");
+            // Description.SetDefault("");
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

@@ -12,12 +12,12 @@ namespace StarsAbove.Items
     public class VenerationOfButterflies : ModItem
 	{
 		public override void SetStaticDefaults() {
-			Tooltip.SetDefault("Fires bursts of fluttering energy at your foe while increasing the [c/F59EEF:Butterfly Gauge]" +
+			/* Tooltip.SetDefault("Fires bursts of fluttering energy at your foe while increasing the [c/F59EEF:Butterfly Gauge]" +
 				"\nProjectiles inflict Confusion and deal bonus damage to Confused foes" +
 				"\nOnce the [c/F59EEF:Butterfly Gauge] is at its maximum, use right click to enter [c/9B88D7:Butterfly Trance] for 5 seconds" +
 				"\nDuring [c/9B88D7:Butterfly Trance], the Mana cost of Veneration of Butterflies drops to zero and you can shoot twice as fast" +
 				"\nAdditionally, gain 50% damage reduction and slow falling" +
-				$"");
+				$""); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

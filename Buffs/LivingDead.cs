@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Living Dead");
-            Description.SetDefault("Dark magic keeps you from death; if you are not healed to 150 HP before Living Dead ends, you will die");
+            // DisplayName.SetDefault("Living Dead");
+            // Description.SetDefault("Dark magic keeps you from death; if you are not healed to 150 HP before Living Dead ends, you will die");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

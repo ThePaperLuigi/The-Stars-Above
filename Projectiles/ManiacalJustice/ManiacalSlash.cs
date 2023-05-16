@@ -13,7 +13,7 @@ namespace StarsAbove.Projectiles.ManiacalJustice
     public class ManiacalSlash : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Maniacal Justice");
+			// DisplayName.SetDefault("Maniacal Justice");
 			
 			Main.projFrames[Projectile.type] = 6;
 		}
@@ -78,7 +78,7 @@ namespace StarsAbove.Projectiles.ManiacalJustice
 			
 
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Main.player[Projectile.owner].GetModPlayer<WeaponPlayer>().LVStacks+= 2;
 			

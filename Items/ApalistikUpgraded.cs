@@ -12,8 +12,8 @@ namespace StarsAbove.Items
     public class ApalistikUpgraded : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Seaborn Apalistik");
-			Tooltip.SetDefault("18 summon tag damage" +
+			// DisplayName.SetDefault("Seaborn Apalistik");
+			/* Tooltip.SetDefault("18 summon tag damage" +
                 "\nStriking foes with the weapon inflicts [c/4A91FF:Riptide] for 4 seconds" +
 				"\nWhen a minion strikes an enemy with [c/4A91FF:Riptide], they take 30% extra damage, removing [c/4A91FF:Riptide]" +
 				"\nAdditionally, with this weapon held, minions have a 10% chance to apply [c/4776A7:Ocean's Culling] for 5 seconds upon striking foes" +
@@ -25,7 +25,7 @@ namespace StarsAbove.Items
 				"\nAdditionally, minions will deal double damage" +
 				"\nAfter use, [c/00FFC1:Seaborn Wrath] has a 30 second cooldown" +
 				"\nDamage scales greatly with world progression" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -201,7 +201,7 @@ namespace StarsAbove.Items
 			
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			
 

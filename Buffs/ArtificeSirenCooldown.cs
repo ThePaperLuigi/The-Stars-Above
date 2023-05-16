@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Artifice Siren Cooldown");
-            Description.SetDefault("Artifice Siren will fail to activate if this debuff is present");
+            // DisplayName.SetDefault("Artifice Siren Cooldown");
+            // Description.SetDefault("Artifice Siren will fail to activate if this debuff is present");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
             Main.persistentBuff[Type] = true;

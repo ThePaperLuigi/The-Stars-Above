@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.ArachnidNeedlepoint
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Web of Needles");
-            Description.SetDefault("Summon damage is increased by 30%");
+            // DisplayName.SetDefault("Web of Needles");
+            // Description.SetDefault("Summon damage is increased by 30%");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

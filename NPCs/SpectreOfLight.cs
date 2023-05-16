@@ -11,7 +11,7 @@ namespace StarsAbove.NPCs
     public class SpectreOfLight : ModNPC
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Spectre Of Light");
+			// DisplayName.SetDefault("Spectre Of Light");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.Zombie];
 			NPCID.Sets.MPAllowedEnemies[NPC.type] = true;
 			NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
@@ -76,7 +76,7 @@ namespace StarsAbove.NPCs
 			}
 			base.AI();
 		}
-		public override void HitEffect(int hitDirection, double damage) {
+		public override void HitEffect(NPC.HitInfo hit) {
 			for (int i = 0; i < 10; i++) {
 				int dustType = 271;
 				int dustIndex = Dust.NewDust(NPC.position, NPC.width, NPC.height, dustType);

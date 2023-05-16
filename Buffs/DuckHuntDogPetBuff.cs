@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     public class DuckHuntDogPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Duck Hunter");
-			Description.SetDefault("It seems the name has become outdated");
+			// DisplayName.SetDefault("Duck Hunter");
+			// Description.SetDefault("It seems the name has become outdated");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}

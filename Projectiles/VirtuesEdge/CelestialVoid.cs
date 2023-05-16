@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.VirtuesEdge
     public class CelestialVoid : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Celestial Void");     //The English name of the projectile
+			// DisplayName.SetDefault("Celestial Void");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode
 			Main.projFrames[Projectile.type] = 1;
@@ -66,12 +66,12 @@ namespace StarsAbove.Projectiles.VirtuesEdge
 			Projectile.rotation += (rotateClockwise ? 1 : -1) * MathHelper.ToRadians(rotationsPerSecond * 6f);
 
 		}
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 			damage /= 3;
             base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
         }
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 			if(target.CanBeChasedBy())
             {

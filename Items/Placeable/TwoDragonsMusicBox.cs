@@ -9,11 +9,11 @@ namespace StarsAbove.Items.Placeable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Music Box (The Warrior of Light - 2nd Phase)");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Music Box (The Warrior of Light - 2nd Phase)");
+			/* Tooltip.SetDefault("" +
 				"'Two Dragons' - Yakuza 0 OST" +
 				"\nComposed by Hidenori Shoji"
-				+ $"\n");
+				+ $"\n"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TwoDragons"),

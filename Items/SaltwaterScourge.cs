@@ -20,8 +20,8 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Saltwater Scourge");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Saltwater Scourge");
+			/* Tooltip.SetDefault("" +
 				"Holding this weapon will periodically cleanse certain movement-related debuffs and guarantee enemies drop 15 silver on kill" +
                 "\nAttacks with this weapon alternate between a sword slash and firing short-ranged piercing cannonballs" +
                 "\nSword attacks burn foes for 2 seconds on hit, deal 50% increased damage, and additionally grant Swiftness for 4 seconds" +
@@ -36,7 +36,7 @@ namespace StarsAbove.Items
                 "\nAdditionally, gain Swiftness for 12 seconds upon activation" +
 				"\nThe final [c/E18121:Cannonfire Deluge] will end with a larger cannonball that deals 3x damage, stunning foes for 2 seconds" +
 				"\n'Neither the flames nor the depths could claim me...'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -107,7 +107,7 @@ namespace StarsAbove.Items
 			
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 
 			

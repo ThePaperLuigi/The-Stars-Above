@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.Pets
     public class SanaPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Astrogirl");
-			Description.SetDefault("Without the limiter, she'd cover the whole screen");
+			// DisplayName.SetDefault("Astrogirl");
+			// Description.SetDefault("Without the limiter, she'd cover the whole screen");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}

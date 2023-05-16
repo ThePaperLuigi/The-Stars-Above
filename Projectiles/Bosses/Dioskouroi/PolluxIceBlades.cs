@@ -14,7 +14,7 @@ namespace StarsAbove.Projectiles.Bosses.Dioskouroi
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Frozen Arsenal");
+			// DisplayName.SetDefault("Frozen Arsenal");
 			Main.projFrames[Projectile.type] = 14;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
@@ -72,7 +72,7 @@ namespace StarsAbove.Projectiles.Bosses.Dioskouroi
 		// While there are several different ways to change how our projectile could behave differently, lets make it so
 		// when our projectile finally dies, it will explode into 4 regular Meowmere projectiles.
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
 			if (target.type == ModContent.NPCType<NPCs.Dioskouroi.PolluxBoss>())
 			{
@@ -95,7 +95,7 @@ namespace StarsAbove.Projectiles.Bosses.Dioskouroi
 
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
 			if (target.GetModPlayer<BossPlayer>().temperatureGaugeCold > 0)
 			{

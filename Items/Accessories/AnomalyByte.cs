@@ -7,14 +7,14 @@ namespace StarsAbove.Items.Accessories
     public class AnomalyByte : StargazerRelic
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Anomalous Byte");
+			// DisplayName.SetDefault("Anomalous Byte");
 
-			Tooltip.SetDefault("[c/2DD2FE:Stargazer Relic]" +
+			/* Tooltip.SetDefault("[c/2DD2FE:Stargazer Relic]" +
 				"\nCritical strikes are disabled" +
                 "\nWhen damage is dealt, either deal 40% more damage (40% chance), 40% less damage (30% chance), 400% more damage (20% chance), or 1 damage (10% chance)" +
                 "\nPositive results will additionally become critical strikes" +
 				"\n[c/ADEEFF:Only one Stargazer Relic can be equipped at a time]" +
-				"\n'###?'");
+				"\n'###?'"); */
 			
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 			//The (English) text shown below your weapon's name
@@ -39,7 +39,7 @@ namespace StarsAbove.Items.Accessories
     {
 		public bool AnomalyByteEquipped;
 
-        public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
+        public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Item, consider using ModifyHitNPC instead */
         {
 			if(AnomalyByteEquipped)
             {
@@ -72,7 +72,7 @@ namespace StarsAbove.Items.Accessories
 
            
         }
-        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Projectile, consider using ModifyHitNPC instead */
         {
 			if (AnomalyByteEquipped)
 			{

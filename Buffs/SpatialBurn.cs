@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Disintegration");
-            Description.SetDefault("Touched by the vacuum of space");
+            // DisplayName.SetDefault("Disintegration");
+            // Description.SetDefault("Touched by the vacuum of space");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

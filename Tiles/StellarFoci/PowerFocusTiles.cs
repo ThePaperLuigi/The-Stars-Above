@@ -88,8 +88,8 @@ namespace StarsAbove.Tiles.StellarFoci
             // Register the tile data itself
             TileObjectData.addTile(Type);
 
-            ModTranslation name = CreateMapEntryName();
-            name.SetDefault(LangHelper.GetTextValue("MapObject.StellarFoci"));
+            LocalizedText name = CreateMapEntryName();
+            // name.SetDefault(LangHelper.GetTextValue("MapObject.StellarFoci"));
             //AddMapEntry(new Color(0, 185, 255),  CreateMapEntryName());
         }
 
@@ -264,8 +264,8 @@ namespace StarsAbove.Tiles.StellarFoci
             // Register the tile data itself
             TileObjectData.addTile(Type);
 
-            ModTranslation name = CreateMapEntryName();
-            name.SetDefault(LangHelper.GetTextValue("MapObject.StellarFoci"));
+            LocalizedText name = CreateMapEntryName();
+            // name.SetDefault(LangHelper.GetTextValue("MapObject.StellarFoci"));
             //AddMapEntry(new Color(0, 185, 255),  CreateMapEntryName());
         }
 
@@ -440,8 +440,8 @@ namespace StarsAbove.Tiles.StellarFoci
             // Register the tile data itself
             TileObjectData.addTile(Type);
 
-            ModTranslation name = CreateMapEntryName();
-            name.SetDefault(LangHelper.GetTextValue("MapObject.StellarFoci"));
+            LocalizedText name = CreateMapEntryName();
+            // name.SetDefault(LangHelper.GetTextValue("MapObject.StellarFoci"));
             //AddMapEntry(new Color(0, 185, 255),  CreateMapEntryName());
         }
 

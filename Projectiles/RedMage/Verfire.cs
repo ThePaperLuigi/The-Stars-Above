@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.RedMage
     public class Verfire : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Verfire");     //The English name of the projectile
+			// DisplayName.SetDefault("Verfire");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 70;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode
 		}
@@ -59,7 +59,7 @@ namespace StarsAbove.Projectiles.RedMage
 
 			return true;
 		}
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 			target.AddBuff(BuffID.OnFire, 240);
             base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);

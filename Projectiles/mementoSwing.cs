@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Memento Muse");
+			// DisplayName.SetDefault("Memento Muse");
 			Main.projFrames[Projectile.type] = 5;
 		}
 		public override void SetDefaults()

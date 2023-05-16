@@ -11,7 +11,7 @@ namespace StarsAbove.Systems
 	{
 		public override void SetStaticDefaults()
 		{
-			ClassName.SetDefault("celestial damage");
+			DisplayName.SetDefault("celestial damage");
 		}
 
 		//public string "Spatial Damage" => DisplayName;

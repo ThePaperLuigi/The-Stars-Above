@@ -6,7 +6,7 @@ namespace StarsAbove.Projectiles
     public class SolemnConfiteor : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Saber AOE Indicator");
+			// DisplayName.SetDefault("Saber AOE Indicator");
 			
 		}
 

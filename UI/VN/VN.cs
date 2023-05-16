@@ -106,28 +106,28 @@ namespace StarsAbove.UI.VN
 			barFrame.IgnoresMouseInteraction = true;
 
 			imageButton = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Button"));
-			imageButton.OnClick += MouseClickA;
+			imageButton.OnLeftClick += MouseClickA;
 			imageButton.Left.Set(600, 0f);
 			imageButton.Top.Set(554, 0f);
 			imageButton.Width.Set(80, 0f);
 			imageButton.Height.Set(32, 0f);
 
 			dialogueOption1 = new UIImageButton(Request<Texture2D>("StarsAbove/UI/VN/choiceButton"));
-			dialogueOption1.OnClick += DialogueOption1Click;
+			dialogueOption1.OnLeftClick += DialogueOption1Click;
 			dialogueOption1.Left.Set(144, 0f);
 			dialogueOption1.Top.Set(232, 0f);
 			dialogueOption1.Width.Set(512, 0f);
 			dialogueOption1.Height.Set(32, 0f);
 
 			dialogueOption2 = new UIImageButton(Request<Texture2D>("StarsAbove/UI/VN/choiceButton"));
-			dialogueOption2.OnClick += DialogueOption2Click;
+			dialogueOption2.OnLeftClick += DialogueOption2Click;
 			dialogueOption2.Left.Set(144, 0f);
 			dialogueOption2.Top.Set(282, 0f);
 			dialogueOption2.Width.Set(512, 0f);
 			dialogueOption2.Height.Set(32, 0f);
 
 			dialogueOption3 = new UIImageButton(Request<Texture2D>("StarsAbove/UI/VN/choiceButton"));
-			dialogueOption3.OnClick += DialogueOption3Click;
+			dialogueOption3.OnLeftClick += DialogueOption3Click;
 			dialogueOption3.Left.Set(144, 0f);
 			dialogueOption3.Top.Set(332, 0f);
 			dialogueOption3.Width.Set(512, 0f);

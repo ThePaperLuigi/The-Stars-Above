@@ -11,9 +11,9 @@ namespace StarsAbove.Items.Pets
     public class ProgenitorShard : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Progenitor's Shard");
-			Tooltip.SetDefault("Summons a discount Warrior of Light" +
-                "\n'I will transcend you!'");
+			// DisplayName.SetDefault("Progenitor's Shard");
+			/* Tooltip.SetDefault("Summons a discount Warrior of Light" +
+                "\n'I will transcend you!'"); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

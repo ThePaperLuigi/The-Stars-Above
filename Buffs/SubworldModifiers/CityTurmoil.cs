@@ -7,12 +7,12 @@ namespace StarsAbove.Buffs.SubworldModifiers
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("[c/EFB43E:Environmental Turmoil]");
-            Description.SetDefault("Exploring a bustling futuristic cityscape" +
+            // DisplayName.SetDefault("[c/EFB43E:Environmental Turmoil]");
+            /* Description.SetDefault("Exploring a bustling futuristic cityscape" +
                 "\n" +
                 "\nDefenses increased by 10" +
                 "\nAbove 400 HP, gain an extra 10 defense" +
-                "\nFall damage is negated");
+                "\nFall damage is negated"); */
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

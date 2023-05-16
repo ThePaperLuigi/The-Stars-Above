@@ -18,14 +18,14 @@ namespace StarsAbove.Items.Placeable.StellarFoci
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Power Focus (Tier 1)");
+			// DisplayName.SetDefault("Power Focus (Tier 1)");
 			
 
-			Tooltip.SetDefault("" +
+			/* Tooltip.SetDefault("" +
 				"[c/FF1B8D:Stellar Foci]" +
 				"\nOnce placed near a Stellaglyph:" +
 				"\nIncreases damage dealt by 2% during a Cosmic Voyage" +
-				"");
+				""); */
 			//
 			//
 			//"\n[c/D32C2C:Modded chests from mods added after world generation may cease to open once entering a subworld]" +

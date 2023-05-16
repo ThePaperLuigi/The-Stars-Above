@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.Kifrosse
     public class BlizzardFoxfire1 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("BlizzardFoxfire1");     //The English name of the projectile
+			// DisplayName.SetDefault("BlizzardFoxfire1");     //The English name of the projectile
 			Main.projFrames[Projectile.type] = 4;
 		}
 
@@ -237,7 +237,7 @@ namespace StarsAbove.Projectiles.Kifrosse
 		{
 			return true;
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			target.AddBuff(BuffID.Frostburn, 120);
 			base.OnHitNPC(target, damage, knockback, crit);

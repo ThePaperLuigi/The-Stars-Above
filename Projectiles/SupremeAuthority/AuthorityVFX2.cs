@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.SupremeAuthority
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Supreme Authority");     //The English name of the projectile
+			// DisplayName.SetDefault("Supreme Authority");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 70;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode
 																		//DrawOffsetX = 40;

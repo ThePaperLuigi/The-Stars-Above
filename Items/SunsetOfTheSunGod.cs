@@ -19,8 +19,8 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sunset of the Sun God");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Sunset of the Sun God");
+			/* Tooltip.SetDefault("" +
 				"[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty]" +
 				"\nRight click to unleash [c/FFC500:Vasavi Shakti], leaping into the air, gaining Featherfall and Invincibility for 2 seconds (1 minute cooldown)" +
 				"\n[c/FFC500:Vasavi Shakti] channels a powerful beam of energy towards your cursor for 2 seconds" +
@@ -31,7 +31,7 @@ namespace StarsAbove.Items
 				"\n[c/4DFF5B:Ranged]: Attacks launch the spear at high velocity, dealing 2x damage and piercing infinitely without damage falloff" +
 				"\n[c/00CDFF:Summon]: Attacks extend a burning whip, causing summons to inflict Daybroken for 2 seconds on hit" +
 				"\n'With this single strike, I shall inflict extinction!'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -276,7 +276,7 @@ namespace StarsAbove.Items
 			}
 			base.HoldItem(player);
 		}
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			// 
 			// 60 frames = 1 second

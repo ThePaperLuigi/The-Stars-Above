@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.TheOnlyThingIKnowForReal
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Perfect Guntrigger");
-            Description.SetDefault("");
+            // DisplayName.SetDefault("Perfect Guntrigger");
+            // Description.SetDefault("");
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

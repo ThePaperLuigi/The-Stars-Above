@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     public class PhymPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Phym");
-			Description.SetDefault("Phym is following you");
+			// DisplayName.SetDefault("Phym");
+			// Description.SetDefault("Phym is following you");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}

@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dash Invincibility");
-            Description.SetDefault("You will not take damage");
+            // DisplayName.SetDefault("Dash Invincibility");
+            // Description.SetDefault("You will not take damage");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

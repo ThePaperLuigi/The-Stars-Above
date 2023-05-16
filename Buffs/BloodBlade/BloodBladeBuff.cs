@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.BloodBlade
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Bloodthirsting Blade");
-            Description.SetDefault("Gain powerful buffs based on missing HP, but life regeneration is disabled");
+            // DisplayName.SetDefault("Bloodthirsting Blade");
+            // Description.SetDefault("Gain powerful buffs based on missing HP, but life regeneration is disabled");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

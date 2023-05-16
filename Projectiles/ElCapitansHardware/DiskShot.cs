@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.ElCapitansHardware
     public class DiskShot : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("El Capitan's Hardware");     //The English name of the projectile
+			// DisplayName.SetDefault("El Capitan's Hardware");     //The English name of the projectile
 			Main.projFrames[Projectile.type] = 1;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 140;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
@@ -51,7 +51,7 @@ namespace StarsAbove.Projectiles.ElCapitansHardware
 
         }
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 			
         }

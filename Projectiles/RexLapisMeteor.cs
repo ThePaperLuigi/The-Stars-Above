@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles
     public class RexLapisMeteor : ModProjectile
 	{
 		public override void SetStaticDefaults() {//TODO ADD FADE IN
-			DisplayName.SetDefault("Rex Lapis");
+			// DisplayName.SetDefault("Rex Lapis");
 			Main.projFrames[Projectile.type] = 10;
 
 		}

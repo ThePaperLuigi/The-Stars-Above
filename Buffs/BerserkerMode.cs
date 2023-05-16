@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Berserker Mode");
-            Description.SetDefault("All attacks do more damage");
+            // DisplayName.SetDefault("Berserker Mode");
+            // Description.SetDefault("All attacks do more damage");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

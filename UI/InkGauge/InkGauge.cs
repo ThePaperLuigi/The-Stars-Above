@@ -44,42 +44,42 @@ namespace StarsAbove.UI
 			barFrame.Height.Set(34, 0f);*/
 
 			red = new UIImageButton(Request<Texture2D>("StarsAbove/UI/InkGauge/Red"));
-			red.OnClick += redClick;
+			red.OnLeftClick += redClick;
 			red.Width.Set(22, 0f);
 			red.Height.Set(46, 0f);
 			red.Left.Set(50, 0f);
 			red.Top.Set(32, 0f);//
 
 			orange = new UIImageButton(Request<Texture2D>("StarsAbove/UI/InkGauge/Orange"));
-			orange.OnClick += orangeClick;
+			orange.OnLeftClick += orangeClick;
 			orange.Width.Set(22, 0f);
 			orange.Height.Set(46, 0f);
 			orange.Left.Set(89, 0f);
 			orange.Top.Set(10, 0f);//
 
 			yellow = new UIImageButton(Request<Texture2D>("StarsAbove/UI/InkGauge/Yellow"));
-			yellow.OnClick += yellowClick;
+			yellow.OnLeftClick += yellowClick;
 			yellow.Width.Set(22, 0f);
 			yellow.Height.Set(46, 0f);
 			yellow.Left.Set(128, 0f);
 			yellow.Top.Set(32, 0f);//
 
 			green = new UIImageButton(Request<Texture2D>("StarsAbove/UI/InkGauge/Green"));
-			green.OnClick += greenClick;
+			green.OnLeftClick += greenClick;
 			green.Width.Set(22, 0f);
 			green.Height.Set(46, 0f);
 			green.Left.Set(50, 0f);
 			green.Top.Set(112, 0f);//
 
 			blue = new UIImageButton(Request<Texture2D>("StarsAbove/UI/InkGauge/Blue"));
-			blue.OnClick += blueClick;
+			blue.OnLeftClick += blueClick;
 			blue.Width.Set(22, 0f);
 			blue.Height.Set(46, 0f);
 			blue.Left.Set(89, 0f);
 			blue.Top.Set(135, 0f);//
 
 			purple = new UIImageButton(Request<Texture2D>("StarsAbove/UI/InkGauge/Purple"));
-			purple.OnClick += purpleClick;
+			purple.OnLeftClick += purpleClick;
 			purple.Width.Set(22, 0f);
 			purple.Height.Set(46, 0f);
 			purple.Left.Set(128, 0f);

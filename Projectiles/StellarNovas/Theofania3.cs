@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.StellarNovas
     public class Theofania3 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Theofania Inanis");     //The English name of the projectile
+			// DisplayName.SetDefault("Theofania Inanis");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 1;        //The recording mode
 		}
@@ -34,7 +34,7 @@ namespace StarsAbove.Projectiles.StellarNovas
 			Projectile.localNPCHitCooldown = -1;
 		}
 		float spin = 0;
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Projectile.damage /= 2;
 

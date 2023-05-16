@@ -14,7 +14,7 @@ namespace StarsAbove.Projectiles.Pod
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Pod Zero-42");
+			// DisplayName.SetDefault("Pod Zero-42");
 		}
 
 		public override void SetDefaults()

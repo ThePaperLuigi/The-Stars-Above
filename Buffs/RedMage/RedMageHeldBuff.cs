@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.RedMage
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Duelist's Crimson");
-            Description.SetDefault("Exhibiting proficiency in maiming and mending");
+            // DisplayName.SetDefault("Duelist's Crimson");
+            // Description.SetDefault("Exhibiting proficiency in maiming and mending");
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

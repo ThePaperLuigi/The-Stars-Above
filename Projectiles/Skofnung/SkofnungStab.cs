@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.Skofnung
     public class SkofnungStab : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Skofnung");
+			// DisplayName.SetDefault("Skofnung");
 
 		}
 
@@ -86,7 +86,7 @@ namespace StarsAbove.Projectiles.Skofnung
 
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			for (int d = 0; d < 8; d++)
 			{

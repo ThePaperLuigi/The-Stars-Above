@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.BloodBlade
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Blade Art: Dragon Cooldown");
-            Description.SetDefault("Blade Art: Dragon will fail to activate if this debuff is present");
+            // DisplayName.SetDefault("Blade Art: Dragon Cooldown");
+            // Description.SetDefault("Blade Art: Dragon will fail to activate if this debuff is present");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
             Main.persistentBuff[Type] = true;

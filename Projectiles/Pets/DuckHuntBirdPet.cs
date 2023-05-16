@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.Pets
 		{
 			DrawOriginOffsetY = -40;
 			//DrawOffsetX = -20;
-			DisplayName.SetDefault("Duck Hunt Bird"); // Automatic from .lang files
+			// DisplayName.SetDefault("Duck Hunt Bird"); // Automatic from .lang files
 			Main.projFrames[Projectile.type] = 5;
 			Main.projPet[Projectile.type] = true;
 			ProjectileID.Sets.LightPet[Projectile.type] = true;

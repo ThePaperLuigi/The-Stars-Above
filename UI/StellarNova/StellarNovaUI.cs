@@ -96,7 +96,7 @@ namespace StarsAbove.UI.StellarNova
 			bg2.Height.Set(810, 0f);
 
 			confirm = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Confirm"));
-			confirm.OnClick += Confirm;
+			confirm.OnLeftClick += Confirm;
 			confirm.Width.Set(70, 0f);
 			confirm.Height.Set(52, 0f);
 			confirm.Left.Set(40, 0f);
@@ -105,7 +105,7 @@ namespace StarsAbove.UI.StellarNova
 			confirm.OnMouseOut += HoverOff;
 
 			reset = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Reset"));
-			reset.OnClick += ResetAll;
+			reset.OnLeftClick += ResetAll;
 			reset.Width.Set(70, 0f);
 			reset.Height.Set(52, 0f);
 			reset.Left.Set(40, 0f);
@@ -114,7 +114,7 @@ namespace StarsAbove.UI.StellarNova
 			reset.OnMouseOut += HoverOff;
 
 			theofania = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StellarNova/theofania"));
-			theofania.OnClick += theofaniaSelected;
+			theofania.OnLeftClick += theofaniaSelected;
 			theofania.Width.Set(98, 0f);
 			theofania.Height.Set(52, 0f);
 			theofania.Left.Set(864, 0f);
@@ -123,7 +123,7 @@ namespace StarsAbove.UI.StellarNova
 			theofania.OnMouseOut += HoverOff;
 
 			laevateinn = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StellarNova/laevateinn"));
-			laevateinn.OnClick += laevateinnSelected;
+			laevateinn.OnLeftClick += laevateinnSelected;
 			laevateinn.Width.Set(98, 0f);
 			laevateinn.Height.Set(52, 0f);
 			laevateinn.Left.Set(864, 0f);
@@ -132,7 +132,7 @@ namespace StarsAbove.UI.StellarNova
 			laevateinn.OnMouseOut += HoverOff;
 
 			kiwamiryuken = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StellarNova/KiwamiRyuken"));
-			kiwamiryuken.OnClick += kiwamiryukenSelected;
+			kiwamiryuken.OnLeftClick += kiwamiryukenSelected;
 			kiwamiryuken.Width.Set(98, 0f);
 			kiwamiryuken.Height.Set(52, 0f);
 			kiwamiryuken.Left.Set(864, 0f);
@@ -141,7 +141,7 @@ namespace StarsAbove.UI.StellarNova
 			kiwamiryuken.OnMouseOut += HoverOff;
 
 			gardenofavalon = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StellarNova/gardenofavalon"));
-			gardenofavalon.OnClick += gardenofavalonSelected;
+			gardenofavalon.OnLeftClick += gardenofavalonSelected;
 			gardenofavalon.Width.Set(98, 0f);
 			gardenofavalon.Height.Set(52, 0f);
 			gardenofavalon.Left.Set(864, 0f);
@@ -150,7 +150,7 @@ namespace StarsAbove.UI.StellarNova
 			gardenofavalon.OnMouseOut += HoverOff;
 
 			edingenesisquasar = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StellarNova/edingenesisquasar"));
-			edingenesisquasar.OnClick += edingenesisquasarSelected;
+			edingenesisquasar.OnLeftClick += edingenesisquasarSelected;
 			edingenesisquasar.Width.Set(98, 0f);
 			edingenesisquasar.Height.Set(52, 0f);
 			edingenesisquasar.Left.Set(864, 0f);
@@ -341,21 +341,21 @@ namespace StarsAbove.UI.StellarNova
 			if (!_affixSlot1.Item.IsAir)
 			{
 				// QuickSpawnClonedItem will preserve mod data of the item. QuickSpawnItem will just spawn a fresh version of the item, losing the prefix.
-				Main.LocalPlayer.QuickSpawnClonedItem(null, _affixSlot1.Item, _affixSlot1.Item.stack);
+				Main.LocalPlayer.QuickSpawnItem(null, _affixSlot1.Item, _affixSlot1.Item.stack);
 				// Now that we've spawned the item back onto the player, we reset the item by turning it into air.
 				_affixSlot1.Item.TurnToAir();
 			}
 			if (!_affixSlot2.Item.IsAir)
 			{
 				// QuickSpawnClonedItem will preserve mod data of the item. QuickSpawnItem will just spawn a fresh version of the item, losing the prefix.
-				Main.LocalPlayer.QuickSpawnClonedItem(null, _affixSlot2.Item, _affixSlot2.Item.stack);
+				Main.LocalPlayer.QuickSpawnItem(null, _affixSlot2.Item, _affixSlot2.Item.stack);
 				// Now that we've spawned the item back onto the player, we reset the item by turning it into air.
 				_affixSlot2.Item.TurnToAir();
 			}
 			if (!_affixSlot3.Item.IsAir)
 			{
 				// QuickSpawnClonedItem will preserve mod data of the item. QuickSpawnItem will just spawn a fresh version of the item, losing the prefix.
-				Main.LocalPlayer.QuickSpawnClonedItem(null, _affixSlot3.Item, _affixSlot3.Item.stack);
+				Main.LocalPlayer.QuickSpawnItem(null, _affixSlot3.Item, _affixSlot3.Item.stack);
 				// Now that we've spawned the item back onto the player, we reset the item by turning it into air.
 				_affixSlot3.Item.TurnToAir();
 			}

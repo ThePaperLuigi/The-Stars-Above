@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.StellarNovas
     public class EridaniBurstFX : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("EridaniFX");
+			// DisplayName.SetDefault("EridaniFX");
 			//Main.projFrames[projectile.type] = 14;
 		}
 

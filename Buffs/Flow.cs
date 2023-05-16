@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Flow");
-            Description.SetDefault("The rift between worlds grants infinite mana, 40% increased damage, and 20% faster attack speed");
+            // DisplayName.SetDefault("Flow");
+            // Description.SetDefault("The rift between worlds grants infinite mana, 40% increased damage, and 20% faster attack speed");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

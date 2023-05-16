@@ -10,12 +10,12 @@ namespace StarsAbove.Items.Consumables
     public class DebugDisk : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Debug Disk");
-			Tooltip.SetDefault("Resets all player data from The Stars Above" +
+			// DisplayName.SetDefault("Debug Disk");
+			/* Tooltip.SetDefault("Resets all player data from The Stars Above" +
 				"\nIncludes Starfarer, Stellar Array passives, dialogue, and Stellar Nova" +
 				"\nAffects all active players" +
 				"\nDoes not work during a Cosmic Voyage" +
-				"\nMay cause issues; this is a debug item");
+				"\nMay cause issues; this is a debug item"); */
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 		}
 

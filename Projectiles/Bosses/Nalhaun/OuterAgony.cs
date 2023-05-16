@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
     public class OuterAgony : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Outer Agony");
+			// DisplayName.SetDefault("Outer Agony");
 			
 		}
 

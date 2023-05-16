@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.KazimierzSeraphim
     public class KazVFX1 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Kazimierz Seraphim");     //The English name of the projectile
+			// DisplayName.SetDefault("Kazimierz Seraphim");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 70;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode
 			//DrawOffsetX = 40;

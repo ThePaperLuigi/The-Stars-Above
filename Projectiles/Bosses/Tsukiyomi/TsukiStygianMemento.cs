@@ -16,7 +16,7 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 	public class TsukiStygianMemento : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Stygian Nymph");
+			// DisplayName.SetDefault("Stygian Nymph");
 			Main.projFrames[Projectile.type] = 1;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode

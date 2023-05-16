@@ -9,14 +9,14 @@ namespace StarsAbove.Items.Prisms
     public class LucentPrism : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Lucent Prism");
-			Tooltip.SetDefault("[c/C2BDFF:Tier 1 Stellar Prism]" +
+			// DisplayName.SetDefault("Lucent Prism");
+			/* Tooltip.SetDefault("[c/C2BDFF:Tier 1 Stellar Prism]" +
 				"\nAffix to a Stellar Nova to gain the following stats:" +
 				"\n[c/FF4D4D:-30% Damage]" + //-3
 				"\n[c/B6B6B6:0% Crit Chance]" +//0
 				"\n[c/83FF4D:+10% Crit Damage]" +//1
 				"\n[c/83FF4D:-10 Energy Cost]" + //2
-				"");
+				""); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;

@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs
     public class FerryPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Churning Ferry");
-			Description.SetDefault("A myserious boat is following you");
+			// DisplayName.SetDefault("Churning Ferry");
+			// Description.SetDefault("A myserious boat is following you");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}

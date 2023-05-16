@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.BlackSilence
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Black Silence: Crystal Atelier");
-            Description.SetDefault("Reflect 80% of damage taken");
+            // DisplayName.SetDefault("Black Silence: Crystal Atelier");
+            // Description.SetDefault("Reflect 80% of damage taken");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ignition Astra");
+			// DisplayName.SetDefault("Ignition Astra");
 			Main.projFrames[Projectile.type] = 18;
 		}
 		public override void SetDefaults()

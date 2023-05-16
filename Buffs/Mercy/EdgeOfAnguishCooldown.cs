@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.Mercy
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Edge of Anguish Cooldown");
-            Description.SetDefault("When this debuff ends, you can use Edge of Anguish again");
+            // DisplayName.SetDefault("Edge of Anguish Cooldown");
+            // Description.SetDefault("When this debuff ends, you can use Edge of Anguish again");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

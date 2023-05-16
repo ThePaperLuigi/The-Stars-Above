@@ -15,7 +15,7 @@ namespace StarsAbove.Projectiles.AshenAmbition
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ashen Ambition"); // Set the projectile name to Example Flail Ball
+			// DisplayName.SetDefault("Ashen Ambition"); // Set the projectile name to Example Flail Ball
 		}
 
 		public override void SetDefaults()

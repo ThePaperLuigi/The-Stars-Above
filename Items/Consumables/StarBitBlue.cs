@@ -13,10 +13,10 @@ namespace StarsAbove.Items.Consumables
     public class StarBitBlue : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Star Bit");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Star Bit");
+			/* Tooltip.SetDefault("" +
 				"\n[c/F1AF42:Shouldn't be in your inventory.]" +
-				"\n");
+				"\n"); */
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 		}
 

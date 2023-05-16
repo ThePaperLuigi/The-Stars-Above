@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.BlackSilence
     public class CrystalAtelierFollowUp : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Gloves of the Black Silence");
+			// DisplayName.SetDefault("Gloves of the Black Silence");
 			
 			Main.projFrames[Projectile.type] = 5;
 		}

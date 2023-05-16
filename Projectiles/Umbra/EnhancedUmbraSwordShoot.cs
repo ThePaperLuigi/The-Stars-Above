@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.Umbra
     public class EnhancedUmbraSwordShoot : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Umbra");     //The English name of the projectile
+			// DisplayName.SetDefault("Umbra");     //The English name of the projectile
 			Main.projFrames[Projectile.type] = 1;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 140;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
@@ -70,7 +70,7 @@ namespace StarsAbove.Projectiles.Umbra
 
         }
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 			Player player = Main.player[Projectile.owner];
 

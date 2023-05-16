@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
     public class BuryTheLightSlash : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Bury The Light");
+			// DisplayName.SetDefault("Bury The Light");
 			
 			Main.projFrames[Projectile.type] = 4;
 		}

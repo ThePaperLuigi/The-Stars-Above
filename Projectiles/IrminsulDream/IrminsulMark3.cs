@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.IrminsulDream
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Irminsul's Dream");
+			// DisplayName.SetDefault("Irminsul's Dream");
 		}
 
 		public override void SetDefaults()

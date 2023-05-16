@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.SkyStriker
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Armament of the Sky Striker");
+			// DisplayName.SetDefault("Armament of the Sky Striker");
 			Main.projFrames[Projectile.type] = 4;
 			
 			//DrawOffsetX = -60;

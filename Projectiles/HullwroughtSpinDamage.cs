@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
     public class HullwroughtSpinDamage : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Hullwrought");
+			// DisplayName.SetDefault("Hullwrought");
 			//DrawOriginOffsetY = -120;
 			//DrawOffsetX = -125;
 		}

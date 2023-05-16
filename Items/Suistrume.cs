@@ -12,7 +12,7 @@ namespace StarsAbove.Items
     public class Suistrume : ModItem
 	{
 		public override void SetStaticDefaults() {
-			Tooltip.SetDefault("Use this item to expend mana, filling your [c/c2f4ff:Performance Gauge] and beginning your [c/40b9ff:Stellar Performance]" +
+			/* Tooltip.SetDefault("Use this item to expend mana, filling your [c/c2f4ff:Performance Gauge] and beginning your [c/40b9ff:Stellar Performance]" +
 				"\n[c/40b9ff:Stellar Performance] will increase all outgoing damage by 15%" +
 				"\n[c/40b9ff:Stellar Performance] will increase movement speed by 40%" +
 				"\n[c/40b9ff:Stellar Performance] will grant all nearby team members (including the user) a 5% increase to outgoing damage along with bonus health and mana regeneration" +
@@ -22,7 +22,7 @@ namespace StarsAbove.Items
 				"\nIf the [c/c2f4ff:Performance Gauge] reaches 0, the [c/40b9ff:Stellar Performance] will end and will have a 2 minute cooldown" +
 				"\nIf the [c/40b9ff:Stellar Performance] is completed in its entirety, you will restore all HP and MP and [c/40b9ff:Stellar Performance] will have its cooldown halved to 1 minute" +
 				"\n'Whatever you're singing, it's cute as always'" +
-				$"");
+				$""); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

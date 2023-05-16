@@ -21,8 +21,8 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Supreme Authority");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Supreme Authority");
+			/* Tooltip.SetDefault("" +
                 "Attacks with this weapon swing in a close-ranged arc" +//Done
 				"\nRight click friendly town NPCs to mark them as a [c/F1D761:Sacrifice] for 5 minutes" +//Done
 				"\nPressing the Weapon Action Key will consume all [c/F1D761:Sacrifices] and grant [c/DE8A2A:Deified] for 60 seconds (Unable to mark or consume [c/F1D761:Sacrifices] when [c/DE8A2A:Deified])" +//Done
@@ -36,7 +36,7 @@ namespace StarsAbove.Items
 				"\nDying with [c/903F3F:Atrophied Deification] will curse all allies with Potion Sickness for 2 minutes" + //Done
 				"\nIf [c/DE8A2A:Deified] ends while a boss is active, inflict [c/5E5050:Mortality] for 15 seconds, slowing movement speed and doubling damage recieved" +
                 "\n'Be afraid, sinner.'" + //Done
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 			//SFX
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -83,7 +83,7 @@ namespace StarsAbove.Items
 			
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			
 		}

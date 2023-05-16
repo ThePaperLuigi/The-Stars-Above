@@ -6,9 +6,9 @@ namespace StarsAbove.Buffs.EverlastingPickaxe
     public class EverlastingGunpowderLoaded : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Everlasting Gunpowder Loaded");
-			Description.SetDefault("The Everlasting Pickaxe has gained new attacking abilities" +
-                "\nDamage is increased by 80%");
+			// DisplayName.SetDefault("Everlasting Gunpowder Loaded");
+			/* Description.SetDefault("The Everlasting Pickaxe has gained new attacking abilities" +
+                "\nDamage is increased by 80%"); */
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}

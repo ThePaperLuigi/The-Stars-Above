@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.Pets
 		{
 			
 			//DrawOffsetX = -20;
-			DisplayName.SetDefault("NecoArc"); // Automatic from .lang files
+			// DisplayName.SetDefault("NecoArc"); // Automatic from .lang files
 			Main.projFrames[Projectile.type] = 10;
 			
 			Main.projPet[Projectile.type] = true;

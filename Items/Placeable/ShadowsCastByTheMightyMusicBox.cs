@@ -9,11 +9,11 @@ namespace StarsAbove.Items.Placeable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Music Box (Nalhaun, the Burnished King - 1st Phase)");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Music Box (Nalhaun, the Burnished King - 1st Phase)");
+			/* Tooltip.SetDefault("" +
 				"'Shadows Cast By The Mighty: Swift Judgement' - Bravely Default 2 OST" +
 				"\nComposed by REVO"
-				+ $"\n");
+				+ $"\n"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/ShadowsCastByTheMighty"),

@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.Ozma
     public class OzmaAttack4 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Ozma Ascendant");     //The English name of the projectile
+			// DisplayName.SetDefault("Ozma Ascendant");     //The English name of the projectile
 			Main.projFrames[Projectile.type] = 2;
 		}
 
@@ -89,7 +89,7 @@ namespace StarsAbove.Projectiles.Ozma
 			base.AI();
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			for (int d = 0; d < 8; d++)
 			{

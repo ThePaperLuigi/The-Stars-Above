@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.SoulReaver
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dark Soul");
-            Description.SetDefault("Harvested souls are granting an increase to offensive capabilities");
+            // DisplayName.SetDefault("Dark Soul");
+            // Description.SetDefault("Harvested souls are granting an increase to offensive capabilities");
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

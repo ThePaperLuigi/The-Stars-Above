@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.RexLapis
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Bulwark of Jade");
-            Description.SetDefault("Gain 30 defense");
+            // DisplayName.SetDefault("Bulwark of Jade");
+            // Description.SetDefault("Gain 30 defense");
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

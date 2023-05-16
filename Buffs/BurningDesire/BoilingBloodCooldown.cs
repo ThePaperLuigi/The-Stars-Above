@@ -10,8 +10,8 @@ namespace StarsAbove.Buffs.BurningDesire
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Extinguished");
-            Description.SetDefault("Unable to activate Boiling Blood");
+            // DisplayName.SetDefault("Extinguished");
+            // Description.SetDefault("Unable to activate Boiling Blood");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
             BuffID.Sets.NurseCannotRemoveDebuff[Type] = true;
@@ -22,12 +22,12 @@ namespace StarsAbove.Buffs.BurningDesire
             
                
         }
-        public override void ModifyBuffTip(ref string tip, ref int rare)
+        public override void ModifyBuffText(ref string buffName, ref string tip, ref int rare)
         {
             
               
 
-            base.ModifyBuffTip(ref tip, ref rare);
+            base.ModifyBuffText(ref tip, ref rare);
         }
         public override bool PreDraw(SpriteBatch spriteBatch, int buffIndex, ref BuffDrawParams drawParams)
         {

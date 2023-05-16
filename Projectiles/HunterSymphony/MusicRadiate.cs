@@ -12,7 +12,7 @@ namespace StarsAbove.Projectiles.HunterSymphony
     public class MusicRadiate : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Hunter's Symphony");
+			// DisplayName.SetDefault("Hunter's Symphony");
 			
 		}
 

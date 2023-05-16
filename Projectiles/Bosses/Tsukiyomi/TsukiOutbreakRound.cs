@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
     public class TsukiOutbreakRound : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Crimson Outbreak");     //The English name of the projectile
+			// DisplayName.SetDefault("Crimson Outbreak");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 50;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
 		}

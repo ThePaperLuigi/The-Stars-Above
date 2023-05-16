@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.CarianDarkMoon
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Moonlit Greatblade");
-            Description.SetDefault("Otherworldly lunar energy grants you strength, but prevents mana regen");
+            // DisplayName.SetDefault("Moonlit Greatblade");
+            // Description.SetDefault("Otherworldly lunar energy grants you strength, but prevents mana regen");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

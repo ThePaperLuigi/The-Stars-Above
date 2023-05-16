@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Umbral Rapture");
-            Description.SetDefault("Gain HP and Invincibility when on Eridani's tiles");
+            // DisplayName.SetDefault("Umbral Rapture");
+            // Description.SetDefault("Gain HP and Invincibility when on Eridani's tiles");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

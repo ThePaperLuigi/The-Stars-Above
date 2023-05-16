@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     public class TakodachiBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Void Octopi");
-			Description.SetDefault("The void octopi surround you");
+			// DisplayName.SetDefault("Void Octopi");
+			// Description.SetDefault("The void octopi surround you");
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}

@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.Pets
 		{
 			
 			//DrawOffsetX = -20;
-			DisplayName.SetDefault("Mantis Cat"); // Automatic from .lang files
+			// DisplayName.SetDefault("Mantis Cat"); // Automatic from .lang files
 			Main.projFrames[Projectile.type] = 11;
 			Main.projPet[Projectile.type] = true;
 			ProjectileID.Sets.LightPet[Projectile.type] = true;

@@ -12,7 +12,7 @@ namespace StarsAbove.Projectiles
     public class SaberDamage : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Coruscant Saber II");
+			// DisplayName.SetDefault("Coruscant Saber II");
 			
 		}
 

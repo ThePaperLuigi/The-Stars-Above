@@ -18,7 +18,7 @@ namespace StarsAbove.Items
 		{
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
 			{
-				Tooltip.SetDefault("" +
+				/* Tooltip.SetDefault("" +
 				"Attacks stab in a rapid combo, striking multiple times and finishing with a downward swing" +
 				"\nThe third strike only strikes once, but deals 20% bonus damage and grants a stack of [c/FFC84A:Power Strike]" +
 				"\n[c/FFC84A:Power Strike] increases damage by 5% and defense by 5 per stack (Up to 5)" +
@@ -30,11 +30,11 @@ namespace StarsAbove.Items
 				"\nAdditionally, become [c/DA9090:Extinguished] for 20 seconds, preventing the activation of [c/FF3E00:Boiling Blood]" +
                 "\nDamage scales with world progression" +
 				"\n'My blood's only going to make this place hotter!'" +
-				$""); //With Calamity enabled, add an extra tooltip.
+				$""); */ //With Calamity enabled, add an extra tooltip.
 			}
 			else
             {
-				Tooltip.SetDefault("" +
+				/* Tooltip.SetDefault("" +
 				"Attacks stab in a rapid combo, striking multiple times and finishing with a downward swing" +
 				"\nThe third strike only strikes once, but deals 20% bonus damage and grants a stack of [c/FFC84A:Power Strike]" +
 				"\n[c/FFC84A:Power Strike] increases damage by 5% and defense by 5 per stack (Up to 5)" +
@@ -45,7 +45,7 @@ namespace StarsAbove.Items
 				"\n[c/DC0000:Boiling Burst] deals damage in a colossal area around you based on missing health and 1/4th damage dealt during [c/FF3E00:Boiling Blood]" +
 				"\nAdditionally, become [c/DA9090:Extinguished] for 20 seconds, preventing the activation of [c/FF3E00:Boiling Blood]" +
 				"\n'My blood's only going to make this place hotter!'" +
-				$"");
+				$""); */
 			}
 			
 
@@ -203,7 +203,7 @@ namespace StarsAbove.Items
 			
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			
 		}

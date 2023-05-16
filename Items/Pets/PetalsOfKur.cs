@@ -10,8 +10,8 @@ namespace StarsAbove.Items.Pets
     public class PetalsOfKur : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Petals of Kur");
-			Tooltip.SetDefault("Summons the Princess of Kur");
+			// DisplayName.SetDefault("Petals of Kur");
+			// Tooltip.SetDefault("Summons the Princess of Kur");
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

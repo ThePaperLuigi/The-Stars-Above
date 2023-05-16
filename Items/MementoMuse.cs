@@ -13,7 +13,7 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Holding this weapon will cause the [c/D8305F:Rhythm Gauge] to appear" +
+			/* Tooltip.SetDefault("Holding this weapon will cause the [c/D8305F:Rhythm Gauge] to appear" +
                 "\nSwing in tandem with the beat to deal increased damage and fire a powerful projectile" +
                 "\nKeeping up with with the rhythm will slowly increase critical hit ratio" +
                 "\nThe combo has a limit of 12" +
@@ -21,7 +21,7 @@ namespace StarsAbove.Items
 				"\nRight click with [c/FF749B:Rhythm Burst] ready to temporarily ignore timing for 2 seconds" +
 				"\n[c/FF749B:Rhythm Burst] will reset your combo to 0" +
                 "\n'I'm not asking for much- do me a favor and die?'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -124,7 +124,7 @@ namespace StarsAbove.Items
 			}
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (player.GetModPlayer<WeaponPlayer>().RhythmTiming > 40 && player.GetModPlayer<WeaponPlayer>().RhythmTiming < 60)//Success!
 			{

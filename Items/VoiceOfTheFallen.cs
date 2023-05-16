@@ -13,11 +13,11 @@ namespace StarsAbove.Items
     public class VoiceOfTheFallen : ModItem
 	{
 		public override void SetStaticDefaults() {
-			Tooltip.SetDefault("Critical strikes deal 15x base damage" +
+			/* Tooltip.SetDefault("Critical strikes deal 15x base damage" +
 				"\nCritical strike chance increases by 4% with every shot" +
 				"\nOnce the gun has landed a critical strike, the chance will reset" +
 				"\n'There are parasites that may benefit the host... teeth sharper than your own'" +
-				$"");
+				$""); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

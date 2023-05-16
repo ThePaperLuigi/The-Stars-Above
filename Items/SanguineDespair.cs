@@ -18,9 +18,9 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sanguine Despair");
+			// DisplayName.SetDefault("Sanguine Despair");
 
-			Tooltip.SetDefault("Attacks with this weapon consume 10 health per cast and follow your cursor, piercing up to three times (Health drain can kill)" +
+			/* Tooltip.SetDefault("Attacks with this weapon consume 10 health per cast and follow your cursor, piercing up to three times (Health drain can kill)" +
 				"\nHolding this weapon grants the buff [c/EA6B69:Feral Despair], which increases damage by 0.5% per missing HP" +
 				"\nRight click to unleash [c/DA0300:Surging Vampirism], an erratic bolt of energy that deals damage in a massive explosion upon striking an enemy (30 second cooldown)" +
 				"\n[c/DA0300:Surging Vampirism] deals bonus damage based on missing HP (capping at 400%)" +
@@ -29,7 +29,7 @@ namespace StarsAbove.Items
                 "\nAttacks against a foe with Mortal Wounds deal 10% increased damage" +
 				"\nCritical strikes against a foe with Mortal Wounds deal 30% increased damage instead" +
 				"" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

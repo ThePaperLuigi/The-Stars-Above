@@ -13,8 +13,8 @@ namespace StarsAbove.Items
     public class Apalistik : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Apalistik");
-			Tooltip.SetDefault("5 summon tag damage" +
+			// DisplayName.SetDefault("Apalistik");
+			/* Tooltip.SetDefault("5 summon tag damage" +
                 "\nStriking foes with the weapon inflicts [c/4A91FF:Riptide] for 4 seconds" +
 				"\nWhen a minion strikes an enemy with [c/4A91FF:Riptide], they take 30% extra damage, removing [c/4A91FF:Riptide]" +
 				"\nAdditionally, with this weapon held, minions have a 10% chance to apply [c/4776A7:Ocean's Culling] for 5 seconds upon striking foes" +
@@ -22,7 +22,7 @@ namespace StarsAbove.Items
 				"\nBubbles count as Minion damage and have a 30% chance to crit" +
 				"\nIf bubbles hit a foe with [c/4A91FF:Riptide], this chance is increased to 100%" +
 				"\nDamage scales with world progression" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 		}
@@ -167,7 +167,7 @@ namespace StarsAbove.Items
 			
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			
 

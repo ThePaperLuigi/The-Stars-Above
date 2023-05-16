@@ -10,10 +10,10 @@ namespace StarsAbove.Items.Consumables
     public class BladeOrb : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Blade Orb");
-			Tooltip.SetDefault("Blade orb." +
+			// DisplayName.SetDefault("Blade Orb");
+			/* Tooltip.SetDefault("Blade orb." +
 				"\n[c/F1AF42:Should not be able to be read.]" +
-				"\n");
+				"\n"); */
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 		}
 

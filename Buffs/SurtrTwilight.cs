@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Surtr's Twilight");
-            Description.SetDefault("All attacks will burn foes");
+            // DisplayName.SetDefault("Surtr's Twilight");
+            // Description.SetDefault("All attacks will burn foes");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

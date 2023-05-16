@@ -6,12 +6,12 @@ namespace StarsAbove.Items.Accessories
     public class PerfectlyGenericAccessory : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Perfectly Generic Accessory");
+			// DisplayName.SetDefault("Perfectly Generic Accessory");
 
-			Tooltip.SetDefault("" +
+			/* Tooltip.SetDefault("" +
 				"Increases the damage of Aspected Weapons by 8%" +
 				""+
-				"\n'A bit too perfect'");
+				"\n'A bit too perfect'"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 			//The (English) text shown below your weapon's name
 		}

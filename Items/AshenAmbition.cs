@@ -18,7 +18,7 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("" +
+			/* Tooltip.SetDefault("" +
                 "Attacks pierce foes and have no knockback" +
 				"\nRight click to disappear, activating [c/926AD9:Ashen Execution] and saving your cursor's position (1 minute cooldown)" +
 				"\nAfter a short delay, teleport to your cursor and deal damage around you, instantly executing foes below this weapon's base damage * 5" +
@@ -29,7 +29,7 @@ namespace StarsAbove.Items
 				"\nAdditionally, gain [c/FF7EF3:Ashen Strength] for 2 seconds, drastically restoring HP and increasing damage by 20%" +
 				"\nFailing to execute an enemy resets all stacks of [c/812ABA:Call of the Void]" +
                 "\n'Put these foolish ambitions to rest'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -190,7 +190,7 @@ namespace StarsAbove.Items
 
 					
 						player.Teleport(vector32, 1, 0);
-						NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, (float)player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
+						NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float)player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
 
 					
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.Center.X, player.Center.Y, 0, 0, ProjectileType<AshenAmbitionExecute>(), player.GetModPlayer<WeaponPlayer>().AshenAmbitionExecuteThreshold, 0, player.whoAmI);
@@ -225,7 +225,7 @@ namespace StarsAbove.Items
 
 			base.HoldItem(player);
         }
-        public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			// 
 			// 60 frames = 1 second

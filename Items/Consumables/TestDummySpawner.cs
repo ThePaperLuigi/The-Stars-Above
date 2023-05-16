@@ -9,10 +9,10 @@ namespace StarsAbove.Items.Consumables
     public class TestDummySpawner : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Test Dummy Spawner");
-			Tooltip.SetDefault("Summons a test dummy" +
+			// DisplayName.SetDefault("Test Dummy Spawner");
+			/* Tooltip.SetDefault("Summons a test dummy" +
 				"\nOnly works in Singleplayer" +
-				"\nIs not consumed upon use");
+				"\nIs not consumed upon use"); */
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 		}
 

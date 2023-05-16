@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles
     public class ForceOfNatureReload : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Force of Nature Reload");
+			// DisplayName.SetDefault("Force of Nature Reload");
 			DrawOriginOffsetY = 12;
 		}
 

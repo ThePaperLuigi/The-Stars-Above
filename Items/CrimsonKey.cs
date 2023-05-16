@@ -16,15 +16,15 @@ namespace StarsAbove.Items
     public class CrimsonKey : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Key of the Sinner");
-			Tooltip.SetDefault("Calls forth an instance of your rebellious heart" +
+			// DisplayName.SetDefault("Key of the Sinner");
+			/* Tooltip.SetDefault("Calls forth an instance of your rebellious heart" +
 				"\nUnleashes incredibly powerful bullets" +
 				"\nGain a sizeable amount of bonus damage relative to Max HP and MP" +
 				"\nAdditonally, the highest critical chance percentage of all damage types is converted into bonus damage" +
 				"\nOnly one can be summoned at a time" +
 				"\nUses 5 minion slots" +
 				"\n'Ravage them'"
-				+ $"");
+				+ $""); */
 
 			ItemID.Sets.GamepadWholeScreenUseRange[Item.type] = true;
 			ItemID.Sets.LockOnIgnoresCollision[Item.type] = true;

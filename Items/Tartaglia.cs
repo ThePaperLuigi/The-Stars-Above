@@ -14,7 +14,7 @@ namespace StarsAbove.Items
     public class Tartaglia : ModItem
 	{
 		public override void SetStaticDefaults() {
-			Tooltip.SetDefault("[c/F7D76A:Hold left click to charge the weapon; the longer the weapon is charged, the stronger the resulting attack will become]" +
+			/* Tooltip.SetDefault("[c/F7D76A:Hold left click to charge the weapon; the longer the weapon is charged, the stronger the resulting attack will become]" +
 				"\nCharging the bow to its maximum before firing will turn the arrow into a unique [c/25ACF0:Riptide Bolt]" +
 				"\n[c/25ACF0:Riptide Bolts] will apply [c/4A91FF:Riptide] to foes struck for 12 seconds" +
 				"\nRight click to consume 200 mana, entering [c/2361C1:Raging Tides] for 8 seconds" +
@@ -23,7 +23,7 @@ namespace StarsAbove.Items
 				"\nAttacking foes afflicted with [c/4A91FF:Riptide] in this stance will deal extra damage" +
 				"\nThis weapon does not use ammo" +
 				"\n'Shouldn't let your guard down!'" +
-				$"");
+				$""); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

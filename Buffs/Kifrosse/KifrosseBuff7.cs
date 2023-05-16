@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.Kifrosse
     public class KifrosseBuff7 : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Kifrosse (7 Tails)");
-			Description.SetDefault("Mystic energy chills the air around you");
+			// DisplayName.SetDefault("Kifrosse (7 Tails)");
+			// Description.SetDefault("Mystic energy chills the air around you");
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}

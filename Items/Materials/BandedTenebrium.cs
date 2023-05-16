@@ -8,11 +8,11 @@ namespace StarsAbove.Items.Materials
     public class BandedTenebrium : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Banded Tenebrium");
-			Tooltip.SetDefault("Utilized to upgrade the Stellaglyph and craft certain Stellar Foci" +
+			// DisplayName.SetDefault("Banded Tenebrium");
+			/* Tooltip.SetDefault("Utilized to upgrade the Stellaglyph and craft certain Stellar Foci" +
                 "" +
                 "\n'Cold to the heat'" +
-				"");
+				""); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;

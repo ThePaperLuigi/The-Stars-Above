@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
     public class TsukiMementoMuse : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Memento Muse");
+			// DisplayName.SetDefault("Memento Muse");
 			
 		}
 

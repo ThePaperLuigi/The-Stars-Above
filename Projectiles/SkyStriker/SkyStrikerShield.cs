@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.SkyStriker
     public class SkyStrikerShield : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Armament of the Sky Striker");
+			// DisplayName.SetDefault("Armament of the Sky Striker");
 			DrawOriginOffsetY = 12;
 		}
 

@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.Pets
     public class SuiseiPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Diamond in the Rough");
-			Description.SetDefault("Don't ask about the axe");
+			// DisplayName.SetDefault("Diamond in the Rough");
+			// Description.SetDefault("Don't ask about the axe");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}

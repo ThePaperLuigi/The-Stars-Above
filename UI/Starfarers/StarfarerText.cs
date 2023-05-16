@@ -47,8 +47,8 @@ namespace StarsAbove.UI.Starfarers
 			text.Left.Set(200, 0f);
 
 
-			area.OnMouseDown += new UIElement.MouseEvent(DragStart);
-			area.OnMouseUp += new UIElement.MouseEvent(DragEnd);
+			area.OnLeftMouseDown += new UIElement.MouseEvent(DragStart);
+			area.OnLeftMouseUp += new UIElement.MouseEvent(DragEnd);
 
 			
 
@@ -59,7 +59,7 @@ namespace StarsAbove.UI.Starfarers
 			barFrame.Height.Set(34, 0f);
 
 			imageButton = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Button"));
-			imageButton.OnClick += MouseClickA;
+			imageButton.OnLeftClick += MouseClickA;
 			imageButton.Left.Set(600, 0f);
 			imageButton.Top.Set(222, 0f);
 			imageButton.Width.Set(70, 0f);

@@ -10,8 +10,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("[c/5DC5DE:Astral Resonance]");
-            Description.SetDefault("");
+            // DisplayName.SetDefault("[c/5DC5DE:Astral Resonance]");
+            // Description.SetDefault("");
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
             BuffID.Sets.NurseCannotRemoveDebuff[Type] = true;

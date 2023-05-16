@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Apostate's Truth");
+			// DisplayName.SetDefault("Apostate's Truth");
 			Main.projFrames[Projectile.type] = 5;
 		}
 		public override void SetDefaults()
@@ -64,7 +64,7 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 
 			
 		}
-        public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
+        public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers)
         {
 			damage = (int)(target.statLifeMax * 0.2);
             base.ModifyHitPlayer(target, ref damage, ref crit);

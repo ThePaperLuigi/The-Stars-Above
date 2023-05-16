@@ -18,14 +18,14 @@ namespace StarsAbove.Items.Placeable.StellarFoci
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Agility Focus (Tier 3)");
+			// DisplayName.SetDefault("Agility Focus (Tier 3)");
 			
 
-			Tooltip.SetDefault("" +
+			/* Tooltip.SetDefault("" +
 				"[c/FF1B8D:Stellar Foci]" +
 				"\nOnce placed near a Stellaglyph:" +
 				"\nIncreases movement speed by 7% during a Cosmic Voyage" +
-				"");
+				""); */
 			//
 			//
 			//"\n[c/D32C2C:Modded chests from mods added after world generation may cease to open once entering a subworld]" +

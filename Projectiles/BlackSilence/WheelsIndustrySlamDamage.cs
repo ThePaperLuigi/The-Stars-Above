@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.BlackSilence
     public class WheelsIndustrySlamDamage : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Gloves of the Black Silence");
+			// DisplayName.SetDefault("Gloves of the Black Silence");
 			
 		}
 

@@ -20,8 +20,8 @@ namespace StarsAbove.Items
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("The Morning Star");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("The Morning Star");
+			/* Tooltip.SetDefault("" +
 				"Attacks with this weapon whip in a wide arc, exploding foes hit for 1/4 base damage and burning them for 4 seconds" +
 				"\nPress the Weapon Action key to summon [c/CBA09A:Alucard's Sword], consuming minion slots (up to 3) to summon a blade to attack foes" +
 				"\nAdditional minion slots empower [c/CBA09A:Alucard's Sword], and at 3 slots, the blade hits much faster and has a 10% chance to deal critical strikes" +
@@ -32,7 +32,7 @@ namespace StarsAbove.Items
 				"\n[c/B4E93A:Accursed Flames]: Unleash a burst of flame around you that inflicts Cursed Inferno for 3 seconds" +
 				"\n[c/F3E63E:Chain Lightning]: Unleash a concentrated lightning jolt, inflicting Ichor for 3 seconds and chaining to 5 nearby foes" +
 				"\n'A vampire, a hunter, and a scholar'" +
-				$"");
+				$""); */
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}
 

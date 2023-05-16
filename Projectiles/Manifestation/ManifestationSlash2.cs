@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.Manifestation
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Manifestation");
+			// DisplayName.SetDefault("Manifestation");
 			Main.projFrames[Projectile.type] = 4;
 			//DrawOriginOffsetY = 30;
 			//DrawOffsetX = -60;
@@ -44,11 +44,11 @@ namespace StarsAbove.Projectiles.Manifestation
 		}
 
 		// It appears that for this AI, only the ai0 field is used!
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			base.OnHitNPC(target, damage, knockback, crit);
 		}
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 			if(target.HasBuff(BuffID.ShadowFlame))
             {

@@ -20,8 +20,8 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Soul Reaver");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Soul Reaver");
+			/* Tooltip.SetDefault("" +
 				"[c/F7D76A:Hold left click to charge the weapon; if the weapon is fully charged, the attack varies]" +//Charge attack sentence
 				"\nHolding this weapon enchants your cursor, causing nearby foes to become inflicted with Shadowflame for half a second" +
                 "\nAttacks with this weapon swing in a colossal arc around you" +
@@ -33,7 +33,7 @@ namespace StarsAbove.Items
 				"\nLanding a critical strike with [c/8361FF:Soul Harvest] will reduce the duration of [c/966CA0:Soul Split] to 2 seconds" +
 				"\nDefeating foes will grant a stack of [c/8148C4:Dark Soul], granting 2% increased damage per stack (capping at 10 stacks)" +
 				"\nLose all stacks of [c/8148C4:Dark Soul] after leaving combat" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 			ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
@@ -104,7 +104,7 @@ namespace StarsAbove.Items
 			
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 
 			
@@ -287,7 +287,7 @@ namespace StarsAbove.Items
 								//Teleport the player to the teleport position (this would be the mouse)
 								player.Teleport(new Vector2(Main.MouseWorld.X, Main.MouseWorld.Y - 10), 1, 0);
 								//Tell the server you're teleporting
-								NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, (float)player.whoAmI, Main.MouseWorld.X, Main.MouseWorld.Y - 10, 1, 0, 0);
+								NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float)player.whoAmI, Main.MouseWorld.X, Main.MouseWorld.Y - 10, 1, 0, 0);
 								Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, 0, 0, ProjectileType<SoulReaverPortal>(), 0, 3, player.whoAmI, 0f);
 								//Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, 0, 0, ProjectileType<fastRadiate>(), 0, 3, player.whoAmI, 0f);
 								if (player.HasBuff(BuffType<SoulSplit>()))

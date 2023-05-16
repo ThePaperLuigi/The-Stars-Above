@@ -11,10 +11,10 @@ namespace StarsAbove.Items.Consumables
     public class YellowOrb : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Yellow Orb");
-			Tooltip.SetDefault("Yellow orb." +
+			// DisplayName.SetDefault("Yellow Orb");
+			/* Tooltip.SetDefault("Yellow orb." +
 				"\n[c/F1AF42:Should not be able to be read.]" +
-				"\n");
+				"\n"); */
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 		}
 

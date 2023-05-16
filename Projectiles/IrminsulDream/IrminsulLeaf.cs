@@ -7,7 +7,7 @@ namespace StarsAbove.Projectiles.IrminsulDream
     public class IrminsulLeaf : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Irminsul's Dream");     //The English name of the projectile
+			// DisplayName.SetDefault("Irminsul's Dream");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode
 		}

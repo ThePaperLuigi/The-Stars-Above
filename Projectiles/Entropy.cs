@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
     public class Entropy : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Entropy");
+			// DisplayName.SetDefault("Entropy");
 			Main.projFrames[Projectile.type] = 7;
 		}
 

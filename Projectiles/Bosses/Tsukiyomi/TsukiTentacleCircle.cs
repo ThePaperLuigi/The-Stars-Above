@@ -13,7 +13,7 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
     public class TsukiTentacleCircle : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Tentacle Circle");     //The English name of the projectile
+			// DisplayName.SetDefault("Tentacle Circle");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode
 			//Main.projFrames[projectile.type] = 2;

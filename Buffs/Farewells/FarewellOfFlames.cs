@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.Farewells
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Farewell of Flames");
-            Description.SetDefault("Solidarity with the defeated is increasing Luck");
+            // DisplayName.SetDefault("Farewell of Flames");
+            // Description.SetDefault("Solidarity with the defeated is increasing Luck");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

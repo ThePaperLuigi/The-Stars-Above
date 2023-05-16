@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles
     public class GasterBlaster : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Gaster Blaster");
+			// DisplayName.SetDefault("Gaster Blaster");
 			Main.projFrames[Projectile.type] = 2;
 			DrawOriginOffsetY = -9;
 			DrawOffsetX = -7;

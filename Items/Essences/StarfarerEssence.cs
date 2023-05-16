@@ -8,11 +8,11 @@ namespace StarsAbove.Items.Essences
     public class StarfarerEssence : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Starfarer Essence");
-			Tooltip.SetDefault("A mystical gift from your Starfarer" +
+			// DisplayName.SetDefault("Starfarer Essence");
+			/* Tooltip.SetDefault("A mystical gift from your Starfarer" +
 				"\nDoesn't do anything." +
                 "\n" +
-				$"");
+				$""); */
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;
 		}

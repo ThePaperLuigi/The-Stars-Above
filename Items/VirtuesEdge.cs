@@ -19,8 +19,8 @@ namespace StarsAbove.Items
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Virtue's Edge");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Virtue's Edge");
+			/* Tooltip.SetDefault("" +
 				"Attacks with this weapon swing in a wide arc" +
 				"\nHolding this weapon will cause the [c/4C3BB6:Virtue Gauge] to appear" +
 				"\nAttacks with this weapon will fill the [c/4C3BB6:Virtue Gauge] with [c/49C7EC:Astral Flux]" +
@@ -31,7 +31,7 @@ namespace StarsAbove.Items
 				"\nIf the [c/4C3BB6:Virtue Gauge] is full once the [c/495DEC:Celestial Void] ends, it will collapse in a massive explosion, dealing 5x base damage" +
 				"\nThere is a 45 cooldown between the re-activation of [c/495DEC:Celestial Void]" +
 				"\n'Pierce through all matter!'" +
-				$"");
+				$""); */
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 			Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 12));
 			ItemID.Sets.AnimatesAsSoul[Item.type] = true;

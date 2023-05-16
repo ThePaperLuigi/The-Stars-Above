@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles
     public class ScarletOutburst : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Scarlet Outburst");
+			// DisplayName.SetDefault("Scarlet Outburst");
 			
 		}
 

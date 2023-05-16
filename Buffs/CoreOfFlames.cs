@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Core Of Flames");
-            Description.SetDefault("Liberation Blazing is at the apex of its power");
+            // DisplayName.SetDefault("Core Of Flames");
+            // Description.SetDefault("Liberation Blazing is at the apex of its power");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

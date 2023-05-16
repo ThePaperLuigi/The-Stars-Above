@@ -13,9 +13,9 @@ namespace StarsAbove.Items
     public class EveryMomentMatters : ModItem
 	{
 		public override void SetStaticDefaults() {
-			Tooltip.SetDefault("Every fourth shot will always deal critical damage and grant Swiftness\nDamage will increase with every shot\nEvery eighth shot will deal triple damage\nAfter the fourth shot is taken, the gun will take time to reload" +
+			/* Tooltip.SetDefault("Every fourth shot will always deal critical damage and grant Swiftness\nDamage will increase with every shot\nEvery eighth shot will deal triple damage\nAfter the fourth shot is taken, the gun will take time to reload" +
 				"\n'I have risen from the filth and muck. I am the lotus blossom. I am beauty.'" +
-				$"");
+				$""); */
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

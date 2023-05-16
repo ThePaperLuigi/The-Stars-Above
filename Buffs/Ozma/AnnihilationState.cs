@@ -10,8 +10,8 @@ namespace StarsAbove.Buffs.Ozma
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Annihilation State");
-            Description.SetDefault("");
+            // DisplayName.SetDefault("Annihilation State");
+            // Description.SetDefault("");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

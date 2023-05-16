@@ -12,9 +12,9 @@ namespace StarsAbove.Items.Consumables
     public class DebugPosition : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Debug Subworld Position Finder");
-			Tooltip.SetDefault("Used for subworld calibration" +
-				"\nThis is a debug item!");
+			// DisplayName.SetDefault("Debug Subworld Position Finder");
+			/* Tooltip.SetDefault("Used for subworld calibration" +
+				"\nThis is a debug item!"); */
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 		}
 

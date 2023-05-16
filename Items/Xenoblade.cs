@@ -15,7 +15,7 @@ namespace StarsAbove.Items
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("" +
+            /* Tooltip.SetDefault("" +
                 "[c/F7D76A:Hold left click to charge the weapon; if the weapon is fully charged, the attack varies]" +
                 "\nUncharged attacks slash in a wide area and will restore 3 mana" +
                 "\nCharged attacks deal double damage, have extraordinary knockback, and range is extended" +
@@ -29,7 +29,7 @@ namespace StarsAbove.Items
                 "\n[c/40EF28:Jump] grants Featherfall when active, and charged attacks launch you forward, costing 40 mana (Featherfall is lost below 100 mana)" +
                 "\n[c/9923CD:Buster] grants Wrath when active and disables normal attacks, but charged attacks are faster" +
                 "\n'THIS is the Monado's power!'" +
-                $"");
+                $""); */
 
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

@@ -20,8 +20,8 @@ namespace StarsAbove.Items.BossBags
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Treasure Bag (Nalhaun, the Burnished King)");
-			Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}"); // References a language key that says "Right Click To Open" in the language of the game
+			// DisplayName.SetDefault("Treasure Bag (Nalhaun, the Burnished King)");
+			// Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}"); // References a language key that says "Right Click To Open" in the language of the game
 
 			ItemID.Sets.BossBag[Type] = true;
 

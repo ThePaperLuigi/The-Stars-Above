@@ -7,13 +7,13 @@ namespace StarsAbove.Items.Accessories
     public class Glitterglue : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Teacup of Glitterglue");
+			// DisplayName.SetDefault("Teacup of Glitterglue");
 
-			Tooltip.SetDefault("" +
+			/* Tooltip.SetDefault("" +
                 "Striking foes has a 5% chance to inflict Glitterglue for 4 seconds" +
 				"\nAttacks on foes inflicted with Glitterglue have a 30% chance to turn non-critical strikes critical" +
                 "\n'Sniffing not recommended'" +
-				"");
+				""); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 			//The (English) text shown below your weapon's name
 		}

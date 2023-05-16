@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.VermillionDaemon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Vermillion Daemon");
+			// DisplayName.SetDefault("Vermillion Daemon");
 			Main.projFrames[Projectile.type] = 12; 
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 60;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode

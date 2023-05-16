@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.Boss
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Manifest Laevateinn");
-            Description.SetDefault(" ");
+            // DisplayName.SetDefault("Manifest Laevateinn");
+            // Description.SetDefault(" ");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

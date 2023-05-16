@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.UltimaThule
     public class RandomPlanetProjectile : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Ultima Thule");     //The English name of the projectile
+			// DisplayName.SetDefault("Ultima Thule");     //The English name of the projectile
 			Main.projFrames[Projectile.type] = 5;
 
 		}
@@ -76,7 +76,7 @@ namespace StarsAbove.Projectiles.UltimaThule
 			
 
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			
 			Player p = Main.player[Projectile.owner];

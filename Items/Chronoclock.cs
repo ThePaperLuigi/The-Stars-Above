@@ -24,8 +24,8 @@ namespace StarsAbove.Items
     public class Chronoclock : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Chronoclock");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Chronoclock");
+			/* Tooltip.SetDefault("" +
 				"Summons a [c/EB9FDA:Fragment of Time] to aid you in combat, granting immunity to Slow (Only one can be summoned at a time)" +
 				"\nThe [c/EB9FDA:Fragment of Time] will periodically nurture a [c/52BFDF:Time Bubble] centered on herself, which grows over time" +
 				"\nThe [c/52BFDF:Time Bubble] will pop upon contact with an enemy, dealing damage and additionally exploding in a [c/9FD9EB:Time Pulse]" +
@@ -34,7 +34,7 @@ namespace StarsAbove.Items
 				"\nStanding within the [c/52BFDF:Time Bubble] will grant [c/E8579B:Alacrity], increasing attack speed by 20% and movement speed by 10%" +
 				"\nAdditionally, taking damage within the [c/52BFDF:Time Bubble] will pop the [c/52BFDF:Time Bubble] prematurely, preventing that instance of damage (20 second cooldown)" +
 				"\n'Well, that sounds like a waste of time'"
-				+ $"");
+				+ $""); */
 
 			ItemID.Sets.GamepadWholeScreenUseRange[Item.type] = true;
 			ItemID.Sets.LockOnIgnoresCollision[Item.type] = true;

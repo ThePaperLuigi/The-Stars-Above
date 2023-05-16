@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles
     public class BurstFX6 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("BurstFX6");
+			// DisplayName.SetDefault("BurstFX6");
 			//Main.projFrames[projectile.type] = 14;
 		}
 

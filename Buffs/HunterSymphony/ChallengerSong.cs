@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.HunterSymphony
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Challenger Song");
-            Description.SetDefault("Powerful melodies grant 14% increased damage");
+            // DisplayName.SetDefault("Challenger Song");
+            // Description.SetDefault("Powerful melodies grant 14% increased damage");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

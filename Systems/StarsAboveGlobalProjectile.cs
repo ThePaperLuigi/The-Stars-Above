@@ -9,7 +9,7 @@ namespace StarsAbove
     public class StarsAboveGlobalProjectile : GlobalProjectile
 	{
 
-		public override void OnHitNPC(Projectile projectile, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if ((projectile.ModProjectile?.Mod == ModLoader.GetMod("StarsAbove") || Main.player[projectile.owner].GetModPlayer<StarsAbovePlayer>().aprismatism == 2) && (!projectile.hostile || projectile.friendly))
 			{ // Here we make sure to only change Copper Shortsword by checking Projectile.type in an if statement

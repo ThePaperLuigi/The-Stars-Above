@@ -18,12 +18,12 @@ namespace StarsAbove.Items.Placeable.StellarFoci
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Stellar Focus Base (Tier 3)");
+			// DisplayName.SetDefault("Stellar Focus Base (Tier 3)");
 			
 
-			Tooltip.SetDefault("" +
+			/* Tooltip.SetDefault("" +
 				"Utilized to craft [c/FF1B8D:Stellar Foci]" +
-				"");
+				""); */
 			//
 			//
 			//"\n[c/D32C2C:Modded chests from mods added after world generation may cease to open once entering a subworld]" +

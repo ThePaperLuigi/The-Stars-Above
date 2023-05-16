@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.Mercy
     public class MercyStab : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Mercy");
+			// DisplayName.SetDefault("Mercy");
 
 		}
 
@@ -81,7 +81,7 @@ namespace StarsAbove.Projectiles.Mercy
 
 			
 		}
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 			if(target.life - Math.Min((-(target.life - target.lifeMax)) / 10, 2000) > 1)
             {

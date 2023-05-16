@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Tsukiyomi");
+			// DisplayName.SetDefault("Tsukiyomi");
 			Main.projFrames[Projectile.type] = 9;
 			//DrawOriginOffsetY = 30;
 			//DrawOffsetX = -60;

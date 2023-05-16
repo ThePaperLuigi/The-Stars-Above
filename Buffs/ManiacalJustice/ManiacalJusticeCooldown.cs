@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.ManiacalJustice
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Maniacal Justice Cooldown");
-            Description.SetDefault("");
+            // DisplayName.SetDefault("Maniacal Justice Cooldown");
+            // Description.SetDefault("");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
             Main.persistentBuff[Type] = true;

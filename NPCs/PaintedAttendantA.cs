@@ -10,7 +10,7 @@ namespace StarsAbove.NPCs
     public class PaintedAttendantA : ModNPC
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Living Brush");
+			// DisplayName.SetDefault("Living Brush");
 			NPCID.Sets.MPAllowedEnemies[NPC.type] = true;
 			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{
@@ -56,7 +56,7 @@ namespace StarsAbove.NPCs
 			}
 			base.AI();
 		}
-		public override void HitEffect(int hitDirection, double damage) {
+		public override void HitEffect(NPC.HitInfo hit) {
 			for (int i = 0; i < 10; i++) {
 				int dustType = 271;
 				int dustIndex = Dust.NewDust(NPC.position, NPC.width, NPC.height, dustType);

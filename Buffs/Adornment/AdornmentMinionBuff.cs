@@ -9,8 +9,8 @@ namespace StarsAbove.Buffs.Adornment
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Adornment of the Chaotic God");
-            Description.SetDefault("A manifestation of chaos is attacking your foes");
+            // DisplayName.SetDefault("Adornment of the Chaotic God");
+            // Description.SetDefault("A manifestation of chaos is attacking your foes");
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

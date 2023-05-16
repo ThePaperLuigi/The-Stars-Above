@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.SoulReaver
     public class SoulReaverSlash1 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Soul Reaver");     //The English name of the projectile
+			// DisplayName.SetDefault("Soul Reaver");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode
 			//DrawOffsetX = 40;
@@ -89,7 +89,7 @@ namespace StarsAbove.Projectiles.SoulReaver
 			
 			
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			
 			Player player = Main.player[Projectile.owner];

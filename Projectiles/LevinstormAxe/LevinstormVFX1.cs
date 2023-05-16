@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.LevinstormAxe
     public class LevinstormVFX1 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Levinstorm Axe VFX");     //The English name of the projectile
+			// DisplayName.SetDefault("Levinstorm Axe VFX");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 70;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode
 			//DrawOffsetX = 40;

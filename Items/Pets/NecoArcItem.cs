@@ -9,9 +9,9 @@ namespace StarsAbove.Items.Pets
     public class NecoArcItem : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Chaotic Cat");
-			Tooltip.SetDefault("Summons a chaotic cat-figure" +
-				"");
+			// DisplayName.SetDefault("Chaotic Cat");
+			/* Tooltip.SetDefault("Summons a chaotic cat-figure" +
+				""); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

@@ -10,8 +10,8 @@ namespace StarsAbove.Items.Armor.Chemtank
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dreadnought Chemtank Legs");
-			Tooltip.SetDefault("You shouldn't be able to read this!");
+			// DisplayName.SetDefault("Dreadnought Chemtank Legs");
+			// Tooltip.SetDefault("You shouldn't be able to read this!");
 			ArmorIDs.Legs.Sets.HidesBottomSkin[Item.legSlot] = true;
 		}
 

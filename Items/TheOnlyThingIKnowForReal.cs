@@ -17,7 +17,7 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("" +
+			/* Tooltip.SetDefault("" +
 				"[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes]" +
                 "\n[c/F7D76A:Hold left click to charge the weapon; the longer the weapon is charged, the stronger the resulting attack will become]" +
 				"\nUncharged attacks with this weapon swing in the cursor's direction" +
@@ -34,7 +34,7 @@ namespace StarsAbove.Items
 				"\nAt 100 HP or below, [c/FF7B7B:Guntrigger Parry] cooldown is doubled, but successful parries remove the cooldown" +
 				"\nAdditionally, [c/EC2B65:Jetstream Bloodshed]'s damage buff is increased to 50% and natural life regeneration is disabled" +
 				"\n'Let's dance'" +
-				$"");
+				$""); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -251,7 +251,7 @@ namespace StarsAbove.Items
 								
 							}
 							player.Teleport(new Vector2(Main.MouseWorld.X, Main.MouseWorld.Y - 10), 1, 0);
-							NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, (float)player.whoAmI, Main.MouseWorld.X, Main.MouseWorld.Y-10, 1, 0, 0);
+							NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float)player.whoAmI, Main.MouseWorld.X, Main.MouseWorld.Y-10, 1, 0, 0);
 						}
 						
 						if(player.HasBuff(BuffType<ImpactRecoil>()))

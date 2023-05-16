@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.RedMage
     public class ResolutionProjectile : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Vermilion Riposte");     //The English name of the projectile
+			// DisplayName.SetDefault("Vermilion Riposte");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 70;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode
 		}
@@ -39,7 +39,7 @@ namespace StarsAbove.Projectiles.RedMage
 			
 			return false;
 		}
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 
 			Player player = Main.player[Projectile.owner];

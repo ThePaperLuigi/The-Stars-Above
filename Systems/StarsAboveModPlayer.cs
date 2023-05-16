@@ -1559,17 +1559,17 @@ namespace StarsAbove
 
         }
 
-        public override void OnEnterWorld(Player player)
+        public override void OnEnterWorld()
         {
             SubworldSystem.noReturn = false; //Fix missing save and quit bug?
 
-            if (player.whoAmI == Main.myPlayer && enableWorldLock)
+            if (Player.whoAmI == Main.myPlayer && enableWorldLock)
             {
                 if (firstJoinedWorld == 0)
                 {
                     firstJoinedWorld = Main.worldID;
                     firstJoinedWorldName = Main.worldName;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue($"{player.name} has been binded to {Main.worldName}."), 220, 100, 247); }
+                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue($"{Player.name} has been binded to {Main.worldName}."), 220, 100, 247); }
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue($"The Stars Above progression will only occur on this world. (Check Mod Settings if necessary)"), 255, 126, 114); }
 
                 }
@@ -1577,12 +1577,12 @@ namespace StarsAbove
                 {
                     if (firstJoinedWorldName != null)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue($"{player.name} has already been binded to {firstJoinedWorldName}. (World ID {firstJoinedWorld})"), 220, 100, 247); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue($"{Player.name} has already been binded to {firstJoinedWorldName}. (World ID {firstJoinedWorld})"), 220, 100, 247); }
 
                     }
                     else
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue($"{player.name} has already been binded to World ID {firstJoinedWorld}."), 220, 100, 247); }
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue($"{Player.name} has already been binded to World ID {firstJoinedWorld}."), 220, 100, 247); }
 
                     }
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue($"Disable the client-side configuration option 'Enable Player Progress World Lock' to enable The Stars Above progression on this world."), 255, 126, 114); }
@@ -1607,7 +1607,7 @@ namespace StarsAbove
             StarfarerMenu._starfarerVanitySlot.Item = starfarerVanityEquipped;
 
 
-            base.OnEnterWorld(player);
+            base.OnEnterWorld(Player);
 
         }
         public override IEnumerable<Item> AddStartingItems(bool mediumCoreDeath)
@@ -1629,15 +1629,15 @@ namespace StarsAbove
 
 
         }
-        public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Item, consider using OnHitNPC instead */
         {
             if (!target.active)
             {
                 OnKillEnemy(target);
             }
-            base.OnHitNPC(item, target, damage, knockback, crit);
+            base.OnHitNPCWithItem(item, target, damage, knockback, crit);
         }
-        public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
+        public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Item, consider using ModifyHitNPC instead */
         {
             if (mysticforging == 2)
             {
@@ -1821,7 +1821,7 @@ namespace StarsAbove
             }
             
         }
-        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Projectile, consider using ModifyHitNPC instead */
         {
             if (mysticforging == 2)
             {
@@ -2370,7 +2370,7 @@ namespace StarsAbove
             base.ModifyScreenPosition();
         }
 
-        public override void OnHitNPCWithProj(Projectile projectile, NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Projectile, consider using OnHitNPC instead */
         {
             if (ruinedKingPrism && target.life <= target.lifeMax / 2 && crit)
             {
@@ -6756,7 +6756,7 @@ namespace StarsAbove
                 {
                     Player.AddBuff(BuffType<Invincibility>(), 10);
                     Player.Teleport(newPosition, 1, 0);
-                    NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, Player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
+                    NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, Player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
 
                 }
             }
@@ -6868,7 +6868,7 @@ namespace StarsAbove
                 if (newPosition != Player.position)
                 {
                     Player.Teleport(newPosition, 1, 0);
-                    NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, Player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
+                    NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, Player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
 
                 }
             }
@@ -7825,7 +7825,7 @@ namespace StarsAbove
                         //player.velocity = Vector2.Zero;
                         Vector2 vector32 = new Vector2(Player.position.X - 500, Player.position.Y);
                         Player.Teleport(vector32, 1, 0);
-                        NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, (float)Player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
+                        NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float)Player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
 
                     }
                 }
@@ -7837,7 +7837,7 @@ namespace StarsAbove
                         //player.velocity = Vector2.Zero;
                         Vector2 vector32 = new Vector2(Player.position.X + 500, Player.position.Y);
                         Player.Teleport(vector32, 1, 0);
-                        NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, (float)Player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
+                        NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float)Player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
                     }
                 }
 
@@ -8104,13 +8104,13 @@ namespace StarsAbove
             }
             return true;
         }
-        public override void ModifyHitByProjectile(Projectile proj, ref int damage, ref bool crit)
+        public override void ModifyHitByProjectile(Projectile proj, ref Player.HurtModifiers modifiers)
         {
 
 
             base.ModifyHitByProjectile(proj, ref damage, ref crit);
         }
-        public override void OnHitByProjectile(Projectile proj, int damage, bool crit)
+        public override void OnHitByProjectile(Projectile proj, Player.HurtInfo hurtInfo)
         {
             if (proj.type == Mod.Find<ModProjectile>("BlazingSkies").Type
                 || proj.type == Mod.Find<ModProjectile>("SaberDamage").Type
@@ -8126,7 +8126,7 @@ namespace StarsAbove
 
             base.OnHitByProjectile(proj, damage, crit);
         }
-        public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource, ref int cooldownCounter)
+        public override void ModifyHurt(ref Player.HurtModifiers modifiers)/* tModPorter Override ImmuneTo, FreeDodge or ConsumableDodge instead to prevent taking damage */
         {
             
 

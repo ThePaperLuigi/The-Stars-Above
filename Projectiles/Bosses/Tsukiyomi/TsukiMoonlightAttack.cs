@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
     internal class TsukiMoonlightAttack : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Carian Dark Moon");     //The English name of the projectile
+			// DisplayName.SetDefault("Carian Dark Moon");     //The English name of the projectile
 
 			Main.projFrames[Projectile.type] = 1;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 50;    //The length of old position to be recorded
@@ -45,7 +45,7 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 
 			base.ModifyDamageHitbox(ref hitbox);
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) {
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
 			
 		}
 

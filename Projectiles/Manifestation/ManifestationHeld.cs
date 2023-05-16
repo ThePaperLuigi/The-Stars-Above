@@ -15,7 +15,7 @@ namespace StarsAbove.Projectiles.Manifestation
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Manifestation");
+			// DisplayName.SetDefault("Manifestation");
 			
 		}
 

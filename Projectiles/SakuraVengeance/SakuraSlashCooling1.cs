@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.SakuraVengeance
     public class SakuraSlashCooling1 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Sakura's Vengeance");     //The English name of the projectile
+			// DisplayName.SetDefault("Sakura's Vengeance");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode
 			//DrawOffsetX = 40;
@@ -89,7 +89,7 @@ namespace StarsAbove.Projectiles.SakuraVengeance
 			
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			int randomPetals = Main.rand.Next(1, 4);
 			for (int i = 0; i < randomPetals; i++)

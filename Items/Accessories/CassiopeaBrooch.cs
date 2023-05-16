@@ -10,12 +10,12 @@ namespace StarsAbove.Items.Accessories
     public class CassiopeaBrooch : StargazerRelic
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Cassiopea's Brooch");
+			// DisplayName.SetDefault("Cassiopea's Brooch");
 
-			Tooltip.SetDefault("[c/2DD2FE:Stargazer Relic]" +
+			/* Tooltip.SetDefault("[c/2DD2FE:Stargazer Relic]" +
 				"\nNo effect..?" +
 				"\n[c/ADEEFF:Only one Stargazer Relic can be equipped at a time]" +
-				"\n'The Empire's Queen sleeps, waiting to live forever'");
+				"\n'The Empire's Queen sleeps, waiting to live forever'"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 			//The (English) text shown below your weapon's name
 		}

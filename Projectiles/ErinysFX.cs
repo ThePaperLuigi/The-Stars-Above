@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles
     public class ErinysFX : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("ErinysFX");
+			// DisplayName.SetDefault("ErinysFX");
 			//Main.projFrames[projectile.type] = 14;
 		}
 

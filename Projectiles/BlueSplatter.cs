@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
     public class BlueSplatter : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Blue Splatter");
+			// DisplayName.SetDefault("Blue Splatter");
 			
 		}
 
