@@ -95,7 +95,7 @@ namespace StarsAbove.Projectiles.RedMage
 				Dust.NewDust(target.Center, 0, 0, DustID.FireworkFountain_Red, Main.rand.NextFloat(-8, 8), Main.rand.NextFloat(-8, 8), 150, default(Color), 0.6f);
 			}
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 	}
 

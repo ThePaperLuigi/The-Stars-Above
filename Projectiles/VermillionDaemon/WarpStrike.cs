@@ -81,7 +81,7 @@ namespace StarsAbove.Projectiles.VermillionDaemon
 			Projectile.Kill();
 
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
         }
         public override bool OnTileCollide(Vector2 oldVelocity) {
 			

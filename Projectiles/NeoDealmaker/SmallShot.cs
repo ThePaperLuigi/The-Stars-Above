@@ -54,7 +54,7 @@ namespace StarsAbove.Projectiles.NeoDealmaker
 				target.AddBuff(BuffID.Midas, 1200);
             }
 
-            base.OnHitNPC(target, damage, knockback, crit);
+             
         }
         public override bool OnTileCollide(Vector2 oldVelocity) {
 			//If collide with tile, reduce the penetrate.

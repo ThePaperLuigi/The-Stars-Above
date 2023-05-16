@@ -134,7 +134,7 @@ namespace StarsAbove.Projectiles.GoldenKatana
 			}
 			target.AddBuff(BuffID.Frostburn, 240);
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
         }
     }
 }

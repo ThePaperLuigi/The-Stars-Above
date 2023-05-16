@@ -106,7 +106,7 @@ namespace StarsAbove.Projectiles.BlackSilence
 
 
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 
 

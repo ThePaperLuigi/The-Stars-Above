@@ -46,7 +46,7 @@ namespace StarsAbove.Projectiles.Manifestation
 		// It appears that for this AI, only the ai0 field is used!
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {

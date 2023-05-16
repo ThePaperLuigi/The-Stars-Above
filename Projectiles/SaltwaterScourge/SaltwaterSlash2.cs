@@ -129,7 +129,7 @@ namespace StarsAbove.Projectiles.SaltwaterScourge
 					NetMessage.SendData(21, -1, -1, null, k, 1f);
 				}
 			}
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 
 	}

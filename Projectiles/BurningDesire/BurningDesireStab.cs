@@ -122,7 +122,7 @@ namespace StarsAbove.Projectiles.BurningDesire
 			}
 
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 	}
 

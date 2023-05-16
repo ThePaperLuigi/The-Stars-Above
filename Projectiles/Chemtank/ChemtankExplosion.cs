@@ -74,7 +74,7 @@ namespace StarsAbove.Projectiles.Chemtank
 
 			}
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{

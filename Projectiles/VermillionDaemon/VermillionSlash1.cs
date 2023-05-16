@@ -98,7 +98,7 @@ namespace StarsAbove.Projectiles.VermillionDaemon
 
 			}
 			
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 		
 

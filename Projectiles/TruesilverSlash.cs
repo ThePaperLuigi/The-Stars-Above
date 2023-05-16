@@ -155,7 +155,7 @@ namespace StarsAbove.Projectiles
 				Player player = Main.player[Projectile.owner];
 				damage += player.statLife / 10;
 			}
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 
 		}
 	}

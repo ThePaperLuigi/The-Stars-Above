@@ -120,7 +120,7 @@ namespace StarsAbove.Projectiles.RupturedHeaven
 
 			Player player = Main.player[Projectile.owner];
 			player.AddBuff(BuffID.Wrath, 120);
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 
         }
     }

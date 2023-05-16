@@ -220,7 +220,7 @@ namespace StarsAbove.Projectiles.UltimaThule
 
 
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 
 		public override bool PreDraw(ref Color lightColor)

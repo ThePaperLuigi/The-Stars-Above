@@ -59,7 +59,7 @@ namespace StarsAbove.Projectiles.SakuraVengeance
 				target.AddBuff(BuffID.CursedInferno, 120);
 			}
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
         }
     }
 }

@@ -81,7 +81,7 @@ namespace StarsAbove.Projectiles.VirtuesEdge
 			}
 			
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
         }
         public override bool PreDraw(ref Color lightColor)
 		{/*

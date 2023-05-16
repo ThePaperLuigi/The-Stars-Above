@@ -53,7 +53,7 @@ namespace StarsAbove.Projectiles.CatalystMemory
         {
 			
 
-            base.OnHitNPC(target, damage, knockback, crit);
+             
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {

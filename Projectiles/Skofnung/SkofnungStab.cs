@@ -94,7 +94,7 @@ namespace StarsAbove.Projectiles.Skofnung
 				Dust.NewDust(target.Center, 0, 0, 20, Main.rand.NextFloat(-8, 8), Main.rand.NextFloat(-8, 8), 150, default(Color), 0.6f);
 			}
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 	}
 

@@ -114,7 +114,7 @@ namespace StarsAbove.Projectiles.RexLapis
 				}
 			}
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 	}
 

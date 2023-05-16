@@ -125,7 +125,7 @@ namespace StarsAbove.Projectiles.BloodBlade
 			}
 
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 
 	}

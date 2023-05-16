@@ -69,7 +69,7 @@ namespace StarsAbove.Projectiles.SaltwaterScourge
         {
 			target.AddBuff(BuffType<Stun>(), 120);
 
-            base.OnHitNPC(target, damage, knockback, crit);
+             
         }
         public override bool OnTileCollide(Vector2 oldVelocity)
 		{

@@ -52,7 +52,7 @@ namespace StarsAbove.Projectiles.BlackSilence
         {
 			
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
         }
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{

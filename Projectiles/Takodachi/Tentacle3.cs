@@ -95,7 +95,7 @@ namespace StarsAbove.Projectiles.Takodachi
 			}
 			target.AddBuff(BuffID.ShadowFlame, 420);
 			Player player = Main.player[Projectile.owner];
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 	}
 }

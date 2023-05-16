@@ -108,7 +108,7 @@ namespace StarsAbove.Projectiles.SaltwaterScourge
 				}
 			}
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 
 

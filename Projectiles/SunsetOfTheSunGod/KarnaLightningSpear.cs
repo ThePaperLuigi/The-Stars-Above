@@ -169,7 +169,7 @@ namespace StarsAbove.Projectiles.SunsetOfTheSunGod
 				}
 			}
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 
 		private void KarnaOnHitDust(NPC target)

@@ -101,7 +101,7 @@ namespace StarsAbove.Projectiles.Umbra
 
 			player.GetModPlayer<WeaponPlayer>().gaugeChangeAlpha = 1f;
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
         }
 		
 

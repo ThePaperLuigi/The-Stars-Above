@@ -38,7 +38,7 @@ namespace StarsAbove.Projectiles.StellarNovas
 		{
 			Projectile.damage /= 2;
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 
 		}
 		public override void AI()

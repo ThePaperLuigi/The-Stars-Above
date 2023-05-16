@@ -97,7 +97,7 @@ namespace StarsAbove.Projectiles.SoulReaver
 			
 
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 
 

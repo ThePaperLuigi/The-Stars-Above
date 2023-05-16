@@ -169,7 +169,7 @@ namespace StarsAbove.Projectiles.GoldenKatana
 			target.AddBuff(BuffType<Hyperburn>(), 240);
 			SoundEngine.PlaySound(StarsAboveAudio.SFX_BlackSilenceGreatsword, target.Center);
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {

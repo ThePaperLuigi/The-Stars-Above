@@ -73,7 +73,7 @@ namespace StarsAbove.Projectiles.SaltwaterScourge
 				}
 			}
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 		public override void Kill(int timeLeft)
 		{

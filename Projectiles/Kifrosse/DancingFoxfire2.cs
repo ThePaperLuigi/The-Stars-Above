@@ -237,7 +237,7 @@ namespace StarsAbove.Projectiles.Kifrosse
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			target.AddBuff(BuffID.Frostburn, 120);
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 
 

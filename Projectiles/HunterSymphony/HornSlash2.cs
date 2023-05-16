@@ -122,7 +122,7 @@ namespace StarsAbove.Projectiles.HunterSymphony
 			
 
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 
 	}

@@ -51,7 +51,7 @@ namespace StarsAbove.Projectiles.IrminsulDream
 			}
 			target.AddBuff(BuffType<VerdantEmbrace>(), 720);
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
         }
         
         public override void AI() {

@@ -68,7 +68,7 @@ namespace StarsAbove.Projectiles.BurningDesire
 			Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0, 0, ProjectileType<ChainsawFollowUpExplosion>(), damage / 4, 0f, Main.player[Projectile.owner].whoAmI, 0);
 			Projectile.Kill();
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
         }
 
 

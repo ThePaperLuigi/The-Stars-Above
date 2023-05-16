@@ -65,7 +65,7 @@ namespace StarsAbove.Projectiles.ElCapitansHardware
 				projOwner.GetModPlayer<WeaponPlayer>().renegadeGauge = 100;
 			}
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
         }
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{

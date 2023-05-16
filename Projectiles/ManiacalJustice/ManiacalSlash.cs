@@ -93,7 +93,7 @@ namespace StarsAbove.Projectiles.ManiacalJustice
 
 			}
 			OnHitDust(target);
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 
 		private void OnHitDust(NPC target)

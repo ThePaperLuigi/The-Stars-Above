@@ -139,7 +139,7 @@ namespace StarsAbove.Projectiles.GoldenKatana
 			}
 			SoundEngine.PlaySound(StarsAboveAudio.SFX_BlackSilenceDurandalHit, target.Center);
 			target.AddBuff(BuffID.ShadowFlame, 240);
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
         }
     }
 }

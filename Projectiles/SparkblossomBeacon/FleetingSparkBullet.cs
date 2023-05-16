@@ -138,7 +138,7 @@ namespace StarsAbove.Projectiles.SparkblossomBeacon
 				Dust.NewDust(target.Center, 0, 0, 92, Main.rand.NextFloat(-5, 5), Main.rand.NextFloat(-5, 5), 150, default(Color), 0.4f);
 
 			}
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
         }
         public override void Kill(int timeLeft)
 		{

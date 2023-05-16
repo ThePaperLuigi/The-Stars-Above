@@ -129,7 +129,7 @@ namespace StarsAbove.Projectiles.KissOfDeath
 			}
 
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {

@@ -77,7 +77,7 @@ namespace StarsAbove.Projectiles.Ozma
             {
 				projOwner.AddBuff(BuffType<AnnihilationState>(), 180);
             }				
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
         }
        
 

@@ -125,7 +125,7 @@ namespace StarsAbove.Projectiles.LevinstormAxe
 
 			}
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
         }
     }
 

@@ -104,7 +104,7 @@ namespace StarsAbove.Projectiles.VermillionDaemon
 			Rectangle textPos = new Rectangle((int)player.position.X, (int)player.position.Y - 20, player.width, player.height);
 			CombatText.NewText(textPos, new Color(81, 62, 247, 240), "15", false, false);
 			player.statMana += 15;
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 		
 

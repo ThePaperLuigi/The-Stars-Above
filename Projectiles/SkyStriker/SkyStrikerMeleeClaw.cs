@@ -94,7 +94,7 @@ namespace StarsAbove.Projectiles.SkyStriker
 
 			}
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 	}
 

@@ -49,7 +49,7 @@ namespace StarsAbove.Projectiles.RedMage
 				CombatText.NewText(textPos, new Color(49, 234, 63, 240), $"5", false, false);
 				player.statLife += 5;
 			}
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
         }
         public override void AI()
 		{

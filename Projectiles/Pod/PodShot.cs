@@ -50,7 +50,7 @@ namespace StarsAbove.Projectiles.Pod
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 
-            base.OnHitNPC(target, damage, knockback, crit);
+             
         }
         public override bool OnTileCollide(Vector2 oldVelocity) {
 			//If collide with tile, reduce the penetrate.

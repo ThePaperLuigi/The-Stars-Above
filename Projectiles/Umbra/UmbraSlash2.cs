@@ -124,7 +124,7 @@ namespace StarsAbove.Projectiles.Umbra
 			player.AddBuff(BuffType<TimelessPotential>(), 240);
 
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 		
 

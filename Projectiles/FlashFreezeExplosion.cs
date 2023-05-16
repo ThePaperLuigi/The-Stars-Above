@@ -119,7 +119,7 @@ namespace StarsAbove.Projectiles
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 			crit = false;
-            base.OnHitNPC(target, damage, knockback, crit);
+             
         }
     }
 }

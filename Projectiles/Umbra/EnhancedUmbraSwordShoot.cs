@@ -105,7 +105,7 @@ namespace StarsAbove.Projectiles.Umbra
 				}
 			}
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
         }
 		
 
