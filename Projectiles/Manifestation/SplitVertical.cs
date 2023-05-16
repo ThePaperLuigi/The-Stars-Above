@@ -66,7 +66,7 @@ namespace StarsAbove.Projectiles.Manifestation
 				damage = target.life;
             }
 
-			base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
+			 
         }
 
         // It appears that for this AI, only the ai0 field is used!

@@ -136,7 +136,7 @@ namespace StarsAbove.Projectiles.SunsetOfTheSunGod
 			target.AddBuff(BuffID.Daybreak, 8 * 60);
 			crit = true;
 
-            base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
+             
         }
     }
 }

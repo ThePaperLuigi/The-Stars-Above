@@ -175,7 +175,7 @@ namespace StarsAbove.Projectiles.GoldenKatana
         {
 			crit = true;
 
-            base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
+             
         }
     }
 }

@@ -57,7 +57,7 @@ namespace StarsAbove.Projectiles.KissOfDeath
 				damage = (int)(damage * 1.2f);
 			}
 			target.AddBuff(BuffType<SecurityLevel>(), 12 * 60);
-			base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
+			 
         }
         public override bool PreDraw(ref Color lightColor)
 		{

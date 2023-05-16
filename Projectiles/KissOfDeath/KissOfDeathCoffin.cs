@@ -448,23 +448,19 @@ namespace StarsAbove.Projectiles.KissOfDeath
 			// Regular collision logic happens otherwise.
 			return base.Colliding(projHitbox, targetHitbox);
 		}
-
+		
 		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
 			// Flails do 20% more damage while spinning
 			if (CurrentAIState == AIState.Spinning)
 			{
-				damageScale *= 1f;
+				modifiers.FinalDamage *= 1f;
 			}
 			// Flails do 100% more damage while launched or retracting. This is the damage the item tooltip for flails aim to match, as this is the most common mode of attack. This is why the item has ItemID.Sets.ToolTipDamageMultiplier[Type] = 2f;
 			else if (CurrentAIState == AIState.LaunchingForward || CurrentAIState == AIState.Retracting)
 			{
-				damageScale *= 3f;
+				modifiers.FinalDamage *= 3f;
 			}
-		}
-
-		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
-		{
 			// Flails do a few custom things, you'll want to keep these to have the same feel as vanilla flails.
 			Player projOwner = Main.player[Projectile.owner];
 			projOwner.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
@@ -484,7 +480,7 @@ namespace StarsAbove.Projectiles.KissOfDeath
 
 			}
 			// The hitDirection is always set to hit away from the player, even if the flail damages the npc while returning
-			hitDirection = (Main.player[Projectile.owner].Center.X < target.Center.X).ToDirectionInt();
+			modifiers.HitDirectionOverride = (Main.player[Projectile.owner].Center.X < target.Center.X).ToDirectionInt();
 			for (int d = 0; d < 18; d++)
 			{
 				Dust.NewDust(target.Center, 0, 0, DustID.AmberBolt, Main.rand.NextFloat(-5, 5), Main.rand.NextFloat(-5, 5), 150, default(Color), 0.7f);
@@ -494,15 +490,14 @@ namespace StarsAbove.Projectiles.KissOfDeath
 			// Knockback is only 25% as powerful when in spin mode
 			if (CurrentAIState == AIState.Spinning)
 			{
-				knockback *= 0.25f;
+				modifiers.Knockback *= 0.25f;
 			}
 			// Knockback is only 50% as powerful when in drop down mode
 			else if (CurrentAIState == AIState.Dropping)
 			{
-				knockback *= 0.5f;
+				modifiers.Knockback *= 0.5f;
 			}
 
-			base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
 		}
 
 		// PreDraw is used to draw a chain and trail before the projectile is drawn normally.

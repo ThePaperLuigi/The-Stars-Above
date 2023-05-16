@@ -71,7 +71,7 @@ namespace StarsAbove.Projectiles.RedMage
 				}
 			}
 
-			base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
+			 
 		}
 		public override bool PreDraw(ref Color lightColor)
 		{

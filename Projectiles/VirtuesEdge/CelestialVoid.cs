@@ -69,7 +69,7 @@ namespace StarsAbove.Projectiles.VirtuesEdge
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 			damage /= 3;
-            base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
+             
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {

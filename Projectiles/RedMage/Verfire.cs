@@ -62,7 +62,7 @@ namespace StarsAbove.Projectiles.RedMage
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 			target.AddBuff(BuffID.OnFire, 240);
-            base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
+             
         }
         public override void Kill(int timeLeft)
 		{

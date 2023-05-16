@@ -16,7 +16,7 @@ namespace StarsAbove.Items.BossBags
     public class NalhaunBossBag : ModItem
 	{
 		// Sets the associated NPC this treasure bag is dropped from
-		public override int BossBagNPC => ModContent.NPCType<NalhaunBoss>();
+		//public override int BossBagNPC => ModContent.NPCType<NalhaunBoss>();
 
 		public override void SetStaticDefaults()
 		{

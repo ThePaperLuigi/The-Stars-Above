@@ -120,7 +120,7 @@ namespace StarsAbove.Projectiles.BlackSilence
             {
 				damage *= 2;
             }
-            base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
+             
         }
     }
 

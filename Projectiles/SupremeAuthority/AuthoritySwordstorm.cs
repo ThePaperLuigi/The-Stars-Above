@@ -185,14 +185,14 @@ namespace StarsAbove.Projectiles.SupremeAuthority
 		{
 			Player projOwner = Main.player[Projectile.owner];
 
-			damage = (int)(damage * (target.lifeMax * 0.01f + (MathHelper.Min(projOwner.GetModPlayer<WeaponPlayer>().SupremeAuthorityConsumedNPCs, 5))/100));
+			modifiers.SourceDamage *= (target.lifeMax * 0.01f + (MathHelper.Min(projOwner.GetModPlayer<WeaponPlayer>().SupremeAuthorityConsumedNPCs, 5))/100);
 			if(projOwner.GetModPlayer<WeaponPlayer>().SupremeAuthorityConsumedNPCs > 5)
             {
-				damage = (int)(damage * (1 + ((projOwner.GetModPlayer<WeaponPlayer>().SupremeAuthorityConsumedNPCs - 5) * 0.01f)));
+				modifiers.SourceDamage *= (1 + ((projOwner.GetModPlayer<WeaponPlayer>().SupremeAuthorityConsumedNPCs - 5) * 0.01f));
             }
-			damage /= 10; //The attack hits multiple times.
+			modifiers.SourceDamage /= 10; //The attack hits multiple times so damage should be lowered as a result.
 
-			base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
+			 
         }
     }
 }

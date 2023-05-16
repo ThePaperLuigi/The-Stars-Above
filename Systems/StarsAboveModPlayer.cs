@@ -1607,7 +1607,6 @@ namespace StarsAbove
             StarfarerMenu._starfarerVanitySlot.Item = starfarerVanityEquipped;
 
 
-            base.OnEnterWorld(Player);
 
         }
         public override IEnumerable<Item> AddStartingItems(bool mediumCoreDeath)
@@ -1635,7 +1634,6 @@ namespace StarsAbove
             {
                 OnKillEnemy(target);
             }
-            base.OnHitNPCWithItem(item, target, damage, knockback, crit);
         }
         public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Item, consider using ModifyHitNPC instead */
         {
@@ -8108,7 +8106,6 @@ namespace StarsAbove
         {
 
 
-            base.ModifyHitByProjectile(proj, ref damage, ref crit);
         }
         public override void OnHitByProjectile(Projectile proj, Player.HurtInfo hurtInfo)
         {
@@ -8124,7 +8121,6 @@ namespace StarsAbove
                 }
             }
 
-            base.OnHitByProjectile(proj, damage, crit);
         }
         public override void ModifyHurt(ref Player.HurtModifiers modifiers)/* tModPorter Override ImmuneTo, FreeDodge or ConsumableDodge instead to prevent taking damage */
         {

@@ -137,7 +137,7 @@ namespace StarsAbove.Projectiles.KissOfDeath
             {
 				crit = true;
             }
-            base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
+             
         }
     }
 }

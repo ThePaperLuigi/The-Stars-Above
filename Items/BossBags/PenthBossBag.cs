@@ -16,7 +16,7 @@ namespace StarsAbove.Items.BossBags
 	public class PenthBossBag : ModItem
 	{
 		// Sets the associated NPC this treasure bag is dropped from
-		public override int BossBagNPC => ModContent.NPCType<Penthesilea>();
+		//public override int BossBagNPC => ModContent.NPCType<Penthesilea>();
 
 		public override void SetStaticDefaults()
 		{

@@ -55,7 +55,7 @@ namespace StarsAbove.Projectiles.RedMage
 		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
 			Projectile.damage = (int)(Projectile.damage * 0.8);
-			//base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
+			// 
 		}
 		public override void Kill(int timeLeft)
 		{

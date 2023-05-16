@@ -16,7 +16,7 @@ namespace StarsAbove.Items.BossBags
 	public class WarriorBossBag : ModItem
 	{
 		// Sets the associated NPC this treasure bag is dropped from
-		public override int BossBagNPC => ModContent.NPCType<WarriorOfLight>();
+		//public override int BossBagNPC => ModContent.NPCType<WarriorOfLight>();
 
 		public override void SetStaticDefaults()
 		{

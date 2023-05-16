@@ -159,7 +159,7 @@ namespace StarsAbove.Projectiles.KissOfDeath
 			Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0, 0, ProjectileType<KissOfDeathBoom>(), damage, 0f, Main.player[Projectile.owner].whoAmI, 0);
 
 
-			base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
+			 
         }
         public override void Kill(int timeLeft)
 		{

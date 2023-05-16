@@ -85,7 +85,7 @@ namespace StarsAbove.Projectiles.MorningStar
 
 			target.AddBuff(BuffID.Ichor, 180);
 
-			base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
+			 
         }
 		
 

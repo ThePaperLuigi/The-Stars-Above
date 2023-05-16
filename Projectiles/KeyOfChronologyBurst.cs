@@ -77,7 +77,7 @@ namespace StarsAbove.Projectiles
         {
 			target.AddBuff(BuffType<Buffs.Stun>(), 300);
 
-            base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
+             
         }
     }
 }
