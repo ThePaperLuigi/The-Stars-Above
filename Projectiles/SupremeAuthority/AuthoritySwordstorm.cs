@@ -33,6 +33,7 @@ namespace StarsAbove.Projectiles.SupremeAuthority
 			Projectile.friendly = true;
 			Projectile.light = 1f;            //How much light emit around the projectile
 			Projectile.ignoreWater = true;
+			Projectile.tileCollide = false;
 
 			Projectile.usesLocalNPCImmunity = true;
 			Projectile.localNPCHitCooldown = 10;

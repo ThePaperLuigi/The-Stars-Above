@@ -17,6 +17,8 @@ namespace StarsAbove.SceneEffects
             }
             if (EverlastingLightEvent.isEverlastingLightActive && (SubworldSystem.Current == null))
             {
+                Main.time = 18000;
+                Main.dayTime = true;
                 SkyManager.Instance.Activate("StarsAbove:EverlastingLight");
                 return true;
             }
@@ -30,8 +32,7 @@ namespace StarsAbove.SceneEffects
             {
                 
 
-                Main.time = 18000;
-                Main.dayTime = true;
+                
             }
             else
             {
