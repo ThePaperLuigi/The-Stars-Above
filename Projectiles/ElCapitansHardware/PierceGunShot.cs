@@ -52,7 +52,7 @@ namespace StarsAbove.Projectiles.ElCapitansHardware
         {
 			Player projOwner = Main.player[Projectile.owner];
 			projOwner.GetModPlayer<WeaponPlayer>().renegadeGauge++;
-			if(crit)
+			if(hit.Crit)
             {
 				projOwner.GetModPlayer<WeaponPlayer>().renegadeGauge++;
 			}

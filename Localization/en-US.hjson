@@ -1,4 +1,3 @@
-
 Mods: {
 	StarsAbove: {
 		DeathReason: {
@@ -2850,8 +2849,8 @@ Mods: {
 				ArsLaevateinn: {
 					AbilityName: Ars Laevateinn
 					AbilitySubName: "[c/F19559:Shine True, O Burning Bright Star]"
-					AbilityDescription: Wield a blazing greatsword to return foes to ashes. Casting Ars Laevataeinn will mark a colossal region around you with infernal flames. Ars Laevateinn will pulse damage five times in the specified region, dealing 1/5th of the total damage with each hit. During this time, you will be granted 'Surtr's Twilight.' While this buff is active, all attacks will Burn foes for 8 seconds. If Burned foes are struck by Ars Laevateinn, they will take a small portion of Stellar Nova damage as extra damage.
-					AstralBonus: Burning foes take extra damage. If the attack was a critical strike, burning foes take even more damage.
+					AbilityDescription: Wield a blazing greatsword to return foes to ashes. Casting Ars Laevataeinn will mark a colossal region around you with infernal flames. Ars Laevateinn will pulse damage five times in the specified region, dealing 1/5th of the total damage with each hit. During this time, you will be granted 'Surtr's Twilight.' While this buff is active, all attacks will Burn foes for 8 seconds. If Burned foes are struck by Ars Laevateinn, they will take 5% extra damage.
+					AstralBonus: Burning foes take 5% extra damage. If the attack was a critical strike, burning foes 5% more damage.
 					UmbralBonus: Surtr's Twilight will additionally grant a 10% attack buff. Gain Mana Regeneration while Surtr's Twilight is active.
 				}
 
@@ -3073,6 +3072,11 @@ Mods: {
 			Garridine.DisplayName: Garridine
 			Yojimbo.DisplayName: Yojimbo
 			VagrantBoss.DisplayName: The Vagrant of Space and Time
+			DioskouroiWallsNPC.DisplayName: Dioskouroi Walls N P C
+			NalhaunPhase2WallsNPC.DisplayName: Nalhaun Phase2 Walls N P C
+			VagrantWalls.DisplayName: Vagrant Walls
+			VagrantWallsHorizontal.DisplayName: Vagrant Walls Horizontal
+			VagrantWallsVertical.DisplayName: Vagrant Walls Vertical
 		}
 
 		Tiles: {
@@ -6005,7 +6009,7 @@ Mods: {
 					[c/FF5934:Tier 2 Stellar Prism]
 					Affix to a Stellar Nova to gain the following ability:
 					[c/E516A0:Envoy of the Hallowed]
-					After damage calculation, all Stellar Nova hits become critical, but damage is reduced by 70%
+					After damage calculation, all Stellar Nova hits become critical, but damage is reduced by 70% (Can not trigger innate Nova crit bonuses)
 					'''
 				DisplayName: Empress Prism
 			}
@@ -7580,10 +7584,25 @@ Mods: {
 				DisplayName: Umbra
 			}
 
-			BuryTheLight.DisplayName: Bury The Light
-			TestArmorHead.DisplayName: Test armor
-			DioskouroiBossRelicItem.DisplayName: Dioskouroi Relic
-			DioskouroiTrophyItem.DisplayName: Dioskouroi Trophy
+			BuryTheLight: {
+				DisplayName: Bury The Light
+				Tooltip: ""
+			}
+
+			TestArmorHead: {
+				DisplayName: Test armor
+				Tooltip: ""
+			}
+
+			DioskouroiBossRelicItem: {
+				DisplayName: Dioskouroi Relic
+				Tooltip: ""
+			}
+
+			DioskouroiTrophyItem: {
+				DisplayName: Dioskouroi Trophy
+				Tooltip: ""
+			}
 		}
 
 		UIElements: {
@@ -9987,7 +10006,10 @@ Mods: {
 				Description: Gain 20% increased Armor Penetration
 			}
 
-			BlackSilenceAttackCooldown.DisplayName: Attack Cooldown
+			BlackSilenceAttackCooldown: {
+				DisplayName: Attack Cooldown
+				Description: Mods.StarsAbove.Buffs.BlackSilenceAttackCooldown.Description
+			}
 
 			BlackSilenceChoiceCooldown: {
 				DisplayName: Black Silence Choice Cooldown
@@ -10039,8 +10061,15 @@ Mods: {
 				Description: Proximity to a powerful foe is lowering defense by 20
 			}
 
-			NalhaunSword.DisplayName: Manifest Laevateinn
-			TsukiyomiTeleport.DisplayName: Tsukiyomi's Teleport
+			NalhaunSword: {
+				DisplayName: Manifest Laevateinn
+				Description: Mods.StarsAbove.Buffs.NalhaunSword.Description
+			}
+
+			TsukiyomiTeleport: {
+				DisplayName: Tsukiyomi's Teleport
+				Description: Mods.StarsAbove.Buffs.TsukiyomiTeleport.Description
+			}
 
 			Bedazzled: {
 				DisplayName: Bedazzled
@@ -10091,11 +10120,30 @@ Mods: {
 					'''
 			}
 
-			EverlastingGunpowderAttackCooldown.DisplayName: Gunpowder Cooldown
-			EverlastingGunpowderCooldown.DisplayName: Gunpowder Cooldown
-			EverlastingGunpowderMiningCooldown.DisplayName: Gunpowder Cooldown
-			EverlastingGunpowderMiningTrigger.DisplayName: Gunpowder Trigger
-			GunpowderSwapCooldown.DisplayName: Swap Cooldown
+			EverlastingGunpowderAttackCooldown: {
+				DisplayName: Gunpowder Cooldown
+				Description: Mods.StarsAbove.Buffs.EverlastingGunpowderAttackCooldown.Description
+			}
+
+			EverlastingGunpowderCooldown: {
+				DisplayName: Gunpowder Cooldown
+				Description: Mods.StarsAbove.Buffs.EverlastingGunpowderCooldown.Description
+			}
+
+			EverlastingGunpowderMiningCooldown: {
+				DisplayName: Gunpowder Cooldown
+				Description: Mods.StarsAbove.Buffs.EverlastingGunpowderMiningCooldown.Description
+			}
+
+			EverlastingGunpowderMiningTrigger: {
+				DisplayName: Gunpowder Trigger
+				Description: Mods.StarsAbove.Buffs.EverlastingGunpowderMiningTrigger.Description
+			}
+
+			GunpowderSwapCooldown: {
+				DisplayName: Swap Cooldown
+				Description: Mods.StarsAbove.Buffs.GunpowderSwapCooldown.Description
+			}
 
 			FarewellCooldown: {
 				DisplayName: Farewell Cooldown
@@ -10127,15 +10175,25 @@ Mods: {
 				Description: Intense flames are causing a drastic loss in health
 			}
 
-			VerdantEmbrace.DisplayName: Verdant Embrace (Enemy Only)
-			SecurityLevel.DisplayName: Security Level
+			VerdantEmbrace: {
+				DisplayName: Verdant Embrace (Enemy Only)
+				Description: Mods.StarsAbove.Buffs.VerdantEmbrace.Description
+			}
+
+			SecurityLevel: {
+				DisplayName: Security Level
+				Description: Mods.StarsAbove.Buffs.SecurityLevel.Description
+			}
 
 			GatheringLevinstorm: {
 				DisplayName: Gathering Levinstorm
 				Description: Overcharged electrical energy is enhancing certain attacks
 			}
 
-			GatheringLevinstormCooldown.DisplayName: Gathering Levinstorm Cooldown
+			GatheringLevinstormCooldown: {
+				DisplayName: Gathering Levinstorm Cooldown
+				Description: Mods.StarsAbove.Buffs.GatheringLevinstormCooldown.Description
+			}
 
 			KarmicRetribution: {
 				DisplayName: Karmic Retribution
@@ -10147,8 +10205,15 @@ Mods: {
 				Description: ""
 			}
 
-			ManiacalJusticeCooldown.DisplayName: Maniacal Justice Cooldown
-			SlaughteringSlashCooldown.DisplayName: Slaughtering Slash Cooldown
+			ManiacalJusticeCooldown: {
+				DisplayName: Maniacal Justice Cooldown
+				Description: Mods.StarsAbove.Buffs.ManiacalJusticeCooldown.Description
+			}
+
+			SlaughteringSlashCooldown: {
+				DisplayName: Slaughtering Slash Cooldown
+				Description: Mods.StarsAbove.Buffs.SlaughteringSlashCooldown.Description
+			}
 
 			SpecialAttackBuff: {
 				DisplayName: Special Attack
@@ -10172,7 +10237,10 @@ Mods: {
 				Description: Both Great Splits will fail to activate if this debuff is present
 			}
 
-			GreatSplitVertical.DisplayName: Great Split: Vertical
+			GreatSplitVertical: {
+				DisplayName: Great Split: Vertical
+				Description: Mods.StarsAbove.Buffs.GreatSplitVertical.Description
+			}
 
 			NanomachinaLeechCooldown: {
 				DisplayName: Nanomachina Leech Cooldown
@@ -10189,7 +10257,10 @@ Mods: {
 				Description: Nanomachines are strengthening defenses, granting a barrier, damage reduction, and empowered attacks
 			}
 
-			RealizedNanomachinaCooldownBuff.DisplayName: Realized Nanomachina Cooldown
+			RealizedNanomachinaCooldownBuff: {
+				DisplayName: Realized Nanomachina Cooldown
+				Description: Mods.StarsAbove.Buffs.RealizedNanomachinaCooldownBuff.Description
+			}
 
 			PodBuff: {
 				DisplayName: Automaton Pod
@@ -10201,24 +10272,45 @@ Mods: {
 				Description: Rex Lapis's meteor will fail to activate if this debuff is present
 			}
 
-			CannonfireDeluge1.DisplayName: Cannonfire Deluge (1 Stack)
-			CannonfireDeluge2.DisplayName: Cannonfire Deluge (2 Stacks)
-			CannonfireDeluge3.DisplayName: Cannonfire Deluge (3 Stacks)
-			CannonfireDelugeCooldown.DisplayName: Cannonfire Deluge Cooldown
+			CannonfireDeluge1: {
+				DisplayName: Cannonfire Deluge (1 Stack)
+				Description: Mods.StarsAbove.Buffs.CannonfireDeluge1.Description
+			}
+
+			CannonfireDeluge2: {
+				DisplayName: Cannonfire Deluge (2 Stacks)
+				Description: Mods.StarsAbove.Buffs.CannonfireDeluge2.Description
+			}
+
+			CannonfireDeluge3: {
+				DisplayName: Cannonfire Deluge (3 Stacks)
+				Description: Mods.StarsAbove.Buffs.CannonfireDeluge3.Description
+			}
+
+			CannonfireDelugeCooldown: {
+				DisplayName: Cannonfire Deluge Cooldown
+				Description: Mods.StarsAbove.Buffs.CannonfireDelugeCooldown.Description
+			}
 
 			FeralDespair: {
 				DisplayName: Feral Despair
 				Description: Sanguine energy ebbs and flows in tandem with your life, granting increased damage based on missing HP
 			}
 
-			SurgingVampirismCooldown.DisplayName: Surging Vampirism Cooldown
+			SurgingVampirismCooldown: {
+				DisplayName: Surging Vampirism Cooldown
+				Description: Mods.StarsAbove.Buffs.SurgingVampirismCooldown.Description
+			}
 
 			DarkSoul: {
 				DisplayName: Dark Soul
 				Description: Harvested souls are granting an increase to offensive capabilities
 			}
 
-			SoulReaverCharging.DisplayName: Soul Harvest
+			SoulReaverCharging: {
+				DisplayName: Soul Harvest
+				Description: Mods.StarsAbove.Buffs.SoulReaverCharging.Description
+			}
 
 			SoulSplit: {
 				DisplayName: Soul Split
@@ -10230,8 +10322,15 @@ Mods: {
 				Description: Celestial gambit allows for the negation of the next damage taken while additionally granting a damage bonus once triggered
 			}
 
-			SpatialStratagemActive.DisplayName: Spatial Gambit Accepted
-			SpatialStratagemCooldown.DisplayName: Spatial Stratagem Cooldown
+			SpatialStratagemActive: {
+				DisplayName: Spatial Gambit Accepted
+				Description: Mods.StarsAbove.Buffs.SpatialStratagemActive.Description
+			}
+
+			SpatialStratagemCooldown: {
+				DisplayName: Spatial Stratagem Cooldown
+				Description: Mods.StarsAbove.Buffs.SpatialStratagemCooldown.Description
+			}
 
 			AnomalyBuff: {
 				DisplayName: "[c/EFB43E:Anomaly Voyage]"
@@ -10262,7 +10361,10 @@ Mods: {
 					'''
 			}
 
-			ChaosTurmoil.DisplayName: "[c/EFB43E:Chaos Turmoil]"
+			ChaosTurmoil: {
+				DisplayName: "[c/EFB43E:Chaos Turmoil]"
+				Description: Mods.StarsAbove.Buffs.ChaosTurmoil.Description
+			}
 
 			StellaglyphReady: {
 				DisplayName: "[c/DE5D5D:Stellaglyph Proximity]"
@@ -10288,8 +10390,15 @@ Mods: {
 				Description: Yojimbo's casual advice has granted you some extra Luck during Cosmic Voyages
 			}
 
-			KarnaCooldown.DisplayName: Vasavi Shakti Cooldown
-			KarnaLaserBuff.DisplayName: Vasavi Shakti
+			KarnaCooldown: {
+				DisplayName: Vasavi Shakti Cooldown
+				Description: Mods.StarsAbove.Buffs.KarnaCooldown.Description
+			}
+
+			KarnaLaserBuff: {
+				DisplayName: Vasavi Shakti
+				Description: Mods.StarsAbove.Buffs.KarnaLaserBuff.Description
+			}
 
 			AtrophiedDeifiedBuff: {
 				DisplayName: Atrophied Deification
@@ -10335,7 +10444,10 @@ Mods: {
 				Description: Mods.StarsAbove.BuffDescription.KarnaTagDamage
 			}
 
-			TwincastActive.DisplayName: Twincast
+			TwincastActive: {
+				DisplayName: Twincast
+				Description: Mods.StarsAbove.Buffs.TwincastActive.Description
+			}
 
 			TimelessPotential: {
 				DisplayName: Timeless Potential
@@ -10488,6 +10600,20 @@ Mods: {
 			GadgetDamageClass.DisplayName: gadget strength
 			IncarnationDamageClass.DisplayName: incarnated damage
 			PsychomentDamageClass.DisplayName: psychoment damage
+		}
+
+		Keybinds: {
+			"Stellar Nova.DisplayName": Stellar  Nova
+			"Weapon Action.DisplayName": Weapon  Action
+		}
+
+		Prefixes: {
+			BadNovaPrefix1.DisplayName: Bad Nova Prefix1
+			BadNovaPrefix2.DisplayName: Bad Nova Prefix2
+			NovaPrefix1.DisplayName: Nova Prefix1
+			NovaPrefix2.DisplayName: Nova Prefix2
+			NovaPrefix3.DisplayName: Nova Prefix3
+			NovaPrefix4.DisplayName: Nova Prefix4
 		}
 	}
 }

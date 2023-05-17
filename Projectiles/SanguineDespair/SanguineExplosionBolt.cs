@@ -226,8 +226,8 @@ namespace StarsAbove.Projectiles.SanguineDespair
 			Projectile.NewProjectile(null, Projectile.Center.X, Projectile.Center.Y, 0, 7, ProjectileType<SanguineExplosion>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
 			
 			Player player = Main.player[Projectile.owner];
-			player.statLife += (int)(damage * 0.3f);
-			player.HealEffect((int)(damage * 0.3f));
+			player.Heal((int)(damageDone * 0.3f));
+			
 		}
 	}
 }

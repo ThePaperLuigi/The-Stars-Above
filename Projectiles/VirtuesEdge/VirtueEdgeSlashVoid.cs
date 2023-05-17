@@ -93,7 +93,7 @@ namespace StarsAbove.Projectiles.VirtuesEdge
 			}
 			Player player = Main.player[Projectile.owner];
 			player.GetModPlayer<WeaponPlayer>().VirtueGauge++;
-			if(crit)
+			if(hit.Crit)
             {
 				player.GetModPlayer<WeaponPlayer>().VirtueGauge+=2;
 			}

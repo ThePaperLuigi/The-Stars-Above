@@ -150,13 +150,15 @@ namespace StarsAbove.Projectiles
 
 			}
 
-			if (crit)
-			{
-				Player player = Main.player[Projectile.owner];
-				damage += player.statLife / 10;
-			}
+			
 			 
 
 		}
-	}
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
+			Player player = Main.player[Projectile.owner];
+			modifiers.CritDamage.Flat += player.statLife / 10;
+			base.ModifyHitNPC(target, ref modifiers);
+        }
+    }
 }

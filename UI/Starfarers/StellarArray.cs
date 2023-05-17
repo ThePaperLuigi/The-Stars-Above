@@ -31,7 +31,7 @@ namespace StarsAbove.UI.Starfarers
 		private UIImageButton butchersdozen;
 		private UIImageButton ironskin;
 		private UIImageButton evasionmastery;
-		private UIImageButton bonus100hp;
+		private UIImageButton healthyConfidence;
 		private UIImageButton beyondinfinity;
 		private UIImageButton aquaaffinity;
 		private UIImageButton bloomingflames;
@@ -293,14 +293,14 @@ namespace StarsAbove.UI.Starfarers
 			celestialevanesence.OnMouseOver += celestialevanesenceHover;
 			celestialevanesence.OnMouseOut += HoverOff;
 
-			bonus100hp = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/bonus100hp") );
-			bonus100hp.OnLeftClick += bonus100hpClick;
-			bonus100hp.Width.Set(56, 0f);
-			bonus100hp.Height.Set(44, 0f);
-			bonus100hp.Left.Set(276, 0f);
-			bonus100hp.Top.Set(56, 0f);
-			bonus100hp.OnMouseOver += Bonus100hpHover;
-			bonus100hp.OnMouseOut += HoverOff;
+			healthyConfidence = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/healthyConfidence") );
+			healthyConfidence.OnLeftClick += healthyConfidenceClick;
+			healthyConfidence.Width.Set(56, 0f);
+			healthyConfidence.Height.Set(44, 0f);
+			healthyConfidence.Left.Set(276, 0f);
+			healthyConfidence.Top.Set(56, 0f);
+			healthyConfidence.OnMouseOver += healthyConfidenceHover;
+			healthyConfidence.OnMouseOut += HoverOff;
 
 			bloomingflames = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/bloomingflames") );
 			bloomingflames.OnLeftClick += bloomingflamesClick;
@@ -451,7 +451,7 @@ namespace StarsAbove.UI.Starfarers
 			area.Append(evasionmastery);
 			area.Append(aquaaffinity);
 			area.Append(livingdead);
-			area.Append(bonus100hp);
+			area.Append(healthyConfidence);
 			area.Append(bloomingflames);
 			area.Append(beyondinfinity);
 			area.Append(astralmantle);
@@ -598,10 +598,10 @@ namespace StarsAbove.UI.Starfarers
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGauge -= 1;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().evasionmastery = 1;
 			}
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().bonus100hp == 2)
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().healthyConfidence == 2)
 			{
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGauge -= 2;
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().bonus100hp = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().healthyConfidence = 1;
 			}
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().aquaaffinity == 2)
 			{
@@ -1124,11 +1124,11 @@ namespace StarsAbove.UI.Starfarers
 
 			// We can do stuff in here!
 		}
-		private void Bonus100hpHover(UIMouseEvent evt, UIElement listeningElement)
+		private void healthyConfidenceHover(UIMouseEvent evt, UIElement listeningElement)
 		{
 			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArrayVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArray == true))
 				return;
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().bonus100hp == 0)
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().healthyConfidence == 0)
 			{
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.HealthyConfidence.Unlock", Main.LocalPlayer);
 
@@ -1986,20 +1986,20 @@ namespace StarsAbove.UI.Starfarers
 			// We can do stuff in here!
 		}
 
-		private void bonus100hpClick(UIMouseEvent evt, UIElement listeningElement)
+		private void healthyConfidenceClick(UIMouseEvent evt, UIElement listeningElement)
 		{
 			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArrayVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArray == true ))
 				return;
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGauge + 2 <= Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGaugeMax && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().bonus100hp == 1)
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGauge + 2 <= Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGaugeMax && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>(). healthyConfidence == 1)
 			{
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGauge += 2;
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().bonus100hp = 2;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().healthyConfidence = 2;
 			}
 			else
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().bonus100hp == 2)
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().healthyConfidence == 2)
 			{
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGauge -= 2;
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().bonus100hp = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().healthyConfidence = 1;
 			}
 
 
@@ -2261,7 +2261,7 @@ namespace StarsAbove.UI.Starfarers
 			Rectangle starshowerArea = starshower.GetInnerDimensions().ToRectangle();
 			Rectangle ironskinArea = ironskin.GetInnerDimensions().ToRectangle();
 			Rectangle evasionmasteryArea = evasionmastery.GetInnerDimensions().ToRectangle();
-			Rectangle bonus100hpArea = bonus100hp.GetInnerDimensions().ToRectangle();
+			Rectangle  healthyConfidenceArea =  healthyConfidence.GetInnerDimensions().ToRectangle();
 			Rectangle beyondinfinityArea = beyondinfinity.GetInnerDimensions().ToRectangle();
 			Rectangle aquaaffinityArea = aquaaffinity.GetInnerDimensions().ToRectangle();
 			Rectangle bloomingflamesArea = bloomingflames.GetInnerDimensions().ToRectangle();
@@ -2364,9 +2364,9 @@ namespace StarsAbove.UI.Starfarers
 			{
 				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/evasionmastery"), evasionmasteryArea, Color.White * modPlayer.stellarArrayVisibility);
 			}
-			if (modPlayer.bonus100hp == 2)
+			if (modPlayer. healthyConfidence == 2)
 			{
-				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/bonus100hp"), bonus100hpArea, Color.White * modPlayer.stellarArrayVisibility);
+				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/ healthyConfidence"),  healthyConfidenceArea, Color.White * modPlayer.stellarArrayVisibility);
 			}
 			if (modPlayer.beyondinfinity == 2)
 			{

@@ -341,7 +341,6 @@ namespace StarsAbove
             {
                 Player.AddBuff(BuffType<Invincibility>(), 240);
             }
-            base.OnRespawn(Player);
         }
         public override void PostUpdateBuffs()
         {
@@ -535,13 +534,13 @@ namespace StarsAbove
             {
                 if (proj.type == ProjectileID.VortexLaser)
                 {
-                    damage /= 6;
+                    modifiers.FinalDamage /= 6;
                 }
 
             }
 
 
-            base.ModifyHitByProjectile(proj, ref damage, ref crit);
+             
         }
 
         public override void ResetEffects()

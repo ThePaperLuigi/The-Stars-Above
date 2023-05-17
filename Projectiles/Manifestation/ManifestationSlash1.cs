@@ -52,7 +52,7 @@ namespace StarsAbove.Projectiles.Manifestation
         {
 			if(target.HasBuff(BuffID.ShadowFlame))
             {
-				damage = (int)(damage * 1.5);
+				modifiers.SourceDamage += 0.5f;
             }
 
              

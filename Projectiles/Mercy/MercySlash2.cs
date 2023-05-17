@@ -122,7 +122,7 @@ namespace StarsAbove.Projectiles.Mercy
 
 			}
 
-			if(crit)
+			if(hit.Crit)
             {
 				Player player = Main.player[Projectile.owner];
 				player.ClearBuff(BuffType<EdgeOfAnguishCooldown>());

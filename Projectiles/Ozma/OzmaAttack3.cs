@@ -107,7 +107,7 @@ namespace StarsAbove.Projectiles.Ozma
 
 			}
 			Player projOwner = Main.player[Projectile.owner];
-			if (crit)
+			if(hit.Crit)
 			{
 				projOwner.AddBuff(BuffType<AnnihilationState>(), 180);
 			}

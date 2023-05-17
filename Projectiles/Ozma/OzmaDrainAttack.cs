@@ -96,11 +96,11 @@ namespace StarsAbove.Projectiles.Ozma
 
 
 			Rectangle textPos = new Rectangle((int)player.position.X, (int)player.position.Y - 20, player.width, player.height);
-			CombatText.NewText(textPos, new Color(81, 62, 247, 240), $"{Math.Min(damage/10, 5)}", false, false);
-			player.statMana += Math.Min(damage / 10, 5);
-			CombatText.NewText(textPos, new Color(49, 234, 63, 240), $"{Math.Min(damage / 10, 5)}", false, false);
-			player.statLife += Math.Min(damage / 10, 5);
-			if (crit)
+			CombatText.NewText(textPos, new Color(81, 62, 247, 240), $"{Math.Min(damageDone/10, 5)}", false, false);
+			player.statMana += Math.Min(damageDone / 10, 5);
+			CombatText.NewText(textPos, new Color(49, 234, 63, 240), $"{Math.Min(damageDone / 10, 5)}", false, false);
+			player.statLife += Math.Min(damageDone / 10, 5);
+			if(hit.Crit)
 			{
 				projOwner.AddBuff(BuffType<AnnihilationState>(), 180);
 			}

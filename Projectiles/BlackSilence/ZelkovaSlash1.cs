@@ -100,8 +100,8 @@ namespace StarsAbove.Projectiles.BlackSilence
 			if (target.CanBeChasedBy() && !target.SpawnedFromStatue)
 			{
 				Rectangle textPos = new Rectangle((int)player.position.X, (int)player.position.Y - 20, player.width, player.height);
-				CombatText.NewText(textPos, new Color(49, 234, 63, 240), $"{Math.Min(damage / 50, 5)}", false, false);
-				player.statLife += Math.Min(damage / 50, 5);
+				CombatText.NewText(textPos, new Color(49, 234, 63, 240), $"{Math.Min(damageDone / 50, 5)}", false, false);
+				player.statLife += Math.Min(damageDone / 50, 5);
 			}
 
 

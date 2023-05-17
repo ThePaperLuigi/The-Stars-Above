@@ -84,12 +84,13 @@ namespace StarsAbove.Projectiles.MorningStar
 
 			if(Main.rand.Next(0,100) > 90)
             {
-				crit = true;
+				modifiers.SetCrit();
             }
 			if(target.HasBuff(BuffType<MorningStarHit>()))
             {
-				damage = (int)(damage * 1.3);
-            }
+				modifiers.SourceDamage += 0.3f;
+
+			}
 		}
         public override void Kill(int timeLeft)
 		{

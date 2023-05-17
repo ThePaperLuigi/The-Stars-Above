@@ -110,7 +110,7 @@ namespace StarsAbove.Projectiles.VirtuesEdge
             {
 				player.GetModPlayer<WeaponPlayer>().VirtueGauge += 3;
 			}
-			if(crit)
+			if(hit.Crit)
             {
 				player.GetModPlayer<WeaponPlayer>().VirtueGauge+=6;
 				if (player.HasBuff(BuffType<Buffs.VirtuesEdge.CelestialVoidBuff>()))

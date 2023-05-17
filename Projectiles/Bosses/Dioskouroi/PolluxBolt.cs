@@ -60,12 +60,12 @@ namespace StarsAbove.Projectiles.Bosses.Dioskouroi
         {
 			if(target.type == ModContent.NPCType<NPCs.Dioskouroi.PolluxBoss>())
 			{
-				damage = 0;
+				modifiers.FinalDamage *= 0;
 			}
 			if (target.type == ModContent.NPCType<NPCs.Dioskouroi.CastorBoss>())
 			{
-				damage *= 3;
-				crit = true;
+				modifiers.FinalDamage *= 3;
+				modifiers.SetCrit();
 			}
 		}
 
@@ -78,7 +78,6 @@ namespace StarsAbove.Projectiles.Bosses.Dioskouroi
 			}
 
 			target.AddBuff(BuffID.Frostburn, 60);
-            base.OnHitPlayer(target, damage, crit);
         }
     }
 }

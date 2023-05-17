@@ -39,70 +39,41 @@ namespace StarsAbove.Items.Accessories
     {
 		public bool AnomalyByteEquipped;
 
-        public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Item, consider using ModifyHitNPC instead */
-        {
-			if(AnomalyByteEquipped)
-            {
-				int randomDamage;
-				randomDamage = Main.rand.Next(0, 11);
-				crit = false;
-				if(randomDamage == 0)//Critical fail
-                {
-					damage = 1;
-                }
-				//If value is 1 or 2
-				if(randomDamage > 0 && randomDamage <= 2)//Critical success
-                {
-					damage *= 2;
-					crit = true;
-                }
-				//If value is 3,4,5, or 6
-				if (randomDamage > 2 && randomDamage <= 6)//Fail
-				{
-					damage = (int)(damage*0.6f);
-				}
-				//If value is 7,8,9 or 10
-				if (randomDamage > 6)//Success
-				{
-					damage = (int)(damage * 1.4f);
-					crit = true;
-
-				}
-			}
-
-           
-        }
-        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Projectile, consider using ModifyHitNPC instead */
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 			if (AnomalyByteEquipped)
 			{
 				int randomDamage;
 				randomDamage = Main.rand.Next(0, 11);
-				crit = false;
 				if (randomDamage == 0)//Critical fail
 				{
-					damage = 1;
+					modifiers.DisableCrit();
+					modifiers.FinalDamage *= 0f;
+					modifiers.FinalDamage.Flat += 1;
 				}
 				//If value is 1 or 2
 				if (randomDamage > 0 && randomDamage <= 2)//Critical success
 				{
-					damage *= 2;
-					crit = true;
+					modifiers.SourceDamage += 1f;
+					modifiers.SetCrit();
 				}
 				//If value is 3,4,5, or 6
 				if (randomDamage > 2 && randomDamage <= 6)//Fail
 				{
-					damage = (int)(damage * 0.6f);
+					modifiers.DisableCrit();
+
+					modifiers.SourceDamage *= 0.6f;
 				}
 				//If value is 7,8,9 or 10
 				if (randomDamage > 6)//Success
 				{
-					damage = (int)(damage * 1.4f);
-					crit = true;
+					modifiers.SourceDamage += 0.4f;
+					modifiers.SetCrit();
 
 				}
 			}
 		}
+        
         public override void ResetEffects()
         {
 			AnomalyByteEquipped = false;

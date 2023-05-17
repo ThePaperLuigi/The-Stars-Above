@@ -85,7 +85,7 @@ namespace StarsAbove.Projectiles.SoulReaver
 			if (!target.active && Main.player[Projectile.owner].HasBuff(BuffType<Buffs.SoulReaver.SoulSplit>()) && !target.SpawnedFromStatue && target.damage > 0)
 			{
 				
-				if(crit)
+				if(hit.Crit)
                 {
 					Main.player[Projectile.owner].ClearBuff(BuffType<Buffs.SoulReaver.SoulSplit>());
 					Main.player[Projectile.owner].AddBuff(BuffType<Buffs.SoulReaver.SoulSplit>(), 120);

@@ -129,7 +129,7 @@ namespace StarsAbove.Projectiles.SakuraVengeance
 
 			}
 			Player player = Main.player[Projectile.owner];
-			if (crit)
+			if(hit.Crit)
 			{
 				target.AddBuff(BuffType<Stun>(), 240);
 				player.AddBuff(BuffType<Invincibility>(), 20);

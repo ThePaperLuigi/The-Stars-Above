@@ -52,7 +52,7 @@ namespace StarsAbove.Buffs.ManiacalJustice
 
             }
 
-            base.ModifyBuffText(ref tip, ref rare);
+             
         }
     }
 }

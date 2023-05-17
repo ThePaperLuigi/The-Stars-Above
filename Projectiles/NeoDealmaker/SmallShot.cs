@@ -49,7 +49,7 @@ namespace StarsAbove.Projectiles.NeoDealmaker
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-			if(crit)
+			if(hit.Crit)
             {
 				target.AddBuff(BuffID.Midas, 1200);
             }

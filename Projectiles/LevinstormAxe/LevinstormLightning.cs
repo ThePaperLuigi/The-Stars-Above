@@ -234,7 +234,7 @@ namespace StarsAbove.Projectiles.LevinstormAxe
 
 			}
 			SoundEngine.PlaySound(SoundID.DD2_LightningAuraZap, target.Center);
-			if(Main.player[Projectile.owner].HasBuff(BuffType<GatheringLevinstorm>()) && crit)
+			if(Main.player[Projectile.owner].HasBuff(BuffType<GatheringLevinstorm>()) && hit.Crit)
             {
 				Projectile.NewProjectile(null, Projectile.Center.X, Projectile.Center.Y - 600, 0, 7, Projectile.type, Projectile.damage / 4, Projectile.knockBack, Projectile.owner, MathHelper.ToRadians(90), 1);
 

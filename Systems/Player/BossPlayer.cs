@@ -233,21 +233,11 @@ namespace StarsAbove
             PolluxBarActive = false;
 
         }
-        public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Item, consider using ModifyHitNPC instead */
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-
-            BossDamageModifier(target,ref damage);
+            BossDamageModifier(target, ref modifiers);
         }
-        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Projectile, consider using ModifyHitNPC instead */
-        {
-            //Main.NewText(Language.GetTextValue($"Damage Pre-Modifier: {damage}"), 60, 170, 247);
-
-            BossDamageModifier(target,ref damage);
-        }
-
-        
-
-        private void BossDamageModifier(NPC npc, ref int damage)
+        private void BossDamageModifier(NPC npc, ref NPC.HitModifiers modifiers)
         {
             if (!DisableDamageModifier)
             {
@@ -293,20 +283,30 @@ namespace StarsAbove
                 }
                 if (bossReductionMod > 0)
                 {
-                    decayRate = 0.8f;
-                    //Main.NewText(Language.GetTextValue($"Damage Pre-Modifier: {damage}"), 60, 170, 247);
 
-                    damage = (int)(damage * (1 - damageReductionAmount));
-                    stress += damage;
-                    stress *= decayRate;
-                    damageReductionAmount = (float)Math.Tanh(stress / bossReductionMod);
+                    modifiers.FinalDamage *= (1 - damageReductionAmount);
+                    
 
-                    //Main.NewText(Language.GetTextValue($"Damage: {damage}"), 120, 100, 147);
-                    //Main.NewText(Language.GetTextValue($"Stress: {stress}"), 150, 150, 247);
-                    //Main.NewText(Language.GetTextValue($"Damage Reduction: {damageReductionAmount}"), 220, 100, 247);
+                   
                 }
 
                 
+            }
+        }
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if (bossReductionMod > 0)
+            {
+                decayRate = 0.8f;
+                //Main.NewText(Language.GetTextValue($"Damage Pre-Modifier: {damage}"), 60, 170, 247);
+                //Main.NewText(Language.GetTextValue($"Damage: {damage}"), 120, 100, 147);
+                //Main.NewText(Language.GetTextValue($"Stress: {stress}"), 150, 150, 247);
+                //Main.NewText(Language.GetTextValue($"Damage Reduction: {damageReductionAmount}"), 220, 100, 247);
+
+                stress += damageDone;
+                stress *= decayRate;
+                damageReductionAmount = (float)Math.Tanh(stress / bossReductionMod);
+
             }
         }
         private void VagrantTeleport(NPC npc)

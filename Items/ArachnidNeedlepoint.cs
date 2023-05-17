@@ -133,7 +133,7 @@ namespace StarsAbove.Items
                 ProjectileID.Sets.IsAWhip[Type] = true;
                 if (target.HasBuff(BuffType<LatchedOn>()))
                 {
-                    crit = true;
+                    modifiers.SetCrit();
                     Main.player[Projectile.owner].AddBuff(BuffType<WebOfNeedles>(), 240);
 
                 }

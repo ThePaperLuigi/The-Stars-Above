@@ -35,7 +35,8 @@ namespace StarsAbove.Buffs.TagDamage
 			// Only player attacks should benefit from this buff, hence the NPC and trap checks.
 			if (marked && !projectile.npcProj && !projectile.trap && (projectile.minion || ProjectileID.Sets.MinionShot[projectile.type]))
 			{
-				damage += 22;
+				modifiers.FlatBonusDamage += 22;
+
 				randomBuff = Main.rand.Next(0, 12);
 				if (randomBuff == 0)
 				{

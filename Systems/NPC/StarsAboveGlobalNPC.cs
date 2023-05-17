@@ -727,7 +727,7 @@ namespace StarsAbove
 
 		public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers)
 		{
-			return base.ModifyIncomingHit(npc, ref damage, defense, ref knockback, hitDirection, ref crit);
+
 		}
         public override void OnHitNPC(NPC npc, NPC target, NPC.HitInfo hit)
         {
@@ -743,7 +743,7 @@ namespace StarsAbove
         {
             if (npc.HasBuff<NalhaunSword>())
             {
-                damage *= 2;
+				modifiers.FinalDamage += 1f;
             }
 
            
@@ -756,7 +756,7 @@ namespace StarsAbove
         {
 			if(npc.HasBuff<NalhaunSword>())
             {
-				damage *= 2;
+				modifiers.SourceDamage += 1f;
             }
 
 			

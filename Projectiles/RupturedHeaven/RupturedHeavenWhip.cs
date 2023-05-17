@@ -46,8 +46,12 @@ namespace StarsAbove.Projectiles.RupturedHeaven
         protected float fallOff = 0.3f;
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            damage = (int)(damage * 0.8);
-            if (crit)
+            modifiers.SourceDamage *= 0.8f;
+            
+        }
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if (hit.Crit)
             {
                 for (int i = 0; i < Main.maxPlayers; i++)
                 {
@@ -68,9 +72,6 @@ namespace StarsAbove.Projectiles.RupturedHeaven
                 }
 
             }
-        }
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-        {
             Projectile.damage = (int)(Projectile.damage * (1f - fallOff));
             if (tag != -1)
             {

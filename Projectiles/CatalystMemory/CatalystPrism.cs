@@ -59,7 +59,7 @@ namespace StarsAbove.Projectiles.CatalystMemory
         {
 			if(target.life <= target.lifeMax/2)
             {
-				damage = (int)(damage * 1.3f);
+				modifiers.SourceDamage += 0.3f;
             }
              
         }

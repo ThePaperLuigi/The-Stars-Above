@@ -76,8 +76,8 @@ namespace StarsAbove.Projectiles.MorningStar
 			Player player = Main.player[Projectile.owner];
 			if(target.HasBuff(BuffType<MorningStarHit>()))
             {
-				damage = (int)(damage * 1.1);
-            }
+				modifiers.SourceDamage += 0.1f;
+			}
 		}
         public override void Kill(int timeLeft)
 		{

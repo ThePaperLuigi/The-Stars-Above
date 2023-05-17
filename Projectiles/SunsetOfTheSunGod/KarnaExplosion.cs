@@ -134,9 +134,9 @@ namespace StarsAbove.Projectiles.SunsetOfTheSunGod
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 			target.AddBuff(BuffID.Daybreak, 8 * 60);
-			crit = true;
-
+			modifiers.SetCrit();
              
         }
+
     }
 }

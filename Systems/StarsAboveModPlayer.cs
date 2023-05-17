@@ -47,6 +47,8 @@ using StarsAbove.Buffs.Farewells;
 using StarsAbove.Buffs.Umbra;
 using StarsAbove.NPCs.Nalhaun;
 using StarsAbove.NPCs.Tsukiyomi;
+using StarsAbove.Projectiles.StellarNovas;
+using StarsAbove.Items.Prisms;
 
 namespace StarsAbove
 {
@@ -528,7 +530,7 @@ namespace StarsAbove
         public int mysticforging = 0;
         public int flashfreeze = 0;
         //Tier 2
-        public int bonus100hp = 0;//
+        public int  healthyConfidence = 0;//
         public int bloomingflames = 0;//
         public int astralmantle = 0;//
         public int avataroflight = 0;
@@ -921,7 +923,7 @@ namespace StarsAbove
             tag["mysticforging"] = mysticforging;
             tag["flashfreeze"] = flashfreeze;
 
-            tag["bonus100hp"] = bonus100hp;
+            tag[" healthyConfidence"] =  healthyConfidence;
             tag["bloomingflames"] = bloomingflames;
             tag["astralmantle"] = astralmantle;
             tag["avataroflight"] = avataroflight;
@@ -1394,7 +1396,7 @@ namespace StarsAbove
             mysticforging = tag.GetInt("mysticforging");
             flashfreeze = tag.GetInt("flashfreeze");
 
-            bonus100hp = tag.GetInt("bonus100hp");
+             healthyConfidence = tag.GetInt(" healthyConfidence");
             bloomingflames = tag.GetInt("bloomingflames");
             astralmantle = tag.GetInt("astralmantle");
             avataroflight = tag.GetInt("avataroflight");
@@ -1628,704 +1630,654 @@ namespace StarsAbove
 
 
         }
-        public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Item, consider using OnHitNPC instead */
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (!target.active)
-            {
-                OnKillEnemy(target);
-            }
-        }
-        public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Item, consider using ModifyHitNPC instead */
-        {
-            if (mysticforging == 2)
-            {
-                crit = false;
-                damage = (int)(damage * (1 + (MathHelper.Lerp(0, 1, Player.GetCritChance(DamageClass.Generic) / 100)) / 2));
-            }
-
-            if(beyondinfinity == 2 && beyondInfinityDamageMod > 0)
-            {
-                damage = (int)(damage * (1 + beyondInfinityDamageMod));
-                beyondInfinityDamageMod = 0;
-            }
-            if (target.type == NPCType<WarriorOfLight>())
-            {
-                inWarriorOfLightFightTimer = 4200;
-            }
-           
-            
-            if (target.type == NPCType<Arbitration>())
-            {
-                inArbiterFightTimer = 1200;
-
-            }
-            if (target.type == NPCType<Penthesilea>())
-            {
-                inPenthFightTimer = 1200;
-
-            }
+            OnHitStarfarerDialogue(target);
             if (target.lifeMax > 5)
             {
                 inCombat = inCombatMax;
             }
-            
-            if (!target.active && butchersdozen == 2)
-            {
-                butchersDozenKills++;
-            }
-            if (crit && flashfreeze == 2 && flashFreezeCooldown < 0)
-            {
-                //damage += target.lifeMax;
-                SoundEngine.PlaySound(StarsAboveAudio.SFX_electroSmack, Player.Center);
-
-                Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0, 0, Mod.Find<ModProjectile>("FlashFreezeExplosion").Type, damage / 4, 0, Player.whoAmI, 0f);
-                flashFreezeCooldown = 480;
-
-
-            }
-            if (starfarerOutfit == 4)
-            {
-                hopesBrilliance++;
-                if (target.target != Player.whoAmI)
-                {
-                    damage = (int)(damage * 0.6f);
-                }
-            }
-            
-            if (bloomingflames == 2 && (Player.statLife < 100 || Player.HasBuff(BuffType<InfernalEnd>())))
-            {
-                target.AddBuff(BuffID.OnFire, 60);
-            }
-            if (ruinedKingPrism && target.life <= target.lifeMax / 2 && crit)
-            {
-                target.AddBuff(BuffType<Buffs.Ruination>(), 1800);
-            }
-            if (Player.HasBuff(BuffType<Buffs.SovereignDominion>()) && target.HasBuff(BuffType<Buffs.Ruination>()))
-            {
-                if (crit)
-                {
-                    Player.statLife += damage / 10;
-                }
-            }
-            if (Player.HasBuff(BuffType<Buffs.Kifrosse.AmaterasuGrace>()) && target.HasBuff(BuffID.Frostburn))
-            {
-                damage = damage + (damage / 2);
-            }
-            unbridledRadianceStack++;
+            //Astarte Driver
             if (Player.HasBuff(BuffType<Buffs.AstarteDriver>()) && !target.HasBuff(BuffType<Buffs.AstarteDriverEnemyCooldown>()))
             {
-                
-                int uniqueCrit = Main.rand.Next(100);
-                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                if (hit.Crit)
                 {
-                    crit = true;
-                }
-                else
-                {
-                    crit = false;
-                }
-
-                if (crit)
-                {
-                    damage = (int)(novaCritDamage * (1 + novaCritDamageMod));
-                    damage /= 2;
-
-                }
-                else
-                {
-                    damage = (int)(novaDamage * (1 + novaDamageMod));
-                }
-                if (chosenStarfarer == 1)
-                {
-                    if (crit)
+                    if (chosenStarfarer == 1)
                     {
-                        damage += baseNovaDamageAdd / 10;
-                        if (damage >= target.lifeMax + target.defense)
+                        if (!target.active)
                         {
                             astarteDriverAttacks++;
                         }
                     }
                 }
-                if (chosenStarfarer == 2)
-                {
-                    if (target.life < baseNovaDamageAdd / 10)
-                    {
-                        damage = baseNovaDamageAdd / 4;
-                        crit = true;
-                        //astarteDriverAttacks++;
-                    }
-                }
-                onEnemyHitWithNova(target, 5, ref damage, ref crit);
                 target.AddBuff(BuffType<Buffs.AstarteDriverEnemyCooldown>(), 60);
-            }
-            if (target.HasBuff(BuffType<Buffs.Starblight>()) && umbralentropy == 2)
-            {
-                Player.statLife += Math.Min(damage / 100, 5);
-                Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
-                CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{Math.Min(damage / 100, 15)}", false, false);
-                umbralEntropyCooldown = 60;
-            }
-            
-            if (crit)
-            {
-                if (celestialevanesence == 2)
-                {
-                    Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
-                    CombatText.NewText(textPos, new Color(81, 62, 247, 240), $"{Math.Min((int)(damage * 0.05), 5)}", false, false);
-                    Player.statMana += Math.Min((int)(damage * 0.05), 5);
-                }
-                if (weaknessexploit == 2)
-                {
-                    damage = (int)(damage * 0.9);
-                    if (target.HasBuff(BuffID.Confused)
-                        || target.HasBuff(BuffID.CursedInferno)
-                        || target.HasBuff(BuffID.Ichor)
-                        || target.HasBuff(BuffID.BetsysCurse)
-                        || target.HasBuff(BuffID.Midas)
-                        || target.HasBuff(BuffID.Poisoned)
-                        || target.HasBuff(BuffID.Venom)
-                        || target.HasBuff(BuffID.OnFire)
-                        || target.HasBuff(BuffID.Frostburn)
-                        || target.HasBuff(BuffID.ShadowFlame))
-                    {
-                        if (damage + (damage * 0.25) < target.life)
-                        {
-                            Rectangle textPos = new Rectangle((int)target.position.X, (int)target.position.Y - 20, target.width, target.height);
-                            CombatText.NewText(textPos, new Color(255, 30, 30, 240), $"{Math.Round(damage * 0.2)}", false, false);
-                            target.life -= (int)(damage * 0.25);
-                        }
-                    }
-                    else if (damage + (damage * 0.1) < target.life)
-                    {
-                        Rectangle textPos = new Rectangle((int)target.position.X, (int)target.position.Y - 20, target.width, target.height);
-                        CombatText.NewText(textPos, new Color(255, 30, 30, 240), $"{Math.Round(damage * 0.1)}", false, false);
-                        target.life -= (int)(damage * 0.1);
-                    }
-
-                }
-                if (umbralentropy == 2)
-                {
-                    target.AddBuff(BuffType<Buffs.Starblight>(), 180);
-
-                }
-                if(artofwar == 2)
-                {
-                    
-                }
-            }
-            if (Player.HasBuff(BuffType<Buffs.SurtrTwilight>()))
-            {
-                target.AddBuff(BuffID.OnFire, 480);
-            }
-            
-        }
-        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Projectile, consider using ModifyHitNPC instead */
-        {
-            if (mysticforging == 2)
-            {
-                //Main.NewText(Language.GetTextValue($"Base damage: {damage}"), 160, 170, 207);
-
-                crit = false;
-                damage = (int)(damage * (1 + (MathHelper.Lerp(0,1,Player.GetCritChance(DamageClass.Generic)/100))/2));
-                //Main.NewText(Language.GetTextValue($"Modified damage: {damage}"), 60, 170, 247);
-            }
-            if (beyondinfinity == 2 && beyondInfinityDamageMod > 0)
-            {
-                damage = (int)(damage * (1 + beyondInfinityDamageMod));
-                beyondInfinityDamageMod = 0;
-            }
-            if (target.lifeMax > 5)
-            {
-                inCombat = inCombatMax;
-            }
-            
-            if (target.type == NPCType<WarriorOfLight>())
-            {
-                inWarriorOfLightFightTimer = 4200;
-            }
-            
-            
-            if (target.type == NPCType<Arbitration>())
-            {
-                inArbiterFightTimer = 1200;
-
-            }
-            if (target.type == NPCType<Penthesilea>())
-            {
-                inPenthFightTimer = 1200;
-
-            }
-
-            if (bloomingflames == 2)
-            {
-                target.AddBuff(BuffID.OnFire, 60);
-            }
-            if (starfarerOutfit == 4)
-            {
-                hopesBrilliance++;
-                if (target.target != Player.whoAmI)
-                {
-                    damage = (int)(damage * 0.6f);
-                }
-            }
-            //unbridledRadianceStack++;
-            if (Player.HasBuff(BuffType<Buffs.SurtrTwilight>()) && proj.type != Mod.Find<ModProjectile>("LaevateinnDamage").Type)
-            {
-
-                target.AddBuff(BuffID.OnFire, 480);
-            }
-            if (ruinedKingPrism && target.life <= target.lifeMax / 2 && crit)
-            {
-                target.AddBuff(BuffType<Buffs.Ruination>(), 1800);
-            }
-            if (Player.HasBuff(BuffType<Buffs.SovereignDominion>()) && target.HasBuff(BuffType<Buffs.Ruination>()))
-            {
-                if (crit)
-                {
-                    Player.statLife += damage / 10;
-                }
+                OnEnemyHitWithNova(target, 5, ref damageDone, ref hit.Crit);
             }
             if (target.HasBuff(BuffType<Buffs.Starblight>()) && umbralentropy == 2)
             {
                 if (umbralEntropyCooldown <= 0)
                 {
-                    Player.statLife += Math.Min(damage / 100, 5);
-                    Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
-                    CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{Math.Min(damage / 100, 15)}", false, false);
+                    Player.Heal(Math.Min(damageDone / 100, 5));
                     umbralEntropyCooldown = 60;
                 }
-                else
-                {
-
-                }
-
             }
 
-            StellarNovaDamage(proj, target, ref damage, ref crit);
-            
-
-            if (crit)
+            if (Player.HasBuff(BuffType<Buffs.SovereignDominion>()) && target.HasBuff(BuffType<Buffs.Ruination>()))
+            {
+                if (hit.Crit)
+                {
+                    Player.Heal(damageDone / 10);
+                }
+            }
+            if (ruinedKingPrism && target.life <= target.lifeMax / 2 && hit.Crit)
+            {
+                target.AddBuff(BuffType<Buffs.Ruination>(), 1800);
+            }
+            if (hit.Crit)
             {
                 if (celestialevanesence == 2)
                 {
+
                     Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
-                    CombatText.NewText(textPos, new Color(81, 62, 247, 240), $"{Math.Min((int)(damage * 0.05), 5)}", false, false);
-                    Player.statMana += Math.Min((int)(damage * 0.05), 5);
+                    CombatText.NewText(textPos, new Color(81, 62, 247, 240), $"{Math.Min((int)(damageDone * 0.05), 5)}", false, false);
+                    Player.statMana += Math.Min((int)(damageDone * 0.05), 5);
                 }
-                if (weaknessexploit == 2)
+                if (flashfreeze == 2 && flashFreezeCooldown < 0)
                 {
-                    damage = (int)(damage * 0.9);
-                    if (target.HasBuff(BuffID.Confused)
-                        || target.HasBuff(BuffID.CursedInferno)
-                        || target.HasBuff(BuffID.Ichor)
-                        || target.HasBuff(BuffID.BetsysCurse)
-                        || target.HasBuff(BuffID.Midas)
-                        || target.HasBuff(BuffID.Poisoned)
-                        || target.HasBuff(BuffID.Venom)
-                        || target.HasBuff(BuffID.OnFire)
-                        || target.HasBuff(BuffID.Frostburn)
-                        || target.HasBuff(BuffID.ShadowFlame))
-                    {
-                        if (damage + (damage * 0.2) < target.life)
-                        {
-                            Rectangle textPos = new Rectangle((int)target.position.X, (int)target.position.Y - 20, target.width, target.height);
-                            CombatText.NewText(textPos, new Color(255, 30, 30, 240), $"{Math.Round(damage * 0.2)}", false, false);
-                            target.life -= (int)(damage * 0.2);
-                        }
-                    }
-                    else if (damage + (damage * 0.1) < target.life)
-                    {
-                        Rectangle textPos = new Rectangle((int)target.position.X, (int)target.position.Y - 20, target.width, target.height);
-                        CombatText.NewText(textPos, new Color(255, 30, 30, 240), $"{Math.Round(damage * 0.1)}", false, false);
-                        target.life -= (int)(damage * 0.1);
-                    }
+                    //damage += target.lifeMax;
+                    SoundEngine.PlaySound(StarsAboveAudio.SFX_electroSmack, Player.Center);
+
+                    Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0, 0, Mod.Find<ModProjectile>("FlashFreezeExplosion").Type, damageDone / 4, 0, Player.whoAmI, 0f);
+                    flashFreezeCooldown = 480;
+
 
                 }
-
                 if (umbralentropy == 2)
                 {
                     target.AddBuff(BuffType<Buffs.Starblight>(), 180);
 
                 }
-                if(artofwar == 2)
+                if (Player.HasBuff(BuffType<Buffs.AstarteDriver>()) && !target.HasBuff(BuffType<Buffs.AstarteDriverEnemyCooldown>()))
                 {
-                    
+
+                    OnEnemyHitWithNova(target, 5, ref damageDone, ref hit.Crit);
+                    target.AddBuff(BuffType<Buffs.AstarteDriverEnemyCooldown>(), 60);
+
                 }
             }
-            base.ModifyHitNPCWithProj(proj, target, ref damage, ref knockback, ref crit, ref hitDirection);
+
+            if (weaknessexploit == 2 && hit.Crit)
+            {
+                if (target.HasBuff(BuffID.Confused)
+                    || target.HasBuff(BuffID.CursedInferno)
+                    || target.HasBuff(BuffID.Ichor)
+                    || target.HasBuff(BuffID.BetsysCurse)
+                    || target.HasBuff(BuffID.Midas)
+                    || target.HasBuff(BuffID.Poisoned)
+                    || target.HasBuff(BuffID.Venom)
+                    || target.HasBuff(BuffID.OnFire)
+                    || target.HasBuff(BuffID.Frostburn)
+                    || target.HasBuff(BuffID.ShadowFlame))
+                {
+                    if (damageDone + (damageDone * 0.25) < target.life)
+                    {
+                        Rectangle textPos = new Rectangle((int)target.position.X, (int)target.position.Y - 20, target.width, target.height);
+                        CombatText.NewText(textPos, new Color(255, 30, 30, 240), $"{Math.Round(damageDone * 0.2)}", false, false);
+                        target.life -= (int)(damageDone * 0.25);
+                    }
+                }
+                else if (damageDone + (damageDone * 0.1) < target.life)
+                {
+                    Rectangle textPos = new Rectangle((int)target.position.X, (int)target.position.Y - 20, target.width, target.height);
+                    CombatText.NewText(textPos, new Color(255, 30, 30, 240), $"{Math.Round(damageDone * 0.1)}", false, false);
+                    target.life -= (int)(damageDone * 0.1);
+                }
+               
+            }
+            if (Player.HasBuff(BuffType<Buffs.SurtrTwilight>()))
+            {
+                target.AddBuff(BuffID.OnFire, 480);
+            }
+            if (!target.active)
+            {
+                OnKillEnemy(target);
+            }
+        }
+        public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Projectile, consider using OnHitNPC instead */
+        {
+            if (Player.HasBuff(BuffType<Buffs.SurtrTwilight>()) && proj.type != ProjectileType<LaevateinnDamage>())
+            {
+
+                target.AddBuff(BuffID.OnFire, 480);
+            }
+            
+
+
+            if (Player.HasBuff(BuffType<AstarteDriver>()) && starfarerOutfit == 3 && proj.type != ProjectileType<StarfarerFollowUp>())
+            {
+                Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0f, 0f, ProjectileType<StarfarerFollowUp>(), damageDone / 3, 0, Player.whoAmI);
+
+            }
+
+            if (!target.active && butchersdozen == 2)
+            {
+                butchersDozenKills++;
+            }
+            if (hit.Crit && flashfreeze == 2 && flashFreezeCooldown < 0)
+            {
+                //damage += target.lifeMax;
+                SoundEngine.PlaySound(StarsAboveAudio.SFX_electroSmack, Player.Center);
+
+                Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0, 0, Mod.Find<ModProjectile>("FlashFreezeExplosion").Type, damageDone / 4, 0, Player.whoAmI, 0f);
+                flashFreezeCooldown = 240;
+
+
+            }
+
+            if (hit.Crit && !disablePromptsCombat)
+            {
+                if (Main.rand.Next(0, 8) == 0)
+                {
+                    starfarerPromptActive("onCrit");
+                }
+
+            }
+
+            if (proj.type == ProjectileType<kiwamiryukenstun>())
+            {
+                Player.AddBuff(BuffType<Buffs.KiwamiRyukenConfirm>(), 60);
+                for (int d = 0; d < 4; d++)
+                {
+                    Dust.NewDust(target.position, target.width, target.height, 113, 0f + Main.rand.Next(-2, 2), 0f + Main.rand.Next(-2, 2), 150, default(Color), 1.5f);
+                }
+            }
+
+            
+            if (proj.type == ProjectileType<Theofania>())
+            {
+                TheofaniaOnHit(target);
+                target.AddBuff(BuffType<Buffs.VoidAtrophy1>(), 1800);
+                OnEnemyHitWithNova(target, 1, ref damageDone, ref hit.Crit);
+            }
+
+            if (proj.type == ProjectileType<Theofania2>())
+            {
+                if (target.HasBuff(BuffType<Buffs.VoidAtrophy1>()))
+                {
+                    if (chosenStarfarer == 1)
+                    {
+                        target.AddBuff(BuffType<Buffs.VoidAtrophy2>(), 1800);
+                    }
+                    else
+                    {
+                        Player.AddBuff(BuffType<Buffs.VoidStrength>(), 300);
+                    }
+
+                }
+                TheofaniaOnHit(target);
+                OnEnemyHitWithNova(target, 1, ref damageDone, ref hit.Crit);
+            }
+            if (proj.type == ProjectileType<Theofania3>())
+            {
+                TheofaniaOnHit(target);
+                OnEnemyHitWithNova(target, 1, ref damageDone, ref hit.Crit);
+            }
+            if (proj.type == ProjectileType<LaevateinnDamage>())
+            {
+                OnEnemyHitWithNova(target, 2, ref damageDone, ref hit.Crit);
+            }
+            if (proj.type == ProjectileType<Projectiles.StellarNovas.kiwamiryukenconfirm>())
+            {
+                KiwamiRyukenOnHit(target);
+                OnEnemyHitWithNova(target, 3, ref damageDone, ref hit.Crit);
+            }
+            
         }
 
-        private void StellarNovaDamage(Projectile proj, NPC target, ref int damage, ref bool crit)
+        private void OnHitStarfarerDialogue(NPC target)
         {
-            if (proj.type == Mod.Find<ModProjectile>("Theofania").Type)
+            if (!disablePromptsCombat)
             {
-                SoundEngine.PlaySound(StarsAboveAudio.SFX_GunbladeImpact, Player.Center);
-                screenShakeTimerGlobal = -80;
-                int uniqueCrit = Main.rand.Next(100);
-                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                if (!target.active)
                 {
-                    crit = true;
-                }
-                else
-                {
-                    crit = false;
-                }
+                    if (Main.rand.Next(0, 4) == 0)
+                    {
+                        if (Player.statLife <= Player.statLifeMax2 / 5)
+                        {
+                            starfarerPromptActive("onKillEnemyDanger");
+                        }
+                        else
+                        {
+                            if (target.lifeMax <= 5 && target.damage <= 1)
+                            {
+                                starfarerPromptActive("onKillCritter");
+                            }
+                            else
+                            {
+                                starfarerPromptActive("onKillEnemy");
+                            }
 
-                if (crit)
-                {
-                    novaGauge += trueNovaGaugeMax / 40;
-                    damage = (int)(novaCritDamage * (1 + novaCritDamageMod));
-                    damage /= 2;
-                    damage /= 2;
+                        }
 
-                }
-                else
-                {
-                    damage = (int)(novaDamage * (1 + novaDamageMod));
-                    damage /= 2;
-                }
-
-                for (int d = 0; d < 30; d++)
-                {
-                    Dust.NewDust(target.position, target.width, target.height, 21, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
-                }
-                for (int d = 0; d < 30; d++)
-                {
-                    Dust.NewDust(target.position, target.width, target.height, 91, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
-                }
-                for (int d = 0; d < 30; d++)
-                {
-                    Dust.NewDust(target.position, target.width, target.height, 197, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
-                }
-                for (int d = 0; d < 30; d++)
-                {
-                    Dust.NewDust(target.position, target.width, target.height, 159, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1.5f);
+                    }
 
                 }
-                for (int d = 0; d < 30; d++)
+                if (!target.active && target.lifeMax >= 15000)
                 {
-                    Dust.NewDust(target.position, target.width, target.height, 220, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
+
+                    starfarerPromptActive("onKillBossEnemy");
+
+
                 }
+                if (!target.active && target.lifeMax == 5 && target.CanBeChasedBy())
+                {
 
-                target.AddBuff(BuffType<Buffs.VoidAtrophy1>(), 1800);
-                onEnemyHitWithNova(target, 1, ref damage, ref crit);
+                }
+            }
+        }
 
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
+            
+
+            if (mysticforging == 2)
+            {
+                modifiers.DisableCrit();
+                modifiers.SourceDamage += (1 + (MathHelper.Lerp(0, 1, Player.GetCritChance(DamageClass.Generic) / 100)) / 2);
+            }
+
+            if (beyondinfinity == 2 && beyondInfinityDamageMod > 0)
+            {
+                modifiers.SourceDamage += (1 + beyondInfinityDamageMod);
+                beyondInfinityDamageMod = 0;
+            }
+
+            //Will be replaced when these bosses get their new AI.
+            if (target.type == NPCType<WarriorOfLight>())
+            {
+                inWarriorOfLightFightTimer = 4200;
+            }
+            if (target.type == NPCType<Arbitration>())
+            {
+                inArbiterFightTimer = 1200;
+
+            }
+            if (target.type == NPCType<Penthesilea>())
+            {
+                inPenthFightTimer = 1200;
 
             }
 
-            if (proj.type == Mod.Find<ModProjectile>("Theofania2").Type)
+
+
+            if (!target.active && butchersdozen == 2)
             {
-                SoundEngine.PlaySound(StarsAboveAudio.SFX_GunbladeImpact, Player.Center);
-                screenShakeTimerGlobal = -80;
+                butchersDozenKills++;
+            }
+
+            if (starfarerOutfit == 4)
+            {
+                hopesBrilliance++;
+                if (target.target != Player.whoAmI)
+                {
+                    modifiers.SourceDamage += 0.6f;
+                }
+            }
+
+            if (bloomingflames == 2 && (Player.statLife < 100 || Player.HasBuff(BuffType<InfernalEnd>())))
+            {
+                target.AddBuff(BuffID.OnFire, 60);
+            }
+
+            if (Player.HasBuff(BuffType<Buffs.Kifrosse.AmaterasuGrace>()) && target.HasBuff(BuffID.Frostburn))
+            {
+                modifiers.SourceDamage += 0.5f;
+            }
+            if (Player.HasBuff(BuffType<Buffs.AstarteDriver>()) && !target.HasBuff(BuffType<Buffs.AstarteDriverEnemyCooldown>()))
+            {
+                modifiers.DamageVariationScale *= 0;
+
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
                 int uniqueCrit = Main.rand.Next(100);
                 if (uniqueCrit <= novaCritChance + novaCritChanceMod)
                 {
-                    crit = true;
-                }
-                else
-                {
-                    crit = false;
-                }
+                    //If the attack was a crit
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod));
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
-                if (crit)
-                {
-                    novaGauge += trueNovaGaugeMax / 40;
-                    damage = (int)(novaCritDamage * (1 + novaCritDamageMod));
-                    damage /= 2;
-                    damage /= 2;
-
-                }
-                else
-                {
-                    damage = (int)(novaDamage * (1 + novaDamageMod));
-                    damage /= 2;
-                }
-
-                for (int d = 0; d < 30; d++)
-                {
-                    Dust.NewDust(target.position, target.width, target.height, 21, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
-                }
-                for (int d = 0; d < 30; d++)
-                {
-                    Dust.NewDust(target.position, target.width, target.height, 91, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
-                }
-                for (int d = 0; d < 30; d++)
-                {
-                    Dust.NewDust(target.position, target.width, target.height, 197, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
-                }
-                for (int d = 0; d < 30; d++)
-                {
-                    Dust.NewDust(target.position, target.width, target.height, 159, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1.5f);
-
-                }
-                for (int d = 0; d < 30; d++)
-                {
-                    Dust.NewDust(target.position, target.width, target.height, 220, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
-                }
-                if (target.HasBuff(BuffType<Buffs.VoidAtrophy1>()))
-                {
                     if (chosenStarfarer == 1)
                     {
-                        target.AddBuff(BuffType<Buffs.VoidAtrophy2>(), 1800);
+                        modifiers.FinalDamage.Flat += baseNovaDamageAdd / 10;
                     }
-                    else
-                    {
-                        Player.AddBuff(BuffType<Buffs.VoidStrength>(), 300);
-                    }
-
+                }
+                else
+                {
+                    //If the attack was not a crit
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod));
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
                 }
 
-                onEnemyHitWithNova(target, 1, ref damage, ref crit);
+
+                if (chosenStarfarer == 2)
+                {
+                    if (target.life < baseNovaDamageAdd / 10)
+                    {
+                        modifiers.SetCrit();
+                        modifiers.FinalDamage.Flat += baseNovaDamageAdd / 4;
+                        
+                    }
+                }
 
             }
-            if (proj.type == Mod.Find<ModProjectile>("Theofania3").Type)
+
+            if (weaknessexploit == 2)
             {
+                modifiers.NonCritDamage -= 0.1f;
+
+
+            }
+            
+
+        }
+        public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Item, consider using OnHitNPC instead */
+        {
+            
+
+        }
+        //Melee hits
+        public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Item, consider using ModifyHitNPC instead */
+        {
+
+        }
+
+        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Projectile, consider using ModifyHitNPC instead */
+        {
+            if (proj.type == ProjectileType<Theofania>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
                 SoundEngine.PlaySound(StarsAboveAudio.SFX_GunbladeImpact, Player.Center);
                 screenShakeTimerGlobal = -80;
                 int uniqueCrit = Main.rand.Next(100);
                 if (uniqueCrit <= novaCritChance + novaCritChanceMod)
                 {
-                    crit = true;
-                }
-                else
-                {
-                    crit = false;
-                }
-
-                if (crit)
-                {
+                    modifiers.SetCrit();
                     novaGauge += trueNovaGaugeMax / 40;
-                    damage = (int)(novaCritDamage * (1 + novaCritDamageMod));
-                    damage /= 2;
-                    damage /= 4;
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod));
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage again due to having two swords.
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
                 }
                 else
                 {
-                    damage = (int)(novaDamage * (1 + novaDamageMod));
-                    damage /= 4;
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod));
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage due to having two swords.
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
                 }
-
-                for (int d = 0; d < 30; d++)
-                {
-                    Dust.NewDust(target.position, target.width, target.height, 21, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
-                }
-                for (int d = 0; d < 30; d++)
-                {
-                    Dust.NewDust(target.position, target.width, target.height, 91, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
-                }
-                for (int d = 0; d < 30; d++)
-                {
-                    Dust.NewDust(target.position, target.width, target.height, 197, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
-                }
-                for (int d = 0; d < 30; d++)
-                {
-                    Dust.NewDust(target.position, target.width, target.height, 159, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1.5f);
-
-                }
-                for (int d = 0; d < 30; d++)
-                {
-                    Dust.NewDust(target.position, target.width, target.height, 220, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
-                }
-                if (target.HasBuff(BuffType<Buffs.VoidAtrophy1>()))
-                {
-                    if (chosenStarfarer == 1)
-                    {
-                        target.AddBuff(BuffType<Buffs.VoidAtrophy2>(), 1800);
-                    }
-                    else
-                    {
-                        Player.AddBuff(BuffType<Buffs.VoidStrength>(), 300);
-                    }
-
-                }
-
-                onEnemyHitWithNova(target, 1, ref damage, ref crit);
 
             }
-            if (proj.type == Mod.Find<ModProjectile>("LaevateinnDamage").Type)
+
+            if (proj.type == ProjectileType<Theofania2>())
             {
-                //Main.PlaySound(SoundLoader.customSoundType, (int)target.Center.X, (int)target.Center.Y, mod.GetSoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Custom/GunbladeImpact"));
-                //screenShakeTimerGlobal = -80;
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                SoundEngine.PlaySound(StarsAboveAudio.SFX_GunbladeImpact, Player.Center);
+                screenShakeTimerGlobal = -80;
                 int uniqueCrit = Main.rand.Next(100);
                 if (uniqueCrit <= novaCritChance + novaCritChanceMod)
                 {
-                    crit = true;
-                }
-
-                else
-                {
-                    crit = false;
-                }
-
-                if (crit)
-                {
-                    damage = (int)(novaCritDamage * (1 + novaCritDamageMod)) / 5;
-                    damage /= 2;
+                    modifiers.SetCrit();
+                    novaGauge += trueNovaGaugeMax / 40;
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod));
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage again due to having two swords.
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
                 }
                 else
                 {
-                    damage = (int)(novaDamage * (1 + novaDamageMod)) / 5;
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod));
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage due to having two swords.
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+
+            }
+            if (proj.type == ProjectileType<Theofania3>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                SoundEngine.PlaySound(StarsAboveAudio.SFX_GunbladeImpact, Player.Center);
+                screenShakeTimerGlobal = -80;
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    modifiers.SetCrit();
+                    novaGauge += trueNovaGaugeMax / 40;
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod));
+                    modifiers.FinalDamage *= 0.75f;//Asphodene's third Stellar Nova hit only does 25% base damage.
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                }
+                else
+                {
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod));
+                    modifiers.FinalDamage *= 0.75f;//Asphodene's third Stellar Nova hit only does 25% base damage.
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+            }
+            if (proj.type == ProjectileType<LaevateinnDamage>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) / 5;
+                    if (target.HasBuff(BuffID.OnFire))
+                    {
+                        modifiers.FinalDamage += 0.05f;
+                    }
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                }
+                else
+                {
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) / 5;
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+
                 }
                 if (target.HasBuff(BuffID.OnFire))
                 {
 
-                    damage += 100;
+                    modifiers.FinalDamage += 0.05f;
 
                     if (chosenStarfarer == 1)
                     {
-                        if (crit)
-                        {
-                            damage += 100;
-
-                        }
-                        damage += 50;
-
+                        modifiers.FinalDamage += 0.05f;
                     }
                 }
-                onEnemyHitWithNova(target, 2, ref damage, ref crit);
-                //target.AddBuff(BuffType<Buffs.VoidAtrophy>(), 180);
+
             }
-            if (proj.type == Mod.Find<ModProjectile>("kiwamiryukenconfirm").Type)
+            if (proj.type == ProjectileType<Projectiles.StellarNovas.kiwamiryukenconfirm>())
             {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
                 SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterFinish, Player.Center);
                 screenShakeTimerGlobal = -80;
-                //Player.GetModPlayer<StarsAbovePlayer>().activateShockwaveEffect = true;
                 novaGauge += 5;
                 int uniqueCrit = Main.rand.Next(100);
                 if (uniqueCrit <= novaCritChance + novaCritChanceMod)
                 {
-                    crit = true;
-                }
-                else
-                {
-                    crit = false;
-                }
-                if (chosenStarfarer == 1 && Player.statLife <= Player.statLifeMax2 / 2)
-                {
-                    crit = true;
-                }
-
-                if (crit)
-                {
-
-                    damage = (int)(novaCritDamage * (1 + novaCritDamageMod));
-                    damage /= 2;
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod));
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
                 }
                 else
                 {
-                    damage = (int)(novaDamage * (1 + novaDamageMod));
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod));
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
                 }
 
-                for (int d = 0; d < 30; d++)
-                {
-                    Dust.NewDust(target.position, target.width, target.height, 21, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
-                }
-                for (int d = 0; d < 30; d++)
-                {
-                    Dust.NewDust(target.position, target.width, target.height, 91, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
-                }
-                for (int d = 0; d < 30; d++)
-                {
-                    Dust.NewDust(target.position, target.width, target.height, 197, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
-                }
-                for (int d = 0; d < 30; d++)
-                {
-                    Dust.NewDust(target.position, target.width, target.height, 159, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1.5f);
-
-                }
-                for (int d = 0; d < 30; d++)
-                {
-                    Dust.NewDust(target.position, target.width, target.height, 220, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
-                }
-                for (int i = 0; i < 70; i++)
-                {
-                    int dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 31, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default(Color), 2f);
-                    Main.dust[dustIndex].velocity *= 1.4f;
-                }
-                // Fire Dust spawn
-                for (int i = 0; i < 80; i++)
-                {
-                    int dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 6, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default(Color), 3f);
-                    Main.dust[dustIndex].noGravity = true;
-                    Main.dust[dustIndex].velocity *= 5f;
-                    dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 6, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default(Color), 2f);
-                    Main.dust[dustIndex].velocity *= 3f;
-                }
-                // Large Smoke Gore spawn
-                for (int g = 0; g < 4; g++)
-                {
-                    int goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
-                    Main.gore[goreIndex].scale = 1.5f;
-                    Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
-                    Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
-                    goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
-                    Main.gore[goreIndex].scale = 1.5f;
-                    Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
-                    Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
-                    goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
-                    Main.gore[goreIndex].scale = 1.5f;
-                    Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
-                    Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
-                    goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
-                    Main.gore[goreIndex].scale = 1.5f;
-                    Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
-                    Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
-                }
-                //target.AddBuff(BuffType<Buffs.VoidAtrophy>(), 180);
-                onEnemyHitWithNova(target, 3, ref damage, ref crit);
             }
             if (Player.HasBuff(BuffType<Buffs.AstarteDriver>()) && !target.HasBuff(BuffType<Buffs.AstarteDriverEnemyCooldown>()))
             {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
                 //Main.PlaySound(SoundLoader.customSoundType, (int)target.Center.X, (int)target.Center.Y, mod.GetSoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Custom/GunbladeImpact"));
                 //screenShakeTimerGlobal = -80;
                 int uniqueCrit = Main.rand.Next(100);
                 if (uniqueCrit <= novaCritChance + novaCritChanceMod)
                 {
-                    crit = true;
-                }
-
-                else
-                {
-                    crit = false;
-                }
-
-                if (crit)
-                {
-                    damage = (int)(novaCritDamage * (1 + novaCritDamageMod));
-                    damage /= 2;
-
-                }
-                else
-                {
-                    damage = (int)(novaDamage * (1 + novaDamageMod));
-                }
-                if (chosenStarfarer == 1)
-                {
-                    if (crit)
+                    //If the attack was a crit
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod));
+                    if (chosenStarfarer == 1)
                     {
-                        damage += baseNovaDamageAdd / 10;
-                        if (damage >= target.lifeMax + target.defense)
-                        {
-                            astarteDriverAttacks++;
-                        }
+                        modifiers.FinalDamage.Flat += baseNovaDamageAdd / 10;
                     }
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
                 }
+                else
+                {
+                    //If the attack was not a crit
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod));
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+
                 if (chosenStarfarer == 2)
                 {
-                    if (target.life < baseNovaDamageAdd / 2)
+                    if (target.life < baseNovaDamageAdd / 10)
                     {
-                        damage = baseNovaDamageAdd / 4;
-                        crit = true;
-                        //astarteDriverAttacks++;
+                        modifiers.SetCrit();
+                        modifiers.FinalDamage.Flat += baseNovaDamageAdd / 4;
+
                     }
                 }
-                onEnemyHitWithNova(target, 5, ref damage, ref crit);
+
                 target.AddBuff(BuffType<Buffs.AstarteDriverEnemyCooldown>(), 60);
             }
         }
+
+        private static void KiwamiRyukenOnHit(NPC target)
+        {
+            for (int d = 0; d < 30; d++)
+            {
+                Dust.NewDust(target.position, target.width, target.height, 21, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
+            }
+            for (int d = 0; d < 30; d++)
+            {
+                Dust.NewDust(target.position, target.width, target.height, 91, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
+            }
+            for (int d = 0; d < 30; d++)
+            {
+                Dust.NewDust(target.position, target.width, target.height, 197, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
+            }
+            for (int d = 0; d < 30; d++)
+            {
+                Dust.NewDust(target.position, target.width, target.height, 159, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1.5f);
+
+            }
+            for (int d = 0; d < 30; d++)
+            {
+                Dust.NewDust(target.position, target.width, target.height, 220, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
+            }
+            for (int i = 0; i < 70; i++)
+            {
+                int dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 31, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default(Color), 2f);
+                Main.dust[dustIndex].velocity *= 1.4f;
+            }
+            // Fire Dust spawn
+            for (int i = 0; i < 80; i++)
+            {
+                int dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 6, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default(Color), 3f);
+                Main.dust[dustIndex].noGravity = true;
+                Main.dust[dustIndex].velocity *= 5f;
+                dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 6, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default(Color), 2f);
+                Main.dust[dustIndex].velocity *= 3f;
+            }
+            // Large Smoke Gore spawn
+            for (int g = 0; g < 4; g++)
+            {
+                int goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                Main.gore[goreIndex].scale = 1.5f;
+                Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
+                Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
+                goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                Main.gore[goreIndex].scale = 1.5f;
+                Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
+                Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
+                goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                Main.gore[goreIndex].scale = 1.5f;
+                Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
+                Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
+                goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                Main.gore[goreIndex].scale = 1.5f;
+                Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
+                Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
+            }
+        }
+
+        private void TheofaniaOnHit(NPC target)
+        {
+            for (int d = 0; d < 30; d++)
+            {
+                Dust.NewDust(target.position, target.width, target.height, 21, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
+            }
+            for (int d = 0; d < 30; d++)
+            {
+                Dust.NewDust(target.position, target.width, target.height, 91, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
+            }
+            for (int d = 0; d < 30; d++)
+            {
+                Dust.NewDust(target.position, target.width, target.height, 197, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
+            }
+            for (int d = 0; d < 30; d++)
+            {
+                Dust.NewDust(target.position, target.width, target.height, 159, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1.5f);
+
+            }
+            for (int d = 0; d < 30; d++)
+            {
+                Dust.NewDust(target.position, target.width, target.height, 220, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
+            }
+            
+        }
+
 
         public override void ModifyScreenPosition()
         {
@@ -2367,128 +2319,6 @@ namespace StarsAbove
             }
             base.ModifyScreenPosition();
         }
-
-        public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Projectile, consider using OnHitNPC instead */
-        {
-            if (ruinedKingPrism && target.life <= target.lifeMax / 2 && crit)
-            {
-                target.AddBuff(BuffType<Buffs.Ruination>(), 1800);
-            }
-            if (crit)
-            {
-                
-
-
-
-            }
-            if (Player.HasBuff(BuffType<AstarteDriver>()) && starfarerOutfit == 3 && projectile.type != ProjectileType<StarfarerFollowUp>())
-            {
-                Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0f, 0f, ProjectileType<StarfarerFollowUp>(), damage / 3, knockback, Player.whoAmI);
-
-            }
-            
-            if (!target.active && butchersdozen == 2)
-            {
-                butchersDozenKills++;
-            }
-            if (crit && flashfreeze == 2 && flashFreezeCooldown < 0)
-            {
-                //damage += target.lifeMax;
-                SoundEngine.PlaySound(StarsAboveAudio.SFX_electroSmack, Player.Center);
-
-                Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0, 0, Mod.Find<ModProjectile>("FlashFreezeExplosion").Type, damage / 4, 0, Player.whoAmI, 0f);
-                flashFreezeCooldown = 240;
-
-
-            }
-            if (!disablePromptsCombat && !projectile.hostile)
-            {
-
-
-                if (!target.active)
-                {
-                    if (Main.rand.Next(0, 4) == 0)
-                    {
-                        if (Player.statLife <= Player.statLifeMax2 / 5)
-                        {
-                            starfarerPromptActive("onKillEnemyDanger");
-                        }
-                        else
-                        {
-                            if (target.lifeMax <= 5 && target.damage <= 1)
-                            {
-                                starfarerPromptActive("onKillCritter");
-                            }
-                            else
-                            {
-                                starfarerPromptActive("onKillEnemy");
-                            }
-
-
-
-                        }
-
-                    }
-
-                }
-                if (!target.active && target.lifeMax >= 15000)
-                {
-
-                    starfarerPromptActive("onKillBossEnemy");
-
-
-                }
-                if (!target.active && target.lifeMax == 5 && target.CanBeChasedBy())
-                {
-
-                    
-
-
-                }
-            }
-            if (damage >= target.life / 3)
-            {
-                if (Main.rand.Next(0, 4) == 0)
-                {
-                    //starfarerPromptActive("onBigDamage");
-                }
-
-            }
-            if (crit && !disablePromptsCombat)
-            {
-                if (Main.rand.Next(0, 8) == 0)
-                {
-                    starfarerPromptActive("onCrit");
-                }
-
-            }
-
-            if (Player.HasBuff(BuffType<Buffs.SovereignDominion>()) && target.HasBuff(BuffType<Buffs.Ruination>()))
-            {
-                if (crit)
-                {
-                    Player.statLife += damage / 10;
-                }
-            }
-            
-            if (projectile.type == Mod.Find<ModProjectile>("kiwamiryukenstun").Type)
-            {
-                Player.AddBuff(BuffType<Buffs.KiwamiRyukenConfirm>(), 60);
-                for (int d = 0; d < 4; d++)
-                {
-                    Dust.NewDust(target.position, target.width, target.height, 113, 0f + Main.rand.Next(-2, 2), 0f + Main.rand.Next(-2, 2), 150, default(Color), 1.5f);
-                }
-            }
-            
-            
-            if (!target.active)
-            {
-                OnKillEnemy(target);
-            }
-
-        }
-        /*bool voidActive = IsVoidActive;
-             Player.ManageSpecialBiomeVisuals("StarsAbove:Void", voidActive, Player.Center);*/
 
        
         public override void SetStaticDefaults()
@@ -4056,9 +3886,9 @@ namespace StarsAbove
                 if (Main.hardMode)
                 {
 
-                    if (bonus100hp == 0)
+                    if ( healthyConfidence == 0)
                     {
-                        bonus100hp = 1;
+                         healthyConfidence = 1;
                     }
                 }
                 if (DownedBossSystem.downedVagrant)
@@ -4508,8 +4338,8 @@ namespace StarsAbove
             if (undertalePrep)
             {
                 undertaleiFrames = 120;
-                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().heartX = 380;
-                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().heartY = 160;
+                heartX = 380;
+                heartY = 160;
 
                 undertalePrep = false;
             }
@@ -4527,106 +4357,101 @@ namespace StarsAbove
             novaCritDamageMod = 0;
             novaChargeMod = 0;
 
-            if (affix1 == Mod.Find<ModItem>("RefulgentPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix2 == Mod.Find<ModItem>("RefulgentPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix3 == Mod.Find<ModItem>("RefulgentPrism").DisplayName.GetTranslation(Language.ActiveCulture))
+            //Just in case the idea of "different slots provide different bonuses" becomes true.
+            if (affixItem1.type == ItemType<RefulgentPrism>() ||
+                affixItem2.type == ItemType<RefulgentPrism>() ||
+                affixItem3.type == ItemType<RefulgentPrism>())
             {
                 novaDamageMod += 0.2;//20%
                 novaCritChanceMod -= 14;
                 novaCritDamageMod -= 0.1;
                 novaChargeMod += 5;
             }
-            if (affix1 == Mod.Find<ModItem>("EverflamePrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix2 == Mod.Find<ModItem>("EverflamePrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix3 == Mod.Find<ModItem>("EverflamePrism").DisplayName.GetTranslation(Language.ActiveCulture))
+            if (affixItem1.type == ItemType<EverflamePrism>() ||
+                affixItem2.type == ItemType<EverflamePrism>() ||
+                affixItem3.type == ItemType<EverflamePrism>())
             {
                 novaDamageMod += 0.1;
                 novaCritChanceMod += 7;
                 novaCritDamageMod += 0.1;
                 novaChargeMod -= 15;
             }
-            if (affix1 == Mod.Find<ModItem>("CrystallinePrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix2 == Mod.Find<ModItem>("CrystallinePrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix3 == Mod.Find<ModItem>("CrystallinePrism").DisplayName.GetTranslation(Language.ActiveCulture))
+            if (affixItem1.type == ItemType<CrystallinePrism>() ||
+                affixItem2.type == ItemType<CrystallinePrism>() ||
+                affixItem3.type == ItemType<CrystallinePrism>())
             {
                 novaDamageMod -= 0.2;
                 novaCritChanceMod -= 7;
                 novaCritDamageMod += 0.4;
                 //novaChargeMod -= 15;
             }
-            if (affix1 == Mod.Find<ModItem>("VerdantPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix2 == Mod.Find<ModItem>("VerdantPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix3 == Mod.Find<ModItem>("VerdantPrism").DisplayName.GetTranslation(Language.ActiveCulture))
+            if (affixItem1.type == ItemType<VerdantPrism>() ||
+                affixItem2.type == ItemType<VerdantPrism>() ||
+                affixItem3.type == ItemType<VerdantPrism>())
             {
                 //novaDamageMod += 50;
                 novaCritChanceMod += 21;
                 //novaCritDamageMod += 225;
                 novaChargeMod -= 15;
             }
-            if (affix1 == Mod.Find<ModItem>("RadiantPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix2 == Mod.Find<ModItem>("RadiantPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix3 == Mod.Find<ModItem>("RadiantPrism").DisplayName.GetTranslation(Language.ActiveCulture))
+            if (affixItem1.type == ItemType<RadiantPrism>() ||
+                 affixItem2.type == ItemType<RadiantPrism>() ||
+                 affixItem3.type == ItemType<RadiantPrism>())
             {
                 novaDamageMod -= 0.1;
                 novaCritChanceMod -= 7;
                 novaCritDamageMod -= 0.1;
                 novaChargeMod += 15;
             }
-            if (affix1 == Mod.Find<ModItem>("ApocryphicPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix2 == Mod.Find<ModItem>("ApocryphicPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix3 == Mod.Find<ModItem>("ApocryphicPrism").DisplayName.GetTranslation(Language.ActiveCulture))
+            if (affixItem1.type == ItemType<ApocryphicPrism>() ||
+                affixItem2.type == ItemType<ApocryphicPrism>() ||
+                affixItem3.type == ItemType<ApocryphicPrism>())
             {
                 novaDamageMod += 0.2;
                 novaCritChanceMod -= 14;
                 novaCritDamageMod += 0.1;
                 novaChargeMod -= 5;
             }
-            if (affix1 == Mod.Find<ModItem>("AlchemicPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix2 == Mod.Find<ModItem>("AlchemicPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix3 == Mod.Find<ModItem>("AlchemicPrism").DisplayName.GetTranslation(Language.ActiveCulture))
+            if (affixItem1.type == ItemType<AlchemicPrism>() ||
+                 affixItem2.type == ItemType<AlchemicPrism>() ||
+                 affixItem3.type == ItemType<AlchemicPrism>())
             {
                 novaDamageMod -= 0.1;
                 novaCritChanceMod += 14;
                 novaCritDamageMod += 0.1;
                 novaChargeMod -= 10;
             }
-            if (affix1 == Mod.Find<ModItem>("CastellicPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix2 == Mod.Find<ModItem>("CastellicPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix3 == Mod.Find<ModItem>("CastellicPrism").DisplayName.GetTranslation(Language.ActiveCulture))
+            if (affixItem1.type == ItemType<CastellicPrism>() ||
+                 affixItem2.type == ItemType<CastellicPrism>() ||
+                 affixItem3.type == ItemType<CastellicPrism>())
             {
                 novaDamageMod += 0.3;
                 novaCritChanceMod -= 7;
                 novaCritDamageMod -= 0.2;
                 //novaChargeMod -= 10;
             }
-            if (affix1 == Mod.Find<ModItem>("LucentPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix2 == Mod.Find<ModItem>("LucentPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix3 == Mod.Find<ModItem>("LucentPrism").DisplayName.GetTranslation(Language.ActiveCulture))
+            if (affixItem1.type == ItemType<LucentPrism>() ||
+                affixItem2.type == ItemType<LucentPrism>() ||
+                affixItem3.type == ItemType<LucentPrism>())
             {
                 novaDamageMod -= 0.3;
                 //novaCritChanceMod -= 7;
                 novaCritDamageMod += 0.1;
                 novaChargeMod += 10;
             }
-            if (affix1 == Mod.Find<ModItem>("PhylacticPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix2 == Mod.Find<ModItem>("PhylacticPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix3 == Mod.Find<ModItem>("PhylacticPrism").DisplayName.GetTranslation(Language.ActiveCulture))
+            if (affixItem1.type == ItemType<PhylacticPrism>() ||
+                affixItem2.type == ItemType<PhylacticPrism>() ||
+                affixItem3.type == ItemType<PhylacticPrism>())
             {
                 novaDamageMod -= 0.1;
                 novaCritChanceMod += 21;
                 //novaCritDamageMod += 75;
                 novaChargeMod -= 10;
             }
-            if (affix1 == "Calamitous Prism" || affix2 == "Calamitous Prism" || affix3 == "Calamitous Prism")
-            {
-                //novaDamageMod += 10000;
-                //novaCritChanceMod += 21;
-                //novaCritDamageMod += 17775;
-                //novaChargeMod -= 10;
-            }
-            if (affix1 == Mod.Find<ModItem>("LightswornPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix2 == Mod.Find<ModItem>("LightswornPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix3 == Mod.Find<ModItem>("LightswornPrism").DisplayName.GetTranslation(Language.ActiveCulture))
+
+            if (affixItem1.type == ItemType<LightswornPrism>() ||
+                 affixItem2.type == ItemType<LightswornPrism>() ||
+                 affixItem3.type == ItemType<LightswornPrism>())
             {
                 lightswornPrism = true;
             }
@@ -4634,9 +4459,9 @@ namespace StarsAbove
             {
                 lightswornPrism = false;
             }
-            if (affix1 == Mod.Find<ModItem>("BurnishedPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix2 == Mod.Find<ModItem>("BurnishedPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix3 == Mod.Find<ModItem>("BurnishedPrism").DisplayName.GetTranslation(Language.ActiveCulture))
+            if (affixItem1.type == ItemType<BurnishedPrism>() ||
+                affixItem2.type == ItemType<BurnishedPrism>() ||
+                affixItem3.type == ItemType<BurnishedPrism>())
             {
                 burnishedPrism = true;
             }
@@ -4644,9 +4469,9 @@ namespace StarsAbove
             {
                 burnishedPrism = false;
             }
-            if (affix1 == Mod.Find<ModItem>("GeminiPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix2 == Mod.Find<ModItem>("GeminiPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix3 == Mod.Find<ModItem>("GeminiPrism").DisplayName.GetTranslation(Language.ActiveCulture))
+            if (affixItem1.type == ItemType<GeminiPrism>() ||
+                 affixItem2.type == ItemType<GeminiPrism>() ||
+                 affixItem3.type == ItemType<GeminiPrism>())
             {
                 geminiPrism = true;
             }
@@ -4654,9 +4479,9 @@ namespace StarsAbove
             {
                 geminiPrism = false;
             }
-            if (affix1 == Mod.Find<ModItem>("SpatialPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix2 == Mod.Find<ModItem>("SpatialPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix3 == Mod.Find<ModItem>("SpatialPrism").DisplayName.GetTranslation(Language.ActiveCulture))
+            if (affixItem1.type == ItemType<SpatialPrism>() ||
+                affixItem2.type == ItemType<SpatialPrism>() ||
+                affixItem3.type == ItemType<SpatialPrism>())
             {
                 spatialPrism = true;
             }
@@ -4664,9 +4489,9 @@ namespace StarsAbove
             {
                 spatialPrism = false;
             }
-            if (affix1 == Mod.Find<ModItem>("PaintedPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix2 == Mod.Find<ModItem>("PaintedPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix3 == Mod.Find<ModItem>("PaintedPrism").DisplayName.GetTranslation(Language.ActiveCulture))
+            if (affixItem1.type == ItemType<PaintedPrism>() ||
+                affixItem2.type == ItemType<PaintedPrism>() ||
+                affixItem3.type == ItemType<PaintedPrism>())
             {
                 paintedPrism = true;
             }
@@ -4674,16 +4499,16 @@ namespace StarsAbove
             {
                 paintedPrism = false;
             }
-            if (affix1 == Mod.Find<ModItem>("VoidsentPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix2 == Mod.Find<ModItem>("VoidsentPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix3 == Mod.Find<ModItem>("VoidsentPrism").DisplayName.GetTranslation(Language.ActiveCulture))
+            if (affixItem1.type == ItemType<VoidsentPrism>() ||
+                affixItem2.type == ItemType<VoidsentPrism>() ||
+                affixItem3.type == ItemType<VoidsentPrism>())
             {
                 voidsentPrism = true;
             }
             //1.1.6 prisms
-            if (affix1 == Mod.Find<ModItem>("RoyalSlimePrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix2 == Mod.Find<ModItem>("RoyalSlimePrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix3 == Mod.Find<ModItem>("RoyalSlimePrism").DisplayName.GetTranslation(Language.ActiveCulture))
+            if (affixItem1.type == ItemType<RoyalSlimePrism>() ||
+                affixItem2.type == ItemType<RoyalSlimePrism>() ||
+                affixItem3.type == ItemType<RoyalSlimePrism>())
             {
                 royalSlimePrism = true;
             }
@@ -4691,9 +4516,9 @@ namespace StarsAbove
             {
                 royalSlimePrism = false;
             }
-            if (affix1 == Mod.Find<ModItem>("MechanicalPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix2 == Mod.Find<ModItem>("MechanicalPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix3 == Mod.Find<ModItem>("MechanicalPrism").DisplayName.GetTranslation(Language.ActiveCulture))
+            if (affixItem1.type == ItemType<MechanicalPrism>() ||
+                affixItem2.type == ItemType<MechanicalPrism>() ||
+                affixItem3.type == ItemType<MechanicalPrism>())
             {
                 mechanicalPrism = true;
             }
@@ -4701,9 +4526,9 @@ namespace StarsAbove
             {
                 mechanicalPrism = false;
             }
-            if (affix1 == Mod.Find<ModItem>("OvergrownPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix2 == Mod.Find<ModItem>("OvergrownPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix3 == Mod.Find<ModItem>("OvergrownPrism").DisplayName.GetTranslation(Language.ActiveCulture))
+            if (affixItem1.type == ItemType<OvergrownPrism>() ||
+                affixItem2.type == ItemType<OvergrownPrism>() ||
+                affixItem3.type == ItemType<OvergrownPrism>())
             {
                 overgrownPrism = true;
             }
@@ -4711,9 +4536,9 @@ namespace StarsAbove
             {
                 overgrownPrism = false;
             }
-            if (affix1 == Mod.Find<ModItem>("LihzahrdPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix2 == Mod.Find<ModItem>("LihzahrdPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix3 == Mod.Find<ModItem>("LihzahrdPrism").DisplayName.GetTranslation(Language.ActiveCulture))
+            if (affixItem1.type == ItemType<LihzahrdPrism>() ||
+                affixItem2.type == ItemType<LihzahrdPrism>() ||
+                affixItem3.type == ItemType<LihzahrdPrism>())
             {
                 lihzahrdPrism = true;
             }
@@ -4721,9 +4546,9 @@ namespace StarsAbove
             {
                 lihzahrdPrism = false;
             }
-            if (affix1 == Mod.Find<ModItem>("TyphoonPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix2 == Mod.Find<ModItem>("TyphoonPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix3 == Mod.Find<ModItem>("TyphoonPrism").DisplayName.GetTranslation(Language.ActiveCulture))
+            if (affixItem1.type == ItemType<TyphoonPrism>() ||
+                affixItem2.type == ItemType<TyphoonPrism>() ||
+                affixItem3.type == ItemType<TyphoonPrism>())
             {
                 typhoonPrism = true;
             }
@@ -4731,9 +4556,9 @@ namespace StarsAbove
             {
                 typhoonPrism = false;
             }
-            if (affix1 == Mod.Find<ModItem>("EmpressPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix2 == Mod.Find<ModItem>("EmpressPrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix3 == Mod.Find<ModItem>("EmpressPrism").DisplayName.GetTranslation(Language.ActiveCulture))
+            if (affixItem1.type == ItemType<EmpressPrism>() ||
+                affixItem2.type == ItemType<EmpressPrism>() ||
+                affixItem3.type == ItemType<EmpressPrism>())
             {
                 empressPrism = true;
             }
@@ -4741,9 +4566,9 @@ namespace StarsAbove
             {
                 empressPrism = false;
             }
-            if (affix1 == Mod.Find<ModItem>("LuminitePrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix2 == Mod.Find<ModItem>("LuminitePrism").DisplayName.GetTranslation(Language.ActiveCulture) ||
-                affix3 == Mod.Find<ModItem>("LuminitePrism").DisplayName.GetTranslation(Language.ActiveCulture))
+            if (affixItem1.type == ItemType<LuminitePrism>() ||
+                affixItem2.type == ItemType<LuminitePrism>() ||
+                affixItem3.type == ItemType<LuminitePrism>())
             {
                 luminitePrism = true;
             }
@@ -4752,7 +4577,7 @@ namespace StarsAbove
                 luminitePrism = false;
             }
             //Tier 3 Prisms
-            if (affix1 == Mod.Find<ModItem>("PrismOfTheRuinedKing").DisplayName.GetTranslation(Language.ActiveCulture))
+            if (affixItem1.type == ItemType<PrismOfTheRuinedKing>())
             {
                 ruinedKingPrism = true;
 
@@ -4762,7 +4587,7 @@ namespace StarsAbove
                 ruinedKingPrism = false;
 
             }
-            if (affix1 == Mod.Find<ModItem>("PrismOfTheCosmicPhoenix").DisplayName.GetTranslation(Language.ActiveCulture))
+            if (affixItem1.type == ItemType<PrismOfTheCosmicPhoenix>())
             {
                 cosmicPhoenixPrism = true;
 
@@ -5265,7 +5090,7 @@ namespace StarsAbove
         }
         private void HealthyConfidence()
         {
-            if (bonus100hp == 2 && Player.active && !Player.dead)
+            if ( healthyConfidence == 2 && Player.active && !Player.dead)
             {
                 if(healthyConfidenceHealAmount > 0)
                 {
@@ -7442,7 +7267,7 @@ namespace StarsAbove
                     Player.statDefense += 6;
 
                 }
-                if (bonus100hp == 2)
+                if ( healthyConfidence == 2)
                 {
 
                 }
@@ -8122,53 +7947,112 @@ namespace StarsAbove
             }
 
         }
-        public override void ModifyHurt(ref Player.HurtModifiers modifiers)/* tModPorter Override ImmuneTo, FreeDodge or ConsumableDodge instead to prevent taking damage */
+        public override bool ImmuneTo(PlayerDeathReason damageSource, int cooldownCounter, bool dodgeable)
         {
             
-
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.Invincibility>()))
+            if (Player.HasBuff(BuffType<Invincibility>()))
             {
-                return false;
+                return true;
             }
-            if(beyondInfinityDamageMod > 0)
+            return false;
+        }
+        public override void OnHurt(Player.HurtInfo info)
+        {
+            if (!Main.dedServ)
+            {
+                inCombat = 1200;
+                timeAfterGettingHit = 0;
+            }
+            if (starfarerOutfit == 4) // Aegis of Hope's Legacy
+            {
+                hopesBrilliance++;
+                Player.AddBuff(BuffType<NascentAria>(), 180);
+                Player.AddBuff(BuffID.Ironskin, 480);
+                Player.AddBuff(BuffID.Regeneration, 480);
+                Player.AddBuff(BuffID.Endurance, 480);
+            }
+            if (ruinedKingPrism)
+            {
+                if (novaGauge >= 2)
+                {
+                    novaGauge -= 2;
+                }
+            }
+            if (beyondInfinityDamageMod > 0)
             {
                 beyondInfinityDamageMod = 0;
-            }    
+            }
+            if (healthyConfidence == 2)
+            {
+                healthyConfidenceHealAmount += (int)(info.Damage * 0.15);
+            }
+            if (hikari == 2)
+            {
+                Player.AddBuff(BuffType<NullRadiance>(), 360);
+            }
+            if (bloomingflames == 2)
+            {
+                Player.AddBuff(BuffType<InfernalEnd>(), 180);
+            }
+            if (info.Damage >= 250 && info.Damage < Player.statLife)
+            {
+                if (Main.rand.Next(0, 8) == 0)
+                {
+                    starfarerPromptActive("onTakeHeavyDamage");
+
+                }
+            }
             if (Player.HasBuff(BuffType<SpatialStratagemCooldown>()) && artofwar == 2)
             {
-                
                 Player.AddBuff(BuffType<SpatialStratagemCooldown>(), 1800);
-                
-            }
-            if (!Player.HasBuff(BuffType<SpatialStratagemCooldown>()) && artofwar == 2)
-            {
-                Player.AddBuff(BuffType<SpatialStratagemCooldown>(), 1800);
-                Player.AddBuff(BuffType<SpatialStratagem>(), 120);
-                Player.AddBuff(BuffType<SpatialStratagemActive>(), 120);
-                damage /= 2;
-                
-            }
-            if (Player.HasBuff(BuffType<SpatialStratagem>()))
-            {
-               
-                damage /= 2;
-
             }
             if (!Player.HasBuff(BuffType<StarshieldBuff>()) && !Player.HasBuff(BuffType<StarshieldCooldown>()) && starshower == 2)
             {
                 Player.AddBuff(BuffType<StarshieldBuff>(), 120);
                 Projectile.NewProjectile(null, Player.Center, Vector2.Zero, ProjectileType<Starshield>(), 0, 0, Player.whoAmI);
+
                 Player.statMana += 20;
+                Player.ManaEffect(20);
             }
-            if(bonus100hp == 2)
-            {//Healthy Confidence
-                healthyConfidenceHealAmount += (int)(damage * 0.15);
+            if (Player.HasBuff(BuffType<Buffs.UniversalManipulation>()))
+            {
+                int index = Player.FindBuffIndex(BuffType<UniversalManipulation>());
+                if (index > -1)
+                {
+                    Player.DelBuff(index);
+                }
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.SolemnAegis>()) && !Main.LocalPlayer.HasBuff(BuffType<Buffs.Invincibility>()))
+            if (cosmicPhoenixPrism)
+            {
+                if (Player.statLife - info.Damage < 50 && !Main.LocalPlayer.HasBuff(BuffType<Buffs.GoingSupercriticalCooldown>()))
+                {
+                    novaGauge = novaGaugeMax;
+                    Main.LocalPlayer.AddBuff(BuffType<Buffs.GoingSupercriticalCooldown>(), 7200);
+                }
+            }
+            if (starfarerOutfit == 1)
+            {
+                Player.AddBuff(BuffType<Vulnerable>(), 240);
+            }
+            if (Player.GetModPlayer<StarsAbovePlayer>().ironskin == 2)
+            {
+                if (info.Damage >= 100)
+                {
+                    info.Damage -= 30;
+                }
+                if (Player.statLife < 100)
+                {
+                    info.Damage = (int)(info.Damage * 0.8f);
+                }
+            }
+        }
+        public override bool ConsumableDodge(Player.HurtInfo info)
+        {
+            if (Player.HasBuff(BuffType<Buffs.SolemnAegis>()))
             {
                 for (int d = 0; d < 16; d++)
                 {
-                    Dust.NewDust(Player.position, Player.width, Player.height, 221, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 1.5f);
+                    Dust.NewDust(Player.position, Player.width, Player.height, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 1.5f);
                 }
                 Player.immune = true;
                 Player.immuneTime = 30;
@@ -8177,19 +8061,7 @@ namespace StarsAbove
                 {
                     Player.DelBuff(index);
                 }
-                return false;
-
-            }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.UniversalManipulation>()))
-            {
-
-                int index = Player.FindBuffIndex(BuffType<UniversalManipulation>());
-                if (index > -1)
-                {
-                    Player.DelBuff(index);
-                }
                 return true;
-
             }
             if (Main.LocalPlayer.HasBuff(BuffType<Buffs.FlashOfEternity>()))
             {
@@ -8200,228 +8072,127 @@ namespace StarsAbove
                 {
                     Player.DelBuff(index);
                 }
-                return false;
-
+                return true;
             }
-            if (evasionmastery == 2)
+            if (Player.HasBuff(BuffType<TimelessPotential>()) && !Player.HasBuff(BuffType<TimelessPotentialCooldown>()))
             {
-                if (Main.rand.Next(0, 101) <= 3 && Player.immuneTime <= 0)
-                {
-                    Player.immuneTime = 30;
-                    return false;
-                }
-            }
-            if (Player.HasBuff(BuffType<TimelessPotential>()))
-            {
-                if (damage > Player.statLife)
+                if (info.Damage > Player.statLife)
                 {
                     Player.statLife = 50;
                     Player.AddBuff(BuffType<Invincibility>(), 120);
                     Player.AddBuff(BuffType<TimelessPotentialCooldown>(), 7200);
-                    return false;
+                    return true;
                 }
                 if (Main.rand.Next(0, 101) <= 10)
                 {
                     Player.immuneTime = 30;
+                    return true;
+                }
+
+            }
+            if (Player.GetModPlayer<StarsAbovePlayer>().keyofchronology == 2)
+            {
+                if (info.Damage >= 200 && !(Main.LocalPlayer.HasBuff(BuffType<Buffs.KeyOfChronologyCooldown>())))
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onKeyOfChronology");
+                    SoundEngine.PlaySound(StarsAboveAudio.SFX_TimeEffect, Player.Center);
+                    for (int d = 0; d < 12; d++)
+                    {
+                        Dust.NewDust(Player.position, 0, 0, 113, 0f + Main.rand.Next(-7, 7), 0f + Main.rand.Next(-7, 7), 150, default(Color), 1.5f);
+                    }
+                    Player.Heal(info.Damage);
+                    for (int i = 0; i < Main.maxNPCs; i++)
+                    {
+                        NPC npc = Main.npc[i];
+                        if (npc.active && !npc.boss && npc.Distance(Player.Center) < 1000)
+                        {
+                            npc.AddBuff(BuffType<Stun>(), 300);
+                        }
+                    }
+
+                    Player.AddBuff(BuffType<Buffs.Invincibility>(), 300);
+                    Player.AddBuff(BuffType<Buffs.KeyOfChronologyCooldown>(), 7200);
+
+                    if (starfarerOutfit == 4)
+                    {
+                        Player.ClearBuff(BuffID.PotionSickness);
+                        Player.potionDelay = 0;
+                        Player.potionDelayTime = 0;
+                        Player.AddBuff(BuffID.Heartreach, 1800);
+
+                    }
+
                     return false;
                 }
-                
+
+                return true;
             }
-            if (hikari == 2)
+            if (Player.HasBuff(BuffType<Buffs.KiwamiRyuken>()))
             {
-                Player.AddBuff(BuffType<NullRadiance>(), 360);
+                StellarNovaCutIn();
+                ryukenTimer = 60;
+                int index = Player.FindBuffIndex(BuffType<KiwamiRyuken>());
+                if (index > -1)
+                {
+                    Player.DelBuff(index);
+                }
+                if (chosenStarfarer == 2)
+                {
+
+                    Player.statLife += 40;
+
+                    Player.statMana += 40;
+
+                }
+                Vector2 mousePosition = Main.MouseWorld;
+                Vector2 direction = Vector2.Normalize(mousePosition - Player.Center);
+                Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y), direction, Mod.Find<ModProjectile>("kiwamiryukenstun").Type, 1, 0, Player.whoAmI, 0, 1);
+                onActivateStellarNova();
+                SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterImpact, Player.Center);
+                return false;
             }
-            
-            if (bloomingflames == 2)
-            {
-                Player.AddBuff(BuffType<InfernalEnd>(), 180);
-            }
-            if (damage >= 250 && damage < Player.statLife)
-            {
-                if (Main.rand.Next(0, 8) == 0)
-                {
-                    starfarerPromptActive("onTakeHeavyDamage");
-
-                }
-            }
-
-           
-
-            if (!Main.dedServ)
-            {
-                inCombat = 1200;
-                timeAfterGettingHit = 0;
-                if (ruinedKingPrism)
-                {
-                    if (novaGauge >= 2)
-                    {
-                        novaGauge -= 2;
-
-                    }
-                }
-                if (cosmicPhoenixPrism)
-                {
-                    if (Player.statLife - damage < 50 && !Main.LocalPlayer.HasBuff(BuffType<Buffs.GoingSupercriticalCooldown>()))
-                    {
-                        novaGauge = novaGaugeMax;
-                        Main.LocalPlayer.AddBuff(BuffType<Buffs.GoingSupercriticalCooldown>(), 7200);
-                        Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
-                        CombatText.NewText(textPos, new Color(255, 0, 125, 240), "Going supercritical!", false, false);
-                    }
-                }
-                if (chosenStarfarer == 2 && novaGaugeUnlocked)
-                {
-
-                }
-                if (chosenStarfarer == 1 && novaGaugeUnlocked)
-                {
-
-                }
-                if (Main.LocalPlayer.HasBuff(BuffType<Buffs.KiwamiRyuken>()))
-                {
-                   
-                    
-                    StellarNovaCutIn();
-                    ryukenTimer = 60;
-                    int index = Player.FindBuffIndex(BuffType<KiwamiRyuken>());
-                    if (index > -1)
-                    {
-                        Player.DelBuff(index);
-                    }
-                    if (chosenStarfarer == 2)
-                    {
-
-                        Player.statLife += 40;
-
-                        Player.statMana += 40;
-
-                    }
-                    Vector2 mousePosition = Main.MouseWorld;
-                    Vector2 direction = Vector2.Normalize(mousePosition - Player.Center);
-                    Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y), direction, Mod.Find<ModProjectile>("kiwamiryukenstun").Type, 1, 0, Player.whoAmI, 0, 1);
-                    onActivateStellarNova();
-                    SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterImpact, Player.Center);
-                    damage = 0;
-                    playSound = false;
-                    return true;
-                }
-
-                if (Player.GetModPlayer<StarsAbovePlayer>().keyofchronology == 2)
-                {
-                    if (damage >= 200 && !(Main.LocalPlayer.HasBuff(BuffType<Buffs.KeyOfChronologyCooldown>())))
-                    {
-                        if (starfarerPromptCooldown > 0)
-                        {
-                            starfarerPromptCooldown = 0;
-                        }
-                        starfarerPromptActive("onKeyOfChronology");
-                        /*
-                        if (chosenStarfarer == 1)
-                        {
-                            if (Player.ownedProjectileCounts[Mod.Find<ModProjectile>("AsphodeneBurst").Type] < 1)
-                                Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("AsphodeneBurst").Type, 0, 0, Player.whoAmI, 0, 1);
-
-                        }
-                        if (chosenStarfarer == 2)
-                        {
-                            if (Player.ownedProjectileCounts[Mod.Find<ModProjectile>("EridaniBurst").Type] < 1)
-                                Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurst").Type, 0, 0, Player.whoAmI, 0, 1);
-
-                        }*/
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_TimeEffect, Player.Center);
-                        for (int d = 0; d < 12; d++)
-                        {
-                            Dust.NewDust(Player.position, 0, 0, 113, 0f + Main.rand.Next(-7, 7), 0f + Main.rand.Next(-7, 7), 150, default(Color), 1.5f);
-                        }
-                        Player.statLife += damage;
-                        for (int i = 0; i < Main.maxNPCs; i++)
-                        {
-                            NPC npc = Main.npc[i];
-                            if (npc.active && !npc.boss && npc.Distance(Player.Center) < 1000)
-                            {
-                                npc.AddBuff(BuffType<Stun>(), 300);
-                            }
-                        }
-
-                        Main.LocalPlayer.AddBuff(BuffType<Buffs.Invincibility>(), 300);
-                        Main.LocalPlayer.AddBuff(BuffType<Buffs.KeyOfChronologyCooldown>(), 7200);
-
-                        if (starfarerOutfit == 4)
-                        {
-                            Player.ClearBuff(BuffID.PotionSickness);
-                            Player.potionDelay = 0;
-                            Player.potionDelayTime = 0;
-                            Player.AddBuff(BuffID.Heartreach, 1800);
-
-                        }
-
-                        return false;
-                    }
-
-                    return true;
-                }
-                
-                if (Player.GetModPlayer<StarsAbovePlayer>().astralmantle == 2)
-                {
-
-                    return true;
-                }
-
-                if (Player.GetModPlayer<StarsAbovePlayer>().aquaaffinity == 2)
-                {
-
-                    return true;
-                }
-                if (Player.GetModPlayer<StarsAbovePlayer>().ironskin == 2)
-                {
-                    if (damage >= 100)
-                    {
-                        damage -= 30;
-                    }
-                    if (Player.statLife < 100)
-                    {
-                        damage = (int)(damage * 0.8f);
-                    }
-
-                    return true;
-                }
-                if (Player.GetModPlayer<StarsAbovePlayer>().starfarerOutfit == 3)
-                {
-
-                    damage = (int)(damage * 0.9f);
-                    novaGauge += 3;
-
-                    return true;
-                }
-                if (starfarerOutfit == 4) // Aegis of Hope's Legacy
-                {
-                    hopesBrilliance++;
-                    Player.AddBuff(BuffType<NascentAria>(), 180);
-                    Player.AddBuff(BuffID.Ironskin, 480);
-                    Player.AddBuff(BuffID.Regeneration, 480);
-                    Player.AddBuff(BuffID.Endurance, 480);
-
-
-                }
-
-                if (Main.LocalPlayer.HasBuff(BuffType<Buffs.DashInvincibility>()))
-                {
-                    damage = 0;
-
-                    return true;
-                }
-                
-            }
-
-            if (starfarerOutfit == 1)
-            {
-                Player.AddBuff(BuffType<Vulnerable>(), 240);
-            }
-
-            return true;
+            return false;
         }
-
-
+        public override bool FreeDodge(Player.HurtInfo info)
+        {
+            if (evasionmastery == 2)
+            {
+                if (Main.rand.Next(0, 101) <= 3 && Player.immuneTime <= 0)
+                {
+                    Player.immune = true;
+                    Player.immuneTime = 30;
+                    return true;
+                }
+            }
+            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.DashInvincibility>()))
+            {
+                return true;
+            }
+            return false;
+        }
+        public override void ModifyHurt(ref Player.HurtModifiers modifiers)/* tModPorter Override ImmuneTo, FreeDodge or ConsumableDodge instead to prevent taking damage */
+        {
+            if (!Player.HasBuff(BuffType<SpatialStratagemCooldown>()) && artofwar == 2)
+            {
+                Player.AddBuff(BuffType<SpatialStratagemCooldown>(), 1800);
+                Player.AddBuff(BuffType<SpatialStratagem>(), 120);
+                Player.AddBuff(BuffType<SpatialStratagemActive>(), 120);
+                modifiers.FinalDamage -= 0.5f;
+            }
+            if (Player.HasBuff(BuffType<SpatialStratagem>()))
+            {
+                modifiers.FinalDamage -= 0.5f;
+            }
+            if(Player.GetModPlayer<StarsAbovePlayer>().starfarerOutfit == 3)
+            {
+                modifiers.FinalDamage -= 0.1f;
+                novaGauge += 3;
+            }
+        }
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
         {
 
@@ -11138,23 +10909,57 @@ namespace StarsAbove
             }
 
         }
-        private void onEnemyHitWithNova(NPC target, int nova, ref int damage, ref bool crit)
+        private void ModifyHitEnemyWithNovaCrit(NPC target, ref NPC.HitModifiers modifiers)
         {
+            if (royalSlimePrism)
+            {
+                modifiers.FinalDamage *= 1.4f;
+            }
+        }
+        private void ModifyHitEnemyWithNovaNoCrit(NPC target, ref NPC.HitModifiers modifiers)
+        {
+            if (royalSlimePrism)
+            {
+               modifiers.FinalDamage *= 0.8f;
+            }
+        }
+        private void ModifyHitEnemyWithNova(NPC target, ref NPC.HitModifiers modifiers)
+        {
+            if (empressPrism)
+            {
+                modifiers.SetCrit();
+                modifiers.FinalDamage *= 0.7f;
+            }
+            if (burnishedPrism)
+            {
+                if (target.boss)
+                {
+                    modifiers.DisableCrit();
+                }
+                else
+                {
+                    modifiers.FinalDamage *= 1.4f;
+                }
+            }
             if (starfarerOutfit == 4 && hopesBrilliance > 0)
             {
                 for (int i = 0; i < hopesBrilliance / 10; i++)
                 {
-                    damage = (int)(damage * (1.02));
+                    modifiers.FinalDamage *= 1.02f;
                 }
 
                 hopesBrilliance = 0;
             }
-            if (empressPrism)
+            if (luminitePrism)
             {
-                crit = true;
-                damage = (int)(damage * 0.7);
+                if (trueNovaGaugeMax >= 200)
+                {
+                    modifiers.FinalDamage *= 1.5f;
+                }
             }
-
+        }
+        private void OnEnemyHitWithNova(NPC target, int nova, ref int damage, ref bool crit)
+        {
             if (paintedPrism)
             {
                 target.AddBuff(BuffID.Ichor, 720);
@@ -11178,45 +10983,6 @@ namespace StarsAbove
                 Vector2 placement2 = new Vector2((target.Center.X), target.Center.Y);
 
                 Projectile.NewProjectile(null, placement2.X, placement2.Y, 0, 0, Mod.Find<ModProjectile>("VoidsentBurst").Type, damage / 10, 0f, 0);
-            }
-            if (royalSlimePrism)
-            {
-                if (crit)
-                {
-                    damage = (int)(damage * 1.4);
-                }
-                else
-                {
-                    damage = (int)(damage * 0.8);
-                }
-            }
-            if (typhoonPrism)
-            {
-                if (crit && !Player.HasBuff(BuffType<TyphoonPrismCooldown>()))
-                {
-                    damage += Math.Min((int)(target.lifeMax * 0.05), 40000);
-                    Player.AddBuff(BuffType<TyphoonPrismCooldown>(), 240);
-                }
-
-            }
-
-            if (luminitePrism)
-            {
-                if (trueNovaGaugeMax >= 200)
-                {
-                    damage = (int)(damage * 1.5);
-                }
-            }
-            if (burnishedPrism)
-            {
-                if(target.boss)
-                {
-                    crit = false;
-                }
-                else
-                {
-                    damage = (int)(damage * 1.4);
-                }
             }
         }
         public override void ResetEffects()

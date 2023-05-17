@@ -154,28 +154,22 @@ namespace StarsAbove
             {
                 if(target.life < target.lifeMax/2)//Less than half HP
                 {
-                    damage = (int)(damage * 1.3);
+
+                    modifiers.SourceDamage += 1.3f;
                 }
             }
             if (Player.HasBuff(BuffType<RangaBuff>()) || Player.HasBuff(BuffType<FuriosoBuff>()))
             {
-                if (crit)
-                {
-                    damage = (int)(damage * 1.3);
-                }
+                modifiers.CritDamage += 1.5f;
             }
             if (Player.HasBuff(BuffType<DurandalBuff>()) || Player.HasBuff(BuffType<FuriosoBuff>()))
             {
                 if(target.life < target.lifeMax/2)
                 {
-                    if(crit)
-                    {
-                        damage = (int)(damage * 1.5);
-                    }
+                    modifiers.CritDamage += 1.5f;
                 }
             }
 
-            base.ModifyHitNPCWithProj(proj, target, ref damage, ref knockback, ref crit, ref hitDirection);
         }
         public override void PreUpdateBuffs()
         {

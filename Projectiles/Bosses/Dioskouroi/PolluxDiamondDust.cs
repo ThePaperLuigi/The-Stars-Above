@@ -69,7 +69,7 @@ namespace StarsAbove.Projectiles.Bosses.Dioskouroi
 			}
 
 			target.AddBuff(BuffID.Frostburn, 60);
-			base.OnHitPlayer(target, damage, crit);
+			 
 		}
 		public override void AI() {
 

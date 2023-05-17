@@ -59,7 +59,7 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
 			target.AddBuff(BuffID.OnFire, 60);
-            base.OnHitPlayer(target, damage, crit);
+             
         }
     }
 }

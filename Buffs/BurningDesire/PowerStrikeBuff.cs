@@ -26,7 +26,6 @@ namespace StarsAbove.Buffs.BurningDesire
             tip = LangHelper.GetTextValue("BuffDescription.PowerStrikeBuff", powerStrikeStacks, powerStrikeStacks * 5,
                 powerStrikeStacks * 5);
 
-            base.ModifyBuffText(ref tip, ref rare);
         }
     }
 }

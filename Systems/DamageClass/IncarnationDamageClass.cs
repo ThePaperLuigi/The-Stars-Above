@@ -9,7 +9,6 @@ namespace StarsAbove.Systems
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("incarnated damage");
 		}
 
 		//public string "Spatial Damage" => DisplayName;

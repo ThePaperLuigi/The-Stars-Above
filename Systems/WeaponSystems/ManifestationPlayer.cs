@@ -265,7 +265,6 @@ namespace StarsAbove
             gaugeChangeAlpha = 1f;
 
             emotionGauge += 2;
-            return base.ModifyHurt(pvp, quiet, ref damage, ref hitDirection, ref crit, ref customDamage, ref playSound, ref genGore, ref damageSource, ref cooldownCounter);
         }
         public override void FrameEffects()
         {
@@ -303,7 +302,7 @@ namespace StarsAbove
             {
                 emotionGauge++;
                 gaugeChangeAlpha = 1f;
-                if (crit)
+                if(hit.Crit)
                 {
                     if(Player.statLife < 200)
                     {
@@ -354,9 +353,9 @@ namespace StarsAbove
         }
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Projectile, consider using ModifyHitNPC instead */
         {
-            if (crit)
+            if(manifestationHeld)
             {
-                damage = (int)(damage * 1.2);
+                modifiers.CritDamage += 1.2f;
             }
 
         }

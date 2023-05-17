@@ -173,7 +173,7 @@ namespace StarsAbove.Projectiles.Adornment
 			//target.AddBuff(BuffID.OnFire, 240);
 			if (player.HasBuff(BuffType<AdornmentCritBuff>()))
             {
-				crit = true;
+				modifiers.SetCrit();
             }
         }
         

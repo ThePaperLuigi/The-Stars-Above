@@ -47,7 +47,7 @@ namespace StarsAbove.Projectiles
         {
 			Projectile.timeLeft = 50;
 
-            base.OnHitPlayer(target, damage, crit);
+             
         }
         public override void AI() {
 			Lighting.AddLight(Projectile.Center, new Vector3(0.99f, 0.6f, 0.3f));

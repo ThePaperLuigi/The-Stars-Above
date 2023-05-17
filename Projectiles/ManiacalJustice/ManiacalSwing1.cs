@@ -82,7 +82,7 @@ namespace StarsAbove.Projectiles.ManiacalJustice
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Main.player[Projectile.owner].GetModPlayer<WeaponPlayer>().LVStacks++;
-			if(crit)
+			if(hit.Crit)
             {
 				Main.player[Projectile.owner].GetModPlayer<WeaponPlayer>().LVStacks += 5;
 

@@ -126,7 +126,7 @@ namespace StarsAbove.Projectiles.SupremeAuthority
 				Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 6f;
 			}
 
-			if(crit && player.HasBuff(BuffType<DeifiedBuff>()))
+			if(hit.Crit && player.HasBuff(BuffType<DeifiedBuff>()))
             {
 				player.GetModPlayer<WeaponPlayer>().SupremeAuthorityEncroachingStacks++;
 

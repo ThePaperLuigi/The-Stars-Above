@@ -39,7 +39,7 @@ namespace StarsAbove.Projectiles.SparkblossomBeacon
 
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-			crit = true;
+			modifiers.SetCrit();
             
         }
         public override void AI() {

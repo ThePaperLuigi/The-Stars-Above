@@ -82,8 +82,8 @@ namespace StarsAbove.Projectiles.SanguineDespair
         {
 			target.AddBuff(BuffType<MortalWounds>(), 60 * 8);
 			Player player = Main.player[Projectile.owner];
-			player.statLife += (int)(damage * 0.05f);
-			player.HealEffect((int)(damage * 0.05f));
+			player.Heal((int)(damageDone * 0.05f));
+			
 
 		}
 

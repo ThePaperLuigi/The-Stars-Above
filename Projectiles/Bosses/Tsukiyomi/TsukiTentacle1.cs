@@ -81,7 +81,6 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 
 			}
 			target.AddBuff(BuffID.ShadowFlame, 420);
-			base.OnHitPlayer(target, damage, crit);
         }
       
 	}

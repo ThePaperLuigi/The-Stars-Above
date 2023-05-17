@@ -119,9 +119,9 @@ namespace StarsAbove.Projectiles.LevinstormAxe
 				}
 			}
 
-			if (crit && Main.player[Projectile.owner].HasBuff(BuffType<GatheringLevinstorm>()))
+			if (hit.Crit && Main.player[Projectile.owner].HasBuff(BuffType<GatheringLevinstorm>()))
             {
-				Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0,0, ProjectileType<LevinstormExplosion>(), damage, Projectile.knockBack, Projectile.owner);
+				Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0,0, ProjectileType<LevinstormExplosion>(), damageDone, Projectile.knockBack, Projectile.owner);
 
 			}
 

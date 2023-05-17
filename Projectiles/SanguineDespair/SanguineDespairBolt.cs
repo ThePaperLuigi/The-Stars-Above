@@ -121,7 +121,7 @@ namespace StarsAbove.Projectiles.SanguineDespair
         {
 			Player projOwner = Main.player[Projectile.owner];
 			projOwner.GetModPlayer<WeaponPlayer>().renegadeGauge++;
-			if(crit)
+			if(hit.Crit)
             {
 				projOwner.GetModPlayer<WeaponPlayer>().renegadeGauge++;
 			}
@@ -147,16 +147,8 @@ namespace StarsAbove.Projectiles.SanguineDespair
         {
 			if(target.HasBuff(BuffType<MortalWounds>()))
             {
-				if(crit)
-                {
-					damage = (int)(damage * 1.3f);
-
-				}
-				else
-                {
-					damage = (int)(damage * 1.1f);
-
-				}
+				modifiers.CritDamage += 0.3f;
+				modifiers.NonCritDamage += 0.1f;
 			}
 			for (int d = 0; d < 18; d++)
 			{

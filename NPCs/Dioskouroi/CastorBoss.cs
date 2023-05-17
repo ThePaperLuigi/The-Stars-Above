@@ -141,10 +141,10 @@ namespace StarsAbove.NPCs.Dioskouroi
 		}
 		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */
 		{
-			NPC.lifeMax = (int)(NPC.lifeMax * bossLifeScale * numPlayers);
+			NPC.lifeMax = (int)(NPC.lifeMax * bossAdjustment * balance);
 			//NPC.defense *= numPlayers * 5;
 		}
-        public override void BossLoot(ref string name, ref int potionType)
+		public override void BossLoot(ref string name, ref int potionType)
         {
 			
 			potionType = ItemID.None;

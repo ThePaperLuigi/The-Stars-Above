@@ -15,7 +15,7 @@ namespace StarsAbove.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.statDefense = 0;
+            player.statDefense *= 0;
             player.witheredWeapon = true;
         }
     }

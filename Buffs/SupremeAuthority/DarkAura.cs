@@ -18,7 +18,7 @@ namespace StarsAbove.Buffs.SupremeAuthority
             int stacks = Main.LocalPlayer.GetModPlayer<WeaponPlayer>().SupremeAuthorityConsumedNPCs;
             tip = LangHelper.GetTextValue("BuffDescription.DarkAuraBuff", stacks);
 
-            base.ModifyBuffText(ref tip, ref rare);
+             
         }
         public override void Update(Player player, ref int buffIndex)
         {

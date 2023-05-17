@@ -62,7 +62,7 @@ namespace StarsAbove.Items
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().butchersdozen = 2;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().flashfreeze = 2;
 			//Tier 2
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().bonus100hp = 2;//
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>(). healthyConfidence = 2;//
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().bloomingflames = 2;//
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().astralmantle = 2;//
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().avataroflight = 2;

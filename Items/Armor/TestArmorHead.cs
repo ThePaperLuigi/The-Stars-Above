@@ -31,7 +31,6 @@ namespace StarsAbove.Items.Armor
 
         public override void UpdateEquip(Player player)
         {
-			player.statDefense = 999999;
             base.UpdateEquip(player);
         }
 

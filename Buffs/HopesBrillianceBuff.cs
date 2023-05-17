@@ -24,7 +24,6 @@ namespace StarsAbove.Buffs
         {
             tip = $"{Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().hopesBrilliance}/{Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().hopesBrillianceMax}";
 
-            base.ModifyBuffText(ref tip, ref rare);
         }
     }
 }

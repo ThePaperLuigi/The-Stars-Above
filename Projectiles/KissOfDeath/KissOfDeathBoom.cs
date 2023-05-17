@@ -95,8 +95,9 @@ namespace StarsAbove.Projectiles.KissOfDeath
         {
 			if(target.life <= target.lifeMax/2)
             {
-				damage = (int)(damage * 1.2f);
-            }
+				modifiers.SourceDamage += 0.2f;
+
+			}
 			target.AddBuff(BuffType<SecurityLevel>(), 12 * 60);
 			//target.AddBuff(BuffID.OnFire, 240);
            

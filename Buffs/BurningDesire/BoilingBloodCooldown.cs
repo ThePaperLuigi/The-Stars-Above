@@ -27,7 +27,6 @@ namespace StarsAbove.Buffs.BurningDesire
             
               
 
-            base.ModifyBuffText(ref tip, ref rare);
         }
         public override bool PreDraw(SpriteBatch spriteBatch, int buffIndex, ref BuffDrawParams drawParams)
         {

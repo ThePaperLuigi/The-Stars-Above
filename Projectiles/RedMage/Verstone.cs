@@ -58,18 +58,20 @@ namespace StarsAbove.Projectiles.RedMage
 
 			base.AI();
         }
-		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
-		{
-			if(crit)
-            {
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+			if (hit.Crit)
+			{
 				Player player = Main.player[Projectile.owner];
 				if (target.CanBeChasedBy() && !target.SpawnedFromStatue)
 				{
-					Rectangle textPos = new Rectangle((int)player.position.X, (int)player.position.Y - 20, player.width, player.height);
-					CombatText.NewText(textPos, new Color(49, 234, 63, 240), $"12", false, false);
-					player.statLife += 12;
+					player.Heal(12);
 				}
 			}
+		}
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+		{
+			
 
 			 
 		}

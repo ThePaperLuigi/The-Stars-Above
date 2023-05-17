@@ -118,7 +118,7 @@ namespace StarsAbove.Projectiles.BlackSilence
         {
 			if(target.life < target.lifeMax/2)
             {
-				damage *= 2;
+				modifiers.SourceDamage += 0.5f;
             }
              
         }

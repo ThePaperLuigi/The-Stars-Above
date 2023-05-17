@@ -152,14 +152,18 @@ namespace StarsAbove.Projectiles.KissOfDeath
 			
 			return true;
 		}
-        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 			Main.player[Projectile.owner].MinionAttackTargetNPC = target.whoAmI;
 
-			Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0, 0, ProjectileType<KissOfDeathBoom>(), damage, 0f, Main.player[Projectile.owner].whoAmI, 0);
+			Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0, 0, ProjectileType<KissOfDeathBoom>(), damageDone, 0f, Main.player[Projectile.owner].whoAmI, 0);
 
 
-			 
+
+		}
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
+			
         }
         public override void Kill(int timeLeft)
 		{

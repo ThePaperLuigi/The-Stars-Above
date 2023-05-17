@@ -140,7 +140,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 		}
 		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */
 		{
-			NPC.lifeMax = (int)(NPC.lifeMax * bossLifeScale * numPlayers);
+			NPC.lifeMax = (int)(NPC.lifeMax * bossAdjustment * balance);
 			//NPC.defense *= numPlayers * 5;
 		}
         public override void BossLoot(ref string name, ref int potionType)
@@ -1281,13 +1281,13 @@ namespace StarsAbove.NPCs.Tsukiyomi
 				else if (NPC.localAI[0] == 1)
 				{
 					//Phase 2
-					damage = (int)(damage * 0.7f);
+					modifiers.FinalDamage *= 0.7f;
 
 				}
 				else
 				{
 					//Phase 1
-					damage = (int)(damage * 0.7f);
+					modifiers.FinalDamage *= 0.7f;
 
 				}
 			}
@@ -1296,13 +1296,13 @@ namespace StarsAbove.NPCs.Tsukiyomi
 				if (NPC.localAI[0] != 0)
 				{
 					//Phase 2
-					damage = (int)(damage * 0.7f);
+					modifiers.FinalDamage *= 0.7f;
 
 				}
 				else
 				{
 					//Phase 1
-					damage = (int)(damage * 0.7f);
+					modifiers.FinalDamage *= 0.7f;
 
 				}
 			}

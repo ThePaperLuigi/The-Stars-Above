@@ -99,7 +99,7 @@ namespace StarsAbove.Projectiles.Mercy
 				Dust.NewDust(target.Center, 0, 0, 235, Main.rand.NextFloat(-5, 5), Main.rand.NextFloat(-5, 5), 150, default(Color), 1.2f);
 
 			}
-			if (crit)
+			if(hit.Crit)
 			{
 				Player player = Main.player[Projectile.owner];
 				player.ClearBuff(BuffType<EdgeOfAnguishCooldown>());

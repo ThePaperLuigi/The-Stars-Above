@@ -11,7 +11,6 @@ namespace StarsAbove.Systems
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("gadget strength");
 		}
 
 		//public string "Spatial Damage" => DisplayName;

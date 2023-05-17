@@ -89,7 +89,7 @@ namespace StarsAbove.Projectiles.Umbra
 			Vector2 velocity = direction * 26f;
 
 
-			if (crit && Projectile.penetrate > 0)
+			if (hit.Crit && Projectile.penetrate > 0)
             {
 				for (int i = 0; i < Projectile.penetrate; i++)
 				{
@@ -101,7 +101,7 @@ namespace StarsAbove.Projectiles.Umbra
 					heading *= new Vector2(velocity.X, velocity.Y).Length();
 					velocity.X = heading.X;
 					velocity.Y = heading.Y + Main.rand.Next(-40, 41) * 0.02f;
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, velocity.X, velocity.Y, ProjectileType<UmbraSwordShoot>(), damage, knockback, player.whoAmI, 0f);
+					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, velocity.X, velocity.Y, ProjectileType<UmbraSwordShoot>(), damageDone, 0, player.whoAmI, 0f);
 				}
 			}
 

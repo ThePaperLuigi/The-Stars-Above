@@ -135,7 +135,7 @@ namespace StarsAbove.Projectiles.KissOfDeath
         {
 			if(Projectile.ai[1] > 0)
             {
-				crit = true;
+				modifiers.SetCrit();
             }
              
         }

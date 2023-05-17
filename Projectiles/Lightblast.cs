@@ -47,7 +47,7 @@ namespace StarsAbove.Projectiles
         {
 			Projectile.timeLeft = 50;
 
-            base.OnHitPlayer(target, damage, crit);
+             
         }
 
 		

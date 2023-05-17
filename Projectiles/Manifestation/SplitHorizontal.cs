@@ -85,7 +85,7 @@ namespace StarsAbove.Projectiles.Manifestation
 
 		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-			crit = true;
+			modifiers.SetCrit();
 
 			
 			for (int d = 0; d < 24; d++)
@@ -96,7 +96,7 @@ namespace StarsAbove.Projectiles.Manifestation
 
 			if (target.life < (int)(target.lifeMax * 0.3) && !target.boss)
 			{
-				damage = target.life;
+				modifiers.SetInstantKill();
 			}
 
 		}

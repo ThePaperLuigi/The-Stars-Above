@@ -173,7 +173,7 @@ namespace StarsAbove.Projectiles.GoldenKatana
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-			crit = true;
+			modifiers.SetCrit();
 
              
         }

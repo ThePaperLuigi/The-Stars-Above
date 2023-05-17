@@ -11,7 +11,7 @@ namespace StarsAbove.Systems
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("psychoment damage");
+			
 		}
 
 		//public string "Spatial Damage" => DisplayName;

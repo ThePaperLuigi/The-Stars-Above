@@ -66,8 +66,8 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 		}
         public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers)
         {
-			damage = (int)(target.statLifeMax * 0.2);
-            base.ModifyHitPlayer(target, ref damage, ref crit);
+			modifiers.SourceDamage.Flat += (int)(target.statLifeMax * 0.2);
+             
         }
 
     }

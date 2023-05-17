@@ -65,15 +65,19 @@ namespace StarsAbove.Projectiles.Skofnung
 			Player player = Main.player[Projectile.owner];
 			
 
-			if(crit)
+			if(hit.Crit)
             {
-				damage /= 2;
+				
 				player.AddBuff(BuffType<BloodstainedBelone>(), 480);
 				
             }
 
 
              
+        }
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
+			modifiers.CritDamage *= 0.5f;
         }
         public override void Kill(int timeLeft)
 		{
