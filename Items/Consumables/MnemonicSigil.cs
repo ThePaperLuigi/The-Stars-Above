@@ -70,37 +70,37 @@ namespace StarsAbove.Items.Consumables
 
 			if (Main.netMode == NetmodeID.MultiplayerClient)
 			{
-				NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: type);
+				//NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: type);
 			}
 			else
             {
-				//var tilePos = player.Bottom.ToTileCoordinates16();
-				//Tile tile = Framing.GetTileSafely(tilePos.X, tilePos.Y);
-				//tile.TileType == TileID.AmethystGemspark &&
-				if (SubworldSystem.IsActive<EternalConfluence>())
+				
+
+			}
+			//var tilePos = player.Bottom.ToTileCoordinates16();
+			//Tile tile = Framing.GetTileSafely(tilePos.X, tilePos.Y);
+			//tile.TileType == TileID.AmethystGemspark &&
+			if (SubworldSystem.IsActive<EternalConfluence>())
+			{
+
+				if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("The expanse around you begins to contract..."), 210, 100, 175); }
+				//if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("Tsukiyomi appears before you!"), 200, 150, 125); }
+				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-
-					if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("The expanse around you begins to contract..."), 210, 100, 175); }
-					//if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("Tsukiyomi appears before you!"), 200, 150, 125); }
-					if (Main.netMode != NetmodeID.MultiplayerClient)
-					{
-						// If the player is not in multiplayer, spawn directly
-						NPC.SpawnOnPlayer(player.whoAmI, type);
-					}
-					else
-					{
-						// If the player is in multiplayer, request a spawn
-
-						NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: type);
-					}
+					// If the player is not in multiplayer, spawn directly
+					NPC.SpawnOnPlayer(player.whoAmI, type);
 				}
 				else
 				{
-					SubworldSystem.Enter("StarsAbove/EternalConfluence");
+					// If the player is in multiplayer, request a spawn
+
+					NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: type);
 				}
-
 			}
-
+			else
+			{
+				SubworldSystem.Enter("StarsAbove/EternalConfluence");
+			}
 
 			/*if(!SubworldSystem.IsActive<EternalConfluence>())
             {

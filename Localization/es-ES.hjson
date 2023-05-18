@@ -3019,7 +3019,7 @@ Mods: {
 
 			SubworldCompatibility: {
 				// Label: Disable Multiplayer Compatibility-Fix for Cosmic Voyages
-				// Tooltip: Allows for users in Multiplayer to undertake Cosmic Voyages- this is known to cause issues. When this is toggled off, causes items to drop instead.
+				// Tooltip: Allows for users in Multiplayer to undertake Cosmic Voyages- toggle this off to drop items from Subworlds instead of travelling there.
 			}
 
 			CombatTimer: {

@@ -3019,7 +3019,7 @@ Mods: {
 
 			SubworldCompatibility: {
 				Label: Disable Multiplayer Compatibility-Fix for Cosmic Voyages
-				Tooltip: Allows for users in Multiplayer to undertake Cosmic Voyages- this is known to cause issues. When this is toggled off, causes items to drop instead.
+				Tooltip: Allows for users in Multiplayer to undertake Cosmic Voyages- toggle this off to drop items from Subworlds instead of travelling there.
 			}
 
 			CombatTimer: {
@@ -3884,7 +3884,7 @@ Mods: {
 					[c/F1AFFF:Once they have been unlocked, Stellar Novas can be modified with the] [c/EC356F:Starfarer Menu]
 					[c/F1AFFF:Once it have been unlocked, Celestial Cartography can be accessed with the] [c/EC356F:Starfarer Menu]
 					You can re-acquire lost items and read previous dialogue with the [c/9FEE5E:Archive]
-					The ability to wield Umbral [i:5594] or Astral [i:5242] weapons depends on your chosen [c/F1AF42:Starfarer]
+					The ability to wield Umbral or Astral weapons depends on your chosen [c/F1AF42:Starfarer]
 					'''
 				DisplayName: Spatial Disk
 			}
