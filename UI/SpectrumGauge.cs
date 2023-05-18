@@ -9,7 +9,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.UI
 {
-    internal class lifeForceBar : UIState
+    internal class SpectrumGauge : UIState
 	{
 		// For this bar we'll be using a frame texture and then a gradient inside bar, as it's one of the more simpler approaches while still looking decent.
 		// Once this is all set up make sure to go and do the required stuff for most UI's in the Mod class.
@@ -28,7 +28,7 @@ namespace StarsAbove.UI
 			area.Height.Set(60, 0f);
 			area.HAlign = area.VAlign = 0.5f; // 1
 
-			barFrame = new UIImage(Request<Texture2D>("StarsAbove/UI/lifeForceBar"));
+			barFrame = new UIImage(Request<Texture2D>("StarsAbove/UI/blank"));
 			barFrame.Left.Set(22, 0f);
 			barFrame.Top.Set(0, 0f);
 			barFrame.Width.Set(138, 0f);
@@ -40,8 +40,8 @@ namespace StarsAbove.UI
 			text.Top.Set(40, 0f);
 			text.Left.Set(0, 0f);
 
-			gradientA = new Color(203, 234, 236); // 
-			gradientB = new Color(3, 221, 235); //
+			gradientA = new Color(198, 213, 255); // 
+			gradientB = new Color(240, 62, 255); //
 
 			area.Append(text);
 			area.Append(barFrame);
@@ -49,9 +49,9 @@ namespace StarsAbove.UI
 		}
 
 		public override void Draw(SpriteBatch spriteBatch) {
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 
-			if (modPlayer.NalhaunActive == false)
+			if (modPlayer.BrilliantSpectrumHeld == false)
 				return;
 
 			base.Draw(spriteBatch);
@@ -60,9 +60,9 @@ namespace StarsAbove.UI
 		protected override void DrawSelf(SpriteBatch spriteBatch) {
 			base.DrawSelf(spriteBatch);
 
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			// Calculate quotient
-			float quotient = (float)modPlayer.lifeforce / 100; // Creating a quotient that represents the difference of your currentResource vs your maximumResource, resulting in a float of 0-1f.
+			float quotient = (float)modPlayer.refractionGauge / modPlayer.refractionGaugeMax; // Creating a quotient that represents the difference of your currentResource vs your maximumResource, resulting in a float of 0-1f.
 			quotient = Utils.Clamp(quotient, 0f, 1f); // Clamping it to 0-1f so it doesn't go over that.
 
 			// Here we get the screen dimensions of the barFrame element, then tweak the resulting rectangle to arrive at a rectangle within the barFrame texture that we will draw the gradient. These values were measured in a drawing program.
@@ -71,6 +71,7 @@ namespace StarsAbove.UI
 			hitbox.Width -= 24;
 			hitbox.Y += 12;
 			hitbox.Height -= 24;
+			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/SpectrumGauge"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);
 
 			// Now, using this hitbox, we draw a gradient by drawing vertical lines while slowly interpolating between the 2 colors.
 			int left = hitbox.Left;
@@ -81,11 +82,14 @@ namespace StarsAbove.UI
 				float percent = (float)i / (right - left);
 				spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height), Color.Lerp(gradientA, gradientB, percent));
 			}
+
+			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/EmotionGauge"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);
+
 		}
 		public override void Update(GameTime gameTime) {
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 
-			if (modPlayer.NalhaunActive == false)
+			if (modPlayer.BrilliantSpectrumHeld == false)
 				return;
 
 			

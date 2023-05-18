@@ -5096,6 +5096,22 @@ Mods: {
 					'''
 				DisplayName: Kazimierz Seraphim
 			}
+			BrilliantSpectrum: {
+				Tooltip:
+					'''
+					[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes]
+					Attacks barrage foes with close-ranged strikes; right-click to dash towards your cursor (1 second cooldown)
+					Hold left click to slow yourself and channel energy, absorbing all incoming damage while draining HP (HP drain is increased the longer the channel continues)
+					Absorbed damage is converted into [Refraction] based on a percentage of Max HP, granting increases to damage, movement speed, and attack speed
+					[Refraction] diminishes over time and quickly diminishes out of combat
+					At maximum [Refraction], gain Alacrity and taking fatal damage consumes all [Refraction], granting Invincibility for 2 seconds and knocking back nearby foes
+					When inflicted with specific debuffs, gain [Elemental Affinity] for the debuff's duration and cleanse the debuff
+					Frozen, Chilled, Frostburn: Gain [Frost Affinity], causing attacks to inflict Frostburn for 3 seconds and ice will be flung when attacking
+					On Fire, Shadowflame, Burning: Gain [Blaze Affinity], causing attacks to burn foes for 3 seconds and critical strikes will explode
+					While under the effect of [Elemental Affinity], application of the opposite [Elemental Affinity] will instead deal 5% of your Max HP in self damage
+					'''
+				DisplayName: Brilliant Spectrum
+			}
 
 			KeyOfTheKingsLaw: {
 				Tooltip:

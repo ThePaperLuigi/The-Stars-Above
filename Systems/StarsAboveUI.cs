@@ -112,8 +112,8 @@ namespace StarsAbove
 		private UserInterface _PolluxCastBarUserInterface;
 		internal PolluxCastBar PolluxCastBar;
 
-		private UserInterface _lifeForceBarUserInterface;
-		internal lifeForceBar lifeForceBar;
+		private UserInterface _SpectrumGaugeUserInterface;
+		internal SpectrumGauge SpectrumGauge;
 
 		private UserInterface _HawkmoonGaugeUserInterface;
 		internal HawkmoonGauge HawkmoonGauge;
@@ -308,9 +308,9 @@ namespace StarsAbove
 				_PolluxCastBarUserInterface = new UserInterface();
 				_PolluxCastBarUserInterface.SetState(PolluxCastBar);
 
-				lifeForceBar = new lifeForceBar();
-				_lifeForceBarUserInterface = new UserInterface();
-				_lifeForceBarUserInterface.SetState(lifeForceBar);
+				SpectrumGauge = new SpectrumGauge();
+				_SpectrumGaugeUserInterface = new UserInterface();
+				_SpectrumGaugeUserInterface.SetState(SpectrumGauge);
 
 				HawkmoonGauge = new HawkmoonGauge();
 				_HawkmoonGaugeUserInterface = new UserInterface();
@@ -471,7 +471,7 @@ namespace StarsAbove
 			_PolluxCastBarUserInterface?.Update(gameTime);
 			_VagrantCastBarUserInterface?.Update(gameTime);
 			_PenthCastBarUserInterface?.Update(gameTime);
-			_lifeForceBarUserInterface?.Update(gameTime);
+			_SpectrumGaugeUserInterface?.Update(gameTime);
 			_StarfarerPromptUserInterface?.Update(gameTime);
 			_CelestialCompassUserInterface?.Update(gameTime);
 			_StarfarerMenuUserInterface?.Update(gameTime);
@@ -910,7 +910,7 @@ namespace StarsAbove
 					"StarsAbove: Life Force Bar",
 					delegate
 					{
-						_lifeForceBarUserInterface.Draw(Main.spriteBatch, new GameTime());
+						_SpectrumGaugeUserInterface.Draw(Main.spriteBatch, new GameTime());
 						return true;
 					},
 					InterfaceScaleType.UI)

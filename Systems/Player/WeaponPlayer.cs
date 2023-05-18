@@ -131,6 +131,10 @@ namespace StarsAbove
         public bool KissOfDeathHeld;
         public int overdriveGauge;
 
+        //Brilliant Spectrum
+        public bool BrilliantSpectrumHeld;
+        public float refractionGauge;
+        public float refractionGaugeMax;
 
         //Yunlai Stilletto
         public bool yunlaiTeleport;
@@ -3576,6 +3580,7 @@ namespace StarsAbove
 
             SaltwaterScourgeHeld = false;
 
+            BrilliantSpectrumHeld = false;
             KissOfDeathHeld = false;
             BurningDesireHeld = false;
             GoldenKatanaHeld = false;
