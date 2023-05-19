@@ -23,7 +23,8 @@ namespace StarsAbove.Items.Placeable.CyberWorld
 			Item.useStyle = 1;
 			Item.consumable = true;
 			Item.value = 150;
-			Item.createTile = Mod.Find<ModTile>("VendingMachine").Type;
+			Item.createTile = Mod.Find<ModTile>("VendingMachine").Type; Item.ResearchUnlockCount = 0;
+
 		}
 
 		public override void AddRecipes()

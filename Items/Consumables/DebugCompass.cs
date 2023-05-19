@@ -28,8 +28,10 @@ namespace StarsAbove.Items.Consumables
 			Item.UseSound = SoundID.Item44;
 			Item.consumable = false;
 			ItemID.Sets.ItemNoGravity[Item.type] = true;
+			Item.ResearchUnlockCount = 0;
+
 		}
-        public override void HoldItem(Player player)
+		public override void HoldItem(Player player)
         {
 			player.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = true;
 			//Test

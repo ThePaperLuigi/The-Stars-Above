@@ -40,8 +40,8 @@ namespace StarsAbove.UI
 			text.Top.Set(40, 0f);
 			text.Left.Set(0, 0f);
 
-			gradientA = new Color(198, 213, 255); // 
-			gradientB = new Color(240, 62, 255); //
+			gradientA = new Color(242, 242, 176); // 
+			gradientB = new Color(51, 255, 147); //
 
 			area.Append(text);
 			area.Append(barFrame);
@@ -65,13 +65,17 @@ namespace StarsAbove.UI
 			float quotient = (float)modPlayer.refractionGauge / modPlayer.refractionGaugeMax; // Creating a quotient that represents the difference of your currentResource vs your maximumResource, resulting in a float of 0-1f.
 			quotient = Utils.Clamp(quotient, 0f, 1f); // Clamping it to 0-1f so it doesn't go over that.
 
+			barFrame.Top.Set(110 + modPlayer.WeaponGaugeOffset, 0f);
+			modPlayer.WeaponGaugeOffset += 20;
+
 			// Here we get the screen dimensions of the barFrame element, then tweak the resulting rectangle to arrive at a rectangle within the barFrame texture that we will draw the gradient. These values were measured in a drawing program.
 			Rectangle hitbox = barFrame.GetInnerDimensions().ToRectangle();
-			hitbox.X += 12;
-			hitbox.Width -= 24;
+			hitbox.X += 18;
+			hitbox.Width -= 28;
 			hitbox.Y += 12;
 			hitbox.Height -= 24;
-			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/SpectrumGauge"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);
+
+			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/SpectrumGaugeBack"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);
 
 			// Now, using this hitbox, we draw a gradient by drawing vertical lines while slowly interpolating between the 2 colors.
 			int left = hitbox.Left;
@@ -81,9 +85,11 @@ namespace StarsAbove.UI
 				//float percent = (float)i / steps; // Alternate Gradient Approach
 				float percent = (float)i / (right - left);
 				spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height), Color.Lerp(gradientA, gradientB, percent));
+				spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height), Color.White * modPlayer.gaugeChangeAlpha);
+
 			}
 
-			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/EmotionGauge"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);
+			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/SpectrumGauge"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);
 
 		}
 		public override void Update(GameTime gameTime) {
@@ -91,7 +97,8 @@ namespace StarsAbove.UI
 
 			if (modPlayer.BrilliantSpectrumHeld == false)
 				return;
-
+			
+			
 			
 			// Setting the text per tick to update and show our resource values.
 			//text.SetText($"[c/FF9D4B:{modPlayer.NalhaunNextAttack}]");

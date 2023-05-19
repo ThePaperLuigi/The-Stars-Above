@@ -79,6 +79,7 @@ using StarsAbove.Projectiles.StellarNovas;
 using StarsAbove.Projectiles.Starchild;
 using StarsAbove.Projectiles.Pigment;
 using StarsAbove.Projectiles.UltimaThule;
+using StarsAbove.Buffs.BrilliantSpectrum;
 
 namespace StarsAbove
 {
@@ -88,6 +89,8 @@ namespace StarsAbove
          * Also includes accessories.
          * Moved from StarsAbovePlayer because honestly, that file was incredibly bloated.
          * */
+
+        public int WeaponGaugeOffset;
 
         #region Weapon/Accessory Variables
         //Unused?
@@ -134,7 +137,8 @@ namespace StarsAbove
         //Brilliant Spectrum
         public bool BrilliantSpectrumHeld;
         public float refractionGauge;
-        public float refractionGaugeMax;
+        public float refractionGaugeMax = 100;
+        public int refractionGaugeTimer = 0;
 
         //Yunlai Stilletto
         public bool yunlaiTeleport;
@@ -2389,6 +2393,16 @@ namespace StarsAbove
        
         public override void PostUpdateRunSpeeds()
         {
+            if (BrilliantSpectrumHeld)
+            {
+                Player.maxRunSpeed *= refractionGauge / refractionGaugeMax;
+                Player.accRunSpeed *= refractionGauge / refractionGaugeMax;
+            }
+            if (Player.HasBuff(BuffType<SpectrumAbsorption>()))
+            {
+                Player.maxRunSpeed *= 0.8f;
+                Player.accRunSpeed *= 0.8f;
+            }
             if (Player.HasBuff(BuffType<Mortality>()))
             {
                 Player.maxRunSpeed *= 0.9f;
@@ -3266,6 +3280,7 @@ namespace StarsAbove
             {
                 Player.ClearBuff(BuffType<JetstreamBloodshed>());
             }
+            
             if (Player.HasBuff(BuffType<Bedazzled>()))//If the player has a Prismic...
             {
                 CatalystPrismicHP -= (int)(info.Damage * 0.8);//The Prismic absorbs 80% of the damage taken.
@@ -3294,10 +3309,72 @@ namespace StarsAbove
         }
         public override bool ImmuneTo(PlayerDeathReason damageSource, int cooldownCounter, bool dodgeable)
         {
+            
             return base.ImmuneTo(damageSource, cooldownCounter, dodgeable);
         }
         public override bool FreeDodge(Player.HurtInfo info)
         {
+            if (Player.HasBuff(BuffType<SpectrumAbsorption>()) && Player.immuneTime <= 0)
+            {
+                SoundEngine.PlaySound(SoundID.Item130, Player.Center);
+
+                gaugeChangeAlpha = 1f;
+                int adjustedDamage = 0;
+                adjustedDamage = info.SourceDamage / 3;
+                refractionGauge += adjustedDamage;
+                if(Player.HasBuff<SpectrumBlazeAffinity>())
+                {
+                    refractionGauge += 3;
+                }
+                float dustAmount = 26f;
+                if (refractionGauge < 20)
+                {
+                    for (int i = 0; (float)i < dustAmount; i++)
+                    {
+                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+                        spinningpoint5 = spinningpoint5.RotatedBy(Player.velocity.ToRotation());
+                        int dust = Dust.NewDust(Player.Center, 0, 0, DustID.GemTopaz);
+                        Main.dust[dust].scale = 2f;
+                        Main.dust[dust].noGravity = true;
+                        Main.dust[dust].position = Player.Center + spinningpoint5;
+                        Main.dust[dust].velocity = Player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 6f;
+                    }
+                }
+                if (refractionGauge >= 20 && refractionGauge < 90)
+                {
+                    for (int i = 0; (float)i < dustAmount; i++)
+                    {
+                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+                        spinningpoint5 = spinningpoint5.RotatedBy(Player.velocity.ToRotation());
+                        int dust = Dust.NewDust(Player.Center, 0, 0, DustID.GemDiamond);
+                        Main.dust[dust].color = new Color(51, 255, 147);
+                        Main.dust[dust].scale = 2f;
+                        Main.dust[dust].noGravity = true;
+                        Main.dust[dust].position = Player.Center + spinningpoint5;
+                        Main.dust[dust].velocity = Player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 6f;
+                    }
+                }
+                if (refractionGauge >= 90)
+                {
+                    for (int i = 0; (float)i < dustAmount; i++)
+                    {
+                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+                        spinningpoint5 = spinningpoint5.RotatedBy(Player.velocity.ToRotation());
+                        int dust = Dust.NewDust(Player.Center, 0, 0, DustID.GemSapphire);
+                        Main.dust[dust].scale = 2f;
+                        Main.dust[dust].noGravity = true;
+                        Main.dust[dust].position = Player.Center + spinningpoint5;
+                        Main.dust[dust].velocity = Player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 6f;
+                    }
+                }
+                Player.immune = true;
+
+                Player.immuneTime = 30;
+                return true;
+            }
             if (Player.HasBuff(BuffType<SpecialAttackBuff>()))
             {
                 if (Main.rand.Next(0, 101) <= 25)
@@ -3312,6 +3389,7 @@ namespace StarsAbove
         }
         public override bool ConsumableDodge(Player.HurtInfo info)
         {
+              
             if (Player.HasBuff(BuffType<GuntriggerParry>()))
             {
 
@@ -3573,7 +3651,7 @@ namespace StarsAbove
         }
         public override void ResetEffects()
         {
-
+            WeaponGaugeOffset = 0;
 
             KevesiFarewellInInventory = false;
             AgnianFarewellInInventory = false;
@@ -3813,7 +3891,7 @@ namespace StarsAbove
             if (player.inCombat < 0)
             {
                 LVStacks--;
-                if(LVStacks < 0)
+                if (LVStacks < 0)
                 {
                     LVStacks = 0;
                 }
@@ -3850,6 +3928,36 @@ namespace StarsAbove
 
 
         }
+
+        private void BrilliantSpectrum()
+        {
+            if(BrilliantSpectrumHeld)
+            {
+                refractionGaugeTimer++;
+                refractionGauge = Math.Clamp(refractionGauge, 0, refractionGaugeMax);
+                if (Player.GetModPlayer<StarsAbovePlayer>().inCombat <= 0)
+                {
+                    refractionGauge--;
+                }
+                if (refractionGaugeTimer > 60)
+                {
+                    if (Player.HasBuff(BuffID.Frostburn) || Player.HasBuff(BuffID.Frostburn2) || Player.HasBuff(BuffID.Chilled) || Player.HasBuff(BuffID.Frozen))
+                    {
+                        refractionGauge--;
+
+                    }
+                    refractionGauge--;
+                    refractionGaugeTimer = 0;
+                }
+
+            }
+            else
+            {
+                refractionGauge = 0;
+            }
+           
+        }
+
         private void SupremeAuthority()
         {
             if(!Player.HasBuff(BuffType<DeifiedBuff>()))
@@ -4197,9 +4305,10 @@ namespace StarsAbove
 
         public override void PostUpdate()
         {
+            BrilliantSpectrum();
 
-            
-           
+
+
         }
 
     }

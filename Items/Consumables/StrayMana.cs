@@ -31,8 +31,10 @@ namespace StarsAbove.Items.Consumables
 			Item.UseSound = SoundID.Item44;
 			Item.consumable = false;
 			ItemID.Sets.ItemNoGravity[Item.type] = true;
+			Item.ResearchUnlockCount = 0;
+
 		}
-		
+
 		// We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
 		public override bool ItemSpace(Player player)
 		{

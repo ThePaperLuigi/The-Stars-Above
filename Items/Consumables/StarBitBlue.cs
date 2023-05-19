@@ -31,6 +31,8 @@ namespace StarsAbove.Items.Consumables
 			Item.UseSound = SoundID.Item44;
 			Item.consumable = false;
 			ItemID.Sets.ItemNoGravity[Item.type] = true;
+			Item.ResearchUnlockCount = 0;
+	
 		}
 		public override Color? GetAlpha(Color lightColor)
 		{

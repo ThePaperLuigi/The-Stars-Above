@@ -17,6 +17,7 @@ namespace StarsAbove.Items.Consumables
 				"\nDoes not work during a Cosmic Voyage" +
 				"\nMay cause issues; this is a debug item"); */
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
+
 		}
 
 		public override void SetDefaults() {
@@ -29,6 +30,7 @@ namespace StarsAbove.Items.Consumables
 			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.UseSound = SoundID.Item44;
 			Item.consumable = false;
+			Item.ResearchUnlockCount = 0;
 		}
 
 		// We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.

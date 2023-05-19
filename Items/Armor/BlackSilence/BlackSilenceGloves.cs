@@ -27,10 +27,11 @@ namespace StarsAbove.Items.Armor.BlackSilence
 			Item.sellPrice(gold: 1); // How many coins the item is worth
 			Item.rare = ItemRarityID.Red; // The rarity of the item
 			Item.vanity = true; // The amount of defense the item will give when equipped
-			Item.accessory = true;
+			Item.accessory = true; Item.ResearchUnlockCount = 0;
+
 		}
 
-		
+
 		// UpdateArmorSet allows you to give set bonuses to the armor.
 		public override void UpdateArmorSet(Player player)
 		{

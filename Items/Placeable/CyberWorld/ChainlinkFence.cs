@@ -21,9 +21,10 @@ namespace StarsAbove.Items.Placeable.CyberWorld
 			Item.useTime = 7;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.consumable = true;
-			Item.createWall = WallType<ChainlinkFenceWall>();
+			Item.createWall = WallType<ChainlinkFenceWall>(); Item.ResearchUnlockCount = 0;
+
 		}
 
-		
+
 	}
 }

@@ -18,11 +18,12 @@ namespace StarsAbove.Items.Armor.SkyStriker
 			Item.height = 24;
 			Item.value = 1;
 			Item.rare = 10;
-			Item.vanity = true;
+			Item.vanity = true; Item.ResearchUnlockCount = 0;
+
 		}
-		
-		
-		
+
+
+
 	}
 	
 }

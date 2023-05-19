@@ -26,7 +26,8 @@ namespace StarsAbove.Items.Placeable.CyberWorld
 			Item.useTime = 10;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.consumable = true;
-			Item.createTile = TileType<Tiles.CyberWorld.SteelTile>();
+			Item.createTile = TileType<Tiles.CyberWorld.SteelTile>(); Item.ResearchUnlockCount = 0;
+
 		}
 
 		public override void AddRecipes() {

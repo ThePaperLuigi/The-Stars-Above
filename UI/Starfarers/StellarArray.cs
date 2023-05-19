@@ -2366,7 +2366,7 @@ namespace StarsAbove.UI.Starfarers
 			}
 			if (modPlayer. healthyConfidence == 2)
 			{
-				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/ healthyConfidence"),  healthyConfidenceArea, Color.White * modPlayer.stellarArrayVisibility);
+				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/healthyConfidence"),  healthyConfidenceArea, Color.White * modPlayer.stellarArrayVisibility);
 			}
 			if (modPlayer.beyondinfinity == 2)
 			{

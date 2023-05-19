@@ -37,48 +37,17 @@ namespace StarsAbove.Projectiles
 		public bool RotateClockwise;
 		public Vector2 InitialDirection;
 		public Vector2 Target;
-		
-
 		public override void AI()
         {
-			//
-
 			travelRadians += (RotateClockwise ? 1 : -1) * MathHelper.ToRadians(0.3f * 6f);
-
 			Projectile.Center = MidPoint + InitialDirection.RotatedBy(travelRadians) * Radius;
-
-			
 			float rotationsPerSecond = 2f;
-			
 			Projectile.rotation += (RotateClockwise ? 1 : -1) * MathHelper.ToRadians(rotationsPerSecond * 6f);
-
-
-
 			if (Vector2.Distance(Projectile.Center, Target) < 5f)
             {
 				
 				Projectile.Kill();
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			base.AI();
         }
 
 

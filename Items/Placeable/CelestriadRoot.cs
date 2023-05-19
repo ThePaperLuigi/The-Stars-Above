@@ -31,7 +31,6 @@ namespace StarsAbove.Items.Placeable
 			//"\n[c/D32C2C:Mods which allow global auto-use may cause issues upon usage]" +
 			//"\n[c/D32C2C:Mods which 'cull' projectiles (anti-lag mods) will cause issues]");
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
-			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 		}
 
@@ -48,10 +47,11 @@ namespace StarsAbove.Items.Placeable
 			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.UseSound = SoundID.Item44;
 			Item.consumable = true;
-			Item.noUseGraphic = false;
+			Item.noUseGraphic = false; Item.ResearchUnlockCount = 0;
+
 		}
 
-		
+
 		public override void AddRecipes()
 		{
 			

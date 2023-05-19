@@ -5033,6 +5033,25 @@ Mods: {
 				DisplayName: Serafín Kazimierz
 			}
 
+			BrilliantSpectrum: {
+				/* Tooltip:
+					'''
+					[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes]
+					Attacks barrage foes with close-ranged strikes; right-click to dash towards your cursor, becoming Invincible for a very short duration (1 second cooldown)
+					Critical strikes grant Alacrity for 3 seconds, increasing attack and movement speed
+					Hold the Weapon Action Key to slow yourself and activate [c/33FF93:Refractive Absorption], absorbing all incoming damage while draining HP (HP drain is magnified over time)
+					10 HP is required to activate [c/33FF93:Refractive Absorption] and effects are disabled below 50 HP
+					Absorbed damage is converted into [c/39EEB5:Potential Energy], and a portion of [c/39EEB5:Potential Energy] is consumed upon striking a foe to deal magnified damage
+					[c/39EEB5:Potential Energy] slowly depletes over time and quickly diminishes out of combat
+					When inflicted with specific debuffs, gain [c/B77CEC:Elemental Resonance] depending on incoming debuffs
+					On Fire, Shadowflame, Burning: Consume the debuff to increase the potency of [c/33FF93:Refractive Absorption] for 10 seconds, increasing the amount of [c/39EEB5:Potential Energy] acquired
+					Frozen, Chilled, Frostburn: [c/39EEB5:Potential Energy] will drain at an increased rate
+					Damage is boosted based on world progression
+					'There is no way this is canon...'
+					''' */
+				// DisplayName: Kariumu's Favor
+			}
+
 			KeyOfTheKingsLaw: {
 				Tooltip:
 					'''
@@ -7824,6 +7843,7 @@ Mods: {
 			SplatterYellow.DisplayName: Musa de Pentesilea
 			// PlanteraProjectile.DisplayName: Plantera..?
 			punch.DisplayName: Dragón de Dojima
+			// BrilliantSpectrumPunch.DisplayName: Brilliant Spectrum
 			RadiantBraver.DisplayName: Radiancia Mas Valiente
 			radiate.DisplayName: Irradiar
 			radiateChaos.DisplayName: Irradiar
@@ -8278,6 +8298,11 @@ Mods: {
 			// UmbraSlash2.DisplayName: Umbra
 			// UmbraSlashSlow.DisplayName: Umbra
 			// UmbraSwordShoot.DisplayName: Umbra
+			// BrilliantSpectrumPunchAlt.DisplayName: Brilliant Spectrum Punch Alt
+			// SpectrumBlazeExplosion.DisplayName: Spectrum Blaze Explosion
+			// SpectrumVFX1.DisplayName: Spectrum V F X1
+			// SpectrumVFX2.DisplayName: Spectrum V F X2
+			// SpectrumVFX3.DisplayName: Spectrum V F X3
 		}
 
 		Buffs: {
@@ -9908,7 +9933,7 @@ Mods: {
 
 			BlackSilenceAttackCooldown: {
 				// DisplayName: Attack Cooldown
-				// Description: Mods.StarsAbove.Buffs.BlackSilenceAttackCooldown.Description
+				// Description: Ability is on cooldown
 			}
 
 			BlackSilenceChoiceCooldown: {
@@ -9963,12 +9988,12 @@ Mods: {
 
 			NalhaunSword: {
 				// DisplayName: Manifest Laevateinn
-				// Description: Mods.StarsAbove.Buffs.NalhaunSword.Description
+				// Description: ???
 			}
 
 			TsukiyomiTeleport: {
 				// DisplayName: Tsukiyomi's Teleport
-				// Description: Mods.StarsAbove.Buffs.TsukiyomiTeleport.Description
+				// Description: ???
 			}
 
 			Bedazzled: {
@@ -10022,27 +10047,27 @@ Mods: {
 
 			EverlastingGunpowderAttackCooldown: {
 				// DisplayName: Gunpowder Cooldown
-				// Description: Mods.StarsAbove.Buffs.EverlastingGunpowderAttackCooldown.Description
+				// Description: Ability is on cooldown
 			}
 
 			EverlastingGunpowderCooldown: {
 				// DisplayName: Gunpowder Cooldown
-				// Description: Mods.StarsAbove.Buffs.EverlastingGunpowderCooldown.Description
+				// Description: Ability is on cooldown
 			}
 
 			EverlastingGunpowderMiningCooldown: {
 				// DisplayName: Gunpowder Cooldown
-				// Description: Mods.StarsAbove.Buffs.EverlastingGunpowderMiningCooldown.Description
+				// Description: Ability is on cooldown
 			}
 
 			EverlastingGunpowderMiningTrigger: {
 				// DisplayName: Gunpowder Trigger
-				// Description: Mods.StarsAbove.Buffs.EverlastingGunpowderMiningTrigger.Description
+				// Description: Ability is on cooldown
 			}
 
 			GunpowderSwapCooldown: {
 				// DisplayName: Swap Cooldown
-				// Description: Mods.StarsAbove.Buffs.GunpowderSwapCooldown.Description
+				// Description: Ability is on cooldown
 			}
 
 			FarewellCooldown: {
@@ -10082,7 +10107,7 @@ Mods: {
 
 			SecurityLevel: {
 				// DisplayName: Security Level
-				// Description: Mods.StarsAbove.Buffs.SecurityLevel.Description
+				// Description: Level of security is rising
 			}
 
 			GatheringLevinstorm: {
@@ -10092,7 +10117,7 @@ Mods: {
 
 			GatheringLevinstormCooldown: {
 				// DisplayName: Gathering Levinstorm Cooldown
-				// Description: Mods.StarsAbove.Buffs.GatheringLevinstormCooldown.Description
+				// Description: Ability is on cooldown
 			}
 
 			KarmicRetribution: {
@@ -10107,12 +10132,12 @@ Mods: {
 
 			ManiacalJusticeCooldown: {
 				// DisplayName: Maniacal Justice Cooldown
-				// Description: Mods.StarsAbove.Buffs.ManiacalJusticeCooldown.Description
+				// Description: Ability is on cooldown
 			}
 
 			SlaughteringSlashCooldown: {
 				// DisplayName: Slaughtering Slash Cooldown
-				// Description: Mods.StarsAbove.Buffs.SlaughteringSlashCooldown.Description
+				// Description: Ability is on cooldown
 			}
 
 			SpecialAttackBuff: {
@@ -10139,7 +10164,7 @@ Mods: {
 
 			GreatSplitVertical: {
 				// DisplayName: Great Split: Vertical
-				// Description: Mods.StarsAbove.Buffs.GreatSplitVertical.Description
+				// Description: Swinging
 			}
 
 			NanomachinaLeechCooldown: {
@@ -10159,7 +10184,7 @@ Mods: {
 
 			RealizedNanomachinaCooldownBuff: {
 				// DisplayName: Realized Nanomachina Cooldown
-				// Description: Mods.StarsAbove.Buffs.RealizedNanomachinaCooldownBuff.Description
+				// Description: Ability is on cooldown
 			}
 
 			PodBuff: {
@@ -10174,7 +10199,7 @@ Mods: {
 
 			CannonfireDeluge1: {
 				// DisplayName: Cannonfire Deluge (1 Stack)
-				// Description: Mods.StarsAbove.Buffs.CannonfireDeluge1.Description
+				// Description: Cannonfire Deluge is stacking
 			}
 
 			CannonfireDeluge2: {
@@ -10189,7 +10214,7 @@ Mods: {
 
 			CannonfireDelugeCooldown: {
 				// DisplayName: Cannonfire Deluge Cooldown
-				// Description: Mods.StarsAbove.Buffs.CannonfireDelugeCooldown.Description
+				// Description: Ability is on cooldown
 			}
 
 			FeralDespair: {
@@ -10199,7 +10224,7 @@ Mods: {
 
 			SurgingVampirismCooldown: {
 				// DisplayName: Surging Vampirism Cooldown
-				// Description: Mods.StarsAbove.Buffs.SurgingVampirismCooldown.Description
+				// Description: Ability is on cooldown
 			}
 
 			DarkSoul: {
@@ -10209,7 +10234,7 @@ Mods: {
 
 			SoulReaverCharging: {
 				// DisplayName: Soul Harvest
-				// Description: Mods.StarsAbove.Buffs.SoulReaverCharging.Description
+				// Description: Ready to harvest
 			}
 
 			SoulSplit: {
@@ -10224,12 +10249,12 @@ Mods: {
 
 			SpatialStratagemActive: {
 				// DisplayName: Spatial Gambit Accepted
-				// Description: Mods.StarsAbove.Buffs.SpatialStratagemActive.Description
+				// Description: Stats have been increased
 			}
 
 			SpatialStratagemCooldown: {
 				// DisplayName: Spatial Stratagem Cooldown
-				// Description: Mods.StarsAbove.Buffs.SpatialStratagemCooldown.Description
+				// Description: Ability is on cooldown
 			}
 
 			AnomalyBuff: {
@@ -10263,7 +10288,7 @@ Mods: {
 
 			ChaosTurmoil: {
 				// DisplayName: "[c/EFB43E:Chaos Turmoil]"
-				// Description: Mods.StarsAbove.Buffs.ChaosTurmoil.Description
+				// Description: ???
 			}
 
 			StellaglyphReady: {
@@ -10292,12 +10317,12 @@ Mods: {
 
 			KarnaCooldown: {
 				// DisplayName: Vasavi Shakti Cooldown
-				// Description: Mods.StarsAbove.Buffs.KarnaCooldown.Description
+				// Description: Ability is on cooldown
 			}
 
 			KarnaLaserBuff: {
 				// DisplayName: Vasavi Shakti
-				// Description: Mods.StarsAbove.Buffs.KarnaLaserBuff.Description
+				// Description: Overwhelming power is being unleashed
 			}
 
 			AtrophiedDeifiedBuff: {
@@ -10346,7 +10371,7 @@ Mods: {
 
 			TwincastActive: {
 				// DisplayName: Twincast
-				// Description: Mods.StarsAbove.Buffs.TwincastActive.Description
+				// Description: ???
 			}
 
 			TimelessPotential: {
@@ -10373,6 +10398,31 @@ Mods: {
 				Attacks inflict Karmic Retribution for 10 seconds
 				''' */
 			// LVBuff100.Description: Able to unleash a Special Attack upon pressing the Weapon Action Key
+
+			SpectrumAbsorption: {
+				// DisplayName: Refractive Absorption
+				// Description: Absorbing all incoming damage at the cost of constant HP drain
+			}
+
+			SpectrumBlazeAffinity: {
+				// DisplayName: Spectrum Blaze Affinity
+				// Description: Aspected to flames, granting increased Potential Energy gain
+			}
+
+			SpectrumDashCooldown: {
+				// DisplayName: Spectrum Dash Cooldown
+				// Description: Mods.StarsAbove.Buffs.SpectrumDashCooldown.Description
+			}
+
+			SpectrumFrostAffinity: {
+				// DisplayName: Spectrum Frost Affinity
+				// Description: Aspected to frost, changing attacks but becoming weak to flame
+			}
+
+			BrilliantSpectrumBuff: {
+				// DisplayName: Brilliant Spectrum
+				// Description: Refractive energy is empowering your physical capabilities
+			}
 		}
 
 		BossChecklist: {
