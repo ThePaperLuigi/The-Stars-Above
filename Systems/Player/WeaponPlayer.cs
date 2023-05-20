@@ -375,10 +375,17 @@ namespace StarsAbove
         //Penthesilea's Muse
         public bool paintVisible = false;
         public int chosenColor = 0;//0 = red | 1 = orange | 2 = yellow | 3 = green | 4 = blue | 5 = purple
-
         public Vector2 inkedFoePosition;
         public bool paintTargetActive;
         public int targetPaintColor;
+
+        //Dreamer's Inkwell
+        public bool InkwellHeld;
+        public int InkwellInk = 0;
+        public float InkwellUIRotation;
+        public float InkwellUIAlpha;
+        public float InkwellUIAdjustment;
+
 
         //Twin Stars of Albeiro
         public Vector2 starPosition1;
@@ -3657,7 +3664,7 @@ namespace StarsAbove
             AgnianFarewellInInventory = false;
 
             SaltwaterScourgeHeld = false;
-
+            InkwellHeld = false;
             BrilliantSpectrumHeld = false;
             KissOfDeathHeld = false;
             BurningDesireHeld = false;
@@ -3900,6 +3907,7 @@ namespace StarsAbove
             }
 
             //Weapon PreUpdates
+            DreamersInkwell();
             CatalystMemory();
             OzmaAscendant();
             VermilionRiposte();
@@ -3927,6 +3935,32 @@ namespace StarsAbove
 
 
 
+        }
+
+        private void DreamersInkwell()
+        {
+            if (InkwellHeld && StarsAbove.weaponActionKey.Old)
+            {
+                InkwellUIAlpha += 0.1f;
+
+            }
+            else
+            {
+                InkwellUIAlpha -= 0.1f;
+
+            }
+            if(InkwellUIAdjustment > 0)
+            {
+                InkwellUIRotation += InkwellUIAdjustment;
+                InkwellUIAdjustment -= 0.3f;
+            }
+            InkwellUIAdjustment = MathHelper.Clamp(InkwellUIAdjustment, 0, 100);
+            InkwellUIRotation+= 0.5f;
+            if (InkwellUIRotation > 360)
+            {
+                InkwellUIRotation = 0;
+            }
+            InkwellUIAlpha = MathHelper.Clamp(InkwellUIAlpha, 0, 1);
         }
 
         private void BrilliantSpectrum()

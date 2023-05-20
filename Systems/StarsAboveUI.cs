@@ -36,6 +36,9 @@ namespace StarsAbove
 		private UserInterface _ButterflyResourceBarUserInterface;
 		internal ButterflyResourceBar ButterflyResourceBar;
 
+		private UserInterface _DreamersInkwellUIUserInterface;
+		internal DreamersInkwellGauge DreamersInkwellUI;
+
 		private UserInterface _NanomachinaGaugeUserInterface;
 		internal NanomachinaGauge NanomachinaGauge;
 
@@ -203,6 +206,10 @@ namespace StarsAbove
 				ButterflyResourceBar = new ButterflyResourceBar();
 				_ButterflyResourceBarUserInterface = new UserInterface();
 				_ButterflyResourceBarUserInterface.SetState(ButterflyResourceBar);
+
+				DreamersInkwellUI = new DreamersInkwellGauge();
+				_DreamersInkwellUIUserInterface = new UserInterface();
+				_DreamersInkwellUIUserInterface.SetState(DreamersInkwellUI);
 
 				NanomachinaGauge = new NanomachinaGauge();
 				_NanomachinaGaugeUserInterface = new UserInterface();
@@ -418,6 +425,7 @@ namespace StarsAbove
 			_CutsceneUI?.Update(gameTime);
 			_NanomachinaGaugeUserInterface?.Update(gameTime);
 			_ButterflyResourceBarUserInterface?.Update(gameTime);
+			_DreamersInkwellUIUserInterface?.Update(gameTime);
 
 			_VengeanceGaugeUserInterface?.Update(gameTime);
 			_EternalGaugeUserInterface?.Update(gameTime);
@@ -568,6 +576,15 @@ namespace StarsAbove
 					delegate
 					{
 						_ButterflyResourceBarUserInterface.Draw(Main.spriteBatch, new GameTime());
+						return true;
+					},
+					InterfaceScaleType.UI)
+				);
+				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+					"StarsAbove: Dreamer's Inkwell Gauge",
+					delegate
+					{
+						_DreamersInkwellUIUserInterface.Draw(Main.spriteBatch, new GameTime());
 						return true;
 					},
 					InterfaceScaleType.UI)

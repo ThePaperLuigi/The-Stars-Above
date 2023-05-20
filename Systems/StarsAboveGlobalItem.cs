@@ -334,7 +334,7 @@ namespace StarsAbove
 			ModContent.ItemType<BlackSilenceWeapon>(),
 			ModContent.ItemType<AdornmentOfTheChaoticGod>(),
 			ModContent.ItemType<Chronoclock>(),
-
+			ModContent.ItemType<BrilliantSpectrum>(),
 		};
 		public List<int> Essences = new List<int>() {
 

@@ -63,7 +63,7 @@ namespace StarsAbove.Projectiles.BrilliantSpectrum
 			{
 				if (movementFactor == 0f) // When initially thrown out, the ai0 will be 0f
 				{
-					movementFactor = 5f; // Make sure the spear moves forward when initially thrown out
+					movementFactor = 6f; // Make sure the spear moves forward when initially thrown out
 					Projectile.netUpdate = true; // Make sure to netUpdate this spear
 				}
 				
