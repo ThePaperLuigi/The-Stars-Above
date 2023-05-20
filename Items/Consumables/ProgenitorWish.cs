@@ -42,7 +42,7 @@ namespace StarsAbove.Items.Consumables
 		}
 
 		public override bool? UseItem(Player player) {
-			if (player.whoAmI == Main.myPlayer && EverlastingLightEvent.isEverlastingLightActive)
+			if (player.whoAmI == Main.myPlayer && (EverlastingLightEvent.isEverlastingLightActive || DownedBossSystem.downedWarrior))
 			{
 				// If the player using the item is the client
 				// (explicitely excluded serverside here)
