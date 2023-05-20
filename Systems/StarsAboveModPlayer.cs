@@ -3130,7 +3130,7 @@ namespace StarsAbove
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                     NewDiskDialogue = true;
                 }
-                if(EverlastingLightEvent.isEverlastingLightPreviewActive && warriorBossItemDialogue == 0 && vagrantDialogue == 2)
+                if((EverlastingLightEvent.isEverlastingLightPreviewActive || EverlastingLightEvent.isEverlastingLightActive) && warriorBossItemDialogue == 0 && vagrantDialogue == 2)
                 {
                     warriorBossItemDialogue = 1;
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue("Common.HarshLight"), 239, 221, 106); }
