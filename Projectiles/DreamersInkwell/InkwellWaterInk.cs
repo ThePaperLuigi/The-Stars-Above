@@ -30,7 +30,7 @@ namespace StarsAbove.Projectiles.DreamersInkwell
 			Projectile.friendly = true;
 
 			Projectile.usesIDStaticNPCImmunity = true;
-			Projectile.idStaticNPCHitCooldown = 60;
+			Projectile.idStaticNPCHitCooldown = 40;
 		}
 
 		public override void AI() {
@@ -51,7 +51,7 @@ namespace StarsAbove.Projectiles.DreamersInkwell
 						p.Heal((int)(p.statLifeMax2 * 0.02));
 
 					}
-					p.AddBuff(BuffID.Ironskin, 180);
+					p.AddBuff(BuffID.Ironskin, 60 * 8);
 
 					
 				}

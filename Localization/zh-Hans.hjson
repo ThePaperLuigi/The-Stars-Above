@@ -3907,7 +3907,7 @@ Mods: {
 			StarBitBlue: {
 				Tooltip:
 					'''
-					
+
 					[c/F1AF42:它不该出现在你的物品栏里]
 
 					'''
@@ -3917,7 +3917,7 @@ Mods: {
 			StarBitGreen: {
 				Tooltip:
 					'''
-					
+
 					[c/F1AF42:它不该出现在你的物品栏里]
 
 					'''
@@ -3927,7 +3927,7 @@ Mods: {
 			StarBitOrange: {
 				Tooltip:
 					'''
-					
+
 					[c/F1AF42:它不该出现在你的物品栏里]
 
 					'''
@@ -3937,7 +3937,7 @@ Mods: {
 			StarBitPurple: {
 				Tooltip:
 					'''
-					
+
 					[c/F1AF42:它不该出现在你的物品栏里]
 
 					'''
@@ -7609,6 +7609,22 @@ Mods: {
 					'''
 				DisplayName: Dreamer's Inkwell
 			}
+
+			ShockAndAwe: {
+				// DisplayName: Shock & Awe
+				/* Tooltip:
+					'''
+					Attacks with this weapon fire a powerful rocket that explodes upon impact with heavy knockback
+					Rocket contact damage and explosion damage occur separately
+					Direct hits on airborne foes will guarantee a critical strike
+					Rocket explosions will launch players and non-boss enemies and explosion proximity increases travel distance
+					Launching yourself will grant the buff [Death from Above] for 4 seconds (Buff is removed upon landing)
+					During this time, rocket explosions deal 20% increased non-critical strike damage and 40% increased critical strike damage
+					Right click to swing the [Bargain Gardener], dealing damage to nearby foes (Critical strikes are disabled)
+					Striking foes with the [Bargain Gardener] while airborne under the effect of [Death from Above] will guarantee a 2x damage critical strike
+					'Ka-boom!'
+					''' */
+			}
 		}
 
 		UIElements: {
@@ -8378,6 +8394,16 @@ Mods: {
 			SpectrumVFX1.DisplayName: Spectrum V F X1
 			SpectrumVFX2.DisplayName: Spectrum V F X2
 			SpectrumVFX3.DisplayName: Spectrum V F X3
+			// InkwellEarthInk.DisplayName: Inkwell Earth Ink
+			// InkwellAirInk.DisplayName: Inkwell Air Ink
+			// InkwellFireInk.DisplayName: Inkwell Fire Ink
+			// InkwellWaterInk.DisplayName: Inkwell Water Ink
+			// InkwellHeld.DisplayName: Inkwell Held
+			// GardenerSlash1.DisplayName: Gardener Slash1
+			// GardenerSlash2.DisplayName: Gardener Slash2
+			// ShockAndAweRocket.DisplayName: Shock And Awe Rocket
+			// ShockAndAweRocketExplosion.DisplayName: Shock And Awe Rocket Explosion
+			// ShockAndAweRocketLauncher.DisplayName: Shock And Awe Rocket Launcher
 		}
 
 		Buffs: {
@@ -10473,7 +10499,7 @@ Mods: {
 				Attacks inflict Karmic Retribution for 10 seconds
 				'''
 			LVBuff100.Description: Able to unleash a Special Attack upon pressing the Weapon Action Key
-			
+
 			SpectrumAbsorption: {
 				DisplayName: Refractive Absorption
 				Description: Absorbing all incoming damage at the cost of constant HP drain
@@ -10497,6 +10523,26 @@ Mods: {
 			BrilliantSpectrumBuff: {
 				DisplayName: Brilliant Spectrum
 				Description: Refractive energy is empowering your physical capabilities
+			}
+
+			InkwellGlobalDelay: {
+				// DisplayName: Inkwell Global Delay
+				// Description: ""
+			}
+
+			InkwellWaterDelay: {
+				// DisplayName: Inkwell Water Delay
+				// Description: ""
+			}
+
+			InkwellWindDelay: {
+				// DisplayName: Inkwell Wind Delay
+				// Description: ""
+			}
+
+			DeathFromAbove: {
+				// DisplayName: Death From Above
+				// Description: Air superiority enables weapon special effects
 			}
 		}
 

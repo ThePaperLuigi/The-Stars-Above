@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Items;
 using Terraria;
 using Terraria.Audio;
+using Terraria.GameContent;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
 using Terraria.UI;
@@ -37,7 +38,7 @@ namespace StarsAbove.UI
 			area.Height.Set(0, 0f);
 			area.HAlign = area.VAlign = 0.5f; // 1
 
-			center = new UIImage(Request<Texture2D>("StarsAbove/UI/CeruleanFlameGauge"));
+			center = new UIImage(Request<Texture2D>("StarsAbove/UI/blank"));
 			center.Left.Set(22, 0f);
 			center.Top.Set(0, 0f);
 			center.Width.Set(138, 0f);
@@ -81,16 +82,13 @@ namespace StarsAbove.UI
 			gradientB = new Color(60, 255, 199); //
 			finalColor = new Color(0, 224, 255);
 
-			area.Append(earthInk);
-			area.Append(windInk);
-			area.Append(flameInk);
-			area.Append(oceanInk);
+			
 
-			//Append(area);
+			Append(area);
 		}
 
 		public override void Draw(SpriteBatch spriteBatch) {
-			if (Main.LocalPlayer.GetModPlayer<WeaponPlayer>().InkwellUIAlpha <= 0f)
+			if (!Main.LocalPlayer.GetModPlayer<WeaponPlayer>().InkwellHeld)
 				return;
 
 			base.Draw(spriteBatch);
@@ -159,7 +157,43 @@ namespace StarsAbove.UI
 			base.DrawSelf(spriteBatch);
 
 			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
+
+			float quotient = (float)modPlayer.InkwellMana / Main.LocalPlayer.statManaMax2; // Creating a quotient that represents the difference of your currentResource vs your maximumResource, resulting in a float of 0-1f.
+			quotient = Utils.Clamp(quotient, 0f, 1f); // Clamping it to 0-1f so it doesn't go over that.
+
+			if(Main.LocalPlayer.controlUseItem && Main.LocalPlayer.GetModPlayer<WeaponPlayer>().InkwellUIAlpha <= 0f)
+            {
+				center.Left.Set(Main.mouseX - 64, 0f);
+				center.Top.Set(Main.mouseY + 20, 0f);
+			}
+			else
+            {
+				center.Left.Set(Main.mouseX - 64, 0f);
+				center.Top.Set(Main.mouseY + 2000, 0f);
+			}
+
 			
+			Recalculate();
+
+			Rectangle hitbox = center.GetInnerDimensions().ToRectangle();
+			hitbox.X += 12;
+			hitbox.Width -= 22;
+			hitbox.Y += 6;
+			hitbox.Height -= 12;
+
+			int left = hitbox.Left;
+			int right = hitbox.Right;
+			int steps = (int)((right - left) * quotient);
+			for (int i = 0; i < steps; i += 1)
+			{
+				//float percent = (float)i / steps; // Alternate Gradient Approach
+				float percent = (float)i / (right - left);
+				spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height), Color.Lerp(gradientA, gradientB, percent));
+			}
+
+			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/BowChargeFrame"), center.GetInnerDimensions().ToRectangle(), Color.White);
+
+
 			Rectangle earthInkArea = earthInk.GetInnerDimensions().ToRectangle();
 			Rectangle windInkArea = windInk.GetInnerDimensions().ToRectangle();
 			Rectangle flameInkArea = flameInk.GetInnerDimensions().ToRectangle();
@@ -218,9 +252,22 @@ namespace StarsAbove.UI
 			
 		}
 		public override void Update(GameTime gameTime) {
+			
+			if (Main.LocalPlayer.GetModPlayer<WeaponPlayer>().InkwellHeld)
+			{
+				Append(center);
+			}
+			else
+            {
+				center.Remove();
+			}
 			if (Main.LocalPlayer.GetModPlayer<WeaponPlayer>().InkwellUIAlpha <= 0f)
 			{
-				area.Remove();
+				earthInk.Remove();
+				windInk.Remove();
+				flameInk.Remove();
+				oceanInk.Remove();
+				//area.Remove();
 				return;
 			}
 			else
@@ -229,7 +276,11 @@ namespace StarsAbove.UI
 				{
 					//Main.LocalPlayer.mouseInterface = true;
 				}
-				Append(area);
+				area.Append(earthInk);
+				area.Append(windInk);
+				area.Append(flameInk);
+				area.Append(oceanInk);
+				
 			}
 			
 			// Setting the text per tick to update and show our resource values.

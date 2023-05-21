@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using StarsAbove.Buffs.ShockAndAwe;
 using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -98,18 +99,54 @@ namespace StarsAbove.Projectiles.ShockAndAwe
 			if (Main.player[Projectile.owner].HasBuff(BuffType<DeathFromAbove>()))
 			{
 				modifiers.SetCrit();
+				modifiers.FinalDamage += 1f;
+				SoundEngine.PlaySound(SoundID.Item89, Projectile.position);
+				Main.player[Projectile.owner].GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
 
 				float dustAmount = 40f;
 				for (int i = 0; (float)i < dustAmount; i++)
 				{
 					Vector2 spinningpoint5 = Vector2.UnitX * 0f;
-					spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+					spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(24f, 1f);
 					spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
-					int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemTopaz);
+					int dust = Dust.NewDust(target.Center, 0, 0, DustID.Flare);
 					Main.dust[dust].scale = 2f;
 					Main.dust[dust].noGravity = true;
 					Main.dust[dust].position = target.Center + spinningpoint5;
 					Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 5f;
+				}
+				for (int i = 0; (float)i < dustAmount; i++)
+				{
+					Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+					spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(24f, 1f);
+					spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation() + MathHelper.ToRadians(90));
+					int dust = Dust.NewDust(target.Center, 0, 0, DustID.Flare);
+					Main.dust[dust].scale = 2f;
+					Main.dust[dust].noGravity = true;
+					Main.dust[dust].position = target.Center + spinningpoint5;
+					Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 5f;
+				}
+				for (int i = 0; (float)i < dustAmount; i++)
+				{
+					Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+					spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+					spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
+					int dust = Dust.NewDust(target.Center, 0, 0, DustID.Flare);
+					Main.dust[dust].scale = 2f;
+					Main.dust[dust].noGravity = true;
+					Main.dust[dust].position = target.Center + spinningpoint5;
+					Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 5f;
+				}
+				for (int i = 0; (float)i < dustAmount; i++)
+				{
+					Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+					spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+					spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
+					int dust = Dust.NewDust(target.Center, 0, 0, DustID.Flare);
+					Main.dust[dust].scale = 2f;
+					Main.dust[dust].noGravity = true;
+					Main.dust[dust].position = target.Center + spinningpoint5;
+					Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 9f;
 				}
 			}
 			else

@@ -29,7 +29,7 @@ namespace StarsAbove.Projectiles.DreamersInkwell
 			Projectile.friendly = true;
 
 			Projectile.usesIDStaticNPCImmunity = true;
-			Projectile.idStaticNPCHitCooldown = 60;
+			Projectile.idStaticNPCHitCooldown = 40;
 		}
 
 		public override void AI() {
@@ -71,7 +71,7 @@ namespace StarsAbove.Projectiles.DreamersInkwell
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-			target.AddBuff(BuffID.OnFire, 60 * 8);
+			target.AddBuff(BuffID.OnFire3, 60 * 8);
 
 		}
 		public override void Kill(int timeLeft)

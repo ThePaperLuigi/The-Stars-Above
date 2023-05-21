@@ -3943,24 +3943,19 @@ namespace StarsAbove
             InkwellMana = Player.statManaMax2;
             for(int i = 0; i < Player.ownedProjectileCounts[ProjectileType<InkwellEarthInk>()]; i++)
             {
-                InkwellMana -= 6;
+                InkwellMana -= 4;
             }
             for (int i = 0; i < Player.ownedProjectileCounts[ProjectileType<InkwellAirInk>()]; i++)
             {
-                InkwellMana -= 2;
+                InkwellMana -= 1;
             }
             for (int i = 0; i < Player.ownedProjectileCounts[ProjectileType<InkwellFireInk>()]; i++)
             {
-                InkwellMana -= 2;
+                InkwellMana -= 1;
             }
             for (int i = 0; i < Player.ownedProjectileCounts[ProjectileType<InkwellWaterInk>()]; i++)
             {
-                InkwellMana -= 2;
-            }
-            if (InkwellMana < Player.statManaMax2 || InkwellHeld)
-            {
-                Player.manaRegenDelay = 240;
-                Player.statMana = InkwellMana;
+                InkwellMana -= 1;
             }
             if (InkwellHeld && StarsAbove.weaponActionKey.Old)
             {

@@ -30,7 +30,7 @@ namespace StarsAbove.Projectiles.DreamersInkwell
 			Projectile.friendly = true;
 
 			Projectile.usesIDStaticNPCImmunity = true;
-			Projectile.idStaticNPCHitCooldown = 60;
+			Projectile.idStaticNPCHitCooldown = 40;
 		}
 
 		public override void AI() {

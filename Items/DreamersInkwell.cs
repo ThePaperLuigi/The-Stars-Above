@@ -24,7 +24,7 @@ namespace StarsAbove.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 50;          
+			Item.damage = 110;          
 			Item.DamageType = DamageClass.Magic;          
 			Item.width = 40;            
 			Item.height = 40;
@@ -71,7 +71,7 @@ namespace StarsAbove.Items
 					}
 				}
 			}
-			else if(player.statMana <= 0)
+			else if(player.GetModPlayer<WeaponPlayer>().InkwellMana <= 0)
 			{
 				return false;
             }

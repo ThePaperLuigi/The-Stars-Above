@@ -5,6 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 using static Terraria.ModLoader.ModContent;
+using System;
 
 namespace StarsAbove.Projectiles.ShockAndAwe
 {
@@ -38,9 +39,61 @@ namespace StarsAbove.Projectiles.ShockAndAwe
 			int dustIndex = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Smoke, 0f, 0f, 100, default(Color), 2f);
 			Main.dust[dustIndex].noGravity = true;
 		}
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
+			if(target.velocity.Y != 0)
+            {
+				modifiers.SetCrit();
+				float dustAmount = 40f;
+				for (int i = 0; (float)i < dustAmount; i++)
+				{
+					Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+					spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(24f, 1f);
+					spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
+					int dust = Dust.NewDust(target.Center, 0, 0, DustID.Flare);
+					Main.dust[dust].scale = 2f;
+					Main.dust[dust].noGravity = true;
+					Main.dust[dust].position = target.Center + spinningpoint5;
+					Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 5f;
+				}
+				for (int i = 0; (float)i < dustAmount; i++)
+				{
+					Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+					spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(24f, 1f);
+					spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation() + MathHelper.ToRadians(90));
+					int dust = Dust.NewDust(target.Center, 0, 0, DustID.Flare);
+					Main.dust[dust].scale = 2f;
+					Main.dust[dust].noGravity = true;
+					Main.dust[dust].position = target.Center + spinningpoint5;
+					Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 5f;
+				}
+				for (int i = 0; (float)i < dustAmount; i++)
+				{
+					Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+					spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+					spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
+					int dust = Dust.NewDust(target.Center, 0, 0, DustID.Flare);
+					Main.dust[dust].scale = 2f;
+					Main.dust[dust].noGravity = true;
+					Main.dust[dust].position = target.Center + spinningpoint5;
+					Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 5f;
+				}
+				for (int i = 0; (float)i < dustAmount; i++)
+				{
+					Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+					spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+					spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
+					int dust = Dust.NewDust(target.Center, 0, 0, DustID.Flare);
+					Main.dust[dust].scale = 2f;
+					Main.dust[dust].noGravity = true;
+					Main.dust[dust].position = target.Center + spinningpoint5;
+					Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 9f;
+				}
+			}
+            base.ModifyHitNPC(target, ref modifiers);
+        }
 
-
-		public override void Kill(int timeLeft)
+        public override void Kill(int timeLeft)
 		{
 			Collision.HitTiles(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
 			SoundEngine.PlaySound(SoundID.Item14, Projectile.position);

@@ -114,7 +114,7 @@ namespace StarsAbove.Projectiles.ShockAndAwe
 		}
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
-			if(!target.boss)
+			if(!target.boss && target.CanBeChasedBy())
             {
 				float launchSpeed = 4f;
 				Vector2 position = Projectile.Center;
