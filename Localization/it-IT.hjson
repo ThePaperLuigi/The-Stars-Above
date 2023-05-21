@@ -654,7 +654,7 @@
               1: "'Occhio di Cthulhu'? "
               2: Questo non vuol dire che ci sono altre cose riguardo a questo 'Cthulhu'?
               3: Se mai alzasse la testa, sarebbe davvero un nemico formidabile.
-              4: Prepariamoci per quell'occasione... Per sicurezza.
+              4: Prepariamoci per quell'occasione... Giusto per sicurezza.
               5: Hey.. bastava sconfiggere quel nemico! Sembra che un'abilità dello Stellar Array sia pronta.
             }
             Eridani:
@@ -669,7 +669,7 @@
           {
             Asphodene:
             {
-              1: Oh. Non immaginavo ci fosse realmente più 'Cthulhu.' In qualche modo, non mi sorprende tanto quanto avrei immaginato.
+              1: Oh. Non immaginavo ci fosse realmente altro 'Cthulhu.' In qualche modo, non mi sorprende tanto quanto avrei immaginato.
               2: Sono contenta che abbiamo fermato quella cosa prima che fosse all'altezza del suo nome.
               3: Quei materiali sono... qualcosa... Wow- l'odore.
               4: Hey, le armi che puoi ricavare sembrano piuttosto potenti! Cosa ne pensi?
@@ -677,7 +677,7 @@
             }
             Eridani:
             {
-              1: Un altra parte di questo 'Cthulhu' e ti ha attaccato con manipolazione magica... Inoltre- che schifo?
+              1: Un altra parte di questo 'Cthulhu', e ti ha attaccato con manipolazione magica... Inoltre- che schifo?
               2: Questo 'Divoratore di Mondi' era solo un grosso verme. Sono un po' delusa. Presentiamo un reclamo a chiunque abbia dato il nome a questa cosa.
               3: Sembra che abbia sbloccato un'abilità nello Stellar Array. Guardalo quando sei libero.
             }
@@ -686,45 +686,45 @@
           {
             Asphodene:
             {
-              1: Well, I guess I should have expected something like this within the Jungle.
-              2: Good work. Looks like another ability is unlocked in the Stellar Array as well.
+              1: Beh, immagino che avrei dovuto aspettarmi qualcosa del genere all'interno della Giungla.
+              2: Bel lavoro. Sembra che sia stata sbloccata un'altra abilità nello Stellar Array.
             }
             Eridani:
             {
-              1: Seriously? A giant bee... Somehow, I might prefer it over smaller insects... Easier to hit, you know.
-              2: Ahem. At the very least, it unlocked an ability in the Stellar Array.
+              1: Davvero? Un'ape gigante... In qualche modo, potrei preferirla rispetto a insetti più piccoli... Più facile da colpire, sai.
+              2: Ahem. Per lo meno, ha sbloccato un'abilità nello Stellar Array.
             }
           }
           Skeletron:
           {
             Asphodene:
             {
-              1: The Clothier was truly a gigantic evil skeleton monster.. Cute. At the very least, you have access to the Dungeon now.
-              2: And with this, another ability is unlocked in the Stellar Array.
-              3: Well, that's all for now.
+              1: Il Clothier era davvero un gigantesco e malvagio mostro scheletrico.. Carino. Per lo meno, ora hai accesso al Dungeon.
+              2: E con questo, un'altra abilità è stata sbloccata nello Stellar Array.
+              3: Bene, questo è tutto per ora.
             }
             Eridani:
             {
-              1: That poor Clothier, cursed to become Skeletron. It seems his defeat has granted us access to the Dungeon. This may be in bad taste, but...
-              2: If the embodiment of your emotions is a huge monster... maybe, just maybe, the curse wasn't the sole factor.
-              3: If anyone asks, you didn't hear that from me.
+              1: Quel povero Clothier, condannato a diventare Skeletron. Sembra che la sua sconfitta ci abbia garantito l'accesso al Dungeon. Potrebbe essere di cattivo gusto, ma...
+              2: Se l'incarnazione delle tue emozioni è un gigantesco mostro... forse, e dico forse, la maledizione non è stata l'unico fattore.
+              3: Se qualcuno lo chiede, tu non l'hai sentito da me.
             }
           }
           WallOfFlesh:
           {
             Asphodene:
             {
-              1: Whoa.. I've never seen anything like this.. ever. The entire world seems to be bursting with new magical energy.
-              2: It looks like the Wall of Flesh was either guarding or preventing something drastic from happening. That's my take on it.
-              3: Just to let you know, there's another upgrade in the Stellar Array now. It seems to be more powerful than the ones you've used before.
-              4: Also, it seems to have dropped something.. Whatever it is, it feels.. familiar. Please be careful, but I can't deny I'm curious.
+              1: Whoa.. Non ho mai visto qualcosa del genere.. mai. Sembra che il mondo intero stia per esplodere da una nuova energia magica.
+              2: Sembra che il Muro di Carne stesse proteggendo o impedendo che accadesse qualcosa di drastico. Questa è la mia opinione.
+              3: Giusto per farti sapere, c'è un nuovo aggiornamento nello Stellar Array. Sembra essere più potente rispetto a quelli usati finora.
+              4: Comunque, sembra che sia caduto qualcosa.. Qualunque cosa sia, sembra.. familiare. Perfavore stai attento, però non posso negare di essere curiosa.
             }
             Eridani:
             {
-              1: Wow.. the world itself seems to have been drastically altered after the defeat of the Wall of Flesh...
-              2: I've never seen anything like it. What was this thing hiding...?
-              3: This power seems to have activated the first Tier 2 ability in the Stellar Array. I hope you can utilize it well.
-              4: Something else dropped from it. I'm not sure what it is, but it feels like I should know. Be mindful of what could go wrong.
+              1: Wow.. Il mondo stesso sembra essere stato drasticamente alterato dopo la sconfitta del Muro di Carne...
+              2: Non ho mai visto una cosa del genere. Cosa stava nascondendo questa cosa...?
+              3: Sembra che questo potere abbia attivato la prima abilità di livello 2 nello Stellar Array. Spero che tu possa utilizzarla bene.
+              4: Qualcos'altro è caduto da lui. Non sono sicura di cosa sia, ma sembra che dovrei saperlo. Fai attenzione a cosa potrebbe andare storto.
             }
           }
           Twins:
