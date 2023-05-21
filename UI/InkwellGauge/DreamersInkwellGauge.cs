@@ -3,7 +3,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Items;
 using Terraria;
+using Terraria.Audio;
 using Terraria.GameContent.UI.Elements;
+using Terraria.ID;
 using Terraria.UI;
 using static Terraria.ModLoader.ModContent;
 
@@ -101,6 +103,7 @@ namespace StarsAbove.UI
 			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().InkwellInk = 0;
 			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().InkwellUIAdjustment = 15;
 
+			SoundEngine.PlaySound(SoundID.Item4, null);
 
 
 
@@ -115,6 +118,7 @@ namespace StarsAbove.UI
 			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().InkwellInk = 1;
 			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().InkwellUIAdjustment = 15;
 
+			SoundEngine.PlaySound(SoundID.Item4, null);
 
 
 
@@ -129,6 +133,7 @@ namespace StarsAbove.UI
 			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().InkwellInk = 2;
 			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().InkwellUIAdjustment = 15;
 
+			SoundEngine.PlaySound(SoundID.Item4, null);
 
 
 
@@ -143,6 +148,7 @@ namespace StarsAbove.UI
 			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().InkwellInk = 3;
 			Main.LocalPlayer.GetModPlayer<WeaponPlayer>().InkwellUIAdjustment = 15;
 
+			SoundEngine.PlaySound(SoundID.Item4, null);
 
 
 

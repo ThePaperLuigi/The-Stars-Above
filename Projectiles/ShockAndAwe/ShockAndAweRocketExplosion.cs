@@ -1,21 +1,23 @@
 ﻿
 using Microsoft.Xna.Framework;
+using StarsAbove.Buffs.ShockAndAwe;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
 
-namespace StarsAbove.Projectiles.BrilliantSpectrum
+namespace StarsAbove.Projectiles.ShockAndAwe
 {
-    public class SpectrumBlazeExplosion : ModProjectile
+    public class ShockAndAweRocketExplosion : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			// DisplayName.SetDefault("The Morning Star");
 			
 		}
 
 		public override void SetDefaults() {
-			Projectile.width = 150;
-			Projectile.height = 150;
+			Projectile.width = 250;
+			Projectile.height = 250;
 			Projectile.aiStyle = 0;
 			Projectile.timeLeft = 1;
 			Projectile.penetrate = -1;
@@ -28,21 +30,44 @@ namespace StarsAbove.Projectiles.BrilliantSpectrum
 
 		}
 
-		// In here the AI uses this example, to make the code more organized and readable
-		// Also showcased in ExampleJavelinProjectile.cs
-		public float movementFactor // Change this value to alter how fast the spear moves
-		{
-			get => Projectile.ai[0];
-			set => Projectile.ai[0] = value;
-		}
-
 		
 		public override void AI() {
 			//Main.PlaySound(SoundLoader.customSoundType, (int)projectile.Center.X, (int)projectile.Center.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/GunbladeImpact"));
+			for (int i = 0; i < Main.maxPlayers; i++)
+			{
+				Player p = Main.player[i];
+				if (p.active && !p.dead && p.Distance(Projectile.Center) < 180f)
+				{
+					float launchSpeed = 23f - (p.Distance(Projectile.Center)/8);
+					Vector2 position = Projectile.Center;
+					Vector2 direction = Vector2.Normalize(position - p.Center);
+					Vector2 arrowVelocity = direction * launchSpeed;
+					p.velocity -= arrowVelocity;
+					p.velocity.X = MathHelper.Clamp(p.velocity.X, -18f, 18f);
+					if(Projectile.owner == p.whoAmI)
+                    {
+						p.AddBuff(BuffType<DeathFromAbove>(), 240);
+                    }
+				}
+
+			}
+			
 
 			Projectile.ai[0] += 1f;
 
-			
+			float dustAmount = 40f;
+			for (int i = 0; (float)i < dustAmount; i++)
+			{
+				Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+				spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+				spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
+				int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.GemTopaz);
+				Main.dust[dust].scale = 2f;
+				Main.dust[dust].noGravity = true;
+				Main.dust[dust].position = Projectile.Center + spinningpoint5;
+				Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 18f;
+			}
+
 			for (int d = 0; d < 5; d++)
 			{
 				Dust.NewDust(Projectile.Center, 0, 0, 7, 0f + Main.rand.Next(-7, 7), 0f + Main.rand.Next(-7, 7), 150, default(Color), 1.5f);
@@ -81,18 +106,36 @@ namespace StarsAbove.Projectiles.BrilliantSpectrum
 
 			
 		}
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
+		{
 
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-        {
-
-			target.AddBuff(BuffID.OnFire, 240);
-
+			
 
 		}
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+		{
+			if(!target.boss)
+            {
+				float launchSpeed = 4f;
+				Vector2 position = Projectile.Center;
+				Vector2 direction = Vector2.Normalize(position - target.Center);
+				Vector2 arrowVelocity = direction * launchSpeed;
+				target.velocity -= arrowVelocity;
+				target.velocity.Y -= 12;
+			}
+			
+		}
 
+		public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers)
+		{
+			modifiers.FinalDamage *= 0f;
+			modifiers.FinalDamage.Flat += 10;
+
+		}
 		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-
+			modifiers.NonCritDamage += 0.2f;
+			modifiers.CritDamage += 0.4f;
            
         }
     }

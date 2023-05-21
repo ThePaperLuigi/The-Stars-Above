@@ -80,6 +80,7 @@ using StarsAbove.Projectiles.Starchild;
 using StarsAbove.Projectiles.Pigment;
 using StarsAbove.Projectiles.UltimaThule;
 using StarsAbove.Buffs.BrilliantSpectrum;
+using StarsAbove.Projectiles.DreamersInkwell;
 
 namespace StarsAbove
 {
@@ -385,7 +386,7 @@ namespace StarsAbove
         public float InkwellUIRotation;
         public float InkwellUIAlpha;
         public float InkwellUIAdjustment;
-
+        public int InkwellMana;
 
         //Twin Stars of Albeiro
         public Vector2 starPosition1;
@@ -3659,7 +3660,7 @@ namespace StarsAbove
         public override void ResetEffects()
         {
             WeaponGaugeOffset = 0;
-
+            
             KevesiFarewellInInventory = false;
             AgnianFarewellInInventory = false;
 
@@ -3939,6 +3940,28 @@ namespace StarsAbove
 
         private void DreamersInkwell()
         {
+            InkwellMana = Player.statManaMax2;
+            for(int i = 0; i < Player.ownedProjectileCounts[ProjectileType<InkwellEarthInk>()]; i++)
+            {
+                InkwellMana -= 6;
+            }
+            for (int i = 0; i < Player.ownedProjectileCounts[ProjectileType<InkwellAirInk>()]; i++)
+            {
+                InkwellMana -= 2;
+            }
+            for (int i = 0; i < Player.ownedProjectileCounts[ProjectileType<InkwellFireInk>()]; i++)
+            {
+                InkwellMana -= 2;
+            }
+            for (int i = 0; i < Player.ownedProjectileCounts[ProjectileType<InkwellWaterInk>()]; i++)
+            {
+                InkwellMana -= 2;
+            }
+            if (InkwellMana < Player.statManaMax2 || InkwellHeld)
+            {
+                Player.manaRegenDelay = 240;
+                Player.statMana = InkwellMana;
+            }
             if (InkwellHeld && StarsAbove.weaponActionKey.Old)
             {
                 InkwellUIAlpha += 0.1f;
@@ -3946,10 +3969,11 @@ namespace StarsAbove
             }
             else
             {
+                
                 InkwellUIAlpha -= 0.1f;
-
             }
-            if(InkwellUIAdjustment > 0)
+            InkwellMana = (int)MathHelper.Clamp(InkwellMana, 0, Player.statManaMax2);
+            if (InkwellUIAdjustment > 0)
             {
                 InkwellUIRotation += InkwellUIAdjustment;
                 InkwellUIAdjustment -= 0.3f;

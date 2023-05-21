@@ -22,7 +22,12 @@ namespace StarsAbove.Buffs
         public override void Update(NPC npc, ref int buffIndex)
         {
             npc.velocity *= 0;
-            
+            if(!npc.boss)
+            {
+                
+                
+
+            }
             //npc.GetGlobalNPC<StarsAboveGlobalNPC>().Petrified = true;
         }
         public override bool ReApply(NPC npc, int time, int buffIndex)
