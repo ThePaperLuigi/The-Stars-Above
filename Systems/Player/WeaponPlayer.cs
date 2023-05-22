@@ -164,6 +164,10 @@ namespace StarsAbove
         public float RadTimer = 0;
         public bool RadTimerEnabled = false;
 
+        //Trickspin Two-Step
+        public bool TrickspinReady = false;
+        public Vector2 TrickspinCenter;
+
         //Suistrume
         public float stellarPerformancePrepTimer = 0;
         public bool stellarPerformanceStart = false;
@@ -3663,7 +3667,6 @@ namespace StarsAbove
             
             KevesiFarewellInInventory = false;
             AgnianFarewellInInventory = false;
-
             SaltwaterScourgeHeld = false;
             InkwellHeld = false;
             BrilliantSpectrumHeld = false;
