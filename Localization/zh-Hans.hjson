@@ -1,16 +1,16 @@
 Mods: {
 	StarsAbove: {
 		DeathReason: {
-			SanguineDespair: drained themselves of all life.
-			SupremeAuthority: returned to the void.
+			SanguineDespair: 抽干了他自己的生命。
+			SupremeAuthority: 回归到虚空
 		}
 
-		Boss.WarriorOfLight: The Warrior of Light descends!
+		Boss.WarriorOfLight: 光之战士 降临！
 
 		CombatText: {
 			Adornment: {
-				Positive: Positive Chaos!
-				Negative: Negative Chaos!
+				Positive: 正向混沌！
+				Negative: 逆向混沌！
 			}
 
 			ManiacalJustice: {
@@ -21,18 +21,18 @@ Mods: {
 			}
 
 			Nalhaun: {
-				ManifestBlade: The Burnished King channels energy into his blade, leaving his defenses drastically lowered!
-				Feint: The Burnished King reverses the next attack!
+				ManifestBlade: 复光之君将能量注入剑中，让他的防御能力大幅度下降！
+				Feint: 复光之君逆转了下一次攻击！
 			}
 
-			Dioskouroi.Clash: The Dioskouroi clash, equalizing their HP!
-			Tsukiyomi.FinalPhase: The Starfarer before you unleashes her true might, empowering her attacks but leaving her defenses open!
+			Dioskouroi.Clash: 狄俄斯库洛伊们互相碰撞，平衡了二者的生命力！
+			Tsukiyomi.FinalPhase: 在你面前的星海旅者解放了她真正的力量，增强了他的攻击能力，但这也让她的防守破绽百出！
 
 			KissOfDeath: {
-				Skyfish: Skyfish deployed!
-				Thunderbird: Thunderbird deployed!
-				BehemothTyphoon: Behemoth Typhoon deployed!
-				FullyCharged: Uppercut fully charged!
+				Skyfish: 部署天鱼！
+				Thunderbird: 部署雷鸟！
+				BehemothTyphoon: 部署巨兽台风！
+				FullyCharged: 瘫痪系统完全充能！
 			}
 		}
 
@@ -2881,10 +2881,10 @@ Mods: {
 		}
 
 		Config: {
-			StellarNovaHeader: "[c/EE9DE0:Stellar Nova Settings]"
-			PopUpDialogueHeader: "[c/C076DF:Pop-up Dialogue Settings]"
-			DialogueHeader: "[c/75C792:Disk Dialogue Settings]"
-			MiscHeader: "[c/7A76FF:Miscellaneous Settings]"
+			StellarNovaHeader: "[c/EE9DE0:天体新星设置]"
+			PopUpDialogueHeader: "[c/C076DF:对话框弹窗设置]"
+			DialogueHeader: "[c/75C792:光碟对话框设置]"
+			MiscHeader: "[c/7A76FF:各种各样的设置]"
 
 			DisableStellarNovaCutIns: {
 				Label: 禁用天体新星立绘切入
@@ -2912,8 +2912,8 @@ Mods: {
 			}
 
 			StarfarerPromptCooldown: {
-				Label: Starfarer Prompt Cooldown
-				Tooltip: The time between Starfarer Prompts in minutes. If a trigger for a prompt occurs during this time, it is ignored. Does not apply to unique prompts (Bosses, etc.)
+				Label: 星海旅者提示冷却
+				Tooltip: 星海旅者进行提示的冷却时间。若在此期间出现了提示的触发器，请忽略它。不适用于独特的提示（Boss提示等）
 			}
 
 			DialogueScrollValue: {
@@ -2942,8 +2942,8 @@ Mods: {
 			}
 
 			CommentaryTimer: {
-				Label: Starfarer Prompt positiion
-				Tooltip: Position is measured from the bottom right of the screen!
+				Label: 星海旅者提示位置
+				Tooltip: 位置的原点是屏幕的右下角！
 			}
 
 			EnableStarfarerVoices: {
@@ -2952,13 +2952,13 @@ Mods: {
 			}
 
 			EnableMusicOverride: {
-				Label: Weapon music overrides all other music
-				Tooltip: When enabled, weapons that change the game's music will have priority over nearly everything else.
+				Label: 武器音乐覆盖其他所有音乐
+				Tooltip: 启用后，会改变游戏音乐的武器的音效会优先于其他所有音效。
 			}
 
 			EnablePlayerWorldLock: {
-				Label: Enable Player Progress World Lock
-				Tooltip: Enables character progression being tied to the first world they joined.
+				Label: 启用玩家进度世界锁
+				Tooltip: 使角色的进程与他们加入的第一个世界绑定在一起。
 			}
 
 			EnableAprilFools: {
@@ -2967,53 +2967,53 @@ Mods: {
 			}
 
 			DisableWeaponCutIn: {
-				Label: Disable Weapon Cut-In Effect
-				Tooltip: Disable screen-wide animations that play when using certain weapons.
+				Label: 禁用武器全屏效果
+				Tooltip: 使用某些武器时禁用全屏切换效果。
 			}
 
 			DisableTypePenalty: {
-				Label: Disable damage penalty for Aspected Damage modification
-				Tooltip: 10% damage penalty when Aspected Damage modification is enabled is removed.
+				Label: 禁用伤害惩罚
+				Tooltip: 移除切换伤害类型的10%的伤害惩罚。
 			}
 
 			DisableBossAggro: {
-				Label: Disable Boss Aggro Marker
-				Tooltip: Disables the marker that appears over a player's head when a boss targets them.
+				Label: 禁用Boss攻击标记
+				Tooltip: 启用后，玩家被Boss瞄准时，不再显示头上的标记。
 			}
 
 			DisableCalamityWeaponBuffs: {
-				Label: Disable global damage modifiers for mod compatibility
-				Tooltip: Disables the 30% increase to Aspected Weapon damage when the Calamity Mod is enabled.
+				Label: 为Mod兼容性禁用全局伤害修改
+				Tooltip: 当灾厄Mod启用时，禁用30%的特定武器增伤。
 			}
 
 			DisableWeaponRestrictions: {
-				Label: Disable Aspected Weapon restrictions
-				Tooltip: Disables the restriction for Astral and Umbral weapons being wielded by other players.
+				Label: 禁用星相武器限制
+				Tooltip: 禁止其他玩家使用星体和本影武器。
 			}
 
 			DisableBossEnemySpawnMod: {
-				Label: Disable Boss Enemy Spawn Mod
-				Tooltip: Disables the buff granted to all players that prevents mob spawning during bosses.
+				Label: 禁用Boss战期间不刷怪
+				Tooltip: 禁用玩家在进行Boss战期间刷怪率降为0的Buff。
 			}
 
 			DisableManaSicknessChange: {
-				Label: Disable Mana Sickness Change
-				Tooltip: Disables the change to Mana Sickness that applies the damage reduction to all damage and not just Magic.
+				Label: 禁用魔力病更改
+				Tooltip: 禁用魔力病的变更：魔力病降低的伤害应用于所有类型的伤害，而不仅仅只降低魔法伤害。
 			}
 
 			ColorblindBoss: {
-				Label: Enable colorblind-friendly Penthesilea fight
-				Tooltip: Replaces certain color-based mechanics in the Penthesilea boss fight.
+				Label: 启用色盲模式 彭忒希勒娅战
+				Tooltip: 取消了彭忒希勒娅战中关于颜色的机制。
 			}
 
 			SubworldCompatibility: {
-				Label: Disable Multiplayer Compatibility-Fix for Cosmic Voyages
-				Tooltip: Allows for users in Multiplayer to undertake Cosmic Voyages- toggle this off to drop items from Subworlds instead of travelling there.
+				Label: 关闭多人兼容模式——修复寰宇之旅
+				Tooltip: 允许玩家在多人模式下进行寰宇之旅——关闭这个开关可以让进入寰宇之旅变成获取子世界掉落的物品。
 			}
 
 			CombatTimer: {
-				Label: Combat Timer
-				Tooltip: When striking a foe or getting struck, this is the time in seconds you are 'in combat.'
+				Label: 战斗计时器
+				Tooltip: 当你攻击敌人或者被敌人攻击后，获得一个以秒为单位的进战计时器。
 			}
 		}
 
@@ -3022,11 +3022,11 @@ Mods: {
 			ArrayAbility: 天体阵列获得了一项新能力！
 			AstralLocked: 武器无法对你的相位做出反应，这使你无法使用该武器。你只能和爱丝福德妮一起使用星体武器
 			UmbralLocked: 武器无法对你的相位做出反应，这使你无法使用该武器。你只能和埃里达妮一起使用本影武器
-			HarshLight: The sky becomes unbearably bright...
-			EverlastingLight: The sky is suffused with overwhelming Light, preventing night from falling...
-			EverlastingLightEnd: The Light flooding this world has been cleansed!
-			SpeedUpLight: The everlasting light is catalyzed, preventing night from falling...
-			TsukiyomiBossChecklist: The Boss Checklist updates to reveal a hidden foe!
+			HarshLight: 天空变得愈发明亮，让人难以忍受……
+			EverlastingLight: 天空发出压制性的亮光，夜幕不再降临……
+			EverlastingLightEnd: 满溢于这个世界的光亮已经被净化！
+			SpeedUpLight: 永恒之光受到催化，夜幕不再降临……
+			TsukiyomiBossChecklist: BossCheckList已经更新！并为你揭露了一位隐藏的敌人！
 			`: Mods.StarsAbove.Common.`
 		}
 
@@ -3036,9 +3036,9 @@ Mods: {
 			Arbitration.DisplayName: 仲裁
 			AstralCell.DisplayName: 群星细胞
 			DummyEnemy.DisplayName: 假想木偶
-			PolluxBoss.DisplayName: Pollux, Baleborn Force
-			CastorBoss.DisplayName: Castor, Baleborn Force
-			Dioskouroi.DisplayName: Dioskouroi, the Twin Forces
+			PolluxBoss.DisplayName: 冰河灾裔，波鲁克斯
+			CastorBoss.DisplayName: 炽炎灾裔，卡斯托尔
+			Dioskouroi.DisplayName: 双子星力，狄俄斯库洛伊
 			NalhaunBoss.DisplayName: 复光之君，纳尔赫恩
 			NalhaunBossPhase2.DisplayName: 空洞世界的统治者，纳尔赫恩
 			PaintedAttendantA.DisplayName: 复生画刷
@@ -3054,18 +3054,18 @@ Mods: {
 			Tsukiyomi2.DisplayName: Mods.StarsAbove.NPCName.Tsukiyomi2
 			AmethystHeadpiercer.DisplayName: Amethyst Headpiercer
 			AmethystSwordsinner.DisplayName: Amethyst Swordsinner
-			AsteroidWormBody.DisplayName: Stardigrade
-			AsteroidWormHead.DisplayName: Stardigrade
-			AsteroidWormTail.DisplayName: Stardigrade
-			Soulless.DisplayName: Soulless
-			Garridine.DisplayName: Garridine
-			Yojimbo.DisplayName: Yojimbo
-			VagrantBoss.DisplayName: The Vagrant of Space and Time
-			DioskouroiWallsNPC.DisplayName: Dioskouroi Walls N P C
-			NalhaunPhase2WallsNPC.DisplayName: Nalhaun Phase2 Walls N P C
-			VagrantWalls.DisplayName: Vagrant Walls
-			VagrantWallsHorizontal.DisplayName: Vagrant Walls Horizontal
-			VagrantWallsVertical.DisplayName: Vagrant Walls Vertical
+			AsteroidWormBody.DisplayName: 星辰分解者
+			AsteroidWormHead.DisplayName: 星辰分解者
+			AsteroidWormTail.DisplayName: 星辰分解者
+			Soulless.DisplayName: 失魂
+			Garridine.DisplayName: 嘉里丹妮
+			Yojimbo.DisplayName: 佑今波
+			VagrantBoss.DisplayName: 时空流浪者
+			DioskouroiWallsNPC.DisplayName: 狄俄斯库洛伊墙 N P C
+			NalhaunPhase2WallsNPC.DisplayName: 纳尔赫恩二阶段墙 N P C
+			VagrantWalls.DisplayName: 流浪者墙
+			VagrantWallsHorizontal.DisplayName: 水平流浪者墙
+			VagrantWallsVertical.DisplayName: 垂直流浪者墙
 		}
 
 		Tiles: {
@@ -3417,15 +3417,15 @@ Mods: {
 					过往传说中的一件传奇衣装
 					为你的星海旅者装备来获得以下效果：
 					[c/FF30AD:寰宇起源]
-					天体新星被锁定为太古源星
-					在星体驾驭期间攻击敌人会产生后续攻击，再次造成1/3的伤害
+					天体新星被锁定为闪耀于原始宇宙的创世纪
+					在阿斯塔蒂驾驭期间攻击敌人会产生后续攻击，再次造成1/3的伤害
 					[c/30D6FF:银河灵基]
-					击败敌人会刷新星体驾驭的持续时间
+					击败敌人会刷新阿斯塔蒂驾驭的持续时间
 					受到伤害使天体新星能量增加3点
 					[c/3068FF:流光星椋]
 					到来的伤害降低10%
 					[c/A55396:太古亵渎]
-					未处于星体驾驭时造成的伤害降低70%
+					未处于阿斯塔蒂驾驭时造成的伤害降低70%
 					“要知道你可比我低几个维度”
 					'''
 				DisplayName: 源星公主之胄
@@ -3834,7 +3834,7 @@ Mods: {
 					'''
 					这块碎片是数以十亿计虔诚祈祷的结晶
 					[c/F1AF42:召唤 光之战士]
-					If Light Everlasting is not at its peak, magnifies the effect of Light Everlasting
+					若永恒之光没有到达峰值，则会放大永恒之光的效果
 					不消耗
 					'''
 				DisplayName: 先祖之愿
@@ -3893,7 +3893,7 @@ Mods: {
 			StarBitBlue: {
 				Tooltip:
 					'''
-
+					
 					[c/F1AF42:它不该出现在你的物品栏里]
 
 					'''
@@ -3903,7 +3903,7 @@ Mods: {
 			StarBitGreen: {
 				Tooltip:
 					'''
-
+					
 					[c/F1AF42:它不该出现在你的物品栏里]
 
 					'''
@@ -3913,7 +3913,7 @@ Mods: {
 			StarBitOrange: {
 				Tooltip:
 					'''
-
+					
 					[c/F1AF42:它不该出现在你的物品栏里]
 
 					'''
@@ -3923,7 +3923,7 @@ Mods: {
 			StarBitPurple: {
 				Tooltip:
 					'''
-
+					
 					[c/F1AF42:它不该出现在你的物品栏里]
 
 					'''
@@ -4034,7 +4034,7 @@ Mods: {
 					[c/FF61CA:耀目剑舞]提升30%的近战攻击速度
 					[c/7B48CA:耀目棱晶]破碎后，会对其范围内的敌人造成伤害
 					'''
-				DisplayName: Catalyst's Memory
+				DisplayName: 触媒之忆
 			}
 
 			BlackSilenceWeapon: {
@@ -4057,7 +4057,7 @@ Mods: {
 					[c/323232:漆黑噤默]状态下，你会获得所有武器的独特增益，这使得你可以不用预先激活期望的增益
 					“我没有选择，一码，归一码。”
 					'''
-				DisplayName: Gloves of the Black Silence
+				DisplayName: 漆黑噤默的手套
 			}
 
 			CrimsonKey: {
@@ -5083,20 +5083,20 @@ Mods: {
 			BrilliantSpectrum: {
 				Tooltip:
 					'''
-					[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes]
-					Attacks barrage foes with close-ranged strikes; right-click to dash towards your cursor, becoming Invincible for a very short duration (1 second cooldown)
-					Critical strikes grant Alacrity for 3 seconds, increasing attack and movement speed
-					Hold the Weapon Action Key to slow yourself and activate [c/33FF93:Absorption], absorbing all incoming damage while draining HP (HP drain is magnified over time)
-					10 HP is required to activate [c/33FF93:Absorption] and effects are disabled below 50 HP
-					Absorbed damage is converted into [c/39EEB5:Potential Energy], and a portion of [c/39EEB5:Potential Energy] is consumed upon striking a foe to deal magnified damage
-					[c/39EEB5:Potential Energy] slowly depletes over time and quickly diminishes out of combat
-					When inflicted with specific debuffs, gain [c/B77CEC:Thermodynamics] depending on incoming debuffs
-					On Fire, Shadowflame, Burning: Consume the debuff to increase the potency of [c/33FF93:Absorption] for 10 seconds, increasing the amount of [c/39EEB5:Potential Energy] acquired
-					Frozen, Chilled, Frostburn: [c/39EEB5:Potential Energy] will drain at an increased rate
-					Damage scales with world progression
-					'I guess you can borrow some of my power, there's no way this is canon. It's just a game, after all...'
+					[c/8AC1F1:该武器有独特的伤害类型，会继承所有职业的加成]
+					使用近距离的弹幕攻击敌人；点击右键可以向光标位置冲刺，在短时间内获得无敌（1秒冷却）
+					造成暴击使你获得敏捷3秒，提高你的攻击和移动速度
+					按住武器技能键会放慢自身速度并进入[c/33FF93:吸势]状态，吸收所有到来的伤害同时吸取生命值（生命值的吸取随着时间推移增加）
+					激活[c/33FF93:吸势]需要消耗10点生命值，在低于50点生命值时无法生效
+					被吸收的伤害的一部分转化为[c/39EEB5:势能]，在攻击时会消耗一部分[c/39EEB5:势能]造成更多的伤害
+					[c/39EEB5:势能]会随着时间的流逝慢慢减少，且在脱离战斗后快速流逝
+					当受到特定减益时，根据受到的减益激活[c/B77CEC:热动力学]效果
+					着火了！，暗影焰，燃烧：消耗掉减益增加[c/33FF93:吸势]的效果，让自身获得的[c/39EEB5:势能]量增加，持续10秒
+					冰冻，冷冻，霜冻：[c/39EEB5:势能]以更快的速度消耗
+					该武器的伤害会随着世界进度的推进而增加
+					“我想，你可以借用我的力量，但这门大炮可不行。毕竟，这只是一场游戏……”
 					'''
-				DisplayName: Kariumu's Favor
+				DisplayName: Kariumu的青睐
 			}
 
 			KeyOfTheKingsLaw: {
@@ -5771,7 +5771,7 @@ Mods: {
 					'Cosmic Will' - 星海苍穹 OST
 					原创
 					'''
-				DisplayName: 音乐盒 （时空流浪者）
+				DisplayName: 音乐盒（时空流浪者）
 			}
 
 			ChainlinkFence: {
@@ -5780,7 +5780,7 @@ Mods: {
 			}
 
 			SteelBlock: {
-				Tooltip: Riveted and bolted
+				Tooltip: 用铆钉和螺栓拼合
 				DisplayName: 钢块
 			}
 
@@ -5795,7 +5795,7 @@ Mods: {
 					'Sky Unsundered' - 最终幻想14：晓月之终途 OST
 					作曲：Masayoshi Soken
 					'''
-				DisplayName: 音乐盒 （极北之观星台）
+				DisplayName: 音乐盒（极北之观星台）
 			}
 
 			FirstWarningMusicBox: {
@@ -5804,7 +5804,7 @@ Mods: {
 					'First Warning（LoR版本）' - 废墟图书馆
 					作曲：Studio EIM
 					'''
-				DisplayName: 音乐盒 （仲裁 - 一阶段）
+				DisplayName: 音乐盒（仲裁 - 一阶段）
 			}
 
 			InvisibleBlock: {
@@ -5818,7 +5818,7 @@ Mods: {
 					'Mage of Violet (Instrumental)' - Hololive Productions
 					演奏：Murasaki Shion
 					'''
-				DisplayName: 音乐盒 （彭忒希勒娅）
+				DisplayName: 音乐盒（彭忒希勒娅）
 			}
 
 			MightOfTheHellbladeMusicBox: {
@@ -5827,16 +5827,16 @@ Mods: {
 					'Might Of The Hellblade' - 勇气默示录2 OST
 					作曲：REVO
 					'''
-				DisplayName: 音乐盒 （复光之君，纳尔赫恩 - 二阶段）
+				DisplayName: 音乐盒（复光之君，纳尔赫恩 - 二阶段）
 			}
 
 			SecondWarningMusicBox: {
 				Tooltip:
 					'''
-					'Second Warning （LoR版本）' - 废墟图书馆
+					'Second Warning（LoR版本）' - 废墟图书馆
 					作曲：Studio EIM
 					'''
-				DisplayName: 音乐盒 （仲裁 - 二阶段）
+				DisplayName: 音乐盒（仲裁 - 二阶段）
 			}
 
 			ShadowsCastByTheMightyMusicBox: {
@@ -5845,12 +5845,12 @@ Mods: {
 					'Shadows Cast By The Mighty: Swift Judgement' - 勇气默示录2 OST
 					作曲：REVO
 					'''
-				DisplayName: 音乐盒 （复光之君，纳尔赫恩 - 一阶段）
+				DisplayName: 音乐盒（复光之君，纳尔赫恩 - 一阶段）
 			}
 
 			SunsetStardustMusicBox: {
 				Tooltip: "'Sunset, Stardust' - 星海苍穹 OST"
-				DisplayName: 音乐盒 (Stars Above主界面)
+				DisplayName: 音乐盒（星海苍穹主界面）
 			}
 
 			ToTheEdgeMusicBox: {
@@ -5859,7 +5859,7 @@ Mods: {
 					'To The Edge' - 最终幻想14：暗影之逆焰 OST
 					作曲：Masayoshi Soken
 					'''
-				DisplayName: 音乐盒 （光之战士 - 一阶段）
+				DisplayName: 音乐盒（光之战士 - 一阶段）
 			}
 
 			TwoDragonsMusicBox: {
@@ -5868,7 +5868,7 @@ Mods: {
 					'Two Dragons' - 如龙0 OST
 					作曲：Hidenori Shoji
 					'''
-				DisplayName: 音乐盒 （光之战士 - 二阶段）
+				DisplayName: 音乐盒（光之战士 - 二阶段）
 			}
 
 			UnmatchingPiecesMusicBox: {
@@ -5877,7 +5877,7 @@ Mods: {
 					'Unmatching Pieces' - 最终幻想14：暗影之逆焰 OST
 					作曲：Masayoshi Soken
 					'''
-				DisplayName: 音乐盒 (Everlasting Light)
+				DisplayName: 音乐盒（永恒之光）
 			}
 
 			VoyageMusicBox: {
@@ -5886,7 +5886,7 @@ Mods: {
 					'One Small Step' - 最终幻想14：晓月之终途 OST
 					作曲：Masayoshi Soken
 					'''
-				DisplayName: 音乐盒 （星海）
+				DisplayName: 音乐盒（星海）
 			}
 
 			PleniluneGaze: {
@@ -6005,8 +6005,8 @@ Mods: {
 					[c/FF5934:2阶天体棱晶]
 					镶嵌在天体新星栏位中以获得下列能力：
 					[c/FFCF4F:光之洪流]
-					当释放天体新星时，获得'Lightblessed'增益，防御提升30点
-					Lightblessed增益持续8秒
+					当释放天体新星时，获得“光芒祝福”增益，防御提升30点
+					光芒祝福增益持续8秒
 					'''
 				DisplayName: 光誓棱晶
 			}
@@ -6121,7 +6121,7 @@ Mods: {
 					[c/796B8C:信仰之翼]
 					魔力值低于40点时失去飞行能力
 					[c/C77878:3阶棱晶只能镶嵌在天体新星菜单中的第一格栏位中]
-					'I'm not about to stop here!'
+					“我不会止步于此！”
 					'''
 				DisplayName: 宇宙菲尼克斯棱晶
 			}
@@ -6142,7 +6142,7 @@ Mods: {
 					[c/9AC89F:黑雾衰落]
 					被击中时会损失天体能量
 					[c/C77878:3阶棱晶只能镶嵌在天体新星菜单中的第一格栏位中]
-					'You are not the hero of this tale! You are not anything!'
+					“你不是这个故事的主人公！你什么也不是！”
 					'''
 				DisplayName: 破败之王棱晶
 			}
@@ -6345,7 +6345,7 @@ Mods: {
 					[c/007BEE:影霄·绝影]的最后一击会对范围内的一个敌人造成更高倍率的暴击
 					[c/007BEE:影霄·绝影]结束后，你会朝与你光标所在位置相反的方向被弹开，且进入持续8秒的[c/EE007E:青色怒焰]状态
 					[c/EE007E:青色怒焰]期间，你的攻击必定造成暴击且忽略敌人50点护甲
-					[c/EE007E:青色怒焰]结束时给予玩家20秒的[c/9E7F90:燃尽], 令玩家的攻击力和防御力减半#禁忌的一滴
+					[c/EE007E:青色怒焰]结束时给予玩家20秒的[c/9E7F90:燃尽], 令玩家的攻击力和防御力减半
 					[c/9E7F90:燃尽]持续期间，[c/3CC7FF:青色怒火槽]无法充能
 					“总有一天你会理解我的选择……原谅我”
 					'''
@@ -6404,7 +6404,7 @@ Mods: {
 
 			Spatial: {
 				Tooltip: ""
-				DisplayName: test item
+				DisplayName: 测试物品
 			}
 
 			StygianNymph: {
@@ -6657,257 +6657,261 @@ Mods: {
 			AnomalyByte: {
 				Tooltip:
 					'''
-					[c/2DD2FE:Stargazer Relic]
-					Critical strikes are disabled
-					When damage is dealt, either deal 40% more damage (40% chance), 40% less damage (30% chance), 400% more damage (20% chance), or 1 damage (10% chance)
-					Positive results will additionally become critical strikes
-					[c/ADEEFF:Only one Stargazer Relic can be equipped at a time]
-					'###?'
+					[c/2DD2FE:观星者的遗物]
+					你无法暴击
+					当你造成伤害时，本次伤害有概率：
+					伤害增加40%（40%）
+					伤害减少40%（30%）
+					伤害增加400%（20%）
+					伤害变为1（10%）
+					正面结果的概率将成为额外暴击率
+					[c/ADEEFF:只能同时装备1件观星者的遗物]
+					“###？”
 					'''
-				DisplayName: Anomalous Byte
+				DisplayName: 异常字节
 			}
 
 			CassiopeaBrooch: {
 				Tooltip:
 					'''
-					[c/2DD2FE:Stargazer Relic]
-					No effect..?
-					[c/ADEEFF:Only one Stargazer Relic can be equipped at a time]
-					'The Empire's Queen sleeps, waiting to live forever'
+					[c/2DD2FE:观星者的遗物]
+					没效果……？
+					[c/ADEEFF:只能同时装备1件观星者的遗物]
+					“帝国的女王沉睡了，等待永生……”
 					'''
-				DisplayName: Cassiopea's Brooch
+				DisplayName: 仙后座的胸针
 			}
 
 			AdornmentOfTheChaoticGod: {
 				Tooltip:
 					'''
-					Summons an [c/6DE552:Adornment Manifest] to assail your foes (Only one can be summoned at a time)
-					The [c/6DE552:Adornment Manifest] will fire magical [c/CAF5C1:Chaos Bolts] with unpredictable effects
-					Additionally, other random objects may be fired on occasion
-					Right click to roll the dice, activating a [c/2AFBA9:Pure Chaos] effect on the [c/6DE552:Adornment Manifest] for 6 seconds (12 second cooldown)
-					60% chance [c/00D8AE:Positive Chaos]: Double attack speed, guarantee [c/CAF5C1:Chaos Bolt] critical strikes, or gain Invincibility
-					30% chance [c/B700D8:Negative Chaos]: Inflict random debuffs on self for a short duration, or cause all projectiles to be random objects and damage is halved
-					10% chance to apply all positive effects at the same time for half the duration
-					Fire rate increases slightly based on the amount of minions summoned
-					'Chaos can giveth, and chaos can taketh'
+					召唤一个[c/6DE552:饰物灵]来攻击你的敌人（只能召唤一个）
+					[c/6DE552:饰物灵]会不断朝敌人发射无法预测效果的魔力[c/CAF5C1:混沌箭]
+					此外，有可能发射其他随机的东西
+					点击右键投掷骰子，让[c/6DE552:饰物灵]激活[c/2AFBA9:纯粹混沌]效果，持续6秒
+					有60%的几率获得[c/00D8AE:正向混沌]的其中一个效果：让你的攻击速度翻倍、[c/CAF5C1:混沌箭]必定暴击或者获得无敌
+					有30%的几率获得[c/B700D8:逆向混沌]的其中一个效果：在短时间内给予自己大量减益或者使所有发射的弹幕变为伤害减半的随机物品
+					有10%的几率获得持续时间减半的全部正面效果
+					召唤物发射弹幕的速度会根据召唤的次数少量增加
+					“混沌可以给予，混沌也可以索取”
 					'''
-				DisplayName: Adornment of the Chaotic God
+				DisplayName: 混沌之神的饰物
 			}
 
 			AgnianFarewell: {
 				Tooltip:
 					'''
-					Playing this instrument grants the buff [c/FFE86A:Off-seer's Purpose] to yourself for 2 minutes
-					[c/FFE86A:Off-seer's Purpose] grants increased Luck and maximum Luck while increasing enemy spawn rates (8 minute cooldown) 
-					After defeating an enemy with the Agnian Farewell in your inventory while [c/FFE86A:Off-seer's Purpose] is active, gain the buff [c/FC6969:Farewell of Flames] for 10 seconds
-					[c/FC6969:Farewell of Flames] grants an additional increase to Luck
-					If used while wielding the strength of the Astral Aspect (through trading in Multiplayer), further increase the potency of [c/FFE86A:Off-seer's Purpose]'s Luck increase
+					演奏此乐器使自身获得持续2分钟的[c/FFE86A:远离预言之计]
+					[c/FFE86A:远离预言之计]会增加自身的运气和最大运气，同时增加敌人的生成率（8分钟冷却时间）
+					在[c/FFE86A:远离预言之计]生效且物品栏内有阿格尼亚的永别时击败敌人会使你获得持续10秒的[c/FC6969:永别之炎]
+					[c/FC6969:永别之炎]额外增加你的运气
+					若在星体的力量下使用阿格尼亚的永别（多人模式下玩家交换），则会进一步增加[c/FFE86A:远离预言之计]提供运气的幅度
 					'''
-				DisplayName: Agnian Farewell
+				DisplayName: 阿格尼亚的永别
 			}
 
 			BlackSilenceGloves: {
-				Tooltip: Unobtainable; vanity by using 'Gloves of the Black Silence'
-				DisplayName: Black Silence's Gloves
+				Tooltip: 无法获得，使用“漆黑噤默的手套”武器时获得的外观
+				DisplayName: 漆黑噤默的手套
 			}
 
 			BlackSilenceHead: {
-				Tooltip: Unobtainable; vanity by using 'Gloves of the Black Silence'
-				DisplayName: Black Silence's Mask
+				Tooltip: 无法获得，使用“漆黑噤默的手套”武器时获得的外观
+				DisplayName: 认知阻碍面具
 			}
 
 			ManifestationCape: {
-				Tooltip: Unobtainable; vanity by using 'Manifestation'
-				DisplayName: E.G.O. Cape/Tail
+				Tooltip: 无法获得，使用“拟态”武器时获得的外观
+				DisplayName: E.G.O. 角/尾
 			}
 
 			RedMistBody: {
-				Tooltip: Unobtainable; vanity by using 'Manifestation'
-				DisplayName: Red Mist Body
+				Tooltip: 无法获得，使用“拟态”武器时获得的外观
+				DisplayName: 殷红迷雾躯干
 			}
 
 			RedMistGloves: {
-				Tooltip: Unobtainable; vanity by using 'Manifestation'
-				DisplayName: Red Mist's Gloves
+				Tooltip: 无法获得，使用“拟态”武器时获得的外观
+				DisplayName: 殷红迷雾手套
 			}
 
 			RedMistHead: {
-				Tooltip: Unobtainable; vanity by using 'Manifestation'
-				DisplayName: Red Mist's Helmet
+				Tooltip: 无法获得，使用“拟态”武器时获得的外观
+				DisplayName: 殷红迷雾头盔
 			}
 
 			RedMistLegs: {
-				Tooltip: Unobtainable; vanity by using 'Manifestation'
-				DisplayName: Red Mist Leggings
+				Tooltip: 无法获得，使用“拟态”武器时获得的外观
+				DisplayName: 殷红迷雾护腿
 			}
 
 			DioskouroiBossBag: {
 				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
-				DisplayName: Treasure Bag (Dioskouroi, the Twin Forces)
+				DisplayName: 宝藏袋（双子星力，狄俄斯库洛伊）
 			}
 
 			Chronoclock: {
 				Tooltip:
 					'''
-					Summons a [c/EB9FDA:Fragment of Time] to aid you in combat, granting immunity to Slow (Only one can be summoned at a time)
-					The [c/EB9FDA:Fragment of Time] will periodically nurture a [c/52BFDF:Time Bubble] centered on herself, which grows over time
-					The [c/52BFDF:Time Bubble] will pop upon contact with an enemy, dealing damage and additionally exploding in a [c/9FD9EB:Time Pulse]
-					The [c/9FD9EB:Time Pulse] deals damage in a large area, increasing in potency with the size of the [c/52BFDF:Time Bubble], and inflicts 18 summon tag damage
-					After 10 seconds at max size, the [c/52BFDF:Time Bubble] explodes automatically (Can be manually detonated by pressing the Weapon Action Key)
-					Standing within the [c/52BFDF:Time Bubble] will grant [c/E8579B:Alacrity], increasing attack speed by 20% and movement speed by 10%
-					Additionally, taking damage within the [c/52BFDF:Time Bubble] will pop the [c/52BFDF:Time Bubble] prematurely, preventing that instance of damage (20 second cooldown)
-					'Well, that sounds like a waste of time'
+					召唤一个[c/EB9FDA:时间碎片]协助你战斗，给予你免疫减速的能力（只能召唤一个）
+					[c/EB9FDA:时间碎片]会周期性的创造一个以她为中心的[c/52BFDF:时间泡]，并随着时间的推移逐渐膨胀
+					[c/52BFDF:时间泡]会在与敌人接触时破裂，造成伤害并释放[c/9FD9EB:时间脉冲]
+					[c/9FD9EB:时间脉冲]会在大范围内造成伤害，伤害量与[c/52BFDF:时间泡]的大小相关，并造成18点召唤标记伤害
+					在[c/52BFDF:时间泡]达到最大的10秒之后，[c/52BFDF:时间泡]自动引爆（你也可以按下武器技能键手动引爆）
+					站在[c/52BFDF:时间泡]内，你将获得[c/E8579B:轻快]，使你提升20%的攻击速度和10%的移动速度
+					此外，站在[c/52BFDF:时间泡]内受到伤害会使[c/52BFDF:时间泡]过早破裂，同时消除此次伤害（20秒冷却）
+					“好吧，那听起来像在浪费时间”
 					'''
-				DisplayName: Chronoclock
+				DisplayName: 克洛的时钟
 			}
 
 			EverlastingLightTester: {
 				Tooltip:
 					'''
-					DEBUG ITEM
+					DEBUG 物 品
 					i
 
 
 					'''
-				DisplayName: Everlasting Light Tester
+				DisplayName: 永恒之光测试器
 			}
 
 			StarfarerSwapper: {
 				Tooltip:
 					'''
-					DEBUG ITEM
-					Swaps your current Starfarer between Asphodene and Eridani
-					[c/F1AF42:Don't use this in multiplayer!]
+					DEBUG 物 品
+					在两个星海旅者之间进行切换
+					[c/F1AF42:别在多人模式下使用！]
 
 					'''
-				DisplayName: Starfarer Swapper
+				DisplayName: 星海旅者切换器
 			}
 
 			TwincruxPendant: {
 				Tooltip:
 					'''
-					This charm appears to be pulling itself apart
-					[c/F1AF42:Summons Dioskouroi, the Twin Forces]
-					This boss is available early, but you may find it much too difficult
-					Prepare accordingly, and consider postponing this fight until you are stronger
-					Is not consumed upon use
+					这个护符似乎在自我瓦解
+					[c/F1AF42:召唤双子星力，狄俄斯库洛伊]
+					你可能会过早的遇到该Boss，提前挑战可能会比较困难
+					考虑推迟这场战斗，并做好应对准备，直到你足以匹敌
+					不消耗
 					'''
-				DisplayName: The Twincrux Pendant
+				DisplayName: 双十字星吊坠
 			}
 
 			EssenceOfAbsoluteChaos: {
 				Tooltip:
 					'''
-					A gift from your Starfarer
-					Utilized in the creation of 'Adornment of the Chaotic God'
+					你的星海旅者给予的礼物
+					用于创造“混沌之神的饰物”
 					'''
-				DisplayName: Essence of Absolute Chaos
+				DisplayName: 绝对混沌之精华
 			}
 
 			EssenceOfAuthority: {
 				Tooltip:
 					'''
-					A gift from your Starfarer
-					Utilized in the creation of 'Supreme Authority'
+					你的星海旅者给予的礼物
+					用于创造“至高圣权”
 					'''
-				DisplayName: Essence of Authority
+				DisplayName: 权利之精华
 			}
 
 			EssenceOfDespair: {
 				Tooltip:
 					'''
-					A gift from your Starfarer
-					Utilized in the creation of 'Sanguine Despair'
+					你的星海旅者给予的礼物
+					用于创造“乐观绝望”
 					'''
-				DisplayName: Essence of Despair
+				DisplayName: 绝望之精华
 			}
 
 			EssenceOfFarewells: {
 				Tooltip:
 					'''
-					A gift from your Starfarer
-					Utilized in the creation of 'Kevesi Farewell'
+					你的星海旅者给予的礼物
+					用于创造“克维希的永别”
 					'''
-				DisplayName: Essence of Farewells
+				DisplayName: 永别之精华
 			}
 
 			EssenceOfGold: {
 				Tooltip:
 					'''
-					A gift from your Starfarer
-					Utilized in the creation of 'Aurum Edge'
+					你的星海旅者给予的礼物
+					用于创造“至金之锋”
 					'''
-				DisplayName: Essence of Gold
+				DisplayName: 金之精华
 			}
 
 			EssenceOfLightning: {
 				Tooltip:
 					'''
-					A gift from your Starfarer
-					Utilized in the creation of 'Boltstorm Axe'
+					你的星海旅者给予的礼物
+					用于创造“风暴之斧”
 					'''
-				DisplayName: Essence of Lightning
+				DisplayName: 闪电之精华
 			}
 
 			EssenceOfMania: {
 				Tooltip:
 					'''
-					A gift from your Starfarer
-					Utilized in the creation of 'Maniacal Justice'
+					你的星海旅者给予的礼物
+					用于创造“狂热正义”
 					'''
-				DisplayName: Essence of Mania
+				DisplayName: 狂热之精华
 			}
 
 			EssenceOfMimicry: {
 				Tooltip:
 					'''
-					A gift from your Starfarer
-					Utilized in the creation of 'Manifestation'
+					你的星海旅者给予的礼物
+					用于创造“拟态”
 					'''
-				DisplayName: Essence of Mimicry
+				DisplayName: 模仿之精华
 			}
 
 			EssenceOfNanomachines: {
 				Tooltip:
 					'''
-					A gift from your Starfarer
-					Utilized in the creation of 'Nanomachina Reactor'
+					你的星海旅者给予的礼物
+					用于创造“纳米机器反应堆”
 					'''
-				DisplayName: Essence of Nanomachines
+				DisplayName: 纳米机器之精华
 			}
 
 			EssenceOfNature: {
 				Tooltip:
 					'''
-					A gift from your Starfarer
-					Utilized in the creation of 'Irminsul's Dream'
+					你的星海旅者给予的礼物
+					用于创造“千夜浮梦”
 					'''
-				DisplayName: Essence of Nature
+				DisplayName: 自然之精华
 			}
 
 			EssenceOfOffseeing: {
 				Tooltip:
 					'''
-					A gift from your Starfarer
-					Utilized in the creation of 'Agnian Farewell'
+					你的星海旅者给予的礼物
+					用于创造“阿格尼亚的永别”
 					'''
-				DisplayName: Essence of Offseeing
+				DisplayName: 远离预言之精华
 			}
 
 			EssenceOfPiracy: {
 				Tooltip:
 					'''
-					A gift from your Starfarer
-					Utilized in the creation of 'Saltwater Scourge'
+					你的星海旅者给予的礼物
+					用于创造“海洋之灾”
 					'''
-				DisplayName: Essence of Piracy
+				DisplayName: 海盗之精华
 			}
 
 			EssenceOfQuantum: {
 				Tooltip:
 					'''
-					A gift from your Starfarer
-					Utilized in the creation of 'Catalyst's Memory'
+					你的星海旅者给予的礼物
+					用于创造“触媒之忆”
 					'''
 				DisplayName: 量子之精华
 			}
@@ -6915,62 +6919,62 @@ Mods: {
 			EssenceOfSilence: {
 				Tooltip:
 					'''
-					A gift from your Starfarer
-					Utilized in the creation of 'Gloves of the Black Silence'
+					你的星海旅者给予的礼物
+					用于创造“漆黑噤默的手套”
 					'''
-				DisplayName: Essence of Silence
+				DisplayName: 噤默之精华
 			}
 
 			EssenceOfSouls: {
 				Tooltip:
 					'''
-					A gift from your Starfarer
-					Utilized in the creation of 'Soul Reaver'
+					你的星海旅者给予的礼物
+					用于创造“夺魂”
 					'''
-				DisplayName: Essence of Souls
+				DisplayName: 灵魂之精华
 			}
 
 			EssenceOfSurya: {
 				Tooltip:
 					'''
-					A gift from your Starfarer
-					Utilized in the creation of 'Sunset of the Sun God'
+					你的星海旅者给予的礼物
+					用于创造“太阳神的日落”
 					'''
-				DisplayName: Essence of Surya
+				DisplayName: 苏利耶之精华
 			}
 
 			EssenceOfTheAbyss: {
 				Tooltip:
 					'''
-					A gift from your Starfarer
-					Utilized in the creation of 'The Everlasting Pickaxe'
+					你的星海旅者给予的礼物
+					用于创造“无尽锤”
 					'''
-				DisplayName: Essence of the Abyss
+				DisplayName: 阿比斯之精华
 			}
 
 			EssenceOfTheAutomaton: {
 				Tooltip:
 					'''
-					A gift from your Starfarer
-					Utilized in the creation of 'Pod Zero-42'
+					你的星海旅者给予的礼物
+					用于创造“Pod 0-42”
 					'''
-				DisplayName: Essence of the Automaton
+				DisplayName: 机械纪元之精华
 			}
 
 			EssenceOfTheBehemothTyphoon: {
 				Tooltip:
 					'''
-					A gift from your Starfarer
-					Utilized in the creation of 'The Kiss of Death'
+					你的星海旅者给予的礼物
+					用于创造“死亡之吻”
 					'''
-				DisplayName: Essence of the Behemoth Typhoon
+				DisplayName: 贝希摩斯飓风之精华
 			}
 
 			EssenceOfTheRenegade: {
 				Tooltip:
 					'''
-					A gift from your Starfarer
-					Utilized in the creation of 'El Capitan's Hardware'
+					你的星海旅者给予的礼物
+					用于创造“酋长岩硬件”
 					'''
 				DisplayName: 叛徒之精华
 			}
@@ -6978,81 +6982,81 @@ Mods: {
 			EssenceOfTheTimeless: {
 				Tooltip:
 					'''
-					A gift from your Starfarer
-					Utilized in the creation of 'Umbra'
+					你的星海旅者给予的礼物
+					用于创造“本影”
 					'''
-				DisplayName: Essence of the Timeless
+				DisplayName: 无时之精华
 			}
 
 			EssenceOfTheWatch: {
 				Tooltip:
 					'''
-					A gift from your Starfarer
-					Utilized in the creation of 'Chronoclock'
+					你的星海旅者给予的礼物
+					用于创造“克洛的时钟”
 					'''
-				DisplayName: Essence of the Watch
+				DisplayName: 怀表之精华
 			}
 
 			GoldenKatana: {
 				Tooltip:
 					'''
-					[c/F7D76A:Hold left click to charge the weapon; if the weapon is fully charged, the attack varies]
-					[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from both Melee and Magic damage]
-					Additionally, this weapon can be [c/F7D76A:Overcharged], causing additional effects to occur
-					Uncharged attacks with this weapon are disabled
-					Charged attacks with this weapon vary depending on the amount of [c/F7D76A:Overcharge]
-					[c/F7D76A:Overcharging] will additionally drain your HP upon reaching [c/F7D76A:Overcharge] thresholds (Will not reduce health below 1)
-					Charged attacks swing the blade in a colossal arc, inflicting Frostburn for 4 seconds
-					Second stage charge attacks consume 20 HP, but deal 2x base damage and will inflict Shadowflame for 4 seconds
-					At maximum [c/F7D76A:Overcharge], consume an additional 30 HP but guarantees a critical strike and inflict [c/FF4DF4:Hyperburn] for 4 seconds
-					[c/FF4DF4:Hyperburn] deals powerful damage over time and ignores most resistances
+					[c/F7D76A:按住左键来蓄力；如果武器完全蓄力，攻击会有所不同]
+					[c/8AC1F1:该武器有独特的伤害类型，会继承近战和魔法的伤害加成]
+					此外，该武器可以进行[c/F7D76A:过量蓄力]，产生额外的效果
+					该武器未蓄力时无法攻击
+					该武器的蓄力攻击效果取决于[c/F7D76A:过量蓄力]的次数
+					每进到下一段[c/F7D76A:过量蓄力]会额外消耗一定量的生命值（不会使你的生命值降至1）
+					蓄力攻击向前方挥舞剑刃，造成4秒霜火效果
+					第二段[c/F7D76A:过量蓄力]会消耗20点生命值，造成2倍基础伤害，并附加4秒暗影焰效果
+					第三段[c/F7D76A:过量蓄力]会消耗30点生命值，必定暴击且附加4秒[c/FF4DF4:超燃烧]
+					[c/FF4DF4:超燃烧]会在一段时间内造成大量伤害并无视大部分抗性
 					'''
-				DisplayName: Aurum Edge
+				DisplayName: 至金之锋
 			}
 
 			IrminsulDream: {
 				Tooltip:
 					'''
-					Click and drag to draw a box; releasing left click will execute [c/6CDA61:Verdant Snapshot] (Attack will end once maximum size is reached)
-					[c/6CDA61:Verdant Snapshot] inflicts damage to all foes in the box while inflicting [c/2EB24A:Verdant Embrace] for 12 seconds
-					[c/2EB24A:Verdant Embrace] deals minor damage over time
-					Additionally, when a foe with [c/2EB24A:Verdant Embrace] is inflicted with On Fire, Frostburn, Cursed Inferno, or Shadowflame, it will trigger a [c/94EF58:Verdant Burst]
-					[c/94EF58:Verdant Burst] will inflict bonus damage equal to 3% of the foe's maximum HP (up to 120 HP per application, can not kill)
-					However, both [c/2EB24A:Verdant Embrace] and the debuff that triggered [c/94EF58:Verdant Burst] will be cleansed
-					'Let knowledge be yours'
+					点击左键并拖动可以绘制一个方框，松开左键将会释放[c/6CDA61:所闻遍计]（方框在达到最大大小后自动释放）
+					[c/6CDA61:所闻遍计]会对方框内的所有敌人造成伤害，并施加[c/2EB24A:蕴种印]，持续12秒
+					[c/2EB24A:蕴种印]会在一段时间内造成少量伤害
+					此外，拥有[c/2EB24A:蕴种印]的敌人受到包含着火了！、霜火、诅咒焰或暗影焰的伤害时，它会受到[c/94EF58:灭净三业]
+					[c/94EF58:灭净三业]将造成敌人最大生命值3%的伤害（最多造成120点，该伤害无法产生击杀）
+					但是，这样会导致[c/2EB24A:蕴种印]和触发[c/94EF58:灭净三业]的减益都会被消除
+					“知识，与你分享”
 					'''
-				DisplayName: Irminsul's Dream
+				DisplayName: 千夜浮梦
 			}
 
 			KevesiFarewell: {
 				Tooltip:
 					'''
-					Playing this instrument grants the buff [c/69B5FC:Off-seer's Journey] to yourself for 2 minutes
-					[c/69B5FC:Off-seer's Journey] grants increased Luck and maximum Luck while increasing enemy spawn rates (8 minute cooldown) 
-					After defeating an enemy with the Kevesi Farewell in your inventory while [c/69B5FC:Off-seer's Journey] is active, gain the buff [c/FC6969:Farewell of Flames] for 10 seconds
-					[c/FC6969:Farewell of Flames] grants an additional increase to Luck
-					If used while wielding the strength of the Umbral Aspect (through trading in Multiplayer), further increase the potency of [c/69B5FC:Off-seer's Journey]'s Luck increase
+					演奏此乐器使自身获得持续2分钟的[c/69B5FC:远离预言之旅]
+					[c/69B5FC:远离预言之旅]会增加自身的运气和最大运气，同时增加敌人的生成率（8分钟冷却时间）
+					在[c/69B5FC:远离预言之旅]生效且物品栏内有阿格尼亚的永别时击败敌人会使你获得持续10秒的[c/FC6969:永别之炎]
+					[c/FC6969:永别之炎]额外增加你的运气
+					若在本影的力量下使用克维希的永别（多人模式下玩家交换），则会进一步增加[c/69B5FC:远离预言之旅]提供运气的幅度
 					'''
-				DisplayName: Kevesi Farewell
+				DisplayName: 克维希的永别
 			}
 
 			KissOfDeath: {
 				Tooltip:
 					'''
-					Right click to cycle between [c/F54F0C:Skyfish], [c/CF3C32:Thunderbird], and [c/CF1826:Behemoth Typhoon] with a short cooldown
-					[c/F54F0C:Skyfish] unleashes a powerful minigun, rapidly firing piercing bullets that deal 20% increased damage to foes above 50% HP
-					Each bullet will consume 2 mana (This mana cost can not be negated by any means)
-					Bullets will apply [c/F3CE36:Security Level] for 12 seconds, marking the target
-					[c/CF3C32:Thunderbird] allows for the deployment of homing bombs that ignore terrain, exploding and dealing 20% increased damage to foes below 50% HP
-					Explosions will apply [c/F3CE36:Security Level] for 12 seconds, marking the target
-					[c/CF1826:Behemoth Typhoon] swings a massive coffin, dealing 3x damage when released
-					Attacks on foes with [c/F3CE36:Security Level] using [c/CF1826:Behemoth Typhoon]'s released attack cleanses the debuff, charging the [c/EB936A:Overdrive Gauge]
-					Holding the Weapon Action Key will charge a powerful attack, consuming the [c/EB936A:Overdrive Gauge]
-					Releasing the Weapon Action Key executes a powerful close-ranged strike, increasing in power with the amount of [c/EB936A:Overdrive Gauge] consumed
-					If over half of the [c/EB936A:Overdrive Gauge] is consumed, the attack is guaranteed to be a critical strike
-					'It's not a big deal'
+					点击右键在[c/F54F0C:天鱼]、[c/CF3C32:雷鸟]和[c/CF1826:巨兽台风]之间切换，有短暂的延迟
+					[c/F54F0C:天鱼]会使用强力的速射机枪，快速发射穿透性弹药，且对生命值大于50%的敌人额外造成20%的伤害
+					每发子弹将消耗2点魔力值（此魔力消耗无法被减免）
+					子弹将会附加12秒[c/F3CE36:安保等级]，并标记目标
+					[c/CF3C32:雷鸟]会部署无视地形限制的追踪炸弹，命中目标产生爆炸并对生命值低于50%的敌人额外造成20%的伤害
+					爆炸将会附加12秒[c/F3CE36:安保等级]，并标记目标
+					[c/CF1826:巨兽台风]会摆动一个巨大的棺材，释放时造成3倍伤害
+					使用[c/CF1826:巨兽台风]释放的攻击命中[c/F3CE36:安保等级]的敌人，会增加你的[c/EB936A:瘫痪值]
+					按下武器技能键将发动一次强力的攻击，并消耗[c/EB936A:瘫痪值]
+					使用武器技能会朝前方发动一次强力的近战攻击，其伤害随着消耗[c/EB936A:瘫痪值]的量的增多而增加
+					若消耗了超过一半的[c/EB936A:瘫痪值]，则这次攻击必定暴击
+					“没什么大不了的”
 					'''
-				DisplayName: The Kiss of Death
+				DisplayName: 死亡之吻
 			}
 
 			LevinstormAxe: {
@@ -7077,24 +7081,24 @@ Mods: {
 			StellarFociGrabBagTier1: {
 				Tooltip:
 					'''
-					10% chance to upgrade upon opening
+					有10%的几率开出等级2战利品袋
 					{$CommonItemTooltip.RightClickToOpen}
 					'''
-				DisplayName: Stellar Foci Grab Bag (Tier 1)
+				DisplayName: 星体聚焦战利品袋（等级1）
 			}
 
 			StellarFociGrabBagTier2: {
 				Tooltip:
 					'''
-					10% chance to upgrade upon opening
+					有10%的几率开出等级3战利品袋
 					{$CommonItemTooltip.RightClickToOpen}
 					'''
-				DisplayName: Stellar Foci Grab Bag (Tier 2)
+				DisplayName: 星体聚焦战利品袋（等级2）
 			}
 
 			StellarFociGrabBagTier3: {
 				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
-				DisplayName: Stellar Foci Grab Bag (Tier 3)
+				DisplayName: 星体聚焦战利品袋（等级3）
 			}
 
 			ManiacalJustice: {
@@ -7119,23 +7123,23 @@ Mods: {
 			Manifestation: {
 				Tooltip:
 					'''
-					[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes at 70% efficiency, but inherits 150% from critical strike chance modifiers]
-					Attacks rapidly sweep in a colossal arc; all critical strike damage is increased by 20%
-					Taking or dealing damage grants [c/D53B3B:Emotional Turbulence] (Critical strikes grant double [c/D53B3B:Emotional Turbulence] below 200 HP)
-					Defeating foes increases [c/D53B3B:Emotional Turbulence] by 5% (doubled below 200 HP)
-					Once [c/D53B3B:Emotional Turbulence] is full, automatically gain the buff [c/AE0000:E.G.O. Manifestation] while becoming Invincible for 2 seconds
-					[c/AE0000:E.G.O. Manifestation] grants 30% increased damage, 40% increased attack speed, and 90% increased movement speed, but reduces defense by 30
-					If [c/AE0000:E.G.O. Manifestation] is active, unique [c/FF0046:Great Split] attacks can be performed
-					Execute [c/FF0046:Great Split: Vertical] with right click or [c/FF0046:Great Split: Horizontal] with the Weapon Action Key (Both attacks share a 1 minute cooldown)
-					[c/FF0046:Great Split: Vertical] will grant Invincibility for 1 second and deal 8x guaranteed close-ranged critical damage after a short delay
-					[c/FF0046:Great Split: Horizontal] will deal 3x guaranteed critical damage to all foes on the screen after a short delay
-					Both [c/FF0046:Great Split] attacks will execute any non-boss enemy below 30% HP and additionally refill [c/D53B3B:Emotional Turbulence] to full upon activation
-					If [c/AE0000:E.G.O. Manifestation] is active, [c/D53B3B:Emotional Turbulence] will passively decrease over time (Resets when not holding the weapon)
-					The longer [c/AE0000:E.G.O. Manifestation] lasts, the faster [c/D53B3B:Emotional Turbulence] will drain
-					If [c/D53B3B:Emotional Turbulence] is below 10% for 3 seconds, [c/AE0000:E.G.O. Manifestation] will end and you will be inflicted with Vulnerability for 10 seconds
-					'Let's start this for real- I'll crush you all...'
+					[c/8AC1F1:该武器有独特的伤害类型，会继承所有职业的70%伤害加成，但是会继承150%的暴击率加成]
+					使用该武器进行攻击会快速扫过前方大范围的区域；所有暴击伤害提高20%
+					受到或造成伤害会获得[c/D53B3B:情感值]（在低于200点生命值时造成暴击会加倍给予[c/D53B3B:情感值]）
+					击败敌人会使你增加5%的[c/D53B3B:情感值]（在低于200点生命值时翻倍）
+					一旦你的[c/D53B3B:情感值]达到峰值，自动进入[c/AE0000:E.G.O.展现]状态，且获得2秒无敌
+					[c/AE0000:E.G.O.展现]会使你增加30%的伤害，40%的攻击速度，90%的移动速度，但是会减少30点防御
+					若处于[c/AE0000:E.G.O.展现]状态，可以执行特殊的[c/FF0046:E.G.O.攻击]
+					可以点击右键使用[c/FF0046:血雾弥漫]或者点击武器技能键使用[c/FF0046:尸横遍野]（两种攻击共享1分钟冷却）
+					[c/FF0046:血雾弥漫]使用后获得1秒无敌，并在短暂的延迟后对近距离目标造成8倍暴击伤害
+					[c/FF0046:尸横遍野]使用后会对屏幕中的所有敌人造成3倍必定暴击的伤害
+					两个[c/FF0046:E.G.O.攻击]的任何伤害都会直接击杀生命值低于30%的非Boss敌人，并在激活后立刻重新填满[c/D53B3B:情感值]
+					若处于[c/AE0000:E.G.O.展现]状态，[c/D53B3B:情感值]会随着时间推移而逐渐减少（切换武器会直接重置）
+					处于[c/AE0000:E.G.O.展现]状态越久，你的[c/D53B3B:情感值]消耗越快
+					若[c/D53B3B:情感值]维持在10%以下超过3秒，[c/AE0000:E.G.O.展现]状态将结束，你会受到10秒脆弱
+					“让我们正式开始吧，我会把你们全部碾碎……”
 					'''
-				DisplayName: Manifestation
+				DisplayName: 拟态
 			}
 
 			BandedTenebrium: {
@@ -7578,27 +7582,22 @@ Mods: {
 			DreamersInkwell: {
 				Tooltip:
 					'''
-					Hold the Weapon Action Key to reveal the [Illusionary Inkwell] and choose a shade of [Catalytic Ink]
-					While this weapon is held, Mana can not be regenerated by any means and swapping off this weapon drains all Mana
-					Hold left click to draw [Catalytic Ink], consuming Mana based on the amount of [Catalytic Ink] drawn
-					[Catalytic Ink] lasts for 5 minutes once drawn (Mana is permanently consumed until active [Catalytic Ink] is expelled)
-					Depending on the selected [Illusionary Inkwell] shade, the [Catalytic Ink] can take on various effects
-					[Earth-Catalyzed Ink] stuns all non-boss enemies upon contact, preventing movement
-					Boss enemies passing through [Earth-Catalyzed Ink] become inflicted with Ichor for 8 seconds
-					[Wind-Catalyzed Ink] periodically buffets non-boss enemies and knocks them into the air, inflicting Wind Shear for 8 seconds
-					Foes inflicted with Wind Shear take 15% increased damage while airborne
-					[Flame-Catalyzed Ink] burns foes for 8 seconds upon contact, and deals constant damage to foes caught within the [Catalytic Ink]
-					Additionally, flames will drip from the [Catalytic Ink], dealing damage to foes below
-					[Ocean-Catalyzed Ink] periodically heals all nearby allies for 2% of this weapon's damage and applies [Sea's Embrace] for 8 seconds, reducing damage taken by 5%
-					More than one shade of [Catalytic Ink] can be present at a time
-					Expel all [Catalytic Ink] by right clicking, returning Mana to maximum
+					Hold the Weapon Action Key to reveal the [c/A75BD9:Illusionary Inkwell] and choose a shade of [c/E89CFD:Catalytic Ink]
+					Hold left click to draw damaging [c/E89CFD:Catalytic Ink] until the [c/A75BD9:Illusionary Inkwell] is emptied (Inkwell's capacity is equivalent to Max Mana)
+					While [c/E89CFD:Catalytic Ink] exists, the [c/A75BD9:Illusionary Inkwell] can not be regenerated by any means
+					[c/E89CFD:Catalytic Ink] lasts for 5 minutes once drawn; ink can be dispelled by right clicking, refilling the [c/A75BD9:Illusionary Inkwell]
+					Depending on the selected [c/A75BD9:Illusionary Inkwell] shade, the [c/E89CFD:Catalytic Ink] can take on various effects
+					[c/FDE39C:Earth-Catalyzed Ink] stuns all non-boss enemies upon contact, preventing movement but costs more Mana to draw and deals halved damage
+					[c/C4FD9C:Wind-Catalyzed Ink] periodically buffets players and non-boss enemies and sends them into the air
+					[c/FD9C9C:Flame-Catalyzed Ink] inflicts Hellfire foes for 8 seconds upon contact and flames will randomly drip
+					[c/9CD4FD:Ocean-Catalyzed Ink] periodically heals allies for 2% of their Max HP (8 second cooldown) and grants Ironskin for 8 seconds when in contact
 					'''
 				DisplayName: Dreamer's Inkwell
 			}
 
 			ShockAndAwe: {
-				// DisplayName: Shock & Awe
-				/* Tooltip:
+				DisplayName: Shock & Awe
+				Tooltip:
 					'''
 					Attacks with this weapon fire a powerful rocket that explodes upon impact with heavy knockback
 					Rocket contact damage and explosion damage occur separately
@@ -7609,22 +7608,22 @@ Mods: {
 					Right click to swing the [c/83D26E:Bargain Gardener], dealing damage to nearby foes (Critical strikes are disabled)
 					Striking foes with the [c/83D26E:Bargain Gardener] while airborne under the effect of [c/E74336:Death from Above] will guarantee a 2x damage critical strike
 					'Ka-boom!'
-					''' */
+					'''
 			}
 
 			TrickspinTwoStep: {
-				// DisplayName: Trickspin Two-Step
-				/* Tooltip:
+				DisplayName: Trickspin Two-Step
+				Tooltip:
 					'''
 					Striking foes with this weapon grants Swiftness for 3 seconds
 					Right click to propel a yo-yo forwards, travelling a short distance and dealing damage to foes
-					After 3 seconds, the yo-yo will return and can be launched again
+					After 2 seconds, the yo-yo will return and can be launched again (Yo-yo will prematurely return if too far away)
 					Right clicking again after the yo-yo has stopped movement will launch you towards the yo-yo, granting Invincibility and dealing damage to foes
 					Additionally, gain the buff [Kick Start] for 2 seconds, causing the next attack with this weapon to deal 50% increased damage, consuming the buff
 					Press the Weapon Action Key to deploy the [Killing Bear] on your cursor for 8 seconds (30 second cooldown)
 					During this time, striking foes with the yo-yo will cause the [Killing Bear] to teleport to the target and deal a follow-up attack (3 second delay)
 					The [Killing Bear]'s follow-up attacks will additionally grant [Kick Start] for 2 seconds
-					''' */
+					'''
 			}
 		}
 
@@ -8395,18 +8394,18 @@ Mods: {
 			SpectrumVFX1.DisplayName: Spectrum V F X1
 			SpectrumVFX2.DisplayName: Spectrum V F X2
 			SpectrumVFX3.DisplayName: Spectrum V F X3
-			// InkwellEarthInk.DisplayName: Inkwell Earth Ink
-			// InkwellAirInk.DisplayName: Inkwell Air Ink
-			// InkwellFireInk.DisplayName: Inkwell Fire Ink
-			// InkwellWaterInk.DisplayName: Inkwell Water Ink
-			// InkwellHeld.DisplayName: Inkwell Held
-			// GardenerSlash1.DisplayName: Gardener Slash1
-			// GardenerSlash2.DisplayName: Gardener Slash2
-			// ShockAndAweRocket.DisplayName: Shock And Awe Rocket
-			// ShockAndAweRocketExplosion.DisplayName: Shock And Awe Rocket Explosion
-			// ShockAndAweRocketLauncher.DisplayName: Shock And Awe Rocket Launcher
-			// TrickspinTwoStepProjectile.DisplayName: Trickspin Two Step Projectile
-			// TrickspinSuspendYoyo.DisplayName: Trickspin Suspend Yoyo
+			InkwellEarthInk.DisplayName: Inkwell Earth Ink
+			InkwellAirInk.DisplayName: Inkwell Air Ink
+			InkwellFireInk.DisplayName: Inkwell Fire Ink
+			InkwellWaterInk.DisplayName: Inkwell Water Ink
+			InkwellHeld.DisplayName: Inkwell Held
+			GardenerSlash1.DisplayName: Gardener Slash1
+			GardenerSlash2.DisplayName: Gardener Slash2
+			ShockAndAweRocket.DisplayName: Shock And Awe Rocket
+			ShockAndAweRocketExplosion.DisplayName: Shock And Awe Rocket Explosion
+			ShockAndAweRocketLauncher.DisplayName: Shock And Awe Rocket Launcher
+			TrickspinTwoStepProjectile.DisplayName: Trickspin Two Step Projectile
+			TrickspinSuspendYoyo.DisplayName: Trickspin Suspend Yoyo
 		}
 
 		Buffs: {
@@ -10502,7 +10501,7 @@ Mods: {
 				Attacks inflict Karmic Retribution for 10 seconds
 				'''
 			LVBuff100.Description: Able to unleash a Special Attack upon pressing the Weapon Action Key
-
+			
 			SpectrumAbsorption: {
 				DisplayName: Refractive Absorption
 				Description: Absorbing all incoming damage at the cost of constant HP drain
@@ -10529,23 +10528,23 @@ Mods: {
 			}
 
 			InkwellGlobalDelay: {
-				// DisplayName: Inkwell Global Delay
-				// Description: ""
+				DisplayName: Inkwell Global Delay
+				Description: ""
 			}
 
 			InkwellWaterDelay: {
-				// DisplayName: Inkwell Water Delay
-				// Description: ""
+				DisplayName: Inkwell Water Delay
+				Description: ""
 			}
 
 			InkwellWindDelay: {
-				// DisplayName: Inkwell Wind Delay
-				// Description: ""
+				DisplayName: Inkwell Wind Delay
+				Description: ""
 			}
 
 			DeathFromAbove: {
-				// DisplayName: Death From Above
-				// Description: Air superiority enables weapon special effects
+				DisplayName: Death From Above
+				Description: Air superiority enables weapon special effects
 			}
 		}
 
