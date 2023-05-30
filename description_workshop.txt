@@ -82,7 +82,7 @@ The features of The Stars Above doesn't stop here; express yourself with unique 
 Turn Aspected weapons to Rogue Damage from Calamity, or Symphonic/Radiant/Throwing Damage from Thorium!
 
 Your Starfarers will have unique dialogue for content from the following mods:
-Calamity, Secrets of the Shadows, Verdant, Fargo's Souls, and the Thorium Mod. More will come soon!
+Calamity, Secrets of the Shadows, Verdant, Fargo's Souls, the Spirit Mod and the Thorium Mod. More will come soon!
 Additionally, some separate scaling is present for the Calamity Mod. (This can be disabled in the Mod Settings.)
 
 

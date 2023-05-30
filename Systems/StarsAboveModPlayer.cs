@@ -842,6 +842,16 @@ namespace StarsAbove
         public bool seenAbominationn;
         public bool seenMutant;
 
+        //Spirit Bosses
+        public bool seenScarabeus;
+        public bool seenMoonJellyWizard;
+        public bool seenVinewrathBane;
+        public bool seenAncientAvian;
+        public bool seenStarplateVoyager;
+        public bool seenInfernon;
+        public bool seenDusking;
+        public bool seenAtlas;
+        
         public bool seenUnknownBoss;
         public int seenUnknownBossTimer;
         public List<int> seenBossesList = new List<int>();
@@ -1181,6 +1191,16 @@ namespace StarsAbove
             tag["seenAbominationn"] = seenAbominationn;
             tag["seenMutant"] = seenMutant;
 
+            tag["seenScarabeus"] = seenScarabeus;
+            tag["seenMoonJellyWizard"] = seenMoonJellyWizard;
+            tag["seenVinewrathBane"] = seenVinewrathBane;
+            tag["seenAncientAvian"] = seenAncientAvian;
+            tag["seenStarplateVoyager"] = seenStarplateVoyager;
+            tag["seenInfernon"] = seenInfernon;
+            tag["seenDusking"] = seenDusking;
+            tag["seenAtlas"] = seenAtlas;
+
+
             tag["seenObservatory"] = seenObservatory;
             tag["seenCygnusAsteroids"] = seenCygnusAsteroids;
             tag["seenBleachedPlanet"] = seenBleachedPlanet;
@@ -1509,6 +1529,16 @@ namespace StarsAbove
             seenEridanus = tag.GetBool("seenEridanus");
             seenAbominationn = tag.GetBool("seenAbomination");
             seenMutant = tag.GetBool("seenMutant");
+
+            seenScarabeus = tag.GetBool("seenScarabeus");
+            seenMoonJellyWizard = tag.GetBool("seenMoonJellyWizard");
+            seenVinewrathBane = tag.GetBool("seenVinewrathBane");
+            seenAncientAvian = tag.GetBool("seenAncientAvian");
+            seenStarplateVoyager = tag.GetBool("seenStarplateVoyager");
+            seenInfernon = tag.GetBool("seenInfernon");
+            seenDusking = tag.GetBool("seenDusking");
+            seenAtlas = tag.GetBool("seenAtlas");
+
 
             seenObservatory = tag.GetBool("seenObservatory");
             seenCygnusAsteroids = tag.GetBool("seenCygnusAsteroids");
@@ -6278,6 +6308,81 @@ namespace StarsAbove
                 }
 
             }
+            if (ModLoader.TryGetMod("SpiritMod", out Mod SpiritMod))
+            {
+                if (NPC.AnyNPCs(SpiritMod.Find<ModNPC>("Scarabeus").Type) && !seenScarabeus)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onScarabeus");
+                    seenUnknownBossTimer = 300;
+                }
+                if (NPC.AnyNPCs(SpiritMod.Find<ModNPC>("MoonWizard").Type) && !seenMoonJellyWizard)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onMoonJellyWizard");
+                    seenUnknownBossTimer = 300;
+                }
+                if (NPC.AnyNPCs(SpiritMod.Find<ModNPC>("ReachBoss").Type) && !seenVinewrathBane)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onVinewrathBane");
+                    seenUnknownBossTimer = 300;
+                }
+                if (NPC.AnyNPCs(SpiritMod.Find<ModNPC>("AncientFlyer").Type) && !seenAncientAvian)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onAncientAvian");
+                    seenUnknownBossTimer = 300;
+                }
+                if (NPC.AnyNPCs(SpiritMod.Find<ModNPC>("SteamRaiderHead").Type) && !seenStarplateVoyager)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onStarplateVoyager");
+                    seenUnknownBossTimer = 300;
+                }
+                if (NPC.AnyNPCs(SpiritMod.Find<ModNPC>("Infernon").Type) && !seenInfernon)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onInfernon");
+                    seenUnknownBossTimer = 300;
+                }
+                if (NPC.AnyNPCs(SpiritMod.Find<ModNPC>("Dusking").Type) && !seenDusking)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onDusking");
+                    seenUnknownBossTimer = 300;
+                }
+                if (NPC.AnyNPCs(SpiritMod.Find<ModNPC>("Atlas").Type) && !seenAtlas)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onAtlas");
+                    seenUnknownBossTimer = 300;
+                }
+            }
             //Secrets of the Shadows Mod Bosses
             if (ModLoader.TryGetMod("SOTS", out Mod SOTS))
             {
@@ -9330,6 +9435,54 @@ namespace StarsAbove
                         //                $" Mutant's super upset, super strong, and super coming straight for you.";
                         seenMutant = true;
                     }
+                    if (eventPrompt == "onScarabeus")
+                    {
+                        promptExpression = 2;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.194", Player.name);
+                        seenScarabeus = true;
+                    }
+                    if (eventPrompt == "onMoonJellyWizard")
+                    {
+                        promptExpression = 2;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.195", Player.name);
+                        seenMoonJellyWizard = true;
+                    }
+                    if (eventPrompt == "onVinewrathBane")
+                    {
+                        promptExpression = 2;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.196", Player.name);
+                        seenVinewrathBane = true;
+                    }
+                    if (eventPrompt == "onAncientAvian")
+                    {
+                        promptExpression = 2;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.197", Player.name);
+                        seenAncientAvian = true;
+                    }
+                    if (eventPrompt == "onStarplateVoyager")
+                    {
+                        promptExpression = 2;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.198", Player.name);
+                        seenStarplateVoyager = true;
+                    }
+                    if (eventPrompt == "onInfernon")
+                    {
+                        promptExpression = 2;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.199", Player.name);
+                        seenInfernon = true;
+                    }
+                    if (eventPrompt == "onDusking")
+                    {
+                        promptExpression = 2;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.200", Player.name);
+                        seenDusking = true;
+                    }
+                    if (eventPrompt == "onAtlas")
+                    {
+                        promptExpression = 2;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.201", Player.name);
+                        seenAtlas = true;
+                    }
                     //Thorium bosses.
                     if (eventPrompt == "onGrandThunderBird")
                     {
@@ -10491,6 +10644,54 @@ namespace StarsAbove
 
                         
                         seenMutant = true;
+                    }
+                    if (eventPrompt == "onScarabeus")
+                    {
+                        promptExpression = 2;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.196", Player.name);
+                        seenScarabeus = true;
+                    }
+                    if (eventPrompt == "onMoonJellyWizard")
+                    {
+                        promptExpression = 2;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.197", Player.name);
+                        seenMoonJellyWizard = true;
+                    }
+                    if (eventPrompt == "onVinewrathBane")
+                    {
+                        promptExpression = 2;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.198", Player.name);
+                        seenVinewrathBane = true;
+                    }
+                    if (eventPrompt == "onAncientAvian")
+                    {
+                        promptExpression = 2;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.199", Player.name);
+                        seenAncientAvian = true;
+                    }
+                    if (eventPrompt == "onStarplateVoyager")
+                    {
+                        promptExpression = 2;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.200", Player.name);
+                        seenStarplateVoyager = true;
+                    }
+                    if (eventPrompt == "onInfernon")
+                    {
+                        promptExpression = 2;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.201", Player.name);
+                        seenInfernon = true;
+                    }
+                    if (eventPrompt == "onDusking")
+                    {
+                        promptExpression = 2;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.202", Player.name);
+                        seenDusking = true;
+                    }
+                    if (eventPrompt == "onAtlas")
+                    {
+                        promptExpression = 2;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.203", Player.name);
+                        seenAtlas = true;
                     }
                     //Thorium bosses.
                     if (eventPrompt == "onGrandThunderBird")
