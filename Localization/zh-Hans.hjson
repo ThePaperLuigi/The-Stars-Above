@@ -7616,13 +7616,13 @@ Mods: {
 				// DisplayName: Trickspin Two-Step
 				/* Tooltip:
 					'''
+					4 summon tag damage
 					Striking foes with this weapon grants Swiftness for 3 seconds
-					Right click to propel a yo-yo forwards, travelling a short distance and dealing damage to foes
-					After 3 seconds, the yo-yo will return and can be launched again
-					Right clicking again after the yo-yo has stopped movement will launch you towards the yo-yo, granting Invincibility and dealing damage to foes
-					Additionally, gain the buff [Kick Start] for 2 seconds, causing the next attack with this weapon to deal 50% increased damage, consuming the buff
-					Press the Weapon Action Key to deploy the [Killing Bear] on your cursor for 8 seconds (30 second cooldown)
-					During this time, striking foes with the yo-yo will cause the [Killing Bear] to teleport to the target and deal a follow-up attack (3 second delay)
+					Press the Weapon Action Key to sling a yo-yo forwards, travelling a short distance (Yo-yo returns after two seconds)
+					Press the Weapon Action Key after the yo-yo has stopped movement will launch you towards the yo-yo, returning it
+					Additionally, gain the buff [Kick Start] for 3 seconds, causing the next attack with this weapon to deal 2x damage, consuming the buff
+					Right click to prepare the [Killing Bear], gaining the buff [Me and My Killing Machine] for 8 seconds (30 second cooldown)
+					During this time, striking foes with this weapon will cause the [Killing Bear] to deal a follow-up attack (1 second delay)
 					The [Killing Bear]'s follow-up attacks will additionally grant [Kick Start] for 2 seconds
 					''' */
 			}
@@ -8407,6 +8407,7 @@ Mods: {
 			// ShockAndAweRocketLauncher.DisplayName: Shock And Awe Rocket Launcher
 			// TrickspinTwoStepProjectile.DisplayName: Trickspin Two Step Projectile
 			// TrickspinSuspendYoyo.DisplayName: Trickspin Suspend Yoyo
+			// TrickspinBearAttack.DisplayName: Trickspin Bear Attack
 		}
 
 		Buffs: {
@@ -10547,6 +10548,36 @@ Mods: {
 				// DisplayName: Death From Above
 				// Description: Air superiority enables weapon special effects
 			}
+
+			KickStartBuff: {
+				// DisplayName: Kick Start
+				// Description: The next attack with the weapon will deal double damage
+			}
+
+			TrickspinLeapCooldown: {
+				// DisplayName: Trickspin Leap Cooldown
+				// Description: ""
+			}
+
+			TrickspinTagDamage: {
+				// DisplayName: Trickspin Tag Damage
+				// Description: Mods.StarsAbove.Buffs.TrickspinTagDamage.Description
+			}
+
+			MeAndMyKillingMachineBuff: {
+				// DisplayName: Me And My Killing Machine
+				// Description: Killing Bear is prepared to follow up on attacks
+			}
+
+			MeAndMyKillingMachineCooldown: {
+				// DisplayName: Me And My Killing Machine Cooldown
+				// Description: ""
+			}
+
+			MeAndMyKillingMachineFollowUpCooldown: {
+				// DisplayName: Me And My Killing Machine Follow Up Cooldown
+				// Description: ""
+			}
 		}
 
 		BossChecklist: {
@@ -10646,15 +10677,47 @@ Mods: {
 		}
 
 		Biomes: {
-			BleachedWorldBiome.DisplayName: 星海
+			BleachedWorldBiome: {
+				DisplayName: 星海
+				// TownNPCDialogueName: the Bleached World Biome
+			}
+
 			CityBiome.DisplayName: 城市
-			MoonBiome.DisplayName: 月球
-			ObservatoryBiome.DisplayName: 观星台
-			SeaOfStarsBiome.DisplayName: 星海
-			AstarteDriverBiome.DisplayName: Deep Space
-			CorvusBiome.DisplayName: Corvus
-			FriendlySpaceBiome.DisplayName: Friendly Space Biome
-			LyraBiome.DisplayName: Lyra
+
+			MoonBiome: {
+				DisplayName: 月球
+				// TownNPCDialogueName: the Moon Biome
+			}
+
+			ObservatoryBiome: {
+				DisplayName: 观星台
+				// TownNPCDialogueName: the Observatory Biome
+			}
+
+			SeaOfStarsBiome: {
+				DisplayName: 星海
+				// TownNPCDialogueName: the Sea Of Stars Biome
+			}
+
+			AstarteDriverBiome: {
+				DisplayName: Deep Space
+				// TownNPCDialogueName: the Astarte Driver Biome
+			}
+
+			CorvusBiome: {
+				DisplayName: Corvus
+				// TownNPCDialogueName: the Corvus Biome
+			}
+
+			FriendlySpaceBiome: {
+				DisplayName: Friendly Space Biome
+				// TownNPCDialogueName: the Friendly Space Biome
+			}
+
+			LyraBiome: {
+				DisplayName: Lyra
+				// TownNPCDialogueName: the Lyra Biome
+			}
 		}
 
 		GameTips: {

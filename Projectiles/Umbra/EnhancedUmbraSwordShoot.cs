@@ -101,7 +101,11 @@ namespace StarsAbove.Projectiles.Umbra
 					heading *= new Vector2(velocity.X, velocity.Y).Length();
 					velocity.X = heading.X;
 					velocity.Y = heading.Y + Main.rand.Next(-40, 41) * 0.02f;
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, velocity.X, velocity.Y, ProjectileType<UmbraSwordShoot>(), damageDone, 0, player.whoAmI, 0f);
+					if(player.whoAmI == Main.myPlayer)
+                    {
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, velocity.X, velocity.Y, ProjectileType<UmbraSwordShoot>(), damageDone, 0, player.whoAmI, 0f);
+
+					}
 				}
 			}
 
