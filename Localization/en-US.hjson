@@ -1634,9 +1634,17 @@ Mods: {
 					191: This is a pretty large patch of Corruption- but as long as it isn't moving anywhere, it shouldn't be a threat we need to stop. Still, it's a bit of a eyesore.
 					192: An entire moon covered in Crimson- yuck. I wouldn't want to be stranded here, so mind where the Gateway is and you should be fine.
 					193: Isn't this strange? Nobody would seriously think of making a space station out of wood, right? Huh- I could have sworn there was someone living here...?
+					194: A desert scarab is coming straight for you- and it's covered in armor!
+					195: Those jellyfish seem to have coalesed- looks like it has some powerful lightning abilities!
+					196: Something in this briar stirs- if you haven't already, time to prep for a fight.
+					197: Hey, eyes up! A bird-like creature is coming straight for you... Doesn't look like any bird I've seen before!
+					198: Something's barreling through the asteroid field at a rapid pace! Don't get reckless...!
+					199: A demon approaches! I guess it makes sense- we are in the Underworld, after all! Let's give them a warm welcome.
+					200: I don't know what you just used, but a terrifying skull monster is on its way. Guess I should've seen this coming.
+					201: A huge crystalline foe approaches- needless to say, prepare for a fight.
 				}
-
-				Eridani: {
+				Eridani:
+				{
 					1: Uhh.. you're looking a little sick.
 					2: The Ichor is dampening your defenses. Watch out.
 					3: You've been silenced.. No magic for now.
@@ -1831,6 +1839,14 @@ Mods: {
 					193: A Crimson-infused moon... After you've gathered what you need, we should excuse ourselves quickly.
 					194: Seems this place has been completely overturned by the Ardor... What a horrible fate.
 					195: Never would I ever have thought I'd see a wooden space-station, of all things... Hold on a moment- is someone still living here?
+					196: You've got to be kidding me. It's a horrid, scuttling bug- in armor, no less. Avoid its disgusting minions or else!
+					197: The Moon Jellies have combined into a sort of figure? It looks like it wants a fight, so prepare yourself!
+					198: Hey, heads up- that thing you just used has awoken a sort of nature entity, and it's headed your way.
+					199: I think you've angered this prehistoric bird thing- I hope you've got a plan to take it out of the sky.
+					200: A low-orbit entity is rapidly approaching your position- get ready for a fight.
+					201: I hate to say this, but you seem to have caught the attention of a fearsome demon- time to prepare for combat.
+					202: That crown you just used seems to have summoned a demonic skull... these things aren't usually friendly!
+					203: A colossal earthen entity is approaching- and it's hostile, no doubt. A fight it is.
 				}
 			}
 
