@@ -32,7 +32,7 @@ namespace StarsAbove.Items
 			Item.noMelee = true; // This makes it so the item doesn't do damage to enemies (the projectile does that).
 			Item.noUseGraphic = true; // Makes the item invisible while using it (the projectile is the visible part).
 
-			Item.damage = 40; // The amount of damage the item does to an enemy or player.
+			Item.damage = 17; // The amount of damage the item does to an enemy or player.
 			Item.DamageType = DamageClass.Summon; // The type of damage the weapon does. MeleeNoSpeed means the item will not scale with attack speed.
 			Item.knockBack = 2.5f; // The amount of knockback the item inflicts.
 			Item.crit = 8; // The percent chance for the weapon to deal a critical strike. Defaults to 4.
