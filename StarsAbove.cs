@@ -13,6 +13,7 @@ using StarsAbove.Items;
 using ReLogic.Content.Sources;
 
 using StarsAbove.Systems;
+using StarsAbove.NPCs.WarriorOfLight;
 
 namespace StarsAbove
 {
@@ -159,7 +160,7 @@ namespace StarsAbove
 					"AddBoss", //Entry Type
 					this, //Mod Instance
 					"$Mods.StarsAbove.NPCName.WarriorOfLight", //Boss Name
-					ModContent.NPCType<NPCs.WarriorOfLight>(), //Boss ID
+					ModContent.NPCType<WarriorOfLightBoss>(), //Boss ID
 					18.1f, //Progression
 					(Func<bool>)(() => DownedBossSystem.downedWarrior), //Downed boolean
 					() => true, //Availability

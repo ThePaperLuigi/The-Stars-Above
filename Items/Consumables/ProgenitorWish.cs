@@ -38,7 +38,7 @@ namespace StarsAbove.Items.Consumables
 		// We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
 		public override bool CanUseItem(Player player) {
 			
-			return !NPC.AnyNPCs(NPCType<NPCs.WarriorOfLight>()) && SubworldSystem.Current == null;
+			return !NPC.AnyNPCs(NPCType<NPCs.WarriorOfLight.WarriorOfLightBoss>()) && SubworldSystem.Current == null;
 		}
 
 		public override bool? UseItem(Player player) {
@@ -48,7 +48,8 @@ namespace StarsAbove.Items.Consumables
 				// (explicitely excluded serverside here)
 				
 
-				int type = ModContent.NPCType<NPCs.WarriorOfLight>();
+				int type = ModContent.NPCType<NPCs.WarriorOfLight.WarriorOfLightBoss>();
+				int type2 = ModContent.NPCType<NPCs.WarriorOfLight.WarriorWallsNPC>();
 
 				if (Main.netMode != NetmodeID.Server && Main.myPlayer == player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Boss.WarriorOfLight"), 241, 255, 180); }
 
@@ -56,12 +57,16 @@ namespace StarsAbove.Items.Consumables
 				{
 					// If the player is not in multiplayer, spawn directly
 					NPC.SpawnOnPlayer(player.whoAmI, type);
+					NPC.SpawnOnPlayer(player.whoAmI, type2);
+
 				}
 				else
 				{
 					// If the player is in multiplayer, request a spawn
 					// This will only work if NPCID.Sets.MPAllowedEnemies[type] is true, which we set in MinionBossBody
 					NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: type);
+					NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: type2);
+
 				}
 			}
 			if(EverlastingLightEvent.isEverlastingLightPreviewActive)

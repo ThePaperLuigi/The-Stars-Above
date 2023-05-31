@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using StarsAbove.NPCs.WarriorOfLight;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
@@ -58,7 +59,7 @@ namespace StarsAbove.Projectiles
 
 
 		
-			if (!NPC.AnyNPCs(NPCType<NPCs.WarriorOfLight>()))
+			if (!NPC.AnyNPCs(NPCType<WarriorOfLightBoss>()))
 			{
 
 				Projectile.Kill();
@@ -77,7 +78,7 @@ namespace StarsAbove.Projectiles
 				
 
 
-				if (npc.active && npc.type == NPCType<NPCs.WarriorOfLight>())
+				if (npc.active && npc.type == NPCType<WarriorOfLightBoss>())
 				{
 					Projectile.Center = npc.Center;
 					if (npc.HasBuff(BuffType<Buffs.WarriorEnd>()))

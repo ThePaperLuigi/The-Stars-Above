@@ -21,6 +21,7 @@ using Terraria.GameContent;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Buffs;
 using StarsAbove.Utilities;
+using StarsAbove.Projectiles.Bosses.WarriorOfLight;
 
 namespace StarsAbove.NPCs.WarriorOfLight
 {
@@ -285,10 +286,10 @@ namespace StarsAbove.NPCs.WarriorOfLight
 			{
 				Projectile other = Main.projectile[i];
 
-				if (other.active && (other.type == ModContent.ProjectileType<WarriorOfLightSwordSprite>()
-					|| other.type == ModContent.ProjectileType<WarriorOfLightSwordAttackSprite>()
-					|| other.type == ModContent.ProjectileType<WarriorOfLightLoseSwordSprite>()
-					|| other.type == ModContent.ProjectileType<WarriorOfLightCastSprite>()
+				if (other.active && (other.type == ModContent.ProjectileType<WarriorOfLightCastingSprite>()
+					//|| other.type == ModContent.ProjectileType<WarriorOfLightSwordAttackSprite>()
+					//|| other.type == ModContent.ProjectileType<WarriorOfLightLoseSwordSprite>()
+					//|| other.type == ModContent.ProjectileType<WarriorOfLightCastSprite>()
 					|| other.type == ModContent.ProjectileType<VagrantSwordSprite>()
 					&& other.alpha < 1))
 					
@@ -337,10 +338,6 @@ namespace StarsAbove.NPCs.WarriorOfLight
 					{
 						NPC.frame.Y = (int)Frame.Idle5 * frameHeight;
 					}
-					else if (NPC.frameCounter < 60)
-					{
-						NPC.frame.Y = (int)Frame.Idle6 * frameHeight;
-					}
 					else
 					{
 						NPC.frameCounter = 0;
@@ -368,10 +365,6 @@ namespace StarsAbove.NPCs.WarriorOfLight
 					else if (NPC.frameCounter < 50)
 					{
 						NPC.frame.Y = (int)Frame.Idle5 * frameHeight;
-					}
-					else if (NPC.frameCounter < 60)
-					{
-						NPC.frame.Y = (int)Frame.Idle6 * frameHeight;
 					}
 					else
 					{
@@ -519,36 +512,11 @@ namespace StarsAbove.NPCs.WarriorOfLight
 				}
 			}
 
-
-			NPC.position.X = Main.player[NPC.target].Center.X - 80;
-			NPC.position.Y = Main.player[NPC.target].position.Y-160;
+			Main.LocalPlayer.GetModPlayer<BossPlayer>().warriorCutsceneProgress = 10;
+			NPC.position.X = Main.player[NPC.target].Center.X - 50;
+			NPC.position.Y = Main.player[NPC.target].position.Y - 160;
 			NPC.netUpdate = true;
-			//SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_WarriorOfLightIntroQuote, NPC.Center);
-			for (int d = 0; d < 130; d++)
-			{
-				Dust.NewDust(NPC.Center, 0, 0, 0, 0f + Main.rand.Next(-30, 30), 0f + Main.rand.Next(-30, 30), 150, default(Color), 1.5f);
-			}
-			for (int d = 0; d < 144; d++)
-			{
-				Dust.NewDust(NPC.Center, 0, 0, 0, 0f + Main.rand.Next(-35, 35), 0f + Main.rand.Next(-35, 35), 150, default(Color), 1.5f);
-			}
-			for (int d = 0; d < 126; d++)
-			{
-				Dust.NewDust(NPC.Center, 0, 0, 133, 0f + Main.rand.Next(-36, 36), 0f + Main.rand.Next(-36, 36), 150, default(Color), 1.5f);
-			}
-			for (int d = 0; d < 130; d++)
-			{
-				Dust.NewDust(NPC.Center, 0, 0, 7, 0f + Main.rand.Next(-33, 33), 0f + Main.rand.Next(-33, 33), 150, default(Color), 1.5f);
-			}
-			for (int d = 0; d < 140; d++)
-			{
-				Dust.NewDust(NPC.Center, 0, 0, 269, 0f + Main.rand.Next(-33, 33), 0f + Main.rand.Next(-33, 33), 150, default(Color), 1.5f);
-			}
-			for (int d = 0; d < 150; d++)
-			{
-				Dust.NewDust(NPC.Center, 0, 0, 78, 0f + Main.rand.Next(-35, 35), 0f + Main.rand.Next(-35, 35), 150, default(Color), 1.5f);
-			}
-
+			
 			AI_State = (float)ActionState.Idle;
 		}
 		private void Idle()

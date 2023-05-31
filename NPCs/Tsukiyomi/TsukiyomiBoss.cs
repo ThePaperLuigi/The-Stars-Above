@@ -25,6 +25,7 @@ using Terraria.Graphics.Shaders;
 using StarsAbove.Projectiles.Bosses.Tsukiyomi;
 using StarsAbove.Projectiles;
 using SubworldLibrary;
+using StarsAbove.NPCs.WarriorOfLight;
 
 namespace StarsAbove.NPCs.Tsukiyomi
 {
@@ -98,7 +99,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 		}
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
-			int associatedNPCType = ModContent.NPCType<WarriorOfLight>();
+			int associatedNPCType = ModContent.NPCType<WarriorOfLightBoss>();
 			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[associatedNPCType], quickUnlock: true);
 
 			// We can use AddRange instead of calling Add multiple times in order to add multiple items at once

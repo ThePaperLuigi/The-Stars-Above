@@ -63,16 +63,12 @@ namespace StarsAbove.NPCs
 		}
 		public override void AI()
 		{
-			if (!NPC.AnyNPCs(ModContent.NPCType<NPCs.WarriorOfLight>()))
+			if (!EverlastingLightEvent.isEverlastingLightActive)
 			{
-				if(!EverlastingLightEvent.isEverlastingLightActive)
-                {
-					NPC.HitEffect();
-					NPC.life = 0;
-					NPC.active = false;
-					NPC.netUpdate = true;
-				}
-				
+				NPC.HitEffect();
+				NPC.life = 0;
+				NPC.active = false;
+				NPC.netUpdate = true;
 			}
 			base.AI();
 		}

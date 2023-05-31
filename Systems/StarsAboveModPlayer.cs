@@ -49,6 +49,7 @@ using StarsAbove.NPCs.Nalhaun;
 using StarsAbove.NPCs.Tsukiyomi;
 using StarsAbove.Projectiles.StellarNovas;
 using StarsAbove.Items.Prisms;
+using StarsAbove.NPCs.WarriorOfLight;
 
 namespace StarsAbove
 {
@@ -1923,10 +1924,7 @@ namespace StarsAbove
             }
 
             //Will be replaced when these bosses get their new AI.
-            if (target.type == NPCType<WarriorOfLight>())
-            {
-                inWarriorOfLightFightTimer = 4200;
-            }
+            
             if (target.type == NPCType<Arbitration>())
             {
                 inArbiterFightTimer = 1200;
@@ -6563,7 +6561,7 @@ namespace StarsAbove
                 starfarerPromptActive("onMoonLord");
                 seenUnknownBossTimer = 300;
             }
-            if (NPC.AnyNPCs(ModContent.NPCType<NPCs.WarriorOfLight>()) && !seenWarriorOfLight)
+            if (NPC.AnyNPCs(ModContent.NPCType<WarriorOfLightBoss>()) && !seenWarriorOfLight)
             {
                 if (starfarerPromptCooldown > 0)
                 {
@@ -6690,67 +6688,7 @@ namespace StarsAbove
             }
         }
        
-        private void WarriorTeleport(NPC npc)
-        {
-            if (inWarriorOfLightFightTimer > 0)
-            {
-                int halfWidth = WarriorOfLight.arenaWidth / 2;
-                int halfHeight = WarriorOfLight.arenaHeight / 2;
-                Vector2 newPosition = Player.position;
-                if (Player.position.X <= npc.Center.X - halfWidth)//Left wall
-                {
-                    newPosition.X = npc.Center.X - halfWidth - Player.width - 1;
-                    Player.velocity = new Vector2(20, Player.velocity.Y);
-                    // if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("1"), 190, 100, 247);}
-                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
-                    {
-                        newPosition.X -= 16f;
-
-                    }
-                }
-                else if (Player.position.X + Player.width >= npc.Center.X + halfWidth)//Right Wall
-                {
-                    newPosition.X = npc.Center.X + halfWidth + 1;
-                    Player.velocity = new Vector2(-20, Player.velocity.Y);
-                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("2"), 190, 100, 247);}
-                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
-                    {
-                        newPosition.X += 16f;
-
-                    }
-                }
-                else if (Player.position.Y <= npc.Center.Y - halfHeight)//Top
-                {
-                    newPosition.Y = npc.Center.Y - halfHeight - Player.height - 1;
-                    Player.velocity = new Vector2(Player.velocity.X, 20);
-                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("3"), 190, 100, 247);}
-                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
-                    {
-                        newPosition.Y -= 16f;
-
-                    }
-                }
-                else if (Player.position.Y + Player.height >= npc.Center.Y + halfHeight)//Bottom
-                {
-                    newPosition.Y = npc.Center.Y + halfHeight + 1;
-                    Player.velocity = new Vector2(Player.velocity.X, -20);
-                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("4"), 190, 100, 247);}
-                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
-                    {
-
-                        newPosition.Y += 16f;
-                    }
-                }
-                if (newPosition != Player.position)
-                {
-                    //player.Teleport(newPosition, 1, 0);
-                    //NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
-
-
-                }
-            }
-
-        }
+        
         private void PenthTeleport(NPC npc)
         {
             if (inPenthFightTimer > 0 && Player.immuneTime <= 0)
@@ -7423,16 +7361,6 @@ namespace StarsAbove
                
             }
 
-            for (int k = 0; k < 200; k++)
-            {
-                NPC npc = Main.npc[k];
-                if (npc.active && npc.type == NPCType<WarriorOfLight>())
-                {
-
-                    WarriorTeleport(npc);
-                    break;
-                }
-            }
             for (int k = 0; k < 200; k++)
             {
                 NPC npc = Main.npc[k];

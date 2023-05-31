@@ -16,7 +16,7 @@ using Conditions = Terraria.GameContent.ItemDropRules.Conditions;
 namespace StarsAbove.NPCs
 {
     [AutoloadBossHead]
-    public class WarriorOfLight : ModNPC
+    public class WarriorOfLightOld : ModNPC
     {
         public static readonly int arenaWidth = (int)(1.2f * 2400);
         public static readonly int arenaHeight = (int)(1.2f * 1600);

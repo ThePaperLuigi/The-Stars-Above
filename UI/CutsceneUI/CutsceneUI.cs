@@ -21,6 +21,7 @@ namespace StarsAbove.UI.CutsceneUI
         private UIVideo nalhaunCutsceneVideo;
         private UIVideo tsukiCutsceneVideo;
         private UIVideo tsukiCutsceneVideo2;
+        private UIVideo warriorCutsceneVideo;
 
         public override void OnInitialize() {
 			
@@ -56,6 +57,14 @@ namespace StarsAbove.UI.CutsceneUI
             };
             tsukiCutsceneVideo2 = new UIVideo(Request<Video>("StarsAbove/Video/TsukiyomiNovaCutscene"))
             {
+                
+                ScaleToFit = true,
+                WaitForStart = true,
+                DoLoop = false
+            };
+            warriorCutsceneVideo = new UIVideo(Request<Video>("StarsAbove/Video/WarriorIntroCutscene"))
+            {
+
                 ScaleToFit = true,
                 WaitForStart = true,
                 DoLoop = false
@@ -100,6 +109,7 @@ namespace StarsAbove.UI.CutsceneUI
             NalhaunCutscene(bossPlayer);
             TsukiCutscene(bossPlayer, ref introWhite, ref outroWhite);
             TsukiCutscene2(bossPlayer, ref introWhite, ref outroWhite);
+            WarriorCutscene1(bossPlayer, ref introWhite, ref outroWhite);
 
             if (bossPlayer.VideoDuration == 0)
             {
@@ -279,6 +289,48 @@ namespace StarsAbove.UI.CutsceneUI
             }
             
             
+        }
+        private void WarriorCutscene1(BossPlayer modPlayer, ref bool introWhite, ref bool outroWhite)
+        {
+            UIVideo Video = warriorCutsceneVideo;
+            var cutsceneProgress = modPlayer.warriorCutsceneProgress;
+
+            introWhite = true;
+            outroWhite = true;
+
+            if (cutsceneProgress <= 60 && cutsceneProgress > 0)
+            {//If the cutscene hasn't started yet, give time for the screen to fade.
+
+                if (introWhite)
+                {
+                    modPlayer.WhiteAlpha += 0.1f;
+                }
+                else
+                {
+                    modPlayer.BlackAlpha += 0.1f;
+                }
+
+
+            }
+            else
+            {
+
+            }
+            if (cutsceneProgress == 1)
+            {
+
+                Video.FinishedVideo = false;
+                Video.StartVideo = true;
+
+                area.Append(Video);
+
+            }
+            if (Video.FinishedVideo)
+            {
+                Video.Remove();
+            }
+
+
         }
     }
 }

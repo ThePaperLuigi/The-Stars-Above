@@ -22,6 +22,7 @@ using StarsAbove.NPCs.Nalhaun;
 using StarsAbove.NPCs.Tsukiyomi;
 using StarsAbove.NPCs.Dioskouroi;
 using StarsAbove.Projectiles.Bosses;
+using StarsAbove.NPCs.WarriorOfLight;
 
 namespace StarsAbove
 {
@@ -30,6 +31,7 @@ namespace StarsAbove
         public bool VagrantBarActive = false;//This changes depending on the boss
         public bool NalhaunBarActive = false;
         public bool TsukiyomiBarActive = false;
+        public bool WarriorOfLightBarActive = false;
 
         public bool CastorBarActive = false;
         public bool PolluxBarActive = false;
@@ -55,6 +57,7 @@ namespace StarsAbove
         public int nalhaunCutsceneProgress = 0;
         public int tsukiCutsceneProgress = 0;
         public int tsukiCutscene2Progress = 0;
+        public int warriorCutsceneProgress = 0;
 
         public float WhiteAlpha = 0f;
         public float BlackAlpha = 0f;
@@ -105,6 +108,12 @@ namespace StarsAbove
                     VagrantTeleport(npc);
                     break;
                 }
+                if (npc.active && npc.type == NPCType<WarriorWallsNPC>() && Player.Distance(npc.Center) < 2000)
+                {
+
+                    WarriorTeleport(npc);
+                    break;
+                }
                 if (npc.active && npc.type == NPCType<VagrantWallsHorizontal>() && Player.Distance(npc.Center) < 2000)
                 {
 
@@ -147,6 +156,7 @@ namespace StarsAbove
             nalhaunCutsceneProgress--;
             tsukiCutsceneProgress--;
             tsukiCutscene2Progress--;
+            warriorCutsceneProgress--;
             VideoDuration--;
             
             BlackAlpha = Math.Clamp(BlackAlpha, 0, 1);
@@ -228,7 +238,7 @@ namespace StarsAbove
             NalhaunBarActive = false;
             VagrantBarActive = false;
             TsukiyomiBarActive = false;
-
+            WarriorOfLightBarActive = false;
             CastorBarActive = false;
             PolluxBarActive = false;
 
@@ -266,7 +276,7 @@ namespace StarsAbove
                     bossReductionMod = 1400;
 
                 }
-                if (npc.type == ModContent.NPCType<WarriorOfLight>())
+                if (npc.type == ModContent.NPCType<WarriorOfLightBoss>())
                 {
                     bossReductionMod = 1800;
 
@@ -308,6 +318,67 @@ namespace StarsAbove
                 damageReductionAmount = (float)Math.Tanh(stress / bossReductionMod);
 
             }
+        }
+        private void WarriorTeleport(NPC npc)
+        {
+            if (Player.whoAmI == Main.myPlayer)
+            {
+                int halfWidth = WarriorWallsNPC.arenaWidth / 2;
+                int halfHeight = WarriorWallsNPC.arenaHeight / 2;
+                Vector2 newPosition = Player.position;
+                if (Player.position.X <= npc.Center.X - halfWidth)//Left wall
+                {
+                    newPosition.X = npc.Center.X - halfWidth - Player.width - 1;
+                    Player.velocity = new Vector2(20, Player.velocity.Y);
+                    // if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("1"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.X -= 16f;
+
+                    }
+                }
+                else if (Player.position.X + Player.width >= npc.Center.X + halfWidth)//Right Wall
+                {
+                    newPosition.X = npc.Center.X + halfWidth + 1;
+                    Player.velocity = new Vector2(-20, Player.velocity.Y);
+                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("2"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.X += 16f;
+
+                    }
+                }
+                else if (Player.position.Y <= npc.Center.Y - halfHeight)//Top
+                {
+                    newPosition.Y = npc.Center.Y - halfHeight - Player.height - 1;
+                    Player.velocity = new Vector2(Player.velocity.X, 20);
+                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("3"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.Y -= 16f;
+
+                    }
+                }
+                else if (Player.position.Y + Player.height >= npc.Center.Y + halfHeight)//Bottom
+                {
+                    newPosition.Y = npc.Center.Y + halfHeight + 1;
+                    Player.velocity = new Vector2(Player.velocity.X, -20);
+                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("4"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+
+                        newPosition.Y += 16f;
+                    }
+                }
+                if (newPosition != Player.position)
+                {
+                    //player.Teleport(newPosition, 1, 0);
+                    //NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
+
+
+                }
+            }
+
         }
         private void VagrantTeleport(NPC npc)
         {

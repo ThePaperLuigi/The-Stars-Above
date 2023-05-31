@@ -9,6 +9,7 @@ using StarsAbove.NPCs;
 using StarsAbove.Items.Materials;
 using StarsAbove.Items.Prisms;
 using Terraria.GameContent.ItemDropRules;
+using StarsAbove.NPCs.WarriorOfLight;
 
 namespace StarsAbove.Items.BossBags
 {
@@ -51,7 +52,7 @@ namespace StarsAbove.Items.BossBags
 			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<AegisOfHopesLegacyPrecursor>(), 4, 1, 1));
 			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<TotemOfLightEmpowered>(), 1, 1, 1));
 			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<DullTotemOfLight>(), 1, 1, 1));
-			itemLoot.Add(ItemDropRule.CoinsBasedOnNPCValue(ModContent.NPCType<WarriorOfLight>()));
+			itemLoot.Add(ItemDropRule.CoinsBasedOnNPCValue(ModContent.NPCType<WarriorOfLightBoss>()));
 		}
 		
 
