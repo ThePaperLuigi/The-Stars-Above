@@ -3082,9 +3082,9 @@ Mods: {
 			VagrantWalls.DisplayName: Vagrant Walls
 			VagrantWallsHorizontal.DisplayName: Vagrant Walls Horizontal
 			VagrantWallsVertical.DisplayName: Vagrant Walls Vertical
-			// WarriorOfLightBoss.DisplayName: Warrior Of Light Boss
-			// WarriorWallsNPC.DisplayName: Warrior Walls N P C
-			// WarriorOfLightOld.DisplayName: Warrior Of Light Old
+			// WarriorOfLightBoss.DisplayName: The Warrior Of Light
+			// WarriorWallsNPC.DisplayName: ""
+			// WarriorOfLightOld.DisplayName: ""
 		}
 
 		Tiles: {
@@ -8424,12 +8424,13 @@ Mods: {
 			// ShockAndAweRocket.DisplayName: Shock And Awe Rocket
 			// ShockAndAweRocketExplosion.DisplayName: Shock And Awe Rocket Explosion
 			// ShockAndAweRocketLauncher.DisplayName: Shock And Awe Rocket Launcher
-			// TrickspinTwoStepProjectile.DisplayName: Trickspin Two Step Projectile
+			// TrickspinTwoStepProjectile.DisplayName: Trickspin Two Step
 			// TrickspinSuspendYoyo.DisplayName: Trickspin Suspend Yoyo
 			// TrickspinBearAttack.DisplayName: Trickspin Bear Attack
-			// TheBitterEndProjectile.DisplayName: The Bitter End Projectile
+			// TheBitterEndProjectile.DisplayName: The Bitter End
 			// WarriorOfLightCastingSprite.DisplayName: Warrior Of Light Casting Sprite
 			// WarriorOfLightSwingingSprite.DisplayName: Warrior Of Light Swinging Sprite
+			// WarriorOfLightLaser.DisplayName: Warrior Of Light Laser
 		}
 
 		Buffs: {

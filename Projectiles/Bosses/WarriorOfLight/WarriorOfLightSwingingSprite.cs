@@ -44,8 +44,8 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 		// It appears that for this AI, only the ai0 field is used!
 		
 		public override void AI() {
-			//DrawOriginOffsetY = -38;
-			//DrawOffsetX = -20;
+			DrawOriginOffsetY = -89;
+			DrawOffsetX = -50;
 			timer++;
 			
 			fadeIn += 5;

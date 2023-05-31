@@ -30,17 +30,6 @@ namespace StarsAbove.NPCs.WarriorOfLight
 	public class WarriorOfLightBoss : ModNPC
 	{
 
-		private int portalFrame
-		{
-			get => (int)NPC.localAI[0];
-			set => NPC.localAI[0] = value;
-		}
-		public static readonly int arenaWidth = (int)(1.2f * 1000);
-		public static readonly int arenaHeight = (int)(1.2f * 600);
-
-		
-
-
 		// Our texture is 36x36 with 2 pixels of padding vertically, so 38 is the vertical spacing.
 		// These are for our benefit and the numbers could easily be used directly in the code below, but this is how we keep code organized.
 		private enum Frame
@@ -111,7 +100,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 			NPC.height = 200;
 			NPC.scale = 1f;
 			NPC.npcSlots = 1f;
-			NPC.aiStyle = -1;
+			NPC.aiStyle = 0;
 			NPC.lavaImmune = true;
 			NPC.noGravity = false;
 			NPC.noTileCollide = false;
@@ -160,11 +149,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 
 		public override void AI()
         {
-			if (!Main.dedServ)
-			{
-				portalFrame++;
-				portalFrame %= 6 * Main.projFrames[ProjectileID.PortalGunGate];
-			}
+			
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
             var bossPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
@@ -207,19 +192,19 @@ namespace StarsAbove.NPCs.WarriorOfLight
                 if (AI_RotationNumber == 0)
                 {
                     //
-                    IvoryStake1(P, NPC);
+                    TheBitterEnd(P, NPC);
                     return;
                 }
 				else if (AI_RotationNumber == 1)
 				{
 					//
-					RightwardRend(P, NPC);
+					TheBitterEnd(P, NPC);
 					return;
 				}
 				else if (AI_RotationNumber == 2)
 				{
 					//
-					OuterAgony(P, NPC);
+					TheBitterEnd(P, NPC);
 					return;
 				}
 				else
@@ -287,7 +272,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 				Projectile other = Main.projectile[i];
 
 				if (other.active && (other.type == ModContent.ProjectileType<WarriorOfLightCastingSprite>()
-					//|| other.type == ModContent.ProjectileType<WarriorOfLightSwordAttackSprite>()
+					|| other.type == ModContent.ProjectileType<WarriorOfLightSwingingSprite>()
 					//|| other.type == ModContent.ProjectileType<WarriorOfLightLoseSwordSprite>()
 					//|| other.type == ModContent.ProjectileType<WarriorOfLightCastSprite>()
 					|| other.type == ModContent.ProjectileType<VagrantSwordSprite>()
@@ -502,7 +487,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 
 			//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
 			//Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, 0, 0, ModContent.ProjectileType<VagrantSlamSprite>(), 0, 0, Main.myPlayer);
-			
+			/*
 			for (int i = 0; i < Main.maxPlayers; i++)
 			{
 				Player player = Main.player[i];
@@ -511,20 +496,42 @@ namespace StarsAbove.NPCs.WarriorOfLight
 					player.velocity = Vector2.Normalize(NPC.Center - player.Center) * -10f;
 				}
 			}
-
+			*/
 			Main.LocalPlayer.GetModPlayer<BossPlayer>().warriorCutsceneProgress = 10;
 			NPC.position.X = Main.player[NPC.target].Center.X - 50;
 			NPC.position.Y = Main.player[NPC.target].position.Y - 160;
 			NPC.netUpdate = true;
-			
-			AI_State = (float)ActionState.Idle;
+
+			NPC.netUpdate = true;
+			if (Main.netMode == NetmodeID.SinglePlayer)
+			{
+				NPC.dontTakeDamage = true;
+
+			}
+			for (int i = 0; i < Main.maxPlayers; i++)
+			{
+				Player player = Main.player[i];
+				if (player.active && player.Distance(NPC.Center) < 1000)
+					player.AddBuff(BuffType<Invincibility>(), 10);
+
+			}
+			//Boss spawn timer.
+			NPC.localAI[0]++;
+			if (NPC.localAI[0] >= 440)
+			{
+				NPC.dontTakeDamage = false;
+
+				NPC.netUpdate = true;
+
+				AI_State = (float)ActionState.Idle;
+			}
 		}
 		private void Idle()
 		{
 			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 			modPlayer.NextAttack = "";
 			NPC.direction = (Main.player[NPC.target].Center.X < NPC.Center.X).ToDirectionInt();//Face the target.
-
+			NPC.spriteDirection = NPC.direction;
 			AI_Timer++;//The boss's rotation timer ticks upwards.
 
 
@@ -534,6 +541,8 @@ namespace StarsAbove.NPCs.WarriorOfLight
 			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 			NPC.localAI[3]++;
 			NPC.direction = (Main.player[NPC.target].Center.X < NPC.Center.X).ToDirectionInt();//Face the target.
+			NPC.spriteDirection = NPC.direction;
+
 			modPlayer.CastTime = (int)NPC.localAI[3];
 			modPlayer.CastTimeMax = (int)NPC.ai[3];
 		}
@@ -543,32 +552,6 @@ namespace StarsAbove.NPCs.WarriorOfLight
 
 		}
 		//Draw the portal
-		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
-		{
-			int portalWidth = 48;
-			int portalDepth = 18;
-			Color color = new Color(181, 43, 43);
-			int centerX = (int)NPC.Center.X;
-			int centerY = (int)NPC.Center.Y;
-			Main.instance.LoadProjectile(ProjectileID.PortalGunGate);
-			for (int x = centerX - arenaWidth / 2; x < centerX + arenaWidth / 2; x += portalWidth)
-			{
-				int frameNum = (portalFrame / 6 + x / portalWidth) % Main.projFrames[ProjectileID.PortalGunGate];
-				Rectangle frame = new Rectangle(0, frameNum * (portalWidth + 2), portalDepth, portalWidth);
-				Vector2 drawPos = new Vector2(x + portalWidth / 2, centerY - arenaHeight / 2) - Main.screenPosition;
-				spriteBatch.Draw((Texture2D)TextureAssets.Projectile[ProjectileID.PortalGunGate], drawPos, frame, color, (float)-Math.PI / 2f, new Vector2(portalDepth / 2, portalWidth / 2), 1f, SpriteEffects.None, 0f);
-				drawPos.Y += arenaHeight;
-				spriteBatch.Draw((Texture2D)TextureAssets.Projectile[ProjectileID.PortalGunGate], drawPos, frame, color, (float)Math.PI / 2f, new Vector2(portalDepth / 2, portalWidth / 2), 1f, SpriteEffects.None, 0f);
-			}
-			for (int y = centerY - arenaHeight / 2; y < centerY + arenaHeight / 2; y += portalWidth)
-			{
-				int frameNum = (portalFrame / 6 + y / portalWidth) % Main.projFrames[ProjectileID.PortalGunGate];
-				Rectangle frame = new Rectangle(0, frameNum * (portalWidth + 2), portalDepth, portalWidth);
-				Vector2 drawPos = new Vector2(centerX - arenaWidth / 2, y + portalWidth / 2) - Main.screenPosition;
-				spriteBatch.Draw((Texture2D)TextureAssets.Projectile[ProjectileID.PortalGunGate], drawPos, frame, color, (float)Math.PI, new Vector2(portalDepth / 2, portalWidth / 2), 1f, SpriteEffects.None, 0f);
-				drawPos.X += arenaWidth;
-				spriteBatch.Draw((Texture2D)TextureAssets.Projectile[ProjectileID.PortalGunGate], drawPos, frame, color, 0f, new Vector2(portalDepth / 2, portalWidth / 2), 1f, SpriteEffects.None, 0f);
-			}
-		}
+		
 	}
 }

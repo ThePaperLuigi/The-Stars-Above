@@ -9070,7 +9070,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				#region attack
 
-				float Speed = 6f;  //projectile speed
+				float Speed = 10f;  //projectile speed
 				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
 				int damage = 100;  //projectile damage
 				int type = ProjectileType<TheBitterEndProjectile>(); //Type of projectile
@@ -9078,10 +9078,10 @@ namespace StarsAbove.NPCs.AttackLibrary
 				float rotation = (float)Math.Atan2(StartPosition.Y - (target.position.Y + (target.height * 0.5f)), StartPosition.X - (target.position.X + (target.width * 0.5f)));
 				Vector2 velocity = new Vector2((float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1));
 
-				SoundEngine.PlaySound(SoundID.Item124, npc.Center);
+				SoundEngine.PlaySound(StarsAboveAudio.SFX_GunbladeImpact, npc.Center);
 				for (int d = 0; d < 30; d++)
 				{
-					Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Green, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
+					Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
 				}
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{

@@ -32,10 +32,10 @@ namespace StarsAbove.NPCs.WarriorOfLight
 			NPC.DeathSound = SoundID.NPCDeath1;
 			NPC.Opacity = 255f;
 			NPC.value = 0f;
-			NPC.knockBackResist = 0.5f;
 			NPC.aiStyle = -1;
 			NPC.noGravity = true;
 			NPC.dontTakeDamage = true;
+			NPC.ShowNameOnHover = false;
 		}
 
 		private int portalFrame
@@ -43,7 +43,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 			get => (int)NPC.localAI[0];
 			set => NPC.localAI[0] = value;
 		}
-		public static readonly int arenaWidth = (int)(1.2f * 1000);
+		public static readonly int arenaWidth = (int)(1.2f * 1300);
 		public static readonly int arenaHeight = (int)(1.2f * 800);
 		public override void AI()
 		{

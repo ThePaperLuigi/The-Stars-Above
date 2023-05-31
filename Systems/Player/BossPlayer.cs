@@ -157,6 +157,12 @@ namespace StarsAbove
             tsukiCutsceneProgress--;
             tsukiCutscene2Progress--;
             warriorCutsceneProgress--;
+            if(warriorCutsceneProgress <= 3 && warriorCutsceneProgress > 0)
+            {
+                //WhiteAlpha += 0.1f;
+            }
+
+
             VideoDuration--;
             
             BlackAlpha = Math.Clamp(BlackAlpha, 0, 1);
