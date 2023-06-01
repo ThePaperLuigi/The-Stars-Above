@@ -43,7 +43,8 @@ namespace StarsAbove.NPCs.WarriorOfLight
 			get => (int)NPC.localAI[0];
 			set => NPC.localAI[0] = value;
 		}
-		public static readonly int arenaWidth = (int)(1.2f * 1300);
+
+		public static readonly int arenaWidth = (int)(1.2f * 1320);
 		public static readonly int arenaHeight = (int)(1.2f * 800);
 		public override void AI()
 		{

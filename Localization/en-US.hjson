@@ -8464,6 +8464,18 @@ Mods: {
 			WarriorOfLightCastingSprite.DisplayName: Warrior Of Light Casting Sprite
 			WarriorOfLightSwingingSprite.DisplayName: Warrior Of Light Swinging Sprite
 			WarriorOfLightLaser.DisplayName: Warrior Of Light Laser
+			WarriorNebulaBlast.DisplayName: Nebula Blast
+			WarriorNebulaSummon.DisplayName: Warrior Nebula Summon
+			WarriorSolarEruption.DisplayName: Solar Eruption
+			WarriorSolarSummon.DisplayName: Warrior Solar Summon
+			WarriorStardustCell.DisplayName: Stardust Cell
+			WarriorStardustSummon.DisplayName: Warrior Stardust Summon
+			WarriorVortexArrow.DisplayName: Vortex Arrow
+			WarriorVortexSummon.DisplayName: Warrior Vortex Summon
+			WarriorExpandingBladesDelay.DisplayName: Blade of Light
+			WarriorAbsoluteBlade.DisplayName: Blade of Light
+			WarriorAbsoluteBlade2.DisplayName: Blade of Light
+			WarriorLightblast.DisplayName: Lightblast
 		}
 
 		Buffs: {

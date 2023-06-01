@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Buffs.CarianDarkMoon;
 using StarsAbove.NPCs.Tsukiyomi;
 using StarsAbove.Utilities;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -35,12 +36,16 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 			Projectile.ownerHitCheck = false;
 			Projectile.tileCollide = false;
 			Projectile.friendly = false;
-			Projectile.hostile = true;
+			Projectile.hostile = false;
 		}
 		bool altFire = false;
 		public static Texture2D texture;
 		public override bool PreDraw(ref Color lightColor)
 		{
+			if (Projectile.ai[1] > 0)
+			{
+				return false;
+			}
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 
@@ -67,97 +72,139 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 			ArmorShaderData data = GameShaders.Armor.GetSecondaryShader((byte)GameShaders.Armor.GetShaderIdFromItemId(ItemID.ShiftingSandsDye), Main.LocalPlayer);
 			data.Apply(null);
 			Main.EntitySpriteDraw(texture,
-				Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY),
+				Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY + MathHelper.Lerp(-10, 10, EaseHelper.Pulse((float)(Projectile.localAI[0])))),
 				sourceRectangle, Color.White, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullNone, (Effect)null, Main.GameViewMatrix.TransformationMatrix);
 
 			return false;
 		}
-		public override void AI() {
+		bool firstSpawn = true;
+		Vector2 bossPosition;
+
+		public override void AI()
+		{
+			Projectile.localAI[0]++;
+			float dustAmount = 20f;
+
+			Projectile.ai[1]--;
+			if (firstSpawn && Projectile.ai[1] <= 0)
+			{
+				Projectile.localAI[0] += Main.rand.Next(0, 50);
+
+				for (int i = 0; i < Main.maxNPCs; i++)//The sprite will always face what the boss is facing.
+				{
+					NPC other = Main.npc[i];
+
+					if (other.active && other.type == ModContent.NPCType<NPCs.WarriorOfLight.WarriorOfLightBoss>())
+					{
+						bossPosition = other.Center;
+						//return;
+					}
+				}
+				for (int i = 0; (float)i < dustAmount; i++)
+				{
+					Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+					spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+					spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
+					int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.GemTopaz);
+					Main.dust[dust].scale = 2f;
+					Main.dust[dust].noGravity = true;
+					Main.dust[dust].position = Projectile.Center + spinningpoint5;
+					Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 3f;
+				}
+				for (int ir = 0; ir < 50; ir++)
+				{
+					Vector2 positionNew = Vector2.Lerp(bossPosition, Projectile.Center, (float)ir / 50);
+
+					Dust da = Dust.NewDustPerfect(positionNew, DustID.FireworkFountain_Yellow, null, 240, default(Color), 0.7f);
+					da.fadeIn = 0.3f;
+					da.noLight = true;
+					da.noGravity = true;
+
+				}
+				firstSpawn = false;
+			}
 			//Projectile.ai[2] == Facing left or right
 			//Projectile.ai[0] == Time left (should be more than 120)
 
 			//DrawOriginOffsetY = -90;
 			Projectile.timeLeft = 10;
-			Projectile.alpha -= 10;
-			Projectile.ai[0]--;
-			if(Projectile.ai[2] == 1)
+			if(Projectile.ai[1] <= 0)
             {
-				Projectile.spriteDirection = 1;
-				Projectile.direction = 1;
+				Projectile.ai[0]--;
+				Projectile.alpha -= 10;
+
+			}
+			if (Projectile.ai[2] == 1)
+            {
+				Projectile.spriteDirection = -1;
+				Projectile.direction = -1;
             }
 			if (Projectile.ai[0] <= 120)
 			{
 				//Projectile.velocity.Y -= 0.5f;
 				//Projectile.velocity.Y = MathHelper.Clamp(Projectile.velocity.X, -80, 0);
 
-				Projectile.ai[1]++;
-				Dust.NewDust(Projectile.Center, 0, 0, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1f);
+				Projectile.localAI[1]++;
+				Dust.NewDust(Projectile.Center, 0, 0, DustID.GemTopaz, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 0.5f);
 
-				
+
 			}
-			else
-            {
-				for (int i = 0; i < 5; i++)
-				{
-					// Charging dust
-					Vector2 vector = new Vector2(
-						Main.rand.Next(-2048, 2048) * (0.003f * 200) - 10,
-						Main.rand.Next(-2048, 2048) * (0.003f * 200) - 10);
-					Dust d = Main.dust[Dust.NewDust(
-						Projectile.Center + vector, 1, 1,
-						DustID.FireworkFountain_Blue, 0, 0, 255,
-						new Color(1f, 1f, 1f), 0.5f)];
-					d.velocity = -vector / 16;
-					d.velocity -= Projectile.velocity / 8;
-					d.noLight = true;
+			else if (Projectile.ai[1] <= 0)
+			{
+				for (int i = 0; i < 30; i++)
+				{//Circle
+					Vector2 offset = new Vector2();
+					double angle = Main.rand.NextDouble() * 2d * Math.PI;
+					offset.X += (float)(Math.Sin(angle) * (120 - Projectile.ai[0]));
+					offset.Y += (float)(Math.Cos(angle) * (120 - Projectile.ai[0]));
+
+					Dust d = Dust.NewDustPerfect(Projectile.Center + offset, DustID.GemTopaz, Projectile.velocity, 20, default(Color), 0.4f);
+
+					d.fadeIn = 0.1f;
 					d.noGravity = true;
 				}
-
-
 			}
 
 			
-			if (Projectile.ai[1] >= 15)
+			if (Projectile.localAI[1] == 1)
 			{
-				Projectile.ai[1] = 0;
-				int type = ModContent.ProjectileType<WarriorVortexArrow>();
+				//Projectile.ai[1] = -240;
+				int type = ModContent.ProjectileType<WarriorNebulaBlast>();
 				//SoundEngine.PlaySound(StarsAboveAudio.SFX_WhisperShot, Projectile.Center);
+				SoundEngine.PlaySound(SoundID.Item9, Projectile.Center);
 
 
 				Vector2 position = Projectile.Center;
 
 
-				if (Projectile.ai[2] == 1)
-				{
-					Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y - 20, -40, 0, type, Projectile.damage, 0f, Main.myPlayer);
-
-				}
-				else
-                {
-					Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y - 20, 40, 0, type, Projectile.damage, 0f, Main.myPlayer);
-
-				}
-
-				for (int d = 0; d < 10; d++)
-				{
-					Dust.NewDust(Projectile.Center, 0, 0, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(0, 20), 0f + Main.rand.Next(0, 20), 150, default(Color), 1.5f);
-				}
-				for (int d = 0; d < 10; d++)
-				{
-					Dust.NewDust(Projectile.Center, 0, 0, DustID.WhiteTorch, 0f + Main.rand.Next(0, 20), 0f + Main.rand.Next(0, 20), 150, default(Color), 1.5f);
-				}
+				Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y - 20, -20, 0, type, Projectile.damage, 0f, Main.myPlayer);
+				Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y - 20, 20, 0, type, Projectile.damage, 0f, Main.myPlayer);
+				Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y - 20, 0, -20, type, Projectile.damage, 0f, Main.myPlayer);
+				Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y - 20, 0, 20, type, Projectile.damage, 0f, Main.myPlayer);
 
 			}
 
 			if (Projectile.ai[0] <= 0)
-            {
+			{
+				for (int i = 0; (float)i < dustAmount; i++)
+				{
+					Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+					spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+					spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
+					int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.GemTopaz);
+					Main.dust[dust].scale = 2f;
+					Main.dust[dust].noGravity = true;
+					Main.dust[dust].position = Projectile.Center + spinningpoint5;
+					Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 3f;
+				}
 				Projectile.Kill();
-            }
+			}
 
-			
+
+
 		}
-		
+
 	}
 }

@@ -102,7 +102,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 			NPC.npcSlots = 1f;
 			NPC.aiStyle = 0;
 			NPC.lavaImmune = true;
-			NPC.noGravity = false;
+			NPC.noGravity = true;
 			NPC.noTileCollide = false;
 			NPC.value = 0f;
 			DrawOffsetY = 0;
@@ -191,20 +191,56 @@ namespace StarsAbove.NPCs.WarriorOfLight
                 //Attacks begin here.
                 if (AI_RotationNumber == 0)
                 {
-                    //
-                    TheBitterEnd(P, NPC);
+					//
+					WarriorSummoning1(P, NPC);
                     return;
                 }
 				else if (AI_RotationNumber == 1)
 				{
 					//
-					TheBitterEnd(P, NPC);
+					Transplacement(P, NPC);
 					return;
 				}
 				else if (AI_RotationNumber == 2)
 				{
 					//
 					TheBitterEnd(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 3)
+				{
+					//
+					Transplacement(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 4)
+				{
+					//
+					PassageOfArms1(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 5)
+				{
+					//
+					SearingLight(P, NPC); //Move this to later
+					return;
+				}
+				else if (AI_RotationNumber == 6)
+				{
+					//
+					PassageOfArms2(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 7)
+				{
+					//
+					TheBitterEnd(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 8)
+				{
+					//
+					EphemeralEdge(P, NPC);
 					return;
 				}
 				else
@@ -215,12 +251,8 @@ namespace StarsAbove.NPCs.WarriorOfLight
 
 
             }
-			//if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI) { Main.NewText(Language.GetTextValue($"Rotation Number {AI_RotationNumber}"), 220, 100, 247); }
-			//if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI) { Main.NewText(Language.GetTextValue($"Timer {AI_Timer}"), 220, 100, 247); }
-			//if (Main.netMode != NetmodeID.Server && Main.myPlayer == Main.LocalPlayer.whoAmI) { Main.NewText(Language.GetTextValue($"State {AI_State}"), 220, 100, 247); }
 			
-			//Animate the border.
-			
+			//DrawOffsetY = MathHelper.Lerp(-10, 10, EaseHelper.Pulse(NPC.localAI[0]));
 		}
 
         private void FindTargetPlayer()
@@ -291,7 +323,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 						NPC.frame.Y = (int)Frame.Empty * frameHeight;
 					}
 					
-					//NPC.alpha = 250;
+					//NPC.alpha = 255;
 					return;
 				}
 			}
@@ -497,10 +529,13 @@ namespace StarsAbove.NPCs.WarriorOfLight
 				}
 			}
 			*/
-			Main.LocalPlayer.GetModPlayer<BossPlayer>().warriorCutsceneProgress = 10;
-			NPC.position.X = Main.player[NPC.target].Center.X - 50;
-			NPC.position.Y = Main.player[NPC.target].position.Y - 160;
-			NPC.netUpdate = true;
+			if(NPC.localAI[0] == 0)
+            {
+				Main.LocalPlayer.GetModPlayer<BossPlayer>().warriorCutsceneProgress = 10;
+				NPC.position.X = Main.player[NPC.target].Center.X - 50;
+				NPC.position.Y = Main.player[NPC.target].position.Y - 160;
+			}
+			
 
 			NPC.netUpdate = true;
 			if (Main.netMode == NetmodeID.SinglePlayer)
@@ -512,7 +547,11 @@ namespace StarsAbove.NPCs.WarriorOfLight
 			{
 				Player player = Main.player[i];
 				if (player.active && player.Distance(NPC.Center) < 1000)
+                {
 					player.AddBuff(BuffType<Invincibility>(), 10);
+					player.AddBuff(BuffType<DownForTheCount>(), 10);
+				}
+					
 
 			}
 			//Boss spawn timer.

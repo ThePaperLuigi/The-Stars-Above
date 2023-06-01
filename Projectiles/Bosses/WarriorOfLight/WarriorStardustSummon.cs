@@ -15,7 +15,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 {
-	public class WarriorVortexSummon : ModProjectile
+	public class WarriorStardustSummon : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			Main.projFrames[Projectile.type] = 1;
@@ -24,8 +24,8 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 		}
 
 		public override void SetDefaults() {
-			Projectile.width = 60;
-			Projectile.height = 60;
+			Projectile.width = 100;
+			Projectile.height = 100;
 			Projectile.aiStyle = 0;
 			Projectile.penetrate = -1;
 			Projectile.scale = 1f;
@@ -72,7 +72,7 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 			ArmorShaderData data = GameShaders.Armor.GetSecondaryShader((byte)GameShaders.Armor.GetShaderIdFromItemId(ItemID.ShiftingSandsDye), Main.LocalPlayer);
 			data.Apply(null);
 			Main.EntitySpriteDraw(texture,
-				Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY + MathHelper.Lerp(-10, 10, EaseHelper.Pulse((float)(Projectile.localAI[0])))),
+				Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY + MathHelper.Lerp(-10,10,EaseHelper.Pulse((float)(Projectile.localAI[0])))),
 				sourceRectangle, Color.White, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullNone, (Effect)null, Main.GameViewMatrix.TransformationMatrix);
@@ -81,7 +81,7 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 		}
 		bool firstSpawn = true;
 		Vector2 bossPosition;
-
+		
 		public override void AI()
 		{
 			Projectile.localAI[0]++;
@@ -90,9 +90,9 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 			Projectile.ai[1]--;
 			if (firstSpawn && Projectile.ai[1] <= 0)
 			{
+				Projectile.alpha -= 10;
 				Projectile.localAI[0] += Main.rand.Next(0, 50);
 
-				Projectile.rotation = MathHelper.ToRadians(Projectile.ai[2]);
 				for (int i = 0; i < Main.maxNPCs; i++)//The sprite will always face what the boss is facing.
 				{
 					NPC other = Main.npc[i];
@@ -125,8 +125,7 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 
 				}
 				firstSpawn = false;
-            }
-			
+			}
 			//Projectile.ai[2] == Facing left or right
 			//Projectile.ai[0] == Time left (should be more than 120)
 
@@ -140,8 +139,8 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 			}
 			if (Projectile.ai[2] == 1)
             {
-				//Projectile.spriteDirection = -1;
-				//Projectile.direction = -1;
+				Projectile.spriteDirection = -1;
+				Projectile.direction = -1;
             }
 			if (Projectile.ai[0] <= 120)
 			{
@@ -167,35 +166,22 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 					d.fadeIn = 0.1f;
 					d.noGravity = true;
 				}
-
-
 			}
 
-
-			if (Projectile.localAI[1] >= 6)
+			
+			if (Projectile.localAI[1] >= 1)
 			{
-				SoundEngine.PlaySound(SoundID.Item5, Projectile.Center);
-
-				Projectile.localAI[1] = 0;
-				int type = ModContent.ProjectileType<WarriorVortexArrow>();
-				//SoundEngine.PlaySound(StarsAboveAudio.SFX_WhisperShot, Projectile.Center);
+				Projectile.localAI[1] = -50;
+				int type = ModContent.ProjectileType<WarriorStardustCell>();
+				SoundEngine.PlaySound(SoundID.Item44, Projectile.Center);
 
 
 				Vector2 position = Projectile.Center;
-				float speed = 20f;
 
-				Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y + Main.rand.Next(-7, 7), (float)((Math.Cos(Projectile.rotation) * speed)), (float)((Math.Sin(Projectile.rotation) * speed)), type, Projectile.damage, 0f, Main.myPlayer);
 
-				if (Projectile.ai[2] == 1)
-				{
-					//Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y + Main.rand.Next(-7,7), (float)((Math.Cos(Projectile.rotation) * speed) * -1), (float)((Math.Sin(Projectile.rotation) * speed) * -1), type, Projectile.damage, 0f, Main.myPlayer);
-
-				}
-				else
-                {
-					//Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y + Main.rand.Next(-7, 7), (float)((Math.Cos(Projectile.rotation) * speed)), (float)((Math.Sin(Projectile.rotation) * speed)), type, Projectile.damage, 0f, Main.myPlayer);
-
-				}
+				Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y - 20, -5, 0, type, Projectile.damage, 0f, Main.myPlayer);
+				Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y - 20, 0, -5, type, Projectile.damage, 0f, Main.myPlayer);
+				Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y - 20, 5, 0, type, Projectile.damage, 0f, Main.myPlayer);
 
 			}
 

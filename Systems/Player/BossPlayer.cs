@@ -74,6 +74,7 @@ namespace StarsAbove
         float stress;
         float damageReductionAmount;
 
+        
         public override void PreUpdate()
         {
             //Aggro marker.

@@ -17,7 +17,7 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 			Projectile.aiStyle = 0;
 			Projectile.penetrate = -1;
 			Projectile.scale = 1;
-			Projectile.alpha = 255;
+			Projectile.alpha = 0;
 			Projectile.damage = 0;
 			Projectile.hide = false;
 			Projectile.ownerHitCheck = true;
@@ -31,6 +31,8 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 		float projectileVelocity = 15;
 
 		public override void AI() {
+			DrawOriginOffsetY = -89;
+			
 			timer++;
 			
 			fadeIn += 5;
@@ -52,12 +54,8 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
             {
 				projectileVelocity = 0;
             }
-			if(timer < 20)
-            {
-				Projectile.frameCounter = 0;
-			}
 			
-			Projectile.alpha--;
+			
 			if (++Projectile.frameCounter >= 8)
 			{
 				Projectile.frameCounter = 0;

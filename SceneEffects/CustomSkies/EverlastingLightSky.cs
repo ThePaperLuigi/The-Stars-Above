@@ -28,7 +28,7 @@ namespace StarsAbove.SceneEffects.CustomSkies
 		public override Color OnTileColor(Color inColor)
 		{
 			float intensity = GetIntensity();
-			return new Color(255,243,158,200);
+			return new Color(255,243,198,240);
 		}
 
 		public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)

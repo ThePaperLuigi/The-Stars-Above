@@ -65,30 +65,35 @@ namespace StarsAbove.Projectiles.Pod
 
 			if (player.whoAmI == Main.myPlayer && StarsAbove.weaponActionKey.Old)
 			{
-				if(player.statMana > 2)
-                {
-					player.manaRegenDelay = 60;
-					player.statMana -= 2;
-					Projectile.ai[1]++;
-
-				}
+				
 				if (Projectile.ai[1] > 6)
 				{
+					if (player.statMana > 2)
+					{
+						player.manaRegenDelay = 60;
+						player.statMana -= 2;
+						Projectile.ai[1]++;
+						Projectile.ai[1] = 0;
+						int type = ProjectileType<PodShot>();
+						SoundEngine.PlaySound(SoundID.Item11, Projectile.Center);
 
-					Projectile.ai[1] = 0;
-					int type = ProjectileType<PodShot>();
-					SoundEngine.PlaySound(SoundID.Item11, Projectile.Center);
 
+						Vector2 position = Projectile.Center;
+						float rotation = (float)Math.Atan2(position.Y - (Main.MouseWorld.Y), position.X - (Main.MouseWorld.X));//Aim towards mouse
 
-					Vector2 position = Projectile.Center;
-					float rotation = (float)Math.Atan2(position.Y - (Main.MouseWorld.Y), position.X - (Main.MouseWorld.X));//Aim towards mouse
+						float launchSpeed = 60f;
+						Vector2 mousePosition = projOwner.GetModPlayer<StarsAbovePlayer>().playerMousePos;
+						Vector2 direction = Vector2.Normalize(mousePosition - Projectile.Center);
+						Vector2 velocity = direction * launchSpeed;
 
-					float launchSpeed = 60f;
-					Vector2 mousePosition = projOwner.GetModPlayer<StarsAbovePlayer>().playerMousePos;
-					Vector2 direction = Vector2.Normalize(mousePosition - Projectile.Center);
-					Vector2 velocity = direction * launchSpeed;
+						int index = Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y, type, (int)(Projectile.damage * 1.1), 0f, projOwner.whoAmI);
 
-					int index = Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y, type, (int)(Projectile.damage * 1.1), 0f, projOwner.whoAmI);
+					}
+					else
+                    {
+						Projectile.ai[1] = 0;
+
+					}
 
 				}
 			}

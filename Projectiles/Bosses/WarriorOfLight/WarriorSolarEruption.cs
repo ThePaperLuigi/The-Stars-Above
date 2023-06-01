@@ -9,31 +9,27 @@ using Terraria.Graphics.Shaders;
 
 namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 {
-    public class WarriorNebulaBlast : ModProjectile
+    public class WarriorSolarEruption : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			// DisplayName.SetDefault("Starmatter");
-			Main.projFrames[Projectile.type] = 11;
+			// DisplayName.SetDefault("Ice Lotus");
+			
 		}
 
 		public override void SetDefaults() {
-			Projectile.width = 30;
-			Projectile.height = 30;
-			Projectile.timeLeft = 150;
+			Projectile.width = 280;
+			Projectile.height = 280;
+			Projectile.aiStyle = 0;
+			Projectile.timeLeft = 120;
 			Projectile.penetrate = -1;
-			Projectile.aiStyle = 1;
 			Projectile.scale = 1f;
-			Projectile.alpha = 0;
-			Projectile.localNPCHitCooldown = -1;
-			Projectile.ownerHitCheck = true;
-			Projectile.tileCollide = false;
-			Projectile.friendly = false;
+			Projectile.alpha = 255;
+			Projectile.penetrate = -1;
 			Projectile.hostile = true;
-			Projectile.netUpdate = true;
-			AIType = ProjectileID.Bullet;
+			Projectile.friendly = false;
+
 
 		}
-		bool finished;
 		public override void ModifyDamageHitbox(ref Rectangle hitbox)
 		{
 			//hitbox.Width /= 2;
@@ -79,43 +75,41 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 			return false;
 		}
 
-		// It appears that for this AI, only the ai0 field is used!
+		float rotationsPerSecond = 1f;
+		bool firstSpawn = true;
+		bool rotateClockwise = true;
 		public override void AI() {
-			Lighting.AddLight(Projectile.Center, new Vector3(0.99f, 0.6f, 0.3f));
-			
-			
-			
-			
-			if (++Projectile.frameCounter >= 4)
+			Projectile.scale = 1.5f;
+			rotationsPerSecond += 0.03f;
+			if(firstSpawn)
 			{
-				Projectile.frameCounter = 0;
-				if (++Projectile.frame >= 11 && Projectile.timeLeft < 50)
+				rotateClockwise = Main.rand.NextBool();
+
+				firstSpawn = false;
+            }
+			//The rotation is set here
+			Projectile.rotation += (rotateClockwise ? 1 : -1) * MathHelper.ToRadians(rotationsPerSecond * 6f);
+			Projectile.ai[0] += 1f;
+			if(Projectile.ai[0] >= 15)
+            {
+				SoundEngine.PlaySound(SoundID.Item1, Projectile.Center);
+
+				Projectile.ai[0] = 0;
+            }
+			Player projOwner = Main.player[Projectile.owner];
+
+			// Fade in
+			Projectile.alpha -= 5;
+				if (Projectile.alpha < 100)
 				{
-					SoundEngine.PlaySound(StarsAboveAudio.SFX_HolyStab, Projectile.Center);
-
-					Projectile.Kill();
-
+					Projectile.alpha = 100;
 				}
-				if (++Projectile.frame >= 4 && Projectile.timeLeft > 50)
-				{
-					Projectile.frame = 0;
 
-				}
-				
-				
-			}
-			
-			Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(135f);
-			// Offset by 90 degrees here
-			if (Projectile.spriteDirection == -1) {
-				Projectile.rotation -= MathHelper.ToRadians(90f);
-			}
-
-
-			// These dusts are added later, for the 'ExampleMod' effect
 			
 			
-			
+		}
+		public override void Kill(int timeLeft)
+		{
 			
 
 		}

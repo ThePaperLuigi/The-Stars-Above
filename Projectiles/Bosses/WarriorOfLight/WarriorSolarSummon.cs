@@ -15,7 +15,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 {
-	public class WarriorVortexSummon : ModProjectile
+	public class WarriorSolarSummon : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			Main.projFrames[Projectile.type] = 1;
@@ -42,10 +42,10 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 		public static Texture2D texture;
 		public override bool PreDraw(ref Color lightColor)
 		{
-			if (Projectile.ai[1] > 0)
-			{
+			if(Projectile.ai[1] > 0)
+            {
 				return false;
-			}
+            }
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 
@@ -85,14 +85,13 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 		public override void AI()
 		{
 			Projectile.localAI[0]++;
-			float dustAmount = 20f;
 
+			float dustAmount = 20f;
 			Projectile.ai[1]--;
 			if (firstSpawn && Projectile.ai[1] <= 0)
 			{
 				Projectile.localAI[0] += Main.rand.Next(0, 50);
 
-				Projectile.rotation = MathHelper.ToRadians(Projectile.ai[2]);
 				for (int i = 0; i < Main.maxNPCs; i++)//The sprite will always face what the boss is facing.
 				{
 					NPC other = Main.npc[i];
@@ -125,8 +124,7 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 
 				}
 				firstSpawn = false;
-            }
-			
+			}
 			//Projectile.ai[2] == Facing left or right
 			//Projectile.ai[0] == Time left (should be more than 120)
 
@@ -140,8 +138,8 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 			}
 			if (Projectile.ai[2] == 1)
             {
-				//Projectile.spriteDirection = -1;
-				//Projectile.direction = -1;
+				Projectile.spriteDirection = -1;
+				Projectile.direction = -1;
             }
 			if (Projectile.ai[0] <= 120)
 			{
@@ -151,7 +149,7 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 				Projectile.localAI[1]++;
 				Dust.NewDust(Projectile.Center, 0, 0, DustID.GemTopaz, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 0.5f);
 
-
+				
 			}
 			else if (Projectile.ai[1] <= 0)
 			{
@@ -170,37 +168,53 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 
 
 			}
+			if (Projectile.ai[1] <= 0)
+            {
+				for (int i = 0; i < 30; i++)
+				{//Circle
+					Vector2 offset = new Vector2();
+					double angle = Main.rand.NextDouble() * 2d * Math.PI;
+					offset.X += (float)(Math.Sin(angle) * 180);
+					offset.Y += (float)(Math.Cos(angle) * 180);
 
+					Dust d = Dust.NewDustPerfect(Projectile.Center + offset, DustID.GemTopaz, Projectile.velocity, 20, default(Color), 0.4f);
 
-			if (Projectile.localAI[1] >= 6)
+					d.fadeIn = 0.1f;
+					d.noGravity = true;
+				}
+			}
+				
+
+			if (Projectile.localAI[1] == 1)
 			{
-				SoundEngine.PlaySound(SoundID.Item5, Projectile.Center);
-
-				Projectile.localAI[1] = 0;
-				int type = ModContent.ProjectileType<WarriorVortexArrow>();
+				//Projectile.ai[1] = 0;
+				int type = ModContent.ProjectileType<WarriorSolarEruption>();
 				//SoundEngine.PlaySound(StarsAboveAudio.SFX_WhisperShot, Projectile.Center);
 
 
 				Vector2 position = Projectile.Center;
-				float speed = 20f;
 
-				Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y + Main.rand.Next(-7, 7), (float)((Math.Cos(Projectile.rotation) * speed)), (float)((Math.Sin(Projectile.rotation) * speed)), type, Projectile.damage, 0f, Main.myPlayer);
 
-				if (Projectile.ai[2] == 1)
+				Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y + 2, 0, 0, type, Projectile.damage, 0f, Main.myPlayer);
+
+
+				for (int i = 0; (float)i < dustAmount; i++)
 				{
-					//Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y + Main.rand.Next(-7,7), (float)((Math.Cos(Projectile.rotation) * speed) * -1), (float)((Math.Sin(Projectile.rotation) * speed) * -1), type, Projectile.damage, 0f, Main.myPlayer);
-
+					Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+					spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+					spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
+					int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.GemTopaz);
+					Main.dust[dust].scale = 2f;
+					Main.dust[dust].noGravity = true;
+					Main.dust[dust].position = Projectile.Center + spinningpoint5;
+					Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 3f;
 				}
-				else
-                {
-					//Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y + Main.rand.Next(-7, 7), (float)((Math.Cos(Projectile.rotation) * speed)), (float)((Math.Sin(Projectile.rotation) * speed)), type, Projectile.damage, 0f, Main.myPlayer);
 
-				}
 
 			}
 
 			if (Projectile.ai[0] <= 0)
-			{
+            {
 				for (int i = 0; (float)i < dustAmount; i++)
 				{
 					Vector2 spinningpoint5 = Vector2.UnitX * 0f;
@@ -213,10 +227,10 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 					Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 3f;
 				}
 				Projectile.Kill();
-			}
+            }
 
-
+			
 		}
-
+		
 	}
 }
