@@ -230,13 +230,13 @@ namespace StarsAbove.UI.Starfarers
 
 			Rectangle AsphodeneStatic = Asphodene.GetInnerDimensions().ToRectangle();
 			Rectangle AsphodeneI = Asphodene.GetInnerDimensions().ToRectangle();
-			AsphodeneI.X += modPlayer.AsphodeneX;
+			AsphodeneI.X += modPlayer.AsphodeneX/2;
 
 			Rectangle EridaniStatic = Eridani.GetInnerDimensions().ToRectangle();
 			Rectangle EridaniI = Eridani.GetInnerDimensions().ToRectangle();
-			EridaniI.X += modPlayer.EridaniX;
+			EridaniI.X += modPlayer.EridaniX/2;
 
-			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/base"), indicator, Color.White * modPlayer.StarfarerSelectionVisibility);
+			//spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/base"), indicator, Color.White * modPlayer.StarfarerSelectionVisibility);
 
 			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/AsphodeneS"), AsphodeneI, Color.White * (modPlayer.StarfarerSelectionVisibility - 0.3f));
 			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/Asphodene"), AsphodeneStatic, Color.White * (modPlayer.StarfarerSelectionVisibility - 0.5f));
