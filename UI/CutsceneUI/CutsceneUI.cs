@@ -137,6 +137,7 @@ namespace StarsAbove.UI.CutsceneUI
 
         private void AstarteDriver(StarsAbovePlayer modPlayer)
         {
+            UIVideo Video = edinGenesisQuasarVideo;
             bool CutsceneExit = false;
             if (modPlayer.astarteCutsceneProgress <= 60 && modPlayer.astarteCutsceneProgress > 0)
             {
@@ -158,17 +159,14 @@ namespace StarsAbove.UI.CutsceneUI
 
                 edinGenesisQuasarVideo.FinishedVideo = false;
                 edinGenesisQuasarVideo.StartVideo = true;
-                CutsceneExit = true;
                 area.Append(edinGenesisQuasarVideo);
 
             }
-            if (edinGenesisQuasarVideo.FinishedVideo)
+            if (Video.FinishedVideo)
             {
-                if (CutsceneExit)
-                {
-                    CutsceneExitAlpha = 1f;
-                    CutsceneExit = false;
-                }
+                Video.FinishedVideo = false;
+
+                Main.LocalPlayer.GetModPlayer<BossPlayer>().WhiteAlpha = 1f;
 
                 edinGenesisQuasarVideo.Remove();
             }
@@ -178,7 +176,6 @@ namespace StarsAbove.UI.CutsceneUI
         {
             UIVideo Video = nalhaunCutsceneVideo;
             var cutsceneProgress = modPlayer.nalhaunCutsceneProgress;
-            bool cutsceneExit = false;
             if (cutsceneProgress <= 60 && cutsceneProgress > 0)
             {
                 modPlayer.BlackAlpha += 0.1f;
@@ -193,17 +190,14 @@ namespace StarsAbove.UI.CutsceneUI
 
                 Video.FinishedVideo = false;
                 Video.StartVideo = true;
-                cutsceneExit = true;
                 area.Append(Video);
 
             }
             if (Video.FinishedVideo)
             {
-                if (cutsceneExit)
-                {
-                    modPlayer.BlackAlpha = 1f;
-                    cutsceneExit = false;
-                }
+                Video.FinishedVideo = false;
+
+                modPlayer.BlackAlpha = 1f;
 
                 Video.Remove();
             }
@@ -245,6 +239,9 @@ namespace StarsAbove.UI.CutsceneUI
             }
             if (Video.FinishedVideo)
             {
+                Video.FinishedVideo = false;
+
+                modPlayer.BlackAlpha = 1f;
                 Video.Remove();
             }
         }
@@ -285,6 +282,9 @@ namespace StarsAbove.UI.CutsceneUI
             }
             if(Video.FinishedVideo)
             {
+                Video.FinishedVideo = false;
+
+                modPlayer.WhiteAlpha = 1f;
                 Video.Remove();
             }
             
@@ -297,6 +297,7 @@ namespace StarsAbove.UI.CutsceneUI
 
             introWhite = true;
             outroWhite = true;
+
 
             if (cutsceneProgress <= 60 && cutsceneProgress > 0)
             {//If the cutscene hasn't started yet, give time for the screen to fade.
@@ -327,6 +328,9 @@ namespace StarsAbove.UI.CutsceneUI
             }
             if (Video.FinishedVideo)
             {
+                Video.FinishedVideo = false;
+
+                modPlayer.WhiteAlpha = 1f;
                 Video.Remove();
             }
 
