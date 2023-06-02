@@ -113,6 +113,8 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 			if(Projectile.ai[0] == 0)
 			{
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_GunbladeImpact, Projectile.Center);
+				Projectile.NewProjectile(null, Projectile.Center, Vector2.Zero, ModContent.ProjectileType<CoruscantSaberAnimation>(), 0, 0f, Main.myPlayer, 0, 1);
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
 
 				for (int i = 0; i < 45; i++)
 				{

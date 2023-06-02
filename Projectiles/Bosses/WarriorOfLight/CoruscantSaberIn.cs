@@ -76,7 +76,7 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 				d.noGravity = true;
 			}
 			Projectile.ai[1]++;
-
+			Projectile.ai[2]++;
 			if (Projectile.ai[0] < 60)
 			{
 				for (int i = 0; i < 50; i++)
@@ -113,11 +113,29 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 				Projectile.ai[1] = 0;
 			}
 			Projectile.ai[0]--;
-			if(Projectile.ai[0] == 0)
+
+			
+			if (Projectile.ai[0] == 0)
 			{
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_GunbladeImpact, Projectile.Center);
-				Projectile.NewProjectile(null, Projectile.Center,Vector2.Zero, ModContent.ProjectileType<CoruscantSaberAnimation>(), 0, 0f, Main.myPlayer);
+				Projectile.NewProjectile(null, Projectile.Center,Vector2.Zero, ModContent.ProjectileType<CoruscantSaberAnimation>(), 0, 0f, Main.myPlayer, 0,0);
 
+				for (int i = 0; i < 85; i++)
+				{
+					// Charging dust
+					Vector2 vector = new Vector2(
+						Main.rand.Next(-548, 548) * (0.003f * 600) - 10,
+						Main.rand.Next(-548, 548) * (0.003f * 600) - 10);
+					Dust d = Main.dust[Dust.NewDust(
+						Projectile.Center + vector, 1, 1,
+						DustID.GemTopaz, 0, 0, 255,
+						new Color(1f, 1f, 1f), 2.5f)];
+
+					d.velocity = -vector / 32;
+					d.velocity -= Projectile.velocity / 8;
+					d.noGravity = true;
+				}
+				
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
 				
 

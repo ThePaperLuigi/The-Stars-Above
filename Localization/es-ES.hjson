@@ -25,6 +25,12 @@ Mods: {
 				// Feint: The Burnished King reverses the next attack!
 			}
 
+			WarriorOfLight: {
+				// ImbueIce: The Warrior of Light's blade is infused with ice!
+				// ImbueFire: The Warrior of Light's blade is infused with fire!
+				// PhaseChange: Your final days have arrived...
+			}
+
 			// Dioskouroi.Clash: The Dioskouroi clash, equalizing their HP!
 			// Tsukiyomi.FinalPhase: The Starfarer before you unleashes her true might, empowering her attacks but leaving her defenses open!
 
@@ -8389,9 +8395,13 @@ Mods: {
 			// WarriorLightblast.DisplayName: Lightblast
 			// WarriorBladeOfLight.DisplayName: Blade of Faith
 			// WarriorBladeOfLightReturning.DisplayName: Blade of Faith
-			// CoruscantSaberAnimation.DisplayName: Coruscant Saber Animation
-			// CoruscantSaberIn.DisplayName: Coruscant Saber In
-			// CoruscantSaberOut.DisplayName: Coruscant Saber Out
+			// CoruscantSaberAnimation.DisplayName: Coruscant Saber
+			// CoruscantSaberIn.DisplayName: Coruscant Saber
+			// CoruscantSaberOut.DisplayName: Coruscant Saber
+			// ImbuedSaberEffect.DisplayName: Imbued Saber Effect
+			// WarriorFirebolt.DisplayName: Warrior Firebolt
+			// WarriorIcebolt.DisplayName: Warrior Icebolt
+			// TransitionDustEffect.DisplayName: Transition Dust Effect
 		}
 
 		Buffs: {
@@ -10561,6 +10571,16 @@ Mods: {
 			MeAndMyKillingMachineFollowUpCooldown: {
 				// DisplayName: Me And My Killing Machine Follow Up Cooldown
 				// Description: ""
+			}
+
+			WarriorFireImbueBuff: {
+				// DisplayName: Warrior Fire Imbue Buff
+				// Description: Mods.StarsAbove.Buffs.WarriorFireImbueBuff.Description
+			}
+
+			WarriorIceImbueBuff: {
+				// DisplayName: Warrior Ice Imbue Buff
+				// Description: Mods.StarsAbove.Buffs.WarriorIceImbueBuff.Description
 			}
 		}
 

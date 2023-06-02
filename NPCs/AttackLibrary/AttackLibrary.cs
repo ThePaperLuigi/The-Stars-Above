@@ -5755,9 +5755,13 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 
 				}
-				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_TakeThisOutside, npc.Center);
+				if(DownedBossSystem.downedTsuki)//doesn't work yet?
+                {
+					SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_TakeThisOutside, npc.Center);
 
-				
+				}
+
+
 
 
 				return;
@@ -9119,7 +9123,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				return;
 			}
 		}
-		//Coruscant Saber. This attack can be imbued with different effects, and can also vary between in and out.
+		//Coruscant Saber. Randomly picks between get in, and get out.
 		public static void CoruscantSaber(Player target, NPC npc)
 		{
 			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
@@ -9135,7 +9139,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 				modPlayer.NextAttack = "Coruscant Saber";//The name of the attack.
-				npc.ai[3] = 240;//This is the time it takes for the cast to finish.
+				npc.ai[3] = 180;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
 				npc.netUpdate = true;//NetUpdate for good measure.
@@ -9147,14 +9151,14 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					int damage = 100;
-					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<WarriorOfLightSwingingSprite>(), 0, 0, Main.myPlayer, 240);
+					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<WarriorOfLightSwingingSprite>(), 0, 0, Main.myPlayer, 180);
 
 					//if npc has imbue buffs: (no imbued buffs yet)
 
 					//else
 					if (Main.rand.NextBool())
                     {
-						Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<CoruscantSaberIn>(), damage, 0, Main.myPlayer, 240);
+						Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<CoruscantSaberIn>(), damage, 0, Main.myPlayer, 180);
 					}
 					else
                     {
@@ -9229,6 +9233,245 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 
 		}
+		public static void ImbuedSaber(Player target, NPC npc)
+		{
+			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
+
+			//Each attack in the Library has 3 important segments.
+			//Part 1: Name of the attack and cast time. (ActionState.Idle)
+			//Part 2: The actual execution of the attack. (ActionState.Casting)
+			//Part 3: If the attack lasts longer than the initial attack, execute the active code. (ActionState.PersistentCast)
+
+			//Global attack-specific variables
+
+			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
+			{
+
+				modPlayer.NextAttack = "Imbued Saber";//The name of the attack.
+				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
+				npc.localAI[3] = 0;//This resets the cast time.
+				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
+				npc.netUpdate = true;//NetUpdate for good measure.
+									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
+									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
+				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_RadiantBraver, npc.Center);
+
+				if (Main.netMode != NetmodeID.MultiplayerClient)
+				{
+					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<WarriorOfLightCastingSprite>(), 0, 0, Main.myPlayer, 120);
+
+					if (Main.rand.NextBool())
+					{
+						Main.NewText(LangHelper.GetTextValue($"CombatText.WarriorOfLight.ImbueFire"), 241, 255, 180);
+						//The boss is imbued with Fire
+						npc.AddBuff(BuffType<WarriorFireImbueBuff>(), 3600);
+						Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<ImbuedSaberEffect>(), 0, 0, Main.myPlayer, 120, 0);
+					}
+					else
+					{
+						Main.NewText(LangHelper.GetTextValue($"CombatText.WarriorOfLight.ImbueIce"), 241, 255, 180);
+						//The boss is imbued with Ice
+						npc.AddBuff(BuffType<WarriorIceImbueBuff>(), 3600);
+						Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<ImbuedSaberEffect>(), 0, 0, Main.myPlayer, 120, 1);
+					}
+
+				}
+
+				return;
+			}
+			if (npc.ai[0] == (float)ActionState.PersistentCast)//If an attack lasts, it'll be moved to PersistentCast until the cast finishes.
+			{
+
+				return;
+			}
+			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
+			{
+				//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
+
+				#region attack
+				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
+				//Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantSpearSprite>(), 30, 0, Main.myPlayer);
+
+
+				
+				npc.netUpdate = true;
+				#endregion
+
+
+				//After the attack ends, we do some cleanup.
+				ResetAttack(target, npc);
+
+				npc.ai[0] = (float)ActionState.Idle;//If the attack continues, change ActionState to PersistentCast instead
+				modPlayer.NextAttack = "";//Empty the UI text.
+				npc.localAI[3] = 0;//Reset the cast.
+				npc.ai[1] = 100;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
+				npc.ai[2] += 1;//Increment the rotation counter.
+				npc.netUpdate = true;//NetUpdate for good measure.
+
+				return;
+			}
+
+		}
+		//Coruscant Saber. Randomly picks between get in, and get out. Depending on the buff the boss has, the attack has an additional effect.
+		public static void ImbuedCoruscance(Player target, NPC npc)
+		{
+			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
+
+			//Each attack in the Library has 3 important segments.
+			//Part 1: Name of the attack and cast time. (ActionState.Idle)
+			//Part 2: The actual execution of the attack. (ActionState.Casting)
+			//Part 3: If the attack lasts longer than the initial attack, execute the active code. (ActionState.PersistentCast)
+
+			//Global attack-specific variables
+
+			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
+			{
+
+				modPlayer.NextAttack = "Imbued Coruscance";//The name of the attack.
+				npc.ai[3] = 180;//This is the time it takes for the cast to finish.
+				npc.localAI[3] = 0;//This resets the cast time.
+				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
+				npc.netUpdate = true;//NetUpdate for good measure.
+									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
+									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
+				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_BegoneSpawnOfShadow, npc.Center);
+				SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, npc.Center);
+
+				if (Main.netMode != NetmodeID.MultiplayerClient)
+				{
+					int damage = 100;
+					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<WarriorOfLightSwingingSprite>(), 0, 0, Main.myPlayer, 180);
+
+
+					//else
+					if (Main.rand.NextBool())
+					{
+						Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<CoruscantSaberIn>(), damage, 0, Main.myPlayer, 180);
+					}
+					else
+					{
+						Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<CoruscantSaberOut>(), damage, 0, Main.myPlayer, 180);
+					}
+
+				}
+
+				return;
+			}
+			if (npc.ai[0] == (float)ActionState.PersistentCast)//If an attack lasts, it'll be moved to PersistentCast until the cast finishes.
+			{
+
+				return;
+			}
+			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
+			{
+				//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
+
+				#region attack
+				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
+				//Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantSpearSprite>(), 30, 0, Main.myPlayer);
+
+
+				if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
+				{
+					//if npc has imbue buffs:
+					
+
+					if (npc.HasBuff(BuffType<WarriorIceImbueBuff>()))
+                    {
+						int index = npc.FindBuffIndex(BuffType<WarriorIceImbueBuff>());
+						if (index >= 0)
+							npc.DelBuff(index);
+						float Speed = 8f;  //projectile speed
+						Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
+						int damage = 65;  //projectile damage
+						int type = ProjectileType<WarriorIcebolt>(); //Type of projectile
+
+						float rotation = MathHelper.ToRadians(45);
+						Vector2 velocity = new Vector2((float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1));
+
+						SoundEngine.PlaySound(SoundID.Item43, npc.Center);
+
+						float numberProjectiles = 16;
+						float adjustedRotation = MathHelper.ToRadians(45);
+
+						for (int i = 0; i < numberProjectiles; i++)
+						{
+							Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
+							Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, perturbedSpeed.X * 5, perturbedSpeed.Y * 5, type, damage, 0, Main.myPlayer);
+							Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, perturbedSpeed.X * -5, perturbedSpeed.Y * -5, type, damage, 0, Main.myPlayer);
+						}
+					}
+					if (npc.HasBuff(BuffType<WarriorFireImbueBuff>()))
+					{
+						int index = npc.FindBuffIndex(BuffType<WarriorFireImbueBuff>());
+						if (index >= 0)
+							npc.DelBuff(index);
+						float Speed = 8f;  //projectile speed
+						Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
+						int damage = 65;  //projectile damage
+						int type = ProjectileType<WarriorFirebolt>(); //Type of projectile
+
+						float rotation = MathHelper.ToRadians(-45f);
+						Vector2 velocity = new Vector2((float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1));
+
+						SoundEngine.PlaySound(SoundID.Item43, npc.Center);
+
+						float numberProjectiles = 16;
+						float adjustedRotation = MathHelper.ToRadians(45);
+
+						for (int i = 0; i < numberProjectiles; i++)
+						{
+							Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
+							Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, perturbedSpeed.X * 5, perturbedSpeed.Y * 5, type, damage, 0, Main.myPlayer);
+							Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, perturbedSpeed.X * -5, perturbedSpeed.Y * -5, type, damage, 0, Main.myPlayer);
+						}
+					}
+					
+					/*
+					int type = ProjectileType<NalhaunCleave>();
+					int damage = 100;
+					var entitySource = npc.GetSource_FromAI();
+
+
+
+					Projectile.NewProjectile(entitySource, new Vector2(npc.Center.X - 300, npc.Center.Y), Vector2.Zero, type, damage, 0f, Main.myPlayer, 0f, 0f);
+
+					for (int i = 0; i < 60; i++)
+					{
+						Dust.NewDust(new Vector2(npc.Center.X - 60, npc.Center.Y), 0, 0, DustID.FireworkFountain_Red, 0f + Main.rand.Next(-38, 0), 0f + Main.rand.Next(-18, 18), 150, default(Color), 1.7f);
+
+					}
+					for (int i = 0; i < 50; i++)
+					{
+						Dust.NewDust(new Vector2(npc.Center.X - 60, npc.Center.Y), 0, 0, DustID.Flare, 0f + Main.rand.Next(-28, 0), 0f + Main.rand.Next(-18, 18), 150, default(Color), 3.7f);
+
+					}
+					for (int i = 0; i < 50; i++)
+					{
+						Dust.NewDust(new Vector2(npc.Center.X - 60, npc.Center.Y), 0, 0, DustID.LifeDrain, 0f + Main.rand.Next(-48, 0), 0f + Main.rand.Next(-18, 18), 150, default(Color), 2.7f);
+
+					}*/
+
+				}
+				npc.netUpdate = true;
+				#endregion
+
+
+				//After the attack ends, we do some cleanup.
+				ResetAttack(target, npc);
+
+				npc.ai[0] = (float)ActionState.Idle;//If the attack continues, change ActionState to PersistentCast instead
+				modPlayer.NextAttack = "";//Empty the UI text.
+				npc.localAI[3] = 0;//Reset the cast.
+				npc.ai[1] = 0;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
+				npc.ai[2] += 1;//Increment the rotation counter.
+				npc.netUpdate = true;//NetUpdate for good measure.
+
+				return;
+			}
+
+		}
+		//Searing Light- two variatons of a barrage of light projectiles
 		public static void SearingLight(Player target, NPC npc)//
 		{
 			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
@@ -9404,6 +9647,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				return;
 			}
 		}
+		//A line of blades emerge and go up and down.
 		public static void EphemeralEdge(Player target, NPC npc)//
 		{
 			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
@@ -9518,7 +9762,14 @@ namespace StarsAbove.NPCs.AttackLibrary
 				return;
 			}
 		}
-		//First Warrior of Light summoning mechanic. Summons 
+
+
+		//First Warrior of Light summoning mechanic.
+		//Summons vortex to make the bottom half of the arena unusable
+		//Summons 3 nebula at the top
+		//Summons 1 stardust in the middle
+		//Summons two solar on either side
+		//Solution: fly up, bait The Bitter End, fly to the left or right
 		public static void WarriorSummoning1(Player target, NPC npc)//
 		{
 			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
@@ -9658,6 +9909,8 @@ namespace StarsAbove.NPCs.AttackLibrary
 				return;
 			}
 		}
+		
+
 
 		//Tsukiyomi's concentric ring attack.
 		public static void PassageOfArms1(Player target, NPC npc)//
@@ -9880,62 +10133,10 @@ namespace StarsAbove.NPCs.AttackLibrary
 				return;
 			}
 		}
-		public static void ResetState(Player target, NPC npc)//
-		{
-			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
-
-			//Each attack in the Library has 3 important segments.
-			//Part 1: Name of the attack and cast time. (ActionState.Idle)
-			//Part 2: The actual execution of the attack. (ActionState.Casting)
-			//Part 3: If the attack lasts longer than the initial attack, execute the active code. (ActionState.PersistentCast)
-
-			//Global attack-specific variables
-
-			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
-			{
-
-				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
-				//Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
-
-				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
-
-				modPlayer.NextAttack = "Debug: Reset State";//The name of the attack.
-				npc.ai[3] = 60;//This is the time it takes for the cast to finish.
-				npc.localAI[3] = 0;//This resets the cast time.
-				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
-				npc.netUpdate = true;//NetUpdate for good measure.
-									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
-									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				
-
-				return;
-			}
-			if (npc.ai[0] == (float)ActionState.PersistentCast)//If an attack lasts, it'll be moved to PersistentCast until the cast finishes.
-			{
-
-				return;
-			}
-			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
-			{
-
-
-				//After the attack ends, we do some cleanup.
-				ResetAttack(target, npc);
-
-				npc.ai[0] = (float)ActionState.Idle;//If the attack continues, change ActionState to PersistentCast instead
-				modPlayer.NextAttack = "";//Empty the UI text.
-				npc.localAI[3] = 0;//Reset the cast.
-				npc.ai[1] = 0;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
-				npc.ai[2] = 0;//Increment the rotation counter.
-				npc.netUpdate = true;//NetUpdate for good measure.
-
-				return;
-			}
-		}
 
 		
-		//Knockback
-		public static void AethericBurst(Player target, NPC npc)//
+		//Knockback into phase change.
+		public static void Ascendance(Player target, NPC npc)//
 		{
 			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
@@ -9953,18 +10154,35 @@ namespace StarsAbove.NPCs.AttackLibrary
 				//Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
 
 
-				modPlayer.NextAttack = "Aetheric Burst";//The name of the attack.
-				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
+				modPlayer.NextAttack = "Ascendance";//The name of the attack.
+				npc.ai[3] = 360;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				//SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_TryHarder, npc.Center);
+				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_IWillStrikeYouDown, null);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
+					Projectile.NewProjectile(null, npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<WarriorOfLightCastingSprite>(), 0, 0, Main.myPlayer, 360);
+					Projectile.NewProjectile(null, npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<fastRadiate>(), 0, 0, Main.myPlayer, 0f);
+					Projectile.NewProjectile(null, npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<TransitionDustEffect>(), 0, 0, Main.myPlayer, 360);
 
+					for (int d = 0; d < 30; d++)
+					{
+						Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
+					}
+					for (int i = 0; i < Main.maxPlayers; i++)
+					{
+						SoundEngine.PlaySound(StarsAboveAudio.SFX_WarriorStun, npc.Center);
+
+						Player player = Main.player[i];
+						if (player.active && player.Distance(npc.Center) < 1600)
+						{
+							player.AddBuff(BuffType<DownForTheCount>(), 360);
+						}
+					}
 
 				}
 
@@ -9978,21 +10196,20 @@ namespace StarsAbove.NPCs.AttackLibrary
 			}
 			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
 			{
-				Projectile.NewProjectile(null, npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<fastRadiate>(), 0, 0, Main.myPlayer, 0f);
-				for (int d = 0; d < 30; d++)
-				{
-					Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
-				}
-				SoundEngine.PlaySound(StarsAboveAudio.SFX_skofnungSwing, npc.Center);
 
-				for (int i = 0; i < Main.maxPlayers; i++)
+				npc.localAI[1] = 1;
+				SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, npc.Center);
+
+				for (int d = 0; d < 50; d++)
 				{
-					Player player = Main.player[i];
-					if (player.active && player.Distance(npc.Center) < 1600)
-					{
-						player.velocity = Vector2.Normalize(npc.Center - player.Center) * -16f;
-					}
+					Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-6, 6), 0, default(Color), 1.5f);
 				}
+				for (int d = 0; d < 50; d++)
+				{
+					Dust.NewDust(npc.Center, 0, 0, DustID.GemTopaz, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 0, default(Color), 1.5f);
+				}
+				Projectile.NewProjectile(null, npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<radiate>(), 0, 0, Main.myPlayer, 0f);
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -70;
 				//After the attack ends, we do some cleanup.
 				ResetAttack(target, npc);
 
@@ -10030,11 +10247,11 @@ namespace StarsAbove.NPCs.AttackLibrary
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
 
-				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_BegoneSpawnOfShadow, npc.Center);
+				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_RefulgentEther, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					
+					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<WarriorOfLightSwingingSprite>(), 0, 0, Main.myPlayer, 120);
 				}
 
 				return;
@@ -10053,7 +10270,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
 				}
 
-				float Speed = 7f;  //projectile speed
+				float Speed = 12f;  //projectile speed
 				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
 				int damage = 65;  //projectile damage
 				int type = ProjectileType<WarriorBladeOfLightReturning>(); //Type of projectile
@@ -10068,8 +10285,8 @@ namespace StarsAbove.NPCs.AttackLibrary
 					//Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, 0, 0, ProjectileType<TsukiMoonlightSwing>(), 0, 0, Main.myPlayer);
 
 
-					float numberProjectiles = 3;
-					float adjustedRotation = MathHelper.ToRadians(20);
+					float numberProjectiles = 7;
+					float adjustedRotation = MathHelper.ToRadians(35);
 
 					for (int i = 0; i < numberProjectiles; i++)
 					{
@@ -10125,9 +10342,11 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_BegoneSpawnOfShadow, npc.Center);
-
-				
+				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_RefulgentEther, npc.Center);
+				if (Main.netMode != NetmodeID.MultiplayerClient)
+				{
+					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<WarriorOfLightSwingingSprite>(), 0, 0, Main.myPlayer, 120);
+				}
 
 				return;
 			}
@@ -10153,7 +10372,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				int damage = 65;  //projectile damage
 				int type = ProjectileType<WarriorBladeOfLightReturning>(); //Type of projectile
 
-				float rotation = (float)Math.Atan2(StartPosition.Y - (target.position.Y + (target.height * 0.5f)), StartPosition.X - (target.position.X + (target.width * 0.5f)));
+				float rotation = 0f;
 				Vector2 velocity = new Vector2((float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1));
 
 				SoundEngine.PlaySound(SoundID.Item43, npc.Center);
@@ -10191,7 +10410,200 @@ namespace StarsAbove.NPCs.AttackLibrary
 				return;
 			}
 		}
+		//Fires flaming projectiles in a X formation.
+		public static void AbsoluteFire(Player target, NPC npc)//
+		{
+			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
+			//Each attack in the Library has 3 important segments.
+			//Part 1: Name of the attack and cast time. (ActionState.Idle)
+			//Part 2: The actual execution of the attack. (ActionState.Casting)
+			//Part 3: If the attack lasts longer than the initial attack, execute the active code. (ActionState.PersistentCast)
+
+			//Global attack-specific variables
+
+			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
+			{
+
+				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
+				//Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
+
+				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
+
+				modPlayer.NextAttack = "Absolute Fire";//The name of the attack.
+				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
+				npc.localAI[3] = 0;//This resets the cast time.
+				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
+				npc.netUpdate = true;//NetUpdate for good measure.
+									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
+									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
+				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_MySoulKnowsNoSurrender, npc.Center);
+				if (Main.netMode != NetmodeID.MultiplayerClient)
+				{
+					Projectile.NewProjectile(null, npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<WarriorOfLightCastingSprite>(), 0, 0, Main.myPlayer, 120);
+
+				}
+				return;
+			}
+			if (npc.ai[0] == (float)ActionState.PersistentCast)//If an attack lasts, it'll be moved to PersistentCast until the cast finishes.
+			{
+
+				return;
+			}
+			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
+			{
+
+
+				#region attack
+				SoundEngine.PlaySound(SoundID.Item124, npc.Center);
+
+				for (int d = 0; d < 30; d++)
+				{
+					Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
+				}
+
+				float Speed = 3f;  //projectile speed
+				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
+				int damage = 65;  //projectile damage
+				int type = ProjectileType<WarriorFirebolt>(); //Type of projectile
+
+				float rotation = MathHelper.ToRadians(-45f);
+				Vector2 velocity = new Vector2((float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1));
+
+				SoundEngine.PlaySound(SoundID.Item43, npc.Center);
+
+				if (Main.netMode != NetmodeID.MultiplayerClient)
+				{
+					//Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, 0, 0, ProjectileType<TsukiMoonlightSwing>(), 0, 0, Main.myPlayer);
+
+
+					float numberProjectiles = 16;
+					float adjustedRotation = MathHelper.ToRadians(45);
+
+					for (int i = 0; i < numberProjectiles; i++)
+					{
+						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
+						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, perturbedSpeed.X * 5, perturbedSpeed.Y * 5, type, damage, 0, Main.myPlayer);
+						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, perturbedSpeed.X * -5, perturbedSpeed.Y * -5, type, damage, 0, Main.myPlayer);
+					}
+
+
+				}
+
+				#endregion
+
+
+				//After the attack ends, we do some cleanup.
+				ResetAttack(target, npc);
+
+				npc.ai[0] = (float)ActionState.Idle;//If the attack continues, change ActionState to PersistentCast instead
+				modPlayer.NextAttack = "";//Empty the UI text.
+				npc.localAI[3] = 0;//Reset the cast.
+				npc.ai[1] = 0;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
+				npc.ai[2] += 1;//Increment the rotation counter.
+				npc.netUpdate = true;//NetUpdate for good measure.
+
+				return;
+			}
+		}
+		public static void AbsoluteIce(Player target, NPC npc)//
+		{
+			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
+
+			//Each attack in the Library has 3 important segments.
+			//Part 1: Name of the attack and cast time. (ActionState.Idle)
+			//Part 2: The actual execution of the attack. (ActionState.Casting)
+			//Part 3: If the attack lasts longer than the initial attack, execute the active code. (ActionState.PersistentCast)
+
+			//Global attack-specific variables
+
+			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
+			{
+
+				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
+				//Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
+
+				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
+
+				modPlayer.NextAttack = "Absolute Ice";//The name of the attack.
+				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
+				npc.localAI[3] = 0;//This resets the cast time.
+				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
+				npc.netUpdate = true;//NetUpdate for good measure.
+									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
+									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
+				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_MySoulKnowsNoSurrender, npc.Center);
+
+				if (Main.netMode != NetmodeID.MultiplayerClient)
+				{
+					Projectile.NewProjectile(null, npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<WarriorOfLightCastingSprite>(), 0, 0, Main.myPlayer, 120);
+
+				}
+
+				return;
+			}
+			if (npc.ai[0] == (float)ActionState.PersistentCast)//If an attack lasts, it'll be moved to PersistentCast until the cast finishes.
+			{
+
+				return;
+			}
+			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
+			{
+
+
+				#region attack
+				SoundEngine.PlaySound(SoundID.Item124, npc.Center);
+
+				for (int d = 0; d < 30; d++)
+				{
+					Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
+				}
+
+				float Speed = 3f;  //projectile speed
+				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
+				int damage = 65;  //projectile damage
+				int type = ProjectileType<WarriorIcebolt>(); //Type of projectile
+
+				float rotation = MathHelper.ToRadians(45f);
+				Vector2 velocity = new Vector2((float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1));
+
+				SoundEngine.PlaySound(SoundID.Item43, npc.Center);
+
+				if (Main.netMode != NetmodeID.MultiplayerClient)
+				{
+					//Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, 0, 0, ProjectileType<TsukiMoonlightSwing>(), 0, 0, Main.myPlayer);
+
+
+					float numberProjectiles = 16;
+					float adjustedRotation = MathHelper.ToRadians(45);
+
+					for (int i = 0; i < numberProjectiles; i++)
+					{
+						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
+						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, perturbedSpeed.X * 5, perturbedSpeed.Y * 5, type, damage, 0, Main.myPlayer);
+						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, perturbedSpeed.X * -5, perturbedSpeed.Y * -5, type, damage, 0, Main.myPlayer);
+					}
+
+
+				}
+
+				#endregion
+
+
+				//After the attack ends, we do some cleanup.
+				ResetAttack(target, npc);
+
+				npc.ai[0] = (float)ActionState.Idle;//If the attack continues, change ActionState to PersistentCast instead
+				modPlayer.NextAttack = "";//Empty the UI text.
+				npc.localAI[3] = 0;//Reset the cast.
+				npc.ai[1] = 0;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
+				npc.ai[2] += 1;//Increment the rotation counter.
+				npc.netUpdate = true;//NetUpdate for good measure.
+
+				return;
+			}
+		}
+		//Unused
 		public static void ScionsAndSinners(Player target, NPC npc)//
 		{
 			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
@@ -10285,6 +10697,58 @@ namespace StarsAbove.NPCs.AttackLibrary
 			}
 		}
 		#endregion
+		public static void ResetState(Player target, NPC npc)//
+		{
+			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
+
+			//Each attack in the Library has 3 important segments.
+			//Part 1: Name of the attack and cast time. (ActionState.Idle)
+			//Part 2: The actual execution of the attack. (ActionState.Casting)
+			//Part 3: If the attack lasts longer than the initial attack, execute the active code. (ActionState.PersistentCast)
+
+			//Global attack-specific variables
+
+			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
+			{
+
+				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
+				//Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
+
+				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
+
+				modPlayer.NextAttack = "Debug: Reset State";//The name of the attack.
+				npc.ai[3] = 60;//This is the time it takes for the cast to finish.
+				npc.localAI[3] = 0;//This resets the cast time.
+				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
+				npc.netUpdate = true;//NetUpdate for good measure.
+									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
+									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
+
+
+				return;
+			}
+			if (npc.ai[0] == (float)ActionState.PersistentCast)//If an attack lasts, it'll be moved to PersistentCast until the cast finishes.
+			{
+
+				return;
+			}
+			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
+			{
+
+
+				//After the attack ends, we do some cleanup.
+				ResetAttack(target, npc);
+
+				npc.ai[0] = (float)ActionState.Idle;//If the attack continues, change ActionState to PersistentCast instead
+				modPlayer.NextAttack = "";//Empty the UI text.
+				npc.localAI[3] = 0;//Reset the cast.
+				npc.ai[1] = 0;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
+				npc.ai[2] = 0;//Increment the rotation counter.
+				npc.netUpdate = true;//NetUpdate for good measure.
+
+				return;
+			}
+		}
 
 		public static void ResetAttack(Player target, NPC npc)
         {

@@ -36,7 +36,16 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 			Projectile.damage = 0;
 			if(start)
             {
-				Projectile.scale = 3.5f;
+				if(Projectile.ai[1] == 1)
+                {
+					Projectile.scale = 1.3f;
+
+				}
+				else
+                {
+					Projectile.scale = 3f;
+
+				}
 				start = false;
             }
 			Projectile.ai[0] += 1f;
@@ -50,14 +59,11 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 			if (Projectile.ai[0] <= 30)
             {
 				Projectile.alpha -= 4;
-				if (Projectile.alpha < 100)
-				{
-					Projectile.alpha = 100;
-				}
+				
 			}
 			else
             {
-				Projectile.alpha += 8;
+				Projectile.alpha += 20;
             }
 
 

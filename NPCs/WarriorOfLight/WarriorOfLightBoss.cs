@@ -115,8 +115,50 @@ namespace StarsAbove.NPCs.WarriorOfLight
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
 			NPC.netAlways = true;
 		}
+        public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+        {
+			if(NPC.localAI[1] > 0)
+            {
+				Microsoft.Xna.Framework.Color color1 = Lighting.GetColor((int)((double)NPC.position.X + (double)NPC.width * 0.5) / 16, (int)(((double)NPC.position.Y + (double)NPC.height * 0.5) / 16.0));
+				Vector2 drawOrigin = new Vector2(NPC.width * 0.5f, NPC.height * 0.5f);
+				int r1 = (int)color1.R;
+				drawOrigin.Y += 34f;
+				drawOrigin.Y += 8f;
+				--drawOrigin.X;
+				Vector2 position1 = NPC.Bottom - Main.screenPosition;
+				Texture2D texture2D2 = (Texture2D)Request<Texture2D>("StarsAbove/Projectiles/WarriorVFX");
+				float num11 = (float)((double)Main.GlobalTimeWrappedHourly / 7.0);
+				float timeFloatAlt = (float)((double)Main.GlobalTimeWrappedHourly / 5.0);
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
+				//These control fade out (unused)
+				float num12 = num11;
+				if ((double)num12 > 0.5)
+					num12 = 1f - num11;
+				if ((double)num12 < 0.0)
+					num12 = 0.0f;
+				float num13 = (float)(((double)num11 + 0.5) % 1.0);
+				float num14 = num13;
+				if ((double)num14 > 0.5)
+					num14 = 1f - num13;
+				if ((double)num14 < 0.0)
+					num14 = 0.0f;
+				Microsoft.Xna.Framework.Rectangle r2 = texture2D2.Frame(1, 1, 0, 0);
+				drawOrigin = r2.Size() / 2f;
+				Vector2 position3 = position1 + new Vector2(0.0f, -100f);
+				Microsoft.Xna.Framework.Color color3 = new Microsoft.Xna.Framework.Color(245, 220, 135) * 1.6f; //This is the color of the pulse!
+																												//Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3, NPC.rotation, drawOrigin, NPC.scale * 0.5f, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
+				float num15 = 2f; //+ num11 * 2.75f; //Scale?
+				Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3, NPC.rotation + num11, drawOrigin, NPC.scale * 0.5f * num15, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
+				float num16 = 2f; //+ num13 * 2.75f; //Scale?
+				Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3, NPC.rotation - timeFloatAlt, drawOrigin, NPC.scale * 0.5f * num16, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
+				Texture2D texture2D3 = (Texture2D)TextureAssets.Extra[89];
+				Microsoft.Xna.Framework.Rectangle r3 = texture2D3.Frame(1, 1, 0, 0);
+
+			}
+
+			return base.PreDraw(spriteBatch, screenPos, drawColor);
+        }
+        public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			return 0f;
 		}
@@ -192,19 +234,19 @@ namespace StarsAbove.NPCs.WarriorOfLight
                 if (AI_RotationNumber == 0)
                 {
 					//
-					CoruscantSaber(P, NPC);
+					TheBitterEnd(P, NPC);
                     return;
-                }/*
+                }
 				else if (AI_RotationNumber == 1)
 				{
 					//
-					Transplacement(P, NPC);
+					CoruscantSaber(P, NPC);
 					return;
 				}
 				else if (AI_RotationNumber == 2)
 				{
 					//
-					TheBitterEnd(P, NPC);
+					Transplacement(P, NPC);
 					return;
 				}
 				else if (AI_RotationNumber == 3)
@@ -222,7 +264,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 				else if (AI_RotationNumber == 5)
 				{
 					//
-					SearingLight(P, NPC); //Move this to later
+					AbsoluteIce(P, NPC);
 					return;
 				}
 				else if (AI_RotationNumber == 6)
@@ -246,7 +288,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 				else if (AI_RotationNumber == 9)
 				{
 					//
-					AethericBurst(P, NPC);
+					ThreadsOfFate3(P, NPC);
 					return;
 				}
 				else if (AI_RotationNumber == 10)
@@ -258,21 +300,118 @@ namespace StarsAbove.NPCs.WarriorOfLight
 				else if (AI_RotationNumber == 11)
 				{
 					//
+					AbsoluteIce(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 12)
+				{
+					//
+					CoruscantSaber(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 13)
+				{
+					//
+					AbsoluteFire(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 14)
+				{
+					//
 					RefulgentReprobation(P, NPC);
 					return;
-				}*/
+				}
+				else if (AI_RotationNumber == 15)
+				{
+					if(NPC.life <= (NPC.lifeMax * 0.8))
+                    {
+						
+						AI_RotationNumber = 16;
+					}
+					else
+					{
+						AI_RotationNumber = 0;
+
+					}
+					return;
+				}
+				else if (AI_RotationNumber == 16)
+				{
+					Ascendance(P, NPC);
+					
+					return;
+				}
+				else if (AI_RotationNumber == 17)
+				{
+					WarriorSummoning1(P, NPC);
+					
+					return;
+				}
+				else if (AI_RotationNumber == 18)
+				{
+					Transplacement(P, NPC);
+					
+					return;
+				}
+				else if (AI_RotationNumber == 19)
+				{
+					TheBitterEnd(P, NPC);
+					
+					return;
+				}
+				else if (AI_RotationNumber == 20)
+				{
+					//
+					RadiantReprobation(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 21)
+				{
+					//
+					Transplacement(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 22)
+				{
+					//
+					ImbuedSaber(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 23)
+				{
+					//
+					TheBitterEnd(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 24)
+				{
+					//
+					ImbuedCoruscance(P, NPC);
+					return;
+				}
 				else
                 {
-                    AI_RotationNumber = 0;
+                    AI_RotationNumber = 17;
                     return;
                 }
 
 
             }
-			
+
+			BossVisuals();
 			//DrawOffsetY = MathHelper.Lerp(-10, 10, EaseHelper.Pulse(NPC.localAI[0]));
 		}
-
+		private void BossVisuals()
+        {
+			if (NPC.localAI[1] != 0)
+			{
+				Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Boss/WarriorOfLight/ToTheEdge");
+			}
+			else
+			{
+				Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Boss/WarriorOfLight/ToTheEdgeInstrumental");
+			}
+		}
         private void FindTargetPlayer()
         {
             if (NPC.target < 0 || NPC.target == 255 || Main.player[NPC.target].dead || !Main.player[NPC.target].active)

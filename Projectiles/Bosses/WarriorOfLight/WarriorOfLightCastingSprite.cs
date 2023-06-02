@@ -1,4 +1,6 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using System;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -34,11 +36,60 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 			DrawOriginOffsetY = -89;
 			
 			timer++;
-			
+			Vector2 adjustedCenter = new Vector2(Projectile.Center.X, Projectile.Center.Y - 49);
 			fadeIn += 5;
+			for (int i = 0; i < 2; i++)
+			{
+				// Charging dust
+				Vector2 vector = new Vector2(
+					Main.rand.Next(-548, 548) * (0.003f * 500) - 10,
+					Main.rand.Next(-548, 548) * (0.003f * 500) - 10);
+				Dust d = Main.dust[Dust.NewDust(
+					adjustedCenter + vector, 1, 1,
+					DustID.GemTopaz, 0, 0, 255,
+					new Color(1f, 1f, 1f), 1.5f)];
+
+				d.velocity = -vector / 16;
+				d.velocity -= Projectile.velocity / 8;
+				d.noGravity = true;
+			}
 			Projectile.ai[0]--;
 			if(Projectile.ai[0] <= 0)
             {
+				float dustAmount = 40f;
+				for (int i = 0; (float)i < dustAmount; i++)
+				{
+					Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+					spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+					spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
+					int dust = Dust.NewDust(adjustedCenter, 0, 0, DustID.GemTopaz);
+					Main.dust[dust].scale = 2f;
+					Main.dust[dust].noGravity = true;
+					Main.dust[dust].position = adjustedCenter + spinningpoint5;
+					Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 13f;
+				}
+				for (int i = 0; (float)i < dustAmount; i++)
+				{
+					Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+					spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(284f, 4f);
+					spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
+					int dust = Dust.NewDust(adjustedCenter, 0, 0, DustID.GemTopaz);
+					Main.dust[dust].scale = 2f;
+					Main.dust[dust].noGravity = true;
+					Main.dust[dust].position = adjustedCenter + spinningpoint5;
+					Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 23f;
+				}
+				for (int i = 0; (float)i < dustAmount; i++)
+				{
+					Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+					spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(184f, 4f);
+					spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
+					int dust = Dust.NewDust(adjustedCenter, 0, 0, DustID.GemTopaz);
+					Main.dust[dust].scale = 2f;
+					Main.dust[dust].noGravity = true;
+					Main.dust[dust].position = adjustedCenter + spinningpoint5;
+					Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 48f;
+				}
 				Projectile.Kill();
             }
 			if (timer >= 60)
@@ -91,21 +142,7 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 					return;
 				}
 			}
-			/*
-			if (Main.rand.NextBool(3)) {
-				Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.height, Projectile.width, DustID.Clentaminator_Green,
-					Projectile.velocity.X * .2f, Projectile.velocity.Y * .2f, 269, Scale: 1.2f);
-				dust.velocity += Projectile.velocity * 0.3f;
-				dust.velocity *= 0.2f;
-				dust.noGravity = true;
-			}
-			if (Main.rand.NextBool(4)) {
-				Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.height, Projectile.width, DustID.FireworkFountain_Green,
-					0, 0, 269, Scale: 0.3f);
-				dust.velocity += Projectile.velocity * 0.5f;
-				dust.velocity *= 0.5f;
-				dust.noGravity = true;
-			}*/
+			
 		}
 
        
