@@ -36,17 +36,27 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 			DrawOffsetX = -19;
 
 		}
-		bool finished;
+		bool firstSpawn = true;
 		float rotationSpeed = 3.7f;
 		float throwSpeed = 10f;
 		public override bool PreDraw(ref Color lightColor)
 		{
 
-			default(Effects.SmallWhiteTrail).Draw(Projectile);
+			default(Effects.GoldTrail).Draw(Projectile);
 
 			return true;
 		}
 		public override void AI() {
+			if(firstSpawn)
+            {
+				for(int i = 0; i < 10; i++)
+                {
+					Dust.NewDust(Projectile.Center, 0, 0, DustID.GemTopaz, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 0.5f);
+
+				}
+				firstSpawn = false;
+
+			}
 			Lighting.AddLight(Projectile.Center, new Vector3(0.99f, 0.6f, 0.3f));
 			Projectile.alpha -= 3;
 			if(Projectile.frame != 9)

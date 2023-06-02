@@ -192,9 +192,9 @@ namespace StarsAbove.NPCs.WarriorOfLight
                 if (AI_RotationNumber == 0)
                 {
 					//
-					WarriorSummoning1(P, NPC);
+					CoruscantSaber(P, NPC);
                     return;
-                }
+                }/*
 				else if (AI_RotationNumber == 1)
 				{
 					//
@@ -210,13 +210,13 @@ namespace StarsAbove.NPCs.WarriorOfLight
 				else if (AI_RotationNumber == 3)
 				{
 					//
-					Transplacement(P, NPC);
+					RefulgentReprobation(P, NPC);
 					return;
 				}
 				else if (AI_RotationNumber == 4)
 				{
 					//
-					PassageOfArms1(P, NPC);
+					Transplacement(P, NPC);
 					return;
 				}
 				else if (AI_RotationNumber == 5)
@@ -228,13 +228,13 @@ namespace StarsAbove.NPCs.WarriorOfLight
 				else if (AI_RotationNumber == 6)
 				{
 					//
-					PassageOfArms2(P, NPC);
+					PassageOfArms1(P, NPC);
 					return;
 				}
 				else if (AI_RotationNumber == 7)
 				{
 					//
-					TheBitterEnd(P, NPC);
+					ThreadsOfFate1(P, NPC);
 					return;
 				}
 				else if (AI_RotationNumber == 8)
@@ -243,6 +243,24 @@ namespace StarsAbove.NPCs.WarriorOfLight
 					EphemeralEdge(P, NPC);
 					return;
 				}
+				else if (AI_RotationNumber == 9)
+				{
+					//
+					AethericBurst(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 10)
+				{
+					//
+					RadiantReprobation(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 11)
+				{
+					//
+					RefulgentReprobation(P, NPC);
+					return;
+				}*/
 				else
                 {
                     AI_RotationNumber = 0;

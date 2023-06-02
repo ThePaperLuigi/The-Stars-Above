@@ -8440,9 +8440,14 @@ Mods: {
 			// WarriorVortexArrow.DisplayName: Vortex Arrow
 			// WarriorVortexSummon.DisplayName: Warrior Vortex Summon
 			// WarriorExpandingBladesDelay.DisplayName: Blade of Light
-			// WarriorAbsoluteBlade.DisplayName: Warrior Absolute Blade
-			// WarriorAbsoluteBlade2.DisplayName: Warrior Absolute Blade2
-			// WarriorLightblast.DisplayName: Warrior Lightblast
+			// WarriorAbsoluteBlade.DisplayName: Blade of Truth
+			// WarriorAbsoluteBlade2.DisplayName: Blade of Truth
+			// WarriorLightblast.DisplayName: Lightblast
+			// WarriorBladeOfLight.DisplayName: Blade of Faith
+			// WarriorBladeOfLightReturning.DisplayName: Blade of Faith
+			// CoruscantSaberAnimation.DisplayName: Coruscant Saber Animation
+			// CoruscantSaberIn.DisplayName: Coruscant Saber In
+			// CoruscantSaberOut.DisplayName: Coruscant Saber Out
 		}
 
 		Buffs: {
