@@ -18,6 +18,7 @@ using StarsAbove.Items.Materials;
 using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using Terraria.UI.Chat;
+using StarsAbove.Buffs;
 
 namespace StarsAbove
 {
@@ -1039,7 +1040,8 @@ namespace StarsAbove
 				}
 			}
 			if (item.type == ItemID.RodofDiscord
-				||item.type == ItemID.DirtBomb
+				|| item.type == ItemID.RodOfHarmony
+				|| item.type == ItemID.DirtBomb
 				||item.type == ItemID.RopeCoil
 				|| item.type == ItemID.SilkRopeCoil
 				|| item.type == ItemID.VineRopeCoil
@@ -1058,7 +1060,18 @@ namespace StarsAbove
 				}
 				
             }
-			if(player.HasBuff(BuffID.DrillMount) && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
+			if (item.type == ItemID.RodofDiscord
+				|| item.type == ItemID.RodOfHarmony
+				
+				)
+			{
+				if (player.HasBuff(BuffType<EverlastingLight>()))
+				{
+					return false;
+				}
+
+			}
+			if (player.HasBuff(BuffID.DrillMount) && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
             {
 				return false;
             }

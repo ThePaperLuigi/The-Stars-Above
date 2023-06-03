@@ -22,6 +22,7 @@ namespace StarsAbove.UI.CutsceneUI
         private UIVideo tsukiCutsceneVideo;
         private UIVideo tsukiCutsceneVideo2;
         private UIVideo warriorCutsceneVideo;
+        private UIVideo warriorCutsceneVideo2;
 
         public override void OnInitialize() {
 			
@@ -69,6 +70,13 @@ namespace StarsAbove.UI.CutsceneUI
                 WaitForStart = true,
                 DoLoop = false
             };
+            warriorCutsceneVideo2 = new UIVideo(Request<Video>("StarsAbove/Video/WarriorFinalPhaseCutscene"))
+            {
+
+                ScaleToFit = true,
+                WaitForStart = true,
+                DoLoop = false
+            };
             //area.Append(edinGenesisQuasarVideo);
             Append(area);
 		}
@@ -110,6 +118,7 @@ namespace StarsAbove.UI.CutsceneUI
             TsukiCutscene(bossPlayer, ref introWhite, ref outroWhite);
             TsukiCutscene2(bossPlayer, ref introWhite, ref outroWhite);
             WarriorCutscene1(bossPlayer, ref introWhite, ref outroWhite);
+            WarriorCutscene2(bossPlayer, ref introWhite, ref outroWhite);
 
             if (bossPlayer.VideoDuration == 0)
             {
@@ -294,6 +303,52 @@ namespace StarsAbove.UI.CutsceneUI
         {
             UIVideo Video = warriorCutsceneVideo;
             var cutsceneProgress = modPlayer.warriorCutsceneProgress;
+
+            introWhite = true;
+            outroWhite = true;
+
+
+            if (cutsceneProgress <= 60 && cutsceneProgress > 0)
+            {//If the cutscene hasn't started yet, give time for the screen to fade.
+
+                if (introWhite)
+                {
+                    modPlayer.WhiteAlpha += 0.1f;
+                }
+                else
+                {
+                    modPlayer.BlackAlpha += 0.1f;
+                }
+
+
+            }
+            else
+            {
+
+            }
+            if (cutsceneProgress == 1)
+            {
+
+                Video.FinishedVideo = false;
+                Video.StartVideo = true;
+
+                area.Append(Video);
+
+            }
+            if (Video.FinishedVideo)
+            {
+                Video.FinishedVideo = false;
+
+                modPlayer.WhiteAlpha = 1f;
+                Video.Remove();
+            }
+
+
+        }
+        private void WarriorCutscene2(BossPlayer modPlayer, ref bool introWhite, ref bool outroWhite)
+        {
+            UIVideo Video = warriorCutsceneVideo2;
+            var cutsceneProgress = modPlayer.warriorCutsceneProgress2;
 
             introWhite = true;
             outroWhite = true;

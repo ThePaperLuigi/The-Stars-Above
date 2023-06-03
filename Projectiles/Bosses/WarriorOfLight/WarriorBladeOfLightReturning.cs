@@ -39,37 +39,44 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
         }
         public override bool PreDraw(ref Color lightColor)
 		{
+			if(Projectile.ai[2] > 0)
+            {
 
-			Main.spriteBatch.End();
-			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
+            }
+			else
+            {
+				Main.spriteBatch.End();
+				Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 
 
 
-			SpriteEffects spriteEffects = SpriteEffects.None;
-			if (Projectile.spriteDirection == -1)
-			{
-				spriteEffects = SpriteEffects.FlipHorizontally;
+				SpriteEffects spriteEffects = SpriteEffects.None;
+				if (Projectile.spriteDirection == -1)
+				{
+					spriteEffects = SpriteEffects.FlipHorizontally;
+				}
+
+				if (texture == null || texture.IsDisposed)
+				{
+					texture = (Texture2D)ModContent.Request<Texture2D>(Projectile.ModProjectile.Texture);
+				}
+
+				int frameHeight = texture.Height / Main.projFrames[Projectile.type];
+				int startY = frameHeight * Projectile.frame;
+				Rectangle sourceRectangle = new Rectangle(0, startY, texture.Width, frameHeight);
+				Vector2 origin = sourceRectangle.Size() / 2f;
+				Main.EntitySpriteDraw(texture,
+					Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY),
+					sourceRectangle, Color.Black, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
+				ArmorShaderData data = GameShaders.Armor.GetSecondaryShader((byte)GameShaders.Armor.GetShaderIdFromItemId(ItemID.ShiftingSandsDye), Main.LocalPlayer);
+				data.Apply(null);
+				Main.EntitySpriteDraw(texture,
+					Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY),
+					sourceRectangle, Color.White, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
+				Main.spriteBatch.End();
+				Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullNone, (Effect)null, Main.GameViewMatrix.TransformationMatrix);
+
 			}
-
-			if (texture == null || texture.IsDisposed)
-			{
-				texture = (Texture2D)ModContent.Request<Texture2D>(Projectile.ModProjectile.Texture);
-			}
-
-			int frameHeight = texture.Height / Main.projFrames[Projectile.type];
-			int startY = frameHeight * Projectile.frame;
-			Rectangle sourceRectangle = new Rectangle(0, startY, texture.Width, frameHeight);
-			Vector2 origin = sourceRectangle.Size() / 2f;
-			Main.EntitySpriteDraw(texture,
-				Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY),
-				sourceRectangle, Color.Black, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
-			ArmorShaderData data = GameShaders.Armor.GetSecondaryShader((byte)GameShaders.Armor.GetShaderIdFromItemId(ItemID.ShiftingSandsDye), Main.LocalPlayer);
-			data.Apply(null);
-			Main.EntitySpriteDraw(texture,
-				Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY),
-				sourceRectangle, Color.White, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
-			Main.spriteBatch.End();
-			Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullNone, (Effect)null, Main.GameViewMatrix.TransformationMatrix);
 
 			return false;
 		}
@@ -92,9 +99,22 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 				originalVelocity = Projectile.velocity;
 				firstSpawn = false;
             }
+			Projectile.ai[2]--;
+			if(Projectile.ai[2] > 0)
+            {
+				Projectile.velocity = Vector2.Zero;
+            }
+			else
+            {
+				Projectile.ai[0]++;
+			}
+			if (Projectile.ai[2] <= 0 && Projectile.ai[1] == 0)
+            {
+				Projectile.velocity = originalVelocity;
+			}
 			//AI 1 is the state, ai 0 is the timer (AI1 0 is the first attack, AI1 1 is the spinning, AI1 2 is the return)
 			Projectile.timeLeft = 10;
-			Projectile.ai[0]++;
+			
 			if(Projectile.ai[1] != 1)
             {
 				Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(90);

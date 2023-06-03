@@ -58,6 +58,7 @@ namespace StarsAbove
         public int tsukiCutsceneProgress = 0;
         public int tsukiCutscene2Progress = 0;
         public int warriorCutsceneProgress = 0;
+        public int warriorCutsceneProgress2 = 0;
 
         public float WhiteAlpha = 0f;
         public float BlackAlpha = 0f;
@@ -74,7 +75,26 @@ namespace StarsAbove
         float stress;
         float damageReductionAmount;
 
-        
+        public override void OnHurt(Player.HurtInfo info)
+        {
+            for (int k = 0; k < Main.maxNPCs; k++)
+            {
+                NPC npc = Main.npc[k];
+                if (npc.active && npc.type == NPCType<WarriorOfLightBoss>() && Player.Distance(npc.Center) < 2000)
+                {
+                    if(Main.expertMode)
+                    {
+                        Player.AddBuff(BuffType<Vulnerable>(), 60);
+
+                    }
+                    break;
+                }
+                
+
+            }
+
+            base.OnHurt(info);
+        }
         public override void PreUpdate()
         {
             //Aggro marker.
@@ -158,12 +178,8 @@ namespace StarsAbove
             tsukiCutsceneProgress--;
             tsukiCutscene2Progress--;
             warriorCutsceneProgress--;
-            if(warriorCutsceneProgress <= 3 && warriorCutsceneProgress > 0)
-            {
-                //WhiteAlpha += 0.1f;
-            }
-
-
+            warriorCutsceneProgress2--;
+            
             VideoDuration--;
             
             BlackAlpha = Math.Clamp(BlackAlpha, 0, 1);
@@ -283,7 +299,7 @@ namespace StarsAbove
                     bossReductionMod = 1400;
 
                 }
-                if (npc.type == ModContent.NPCType<WarriorOfLightBoss>())
+                if (npc.type == ModContent.NPCType<WarriorOfLightBoss>() || npc.type == ModContent.NPCType<WarriorOfLightBossFinalPhase>())
                 {
                     bossReductionMod = 1800;
 

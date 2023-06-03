@@ -126,7 +126,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 				drawOrigin.Y += 8f;
 				--drawOrigin.X;
 				Vector2 position1 = NPC.Bottom - Main.screenPosition;
-				Texture2D texture2D2 = (Texture2D)Request<Texture2D>("StarsAbove/Projectiles/WarriorVFX");
+				Texture2D texture2D2 = (Texture2D)Request<Texture2D>("StarsAbove/Effects/WarriorVFX");
 				float num11 = (float)((double)Main.GlobalTimeWrappedHourly / 7.0);
 				float timeFloatAlt = (float)((double)Main.GlobalTimeWrappedHourly / 5.0);
 
@@ -229,7 +229,26 @@ namespace StarsAbove.NPCs.WarriorOfLight
             }
             else if (AI_Timer >= 120) //An attack is active.
             {
-
+				//Test Rotation
+				/*
+				if (AI_RotationNumber == 0)
+				{
+					//
+					WarriorSummoning3(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 1)
+				{
+					//
+					CoruscantSaberIn(P, NPC);
+					return;
+				}
+				else
+				{
+					AI_RotationNumber = 0;
+					return;
+				}*/
+				
                 //Attacks begin here.
                 if (AI_RotationNumber == 0)
                 {
@@ -389,14 +408,158 @@ namespace StarsAbove.NPCs.WarriorOfLight
 					ImbuedCoruscance(P, NPC);
 					return;
 				}
+				else if (AI_RotationNumber == 25)
+				{
+					//
+					ResoluteReprobation(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 26)
+				{
+					//
+					EphemeralEdge(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 27)
+				{
+					//
+					SearingLight(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 28)
+				{
+					//
+					Recenter(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 29)
+				{
+					//
+					HopeConfluence(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 30)
+				{
+					//
+					PassageOfArms2(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 31)
+				{
+					//
+					ImbuedSaber(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 32)
+				{
+					//
+					SearingLight(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 33)
+				{
+					//
+					WarriorSummoning2(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 34)
+				{
+					//
+					EphemeralEdge(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 35)
+				{
+					//
+					ImbuedCoruscance(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 36)
+				{
+					//
+					RefulgentReprobation(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 37)
+				{
+					//
+					ThreadsOfFate1(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 38)
+				{
+					//
+					SearingLight(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 39)
+				{
+					//
+					ThreadsOfFate2(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 40)
+				{
+					//
+					Transplacement(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 41)
+				{
+					//
+					TheBitterEnd(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 42)
+				{
+					//
+					WarriorSummoning3(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 43)
+				{
+					//
+					CoruscantSaberIn(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 44)
+				{
+					//
+					TheBitterEnd(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 45)
+				{
+					//
+					SearingLight(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 46)
+				{
+					//
+					ImbuedSaber(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 47)
+				{
+					//
+					RadiantReprobation(P, NPC);
+					return;
+				}
+				else if (AI_RotationNumber == 48)
+				{
+					//
+					ImbuedCoruscance(P, NPC);
+					return;
+				}
 				else
                 {
                     AI_RotationNumber = 17;
                     return;
                 }
+				
 
-
-            }
+			}
 
 			BossVisuals();
 			//DrawOffsetY = MathHelper.Lerp(-10, 10, EaseHelper.Pulse(NPC.localAI[0]));
@@ -592,39 +755,35 @@ namespace StarsAbove.NPCs.WarriorOfLight
 
 			if (NPC.ai[1] >= 20f)
 			{
-				//Main.LocalPlayer.GetModPlayer<BossPlayer>().WarriorOfLightCutsceneProgress = 10;
+				Main.LocalPlayer.GetModPlayer<BossPlayer>().warriorCutsceneProgress2 = 10;
 				for (int d = 0; d < 305; d++)
 				{
-					Dust.NewDust(NPC.Center, 0, 0, DustID.FireworkFountain_Red, 0f + Main.rand.Next(-45, 45), 0f + Main.rand.Next(-45, 45), 150, default(Color), 1.5f);
+					Dust.NewDust(NPC.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-45, 45), 0f + Main.rand.Next(-45, 45), 150, default(Color), 1.5f);
 				}
 
-				//SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_TheGodsWillNotBeWatching, NPC.Center);
-				/*
-				if (!NPC.AnyNPCs(NPCType<WarriorOfLightBossPhase2>()))
+				//
+				
+				if (!NPC.AnyNPCs(NPCType<WarriorOfLightBossFinalPhase>()))
 				{
-					int index = NPC.NewNPC(null, (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<WarriorOfLightBossPhase2>(), NPC.whoAmI);
-					int index2 = NPC.NewNPC(null, (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<WarriorOfLightPhase2WallsNPC>(), NPC.whoAmI);
+					int index = NPC.NewNPC(null, (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<WarriorOfLightBossFinalPhase>(), NPC.whoAmI);
 
 
 					if (Main.netMode == NetmodeID.Server && index < Main.maxNPCs)
 					{
 						NetMessage.SendData(MessageID.SyncNPC, number: index);
 					}
-					if (Main.netMode == NetmodeID.Server && index < Main.maxNPCs)
-					{
-						NetMessage.SendData(MessageID.SyncNPC, number: index2);
-					}
+					
 				}
 				/*
 				
 
 				DownedBossSystem.downedWarriorOfLight = true;
-				*/
+				
 				if (Main.netMode == NetmodeID.Server)
 				{
 					NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
 				}
-				
+				*/
 
 				NPC.life = 0;
 				NPC.HitEffect(0, 0);

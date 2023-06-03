@@ -313,7 +313,7 @@ namespace StarsAbove.NPCs
             if (NPC.ai[3] == 0f)
             {
                 
-                SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_WarriorOfLightDeathQuote, NPC.Center);
+                //.PlaySound(StarsAboveAudio.WarriorOfLight_WarriorOfLightDeathQuote, NPC.Center);
 
                 
 
@@ -437,7 +437,7 @@ namespace StarsAbove.NPCs
                     {
                         Dust.NewDust(NPC.Center, 0, 0, 21, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
                     }
-                    SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_WarriorOfLightDefeated, NPC.Center);
+                    //.PlaySound(StarsAboveAudio.WarriorOfLight_WarriorOfLightDefeated, NPC.Center);
 
                     NPC.SetEventFlagCleared(ref DownedBossSystem.downedWarrior, -1);
                     DownedBossSystem.downedWarrior = true;
@@ -491,7 +491,7 @@ namespace StarsAbove.NPCs
             }
             if(nextAttack == "Concentrativity" && castTime == 65)
             {
-                SoundEngine.PlaySound(StarsAboveAudio.SFX_WarriorStun, NPC.Center);
+                //.PlaySound(StarsAboveAudio.SFX_WarriorStun, NPC.Center);
             }
             if (nextAttack == "A World Rent Asunder")
             {
@@ -983,7 +983,7 @@ namespace StarsAbove.NPCs
                     }
                     if (nextAttack == "To The Limit")
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakCharge, NPC.Center);
+                        //.PlaySound(StarsAboveAudio.SFX_LimitBreakCharge, NPC.Center);
                         isCasting = false;
                         lastAttack = nextAttack;
                         nextAttack = "";
@@ -1035,7 +1035,7 @@ namespace StarsAbove.NPCs
                             int type = Mod.Find<ModProjectile>("AbsoluteGeometry").Type;
 
                             float rotation = (float)Math.Atan2(vector8.Y - (P.position.Y + (P.height * 0.5f)), vector8.X - (P.position.X + (P.width * 0.5f)));
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_TeleportPrep, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.SFX_TeleportPrep, NPC.Center);
                             if(Main.netMode != NetmodeID.MultiplayerClient){Projectile.NewProjectile(NPC.GetSource_FromAI(),vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1),type,damage,0f,Main.myPlayer);}
                         }
 
@@ -1056,7 +1056,7 @@ namespace StarsAbove.NPCs
                         {
                             Dust.NewDust(NPC.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
                         }
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, NPC.Center);
+                        //.PlaySound(StarsAboveAudio.SFX_summoning, NPC.Center);
                         for (int i = 0; i < 1200; i += 100)
                         {
                             float Speed = 13f;  //projectile speed
@@ -1201,8 +1201,8 @@ namespace StarsAbove.NPCs
                     }
                     if (nextAttack == "Radiant Braver")
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, NPC.Center);
-                        SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_RadiantBraver, NPC.Center);
+                        //.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, NPC.Center);
+                        //.PlaySound(StarsAboveAudio.WarriorOfLight_RadiantBraver, NPC.Center);
                         isCasting = false;
                         lastAttack = nextAttack;
                         nextAttack = "";
@@ -1216,8 +1216,8 @@ namespace StarsAbove.NPCs
                     }
                     if (nextAttack == "Radiant Desperado")
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, NPC.Center);
-                        SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_RadiantBraver, NPC.Center);
+                        //.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, NPC.Center);
+                        //.PlaySound(StarsAboveAudio.WarriorOfLight_RadiantBraver, NPC.Center);
                         isCasting = false;
                         lastAttack = nextAttack;
                         nextAttack = "";
@@ -1230,8 +1230,8 @@ namespace StarsAbove.NPCs
                     }
                     if (nextAttack == "Radiant Meteor")
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, NPC.Center);
-                        SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_RadiantBraver, NPC.Center);
+                        //.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, NPC.Center);
+                        //.PlaySound(StarsAboveAudio.WarriorOfLight_RadiantBraver, NPC.Center);
                         isCasting = false;
                         lastAttack = nextAttack;
                         nextAttack = "";
@@ -1340,7 +1340,7 @@ namespace StarsAbove.NPCs
                             int type = Mod.Find<ModProjectile>("AbsoluteBlade").Type;
 
                             float rotation = (float)Math.Atan2(vector8.Y - (P.position.Y + (P.height * 0.5f)), vector8.X - (P.position.X + (P.width * 0.5f)));
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_swordAttackFinish, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.SFX_swordAttackFinish, NPC.Center);
                             if(Main.netMode != NetmodeID.MultiplayerClient){Projectile.NewProjectile(NPC.GetSource_FromAI(),vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1),type,damage,0f,Main.myPlayer);}
                         }
                         for (int i2 = 0; i2 < 2400; i2 += 100)
@@ -1352,14 +1352,14 @@ namespace StarsAbove.NPCs
                             int type = Mod.Find<ModProjectile>("AbsoluteBlade2").Type;
 
                             float rotation = (float)Math.Atan2(vector8.Y - (P.position.Y + (P.height * 0.5f)), vector8.X - (P.position.X + (P.width * 0.5f)));
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_swordAttackFinish, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.SFX_swordAttackFinish, NPC.Center);
                             if(Main.netMode != NetmodeID.MultiplayerClient){Projectile.NewProjectile(NPC.GetSource_FromAI(),vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1),type,damage,0f,Main.myPlayer);}
                         }
                     }
                     //Here are special phase changing attacks
                     if (nextAttack == "Ascendance")
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, NPC.Center);
+                        //.PlaySound(StarsAboveAudio.SFX_summoning, NPC.Center);
 
                         Vector2 placement2 = new Vector2((NPC.Center.X), NPC.Center.Y);
                         if(Main.netMode != NetmodeID.MultiplayerClient){Projectile.NewProjectile(NPC.GetSource_FromAI(),placement2.X, placement2.Y, 0, 0,Mod.Find<ModProjectile>("WarriorVFX").Type,0,0f,Main.myPlayer);}
@@ -1445,7 +1445,7 @@ namespace StarsAbove.NPCs
                         nframe = 0;
                         NPC.frameCounter = 0;
                         NPC.frame.Y = 0;
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_PhaseChange, NPC.Center);
+                        //.PlaySound(StarsAboveAudio.SFX_PhaseChange, NPC.Center);
                         for (int i = 0; i < Main.maxPlayers; i++)
                         {
                             Player player = Main.player[i];
@@ -1476,7 +1476,7 @@ namespace StarsAbove.NPCs
                         nframe = 0;
                         NPC.frameCounter = 0;
                         NPC.frame.Y = 0;
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_PhaseChange, NPC.Center);
+                        //.PlaySound(StarsAboveAudio.SFX_PhaseChange, NPC.Center);
                         for (int i = 0; i < Main.maxPlayers; i++)
                         {
                             Player player = Main.player[i];
@@ -1682,7 +1682,7 @@ namespace StarsAbove.NPCs
                             Dust.NewDust(NPC.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
                         }
                     }
-                    SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_WarriorOfLightIntroQuote, NPC.Center);
+                    //.PlaySound(StarsAboveAudio.WarriorOfLight_WarriorOfLightIntroQuote, NPC.Center);
                     NPC.ai[1] = 200;
 
                        
@@ -1945,7 +1945,7 @@ namespace StarsAbove.NPCs
                         {
                             isSwinging = true;
                             swingAnimation = 120;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_TheBitterEnd, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_TheBitterEnd, NPC.Center);
                             castDelay = 0;
                             nextAttack = "The Bitter End";
                             castTime = 0;
@@ -1957,7 +1957,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Blazing Skies")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_RefulgentEther, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_RefulgentEther, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Blazing Skies";
                             castTime = 0;
@@ -1968,8 +1968,7 @@ namespace StarsAbove.NPCs
                         {
                             castAnimation = 70;
                             Vector2 vector8 = new Vector2(P.position.X, P.position.Y);
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_BegoneSpawnOfShadow, NPC.Center);
-                            Terraria.Audio.SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_BegoneSpawnOfShadow, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_BegoneSpawnOfShadow, NPC.Center);
 
                             castDelay = 0;
                             if(Main.netMode != NetmodeID.MultiplayerClient){Projectile.NewProjectile(NPC.GetSource_FromAI(),vector8.X, vector8.Y, 0, 0,Mod.Find<ModProjectile>("SaberAOE").Type,0,0f,Main.myPlayer);}
@@ -1983,7 +1982,7 @@ namespace StarsAbove.NPCs
                         {
                             isSwinging = true;
                             swingAnimation = 120;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_TheBitterEnd, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_TheBitterEnd, NPC.Center);
                             castDelay = 0;
                             nextAttack = "The Bitter End";
                             castTime = 0;
@@ -2164,7 +2163,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Absolute Rend Heaven")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_HopeGrantMeStrength, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_HopeGrantMeStrength, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Absolute Rend Heaven";
                             castTime = 0;
@@ -2183,7 +2182,7 @@ namespace StarsAbove.NPCs
                         {
                             isSwinging = true;
                             swingAnimation = 120;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_TheBitterEnd, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_TheBitterEnd, NPC.Center);
                             castDelay = 0;
                             nextAttack = "The Bitter End";
                             castTime = 0;
@@ -2193,7 +2192,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Absolute Linear Mystics")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_MankindsFirstHeroAndHisFinalHope, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_MankindsFirstHeroAndHisFinalHope, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Absolute Linear Mystics";
                             castTime = 0;
@@ -2203,7 +2202,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Blazing Skies II")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_RefulgentEther, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_RefulgentEther, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Blazing Skies II";
                             castTime = 0;
@@ -2213,7 +2212,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Blades of Light")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_ForVictoryIRenderUpMyAll, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_ForVictoryIRenderUpMyAll, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Blades of Light";
                             castTime = 0;
@@ -2223,7 +2222,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Unabated Radiance")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_CladInPrayerIAmInvincible, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_CladInPrayerIAmInvincible, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Unabated Radiance";
                             castTime = 0;
@@ -2234,7 +2233,7 @@ namespace StarsAbove.NPCs
                         {
                             castAnimation = 70;
                             Vector2 vector8 = new Vector2(P.position.X, P.position.Y);
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_BegoneSpawnOfShadow, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_BegoneSpawnOfShadow, NPC.Center);
                             castDelay = 0;
                             
                             nextAttack = "Coruscant Saber II";
@@ -2246,7 +2245,7 @@ namespace StarsAbove.NPCs
                         {
                             castAnimation = 70;
                            
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_IWillNotFall, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_IWillNotFall, NPC.Center);
                             castDelay = 0;
 
                             nextAttack = "Sinpurge";
@@ -2256,7 +2255,7 @@ namespace StarsAbove.NPCs
                         }
                         if (nextCast == "Solemn Confiteor")
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_GleamingSteelLightMyPath, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_GleamingSteelLightMyPath, NPC.Center);
                             castAnimation = 70;
                             Vector2 vector8 = new Vector2(P.position.X, P.position.Y);
                             castDelay = 0;
@@ -2270,7 +2269,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Absolute Fire III")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_MySoulKnowsNoSurrender, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_MySoulKnowsNoSurrender, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Absolute Fire III";
                             castTime = 0;
@@ -2280,7 +2279,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Absolute Blizzard III")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_MySoulKnowsNoSurrender, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_MySoulKnowsNoSurrender, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Absolute Blizzard III";
                             castTime = 0;
@@ -2290,7 +2289,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Absolute Thunder IV")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_YourDemiseShallBeOurSalvation, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_YourDemiseShallBeOurSalvation, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Absolute Thunder IV";
                             castTime = 0;
@@ -2300,7 +2299,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Absolute Holy")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_DarknessMustBeDestroyed, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_DarknessMustBeDestroyed, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Absolute Holy";
                             castTime = 0;
@@ -2310,7 +2309,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Absolute Summoning")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_ToMeWarriorsOfLight, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_ToMeWarriorsOfLight, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Absolute Summoning";
                             castTime = 0;
@@ -2321,7 +2320,7 @@ namespace StarsAbove.NPCs
                         {
                             isSwinging = true;
                             swingAnimation = 120;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_TheBitterEnd, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_TheBitterEnd, NPC.Center);
                             castDelay = 0;
                             nextAttack = "The Bitter End";
                             castTime = 0;
@@ -2596,7 +2595,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Absolute Rend Heaven")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_ComeShowMeYourStrength, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_ComeShowMeYourStrength, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Absolute Rend Heaven";
                             castTime = 0;
@@ -2615,7 +2614,7 @@ namespace StarsAbove.NPCs
                         {
                             isSwinging = true;
                             swingAnimation = 120;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_HaveAtYou, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_HaveAtYou, NPC.Center);
                             castDelay = 0;
                             nextAttack = "The Bitter End";
                             castTime = 0;
@@ -2625,7 +2624,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Absolute Linear Mystics")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_TheGameIsUp, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_TheGameIsUp, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Absolute Linear Mystics";
                             castTime = 0;
@@ -2635,7 +2634,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Absolute Titanomachy")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_ItsTimeWeSettledThis, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_ItsTimeWeSettledThis, NPC.Center);
 
 
                             castDelay = 0;
@@ -2668,7 +2667,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Blazing Skies II")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_TheGameIsUp, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_TheGameIsUp, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Blazing Skies II";
                             castTime = 0;
@@ -2678,7 +2677,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Blades of Light")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_YoureNoMatchForMe, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_YoureNoMatchForMe, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Blades of Light";
                             castTime = 0;
@@ -2688,7 +2687,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Unabated Radiance")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_LightClaimYou, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_LightClaimYou, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Unabated Radiance";
                             castTime = 0;
@@ -2699,7 +2698,7 @@ namespace StarsAbove.NPCs
                         {
                             castAnimation = 70;
                             Vector2 vector8 = new Vector2(P.position.X, P.position.Y);
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_TheGameIsUp, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_TheGameIsUp, NPC.Center);
                             castDelay = 0;
 
                             nextAttack = "Coruscant Saber II";
@@ -2711,7 +2710,7 @@ namespace StarsAbove.NPCs
                         {
                             castAnimation = 70;
 
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_YoureNotGoingAnywhere, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_YoureNotGoingAnywhere, NPC.Center);
                             castDelay = 0;
 
                             nextAttack = "Sinpurge II";
@@ -2721,7 +2720,7 @@ namespace StarsAbove.NPCs
                         }
                         if (nextCast == "Solemn Confiteor")
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_YoureNoMatchForMe, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_YoureNoMatchForMe, NPC.Center);
                             castAnimation = 70;
                             Vector2 vector8 = new Vector2(P.position.X, P.position.Y);
                             castDelay = 0;
@@ -2742,7 +2741,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Absolute Fire III")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_TheGameIsUp, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_TheGameIsUp, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Absolute Fire III";
                             castTime = 0;
@@ -2752,7 +2751,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Absolute Blizzard III")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_TheGameIsUp, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_TheGameIsUp, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Absolute Blizzard III";
                             castTime = 0;
@@ -2762,7 +2761,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Absolute Thunder IV")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_ComeShowMeYourStrength, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_ComeShowMeYourStrength, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Absolute Thunder IV";
                             castTime = 0;
@@ -2773,7 +2772,7 @@ namespace StarsAbove.NPCs
                         {
                             castAnimation = 70;
                             //Main.PlaySound(SoundLoader.customSoundType, (int)npc.Center.X, (int)npc.Center.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/LimitBreakCharge"));
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_ItsTimeWeSettledThis, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_ItsTimeWeSettledThis, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Quintuplecast";
                             castTime = 0;
@@ -2783,7 +2782,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Absolute Holy")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_LightClaimYou, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_LightClaimYou, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Absolute Holy";
                             castTime = 0;
@@ -2793,7 +2792,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Absolute Summoning")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_AnswerMyCall, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_AnswerMyCall, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Absolute Summoning";
                             castTime = 0;
@@ -2805,7 +2804,7 @@ namespace StarsAbove.NPCs
                             if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("The Warrior of Light is transcending his limits!"), 210, 60, 60);}
 
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_TheLightWillCleanseYourSins, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_TheLightWillCleanseYourSins, NPC.Center);
                             castDelay = 0;
                             nextAttack = "To The Limit";
                             castTime = 0;
@@ -2815,7 +2814,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Radiant Braver")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_YoureNotGoingAnywhere, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_YoureNotGoingAnywhere, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Radiant Braver";
                             castTime = 0;
@@ -2836,7 +2835,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Radiant Desperado")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_YoureNoMatchForMe, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_YoureNoMatchForMe, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Radiant Desperado";
                             castTime = 0;
@@ -2846,7 +2845,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Radiant Meteor")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_YourLifeIsMineForTheTaking, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_YourLifeIsMineForTheTaking, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Radiant Meteor";
                             castTime = 0;
@@ -2856,7 +2855,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Terror Unleashed")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_AFeebleShieldProtectsNothing, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_AFeebleShieldProtectsNothing, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Terror Unleashed";
                             castTime = 0;
@@ -2866,7 +2865,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "SOUL Extraction")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_LetsTrySomethingElse, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_LetsTrySomethingElse, NPC.Center);
                             castDelay = 0;
                             nextAttack = "SOUL Extraction";
                             castTime = 0;
@@ -2876,7 +2875,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Light Rampant")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_IveToyedWithYouLongEnough, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_IveToyedWithYouLongEnough, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Light Rampant";
                             castTime = 0;
@@ -2886,7 +2885,7 @@ namespace StarsAbove.NPCs
                         if (nextCast == "Rays of Punishment")
                         {
                             castAnimation = 70;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_YoureNotGoingAnywhere, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_YoureNotGoingAnywhere, NPC.Center);
                             castDelay = 0;
                             nextAttack = "Rays of Punishment";
                             castTime = 0;
@@ -2897,7 +2896,7 @@ namespace StarsAbove.NPCs
                         {
                             isSwinging = true;
                             swingAnimation = 120;
-                            SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_HaveAtYou, NPC.Center);
+                            //.PlaySound(StarsAboveAudio.WarriorOfLight_HaveAtYou, NPC.Center);
                             castDelay = 0;
                             nextAttack = "The Bitter End";
                             castTime = 0;
@@ -2919,7 +2918,7 @@ namespace StarsAbove.NPCs
                         nextCast = "";
                         surpassingInfinity = true;
                         castDelay = 0;
-                        SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_FinalPhaseGrunt, NPC.Center);
+                        //.PlaySound(StarsAboveAudio.WarriorOfLight_FinalPhaseGrunt, NPC.Center);
                         phase = 3;
                         castTime = 0;
                         castTimeMax = 315;
@@ -2937,7 +2936,7 @@ namespace StarsAbove.NPCs
                     {
                         castAnimation = 70;
 
-                        SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_YouStillStand, NPC.Center);
+                        //.PlaySound(StarsAboveAudio.WarriorOfLight_YouStillStand, NPC.Center);
                         castDelay = 0;
 
                         castTime = 0;
@@ -2954,7 +2953,7 @@ namespace StarsAbove.NPCs
                         
                         
                         castDelay = 0;
-                        SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_IveToyedWithYouLongEnough, NPC.Center);
+                        //.PlaySound(StarsAboveAudio.WarriorOfLight_IveToyedWithYouLongEnough, NPC.Center);
                         if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("The fabric of this world begins to fray!"), 210, 60, 60);}
                         phase = 3;
                         castTime = 0;
@@ -2972,7 +2971,7 @@ namespace StarsAbove.NPCs
                         if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("Your final days have arrived..."), 210, 60, 60);}
                         castAnimation = 70;
                         phase = 2;
-                        SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_IAmSalvationGivenForm, NPC.Center);
+                        //.PlaySound(StarsAboveAudio.WarriorOfLight_IAmSalvationGivenForm, NPC.Center);
                         //Main.PlaySound(SoundLoader.customSoundType, (int)npc.Center.X, (int)npc.Center.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/iceCracking"));
                         castDelay = 0;
                         nextAttack = "Ascendance";

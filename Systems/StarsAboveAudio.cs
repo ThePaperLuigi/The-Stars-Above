@@ -365,14 +365,6 @@ namespace StarsAbove
 		#endregion
 
 		#region Warrior Of Light Voice Lines
-		public static readonly SoundStyle WarriorOfLight_AFeebleShieldProtectsNothing = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/AFeebleShieldProtectsNothing")
-		{
-
-		};
-		public static readonly SoundStyle WarriorOfLight_AnswerMyCall = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/AnswerMyCall")
-		{
-
-		};
 		public static readonly SoundStyle WarriorOfLight_BegoneSpawnOfShadow = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/BegoneSpawnOfShadow")
 		{
 
@@ -381,15 +373,7 @@ namespace StarsAbove
 		{
 
 		};
-		public static readonly SoundStyle WarriorOfLight_ComeShowMeYourStrength = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/ComeShowMeYourStrength")
-		{
-
-		};
 		public static readonly SoundStyle WarriorOfLight_DarknessMustBeDestroyed = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/DarknessMustBeDestroyed")
-		{
-
-		};
-		public static readonly SoundStyle WarriorOfLight_Fall = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/Fall")
 		{
 
 		};
@@ -405,10 +389,6 @@ namespace StarsAbove
 		{
 
 		};
-		public static readonly SoundStyle WarriorOfLight_HaveAtYou = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/HaveAtYou")
-		{
-
-		};
 		public static readonly SoundStyle WarriorOfLight_HopeGrantMeStrength = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/HopeGrantMeStrength")
 		{
 
@@ -417,14 +397,7 @@ namespace StarsAbove
 		{
 
 		};
-		public static readonly SoundStyle WarriorOfLight_ItsTimeWeSettledThis = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/ItsTimeWeSettledThis")
-		{
 
-		};
-		public static readonly SoundStyle WarriorOfLight_IveToyedWithYouLongEnough = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/IveToyedWithYouLongEnough")
-		{
-
-		};
 		public static readonly SoundStyle WarriorOfLight_IWillNotFall = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/IWillNotFall")
 		{
 
@@ -433,14 +406,7 @@ namespace StarsAbove
 		{
 
 		};
-		public static readonly SoundStyle WarriorOfLight_LetsTrySomethingElse = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/LetsTrySomethingElse")
-		{
 
-		};
-		public static readonly SoundStyle WarriorOfLight_LightClaimYou = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/LightClaimYou")
-		{
-
-		};
 		public static readonly SoundStyle WarriorOfLight_MankindsFirstHeroAndHisFinalHope = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/MankindsFirstHeroAndHisFinalHope")
 		{
 
@@ -461,14 +427,6 @@ namespace StarsAbove
 		{
 
 		};
-		public static readonly SoundStyle WarriorOfLight_TheGameIsUp = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/TheGameIsUp")
-		{
-
-		};
-		public static readonly SoundStyle WarriorOfLight_TheLightWillCleanseYourSins = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/TheLightWillCleanseYourSins")
-		{
-
-		};
 		public static readonly SoundStyle WarriorOfLight_ToMeWarriorsOfLight = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/ToMeWarriorsOfLight")
 		{
 
@@ -486,18 +444,6 @@ namespace StarsAbove
 
 		};
 		public static readonly SoundStyle WarriorOfLight_YourDemiseShallBeOurSalvation = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/YourDemiseShallBeOurSalvation")
-		{
-
-		};
-		public static readonly SoundStyle WarriorOfLight_YoureNoMatchForMe = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/YoureNoMatchForMe")
-		{
-
-		};
-		public static readonly SoundStyle WarriorOfLight_YoureNotGoingAnywhere = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/YoureNotGoingAnywhere")
-		{
-
-		};
-		public static readonly SoundStyle WarriorOfLight_YourLifeIsMineForTheTaking = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/YourLifeIsMineForTheTaking")
 		{
 
 		};

@@ -99,7 +99,7 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 			
 
 			deg = Projectile.ai[1];
-			Projectile.ai[1] += 0.2f;
+			//Projectile.ai[1] += 0.2f;
 
 			//deg = 10;
 

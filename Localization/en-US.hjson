@@ -28,6 +28,7 @@ Mods: {
 			WarriorOfLight: {
 				ImbueIce: The Warrior of Light's blade is infused with ice!
 				ImbueFire: The Warrior of Light's blade is infused with fire!
+				UseImbue: The Warrior of Light draws forth the imbued element!
 				PhaseChange: Your final days have arrived...
 			}
 
@@ -3091,6 +3092,7 @@ Mods: {
 			WarriorOfLightBoss.DisplayName: The Warrior Of Light
 			WarriorWallsNPC.DisplayName: ""
 			WarriorOfLightOld.DisplayName: ""
+			WarriorOfLightBossFinalPhase.DisplayName: Warrior Of Light Boss Final Phase
 		}
 
 		Tiles: {
@@ -8488,9 +8490,13 @@ Mods: {
 			CoruscantSaberIn.DisplayName: Coruscant Saber
 			CoruscantSaberOut.DisplayName: Coruscant Saber
 			ImbuedSaberEffect.DisplayName: Imbued Saber Effect
-			WarriorFirebolt.DisplayName: Warrior Firebolt
-			WarriorIcebolt.DisplayName: Warrior Icebolt
+			WarriorFirebolt.DisplayName: Absolute Fire
+			WarriorIcebolt.DisplayName: Absolute Ice
 			TransitionDustEffect.DisplayName: Transition Dust Effect
+			WarriorBladeOfLightReturningTurret.DisplayName: Warrior Blade Of Light Returning Turret
+			WarriorOrbitingLight.DisplayName: Lightblast
+			WarriorOfLightFinalPhaseCastingSprite.DisplayName: Warrior Of Light Final Phase Casting Sprite
+			WarriorOfLightFinalPhaseSwingingSprite.DisplayName: Warrior Of Light Final Phase Swinging Sprite
 		}
 
 		Buffs: {
@@ -8969,6 +8975,7 @@ Mods: {
 				Description:
 					'''
 					Endless light blankets the sky... Foes are empowered and will periodically overflow with Light
+					The Rod of Discord/Harmony has been disabled
 					Ask your Starfarer for a means to combat this threat
 					'''
 			}
@@ -9842,7 +9849,7 @@ Mods: {
 					'''
 					Corporeal body is transposed into the sea of stars
 					The following actions have been restricted:
-					Building, mining, mounts, explosives, flying, and the Rod of Discord
+					Building, mining, mounts, explosives, flying, and the Rod of Discord/Harmony
 					Abilities that scale with modded world progression have reverted to initial values
 					'''
 			}
