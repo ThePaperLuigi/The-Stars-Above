@@ -66,7 +66,7 @@ namespace StarsAbove
                 idleAnimationTimer += 1;
             }
             
-            if (idleAnimationTimer > 660)//Change this to something like.. 18 seconds maybe? (1080)
+            if (idleAnimationTimer > 1800)//Change this to something like.. 18 seconds maybe? (1080)
             {
                 if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuUIOpacity > 0)
                 {
@@ -230,11 +230,11 @@ namespace StarsAbove
             {
                 AsphodeneEyeMovementRX = MathHelper.Lerp(0, 2, MousePositionFloatX);
                 AsphodeneEyeMovementLX = MathHelper.Lerp(0, 1, MousePositionFloatX);
-                AsphodeneEyeMovementY = MathHelper.Lerp(-1, 1, MousePositionFloatY);
+                AsphodeneEyeMovementY = MathHelper.Lerp(-1, 0, MousePositionFloatY);
 
                 EridaniEyeMovementLX = MathHelper.Lerp(0, 2, MousePositionFloatX);
                 EridaniEyeMovementRX = MathHelper.Lerp(-1, 1, MousePositionFloatX);
-                EridaniEyeMovementY = MathHelper.Lerp(-1, 1, MousePositionFloatY);
+                EridaniEyeMovementY = MathHelper.Lerp(-1, 0, MousePositionFloatY);
 
             }
             else
@@ -250,7 +250,7 @@ namespace StarsAbove
                 {
                     EridaniEyeMovementLX = MathHelper.Lerp(1, -2, idleAnimationReading);
                     EridaniEyeMovementRX = MathHelper.Lerp(1, -1, idleAnimationReading);
-                    EridaniEyeMovementY = 2;
+                    EridaniEyeMovementY = 0;
                 }
             }
             
