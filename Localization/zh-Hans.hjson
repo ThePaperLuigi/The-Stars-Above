@@ -8456,14 +8456,14 @@ Mods: {
 			// CoruscantSaberAnimation.DisplayName: Coruscant Saber
 			// CoruscantSaberIn.DisplayName: Coruscant Saber
 			// CoruscantSaberOut.DisplayName: Coruscant Saber
-			// ImbuedSaberEffect.DisplayName: Imbued Saber Effect
+			// ImbuedSaberEffect.DisplayName: ""
 			// WarriorFirebolt.DisplayName: Absolute Fire
 			// WarriorIcebolt.DisplayName: Absolute Ice
-			// TransitionDustEffect.DisplayName: Transition Dust Effect
-			// WarriorBladeOfLightReturningTurret.DisplayName: Warrior Blade Of Light Returning Turret
+			// TransitionDustEffect.DisplayName: ""
+			// WarriorBladeOfLightReturningTurret.DisplayName: ""
 			// WarriorOrbitingLight.DisplayName: Lightblast
-			// WarriorOfLightFinalPhaseCastingSprite.DisplayName: Warrior Of Light Final Phase Casting Sprite
-			// WarriorOfLightFinalPhaseSwingingSprite.DisplayName: Warrior Of Light Final Phase Swinging Sprite
+			// WarriorOfLightFinalPhaseCastingSprite.DisplayName: ""
+			// WarriorOfLightFinalPhaseSwingingSprite.DisplayName: ""
 		}
 
 		Buffs: {

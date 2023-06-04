@@ -9850,11 +9850,11 @@ namespace StarsAbove.NPCs.AttackLibrary
 						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, 0, 0, type, damage, 0, Main.myPlayer, i + 450, i * 45, 1);
 						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, 0, 0, type, damage, 0, Main.myPlayer, i + 450, i * 45, -1);
 
-						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, 0, 0, type, damage, 0, Main.myPlayer, i + 750, i * 45, 1);
-						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, 0, 0, type, damage, 0, Main.myPlayer, i + 750, i * 45, -1);
+						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, 0, 0, type, damage, 0, Main.myPlayer, i + 650, i * 45, 1);
+						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, 0, 0, type, damage, 0, Main.myPlayer, i + 650, i * 45, -1);
 
-						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, 0, 0, type, damage, 0, Main.myPlayer, i + 950, i * 45, 1);
-						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, 0, 0, type, damage, 0, Main.myPlayer, i + 950, i * 45, -1);
+						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, 0, 0, type, damage, 0, Main.myPlayer, i + 850, i * 45, 1);
+						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, 0, 0, type, damage, 0, Main.myPlayer, i + 850, i * 45, -1);
 					}
 					
 				}
@@ -10611,12 +10611,12 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 					if (npc.type == ModContent.NPCType<WarriorOfLightBoss>())
 					{
-						Projectile.NewProjectile(null, npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<WarriorOfLightCastingSprite>(), 0, 0, Main.myPlayer, 120);
+						Projectile.NewProjectile(null, npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<WarriorOfLightCastingSprite>(), 0, 0, Main.myPlayer, 180);
 
 					}
 					if (npc.type == ModContent.NPCType<WarriorOfLightBossFinalPhase>())
 					{
-						Projectile.NewProjectile(null, npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<WarriorOfLightFinalPhaseCastingSprite>(), 0, 0, Main.myPlayer, 120);
+						Projectile.NewProjectile(null, npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<WarriorOfLightFinalPhaseCastingSprite>(), 0, 0, Main.myPlayer, 180);
 
 					}
 				}

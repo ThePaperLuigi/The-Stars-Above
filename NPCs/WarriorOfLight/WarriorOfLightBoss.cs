@@ -179,6 +179,8 @@ namespace StarsAbove.NPCs.WarriorOfLight
 		{
 			if (NPC.ai[0] != (float)ActionState.Dying) //If the boss is defeated, but the death animation hasn't played yet, play the death animation.
 			{
+				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_YouStillStand, NPC.Center);
+
 				NPC.ai[0] = (float)ActionState.Dying; //Flag boss as "dying"
 				NPC.damage = 0; //Disable contact damage
 				NPC.life = NPC.lifeMax; //HP set to max
@@ -737,13 +739,13 @@ namespace StarsAbove.NPCs.WarriorOfLight
 				NPC.velocity.Y = NPC.velocity.Y - 0.01f;
 			}
 			
-			if (Main.rand.NextBool(5) && NPC.ai[1] < 20f)
+			if (Main.rand.NextBool(5) && NPC.ai[1] < 180f)
 			{
 				
 				// This dust spawn adapted from the Pillar death code in vanilla.
 				for (int dustNumber = 0; dustNumber < 3; dustNumber++)
 				{
-					Dust dust = Main.dust[Dust.NewDust(NPC.Left, NPC.width, NPC.height / 2, DustID.FireworkFountain_Red, 0f, 0f, 0, default(Color), 0.4f)];
+					Dust dust = Main.dust[Dust.NewDust(NPC.Left, NPC.width, NPC.height / 2, DustID.FireworkFountain_Yellow, 0f, 0f, 0, default(Color), 0.4f)];
 					dust.position = NPC.Center + Vector2.UnitY.RotatedByRandom(4.1887903213500977) * new Vector2(NPC.width, NPC.height) * 0.8f * (0.8f + Main.rand.NextFloat() * 0.2f);
 					dust.velocity.X = 0f;
 					dust.velocity.Y = -Math.Abs(dust.velocity.Y - (float)dustNumber + NPC.velocity.Y - 4f) * 3f;
@@ -753,7 +755,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 				}
 			}
 
-			if (NPC.ai[1] >= 20f)
+			if (NPC.ai[1] >= 180f)
 			{
 				Main.LocalPlayer.GetModPlayer<BossPlayer>().warriorCutsceneProgress2 = 10;
 				for (int d = 0; d < 305; d++)
