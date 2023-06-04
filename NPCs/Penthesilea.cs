@@ -520,7 +520,7 @@ namespace StarsAbove.NPCs
                 }
                 modPlayer.PenthActive = false;
                 modPlayer.PenthBarActive = false;
-                NPC.velocity.Y -= 0.1f;
+                NPC.active = false;
                 NPC.timeLeft = 0;
             }
 
