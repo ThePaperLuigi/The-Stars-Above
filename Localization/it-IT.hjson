@@ -748,17 +748,17 @@
           {
             Asphodene:
             {
-              1: "'The Destroyer...' I'm not one to talk, but if you name something 'The Destroyer' I'm gonna expect more than a big worm."
-              2: Its absurd length was just a detriment to its strength. Take notes, {0}.
-              3: It looks as if another upgrade is available in the Stellar Array.
-              4: I guess that's all I have for now.
+              1: "'Il Distruttore...' Non sono qualcuno che di solito parla, ma se chiami qualcosa 'Il Distruttore' mi aspetto di più rispetto a un grosso verme"
+              2: La sua lunghezza assurda era solo un danno alla sua forza. Prendi appunti, {0}.
+              3: Sembra che sia disponibile un altro potenziamento nello Stellar Array.
+              4: Immagino che sia tutto per ora.
             }
             Eridani:
             {
-              1: I guess the Destroyer was more bark than bite, huh. Maybe too much of the budget was spent on the design aspect.
-              2: In theory, we could technically salvage some of its bits, but it's probably more trouble than its worth.
-              3: It looks as if yet another upgrade is available in the Stellar Array. Pretty serendipitous.
-              4: That's all for now.
+              1: Credo che il Distruttore fosse più un abbaiare che un mordere, eh. Forse è stato speso troppo budget per l'aspetto del design.
+              2: In teoria, noi potremmo tecnicamente salvare dei suoi pezzi, ma credo che sia più un problema che un guadagno.
+              3: Sembra che un altro potenziamento nello Stellar Array sia disponibile. Abbastanza fortuito.
+              4: Questo è tutto per ora.
             }
           }
           SkeletronPrime:
