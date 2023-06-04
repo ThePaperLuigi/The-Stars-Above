@@ -1634,6 +1634,14 @@ Mods: {
 					// 191: This is a pretty large patch of Corruption- but as long as it isn't moving anywhere, it shouldn't be a threat we need to stop. Still, it's a bit of a eyesore.
 					// 192: An entire moon covered in Crimson- yuck. I wouldn't want to be stranded here, so mind where the Gateway is and you should be fine.
 					// 193: Isn't this strange? Nobody would seriously think of making a space station out of wood, right? Huh- I could have sworn there was someone living here...?
+					// 194: A desert scarab is coming straight for you- and it's covered in armor!
+					// 195: Those jellyfish seem to have coalesed- looks like it has some powerful lightning abilities!
+					// 196: Something in this briar stirs- if you haven't already, time to prep for a fight.
+					// 197: Hey, eyes up! A bird-like creature is coming straight for you... Doesn't look like any bird I've seen before!
+					// 198: Something's barreling through the asteroid field at a rapid pace! Don't get reckless...!
+					// 199: A demon approaches! I guess it makes sense- we are in the Underworld, after all! Let's give them a warm welcome.
+					// 200: I don't know what you just used, but a terrifying skull monster is on its way. Guess I should've seen this coming.
+					// 201: A huge crystalline foe approaches- needless to say, prepare for a fight.
 				}
 
 				Eridani: {
@@ -1831,6 +1839,14 @@ Mods: {
 					// 193: A Crimson-infused moon... After you've gathered what you need, we should excuse ourselves quickly.
 					// 194: Seems this place has been completely overturned by the Ardor... What a horrible fate.
 					// 195: Never would I ever have thought I'd see a wooden space-station, of all things... Hold on a moment- is someone still living here?
+					// 196: You've got to be kidding me. It's a horrid, scuttling bug- in armor, no less. Avoid its disgusting minions or else!
+					// 197: The Moon Jellies have combined into a sort of figure? It looks like it wants a fight, so prepare yourself!
+					// 198: Hey, heads up- that thing you just used has awoken a sort of nature entity, and it's headed your way.
+					// 199: I think you've angered this prehistoric bird thing- I hope you've got a plan to take it out of the sky.
+					// 200: A low-orbit entity is rapidly approaching your position- get ready for a fight.
+					// 201: I hate to say this, but you seem to have caught the attention of a fearsome demon- time to prepare for combat.
+					// 202: That crown you just used seems to have summoned a demonic skull... these things aren't usually friendly!
+					// 203: A colossal earthen entity is approaching- and it's hostile, no doubt. A fight it is.
 				}
 			}
 
@@ -7564,10 +7580,10 @@ Mods: {
 					Striking foes with this weapon grants Swiftness for 3 seconds
 					Press the Weapon Action Key to sling a yo-yo forwards, travelling a short distance (Yo-yo returns after two seconds)
 					Press the Weapon Action Key after the yo-yo has stopped movement will launch you towards the yo-yo, returning it
-					Additionally, gain the buff [Kick Start] for 3 seconds, causing the next attack with this weapon to deal 2x damage, consuming the buff
-					Right click to prepare the [Killing Bear], gaining the buff [Me and My Killing Machine] for 8 seconds (30 second cooldown)
-					During this time, striking foes with this weapon will cause the [Killing Bear] to deal a follow-up attack (1 second delay)
-					The [Killing Bear]'s follow-up attacks will additionally grant [Kick Start] for 2 seconds
+					Additionally, gain the buff [c/B9F1FA:Kick Start] for 3 seconds, causing the next attack with this weapon to deal 2x damage, consuming the buff
+					Right click to prepare the [c/E08738:Killing Bear], gaining the buff [c/E03838:Me and My Killing Machine] for 8 seconds (30 second cooldown)
+					During this time, striking foes with this weapon will cause the [c/E08738:Killing Bear] to deal a follow-up attack (1 second delay)
+					The [c/E08738:Killing Bear]'s follow-up attacks will additionally grant [c/B9F1FA:Kick Start] for 2 seconds
 					''' */
 			}
 		}
@@ -10695,6 +10711,146 @@ Mods: {
 			// NovaPrefix2.DisplayName: Nova Prefix2
 			// NovaPrefix3.DisplayName: Nova Prefix3
 			// NovaPrefix4.DisplayName: Nova Prefix4
+		}
+
+		Configs: {
+			StarsAboveConfigClient: {
+				// DisplayName: Stars Above Config Client
+
+				DisableStellarNovaCutIns: {
+					// Label: "{$Mods.StarsAbove.Config.DisableStellarNovaCutIns.Label}"
+					// Tooltip: "{$Mods.StarsAbove.Config.DisableStellarNovaCutIns.Tooltip}"
+				}
+
+				EnableStarfarerVoices: {
+					// Label: "{$Mods.StarsAbove.Config.EnableStarfarerVoices.Label}"
+					// Tooltip: "{$Mods.StarsAbove.Config.EnableStarfarerVoices.Tooltip}"
+				}
+
+				DisableStellarNovaDialogue: {
+					// Label: "{$Mods.StarsAbove.Config.DisableStellarNovaDialogue.Label}"
+					// Tooltip: "{$Mods.StarsAbove.Config.DisableStellarNovaDialogue.Tooltip}"
+				}
+
+				DisableStarfarerCommentary: {
+					// Label: "{$Mods.StarsAbove.Config.DisableStarfarerCommentary.Label}"
+					// Tooltip: "{$Mods.StarsAbove.Config.DisableStarfarerCommentary.Tooltip}"
+				}
+
+				DisableStarfarerCommentaryBuffs: {
+					// Label: "{$Mods.StarsAbove.Config.DisableStarfarerCommentaryBuffs.Label}"
+					// Tooltip: "{$Mods.StarsAbove.Config.DisableStarfarerCommentaryBuffs.Tooltip}"
+				}
+
+				DisableStarfarerCommentaryCombat: {
+					// Label: "{$Mods.StarsAbove.Config.DisableStarfarerCommentaryCombat.Label}"
+					// Tooltip: "{$Mods.StarsAbove.Config.DisableStarfarerCommentaryCombat.Tooltip}"
+				}
+
+				StarfarerPromptCooldown: {
+					// Label: "{$Mods.StarsAbove.Config.StarfarerPromptCooldown.Label}"
+					// Tooltip: "{$Mods.StarsAbove.Config.StarfarerPromptCooldown.Tooltip}"
+				}
+
+				CommentaryTimer: {
+					// Label: "{$Mods.StarsAbove.Config.CommentaryTimer.Label}"
+					// Tooltip: "{$Mods.StarsAbove.Config.CommentaryTimer.Tooltip}"
+				}
+
+				DialogueScrollValue: {
+					// Label: "{$Mods.StarsAbove.Config.DialogueScrollValue.Label}"
+					// Tooltip: "{$Mods.StarsAbove.Config.DialogueScrollValue.Tooltip}"
+				}
+
+				DialogueAudio: {
+					// Label: "{$Mods.StarsAbove.Config.DialogueAudio.Label}"
+					// Tooltip: "{$Mods.StarsAbove.Config.DialogueAudio.Tooltip}"
+				}
+
+				InstantText: {
+					// Label: "{$Mods.StarsAbove.Config.InstantText.Label}"
+					// Tooltip: "{$Mods.StarsAbove.Config.InstantText.Tooltip}"
+				}
+
+				DisableDraggingDialogue: {
+					// Label: "{$Mods.StarsAbove.Config.DisableDraggingDialogue.Label}"
+					// Tooltip: "{$Mods.StarsAbove.Config.DisableDraggingDialogue.Tooltip}"
+				}
+
+				EnableMusicOverride: {
+					// Label: "{$Mods.StarsAbove.Config.EnableMusicOverride.Label}"
+					// Tooltip: "{$Mods.StarsAbove.Config.EnableMusicOverride.Tooltip}"
+				}
+
+				EnablePlayerWorldLock: {
+					// Label: "{$Mods.StarsAbove.Config.EnablePlayerWorldLock.Label}"
+					// Tooltip: "{$Mods.StarsAbove.Config.EnablePlayerWorldLock.Tooltip}"
+				}
+
+				EnableAprilFools: {
+					// Label: "{$Mods.StarsAbove.Config.EnableAprilFools.Label}"
+					// Tooltip: "{$Mods.StarsAbove.Config.EnableAprilFools.Tooltip}"
+				}
+
+				DisableWeaponCutIns: {
+					// Label: "{$Mods.StarsAbove.Config.DisableWeaponCutIn.Label}"
+					// Tooltip: "{$Mods.StarsAbove.Config.DisableWeaponCutIn.Tooltip}"
+				}
+
+				PromptLoc: {
+					// Label: "{$Mods.StarsAbove.Config.PromptLoc.Label}"
+					// Tooltip: "{$Mods.StarsAbove.Config.PromptLoc.Tooltip}"
+				}
+			}
+
+			StarsAboveServersideConfig: {
+				// DisplayName: Stars Above Serverside Config
+
+				DisableTypePenalty: {
+					// Label: "{$Mods.StarsAbove.Config.DisableTypePenalty.Label}"
+					// Tooltip: "{$Mods.StarsAbove.Config.DisableTypePenalty.Tooltip}"
+				}
+
+				DisableBossAggro: {
+					// Label: "{$Mods.StarsAbove.Config.DisableBossAggro.Label}"
+					// Tooltip: "{$Mods.StarsAbove.Config.DisableBossAggro.Tooltip}"
+				}
+
+				DisableCalamityWeaponBuffs: {
+					// Label: "{$Mods.StarsAbove.Config.DisableCalamityWeaponBuffs.Label}"
+					// Tooltip: "{$Mods.StarsAbove.Config.DisableCalamityWeaponBuffs.Tooltip}"
+				}
+
+				DisableWeaponRestrictions: {
+					// Label: "{$Mods.StarsAbove.Config.DisableWeaponRestrictions.Label}"
+					// Tooltip: "{$Mods.StarsAbove.Config.DisableWeaponRestrictions.Tooltip}"
+				}
+
+				DisableBossEnemySpawnMod: {
+					// Label: "{$Mods.StarsAbove.Config.DisableBossEnemySpawnMod.Label}"
+					// Tooltip: "{$Mods.StarsAbove.Config.DisableBossEnemySpawnMod.Tooltip}"
+				}
+
+				DisableManaSicknessChange: {
+					// Label: "{$Mods.StarsAbove.Config.DisableManaSicknessChange.Label}"
+					// Tooltip: "{$Mods.StarsAbove.Config.DisableManaSicknessChange.Tooltip}"
+				}
+
+				ColorblindBoss: {
+					// Label: "{$Mods.StarsAbove.Config.ColorblindBoss.Label}"
+					// Tooltip: "{$Mods.StarsAbove.Config.ColorblindBoss.Tooltip}"
+				}
+
+				DisableCompatibilityMode: {
+					// Label: "{$Mods.StarsAbove.Config.SubworldCompatibility.Label}"
+					// Tooltip: "{$Mods.StarsAbove.Config.SubworldCompatibility.Tooltip}"
+				}
+
+				CombatTimer: {
+					// Label: "{$Mods.StarsAbove.Config.CombatTimer.Label}"
+					// Tooltip: "{$Mods.StarsAbove.Config.CombatTimer.Tooltip}"
+				}
+			}
 		}
 	}
 }

@@ -16,7 +16,7 @@ namespace StarsAbove.Projectiles
 			Projectile.hide = true;
 			Projectile.ownerHitCheck = true;
 			Projectile.DamageType = DamageClass.Melee;
-			Projectile.ContinuouslyUpdateDamage = true;
+			Projectile.ContinuouslyUpdateDamageStats = true;
 		}
 
 		public override void AI() {

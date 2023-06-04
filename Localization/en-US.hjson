@@ -1643,8 +1643,8 @@ Mods: {
 					200: I don't know what you just used, but a terrifying skull monster is on its way. Guess I should've seen this coming.
 					201: A huge crystalline foe approaches- needless to say, prepare for a fight.
 				}
-				Eridani:
-				{
+
+				Eridani: {
 					1: Uhh.. you're looking a little sick.
 					2: The Ichor is dampening your defenses. Watch out.
 					3: You've been silenced.. No magic for now.
@@ -10812,6 +10812,146 @@ Mods: {
 			NovaPrefix2.DisplayName: Nova Prefix2
 			NovaPrefix3.DisplayName: Nova Prefix3
 			NovaPrefix4.DisplayName: Nova Prefix4
+		}
+
+		Configs: {
+			StarsAboveConfigClient: {
+				DisplayName: Stars Above Config Client
+
+				DisableStellarNovaCutIns: {
+					Label: "{$Mods.StarsAbove.Config.DisableStellarNovaCutIns.Label}"
+					Tooltip: "{$Mods.StarsAbove.Config.DisableStellarNovaCutIns.Tooltip}"
+				}
+
+				EnableStarfarerVoices: {
+					Label: "{$Mods.StarsAbove.Config.EnableStarfarerVoices.Label}"
+					Tooltip: "{$Mods.StarsAbove.Config.EnableStarfarerVoices.Tooltip}"
+				}
+
+				DisableStellarNovaDialogue: {
+					Label: "{$Mods.StarsAbove.Config.DisableStellarNovaDialogue.Label}"
+					Tooltip: "{$Mods.StarsAbove.Config.DisableStellarNovaDialogue.Tooltip}"
+				}
+
+				DisableStarfarerCommentary: {
+					Label: "{$Mods.StarsAbove.Config.DisableStarfarerCommentary.Label}"
+					Tooltip: "{$Mods.StarsAbove.Config.DisableStarfarerCommentary.Tooltip}"
+				}
+
+				DisableStarfarerCommentaryBuffs: {
+					Label: "{$Mods.StarsAbove.Config.DisableStarfarerCommentaryBuffs.Label}"
+					Tooltip: "{$Mods.StarsAbove.Config.DisableStarfarerCommentaryBuffs.Tooltip}"
+				}
+
+				DisableStarfarerCommentaryCombat: {
+					Label: "{$Mods.StarsAbove.Config.DisableStarfarerCommentaryCombat.Label}"
+					Tooltip: "{$Mods.StarsAbove.Config.DisableStarfarerCommentaryCombat.Tooltip}"
+				}
+
+				StarfarerPromptCooldown: {
+					Label: "{$Mods.StarsAbove.Config.StarfarerPromptCooldown.Label}"
+					Tooltip: "{$Mods.StarsAbove.Config.StarfarerPromptCooldown.Tooltip}"
+				}
+
+				CommentaryTimer: {
+					Label: "{$Mods.StarsAbove.Config.CommentaryTimer.Label}"
+					Tooltip: "{$Mods.StarsAbove.Config.CommentaryTimer.Tooltip}"
+				}
+
+				DialogueScrollValue: {
+					Label: "{$Mods.StarsAbove.Config.DialogueScrollValue.Label}"
+					Tooltip: "{$Mods.StarsAbove.Config.DialogueScrollValue.Tooltip}"
+				}
+
+				DialogueAudio: {
+					Label: "{$Mods.StarsAbove.Config.DialogueAudio.Label}"
+					Tooltip: "{$Mods.StarsAbove.Config.DialogueAudio.Tooltip}"
+				}
+
+				InstantText: {
+					Label: "{$Mods.StarsAbove.Config.InstantText.Label}"
+					Tooltip: "{$Mods.StarsAbove.Config.InstantText.Tooltip}"
+				}
+
+				DisableDraggingDialogue: {
+					Label: "{$Mods.StarsAbove.Config.DisableDraggingDialogue.Label}"
+					Tooltip: "{$Mods.StarsAbove.Config.DisableDraggingDialogue.Tooltip}"
+				}
+
+				EnableMusicOverride: {
+					Label: "{$Mods.StarsAbove.Config.EnableMusicOverride.Label}"
+					Tooltip: "{$Mods.StarsAbove.Config.EnableMusicOverride.Tooltip}"
+				}
+
+				EnablePlayerWorldLock: {
+					Label: "{$Mods.StarsAbove.Config.EnablePlayerWorldLock.Label}"
+					Tooltip: "{$Mods.StarsAbove.Config.EnablePlayerWorldLock.Tooltip}"
+				}
+
+				EnableAprilFools: {
+					Label: "{$Mods.StarsAbove.Config.EnableAprilFools.Label}"
+					Tooltip: "{$Mods.StarsAbove.Config.EnableAprilFools.Tooltip}"
+				}
+
+				DisableWeaponCutIns: {
+					Label: "{$Mods.StarsAbove.Config.DisableWeaponCutIn.Label}"
+					Tooltip: "{$Mods.StarsAbove.Config.DisableWeaponCutIn.Tooltip}"
+				}
+
+				PromptLoc: {
+					Label: "{$Mods.StarsAbove.Config.PromptLoc.Label}"
+					Tooltip: "{$Mods.StarsAbove.Config.PromptLoc.Tooltip}"
+				}
+			}
+
+			StarsAboveServersideConfig: {
+				DisplayName: Stars Above Serverside Config
+
+				DisableTypePenalty: {
+					Label: "{$Mods.StarsAbove.Config.DisableTypePenalty.Label}"
+					Tooltip: "{$Mods.StarsAbove.Config.DisableTypePenalty.Tooltip}"
+				}
+
+				DisableBossAggro: {
+					Label: "{$Mods.StarsAbove.Config.DisableBossAggro.Label}"
+					Tooltip: "{$Mods.StarsAbove.Config.DisableBossAggro.Tooltip}"
+				}
+
+				DisableCalamityWeaponBuffs: {
+					Label: "{$Mods.StarsAbove.Config.DisableCalamityWeaponBuffs.Label}"
+					Tooltip: "{$Mods.StarsAbove.Config.DisableCalamityWeaponBuffs.Tooltip}"
+				}
+
+				DisableWeaponRestrictions: {
+					Label: "{$Mods.StarsAbove.Config.DisableWeaponRestrictions.Label}"
+					Tooltip: "{$Mods.StarsAbove.Config.DisableWeaponRestrictions.Tooltip}"
+				}
+
+				DisableBossEnemySpawnMod: {
+					Label: "{$Mods.StarsAbove.Config.DisableBossEnemySpawnMod.Label}"
+					Tooltip: "{$Mods.StarsAbove.Config.DisableBossEnemySpawnMod.Tooltip}"
+				}
+
+				DisableManaSicknessChange: {
+					Label: "{$Mods.StarsAbove.Config.DisableManaSicknessChange.Label}"
+					Tooltip: "{$Mods.StarsAbove.Config.DisableManaSicknessChange.Tooltip}"
+				}
+
+				ColorblindBoss: {
+					Label: "{$Mods.StarsAbove.Config.ColorblindBoss.Label}"
+					Tooltip: "{$Mods.StarsAbove.Config.ColorblindBoss.Tooltip}"
+				}
+
+				DisableCompatibilityMode: {
+					Label: "{$Mods.StarsAbove.Config.SubworldCompatibility.Label}"
+					Tooltip: "{$Mods.StarsAbove.Config.SubworldCompatibility.Tooltip}"
+				}
+
+				CombatTimer: {
+					Label: "{$Mods.StarsAbove.Config.CombatTimer.Label}"
+					Tooltip: "{$Mods.StarsAbove.Config.CombatTimer.Tooltip}"
+				}
+			}
 		}
 	}
 }
