@@ -361,10 +361,35 @@ namespace StarsAbove
 		{
 
 		};
-		
+
 		#endregion
 
 		#region Warrior Of Light Voice Lines
+		public static readonly SoundStyle WarriorOfLight_NowToTakeYourMeasure = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/NowToTakeYourMeasure")
+		{
+
+		};
+		public static readonly SoundStyle WarriorOfLight_WillLightEmbrace = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/WillLightEmbrace")
+		{
+
+		};
+		public static readonly SoundStyle WarriorOfLight_TheseMagicksAreNotForYou = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/TheseMagicksAreNotForYou")
+		{
+
+		};
+		public static readonly SoundStyle WarriorOfLight_JudgedWorthyToExist = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/JudgedWorthyToExist")
+		{
+
+		};
+		public static readonly SoundStyle WarriorOfLight_ForVictory = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/ForVictory")
+		{
+
+		};
+		public static readonly SoundStyle WarriorOfLight_PowerFromBeyond = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/PowerFromBeyond")
+		{
+
+		};
+
 		public static readonly SoundStyle WarriorOfLight_BegoneSpawnOfShadow = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/BegoneSpawnOfShadow")
 		{
 
