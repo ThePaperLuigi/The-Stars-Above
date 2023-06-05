@@ -1495,17 +1495,18 @@ namespace StarsAbove.UI.StarfarerMenu
             AsphodeneBodyPosition = new Vector2(Main.screenWidth / 2 - 300, (Main.screenHeight / 2) - 325 + animationModPlayer.StarfarerMenuIdleMovement);
             AsphodeneEyeRightPosition = new Vector2(Main.screenWidth / 2 - 96 + animationModPlayer.AsphodeneEyeMovementRX, Main.screenHeight / 2 - 118 + animationModPlayer.StarfarerMenuIdleMovement + animationModPlayer.AsphodeneEyeMovementY);
             AsphodeneEyeLeftPosition = new Vector2(Main.screenWidth / 2 - 96 + animationModPlayer.AsphodeneEyeMovementLX, Main.screenHeight / 2 - 118 + animationModPlayer.StarfarerMenuIdleMovement + animationModPlayer.AsphodeneEyeMovementY);
-            if (archivePlayer.archiveActive)
+			int archiveMovement = 200;
+			if (archivePlayer.archiveActive)
             {
-                AsphodeneHeadPosition.X -= 200;
-                AsphodeneBodyPosition.X -= 200;
-                AsphodeneEyeRightPosition.X -= 200;
-                AsphodeneEyeLeftPosition.X -= 200;
-                AsphodeneUpperArmPosition.X -= 200;
-                AsphodeneLowerArmPosition.X -= 200;
-                AsphodeneRightLegPosition.X -= 200;
-                AsphodeneLeftLegPosition.X -= 200;
-                SwordPosition.X -= 200;
+                AsphodeneHeadPosition.X -= archiveMovement;
+                AsphodeneBodyPosition.X -= archiveMovement;
+                AsphodeneEyeRightPosition.X -= archiveMovement;
+                AsphodeneEyeLeftPosition.X -= archiveMovement;
+                AsphodeneUpperArmPosition.X -= archiveMovement;
+                AsphodeneLowerArmPosition.X -= archiveMovement;
+                AsphodeneRightLegPosition.X -= archiveMovement;
+                AsphodeneLeftLegPosition.X -= archiveMovement;
+                SwordPosition.X -= archiveMovement;
             }
 
             //Vector2 AsphodeneBodyPosition = new Vector2(bodyHitbox.X, bodyHitbox.Y + modPlayer.StarfarerMenuIdleMovement);
@@ -1551,18 +1552,20 @@ namespace StarsAbove.UI.StarfarerMenu
             EridaniEyeLeftPosition = new Vector2(Main.screenWidth / 2 - 97 + animationModPlayer.EridaniEyeMovementLX, Main.screenHeight / 2 - 112 + animationModPlayer.StarfarerMenuIdleMovement + animationModPlayer.EridaniEyeMovementY);
             EridaniBookPosition = new Vector2(Main.screenWidth / 2 - 126, Main.screenHeight / 2 + 12 + animationModPlayer.StarfarerMenuHeadRotation / 2);
             EridaniArmsCrossedPosition = new Vector2(Main.screenWidth / 2 - 102, Main.screenHeight / 2 - 42 + animationModPlayer.StarfarerMenuIdleMovement);
-            if (archivePlayer.archiveActive)
+			
+			int archiveMovement = 200;
+			if (archivePlayer.archiveActive)
             {
-                EridaniHeadPosition.X -= 200;
-                EridaniBodyPosition.X -= 200;
-                EridaniPonytailPosition.X -= 200;
-                EridaniEyeRightPosition.X -= 200;
-                EridaniEyeLeftPosition.X -= 200;
-                EridaniLowerArmPosition.X -= 200;
-                EridaniRightLegPosition.X -= 200;
-                EridaniLeftLegPosition.X -= 200;
-                EridaniBookPosition.X -= 200;
-                EridaniArmsCrossedPosition.X -= 200;
+                EridaniHeadPosition.X -= archiveMovement;
+                EridaniBodyPosition.X -= archiveMovement;
+                EridaniPonytailPosition.X -= archiveMovement;
+                EridaniEyeRightPosition.X -= archiveMovement;
+                EridaniEyeLeftPosition.X -= archiveMovement;
+                EridaniLowerArmPosition.X -= archiveMovement;
+                EridaniRightLegPosition.X -= archiveMovement;
+                EridaniLeftLegPosition.X -= archiveMovement;
+                EridaniBookPosition.X -= archiveMovement;
+                EridaniArmsCrossedPosition.X -= archiveMovement;
             }
         }
 
