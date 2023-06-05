@@ -68,7 +68,7 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 
 				firstSpawn = false;
 			}
-			if (!NPC.AnyNPCs(ModContent.NPCType<WarriorOfLightBoss>()))
+			if (!NPC.AnyNPCs(ModContent.NPCType<WarriorOfLightBoss>()) && !NPC.AnyNPCs(ModContent.NPCType<WarriorOfLightBoss>()))
 			{
 
 				Projectile.Kill();

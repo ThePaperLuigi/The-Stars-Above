@@ -240,7 +240,49 @@ namespace StarsAbove.NPCs.WarriorOfLight
 				if (AI_RotationNumber == 0)
 				{
 					//
-					TheBitterEnd(P, NPC);
+					ParadiseLost(P, NPC);//Strengthened version of Hope's Confluence
+					return;
+				}
+				if (AI_RotationNumber == 1)
+				{
+					//
+					MortalInstants(P, NPC);//Strengthened version of clock blades
+					return;
+				}
+				if (AI_RotationNumber == 2)
+				{
+					//
+					CosmicIgnition(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 3)
+				{
+					//
+					ToTheLimit(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 4)
+				{
+					//
+					WarriorArsLaevateinn(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 5)
+				{
+					//
+					ToTheLimit(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 6)
+				{
+					//
+					WarriorGardenOfAvalon(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 7)
+				{
+					//
+					ScionsAndSinners(P, NPC);
 					return;
 				}
 				else
@@ -562,12 +604,24 @@ namespace StarsAbove.NPCs.WarriorOfLight
 
 			}
 
-			BossVisuals();
+			BossEffects();
 			//DrawOffsetY = MathHelper.Lerp(-10, 10, EaseHelper.Pulse(NPC.localAI[0]));
 		}
-		private void BossVisuals()
+		private void BossEffects()
         {
-			
+			if (NPC.AnyNPCs(ModContent.NPCType<GardenOfAvalonNPC>()))
+			{
+
+				NPC.dontTakeDamage = true;
+				NPC.netUpdate = true;
+
+			}
+			else
+            {
+				NPC.dontTakeDamage = false;
+				NPC.netUpdate = true;
+
+			}
 		}
         private void FindTargetPlayer()
         {
