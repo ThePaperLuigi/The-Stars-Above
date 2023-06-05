@@ -133,7 +133,7 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 				{
 					NPC npc = Main.npc[i];
 
-					if (npc.active && npc.type == ModContent.NPCType<WarriorOfLightBoss>() || npc.type == ModContent.NPCType<TsukiyomiBoss>())//Change later
+					if (npc.active && npc.type == ModContent.NPCType<WarriorOfLightBoss>() || npc.type == ModContent.NPCType<WarriorOfLightBossFinalPhase>())//Change later
 					{
 						foundTarget = true;
 						targetCenter = Main.player[npc.target].Center;

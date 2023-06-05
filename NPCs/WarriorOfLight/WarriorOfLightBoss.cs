@@ -22,6 +22,7 @@ using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Buffs;
 using StarsAbove.Utilities;
 using StarsAbove.Projectiles.Bosses.WarriorOfLight;
+using StarsAbove.Items.Accessories;
 
 namespace StarsAbove.NPCs.WarriorOfLight
 {
@@ -607,7 +608,23 @@ namespace StarsAbove.NPCs.WarriorOfLight
                 {
                     Dust.NewDust(vector8, 0, 0, 55, 0f + Main.rand.Next(-45, 45), 0f + Main.rand.Next(-45, 45), 150, default(Color), 1.5f);
                 }
-                NPC.active = false;
+				for (int i = 0; i < Main.maxPlayers; i++)
+				{
+					Player player = Main.player[i];
+					if (player.active)
+					{
+						int k = Item.NewItem(null, (int)NPC.position.X, (int)NPC.position.Y, 0, 0, ModContent.ItemType<SigilOfHope>(), 1, false);
+						if (Main.netMode == 1)
+						{
+							NetMessage.SendData(21, -1, -1, null, k, 1f);
+						}
+
+					}
+
+
+				}
+				
+				NPC.active = false;
 
 
             }

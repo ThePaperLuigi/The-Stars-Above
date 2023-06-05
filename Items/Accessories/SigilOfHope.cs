@@ -1,4 +1,5 @@
 ﻿using StarsAbove.Items.Prisms;
+using StarsAbove.NPCs.WarriorOfLight;
 using StarsAbove.Systems;
 using Terraria;
 using Terraria.ID;
@@ -7,15 +8,10 @@ using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Items.Accessories
 {
-    public class CassiopeaBrooch : StargazerRelic
+    public class SigilOfHope : StargazerRelic
 	{
 		public override void SetStaticDefaults() {
-			// DisplayName.SetDefault("Cassiopea's Brooch");
-
-			/* Tooltip.SetDefault("[c/2DD2FE:Stargazer Relic]" +
-				"\nNo effect..?" +
-				"\n[c/ADEEFF:Only one Stargazer Relic can be equipped at a time]" +
-				"\n'The Empire's Queen sleeps, waiting to live forever'"); */
+			
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 			//The (English) text shown below your weapon's name
 		}
@@ -29,7 +25,17 @@ namespace StarsAbove.Items.Accessories
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual) {
-			
+
+			if (NPC.AnyNPCs(ModContent.NPCType<WarriorOfLightBoss>()) || NPC.AnyNPCs(ModContent.NPCType<WarriorOfLightBossFinalPhase>()))
+            {
+				if(EverlastingLightEvent.isEverlastingLightActive)
+                {
+					player.statDefense += 60;
+					player.GetDamage(DamageClass.Generic) += 0.5f;
+
+				}
+			}
+				
 
 		}
 

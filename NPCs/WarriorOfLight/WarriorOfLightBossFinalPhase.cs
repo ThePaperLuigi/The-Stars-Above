@@ -246,43 +246,103 @@ namespace StarsAbove.NPCs.WarriorOfLight
 				if (AI_RotationNumber == 1)
 				{
 					//
-					MortalInstants(P, NPC);//Strengthened version of clock blades
+					ThreadsOfFate2(P, NPC);//Strengthened version of Hope's Confluence
 					return;
 				}
 				if (AI_RotationNumber == 2)
 				{
 					//
-					CosmicIgnition(P, NPC);
+					ToTheLimit(P, NPC);//Strengthened version of Hope's Confluence
 					return;
 				}
 				if (AI_RotationNumber == 3)
 				{
 					//
-					ToTheLimit(P, NPC);
+					WarriorArsLaevateinn(P, NPC);//Strengthened version of Hope's Confluence
 					return;
 				}
 				if (AI_RotationNumber == 4)
 				{
 					//
-					WarriorArsLaevateinn(P, NPC);
+					ScionsAndSinners(P, NPC);//Strengthened version of clock blades
 					return;
 				}
 				if (AI_RotationNumber == 5)
 				{
 					//
-					ToTheLimit(P, NPC);
+					SearingLight(P, NPC);
 					return;
 				}
 				if (AI_RotationNumber == 6)
 				{
 					//
-					WarriorGardenOfAvalon(P, NPC);
+					CosmicIgnition(P, NPC);
 					return;
 				}
 				if (AI_RotationNumber == 7)
 				{
 					//
+					ThreadsOfFate3(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 8)
+				{
+					// 
+					SearingLight(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 9)
+				{
+					//
+					Transplacement(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 10)
+				{
+					//
 					ScionsAndSinners(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 11)
+				{
+					//
+					Recenter(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 12)
+				{
+					//
+					ImbuedSaber(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 13)
+				{
+					//
+					ToTheLimit(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 14)
+				{
+					//
+					WarriorGardenOfAvalon(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 15)
+				{
+					//
+					MortalInstants(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 16)
+				{
+					//
+					ThreadsOfFate2(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 17)
+				{
+					//
+					ImbuedCoruscance(P, NPC);
 					return;
 				}
 				else

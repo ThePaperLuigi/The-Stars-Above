@@ -97,7 +97,7 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 				{
 					NPC other = Main.npc[i];
 
-					if (other.active && other.type == ModContent.NPCType<NPCs.WarriorOfLight.WarriorOfLightBoss>())
+					if (other.active && (other.type == ModContent.NPCType<NPCs.WarriorOfLight.WarriorOfLightBoss>() || other.type == ModContent.NPCType<NPCs.WarriorOfLight.WarriorOfLightBossFinalPhase>()))
 					{
 						bossPosition = other.Center;
 						//return;

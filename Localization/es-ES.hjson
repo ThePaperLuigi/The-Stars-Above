@@ -30,6 +30,9 @@ Mods: {
 				// ImbueFire: The Warrior of Light's blade is infused with fire!
 				// UseImbue: The Warrior of Light draws forth the imbued element!
 				// PhaseChange: Your final days have arrived...
+				// ChargeNova: The Warrior of Light charges his Stellar Nova!
+				// ChargeStarfarer: The Warrior of Light borrows his Starfarer's might!
+				// GardenOfAvalon: The Garden of Avalon shields the Warrior of Light from damage!
 			}
 
 			// Dioskouroi.Clash: The Dioskouroi clash, equalizing their HP!
@@ -3092,7 +3095,8 @@ Mods: {
 			// WarriorOfLightBoss.DisplayName: The Warrior Of Light
 			// WarriorWallsNPC.DisplayName: ""
 			// WarriorOfLightOld.DisplayName: ""
-			// WarriorOfLightBossFinalPhase.DisplayName: Warrior Of Light Boss Final Phase
+			// WarriorOfLightBossFinalPhase.DisplayName: The Warrior Of Light
+			// GardenOfAvalonNPC.DisplayName: Garden Of Avalon
 		}
 
 		Tiles: {
@@ -7596,6 +7600,11 @@ Mods: {
 					During this time, striking foes with this weapon will cause the [c/E08738:Killing Bear] to deal a follow-up attack (1 second delay)
 					The [c/E08738:Killing Bear]'s follow-up attacks will additionally grant [c/B9F1FA:Kick Start] for 2 seconds
 					''' */
+			}
+
+			SigilOfHope: {
+				// DisplayName: Sigil Of Hope
+				// Tooltip: ""
 			}
 		}
 
