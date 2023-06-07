@@ -1859,10 +1859,10 @@ namespace StarsAbove.UI.StarfarerMenu
 
         private static void DrawAsphodeneExpression(SpriteBatch spriteBatch, StarsAbovePlayer modPlayer, StarfarerMenuAnimation animationModPlayer, Texture2D AsphodeneHeadBase, Vector2 AsphodeneHeadPosition)
         {
-            if (modPlayer.expression == 0)
+            if (Main.LocalPlayer.GetModPlayer<StarfarerMenuAnimation>().idleAnimationActive)
             {
                 spriteBatch.Draw(
-                    (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/AHeadExpression0"), //The texture being drawn.
+                    (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/AHeadExpression1"), //The texture being drawn.
                     AsphodeneHeadPosition, //The position of the texture.
                     new Rectangle(0, 0, AsphodeneHeadBase.Width, AsphodeneHeadBase.Height), //The source rectangle.
                     Color.White * (modPlayer.starfarerMenuUIOpacity), //The color of the texture.

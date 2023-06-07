@@ -54,7 +54,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 3;
+                        expression = 4;
                        // dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Right. My power is yours. Let's show this world what we can do.
                         //	" ";
                     }
@@ -74,7 +74,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 5)
                     {
-                        expression = 2;
+                        expression = 1;
                         //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Through this contract, we must work together to bring justice to those willing to harm this world.
                     }
                     if (dialogueLeft == 4)
@@ -97,7 +97,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 6;
+                        expression = 5;
                         //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //My strength is yours... I will not let you down.
                     }
                 }
@@ -115,7 +115,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 5;
+                        expression = 2;
                         if (Main.hardMode)
                         {
                             /*dialogue = $"Sorry, {Player.name}. Nothing to" +
@@ -141,7 +141,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 5;
+                        expression = 2;
                         if (Main.hardMode)
                         {
                             dialogue = LangHelper.GetTextValue($"Dialogue.IdleDialogueHardmode.Eridani", Player.name);
@@ -161,7 +161,7 @@ namespace StarsAbove
             #region idleDialogue
             if (chosenDialogue == 3) // Passive Dialogue 1
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -170,24 +170,24 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 3)
                     {
-                        expression = 6;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue1.Asphodene.1", Player.name); //My sister likely despises the undead rising every night.
+                        expression = 5;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue1.Asphodene.1", Player.name); //My sister likely despises the un6 rising every night.
                         //	" ";
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 4;
+                        expression = 3;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue1.Asphodene.2", Player.name); //What about me? 
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 3;
+                        expression = 4;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue1.Asphodene.3", Player.name); //As long as they have money, it's a benefit to us, right?
                         //	" ";
                     }
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -196,12 +196,12 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 5;
+                        expression = 2;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue1.Eridani.1", Player.name); //Those disgusting creatures rising from the earth every night...
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 2;
+                        expression = 1;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue1.Eridani.2", Player.name); //Ew. Let's dispatch of them quickly. And- be mindful of your hygiene after.
                     }
                 }
@@ -210,7 +210,7 @@ namespace StarsAbove
             }//1
             if (chosenDialogue == 4) // Passive Dialogue 2
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -224,7 +224,7 @@ namespace StarsAbove
                         //	" ";
                     }
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -242,7 +242,7 @@ namespace StarsAbove
             }//2
             if (chosenDialogue == 5) // Passive Dialogue 2
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -251,18 +251,18 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue3.Asphodene.1", Player.name); //Honestly, I prefer the flashy weapons. A little 'extra' never hurt anyone.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 3;
+                        expression = 4;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue3.Asphodene.2", Player.name); //Unless you were on the receiving end. 
                         //	" ";
                     }
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -276,7 +276,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 5;
+                        expression = 2;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue3.Eridani.2", Player.name); //Sometimes, though... The choice is difficult. You get what I mean, right?
                     }
                 }
@@ -285,7 +285,7 @@ namespace StarsAbove
             }//3
             if (chosenDialogue == 6) // Passive Dialogue 3
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -300,7 +300,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 4;
+                        expression = 3;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue4.Asphodene.2", Player.name); //In short, we're the manifestation of the universe's will to vanquish threats...?
                         //	" ";
                     }
@@ -312,7 +312,7 @@ namespace StarsAbove
                     }
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -343,7 +343,7 @@ namespace StarsAbove
             }//4
             if (chosenDialogue == 7) // Passive Dialogue 4
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -362,7 +362,7 @@ namespace StarsAbove
                         //	" ";
                     }
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -382,7 +382,7 @@ namespace StarsAbove
             }//5
             if (chosenDialogue == 8) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -401,7 +401,7 @@ namespace StarsAbove
                         //	" ";
                     }
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -427,7 +427,7 @@ namespace StarsAbove
             }//6
             if (chosenDialogue == 9) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -436,7 +436,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 4)
                     {
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue7.Asphodene.1", Player.name); //{Player.name}! I have this idea about a weapon..   
                         //	" ";
                     }
@@ -454,13 +454,13 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 4;
+                        expression = 3;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue7.Asphodene.4", Player.name); //It would be far too large, to boot. And then there's the whole heating problem... 
                         //	" ";
                     }
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -491,7 +491,7 @@ namespace StarsAbove
             }//7
             if (chosenDialogue == 10) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | | 3 4 | 4 3 | 5 Sigh | 6 Intrigued
                 {
                     if (dialoguePrep == true)
                     {
@@ -506,12 +506,12 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 2;
+                        expression = 1;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue8.Asphodene.2", Player.name); //Everything costs so much! And they all have a monopoly!!
                         //	" ";
                     }
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -520,7 +520,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 2;
+                        expression = 1;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue8.Eridani.1", Player.name); //These merchants are definitely upselling their wares for far too much!
                         //	" ";
                     }
@@ -537,7 +537,7 @@ namespace StarsAbove
             }//8
             if (chosenDialogue == 11) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -556,7 +556,7 @@ namespace StarsAbove
                         //	" ";
                     }
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -577,7 +577,7 @@ namespace StarsAbove
              //Post Hardmode Dialogue
             if (chosenDialogue == 12) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -592,7 +592,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue1.Asphodene.2", Player.name); //Have you been working on your town? Up for some mining? Ready for the next boss?
                         //	" ";
                     }
@@ -602,7 +602,7 @@ namespace StarsAbove
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue1.Asphodene.3", Player.name); //It's up to you. I'll be here. 
                     }
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -634,7 +634,7 @@ namespace StarsAbove
             }//1
             if (chosenDialogue == 13) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -663,7 +663,7 @@ namespace StarsAbove
                     {
                         if (dialogueLeft == 2)
                         {
-                            expression = 4;
+                            expression = 3;
                             dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue2.Asphodene.2", Player.name); //I feel like I'm missing something important.. 
                             //	" ";
                         }
@@ -677,7 +677,7 @@ namespace StarsAbove
                     }
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -697,13 +697,13 @@ namespace StarsAbove
                     {
                         if (dialogueLeft == 2)
                         {
-                            expression = 4;
+                            expression = 3;
                             dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue2.Eridani.1", Player.name); //Using the Stellar Novas is rather tiring. 
                             //	" ";
                         }
                         if (dialogueLeft == 1)
                         {
-                            expression = 5;
+                            expression = 2;
                             dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue2.Eridani.2", Player.name); //There's a lot of stories about heroes borrowing powers from others, but they never tell you how hard it is on the other side...
                             //	" ";
                         }
@@ -712,7 +712,7 @@ namespace StarsAbove
                     {
                         if (dialogueLeft == 2)
                         {
-                            expression = 4;
+                            expression = 3;
                             dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue2.Eridani.3", Player.name); //I feel like I'm missing something important.. 
                             //	" ";
                         }
@@ -730,7 +730,7 @@ namespace StarsAbove
             }//2
             if (chosenDialogue == 14) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -745,7 +745,7 @@ namespace StarsAbove
                     }
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -765,7 +765,7 @@ namespace StarsAbove
             }//3
             if (chosenDialogue == 15) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -774,7 +774,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue4.Asphodene.1", Player.name); //I'm liking your outfit! I guess we do think alike.
                         //	" ";
                     }
@@ -785,7 +785,7 @@ namespace StarsAbove
                         //	" ";
                     }
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -800,13 +800,13 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 3)
                     {
-                        expression = 2;
+                        expression = 1;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue4.Eridani.2", Player.name); //Um, I'll pre-emptively say this: Say anything about my outfit and..
                         //	" ";
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 5;
+                        expression = 2;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue4.Eridani.3", Player.name); //I'll probably cry. 
                         //	" ";
                     }
@@ -822,7 +822,7 @@ namespace StarsAbove
             }//4
             if (chosenDialogue == 16) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -837,18 +837,18 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 5;
+                        expression = 2;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue5.Asphodene.2", Player.name); //Uh, yeah. A lot of it was just fighting things.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue5.Asphodene.3", Player.name); //But hey- that was fun too, wasn't it?
                         //	" ";
                     }
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -874,7 +874,7 @@ namespace StarsAbove
             }//5
             if (chosenDialogue == 17) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -883,17 +883,17 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 3;
+                        expression = 4;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue6.Asphodene.1", Player.name); //You're getting pretty strong! Think you can beat me in a fight?
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 7;
+                        expression = 6;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue6.Asphodene.2", Player.name); //That was a joke. You probably could. 
                     }
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -908,7 +908,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 3)
                     {
-                        expression = 3;
+                        expression = 4;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue6.Eridani.2", Player.name); //Or not. Theoretically, if we fought, I'd probably win. Don't you think?
                         //	" ";
                     }
@@ -920,7 +920,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 5;
+                        expression = 2;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue6.Eridani.4", Player.name); //(I wonder if they caught my bluff.) 
                         //	" ";
                     }
@@ -930,7 +930,7 @@ namespace StarsAbove
             }//6
             if (chosenDialogue == 18) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -939,18 +939,18 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 4;
+                        expression = 3;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue7.Asphodene.1", Player.name); //I can barely imagine where some of these monsters have come from.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue7.Asphodene.2", Player.name); //Some lich somewhere ate a few bad mushrooms and just went to town, huh? Or maybe a portal to a dimension of primordial soup?
                         //	" ";
                     }
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -970,7 +970,7 @@ namespace StarsAbove
             }//7
             if (chosenDialogue == 19) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -990,7 +990,7 @@ namespace StarsAbove
                         //	" ";
                     }
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -1017,7 +1017,7 @@ namespace StarsAbove
             }//8
             if (chosenDialogue == 20) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -1032,12 +1032,12 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue9.Asphodene.2", Player.name); //That doesn't mean it's time to stop!
                         //	" ";
                     }
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -1062,7 +1062,7 @@ namespace StarsAbove
             }//9
             if (chosenDialogue == 21) // A world shrouded in Light
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -1082,7 +1082,7 @@ namespace StarsAbove
                         //	" ";
                     }
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -1091,7 +1091,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 5;
+                        expression = 2;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.LightIdleDialogue.Eridani.1", Player.name); //This everlasting light is dreadful...
                         //	" ";
                     }
@@ -1107,7 +1107,7 @@ namespace StarsAbove
             }//A world shrouded in Light
             if (chosenDialogue == 22) // The first time visiting the Observatory
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -1128,13 +1128,13 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 4)
                     {
-                        expression = 6;
+                        expression = 5;
                         //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Here, we can search the universe for heavy concentrations of mana, which is usually a bad sign. Think of it like clouds before a storm.
                         //	" ";
                     }
                     if (dialogueLeft == 3)
                     {
-                        expression = 6;
+                        expression = 5;
                         //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Enough about us. You're probably wondering what YOU can do in the Observatory, right? Let me tell you. 
                         //	" ";
                     }
@@ -1151,7 +1151,7 @@ namespace StarsAbove
                         //	" ";
                     }
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -1172,13 +1172,13 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 4)
                     {
-                        expression = 6;
+                        expression = 5;
                         //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Here, we can search the universe for heavy concentrations of mana, which is kind of like an omen for trouble. It works out more than you'd think.
                         //	" ";
                     }
                     if (dialogueLeft == 3)
                     {
-                        expression = 4;
+                        expression = 3;
                         //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //You're probably wondering about what you can use this Observatory for, right? Let's see...
                         //	" ";
                     }
@@ -1200,7 +1200,7 @@ namespace StarsAbove
             }//Observatory Hyperborea (First visit) 1
             if (chosenDialogue == 23) //Idle dialogue within the Observatory Hyperborea
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -1215,12 +1215,12 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 4;
+                        expression = 3;
                         //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Wait, did you seriously think we didn't have to eat? That would be awful.    
                         //	" ";
                     }
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -1245,7 +1245,7 @@ namespace StarsAbove
             }//Observatory Hyperborea (Idle) 2
             if (chosenDialogue == 24) //Explaining Cosmic Voyages
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -1266,7 +1266,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 4)
                     {
-                        expression = 4;
+                        expression = 3;
                         //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //You have to use the Bifrost at the Gateway to return to the Observatory. Take care that  you don't get stuck, because.. Self-explanatory. How about keeping a Magic Mirror handy?
                         //	" ";
                     }
@@ -1289,7 +1289,7 @@ namespace StarsAbove
                         //	" ";
                     }
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -1338,7 +1338,7 @@ namespace StarsAbove
             }//Explaining Cosmic Voyages (Unused)
             if (chosenDialogue == 25) // The Sea of Stars
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -1347,18 +1347,18 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 4;
+                        expression = 3;
                         //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //You're wondering how you can breathe? Simple. The Bifrost is protecting you!
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 6;
+                        expression = 5;
                        // dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //It draws ambient mana from nearby planets to sustain bodily functions. You can't tell me that doesn't sound neat- just don't fall too far from solid ground.
                         //	" ";
                     }
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -1367,7 +1367,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 4;
+                        expression = 3;
                         //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Eh? You're wondering how you can breathe? Ah, that would be the Bifrost you used to reach the Observatory. Right.. I should've probably explained that.
                         //	" ";
                     }
@@ -1387,7 +1387,7 @@ namespace StarsAbove
             //Boss dialogue
             if (chosenDialogue == 51) // Boss dialogue - Slime King
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -1408,13 +1408,13 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 4;
+                        expression = 3;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.KingSlime.Asphodene.3", Player.name); //Did anyone else see that ninja thing? Was it just me?
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 6;
+                        expression = 5;
                         if (Main.expertMode == true)
                         {
                             dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.KingSlime.Asphodene.4", Player.name); //Somehow.. it was strong enough to unlock a part of the Stellar Array! Check it out later, OK?
@@ -1426,7 +1426,7 @@ namespace StarsAbove
                         //	" ";
                     }
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -1449,7 +1449,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 6;
+                        expression = 5;
                         if (Main.expertMode == true)
                         {
                             dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.KingSlime.Eridani.3", Player.name); //Something about this foe has unlocked a part of the Stellar Array. Perhaps it was fiercer than usual?
@@ -1466,7 +1466,7 @@ namespace StarsAbove
             }//Slime King 1
             if (chosenDialogue == 52) // Boss dialogue - Eye of Cthulu
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -1475,18 +1475,18 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 5)
                     {
-                        expression = 4;
+                        expression = 3;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.CthulhuEye.Asphodene.1", Player.name); //'Eye of Cthulhu'? 
                     }
                     if (dialogueLeft == 4)
                     {
-                        expression = 4;
+                        expression = 3;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.CthulhuEye.Asphodene.2", Player.name); //Doesn't that imply there would be more of this 'Cthulhu'?
                         //	" ";
                     }
                     if (dialogueLeft == 3)
                     {
-                        expression = 4;
+                        expression = 3;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.CthulhuEye.Asphodene.3", Player.name); //If it ever reared its head, it would be quite the formidable foe indeed.
                         //	" ";
                     }
@@ -1503,7 +1503,7 @@ namespace StarsAbove
                         //	" ";
                     }
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -1540,7 +1540,7 @@ namespace StarsAbove
             }//Eye of Cthulhu 2
             if (chosenDialogue == 53) // Boss dialogue - Eater of Worlds or Brain of Cthulhu
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -1570,7 +1570,7 @@ namespace StarsAbove
                         }
                         else
                         {
-                            expression = 3;
+                            expression = 4;
                             dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.CorruptionBoss.Asphodene.4", Player.name); //Hey, the weapons that you can make from it look pretty powerful! What do you think?
                         }
 
@@ -1587,7 +1587,7 @@ namespace StarsAbove
                         //	" ";
                     }
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -1623,7 +1623,7 @@ namespace StarsAbove
             }//Brain of Cthulhu / Eater of Worlds 3
             if (chosenDialogue == 54) // Boss dialogue - Queen Bee
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -1647,7 +1647,7 @@ namespace StarsAbove
                         //	" ";
                     }
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -1656,7 +1656,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 5;
+                        expression = 2;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.QueenBee.Eridani.1", Player.name); //Seriously? A giant bee... Somehow, I might prefer it over smaller insects... Easier to hit, you know.
 
@@ -1678,7 +1678,7 @@ namespace StarsAbove
             }//Queen Bee 4 
             if (chosenDialogue == 55) // Boss dialogue - Skeletron
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -1705,14 +1705,14 @@ namespace StarsAbove
                     if (dialogueLeft == 1)
                     {
 
-                        expression = 4;
+                        expression = 3;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Skeletron.Asphodene.3", Player.name); //Well, that's all for now.
 
 
                         //	" ";
                     }
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -1721,7 +1721,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 3)
                     {
-                        expression = 5;
+                        expression = 2;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Skeletron.Eridani.1", Player.name); //That poor Clothier, cursed to become Skeletron. It seems his defeat has granted us access to the Dungeon. This may be in bad taste, but...
 
@@ -1731,7 +1731,7 @@ namespace StarsAbove
                     {
 
 
-                        expression = 3;
+                        expression = 4;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Skeletron.Eridani.2", Player.name); //If the embodiment of your emotions is a huge monster... maybe, just maybe, the curse wasn't the sole factor.
 
 
@@ -1753,7 +1753,7 @@ namespace StarsAbove
             }//Skeletron 5 
             if (chosenDialogue == 56) // Boss dialogue - Wall of Flesh
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -1770,7 +1770,7 @@ namespace StarsAbove
                     if (dialogueLeft == 3)
                     {
 
-                        expression = 4;
+                        expression = 3;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WallOfFlesh.Asphodene.2", Player.name); //It looks like the Wall of Flesh was either guarding or preventing something drastic from happening. That's my take on it.
 
 
@@ -1796,7 +1796,7 @@ namespace StarsAbove
                     }
                 }
 
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -1805,7 +1805,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 4)
                     {
-                        expression = 4;
+                        expression = 3;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WallOfFlesh.Eridani.1", Player.name); //Wow.. the world itself seems to have been drastically altered after the defeat of the Wall of Flesh...
 
@@ -1847,7 +1847,7 @@ namespace StarsAbove
             }//Wall of Flesh 6
             if (chosenDialogue == 58) // Boss dialogue - The Twins
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -1864,7 +1864,7 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
 
-                        expression = 4;
+                        expression = 3;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Twins.Asphodene.2", Player.name); //If you're going to make a robot eye, try and hide the obvious weak spot where the iris is. Well, I don't create giant evil robotic eyes, so maybe they know something..?
 
 
@@ -1886,7 +1886,7 @@ namespace StarsAbove
                     }
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -1895,9 +1895,9 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 3)
                     {
-                        expression = 4;
+                        expression = 3;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Twins.Eridani.1", Player.name); //Well, those mechanical facsimiles are dead. We're not rating boss monsters, or anything, but... I'm going to have to dock some points.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Twins.Eridani.1", Player.name); //Well, those mechanical facsimiles are 6. We're not rating boss monsters, or anything, but... I'm going to have to dock some points.
 
                         //	" ";
                     }
@@ -1932,7 +1932,7 @@ namespace StarsAbove
             }//The Twins 7
             if (chosenDialogue == 57) // Boss dialogue - The Destroyer
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -1949,7 +1949,7 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
 
-                        expression = 4;
+                        expression = 3;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Destroyer.Asphodene.2", Player.name); //Its absurd length was just a detriment to its strength. I hope whoever makes these things is taking note.
 
 
@@ -1971,7 +1971,7 @@ namespace StarsAbove
                     }
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -2017,7 +2017,7 @@ namespace StarsAbove
             }//Destroyer 8
             if (chosenDialogue == 59) // Boss dialogue - Skeletron Prime
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -2034,7 +2034,7 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
 
-                        expression = 4;
+                        expression = 3;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.SkeletronPrime.Asphodene.2", Player.name); //The appendages were a smart idea, but it still lacked a proper body. A shame.
 
 
@@ -2056,7 +2056,7 @@ namespace StarsAbove
                     }
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -2065,7 +2065,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 3)
                     {
-                        expression = 6;
+                        expression = 5;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.SkeletronPrime.Eridani.1", Player.name); //And that takes care of Skeletron Prime. It certainly looked the part... if you're a total edgelord.
 
@@ -2075,7 +2075,7 @@ namespace StarsAbove
                     {
 
 
-                        expression = 4;
+                        expression = 3;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.SkeletronPrime.Eridani.2", Player.name); //If you took offense, I apologize. You can be as edgy as you want. Uh, I mean.. anyways... 
 
 
@@ -2102,7 +2102,7 @@ namespace StarsAbove
             }//Skeletron Prime 9
             if (chosenDialogue == 60) // Boss dialogue - All Mechanical Bosses Defeated
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -2111,7 +2111,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.AllMechs.Asphodene.1", Player.name); //Actually.. It looks like you've bested all the Mechanical Bosses! This is definitely a step forward.
 
                         //	" ";
@@ -2128,7 +2128,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -2137,7 +2137,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 6;
+                        expression = 5;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.AllMechs.Eridani.1", Player.name); //It seems that was the last of the Mechanical Bosses. This is a great step forward! 
 
@@ -2160,7 +2160,7 @@ namespace StarsAbove
             }//All Mechanical Bosses defeated 10
             if (chosenDialogue == 61) // Boss dialogue - Plantera
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -2169,7 +2169,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 3)
                     {
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Plantera.Asphodene.1", Player.name); //And there it goes.. the terror of the jungle, Plantera. Congratulations on your victory. 
 
                         //	" ";
@@ -2192,7 +2192,7 @@ namespace StarsAbove
                     }
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -2201,7 +2201,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 3)
                     {
-                        expression = 6;
+                        expression = 5;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Plantera.Eridani.1", Player.name); //That marks the end of Plantera. Very good work. You should be able to access the Jungle Temple now.
                         //	" ";
@@ -2223,7 +2223,7 @@ namespace StarsAbove
             }//Plantera 11
             if (chosenDialogue == 62) // Boss dialogue - Golem
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -2232,7 +2232,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 3)
                     {
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Golem.Asphodene.1", Player.name); //You've done it! Golem is no more. You're unstoppable.  
 
                         //	" ";
@@ -2250,7 +2250,7 @@ namespace StarsAbove
 
                         if (Main.expertMode)
                         {
-                            expression = 6;
+                            expression = 5;
                             dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Golem.Asphodene.3", Player.name); //Another upgrade is now available in the Stellar Array. Looks pretty strong.
                         }
                         else
@@ -2263,7 +2263,7 @@ namespace StarsAbove
                     }
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -2272,9 +2272,9 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 3)
                     {
-                        expression = 6;
+                        expression = 5;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Golem.Eridani.1", Player.name); //The Lizhard Temple's beast Golem is confirmed dead.  In terms of mechanical beasts, I'm kind of.. disappointed? 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Golem.Eridani.1", Player.name); //The Lizhard Temple's beast Golem is confirmed 6.  In terms of mechanical beasts, I'm kind of.. disappointed? 
 
                         //	" ";
                     }
@@ -2295,7 +2295,7 @@ namespace StarsAbove
 
                         if (Main.expertMode)
                         {
-                            expression = 6;
+                            expression = 5;
                             dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Golem.Eridani.3", Player.name); //Another upgrade is now available in the Stellar Array. It will surely be useful.
                         }
                         else
@@ -2310,7 +2310,7 @@ namespace StarsAbove
             }//Golem 12
             if (chosenDialogue == 63) // Boss dialogue - Duke Fishron
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -2336,7 +2336,7 @@ namespace StarsAbove
                     }
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -2345,7 +2345,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 6;
+                        expression = 5;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.DukeFishron.Eridani.1", Player.name); //Duke Fishron has been defeated. That was a close one, but you've o-fish-ally won. ...
 
@@ -2367,7 +2367,7 @@ namespace StarsAbove
             }//Duke Fishron 13
             if (chosenDialogue == 64) // Boss dialogue - Lunatic Cultist
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -2376,7 +2376,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 3)
                     {
-                        expression = 5;
+                        expression = 2;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Cultist.Asphodene.1", Player.name); //It is as I feared... The Celestial Pillars have appeared upon this land. They herald the coming of the end.. The Moon Lord.
 
                         //	" ";
@@ -2394,7 +2394,7 @@ namespace StarsAbove
 
                         if (Main.expertMode)
                         {
-                            expression = 6;
+                            expression = 5;
                             dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Cultist.Asphodene.3", Player.name); //At the very least, you have another ability ready in the Stellar Array. It will definitely help.
                         }
                         else
@@ -2408,7 +2408,7 @@ namespace StarsAbove
                     }
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -2417,7 +2417,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 3)
                     {
-                        expression = 5;
+                        expression = 2;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Cultist.Eridani.1", Player.name); //I knew it.. the Celestial Pillars have descended. This does not bode well for this world.
 
@@ -2455,7 +2455,7 @@ namespace StarsAbove
             }//Lunatic Cultist 14
             if (chosenDialogue == 65) // Boss dialogue - Moon Lord
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -2464,7 +2464,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 4)
                     {
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.MoonLord.Asphodene.1", Player.name); //{Player.name}! You've done it! The Moon Lord.. has been vanquished! You have done this world a great service. 
 
                         //	" ";
@@ -2480,7 +2480,7 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
 
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.MoonLord.Asphodene.3", Player.name); //The defeat of the Moon Lord has upgraded your Stellar Array twice! Such power...
 
 
@@ -2496,7 +2496,7 @@ namespace StarsAbove
                     }
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -2505,7 +2505,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 4)
                     {
-                        expression = 6;
+                        expression = 5;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.MoonLord.Eridani.1", Player.name); //The Moon Lord has been defeated.. What a wonderful victory. 
 
@@ -2516,7 +2516,7 @@ namespace StarsAbove
 
 
 
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.MoonLord.Eridani.2", Player.name); //You have grown incredibly strong.. This world owes you for its survival. And yet.. I feel something is off.
 
 
@@ -2543,7 +2543,7 @@ namespace StarsAbove
             }//Moon Lord 15 
             if (chosenDialogue == 66) // Boss dialogue - Warrior of Light
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -2553,7 +2553,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 6)
                     {
-                        expression = 5;
+                        expression = 2;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WarriorOfLight.Asphodene.1", Player.name); //I see we were wrong.. The Warrior thought he was saving the universe, but it was truly the lies of the First Starfarer.. How cruel.
 
                         //	" ";
@@ -2567,7 +2567,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 4)
                     {
-                        expression = 4;
+                        expression = 3;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WarriorOfLight.Asphodene.3", Player.name); //We finally have the last piece of the puzzle. The First Starfarer showed her hand, and this means we have a chance.
 
                         //	" ";
@@ -2577,7 +2577,7 @@ namespace StarsAbove
 
 
 
-                        expression = 2;
+                        expression = 1;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WarriorOfLight.Asphodene.4", Player.name); //Once you've collected all the Mnemonic Traces, use it within the Observatory. It will take us straight to the First Starfarer.
 
 
@@ -2588,7 +2588,7 @@ namespace StarsAbove
 
 
 
-                        expression = 2;
+                        expression = 1;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WarriorOfLight.Asphodene.5", Player.name); //I probably don't need to tell you this, but she's not going to parley. Prepare for a hard fight.. Perhaps the hardest fight so far.
 
 
@@ -2608,7 +2608,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -2618,7 +2618,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 6)
                     {
-                        expression = 6;
+                        expression = 5;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WarriorOfLight.Eridani.1", Player.name); //You have brought down the Warrior of Light. He's managed to escape, but nighttime has returned to this world regardless.
 
@@ -2629,7 +2629,7 @@ namespace StarsAbove
 
 
 
-                        expression = 5;
+                        expression = 2;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WarriorOfLight.Eridani.2", Player.name); //It seems we were misguided. The Warrior believed he was saving the universe, but it was, in truth, all lies from his Starfarer.
 
 
@@ -2673,7 +2673,7 @@ namespace StarsAbove
 
 
 
-                        expression = 2;
+                        expression = 1;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WarriorOfLight.Eridani.6", Player.name); //Remember: the First Starfarer. We can not let this opportunity slip away. This will likely be the fight of our lives.. Prepare yourself well.
 
 
@@ -2683,7 +2683,7 @@ namespace StarsAbove
             }//Warrior of Light 16
             if (chosenDialogue == 67) // Boss dialogue - All Vanilla Bosses Defeated
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -2722,7 +2722,7 @@ namespace StarsAbove
                     }
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -2732,7 +2732,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 4)
                     {
-                        expression = 6;
+                        expression = 5;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.AllVanillaBosses.Eridani.1", Player.name); //The enemies of this world shudder when they feel your presence.. You are the hero of this land.
 
@@ -2743,7 +2743,7 @@ namespace StarsAbove
 
 
 
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.AllVanillaBosses.Eridani.2", Player.name); //I'm proud. You have become  stronger than I would have ever imagined..
 
 
@@ -2775,7 +2775,7 @@ namespace StarsAbove
             }//All Vanilla Bosses 17
             if (chosenDialogue == 68) // Boss dialogue - Everything Defeated in Expert Mode
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -2795,7 +2795,7 @@ namespace StarsAbove
 
 
 
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.VanillaAndWarrior.Asphodene.2", Player.name); //Don't worry. I'm not going anywhere yet. Who knows what might crop up? $4
 
 
@@ -2806,7 +2806,7 @@ namespace StarsAbove
 
 
 
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.VanillaAndWarrior.Asphodene.3", Player.name); //I have an Essence for you... It is the strongest Essence I have. Be sure to treat the finished product with care.
 
 
@@ -2817,7 +2817,7 @@ namespace StarsAbove
 
 
 
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.VanillaAndWarrior.Asphodene.4", Player.name); //Your overwhelming power has activated the final ability within the Stellar Array. It's done.. finally!
 
 
@@ -2825,7 +2825,7 @@ namespace StarsAbove
                     }
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -2835,7 +2835,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 4)
                     {
-                        expression = 6;
+                        expression = 5;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.VanillaAndWarrior.Eridani.1", Player.name); //You've done it, {Player.name}. Seriously.. I can't believe it. Everything threatening this world has been bested by your hand.
 
@@ -2846,7 +2846,7 @@ namespace StarsAbove
 
 
 
-                        expression = 5;
+                        expression = 2;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.VanillaAndWarrior.Eridani.2", Player.name); //I'll stay for now, though. Just in case anything else appears, though. It's not like I'd miss you or anything.
 
 
@@ -2868,7 +2868,7 @@ namespace StarsAbove
 
 
 
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.VanillaAndWarrior.Eridani.4", Player.name); //Lastly... This Essence that I have given you.. It is the strongest weapon I know. Good luck creating it, {Player.name}.
 
 
@@ -2878,7 +2878,7 @@ namespace StarsAbove
             }//Everything Vanilla + WoL 18
             if (chosenDialogue == 69) // Boss dialogue - Vagrant of Space and Time
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -2909,7 +2909,7 @@ namespace StarsAbove
 
 
 
-                        expression = 4;
+                        expression = 3;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Dioskouroi.Asphodene.3", Player.name); //As for why he told US to fight, I don't know. However.. I found this shard of power after the battle. I'll let you hold on to it. Anyways..
 
 
@@ -2929,7 +2929,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -2983,7 +2983,7 @@ namespace StarsAbove
             }//Vagrant 19 Unused
             if (chosenDialogue == 70) // Boss dialogue - Nalhaun
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -3034,7 +3034,7 @@ namespace StarsAbove
                    
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -3088,7 +3088,7 @@ namespace StarsAbove
             }//Nalhaun 20
             if (chosenDialogue == 71) // Boss dialogue - Penthesilea
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -3127,7 +3127,7 @@ namespace StarsAbove
                     }
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -3170,7 +3170,7 @@ namespace StarsAbove
             }//Penthesilea 21
             if (chosenDialogue == 72) // Boss dialogue - Arbitration
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -3209,7 +3209,7 @@ namespace StarsAbove
                     }
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -3252,7 +3252,7 @@ namespace StarsAbove
             }//Arbitration 22
             if (chosenDialogue == 73) // Boss dialogue - Tsukiyomi 23
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -3304,7 +3304,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -3346,7 +3346,7 @@ namespace StarsAbove
 
 
 
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Tsukiyomi.Eridani.4", Player.name); //The universe is safe. There is still work to do, but take heart; if we've come this far, nothing can stop us now.
 
 
@@ -3357,7 +3357,7 @@ namespace StarsAbove
             }//Tsukiyomi 23
             if (chosenDialogue == 74) // Boss dialogue - Queen Slime
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -3366,7 +3366,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 3)
                     {
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.QueenSlime.Asphodene.1", Player.name); //That's that. Queen Slime is defeated. What have we learned today? Apparently there's a royal court of slimes, and the King Slime wasn't just an outlier. 
 
                         //	" ";
@@ -3389,7 +3389,7 @@ namespace StarsAbove
                     }
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -3431,7 +3431,7 @@ namespace StarsAbove
 
 
 
-                        expression = 2;
+                        expression = 1;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.QueenSlime.Eridani.4", Player.name); //Fight back, oppressed slimes! Take back your freedom!
 
 
@@ -3441,7 +3441,7 @@ namespace StarsAbove
             }//Queen Slime 24
             if (chosenDialogue == 75) // Boss dialogue - Empress of Light
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -3466,7 +3466,7 @@ namespace StarsAbove
                    
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -3486,7 +3486,7 @@ namespace StarsAbove
 
 
 
-                        expression = 5;
+                        expression = 2;
                         if(NPC.downedFishron)
                         {
                             dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.EmpressOfLight.Eridani.2", Player.name); //If I had a nickel for bosses summoned with insects... We fought that rather large fish, right? That's two. Not very much, is it. I was hoping for a trend. 
@@ -3510,7 +3510,7 @@ namespace StarsAbove
             }//Empress of Light 25
             if (chosenDialogue == 76) // Boss dialogue - Deerclops
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -3528,14 +3528,14 @@ namespace StarsAbove
                     {
 
 
-                        expression = 3;
+                        expression = 4;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Deerclops.Asphodene.2", Player.name); //I'm getting rather hungry- how about we go find something to eat so that we don't starve...? Pfft. 
 
                     }
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -3572,7 +3572,7 @@ namespace StarsAbove
 
             if (chosenDialogue == 201) // Boss dialogue - Desert Scourge
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -3599,7 +3599,7 @@ namespace StarsAbove
                     }
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -3634,7 +3634,7 @@ namespace StarsAbove
             }//Desert Scourge 24
             if (chosenDialogue == 202) // Boss dialogue - Crabulon
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {//                                                                  | Safe dialogue limit.
                     if (dialoguePrep == true)
                     {
@@ -3643,25 +3643,25 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 3)
                     {
-                        expression = 5;
+                        expression = 2;
                         dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Crabulon.Asphodene.1", Player.name); //Okay.. so that just happened. Now that I've got a better look at the corpse of this mushroom crab thing, the truth is revealed- and it's not pretty.
                         //	" ";
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 2;
+                        expression = 1;
                         dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Crabulon.Asphodene.2", Player.name); //It looks like the fungus have reanimated the crab's corpse, and paraded it around like a marionette. That's.. disgusting.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 4;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Crabulon.Asphodene.3", Player.name); //Whatever. No need to dawdle on that not-so-fun-fact. It's dead! Good job on that, by the way.
+                        expression = 3;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Crabulon.Asphodene.3", Player.name); //Whatever. No need to dawdle on that not-so-fun-fact. It's 6! Good job on that, by the way.
                         //	" ";
                     }
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {//                                                              |
                     if (dialoguePrep == true)
                     {
@@ -3679,13 +3679,13 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 5;
+                        expression = 2;
                         dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Crabulon.Eridani.2", Player.name); //However... the reality is much more sinister. It looks to me as if parasitic mushrooms were using this giant crab as a host to feed themselves more efficiently.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 2;
+                        expression = 1;
                         dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Crabulon.Eridani.3", Player.name); //Now that I'm reflecting on it, I feel sick. Thanks for putting an end to it.
 
                         //	" ";
@@ -3696,7 +3696,7 @@ namespace StarsAbove
             }//Crabulon 25 
             if (chosenDialogue == 203) // Boss dialogue - Hive Mind
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {//                                                                  | Safe dialogue limit.
                     if (dialoguePrep == true)
                     {
@@ -3719,7 +3719,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {//                                                              |
                     if (dialoguePrep == true)
                     {
@@ -3748,7 +3748,7 @@ namespace StarsAbove
             }//Hive Mind 26
             if (chosenDialogue == 204) // Boss dialogue - Perforators
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {//                                                                  | Safe dialogue limit.
                     if (dialoguePrep == true)
                     {
@@ -3763,7 +3763,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Perforators.Asphodene.2", Player.name); //It hungered for pure soil, no doubt wanting to spread the world's evil further. Of course, it isn't doing any of that anymore.
 
                         //	" ";
@@ -3771,7 +3771,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {//                                                              |
                     if (dialoguePrep == true)
                     {
@@ -3789,7 +3789,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 5;
+                        expression = 2;
                         dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Perforators.Eridani.2", Player.name); //Well, everything living is made of flesh. Ugh, you know what I mean...
                         //	" ";
                     }
@@ -3800,7 +3800,7 @@ namespace StarsAbove
             }//Perforators 27
             if (chosenDialogue == 205) // Boss dialogue - The Slime God
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {//                                                                  | Safe dialogue limit.
                     if (dialoguePrep == true)
                     {
@@ -3815,21 +3815,21 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 3)
                     {
-                        expression = 5;
+                        expression = 2;
                         dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.SlimeGod.Asphodene.2", Player.name); //I'm glad we've defeated it, but I seriously doubt this defeat means the end of all slimes. Sadly, there's just.. so many of them. 
 
                         //	" ";
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 3;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.SlimeGod.Asphodene.3", Player.name); //Wait a second.. Why am I worried? They explode in like three seconds! I mean, if we keep killing them, they'll go extinct!
+                        expression = 4;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.SlimeGod.Asphodene.3", Player.name); //Wait a second.. Why am I 2? They explode in like three seconds! I mean, if we keep killing them, they'll go extinct!
 
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 7;
+                        expression = 6;
                         dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.SlimeGod.Asphodene.4", Player.name); //In a few centuries or so... Ugh.  
 
                         //	" ";
@@ -3837,7 +3837,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {//                                                              |
                     if (dialoguePrep == true)
                     {
@@ -3855,13 +3855,13 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 5;
+                        expression = 2;
                         dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.SlimeGod.Eridani.2", Player.name); //I'm pretty sure they can split to make more. ...I'm no expert on the etymology of slimes or anything.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.SlimeGod.Eridani.3", Player.name); //It couldn't be a bad way to pass the time, though. Maybe I'll do some light reading. 
                         //	" ";
                     }
@@ -3873,7 +3873,7 @@ namespace StarsAbove
              //Calamity boss dialogue (Hardmode)
             if (chosenDialogue == 206) // Boss dialogue - Cryogen
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {//                                                                  | Safe dialogue limit.
                     if (dialoguePrep == true)
                     {
@@ -3904,7 +3904,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {//                                                              |
                     if (dialoguePrep == true)
                     {
@@ -3928,7 +3928,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 2;
+                        expression = 1;
                         dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Cryogen.Eridani.3", Player.name); //We must endeavor to unravel more of this story. I trust you're in agreement. 
                         //	" ";
                     }
@@ -3939,7 +3939,7 @@ namespace StarsAbove
             }//Cryogen 29
             if (chosenDialogue == 207) // Boss dialogue - Aquatic Scourge
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {//                                                                  | Safe dialogue limit.
                     if (dialoguePrep == true)
                     {
@@ -3957,7 +3957,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 2;
+                        expression = 1;
                         dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AquaticScourge.Asphodene.2", Player.name); //The Sea King told us of what transpired. Yharim's forces are powerful indeed.. We have to stop their rampant evil! 
 
                         //	" ";
@@ -3967,7 +3967,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {//                                                              |
                     if (dialoguePrep == true)
                     {
@@ -3985,7 +3985,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 2;
+                        expression = 1;
                         dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AquaticScourge.Eridani.2", Player.name); //From what the Sea King tells us, that was another one of Yharim's doings. They bring destruction wherever they roam... We must put an end to them.
                         //	" ";
                     }
@@ -3997,7 +3997,7 @@ namespace StarsAbove
             }//Aquatic Scourge 30
             if (chosenDialogue == 208) // Boss dialogue - Brimstone Elemental
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {//                                                                  | Safe dialogue limit.
                     if (dialoguePrep == true)
                     {
@@ -4015,7 +4015,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 2;
+                        expression = 1;
                         dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.BrimstoneElemental.Asphodene.2", Player.name); //I say we confront her sooner, than later. She must be incredibly powerful, but.. We have to do something, at least. 
 
                         //	" ";
@@ -4025,7 +4025,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {//                                                              |
                     if (dialoguePrep == true)
                     {
@@ -4043,7 +4043,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 2;
+                        expression = 1;
                         dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.BrimstoneElemental.Eridani.2", Player.name); //If what we know is correct, Calamitas was the eventual end of the brimstone kingdom. While I want to put an end to her rampages, we must become stronger first.
                         //	" ";
                     }
@@ -4055,7 +4055,7 @@ namespace StarsAbove
             }//Brimstone Elemental 31
             if (chosenDialogue == 209) // Boss dialogue - Calamitas
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {//                                                                  | Safe dialogue limit.
                     if (dialoguePrep == true)
                     {
@@ -4073,7 +4073,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 2;
+                        expression = 1;
                         dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Calamitas.Asphodene.2", Player.name); //We must endeavor to get stronger. We have to! With things like this roaming the world, who else can stop them..? 
 
                         //	" ";
@@ -4083,7 +4083,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {//                                                              |
                     if (dialoguePrep == true)
                     {
@@ -4095,13 +4095,13 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 5;
+                        expression = 2;
                         dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Calamitas.Eridani.1", Player.name); //We've defeated Calamitas... but.. It was naught but a clone of the real foe. Even as a duplicate, it stood as one of our toughest challenges yet.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 2;
+                        expression = 1;
                         dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Calamitas.Eridani.2", Player.name); //Who knows what the real thing can do.. We have to become stronger.  
                         //	" ";
                     }
@@ -4113,7 +4113,7 @@ namespace StarsAbove
             }//Calamitas 32
             if (chosenDialogue == 210) // Boss dialogue - Leviathan
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {//                                                                  | Safe dialogue limit.
                     if (dialoguePrep == true)
                     {
@@ -4131,7 +4131,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Leviathan.Asphodene.2", Player.name); //Hopefully, what we've obtained from their remains shall help us in the future. Man, we're on a roll! 
 
                         //	" ";
@@ -4141,7 +4141,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {//                                                              |
                     if (dialoguePrep == true)
                     {
@@ -4159,7 +4159,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 3;
+                        expression = 4;
                         dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Leviathan.Eridani.2", Player.name); //I'll try not to doubt you in the future. After all, you've got my help.  
                         //	" ";
                     }
@@ -4176,7 +4176,7 @@ namespace StarsAbove
             }//Leviathan 33
             if (chosenDialogue == 211) // Boss dialogue - Astrum Aureus
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {//                                                                  | Safe dialogue limit.
                     if (dialoguePrep == true)
                     {
@@ -4204,7 +4204,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {//                                                              |
                     if (dialoguePrep == true)
                     {
@@ -4217,12 +4217,12 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumAureus.Eridani.1", Player.name); //That's that. Astrum Aureus is dead. Even as the Astral Infection made a perversion of the original, it beat with a heart of iron still.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumAureus.Eridani.1", Player.name); //That's that. Astrum Aureus is 6. Even as the Astral Infection made a perversion of the original, it beat with a heart of iron still.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 5;
+                        expression = 2;
                         dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumAureus.Eridani.2", Player.name); //The Astral Infection... It's dangerous. At least we've made some good progress, though. Don't forget that. 
                         //	" ";
                     }
@@ -4234,7 +4234,7 @@ namespace StarsAbove
             }//Astrum Aureus 34
             if (chosenDialogue == 212) // Boss dialogue - Plaguebringer Goliath
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {//                                                                  | Safe dialogue limit.
                     if (dialoguePrep == true)
                     {
@@ -4262,7 +4262,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {//                                                              |
                     if (dialoguePrep == true)
                     {
@@ -4275,18 +4275,18 @@ namespace StarsAbove
                     if (dialogueLeft == 3)
                     {
                         expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.PlaguebringerGoliath.Eridani.1", Player.name); //Seriously.. what's with the Jungle? At least the Plaguebringer Goliath is dead. Even so, I can't shake it out of my mind. I can't handle bugs, like.. at all.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.PlaguebringerGoliath.Eridani.1", Player.name); //Seriously.. what's with the Jungle? At least the Plaguebringer Goliath is 6. Even so, I can't shake it out of my mind. I can't handle bugs, like.. at all.
                         //	" ";
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 5;
+                        expression = 2;
                         dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.PlaguebringerGoliath.Eridani.2", Player.name); //Bugs, bugs..  They continue to rear their ugly heads wherever I look..! 
                         //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 5;
+                        expression = 2;
                         dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.PlaguebringerGoliath.Eridani.3", Player.name); //Whoops.. I was venting a little. Let's just move on. Good job defeating that foe. 
                         //	" ";
                     }
@@ -4298,7 +4298,7 @@ namespace StarsAbove
             }//Plaguebringer Goliath 35
             if (chosenDialogue == 213) // Boss dialogue - Ravager
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {//                                                                  | Safe dialogue limit.
                     if (dialoguePrep == true)
                     {
@@ -4326,7 +4326,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {//                                                              |
                     if (dialoguePrep == true)
                     {
@@ -4360,7 +4360,7 @@ namespace StarsAbove
             }//Ravager 36
             if (chosenDialogue == 214) // Boss dialogue - Astrum Deus
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
                 {//                                                                  | Safe dialogue limit.
                     if (dialoguePrep == true)
                     {
@@ -4385,7 +4385,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 4;
+                        expression = 3;
                         dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumDeus.Asphodene.3", Player.name); //Let's return to what I said earlier. Astrum Deus was a GOD. What we fought was much weaker. What in the world was able to defeat a deity of that caliber?
 
                         //	" ";
@@ -4400,7 +4400,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {//                                                              |
                     if (dialoguePrep == true)
                     {
@@ -4424,7 +4424,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 5;
+                        expression = 2;
                         dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumDeus.Eridani.3", Player.name); //So, that begs the question.. What could be walking this mortal plane able to befall an actual, literal god? What we fought was but a child in comparison.
                         //	" ";
                     }
@@ -4446,7 +4446,7 @@ namespace StarsAbove
             //Weapon conversations...........................................................................................................
             if (chosenDialogue == 101) // Death in Four Acts // Der Freischutz
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -4464,7 +4464,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.2", Player.name); //Good luck with that one!
 
                         //	" ";
@@ -4473,7 +4473,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -4497,7 +4497,7 @@ namespace StarsAbove
             }//Death In Four Acts / Der Freischutz 1
             if (chosenDialogue == 102) // Persephone / Kazimierz Seraphim
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -4526,7 +4526,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -4547,7 +4547,7 @@ namespace StarsAbove
                     {
 
 
-                        expression = 3;
+                        expression = 4;
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.3", Player.name); //I'm telling you to try it out.
 
 
@@ -4557,7 +4557,7 @@ namespace StarsAbove
                     {
 
 
-                        expression = 4;
+                        expression = 3;
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.4", Player.name); //You knew that? Never mind then.
 
 
@@ -4569,7 +4569,7 @@ namespace StarsAbove
             }//Persephone / Kazimierz Seraphim 2
             if (chosenDialogue == 103) // Skofnung / Inugami Ripsaw
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -4598,7 +4598,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -4608,7 +4608,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 3;
+                        expression = 4;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.5", Player.name); //I have quite the unique Essence for you. It looks to be a chainsaw imbued with the strength of a dog god.. Or so it seems.
 
@@ -4631,7 +4631,7 @@ namespace StarsAbove
             }//Skofnung / Inugami Ripsaw 3
             if (chosenDialogue == 104) // Aegis Driver / Rad Gun
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -4651,7 +4651,7 @@ namespace StarsAbove
                     if (dialogueLeft == 1)
                     {
 
-                        expression = 3;
+                        expression = 4;
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.8", Player.name); //I trust you'll know what to do.
 
 
@@ -4660,7 +4660,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -4693,7 +4693,7 @@ namespace StarsAbove
             }//Aegis Driver / Rad Gun 4 
             if (chosenDialogue == 105) // Karlan Truesilver / Every Moment Matters
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -4722,7 +4722,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -4746,7 +4746,7 @@ namespace StarsAbove
             }//Karlan Truesilver / Every Moment Matters 5
             if (chosenDialogue == 106) // Veneration of Butterflies / Memento Muse
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -4757,7 +4757,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.11", Player.name); //This Essence is a personal creation of mine! It creates a Magic weapon that lets you enter the 'Butterfly Trance' and gain special bonuses!
 
                         //	" ";
@@ -4775,7 +4775,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -4807,7 +4807,7 @@ namespace StarsAbove
             }//Veneration of Butterflies / Memento Muse 6
             if (chosenDialogue == 107) // Ride The Bull / Drachenlance
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -4818,7 +4818,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.13", Player.name); //This Essence creates a Ranged gun that perpetuates itself after killing foes! Feel the heat!!
 
                         //	" ";
@@ -4836,7 +4836,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -4868,7 +4868,7 @@ namespace StarsAbove
             }//Ride the Bull / Drachenlance 7
             if (chosenDialogue == 108) // Crimson Outbreak / Voice Of The Fallen
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -4879,7 +4879,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.15", Player.name); //This Essence is a Ranged weapon that defeats foes with a swarm of powerful nanites. Truly fearful.
 
                         //	" ";
@@ -4897,7 +4897,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -4929,7 +4929,7 @@ namespace StarsAbove
             }//Crimson Outbreak / Voice Of The Fallen 8
             if (chosenDialogue == 109) // Plenilune Gaze / Tartaglia
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -4940,7 +4940,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.17", Player.name); //This Essence is another Ranged weapon that allows for powerful charged attacks. Fully charged, it splits and hits multiple foes!
 
                         //	" ";
@@ -4958,7 +4958,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -4983,7 +4983,7 @@ namespace StarsAbove
             }//Plenilune Gaze / Tartaglia 9
             if (chosenDialogue == 110) // Rex Lapis / Yunlai Stiletto
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -4994,7 +4994,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.19", Player.name); //This is a legendary Melee artifact! The weapon this Essence crafts can inflict a crippling debuff on any foe!
 
                         //	" ";
@@ -5004,7 +5004,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -5029,7 +5029,7 @@ namespace StarsAbove
             }//Rex Lapis / Yunlai Stiletto 10
             if (chosenDialogue == 111) // Naganadel / Suistrume
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -5040,7 +5040,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.20", Player.name); //This Essence will create a support item this time. It'll give powerful buffs to you and your friends if you can keep it up.
 
                         //	" ";
@@ -5050,7 +5050,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -5075,7 +5075,7 @@ namespace StarsAbove
             }//Naganadel / Suistrume 11
             if (chosenDialogue == 112) // Light Unrelenting / Key of the King's Law
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -5104,7 +5104,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -5115,7 +5115,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.19", Player.name); //From the Warrior of Light.. this Essence allows for the usage of Limit Break. It's an incredibly strong Magic weapon.
 
                         //	" ";
@@ -5137,7 +5137,7 @@ namespace StarsAbove
             }//Light Unrelenting / Key of the King's Law 12
             if (chosenDialogue == 115) // Izanagi's Edge / Hawkmoon
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -5157,7 +5157,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 6;
+                        expression = 5;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.24", Player.name); //Exploitable? Surely. Theorycraft is all you.
 
@@ -5166,7 +5166,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -5199,7 +5199,7 @@ namespace StarsAbove
             }//Izanagi's Edge/ Hawkmoon 13
             if (chosenDialogue == 116) // Key of the Sinner / Crimson Sakura Alpha
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -5228,7 +5228,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -5246,7 +5246,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 5;
+                        expression = 2;
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.24", Player.name); //You'd be well off with it in your hands.. but it does mean you have to get up close. I don't envy you.
 
                         //	" ";
@@ -5261,7 +5261,7 @@ namespace StarsAbove
             }//Key Of The Sinner / Crimson Sakura Alpha 14
             if (chosenDialogue == 117) // Phantom In The Mirror / Hollowheart Albion
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -5290,7 +5290,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -5323,7 +5323,7 @@ namespace StarsAbove
             }//Phantom In The Mirror / Hollowheart Albion 15
             if (chosenDialogue == 118) // Vision of Euthymia / Kroniic Principality
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -5345,7 +5345,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -5363,7 +5363,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 3;
+                        expression = 4;
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.28", Player.name); //Did I mention you can go back in time? It's powerful, for sure. 
 
                         //	" ";
@@ -5378,7 +5378,7 @@ namespace StarsAbove
             }//Vision of Euthymia / Kroniic Principality 16
             if (chosenDialogue == 119) // Liberation Blazing / Unforgotten
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -5400,7 +5400,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -5427,7 +5427,7 @@ namespace StarsAbove
             }//Liberation Blazing / Unforgotten 17
             if (chosenDialogue == 120) // Misery's Company
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -5449,7 +5449,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -5476,7 +5476,7 @@ namespace StarsAbove
             }//Misery's Company 18
             if (chosenDialogue == 121) //Hullwrought
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -5498,7 +5498,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -5525,7 +5525,7 @@ namespace StarsAbove
             }//Hullwrought 19 
             if (chosenDialogue == 122) //Shadowless Cerulean
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -5547,7 +5547,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -5574,7 +5574,7 @@ namespace StarsAbove
             }//Shadowless Cerulean 20
             if (chosenDialogue == 123) //Apalistik
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -5596,7 +5596,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -5623,7 +5623,7 @@ namespace StarsAbove
             }//Apalistik 21
             if (chosenDialogue == 124) //Luminary Wand 22
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -5635,7 +5635,7 @@ namespace StarsAbove
 
                     if (dialogueLeft == 2)
                     {
-                        expression = 6;
+                        expression = 5;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.35", Player.name); //Right, I have an Essence for you. It's a Summon weapon that conjures this mysterious sentient star. It's.. too cute. Anyways...
 
@@ -5652,7 +5652,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -5663,7 +5663,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 6;
+                        expression = 5;
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.34", Player.name); //I have another Essence for you to use. This Summon-type wand calls forth this adorable little sentient star, and it just looks so.. squishable..
 
                         //	" ";
@@ -5685,7 +5685,7 @@ namespace StarsAbove
             }//Luminary Wand 22
             if (chosenDialogue == 125) //Xenoblade 23
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -5706,7 +5706,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -5733,7 +5733,7 @@ namespace StarsAbove
             }//Xenoblade 23
             if (chosenDialogue == 126) // Stygian Nymph / Caesura of Despair
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
@@ -5755,7 +5755,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -5773,7 +5773,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 4;
+                        expression = 3;
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.38", Player.name); //Hmm.. It's the Essence of Hope, but is there something else lurking beneath the surface? Who knows.. 
 
                         //	" ";
@@ -5788,7 +5788,7 @@ namespace StarsAbove
             }//Stygian Nymph / Caesura of Despair 24
             if (chosenDialogue == 127) //Claimh Solais
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -5809,7 +5809,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -5836,7 +5836,7 @@ namespace StarsAbove
             }//Claimh Solais 25
             if (chosenDialogue == 128) //Penthesilea's Muse 26
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -5857,7 +5857,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -5884,7 +5884,7 @@ namespace StarsAbove
             }//Penthesilea's Muse 26
             if (chosenDialogue == 129) //Kifrosse 28
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -5906,7 +5906,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -5933,7 +5933,7 @@ namespace StarsAbove
             }//Kifrosse
             if (chosenDialogue == 130) //Architect's Luminance 29
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -5955,7 +5955,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -5982,7 +5982,7 @@ namespace StarsAbove
             }//Architect's Luminance
             if (chosenDialogue == 131) //Force Of Nature
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -6004,7 +6004,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -6031,7 +6031,7 @@ namespace StarsAbove
             }//Force-a-Nature
             if (chosenDialogue == 132) //Genocide
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -6043,7 +6043,7 @@ namespace StarsAbove
 
                     if (dialogueLeft == 1)
                     {
-                        expression = 6;
+                        expression = 5;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.44", Player.name); //This new Essence is great! It's a Ranged weapon with crazy high explosive potential. Just point it towards the bad guys.
 
@@ -6053,7 +6053,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -6080,7 +6080,7 @@ namespace StarsAbove
             }//Genocide
             if (chosenDialogue == 133) //Takonomicon
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -6092,7 +6092,7 @@ namespace StarsAbove
 
                     if (dialogueLeft == 1)
                     {
-                        expression = 6;
+                        expression = 5;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.45", Player.name); //I have a new Essence for you. This is a magical Summon-type weapon that seems to scale with your own potential. Interesting..!
 
@@ -6102,7 +6102,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -6129,7 +6129,7 @@ namespace StarsAbove
             }//Takonomicon
             if (chosenDialogue == 134) //Twin Stars of Albiero
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -6151,7 +6151,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -6178,7 +6178,7 @@ namespace StarsAbove
             }//Twin Stars of Albiero
             if (chosenDialogue == 135) //Armaments of the Sky Striker
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -6200,7 +6200,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -6227,7 +6227,7 @@ namespace StarsAbove
             }//Armaments of the Sky Stalker
             if (chosenDialogue == 136) //Carian Dark Moon / Konpaku Katana 
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -6249,7 +6249,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -6276,7 +6276,7 @@ namespace StarsAbove
             }//Carian Dark Moon / Konpaku Katana 
             if (chosenDialogue == 137) //Neo Dealmaker / Ashen Ambition
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -6298,7 +6298,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -6325,7 +6325,7 @@ namespace StarsAbove
             }//Neo Dealmaker / Ashen Ambition
             if (chosenDialogue == 138) //Cosmic Destroyer
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -6347,7 +6347,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -6416,7 +6416,7 @@ namespace StarsAbove
             }//The Only Thing I Know for Real
             if (chosenDialogue == 140) //Arachnid Needlepoint
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -6447,7 +6447,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -6466,7 +6466,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 3;
+                        expression = 4;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.52", Player.name); //They're spiders... but not real spiders. Yep- thinking like that will stop the fight or flight response. Take notes!
 
@@ -6481,7 +6481,7 @@ namespace StarsAbove
             }//Arachnid Needlepoint
             if (chosenDialogue == 141) //Mercy
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -6504,7 +6504,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -6532,7 +6532,7 @@ namespace StarsAbove
             }//Mercy
             if (chosenDialogue == 142) //Sakura's Vengeance
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -6555,7 +6555,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -6582,7 +6582,7 @@ namespace StarsAbove
             }//Sakura's Vengeance
             if (chosenDialogue == 143) //Eternal Star
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -6605,7 +6605,7 @@ namespace StarsAbove
                     {
                         expression = 1;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.56", Player.name); //You're worried you'll run out eventually? Yeah.. no.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.56", Player.name); //You're 2 you'll run out eventually? Yeah.. no.
 
 
                         //	" ";
@@ -6613,7 +6613,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -6647,7 +6647,7 @@ namespace StarsAbove
             }//Eternal Star
             if (chosenDialogue == 144) //Vermillion Daemon
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -6668,7 +6668,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 6;
+                        expression = 5;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.58", Player.name); //Well, I'll let you figure that one out. Get to it- I'm curious too, you know?
 
@@ -6678,7 +6678,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -6705,7 +6705,7 @@ namespace StarsAbove
             }//Vermilion Daemon
             if (chosenDialogue == 145) //Ozma Ascendant
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -6728,7 +6728,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -6747,7 +6747,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 5;
+                        expression = 2;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.59", Player.name); //Although, I'm not too sure that it applies here.   
 
@@ -6762,7 +6762,7 @@ namespace StarsAbove
             }//Ozma Ascendant
             if (chosenDialogue == 146) //Dreadnought Chemtank
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -6785,7 +6785,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -6811,7 +6811,7 @@ namespace StarsAbove
             }//Dreadnought Chemtank
             if (chosenDialogue == 147) //The Blood Blade
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -6834,7 +6834,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -6860,7 +6860,7 @@ namespace StarsAbove
             }//The Blood Blade
             if (chosenDialogue == 148) //The Morning Star
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -6883,7 +6883,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -6909,7 +6909,7 @@ namespace StarsAbove
             }//The Morning Star
             if (chosenDialogue == 149) //Hunter's Symphony / Sparkblossom's Beacon
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -6921,7 +6921,7 @@ namespace StarsAbove
 
                     if (dialogueLeft == 1)
                     {
-                        expression = 6;
+                        expression = 5;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.63", Player.name); //Listen close, {Player.name}! Or not. This Magic weapon is a giant horn, but get this: you can whack people with it! Rad! 
 
@@ -6932,7 +6932,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)
                     {
@@ -6965,7 +6965,7 @@ namespace StarsAbove
             }//Hunter's Symphony / Sparkblossom's Beacon
             if (chosenDialogue == 150) // Virtue's Edge
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -6996,7 +6996,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7026,7 +7026,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 3;
+                        expression = 4;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.67", Player.name); //At this point, I wonder if there was a weapon you weren't worthy to wield. Yes, I'm praising you. 
 
@@ -7041,7 +7041,7 @@ namespace StarsAbove
             }//Virtue's Edge
             if (chosenDialogue == 151) // Vermilion Riposte
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7072,7 +7072,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7093,7 +7093,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 4;
+                        expression = 3;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.69", Player.name); //Two opposite schools of learning, at least in this Essence's original world. Now isn't that thought-provoking. 
 
@@ -7108,7 +7108,7 @@ namespace StarsAbove
             }//Vermilion Riposte
             if (chosenDialogue == 152) //Burning Desire
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7139,7 +7139,7 @@ namespace StarsAbove
                     
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7175,7 +7175,7 @@ namespace StarsAbove
             }//Burning Desire
             if (chosenDialogue == 153) //The Everlasting Pickaxe
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7206,7 +7206,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7234,7 +7234,7 @@ namespace StarsAbove
             }//The Everlasting Pickaxe
             if (chosenDialogue == 154) //The Everlasting Pickaxe
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7257,7 +7257,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7285,7 +7285,7 @@ namespace StarsAbove
             }//El Capitan's Hardware
             if (chosenDialogue == 155) //Catalyst's Memory
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7308,7 +7308,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7336,7 +7336,7 @@ namespace StarsAbove
             }//Catalyst's Memory
             if (chosenDialogue == 156) // Gloves of the Black Silence
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7367,7 +7367,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7388,7 +7388,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 2)
                     {
-                        expression = 3;
+                        expression = 4;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.76", Player.name);
 
@@ -7412,7 +7412,7 @@ namespace StarsAbove
             }//Gloves of the Black Silence
             if (chosenDialogue == 157) //Soul Reaver
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7435,7 +7435,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7461,7 +7461,7 @@ namespace StarsAbove
             }//Soul Reaver
             if (chosenDialogue == 158) //AurumEdge
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7484,7 +7484,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7510,7 +7510,7 @@ namespace StarsAbove
             }//Aurum Edge
             if (chosenDialogue == 159) //Farewells
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7533,7 +7533,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7568,7 +7568,7 @@ namespace StarsAbove
             //Irminsul's Dream (Umbral) || Pod Zero-42 (Astral)
             if (chosenDialogue == 160) //
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7591,7 +7591,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7617,7 +7617,7 @@ namespace StarsAbove
             }
             if (chosenDialogue == 161) 
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7640,7 +7640,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7666,7 +7666,7 @@ namespace StarsAbove
             }//Umbra
             if (chosenDialogue == 162)
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7689,7 +7689,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7715,7 +7715,7 @@ namespace StarsAbove
             }//Saltwater Scourge
             if (chosenDialogue == 163)
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7738,7 +7738,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7764,7 +7764,7 @@ namespace StarsAbove
             }//
             if (chosenDialogue == 164)
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7785,7 +7785,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 4;
+                        expression = 3;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.84", Player.name);
 
@@ -7795,7 +7795,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7821,7 +7821,7 @@ namespace StarsAbove
             }//Chronoclock
            if (chosenDialogue == 165)
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7844,7 +7844,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7870,7 +7870,7 @@ namespace StarsAbove
             }//Nanomachina Reactor
             if (chosenDialogue == 166)
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7893,7 +7893,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7919,7 +7919,7 @@ namespace StarsAbove
             }//Boltstorm Axe
            if (chosenDialogue == 167)
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7942,7 +7942,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7968,7 +7968,7 @@ namespace StarsAbove
             }//Nanomachina Reactor
             if (chosenDialogue == 168)
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -7989,7 +7989,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 3;
+                        expression = 4;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.89", Player.name);
 
@@ -7999,7 +7999,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -8025,7 +8025,7 @@ namespace StarsAbove
             }//Sanguine Despair
             if (chosenDialogue == 169)
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -8048,7 +8048,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -8074,7 +8074,7 @@ namespace StarsAbove
             }//Sunset of the Sun God
             if (chosenDialogue == 170)
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -8085,7 +8085,7 @@ namespace StarsAbove
 
                     if (dialogueLeft == 1)
                     {
-                        expression = 3;
+                        expression = 4;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.91", Player.name);
 
@@ -8095,7 +8095,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -8121,7 +8121,7 @@ namespace StarsAbove
             }
             if (chosenDialogue == 171)
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -8132,7 +8132,7 @@ namespace StarsAbove
 
                     if (dialogueLeft == 1)
                     {
-                        expression = 3;
+                        expression = 4;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.92", Player.name);
 
@@ -8142,7 +8142,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -8324,7 +8324,7 @@ namespace StarsAbove
 
                 
 
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued | 7 Dead Inside
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -8334,7 +8334,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 12)
                     {
-                        expression = 4;
+                        expression = 3;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.1", Player.name);
 
@@ -8352,7 +8352,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 10)
                     {
-                        expression = 2;
+                        expression = 1;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.3", Player.name);
 
@@ -8370,7 +8370,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 8)
                     {
-                        expression = 2;
+                        expression = 1;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.5", Player.name);
 
@@ -8433,7 +8433,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 5;
+                        expression = 2;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.12", Player.name);
 
@@ -8443,7 +8443,7 @@ namespace StarsAbove
 
 
                 }
-                if (chosenStarfarer == 2)  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+                if (chosenStarfarer == 2)  //placeholder
                 {
                     if (dialoguePrep == true)                                     // |
                     {
@@ -8454,7 +8454,7 @@ namespace StarsAbove
 
                     if (dialogueLeft == 12)
                     {
-                        expression = 4;
+                        expression = 3;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.1", Player.name);
 
@@ -8472,7 +8472,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 10)
                     {
-                        expression = 2;
+                        expression = 1;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.3", Player.name);
 
@@ -8490,7 +8490,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 8)
                     {
-                        expression = 2;
+                        expression = 1;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.5", Player.name);
 
@@ -8553,7 +8553,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 5;
+                        expression = 2;
 
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.12", Player.name);
 
