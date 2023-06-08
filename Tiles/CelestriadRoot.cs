@@ -97,7 +97,7 @@ namespace StarsAbove.Tiles
 			if (itemType > 0)
 			{
 				// Spawn the item
-				Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, itemType);
+				//Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, itemType);
 			}
 		}
 		public override bool CreateDust(int i, int j, ref int type)

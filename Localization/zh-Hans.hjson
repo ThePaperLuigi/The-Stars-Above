@@ -7662,6 +7662,56 @@ Mods: {
 				// DisplayName: Sigil Of Hope
 				// Tooltip: While fighting the Warrior of Light during Everlasting Light, gain 60 defense and 50% increased damage
 			}
+
+			ArbalestSigil: {
+				// DisplayName: Arbalest Sigil
+				// Tooltip: ""
+			}
+
+			BeastmasterSigil: {
+				// DisplayName: Beastmaster Sigil
+				// Tooltip: ""
+			}
+
+			Blueprint: {
+				// DisplayName: Blueprint
+				// Tooltip: ""
+			}
+
+			DoubledPawns: {
+				// DisplayName: Doubled Pawns
+				// Tooltip: ""
+			}
+
+			GladiatorSigil: {
+				// DisplayName: Gladiator Sigil
+				// Tooltip: ""
+			}
+
+			GuppyHead: {
+				// DisplayName: Guppy Head
+				// Tooltip: ""
+			}
+
+			LamentingPocketwatch: {
+				// DisplayName: Lamenting Pocketwatch
+				// Tooltip: ""
+			}
+
+			SpellcasterSigil: {
+				// DisplayName: Spellcaster Sigil
+				// Tooltip: ""
+			}
+
+			FleetingMomentMusicBox: {
+				// DisplayName: Fleeting Moment Music Box
+				// Tooltip: ""
+			}
+
+			ShepherdSunstone: {
+				// DisplayName: Shepherd Sunstone
+				// Tooltip: ""
+			}
 		}
 
 		UIElements: {

@@ -5,20 +5,20 @@ using StarsAbove.Items.Materials;
 
 namespace StarsAbove.Items.Placeable
 {
-	public class TwoDragonsMusicBox : ModItem
+	public class FleetingMomentMusicBox : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Music Box (The Warrior of Light - 2nd Phase)");
+			// DisplayName.SetDefault("Music Box (The Warrior of Light - 1st Phase)");
 			/* Tooltip.SetDefault("" +
-				"'Two Dragons' - Yakuza 0 OST" +
-				"\nComposed by Hidenori Shoji"
+				"'To The Edge' - FFXIV Shadowbringers OST" +
+				"\nComposed by Masayoshi Soken"
 				+ $"\n"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
-			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TwoDragons"),
-				ModContent.ItemType<TwoDragonsMusicBox>(),
-				ModContent.TileType<Tiles.TwoDragonsMusicBox>());
+			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Boss/WarriorOfLight/FleetingMoment"),
+				ModContent.ItemType<FleetingMomentMusicBox>(),
+				ModContent.TileType<Tiles.FleetingMomentMusicBox>());
 		}
 
 		public override void SetDefaults()
@@ -29,7 +29,7 @@ namespace StarsAbove.Items.Placeable
 			Item.useTime = 10;
 			Item.autoReuse = true;
 			Item.consumable = true;
-			Item.createTile = Mod.Find<ModTile>("TwoDragonsMusicBox").Type;
+			Item.createTile = Mod.Find<ModTile>("FleetingMomentMusicBox").Type;
 			Item.width = 24;
 			Item.height = 24;
 			Item.rare = 10;
@@ -39,7 +39,7 @@ namespace StarsAbove.Items.Placeable
 		public override void AddRecipes()
 		{
 			CreateRecipe(1)
-				.AddIngredient(ItemType<DullTotemOfLight>(), 1)
+				.AddIngredient(ItemType<TotemOfLightEmpowered>(), 1)
 				.AddTile(TileID.WorkBenches)
 				.Register();
 		}
