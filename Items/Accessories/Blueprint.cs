@@ -22,7 +22,11 @@ namespace StarsAbove.Items.Accessories
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual) {
-			
+			if(player.velocity.X == 0)
+            {
+				player.blockRange += 50;
+				
+			}
 		}
 
 		
