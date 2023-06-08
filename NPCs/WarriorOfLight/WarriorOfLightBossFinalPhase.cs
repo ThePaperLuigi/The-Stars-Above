@@ -92,7 +92,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 200000;
+			NPC.lifeMax = 350000;
 			NPC.damage = 0;
 			NPC.defense = 45;
 			NPC.knockBackResist = 0f;
@@ -276,7 +276,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 				if (AI_RotationNumber == 6)
 				{
 					//
-					CosmicIgnition(P, NPC);
+					WarriorSummoning2(P, NPC);
 					return;
 				}
 				if (AI_RotationNumber == 7)
@@ -287,63 +287,197 @@ namespace StarsAbove.NPCs.WarriorOfLight
 				}
 				if (AI_RotationNumber == 8)
 				{
-					// 
-					SearingLight(P, NPC);
+					//
+					ThreadsOfFate2(P, NPC);
 					return;
 				}
 				if (AI_RotationNumber == 9)
 				{
 					//
-					Transplacement(P, NPC);
+					CosmicIgnition(P, NPC);
 					return;
 				}
 				if (AI_RotationNumber == 10)
 				{
 					//
-					ScionsAndSinners(P, NPC);
+					ThreadsOfFate3(P, NPC);
 					return;
 				}
 				if (AI_RotationNumber == 11)
 				{
-					//
-					Recenter(P, NPC);
+					// 
+					SearingLight(P, NPC);
 					return;
 				}
 				if (AI_RotationNumber == 12)
 				{
 					//
-					ImbuedSaber(P, NPC);
+					Transplacement(P, NPC);
 					return;
 				}
 				if (AI_RotationNumber == 13)
 				{
 					//
-					ToTheLimit(P, NPC);
+					ScionsAndSinners(P, NPC);
 					return;
 				}
 				if (AI_RotationNumber == 14)
 				{
 					//
-					WarriorGardenOfAvalon(P, NPC);
+					Recenter(P, NPC);
 					return;
 				}
 				if (AI_RotationNumber == 15)
 				{
 					//
-					MortalInstants(P, NPC);
+					ImbuedSaber(P, NPC);
 					return;
 				}
 				if (AI_RotationNumber == 16)
 				{
 					//
-					ThreadsOfFate2(P, NPC);
+					ToTheLimit(P, NPC);
 					return;
 				}
 				if (AI_RotationNumber == 17)
 				{
 					//
+					WarriorGardenOfAvalon(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 18)
+				{
+					//
+					WarriorSummoning1(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 19)
+				{
+					//
+					MortalInstants(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 20)
+				{
+					//
+					ThreadsOfFate2(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 21)
+				{
+					//
+					ThreadsOfFate2(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 22)
+				{
+					//
+					ThreadsOfFate1(P, NPC);
+					return;
+				}
+				if (AI_RotationNumber == 23)
+				{
+					//
 					ImbuedCoruscance(P, NPC);
 					return;
+				}
+				if (AI_RotationNumber == 24)
+				{
+					//
+					ScionsAndSinners(P, NPC);
+					return;
+
+				}
+				if (AI_RotationNumber == 25)
+				{
+					//
+					SearingLight(P, NPC);
+					return;
+
+				}
+				if (AI_RotationNumber == 26)
+				{
+					//
+					ThreadsOfFate2(P, NPC);
+					return;
+
+				}
+				if (AI_RotationNumber == 27)
+				{
+					//
+					ThreadsOfFate1(P, NPC);
+					return;
+
+				}
+				if (AI_RotationNumber == 28)
+				{
+					//
+					CosmicIgnition(P, NPC);
+					return;
+
+				}
+				if (AI_RotationNumber == 29)
+				{
+					//
+					WarriorSummoning1(P, NPC);
+					return;
+
+				}
+				if (AI_RotationNumber == 30)
+				{
+					//
+					ImbuedSaber(P, NPC);
+					return;
+
+				}
+				if (AI_RotationNumber == 31)
+				{
+					//
+					ScionsAndSinners(P, NPC);
+					return;
+
+				}
+				if (AI_RotationNumber == 32)
+				{
+					//
+					ImbuedCoruscance(P, NPC);
+					return;
+
+				}
+				if (AI_RotationNumber == 33)
+				{
+					//
+					ToTheLimit(P, NPC);
+					return;
+
+				}
+				if (AI_RotationNumber == 34)
+				{
+					//
+					WarriorArsLaevateinn(P, NPC);
+					return;
+
+				}
+				if (AI_RotationNumber == 35)
+				{
+					//
+					WarriorSummoning2(P, NPC);
+					return;
+
+				}
+				if (AI_RotationNumber == 36)
+				{
+					//
+					ThreadsOfFate1(P, NPC);
+					return;
+
+				}
+				if (AI_RotationNumber == 37)
+				{
+					//
+					SearingLight(P, NPC);
+					return;
+
 				}
 				else
 				{

@@ -33,7 +33,7 @@ namespace StarsAbove.Tiles
 			Player player = Main.LocalPlayer;
 			player.noThrow = 2;
 			player.cursorItemIconEnabled = true;
-			player.cursorItemIconID = Mod.Find<ModItem>("ToTheEdgeMusicBox").Type;
+			player.cursorItemIconID = Mod.Find<ModItem>("FleetingMomentMusicBox").Type;
 		}
 	}
 }

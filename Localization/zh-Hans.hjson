@@ -7664,53 +7664,77 @@ Mods: {
 			}
 
 			ArbalestSigil: {
-				// DisplayName: Arbalest Sigil
-				// Tooltip: ""
+				// DisplayName: Arbalest's Anarchy
+				// Tooltip: Negates the damage penalty when swapping weapons to Ranged damage
 			}
 
 			BeastmasterSigil: {
-				// DisplayName: Beastmaster Sigil
-				// Tooltip: ""
+				// DisplayName: Beastmaster's Anarchy
+				// Tooltip: Negates the damage penalty when swapping weapons to Summon damage
 			}
 
 			Blueprint: {
 				// DisplayName: Blueprint
-				// Tooltip: ""
+				// Tooltip: Drastically increases block placement range when standing still
 			}
 
 			DoubledPawns: {
-				// DisplayName: Doubled Pawns
-				// Tooltip: ""
+				// DisplayName: Pawn's Initiative
+				/* Tooltip:
+					'''
+					Instantly kill non-boss foes at 3% or lower when in close proximity
+					'It's forced!'
+					''' */
 			}
 
 			GladiatorSigil: {
-				// DisplayName: Gladiator Sigil
-				// Tooltip: ""
+				// DisplayName: Gladiator's Anarchy
+				// Tooltip: Reduces the damage penalty when swapping weapons to Melee damage by 10%
+			}
+
+			SpellcasterSigil: {
+				// DisplayName: Spellcaster's Anarchy
+				// Tooltip: Negates the damage penalty when swapping weapons to Magic damage
 			}
 
 			GuppyHead: {
-				// DisplayName: Guppy Head
-				// Tooltip: ""
+				// DisplayName: Misfortunate Cat
+				/* Tooltip:
+					'''
+					Upon taking damage or defeating a foe, spawn three files at your position
+					Flies attack nearby foes, dealing 3% of your Max HP in damage
+					Can only activate every 3 seconds
+					''' */
 			}
 
 			LamentingPocketwatch: {
 				// DisplayName: Lamenting Pocketwatch
-				// Tooltip: ""
-			}
-
-			SpellcasterSigil: {
-				// DisplayName: Spellcaster Sigil
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					Damage variance is disabled
+					Upon landing a critical strike, flip a coin
+					If heads, damage is increased by 50%; If tails, critical strikes are disabled for 3 seconds and you become Vulnerable for the same duration
+					Can only activate every 3 seconds
+					''' */
 			}
 
 			FleetingMomentMusicBox: {
 				// DisplayName: Fleeting Moment Music Box
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					'Fleeting Moment' - FFXIV Endwalker OST
+					Composed by Masayoshi Soken
+
+					''' */
 			}
 
 			ShepherdSunstone: {
-				// DisplayName: Shepherd Sunstone
-				// Tooltip: ""
+				// DisplayName: Shepherd's Sunstone
+				/* Tooltip:
+					'''
+					Teleports all distant players in Multiplayer to your position (10 minute cooldown)
+					Grants Invincibility for 2 seconds if a boss is active
+					''' */
 			}
 		}
 

@@ -7692,59 +7692,53 @@ Mods: {
 
 			SigilOfHope: {
 				DisplayName: Sigil Of Hope
-				Tooltip: While fighting the Warrior of Light during Everlasting Light, gain 60 defense and 50% increased damage
+				Tooltip: 
+					'''
+					While fighting the Warrior of Light during Everlasting Light, gain 120 defense
+					However, rewards will be reduced
+					'''
 			}
 
 			ArbalestSigil: {
 				DisplayName: Arbalest's Anarchy
-				Tooltip:
-					'''
-					Negates the damage penalty when swapping weapons to Ranged damage
-					'''
+				Tooltip: Negates the damage penalty when swapping weapons to Ranged damage
 			}
 
 			BeastmasterSigil: {
 				DisplayName: Beastmaster's Anarchy
-				Tooltip:
-					'''
-					Negates the damage penalty when swapping weapons to Summon damage
-					'''
+				Tooltip: Negates the damage penalty when swapping weapons to Summon damage
 			}
 
 			Blueprint: {
 				DisplayName: Blueprint
-				Tooltip: ""
+				Tooltip: Drastically increases block placement range when standing still
 			}
 
 			DoubledPawns: {
-				DisplayName: Doubled Pawns
+				DisplayName: Pawn's Initiative
 				Tooltip:
 					'''
-					Instantly kill non-boss foes at 3% or lower when in close proximity
-					'Holy hell'
+					Instantly kill non-boss foes at 3% Max HP or lower when in close proximity
+					'It's forced!'
 					'''
 			}
 
 			GladiatorSigil: {
 				DisplayName: Gladiator's Anarchy
-				Tooltip:
-					'''
-					Reduces the damage penalty when swapping weapons to Melee damage by 10%
-					'''
+				Tooltip: Reduces the damage penalty when swapping weapons to Melee damage by 10%
 			}
+
 			SpellcasterSigil: {
 				DisplayName: Spellcaster's Anarchy
-				Tooltip:
-					'''
-					Negates the damage penalty when swapping weapons to Magic damage
-					'''
+				Tooltip: Negates the damage penalty when swapping weapons to Magic damage
 			}
+
 			GuppyHead: {
 				DisplayName: Misfortunate Cat
 				Tooltip:
 					'''
 					Upon taking damage or defeating a foe, spawn three files at your position
-					Flies attack nearby foes, dealing 5% of current HP as damage
+					Flies attack nearby foes, dealing 3% of your Max HP in damage
 					Can only activate every 3 seconds
 					'''
 			}
@@ -7760,18 +7754,21 @@ Mods: {
 					'''
 			}
 
-			
-
 			FleetingMomentMusicBox: {
 				DisplayName: Fleeting Moment Music Box
-				Tooltip: ""
+				Tooltip:
+					'''
+					'Fleeting Moment' - FFXIV Endwalker OST
+					Composed by Masayoshi Soken
+
+					'''
 			}
 
 			ShepherdSunstone: {
 				DisplayName: Shepherd's Sunstone
 				Tooltip:
 					'''
-					Teleports all players in Multiplayer to your position (10 minute cooldown)
+					Teleports all distant players in Multiplayer to your position (10 minute cooldown)
 					Grants Invincibility for 2 seconds if a boss is active
 					'''
 			}

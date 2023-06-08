@@ -10037,7 +10037,6 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_ToMeWarriorsOfLight, npc.Center);
 				SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -10046,10 +10045,13 @@ namespace StarsAbove.NPCs.AttackLibrary
 					if (npc.type == ModContent.NPCType<WarriorOfLightBoss>())
 					{
 						Projectile.NewProjectile(null, npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<WarriorOfLightCastingSprite>(), 0, 0, Main.myPlayer, 120);
+						SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_ToMeWarriorsOfLight, npc.Center);
 
 					}
 					if (npc.type == ModContent.NPCType<WarriorOfLightBossFinalPhase>())
 					{
+						SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_NowToTakeYourMeasure, npc.Center);
+
 						Projectile.NewProjectile(null, npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<WarriorOfLightFinalPhaseCastingSprite>(), 0, 0, Main.myPlayer, 120);
 
 					}
@@ -10190,7 +10192,6 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_ToMeWarriorsOfLight, npc.Center);
 				SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -10199,10 +10200,13 @@ namespace StarsAbove.NPCs.AttackLibrary
 					if (npc.type == ModContent.NPCType<WarriorOfLightBoss>())
 					{
 						Projectile.NewProjectile(null, npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<WarriorOfLightCastingSprite>(), 0, 0, Main.myPlayer, 120);
+						SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_ToMeWarriorsOfLight, npc.Center);
 
 					}
 					if (npc.type == ModContent.NPCType<WarriorOfLightBossFinalPhase>())
 					{
+						SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_NowToTakeYourMeasure, npc.Center);
+
 						Projectile.NewProjectile(null, npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<WarriorOfLightFinalPhaseCastingSprite>(), 0, 0, Main.myPlayer, 120);
 
 					}
@@ -10342,7 +10346,6 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_ToMeWarriorsOfLight, npc.Center);
 				SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -10351,10 +10354,13 @@ namespace StarsAbove.NPCs.AttackLibrary
 					if (npc.type == ModContent.NPCType<WarriorOfLightBoss>())
 					{
 						Projectile.NewProjectile(null, npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<WarriorOfLightCastingSprite>(), 0, 0, Main.myPlayer, 120);
+						SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_ToMeWarriorsOfLight, npc.Center);
 
 					}
 					if (npc.type == ModContent.NPCType<WarriorOfLightBossFinalPhase>())
 					{
+						SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_NowToTakeYourMeasure, npc.Center);
+
 						Projectile.NewProjectile(null, npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<WarriorOfLightFinalPhaseCastingSprite>(), 0, 0, Main.myPlayer, 120);
 
 					}
@@ -10728,6 +10734,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
 				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_IWillStrikeYouDown, null);
 				if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CombatText.WarriorOfLight.PhaseChange"), 232, 65, 65); }
+				npc.localAI[1] = 1;
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -10773,7 +10780,6 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
 			{
 
-				npc.localAI[1] = 1;
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, npc.Center);
 
 				for (int d = 0; d < 50; d++)
@@ -11423,7 +11429,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
 
-				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_NowToTakeYourMeasure, npc.Center);
+				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_TheBitterEnd, npc.Center);
 
 				if (npc.type == ModContent.NPCType<WarriorOfLightBoss>())
 				{
