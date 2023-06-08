@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using StarsAbove.Systems;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -23,7 +24,7 @@ namespace StarsAbove.Items.Accessories
 			Item.height = 28;
 			Item.accessory = true;
 			Item.value = Item.sellPrice(silver: 30);
-			Item.rare = ItemRarityID.Purple;
+			Item.rare = ModContent.GetInstance<StellarSpoilsRarity>().Type; // Custom Rarity
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual) {

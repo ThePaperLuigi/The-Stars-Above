@@ -30,6 +30,9 @@ Mods: {
 				// ImbueFire: The Warrior of Light's blade is infused with fire!
 				// UseImbue: The Warrior of Light draws forth the imbued element!
 				// PhaseChange: Your final days have arrived...
+				// ChargeNova: The Warrior of Light charges his Stellar Nova!
+				// ChargeStarfarer: The Warrior of Light borrows his Starfarer's might!
+				// GardenOfAvalon: The Garden of Avalon shields the Warrior of Light from damage!
 			}
 
 			// Dioskouroi.Clash: The Dioskouroi clash, equalizing their HP!
@@ -3092,7 +3095,8 @@ Mods: {
 			// WarriorOfLightBoss.DisplayName: The Warrior Of Light
 			// WarriorWallsNPC.DisplayName: ""
 			// WarriorOfLightOld.DisplayName: ""
-			// WarriorOfLightBossFinalPhase.DisplayName: Warrior Of Light Boss Final Phase
+			// WarriorOfLightBossFinalPhase.DisplayName: The Warrior Of Light
+			// GardenOfAvalonNPC.DisplayName: Garden Of Avalon
 		}
 
 		Tiles: {
@@ -7595,6 +7599,85 @@ Mods: {
 					Right click to prepare the [c/E08738:Killing Bear], gaining the buff [c/E03838:Me and My Killing Machine] for 8 seconds (30 second cooldown)
 					During this time, striking foes with this weapon will cause the [c/E08738:Killing Bear] to deal a follow-up attack (1 second delay)
 					The [c/E08738:Killing Bear]'s follow-up attacks will additionally grant [c/B9F1FA:Kick Start] for 2 seconds
+					''' */
+			}
+
+			SigilOfHope: {
+				// DisplayName: Sigil Of Hope
+				// Tooltip: While fighting the Warrior of Light during Everlasting Light, gain 60 defense and 50% increased damage
+			}
+
+			ArbalestSigil: {
+				// DisplayName: Arbalest's Anarchy
+				// Tooltip: Negates the damage penalty when swapping weapons to Ranged damage
+			}
+
+			BeastmasterSigil: {
+				// DisplayName: Beastmaster's Anarchy
+				// Tooltip: Negates the damage penalty when swapping weapons to Summon damage
+			}
+
+			Blueprint: {
+				// DisplayName: Blueprint
+				// Tooltip: Drastically increases block placement range when standing still
+			}
+
+			DoubledPawns: {
+				// DisplayName: Pawn's Initiative
+				/* Tooltip:
+					'''
+					Instantly kill non-boss foes at 3% or lower when in close proximity
+					'It's forced!'
+					''' */
+			}
+
+			GladiatorSigil: {
+				// DisplayName: Gladiator's Anarchy
+				// Tooltip: Reduces the damage penalty when swapping weapons to Melee damage by 10%
+			}
+
+			SpellcasterSigil: {
+				// DisplayName: Spellcaster's Anarchy
+				// Tooltip: Negates the damage penalty when swapping weapons to Magic damage
+			}
+
+			GuppyHead: {
+				// DisplayName: Misfortunate Cat
+				/* Tooltip:
+					'''
+					Upon taking damage or defeating a foe, spawn three files at your position
+					Flies attack nearby foes, dealing 3% of your Max HP in damage
+					Can only activate every 3 seconds
+					''' */
+			}
+
+			LamentingPocketwatch: {
+				// DisplayName: Lamenting Pocketwatch
+				/* Tooltip:
+					'''
+					Damage variance is disabled
+					Upon landing a critical strike, flip a coin
+					If heads, damage is increased by 50%; If tails, critical strikes are disabled for 3 seconds and you become Vulnerable for the same duration
+					Can only activate every 3 seconds
+					''' */
+			}
+
+			FleetingMomentMusicBox: {
+				// DisplayName: Fleeting Moment Music Box
+				/* Tooltip:
+					'''
+					'Fleeting Moment' - FFXIV Endwalker OST
+					Composed by Masayoshi Soken
+
+					''' */
+			}
+
+			ShepherdSunstone: {
+				// DisplayName: Shepherd's Sunstone
+				/* Tooltip:
+					'''
+					Teleports all distant players in Multiplayer to your position (10 minute cooldown)
+					Grants Invincibility for 2 seconds if a boss is active
 					''' */
 			}
 		}

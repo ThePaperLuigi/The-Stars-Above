@@ -111,7 +111,7 @@ namespace StarsAbove.Tiles.StellarFoci
             if (itemType > 0)
             {
                 // Spawn the item
-                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, itemType);
+//                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, itemType);
             }
         }
 
@@ -287,7 +287,7 @@ namespace StarsAbove.Tiles.StellarFoci
             if (itemType > 0)
             {
                 // Spawn the item
-                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, itemType);
+//                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, itemType);
             }
         }
 
@@ -463,7 +463,7 @@ namespace StarsAbove.Tiles.StellarFoci
             if (itemType > 0)
             {
                 // Spawn the item
-                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, itemType);
+//                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, itemType);
             }
         }
 

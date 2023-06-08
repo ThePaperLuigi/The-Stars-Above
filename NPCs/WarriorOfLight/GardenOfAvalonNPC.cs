@@ -26,7 +26,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 			NPC.height = 1296;
 			NPC.damage = 0;
 			NPC.defense = 0;
-			NPC.lifeMax = 5000;
+			NPC.lifeMax = 21000;
 			NPC.HitSound = SoundID.NPCHit1;
 			NPC.timeLeft = 600; 
 			NPC.DeathSound = SoundID.NPCDeath1;

@@ -42,7 +42,7 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 		public override bool PreDraw(ref Color lightColor)
 		{
 
-			default(Effects.GoldTrail).Draw(Projectile);
+			//default(Effects.GoldTrail).Draw(Projectile);
 
 			return true;
 		}

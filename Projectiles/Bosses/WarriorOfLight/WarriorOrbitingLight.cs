@@ -66,7 +66,7 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 
 				firstSpawn = false;
 			}
-			if (!NPC.AnyNPCs(ModContent.NPCType<WarriorOfLightBoss>()) && !NPC.AnyNPCs(ModContent.NPCType<NalhaunBossPhase2>()))
+			if (!NPC.AnyNPCs(ModContent.NPCType<WarriorOfLightBoss>()) && !NPC.AnyNPCs(ModContent.NPCType<WarriorOfLightBossFinalPhase>()))
 			{
 
 				Projectile.Kill();
@@ -120,7 +120,7 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 			{
 				NPC other = Main.npc[i];
 
-				if (other.active && (other.type == ModContent.NPCType<WarriorOfLightBoss>() || other.type == ModContent.NPCType<NalhaunBossPhase2>()))
+				if (other.active && (other.type == ModContent.NPCType<WarriorOfLightBoss>() || other.type == ModContent.NPCType<WarriorOfLightBossFinalPhase>()))
 
 				{
 					Projectile.position.X = other.Center.X - (int)(Math.Cos(rad) * dist) - Projectile.width / 2;

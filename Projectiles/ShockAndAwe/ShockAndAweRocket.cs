@@ -36,6 +36,7 @@ namespace StarsAbove.Projectiles.ShockAndAwe
 		
         public override void AI()
         {
+			DrawOffsetX = -10;
 			int dustIndex = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Smoke, 0f, 0f, 100, default(Color), 2f);
 			Main.dust[dustIndex].noGravity = true;
 		}

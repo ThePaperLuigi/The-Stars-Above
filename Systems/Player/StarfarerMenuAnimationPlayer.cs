@@ -228,7 +228,7 @@ namespace StarsAbove
 
             if (!idleAnimationActive)
             {
-                AsphodeneEyeMovementRX = MathHelper.Lerp(0, 2, MousePositionFloatX);
+                AsphodeneEyeMovementRX = MathHelper.Lerp(-1, 2, MousePositionFloatX);
                 AsphodeneEyeMovementLX = MathHelper.Lerp(0, 1, MousePositionFloatX);
                 AsphodeneEyeMovementY = MathHelper.Lerp(-1, 0, MousePositionFloatY);
 
