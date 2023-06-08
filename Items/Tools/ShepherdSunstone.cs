@@ -62,7 +62,7 @@ namespace StarsAbove.Items.Tools
 			for (int i = 0; i < Main.maxPlayers; i++)
 			{
 				Player other = Main.player[i];
-				if (other.active && other.Distance(player.Center) > 100)
+				if (other.active && other.Distance(player.Center) > 300)
 				{
 					other.Teleport(player.Center, 1, 0);
 					NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float)other.whoAmI, player.Center.X, player.Center.Y, 1, 0, 0);
