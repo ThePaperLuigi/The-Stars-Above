@@ -7660,7 +7660,11 @@ Mods: {
 
 			SigilOfHope: {
 				// DisplayName: Sigil Of Hope
-				// Tooltip: While fighting the Warrior of Light during Everlasting Light, gain 60 defense and 50% increased damage
+				/* Tooltip:
+					'''
+					While fighting the Warrior of Light during Everlasting Light, gain 120 defense
+					However, rewards will be reduced
+					''' */
 			}
 
 			ArbalestSigil: {
@@ -7682,7 +7686,7 @@ Mods: {
 				// DisplayName: Pawn's Initiative
 				/* Tooltip:
 					'''
-					Instantly kill non-boss foes at 3% or lower when in close proximity
+					Instantly kill non-boss foes at 3% Max HP or lower when in close proximity
 					'It's forced!'
 					''' */
 			}
