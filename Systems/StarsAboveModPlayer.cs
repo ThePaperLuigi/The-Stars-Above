@@ -8752,7 +8752,7 @@ namespace StarsAbove
                     {
                         starfarerPromptActiveTimer = starfarerPromptActiveTimerSetting;
                         randomDialogue = Main.rand.Next(0, 3);
-                        promptExpression = 5;
+                        promptExpression = 2;
                         if (randomDialogue == 0)
                         {
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.15", Player.name); //Whoops..
@@ -8777,32 +8777,32 @@ namespace StarsAbove
                         }
                         if (randomDialogue == 1)
                         {
-                            promptExpression = 6;
+                            promptExpression = 5;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.19", Player.name); //One more defeated!
                         }
                         if (randomDialogue == 2)
                         {
-                            promptExpression = 3;
+                            promptExpression = 4;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.20", Player.name); //That takes care of that.
                         }
                         if (randomDialogue == 3)
                         {
-                            promptExpression = 3;
+                            promptExpression = 4;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.21", Player.name); //Another one down.
                         }
                         if (randomDialogue == 4)
                         {
-                            promptExpression = 6;
+                            promptExpression = 5;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.22", Player.name); //You're great at this!
                         }
                         if (randomDialogue == 5)
                         {
-                            promptExpression = 3;
+                            promptExpression = 4;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.23", Player.name); //Nice work. That's one down.
                         }
                         if (randomDialogue == 6)
                         {
-                            promptExpression = 3;
+                            promptExpression = 4;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.24", Player.name); //There it goes!
                         }
                         if (randomDialogue == 7)
@@ -8817,7 +8817,7 @@ namespace StarsAbove
                         }
                         if (randomDialogue == 9)
                         {
-                            promptExpression = 3;
+                            promptExpression = 4;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.27", Player.name); //Don't mess with us!
                         }
                         if (randomDialogue == 10)
@@ -8832,7 +8832,7 @@ namespace StarsAbove
                         }
                         if (randomDialogue == 12)
                         {
-                            promptExpression = 3;
+                            promptExpression = 4;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.30", Player.name); //That was so easy!
                         }
                         if (randomDialogue == 13)
@@ -8842,7 +8842,7 @@ namespace StarsAbove
                         }
                         if (randomDialogue == 14)
                         {
-                            promptExpression = 6;
+                            promptExpression = 5;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.32", Player.name); //An easy victory.
                         }
                         if (randomDialogue == 15)
@@ -8852,7 +8852,7 @@ namespace StarsAbove
                         }
                         if (randomDialogue == 16)
                         {
-                            promptExpression = 3;
+                            promptExpression = 4;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.34", Player.name); //How could we ever lose?
                         }
                         if (randomDialogue == 17)
@@ -8888,7 +8888,7 @@ namespace StarsAbove
                         }
                         if (randomDialogue == 2)
                         {
-                            promptExpression = 4;
+                            promptExpression = 3;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.40", Player.name); //Thank goodness we killed it in time.
                         }
                     }
@@ -8899,12 +8899,12 @@ namespace StarsAbove
 
                         if (randomDialogue == 0)
                         {
-                            promptExpression = 3;
+                            promptExpression = 4;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.41", Player.name); //Finally. You got it!
                         }
                         if (randomDialogue == 1)
                         {
-                            promptExpression = 6;
+                            promptExpression = 5;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.42", Player.name); //And that takes care of that one.
                         }
                         if (randomDialogue == 2)
@@ -8920,12 +8920,12 @@ namespace StarsAbove
 
                         if (randomDialogue == 0)
                         {
-                            promptExpression = 3;
+                            promptExpression = 4;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.44", Player.name); //A decisive crit!
                         }
                         if (randomDialogue == 1)
                         {
-                            promptExpression = 6;
+                            promptExpression = 5;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.45", Player.name); //They felt that one!
                         }
                         if (randomDialogue == 2)
@@ -8935,12 +8935,12 @@ namespace StarsAbove
                         }
                         if (randomDialogue == 3)
                         {
-                            promptExpression = 3;
+                            promptExpression = 4;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.47", Player.name); //Nice, you hit their weak spot.
                         }
                         if (randomDialogue == 4)
                         {
-                            promptExpression = 6;
+                            promptExpression = 5;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.48", Player.name); //A critical hit..!
                         }
                         if (randomDialogue == 5)
@@ -8961,7 +8961,7 @@ namespace StarsAbove
                         }
                         if (randomDialogue == 1)
                         {
-                            promptExpression = 5;
+                            promptExpression = 2;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.51", Player.name); //That's.. not good.
                         }
                         if (randomDialogue == 2)
@@ -8971,17 +8971,17 @@ namespace StarsAbove
                         }
                         if (randomDialogue == 3)
                         {
-                            promptExpression = 4;
+                            promptExpression = 3;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.53", Player.name); //That wasn't good at all..
                         }
                         if (randomDialogue == 4)
                         {
-                            promptExpression = 4;
+                            promptExpression = 3;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.54", Player.name); //You should probably heal after that one.
                         }
                         if (randomDialogue == 5)
                         {
-                            promptExpression = 4;
+                            promptExpression = 3;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.55", Player.name); //Barely a scratch.. right?
                         }
                     }
@@ -8996,7 +8996,7 @@ namespace StarsAbove
                         }
                         if (randomDialogue == 1)
                         {
-                            promptExpression = 5;
+                            promptExpression = 2;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.57", Player.name); //I don't think you can walk that one off.
                         }
                         if (randomDialogue == 2)
@@ -9019,17 +9019,17 @@ namespace StarsAbove
                         }
                         if (randomDialogue == 1)
                         {
-                            promptExpression = 6;
+                            promptExpression = 5;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.60", Player.name); //An incredibly strong foe draws near! Let's give them a fight to remember!
                         }
                         if (randomDialogue == 2)
                         {
-                            promptExpression = 2;
+                            promptExpression = 1;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.61", Player.name); //A strong foe draws near. It's time to fight.
                         }
                         if (randomDialogue == 3)
                         {
-                            promptExpression = 2;
+                            promptExpression = 1;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.62", Player.name); //Right. No more games. A powerful foe is approaching.
                         }
                         if (randomDialogue == 4)
@@ -9043,146 +9043,146 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onEyeOfCthulhu")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.64", Player.name); //The.. eyeball.. approaches. Watch yourself- it's a big one. It gets stronger when it's on its last legs, I think.
                         seenEyeOfCthulhu = true;
                     }
                     if (eventPrompt == "onKingSlime")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.65", Player.name); //It's the lord of the slimes! I think it has a teleportation-like ability..
                         seenKingSlime = true;
                     }
                     if (eventPrompt == "onEaterOfWorlds")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.66", Player.name); //A colossal worm! Watch where it emerges; it'll try and hit your blind spots!
                         seenEaterOfWorlds = true;
                     }
                     if (eventPrompt == "onBrainOfCthulhu")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.67", Player.name); //This thing is trying to attack your mind directly..! Don't be fooled by the mirages!
                         seenBrainOfCthulhu = true;
                     }
                     if (eventPrompt == "onQueenBee")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.68", Player.name); //Watch out.. the Queen Bee is awake! Make sure to dodge the horizontal charges!
                         seenQueenBee = true;
                     }
                     if (eventPrompt == "onSkeletron")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.69", Player.name); //Don't underestimate this monster! Stay away from his skull and arms!
                         seenSkeletron = true;
                     }
                     if (eventPrompt == "onWallOfFlesh")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.70", Player.name); //That thing is massive! If you can, try and build a path to fight it on.
                         seenWallOfFlesh = true;
                     }
                     if (eventPrompt == "onTwins")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.71", Player.name); //There's two giant eyeballs coming your way! Let's see... The red one will shoot at you, and the green one charges.
                         seenTwins = true;
                     }
                     if (eventPrompt == "onDeerclops")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.72", Player.name); //What in the world is that thing? A deer? It's only got one eye... aim for it!
                         seenDeerclops = true;
                     }
                     if (eventPrompt == "onQueenSlime")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.73", Player.name); //It's another colossal slime! It looks like it's going to summon some minions!
                         seenQueenSlime = true;
                     }
                     if (eventPrompt == "onEmpress")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.74", Player.name); //A Hallow-aspected foe has appeared! Maybe leave the butterfly alone next time...?
                         seenEmpress = true;
                     }
                     if (eventPrompt == "onDestroyer")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.75", Player.name); //A giant mechanical worm.. What can we do..? How about trying to attack multiple parts of it at once?
                         seenDestroyer = true;
                     }
                     if (eventPrompt == "onSkeletronPrime")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.76", Player.name); //It's a more advanced version of Skeletron.. Try going for the arms first, instead of the head.
                         seenSkeletronPrime = true;
                     }
                     if (eventPrompt == "onPlantera")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.77", Player.name); //Plantera is awake! Be mindful of its vines. It would be great to have a huge arena to fight it in.
                         seenPlantera = true;
                     }
                     if (eventPrompt == "onGolem")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.78", Player.name); //An ancient mechanical monster.. Watch out for the traps in the temple while fighting it.
                         seenGolem = true;
                     }
                     if (eventPrompt == "onDukeFishron")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.79", Player.name); //You reeled in something crazy! Something tells me you should stay near the sea!
                         seenDukeFishron = true;
                     }
                     if (eventPrompt == "onLunaticCultist")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.80", Player.name); //It's one of those Lunatic Cultists.. Stop them before they unleash a calamity..!
                         seenCultist = true;
                     }
                     if (eventPrompt == "onMoonLord")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.81", Player.name); //I can't believe it.. it's the Moon Lord! This is the final battle! We have to win this!
                         seenMoonLord = true;
                     }
                     if (eventPrompt == "onWarriorOfLight")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.82", Player.name); //The Warrior of Light approaches.. When he breaks his limits, prepare yourself!
                         seenWarriorOfLight = true;
                     }
                     if (eventPrompt == "onVagrant")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.83", Player.name); //Something about this foe seems familiar... Attacks won't work; just survive for as long as you can!
                         seenVagrant = true;
                     }
                     if (eventPrompt == "onNalhaun")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.84", Player.name); //Don't underestimate this foe..! Keep grabbing the stolen lifeforce he's taking from you!
                         seenNalhaun = true;
                     }
                     if (eventPrompt == "onPenth")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.85", Player.name); //This witch attacks with paint! Mind what color you're doused in!
                         seenPenth = true;
                     }
                     if (eventPrompt == "onArbiter")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.86", Player.name); //This thing changes its attack patterns! Take note of its stances, or else!
                         seenArbiter = true;
                     }
                     //Calamity mod bosses!
                     if (eventPrompt == "onDesertScourge")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.87", Player.name); //There's something coming from below, and fast! Prepare yourself.. this is one strong worm!
                         seenDesertScourge = true;
                     }
@@ -9194,26 +9194,26 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onHiveMind")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.89", Player.name); //A corrupted beast draws near! Kill its minions quickly, lest it overwhelm you!
                         seenHiveMind = true;
                     }
                     if (eventPrompt == "onPerforators")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.90", Player.name); //What in the world is that thing? Aim for that disgusting Hive before it's too late!
                         seenPerforators = true;
                     }
                     if (eventPrompt == "onSlimeGod")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.91", Player.name); //So this is the source of all the world's slimes. Don't get hasty; I'm certain those slimes will split when hurt!
                         seenSlimeGod = true;
                     }
                     //Hardmode Calamity Bosses
                     if (eventPrompt == "onCryogen")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.92", Player.name); //Something is strange about this thing, but I don't know what. Don't get frozen... but you could probably already tell.
                         seenCryogen = true;
                     }
@@ -9227,7 +9227,7 @@ namespace StarsAbove
                         }
                         else
                         {
-                            promptExpression = 2;
+                            promptExpression = 1;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.94", Player.name); //It's a giant sea serpent! Hang on... This thing is SERIOUSLY dangerous!
                         }
 
@@ -9235,13 +9235,13 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onBrimstoneElemental")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.95", Player.name); //The flames have brought forth a demonic spirit! Take care to watch your footing, lest you succumb to lava!
                         seenBrimstoneElemental = true;
                     }
                     if (eventPrompt == "onCalamitas")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.96", Player.name); //This thing... it's a herald of destruction.. You know what devestation it can bring. Don't lose..!
                         seenCalamitas = true;
                     }
@@ -9254,7 +9254,7 @@ namespace StarsAbove
                         }
                         else
                         {
-                            promptExpression = 4;
+                            promptExpression = 3;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.98", Player.name); //...Do you hear that? Whatever it is.. it sounds really dangerous.
                         }
 
@@ -9262,37 +9262,37 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onAnahita")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.99", Player.name); //That demon of the sea is fighting back! I hope you're ready for this...
                         seenAnahita = true;
                     }
                     if (eventPrompt == "onLeviathan")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.100", Player.name); //Whoa. This thing is enormous!! Who knew she had this up her sleeve..?
                         seenLeviathan = true;
                     }
                     if (eventPrompt == "onAstrumAureus")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.101", Player.name); //The Astral Infection has corrupted whatever this was. Don't underestimate it. The Infection can do anything...
                         seenAstrumAureus = true;
                     }
                     if (eventPrompt == "onPlaguebringer")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.102", Player.name); //Oh, great.. a giant robotic bug. It kind of looks like the Queen Bee, so try and remember her attacks!
                         seenPlaguebringer = true;
                     }
                     if (eventPrompt == "onRavager")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.103", Player.name); //This is.. an amalgamation of flesh and machinery.. Above everything, try and stay away from it!
                         seenRavager = true;
                     }
                     if (eventPrompt == "onAstrumDeus")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.104", Player.name); //This is.. a descendant of a cosmic god! {Player.name}, don't get reckless!
                         seenAstrumDeus = true;
                     }
@@ -9329,7 +9329,7 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onSignus")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.110", Player.name); //Someone.. or something.. is approaching. It can shapeshift at will! Get ready!
                         seenSignus = true;
                     }
@@ -9341,13 +9341,13 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onOldDuke")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.112", Player.name); //The acid ocean has spat out a monster! Wait until it gets tired to strike!
                         seenOldDuke = true;
                     }
                     if (eventPrompt == "onDog")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.113", Player.name); //The Devourer of Gods has arrived! Fight! Fight with all your strength!
                         seenDog = true;
                     }
@@ -9359,7 +9359,7 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onYharonDespawn")
                     {
-                        promptExpression = 4;
+                        promptExpression = 3;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.115", Player.name); //Huh? Where's it going? We were in the middle of something!
                         seenYharonDespawn = true;
                     }
@@ -9377,7 +9377,7 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onArtemis")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.118", Player.name); //Twin mechanical eyes- incredibly powerful. Don't get overwhelmed..!
                         seenArtemis = true;
                     }
@@ -9390,7 +9390,7 @@ namespace StarsAbove
                     if (eventPrompt == "onAres")
                     {
                        
-                        promptExpression = 2;
+                        promptExpression = 1;
                         //promptDialogue = $"Heads up, {Player.name}!" +
                         //                $" That machine is blotting out the sky!";
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.120", Player.name);//Heads up, {0}! Looks like that machine's blotting out the whole sky!
@@ -9413,7 +9413,7 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onEridanus")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.123", Player.name);
                         //promptDialogue = $"Hah? Just look at this muppet... thinking he's better than us or something!" +
                         //                $" Give him a good whallop!";
@@ -9429,7 +9429,7 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onMutant")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.125", Player.name);
                         //promptDialogue = $"If I had a nickel for times you've thrown voodoo dolls into lava... Never mind." +
                         //                $" Mutant's super upset, super strong, and super coming straight for you.";
@@ -9437,49 +9437,49 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onScarabeus")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.194", Player.name);
                         seenScarabeus = true;
                     }
                     if (eventPrompt == "onMoonJellyWizard")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.195", Player.name);
                         seenMoonJellyWizard = true;
                     }
                     if (eventPrompt == "onVinewrathBane")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.196", Player.name);
                         seenVinewrathBane = true;
                     }
                     if (eventPrompt == "onAncientAvian")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.197", Player.name);
                         seenAncientAvian = true;
                     }
                     if (eventPrompt == "onStarplateVoyager")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.198", Player.name);
                         seenStarplateVoyager = true;
                     }
                     if (eventPrompt == "onInfernon")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.199", Player.name);
                         seenInfernon = true;
                     }
                     if (eventPrompt == "onDusking")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.200", Player.name);
                         seenDusking = true;
                     }
                     if (eventPrompt == "onAtlas")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.201", Player.name);
                         seenAtlas = true;
                     }
@@ -9541,13 +9541,13 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onAbyssion")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.135", Player.name); //The Abyssal Shadows are converging! I sense powerful dark magic from this sea creature..
                         seenAbyssion = true;
                     }
                     if (eventPrompt == "onPrimordials")
                     {
-                        promptExpression = 6;
+                        promptExpression = 5;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.136", Player.name); //The elements themselves are on the hunt. Let's show them a thing or two!
                         seenPrimordials = true;
                     }
@@ -9593,7 +9593,7 @@ namespace StarsAbove
                     //Upon entering a biome for the first time..
                     if (eventPrompt == "onEnterDesert")
                     {
-                        promptExpression = 5;
+                        promptExpression = 2;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.137", Player.name); //It's sweltering here. Deserts will be the same wherever you are, I guess.
                         seenDesertBiome = true;
                     }
@@ -9611,7 +9611,7 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onEnterSpace")
                     {
-                        promptExpression = 6;
+                        promptExpression = 5;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.140", Player.name); //Isn't it nice up here?  
                         seenSpaceBiome = true;
                     }
@@ -9629,7 +9629,7 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onEnterCrimson")
                     {
-                        promptExpression = 5;
+                        promptExpression = 2;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.143", Player.name); //The ground here feels like flesh. I feel like we shouldn't stay long- but that's obvious..
                         seenCrimsonBiome = true;
                     }
@@ -9647,7 +9647,7 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onEnterMushroom")
                     {
-                        promptExpression = 6;
+                        promptExpression = 5;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.146", Player.name); //Whoa! This place is funky. You don't see these mushrooms every day.
                         seenGlowingMushroomBiome = true;
                     }
@@ -9659,7 +9659,7 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onEnterMeteorite")
                     {
-                        promptExpression = 6;
+                        promptExpression = 5;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.148", Player.name); //So this is the meteor impact we heard. I bet we can make some crazy stuff with a meteorite.
                         seenMeteoriteBiome = true;
                     }
@@ -9693,7 +9693,7 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onEnterSulphurSea")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.152", Player.name); //Whatever was done to this place is irreversible. This ocean has been stained red with blood.
                         seenSulphurSeaBiome = true;
                     }
@@ -9728,7 +9728,7 @@ namespace StarsAbove
                     //Upon certain weather conditions..
                     if (eventPrompt == "onRain")
                     {
-                        promptExpression = 6;
+                        promptExpression = 5;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.157", Player.name); //Looks like it started raining. Hopefully this doesn't put a damper on things.. heh.
                         seenRain = true;
                     }
@@ -9752,12 +9752,12 @@ namespace StarsAbove
 
                         if (randomDialogue == 0)
                         {
-                            promptExpression = 6;
+                            promptExpression = 5;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.160", Player.name); //Time and space bend to my will!
                         }
                         if (randomDialogue == 1)
                         {
-                            promptExpression = 3;
+                            promptExpression = 4;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.161", Player.name); //Not on my watch!
                         }
                         if (randomDialogue == 2)
@@ -9772,7 +9772,7 @@ namespace StarsAbove
 
                         if (randomDialogue == 0)
                         {
-                            promptExpression = 2;
+                            promptExpression = 1;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.163", Player.name); //By your undying rage..!
                         }
                         if (randomDialogue == 1)
@@ -9813,12 +9813,12 @@ namespace StarsAbove
 
                         if (randomDialogue == 0)
                         {
-                            promptExpression = 2;
+                            promptExpression = 1;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.169", Player.name); //Let's show them our power.
                         }
                         if (randomDialogue == 1)
                         {
-                            promptExpression = 3;
+                            promptExpression = 4;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.170", Player.name); //I'm ready to unleash my power!
                         }
                         if (randomDialogue == 2)
@@ -9833,12 +9833,12 @@ namespace StarsAbove
                         }
                         if (randomDialogue == 4)
                         {
-                            promptExpression = 3;
+                            promptExpression = 4;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.173", Player.name); //Just tell me when.
                         }
                         if (randomDialogue == 5)
                         {
-                            promptExpression = 6;
+                            promptExpression = 5;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.174", Player.name); //Here we go.
                         }
                     }
@@ -9858,19 +9858,19 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onCitadel")
                     {
-                        promptExpression = 4;
+                        promptExpression = 3;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.177", Player.name); //We've made it. This planet is strange.. The surface has been wiped clean... What happened?
                         seenBleachedPlanet = true;
                     }
                     if (eventPrompt == "onConfluence")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.178", Player.name); //She was so close all along... Use the Mnemonic Sigil on the arena's center to begin.
                         seenConfluence = true;
                     }
                     if (eventPrompt == "onCity")
                     {
-                        promptExpression = 4;
+                        promptExpression = 3;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.179", Player.name); //It looks like we can't explore this yet... Maybe next time.
                         seenCity = true;
                     }
@@ -9966,7 +9966,7 @@ namespace StarsAbove
                     {
                         starfarerPromptActiveTimer = starfarerPromptActiveTimerSetting;
                         randomDialogue = Main.rand.Next(0, 3);
-                        promptExpression = 5;
+                        promptExpression = 2;
                         if (randomDialogue == 0)
                         {
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.15", Player.name); //Whoops.
@@ -9996,7 +9996,7 @@ namespace StarsAbove
                         }
                         if (randomDialogue == 2)
                         {
-                            promptExpression = 3;
+                            promptExpression = 4;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.20", Player.name); //Well fought.
                         }
                         if (randomDialogue == 3)
@@ -10006,7 +10006,7 @@ namespace StarsAbove
                         }
                         if (randomDialogue == 4)
                         {
-                            promptExpression = 6;
+                            promptExpression = 5;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.22", Player.name); //You're pretty good at this.
                         }
                         if (randomDialogue == 5)
@@ -10016,7 +10016,7 @@ namespace StarsAbove
                         }
                         if (randomDialogue == 6)
                         {
-                            promptExpression = 3;
+                            promptExpression = 4;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.24", Player.name); //They'll never beat us.
                         }
                         if (randomDialogue == 7)
@@ -10046,7 +10046,7 @@ namespace StarsAbove
                         }
                         if (randomDialogue == 12)
                         {
-                            promptExpression = 3;
+                            promptExpression = 4;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.30", Player.name); //Wasn't even a problem.
                         }
                         if (randomDialogue == 13)
@@ -10056,7 +10056,7 @@ namespace StarsAbove
                         }
                         if (randomDialogue == 14)
                         {
-                            promptExpression = 6;
+                            promptExpression = 5;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.32", Player.name); //Good going.
                         }
                         if (randomDialogue == 15)
@@ -10066,7 +10066,7 @@ namespace StarsAbove
                         }
                         if (randomDialogue == 16)
                         {
-                            promptExpression = 3;
+                            promptExpression = 4;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.34", Player.name); //How could we ever lose?
                         }
                         if (randomDialogue == 17)
@@ -10093,17 +10093,17 @@ namespace StarsAbove
 
                         if (randomDialogue == 0)
                         {
-                            promptExpression = 4;
+                            promptExpression = 3;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.38", Player.name); //That was a little close for comfort..
                         }
                         if (randomDialogue == 1)
                         {
-                            promptExpression = 4;
+                            promptExpression = 3;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.39", Player.name); //That's over with, but we're still in trouble.
                         }
                         if (randomDialogue == 2)
                         {
-                            promptExpression = 4;
+                            promptExpression = 3;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.40", Player.name); //That was close.
                         }
                     }
@@ -10113,12 +10113,12 @@ namespace StarsAbove
                         starfarerPromptActiveTimer = 150;
                         if (randomDialogue == 0)
                         {
-                            promptExpression = 6;
+                            promptExpression = 5;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.41", Player.name); //Finally. It's defeated.
                         }
                         if (randomDialogue == 1)
                         {
-                            promptExpression = 3;
+                            promptExpression = 4;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.42", Player.name); //You bested it, finally. Good job.
                         }
                         if (randomDialogue == 2)
@@ -10133,27 +10133,27 @@ namespace StarsAbove
                         starfarerPromptActiveTimer = starfarerPromptActiveTimerSetting;
                         if (randomDialogue == 0)
                         {
-                            promptExpression = 6;
+                            promptExpression = 5;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.44", Player.name); //Perfect attack!
                         }
                         if (randomDialogue == 1)
                         {
-                            promptExpression = 6;
+                            promptExpression = 5;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.45", Player.name); //A critical hit!
                         }
                         if (randomDialogue == 2)
                         {
-                            promptExpression = 3;
+                            promptExpression = 4;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.46", Player.name); //Expertly done.
                         }
                         if (randomDialogue == 3)
                         {
-                            promptExpression = 3;
+                            promptExpression = 4;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.47", Player.name); //Nice, you hit their weak spot.
                         }
                         if (randomDialogue == 4)
                         {
-                            promptExpression = 6;
+                            promptExpression = 5;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.48", Player.name); //That was great!
                         }
                         if (randomDialogue == 5)
@@ -10173,7 +10173,7 @@ namespace StarsAbove
                         }
                         if (randomDialogue == 1)
                         {
-                            promptExpression = 5;
+                            promptExpression = 2;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.51", Player.name); //Are you alright?
                         }
                         if (randomDialogue == 2)
@@ -10183,17 +10183,17 @@ namespace StarsAbove
                         }
                         if (randomDialogue == 3)
                         {
-                            promptExpression = 4;
+                            promptExpression = 3;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.53", Player.name); //This could be going better..
                         }
                         if (randomDialogue == 4)
                         {
-                            promptExpression = 4;
+                            promptExpression = 3;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.54", Player.name); //Oww..
                         }
                         if (randomDialogue == 5)
                         {
-                            promptExpression = 5;
+                            promptExpression = 2;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.55", Player.name); //Yikes.
                         }
                     }
@@ -10208,12 +10208,12 @@ namespace StarsAbove
                         }
                         if (randomDialogue == 1)
                         {
-                            promptExpression = 5;
+                            promptExpression = 2;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.57", Player.name); //That is.. not good.
                         }
                         if (randomDialogue == 2)
                         {
-                            promptExpression = 2;
+                            promptExpression = 1;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.58", Player.name); //They'll pay for that..
                         }
                     }
@@ -10230,70 +10230,70 @@ namespace StarsAbove
                         }
                         if (randomDialogue == 1)
                         {
-                            promptExpression = 2;
+                            promptExpression = 1;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.60", Player.name); //I can sense powerful energy approaching. Ready or not, it's time for a fight.
                         }
                         if (randomDialogue == 2)
                         {
-                            promptExpression = 2;
+                            promptExpression = 1;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.61", Player.name); //A strong opponent draws near. Prepare yourself.
                         }
                         if (randomDialogue == 3)
                         {
-                            promptExpression = 2;
+                            promptExpression = 1;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.62", Player.name); //Stay alert, {0}. Something powerful is on its way.
                         }
                         if (randomDialogue == 4)
                         {
-                            promptExpression = 2;
+                            promptExpression = 1;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.63", Player.name); //Danger approaches. We will show no mercy.
                         }
                     }
                     if (eventPrompt == "onEyeOfCthulhu")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.64", Player.name); //Here it comes. Whatever it is, it's dangerous. Take extra care when it's weak; it'll be forced into a frenzy.
                         seenEyeOfCthulhu = true;
                     }
                     if (eventPrompt == "onKingSlime")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.65", Player.name); //That's a.. giant slime. It seems to be able to move really quickly. Watch for that.
                         seenKingSlime = true;
                     }
                     if (eventPrompt == "onEaterOfWorlds")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.66", Player.name); //This must be the Eater of Worlds. It'll try and suprise you from below.
                         seenEaterOfWorlds = true;
                     }
                     if (eventPrompt == "onBrainOfCthulhu")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.67", Player.name); //Watch out. It's trying to attack your mind itself. Pay close attention to the mirages.
                         seenBrainOfCthulhu = true;
                     }
                     if (eventPrompt == "onQueenBee")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.68", Player.name); //That giant bee is attacking! Don't get caught in the honey!
                         seenQueenBee = true;
                     }
                     if (eventPrompt == "onSkeletron")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.69", Player.name); //The Clothier has turned into.. this.. Stay away from its skull and arms.
                         seenSkeletron = true;
                     }
                     if (eventPrompt == "onWallOfFlesh")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.70", Player.name); //This thing is incredibly strong.. Whatever you do, keep running..!
                         seenWallOfFlesh = true;
                     }
                     if (eventPrompt == "onTwins")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.71", Player.name); //The Eye of Cthulhu is back? Wait, there's two of them..! Try and focus one at a time!
                         seenTwins = true;
                     }
@@ -10305,85 +10305,85 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onQueenSlime")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.73", Player.name); //Looks to be another type of gigantic slime. I have a feeling it'll use minions to do its bidding.
                         seenQueenSlime = true;
                     }
                     if (eventPrompt == "onEmpress")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.74", Player.name); //Something dangerous stirs in the Hallow... It looks to draw overwhelming power during the daytime!
                         seenEmpress = true;
                     }
                     if (eventPrompt == "onDestroyer")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.75", Player.name); //The Destroyer approaches.. Let's try using area-of-effect attacks against it.
                         seenDestroyer = true;
                     }
                     if (eventPrompt == "onSkeletronPrime")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.76", Player.name); //Skeletron is back, and better than ever! Try prioritizing the appendages first.
                         seenSkeletronPrime = true;
                     }
                     if (eventPrompt == "onPlantera")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.77", Player.name); //The menace of the Jungle is attacking..! Don't get stuck on your surroundings!
                         seenPlantera = true;
                     }
                     if (eventPrompt == "onGolem")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.78", Player.name); //The Lizhard's beast is awake! Mind the Jungle Temple's traps during this fight.
                         seenGolem = true;
                     }
                     if (eventPrompt == "onDukeFishron")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.79", Player.name); //You've reeled in a dangerous foe! Stay near the sea lest it become enraged!
                         seenDukeFishron = true;
                     }
                     if (eventPrompt == "onLunaticCultist")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.80", Player.name); //It's a Lunatic Cultist.. You have to defeat them before they can summon calamity!
                         seenCultist = true;
                     }
                     if (eventPrompt == "onMoonLord")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.81", Player.name); //The Moon Lord.. We come face to face with a god. We have to win this! There's no other option!
                         seenMoonLord = true;
                     }
                     if (eventPrompt == "onWarriorOfLight")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.82", Player.name); //The Warrior of Light approaches.. His Limit Breaks are incredibly strong!
                         seenWarriorOfLight = true;
                     }
                     if (eventPrompt == "onVagrant")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.83", Player.name); //Something about this foe seems familiar... Your attacks won't work; just try and survive!
                         seenVagrant = true;
                     }
                     if (eventPrompt == "onNalhaun")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.84", Player.name); //Don't underestimate this king of eld! Take back the lifeforce he's stealing!
                         seenNalhaun = true;
                     }
                     if (eventPrompt == "onPenth")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.85", Player.name); //She's covering you with paint. Take careful note of your color!
                         seenPenth = true;
                     }
                     if (eventPrompt == "onArbiter")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.86", Player.name); //It seems to be able to swap forms! Try to memorize its attacks..!
                         seenArbiter = true;
                     }
@@ -10391,7 +10391,7 @@ namespace StarsAbove
 
                     if (eventPrompt == "onDesertScourge")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.87", Player.name); //Something's tunneling in the sand..! Try and get off the ground!
                         seenDesertScourge = true;
                     }
@@ -10403,13 +10403,13 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onHiveMind")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.89", Player.name); //The corruption has spewed out a new beast. Look out for its barrage of minions.
                         seenHiveMind = true;
                     }
                     if (eventPrompt == "onPerforators")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.90", Player.name); //Flesh beasts draw near..! Focus your attention on the Hive!
                         seenPerforators = true;
                     }
@@ -10422,7 +10422,7 @@ namespace StarsAbove
                     //Hardmode Calamity Bosses
                     if (eventPrompt == "onCryogen")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.91", Player.name); //This foe radiates mystic ice. Stay away from it- those icy spikes are not for show.
                         seenCryogen = true;
                     }
@@ -10436,7 +10436,7 @@ namespace StarsAbove
                         }
                         else
                         {
-                            promptExpression = 2;
+                            promptExpression = 1;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.93", Player.name); //A colossal serpent makes its way towards us.. It may overwhelm you.. don't get reckless.
                         }
 
@@ -10444,13 +10444,13 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onBrimstoneElemental")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.94", Player.name); //That Charred Idol has summoned a flaming spirit.. It can teleport everywhere- don't lose track of it.
                         seenBrimstoneElemental = true;
                     }
                     if (eventPrompt == "onCalamitas")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.95", Player.name); //Calamitas.. With a name like that, it begs respect. We've seen what it can do. You musn't lose this fight.
                         seenCalamitas = true;
                     }
@@ -10464,7 +10464,7 @@ namespace StarsAbove
                         else
                         {
 
-                            promptExpression = 4;
+                            promptExpression = 3;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.97", Player.name); //Can you hear that, {0}? Something's singing in the ocean?
 
                         }
@@ -10473,37 +10473,37 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onAnahita")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.98", Player.name); //Ah.. It looks like you've angered her. I hope you're prepared for a fight..
                         seenAnahita = true;
                     }
                     if (eventPrompt == "onLeviathan")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.99", Player.name); //What in the world.. It's massive! Take caution; the playing field has changed!
                         seenLeviathan = true;
                     }
                     if (eventPrompt == "onAstrumAureus")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.100", Player.name); //It's a mechanical beast, but it's been corrupted by the Astral Infection. Stay cautious.
                         seenAstrumAureus = true;
                     }
                     if (eventPrompt == "onPlaguebringer")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.101", Player.name); //Ugh. It's a disgusting bug, but now it has artillery. When it gets wounded, those missiles will likely detonate.
                         seenPlaguebringer = true;
                     }
                     if (eventPrompt == "onRavager")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.102", Player.name); //Yuck. It's a huge pile of flesh and bones. From what I can tell, getting too close will end you fast.
                         seenRavager = true;
                     }
                     if (eventPrompt == "onAstrumDeus")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.103", Player.name); //This is a descendant of a cosmic god! We can't lose to something like this!
                         seenAstrumDeus = true;
                     }
@@ -10540,7 +10540,7 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onSignus")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.109", Player.name); //A demon is approaching..! Watch out! Whatever it wants, it'll kill you for it!
                         seenSignus = true;
                     }
@@ -10558,38 +10558,38 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onDog")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.112", Player.name); //The Devourer of Gods has appeared! You must give this battle your all!
                         seenDog = true;
                     }
                     if (eventPrompt == "onYharon")
                     {
-                        promptExpression = 3;
+                        promptExpression = 4;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.113", Player.name); //The Jungle Dragon roars. Let's throw a wrench in Yharim's plans.
                         seenYharon = true;
                     }
                     if (eventPrompt == "onYharonDespawn")
                     {
-                        promptExpression = 4;
+                        promptExpression = 3;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.114", Player.name); //Where's it going? Were we.. not strong enough?
                         seenYharonDespawn = true;
                     }
                     if (eventPrompt == "onSupremeCalamitas")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.115", Player.name); //No way.. Its power is ineffable. {Player.name}.. We have to win this!
                         seenSupremeCalamitas = true;
                     }
                     //Draedon Update
                     if (eventPrompt == "onDraedon")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.116", Player.name); //Draedon is here... Be mindful of his tactics. His knowledge spans the world over.
                         seenDraedon = true;
                     }
                     if (eventPrompt == "onArtemis")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.117", Player.name); //Stay sharp. Multiple foes detected. Draedon's inventions are on the move.
                         seenArtemis = true;
                     }
@@ -10601,7 +10601,7 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onAres")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.178", Player.name); //A being of the apocalypse has appeared. It wields destruction in all its appendages!
 
                         seenAres = true;
@@ -10623,7 +10623,7 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onEridanus")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.121", Player.name); //Who does this guy think he is, wielding celestial power all willy-nilly? Not to mention... Ugh- I don't have to spell it out, do I?
 
                         
@@ -10639,7 +10639,7 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onMutant")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.123", Player.name); //Oh, you just HAD to throw that thing into lava, did you? Well, good luck, because Mutant is pissed. Didn't see that coming- wait, I did.
 
                         
@@ -10647,49 +10647,49 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onScarabeus")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.196", Player.name);
                         seenScarabeus = true;
                     }
                     if (eventPrompt == "onMoonJellyWizard")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.197", Player.name);
                         seenMoonJellyWizard = true;
                     }
                     if (eventPrompt == "onVinewrathBane")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.198", Player.name);
                         seenVinewrathBane = true;
                     }
                     if (eventPrompt == "onAncientAvian")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.199", Player.name);
                         seenAncientAvian = true;
                     }
                     if (eventPrompt == "onStarplateVoyager")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.200", Player.name);
                         seenStarplateVoyager = true;
                     }
                     if (eventPrompt == "onInfernon")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.201", Player.name);
                         seenInfernon = true;
                     }
                     if (eventPrompt == "onDusking")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.202", Player.name);
                         seenDusking = true;
                     }
                     if (eventPrompt == "onAtlas")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.203", Player.name);
                         seenAtlas = true;
                     }
@@ -10751,7 +10751,7 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onAbyssion")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.133", Player.name); //The Abyssal Shadows are converging..! This sea monster holds dominion over dark magic!
                         seenAbyssion = true;
                     }
@@ -10802,7 +10802,7 @@ namespace StarsAbove
                     //Upon entering a biome for the first time..
                     if (eventPrompt == "onEnterDesert")
                     {
-                        promptExpression = 4;
+                        promptExpression = 3;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.135", Player.name); //It's a desert. Seriously.. I'm no fan of heat- and it's hot.
                         seenDesertBiome = true;
                     }
@@ -10814,7 +10814,7 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onEnterSpace")
                     {
-                        promptExpression = 6;
+                        promptExpression = 5;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.137", Player.name); //You're nearing the limit of breathable air. I do not recommend burning up in the atmosphere. Don't ask.
                         seenSpaceBiome = true;
                     }
@@ -10838,7 +10838,7 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onEnterCrimson")
                     {
-                        promptExpression = 5;
+                        promptExpression = 2;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.141", Player.name); //This place is.. disgusting. Let's not stay longer than we have to.
                         seenCrimsonBiome = true;
                     }
@@ -10856,7 +10856,7 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onEnterMushroom")
                     {
-                        promptExpression = 6;
+                        promptExpression = 5;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.144", Player.name); //Giant glowing mushrooms.. It feels rather.. welcoming? We should take some back home, just in case.
                         seenGlowingMushroomBiome = true;
                     }
@@ -10868,7 +10868,7 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onEnterMeteorite")
                     {
-                        promptExpression = 4;
+                        promptExpression = 3;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.146", Player.name); //So this is the meteor impact we heard. Wonder what you can make out of it..?
                         seenMeteoriteBiome = true;
                     }
@@ -10903,7 +10903,7 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onEnterSulphurSea")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.150", Player.name); //This was once a pleasant coastline. What happened here..?
                         seenSulphurSeaBiome = true;
                     }
@@ -10963,12 +10963,12 @@ namespace StarsAbove
 
                         if (randomDialogue == 0)
                         {
-                            promptExpression = 6;
+                            promptExpression = 5;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.158", Player.name); //Time and space bend to my will!
                         }
                         if (randomDialogue == 1)
                         {
-                            promptExpression = 3;
+                            promptExpression = 4;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.159", Player.name); //Let's try that again, shall we?
                         }
                         if (randomDialogue == 2)
@@ -10983,7 +10983,7 @@ namespace StarsAbove
 
                         if (randomDialogue == 0)
                         {
-                            promptExpression = 2;
+                            promptExpression = 1;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.161", Player.name); //March forth, and keep fighting!
                         }
                         if (randomDialogue == 1)
@@ -11003,17 +11003,17 @@ namespace StarsAbove
 
                         if (randomDialogue == 0)
                         {
-                            promptExpression = 3;
+                            promptExpression = 4;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.164", Player.name); //They'll all fall before us.
                         }
                         if (randomDialogue == 1)
                         {
-                            promptExpression = 3;
+                            promptExpression = 4;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.165", Player.name); //Like lambs to slaughter!
                         }
                         if (randomDialogue == 2)
                         {
-                            promptExpression = 3;
+                            promptExpression = 4;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.166", Player.name); //We'll finish them all off!
                         }
                     }
@@ -11024,12 +11024,12 @@ namespace StarsAbove
 
                         if (randomDialogue == 0)
                         {
-                            promptExpression = 2;
+                            promptExpression = 1;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.167", Player.name); //I'm ready when you are.
                         }
                         if (randomDialogue == 1)
                         {
-                            promptExpression = 3;
+                            promptExpression = 4;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.168", Player.name); //The Stellar Nova is ready!
                         }
                         if (randomDialogue == 2)
@@ -11044,7 +11044,7 @@ namespace StarsAbove
                         }
                         if (randomDialogue == 4)
                         {
-                            promptExpression = 3;
+                            promptExpression = 4;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.171", Player.name); //Just tell me when.
                         }
                         if (randomDialogue == 5)
@@ -11069,19 +11069,19 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onCitadel")
                     {
-                        promptExpression = 4;
+                        promptExpression = 3;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.175", Player.name); //This is it. An entire planet that's devoid of color? The surface looks like it was wiped away somehow...
                         seenBleachedPlanet = true;
                     }
                     if (eventPrompt == "onConfluence")
                     {
-                        promptExpression = 2;
+                        promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.176", Player.name); //She was here the whole time...? Well.. I'm ready when you are. Use the Sigil in the middle.
                         seenConfluence = true;
                     }
                     if (eventPrompt == "onCity")
                     {
-                        promptExpression = 4;
+                        promptExpression = 3;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.177", Player.name); //It looks like we can't explore this yet... Maybe next time.
                         seenCity = true;
                     }
