@@ -49,27 +49,10 @@ namespace StarsAbove.NPCs
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-			if (EverlastingLightEvent.isEverlastingLightActive && SubworldSystem.Current == null)
-            {
-				return SpawnCondition.OverworldDaySlime.Chance;
-			}
-			else
-            {
-				return 0f;
-			}
-                   
-			
-		}
+		
 		public override void AI()
 		{
-			if (!EverlastingLightEvent.isEverlastingLightActive)
-			{
-				NPC.HitEffect();
-				NPC.life = 0;
-				NPC.active = false;
-				NPC.netUpdate = true;
-			}
+			
 			base.AI();
 		}
 		public override void HitEffect(NPC.HitInfo hit) {
