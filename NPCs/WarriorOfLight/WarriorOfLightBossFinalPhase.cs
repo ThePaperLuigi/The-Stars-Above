@@ -92,7 +92,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 350000;
+			NPC.lifeMax = 314000;
 			NPC.damage = 0;
 			NPC.defense = 45;
 			NPC.knockBackResist = 0f;
