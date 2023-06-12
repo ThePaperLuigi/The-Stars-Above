@@ -6,7 +6,7 @@ using StarsAbove.Items.Materials;
 using StarsAbove.Items.Prisms;
 using Terraria.GameContent.Creative;
 
-namespace StarsAbove.Items.Armor
+namespace StarsAbove.Items.Vanity
 {
     [AutoloadEquip(EquipType.Head)]
 	

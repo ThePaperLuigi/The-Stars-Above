@@ -7717,7 +7717,7 @@ Mods: {
 
 			Blueprint: {
 				DisplayName: Blueprint
-				Tooltip: Drastically increases block placement range when standing still
+				Tooltip: Drastically increases block placement range while stationary
 			}
 
 			DoubledPawns: {
@@ -7775,8 +7775,13 @@ Mods: {
 				Tooltip:
 					'''
 					Teleports all distant players in Multiplayer to your position (10 minute cooldown)
-					Grants Invincibility for 2 seconds if a boss is active
+					Grants Invincibility on teleportation for 2 seconds if a boss is active
 					'''
+			}
+
+			QuantumButterflyTop: {
+				DisplayName: Quantum Butterfly Top
+				Tooltip: ""
 			}
 		}
 

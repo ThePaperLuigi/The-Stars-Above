@@ -485,6 +485,9 @@ Mods: {
 					// 91: Hmm, I'd advise healthy amounts of caution with this Essence- it's a Melee essence with high potential, but it looks like you're leaving your defenses open for it.
 					// 92: Looks to me like this Magic Essence has some powerful potential, but I'm not quite sure what it requires in turn... Perhaps you should give it a look.
 					// 93: You aren't going to believe this, but this Essence was sitting in an alleyway. Just sitting there! You should craft it and see what it makes- I'm curious too.
+					// 94: This Ranged-essence seems to lead to a classic rocket-launcher weapon- I've heard of using explosives for traversal, so it shouldn't hurt to try, right?
+					// 95: Well, this Magic Essence is pretty unique: you can draw directly onto the world to cause different effects to occur.
+					// 96: Looks like a yo-yo Essence is here- a Summon-type one as well. Seems to boast some helpful movement tools as well!
 				}
 
 				Eridani: {
@@ -583,6 +586,9 @@ Mods: {
 					// 93: A Magic-type essence. It seems to harbor incredible power, but it also seems to require sacrifices in return...
 					// 94: How can I say this...? Unlike the other Essences, this one was located in... an alley. Just sitting there. It was quite the departure from the norm.
 					// 95: It seems to be able to absorb hostile energy and use it to empower you in turn. I, too, am curious on how it looks.
+					// 96: This Ranged-type rocket launcher has a unique melee counterpart, but it requires you to- well, I hope you have strong legs.
+					// 97: Take into consideration this Magic essence: in short, it turns the world into a canvas you can interact and attack with.
+					// 98: Here is a new Essence for your perusal- it'll deal Summon damage. It's rather close-ranged but boasts movement capabilities to help close the gap.
 				}
 
 				Perseus: {
@@ -7683,6 +7689,11 @@ Mods: {
 					Teleports all distant players in Multiplayer to your position (10 minute cooldown)
 					Grants Invincibility for 2 seconds if a boss is active
 					''' */
+			}
+
+			QuantumButterflyTop: {
+				// DisplayName: Quantum Butterfly Top
+				// Tooltip: ""
 			}
 		}
 
