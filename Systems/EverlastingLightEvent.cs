@@ -81,7 +81,6 @@ namespace StarsAbove
 
 		public override void NetReceive(BinaryReader reader)
 		{
-
 			BitsByte flags = reader.ReadByte();
 			isEverlastingLightActive = flags[0];
 			isEverlastingLightPreviewActive = flags[1];
@@ -120,7 +119,7 @@ namespace StarsAbove
                 }
                 else
                 {
-                    isEverlastingLightActive = false;
+                    //isEverlastingLightActive = false;
 
                 }
 
