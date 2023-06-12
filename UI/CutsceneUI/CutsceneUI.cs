@@ -127,6 +127,7 @@ namespace StarsAbove.UI.CutsceneUI
 
         private void AstarteDriver(StarsAbovePlayer modPlayer)
         {
+            UIVideo Video = edinGenesisQuasarVideo;
             bool CutsceneExit = false;
             if (modPlayer.astarteCutsceneProgress <= 60 && modPlayer.astarteCutsceneProgress > 0)
             {
@@ -148,22 +149,19 @@ namespace StarsAbove.UI.CutsceneUI
 
                 edinGenesisQuasarVideo.FinishedVideo = false;
                 edinGenesisQuasarVideo.StartVideo = true;
-                CutsceneExit = true;
                 area.Append(edinGenesisQuasarVideo);
 
             }
-            if (edinGenesisQuasarVideo.FinishedVideo)
+            if (Video.FinishedVideo)
             {
-                if (CutsceneExit)
-                {
-                    CutsceneExitAlpha = 1f;
-                    CutsceneExit = false;
-                }
+                Video.FinishedVideo = false;
+
+                Main.LocalPlayer.GetModPlayer<BossPlayer>().WhiteAlpha = 1f;
 
                 edinGenesisQuasarVideo.Remove();
             }
         }
-        
+
         private void NalhaunCutscene(BossPlayer modPlayer)
         {
             UIVideo Video = nalhaunCutsceneVideo;
@@ -189,11 +187,9 @@ namespace StarsAbove.UI.CutsceneUI
             }
             if (Video.FinishedVideo)
             {
-                if (cutsceneExit)
-                {
-                    modPlayer.BlackAlpha = 1f;
-                    cutsceneExit = false;
-                }
+                Video.FinishedVideo = false;
+
+                modPlayer.BlackAlpha = 1f;
 
                 Video.Remove();
             }
@@ -235,6 +231,9 @@ namespace StarsAbove.UI.CutsceneUI
             }
             if (Video.FinishedVideo)
             {
+                Video.FinishedVideo = false;
+
+                modPlayer.BlackAlpha = 1f;
                 Video.Remove();
             }
         }
@@ -275,6 +274,9 @@ namespace StarsAbove.UI.CutsceneUI
             }
             if(Video.FinishedVideo)
             {
+                Video.FinishedVideo = false;
+
+                modPlayer.WhiteAlpha = 1f;
                 Video.Remove();
             }
             
