@@ -11,7 +11,7 @@ namespace StarsAbove.Items.Placeable
 		{
 			DisplayName.SetDefault("Music Box (Penthesilea)");
 			Tooltip.SetDefault("" +
-				"'Mage of Violet (Instrumental)' - Hololive Productions" +
+				"'Mage of Violet (Instrumental)'" +
 				"\nPerformed by Murasaki Shion"
 				+ $"\n");
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
