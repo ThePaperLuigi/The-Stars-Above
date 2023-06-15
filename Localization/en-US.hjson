@@ -5087,7 +5087,7 @@ Mods: {
 					Damage will increase with every shot
 					After the fourth shot is taken, the gun will take time to reload
 					If you land enough shots, your next reload will gain the strength of [c/66B2D1:Honed Edge]
-					Once you reload with [c/66B2D1:Honed Edge], the next shot will deal 10x the normal amount critically, and will then reload
+					Once you reload with [c/66B2D1:Honed Edge], the next shot will deal 5x the normal amount critically, and will then reload
 					Gain 100 mana if [c/66B2D1:Honed Edge]'s empowered shot hits an enemy
 					This mana increase does not apply if this weapon is attuned to Melee, but attack speed is drastically increased
 					You have permanent Swiftness when this weapon is in your hands
@@ -6482,12 +6482,11 @@ Mods: {
 					'''
 					[c/F7D76A:Hold left click to charge the weapon; if the weapon is fully charged, the attack varies]
 					Holding the weapon will cause the [c/8BD1D1:Duality Gauge] to appear, beginning 100% [c/C7FFFA:Sanctified]
-					Uncharged attacks sweep in a colossal area and influences the [c/8BD1D1:Duality Gauge] towards [c/C7FFFA:Sanctification]
-					Charged attacks deal damage over multiple hits to foes in front of you, and influences the [c/8BD1D1:Duality Gauge] towards [c/B60000:Volatility]
-					Holding charged attacks will drain mana rapidly
+					Left-click sweeps the weapon in a colossal area and influences the [c/8BD1D1:Duality Gauge] towards [c/C7FFFA:Sanctification]
+					Right-click swings the weapon, striking foes multiple times and influences the [c/8BD1D1:Duality Gauge] towards [c/B60000:Volatility]
 					When the [c/8BD1D1:Duality Gauge] is more than 50% [c/C7FFFA:Sanctified], gain access to [c/C7FFFA:Flash of Eternity]
 					When the [c/8BD1D1:Duality Gauge] is more than 50% [c/B60000:Volatile], gain the buff [c/B60000:Claws of Nyx]
-					When conditions are met, right click to activate [c/C7FFFA:Flash of Eternity], dashing towards your cursor (16 second cooldown)
+					When conditions are met, press the Weapon Action Key to activate [c/C7FFFA:Flash of Eternity], dashing towards your cursor (8 second cooldown)
 					The first instance of damage taken during [c/C7FFFA:Flash of Eternity] is negated
 					[c/B60000:Claws of Nyx] increases damage by 40% and crit chance by 20%
 					'Darkness comes from within'
