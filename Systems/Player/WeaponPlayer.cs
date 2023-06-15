@@ -1619,7 +1619,7 @@ namespace StarsAbove
                 if (edgeHoned)
                 {
                    modifiers.SourceDamage/= 2;  //remove vanilla 2x bonus
-                   modifiers.SourceDamage += 10f; //that's a lot of damage
+                   modifiers.SourceDamage += 5f; //that's a lot of damage
                     if (Player.GetModPlayer<StarsAbovePlayer>().MeleeAspect != 2)
                     {
                         Player.statMana += 100;
