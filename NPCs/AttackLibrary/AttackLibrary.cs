@@ -10283,7 +10283,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 						new Vector2(npc.Center.X - 600 + (i * 400), npc.Center.Y + 400), // Spawns here
 						Vector2.Zero, typeSolar, damage, 0f, Main.myPlayer, 240 + (i * 10), (i * 10), 0);
 					}
-					Projectile.NewProjectile(entitySource,
+					/*Projectile.NewProjectile(entitySource,
 						//Bottom left
 						new Vector2(npc.Center.X - 880, npc.Center.Y + 600), // Spawns here
 						Vector2.Zero, typeVortex, damage, 0f, Main.myPlayer, 120, 10, -45);
@@ -10296,7 +10296,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					//Upper left
 					Projectile.NewProjectile(entitySource,
 						new Vector2(npc.Center.X - 880, npc.Center.Y - 400), // Spawns here
-						Vector2.Zero, typeVortex, damage, 0f, Main.myPlayer, 120, 40, 45);
+						Vector2.Zero, typeVortex, damage, 0f, Main.myPlayer, 120, 40, 45);*/
 				}
 				#endregion
 
@@ -11976,10 +11976,13 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 
 					}
-					Projectile.NewProjectile(entitySource, new Vector2(npc.Center.X - 400, npc.Center.Y), Vector2.Zero, ProjectileType<Projectiles.Tsukiyomi.PlusPlanet>(), damage * 2, 0f, Main.myPlayer);
-					Projectile.NewProjectile(entitySource, new Vector2(npc.Center.X + 400, npc.Center.Y), Vector2.Zero, ProjectileType<Projectiles.Tsukiyomi.PlusPlanet>(), damage * 2, 0f, Main.myPlayer);
+					for (int i = 0; i < 4; i++)
+					{
+						Projectile.NewProjectile(entitySource,
+						new Vector2(npc.Center.X, npc.Center.Y - 300 + (i * 300)), // Spawns here
+						Vector2.Zero, ProjectileType<WarriorNebulaSummon>(), damage, 0f, Main.myPlayer, 240 + (i * 5), (i * 5), 180);
+					}
 
-					
 					for (int i = 0; i < 4; i++)
 					{
 						Projectile.NewProjectile(entitySource,
@@ -12107,12 +12110,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					}
 					Projectile.NewProjectile(entitySource, new Vector2(npc.Center.X, npc.Center.Y - 400), Vector2.Zero, ProjectileType<Projectiles.Tsukiyomi.PlusPlanet>(), damage * 2, 0f, Main.myPlayer);
 					Projectile.NewProjectile(entitySource, new Vector2(npc.Center.X, npc.Center.Y + 400), Vector2.Zero, ProjectileType<Projectiles.Tsukiyomi.PlusPlanet>(), damage * 2, 0f, Main.myPlayer);
-					for (int i = 0; i < 2; i++)
-					{
-						Projectile.NewProjectile(null,
-						new Vector2(npc.Center.X - 500 + (i * 1000), npc.Center.Y), // Spawns here
-						Vector2.Zero, ProjectileType<WarriorStardustSummon>(), damage, 0f, Main.myPlayer, 240 + (i * 20), (i * 30), 0);
-					}
+					
 				}
 
 				#endregion
