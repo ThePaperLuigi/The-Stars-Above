@@ -7750,6 +7750,26 @@ Mods: {
 				// DisplayName: Quantum Butterfly Top
 				// Tooltip: ""
 			}
+
+			StellarSpoils: {
+				// DisplayName: Stellar Spoils
+				// Tooltip: ""
+			}
+
+			StellarRemnant: {
+				// DisplayName: Stellar Remnant
+				// Tooltip: ""
+			}
+
+			QuantumButterflyBody: {
+				// DisplayName: Quantum Butterfly Body
+				// Tooltip: ""
+			}
+
+			QuantumButterflyLegs: {
+				// DisplayName: Quantum Butterfly Legs
+				// Tooltip: ""
+			}
 		}
 
 		UIElements: {

@@ -7,10 +7,10 @@ using Terraria.ID;
 using Terraria.GameContent.Creative;
 using StarsAbove.Systems;
 
-namespace StarsAbove.Items.Vanity
+namespace StarsAbove.Items.Vanity.QuantumButterfly
 {
     [AutoloadEquip(EquipType.Body)]
-	public class QuantumButterflyTop : ModItem
+	public class QuantumButterflyBody : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

@@ -6,11 +6,11 @@ using StarsAbove.Items.Materials;
 using StarsAbove.Items.Prisms;
 using Terraria.GameContent.Creative;
 
-namespace StarsAbove.Items.Vanity
+namespace StarsAbove.Items.Vanity.QuantumButterfly
 
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class StarArmorLegs : ModItem
+	public class QuantumButterflyLegs : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
