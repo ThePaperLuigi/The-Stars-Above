@@ -256,7 +256,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
                 if (AI_RotationNumber == 0)
                 {
 					//
-					TheBitterEnd(P, NPC);
+					BindingLight(P, NPC);
                     return;
                 }
 				else if (AI_RotationNumber == 1)

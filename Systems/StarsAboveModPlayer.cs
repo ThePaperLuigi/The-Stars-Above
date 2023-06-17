@@ -6753,7 +6753,7 @@ namespace StarsAbove
         }
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            if (Main.LocalPlayer.active && !Main.LocalPlayer.dead)
+            if (Main.LocalPlayer.active && !Main.LocalPlayer.dead && !Player.GetModPlayer<BossPlayer>().QTEActive)
             {
                 EdinGenesisQuasar();
                 if (chosenStellarNova == 1 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && chosenStellarNova != 0 && Main.LocalPlayer.HasBuff(BuffType<Buffs.TheofaniaTricast>()))//Theofania Tricast

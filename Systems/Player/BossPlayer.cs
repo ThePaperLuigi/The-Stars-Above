@@ -23,6 +23,7 @@ using StarsAbove.NPCs.Tsukiyomi;
 using StarsAbove.NPCs.Dioskouroi;
 using StarsAbove.Projectiles.Bosses;
 using StarsAbove.NPCs.WarriorOfLight;
+using StarsAbove.Buffs.Boss;
 
 namespace StarsAbove
 {
@@ -70,6 +71,10 @@ namespace StarsAbove
 
         public static bool DisableDamageModifier;
 
+        public bool QTEActive;
+        public float QTEProgress = 0;
+        public float QTEDifficulty = 3;
+
         float bossReductionMod;
         float decayRate = 0.8f;
         float stress;
@@ -97,6 +102,67 @@ namespace StarsAbove
         }
         public override void PreUpdate()
         {
+            if(QTEActive)
+            {
+                if (StarsAbove.novaKey.JustPressed)
+                {
+                    
+                    SoundEngine.PlaySound(SoundID.Item48, Player.Center);
+
+                    for (int d = 0; d < 3; d++)
+                    {
+                        Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-3, 3), 0f + Main.rand.Next(-3, 3), 0, default(Color), 1.5f);
+                    }
+                    Player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
+
+                    QTEProgress += 8;
+                }
+
+                //Depending on the debuff increase/decrease the severity of the QTE
+                if (Player.HasBuff(BuffType<BindingLight>()))
+                {
+                    for (int k = 0; k < 200; k++)
+                    {
+                        NPC npc = Main.npc[k];
+                        if (npc.active && npc.type == NPCType<WarriorOfLightBossFinalPhase>())
+                        {
+                            for (int ir = 0; ir < 50; ir++)
+                            {
+                                Vector2 positionNew = Vector2.Lerp(Player.Center, new Vector2(npc.Center.X, npc.Center.Y), (float)ir / 30);
+
+                                Dust da = Dust.NewDustPerfect(positionNew, DustID.FireworkFountain_Yellow, null, 240, default(Color), 1.7f);
+                                da.fadeIn = 0.3f;
+                                da.noLight = true;
+                                da.noGravity = true;
+
+                            }
+                            break;
+                        }
+                        
+
+                    }
+                    QTEDifficulty = 0.1f;
+                }
+
+                QTEProgress -= QTEDifficulty;
+                MathHelper.Clamp(QTEProgress, 0, 100);
+
+                if (QTEProgress >= 100)
+                {
+                    QTEProgress = 0;
+
+                    //Clear all buffs
+                    Player.ClearBuff(BuffType<BindingLight>());
+                    for (int d = 0; d < 20; d++)
+                    {
+                        Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-6, 6), 0, default(Color), 1.5f);
+                    }
+                    Player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
+                    SoundEngine.PlaySound(SoundID.Shatter, Player.Center);
+
+                }
+            }
+
             //Aggro marker.
             if(Main.netMode != NetmodeID.SinglePlayer && !disableBossAggro)
             {
@@ -248,10 +314,10 @@ namespace StarsAbove
            
         }
 
-
-
         public override void ResetEffects()
         {
+            QTEActive = false;
+
             CastTime = 0;
             CastTimeMax = 100;
 

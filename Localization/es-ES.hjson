@@ -33,6 +33,7 @@ Mods: {
 				// ChargeNova: The Warrior of Light charges his Stellar Nova!
 				// ChargeStarfarer: The Warrior of Light borrows his Starfarer's might!
 				// GardenOfAvalon: The Garden of Avalon shields the Warrior of Light from damage!
+				// QTE: Rapidly press the Stellar Nova button! ({0})!
 			}
 
 			// Dioskouroi.Clash: The Dioskouroi clash, equalizing their HP!
@@ -7691,11 +7692,6 @@ Mods: {
 					''' */
 			}
 
-			QuantumButterflyTop: {
-				// DisplayName: Quantum Butterfly Top
-				// Tooltip: ""
-			}
-
 			StellarSpoils: {
 				// DisplayName: Stellar Spoils
 				// Tooltip: ""
@@ -7703,16 +7699,20 @@ Mods: {
 
 			StellarRemnant: {
 				// DisplayName: Stellar Remnant
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					Leftover confluence from opened Stellar Spoils
+					Can be used to craft Stellar Spoil items
+					''' */
 			}
 
 			QuantumButterflyBody: {
-				// DisplayName: Quantum Butterfly Body
+				// DisplayName: Quantum Butterfly Garb
 				// Tooltip: ""
 			}
 
 			QuantumButterflyLegs: {
-				// DisplayName: Quantum Butterfly Legs
+				// DisplayName: Quantum Butterfly Boots
 				// Tooltip: ""
 			}
 		}
@@ -10705,6 +10705,11 @@ Mods: {
 			WarriorIceImbueBuff: {
 				// DisplayName: Warrior Ice Imbue Buff
 				// Description: Mods.StarsAbove.Buffs.WarriorIceImbueBuff.Description
+			}
+
+			BindingLight: {
+				// DisplayName: Binding Light
+				// Description: Mods.StarsAbove.Buffs.BindingLight.Description
 			}
 		}
 

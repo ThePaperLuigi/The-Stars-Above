@@ -17,6 +17,7 @@ using StarsAbove.UI.VN;
 using StarsAbove.UI.CelestialCartography;
 using StarsAbove.UI.IrminsulDream;
 using StarsAbove.UI.CutsceneUI;
+using StarsAbove.UI.QTEBar;
 
 namespace StarsAbove
 {
@@ -32,6 +33,9 @@ namespace StarsAbove
 
 		private UserInterface _CutsceneUI;
 		internal CutsceneUI CutsceneUI;
+
+		private UserInterface _QTEBar;
+		internal QTEBar QTEBar;
 
 		private UserInterface _ButterflyResourceBarUserInterface;
 		internal ButterflyResourceBar ButterflyResourceBar;
@@ -202,6 +206,10 @@ namespace StarsAbove
 				CutsceneUI = new CutsceneUI();
 				_CutsceneUI = new UserInterface();
 				_CutsceneUI.SetState(CutsceneUI);
+
+				QTEBar = new QTEBar();
+				_QTEBar = new UserInterface();
+				_QTEBar.SetState(QTEBar);
 
 				ButterflyResourceBar = new ButterflyResourceBar();
 				_ButterflyResourceBarUserInterface = new UserInterface();
@@ -423,6 +431,8 @@ namespace StarsAbove
 
 
 			_CutsceneUI?.Update(gameTime);
+			_QTEBar?.Update(gameTime);
+
 			_NanomachinaGaugeUserInterface?.Update(gameTime);
 			_ButterflyResourceBarUserInterface?.Update(gameTime);
 			_DreamersInkwellUIUserInterface?.Update(gameTime);
@@ -933,6 +943,15 @@ namespace StarsAbove
 					InterfaceScaleType.UI)
 				);
 				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+					"StarsAbove: QTE Bar",
+					delegate
+					{
+						_QTEBar.Draw(Main.spriteBatch, new GameTime());
+						return true;
+					},
+					InterfaceScaleType.UI)
+				);
+				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
 					"StarsAbove: Starfarer Prompts",
 					delegate
 					{
@@ -951,11 +970,6 @@ namespace StarsAbove
 					},
 					InterfaceScaleType.UI)
 				);
-
-			}
-			int resourceBarIndex2 = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Interface Logic 2"));
-			if (resourceBarIndex2 != -1)
-			{
 				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
 					"StarsAbove: Visual Novel",
 					delegate
@@ -965,6 +979,29 @@ namespace StarsAbove
 					},
 					InterfaceScaleType.UI)
 				);
+				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+					"StarsAbove: Stellar Nova UI",
+					delegate
+					{
+						_StellarNovaUIUserInterface.Draw(Main.spriteBatch, new GameTime());
+						return true;
+					},
+					InterfaceScaleType.UI)
+				);
+				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+					"StarsAbove: Starfarer Menu",
+					delegate
+					{
+						_StarfarerMenuUserInterface.Draw(Main.spriteBatch, new GameTime());
+						return true;
+					},
+					InterfaceScaleType.UI)
+				);
+			}
+			int resourceBarIndex2 = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Interface Logic 2"));
+			if (resourceBarIndex2 != -1)
+			{
+				
 
 			}
 
@@ -984,24 +1021,7 @@ namespace StarsAbove
 					InterfaceScaleType.UI)
 				);*/
 
-				layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
-					"StarsAbove: Stellar Nova UI",
-					delegate
-					{
-						_StellarNovaUIUserInterface.Draw(Main.spriteBatch, new GameTime());
-						return true;
-					},
-					InterfaceScaleType.UI)
-				);
-				layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
-					"StarsAbove: Starfarer Menu",
-					delegate
-					{
-						_StarfarerMenuUserInterface.Draw(Main.spriteBatch, new GameTime());
-						return true;
-					},
-					InterfaceScaleType.UI)
-				);
+				
 			}
 
 			int TopIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Interface Logic 4"));
