@@ -85,6 +85,7 @@ Your Starfarers will have unique dialogue for content from the following mods:
 Calamity, Secrets of the Shadows, Verdant, Fargo's Souls, the Spirit Mod and the Thorium Mod. More will come soon!
 Additionally, some separate scaling is present for the Calamity Mod. (This can be disabled in the Mod Settings.)
 
+Support for Music Display is also included!
 
 [img]https://i.imgur.com/BEnNDqm.png[/img]
 
@@ -102,3 +103,6 @@ The mod includes localization for Chinese and Spanish, thanks to these individua
 Chinese translation team:  Soammer(夏沫), MeireiHakuya(冥岭白夜), (亚砜), and Yukiko (羽曦)
 Spanish translation team: Bluefire72, Haturok, Aka Tofu, Karus
 Thank you, translators!
+[quote=tModLoader]Developed By PaperLuigi[/quote]
+
+[H1]Please report bugs to the Discord's bug reports channel so I can respond as quickly as possible- thank you![/h1]
