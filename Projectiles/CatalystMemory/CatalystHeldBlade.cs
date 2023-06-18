@@ -14,7 +14,7 @@ namespace StarsAbove.Projectiles.CatalystMemory
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Catalyst's Memory");
+			// DisplayName.SetDefault("Catalyst's Memory");
 			Main.projFrames[Projectile.type] = 7;
 		}
 

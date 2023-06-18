@@ -9,9 +9,9 @@ namespace StarsAbove.Items.Pets
     public class CrystalTowerFigure : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Crystal Tower Figurine");
-			Tooltip.SetDefault("Summons an exarchic mystel"+
-				"\n'Take him on an adventure!'");
+			// DisplayName.SetDefault("Crystal Tower Figurine");
+			/* Tooltip.SetDefault("Summons an exarchic mystel"+
+				"\n'Take him on an adventure!'"); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

@@ -19,7 +19,7 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("" +
+			/* Tooltip.SetDefault("" +
 				"Attacks with this weapon strikes foes multiple times with a close-ranged slash" +
 				"\nStriking foes grant 1 [c/FC578E:LV] (Critical strikes grant 5 [c/FC578E:LV] instead)" +
 				"\nRight click to unleash a [c/F4296D:SLAUGHTERING SLASH] at your cursor after a short delay, dealing 3x damage in a vertical slash (6 second cooldown)" +
@@ -32,7 +32,7 @@ namespace StarsAbove.Items
 				"\nDuring the [c/C91515:SPECIAL ATTACK] attack speed and damage dealt is doubled but damage taken is tripled" +
                 "\nAdditionally, gain infinite flight time and a 25% chance to dodge any attack" +
 				"\nOnce the [c/C91515:SPECIAL ATTACK] concludes, this weapon can not be used for 30 seconds" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -98,7 +98,7 @@ namespace StarsAbove.Items
 			
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 
 			

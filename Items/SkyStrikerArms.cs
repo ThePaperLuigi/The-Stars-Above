@@ -17,9 +17,9 @@ namespace StarsAbove.Items
 	
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Armaments of the Sky Striker");
+			// DisplayName.SetDefault("Armaments of the Sky Striker");
 
-			Tooltip.SetDefault("" +
+			/* Tooltip.SetDefault("" +
 				"[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty]" +
 				"\nRight click to access the [c/90B1BE:Aerial Forme] Selection Menu" +
 				"\nEach [c/90B1BE:Aerial Forme] grants unique buffs when this weapon is held and modifies weapon attacks" +
@@ -35,7 +35,7 @@ namespace StarsAbove.Items
 				"\n[c/66EC56:Railgunner]: Critical strike chance is increased by 20%" +
 				"\nAttacks are changed into long range piercing bolts, dealing 1.5x base damage" +
 				"\nCritical strikes deal 4x damage" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -167,7 +167,7 @@ namespace StarsAbove.Items
 			
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			
 		}

@@ -9,8 +9,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ignited");
-            Description.SetDefault("Shadowless Cerulean surges forth");
+            // DisplayName.SetDefault("Ignited");
+            // Description.SetDefault("Shadowless Cerulean surges forth");
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
             BuffID.Sets.NurseCannotRemoveDebuff[Type] = true;

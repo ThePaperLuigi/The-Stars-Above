@@ -9,7 +9,7 @@ namespace StarsAbove.Items.Placeable.BossLoot
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Warrior of Light Trophy");
+			// DisplayName.SetDefault("Warrior of Light Trophy");
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}

@@ -17,6 +17,8 @@ namespace StarsAbove.UI.StellarNova
 		private UIText text;
 		private UIText warning;
 
+		private UIElement starfarerPicture;
+
 		private UIText hoverText;
 		private UIElement area;
 		private UIElement area2;
@@ -68,7 +70,9 @@ namespace StarsAbove.UI.StellarNova
 			// Create a UIElement for all the elements to sit on top of, this simplifies the numbers as nested elements can be positioned relative to the top left corner of this element. 
 			// UIElement is invisible and has no padding. You can use a UIPanel if you wish for a background.
 
-
+			starfarerPicture = new UIElement();
+			starfarerPicture.Width.Set(400, 0f);
+			starfarerPicture.Height.Set(400, 0f);
 
 			area = new UIElement();
 			//area.Left.Set(0, 0f); // Place the resource bar to the left of the hearts.
@@ -96,7 +100,7 @@ namespace StarsAbove.UI.StellarNova
 			bg2.Height.Set(810, 0f);
 
 			confirm = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Confirm"));
-			confirm.OnClick += Confirm;
+			confirm.OnLeftClick += Confirm;
 			confirm.Width.Set(70, 0f);
 			confirm.Height.Set(52, 0f);
 			confirm.Left.Set(40, 0f);
@@ -105,7 +109,7 @@ namespace StarsAbove.UI.StellarNova
 			confirm.OnMouseOut += HoverOff;
 
 			reset = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Reset"));
-			reset.OnClick += ResetAll;
+			reset.OnLeftClick += ResetAll;
 			reset.Width.Set(70, 0f);
 			reset.Height.Set(52, 0f);
 			reset.Left.Set(40, 0f);
@@ -114,7 +118,7 @@ namespace StarsAbove.UI.StellarNova
 			reset.OnMouseOut += HoverOff;
 
 			theofania = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StellarNova/theofania"));
-			theofania.OnClick += theofaniaSelected;
+			theofania.OnLeftClick += theofaniaSelected;
 			theofania.Width.Set(98, 0f);
 			theofania.Height.Set(52, 0f);
 			theofania.Left.Set(864, 0f);
@@ -123,7 +127,7 @@ namespace StarsAbove.UI.StellarNova
 			theofania.OnMouseOut += HoverOff;
 
 			laevateinn = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StellarNova/laevateinn"));
-			laevateinn.OnClick += laevateinnSelected;
+			laevateinn.OnLeftClick += laevateinnSelected;
 			laevateinn.Width.Set(98, 0f);
 			laevateinn.Height.Set(52, 0f);
 			laevateinn.Left.Set(864, 0f);
@@ -132,7 +136,7 @@ namespace StarsAbove.UI.StellarNova
 			laevateinn.OnMouseOut += HoverOff;
 
 			kiwamiryuken = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StellarNova/KiwamiRyuken"));
-			kiwamiryuken.OnClick += kiwamiryukenSelected;
+			kiwamiryuken.OnLeftClick += kiwamiryukenSelected;
 			kiwamiryuken.Width.Set(98, 0f);
 			kiwamiryuken.Height.Set(52, 0f);
 			kiwamiryuken.Left.Set(864, 0f);
@@ -141,7 +145,7 @@ namespace StarsAbove.UI.StellarNova
 			kiwamiryuken.OnMouseOut += HoverOff;
 
 			gardenofavalon = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StellarNova/gardenofavalon"));
-			gardenofavalon.OnClick += gardenofavalonSelected;
+			gardenofavalon.OnLeftClick += gardenofavalonSelected;
 			gardenofavalon.Width.Set(98, 0f);
 			gardenofavalon.Height.Set(52, 0f);
 			gardenofavalon.Left.Set(864, 0f);
@@ -150,7 +154,7 @@ namespace StarsAbove.UI.StellarNova
 			gardenofavalon.OnMouseOut += HoverOff;
 
 			edingenesisquasar = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StellarNova/edingenesisquasar"));
-			edingenesisquasar.OnClick += edingenesisquasarSelected;
+			edingenesisquasar.OnLeftClick += edingenesisquasarSelected;
 			edingenesisquasar.Width.Set(98, 0f);
 			edingenesisquasar.Height.Set(52, 0f);
 			edingenesisquasar.Left.Set(864, 0f);
@@ -274,6 +278,7 @@ namespace StarsAbove.UI.StellarNova
 			area.Append(_affixSlot3);
 			//area.Append(_affixSlotSpecial);
 
+			area.Append(starfarerPicture);
 			area.Append(bg2);
 			area.Append(bg);
 			area.Append(theofania);
@@ -341,21 +346,21 @@ namespace StarsAbove.UI.StellarNova
 			if (!_affixSlot1.Item.IsAir)
 			{
 				// QuickSpawnClonedItem will preserve mod data of the item. QuickSpawnItem will just spawn a fresh version of the item, losing the prefix.
-				Main.LocalPlayer.QuickSpawnClonedItem(null, _affixSlot1.Item, _affixSlot1.Item.stack);
+				Main.LocalPlayer.QuickSpawnItem(null, _affixSlot1.Item, _affixSlot1.Item.stack);
 				// Now that we've spawned the item back onto the player, we reset the item by turning it into air.
 				_affixSlot1.Item.TurnToAir();
 			}
 			if (!_affixSlot2.Item.IsAir)
 			{
 				// QuickSpawnClonedItem will preserve mod data of the item. QuickSpawnItem will just spawn a fresh version of the item, losing the prefix.
-				Main.LocalPlayer.QuickSpawnClonedItem(null, _affixSlot2.Item, _affixSlot2.Item.stack);
+				Main.LocalPlayer.QuickSpawnItem(null, _affixSlot2.Item, _affixSlot2.Item.stack);
 				// Now that we've spawned the item back onto the player, we reset the item by turning it into air.
 				_affixSlot2.Item.TurnToAir();
 			}
 			if (!_affixSlot3.Item.IsAir)
 			{
 				// QuickSpawnClonedItem will preserve mod data of the item. QuickSpawnItem will just spawn a fresh version of the item, losing the prefix.
-				Main.LocalPlayer.QuickSpawnClonedItem(null, _affixSlot3.Item, _affixSlot3.Item.stack);
+				Main.LocalPlayer.QuickSpawnItem(null, _affixSlot3.Item, _affixSlot3.Item.stack);
 				// Now that we've spawned the item back onto the player, we reset the item by turning it into air.
 				_affixSlot3.Item.TurnToAir();
 			}
@@ -876,6 +881,13 @@ namespace StarsAbove.UI.StellarNova
 			hoverText.Top.Set(Main.mouseY, 0f); // Placing it just a bit below the top of the screen.
 
 			Rectangle hitbox = area.GetInnerDimensions().ToRectangle();
+			Rectangle starfarer = starfarerPicture.GetInnerDimensions().ToRectangle();
+			starfarerPicture.Top.Set(-40,0f);
+			Rectangle starfarerBody = starfarerPicture.GetInnerDimensions().ToRectangle();
+			starfarerBody.Y += 000;
+			Rectangle trim = new Rectangle(0, 0, 400, 400);
+
+			//Rectangle trim = new Rectangle(Main.screenWidth / 2, Main.screenHeight / 2, 600, 400);
 			Rectangle dialogue = barFrame.GetInnerDimensions().ToRectangle();
 			dialogue.Y -= modPlayer.descriptionY;
 			description.Top.Set(35 - modPlayer.descriptionY, 0f);
@@ -892,26 +904,60 @@ namespace StarsAbove.UI.StellarNova
 			//indicator.Height -= 0;
 
 			//Rectangle dialogueBox = new Rectangle((50), (480), (700), (300));
-			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/description"), dialogue, Color.White * (modPlayer.descriptionOpacity));
 
 			if (modPlayer.chosenStarfarer == 1)
 			{
-				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/NovaA"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+
+				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/As0HairBH"), starfarer,  Color.White * (modPlayer.novaUIOpacity));
+
+				//Draw the head, accounting for pose.
+				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/As0Head"), starfarer, Color.White * (modPlayer.novaUIOpacity));//TODO: MAKE A BOX (HITBOX SHOULD BE OG SIZE, SOURCERECTANGLE SHOULD BE NEW SIZE)
+
+				//Draw the body, accounting for outfits and pose.
+				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/As0Body" + modPlayer.starfarerOutfitVisible), starfarerBody, trim, Color.White * (modPlayer.novaUIOpacity));
+
+				//Draw the hair on top of the head. Same deal with color change.
+				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/As0HairH"), starfarer, Color.White * (modPlayer.novaUIOpacity));
+
+				//Draw the expression, accounting for pose.
+				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/As00"), starfarer,  Color.White * (modPlayer.novaUIOpacity));//Base character's expression
+
+				//spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/NovaA"), hitbox, Color.White * (modPlayer.novaUIOpacity));
 				//Head
-				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/NovaAHead"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+				//spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/NovaAHead"), hitbox, Color.White * (modPlayer.novaUIOpacity));
 				//Body
-				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/NovaA" + modPlayer.starfarerOutfitVisible), hitbox, Color.White * (modPlayer.novaUIOpacity));
+				//spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/NovaA" + modPlayer.starfarerOutfitVisible), hitbox, Color.White * (modPlayer.novaUIOpacity));
+				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/NovaA"), hitbox, Color.White * (modPlayer.novaUIOpacity));
 
 			}
 			if (modPlayer.chosenStarfarer == 2)
 			{
-				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/NovaE"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+
+				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/Er1HairBH"), starfarer, Color.White * (modPlayer.novaUIOpacity));
+
+				//Draw the head, accounting for pose.
+				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/Er1Head"), starfarer, Color.White * (modPlayer.novaUIOpacity));//TODO: MAKE A BOX (HITBOX SHOULD BE OG SIZE, SOURCERECTANGLE SHOULD BE NEW SIZE)
+
+				//Draw the body, accounting for outfits and pose.
+				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/Er1Body" + modPlayer.starfarerOutfitVisible), starfarerBody, trim, Color.White * (modPlayer.novaUIOpacity));
+
+				//Draw the hair on top of the head. Same deal with color change.
+				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/Er1HairH"), starfarer, Color.White * (modPlayer.novaUIOpacity));
+
+				//Draw the expression, accounting for pose.
+				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/Er10"), starfarer, Color.White * (modPlayer.novaUIOpacity));//Base character's expression
+
+				//spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/NovaA"), hitbox, Color.White * (modPlayer.novaUIOpacity));
 				//Head
-				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/NovaEHead"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+				//spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/NovaAHead"), hitbox, Color.White * (modPlayer.novaUIOpacity));
 				//Body
-				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/NovaE" + modPlayer.starfarerOutfitVisible), hitbox, Color.White * (modPlayer.novaUIOpacity));
+				//spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/NovaA" + modPlayer.starfarerOutfitVisible), hitbox, Color.White * (modPlayer.novaUIOpacity));
+				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/NovaE"), hitbox, Color.White * (modPlayer.novaUIOpacity));
 
 			}
+
+			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/description"), dialogue, Color.White * (modPlayer.descriptionOpacity));
+
 			if (modPlayer.chosenStellarNova == 1)
 			{
 				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/theofania"), theofaniaArea, Color.White * (modPlayer.novaUIOpacity));
@@ -965,66 +1011,24 @@ namespace StarsAbove.UI.StellarNova
 			}
 
 
-			if (modPlayer.blinkTimer > 70 && modPlayer.blinkTimer < 75)
+			
+			if ((modPlayer.blinkTimer > 70 && modPlayer.blinkTimer < 75) || (modPlayer.blinkTimer > 320 && modPlayer.blinkTimer < 325) || (modPlayer.blinkTimer > 420 && modPlayer.blinkTimer < 425) || (modPlayer.blinkTimer > 428 && modPlayer.blinkTimer < 433))
 			{
+
 				if (modPlayer.chosenStarfarer == 1)
 				{
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/NovaABlink"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/As0b"), starfarer, Color.White * (modPlayer.novaUIOpacity));
 
 				}
 				if (modPlayer.chosenStarfarer == 2)
 				{
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/NovaEBlink"), hitbox, Color.White * (modPlayer.novaUIOpacity));
-
-				}
-			}
-			if (modPlayer.blinkTimer > 320 && modPlayer.blinkTimer < 325)
-			{
-				if (modPlayer.chosenStarfarer == 1)
-				{
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/NovaABlink"), hitbox, Color.White * (modPlayer.novaUIOpacity));
-
-				}
-				if (modPlayer.chosenStarfarer == 2)
-				{
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/NovaEBlink"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/Er1b"), starfarer, Color.White * (modPlayer.novaUIOpacity));
 
 				}
 
 
 			}
-			if (modPlayer.blinkTimer > 420 && modPlayer.blinkTimer < 425)
-			{
-
-				if (modPlayer.chosenStarfarer == 1)
-				{
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/NovaABlink"), hitbox, Color.White * (modPlayer.novaUIOpacity));
-
-				}
-				if (modPlayer.chosenStarfarer == 2)
-				{
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/NovaEBlink"), hitbox, Color.White * (modPlayer.novaUIOpacity));
-
-				}
-
-
-			}
-			if (modPlayer.blinkTimer > 428 && modPlayer.blinkTimer < 433)
-			{
-
-				if (modPlayer.chosenStarfarer == 1)
-				{
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/NovaABlink"), hitbox, Color.White * (modPlayer.novaUIOpacity));
-
-				}
-				if (modPlayer.chosenStarfarer == 2)
-				{
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/NovaEBlink"), hitbox, Color.White * (modPlayer.novaUIOpacity));
-
-				}
-
-
-			}
+			
 
 			Recalculate();
 

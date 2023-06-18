@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.EternalStar
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Malachite Fragment");
-            Description.SetDefault("Gain 10% increased critical strike chance and 5% increased damage");
+            // DisplayName.SetDefault("Malachite Fragment");
+            // Description.SetDefault("Gain 10% increased critical strike chance and 5% increased damage");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

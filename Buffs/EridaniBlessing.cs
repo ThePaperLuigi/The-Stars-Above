@@ -10,8 +10,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("[c/9F5DDE:Umbral Resonance]");
-            Description.SetDefault("");
+            // DisplayName.SetDefault("[c/9F5DDE:Umbral Resonance]");
+            // Description.SetDefault("");
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
             BuffID.Sets.NurseCannotRemoveDebuff[Type] = true;

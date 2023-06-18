@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles
     public class MiseryShotgun : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Misery's Company");
+			// DisplayName.SetDefault("Misery's Company");
 			DrawOriginOffsetY = 12;
 		}
 

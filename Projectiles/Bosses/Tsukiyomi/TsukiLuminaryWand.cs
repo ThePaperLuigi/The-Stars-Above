@@ -12,7 +12,7 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 	public class TsukiLuminaryWand : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Tsukiyomi, the First Starfarer");
+			// DisplayName.SetDefault("Tsukiyomi, the First Starfarer");
 			Main.projFrames[Projectile.type] = 1;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode

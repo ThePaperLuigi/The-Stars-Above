@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.UltimaThule
     public class UltimaStarProjectile : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Ultima Thule");     //The English name of the projectile
+			// DisplayName.SetDefault("Ultima Thule");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 70;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode
 		}

@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.BurningDesire
     public class ChainsawFollowUp : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Burning Desire");     //The English name of the projectile
+			// DisplayName.SetDefault("Burning Desire");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode
 		}
@@ -63,12 +63,12 @@ namespace StarsAbove.Projectiles.BurningDesire
 			
 			return false;
 		}
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-			Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0, 0, ProjectileType<ChainsawFollowUpExplosion>(), damage / 4, 0f, Main.player[Projectile.owner].whoAmI, 0);
+			Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0, 0, ProjectileType<ChainsawFollowUpExplosion>(), damageDone / 4, 0f, Main.player[Projectile.owner].whoAmI, 0);
 			Projectile.Kill();
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
         }
 
 

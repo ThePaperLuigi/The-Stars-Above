@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs.Youmu
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Phantom Spirit");
-            Description.SetDefault("A phantom spirit is attacking foes");
+            // DisplayName.SetDefault("Phantom Spirit");
+            // Description.SetDefault("A phantom spirit is attacking foes");
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}

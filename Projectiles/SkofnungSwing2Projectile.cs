@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles
     public class SkofnungSwing2Projectile : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Skofnung");
+			// DisplayName.SetDefault("Skofnung");
 			Main.projFrames[Projectile.type] = 1;
 		}
 

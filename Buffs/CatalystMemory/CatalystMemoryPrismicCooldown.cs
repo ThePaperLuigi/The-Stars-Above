@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.CatalystMemory
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dazzling Prismic Cooldown");
-            Description.SetDefault("Summoning the Dazzling Prismic will fail to activate if this debuff is present");
+            // DisplayName.SetDefault("Dazzling Prismic Cooldown");
+            // Description.SetDefault("Summoning the Dazzling Prismic will fail to activate if this debuff is present");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
             Main.persistentBuff[Type] = true;

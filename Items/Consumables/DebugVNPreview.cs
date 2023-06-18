@@ -9,9 +9,9 @@ namespace StarsAbove.Items.Consumables
     public class DebugVNPreview : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Debug VN Tester");
-			Tooltip.SetDefault("Used for VN dialogue testing" +
-				"\nThis is a debug item!");
+			// DisplayName.SetDefault("Debug VN Tester");
+			/* Tooltip.SetDefault("Used for VN dialogue testing" +
+				"\nThis is a debug item!"); */
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 		}
 
@@ -25,6 +25,8 @@ namespace StarsAbove.Items.Consumables
 			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.UseSound = SoundID.Item44;
 			Item.consumable = false;
+			Item.ResearchUnlockCount = 0;
+
 		}
 
 		// We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.

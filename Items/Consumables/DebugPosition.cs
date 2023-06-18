@@ -12,9 +12,9 @@ namespace StarsAbove.Items.Consumables
     public class DebugPosition : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Debug Subworld Position Finder");
-			Tooltip.SetDefault("Used for subworld calibration" +
-				"\nThis is a debug item!");
+			// DisplayName.SetDefault("Debug Subworld Position Finder");
+			/* Tooltip.SetDefault("Used for subworld calibration" +
+				"\nThis is a debug item!"); */
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 		}
 
@@ -28,6 +28,8 @@ namespace StarsAbove.Items.Consumables
 			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.UseSound = SoundID.Item44;
 			Item.consumable = false;
+			Item.ResearchUnlockCount = 0;
+
 		}
 
 		// We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.

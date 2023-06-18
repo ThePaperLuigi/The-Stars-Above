@@ -143,7 +143,7 @@ namespace StarsAbove
             }
             base.PostUpdateRunSpeeds();
         }
-        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Projectile, consider using ModifyHitNPC instead */
         {
            
             if (Player.HasBuff(BuffType<MookBuff>()) || Player.HasBuff(BuffType<FuriosoBuff>()))
@@ -154,28 +154,22 @@ namespace StarsAbove
             {
                 if(target.life < target.lifeMax/2)//Less than half HP
                 {
-                    damage = (int)(damage * 1.3);
+
+                    modifiers.SourceDamage += 1.3f;
                 }
             }
             if (Player.HasBuff(BuffType<RangaBuff>()) || Player.HasBuff(BuffType<FuriosoBuff>()))
             {
-                if (crit)
-                {
-                    damage = (int)(damage * 1.3);
-                }
+                modifiers.CritDamage += 1.5f;
             }
             if (Player.HasBuff(BuffType<DurandalBuff>()) || Player.HasBuff(BuffType<FuriosoBuff>()))
             {
                 if(target.life < target.lifeMax/2)
                 {
-                    if(crit)
-                    {
-                        damage = (int)(damage * 1.5);
-                    }
+                    modifiers.CritDamage += 1.5f;
                 }
             }
 
-            base.ModifyHitNPCWithProj(proj, target, ref damage, ref knockback, ref crit, ref hitDirection);
         }
         public override void PreUpdateBuffs()
         {
@@ -277,7 +271,7 @@ namespace StarsAbove
             base.FrameEffects();
 
         }
-        public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Projectile, consider using OnHitNPC instead */
         {
             if(BlackSilenceHeld)
             {

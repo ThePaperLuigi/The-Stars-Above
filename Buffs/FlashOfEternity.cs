@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Flash Of Eternity");
-            Description.SetDefault("The next instance of damage is negated");
+            // DisplayName.SetDefault("Flash Of Eternity");
+            // Description.SetDefault("The next instance of damage is negated");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

@@ -13,10 +13,10 @@ namespace StarsAbove.Items.Consumables
     public class Starlight : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Starlight");
-			Tooltip.SetDefault("Some stray starlight" +
+			// DisplayName.SetDefault("Starlight");
+			/* Tooltip.SetDefault("Some stray starlight" +
 				"\n[c/F1AF42:Charges the Stellar Nova slightly when acquired]" +
-				"\n");
+				"\n"); */
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 		}
 
@@ -31,6 +31,8 @@ namespace StarsAbove.Items.Consumables
 			Item.UseSound = SoundID.Item44;
 			Item.consumable = false;
 			ItemID.Sets.ItemNoGravity[Item.type] = true;
+			Item.ResearchUnlockCount = 0;
+
 		}
 
 		// We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.

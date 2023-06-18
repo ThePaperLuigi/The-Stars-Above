@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.CarianDarkMoon
     public class DarkmoonSpawnEmpowered : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Carian Dark Moon");
+			// DisplayName.SetDefault("Carian Dark Moon");
 			Main.projFrames[Projectile.type] = 1;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode

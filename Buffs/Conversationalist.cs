@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Conversationalist");
-            Description.SetDefault("Enemy spawns have been reduced");
+            // DisplayName.SetDefault("Conversationalist");
+            // Description.SetDefault("Enemy spawns have been reduced");
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

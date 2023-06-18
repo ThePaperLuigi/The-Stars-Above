@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs
     public class OmoriPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Monochrome Plush");
-			Description.SetDefault("It's been here as long as you can remember");
+			// DisplayName.SetDefault("Monochrome Plush");
+			// Description.SetDefault("It's been here as long as you can remember");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}

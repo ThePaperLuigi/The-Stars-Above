@@ -12,9 +12,9 @@ namespace StarsAbove.Items.Placeable.BossLoot
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spark of Luminance");
-			Tooltip.SetDefault("Changes the nearby environment to Light Everlasting" +
-				$"");
+			// DisplayName.SetDefault("Spark of Luminance");
+			/* Tooltip.SetDefault("Changes the nearby environment to Light Everlasting" +
+				$""); */
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}
 

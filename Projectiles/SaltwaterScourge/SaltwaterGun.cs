@@ -14,7 +14,7 @@ namespace StarsAbove.Projectiles.SaltwaterScourge
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Saltwater Scourge");
+			// DisplayName.SetDefault("Saltwater Scourge");
 			Main.projFrames[Projectile.type] = 1;
 		}
 

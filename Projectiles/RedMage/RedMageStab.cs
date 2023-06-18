@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.RedMage
     public class RedMageStab : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Vermilion Riposte");
+			// DisplayName.SetDefault("Vermilion Riposte");
 
 		}
 
@@ -87,7 +87,7 @@ namespace StarsAbove.Projectiles.RedMage
 
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			for (int d = 0; d < 8; d++)
 			{
@@ -95,7 +95,7 @@ namespace StarsAbove.Projectiles.RedMage
 				Dust.NewDust(target.Center, 0, 0, DustID.FireworkFountain_Red, Main.rand.NextFloat(-8, 8), Main.rand.NextFloat(-8, 8), 150, default(Color), 0.6f);
 			}
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 	}
 

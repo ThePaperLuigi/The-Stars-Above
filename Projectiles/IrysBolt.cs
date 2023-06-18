@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
     public class IrysBolt : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Irys Bolt");     //The English name of the projectile
+			// DisplayName.SetDefault("Irys Bolt");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode
 		}

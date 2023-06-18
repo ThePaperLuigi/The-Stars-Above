@@ -14,7 +14,7 @@ namespace StarsAbove.NPCs
     public class PrismLoot : ModNPC
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Prismatic Core");
+			// DisplayName.SetDefault("Prismatic Core");
 			Main.npcFrameCount[NPC.type] = 1;
 			NPCID.Sets.MPAllowedEnemies[NPC.type] = true;
 			NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)

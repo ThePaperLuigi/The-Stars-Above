@@ -15,7 +15,7 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("" +
+			/* Tooltip.SetDefault("" +
 				"Swapping to this weapon grants the buff '[c/FF2B2B:Core of Flames]' for 20 seconds" +
 				"\nThis buff has a 2 minute cooldown, beginning when [c/FF2B2B:Core of Flames] is applied" +
 				"\nWhen you are under the influence of [c/FF2B2B:Core of Flames] attacks cause a massive explosion on contact, burning foes for 3 seconds" +
@@ -26,7 +26,7 @@ namespace StarsAbove.Items
 				"\nBelow 100 HP, you gain drastic Health Regeneration when burning and [c/FF2B2B:Core of Flames] is active" +
 				"\nThis healing is only applicable with this weapon held" +
 				"\n'Fight to emancipate this world'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -159,7 +159,7 @@ namespace StarsAbove.Items
 			}
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			// 
 			// 60 frames = 1 second

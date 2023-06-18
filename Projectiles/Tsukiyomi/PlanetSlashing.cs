@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.Tsukiyomi
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Tsukiyomi's blade");
+			// DisplayName.SetDefault("Tsukiyomi's blade");
 			Main.projFrames[Projectile.type] = 9;
 			//DrawOriginOffsetY = 30;
 			//DrawOffsetX = -60;

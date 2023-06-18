@@ -14,7 +14,7 @@ namespace StarsAbove.Projectiles.GoldenKatana
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Aurum Edge");
+			// DisplayName.SetDefault("Aurum Edge");
 			Main.projFrames[Projectile.type] = 16;
 		}
 

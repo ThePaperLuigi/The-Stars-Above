@@ -11,11 +11,11 @@ namespace StarsAbove.Items.Consumables
     public class EverlastingLightTester : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Everlasting Light Tester");
-			Tooltip.SetDefault("DEBUG ITEM" +
+			// DisplayName.SetDefault("Everlasting Light Tester");
+			/* Tooltip.SetDefault("DEBUG ITEM" +
                 "\ni" +
 				"\n" +
-				"\n");
+				"\n"); */
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 		}
 
@@ -30,6 +30,8 @@ namespace StarsAbove.Items.Consumables
 			Item.UseSound = SoundID.Item44;
 			Item.consumable = false;
 			ItemID.Sets.ItemNoGravity[Item.type] = true;
+			Item.ResearchUnlockCount = 0;
+
 		}
 
 		// We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.

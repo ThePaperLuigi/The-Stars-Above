@@ -9,14 +9,14 @@ namespace StarsAbove.Items.Prisms
     public class VerdantPrism : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Verdant Prism");
-			Tooltip.SetDefault("[c/C2BDFF:Tier 1 Stellar Prism]" +
+			// DisplayName.SetDefault("Verdant Prism");
+			/* Tooltip.SetDefault("[c/C2BDFF:Tier 1 Stellar Prism]" +
 				"\nAffix to a Stellar Nova to gain the following stats:" +
 				"\n[c/B6B6B6:0% Damage]" + //0
 				"\n[c/83FF4D:+21% Crit Chance]" +//+3
 				"\n[c/B6B6B6:0% Crit Damage]" +//0
 				"\n[c/FF4D4D:+15 Energy Cost]" + //-3
-				"");
+				""); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;

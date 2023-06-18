@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.RedMage
     public class Veraero : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Veraero");     //The English name of the Projectile
+			// DisplayName.SetDefault("Veraero");     //The English name of the Projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 70;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode
 		}
@@ -52,10 +52,10 @@ namespace StarsAbove.Projectiles.RedMage
 
 			return true;
 		}
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
 			Projectile.damage = (int)(Projectile.damage * 0.8);
-			//base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
+			// 
 		}
 		public override void Kill(int timeLeft)
 		{

@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.SunsetOfTheSunGod
     public class KarnaSpearAttack : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Sunset of the Sun God");
+			// DisplayName.SetDefault("Sunset of the Sun God");
 
 		}
 
@@ -127,12 +127,12 @@ namespace StarsAbove.Projectiles.SunsetOfTheSunGod
 			
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			KarnaOnHitDust(target);
 
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 
 		private void KarnaOnHitDust(NPC target)

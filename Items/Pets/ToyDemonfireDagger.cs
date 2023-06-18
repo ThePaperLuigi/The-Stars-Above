@@ -10,9 +10,9 @@ namespace StarsAbove.Items.Pets
     public class ToyDemonfireDagger : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Toy Demonfire Dagger");
-			Tooltip.SetDefault("Summons the Puppy of Shimano" +
-				"\nTriggers a sound upon your death");
+			// DisplayName.SetDefault("Toy Demonfire Dagger");
+			/* Tooltip.SetDefault("Summons the Puppy of Shimano" +
+				"\nTriggers a sound upon your death"); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

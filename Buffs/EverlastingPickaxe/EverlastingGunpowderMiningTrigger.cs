@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.EverlastingPickaxe
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Gunpowder Trigger");
-            Description.SetDefault("");
+            // DisplayName.SetDefault("Gunpowder Trigger");
+            // Description.SetDefault("");
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
             Main.persistentBuff[Type] = true;

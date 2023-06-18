@@ -54,8 +54,9 @@ namespace StarsAbove.UI
 
 			finalColor = new Color(0, 224, 255);
 
-			area.Append(text);
+			
 			area.Append(barFrame);
+			barFrame.Append(text);
 			Append(area);
 		}
 
@@ -76,6 +77,9 @@ namespace StarsAbove.UI
 
 			float quotient = (float)modPlayer.nanomachinaGauge / 100; // Creating a quotient that represents the difference of your currentResource vs your maximumResource, resulting in a float of 0-1f.
 			quotient = Utils.Clamp(quotient, 0f, 1f); // Clamping it to 0-1f so it doesn't go over that.
+
+			barFrame.Top.Set(-30 + modPlayer.WeaponGaugeOffset, 0f);
+			modPlayer.WeaponGaugeOffset += 20;
 
 			// Here we get the screen dimensions of the barFrame element, then tweak the resulting rectangle to arrive at a rectangle within the barFrame texture that we will draw the gradient. These values were measured in a drawing program.
 			Rectangle hitboxBarrier = barFrame.GetInnerDimensions().ToRectangle();
@@ -114,7 +118,7 @@ namespace StarsAbove.UI
 		public override void Update(GameTime gameTime) {
 			if (!(Main.LocalPlayer.HasBuff(BuffType<RealizedNanomachinaBuff>())))
 				return;
-
+			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			text.Left.Set(22f, 0f);
 			text.Top.Set(-10f, 0f);
 			// Setting the text per tick to update and show our resource values.

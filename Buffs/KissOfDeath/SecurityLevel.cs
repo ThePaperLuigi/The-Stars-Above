@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.KissOfDeath
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Security Level");
-            Description.SetDefault("");
+            // DisplayName.SetDefault("Security Level");
+            // Description.SetDefault("");
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

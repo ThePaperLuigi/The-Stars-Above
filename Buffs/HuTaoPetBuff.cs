@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs
     public class HuTaoPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Funeral Director");
-			Description.SetDefault("A miniature funeral director is following you");
+			// DisplayName.SetDefault("Funeral Director");
+			// Description.SetDefault("A miniature funeral director is following you");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}

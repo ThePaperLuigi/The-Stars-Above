@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs
     public class BloopPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Bubbled Shark");
-			Description.SetDefault("'a'");
+			// DisplayName.SetDefault("Bubbled Shark");
+			// Description.SetDefault("'a'");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}

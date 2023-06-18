@@ -10,8 +10,8 @@ namespace StarsAbove.Items.Armor.Chemtank
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dreadnought Chemtank Legs");
-			Tooltip.SetDefault("You shouldn't be able to read this!");
+			// DisplayName.SetDefault("Dreadnought Chemtank Legs");
+			// Tooltip.SetDefault("You shouldn't be able to read this!");
 			ArmorIDs.Legs.Sets.HidesBottomSkin[Item.legSlot] = true;
 		}
 
@@ -21,7 +21,8 @@ namespace StarsAbove.Items.Armor.Chemtank
 			Item.height = 24;
 			Item.value = 1;
 			Item.rare = 10;
-			Item.vanity = true;
+			Item.vanity = true; Item.ResearchUnlockCount = 0;
+
 		}
 		public override void AddRecipes()
 		{

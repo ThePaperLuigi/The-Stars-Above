@@ -13,11 +13,11 @@ namespace StarsAbove.Items.Consumables
     public class ProgenitorWish : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("The Progenitor's Wish");
-			Tooltip.SetDefault("This shard is the culmination of billions of ferverent prayers" +
+			// DisplayName.SetDefault("The Progenitor's Wish");
+			/* Tooltip.SetDefault("This shard is the culmination of billions of ferverent prayers" +
 				"\n[c/F1AF42:Summons The Warrior of Light]" +
                 "\nIf Light Everlasting is not at its peak, magnifies the effect of Light Everlasting" +
-				"\nIs not consumed upon use");
+				"\nIs not consumed upon use"); */
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -38,17 +38,18 @@ namespace StarsAbove.Items.Consumables
 		// We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
 		public override bool CanUseItem(Player player) {
 			
-			return !NPC.AnyNPCs(NPCType<NPCs.WarriorOfLight>()) && SubworldSystem.Current == null;
+			return !NPC.AnyNPCs(NPCType<NPCs.WarriorOfLight.WarriorOfLightBoss>()) && SubworldSystem.Current == null;
 		}
 
 		public override bool? UseItem(Player player) {
-			if (player.whoAmI == Main.myPlayer && EverlastingLightEvent.isEverlastingLightActive)
+			if (player.whoAmI == Main.myPlayer && (EverlastingLightEvent.isEverlastingLightActive || DownedBossSystem.downedWarrior))
 			{
 				// If the player using the item is the client
 				// (explicitely excluded serverside here)
 				
 
-				int type = ModContent.NPCType<NPCs.WarriorOfLight>();
+				int type = ModContent.NPCType<NPCs.WarriorOfLight.WarriorOfLightBoss>();
+				int type2 = ModContent.NPCType<NPCs.WarriorOfLight.WarriorWallsNPC>();
 
 				if (Main.netMode != NetmodeID.Server && Main.myPlayer == player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Boss.WarriorOfLight"), 241, 255, 180); }
 
@@ -56,12 +57,18 @@ namespace StarsAbove.Items.Consumables
 				{
 					// If the player is not in multiplayer, spawn directly
 					NPC.SpawnOnPlayer(player.whoAmI, type);
+					NPC.NewNPC(null, (int)player.Center.X, (int)player.Center.Y, type2);
+
 				}
 				else
 				{
 					// If the player is in multiplayer, request a spawn
 					// This will only work if NPCID.Sets.MPAllowedEnemies[type] is true, which we set in MinionBossBody
-					NetMessage.SendData(MessageID.SpawnBoss, number: player.whoAmI, number2: type);
+					NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: type);
+					if (Main.netMode != NetmodeID.MultiplayerClient)
+					{
+						NPC.NewNPC(null, (int)player.Center.X, (int)player.Center.Y, type2);
+					}
 				}
 			}
 			if(EverlastingLightEvent.isEverlastingLightPreviewActive)

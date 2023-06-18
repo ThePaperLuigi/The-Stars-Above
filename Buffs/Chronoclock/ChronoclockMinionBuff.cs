@@ -9,8 +9,8 @@ namespace StarsAbove.Buffs.Chronoclock
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Fragment of Time");
-            Description.SetDefault("A fragment of time is aiding you");
+            // DisplayName.SetDefault("Fragment of Time");
+            // Description.SetDefault("A fragment of time is aiding you");
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

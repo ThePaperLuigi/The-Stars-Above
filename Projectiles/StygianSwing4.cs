@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Stygian Swing");
+			// DisplayName.SetDefault("Stygian Swing");
 			Main.projFrames[Projectile.type] = 3;
 			//DrawOriginOffsetY = 30;
 			//DrawOffsetX = -60;

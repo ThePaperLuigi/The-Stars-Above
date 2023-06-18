@@ -15,14 +15,14 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Kevesi Farewell");
-			Tooltip.SetDefault("Playing this instrument grants the buff [c/69B5FC:Off-seer's Journey] to yourself for 2 minutes" +
+			// DisplayName.SetDefault("Kevesi Farewell");
+			/* Tooltip.SetDefault("Playing this instrument grants the buff [c/69B5FC:Off-seer's Journey] to yourself for 2 minutes" +
 				"\n[c/69B5FC:Off-seer's Journey] grants increased Luck and maximum Luck while increasing enemy spawn rates (8 minute cooldown) " +
 				"\nAfter defeating an enemy with the Kevesi Farewell in your inventory while [c/69B5FC:Off-seer's Journey] is active, gain the buff [c/FC6969:Farewell of Flames] for 10 seconds" +
 				"\n[c/FC6969:Farewell of Flames] grants an additional increase to Luck" +
 				"\nIf used while wielding the strength of the Umbral Aspect (through trading in Multiplayer), further increase the potency of [c/69B5FC:Off-seer's Journey]'s Luck increase" +
 				"" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -69,7 +69,7 @@ namespace StarsAbove.Items
 			
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			
 		}

@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Phantom In The Mirror");
+			// DisplayName.SetDefault("Phantom In The Mirror");
 
 		}
 

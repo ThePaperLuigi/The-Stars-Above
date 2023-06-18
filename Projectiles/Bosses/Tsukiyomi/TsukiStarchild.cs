@@ -13,7 +13,7 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
     public class TsukiStarchild : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Luminary Wand");     //The English name of the projectile
+			// DisplayName.SetDefault("Luminary Wand");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 50;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
 			Main.projFrames[Projectile.type] = 4;
@@ -192,10 +192,10 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 
 
 		}
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
 			target.AddBuff(BuffID.OnFire, 60);
-			base.OnHitPlayer(target, damage, crit);
+			 
 		}
 	}
 }

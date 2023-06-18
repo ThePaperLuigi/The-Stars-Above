@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.SparkblossomBeacon
     public class FleetingSparkBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Fleeting Spark");
-			Description.SetDefault("Static electricity arcs from your minions");
+			// DisplayName.SetDefault("Fleeting Spark");
+			// Description.SetDefault("Static electricity arcs from your minions");
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}

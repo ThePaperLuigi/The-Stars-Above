@@ -8,10 +8,10 @@ namespace StarsAbove.Items.Materials
     public class FaerieVoyagerAttirePrecursor : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Tattered Fae Attire");
-			Tooltip.SetDefault("[c/956BE3:Starfarer Attire Precursor]" +
+			// DisplayName.SetDefault("Tattered Fae Attire");
+			/* Tooltip.SetDefault("[c/956BE3:Starfarer Attire Precursor]" +
                 "\nThe tattered remains of storied garb from legends past" +
-				"\nUtilized to craft 'Attire of the Faerie Voyager'");
+				"\nUtilized to craft 'Attire of the Faerie Voyager'"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;

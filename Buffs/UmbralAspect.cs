@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Umbral Attunement");
-            Description.SetDefault("The Umbral Aspect grants extra attack and speed and allows for astral destruction at the cost of constant Mana drain");
+            // DisplayName.SetDefault("Umbral Attunement");
+            // Description.SetDefault("The Umbral Aspect grants extra attack and speed and allows for astral destruction at the cost of constant Mana drain");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

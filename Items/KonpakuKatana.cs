@@ -14,7 +14,7 @@ namespace StarsAbove.Items
     public class KonpakuKatana : ModItem
 	{
 		public override void SetStaticDefaults() {
-			Tooltip.SetDefault("" +
+			/* Tooltip.SetDefault("" +
                 "Holding this weapon conjures a Phantom Spirit to attack foes" +
                 "\nAttacks fire quick long-ranged bullets" +
 				"\nProximity to hostile projectiles or enemies with contact damage grants the buff Death's Dance for 2 seconds" +
@@ -22,7 +22,7 @@ namespace StarsAbove.Items
 				"\nRight click to activate [c/A6F3C4:Phantom Slash], spinning the weapon around you for 3x base damage (8 second cooldown)" +
 				"\nIf Death's Dance is currently active, [c/A6F3C4:Phantom Slash] will do 6x base damage instead and grant Swiftness for 4 seconds" +
 				"\n'If there is something I can't make clear, I try cutting it!'" +
-				$"");
+				$""); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

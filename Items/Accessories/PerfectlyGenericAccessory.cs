@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using StarsAbove.Systems;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Items.Accessories
@@ -6,12 +7,12 @@ namespace StarsAbove.Items.Accessories
     public class PerfectlyGenericAccessory : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Perfectly Generic Accessory");
+			// DisplayName.SetDefault("Perfectly Generic Accessory");
 
-			Tooltip.SetDefault("" +
+			/* Tooltip.SetDefault("" +
 				"Increases the damage of Aspected Weapons by 8%" +
 				""+
-				"\n'A bit too perfect'");
+				"\n'A bit too perfect'"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 			//The (English) text shown below your weapon's name
 		}
@@ -21,7 +22,7 @@ namespace StarsAbove.Items.Accessories
 			Item.height = 28;
 			Item.accessory = true;
 			Item.value = Item.sellPrice(silver: 30);
-			Item.rare = 4;
+			Item.rare = ModContent.GetInstance<StellarSpoilsRarity>().Type; // Custom Rarity
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual) {

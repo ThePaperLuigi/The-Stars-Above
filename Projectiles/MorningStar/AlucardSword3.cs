@@ -12,7 +12,7 @@ namespace StarsAbove.Projectiles.MorningStar
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("The Morning Star");
+			// DisplayName.SetDefault("The Morning Star");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 70;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
 		}
@@ -73,23 +73,24 @@ namespace StarsAbove.Projectiles.MorningStar
 		}
 		// While there are several different ways to change how our projectile could behave differently, lets make it so
 		// when our projectile finally dies, it will explode into 4 regular Meowmere projectiles.
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 			Player player = Main.player[Projectile.owner];
 
         }
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 			Player player = Main.player[Projectile.owner];
 
 			if(Main.rand.Next(0,100) > 90)
             {
-				crit = true;
+				modifiers.SetCrit();
             }
 			if(target.HasBuff(BuffType<MorningStarHit>()))
             {
-				damage = (int)(damage * 1.3);
-            }
+				modifiers.SourceDamage += 0.3f;
+
+			}
 		}
         public override void Kill(int timeLeft)
 		{

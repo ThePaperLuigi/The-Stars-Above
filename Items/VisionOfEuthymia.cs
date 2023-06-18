@@ -12,7 +12,7 @@ namespace StarsAbove.Items
     public class VisionOfEuthymia : ModItem
 	{
 		public override void SetStaticDefaults() {
-			Tooltip.SetDefault("Use this item to summon the [c/C341E9:Eye of Euthymia] for 40 seconds" +
+			/* Tooltip.SetDefault("Use this item to summon the [c/C341E9:Eye of Euthymia] for 40 seconds" +
 				"\nThis item can be re-used to replenish the duration of [c/C341E9:Eye of Euthymia]" +
 				"\nWhen striking foes with projectiles, the [c/C341E9:Eye of Euthymia] will follow-up, dealing 1/5th of damage dealt again, capping at 500" +
                 "\nThis follow-up attack has a 2 second cooldown" +
@@ -22,7 +22,7 @@ namespace StarsAbove.Items
 				"\nThe [c/8A71D6:Eternity Gauge] will deplete upon taking damage proportional to half of the damage taken" +
 				"\nThe [c/8A71D6:Eternity Gauge] will reset when the Eye of Euthymia disappears" +
 				"\n'Fulfill your promise; an everlasting Eternity'" +
-				$"");
+				$""); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

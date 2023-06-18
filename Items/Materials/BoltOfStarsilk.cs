@@ -8,9 +8,9 @@ namespace StarsAbove.Items.Materials
     public class BoltOfStarsilk : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Bolt of Starsilk");
-			Tooltip.SetDefault("Utilized to craft Starfarer Attire" +
-				"\n'A texture akin to twinkling stars'");
+			// DisplayName.SetDefault("Bolt of Starsilk");
+			/* Tooltip.SetDefault("Utilized to craft Starfarer Attire" +
+				"\n'A texture akin to twinkling stars'"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;

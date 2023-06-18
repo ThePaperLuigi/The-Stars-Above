@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     public class BiyomonPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Digital Pet");
-			Description.SetDefault("A digital pet is following you");
+			// DisplayName.SetDefault("Digital Pet");
+			// Description.SetDefault("A digital pet is following you");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}

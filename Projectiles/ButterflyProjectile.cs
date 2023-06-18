@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles
 	public class ButterflyProjectile : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Veneration of Butterflies");     //The English name of the projectile
+			// DisplayName.SetDefault("Veneration of Butterflies");     //The English name of the projectile
 			
 		}
 

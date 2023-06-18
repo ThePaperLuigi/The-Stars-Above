@@ -16,7 +16,7 @@ namespace StarsAbove.Projectiles.SanguineDespair
     public class SanguineExplosionBolt : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Sanguine Despair");     //The English name of the projectile
+			// DisplayName.SetDefault("Sanguine Despair");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 80;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode
 			//DrawOffsetX = 40;
@@ -219,15 +219,15 @@ namespace StarsAbove.Projectiles.SanguineDespair
 			*/
 			return true;
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			
 			SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode, target.Center);
 			Projectile.NewProjectile(null, Projectile.Center.X, Projectile.Center.Y, 0, 7, ProjectileType<SanguineExplosion>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
 			
 			Player player = Main.player[Projectile.owner];
-			player.statLife += (int)(damage * 0.3f);
-			player.HealEffect((int)(damage * 0.3f));
+			player.Heal((int)(damageDone * 0.3f));
+			
 		}
 	}
 }

@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.RedMage
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Red Mage's Foci");
+			// DisplayName.SetDefault("Red Mage's Foci");
 		}
 
 		public override void SetDefaults()

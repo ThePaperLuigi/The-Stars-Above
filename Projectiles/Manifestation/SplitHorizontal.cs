@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.Manifestation
     public class SplitHorizontal : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Manifestation");
+			// DisplayName.SetDefault("Manifestation");
 			
 		}
 
@@ -75,7 +75,7 @@ namespace StarsAbove.Projectiles.Manifestation
 
 			
 		}
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 			
 
@@ -83,9 +83,9 @@ namespace StarsAbove.Projectiles.Manifestation
 
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-			crit = true;
+			modifiers.SetCrit();
 
 			
 			for (int d = 0; d < 24; d++)
@@ -96,7 +96,7 @@ namespace StarsAbove.Projectiles.Manifestation
 
 			if (target.life < (int)(target.lifeMax * 0.3) && !target.boss)
 			{
-				damage = target.life;
+				modifiers.SetInstantKill();
 			}
 
 		}

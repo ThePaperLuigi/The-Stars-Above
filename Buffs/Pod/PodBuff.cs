@@ -9,8 +9,8 @@ namespace StarsAbove.Buffs.Pod
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Automaton Pod");
-            Description.SetDefault("An automaton pod is pressing the attack");
+            // DisplayName.SetDefault("Automaton Pod");
+            // Description.SetDefault("An automaton pod is pressing the attack");
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles
     public class RadiantBraver : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Radiant Braver");
+			// DisplayName.SetDefault("Radiant Braver");
 			
 		}
 

@@ -7,12 +7,12 @@ namespace StarsAbove.Buffs.SubworldModifiers
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("[c/EFB43E:Environmental Turmoil]");
-            Description.SetDefault("Exploring a planet long lost" +
+            // DisplayName.SetDefault("[c/EFB43E:Environmental Turmoil]");
+            /* Description.SetDefault("Exploring a planet long lost" +
                 "\n" +
                 "\nMax Life is reduced by 80" +
                 "\nMana can not regenerate naturally" +
-                "\nDefense is increased by 25");
+                "\nDefense is increased by 25"); */
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

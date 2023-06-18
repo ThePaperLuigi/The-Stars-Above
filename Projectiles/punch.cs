@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dragon of Dojima");
+			// DisplayName.SetDefault("Dragon of Dojima");
 			Main.projFrames[Projectile.type] = 10;
 		}
 		public override void SetDefaults()

@@ -10,9 +10,9 @@ namespace StarsAbove.Items.Pets
     public class MonochromeKnife : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Monochrome Knife");
-			Tooltip.SetDefault("Summons the Monochrome Plush" +
-				"");
+			// DisplayName.SetDefault("Monochrome Knife");
+			/* Tooltip.SetDefault("Summons the Monochrome Plush" +
+				""); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

@@ -10,8 +10,8 @@ namespace StarsAbove.Items.Pets
     public class DigiEgg : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Suspicious Looking Digital Egg");
-			Tooltip.SetDefault("Summons a digital monster");
+			// DisplayName.SetDefault("Suspicious Looking Digital Egg");
+			// Tooltip.SetDefault("Summons a digital monster");
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

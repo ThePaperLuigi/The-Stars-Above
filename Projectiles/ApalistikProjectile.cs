@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles
     public class ApalistikProjectile : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Apalistik");
+			// DisplayName.SetDefault("Apalistik");
 
 		}
 
@@ -98,7 +98,7 @@ namespace StarsAbove.Projectiles
 			}
 		}
 
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 			target.AddBuff(BuffType<ApalistikTagDamage>(), 240);
 

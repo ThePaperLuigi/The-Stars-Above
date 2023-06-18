@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.SupremeAuthority
     public class AuthoritySwing1 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Supreme Authority");     //The English name of the projectile
+			// DisplayName.SetDefault("Supreme Authority");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode
 			//DrawOffsetX = 40;
@@ -97,7 +97,7 @@ namespace StarsAbove.Projectiles.SupremeAuthority
 			
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Player player = Main.player[Projectile.owner];
 
@@ -126,7 +126,7 @@ namespace StarsAbove.Projectiles.SupremeAuthority
 				Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 6f;
 			}
 
-			if(crit && player.HasBuff(BuffType<DeifiedBuff>()))
+			if(hit.Crit && player.HasBuff(BuffType<DeifiedBuff>()))
             {
 				player.GetModPlayer<WeaponPlayer>().SupremeAuthorityEncroachingStacks++;
 

@@ -9,7 +9,7 @@ namespace StarsAbove.Items.Placeable.BossLoot
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Vagrant of Space and Time Trophy");
+			// DisplayName.SetDefault("Vagrant of Space and Time Trophy");
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}

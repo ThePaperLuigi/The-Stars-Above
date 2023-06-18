@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.HunterSymphony
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Vitality Song");
-            Description.SetDefault("Powerful melodies grant 15% increased movement speed");
+            // DisplayName.SetDefault("Vitality Song");
+            // Description.SetDefault("Powerful melodies grant 15% increased movement speed");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

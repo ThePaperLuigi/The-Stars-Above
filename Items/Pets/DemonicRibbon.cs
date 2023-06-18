@@ -10,9 +10,9 @@ namespace StarsAbove.Items.Pets
     public class DemonicRibbon : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Demonic Ribbon");
-			Tooltip.SetDefault("Summons a fox vixen" +
-                "");
+			// DisplayName.SetDefault("Demonic Ribbon");
+			/* Tooltip.SetDefault("Summons a fox vixen" +
+                ""); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 		}

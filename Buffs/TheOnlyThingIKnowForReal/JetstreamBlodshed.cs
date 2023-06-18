@@ -10,9 +10,9 @@ namespace StarsAbove.Buffs.TheOnlyThingIKnowForReal
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Jetstream Bloodshed");
-            Description.SetDefault("Damage is increased by 30% until damage is taken" +
-                "\nIncreased to 50% at 100 HP or below");
+            // DisplayName.SetDefault("Jetstream Bloodshed");
+            /* Description.SetDefault("Damage is increased by 30% until damage is taken" +
+                "\nIncreased to 50% at 100 HP or below"); */
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

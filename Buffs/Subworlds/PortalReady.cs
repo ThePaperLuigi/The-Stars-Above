@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.Subworlds
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("[c/DE5D5D:Gateway Proximity]");
-            Description.SetDefault("The Celestial Cartography menu will allow you to explore the cosmos");
+            // DisplayName.SetDefault("[c/DE5D5D:Gateway Proximity]");
+            // Description.SetDefault("The Celestial Cartography menu will allow you to explore the cosmos");
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

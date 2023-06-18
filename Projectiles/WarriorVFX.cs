@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using StarsAbove.NPCs.WarriorOfLight;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
@@ -11,7 +12,7 @@ namespace StarsAbove.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("The Warrior of Light's Aura");     //The English name of the projectile
+			// DisplayName.SetDefault("The Warrior of Light's Aura");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode
 			Main.projFrames[Projectile.type] = 1;
@@ -58,7 +59,7 @@ namespace StarsAbove.Projectiles
 
 
 			
-			if (!NPC.AnyNPCs(NPCType<NPCs.WarriorOfLight>()))
+			if (!NPC.AnyNPCs(NPCType<WarriorOfLightBoss>()))
 			{
 
 				Projectile.Kill();
@@ -76,7 +77,7 @@ namespace StarsAbove.Projectiles
 				
 
 
-				if (npc.active && npc.type == NPCType<NPCs.WarriorOfLight>())
+				if (npc.active && npc.type == NPCType<WarriorOfLightBoss>())
 				{
 					Projectile.Center = npc.Center;
 					if (npc.HasBuff(BuffType<Buffs.WarriorEnd>()))

@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.Pets
 		{
 			
 			//DrawOffsetX = -20;
-			DisplayName.SetDefault("Blade Wolf"); // Automatic from .lang files
+			// DisplayName.SetDefault("Blade Wolf"); // Automatic from .lang files
 			Main.projFrames[Projectile.type] = 11;
 			
 			Main.projPet[Projectile.type] = true;

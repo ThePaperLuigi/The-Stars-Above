@@ -14,7 +14,7 @@ namespace StarsAbove.Projectiles.SunsetOfTheSunGod
     public class KarnaLightningSpearAlt : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Sunset of the Sun God");     //The English name of the projectile
+			// DisplayName.SetDefault("Sunset of the Sun God");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 70;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode
 			//DrawOffsetX = 40;
@@ -184,7 +184,7 @@ namespace StarsAbove.Projectiles.SunsetOfTheSunGod
 			*/
 			return true;
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			KarnaOnHitDust(target);
 			Projectile.NewProjectile(null, target.Center.X, target.Center.Y, Main.rand.Next(-2, 2), Main.rand.Next(-2, 2), ProjectileType<KarnaLightning>(), Projectile.damage / 4, Projectile.knockBack, Projectile.owner, Main.rand.Next(0, 360) + 1000f, 1);
@@ -198,7 +198,7 @@ namespace StarsAbove.Projectiles.SunsetOfTheSunGod
 				}
 			}
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 		
 		private void KarnaOnHitDust(NPC target)

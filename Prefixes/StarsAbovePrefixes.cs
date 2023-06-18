@@ -8,7 +8,7 @@ namespace StarsAbove.Prefixes
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bright");
+			// DisplayName.SetDefault("Bright");
 		}
 		// We declare a custom *virtual* property here, so that another type, ExampleDerivedPrefix, could override it and change the effective power for itself.
 		public virtual float Power => 1f;
@@ -63,7 +63,7 @@ namespace StarsAbove.Prefixes
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Glowing");
+			// DisplayName.SetDefault("Glowing");
 		}
 		// We declare a custom *virtual* property here, so that another type, ExampleDerivedPrefix, could override it and change the effective power for itself.
 		public virtual float Power => 2f;
@@ -118,7 +118,7 @@ namespace StarsAbove.Prefixes
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Luminous");
+			// DisplayName.SetDefault("Luminous");
 		}
 		// We declare a custom *virtual* property here, so that another type, ExampleDerivedPrefix, could override it and change the effective power for itself.
 		public virtual float Power => 3f;
@@ -173,7 +173,7 @@ namespace StarsAbove.Prefixes
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Radiant");
+			// DisplayName.SetDefault("Radiant");
 		}
 		// We declare a custom *virtual* property here, so that another type, ExampleDerivedPrefix, could override it and change the effective power for itself.
 		public virtual float Power => 4f;
@@ -228,7 +228,7 @@ namespace StarsAbove.Prefixes
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bleak");
+			// DisplayName.SetDefault("Bleak");
 		}
 		// We declare a custom *virtual* property here, so that another type, ExampleDerivedPrefix, could override it and change the effective power for itself.
 		public virtual float Power => 1f;
@@ -283,7 +283,7 @@ namespace StarsAbove.Prefixes
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Lightless");
+			// DisplayName.SetDefault("Lightless");
 		}
 		// We declare a custom *virtual* property here, so that another type, ExampleDerivedPrefix, could override it and change the effective power for itself.
 		public virtual float Power => 2f;

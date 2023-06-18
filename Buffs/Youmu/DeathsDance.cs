@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.Youmu
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Death's Dance");
-            Description.SetDefault("A graze with death has granted you strength");
+            // DisplayName.SetDefault("Death's Dance");
+            // Description.SetDefault("A graze with death has granted you strength");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

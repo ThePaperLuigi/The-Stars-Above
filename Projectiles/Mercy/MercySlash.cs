@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.Mercy
     public class MercySlash : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Mercy");     //The English name of the projectile
+			// DisplayName.SetDefault("Mercy");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode
 			//DrawOffsetX = 40;
@@ -92,19 +92,19 @@ namespace StarsAbove.Projectiles.Mercy
 			
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			for (int d = 0; d < 8; d++)
 			{
 				Dust.NewDust(target.Center, 0, 0, 235, Main.rand.NextFloat(-5, 5), Main.rand.NextFloat(-5, 5), 150, default(Color), 1.2f);
 
 			}
-			if (crit)
+			if(hit.Crit)
 			{
 				Player player = Main.player[Projectile.owner];
 				player.ClearBuff(BuffType<EdgeOfAnguishCooldown>());
 			}
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 		
 

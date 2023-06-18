@@ -8,12 +8,12 @@ namespace StarsAbove.Items.Materials
     public class InertShard : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Inert Shard");
-			Tooltip.SetDefault("A fragment of the past, devoid of both mana and hue alike" +
+			// DisplayName.SetDefault("Inert Shard");
+			/* Tooltip.SetDefault("A fragment of the past, devoid of both mana and hue alike" +
                 "\nObtained on a planet bleached white" +
 				"\nCan be used to craft a unique accessory" +
 				"" +
-				"");
+				""); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 5;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;

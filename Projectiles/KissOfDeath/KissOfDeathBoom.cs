@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.KissOfDeath
     public class KissOfDeathBoom : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("The Kiss of Death");
+			// DisplayName.SetDefault("The Kiss of Death");
 			
 		}
 
@@ -84,19 +84,20 @@ namespace StarsAbove.Projectiles.KissOfDeath
 			
 		}
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 
 			
 			
         }
 
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 			if(target.life <= target.lifeMax/2)
             {
-				damage = (int)(damage * 1.2f);
-            }
+				modifiers.SourceDamage += 0.2f;
+
+			}
 			target.AddBuff(BuffType<SecurityLevel>(), 12 * 60);
 			//target.AddBuff(BuffID.OnFire, 240);
            

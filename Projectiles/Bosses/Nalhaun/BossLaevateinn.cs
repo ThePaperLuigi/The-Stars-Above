@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
     public class BossLaevateinn : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Ars Laevateinn");     //The English name of the projectile
+			// DisplayName.SetDefault("Ars Laevateinn");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 15;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 1;        //The recording mode
 		}

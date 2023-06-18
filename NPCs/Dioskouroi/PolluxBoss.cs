@@ -68,7 +68,7 @@ namespace StarsAbove.NPCs.Dioskouroi
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Pollux, Baleborn Force");
+			// DisplayName.SetDefault("Pollux, Baleborn Force");
 			
 			Main.npcFrameCount[NPC.type] = 7; // make sure to set this for your modnpcs.
 
@@ -141,12 +141,12 @@ namespace StarsAbove.NPCs.Dioskouroi
 		{
 			return 0f;
 		}
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */
 		{
-			NPC.lifeMax = (int)(NPC.lifeMax * bossLifeScale * numPlayers);
+			NPC.lifeMax = (int)(NPC.lifeMax * bossAdjustment * balance);
 			//NPC.defense *= numPlayers * 5;
 		}
-        public override void BossLoot(ref string name, ref int potionType)
+		public override void BossLoot(ref string name, ref int potionType)
         {
 			
 			potionType = ItemID.None;

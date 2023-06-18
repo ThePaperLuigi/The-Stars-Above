@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.Pets
     public class GrahaPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Exarchic Mystel");
-			Description.SetDefault("He wants to go on an adventure together");
+			// DisplayName.SetDefault("Exarchic Mystel");
+			// Description.SetDefault("He wants to go on an adventure together");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}

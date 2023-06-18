@@ -9,14 +9,14 @@ namespace StarsAbove.Items.Prisms
     public class CastellicPrism : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Castellic Prism");
-			Tooltip.SetDefault("[c/C2BDFF:Tier 1 Stellar Prism]" +
+			// DisplayName.SetDefault("Castellic Prism");
+			/* Tooltip.SetDefault("[c/C2BDFF:Tier 1 Stellar Prism]" +
 				"\nAffix to a Stellar Nova to gain the following stats:" +
 				"\n[c/83FF4D:+30% Damage]" + //+3
 				"\n[c/FF4D4D:-7% Crit Chance]" +//-1
 				"\n[c/FF4D4D:-20% Crit Damage]" +//-2
 				"\n[c/B6B6B6:0 Energy Cost]" + //0
-				"");
+				""); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;

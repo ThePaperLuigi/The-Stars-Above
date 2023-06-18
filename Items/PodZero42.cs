@@ -19,8 +19,8 @@ namespace StarsAbove.Items
     public class PodZero42 : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Pod Zero-42");
-			Tooltip.SetDefault("Summons an [c/EBD484:Automaton Pod] (Consumes 2 minion slots; Only one can be summoned at a time)" +
+			// DisplayName.SetDefault("Pod Zero-42");
+			/* Tooltip.SetDefault("Summons an [c/EBD484:Automaton Pod] (Consumes 2 minion slots; Only one can be summoned at a time)" +
 				"\nThe [c/EBD484:Automaton Pod] will passively fire bullets at nearby foes" +
 				"\nHold the Weapon Action Key to control the [c/E3DABA:Automaton Pod], activating [c/E9C64A:Gatling Salvo]" +
 				"\n[c/E9C64A:Gatling Salvo] fires a stream of bullets directly towards your cursor" +
@@ -28,7 +28,7 @@ namespace StarsAbove.Items
 				"\nThis cost can not be negated through any means, but mana regen delay is shortened" +
 				"\nGain the buff Night Owl outside of combat and Hunter during combat" +
 				"\n'Glory to Mankind'"
-				+ $"");
+				+ $""); */
 
 			ItemID.Sets.GamepadWholeScreenUseRange[Item.type] = true;
 			ItemID.Sets.LockOnIgnoresCollision[Item.type] = true;

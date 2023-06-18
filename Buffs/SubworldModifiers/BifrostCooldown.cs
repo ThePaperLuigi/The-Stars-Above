@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.SubworldModifiers
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("[c/EFB43E:Bifrost Cooldown]");
-            Description.SetDefault("");
+            // DisplayName.SetDefault("[c/EFB43E:Bifrost Cooldown]");
+            // Description.SetDefault("");
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

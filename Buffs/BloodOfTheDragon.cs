@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Blood of the Dragon");
-            Description.SetDefault("The gaze of the first brood grants mastery over the skies, resulting in increased damage and movement speed");
+            // DisplayName.SetDefault("Blood of the Dragon");
+            // Description.SetDefault("The gaze of the first brood grants mastery over the skies, resulting in increased damage and movement speed");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

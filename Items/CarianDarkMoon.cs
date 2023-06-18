@@ -16,7 +16,7 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("" +
+			/* Tooltip.SetDefault("" +
 				"Attacks with this weapon will sweep in a wide arc" +
                 "\nCritical strikes will inflict Frostburn for 3 seconds" +
 				"\nRight click to consume 100 Mana, gaining the buff [c/92D7FF:Moonlit Greatblade] for 18 seconds after a short delay, during which the weapon is unusable" +
@@ -25,7 +25,7 @@ namespace StarsAbove.Items
                 "\nProjectiles can pierce infinitely, but damage is continually halved per hit" +
 				"\n[c/92D7FF:Moonlit Greatblade] prevents natural mana regeneration when active, and has an 8 second cooldown" +
 				"\n'Now cometh the age of stars...'" +
-				$"");
+				$""); */
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 		}
@@ -102,7 +102,7 @@ namespace StarsAbove.Items
 			
 		}
 		
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 
 			

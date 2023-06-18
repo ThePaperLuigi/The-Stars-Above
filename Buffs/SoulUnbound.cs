@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Soul Unbound");
-            Description.SetDefault("You have let go of your mortal form, gaining Movement Speed");
+            // DisplayName.SetDefault("Soul Unbound");
+            // Description.SetDefault("You have let go of your mortal form, gaining Movement Speed");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

@@ -16,7 +16,7 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("" +
+			/* Tooltip.SetDefault("" +
 				"Attacks with this weapon will rapidly sweep in a short-ranged arc" +
 				"\nRight click to unleash [c/DC3961:Edge of Anguish] (12 second cooldown)" +
 				"\n[c/DC3961:Edge of Anguish] will target the nearest enemy to your cursor and charge towards them" +
@@ -29,7 +29,7 @@ namespace StarsAbove.Items
                 "\nAdditionally, these attacks deal 2% of the foe's missing HP as bonus true damage (Up to 250)" +
 				"\n'From the depths of Noxian streets'" +
 				"" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -111,7 +111,7 @@ namespace StarsAbove.Items
 			
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 
 			

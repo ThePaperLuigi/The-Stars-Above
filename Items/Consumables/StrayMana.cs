@@ -13,10 +13,10 @@ namespace StarsAbove.Items.Consumables
     public class StrayMana : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Stolen Lifeforce");
-			Tooltip.SetDefault("Boss item." +
+			// DisplayName.SetDefault("Stolen Lifeforce");
+			/* Tooltip.SetDefault("Boss item." +
 				"\n[c/F1AF42:Should not be able to be read.]" +
-				"\n");
+				"\n"); */
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 		}
 
@@ -31,8 +31,10 @@ namespace StarsAbove.Items.Consumables
 			Item.UseSound = SoundID.Item44;
 			Item.consumable = false;
 			ItemID.Sets.ItemNoGravity[Item.type] = true;
+			Item.ResearchUnlockCount = 0;
+
 		}
-		
+
 		// We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
 		public override bool ItemSpace(Player player)
 		{

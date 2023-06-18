@@ -8,10 +8,10 @@ namespace StarsAbove.Items.Materials
     public class AegisOfHopesLegacyPrecursor : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Sundered Hero's Attire");
-			Tooltip.SetDefault("[c/956BE3:Starfarer Attire Precursor]" +
+			// DisplayName.SetDefault("Sundered Hero's Attire");
+			/* Tooltip.SetDefault("[c/956BE3:Starfarer Attire Precursor]" +
                 "\nThe tattered remains of storied garb from legends past" +
-				"\nUtilized to craft 'Aegis of Hope's Legacy'");
+				"\nUtilized to craft 'Aegis of Hope's Legacy'"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;

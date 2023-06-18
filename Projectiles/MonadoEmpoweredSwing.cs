@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Xenoblade");
+			// DisplayName.SetDefault("Xenoblade");
 			Main.projFrames[Projectile.type] = 4;
 			//DrawOffsetX = -60;
 		}

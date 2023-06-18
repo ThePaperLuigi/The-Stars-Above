@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Aegis Driver");
+			// DisplayName.SetDefault("Aegis Driver");
 
 		}
 

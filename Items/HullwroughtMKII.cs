@@ -16,8 +16,8 @@ namespace StarsAbove.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Hullwrought MK. II"); // Add the Nebula Blaze as a ingredient for the recipie
-            Tooltip.SetDefault("" +
+            // DisplayName.SetDefault("Hullwrought MK. II"); // Add the Nebula Blaze as a ingredient for the recipie
+            /* Tooltip.SetDefault("" +
                 "[c/F7D76A:Hold left click to charge the weapon; if the weapon is fully charged, the attack varies]" +
                 "\nRight click to swap between [c/FF7C00:Blasting Form], [c/00CDFF:Striking Form], and [c/BE5CC8:Mystic Form] with 1/3rd second cooldown" +
                 "\nIn [c/00CDFF:Striking Form], attacks focus on close-ranged damage" +
@@ -33,7 +33,7 @@ namespace StarsAbove.Items
                 "\nCharged attacks fire powerful blasts of energy that travel slowly and deal damage over time" +
                 "\nCharged attacks require 80 Mana" +
                 "\nGain Mana Regeneration when not in [c/BE5CC8:Mystic Form]" +
-                $"");
+                $""); */
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

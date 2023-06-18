@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Remove Stationary Spiders!");
-            Description.SetDefault("");
+            // DisplayName.SetDefault("Remove Stationary Spiders!");
+            // Description.SetDefault("");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

@@ -15,8 +15,8 @@ namespace StarsAbove.Items
     public class IzanagiEdge : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Izanagi's Edge");
-			Tooltip.SetDefault("Every fourth shot will always deal critical damage" +
+			// DisplayName.SetDefault("Izanagi's Edge");
+			/* Tooltip.SetDefault("Every fourth shot will always deal critical damage" +
 				"\nAll critical damage from this weapon does quadruple damage instead of double" +
 				"\nDamage will increase with every shot" +
 				"\nAfter the fourth shot is taken, the gun will take time to reload" +
@@ -26,7 +26,7 @@ namespace StarsAbove.Items
 				"\nThis mana increase does not apply if this weapon is attuned to Melee, but attack speed is drastically increased" +
 				"\nYou have permanent Swiftness when this weapon is in your hands" +
 				"\n'Strike true! Ziodyne!'" +
-				$"");
+				$""); */
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

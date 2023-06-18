@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.Youmu
     public class YoumuRound : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Konpaku Katana");     //The English name of the projectile
+			// DisplayName.SetDefault("Konpaku Katana");     //The English name of the projectile
 			Main.projFrames[Projectile.type] = 4;
 
 		}

@@ -10,12 +10,12 @@ namespace StarsAbove.Buffs.Manifestation
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("E.G.O. Manifestation");
-            Description.SetDefault("Mastery over emotional turbulence has resulted in the physical manifestation of inner emotion" +
+            // DisplayName.SetDefault("E.G.O. Manifestation");
+            /* Description.SetDefault("Mastery over emotional turbulence has resulted in the physical manifestation of inner emotion" +
                 "\nDamage increased by 30%" +
                 "\nAttack speed increased by 40%" +
                 "\nMovement speed increased by 90%" +
-                "\nDefense reduced by 30");
+                "\nDefense reduced by 30"); */
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

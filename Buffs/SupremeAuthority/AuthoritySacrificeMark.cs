@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs.SupremeAuthority
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Supreme Authority Mark");
-            Description.SetDefault("Marked for death");
+            // DisplayName.SetDefault("Supreme Authority Mark");
+            // Description.SetDefault("Marked for death");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false;
         }

@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     public class MantisCatPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Cat..?");
-			Description.SetDefault("It brought a friend");
+			// DisplayName.SetDefault("Cat..?");
+			// Description.SetDefault("It brought a friend");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}

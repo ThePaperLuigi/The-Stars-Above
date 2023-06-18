@@ -19,7 +19,7 @@ namespace StarsAbove.Items
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("" +
+            /* Tooltip.SetDefault("" +
                 "[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes]" +
                 "\n[c/F7D76A:Hold left click to charge the weapon; if the weapon is fully charged, the attack varies]" +
                 "\nHolding this weapon will conjure 5 [c/14E6FF:Spatial Planets] to orbit you" +
@@ -35,7 +35,7 @@ namespace StarsAbove.Items
                 "\nAfter 7 seconds, [c/FF9F14:Cosmic Conception] will resolve, bursting in an explosion of cosmic energy" +
                 "\n[c/FF9F14:Cosmic Conception] has a 2 minute cooldown" +
                 "\n'And yet you can walk on'" +
-                $"");
+                $""); */
 
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

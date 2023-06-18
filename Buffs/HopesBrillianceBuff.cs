@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Hope's Brilliance");
-            Description.SetDefault("");
+            // DisplayName.SetDefault("Hope's Brilliance");
+            // Description.SetDefault("");
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
             BuffID.Sets.NurseCannotRemoveDebuff[Type] = true;
@@ -20,11 +20,10 @@ namespace StarsAbove.Buffs
             
             
         }
-        public override void ModifyBuffTip(ref string tip, ref int rare)
+        public override void ModifyBuffText(ref string buffName, ref string tip, ref int rare)
         {
             tip = $"{Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().hopesBrilliance}/{Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().hopesBrillianceMax}";
 
-            base.ModifyBuffTip(ref tip, ref rare);
         }
     }
 }

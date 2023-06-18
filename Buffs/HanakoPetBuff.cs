@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     public class HanakoPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Mysterious Ghost");
-			Description.SetDefault("A mysterious ghost follows you");
+			// DisplayName.SetDefault("Mysterious Ghost");
+			// Description.SetDefault("A mysterious ghost follows you");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}

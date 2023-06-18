@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Going Supercritical Cooldown");
-            Description.SetDefault("Going Supercritical will fail to activate if this debuff is present");
+            // DisplayName.SetDefault("Going Supercritical Cooldown");
+            // Description.SetDefault("Going Supercritical will fail to activate if this debuff is present");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
             BuffID.Sets.NurseCannotRemoveDebuff[Type] = true;

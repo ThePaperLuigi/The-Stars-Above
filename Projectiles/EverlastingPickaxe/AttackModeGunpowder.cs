@@ -12,7 +12,7 @@ namespace StarsAbove.Projectiles.EverlastingPickaxe
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("The Everlasting Pickaxe");
+			// DisplayName.SetDefault("The Everlasting Pickaxe");
 		}
 
 		public override void SetDefaults()
@@ -113,7 +113,7 @@ namespace StarsAbove.Projectiles.EverlastingPickaxe
 		private const int MAX_STICKY_JAVELINS = 6; // This is the max. amount of javelins being able to attach
 		private readonly Point[] _stickingJavelins = new Point[MAX_STICKY_JAVELINS]; // The point array holding for sticking javelins
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
 			IsStickingToTarget = true; // we are sticking to a target
 			TargetWhoAmI = target.whoAmI; // Set the target whoAmI

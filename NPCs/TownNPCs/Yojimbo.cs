@@ -100,7 +100,7 @@ namespace StarsAbove.NPCs.TownNPCs
         }
         
 
-        public override void HitEffect(int hitDirection, double damage)
+        public override void HitEffect(NPC.HitInfo hit)
 		{
 			// Causes dust to spawn when the NPC takes damage.
 			int num = 3;
@@ -182,7 +182,7 @@ namespace StarsAbove.NPCs.TownNPCs
 
 			base.AI();
         }
-        public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+        public override void OnChatButtonClicked(bool firstButton, ref string shopName)
 		{
 			if (firstButton)
 			{

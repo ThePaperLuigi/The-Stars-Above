@@ -15,12 +15,12 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Will fire a blade of light that will deal double damage and burn foes with 50 mana if mana is available" +
+			/* Tooltip.SetDefault("Will fire a blade of light that will deal double damage and burn foes with 50 mana if mana is available" +
 				"\nRight click to unleash your inner potential, gaining the unrivaled strength of [c/F1AF42:Limit Break] for 20 seconds (1 minute cooldown)" +
 				"\nWhile under the influence of [c/F1AF42:Limit Break], health will be converted to mana without limit until mana is full" +
 				"\nAdditonally, all damage is increased by 10% and all magic damage is increased by an additional 100%" +
 				"\n'I shall transcend you!'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -97,7 +97,7 @@ namespace StarsAbove.Items
 			}
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			// 
 			// 60 frames = 1 second

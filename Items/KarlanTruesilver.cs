@@ -16,11 +16,11 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Unleashes powerful slashes with unlimited piercing" +
+			/* Tooltip.SetDefault("Unleashes powerful slashes with unlimited piercing" +
                 "\nCritical strikes deal bonus damage based on 10% of your current HP" +
                 "\nDamage is halved per pierce" +
 				"\n'When the aether darkens, 'tis an omen that snowfall draws dear...'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13;
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -56,7 +56,7 @@ namespace StarsAbove.Items
 			
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 
 		}

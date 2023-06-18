@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.Bosses.Vagrant
     public class VagrantBulletSwarm : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Wormhole");
+			// DisplayName.SetDefault("Wormhole");
 			
 		}
 

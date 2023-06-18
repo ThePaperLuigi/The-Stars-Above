@@ -13,7 +13,7 @@ namespace StarsAbove.Projectiles.UltimaThule
     public class UltimaPlanet1 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Ultima Thule");     //The English name of the projectile
+			// DisplayName.SetDefault("Ultima Thule");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 140;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode
 			Main.projFrames[Projectile.type] = 1;
@@ -151,7 +151,7 @@ namespace StarsAbove.Projectiles.UltimaThule
 
 
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Projectile.scale = 2f;
 			isActive = false;
@@ -220,7 +220,7 @@ namespace StarsAbove.Projectiles.UltimaThule
 
 
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 
 		public override bool PreDraw(ref Color lightColor)

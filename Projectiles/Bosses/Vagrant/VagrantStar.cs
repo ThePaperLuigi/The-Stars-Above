@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.Bosses.Vagrant
     public class VagrantStar : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Protostar");     //The English name of the projectile
+			// DisplayName.SetDefault("Protostar");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 50;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
 		}

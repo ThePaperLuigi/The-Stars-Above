@@ -15,8 +15,8 @@ namespace StarsAbove.Items
     public class KroniicAccelerator : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Kroniic Principality");
-			Tooltip.SetDefault("Use this weapon to throw a piercing projectile" +
+			// DisplayName.SetDefault("Kroniic Principality");
+			/* Tooltip.SetDefault("Use this weapon to throw a piercing projectile" +
 				"\nHolding this weapon additionally summons 2 [c/0C65A7:Temporal Timepieces] to orbit you" +
 				"\nWhen a [c/0C65A7:Temporal Timepiece] comes into contact with an enemy, it accrues [c/97BCBB:Chronal Heat] displayed within the [c/EFCE38:Temporal Gauge]" +
 				"\nAbove 80% [c/97BCBB:Chronal Heat], both the [c/0C65A7:Temporal Timepieces] and the weapon will deal 60 bonus damage" +
@@ -27,7 +27,7 @@ namespace StarsAbove.Items
 				"\nThis restores Health and Mana to the values present when the [c/6764F9:Timeframe] was prepared" +
 				"\nThe [c/6764F9:Timeframe] lasts for 6 seconds before it expires, and it has a cooldown of 1 minute" +
 				"\n'The time.. has come'" +
-				$"");
+				$""); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -194,7 +194,7 @@ namespace StarsAbove.Items
 					player.statLife = player.GetModPlayer<WeaponPlayer>().kroniicSavedHP;
 					player.statMana = player.GetModPlayer<WeaponPlayer>().kroniicSavedMP;
 					player.GetModPlayer<WeaponPlayer>().kroniicTeleport = false;
-					NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, (float)player.whoAmI, savedPosition.X, savedPosition.Y, 1, 0, 0);
+					NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float)player.whoAmI, savedPosition.X, savedPosition.Y, 1, 0, 0);
 					player.GetModPlayer<WeaponPlayer>().powderGaugeIndicatorOn = false;
 
 					for (int d = 0; d < 30; d++)

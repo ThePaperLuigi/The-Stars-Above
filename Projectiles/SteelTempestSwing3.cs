@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Unforgotten");
+			// DisplayName.SetDefault("Unforgotten");
 			Main.projFrames[Projectile.type] = 6;
 		}
 		public override void SetDefaults()

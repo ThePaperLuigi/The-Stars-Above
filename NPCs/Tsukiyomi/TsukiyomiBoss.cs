@@ -25,6 +25,7 @@ using Terraria.Graphics.Shaders;
 using StarsAbove.Projectiles.Bosses.Tsukiyomi;
 using StarsAbove.Projectiles;
 using SubworldLibrary;
+using StarsAbove.NPCs.WarriorOfLight;
 
 namespace StarsAbove.NPCs.Tsukiyomi
 {
@@ -69,7 +70,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Tsukiyomi, the First Starfarer");
+			// DisplayName.SetDefault("Tsukiyomi, the First Starfarer");
 			
 			Main.npcFrameCount[NPC.type] = 11; // make sure to set this for your modnpcs.
 
@@ -98,7 +99,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 		}
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
-			int associatedNPCType = ModContent.NPCType<WarriorOfLight>();
+			int associatedNPCType = ModContent.NPCType<WarriorOfLightBoss>();
 			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[associatedNPCType], quickUnlock: true);
 
 			// We can use AddRange instead of calling Add multiple times in order to add multiple items at once
@@ -138,9 +139,9 @@ namespace StarsAbove.NPCs.Tsukiyomi
 		{
 			return 0f;
 		}
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */
 		{
-			NPC.lifeMax = (int)(NPC.lifeMax * bossLifeScale * numPlayers);
+			NPC.lifeMax = (int)(NPC.lifeMax * bossAdjustment * balance);
 			//NPC.defense *= numPlayers * 5;
 		}
         public override void BossLoot(ref string name, ref int potionType)
@@ -1263,7 +1264,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 
 		}
 
-        public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitByProjectile(Projectile projectile, ref NPC.HitModifiers modifiers)
         {
 			//Zenith resistance.
 			if(projectile.type == ProjectileID.FinalFractal)
@@ -1281,13 +1282,13 @@ namespace StarsAbove.NPCs.Tsukiyomi
 				else if (NPC.localAI[0] == 1)
 				{
 					//Phase 2
-					damage = (int)(damage * 0.7f);
+					modifiers.FinalDamage *= 0.7f;
 
 				}
 				else
 				{
 					//Phase 1
-					damage = (int)(damage * 0.7f);
+					modifiers.FinalDamage *= 0.7f;
 
 				}
 			}
@@ -1296,18 +1297,18 @@ namespace StarsAbove.NPCs.Tsukiyomi
 				if (NPC.localAI[0] != 0)
 				{
 					//Phase 2
-					damage = (int)(damage * 0.7f);
+					modifiers.FinalDamage *= 0.7f;
 
 				}
 				else
 				{
 					//Phase 1
-					damage = (int)(damage * 0.7f);
+					modifiers.FinalDamage *= 0.7f;
 
 				}
 			}
 		}
-        public override void ModifyHitByItem(Player player, Item item, ref int damage, ref float knockback, ref bool crit)
+        public override void ModifyHitByItem(Player player, Item item, ref NPC.HitModifiers modifiers)
         {
 
         }

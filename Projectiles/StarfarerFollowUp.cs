@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Aprismatism");
+			// DisplayName.SetDefault("Aprismatism");
 			Main.projFrames[Projectile.type] = 7;
 		}
 		public override void SetDefaults()

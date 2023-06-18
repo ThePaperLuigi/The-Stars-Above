@@ -16,8 +16,8 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Umbra");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Umbra");
+			/* Tooltip.SetDefault("" +
 				"Attacks with this weapon will sweep in an arc and unleash fast, piercing [c/A75BD9:Timeless Blades]" +
                 "\nDealing damage with the weapon swing will grant [c/AF32CF:Timeless Potential] for 4 seconds" +
                 "\n[c/AF32CF:Timeless Potential] causes non-critical strikes to have a 30% chance to become critical and additionally grants a 10% chance to dodge attacks when active" +
@@ -29,7 +29,7 @@ namespace StarsAbove.Items
 				"\nEnhanced [c/A75BD9:Timeless Blades] are faster, can pierce up to 5 times, and deal 30% increased damage" +
                 "\nCritical strikes with enhanced [c/A75BD9:Timeless Blades] will additionally conjure additional [c/A75BD9:Timeless Blades] to strike the foe" +
                 "\nThe amount of [c/A75BD9:Timeless Blades] summoned depend on the remaining pierces of the enhanced [c/A75BD9:Timeless Blade]" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -105,7 +105,7 @@ namespace StarsAbove.Items
 			
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 
 			

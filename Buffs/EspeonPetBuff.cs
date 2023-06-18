@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs
     public class EspeonPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Mystic Hound");
-			Description.SetDefault("A pair of mystic hounds are following you");
+			// DisplayName.SetDefault("Mystic Hound");
+			// Description.SetDefault("A pair of mystic hounds are following you");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}

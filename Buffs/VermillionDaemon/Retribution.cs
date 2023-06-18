@@ -10,9 +10,9 @@ namespace StarsAbove.Buffs.VermillionDaemon
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Retribution");
-            Description.SetDefault("Firing a barrage of spectral weapons" +
-                "");
+            // DisplayName.SetDefault("Retribution");
+            /* Description.SetDefault("Firing a barrage of spectral weapons" +
+                ""); */
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

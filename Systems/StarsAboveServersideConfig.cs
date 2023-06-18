@@ -54,6 +54,7 @@ namespace StarsAbove
 
 		[Label("$Mods.StarsAbove.Config.SubworldCompatibility.Label")]
 		[Tooltip("$Mods.StarsAbove.Config.SubworldCompatibility.Tooltip")]
+		[DefaultValue(true)]
 		public bool DisableCompatibilityMode;
 
 		[Increment(1)]

@@ -16,7 +16,7 @@ namespace StarsAbove.Items
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("" +
+            /* Tooltip.SetDefault("" +
                 "[c/F7D76A:Hold left click to charge the weapon; if the weapon is fully charged, the attack varies]" +
                 "\nUncharged attacks will alternate between [c/C2E6C1:Mortal Steel] and [c/F10079:Spirit Azakana]" +
                 "\n[c/C2E6C1:Mortal Steel] has a 50% critical hit rate independent of other crit calculations" +
@@ -30,7 +30,7 @@ namespace StarsAbove.Items
                 "\nOnce [c/8E60D1:Soul Unbound] ends, you will be forced to return to the position where [c/8E60D1:Soul Unbound] was casted, and attacks will be disabled" +
                 "\n[c/8E60D1:Soul Unbound] has a 22 second cooldown" +
                 "\n'One to cut, one to seal'" +
-                $"");
+                $""); */
 
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

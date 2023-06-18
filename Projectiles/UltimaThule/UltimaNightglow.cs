@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.UltimaThule
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ultima Thule");
+			// DisplayName.SetDefault("Ultima Thule");
 		}
 
 		public override void SetDefaults()

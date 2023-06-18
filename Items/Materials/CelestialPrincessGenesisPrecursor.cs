@@ -8,10 +8,10 @@ namespace StarsAbove.Items.Materials
     public class CelestialPrincessGenesisPrecursor : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Starless Celestial Attire");
-			Tooltip.SetDefault("[c/956BE3:Starfarer Attire Precursor]" +
+			// DisplayName.SetDefault("Starless Celestial Attire");
+			/* Tooltip.SetDefault("[c/956BE3:Starfarer Attire Precursor]" +
                 "\nThe tattered remains of storied garb from legends past" +
-				"\nUtilized to craft 'Celestial Princess' Genesis'");
+				"\nUtilized to craft 'Celestial Princess' Genesis'"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;

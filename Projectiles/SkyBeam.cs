@@ -28,7 +28,7 @@ namespace StarsAbove.Projectiles
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Sky Beam");//Thank you to WeaponOut
+            // DisplayName.SetDefault("Sky Beam");//Thank you to WeaponOut
 
         }
         public override void SetDefaults()

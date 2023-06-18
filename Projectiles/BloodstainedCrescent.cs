@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles
     public class BloodstainedCrescent : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Bloodstained Crescent");
+			// DisplayName.SetDefault("Bloodstained Crescent");
 			//DrawOriginOffsetY = 50;
 			//DrawOffsetX = 50;
 		}

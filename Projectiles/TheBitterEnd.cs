@@ -64,7 +64,7 @@ namespace StarsAbove.Projectiles
 			//5b: projectile.localNPCHitCooldown = 20; // o
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) {
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
 			//3a: target.immune[projectile.owner] = 20;
 			//3b: target.immune[projectile.owner] = 5;
 		}

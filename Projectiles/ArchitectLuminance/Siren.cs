@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.ArchitectLuminance
     public class Siren : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Artifice Siren");
+			// DisplayName.SetDefault("Artifice Siren");
 			Main.projFrames[Projectile.type] = 5;
 		}
 

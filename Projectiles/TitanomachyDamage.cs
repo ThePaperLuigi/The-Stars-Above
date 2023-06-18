@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles
     public class TitanomachyDamage : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Titanomachy");
+			// DisplayName.SetDefault("Titanomachy");
 			
 		}
 

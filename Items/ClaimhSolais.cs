@@ -15,7 +15,7 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("" +
+			/* Tooltip.SetDefault("" +
 				"Critical strikes with this weapon will grant a stack of [c/F1AF42:Radiance] (Up to 10)" +
 				"\nRight click with 5 stacks of [c/F1AF42:Radiance] to unleash the [c/F35B43:Radiant Soul], consuming all [c/F1AF42:Radiance]" +
 				"\nWhen the [c/F35B43:Radiant Soul] is unleashed, gain 2 seconds of Invincibility" +
@@ -24,7 +24,7 @@ namespace StarsAbove.Items
 				"\nGaining [c/F1AF42:Radiance] past 10 stacks will instead grant Ironskin for 4 seconds" +
 				"\nThe weapon grows in scale based upon a portion of defense" +
 				"\n'An indefatigable sword. Its blade glitters with light'" +
-				$"");  //The (English) text shown below your weapon's name'
+				$""); */  //The (English) text shown below your weapon's name'
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 		}
@@ -101,7 +101,7 @@ namespace StarsAbove.Items
 			}
 			base.HoldItem(player);
 		}
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			// 
 			// 60 frames = 1 second

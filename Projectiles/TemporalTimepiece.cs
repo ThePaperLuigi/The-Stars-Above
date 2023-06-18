@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles
     public class TemporalTimepiece : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Kroniic Principality");
+			// DisplayName.SetDefault("Kroniic Principality");
 
 		}
 

@@ -13,7 +13,7 @@ namespace StarsAbove.Projectiles.EverlastingPickaxe
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("The Everlasting Pickaxe");
+			// DisplayName.SetDefault("The Everlasting Pickaxe");
 		}
 
 		public override void SetDefaults()

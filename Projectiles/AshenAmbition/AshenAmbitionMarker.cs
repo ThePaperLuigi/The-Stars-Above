@@ -6,7 +6,7 @@ namespace StarsAbove.Projectiles.AshenAmbition
     public class AshenAmbitionMarker : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Ashen Ambition");
+			// DisplayName.SetDefault("Ashen Ambition");
 			
 		}
 

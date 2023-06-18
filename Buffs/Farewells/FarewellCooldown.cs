@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.Farewells
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Farewell Cooldown");
-            Description.SetDefault("The Kevesi and Agnian Farewells will fail to activate if this debuff is present");
+            // DisplayName.SetDefault("Farewell Cooldown");
+            // Description.SetDefault("The Kevesi and Agnian Farewells will fail to activate if this debuff is present");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //
         }

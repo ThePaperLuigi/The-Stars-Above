@@ -8,13 +8,13 @@ namespace StarsAbove.Items.Prisms
     public class MechanicalPrism : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Mechanical Prism");
-			Tooltip.SetDefault("[c/FF5934:Tier 2 Stellar Prism]" +
+			// DisplayName.SetDefault("Mechanical Prism");
+			/* Tooltip.SetDefault("[c/FF5934:Tier 2 Stellar Prism]" +
 				"\nAffix to a Stellar Nova to gain the following ability:" +
 				"\n[c/DAB6B6:High-Frequency Impact]" +
 				"\nThe first enemy struck with the Stellar Nova is stunned for 2 seconds" +
 				"\nAdditionally, 10% of damage is dealt again in a region around the target" + //0
-				"");
+				""); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;

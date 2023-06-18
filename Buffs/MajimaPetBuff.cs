@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs
     public class MajimaPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Puppy of Shimano");
-			Description.SetDefault("Kiryu-chan!!");
+			// DisplayName.SetDefault("Puppy of Shimano");
+			// Description.SetDefault("Kiryu-chan!!");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}

@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.UltimaThule
     public class UltimaVFX1 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Ultima Thule");
+			// DisplayName.SetDefault("Ultima Thule");
 			//Main.projFrames[projectile.type] = 14;
 		}
 

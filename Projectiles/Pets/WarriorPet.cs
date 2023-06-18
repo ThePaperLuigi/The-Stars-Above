@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.Pets
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Discount Warrior of Light"); // Automatic from .lang files
+			// DisplayName.SetDefault("Discount Warrior of Light"); // Automatic from .lang files
 			Main.projFrames[Projectile.type] = 1;
 			Main.projPet[Projectile.type] = true;
 			ProjectileID.Sets.LightPet[Projectile.type] = true;

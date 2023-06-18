@@ -9,11 +9,11 @@ namespace StarsAbove.Items.Placeable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Music Box (Arbitration - 1st Phase)");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Music Box (Arbitration - 1st Phase)");
+			/* Tooltip.SetDefault("" +
 				"'First Warning (LoR ver.)' - Library of Ruina" +
 				"\nComposed by Studio EIM"
-				+ $"\n");
+				+ $"\n"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/FirstWarning"), ModContent.ItemType<FirstWarningMusicBox>(), ModContent.TileType<Tiles.FirstWarningMusicBox>());

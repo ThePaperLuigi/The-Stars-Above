@@ -18,12 +18,12 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Catalyst's Memory");
+			// DisplayName.SetDefault("Catalyst's Memory");
 			
 
 			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
 			{
-				Tooltip.SetDefault("" +
+				/* Tooltip.SetDefault("" +
 				"[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes]" +
 				"\nHolding this weapon activates it, granting the buff [c/EAC0ED:Catalyzed Blade], increasing movement speed by 10%" +
 				"\nAttacks with this weapon barrage foes with myriad stabs dealing 80% of base damage, with a 10% chance to fire a [c/F581FE:Shimmering Prism] that deals 50% of base damage" +
@@ -38,11 +38,11 @@ namespace StarsAbove.Items
 				"\nAfter shattering the [c/7B48CA:Dazzling Prismic] with this method, gain 70 HP instantly and additionally gain [c/FF61CA:Dazzling Bladedance] for 5 seconds" +
 				"\n[c/FF61CA:Dazzling Bladedance] increases melee speed by 30%" +
 				"\nThe [c/7B48CA:Dazzling Prismic] will deal minor damage to foes caught in its radius after shattering for a short duration" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 			}
 			else
 			{
-				Tooltip.SetDefault("" +
+				/* Tooltip.SetDefault("" +
 				"[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes]" +
 				"\nHolding this weapon activates it, granting the buff [c/EAC0ED:Catalyzed Blade], increasing movement speed by 10%" +
 				"\nAttacks with this weapon barrage foes with myriad stabs dealing 80% of base damage, with a 10% chance to fire a [c/F581FE:Shimmering Prism] that deals 50% of base damage" +
@@ -57,7 +57,7 @@ namespace StarsAbove.Items
 				"\nAfter shattering the [c/7B48CA:Dazzling Prismic] with this method, gain 70 HP instantly and additionally gain [c/FF61CA:Dazzling Bladedance] for 5 seconds" +
 				"\n[c/FF61CA:Dazzling Bladedance] increases melee speed by 30%" +
 				"\nThe [c/7B48CA:Dazzling Prismic] will deal minor damage to foes caught in its radius after shattering for a short duration" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 			}
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -177,7 +177,7 @@ namespace StarsAbove.Items
 			
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			
 		}

@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shadowless Cerulean");
+			// DisplayName.SetDefault("Shadowless Cerulean");
 			Main.projFrames[Projectile.type] = 9;
 			//DrawOriginOffsetY = 30;
 			//DrawOffsetX = -60;

@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.ManiacalJustice
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Special Attack");
-            Description.SetDefault("Attack speed and damage drastically increased... at a cost");
+            // DisplayName.SetDefault("Special Attack");
+            // Description.SetDefault("Attack speed and damage drastically increased... at a cost");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.CatalystMemory
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Catalyzed Blade");
-            Description.SetDefault("The empowered blade before you grants 10% increased movement speed");
+            // DisplayName.SetDefault("Catalyzed Blade");
+            // Description.SetDefault("The empowered blade before you grants 10% increased movement speed");
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
     public class EuthymiaFollowUp : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Vision of Euthymia");
+			// DisplayName.SetDefault("Vision of Euthymia");
 			
 			Main.projFrames[Projectile.type] = 5;
 		}

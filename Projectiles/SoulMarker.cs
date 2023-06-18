@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
     public class SoulMarker : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Soul Marker");
+			// DisplayName.SetDefault("Soul Marker");
 			
 		}
 

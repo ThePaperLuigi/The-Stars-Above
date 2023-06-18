@@ -8,7 +8,7 @@ namespace StarsAbove.Items.Placeable.CyberWorld
 	public class ChainlinkFence : ModItem
 	{
 		public override void SetStaticDefaults() {
-			Tooltip.SetDefault("");
+			// Tooltip.SetDefault("");
 		}
 
 		public override void SetDefaults() {
@@ -21,9 +21,10 @@ namespace StarsAbove.Items.Placeable.CyberWorld
 			Item.useTime = 7;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.consumable = true;
-			Item.createWall = WallType<ChainlinkFenceWall>();
+			Item.createWall = WallType<ChainlinkFenceWall>(); Item.ResearchUnlockCount = 0;
+
 		}
 
-		
+
 	}
 }

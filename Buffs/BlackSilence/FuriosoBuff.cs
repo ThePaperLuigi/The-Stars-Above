@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.BlackSilence
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("The Black Silence");
-            Description.SetDefault("Mastery of armaments, speed, and skill has granted a myriad of buffs while cycling through weapons of the Black Silence");
+            // DisplayName.SetDefault("The Black Silence");
+            // Description.SetDefault("Mastery of armaments, speed, and skill has granted a myriad of buffs while cycling through weapons of the Black Silence");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

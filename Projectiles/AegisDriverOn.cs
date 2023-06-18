@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
     public class AegisDriverOn : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Aegis Driver");
+			// DisplayName.SetDefault("Aegis Driver");
 			
 		}
 

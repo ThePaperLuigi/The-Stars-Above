@@ -12,7 +12,7 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
     public class BladeworkSlash : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Burnished Bladework");
+			// DisplayName.SetDefault("Burnished Bladework");
 			Main.projFrames[Projectile.type] = 4;
 			
 		}

@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs
     public class EreshkigalPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Princess of Kur");
-			Description.SetDefault("I'll have you know that I'm a proper goddess!");
+			// DisplayName.SetDefault("Princess of Kur");
+			// Description.SetDefault("I'll have you know that I'm a proper goddess!");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}

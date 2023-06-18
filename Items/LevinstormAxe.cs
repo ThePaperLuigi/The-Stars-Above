@@ -18,8 +18,8 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Boltstorm Axe");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Boltstorm Axe");
+			/* Tooltip.SetDefault("" +
 				"[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty when aspected to Melee or Magic damage]" +
 				"\nThe current [c/F592BF:Aspected Damage Type] influences the weapon's attacks (Can not be used if not Aspected to Melee or Magic)" +
 				"\nRight click to activate [c/FDD059:Gathering Levinstorm], enhancing the weapon's attacks for 8 seconds (30 second cooldown)" +
@@ -31,7 +31,7 @@ namespace StarsAbove.Items
 				"\nWhile [c/FDD059:Gathering Levinstorm] is active, gain 15% increased damage and critical strike chance" +
 				"\n\nAdditionally, during [c/FDD059:Gathering Levinstorm], lightning critical strikes will cause lightning to strike from above, dealing half critical strike damage" +
                 "\nFollow-up lightning can not trigger this effect" + //Umbra weapons
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -129,7 +129,7 @@ namespace StarsAbove.Items
 
 			base.HoldItem(player);
 		}
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			// 
 			// 60 frames = 1 second

@@ -22,8 +22,8 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Manifestation");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Manifestation");
+			/* Tooltip.SetDefault("" +
 				"[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes at 70% efficiency, but inherits 150% from critical strike chance modifiers]" +
                 "\nAttacks rapidly sweep in a colossal arc; all critical strike damage is increased by 20%" +
 				"\nTaking or dealing damage grants [c/D53B3B:Emotional Turbulence] (Critical strikes grant double [c/D53B3B:Emotional Turbulence] below 200 HP)" +
@@ -39,7 +39,7 @@ namespace StarsAbove.Items
 				"\nThe longer [c/AE0000:E.G.O. Manifestation] lasts, the faster [c/D53B3B:Emotional Turbulence] will drain" +
                 "\nIf [c/D53B3B:Emotional Turbulence] is below 10% for 3 seconds, [c/AE0000:E.G.O. Manifestation] will end and you will be inflicted with Vulnerability for 10 seconds" +
 				"\n'Let's start this for real- I'll crush you all...'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 			ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
@@ -93,7 +93,7 @@ namespace StarsAbove.Items
 			
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 
 			

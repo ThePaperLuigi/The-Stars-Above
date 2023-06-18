@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.Chemtank
     public class ChemtankMarker3 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Dreadnought Chemtank");     //The English name of the projectile
+			// DisplayName.SetDefault("Dreadnought Chemtank");     //The English name of the projectile
 			Main.projFrames[Projectile.type] = 2;
 
 		}

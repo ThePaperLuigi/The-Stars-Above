@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.SunsetOfTheSunGod
     public class KarnaExplosion : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Sunset of the Sun God");
+			// DisplayName.SetDefault("Sunset of the Sun God");
 			
 		}
 
@@ -131,12 +131,12 @@ namespace StarsAbove.Projectiles.SunsetOfTheSunGod
 
 			
 		}
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 			target.AddBuff(BuffID.Daybreak, 8 * 60);
-			crit = true;
-
-            base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
+			modifiers.SetCrit();
+             
         }
+
     }
 }

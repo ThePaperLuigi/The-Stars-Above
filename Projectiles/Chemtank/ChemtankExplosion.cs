@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.Chemtank
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dreadnought Chemtank");
+			// DisplayName.SetDefault("Dreadnought Chemtank");
 			Main.projFrames[Projectile.type] = 5;
 		}
 		public override void SetDefaults()
@@ -65,7 +65,7 @@ namespace StarsAbove.Projectiles.Chemtank
 
 			
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			target.AddBuff(BuffID.CursedInferno, 180);
 			for (int d = 0; d < 8; d++)
@@ -74,11 +74,11 @@ namespace StarsAbove.Projectiles.Chemtank
 
 			}
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
-			damage = (int)MathHelper.Min(target.lifeMax * 0.05f, 250);
+			modifiers.FinalDamage.Flat += (int)MathHelper.Min(target.lifeMax * 0.05f, 250);
 
 		}
 		

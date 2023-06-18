@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Cosmic Recoil");
-            Description.SetDefault("Limitless power has its cost");
+            // DisplayName.SetDefault("Cosmic Recoil");
+            // Description.SetDefault("Limitless power has its cost");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

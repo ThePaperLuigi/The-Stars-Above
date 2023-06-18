@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Stun");
-            Description.SetDefault("Stuck");
+            // DisplayName.SetDefault("Stun");
+            // Description.SetDefault("Stuck");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }
@@ -22,7 +22,12 @@ namespace StarsAbove.Buffs
         public override void Update(NPC npc, ref int buffIndex)
         {
             npc.velocity *= 0;
-            
+            if(!npc.boss)
+            {
+                
+                
+
+            }
             //npc.GetGlobalNPC<StarsAboveGlobalNPC>().Petrified = true;
         }
         public override bool ReApply(NPC npc, int time, int buffIndex)

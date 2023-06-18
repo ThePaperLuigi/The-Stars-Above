@@ -13,8 +13,8 @@ namespace StarsAbove.Items
     public class Kifrosse : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Kifrosse");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Kifrosse");
+			/* Tooltip.SetDefault("" +
 				"" +
 				"Upon use, consumes all remaining Minion Slots (up to 9) to conjure a [c/7AE1CE:Foxfrost Mystic], gaining 5% increased Summon Damage per slot" +
 				"\nWhile the [c/7AE1CE:Foxfrost Mystic] is stationary, a protective aura will grant [c/B8F7FC:Stalwart Snow] to nearby allies in range, granting 16 Defense" +
@@ -30,7 +30,7 @@ namespace StarsAbove.Items
 				"\nGain the ability to cast [c/0464A7:Amaterasu's Winter] when double-tapping DOWN" +
 				"\n[c/0464A7:Amaterasu's Winter] will cause all [c/12DAE4:Blizzard Foxfires] to attack incredibly fast" +
 				"\n[c/0464A7:Amaterasu's Winter] lasts for 4 seconds and has a 40 second cooldown" +
-				$"");
+				$""); */
 
 			ItemID.Sets.GamepadWholeScreenUseRange[Item.type] = true;
 			ItemID.Sets.LockOnIgnoresCollision[Item.type] = true;

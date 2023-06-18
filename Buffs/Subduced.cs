@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Subduced");
-            Description.SetDefault("Offensive and defensive stats are halved");
+            // DisplayName.SetDefault("Subduced");
+            // Description.SetDefault("Offensive and defensive stats are halved");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

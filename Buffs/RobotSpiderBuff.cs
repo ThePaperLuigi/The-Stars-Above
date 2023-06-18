@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs
     public class RobotSpiderBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Mechanical Arachnids");
-			Description.SetDefault("The mechanical arachnids aid you");
+			// DisplayName.SetDefault("Mechanical Arachnids");
+			// Description.SetDefault("The mechanical arachnids aid you");
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}

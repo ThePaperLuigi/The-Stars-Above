@@ -12,7 +12,7 @@ namespace StarsAbove.Projectiles.RexLapis
     public class RexLapisAttack : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Rex Lapis");
+			// DisplayName.SetDefault("Rex Lapis");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 70;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
 
@@ -94,7 +94,7 @@ namespace StarsAbove.Projectiles.RexLapis
 
 			return true;
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			Player projOwner = Main.player[Projectile.owner];
 			projOwner.AddBuff(BuffType<BulwarkOfJade>(), 120);
@@ -103,20 +103,23 @@ namespace StarsAbove.Projectiles.RexLapis
 				Dust.NewDust(target.Center, 0, 0, 222, Main.rand.NextFloat(-5, 5), Main.rand.NextFloat(-5, 5), 150, default(Color), 0.3f);
 				
 			}
-			if(crit && target.HasBuff(BuffType<Petrified>()))
+			if(hit.Crit && target.HasBuff(BuffType<Petrified>()))
             {
-				damage *= 5;
+				
 				target.DelBuff(target.FindBuffIndex(BuffType<Petrified>()));
 				for (int d = 0; d < 14; d++)
 				{
-					Dust.NewDust(target.Center, 0, 0, 222, Main.rand.NextFloat(-25, 25), Main.rand.NextFloat(-25, 25), 150, default(Color), 1f);
+					Dust.NewDust(target.Center, 0, 0, DustID.FireworkFountain_Yellow, Main.rand.NextFloat(-25, 25), Main.rand.NextFloat(-25, 25), 150, default(Color), 1f);
 
 				}
 			}
-
-			base.OnHitNPC(target, damage, knockback, crit);
+ 
 		}
-	}
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
+			modifiers.CritDamage += 5f;
+        }
+    }
 
 	
 }

@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Void Atrophy1");
-            Description.SetDefault("Weakened");
+            // DisplayName.SetDefault("Void Atrophy1");
+            // Description.SetDefault("Weakened");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

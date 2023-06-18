@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.Tsukiyomi
     public class Starmatter : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Starmatter");
+			// DisplayName.SetDefault("Starmatter");
 			Main.projFrames[Projectile.type] = 11;
 		}
 

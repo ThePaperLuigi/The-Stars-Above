@@ -6,7 +6,7 @@ namespace StarsAbove.Projectiles.Tsukiyomi
     public class AsphodeneBurstC : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Asphodene");
+			// DisplayName.SetDefault("Asphodene");
 			Main.projFrames[Projectile.type] = 14;
 		}
 

@@ -9,14 +9,14 @@ namespace StarsAbove.Items.Prisms
     public class ApocryphicPrism : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Apocryphic Prism");
-			Tooltip.SetDefault("[c/C2BDFF:Tier 1 Stellar Prism]" +
+			// DisplayName.SetDefault("Apocryphic Prism");
+			/* Tooltip.SetDefault("[c/C2BDFF:Tier 1 Stellar Prism]" +
 				"\nAffix to a Stellar Nova to gain the following stats:" +
 				"\n[c/83FF4D:+20% Damage]" + //+2
 				"\n[c/FF4D4D:-14% Crit Chance]" +//-2
 				"\n[c/83FF4D:+10% Crit Damage]" +//1
 				"\n[c/FF4D4D:+5 Energy Cost]" + //-1
-				"");
+				""); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;

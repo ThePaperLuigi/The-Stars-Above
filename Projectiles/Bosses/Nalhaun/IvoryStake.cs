@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
     public class IvoryStake : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Ivory Stake");     //The English name of the projectile
+			// DisplayName.SetDefault("Ivory Stake");     //The English name of the projectile
 
 			Main.projFrames[Projectile.type] = 6;
 		}

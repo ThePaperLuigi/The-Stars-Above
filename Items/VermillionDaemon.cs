@@ -17,8 +17,8 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Vermilion Daemon");
-			Tooltip.SetDefault("Holding this weapon prevents natural Mana Regeneration" +
+			// DisplayName.SetDefault("Vermilion Daemon");
+			/* Tooltip.SetDefault("Holding this weapon prevents natural Mana Regeneration" +
                 "\nAttacks with this weapon will execute a three-hit combo attack" +
 				"\nStriking foes with the final swing of the combo attack will grant 15 Mana and inflict [c/B81E1E:Crimson Mark] for 12 seconds" +
 				"\nRight click to activate [c/F13791:Warp Strike] with 30 Mana, throwing the weapon towards your cursor while disabling normal attacks" +
@@ -31,7 +31,7 @@ namespace StarsAbove.Items
 				"\nWith 3 stacks of [c/F48080:Spectral Arsenal], right click will instead activate [c/C80000:Retribution], costing no Mana" +
 				"\n[c/C80000:Retribution] consumes all [c/F48080:Spectral Arsenal] stacks to summon a barrage of spectral blades towards your cursor for 3 seconds" +
                 "\n'I'm afraid you're out of luck'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -226,7 +226,7 @@ namespace StarsAbove.Items
 
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 
 

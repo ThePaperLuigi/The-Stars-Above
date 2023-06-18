@@ -9,8 +9,8 @@ namespace StarsAbove.Buffs.Subworlds
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Bounty Hunter's Pointers");
-            Description.SetDefault("Yojimbo's casual advice has granted you some extra Luck during Cosmic Voyages");
+            // DisplayName.SetDefault("Bounty Hunter's Pointers");
+            // Description.SetDefault("Yojimbo's casual advice has granted you some extra Luck during Cosmic Voyages");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

@@ -18,6 +18,7 @@ using StarsAbove.Items.Materials;
 using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using Terraria.UI.Chat;
+using StarsAbove.Buffs;
 
 namespace StarsAbove
 {
@@ -334,7 +335,7 @@ namespace StarsAbove
 			ModContent.ItemType<BlackSilenceWeapon>(),
 			ModContent.ItemType<AdornmentOfTheChaoticGod>(),
 			ModContent.ItemType<Chronoclock>(),
-
+			ModContent.ItemType<BrilliantSpectrum>(),
 		};
 		public List<int> Essences = new List<int>() {
 
@@ -721,22 +722,106 @@ namespace StarsAbove
 							
 			if ((item.ModItem?.Mod == ModLoader.GetMod("StarsAbove") || player.GetModPlayer<StarsAbovePlayer>().aprismatism == 2) && item.damage > 0)
 			{ //
-				if (player.GetModPlayer<StarsAbovePlayer>().RogueAspect == 2 && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
-				{
-					if (ModLoader.TryGetMod("CalamityMod", out Mod calamityModX))
+				if (item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
+                {
+					if (player.GetModPlayer<StarsAbovePlayer>().RogueAspect == 2)
 					{
-						if (oldDamageClass != calamityMod.Find<DamageClass>("RogueDamageClass"))
+						if (ModLoader.TryGetMod("CalamityMod", out Mod calamityModX))
 						{
-							if (ModLoader.TryGetMod("CalamityMod", out Mod calamityModx))
+							if (oldDamageClass != calamityMod.Find<DamageClass>("RogueDamageClass"))
 							{
-								damage = player.GetTotalDamage(calamityMod.Find<DamageClass>("RogueDamageClass"));
+								if (ModLoader.TryGetMod("CalamityMod", out Mod calamityModx))
+								{
+									damage = player.GetTotalDamage(calamityMod.Find<DamageClass>("RogueDamageClass"));
 
+
+								}
+
+								if (!disableAspectPenalty)
+								{
+									damage -= 0.1f;
+								}
 
 							}
+							else
+							{
+
+							}
+						}
+
+					}
+					if (player.GetModPlayer<StarsAbovePlayer>().BardAspect == 2)
+					{
+						if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+						{
+							if (oldDamageClass != thoriumMod.Find<DamageClass>("BardDamage"))
+							{
+								damage = player.GetTotalDamage(thoriumMod.Find<DamageClass>("BardDamage"));
+
+								if (!disableAspectPenalty)
+								{
+									damage -= 0.1f;
+								}
+
+							}
+							else
+							{
+
+							}
+						}
+
+					}
+					if (player.GetModPlayer<StarsAbovePlayer>().HealerAspect == 2)
+					{
+						if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+						{
+							if (oldDamageClass != thoriumMod.Find<DamageClass>("HealerDamage"))
+							{
+								damage = player.GetTotalDamage(thoriumMod.Find<DamageClass>("HealerDamage"));
+
+								if (!disableAspectPenalty)
+								{
+									damage -= 0.1f;
+								}
+
+							}
+							else
+							{
+
+							}
+						}
+
+					}
+					if (player.GetModPlayer<StarsAbovePlayer>().ThrowerAspect == 2)
+					{
+						if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+						{
+							if (oldDamageClass != DamageClass.Throwing)
+							{
+								damage = player.GetTotalDamage(DamageClass.Throwing);
+
+								if (!disableAspectPenalty)
+								{
+									damage -= 0.1f;
+								}
+
+							}
+							else
+							{
+
+							}
+						}
+
+					}
+					if (player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
+					{
+						if (oldDamageClass != DamageClass.Melee && oldDamageClass != DamageClass.MeleeNoSpeed)
+						{
+							damage = player.GetTotalDamage(DamageClass.Melee);
 
 							if (!disableAspectPenalty)
 							{
-								damage -= 0.1f;
+								damage -= 0.15f;
 							}
 
 						}
@@ -744,140 +829,58 @@ namespace StarsAbove
 						{
 
 						}
+
 					}
-
-				}
-
-				if (player.GetModPlayer<StarsAbovePlayer>().BardAspect == 2 && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
-				{
-					if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+					if (player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2)
 					{
-						if (oldDamageClass != thoriumMod.Find<DamageClass>("BardDamage"))
+						if (oldDamageClass != DamageClass.Magic && oldDamageClass != DamageClass.MagicSummonHybrid)
 						{
-							damage = player.GetTotalDamage(thoriumMod.Find<DamageClass>("BardDamage"));
-
+							damage = player.GetTotalDamage(DamageClass.Magic);
 							if (!disableAspectPenalty)
 							{
 								damage -= 0.1f;
 							}
+						}
+						else
+						{
 
+						}
+
+
+					}
+					if (player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
+					{
+						if (oldDamageClass != DamageClass.Ranged)
+						{
+							player.GetTotalDamage(DamageClass.Ranged);
+							if (!disableAspectPenalty)
+							{
+								damage -= 0.1f;
+							}
 						}
 						else
 						{
 
 						}
 					}
-
-				}
-				if (player.GetModPlayer<StarsAbovePlayer>().HealerAspect == 2 && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
-				{
-					if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+					if (player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2)
 					{
-						if (oldDamageClass != thoriumMod.Find<DamageClass>("HealerDamage"))
+						if (oldDamageClass != DamageClass.Summon && oldDamageClass != DamageClass.MagicSummonHybrid && oldDamageClass != DamageClass.SummonMeleeSpeed)
 						{
-							damage = player.GetTotalDamage(thoriumMod.Find<DamageClass>("HealerDamage"));
+							damage = player.GetTotalDamage(DamageClass.Summon);
 
 							if (!disableAspectPenalty)
 							{
 								damage -= 0.1f;
 							}
-
 						}
 						else
 						{
 
 						}
 					}
-
 				}
-				if (player.GetModPlayer<StarsAbovePlayer>().ThrowerAspect == 2 && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
-				{
-					if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
-					{
-						if (oldDamageClass != DamageClass.Throwing)
-						{
-							damage = player.GetTotalDamage(DamageClass.Throwing);
-
-							if (!disableAspectPenalty)
-							{
-								damage -= 0.1f;
-							}
-
-						}
-						else
-						{
-
-						}
-					}
-
-				}
-
-				if (player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2 && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
-				{
-					if (oldDamageClass != DamageClass.Melee && oldDamageClass != DamageClass.MeleeNoSpeed)
-					{
-						damage = player.GetTotalDamage(DamageClass.Melee);
-						
-						if (!disableAspectPenalty)
-						{
-							damage -= 0.1f;
-						}
-
-					}
-					else
-					{
-
-					}
-
-				}
-				if (player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2 && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
-				{
-					if (oldDamageClass != DamageClass.Magic && oldDamageClass != DamageClass.MagicSummonHybrid)
-					{
-						damage = player.GetTotalDamage(DamageClass.Magic);
-						if (!disableAspectPenalty)
-						{
-							damage -= 0.1f;
-						}
-					}
-					else
-					{
-
-					}
-
-
-				}
-				if (player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2 && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
-				{
-					if (oldDamageClass != DamageClass.Ranged)
-					{
-						player.GetTotalDamage(DamageClass.Ranged);
-						if (!disableAspectPenalty)
-						{
-							damage -= 0.1f;
-						}
-					}
-					else
-					{
-
-					}
-				}
-				if (player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2 && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
-				{
-					if (oldDamageClass != DamageClass.Summon && oldDamageClass != DamageClass.MagicSummonHybrid && oldDamageClass != DamageClass.SummonMeleeSpeed)
-					{
-						damage = player.GetTotalDamage(DamageClass.Summon);
-						
-						if (!disableAspectPenalty)
-						{
-							damage -= 0.1f;
-						}
-					}
-					else
-					{
-
-					}
-				}
+				
 
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
@@ -1039,7 +1042,8 @@ namespace StarsAbove
 				}
 			}
 			if (item.type == ItemID.RodofDiscord
-				||item.type == ItemID.DirtBomb
+				|| item.type == ItemID.RodOfHarmony
+				|| item.type == ItemID.DirtBomb
 				||item.type == ItemID.RopeCoil
 				|| item.type == ItemID.SilkRopeCoil
 				|| item.type == ItemID.VineRopeCoil
@@ -1058,7 +1062,18 @@ namespace StarsAbove
 				}
 				
             }
-			if(player.HasBuff(BuffID.DrillMount) && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
+			if (item.type == ItemID.RodofDiscord
+				|| item.type == ItemID.RodOfHarmony
+				
+				)
+			{
+				if (player.HasBuff(BuffType<EverlastingLight>()))
+				{
+					return false;
+				}
+
+			}
+			if (player.HasBuff(BuffID.DrillMount) && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
             {
 				return false;
             }

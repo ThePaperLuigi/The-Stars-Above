@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.Takodachi
     public class TakodachiRound : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Takonomicon");     //The English name of the projectile
+			// DisplayName.SetDefault("Takonomicon");     //The English name of the projectile
 			Main.projFrames[Projectile.type] = 4;
 
 		}

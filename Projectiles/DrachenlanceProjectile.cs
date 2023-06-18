@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles
     public class DrachenlanceProjectile : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Drachenlance");
+			// DisplayName.SetDefault("Drachenlance");
 
 		}
 

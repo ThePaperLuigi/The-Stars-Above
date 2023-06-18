@@ -14,8 +14,8 @@ namespace StarsAbove.Items
     public class SparkblossomBeacon : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Sparkblossom's Beacon");
-			Tooltip.SetDefault("Summons [c/49EAFA:Fleeting Sparks] to assail foes with homing electricity" +
+			// DisplayName.SetDefault("Sparkblossom's Beacon");
+			/* Tooltip.SetDefault("Summons [c/49EAFA:Fleeting Sparks] to assail foes with homing electricity" +
 				"\n[c/49EAFA:Fleeting Sparks] will latch onto foes and ignore terrain when targetting" +
 				"\nGain 15% increased Armor Penetration for summon weapons when this weapon is held" +
 				"\nEvery time a [c/49EAFA:Fleeting Spark] attacks, it has a 10% chance to explode" +
@@ -23,7 +23,7 @@ namespace StarsAbove.Items
                 "\nAdditionally, explosions have a 50% chance to generate a Mana Star" +
 				"\nEach attack increases the strength of the [c/49EAFA:Fleeting Spark] by 2% (Maximum 10% increased damage, resets upon exploding)" +
 				"\n'Keep a good distance - there!'"
-				+ $"");
+				+ $""); */
 
 			ItemID.Sets.GamepadWholeScreenUseRange[Item.type] = true;
 			ItemID.Sets.LockOnIgnoresCollision[Item.type] = true;

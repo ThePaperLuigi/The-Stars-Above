@@ -14,8 +14,8 @@ namespace StarsAbove.Items.Armor.BlackSilence
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Black Silence's Mask");
-			Tooltip.SetDefault("Unobtainable; vanity by using 'Gloves of the Black Silence'");
+			// DisplayName.SetDefault("Black Silence's Mask");
+			// Tooltip.SetDefault("Unobtainable; vanity by using 'Gloves of the Black Silence'");
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 			ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true;
@@ -28,10 +28,12 @@ namespace StarsAbove.Items.Armor.BlackSilence
 			Item.sellPrice(gold: 1); // How many coins the item is worth
 			Item.rare = ItemRarityID.Red; // The rarity of the item
 			Item.vanity = true; // The amount of defense the item will give when equipped
+			Item.ResearchUnlockCount = 0;
+
 		}
 
-		
-		
+
+
 		// UpdateArmorSet allows you to give set bonuses to the armor.
 		public override void UpdateArmorSet(Player player)
 		{

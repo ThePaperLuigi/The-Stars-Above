@@ -7,13 +7,13 @@ namespace StarsAbove.Items.Accessories
     public class AlienCoral : StargazerRelic
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Alien Coral");
+			// DisplayName.SetDefault("Alien Coral");
 
-			Tooltip.SetDefault("[c/2DD2FE:Stargazer Relic]" +
+			/* Tooltip.SetDefault("[c/2DD2FE:Stargazer Relic]" +
 				"\nFor each unused Stellar Array Energy point, gain 8% increased damage" +
 				"\nGain 8 defense with a full Stellar Array instead" +
 				"\n[c/ADEEFF:Only one Stargazer Relic can be equipped at a time]" +
-				"\n'From a world alien beyond belief'");
+				"\n'From a world alien beyond belief'"); */
 			
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 			//The (English) text shown below your weapon's name
@@ -24,7 +24,7 @@ namespace StarsAbove.Items.Accessories
 			Item.height = 32;
 			Item.accessory = true;
 			Item.value = Item.sellPrice(gold: 10);
-			Item.rare = ModContent.GetInstance<StellarRarity>().Type; // Custom Rarity
+			Item.rare = ModContent.GetInstance<StellarSpoilsRarity>().Type; // Custom Rarity
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual) {

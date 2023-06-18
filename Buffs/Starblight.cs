@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Starblight");
-            Description.SetDefault("Taking powerful damage over time");
+            // DisplayName.SetDefault("Starblight");
+            // Description.SetDefault("Taking powerful damage over time");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

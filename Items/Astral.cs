@@ -10,11 +10,11 @@ namespace StarsAbove.Items
     public class Astral : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Astral Item");
-			Tooltip.SetDefault("Debug cheat item" +
+			// DisplayName.SetDefault("Astral Item");
+			/* Tooltip.SetDefault("Debug cheat item" +
 				"\nResets the cooldown on obtaining Essences and fills the Stellar Nova Gauge" +
 				"\n" +
-				"");
+				""); */
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 		}
 

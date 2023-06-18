@@ -12,7 +12,7 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
     public class NalhaunCastSprite : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Nalhaun, the Burnished King");
+			// DisplayName.SetDefault("Nalhaun, the Burnished King");
 			//Main.projFrames[Projectile.type] = 10;
 		}
 

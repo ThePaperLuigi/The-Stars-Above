@@ -10,10 +10,10 @@ namespace StarsAbove.Items.Pets
     public class MysticPokeball : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Mystic Monster Ball");
-			Tooltip.SetDefault("Summons the twin Mystic Hounds" +
+			// DisplayName.SetDefault("Mystic Monster Ball");
+			/* Tooltip.SetDefault("Summons the twin Mystic Hounds" +
 				"\nOccupies both normal pet and light pet slots" +
-				"\nCan't be equipped normally");
+				"\nCan't be equipped normally"); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

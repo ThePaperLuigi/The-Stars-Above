@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.GoldenKatana
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Aurum Edge");
+			// DisplayName.SetDefault("Aurum Edge");
 			Main.projFrames[Projectile.type] = 3;
 			
 			//DrawOffsetX = -60;
@@ -127,7 +127,7 @@ namespace StarsAbove.Projectiles.GoldenKatana
 			}*/
 		}
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 			for (int d = 0; d < 12; d++)
 			{
@@ -139,7 +139,7 @@ namespace StarsAbove.Projectiles.GoldenKatana
 			}
 			SoundEngine.PlaySound(StarsAboveAudio.SFX_BlackSilenceDurandalHit, target.Center);
 			target.AddBuff(BuffID.ShadowFlame, 240);
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
         }
     }
 }

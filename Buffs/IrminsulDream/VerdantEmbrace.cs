@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs.IrminsulDream
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Verdant Embrace (Enemy Only)");
-            Description.SetDefault("");
+            // DisplayName.SetDefault("Verdant Embrace (Enemy Only)");
+            // Description.SetDefault("");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //
         }

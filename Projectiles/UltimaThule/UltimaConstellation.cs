@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.UltimaThule
     public class UltimaConstellation : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Ultima Constellation");
+			// DisplayName.SetDefault("Ultima Constellation");
 			
 		}
 

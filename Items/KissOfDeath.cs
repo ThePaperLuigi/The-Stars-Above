@@ -16,8 +16,8 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("The Kiss of Death");
-			Tooltip.SetDefault("Right click to cycle between [c/F54F0C:Skyfish], [c/CF3C32:Thunderbird], and [c/CF1826:Behemoth Typhoon] with a short cooldown" +
+			// DisplayName.SetDefault("The Kiss of Death");
+			/* Tooltip.SetDefault("Right click to cycle between [c/F54F0C:Skyfish], [c/CF3C32:Thunderbird], and [c/CF1826:Behemoth Typhoon] with a short cooldown" +
 				"\n[c/F54F0C:Skyfish] unleashes a powerful minigun, rapidly firing piercing bullets that deal 20% increased damage to foes above 50% HP" +
                 "\nEach bullet will consume 2 mana (This mana cost can not be negated by any means)" +
 				"\nBullets will apply [c/F3CE36:Security Level] for 12 seconds, marking the target" +
@@ -29,7 +29,7 @@ namespace StarsAbove.Items
 				"\nReleasing the Weapon Action Key executes a powerful close-ranged strike, increasing in power with the amount of [c/EB936A:Overdrive Gauge] consumed" +
 				"\nIf over half of the [c/EB936A:Overdrive Gauge] is consumed, the attack is guaranteed to be a critical strike" +
                 "\n'It's not a big deal'" +
-				$"");
+				$""); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -206,7 +206,7 @@ namespace StarsAbove.Items
 
 			base.HoldItem(player);
         }
-        public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 
 		}

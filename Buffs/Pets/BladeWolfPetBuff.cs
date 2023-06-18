@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.Pets
     public class BladeWolfPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Blade Wolf");
-			Description.SetDefault("The blade wolf attends you");
+			// DisplayName.SetDefault("Blade Wolf");
+			// Description.SetDefault("The blade wolf attends you");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}

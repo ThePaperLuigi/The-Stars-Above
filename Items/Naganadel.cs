@@ -13,7 +13,7 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Use right click to expend 25 mana, summoning up to 5 Aspected Blades" +
+			/* Tooltip.SetDefault("Use right click to expend 25 mana, summoning up to 5 Aspected Blades" +
 				"\nBlades deal minor contact damage while idle" +
 				"\nAttack with blades present to launch them towards the cursor" +
 				"\nUse right click once all blades are summoned to launch all blades at once, dealing random effects" +
@@ -27,7 +27,7 @@ namespace StarsAbove.Items
 				"\nBlades will vanish when swapping weapons" +
 				//"\n[c/FFA957:This blade deals summoning damage]" +
 				"\n'I have no regrets. This is the only path'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -223,7 +223,7 @@ namespace StarsAbove.Items
 			}
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			
 			

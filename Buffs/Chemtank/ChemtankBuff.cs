@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.Chemtank
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dreadnought Chemtank");
-            Description.SetDefault("");
+            // DisplayName.SetDefault("Dreadnought Chemtank");
+            // Description.SetDefault("");
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

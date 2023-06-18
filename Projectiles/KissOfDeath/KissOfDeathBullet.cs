@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.KissOfDeath
     public class KissOfDeathBullet : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("The Kiss of Death");     //The English name of the projectile
+			// DisplayName.SetDefault("The Kiss of Death");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 40;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode
 		}
@@ -50,14 +50,14 @@ namespace StarsAbove.Projectiles.KissOfDeath
 
 			base.AI();
         }
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 			if (target.life >= target.lifeMax / 2)
 			{
-				damage = (int)(damage * 1.2f);
+				modifiers.SourceDamage += 0.3f;
 			}
 			target.AddBuff(BuffType<SecurityLevel>(), 12 * 60);
-			base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
+			 
         }
         public override bool PreDraw(ref Color lightColor)
 		{

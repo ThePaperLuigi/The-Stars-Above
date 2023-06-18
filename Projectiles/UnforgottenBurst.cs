@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles
     public class UnforgottenBurst : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Unforgotten");
+			// DisplayName.SetDefault("Unforgotten");
 			
 		}
 

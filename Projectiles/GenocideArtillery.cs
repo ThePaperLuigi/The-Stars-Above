@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles
 	public class GenocideArtillery : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Genocide");     //The English name of the projectile
+			// DisplayName.SetDefault("Genocide");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode
 		}
@@ -37,48 +37,17 @@ namespace StarsAbove.Projectiles
 		public bool RotateClockwise;
 		public Vector2 InitialDirection;
 		public Vector2 Target;
-		
-
 		public override void AI()
         {
-			//
-
 			travelRadians += (RotateClockwise ? 1 : -1) * MathHelper.ToRadians(0.3f * 6f);
-
 			Projectile.Center = MidPoint + InitialDirection.RotatedBy(travelRadians) * Radius;
-
-			
 			float rotationsPerSecond = 2f;
-			
 			Projectile.rotation += (RotateClockwise ? 1 : -1) * MathHelper.ToRadians(rotationsPerSecond * 6f);
-
-
-
 			if (Vector2.Distance(Projectile.Center, Target) < 5f)
             {
 				
 				Projectile.Kill();
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			base.AI();
         }
 
 

@@ -10,12 +10,12 @@ namespace StarsAbove.Items.Consumables
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spatial Memoriam");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Spatial Memoriam");
+			/* Tooltip.SetDefault("" +
 				"Overwhelmingly luminous material glitters with potential" +
 				"\nCan be used to craft an incredibly powerful weapon" +
 				"\n'The power of the sun, in the palm of my hand'" +
-				"\n");
+				"\n"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.

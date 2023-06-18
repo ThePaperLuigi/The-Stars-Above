@@ -66,7 +66,7 @@ namespace StarsAbove.Projectiles
 		int projectileTimer = 0;
 		int timesWillShoot = 10;
 		int swingAnimation = -1;
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) {
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
 			//3a: target.immune[projectile.owner] = 20;
 			//3b: target.immune[projectile.owner] = 5;
 		}

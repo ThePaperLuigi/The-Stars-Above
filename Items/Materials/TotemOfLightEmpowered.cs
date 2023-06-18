@@ -8,9 +8,9 @@ namespace StarsAbove.Items.Materials
     public class TotemOfLightEmpowered : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Empowered Totem of Light");
-			Tooltip.SetDefault("An effigy supposedly given form to grant strength to the Warrior of Light" +
-				"\nUtilized in the creation of incredibly powerful artifacts and weapons");
+			// DisplayName.SetDefault("Empowered Totem of Light");
+			/* Tooltip.SetDefault("An effigy supposedly given form to grant strength to the Warrior of Light" +
+				"\nUtilized in the creation of incredibly powerful artifacts and weapons"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 5;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;

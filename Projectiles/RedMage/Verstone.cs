@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.RedMage
     public class Verstone : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Verstone");     //The English name of the projectile
+			// DisplayName.SetDefault("Verstone");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 70;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode
 		}
@@ -58,20 +58,22 @@ namespace StarsAbove.Projectiles.RedMage
 
 			base.AI();
         }
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-		{
-			if(crit)
-            {
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+			if (hit.Crit)
+			{
 				Player player = Main.player[Projectile.owner];
 				if (target.CanBeChasedBy() && !target.SpawnedFromStatue)
 				{
-					Rectangle textPos = new Rectangle((int)player.position.X, (int)player.position.Y - 20, player.width, player.height);
-					CombatText.NewText(textPos, new Color(49, 234, 63, 240), $"12", false, false);
-					player.statLife += 12;
+					player.Heal(12);
 				}
 			}
+		}
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+		{
+			
 
-			base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
+			 
 		}
 		public override bool PreDraw(ref Color lightColor)
 		{

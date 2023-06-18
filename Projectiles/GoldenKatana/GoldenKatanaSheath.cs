@@ -15,7 +15,7 @@ namespace StarsAbove.Projectiles.GoldenKatana
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Aurum Sheath");
+			// DisplayName.SetDefault("Aurum Sheath");
 			Main.projFrames[Projectile.type] = 2;
 		}
 

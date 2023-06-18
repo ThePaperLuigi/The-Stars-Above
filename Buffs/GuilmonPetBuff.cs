@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     public class GuilmonPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Digital Monster");
-			Description.SetDefault("A digital monster is following you");
+			// DisplayName.SetDefault("Digital Monster");
+			// Description.SetDefault("A digital monster is following you");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}

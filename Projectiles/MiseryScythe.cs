@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Misery's Scythe");
+			// DisplayName.SetDefault("Misery's Scythe");
 
 		}
 

@@ -9,11 +9,11 @@ namespace StarsAbove.Items.Placeable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Music Box (Observatory Hyperborea)");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Music Box (Observatory Hyperborea)");
+			/* Tooltip.SetDefault("" +
 				"'Sky Unsundered' - FFXIV Endwalker OST" +
 				"\nComposed by Masayoshi Soken"
-				+ $"\n");
+				+ $"\n"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/ElpisDay"), ModContent.ItemType<ElpisMusicBox>(), ModContent.TileType<Tiles.ElpisMusicBox>());

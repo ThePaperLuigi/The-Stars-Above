@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Crimson Sakura Alpha");
+			// DisplayName.SetDefault("Crimson Sakura Alpha");
 			Main.projFrames[Projectile.type] = 6;
 		}
 		public override void SetDefaults()

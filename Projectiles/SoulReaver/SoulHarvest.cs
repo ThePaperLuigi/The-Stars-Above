@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.SoulReaver
     public class SoulHarvest : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Soul Harvest");
+			// DisplayName.SetDefault("Soul Harvest");
 			
 		}
 
@@ -79,13 +79,13 @@ namespace StarsAbove.Projectiles.SoulReaver
 			
 		}
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 
 			if (!target.active && Main.player[Projectile.owner].HasBuff(BuffType<Buffs.SoulReaver.SoulSplit>()) && !target.SpawnedFromStatue && target.damage > 0)
 			{
 				
-				if(crit)
+				if(hit.Crit)
                 {
 					Main.player[Projectile.owner].ClearBuff(BuffType<Buffs.SoulReaver.SoulSplit>());
 					Main.player[Projectile.owner].AddBuff(BuffType<Buffs.SoulReaver.SoulSplit>(), 120);
@@ -95,7 +95,7 @@ namespace StarsAbove.Projectiles.SoulReaver
 			
         }
 
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 
 

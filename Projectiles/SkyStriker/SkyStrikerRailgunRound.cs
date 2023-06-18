@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.SkyStriker
     public class SkyStrikerRailgunRound : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Armament of the Sky Striker");     //The English name of the projectile
+			// DisplayName.SetDefault("Armament of the Sky Striker");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 70;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode
 		}

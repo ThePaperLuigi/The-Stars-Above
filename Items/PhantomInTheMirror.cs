@@ -12,7 +12,7 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("8 summon tag damage" +
+			/* Tooltip.SetDefault("8 summon tag damage" +
                 "\nThis weapon inflicts Frostburn for 2 seconds" +
 				"\nRight click to summon the [c/67B6D3:Phantom Dagger] with 100 Mana available; this will not consume Mana" +
 				"\nWhen the [c/67B6D3:Phantom Dagger] is present in the world, your Mana will drain and will not regenerate" +
@@ -21,7 +21,7 @@ namespace StarsAbove.Items
 				"\n[c/AC5454:Bloodstained Crescent] sweeps in a small AoE at both your position and the position of the [c/67B6D3:Phantom Dagger]" +
 				"\n[c/AC5454:Bloodstained Crescent] deals 200 extra damage to Frostburned foes while removing the debuff and granting 90 mana" +
 				"\n'Yes, lift your voices! Sing for me! Sing for me!!'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -105,7 +105,7 @@ namespace StarsAbove.Items
 
 							
 							player.Teleport(vector32, 1, 0);
-							NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, (float)player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
+							NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float)player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
 							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.Center.X, player.Center.Y, 0, 0, ProjectileType<Projectiles.BloodstainedCrescent>(), 90, 0, player.whoAmI, 0f);
 
 							teleportCooldown = 30;
@@ -196,7 +196,7 @@ namespace StarsAbove.Items
 			
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			// 
 			

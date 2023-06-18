@@ -6,7 +6,7 @@ namespace StarsAbove.Projectiles
     public class ShadowbladeAOE : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Shadowblade Indicator");
+			// DisplayName.SetDefault("Shadowblade Indicator");
 			
 		}
 

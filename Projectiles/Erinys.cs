@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
     public class Erinys : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Erinys");
+			// DisplayName.SetDefault("Erinys");
 			Main.projFrames[Projectile.type] = 3;
 		}
 

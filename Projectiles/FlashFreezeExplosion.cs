@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Flash Freeze");
+			// DisplayName.SetDefault("Flash Freeze");
 			Main.projFrames[Projectile.type] = 5;
 		}
 		public override void SetDefaults()
@@ -116,10 +116,14 @@ namespace StarsAbove.Projectiles
 			}
 		}
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-			crit = false;
-            base.OnHitNPC(target, damage, knockback, crit);
+			
+             
+        }
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
+			modifiers.DisableCrit();
         }
     }
 }

@@ -12,7 +12,7 @@ namespace StarsAbove.Projectiles.Ozma
     public class OzmaAttack5Slash : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Ozma Ascendant");
+			// DisplayName.SetDefault("Ozma Ascendant");
 			//DrawOriginOffsetY = 12;
 			Main.projFrames[Projectile.type] = 8;
 
@@ -90,7 +90,7 @@ namespace StarsAbove.Projectiles.Ozma
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			for (int d = 0; d < 8; d++)
 			{
@@ -98,11 +98,11 @@ namespace StarsAbove.Projectiles.Ozma
 
 			}
 			Player projOwner = Main.player[Projectile.owner];
-			if (crit)
+			if(hit.Crit)
 			{
 				projOwner.AddBuff(BuffType<AnnihilationState>(), 180);
 			}
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 	}
 }

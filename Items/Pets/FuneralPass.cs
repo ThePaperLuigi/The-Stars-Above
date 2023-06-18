@@ -10,9 +10,9 @@ namespace StarsAbove.Items.Pets
     public class FuneralPass : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Funeral Pass");
-			Tooltip.SetDefault("Summons the Funeral Director" +
-				"\n'Sayonara!'");
+			// DisplayName.SetDefault("Funeral Pass");
+			/* Tooltip.SetDefault("Summons the Funeral Director" +
+				"\n'Sayonara!'"); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

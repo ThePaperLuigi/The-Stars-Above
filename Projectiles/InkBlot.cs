@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles
     public class InkBlot : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Ink Blot");
+			// DisplayName.SetDefault("Ink Blot");
 			//
 			//
 			Main.projFrames[Projectile.type] = 11;
@@ -45,11 +45,11 @@ namespace StarsAbove.Projectiles
 		}
 
         // It appears that for this AI, only the ai0 field is used!
-        public override void OnHitPlayer(Player target, int damage, bool crit)
+        public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
 			Projectile.timeLeft = 50;
 
-            base.OnHitPlayer(target, damage, crit);
+             
         }
         public override void AI() {
 			Lighting.AddLight(Projectile.Center, new Vector3(0.99f, 0.6f, 0.3f));

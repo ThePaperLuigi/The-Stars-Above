@@ -13,8 +13,8 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Twin Stars of Albiero");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Twin Stars of Albiero");
+			/* Tooltip.SetDefault("" +
 				"Holding this weapon will conjure twin stars to orbit you, granting 100 extra Max Mana" +
 				"\nAttacking with this weapon fires powerful beams of piercing starlight" +
 				"\nThis weapon drains mana at an incredibly high rate that can not be reduced by any means" +
@@ -22,7 +22,7 @@ namespace StarsAbove.Items
 				"\nDuring this time, beams leave devastating napalm in their wake" +
 				"\nAbove 250 Mana, this weapon deals 50% more damage" +
 				"\n1/8th of Max Mana is added directly to damage" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -87,7 +87,7 @@ namespace StarsAbove.Items
 
 			base.HoldItem(player);
 		}
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			// 
 			// 60 frames = 1 second

@@ -239,7 +239,7 @@ namespace StarsAbove
             }
         }
         
-        public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit, int cooldownCounter)
+        public override void OnHurt(Player.HurtInfo info)
         {
             
         }
@@ -256,7 +256,7 @@ namespace StarsAbove
         {
             manifestationHeld = false;
         }
-        public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource, ref int cooldownCounter)
+        public override void ModifyHurt(ref Player.HurtModifiers modifiers)
         {
             if (manifestationHeld)
             {
@@ -265,7 +265,6 @@ namespace StarsAbove
             gaugeChangeAlpha = 1f;
 
             emotionGauge += 2;
-            return base.PreHurt(pvp, quiet, ref damage, ref hitDirection, ref crit, ref customDamage, ref playSound, ref genGore, ref damageSource, ref cooldownCounter);
         }
         public override void FrameEffects()
         {
@@ -297,13 +296,13 @@ namespace StarsAbove
             base.ModifyDrawInfo(ref drawInfo);
         }
         
-        public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Projectile, consider using OnHitNPC instead */
         {
             if(manifestationHeld)
             {
                 emotionGauge++;
                 gaugeChangeAlpha = 1f;
-                if (crit)
+                if(hit.Crit)
                 {
                     if(Player.statLife < 200)
                     {
@@ -352,11 +351,11 @@ namespace StarsAbove
                 }
             }
         }
-        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Projectile, consider using ModifyHitNPC instead */
         {
-            if (crit)
+            if(manifestationHeld)
             {
-                damage = (int)(damage * 1.2);
+                modifiers.CritDamage += 1.2f;
             }
 
         }

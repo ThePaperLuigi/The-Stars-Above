@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Solemn Aegis");
-            Description.SetDefault("The next instance of damage is ignored");
+            // DisplayName.SetDefault("Solemn Aegis");
+            // Description.SetDefault("The next instance of damage is ignored");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

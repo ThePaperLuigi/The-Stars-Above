@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
     public class SaberAOE : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Coruscant Saber");
+			// DisplayName.SetDefault("Coruscant Saber");
 			Main.projFrames[Projectile.type] = 7;
 		}
 

@@ -10,7 +10,7 @@ namespace StarsAbove.Items.Placeable.CyberWorld
     public class SteelBlock : ModItem
 	{
 		public override void SetStaticDefaults() {
-			Tooltip.SetDefault("Riveted and bolted");
+			// Tooltip.SetDefault("Riveted and bolted");
 			
 
 			
@@ -26,7 +26,8 @@ namespace StarsAbove.Items.Placeable.CyberWorld
 			Item.useTime = 10;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.consumable = true;
-			Item.createTile = TileType<Tiles.CyberWorld.SteelTile>();
+			Item.createTile = TileType<Tiles.CyberWorld.SteelTile>(); Item.ResearchUnlockCount = 0;
+
 		}
 
 		public override void AddRecipes() {

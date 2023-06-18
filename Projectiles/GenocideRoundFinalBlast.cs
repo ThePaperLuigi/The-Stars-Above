@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles
     public class GenocideRoundFinalBlast : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Genocide");
+			// DisplayName.SetDefault("Genocide");
 			
 		}
 

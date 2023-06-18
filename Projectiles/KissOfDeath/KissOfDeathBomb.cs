@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.KissOfDeath
     public class KissOfDeathBomb : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("The Kiss of Death");     //The English name of the projectile
+			// DisplayName.SetDefault("The Kiss of Death");     //The English name of the projectile
 			Main.projFrames[Projectile.type] = 1;
 
 		}
@@ -152,14 +152,18 @@ namespace StarsAbove.Projectiles.KissOfDeath
 			
 			return true;
 		}
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 			Main.player[Projectile.owner].MinionAttackTargetNPC = target.whoAmI;
 
-			Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0, 0, ProjectileType<KissOfDeathBoom>(), damage, 0f, Main.player[Projectile.owner].whoAmI, 0);
+			Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0, 0, ProjectileType<KissOfDeathBoom>(), damageDone, 0f, Main.player[Projectile.owner].whoAmI, 0);
 
 
-			base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
+
+		}
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
+			
         }
         public override void Kill(int timeLeft)
 		{

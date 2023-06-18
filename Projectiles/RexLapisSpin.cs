@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles
     public class RexLapisSpin : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Rex Lapis");
+			// DisplayName.SetDefault("Rex Lapis");
 			
 		}
 

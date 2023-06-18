@@ -10,10 +10,10 @@ namespace StarsAbove.Items.Consumables.CyberWorld
     public class Onigiri : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Foreign Rice Ball");
-			Tooltip.SetDefault("A tasty snack" +
+			// DisplayName.SetDefault("Foreign Rice Ball");
+			/* Tooltip.SetDefault("A tasty snack" +
 				"\nHas no effect" +
-				"\n");
+				"\n"); */
 			//ItemID.Sets.SortingPriorityBossSpawns[item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 		}
 
@@ -27,10 +27,11 @@ namespace StarsAbove.Items.Consumables.CyberWorld
 			Item.useStyle = ItemUseStyleID.EatFood;
 			Item.UseSound = SoundID.Item2;
 			Item.consumable = true;
-			ItemID.Sets.ItemNoGravity[Item.type] = false;
+			ItemID.Sets.ItemNoGravity[Item.type] = false; Item.ResearchUnlockCount = 0;
+
 		}
 
-		
+
 		public override bool ItemSpace(Player player)
 		{
 			return true;

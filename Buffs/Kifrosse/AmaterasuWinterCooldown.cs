@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs.Kifrosse
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Amaterasu's Winter Cooldown");
-            Description.SetDefault("Amaterasu's Winter will fail to activate if this debuff is present");
+            // DisplayName.SetDefault("Amaterasu's Winter Cooldown");
+            // Description.SetDefault("Amaterasu's Winter will fail to activate if this debuff is present");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
             BuffID.Sets.NurseCannotRemoveDebuff[Type] = true;

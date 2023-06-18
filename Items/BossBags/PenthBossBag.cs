@@ -16,12 +16,12 @@ namespace StarsAbove.Items.BossBags
 	public class PenthBossBag : ModItem
 	{
 		// Sets the associated NPC this treasure bag is dropped from
-		public override int BossBagNPC => ModContent.NPCType<Penthesilea>();
+		//public override int BossBagNPC => ModContent.NPCType<Penthesilea>();
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Treasure Bag (Penthesilea, the Witch of Ink)");
-			Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}"); // References a language key that says "Right Click To Open" in the language of the game
+			// DisplayName.SetDefault("Treasure Bag (Penthesilea, the Witch of Ink)");
+			// Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}"); // References a language key that says "Right Click To Open" in the language of the game
 
 			ItemID.Sets.BossBag[Type] = true;
 

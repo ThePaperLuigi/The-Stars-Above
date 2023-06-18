@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.Youmu
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Konpaku Katana");
+			// DisplayName.SetDefault("Konpaku Katana");
 			Main.projFrames[Projectile.type] = 6;
 		}
 		public override void SetDefaults()

@@ -13,6 +13,7 @@ using StarsAbove.Items;
 using ReLogic.Content.Sources;
 
 using StarsAbove.Systems;
+using StarsAbove.NPCs.WarriorOfLight;
 
 namespace StarsAbove
 {
@@ -135,6 +136,9 @@ namespace StarsAbove
 					case "downedWarriorOfLight":
 						return DownedBossSystem.downedWarrior;
 
+					case "downedDioskouroi":
+						return DownedBossSystem.downedDioskouroi;
+
 					case "downedTsukiyomi":
 						return DownedBossSystem.downedTsuki;
 
@@ -151,7 +155,8 @@ namespace StarsAbove
 		{
 			Mod bossChecklist;
 			ModLoader.TryGetMod("BossChecklist", out bossChecklist);
-			
+			Mod musicDisplay;
+			ModLoader.TryGetMod("MusicDisplay", out musicDisplay);
 			if (bossChecklist != null)
 			{
 				
@@ -159,7 +164,7 @@ namespace StarsAbove
 					"AddBoss", //Entry Type
 					this, //Mod Instance
 					"$Mods.StarsAbove.NPCName.WarriorOfLight", //Boss Name
-					ModContent.NPCType<NPCs.WarriorOfLight>(), //Boss ID
+					ModContent.NPCType<WarriorOfLightBoss>(), //Boss ID
 					18.1f, //Progression
 					(Func<bool>)(() => DownedBossSystem.downedWarrior), //Downed boolean
 					() => true, //Availability
@@ -263,6 +268,27 @@ namespace StarsAbove
 					"$Mods.StarsAbove.BossChecklist.Tsukiyomi2.SpawnInfo", //Spawn Item
 					"$Mods.StarsAbove.BossChecklist.Tsukiyomi2.DespawnMessage" //Despawn Message
 					); //Boss Portrait
+
+			}
+			if (musicDisplay != null)
+            {
+				void AddMusic(string path, string name) => musicDisplay.Call("AddMusic", (short)MusicLoader.GetMusicSlot(this, path), name, "The Stars Above");
+
+				AddMusic("Sounds/Music/CosmicWill", "PaperLuigi - Cosmic Will (Stars Above OST)");
+				AddMusic("Sounds/Music/SunsetStardust", "PaperLuigi - Sunset, Stardust (Stars Above OST)");
+
+				AddMusic("Sounds/Music/ElpisDay", "Masayoshi Soken - Sky Unsundered (FFXIV Endwalker OST)");
+				AddMusic("Sounds/Music/MareLamentorum", "Masayoshi Soken - One Small Step (FFXIV Endwalker OST)");
+				AddMusic("Sounds/Music/EverlastingLight", "Masayoshi Soken - Unmatching Pieces (FFXIV Endwalker OST)");
+				AddMusic("Sounds/Music/ToTheEdge", "Masayoshi Soken - To The Edge (FFXIV Shadowbringers OST)");
+
+				AddMusic("Sounds/Music/MageOfViolet", "Murasaki Shion - Mage of Violet (Instrumental)");
+
+				AddMusic("Sounds/Music/ShadowsCastByTheMighty", "REVO - Shadows Cast By The Mighty: Swift Judgement (Bravely Default 2 OST)");
+				AddMusic("Sounds/Music/TheMightOfTheHellblade", "REVO - The Might of The Hellblade (Bravely Default 2 OST)");
+
+				AddMusic("Sounds/Music/FirstWarning", "Studio EIM - First Warning (LoR ver.) (Library of Ruina OST)");
+				AddMusic("Sounds/Music/SecondWarning", "Studio EIM - Second Warning (LoR ver.) (Library of Ruina OST)");
 
 			}
 		}

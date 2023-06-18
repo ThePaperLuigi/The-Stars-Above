@@ -10,11 +10,11 @@ namespace StarsAbove.Items
     public class Umbral : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Umbral Item");
-			Tooltip.SetDefault("Debug cheat item" +
+			// DisplayName.SetDefault("Umbral Item");
+			/* Tooltip.SetDefault("Debug cheat item" +
 				"\nEnables all ablities in the Stellar Array- do NOT deselect abilities; use the Debug Disk." +
 				"" +
-				"");
+				""); */
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 		}
 
@@ -62,7 +62,7 @@ namespace StarsAbove.Items
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().butchersdozen = 2;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().flashfreeze = 2;
 			//Tier 2
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().bonus100hp = 2;//
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>(). healthyConfidence = 2;//
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().bloomingflames = 2;//
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().astralmantle = 2;//
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().avataroflight = 2;

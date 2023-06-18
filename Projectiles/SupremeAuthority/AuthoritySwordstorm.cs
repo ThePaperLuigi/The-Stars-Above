@@ -15,7 +15,7 @@ namespace StarsAbove.Projectiles.SupremeAuthority
     public class AuthoritySwordstorm : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Supreme Authority");
+			// DisplayName.SetDefault("Supreme Authority");
 			
 			Main.projFrames[Projectile.type] = 5;
 		}
@@ -33,6 +33,7 @@ namespace StarsAbove.Projectiles.SupremeAuthority
 			Projectile.friendly = true;
 			Projectile.light = 1f;            //How much light emit around the projectile
 			Projectile.ignoreWater = true;
+			Projectile.tileCollide = false;
 
 			Projectile.usesLocalNPCImmunity = true;
 			Projectile.localNPCHitCooldown = 10;
@@ -180,18 +181,18 @@ namespace StarsAbove.Projectiles.SupremeAuthority
 
 			base.Kill(timeLeft);
         }
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
 			Player projOwner = Main.player[Projectile.owner];
 
-			damage = (int)(damage * (target.lifeMax * 0.01f + (MathHelper.Min(projOwner.GetModPlayer<WeaponPlayer>().SupremeAuthorityConsumedNPCs, 5))/100));
+			modifiers.SourceDamage *= (target.lifeMax * 0.01f + (MathHelper.Min(projOwner.GetModPlayer<WeaponPlayer>().SupremeAuthorityConsumedNPCs, 5))/100);
 			if(projOwner.GetModPlayer<WeaponPlayer>().SupremeAuthorityConsumedNPCs > 5)
             {
-				damage = (int)(damage * (1 + ((projOwner.GetModPlayer<WeaponPlayer>().SupremeAuthorityConsumedNPCs - 5) * 0.01f)));
+				modifiers.SourceDamage *= (1 + ((projOwner.GetModPlayer<WeaponPlayer>().SupremeAuthorityConsumedNPCs - 5) * 0.01f));
             }
-			damage /= 10; //The attack hits multiple times.
+			modifiers.SourceDamage /= 10; //The attack hits multiple times so damage should be lowered as a result.
 
-			base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
+			 
         }
     }
 }

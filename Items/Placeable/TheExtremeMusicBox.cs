@@ -9,11 +9,11 @@ namespace StarsAbove.Items.Placeable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Music Box (Tsukiyomi, the First Starfarer: Non-Expert)");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Music Box (Tsukiyomi, the First Starfarer: Non-Expert)");
+			/* Tooltip.SetDefault("" +
 				"'The Extreme' - Final Fantasy 8 OST" +
 				"\nArranged by Daiki Ishikawa - Composed by Nobuo Uematsu"
-				+ $"");
+				+ $""); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TheExtreme"), ModContent.ItemType<TheExtremeMusicBox>(), ModContent.TileType<Tiles.TheExtremeMusicBox>());// ModContent.TileType<Tiles.SunsetStardustMusicBox>());

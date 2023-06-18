@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.AshenAmbition
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ashen Ambition Cooldown");
-            Description.SetDefault("Ashen Ambition will fail to activate if this debuff is present");
+            // DisplayName.SetDefault("Ashen Ambition Cooldown");
+            // Description.SetDefault("Ashen Ambition will fail to activate if this debuff is present");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

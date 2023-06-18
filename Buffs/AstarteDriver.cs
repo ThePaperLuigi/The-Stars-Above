@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Astarte Driver");
-            Description.SetDefault("The stars are granting you strength");
+            // DisplayName.SetDefault("Astarte Driver");
+            // Description.SetDefault("The stars are granting you strength");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

@@ -13,8 +13,8 @@ namespace StarsAbove.Items
 
 		public override void SetStaticDefaults() {
 			
-			DisplayName.SetDefault("test item");
-			Tooltip.SetDefault($"");
+			// DisplayName.SetDefault("test item");
+			// Tooltip.SetDefault($"");
 
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 		}

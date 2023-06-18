@@ -9,16 +9,16 @@ namespace StarsAbove.Buffs.SupremeAuthority
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dark Aura");
+            // DisplayName.SetDefault("Dark Aura");
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }
-        public override void ModifyBuffTip(ref string tip, ref int rare)
+        public override void ModifyBuffText(ref string buffName, ref string tip, ref int rare)
         {
             int stacks = Main.LocalPlayer.GetModPlayer<WeaponPlayer>().SupremeAuthorityConsumedNPCs;
             tip = LangHelper.GetTextValue("BuffDescription.DarkAuraBuff", stacks);
 
-            base.ModifyBuffTip(ref tip, ref rare);
+             
         }
         public override void Update(Player player, ref int buffIndex)
         {

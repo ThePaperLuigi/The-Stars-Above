@@ -9,11 +9,11 @@ namespace StarsAbove.Items.Placeable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Music Box (Nalhaun, the Burnished King - 2nd Phase)");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Music Box (Nalhaun, the Burnished King - 2nd Phase)");
+			/* Tooltip.SetDefault("" +
 				"'Might Of The Hellblade' - Bravely Default 2 OST" +
 				"\nComposed by REVO"
-				+ $"\n");
+				+ $"\n"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TheMightOfTheHellblade"),

@@ -9,9 +9,9 @@ namespace StarsAbove.Items.Pets
     public class TunaMicrophone : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Tuna Microphone");
-			Tooltip.SetDefault("Summons an Electronic Vocalist" +
-				"");
+			// DisplayName.SetDefault("Tuna Microphone");
+			/* Tooltip.SetDefault("Summons an Electronic Vocalist" +
+				""); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

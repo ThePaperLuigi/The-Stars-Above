@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.Umbra
     public class EnhancedUmbraSwordShoot : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Umbra");     //The English name of the projectile
+			// DisplayName.SetDefault("Umbra");     //The English name of the projectile
 			Main.projFrames[Projectile.type] = 1;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 140;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
@@ -70,7 +70,7 @@ namespace StarsAbove.Projectiles.Umbra
 
         }
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 			Player player = Main.player[Projectile.owner];
 
@@ -89,7 +89,7 @@ namespace StarsAbove.Projectiles.Umbra
 			Vector2 velocity = direction * 26f;
 
 
-			if (crit && Projectile.penetrate > 0)
+			if (hit.Crit && Projectile.penetrate > 0)
             {
 				for (int i = 0; i < Projectile.penetrate; i++)
 				{
@@ -101,11 +101,15 @@ namespace StarsAbove.Projectiles.Umbra
 					heading *= new Vector2(velocity.X, velocity.Y).Length();
 					velocity.X = heading.X;
 					velocity.Y = heading.Y + Main.rand.Next(-40, 41) * 0.02f;
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, velocity.X, velocity.Y, ProjectileType<UmbraSwordShoot>(), damage, knockback, player.whoAmI, 0f);
+					if(player.whoAmI == Main.myPlayer)
+                    {
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, velocity.X, velocity.Y, ProjectileType<UmbraSwordShoot>(), damageDone, 0, player.whoAmI, 0f);
+
+					}
 				}
 			}
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
         }
 		
 

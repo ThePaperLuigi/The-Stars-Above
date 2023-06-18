@@ -16,7 +16,7 @@ namespace StarsAbove.Projectiles.Adornment
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Adornment of the Chaotic God");
+			// DisplayName.SetDefault("Adornment of the Chaotic God");
 		}
 
 		public override void SetDefaults()

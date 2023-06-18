@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Afterburner Cooldown");
-            Description.SetDefault("Afterburner will fail to activate if this debuff is present");
+            // DisplayName.SetDefault("Afterburner Cooldown");
+            // Description.SetDefault("Afterburner will fail to activate if this debuff is present");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //
         }

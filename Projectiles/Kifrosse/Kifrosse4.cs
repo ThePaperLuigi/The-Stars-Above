@@ -13,7 +13,7 @@ namespace StarsAbove.Projectiles.Kifrosse
 		public override void SetStaticDefaults()
 		{
 			
-			DisplayName.SetDefault("Foxfrost Mystic"); // Automatic from .lang files
+			// DisplayName.SetDefault("Foxfrost Mystic"); // Automatic from .lang files
 			Main.projFrames[Projectile.type] = 5;
 			Main.projPet[Projectile.type] = true;
 			ProjectileID.Sets.MinionSacrificable[Projectile.type] = true;

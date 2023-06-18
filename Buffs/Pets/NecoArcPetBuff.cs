@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.Pets
     public class NecoArcPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Chaotic Cat-Figure");
-			Description.SetDefault("???");
+			// DisplayName.SetDefault("Chaotic Cat-Figure");
+			// Description.SetDefault("???");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}

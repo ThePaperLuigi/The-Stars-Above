@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
     public class ChaosBlaster2 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Chaos Blaster");
+			// DisplayName.SetDefault("Chaos Blaster");
 			
 		}
 

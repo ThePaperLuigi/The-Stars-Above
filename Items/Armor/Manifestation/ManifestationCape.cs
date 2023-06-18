@@ -15,8 +15,8 @@ namespace StarsAbove.Items.Armor.Manifestation
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("E.G.O. Cape/Tail");
-			Tooltip.SetDefault("Unobtainable; vanity by using 'Manifestation'");
+			// DisplayName.SetDefault("E.G.O. Cape/Tail");
+			// Tooltip.SetDefault("Unobtainable; vanity by using 'Manifestation'");
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}
@@ -28,10 +28,11 @@ namespace StarsAbove.Items.Armor.Manifestation
 			Item.sellPrice(gold: 1); // How many coins the item is worth
 			Item.rare = ItemRarityID.Red; // The rarity of the item
 			Item.vanity = true; // The amount of defense the item will give when equipped
-			Item.accessory = true;
+			Item.accessory = true; Item.ResearchUnlockCount = 0;
+
 		}
 
-		
+
 		// UpdateArmorSet allows you to give set bonuses to the armor.
 		public override void UpdateArmorSet(Player player)
 		{

@@ -48,7 +48,7 @@ namespace StarsAbove.UI.Starfarers
 			area2.Width.Set(300, 0f); 
 			area2.Height.Set(400, 0f);
 			area2.OnMouseOver += MouseOverA;
-			area2.OnClick += MouseClickA;
+			area2.OnLeftClick += MouseClickA;
 			area2.OnMouseOut += MouseOffA;
 			area2.HAlign = area2.VAlign = 0.5f; // 1
 
@@ -58,7 +58,7 @@ namespace StarsAbove.UI.Starfarers
 			area3.Height.Set(700, 0f);
 			area3.OnMouseOver += MouseOverB;
 			area3.OnMouseOut += MouseOffB;
-			area3.OnClick += MouseClickB;
+			area3.OnLeftClick += MouseClickB;
 			area3.HAlign = area3.VAlign = 0.5f; // 1
 
 			Asphodene = new UIImage(Request<Texture2D>("StarsAbove/UI/Starfarers/blank"));
@@ -230,13 +230,13 @@ namespace StarsAbove.UI.Starfarers
 
 			Rectangle AsphodeneStatic = Asphodene.GetInnerDimensions().ToRectangle();
 			Rectangle AsphodeneI = Asphodene.GetInnerDimensions().ToRectangle();
-			AsphodeneI.X += modPlayer.AsphodeneX;
+			AsphodeneI.X += modPlayer.AsphodeneX/2;
 
 			Rectangle EridaniStatic = Eridani.GetInnerDimensions().ToRectangle();
 			Rectangle EridaniI = Eridani.GetInnerDimensions().ToRectangle();
-			EridaniI.X += modPlayer.EridaniX;
+			EridaniI.X += modPlayer.EridaniX/2;
 
-			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/base"), indicator, Color.White * modPlayer.StarfarerSelectionVisibility);
+			//spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/base"), indicator, Color.White * modPlayer.StarfarerSelectionVisibility);
 
 			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/AsphodeneS"), AsphodeneI, Color.White * (modPlayer.StarfarerSelectionVisibility - 0.3f));
 			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/Asphodene"), AsphodeneStatic, Color.White * (modPlayer.StarfarerSelectionVisibility - 0.5f));

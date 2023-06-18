@@ -8,13 +8,13 @@ namespace StarsAbove.Items.Prisms
     public class SpatialPrism : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Spatial Prism");
-			Tooltip.SetDefault("[c/FF5934:Tier 2 Stellar Prism]" +
+			// DisplayName.SetDefault("Spatial Prism");
+			/* Tooltip.SetDefault("[c/FF5934:Tier 2 Stellar Prism]" +
 				"\nAffix to a Stellar Nova to gain the following ability:" +
 				"\n[c/3D79FC:Cosmic Dynamo]" +
 				"\nUpon cast of the Stellar Nova, gain Magic Regeneration, Regeneration, and Heartreach" +
 				"\nBuffs lasts for 12 seconds" + //0
-				"");
+				""); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;

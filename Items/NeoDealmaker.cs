@@ -15,7 +15,7 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("[c/F7D76A:Hold left click to charge the weapon; the longer the weapon is charged, the stronger the resulting attack will become]" +
+			/* Tooltip.SetDefault("[c/F7D76A:Hold left click to charge the weapon; the longer the weapon is charged, the stronger the resulting attack will become]" +
 				"\nAttacks with this weapon fire small pellets, inflicting Midas for 20 seconds on critical strikes" +
 				"\nCharged attacks will instead fire a [c/FBD63E:BIG SHOT], dealing 2x base damage" +
 				"\nThe [c/FBD63E:BIG SHOT] pierces up to 8 foes and ignores terrain" +
@@ -23,7 +23,7 @@ namespace StarsAbove.Items
 				"\nCritical strikes increase this modifier to 25%" +
 				"\nDefeating foes with the [c/FBD63E:BIG SHOT] is guaranteed to drop 5 silver" +
 				"\n'Now's your chance to be a...'" +
-				$"");
+				$""); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

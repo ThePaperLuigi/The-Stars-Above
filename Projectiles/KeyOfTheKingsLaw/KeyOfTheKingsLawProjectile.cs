@@ -14,7 +14,7 @@ namespace StarsAbove.Projectiles.KeyOfTheKingsLaw
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Key Of The King's Law");
+			// DisplayName.SetDefault("Key Of The King's Law");
 			Main.projFrames[Projectile.type] = 14;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
@@ -72,7 +72,7 @@ namespace StarsAbove.Projectiles.KeyOfTheKingsLaw
         // While there are several different ways to change how our projectile could behave differently, lets make it so
         // when our projectile finally dies, it will explode into 4 regular Meowmere projectiles.
         
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 			target.AddBuff(BuffType<KingTagDamage>(), 240);
 		}

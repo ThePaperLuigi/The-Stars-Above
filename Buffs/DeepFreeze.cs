@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Deep Freeze");
-            Description.SetDefault("If you are currently standing still when this buff expires, you will be frozen solid and take damage");
+            // DisplayName.SetDefault("Deep Freeze");
+            // Description.SetDefault("If you are currently standing still when this buff expires, you will be frozen solid and take damage");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

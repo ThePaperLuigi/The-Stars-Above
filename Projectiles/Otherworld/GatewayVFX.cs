@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.Otherworld
     public class GatewayVFX : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("StellarGateway");
+			// DisplayName.SetDefault("StellarGateway");
 			//Main.projFrames[projectile.type] = 14;
 		}
 

@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using StarsAbove.Items.Materials;
 using StarsAbove.Items.Prisms;
 using Terraria;
 using Terraria.ID;
@@ -9,9 +10,9 @@ namespace StarsAbove.Items.Pets
     public class AegisCrystal : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Aegis Crystal");
-			Tooltip.SetDefault("Summons the Aegis" +
-				"\n'Keep this up, and we'll win for sure'");
+			// DisplayName.SetDefault("Aegis Crystal");
+			/* Tooltip.SetDefault("Summons the Aegis" +
+				"\n'Keep this up, and we'll win for sure'"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 		}
@@ -34,7 +35,7 @@ namespace StarsAbove.Items.Pets
 		public override void AddRecipes()
 		{
 			CreateRecipe(1)
-										.AddIngredient(ItemType<PrismaticCore>(), 3)
+				.AddIngredient(ItemType<StellarRemnant>(), 20)
 				.AddTile(TileID.Anvils)
 				.Register();
 		}

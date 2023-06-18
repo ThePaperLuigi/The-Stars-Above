@@ -14,12 +14,12 @@ namespace StarsAbove.Items
     public class CrimsonOutbreak : ModItem
 	{
 		public override void SetStaticDefaults() {
-			Tooltip.SetDefault("Fires a highly accurate three round burst that inflicts [c/C70039:Nanite Plague]" +
+			/* Tooltip.SetDefault("Fires a highly accurate three round burst that inflicts [c/C70039:Nanite Plague]" +
 				"\nEnemies with [c/C70039:Nanite Plague] will take damage over time and will take more damage from this gun" +
 				"\n[c/C70039:Nanite Plague] stacks with every shot, and will increase damage taken by bullets further (Max 20 stacks)" +
 				"\nCrits on enemies afflicted with [c/C70039:Nanite Plague] will also deal triple damage" +
 				"\n'~directive = KILL while enemies = PRESENT: execute(directive)~'" +
-				$"");
+				$""); */
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

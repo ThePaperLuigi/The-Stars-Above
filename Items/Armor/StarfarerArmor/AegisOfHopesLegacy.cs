@@ -20,8 +20,8 @@ namespace StarsAbove.Items.Armor.StarfarerArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Aegis of Hope's Legacy");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Aegis of Hope's Legacy");
+			/* Tooltip.SetDefault("" +
                 "One of the storied garbs from legends past" +
                 "\nEquip to your Starfarer to gain the following:" +
 				"\n[c/FFCA5A:Shining Journey]" +
@@ -42,7 +42,7 @@ namespace StarsAbove.Items.Armor.StarfarerArmor
                 "\nUnbridled Radiance: Stellar Nova Energy can not drop below 10" +
 				"\n'Stand tall- my friend / May all of the dark deep inside you / Find Light again' " +
 				
-                "");
+                ""); */
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}

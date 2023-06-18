@@ -22,8 +22,8 @@ namespace StarsAbove.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Arachnid Needlepoint");
-            Tooltip.SetDefault("3 summon tag damage" +
+            // DisplayName.SetDefault("Arachnid Needlepoint");
+            /* Tooltip.SetDefault("3 summon tag damage" +
                 "\nAttacks with this weapon whip in a wide arc while ignoring terrain, targetting foes struck" +
                 "\nRight click to deploy a [c/83CAEB:Mechanical Arachnid], which will hover and latch onto targets" +
                 "\nOnly one [c/83CAEB:Mechanical Arachnid] can latch onto a target at a time" +
@@ -34,7 +34,7 @@ namespace StarsAbove.Items
                 "\n[c/3A8BF3:Web of Needles] increases all minion damage by 30%" +
                 "" +
                 ""
-                + $"");
+                + $""); */
 
             ItemID.Sets.GamepadWholeScreenUseRange[Item.type] = false;
             ItemID.Sets.LockOnIgnoresCollision[Item.type] = true;
@@ -101,7 +101,7 @@ namespace StarsAbove.Items
             public override void SetStaticDefaults()
             {
                 //The Whip Projectile file
-                DisplayName.SetDefault("ArachnidNeedlepointWhip");
+                // DisplayName.SetDefault("ArachnidNeedlepointWhip");
             }
             public override void SetDefaults()
             {
@@ -128,12 +128,12 @@ namespace StarsAbove.Items
             protected int tag = 12;
             protected float tipScale = 1.5f;
             protected float fallOff = 0.3f;
-            public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+            public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
             {
                 ProjectileID.Sets.IsAWhip[Type] = true;
                 if (target.HasBuff(BuffType<LatchedOn>()))
                 {
-                    crit = true;
+                    modifiers.SetCrit();
                     Main.player[Projectile.owner].AddBuff(BuffType<WebOfNeedles>(), 240);
 
                 }
@@ -142,7 +142,7 @@ namespace StarsAbove.Items
                     //target.AddBuff(BuffType<DummySpiderTarget>(), 7200);
                 }
             }
-            public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+            public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
             {
                 Projectile.damage = (int)(Projectile.damage * (1f - fallOff));
                 if (tag != -1)

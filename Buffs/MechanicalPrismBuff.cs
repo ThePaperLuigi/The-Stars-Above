@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Mechanical Prism");
-            Description.SetDefault(" ");
+            // DisplayName.SetDefault("Mechanical Prism");
+            // Description.SetDefault(" ");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

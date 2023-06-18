@@ -13,7 +13,7 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Striking foes will grant Rage" +
+			/* Tooltip.SetDefault("Striking foes will grant Rage" +
 				"\nRight click to expend 80 mana, placing a [c/CB8EE3:Lightning Stiletto] at your cursor's location" +
 				"\nOnce a [c/CB8EE3:Lightning Stiletto] is present, using right click again will teleport you to the position of the [c/CB8EE3:Lightning Stiletto]" +
 				"\nAdditionally, your next attack will become [c/B703FF:Driving Thunder]" +
@@ -21,7 +21,7 @@ namespace StarsAbove.Items
 				"\nIf [c/B703FF:Driving Thunder] defeats an opponent, the mana used for placing the [c/CB8EE3:Lightning Stiletto] will be refunded" +
 				"\nIf you attempt to teleport to an unaccessable location, you will consume the [c/CB8EE3:Lightning Stiletto] without teleporting but still prepare [c/B703FF:Driving Thunder]" +
 				"\n'Woven from lightning itself, from a land where gods roam free'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -93,7 +93,7 @@ namespace StarsAbove.Items
 							if (!Collision.SolidCollision(vector32, player.width, player.height))
 							{
 								player.Teleport(vector32, 1, 0);
-								NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, (float)player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
+								NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float)player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
 
 							}
 						player.GetModPlayer<WeaponPlayer>().yunlaiTeleport = false;
@@ -173,7 +173,7 @@ namespace StarsAbove.Items
 			
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			// 
 			

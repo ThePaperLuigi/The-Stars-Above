@@ -7,11 +7,11 @@ namespace StarsAbove.Buffs.SubworldModifiers
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("[c/EFB43E:Environmental Turmoil]");
-            Description.SetDefault("Exploring ruins adrift in the great unknown" +
+            // DisplayName.SetDefault("[c/EFB43E:Environmental Turmoil]");
+            /* Description.SetDefault("Exploring ruins adrift in the great unknown" +
                 "\n" +
                 "\nNo special modifiers are active" +
-                "\n");
+                "\n"); */
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

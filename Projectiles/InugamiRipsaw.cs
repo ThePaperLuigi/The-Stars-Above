@@ -16,7 +16,7 @@ namespace StarsAbove.Projectiles
 			Projectile.hide = true;
 			Projectile.ownerHitCheck = true;
 			Projectile.DamageType = DamageClass.Melee;
-			Projectile.ContinuouslyUpdateDamage = true;
+			Projectile.ContinuouslyUpdateDamageStats = true;
 		}
 
 		public override void AI() {
@@ -24,7 +24,7 @@ namespace StarsAbove.Projectiles
 			//Main.dust[dust].noGravity = true;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) {
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
 			//if (Main.rand.NextBool(10)) {
 			//	target.AddBuff(BuffID.OnFire, 180, false);
 			//}

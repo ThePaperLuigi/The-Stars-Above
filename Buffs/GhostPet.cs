@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs
     public class GhostPet : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Futuristic Spectre");
-			Description.SetDefault("It refers to you as 'Guardian'");
+			// DisplayName.SetDefault("Futuristic Spectre");
+			// Description.SetDefault("It refers to you as 'Guardian'");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}

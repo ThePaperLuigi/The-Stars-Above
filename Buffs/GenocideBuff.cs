@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Bloodfest");
-            Description.SetDefault("Speed and crit rate is increased");
+            // DisplayName.SetDefault("Bloodfest");
+            // Description.SetDefault("Speed and crit rate is increased");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

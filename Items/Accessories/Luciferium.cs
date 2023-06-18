@@ -1,4 +1,5 @@
 ﻿using StarsAbove.Buffs;
+using StarsAbove.Systems;
 using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -9,13 +10,13 @@ namespace StarsAbove.Items.Accessories
     public class Luciferium : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Lucifer's Bargain");
+			// DisplayName.SetDefault("Lucifer's Bargain");
 
-			Tooltip.SetDefault("" +
+			/* Tooltip.SetDefault("" +
 				"Defense is reduced by 30" +
                 "\nUpon killing an enemy, gain the buff 'Sated Anguish' for 15 seconds" +
                 "\nDuring this time, gain 20% increased damage, powerful life regeneration, and defense is restored" +
-				"\n'Nanomachines of the highest caliber, or so they say'");
+				"\n'Nanomachines of the highest caliber, or so they say'"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 			//The (English) text shown below your weapon's name
 		}
@@ -25,7 +26,7 @@ namespace StarsAbove.Items.Accessories
 			Item.height = 28;
 			Item.accessory = true;
 			Item.value = Item.sellPrice(silver: 30);
-			Item.rare = 3;
+			Item.rare = ModContent.GetInstance<StellarRarity>().Type; // Custom Rarity
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual) {

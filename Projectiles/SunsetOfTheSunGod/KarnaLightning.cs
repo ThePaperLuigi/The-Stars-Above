@@ -16,7 +16,7 @@ namespace StarsAbove.Projectiles.SunsetOfTheSunGod
     public class KarnaLightning : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Sunset of the Sun God");     //The English name of the projectile
+			// DisplayName.SetDefault("Sunset of the Sun God");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = ProjectileID.Sets.TrailCacheLength[ProjectileID.VortexLightning];    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 1;        //The recording mode
 			//DrawOffsetX = 40;
@@ -225,7 +225,7 @@ namespace StarsAbove.Projectiles.SunsetOfTheSunGod
 
 			return true;
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			for (int d = 0; d < 8; d++)
 			{
@@ -234,7 +234,7 @@ namespace StarsAbove.Projectiles.SunsetOfTheSunGod
 
 			}
 			SoundEngine.PlaySound(SoundID.DD2_LightningAuraZap, target.Center);
-			if(Main.player[Projectile.owner].HasBuff(BuffType<GatheringLevinstorm>()) && crit)
+			if(Main.player[Projectile.owner].HasBuff(BuffType<GatheringLevinstorm>()) && hit.Crit)
             {
 				Projectile.NewProjectile(null, Projectile.Center.X, Projectile.Center.Y - 600, 0, 7, Projectile.type, Projectile.damage / 4, Projectile.knockBack, Projectile.owner, MathHelper.ToRadians(90), 1);
 

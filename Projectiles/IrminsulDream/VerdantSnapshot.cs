@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.IrminsulDream
     public class VerdantSnapshot : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Irminsul's Dream");
+			// DisplayName.SetDefault("Irminsul's Dream");
 			
 		}
 
@@ -40,7 +40,7 @@ namespace StarsAbove.Projectiles.IrminsulDream
 
 			base.ModifyDamageHitbox(ref hitbox);
         }
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 			int randomPetals = Main.rand.Next(3, 5);
 			for (int i = 0; i < randomPetals; i++)
@@ -51,7 +51,7 @@ namespace StarsAbove.Projectiles.IrminsulDream
 			}
 			target.AddBuff(BuffType<VerdantEmbrace>(), 720);
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
         }
         
         public override void AI() {

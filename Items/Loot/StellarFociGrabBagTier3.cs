@@ -18,8 +18,8 @@ namespace StarsAbove.Items.Loot
 		
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Stellar Foci Grab Bag (Tier 3)");
-			Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}"); // References a language key that says "Right Click To Open" in the language of the game
+			// DisplayName.SetDefault("Stellar Foci Grab Bag (Tier 3)");
+			// Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}"); // References a language key that says "Right Click To Open" in the language of the game
 
 			//ItemID.Sets.BossBag[Type] = true;
 

@@ -16,7 +16,7 @@ namespace StarsAbove.Projectiles.Manifestation
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Manifestation");
+			// DisplayName.SetDefault("Manifestation");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode
 		}

@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.TheOnlyThingIKnowForReal
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Guntrigger Parry");
-            Description.SetDefault("");
+            // DisplayName.SetDefault("Guntrigger Parry");
+            // Description.SetDefault("");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

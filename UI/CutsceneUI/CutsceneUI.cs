@@ -21,6 +21,8 @@ namespace StarsAbove.UI.CutsceneUI
         private UIVideo nalhaunCutsceneVideo;
         private UIVideo tsukiCutsceneVideo;
         private UIVideo tsukiCutsceneVideo2;
+        private UIVideo warriorCutsceneVideo;
+        private UIVideo warriorCutsceneVideo2;
 
         public override void OnInitialize() {
 			
@@ -56,6 +58,21 @@ namespace StarsAbove.UI.CutsceneUI
             };
             tsukiCutsceneVideo2 = new UIVideo(Request<Video>("StarsAbove/Video/TsukiyomiNovaCutscene"))
             {
+                
+                ScaleToFit = true,
+                WaitForStart = true,
+                DoLoop = false
+            };
+            warriorCutsceneVideo = new UIVideo(Request<Video>("StarsAbove/Video/WarriorIntroCutscene"))
+            {
+
+                ScaleToFit = true,
+                WaitForStart = true,
+                DoLoop = false
+            };
+            warriorCutsceneVideo2 = new UIVideo(Request<Video>("StarsAbove/Video/WarriorFinalPhaseCutscene"))
+            {
+
                 ScaleToFit = true,
                 WaitForStart = true,
                 DoLoop = false
@@ -100,6 +117,8 @@ namespace StarsAbove.UI.CutsceneUI
             NalhaunCutscene(bossPlayer);
             TsukiCutscene(bossPlayer, ref introWhite, ref outroWhite);
             TsukiCutscene2(bossPlayer, ref introWhite, ref outroWhite);
+            WarriorCutscene1(bossPlayer, ref introWhite, ref outroWhite);
+            WarriorCutscene2(bossPlayer, ref introWhite, ref outroWhite);
 
             if (bossPlayer.VideoDuration == 0)
             {
@@ -127,6 +146,7 @@ namespace StarsAbove.UI.CutsceneUI
 
         private void AstarteDriver(StarsAbovePlayer modPlayer)
         {
+            UIVideo Video = edinGenesisQuasarVideo;
             bool CutsceneExit = false;
             if (modPlayer.astarteCutsceneProgress <= 60 && modPlayer.astarteCutsceneProgress > 0)
             {
@@ -148,17 +168,14 @@ namespace StarsAbove.UI.CutsceneUI
 
                 edinGenesisQuasarVideo.FinishedVideo = false;
                 edinGenesisQuasarVideo.StartVideo = true;
-                CutsceneExit = true;
                 area.Append(edinGenesisQuasarVideo);
 
             }
-            if (edinGenesisQuasarVideo.FinishedVideo)
+            if (Video.FinishedVideo)
             {
-                if (CutsceneExit)
-                {
-                    CutsceneExitAlpha = 1f;
-                    CutsceneExit = false;
-                }
+                Video.FinishedVideo = false;
+
+                Main.LocalPlayer.GetModPlayer<BossPlayer>().WhiteAlpha = 1f;
 
                 edinGenesisQuasarVideo.Remove();
             }
@@ -168,7 +185,6 @@ namespace StarsAbove.UI.CutsceneUI
         {
             UIVideo Video = nalhaunCutsceneVideo;
             var cutsceneProgress = modPlayer.nalhaunCutsceneProgress;
-            bool cutsceneExit = false;
             if (cutsceneProgress <= 60 && cutsceneProgress > 0)
             {
                 modPlayer.BlackAlpha += 0.1f;
@@ -183,17 +199,14 @@ namespace StarsAbove.UI.CutsceneUI
 
                 Video.FinishedVideo = false;
                 Video.StartVideo = true;
-                cutsceneExit = true;
                 area.Append(Video);
 
             }
             if (Video.FinishedVideo)
             {
-                if (cutsceneExit)
-                {
-                    modPlayer.BlackAlpha = 1f;
-                    cutsceneExit = false;
-                }
+                Video.FinishedVideo = false;
+
+                modPlayer.BlackAlpha = 1f;
 
                 Video.Remove();
             }
@@ -235,6 +248,9 @@ namespace StarsAbove.UI.CutsceneUI
             }
             if (Video.FinishedVideo)
             {
+                Video.FinishedVideo = false;
+
+                modPlayer.BlackAlpha = 1f;
                 Video.Remove();
             }
         }
@@ -275,10 +291,105 @@ namespace StarsAbove.UI.CutsceneUI
             }
             if(Video.FinishedVideo)
             {
+                Video.FinishedVideo = false;
+
+                modPlayer.WhiteAlpha = 1f;
                 Video.Remove();
             }
             
             
+        }
+        private void WarriorCutscene1(BossPlayer modPlayer, ref bool introWhite, ref bool outroWhite)
+        {
+            UIVideo Video = warriorCutsceneVideo;
+            var cutsceneProgress = modPlayer.warriorCutsceneProgress;
+
+            introWhite = true;
+            outroWhite = true;
+
+
+            if (cutsceneProgress <= 60 && cutsceneProgress > 0)
+            {//If the cutscene hasn't started yet, give time for the screen to fade.
+
+                if (introWhite)
+                {
+                    modPlayer.WhiteAlpha += 0.1f;
+                }
+                else
+                {
+                    modPlayer.BlackAlpha += 0.1f;
+                }
+
+
+            }
+            else
+            {
+
+            }
+            if (cutsceneProgress == 1)
+            {
+
+                Video.FinishedVideo = false;
+                Video.StartVideo = true;
+
+                area.Append(Video);
+
+            }
+            if (Video.FinishedVideo)
+            {
+                Video.FinishedVideo = false;
+
+                modPlayer.WhiteAlpha = 1f;
+                Video.Remove();
+            }
+
+
+        }
+        private void WarriorCutscene2(BossPlayer modPlayer, ref bool introWhite, ref bool outroWhite)
+        {
+            UIVideo Video = warriorCutsceneVideo2;
+            var cutsceneProgress = modPlayer.warriorCutsceneProgress2;
+
+            introWhite = true;
+            outroWhite = true;
+
+
+            if (cutsceneProgress <= 60 && cutsceneProgress > 0)
+            {//If the cutscene hasn't started yet, give time for the screen to fade.
+
+                if (introWhite)
+                {
+                    modPlayer.WhiteAlpha += 0.1f;
+                }
+                else
+                {
+                    modPlayer.BlackAlpha += 0.1f;
+                }
+
+
+            }
+            else
+            {
+
+            }
+            if (cutsceneProgress == 1)
+            {
+
+                Video.FinishedVideo = false;
+                Video.StartVideo = true;
+
+                area.Append(Video);
+
+            }
+            if (Video.FinishedVideo)
+            {
+                Video.FinishedVideo = false;
+
+                modPlayer.WhiteAlpha = 1f;
+                Video.Remove();
+            }
+
+
         }
     }
 }

@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.SoulReaver
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Soul Reaver");
+			// DisplayName.SetDefault("Soul Reaver");
 			Main.projFrames[Projectile.type] = 3;
 			//DrawOriginOffsetY = 30;
 			//DrawOffsetX = -60;

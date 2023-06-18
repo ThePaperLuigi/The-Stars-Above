@@ -13,7 +13,7 @@ namespace StarsAbove.Projectiles.SaltwaterScourge
     public class SaltwaterCannonballBig : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Saltwater Scourge");
+			// DisplayName.SetDefault("Saltwater Scourge");
 
 		}
 
@@ -65,11 +65,11 @@ namespace StarsAbove.Projectiles.SaltwaterScourge
 			
 			
 		}
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 			target.AddBuff(BuffType<Stun>(), 120);
 
-            base.OnHitNPC(target, damage, knockback, crit);
+             
         }
         public override bool OnTileCollide(Vector2 oldVelocity)
 		{

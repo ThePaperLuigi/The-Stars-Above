@@ -17,8 +17,8 @@ namespace StarsAbove.Items
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ruptured Heaven");
-			Tooltip.SetDefault("WORK IN PROGRESS WEAPON" +
+			// DisplayName.SetDefault("Ruptured Heaven");
+			/* Tooltip.SetDefault("WORK IN PROGRESS WEAPON" +
 				"Attacks with this weapon swing in an arc, granting Rage on hit for 2 seconds" +
                 "\nRight click to whip the weapon, dealing 20% less damage but granting [Tactician's Eye] on critical strikes" +
                 "\n[Tactician's Eye] grants Dangersense, Hunter, and Heartreach to yourself and nearby allies for 5 seconds" +
@@ -27,7 +27,7 @@ namespace StarsAbove.Items
 				"\n[c/B4E93A:Eagle's Lecture] increases Magic Damage by 18% and grants Mana Regeneration" +
 				"\n[c/F3E63E:Deer's Lecture] increases Ranged Damage by 18% and critical strike chance by 8%" +
 				"\n'Let the lesson begin!'" +
-				$"");
+				$""); */
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}
 

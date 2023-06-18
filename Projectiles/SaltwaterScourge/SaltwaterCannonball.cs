@@ -14,7 +14,7 @@ namespace StarsAbove.Projectiles.SaltwaterScourge
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Saltwater Scourge");
+			// DisplayName.SetDefault("Saltwater Scourge");
 			Main.projFrames[Projectile.type] = 1;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
@@ -52,11 +52,11 @@ namespace StarsAbove.Projectiles.SaltwaterScourge
         // While there are several different ways to change how our projectile could behave differently, lets make it so
         // when our projectile finally dies, it will explode into 4 regular Meowmere projectiles.
         
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 			//target.AddBuff(BuffType<KingTagDamage>(), 240);
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			for (int d = 0; d < 8; d++)
 			{
@@ -73,7 +73,7 @@ namespace StarsAbove.Projectiles.SaltwaterScourge
 				}
 			}
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 		public override void Kill(int timeLeft)
 		{

@@ -15,7 +15,7 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Holding this weapon summons [c/D66AAB:Melusine] and [c/6AD6AF:Arondight] to circle you, aiming at your cursor" +
+			/* Tooltip.SetDefault("Holding this weapon summons [c/D66AAB:Melusine] and [c/6AD6AF:Arondight] to circle you, aiming at your cursor" +
 				"\nLeft click to fire from [c/D66AAB:Melusine]" +
 				"\nAttacking with [c/D66AAB:Melusine] fires a missile that has a 50% chance to apply Burning to foes struck for 6 seconds" +
 				"\nStriking Frostburned foes with [c/D66AAB:Melusine] will deal extra critical damage and expel Frostburn" +
@@ -25,7 +25,7 @@ namespace StarsAbove.Items
 				"\nBullets will travel through walls" +
 				"\nThis weapon can not crit unless criteria is met" +
 				"\n'Even if it's just for a short dream, my wings will fly for your sake.'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 			ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
 
@@ -201,7 +201,7 @@ namespace StarsAbove.Items
 			}
 			base.HoldItem(player);
 		}
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			// 
 			// 60 frames = 1 second

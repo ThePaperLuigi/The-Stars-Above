@@ -14,7 +14,7 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("With 40 mana available, this weapon will be thrown with special effects, consuming 40 mana in the process" +
+			/* Tooltip.SetDefault("With 40 mana available, this weapon will be thrown with special effects, consuming 40 mana in the process" +
 				"\nThe blade will ignite, dealing increased damage and will burn foes" +
 				"\nBurning foes will take bonus damage when they are reignited" +
 				"\nIf no mana is available, the weapon will be unpowered and deal half damage" +
@@ -22,7 +22,7 @@ namespace StarsAbove.Items
 				"\nOnce the [c/FF5858:Aegis Gauge] is filled, the next attack will explode the foe, dealing massive critical damage while consuming the [c/FF5858:Aegis Gauge]" +
 				"\nThe [c/FF5858:Aegis Gauge] will also slowly charge over time when this weapon is held" +
 				"\n'This is the Aegis's power!'" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -76,7 +76,7 @@ namespace StarsAbove.Items
 		
 
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			
 		}

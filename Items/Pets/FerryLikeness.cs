@@ -10,9 +10,9 @@ namespace StarsAbove.Items.Pets
     public class FerryLikeness : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Ferry Likeness");
-			Tooltip.SetDefault("Summons a churning ferry" +
-				"\n");
+			// DisplayName.SetDefault("Ferry Likeness");
+			/* Tooltip.SetDefault("Summons a churning ferry" +
+				"\n"); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

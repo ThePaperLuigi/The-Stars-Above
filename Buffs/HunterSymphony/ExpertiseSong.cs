@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.HunterSymphony
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Expertise Song");
-            Description.SetDefault("Powerful melodies grant 8% increased critical strike chance");
+            // DisplayName.SetDefault("Expertise Song");
+            // Description.SetDefault("Powerful melodies grant 8% increased critical strike chance");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

@@ -12,7 +12,7 @@ namespace StarsAbove.Projectiles.SunsetOfTheSunGod
     public class KarnaLaserSpear : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Sunset of the Sun God");     //The English name of the projectile
+			// DisplayName.SetDefault("Sunset of the Sun God");     //The English name of the projectile
 			Main.projFrames[Projectile.type] = 1;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 240;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
@@ -106,10 +106,10 @@ namespace StarsAbove.Projectiles.SunsetOfTheSunGod
 
         }
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             KarnaOnHitDust(target);
-            base.OnHitNPC(target, damage, knockback, crit);
+             
         }
 
         private void KarnaOnHitDust(NPC target)

@@ -24,8 +24,8 @@ namespace StarsAbove.Items
     public class Nanomachina : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Nanomachina Reactor");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Nanomachina Reactor");
+			/* Tooltip.SetDefault("" +
 				"Use this item when at max Mana to consume all Mana and gain the buff [c/FF0046:Realized Nanomachina] for 20 seconds (12 second cooldown)" +
 				"\nWhile [c/FF0046:Realized Nanomachina] is active: gain a barrier proportional to 20% of Max HP (Max 100 HP), gain 10% damage reduction, and gain knockback immunity" +
                 "\nAdditionally, for 2 seconds after activation, gain an additional 40% damage reduction" +
@@ -34,7 +34,7 @@ namespace StarsAbove.Items
 				"\nAdditionally, striking enemies will slowly fill the [c/A00F0F:Nanomachine Gauge]; once full, automatically restore the duration and barrier HP of [c/FF0046:Realized Nanomachina]" +
 				"\nDefeating foes increases the [c/A00F0F:Nanomachine Gauge] by 5%" +
 				"\nWhen [c/FF0046:Realized Nanomachina] ends, the [c/A00F0F:Nanomachine Gauge] is emptied (Will also empty out of combat)" +
-				$"\n'Nanomachines, son!'");
+				$"\n'Nanomachines, son!'"); */
 
 			ItemID.Sets.GamepadWholeScreenUseRange[Item.type] = true;
 			ItemID.Sets.LockOnIgnoresCollision[Item.type] = true;

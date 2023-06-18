@@ -10,9 +10,9 @@ namespace StarsAbove.Items.Pets
     public class Astrobread : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Astrobread");
-			Tooltip.SetDefault("Summons the Astrogirl" +
-                "");
+			// DisplayName.SetDefault("Astrobread");
+			/* Tooltip.SetDefault("Summons the Astrogirl" +
+                ""); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

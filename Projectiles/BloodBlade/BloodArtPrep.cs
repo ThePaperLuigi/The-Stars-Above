@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.BloodBlade
     public class BloodArtPrep : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Blood Blade");     //The English name of the projectile
+			// DisplayName.SetDefault("Blood Blade");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 140;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode
 			Main.projFrames[Projectile.type] = 1;

@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.CarianDarkMoon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Carian Dark Moon");
+			// DisplayName.SetDefault("Carian Dark Moon");
 			Main.projFrames[Projectile.type] = 3;
 			
 			//DrawOffsetX = -60;

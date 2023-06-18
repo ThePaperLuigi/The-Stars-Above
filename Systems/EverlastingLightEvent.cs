@@ -43,11 +43,11 @@ namespace StarsAbove
 		{
 			if (isEverlastingLightActive)
 			{
-				tag["isEverlastingLightActive"] = true;
+				tag["isEverlastingLightActive"] = isEverlastingLightActive;
 			}
 			if (isEverlastingLightPreviewActive)
 			{
-				tag["isEverlastingLightPreviewActive"] = true;
+				tag["isEverlastingLightPreviewActive"] = isEverlastingLightPreviewActive;
 			}
 			if (afterMoonLordDayTimer > 0)
 			{
@@ -75,7 +75,6 @@ namespace StarsAbove
 			var flags = new BitsByte();
 			flags[0] = isEverlastingLightActive;
 			flags[1] = isEverlastingLightPreviewActive;
-
 			writer.Write(flags);
 
 		}
@@ -89,9 +88,16 @@ namespace StarsAbove
 			
 		}
 
-		public override void PostUpdateEverything()
+        public override void PostUpdateTime()
         {
-            if(NPC.downedMoonlord)
+            //Of course, no Everlasting Light after the Warrior of Light is defeated.
+            if (DownedBossSystem.downedWarrior)
+            {
+                isEverlastingLightActive = false;
+                isEverlastingLightPreviewActive = false;
+                return;
+            }
+            if (NPC.downedMoonlord)
             {
                 afterMoonLordDayTimer++;
                 if(afterMoonLordDayTimer >= Main.dayLength)
@@ -142,21 +148,12 @@ namespace StarsAbove
                 isEverlastingLightPreviewActive = false;
             }
 
-
-            //Of course, no Everlasting Light after the Warrior of Light is defeated.
-            if (DownedBossSystem.downedWarrior)
-            {
-                isEverlastingLightActive = false;
-                isEverlastingLightPreviewActive = false;
-            }
-            
-            base.PostUpdateEverything();
         }
 
         public override void PreUpdateInvasions()
         {
 
-			if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior)
+			if (EverlastingLightEvent.isEverlastingLightActive)
 			{
 				Main.eclipse = false;
 			}

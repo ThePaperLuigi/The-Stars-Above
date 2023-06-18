@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.KissOfDeath
     public class KissOfDeathMinigun : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("The Kiss of Death");
+			// DisplayName.SetDefault("The Kiss of Death");
 			DrawOriginOffsetY = 20;
 		}
 

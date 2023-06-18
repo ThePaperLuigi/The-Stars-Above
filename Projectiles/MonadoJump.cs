@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles
     public class MonadoJump : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Monado Sigil");
+			// DisplayName.SetDefault("Monado Sigil");
 			Main.projFrames[Projectile.type] = 1;
 		}
 

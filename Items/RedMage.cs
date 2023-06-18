@@ -18,9 +18,9 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Vermilion Riposte");
+			// DisplayName.SetDefault("Vermilion Riposte");
 
-			Tooltip.SetDefault("" +
+			/* Tooltip.SetDefault("" +
 				"This weapon attacks after a short delay and varies between left and right click" +
 				"\nLeft click: [c/4E01FF:Verfire] inflicts On Fire for 4 seconds on impact and increases [c/4E01FF:Black Mana] by 5" +
 				"\nRight click: [c/FFE7BA:Verstone] heals 12 HP on a critical strike and increases [c/FFE7BA:White Mana] by 5" +
@@ -37,7 +37,7 @@ namespace StarsAbove.Items
 				"\n[c/FFE7BA:White Enchantment] uses the following attacks in succession: [c/FF1515:Reprise], [c/FF1515:Verholy], [c/FF1515:Resolution]" +
 				"\n[c/FF1515:Reprise] charges towards the cursor, granting Invincibility for 2 seconds; [c/FF1515:Verholy] casts a large AoE centered on your cursor" +
 				"\n[c/FF1515:Resolution] pierces, heals 5 HP per foe struck, and increases [c/FFE7BA:White Mana] by 11" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 			ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
@@ -213,7 +213,7 @@ namespace StarsAbove.Items
 
 			base.ModifyManaCost(player, ref reduce, ref mult);
         }
-        public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 		
 		}

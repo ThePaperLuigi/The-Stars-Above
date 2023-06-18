@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.Pets
 		{
 			
 			//DrawOffsetX = -20;
-			DisplayName.SetDefault("Bubba"); // Automatic from .lang files
+			// DisplayName.SetDefault("Bubba"); // Automatic from .lang files
 			Main.projFrames[Projectile.type] = 3;
 			Main.projPet[Projectile.type] = true;
 			ProjectileID.Sets.LightPet[Projectile.type] = true;

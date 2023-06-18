@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Soul Unbound Cooldown");
-            Description.SetDefault("When this debuff ends, you will be able to use Soul Unbound again");
+            // DisplayName.SetDefault("Soul Unbound Cooldown");
+            // Description.SetDefault("When this debuff ends, you will be able to use Soul Unbound again");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

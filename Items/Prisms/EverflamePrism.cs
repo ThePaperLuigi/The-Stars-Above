@@ -9,14 +9,14 @@ namespace StarsAbove.Items.Prisms
     public class EverflamePrism : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Everflame Prism");
-			Tooltip.SetDefault("[c/C2BDFF:Tier 1 Stellar Prism]" +
+			// DisplayName.SetDefault("Everflame Prism");
+			/* Tooltip.SetDefault("[c/C2BDFF:Tier 1 Stellar Prism]" +
 				"\nAffix to a Stellar Nova to gain the following stats:" +
 				"\n[c/83FF4D:+10% Damage]" + //+1
 				"\n[c/83FF4D:+7% Crit Chance]" +//+1
 				"\n[c/83FF4D:+10% Crit Damage]" +//+1
 				"\n[c/FF4D4D:+15 Energy Cost]" + //-3
-				"");
+				""); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;

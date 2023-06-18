@@ -6,7 +6,7 @@ namespace StarsAbove.Projectiles
     public class AmiyaSlashBurst : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Shadowless Cerulean Burst");
+			// DisplayName.SetDefault("Shadowless Cerulean Burst");
 			
 		}
 

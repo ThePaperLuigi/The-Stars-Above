@@ -12,7 +12,7 @@ namespace StarsAbove.Projectiles
     public class EntropyDamage : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Entropy");
+			// DisplayName.SetDefault("Entropy");
 			
 		}
 

@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.SunsetOfTheSunGod
     public class KarnaChargedMeleeVFX : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Sunset of the Sun God");     //The English name of the projectile
+			// DisplayName.SetDefault("Sunset of the Sun God");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 70;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode
 			//DrawOffsetX = 40;

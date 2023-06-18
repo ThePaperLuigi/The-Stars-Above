@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.Chemtank
 	public class ChemtankRound : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Dreadnought Chemtank");     //The English name of the projectile
+			// DisplayName.SetDefault("Dreadnought Chemtank");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode
 		}

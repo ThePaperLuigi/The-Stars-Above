@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.Manifestation
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Manifestation");
+			// DisplayName.SetDefault("Manifestation");
 			Main.projFrames[Projectile.type] = 2;
 			
 			//DrawOffsetX = -60;
@@ -44,9 +44,9 @@ namespace StarsAbove.Projectiles.Manifestation
 			get => Projectile.ai[0];
 			set => Projectile.ai[0] = value;
 		}
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-			crit = true;
+			modifiers.SetCrit();
 
 			for (int d = 0; d < 30; d++)
 			{
@@ -63,10 +63,10 @@ namespace StarsAbove.Projectiles.Manifestation
 			
 			if(target.life < (int)(target.lifeMax * 0.3) && !target.boss)
             {
-				damage = target.life;
+				modifiers.SetInstantKill();
             }
 
-			base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
+			 
         }
 
         // It appears that for this AI, only the ai0 field is used!

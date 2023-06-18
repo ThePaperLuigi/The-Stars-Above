@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.Bosses.Vagrant
     public class VagrantPlanetslash : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Unstable Planetoid");
+			// DisplayName.SetDefault("Unstable Planetoid");
 			Main.projFrames[Projectile.type] = 2;
 		}
 

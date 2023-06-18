@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles
     public class AstralOrb : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Astral Orb");     //The English name of the projectile
+			// DisplayName.SetDefault("Astral Orb");     //The English name of the projectile
 			
 		}
 

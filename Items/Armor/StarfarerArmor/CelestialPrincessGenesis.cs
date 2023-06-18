@@ -20,8 +20,8 @@ namespace StarsAbove.Items.Armor.StarfarerArmor
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Celestial Princess' Genesis");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Celestial Princess' Genesis");
+			/* Tooltip.SetDefault("" +
                 "One of the storied garbs from legends past" +
                 "\nEquip to your Starfarer to gain the following:" +
 				"\n[c/FF30AD:Cosmos of the Beginning]" +
@@ -37,7 +37,7 @@ namespace StarsAbove.Items.Armor.StarfarerArmor
 				"\n'Know that you are dimensions below me...'" +
 				//"\n[c/E572A1:Land of Miracles]" +
 				//"\nStarfarer Voyages on 'Radiant Planets' will always succeed, are 50% faster, and gain 80% increased Riches" +
-				"");
+				""); */
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}

@@ -25,7 +25,7 @@ namespace StarsAbove.Biomes
 
 		// Use SetStaticDefaults to assign the display name
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("The Observatory");
+			// DisplayName.SetDefault("The Observatory");
 		}
 
 		// Calculate when the biome is active.

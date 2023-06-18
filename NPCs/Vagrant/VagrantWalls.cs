@@ -13,7 +13,7 @@ namespace StarsAbove.NPCs.Vagrant
     public class VagrantWalls : ModNPC
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault(" ");
+			// DisplayName.SetDefault(" ");
 			
 			NPCID.Sets.MPAllowedEnemies[NPC.type] = true;
 			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
@@ -107,7 +107,7 @@ namespace StarsAbove.NPCs.Vagrant
 			}
 		}
 
-		public override void HitEffect(int hitDirection, double damage) {
+		public override void HitEffect(NPC.HitInfo hit) {
 			
 		}
 	}

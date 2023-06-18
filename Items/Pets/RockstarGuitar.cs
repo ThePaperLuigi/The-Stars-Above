@@ -10,8 +10,8 @@ namespace StarsAbove.Items.Pets
     public class RockstarGuitar : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Rockstar Guitar");
-			Tooltip.SetDefault("Summons a starry-eyed idol");
+			// DisplayName.SetDefault("Rockstar Guitar");
+			// Tooltip.SetDefault("Summons a starry-eyed idol");
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

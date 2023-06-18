@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.VirtuesEdge
     public class VirtueEdgeSlash1 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Virtue's Edge");     //The English name of the projectile
+			// DisplayName.SetDefault("Virtue's Edge");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode
 			//DrawOffsetX = 40;
@@ -96,7 +96,7 @@ namespace StarsAbove.Projectiles.VirtuesEdge
 			
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			for (int d = 0; d < 8; d++)
 			{
@@ -110,7 +110,7 @@ namespace StarsAbove.Projectiles.VirtuesEdge
             {
 				player.GetModPlayer<WeaponPlayer>().VirtueGauge += 3;
 			}
-			if(crit)
+			if(hit.Crit)
             {
 				player.GetModPlayer<WeaponPlayer>().VirtueGauge+=6;
 				if (player.HasBuff(BuffType<Buffs.VirtuesEdge.CelestialVoidBuff>()))

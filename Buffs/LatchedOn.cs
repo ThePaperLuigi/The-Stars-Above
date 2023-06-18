@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Latched On");
-            Description.SetDefault("Spider is on you");
+            // DisplayName.SetDefault("Latched On");
+            // Description.SetDefault("Spider is on you");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

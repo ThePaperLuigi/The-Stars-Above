@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Astarte Driver Enemy Cooldown");
-            Description.SetDefault("Enemy only debuff.");
+            // DisplayName.SetDefault("Astarte Driver Enemy Cooldown");
+            // Description.SetDefault("Enemy only debuff.");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //
         }

@@ -31,7 +31,7 @@ namespace StarsAbove.UI.Starfarers
 		private UIImageButton butchersdozen;
 		private UIImageButton ironskin;
 		private UIImageButton evasionmastery;
-		private UIImageButton bonus100hp;
+		private UIImageButton healthyConfidence;
 		private UIImageButton beyondinfinity;
 		private UIImageButton aquaaffinity;
 		private UIImageButton bloomingflames;
@@ -96,7 +96,7 @@ namespace StarsAbove.UI.Starfarers
 			barFrame.Height.Set(34, 0f);
 
 			confirm = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Confirm"));
-			confirm.OnClick += Confirm;
+			confirm.OnLeftClick += Confirm;
 			confirm.Width.Set(70, 0f);
 			confirm.Height.Set(52, 0f);
 			confirm.Left.Set(0, 0f);
@@ -105,7 +105,7 @@ namespace StarsAbove.UI.Starfarers
 			confirm.OnMouseOut += HoverOff;
 
 			reset = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Reset"));
-			reset.OnClick += ResetAll;
+			reset.OnLeftClick += ResetAll;
 			reset.Width.Set(70, 0f);
 			reset.Height.Set(52, 0f);
 			reset.Left.Set(0, 0f);
@@ -114,7 +114,7 @@ namespace StarsAbove.UI.Starfarers
 			reset.OnMouseOut += HoverOff;
 
 			butchersdozen = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/butchersdozen") );
-			butchersdozen.OnClick += ButchersDozenClick;
+			butchersdozen.OnLeftClick += ButchersDozenClick;
 			butchersdozen.Width.Set(56, 0f);
 			butchersdozen.Height.Set(44, 0f);
 			butchersdozen.Left.Set(78, 0f);
@@ -123,7 +123,7 @@ namespace StarsAbove.UI.Starfarers
 			butchersdozen.OnMouseOut += HoverOff;
 
 			starshower = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Starshower") );
-			starshower.OnClick += StarshowerClick;
+			starshower.OnLeftClick += StarshowerClick;
 			starshower.Width.Set(56, 0f);
 			starshower.Height.Set(44, 0f);
 			starshower.Left.Set(78, 0f);
@@ -132,7 +132,7 @@ namespace StarsAbove.UI.Starfarers
 			starshower.OnMouseOut += HoverOff;
 
 			MeleeAspect = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Melee") );
-			MeleeAspect.OnClick += MeleeAspectClick;
+			MeleeAspect.OnLeftClick += MeleeAspectClick;
 			MeleeAspect.Width.Set(32, 0f);
 			MeleeAspect.Height.Set(44, 0f);
 			MeleeAspect.Left.Set(86, 0f);
@@ -141,7 +141,7 @@ namespace StarsAbove.UI.Starfarers
 			MeleeAspect.OnMouseOut += HoverOff;
 
 			RogueAspect = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Rogue"));
-			RogueAspect.OnClick += RogueAspectClick;
+			RogueAspect.OnLeftClick += RogueAspectClick;
 			RogueAspect.Width.Set(32, 0f);
 			RogueAspect.Height.Set(44, 0f);
 			RogueAspect.Left.Set(86, 0f);
@@ -150,7 +150,7 @@ namespace StarsAbove.UI.Starfarers
 			RogueAspect.OnMouseOut += HoverOff;
 
 			BardAspect = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Symphonic"));
-			BardAspect.OnClick += BardAspectClick;
+			BardAspect.OnLeftClick += BardAspectClick;
 			BardAspect.Width.Set(32, 0f);
 			BardAspect.Height.Set(44, 0f);
 			BardAspect.Left.Set(128, 0f);
@@ -159,7 +159,7 @@ namespace StarsAbove.UI.Starfarers
 			BardAspect.OnMouseOut += HoverOff;
 
 			HealerAspect = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Radiant"));
-			HealerAspect.OnClick += HealerAspectClick;
+			HealerAspect.OnLeftClick += HealerAspectClick;
 			HealerAspect.Width.Set(32, 0f);
 			HealerAspect.Height.Set(44, 0f);
 			HealerAspect.Left.Set(212, 0f);
@@ -168,7 +168,7 @@ namespace StarsAbove.UI.Starfarers
 			HealerAspect.OnMouseOut += HoverOff;
 
 			ThrowerAspect = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Thrower"));
-			ThrowerAspect.OnClick += ThrowerAspectClick;
+			ThrowerAspect.OnLeftClick += ThrowerAspectClick;
 			ThrowerAspect.Width.Set(32, 0f);
 			ThrowerAspect.Height.Set(44, 0f);
 			ThrowerAspect.Left.Set(170, 0f);
@@ -177,7 +177,7 @@ namespace StarsAbove.UI.Starfarers
 			ThrowerAspect.OnMouseOut += HoverOff;
 
 			MagicAspect = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Magic") );
-			MagicAspect.OnClick += MagicAspectClick;
+			MagicAspect.OnLeftClick += MagicAspectClick;
 			MagicAspect.Width.Set(32, 0f);
 			MagicAspect.Height.Set(44, 0f);
 			MagicAspect.Left.Set(128, 0f);
@@ -186,7 +186,7 @@ namespace StarsAbove.UI.Starfarers
 			MagicAspect.OnMouseOut += HoverOff;
 
 			RangedAspect = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Ranged") );
-			RangedAspect.OnClick += RangedAspectClick;
+			RangedAspect.OnLeftClick += RangedAspectClick;
 			RangedAspect.Width.Set(32, 0f);
 			RangedAspect.Height.Set(44, 0f);
 			RangedAspect.Left.Set(170, 0f);
@@ -195,7 +195,7 @@ namespace StarsAbove.UI.Starfarers
 			RangedAspect.OnMouseOut += HoverOff;
 
 			SummonAspect = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Summon") );
-			SummonAspect.OnClick += SummonAspectClick;
+			SummonAspect.OnLeftClick += SummonAspectClick;
 			SummonAspect.Width.Set(32, 0f);
 			SummonAspect.Height.Set(44, 0f);
 			SummonAspect.Left.Set(212, 0f);
@@ -204,7 +204,7 @@ namespace StarsAbove.UI.Starfarers
 			SummonAspect.OnMouseOut += HoverOff;
 
 			Lock = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Lock") );
-			Lock.OnClick += LockClick;
+			Lock.OnLeftClick += LockClick;
 			Lock.Width.Set(16, 0f);
 			Lock.Height.Set(22, 0f);
 			Lock.Left.Set(59, 0f);
@@ -213,7 +213,7 @@ namespace StarsAbove.UI.Starfarers
 			Lock.OnMouseOut += HoverOff;
 
 			ironskin = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/ironskin") );
-			ironskin.OnClick += IronskinClick;
+			ironskin.OnLeftClick += IronskinClick;
 			ironskin.Width.Set(56, 0f);
 			ironskin.Height.Set(44, 0f);
 			ironskin.Left.Set(136, 0f);
@@ -222,7 +222,7 @@ namespace StarsAbove.UI.Starfarers
 			ironskin.OnMouseOut += HoverOff;
 
 			evasionmastery = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/evasionmastery") );
-			evasionmastery.OnClick += evasionmasteryClick;
+			evasionmastery.OnLeftClick += evasionmasteryClick;
 			evasionmastery.Width.Set(56, 0f);
 			evasionmastery.Height.Set(44, 0f);
 			evasionmastery.Left.Set(194, 0f);
@@ -231,7 +231,7 @@ namespace StarsAbove.UI.Starfarers
 			evasionmastery.OnMouseOut += HoverOff;
 
 			aquaaffinity = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/aquaaffinity") );
-			aquaaffinity.OnClick += aquaaffinityClick;
+			aquaaffinity.OnLeftClick += aquaaffinityClick;
 			aquaaffinity.Width.Set(56, 0f);
 			aquaaffinity.Height.Set(44, 0f);
 			aquaaffinity.Left.Set(78, 0f);
@@ -240,7 +240,7 @@ namespace StarsAbove.UI.Starfarers
 			aquaaffinity.OnMouseOut += HoverOff;
 			
 			inneralchemy = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/inneralchemy") );
-			inneralchemy.OnClick += inneralchemyClick;
+			inneralchemy.OnLeftClick += inneralchemyClick;
 			inneralchemy.Width.Set(56, 0f);
 			inneralchemy.Height.Set(44, 0f);
 			inneralchemy.Left.Set(136, 0f);
@@ -249,7 +249,7 @@ namespace StarsAbove.UI.Starfarers
 			inneralchemy.OnMouseOut += HoverOff;
 
 			umbralentropy = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/umbralentropy") );
-			umbralentropy.OnClick += umbralentropyClick;
+			umbralentropy.OnLeftClick += umbralentropyClick;
 			umbralentropy.Width.Set(56, 0f);
 			umbralentropy.Height.Set(44, 0f);
 			umbralentropy.Left.Set(136, 0f);
@@ -258,7 +258,7 @@ namespace StarsAbove.UI.Starfarers
 			umbralentropy.OnMouseOut += HoverOff;
 
 			flashfreeze = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/flashfreeze") );
-			flashfreeze.OnClick += flashfreezeClick;
+			flashfreeze.OnLeftClick += flashfreezeClick;
 			flashfreeze.Width.Set(56, 0f);
 			flashfreeze.Height.Set(44, 0f);
 			flashfreeze.Left.Set(136, 0f);
@@ -267,7 +267,7 @@ namespace StarsAbove.UI.Starfarers
 			flashfreeze.OnMouseOut += HoverOff;
 
 			mysticforging = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/mysticforging") );
-			mysticforging.OnClick += mysticforgingClick;
+			mysticforging.OnLeftClick += mysticforgingClick;
 			mysticforging.Width.Set(56, 0f);
 			mysticforging.Height.Set(44, 0f);
 			mysticforging.Left.Set(194, 0f);
@@ -276,7 +276,7 @@ namespace StarsAbove.UI.Starfarers
 			mysticforging.OnMouseOut += HoverOff;
 
 			hikari = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/hikari") );
-			hikari.OnClick += hikariClick;
+			hikari.OnLeftClick += hikariClick;
 			hikari.Width.Set(56, 0f);
 			hikari.Height.Set(44, 0f);
 			hikari.Left.Set(194, 0f);
@@ -285,7 +285,7 @@ namespace StarsAbove.UI.Starfarers
 			hikari.OnMouseOut += HoverOff;
 
 			celestialevanesence = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/celestialevanesence") );
-			celestialevanesence.OnClick += celestialevanesenceClick;
+			celestialevanesence.OnLeftClick += celestialevanesenceClick;
 			celestialevanesence.Width.Set(56, 0f);
 			celestialevanesence.Height.Set(44, 0f);
 			celestialevanesence.Left.Set(194, 0f);
@@ -293,17 +293,17 @@ namespace StarsAbove.UI.Starfarers
 			celestialevanesence.OnMouseOver += celestialevanesenceHover;
 			celestialevanesence.OnMouseOut += HoverOff;
 
-			bonus100hp = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/bonus100hp") );
-			bonus100hp.OnClick += bonus100hpClick;
-			bonus100hp.Width.Set(56, 0f);
-			bonus100hp.Height.Set(44, 0f);
-			bonus100hp.Left.Set(276, 0f);
-			bonus100hp.Top.Set(56, 0f);
-			bonus100hp.OnMouseOver += Bonus100hpHover;
-			bonus100hp.OnMouseOut += HoverOff;
+			healthyConfidence = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/healthyConfidence") );
+			healthyConfidence.OnLeftClick += healthyConfidenceClick;
+			healthyConfidence.Width.Set(56, 0f);
+			healthyConfidence.Height.Set(44, 0f);
+			healthyConfidence.Left.Set(276, 0f);
+			healthyConfidence.Top.Set(56, 0f);
+			healthyConfidence.OnMouseOver += healthyConfidenceHover;
+			healthyConfidence.OnMouseOut += HoverOff;
 
 			bloomingflames = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/bloomingflames") );
-			bloomingflames.OnClick += bloomingflamesClick;
+			bloomingflames.OnLeftClick += bloomingflamesClick;
 			bloomingflames.Width.Set(56, 0f);
 			bloomingflames.Height.Set(44, 0f);
 			bloomingflames.Left.Set(336, 0f);
@@ -312,7 +312,7 @@ namespace StarsAbove.UI.Starfarers
 			bloomingflames.OnMouseOut += HoverOff;
 
 			livingdead = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/livingdead") );
-			livingdead.OnClick += livingdeadClick;
+			livingdead.OnLeftClick += livingdeadClick;
 			livingdead.Width.Set(56, 0f);
 			livingdead.Height.Set(44, 0f);
 			livingdead.Left.Set(78, 0f);
@@ -321,7 +321,7 @@ namespace StarsAbove.UI.Starfarers
 			livingdead.OnMouseOut += HoverOff;
 
 			astralmantle = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/astralmantle") );
-			astralmantle.OnClick += astralmantleClick;
+			astralmantle.OnLeftClick += astralmantleClick;
 			astralmantle.Width.Set(56, 0f);
 			astralmantle.Height.Set(44, 0f);
 			astralmantle.Left.Set(276, 0f);
@@ -330,7 +330,7 @@ namespace StarsAbove.UI.Starfarers
 			astralmantle.OnMouseOut += HoverOff;
 
 			afterburner = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/afterburner") );
-			afterburner.OnClick += afterburnerClick;
+			afterburner.OnLeftClick += afterburnerClick;
 			afterburner.Width.Set(56, 0f);
 			afterburner.Height.Set(44, 0f);
 			afterburner.Left.Set(276, 0f);
@@ -339,7 +339,7 @@ namespace StarsAbove.UI.Starfarers
 			afterburner.OnMouseOut += HoverOff;
 
 			artofwar = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/artofwar") );
-			artofwar.OnClick += artofwarClick;
+			artofwar.OnLeftClick += artofwarClick;
 			artofwar.Width.Set(56, 0f);
 			artofwar.Height.Set(44, 0f);
 			artofwar.Left.Set(276, 0f);
@@ -348,7 +348,7 @@ namespace StarsAbove.UI.Starfarers
 			artofwar.OnMouseOut += HoverOff;
 
 			avataroflight = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/avataroflight") );
-			avataroflight.OnClick += avataroflightClick;
+			avataroflight.OnLeftClick += avataroflightClick;
 			avataroflight.Width.Set(56, 0f);
 			avataroflight.Height.Set(44, 0f);
 			avataroflight.Left.Set(336, 0f);
@@ -357,7 +357,7 @@ namespace StarsAbove.UI.Starfarers
 			avataroflight.OnMouseOut += HoverOff;
 
 			weaknessexploit = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/weaknessexploit") );
-			weaknessexploit.OnClick += weaknessexploitClick;
+			weaknessexploit.OnLeftClick += weaknessexploitClick;
 			weaknessexploit.Width.Set(56, 0f);
 			weaknessexploit.Height.Set(44, 0f);
 			weaknessexploit.Left.Set(336, 0f);
@@ -366,7 +366,7 @@ namespace StarsAbove.UI.Starfarers
 			weaknessexploit.OnMouseOut += HoverOff;
 
 			aprismatism = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/aprismatism") );
-			aprismatism.OnClick += aprismatismClick;
+			aprismatism.OnLeftClick += aprismatismClick;
 			aprismatism.Width.Set(56, 0f);
 			aprismatism.Height.Set(44, 0f);
 			aprismatism.Left.Set(336, 0f);
@@ -375,7 +375,7 @@ namespace StarsAbove.UI.Starfarers
 			aprismatism.OnMouseOut += HoverOff;
 
 			beyondinfinity = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/beyondinfinity") );
-			beyondinfinity.OnClick += beyondinfinityClick;
+			beyondinfinity.OnLeftClick += beyondinfinityClick;
 			beyondinfinity.Width.Set(56, 0f);
 			beyondinfinity.Height.Set(44, 0f);
 			beyondinfinity.Left.Set(418, 0f);
@@ -384,7 +384,7 @@ namespace StarsAbove.UI.Starfarers
 			beyondinfinity.OnMouseOut += HoverOff;
 
 			keyofchronology = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/keyofchronology") );
-			keyofchronology.OnClick += keyofchronologyClick;
+			keyofchronology.OnLeftClick += keyofchronologyClick;
 			keyofchronology.Width.Set(56, 0f);
 			keyofchronology.Height.Set(44, 0f);
 			keyofchronology.Left.Set(418, 0f);
@@ -393,7 +393,7 @@ namespace StarsAbove.UI.Starfarers
 			keyofchronology.OnMouseOut += HoverOff;
 
 			unbridledradiance = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/unbridledradiance") );
-			unbridledradiance.OnClick += unbridledradianceClick;
+			unbridledradiance.OnLeftClick += unbridledradianceClick;
 			unbridledradiance.Width.Set(56, 0f);
 			unbridledradiance.Height.Set(44, 0f);
 			unbridledradiance.Left.Set(418, 0f);
@@ -403,7 +403,7 @@ namespace StarsAbove.UI.Starfarers
 
 
 			beyondtheboundary = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/beyondtheboundary") );
-			beyondtheboundary.OnClick += beyondtheboundaryClick;
+			beyondtheboundary.OnLeftClick += beyondtheboundaryClick;
 			beyondtheboundary.Width.Set(56, 0f);
 			beyondtheboundary.Height.Set(44, 0f);
 			beyondtheboundary.Left.Set(418, 0f);
@@ -451,7 +451,7 @@ namespace StarsAbove.UI.Starfarers
 			area.Append(evasionmastery);
 			area.Append(aquaaffinity);
 			area.Append(livingdead);
-			area.Append(bonus100hp);
+			area.Append(healthyConfidence);
 			area.Append(bloomingflames);
 			area.Append(beyondinfinity);
 			area.Append(astralmantle);
@@ -598,10 +598,10 @@ namespace StarsAbove.UI.Starfarers
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGauge -= 1;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().evasionmastery = 1;
 			}
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().bonus100hp == 2)
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().healthyConfidence == 2)
 			{
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGauge -= 2;
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().bonus100hp = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().healthyConfidence = 1;
 			}
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().aquaaffinity == 2)
 			{
@@ -1124,11 +1124,11 @@ namespace StarsAbove.UI.Starfarers
 
 			// We can do stuff in here!
 		}
-		private void Bonus100hpHover(UIMouseEvent evt, UIElement listeningElement)
+		private void healthyConfidenceHover(UIMouseEvent evt, UIElement listeningElement)
 		{
 			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArrayVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArray == true))
 				return;
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().bonus100hp == 0)
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().healthyConfidence == 0)
 			{
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarArray.Abilities.HealthyConfidence.Unlock", Main.LocalPlayer);
 
@@ -1986,20 +1986,20 @@ namespace StarsAbove.UI.Starfarers
 			// We can do stuff in here!
 		}
 
-		private void bonus100hpClick(UIMouseEvent evt, UIElement listeningElement)
+		private void healthyConfidenceClick(UIMouseEvent evt, UIElement listeningElement)
 		{
 			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArrayVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArray == true ))
 				return;
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGauge + 2 <= Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGaugeMax && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().bonus100hp == 1)
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGauge + 2 <= Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGaugeMax && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>(). healthyConfidence == 1)
 			{
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGauge += 2;
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().bonus100hp = 2;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().healthyConfidence = 2;
 			}
 			else
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().bonus100hp == 2)
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().healthyConfidence == 2)
 			{
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGauge -= 2;
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().bonus100hp = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().healthyConfidence = 1;
 			}
 
 
@@ -2261,7 +2261,7 @@ namespace StarsAbove.UI.Starfarers
 			Rectangle starshowerArea = starshower.GetInnerDimensions().ToRectangle();
 			Rectangle ironskinArea = ironskin.GetInnerDimensions().ToRectangle();
 			Rectangle evasionmasteryArea = evasionmastery.GetInnerDimensions().ToRectangle();
-			Rectangle bonus100hpArea = bonus100hp.GetInnerDimensions().ToRectangle();
+			Rectangle  healthyConfidenceArea =  healthyConfidence.GetInnerDimensions().ToRectangle();
 			Rectangle beyondinfinityArea = beyondinfinity.GetInnerDimensions().ToRectangle();
 			Rectangle aquaaffinityArea = aquaaffinity.GetInnerDimensions().ToRectangle();
 			Rectangle bloomingflamesArea = bloomingflames.GetInnerDimensions().ToRectangle();
@@ -2364,9 +2364,9 @@ namespace StarsAbove.UI.Starfarers
 			{
 				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/evasionmastery"), evasionmasteryArea, Color.White * modPlayer.stellarArrayVisibility);
 			}
-			if (modPlayer.bonus100hp == 2)
+			if (modPlayer. healthyConfidence == 2)
 			{
-				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/bonus100hp"), bonus100hpArea, Color.White * modPlayer.stellarArrayVisibility);
+				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/healthyConfidence"),  healthyConfidenceArea, Color.White * modPlayer.stellarArrayVisibility);
 			}
 			if (modPlayer.beyondinfinity == 2)
 			{

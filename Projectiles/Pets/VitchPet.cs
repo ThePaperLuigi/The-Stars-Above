@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.Pets
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Fox Vixen"); // Automatic from .lang files
+			// DisplayName.SetDefault("Fox Vixen"); // Automatic from .lang files
 			Main.projFrames[Projectile.type] = 1;
 			Main.projPet[Projectile.type] = true;
 			ProjectileID.Sets.LightPet[Projectile.type] = true;

@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ebb");
-            Description.SetDefault("The rift between worlds robs you of all mana");
+            // DisplayName.SetDefault("Ebb");
+            // Description.SetDefault("The rift between worlds robs you of all mana");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

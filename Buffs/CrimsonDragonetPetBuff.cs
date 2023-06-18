@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     public class CrimsonDragonetPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Crimson Dragonet");
-			Description.SetDefault("A crimson dragonet attends to you");
+			// DisplayName.SetDefault("Crimson Dragonet");
+			// Description.SetDefault("A crimson dragonet attends to you");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}

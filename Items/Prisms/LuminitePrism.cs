@@ -8,13 +8,13 @@ namespace StarsAbove.Items.Prisms
     public class LuminitePrism : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Luminite Prism");
-			Tooltip.SetDefault("[c/FF5934:Tier 2 Stellar Prism]" +
+			// DisplayName.SetDefault("Luminite Prism");
+			/* Tooltip.SetDefault("[c/FF5934:Tier 2 Stellar Prism]" +
 				"\nAffix to a Stellar Nova to gain the following ability:" +
 				"\n[c/6DE169:Wrath of the Moon Lord]" +
 				"\nIf the Stellar Nova costs over 200 Stellar Nova Energy, damage is increased by 50%" +
 				"\nThis damage increase is added after normal damage calculation" + //0
-				"");
+				""); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;

@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.Tsukiyomi
     public class TsukiyomiPlanet : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Protoplanet");     //The English name of the projectile
+			// DisplayName.SetDefault("Protoplanet");     //The English name of the projectile
 			Main.projFrames[Projectile.type] = 5;
 			//drawOriginOffsetX = -15;
 			//DrawOriginOffsetY = -35;

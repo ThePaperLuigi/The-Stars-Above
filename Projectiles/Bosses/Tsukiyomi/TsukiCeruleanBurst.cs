@@ -6,7 +6,7 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
     public class TsukiCeruleanBurst : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Shadowless Cerulean");
+			// DisplayName.SetDefault("Shadowless Cerulean");
 			
 		}
 

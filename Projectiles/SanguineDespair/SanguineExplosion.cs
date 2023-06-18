@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.SanguineDespair
     public class SanguineExplosion : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Sanguine Despair");
+			// DisplayName.SetDefault("Sanguine Despair");
 			
 		}
 
@@ -78,16 +78,16 @@ namespace StarsAbove.Projectiles.SanguineDespair
 			
 		}
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 			target.AddBuff(BuffType<MortalWounds>(), 60 * 8);
 			Player player = Main.player[Projectile.owner];
-			player.statLife += (int)(damage * 0.05f);
-			player.HealEffect((int)(damage * 0.05f));
+			player.Heal((int)(damageDone * 0.05f));
+			
 
 		}
 
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 
 

@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Kiwami Ryuken");
-            Description.SetDefault("You are preparing a deadly counterattack");
+            // DisplayName.SetDefault("Kiwami Ryuken");
+            // Description.SetDefault("You are preparing a deadly counterattack");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

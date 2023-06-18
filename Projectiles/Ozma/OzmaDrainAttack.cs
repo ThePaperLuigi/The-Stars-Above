@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.Ozma
     public class OzmaDrainAttack : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Ozma Ascendant");     //The English name of the projectile
+			// DisplayName.SetDefault("Ozma Ascendant");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode
 			Main.projFrames[Projectile.type] = 1;
@@ -84,7 +84,7 @@ namespace StarsAbove.Projectiles.Ozma
 
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			for (int d = 0; d < 2; d++)
 			{
@@ -96,15 +96,15 @@ namespace StarsAbove.Projectiles.Ozma
 
 
 			Rectangle textPos = new Rectangle((int)player.position.X, (int)player.position.Y - 20, player.width, player.height);
-			CombatText.NewText(textPos, new Color(81, 62, 247, 240), $"{Math.Min(damage/10, 5)}", false, false);
-			player.statMana += Math.Min(damage / 10, 5);
-			CombatText.NewText(textPos, new Color(49, 234, 63, 240), $"{Math.Min(damage / 10, 5)}", false, false);
-			player.statLife += Math.Min(damage / 10, 5);
-			if (crit)
+			CombatText.NewText(textPos, new Color(81, 62, 247, 240), $"{Math.Min(damageDone/10, 5)}", false, false);
+			player.statMana += Math.Min(damageDone / 10, 5);
+			CombatText.NewText(textPos, new Color(49, 234, 63, 240), $"{Math.Min(damageDone / 10, 5)}", false, false);
+			player.statLife += Math.Min(damageDone / 10, 5);
+			if(hit.Crit)
 			{
 				projOwner.AddBuff(BuffType<AnnihilationState>(), 180);
 			}
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
 		}
 		public override bool? CanCutTiles()
 		{

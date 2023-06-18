@@ -22,6 +22,8 @@ using StarsAbove.NPCs.Nalhaun;
 using StarsAbove.NPCs.Tsukiyomi;
 using StarsAbove.NPCs.Dioskouroi;
 using StarsAbove.Projectiles.Bosses;
+using StarsAbove.NPCs.WarriorOfLight;
+using StarsAbove.Buffs.Boss;
 
 namespace StarsAbove
 {
@@ -30,6 +32,7 @@ namespace StarsAbove
         public bool VagrantBarActive = false;//This changes depending on the boss
         public bool NalhaunBarActive = false;
         public bool TsukiyomiBarActive = false;
+        public bool WarriorOfLightBarActive = false;
 
         public bool CastorBarActive = false;
         public bool PolluxBarActive = false;
@@ -55,6 +58,8 @@ namespace StarsAbove
         public int nalhaunCutsceneProgress = 0;
         public int tsukiCutsceneProgress = 0;
         public int tsukiCutscene2Progress = 0;
+        public int warriorCutsceneProgress = 0;
+        public int warriorCutsceneProgress2 = 0;
 
         public float WhiteAlpha = 0f;
         public float BlackAlpha = 0f;
@@ -66,13 +71,98 @@ namespace StarsAbove
 
         public static bool DisableDamageModifier;
 
+        public bool QTEActive;
+        public float QTEProgress = 0;
+        public float QTEDifficulty = 3;
+
         float bossReductionMod;
         float decayRate = 0.8f;
         float stress;
         float damageReductionAmount;
 
+        public override void OnHurt(Player.HurtInfo info)
+        {
+            for (int k = 0; k < Main.maxNPCs; k++)
+            {
+                NPC npc = Main.npc[k];
+                if (npc.active && npc.type == NPCType<WarriorOfLightBoss>() && Player.Distance(npc.Center) < 2000)
+                {
+                    if(Main.expertMode)
+                    {
+                        Player.AddBuff(BuffType<Vulnerable>(), 60);
+
+                    }
+                    break;
+                }
+                
+
+            }
+
+            base.OnHurt(info);
+        }
         public override void PreUpdate()
         {
+            if(QTEActive)
+            {
+                if (StarsAbove.novaKey.JustPressed)
+                {
+                    
+                    SoundEngine.PlaySound(SoundID.Item48, Player.Center);
+
+                    for (int d = 0; d < 3; d++)
+                    {
+                        Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-3, 3), 0f + Main.rand.Next(-3, 3), 0, default(Color), 1.5f);
+                    }
+                    Player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
+
+                    QTEProgress += 8;
+                }
+
+                //Depending on the debuff increase/decrease the severity of the QTE
+                if (Player.HasBuff(BuffType<BindingLight>()))
+                {
+                    for (int k = 0; k < 200; k++)
+                    {
+                        NPC npc = Main.npc[k];
+                        if (npc.active && npc.type == NPCType<WarriorOfLightBossFinalPhase>())
+                        {
+                            for (int ir = 0; ir < 50; ir++)
+                            {
+                                Vector2 positionNew = Vector2.Lerp(Player.Center, new Vector2(npc.Center.X, npc.Center.Y), (float)ir / 30);
+
+                                Dust da = Dust.NewDustPerfect(positionNew, DustID.FireworkFountain_Yellow, null, 240, default(Color), 1.7f);
+                                da.fadeIn = 0.3f;
+                                da.noLight = true;
+                                da.noGravity = true;
+
+                            }
+                            break;
+                        }
+                        
+
+                    }
+                    QTEDifficulty = 0.1f;
+                }
+
+                QTEProgress -= QTEDifficulty;
+                MathHelper.Clamp(QTEProgress, 0, 100);
+
+                if (QTEProgress >= 100)
+                {
+                    QTEProgress = 0;
+
+                    //Clear all buffs
+                    Player.ClearBuff(BuffType<BindingLight>());
+                    for (int d = 0; d < 20; d++)
+                    {
+                        Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-6, 6), 0, default(Color), 1.5f);
+                    }
+                    Player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
+                    SoundEngine.PlaySound(SoundID.Shatter, Player.Center);
+
+                }
+            }
+
             //Aggro marker.
             if(Main.netMode != NetmodeID.SinglePlayer && !disableBossAggro)
             {
@@ -103,6 +193,12 @@ namespace StarsAbove
                 {
 
                     VagrantTeleport(npc);
+                    break;
+                }
+                if (npc.active && npc.type == NPCType<WarriorWallsNPC>() && Player.Distance(npc.Center) < 2000)
+                {
+
+                    WarriorTeleport(npc);
                     break;
                 }
                 if (npc.active && npc.type == NPCType<VagrantWallsHorizontal>() && Player.Distance(npc.Center) < 2000)
@@ -147,6 +243,9 @@ namespace StarsAbove
             nalhaunCutsceneProgress--;
             tsukiCutsceneProgress--;
             tsukiCutscene2Progress--;
+            warriorCutsceneProgress--;
+            warriorCutsceneProgress2--;
+            
             VideoDuration--;
             
             BlackAlpha = Math.Clamp(BlackAlpha, 0, 1);
@@ -215,10 +314,10 @@ namespace StarsAbove
            
         }
 
-
-
         public override void ResetEffects()
         {
+            QTEActive = false;
+
             CastTime = 0;
             CastTimeMax = 100;
 
@@ -228,26 +327,16 @@ namespace StarsAbove
             NalhaunBarActive = false;
             VagrantBarActive = false;
             TsukiyomiBarActive = false;
-
+            WarriorOfLightBarActive = false;
             CastorBarActive = false;
             PolluxBarActive = false;
 
         }
-        public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-
-            BossDamageModifier(target,ref damage);
+            BossDamageModifier(target, ref modifiers);
         }
-        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-        {
-            //Main.NewText(Language.GetTextValue($"Damage Pre-Modifier: {damage}"), 60, 170, 247);
-
-            BossDamageModifier(target,ref damage);
-        }
-
-        
-
-        private void BossDamageModifier(NPC npc, ref int damage)
+        private void BossDamageModifier(NPC npc, ref NPC.HitModifiers modifiers)
         {
             if (!DisableDamageModifier)
             {
@@ -276,7 +365,7 @@ namespace StarsAbove
                     bossReductionMod = 1400;
 
                 }
-                if (npc.type == ModContent.NPCType<WarriorOfLight>())
+                if (npc.type == ModContent.NPCType<WarriorOfLightBoss>() || npc.type == ModContent.NPCType<WarriorOfLightBossFinalPhase>())
                 {
                     bossReductionMod = 1800;
 
@@ -293,21 +382,92 @@ namespace StarsAbove
                 }
                 if (bossReductionMod > 0)
                 {
-                    decayRate = 0.8f;
-                    //Main.NewText(Language.GetTextValue($"Damage Pre-Modifier: {damage}"), 60, 170, 247);
 
-                    damage = (int)(damage * (1 - damageReductionAmount));
-                    stress += damage;
-                    stress *= decayRate;
-                    damageReductionAmount = (float)Math.Tanh(stress / bossReductionMod);
+                    modifiers.FinalDamage *= (1 - damageReductionAmount);
+                    
 
-                    //Main.NewText(Language.GetTextValue($"Damage: {damage}"), 120, 100, 147);
-                    //Main.NewText(Language.GetTextValue($"Stress: {stress}"), 150, 150, 247);
-                    //Main.NewText(Language.GetTextValue($"Damage Reduction: {damageReductionAmount}"), 220, 100, 247);
+                   
                 }
 
                 
             }
+        }
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if (bossReductionMod > 0)
+            {
+                decayRate = 0.8f;
+                //Main.NewText(Language.GetTextValue($"Damage Pre-Modifier: {damage}"), 60, 170, 247);
+                //Main.NewText(Language.GetTextValue($"Damage: {damage}"), 120, 100, 147);
+                //Main.NewText(Language.GetTextValue($"Stress: {stress}"), 150, 150, 247);
+                //Main.NewText(Language.GetTextValue($"Damage Reduction: {damageReductionAmount}"), 220, 100, 247);
+
+                stress += damageDone;
+                stress *= decayRate;
+                damageReductionAmount = (float)Math.Tanh(stress / bossReductionMod);
+
+            }
+        }
+        private void WarriorTeleport(NPC npc)
+        {
+            if (Player.whoAmI == Main.myPlayer)
+            {
+                int halfWidth = WarriorWallsNPC.arenaWidth / 2;
+                int halfHeight = WarriorWallsNPC.arenaHeight / 2;
+                Vector2 newPosition = Player.position;
+                if (Player.position.X <= npc.Center.X - halfWidth)//Left wall
+                {
+                    newPosition.X = npc.Center.X - halfWidth - Player.width - 1;
+                    Player.velocity = new Vector2(20, Player.velocity.Y);
+                    // if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("1"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.X -= 16f;
+
+                    }
+                }
+                else if (Player.position.X + Player.width >= npc.Center.X + halfWidth)//Right Wall
+                {
+                    newPosition.X = npc.Center.X + halfWidth + 1;
+                    Player.velocity = new Vector2(-20, Player.velocity.Y);
+                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("2"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.X += 16f;
+
+                    }
+                }
+                else if (Player.position.Y <= npc.Center.Y - halfHeight)//Top
+                {
+                    newPosition.Y = npc.Center.Y - halfHeight - Player.height - 1;
+                    Player.velocity = new Vector2(Player.velocity.X, 20);
+                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("3"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.Y -= 16f;
+
+                    }
+                }
+                else if (Player.position.Y + Player.height >= npc.Center.Y + halfHeight)//Bottom
+                {
+                    newPosition.Y = npc.Center.Y + halfHeight + 1;
+                    Player.velocity = new Vector2(Player.velocity.X, -20);
+                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("4"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+
+                        newPosition.Y += 16f;
+                    }
+                }
+                if (newPosition != Player.position)
+                {
+                    //player.Teleport(newPosition, 1, 0);
+                    //NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
+
+
+                }
+            }
+
         }
         private void VagrantTeleport(NPC npc)
         {
@@ -351,7 +511,7 @@ namespace StarsAbove
                 if (newPosition != Player.position)
                 {
                     Player.Teleport(newPosition, 1, 0);
-                    NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, Player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
+                    NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, Player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
 
                 }
             }
@@ -398,7 +558,7 @@ namespace StarsAbove
                 if (newPosition != Player.position)
                 {
                     Player.Teleport(newPosition, 1, 0);
-                    NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, Player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
+                    NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, Player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
 
                 }
             }
@@ -445,7 +605,7 @@ namespace StarsAbove
                 if (newPosition != Player.position)
                 {
                     Player.Teleport(newPosition, 1, 0);
-                    NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, Player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
+                    NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, Player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
 
                 }
             }
@@ -641,7 +801,7 @@ namespace StarsAbove
                 {
                     Player.AddBuff(BuffType<Invincibility>(), 10);
                     Player.Teleport(newPosition, 1, 0);
-                    NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, Player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
+                    NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, Player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
 
                 }
             }

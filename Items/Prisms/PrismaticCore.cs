@@ -11,11 +11,11 @@ namespace StarsAbove.Items.Prisms
     public class PrismaticCore : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Prismatic Core");
-			Tooltip.SetDefault("A shimmering catalyst from beyond the rift" +
+			// DisplayName.SetDefault("Prismatic Core");
+			/* Tooltip.SetDefault("A shimmering catalyst from beyond the rift" +
 				"\nUtilized in spatial crafting, or can be sold at a high price at shops" +
 				"\n[c/FF0D5D:Used to craft Stellar Nova upgrades]" +
-				"");
+				""); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 15;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;

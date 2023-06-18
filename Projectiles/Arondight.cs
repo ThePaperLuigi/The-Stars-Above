@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles
     public class Arondight : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Hollowheart Albion");     //The English name of the projectile
+			// DisplayName.SetDefault("Hollowheart Albion");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode
 		}

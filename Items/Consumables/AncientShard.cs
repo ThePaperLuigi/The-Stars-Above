@@ -13,12 +13,12 @@ namespace StarsAbove.Items.Consumables
     public class AncientShard : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("The Ancient Crown");
-			Tooltip.SetDefault("This crown howls with power" +
+			// DisplayName.SetDefault("The Ancient Crown");
+			/* Tooltip.SetDefault("This crown howls with power" +
 				"\n[c/F1AF42:Summons Nalhaun, the Burnished King]" +
 				"\nThis boss is available early, but you may find it much too difficult" +
 				"\nPrepare accordingly, and consider postponing this fight until you are stronger" +
-				"\nIs not consumed upon use");
+				"\nIs not consumed upon use"); */
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -63,7 +63,7 @@ namespace StarsAbove.Items.Consumables
 				{
 					// If the player is in multiplayer, request a spawn
 					
-					NetMessage.SendData(MessageID.SpawnBoss, number: player.whoAmI, number2: type);
+					NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: type);
 				}
 			}
 			

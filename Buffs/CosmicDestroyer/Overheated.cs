@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.CosmicDestroyer
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Overheated");
-            Description.SetDefault("");
+            // DisplayName.SetDefault("Overheated");
+            // Description.SetDefault("");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

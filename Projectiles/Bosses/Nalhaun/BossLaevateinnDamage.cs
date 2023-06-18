@@ -6,7 +6,7 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
     public class BossLaevateinnDamage : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Ars Laevateinn");
+			// DisplayName.SetDefault("Ars Laevateinn");
 			
 		}
 

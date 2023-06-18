@@ -14,7 +14,7 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("" +
+			/* Tooltip.SetDefault("" +
 				"Holding this weapon will conjure a friendly [c/F1D671:Starchild]" +
 				"\nYour defense is directly added to the [c/F1D671:Starchild]'s contact damage" +
 				"\nWhen the [c/F1D671:Starchild] deals damage to foes, there is a small chance that a [c/71F1CA:Star Bit] will appear" +
@@ -27,7 +27,7 @@ namespace StarsAbove.Items
 				"\n[c/35EC43:Green Star Bits] have a 30% chance to crit" +
 				"\n[c/3596EC:Blue Star Bits] restore 10 Mana upon contact with an enemy" +
 				"\n[c/9E35EC:Purple Star Bits] inflict Starblight for 4 seconds" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -88,7 +88,7 @@ namespace StarsAbove.Items
 			}
 			base.HoldItem(player);
 		}
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			// 
 			// 60 frames = 1 second

@@ -9,9 +9,9 @@ namespace StarsAbove.Items.Materials
     public class EnigmaticDust : ModItem
 	{
 		public override void SetStaticDefaults() {
-			Tooltip.SetDefault("The residue of a mysterious individual" +
+			/* Tooltip.SetDefault("The residue of a mysterious individual" +
 				"\n" +
-				"\n");
+				"\n"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 5;
 
 			Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(10, 8));

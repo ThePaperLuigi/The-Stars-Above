@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.Manifestation
     public class ManifestationSwordSlash1 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Manifestation");     //The English name of the projectile
+			// DisplayName.SetDefault("Manifestation");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode
 			//DrawOffsetX = 40;
@@ -102,7 +102,7 @@ namespace StarsAbove.Projectiles.Manifestation
 			
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			
 		}

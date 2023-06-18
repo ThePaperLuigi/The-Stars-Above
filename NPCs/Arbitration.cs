@@ -21,7 +21,7 @@ namespace StarsAbove.NPCs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Arbitration");
+            // DisplayName.SetDefault("Arbitration");
             NPCID.Sets.MPAllowedEnemies[NPC.type] = true;
             // By default enemies gain health and attack if hardmode is reached. this NPC should not be affected by that
             NPCID.Sets.DontDoHardmodeScaling[Type] = true;
@@ -238,7 +238,7 @@ namespace StarsAbove.NPCs
             // if (isSwinging)
 
         }
-        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */
         {
             NPC.defense += numPlayers * 10;
         }

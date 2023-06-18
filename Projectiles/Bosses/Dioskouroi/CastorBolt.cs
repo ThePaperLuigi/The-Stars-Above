@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.Bosses.Dioskouroi
     public class CastorBolt : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Blazing Blast");     //The English name of the projectile
+			// DisplayName.SetDefault("Blazing Blast");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 50;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
 		}
@@ -56,20 +56,20 @@ namespace StarsAbove.Projectiles.Bosses.Dioskouroi
 
 
 		}
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
 			if (target.type == ModContent.NPCType<NPCs.Dioskouroi.CastorBoss>())
 			{
-				damage = 0;
+				modifiers.FinalDamage *= 0;
 			}
 			if (target.type == ModContent.NPCType<NPCs.Dioskouroi.PolluxBoss>())
 			{
-				damage *= 3;
-				crit = true;
+				modifiers.FinalDamage *= 3;
+				modifiers.SetCrit();
 			}
 
 		}
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
 			if (target.GetModPlayer<BossPlayer>().temperatureGaugeHot > 0)
 			{
@@ -77,7 +77,6 @@ namespace StarsAbove.Projectiles.Bosses.Dioskouroi
 
 			}
 			target.AddBuff(BuffID.OnFire, 60);
-            base.OnHitPlayer(target, damage, crit);
         }
     }
 }

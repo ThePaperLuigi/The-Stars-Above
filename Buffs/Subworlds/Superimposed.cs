@@ -7,11 +7,11 @@ namespace StarsAbove.Buffs.Subworlds
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("[c/3B9FE4:Cosmic Voyager]");
-            Description.SetDefault("Corporeal body is transposed into the sea of stars" +
+            // DisplayName.SetDefault("[c/3B9FE4:Cosmic Voyager]");
+            /* Description.SetDefault("Corporeal body is transposed into the sea of stars" +
                 "\nThe following actions have been restricted:" +
                 "\nBuilding, mining, mounts, explosives, flying, and the Rod of Discord" +
-                "\nAbilities that scale with modded world progression have reverted to initial values");
+                "\nAbilities that scale with modded world progression have reverted to initial values"); */
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
 

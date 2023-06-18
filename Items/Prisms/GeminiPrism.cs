@@ -8,13 +8,13 @@ namespace StarsAbove.Items.Prisms
     public class GeminiPrism : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Gemini Prism");
-			Tooltip.SetDefault("[c/FF5934:Tier 2 Stellar Prism]" +
+			// DisplayName.SetDefault("Gemini Prism");
+			/* Tooltip.SetDefault("[c/FF5934:Tier 2 Stellar Prism]" +
 				"\nAffix to a Stellar Nova to gain the following ability:" +
 				"\n[c/40F1FF:Twin][c/FF4040:cast]" +
 				"\nUpon use of the Stellar Nova, gain 50% of the Stellar Nova Gauge back after 5 seconds (2 minute cooldown)"+
 				"\n" + //0
-				"");
+				""); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;

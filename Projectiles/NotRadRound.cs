@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles
     public class NotRadRound : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Rad Gun");     //The English name of the projectile
+			// DisplayName.SetDefault("Rad Gun");     //The English name of the projectile
 			
 		}
 

@@ -48,7 +48,7 @@ namespace StarsAbove.UI
 			Backing.VAlign = 0.50f;
 
 			Choice1 = new UIImageButton(Request<Texture2D>("StarsAbove/UI/BlackSilenceGauge/Box"));//Red
-			Choice1.OnClick += Choice1Click;
+			Choice1.OnLeftClick += Choice1Click;
 			Choice1.Width.Set(144, 0f);
 			Choice1.Height.Set(135, 0f);
 			Choice1.HAlign = 0f;
@@ -56,14 +56,14 @@ namespace StarsAbove.UI
 			//Choice2.Top.Set(52, 0f);//
 
 			Choice2 = new UIImageButton(Request<Texture2D>("StarsAbove/UI/BlackSilenceGauge/Box"));//Blue
-			Choice2.OnClick += Choice2Click;
+			Choice2.OnLeftClick += Choice2Click;
 			Choice2.Width.Set(144, 0f);
 			Choice2.Height.Set(135, 0f);
 			Choice2.HAlign = 0.50f;
 			Choice2.VAlign = 0.50f;
 
 			Choice3 = new UIImageButton(Request<Texture2D>("StarsAbove/UI/BlackSilenceGauge/Box"));//Yellow
-			Choice3.OnClick += Choice3Click;
+			Choice3.OnLeftClick += Choice3Click;
 			Choice3.Width.Set(144, 0f);
 			Choice3.Height.Set(135, 0f);
 			Choice3.HAlign = 1f;

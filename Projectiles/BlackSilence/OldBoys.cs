@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.BlackSilence
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gloves of the Black Silence");
+			// DisplayName.SetDefault("Gloves of the Black Silence");
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 70;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
 		}
@@ -114,13 +114,13 @@ namespace StarsAbove.Projectiles.BlackSilence
 
 		}
 
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 			if(target.life < target.lifeMax/2)
             {
-				damage *= 2;
+				modifiers.SourceDamage += 0.5f;
             }
-            base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
+             
         }
     }
 

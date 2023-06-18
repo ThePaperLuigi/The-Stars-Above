@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.SkyStrikerBuffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Aerial Forme: Close Combat");
-            Description.SetDefault("");
+            // DisplayName.SetDefault("Aerial Forme: Close Combat");
+            // Description.SetDefault("");
             Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

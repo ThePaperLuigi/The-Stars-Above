@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Binary Magnitude");
-            Description.SetDefault("The radiance of the twin stars is empowered");
+            // DisplayName.SetDefault("Binary Magnitude");
+            // Description.SetDefault("The radiance of the twin stars is empowered");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

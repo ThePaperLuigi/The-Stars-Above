@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.EternalStar
     public class EternalStarburst : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Eternal Star");
+			// DisplayName.SetDefault("Eternal Star");
 			
 		}
 

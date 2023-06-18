@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
     public class TsukiTentacle3 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Takonomicon");
+			// DisplayName.SetDefault("Takonomicon");
 
 		}
 
@@ -73,7 +73,7 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 
 
 		}
-        public override void OnHitPlayer(Player target, int damage, bool crit)
+        public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
 			for (int d = 0; d < 8; d++)
 			{
@@ -81,7 +81,7 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 
 			}
 			target.AddBuff(BuffID.ShadowFlame, 420);
-			base.OnHitPlayer(target, damage, crit);
+			 
         }
       
 	}

@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.Pets
     public class MumeiPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Guardian of Civilization");
-			Description.SetDefault($"She forgor");
+			// DisplayName.SetDefault("Guardian of Civilization");
+			// Description.SetDefault($"She forgor");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}

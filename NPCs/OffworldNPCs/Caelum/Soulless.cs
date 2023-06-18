@@ -13,7 +13,7 @@ namespace StarsAbove.NPCs.OffworldNPCs.Caelum
     public class Soulless : ModNPC
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Soulless");
+			// DisplayName.SetDefault("Soulless");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.Ghost];
 			NPCID.Sets.MPAllowedEnemies[NPC.type] = true;
 			NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
@@ -70,7 +70,7 @@ namespace StarsAbove.NPCs.OffworldNPCs.Caelum
 			
 			base.AI();
 		}
-		public override void HitEffect(int hitDirection, double damage) {
+		public override void HitEffect(NPC.HitInfo hit) {
 			for (int i = 0; i < 10; i++) {
 				int dustType = DustID.Ghost;
 				int dustIndex = Dust.NewDust(NPC.position, NPC.width, NPC.height, dustType);

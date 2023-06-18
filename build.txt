@@ -1,7 +1,6 @@
 displayName = [c/EC1B9D:The Stars Above]
 author = PaperLuigi
-version = 1.4.5.0
-modReferences = SubworldLibrary
-dllReferences = StructureHelper
+version = 1.4.6.2
+modReferences = SubworldLibrary, StructureHelper
 homepage = https://discord.gg/kFURRZZszD
 buildIgnore = .gitignore, *.sln, *.csproj, *.user, obj\*, bin\*, .vs\*, Properties\*, .git\*

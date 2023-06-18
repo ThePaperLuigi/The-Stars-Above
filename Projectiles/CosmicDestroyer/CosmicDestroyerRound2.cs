@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.CosmicDestroyer
     public class CosmicDestroyerRound2 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Cosmic Destroyer");     //The English name of the projectile
+			// DisplayName.SetDefault("Cosmic Destroyer");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 70;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode
 

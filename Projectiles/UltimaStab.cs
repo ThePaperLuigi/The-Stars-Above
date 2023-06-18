@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles
     public class UltimaStab : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Ultima Thule");
+			// DisplayName.SetDefault("Ultima Thule");
 
 		}
 

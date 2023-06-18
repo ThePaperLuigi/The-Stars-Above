@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.BurningDesire
     public class BoilingBurstPrep1 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Burning Desire");     //The English name of the projectile
+			// DisplayName.SetDefault("Burning Desire");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 140;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode
 			Main.projFrames[Projectile.type] = 1;

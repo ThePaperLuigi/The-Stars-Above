@@ -10,9 +10,9 @@ namespace StarsAbove.Items.Materials
     public class BoltOfTrueStarsilk : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Bolt of True Starsilk");
-			Tooltip.SetDefault("Utilized to craft Starfarer Attire" +
-				"\n'Shimmers with cosmic energy'");
+			// DisplayName.SetDefault("Bolt of True Starsilk");
+			/* Tooltip.SetDefault("Utilized to craft Starfarer Attire" +
+				"\n'Shimmers with cosmic energy'"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;

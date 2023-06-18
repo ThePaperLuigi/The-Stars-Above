@@ -6,7 +6,7 @@ namespace StarsAbove.Projectiles.ArachnidNeedlepoint
     public class SpiderDamage : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Arachnid Needlepoint");
+			// DisplayName.SetDefault("Arachnid Needlepoint");
 			
 		}
 

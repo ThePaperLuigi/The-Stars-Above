@@ -9,14 +9,14 @@ namespace StarsAbove.Items.Placeable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Music Box (The Warrior of Light - 1st Phase)");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Music Box (The Warrior of Light - 1st Phase)");
+			/* Tooltip.SetDefault("" +
 				"'To The Edge' - FFXIV Shadowbringers OST" +
 				"\nComposed by Masayoshi Soken"
-				+ $"\n");
+				+ $"\n"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
-			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/ToTheEdge"),
+			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Boss/WarriorOfLight/ToTheEdge"),
 				ModContent.ItemType<ToTheEdgeMusicBox>(),
 				ModContent.TileType<Tiles.ToTheEdgeMusicBox>());
 		}

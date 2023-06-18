@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.SparkblossomBeacon
     public class FleetingSparkBullet : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Sparkblossom's Beacon");     //The English name of the projectile
+			// DisplayName.SetDefault("Sparkblossom's Beacon");     //The English name of the projectile
 			Main.projFrames[Projectile.type] = 4;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 40;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode
@@ -131,14 +131,14 @@ namespace StarsAbove.Projectiles.SparkblossomBeacon
 
 			return true;
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 			for (int d = 0; d < 8; d++)
 			{
 				Dust.NewDust(target.Center, 0, 0, 92, Main.rand.NextFloat(-5, 5), Main.rand.NextFloat(-5, 5), 150, default(Color), 0.4f);
 
 			}
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
         }
         public override void Kill(int timeLeft)
 		{

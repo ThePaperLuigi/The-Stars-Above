@@ -22,8 +22,8 @@ namespace StarsAbove.Items
     public class AdornmentOfTheChaoticGod : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Adornment of the Chaotic God");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Adornment of the Chaotic God");
+			/* Tooltip.SetDefault("" +
 				"Summons an [c/6DE552:Adornment Manifest] to assail your foes (Only one can be summoned at a time)" +
 				"\nThe [c/6DE552:Adornment Manifest] will fire magical [c/CAF5C1:Chaos Bolts] with unpredictable effects" +
                 "\nAdditionally, other random objects may be fired on occasion" +
@@ -33,7 +33,7 @@ namespace StarsAbove.Items
                 "\n10% chance to apply all positive effects at the same time for half the duration" +
 				"\nFire rate increases slightly based on the amount of minions summoned" +
 				"\n'Chaos can giveth, and chaos can taketh'"
-				+ $"");
+				+ $""); */
 
 			ItemID.Sets.GamepadWholeScreenUseRange[Item.type] = true;
 			ItemID.Sets.LockOnIgnoresCollision[Item.type] = true;

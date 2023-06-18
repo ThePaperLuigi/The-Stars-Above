@@ -10,10 +10,10 @@ namespace StarsAbove.Items.Pets
     public class GhostPet : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Furturistic Spectre");
-			Tooltip.SetDefault("Summons a mysterious ghost" +
+			// DisplayName.SetDefault("Furturistic Spectre");
+			/* Tooltip.SetDefault("Summons a mysterious ghost" +
 				"\nTriggers a sound upon your death" +
-                "");
+                ""); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

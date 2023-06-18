@@ -8,13 +8,13 @@ namespace StarsAbove.Items.Prisms
     public class LightswornPrism : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Lightsworn Prism");
-			Tooltip.SetDefault("[c/FF5934:Tier 2 Stellar Prism]" +
+			// DisplayName.SetDefault("Lightsworn Prism");
+			/* Tooltip.SetDefault("[c/FF5934:Tier 2 Stellar Prism]" +
 				"\nAffix to a Stellar Nova to gain the following ability:" +
 				"\n[c/FFCF4F:The Flood of Light]" +
 				"\nUpon cast of the Stellar Nova, gain 'Lightblessed', increasing defenses by 30" +
 				"\nLightblessed lasts for 8 seconds" + //0
-				"");
+				""); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;

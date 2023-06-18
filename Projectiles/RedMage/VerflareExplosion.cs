@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.RedMage
     public class VerflareExplosion : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Verflare");
+			// DisplayName.SetDefault("Verflare");
 			
 		}
 

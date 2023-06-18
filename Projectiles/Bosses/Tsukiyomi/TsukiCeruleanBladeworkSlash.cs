@@ -14,7 +14,7 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
     public class TsukiCeruleanBladeworkSlash : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Shadowless Cerulean");
+			// DisplayName.SetDefault("Shadowless Cerulean");
 			Main.projFrames[Projectile.type] = 4;
 			
 		}

@@ -14,8 +14,8 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Hunter's Symphony");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Hunter's Symphony");
+			/* Tooltip.SetDefault("" +
 				"Attacks with this weapon will sweep in an arc" +
                 "\nMana regeneration is increased when not actively attacking" +
 				"\nRight click while holding directional keys to play [c/72D16A:Hunter's Melodies] (20 second cooldown)" +
@@ -27,7 +27,7 @@ namespace StarsAbove.Items
 				"\nAfter 3 [c/72D16A:Hunter's Melodies], right click to unleash [c/941818:Infernal Melody]" +
 				"\n[c/941818:Infernal Melody] grants 20% increased damage to yourself and all nearby allies for 6 seconds" +
 				"" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -104,7 +104,7 @@ namespace StarsAbove.Items
 			
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 
 			

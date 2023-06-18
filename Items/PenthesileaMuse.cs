@@ -15,8 +15,8 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Penthesilea's Muse");
-			Tooltip.SetDefault("" +
+			// DisplayName.SetDefault("Penthesilea's Muse");
+			/* Tooltip.SetDefault("" +
 				"Attacks with this weapon will sweep in a wide arc" +
 				"\nEvery 15 seconds, the nearest boss enemy will be [c/E83D71:Inked] and will drip paint according to a specific color" +
 				"\nRight click to view all [c/889FCA:Mystic Pigments]" +
@@ -29,7 +29,7 @@ namespace StarsAbove.Items
 				"\n[c/E4CE55:Yellow Pigment] inflicts Midas / [c/9E35EC:Purple Pigment] inflicts Acid Venom" +
 				//"\nSwapping [c/889FCA:Mystic Pigments] has a 1/3rd second cooldown" +
 				"" +
-				$"");  //The (English) text shown below your weapon's name
+				$""); */  //The (English) text shown below your weapon's name
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -126,7 +126,7 @@ namespace StarsAbove.Items
 			
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 
 			

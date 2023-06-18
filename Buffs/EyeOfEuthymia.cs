@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Eye of Euthymia");
-            Description.SetDefault("The vision of lightning is with you");
+            // DisplayName.SetDefault("Eye of Euthymia");
+            // Description.SetDefault("The vision of lightning is with you");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

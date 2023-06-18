@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
     public class Lightblast : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Lightblast");
+			// DisplayName.SetDefault("Lightblast");
 			
 			Main.projFrames[Projectile.type] = 11;
 		}
@@ -43,11 +43,11 @@ namespace StarsAbove.Projectiles
 		}
 
         // It appears that for this AI, only the ai0 field is used!
-        public override void OnHitPlayer(Player target, int damage, bool crit)
+        public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
 			Projectile.timeLeft = 50;
 
-            base.OnHitPlayer(target, damage, crit);
+             
         }
 
 		

@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.TheOnlyThingIKnowForReal
     public class TheOnlyThingIKnowForRealSpin2 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("The Only Thing I Know For Real");
+			// DisplayName.SetDefault("The Only Thing I Know For Real");
 			//DrawOriginOffsetY = 12;
 			Main.projFrames[Projectile.type] = 8;
 

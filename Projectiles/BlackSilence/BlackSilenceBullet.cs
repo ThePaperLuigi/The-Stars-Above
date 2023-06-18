@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.BlackSilence
     public class BlackSilenceBullet : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Gloves of the Black Silence");     //The English name of the projectile
+			// DisplayName.SetDefault("Gloves of the Black Silence");     //The English name of the projectile
 			Main.projFrames[Projectile.type] = 1;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 140;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
@@ -48,11 +48,11 @@ namespace StarsAbove.Projectiles.BlackSilence
 
         }
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 			
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
         }
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{

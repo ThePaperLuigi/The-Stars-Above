@@ -8,13 +8,13 @@ namespace StarsAbove.Items.Prisms
     public class LihzahrdPrism : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Lihzahrd Prism");
-			Tooltip.SetDefault("[c/FF5934:Tier 2 Stellar Prism]" +
+			// DisplayName.SetDefault("Lihzahrd Prism");
+			/* Tooltip.SetDefault("[c/FF5934:Tier 2 Stellar Prism]" +
 				"\nAffix to a Stellar Nova to gain the following ability:" +
 				"\n[c/EE8D31:Monument of the Past]" +
 				"\nUpon cast of the Stellar Nova, gain 'Ancient Bulwark' for 8 seconds" +
 				"\nDuring this time, gain 80 Defense, but outgoing damage is reduced by 40%" + //0
-				"");
+				""); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;

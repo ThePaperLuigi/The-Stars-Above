@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Yellow Paint");
-            Description.SetDefault("You've been covered in yellow paint");
+            // DisplayName.SetDefault("Yellow Paint");
+            // Description.SetDefault("You've been covered in yellow paint");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

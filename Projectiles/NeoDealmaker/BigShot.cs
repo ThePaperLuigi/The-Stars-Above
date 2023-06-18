@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.NeoDealmaker
     public class BigShot : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Neo Dealmaker");     //The English name of the projectile
+			// DisplayName.SetDefault("Neo Dealmaker");     //The English name of the projectile
 			Main.projFrames[Projectile.type] = 1;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 40;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
@@ -46,37 +46,28 @@ namespace StarsAbove.Projectiles.NeoDealmaker
 
 			return true;
 		}
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if(!target.active)
             {
 				int k = Item.NewItem(target.GetSource_DropAsItem(),(int)target.position.X, (int)target.position.Y, target.width, target.height, ItemID.SilverCoin, 5, false);
-				if (Main.netMode == 1)
+				if (Main.netMode == NetmodeID.MultiplayerClient)
 				{
-					NetMessage.SendData(21, -1, -1, null, k, 1f);
+					NetMessage.SendData(MessageID.SyncItem, -1, -1, null, k, 1f);
 				}
 			}
-
-			base.OnHitNPC(target, damage, knockback, crit);
+			
 		}
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 			if (target.HasBuff(BuffID.Midas))
-            {
-				if(crit)
-                {
-					damage = (int)(damage * 1.25);
-				}
-				else
-                {
-					damage = (int)(damage * 1.15);
-				}
-				
-            }
-
-
-            base.ModifyHitNPC(target, ref damage, ref knockback, ref crit, ref hitDirection);
-        }
+			{
+				modifiers.CritDamage += 1.25f;
+				modifiers.NonCritDamage += 1.15f;
+					
+			}
+		}
         public override bool OnTileCollide(Vector2 oldVelocity) {
 			//If collide with tile, reduce the penetrate.
 			//So the projectile can reflect at most 5 times

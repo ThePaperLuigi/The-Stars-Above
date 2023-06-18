@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Wrathful Cerulean Flame");
-            Description.SetDefault("Attacks from Shadowless Cerulean pierce armor and crit");
+            // DisplayName.SetDefault("Wrathful Cerulean Flame");
+            // Description.SetDefault("Attacks from Shadowless Cerulean pierce armor and crit");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //
             

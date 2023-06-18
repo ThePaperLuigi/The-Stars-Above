@@ -88,8 +88,8 @@ namespace StarsAbove.Tiles.StellarFoci
             // Register the tile data itself
             TileObjectData.addTile(Type);
 
-            ModTranslation name = CreateMapEntryName();
-            name.SetDefault(LangHelper.GetTextValue("MapObject.StellarFoci"));
+            LocalizedText name = CreateMapEntryName();
+            // name.SetDefault(LangHelper.GetTextValue("MapObject.StellarFoci"));
             //AddMapEntry(new Color(0, 185, 255),  CreateMapEntryName());
         }
 
@@ -111,7 +111,7 @@ namespace StarsAbove.Tiles.StellarFoci
             if (itemType > 0)
             {
                 // Spawn the item
-                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, itemType);
+                //Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, itemType);
             }
         }
 
@@ -249,8 +249,8 @@ namespace StarsAbove.Tiles.StellarFoci
             // Register the tile data itself
             TileObjectData.addTile(Type);
 
-            ModTranslation name = CreateMapEntryName();
-            name.SetDefault(LangHelper.GetTextValue("MapObject.StellarFoci"));
+            LocalizedText name = CreateMapEntryName();
+            // name.SetDefault(LangHelper.GetTextValue("MapObject.StellarFoci"));
             //AddMapEntry(new Color(0, 185, 255),  CreateMapEntryName());
         }
 
@@ -272,7 +272,7 @@ namespace StarsAbove.Tiles.StellarFoci
             if (itemType > 0)
             {
                 // Spawn the item
-                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, itemType);
+                //Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, itemType);
             }
         }
 
@@ -409,8 +409,8 @@ namespace StarsAbove.Tiles.StellarFoci
             // Register the tile data itself
             TileObjectData.addTile(Type);
 
-            ModTranslation name = CreateMapEntryName();
-            name.SetDefault(LangHelper.GetTextValue("MapObject.StellarFoci"));
+            LocalizedText name = CreateMapEntryName();
+            // name.SetDefault(LangHelper.GetTextValue("MapObject.StellarFoci"));
             //AddMapEntry(new Color(0, 185, 255),  CreateMapEntryName());
         }
 
@@ -432,7 +432,7 @@ namespace StarsAbove.Tiles.StellarFoci
             if (itemType > 0)
             {
                 // Spawn the item
-                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, itemType);
+                //Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, itemType);
             }
         }
 

@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles
     public class ClaimhBurst : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Solais Burst");
+			// DisplayName.SetDefault("Solais Burst");
 			
 		}
 

@@ -10,9 +10,9 @@ namespace StarsAbove.Items.Pets
     public class MysticalCore : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Mystical Core");
-			Tooltip.SetDefault("Summons Phym" +
-				"");
+			// DisplayName.SetDefault("Mystical Core");
+			/* Tooltip.SetDefault("Summons Phym" +
+				""); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

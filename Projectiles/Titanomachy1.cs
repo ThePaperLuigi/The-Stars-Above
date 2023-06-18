@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
     public class Titanomachy1 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Titanomachy");
+			// DisplayName.SetDefault("Titanomachy");
 			
 		}
 

@@ -13,7 +13,7 @@ namespace StarsAbove.NPCs.Nalhaun
     public class NalhaunPhase2WallsNPC : ModNPC
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault(" ");
+			// DisplayName.SetDefault(" ");
 			
 			NPCID.Sets.MPAllowedEnemies[NPC.type] = true;
 			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
@@ -96,7 +96,7 @@ namespace StarsAbove.NPCs.Nalhaun
 			}
 		}
 
-		public override void HitEffect(int hitDirection, double damage) {
+		public override void HitEffect(NPC.HitInfo hit) {
 			
 		}
 	}

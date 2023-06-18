@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
     public class ShadowbladeDamage : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Shadowblade");
+			// DisplayName.SetDefault("Shadowblade");
 			
 		}
 

@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.BlackSilence
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Black Silence: Old Boys");
-            Description.SetDefault("Gain 20 defense");
+            // DisplayName.SetDefault("Black Silence: Old Boys");
+            // Description.SetDefault("Gain 20 defense");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

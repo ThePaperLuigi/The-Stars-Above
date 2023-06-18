@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.Tsukiyomi
     public class TsukiyomiSlash : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Tsukiyomi's blade");
+			// DisplayName.SetDefault("Tsukiyomi's blade");
 			DrawOriginOffsetY = -200;
 			DrawOffsetX =48;
 			Main.projFrames[Projectile.type] = 4;

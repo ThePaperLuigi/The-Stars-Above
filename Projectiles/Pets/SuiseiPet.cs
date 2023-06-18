@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.Pets
 		{
 			//
 			//
-			DisplayName.SetDefault("Suisei"); // Automatic from .lang files
+			// DisplayName.SetDefault("Suisei"); // Automatic from .lang files
 			Main.projFrames[Projectile.type] = 13;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 70;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;

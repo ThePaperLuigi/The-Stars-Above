@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.Pets
     public class LukaPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Electronic Vocalist");
-			Description.SetDefault("An electronic vocalist is following you");
+			// DisplayName.SetDefault("Electronic Vocalist");
+			// Description.SetDefault("An electronic vocalist is following you");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}

@@ -9,7 +9,7 @@ namespace StarsAbove.NPCs
     public class DummyEnemy : ModNPC
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Dummy Enemy");
+			// DisplayName.SetDefault("Dummy Enemy");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.Zombie];
 			NPCID.Sets.MPAllowedEnemies[NPC.type] = true;
 			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
@@ -41,7 +41,7 @@ namespace StarsAbove.NPCs
 			NPC.velocity = Vector2.Zero;
 			base.AI();
 		}
-		public override void HitEffect(int hitDirection, double damage) {
+		public override void HitEffect(NPC.HitInfo hit) {
 			
 		}
 	}

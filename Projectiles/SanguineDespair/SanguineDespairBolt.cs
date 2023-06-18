@@ -12,7 +12,7 @@ namespace StarsAbove.Projectiles.SanguineDespair
     public class SanguineDespairBolt : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Sanguine Despair");     //The English name of the projectile
+			// DisplayName.SetDefault("Sanguine Despair");     //The English name of the projectile
 			Main.projFrames[Projectile.type] = 1;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 50;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
@@ -117,11 +117,11 @@ namespace StarsAbove.Projectiles.SanguineDespair
 
         }
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 			Player projOwner = Main.player[Projectile.owner];
 			projOwner.GetModPlayer<WeaponPlayer>().renegadeGauge++;
-			if(crit)
+			if(hit.Crit)
             {
 				projOwner.GetModPlayer<WeaponPlayer>().renegadeGauge++;
 			}
@@ -134,7 +134,7 @@ namespace StarsAbove.Projectiles.SanguineDespair
 				projOwner.GetModPlayer<WeaponPlayer>().renegadeGauge = 100;
 			}
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
         }
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
@@ -143,20 +143,12 @@ namespace StarsAbove.Projectiles.SanguineDespair
 			return false;
 		}
 
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 			if(target.HasBuff(BuffType<MortalWounds>()))
             {
-				if(crit)
-                {
-					damage = (int)(damage * 1.3f);
-
-				}
-				else
-                {
-					damage = (int)(damage * 1.1f);
-
-				}
+				modifiers.CritDamage += 0.3f;
+				modifiers.NonCritDamage += 0.1f;
 			}
 			for (int d = 0; d < 18; d++)
 			{

@@ -17,7 +17,7 @@ namespace StarsAbove.Projectiles.RupturedHeaven
         public override void SetStaticDefaults()
         {
             //The Whip Projectile file
-            DisplayName.SetDefault("Ruptured Heaven");
+            // DisplayName.SetDefault("Ruptured Heaven");
         }
         public override void SetDefaults()
         {
@@ -44,10 +44,14 @@ namespace StarsAbove.Projectiles.RupturedHeaven
         protected int tag = 12;
         protected float tipScale = 1f;
         protected float fallOff = 0.3f;
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            damage = (int)(damage * 0.8);
-            if (crit)
+            modifiers.SourceDamage *= 0.8f;
+            
+        }
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if (hit.Crit)
             {
                 for (int i = 0; i < Main.maxPlayers; i++)
                 {
@@ -68,9 +72,6 @@ namespace StarsAbove.Projectiles.RupturedHeaven
                 }
 
             }
-        }
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
             Projectile.damage = (int)(Projectile.damage * (1f - fallOff));
             if (tag != -1)
             {

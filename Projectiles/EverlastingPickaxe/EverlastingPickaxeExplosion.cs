@@ -12,7 +12,7 @@ namespace StarsAbove.Projectiles.EverlastingPickaxe
     public class EverlastingPickaxeExplosion : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("The Everlasting Pickaxe");
+			// DisplayName.SetDefault("The Everlasting Pickaxe");
 			
 		}
 
@@ -150,7 +150,7 @@ namespace StarsAbove.Projectiles.EverlastingPickaxe
 									WorldGen.KillTile(i, j, false, false, false);
 									if (!Main.tile[i, j].HasTile && Main.netMode != NetmodeID.SinglePlayer)
 									{
-										NetMessage.SendData(MessageID.TileChange, -1, -1, null, 0, (float)i, (float)j, 0f, 0, 0, 0);
+										NetMessage.SendData(MessageID.TileManipulation, -1, -1, null, 0, (float)i, (float)j, 0f, 0, 0, 0);
 									}
 								}
 							}
@@ -165,7 +165,7 @@ namespace StarsAbove.Projectiles.EverlastingPickaxe
 											WorldGen.KillWall(x, y, false);
 											if (Main.tile[x, y].WallType == 0 && Main.netMode != NetmodeID.SinglePlayer)
 											{
-												NetMessage.SendData(MessageID.TileChange, -1, -1, null, 2, (float)x, (float)y, 0f, 0, 0, 0);
+												NetMessage.SendData(MessageID.TileManipulation, -1, -1, null, 2, (float)x, (float)y, 0f, 0, 0, 0);
 											}
 										}
 									}
@@ -178,14 +178,14 @@ namespace StarsAbove.Projectiles.EverlastingPickaxe
 			}
 			base.Kill(timeLeft);
         }
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 
 			
 			
         }
 
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 
 			target.AddBuff(BuffID.OnFire, 240);

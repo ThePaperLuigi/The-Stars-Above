@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles
     public class PhantomMarker : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Phantom In The Mirror");
+			// DisplayName.SetDefault("Phantom In The Mirror");
 			
 		}
 

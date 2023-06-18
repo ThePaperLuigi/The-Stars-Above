@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Theofania Tricast");
-            Description.SetDefault("You are able to cast Theofania Inanis yet again without cost at limited power");
+            // DisplayName.SetDefault("Theofania Tricast");
+            // Description.SetDefault("You are able to cast Theofania Inanis yet again without cost at limited power");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //
         }

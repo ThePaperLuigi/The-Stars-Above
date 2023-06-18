@@ -14,7 +14,7 @@ namespace StarsAbove.Items
     public class CosmicDestroyer : ModItem
 	{
 		public override void SetStaticDefaults() {
-			Tooltip.SetDefault("[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty]" +
+			/* Tooltip.SetDefault("[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty]" +
 				"\nFires a barrage of hyperpowered energy bolts" +
 				"\nStriking foes will increment the [c/00B7FF:Magiton Gauge]" +
 				"\nOnce the [c/00B7FF:Magiton Gauge] is full, right click to activate [c/FE3727:Magiton Overheat] for 8 seconds" +
@@ -22,7 +22,7 @@ namespace StarsAbove.Items
 				"\n[c/CF1E1E:Magiton Shots] deal 3x base damage and will be critical strikes against foes below 50% HP" +
 				"\nOnce [c/FE3727:Magiton Overheat] is either fully consumed or ends, you are inflicted with [c/A56363:Overheated] for 1 second, causing this weapon to become unusable" +
 				"\n'This isn't... something you see everyday'" +
-				$"");
+				$""); */
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

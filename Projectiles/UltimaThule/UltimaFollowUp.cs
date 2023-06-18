@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.UltimaThule
     public class UltimaFollowUp : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Ultima Thule Follow-Up");
+			// DisplayName.SetDefault("Ultima Thule Follow-Up");
 			//DrawOriginOffsetY = -150;
 			//DrawOffsetX = 20;
 			Main.projFrames[Projectile.type] = 5;

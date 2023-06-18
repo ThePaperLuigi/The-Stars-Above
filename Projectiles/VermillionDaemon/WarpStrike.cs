@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.VermillionDaemon
     public class WarpStrike : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Vermillion Daemon");     //The English name of the projectile
+			// DisplayName.SetDefault("Vermillion Daemon");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode
 		}
@@ -56,7 +56,7 @@ namespace StarsAbove.Projectiles.VermillionDaemon
 
 			base.AI();
         }
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 			Player player = Main.player[Projectile.owner];
 			player.AddBuff(BuffType<Invincibility>(), 20);
@@ -77,11 +77,11 @@ namespace StarsAbove.Projectiles.VermillionDaemon
 			}
 			player.Teleport(new Vector2(Projectile.Center.X, Projectile.Center.Y - 10), 1, 0);
 			
-			NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, (float)player.whoAmI, Projectile.Center.X, Projectile.Center.Y - 10, 1, 0, 0);
+			NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float)player.whoAmI, Projectile.Center.X, Projectile.Center.Y - 10, 1, 0, 0);
 			Projectile.Kill();
 
 
-			base.OnHitNPC(target, damage, knockback, crit);
+			 
         }
         public override bool OnTileCollide(Vector2 oldVelocity) {
 			
@@ -97,7 +97,7 @@ namespace StarsAbove.Projectiles.VermillionDaemon
 
 			}
 			player.Teleport(new Vector2(Projectile.Center.X, Projectile.Center.Y - 10), 1, 0);
-			NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, (float)player.whoAmI, Projectile.Center.X, Projectile.Center.Y - 10, 1, 0, 0);
+			NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float)player.whoAmI, Projectile.Center.X, Projectile.Center.Y - 10, 1, 0, 0);
 			Projectile.Kill();
 			
 

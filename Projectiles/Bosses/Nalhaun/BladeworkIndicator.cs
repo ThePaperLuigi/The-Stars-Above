@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 	public class BladeworkIndicator : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Burnished Bladework");     //The English name of the projectile
+			// DisplayName.SetDefault("Burnished Bladework");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode
 		}

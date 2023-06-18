@@ -725,25 +725,25 @@ namespace StarsAbove
 			}
 		}
 
-		public override bool StrikeNPC(NPC npc, ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
+		public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers)
 		{
-			return base.StrikeNPC(npc, ref damage, defense, ref knockback, hitDirection, ref crit);
+
 		}
-        public override void OnHitNPC(NPC npc, NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC npc, NPC target, NPC.HitInfo hit)
         {
 
 
         }
-        public override void OnHitByItem(NPC npc, Player player, Item item, int damage, float knockback, bool crit)
+        public override void OnHitByItem(NPC npc, Player player, Item item, NPC.HitInfo hit, int damageDone)
         {
 			
 
         }
-        public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
         {
             if (npc.HasBuff<NalhaunSword>())
             {
-                damage *= 2;
+				modifiers.FinalDamage += 1f;
             }
 
            
@@ -752,11 +752,11 @@ namespace StarsAbove
 
         
 
-        public override void ModifyHitByItem(NPC npc, Player player, Item item, ref int damage, ref float knockback, ref bool crit)
+        public override void ModifyHitByItem(NPC npc, Player player, Item item, ref NPC.HitModifiers modifiers)
         {
 			if(npc.HasBuff<NalhaunSword>())
             {
-				damage *= 2;
+				modifiers.SourceDamage += 1f;
             }
 
 			

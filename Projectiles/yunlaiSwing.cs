@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Yunlai Stiletto");
+			// DisplayName.SetDefault("Yunlai Stiletto");
 			Main.projFrames[Projectile.type] = 6;
 		}
 		public override void SetDefaults()

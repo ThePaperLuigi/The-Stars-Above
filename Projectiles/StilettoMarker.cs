@@ -6,7 +6,7 @@ namespace StarsAbove.Projectiles
     public class StilettoMarker : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Yunlai Stiletto");
+			// DisplayName.SetDefault("Yunlai Stiletto");
 			
 		}
 

@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.Pets
 		{
 			
 			//DrawOffsetX = -20;
-			DisplayName.SetDefault("Biyomon"); // Automatic from .lang files
+			// DisplayName.SetDefault("Biyomon"); // Automatic from .lang files
 			Main.projFrames[Projectile.type] = 13;
 			
 			Main.projPet[Projectile.type] = true;

@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.TheOnlyThingIKnowForReal
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Impact Recoil");
-            Description.SetDefault("Guntrigger Execution has halved damage");
+            // DisplayName.SetDefault("Impact Recoil");
+            // Description.SetDefault("Guntrigger Execution has halved damage");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
     public class TsukiBloodshedSheathe : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("The Only Thing I Know For Real");
+			// DisplayName.SetDefault("The Only Thing I Know For Real");
 			Main.projFrames[Projectile.type] = 13;
 
 			//DrawOriginOffsetY = -40;

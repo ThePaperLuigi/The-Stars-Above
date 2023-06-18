@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs
     public class KasumiPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Starry-Eyed Idol");
-			Description.SetDefault("A starry-eyed idol is following you");
+			// DisplayName.SetDefault("Starry-Eyed Idol");
+			// Description.SetDefault("A starry-eyed idol is following you");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}

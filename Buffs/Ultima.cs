@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Edge of the Universe");
-            Description.SetDefault("Blade in hand, etched in fate");
+            // DisplayName.SetDefault("Edge of the Universe");
+            // Description.SetDefault("Blade in hand, etched in fate");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

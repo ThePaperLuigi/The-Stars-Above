@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Red Orb");
-            Description.SetDefault("Preparing 'Flickering Strike'");
+            // DisplayName.SetDefault("Red Orb");
+            // Description.SetDefault("Preparing 'Flickering Strike'");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

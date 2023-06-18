@@ -10,7 +10,7 @@ namespace StarsAbove.Items.Placeable
     public class InvisibleBlock : ModItem
 	{
 		public override void SetStaticDefaults() {
-			Tooltip.SetDefault("Usually invisible");
+			// Tooltip.SetDefault("Usually invisible");
 			
 
 			

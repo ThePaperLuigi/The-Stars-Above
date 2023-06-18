@@ -8,7 +8,7 @@ namespace StarsAbove.Projectiles
     public class VoidsentBurst : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Voidsent Burst");
+			// DisplayName.SetDefault("Voidsent Burst");
 			
 		}
 

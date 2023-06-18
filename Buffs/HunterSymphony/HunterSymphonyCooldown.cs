@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.HunterSymphony
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Hunter's Symphony Cooldown");
-            Description.SetDefault("Directional songs will fail to activate if this debuff is present");
+            // DisplayName.SetDefault("Hunter's Symphony Cooldown");
+            // Description.SetDefault("Directional songs will fail to activate if this debuff is present");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
             Main.persistentBuff[Type] = true;

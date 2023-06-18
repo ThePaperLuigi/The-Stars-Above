@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Leftward Chaos");
-            Description.SetDefault("When this buff expires, you will be flung left");
+            // DisplayName.SetDefault("Leftward Chaos");
+            // Description.SetDefault("When this buff expires, you will be flung left");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

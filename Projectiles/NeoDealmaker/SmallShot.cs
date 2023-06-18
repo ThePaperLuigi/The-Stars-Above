@@ -9,7 +9,7 @@ namespace StarsAbove.Projectiles.NeoDealmaker
     public class SmallShot : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Neo Dealmaker");     //The English name of the projectile
+			// DisplayName.SetDefault("Neo Dealmaker");     //The English name of the projectile
 			Main.projFrames[Projectile.type] = 1;
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
@@ -47,14 +47,14 @@ namespace StarsAbove.Projectiles.NeoDealmaker
 
         }
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-			if(crit)
+			if(hit.Crit)
             {
 				target.AddBuff(BuffID.Midas, 1200);
             }
 
-            base.OnHitNPC(target, damage, knockback, crit);
+             
         }
         public override bool OnTileCollide(Vector2 oldVelocity) {
 			//If collide with tile, reduce the penetrate.

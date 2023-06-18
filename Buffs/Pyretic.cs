@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Pyretic");
-            Description.SetDefault("If you are currently moving when this buff expires, you will be lit on fire and take damage");
+            // DisplayName.SetDefault("Pyretic");
+            // Description.SetDefault("If you are currently moving when this buff expires, you will be lit on fire and take damage");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
         }

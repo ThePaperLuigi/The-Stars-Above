@@ -7,8 +7,8 @@ namespace StarsAbove.Buffs.EternalStar
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Cerulean Fragment");
-            Description.SetDefault("Gain 5% increased damage");
+            // DisplayName.SetDefault("Cerulean Fragment");
+            // Description.SetDefault("Gain 5% increased damage");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
         }

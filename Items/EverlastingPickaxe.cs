@@ -16,8 +16,8 @@ namespace StarsAbove.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("The Everlasting Pickaxe");
-			Tooltip.SetDefault("[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes]" +
+			// DisplayName.SetDefault("The Everlasting Pickaxe");
+			/* Tooltip.SetDefault("[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes]" +
 				"\nRight click to place a dusting of [c/82D1D5:Everlasting Gunpowder] on yourself, which lasts for 6 seconds (20 second cooldown)" +
 				"\nSwinging the pickaxe near the [c/82D1D5:Everlasting Gunpowder] causes consecutive explosions towards your cursor, destroying tiles" +
 				"\nPress the Weapon Action Key to load [c/82D1D5:Everlasting Gunpowder] into the pickaxe" +
@@ -27,7 +27,7 @@ namespace StarsAbove.Items
 				"\nIf the [c/82D1D5:Everlasting Gunpowder] lands on a tile, it will explode once and then disappear" +
 				"\nPressing the Weapon Action Key when [c/82D1D5:Everlasting Gunpowder] is loaded will revert to the original state" +
 				"\n'At the Netherworld's bottom... I'll be waiting'" +
-				$"");
+				$""); */
 
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -176,7 +176,7 @@ namespace StarsAbove.Items
 			
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			
 		}

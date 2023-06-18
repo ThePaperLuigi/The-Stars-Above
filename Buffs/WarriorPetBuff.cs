@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs
     public class WarriorPetBuff : ModBuff
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Discount Warrior of Light");
-			Description.SetDefault("I will transcend you!");
+			// DisplayName.SetDefault("Discount Warrior of Light");
+			// Description.SetDefault("I will transcend you!");
 			Main.buffNoTimeDisplay[Type] = true;
 			Main.lightPet[Type] = true;
 		}

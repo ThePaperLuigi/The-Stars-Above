@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles.BurningDesire
     public class ChainsawFollowUpAttack : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Burning Desire");
+			// DisplayName.SetDefault("Burning Desire");
 			
 			Main.projFrames[Projectile.type] = 5;
 		}

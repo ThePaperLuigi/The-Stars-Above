@@ -8,8 +8,8 @@ namespace StarsAbove.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Stellar Sickness");
-            Description.SetDefault("Attack and defenses are halved as you adjust to your newfound strength");
+            // DisplayName.SetDefault("Stellar Sickness");
+            // Description.SetDefault("Attack and defenses are halved as you adjust to your newfound strength");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true; //Add this so the nurse doesn't remove the buff when healing
             BuffID.Sets.NurseCannotRemoveDebuff[Type] = true;

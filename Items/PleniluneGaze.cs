@@ -14,13 +14,13 @@ namespace StarsAbove.Items
     public class PleniluneGaze : ModItem
 	{
 		public override void SetStaticDefaults() {
-			Tooltip.SetDefault("[c/F7D76A:Hold left click to charge the weapon; the longer the weapon is charged, the stronger the resulting attack will become]" +
+			/* Tooltip.SetDefault("[c/F7D76A:Hold left click to charge the weapon; the longer the weapon is charged, the stronger the resulting attack will become]" +
 				"\nCharging the bow to its maximum before firing will turn the arrow into a unique [c/8AE6EA:Frostflake Arrow]" +
 				"\n[c/8AE6EA:Frostflake Arrows] will bloom upon impact, splitting into 5 Frost Arrows that deal double base damage" +
 				"\nRight click to expend 90 mana, stepping backwards while conjuring an [c/7ED0EA:Ice Lotus] at your location" +
 				"\nAfter a short time, the [c/7ED0EA:Ice Lotus] will explode, spawning 8 Frost Arrows" +
 				"\n'Holding it makes you sleepy'" +
-				$"");
+				$""); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

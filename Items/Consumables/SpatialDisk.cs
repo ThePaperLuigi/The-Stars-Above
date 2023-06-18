@@ -19,8 +19,8 @@ namespace StarsAbove.Items.Consumables
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spatial Disk");
-			Tooltip.SetDefault("This mysterious artifact allows you to make contact with your [c/F1AF42:Starfarer]" +
+			// DisplayName.SetDefault("Spatial Disk");
+			/* Tooltip.SetDefault("This mysterious artifact allows you to make contact with your [c/F1AF42:Starfarer]" +
 				"\nLeft click to initiate contact with your [c/F1AF42:Starfarer]" +
 				"\nYour [c/F1AF42:Starfarer] will periodically grant you components to powerful Aspected Weapons" +
 				"\nRight click to open the [c/EC356F:Starfarer Menu] and access special abilities" +
@@ -30,7 +30,7 @@ namespace StarsAbove.Items.Consumables
 				"\n[c/F1AFFF:Once it have been unlocked, Celestial Cartography can be accessed with the] [c/EC356F:Starfarer Menu]" +
 				"\nYou can re-acquire lost items and read previous dialogue with the [c/9FEE5E:Archive]" +
 				$"\nThe ability to wield Umbral [i:{ItemType<Umbral>()}] or Astral [i:{ItemType<Astral>()}] weapons depends on your chosen [c/F1AF42:Starfarer]" +
-				"");
+				""); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
 			Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 12));

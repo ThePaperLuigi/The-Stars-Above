@@ -17,21 +17,21 @@ namespace StarsAbove.Items.Placeable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("PortalPlacer");
+			// DisplayName.SetDefault("PortalPlacer");
 			
 
-			Tooltip.SetDefault("" +
+			/* Tooltip.SetDefault("" +
 				"Debug only." +
 				"" +
 				"" +
-				"");
+				""); */
 			//
 			//
 			//"\n[c/D32C2C:Modded chests from mods added after world generation may cease to open once entering a subworld]" +
 			//"\n[c/D32C2C:Mods which allow global auto-use may cause issues upon usage]" +
 			//"\n[c/D32C2C:Mods which 'cull' projectiles (anti-lag mods) will cause issues]");
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
-			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 0;
 
 		}
 
@@ -48,9 +48,10 @@ namespace StarsAbove.Items.Placeable
 			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.UseSound = SoundID.Item44;
 			Item.consumable = false;
-			Item.noUseGraphic = false;
+			Item.noUseGraphic = false; Item.ResearchUnlockCount = 0;
+
 		}
-		
+
 		// We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
 		public override bool CanUseItem(Player player)
 		{

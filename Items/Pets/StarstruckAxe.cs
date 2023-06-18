@@ -9,9 +9,9 @@ namespace StarsAbove.Items.Pets
     public class StarstruckAxe : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Starstruck Axe");
-			Tooltip.SetDefault("Summons a diamond in the rough" +
-				"\n'It's still stellar'");
+			// DisplayName.SetDefault("Starstruck Axe");
+			/* Tooltip.SetDefault("Summons a diamond in the rough" +
+				"\n'It's still stellar'"); */
 
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 

@@ -10,7 +10,7 @@ namespace StarsAbove.Projectiles
     public class AbsoluteBlade2 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Absolute Blade");
+			// DisplayName.SetDefault("Absolute Blade");
 			Main.projFrames[Projectile.type] = 10;
 			
 		}

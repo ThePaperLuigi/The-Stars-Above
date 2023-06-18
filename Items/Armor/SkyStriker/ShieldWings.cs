@@ -11,7 +11,7 @@ namespace StarsAbove.Items.Armor.SkyStriker
 		
 
 		public override void SetStaticDefaults() {
-			Tooltip.SetDefault("You shouldn't be able to read this!");
+			// Tooltip.SetDefault("You shouldn't be able to read this!");
 		}
 
 		public override void SetDefaults() {
@@ -19,7 +19,8 @@ namespace StarsAbove.Items.Armor.SkyStriker
 			Item.height = 20;
 			Item.value = 10000;
 			Item.rare = ItemRarityID.Green;
-			Item.accessory = true;
+			Item.accessory = true; Item.ResearchUnlockCount = 0;
+
 		}
 		//these wings use the same values as the solar wings
 		public override void UpdateAccessory(Player player, bool hideVisual) {

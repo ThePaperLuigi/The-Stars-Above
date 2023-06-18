@@ -8,8 +8,8 @@ namespace StarsAbove.Items.Armor.Manifestation
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Red Mist Body");
-			Tooltip.SetDefault("Unobtainable; vanity by using 'Manifestation'");
+			// DisplayName.SetDefault("Red Mist Body");
+			// Tooltip.SetDefault("Unobtainable; vanity by using 'Manifestation'");
         }
 
 		public override void SetDefaults()
@@ -18,11 +18,12 @@ namespace StarsAbove.Items.Armor.Manifestation
 			Item.height = 24;
 			Item.value = 1;
 			Item.rare = 10;
-			Item.vanity = true;
+			Item.vanity = true; Item.ResearchUnlockCount = 0;
+
 		}
-		
-		
-		
+
+
+
 	}
 	
 }
