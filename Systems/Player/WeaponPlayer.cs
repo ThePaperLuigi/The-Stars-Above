@@ -1645,7 +1645,7 @@ namespace StarsAbove
                     modifiers.SetCrit();
                     target.AddBuff(BuffType<Buffs.Stun>(), 20);
                 }
-               modifiers.SourceDamage += savedHullwroughtShot * 180;
+               modifiers.SourceDamage.Flat += savedHullwroughtShot * 180;
 
 
             }
