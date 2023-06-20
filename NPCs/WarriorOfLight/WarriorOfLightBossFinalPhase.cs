@@ -258,13 +258,13 @@ namespace StarsAbove.NPCs.WarriorOfLight
 				if (AI_RotationNumber == 3)
 				{
 					//
-					WarriorArsLaevateinn(P, NPC);//Strengthened version of Hope's Confluence
+					BindingLight(P, NPC);//Strengthened version of Hope's Confluence
 					return;
 				}
 				if (AI_RotationNumber == 4)
 				{
 					//
-					ScionsAndSinners(P, NPC);//Strengthened version of clock blades
+					WarriorArsLaevateinn(P, NPC);//Strengthened version of clock blades
 					return;
 				}
 				if (AI_RotationNumber == 5)
@@ -478,6 +478,97 @@ namespace StarsAbove.NPCs.WarriorOfLight
 					SearingLight(P, NPC);
 					return;
 
+				}//
+				if (AI_RotationNumber == 38)
+				{
+					//
+					SearingLight(P, NPC);
+					return;
+
+				}
+				if (AI_RotationNumber == 39)
+				{
+					//
+					ThreadsOfFate2(P, NPC);
+					return;
+
+				}
+				if (AI_RotationNumber == 40)
+				{
+					//
+					ThreadsOfFate1(P, NPC);
+					return;
+
+				}
+				if (AI_RotationNumber == 41)
+				{
+					//
+					CosmicIgnition(P, NPC);
+					return;
+
+				}
+				if (AI_RotationNumber == 42)
+				{
+					//
+					SearingLight(P, NPC);
+					return;
+
+				}
+				if (AI_RotationNumber == 43)
+				{
+					//
+					ThreadsOfFate3(P, NPC);
+					return;
+
+				}
+				if (AI_RotationNumber == 44)
+				{
+					//
+					BindingLight(P, NPC);
+					return;
+
+				}
+				if (AI_RotationNumber == 45)
+				{
+					//
+					Transplacement(P, NPC);
+					return;
+
+				}
+				if (AI_RotationNumber == 46)
+				{
+					//
+					ScionsAndSinners(P, NPC);
+					return;
+
+				}
+				if (AI_RotationNumber == 47)
+				{
+					//
+					Recenter(P, NPC);
+					return;
+
+				}
+				if (AI_RotationNumber == 48)
+				{
+					//
+					WarriorSummoning2(P, NPC);
+					return;
+
+				}
+				if (AI_RotationNumber == 49)
+				{
+					//
+					ThreadsOfFate1(P, NPC);
+					return;
+
+				}
+				if (AI_RotationNumber == 50)
+				{
+					//
+					SearingLight(P, NPC);
+					return;
+
 				}
 				else
 				{
@@ -485,315 +576,6 @@ namespace StarsAbove.NPCs.WarriorOfLight
 					return;
 				}
 				
-                //Attacks begin here.
-                if (AI_RotationNumber == 0)
-                {
-					//
-					TheBitterEnd(P, NPC);
-                    return;
-                }
-				else if (AI_RotationNumber == 1)
-				{
-					//
-					CoruscantSaber(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 2)
-				{
-					//
-					Transplacement(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 3)
-				{
-					//
-					RefulgentReprobation(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 4)
-				{
-					//
-					Transplacement(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 5)
-				{
-					//
-					AbsoluteIce(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 6)
-				{
-					//
-					PassageOfArms1(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 7)
-				{
-					//
-					ThreadsOfFate1(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 8)
-				{
-					//
-					EphemeralEdge(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 9)
-				{
-					//
-					ThreadsOfFate3(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 10)
-				{
-					//
-					RadiantReprobation(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 11)
-				{
-					//
-					AbsoluteIce(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 12)
-				{
-					//
-					CoruscantSaber(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 13)
-				{
-					//
-					AbsoluteFire(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 14)
-				{
-					//
-					RefulgentReprobation(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 15)
-				{
-					if(NPC.life <= (NPC.lifeMax * 0.4))
-                    {
-						
-						AI_RotationNumber = 16;
-					}
-					else
-					{
-						AI_RotationNumber = 0;
-
-					}
-					return;
-				}
-				else if (AI_RotationNumber == 16)
-				{
-					//You still stand? Very well...
-					Ascendance(P, NPC);
-					
-					return;
-				}
-				else if (AI_RotationNumber == 17)
-				{
-					WarriorSummoning1(P, NPC);
-					
-					return;
-				}
-				else if (AI_RotationNumber == 18)
-				{
-					Transplacement(P, NPC);
-					
-					return;
-				}
-				else if (AI_RotationNumber == 19)
-				{
-					TheBitterEnd(P, NPC);
-					
-					return;
-				}
-				else if (AI_RotationNumber == 20)
-				{
-					//
-					RadiantReprobation(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 21)
-				{
-					//
-					Transplacement(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 22)
-				{
-					//
-					ImbuedSaber(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 23)
-				{
-					//
-					TheBitterEnd(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 24)
-				{
-					//
-					ImbuedCoruscance(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 25)
-				{
-					//
-					ResoluteReprobation(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 26)
-				{
-					//
-					EphemeralEdge(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 27)
-				{
-					//
-					SearingLight(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 28)
-				{
-					//
-					Recenter(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 29)
-				{
-					//
-					HopeConfluence(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 30)
-				{
-					//
-					PassageOfArms2(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 31)
-				{
-					//
-					ImbuedSaber(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 32)
-				{
-					//
-					SearingLight(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 33)
-				{
-					//
-					WarriorSummoning2(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 34)
-				{
-					//
-					EphemeralEdge(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 35)
-				{
-					//
-					ImbuedCoruscance(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 36)
-				{
-					//
-					RefulgentReprobation(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 37)
-				{
-					//
-					ThreadsOfFate1(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 38)
-				{
-					//
-					SearingLight(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 39)
-				{
-					//
-					ThreadsOfFate2(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 40)
-				{
-					//
-					Transplacement(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 41)
-				{
-					//
-					TheBitterEnd(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 42)
-				{
-					//
-					WarriorSummoning3(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 43)
-				{
-					//
-					CoruscantSaberIn(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 44)
-				{
-					//
-					TheBitterEnd(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 45)
-				{
-					//
-					SearingLight(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 46)
-				{
-					//
-					ImbuedSaber(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 47)
-				{
-					//
-					RadiantReprobation(P, NPC);
-					return;
-				}
-				else if (AI_RotationNumber == 48)
-				{
-					//
-					ImbuedCoruscance(P, NPC);
-					return;
-				}
-				else
-                {
-                    AI_RotationNumber = 17;
-                    return;
-                }
 				
 
 			}

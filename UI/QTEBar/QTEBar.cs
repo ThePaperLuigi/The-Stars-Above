@@ -84,7 +84,7 @@ namespace StarsAbove.UI.QTEBar
 			hitbox.X += 12;
 			hitbox.Width -= 24;
 			hitbox.Y += 8;
-			hitbox.Height -= 16;
+			hitbox.Height -= 20;
 
 			// Now, using this hitbox, we draw a gradient by drawing vertical lines while slowly interpolating between the 2 colors.
 			int left = hitbox.Left;
