@@ -3660,6 +3660,11 @@ namespace StarsAbove
             {
                 Player.AddBuff(BuffID.PotionSickness, 3600);
             }
+            if(soulUnboundActive)
+            {
+                soulUnboundActive = false;
+            }
+
         }
         public override void ResetEffects()
         {
