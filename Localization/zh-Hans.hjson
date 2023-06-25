@@ -33,7 +33,7 @@ Mods: {
 				ChargeNova: The Warrior of Light charges his Stellar Nova!
 				ChargeStarfarer: The Warrior of Light borrows his Starfarer's might!
 				GardenOfAvalon: The Garden of Avalon shields the Warrior of Light from damage!
-				// QTE: Rapidly press the Stellar Nova button!
+				QTE: Rapidly press the Stellar Nova button!
 			}
 
 			Dioskouroi.Clash: 狄俄斯库洛伊们互相碰撞，平衡了二者的生命力！
@@ -3099,7 +3099,7 @@ Mods: {
 			VagrantWalls.DisplayName: 流浪者墙
 			VagrantWallsHorizontal.DisplayName: 水平流浪者墙
 			VagrantWallsVertical.DisplayName: 垂直流浪者墙
-			WarriorOfLightBoss.DisplayName: The Warrior Of Light
+			WarriorOfLightBoss.DisplayName: 光之战士
 			WarriorWallsNPC.DisplayName: ""
 			WarriorOfLightOld.DisplayName: ""
 			WarriorOfLightBossFinalPhase.DisplayName: The Warrior Of Light
@@ -3218,6 +3218,7 @@ Mods: {
 					降低30点防御力
 					击杀一名敌人后，获得持续15秒的“满足苦痛”
 					持续时间内，你将会增加20%的伤害，获得强大的生命恢复能力，并且不再降低防御力
+					“这是最高水平的纳米机器，或者是他们所说的最高水平”
 					'''
 				DisplayName: 恶魔契约
 			}
@@ -3931,7 +3932,7 @@ Mods: {
 			StarBitBlue: {
 				Tooltip:
 					'''
-
+					
 					[c/F1AF42:它不该出现在你的物品栏里]
 
 					'''
@@ -3941,7 +3942,7 @@ Mods: {
 			StarBitGreen: {
 				Tooltip:
 					'''
-
+					
 					[c/F1AF42:它不该出现在你的物品栏里]
 
 					'''
@@ -3951,7 +3952,7 @@ Mods: {
 			StarBitOrange: {
 				Tooltip:
 					'''
-
+					
 					[c/F1AF42:它不该出现在你的物品栏里]
 
 					'''
@@ -3961,7 +3962,7 @@ Mods: {
 			StarBitPurple: {
 				Tooltip:
 					'''
-
+					
 					[c/F1AF42:它不该出现在你的物品栏里]
 
 					'''
@@ -5085,7 +5086,7 @@ Mods: {
 					每次射击会增加伤害
 					在第四次射击后，需要一定时间重新装填
 					若射击命中了足够的次数，你的下一次装填会触发[c/66B2D1:砥砺刀锋]
-					[c/66B2D1:砥砺刀锋]触发后的下一次射击将造成10倍的暴击伤害，并立刻重新装填
+					[c/66B2D1:砥砺刀锋]触发后的下一次射击将造成5倍的暴击伤害，并立刻重新装填
 					若[c/66B2D1:砥砺刀锋]命中敌人，则获得100魔力值
 					若该武器的伤害类型被变更为近战，则获得魔力值的增益不会生效，但武器攻击速度大幅提升
 					手持该武器时，你获得敏捷增益
@@ -6452,10 +6453,9 @@ Mods: {
 					手持该武器会使[c/8BD1D1:双生意识]出现，开始为100%[c/C7FFFA:表意识]
 					未蓄力攻击会在大圆形范围内横扫，并使[c/8BD1D1:双生意识]向[c/C7FFFA:表意识]偏移
 					蓄力攻击向前方敌人造成多次伤害，并使[c/8BD1D1:双生意识]向[c/B60000:里意识]偏移
-					准备蓄力攻击时会快速消耗魔力
 					当[c/C7FFFA:表意识]超过50%时，可以施放[c/C7FFFA:永恒 = 一瞬]
 					当[c/B60000:里意识]超过50%时，获得[c/B60000:朝夕]增益
-					符合条件时，右键以释放[c/C7FFFA:永恒 = 一瞬]，向着光标冲刺（16秒冷却）
+					符合条件时，press the Weapon Action Key to activate [c/C7FFFA:Flash of Eternity], dashing towards your cursor (8 second cooldown)
 					[c/B60000:朝夕]可以提高40%伤害与20%暴击率
 					“拜托了，另一个我”
 					'''
@@ -7496,7 +7496,7 @@ Mods: {
 					刀刃命中敌人会使敌人燃烧2秒，造成50%的伤害，且额外获得4秒敏捷
 					点击右键消耗50点魔力值，在光标处放置一个[c/BB3B27:火药桶]
 					这个魔力消耗无法被任何方式减免和抵消
-					   你最多可以同时放置2个[c/BB3B27:火药桶]，且[c/BB3B27:火药桶]会在放置20秒之后或者切换武器后消失
+				    你最多可以同时放置2个[c/BB3B27:火药桶]，且[c/BB3B27:火药桶]会在放置20秒之后或者切换武器后消失
 					在短暂的延迟后，[c/BB3B27:火药桶]进入激活状态，此时使用该武器命中[c/BB3B27:火药桶]会让其发生爆炸
 					爆炸将会造成4倍伤害，且给予8秒敏捷效果
 					此外，处于[c/BB3B27:火药桶]爆炸范围内的其他[c/BB3B27:火药桶]也会发生爆炸，这次爆炸造成的伤害额外提升50%
@@ -7685,7 +7685,7 @@ Mods: {
 
 			Blueprint: {
 				DisplayName: Blueprint
-				Tooltip: Drastically increases block placement range when standing still
+				Tooltip: Drastically increases block placement range while stationary
 			}
 
 			DoubledPawns: {
@@ -7743,32 +7743,32 @@ Mods: {
 				Tooltip:
 					'''
 					Teleports all distant players in Multiplayer to your position (10 minute cooldown)
-					Grants Invincibility for 2 seconds if a boss is active
+					Grants Invincibility on teleportation for 2 seconds if a boss is active
 					'''
 			}
 
 			StellarSpoils: {
-				// DisplayName: Stellar Spoils
-				// Tooltip: ""
+				DisplayName: Stellar Spoils
+				Tooltip: ""
 			}
 
 			StellarRemnant: {
-				// DisplayName: Stellar Remnant
-				/* Tooltip:
+				DisplayName: Stellar Remnant
+				Tooltip:
 					'''
 					Leftover confluence from opened Stellar Spoils
 					Can be used to craft Stellar Spoil items
-					''' */
+					'''
 			}
 
 			QuantumButterflyBody: {
-				// DisplayName: Quantum Butterfly Garb
-				// Tooltip: ""
+				DisplayName: Quantum Butterfly Garb
+				Tooltip: ""
 			}
 
 			QuantumButterflyLegs: {
-				// DisplayName: Quantum Butterfly Boots
-				// Tooltip: ""
+				DisplayName: Quantum Butterfly Boots
+				Tooltip: ""
 			}
 		}
 
@@ -7789,11 +7789,11 @@ Mods: {
 
 		Projectiles: {
 			ArachnidNeedlepointWhip.DisplayName: 蛛形纲针鞭
-			AbsoluteBlade.DisplayName: Absolute Blade
-			AbsoluteBlade2.DisplayName: Absolute Blade
-			AbsoluteGeometry.DisplayName: Absolute Geometry
-			AbsoluteRendHeaven.DisplayName: Absolute Rend Heaven
-			AbsoluteRendHeavenDamage.DisplayName: Absolute Rend Heaven
+			AbsoluteBlade.DisplayName: 绝对剑刃
+			AbsoluteBlade2.DisplayName: 绝对剑刃
+			AbsoluteGeometry.DisplayName: 绝对几何
+			AbsoluteRendHeaven.DisplayName: 绝对撕裂天堂
+			AbsoluteRendHeavenDamage.DisplayName: 绝对撕裂天堂
 			AegisDriverOff.DisplayName: 天之圣杯
 			AegisDriverOn.DisplayName: 天之圣杯
 			AmiyaSlash.DisplayName: 影霄
@@ -8696,12 +8696,12 @@ Mods: {
 
 			AstralAspectBow: {
 				DisplayName: 星体调谐
-				Description: The Astral Aspect grants health on firing, dramatic health regeneration once charged, and empowers Umbral Aspect at the cost of half your damage
+				Description: 星体星相在发射时给予你生命值，且在完成充能后获得大量生命恢复，并以你一半的伤害为代价增强本影相位
 			}
 
 			AstralRapture: {
 				DisplayName: 星体狂欢
-				Description: Gain HP and Invincibility on Asphodene's tiles
+				Description: 在爱丝福德妮的地砖上获得生命值和无敌帧
 			}
 
 			BerserkerMode: {
@@ -8797,7 +8797,7 @@ Mods: {
 
 			BossCooldown: {
 				DisplayName: Boss冷却
-				Description: The boss of the Dying Citadel will fail to spawn with this debuff
+				Description: Dying Citadel的Boss无法在该减益存在的情况下生成
 			}
 
 			BossEnemySpawnMod: {
@@ -8887,7 +8887,7 @@ Mods: {
 
 			ChemtankDashCooldown: {
 				DisplayName: 鄙弃冷却
-				Description: Disdain will fail to activate if this debuff is present
+				Description: 若该减益存在，无法激活鄙弃
 			}
 
 			ChemtankDefenseBuff: {
@@ -8907,12 +8907,12 @@ Mods: {
 
 			CoreOfFlames: {
 				DisplayName: 烈焰核心
-				Description: Liberation Blazing is at the apex of its power
+				Description: 解放烈焰正处于其力量的巅峰
 			}
 
 			CoreOfFlamesCooldown: {
 				DisplayName: 烈焰核心冷却
-				Description: Liberation Blazing will not activate Core of Flames when this debuff is active
+				Description: 若该减益存在，解放烈焰将无法激活烈焰核心
 			}
 
 			CosmicConception: {
@@ -8926,8 +8926,8 @@ Mods: {
 			}
 
 			MagitonOverheat: {
-				DisplayName: 玛奇特隆过热
-				Description: Cosmic Destroyer is imbued with overwhelming strength
+				DisplayName: 炽热玛奇顿
+				Description: 宇宙毁灭者充满了压倒性的力量
 			}
 
 			Overheated: {
@@ -8946,17 +8946,17 @@ Mods: {
 			}
 
 			CounterSurge: {
-				DisplayName: Counter Surge
+				DisplayName: 抵消上挑
 				Description: 异度之刃的充能攻击已被大幅增强
 			}
 
 			CrimsonDragonetPetBuff: {
-				DisplayName: Crimson Dragonet
-				Description: A crimson dragonet attends to you
+				DisplayName: 猩红小龙
+				Description: 一只深红色的小龙正在跟着你
 			}
 
 			DashInvincibility: {
-				DisplayName: Dash Invincibility
+				DisplayName: 冲刺无敌
 				Description: 你无敌了！
 			}
 
@@ -8966,7 +8966,7 @@ Mods: {
 			}
 
 			DeepFreeze: {
-				DisplayName: Deep Freeze
+				DisplayName: 渐冻症
 				Description: 如果这个减益结束时你是静止不动的，你会被冻成好吃的冰棍
 			}
 
@@ -10681,7 +10681,7 @@ Mods: {
 				Attacks inflict Karmic Retribution for 10 seconds
 				'''
 			LVBuff100.Description: Able to unleash a Special Attack upon pressing the Weapon Action Key
-
+			
 			SpectrumAbsorption: {
 				DisplayName: Refractive Absorption
 				Description: Absorbing all incoming damage at the cost of constant HP drain
@@ -10768,8 +10768,8 @@ Mods: {
 			}
 
 			BindingLight: {
-				// DisplayName: Binding Light
-				// Description: Mods.StarsAbove.Buffs.BindingLight.Description
+				DisplayName: Binding Light
+				Description: Mods.StarsAbove.Buffs.BindingLight.Description
 			}
 		}
 
@@ -10800,7 +10800,7 @@ Mods: {
 			}
 
 			Arbitration: {
-				SpawnInfo: SpawnInfo: This foe embodies true fear... Discover this foe through visiting an Anomaly location with the Astrolabe's help.
+				SpawnInfo: This foe embodies true fear... Discover this foe through visiting an Anomaly location with the Astrolabe's help. Due to this boss being fought within a Subworld under normal conditions, Boss Checklist progress must be manual.
 				DespawnMessage: 混沌与秩序交织吞噬了你。
 			}
 
