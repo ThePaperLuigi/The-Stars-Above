@@ -365,6 +365,14 @@ namespace StarsAbove
 		#endregion
 
 		#region Warrior Of Light Voice Lines
+		public static readonly SoundStyle WarriorOfLight_EveryDream = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/EveryDream")
+		{
+
+		};
+		public static readonly SoundStyle WarriorOfLight_FlamesOfBattle = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/FlamesOfBattle")
+		{
+
+		};
 		public static readonly SoundStyle WarriorOfLight_NowToTakeYourMeasure = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/NowToTakeYourMeasure")
 		{
 

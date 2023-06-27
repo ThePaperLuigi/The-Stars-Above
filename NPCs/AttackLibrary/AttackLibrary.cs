@@ -11868,7 +11868,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 
 				#region attack
-				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_ForVictory, npc.Center);
+				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_EveryDream, npc.Center);
 
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_GardenOfAvalonActivated, npc.Center);
 				if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CombatText.WarriorOfLight.GardenOfAvalon"), 255, 185, 0); }
@@ -11929,7 +11929,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_JudgedWorthyToExist, npc.Center);
+				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_FlamesOfBattle, npc.Center);
 
 				if (npc.type == ModContent.NPCType<WarriorOfLightBoss>())
 				{
