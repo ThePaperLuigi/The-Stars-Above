@@ -4672,6 +4672,7 @@ namespace StarsAbove
                     starfarerOutfitVanity = -1;
                 }
             }
+
             if (chosenStellarNova == 0)//No Nova selected
             {
                 abilityName = "";
@@ -4683,56 +4684,28 @@ namespace StarsAbove
 
             }
 
-            //PLEASE REFACTOR ME!!
-            if (chosenStellarNova == 1)//Theofania Inanis
-            {
-                novaDamage = baseNovaDamageAdd;
-                novaGaugeMax = 90;
-                novaCritChance = 50;
-                novaCritDamage = (int)(baseNovaDamageAdd * 1.45);
+            SetupStellarNovas NovaSetup = new SetupStellarNovas();
 
-                abilityName = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.TheofaniaInanis.AbilityName");
-                abilitySubName = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.TheofaniaInanis.AbilitySubName");
-                abilityDescription = starfarerBonus = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.TheofaniaInanis.AbilityDescription");
+            if (chosenStellarNova != 0)
+            {
+                novaDamage = NovaSetup.GetNovaDamage(chosenStellarNova, baseNovaDamageAdd);
+                novaGaugeMax = NovaSetup.GetNovaCost(chosenStellarNova);
+                novaCritChance = NovaSetup.GetNovaCritChance(chosenStellarNova);
+                novaCritDamage = NovaSetup.GetNovaCritDamageMod(chosenStellarNova, baseNovaDamageAdd);
+
+                abilityName = NovaSetup.GetInfo(chosenStellarNova, "AbilityName", baseNovaDamageAdd);
+                abilitySubName = NovaSetup.GetInfo(chosenStellarNova, "AbilitySubName", baseNovaDamageAdd);
+                abilityDescription = NovaSetup.GetInfo(chosenStellarNova, "AbilityDescription", baseNovaDamageAdd);
 
                 if (chosenStarfarer == 1)
                 {
-                    starfarerBonus = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.TheofaniaInanis.AstralBonus");
+                    starfarerBonus = NovaSetup.GetInfo(chosenStellarNova, "AstralBonus", baseNovaDamageAdd);
+
                 }
-                else
+                if (chosenStarfarer == 2)
                 {
-                    starfarerBonus = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.TheofaniaInanis.UmbralBonus");
-                }
+                    starfarerBonus = NovaSetup.GetInfo(chosenStellarNova, "UmbralBonus", baseNovaDamageAdd);
 
-                baseStats = "" +
-                    $"{novaDamage} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseDamage") +
-                    $"\n{novaGaugeMax} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseEnergyCost") +
-                    $"\n" +//int               0.1(x) double
-                    $"\n{Math.Round(novaDamage * (1 + novaDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.Damage") +
-                    $"\n{novaCritChance + novaCritChanceMod}% " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritChance") +
-                    $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritDamage") +
-                    $"\n{novaGaugeMax - novaChargeMod} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EnergyCost");
-
-
-            }
-            if (chosenStellarNova == 2)//Ars Laevateinn
-            {
-                novaDamage = 250 + baseNovaDamageAdd;
-                novaGaugeMax = 110;
-                novaCritChance = 35;
-                novaCritDamage = (int)(baseNovaDamageAdd * 2.8);
-
-                abilityName = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.ArsLaevateinn.AbilityName");
-                abilitySubName = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.ArsLaevateinn.AbilitySubName");
-                abilityDescription = starfarerBonus = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.ArsLaevateinn.AbilityDescription");
-
-                if (chosenStarfarer == 1)
-                {
-                    starfarerBonus = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.ArsLaevateinn.AstralBonus");
-                }
-                else
-                {
-                    starfarerBonus = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.ArsLaevateinn.UmbralBonus");
                 }
 
                 baseStats = "" +
@@ -4744,100 +4717,8 @@ namespace StarsAbove
                     $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritDamage") +
                     $"\n{novaGaugeMax - novaChargeMod} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EnergyCost");
 
-
             }
-            if (chosenStellarNova == 3)//Kiwami Ryuken (KiwamiRyuken)
-            {
-                novaDamage = baseNovaDamageAdd / 2;
-                novaGaugeMax = 50;
-                novaCritChance = 70;
-                novaCritDamage = (int)(baseNovaDamageAdd);
-
-                abilityName = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.KiwamiRyuken.AbilityName");
-                abilitySubName = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.KiwamiRyuken.AbilitySubName");
-                abilityDescription = starfarerBonus = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.KiwamiRyuken.AbilityDescription");
-
-                if (chosenStarfarer == 1)
-                {
-                    starfarerBonus = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.KiwamiRyuken.AstralBonus");
-                }
-                else
-                {
-                    starfarerBonus = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.KiwamiRyuken.UmbralBonus");
-                }
-
-                baseStats = "" +
-                    $"{novaDamage} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseDamage") +
-                    $"\n{novaGaugeMax} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseEnergyCost") +
-                    $"\n" +
-                    $"\n{Math.Round(novaDamage * (1 + novaDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.Damage") +
-                    $"\n{novaCritChance + novaCritChanceMod}% " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritChance") +
-                    $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritDamage") +
-                    $"\n{novaGaugeMax - novaChargeMod} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EnergyCost");
-
-
-            }
-            if (chosenStellarNova == 4)//Garden of Avalon
-            {
-                novaDamage = baseNovaDamageAdd / 500;
-                novaGaugeMax = 150;
-                novaCritChance = 35;
-                novaCritDamage = 100;
-
-                abilityName = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.GardenOfAvalon.AbilityName");
-                abilitySubName = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.GardenOfAvalon.AbilitySubName");
-                abilityDescription = starfarerBonus = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.GardenOfAvalon.AbilityDescription");
-                if (chosenStarfarer == 1)
-                {
-                    starfarerBonus = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.GardenOfAvalon.AstralBonus");
-                }
-                else
-                {
-                    starfarerBonus = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.GardenOfAvalon.UmbralBonus");
-                }
-
-                baseStats = "" +
-                    $"{novaDamage} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseHealStrength") +
-                    $"\n{novaGaugeMax} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseEnergyCost") +
-                    $"\n" +
-                    $"\n{Math.Round(novaDamage * (1 + novaDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.HealStrength") +
-                    $"\n{novaCritChance + novaCritChanceMod}% " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritChance") +
-                    $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritHealStrength") +
-                    $"\n{novaGaugeMax - novaChargeMod} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EnergyCost");
-
-
-            }
-            if (chosenStellarNova == 5)//Edin Genesis Quasar
-            {
-                novaDamage = baseNovaDamageAdd / 15;
-                novaGaugeMax = 180;
-                novaCritChance = 25;
-                novaCritDamage = (int)((baseNovaDamageAdd / 10) * 1.3);
-
-                abilityName = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EdinGenesisQuasar.AbilityName");
-                abilitySubName = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EdinGenesisQuasar.AbilitySubName");
-                abilityDescription = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EdinGenesisQuasar.AbilityDescription");
-
-                if (chosenStarfarer == 1)
-                {
-                    starfarerBonus = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EdinGenesisQuasar.AstralBonus", baseNovaDamageAdd / 10);
-                }
-                else
-                {
-                    starfarerBonus = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EdinGenesisQuasar.UmbralBonus", baseNovaDamageAdd / 10);
-                }
-
-                baseStats = "" +
-                    $"{novaDamage} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseDamage") +
-                    $"\n{novaGaugeMax} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseEnergyCost") +
-                    $"\n" +
-                    $"\n{Math.Round(novaDamage * (1 + novaDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.AttackDamage") +
-                    $"\n{novaCritChance + novaCritChanceMod}% " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritChance") +
-                    $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritDamage") +
-                    $"\n{novaGaugeMax - novaChargeMod} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EnergyCost");
-
-
-            }
+            
             abilityDescription = LangHelper.Wrap(abilityDescription, 85);
             starfarerBonus = LangHelper.Wrap(starfarerBonus, 85);
         }

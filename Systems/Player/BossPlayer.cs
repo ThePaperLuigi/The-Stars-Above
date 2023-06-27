@@ -126,12 +126,12 @@ namespace StarsAbove
                         NPC npc = Main.npc[k];
                         if (npc.active && npc.type == NPCType<WarriorOfLightBossFinalPhase>())
                         {
-                            for (int ir = 0; ir < 50; ir++)
+                            for (int ir = 0; ir < 20; ir++)
                             {
-                                Vector2 positionNew = Vector2.Lerp(Player.Center, new Vector2(npc.Center.X, npc.Center.Y), (float)ir / 30);
+                                Vector2 positionNew = Vector2.Lerp(Player.Center, new Vector2(npc.Center.X, npc.Center.Y), (float)ir / 20);
 
-                                Dust da = Dust.NewDustPerfect(positionNew, DustID.FireworkFountain_Yellow, null, 240, default(Color), 1.7f);
-                                da.fadeIn = 0.3f;
+                                Dust da = Dust.NewDustPerfect(positionNew, DustID.FireworkFountain_Yellow, null, 240, default(Color), 1f);
+                                da.fadeIn = 0.1f;
                                 da.noLight = true;
                                 da.noGravity = true;
 

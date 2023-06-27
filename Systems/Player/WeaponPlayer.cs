@@ -1645,7 +1645,7 @@ namespace StarsAbove
                     modifiers.SetCrit();
                     target.AddBuff(BuffType<Buffs.Stun>(), 20);
                 }
-               modifiers.SourceDamage += savedHullwroughtShot * 180;
+               modifiers.SourceDamage.Flat += savedHullwroughtShot * 180;
 
 
             }
@@ -3660,6 +3660,11 @@ namespace StarsAbove
             {
                 Player.AddBuff(BuffID.PotionSickness, 3600);
             }
+            if(soulUnboundActive)
+            {
+                soulUnboundActive = false;
+            }
+
         }
         public override void ResetEffects()
         {

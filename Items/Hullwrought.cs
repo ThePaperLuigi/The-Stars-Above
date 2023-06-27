@@ -126,7 +126,7 @@ namespace StarsAbove.Items
                 chargeCooldown--;
                 attackCooldown--;
                 swapCooldown--;
-                float launchSpeed = 36f;
+                float launchSpeed = 106f;
                 
                 float launchSpeed2 = 102f;
 

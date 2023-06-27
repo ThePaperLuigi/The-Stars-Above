@@ -10276,7 +10276,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					{
 						Projectile.NewProjectile(entitySource,
 						new Vector2(npc.Center.X - 600 + (i * 130), npc.Center.Y - 300 + i*100), // Spawns here
-						Vector2.Zero, typeNebula, damage, 0f, Main.myPlayer, 240 + (i * 10), (i * 10), 0);
+						Vector2.Zero, typeNebula, damage, 0f, Main.myPlayer, 240 + (i * 10), (i * 30), 0);
 					}
 
 					
@@ -10939,7 +10939,38 @@ namespace StarsAbove.NPCs.AttackLibrary
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
 
 				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_DarknessMustBeDestroyed, npc.Center);
+				float Speed = 12f;  //projectile speed
+				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
+				int damage = 0;  //projectile damage
+				int type = ProjectileType<BladeworkIndicator>(); //Type of projectile
 
+				float rotation = (float)Math.Atan2(StartPosition.Y - (target.position.Y + (target.height * 0.5f)), StartPosition.X - (target.position.X + (target.width * 0.5f)));
+				Vector2 velocity = new Vector2((float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1));
+
+				SoundEngine.PlaySound(SoundID.Item43, npc.Center);
+
+				if (Main.netMode != NetmodeID.MultiplayerClient)
+				{
+
+					float numberProjectiles = 7;
+					float adjustedRotation = MathHelper.ToRadians(35);
+
+					for (int i = 0; i < numberProjectiles; i++)
+					{
+						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
+						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, perturbedSpeed.X * 5, perturbedSpeed.Y * 5, type, damage, 0, Main.myPlayer);
+					}
+					//Delayed swords
+					numberProjectiles = 5;
+					adjustedRotation = MathHelper.ToRadians(55);
+
+					for (int i = 0; i < numberProjectiles; i++)
+					{
+						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
+						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, perturbedSpeed.X * 5, perturbedSpeed.Y * 5, type, damage, 0, Main.myPlayer, 0, 0, 60);
+					}
+
+				}
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					if (npc.type == ModContent.NPCType<WarriorOfLightBoss>())
@@ -12083,11 +12114,11 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 
 					}
-					for (int i = 0; i < 4; i++)
+					for (int i = 0; i < 2; i++)
 					{
 						Projectile.NewProjectile(entitySource,
-						new Vector2(npc.Center.X, npc.Center.Y - 300 + (i * 300)), // Spawns here
-						Vector2.Zero, ProjectileType<WarriorNebulaSummon>(), damage, 0f, Main.myPlayer, 240 + (i * 5), (i * 5), 180);
+						new Vector2(npc.Center.X, npc.Center.Y - 300 + (i * 600)), // Spawns here
+						Vector2.Zero, ProjectileType<WarriorStardustSummon>(), damage, 0f, Main.myPlayer, 240 + (i * 5), (i * 5), 180);
 					}
 
 					for (int i = 0; i < 4; i++)
