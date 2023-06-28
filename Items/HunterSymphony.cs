@@ -231,7 +231,6 @@ namespace StarsAbove.Items
 				.AddIngredient(ItemID.TatteredCloth, 2)
 				.AddIngredient(ItemID.Feather, 4)
 				.AddIngredient(ItemID.AntlionMandible, 4)
-				.AddIngredient(ItemID.WormTooth, 2)
 				.AddIngredient(ItemID.Stinger, 2)
 				.AddIngredient(ItemType<EssenceOfTheHunt>())
 				.AddTile(TileID.Anvils)
