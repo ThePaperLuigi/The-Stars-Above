@@ -5075,7 +5075,10 @@ Mods: {
 			InugamiRipsaw: {
 				Tooltip:
 					'''
-					Right click to activate Berserker Mode for 5 seconds, increasing damage dealt but dealing damage to yourself (20 second cooldown)
+					Attacks deal constant damage and grant Endurance for 3 seconds on hit
+					Defeating foes will heal 5 HP
+					Defeating foes while below 100 HP will instead heal 15 HP
+					Right click to activate [c/b03fed:Berserker Mode] for 5 seconds, increasing damage dealt but dealing damage over time to yourself (20 second cooldown)
 					'It preys on stray fingers'
 					'''
 				DisplayName: Inugami Ripsaw
