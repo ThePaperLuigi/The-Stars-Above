@@ -196,26 +196,30 @@ namespace StarsAbove.Items
 
 					return false;
 				}
-				if (player.controlUp && !player.HasBuff(BuffType<HunterSymphonyCooldown>()))
-				{
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<MusicRadiate>(), 0, 3, player.whoAmI, 0f, 0);
-					return false;
+				if(Main.netMode != NetmodeID.MultiplayerClient)
+                {
+					if (player.controlUp && !player.HasBuff(BuffType<HunterSymphonyCooldown>()))
+					{
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<MusicRadiate>(), 0, 3, player.whoAmI, 0f, 0);
+						return false;
+					}
+					if (player.controlDown && !player.HasBuff(BuffType<HunterSymphonyCooldown>()))
+					{
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<MusicRadiate>(), 0, 3, player.whoAmI, 0f, 1);
+						return false;
+					}
+					if (player.controlLeft && !player.HasBuff(BuffType<HunterSymphonyCooldown>()))
+					{
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<MusicRadiate>(), 0, 3, player.whoAmI, 0f, 2);
+						return false;
+					}
+					if (player.controlRight && !player.HasBuff(BuffType<HunterSymphonyCooldown>()))
+					{
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<MusicRadiate>(), 0, 3, player.whoAmI, 0f, 3);
+						return false;
+					}
 				}
-				if (player.controlDown && !player.HasBuff(BuffType<HunterSymphonyCooldown>()))
-				{
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<MusicRadiate>(), 0, 3, player.whoAmI, 0f, 1);
-					return false;
-				}
-				if (player.controlLeft && !player.HasBuff(BuffType<HunterSymphonyCooldown>()))
-				{
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<MusicRadiate>(), 0, 3, player.whoAmI, 0f, 2);
-					return false;
-				}
-				if (player.controlRight && !player.HasBuff(BuffType<HunterSymphonyCooldown>()))
-				{
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<MusicRadiate>(), 0, 3, player.whoAmI, 0f, 3);
-					return false;
-				}
+				
 				
 			}
 			
