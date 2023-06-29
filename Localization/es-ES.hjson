@@ -3060,6 +3060,7 @@ Mods: {
 			// EverlastingLightEnd: The Light flooding this world has been cleansed!
 			// SpeedUpLight: The everlasting light is catalyzed, preventing night from falling...
 			// TsukiyomiBossChecklist: The Boss Checklist updates to reveal a hidden foe!
+			// CanBeShimmeredSpoils: Can be Shimmered, converting into Stellar Remnants
 			`: El arma falló al reaccionar a tu aspecto, dejándola inutilizable. Solo puedes usar armas Astrales con Asphodene.
 		}
 
@@ -3132,28 +3133,6 @@ Mods: {
 			// WealthFocusTier1Tile.MapEntry: Mods.StarsAbove.MapObject.StellarFoci
 			// WealthFocusTier2Tile.MapEntry: Mods.StarsAbove.MapObject.StellarFoci
 			// WealthFocusTier3Tile.MapEntry: Mods.StarsAbove.MapObject.StellarFoci
-		}
-
-		ItemTooltip: {
-			BuryTheLight: {
-				$parentVal:
-					'''
-					[c/FF5858:Los ataques de esta arma cortarán en tu cursor e ignorarán 100 de defensa]
-					Cada Golpe Restaura Vida y Maná.
-					Los golpes críticos infligen Plaga Estelar por 20 segundos.
-					En un golpe crítico, los enemigos que ya estén infligidos con Plaga Estelar recibirán daño extra y serán infligidos con Quemadura de Hielo por 20 segundos.
-					En un golpe crítico, los enemigos ya infligidos con Quemadura de Hielo recibirán daño extra y también serán infligidos con Llama Oscura por 20 segundos.
-					Golpear enemgios e infligir efectos negativos cargará el [c/654D9C:Medidor de Juicio].
-					Cambiar el arma drenará el [c/654D9C:Medidor de Juicio].
-					Una vez el [c/654D9C:Medidor de Juicio] llegue al máximo, haz click derecho para liberar el [c/902FEC:Corte del Juicio], deshabilitando tus ataques normales.
-					Después de cargar brevemente, el [c/902FEC:Corte del Juicio] corres hacia delante y libera una miriada de cortes mortales donde estabas previamente.
-					Eres invencible durante la duración del [c/902FEC:Corte del Juicio].
-					Los enemigos infligidos por Plaga Estelar, Quemadura de Hielo o Llama Oscura recibirán daño crítico extra, purgando los efectos negativos en el proceso.
-					Mientras mas efectos negativos tenga el enmigo, mas daño recibirán, incrementando drásticamente.
-					‘Ahora sí que estas motivado’
-					'''
-				Calamity: Si un enemigo sufre de los tres efectos negativos, [c/902FEC:Corte del Juicio] adicionalmente realizará daño igual al 10% de la salud máxima del enemigo (límite de 1,000,000)
-			}
 		}
 
 		Items: {
@@ -7543,8 +7522,23 @@ Mods: {
 			}
 
 			BuryTheLight: {
+				/* Tooltip:
+					'''
+					[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes]
+					When this weapon is held, gain 100% armor penetration but defense is halved
+					Attacks rapidly cleave a large area and attacks will build stacks of [Judgement] on foes struck (Critical strikes apply two stacks of Judgement)
+					At 20 stacks of [Judgement] the next application of [Judgement] will burst in a barrage of slashes while removing all stacks of [Judgement]
+					Right click to summon [Mirage Blades] at your cursor, which heal 5 HP upon striking foes (10 second cooldown)
+					Striking foes with [Mirage Blades] and executing [Judgement] will charge the [c/654D9C:Judgement Gauge] (Drained when swapping weapons)
+					Press the Weapon Action Key to execute [c/902FEC:Judgement Finale], disabling attacks and consuming the [c/654D9C:Judgement Gauge]
+					Upon activation of [c/902FEC:Judgement Finale], all nearby foes are stunned
+					[c/902FEC:Judgement Finale] unleashes a barrage of slashes, covering the surrounding area
+					You are invincible and immobile for the duration of [c/902FEC:Judgement Finale]
+					After a short delay, all slashes will resolve, instantly defeating any non-boss foe struck
+					Bosses will take 10x critical damage instead
+					'Now you're motivated'
+					''' */
 				DisplayName: Entierra la Luz
-				// Tooltip: ""
 			}
 
 			TestArmorHead: {
@@ -7713,6 +7707,16 @@ Mods: {
 
 			QuantumButterflyLegs: {
 				// DisplayName: Quantum Butterfly Boots
+				// Tooltip: ""
+			}
+
+			BaselessBladeBody: {
+				// DisplayName: Baseless Blade Body
+				// Tooltip: ""
+			}
+
+			BaselessBladeLegs: {
+				// DisplayName: Baseless Blade Legs
 				// Tooltip: ""
 			}
 		}
@@ -8526,6 +8530,13 @@ Mods: {
 			// WarriorOrbitingLight.DisplayName: Lightblast
 			// WarriorOfLightFinalPhaseCastingSprite.DisplayName: ""
 			// WarriorOfLightFinalPhaseSwingingSprite.DisplayName: ""
+			// BuryTheLightFollowUp.DisplayName: Bury The Light Follow Up
+			// BuryTheLightSlashFollowUp.DisplayName: Bury The Light Slash Follow Up
+			// BuryTheLightSwing1.DisplayName: Bury The Light Swing1
+			// BuryTheLightSwing2.DisplayName: Bury The Light Swing2
+			// BuryTheLightSheathe.DisplayName: Bury The Light Sheathe
+			// MirageBlade.DisplayName: Mirage Blade
+			// MirageBladeAlt.DisplayName: Mirage Blade Alt
 		}
 
 		Buffs: {
@@ -10710,6 +10721,11 @@ Mods: {
 			BindingLight: {
 				// DisplayName: Binding Light
 				// Description: Mods.StarsAbove.Buffs.BindingLight.Description
+			}
+
+			MirageBladeCooldown: {
+				// DisplayName: Mirage Blade Cooldown
+				// Description: Mods.StarsAbove.Buffs.MirageBladeCooldown.Description
 			}
 		}
 

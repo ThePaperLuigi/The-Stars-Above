@@ -45,6 +45,7 @@ namespace StarsAbove
 		public bool VerdantEmbrace;
 		public bool AuthoritySacrificeMark;
 		public int NanitePlagueLevel = 0;
+		public int JudgementStacks = 0;
 
 		int dustTimer = 0;
 

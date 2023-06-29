@@ -5,9 +5,9 @@ using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-namespace StarsAbove.Projectiles
+namespace StarsAbove.Projectiles.BuryTheLight
 {
-    public class BuryTheLightSlash2Pre : ModProjectile
+	public class BuryTheLightSlash2Pre : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			// DisplayName.SetDefault("Bury The Light");
@@ -24,7 +24,7 @@ namespace StarsAbove.Projectiles
 			Projectile.scale = 1f;
 			Projectile.alpha = 0;
 			Projectile.hostile = false;
-			Projectile.friendly = true;
+			Projectile.friendly = false;
 			Projectile.light = 1f;            //How much light emit around the projectile
 			Projectile.ignoreWater = true;
 			Projectile.tileCollide = false;
@@ -39,32 +39,22 @@ namespace StarsAbove.Projectiles
 			get => Projectile.ai[0];
 			set => Projectile.ai[0] = value;
 		}
-        
-        public override bool PreDraw(ref Color lightColor)
-		{
-			Main.spriteBatch.End();
-			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied, SamplerState.LinearClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);
-
-			return true;
-		}
+		bool firstSpawn = true;
 		public override void AI() {
 
 			Player projOwner = Main.player[Projectile.owner];
 			Projectile.ai[0] += 1f;
-
+			if(firstSpawn)
+            {
+				Projectile.scale = Main.rand.NextFloat(1f, 3f);
+				firstSpawn = false;
+            }
 			if (projOwner.GetModPlayer<WeaponPlayer>().judgementCutTimer < 0)
 			{
 				//if (projectile.ai[0] > 100)
 				//{
-				if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
-				{
-					Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.Center, Vector2.Zero, ProjectileType<BuryTheLightSlash2>(), 55000, Projectile.knockBack, Projectile.owner, 0, 1);
-				}
-				else
-				{
-					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<BuryTheLightSlash2>(), 1000, Projectile.knockBack, Projectile.owner, 0, 1);
+				Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<BuryTheLightSlash2>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, 1);
 
-				}
 
 				// Play explosion sound
 				// Smoke Dust spawn

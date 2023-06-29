@@ -3135,28 +3135,6 @@ Mods: {
 			WealthFocusTier3Tile.MapEntry: Mods.StarsAbove.MapObject.StellarFoci
 		}
 
-		ItemTooltip: {
-			BuryTheLight: {
-				$parentVal:
-					'''
-					[c/FF5858:This weapon's attacks will slash at your cursor and deal true damage]
-					Each strike will restore Health and Mana
-					Critical hits will inflict Starblight for 20 seconds
-					On a critical hit, foes that are currently inflicted with Starblight will take extra damage and also be inflicted with Frostburn for 20 seconds
-					On a critical hit, foes that are currently inflicted with Frostburn will take extra damage and also be inflicted with Shadowflame for 20 seconds
-					Striking foes and inflicting debuffs will charge the [c/654D9C:Judgement Gauge]
-					Swapping off the weapon will drain the [c/654D9C:Judgement Gauge]
-					Once the [c/654D9C:Judgement Gauge] has reached its maximum, right click to unleash [c/902FEC:Judgement Cut], disabling your normal attacks
-					After a brief charge, [c/902FEC:Judgement Cut] dashes forwards and unleashes a myriad of deadly slices where you were previously
-					You are invincible for the duration of [c/902FEC:Judgement Cut]
-					Foes afflicted with Starblight, Frostburn, or Shadowflame will take extra critical damage, purging the debuffs in the process
-					The more debuffs on the foe, the more damage they will take, increasing dramatically
-					'Now you're motivated'
-					'''
-				Calamity: If the foe has been inflicted with all three debuffs, [c/902FEC:Judgement Cut] will additionally deal 10% of the enemy's Max HP (Capped at 1,000,000)
-			}
-		}
-
 		Items: {
 			AlienCoral: {
 				Tooltip:
@@ -6663,7 +6641,7 @@ Mods: {
 					The [c/495DEC:Celestial Void] will pulse powerful damage to all nearby foes, dragging them inwards
 					Attacks with this weapon during this time will fill the [c/4C3BB6:Virtue Gauge] with [c/6C38E3:Umbral Flux]
 					If the [c/4C3BB6:Virtue Gauge] is full once the [c/495DEC:Celestial Void] ends, it will collapse in a massive explosion, dealing 5x base damage
-					There is a 45 cooldown between the re-activation of [c/495DEC:Celestial Void]
+					There is a 45 second cooldown between the re-activation of [c/495DEC:Celestial Void]
 					'Pierce through all matter!'
 					'''
 				DisplayName: Virtue's Edge
@@ -7634,8 +7612,22 @@ Mods: {
 			}
 
 			BuryTheLight: {
+				Tooltip:
+					'''
+					[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes]
+					When this weapon is held, gain 100% armor penetration but defense is halved
+					Attacks rapidly cleave a large area and attacks will build stacks of [c/16DBF3:Judgement] on foes struck (Critical strikes apply two stacks of [c/16DBF3:Judgement])
+					At 20 stacks of [c/16DBF3:Judgement] the next application of [c/16DBF3:Judgement] will burst in a barrage of slashes while removing all stacks of [c/16DBF3:Judgement]
+					Right click to consume 50 mana, summoning [c/88F2FF:Mirage Blades] at your cursor which heal 5 HP upon striking foes (3 second cooldown)
+					Striking foes with [c/88F2FF:Mirage Blades] and executing [c/16DBF3:Judgement] will charge the [c/654D9C:Judgement Gauge] (Drained when swapping weapons)
+					Press the Weapon Action Key to execute [c/902FEC:Judgement Finale], disabling attacks and consuming the [c/654D9C:Judgement Gauge]
+					Upon activation of [c/902FEC:Judgement Finale], dash forward after a short delay while unleashing a barrage of slashes
+					[c/902FEC:Judgement Finale] resolves after a short delay, instantly defeating any non-boss foe struck
+					Bosses will take 100x critical damage and 10% of their Max HP as damage instead
+					You are invincible for the duration of [c/902FEC:Judgement Finale]
+					'Now you're motivated'
+					'''
 				DisplayName: Bury The Light
-				Tooltip: ""
 			}
 
 			TestArmorHead: {
@@ -7804,6 +7796,16 @@ Mods: {
 
 			QuantumButterflyLegs: {
 				DisplayName: Quantum Butterfly Boots
+				Tooltip: ""
+			}
+
+			BaselessBladeBody: {
+				DisplayName: Baseless Blade Body
+				Tooltip: ""
+			}
+
+			BaselessBladeLegs: {
+				DisplayName: Baseless Blade Legs
 				Tooltip: ""
 			}
 		}
@@ -8617,6 +8619,13 @@ Mods: {
 			WarriorOrbitingLight.DisplayName: Lightblast
 			WarriorOfLightFinalPhaseCastingSprite.DisplayName: ""
 			WarriorOfLightFinalPhaseSwingingSprite.DisplayName: ""
+			BuryTheLightFollowUp.DisplayName: Bury The Light Follow Up
+			BuryTheLightSlashFollowUp.DisplayName: Bury The Light Slash Follow Up
+			BuryTheLightSwing1.DisplayName: Bury The Light Swing1
+			BuryTheLightSwing2.DisplayName: Bury The Light Swing2
+			BuryTheLightSheathe.DisplayName: Bury The Light Sheathe
+			MirageBlade.DisplayName: Mirage Blade
+			MirageBladeAlt.DisplayName: Mirage Blade Alt
 		}
 
 		Buffs: {
@@ -10814,6 +10823,11 @@ Mods: {
 			BindingLight: {
 				DisplayName: Binding Light
 				Description: Mods.StarsAbove.Buffs.BindingLight.Description
+			}
+
+			MirageBladeCooldown: {
+				DisplayName: Mirage Blade Cooldown
+				Description: Mods.StarsAbove.Buffs.MirageBladeCooldown.Description
 			}
 		}
 

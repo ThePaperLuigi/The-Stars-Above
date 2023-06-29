@@ -3060,6 +3060,7 @@ Mods: {
 			EverlastingLightEnd: 满溢于这个世界的光亮已经被净化！
 			SpeedUpLight: 永恒之光受到催化，夜幕不再降临……
 			TsukiyomiBossChecklist: BossCheckList已经更新！并为你揭露了一位隐藏的敌人！
+			// CanBeShimmeredSpoils: Can be Shimmered, converting into Stellar Remnants
 			`: Mods.StarsAbove.Common.`
 		}
 
@@ -3132,28 +3133,6 @@ Mods: {
 			WealthFocusTier1Tile.MapEntry: Mods.StarsAbove.MapObject.StellarFoci
 			WealthFocusTier2Tile.MapEntry: Mods.StarsAbove.MapObject.StellarFoci
 			WealthFocusTier3Tile.MapEntry: Mods.StarsAbove.MapObject.StellarFoci
-		}
-
-		ItemTooltip: {
-			BuryTheLight: {
-				$parentVal:
-					'''
-					[c/FF5858:该武器攻击时会直接切割光标处的敌人，并造成真实伤害]
-					每次攻击都将恢复生命值与魔力值
-					暴击伤害将对目标施加星源枯萎减益，持续20秒
-					每次暴击，已受星源枯萎的敌人会受到额外伤害并获得20秒的霜冻
-					每次暴击，已受霜冻的敌人会受到额外伤害并获得20秒的暗影焰
-					击中敌人和施加减益都会填充[c/654D9C:魔人槽]
-					切换武器会失去[c/654D9C:魔人槽]
-					[c/654D9C:魔人槽]充满时，右键释放[c/902FEC:次元斩·绝]，释放期间禁用普通攻击
-					在短暂蓄力后[c/902FEC:次元斩·绝]发动并向前冲刺，在路径上释放无数致命切割
-					释放[c/902FEC:次元斩·绝]期间，你处于无敌状态
-					受到星源枯萎、霜冻或暗影焰的敌人会受到额外暴击伤害并清除这些减益
-					敌人所受减益越多，额外伤害就会越显著提升
-					“Now you're motivated”
-					'''
-				Calamity: 击中三种减益同时存在的敌人时，[c/902FEC:次元斩·绝]会额外造成敌人最大生命值10%的伤害（最多造成1000000点）
-			}
 		}
 
 		Items: {
@@ -7598,8 +7577,8 @@ Mods: {
 			}
 
 			BuryTheLight: {
-				DisplayName: 埋葬光明
 				Tooltip: ""
+				DisplayName: 埋葬光明
 			}
 
 			TestArmorHead: {
@@ -7768,6 +7747,16 @@ Mods: {
 
 			QuantumButterflyLegs: {
 				// DisplayName: Quantum Butterfly Boots
+				// Tooltip: ""
+			}
+
+			BaselessBladeBody: {
+				// DisplayName: Baseless Blade Body
+				// Tooltip: ""
+			}
+
+			BaselessBladeLegs: {
+				// DisplayName: Baseless Blade Legs
 				// Tooltip: ""
 			}
 		}
@@ -8581,6 +8570,13 @@ Mods: {
 			WarriorOrbitingLight.DisplayName: Lightblast
 			WarriorOfLightFinalPhaseCastingSprite.DisplayName: ""
 			WarriorOfLightFinalPhaseSwingingSprite.DisplayName: ""
+			// BuryTheLightFollowUp.DisplayName: Bury The Light Follow Up
+			// BuryTheLightSlashFollowUp.DisplayName: Bury The Light Slash Follow Up
+			// BuryTheLightSwing1.DisplayName: Bury The Light Swing1
+			// BuryTheLightSwing2.DisplayName: Bury The Light Swing2
+			// BuryTheLightSheathe.DisplayName: Bury The Light Sheathe
+			// MirageBlade.DisplayName: Mirage Blade
+			// MirageBladeAlt.DisplayName: Mirage Blade Alt
 		}
 
 		Buffs: {
@@ -10770,6 +10766,11 @@ Mods: {
 			BindingLight: {
 				// DisplayName: Binding Light
 				// Description: Mods.StarsAbove.Buffs.BindingLight.Description
+			}
+
+			MirageBladeCooldown: {
+				// DisplayName: Mirage Blade Cooldown
+				// Description: Mods.StarsAbove.Buffs.MirageBladeCooldown.Description
 			}
 		}
 
