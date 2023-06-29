@@ -699,7 +699,7 @@ namespace StarsAbove
 				if(item.OriginalRarity == ModContent.GetInstance<StellarSpoilsRarity>().Type)
                 {
 					Recipe recipe = Recipe.Create(item.type)
-					.AddCustomShimmerResult(ModContent.ItemType<StellarRemnant>())
+					.AddCustomShimmerResult(ModContent.ItemType<StellarRemnant>(), 3)
 					.Register();
 				}
             }
