@@ -732,6 +732,33 @@ namespace StarsAbove.NPCs.WarriorOfLight
 						NPC.frameCounter = 0;
 					}
 					break;
+				case (float)ActionState.Dying:
+					NPC.frameCounter++;
+					if (NPC.frameCounter < 10)
+					{
+						NPC.frame.Y = (int)Frame.Idle1 * frameHeight;
+					}
+					else if (NPC.frameCounter < 20)
+					{
+						NPC.frame.Y = (int)Frame.Idle2 * frameHeight;
+					}
+					else if (NPC.frameCounter < 30)
+					{
+						NPC.frame.Y = (int)Frame.Idle3 * frameHeight;
+					}
+					else if (NPC.frameCounter < 40)
+					{
+						NPC.frame.Y = (int)Frame.Idle4 * frameHeight;
+					}
+					else if (NPC.frameCounter < 50)
+					{
+						NPC.frame.Y = (int)Frame.Idle5 * frameHeight;
+					}
+					else
+					{
+						NPC.frameCounter = 0;
+					}
+					break;
 			}
 		}
 

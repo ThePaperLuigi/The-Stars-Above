@@ -10326,7 +10326,6 @@ namespace StarsAbove.NPCs.AttackLibrary
 		}
 
 		//Third Warrior of Light summoning mechanic
-		//Uses Stardust to create lots of tracking projectiles
 		//Solar on the sides to make them impassable
 		//Nebula on the top and bottom to make the player move
 		//One vortex shooting downwards to split the middle
@@ -10440,13 +10439,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 						Vector2.Zero, typeVortex, damage, 0f, Main.myPlayer, 60 + (i * 20), (i * 30), 0 + (i * 36));
 					}
 
-					Projectile.NewProjectile(entitySource,
-						new Vector2(npc.Center.X + 300, npc.Center.Y), // Spawns here
-						Vector2.Zero, typeStardust, damage, 0f, Main.myPlayer, 240, 40, Main.rand.Next(0, 2));
-					Projectile.NewProjectile(entitySource,
-						new Vector2(npc.Center.X - 300, npc.Center.Y), // Spawns here
-						Vector2.Zero, typeStardust, damage, 0f, Main.myPlayer, 240, 40, Main.rand.Next(0, 2));
-
+					
 					for (int i = 0; i < 4; i++)
 					{
 						Projectile.NewProjectile(entitySource,
@@ -10952,23 +10945,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 
-					float numberProjectiles = 7;
-					float adjustedRotation = MathHelper.ToRadians(35);
-
-					for (int i = 0; i < numberProjectiles; i++)
-					{
-						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
-						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, perturbedSpeed.X * 5, perturbedSpeed.Y * 5, type, damage, 0, Main.myPlayer);
-					}
-					//Delayed swords
-					numberProjectiles = 5;
-					adjustedRotation = MathHelper.ToRadians(55);
-
-					for (int i = 0; i < numberProjectiles; i++)
-					{
-						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
-						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, perturbedSpeed.X * 5, perturbedSpeed.Y * 5, type, damage, 0, Main.myPlayer, 0, 0, 60);
-					}
+				
 
 				}
 				if (Main.netMode != NetmodeID.MultiplayerClient)
