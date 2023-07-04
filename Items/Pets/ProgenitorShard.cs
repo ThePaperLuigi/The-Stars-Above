@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using StarsAbove.Items.Materials;
 using static Terraria.ModLoader.ModContent;
 using Microsoft.Xna.Framework;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Pets
 {
@@ -28,7 +29,7 @@ namespace StarsAbove.Items.Pets
 			Item.UseSound = SoundID.Item2;
 			Item.useAnimation = 20;
 			Item.useTime = 20;
-			Item.rare = ItemRarityID.Yellow;
+			Item.rare = ModContent.GetInstance<StellarSpoilsRarity>().Type; // Custom Rarity
 			Item.noMelee = true;
 			Item.value = Item.sellPrice(0, 0, 10, 0);
 			Item.buffType = BuffType<Buffs.WarriorPetBuff>();
@@ -37,8 +38,8 @@ namespace StarsAbove.Items.Pets
 		public override void AddRecipes()
 		{
 			CreateRecipe(1)
-										.AddIngredient(ItemType<PrismaticCore>(), 3)
-				.AddIngredient(ItemType<DullTotemOfLight>(), 1)
+				.AddIngredient(ItemType<Materials.StellarRemnant>(), 10)
+				.DisableDecraft()
 				.AddTile(TileID.Anvils)
 				.Register();
 		}
