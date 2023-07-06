@@ -693,16 +693,7 @@ namespace StarsAbove
 		}
 		public override void AddRecipes()
         {
-			for(int i = 0; i < Main.maxItems; i++)
-            {
-				Item item = Main.item[i];
-				if(item.OriginalRarity == ModContent.GetInstance<StellarSpoilsRarity>().Type)
-                {
-					Recipe recipe = Recipe.Create(item.type)
-					.AddCustomShimmerResult(ModContent.ItemType<StellarRemnant>(), 3)
-					.Register();
-				}
-            }
+			
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
 		{
