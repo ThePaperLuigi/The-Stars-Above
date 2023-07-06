@@ -93,8 +93,8 @@ namespace StarsAbove.NPCs.WarriorOfLight
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 414000;
-			NPC.damage = 0;
+			NPC.lifeMax = 140000;
+			NPC.damage = 30;
 			NPC.defense = 35;
 			NPC.knockBackResist = 0f;
 			NPC.width = 200;
@@ -116,7 +116,11 @@ namespace StarsAbove.NPCs.WarriorOfLight
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
 			NPC.netAlways = true;
 		}
-        public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+		public override bool CanHitPlayer(Player target, ref int cooldownSlot)
+		{
+			return false;
+		}
+		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
 			if(NPC.localAI[1] > 0)
             {
@@ -727,6 +731,34 @@ namespace StarsAbove.NPCs.WarriorOfLight
 						NPC.frameCounter = 0;
 					}
 					break;
+				default:
+					NPC.frameCounter++;
+					if (NPC.frameCounter < 10)
+					{
+						NPC.frame.Y = (int)Frame.Idle1 * frameHeight;
+					}
+					else if (NPC.frameCounter < 20)
+					{
+						NPC.frame.Y = (int)Frame.Idle2 * frameHeight;
+					}
+					else if (NPC.frameCounter < 30)
+					{
+						NPC.frame.Y = (int)Frame.Idle3 * frameHeight;
+					}
+					else if (NPC.frameCounter < 40)
+					{
+						NPC.frame.Y = (int)Frame.Idle4 * frameHeight;
+					}
+					else if (NPC.frameCounter < 50)
+					{
+						NPC.frame.Y = (int)Frame.Idle5 * frameHeight;
+					}
+					else
+					{
+						NPC.frameCounter = 0;
+					}
+
+					break;
 			}
 		}
 
@@ -772,7 +804,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 				}
 			}
 
-			if (NPC.ai[1] >= 180f)
+			if (NPC.ai[1] >= 280f)
 			{
 				Main.LocalPlayer.GetModPlayer<BossPlayer>().warriorCutsceneProgress2 = 10;
 				for (int d = 0; d < 305; d++)

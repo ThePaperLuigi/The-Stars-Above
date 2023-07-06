@@ -112,8 +112,8 @@ namespace StarsAbove.NPCs.Dioskouroi
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 85000;
-			NPC.damage = 0;
+			NPC.lifeMax = 35000;
+			NPC.damage = 30;
 			NPC.defense = 15;
 			NPC.knockBackResist = 0f;
 			NPC.width = 100;
@@ -136,7 +136,10 @@ namespace StarsAbove.NPCs.Dioskouroi
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
 			NPC.netAlways = true;
 		}
-
+		public override bool CanHitPlayer(Player target, ref int cooldownSlot)
+		{
+			return false;
+		}
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			return 0f;

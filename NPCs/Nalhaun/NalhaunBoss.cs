@@ -113,8 +113,8 @@ namespace StarsAbove.NPCs.Nalhaun
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 214000;
-			NPC.damage = 0;
+			NPC.lifeMax = 75000;
+			NPC.damage = 20;
 			NPC.defense = 125;
 			NPC.knockBackResist = 0f;
 			NPC.width = 160;
@@ -136,7 +136,10 @@ namespace StarsAbove.NPCs.Nalhaun
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
 			NPC.netAlways = true;
 		}
-
+		public override bool CanHitPlayer(Player target, ref int cooldownSlot)
+		{
+			return false;
+		}
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			return 0f;

@@ -193,7 +193,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				
 				float Speed = 6f;  //projectile speed
 				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-				int damage = 30;  //projectile damage
+				int damage = npc.damage/2 + 30/2;  //projectile damage
 				int type = ProjectileType<VagrantStar>(); //Type of projectile
 
 				float rotation = (float)Math.Atan2(StartPosition.Y - (target.position.Y + (target.height * 0.5f)), StartPosition.X - (target.position.X + (target.width * 0.5f)));
@@ -308,7 +308,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				float Speed = 30f;  //projectile speed
 				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-				int damage = 10;  //projectile damage
+				int damage = npc.damage/2 + 10/2;  //projectile damage
 				int type = ProjectileType<VagrantStar>(); //Type of projectile
 
 				float rotation = (float)Math.Atan2(StartPosition.Y - (target.position.Y + (target.height * 0.5f)), StartPosition.X - (target.position.X + (target.width * 0.5f)));
@@ -426,7 +426,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				SoundEngine.PlaySound(SoundID.Item124, npc.Center);
 				float Speed = 5f;  //projectile speed
 				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-				int damage = 30;  //projectile damage
+				int damage = npc.damage/2 + 30/2;  //projectile damage
 				int type = ProjectileType<VagrantStar>(); //Type of projectile
 
 				float rotation = (float)Math.Atan2(StartPosition.Y - (target.position.Y + (target.height * 0.5f)), StartPosition.X - (target.position.X + (target.width * 0.5f)));
@@ -522,7 +522,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					Vector2 position = target.Bottom + new Vector2(kitingOffsetX, 500);
 
 					int type = ProjectileType<VagrantStar>();
-					int damage = 20;
+					int damage = npc.damage/2 + 20/2;
 					var entitySource = npc.GetSource_FromAI();
 					for (int d = 0; d < 5; d += 1)
 					{
@@ -607,7 +607,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					Vector2 position = target.Bottom + new Vector2(kitingOffsetX, -500);
 
 					int type = ProjectileType<VagrantStar>();
-					int damage = 20;
+					int damage = npc.damage/2 + 20/2;
 					var entitySource = npc.GetSource_FromAI();
 
 					if(Main.netMode != NetmodeID.MultiplayerClient)
@@ -704,7 +704,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					Vector2 position = target.Bottom + new Vector2(kitingOffsetX, 500);
 
 					int type = ProjectileType<VagrantStar>();
-					int damage = 20;
+					int damage = npc.damage/2 + 20/2;
 					var entitySource = npc.GetSource_FromAI();
 					for (int d = 0; d < 8; d += 1)
 					{
@@ -789,7 +789,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					Vector2 position = target.Bottom + new Vector2(kitingOffsetX, -500);
 
 					int type = ProjectileType<VagrantStar>();
-					int damage = 20;
+					int damage = npc.damage/2 + 20/2;
 					var entitySource = npc.GetSource_FromAI();
 					for (int d = 0; d < 8; d += 1)
 					{
@@ -957,7 +957,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, npc.Center);
 
 					int type = ProjectileType<BossTheofania>();
-					int damage = 120;
+					int damage = npc.damage/2 + 120/2;
 					var entitySource = npc.GetSource_FromAI();
 					Projectile.NewProjectile(entitySource, new Vector2(position.X, position.Y - 700), Vector2.UnitY * 14, type, damage, 0f, Main.myPlayer);
 					for (int ir = 0; ir < 100; ir++)
@@ -1013,7 +1013,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 
 					int type = ProjectileType<VagrantPlanetslash>();
-					int damage = 10;
+					int damage = npc.damage/2 + 10/2;
 					var entitySource = npc.GetSource_FromAI();
 
 					Projectile.NewProjectile(entitySource, new Vector2(npc.Center.X, npc.Center.Y - 150), Vector2.Zero, ProjectileID.PrincessWeapon, 0, 0f, Main.myPlayer);
@@ -1356,7 +1356,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 
 					int type = ProjectileType<VagrantBulletSwarm>();
-					int damage = 30;
+					int damage = npc.damage/2 + 30/2;
 					var entitySource = npc.GetSource_FromAI();
 					
 					Projectile.NewProjectile(entitySource, new Vector2(npc.Center.X, npc.Center.Y - 100), Vector2.Zero, type, damage, 0f, Main.myPlayer);
@@ -1712,7 +1712,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					int type = ProjectileType<BladeworkSlash>();
-					int damage = 20;
+					int damage = npc.damage/2 + 20/2;
 					var entitySource = npc.GetSource_FromAI();
 
 					//4 rotating slashes at the player's position.
@@ -1790,7 +1790,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					int type = ProjectileType<BladeworkSlash>();
-					int damage = 30;
+					int damage = npc.damage/2 + 30/2;
 					var entitySource = npc.GetSource_FromAI();
 
 					//3 rotating slashes forming a triangle
@@ -1867,7 +1867,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					int type = ProjectileType<BladeworkSlash>();
-					int damage = 30;
+					int damage = npc.damage/2 + 30/2;
 					var entitySource = npc.GetSource_FromAI();
 
 					//2 rotating slashes forming a +
@@ -1949,7 +1949,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					int type = ProjectileType<BladeworkSlash>();
-					int damage = 30;
+					int damage = npc.damage/2 + 30/2;
 					var entitySource = npc.GetSource_FromAI();
 
 
@@ -2037,7 +2037,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					int type = ProjectileType<BladeworkSlash>();
-					int damage = 30;
+					int damage = npc.damage/2 + 30/2;
 					var entitySource = npc.GetSource_FromAI();
 
 
@@ -2133,7 +2133,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					int type = ProjectileType<BladeworkSlash>();
-					int damage = 30;
+					int damage = npc.damage/2 + 30/2;
 					var entitySource = npc.GetSource_FromAI();
 
 
@@ -2223,7 +2223,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					int type = ProjectileType<BladeworkSlash>();
-					int damage = 30;
+					int damage = npc.damage/2 + 30/2;
 					var entitySource = npc.GetSource_FromAI();
 
 					//Wave 1
@@ -2346,7 +2346,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					Vector2 position = target.Bottom + new Vector2(kitingOffsetX, -500);
 
 					int type = ProjectileType<IvoryStake>();
-					int damage = 50;
+					int damage = npc.damage/2 + 50/2;
 					var entitySource = npc.GetSource_FromAI();
 
 					float Speed = 30f;  //projectile speed
@@ -2464,7 +2464,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					Vector2 position = target.Bottom + new Vector2(kitingOffsetX, -500);
 
 					int type = ProjectileType<IvoryStake>();
-					int damage = 50;
+					int damage = npc.damage/2 + 50/2;
 					var entitySource = npc.GetSource_FromAI();
 
 					float Speed = 30f;  //projectile speed
@@ -3051,7 +3051,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				{
 					/*
 					int type = ProjectileType<NalhaunCleave>();
-					int damage = 100;
+					int damage = npc.damage/2 + 100/2;
 					var entitySource = npc.GetSource_FromAI();
 
 
@@ -3150,7 +3150,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				{
 					/*
 					int type = ProjectileType<NalhaunCleave>();
-					int damage = 100;
+					int damage = npc.damage/2 + 100/2;
 					var entitySource = npc.GetSource_FromAI();
 
 
@@ -3249,7 +3249,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				{
 					/*
 					int type = ProjectileType<NalhaunCleave>();
-					int damage = 100;
+					int damage = npc.damage/2 + 100/2;
 					var entitySource = npc.GetSource_FromAI();
 
 
@@ -3349,7 +3349,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				{
 					/*
 					int type = ProjectileType<NalhaunCleave>();
-					int damage = 100;
+					int damage = npc.damage/2 + 100/2;
 					var entitySource = npc.GetSource_FromAI();
 
 
@@ -3448,7 +3448,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				{
 					/*
 					int type = ProjectileType<NalhaunCleave>();
-					int damage = 100;
+					int damage = npc.damage/2 + 100/2;
 					var entitySource = npc.GetSource_FromAI();
 
 
@@ -3547,7 +3547,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				{
 					/*
 					int type = ProjectileType<NalhaunCleave>();
-					int damage = 100;
+					int damage = npc.damage/2 + 100/2;
 					var entitySource = npc.GetSource_FromAI();
 
 
@@ -3639,7 +3639,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				float Speed = 3f;  //projectile speed
 				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y - 800);
-				int damage = 30;  //projectile damage
+				int damage = npc.damage/2 + 30/2;  //projectile damage
 				int type = ProjectileType<NalhaunBolt>(); //Type of projectile
 
 				float rotation = (float)Math.Atan2(StartPosition.Y - (target.position.Y + (target.height * 0.5f)), StartPosition.X - (target.position.X + (target.width * 0.5f)));
@@ -3734,7 +3734,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				float Speed = 6f;  //projectile speed
 				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-				int damage = 30;  //projectile damage
+				int damage = npc.damage/2 + 30/2;  //projectile damage
 				int type = ProjectileType<NalhaunOrbitingBolt>(); //Type of projectile
 
 				SoundEngine.PlaySound(SoundID.Item124, npc.Center);
@@ -3829,7 +3829,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 
 					int type = ProjectileType<NalhaunRuby>();
-					int damage = 30;
+					int damage = npc.damage/2 + 30/2;
 					var entitySource = npc.GetSource_FromAI();
 
 					SoundEngine.PlaySound(SoundID.DD2_EtherianPortalOpen, new Vector2(npc.Center.X, npc.Center.Y - 300));
@@ -3920,7 +3920,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 
 					int type = ProjectileType<NalhaunRuby>();
-					int damage = 30;
+					int damage = npc.damage/2 + 30/2;
 					var entitySource = npc.GetSource_FromAI();
 
 					SoundEngine.PlaySound(SoundID.DD2_EtherianPortalOpen, new Vector2(npc.Center.X, npc.Center.Y - 300));
@@ -4070,7 +4070,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					
 
 					int type = ProjectileType<NalhaunExplosionIndicator>();
-					int damage = 0;
+					int damage = npc.damage/2 + 0/2;
 					var entitySource = npc.GetSource_FromAI();
 
 
@@ -4194,7 +4194,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					
 
 					int type = ProjectileType<NalhaunExplosionIndicator>();
-					int damage = 0;
+					int damage = npc.damage/2 + 0/2;
 					var entitySource = npc.GetSource_FromAI();
 
 
@@ -4442,7 +4442,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				float Speed = 3f;  //projectile speed
 				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y - 800);
-				int damage = 30;  //projectile damage
+				int damage = npc.damage/2 + 30/2;  //projectile damage
 				int type = ProjectileType<CastorBolt>(); //Type of projectile
 
 				float rotation = (float)Math.Atan2(StartPosition.Y - (target.position.Y + (target.height * 0.5f)), StartPosition.X - (target.position.X + (target.width * 0.5f)));
@@ -4522,7 +4522,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 					float Speed = 6f;  //projectile speed
 					Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-					int damage = 30;  //projectile damage
+					int damage = npc.damage/2 + 30/2;  //projectile damage
 					int type = ProjectileType<CastorIgnitionBolt>(); //Type of projectile
 
 					for (int d = 0; d < 30; d++)
@@ -4605,7 +4605,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					}
 
 					int type = ProjectileType<CastorFireCircle>();
-					int damage = 20;
+					int damage = npc.damage/2 + 20/2;
 					var entitySource = npc.GetSource_FromAI();
 
 					for (int ir = 0; ir < 7; ir++)
@@ -4681,7 +4681,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					}
 
 					int type = ProjectileType<CastorFireCircle>();
-					int damage = 20;
+					int damage = npc.damage/2 + 20/2;
 					var entitySource = npc.GetSource_FromAI();
 
 					for (int ir = 0; ir < 7; ir++)
@@ -4757,7 +4757,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					}
 
 					int type = ProjectileType<CastorFireCircle>();
-					int damage = 20;
+					int damage = npc.damage/2 + 20/2;
 					var entitySource = npc.GetSource_FromAI();
 
 					for (int ir = 0; ir < 7; ir++)
@@ -4834,7 +4834,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					//SoundEngine.PlaySound(StarsAboveAudio.SFX_EnterDarkness, npc.Center);
 
 					int type = ProjectileType<NalhaunExplosionIndicator>();
-					int damage = 0;
+					int damage = npc.damage/2 + 0/2;
 					var entitySource = npc.GetSource_FromAI();
 
 
@@ -4943,7 +4943,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					Vector2 position = new Vector2(npc.Bottom.X + 840, npc.Center.Y + 800);
 
 					int type = ProjectileType<CastorBolt>();
-					int damage = 30;
+					int damage = npc.damage/2 + 30/2;
 					var entitySource = npc.GetSource_FromAI();
 					for (int d = 0; d < 8; d += 1)
 					{
@@ -5027,7 +5027,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				float Speed = 2f;  //projectile speed
 				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-				int damage = 20;  //projectile damage
+				int damage = npc.damage/2 + 20/2;  //projectile damage
 				int type = ProjectileType<CastorClashProjectile>(); //Type of projectile
 
 				for (int g = 0; g < 4; g++)
@@ -5219,7 +5219,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				float Speed = 3f;  //projectile speed
 				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y - 800);
-				int damage = 30;  //projectile damage
+				int damage = npc.damage/2 + 30/2;  //projectile damage
 				int type = ProjectileType<PolluxBolt>(); //Type of projectile
 
 				float rotation = (float)Math.Atan2(StartPosition.Y - (target.position.Y + (target.height * 0.5f)), StartPosition.X - (target.position.X + (target.width * 0.5f)));
@@ -5315,7 +5315,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					Vector2 position = target.Bottom + new Vector2(kitingOffsetX, -700);
 
 					int type = ProjectileType<PolluxBolt>();
-					int damage = 20;
+					int damage = npc.damage/2 + 20/2;
 					var entitySource = npc.GetSource_FromAI();
 					for (int d = 0; d < 5; d += 1)
 					{
@@ -5397,7 +5397,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				float Speed = -2f;  //projectile speed
 				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-				int damage = 20;  //projectile damage
+				int damage = npc.damage/2 + 20/2;  //projectile damage
 				int type = ProjectileType<PolluxClashProjectile>(); //Type of projectile
 
 
@@ -5483,7 +5483,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					//SoundEngine.PlaySound(StarsAboveAudio.SFX_EnterDarkness, npc.Center);
 
 					int type = ProjectileType<PolluxDiamondDust>();
-					int damage = 30;
+					int damage = npc.damage/2 + 30/2;
 					var entitySource = npc.GetSource_FromAI();
 
 
@@ -5589,7 +5589,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				{
 					float speed = 10f;
 					int type = ProjectileType<PolluxIceBlades>();
-					int damage = 30;
+					int damage = npc.damage/2 + 30/2;
 
 
 
@@ -5679,7 +5679,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				{
 					float speed = 10f;
 					int type = ProjectileType<PolluxIceBlades>();
-					int damage = 30;
+					int damage = npc.damage/2 + 30/2;
 
 
 
@@ -6016,7 +6016,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				{
 					float speed = 110f;
 					int type = ProjectileType<ThreadsOfFate>();
-					int damage = 40;
+					int damage = npc.damage/2 + 40/2;
 					var entitySource = npc.GetSource_FromAI();
 					SoundEngine.PlaySound(SoundID.Item124, npc.Center);
 
@@ -6097,7 +6097,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				{
 					float speed = 110f;
 					int type = ProjectileType<ThreadsOfFate>();
-					int damage = 40;
+					int damage = npc.damage/2 + 40/2;
 					var entitySource = npc.GetSource_FromAI();
 					SoundEngine.PlaySound(SoundID.Item124, npc.Center);
 
@@ -6176,7 +6176,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				{
 					float speed = 110f;
 					int type = ProjectileType<ThreadsOfFate>();
-					int damage = 40;
+					int damage = npc.damage/2 + 40/2;
 					var entitySource = npc.GetSource_FromAI();
 					SoundEngine.PlaySound(SoundID.Item124, npc.Center);
 
@@ -6323,7 +6323,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				{
 					float speed = 10f;
 					int type = ProjectileType<Projectiles.Tsukiyomi.PlusPlanet>();
-					int damage = 40;
+					int damage = npc.damage/2 + 40/2;
 					var entitySource = npc.GetSource_FromAI();
 					SoundEngine.PlaySound(SoundID.Item124, npc.Center);
 
@@ -6395,7 +6395,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				{
 					float speed = 10f;
 					int type = ProjectileType<Projectiles.Tsukiyomi.PlusPlanet>();
-					int damage = 40;
+					int damage = npc.damage/2 + 40/2;
 					var entitySource = npc.GetSource_FromAI();
 					SoundEngine.PlaySound(SoundID.Item124, npc.Center);
 
@@ -6482,7 +6482,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 					float Speed = 6f;  //projectile speed
 					Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-					int damage = 30;  //projectile damage
+					int damage = npc.damage/2 + 30/2;  //projectile damage
 					int type = ProjectileType<TsukiExpandingBolt>(); //Type of projectile
 
 					SoundEngine.PlaySound(SoundID.Item124, npc.Center);
@@ -6570,7 +6570,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 					float Speed = 6f;  //projectile speed
 					Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-					int damage = 30;  //projectile damage
+					int damage = npc.damage/2 + 30/2;  //projectile damage
 					int type = ProjectileType<TsukiExpandingBolt>(); //Type of projectile
 
 					SoundEngine.PlaySound(SoundID.Item124, npc.Center);
@@ -6660,7 +6660,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 					float Speed = 6f;  //projectile speed
 					Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-					int damage = 30;  //projectile damage
+					int damage = npc.damage/2 + 30/2;  //projectile damage
 					int type = ProjectileType<TsukiExpandingBoltDelay>(); //Type of projectile
 
 					SoundEngine.PlaySound(SoundID.Item124, npc.Center);
@@ -6770,7 +6770,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 					float Speed = 6f;  //projectile speed
 					Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-					int damage = 30;  //projectile damage
+					int damage = npc.damage/2 + 30/2;  //projectile damage
 					int type = ProjectileType<TsukiExpandingBoltDelay>(); //Type of projectile
 
 					SoundEngine.PlaySound(SoundID.Item124, npc.Center);
@@ -6864,7 +6864,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					{
 						float speed = 4f;
 						int type = ProjectileType<BladeworkIndicator>();
-						int damage = 0;
+						int damage = npc.damage/2 + 0/2;
 						var entitySource = npc.GetSource_FromAI();
 						
 
@@ -6899,7 +6899,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				{
 					float speed = 1f;
 					int type = ProjectileType<Projectiles.Tsukiyomi.TsukiyomiStar>();
-					int damage = 40;
+					int damage = npc.damage/2 + 40/2;
 					var entitySource = npc.GetSource_FromAI();
 
 					for (int d = 0; d < 30; d++)
@@ -6982,7 +6982,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				{
 					float speed = 1f;
 					int type = ProjectileType<Projectiles.Tsukiyomi.TsukiyomiStar>();
-					int damage = 40;
+					int damage = npc.damage/2 + 40/2;
 					var entitySource = npc.GetSource_FromAI();
 
 					for (int d = 0; d < 30; d++)
@@ -7054,7 +7054,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					{
 						float speed = 40f;
 						int type = ProjectileType<BladeworkIndicator>();
-						int damage = 0;
+						int damage = npc.damage/2 + 0/2;
 						var entitySource = npc.GetSource_FromAI();
 
 						for (int ir = 0; ir < 9; ir++)
@@ -7097,7 +7097,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				{
 					float speed = 7f;
 					int type = ProjectileType<Projectiles.Tsukiyomi.TsukiyomiStar>();
-					int damage = 20;
+					int damage = npc.damage/2 + 20/2;
 					var entitySource = npc.GetSource_FromAI();
 
 					for (int d = 0; d < 30; d++)
@@ -7177,7 +7177,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					{
 						float speed = 40f;
 						int type = ProjectileType<BladeworkIndicator>();
-						int damage = 0;
+						int damage = npc.damage/2 + 0/2;
 						var entitySource = npc.GetSource_FromAI();
 
 						for (int ir = 0; ir < 9; ir++)
@@ -7220,7 +7220,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				{
 					float speed = 7f;
 					int type = ProjectileType<Projectiles.Tsukiyomi.TsukiyomiStar>();
-					int damage = 20;
+					int damage = npc.damage/2 + 20/2;
 					var entitySource = npc.GetSource_FromAI();
 
 					for (int d = 0; d < 30; d++)
@@ -7313,7 +7313,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					int type = ProjectileType<TsukiBlackHole>();
-					int damage = 0;
+					int damage = npc.damage/2 + 0/2;
 					var entitySource = npc.GetSource_FromAI();
 
 					for (int d = 0; d < 30; d++)
@@ -7468,7 +7468,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				float Speed = 10f;  //projectile speed
 				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-				int damage = 75;  //projectile damage
+				int damage = npc.damage/2 + 75/2;  //projectile damage
 				int type = ProjectileType<TsukiMoonlightAttack>(); //Type of projectile
 
 				float rotation = (float)Math.Atan2(StartPosition.Y - (target.position.Y + (target.height * 0.5f)), StartPosition.X - (target.position.X + (target.width * 0.5f)));
@@ -7566,7 +7566,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				float Speed = 20f;  //projectile speed
 				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-				int damage = 55;  //projectile damage
+				int damage = npc.damage/2 + 55/2;  //projectile damage
 				int type = ProjectileType<TsukiMoonlightAttack>(); //Type of projectile
 
 				float rotation = (float)Math.Atan2(StartPosition.Y - (target.position.Y + (target.height * 0.5f)), StartPosition.X - (target.position.X + (target.width * 0.5f)));
@@ -8229,7 +8229,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.AddBuff(BuffType<TsukiyomiTeleport>(), 220);
 
 				int type = ProjectileType<TsukiShadowlessCeruleanAfterimage>();
-				int damage = 50;
+				int damage = npc.damage/2 + 50/2;
 				var entitySource = npc.GetSource_FromAI();
 
 
@@ -8336,7 +8336,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
 				}
 				int type = ProjectileType<TsukiTentacleCircle>();
-				int damage = 50;
+				int damage = npc.damage/2 + 50/2;
 				var entitySource = npc.GetSource_FromAI();
 
 
@@ -8427,7 +8427,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
 				}
 				int type = ProjectileType<TsukiTentacleCircle>();
-				int damage = 30;
+				int damage = npc.damage/2 + 30/2;
 				var entitySource = npc.GetSource_FromAI();
 
 
@@ -8519,7 +8519,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_StarbitCollected, npc.Center);
 
 				int type = ProjectileType<TsukiStarchild>();
-				int damage = 20;
+				int damage = npc.damage/2 + 20/2;
 				var entitySource = npc.GetSource_FromAI();
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -8580,7 +8580,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 
 					int type = ProjectileType<TsukiBloodshedIndicator>();
-					int damage = 0;
+					int damage = npc.damage/2 + 0/2;
 					var entitySource = npc.GetSource_FromAI();
 
 
@@ -8719,7 +8719,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					Projectile.NewProjectile(null, npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<fastRadiate>(), 0, 0, Main.myPlayer, 0f);
 
                     int type = ProjectileType<TsukiBladeworkSlash>();
-                    int damage = 50;
+                    int damage = npc.damage/2 + 50/2;
                     var entitySource = npc.GetSource_FromAI();
 
 					
@@ -8830,7 +8830,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					Projectile.NewProjectile(null, npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<fastRadiate>(), 0, 0, Main.myPlayer, 0f);
 
 					int type = ProjectileType<TsukiBladeworkSlash>();
-					int damage = 50;
+					int damage = npc.damage/2 + 50/2;
 					var entitySource = npc.GetSource_FromAI();
 
 
@@ -9096,7 +9096,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				float Speed = 10f;  //projectile speed
 				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-				int damage = 100;  //projectile damage
+				int damage = npc.damage/2 + 100/2;  //projectile damage
 				int type = ProjectileType<TheBitterEndProjectile>(); //Type of projectile
 
 				float rotation = (float)Math.Atan2(StartPosition.Y - (target.position.Y + (target.height * 0.5f)), StartPosition.X - (target.position.X + (target.width * 0.5f)));
@@ -9170,7 +9170,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					int damage = 100;
+					int damage = npc.damage/2 + 100/2;
 					if (npc.type == ModContent.NPCType<WarriorOfLightBoss>())
 					{
 						Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<WarriorOfLightSwingingSprite>(), 0, 0, Main.myPlayer, 180);
@@ -9215,7 +9215,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				{
 					/*
 					int type = ProjectileType<NalhaunCleave>();
-					int damage = 100;
+					int damage = npc.damage/2 + 100/2;
 					var entitySource = npc.GetSource_FromAI();
 
 
@@ -9288,7 +9288,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					int damage = 100;
+					int damage = npc.damage/2 + 100/2;
 					if (npc.type == ModContent.NPCType<WarriorOfLightBoss>())
 					{
 						Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<WarriorOfLightSwingingSprite>(), 0, 0, Main.myPlayer, 180);
@@ -9324,7 +9324,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				{
 					/*
 					int type = ProjectileType<NalhaunCleave>();
-					int damage = 100;
+					int damage = npc.damage/2 + 100/2;
 					var entitySource = npc.GetSource_FromAI();
 
 
@@ -9484,7 +9484,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					int damage = 100;
+					int damage = npc.damage/2 + 100/2;
 					if (npc.type == ModContent.NPCType<WarriorOfLightBoss>())
 					{
 						Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<WarriorOfLightSwingingSprite>(), 0, 0, Main.myPlayer, 180);
@@ -9539,7 +9539,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 							npc.DelBuff(index);
 						float Speed = 8f;  //projectile speed
 						Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-						int damage = 65;  //projectile damage
+						int damage = npc.damage/2 + 65/2;  //projectile damage
 						int type = ProjectileType<WarriorIcebolt>(); //Type of projectile
 
 						float rotation = MathHelper.ToRadians(45);
@@ -9564,7 +9564,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 							npc.DelBuff(index);
 						float Speed = 8f;  //projectile speed
 						Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-						int damage = 65;  //projectile damage
+						int damage = npc.damage/2 + 65/2;  //projectile damage
 						int type = ProjectileType<WarriorFirebolt>(); //Type of projectile
 
 						float rotation = MathHelper.ToRadians(-45f);
@@ -9585,7 +9585,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					
 					/*
 					int type = ProjectileType<NalhaunCleave>();
-					int damage = 100;
+					int damage = npc.damage/2 + 100/2;
 					var entitySource = npc.GetSource_FromAI();
 
 
@@ -9698,7 +9698,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				float Speed = 10f;  //projectile speed
 				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-				int damage = 100;  //projectile damage
+				int damage = npc.damage/2 + 100/2;  //projectile damage
 				int type = ProjectileType<WarriorLightblast>(); //Type of projectile
 
 				//float rotation = (float)Math.Atan2(StartPosition.Y - (target.position.Y + (target.height * 0.5f)), StartPosition.X - (target.position.X + (target.width * 0.5f)));
@@ -9840,7 +9840,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				float Speed = 10f;  //projectile speed
 				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-				int damage = 100;  //projectile damage
+				int damage = npc.damage/2 + 100/2;  //projectile damage
 				int type = ProjectileType<WarriorOrbitingLight>(); //Type of projectile
 
 				//float rotation = (float)Math.Atan2(StartPosition.Y - (target.position.Y + (target.height * 0.5f)), StartPosition.X - (target.position.X + (target.width * 0.5f)));
@@ -9962,7 +9962,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				float Speed = 20f;  //projectile speed
 				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-				int damage = 100;  //projectile damage
+				int damage = npc.damage/2 + 100/2;  //projectile damage
 				int type1 = ProjectileType<WarriorAbsoluteBlade>(); //Type of projectile
 				int type2 = ProjectileType<WarriorAbsoluteBlade2>(); //Type of projectile
 
@@ -10113,7 +10113,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					int typeVortex = ProjectileType<WarriorVortexSummon>();
 					int typeStardust = ProjectileType<WarriorStardustSummon>();
 
-					int damage = 30;
+					int damage = npc.damage/2 + 30/2;
 					var entitySource = npc.GetSource_FromAI();
 
 					
@@ -10268,7 +10268,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					int typeVortex = ProjectileType<WarriorVortexSummon>();
 					int typeStardust = ProjectileType<WarriorStardustSummon>();
 
-					int damage = 30;
+					int damage = npc.damage/2 + 30/2;
 					var entitySource = npc.GetSource_FromAI();
 
 
@@ -10421,7 +10421,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					int typeVortex = ProjectileType<WarriorVortexSummon>();
 					int typeStardust = ProjectileType<WarriorStardustSummon>();
 
-					int damage = 30;
+					int damage = npc.damage/2 + 30/2;
 					var entitySource = npc.GetSource_FromAI();
 
 
@@ -10535,7 +10535,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 					float Speed = 6f;  //projectile speed
 					Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-					int damage = 60;  //projectile damage
+					int damage = npc.damage/2 + 60/2;  //projectile damage
 					int type = ProjectileType<WarriorExpandingBladesDelay>(); //Type of projectile
 
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_HolyStab, npc.Center);
@@ -10654,7 +10654,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 					float Speed = 6f;  //projectile speed
 					Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-					int damage = 60;  //projectile damage
+					int damage = npc.damage/2 + 60/2;  //projectile damage
 					int type = ProjectileType<WarriorExpandingBladesDelay>(); //Type of projectile
 
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_HolyStab, npc.Center);
@@ -10934,7 +10934,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_DarknessMustBeDestroyed, npc.Center);
 				float Speed = 12f;  //projectile speed
 				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-				int damage = 0;  //projectile damage
+				int damage = npc.damage/2 + 0/2;  //projectile damage
 				int type = ProjectileType<BladeworkIndicator>(); //Type of projectile
 
 				float rotation = (float)Math.Atan2(StartPosition.Y - (target.position.Y + (target.height * 0.5f)), StartPosition.X - (target.position.X + (target.width * 0.5f)));
@@ -10980,7 +10980,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				float Speed = 12f;  //projectile speed
 				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-				int damage = 65;  //projectile damage
+				int damage = npc.damage/2 + 65/2;  //projectile damage
 				int type = ProjectileType<WarriorBladeOfLightReturning>(); //Type of projectile
 
 				float rotation = (float)Math.Atan2(StartPosition.Y - (target.position.Y + (target.height * 0.5f)), StartPosition.X - (target.position.X + (target.width * 0.5f)));
@@ -11001,19 +11001,8 @@ namespace StarsAbove.NPCs.AttackLibrary
 						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
 						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, perturbedSpeed.X * 5, perturbedSpeed.Y * 5, type, damage, 0, Main.myPlayer);
 					}
-					//Delayed swords
-					numberProjectiles = 5;
-					adjustedRotation = MathHelper.ToRadians(55);
-
-					for (int i = 0; i < numberProjectiles; i++)
-					{
-						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
-						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, perturbedSpeed.X * 5, perturbedSpeed.Y * 5, type, damage, 0, Main.myPlayer, 0, 0, 60);
-					}
-
+					
 				}
-
-
 
 				#endregion
 
@@ -11091,7 +11080,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				float Speed = 7f;  //projectile speed
 				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-				int damage = 65;  //projectile damage
+				int damage = npc.damage/2 + 65/2;  //projectile damage
 				int type = ProjectileType<WarriorBladeOfLightReturning>(); //Type of projectile
 
 				float rotation = 0f;
@@ -11192,7 +11181,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 
 					int type = ProjectileType<WarriorBladeOfLightReturningTurret>();
-					int damage = 50;
+					int damage = npc.damage/2 + 50/2;
 					var entitySource = npc.GetSource_FromAI();
 
 					for (int ir = 0; ir < 50; ir++)
@@ -11299,7 +11288,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				float Speed = 3f;  //projectile speed
 				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-				int damage = 65;  //projectile damage
+				int damage = npc.damage/2 + 65/2;  //projectile damage
 				int type = ProjectileType<WarriorFirebolt>(); //Type of projectile
 
 				float rotation = MathHelper.ToRadians(-45f);
@@ -11404,7 +11393,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				float Speed = 3f;  //projectile speed
 				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-				int damage = 65;  //projectile damage
+				int damage = npc.damage/2 + 65/2;  //projectile damage
 				int type = ProjectileType<WarriorIcebolt>(); //Type of projectile
 
 				float rotation = MathHelper.ToRadians(45f);
@@ -11576,7 +11565,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				float Speed = 22f;  //projectile speed
 				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-				int damage = 65;  //projectile damage
+				int damage = npc.damage/2 + 65/2;  //projectile damage
 				int type = ProjectileType<TheBitterEndProjectile>(); //Type of projectile
 
 				float rotation = 0f;
@@ -11940,7 +11929,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				float Speed = 7f;  //projectile speed
 				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-				int damage = 65;  //projectile damage
+				int damage = npc.damage/2 + 65/2;  //projectile damage
 				int type = ProjectileType<WarriorBladeOfLightReturning>(); //Type of projectile
 
 				float rotation = 0f;
@@ -12039,7 +12028,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					{
 						float speed = 4f;
 						int type = ProjectileType<BladeworkIndicator>();
-						int damage = 0;
+						int damage = npc.damage/2 + 0/2;
 						var entitySource = npc.GetSource_FromAI();
 
 
@@ -12074,7 +12063,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				{
 					float speed = 1f;
 					int type = ProjectileType<Projectiles.Tsukiyomi.TsukiyomiStar>();
-					int damage = 50;
+					int damage = npc.damage/2 + 50/2;
 					var entitySource = npc.GetSource_FromAI();
 
 					for (int d = 0; d < 30; d++)
@@ -12190,7 +12179,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				{
 					float speed = 1f;
 					int type = ProjectileType<WarriorOrbitingLight>();
-					int damage = 100;
+					int damage = npc.damage/2 + 100/2;
 					var entitySource = npc.GetSource_FromAI();
 
 					

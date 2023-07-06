@@ -37,6 +37,8 @@ namespace StarsAbove.NPCs.Nalhaun
 			NPC.aiStyle = 0;
 			NPC.noGravity = true;
 			NPC.dontTakeDamage = true;
+			NPC.ShowNameOnHover = false;
+
 		}
 
 		private int portalFrame
