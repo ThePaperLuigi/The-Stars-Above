@@ -769,16 +769,6 @@ namespace StarsAbove
 
 		public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
-
-			
-			
-			if (npc.type == NPCID.WallofFlesh)
-			{
-				npcLoot.Add(ItemDropRule.Common(ItemType<ShatteredDisk>(), 1));
-				
-
-			}
-
 			if (npc.type == NPCID.QueenSlimeBoss)
 			{
 				npcLoot.Add(ItemDropRule.Common(ItemType<RoyalSlimePrism>(), 4));

@@ -1181,6 +1181,18 @@ Mods: {
 			}
 
 			BossItemDialogue: {
+				VagrantAsphodene: {
+					1: Hang on- there's something else lodged into this meteor.
+					2: It feels like I should know what it is, but I just can't- kind of like it's stopping me from doing so.
+					3: At least that tells me one thing- it's important! I'd prefer you examine it as soon as you are able.
+				}
+
+				VagrantEridani: {
+					1: Hold on a moment. There's an item of interest within this meteorite.
+					2: It looks so familiar, and yet something's stopping me from placing its identity- how vexing.
+					3: They say encountering obstacles means you're heading in the right direction. Let's take a closer look as soon as possible.
+				}
+
 				Nalhaun: {
 					1: We meet again, {0}. Again, I have another foe for you to defeat.
 					2: I've given you the 'Ancient Crown.' With it, you can call forth a powerful foe, the Burnished King.
@@ -1605,7 +1617,7 @@ Mods: {
 					145: It's the Hallow, the stuff of legend! Awesome! Everything here wants to kill us, though. Bummer.
 					146: Whoa! This place is funky. You don't see these mushrooms every day.
 					147: There's a skele-ton of enemies here! Don't you enjoy a little danger? I sure do.
-					148: So this is the meteor impact we heard. I bet we can make some crazy stuff with a meteorite.
+					148: So this is the meteor impact we heard...
 					149: This is.. the Brimstone Crag. Something dreadful happened here.
 					150: So this is the Astral Infection. I've read about it, but actually seeing it...
 					151: Wow.. This place is quite unique. I can't quite explain.
@@ -1807,7 +1819,7 @@ Mods: {
 					143: We've stepped straight into fairytale land. It would be prettier if everything here wasn't hostile.
 					144: Giant glowing mushrooms.. It feels rather.. welcoming? We should take some back home, just in case.
 					145: I can feel traps everywhere. Strong weapons are buried here as well. Stay ready.
-					146: So this is the meteor impact we heard. Wonder what you can make out of it..?
+					146: So this is the meteor impact we heard...
 					147: The Brimstone Crag.. I can feel the horrors of the past..
 					148: This is the Astral Infection. A subject I'm all too familiar with...
 					149: This place is quite beautiful. Who knew it would be under the desert..?

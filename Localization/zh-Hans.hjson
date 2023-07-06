@@ -1181,6 +1181,18 @@ Mods: {
 			}
 
 			BossItemDialogue: {
+				VagrantAsphodene: {
+					// 1: Hang on- there's something else lodged into this meteor.
+					// 2: It feels like I should know what it is, but I just can't- kind of like it's stopping me from doing so.
+					// 3: At least that tells me one thing- it's important! I'd prefer you examine it as soon as you are able.
+				}
+
+				VagrantEridani: {
+					// 1: Hold on a moment. There's an item of interest within this meteorite.
+					// 2: It looks so familiar, and yet something's stopping me from placing its identity- how vexing.
+					// 3: They say encountering obstacles means you're heading in the right direction. Let's take a closer look as soon as possible.
+				}
+
 				Nalhaun: {
 					1: 我们又见面了，{0}。又一次，还有一个敌人需要你打败。
 					2: 这是“远古王冠”。它将召唤一位强大的敌人，复光之君。

@@ -1181,6 +1181,18 @@ Mods: {
 			}
 
 			BossItemDialogue: {
+				VagrantAsphodene: {
+					// 1: Hang on- there's something else lodged into this meteor.
+					// 2: It feels like I should know what it is, but I just can't- kind of like it's stopping me from doing so.
+					// 3: At least that tells me one thing- it's important! I'd prefer you examine it as soon as you are able.
+				}
+
+				VagrantEridani: {
+					// 1: Hold on a moment. There's an item of interest within this meteorite.
+					// 2: It looks so familiar, and yet something's stopping me from placing its identity- how vexing.
+					// 3: They say encountering obstacles means you're heading in the right direction. Let's take a closer look as soon as possible.
+				}
+
 				Nalhaun: {
 					1: Nos encontramos otra vez, {0}. Necesito tu ayuda.
 					2: Te he dado el  'Fragmento Antiguo'. con el, puedes llamar a un poderoso enemigo, el Rey Bruñido.
@@ -7526,16 +7538,15 @@ Mods: {
 					'''
 					[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes]
 					When this weapon is held, gain 100% armor penetration but defense is halved
-					Attacks rapidly cleave a large area and attacks will build stacks of [Judgement] on foes struck (Critical strikes apply two stacks of Judgement)
-					At 20 stacks of [Judgement] the next application of [Judgement] will burst in a barrage of slashes while removing all stacks of [Judgement]
-					Right click to summon [Mirage Blades] at your cursor, which heal 5 HP upon striking foes (10 second cooldown)
-					Striking foes with [Mirage Blades] and executing [Judgement] will charge the [c/654D9C:Judgement Gauge] (Drained when swapping weapons)
+					Attacks rapidly cleave a large area and attacks will build stacks of [c/16DBF3:Judgement] on foes struck (Critical strikes apply two stacks of [c/16DBF3:Judgement])
+					At 20 stacks of [c/16DBF3:Judgement] the next application of [c/16DBF3:Judgement] will burst in a barrage of slashes while removing all stacks of [c/16DBF3:Judgement]
+					Right click to consume 50 mana, summoning [c/88F2FF:Mirage Blades] at your cursor which heal 5 HP upon striking foes (3 second cooldown)
+					Striking foes with [c/88F2FF:Mirage Blades] and executing [c/16DBF3:Judgement] will charge the [c/654D9C:Judgement Gauge] (Drained when swapping weapons)
 					Press the Weapon Action Key to execute [c/902FEC:Judgement Finale], disabling attacks and consuming the [c/654D9C:Judgement Gauge]
-					Upon activation of [c/902FEC:Judgement Finale], all nearby foes are stunned
-					[c/902FEC:Judgement Finale] unleashes a barrage of slashes, covering the surrounding area
-					You are invincible and immobile for the duration of [c/902FEC:Judgement Finale]
-					After a short delay, all slashes will resolve, instantly defeating any non-boss foe struck
-					Bosses will take 10x critical damage instead
+					Upon activation of [c/902FEC:Judgement Finale], dash forward after a short delay while unleashing a barrage of slashes
+					[c/902FEC:Judgement Finale] resolves after a short delay, instantly defeating any non-boss foe struck
+					Bosses will take 100x critical damage and 10% of their Max HP as damage instead
+					You are invincible for the duration of [c/902FEC:Judgement Finale]
 					'Now you're motivated'
 					''' */
 				DisplayName: Entierra la Luz

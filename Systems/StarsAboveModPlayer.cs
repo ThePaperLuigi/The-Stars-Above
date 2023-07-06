@@ -361,6 +361,7 @@ namespace StarsAbove
         public int arbiterDialogue = 0;
         public int tsukiyomiDialogue = 0;
 
+        public int vagrantBossItemDialogue = 0;
         public int dioskouroiBossItemDialogue = 0;
         public int nalhaunBossItemDialogue = 0;
         public int penthBossItemDialogue = 0;
@@ -985,6 +986,7 @@ namespace StarsAbove
             tag["arbiterDialogue"] = arbiterDialogue;
             tag["tsukiyomiDialogue"] = tsukiyomiDialogue;
 
+            tag["vagrantitem"] = vagrantBossItemDialogue;
             tag["dioskouroiitem"] = dioskouroiBossItemDialogue;
             tag["nalhaunitem"] = nalhaunBossItemDialogue;
             tag["penthitem"] = penthBossItemDialogue;
@@ -1291,6 +1293,7 @@ namespace StarsAbove
             arbiterDialogue = tag.GetInt("arbiterDialogue");
             tsukiyomiDialogue = tag.GetInt("tsukiyomiDialogue");
 
+            vagrantBossItemDialogue = tag.GetInt("vagrantitem");
             dioskouroiBossItemDialogue = tag.GetInt("dioskouroiitem");
             nalhaunBossItemDialogue = tag.GetInt("nalhaunitem");
             penthBossItemDialogue = tag.GetInt("penthitem");
@@ -3256,6 +3259,12 @@ namespace StarsAbove
 
                 }
                 //Boss Spawn items
+                if (vagrantBossItemDialogue == 0 && Player.ZoneMeteor)
+                {
+                    vagrantBossItemDialogue = 1;
+                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 151, 255, 90); }
+
+                }
                 if (dioskouroiBossItemDialogue == 0 && (SkeletronPrimeDialogue == 2 || TwinsDialogue == 2 || DestroyerDialogue == 2) && vagrantDialogue == 2)
                 {
                     dioskouroiBossItemDialogue = 1;
@@ -3472,7 +3481,8 @@ namespace StarsAbove
                         return;
 
                     }
-                    if (vagrantDialogue == 2 && VagrantWeaponDialogue == 0)
+                    //Vagrant weapons have been moved...
+                    if (QueenSlimeWeaponDialogue == 2 && VagrantWeaponDialogue == 0)
                     {
                         VagrantWeaponDialogue = 1;
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
