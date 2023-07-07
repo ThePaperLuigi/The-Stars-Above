@@ -966,6 +966,14 @@ namespace StarsAbove
 				}
 
 			}
+			if (player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
+			{
+				if (item.ModItem is Hawkmoon && !disableAspectPenalty) //Ranged weapons
+				{
+					damage += 0.1f;
+				}
+
+			}
 			if (player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
 			{
 				if (item.ModItem is CosmicDestroyer && !disableAspectPenalty) //Ranged weapons

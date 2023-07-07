@@ -35,10 +35,8 @@ namespace StarsAbove.NPCs.Dioskouroi
 	public class PolluxBoss : ModNPC
 	{
 
-		
-		
-		// Our texture is 36x36 with 2 pixels of padding vertically, so 38 is the vertical spacing.
-		// These are for our benefit and the numbers could easily be used directly in the code below, but this is how we keep code organized.
+		public int AttackTimer = 120;
+
 		private enum Frame
 		{
 			Empty,
@@ -206,7 +204,7 @@ namespace StarsAbove.NPCs.Dioskouroi
                     Idle();
                     break;
             }
-            if (AI_Timer >= 120) //An attack is active. (Temp 480, usually 120, or 2 seconds)
+            if (AI_Timer >= AttackTimer) //An attack is active. (Temp 480, usually 120, or 2 seconds)
             {
 				if(!NPC.AnyNPCs(NPCType<CastorBoss>()))
                 {

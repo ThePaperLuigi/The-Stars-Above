@@ -3013,7 +3013,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 				modPlayer.NextAttack = "Inner Agony";//The name of the attack.
-				npc.ai[3] = 240;//This is the time it takes for the cast to finish.
+				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
 				npc.netUpdate = true;//NetUpdate for good measure.
@@ -3028,7 +3028,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					//10 less
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<NalhaunCastSprite>(), 0, 0, Main.myPlayer, 240);
 
-					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<InnerAgony>(), 40, 0, Main.myPlayer, 240);
+					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<InnerAgony>(), 40, 0, Main.myPlayer, 120);
 				}
 
 				return;
@@ -3211,7 +3211,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 				modPlayer.NextAttack = "Inner Agony";//The name of the attack.
-				npc.ai[3] = 240;//This is the time it takes for the cast to finish.
+				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
 				npc.netUpdate = true;//NetUpdate for good measure.
@@ -3226,7 +3226,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					//10 less
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<NalhaunCastSprite>(), 0, 0, Main.myPlayer, 240);
 
-					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<OuterAgony>(), 40, 0, Main.myPlayer, 240);
+					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<OuterAgony>(), 40, 0, Main.myPlayer, 120);
 				}
 
 				return;
@@ -3311,7 +3311,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 				modPlayer.NextAttack = "Outer Agony";//The name of the attack.
-				npc.ai[3] = 240;//This is the time it takes for the cast to finish.
+				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
 				npc.netUpdate = true;//NetUpdate for good measure.
@@ -3326,7 +3326,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					//10 less
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<NalhaunCastSprite>(), 0, 0, Main.myPlayer, 240);
 
-					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<OuterAgony>(), 40, 0, Main.myPlayer, 240);
+					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<OuterAgony>(), 40, 0, Main.myPlayer, 120);
 				}
 
 				return;
@@ -3509,7 +3509,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 				modPlayer.NextAttack = "Outer Agony";//The name of the attack.
-				npc.ai[3] = 240;//This is the time it takes for the cast to finish.
+				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
 				npc.netUpdate = true;//NetUpdate for good measure.
@@ -3524,7 +3524,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					//10 less
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<NalhaunCastSprite>(), 0, 0, Main.myPlayer, 120);
 
-					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<InnerAgony>(), 40, 0, Main.myPlayer, 240);
+					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<InnerAgony>(), 40, 0, Main.myPlayer, 120);
 				}
 
 				return;

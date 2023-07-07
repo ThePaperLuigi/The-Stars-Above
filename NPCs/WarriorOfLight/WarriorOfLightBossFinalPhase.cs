@@ -30,8 +30,8 @@ namespace StarsAbove.NPCs.WarriorOfLight
 	public class WarriorOfLightBossFinalPhase : ModNPC
 	{
 
-		// Our texture is 36x36 with 2 pixels of padding vertically, so 38 is the vertical spacing.
-		// These are for our benefit and the numbers could easily be used directly in the code below, but this is how we keep code organized.
+		public int AttackTimer = 120;
+
 		private enum Frame
 		{
 			Empty,
@@ -92,7 +92,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 165000;
+			NPC.lifeMax = 195000;
 			NPC.damage = 40;
 			NPC.defense = 45;
 			NPC.knockBackResist = 0f;
@@ -232,12 +232,15 @@ namespace StarsAbove.NPCs.WarriorOfLight
                     Idle();
                     break;
             }
-			//if AI_Timer is less than 120, it isn't casting- let's try changing phases here
-			if(AI_Timer < 120 && AI_State == (float)ActionState.Idle)
+			if (Main.expertMode)
+			{
+				AttackTimer = 100;
+			}
+			if (AI_Timer < 120 && AI_State == (float)ActionState.Idle)
             {
 
             }
-            else if (AI_Timer >= 120) //An attack is active.
+			else if (AI_Timer >= AttackTimer) //An attack is active.
             {
 				//Test Rotation
 				

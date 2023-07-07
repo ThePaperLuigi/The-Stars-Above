@@ -35,8 +35,9 @@ namespace StarsAbove.NPCs.Dioskouroi
 	public class CastorBoss : ModNPC
 	{
 
-		
-		
+		public int AttackTimer = 120;
+
+
 		// Our texture is 36x36 with 2 pixels of padding vertically, so 38 is the vertical spacing.
 		// These are for our benefit and the numbers could easily be used directly in the code below, but this is how we keep code organized.
 		private enum Frame
@@ -204,7 +205,7 @@ namespace StarsAbove.NPCs.Dioskouroi
                     Idle();
                     break;
             }
-            if (AI_Timer >= 120) //An attack is active. (Temp 480, usually 120, or 2 seconds)
+            if (AI_Timer >= AttackTimer) //An attack is active. (Temp 480, usually 120, or 2 seconds)
             {
 				//If the other Baleborn is dead, cast an enrage attack instead. (Phyrric Gemini)
 				if (!NPC.AnyNPCs(NPCType<PolluxBoss>()))

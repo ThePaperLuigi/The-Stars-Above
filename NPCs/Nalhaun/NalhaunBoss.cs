@@ -37,7 +37,7 @@ namespace StarsAbove.NPCs.Nalhaun
 		public static readonly int arenaWidth = (int)(1.2f * 1000);
 		public static readonly int arenaHeight = (int)(1.2f * 600);
 
-		
+		public int AttackTimer = 120;
 
 
 		// Our texture is 36x36 with 2 pixels of padding vertically, so 38 is the vertical spacing.
@@ -208,7 +208,11 @@ namespace StarsAbove.NPCs.Nalhaun
                     Idle();
                     break;
             }
-            if (AI_Timer >= 120) //An attack is active.
+			if (Main.expertMode)
+			{
+				AttackTimer = 100;
+			}
+			if (AI_Timer >= AttackTimer) //An attack is active.
             {
 
                 //Attacks begin here.

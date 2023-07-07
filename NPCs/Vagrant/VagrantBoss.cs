@@ -19,6 +19,9 @@ namespace StarsAbove.NPCs.Vagrant
 
 	public class VagrantBoss : ModNPC
 	{
+		public int AttackTimer = 120;
+
+
 		public static readonly int arenaWidth = (int)(1.2f * 960);
 		public static readonly int arenaHeight = (int)(1.2f * 600);
 
@@ -215,7 +218,7 @@ namespace StarsAbove.NPCs.Vagrant
 					Idle();
 					break;
 			}
-			if (AI_Timer >= 120) //An attack is active.
+			if (AI_Timer >= AttackTimer) //An attack is active.
 			{
 				if (AI_RotationNumber == 0)
 				{

@@ -338,6 +338,7 @@ namespace StarsAbove
         }
         private void BossDamageModifier(NPC npc, ref NPC.HitModifiers modifiers)
         {
+            //(lower means weaker weapons do more avg. damage)
             if (!DisableDamageModifier)
             {
                 bossReductionMod = 0;
@@ -367,7 +368,7 @@ namespace StarsAbove
                 }
                 if (npc.type == ModContent.NPCType<WarriorOfLightBoss>() || npc.type == ModContent.NPCType<WarriorOfLightBossFinalPhase>())
                 {
-                    bossReductionMod = 1800;
+                    bossReductionMod = 1000;
 
                 }
                 if (npc.type == ModContent.NPCType<Arbitration>())
@@ -397,10 +398,10 @@ namespace StarsAbove
             if (bossReductionMod > 0)
             {
                 decayRate = 0.8f;
-                //Main.NewText(Language.GetTextValue($"Damage Pre-Modifier: {damage}"), 60, 170, 247);
-                //Main.NewText(Language.GetTextValue($"Damage: {damage}"), 120, 100, 147);
-                //Main.NewText(Language.GetTextValue($"Stress: {stress}"), 150, 150, 247);
-                //Main.NewText(Language.GetTextValue($"Damage Reduction: {damageReductionAmount}"), 220, 100, 247);
+                Main.NewText(Language.GetTextValue($"Damage Pre-Modifier: {hit.SourceDamage}"), 60, 170, 247);
+                Main.NewText(Language.GetTextValue($"Damage: {damageDone}"), 120, 100, 147);
+                Main.NewText(Language.GetTextValue($"Stress: {stress}"), 150, 150, 247);
+                Main.NewText(Language.GetTextValue($"Damage Reduction: {damageReductionAmount}"), 220, 100, 247);
 
                 stress += damageDone;
                 stress *= decayRate;
