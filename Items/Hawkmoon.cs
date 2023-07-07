@@ -302,10 +302,6 @@ namespace StarsAbove.Items
 		public override void AddRecipes()
 		{
 			CreateRecipe(1)
-				.AddIngredient(ItemType<HawkmoonRanged>())
-				.AddTile(TileID.Anvils)
-				.Register();
-			CreateRecipe(1)
 				.AddIngredient(ItemType<EssenceOfTheHawkmoon>())
 				.AddIngredient(ItemType<EnigmaticDust>())
 				.AddTile(TileID.Anvils)

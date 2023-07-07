@@ -64,7 +64,7 @@ namespace StarsAbove.UI.Hawkmoon
 
 		public override void Draw(SpriteBatch spriteBatch) {
 			// This prevents drawing unless we are using an ExampleDamageItem
-			if (!(Main.LocalPlayer.HeldItem.ModItem is HawkmoonRanged || Main.LocalPlayer.HeldItem.ModItem is HawkmoonMagic))
+			if (!(Main.LocalPlayer.HeldItem.ModItem is Items.Hawkmoon))
 				return;
 
 			base.Draw(spriteBatch);
@@ -102,7 +102,7 @@ namespace StarsAbove.UI.Hawkmoon
 		}
 		public override void Update(GameTime gameTime) {
 			//if (!(Main.LocalPlayer.HeldItem.ModItem is HawkmoonRanged) || !(Main.LocalPlayer.HeldItem.ModItem is HawkmoonMagic))
-			if (!(Main.LocalPlayer.HeldItem.ModItem is HawkmoonRanged || Main.LocalPlayer.HeldItem.ModItem is HawkmoonMagic))
+			if (!(Main.LocalPlayer.HeldItem.ModItem is Items.Hawkmoon))
 				return;
 
 			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
