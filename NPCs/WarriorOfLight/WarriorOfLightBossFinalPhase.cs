@@ -22,6 +22,7 @@ using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Buffs;
 using StarsAbove.Utilities;
 using StarsAbove.Projectiles.Bosses.WarriorOfLight;
+using Terraria.Graphics.Shaders;
 
 namespace StarsAbove.NPCs.WarriorOfLight
 {
@@ -154,7 +155,25 @@ namespace StarsAbove.NPCs.WarriorOfLight
 			float num16 = 3f; //+ num13 * 2.75f; //Scale?
 			Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3, NPC.rotation - timeFloatAlt, drawOrigin, NPC.scale * 0.5f * num16, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
 			Texture2D texture2D3 = (Texture2D)TextureAssets.Extra[89];
-			Microsoft.Xna.Framework.Rectangle r3 = texture2D3.Frame(1, 1, 0, 0);
+            Microsoft.Xna.Framework.Rectangle r3 = texture2D3.Frame(1, 1, 0, 0);
+			/*
+			Main.spriteBatch.End();
+			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);
+
+			// Retrieve reference to shader
+			var deathShader = GameShaders.Misc["StarsAbove:DeathAnimation"];
+
+			// Reset back to default value.
+			deathShader.UseOpacity(1f);
+			// We use npc.ai[3] as a counter since the real death.
+			if (NPC.ai[1] > 30f)
+			{
+				// Our shader uses the Opacity register to drive the effect. See ExampleEffectDeath.fx to see how the Opacity parameter factors into the shader math. 
+				deathShader.UseOpacity(1f - (NPC.ai[1] - 30f) / 450f);
+			}
+			// Call Apply to apply the shader to the SpriteBatch. Only 1 shader can be active at a time.
+			deathShader.Apply(null);*/
+
 			return base.PreDraw(spriteBatch, screenPos, drawColor);
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
@@ -800,7 +819,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 				NPC.velocity.Y = NPC.velocity.Y - 0.01f;
 			}
 			
-			if (Main.rand.NextBool(5) && NPC.ai[1] < 20f)
+			if (Main.rand.NextBool(5) && NPC.ai[1] < 460f)
 			{
 				
 				// This dust spawn adapted from the Pillar death code in vanilla.
