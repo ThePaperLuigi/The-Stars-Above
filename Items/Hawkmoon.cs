@@ -13,17 +13,10 @@ using Terraria.GameContent.Creative;
 
 namespace StarsAbove.Items
 {
-    public class HawkmoonMagic : ModItem
+    public class Hawkmoon : ModItem
 	{
 		public override void SetStaticDefaults() {
-			// DisplayName.SetDefault("Hawkmoon");
-			/* Tooltip.SetDefault("Right click to reload the gun with 12 rounds" +
-				"\nTime the reload perfectly to gain [c/0059FF:Paracausal Anomaly] until all bullets are spent" +
-				"\n[c/0059FF:Paracausal Anomaly] increases damage while making all attacks critical" +
-				"\nThis weapon does not use ammo" +
-				"\nThis weapon can be re-crafted to swap between Magic and Ranged damage" +
-				"\n'What you call Darkness is the end of your evolution'" +
-				$""); */
+			
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -31,7 +24,7 @@ namespace StarsAbove.Items
 
 		public override void SetDefaults() {
 			Item.damage = 33;
-			Item.DamageType = DamageClass.Magic;
+			Item.DamageType = DamageClass.Ranged;
 			Item.width = 58;
 			Item.height = 36;
 			Item.useTime = 15;

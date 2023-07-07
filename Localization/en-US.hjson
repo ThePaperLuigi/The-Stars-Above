@@ -4947,22 +4947,10 @@ Mods: {
 				DisplayName: Genocide
 			}
 
-			HawkmoonMagic: {
+			Hawkmoon: {
 				Tooltip:
 					'''
-					Right click to reload the gun with 12 rounds
-					Time the reload perfectly to gain [c/0059FF:Paracausal Anomaly] until all bullets are spent
-					[c/0059FF:Paracausal Anomaly] increases damage while making all attacks critical
-					This weapon does not use ammo
-					This weapon can be re-crafted to swap between Magic and Ranged damage
-					'What you call Darkness is the end of your evolution'
-					'''
-				DisplayName: Hawkmoon
-			}
-
-			HawkmoonRanged: {
-				Tooltip:
-					'''
+					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty when aspected to Ranged or Magic damage]
 					Right click to reload the gun with 12 rounds
 					Time the reload perfectly to gain [c/0059FF:Paracausal Anomaly] until all bullets are spent
 					[c/0059FF:Paracausal Anomaly] increases damage while making all attacks critical
