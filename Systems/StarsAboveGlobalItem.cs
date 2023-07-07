@@ -97,7 +97,7 @@ namespace StarsAbove
 			ModContent.ItemType<InugamiRipsaw>(),
 			ModContent.ItemType<RadGun>(),
 			ModContent.ItemType<EveryMomentMatters>(),
-			ModContent.ItemType<HawkmoonMagic>(),ModContent.ItemType<HawkmoonRanged>(),
+			ModContent.ItemType<Hawkmoon>(),
 			ModContent.ItemType<MementoMuse>(),
 			ModContent.ItemType<Drachenlance>(),
 			ModContent.ItemType<VoiceOfTheFallen>(),
@@ -713,7 +713,7 @@ namespace StarsAbove
 				tooltips.Add(tooltip);
 				//
 			}
-			if (item.OriginalRarity == ModContent.GetInstance<StellarSpoilsRarity>().Type)
+			if (item.OriginalRarity == ModContent.GetInstance<StellarSpoilsRarity>().Type && item.type != ModContent.ItemType<StellarRemnant>())
 			{
 				TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: StellarSpoils", LangHelper.GetTextValue("Common.CanBeShimmeredSpoils")) { OverrideColor = Color.White };
 				tooltips.Add(tooltip);

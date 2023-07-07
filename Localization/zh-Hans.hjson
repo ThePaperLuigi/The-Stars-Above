@@ -3145,6 +3145,7 @@ Mods: {
 			WealthFocusTier1Tile.MapEntry: Mods.StarsAbove.MapObject.StellarFoci
 			WealthFocusTier2Tile.MapEntry: Mods.StarsAbove.MapObject.StellarFoci
 			WealthFocusTier3Tile.MapEntry: Mods.StarsAbove.MapObject.StellarFoci
+			// ReprintedBlueprintTile.MapEntry: Reprinted Blueprint Tile
 		}
 
 		Items: {
@@ -4944,30 +4945,17 @@ Mods: {
 				DisplayName: 无边绝望
 			}
 
-			HawkmoonMagic: {
-				Tooltip:
+			Hawkmoon: {
+				/* Tooltip:
 					'''
-					点击右键为该武器填装12枚子弹
-					完美的装填会使你装填的子弹带有[c/0059FF:超因果射击]效果
-					[c/0059FF:超因果射击]使子弹造成的伤害增加，且必定暴击
-					该武器不消耗弹药
-					该武器可以通过合成的方式在魔法和远程版本之间切换
-					"你所谓之暗影，是你进化之路的终结"
-					'''
-				DisplayName: 隼月
-			}
-
-			HawkmoonRanged: {
-				Tooltip:
-					'''
-					点击右键为该武器填装12枚子弹
-					完美的装填会使你装填的子弹带有[c/0059FF:超因果射击]效果
-					[c/0059FF:超因果射击]使子弹造成的伤害增加，且必定暴击
-					该武器不消耗弹药
-					该武器可以通过合成的方式在魔法和远程版本之间切换
-					"你所谓之暗影，是你进化之路的终结"
-					'''
-				DisplayName: 隼月
+					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty when aspected to Ranged or Magic damage]
+					Right click to reload the weapon with 12 rounds
+					Time the reload perfectly to gain [c/0059FF:Paracausal Anomaly] until all bullets are spent
+					[c/0059FF:Paracausal Anomaly] increases damage while making all attacks critical
+					This weapon can be re-crafted to swap between Magic and Ranged damage
+					'What you call Darkness is the end of your evolution'
+					''' */
+				// DisplayName: Hawkmoon
 			}
 
 			HollowheartAlbion: {
@@ -7655,47 +7643,9 @@ Mods: {
 					'''
 			}
 
-			SigilOfHope: {
-				DisplayName: Sigil Of Hope
-				Tooltip:
-					'''
-					While fighting the Warrior of Light during Everlasting Light, gain 120 defense
-					However, rewards will be reduced
-					'''
-			}
-
-			ArbalestSigil: {
-				DisplayName: Arbalest's Anarchy
-				Tooltip: Negates the damage penalty when swapping weapons to Ranged damage
-			}
-
-			BeastmasterSigil: {
-				DisplayName: Beastmaster's Anarchy
-				Tooltip: Negates the damage penalty when swapping weapons to Summon damage
-			}
-
 			Blueprint: {
 				DisplayName: Blueprint
 				Tooltip: Drastically increases block placement range when standing still
-			}
-
-			DoubledPawns: {
-				DisplayName: Pawn's Initiative
-				Tooltip:
-					'''
-					Instantly kill non-boss foes at 3% Max HP or lower when in close proximity
-					'It's forced!'
-					'''
-			}
-
-			GladiatorSigil: {
-				DisplayName: Gladiator's Anarchy
-				Tooltip: Reduces the damage penalty when swapping weapons to Melee damage by 10%
-			}
-
-			SpellcasterSigil: {
-				DisplayName: Spellcaster's Anarchy
-				Tooltip: Negates the damage penalty when swapping weapons to Magic damage
 			}
 
 			GuppyHead: {
@@ -7747,29 +7697,43 @@ Mods: {
 				// DisplayName: Stellar Remnant
 				/* Tooltip:
 					'''
-					Leftover confluence from opened Stellar Spoils
+					Leftover confluence from Stellar Spoils
 					Can be used to craft Stellar Spoil items
 					''' */
 			}
 
 			QuantumButterflyBody: {
 				// DisplayName: Quantum Butterfly Garb
-				// Tooltip: ""
+				// Tooltip: "'This is getting troublesome..."
 			}
 
 			QuantumButterflyLegs: {
 				// DisplayName: Quantum Butterfly Boots
-				// Tooltip: ""
+				// Tooltip: "'What's next?'"
 			}
 
 			BaselessBladeBody: {
-				// DisplayName: Baseless Blade Body
-				// Tooltip: ""
+				// DisplayName: Baseless Blade Armguard
+				// Tooltip: "'Projection, commence'"
 			}
 
 			BaselessBladeLegs: {
-				// DisplayName: Baseless Blade Legs
+				// DisplayName: Baseless Blade Leggings
+				// Tooltip: "'I think it's time to retire'"
+			}
+
+			ReprintedBlueprint: {
+				// DisplayName: Reprinted Blueprint
 				// Tooltip: ""
+			}
+
+			SigilOfHope: {
+				DisplayName: Sigil Of Hope
+				Tooltip:
+					'''
+					While fighting the Warrior of Light during Everlasting Light, gain 120 defense
+					However, rewards will be reduced
+					'''
 			}
 		}
 
@@ -8589,6 +8553,7 @@ Mods: {
 			// BuryTheLightSheathe.DisplayName: Bury The Light Sheathe
 			// MirageBlade.DisplayName: Mirage Blade
 			// MirageBladeAlt.DisplayName: Mirage Blade Alt
+			// LamentClashWin.DisplayName: Lament Clash Win
 		}
 
 		Buffs: {
