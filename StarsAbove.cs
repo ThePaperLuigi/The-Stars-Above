@@ -77,8 +77,8 @@ namespace StarsAbove
 				Filters.Scene["Shockwave"] = new Filter(new ScreenShaderData(screenRef, "Shockwave"), EffectPriority.High);
 				Filters.Scene["Shockwave"].Load();
 
-				//Ref<Effect> dyeRef = new Ref<Effect>(ModContent.Request<Effect>("StarsAbove/Effects/Shader", AssetRequestMode.ImmediateLoad).Value);
-				//GameShaders.Armor.BindShader(ModContent.ItemType<Spatial>(), new ArmorShaderData(dyeRef, "GalaxyPass")).UseImage("StarsAbove/Effects/GalaxyTest");
+				var MiscEffect = new Ref<Effect>(Assets.Request<Effect>("Effects/MiscEffect", AssetRequestMode.ImmediateLoad).Value);
+				GameShaders.Misc["CyclePass"] = new MiscShaderData(MiscEffect, "CyclePass");
 
 				GameShaders.Misc["StarsAbove:DeathAnimation"] = new MiscShaderData(
 				  new Ref<Effect>(ModContent.Request<Effect>("StarsAbove/Effects/EffectDeath", AssetRequestMode.ImmediateLoad).Value),
