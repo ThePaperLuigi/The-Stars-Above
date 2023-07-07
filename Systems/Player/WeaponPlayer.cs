@@ -1569,7 +1569,7 @@ namespace StarsAbove
                 {
                     modifiers.SourceDamage += 1.5f;
                 }
-               modifiers.SourceDamage += Player.statManaMax2 / 8;
+               modifiers.SourceDamage.Flat += Player.statManaMax2 / 8;
 
             }
             
