@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace StarsAbove.Projectiles.LamentingPocketwatch
 {
     //
-    public class LamentClashWin : ModProjectile
+    public class LamentClashLose : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{
@@ -44,7 +44,7 @@ namespace StarsAbove.Projectiles.LamentingPocketwatch
 			}
 			if(Projectile.frame == 2 && !playedSound)
 			{
-				SoundEngine.PlaySound(StarsAboveAudio.SFX_LamentClashWin, Projectile.Center);
+				SoundEngine.PlaySound(StarsAboveAudio.SFX_LamentClashLose, Projectile.Center);
 
 				playedSound = true;
             }
