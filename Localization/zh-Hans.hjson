@@ -7643,11 +7643,6 @@ Mods: {
 					'''
 			}
 
-			Blueprint: {
-				DisplayName: Blueprint
-				Tooltip: Drastically increases block placement range when standing still
-			}
-
 			GuppyHead: {
 				DisplayName: Misfortunate Cat
 				Tooltip:
@@ -8554,6 +8549,9 @@ Mods: {
 			// MirageBlade.DisplayName: Mirage Blade
 			// MirageBladeAlt.DisplayName: Mirage Blade Alt
 			// LamentClashWin.DisplayName: Lament Clash Win
+			// LamentClashLose.DisplayName: Lament Clash Lose
+			// UnlimitedBladeWorksBackground.DisplayName: Unlimited Blade Works Background
+			// UnlimitedBladeWorksBorder.DisplayName: Unlimited Blade Works Border
 		}
 
 		Buffs: {
@@ -10742,12 +10740,17 @@ Mods: {
 
 			BindingLight: {
 				// DisplayName: Binding Light
-				// Description: Mods.StarsAbove.Buffs.BindingLight.Description
+				// Description: Frozen light is binding you
 			}
 
 			MirageBladeCooldown: {
 				// DisplayName: Mirage Blade Cooldown
-				// Description: Mods.StarsAbove.Buffs.MirageBladeCooldown.Description
+				// Description: ""
+			}
+
+			LamentingPocketwatchCooldown: {
+				// DisplayName: Lamenting Pocketwatch Cooldown
+				// Description: ""
 			}
 		}
 

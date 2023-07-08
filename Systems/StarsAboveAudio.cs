@@ -872,6 +872,14 @@ namespace StarsAbove
 		{
 			PitchVariance = 0.1f,
 		};
+		public static readonly SoundStyle SFX_LamentClashLose = new($"{nameof(StarsAbove)}/Sounds/SFX/LimbusCoinLose")
+		{
+
+		};
+		public static readonly SoundStyle SFX_LamentClashWin = new($"{nameof(StarsAbove)}/Sounds/SFX/LimbusCoinWin")
+		{
+
+		};
 		public static readonly SoundStyle SFX_GuntriggerParryPrep = new($"{nameof(StarsAbove)}/Sounds/SFX/GuntriggerParryPrep")
 		{
 

@@ -2899,7 +2899,7 @@ Mods: {
 				GardenOfAvalon: {
 					AbilityName: Garden of Avalon
 					AbilitySubName: "[c/ECB3FC:The Forever-Sealed Utopia]"
-					AbilityDescription: Call forth the Garden of Avalon, infusing the world with radiant energy. Grant powerful Health and Mana regeneration periodically for 8 seconds, scaling with Stellar Nova Damage. Gain Invincibility for 2 seconds. If the cast would be critical, gain Health, modified by Stellar Nova crit modifiers. Additionally, upon a critical cast, gain the buff 'Solemn Aegis' for 15 seconds, which negates one hit of damage independently of Invincibility.
+					AbilityDescription: Call forth the Garden of Avalon, infusing the world with radiant energy. Grant powerful Health and Mana regeneration periodically for 8 seconds, scaling with Stellar Nova Damage. Gain Invincibility for 2 seconds. If the cast would be critical, gain Health, modified by Stellar Nova crit modifiers. Additionally, upon a critical cast, gain the buff Solemn Aegis for 15 seconds, which negates one hit of damage independently of Invincibility.
 					AstralBonus: Invincibility lasts for 4 seconds instead of 2. Instantly heal 100 HP upon casting Garden of Avalon.
 					UmbralBonus: Gain an extra buff on cast: Dreamlike Charisma. (Can not stack.) Dreamlike Charisma increases damage by 16%, doubled above 100 Mana.
 				}
@@ -2910,6 +2910,15 @@ Mods: {
 					AbilityDescription: Upon cast, become immobile and invincible temporarily. Gain 'Astarte Driver' for 25 seconds. Astarte Driver grants infinite flight and three Cosmic Charges. ALL attacks while Astarte Driver is active will inherit the stats of the Stellar Nova. Pressing the Starfarer Action Key with a Cosmic Charge available will launch a barrage of spatial projectiles (2 second use cooldown.) After activating Astarte Driver's stat-changing effect, the target will be immune for a very short period.
 					AstralBonus: Critical hits do an additional {0} damage in Astarte Driver. You will gain a Cosmic Charge after defeating a foe with a critical hit. (Max 5 charges.)
 					UmbralBonus: Astarte Driver attacks will execute any foe below {0} HP. Gain 1 second of Invincibility when a Cosmic Charge is expended.
+				}
+
+				UnlimitedBladeWorks: {
+					AbilityName: Unlimited Blade Works
+					AbilitySubName: "[Projected Reality of Wrought Iron]"
+					AbilityDescription: "Summon a portal to a world of blades, creating a field of empowerment for 20 seconds. Within the field, follow-up attacks will occur and will reduce enemy damage dealt by 20% for 5 seconds on hit (3 second follow-up cooldown.) Additonally, all allies within the radius will gain Bladeforged, which increases damage by 2% up to 10% depending on missing HP. Size scales inversely with Stellar Nova cost."
+					AstralBonus: "The base size of the Stellar Nova is increased by 40%. All allies gain 8 defense within the field, and Bladeforged's cap is raised to 20% increased damage."
+					UmbralBonus: "Self damage is reduced by 50% within the field, but critical strikes will cause bonus follow-up attacks to occur. Foes within the field take 10% more damage."
+
 				}
 
 				BaseDamage: Base Damage
@@ -7692,11 +7701,6 @@ Mods: {
 					'''
 			}
 
-			Blueprint: {
-				DisplayName: Blueprint
-				Tooltip: Drastically increases block placement range while stationary
-			}
-
 			GuppyHead: {
 				DisplayName: Misfortunate Cat
 				Tooltip:
@@ -7713,7 +7717,8 @@ Mods: {
 					'''
 					Damage variance is disabled
 					Upon landing a critical strike, flip a coin
-					If heads, damage is increased by 50%; If tails, critical strikes are disabled for 3 seconds and you become Vulnerable for the same duration
+					If heads, damage is inflicted again; If tails, you become Vulnerable for 3 seconds
+					Additionally, damage is reduced by 40% while Vulnerable and natural critical strikes are disabled
 					Can only activate every 3 seconds
 					'''
 			}
@@ -8599,6 +8604,9 @@ Mods: {
 			MirageBlade.DisplayName: Mirage Blade
 			MirageBladeAlt.DisplayName: Mirage Blade Alt
 			LamentClashWin.DisplayName: Lament Clash Win
+			LamentClashLose.DisplayName: Lament Clash Lose
+			UnlimitedBladeWorksBackground.DisplayName: Unlimited Blade Works Background
+			UnlimitedBladeWorksBorder.DisplayName: Unlimited Blade Works Border
 		}
 
 		Buffs: {
@@ -10795,12 +10803,17 @@ Mods: {
 
 			BindingLight: {
 				DisplayName: Binding Light
-				Description: Mods.StarsAbove.Buffs.BindingLight.Description
+				Description: Frozen light is binding you
 			}
 
 			MirageBladeCooldown: {
 				DisplayName: Mirage Blade Cooldown
-				Description: Mods.StarsAbove.Buffs.MirageBladeCooldown.Description
+				Description: ""
+			}
+
+			LamentingPocketwatchCooldown: {
+				DisplayName: Lamenting Pocketwatch Cooldown
+				Description: ""
 			}
 		}
 
