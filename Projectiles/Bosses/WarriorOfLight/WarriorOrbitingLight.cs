@@ -56,7 +56,8 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 		public override void AI()
 		{//Ai 2 is the rotation value (usually 1)
 			Player player = Main.player[Projectile.owner];
-
+			DrawOffsetX = -33;
+			DrawOriginOffsetY = -33;
 			//Orbit Nalhaun. ai[0] is the max orbit distance, ai[1] is the rotation starting position
 
 			if (firstSpawn)
