@@ -398,10 +398,10 @@ namespace StarsAbove
             if (bossReductionMod > 0)
             {
                 decayRate = 0.8f;
-                Main.NewText(Language.GetTextValue($"Damage Pre-Modifier: {hit.SourceDamage}"), 60, 170, 247);
-                Main.NewText(Language.GetTextValue($"Damage: {damageDone}"), 120, 100, 147);
-                Main.NewText(Language.GetTextValue($"Stress: {stress}"), 150, 150, 247);
-                Main.NewText(Language.GetTextValue($"Damage Reduction: {damageReductionAmount}"), 220, 100, 247);
+                //Main.NewText(Language.GetTextValue($"Damage Pre-Modifier: {hit.SourceDamage}"), 60, 170, 247);
+                //Main.NewText(Language.GetTextValue($"Damage: {damageDone}"), 120, 100, 147);
+                //Main.NewText(Language.GetTextValue($"Stress: {stress}"), 150, 150, 247);
+                //Main.NewText(Language.GetTextValue($"Damage Reduction: {damageReductionAmount}"), 220, 100, 247);
 
                 stress += damageDone;
                 stress *= decayRate;
