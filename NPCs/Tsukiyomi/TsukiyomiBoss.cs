@@ -202,7 +202,18 @@ namespace StarsAbove.NPCs.Tsukiyomi
                     Idle();
                     break;
             }
-            if (AI_Timer >= AttackTimer) //An attack is active. (Temp 480, usually 120, or 2 seconds)
+			if (AI_Timer < 120 && AI_State == (float)ActionState.Idle)
+			{
+				if (NPC.life <= (NPC.lifeMax * 0.9) && AI_RotationNumber < 26) //At 80% HP, she transitions into Phase 2
+				{
+					AI_RotationNumber = 26;
+				}
+				if (NPC.life <= (NPC.lifeMax * 0.5) && AI_RotationNumber < 54 && Main.expertMode) //At 50% HP in Expert Mode, she goes to Phase 3
+				{
+					AI_RotationNumber = 54;
+				}
+			}
+			else if (AI_Timer >= AttackTimer) //An attack is active. (Temp 480, usually 120, or 2 seconds)
             {
 				if (Main.expertMode)
 				{
@@ -1267,47 +1278,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 
         public override void ModifyHitByProjectile(Projectile projectile, ref NPC.HitModifiers modifiers)
         {
-			//Zenith resistance.
-			if(projectile.type == ProjectileID.FinalFractal)
-            {
-				//damage = (int)(damage * 0.2f);
-            }
-
-			if (Main.expertMode)
-			{
-				if (NPC.localAI[0] == 2)
-				{
-					//Phase 3 (Final Phase)
-
-				}
-				else if (NPC.localAI[0] == 1)
-				{
-					//Phase 2
-					modifiers.FinalDamage *= 0.7f;
-
-				}
-				else
-				{
-					//Phase 1
-					modifiers.FinalDamage *= 0.7f;
-
-				}
-			}
-			else
-			{
-				if (NPC.localAI[0] != 0)
-				{
-					//Phase 2
-					modifiers.FinalDamage *= 0.7f;
-
-				}
-				else
-				{
-					//Phase 1
-					modifiers.FinalDamage *= 0.7f;
-
-				}
-			}
+			modifiers.FinalDamage *= 0.7f;
 		}
         public override void ModifyHitByItem(Player player, Item item, ref NPC.HitModifiers modifiers)
         {
