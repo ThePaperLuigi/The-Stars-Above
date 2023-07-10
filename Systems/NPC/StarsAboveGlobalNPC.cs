@@ -301,8 +301,54 @@ namespace StarsAbove
 
 			return base.GetAlpha(npc, drawColor);
         }
-		
 
+        public override void AI(NPC npc)
+        {
+			if (EverlastingLightEvent.isEverlastingLightActive && !npc.boss && npc.damage > 0 && !npc.friendly)
+			{
+
+				if (Main.rand.Next(2000) < 2)
+				{
+					for (int i = 0; i < 6; i++)
+					{
+						// Random upward vector.
+						Vector2 vel = new Vector2(Main.rand.NextFloat(-3, 3), Main.rand.NextFloat(-1, -4));
+						if (Main.netMode != NetmodeID.MultiplayerClient) { Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center, vel, ProjectileID.GreekFire3, 40, 0, 0, 0, 1); }
+					}
+					
+
+					npc.life += npc.lifeMax / 10;
+					if (npc.life > npc.lifeMax)
+					{
+						npc.life = npc.lifeMax;
+					}
+				}
+
+
+				if (Main.rand.Next(4) < 3)
+				{
+					int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 158, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color), 1.1f);
+					Main.dust[dust].noGravity = true;
+					Main.dust[dust].velocity *= 1.8f;
+					Main.dust[dust].velocity.Y -= 0.5f;
+
+				}
+				if (Main.rand.Next(12) < 5)
+				{
+					int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 91, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 20, default(Color), 0.2f);
+					Main.dust[dust].noGravity = true;
+					Main.dust[dust].velocity *= 1.8f;
+					Main.dust[dust].velocity.Y -= 0.5f;
+					Main.dust[dust].scale = 0.32f;
+
+
+
+				}
+
+				Lighting.AddLight(npc.position, 0.1f, 0.1f, 0.1f);
+
+			}
+		}
 
         public override void DrawEffects(NPC npc, ref Color drawColor)
 		{
@@ -311,47 +357,8 @@ namespace StarsAbove
 				if (EverlastingLightEvent.isEverlastingLightActive && !npc.boss && npc.damage > 0 && !npc.friendly)
 				{
 
-					if (Main.rand.Next(2000) < 2)
-					{
-						for (int i = 0; i < 6; i++)
-						{
-							// Random upward vector.
-							Vector2 vel = new Vector2(Main.rand.NextFloat(-3, 3), Main.rand.NextFloat(-1, -4));
-							if (Main.netMode != NetmodeID.MultiplayerClient) { Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center, vel, ProjectileID.GreekFire3, 40, 0, 0, 0, 1); }
-						}
-						for (int d = 0; d < 8; d++)
-						{
-							int dustIndex = Dust.NewDust(npc.position, npc.width, npc.height, 222, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 1.5f);
-							Main.dust[dustIndex].noGravity = true;
-						}
-
-						npc.life += npc.lifeMax / 10;
-						if (npc.life > npc.lifeMax)
-						{
-							npc.life = npc.lifeMax;
-						}
-					}
-					if (Main.rand.Next(4) < 3)
-					{
-						int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 158, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color), 1.1f);
-						Main.dust[dust].noGravity = true;
-						Main.dust[dust].velocity *= 1.8f;
-						Main.dust[dust].velocity.Y -= 0.5f;
-
-					}
-					if (Main.rand.Next(12) < 5)
-					{
-						int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 91, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 20, default(Color), 0.2f);
-						Main.dust[dust].noGravity = true;
-						Main.dust[dust].velocity *= 1.8f;
-						Main.dust[dust].velocity.Y -= 0.5f;
-						Main.dust[dust].scale = 0.32f;
-
-
-
-					}
-
-					Lighting.AddLight(npc.position, 0.1f, 0.1f, 0.1f);
+					
+					
 					drawColor = drawColor.MultiplyRGB(Color.Yellow);
 				}
 			}
