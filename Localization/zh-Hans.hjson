@@ -2912,6 +2912,14 @@ Mods: {
 					UmbralBonus: 在“阿斯塔蒂驾驭”状态下将会处决任何生命值低于 {0} 的敌人。消耗寰宇充能时获得1秒无敌。
 				}
 
+				UnlimitedBladeWorks: {
+					// AbilityName: Unlimited Blade Works
+					// AbilitySubName: "[Projected Reality of Wrought Iron]"
+					// AbilityDescription: Summon a portal to a world of blades, creating a field of empowerment for 20 seconds. Within the field, follow-up attacks will occur and will reduce enemy damage dealt by 20% for 5 seconds on hit (3 second follow-up cooldown.) Additonally, all allies within the radius will gain Bladeforged, which increases damage by 2% up to 10% depending on missing HP. Size scales inversely with Stellar Nova cost.
+					// AstralBonus: The base size of the Stellar Nova is increased by 40%. All allies gain 8 defense within the field, and Bladeforged's cap is raised to 20% increased damage.
+					// UmbralBonus: Self damage is reduced by 50% within the field, but critical strikes will cause bonus follow-up attacks to occur. Foes within the field take 10% more damage.
+				}
+
 				BaseDamage: 基础伤害
 				BaseEnergyCost: 基础能量消耗
 				Damage: 伤害
@@ -8552,6 +8560,7 @@ Mods: {
 			// LamentClashLose.DisplayName: Lament Clash Lose
 			// UnlimitedBladeWorksBackground.DisplayName: Unlimited Blade Works Background
 			// UnlimitedBladeWorksBorder.DisplayName: Unlimited Blade Works Border
+			// UBWBladeProjectile.DisplayName: U B W Blade Projectile
 		}
 
 		Buffs: {

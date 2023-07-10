@@ -21,7 +21,7 @@ namespace StarsAbove.Projectiles.StellarNovas
 			Projectile.width = 1000;
 			Projectile.height = 1000;
 			Projectile.aiStyle = 0;
-			Projectile.timeLeft = 240;
+			Projectile.timeLeft = 480;
 			Projectile.penetrate = -1;
 			Projectile.scale = 1f;
 			Projectile.alpha = 255;
@@ -43,12 +43,19 @@ namespace StarsAbove.Projectiles.StellarNovas
 				Projectile.scale = 0.001f;
 				firstSpawn = false;
             }
-			Projectile.ai[0] += 0.01f;//Time alive
 			Projectile.ai[0] = MathHelper.Clamp(Projectile.ai[0], 0f, 1f);
-			Projectile.scale = MathHelper.Lerp(0, 1, EaseHelper.InOutQuad(Projectile.ai[0]));
-			Projectile.scale = MathHelper.Clamp(Projectile.scale, 0, 1);
+			Projectile.scale = MathHelper.Lerp(0, 2, EaseHelper.InOutQuad(Projectile.ai[0]));
+			//Projectile.scale = MathHelper.Clamp(Projectile.scale, 0, 1);
 
-			
+			if (Projectile.timeLeft < 60)
+			{
+				Projectile.ai[0] -= 0.03f;
+			}
+			else
+			{
+				Projectile.ai[0] += 0.01f;//Time alive
+
+			}
 
 		}
         public override void Kill(int timeLeft)
@@ -83,7 +90,7 @@ namespace StarsAbove.Projectiles.StellarNovas
 			Microsoft.Xna.Framework.Rectangle r2 = texture2D2.Frame(1, 1, 0, 0);
 			drawOrigin = r2.Size() / 2f;
 			Vector2 position3 = position1 + new Vector2(0.0f, -500f);
-			Microsoft.Xna.Framework.Color color3 = new Color(255, 255, 255);
+			Microsoft.Xna.Framework.Color color3 = new Color(255, 248, 201);
 			Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3, Projectile.rotation, drawOrigin, 0.00f + (Projectile.scale * 1.041f), SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
 			float num15 = 1f + num11 * 0.35f;
 			Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3 * num12, Projectile.rotation, drawOrigin, 0.00f + Projectile.scale * num15, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
