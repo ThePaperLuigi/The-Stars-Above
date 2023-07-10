@@ -10,9 +10,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-namespace StarsAbove.Projectiles.StellarNovas
+namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 {
-    public class UnlimitedBladeWorksBackground : ModProjectile
+    public class SpacePowerBackground : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			
@@ -42,14 +42,15 @@ namespace StarsAbove.Projectiles.StellarNovas
 		bool firstSpawn = true;
 		int bladeAllotment = 4;
 		int bladeAllotmentTimer;
-		int maxScale = 2;
+		int maxScale = 1;
 		public override void AI()
 		{
 			if(firstSpawn)
             {
 				if(Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					Projectile.NewProjectile(null, Projectile.Center, Vector2.Zero, ProjectileType<UnlimitedBladeWorksBorder>(), 0, 0, Main.player[Projectile.owner].whoAmI);
+					Projectile.timeLeft = (int)(Projectile.ai[2] + 60);
+					Projectile.NewProjectile(null, Projectile.Center, Vector2.Zero, ProjectileType<SpacePowerBorder>(), 0, 0, Main.player[Projectile.owner].whoAmI,0,0,Projectile.timeLeft);
 					Projectile.NewProjectile(null, Projectile.Center, Vector2.Zero, ProjectileType<radiate>(), 0, 0, Main.player[Projectile.owner].whoAmI);
 				}
 				float dustAmount = 120f;
@@ -58,7 +59,7 @@ namespace StarsAbove.Projectiles.StellarNovas
 					Vector2 spinningpoint5 = Vector2.UnitX * 0f;
 					spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
 					spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
-					int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.GemTopaz);
+					int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.GemSapphire);
 					Main.dust[dust].scale = 2f;
 					Main.dust[dust].noGravity = true;
 					Main.dust[dust].position = Projectile.Center + spinningpoint5;
@@ -69,7 +70,7 @@ namespace StarsAbove.Projectiles.StellarNovas
 					Vector2 spinningpoint5 = Vector2.UnitX * 0f;
 					spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
 					spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
-					int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.GemTopaz);
+					int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.GemSapphire);
 					Main.dust[dust].scale = 2f;
 					Main.dust[dust].noGravity = true;
 					Main.dust[dust].position = Projectile.Center + spinningpoint5;
@@ -89,7 +90,7 @@ namespace StarsAbove.Projectiles.StellarNovas
                 }
 			}*/
 			Projectile.ai[0] = MathHelper.Clamp(Projectile.ai[0], 0f, 1f);
-			Projectile.scale = MathHelper.Lerp(0,maxScale, EaseHelper.InOutQuad(Projectile.ai[0]));
+			Projectile.scale = MathHelper.Lerp(0, maxScale, EaseHelper.InOutQuad(Projectile.ai[0]));
 			if(Projectile.scale <= 0 && Projectile.timeLeft < 60)
             {
 				Projectile.Kill();
@@ -97,34 +98,7 @@ namespace StarsAbove.Projectiles.StellarNovas
 
 			if(Projectile.timeLeft < 60)
             {
-				Point Az = Projectile.Center.ToTileCoordinates();
-				int Aradius = 24 * maxScale;
-				for (int Ax = -Aradius; Ax <= Aradius; Ax++)
-				{
-					for (int Ay = -Aradius; Ay <= Aradius; Ay++)
-					{
-						if (Ax * Ax + Ay * Ay <= Aradius * Aradius)
-						{
-							int tileX = Az.X + Ax;
-							int tileY = Az.Y + Ay;
-
-							Tile tile = Main.tile[tileX, tileY];
-							Tile tileAboveTile = Main.tile[tileX, tileY - 1];
-
-							if (tile.HasTile)
-							{
-								if (!tileAboveTile.HasTile)
-								{
-									//reset stuff
-									tile.IsTileFullbright = false;
-
-
-								}
-
-							}
-						}
-					}
-				}
+				
 				Projectile.ai[0] -= 0.03f;
             }
 			else
@@ -134,46 +108,8 @@ namespace StarsAbove.Projectiles.StellarNovas
 			}
 
 			
-			Point z = Projectile.Center.ToTileCoordinates();
-			int radius = (int)MathHelper.Lerp(0, 24 * maxScale, EaseHelper.InOutQuad(Projectile.ai[0]));
-			for (int x = -radius; x <= radius; x++)
-			{
-				for (int y = -radius; y <= radius; y++)
-				{
-					if (x * x + y * y <= radius * radius)
-					{
-						int tileX = z.X + x;
-						int tileY = z.Y + y;
-
-						Tile tile = Main.tile[tileX, tileY];
-						Tile tileAboveTile = Main.tile[tileX, tileY - 1];
-						if (tile.HasTile)
-						{
-							//If there is no tile above the tile
-							if (!tileAboveTile.HasTile && !tile.IsTileFullbright && !tile.IsActuated && !tile.IsTileInvisible)//Fullbright so the roll to spawn the projectile only happens once
-                            {
-								Vector2 tileCenter = new Point16(tileX, tileY).ToWorldCoordinates();
-								if(Main.rand.NextBool(3) && Main.netMode != NetmodeID.MultiplayerClient && Projectile.timeLeft > 60 && Projectile.owner == Main.LocalPlayer.whoAmI)
-								{
-									Projectile.NewProjectile(null, new Vector2(tileCenter.X, tileCenter.Y - 30), Vector2.Zero, ProjectileType<UBWBladeProjectile>(), Projectile.damage, 0, Main.player[Projectile.owner].whoAmI,0,0,Projectile.timeLeft - 25 - radius);
-
-									/*if (bladeAllotment > 0)
-                                    {
-
-										bladeAllotment--;
-                                    }*/
-
-								}
-
-								tile.IsTileFullbright = true;
-								
-
-							}
-							
-						}
-					}
-				}
-			}
+			
+			
 			
 		}
         public override void Kill(int timeLeft)
@@ -184,40 +120,13 @@ namespace StarsAbove.Projectiles.StellarNovas
 				Vector2 spinningpoint5 = Vector2.UnitX * 0f;
 				spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
 				spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
-				int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.GemTopaz);
+				int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.GemSapphire);
 				Main.dust[dust].scale = 2f;
 				Main.dust[dust].noGravity = true;
 				Main.dust[dust].position = Projectile.Center + spinningpoint5;
 				Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 9f;
 			}
-			Point Az = Projectile.Center.ToTileCoordinates();
-			int Aradius = 24;
-			for (int Ax = -Aradius; Ax <= Aradius; Ax++)
-			{
-				for (int Ay = -Aradius; Ay <= Aradius; Ay++)
-				{
-					if (Ax * Ax + Ay * Ay <= Aradius * Aradius)
-					{
-						int tileX = Az.X + Ax;
-						int tileY = Az.Y + Ay;
-
-						Tile tile = Main.tile[tileX, tileY];
-						Tile tileAboveTile = Main.tile[tileX, tileY - 1];
-
-						if (tile.HasTile)
-						{
-							if (!tileAboveTile.HasTile)
-							{
-								//reset stuff
-								tile.IsTileFullbright = false;
-
-
-							}
-
-						}
-					}
-				}
-			}
+			
 		}
         public static Texture2D texture;
 
@@ -227,7 +136,7 @@ namespace StarsAbove.Projectiles.StellarNovas
             Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.UIScaleMatrix);
 
 			
-			var Texture = Mod.Assets.Request<Texture2D>("Effects/UBWBackground");
+			var Texture = Mod.Assets.Request<Texture2D>("SceneEffects/CustomSkies/EdinSkyBG");
             GameShaders.Misc["CyclePass"].UseImage1(Texture);
             // Retrieve the shader registered in Mod.Load and pass in an additional image
             GameShaders.Misc["CyclePass"].UseImage1(Texture);
@@ -271,27 +180,23 @@ namespace StarsAbove.Projectiles.StellarNovas
         }
         
 	}
-	
 
-    public class UnlimitedBladeWorksLighting : ModSystem
-    {
-        public override void Load()
-        {
-			Terraria.Graphics.Light.On_TileLightScanner.GetTileLight += UBWLight;
-        }
+
+	public class SpacePowerLighting : ModSystem
+	{
+		public override void Load()
+		{
+			Terraria.Graphics.Light.On_TileLightScanner.GetTileLight += Light;
+		}
 		//Modified version of Dragonlens light to fix a visual bug
-		private void UBWLight(Terraria.Graphics.Light.On_TileLightScanner.orig_GetTileLight originalLight, Terraria.Graphics.Light.TileLightScanner self, int x, int y, out Vector3 outputColor)
+		private void Light(Terraria.Graphics.Light.On_TileLightScanner.orig_GetTileLight originalLight, Terraria.Graphics.Light.TileLightScanner self, int x, int y, out Vector3 outputColor)
 		{
 			originalLight(self, x, y, out outputColor);
-			if (Main.LocalPlayer.ownedProjectileCounts[ProjectileType<UnlimitedBladeWorksBackground>()] >= 1)
-            {
+			if (Main.LocalPlayer.ownedProjectileCounts[ProjectileType<SpacePowerBackground>()] >= 1)
+			{
 				outputColor += Vector3.One * 0.01f;
 
 			}
-			
 		}
 	}
-	
-		
-    
 }

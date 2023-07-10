@@ -10432,11 +10432,11 @@ namespace StarsAbove.NPCs.AttackLibrary
 						new Vector2(npc.Center.X - 400 + (i * 100), npc.Center.Y - 400), // Spawns here
 						Vector2.Zero, typeVortex, damage, 0f, Main.myPlayer, 60 + (i * 20), (i * 30), 90);
 					}
-					for (int i = 0; i < 10; i++)
+					for (int i = 0; i < 4; i++)
 					{
 						Projectile.NewProjectile(entitySource,
 						new Vector2(npc.Center.X, npc.Center.Y), // Spawns here
-						Vector2.Zero, typeVortex, damage, 0f, Main.myPlayer, 60 + (i * 20), (i * 30), 0 + (i * 36));
+						Vector2.Zero, typeVortex, damage, 0f, Main.myPlayer, 60 + (i * 20), (i * 30), 0 + (i * 90));
 					}
 
 					
@@ -12026,6 +12026,8 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 					if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
 					{
+						Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<SpacePowerBackground>(), 0, 0, Main.myPlayer, 0,0, 320);
+
 						float speed = 4f;
 						int type = ProjectileType<BladeworkIndicator>();
 						int damage = npc.damage/2 + 0/2;
@@ -12152,14 +12154,16 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (npc.type == ModContent.NPCType<WarriorOfLightBoss>())
 				{
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<WarriorOfLightCastingSprite>(), 0, 0, Main.myPlayer, 180);
+					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<SpacePowerBackground>(), 0, 0, Main.myPlayer,0,0, 180);
 
 				}
 				if (npc.type == ModContent.NPCType<WarriorOfLightBossFinalPhase>())
 				{
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<WarriorOfLightFinalPhaseCastingSprite>(), 0, 0, Main.myPlayer, 180);
+					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<SpacePowerBackground>(), 0, 0, Main.myPlayer,0,0, 180);
 
 				}
-				
+
 
 				return;
 			}

@@ -8607,6 +8607,8 @@ Mods: {
 			UnlimitedBladeWorksBackground.DisplayName: Unlimited Blade Works Background
 			UnlimitedBladeWorksBorder.DisplayName: Unlimited Blade Works Border
 			UBWBladeProjectile.DisplayName: U B W Blade Projectile
+			SpacePowerBackground.DisplayName: Space Power Background
+			SpacePowerBorder.DisplayName: Space Power Border
 		}
 
 		Buffs: {

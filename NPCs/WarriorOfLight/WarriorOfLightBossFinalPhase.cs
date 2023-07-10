@@ -487,7 +487,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 				if (AI_RotationNumber == 35)
 				{
 					//
-					WarriorSummoning2(P, NPC);
+					WarriorSummoning3(P, NPC);
 					return;
 
 				}
