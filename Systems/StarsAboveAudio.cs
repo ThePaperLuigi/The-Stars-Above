@@ -83,7 +83,10 @@ namespace StarsAbove
 		{
 
 		};
+		public static readonly SoundStyle ANSpecial6 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/UniqueLines/ANSpecial6")
+		{
 
+		};
 
 		#endregion
 		#region Eridani Voice Lines
@@ -145,6 +148,10 @@ namespace StarsAbove
 
 		};
 		public static readonly SoundStyle ENSpecial5 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/UniqueLines/ENSpecial5")
+		{
+
+		};
+		public static readonly SoundStyle ENSpecial6 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/UniqueLines/ENSpecial6")
 		{
 
 		};

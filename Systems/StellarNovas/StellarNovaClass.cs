@@ -35,6 +35,8 @@ namespace StarsAbove
                     return LangHelper.GetTextValue("StellarNova.StellarNovaInfo.GardenOfAvalon." + grab);
                 case 5:
                     return LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EdinGenesisQuasar." + grab, baseDamage);
+                case 6:
+                    return LangHelper.GetTextValue("StellarNova.StellarNovaInfo.UnlimitedBladeWorks." + grab);
                 default:
                     break;
             }
@@ -54,6 +56,8 @@ namespace StarsAbove
                     return baseDamage / 500;
                 case 5:
                     return baseDamage / 15;
+                case 6:
+                    return baseDamage / 50;
                 default:
                     break;
             }
@@ -73,6 +77,8 @@ namespace StarsAbove
                     return 150;
                 case 5:
                     return 180;
+                case 6:
+                    return 140;
                 default:
                     break;
             }
@@ -92,6 +98,8 @@ namespace StarsAbove
                     return 35;
                 case 5:
                     return 25;
+                case 6:
+                    return 15;
                 default:
                     break;
             }
@@ -111,6 +119,8 @@ namespace StarsAbove
                     return 100;
                 case 5:
                     return (int)((baseDamage / 10) * 1.3);
+                case 6:
+                    return baseDamage/40;
                 default:
                     break;
             }

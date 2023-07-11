@@ -2746,6 +2746,7 @@ Mods: {
 						// Special3: With only one strike!
 						// Special4: Your wish is my command.
 						// Special5: Just give up! At this point, even I can't stop myself.
+						// Special6: I have no regrets; this is the only path.
 						// 1: I've been waiting for this exact moment!
 						// 2: I am not about to stop here.
 						// 3: I'll reduce you to stardust!
@@ -2764,6 +2765,7 @@ Mods: {
 						// Special3: Didn't see that one coming, huh?
 						// Special4: I'll show you the domain of the soul.
 						// Special5: Know that you are dimensions below me.
+						// Special6: I am the bone of my sword...
 						// 1: Time to finish this.
 						// 2: Go back to where you belong.
 						// 3: Submit to entropy.
@@ -2869,6 +2871,18 @@ Mods: {
 						Eridani: No podemos usar esto aún. Tenemos que derrotar a un enemigo con poderes espaciales.
 					}
 				}
+
+				UnlimitedBladeWorks: {
+					Unlocked: {
+						// Asphodene: With this Stellar Nova, you can mold the battlefield to one that empowers your abilities.
+						// Eridani: You can use this Stellar Nova to create a powerful empowerment field to turn the tide of battle.
+					}
+
+					Locked: {
+						// Asphodene: We don't have access to this yet.
+						// Eridani: We can't use this yet.
+					}
+				}
 			}
 
 			StellarNovaInfo: {
@@ -2914,10 +2928,10 @@ Mods: {
 
 				UnlimitedBladeWorks: {
 					// AbilityName: Unlimited Blade Works
-					// AbilitySubName: "[Projected Reality of Wrought Iron]"
-					// AbilityDescription: Summon a portal to a world of blades, creating a field of empowerment for 20 seconds. Within the field, follow-up attacks will occur and will reduce enemy damage dealt by 20% for 5 seconds on hit (3 second follow-up cooldown.) Additonally, all allies within the radius will gain Bladeforged, which increases damage by 2% up to 10% depending on missing HP. Size scales inversely with Stellar Nova cost.
-					// AstralBonus: The base size of the Stellar Nova is increased by 40%. All allies gain 8 defense within the field, and Bladeforged's cap is raised to 20% increased damage.
-					// UmbralBonus: Self damage is reduced by 50% within the field, but critical strikes will cause bonus follow-up attacks to occur. Foes within the field take 10% more damage.
+					// AbilitySubName: "[c/FC643B:Projected Reality of Wrought Iron]"
+					// AbilityDescription: Summon a portal to a world of blades, creating a field of empowerment for 20 seconds. Within the field, follow-up attacks will occur, reducing enemy damage dealt by 20% for 5 seconds on hit (3 second follow-up cooldown.) Additonally, all allies within the radius will gain Bladeforged, which increases damage, knockback, critical strike chance, and armor penetration by 2% up to 10% depending on current HP (capped at 500 HP.) Duration in seconds is proportional to Energy Cost divided by 10.
+					// AstralBonus: Bladeforged's cap is raised to 15% and now increases defense based on percentage values up to 8. Additonally, Bladeforged perists for 10 seconds after the Nova ends.
+					// UmbralBonus: Outgoing damage is reduced by 10%, but follow up attack cooldown is reduced by 1 second. Foes within the field take 10% more damage.
 				}
 
 				BaseDamage: Daño Base
@@ -8519,6 +8533,7 @@ Mods: {
 			// UBWBladeProjectile.DisplayName: U B W Blade Projectile
 			// SpacePowerBackground.DisplayName: Space Power Background
 			// SpacePowerBorder.DisplayName: Space Power Border
+			// UBWBladeFollowUp.DisplayName: U B W Blade Follow Up
 		}
 
 		Buffs: {
@@ -10713,6 +10728,16 @@ Mods: {
 			LamentingPocketwatchCooldown: {
 				// DisplayName: Lamenting Pocketwatch Cooldown
 				// Description: ""
+			}
+
+			Bladeforged: {
+				// DisplayName: Bladeforged
+				// Description: Projected reality is granting increased damage, knockback, critical strike chance, and armor penetration.
+			}
+
+			UBWFollowUpCooldown: {
+				// DisplayName: U B W Follow Up Cooldown
+				// Description: Mods.StarsAbove.Buffs.UBWFollowUpCooldown.Description
 			}
 		}
 

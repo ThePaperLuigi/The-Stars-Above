@@ -50,6 +50,7 @@ using StarsAbove.NPCs.Tsukiyomi;
 using StarsAbove.Projectiles.StellarNovas;
 using StarsAbove.Items.Prisms;
 using StarsAbove.NPCs.WarriorOfLight;
+using StarsAbove.Buffs.StellarNovas;
 
 namespace StarsAbove
 {
@@ -663,6 +664,7 @@ namespace StarsAbove
         public int kiwamiryuken; //0 = LOCKED, 1 = UNLOCKED, 2 = SELECTED 2 does not matter really
         public int gardenofavalon; //0 = LOCKED, 1 = UNLOCKED, 2 = SELECTED 2 does not matter really
         public int edingenesisquasar; //0 = LOCKED, 1 = UNLOCKED, 2 = SELECTED 2 does not matter really
+        public int unlimitedbladeworks;
 
         //Cutscenes, new feature
         public int astarteCutsceneProgress = 0;
@@ -1687,6 +1689,55 @@ namespace StarsAbove
                 target.AddBuff(BuffType<Buffs.AstarteDriverEnemyCooldown>(), 60);
                 OnEnemyHitWithNova(target, 5, ref damageDone, ref hit.Crit);
             }
+            //Unlimited Blade Works follow up
+            if (Player.ownedProjectileCounts[ProjectileType<UnlimitedBladeWorksBackground>()] >= 1 && !Player.HasBuff(BuffType<UBWFollowUpCooldown>()))
+            {
+                if (chosenStarfarer == 1)
+                {
+                    Player.AddBuff(BuffType<UBWFollowUpCooldown>(), 180);
+                }
+                else if (chosenStarfarer == 2)
+                {
+                    Player.AddBuff(BuffType<UBWFollowUpCooldown>(), 120);
+
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    float offsetAmount = i * 120;
+                    Projectile.NewProjectile(null, Player.Center.X, Player.Center.Y, 0f, 0f, ProjectileType<UBWBladeFollowUp>(), baseNovaDamageAdd, 0, Player.whoAmI, 0, offsetAmount);
+
+                }
+                int killBlades = 3;
+                if (killBlades > 0)
+                {
+                    for (int i = 0; i < Main.maxProjectiles; i++)
+                    {
+                        Projectile projTarget = Main.projectile[i];
+
+                        if (projTarget.active && projTarget.type == ProjectileType<UBWBladeProjectile>())
+                        {
+                            if (Main.rand.NextBool(3))
+                            {
+                                SoundEngine.PlaySound(SoundID.Item37, Player.Center);
+                                for (int ix = 0; ix < 30; ix++)
+                                {
+                                    Vector2 position = Vector2.Lerp(Player.Center, projTarget.Center, (float)ix / 30);
+                                    Dust d = Dust.NewDustPerfect(position, DustID.GemTopaz, null, 240, default(Color), 0.6f);
+                                    d.fadeIn = 0.3f;
+                                    d.noGravity = true;
+
+                                }
+                                projTarget.Kill();
+                                killBlades--;
+                            }
+                            else
+                            {
+                                continue;
+                            }
+                        }
+                    }
+                }
+            }
             if (target.HasBuff(BuffType<Buffs.Starblight>()) && umbralentropy == 2)
             {
                 if (umbralEntropyCooldown <= 0)
@@ -1784,9 +1835,47 @@ namespace StarsAbove
 
                 target.AddBuff(BuffID.OnFire, 480);
             }
-            
 
 
+            if (Player.ownedProjectileCounts[ProjectileType<UnlimitedBladeWorksBackground>()] >= 1 && proj.type != ProjectileType<UBWBladeFollowUp>() && !Player.HasBuff(BuffType<UBWFollowUpCooldown>()))
+            {
+                if(chosenStarfarer == 1)
+                {
+                    Player.AddBuff(BuffType<UBWFollowUpCooldown>(), 180);
+                }
+                else if (chosenStarfarer == 2)
+                {
+                    Player.AddBuff(BuffType<UBWFollowUpCooldown>(), 120);
+
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    float offsetAmount = i * 120;
+                    Projectile.NewProjectile(null, Player.Center.X, Player.Center.Y, 0f, 0f, ProjectileType<UBWBladeFollowUp>(), baseNovaDamageAdd, 0, Player.whoAmI,0 ,offsetAmount);
+
+                }
+                int killBlades = 3;
+                if(killBlades > 0)
+                {
+                    for (int i = 0; i < Main.maxProjectiles; i++)
+                    {
+                        Projectile projTarget = Main.projectile[i];
+
+                        if (projTarget.active && projTarget.type == ProjectileType<UBWBladeProjectile>())
+                        {
+                            if (Main.rand.NextBool(3))
+                            {
+                                projTarget.Kill();
+                                killBlades--;
+                            }
+                            else
+                            {
+                                continue;
+                            }
+                        }
+                    }
+                }
+            }
             if (Player.HasBuff(BuffType<AstarteDriver>()) && starfarerOutfit == 3 && proj.type != ProjectileType<StarfarerFollowUp>())
             {
                 Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0f, 0f, ProjectileType<StarfarerFollowUp>(), damageDone / 3, 0, Player.whoAmI);
@@ -2029,6 +2118,32 @@ namespace StarsAbove
 
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Projectile, consider using ModifyHitNPC instead */
         {
+            if (proj.type == ProjectileType<UBWBladeFollowUp>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    modifiers.SetCrit();
+                    novaGauge += trueNovaGaugeMax / 40;
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod));
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage again due to having two swords.
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                }
+                else
+                {
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod));
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage due to having two swords.
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+            }
             if (proj.type == ProjectileType<Theofania>())
             {
                 modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
@@ -6647,7 +6762,7 @@ namespace StarsAbove
             if (Main.LocalPlayer.active && !Main.LocalPlayer.dead && !Player.GetModPlayer<BossPlayer>().QTEActive)
             {
                 EdinGenesisQuasar();
-                if (chosenStellarNova == 1 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && chosenStellarNova != 0 && Main.LocalPlayer.HasBuff(BuffType<Buffs.TheofaniaTricast>()))//Theofania Tricast
+                if (chosenStellarNova == 1 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && Main.LocalPlayer.HasBuff(BuffType<Buffs.TheofaniaTricast>()))//Theofania Tricast
                 {
 
                     if (Player.whoAmI == Main.myPlayer)
@@ -6677,7 +6792,7 @@ namespace StarsAbove
                     }
                 }
                 //dualCast
-                if (chosenStellarNova == 1 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && chosenStellarNova != 0 && Main.LocalPlayer.HasBuff(BuffType<Buffs.TheofaniaDualcast>()))//Theofania Dualcast
+                if (chosenStellarNova == 1 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && Main.LocalPlayer.HasBuff(BuffType<Buffs.TheofaniaDualcast>()))//Theofania Dualcast
                 {
                     if (Player.whoAmI == Main.myPlayer)
                     {
@@ -6745,6 +6860,7 @@ namespace StarsAbove
                     }
                 }
                 else
+                //This is the Stellar Nova code (barring unique ones like theofania dualcast or kiwami ryuken
                 if (novaGauge == trueNovaGaugeMax && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && chosenStellarNova != 0)
                 {
                     StellarNovaCutIn();
@@ -6773,11 +6889,6 @@ namespace StarsAbove
                                                                                                                                                                                                        //Projectile.NewProjectile(null,player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
                             onActivateStellarNova();
                         }
-                    }
-
-                    if (Player.whoAmI == Main.myPlayer)
-                    {
-                        //Activate the Stellar Novas here.
                         if (chosenStellarNova == 2)//Ars Laevateinn
                         {
                             SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, Player.Center);
@@ -6795,10 +6906,6 @@ namespace StarsAbove
                                                                                                                                                                                          //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
                             onActivateStellarNova();                                                                                                                                                           //Projectile.NewProjectile(null,player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
                         }
-                    }
-                    if (Player.whoAmI == Main.myPlayer)
-                    {
-                        //Activate the Stellar Novas here.
                         if (chosenStellarNova == 4)//The Garden of Avalon
                         {
                             //Main.PlaySound(SoundLoader.customSoundType, (int)player.Center.X, (int)player.Center.Y, mod.GetSoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Custom/theofaniaActive"));
@@ -6855,20 +6962,25 @@ namespace StarsAbove
 
 
                         }
-                    }
-                    if (Player.whoAmI == Main.myPlayer)
-                    {
-                        //Activate the Stellar Novas here.
                         if (chosenStellarNova == 5)//Edin Shugra Quasar
                         {
 
 
                             onActivateStellarNova();
                             astarteCutsceneProgress = 180;
-                            Player.AddBuff(BuffType<Buffs.AstarteDriverPrep>(), 180);                                                                                                        //Vector2 mousePosition = Main.MouseWorld;
-                            Player.AddBuff(BuffType<Buffs.Invincibility>(), 400);                                                                                                        //Vector2 mousePosition = Main.MouseWorld;
-                                                                                                                                                                                             //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
-                                                                                                                                                                                             //Projectile.NewProjectile(null,player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
+                            Player.AddBuff(BuffType<Buffs.AstarteDriverPrep>(), 180);
+                            Player.AddBuff(BuffType<Buffs.Invincibility>(), 400);
+
+
+                        }
+                        if (chosenStellarNova == 6)//Edin Shugra Quasar
+                        {
+
+
+                            onActivateStellarNova();
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, Player.Center);
+                            Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<UnlimitedBladeWorksBackground>(), novaDamage, 0, Player.whoAmI, 0, (trueNovaGaugeMax/10)*60);
+
                         }
                     }
 
@@ -6893,80 +7005,83 @@ namespace StarsAbove
             //If the ModConfig's voices are enabled, continue.
             if (!voicesEnabled)
             {
-                if(Main.rand.NextBool(5))//1 in 5 chance to play a Nova specific line.
+                if(Main.rand.NextBool(1))//1 in 5 chance to play a Nova specific line.
                 {
                     novaDialogue = LangHelper.Wrap(LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + ".Special" + $"{chosenStellarNova}"), 20);
 
-                    if (chosenStellarNova == 1)
+                    switch (chosenStellarNova)
                     {
+                        case 1:
+                            if (chosenStarfarer == 1)
+                            {
+                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial1, Player.Center);
+                            }
+                            else if (chosenStarfarer == 2)
+                            {
+                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial1, Player.Center);
 
-                        if (chosenStarfarer == 1)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.ANSpecial1, Player.Center);
-                        }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.ENSpecial1, Player.Center);
+                            }
+                            break;
+                        case 2:
+                            if (chosenStarfarer == 1)
+                            {
+                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial2, Player.Center);
+                            }
+                            else if (chosenStarfarer == 2)
+                            {
+                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial2, Player.Center);
 
-                        }
+                            }
+                            break;
+                        case 3:
+                            if (chosenStarfarer == 1)
+                            {
+                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial3, Player.Center);
+                            }
+                            else if (chosenStarfarer == 2)
+                            {
+                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial3, Player.Center);
 
-                    }
-                    if (chosenStellarNova == 2)
-                    {
-                        if (chosenStarfarer == 1)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.ANSpecial2, Player.Center);
-                        }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.ENSpecial2, Player.Center);
+                            }
+                            break;
+                        case 4:
+                            if (chosenStarfarer == 1)
+                            {
+                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial4, Player.Center);
+                            }
+                            else if (chosenStarfarer == 2)
+                            {
+                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial4, Player.Center);
 
-                        }
+                            }
+                            break;
+                        case 5:
+                            if (chosenStarfarer == 1)
+                            {
+                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial5, Player.Center);
+                            }
+                            else if (chosenStarfarer == 2)
+                            {
+                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial5, Player.Center);
 
-                    }
-                    if (chosenStellarNova == 3)
-                    {
-                        if (chosenStarfarer == 1)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.ANSpecial3, Player.Center);
-                        }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.ENSpecial3, Player.Center);
+                            }
+                            break;
+                        case 6:
+                            if (chosenStarfarer == 1)
+                            {
+                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial6, Player.Center);
+                            }
+                            else if (chosenStarfarer == 2)
+                            {
+                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial6, Player.Center);
 
-                        }
-
-                    }
-                    if (chosenStellarNova == 4)
-                    {
-                        if (chosenStarfarer == 1)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.ANSpecial4, Player.Center);
-                        }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.ENSpecial4, Player.Center);
-
-                        }
-
-                    }
-                    if (chosenStellarNova == 5)
-                    {
-                        if (chosenStarfarer == 1)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.ANSpecial5, Player.Center);
-                        }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.ENSpecial5, Player.Center);
-
-                        }
-
+                            }
+                            break;
                     }
                 }
                 else
                 {
-                    if(Main.rand.NextBool(20))
+                    if(Main.rand.NextBool(100))
                     {
                         string novaQuote = (LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + $".10"));
                         novaDialogue = LangHelper.Wrap(novaQuote, 20);
@@ -7386,6 +7501,33 @@ namespace StarsAbove
 
                     }
                 }
+            if (Main.LocalPlayer.HasBuff(BuffType<Bladeforged>()))
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {//Circle
+                    Vector2 offset = new Vector2();
+                    double angle = Main.rand.NextDouble() * 2d * Math.PI;
+                    offset.X += (float)(Math.Sin(angle) * 30f);
+                    offset.Y += (float)(Math.Cos(angle) * 30f);
+
+                    Dust d2 = Dust.NewDustPerfect(Player.Center + offset, DustID.Flare, Player.velocity, 200, default(Color), 0.7f);
+                    d2.fadeIn = 0.0001f;
+                    d2.noGravity = true;
+                }
+                
+                if (Player.velocity.Y == 0)
+                {
+                    for (int i3 = 0; i3 < 50; i3++)
+                    {
+
+                        Dust d = Main.dust[Dust.NewDust(new Vector2(Player.Center.X - Player.width, Player.Center.Y + Player.height / 2), Player.width * 2 - 3, 0, DustID.Flare, 0, Main.rand.Next(-5, -2), 150, default(Color), 0.3f)];
+                        d.fadeIn = 0.3f;
+                        d.noLight = true;
+                        d.noGravity = true;
+                    }
+                }
+                
+            }
             if (Main.LocalPlayer.HasBuff(BuffType<Buffs.LeftDebuff>()))
             {
                 for (int i = 0; i < 2; i++)

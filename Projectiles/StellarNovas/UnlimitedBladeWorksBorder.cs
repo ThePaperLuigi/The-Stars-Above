@@ -35,11 +35,13 @@ namespace StarsAbove.Projectiles.StellarNovas
 		}
 		
 		bool firstSpawn = true;
-
+		
 		public override void AI()
 		{
 			if(firstSpawn)
-            {
+			{
+				Projectile.timeLeft = (int)Projectile.ai[1];
+
 				Projectile.scale = 0.001f;
 				firstSpawn = false;
             }

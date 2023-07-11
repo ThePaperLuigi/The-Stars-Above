@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using StarsAbove.Buffs.StellarNovas;
 using StarsAbove.Utilities;
 using System;
 using System.Collections.Generic;
@@ -44,138 +45,196 @@ namespace StarsAbove.Projectiles.StellarNovas
 		int bladeAllotmentTimer;
 		int maxScale = 2;
 		public override void AI()
-		{
-			if(firstSpawn)
+        {
+            if (firstSpawn)
             {
-				if(Main.netMode != NetmodeID.MultiplayerClient)
-				{
-					Projectile.NewProjectile(null, Projectile.Center, Vector2.Zero, ProjectileType<UnlimitedBladeWorksBorder>(), 0, 0, Main.player[Projectile.owner].whoAmI);
-					Projectile.NewProjectile(null, Projectile.Center, Vector2.Zero, ProjectileType<radiate>(), 0, 0, Main.player[Projectile.owner].whoAmI);
-				}
-				float dustAmount = 120f;
-				for (int i = 0; (float)i < dustAmount; i++)
-				{
-					Vector2 spinningpoint5 = Vector2.UnitX * 0f;
-					spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
-					spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
-					int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.GemTopaz);
-					Main.dust[dust].scale = 2f;
-					Main.dust[dust].noGravity = true;
-					Main.dust[dust].position = Projectile.Center + spinningpoint5;
-					Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 40f;
-				}
-				for (int i = 0; (float)i < dustAmount; i++)
-				{
-					Vector2 spinningpoint5 = Vector2.UnitX * 0f;
-					spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
-					spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
-					int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.GemTopaz);
-					Main.dust[dust].scale = 2f;
-					Main.dust[dust].noGravity = true;
-					Main.dust[dust].position = Projectile.Center + spinningpoint5;
-					Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 70f;
-				}
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
-				Projectile.scale = 0.001f;
-				firstSpawn = false;
-            }
-			/*if(Projectile.scale > 0 && Projectile.scale < 1)
-            {
-				bladeAllotmentTimer++;
-				if(bladeAllotmentTimer >= 7)
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
-					bladeAllotment = 5;
-					bladeAllotmentTimer = 0;
+                    Projectile.timeLeft = (int)Projectile.ai[1] + 60;
+                    Projectile.NewProjectile(null, Projectile.Center, Vector2.Zero, ProjectileType<UnlimitedBladeWorksBorder>(), 0, 0, Main.player[Projectile.owner].whoAmI,0,Projectile.timeLeft);
+                    Projectile.NewProjectile(null, Projectile.Center, Vector2.Zero, ProjectileType<radiate>(), 0, 0, Main.player[Projectile.owner].whoAmI);
                 }
-			}*/
-			Projectile.ai[0] = MathHelper.Clamp(Projectile.ai[0], 0f, 1f);
-			Projectile.scale = MathHelper.Lerp(0,maxScale, EaseHelper.InOutQuad(Projectile.ai[0]));
-			if(Projectile.scale <= 0 && Projectile.timeLeft < 60)
-            {
-				Projectile.Kill();
+                float dustAmount = 120f;
+                for (int i = 0; (float)i < dustAmount; i++)
+                {
+                    Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                    spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+                    spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
+                    int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.GemTopaz);
+                    Main.dust[dust].scale = 2f;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].position = Projectile.Center + spinningpoint5;
+                    Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 40f;
+                }
+                for (int i = 0; (float)i < dustAmount; i++)
+                {
+                    Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                    spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+                    spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
+                    int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.GemTopaz);
+                    Main.dust[dust].scale = 2f;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].position = Projectile.Center + spinningpoint5;
+                    Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 70f;
+                }
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
+                Projectile.scale = 0.001f;
+                firstSpawn = false;
             }
 
-			if(Projectile.timeLeft < 60)
+            Projectile.ai[0] = MathHelper.Clamp(Projectile.ai[0], 0f, 1f);
+            Projectile.scale = MathHelper.Lerp(0, maxScale, EaseHelper.InOutQuad(Projectile.ai[0]));
+            if (Projectile.scale <= 0 && Projectile.timeLeft < 60)
             {
-				Point Az = Projectile.Center.ToTileCoordinates();
-				int Aradius = 24 * maxScale;
-				for (int Ax = -Aradius; Ax <= Aradius; Ax++)
-				{
-					for (int Ay = -Aradius; Ay <= Aradius; Ay++)
-					{
-						if (Ax * Ax + Ay * Ay <= Aradius * Aradius)
-						{
-							int tileX = Az.X + Ax;
-							int tileY = Az.Y + Ay;
-
-							Tile tile = Main.tile[tileX, tileY];
-							Tile tileAboveTile = Main.tile[tileX, tileY - 1];
-
-							if (tile.HasTile)
-							{
-								if (!tileAboveTile.HasTile)
-								{
-									//reset stuff
-									tile.IsTileFullbright = false;
-
-
-								}
-
-							}
-						}
-					}
-				}
-				Projectile.ai[0] -= 0.03f;
+                Projectile.Kill();
             }
-			else
+
+            if (Projectile.timeLeft < 60)
             {
-				Projectile.ai[0] += 0.01f;//Time alive
+                RemoveSwords();
+                Projectile.ai[0] -= 0.03f;
+            }
+            else
+            {
+                Projectile.ai[0] += 0.01f;//Time alive
 
-			}
+            }
 
-			
-			Point z = Projectile.Center.ToTileCoordinates();
-			int radius = (int)MathHelper.Lerp(0, 24 * maxScale, EaseHelper.InOutQuad(Projectile.ai[0]));
-			for (int x = -radius; x <= radius; x++)
-			{
-				for (int y = -radius; y <= radius; y++)
-				{
-					if (x * x + y * y <= radius * radius)
-					{
-						int tileX = z.X + x;
-						int tileY = z.Y + y;
 
-						Tile tile = Main.tile[tileX, tileY];
-						Tile tileAboveTile = Main.tile[tileX, tileY - 1];
-						if (tile.HasTile)
-						{
-							//If there is no tile above the tile
-							if (!tileAboveTile.HasTile && !tile.IsTileFullbright && !tile.IsActuated && !tile.IsTileInvisible)//Fullbright so the roll to spawn the projectile only happens once
+
+            Point z = Projectile.Center.ToTileCoordinates();
+            int radius = (int)MathHelper.Lerp(0, 24 * maxScale, EaseHelper.InOutQuad(Projectile.ai[0]));
+            int realRadius = (int)(radius * 16);
+
+            SpawnSwords(z, radius);
+
+            for (int i = 0; i < Main.maxPlayers; i++)
+            {
+                Player p = Main.player[i];
+                if (p.active && !p.dead && p.Distance(Projectile.Center) < realRadius)
+                {
+                    if(p.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
+                    {
+                        p.AddBuff(BuffType<Bladeforged>(), 600);
+
+                    }
+                    else
+                    {
+                        p.AddBuff(BuffType<Bladeforged>(), 10);
+
+                    }
+                }
+
+            }
+            for (int i = 0; i < 35; i++)
+            {
+                // Charging dust
+                Vector2 vector = new Vector2(
+                    Main.rand.Next(-realRadius, realRadius),
+                    Main.rand.Next(-realRadius, realRadius));
+                Dust d = Main.dust[Dust.NewDust(
+                    Projectile.Center + vector, 1, 1,
+                    DustID.Flare, 0, 0, 255,
+                    new Color(1f, 1f, 1f), 1f)];
+
+                d.velocity = vector / 16;
+                d.velocity -= Projectile.velocity / 8;
+                d.noLight = true;
+                d.noGravity = true;
+            }
+            if (Projectile.ai[0] >= 1 && Projectile.timeLeft > 150)
+            {
+
+                for (int i = 0; i < 90; i++)
+                {//Circle
+                    Vector2 offset = new Vector2();
+                    double angle = Main.rand.NextDouble() * 2d * Math.PI;
+                    offset.X += (float)(Math.Sin(angle) * realRadius);
+                    offset.Y += (float)(Math.Cos(angle) * realRadius);
+
+                    Dust d = Dust.NewDustPerfect(Projectile.Center + offset, DustID.FireworkFountain_Yellow, Vector2.Zero, 20, default(Color), 0.5f);
+
+                    d.fadeIn = 1f;
+                    d.noGravity = true;
+                }
+            }
+
+        }
+
+        private void RemoveSwords()
+        {
+            Point Az = Projectile.Center.ToTileCoordinates();
+            int Aradius = 24 * maxScale;
+            for (int Ax = -Aradius; Ax <= Aradius; Ax++)
+            {
+                for (int Ay = -Aradius; Ay <= Aradius; Ay++)
+                {
+                    if (Ax * Ax + Ay * Ay <= Aradius * Aradius)
+                    {
+                        int tileX = Az.X + Ax;
+                        int tileY = Az.Y + Ay;
+
+                        Tile tile = Main.tile[tileX, tileY];
+                        Tile tileAboveTile = Main.tile[tileX, tileY - 1];
+
+                        if (tile.HasTile)
+                        {
+                            if (!tileAboveTile.HasTile)
                             {
-								Vector2 tileCenter = new Point16(tileX, tileY).ToWorldCoordinates();
-								if(Main.rand.NextBool(3) && Main.netMode != NetmodeID.MultiplayerClient && Projectile.timeLeft > 60 && Projectile.owner == Main.LocalPlayer.whoAmI)
-								{
-									Projectile.NewProjectile(null, new Vector2(tileCenter.X, tileCenter.Y - 30), Vector2.Zero, ProjectileType<UBWBladeProjectile>(), Projectile.damage, 0, Main.player[Projectile.owner].whoAmI,0,0,Projectile.timeLeft - 25 - radius);
+                                //reset stuff
+                                tile.IsTileFullbright = false;
 
-									/*if (bladeAllotment > 0)
+
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+
+        private void SpawnSwords(Point z, int radius)
+        {
+            for (int x = -radius; x <= radius; x++)
+            {
+                for (int y = -radius; y <= radius; y++)
+                {
+                    if (x * x + y * y <= radius * radius)
+                    {
+                        int tileX = z.X + x;
+                        int tileY = z.Y + y;
+
+                        Tile tile = Main.tile[tileX, tileY];
+                        Tile tileAboveTile = Main.tile[tileX, tileY - 1];
+                        if (tile.HasTile)
+                        {
+                            //If there is no tile above the tile
+                            if (!tileAboveTile.HasTile && !tile.IsTileFullbright && !tile.IsActuated && !tile.IsTileInvisible)//Fullbright so the roll to spawn the projectile only happens once
+                            {
+                                Vector2 tileCenter = new Point16(tileX, tileY).ToWorldCoordinates();
+                                if (Main.rand.NextBool(2) && Main.netMode != NetmodeID.MultiplayerClient && Projectile.timeLeft > 60 && Projectile.owner == Main.LocalPlayer.whoAmI)
+                                {
+                                    Projectile.NewProjectile(null, new Vector2(tileCenter.X + Main.rand.Next(-10, 11), tileCenter.Y - 30), Vector2.Zero, ProjectileType<UBWBladeProjectile>(), Projectile.damage, 0, Main.player[Projectile.owner].whoAmI, 0, 0, Projectile.timeLeft - 20 - radius);
+
+                                    /*if (bladeAllotment > 0)
                                     {
 
 										bladeAllotment--;
                                     }*/
 
-								}
+                                }
 
-								tile.IsTileFullbright = true;
-								
+                                tile.IsTileFullbright = true;
 
-							}
-							
-						}
-					}
-				}
-			}
-			
-		}
+
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+
         public override void Kill(int timeLeft)
         {
 			float dustAmount = 50f;

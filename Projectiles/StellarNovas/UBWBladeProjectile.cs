@@ -45,7 +45,7 @@ namespace StarsAbove.Projectiles.StellarNovas
 			Projectile.width = 32; // The width of projectile hitbox
 			Projectile.height = 32; // The height of projectile hitbox
 			Projectile.aiStyle = 0; // The ai style of the projectile (0 means custom AI). For more please reference the source code of Terraria
-			Projectile.friendly = true; // Can the projectile deal damage to enemies?
+			Projectile.friendly = false; // Can the projectile deal damage to enemies?
 			Projectile.hostile = false; // Can the projectile deal damage to the player?
 			//Projectile.DamageType = DamageClass.Ranged; // Makes the projectile deal ranged damage. You can set in to DamageClass.Throwing, but that is not used by any vanilla items
 			Projectile.penetrate = 2; // How many monsters the projectile can penetrate.

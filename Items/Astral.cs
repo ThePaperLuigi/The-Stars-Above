@@ -69,7 +69,14 @@ namespace StarsAbove.Items
 			{
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().gardenofavalon = 1;
 			}
-			
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().edingenesisquasar == 0)
+			{
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().edingenesisquasar = 1;
+			}
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().unlimitedbladeworks == 0)
+			{
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().unlimitedbladeworks = 1;
+			}
 			return true;
 		}
 		
