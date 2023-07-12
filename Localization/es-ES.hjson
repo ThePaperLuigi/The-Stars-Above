@@ -2929,9 +2929,9 @@ Mods: {
 				UnlimitedBladeWorks: {
 					// AbilityName: Unlimited Blade Works
 					// AbilitySubName: "[c/FC643B:Projected Reality of Wrought Iron]"
-					// AbilityDescription: Summon a portal to a world of blades, creating a field of empowerment for 20 seconds. Within the field, follow-up attacks will occur, reducing enemy damage dealt by 20% for 5 seconds on hit (3 second follow-up cooldown.) Additonally, all allies within the radius will gain Bladeforged, which increases damage, knockback, critical strike chance, and armor penetration by 2% up to 10% depending on current HP (capped at 500 HP.) Duration in seconds is proportional to Energy Cost divided by 10.
+					// AbilityDescription: Summon a portal to a world of blades, creating a field of empowerment for 20 seconds. After activation, rain down a barrage of blades, reducing enemy damage dealt by 10% for 20 seconds on hit. Additonally, all allies within the radius will gain Bladeforged, which increases damage, knockback, critical strike chance, and armor penetration by 2% up to 10% depending on current HP (capped at 500 HP.) Duration in seconds is proportional to Energy Cost divided by 10.
 					// AstralBonus: Bladeforged's cap is raised to 15% and now increases defense based on percentage values up to 8. Additonally, Bladeforged perists for 10 seconds after the Nova ends.
-					// UmbralBonus: Outgoing damage is reduced by 10%, but follow up attack cooldown is reduced by 1 second. Foes within the field take 10% more damage.
+					// UmbralBonus: Bladeforged no longer increases damage, but attacking with projectiles trigger follow-up attacks (3 second cooldown.) Foes within the field take 10% more damage.
 				}
 
 				BaseDamage: Daño Base
@@ -8534,6 +8534,7 @@ Mods: {
 			// SpacePowerBackground.DisplayName: Space Power Background
 			// SpacePowerBorder.DisplayName: Space Power Border
 			// UBWBladeFollowUp.DisplayName: U B W Blade Follow Up
+			// UBWBladeFollowUpDelay.DisplayName: U B W Blade Follow Up Delay
 		}
 
 		Buffs: {

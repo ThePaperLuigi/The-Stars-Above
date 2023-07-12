@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Buffs.StellarNovas;
+
 using StarsAbove.Utilities;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,7 @@ namespace StarsAbove.Projectiles.StellarNovas
 			behindNPCsAndTiles.Add(index);
 		}
 		bool firstSpawn = true;
+        bool spawnedSwords = false;
 		int bladeAllotment = 4;
 		int bladeAllotmentTimer;
 		int maxScale = 2;
@@ -53,6 +55,7 @@ namespace StarsAbove.Projectiles.StellarNovas
                     Projectile.timeLeft = (int)Projectile.ai[1] + 60;
                     Projectile.NewProjectile(null, Projectile.Center, Vector2.Zero, ProjectileType<UnlimitedBladeWorksBorder>(), 0, 0, Main.player[Projectile.owner].whoAmI,0,Projectile.timeLeft);
                     Projectile.NewProjectile(null, Projectile.Center, Vector2.Zero, ProjectileType<radiate>(), 0, 0, Main.player[Projectile.owner].whoAmI);
+                   
                 }
                 float dustAmount = 120f;
                 for (int i = 0; (float)i < dustAmount; i++)
@@ -142,8 +145,34 @@ namespace StarsAbove.Projectiles.StellarNovas
                 d.noLight = true;
                 d.noGravity = true;
             }
-            if (Projectile.ai[0] >= 1 && Projectile.timeLeft > 150)
+            if (Projectile.ai[0] >= 1 && Projectile.timeLeft > 120)
             {
+                if(!spawnedSwords)
+                {
+                    spawnedSwords = true;
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
+                    {
+                       
+                        for (int i = 0; i < 24; i++)
+                        {
+                            float offsetAmount = i * 15;
+                            Projectile.NewProjectile(null, Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ProjectileType<UBWBladeFollowUpDelay>(), 1, 0, Main.player[Projectile.owner].whoAmI, 0, offsetAmount, 600);
+
+                        }
+                        for (int i = 0; i < 18; i++)
+                        {
+                            float offsetAmount = i * 20;
+                            Projectile.NewProjectile(null, Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ProjectileType<UBWBladeFollowUpDelay>(), 1, 0, Main.player[Projectile.owner].whoAmI, 1, offsetAmount, 550);
+
+                        }
+                        for (int i = 0; i < 12; i++)
+                        {
+                            float offsetAmount = i * 30;
+                            Projectile.NewProjectile(null, Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ProjectileType<UBWBladeFollowUpDelay>(), 1, 0, Main.player[Projectile.owner].whoAmI, 0, offsetAmount, 500);
+
+                        }
+                    }
+                }
 
                 for (int i = 0; i < 90; i++)
                 {//Circle

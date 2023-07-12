@@ -1115,11 +1115,25 @@ namespace StarsAbove.UI.StellarNova
 
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
 			//Theofania is unlocked at base, so there's always 1 available Nova
-			availableNovas = 1;
-			if(modPlayer.laevateinn > 0)
-            {
+			availableNovas = 0;
+			topStatic = 266;
+			int topAdjustment = 20;
+			int multiplierAdjustment = 70;
+			if (modPlayer.theofania > 0)
+			{
+				topStatic -= topAdjustment;
+
 				area.Append(laevateinn);
-				laevateinn.Top.Set(topStatic + (availableNovas * 54), 0f);
+				theofania.Top.Set(topStatic + (availableNovas * multiplierAdjustment), 0f);
+				availableNovas++;
+			}
+			if (modPlayer.laevateinn > 0)
+			{
+				topStatic -= topAdjustment;
+
+				area.Append(laevateinn);
+				laevateinn.Top.Set(topStatic + (availableNovas * multiplierAdjustment), 0f);
+
 				availableNovas++;
 			}
 			else
@@ -1128,9 +1142,12 @@ namespace StarsAbove.UI.StellarNova
 				
 			}
 			if(modPlayer.kiwamiryuken > 0)
-            {
+			{
+				topStatic -= topAdjustment;
+
 				area.Append(kiwamiryuken);
-				kiwamiryuken.Top.Set(topStatic + (availableNovas * 54), 0f);
+				kiwamiryuken.Top.Set(topStatic + (availableNovas * multiplierAdjustment), 0f);
+
 				availableNovas++;
 			}
 			else
@@ -1138,9 +1155,12 @@ namespace StarsAbove.UI.StellarNova
 				kiwamiryuken.Remove();
             }
 			if(modPlayer.gardenofavalon > 0)
-            {
+			{
+				topStatic -= topAdjustment;
+
 				area.Append(gardenofavalon);
-				gardenofavalon.Top.Set(topStatic + (availableNovas * 54), 0f);
+				gardenofavalon.Top.Set(topStatic + (availableNovas * multiplierAdjustment), 0f);
+
 				availableNovas++;
 			}
 			else
@@ -1148,9 +1168,12 @@ namespace StarsAbove.UI.StellarNova
 				gardenofavalon.Remove();
             }
 			if(modPlayer.edingenesisquasar > 0)
-            {
+			{
+				topStatic -= topAdjustment;
+
 				area.Append(edingenesisquasar);
-				edingenesisquasar.Top.Set(topStatic + (availableNovas * 54), 0f);
+				edingenesisquasar.Top.Set(topStatic + (availableNovas * multiplierAdjustment), 0f);
+
 				availableNovas++;
 			}
 			else
@@ -1159,8 +1182,11 @@ namespace StarsAbove.UI.StellarNova
             }
 			if (modPlayer.unlimitedbladeworks > 0)
 			{
+				topStatic -= topAdjustment;
+
 				area.Append(unlimitedbladeworks);
-				unlimitedbladeworks.Top.Set(topStatic + (availableNovas * 54), 0f);
+				unlimitedbladeworks.Top.Set(topStatic + (availableNovas * multiplierAdjustment), 0f);
+
 				availableNovas++;
 			}
 			else

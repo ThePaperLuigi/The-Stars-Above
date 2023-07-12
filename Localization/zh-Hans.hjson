@@ -3946,7 +3946,7 @@ Mods: {
 			StarBitBlue: {
 				Tooltip:
 					'''
-					
+
 					[c/F1AF42:它不该出现在你的物品栏里]
 
 					'''
@@ -3956,7 +3956,7 @@ Mods: {
 			StarBitGreen: {
 				Tooltip:
 					'''
-					
+
 					[c/F1AF42:它不该出现在你的物品栏里]
 
 					'''
@@ -3966,7 +3966,7 @@ Mods: {
 			StarBitOrange: {
 				Tooltip:
 					'''
-					
+
 					[c/F1AF42:它不该出现在你的物品栏里]
 
 					'''
@@ -3976,7 +3976,7 @@ Mods: {
 			StarBitPurple: {
 				Tooltip:
 					'''
-					
+
 					[c/F1AF42:它不该出现在你的物品栏里]
 
 					'''
@@ -4978,6 +4978,7 @@ Mods: {
 					This weapon can be re-crafted to swap between Magic and Ranged damage
 					'What you call Darkness is the end of your evolution'
 					'''
+				// DisplayName: Hawkmoon
 			}
 
 			HollowheartAlbion: {
@@ -7499,7 +7500,7 @@ Mods: {
 					刀刃命中敌人会使敌人燃烧2秒，造成50%的伤害，且额外获得4秒敏捷
 					点击右键消耗50点魔力值，在光标处放置一个[c/BB3B27:火药桶]
 					这个魔力消耗无法被任何方式减免和抵消
-				    你最多可以同时放置2个[c/BB3B27:火药桶]，且[c/BB3B27:火药桶]会在放置20秒之后或者切换武器后消失
+					   你最多可以同时放置2个[c/BB3B27:火药桶]，且[c/BB3B27:火药桶]会在放置20秒之后或者切换武器后消失
 					在短暂的延迟后，[c/BB3B27:火药桶]进入激活状态，此时使用该武器命中[c/BB3B27:火药桶]会让其发生爆炸
 					爆炸将会造成4倍伤害，且给予8秒敏捷效果
 					此外，处于[c/BB3B27:火药桶]爆炸范围内的其他[c/BB3B27:火药桶]也会发生爆炸，这次爆炸造成的伤害额外提升50%
@@ -7758,11 +7759,6 @@ Mods: {
 
 			ReprintedBlueprint: {
 				DisplayName: Reprinted Blueprint
-				Tooltip: ""
-			}
-
-			SigilOfHope: {
-				DisplayName: Sigil Of Hope
 				Tooltip: ""
 			}
 
@@ -8600,6 +8596,7 @@ Mods: {
 			SpacePowerBackground.DisplayName: Space Power Background
 			SpacePowerBorder.DisplayName: Space Power Border
 			UBWBladeFollowUp.DisplayName: Blade Follow Up
+			// UBWBladeFollowUpDelay.DisplayName: U B W Blade Follow Up Delay
 		}
 
 		Buffs: {
@@ -10700,7 +10697,7 @@ Mods: {
 				Attacks inflict Karmic Retribution for 10 seconds
 				'''
 			LVBuff100.Description: Able to unleash a Special Attack upon pressing the Weapon Action Key
-			
+
 			SpectrumAbsorption: {
 				DisplayName: Refractive Absorption
 				Description: Absorbing all incoming damage at the cost of constant HP drain

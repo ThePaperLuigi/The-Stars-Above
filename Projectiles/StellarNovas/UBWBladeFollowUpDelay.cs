@@ -9,7 +9,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.StellarNovas
 {
-    public class UBWBladeFollowUp : ModProjectile
+    public class UBWBladeFollowUpDelay : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			// DisplayName.SetDefault("Sunset of the Sun God");     //The English name of the projectile
@@ -73,7 +73,7 @@ namespace StarsAbove.Projectiles.StellarNovas
 			}
 			Projectile.localAI[0]++;
 
-			if (Projectile.localAI[0] > 60)
+			if (Projectile.localAI[0] > 200)
 			{
 				Projectile.friendly = true;
 				//Shoot towards the mouse cursor

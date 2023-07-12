@@ -57,7 +57,7 @@ namespace StarsAbove
                 case 5:
                     return baseDamage / 15;
                 case 6:
-                    return baseDamage / 50;
+                    return baseDamage / 300;
                 default:
                     break;
             }
@@ -120,7 +120,7 @@ namespace StarsAbove
                 case 5:
                     return (int)((baseDamage / 10) * 1.3);
                 case 6:
-                    return baseDamage/40;
+                    return baseDamage/250;
                 default:
                     break;
             }

@@ -1110,6 +1110,7 @@ namespace StarsAbove
             tag["kiwamiryuken"] = kiwamiryuken;
             tag["gardenofavalon"] = gardenofavalon;
             tag["edingenesisquasar"] = edingenesisquasar;
+            tag["unlimitedbladeworks"] = unlimitedbladeworks;
             tag["chosenStellarNova"] = chosenStellarNova;
 
             tag["seenEyeOfCthulhu"] = seenEyeOfCthulhu;
@@ -1452,6 +1453,7 @@ namespace StarsAbove
             kiwamiryuken = tag.GetInt("kiwamiryuken");
             gardenofavalon = tag.GetInt("gardenofavalon");
             edingenesisquasar = tag.GetInt("edingenesisquasar");
+            unlimitedbladeworks = tag.GetInt("unlimitedbladeworks");
 
             seenEyeOfCthulhu = tag.GetBool("seenEyeOfCthulhu");
             seenKingSlime = tag.GetBool("seenKingSlime");
@@ -1689,55 +1691,7 @@ namespace StarsAbove
                 target.AddBuff(BuffType<Buffs.AstarteDriverEnemyCooldown>(), 60);
                 OnEnemyHitWithNova(target, 5, ref damageDone, ref hit.Crit);
             }
-            //Unlimited Blade Works follow up
-            if (Player.ownedProjectileCounts[ProjectileType<UnlimitedBladeWorksBackground>()] >= 1 && !Player.HasBuff(BuffType<UBWFollowUpCooldown>()))
-            {
-                if (chosenStarfarer == 1)
-                {
-                    Player.AddBuff(BuffType<UBWFollowUpCooldown>(), 180);
-                }
-                else if (chosenStarfarer == 2)
-                {
-                    Player.AddBuff(BuffType<UBWFollowUpCooldown>(), 120);
 
-                }
-                for (int i = 0; i < 3; i++)
-                {
-                    float offsetAmount = i * 120;
-                    Projectile.NewProjectile(null, Player.Center.X, Player.Center.Y, 0f, 0f, ProjectileType<UBWBladeFollowUp>(), baseNovaDamageAdd, 0, Player.whoAmI, 0, offsetAmount);
-
-                }
-                int killBlades = 3;
-                if (killBlades > 0)
-                {
-                    for (int i = 0; i < Main.maxProjectiles; i++)
-                    {
-                        Projectile projTarget = Main.projectile[i];
-
-                        if (projTarget.active && projTarget.type == ProjectileType<UBWBladeProjectile>())
-                        {
-                            if (Main.rand.NextBool(3))
-                            {
-                                SoundEngine.PlaySound(SoundID.Item37, Player.Center);
-                                for (int ix = 0; ix < 30; ix++)
-                                {
-                                    Vector2 position = Vector2.Lerp(Player.Center, projTarget.Center, (float)ix / 30);
-                                    Dust d = Dust.NewDustPerfect(position, DustID.GemTopaz, null, 240, default(Color), 0.6f);
-                                    d.fadeIn = 0.3f;
-                                    d.noGravity = true;
-
-                                }
-                                projTarget.Kill();
-                                killBlades--;
-                            }
-                            else
-                            {
-                                continue;
-                            }
-                        }
-                    }
-                }
-            }
             if (target.HasBuff(BuffType<Buffs.Starblight>()) && umbralentropy == 2)
             {
                 if (umbralEntropyCooldown <= 0)
@@ -1837,17 +1791,14 @@ namespace StarsAbove
             }
 
 
-            if (Player.ownedProjectileCounts[ProjectileType<UnlimitedBladeWorksBackground>()] >= 1 && proj.type != ProjectileType<UBWBladeFollowUp>() && !Player.HasBuff(BuffType<UBWFollowUpCooldown>()))
+            if (Player.ownedProjectileCounts[ProjectileType<UnlimitedBladeWorksBackground>()] >= 1
+                && proj.type != ProjectileType<UBWBladeFollowUp>()
+                && proj.type != ProjectileType<UBWBladeFollowUpDelay>()
+                && !Player.HasBuff(BuffType<UBWFollowUpCooldown>())
+                && chosenStarfarer == 2
+                && Player.HasBuff(BuffType<Bladeforged>()))
             {
-                if(chosenStarfarer == 1)
-                {
-                    Player.AddBuff(BuffType<UBWFollowUpCooldown>(), 180);
-                }
-                else if (chosenStarfarer == 2)
-                {
-                    Player.AddBuff(BuffType<UBWFollowUpCooldown>(), 120);
-
-                }
+                Player.AddBuff(BuffType<UBWFollowUpCooldown>(), 180);
                 for (int i = 0; i < 3; i++)
                 {
                     float offsetAmount = i * 120;
@@ -1865,6 +1816,15 @@ namespace StarsAbove
                         {
                             if (Main.rand.NextBool(3))
                             {
+                                SoundEngine.PlaySound(SoundID.Item37, Player.Center);
+                                for (int ix = 0; ix < 30; ix++)
+                                {
+                                    Vector2 position = Vector2.Lerp(Player.Center, projTarget.Center, (float)ix / 30);
+                                    Dust d = Dust.NewDustPerfect(position, DustID.GemTopaz, null, 240, default(Color), 0.6f);
+                                    d.fadeIn = 0.3f;
+                                    d.noGravity = true;
+
+                                }
                                 projTarget.Kill();
                                 killBlades--;
                             }
@@ -2118,7 +2078,7 @@ namespace StarsAbove
 
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Projectile, consider using ModifyHitNPC instead */
         {
-            if (proj.type == ProjectileType<UBWBladeFollowUp>())
+            if (proj.type == ProjectileType<UBWBladeFollowUp>() || proj.type == ProjectileType<UBWBladeFollowUpDelay>())
             {
                 modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
 
@@ -6761,6 +6721,11 @@ namespace StarsAbove
         {
             if (Main.LocalPlayer.active && !Main.LocalPlayer.dead && !Player.GetModPlayer<BossPlayer>().QTEActive)
             {
+                if (chosenStellarNova == 6 && Player.ownedProjectileCounts[ProjectileType<UnlimitedBladeWorksBackground>()] >= 1)
+                {
+                    return;
+                }
+
                 EdinGenesisQuasar();
                 if (chosenStellarNova == 1 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && Main.LocalPlayer.HasBuff(BuffType<Buffs.TheofaniaTricast>()))//Theofania Tricast
                 {
@@ -6973,7 +6938,7 @@ namespace StarsAbove
 
 
                         }
-                        if (chosenStellarNova == 6)//Edin Shugra Quasar
+                        if (chosenStellarNova == 6)//Unlimited Blade Works
                         {
 
 

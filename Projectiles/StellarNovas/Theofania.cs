@@ -1,5 +1,7 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -21,7 +23,7 @@ namespace StarsAbove.Projectiles.StellarNovas
 			Projectile.hostile = false;         //Can the projectile deal damage to the player?
 			// projectile.ranged = false /* tModPorter - this is redundant, for more info see https://github.com/tModLoader/tModLoader/wiki/Update-Migration-Guide#damage-classes */ ;           //Is the projectile shoot by a ranged weapon?
 			Projectile.penetrate = 999;           //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
-			Projectile.timeLeft = 600;          //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
+			Projectile.timeLeft = 180;          //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
 			Projectile.light = 1f;            //How much light emit around the projectile
 			Projectile.ignoreWater = true;          //Does the projectile's speed be influenced by water?
 			Projectile.tileCollide = false;          //Can the projectile collide with tiles?
@@ -31,6 +33,49 @@ namespace StarsAbove.Projectiles.StellarNovas
 			Projectile.usesLocalNPCImmunity = true;
 			Projectile.localNPCHitCooldown = -1;
 
+		}
+		public static Texture2D texture;
+
+		public override bool PreDraw(ref Color lightColor)
+		{
+			if(Projectile.ai[0] > 150)
+            {
+				default(Effects.LargeBlueTrail).Draw(Projectile);
+
+			}
+
+			Main.spriteBatch.End();
+			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
+
+
+
+			SpriteEffects spriteEffects = SpriteEffects.None;
+			if (Projectile.spriteDirection == -1)
+			{
+				spriteEffects = SpriteEffects.FlipHorizontally;
+			}
+
+			if (texture == null || texture.IsDisposed)
+			{
+				texture = (Texture2D)ModContent.Request<Texture2D>(Projectile.ModProjectile.Texture);
+			}
+
+			int frameHeight = texture.Height / Main.projFrames[Projectile.type];
+			int startY = frameHeight * Projectile.frame;
+			Rectangle sourceRectangle = new Rectangle(0, startY, texture.Width, frameHeight);
+			Vector2 origin = sourceRectangle.Size() / 2f;
+			Main.EntitySpriteDraw(texture,
+				Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY),
+				sourceRectangle, Color.Black, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
+			ArmorShaderData data = GameShaders.Armor.GetSecondaryShader((byte)GameShaders.Armor.GetShaderIdFromItemId(ItemID.MartianArmorDye), Main.LocalPlayer);
+			data.Apply(null);
+			Main.EntitySpriteDraw(texture,
+				Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY),
+				sourceRectangle, Color.White, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
+			Main.spriteBatch.End();
+			Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullNone, (Effect)null, Main.GameViewMatrix.TransformationMatrix);
+
+			return false;
 		}
 		float spin = 0;
 		public override void AI()
@@ -135,13 +180,6 @@ namespace StarsAbove.Projectiles.StellarNovas
 			 
 
 		}
-		public override bool PreDraw(ref Color lightColor)
-		{
-			//default(Effects.TheofaniaTrail).Draw(Projectile);
-
-			return true;
-		}
-
 		public override void Kill(int timeLeft)
 		{
 			// This code and the similar code above in OnTileCollide spawn dust from the tiles collided with. SoundID.Item10 is the bounce sound you hear.

@@ -5,6 +5,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
+using Terraria.Graphics.Shaders;
 
 namespace StarsAbove.Projectiles.StellarNovas
 {
@@ -24,7 +25,7 @@ namespace StarsAbove.Projectiles.StellarNovas
 			Projectile.hostile = false;         //Can the projectile deal damage to the player?
 			// projectile.ranged = false /* tModPorter - this is redundant, for more info see https://github.com/tModLoader/tModLoader/wiki/Update-Migration-Guide#damage-classes */ ;           //Is the projectile shoot by a ranged weapon?
 			Projectile.penetrate = 999;           //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
-			Projectile.timeLeft = 600;          //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
+			Projectile.timeLeft = 180;          //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
 			Projectile.light = 1f;            //How much light emit around the projectile
 			Projectile.ignoreWater = true;          //Does the projectile's speed be influenced by water?
 			Projectile.tileCollide = false;          //Can the projectile collide with tiles?
@@ -151,15 +152,43 @@ namespace StarsAbove.Projectiles.StellarNovas
 			return false;
 		}
 
-		public override bool PreDraw(ref Color lightColor) {
-			//Redraw the projectile with the color not influenced by light
-			Vector2 drawOrigin = new Vector2(TextureAssets.Projectile[Projectile.type].Width() * 0.5f, Projectile.height * 0.5f);
-			for (int k = 0; k < Projectile.oldPos.Length; k++) {
-				Vector2 drawPos = Projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
-				Color color = Projectile.GetAlpha(lightColor) * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
-				Main.EntitySpriteDraw((Texture2D)TextureAssets.Projectile[Projectile.type], drawPos, null, color, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
+		public static Texture2D texture;
+
+		public override bool PreDraw(ref Color lightColor)
+		{
+
+			Main.spriteBatch.End();
+			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
+
+
+
+			SpriteEffects spriteEffects = SpriteEffects.None;
+			if (Projectile.spriteDirection == -1)
+			{
+				spriteEffects = SpriteEffects.FlipHorizontally;
 			}
-			return true;
+
+			if (texture == null || texture.IsDisposed)
+			{
+				texture = (Texture2D)ModContent.Request<Texture2D>(Projectile.ModProjectile.Texture);
+			}
+
+			int frameHeight = texture.Height / Main.projFrames[Projectile.type];
+			int startY = frameHeight * Projectile.frame;
+			Rectangle sourceRectangle = new Rectangle(0, startY, texture.Width, frameHeight);
+			Vector2 origin = sourceRectangle.Size() / 2f;
+			Main.EntitySpriteDraw(texture,
+				Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY),
+				sourceRectangle, Color.Black, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
+			ArmorShaderData data = GameShaders.Armor.GetSecondaryShader((byte)GameShaders.Armor.GetShaderIdFromItemId(ItemID.ShiftingPearlSandsDye), Main.LocalPlayer);
+			data.Apply(null);
+			Main.EntitySpriteDraw(texture,
+				Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY),
+				sourceRectangle, Color.White, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
+			Main.spriteBatch.End();
+			Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullNone, (Effect)null, Main.GameViewMatrix.TransformationMatrix);
+
+			return false;
 		}
 
 		public override void Kill(int timeLeft)

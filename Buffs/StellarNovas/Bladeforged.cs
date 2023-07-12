@@ -29,7 +29,7 @@ namespace StarsAbove.Buffs.StellarNovas
             {
                 modifier = MathHelper.Lerp(2, 10, (player.statLife + 1) / 500);
                 //if boss active, modifier is set at 10.
-                player.GetDamage(DamageClass.Generic) += modifier;
+                //player.GetDamage(DamageClass.Generic) += modifier;
                 player.GetCritChance(DamageClass.Generic) += modifier;
                 player.GetArmorPenetration(DamageClass.Generic) += modifier;
                 player.GetKnockback(DamageClass.Generic) += modifier;
