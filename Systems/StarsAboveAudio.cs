@@ -83,7 +83,10 @@ namespace StarsAbove
 		{
 
 		};
+		public static readonly SoundStyle ANSpecial6 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Asphodene/UniqueLines/ANSpecial6")
+		{
 
+		};
 
 		#endregion
 		#region Eridani Voice Lines
@@ -145,6 +148,10 @@ namespace StarsAbove
 
 		};
 		public static readonly SoundStyle ENSpecial5 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/UniqueLines/ENSpecial5")
+		{
+
+		};
+		public static readonly SoundStyle ENSpecial6 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/Eridani/UniqueLines/ENSpecial6")
 		{
 
 		};
@@ -365,6 +372,14 @@ namespace StarsAbove
 		#endregion
 
 		#region Warrior Of Light Voice Lines
+		public static readonly SoundStyle WarriorOfLight_EveryDream = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/EveryDream")
+		{
+
+		};
+		public static readonly SoundStyle WarriorOfLight_FlamesOfBattle = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/FlamesOfBattle")
+		{
+
+		};
 		public static readonly SoundStyle WarriorOfLight_NowToTakeYourMeasure = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/NowToTakeYourMeasure")
 		{
 
@@ -863,6 +878,14 @@ namespace StarsAbove
 		public static readonly SoundStyle SFX_Laevateinn = new($"{nameof(StarsAbove)}/Sounds/SFX/Laevateinn")
 		{
 			PitchVariance = 0.1f,
+		};
+		public static readonly SoundStyle SFX_LamentClashLose = new($"{nameof(StarsAbove)}/Sounds/SFX/LimbusCoinLose")
+		{
+
+		};
+		public static readonly SoundStyle SFX_LamentClashWin = new($"{nameof(StarsAbove)}/Sounds/SFX/LimbusCoinWin")
+		{
+
 		};
 		public static readonly SoundStyle SFX_GuntriggerParryPrep = new($"{nameof(StarsAbove)}/Sounds/SFX/GuntriggerParryPrep")
 		{

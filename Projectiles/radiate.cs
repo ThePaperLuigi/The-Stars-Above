@@ -21,7 +21,8 @@ namespace StarsAbove.Projectiles
 			Projectile.scale = 1f;
 			Projectile.alpha = 255;
 			Projectile.penetrate = -1;
-			Projectile.hostile = true;
+			Projectile.hostile = false;
+			Projectile.tileCollide = false;
 
 
 		}

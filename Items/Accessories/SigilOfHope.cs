@@ -26,16 +26,7 @@ namespace StarsAbove.Items.Accessories
 
 		public override void UpdateAccessory(Player player, bool hideVisual) {
 
-			if (NPC.AnyNPCs(ModContent.NPCType<WarriorOfLightBoss>()) || NPC.AnyNPCs(ModContent.NPCType<WarriorOfLightBossFinalPhase>()))
-            {
-				if(EverlastingLightEvent.isEverlastingLightActive)
-                {
-					player.statDefense += 60;
-					player.GetDamage(DamageClass.Generic) += 0.5f;
-
-				}
-			}
-				
+			
 
 		}
 

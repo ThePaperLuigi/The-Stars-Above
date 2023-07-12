@@ -19,6 +19,7 @@ float2 uImageOffset;
 float uSaturation;
 float4 uSourceRect;
 float2 uZoom;
+float4 uShaderSpecificData;
 
 float4 PixelShaderFunction(float2 coords : TEXCOORD0) : COLOR0
 {
@@ -32,7 +33,7 @@ float4 PixelShaderFunction(float2 coords : TEXCOORD0) : COLOR0
 	if(color1.r > readRed){
 		color.rgba = 0;
 	}else if(color1.r > uOpacity ){
-		color =  float4(1, 105.0/255, 180.0/255, 1);
+		color =  float4(255.0/255, 238.0/255, 130.0/255, 1);
 	}
 	return color;
 }

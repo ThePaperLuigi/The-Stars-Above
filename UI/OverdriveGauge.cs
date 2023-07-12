@@ -177,26 +177,6 @@ namespace StarsAbove.UI
 			if (!(Main.LocalPlayer.GetModPlayer<ManifestationPlayer>().manifestationHeld == true))
 				return;
 
-
-			
-
-
-				// Here we check if the DragableUIPanel is outside the Parent UIElement rectangle. 
-				// (In our example, the parent would be ExampleUI, a UIState. This means that we are checking that the DragableUIPanel is outside the whole screen)
-				// By doing this and some simple math, we can snap the panel back on screen if the user resizes his window or otherwise changes resolution.
-
-				//Vector2 configVec = NovaGaugePos;
-				//Left.Set(configVec.X, 0f);
-				//Top.Set(configVec.Y, 0f);
-
-
-				var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
-			// Setting the text per tick to update and show our resource values.
-			//text.SetText($"{modPlayer.novaGauge} / {modPlayer.trueNovaGaugeMax}");
-			//Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaGaugeDescription = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaGaugeDescriptionActive;
-			//modPlayer.novaGaugeDescriptionActive = $"{Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaGauge} / {Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().trueNovaGaugeMax}";
-			//text.SetText($"[c/5970cf:{modPlayer.novaGaugeDescription}]");
-			
 			base.Update(gameTime);
 
 		}

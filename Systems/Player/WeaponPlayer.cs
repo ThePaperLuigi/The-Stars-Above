@@ -81,6 +81,7 @@ using StarsAbove.Projectiles.Pigment;
 using StarsAbove.Projectiles.UltimaThule;
 using StarsAbove.Buffs.BrilliantSpectrum;
 using StarsAbove.Projectiles.DreamersInkwell;
+using StarsAbove.Projectiles.BuryTheLight;
 
 namespace StarsAbove
 {
@@ -246,8 +247,9 @@ namespace StarsAbove
         //Supreme Authority
         public int SupremeAuthorityConsumedNPCs;
         public int SupremeAuthorityEncroachingStacks;
-        
+
         //Bury The Light
+        public bool BuryTheLightHeld = false;
         public int judgementCutTimer = -1000;
         public bool judgementCut = false;
 
@@ -947,26 +949,6 @@ namespace StarsAbove
                 }
 
             }
-            if (proj.type == ProjectileType<BuryTheLightSlash>())
-            {
-                if (Player.statLife < Player.statLifeMax2 - 10)
-                {
-                    Player.statLife += 1;
-                }
-                if (Player.statMana < Player.statManaMax2 - 5)
-                {
-                    Player.statMana += 5;
-                }
-                judgementGauge += 3;
-                if (hit.Crit)
-                {
-                    judgementGauge += 7;
-                }
-                for (int d = 0; d < 4; d++)
-                {
-                    Dust.NewDust(target.position, target.width, target.height, 113, 0f + Main.rand.Next(-2, 2), 0f + Main.rand.Next(-2, 2), 150, default(Color), 1.5f);
-                }
-            }
             if (proj.type == ProjectileType<yunlaiSwing>() && (!target.active))
             {
                 Player.statMana += 80;
@@ -1475,30 +1457,7 @@ namespace StarsAbove
             }
             if (proj.type == ProjectileType<BuryTheLightSlash>())
             {
-                if (target.HasBuff(BuffID.ShadowFlame) && hit.Crit)
-                {
-                    judgementGauge += 1;
-
-                }
-                if (target.HasBuff(BuffID.Frostburn) && hit.Crit)
-                {
-                    judgementGauge += 1;
-                   
-                    target.AddBuff(BuffID.ShadowFlame, 1200);
-                }
                
-
-                if (target.HasBuff(BuffType<Buffs.Starblight>()) && hit.Crit)
-                {
-                    judgementGauge += 1;
-                    target.AddBuff(BuffID.Frostburn, 1200);
-                }
-
-
-                if (hit.Crit)
-                {
-                    target.AddBuff(BuffType<Buffs.Starblight>(), 1200);
-                }
 
             }
         }
@@ -1610,7 +1569,7 @@ namespace StarsAbove
                 {
                     modifiers.SourceDamage += 1.5f;
                 }
-               modifiers.SourceDamage += Player.statManaMax2 / 8;
+               modifiers.SourceDamage.Flat += Player.statManaMax2 / 8;
 
             }
             
@@ -2242,75 +2201,28 @@ namespace StarsAbove
             }
             if (proj.type == ProjectileType<BuryTheLightSlash>())
             {
-                if (target.HasBuff(BuffID.ShadowFlame))
-                {
-                    modifiers.CritDamage += 0.5f;
-                    modifiers.CritDamage += 0.1f;
-                }
-                if (target.HasBuff(BuffID.Frostburn))
-                {
-
-                    if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
-                    {
-                       modifiers.CritDamage += 0.5f;
-                    }
-                    else
-                    {
-
-                    }
-                    modifiers.CritDamage += 0.1f;
-
-                }
-                modifiers.CritDamage += 0.2f;
+                
             }
             if (proj.type == ProjectileType<BuryTheLightSlash2>())
             {
-                if (target.HasBuff(BuffType<Buffs.Starblight>()))
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
-                    modifiers.SetCrit();
-                   
-                   modifiers.SourceDamage.Flat += 1000;
-                    int index = target.FindBuffIndex(BuffType<Buffs.Starblight>());
-                    if (index > -1)
+                    if(!target.boss && target.CanBeChasedBy())
                     {
-                        target.DelBuff(index);
-                    }
-                }
-                if (target.HasBuff(BuffID.Frostburn))
-                {
-                    modifiers.SetCrit();
-                   modifiers.SourceDamage.Flat += 2000;
-
-                    target.AddBuff(BuffID.ShadowFlame, 1200);
-                    int index = target.FindBuffIndex(BuffID.Frostburn);
-                    if (index > -1)
-                    {
-                        target.DelBuff(index);
-                    }
-                }
-                if (target.HasBuff(BuffID.ShadowFlame))
-                {
-                    modifiers.SetCrit();
-                    /* 
-                    if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
-                    {
-                       modifiers.SourceDamage+= 5122;
-                       modifiers.SourceDamage+= Math.Min((target.lifeMax / 10), 1000000);
-
+                        for (int d = 0; d < 26; d++)
+                        {
+                            Dust.NewDust(target.Center, 0, 0, DustID.Electric, 0f + Main.rand.Next(-16, 16), 0f + Main.rand.Next(-16, 16), 150, default(Color), 1.5f);
+                        }
+                        modifiers.SetInstantKill();
                     }
                     else
                     {
-                        
-                    }*/
-                   modifiers.SourceDamage.Flat += 3000;
-                    int index = target.FindBuffIndex(BuffID.ShadowFlame);
-                    if (index > -1)
-                    {
-                        target.DelBuff(index);
+                        modifiers.SetCrit();
+                        modifiers.SourceDamage += 100f;
+                        modifiers.FinalDamage.Flat += (int)(target.lifeMax * 0.1);
                     }
+                   
                 }
-
-
             }
 
             if (proj.type == ProjectileType<AegisDriverOn>())
@@ -3672,6 +3584,7 @@ namespace StarsAbove
             
             KevesiFarewellInInventory = false;
             AgnianFarewellInInventory = false;
+            BuryTheLightHeld = false;
             SaltwaterScourgeHeld = false;
             InkwellHeld = false;
             BrilliantSpectrumHeld = false;

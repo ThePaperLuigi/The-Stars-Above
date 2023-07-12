@@ -19,6 +19,9 @@ namespace StarsAbove.NPCs.Vagrant
 
 	public class VagrantBoss : ModNPC
 	{
+		public int AttackTimer = 120;
+
+
 		public static readonly int arenaWidth = (int)(1.2f * 960);
 		public static readonly int arenaHeight = (int)(1.2f * 600);
 
@@ -74,8 +77,6 @@ namespace StarsAbove.NPCs.Vagrant
 			
 			
 			NPCID.Sets.MPAllowedEnemies[NPC.type] = true;
-			// By default enemies gain health and attack if hardmode is reached. this NPC should not be affected by that
-			NPCID.Sets.DontDoHardmodeScaling[Type] = true;
 			// Enemies can pick up coins, let's prevent it for this NPC
 			NPCID.Sets.CantTakeLunchMoney[Type] = true;
 			// Automatically group with other bosses
@@ -105,9 +106,8 @@ namespace StarsAbove.NPCs.Vagrant
 		}
 		public override void SetDefaults()
 		{
-			NPC.boss = true;
-			NPC.lifeMax = 32000;
-			NPC.damage = 0;
+			NPC.lifeMax = 3200;
+			NPC.damage = 15;
 			NPC.defense = 20;
 			NPC.knockBackResist = 0f;
 			NPC.width = 160;
@@ -119,25 +119,30 @@ namespace StarsAbove.NPCs.Vagrant
 			NPC.noGravity = false;
 			NPC.noTileCollide = false;
 			DrawOffsetY = -2;
+			
+			NPC.boss = true;
 
 			NPC.HitSound = SoundID.NPCHit54;
 			NPC.DeathSound = SoundID.NPCDeath52;
 
 			NPC.value = Item.buyPrice(0, 1, 75, 45);
-
+			
 			Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/CosmicWill");
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
 			NPC.netAlways = true;
 		}
-
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
+        public override bool CanHitPlayer(Player target, ref int cooldownSlot)
+        {
+			return false;
+        }
+        public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			return 0f;
 		}
-		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */
+
+		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)
 		{
-			NPC.lifeMax = (int)(NPC.lifeMax * bossAdjustment * balance);
-			//NPC.defense *= numPlayers * 5;
+			NPC.lifeMax = (int)(NPC.lifeMax * balance * bossAdjustment);
 		}
 
 		public override bool CheckDead()
@@ -213,7 +218,7 @@ namespace StarsAbove.NPCs.Vagrant
 					Idle();
 					break;
 			}
-			if (AI_Timer >= 120) //An attack is active.
+			if (AI_Timer >= AttackTimer) //An attack is active.
 			{
 				if (AI_RotationNumber == 0)
 				{

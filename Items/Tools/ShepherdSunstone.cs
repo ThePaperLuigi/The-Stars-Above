@@ -26,30 +26,16 @@ namespace StarsAbove.Items.Tools
 			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.UseSound = SoundID.Item44;
 			Item.consumable = false;
-			ItemID.Sets.ItemNoGravity[Item.type] = true;
-			Item.ResearchUnlockCount = 0;
+			Item.ResearchUnlockCount = 1;
 
 		}
 
-		// We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
-		public override bool ItemSpace(Player player)
-		{
-			return true;
-		}
+	
 		public override Color? GetAlpha(Color lightColor)
 		{
 			return Color.White;
 		}
-		public override bool CanPickup(Player player)
-		{
-			return true;
-		}
-
-		public override bool OnPickup(Player player)
-		{
-			
-			return false;
-		}
+		
 		public override bool CanUseItem(Player player) {
 
 			return true;

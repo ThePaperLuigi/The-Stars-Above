@@ -34,10 +34,8 @@ namespace StarsAbove.NPCs.Tsukiyomi
 	public class TsukiyomiBoss : ModNPC
 	{
 
-		
-		
-		// Our texture is 36x36 with 2 pixels of padding vertically, so 38 is the vertical spacing.
-		// These are for our benefit and the numbers could easily be used directly in the code below, but this is how we keep code organized.
+		public int AttackTimer = 100;
+
 		private enum Frame
 		{
 			Empty,
@@ -111,9 +109,9 @@ namespace StarsAbove.NPCs.Tsukiyomi
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 1350000;
-			NPC.damage = 0;
-			NPC.defense = 25;
+			NPC.lifeMax = 233000;
+			NPC.damage = 65;
+			NPC.defense = 45;
 			NPC.knockBackResist = 0f;
 			NPC.width = 150;
 			NPC.height = 150;
@@ -134,7 +132,10 @@ namespace StarsAbove.NPCs.Tsukiyomi
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
 			NPC.netAlways = true;
 		}
-
+		public override bool CanHitPlayer(Player target, ref int cooldownSlot)
+		{
+			return false;
+		}
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			return 0f;
@@ -201,7 +202,18 @@ namespace StarsAbove.NPCs.Tsukiyomi
                     Idle();
                     break;
             }
-            if (AI_Timer >= 120) //An attack is active. (Temp 480, usually 120, or 2 seconds)
+			if (AI_Timer < 120 && AI_State == (float)ActionState.Idle)
+			{
+				if (NPC.life <= (NPC.lifeMax * 0.9) && AI_RotationNumber < 26) //At 80% HP, she transitions into Phase 2
+				{
+					AI_RotationNumber = 26;
+				}
+				if (NPC.life <= (NPC.lifeMax * 0.5) && AI_RotationNumber < 54 && Main.expertMode) //At 50% HP in Expert Mode, she goes to Phase 3
+				{
+					AI_RotationNumber = 54;
+				}
+			}
+			else if (AI_Timer >= AttackTimer) //An attack is active. (Temp 480, usually 120, or 2 seconds)
             {
 				if (Main.expertMode)
 				{
@@ -1266,47 +1278,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 
         public override void ModifyHitByProjectile(Projectile projectile, ref NPC.HitModifiers modifiers)
         {
-			//Zenith resistance.
-			if(projectile.type == ProjectileID.FinalFractal)
-            {
-				//damage = (int)(damage * 0.2f);
-            }
-
-			if (Main.expertMode)
-			{
-				if (NPC.localAI[0] == 2)
-				{
-					//Phase 3 (Final Phase)
-
-				}
-				else if (NPC.localAI[0] == 1)
-				{
-					//Phase 2
-					modifiers.FinalDamage *= 0.7f;
-
-				}
-				else
-				{
-					//Phase 1
-					modifiers.FinalDamage *= 0.7f;
-
-				}
-			}
-			else
-			{
-				if (NPC.localAI[0] != 0)
-				{
-					//Phase 2
-					modifiers.FinalDamage *= 0.7f;
-
-				}
-				else
-				{
-					//Phase 1
-					modifiers.FinalDamage *= 0.7f;
-
-				}
-			}
+			modifiers.FinalDamage *= 0.7f;
 		}
         public override void ModifyHitByItem(Player player, Item item, ref NPC.HitModifiers modifiers)
         {

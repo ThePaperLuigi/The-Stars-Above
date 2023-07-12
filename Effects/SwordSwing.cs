@@ -8,6 +8,7 @@ namespace StarsAbove.Effects
     [StructLayout(LayoutKind.Sequential, Size = 1)]
 	public struct SwordSwing
 	{
+		//No, this doesn't work.
 		private static VertexStrip _vertexStrip = new VertexStrip();
 
 		public void Draw(Projectile proj)

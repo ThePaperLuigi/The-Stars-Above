@@ -40,6 +40,7 @@ namespace StarsAbove.UI.StellarNova
 		private UIImageButton kiwamiryuken;
 		private UIImageButton gardenofavalon;
 		private UIImageButton edingenesisquasar;
+		private UIImageButton unlimitedbladeworks;
 
 		private UIText abilityName;
 		private UIText abilitySubName;
@@ -131,7 +132,7 @@ namespace StarsAbove.UI.StellarNova
 			laevateinn.Width.Set(98, 0f);
 			laevateinn.Height.Set(52, 0f);
 			laevateinn.Left.Set(864, 0f);
-			laevateinn.Top.Set(320, 0f);
+			laevateinn.Top.Set(266, 0f);
 			laevateinn.OnMouseOver += LaevateinnHover;
 			laevateinn.OnMouseOut += HoverOff;
 
@@ -140,7 +141,7 @@ namespace StarsAbove.UI.StellarNova
 			kiwamiryuken.Width.Set(98, 0f);
 			kiwamiryuken.Height.Set(52, 0f);
 			kiwamiryuken.Left.Set(864, 0f);
-			kiwamiryuken.Top.Set(374, 0f);
+			kiwamiryuken.Top.Set(266, 0f);
 			kiwamiryuken.OnMouseOver += kiwamiryukenHover;
 			kiwamiryuken.OnMouseOut += HoverOff;
 
@@ -149,7 +150,7 @@ namespace StarsAbove.UI.StellarNova
 			gardenofavalon.Width.Set(98, 0f);
 			gardenofavalon.Height.Set(52, 0f);
 			gardenofavalon.Left.Set(864, 0f);
-			gardenofavalon.Top.Set(428, 0f);
+			gardenofavalon.Top.Set(266, 0f);
 			gardenofavalon.OnMouseOver += gardenofavalonHover;
 			gardenofavalon.OnMouseOut += HoverOff;
 
@@ -158,9 +159,18 @@ namespace StarsAbove.UI.StellarNova
 			edingenesisquasar.Width.Set(98, 0f);
 			edingenesisquasar.Height.Set(52, 0f);
 			edingenesisquasar.Left.Set(864, 0f);
-			edingenesisquasar.Top.Set(482, 0f);
+			edingenesisquasar.Top.Set(266, 0f);
 			edingenesisquasar.OnMouseOver += edingenesisquasarHover;
 			edingenesisquasar.OnMouseOut += HoverOff;
+
+			unlimitedbladeworks = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StellarNova/unlimitedbladeworks"));
+			unlimitedbladeworks.OnLeftClick += unlimitedbladeworksSelected;
+			unlimitedbladeworks.Width.Set(98, 0f);
+			unlimitedbladeworks.Height.Set(52, 0f);
+			unlimitedbladeworks.Left.Set(864, 0f);
+			unlimitedbladeworks.Top.Set(266, 0f);
+			unlimitedbladeworks.OnMouseOver += unlimitedbladeworksHover;
+			unlimitedbladeworks.OnMouseOut += HoverOff;
 			/*Asphodene = new UIImage(Request<Texture2D>("StarsAbove/UI/Starfarers/Eridani"));
 			Asphodene.OnMouseOver += MouseOverA;
 			Asphodene.OnClick += MouseClickA;
@@ -281,13 +291,12 @@ namespace StarsAbove.UI.StellarNova
 			area.Append(starfarerPicture);
 			area.Append(bg2);
 			area.Append(bg);
-			area.Append(theofania);
-			area.Append(laevateinn);
-			area.Append(kiwamiryuken);
-			area.Append(gardenofavalon);
-			area.Append(edingenesisquasar);
+			
 			area.Append(barFrame);
 			barFrame.Append(description);
+
+			area.Append(theofania);
+
 
 			area.Append(abilitySubName);
 			area.Append(abilityDescription);
@@ -533,6 +542,30 @@ namespace StarsAbove.UI.StellarNova
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().edingenesisquasar == 1)
 			{
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStellarNova = 5;
+			}
+			else
+			{
+
+
+			}
+
+
+			// We can do stuff in here!
+		}
+		private void unlimitedbladeworksSelected(UIMouseEvent evt, UIElement listeningElement)
+		{
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaUIActive)
+				return;
+
+
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "";
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = false;
+			//Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().animatedDescription = "";
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaDialogueScrollNumber = 0;
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaDialogueScrollTimer = 0;
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().unlimitedbladeworks == 1)
+			{
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStellarNova = 6;
 			}
 			else
 			{
@@ -850,6 +883,27 @@ namespace StarsAbove.UI.StellarNova
 
 			// We can do stuff in here!
 		}
+		private void unlimitedbladeworksHover(UIMouseEvent evt, UIElement listeningElement)
+		{
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaUIActive)
+				return;
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
+			{
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.UnlimitedBladeWorks.Unlocked.Asphodene", Main.LocalPlayer);
+
+
+			}
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
+			{
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.UnlimitedBladeWorks.Unlocked.Eridani", Main.LocalPlayer);
+
+
+			}
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
+
+
+			// We can do stuff in here!
+		}
 		private void HoverOff(UIMouseEvent evt, UIElement listeningElement)
 		{
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaUIActive)
@@ -897,6 +951,8 @@ namespace StarsAbove.UI.StellarNova
 			Rectangle kiwamiryukenArea = kiwamiryuken.GetInnerDimensions().ToRectangle();
 			Rectangle gardenofavalonArea = gardenofavalon.GetInnerDimensions().ToRectangle();
 			Rectangle edingenesisquasarArea = edingenesisquasar.GetInnerDimensions().ToRectangle();
+			Rectangle unlimitedbladeworksArea = unlimitedbladeworks.GetInnerDimensions().ToRectangle();
+
 			//Rectangle indicator = new Rectangle((600), (280), (700), (440));
 			//indicator.X += 0;
 			//indicator.Width -= 0;
@@ -958,31 +1014,36 @@ namespace StarsAbove.UI.StellarNova
 
 			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/description"), dialogue, Color.White * (modPlayer.descriptionOpacity));
 
-			if (modPlayer.chosenStellarNova == 1)
+			switch (modPlayer.chosenStellarNova)
 			{
-				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/theofania"), theofaniaArea, Color.White * (modPlayer.novaUIOpacity));
-				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/theofaniaIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+				case 1:
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/theofania"), theofaniaArea, Color.White * (modPlayer.novaUIOpacity));
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/theofaniaIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+					break;
+				case 2:
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/laevateinn"), laevateinnArea, Color.White * (modPlayer.novaUIOpacity));
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/laevateinnIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+					break;
+				case 3:
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/KiwamiRyuken"), kiwamiryukenArea, Color.White * (modPlayer.novaUIOpacity));
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/KiwamiRyukenIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+					break;
+				case 4:
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/gardenofavalon"), gardenofavalonArea, Color.White * (modPlayer.novaUIOpacity));
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/gardenofavalonIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+					break;
+				case 5:
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/edingenesisquasar"), edingenesisquasarArea, Color.White * (modPlayer.novaUIOpacity));
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/edingenesisquasarIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+					break;
+				/*case 6:
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/unlimitedbladeworks"), edingenesisquasarArea, Color.White * (modPlayer.novaUIOpacity));
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/unlimitedbladeworksIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+					break;*/
+				default:
+					break;
 			}
-			if (modPlayer.chosenStellarNova == 2)
-			{
-				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/laevateinn"), laevateinnArea, Color.White * (modPlayer.novaUIOpacity));
-				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/laevateinnIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
-			}
-			if (modPlayer.chosenStellarNova == 3)
-			{
-				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/KiwamiRyuken"), kiwamiryukenArea, Color.White * (modPlayer.novaUIOpacity));
-				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/KiwamiRyukenIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
-			}
-			if (modPlayer.chosenStellarNova == 4)
-			{
-				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/gardenofavalon"), gardenofavalonArea, Color.White * (modPlayer.novaUIOpacity));
-				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/gardenofavalonIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
-			}
-			if (modPlayer.chosenStellarNova == 5)
-			{
-				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/edingenesisquasar"), edingenesisquasarArea, Color.White * (modPlayer.novaUIOpacity));
-				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/edingenesisquasarIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
-			}
+	
 			if (!_affixSlot1.Item.IsAir)
 			{
 				if (_affixSlot1.Item.type == ItemType<PrismOfTheRuinedKing>())
@@ -1035,6 +1096,8 @@ namespace StarsAbove.UI.StellarNova
 
 		}
 
+		static int topStatic = 266;
+		int availableNovas;
 
 		public override void Update(GameTime gameTime)
 		{
@@ -1049,7 +1112,61 @@ namespace StarsAbove.UI.StellarNova
 				Append(area);
 			}
 
+
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			//Theofania is unlocked at base, so there's always 1 available Nova
+			availableNovas = 1;
+			if(modPlayer.laevateinn > 0)
+            {
+				area.Append(laevateinn);
+				laevateinn.Top.Set(topStatic + (availableNovas * 54), 0f);
+				availableNovas++;
+			}
+			else
+            {
+				laevateinn.Remove();
+				
+			}
+			if(modPlayer.kiwamiryuken > 0)
+            {
+				area.Append(kiwamiryuken);
+				kiwamiryuken.Top.Set(topStatic + (availableNovas * 54), 0f);
+				availableNovas++;
+			}
+			else
+            {
+				kiwamiryuken.Remove();
+            }
+			if(modPlayer.gardenofavalon > 0)
+            {
+				area.Append(gardenofavalon);
+				gardenofavalon.Top.Set(topStatic + (availableNovas * 54), 0f);
+				availableNovas++;
+			}
+			else
+            {
+				gardenofavalon.Remove();
+            }
+			if(modPlayer.edingenesisquasar > 0)
+            {
+				area.Append(edingenesisquasar);
+				edingenesisquasar.Top.Set(topStatic + (availableNovas * 54), 0f);
+				availableNovas++;
+			}
+			else
+            {
+				edingenesisquasar.Remove();
+            }
+			if (modPlayer.unlimitedbladeworks > 0)
+			{
+				area.Append(unlimitedbladeworks);
+				unlimitedbladeworks.Top.Set(topStatic + (availableNovas * 54), 0f);
+				availableNovas++;
+			}
+			else
+			{
+				unlimitedbladeworks.Remove();
+			}
 
 			// Setting the text per tick to update and show our resource values.
 

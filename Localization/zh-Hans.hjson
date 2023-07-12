@@ -4977,8 +4977,6 @@ Mods: {
 					[c/0059FF:Paracausal Anomaly] increases damage while making all attacks critical
 					This weapon can be re-crafted to swap between Magic and Ranged damage
 					'What you call Darkness is the end of your evolution'
-					'''
-				DisplayName: 隼月
 			}
 
 			HollowheartAlbion: {
@@ -7766,6 +7764,15 @@ Mods: {
 				DisplayName: Sigil Of Hope
 				Tooltip: ""
 			}
+
+			SigilOfHope: {
+				DisplayName: Sigil Of Hope
+				Tooltip:
+					'''
+					While fighting the Warrior of Light during Everlasting Light, gain 120 defense
+					However, rewards will be reduced
+					'''
+			}
 		}
 
 		UIElements: {
@@ -8588,10 +8595,10 @@ Mods: {
 			LamentClashLose.DisplayName: Lament Clash Lose
 			UnlimitedBladeWorksBackground.DisplayName: Unlimited Blade Works Background
 			UnlimitedBladeWorksBorder.DisplayName: Unlimited Blade Works Border
-			UBWBladeProjectile.DisplayName: U B W Blade Projectile
+			UBWBladeProjectile.DisplayName: Blade Projectile
 			SpacePowerBackground.DisplayName: Space Power Background
 			SpacePowerBorder.DisplayName: Space Power Border
-			UBWBladeFollowUp.DisplayName: U B W Blade Follow Up
+			UBWBladeFollowUp.DisplayName: Blade Follow Up
 		}
 
 		Buffs: {

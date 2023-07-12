@@ -22,6 +22,7 @@ using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Buffs;
 using StarsAbove.Utilities;
 using StarsAbove.Projectiles.Bosses.WarriorOfLight;
+using Terraria.Graphics.Shaders;
 
 namespace StarsAbove.NPCs.WarriorOfLight
 {
@@ -30,8 +31,8 @@ namespace StarsAbove.NPCs.WarriorOfLight
 	public class WarriorOfLightBossFinalPhase : ModNPC
 	{
 
-		// Our texture is 36x36 with 2 pixels of padding vertically, so 38 is the vertical spacing.
-		// These are for our benefit and the numbers could easily be used directly in the code below, but this is how we keep code organized.
+		public int AttackTimer = 120;
+
 		private enum Frame
 		{
 			Empty,
@@ -92,8 +93,8 @@ namespace StarsAbove.NPCs.WarriorOfLight
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 314000;
-			NPC.damage = 0;
+			NPC.lifeMax = 195000;
+			NPC.damage = 40;
 			NPC.defense = 45;
 			NPC.knockBackResist = 0f;
 			NPC.width = 300;
@@ -115,7 +116,11 @@ namespace StarsAbove.NPCs.WarriorOfLight
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
 			NPC.netAlways = true;
 		}
-        public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+		public override bool CanHitPlayer(Player target, ref int cooldownSlot)
+		{
+			return false;
+		}
+		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
 			Microsoft.Xna.Framework.Color color1 = Lighting.GetColor((int)((double)NPC.position.X + (double)NPC.width * 0.5) / 16, (int)(((double)NPC.position.Y + (double)NPC.height * 0.5) / 16.0));
 			Vector2 drawOrigin = new Vector2(NPC.width * 0.5f, NPC.height * 0.5f);
@@ -150,7 +155,25 @@ namespace StarsAbove.NPCs.WarriorOfLight
 			float num16 = 3f; //+ num13 * 2.75f; //Scale?
 			Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3, NPC.rotation - timeFloatAlt, drawOrigin, NPC.scale * 0.5f * num16, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
 			Texture2D texture2D3 = (Texture2D)TextureAssets.Extra[89];
-			Microsoft.Xna.Framework.Rectangle r3 = texture2D3.Frame(1, 1, 0, 0);
+            Microsoft.Xna.Framework.Rectangle r3 = texture2D3.Frame(1, 1, 0, 0);
+			/*
+			Main.spriteBatch.End();
+			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);
+
+			// Retrieve reference to shader
+			var deathShader = GameShaders.Misc["StarsAbove:DeathAnimation"];
+
+			// Reset back to default value.
+			deathShader.UseOpacity(1f);
+			// We use npc.ai[3] as a counter since the real death.
+			if (NPC.ai[1] > 30f)
+			{
+				// Our shader uses the Opacity register to drive the effect. See ExampleEffectDeath.fx to see how the Opacity parameter factors into the shader math. 
+				deathShader.UseOpacity(1f - (NPC.ai[1] - 30f) / 450f);
+			}
+			// Call Apply to apply the shader to the SpriteBatch. Only 1 shader can be active at a time.
+			deathShader.Apply(null);*/
+
 			return base.PreDraw(spriteBatch, screenPos, drawColor);
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
@@ -228,12 +251,15 @@ namespace StarsAbove.NPCs.WarriorOfLight
                     Idle();
                     break;
             }
-			//if AI_Timer is less than 120, it isn't casting- let's try changing phases here
-			if(AI_Timer < 120 && AI_State == (float)ActionState.Idle)
+			if (Main.expertMode)
+			{
+				AttackTimer = 100;
+			}
+			if (AI_Timer < 120 && AI_State == (float)ActionState.Idle)
             {
 
             }
-            else if (AI_Timer >= 120) //An attack is active.
+			else if (AI_Timer >= AttackTimer) //An attack is active.
             {
 				//Test Rotation
 				
@@ -461,7 +487,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 				if (AI_RotationNumber == 35)
 				{
 					//
-					WarriorSummoning2(P, NPC);
+					WarriorSummoning3(P, NPC);
 					return;
 
 				}
@@ -732,6 +758,33 @@ namespace StarsAbove.NPCs.WarriorOfLight
 						NPC.frameCounter = 0;
 					}
 					break;
+				case (float)ActionState.Dying:
+					NPC.frameCounter++;
+					if (NPC.frameCounter < 10)
+					{
+						NPC.frame.Y = (int)Frame.Idle1 * frameHeight;
+					}
+					else if (NPC.frameCounter < 20)
+					{
+						NPC.frame.Y = (int)Frame.Idle2 * frameHeight;
+					}
+					else if (NPC.frameCounter < 30)
+					{
+						NPC.frame.Y = (int)Frame.Idle3 * frameHeight;
+					}
+					else if (NPC.frameCounter < 40)
+					{
+						NPC.frame.Y = (int)Frame.Idle4 * frameHeight;
+					}
+					else if (NPC.frameCounter < 50)
+					{
+						NPC.frame.Y = (int)Frame.Idle5 * frameHeight;
+					}
+					else
+					{
+						NPC.frameCounter = 0;
+					}
+					break;
 			}
 		}
 
@@ -766,7 +819,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 				NPC.velocity.Y = NPC.velocity.Y - 0.01f;
 			}
 			
-			if (Main.rand.NextBool(5) && NPC.ai[1] < 20f)
+			if (Main.rand.NextBool(5) && NPC.ai[1] < 460f)
 			{
 				
 				// This dust spawn adapted from the Pillar death code in vanilla.

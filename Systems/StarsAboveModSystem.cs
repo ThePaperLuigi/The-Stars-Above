@@ -16,11 +16,11 @@ namespace StarsAbove
         {
 			
         }
-
+        
         public override void PreUpdateInvasions()
         {
 
-			if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior)
+            if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior)
 			{
 				Main.eclipse = false;
 			}
@@ -33,7 +33,7 @@ namespace StarsAbove
 
 
         }
-
+        
         public static Vector2 GetPlayerArmPosition(Projectile proj)
         {
             Player player = Main.player[proj.owner];

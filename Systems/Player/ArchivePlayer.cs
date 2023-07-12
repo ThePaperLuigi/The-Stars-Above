@@ -339,6 +339,12 @@ namespace StarsAbove
                        68,
                        "Defeat all vanilla bosses and the Warrior of Light in Expert Mode."));
                 BossArchiveList.Add(new BossArchiveListing(
+                      "The Shattered Disk", //Name of the archive listing.
+                      "Grants the item to summon the Vagrant of Space and Time.", //Description of the listing.
+                      player.vagrantBossItemDialogue == 2, //Unlock requirements.
+                      77,
+                      "Visit a Meteorite")); //Corresponding dialogue ID.
+                BossArchiveList.Add(new BossArchiveListing(
                       "Perseus's Appeal: The Twin Forces", //Name of the archive listing.
                       "Grants the item to summon the Twin Forces.", //Description of the listing.
                       player.dioskouroiBossItemDialogue == 2, //Unlock requirements.
@@ -644,7 +650,7 @@ namespace StarsAbove
                      163,
                      "Defeat Queen Slime, then wait.")); //Corresponding dialogue ID.
                 WeaponArchiveList.Add(new WeaponArchiveListing(
-                      "Vagrant of Space and Time Weapon", //Name of the archive listing.
+                      "Queen Slime Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Astral>()}] Izanagi's Edge " +
                       $"or " +
@@ -653,7 +659,7 @@ namespace StarsAbove
                       115,
                       "Defeat the Vagrant of Space and Time.")); //Corresponding dialogue ID.
                 WeaponArchiveList.Add(new WeaponArchiveListing(
-                      "Vagrant of Space and Time Weapon", //Name of the archive listing.
+                      "Queen Slime Weapon", //Name of the archive listing.
                       $"Grants the Essence for " +
                      $"[i:{ItemType<Spatial>()}] Chronoclock. ", //Description of the listing.
                       player.ClockWeaponDialogue == 2, //Unlock requirements.

@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles
@@ -25,11 +26,24 @@ namespace StarsAbove.Projectiles
 		}
 
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
-			//if (Main.rand.NextBool(10)) {
-			//	target.AddBuff(BuffID.OnFire, 180, false);
-			//}
+			Player projOwner = Main.player[Projectile.owner];
+			projOwner.AddBuff(BuffID.Endurance, 180);
+			if (!target.active)
+            {
+				if(projOwner.statLife <= 100)
+                {
+					projOwner.Heal(15);
+
+				}
+				else
+                {
+					projOwner.Heal(5);
+
+				}
+			}
 		}
 
+		
 		//public override void OnHitPvp(Player target, int damage, bool crit) {
 		//	if (Main.rand.NextBool(10)) {
 		//		target.AddBuff(BuffID.OnFire, 180, false);

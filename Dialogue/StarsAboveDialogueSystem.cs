@@ -2980,7 +2980,7 @@ namespace StarsAbove
                     }
 
                 }
-            }//Vagrant 19 Unused
+            }//Dioskouroi
             if (chosenDialogue == 70) // Boss dialogue - Nalhaun
             {
                 if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
@@ -3566,6 +3566,79 @@ namespace StarsAbove
 
                 }
             }//Deerclops 26
+            if (chosenDialogue == 77) // Vagrant
+            {
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                {
+                    if (dialoguePrep == true)
+                    {
+                        dialogueLeft = 3;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("ShatteredDisk").Type);
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 3)
+                    {
+                        expression = 1;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.VagrantAsphodene.1", Player.name); //So that was the Burnished King. His blade was incredibly powerful, not to mention the magic at his disposal. It was a triumph you survived that.
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 2)
+                    {
+
+
+
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.VagrantAsphodene.2", Player.name); //So that was the Burnished King. His blade was incredibly powerful, not to mention the magic at his disposal. It was a triumph you survived that.
+
+
+
+                    }
+                    if (dialogueLeft == 1)
+                    {
+
+
+
+                        expression = 3;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.VagrantAsphodene.3", Player.name); //So that was the Burnished King. His blade was incredibly powerful, not to mention the magic at his disposal. It was a triumph you survived that.
+
+
+
+                    }
+
+                }
+                if (chosenStarfarer == 2)  //placeholder
+                {
+                    if (dialoguePrep == true)
+                    {
+                        dialogueLeft = 3;
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("ShatteredDisk").Type);
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 3)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.VagrantEridani.1", Player.name); //So that was the Burnished King. His blade was incredibly powerful, not to mention the magic at his disposal. It was a triumph you survived that.
+                    }
+                    if (dialogueLeft == 2)
+                    {
+
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.VagrantEridani.2", Player.name); //So that was the Burnished King. His blade was incredibly powerful, not to mention the magic at his disposal. It was a triumph you survived that.
+
+                    }
+                    if (dialogueLeft == 1)
+                    {
+
+                        expression = 1;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.VagrantEridani.3", Player.name); //So that was the Burnished King. His blade was incredibly powerful, not to mention the magic at his disposal. It was a triumph you survived that.
+
+                    }
+
+
+                }
+            }//Vagrant
 
 
             //Calamity boss dialogue: (Reminder: Calamity boss dialogue starts past 200) If Calamity is not detected, stop at 23. Otherwise...

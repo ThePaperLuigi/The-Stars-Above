@@ -13,6 +13,8 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
+using StarsAbove.Projectiles.BuryTheLight;
+using StarsAbove.Buffs.BuryTheLight;
 
 namespace StarsAbove.Items
 {
@@ -40,9 +42,9 @@ namespace StarsAbove.Items
 
 			Item.width = 28;          
 			Item.height = 28;        
-			Item.useTime = 14;        
-			Item.useAnimation = 14;        
-			Item.useStyle = ItemUseStyleID.Swing;         
+			Item.useTime = 7;        
+			Item.useAnimation = 7;        
+			Item.useStyle = ItemUseStyleID.HiddenAnimation;         
 			Item.knockBack = 5;         
 			Item.value = Item.buyPrice(gold: 1);           
 			Item.rare = ItemRarityID.Purple;
@@ -51,25 +53,13 @@ namespace StarsAbove.Items
 			Item.autoReuse = true;         
 			Item.crit = 0;
 			Item.shoot = ProjectileType<BuryTheLightSlash>();
-			Item.shootSpeed = 0.1f;
+			Item.shootSpeed = 5f;
 			Item.noMelee = true; 
 			Item.noUseGraphic = true; 
 			Item.autoReuse = true;
 
 		}
 		int judgementSlashCharge = 0;
-
-		public override void ModifyTooltips(List<TooltipLine> tooltips)
-		{
-			int tooltip = tooltips.FindLastIndex(x => x.Mod.Equals("Terraria") && x.Name == "Tooltip11");
-			if (ModLoader.TryGetMod("CalamityMod", out _))
-			{
-				if (tooltip != -1)
-				{
-					tooltips.Insert(++tooltip, new TooltipLine(Mod, $"{Mod.Name}:Tooltip12", LangHelper.GetTextValue($"ItemTooltip.{Name}.Calamity")));
-				}
-			}
-		}
 
 		public override bool AltFunctionUse(Player player)
 		{
@@ -79,17 +69,18 @@ namespace StarsAbove.Items
 		{
 			if (player.altFunctionUse == 2)
 			{
-				if (player.GetModPlayer<WeaponPlayer>().judgementGauge >= 100)
-				{
-					judgementSlashCharge = 100;
-					SoundEngine.PlaySound(StarsAboveAudio.SFX_BuryTheLightPrep, player.Center);
-
+				if(!player.HasBuff(BuffType<MirageBladeCooldown>()) && player.statMana >= 50)
+                {
+					player.AddBuff(BuffType<MirageBladeCooldown>(), 180);
+					player.statMana -= 50;
+					player.manaRegenDelay = 360;
 					return true;
-				}
+                }
 				else
-				{
+                {
 					return false;
-				}
+                }
+				
 			}
 			else
 			{
@@ -112,6 +103,16 @@ namespace StarsAbove.Items
 
 		public override void HoldItem(Player player)
 		{
+			if (player.ownedProjectileCounts[ProjectileType<BuryTheLightSheathe>()] < 1)
+			{//Equip animation.
+				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<BuryTheLightSheathe>(), 0, 0, player.whoAmI, 0f);
+			}
+			player.GetModPlayer<WeaponPlayer>().BuryTheLightHeld = true;
+			if(StarsAbove.weaponActionKey.JustPressed && player.GetModPlayer<WeaponPlayer>().judgementGauge >= 100)
+            {
+				judgementSlashCharge = 100;
+				SoundEngine.PlaySound(StarsAboveAudio.SFX_BuryTheLightPrep, player.Center);
+			}
 			if (player.inventory[58].IsAir)
 			{
 				player.GetModPlayer<WeaponPlayer>().judgementGaugeVisibility++;
@@ -185,7 +186,7 @@ namespace StarsAbove.Items
 					SoundEngine.PlaySound(SoundID.Item1, player.Center);
 					player.immune = true;
 					player.immuneTime = 120;
-					Projectile.NewProjectile(null, player.Center.X + Main.rand.Next(-50, 50), player.Center.Y + Main.rand.Next(-50, 50), 0, 0, ProjectileType<BuryTheLightSlash2Pre>(), 0, 0, player.whoAmI);
+					Projectile.NewProjectile(null, player.Center.X + Main.rand.Next(-50, 50), player.Center.Y + Main.rand.Next(-50, 50), 0, 0, ProjectileType<BuryTheLightSlash2Pre>(), player.GetWeaponDamage(Item), 0, player.whoAmI);
 
 				}
 				if (player.GetModPlayer<WeaponPlayer>().judgementCutTimer == 1)
@@ -205,7 +206,8 @@ namespace StarsAbove.Items
 
 				}
 				//
-				player.GetArmorPenetration(DamageClass.Generic) = 1f;
+				player.GetArmorPenetration(DamageClass.Generic) += 9999f;
+				player.statDefense /= 2;
 			}
 
 			
@@ -231,12 +233,28 @@ namespace StarsAbove.Items
 		{
 			if (player.altFunctionUse == 2)
 			{
-				
-				
+				for (int i = 0; i < 5; i++)
+				{
+					float offsetAmount = i * 72;
+					Projectile.NewProjectile(source, player.Center.X, player.Center.Y, velocity.X, velocity.Y, ProjectileType<MirageBlade>(), damage, 0, player.whoAmI, 0, offsetAmount);
+
+				}
+				SoundEngine.PlaySound(SoundID.Item9, player.Center);
 			}
 			else
 			{
-				Projectile.NewProjectile(source, Main.MouseWorld.X, Main.MouseWorld.Y, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI);
+				Vector2 perturbedSpeed = new Vector2(velocity.X/100, velocity.Y/100).RotatedByRandom(MathHelper.ToRadians(35));
+
+				if (Main.rand.NextBool())
+                {
+					Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, ProjectileType<BuryTheLightSwing1>(), damage, knockback, player.whoAmI);
+
+				}
+				else
+                {
+					Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, ProjectileType<BuryTheLightSwing2>(), damage, knockback, player.whoAmI);
+
+				}
 				SoundEngine.PlaySound(SoundID.Item1, Main.MouseWorld);
 			}
 

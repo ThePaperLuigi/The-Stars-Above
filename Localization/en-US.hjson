@@ -1181,6 +1181,18 @@ Mods: {
 			}
 
 			BossItemDialogue: {
+				VagrantAsphodene: {
+					1: Hang on- there's something else lodged into this meteor.
+					2: It feels like I should know what it is, but I just can't- kind of like it's stopping me from doing so.
+					3: At least that tells me one thing- it's important! I'd prefer you examine it as soon as you are able.
+				}
+
+				VagrantEridani: {
+					1: Hold on a moment. There's an item of interest within this meteorite.
+					2: It looks so familiar, and yet something's stopping me from placing its identity- how vexing.
+					3: They say encountering obstacles means you're heading in the right direction. Let's take a closer look as soon as possible.
+				}
+
 				Nalhaun: {
 					1: We meet again, {0}. Again, I have another foe for you to defeat.
 					2: I've given you the 'Ancient Crown.' With it, you can call forth a powerful foe, the Burnished King.
@@ -1605,7 +1617,7 @@ Mods: {
 					145: It's the Hallow, the stuff of legend! Awesome! Everything here wants to kill us, though. Bummer.
 					146: Whoa! This place is funky. You don't see these mushrooms every day.
 					147: There's a skele-ton of enemies here! Don't you enjoy a little danger? I sure do.
-					148: So this is the meteor impact we heard. I bet we can make some crazy stuff with a meteorite.
+					148: So this is the meteor impact we heard...
 					149: This is.. the Brimstone Crag. Something dreadful happened here.
 					150: So this is the Astral Infection. I've read about it, but actually seeing it...
 					151: Wow.. This place is quite unique. I can't quite explain.
@@ -1807,7 +1819,7 @@ Mods: {
 					143: We've stepped straight into fairytale land. It would be prettier if everything here wasn't hostile.
 					144: Giant glowing mushrooms.. It feels rather.. welcoming? We should take some back home, just in case.
 					145: I can feel traps everywhere. Strong weapons are buried here as well. Stay ready.
-					146: So this is the meteor impact we heard. Wonder what you can make out of it..?
+					146: So this is the meteor impact we heard...
 					147: The Brimstone Crag.. I can feel the horrors of the past..
 					148: This is the Astral Infection. A subject I'm all too familiar with...
 					149: This place is quite beautiful. Who knew it would be under the desert..?
@@ -2734,6 +2746,7 @@ Mods: {
 						Special3: With only one strike!
 						Special4: Your wish is my command.
 						Special5: Just give up! At this point, even I can't stop myself.
+						Special6: I have no regrets; this is the only path.
 						1: I've been waiting for this exact moment!
 						2: I am not about to stop here.
 						3: I'll reduce you to stardust!
@@ -2752,6 +2765,7 @@ Mods: {
 						Special3: Didn't see that one coming, huh?
 						Special4: I'll show you the domain of the soul.
 						Special5: Know that you are dimensions below me.
+						Special6: I am the bone of my sword...
 						1: Time to finish this.
 						2: Go back to where you belong.
 						3: Submit to entropy.
@@ -2857,6 +2871,18 @@ Mods: {
 						Eridani: We can't use this yet. We have to defeat a foe with spatial powers.
 					}
 				}
+
+				UnlimitedBladeWorks: {
+					Unlocked: {
+						Asphodene: With this Stellar Nova, you can mold the battlefield to one that empowers your abilities.
+						Eridani: You can use this Stellar Nova to create a powerful empowerment field to turn the tide of battle.
+					}
+
+					Locked: {
+						Asphodene: We don't have access to this yet.
+						Eridani: We can't use this yet.
+					}
+				}
 			}
 
 			StellarNovaInfo: {
@@ -2887,7 +2913,7 @@ Mods: {
 				GardenOfAvalon: {
 					AbilityName: Garden of Avalon
 					AbilitySubName: "[c/ECB3FC:The Forever-Sealed Utopia]"
-					AbilityDescription: Call forth the Garden of Avalon, infusing the world with radiant energy. Grant powerful Health and Mana regeneration periodically for 8 seconds, scaling with Stellar Nova Damage. Gain Invincibility for 2 seconds. If the cast would be critical, gain Health, modified by Stellar Nova crit modifiers. Additionally, upon a critical cast, gain the buff 'Solemn Aegis' for 15 seconds, which negates one hit of damage independently of Invincibility.
+					AbilityDescription: Call forth the Garden of Avalon, infusing the world with radiant energy. Grant powerful Health and Mana regeneration periodically for 8 seconds, scaling with Stellar Nova Damage. Gain Invincibility for 2 seconds. If the cast would be critical, gain Health, modified by Stellar Nova crit modifiers. Additionally, upon a critical cast, gain the buff Solemn Aegis for 15 seconds, which negates one hit of damage independently of Invincibility.
 					AstralBonus: Invincibility lasts for 4 seconds instead of 2. Instantly heal 100 HP upon casting Garden of Avalon.
 					UmbralBonus: Gain an extra buff on cast: Dreamlike Charisma. (Can not stack.) Dreamlike Charisma increases damage by 16%, doubled above 100 Mana.
 				}
@@ -2898,6 +2924,14 @@ Mods: {
 					AbilityDescription: Upon cast, become immobile and invincible temporarily. Gain 'Astarte Driver' for 25 seconds. Astarte Driver grants infinite flight and three Cosmic Charges. ALL attacks while Astarte Driver is active will inherit the stats of the Stellar Nova. Pressing the Starfarer Action Key with a Cosmic Charge available will launch a barrage of spatial projectiles (2 second use cooldown.) After activating Astarte Driver's stat-changing effect, the target will be immune for a very short period.
 					AstralBonus: Critical hits do an additional {0} damage in Astarte Driver. You will gain a Cosmic Charge after defeating a foe with a critical hit. (Max 5 charges.)
 					UmbralBonus: Astarte Driver attacks will execute any foe below {0} HP. Gain 1 second of Invincibility when a Cosmic Charge is expended.
+				}
+
+				UnlimitedBladeWorks: {
+					AbilityName: Unlimited Blade Works
+					AbilitySubName: "[c/FC643B:Projected Reality of Wrought Iron]"
+					AbilityDescription: Summon a portal to a world of blades, creating a field of empowerment for 20 seconds. Within the field, follow-up attacks will occur, reducing enemy damage dealt by 20% for 5 seconds on hit (3 second follow-up cooldown.) Additonally, all allies within the radius will gain Bladeforged, which increases damage, knockback, critical strike chance, and armor penetration by 2% up to 10% depending on current HP (capped at 500 HP.) Duration in seconds is proportional to Energy Cost divided by 10.
+					AstralBonus: Bladeforged's cap is raised to 15% and now increases defense based on percentage values up to 8. Additonally, Bladeforged perists for 10 seconds after the Nova ends.
+					UmbralBonus: Outgoing damage is reduced by 10%, but follow up attack cooldown is reduced by 1 second. Foes within the field take 10% more damage.
 				}
 
 				BaseDamage: Base Damage
@@ -3060,6 +3094,7 @@ Mods: {
 			EverlastingLightEnd: The Light flooding this world has been cleansed!
 			SpeedUpLight: The everlasting light is catalyzed, preventing night from falling...
 			TsukiyomiBossChecklist: The Boss Checklist updates to reveal a hidden foe!
+			CanBeShimmeredSpoils: Can be Shimmered, converting into Stellar Remnants
 			`: Mods.StarsAbove.Common.`
 		}
 
@@ -3132,28 +3167,7 @@ Mods: {
 			WealthFocusTier1Tile.MapEntry: Mods.StarsAbove.MapObject.StellarFoci
 			WealthFocusTier2Tile.MapEntry: Mods.StarsAbove.MapObject.StellarFoci
 			WealthFocusTier3Tile.MapEntry: Mods.StarsAbove.MapObject.StellarFoci
-		}
-
-		ItemTooltip: {
-			BuryTheLight: {
-				$parentVal:
-					'''
-					[c/FF5858:This weapon's attacks will slash at your cursor and deal true damage]
-					Each strike will restore Health and Mana
-					Critical hits will inflict Starblight for 20 seconds
-					On a critical hit, foes that are currently inflicted with Starblight will take extra damage and also be inflicted with Frostburn for 20 seconds
-					On a critical hit, foes that are currently inflicted with Frostburn will take extra damage and also be inflicted with Shadowflame for 20 seconds
-					Striking foes and inflicting debuffs will charge the [c/654D9C:Judgement Gauge]
-					Swapping off the weapon will drain the [c/654D9C:Judgement Gauge]
-					Once the [c/654D9C:Judgement Gauge] has reached its maximum, right click to unleash [c/902FEC:Judgement Cut], disabling your normal attacks
-					After a brief charge, [c/902FEC:Judgement Cut] dashes forwards and unleashes a myriad of deadly slices where you were previously
-					You are invincible for the duration of [c/902FEC:Judgement Cut]
-					Foes afflicted with Starblight, Frostburn, or Shadowflame will take extra critical damage, purging the debuffs in the process
-					The more debuffs on the foe, the more damage they will take, increasing dramatically
-					'Now you're motivated'
-					'''
-				Calamity: If the foe has been inflicted with all three debuffs, [c/902FEC:Judgement Cut] will additionally deal 10% of the enemy's Max HP (Capped at 1,000,000)
-			}
+			ReprintedBlueprintTile.MapEntry: Reprinted Blueprint Tile
 		}
 
 		Items: {
@@ -4956,26 +4970,13 @@ Mods: {
 				DisplayName: Genocide
 			}
 
-			HawkmoonMagic: {
+			Hawkmoon: {
 				Tooltip:
 					'''
-					Right click to reload the gun with 12 rounds
+					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty when aspected to Ranged or Magic damage]
+					Right click to reload the weapon with 12 rounds
 					Time the reload perfectly to gain [c/0059FF:Paracausal Anomaly] until all bullets are spent
 					[c/0059FF:Paracausal Anomaly] increases damage while making all attacks critical
-					This weapon does not use ammo
-					This weapon can be re-crafted to swap between Magic and Ranged damage
-					'What you call Darkness is the end of your evolution'
-					'''
-				DisplayName: Hawkmoon
-			}
-
-			HawkmoonRanged: {
-				Tooltip:
-					'''
-					Right click to reload the gun with 12 rounds
-					Time the reload perfectly to gain [c/0059FF:Paracausal Anomaly] until all bullets are spent
-					[c/0059FF:Paracausal Anomaly] increases damage while making all attacks critical
-					This weapon does not use ammo
 					This weapon can be re-crafted to swap between Magic and Ranged damage
 					'What you call Darkness is the end of your evolution'
 					'''
@@ -5074,7 +5075,10 @@ Mods: {
 			InugamiRipsaw: {
 				Tooltip:
 					'''
-					Right click to activate Berserker Mode for 5 seconds, increasing damage dealt but dealing damage to yourself (20 second cooldown)
+					Attacks deal constant damage and grant Endurance for 3 seconds on hit
+					Defeating foes will heal 5 HP
+					Defeating foes while below 100 HP will instead heal 15 HP
+					Right click to activate [c/b03fed:Berserker Mode] for 5 seconds, increasing damage dealt but dealing damage over time to yourself (20 second cooldown)
 					'It preys on stray fingers'
 					'''
 				DisplayName: Inugami Ripsaw
@@ -6659,7 +6663,7 @@ Mods: {
 					The [c/495DEC:Celestial Void] will pulse powerful damage to all nearby foes, dragging them inwards
 					Attacks with this weapon during this time will fill the [c/4C3BB6:Virtue Gauge] with [c/6C38E3:Umbral Flux]
 					If the [c/4C3BB6:Virtue Gauge] is full once the [c/495DEC:Celestial Void] ends, it will collapse in a massive explosion, dealing 5x base damage
-					There is a 45 cooldown between the re-activation of [c/495DEC:Celestial Void]
+					There is a 45 second cooldown between the re-activation of [c/495DEC:Celestial Void]
 					'Pierce through all matter!'
 					'''
 				DisplayName: Virtue's Edge
@@ -7630,8 +7634,22 @@ Mods: {
 			}
 
 			BuryTheLight: {
+				Tooltip:
+					'''
+					[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes]
+					When this weapon is held, gain 100% armor penetration but defense is halved
+					Attacks rapidly cleave a large area and attacks will build stacks of [c/16DBF3:Judgement] on foes struck (Critical strikes apply two stacks of [c/16DBF3:Judgement])
+					At 20 stacks of [c/16DBF3:Judgement] the next application of [c/16DBF3:Judgement] will burst in a barrage of slashes while removing all stacks of [c/16DBF3:Judgement]
+					Right click to consume 50 mana, summoning [c/88F2FF:Mirage Blades] at your cursor which heal 5 HP upon striking foes (3 second cooldown)
+					Striking foes with [c/88F2FF:Mirage Blades] and executing [c/16DBF3:Judgement] will charge the [c/654D9C:Judgement Gauge] (Drained when swapping weapons)
+					Press the Weapon Action Key to execute [c/902FEC:Judgement Finale], disabling attacks and consuming the [c/654D9C:Judgement Gauge]
+					Upon activation of [c/902FEC:Judgement Finale], dash forward after a short delay while unleashing a barrage of slashes
+					[c/902FEC:Judgement Finale] resolves after a short delay, instantly defeating any non-boss foe struck
+					Bosses will take 100x critical damage and 10% of their Max HP as damage instead
+					You are invincible for the duration of [c/902FEC:Judgement Finale]
+					'Now you're motivated'
+					'''
 				DisplayName: Bury The Light
-				Tooltip: ""
 			}
 
 			TestArmorHead: {
@@ -7696,49 +7714,6 @@ Mods: {
 					'''
 			}
 
-			SigilOfHope: {
-				DisplayName: Sigil Of Hope
-				Tooltip:
-					'''
-					While fighting the Warrior of Light during Everlasting Light, gain 120 defense
-					However, rewards will be reduced
-					'''
-			}
-
-			ArbalestSigil: {
-				DisplayName: Arbalest's Anarchy
-				Tooltip: Negates the damage penalty when swapping weapons to Ranged damage
-			}
-
-			BeastmasterSigil: {
-				DisplayName: Beastmaster's Anarchy
-				Tooltip: Negates the damage penalty when swapping weapons to Summon damage
-			}
-
-			Blueprint: {
-				DisplayName: Blueprint
-				Tooltip: Drastically increases block placement range while stationary
-			}
-
-			DoubledPawns: {
-				DisplayName: Pawn's Initiative
-				Tooltip:
-					'''
-					Instantly kill non-boss foes at 3% Max HP or lower when in close proximity
-					'It's forced!'
-					'''
-			}
-
-			GladiatorSigil: {
-				DisplayName: Gladiator's Anarchy
-				Tooltip: Reduces the damage penalty when swapping weapons to Melee damage by 10%
-			}
-
-			SpellcasterSigil: {
-				DisplayName: Spellcaster's Anarchy
-				Tooltip: Negates the damage penalty when swapping weapons to Magic damage
-			}
-
 			GuppyHead: {
 				DisplayName: Misfortunate Cat
 				Tooltip:
@@ -7755,7 +7730,8 @@ Mods: {
 					'''
 					Damage variance is disabled
 					Upon landing a critical strike, flip a coin
-					If heads, damage is increased by 50%; If tails, critical strikes are disabled for 3 seconds and you become Vulnerable for the same duration
+					If heads, damage is inflicted again; If tails, you become Vulnerable for 3 seconds
+					Additionally, damage is reduced by 40% while Vulnerable and natural critical strikes are disabled
 					Can only activate every 3 seconds
 					'''
 			}
@@ -7788,18 +7764,38 @@ Mods: {
 				DisplayName: Stellar Remnant
 				Tooltip:
 					'''
-					Leftover confluence from opened Stellar Spoils
+					Leftover confluence from Stellar Spoils
 					Can be used to craft Stellar Spoil items
 					'''
 			}
 
 			QuantumButterflyBody: {
 				DisplayName: Quantum Butterfly Garb
-				Tooltip: ""
+				Tooltip: "'This is getting troublesome..."
 			}
 
 			QuantumButterflyLegs: {
 				DisplayName: Quantum Butterfly Boots
+				Tooltip: "'What's next?'"
+			}
+
+			BaselessBladeBody: {
+				DisplayName: Baseless Blade Armguard
+				Tooltip: "'Projection, commence'"
+			}
+
+			BaselessBladeLegs: {
+				DisplayName: Baseless Blade Leggings
+				Tooltip: "'I think it's time to retire'"
+			}
+
+			ReprintedBlueprint: {
+				DisplayName: Reprinted Blueprint
+				Tooltip: ""
+			}
+
+			SigilOfHope: {
+				DisplayName: Sigil Of Hope
 				Tooltip: ""
 			}
 		}
@@ -8613,6 +8609,21 @@ Mods: {
 			WarriorOrbitingLight.DisplayName: Lightblast
 			WarriorOfLightFinalPhaseCastingSprite.DisplayName: ""
 			WarriorOfLightFinalPhaseSwingingSprite.DisplayName: ""
+			BuryTheLightFollowUp.DisplayName: Bury The Light Follow Up
+			BuryTheLightSlashFollowUp.DisplayName: Bury The Light Slash Follow Up
+			BuryTheLightSwing1.DisplayName: Bury The Light Swing1
+			BuryTheLightSwing2.DisplayName: Bury The Light Swing2
+			BuryTheLightSheathe.DisplayName: Bury The Light Sheathe
+			MirageBlade.DisplayName: Mirage Blade
+			MirageBladeAlt.DisplayName: Mirage Blade Alt
+			LamentClashWin.DisplayName: Lament Clash Win
+			LamentClashLose.DisplayName: Lament Clash Lose
+			UnlimitedBladeWorksBackground.DisplayName: Unlimited Blade Works Background
+			UnlimitedBladeWorksBorder.DisplayName: Unlimited Blade Works Border
+			UBWBladeProjectile.DisplayName: U B W Blade Projectile
+			SpacePowerBackground.DisplayName: Space Power Background
+			SpacePowerBorder.DisplayName: Space Power Border
+			UBWBladeFollowUp.DisplayName: U B W Blade Follow Up
 		}
 
 		Buffs: {
@@ -10809,7 +10820,27 @@ Mods: {
 
 			BindingLight: {
 				DisplayName: Binding Light
-				Description: Mods.StarsAbove.Buffs.BindingLight.Description
+				Description: Frozen light is binding you
+			}
+
+			MirageBladeCooldown: {
+				DisplayName: Mirage Blade Cooldown
+				Description: ""
+			}
+
+			LamentingPocketwatchCooldown: {
+				DisplayName: Lamenting Pocketwatch Cooldown
+				Description: ""
+			}
+
+			Bladeforged: {
+				DisplayName: Bladeforged
+				Description: Projected reality is granting increased damage, knockback, critical strike chance, and armor penetration.
+			}
+
+			UBWFollowUpCooldown: {
+				DisplayName: U B W Follow Up Cooldown
+				Description: Mods.StarsAbove.Buffs.UBWFollowUpCooldown.Description
 			}
 		}
 
