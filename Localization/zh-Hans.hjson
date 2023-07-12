@@ -33,7 +33,7 @@ Mods: {
 				ChargeNova: The Warrior of Light charges his Stellar Nova!
 				ChargeStarfarer: The Warrior of Light borrows his Starfarer's might!
 				GardenOfAvalon: The Garden of Avalon shields the Warrior of Light from damage!
-				// QTE: Rapidly press the Stellar Nova button!
+				QTE: Rapidly press the Stellar Nova button!
 			}
 
 			Dioskouroi.Clash: 狄俄斯库洛伊们互相碰撞，平衡了二者的生命力！
@@ -1182,15 +1182,15 @@ Mods: {
 
 			BossItemDialogue: {
 				VagrantAsphodene: {
-					// 1: Hang on- there's something else lodged into this meteor.
-					// 2: It feels like I should know what it is, but I just can't- kind of like it's stopping me from doing so.
-					// 3: At least that tells me one thing- it's important! I'd prefer you examine it as soon as you are able.
+					1: Hang on- there's something else lodged into this meteor.
+					2: It feels like I should know what it is, but I just can't- kind of like it's stopping me from doing so.
+					3: At least that tells me one thing- it's important! I'd prefer you examine it as soon as you are able.
 				}
 
 				VagrantEridani: {
-					// 1: Hold on a moment. There's an item of interest within this meteorite.
-					// 2: It looks so familiar, and yet something's stopping me from placing its identity- how vexing.
-					// 3: They say encountering obstacles means you're heading in the right direction. Let's take a closer look as soon as possible.
+					1: Hold on a moment. There's an item of interest within this meteorite.
+					2: It looks so familiar, and yet something's stopping me from placing its identity- how vexing.
+					3: They say encountering obstacles means you're heading in the right direction. Let's take a closer look as soon as possible.
 				}
 
 				Nalhaun: {
@@ -1617,7 +1617,7 @@ Mods: {
 					145: 是神圣之地，传说中的地方。尽管这里的一切都想干掉我们。真是太扫兴了。
 					146: 哇哦！这地方真特别。你不是每天都能看见这些蘑菇的。
 					147: 这里有一髅子敌人！你难道不享受那么一丁点的危险吗？我还蛮喜欢的。
-					148: 这就是我们听见的那颗落地的陨石。我打赌我们能用陨石做一些酷毙了的东西。
+					148: So this is the meteor impact we heard...
 					149: 这里是……硫火之崖。这里曾发生过一些可怕的事情。
 					150: 这里就是星辉瘟疫。我曾经读到过它，但亲眼所见还是第一次。
 					151: 哇哦……这地方可真特别。我也说不清楚。
@@ -1819,7 +1819,7 @@ Mods: {
 					143: 我们踏入了一片童话世界。如果不是这里的一切都怀揣着敌意的话，这里还能变得更加美好。
 					144: 一片巨型发光蘑菇林……它们感觉起来相当……友好？我们应该带一些回家，以备不时之需。
 					145: 这里到处都是陷阱，但也埋藏着强大的武器。做好准备。
-					146: 这就是我们听见的那颗落地的陨石。我想知道我们能用它做些什么……？
+					146: So this is the meteor impact we heard...
 					147: 硫火之崖……我能感受到来自过去的恐惧……
 					148: 这里就是星辉瘟疫。我对它再熟悉不过了……
 					149: 这里的景色真是太美了。谁能想到在沙漠地下竟有这样一片地方呢……？
@@ -2746,7 +2746,7 @@ Mods: {
 						Special3: 只此一击！
 						Special4: 听从你的号令。
 						Special5: 放弃挣扎吧！在这一点上，即使我也阻止不了自己。
-						// Special6: I have no regrets; this is the only path.
+						Special6: I have no regrets; this is the only path.
 						1: 我等这一刻很久了！
 						2: 我绝不会止步于此。
 						3: 汝等即刻散作星尘！
@@ -2765,7 +2765,7 @@ Mods: {
 						Special3: 你想不到会有这一天，对吧？
 						Special4: 我将向你展示灵魂之领域。
 						Special5: 要知道我的维度比你更高。
-						// Special6: I am the bone of my sword...
+						Special6: I am the bone of my sword...
 						1: 此即终结之日！
 						2: 哪里来的，滚回哪去！
 						3: 服从混乱吧。
@@ -2874,13 +2874,13 @@ Mods: {
 
 				UnlimitedBladeWorks: {
 					Unlocked: {
-						// Asphodene: With this Stellar Nova, you can mold the battlefield to one that empowers your abilities.
-						// Eridani: You can use this Stellar Nova to create a powerful empowerment field to turn the tide of battle.
+						Asphodene: With this Stellar Nova, you can mold the battlefield to one that empowers your abilities.
+						Eridani: You can use this Stellar Nova to create a powerful empowerment field to turn the tide of battle.
 					}
 
 					Locked: {
-						// Asphodene: We don't have access to this yet.
-						// Eridani: We can't use this yet.
+						Asphodene: We don't have access to this yet.
+						Eridani: We can't use this yet.
 					}
 				}
 			}
@@ -2927,11 +2927,11 @@ Mods: {
 				}
 
 				UnlimitedBladeWorks: {
-					// AbilityName: Unlimited Blade Works
-					// AbilitySubName: "[c/FC643B:Projected Reality of Wrought Iron]"
-					// AbilityDescription: Summon a portal to a world of blades, creating a field of empowerment for 20 seconds. Within the field, follow-up attacks will occur, reducing enemy damage dealt by 20% for 5 seconds on hit (3 second follow-up cooldown.) Additonally, all allies within the radius will gain Bladeforged, which increases damage, knockback, critical strike chance, and armor penetration by 2% up to 10% depending on current HP (capped at 500 HP.) Duration in seconds is proportional to Energy Cost divided by 10.
-					// AstralBonus: Bladeforged's cap is raised to 15% and now increases defense based on percentage values up to 8. Additonally, Bladeforged perists for 10 seconds after the Nova ends.
-					// UmbralBonus: Outgoing damage is reduced by 10%, but follow up attack cooldown is reduced by 1 second. Foes within the field take 10% more damage.
+					AbilityName: Unlimited Blade Works
+					AbilitySubName: "[c/FC643B:Projected Reality of Wrought Iron]"
+					AbilityDescription: Summon a portal to a world of blades, creating a field of empowerment for 20 seconds. Within the field, follow-up attacks will occur, reducing enemy damage dealt by 20% for 5 seconds on hit (3 second follow-up cooldown.) Additonally, all allies within the radius will gain Bladeforged, which increases damage, knockback, critical strike chance, and armor penetration by 2% up to 10% depending on current HP (capped at 500 HP.) Duration in seconds is proportional to Energy Cost divided by 10.
+					AstralBonus: Bladeforged's cap is raised to 15% and now increases defense based on percentage values up to 8. Additonally, Bladeforged perists for 10 seconds after the Nova ends.
+					UmbralBonus: Outgoing damage is reduced by 10%, but follow up attack cooldown is reduced by 1 second. Foes within the field take 10% more damage.
 				}
 
 				BaseDamage: 基础伤害
@@ -3094,7 +3094,7 @@ Mods: {
 			EverlastingLightEnd: 满溢于这个世界的光亮已经被净化！
 			SpeedUpLight: 永恒之光受到催化，夜幕不再降临……
 			TsukiyomiBossChecklist: BossCheckList已经更新！并为你揭露了一位隐藏的敌人！
-			// CanBeShimmeredSpoils: Can be Shimmered, converting into Stellar Remnants
+			CanBeShimmeredSpoils: Can be Shimmered, converting into Stellar Remnants
 			`: Mods.StarsAbove.Common.`
 		}
 
@@ -3134,7 +3134,7 @@ Mods: {
 			VagrantWalls.DisplayName: 流浪者墙
 			VagrantWallsHorizontal.DisplayName: 水平流浪者墙
 			VagrantWallsVertical.DisplayName: 垂直流浪者墙
-			WarriorOfLightBoss.DisplayName: The Warrior Of Light
+			WarriorOfLightBoss.DisplayName: 光之战士
 			WarriorWallsNPC.DisplayName: ""
 			WarriorOfLightOld.DisplayName: ""
 			WarriorOfLightBossFinalPhase.DisplayName: The Warrior Of Light
@@ -3167,7 +3167,7 @@ Mods: {
 			WealthFocusTier1Tile.MapEntry: Mods.StarsAbove.MapObject.StellarFoci
 			WealthFocusTier2Tile.MapEntry: Mods.StarsAbove.MapObject.StellarFoci
 			WealthFocusTier3Tile.MapEntry: Mods.StarsAbove.MapObject.StellarFoci
-			// ReprintedBlueprintTile.MapEntry: Reprinted Blueprint Tile
+			ReprintedBlueprintTile.MapEntry: Reprinted Blueprint Tile
 		}
 
 		Items: {
@@ -3232,6 +3232,7 @@ Mods: {
 					降低30点防御力
 					击杀一名敌人后，获得持续15秒的“满足苦痛”
 					持续时间内，你将会增加20%的伤害，获得强大的生命恢复能力，并且不再降低防御力
+					“这是最高水平的纳米机器，或者是他们所说的最高水平”
 					'''
 				DisplayName: 恶魔契约
 			}
@@ -3945,7 +3946,7 @@ Mods: {
 			StarBitBlue: {
 				Tooltip:
 					'''
-
+					
 					[c/F1AF42:它不该出现在你的物品栏里]
 
 					'''
@@ -3955,7 +3956,7 @@ Mods: {
 			StarBitGreen: {
 				Tooltip:
 					'''
-
+					
 					[c/F1AF42:它不该出现在你的物品栏里]
 
 					'''
@@ -3965,7 +3966,7 @@ Mods: {
 			StarBitOrange: {
 				Tooltip:
 					'''
-
+					
 					[c/F1AF42:它不该出现在你的物品栏里]
 
 					'''
@@ -3975,7 +3976,7 @@ Mods: {
 			StarBitPurple: {
 				Tooltip:
 					'''
-
+					
 					[c/F1AF42:它不该出现在你的物品栏里]
 
 					'''
@@ -4968,7 +4969,7 @@ Mods: {
 			}
 
 			Hawkmoon: {
-				/* Tooltip:
+				Tooltip:
 					'''
 					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty when aspected to Ranged or Magic damage]
 					Right click to reload the weapon with 12 rounds
@@ -4976,8 +4977,6 @@ Mods: {
 					[c/0059FF:Paracausal Anomaly] increases damage while making all attacks critical
 					This weapon can be re-crafted to swap between Magic and Ranged damage
 					'What you call Darkness is the end of your evolution'
-					''' */
-				// DisplayName: Hawkmoon
 			}
 
 			HollowheartAlbion: {
@@ -5072,8 +5071,11 @@ Mods: {
 			InugamiRipsaw: {
 				Tooltip:
 					'''
-					点击右键进入持续5秒的狂暴模式，增加造成的伤害，但期间持续受到伤害（20秒冷却）
-					“它会捕食迷路的手指”
+					Attacks deal constant damage and grant Endurance for 3 seconds on hit
+					Defeating foes will heal 5 HP
+					Defeating foes while below 100 HP will instead heal 15 HP
+					Right click to activate [c/b03fed:Berserker Mode] for 5 seconds, increasing damage dealt but dealing damage over time to yourself (20 second cooldown)
+					'It preys on stray fingers'
 					'''
 				DisplayName: 面包狗链锯
 			}
@@ -5086,7 +5088,7 @@ Mods: {
 					每次射击会增加伤害
 					在第四次射击后，需要一定时间重新装填
 					若射击命中了足够的次数，你的下一次装填会触发[c/66B2D1:砥砺刀锋]
-					[c/66B2D1:砥砺刀锋]触发后的下一次射击将造成10倍的暴击伤害，并立刻重新装填
+					[c/66B2D1:砥砺刀锋]触发后的下一次射击将造成5倍的暴击伤害，并立刻重新装填
 					若[c/66B2D1:砥砺刀锋]命中敌人，则获得100魔力值
 					若该武器的伤害类型被变更为近战，则获得魔力值的增益不会生效，但武器攻击速度大幅提升
 					手持该武器时，你获得敏捷增益
@@ -6453,10 +6455,9 @@ Mods: {
 					手持该武器会使[c/8BD1D1:双生意识]出现，开始为100%[c/C7FFFA:表意识]
 					未蓄力攻击会在大圆形范围内横扫，并使[c/8BD1D1:双生意识]向[c/C7FFFA:表意识]偏移
 					蓄力攻击向前方敌人造成多次伤害，并使[c/8BD1D1:双生意识]向[c/B60000:里意识]偏移
-					准备蓄力攻击时会快速消耗魔力
 					当[c/C7FFFA:表意识]超过50%时，可以施放[c/C7FFFA:永恒 = 一瞬]
 					当[c/B60000:里意识]超过50%时，获得[c/B60000:朝夕]增益
-					符合条件时，右键以释放[c/C7FFFA:永恒 = 一瞬]，向着光标冲刺（16秒冷却）
+					符合条件时，press the Weapon Action Key to activate [c/C7FFFA:Flash of Eternity], dashing towards your cursor (8 second cooldown)
 					[c/B60000:朝夕]可以提高40%伤害与20%暴击率
 					“拜托了，另一个我”
 					'''
@@ -7497,7 +7498,7 @@ Mods: {
 					刀刃命中敌人会使敌人燃烧2秒，造成50%的伤害，且额外获得4秒敏捷
 					点击右键消耗50点魔力值，在光标处放置一个[c/BB3B27:火药桶]
 					这个魔力消耗无法被任何方式减免和抵消
-					   你最多可以同时放置2个[c/BB3B27:火药桶]，且[c/BB3B27:火药桶]会在放置20秒之后或者切换武器后消失
+				    你最多可以同时放置2个[c/BB3B27:火药桶]，且[c/BB3B27:火药桶]会在放置20秒之后或者切换武器后消失
 					在短暂的延迟后，[c/BB3B27:火药桶]进入激活状态，此时使用该武器命中[c/BB3B27:火药桶]会让其发生爆炸
 					爆炸将会造成4倍伤害，且给予8秒敏捷效果
 					此外，处于[c/BB3B27:火药桶]爆炸范围内的其他[c/BB3B27:火药桶]也会发生爆炸，这次爆炸造成的伤害额外提升50%
@@ -7599,7 +7600,21 @@ Mods: {
 			}
 
 			BuryTheLight: {
-				Tooltip: ""
+				Tooltip:
+					'''
+					[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes]
+					When this weapon is held, gain 100% armor penetration but defense is halved
+					Attacks rapidly cleave a large area and attacks will build stacks of [c/16DBF3:Judgement] on foes struck (Critical strikes apply two stacks of [c/16DBF3:Judgement])
+					At 20 stacks of [c/16DBF3:Judgement] the next application of [c/16DBF3:Judgement] will burst in a barrage of slashes while removing all stacks of [c/16DBF3:Judgement]
+					Right click to consume 50 mana, summoning [c/88F2FF:Mirage Blades] at your cursor which heal 5 HP upon striking foes (3 second cooldown)
+					Striking foes with [c/88F2FF:Mirage Blades] and executing [c/16DBF3:Judgement] will charge the [c/654D9C:Judgement Gauge] (Drained when swapping weapons)
+					Press the Weapon Action Key to execute [c/902FEC:Judgement Finale], disabling attacks and consuming the [c/654D9C:Judgement Gauge]
+					Upon activation of [c/902FEC:Judgement Finale], dash forward after a short delay while unleashing a barrage of slashes
+					[c/902FEC:Judgement Finale] resolves after a short delay, instantly defeating any non-boss foe struck
+					Bosses will take 100x critical damage and 10% of their Max HP as damage instead
+					You are invincible for the duration of [c/902FEC:Judgement Finale]
+					'Now you're motivated'
+					'''
 				DisplayName: 埋葬光明
 			}
 
@@ -7681,7 +7696,8 @@ Mods: {
 					'''
 					Damage variance is disabled
 					Upon landing a critical strike, flip a coin
-					If heads, damage is increased by 50%; If tails, critical strikes are disabled for 3 seconds and you become Vulnerable for the same duration
+					If heads, damage is inflicted again; If tails, you become Vulnerable for 3 seconds
+					Additionally, damage is reduced by 40% while Vulnerable and natural critical strikes are disabled
 					Can only activate every 3 seconds
 					'''
 			}
@@ -7701,47 +7717,52 @@ Mods: {
 				Tooltip:
 					'''
 					Teleports all distant players in Multiplayer to your position (10 minute cooldown)
-					Grants Invincibility for 2 seconds if a boss is active
+					Grants Invincibility on teleportation for 2 seconds if a boss is active
 					'''
 			}
 
 			StellarSpoils: {
-				// DisplayName: Stellar Spoils
-				// Tooltip: ""
+				DisplayName: Stellar Spoils
+				Tooltip: ""
 			}
 
 			StellarRemnant: {
-				// DisplayName: Stellar Remnant
-				/* Tooltip:
+				DisplayName: Stellar Remnant
+				Tooltip:
 					'''
 					Leftover confluence from Stellar Spoils
 					Can be used to craft Stellar Spoil items
-					''' */
+					'''
 			}
 
 			QuantumButterflyBody: {
-				// DisplayName: Quantum Butterfly Garb
-				// Tooltip: "'This is getting troublesome..."
+				DisplayName: Quantum Butterfly Garb
+				Tooltip: "'This is getting troublesome..."
 			}
 
 			QuantumButterflyLegs: {
-				// DisplayName: Quantum Butterfly Boots
-				// Tooltip: "'What's next?'"
+				DisplayName: Quantum Butterfly Boots
+				Tooltip: "'What's next?'"
 			}
 
 			BaselessBladeBody: {
-				// DisplayName: Baseless Blade Armguard
-				// Tooltip: "'Projection, commence'"
+				DisplayName: Baseless Blade Armguard
+				Tooltip: "'Projection, commence'"
 			}
 
 			BaselessBladeLegs: {
-				// DisplayName: Baseless Blade Leggings
-				// Tooltip: "'I think it's time to retire'"
+				DisplayName: Baseless Blade Leggings
+				Tooltip: "'I think it's time to retire'"
 			}
 
 			ReprintedBlueprint: {
-				// DisplayName: Reprinted Blueprint
-				// Tooltip: ""
+				DisplayName: Reprinted Blueprint
+				Tooltip: ""
+			}
+
+			SigilOfHope: {
+				DisplayName: Sigil Of Hope
+				Tooltip: ""
 			}
 
 			SigilOfHope: {
@@ -7771,11 +7792,11 @@ Mods: {
 
 		Projectiles: {
 			ArachnidNeedlepointWhip.DisplayName: 蛛形纲针鞭
-			AbsoluteBlade.DisplayName: Absolute Blade
-			AbsoluteBlade2.DisplayName: Absolute Blade
-			AbsoluteGeometry.DisplayName: Absolute Geometry
-			AbsoluteRendHeaven.DisplayName: Absolute Rend Heaven
-			AbsoluteRendHeavenDamage.DisplayName: Absolute Rend Heaven
+			AbsoluteBlade.DisplayName: 绝对剑刃
+			AbsoluteBlade2.DisplayName: 绝对剑刃
+			AbsoluteGeometry.DisplayName: 绝对几何
+			AbsoluteRendHeaven.DisplayName: 绝对撕裂天堂
+			AbsoluteRendHeavenDamage.DisplayName: 绝对撕裂天堂
 			AegisDriverOff.DisplayName: 天之圣杯
 			AegisDriverOn.DisplayName: 天之圣杯
 			AmiyaSlash.DisplayName: 影霄
@@ -8563,21 +8584,21 @@ Mods: {
 			WarriorOrbitingLight.DisplayName: Lightblast
 			WarriorOfLightFinalPhaseCastingSprite.DisplayName: ""
 			WarriorOfLightFinalPhaseSwingingSprite.DisplayName: ""
-			// BuryTheLightFollowUp.DisplayName: Bury The Light Follow Up
-			// BuryTheLightSlashFollowUp.DisplayName: Bury The Light Slash Follow Up
-			// BuryTheLightSwing1.DisplayName: Bury The Light Swing1
-			// BuryTheLightSwing2.DisplayName: Bury The Light Swing2
-			// BuryTheLightSheathe.DisplayName: Bury The Light Sheathe
-			// MirageBlade.DisplayName: Mirage Blade
-			// MirageBladeAlt.DisplayName: Mirage Blade Alt
-			// LamentClashWin.DisplayName: Lament Clash Win
-			// LamentClashLose.DisplayName: Lament Clash Lose
-			// UnlimitedBladeWorksBackground.DisplayName: Unlimited Blade Works Background
-			// UnlimitedBladeWorksBorder.DisplayName: Unlimited Blade Works Border
-			// UBWBladeProjectile.DisplayName: U B W Blade Projectile
-			// SpacePowerBackground.DisplayName: Space Power Background
-			// SpacePowerBorder.DisplayName: Space Power Border
-			// UBWBladeFollowUp.DisplayName: U B W Blade Follow Up
+			BuryTheLightFollowUp.DisplayName: Bury The Light Follow Up
+			BuryTheLightSlashFollowUp.DisplayName: Bury The Light Slash Follow Up
+			BuryTheLightSwing1.DisplayName: Bury The Light Swing1
+			BuryTheLightSwing2.DisplayName: Bury The Light Swing2
+			BuryTheLightSheathe.DisplayName: Bury The Light Sheathe
+			MirageBlade.DisplayName: Mirage Blade
+			MirageBladeAlt.DisplayName: Mirage Blade Alt
+			LamentClashWin.DisplayName: Lament Clash Win
+			LamentClashLose.DisplayName: Lament Clash Lose
+			UnlimitedBladeWorksBackground.DisplayName: Unlimited Blade Works Background
+			UnlimitedBladeWorksBorder.DisplayName: Unlimited Blade Works Border
+			UBWBladeProjectile.DisplayName: Blade Projectile
+			SpacePowerBackground.DisplayName: Space Power Background
+			SpacePowerBorder.DisplayName: Space Power Border
+			UBWBladeFollowUp.DisplayName: Blade Follow Up
 		}
 
 		Buffs: {
@@ -8693,12 +8714,12 @@ Mods: {
 
 			AstralAspectBow: {
 				DisplayName: 星体调谐
-				Description: The Astral Aspect grants health on firing, dramatic health regeneration once charged, and empowers Umbral Aspect at the cost of half your damage
+				Description: 星体星相在发射时给予你生命值，且在完成充能后获得大量生命恢复，并以你一半的伤害为代价增强本影相位
 			}
 
 			AstralRapture: {
 				DisplayName: 星体狂欢
-				Description: Gain HP and Invincibility on Asphodene's tiles
+				Description: 在爱丝福德妮的地砖上获得生命值和无敌帧
 			}
 
 			BerserkerMode: {
@@ -8794,7 +8815,7 @@ Mods: {
 
 			BossCooldown: {
 				DisplayName: Boss冷却
-				Description: The boss of the Dying Citadel will fail to spawn with this debuff
+				Description: Dying Citadel的Boss无法在该减益存在的情况下生成
 			}
 
 			BossEnemySpawnMod: {
@@ -8884,7 +8905,7 @@ Mods: {
 
 			ChemtankDashCooldown: {
 				DisplayName: 鄙弃冷却
-				Description: Disdain will fail to activate if this debuff is present
+				Description: 若该减益存在，无法激活鄙弃
 			}
 
 			ChemtankDefenseBuff: {
@@ -8904,12 +8925,12 @@ Mods: {
 
 			CoreOfFlames: {
 				DisplayName: 烈焰核心
-				Description: Liberation Blazing is at the apex of its power
+				Description: 解放烈焰正处于其力量的巅峰
 			}
 
 			CoreOfFlamesCooldown: {
 				DisplayName: 烈焰核心冷却
-				Description: Liberation Blazing will not activate Core of Flames when this debuff is active
+				Description: 若该减益存在，解放烈焰将无法激活烈焰核心
 			}
 
 			CosmicConception: {
@@ -8923,8 +8944,8 @@ Mods: {
 			}
 
 			MagitonOverheat: {
-				DisplayName: 玛奇特隆过热
-				Description: Cosmic Destroyer is imbued with overwhelming strength
+				DisplayName: 炽热玛奇顿
+				Description: 宇宙毁灭者充满了压倒性的力量
 			}
 
 			Overheated: {
@@ -8943,17 +8964,17 @@ Mods: {
 			}
 
 			CounterSurge: {
-				DisplayName: Counter Surge
+				DisplayName: 抵消上挑
 				Description: 异度之刃的充能攻击已被大幅增强
 			}
 
 			CrimsonDragonetPetBuff: {
-				DisplayName: Crimson Dragonet
-				Description: A crimson dragonet attends to you
+				DisplayName: 猩红小龙
+				Description: 一只深红色的小龙正在跟着你
 			}
 
 			DashInvincibility: {
-				DisplayName: Dash Invincibility
+				DisplayName: 冲刺无敌
 				Description: 你无敌了！
 			}
 
@@ -8963,7 +8984,7 @@ Mods: {
 			}
 
 			DeepFreeze: {
-				DisplayName: Deep Freeze
+				DisplayName: 渐冻症
 				Description: 如果这个减益结束时你是静止不动的，你会被冻成好吃的冰棍
 			}
 
@@ -10678,7 +10699,7 @@ Mods: {
 				Attacks inflict Karmic Retribution for 10 seconds
 				'''
 			LVBuff100.Description: Able to unleash a Special Attack upon pressing the Weapon Action Key
-
+			
 			SpectrumAbsorption: {
 				DisplayName: Refractive Absorption
 				Description: Absorbing all incoming damage at the cost of constant HP drain
@@ -10765,28 +10786,28 @@ Mods: {
 			}
 
 			BindingLight: {
-				// DisplayName: Binding Light
-				// Description: Frozen light is binding you
+				DisplayName: Binding Light
+				Description: Frozen light is binding you
 			}
 
 			MirageBladeCooldown: {
-				// DisplayName: Mirage Blade Cooldown
-				// Description: ""
+				DisplayName: Mirage Blade Cooldown
+				Description: ""
 			}
 
 			LamentingPocketwatchCooldown: {
-				// DisplayName: Lamenting Pocketwatch Cooldown
-				// Description: ""
+				DisplayName: Lamenting Pocketwatch Cooldown
+				Description: ""
 			}
 
 			Bladeforged: {
-				// DisplayName: Bladeforged
-				// Description: Projected reality is granting increased damage, knockback, critical strike chance, and armor penetration.
+				DisplayName: Bladeforged
+				Description: Projected reality is granting increased damage, knockback, critical strike chance, and armor penetration.
 			}
 
 			UBWFollowUpCooldown: {
-				// DisplayName: U B W Follow Up Cooldown
-				// Description: Mods.StarsAbove.Buffs.UBWFollowUpCooldown.Description
+				DisplayName: U B W Follow Up Cooldown
+				Description: Mods.StarsAbove.Buffs.UBWFollowUpCooldown.Description
 			}
 		}
 
@@ -10817,13 +10838,13 @@ Mods: {
 			}
 
 			Arbitration: {
-				SpawnInfo: SpawnInfo: This foe embodies true fear... Discover this foe through visiting an Anomaly location with the Astrolabe's help.
-				DespawnMessage: 混沌与秩序交织吞噬了你。
+				SpawnInfo: This foe embodies true fear... Discover this foe through visiting an Anomaly location with the Astrolabe's help. Due to this boss being fought within a Subworld under normal conditions, Boss Checklist progress must be manual.
+				DespawnMessage: ...
 			}
 
 			TsukiyomiBoss: {
-				SpawnInfo: The time has finally come. Craft all the Mnemonic Traces together with the Celestriad Root to create the Mnemonic Sigil, and use it to be taken to Tsukiyomi's boss arena.
-				DespawnMessage: ……
+				SpawnInfo: The time has finally come. Craft all the Mnemonic Traces together with the Celestriad Root to create the Mnemonic Sigil, and use it to be taken to Tsukiyomi's boss arena. Due to this boss being fought within a Subworld under normal conditions, Boss Checklist progress must be manual.
+				DespawnMessage: ...
 			}
 
 			Tsukiyomi2: {
