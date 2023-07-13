@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Theofania Inanis");     //The English name of the projectile
+			// DisplayName.SetDefault("Prototokia Aster");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode
 		}

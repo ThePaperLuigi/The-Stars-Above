@@ -915,7 +915,7 @@ namespace StarsAbove
 		{
 
 		};
-		public static readonly SoundStyle SFX_theofaniaActive = new($"{nameof(StarsAbove)}/Sounds/SFX/theofaniaActive")
+		public static readonly SoundStyle SFX_prototokiaActive = new($"{nameof(StarsAbove)}/Sounds/SFX/prototokiaActive")
 		{
 			PitchVariance = 0.1f,
 		};

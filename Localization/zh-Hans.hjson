@@ -2817,7 +2817,7 @@ Mods: {
 					}
 				}
 
-				TheofaniaInanis: {
+				PrototokiaAster: {
 					Unlocked: {
 						Asphodene: 虚无圣刃，通用天体新星。它能施加一种强力减益。
 						Eridani: 虚无圣刃，通用天体新星。它能施加一种强力减益。
@@ -2886,7 +2886,7 @@ Mods: {
 			}
 
 			StellarNovaInfo: {
-				TheofaniaInanis: {
+				PrototokiaAster: {
 					AbilityName: 虚无圣刃
 					AbilitySubName: "[c/C2BDFF:无垠空虚之星空]"
 					AbilityDescription: 召唤一柄巨大的剑刃将敌人劈成两瓣。释放后，你可以在10秒内不消耗能量再释放一次。虚无圣刃命中敌人会造成虚空枯萎减益，在短时间内造成大量伤害。第二次释放的虚无圣刃再次命中会使得虚空枯萎的效果翻倍。该减益持续30秒，若造成暴击，则退还部分消耗的天体新星能量。每次造成50%的天体新星伤害。
@@ -7846,7 +7846,7 @@ Mods: {
 			BossGarden.DisplayName: The Garden of Avalon
 			BossLaevateinn.DisplayName: 魔剑·莱瓦汀
 			BossLaevateinnDamage.DisplayName: 魔剑·莱瓦汀
-			BossTheofania.DisplayName: Theofania Inanis
+			Bossprototokia.DisplayName: Prototokia Aster
 			BrushStroke.DisplayName: Brush Stroke
 			BrushStrokeDamage.DisplayName: Brush Stroke
 			Bubble.DisplayName: Heavy Arrow
@@ -8196,9 +8196,9 @@ Mods: {
 			LaevateinnDamage.DisplayName: 魔剑·莱瓦汀
 			SpaceBurstFX.DisplayName: NovaFX
 			SpaceBurstFX2.DisplayName: NovaFX2
-			Theofania.DisplayName: Theofania Inanis
-			Theofania2.DisplayName: Theofania Inanis
-			Theofania3.DisplayName: Theofania Inanis
+			prototokia.DisplayName: Prototokia Aster
+			prototokia2.DisplayName: Prototokia Aster
+			prototokia3.DisplayName: Prototokia Aster
 			StilettoMarker.DisplayName: 云来短剑
 			StygianSwing1.DisplayName: Stygian Swing
 			StygianSwing2.DisplayName: Stygian Swing
@@ -8597,6 +8597,10 @@ Mods: {
 			SpacePowerBorder.DisplayName: Space Power Border
 			UBWBladeFollowUp.DisplayName: Blade Follow Up
 			// UBWBladeFollowUpDelay.DisplayName: U B W Blade Follow Up Delay
+			// BossTheofania.DisplayName: Boss Theofania
+			// Prototokia.DisplayName: Prototokia
+			// Prototokia2.DisplayName: Prototokia2
+			// Prototokia3.DisplayName: Prototokia3
 		}
 
 		Buffs: {
@@ -9982,14 +9986,14 @@ Mods: {
 				Description: Takonomicon's laser will fail to activate if this debuff is present
 			}
 
-			TheofaniaDualcast: {
-				DisplayName: Theofania Dualcast
-				Description: You are able to cast Theofania Inanis again without cost
+			prototokiaDualcast: {
+				DisplayName: prototokia Dualcast
+				Description: You are able to cast Prototokia Aster again without cost
 			}
 
-			TheofaniaTricast: {
-				DisplayName: Theofania Tricast
-				Description: You are able to cast Theofania Inanis yet again without cost at limited power
+			prototokiaTricast: {
+				DisplayName: prototokia Tricast
+				Description: You are able to cast Prototokia Aster yet again without cost at limited power
 			}
 
 			GuntriggerParry: {
@@ -10806,6 +10810,16 @@ Mods: {
 			UBWFollowUpCooldown: {
 				DisplayName: U B W Follow Up Cooldown
 				Description: Mods.StarsAbove.Buffs.UBWFollowUpCooldown.Description
+			}
+
+			PrototokiaDualcast: {
+				// DisplayName: Prototokia Dualcast
+				// Description: Mods.StarsAbove.Buffs.PrototokiaDualcast.Description
+			}
+
+			PrototokiaTricast: {
+				// DisplayName: Prototokia Tricast
+				// Description: Mods.StarsAbove.Buffs.PrototokiaTricast.Description
 			}
 		}
 

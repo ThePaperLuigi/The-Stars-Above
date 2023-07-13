@@ -53,9 +53,9 @@ namespace StarsAbove.Items
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().WeaponDialogueTimer = 0;
 			
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaGauge = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().trueNovaGaugeMax;
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().theofania == 0)
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().prototokia == 0)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().theofania = 1;
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().prototokia = 1;
 			}
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().laevateinn == 0)
 			{

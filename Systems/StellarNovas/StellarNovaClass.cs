@@ -26,7 +26,7 @@ namespace StarsAbove
             switch (id)
             {
                 case 1:
-                    return LangHelper.GetTextValue("StellarNova.StellarNovaInfo.TheofaniaInanis." + grab);
+                    return LangHelper.GetTextValue("StellarNova.StellarNovaInfo.PrototokiaAster." + grab);
                 case 2:
                     return LangHelper.GetTextValue("StellarNova.StellarNovaInfo.ArsLaevateinn." + grab);
                 case 3:

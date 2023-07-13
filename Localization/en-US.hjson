@@ -1981,7 +1981,7 @@ Mods: {
 							12: That is all for now. I must continue to track the First Starbearer. Good luck- I will have need of you soon.
 							13: I know he's a loner, but.. I wish we could have spoken more. Stay safe, Perseus. I can't help but feel he's hiding something from me, though. Just me?
 							14: Anyways, he was right. I do feel stronger- and my hair's gone all shiny! This power should be an amazing boon going forward.
-							15: Looks like my Stellar Nova is called 'Theofania Inanis.' Perhaps we'll get to use some more once we defeat more powerful foes?
+							15: Looks like my Stellar Nova is called 'Prototokia Aster.' Perhaps we'll get to use some more once we defeat more powerful foes?
 							16: After binding the Stellar Nova Key, you should be able to equip the Stellar Nova through the Spatial Disk, like usual.
 							17: You should have some Prismatic Cores already. With their power, I theorize you can upgrade Stellar Novas with crafting.
 							18: This is important. You need Stellar Nova Energy to cast Novas. You gain Nova energy in combat, and it depletes outside of combat.
@@ -2011,7 +2011,7 @@ Mods: {
 							11: I've already bequeathed the power to her the second you've won our duel.
 							12: That is all for now. I must continue to track the First Starbearer. Good luck- I will have need of you soon.
 							13: Perseus was never one for sticking around. I think he wasn't letting something slip... Anyways, this power is incredible, but I need to get used to it.
-							14: My Stellar Nova is called 'Theofania Inanis.' Perhaps we will be able to utilize more once we become stronger.
+							14: My Stellar Nova is called 'Prototokia Aster.' Perhaps we will be able to utilize more once we become stronger.
 							15: After binding the Stellar Nova Key, you should be able to equip the Stellar Nova through the Spatial Disk, like usual.
 							16: With Prismatic Cores, you can craft upgrades to the Stellar Nova, I believe. You can affix them in the menu directly.
 							17: Don't forget: You need Stellar Nova Energy to cast Stellar Novas. You can only accrue Energy in combat.
@@ -2817,10 +2817,10 @@ Mods: {
 					}
 				}
 
-				TheofaniaInanis: {
+				PrototokiaAster: {
 					Unlocked: {
-						Asphodene: This is Theofania Inanis, a general use Stellar Nova that applies a powerful debuff.
-						Eridani: This is Theofania Inanis: a general Stellar Nova that can apply a powerful debuff.
+						Asphodene: This is Prototokia Aster, a general use Stellar Nova that applies a powerful debuff.
+						Eridani: This is Prototokia Aster: a general Stellar Nova that can apply a powerful debuff.
 					}
 				}
 
@@ -2886,12 +2886,12 @@ Mods: {
 			}
 
 			StellarNovaInfo: {
-				TheofaniaInanis: {
-					AbilityName: Theofania Inanis
+				PrototokiaAster: {
+					AbilityName: Prototokia Aster
 					AbilitySubName: "[c/C2BDFF:Limitless Starry Void]"
-					AbilityDescription: Conjure a colossal blade to cleave foes in twain. After casting, you will be able to re-cast Theofania Inanis for 10 seconds at no additional cost. Striking foes with Theofania Inanis will inflict Void Atrophy, dealing powerful damage over time. The second cast of Theofania Inanis will double the potency of Void Atrophy, if applicable. This debuff lasts for 30 seconds. If the attack crits, refund a portion of consumed Stellar Nova Energy. Each cast does 50% of Stellar Nova damage.
-					AstralBonus: You may re-cast Theofania Inanis again to a total of 3 times, dealing 25% damage. This cast does not inflict Void Atrophy, nor does it strengthen it.
-					UmbralBonus: The second hit of Theofania Inanis does not strengthen Void Atrophy, but increases self damage output by 400% for 5 seconds.
+					AbilityDescription: Conjure a colossal blade to cleave foes in twain. After casting, you will be able to re-cast Prototokia Aster for 10 seconds at no additional cost. Striking foes with Prototokia Aster will inflict Void Atrophy, dealing powerful damage over time. The second cast of Prototokia Aster will double the potency of Void Atrophy, if applicable. This debuff lasts for 30 seconds. If the attack crits, refund a portion of consumed Stellar Nova Energy. Each cast does 50% of Stellar Nova damage.
+					AstralBonus: You may re-cast Prototokia Aster again to a total of 3 times, dealing 25% damage. This cast does not inflict Void Atrophy, nor does it strengthen it.
+					UmbralBonus: The second hit of Prototokia Aster does not strengthen Void Atrophy, but increases self damage output by 400% for 5 seconds.
 				}
 
 				ArsLaevateinn: {
@@ -7874,7 +7874,7 @@ Mods: {
 			BossGarden.DisplayName: The Garden of Avalon
 			BossLaevateinn.DisplayName: Ars Laevateinn
 			BossLaevateinnDamage.DisplayName: Ars Laevateinn
-			BossTheofania.DisplayName: Theofania Inanis
+			Bossprototokia.DisplayName: Prototokia Aster
 			BrushStroke.DisplayName: Brush Stroke
 			BrushStrokeDamage.DisplayName: Brush Stroke
 			Bubble.DisplayName: Heavy Arrow
@@ -8224,9 +8224,9 @@ Mods: {
 			LaevateinnDamage.DisplayName: Ars Laevateinn
 			SpaceBurstFX.DisplayName: NovaFX
 			SpaceBurstFX2.DisplayName: NovaFX2
-			Theofania.DisplayName: Theofania Inanis
-			Theofania2.DisplayName: Theofania Inanis
-			Theofania3.DisplayName: Theofania Inanis
+			prototokia.DisplayName: Prototokia Aster
+			prototokia2.DisplayName: Prototokia Aster
+			prototokia3.DisplayName: Prototokia Aster
 			StilettoMarker.DisplayName: Yunlai Stiletto
 			StygianSwing1.DisplayName: Stygian Swing
 			StygianSwing2.DisplayName: Stygian Swing
@@ -8625,6 +8625,10 @@ Mods: {
 			SpacePowerBorder.DisplayName: Space Power Border
 			UBWBladeFollowUp.DisplayName: U B W Blade Follow Up
 			UBWBladeFollowUpDelay.DisplayName: U B W Blade Follow Up Delay
+			BossTheofania.DisplayName: Boss Theofania
+			Prototokia.DisplayName: Prototokia
+			Prototokia2.DisplayName: Prototokia2
+			Prototokia3.DisplayName: Prototokia3
 		}
 
 		Buffs: {
@@ -10022,14 +10026,14 @@ Mods: {
 				Description: Takonomicon's laser will fail to activate if this debuff is present
 			}
 
-			TheofaniaDualcast: {
-				DisplayName: Theofania Dualcast
-				Description: You are able to cast Theofania Inanis again without cost
+			prototokiaDualcast: {
+				DisplayName: prototokia Dualcast
+				Description: You are able to cast Prototokia Aster again without cost
 			}
 
-			TheofaniaTricast: {
-				DisplayName: Theofania Tricast
-				Description: You are able to cast Theofania Inanis yet again without cost at limited power
+			prototokiaTricast: {
+				DisplayName: prototokia Tricast
+				Description: You are able to cast Prototokia Aster yet again without cost at limited power
 			}
 
 			GuntriggerParry: {
@@ -10842,6 +10846,16 @@ Mods: {
 			UBWFollowUpCooldown: {
 				DisplayName: U B W Follow Up Cooldown
 				Description: Mods.StarsAbove.Buffs.UBWFollowUpCooldown.Description
+			}
+
+			PrototokiaDualcast: {
+				DisplayName: Prototokia Dualcast
+				Description: Mods.StarsAbove.Buffs.PrototokiaDualcast.Description
+			}
+
+			PrototokiaTricast: {
+				DisplayName: Prototokia Tricast
+				Description: Mods.StarsAbove.Buffs.PrototokiaTricast.Description
 			}
 		}
 

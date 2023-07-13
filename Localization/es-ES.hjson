@@ -1982,7 +1982,7 @@ Mods: {
 							13: Eso es todo por ahora. Debo seguir con mis pistas hacia el primer Portador Estelar. Buena suerte- Necesitaré de tu ayuda pronto.
 							14: Ya sé que el es más de estar solo, pero.. Desearía que hubiésemos hablado por más tiempo. Cuídate, Perseo. No puedo evitar pensar que está ocultando algo de mí. ¿Es solo idea mía?
 							15: De todas formas, el está en lo cierto. Sí que me siento fuerte- ¡y mi pelo está brillando! Este poder será muy útil de ahora en adelante.
-							16: Parece que mi Nova Estelar se llama 'Theofania Inanis.' ¿Quizás podremos usar otros más una vez derrotemos enemigos más poderosos?
+							16: Parece que mi Nova Estelar se llama 'Prototokia Aster.' ¿Quizás podremos usar otros más una vez derrotemos enemigos más poderosos?
 							17: Luego de configurar la tecla para la Nova Estelar, deberías ser capaz de equipar la Nova Estelar a través del Disco Espacial, como siempre.
 							18: Ya deberías tener algunos Núcleos Prismáticos. Con su poder, creo que podrás fabricar mejoras para las Novas Estelares.
 							19: Esto es importante. Necesitas energía de Nova estelar para conjurarlas. Ganas energía de Nova Estelar en combate, y disminuye estando fuera de combate.
@@ -2012,7 +2012,7 @@ Mods: {
 							12: Ya le he otorgado este poder en el momento que ganaste nuestro duelo.
 							13: Eso es todo por ahora. Debo seguir con mis pistas hacia el primer Portador Estelar. Buena suerte- Necesitaré de tu ayuda pronto.
 							14: Perseo nunca fue alguien de quedarse quieto por mucho tiempo. Creo que estaba intentando no decir de más... de todas formas, este poder es increíble, pero tengo que acostumbrarme a ello.
-							15: Mi Nova Estelar se llama 'Theofania Inanis.' Quizás seremos capaces de usar otras más una vez seamos más fuertes.
+							15: Mi Nova Estelar se llama 'Prototokia Aster.' Quizás seremos capaces de usar otras más una vez seamos más fuertes.
 							16: Luego de configurar la tecla para Novas Estelares, deberías ser capaz de equipar la Nova Estelar a través del Disco Estelar, como de costumbre.
 							17: Con los Núcleos Prismáticos, asumo que puedes fabricar mejoras para la Nova Estelar. Puedes fijarlas en el menú directamente.
 							18: No te olvides: Necesitas Energía de Nova Estelar para conjurar Novas Estelares. Solo puedes obtener energía en combate.
@@ -2817,10 +2817,10 @@ Mods: {
 					}
 				}
 
-				TheofaniaInanis: {
+				PrototokiaAster: {
 					Unlocked: {
-						Asphodene: Esta es Theofania Inanis, una Nova Estelar de uso general que aplica un efecto negativo.
-						Eridani: Esta es Theofania Inanis:  una Nova Estelar de uso general que aplica un poderoso efecto negativo.
+						Asphodene: Esta es Prototokia Aster, una Nova Estelar de uso general que aplica un efecto negativo.
+						Eridani: Esta es Prototokia Aster:  una Nova Estelar de uso general que aplica un poderoso efecto negativo.
 					}
 				}
 
@@ -2886,12 +2886,12 @@ Mods: {
 			}
 
 			StellarNovaInfo: {
-				TheofaniaInanis: {
-					// AbilityName: Theofania Inanis
+				PrototokiaAster: {
+					// AbilityName: Prototokia Aster
 					AbilitySubName: "[c/C2BDFF:Vacío Estrellado sin Límites]"
-					AbilityDescription: Invoca una espada colosal para cortar en dos a tus enemigos. Despues de usar, podrás reutilizar Theofania Inanis por 10 segundos sin costo adicional. Golpear enemigos con Theofania Inanis inflingirá Vacío Atrófico, un poderoso daño sobre el tiempo. El segundo lanzamiento de Theofania Inanis Doblará la potencia de Vacío Atrófico, si es applicable. Este efecto dura 30 segundos. Si el ataque realiza crítico, devuelve una porción de la Energía de Nova Estelar consumida. Cada lanzamiento realiza un 50% del daño de la Nova Estelar.
-					AstralBonus: Puedes lanzar Theofania Inanis otra vez para un total de 3 veces, realizando 25% del daño. Este lanzamiento no inflige Vacío Atrófico, y tampoco lo potencia.
-					UmbralBonus: El segundo golpe de Theofania Inanis no no potencia Vacío Atrófico, pero incrementa el daño realizado por uno en un 400% por 5 segundos.
+					AbilityDescription: Invoca una espada colosal para cortar en dos a tus enemigos. Despues de usar, podrás reutilizar Prototokia Aster por 10 segundos sin costo adicional. Golpear enemigos con Prototokia Aster inflingirá Vacío Atrófico, un poderoso daño sobre el tiempo. El segundo lanzamiento de Prototokia Aster Doblará la potencia de Vacío Atrófico, si es applicable. Este efecto dura 30 segundos. Si el ataque realiza crítico, devuelve una porción de la Energía de Nova Estelar consumida. Cada lanzamiento realiza un 50% del daño de la Nova Estelar.
+					AstralBonus: Puedes lanzar Prototokia Aster otra vez para un total de 3 veces, realizando 25% del daño. Este lanzamiento no inflige Vacío Atrófico, y tampoco lo potencia.
+					UmbralBonus: El segundo golpe de Prototokia Aster no no potencia Vacío Atrófico, pero incrementa el daño realizado por uno en un 400% por 5 segundos.
 				}
 
 				ArsLaevateinn: {
@@ -7784,7 +7784,7 @@ Mods: {
 			BossGarden.DisplayName: El Jardín de Avalon
 			// BossLaevateinn.DisplayName: Ars Laevateinn
 			// BossLaevateinnDamage.DisplayName: Ars Laevateinn
-			// BossTheofania.DisplayName: Theofania Inanis
+			// Bossprototokia.DisplayName: Prototokia Aster
 			BrushStroke.DisplayName: Trazo de Brocha
 			BrushStrokeDamage.DisplayName: Trazo de Brocha
 			Bubble.DisplayName: Flecha Pesada
@@ -8134,9 +8134,9 @@ Mods: {
 			// LaevateinnDamage.DisplayName: Ars Laevateinn
 			// SpaceBurstFX.DisplayName: NovaFX
 			// SpaceBurstFX2.DisplayName: NovaFX2
-			// Theofania.DisplayName: Theofania Inanis
-			// Theofania2.DisplayName: Theofania Inanis
-			// Theofania3.DisplayName: Theofania Inanis
+			// prototokia.DisplayName: Prototokia Aster
+			// prototokia2.DisplayName: Prototokia Aster
+			// prototokia3.DisplayName: Prototokia Aster
 			StilettoMarker.DisplayName: Estileto Yunlai
 			StygianSwing1.DisplayName: Golpe Estigio
 			StygianSwing2.DisplayName: Golpe Estigio
@@ -8535,6 +8535,10 @@ Mods: {
 			// SpacePowerBorder.DisplayName: Space Power Border
 			// UBWBladeFollowUp.DisplayName: U B W Blade Follow Up
 			// UBWBladeFollowUpDelay.DisplayName: U B W Blade Follow Up Delay
+			// BossTheofania.DisplayName: Boss Theofania
+			// Prototokia.DisplayName: Prototokia
+			// Prototokia2.DisplayName: Prototokia2
+			// Prototokia3.DisplayName: Prototokia3
 		}
 
 		Buffs: {
@@ -9915,14 +9919,14 @@ Mods: {
 				Description: El Láser Takonomicón no se activará si este efecto está presente
 			}
 
-			TheofaniaDualcast: {
-				DisplayName: Doble lanzamiento de Theofania
-				Description: Puedes convocar Theofania Inanis de nuevo sin costo
+			prototokiaDualcast: {
+				DisplayName: Doble lanzamiento de prototokia
+				Description: Puedes convocar Prototokia Aster de nuevo sin costo
 			}
 
-			TheofaniaTricast: {
-				DisplayName: Triple Lanzamiento de Theofania
-				Description: Puedes convocar Theofania Inanis de nuevo sin costo pero con daño reducido
+			prototokiaTricast: {
+				DisplayName: Triple Lanzamiento de prototokia
+				Description: Puedes convocar Prototokia Aster de nuevo sin costo pero con daño reducido
 			}
 
 			GuntriggerParry: {
@@ -10739,6 +10743,16 @@ Mods: {
 			UBWFollowUpCooldown: {
 				// DisplayName: U B W Follow Up Cooldown
 				// Description: Mods.StarsAbove.Buffs.UBWFollowUpCooldown.Description
+			}
+
+			PrototokiaDualcast: {
+				// DisplayName: Prototokia Dualcast
+				// Description: Mods.StarsAbove.Buffs.PrototokiaDualcast.Description
+			}
+
+			PrototokiaTricast: {
+				// DisplayName: Prototokia Tricast
+				// Description: Mods.StarsAbove.Buffs.PrototokiaTricast.Description
 			}
 		}
 

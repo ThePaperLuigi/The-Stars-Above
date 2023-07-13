@@ -598,7 +598,7 @@ namespace StarsAbove
         /// </summary>
         //Stellar Nova Code
 
-        public int chosenStellarNova = 0;//0: No Nova chosen. 1: Theofania Inanis 2: Ars Laevateinn
+        public int chosenStellarNova = 0;//0: No Nova chosen. 1: Prototokia Aster 2: Ars Laevateinn
 
         public int novaGauge;
         public int novaGaugeMax = 100;//This is affected by the chosen Nova
@@ -659,7 +659,7 @@ namespace StarsAbove
 
         public bool apocryphicPrism;
 
-        public int theofania; //0 = LOCKED, 1 = UNLOCKED, 2 = SELECTED
+        public int prototokia; //0 = LOCKED, 1 = UNLOCKED, 2 = SELECTED
         public int laevateinn; //0 = LOCKED, 1 = UNLOCKED, 2 = SELECTED
         public int kiwamiryuken; //0 = LOCKED, 1 = UNLOCKED, 2 = SELECTED 2 does not matter really
         public int gardenofavalon; //0 = LOCKED, 1 = UNLOCKED, 2 = SELECTED 2 does not matter really
@@ -1105,7 +1105,7 @@ namespace StarsAbove
             tag["unbridledRadianceStack"] = unbridledRadianceStack;
 
             tag["novaGaugeUnlocked"] = novaGaugeUnlocked;
-            tag["theofania"] = theofania;
+            tag["prototokia"] = prototokia;
             tag["laevateinn"] = laevateinn;
             tag["kiwamiryuken"] = kiwamiryuken;
             tag["gardenofavalon"] = gardenofavalon;
@@ -1448,7 +1448,7 @@ namespace StarsAbove
 
             novaGaugeUnlocked = tag.GetBool("novaGaugeUnlocked");
             chosenStellarNova = tag.GetInt("chosenStellarNova");
-            theofania = tag.GetInt("theofania");
+            prototokia = tag.GetInt("prototokia");
             laevateinn = tag.GetInt("laevateinn");
             kiwamiryuken = tag.GetInt("kiwamiryuken");
             gardenofavalon = tag.GetInt("gardenofavalon");
@@ -1876,14 +1876,14 @@ namespace StarsAbove
             }
 
             
-            if (proj.type == ProjectileType<Theofania>())
+            if (proj.type == ProjectileType<Prototokia>())
             {
-                TheofaniaOnHit(target);
+                prototokiaOnHit(target);
                 target.AddBuff(BuffType<Buffs.VoidAtrophy1>(), 1800);
                 OnEnemyHitWithNova(target, 1, ref damageDone, ref hit.Crit);
             }
 
-            if (proj.type == ProjectileType<Theofania2>())
+            if (proj.type == ProjectileType<Prototokia2>())
             {
                 if (target.HasBuff(BuffType<Buffs.VoidAtrophy1>()))
                 {
@@ -1897,12 +1897,12 @@ namespace StarsAbove
                     }
 
                 }
-                TheofaniaOnHit(target);
+                prototokiaOnHit(target);
                 OnEnemyHitWithNova(target, 1, ref damageDone, ref hit.Crit);
             }
-            if (proj.type == ProjectileType<Theofania3>())
+            if (proj.type == ProjectileType<Prototokia3>())
             {
-                TheofaniaOnHit(target);
+                prototokiaOnHit(target);
                 OnEnemyHitWithNova(target, 1, ref damageDone, ref hit.Crit);
             }
             if (proj.type == ProjectileType<LaevateinnDamage>())
@@ -2104,7 +2104,7 @@ namespace StarsAbove
                 }
 
             }
-            if (proj.type == ProjectileType<Theofania>())
+            if (proj.type == ProjectileType<Prototokia>())
             {
                 modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
 
@@ -2133,7 +2133,7 @@ namespace StarsAbove
 
             }
 
-            if (proj.type == ProjectileType<Theofania2>())
+            if (proj.type == ProjectileType<Prototokia2>())
             {
                 modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
 
@@ -2162,7 +2162,7 @@ namespace StarsAbove
 
 
             }
-            if (proj.type == ProjectileType<Theofania3>())
+            if (proj.type == ProjectileType<Prototokia3>())
             {
                 modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
 
@@ -2358,7 +2358,7 @@ namespace StarsAbove
             }
         }
 
-        private void TheofaniaOnHit(NPC target)
+        private void prototokiaOnHit(NPC target)
         {
             for (int d = 0; d < 30; d++)
             {
@@ -4008,9 +4008,9 @@ namespace StarsAbove
                 {
 
                     novaGaugeUnlocked = true;
-                    if (theofania == 0)
+                    if (prototokia == 0)
                     {
-                        theofania = 1;
+                        prototokia = 1;
                     }
                 }
                 /*if(novaGaugeUnlocked && Main.hardMode)
@@ -6727,14 +6727,14 @@ namespace StarsAbove
                 }
 
                 EdinGenesisQuasar();
-                if (chosenStellarNova == 1 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && Main.LocalPlayer.HasBuff(BuffType<Buffs.TheofaniaTricast>()))//Theofania Tricast
+                if (chosenStellarNova == 1 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && Main.LocalPlayer.HasBuff(BuffType<Buffs.PrototokiaTricast>()))//prototokia Tricast
                 {
 
                     if (Player.whoAmI == Main.myPlayer)
                     {
                         //
                         for (int i = 0; i < Player.CountBuffs(); i++)
-                            if (Player.buffType[i] == BuffType<Buffs.TheofaniaTricast>())
+                            if (Player.buffType[i] == BuffType<Buffs.PrototokiaTricast>())
                             {
                                 Player.DelBuff(i);
 
@@ -6748,22 +6748,22 @@ namespace StarsAbove
                         {
                             Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
                         }
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, Player.Center);
+                        SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, Player.Center);
 
-                        Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, Mod.Find<ModProjectile>("Theofania3").Type, novaDamage, 4, Player.whoAmI, 0, 1);                                                                                                                                                             //Vector2 mousePosition = Main.MouseWorld;
-                                                                                                                                                                                                                                                                                                                                                                 //Projectile.NewProjectile(null,new Vector2(player.Center.X - 100, player.Center.Y), Vector2.Zero, mod.ProjectileType("Theofania2"), novaDamage + novaDamageMod, 4, player.whoAmI, 0, 1);                                                                                                                                                                                                                                                                                                                                             //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
+                        Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<Prototokia3>(), novaDamage, 4, Player.whoAmI, 0, 1);                                                                                                                                                             //Vector2 mousePosition = Main.MouseWorld;
+                                                                                                                                                                                                                                                                                                                                                                 //Projectile.NewProjectile(null,new Vector2(player.Center.X - 100, player.Center.Y), Vector2.Zero, mod.ProjectileType("prototokia2"), novaDamage + novaDamageMod, 4, player.whoAmI, 0, 1);                                                                                                                                                                                                                                                                                                                                             //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
                                                                                                                                                                                                                                                                                                                                                                  //Projectile.NewProjectile(null,player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
 
                     }
                 }
                 //dualCast
-                if (chosenStellarNova == 1 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && Main.LocalPlayer.HasBuff(BuffType<Buffs.TheofaniaDualcast>()))//Theofania Dualcast
+                if (chosenStellarNova == 1 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && Main.LocalPlayer.HasBuff(BuffType<Buffs.PrototokiaDualcast>()))//prototokia Dualcast
                 {
                     if (Player.whoAmI == Main.myPlayer)
                     {
                         //
                         for (int i = 0; i < Player.CountBuffs(); i++)
-                            if (Player.buffType[i] == BuffType<Buffs.TheofaniaDualcast>())
+                            if (Player.buffType[i] == BuffType<Buffs.PrototokiaDualcast>())
                             {
                                 Player.DelBuff(i);
 
@@ -6777,13 +6777,13 @@ namespace StarsAbove
                         {
                             Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
                         }
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, Player.Center);
+                        SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, Player.Center);
 
-                        Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, Mod.Find<ModProjectile>("Theofania2").Type, novaDamage, 4, Player.whoAmI, 0, 1);                                                                                                                                                             //Vector2 mousePosition = Main.MouseWorld;
-                                                                                                                                                                                                                                                                                                                                                                 //Projectile.NewProjectile(null,new Vector2(player.Center.X - 100, player.Center.Y), Vector2.Zero, mod.ProjectileType("Theofania2"), novaDamage + novaDamageMod, 4, player.whoAmI, 0, 1);                                                                                                                                                                                                                                                                                                                                             //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
+                        Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<Prototokia2>(), novaDamage, 4, Player.whoAmI, 0, 1);                                                                                                                                                             //Vector2 mousePosition = Main.MouseWorld;
+                                                                                                                                                                                                                                                                                                                                                                 //Projectile.NewProjectile(null,new Vector2(player.Center.X - 100, player.Center.Y), Vector2.Zero, mod.ProjectileType("prototokia2"), novaDamage + novaDamageMod, 4, player.whoAmI, 0, 1);                                                                                                                                                                                                                                                                                                                                             //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
                         if (chosenStarfarer == 1)
                         {
-                            Player.AddBuff(BuffType<Buffs.TheofaniaTricast>(), 600);
+                            Player.AddBuff(BuffType<Buffs.PrototokiaTricast>(), 600);
 
                         }
 
@@ -6825,7 +6825,7 @@ namespace StarsAbove
                     }
                 }
                 else
-                //This is the Stellar Nova code (barring unique ones like theofania dualcast or kiwami ryuken
+                //This is the Stellar Nova code (barring unique ones like prototokia dualcast or kiwami ryuken
                 if (novaGauge == trueNovaGaugeMax && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && chosenStellarNova != 0)
                 {
                     StellarNovaCutIn();
@@ -6835,10 +6835,10 @@ namespace StarsAbove
                     if (Player.whoAmI == Main.myPlayer)
                     {
                         //Activate the Stellar Novas here.
-                        if (chosenStellarNova == 1)//Theofania Inanis
+                        if (chosenStellarNova == 1)//Prototokia Aster
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, Player.Center);
-                            Player.AddBuff(BuffType<Buffs.TheofaniaDualcast>(), 600);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, Player.Center);
+                            Player.AddBuff(BuffType<Buffs.PrototokiaDualcast>(), 600);
                             for (int d = 0; d < 105; d++)
                             {
                                 Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
@@ -6848,7 +6848,7 @@ namespace StarsAbove
                                 Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
                             }
 
-                            Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, Mod.Find<ModProjectile>("Theofania").Type, novaDamage, 4, Player.whoAmI, 0, 1);//The 1 here means that ai1 will be set to 1. this is good for the first cast.
+                            Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<Prototokia>(), novaDamage, 4, Player.whoAmI, 0, 1);//The 1 here means that ai1 will be set to 1. this is good for the first cast.
                                                                                                                                                                                                        //Vector2 mousePosition = Main.MouseWorld;
                                                                                                                                                                                                        //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
                                                                                                                                                                                                        //Projectile.NewProjectile(null,player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
@@ -6856,7 +6856,7 @@ namespace StarsAbove
                         }
                         if (chosenStellarNova == 2)//Ars Laevateinn
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, Player.Center);
                             for (int d = 0; d < 105; d++)
                             {
                                 Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
@@ -6873,7 +6873,7 @@ namespace StarsAbove
                         }
                         if (chosenStellarNova == 4)//The Garden of Avalon
                         {
-                            //Main.PlaySound(SoundLoader.customSoundType, (int)player.Center.X, (int)player.Center.Y, mod.GetSoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Custom/theofaniaActive"));
+                            //Main.PlaySound(SoundLoader.customSoundType, (int)player.Center.X, (int)player.Center.Y, mod.GetSoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Custom/prototokiaActive"));
                             for (int d = 0; d < 105; d++)
                             {
                                 Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
@@ -7244,7 +7244,7 @@ namespace StarsAbove
                         Player.AddBuff(BuffType<Buffs.Invincibility>(), 60);
                     }
                     //Vector2 mousePosition = Main.MouseWorld;
-                    //Projectile.NewProjectile(null,new Vector2(player.Center.X - 100, player.Center.Y), Vector2.Zero, mod.ProjectileType("Theofania2"), novaDamage + novaDamageMod, 4, player.whoAmI, 0, 1);                                                                                                                                                                                                                                                                                                                                             //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
+                    //Projectile.NewProjectile(null,new Vector2(player.Center.X - 100, player.Center.Y), Vector2.Zero, mod.ProjectileType("prototokia2"), novaDamage + novaDamageMod, 4, player.whoAmI, 0, 1);                                                                                                                                                                                                                                                                                                                                             //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
                     //Projectile.NewProjectile(null,player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
 
                 }

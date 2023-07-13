@@ -110,10 +110,10 @@ namespace StarsAbove
 		[Label("$Mods.StarsAbove.Config.EnablePlayerWorldLock.Label")]
 		[Tooltip("$Mods.StarsAbove.Config.EnablePlayerWorldLock.Tooltip")]
 		public bool EnablePlayerWorldLock;
-
+		/*
 		[Label("$Mods.StarsAbove.Config.EnableAprilFools.Label")]
 		[Tooltip("$Mods.StarsAbove.Config.EnableAprilFools.Tooltip")]
-		public bool EnableAprilFools;
+		public bool EnableAprilFools;*/
 
 		[Label("$Mods.StarsAbove.Config.DisableWeaponCutIn.Label")]
 		[Tooltip("$Mods.StarsAbove.Config.DisableWeaponCutIn.Tooltip")]
@@ -126,8 +126,8 @@ namespace StarsAbove
 		{
 			// Here we use the OnChanged hook to initialize ExampleUI.visible with the new values.
 			// We maintain both ExampleUI.visible and ShowCoinUI as separate values so ShowCoinUI can act as a default while ExampleUI.visible can change within a play session.
-			UI.StarfarerMenu.StarfarerMenu.ShadesVisible = EnableAprilFools;
-			UI.StellarNova.StellarNovaCutIn.ShadesVisible = EnableAprilFools;
+			//UI.StarfarerMenu.StarfarerMenu.ShadesVisible = EnableAprilFools;
+			//UI.StellarNova.StellarNovaCutIn.ShadesVisible = EnableAprilFools;
 			UI.EmotionGauge.AnimationDisabled = DisableWeaponCutIns;
 
 			UI.Starfarers.StarfarerPrompt.PromptPos = PromptLoc;

@@ -284,14 +284,14 @@ namespace StarsAbove.UI.StarfarerMenu
 			reset.OnMouseOver += ResetHover;
 			reset.OnMouseOut += HoverOff;
 
-			theofania = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/theofania"));
-			theofania.OnClick += theofaniaSelected;
-			theofania.Width.Set(98, 0f);
-			theofania.Height.Set(52, 0f);
-			theofania.Left.Set(864, 0f);
-			theofania.Top.Set(266, 0f);
-			theofania.OnMouseOver += TheofaniaHover;
-			theofania.OnMouseOut += HoverOff;*/
+			Theofania = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Theofania"));
+			Theofania.OnClick += TheofaniaSelected;
+			Theofania.Width.Set(98, 0f);
+			Theofania.Height.Set(52, 0f);
+			Theofania.Left.Set(864, 0f);
+			Theofania.Top.Set(266, 0f);
+			Theofania.OnMouseOver += TheofaniaHover;
+			Theofania.OnMouseOut += HoverOff;*/
 
 
 			/*Asphodene = new UIImage(Request<Texture2D>("StarsAbove/UI/Starfarers/Eridani"));
@@ -328,7 +328,7 @@ namespace StarsAbove.UI.StarfarerMenu
 
 			//area.Append(bg2);
 			//area.Append(bg);
-			//area.Append(theofania);
+			//area.Append(Theofania);
 			//area.Append(laevateinn);
 			//area.Append(kiwamiryuken);
 			//area.Append(gardenofavalon);

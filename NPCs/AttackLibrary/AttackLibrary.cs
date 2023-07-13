@@ -898,7 +898,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				return;
 			}
 		}
-		public static void TheofaniaInanis(Player target, NPC npc)//
+		public static void PrototokiaAster(Player target, NPC npc)//
 		{
 			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
@@ -913,14 +913,14 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 				//Boss dialogue
 				 
-				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Theofania")}", false, false);
+				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.prototokia")}", false, false);
 
 				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
 				Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
 
 				SoundEngine.PlaySound(SoundID.DD2_EtherianPortalOpen, npc.Center);
 
-				modPlayer.NextAttack = "Theofania Inanis";//The name of the attack.
+				modPlayer.NextAttack = "Demi-Prototokia";//The name of the attack.
 				npc.ai[3] = 80;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -954,7 +954,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 						Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Green, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
 					}
 					//Play a sound effect.
-					SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, npc.Center);
+					SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
 
 					int type = ProjectileType<BossTheofania>();
 					int damage = npc.damage/2 + 120/2;
@@ -1417,7 +1417,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				{
 					if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CombatText.Nalhaun.ManifestBlade"), 241, 255, 180); }
 
-					SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, npc.Center);
+					SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
 					npc.AddBuff(BuffType<NalhaunSword>(), 7200);
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.position.X, npc.position.Y, 0, 0, ModContent.ProjectileType<NalhaunSwordSprite>(), 0, 0, Main.myPlayer);
 				}
@@ -2560,7 +2560,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, npc.Center);
+					SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
 					SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_EscapeIsNotSoEasilyGranted, npc.Center);
 
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<NalhaunCastSprite>(), 0, 0, Main.myPlayer, 230);
@@ -2636,7 +2636,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, npc.Center);
+					SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
 					SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_EscapeIsNotSoEasilyGranted, npc.Center);
 
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<NalhaunCastSprite>(), 0, 0, Main.myPlayer, 230);
@@ -2712,7 +2712,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, npc.Center);
+					SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
 					//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_EscapeIsNotSoEasilyGranted, npc.Center);
 
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<NalhaunCastSprite>(), 0, 0, Main.myPlayer, 120);
@@ -2787,7 +2787,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, npc.Center);
+					SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
 					SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_EscapeIsNotSoEasilyGranted, npc.Center);
 
 					//10 less
@@ -2866,7 +2866,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, npc.Center);
+					SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
 					SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_EscapeIsNotSoEasilyGranted, npc.Center);
 
 					//10 less
@@ -2945,7 +2945,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, npc.Center);
+					SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
 					//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_EscapeIsNotSoEasilyGranted, npc.Center);
 
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<NalhaunCastSprite>(), 0, 0, Main.myPlayer, 120);
@@ -3022,7 +3022,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					//SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, npc.Center);
+					//SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
 					SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_PityDisplay, npc.Center);
 
 					//10 less
@@ -3121,7 +3121,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					//SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, npc.Center);
+					//SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
 					SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_PityDisplay, npc.Center);
 
 					//10 less
@@ -3220,7 +3220,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					//SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, npc.Center);
+					//SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
 					SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_PityDisplay, npc.Center);
 
 					//10 less
@@ -3320,7 +3320,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					//SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, npc.Center);
+					//SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
 					SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_PityDisplay, npc.Center);
 
 					//10 less
@@ -3420,7 +3420,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					//SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, npc.Center);
+					//SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
 
 					//10 less
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<NalhaunCastSprite>(), 0, 0, Main.myPlayer, 120);
@@ -3519,7 +3519,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					//SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, npc.Center);
+					//SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
 
 					//10 less
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<NalhaunCastSprite>(), 0, 0, Main.myPlayer, 120);
@@ -3994,7 +3994,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
 				SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_AndNowTheScalesWillTip, npc.Center);
-				SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, npc.Center);
+				SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					
@@ -9166,7 +9166,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
 				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_BegoneSpawnOfShadow, npc.Center);
-				SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, npc.Center);
+				SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -9284,7 +9284,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
 				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_BegoneSpawnOfShadow, npc.Center);
-				SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, npc.Center);
+				SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -9479,7 +9479,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, npc.Center);
+				SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
 				Main.NewText(LangHelper.GetTextValue($"CombatText.WarriorOfLight.UseImbue"), 241, 255, 180);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -11744,7 +11744,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				{
 					SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_TheBitterEnd, npc.Center);
 
-					SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, target.Center);
+					SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, target.Center);
 					for (int d = 0; d < 30; d++)
 					{
 						Dust.NewDust(target.Center, 0, 0, DustID.FireworkFountain_Red, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);

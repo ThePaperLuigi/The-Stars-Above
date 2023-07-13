@@ -2786,7 +2786,7 @@
 							Eridani: 如果你想的话，我们可以重置你所选的天体新星。
             }
           }
-          TheofaniaInanis:
+          PrototokiaAster:
           {
             Unlocked:
             {
@@ -2849,7 +2849,7 @@
         }
         StellarNovaInfo:
         {
-          TheofaniaInanis:
+          PrototokiaAster:
           {
             AbilityName: 虚无圣刃
             AbilitySubName: "[c/C2BDFF:无垠空虚之星空]"
@@ -5668,7 +5668,7 @@
         BossGarden: The Garden of Avalon
         BossLaevateinn: 魔剑·莱瓦汀
         BossLaevateinnDamage: 魔剑·莱瓦汀
-        BossTheofania: Theofania Inanis
+        Bossprototokia: Prototokia Aster
         BrushStroke: Brush Stroke
         BrushStrokeDamage: Brush Stroke
         Bubble: Heavy Arrow
@@ -6017,9 +6017,9 @@
         LaevateinnDamage: 魔剑·莱瓦汀
         SpaceBurstFX: NovaFX
         SpaceBurstFX2: NovaFX2
-        Theofania: Theofania Inanis
-        Theofania2: Theofania Inanis
-        Theofania3: Theofania Inanis
+        prototokia: Prototokia Aster
+        prototokia2: Prototokia Aster
+        prototokia3: Prototokia Aster
         StilettoMarker: 云来短剑
         StygianSwing1: Stygian Swing
         StygianSwing2: Stygian Swing
@@ -6393,8 +6393,8 @@
         TakodachiBuff: Void Octopi
         TakodachiLaserBuff: Takonomicon Annihilation Beam
         TakodachiLaserBuffCooldown: Takonomicon Laser Cooldown
-        TheofaniaDualcast: Theofania Dualcast
-        TheofaniaTricast: Theofania Tricast
+        prototokiaDualcast: prototokia Dualcast
+        prototokiaTricast: prototokia Tricast
         GuntriggerParry: Guntrigger Parry
         GuntriggerParryCooldown: Guntrigger Parry Cooldown
         ImpactRecoil: Impact Recoil
@@ -6754,8 +6754,8 @@
         TakodachiBuff: The void octopi surround you
         TakodachiLaserBuff: ""
         TakodachiLaserBuffCooldown: Takonomicon's laser will fail to activate if this debuff is present
-        TheofaniaDualcast: You are able to cast Theofania Inanis again without cost
-        TheofaniaTricast: You are able to cast Theofania Inanis yet again without cost at limited power
+        prototokiaDualcast: You are able to cast Prototokia Aster again without cost
+        prototokiaTricast: You are able to cast Prototokia Aster yet again without cost at limited power
         GuntriggerParry: ""
         GuntriggerParryCooldown: Guntrigger Parry will fail to activate if this debuff is present
         ImpactRecoil: Guntrigger Execution has halved damage

@@ -247,7 +247,7 @@ namespace StarsAbove.NPCs.Vagrant
 				}
 				if (AI_RotationNumber == 5)
 				{
-					TheofaniaInanis(P, NPC);
+					PrototokiaAster(P, NPC);
 					return;
 				}
 				if (AI_RotationNumber == 6)

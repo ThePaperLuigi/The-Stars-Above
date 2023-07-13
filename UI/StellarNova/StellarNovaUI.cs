@@ -35,7 +35,7 @@ namespace StarsAbove.UI.StellarNova
 
 		private UIText description;
 
-		private UIImageButton theofania;
+		private UIImageButton prototokia;
 		private UIImageButton laevateinn;
 		private UIImageButton kiwamiryuken;
 		private UIImageButton gardenofavalon;
@@ -118,14 +118,14 @@ namespace StarsAbove.UI.StellarNova
 			reset.OnMouseOver += ResetHover;
 			reset.OnMouseOut += HoverOff;
 
-			theofania = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StellarNova/theofania"));
-			theofania.OnLeftClick += theofaniaSelected;
-			theofania.Width.Set(98, 0f);
-			theofania.Height.Set(52, 0f);
-			theofania.Left.Set(864, 0f);
-			theofania.Top.Set(266, 0f);
-			theofania.OnMouseOver += TheofaniaHover;
-			theofania.OnMouseOut += HoverOff;
+			prototokia = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StellarNova/prototokia"));
+			prototokia.OnLeftClick += prototokiaSelected;
+			prototokia.Width.Set(98, 0f);
+			prototokia.Height.Set(52, 0f);
+			prototokia.Left.Set(864, 0f);
+			prototokia.Top.Set(266, 0f);
+			prototokia.OnMouseOver += prototokiaHover;
+			prototokia.OnMouseOut += HoverOff;
 
 			laevateinn = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StellarNova/laevateinn"));
 			laevateinn.OnLeftClick += laevateinnSelected;
@@ -295,7 +295,7 @@ namespace StarsAbove.UI.StellarNova
 			area.Append(barFrame);
 			barFrame.Append(description);
 
-			area.Append(theofania);
+			area.Append(prototokia);
 
 
 			area.Append(abilitySubName);
@@ -432,7 +432,7 @@ namespace StarsAbove.UI.StellarNova
 
 			// We can do stuff in here!
 		}
-		private void theofaniaSelected(UIMouseEvent evt, UIElement listeningElement)
+		private void prototokiaSelected(UIMouseEvent evt, UIElement listeningElement)
 		{
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaUIActive)
 				return;
@@ -443,7 +443,7 @@ namespace StarsAbove.UI.StellarNova
 			//Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().animatedDescription = "";
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaDialogueScrollNumber = 0;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaDialogueScrollTimer = 0;
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().theofania == 1)
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().prototokia == 1)
 			{
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStellarNova = 1;
 			}
@@ -698,34 +698,34 @@ namespace StarsAbove.UI.StellarNova
 
 			// We can do stuff in here!
 		}
-		private void TheofaniaHover(UIMouseEvent evt, UIElement listeningElement)
+		private void prototokiaHover(UIMouseEvent evt, UIElement listeningElement)
 		{
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaUIActive)
 				return;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
 			{
-				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().theofania != 0)
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().prototokia != 0)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.TheofaniaInanis.Unlocked.Asphodene", Main.LocalPlayer);
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.PrototokiaAster.Unlocked.Asphodene", Main.LocalPlayer);
 
 				}
 				else
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.TheofaniaInanis.Locked.Asphodene", Main.LocalPlayer);
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.PrototokiaAster.Locked.Asphodene", Main.LocalPlayer);
 
 				}
 
 			}
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 			{
-				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().theofania != 0)
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().prototokia != 0)
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.TheofaniaInanis.Unlocked.Eridani", Main.LocalPlayer);
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.PrototokiaAster.Unlocked.Eridani", Main.LocalPlayer);
 
 				}
 				else
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.TheofaniaInanis.Locked.Eridani", Main.LocalPlayer);
+					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.PrototokiaAster.Locked.Eridani", Main.LocalPlayer);
 
 				}
 
@@ -946,7 +946,7 @@ namespace StarsAbove.UI.StellarNova
 			dialogue.Y -= modPlayer.descriptionY;
 			description.Top.Set(35 - modPlayer.descriptionY, 0f);
 
-			Rectangle theofaniaArea = theofania.GetInnerDimensions().ToRectangle();
+			Rectangle prototokiaArea = prototokia.GetInnerDimensions().ToRectangle();
 			Rectangle laevateinnArea = laevateinn.GetInnerDimensions().ToRectangle();
 			Rectangle kiwamiryukenArea = kiwamiryuken.GetInnerDimensions().ToRectangle();
 			Rectangle gardenofavalonArea = gardenofavalon.GetInnerDimensions().ToRectangle();
@@ -1017,8 +1017,8 @@ namespace StarsAbove.UI.StellarNova
 			switch (modPlayer.chosenStellarNova)
 			{
 				case 1:
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/theofania"), theofaniaArea, Color.White * (modPlayer.novaUIOpacity));
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/theofaniaIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/prototokia"), prototokiaArea, Color.White * (modPlayer.novaUIOpacity));
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/prototokiaIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
 					break;
 				case 2:
 					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/laevateinn"), laevateinnArea, Color.White * (modPlayer.novaUIOpacity));
@@ -1114,17 +1114,17 @@ namespace StarsAbove.UI.StellarNova
 
 
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
-			//Theofania is unlocked at base, so there's always 1 available Nova
+			//prototokia is unlocked at base, so there's always 1 available Nova
 			availableNovas = 0;
 			topStatic = 266;
 			int topAdjustment = 20;
 			int multiplierAdjustment = 70;
-			if (modPlayer.theofania > 0)
+			if (modPlayer.prototokia > 0)
 			{
 				topStatic -= topAdjustment;
 
 				area.Append(laevateinn);
-				theofania.Top.Set(topStatic + (availableNovas * multiplierAdjustment), 0f);
+				prototokia.Top.Set(topStatic + (availableNovas * multiplierAdjustment), 0f);
 				availableNovas++;
 			}
 			if (modPlayer.laevateinn > 0)

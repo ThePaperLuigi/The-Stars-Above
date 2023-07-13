@@ -2797,12 +2797,12 @@ namespace StarsAbove.NPCs
                             castTimeMax = 50;
                             isCasting = true;
                         }
-                        if (nextCast == "Theofania Inanis")
+                        if (nextCast == "Prototokia Aster")
                         {
                             castAnimation = 70;
                             // Main.PlaySound(SoundLoader.customSoundType, (int)npc.Center.X, (int)npc.Center.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/EvenTheStrongestShields"));
                             castDelay = 0;
-                            nextAttack = "Theofania Inanis";
+                            nextAttack = "Prototokia Aster";
                             castTime = 0;
                             castTimeMax = 100;
                             isCasting = true;
@@ -3349,12 +3349,12 @@ SoundEngine.PlaySound(StarsAboveAudio.Arbitration_ArbiterLaugh, NPC.Center);
                             castTimeMax = 50;
                             isCasting = true;
                         }
-                        if (nextCast == "Theofania Inanis")
+                        if (nextCast == "Prototokia Aster")
                         {
                             castAnimation = 70;
                             // Main.PlaySound(SoundLoader.customSoundType, (int)npc.Center.X, (int)npc.Center.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/EvenTheStrongestShields"));
                             castDelay = 0;
-                            nextAttack = "Theofania Inanis";
+                            nextAttack = "Prototokia Aster";
                             castTime = 0;
                             castTimeMax = 100;
                             isCasting = true;

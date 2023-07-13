@@ -9,10 +9,10 @@ using Terraria.Graphics.Shaders;
 
 namespace StarsAbove.Projectiles.StellarNovas
 {
-    public class Theofania2 : ModProjectile
+    public class Prototokia3 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			// DisplayName.SetDefault("Theofania Inanis");     //The English name of the projectile
+			// DisplayName.SetDefault("Prototokia Aster");     //The English name of the projectile
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 1;        //The recording mode
 		}
@@ -151,45 +151,13 @@ namespace StarsAbove.Projectiles.StellarNovas
 			}
 			return false;
 		}
+
 		public static Texture2D texture;
 
 		public override bool PreDraw(ref Color lightColor)
 		{
-
-			Main.spriteBatch.End();
-			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-
-
-
-			SpriteEffects spriteEffects = SpriteEffects.None;
-			if (Projectile.spriteDirection == -1)
-			{
-				spriteEffects = SpriteEffects.FlipHorizontally;
-			}
-
-			if (texture == null || texture.IsDisposed)
-			{
-				texture = (Texture2D)ModContent.Request<Texture2D>(Projectile.ModProjectile.Texture);
-			}
-
-			int frameHeight = texture.Height / Main.projFrames[Projectile.type];
-			int startY = frameHeight * Projectile.frame;
-			Rectangle sourceRectangle = new Rectangle(0, startY, texture.Width, frameHeight);
-			Vector2 origin = sourceRectangle.Size() / 2f;
-			Main.EntitySpriteDraw(texture,
-				Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY),
-				sourceRectangle, Color.Black, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
-			ArmorShaderData data = GameShaders.Armor.GetSecondaryShader((byte)GameShaders.Armor.GetShaderIdFromItemId(ItemID.ShiftingPearlSandsDye), Main.LocalPlayer);
-			data.Apply(null);
-			Main.EntitySpriteDraw(texture,
-				Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY),
-				sourceRectangle, Color.White, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
-			Main.spriteBatch.End();
-			Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullNone, (Effect)null, Main.GameViewMatrix.TransformationMatrix);
-
-			return false;
+			return true;
 		}
-		
 
 		public override void Kill(int timeLeft)
 		{

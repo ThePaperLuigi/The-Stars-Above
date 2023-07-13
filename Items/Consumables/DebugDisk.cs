@@ -207,7 +207,7 @@ namespace StarsAbove.Items.Consumables
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGauge = 0;
 
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStellarNova = 0;
-			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().theofania = 0; //0 = LOCKED, 1 = UNLOCKED, 2 = SELECTED
+			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().prototokia = 0; //0 = LOCKED, 1 = UNLOCKED, 2 = SELECTED
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().laevateinn = 0; //0 = LOCKED, 1 = UNLOCKED, 2 = SELECTED
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().kiwamiryuken = 0; //0 = LOCKED, 1 = UNLOCKED, 2 = SELECTED 2 does not matter really
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().gardenofavalon = 0; //0 = LOCKED, 1 = UNLOCKED, 2 = SELECTED 2 does not matter really

@@ -3,12 +3,12 @@ using Terraria.ModLoader;
 
 namespace StarsAbove.Buffs
 {
-    public class TheofaniaDualcast : ModBuff
+    public class PrototokiaDualcast : ModBuff
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Theofania Dualcast");
-            // Description.SetDefault("You are able to cast Theofania Inanis again without cost");
+            // DisplayName.SetDefault("prototokia Dualcast");
+            // Description.SetDefault("You are able to cast Prototokia Aster again without cost");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false; //
         }
