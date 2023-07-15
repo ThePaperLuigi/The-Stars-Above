@@ -1,4 +1,5 @@
 
+using StarsAbove.Buffs;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -51,7 +52,7 @@ namespace StarsAbove.Items
 
 
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().WeaponDialogueTimer = 0;
-			
+			player.AddBuff(ModContent.BuffType<DebugInfiniteNova>(), 600);
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaGauge = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().trueNovaGaugeMax;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().prototokia == 0)
 			{
@@ -76,6 +77,10 @@ namespace StarsAbove.Items
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().unlimitedbladeworks == 0)
 			{
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().unlimitedbladeworks = 1;
+			}
+			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().guardianslight == 0)
+			{
+				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().guardianslight = 1;
 			}
 			return true;
 		}

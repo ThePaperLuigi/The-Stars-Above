@@ -19,6 +19,7 @@ using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using Terraria.UI.Chat;
 using StarsAbove.Buffs;
+using StarsAbove.Buffs.StellarNovas;
 
 namespace StarsAbove
 {
@@ -942,6 +943,20 @@ namespace StarsAbove
 				}
 				
 
+			}
+
+			if(!disableAspectPenalty && (player.HasBuff(BuffType<BearerOfLight>()) ||  player.HasBuff(BuffType<BearerOfDarkness>()) && player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2))
+            {
+				if (player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
+                {
+					damage += 0.15f;
+
+				}
+				else
+                {
+					damage += 0.1f;
+
+				}
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
 			{

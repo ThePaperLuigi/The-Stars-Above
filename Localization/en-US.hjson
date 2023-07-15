@@ -2874,8 +2874,20 @@ Mods: {
 
 				UnlimitedBladeWorks: {
 					Unlocked: {
-						Asphodene: With this Stellar Nova, you can mold the battlefield to one that empowers your abilities.
-						Eridani: You can use this Stellar Nova to create a powerful empowerment field to turn the tide of battle.
+						Asphodene: With Unlimited Blade Works, you can mold the battlefield to one that empowers your abilities.
+						Eridani: You can use this Stellar Nova, Unlimited Blade Works, to create a powerful empowerment field.
+					}
+
+					Locked: {
+						Asphodene: We don't have access to this yet.
+						Eridani: We can't use this yet.
+					}
+				}
+
+				GuardiansLight: {
+					Unlocked: {
+						Asphodene: The power of the Guardian's Light differ depending on your Aspected Damage type.
+						Eridani: The capabilities of the Guardian's Light are altered depending on your Aspected Damage type.
 					}
 
 					Locked: {
@@ -2888,7 +2900,7 @@ Mods: {
 			StellarNovaInfo: {
 				PrototokiaAster: {
 					AbilityName: Prototokia Aster
-					AbilitySubName: "[c/C2BDFF:Limitless Starry Void]"
+					AbilitySubName: "[c/C2BDFF:Limitless Starry Blade]"
 					AbilityDescription: Conjure a colossal blade to cleave foes in twain. After casting, you will be able to re-cast Prototokia Aster for 10 seconds at no additional cost. Striking foes with Prototokia Aster will inflict Void Atrophy, dealing powerful damage over time. The second cast of Prototokia Aster will double the potency of Void Atrophy, if applicable. This debuff lasts for 30 seconds. If the attack crits, refund a portion of consumed Stellar Nova Energy. Each cast does 50% of Stellar Nova damage.
 					AstralBonus: You may re-cast Prototokia Aster again to a total of 3 times, dealing 25% damage. This cast does not inflict Void Atrophy, nor does it strengthen it.
 					UmbralBonus: The second hit of Prototokia Aster does not strengthen Void Atrophy, but increases self damage output by 400% for 5 seconds.
@@ -2932,6 +2944,22 @@ Mods: {
 					AbilityDescription: Summon a portal to a world of blades, creating a field of empowerment for 20 seconds. After activation, rain down a barrage of blades, reducing enemy damage dealt by 10% for 20 seconds on hit. Additonally, all allies within the radius will gain Bladeforged, which increases damage, knockback, critical strike chance, and armor penetration by 2% up to 10% depending on current HP (capped at 500 HP.) Duration in seconds is proportional to Energy Cost divided by 10.
 					AstralBonus: Bladeforged's cap is raised to 15% and now increases defense based on percentage values up to 8. Additonally, Bladeforged perists for 10 seconds after the Nova ends.
 					UmbralBonus: Bladeforged no longer increases damage, but attacking with projectiles trigger follow-up attacks (3 second cooldown.) Foes within the field take 10% more damage.
+				}
+
+				GuardiansLight: {
+					AbilityName: Guardian's Light
+					AbilitySubName: "[c/C0EEFF:Lucidity of the Traveler's Will]"
+
+					AbilityDescription: {
+						Melee: Wield paracausal energy through myriad abilities depending on Aspected Damage Type: Thundercrash if Melee, Golden Gun if Ranged, Nova Bomb if Magic, Needlestorm if Summoner, and Silence and Squall otherwise. Thundercrash: After activation, gain Bearer of Light for 10 seconds and fly towards your cursor, dealing incredibly powerful damage to the first foe struck. Gain Invincibility for 3 seconds upon activation, independent of the attack's duration.
+						Ranged: Wield paracausal energy through myriad abilities depending on Aspected Damage Type: Thundercrash if Melee, Golden Gun if Ranged, Nova Bomb if Magic, Needlestorm if Summoner, and Silence and Squall otherwise. Golden Gun: After activation, gain Bearer of Light for 10 seconds while unleashing a bolt of piercing light. You can press the Stellar Nova key 2 more times to repeat the attack while Bearer of Light is active, dealing 1/3 damage. Critical strikes explode, dealing 50% base damage.
+						Magic: Wield paracausal energy through myriad abilities depending on Aspected Damage Type: Thundercrash if Melee, Golden Gun if Ranged, Nova Bomb if Magic, Needlestorm if Summoner, and Silence and Squall otherwise. Nova Bomb: After activation, gain Bearer of Light for 10 seconds while unleashing a powerful void projectile that tracks foes. After 2 seconds or after striking a foe, the attack will detonate in a large explosion. Inflicts Shadowflame for 10 seconds on foes struck by the blast.
+						Summon: Wield paracausal energy through myriad abilities depending on Aspected Damage Type: Thundercrash if Melee, Golden Gun if Ranged, Nova Bomb if Magic, Needlestorm if Summoner, and Silence and Squall otherwise. Needlestorm: After activation, gain Bearer of Darkness for 10 seconds and unleash 5 tracking Woven Needles. After striking a foe or a surface, the needles weave into Threadlings and attack nearby foes (treated as minions.) Damage is split between Woven Needles and Threadlings.
+						Other: Wield paracausal energy through myriad abilities depending on Aspected Damage Type: Thundercrash if Melee, Golden Gun if Ranged, Nova Bomb if Magic, Needlestorm if Summoner, and Silence and Squall otherwise. Silence and Squall: After activation, gain Bearer of Darkness for 10 seconds while unleashing Silence, inflicting Frostburn for 8 seconds. Instantly follow up with Squall, dealing damage while creating a frost field on impact that deals damage over time for 8 seconds.
+					}
+
+					AstralBonus: Bearer of Light increases health regeneration. Bearer of Darkness reduces damage taken by 10%. Taking lethal damage during either buff will instead consume the buff and restore 30 HP.
+					UmbralBonus: Bearer of Light increases damage by 8%. Bearer of Darkness increases critical strike damage by 15%. While either buff is active, Aspected Damage Type penalty is negated.
 				}
 
 				BaseDamage: Base Damage
@@ -8629,6 +8657,17 @@ Mods: {
 			Prototokia.DisplayName: Prototokia
 			Prototokia2.DisplayName: Prototokia2
 			Prototokia3.DisplayName: Prototokia3
+			GoldenGunHeld.DisplayName: Golden Gun Held
+			ThundercrashDamage.DisplayName: Thundercrash Damage
+			GoldenGunBullet.DisplayName: Golden Gun Bullet
+			GoldenGunExplosion.DisplayName: Golden Gun Explosion
+			NovaBomb.DisplayName: Nova Bomb
+			NovaBombExplosion.DisplayName: Nova Bomb Explosion
+			SilenceSquall1.DisplayName: Silence Squall1
+			SilenceSquall2.DisplayName: Silence Squall2
+			SilenceSquallDamageField.DisplayName: Silence Squall Damage Field
+			Threadling.DisplayName: Threadling
+			WovenNeedle.DisplayName: Woven Needle
 		}
 
 		Buffs: {
@@ -10026,12 +10065,12 @@ Mods: {
 				Description: Takonomicon's laser will fail to activate if this debuff is present
 			}
 
-			prototokiaDualcast: {
+			PrototokiaDualcast: {
 				DisplayName: prototokia Dualcast
 				Description: You are able to cast Prototokia Aster again without cost
 			}
 
-			prototokiaTricast: {
+			PrototokiaTricast: {
 				DisplayName: prototokia Tricast
 				Description: You are able to cast Prototokia Aster yet again without cost at limited power
 			}
@@ -10840,22 +10879,32 @@ Mods: {
 
 			Bladeforged: {
 				DisplayName: Bladeforged
-				Description: Projected reality is granting increased damage, knockback, critical strike chance, and armor penetration.
+				Description: Projected reality is granting increased damage, knockback, critical strike chance, and armor penetration
 			}
 
 			UBWFollowUpCooldown: {
-				DisplayName: U B W Follow Up Cooldown
-				Description: Mods.StarsAbove.Buffs.UBWFollowUpCooldown.Description
+				DisplayName: Follow Up Cooldown
+				Description: ""
 			}
 
-			PrototokiaDualcast: {
-				DisplayName: Prototokia Dualcast
-				Description: Mods.StarsAbove.Buffs.PrototokiaDualcast.Description
+			BearerOfDarkness: {
+				DisplayName: Bearer Of Darkness
+				Description: Paracausal darkness is granting newfound strength
 			}
 
-			PrototokiaTricast: {
-				DisplayName: Prototokia Tricast
-				Description: Mods.StarsAbove.Buffs.PrototokiaTricast.Description
+			BearerOfLight: {
+				DisplayName: Bearer Of Light
+				Description: Paracausal light is granting newfound strength
+			}
+
+			ThundercrashActive: {
+				DisplayName: Thundercrash Active
+				Description: ""
+			}
+
+			DebugInfiniteNova: {
+				DisplayName: Debug Infinite Nova
+				Description: Mods.StarsAbove.Buffs.DebugInfiniteNova.Description
 			}
 		}
 

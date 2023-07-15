@@ -709,6 +709,10 @@ namespace StarsAbove
 		#endregion
 
 		#region Weapon Sound Effects
+		public static readonly SoundStyle SFX_ShockAndAweRocket = new($"{nameof(StarsAbove)}/Sounds/SFX/ShockAndAweRocket")
+		{
+
+		};
 		public static readonly SoundStyle SFX_Deify = new($"{nameof(StarsAbove)}/Sounds/SFX/Deify")
 		{
 
@@ -875,6 +879,38 @@ namespace StarsAbove
 		#endregion
 
 		#region Miscellaneous Sound Effects
+		public static readonly SoundStyle SFX_VoidExplosion = new($"{nameof(StarsAbove)}/Sounds/SFX/VoidExplosion")
+		{
+			PitchVariance = 0.1f,
+		};
+		public static readonly SoundStyle SFX_ThundercrashStart = new($"{nameof(StarsAbove)}/Sounds/SFX/ThundercrashStart")
+		{
+			PitchVariance = 0.1f,
+		};
+		public static readonly SoundStyle SFX_ThundercrashEnd = new($"{nameof(StarsAbove)}/Sounds/SFX/ThundercrashEnd")
+		{
+			PitchVariance = 0.1f,
+		};
+		public static readonly SoundStyle SFX_SilenceSquall1 = new($"{nameof(StarsAbove)}/Sounds/SFX/SilenceSquall1")
+		{
+			PitchVariance = 0.1f,
+		};
+		public static readonly SoundStyle SFX_SilenceSquall2 = new($"{nameof(StarsAbove)}/Sounds/SFX/SilenceSquall2")
+		{
+			PitchVariance = 0.1f,
+		};
+		public static readonly SoundStyle SFX_NovaBomb = new($"{nameof(StarsAbove)}/Sounds/SFX/NovaBomb")
+		{
+			PitchVariance = 0.1f,
+		};
+		public static readonly SoundStyle SFX_Needlestorm = new($"{nameof(StarsAbove)}/Sounds/SFX/Needlestorm")
+		{
+			PitchVariance = 0.1f,
+		};
+		public static readonly SoundStyle SFX_FireGoldenGun = new($"{nameof(StarsAbove)}/Sounds/SFX/FireGoldenGun")
+		{
+			PitchVariance = 0.1f,
+		};
 		public static readonly SoundStyle SFX_Laevateinn = new($"{nameof(StarsAbove)}/Sounds/SFX/Laevateinn")
 		{
 			PitchVariance = 0.1f,

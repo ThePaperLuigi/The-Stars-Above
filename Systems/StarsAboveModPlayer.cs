@@ -51,6 +51,7 @@ using StarsAbove.Projectiles.StellarNovas;
 using StarsAbove.Items.Prisms;
 using StarsAbove.NPCs.WarriorOfLight;
 using StarsAbove.Buffs.StellarNovas;
+using StarsAbove.Projectiles.StellarNovas.GuardiansLight;
 
 namespace StarsAbove
 {
@@ -665,6 +666,10 @@ namespace StarsAbove
         public int gardenofavalon; //0 = LOCKED, 1 = UNLOCKED, 2 = SELECTED 2 does not matter really
         public int edingenesisquasar; //0 = LOCKED, 1 = UNLOCKED, 2 = SELECTED 2 does not matter really
         public int unlimitedbladeworks;
+        public int guardianslight;
+
+        public int goldenGunShots;
+        public bool squallReady;
 
         //Cutscenes, new feature
         public int astarteCutsceneProgress = 0;
@@ -1111,6 +1116,7 @@ namespace StarsAbove
             tag["gardenofavalon"] = gardenofavalon;
             tag["edingenesisquasar"] = edingenesisquasar;
             tag["unlimitedbladeworks"] = unlimitedbladeworks;
+            tag["guardianslight"] = guardianslight;
             tag["chosenStellarNova"] = chosenStellarNova;
 
             tag["seenEyeOfCthulhu"] = seenEyeOfCthulhu;
@@ -1454,6 +1460,7 @@ namespace StarsAbove
             gardenofavalon = tag.GetInt("gardenofavalon");
             edingenesisquasar = tag.GetInt("edingenesisquasar");
             unlimitedbladeworks = tag.GetInt("unlimitedbladeworks");
+            guardianslight = tag.GetInt("guardianslight");
 
             seenEyeOfCthulhu = tag.GetBool("seenEyeOfCthulhu");
             seenKingSlime = tag.GetBool("seenKingSlime");
@@ -2025,7 +2032,7 @@ namespace StarsAbove
                     //If the attack was a crit
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod));
+                    modifiers.FinalDamage.Flat = (float)(novaCritDamage * (1 + novaCritDamageMod));
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2038,7 +2045,7 @@ namespace StarsAbove
                 {
                     //If the attack was not a crit
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod));
+                    modifiers.FinalDamage.Flat = (float)(novaDamage * (1 + novaDamageMod));
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2086,10 +2093,32 @@ namespace StarsAbove
                 if (uniqueCrit <= novaCritChance + novaCritChanceMod)
                 {
                     modifiers.SetCrit();
-                    novaGauge += trueNovaGaugeMax / 40;
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.016f;
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                }
+                else
+                {
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.016f;
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+            }
+            if (proj.type == ProjectileType<ThundercrashDamage>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
                     modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod));
-                    modifiers.FinalDamage *= 0.5f;//Halve the final damage again due to having two swords.
+                    //modifiers.FinalDamage *= 0.02f;//Reduce the final damage due to the amount of blades.
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2098,7 +2127,220 @@ namespace StarsAbove
                 {
                     modifiers.DisableCrit();
                     modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod));
-                    modifiers.FinalDamage *= 0.5f;//Halve the final damage due to having two swords.
+                    //modifiers.FinalDamage *= 0.02f;//Reduce the final damage due to the amount of blades.
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+            }
+            if (proj.type == ProjectileType<GoldenGunBullet>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.33f;
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                }
+                else
+                {
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.33f;
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+            }
+            if (proj.type == ProjectileType<SilenceSquall1>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.5f;
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                }
+                else
+                {
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.5f;
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+            }
+            if (proj.type == ProjectileType<SilenceSquall2>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.5f;
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                }
+                else
+                {
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.5f;
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+            }
+            if (proj.type == ProjectileType<SilenceSquallDamageField>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod)))/8f;
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                }
+                else
+                {
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod)))/8f;
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+            }
+            if (proj.type == ProjectileType<GoldenGunExplosion>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.5f;
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                }
+                else
+                {
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.5f;
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+            }
+            if (proj.type == ProjectileType<NovaBomb>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.5f;
+                    modifiers.FinalDamage *= 0.5f;
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                }
+                else
+                {
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.5f;
+                    modifiers.FinalDamage *= 0.5f;
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+            }
+            if (proj.type == ProjectileType<NovaBombExplosion>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.5f;
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                }
+                else
+                {
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.5f;
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+            }
+            if (proj.type == ProjectileType<WovenNeedle>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod)))/10;
+                    modifiers.FinalDamage *= 0.5f;
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                }
+                else
+                {
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod)))/10;
+                    modifiers.FinalDamage *= 0.5f;
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+            }
+            if (proj.type == ProjectileType<Threadling>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) / 10;
+                    modifiers.FinalDamage *= 0.5f;
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                }
+                else
+                {
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) / 10;
+                    modifiers.FinalDamage *= 0.5f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2116,8 +2358,7 @@ namespace StarsAbove
                     modifiers.SetCrit();
                     novaGauge += trueNovaGaugeMax / 40;
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod));
-                    modifiers.FinalDamage *= 0.5f;//Halve the final damage again due to having two swords.
+                    modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.5f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2125,8 +2366,7 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod));
-                    modifiers.FinalDamage *= 0.5f;//Halve the final damage due to having two swords.
+                    modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.5f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2145,8 +2385,7 @@ namespace StarsAbove
                     modifiers.SetCrit();
                     novaGauge += trueNovaGaugeMax / 40;
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod));
-                    modifiers.FinalDamage *= 0.5f;//Halve the final damage again due to having two swords.
+                    modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.5f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2154,8 +2393,7 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod));
-                    modifiers.FinalDamage *= 0.5f;//Halve the final damage due to having two swords.
+                    modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.5f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2174,8 +2412,7 @@ namespace StarsAbove
                     modifiers.SetCrit();
                     novaGauge += trueNovaGaugeMax / 40;
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod));
-                    modifiers.FinalDamage *= 0.75f;//Asphodene's third Stellar Nova hit only does 25% base damage.
+                    modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.25f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2183,8 +2420,7 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod));
-                    modifiers.FinalDamage *= 0.75f;//Asphodene's third Stellar Nova hit only does 25% base damage.
+                    modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.25f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2199,10 +2435,15 @@ namespace StarsAbove
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) / 5;
                     if (target.HasBuff(BuffID.OnFire))
                     {
-                        modifiers.FinalDamage += 0.05f;
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) / 4;
+
+                    }
+                    else
+                    {
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) / 5;
+
                     }
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
@@ -4780,7 +5021,34 @@ namespace StarsAbove
 
                 abilityName = NovaSetup.GetInfo(chosenStellarNova, "AbilityName", baseNovaDamageAdd);
                 abilitySubName = NovaSetup.GetInfo(chosenStellarNova, "AbilitySubName", baseNovaDamageAdd);
-                abilityDescription = NovaSetup.GetInfo(chosenStellarNova, "AbilityDescription", baseNovaDamageAdd);
+                if(chosenStellarNova == 7)//Guardian's Light
+                {
+                    if (MeleeAspect == 2)
+                    {
+                        abilityDescription = NovaSetup.GetInfo(chosenStellarNova, "AbilityDescription.Melee", baseNovaDamageAdd);
+                    }
+                    else if (RangedAspect == 2)
+                    {
+                        abilityDescription = NovaSetup.GetInfo(chosenStellarNova, "AbilityDescription.Ranged", baseNovaDamageAdd);
+                    }
+                    else if (MagicAspect == 2)
+                    {
+                        abilityDescription = NovaSetup.GetInfo(chosenStellarNova, "AbilityDescription.Magic", baseNovaDamageAdd);
+                    }
+                    else if (SummonAspect == 2)
+                    {
+                        abilityDescription = NovaSetup.GetInfo(chosenStellarNova, "AbilityDescription.Summon", baseNovaDamageAdd);
+                    }
+                    else
+                    {
+                        abilityDescription = NovaSetup.GetInfo(chosenStellarNova, "AbilityDescription.Other", baseNovaDamageAdd);
+                    }
+                }
+                else
+                {
+                    abilityDescription = NovaSetup.GetInfo(chosenStellarNova, "AbilityDescription", baseNovaDamageAdd);
+                }
+                
 
                 if (chosenStarfarer == 1)
                 {
@@ -6727,6 +6995,33 @@ namespace StarsAbove
                 }
 
                 EdinGenesisQuasar();
+                if (squallReady && Player.ownedProjectileCounts[ProjectileType<SilenceSquall1>()] <= 0)
+                {
+                    squallReady = false;
+                    //Silence and Squall
+                    SoundEngine.PlaySound(StarsAboveAudio.SFX_SilenceSquall2, Player.Center);
+                    Vector2 Target = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 30f;
+                    Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y), Target, ProjectileType<SilenceSquall2>(), novaDamage, 0, Player.whoAmI);
+
+                    for (int d = 0; d < 37; d++)//Visual effects
+                    {
+                        Vector2 perturbedSpeed = new Vector2(Target.X, Target.Y).RotatedByRandom(MathHelper.ToRadians(8));
+                        float scale = 1f - (Main.rand.NextFloat() * 1f);
+                        perturbedSpeed = perturbedSpeed * scale;
+                        int dustIndex = Dust.NewDust(Player.Center, 0, 0, DustID.GemSapphire, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 2f);
+                        Main.dust[dustIndex].noGravity = true;
+
+                    }
+                }
+                if (chosenStellarNova == 7 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && Player.HasBuff(BuffType<BearerOfLight>()) || Player.HasBuff(BuffType<BearerOfDarkness>()))
+                {
+                    if(goldenGunShots > 0)
+                    {
+                        goldenGunShots--;
+                        FireGoldenGunBullet();
+                    }
+                    
+                }
                 if (chosenStellarNova == 1 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && Main.LocalPlayer.HasBuff(BuffType<Buffs.PrototokiaTricast>()))//prototokia Tricast
                 {
 
@@ -6829,7 +7124,7 @@ namespace StarsAbove
                 if (novaGauge == trueNovaGaugeMax && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && chosenStellarNova != 0)
                 {
                     StellarNovaCutIn();
-                    Player.GetModPlayer<StarsAbovePlayer>().activateShockwaveEffect = true;
+                    //Player.GetModPlayer<StarsAbovePlayer>().activateShockwaveEffect = true;
 
 
                     if (Player.whoAmI == Main.myPlayer)
@@ -6947,9 +7242,136 @@ namespace StarsAbove
                             Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<UnlimitedBladeWorksBackground>(), novaDamage, 0, Player.whoAmI, 0, (trueNovaGaugeMax/10)*60);
 
                         }
+                        if (chosenStellarNova == 7)//Guardian's Light
+                        {
+                            onActivateStellarNova();
+
+                            if(MeleeAspect == 2)
+                            {
+                                //Thundercrash
+                                Player.AddBuff(BuffType<BearerOfLight>(), 60 * 10);
+                                SoundEngine.PlaySound(StarsAboveAudio.SFX_ThundercrashStart, Player.Center);
+
+                                //Give player velocity towards their cursor, give Invincibility, give a active hitbox that detonates on the first foe struck (pierce 1)
+                                Vector2 Leap = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 10f;
+                                Player.velocity = Leap;
+                                Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<ThundercrashDamage>(), novaDamage, 0, Player.whoAmI);
+                                Player.AddBuff(BuffType<ThundercrashActive>(), 60);
+                                Player.AddBuff(BuffType<Invincibility>(), 180);
+                                return;
+                            }
+                            else if(RangedAspect == 2)
+                            {
+                                Player.AddBuff(BuffType<BearerOfLight>(), 60 * 10);
+
+                                //Golden Gun
+                                //Fire 1 shot and grant 2 more shots later
+
+                                FireGoldenGunBullet();
+                                goldenGunShots = 2;
+                                return;
+                            }
+                            else if(MagicAspect == 2)
+                            {
+                                Player.AddBuff(BuffType<BearerOfLight>(), 60 * 10);
+
+                                //Nova Bomb
+
+
+                                SoundEngine.PlaySound(StarsAboveAudio.SFX_NovaBomb, Player.Center);
+                                Vector2 Target = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 10f;
+                                Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y), Target, ProjectileType<NovaBomb>(), novaDamage, 0, Player.whoAmI);
+
+                                for (int d = 0; d < 57; d++)//Visual effects
+                                {
+                                    Vector2 perturbedSpeed = new Vector2(Target.X, Target.Y).RotatedByRandom(MathHelper.ToRadians(20));
+                                    float scale = 2f - (Main.rand.NextFloat() * 1f);
+                                    perturbedSpeed = perturbedSpeed * scale;
+                                    int dustIndex = Dust.NewDust(Player.Center, 0, 0, DustID.GemAmethyst, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 2f);
+                                    Main.dust[dustIndex].noGravity = true;
+
+                                }
+                                return;
+                            }
+                            else if(SummonAspect == 2)
+                            {
+                                Player.AddBuff(BuffType<BearerOfDarkness>(), 60 * 10);
+                                SoundEngine.PlaySound(StarsAboveAudio.SFX_Needlestorm, Player.Center);
+
+                                //Needlestorm
+                                Vector2 Target = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 30f;
+
+                                float numberProjectiles = 5;
+                                float adjustedRotation = MathHelper.ToRadians(72);
+
+                                for (int i = 0; i < numberProjectiles; i++)
+                                {
+                                    Vector2 perturbedSpeed = Target.RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
+                                    Projectile.NewProjectile(null, Player.Center.X, Player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, ProjectileType<WovenNeedle>(), novaDamage, 0, Main.myPlayer);
+                                }
+                                for (int d = 0; d < 37; d++)//Visual effects
+                                {
+                                    Vector2 perturbedSpeed = new Vector2(Target.X, Target.Y).RotatedByRandom(MathHelper.ToRadians(68));
+                                    float scale = 1f - (Main.rand.NextFloat() * 1f);
+                                    perturbedSpeed = perturbedSpeed * scale;
+                                    int dustIndex = Dust.NewDust(Player.Center, 0, 0, DustID.GemEmerald, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 1f);
+                                    Main.dust[dustIndex].noGravity = true;
+
+                                }
+                                return;
+                            }
+                            else
+                            {
+
+                                //Silence and Squall
+                                SoundEngine.PlaySound(StarsAboveAudio.SFX_SilenceSquall2, Player.Center);
+                                Vector2 Target = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 30f;
+                                
+                                Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y), Target, ProjectileType<SilenceSquall1>(), novaDamage, 0, Player.whoAmI);
+
+                                for (int d = 0; d < 37; d++)//Visual effects
+                                {
+                                    Vector2 perturbedSpeed = new Vector2(Target.X, Target.Y).RotatedByRandom(MathHelper.ToRadians(8));
+                                    float scale = 1f - (Main.rand.NextFloat() * 1f);
+                                    perturbedSpeed = perturbedSpeed * scale;
+                                    int dustIndex = Dust.NewDust(Player.Center, 0, 0, DustID.GemSapphire, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 2f);
+                                    Main.dust[dustIndex].noGravity = true;
+
+                                }
+                                squallReady = true;
+                                Player.AddBuff(BuffType<BearerOfDarkness>(), 60 * 10);
+
+                                return;
+                            }
+                            
+                            
+                            
+                           // Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<UnlimitedBladeWorksBackground>(), novaDamage, 0, Player.whoAmI, 0, (trueNovaGaugeMax / 10) * 60);
+
+                        }
                     }
 
                 }
+            }
+        }
+
+        private void FireGoldenGunBullet()
+        {
+            Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<GoldenGunHeld>(), 0, 0, Player.whoAmI);
+
+
+            SoundEngine.PlaySound(StarsAboveAudio.SFX_FireGoldenGun, Player.Center);
+            Vector2 Target = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 40f;
+            Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y), Target, ProjectileType<GoldenGunBullet>(), novaDamage, 0, Player.whoAmI);
+
+            for (int d = 0; d < 37; d++)//Visual effects
+            {
+                Vector2 perturbedSpeed = new Vector2(Target.X, Target.Y).RotatedByRandom(MathHelper.ToRadians(8));
+                float scale = 1f - (Main.rand.NextFloat() * 1f);
+                perturbedSpeed = perturbedSpeed * scale;
+                int dustIndex = Dust.NewDust(Player.Center, 0, 0, DustID.GemTopaz, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 2f);
+                Main.dust[dustIndex].noGravity = true;
+
             }
         }
 
@@ -6970,7 +7392,7 @@ namespace StarsAbove
             //If the ModConfig's voices are enabled, continue.
             if (!voicesEnabled)
             {
-                if(Main.rand.NextBool(1))//1 in 5 chance to play a Nova specific line.
+                if(Main.rand.NextBool(5) && chosenStellarNova != 7)//1 in 5 chance to play a Nova specific line. (No unique quotes for Guardian's Light)
                 {
                     novaDialogue = LangHelper.Wrap(LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + ".Special" + $"{chosenStellarNova}"), 20);
 
@@ -7670,6 +8092,23 @@ namespace StarsAbove
                     d.noGravity = true;
                 }
 
+            }
+            if (Player.HasBuff(BuffType<ThundercrashActive>()))//
+            {
+                Vector2 Leap = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 20f;
+                Player.velocity = Leap;
+
+                for (int d = 0; d < 5; d++)
+                {
+                    Dust du = Main.dust[Dust.NewDust(Player.Center, 0, 0, DustID.Electric, 0f, 0f, 150, default(Color), 1f)];
+                    du.noGravity = true;
+                }
+                for (int d = 0; d < 2; d++)
+                {
+                    Dust du = Main.dust[Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Blue, 0f, 0f, 150, default(Color), 0.8f)];
+                    du.noGravity = true;
+
+                }
             }
             for (int i = 0; i < Player.CountBuffs(); i++)
                 if (Player.buffType[i] == BuffType<Buffs.LeftDebuff>())
@@ -10947,7 +11386,12 @@ namespace StarsAbove
             //if (player.ownedProjectileCounts[mod.ProjectileType("SpaceBurstFX")] < 1)
             Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("SpaceBurstFX").Type, 0, 0, Player.whoAmI, 0, 1);
             Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("SpaceBurstFX2").Type, 0, 0, Player.whoAmI, 0, 1);
-            activateShockwaveEffect = true;
+            
+            if(chosenStellarNova != 7)
+            {
+                activateShockwaveEffect = true;
+
+            }
 
 
             if (chosenStarfarer == 1)

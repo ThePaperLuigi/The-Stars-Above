@@ -87,7 +87,7 @@ namespace StarsAbove.Items
 			else
 			{
 				float rotation = (float)Math.Atan2(position.Y - (player.GetModPlayer<StarsAbovePlayer>().playerMousePos.Y), position.X - (player.GetModPlayer<StarsAbovePlayer>().playerMousePos.X));
-				SoundEngine.PlaySound(SoundID.Item61, player.Center);
+				SoundEngine.PlaySound(StarsAboveAudio.SFX_ShockAndAweRocket, player.Center);
 				Projectile.NewProjectile(source, player.Center.X, player.Center.Y, velocity.X, velocity.Y, ProjectileType<ShockAndAweRocketLauncher>(), 0, 0, player.whoAmI, 0f);
 
 				Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileType<ShockAndAweRocket>(), (int)(damage), 0, player.whoAmI, 0f);
