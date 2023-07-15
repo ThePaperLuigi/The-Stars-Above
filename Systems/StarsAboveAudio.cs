@@ -879,6 +879,10 @@ namespace StarsAbove
 		#endregion
 
 		#region Miscellaneous Sound Effects
+		public static readonly SoundStyle SFX_SpeedrunEasterEgg = new($"{nameof(StarsAbove)}/Sounds/SFX/SpeedrunEasterEgg")
+		{
+			
+		};
 		public static readonly SoundStyle SFX_VoidExplosion = new($"{nameof(StarsAbove)}/Sounds/SFX/VoidExplosion")
 		{
 			PitchVariance = 0.1f,

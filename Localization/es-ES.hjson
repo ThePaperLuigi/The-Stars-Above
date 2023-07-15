@@ -38,6 +38,7 @@ Mods: {
 
 			// Dioskouroi.Clash: The Dioskouroi clash, equalizing their HP!
 			// Tsukiyomi.FinalPhase: The Starfarer before you unleashes her true might, empowering her attacks but leaving her defenses open!
+			// EasterEgg: You've defeated the boss in less than 5 seconds! Perhaps you're a little too powerful?
 
 			KissOfDeath: {
 				// Skyfish: Skyfish deployed!
@@ -10780,8 +10781,8 @@ Mods: {
 			}
 
 			UBWFollowUpCooldown: {
-				// DisplayName: U B W Follow Up Cooldown
-				// Description: Mods.StarsAbove.Buffs.UBWFollowUpCooldown.Description
+				// DisplayName: Follow Up Cooldown
+				// Description: ""
 			}
 
 			BearerOfDarkness: {

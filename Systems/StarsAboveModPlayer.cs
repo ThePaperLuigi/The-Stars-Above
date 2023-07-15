@@ -601,6 +601,8 @@ namespace StarsAbove
 
         public int chosenStellarNova = 0;//0: No Nova chosen. 1: Prototokia Aster 2: Ars Laevateinn
 
+        public bool novaReadyInfo = false;
+
         public int novaGauge;
         public int novaGaugeMax = 100;//This is affected by the chosen Nova
         public int novaGaugeChargeTimer;
@@ -11226,66 +11228,39 @@ namespace StarsAbove
             if (inCombat > 0)
             {
                 if (chosenStellarNova != 0)
+                {
                     if (novaGaugeChargeTimer >= 60)
                     {
 
-                        if (novaGauge == trueNovaGaugeMax - 1)
+                        if (novaGauge == trueNovaGaugeMax)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_superReadySFX, Player.Center);
-
-                            Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
-                            CombatText.NewText(textPos, new Color(255, 0, 125, 240), "Stellar Nova ready!", false, false);
-                            if (Main.rand.Next(0, 5) == 0)
+                            if(!novaReadyInfo)
                             {
-                                starfarerPromptActive("onStellarNovaCharged");
+                                novaReadyInfo = true;
+                                SoundEngine.PlaySound(StarsAboveAudio.SFX_superReadySFX, Player.Center);
+
+                                Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                                CombatText.NewText(textPos, new Color(255, 0, 125, 240), "Stellar Nova ready!", false, false);
+                                if (Main.rand.Next(0, 5) == 0)
+                                {
+                                    starfarerPromptActive("onStellarNovaCharged");
+                                }
                             }
+                            
+                        }
+                        else
+                        {
+                            novaReadyInfo = false;
                         }
 
                         //Natural charge rate.
                         novaGauge++;
 
-                        if (unbridledradiance == 2)
-                        {
-
-                            novaGauge++;
-                        }
-                        if (avataroflight == 2 && Player.statLife >= 500)
-                        {
-
-                            novaGaugeChargeTimer += 5;
-                        }
-                        if (astralmantle == 2 && Player.statMana > 200)
-                        {
-
-                            novaGaugeChargeTimer += 15;
-                        }
-                        if (Player.HeldItem.prefix == ModContent.PrefixType<NovaPrefix1>())
-                        {
-                            novaGaugeChargeTimer += 2;
-                        }
-                        if (Player.HeldItem.prefix == ModContent.PrefixType<NovaPrefix2>())
-                        {
-                            novaGaugeChargeTimer += 4;
-                        }
-                        if (Player.HeldItem.prefix == ModContent.PrefixType<NovaPrefix3>())
-                        {
-                            novaGaugeChargeTimer += 6;
-                        }
-                        if (Player.HeldItem.prefix == ModContent.PrefixType<NovaPrefix4>())
-                        {
-                            novaGaugeChargeTimer += 8;
-                        }
-                        if (Player.HeldItem.prefix == ModContent.PrefixType<BadNovaPrefix1>())
-                        {
-                            novaGaugeChargeTimer -= 2;
-                        }
-                        if (Player.HeldItem.prefix == ModContent.PrefixType<BadNovaPrefix2>())
-                        {
-                            novaGaugeChargeTimer -= 4;
-                        }
+                        NovaChargeModifiers();
+                        //Reset the timer.
                         novaGaugeChargeTimer = 0;
                     }
-
+                }
 
                 if (novaGaugeUnlocked && novaGauge < trueNovaGaugeMax)
                 {
@@ -11297,31 +11272,39 @@ namespace StarsAbove
             else
             {
                 novaGaugeChargeTimer = 0;
-                if (unbridledradiance == 2)
+                if (unbridledradiance != 2)
                 {
-
-                }
-                else
-                {
+                    //Unbridled Radiance prevents Nova drain (this is with it disabled.)
                     novaGaugeLossTimer++;
                     if (novaGaugeLossTimer >= 35)
                     {
                         novaGaugeLossTimer = 0;
                         novaGauge--;
                     }
-
                 }
             }
-            if (novaGauge > trueNovaGaugeMax)
-            {
-                novaGauge = trueNovaGaugeMax;
-            }
-            if (novaGauge < 0)
+            novaGauge = (int)MathHelper.Clamp(novaGauge, 0, trueNovaGaugeMax);
+        }
+
+        private void NovaChargeModifiers()
+        {
+            if (unbridledradiance == 2)
             {
 
-                novaGauge = 0;
+                novaGauge++;
+            }
+            if (avataroflight == 2 && Player.statLife >= 500)
+            {
+
+                novaGaugeChargeTimer += 5;
+            }
+            if (astralmantle == 2 && Player.statMana > 200)
+            {
+
+                novaGaugeChargeTimer += 15;
             }
         }
+
         private void SetupStarfarerOutfit()
         {
 

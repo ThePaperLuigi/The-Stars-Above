@@ -24,6 +24,7 @@ using StarsAbove.NPCs.Dioskouroi;
 using StarsAbove.Projectiles.Bosses;
 using StarsAbove.NPCs.WarriorOfLight;
 using StarsAbove.Buffs.Boss;
+using StarsAbove.Utilities;
 
 namespace StarsAbove
 {
@@ -79,6 +80,9 @@ namespace StarsAbove
         float decayRate = 0.8f;
         float stress;
         float damageReductionAmount;
+
+        bool speedrunEasterEgg;
+        int bossTimer;
 
         public override void OnHurt(Player.HurtInfo info)
         {
@@ -185,7 +189,33 @@ namespace StarsAbove
 
             }
 
+            if(NPC.AnyNPCs(NPCType<VagrantBoss>())
+                || NPC.AnyNPCs(NPCType<PolluxBoss>())
+                || NPC.AnyNPCs(NPCType<CastorBoss>())
+                || NPC.AnyNPCs(NPCType<Penthesilea>())
+                || NPC.AnyNPCs(NPCType<NalhaunBoss>())
+                || NPC.AnyNPCs(NPCType<NalhaunBossPhase2>())
+                || NPC.AnyNPCs(NPCType<WarriorOfLightBossFinalPhase>())
+                || NPC.AnyNPCs(NPCType<WarriorOfLightBoss>())
+                || NPC.AnyNPCs(NPCType<TsukiyomiBoss>()))
+            {
+                bossTimer++;
+            }
+            else
+            {
+                if(bossTimer > 0)
+                {
+                    if(bossTimer < 600 && !speedrunEasterEgg)
+                    {
+                        speedrunEasterEgg = true;
+                        
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"CombatText.EasterEgg"), 190, 100, 247); }
+                        SoundEngine.PlaySound(StarsAboveAudio.SFX_SpeedrunEasterEgg, Player.Center);
 
+                    }
+                }
+                bossTimer = 0;
+            }
             for (int k = 0; k < 200; k++)
             {
                 NPC npc = Main.npc[k];

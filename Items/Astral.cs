@@ -52,7 +52,7 @@ namespace StarsAbove.Items
 
 
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().WeaponDialogueTimer = 0;
-			player.AddBuff(ModContent.BuffType<DebugInfiniteNova>(), 600);
+			player.AddBuff(ModContent.BuffType<DebugInfiniteNova>(), 60);
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaGauge = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().trueNovaGaugeMax;
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().prototokia == 0)
 			{
