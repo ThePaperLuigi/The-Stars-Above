@@ -210,7 +210,7 @@ namespace StarsAbove
                         speedrunEasterEgg = true;
                         
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"CombatText.EasterEgg"), 190, 100, 247); }
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_SpeedrunEasterEgg, Player.Center);
+                        SoundEngine.PlaySound(StarsAboveAudio.SFX_SpeedrunEasterEgg, null);
 
                     }
                 }
