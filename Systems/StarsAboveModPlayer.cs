@@ -608,6 +608,10 @@ namespace StarsAbove
         public int novaGaugeChargeTimer;
         public int novaGaugeLossTimer;
 
+        public float novaDrain = 0f;
+
+        public float novaGaugeChangeAlpha = 0f;
+        public float novaGaugeChangeAlphaSlow = 0f;
 
         public int baseNovaDamageAdd = 1;
         public int novaDamage = 300;
@@ -5762,10 +5766,7 @@ namespace StarsAbove
             }
             astarteDriverCooldown--;
             ryukenTimer--;
-            if (NovaCutInTimer > 0)
-            {
-                novaGauge -= (trueNovaGaugeMax / 20);
-            }
+            
             trueNovaGaugeMax = novaGaugeMax - novaChargeMod;
         }
         private void BiomePrompts()
@@ -6989,7 +6990,7 @@ namespace StarsAbove
         }
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            if (Main.LocalPlayer.active && !Main.LocalPlayer.dead && !Player.GetModPlayer<BossPlayer>().QTEActive)
+            if (Main.LocalPlayer.active && !Main.LocalPlayer.dead && !Player.GetModPlayer<BossPlayer>().QTEActive && novaDrain <= 0)
             {
                 if (chosenStellarNova == 6 && Player.ownedProjectileCounts[ProjectileType<UnlimitedBladeWorksBackground>()] >= 1)
                 {
@@ -8739,7 +8740,7 @@ namespace StarsAbove
                                 Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurst").Type, 0, 0, Player.whoAmI, 0, 1);
 
                         }*/
-                        Player.AddBuff(BuffType<Buffs.LivingDead>(), 600);
+                        Player.AddBuff(BuffType<Buffs.LivingDead>(), 360);
                         Dust dust;
                         // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
                         Vector2 position = Player.Center;
@@ -11225,6 +11226,16 @@ namespace StarsAbove
         }
         public void StellarNovaEnergy()
         {
+            novaGaugeChangeAlpha -= 0.1f;
+            novaGaugeChangeAlphaSlow -= 0.01f;
+
+            novaDrain = MathHelper.Clamp(novaDrain, 0, 1);
+            if (novaDrain > 0)
+            {
+                novaDrain -= 0.05f;
+                novaGauge = (int)MathHelper.Lerp(0, trueNovaGaugeMax, novaDrain);
+                return;
+            }
             if (inCombat > 0)
             {
                 if (chosenStellarNova != 0)
@@ -11232,29 +11243,13 @@ namespace StarsAbove
                     if (novaGaugeChargeTimer >= 60)
                     {
 
-                        if (novaGauge == trueNovaGaugeMax)
-                        {
-                            if(!novaReadyInfo)
-                            {
-                                novaReadyInfo = true;
-                                SoundEngine.PlaySound(StarsAboveAudio.SFX_superReadySFX, Player.Center);
-
-                                Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
-                                CombatText.NewText(textPos, new Color(255, 0, 125, 240), "Stellar Nova ready!", false, false);
-                                if (Main.rand.Next(0, 5) == 0)
-                                {
-                                    starfarerPromptActive("onStellarNovaCharged");
-                                }
-                            }
-                            
-                        }
-                        else
-                        {
-                            novaReadyInfo = false;
-                        }
+                        
+                       
 
                         //Natural charge rate.
                         novaGauge++;
+                        novaGaugeChangeAlpha = 1f;
+                        novaGaugeChangeAlphaSlow = 1f;
 
                         NovaChargeModifiers();
                         //Reset the timer.
@@ -11283,6 +11278,28 @@ namespace StarsAbove
                     }
                 }
             }
+
+            if (novaGauge == trueNovaGaugeMax)
+            {
+                if (novaReadyInfo)
+                {
+                    novaReadyInfo = false;
+                    SoundEngine.PlaySound(StarsAboveAudio.SFX_superReadySFX, Player.Center);
+                    Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                    CombatText.NewText(textPos, new Color(255, 0, 125, 240), "Stellar Nova ready!", false, false);
+                    if (Main.rand.Next(0, 5) == 0)
+                    {
+                        starfarerPromptActive("onStellarNovaCharged");
+                    }
+                }
+
+            }
+            else if (novaGauge < trueNovaGaugeMax)
+            {
+                novaReadyInfo = true;
+
+            }
+
             novaGauge = (int)MathHelper.Clamp(novaGauge, 0, trueNovaGaugeMax);
         }
 
@@ -11366,41 +11383,28 @@ namespace StarsAbove
         }
         public void onActivateStellarNova()
         {
-            //if (player.ownedProjectileCounts[mod.ProjectileType("SpaceBurstFX")] < 1)
             Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("SpaceBurstFX").Type, 0, 0, Player.whoAmI, 0, 1);
             Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("SpaceBurstFX2").Type, 0, 0, Player.whoAmI, 0, 1);
             
             if(chosenStellarNova != 7)
             {
                 activateShockwaveEffect = true;
-
             }
 
+            //Drain the Stellar Nova gauge.
+            novaDrain = 1f;
 
             if (chosenStarfarer == 1)
             {
-
-
                 Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("AsphodeneBurstFX").Type, 0, 0, Player.whoAmI, 0, 1);
                 Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("AsphodeneBurstFX2").Type, 0, 0, Player.whoAmI, 0, 1);
-                // Projectile.NewProjectile(null,new Vector2(player.Center.X, player.Center.Y - 500), Vector2.Zero, mod.ProjectileType("BurstFX3"), 0, 0, player.whoAmI, 0, 1);
-                // Projectile.NewProjectile(null,new Vector2(player.Center.X, player.Center.Y - 500), Vector2.Zero, mod.ProjectileType("BurstFX4"), 0, 0, player.whoAmI, 0, 1);
-                // Projectile.NewProjectile(null,new Vector2(player.Center.X, player.Center.Y - 500), Vector2.Zero, mod.ProjectileType("BurstFX5"), 0, 0, player.whoAmI, 0, 1);
-                //Projectile.NewProjectile(null,new Vector2(player.Center.X, player.Center.Y - 500), Vector2.Zero, mod.ProjectileType("BurstFX6"), 0, 0, player.whoAmI, 0, 1);
                 Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("AsphodeneBurst" + starfarerOutfitVisible).Type, 0, 0, Player.whoAmI, 0, 1);
-
-
-
             }
             if (chosenStarfarer == 2)
             {
-
                 Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurstFX").Type, 0, 0, Player.whoAmI, 0, 1);
                 Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurstFX2").Type, 0, 0, Player.whoAmI, 0, 1);
                 Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurst" + starfarerOutfitVisible).Type, 0, 0, Player.whoAmI, 0, 1);
-
-
-
             }
             if (ruinedKingPrism)
             {
