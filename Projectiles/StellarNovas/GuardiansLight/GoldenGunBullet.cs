@@ -37,6 +37,12 @@ namespace StarsAbove.Projectiles.StellarNovas.GuardiansLight
 
 			return true;
 		}
+		public override void ModifyDamageHitbox(ref Rectangle hitbox)
+		{
+			hitbox.Width = 10;
+			hitbox.Height = 10;
+		}
+
 		public override void AI()
         {
 			Projectile.velocity *= 1.02f;
