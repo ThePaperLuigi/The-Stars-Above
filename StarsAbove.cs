@@ -279,7 +279,7 @@ namespace StarsAbove
 					new Dictionary<string, object>()
 					{
 						["spawnItems"] = ModContent.ItemType<Items.Consumables.MnemonicSigil>(),
-						["availability"] = DownedBossSystem.downedWarrior
+						//["availability"] = DownedBossSystem.downedWarrior,
 					}
 				);
 			}
