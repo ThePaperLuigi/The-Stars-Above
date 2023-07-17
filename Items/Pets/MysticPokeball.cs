@@ -39,7 +39,7 @@ namespace StarsAbove.Items.Pets
 		{
 			CreateRecipe(1)
 				.AddIngredient(ItemType<Materials.StellarRemnant>(), 10)
-				.DisableDecraft()
+				.AddCustomShimmerResult(ItemType<Materials.StellarRemnant>(), 3)
 				.AddTile(TileID.Anvils)
 				.Register();
 		}

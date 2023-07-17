@@ -44,8 +44,6 @@ namespace StarsAbove.Items.Loot
 		}
 		public override void ModifyItemLoot(ItemLoot itemLoot)
 		{
-			// We have to replicate the expert drops from MinionBossBody here via QuickSpawnItem
-
 			//itemLoot.Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<LightswornPrism>(), 7));
 			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<StellarFociGrabBagTier2>(), 10, 1, 1)).
 				OnFailedRoll(ItemDropRule.OneFromOptionsNotScalingWithLuck(1,

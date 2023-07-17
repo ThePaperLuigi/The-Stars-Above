@@ -11,6 +11,7 @@ using Terraria.Audio;
 using StarsAbove.Subworlds;
 using StarsAbove.Utilities;
 using System;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Consumables
 {
@@ -44,7 +45,7 @@ namespace StarsAbove.Items.Consumables
 			Item.width = 20;
 			Item.height = 20;
 			Item.maxStack = 1;
-			Item.rare = ItemRarityID.Red;
+			Item.rare = ModContent.GetInstance<StellarRarity>().Type;
 			Item.useAnimation = 45;
 			Item.useTime = 45;
 			Item.useStyle = ItemUseStyleID.HoldUp;

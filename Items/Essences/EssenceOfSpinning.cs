@@ -5,12 +5,12 @@ using Terraria.ModLoader;
 
 namespace StarsAbove.Items.Essences
 {
-    public class EssenceOfTheAegis : ModItem
+    public class EssenceOfSpinning : ModItem
 	{
 		public override void SetStaticDefaults() {
-			// DisplayName.SetDefault("Essence of the Aegis");
+			// DisplayName.SetDefault("Essence of Chemtech");
 			/* Tooltip.SetDefault("A gift from your Starfarer" +
-				"\nUtilized in the creation of 'Aegis Driver'" +
+				"\nUtilized in the creation of 'Dreadnought Chemtank'" +
 				$""); */
 
 			ItemID.Sets.ItemNoGravity[Item.type] = false;
