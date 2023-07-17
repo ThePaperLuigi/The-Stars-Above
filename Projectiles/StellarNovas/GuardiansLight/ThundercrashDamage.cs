@@ -50,6 +50,8 @@ namespace StarsAbove.Projectiles.StellarNovas.GuardiansLight
 			Player projOwner = Main.player[Projectile.owner];
 			projOwner.ClearBuff(BuffType<ThundercrashActive>());
 			projOwner.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
+			projOwner.fullRotation = 0f;
+
 			//Boom
 			SoundEngine.PlaySound(StarsAboveAudio.SFX_ThundercrashEnd, Projectile.Center);
 			for (int d = 0; d < 50; d++)
