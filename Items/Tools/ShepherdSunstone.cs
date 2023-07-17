@@ -93,7 +93,7 @@ namespace StarsAbove.Items.Tools
 				Main.dust[dust].velocity = player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 48f;
 			}
 			//add cooldown (de)buff
-			player.AddBuff(BuffType<ShepherdSunstoneCooldown>(), 36000)
+			player.AddBuff(BuffType<ShepherdSunstoneCooldown>(), 36000);
 			return true;
 		}
 		public override void AddRecipes()
