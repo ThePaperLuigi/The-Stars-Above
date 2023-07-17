@@ -486,7 +486,7 @@ Mods: {
 					90: This Essence is aspected to this world's star- your sun! Needless to say, the power of the sun would be quite the boon- let's see this thing in action!
 					91: Hmm, I'd advise healthy amounts of caution with this Essence- it's a Melee essence with high potential, but it looks like you're leaving your defenses open for it.
 					92: Looks to me like this Magic Essence has some powerful potential, but I'm not quite sure what it requires in turn... Perhaps you should give it a look.
-					93: You aren't going to believe this, but this Essence was sitting in an alleyway. Just sitting there! You should craft it and see what it makes- I'm curious too.
+					93: You aren't going to believe this, but someone gave this Essence to me- how is that possible? They said something like 'It's just a game, so it's OK.' What does that mean?
 					94: This Ranged-essence seems to lead to a classic rocket-launcher weapon- I've heard of using explosives for traversal, so it shouldn't hurt to try, right?
 					95: Well, this Magic Essence is pretty unique: you can draw directly onto the world to cause different effects to occur.
 					96: Looks like a yo-yo Essence is here- a Summon-type one as well. Seems to boast some helpful movement tools as well!
@@ -586,7 +586,7 @@ Mods: {
 					91: An Essence attuned to the power of our Sun- and it is quite radiant, indeed. Let's make good use of it.
 					92: This Essence exudes an unhealthy amount of madness- it's a Melee weapon that trades defensive prowess for offensive might. Do be careful.
 					93: A Magic-type essence. It seems to harbor incredible power, but it also seems to require sacrifices in return...
-					94: How can I say this...? Unlike the other Essences, this one was located in... an alley. Just sitting there. It was quite the departure from the norm.
+					94: How can I say this...? Unlike the other Essences, I felt a presence give this one to me. They said something like... 'It's just a game, so it's OK.'
 					95: It seems to be able to absorb hostile energy and use it to empower you in turn. I, too, am curious on how it looks.
 					96: This Ranged-type rocket launcher has a unique melee counterpart, but it requires you to- well, I hope you have strong legs.
 					97: Take into consideration this Magic essence: in short, it turns the world into a canvas you can interact and attack with.
@@ -3133,17 +3133,57 @@ Mods: {
 			Arbitration.DisplayName: Arbitration
 			AstralCell.DisplayName: Starcell
 			DummyEnemy.DisplayName: Dummy Enemy
-			PolluxBoss.DisplayName: Pollux, Baleborn Force
+
+			PolluxBoss: {
+				DisplayName: Pollux, Baleborn Force
+
+				BossChecklistIntegration: {
+					EntryName: "Dioskouroi, the Twin Forces"
+					SpawnInfo: "Defeat this strange foe through the Shattered Disk, obtained from your Starfarer after King Slime is defeated. This fight will be critical to progression later!"
+					DespawnMessage: ""
+				}
+			}
+
 			CastorBoss.DisplayName: Castor, Baleborn Force
 			Dioskouroi.DisplayName: Dioskouroi, the Twin Forces
 			NalhaunBoss.DisplayName: Nalhaun, the Burnished King
-			NalhaunBossPhase2.DisplayName: Nalhaun, Ruler of the Hollow World
+
+			NalhaunBossPhase2: {
+				DisplayName: Nalhaun, Ruler of the Hollow World
+
+				BossChecklistIntegration: {
+					EntryName: "Nalhaun, the Burnished King"
+					SpawnInfo: "Confront this aged monarch with the Ancient Crown, given to you by your Starfarer after Golem is defeated. (The Vagrant of Space and Time must have been defeated.)"
+					DespawnMessage: ""
+				}
+			}
+
 			PaintedAttendantA.DisplayName: Living Brush
 			PaintedAttendantB.DisplayName: Living Brush
-			Penthesilea.DisplayName: Penthesilea, the Witch of Ink
+
+			Penthesilea: {
+				DisplayName: Penthesilea, the Witch of Ink
+
+				BossChecklistIntegration: {
+					EntryName: "Penthesilea, the Witch of Ink"
+					SpawnInfo: "Face this fearsome foe with the Unsullied Canvas, given to you by your Starfarer after Plantera is bested. (The Vagrant of Space and Time must have been defeated.)"
+					DespawnMessage: ""
+				}
+			}
+
 			PrismLoot.DisplayName: Prismatic Core
 			SpectreOfLight.DisplayName: Spectre Of Light
-			TsukiyomiBoss.DisplayName: Tsukiyomi, the First Starfarer
+
+			TsukiyomiBoss: {
+				DisplayName: Tsukiyomi, the First Starfarer
+
+				BossChecklistIntegration: {
+					EntryName: "Tsukiyomi, the First Starfarer"
+					SpawnInfo: "The time has finally come. Craft all the Mnemonic Traces together with the Celestriad Root to create the Mnemonic Sigil, and use it to be taken to Tsukiyomi's boss arena."
+					DespawnMessage: ""
+				}
+			}
+
 			VagrantOfSpaceAndTime.DisplayName: The Vagrant of Space and Time
 			WarriorOfLight.DisplayName: The Warrior Of Light
 			Nalhaun.DisplayName: Mods.StarsAbove.NPCName.Nalhaun
@@ -3157,7 +3197,17 @@ Mods: {
 			Soulless.DisplayName: Soulless
 			Garridine.DisplayName: Garridine
 			Yojimbo.DisplayName: Yojimbo
-			VagrantBoss.DisplayName: The Vagrant of Space and Time
+
+			VagrantBoss: {
+				DisplayName: The Vagrant of Space and Time
+
+				BossChecklistIntegration: {
+					EntryName: "The Vagrant of Space and Time"
+					SpawnInfo: "Defeat this strange foe through the Shattered Disk, obtained from your Starfarer after King Slime is defeated. This fight will be critical to progression later!"
+					DespawnMessage: ""
+				}
+			}
+
 			DioskouroiWallsNPC.DisplayName: Dioskouroi Walls N P C
 			NalhaunPhase2WallsNPC.DisplayName: Nalhaun Phase2 Walls N P C
 			VagrantWalls.DisplayName: Vagrant Walls
@@ -7805,7 +7855,7 @@ Mods: {
 
 			QuantumButterflyLegs: {
 				DisplayName: Quantum Butterfly Boots
-				Tooltip: "'What's next?'"
+				Tooltip: ""
 			}
 
 			BaselessBladeBody: {
@@ -7825,6 +7875,61 @@ Mods: {
 
 			SigilOfHope: {
 				DisplayName: Sigil Of Hope
+				Tooltip: ""
+			}
+
+			OceanHuedHunterBody: {
+				DisplayName: Ocean-Hued Hunter Vestments
+				Tooltip: "'Perfect for fighting Seaborn'"
+			}
+
+			OceanHuedHunterHead: {
+				DisplayName: Ocean-Hued Hunter Tricorn
+				Tooltip: ""
+			}
+
+			OceanHuedHunterLegs: {
+				DisplayName: Ocean-Hued Hunter Leggings
+				Tooltip: ""
+			}
+
+			StarpopBody: {
+				DisplayName: Starpop Body
+				Tooltip: "'You too can be a diamond in the rough'"
+			}
+
+			StarpopHead: {
+				DisplayName: Starpop Head
+				Tooltip: ""
+			}
+
+			StarpopLegs: {
+				DisplayName: Starpop Legs
+				Tooltip: ""
+			}
+
+			EssenceOfDreams: {
+				DisplayName: Essence Of Dreams
+				Tooltip: ""
+			}
+
+			EssenceOfKinetics: {
+				DisplayName: Essence Of Kinetics
+				Tooltip: ""
+			}
+
+			EssenceOfSpinning: {
+				DisplayName: Essence Of Spinning
+				Tooltip: ""
+			}
+
+			EssenceOfTheSoldier: {
+				DisplayName: Essence Of The Soldier
+				Tooltip: ""
+			}
+
+			EmberFlask: {
+				DisplayName: Ember Flask
 				Tooltip: ""
 			}
 		}
@@ -10907,50 +11012,17 @@ Mods: {
 				DisplayName: Debug Infinite Nova
 				Description: Mods.StarsAbove.Buffs.DebugInfiniteNova.Description
 			}
-		}
 
-		BossChecklist: {
-			WarriorOfLight: {
-				SpawnInfo: Dispel the unending Light through defeating this foe, summoned with your Starfarer's help from the Moon Lord's corpse. (The Vagrant of Space and Time must have been defeated.)
-				DespawnMessage: The Flood of Light has consumed all...
+			EmberFlaskUsed: {
+				DisplayName: Ember Flask Used
+				Description: The Ember Flask is empty and will only refill out of combat
 			}
 
-			VagrantOfSpaceAndTime: {
-				SpawnInfo: Defeat this strange foe through the Shattered Disk, obtained from the Wall of Flesh. This fight will be critical to progression later!
-				DespawnMessage: Space and time return to normal...
-			}
-
-			Nalhaun: {
-				SpawnInfo: Confront this aged monarch with the Ancient Crown, given to you by your Starfarer after any Mechanical Boss is defeated. (The Vagrant of Space and Time must have been defeated.)
-				DespawnMessage: The king's crimson blade rings true yet again...
-			}
-
-			Penthesilea: {
-				SpawnInfo: Face this fearsome foe with the Unsullied Canvas, given to you by your Starfarer after Plantera is bested. (The Vagrant of Space and Time must have been defeated.)
-				DespawnMessage: You have been splattered away...
-			}
-
-			Dioskouroi: {
-				SpawnInfo: Duel(?) these powerful twin demons through defeating a mechanical boss and obtaining the Twincrux Pendant.
-				DespawnMessage: Without binds, the Dioskouroi move their conflict elsewhere...
-			}
-
-			Arbitration: {
-				SpawnInfo: This foe embodies true fear... Discover this foe through visiting an Anomaly location with the Astrolabe's help. Due to this boss being fought within a Subworld under normal conditions, Boss Checklist progress must be manual.
-				DespawnMessage: ...
-			}
-
-			TsukiyomiBoss: {
-				SpawnInfo: The time has finally come. Craft all the Mnemonic Traces together with the Celestriad Root to create the Mnemonic Sigil, and use it to be taken to Tsukiyomi's boss arena. Due to this boss being fought within a Subworld under normal conditions, Boss Checklist progress must be manual.
-				DespawnMessage: ...
-			}
-
-			Tsukiyomi2: {
-				SpawnInfo: Mods.StarsAbove.BossChecklist.Tsukiyomi2.SpawnInfo
-				DespawnMessage: Mods.StarsAbove.BossChecklist.Tsukiyomi2.DespawnMessage
+			ShepherdSunstoneCooldown: {
+				DisplayName: Shepherd Sunstone Cooldown
+				Description: ""
 			}
 		}
-
 		Bestiary: {
 			Arbitration: A horrifying figure encountered upon an Anomaly planet. While it appears evil to a human, eldritch anomalies such as these know not the concept of malice, only how to consume.
 			AstralCell: A strange blue object. It eats water vapor.
@@ -10970,7 +11042,7 @@ Mods: {
 			Garridine: A lupine demihuman you discovered residing on a far-flung starship, a blacksmith and gadgeteer. Her manner of speaking belies a high-class upbringing, but the facade tends to drop when she flubs her words (which is often.) Strangely protective of the watch by her side.
 			AmethystHeadpiercer: Foot soldier of a wide-reaching paramilitary organization, referred to as the Amethyst. Equipped with a Vortexian powersuit fitted with a jetpack for ease of travel, even in the vacuum of space.
 			AmethystSwordsinner: Foot soldier of a wide-reaching paramilitary organization, referred to as the Amethyst. Utilizes a hardlight blade with ferocious efficiency, specifically for countering ranged offense.
-			Tsukiyomi2: Mods.StarsAbove.Bestiary.Tsukiyomi2
+			Tsukiyomi2: ???
 		}
 
 		Prefix: {
@@ -11069,8 +11141,8 @@ Mods: {
 		}
 
 		Keybinds: {
-			"Stellar Nova.DisplayName": Stellar  Nova
-			"Weapon Action.DisplayName": Weapon  Action
+			"Stellar Nova.DisplayName": Stellar Nova
+			"Weapon Action.DisplayName": Weapon Action
 		}
 
 		Prefixes: {

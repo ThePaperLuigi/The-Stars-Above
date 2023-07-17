@@ -3133,17 +3133,57 @@ Mods: {
 			Arbitration.DisplayName: 仲裁
 			AstralCell.DisplayName: 群星细胞
 			DummyEnemy.DisplayName: 假想木偶
-			PolluxBoss.DisplayName: 冰河灾裔，波鲁克斯
+
+			PolluxBoss: {
+				DisplayName: 冰河灾裔，波鲁克斯
+
+				BossChecklistIntegration: {
+					// EntryName: "{$Mods.StarsAbove.NPCName.Dioskouroi}"
+					// SpawnInfo: "{$Mods.StarsAbove.BossChecklist.Dioskouroi.SpawnInfo}"
+					// DespawnMessage: "{$Mods.StarsAbove.BossChecklist.Dioskouroi.DespawnMessage}"
+				}
+			}
+
 			CastorBoss.DisplayName: 炽炎灾裔，卡斯托尔
 			Dioskouroi.DisplayName: 双子星力，狄俄斯库洛伊
 			NalhaunBoss.DisplayName: 复光之君，纳尔赫恩
-			NalhaunBossPhase2.DisplayName: 空洞世界的统治者，纳尔赫恩
+
+			NalhaunBossPhase2: {
+				DisplayName: 空洞世界的统治者，纳尔赫恩
+
+				BossChecklistIntegration: {
+					// EntryName: "{$Mods.StarsAbove.NPCName.NalhaunBoss}"
+					// SpawnInfo: "{$Mods.StarsAbove.BossChecklist.Nalhaun.SpawnInfo}"
+					// DespawnMessage: "{$Mods.StarsAbove.BossChecklist.Nalhaun.DespawnMessage}"
+				}
+			}
+
 			PaintedAttendantA.DisplayName: 复生画刷
 			PaintedAttendantB.DisplayName: 复生画刷
-			Penthesilea.DisplayName: 多彩魔女，彭忒希勒娅
+
+			Penthesilea: {
+				DisplayName: 多彩魔女，彭忒希勒娅
+
+				BossChecklistIntegration: {
+					// EntryName: "{$Mods.StarsAbove.NPCName.Penthesilea}"
+					// SpawnInfo: "{$Mods.StarsAbove.BossChecklist.Penthesilea.SpawnInfo}"
+					// DespawnMessage: "{$Mods.StarsAbove.BossChecklist.Penthesilea.DespawnMessage}"
+				}
+			}
+
 			PrismLoot.DisplayName: 棱镜核心
 			SpectreOfLight.DisplayName: 光之幽灵
-			TsukiyomiBoss.DisplayName: 源初之星海旅者，月读
+
+			TsukiyomiBoss: {
+				DisplayName: 源初之星海旅者，月读
+
+				BossChecklistIntegration: {
+					// EntryName: "{$Mods.StarsAbove.NPCName.TsukiyomiBoss}"
+					// SpawnInfo: "{$Mods.StarsAbove.BossChecklist.Tsukiyomi2.SpawnInfo}"
+					// DespawnMessage: "{$Mods.StarsAbove.BossChecklist.Tsukiyomi2.DespawnMessage}"
+				}
+			}
+
 			VagrantOfSpaceAndTime.DisplayName: 时空流浪者
 			WarriorOfLight.DisplayName: 光之战士
 			Nalhaun.DisplayName: Mods.StarsAbove.NPCName.Nalhaun
@@ -3157,7 +3197,17 @@ Mods: {
 			Soulless.DisplayName: 失魂
 			Garridine.DisplayName: 嘉里丹妮
 			Yojimbo.DisplayName: 佑今波
-			VagrantBoss.DisplayName: 时空流浪者
+
+			VagrantBoss: {
+				DisplayName: 时空流浪者
+
+				BossChecklistIntegration: {
+					// EntryName: "{$Mods.StarsAbove.NPCName.VagrantOfSpaceAndTime}"
+					// SpawnInfo: "{$Mods.StarsAbove.BossChecklist.VagrantOfSpaceAndTime.SpawnInfo}"
+					// DespawnMessage: "{$Mods.StarsAbove.BossChecklist.VagrantOfSpaceAndTime.DespawnMessage}"
+				}
+			}
+
 			DioskouroiWallsNPC.DisplayName: 狄俄斯库洛伊墙 N P C
 			NalhaunPhase2WallsNPC.DisplayName: 纳尔赫恩二阶段墙 N P C
 			VagrantWalls.DisplayName: 流浪者墙
@@ -7799,6 +7849,61 @@ Mods: {
 					However, rewards will be reduced
 					'''
 			}
+
+			OceanHuedHunterBody: {
+				// DisplayName: Ocean-Hued Hunter Vestments
+				// Tooltip: "'Perfect for fighting Seaborn'"
+			}
+
+			OceanHuedHunterHead: {
+				// DisplayName: Ocean-Hued Hunter Tricorn
+				// Tooltip: ""
+			}
+
+			OceanHuedHunterLegs: {
+				// DisplayName: Ocean-Hued Hunter Leggings
+				// Tooltip: ""
+			}
+
+			StarpopBody: {
+				// DisplayName: Starpop Body
+				// Tooltip: "'You too can be a diamond in the rough'"
+			}
+
+			StarpopHead: {
+				// DisplayName: Starpop Head
+				// Tooltip: ""
+			}
+
+			StarpopLegs: {
+				// DisplayName: Starpop Legs
+				// Tooltip: ""
+			}
+
+			EssenceOfDreams: {
+				// DisplayName: Essence Of Dreams
+				// Tooltip: ""
+			}
+
+			EssenceOfKinetics: {
+				// DisplayName: Essence Of Kinetics
+				// Tooltip: ""
+			}
+
+			EssenceOfSpinning: {
+				// DisplayName: Essence Of Spinning
+				// Tooltip: ""
+			}
+
+			EssenceOfTheSoldier: {
+				// DisplayName: Essence Of The Soldier
+				// Tooltip: ""
+			}
+
+			EmberFlask: {
+				// DisplayName: Ember Flask
+				// Tooltip: ""
+			}
 		}
 
 		UIElements: {
@@ -10870,6 +10975,16 @@ Mods: {
 			DebugInfiniteNova: {
 				// DisplayName: Debug Infinite Nova
 				// Description: Mods.StarsAbove.Buffs.DebugInfiniteNova.Description
+			}
+
+			EmberFlaskUsed: {
+				// DisplayName: Ember Flask Used
+				// Description: Mods.StarsAbove.Buffs.EmberFlaskUsed.Description
+			}
+
+			ShepherdSunstoneCooldown: {
+				// DisplayName: Shepherd Sunstone Cooldown
+				// Description: Mods.StarsAbove.Buffs.ShepherdSunstoneCooldown.Description
 			}
 		}
 

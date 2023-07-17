@@ -486,7 +486,7 @@ Mods: {
 					// 90: This Essence is aspected to this world's star- your sun! Needless to say, the power of the sun would be quite the boon- let's see this thing in action!
 					// 91: Hmm, I'd advise healthy amounts of caution with this Essence- it's a Melee essence with high potential, but it looks like you're leaving your defenses open for it.
 					// 92: Looks to me like this Magic Essence has some powerful potential, but I'm not quite sure what it requires in turn... Perhaps you should give it a look.
-					// 93: You aren't going to believe this, but this Essence was sitting in an alleyway. Just sitting there! You should craft it and see what it makes- I'm curious too.
+					// 93: You aren't going to believe this, but someone gave this Essence to me- how is that possible? They said something like 'It's just a game, so it's OK.' What does that mean?
 					// 94: This Ranged-essence seems to lead to a classic rocket-launcher weapon- I've heard of using explosives for traversal, so it shouldn't hurt to try, right?
 					// 95: Well, this Magic Essence is pretty unique: you can draw directly onto the world to cause different effects to occur.
 					// 96: Looks like a yo-yo Essence is here- a Summon-type one as well. Seems to boast some helpful movement tools as well!
@@ -586,7 +586,7 @@ Mods: {
 					// 91: An Essence attuned to the power of our Sun- and it is quite radiant, indeed. Let's make good use of it.
 					// 92: This Essence exudes an unhealthy amount of madness- it's a Melee weapon that trades defensive prowess for offensive might. Do be careful.
 					// 93: A Magic-type essence. It seems to harbor incredible power, but it also seems to require sacrifices in return...
-					// 94: How can I say this...? Unlike the other Essences, this one was located in... an alley. Just sitting there. It was quite the departure from the norm.
+					// 94: How can I say this...? Unlike the other Essences, I felt a presence give this one to me. They said something like... 'It's just a game, so it's OK.'
 					// 95: It seems to be able to absorb hostile energy and use it to empower you in turn. I, too, am curious on how it looks.
 					// 96: This Ranged-type rocket launcher has a unique melee counterpart, but it requires you to- well, I hope you have strong legs.
 					// 97: Take into consideration this Magic essence: in short, it turns the world into a canvas you can interact and attack with.
@@ -3133,17 +3133,57 @@ Mods: {
 			// Arbitration.DisplayName: Arbitration
 			AstralCell.DisplayName: Célula Astral
 			DummyEnemy.DisplayName: Maniquí
-			// PolluxBoss.DisplayName: Pollux, Baleborn Force
+
+			PolluxBoss: {
+				// DisplayName: Pollux, Baleborn Force
+
+				BossChecklistIntegration: {
+					// EntryName: "{$Mods.StarsAbove.NPCName.Dioskouroi}"
+					// SpawnInfo: "{$Mods.StarsAbove.BossChecklist.Dioskouroi.SpawnInfo}"
+					// DespawnMessage: "{$Mods.StarsAbove.BossChecklist.Dioskouroi.DespawnMessage}"
+				}
+			}
+
 			// CastorBoss.DisplayName: Castor, Baleborn Force
 			// Dioskouroi.DisplayName: Dioskouroi, the Twin Forces
 			// NalhaunBoss.DisplayName: Nalhaun, the Burnished King
-			// NalhaunBossPhase2.DisplayName: Nalhaun, Ruler of the Hollow World
+
+			NalhaunBossPhase2: {
+				// DisplayName: Nalhaun, Ruler of the Hollow World
+
+				BossChecklistIntegration: {
+					// EntryName: "{$Mods.StarsAbove.NPCName.NalhaunBoss}"
+					// SpawnInfo: "{$Mods.StarsAbove.BossChecklist.Nalhaun.SpawnInfo}"
+					// DespawnMessage: "{$Mods.StarsAbove.BossChecklist.Nalhaun.DespawnMessage}"
+				}
+			}
+
 			PaintedAttendantA.DisplayName: Pincel Vivo
 			PaintedAttendantB.DisplayName: Pincel Vivo
-			Penthesilea.DisplayName: Pentesilia, La Bruja de Tinta
+
+			Penthesilea: {
+				DisplayName: Pentesilia, La Bruja de Tinta
+
+				BossChecklistIntegration: {
+					// EntryName: "{$Mods.StarsAbove.NPCName.Penthesilea}"
+					// SpawnInfo: "{$Mods.StarsAbove.BossChecklist.Penthesilea.SpawnInfo}"
+					// DespawnMessage: "{$Mods.StarsAbove.BossChecklist.Penthesilea.DespawnMessage}"
+				}
+			}
+
 			PrismLoot.DisplayName: Núcleo Prismático
 			SpectreOfLight.DisplayName: Espectro de Luz
-			// TsukiyomiBoss.DisplayName: Tsukiyomi, the First Starfarer
+
+			TsukiyomiBoss: {
+				// DisplayName: Tsukiyomi, the First Starfarer
+
+				BossChecklistIntegration: {
+					// EntryName: "{$Mods.StarsAbove.NPCName.TsukiyomiBoss}"
+					// SpawnInfo: "{$Mods.StarsAbove.BossChecklist.Tsukiyomi2.SpawnInfo}"
+					// DespawnMessage: "{$Mods.StarsAbove.BossChecklist.Tsukiyomi2.DespawnMessage}"
+				}
+			}
+
 			VagrantOfSpaceAndTime.DisplayName: El Vagabundo del Espacio y Tiempo
 			WarriorOfLight.DisplayName: Guerrero de la Luz
 			Nalhaun.DisplayName: Nalhaun, El Rey Bruñido
@@ -3157,7 +3197,17 @@ Mods: {
 			// Soulless.DisplayName: Soulless
 			// Garridine.DisplayName: Garridine
 			// Yojimbo.DisplayName: Yojimbo
-			// VagrantBoss.DisplayName: The Vagrant of Space and Time
+
+			VagrantBoss: {
+				// DisplayName: The Vagrant of Space and Time
+
+				BossChecklistIntegration: {
+					// EntryName: "{$Mods.StarsAbove.NPCName.VagrantOfSpaceAndTime}"
+					// SpawnInfo: "{$Mods.StarsAbove.BossChecklist.VagrantOfSpaceAndTime.SpawnInfo}"
+					// DespawnMessage: "{$Mods.StarsAbove.BossChecklist.VagrantOfSpaceAndTime.DespawnMessage}"
+				}
+			}
+
 			// DioskouroiWallsNPC.DisplayName: Dioskouroi Walls N P C
 			// NalhaunPhase2WallsNPC.DisplayName: Nalhaun Phase2 Walls N P C
 			// VagrantWalls.DisplayName: Vagrant Walls
@@ -7715,7 +7765,7 @@ Mods: {
 
 			QuantumButterflyLegs: {
 				// DisplayName: Quantum Butterfly Boots
-				// Tooltip: "'What's next?'"
+				// Tooltip: ""
 			}
 
 			BaselessBladeBody: {
@@ -7735,6 +7785,61 @@ Mods: {
 
 			SigilOfHope: {
 				// DisplayName: Sigil Of Hope
+				// Tooltip: ""
+			}
+
+			OceanHuedHunterBody: {
+				// DisplayName: Ocean-Hued Hunter Vestments
+				// Tooltip: "'Perfect for fighting Seaborn'"
+			}
+
+			OceanHuedHunterHead: {
+				// DisplayName: Ocean-Hued Hunter Tricorn
+				// Tooltip: ""
+			}
+
+			OceanHuedHunterLegs: {
+				// DisplayName: Ocean-Hued Hunter Leggings
+				// Tooltip: ""
+			}
+
+			StarpopBody: {
+				// DisplayName: Starpop Body
+				// Tooltip: "'You too can be a diamond in the rough'"
+			}
+
+			StarpopHead: {
+				// DisplayName: Starpop Head
+				// Tooltip: ""
+			}
+
+			StarpopLegs: {
+				// DisplayName: Starpop Legs
+				// Tooltip: ""
+			}
+
+			EssenceOfDreams: {
+				// DisplayName: Essence Of Dreams
+				// Tooltip: ""
+			}
+
+			EssenceOfKinetics: {
+				// DisplayName: Essence Of Kinetics
+				// Tooltip: ""
+			}
+
+			EssenceOfSpinning: {
+				// DisplayName: Essence Of Spinning
+				// Tooltip: ""
+			}
+
+			EssenceOfTheSoldier: {
+				// DisplayName: Essence Of The Soldier
+				// Tooltip: ""
+			}
+
+			EmberFlask: {
+				// DisplayName: Ember Flask
 				// Tooltip: ""
 			}
 		}
@@ -10804,6 +10909,16 @@ Mods: {
 				// DisplayName: Debug Infinite Nova
 				// Description: Mods.StarsAbove.Buffs.DebugInfiniteNova.Description
 			}
+
+			EmberFlaskUsed: {
+				// DisplayName: Ember Flask Used
+				// Description: Mods.StarsAbove.Buffs.EmberFlaskUsed.Description
+			}
+
+			ShepherdSunstoneCooldown: {
+				// DisplayName: Shepherd Sunstone Cooldown
+				// Description: Mods.StarsAbove.Buffs.ShepherdSunstoneCooldown.Description
+			}
 		}
 
 		BossChecklist: {
@@ -10838,7 +10953,7 @@ Mods: {
 			}
 
 			TsukiyomiBoss: {
-				// SpawnInfo: The time has finally come. Craft all the Mnemonic Traces together with the Celestriad Root to create the Mnemonic Sigil, and use it to be taken to Tsukiyomi's boss arena. Due to this boss being fought within a Subworld under normal conditions, Boss Checklist progress must be manual.
+				// SpawnInfo: The time has finally come. Craft all the Mnemonic Traces together with the Celestriad Root to create the Mnemonic Sigil, and use it to be taken to Tsukiyomi's boss arena.
 				// DespawnMessage: ...
 			}
 
@@ -10966,8 +11081,8 @@ Mods: {
 		}
 
 		Keybinds: {
-			// "Stellar Nova.DisplayName": Stellar  Nova
-			// "Weapon Action.DisplayName": Weapon  Action
+			// "Stellar Nova.DisplayName": Stellar Nova
+			// "Weapon Action.DisplayName": Weapon Action
 		}
 
 		Prefixes: {
