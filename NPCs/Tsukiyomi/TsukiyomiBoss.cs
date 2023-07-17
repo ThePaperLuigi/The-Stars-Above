@@ -1132,8 +1132,13 @@ namespace StarsAbove.NPCs.Tsukiyomi
 				}
 				if (modPlayer.tsukiyomiDialogue == 0)
 				{
-					if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
-					modPlayer.tsukiyomiDialogue = 1;
+					//Force open the dialogue.
+					modPlayer.chosenDialogue = 73;
+					modPlayer.tsukiyomiDialogue = 2;
+					modPlayer.dialoguePrep = true;
+					modPlayer.starfarerDialogue = true;
+					//if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+					modPlayer.tsukiyomiDialogue = 2;
 				}
 				
 				NPC.life = 0;
