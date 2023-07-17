@@ -23,7 +23,7 @@ namespace StarsAbove.Items.Tools
 			Item.rare = ModContent.GetInstance<StellarSpoilsRarity>().Type; // Custom Rarity
 			Item.useAnimation = 45;
 			Item.useTime = 45;
-			Item.useStyle = ItemUseStyleID.HoldUp;
+			Item.useStyle = ItemUseStyleID.DrinkLiquid;
 			Item.UseSound = SoundID.Item44;
 			Item.consumable = false;
 			Item.ResearchUnlockCount = 1;
@@ -73,7 +73,11 @@ namespace StarsAbove.Items.Tools
 		}
 		public override void AddRecipes()
 		{
-			
+			CreateRecipe(1)
+				.AddIngredient(ItemType<Materials.StellarRemnant>(), 40)
+				.AddCustomShimmerResult(ItemType<Materials.StellarRemnant>(), 3)
+				.AddTile(TileID.Anvils)
+				.Register();
 		}
 	}
 }

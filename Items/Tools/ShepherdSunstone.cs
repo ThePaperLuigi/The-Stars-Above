@@ -98,7 +98,11 @@ namespace StarsAbove.Items.Tools
 		}
 		public override void AddRecipes()
 		{
-			
+			CreateRecipe(1)
+				.AddIngredient(ItemType<Materials.StellarRemnant>(), 40)
+				.AddCustomShimmerResult(ItemType<Materials.StellarRemnant>(), 3)
+				.AddTile(TileID.Anvils)
+				.Register();
 		}
 	}
 }
