@@ -162,6 +162,16 @@ namespace StarsAbove
 			ModLoader.TryGetMod("BossChecklist", out bossChecklist);
 			Mod musicDisplay;
 			ModLoader.TryGetMod("MusicDisplay", out musicDisplay);
+
+			Func<bool> CanSeeTsuki = () =>
+			{
+				bool WarriorDowned = DownedBossSystem.downedWarrior;
+
+				bool canSeeBoss = WarriorDowned;
+
+				return canSeeBoss;
+			};
+
 			if (bossChecklist != null)
 			{
 				//Vagrant of Space and Time
@@ -279,7 +289,8 @@ namespace StarsAbove
 					new Dictionary<string, object>()
 					{
 						["spawnItems"] = ModContent.ItemType<Items.Consumables.MnemonicSigil>(),
-						//["availability"] = DownedBossSystem.downedWarrior,
+						["availability"] = CanSeeTsuki,
+
 					}
 				);
 			}
