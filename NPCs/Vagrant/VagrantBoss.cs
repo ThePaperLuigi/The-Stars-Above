@@ -1,5 +1,7 @@
 
 using Microsoft.Xna.Framework;
+using StarsAbove.Items.BossBags;
+using StarsAbove.Items.Loot;
 using StarsAbove.NPCs.OffworldNPCs;
 using StarsAbove.Projectiles.Bosses.Vagrant;
 using System;
@@ -555,11 +557,9 @@ namespace StarsAbove.NPCs.Vagrant
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
 			// Do NOT misuse the ModifyNPCLoot and OnKill hooks: the former is only used for registering drops, the latter for everything else
-			//Chance for a Prism
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.SpatialPrism>(), 4));
 
 			// Add the treasure bag using ItemDropRule.BossBag (automatically checks for expert mode)
-			//npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<VagrantBossBag>()));
+			npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<VagrantBossBag>()));
 
 			// Trophies are spawned with 1/10 chance
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.BossLoot.VagrantTrophyItem>(), 10));
@@ -574,9 +574,7 @@ namespace StarsAbove.NPCs.Vagrant
 			LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
 			LeadingConditionRule ExpertRule = new LeadingConditionRule(new Conditions.IsExpert());
 
-			// Notice we use notExpertRule.OnSuccess instead of npcLoot.Add so it only applies in normal mode
-			// Boss masks are spawned with 1/7 chance
-			//notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<MinionBossMask>(), 7));
+			StellarSpoils.SetupBossStellarSpoils(npcLoot);
 
 			notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.SpatialPrism>(), 4));
 

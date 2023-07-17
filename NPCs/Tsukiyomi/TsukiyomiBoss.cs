@@ -26,6 +26,7 @@ using StarsAbove.Projectiles.Bosses.Tsukiyomi;
 using StarsAbove.Projectiles;
 using SubworldLibrary;
 using StarsAbove.NPCs.WarriorOfLight;
+using StarsAbove.Items.Loot;
 
 namespace StarsAbove.NPCs.Tsukiyomi
 {
@@ -1181,7 +1182,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 			npcLoot.Add(ExpertRule);
 			npcLoot.Add(notExpertRule);*/
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Materials.CelestialPrincessGenesisPrecursor>(), 4));
-
+			StellarSpoils.SetupBossStellarSpoils(npcLoot);
 		}
 		
 		private void SpawnAnimation()

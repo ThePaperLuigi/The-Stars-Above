@@ -490,6 +490,12 @@ namespace StarsAbove
         public int ManiacalWeaponDialogue = 0;
         public int AuthorityWeaponDialogue = 0;
 
+        //v1.5
+        public int KineticWeaponDialogue = 0;
+        public int DreamerWeaponDialogue = 0;
+        public int SoldierWeaponDialogue = 0;
+        public int TrickspinWeaponDialogue = 0;
+
 
 
         //Subworld dialogues
@@ -1617,6 +1623,7 @@ namespace StarsAbove
         public override void OnEnterWorld()
         {
             SubworldSystem.noReturn = false; //Fix missing save and quit bug?
+
 
             if (Player.whoAmI == Main.myPlayer && enableWorldLock)
             {
@@ -3182,6 +3189,7 @@ namespace StarsAbove
                     NewStellarArrayAbility = true;
 
                 }
+                
                 if (NPC.downedBoss3 && SkeletonDialogue == 0)
                 {
                     SkeletonDialogue = 1;
@@ -3365,7 +3373,8 @@ namespace StarsAbove
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                     NewDiskDialogue = true;
 
-                    NewStellarNova = true;
+                    
+
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                     NewStellarArrayAbility = true;
 
@@ -3407,25 +3416,19 @@ namespace StarsAbove
                         //if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                         //NewStellarArrayAbility = true;
                     }
-
-
-
                 }
                 if (DownedBossSystem.downedTsuki && tsukiyomiDialogue == 0)
                 {
-                    tsukiyomiDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
-                    NewDiskDialogue = true;
-
-
-
-
-
+                    //tsukiyomiDialogue = 1;
+                    //NewDiskDialogue = true;
                 }
+
                 if(tsukiyomiDialogue >= 1)
                 {
                     if(edingenesisquasar == 0)
                     {
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.NewNova"), 241, 255, 180); }
+
                         edingenesisquasar = 1;
                     }
                 }
@@ -3507,7 +3510,6 @@ namespace StarsAbove
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                         NewStellarArrayAbility = true;
                     }
-                    NewStellarNova = true;
 
                 }
                 if (NPC.downedMoonlord && MoonLordDialogue == 0)
@@ -3570,13 +3572,14 @@ namespace StarsAbove
                 if (DownedBossSystem.downedVagrant && vagrantDialogue == 0)
                 {
                     vagrantDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("Stellar Novas have been unlocked!"), 255, 225, 107); }
 
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                     NewDiskDialogue = true;
 
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                     NewStellarArrayAbility = true;
+
+                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.NovaUnlocked"), 241, 255, 180); }
                     NewStellarNova = true;
 
 
@@ -3627,7 +3630,7 @@ namespace StarsAbove
 
                 }
                 //Boss Spawn items
-                if (vagrantBossItemDialogue == 0 && Player.ZoneMeteor)
+                if (vagrantBossItemDialogue == 0 && NPC.downedBoss1)
                 {
                     vagrantBossItemDialogue = 1;
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 151, 255, 90); }
@@ -4291,7 +4294,6 @@ namespace StarsAbove
                 }
                 if (Main.hardMode)
                 {
-
                     if ( healthyConfidence == 0)
                     {
                          healthyConfidence = 1;
@@ -4299,17 +4301,32 @@ namespace StarsAbove
                 }
                 if (DownedBossSystem.downedVagrant)
                 {
-
                     novaGaugeUnlocked = true;
                     if (prototokia == 0)
                     {
                         prototokia = 1;
                     }
                 }
-                /*if(novaGaugeUnlocked && Main.hardMode)
+                if (NPC.downedBoss2)
                 {
-                    DownedBossSystem.downedVagrant = true;
-                }*/
+                    if (unlimitedbladeworks == 0)
+                    {
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.NewNova"), 241, 255, 180); }
+                        NewStellarNova = true;
+                        unlimitedbladeworks = 1;
+                    }
+
+                }
+                if (NPC.downedBoss3 || Player.ZoneMeteor)
+                {
+                    if (guardianslight == 0)
+                    {
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.NewNova"), 241, 255, 180); }
+                        NewStellarNova = true;
+                        guardianslight = 1;
+                    }
+
+                }
                 if (DownedBossSystem.downedNalhaun)
                 {
                     if (butchersdozen == 0)
@@ -4318,6 +4335,8 @@ namespace StarsAbove
                     }
                     if (laevateinn == 0)
                     {
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.NewNova"), 241, 255, 180); }
+                        NewStellarNova = true;
                         laevateinn = 1;
                     }
                 }
@@ -4329,6 +4348,8 @@ namespace StarsAbove
                     }
                     if (gardenofavalon == 0)
                     {
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.NewNova"), 241, 255, 180); }
+                        NewStellarNova = true;
                         gardenofavalon = 1;
                     }
                 }

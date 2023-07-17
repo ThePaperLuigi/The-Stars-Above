@@ -7912,6 +7912,16 @@ Mods: {
 					'Praise the sun!'
 					''' */
 			}
+
+			GarmentsOfWinterRainAttire: {
+				// DisplayName: Garments Of Winter Rain Attire
+				// Tooltip: ""
+			}
+
+			SeventhSigilAutumnAttire: {
+				// DisplayName: Seventh Sigil Autumn Attire
+				// Tooltip: ""
+			}
 		}
 
 		UIElements: {

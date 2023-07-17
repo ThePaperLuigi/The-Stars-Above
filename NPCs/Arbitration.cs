@@ -13,6 +13,7 @@ using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Conditions = Terraria.GameContent.ItemDropRules.Conditions;
 using StarsAbove.Items.BossBags;
+using StarsAbove.Items.Loot;
 
 namespace StarsAbove.NPCs
 {
@@ -151,9 +152,7 @@ namespace StarsAbove.NPCs
             // All our drops here are based on "not expert", meaning we use .OnSuccess() to add them into the rule, which then gets added
             LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
 
-            // Notice we use notExpertRule.OnSuccess instead of npcLoot.Add so it only applies in normal mode
-            // Boss masks are spawned with 1/7 chance
-            //notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<MinionBossMask>(), 7));
+            StellarSpoils.SetupBossStellarSpoils(npcLoot);
 
             notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.VoidsentPrism>(), 4));
 

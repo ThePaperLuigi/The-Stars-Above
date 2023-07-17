@@ -9,6 +9,7 @@ using StarsAbove.NPCs;
 using StarsAbove.Items.Prisms;
 using Terraria.GameContent.ItemDropRules;
 using StarsAbove.Items.Materials;
+using StarsAbove.Items.Loot;
 
 namespace StarsAbove.Items.BossBags
 {
@@ -46,7 +47,7 @@ namespace StarsAbove.Items.BossBags
 		{
 			// We have to replicate the expert drops from MinionBossBody here via QuickSpawnItem
 
-			//itemLoot.Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<LightswornPrism>(), 7));
+			StellarSpoils.SetupStellarSpoils(itemLoot);
 
 			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<VoidsentPrism>(), 4, 1, 1));
 			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<TwilightNeedle>(), 4, 1, 1));

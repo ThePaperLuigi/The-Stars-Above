@@ -27,6 +27,7 @@ using StarsAbove.Projectiles;
 using SubworldLibrary;
 using StarsAbove.Projectiles.Bosses.Dioskouroi;
 using StarsAbove.Items.BossBags;
+using StarsAbove.Items.Loot;
 
 namespace StarsAbove.NPCs.Dioskouroi
 {
@@ -500,7 +501,7 @@ namespace StarsAbove.NPCs.Dioskouroi
 
 			// ItemDropRule.MasterModeCommonDrop for the relic
 			leadingConditionRule.OnSuccess(npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<Items.Placeable.BossLoot.DioskouroiBossRelicItem>())));
-
+			StellarSpoils.SetupBossStellarSpoils(npcLoot);
 			// ItemDropRule.MasterModeDropOnAllPlayers for the pet
 			//npcLoot.Add(ItemDropRule.MasterModeDropOnAllPlayers(ModContent.ItemType<MinionBossPetItem>(), 4));
 

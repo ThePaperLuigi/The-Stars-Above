@@ -23,6 +23,7 @@ using StarsAbove.Buffs;
 using StarsAbove.Utilities;
 using StarsAbove.Projectiles.Bosses.WarriorOfLight;
 using Terraria.Graphics.Shaders;
+using StarsAbove.Items.Loot;
 
 namespace StarsAbove.NPCs.WarriorOfLight
 {
@@ -914,21 +915,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 			notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Materials.DullTotemOfLight>(), 1));
 			notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Materials.AegisOfHopesLegacyPrecursor>(), 8));
 
-			// This part is not required for a boss and is just showcasing some advanced stuff you can do with drop rules to control how items spawn
-			// We make 12-15 ExampleItems spawn randomly in all directions, like the lunar pillar fragments. Hereby we need the DropOneByOne rule,
-			// which requires these parameters to be defined
-			/*int itemType = ModContent.ItemType<Items.Materials.EnigmaticDust>();
-            var parameters = new DropOneByOne.Parameters()
-            {
-                ChanceNumerator = 1,
-                ChanceDenominator = 1,
-                MinimumStackPerChunkBase = 1,
-                MaximumStackPerChunkBase = 1,
-                MinimumItemDropsCount = 12,
-                MaximumItemDropsCount = 15,
-            };
-
-            notExpertRule.OnSuccess(new DropOneByOne(itemType, parameters));*/
+			StellarSpoils.SetupBossStellarSpoils(npcLoot);
 
 			// Finally add the leading rule
 			npcLoot.Add(notExpertRule);

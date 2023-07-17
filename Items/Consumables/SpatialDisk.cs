@@ -634,6 +634,14 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
+			if (modPlayer.vagrantBossItemDialogue == 1)
+			{
+				modPlayer.chosenDialogue = 77;
+				modPlayer.vagrantBossItemDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
 			if (modPlayer.nalhaunBossItemDialogue == 1 && DownedBossSystem.downedVagrant)
 			{
 				modPlayer.chosenDialogue = 301;

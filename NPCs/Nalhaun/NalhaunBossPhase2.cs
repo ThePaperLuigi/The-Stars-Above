@@ -21,6 +21,7 @@ using Terraria.GameContent;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Buffs;
 using StarsAbove.Items.BossBags;
+using StarsAbove.Items.Loot;
 
 namespace StarsAbove.NPCs.Nalhaun
 {
@@ -759,9 +760,7 @@ namespace StarsAbove.NPCs.Nalhaun
 			LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
 			LeadingConditionRule ExpertRule = new LeadingConditionRule(new Conditions.IsExpert());
 
-			// Notice we use notExpertRule.OnSuccess instead of npcLoot.Add so it only applies in normal mode
-			// Boss masks are spawned with 1/7 chance
-			//notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<MinionBossMask>(), 7));
+			StellarSpoils.SetupBossStellarSpoils(npcLoot);
 
 			notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.BurnishedPrism>(), 4));
 

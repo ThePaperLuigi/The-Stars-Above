@@ -68,17 +68,14 @@ namespace StarsAbove.Items.Armor.StarfarerArmor
 
 			return true;
 		}
-		
-		public override void AddRecipes()
-		{//Outfits should be expensive chase goals, with a complicated recipe.
 
+		public override void AddRecipes()
+		{
 			CreateRecipe(1)
-				.AddIngredient(ItemID.FamiliarPants, 1)
-				.AddIngredient(ItemID.FamiliarShirt, 1)
-				.AddIngredient(ItemType<PrismaticCore>(), 20)
-				.AddTile(TileID.Anvils)
+				.AddIngredient(ModContent.ItemType<Materials.StellarRemnant>(), 100)
+				.AddCustomShimmerResult(ModContent.ItemType<Materials.StellarRemnant>(), 3)
+				.AddTile(Terraria.ID.TileID.Anvils)
 				.Register();
-			
 		}
 	}
 }

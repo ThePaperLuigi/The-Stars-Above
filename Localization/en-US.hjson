@@ -302,13 +302,13 @@ Mods: {
 
 				AvatarOfLight: {
 					Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Avatar of Light']"
-					Description: Half of Max Mana is added to Max HP. At 500 HP or above, gain 10 defense, 5% damage, and 5 Stellar Nova Energy Regeneration.
+					Description: Half of Max Mana is added to Max HP. At 500 HP or above, gain 10 defense, 5% damage, and 3 Stellar Nova Energy Regeneration.
 					Unlock: "[c/9D9D9D:Locked:] Defeat the Warrior of Light"
 				}
 
 				AstralMantle: {
 					Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Astral Mantle']"
-					Description: 1/10th of current Mana is added to Defense (Max 5% of current Max HP.) Gain 15 Stellar Nova Energy Regeneration above 200 Mana.
+					Description: 1/10th of current Mana is added to Defense (Max 5% of current Max HP.) Gain 5 Stellar Nova Energy Regeneration above 200 Mana.
 					Unlock: "[c/9D9D9D:Locked:] Defeat all Mechanical bosses"
 				}
 
@@ -7939,6 +7939,16 @@ Mods: {
 					Replenishes out of combat
 					'Praise the sun!'
 					'''
+			}
+
+			GarmentsOfWinterRainAttire: {
+				DisplayName: Garments Of Winter Rain Attire
+				Tooltip: ""
+			}
+
+			SeventhSigilAutumnAttire: {
+				DisplayName: Seventh Sigil Autumn Attire
+				Tooltip: ""
 			}
 		}
 
