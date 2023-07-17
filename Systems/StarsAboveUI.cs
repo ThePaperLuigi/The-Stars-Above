@@ -979,15 +979,7 @@ namespace StarsAbove
 					},
 					InterfaceScaleType.UI)
 				);
-				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
-					"StarsAbove: Stellar Nova UI",
-					delegate
-					{
-						_StellarNovaUIUserInterface.Draw(Main.spriteBatch, new GameTime());
-						return true;
-					},
-					InterfaceScaleType.UI)
-				);
+				
 				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
 					"StarsAbove: Starfarer Menu",
 					delegate
@@ -1008,6 +1000,15 @@ namespace StarsAbove
 			int MouseTextIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Mouse Text"));
 			if (MouseTextIndex != -1)
 			{
+				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+					   "StarsAbove: Stellar Nova UI",
+					   delegate
+					   {
+						   _StellarNovaUIUserInterface.Draw(Main.spriteBatch, new GameTime());
+						   return true;
+					   },
+					   InterfaceScaleType.UI)
+				   );
 				/*layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
 					"AutoTrash: Auto Trash List",
 					delegate {
@@ -1021,7 +1022,7 @@ namespace StarsAbove
 					InterfaceScaleType.UI)
 				);*/
 
-				
+
 			}
 
 			int TopIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Interface Logic 4"));

@@ -118,6 +118,9 @@ namespace StarsAbove.UI
 		}
 		int animationTimer;
 		int animationFrame = 1;
+
+		int animationTimer2;
+		int animationFrame2 = 1;
 		protected override void DrawSelf(SpriteBatch spriteBatch) {
 			base.DrawSelf(spriteBatch);
 
@@ -130,7 +133,7 @@ namespace StarsAbove.UI
 			Rectangle hitbox = barFrame.GetInnerDimensions().ToRectangle();
 			hitbox.X += 12;
 			hitbox.Width -= 24;
-			hitbox.Y += 12;
+			hitbox.Y += 10;
 			hitbox.Height -= 16;
 			Rectangle animationHitbox = new Rectangle(hitbox.X,hitbox.Y,72,46);
 			animationHitbox.X += 28;
@@ -142,6 +145,7 @@ namespace StarsAbove.UI
 			Texture2D NovaGaugeAnimation = (Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNovaGaugeAnimation/NovaGaugeAnimation");
 			Texture2D NovaGaugeGlow = (Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNovaGaugeReady");
 			Texture2D NovaGaugeChargingEffect = (Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNovaGaugeCharge");
+			Texture2D NovaGaugeChargedFlash = (Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNovaGaugeAnimation/NovaChargedFlash");
 
 			int frameHeight = 46;
 			if (quotient == 1f)
@@ -189,7 +193,28 @@ namespace StarsAbove.UI
 			}
 			if (quotient < 1f)
 			{
-				spriteBatch.Draw(NovaGaugeChargingEffect, new Rectangle(left + steps - 20, hitbox.Y - 13, 40, 40), Color.White * Main.rand.NextFloat(0.8f, 1f));
+				spriteBatch.Draw(NovaGaugeChargingEffect, new Rectangle(left + steps - 20, hitbox.Y - 12, 40, 40), Color.White * Main.rand.NextFloat(0.8f, 1f));
+
+			}
+			if (modPlayer.gaugeChargeAnimation)
+			{
+				animationTimer2++;
+				if (animationTimer2 > 2)
+				{
+					animationFrame2++;
+					if (animationFrame2 > 6)
+					{
+						modPlayer.gaugeChargeAnimation = false;
+						animationFrame2 = 6;
+					}
+					animationTimer2 = 0;
+				}
+				spriteBatch.Draw(NovaGaugeChargedFlash, barFrame.GetInnerDimensions().ToRectangle(), NovaGaugeChargedFlash.Frame(1, 7, 0, animationFrame2), Color.White);
+			}
+			else
+            {
+				animationFrame2 = 0;
+				animationTimer2 = 0;
 
 			}
 		}

@@ -1212,19 +1212,32 @@ namespace StarsAbove.UI.StellarNova
 			else
 			{
 				unlimitedbladeworks.Remove();
-			}
-			if (modPlayer.kiwamiryuken > 0)
+            }
+            if (modPlayer.kiwamiryuken > 0)
+            {
+                topStatic -= topAdjustment;
+
+                area.Append(kiwamiryuken);
+                kiwamiryuken.Top.Set(topStatic + (availableNovas * multiplierAdjustment), 0f);
+
+                availableNovas++;
+            }
+            else
+            {
+                kiwamiryuken.Remove();
+            }
+			if (modPlayer.gardenofavalon > 0)
 			{
 				topStatic -= topAdjustment;
 
-				area.Append(kiwamiryuken);
-				kiwamiryuken.Top.Set(topStatic + (availableNovas * multiplierAdjustment), 0f);
+				area.Append(gardenofavalon);
+				gardenofavalon.Top.Set(topStatic + (availableNovas * multiplierAdjustment), 0f);
 
 				availableNovas++;
 			}
 			else
 			{
-				kiwamiryuken.Remove();
+				gardenofavalon.Remove();
 			}
 			if (modPlayer.laevateinn > 0)
 			{
@@ -1239,21 +1252,7 @@ namespace StarsAbove.UI.StellarNova
             {
 				laevateinn.Remove();
 				
-			}
-			
-			if(modPlayer.gardenofavalon > 0)
-			{
-				topStatic -= topAdjustment;
-
-				area.Append(gardenofavalon);
-				gardenofavalon.Top.Set(topStatic + (availableNovas * multiplierAdjustment), 0f);
-
-				availableNovas++;
-			}
-			else
-            {
-				gardenofavalon.Remove();
-            }
+			}				
 			if(modPlayer.edingenesisquasar > 0)
 			{
 				topStatic -= topAdjustment;
