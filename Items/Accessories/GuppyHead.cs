@@ -22,14 +22,17 @@ namespace StarsAbove.Items.Accessories
 			Item.rare = ModContent.GetInstance<StellarSpoilsRarity>().Type; // Custom Rarity
 		}
 
-		public override void UpdateAccessory(Player player, bool hideVisual) {
-			
+		public override void UpdateAccessory(Player player, bool hideVisual)
+		{
+
 		}
-
-		
-
-		public override void AddRecipes() {
-			
+		public override void AddRecipes()
+		{
+			CreateRecipe(1)
+				.AddIngredient(ModContent.ItemType<Materials.StellarRemnant>(), 40)
+				.AddCustomShimmerResult(ModContent.ItemType<Materials.StellarRemnant>(), 3)
+				.AddTile(Terraria.ID.TileID.Anvils)
+				.Register();
 		}
 	}
 }

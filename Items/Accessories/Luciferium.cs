@@ -44,17 +44,17 @@ namespace StarsAbove.Items.Accessories
 			//player.respawnTimer += 600;
 
 		}
-		
 
-		
 
-		/*public override void AddRecipes() {
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.LifeCrystal, 2);
-			recipe.AddIngredient(ItemID.ManaCrystal, 2);
-			recipe.AddTile(TileID.Anvils);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-		}*/
+
+
+		public override void AddRecipes()
+		{
+			CreateRecipe(1)
+				.AddIngredient(ModContent.ItemType<Materials.StellarRemnant>(), 40)
+				.AddCustomShimmerResult(ModContent.ItemType<Materials.StellarRemnant>(), 3)
+				.AddTile(Terraria.ID.TileID.Anvils)
+				.Register();
+		}
 	}
 }

@@ -32,10 +32,15 @@ namespace StarsAbove.Items.Accessories
 			player.GetModPlayer<PocketwatchModPlayer>().pocketwatchEquipped = true;
 		}
 
-		
 
-		public override void AddRecipes() {
-			
+
+		public override void AddRecipes()
+		{
+			CreateRecipe(1)
+				.AddIngredient(ItemType<Materials.StellarRemnant>(), 40)
+				.AddCustomShimmerResult(ItemType<Materials.StellarRemnant>(), 3)
+				.AddTile(TileID.Anvils)
+				.Register();
 		}
 	}
 	public class PocketwatchModPlayer : ModPlayer

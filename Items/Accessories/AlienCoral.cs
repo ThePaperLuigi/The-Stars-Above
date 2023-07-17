@@ -24,7 +24,7 @@ namespace StarsAbove.Items.Accessories
 			Item.height = 32;
 			Item.accessory = true;
 			Item.value = Item.sellPrice(gold: 10);
-			Item.rare = ModContent.GetInstance<StellarSpoilsRarity>().Type; // Custom Rarity
+			Item.rare = ModContent.GetInstance<StellarRarity>().Type; // Custom Rarity
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual) {
@@ -42,6 +42,9 @@ namespace StarsAbove.Items.Accessories
 			//player.respawnTimer += 600;
 
 		}
-
+		public override void AddRecipes()
+		{
+			
+		}
 	}
 }
