@@ -1183,13 +1183,13 @@ Mods: {
 
 			BossItemDialogue: {
 				VagrantAsphodene: {
-					1: Hang on- there's something else lodged into this meteor.
+					1: Hang on- I have something you might be interested in.
 					2: It feels like I should know what it is, but I just can't- kind of like it's stopping me from doing so.
 					3: At least that tells me one thing- it's important! I'd prefer you examine it as soon as you are able.
 				}
 
 				VagrantEridani: {
-					1: Hold on a moment. There's an item of interest within this meteorite.
+					1: Hold on a moment. I neglected to bring this up before, but I have something for you... Perhaps you can help me determine its origin.
 					2: It looks so familiar, and yet something's stopping me from placing its identity- how vexing.
 					3: They say encountering obstacles means you're heading in the right direction. Let's take a closer look as soon as possible.
 				}
@@ -2959,7 +2959,7 @@ Mods: {
 						Other: Wield paracausal energy through myriad abilities depending on Aspected Damage Type: Thundercrash if Melee, Golden Gun if Ranged, Nova Bomb if Magic, Needlestorm if Summoner, and Silence and Squall otherwise. Silence and Squall: After activation, gain Bearer of Darkness for 10 seconds while unleashing Silence, inflicting Frostburn for 8 seconds. Instantly follow up with Squall, dealing damage while creating a frost field on impact that deals damage over time for 8 seconds.
 					}
 
-					AstralBonus: Bearer of Light increases health regeneration. Bearer of Darkness reduces damage taken by 10%. Taking lethal damage during either buff will instead consume the buff and restore 30 HP.
+					AstralBonus: Bearer of Light increases health regeneration. Bearer of Darkness reduces damage taken by 10%. Taking lethal damage consumes either buff and restores 30 HP.
 					UmbralBonus: Bearer of Light increases damage by 8%. Bearer of Darkness increases critical strike damage by 15%. While either buff is active, Aspected Damage Type penalty is negated.
 				}
 
@@ -3116,6 +3116,8 @@ Mods: {
 		Common: {
 			DiskReady: The Spatial Disk begins to resonate. Left click to interact.
 			ArrayAbility: The Stellar Array has gained a new ability!
+			NovaUnlocked: Stellar Novas have been unlocked!
+			NewNova: A new Stellar Nova has been unlocked!
 			AstralLocked: The weapon fails to react to your Aspect, rendering it unusable. You can only use Astral weapons with Asphodene.
 			UmbralLocked: The weapon fails to react to your Aspect, rendering it unusable. You can only use Umbral weapons with Eridani.
 			HarshLight: The sky becomes unbearably bright...
@@ -3138,8 +3140,8 @@ Mods: {
 				DisplayName: Pollux, Baleborn Force
 
 				BossChecklistIntegration: {
-					EntryName: "Dioskouroi, the Twin Forces"
-					SpawnInfo: "Defeat this strange foe through the Shattered Disk, obtained from your Starfarer after King Slime is defeated. This fight will be critical to progression later!"
+					EntryName: Dioskouroi, the Twin Forces
+					SpawnInfo: Defeat this strange foe through the Shattered Disk, obtained from your Starfarer after King Slime is defeated. This fight will be critical to progression later!
 					DespawnMessage: ""
 				}
 			}
@@ -3152,8 +3154,8 @@ Mods: {
 				DisplayName: Nalhaun, Ruler of the Hollow World
 
 				BossChecklistIntegration: {
-					EntryName: "Nalhaun, the Burnished King"
-					SpawnInfo: "Confront this aged monarch with the Ancient Crown, given to you by your Starfarer after Golem is defeated. (The Vagrant of Space and Time must have been defeated.)"
+					EntryName: Nalhaun, the Burnished King
+					SpawnInfo: Confront this aged monarch with the Ancient Crown, given to you by your Starfarer after Golem is defeated. (The Vagrant of Space and Time must have been defeated.)
 					DespawnMessage: ""
 				}
 			}
@@ -3165,8 +3167,8 @@ Mods: {
 				DisplayName: Penthesilea, the Witch of Ink
 
 				BossChecklistIntegration: {
-					EntryName: "Penthesilea, the Witch of Ink"
-					SpawnInfo: "Face this fearsome foe with the Unsullied Canvas, given to you by your Starfarer after Plantera is bested. (The Vagrant of Space and Time must have been defeated.)"
+					EntryName: Penthesilea, the Witch of Ink
+					SpawnInfo: Face this fearsome foe with the Unsullied Canvas, given to you by your Starfarer after Plantera is bested. (The Vagrant of Space and Time must have been defeated.)
 					DespawnMessage: ""
 				}
 			}
@@ -3178,8 +3180,8 @@ Mods: {
 				DisplayName: Tsukiyomi, the First Starfarer
 
 				BossChecklistIntegration: {
-					EntryName: "Tsukiyomi, the First Starfarer"
-					SpawnInfo: "The time has finally come. Craft all the Mnemonic Traces together with the Celestriad Root to create the Mnemonic Sigil, and use it to be taken to Tsukiyomi's boss arena."
+					EntryName: Tsukiyomi, the First Starfarer
+					SpawnInfo: The time has finally come. Craft all the Mnemonic Traces together with the Celestriad Root to create the Mnemonic Sigil, and use it to be taken to Tsukiyomi's boss arena.
 					DespawnMessage: ""
 				}
 			}
@@ -3202,8 +3204,8 @@ Mods: {
 				DisplayName: The Vagrant of Space and Time
 
 				BossChecklistIntegration: {
-					EntryName: "The Vagrant of Space and Time"
-					SpawnInfo: "Defeat this strange foe through the Shattered Disk, obtained from your Starfarer after King Slime is defeated. This fight will be critical to progression later!"
+					EntryName: The Vagrant of Space and Time
+					SpawnInfo: Defeat this strange foe through the Shattered Disk, obtained from your Starfarer after King Slime is defeated. This fight will be critical to progression later!
 					DespawnMessage: ""
 				}
 			}
@@ -7930,7 +7932,13 @@ Mods: {
 
 			EmberFlask: {
 				DisplayName: Ember Flask
-				Tooltip: ""
+				Tooltip:
+					'''
+					When used, heal 30% of Max HP (Potion Sickness duration is decreased to 20 seconds)
+					Can only be used once during combat
+					Replenishes out of combat
+					'Praise the sun!'
+					'''
 			}
 		}
 
@@ -11023,6 +11031,7 @@ Mods: {
 				Description: ""
 			}
 		}
+
 		Bestiary: {
 			Arbitration: A horrifying figure encountered upon an Anomaly planet. While it appears evil to a human, eldritch anomalies such as these know not the concept of malice, only how to consume.
 			AstralCell: A strange blue object. It eats water vapor.

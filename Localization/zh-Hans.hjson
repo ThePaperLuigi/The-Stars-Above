@@ -2959,7 +2959,7 @@ Mods: {
 						// Other: Wield paracausal energy through myriad abilities depending on Aspected Damage Type: Thundercrash if Melee, Golden Gun if Ranged, Nova Bomb if Magic, Needlestorm if Summoner, and Silence and Squall otherwise. Silence and Squall: After activation, gain Bearer of Darkness for 10 seconds while unleashing Silence, inflicting Frostburn for 8 seconds. Instantly follow up with Squall, dealing damage while creating a frost field on impact that deals damage over time for 8 seconds.
 					}
 
-					// AstralBonus: Bearer of Light increases health regeneration. Bearer of Darkness reduces damage taken by 10%. Taking lethal damage during either buff will instead consume the buff and restore 30 HP.
+					// AstralBonus: Bearer of Light increases health regeneration. Bearer of Darkness reduces damage taken by 10%. Taking lethal damage consumes either buff and restores 30 HP.
 					// UmbralBonus: Bearer of Light increases damage by 8%. Bearer of Darkness increases critical strike damage by 15%. While either buff is active, Aspected Damage Type penalty is negated.
 				}
 
@@ -3116,6 +3116,8 @@ Mods: {
 		Common: {
 			DiskReady: 空间光盘开始共鸣。点击左键以交互。
 			ArrayAbility: 天体阵列获得了一项新能力！
+			// NovaUnlocked: Stellar Novas have been unlocked!
+			// NewNova: A new Stellar Nova has been unlocked!
 			AstralLocked: 武器无法对你的相位做出反应，这使你无法使用该武器。你只能和爱丝福德妮一起使用星体武器
 			UmbralLocked: 武器无法对你的相位做出反应，这使你无法使用该武器。你只能和埃里达妮一起使用本影武器
 			HarshLight: 天空变得愈发明亮，让人难以忍受……
@@ -3138,9 +3140,9 @@ Mods: {
 				DisplayName: 冰河灾裔，波鲁克斯
 
 				BossChecklistIntegration: {
-					// EntryName: "{$Mods.StarsAbove.NPCName.Dioskouroi}"
-					// SpawnInfo: "{$Mods.StarsAbove.BossChecklist.Dioskouroi.SpawnInfo}"
-					// DespawnMessage: "{$Mods.StarsAbove.BossChecklist.Dioskouroi.DespawnMessage}"
+					// EntryName: Dioskouroi, the Twin Forces
+					// SpawnInfo: Defeat this strange foe through the Shattered Disk, obtained from your Starfarer after King Slime is defeated. This fight will be critical to progression later!
+					// DespawnMessage: ""
 				}
 			}
 
@@ -3152,9 +3154,9 @@ Mods: {
 				DisplayName: 空洞世界的统治者，纳尔赫恩
 
 				BossChecklistIntegration: {
-					// EntryName: "{$Mods.StarsAbove.NPCName.NalhaunBoss}"
-					// SpawnInfo: "{$Mods.StarsAbove.BossChecklist.Nalhaun.SpawnInfo}"
-					// DespawnMessage: "{$Mods.StarsAbove.BossChecklist.Nalhaun.DespawnMessage}"
+					// EntryName: Nalhaun, the Burnished King
+					// SpawnInfo: Confront this aged monarch with the Ancient Crown, given to you by your Starfarer after Golem is defeated. (The Vagrant of Space and Time must have been defeated.)
+					// DespawnMessage: ""
 				}
 			}
 
@@ -3165,9 +3167,9 @@ Mods: {
 				DisplayName: 多彩魔女，彭忒希勒娅
 
 				BossChecklistIntegration: {
-					// EntryName: "{$Mods.StarsAbove.NPCName.Penthesilea}"
-					// SpawnInfo: "{$Mods.StarsAbove.BossChecklist.Penthesilea.SpawnInfo}"
-					// DespawnMessage: "{$Mods.StarsAbove.BossChecklist.Penthesilea.DespawnMessage}"
+					// EntryName: Penthesilea, the Witch of Ink
+					// SpawnInfo: Face this fearsome foe with the Unsullied Canvas, given to you by your Starfarer after Plantera is bested. (The Vagrant of Space and Time must have been defeated.)
+					// DespawnMessage: ""
 				}
 			}
 
@@ -3178,9 +3180,9 @@ Mods: {
 				DisplayName: 源初之星海旅者，月读
 
 				BossChecklistIntegration: {
-					// EntryName: "{$Mods.StarsAbove.NPCName.TsukiyomiBoss}"
-					// SpawnInfo: "{$Mods.StarsAbove.BossChecklist.Tsukiyomi2.SpawnInfo}"
-					// DespawnMessage: "{$Mods.StarsAbove.BossChecklist.Tsukiyomi2.DespawnMessage}"
+					// EntryName: Tsukiyomi, the First Starfarer
+					// SpawnInfo: The time has finally come. Craft all the Mnemonic Traces together with the Celestriad Root to create the Mnemonic Sigil, and use it to be taken to Tsukiyomi's boss arena.
+					// DespawnMessage: ""
 				}
 			}
 
@@ -3202,9 +3204,9 @@ Mods: {
 				DisplayName: 时空流浪者
 
 				BossChecklistIntegration: {
-					// EntryName: "{$Mods.StarsAbove.NPCName.VagrantOfSpaceAndTime}"
-					// SpawnInfo: "{$Mods.StarsAbove.BossChecklist.VagrantOfSpaceAndTime.SpawnInfo}"
-					// DespawnMessage: "{$Mods.StarsAbove.BossChecklist.VagrantOfSpaceAndTime.DespawnMessage}"
+					// EntryName: The Vagrant of Space and Time
+					// SpawnInfo: Defeat this strange foe through the Shattered Disk, obtained from your Starfarer after King Slime is defeated. This fight will be critical to progression later!
+					// DespawnMessage: ""
 				}
 			}
 
@@ -7902,7 +7904,13 @@ Mods: {
 
 			EmberFlask: {
 				// DisplayName: Ember Flask
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					When used, heal 30% of Max HP (Potion Sickness duration is decreased to 20 seconds)
+					Can only be used once during combat
+					Replenishes out of combat
+					'Praise the sun!'
+					''' */
 			}
 		}
 
@@ -10979,54 +10987,12 @@ Mods: {
 
 			EmberFlaskUsed: {
 				// DisplayName: Ember Flask Used
-				// Description: Mods.StarsAbove.Buffs.EmberFlaskUsed.Description
+				// Description: The Ember Flask is empty and will only refill out of combat
 			}
 
 			ShepherdSunstoneCooldown: {
 				// DisplayName: Shepherd Sunstone Cooldown
-				// Description: Mods.StarsAbove.Buffs.ShepherdSunstoneCooldown.Description
-			}
-		}
-
-		BossChecklist: {
-			WarriorOfLight: {
-				SpawnInfo: 通过击败这个敌人来驱散无尽之光，在你的星海旅者的帮助下从月亮领主的尸体召唤。(前提是时空流浪者被击败。)
-				DespawnMessage: 洪流之光殆尽了……
-			}
-
-			VagrantOfSpaceAndTime: {
-				SpawnInfo: 通过血肉墙获得的破碎光盘来击败这个怪人。这场战斗对接下来的突破至关重要！
-				DespawnMessage: 时空归于常态……
-			}
-
-			Nalhaun: {
-				SpawnInfo: 通过击败任一机械Boss从你的星海旅者获取的远古王冠来击败这个年迈的君主。(前提是时空流浪者被击败。)
-				DespawnMessage: 君主的绯红之刃再度回响……
-			}
-
-			Penthesilea: {
-				SpawnInfo: 通过击败世纪之花从你的星海旅者获取的无垢画布来面对这位敌人。(前提是时空流浪者被击败。)
-				DespawnMessage: 你被洒开了……
-			}
-
-			Dioskouroi: {
-				SpawnInfo: Duel(?) these powerful twin demons through defeating a mechanical boss and obtaining the Twincrux Pendant.
-				DespawnMessage: Without binds, the Dioskouroi move their conflict elsewhere...
-			}
-
-			Arbitration: {
-				SpawnInfo: This foe embodies true fear... Discover this foe through visiting an Anomaly location with the Astrolabe's help. Due to this boss being fought within a Subworld under normal conditions, Boss Checklist progress must be manual.
-				DespawnMessage: ...
-			}
-
-			TsukiyomiBoss: {
-				SpawnInfo: The time has finally come. Craft all the Mnemonic Traces together with the Celestriad Root to create the Mnemonic Sigil, and use it to be taken to Tsukiyomi's boss arena. Due to this boss being fought within a Subworld under normal conditions, Boss Checklist progress must be manual.
-				DespawnMessage: ...
-			}
-
-			Tsukiyomi2: {
-				SpawnInfo: Mods.StarsAbove.BossChecklist.Tsukiyomi2.SpawnInfo
-				DespawnMessage: Mods.StarsAbove.BossChecklist.Tsukiyomi2.DespawnMessage
+				// Description: ""
 			}
 		}
 
