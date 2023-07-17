@@ -52,6 +52,7 @@ using StarsAbove.Items.Prisms;
 using StarsAbove.NPCs.WarriorOfLight;
 using StarsAbove.Buffs.StellarNovas;
 using StarsAbove.Projectiles.StellarNovas.GuardiansLight;
+using StarsAbove.Buffs.EmberFlask;
 
 namespace StarsAbove
 {
@@ -602,6 +603,7 @@ namespace StarsAbove
         public int chosenStellarNova = 0;//0: No Nova chosen. 1: Prototokia Aster 2: Ars Laevateinn
 
         public bool novaReadyInfo = false;
+        public bool gaugeChargeAnimation = false;
 
         public int novaGauge;
         public int novaGaugeMax = 100;//This is affected by the chosen Nova
@@ -2687,7 +2689,7 @@ namespace StarsAbove
                 GlobalRotation = 0;
             }
 
-            
+
             DrillMountBug();
             BossEnemySpawnModifier();
             DialogueEnemySpawnModifier();
@@ -2708,6 +2710,7 @@ namespace StarsAbove
             MysticForging();
             umbralEntropyCooldown--;
 
+            EmberFlask();
 
             DialogueScroll();
 
@@ -2737,9 +2740,9 @@ namespace StarsAbove
                 }
             }
             starfarerPromptCooldown--;
-            
-        
-            
+
+
+
             if (starfarerPromptActiveTimer < 0 && promptIsActive)
             {
                 promptDialogue = "";
@@ -2756,7 +2759,7 @@ namespace StarsAbove
                     Player.wingTime = 0;
                 }
             }
-            
+
             if (!Main.dedServ)
             {
                 if (NalhaunActive)
@@ -2910,7 +2913,7 @@ namespace StarsAbove
 
                     chosenStarfarerEffect = false;
                 }
-                
+
                 if (activateShockwaveEffect)
                 {
                     rippleCount = 4;
@@ -2962,7 +2965,7 @@ namespace StarsAbove
                 //Nova Gauge charging.
                 StellarNovaEnergy();
 
-                
+
             }
             playerMousePos = Main.MouseWorld;
             if (lookAtTsukiyomi)
@@ -2974,8 +2977,24 @@ namespace StarsAbove
                 tsukiyomiCameraFloat -= 0.1f;
             }
 
-            
+
         }
+
+        private void EmberFlask()
+        {
+            if (Player.HasBuff(BuffType<EmberFlaskUsed>()))
+            {
+                if (inCombat > 0)
+                {
+                    Player.AddBuff(BuffType<EmberFlaskUsed>(), 10);
+                }
+                else
+                {
+                    Player.ClearBuff(BuffType<EmberFlaskUsed>());
+                }
+            }
+        }
+
         private void CutsceneProgress()
         {
             astarteCutsceneProgress--;
@@ -2983,11 +3002,38 @@ namespace StarsAbove
         }
         private void StellarNovaSetup()
         {
-            baseNovaDamageAdd = 2000;
+            baseNovaDamageAdd = 100;
+            if (NPC.downedSlimeKing)
+            {
+                baseNovaDamageAdd = 150;
 
+            }
+            if (NPC.downedBoss1)
+            {
+                baseNovaDamageAdd = 220;
+
+            }
+            if (NPC.downedBoss2)
+            {
+                baseNovaDamageAdd = 300;
+
+
+            }
+            if (NPC.downedBoss3)
+            {
+                baseNovaDamageAdd = 400;
+
+
+            }
+            if (Main.hardMode)
+            {
+                baseNovaDamageAdd = 900;
+
+
+            }
             if (NPC.downedMechBossAny)
             {
-                baseNovaDamageAdd = 2150;
+                baseNovaDamageAdd = 1450;
                 
 
             }
@@ -3100,7 +3146,7 @@ namespace StarsAbove
 
 
                 }
-                if (eyeDialogue == 2 && astrolabeIntroDialogue == 0)
+                if (slimeDialogue == 2 && astrolabeIntroDialogue == 0)
                 {
                     astrolabeIntroDialogue = 1;
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
@@ -8098,12 +8144,16 @@ namespace StarsAbove
             }
             if (Player.HasBuff(BuffType<ThundercrashActive>()))//
             {
+                Player.AddBuff(BuffType<Invisibility>(), 2);
                 Vector2 Leap = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 20f;
                 Player.velocity = Leap;
-
-                for (int d = 0; d < 5; d++)
+                if(playerMousePos.X < Player.Center.X)
                 {
-                    Dust du = Main.dust[Dust.NewDust(Player.Center, 0, 0, DustID.Electric, 0f, 0f, 150, default(Color), 1f)];
+                    Player.direction = -1;
+                }    
+                for (int d = 0; d < 10; d++)
+                {
+                    Dust du = Main.dust[Dust.NewDust(Player.Center, 5, 5, DustID.Electric, 0f, 0f, 150, default(Color), 2f)];
                     du.noGravity = true;
                 }
                 for (int d = 0; d < 2; d++)
@@ -11229,6 +11279,7 @@ namespace StarsAbove
             novaGaugeChangeAlpha -= 0.1f;
             novaGaugeChangeAlphaSlow -= 0.01f;
 
+            //Drain the gauge upon usage of the Stellar Nova.
             novaDrain = MathHelper.Clamp(novaDrain, 0, 1);
             if (novaDrain > 0)
             {
@@ -11236,27 +11287,29 @@ namespace StarsAbove
                 novaGauge = (int)MathHelper.Lerp(0, trueNovaGaugeMax, novaDrain);
                 return;
             }
+
             if (inCombat > 0)
             {
                 if (chosenStellarNova != 0)
                 {
+                    //Every x ticks, the gauge charges by 1.
                     if (novaGaugeChargeTimer >= 60)
                     {
-
-                        
-                       
-
                         //Natural charge rate.
                         novaGauge++;
+                        //Special visuals on the gauge
                         novaGaugeChangeAlpha = 1f;
                         novaGaugeChangeAlphaSlow = 1f;
 
-                        NovaChargeModifiers();
                         //Reset the timer.
                         novaGaugeChargeTimer = 0;
+                        //If any effect speeds up the Nova gauge charging, add it here.
+                        NovaChargeModifiers();
+                        
                     }
                 }
 
+                //If the gauge is unlocked and not max, increase the timer before the gauge charges.
                 if (novaGaugeUnlocked && novaGauge < trueNovaGaugeMax)
                 {
                     novaGaugeChargeTimer++;
@@ -11283,6 +11336,7 @@ namespace StarsAbove
             {
                 if (novaReadyInfo)
                 {
+                    gaugeChargeAnimation = true;
                     novaReadyInfo = false;
                     SoundEngine.PlaySound(StarsAboveAudio.SFX_superReadySFX, Player.Center);
                     Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
@@ -11307,18 +11361,18 @@ namespace StarsAbove
         {
             if (unbridledradiance == 2)
             {
-
+                //Unbridled Radiance doubles Nova gain.
                 novaGauge++;
             }
             if (avataroflight == 2 && Player.statLife >= 500)
             {
-
-                novaGaugeChargeTimer += 5;
+                //Decrease the time spent charging
+                novaGaugeChargeTimer += 2;
             }
             if (astralmantle == 2 && Player.statMana > 200)
             {
-
-                novaGaugeChargeTimer += 15;
+                //Decrease the time spent charging
+                novaGaugeChargeTimer += 5;
             }
         }
 
