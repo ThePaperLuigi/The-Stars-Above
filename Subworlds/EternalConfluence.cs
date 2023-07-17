@@ -62,21 +62,21 @@ namespace StarsAbove
 
 
 		}
+        public override void OnExit()
+        {
+			DownedBossSystem.downedTsuki = SubworldSystem.ReadCopiedWorldData<bool>(nameof(DownedBossSystem.downedTsuki));
 
-		/*public override void OnEnter()
+			base.OnExit();
+        }
+        public override void CopySubworldData()
 		{
-			Main.dayTime = true;
-			Main.time = 3000;
-			Main.cloudAlpha = 0f;
-			Main.resetClouds = true;
+			SubworldSystem.CopyWorldData(nameof(DownedBossSystem.downedTsuki), DownedBossSystem.downedTsuki);
+		}
+		public override void ReadCopiedSubworldData()
+		{
+			DownedBossSystem.downedTsuki = SubworldSystem.ReadCopiedWorldData<bool>(nameof(DownedBossSystem.downedTsuki));
+		}
 
-
-			//Main.cloudAlpha = 0f;
-			//Main.resetClouds = true;
-			Main.moonPhase = 4;
-			SubworldSystem.noReturn = false;
-			base.OnEnter();
-		}*/
 		public override void OnLoad()
 		{
 			
