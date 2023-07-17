@@ -29,10 +29,14 @@ namespace StarsAbove.Items.Vanity.BaselessBlade
 			Item.rare = ModContent.GetInstance<StellarSpoilsRarity>().Type; // Custom Rarity
 			Item.vanity = true;
 		}
-		
+
 		public override void AddRecipes()
 		{
-			
+			CreateRecipe(1)
+				.AddIngredient(ModContent.ItemType<Materials.StellarRemnant>(), 20)
+				.AddCustomShimmerResult(ModContent.ItemType<Materials.StellarRemnant>(), 3)
+				.AddTile(Terraria.ID.TileID.Anvils)
+				.Register();
 		}
 	}
 	

@@ -33,9 +33,9 @@ namespace StarsAbove.Items.Vanity.BaselessBlade
 		public override void AddRecipes()
 		{
 			CreateRecipe(1)
-				.AddIngredient(ItemType<EnigmaticDust>(), 1)
-				.AddIngredient(ItemType<PrismaticCore>(), 3)
-				.AddTile(TileID.Anvils)
+				.AddIngredient(ModContent.ItemType<Materials.StellarRemnant>(), 20)
+				.AddCustomShimmerResult(ModContent.ItemType<Materials.StellarRemnant>(), 3)
+				.AddTile(Terraria.ID.TileID.Anvils)
 				.Register();
 		}
 	}
