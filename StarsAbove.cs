@@ -14,6 +14,11 @@ using ReLogic.Content.Sources;
 
 using StarsAbove.Systems;
 using StarsAbove.NPCs.WarriorOfLight;
+using StarsAbove.NPCs.Vagrant;
+using StarsAbove.NPCs.Tsukiyomi;
+using StarsAbove.NPCs.Dioskouroi;
+using StarsAbove.NPCs.Nalhaun;
+using StarsAbove.NPCs;
 
 namespace StarsAbove
 {
@@ -159,116 +164,124 @@ namespace StarsAbove
 			ModLoader.TryGetMod("MusicDisplay", out musicDisplay);
 			if (bossChecklist != null)
 			{
-				
+				//Vagrant of Space and Time
 				bossChecklist.Call(
-					"AddBoss", //Entry Type
-					this, //Mod Instance
-					"$Mods.StarsAbove.NPCName.WarriorOfLight", //Boss Name
-					ModContent.NPCType<WarriorOfLightBoss>(), //Boss ID
-					18.1f, //Progression
-					(Func<bool>)(() => DownedBossSystem.downedWarrior), //Downed boolean
-					() => true, //Availability
-					new List<int> { ModContent.ItemType<Items.Prisms.PrismOfTheRuinedKing>(), ModContent.ItemType<Items.Prisms.PrismOfTheCosmicPhoenix>(), ModContent.ItemType<Items.Materials.DullTotemOfLight>(), ModContent.ItemType<Items.Materials.TotemOfLightEmpowered>() },//Collection
-					ModContent.ItemType<Items.Consumables.ProgenitorWish>(),//Spawn Item
-					"$Mods.StarsAbove.BossChecklist.WarriorOfLight.SpawnInfo", //Spawn Item
-					"$Mods.StarsAbove.BossChecklist.WarriorOfLight.DespawnMessage" //Despawn Message
-					); //Boss Portrait
+					"LogBoss",
+					this,
+					nameof(VagrantBoss),
+					1.9f,
+					() => DownedBossSystem.downedVagrant,
+					ModContent.NPCType<VagrantBoss>(),
+					new Dictionary<string, object>()
+					{
+						["spawnItems"] = ModContent.ItemType<Items.Consumables.ShatteredDisk>(),
+						["customPortrait"] = (SpriteBatch sb, Rectangle rect, Color color) =>
+						{
+							Texture2D texture = ModContent.Request<Texture2D>("StarsAbove/Bestiary/PerseusBossChecklist").Value;
+							Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
+							sb.Draw(texture, centered, color);
+						}
 
+					}
+				);
+				//Dioskouroi
 				bossChecklist.Call(
-					"AddBoss", //Entry Type
-					this, //Mod Instance
-					"$Mods.StarsAbove.NPCName.VagrantOfSpaceAndTime", //Boss Name
-					ModContent.NPCType<NPCs.Vagrant.VagrantBoss>(), //Boss ID
-					7.1f, //Progression
-					(Func<bool>)(() => DownedBossSystem.downedVagrant), //Downed boolean
-					() => true, //Availability
-					new List<int> { ModContent.ItemType<Items.Materials.EnigmaticDust>(), ModContent.ItemType<Items.Prisms.SpatialPrism>() },//Collection
-					ModContent.ItemType<Items.Consumables.ShatteredDisk>(),//Spawn Item
-					"$Mods.StarsAbove.BossChecklist.VagrantOfSpaceAndTime.SpawnInfo", //Spawn Item
-					"$Mods.StarsAbove.BossChecklist.VagrantOfSpaceAndTime.DespawnMessage", //Despawn Message
-					(SpriteBatch sb, Rectangle rect, Color color) => {
-						Texture2D texture = ModContent.Request<Texture2D>("StarsAbove/Bestiary/PerseusBossChecklist").Value;
-						Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
-						sb.Draw(texture, centered, color);
-					}); //Boss Portrait
-				bossChecklist.Call(
-					"AddBoss", //Entry Type
-					this, //Mod Instance
-					"$Mods.StarsAbove.NPCName.Dioskouroi", //Boss Name
-					ModContent.NPCType<NPCs.Dioskouroi.PolluxBoss>(), //Boss ID
-					11.9f, //Progression
-					(Func<bool>)(() => DownedBossSystem.downedDioskouroi), //Downed boolean
-					() => true, //Availability
-					new List<int> { ModContent.ItemType<Items.Prisms.GeminiPrism>() },//Collection
-					ModContent.ItemType<Items.Consumables.TwincruxPendant>(),//Spawn Item
-					"$Mods.StarsAbove.BossChecklist.Dioskouroi.SpawnInfo", //Spawn Item
-					"$Mods.StarsAbove.BossChecklist.Dioskouroi.DespawnMessage", //Despawn Message
-					(SpriteBatch sb, Rectangle rect, Color color) => {
-						Texture2D texture = ModContent.Request<Texture2D>("StarsAbove/Bestiary/Dioskouroi_Bestiary").Value;
-						Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
-						sb.Draw(texture, centered, color);
-					}); //Boss Portrait //Boss Portrait
+					"LogBoss",
+					this,
+					nameof(PolluxBoss),
+					9.5f,
+					() => DownedBossSystem.downedDioskouroi,
+					ModContent.NPCType<PolluxBoss>(),
+					new Dictionary<string, object>()
+					{
+						["spawnItems"] = ModContent.ItemType<Items.Consumables.ShatteredDisk>(),
+						["customPortrait"] = (SpriteBatch sb, Rectangle rect, Color color) =>
+						{
+							Texture2D texture = ModContent.Request<Texture2D>("StarsAbove/Bestiary/Dioskouroi_Bestiary").Value;
+							Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
+							sb.Draw(texture, centered, color);
+						}
+					}
 
+				);
+				//Penthesilea
 				bossChecklist.Call(
-					"AddBoss", //Entry Type
-					this, //Mod Instance
-					"$Mods.StarsAbove.NPCName.NalhaunBoss", //Boss Name
-					ModContent.NPCType<NPCs.Nalhaun.NalhaunBossPhase2>(), //Boss ID
-					17.1f, //Progression
-					(Func<bool>)(() => DownedBossSystem.downedNalhaun), //Downed boolean
-					() => true, //Availability
-					new List<int> { ModContent.ItemType<Items.Prisms.BurnishedPrism>() },//Collection
-					ModContent.ItemType<Items.Consumables.AncientShard>(),//Spawn Item
-					"$Mods.StarsAbove.BossChecklist.Nalhaun.SpawnInfo", //Spawn Item
-					"$Mods.StarsAbove.BossChecklist.Nalhaun.DespawnMessage", //Despawn Message
-					(SpriteBatch sb, Rectangle rect, Color color) => {
-						Texture2D texture = ModContent.Request<Texture2D>("StarsAbove/Bestiary/Nalhaun_Bestiary").Value;
-						Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
-						sb.Draw(texture, centered, color);
-					}); //Boss Portrait //Boss Portrait
-
+					"LogBoss",
+					this,
+					nameof(Penthesilea),
+					13.5f,
+					() => DownedBossSystem.downedPenth,
+					ModContent.NPCType<Penthesilea>(),
+					new Dictionary<string, object>()
+					{
+						["spawnItems"] = ModContent.ItemType<Items.Consumables.UnsulliedCanvas>(),
+					}
+				);
+				//Nalhaun
 				bossChecklist.Call(
-					"AddBoss", //Entry Type
-					this, //Mod Instance
-					"$Mods.StarsAbove.NPCName.Penthesilea", //Boss Name
-					ModContent.NPCType<NPCs.Penthesilea>(), //Boss ID
-					14.1f, //Progression
-					(Func<bool>)(() => DownedBossSystem.downedPenth), //Downed boolean
-					() => true, //Availability
-					new List<int> {ModContent.ItemType<Items.Prisms.PaintedPrism>() },//Collection
-					ModContent.ItemType<Items.Consumables.UnsulliedCanvas>(),//Spawn Item
-					"$Mods.StarsAbove.BossChecklist.Penthesilea.SpawnInfo", //Spawn Item
-					"$Mods.StarsAbove.BossChecklist.Penthesilea.DespawnMessage" //Despawn Message
-					); //Boss Portrait
-
-				/*bossChecklist.Call(
-					"AddBoss", //Entry Type
-					this, //Mod Instance
-					"$Mods.StarsAbove.NPCName.Arbitration", //Boss Name
-					ModContent.NPCType<NPCs.Arbitration>(), //Boss ID
-					15.5f, //Progression
-					(Func<bool>)(() => DownedBossSystem.downedArbiter), //Downed boolean
-					() => true, //Availability
-					new List<int> { ModContent.ItemType<Items.Prisms.VoidsentPrism>() },//Collection
-					ModContent.ItemType<Items.Consumables.DemonicCrux>(),//Spawn Item
-					"$Mods.StarsAbove.BossChecklist.Arbitration.SpawnInfo", //Spawn Item
-					"$Mods.StarsAbove.BossChecklist.Arbitration.DespawnMessage" //Despawn Message
-					); //Boss Portrait
-				*/
+					"LogBoss",
+					this,
+					nameof(NalhaunBossPhase2),
+					14.5f,
+					() => DownedBossSystem.downedNalhaun,
+					ModContent.NPCType<NalhaunBossPhase2>(),
+					new Dictionary<string, object>()
+					{
+						["spawnItems"] = ModContent.ItemType<Items.Consumables.AncientShard>(),
+						["customPortrait"] = (SpriteBatch sb, Rectangle rect, Color color) =>
+						{
+							Texture2D texture = ModContent.Request<Texture2D>("StarsAbove/Bestiary/Nalhaun_Bestiary").Value;
+							Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
+							sb.Draw(texture, centered, color);
+						}
+					}
+				);
+				//Arbitration
 				bossChecklist.Call(
-					"AddBoss", //Entry Type
-					this, //Mod Instance
-					"$Mods.StarsAbove.NPCName.TsukiyomiBoss", //Boss Name
-					ModContent.NPCType<NPCs.Tsukiyomi.TsukiyomiBoss>(), //Boss ID
-					18.3f, //Progression
-					(Func<bool>)(() => DownedBossSystem.downedTsuki), //Downed boolean
-					(Func<bool>)(() => DownedBossSystem.downedWarrior), //Availability
-					new List<int> { ModContent.ItemType<Items.Consumables.SpatialMemoriam>() },//Collection
-					ModContent.ItemType<Items.Consumables.MnemonicSigil>(),//Spawn Item
-					"$Mods.StarsAbove.BossChecklist.Tsukiyomi2.SpawnInfo", //Spawn Item
-					"$Mods.StarsAbove.BossChecklist.Tsukiyomi2.DespawnMessage" //Despawn Message
-					); //Boss Portrait
+					"LogBoss",
+					this,
+					nameof(Arbitration),
+					15.1f,
+					() => DownedBossSystem.downedArbiter,
+					ModContent.NPCType<Arbitration>(),
+					new Dictionary<string, object>()
+					{
 
+					}
+				);
+				//The Warrior of Light
+				bossChecklist.Call(
+					"LogBoss",
+					this,
+					nameof(WarriorOfLightBoss),
+					18.1f,
+					() => DownedBossSystem.downedWarrior,
+					ModContent.NPCType<WarriorOfLightBossFinalPhase>(),
+					new Dictionary<string, object>()
+					{
+						["spawnItems"] = ModContent.ItemType<Items.Consumables.ProgenitorWish>(),
+						["customPortrait"] = (SpriteBatch sb, Rectangle rect, Color color) =>
+						{
+							Texture2D texture = ModContent.Request<Texture2D>("StarsAbove/Bestiary/WarriorOfLight_Bestiary").Value;
+							Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
+							sb.Draw(texture, centered, color);
+						}
+					}
+				);
+				//Tsukiyomi
+				bossChecklist.Call(
+					"LogBoss",
+					this,
+					nameof(TsukiyomiBoss),
+					18.3f,
+					() => DownedBossSystem.downedTsuki,
+					ModContent.NPCType<TsukiyomiBoss>(),
+					new Dictionary<string, object>()
+					{
+						["spawnItems"] = ModContent.ItemType<Items.Consumables.MnemonicSigil>(),
+						["availability"] = DownedBossSystem.downedWarrior
+					}
+				);
 			}
 			if (musicDisplay != null)
             {
