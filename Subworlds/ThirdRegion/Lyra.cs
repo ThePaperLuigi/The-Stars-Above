@@ -192,6 +192,15 @@ namespace StarsAbove
 			Main.moonPhase = 4;
 			
         }
+        public override void CopySubworldData()
+        {
+			SubworldSystem.CopyWorldData(nameof(DownedBossSystem.downedArbiter), DownedBossSystem.downedArbiter);
+        }
+        public override void ReadCopiedSubworldData()
+        {
+			DownedBossSystem.downedArbiter = SubworldSystem.ReadCopiedWorldData<bool>(nameof(DownedBossSystem.downedArbiter));
+        }
+
         public override void OnEnter()
 		{
 
