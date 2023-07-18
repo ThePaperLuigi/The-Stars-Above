@@ -499,6 +499,13 @@ namespace StarsAbove
                        104,
                        "Defeat King Slime")); //Corresponding dialogue ID.
                 WeaponArchiveList.Add(new WeaponArchiveListing(
+                      "King Slime Weapon", //Name of the archive listing.
+                      $"Grants the Essence for " +
+                      $"[i:{ItemType<Spatial>()}] Trickspin Two-Step. ", //Description of the listing.
+                      player.TrickspinWeaponDialogue == 2, //Unlock requirements.
+                      175,
+                      "Defeat King Slime.")); //Corresponding dialogue ID.
+                WeaponArchiveList.Add(new WeaponArchiveListing(
                        "Eye of Cthulhu Weapon", //Name of the archive listing.
                        $"Grants the Essence for either " +
                        $"[i:{ItemType<Astral>()}] Carian Dark Moon " +
@@ -524,13 +531,20 @@ namespace StarsAbove
                       $"[i:{ItemType<Umbral>()}] Ashen Ambition.", //Description of the listing.
                       player.CorruptBossWeaponDialogue == 2, //Unlock requirements.
                       137,
-                      "Defeat the boss of the world's evil")); //Corresponding dialogue ID.
+                      "Defeat the boss of the world's evil.")); //Corresponding dialogue ID.
                 WeaponArchiveList.Add(new WeaponArchiveListing(
                       "Corruption/Crimson Boss Weapon", //Name of the archive listing.
                       $"Grants the Essence for " +
                       $"[i:{ItemType<Spatial>()}] Takonomicon. ", //Description of the listing.
                       player.TakodachiWeaponDialogue == 2, //Unlock requirements.
                       133,
+                      "Defeat the boss of the world's evil, then wait.")); //Corresponding dialogue ID.
+                WeaponArchiveList.Add(new WeaponArchiveListing(
+                      "Corruption/Crimson Boss Weapon", //Name of the archive listing.
+                      $"Grants the Essence for " +
+                      $"[i:{ItemType<Spatial>()}] Shock & Awe. ", //Description of the listing.
+                      player.TrickspinWeaponDialogue == 2, //Unlock requirements.
+                      173,
                       "Defeat the boss of the world's evil, then wait.")); //Corresponding dialogue ID.
                 WeaponArchiveList.Add(new WeaponArchiveListing(
                       "Queen Bee Weapon", //Name of the archive listing.
@@ -583,7 +597,7 @@ namespace StarsAbove
                 WeaponArchiveList.Add(new WeaponArchiveListing(
                       "Skeletron Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
-                      $"[i:{ItemType<Astral>()}] Persephone " +
+                      $"[i:{ItemType<Astral>()}] Gossamer Needle " +
                       $"or " +
                       $"[i:{ItemType<Umbral>()}] Kazimierz Seraphim.", //Description of the listing.
                       player.HellWeaponDialogue == 2, //Unlock requirements.
@@ -737,6 +751,13 @@ namespace StarsAbove
                     129,
                     "Defeat Plantera, then wait.")); //Corresponding dialogue ID.
                 WeaponArchiveList.Add(new WeaponArchiveListing(
+                      "Plantera Weapon", //Name of the archive listing.
+                      $"Grants the Essence for " +
+                      $"[i:{ItemType<Spatial>()}] Dreamer's Inkwell. ", //Description of the listing.
+                      player.TrickspinWeaponDialogue == 2, //Unlock requirements.
+                      174,
+                      "Defeat Plantera, then wait.")); //Corresponding dialogue ID.
+                WeaponArchiveList.Add(new WeaponArchiveListing(
                       "Frost Queen Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Astral>()}] Stygian Nymph " +
@@ -830,6 +851,13 @@ namespace StarsAbove
                     player.ManiacalWeaponDialogue == 2, //Unlock requirements.
                     170,
                     "Defeat Duke Fishron, then wait.")); //Corresponding dialogue ID.
+                WeaponArchiveList.Add(new WeaponArchiveListing(
+                     "Duke Fishron Weapon", //Name of the archive listing.
+                     $"Grants the Essence for " +
+                     $"[i:{ItemType<Spatial>()}] Kariumu's Favor. ", //Description of the listing.
+                     player.KineticWeaponDialogue == 2, //Unlock requirements.
+                     172,
+                     "Defeat Duke Fishron, then wait.")); //Corresponding dialogue ID.
                 WeaponArchiveList.Add(new WeaponArchiveListing(
                       "Lunatic Cultist Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +

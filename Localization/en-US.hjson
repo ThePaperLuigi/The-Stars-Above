@@ -396,9 +396,9 @@ Mods: {
 				Asphodene: {
 					1: Here's another Essence you can use. It'll make a Ranged-type weapon with unique properties. Something tells me it's cursed, so..
 					2: Good luck! I did warn you.
-					3: Here is another Essence for you. This one's from a goddess of the Underworld, or so I'm told. It seems to be a melee weapon.
+					3: Here is another Essence for you. Looks like this fancy sewing needle has some pretty powerful movement capabilities.
 					4: Keep up the good work!
-					5: Here is another Essence for you. Apparently, this originates from 'Midgard.' It looks to be a rather powerful melee weapon.
+					5: Here is another Essence for you. It looks to be a rather powerful melee weapon.
 					6: That's it for now. Keep up the good work!
 					7: Another Essence for you. This firey sword is classified as Magic. It seems to explode when sufficiently charged.
 					8: I trust you'll know what to do.
@@ -7912,22 +7912,47 @@ Mods: {
 
 			EssenceOfDreams: {
 				DisplayName: Essence Of Dreams
-				Tooltip: ""
+				Tooltip:
+					'''
+					A gift from your Starfarer
+					Utilized in the creation of 'Dreamer's Inkwell'
+					'''
 			}
 
 			EssenceOfKinetics: {
 				DisplayName: Essence Of Kinetics
-				Tooltip: ""
+				Tooltip:
+					'''
+					A gift from your Starfarer
+					Utilized in the creation of 'Kariumu's Favor'
+					'''
 			}
 
 			EssenceOfSpinning: {
 				DisplayName: Essence Of Spinning
-				Tooltip: ""
+				Tooltip:
+					'''
+					A gift from your Starfarer
+					Utilized in the creation of 'Trickspin Two-Step'
+					'''
 			}
 
 			EssenceOfTheSoldier: {
 				DisplayName: Essence Of The Soldier
-				Tooltip: ""
+				Tooltip:
+					'''
+					A gift from your Starfarer
+					Utilized in the creation of 'Shock & Awe'
+					'''
+			}
+			
+			EssenceOfTheHallownest: {
+				DisplayName: Essence Of The Hallownest
+				Tooltip:
+					'''
+					A gift from your Starfarer
+					Utilized in the creation of 'Gossamer Needle'
+					'''
 			}
 
 			EmberFlask: {
@@ -7949,6 +7974,24 @@ Mods: {
 			SeventhSigilAutumnAttire: {
 				DisplayName: Seventh Sigil Autumn Attire
 				Tooltip: ""
+			}
+
+			TsukiBossBag: {
+				DisplayName: Tsuki Boss Bag
+				Tooltip: ""
+			}
+
+			GossamerNeedle: {
+				DisplayName: Gossamer Needle
+				Tooltip:
+					'''
+					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty when aspected to Melee or Magic damage]
+					Attacks with this weapon stab forwards, piercing foes
+					Right click to dash towards your cursor (4 second cooldown)
+					Press the Weapon Action Key to unleash [c/B9F1FA:Gossamer Storm], healing 15 and striking nearby foes 3 times (10 second cooldown)
+					If [c/B9F1FA:Gossamer Storm] inflicts a critical strike, gain Alacrity for 5 seconds, increasing attack and movement speed
+					'Too weak, little ghost...'
+					'''
 			}
 		}
 
@@ -8792,6 +8835,8 @@ Mods: {
 			SilenceSquallDamageField.DisplayName: Silence Squall Damage Field
 			Threadling.DisplayName: Threadling
 			WovenNeedle.DisplayName: Woven Needle
+			GossamerAOEAttack.DisplayName: Gossamer A O E Attack
+			GossamerNeedleStab.DisplayName: Gossamer Needle Stab
 		}
 
 		Buffs: {
@@ -11039,6 +11084,16 @@ Mods: {
 			ShepherdSunstoneCooldown: {
 				DisplayName: Shepherd Sunstone Cooldown
 				Description: ""
+			}
+
+			GossamerAOECooldown: {
+				DisplayName: Gossamer A O E Cooldown
+				Description: Mods.StarsAbove.Buffs.GossamerAOECooldown.Description
+			}
+
+			GossamerDashCooldown: {
+				DisplayName: Gossamer Dash Cooldown
+				Description: Mods.StarsAbove.Buffs.GossamerDashCooldown.Description
 			}
 		}
 

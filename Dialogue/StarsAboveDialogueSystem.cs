@@ -4575,7 +4575,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheUnderworldGoddess").Type);
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheHallownest").Type);
 
                         dialoguePrep = false;
                     }
@@ -8340,7 +8340,7 @@ namespace StarsAbove
                 }
 
 
-            }//Dreamer's Inkwell
+            }//Shock and Awe
             if (chosenDialogue == 174)
             {
                 if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
@@ -8387,7 +8387,7 @@ namespace StarsAbove
                 }
 
 
-            }//Shock & Awe
+            }//Dreamer's Inkwell
             if (chosenDialogue == 175)
             {
                 if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside

@@ -3593,28 +3593,28 @@ namespace StarsAbove
 
 
                 }
-                if (vagrantDialogue == 2)
+                if (vagrantDialogue == 2 && TrickspinWeaponDialogue == 0)
                 {
                     TrickspinWeaponDialogue = 1;
 
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                     NewDiskDialogue = true;
                 }
-                if (NPC.downedBoss2)
+                if (NPC.downedBoss2 && SoldierWeaponDialogue == 0)
                 {
                     SoldierWeaponDialogue = 1;
 
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                     NewDiskDialogue = true;
                 }
-                if (PlanteraWeaponDialogue == 2)
+                if (PlanteraWeaponDialogue == 2 && DreamerWeaponDialogue == 0)
                 {
                     DreamerWeaponDialogue = 1;
 
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                     NewDiskDialogue = true;
                 }
-                if (DukeFishronWeaponDialogue == 2)
+                if (DukeFishronWeaponDialogue == 2 && KineticWeaponDialogue == 0)
                 {
                     KineticWeaponDialogue = 1;
 

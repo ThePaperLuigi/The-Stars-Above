@@ -28,11 +28,11 @@ namespace StarsAbove.Items.Accessories
 		}
 		public override void AddRecipes()
 		{
-			CreateRecipe(1)
+			/*CreateRecipe(1)
 				.AddIngredient(ModContent.ItemType<Materials.StellarRemnant>(), 40)
 				.AddCustomShimmerResult(ModContent.ItemType<Materials.StellarRemnant>(), 3)
 				.AddTile(Terraria.ID.TileID.Anvils)
-				.Register();
+				.Register();*/
 		}
 	}
 }

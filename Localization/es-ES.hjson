@@ -488,7 +488,7 @@ Mods: {
 					// 92: Looks to me like this Magic Essence has some powerful potential, but I'm not quite sure what it requires in turn... Perhaps you should give it a look.
 					// 93: You aren't going to believe this, but someone gave this Essence to me- how is that possible? They said something like 'It's just a game, so it's OK.' What does that mean?
 					// 94: This Ranged-essence seems to lead to a classic rocket-launcher weapon- I've heard of using explosives for traversal, so it shouldn't hurt to try, right?
-					// 95: Well, this Magic Essence is pretty unique: you can draw directly onto the world to cause different effects to occur.
+					// 95: This Magic Essence is pretty unique: you can draw directly onto the world to cause different effects to occur.
 					// 96: Looks like a yo-yo Essence is here- a Summon-type one as well. Seems to boast some helpful movement tools as well!
 				}
 
@@ -7860,6 +7860,16 @@ Mods: {
 				// DisplayName: Seventh Sigil Autumn Attire
 				// Tooltip: ""
 			}
+
+			TsukiBossBag: {
+				// DisplayName: Tsuki Boss Bag
+				// Tooltip: ""
+			}
+
+			GossamerNeedle: {
+				// DisplayName: Gossamer Needle
+				// Tooltip: ""
+			}
 		}
 
 		UIElements: {
@@ -8702,6 +8712,8 @@ Mods: {
 			// SilenceSquallDamageField.DisplayName: Silence Squall Damage Field
 			// Threadling.DisplayName: Threadling
 			// WovenNeedle.DisplayName: Woven Needle
+			// GossamerAOEAttack.DisplayName: Gossamer A O E Attack
+			// GossamerNeedleStab.DisplayName: Gossamer Needle Stab
 		}
 
 		Buffs: {
@@ -10936,6 +10948,16 @@ Mods: {
 			ShepherdSunstoneCooldown: {
 				// DisplayName: Shepherd Sunstone Cooldown
 				// Description: ""
+			}
+
+			GossamerAOECooldown: {
+				// DisplayName: Gossamer A O E Cooldown
+				// Description: Mods.StarsAbove.Buffs.GossamerAOECooldown.Description
+			}
+
+			GossamerDashCooldown: {
+				// DisplayName: Gossamer Dash Cooldown
+				// Description: Mods.StarsAbove.Buffs.GossamerDashCooldown.Description
 			}
 		}
 

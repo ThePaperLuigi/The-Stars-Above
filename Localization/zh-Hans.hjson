@@ -7922,6 +7922,16 @@ Mods: {
 				// DisplayName: Seventh Sigil Autumn Attire
 				// Tooltip: ""
 			}
+
+			TsukiBossBag: {
+				// DisplayName: Tsuki Boss Bag
+				// Tooltip: ""
+			}
+
+			GossamerNeedle: {
+				// DisplayName: Gossamer Needle
+				// Tooltip: ""
+			}
 		}
 
 		UIElements: {
@@ -8764,6 +8774,8 @@ Mods: {
 			// SilenceSquallDamageField.DisplayName: Silence Squall Damage Field
 			// Threadling.DisplayName: Threadling
 			// WovenNeedle.DisplayName: Woven Needle
+			// GossamerAOEAttack.DisplayName: Gossamer A O E Attack
+			// GossamerNeedleStab.DisplayName: Gossamer Needle Stab
 		}
 
 		Buffs: {
@@ -11003,6 +11015,16 @@ Mods: {
 			ShepherdSunstoneCooldown: {
 				// DisplayName: Shepherd Sunstone Cooldown
 				// Description: ""
+			}
+
+			GossamerAOECooldown: {
+				// DisplayName: Gossamer A O E Cooldown
+				// Description: Mods.StarsAbove.Buffs.GossamerAOECooldown.Description
+			}
+
+			GossamerDashCooldown: {
+				// DisplayName: Gossamer Dash Cooldown
+				// Description: Mods.StarsAbove.Buffs.GossamerDashCooldown.Description
 			}
 		}
 

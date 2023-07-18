@@ -38,7 +38,7 @@ namespace StarsAbove
 		public bool spatialWeapon;
 		public bool loadItem = true;
 
-		public List<int> AstralWeapons = new List<int>() { 
+		public List<int> AstralWeapons = new List<int>() {
 			ModContent.ItemType<CarianDarkMoon>(),
 			ModContent.ItemType<NeoDealmaker>(),
 			ModContent.ItemType<DerFreischutz>(),
@@ -62,7 +62,7 @@ namespace StarsAbove
 			ModContent.ItemType<HunterSymphony>(),
 			ModContent.ItemType<KevesiFarewell>(),
 			ModContent.ItemType<PodZero42>(),
-
+			ModContent.ItemType<GossamerNeedle>(),
 
 			//ModContent.ItemType<EssenceOf>(),
 			ModContent.ItemType<EssenceOfTheDarkMoon>(),
@@ -88,6 +88,7 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfTheHunt>(),
 			ModContent.ItemType<EssenceOfFarewells>(),
 			ModContent.ItemType<EssenceOfTheAutomaton>(),
+			ModContent.ItemType<EssenceOfTheHallownest>(),
 
 		};
 		public List<int> UmbralWeapons = new List<int>() {
@@ -199,6 +200,12 @@ namespace StarsAbove
 			ModContent.ItemType<ManiacalJustice>(),
 			ModContent.ItemType<SupremeAuthority>(),
 
+			//Stars Above v1.5
+			ModContent.ItemType<DreamersInkwell>(),
+			ModContent.ItemType<BrilliantSpectrum>(),
+			ModContent.ItemType<ShockAndAwe>(),
+			ModContent.ItemType<TrickspinTwoStep>(),
+
 			ModContent.ItemType<EssenceOfAdagium>(),
 			ModContent.ItemType<EssenceOfBloodshed>(),
 			ModContent.ItemType<EssenceOfChemtech>(),
@@ -248,7 +255,10 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfMania>(),
 			ModContent.ItemType<EssenceOfSurya>(),
 			ModContent.ItemType<EssenceOfAuthority>(),
-
+			ModContent.ItemType<EssenceOfKinetics>(),
+			ModContent.ItemType<EssenceOfDreams>(),
+			ModContent.ItemType<EssenceOfTheSoldier>(),
+			ModContent.ItemType<EssenceOfSpinning>(),
 		};
 
 		public List<int> Prisms = new List<int>() {
@@ -975,7 +985,7 @@ namespace StarsAbove
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
 			{
-				if (item.ModItem is LevinstormAxe && !disableAspectPenalty) //Ranged weapons
+				if ((item.ModItem is LevinstormAxe || item.ModItem is GossamerNeedle) && !disableAspectPenalty) //Ranged weapons
 				{
 					damage += 0.1f;
 				}
