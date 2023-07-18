@@ -14,7 +14,7 @@ using static Terraria.ModLoader.ModContent;
 namespace StarsAbove.Items
 {
     public class DreamersInkwell : ModItem
-	{//Umbral
+	{
 		public override void SetStaticDefaults()
 		{
 			
@@ -146,7 +146,15 @@ namespace StarsAbove.Items
 
 		public override void AddRecipes()
 		{
-			
+			CreateRecipe(1)
+				.AddIngredient(ItemID.PurpleMucos)
+				.AddIngredient(ItemID.BlackInk)
+				.AddIngredient(ItemID.VialofVenom)
+				.AddIngredient(ItemID.SoulBottleNight)
+				.AddIngredient(ItemID.EmptyDropper)
+				.AddIngredient(ItemType<EssenceOfDreams>())
+				.AddTile(TileID.Anvils)
+				.Register();
 		}
 	}
 }

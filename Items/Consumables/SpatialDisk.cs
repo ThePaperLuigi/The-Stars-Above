@@ -850,6 +850,38 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
+			if (modPlayer.KineticWeaponDialogue == 1)
+			{
+				modPlayer.chosenDialogue = 172;
+				modPlayer.KineticWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
+			if (modPlayer.SoldierWeaponDialogue == 1)
+			{
+				modPlayer.chosenDialogue = 173;
+				modPlayer.SoldierWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
+			if (modPlayer.DreamerWeaponDialogue == 1)
+			{
+				modPlayer.chosenDialogue = 174;
+				modPlayer.DreamerWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
+			if (modPlayer.TrickspinWeaponDialogue == 1)
+			{
+				modPlayer.chosenDialogue = 175;
+				modPlayer.TrickspinWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
 			if (modPlayer.BloodWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 147;

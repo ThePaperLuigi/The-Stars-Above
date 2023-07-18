@@ -1117,6 +1117,11 @@ namespace StarsAbove
             tag["ManiacalWeaponDialogue"] = ManiacalWeaponDialogue;
             tag["AuthorityWeaponDialogue"] = AuthorityWeaponDialogue;
 
+            tag["KineticWeaponDialogue"] = KineticWeaponDialogue;
+            tag["DreamerWeaponDialogue"] = DreamerWeaponDialogue;
+            tag["SoldierWeaponDialogue"] = SoldierWeaponDialogue;
+            tag["TrickspinWeaponDialogue"] = TrickspinWeaponDialogue;
+
 
             tag["observatoryDialogue"] = observatoryDialogue;
             tag["cosmicVoyageDialogue"] = cosmicVoyageDialogue;
@@ -1423,6 +1428,10 @@ namespace StarsAbove
             ManiacalWeaponDialogue = tag.GetInt("ManiacalWeaponDialogue");
             AuthorityWeaponDialogue = tag.GetInt("AuthorityWeaponDialogue");
 
+            KineticWeaponDialogue = tag.GetInt("KineticWeaponDialogue");
+            DreamerWeaponDialogue = tag.GetInt("DreamerWeaponDialogue");
+            SoldierWeaponDialogue = tag.GetInt("SoldierWeaponDialogue");
+            TrickspinWeaponDialogue = tag.GetInt("TrickspinWeaponDialogue");
 
 
             observatoryDialogue = tag.GetInt("observatoryDialogue");
@@ -3583,6 +3592,34 @@ namespace StarsAbove
                     NewStellarNova = true;
 
 
+                }
+                if (vagrantDialogue == 2)
+                {
+                    TrickspinWeaponDialogue = 1;
+
+                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                    NewDiskDialogue = true;
+                }
+                if (NPC.downedBoss2)
+                {
+                    SoldierWeaponDialogue = 1;
+
+                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                    NewDiskDialogue = true;
+                }
+                if (PlanteraWeaponDialogue == 2)
+                {
+                    DreamerWeaponDialogue = 1;
+
+                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                    NewDiskDialogue = true;
+                }
+                if (DukeFishronWeaponDialogue == 2)
+                {
+                    KineticWeaponDialogue = 1;
+
+                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                    NewDiskDialogue = true;
                 }
                 if (NPC.downedBoss1 && NPC.downedSlimeKing && NPC.downedBoss2 && NPC.downedBoss3 && NPC.downedQueenBee && NPC.downedQueenSlime && NPC.downedEmpressOfLight && Main.hardMode && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && NPC.downedPlantBoss && NPC.downedGolemBoss && NPC.downedFishron && NPC.downedMoonlord && AllVanillaBossesDefeatedDialogue == 0)
                 {

@@ -356,7 +356,13 @@ namespace StarsAbove.Items
 
 		public override void AddRecipes()
 		{
-			
+			CreateRecipe(1)
+				.AddIngredient(ItemID.SoulofLight, 15)
+				.AddIngredient(ItemID.Banana)
+				.AddIngredient(ItemID.SunStone)
+				.AddIngredient(ItemType<EssenceOfKinetics>())
+				.AddTile(TileID.Anvils)
+				.Register();
 		}
 	}
 }
