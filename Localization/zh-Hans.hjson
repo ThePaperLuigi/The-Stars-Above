@@ -7884,22 +7884,47 @@ Mods: {
 
 			EssenceOfDreams: {
 				// DisplayName: Essence Of Dreams
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					A gift from your Starfarer
+					Utilized in the creation of 'Dreamer's Inkwell'
+					''' */
 			}
 
 			EssenceOfKinetics: {
 				// DisplayName: Essence Of Kinetics
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					A gift from your Starfarer
+					Utilized in the creation of 'Kariumu's Favor'
+					''' */
 			}
 
 			EssenceOfSpinning: {
 				// DisplayName: Essence Of Spinning
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					A gift from your Starfarer
+					Utilized in the creation of 'Trickspin Two-Step'
+					''' */
 			}
 
 			EssenceOfTheSoldier: {
 				// DisplayName: Essence Of The Soldier
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					A gift from your Starfarer
+					Utilized in the creation of 'Shock & Awe'
+					''' */
+			}
+
+			EssenceOfTheHallownest: {
+				// DisplayName: Essence Of The Hallownest
+				/* Tooltip:
+					'''
+					A gift from your Starfarer
+					Utilized in the creation of 'Gossamer Needle'
+					''' */
 			}
 
 			EmberFlask: {
@@ -7930,6 +7955,19 @@ Mods: {
 
 			GossamerNeedle: {
 				// DisplayName: Gossamer Needle
+				/* Tooltip:
+					'''
+					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty when aspected to Melee or Magic damage]
+					Attacks with this weapon stab forwards, piercing foes
+					Right click to dash towards your cursor (4 second cooldown)
+					Press the Weapon Action Key to unleash [c/B9F1FA:Gossamer Storm], healing 15 and striking nearby foes 3 times (10 second cooldown)
+					If [c/B9F1FA:Gossamer Storm] inflicts a critical strike, gain Alacrity for 5 seconds, increasing attack and movement speed
+					'Too weak, little ghost...'
+					''' */
+			}
+
+			EssenceOfTheVoid: {
+				// DisplayName: Essence Of The Void
 				// Tooltip: ""
 			}
 		}
