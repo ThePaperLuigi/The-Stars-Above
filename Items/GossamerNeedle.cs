@@ -32,7 +32,7 @@ namespace StarsAbove.Items
 			Item.height = 72;           //Weapon's texture's height
 			Item.useTime = 25;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
 			Item.useAnimation = 25;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
-			Item.useStyle = ItemUseStyleID.Thrust;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
+			Item.useStyle = ItemUseStyleID.Shoot;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
 			Item.knockBack = 12;         //The force of knockback of the weapon. Maximum is 20
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
 			Item.rare = ItemRarityID.Orange;              //The rarity of the weapon, from -1 to 13
