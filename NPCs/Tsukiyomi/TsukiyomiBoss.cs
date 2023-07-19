@@ -1182,6 +1182,8 @@ namespace StarsAbove.NPCs.Tsukiyomi
 			npcLoot.Add(ExpertRule);
 			npcLoot.Add(notExpertRule);*/
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Materials.CelestialPrincessGenesisPrecursor>(), 4));
+			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StellarSpoils>(), 1, 5, 5));
+
 			StellarSpoils.SetupBossStellarSpoils(npcLoot);
 		}
 		

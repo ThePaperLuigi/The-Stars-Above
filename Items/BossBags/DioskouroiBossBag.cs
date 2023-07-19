@@ -49,7 +49,8 @@ namespace StarsAbove.Items.BossBags
 		{
 			// We have to replicate the expert drops from MinionBossBody here via QuickSpawnItem
 			StellarSpoils.SetupStellarSpoils(itemLoot);
-			//itemLoot.Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<LightswornPrism>(), 7));
+			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<StellarSpoils>(), 3, 1, 1));
+
 			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GeminiPrism>(), 4, 1, 1));
 			itemLoot.Add(ItemDropRule.CoinsBasedOnNPCValue(ModContent.NPCType<CastorBoss>()));
 		}
