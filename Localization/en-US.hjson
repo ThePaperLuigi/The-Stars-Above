@@ -3141,7 +3141,7 @@ Mods: {
 
 				BossChecklistIntegration: {
 					EntryName: Dioskouroi, the Twin Forces
-					SpawnInfo: Defeat this strange foe through the Shattered Disk, obtained from your Starfarer after King Slime is defeated. This fight will be critical to progression later!
+					SpawnInfo: Defeat these demonic twins through use of the Twincrux Pendant, granted after defeating a Mechanical Boss. (The Vagrant of Space and Time must have been defeated.)
 					DespawnMessage: ""
 				}
 			}
