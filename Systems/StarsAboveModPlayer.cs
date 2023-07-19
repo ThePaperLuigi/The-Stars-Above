@@ -5084,6 +5084,14 @@ namespace StarsAbove
                     starfarerOutfit = 4;
                 }
 
+                if (starfarerArmorEquipped.type == ItemType<SeventhSigilAutumnAttire>())
+                {
+                    starfarerOutfit = 5;
+                }
+                if (starfarerArmorEquipped.type == ItemType<GarmentsOfWinterRainAttire>())
+                {
+                    starfarerOutfit = 6;
+                }
             }
             if (starfarerVanityEquipped != null)
             {
@@ -5102,6 +5110,14 @@ namespace StarsAbove
                 if (starfarerVanityEquipped.type == ItemType<AegisOfHopesLegacy>())
                 {
                     starfarerOutfitVanity = 4;
+                }
+                if (starfarerVanityEquipped.type == ItemType<SeventhSigilAutumnAttire>())
+                {
+                    starfarerOutfitVanity = 5;
+                }
+                if (starfarerVanityEquipped.type == ItemType<GarmentsOfWinterRainAttire>())
+                {
+                    starfarerOutfitVanity = 6;
                 }
                 if (starfarerVanityEquipped.type == ItemType<FamiliarLookingAttire>())
                 {

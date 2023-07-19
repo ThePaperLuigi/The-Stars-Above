@@ -7898,7 +7898,7 @@ Mods: {
 					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty when aspected to Melee or Magic damage]
 					Attacks with this weapon stab forwards, piercing foes
 					Right click to dash towards your cursor (4 second cooldown)
-					Press the Weapon Action Key to unleash [c/B9F1FA:Gossamer Storm], healing 15 and striking nearby foes 3 times (10 second cooldown)
+					Press the Weapon Action Key to unleash [c/B9F1FA:Gossamer Storm], healing 15 HP and striking nearby foes 3 times (10 second cooldown)
 					If [c/B9F1FA:Gossamer Storm] inflicts a critical strike, gain Alacrity for 5 seconds, increasing attack and movement speed
 					'Too weak, little ghost...'
 					''' */
@@ -8719,26 +8719,26 @@ Mods: {
 			// WarriorOrbitingLight.DisplayName: Lightblast
 			// WarriorOfLightFinalPhaseCastingSprite.DisplayName: ""
 			// WarriorOfLightFinalPhaseSwingingSprite.DisplayName: ""
-			// BuryTheLightFollowUp.DisplayName: Bury The Light Follow Up
-			// BuryTheLightSlashFollowUp.DisplayName: Bury The Light Slash Follow Up
-			// BuryTheLightSwing1.DisplayName: Bury The Light Swing1
-			// BuryTheLightSwing2.DisplayName: Bury The Light Swing2
-			// BuryTheLightSheathe.DisplayName: Bury The Light Sheathe
-			// MirageBlade.DisplayName: Mirage Blade
-			// MirageBladeAlt.DisplayName: Mirage Blade Alt
+			// BuryTheLightFollowUp.DisplayName: Bury The Light
+			// BuryTheLightSlashFollowUp.DisplayName: Bury The Light
+			// BuryTheLightSwing1.DisplayName: Bury The Light
+			// BuryTheLightSwing2.DisplayName: Bury The Light
+			// BuryTheLightSheathe.DisplayName: Bury The Light
+			// MirageBlade.DisplayName: Bury The Light
+			// MirageBladeAlt.DisplayName: Bury The Light
 			// LamentClashWin.DisplayName: Lament Clash Win
 			// LamentClashLose.DisplayName: Lament Clash Lose
 			// UnlimitedBladeWorksBackground.DisplayName: Unlimited Blade Works Background
 			// UnlimitedBladeWorksBorder.DisplayName: Unlimited Blade Works Border
-			// UBWBladeProjectile.DisplayName: U B W Blade Projectile
+			// UBWBladeProjectile.DisplayName: Forged Blade
 			// SpacePowerBackground.DisplayName: Space Power Background
 			// SpacePowerBorder.DisplayName: Space Power Border
-			// UBWBladeFollowUp.DisplayName: U B W Blade Follow Up
-			// UBWBladeFollowUpDelay.DisplayName: U B W Blade Follow Up Delay
-			// BossTheofania.DisplayName: Boss Theofania
+			// UBWBladeFollowUp.DisplayName: Forged Blade
+			// UBWBladeFollowUpDelay.DisplayName: Forged Blade
+			// BossTheofania.DisplayName: Demi-Prototokia
 			// Prototokia.DisplayName: Prototokia
-			// Prototokia2.DisplayName: Prototokia2
-			// Prototokia3.DisplayName: Prototokia3
+			// Prototokia2.DisplayName: Prototokia
+			// Prototokia3.DisplayName: Prototokia
 			// GoldenGunHeld.DisplayName: Golden Gun Held
 			// ThundercrashDamage.DisplayName: Thundercrash Damage
 			// GoldenGunBullet.DisplayName: Golden Gun Bullet
@@ -8750,8 +8750,8 @@ Mods: {
 			// SilenceSquallDamageField.DisplayName: Silence Squall Damage Field
 			// Threadling.DisplayName: Threadling
 			// WovenNeedle.DisplayName: Woven Needle
-			// GossamerAOEAttack.DisplayName: Gossamer A O E Attack
-			// GossamerNeedleStab.DisplayName: Gossamer Needle Stab
+			// GossamerAOEAttack.DisplayName: Gossamer Needle
+			// GossamerNeedleStab.DisplayName: Gossamer Needle
 		}
 
 		Buffs: {
@@ -10989,13 +10989,13 @@ Mods: {
 			}
 
 			GossamerAOECooldown: {
-				// DisplayName: Gossamer A O E Cooldown
-				// Description: Mods.StarsAbove.Buffs.GossamerAOECooldown.Description
+				// DisplayName: Gossamer Storm Cooldown
+				// Description: ""
 			}
 
 			GossamerDashCooldown: {
 				// DisplayName: Gossamer Dash Cooldown
-				// Description: Mods.StarsAbove.Buffs.GossamerDashCooldown.Description
+				// Description: ""
 			}
 		}
 

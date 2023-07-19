@@ -482,11 +482,11 @@ Mods: {
 					85: It looks to me like this Ranged-weapon has the ability to down hordes of foes pretty easily. Sounds like it'll come in handy- especially the giant coffin swings!
 					87: How about this Essence? It'll give you an enhanced barrier, able to protect yourself while helping you deal some damage without worry of repercussions.
 					88: Seems that this Essence came from that voodoo doll we found in the Underworld- a strange sight. Are you certain that using a weapon like this is worth the risk?
-					89: Who am I kidding- of course you're certain! You're MY Starbearer, after all! Just don't get TOO reckless, now. I don't think resurrection is something I can pull off on you.
+					89: Who am I kidding- of course you're certain! You're MY Starbearer, after all! Just don't get TOO reckless, now.
 					90: This Essence is aspected to this world's star- your sun! Needless to say, the power of the sun would be quite the boon- let's see this thing in action!
 					91: Hmm, I'd advise healthy amounts of caution with this Essence- it's a Melee essence with high potential, but it looks like you're leaving your defenses open for it.
 					92: Looks to me like this Magic Essence has some powerful potential, but I'm not quite sure what it requires in turn... Perhaps you should give it a look.
-					93: You aren't going to believe this, but someone gave this Essence to me- how is that possible? They said something like 'It's just a game, so it's OK.' What does that mean?
+					93: You aren't going to believe this, but someone gave this Essence to me- how is that possible? They said something like 'It's just a game, so it's OK.' What even?
 					94: This Ranged-essence seems to lead to a classic rocket-launcher weapon- I've heard of using explosives for traversal, so it shouldn't hurt to try, right?
 					95: This Magic Essence is pretty unique: you can draw directly onto the world to cause different effects to occur.
 					96: Looks like a yo-yo Essence is here- a Summon-type one as well. Seems to boast some helpful movement tools as well!
@@ -5642,6 +5642,7 @@ Mods: {
 			Persephone: {
 				Tooltip:
 					'''
+					Unobtainable
 					Applies frostburn to foes and fires an icy projectile when in the confines of the underworld
 					'Only thorns left on this rose'
 					'''
@@ -7988,7 +7989,7 @@ Mods: {
 					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty when aspected to Melee or Magic damage]
 					Attacks with this weapon stab forwards, piercing foes
 					Right click to dash towards your cursor (4 second cooldown)
-					Press the Weapon Action Key to unleash [c/B9F1FA:Gossamer Storm], healing 15 and striking nearby foes 3 times (10 second cooldown)
+					Press the Weapon Action Key to unleash [c/B9F1FA:Gossamer Storm], healing 15 HP and striking nearby foes 3 times (10 second cooldown)
 					If [c/B9F1FA:Gossamer Storm] inflicts a critical strike, gain Alacrity for 5 seconds, increasing attack and movement speed
 					'Too weak, little ghost...'
 					'''
@@ -11092,13 +11093,13 @@ Mods: {
 			}
 
 			GossamerAOECooldown: {
-				DisplayName: Gossamer A O E Cooldown
-				Description: Mods.StarsAbove.Buffs.GossamerAOECooldown.Description
+				DisplayName: Gossamer Storm Cooldown
+				Description: ""
 			}
 
 			GossamerDashCooldown: {
 				DisplayName: Gossamer Dash Cooldown
-				Description: Mods.StarsAbove.Buffs.GossamerDashCooldown.Description
+				Description: ""
 			}
 		}
 

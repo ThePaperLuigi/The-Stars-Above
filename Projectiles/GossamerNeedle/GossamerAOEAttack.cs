@@ -38,6 +38,8 @@ namespace StarsAbove.Projectiles.GossamerNeedle
 		bool firstSpawn = true;
         public override void ModifyDamageHitbox(ref Rectangle hitbox)
         {
+			hitbox.X -= 30;
+			hitbox.Y -= 30;
 			hitbox.Width += 60;
 			hitbox.Height += 60;
             base.ModifyDamageHitbox(ref hitbox);
