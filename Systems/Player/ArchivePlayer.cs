@@ -604,11 +604,11 @@ namespace StarsAbove
                       102,
                       "Defeat Skeletron, then visit the Underworld.")); //Corresponding dialogue ID.
                 WeaponArchiveList.Add(new WeaponArchiveListing(
-                      "Skeletron Weapon", //Name of the archive listing.
+                      "Wall of Flesh Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Astral>()}] Karlan Truesilver " +
                       $"or " +
-                      $"[i:{ItemType<Umbral>()}] Every Moment Matters.", //Description of the listing.
+                      $"[i:{ItemType<Umbral>()}] Dragged Below.", //Description of the listing.
                       player.WallOfFleshWeaponDialogue == 2, //Unlock requirements.
                       105,
                       "Defeat Skeletron.")); //Corresponding dialogue ID.

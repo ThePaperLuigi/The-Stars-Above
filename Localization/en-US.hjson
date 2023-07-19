@@ -501,7 +501,7 @@ Mods: {
 					6: Whatever it may be, it should prove useful to you. Ignore the fact that it talks.
 					7: I've gotten an Essence for you. This one will create a Magic-type weapon. Apparently, proper timing is needed to better utilize this weapon.
 					8: I have no doubts you can get a handle on it easily. Okay, saying 'no doubts' would be a lie. Maybe 1/4th of a doubt.
-					9: This Essence is used to craft an upgrade to Death in Four Acts. It will most likely boast incredible Ranged power.
+					9: This Magic Essence channels void energies to empower you with unique attacks, but don't get too attached. Void stuff is always dangerous.
 					10: The weapon made from this Essence is based around music.. Timing your swings will be critical in using this to its fullest.
 					11: Even holding it makes you feel a certain type of beat...
 					12: This Essence will create a legendary weapon made for slaying dragons. Jump into the air and pierce your foes with its strength.
@@ -7968,13 +7968,25 @@ Mods: {
 			}
 
 			GarmentsOfWinterRainAttire: {
-				DisplayName: Garments Of Winter Rain Attire
-				Tooltip: ""
+				DisplayName: Garments Of Winter Rain
+				Tooltip:
+					'''
+					One of the storied garbs from legends past
+					Equip to your Starfarer to gain the following:
+					[c/C0C0C0:No effect]
+					Vanity Item
+					'''
 			}
 
 			SeventhSigilAutumnAttire: {
-				DisplayName: Seventh Sigil Autumn Attire
-				Tooltip: ""
+				DisplayName: Seventh Sigil's Autumn
+				Tooltip:
+					'''
+					One of the storied garbs from legends past
+					Equip to your Starfarer to gain the following:
+					[c/C0C0C0:No effect]
+					Vanity Item
+					'''
 			}
 
 			TsukiBossBag: {
@@ -7997,7 +8009,34 @@ Mods: {
 
 			EssenceOfTheVoid: {
 				DisplayName: Essence Of The Void
+				Tooltip:
+					'''
+					A gift from your Starfarer
+					Utilized in the creation of 'Dragged Below'
+					'''
+			}
+
+			DraggedBelowGloves: {
+				DisplayName: Dragged Below Gloves
 				Tooltip: ""
+			}
+
+			DraggedBelow: {
+				DisplayName: Dragged Below
+				Tooltip:
+					'''
+					Attacks with this weapon unleashes [c/7444FF:Drown], firing a weak piercing bolt that strikes 2 times, dealing 15% bonus damage to foes afflicted with Shadowflame
+					Right click to unleash [c/9036F5:Flood], firing a bolt of void energy explodes on impact, dealing 4x damage while inflicting Shadowflame for 5 seconds (8 second cooldown)
+					Taking damage or using [c/7444FF:Drown] increases [c/7A1AE7:Void Corruption] ([c/7A1AE7:Void Corruption] passively increases over time) 
+					Pressing the Weapon Action Key will consume 25% [c/7A1AE7:Void Corruption] to activate [c/73C84E:Suppress], healing 25 HP and 25% Max MP (2 second cooldown)
+					Consecutive activations of [c/73C84E:Suppress] heals 5 HP instead
+					When [c/7A1AE7:Void Corruption] reaches maxiumum, become afflicted with [c/E71A1A:Fiendish Corruption]
+					While under the effects of [c/E71A1A:Fiendish Corruption], gain 12 defense, [c/7A1AE7:Void Corruption] drains over time, and weapon abilities are transformed
+					[c/7444FF:Drown] becomes [c/CD1717:Corrupted Drown], transforming into a channeled beam that deals powerful damage, but no longer charges [c/7A1AE7:Void Corruption] and inflicts Slow on self when active
+					[c/9036F5:Flood] becomes [c/B1296D:Corrupted Flood], dealing 10x damage and cooldown is reduced to 4 seconds, but does not inflict Shadowflame
+					[c/73C84E:Suppress] becomes [c/C84EB6:Corrupted Suppress], consuming 50 HP to restore 25% Max MP and increase [c/7A1AE7:Void Corruption] by 25%
+					'..and so it comes... for all of us.'
+					'''
 			}
 		}
 
@@ -8843,6 +8882,16 @@ Mods: {
 			WovenNeedle.DisplayName: Woven Needle
 			GossamerAOEAttack.DisplayName: Gossamer Needle
 			GossamerNeedleStab.DisplayName: Gossamer Needle
+			DraggedBelowLaser.DisplayName: Dragged Below Laser
+			DraggedBelowLaserCorrupt.DisplayName: Dragged Below Laser Corrupt
+			AsphodeneBurst5.DisplayName: Asphodene Burst5
+			AsphodeneBurst6.DisplayName: Asphodene Burst6
+			EridaniBurst5.DisplayName: Eridani Burst5
+			EridaniBurst6.DisplayName: Eridani Burst6
+			DraggedBelowFlood.DisplayName: Dragged Below Flood
+			DraggedBelowFloodCorrupted.DisplayName: Dragged Below Flood Corrupted
+			DraggedBelowFloodExplosion.DisplayName: Dragged Below Flood Explosion
+			DraggedBelowFloodExplosionCorrupted.DisplayName: Dragged Below Flood Explosion Corrupted
 		}
 
 		Buffs: {
@@ -11099,6 +11148,31 @@ Mods: {
 
 			GossamerDashCooldown: {
 				DisplayName: Gossamer Dash Cooldown
+				Description: ""
+			}
+
+			DraggedBelowCooldown: {
+				DisplayName: Dragged Below Flood Cooldown
+				Description: ""
+			}
+
+			DraggedBelowCorruption: {
+				DisplayName: Fiendish Corruption
+				Description: Void energy is corrupting mortal form, changing effects of Dragged Below
+			}
+
+			DraggedBelowDrownActive: {
+				DisplayName: Dragged Below Drown Active
+				Description: ""
+			}
+
+			DraggedBelowSuppressCooldown: {
+				DisplayName: Dragged Below Suppress Cooldown
+				Description: ""
+			}
+
+			DraggedBelowHealCooldown: {
+				DisplayName: Dragged Below Heal Cooldown
 				Description: ""
 			}
 		}

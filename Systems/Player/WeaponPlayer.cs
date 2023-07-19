@@ -82,6 +82,9 @@ using StarsAbove.Projectiles.UltimaThule;
 using StarsAbove.Buffs.BrilliantSpectrum;
 using StarsAbove.Projectiles.DreamersInkwell;
 using StarsAbove.Projectiles.BuryTheLight;
+using StarsAbove.Items.Armor.BlackSilence;
+using StarsAbove.Items.Armor.DraggedBelow;
+using StarsAbove.Buffs.DraggedBelow;
 
 namespace StarsAbove
 {
@@ -462,6 +465,17 @@ namespace StarsAbove
 
         //Saltwater Scourge
         public bool SaltwaterScourgeHeld;
+
+        //Dragged Below
+        public bool DraggedBelowHeld;
+        public int DraggedBelowCorruption;
+        public int DraggedBelowCorruptionTimer;
+        public bool DraggedBelowInCorruption;
+
+        public Vector2 DraggedBelowPosition1;
+        public Vector2 DraggedBelowPosition2;
+        public Vector2 DraggedBelowTarget;
+        public Vector2 DraggedBelowTarget2;
 
         //New weapons have a white flash when their gauge is charged.
         public float gaugeChangeAlpha = 0f;
@@ -3196,6 +3210,10 @@ namespace StarsAbove
                     PerformanceResourceCurrent -= info.Damage;
                 }
             }
+            if(DraggedBelowHeld)
+            {
+                DraggedBelowCorruption++;
+            }
             if (euthymiaActive)
             {
                 eternityGauge -= info.Damage / 2;
@@ -3581,7 +3599,7 @@ namespace StarsAbove
         public override void ResetEffects()
         {
             WeaponGaugeOffset = 0;
-            
+            DraggedBelowHeld = false;
             KevesiFarewellInInventory = false;
             AgnianFarewellInInventory = false;
             BuryTheLightHeld = false;
@@ -3710,6 +3728,11 @@ namespace StarsAbove
                 if (ChemtankHeld)
                 {
                     Player.legs = EquipLoader.GetEquipSlot(Mod, "UrgotLegs", EquipType.Legs);
+
+                }
+                if (DraggedBelowHeld)
+                {
+                    Player.UpdateVisibleAccessories(new Item(ItemType<DraggedBelowGloves>()), false);
 
                 }
             }
@@ -3848,6 +3871,7 @@ namespace StarsAbove
             PhantomInTheMirror();
             KroniicPrincipality();
             Nanomachina();
+            DraggedBelow();
 
             //Radiance cap (used by certain weapons.)
             if (radiance > 10)
@@ -3858,7 +3882,59 @@ namespace StarsAbove
 
 
         }
+        private void DraggedBelow()
+        {
+            DraggedBelowTarget = Player.GetModPlayer<StarsAbovePlayer>().playerMousePos;
+            DraggedBelowTarget2 = Vector2.Lerp(DraggedBelowTarget2, Player.GetModPlayer<StarsAbovePlayer>().playerMousePos, 0.02f);
+            if(DraggedBelowHeld)
+            {
+                DraggedBelowCorruptionTimer++;
 
+                if (DraggedBelowCorruptionTimer >= 10)
+                {
+                    if (Player.HasBuff(BuffType<DraggedBelowCorruption>()))
+                    {
+                        DraggedBelowCorruption--;
+                    }
+                    else
+                    {
+                        DraggedBelowCorruption++;
+                    }
+                    DraggedBelowCorruptionTimer = 0;
+                }
+                if(DraggedBelowCorruption >= 100 && !DraggedBelowInCorruption)
+                {
+                    DraggedBelowInCorruption = true;
+                    Player.ClearBuff(BuffType<DraggedBelowCooldown>());
+                    SoundEngine.PlaySound(SoundID.Roar, Player.Center);
+                    Player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
+                    for (int d = 0; d < 30; d++)
+                    {
+                        Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Red, 0f + Main.rand.Next(-10, 10), 0f + Main.rand.Next(-10, 10), 150, default(Color), 1f);
+                    }
+                    for (int d = 0; d < 30; d++)
+                    {
+                        Dust.NewDust(Player.Center, 0, 0, DustID.LifeDrain, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1f);
+                    }
+                }
+                if(DraggedBelowInCorruption)
+                {
+                    Player.AddBuff(BuffType<DraggedBelowCorruption>(), 10);
+                    Dust.NewDust(Player.Center, 0, 0, DustID.LifeDrain, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 0.7f);
+
+                    if (DraggedBelowCorruption <= 0)
+                    {
+                        DraggedBelowInCorruption = false;
+                        //effects
+                        for (int d = 0; d < 15; d++)
+                        {
+                            Dust.NewDust(Player.Center, 0, 0, DustID.Smoke, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 1f);
+                        }
+                    }
+                }
+                DraggedBelowCorruption = (int)MathHelper.Clamp(DraggedBelowCorruption, 0, 100);
+            }
+        }
         private void DreamersInkwell()
         {
             InkwellMana = Player.statManaMax2;

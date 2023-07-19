@@ -4800,7 +4800,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfPerfection").Type);
+                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheVoid").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 1)

@@ -482,11 +482,11 @@ Mods: {
 					// 85: It looks to me like this Ranged-weapon has the ability to down hordes of foes pretty easily. Sounds like it'll come in handy- especially the giant coffin swings!
 					// 87: How about this Essence? It'll give you an enhanced barrier, able to protect yourself while helping you deal some damage without worry of repercussions.
 					// 88: Seems that this Essence came from that voodoo doll we found in the Underworld- a strange sight. Are you certain that using a weapon like this is worth the risk?
-					// 89: Who am I kidding- of course you're certain! You're MY Starbearer, after all! Just don't get TOO reckless, now. I don't think resurrection is something I can pull off on you.
+					// 89: Who am I kidding- of course you're certain! You're MY Starbearer, after all! Just don't get TOO reckless, now.
 					// 90: This Essence is aspected to this world's star- your sun! Needless to say, the power of the sun would be quite the boon- let's see this thing in action!
 					// 91: Hmm, I'd advise healthy amounts of caution with this Essence- it's a Melee essence with high potential, but it looks like you're leaving your defenses open for it.
 					// 92: Looks to me like this Magic Essence has some powerful potential, but I'm not quite sure what it requires in turn... Perhaps you should give it a look.
-					// 93: You aren't going to believe this, but someone gave this Essence to me- how is that possible? They said something like 'It's just a game, so it's OK.' What does that mean?
+					// 93: You aren't going to believe this, but someone gave this Essence to me- how is that possible? They said something like 'It's just a game, so it's OK.' What even?
 					// 94: This Ranged-essence seems to lead to a classic rocket-launcher weapon- I've heard of using explosives for traversal, so it shouldn't hurt to try, right?
 					// 95: This Magic Essence is pretty unique: you can draw directly onto the world to cause different effects to occur.
 					// 96: Looks like a yo-yo Essence is here- a Summon-type one as well. Seems to boast some helpful movement tools as well!
@@ -7877,13 +7877,25 @@ Mods: {
 			}
 
 			GarmentsOfWinterRainAttire: {
-				// DisplayName: Garments Of Winter Rain Attire
-				// Tooltip: ""
+				// DisplayName: Garments Of Winter Rain
+				/* Tooltip:
+					'''
+					One of the storied garbs from legends past
+					Equip to your Starfarer to gain the following:
+					[c/C0C0C0:No effect]
+					Vanity Item
+					''' */
 			}
 
 			SeventhSigilAutumnAttire: {
-				// DisplayName: Seventh Sigil Autumn Attire
-				// Tooltip: ""
+				// DisplayName: Seventh Sigil's Autumn
+				/* Tooltip:
+					'''
+					One of the storied garbs from legends past
+					Equip to your Starfarer to gain the following:
+					[c/C0C0C0:No effect]
+					Vanity Item
+					''' */
 			}
 
 			TsukiBossBag: {
@@ -7907,6 +7919,29 @@ Mods: {
 			EssenceOfTheVoid: {
 				// DisplayName: Essence Of The Void
 				// Tooltip: ""
+			}
+
+			DraggedBelowGloves: {
+				// DisplayName: Dragged Below Gloves
+				// Tooltip: ""
+			}
+
+			DraggedBelow: {
+				// DisplayName: Dragged Below
+				/* Tooltip:
+					'''
+					Attacks with this weapon unleashes [c/7444FF:Drown], firing a weak piercing bolt that strikes 2 times, dealing 15% bonus damage to foes afflicted with Shadowflame
+					Right click to unleash [c/9036F5:Flood], firing a bolt of void energy explodes on impact, dealing 4x damage while inflicting Shadowflame for 5 seconds (8 second cooldown)
+					Taking damage or using [c/7444FF:Drown] increases [c/7A1AE7:Void Corruption] ([c/7A1AE7:Void Corruption] passively increases over time) 
+					Pressing the Weapon Action Key will consume 25% [c/7A1AE7:Void Corruption] to activate [c/73C84E:Suppress], healing 25 HP and 25% Max MP (2 second cooldown)
+					Consecutive activations of [c/73C84E:Suppress] only heals 5 HP instead
+					When [c/7A1AE7:Void Corruption] reaches maxiumum, become afflicted with [c/E71A1A:Fiendish Corruption]
+					While under the effects of [c/E71A1A:Fiendish Corruption], gain 12 defense, [c/7A1AE7:Void Corruption] drains over time, and weapon abilities are transformed
+					[c/7444FF:Drown] becomes [c/CD1717:Corrupted Drown], transforming into a channeled beam that deals powerful damage, but no longer charges [c/7A1AE7:Void Corruption] and inflicts Slow on self when active
+					[c/9036F5:Flood] becomes [c/B1296D:Corrupted Flood], dealing 10x damage and cooldown is reduced to 4 seconds, but does not inflict Shadowflame
+					[c/73C84E:Suppress] becomes [c/C84EB6:Corrupted Suppress], consuming 50 HP to restore 25% Max MP and increase [c/7A1AE7:Void Corruption] by 25%
+					'..and so it comes... for all of us.'
+					''' */
 			}
 		}
 
@@ -8752,6 +8787,16 @@ Mods: {
 			// WovenNeedle.DisplayName: Woven Needle
 			// GossamerAOEAttack.DisplayName: Gossamer Needle
 			// GossamerNeedleStab.DisplayName: Gossamer Needle
+			// DraggedBelowLaser.DisplayName: Dragged Below Laser
+			// DraggedBelowLaserCorrupt.DisplayName: Dragged Below Laser Corrupt
+			// AsphodeneBurst5.DisplayName: Asphodene Burst5
+			// AsphodeneBurst6.DisplayName: Asphodene Burst6
+			// EridaniBurst5.DisplayName: Eridani Burst5
+			// EridaniBurst6.DisplayName: Eridani Burst6
+			// DraggedBelowFlood.DisplayName: Dragged Below Flood
+			// DraggedBelowFloodCorrupted.DisplayName: Dragged Below Flood Corrupted
+			// DraggedBelowFloodExplosion.DisplayName: Dragged Below Flood Explosion
+			// DraggedBelowFloodExplosionCorrupted.DisplayName: Dragged Below Flood Explosion Corrupted
 		}
 
 		Buffs: {
@@ -10995,6 +11040,31 @@ Mods: {
 
 			GossamerDashCooldown: {
 				// DisplayName: Gossamer Dash Cooldown
+				// Description: ""
+			}
+
+			DraggedBelowCooldown: {
+				// DisplayName: Dragged Below Flood Cooldown
+				// Description: ""
+			}
+
+			DraggedBelowCorruption: {
+				// DisplayName: Fiendish Corruption
+				// Description: Void energy is corrupting mortal form, changing effects of Dragged Below
+			}
+
+			DraggedBelowDrownActive: {
+				// DisplayName: Dragged Below Drown Active
+				// Description: ""
+			}
+
+			DraggedBelowSuppressCooldown: {
+				// DisplayName: Dragged Below Suppress Cooldown
+				// Description: ""
+			}
+
+			DraggedBelowHealCooldown: {
+				// DisplayName: Dragged Below Heal Cooldown
 				// Description: ""
 			}
 		}

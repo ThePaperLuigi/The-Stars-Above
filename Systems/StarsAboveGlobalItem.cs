@@ -115,6 +115,7 @@ namespace StarsAbove
 			ModContent.ItemType<SparkblossomBeacon>(),
 			ModContent.ItemType<IrminsulDream>(),
 			ModContent.ItemType<AgnianFarewell>(),
+			ModContent.ItemType<DraggedBelow>(),
 
 			ModContent.ItemType<EssenceOfAlpha>(),
 			ModContent.ItemType<EssenceOfAsh>(),
@@ -137,8 +138,9 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfTheSharpshooter>(),
 			ModContent.ItemType<EssenceOfTime>(),
 			ModContent.ItemType<EssenceOfStaticShock>(),
-
 			ModContent.ItemType<EssenceOfOffseeing>(),
+			ModContent.ItemType<EssenceOfTheVoid>(),
+
 		};
 		public List<int> SpatialWeapons = new List<int>(){
 
@@ -338,6 +340,9 @@ namespace StarsAbove
 			ModContent.ItemType<AegisOfHopesLegacy>(),
 			ModContent.ItemType<CelestialPrincessGenesis>(),
 			ModContent.ItemType<FamiliarLookingAttire>(),
+			ModContent.ItemType<SeventhSigilAutumnAttire>(),
+			ModContent.ItemType<GarmentsOfWinterRainAttire>(),
+
 		}; 
 
 		public List<int> GlowingItems = new List<int>() {
@@ -444,8 +449,12 @@ namespace StarsAbove
 			ModContent.ItemType<EssenceOfNanomachines>(),
 			ModContent.ItemType<EssenceOfMania>(),
 			ModContent.ItemType<EssenceOfSurya>(),
-
-
+			ModContent.ItemType<EssenceOfTheVoid>(),
+			ModContent.ItemType<EssenceOfTheHallownest>(),
+			ModContent.ItemType<EssenceOfKinetics>(),
+			ModContent.ItemType<EssenceOfTheSoldier>(),
+			ModContent.ItemType<EssenceOfSpinning>(),
+			ModContent.ItemType<EssenceOfDreams>(),
 
 		};
 		public static bool disableAspectPenalty;
