@@ -8005,7 +8005,7 @@ Mods: {
 					While under the effects of [c/E71A1A:Fiendish Corruption], gain 12 defense, [c/7A1AE7:Void Corruption] drains over time, and weapon abilities are transformed
 					[c/7444FF:Drown] becomes [c/CD1717:Corrupted Drown], transforming into a channeled beam that deals powerful damage, but no longer charges [c/7A1AE7:Void Corruption] and inflicts Slow on self when active
 					[c/9036F5:Flood] becomes [c/B1296D:Corrupted Flood], dealing 10x damage and cooldown is reduced to 4 seconds, but does not inflict Shadowflame
-					[c/73C84E:Suppress] becomes [c/C84EB6:Corrupted Suppress], consuming 50 HP to restore 25% Max MP and increase [c/7A1AE7:Void Corruption] by 25%
+					[c/73C84E:Suppress] becomes [c/C84EB6:Corrupted Suppress], consuming 50 HP to restore 50% Max MP and increase [c/7A1AE7:Void Corruption] by 25%
 					'..and so it comes... for all of us.'
 					''' */
 			}
