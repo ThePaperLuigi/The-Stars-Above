@@ -3141,7 +3141,7 @@ Mods: {
 
 				BossChecklistIntegration: {
 					// EntryName: Dioskouroi, the Twin Forces
-					// SpawnInfo: Defeat this strange foe through the Shattered Disk, obtained from your Starfarer after King Slime is defeated. This fight will be critical to progression later!
+					// SpawnInfo: Defeat these demonic twins through use of the Twincrux Pendant, granted after defeating a Mechanical Boss. (The Vagrant of Space and Time must have been defeated.)
 					// DespawnMessage: ""
 				}
 			}
@@ -7980,7 +7980,11 @@ Mods: {
 
 			EssenceOfTheVoid: {
 				// DisplayName: Essence Of The Void
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					A gift from your Starfarer
+					Utilized in the creation of 'Dragged Below'
+					''' */
 			}
 
 			DraggedBelowGloves: {
@@ -7993,10 +7997,10 @@ Mods: {
 				/* Tooltip:
 					'''
 					Attacks with this weapon unleashes [c/7444FF:Drown], firing a weak piercing bolt that strikes 2 times, dealing 15% bonus damage to foes afflicted with Shadowflame
-					Right click to unleash [c/9036F5:Flood], firing a bolt of void energy explodes on impact, dealing 4x damage while inflicting Shadowflame for 5 seconds (8 second cooldown)
+					Right click to unleash [c/9036F5:Flood], firing a bolt of void energy that explodes on impact, dealing 4x damage while inflicting Shadowflame for 5 seconds (8 second cooldown)
 					Taking damage or using [c/7444FF:Drown] increases [c/7A1AE7:Void Corruption] ([c/7A1AE7:Void Corruption] passively increases over time) 
 					Pressing the Weapon Action Key will consume 25% [c/7A1AE7:Void Corruption] to activate [c/73C84E:Suppress], healing 25 HP and 25% Max MP (2 second cooldown)
-					Consecutive activations of [c/73C84E:Suppress] only heals 5 HP instead
+					Consecutive activations of [c/73C84E:Suppress] heals 5 HP instead
 					When [c/7A1AE7:Void Corruption] reaches maxiumum, become afflicted with [c/E71A1A:Fiendish Corruption]
 					While under the effects of [c/E71A1A:Fiendish Corruption], gain 12 defense, [c/7A1AE7:Void Corruption] drains over time, and weapon abilities are transformed
 					[c/7444FF:Drown] becomes [c/CD1717:Corrupted Drown], transforming into a channeled beam that deals powerful damage, but no longer charges [c/7A1AE7:Void Corruption] and inflicts Slow on self when active

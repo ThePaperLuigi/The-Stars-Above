@@ -26,7 +26,7 @@ namespace StarsAbove.Items
 			Item.damage = 24;          
 			Item.DamageType = DamageClass.Magic;          
 			Item.width = 40;            
-			Item.mana = 5;
+			Item.mana = 2;
 			Item.height = 40;        
 			Item.useTime = 35;         
 			Item.useAnimation = 35;       
@@ -77,7 +77,7 @@ namespace StarsAbove.Items
 				{
 					if(player.HasBuff(BuffType<DraggedBelowCorruption>()))
                     {
-						if(player.statLife >= 26)
+						if(player.statLife >= 51)
                         {
 							player.AddBuff(BuffType<DraggedBelowSuppressCooldown>(), 120);
 							player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -95;
@@ -86,10 +86,16 @@ namespace StarsAbove.Items
 							CombatText.NewText(textPos, new Color(227, 68, 255, 240), $"25", false, false);
 							player.GetModPlayer<WeaponPlayer>().gaugeChangeAlpha = 1f;
 							SoundEngine.PlaySound(SoundID.Item125, player.Center);
-
+							for (int d = 0; d < 30; d++)
+							{
+								Dust.NewDust(player.Center, 0, 0, DustID.FireworkFountain_Red, 0f + Main.rand.Next(-10, 10), 0f + Main.rand.Next(-10, 10), 150, default(Color), 1f);
+							}
 							player.statLife -= 50;
-							player.ManaEffect((int)(player.statManaMax2 * 0.25));
+							player.ManaEffect((int)(player.statManaMax2 * 0.5));
 							modPlayer.DraggedBelowCorruption += 25;
+							player.statMana += (int)(player.statManaMax2 * 0.5);
+							if (player.statMana > player.statManaMax2)
+								player.statMana = player.statManaMax2;
 						}
 						
 					}
@@ -110,8 +116,15 @@ namespace StarsAbove.Items
 							player.Heal(25);
 
 						}
+						for (int d = 0; d < 30; d++)
+						{
+							Dust.NewDust(player.Center, 0, 0, DustID.FireworkFountain_Green, 0f + Main.rand.Next(-10, 10), 0f + Main.rand.Next(-10, 10), 150, default(Color), 1f);
+						}
 						player.AddBuff(BuffType<DraggedBelowHealCooldown>(), 60 * 5);
 						player.ManaEffect((int)(player.statManaMax2 * 0.25));
+						player.statMana += (int)(player.statManaMax2 * 0.25);
+						if (player.statMana > player.statManaMax2)
+							player.statMana = player.statManaMax2;
 					}
 				}
 			}

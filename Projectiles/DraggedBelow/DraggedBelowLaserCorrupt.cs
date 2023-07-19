@@ -110,6 +110,30 @@ namespace StarsAbove.Projectiles.DraggedBelow
 		// Set custom immunity time on hitting an NPC
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
 			target.immune[Projectile.owner] = 4;
+			float dustAmount = 4f;
+			float randomConstant = MathHelper.ToRadians(Main.rand.Next(0, 360));
+			for (int i = 0; (float)i < dustAmount; i++)
+			{
+				Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+				spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(15f, 1f);
+				spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+				int dust = Dust.NewDust(target.Center, 0, 0, DustID.LifeDrain);
+				Main.dust[dust].scale = 1.5f;
+				Main.dust[dust].noGravity = true;
+				Main.dust[dust].position = target.Center + spinningpoint5;
+				Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 3f;
+			}
+			for (int i = 0; (float)i < dustAmount; i++)
+			{
+				Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+				spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(15f, 1f);
+				spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant + MathHelper.ToRadians(90));
+				int dust = Dust.NewDust(target.Center, 0, 0, DustID.LifeDrain);
+				Main.dust[dust].scale = 1.5f;
+				Main.dust[dust].noGravity = true;
+				Main.dust[dust].position = target.Center + spinningpoint5;
+				Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 3f;
+			}
 		}
 
 		// The AI of the projectile
@@ -150,12 +174,7 @@ namespace StarsAbove.Projectiles.DraggedBelow
 				Dust dust = Main.dust[Dust.NewDust(dustPos, 0, 0, DustID.LifeDrain, dustVel.X, dustVel.Y)];
 				dust.noGravity = true;
 				dust.scale = 1.2f;
-				dust = Dust.NewDustDirect(Main.player[Projectile.owner].MountedCenter, 0, 0, 31,
-					-unit.X * Distance, -unit.Y * Distance);
-				dust.fadeIn = 0f;
-				dust.noGravity = true;
-				dust.scale = 0.88f;
-				dust.color = Color.Cyan;
+				
 			}
 
 			float rotation = (float)Math.Atan2(Main.player[Projectile.owner].MountedCenter.Y - (player.GetModPlayer<WeaponPlayer>().DraggedBelowTarget2.Y), Main.player[Projectile.owner].MountedCenter.X - (player.GetModPlayer<WeaponPlayer>().DraggedBelowTarget2.X));//Aim towards mouse
