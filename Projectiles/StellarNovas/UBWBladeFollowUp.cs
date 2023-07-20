@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using StarsAbove.Buffs.StellarNovas;
 using StarsAbove.Effects;
 using System;
 using Terraria;
@@ -172,7 +173,7 @@ namespace StarsAbove.Projectiles.StellarNovas
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			OnHitDust(target);
-
+			target.AddBuff(BuffType<BladeWorksDamageReduction>(), 60 * 20);
 			Player projOwner = Main.player[Projectile.owner];
 			projOwner.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
 			SoundEngine.PlaySound(StarsAboveAudio.SFX_ScytheImpact, target.Center);

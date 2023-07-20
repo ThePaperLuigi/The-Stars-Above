@@ -123,7 +123,21 @@ namespace StarsAbove.Items
 		
 		public override void AddRecipes()
 		{
-			
+			CreateRecipe(1)
+				.AddIngredient(ItemID.Bomb, 5)
+				.AddIngredient(ItemID.TungstenBar, 18)
+				.AddIngredient(ItemID.Dynamite, 1)
+				.AddIngredient(ItemType<EssenceOfTheSoldier>())
+				.AddTile(TileID.Anvils)
+				.Register();
+
+			CreateRecipe(1)
+				.AddIngredient(ItemID.Bomb, 5)
+				.AddIngredient(ItemID.SilverBar, 18)
+				.AddIngredient(ItemID.Dynamite, 1)
+				.AddIngredient(ItemType<EssenceOfTheSoldier>())
+				.AddTile(TileID.Anvils)
+				.Register();
 		}
 	}
 }

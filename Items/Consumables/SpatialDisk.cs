@@ -87,9 +87,18 @@ namespace StarsAbove.Items.Consumables
 			var modPlayer = player.GetModPlayer<StarsAbovePlayer>();
 
 			pingCooldown--;
-			if (modPlayer.StarfarerSelectionVisibility < 2f)
+			if (!modPlayer.seenIntroCutscene)
 			{
-				modPlayer.StarfarerSelectionVisibility += 0.03f;
+				if (modPlayer.IntroDialogueTimer <= 0 && modPlayer.chosenStarfarer == 0 && player.GetModPlayer<BossPlayer>().VideoDuration <= 0 && modPlayer.StarfarerSelectionVisibility <= 0)
+				{
+					modPlayer.IntroDialogueTimer = 300;//20 seconds if you say no.
+					modPlayer.sceneID = 0;
+					modPlayer.VNDialogueActive = true;
+				}
+
+
+				
+				return;
 			}
 			base.HoldItem(player);
 		}
@@ -240,6 +249,7 @@ namespace StarsAbove.Items.Consumables
 
 			}
 			SoundEngine.PlaySound(SoundID.MenuOpen, player.position);
+			
 			if (modPlayer.starfarerIntro == true)
 			{
 				//modPlayer.chosenDialogue = 1;

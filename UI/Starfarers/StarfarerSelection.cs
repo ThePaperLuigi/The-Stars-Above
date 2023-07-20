@@ -215,7 +215,12 @@ namespace StarsAbove.UI.Starfarers
 			
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
 			// Calculate quotient
-			
+			if (!modPlayer.seenIntroCutscene)
+			{
+				
+				return;
+			}
+
 			Rectangle hitbox = barFrame.GetInnerDimensions().ToRectangle();
 			hitbox.X += 12;
 			hitbox.Width -= 24;
@@ -260,8 +265,9 @@ namespace StarsAbove.UI.Starfarers
 			
 		
 		public override void Update(GameTime gameTime) {
+			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
 			
-			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().StarfarerSelectionVisibility > 0 && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0))
+			if (modPlayer.StarfarerSelectionVisibility <= 0 && modPlayer.chosenStarfarer != 0)
 			{
 				area.Remove();
 				return;
@@ -269,7 +275,17 @@ namespace StarsAbove.UI.Starfarers
 			}
 			else
 			{
-				Append(area);
+				if (!modPlayer.seenIntroCutscene)
+				{
+					
+					area.Remove();
+					return;
+				}
+				else
+				{
+					Append(area);
+				}
+
 			}
 			/*area.Left.Pixels = (Main.screenWidth / 2);
 			area.Top.Pixels = (Main.screenHeight / 2);
@@ -277,7 +293,7 @@ namespace StarsAbove.UI.Starfarers
 			area2.Top.Pixels = (Main.screenHeight / 2) - 250 + 12;
 			area3.Left.Pixels = (Main.screenWidth / 2);
 			area3.Top.Pixels = (Main.screenHeight / 2) - 250 + 12;*/
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			
 			// Setting the text per tick to update and show our resource values.
 
 			description.SetText($"{modPlayer.description}");

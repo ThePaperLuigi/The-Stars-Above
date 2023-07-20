@@ -1882,6 +1882,24 @@ Mods: {
 
 			VNDialogue: {
 				SceneID: {
+					0: {
+						// Dialogue.0: In your palm sits a mysterious disk- myriad reflections glittering across its starry surface. It seems to be petitioning your aid. Gaze deeper?
+
+						Choices: {
+							// 1: Continue.
+							// 2: Relent.
+						}
+					}
+
+					1: {
+						// Dialogue.0: Perhaps another time.
+
+						Choices: {
+							// 1: X
+							// 2: X
+						}
+					}
+
 					3: {
 						Dialogue: {
 							0: 幸会！我是爱丝福德妮——一位星海旅者，相对地，你就是我的承星者。
@@ -11137,6 +11155,11 @@ Mods: {
 			DraggedBelowHealCooldown: {
 				// DisplayName: Dragged Below Heal Cooldown
 				// Description: ""
+			}
+
+			BladeWorksDamageReduction: {
+				// DisplayName: Blade Works Damage Reduction
+				// Description: Mods.StarsAbove.Buffs.BladeWorksDamageReduction.Description
 			}
 		}
 

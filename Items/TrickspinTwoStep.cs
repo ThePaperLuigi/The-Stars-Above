@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs.TrickspinTwoStep;
+using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles.TrickspinTwoStep;
 using System;
 using Terraria;
@@ -222,7 +223,14 @@ namespace StarsAbove.Items
 
 		public override void AddRecipes()
 		{
-			
+			CreateRecipe(1)
+				.AddIngredient(ItemID.WoodYoyo)
+				.AddIngredient(ItemID.FlinxFur)
+				.AddIngredient(ItemID.WhiteString)
+				.AddIngredient(ItemID.FlintlockPistol)
+				.AddIngredient(ItemType<EssenceOfSpinning>())
+				.AddTile(TileID.Anvils)
+				.Register();
 		}
 	}
 }

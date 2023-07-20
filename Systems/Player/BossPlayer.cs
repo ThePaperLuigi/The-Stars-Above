@@ -56,6 +56,8 @@ namespace StarsAbove
 
         public int inVagrantFightTimer; //Check to see if you've recently hit the boss.
 
+        public int introCutsceneProgress = 0;
+
         public int nalhaunCutsceneProgress = 0;
         public int tsukiCutsceneProgress = 0;
         public int tsukiCutscene2Progress = 0;
@@ -270,6 +272,7 @@ namespace StarsAbove
 
             }
 
+            introCutsceneProgress--;
             nalhaunCutsceneProgress--;
             tsukiCutsceneProgress--;
             tsukiCutscene2Progress--;

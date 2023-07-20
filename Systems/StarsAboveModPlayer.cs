@@ -70,7 +70,8 @@ namespace StarsAbove
 
         public static bool BossEnemySpawnModDisabled = false;
 
-        
+        public bool seenIntroCutscene = false;
+        public int IntroDialogueTimer;
 
         public int screenShakeTimerGlobal = -1000;
 
@@ -1278,12 +1279,14 @@ namespace StarsAbove
             tag["firstJoinedWorld"] = firstJoinedWorld;
             tag["firstJoinedWorldName"] = firstJoinedWorldName;
 
-
+            tag["seenIntroCutscene"] = seenIntroCutscene;
             base.SaveData(tag);
         }
 
         public override void LoadData(TagCompound tag)
         {
+            seenIntroCutscene = tag.GetBool("seenIntroCutscene");
+
             firstJoinedWorld = tag.GetInt("firstJoinedWorld");
             firstJoinedWorldName = tag.GetString("firstJoinedWorldName");
 
@@ -2704,7 +2707,7 @@ namespace StarsAbove
             {
                 GlobalRotation = 0;
             }
-
+            IntroDialogueTimer--;
 
             DrillMountBug();
             BossEnemySpawnModifier();
@@ -4599,6 +4602,8 @@ namespace StarsAbove
                 }
                 dialogue = LangHelper.Wrap((string)VNScenes.SetupVNSystem(sceneID, sceneProgression)[13], 50);
                 //animatedDialogue = dialogue.Substring(0, dialogueScrollNumber);
+
+
             }
         }
         private void StarfarerDialogueVisibility()
@@ -5187,7 +5192,9 @@ namespace StarsAbove
 
                 }
 
-                baseStats = "" +
+                if(chosenStellarNova != 4)
+                {
+                    baseStats = "" +
                     $"{novaDamage} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseDamage") +
                     $"\n{novaGaugeMax} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseEnergyCost") +
                     $"\n" +
@@ -5195,6 +5202,20 @@ namespace StarsAbove
                     $"\n{novaCritChance + novaCritChanceMod}% " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritChance") +
                     $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritDamage") +
                     $"\n{novaGaugeMax - novaChargeMod} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EnergyCost");
+                }
+                else
+                {
+                    baseStats = "" +
+                    $"{novaDamage} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseHealStrength") +
+                    $"\n{novaGaugeMax} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseEnergyCost") +
+                    $"\n" +
+                    $"\n{Math.Round(novaDamage * (1 + novaDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.HealStrength") +
+                    $"\n{novaCritChance + novaCritChanceMod}% " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritChance") +
+                    $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritHealStrength") +
+                    $"\n{novaGaugeMax - novaChargeMod} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EnergyCost");
+                }
+
+                
 
             }
             
@@ -7798,7 +7819,20 @@ namespace StarsAbove
 
         public override void PreUpdateBuffs()
         {
-            if(SubworldSystem.Current != null)
+            if (seenIntroCutscene && chosenStarfarer == 0)
+            {
+                StarfarerSelectionVisibility += 0.03f;
+                VNDialogueActive = false;
+            }
+            else
+            {
+                StarfarerSelectionVisibility -= 0.1f;
+
+            }
+            StarfarerSelectionVisibility = MathHelper.Clamp(StarfarerSelectionVisibility, 0, 2f);
+
+
+            if (SubworldSystem.Current != null)
             {
 
             }
@@ -7895,18 +7929,8 @@ namespace StarsAbove
                 stellarSickness = false;
             }
             screenShakeTimerGlobal--;
-            if (Main.LocalPlayer.HeldItem.ModItem is SpatialDisk)
-            {
 
-            }
-            else
-            {
-                StarfarerSelectionVisibility -= 0.1f;
-                if (StarfarerSelectionVisibility < 0)
-                {
-                    StarfarerSelectionVisibility = 0;
-                }
-            }
+            
 
             if (Player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
             {

@@ -23,6 +23,7 @@ namespace StarsAbove.UI.CutsceneUI
         private UIVideo tsukiCutsceneVideo2;
         private UIVideo warriorCutsceneVideo;
         private UIVideo warriorCutsceneVideo2;
+        private UIVideo starfarerIntroVideo;
 
         public override void OnInitialize() {
 			
@@ -77,6 +78,13 @@ namespace StarsAbove.UI.CutsceneUI
                 WaitForStart = true,
                 DoLoop = false
             };
+            starfarerIntroVideo = new UIVideo(Request<Video>("StarsAbove/Video/StarfarerIntroCutscene"))
+            {
+
+                ScaleToFit = true,
+                WaitForStart = true,
+                DoLoop = false
+            };
             //area.Append(edinGenesisQuasarVideo);
             Append(area);
 		}
@@ -119,6 +127,7 @@ namespace StarsAbove.UI.CutsceneUI
             TsukiCutscene2(bossPlayer, ref introWhite, ref outroWhite);
             WarriorCutscene1(bossPlayer, ref introWhite, ref outroWhite);
             WarriorCutscene2(bossPlayer, ref introWhite, ref outroWhite);
+            IntroCutscene(bossPlayer, ref introWhite, ref outroWhite);
 
             if (bossPlayer.VideoDuration == 0)
             {
@@ -378,6 +387,52 @@ namespace StarsAbove.UI.CutsceneUI
                 Video.FinishedVideo = false;
                 Video.StartVideo = true;
 
+                area.Append(Video);
+
+            }
+            if (Video.FinishedVideo)
+            {
+                Video.FinishedVideo = false;
+
+                modPlayer.WhiteAlpha = 1f;
+                Video.Remove();
+            }
+
+
+        }
+        private void IntroCutscene(BossPlayer modPlayer, ref bool introWhite, ref bool outroWhite)
+        {
+            UIVideo Video = starfarerIntroVideo;
+            var cutsceneProgress = modPlayer.introCutsceneProgress;
+
+            introWhite = true;
+            outroWhite = true;
+
+
+            if (cutsceneProgress <= 60 && cutsceneProgress > 0)
+            {//If the cutscene hasn't started yet, give time for the screen to fade.
+
+                if (introWhite)
+                {
+                    modPlayer.WhiteAlpha += 0.1f;
+                }
+                else
+                {
+                    modPlayer.BlackAlpha += 0.1f;
+                }
+
+
+            }
+            else
+            {
+
+            }
+            if (cutsceneProgress == 1)
+            {
+
+                Video.FinishedVideo = false;
+                Video.StartVideo = true;
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().seenIntroCutscene = true;
                 area.Append(Video);
 
             }

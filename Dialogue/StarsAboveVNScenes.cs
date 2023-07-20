@@ -44,7 +44,7 @@ namespace StarsAbove
             string sceneChoice3 = "";//15
             int choice3Scene = 0;//16
 
-            //Test scene. Does not work.
+            //Intro Scene
             if (sceneID == 0)
             {
                 //How long is the scene? (Scenes start at 0!)
@@ -55,20 +55,20 @@ namespace StarsAbove
 
                 //What appears in the choice boxes?
                 sceneChoice1 =
-                    "Click me to start the test dialogue again.";
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.1");
                 sceneChoice2 =
-                    "This is the second choice.";
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.2");
 
                 //What does the scene change to when you choose the first option?
-                choice1Scene = 0;
+                choice1Scene = 2;
 
                 //What does the scene change to when you choose the second option?
-                choice2Scene = 2;
+                choice2Scene = 1;
 
                 if (sceneProgress == 0)
                 {
                     //Who is the main character?
-                    character1 = "Asphodene";
+                    character1 = "None";
 
                     //What is their pose?
                     character1Pose = 0;
@@ -86,14 +86,63 @@ namespace StarsAbove
                     character2Expression = 0;
 
                     //Who's name should be in the dialogue box?
-                    name = "Asphodene";
+                    name = "???";
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID."); //Test dialogue Speaker: Asphodene Pose = 0 Expression = 0
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
                 }
 
             }
+            if (sceneID == 1)
+            {
 
+                sceneLength = 0;
+
+                //Does this scene have a dialouge choice at the end of it?
+                sceneHasChoice = false;
+
+                //What appears in the choice boxes?
+                sceneChoice1 =
+                  " ";
+                sceneChoice2 =
+                  " ";
+
+                //What does the scene change to when you choose the first option?
+                choice1Scene = 0;
+
+                //What does the scene change to when you choose the second option?
+                choice2Scene = 0;
+
+                if (sceneProgress == 0)
+                {
+                    //Who is the main character?
+                    character1 = "None";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "???";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+            }
             //Asphodene's new introduction. Leads into 4 and 5.
             if (sceneID == 3)
             {

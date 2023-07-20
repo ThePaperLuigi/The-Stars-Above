@@ -157,7 +157,7 @@ namespace StarsAbove.Items
 							Item.useTime = 2;
 							Item.useAnimation = 2;
 							player.GetModPlayer<WeaponPlayer>().bowChargeActive = true;
-							player.GetModPlayer<WeaponPlayer>().bowCharge+=3;
+							player.GetModPlayer<WeaponPlayer>().bowCharge+=5;
 							if (player.GetModPlayer<WeaponPlayer>().bowCharge == 1)
 							{
 								SoundEngine.PlaySound(StarsAboveAudio.SFX_bowstring, player.Center);

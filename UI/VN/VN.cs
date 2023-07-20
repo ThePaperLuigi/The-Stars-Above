@@ -228,6 +228,29 @@ namespace StarsAbove.UI.VN
 			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().VNDialogueChoiceActive))
 				return;
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			//Special stuff for the intro
+			if(modPlayer.sceneID == 0)
+            {
+				Main.LocalPlayer.GetModPlayer<BossPlayer>().introCutsceneProgress = 3;
+				Main.LocalPlayer.GetModPlayer<BossPlayer>().VideoDuration = 360 + 3;
+
+				modPlayer.VNDialogueActive = false;
+				modPlayer.VNDialogueChoiceActive = false;
+				modPlayer.sceneID = -1;
+				modPlayer.sceneProgression = 0;
+				modPlayer.sceneLength = 0;
+				modPlayer.dialogue = " ";
+				modPlayer.dialogueScrollTimer = 0;
+				modPlayer.dialogueScrollNumber = 0;
+
+				modPlayer.VNDialogueChoice1 = " ";
+				modPlayer.VNDialogueChoice2 = " ";
+				modPlayer.VNDialogueChoice3 = " ";
+
+				modPlayer.VNDialogueThirdOption = false;
+				return;
+			}
+
 			modPlayer.dialogueScrollTimer = 0;
 			modPlayer.dialogueScrollNumber = 0;
 			modPlayer.sceneID = (int)VNScenes.SetupVNSystem(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneID, Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneProgression)[4];
