@@ -18,17 +18,19 @@ The Stars Above is a Terraria expansion mod that adds a wide variety of content 
 the Starfarer system. With over 1 million downloads in less than a year, The Stars Above guarantees a unique experience for any playthrough!
 
 A brief overview of the mod's features:
-- Full Multiplayer support
-- Two fully furnished deuteroganists with over 1000+ lines of dialogue and custom UI to support it
-- Modular, upgradable ultimate abilities that scale with boss progression
-- Ability to explore unique premade locations throughout the galaxy with help from Subworld Library
-- 24 custom unlockable passive abilities present in a unique weight-based system
-- 80+ special unique weapons that have malleable damage types, alternate abilities, charged attacks, etc.
-- 7 unique bosses each with their own special cast-centric AI (some with pre-rendered cutscenes)
-- Plenty of pets, accessories, pets, and utility items
-- Settings to tailor the mod's content to your liking
-- Can be added to any playthrough at any time, and has compatibility with 100% of major content mods
-- And much more!
+[list]
+    [*]Full Multiplayer support
+    [*]Two fully furnished deuteroganists with over 1000+ lines of dialogue and custom UI
+    [*]Modular, upgradable ultimate abilities that scale with boss progression
+    [*]Ability to explore unique premade locations throughout the galaxy with help from Subworld Library
+    [*]24 custom unlockable passive abilities present in a unique weight-based system
+    [*]80+ special unique weapons that have malleable damage types, alternate abilities, charged attacks, etc.
+    [*]7 unique bosses each with their own special cast-centric AI (some with pre-rendered cutscenes)
+    [*]Plenty of pets, accessories, pets, and utility items
+    [*]Settings to tailor the mod's content to your liking
+    [*]Can be added to any playthrough at any time, and has compatibility with 100% of major content mods
+    [*]And much more!
+[/list]
 
 [img]https://i.imgur.com/BEnNDqm.png[/img]
 
