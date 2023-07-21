@@ -26,7 +26,7 @@ A brief overview of the mod's features:
     [*]24 custom unlockable passive abilities present in a unique weight-based system
     [*]80+ special unique weapons that have malleable damage types, alternate abilities, charged attacks, etc.
     [*]7 unique bosses each with their own special cast-centric AI (some with pre-rendered cutscenes)
-    [*]Plenty of pets, accessories, pets, and utility items
+    [*]Plenty of pets, accessories, and utility items
     [*]Settings to tailor the mod's content to your liking
     [*]Can be added to any playthrough at any time, and has compatibility with 100% of major content mods
     [*]And much more!
