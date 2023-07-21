@@ -24,7 +24,7 @@ namespace StarsAbove.Projectiles.GossamerNeedle
 			Projectile.timeLeft = 500;
 			Projectile.penetrate = -1;
 			Projectile.scale = 1f;
-			//Projectile.DamageType = DamageClass.Melee;
+			Projectile.DamageType = DamageClass.Melee;
 			Projectile.alpha = 0;
 			Projectile.hostile = false;
 			Projectile.friendly = true;
