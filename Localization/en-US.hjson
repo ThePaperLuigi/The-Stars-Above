@@ -10308,12 +10308,12 @@ Mods: {
 			}
 
 			PrototokiaDualcast: {
-				DisplayName: prototokia Dualcast
+				DisplayName: Prototokia Dualcast
 				Description: You are able to cast Prototokia Aster again without cost
 			}
 
 			PrototokiaTricast: {
-				DisplayName: prototokia Tricast
+				DisplayName: Prototokia Tricast
 				Description: You are able to cast Prototokia Aster yet again without cost at limited power
 			}
 

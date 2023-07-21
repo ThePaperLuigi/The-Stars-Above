@@ -14,21 +14,21 @@ Use the promo code "starsabove" to get 25% off your first month- and help suppor
 [url=https://www.bisecthosting.com/starsabove] Bisect Hosting [/url] ➔ Game Servers ➔ Terraria
 [img]https://i.imgur.com/giHAnWT.jpg[/img]
 
-
 The Stars Above is a Terraria expansion mod that adds a wide variety of content and a new important game mechanic:
-the Starfarer system. With over 1 million downloads in less than a year, The Stars Above guarantees a unique experience for any playthrough.
+the Starfarer system. With over 1 million downloads in less than a year, The Stars Above guarantees a unique experience for any playthrough!
 
-Choose between either the Umbral or Astral Aspect, and unlock unique equippable abilities
-within the Stellar Array, mixing and matching them to perfect your build.
-
-With the latest update, explore pre-designed dungeons seperate from the original world through the magic of Cosmic Voyages, meeting new allies and challenging new foes. Bring your friends along too!
-
-Converse with your Starfarer with hundreds of unique dialogue lines- you will become stronger side-by-side with them,
-and arm yourselves for the challenges to come.
-
-Unlock FIVE incredibly powerful Stellar Novas to turn the tide of battle; Stellar Novas have unique sub-abilities exclusive to each Starfarer, so find one that works for you! By defeating bosses, Stellar Novas will become stronger!
-
-Wield tons of incredibly diverse weapons with charged attacks, alternate abilities, and malleable damage types.
+A brief overview of the mod's features:
+- Full Multiplayer support
+- Two fully furnished deuteroganists with over 1000+ lines of dialogue and custom UI to support it
+- Modular, upgradable ultimate abilities that scale with boss progression
+- Ability to explore unique premade locations throughout the galaxy with help from Subworld Library
+- 24 custom unlockable passive abilities present in a unique weight-based system
+- 80+ special unique weapons that have malleable damage types, alternate abilities, charged attacks, etc.
+- 7 unique bosses each with their own special cast-centric AI (some with pre-rendered cutscenes)
+- Plenty of pets, accessories, pets, and utility items
+- Settings to tailor the mod's content to your liking
+- Can be added to any playthrough at any time, and has compatibility with 100% of major content mods
+- And much more!
 
 [img]https://i.imgur.com/BEnNDqm.png[/img]
 
@@ -71,7 +71,11 @@ Casted Attacks. Adapt and learn to defeat these formidable enemies!
 
 [h1]COSMIC VOYAGES[/h1]
 
-Explore the Moirae Galaxy through a brand-new system added in The Stars Above: Celestial Cartography. With the help of Subworld Library, obtain rare materials, powerful accessories, and more. (Alternate material sources are provided in Multiplayer!)
+Explore the Moirae Galaxy through a brand-new system added in The Stars Above: Celestial Cartography. With the help of Subworld Library, obtain rare materials, powerful accessories, and more.
+
+As of tModLoader 1.4.4, multiplayer Subworld transit is now possible!
+
+Keep in mind that there may still be issues with the system; if you do encounter said issues, you can enable Multiplayer Compatbility Mode in the Serverside Settings to revert to the old system.
 
 [img]https://i.imgur.com/BEnNDqm.png[/img]
 

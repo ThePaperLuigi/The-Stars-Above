@@ -2385,19 +2385,36 @@ namespace StarsAbove
                     modifiers.SetCrit();
                     novaGauge += trueNovaGaugeMax / 40;
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.5f;
+                    if (proj.penetrate < 999)
+                    {//If the projectile has penetrated at least 1 target
+                        modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.25f;
+                    }
+                    else
+                    {
+                        modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.5f;
+                    }
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
-
+                    
                 }
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.5f;
+                    if (proj.penetrate < 999)
+                    {//If the projectile has penetrated at least 1 target
+                        modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.25f;
+                    }
+                    else
+                    {
+                        modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.5f;
+                    }
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
-
+                if (proj.penetrate < 999)
+                {//If the projectile has penetrated at least 1 target
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage
+                }
             }
 
             if (proj.type == ProjectileType<Prototokia2>())
@@ -2412,19 +2429,34 @@ namespace StarsAbove
                     modifiers.SetCrit();
                     novaGauge += trueNovaGaugeMax / 40;
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.5f;
+                    if (proj.penetrate < 999)
+                    {//If the projectile has penetrated at least 1 target
+                        modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.25f;
+                    }
+                    else
+                    {
+                        modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.5f;
+                    }
+                    
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
-
+                    
                 }
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.5f;
+                    if (proj.penetrate < 999)
+                    {//If the projectile has penetrated at least 1 target
+                        modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.25f;
+                    }
+                    else
+                    {
+                        modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.5f;
+                    }
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
-
+                
 
             }
             if (proj.type == ProjectileType<Prototokia3>())
@@ -2439,19 +2471,32 @@ namespace StarsAbove
                     modifiers.SetCrit();
                     novaGauge += trueNovaGaugeMax / 40;
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.25f;
+                    if (proj.penetrate < 999)
+                    {//If the projectile has penetrated at least 1 target
+                        modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.08f;
+                    }
+                    else
+                    {
+                        modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.25f;
+                    }
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
-
+                    
                 }
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.25f;
+                    if (proj.penetrate < 999)
+                    {//If the projectile has penetrated at least 1 target
+                        modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.08f;
+                    }
+                    else
+                    {
+                        modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.25f;
+                    }
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
-
             }
             if (proj.type == ProjectileType<LaevateinnDamage>())
             {
@@ -3596,34 +3641,7 @@ namespace StarsAbove
 
 
                 }
-                if (vagrantDialogue == 2 && TrickspinWeaponDialogue == 0)
-                {
-                    TrickspinWeaponDialogue = 1;
-
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
-                    NewDiskDialogue = true;
-                }
-                if (NPC.downedBoss2 && SoldierWeaponDialogue == 0)
-                {
-                    SoldierWeaponDialogue = 1;
-
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
-                    NewDiskDialogue = true;
-                }
-                if (PlanteraWeaponDialogue == 2 && DreamerWeaponDialogue == 0)
-                {
-                    DreamerWeaponDialogue = 1;
-
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
-                    NewDiskDialogue = true;
-                }
-                if (DukeFishronWeaponDialogue == 2 && KineticWeaponDialogue == 0)
-                {
-                    KineticWeaponDialogue = 1;
-
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
-                    NewDiskDialogue = true;
-                }
+               
                 if (NPC.downedBoss1 && NPC.downedSlimeKing && NPC.downedBoss2 && NPC.downedBoss3 && NPC.downedQueenBee && NPC.downedQueenSlime && NPC.downedEmpressOfLight && Main.hardMode && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && NPC.downedPlantBoss && NPC.downedGolemBoss && NPC.downedFishron && NPC.downedMoonlord && AllVanillaBossesDefeatedDialogue == 0)
                 {
                     AllVanillaBossesDefeatedDialogue = 1;
@@ -3717,6 +3735,38 @@ namespace StarsAbove
                 }
                 if (WeaponDialogueTimer <= 0)//7200 = 2 min in between 
                 {//The order of these should not matter.
+                    if (vagrantDialogue == 2 && TrickspinWeaponDialogue == 0)
+                    {
+                        TrickspinWeaponDialogue = 1;
+                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                        NewDiskDialogue = true;
+                    }
+                    if (NPC.downedBoss2 && SoldierWeaponDialogue == 0)
+                    {
+                        SoldierWeaponDialogue = 1;
+                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                        NewDiskDialogue = true;
+                    }
+                    if (PlanteraWeaponDialogue == 2 && DreamerWeaponDialogue == 0)
+                    {
+                        DreamerWeaponDialogue = 1;
+                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                        NewDiskDialogue = true;
+                    }
+                    if (DukeFishronWeaponDialogue == 2 && KineticWeaponDialogue == 0)
+                    {
+                        KineticWeaponDialogue = 1;
+                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                        NewDiskDialogue = true;
+                    }
                     if (SkeletonDialogue == 2 && SkeletonWeaponDialogue == 0)
                     {
                         SkeletonWeaponDialogue = 1;

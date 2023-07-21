@@ -20,6 +20,7 @@ using StarsAbove.Utilities;
 using Terraria.UI.Chat;
 using StarsAbove.Buffs;
 using StarsAbove.Buffs.StellarNovas;
+using StarsAbove.Items.Loot;
 
 namespace StarsAbove
 {
@@ -733,7 +734,7 @@ namespace StarsAbove
 				tooltips.Add(tooltip);
 				//
 			}
-			if (item.OriginalRarity == ModContent.GetInstance<StellarSpoilsRarity>().Type && item.type != ModContent.ItemType<StellarRemnant>())
+			if (item.OriginalRarity == ModContent.GetInstance<StellarSpoilsRarity>().Type && item.type != ModContent.ItemType<StellarRemnant>() && item.type != ModContent.ItemType<StellarSpoils>())
 			{
 				TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: StellarSpoils", LangHelper.GetTextValue("Common.CanBeShimmeredSpoils")) { OverrideColor = Color.White };
 				tooltips.Add(tooltip);

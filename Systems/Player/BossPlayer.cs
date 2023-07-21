@@ -207,7 +207,7 @@ namespace StarsAbove
             {
                 if(bossTimer > 0)
                 {
-                    if(bossTimer < 600 && !speedrunEasterEgg)
+                    if(bossTimer < 600 && !speedrunEasterEgg && Main.LocalPlayer.active && !Main.LocalPlayer.dead)
                     {
                         speedrunEasterEgg = true;
                         

@@ -7,6 +7,7 @@ using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.UI;
 using static Terraria.ModLoader.ModContent;
+using Terraria.Localization;
 
 namespace StarsAbove.UI.StellarNova
 {
@@ -1069,40 +1070,79 @@ namespace StarsAbove.UI.StellarNova
 			}
 
 			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/description"), dialogue, Color.White * (modPlayer.descriptionOpacity));
-
-			switch (modPlayer.chosenStellarNova)
+			if (Language.ActiveCulture.LegacyId == ((int)GameCulture.CultureName.Chinese))
 			{
-				case 1:
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/prototokia"), prototokiaArea, Color.White * (modPlayer.novaUIOpacity));
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/prototokiaIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
-					break;
-				case 2:
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/laevateinn"), laevateinnArea, Color.White * (modPlayer.novaUIOpacity));
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/laevateinnIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
-					break;
-				case 3:
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/KiwamiRyuken"), kiwamiryukenArea, Color.White * (modPlayer.novaUIOpacity));
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/KiwamiRyukenIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
-					break;
-				case 4:
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/gardenofavalon"), gardenofavalonArea, Color.White * (modPlayer.novaUIOpacity));
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/gardenofavalonIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
-					break;
-				case 5:
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/edingenesisquasar"), edingenesisquasarArea, Color.White * (modPlayer.novaUIOpacity));
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/edingenesisquasarIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
-					break;
-				case 6:
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/unlimitedbladeworks"), unlimitedbladeworksArea, Color.White * (modPlayer.novaUIOpacity));
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/unlimitedbladeworksIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
-					break;
-				case 7:
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/guardianslight"), guardianslightArea, Color.White * (modPlayer.novaUIOpacity));
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/guardianslightIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
-					break;
-				default:
-					break;
+				switch (modPlayer.chosenStellarNova)
+				{
+					case 1:
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/prototokia"), prototokiaArea, Color.White * (modPlayer.novaUIOpacity));
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/CN/prototokiaIconCN"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+						break;
+					case 2:
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/laevateinn"), laevateinnArea, Color.White * (modPlayer.novaUIOpacity));
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/CN/laevateinnIconCN"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+						break;
+					case 3:
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/KiwamiRyuken"), kiwamiryukenArea, Color.White * (modPlayer.novaUIOpacity));
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/CN/KiwamiRyukenIconCN"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+						break;
+					case 4:
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/gardenofavalon"), gardenofavalonArea, Color.White * (modPlayer.novaUIOpacity));
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/CN/gardenofavalonIconCN"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+						break;
+					case 5:
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/edingenesisquasar"), edingenesisquasarArea, Color.White * (modPlayer.novaUIOpacity));
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/CN/edingenesisquasarIconCN"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+						break;
+					case 6:
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/unlimitedbladeworks"), unlimitedbladeworksArea, Color.White * (modPlayer.novaUIOpacity));
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/CN/unlimitedbladeworksIconCN"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+						break;
+					case 7:
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/guardianslight"), guardianslightArea, Color.White * (modPlayer.novaUIOpacity));
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/CN/guardianslightIconCN"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+						break;
+					default:
+						break;
+				}
 			}
+			else
+			{
+				switch (modPlayer.chosenStellarNova)
+				{
+					case 1:
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/prototokia"), prototokiaArea, Color.White * (modPlayer.novaUIOpacity));
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/prototokiaIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+						break;
+					case 2:
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/laevateinn"), laevateinnArea, Color.White * (modPlayer.novaUIOpacity));
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/laevateinnIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+						break;
+					case 3:
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/KiwamiRyuken"), kiwamiryukenArea, Color.White * (modPlayer.novaUIOpacity));
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/KiwamiRyukenIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+						break;
+					case 4:
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/gardenofavalon"), gardenofavalonArea, Color.White * (modPlayer.novaUIOpacity));
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/gardenofavalonIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+						break;
+					case 5:
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/edingenesisquasar"), edingenesisquasarArea, Color.White * (modPlayer.novaUIOpacity));
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/edingenesisquasarIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+						break;
+					case 6:
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/unlimitedbladeworks"), unlimitedbladeworksArea, Color.White * (modPlayer.novaUIOpacity));
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/unlimitedbladeworksIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+						break;
+					case 7:
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/guardianslight"), guardianslightArea, Color.White * (modPlayer.novaUIOpacity));
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/guardianslightIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+						break;
+					default:
+						break;
+				}
+			}
+			
 	
 			if (!_affixSlot1.Item.IsAir)
 			{
@@ -1211,7 +1251,7 @@ namespace StarsAbove.UI.StellarNova
 			}
 			else
 			{
-				unlimitedbladeworks.Remove();
+				guardianslight.Remove();
             }
             if (modPlayer.kiwamiryuken > 0)
             {
