@@ -160,6 +160,8 @@ namespace StarsAbove
 		{
 			Mod bossChecklist;
 			ModLoader.TryGetMod("BossChecklist", out bossChecklist);
+			Mod recipeBrowser;
+			ModLoader.TryGetMod("RecipeBrowser", out recipeBrowser);
 			Mod musicDisplay;
 			ModLoader.TryGetMod("MusicDisplay", out musicDisplay);
 
@@ -171,7 +173,25 @@ namespace StarsAbove
 
 				return canSeeBoss;
 			};
-
+			/*
+			if (recipeBrowser != null && !Main.dedServ)
+			{
+				recipeBrowser.Call(new object[5]
+				{
+				"AddItemCategory",
+				"Astral",
+				"Weapons",
+				ModContent.Request<Texture2D>("StarsAbove/Items/Astral"), // 24x24 icon
+				(Predicate<Item>)((Item item) =>
+				{
+				if (item.damage > 0)
+				{
+					return item.ModItem is Astral;
+				}
+				return false;
+				})
+				});
+			}*/
 			if (bossChecklist != null)
 			{
 				//Vagrant of Space and Time
