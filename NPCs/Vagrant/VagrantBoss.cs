@@ -142,11 +142,6 @@ namespace StarsAbove.NPCs.Vagrant
 			return 0f;
 		}
 
-		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)
-		{
-			NPC.lifeMax = (int)(NPC.lifeMax * balance * bossAdjustment);
-		}
-
 		public override bool CheckDead()
 		{
 			if (NPC.ai[0] != (float)ActionState.Dying) //If the boss is defeated, but the death animation hasn't played yet, play the death animation.
