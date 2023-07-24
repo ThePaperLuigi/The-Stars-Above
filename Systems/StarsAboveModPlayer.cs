@@ -8797,10 +8797,10 @@ namespace StarsAbove
 
                     }
 
-                    return false;
+                    return true;
                 }
 
-                return true;
+                return false;
             }
             if (Player.HasBuff(BuffType<Buffs.KiwamiRyuken>()))
             {
