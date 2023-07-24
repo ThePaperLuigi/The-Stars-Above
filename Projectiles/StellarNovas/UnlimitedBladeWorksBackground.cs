@@ -129,6 +129,19 @@ namespace StarsAbove.Projectiles.StellarNovas
                 }
 
             }
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                NPC npc = Main.npc[i];
+                if (npc.active && !npc.CanBeChasedBy() && npc.Distance(Projectile.Center) < realRadius)
+                {
+                    if (Main.player[Projectile.owner].GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
+                    {
+                        npc.AddBuff(BuffType<BladeWorksDefenseReduction>(), 10);
+
+                    }
+                }
+
+            }
             for (int i = 0; i < 35; i++)
             {
                 // Charging dust
