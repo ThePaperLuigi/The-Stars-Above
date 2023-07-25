@@ -39,7 +39,7 @@ A brief overview of the mod's features:
 [h1]STARFARERS[/h1]
 
 The Stars Above's flagship feature: Meet Asphodene and Eridani, masters of Astral and Umbral respectively.
-Empowered by their strength and led by their guidance, you will be able to challenge any foe Terraria has to offer. These charismatic deuteragonists boast over 2000+ lines of unique dialogue for bosses, biomes, and more.
+Empowered by their strength and led by their guidance, you will be able to challenge any foe Terraria has to offer. These charismatic deuteragonists boast tons of unique dialogue for bosses, biomes, and more. (However, if you don't care for it, most dialogue can be disabled in the Mod Settings!)
 
 [img]https://i.imgur.com/BEnNDqm.png[/img]
 
@@ -112,3 +112,4 @@ Thank you, translators!
 [quote=tModLoader]Developed By PaperLuigi[/quote]
 
 [H1]Please report bugs to the Discord's bug reports channel so I can respond as quickly as possible- thank you![/h1]
+[quote=tModLoader]Developed By PaperLuigi[/quote]
