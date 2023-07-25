@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace StarsAbove.Buffs.StellarNovas
 {
-    public class BladeWorksDefenseReduction : ModBuff
+    public class BladeworksDefenseReduction : ModBuff
     {
         public override void SetStaticDefaults()
         {
@@ -23,7 +23,7 @@ namespace StarsAbove.Buffs.StellarNovas
     {
         public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
         {
-            if (npc.HasBuff(ModContent.BuffType<BladeWorksDefenseReduction>()))
+            if (npc.HasBuff(ModContent.BuffType<BladeworksDefenseReduction>()))
             {
                 modifiers.FinalDamage *= 1.1f;
             }
