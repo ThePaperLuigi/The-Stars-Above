@@ -47,6 +47,8 @@ namespace StarsAbove.Items.Consumables
 		public override bool? UseItem(Player player) {
 			if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue($"Active Subworld:{SubworldSystem.Current}"), 241, 255, 180);}
 			if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue($"Position:{player.position.X}X, {player.position.Y}Y"), 241, 255, 180);}
+			if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue($"Position to Tile Coordinates:{player.Center.ToTileCoordinates()}"), 241, 255, 180); }
+
 			if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue($"Center:{player.Center.X}X, {player.Center.Y}Y"), 141, 205, 180);}
 			var tilePos = player.Bottom.ToTileCoordinates16();
 			Tile tile = Framing.GetTileSafely(tilePos.X, tilePos.Y);

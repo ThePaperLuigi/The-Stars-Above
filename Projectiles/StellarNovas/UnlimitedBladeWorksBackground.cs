@@ -136,7 +136,7 @@ namespace StarsAbove.Projectiles.StellarNovas
                 {
                     if (Main.player[Projectile.owner].GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
                     {
-                        npc.AddBuff(BuffType<BladeWorksDefenseReduction>(), 10);
+                        npc.AddBuff(BuffType<BladeworksDefenseReduction>(), 10);
 
                     }
                 }
