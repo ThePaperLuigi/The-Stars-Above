@@ -46,7 +46,7 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 				firstSpawn = false;
             }
 			Projectile.ai[0] = MathHelper.Clamp(Projectile.ai[0], 0f, 1f);
-			Projectile.scale = MathHelper.Lerp(0, 1, EaseHelper.InOutQuad(Projectile.ai[0]));
+			Projectile.scale = MathHelper.Lerp(0, 3, EaseHelper.InOutQuad(Projectile.ai[0]));
 			//Projectile.scale = MathHelper.Clamp(Projectile.scale, 0, 1);
 
 			if (Projectile.timeLeft < 60)

@@ -12026,7 +12026,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 					if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
 					{
-						Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<SpacePowerBackground>(), 0, 0, Main.myPlayer, 0,0, 320);
+						Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<SpacePowerBackground>(), 0, 0, Main.myPlayer, 0,0, 360);
 
 						float speed = 4f;
 						int type = ProjectileType<BladeworkIndicator>();
@@ -12154,13 +12154,13 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (npc.type == ModContent.NPCType<WarriorOfLightBoss>())
 				{
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<WarriorOfLightCastingSprite>(), 0, 0, Main.myPlayer, 180);
-					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<SpacePowerBackground>(), 0, 0, Main.myPlayer,0,0, 180);
+					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<SpacePowerBackground>(), 0, 0, Main.myPlayer,0,0, 440);
 
 				}
 				if (npc.type == ModContent.NPCType<WarriorOfLightBossFinalPhase>())
 				{
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<WarriorOfLightFinalPhaseCastingSprite>(), 0, 0, Main.myPlayer, 180);
-					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<SpacePowerBackground>(), 0, 0, Main.myPlayer,0,0, 180);
+					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<SpacePowerBackground>(), 0, 0, Main.myPlayer,0,0, 440);
 
 				}
 

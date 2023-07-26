@@ -42,7 +42,7 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 		bool firstSpawn = true;
 		int bladeAllotment = 4;
 		int bladeAllotmentTimer;
-		int maxScale = 1;
+		int maxScale = 3;
 		public override void AI()
 		{
 			if(firstSpawn)
