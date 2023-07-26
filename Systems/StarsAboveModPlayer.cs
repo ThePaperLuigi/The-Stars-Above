@@ -4901,7 +4901,7 @@ namespace StarsAbove
             {
                 novaDamageMod -= 0.2;
                 novaCritChanceMod -= 7;
-                novaCritDamageMod += 0.4;
+                novaCritDamageMod += 0.3;
                 //novaChargeMod -= 15;
             }
             if (affixItem1.type == ItemType<VerdantPrism>() ||
