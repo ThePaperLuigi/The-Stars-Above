@@ -167,8 +167,8 @@ namespace StarsAbove
 		private UserInterface _StarfarerTextUserInterface;
 		internal StarfarerText StarfarerText;
 
-		private UserInterface _EridaniTextUserInterface;
-		internal EridaniText EridaniText;
+		private UserInterface _MainMenuIconUserInterface;
+		internal MainMenuIcon MainMenuIcon;
 
 		private UserInterface _StellarArrayUserInterface;
 		internal StellarArray StellarArray;
@@ -390,9 +390,9 @@ namespace StarsAbove
 				_StarfarerTextUserInterface = new UserInterface();
 				_StarfarerTextUserInterface.SetState(StarfarerText);
 
-				EridaniText = new EridaniText();
-				_EridaniTextUserInterface = new UserInterface();
-				_EridaniTextUserInterface.SetState(EridaniText);
+				MainMenuIcon = new MainMenuIcon();
+				_MainMenuIconUserInterface = new UserInterface();
+				_MainMenuIconUserInterface.SetState(MainMenuIcon);
 
 				StellarArray = new StellarArray();
 				_StellarArrayUserInterface = new UserInterface();
@@ -485,7 +485,7 @@ namespace StarsAbove
 			_SkyStrikerGaugeUserInterface?.Update(gameTime);
 			_StarfarerSelectionUserInterface?.Update(gameTime);
 			_StarfarerTextUserInterface?.Update(gameTime);
-			_EridaniTextUserInterface?.Update(gameTime);
+			_MainMenuIconUserInterface?.Update(gameTime);
 			_StellarArrayUserInterface?.Update(gameTime);
 			_StellarNovaCutInUserInterface?.Update(gameTime);
 			_StellarNovaUIUserInterface?.Update(gameTime);
@@ -544,7 +544,7 @@ namespace StarsAbove
 					"StarsAbove: Eridani Text",
 					delegate
 					{
-						_EridaniTextUserInterface.Draw(Main.spriteBatch, new GameTime());
+						_MainMenuIconUserInterface.Draw(Main.spriteBatch, new GameTime());
 						return true;
 					},
 					InterfaceScaleType.UI)

@@ -28,7 +28,7 @@ A brief overview of the mod's features:
     [*]7 unique bosses each with their own special cast-centric AI (some with pre-rendered cutscenes)
     [*]Plenty of pets, accessories, and utility items
     [*]Settings to tailor the mod's content to your liking
-    [*]Can be added to any playthrough at any time, and has compatibility with 100% of major content mods
+    [*]Can be added to any playthrough at any time, and has compatibility with 100% of major content mods (sometimes with unique dialogue)
     [*]And much more!
 [/list]
 
@@ -109,7 +109,5 @@ The mod includes localization for Chinese and Spanish, thanks to these individua
 Chinese translation team:  Soammer(夏沫), MeireiHakuya(冥岭白夜), (亚砜), and Yukiko (羽曦)
 Spanish translation team: Bluefire72, Haturok, Aka Tofu, Karus
 Thank you, translators!
-[quote=tModLoader]Developed By PaperLuigi[/quote]
 
 [H1]Please report bugs to the Discord's bug reports channel so I can respond as quickly as possible- thank you![/h1]
-[quote=tModLoader]Developed By PaperLuigi[/quote]

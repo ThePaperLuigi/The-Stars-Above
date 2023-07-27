@@ -10890,7 +10890,8 @@ namespace StarsAbove.NPCs.AttackLibrary
 							player.AddBuff(BuffType<BindingLight>(), 600);
 						}
 					}
-					
+					if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CombatText.WarriorOfLight.QTE"), 255, 185, 0); }
+
 					Projectile.NewProjectile(null, npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<radiate>(), 0, 0, Main.myPlayer, 0f);
 					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -70;
 				}

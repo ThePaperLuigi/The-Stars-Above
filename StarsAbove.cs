@@ -19,6 +19,9 @@ using StarsAbove.NPCs.Tsukiyomi;
 using StarsAbove.NPCs.Dioskouroi;
 using StarsAbove.NPCs.Nalhaun;
 using StarsAbove.NPCs;
+using Terraria.GameContent.UI.Elements;
+using Terraria.IO;
+using StarsAbove.UI.Starfarers;
 
 namespace StarsAbove
 {
@@ -90,10 +93,26 @@ namespace StarsAbove
 				  "DeathAnimation"
 				);
 
+				//Shelved for later. Doesn't work yet.
+				//Terraria.GameContent.UI.Elements.On_UICharacterListItem.ctor += Hook_UICharacterList;
 			}
 
 			novaKey = KeybindLoader.RegisterKeybind(this, "Stellar Nova", "Z");
 			weaponActionKey = KeybindLoader.RegisterKeybind(this, "Weapon Action", "X");
+		}
+		private void Hook_UICharacterList(On_UICharacterListItem.orig_ctor orig, UICharacterListItem self, PlayerFileData data, int snapPointIndex)
+		{        //Thank you to tMod discord member pure_epic
+
+			orig(self, data, snapPointIndex);
+			if (data.Player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
+			{
+				MainMenuIcon Icon = new MainMenuIcon();
+				self.Append(Icon);
+			}
+			else if (data.Player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
+			{
+				self.Append(MainMenuIcon.umbral);
+			}
 		}
 		public override void Unload()
 		{

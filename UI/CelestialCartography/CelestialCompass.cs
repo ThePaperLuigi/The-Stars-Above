@@ -738,7 +738,7 @@ namespace StarsAbove.UI.CelestialCartography
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive)
 				return;
 
-
+			return;
 			if (Main.LocalPlayer.HasBuff(BuffType<PortalReady>()) || Main.LocalPlayer.HasBuff(BuffType<StellaglyphReady>()))
 			{
 				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 3)//Tier 3
@@ -759,7 +759,7 @@ namespace StarsAbove.UI.CelestialCartography
 						return;
 
 					}
-					SubworldSystem.Enter<DreamingCity>();
+					//SubworldSystem.Enter<DreamingCity>();
 					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 
 				}
@@ -787,7 +787,7 @@ namespace StarsAbove.UI.CelestialCartography
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive)
 				return;
 
-
+			return;
 			if (Main.LocalPlayer.HasBuff(BuffType<PortalReady>()) || Main.LocalPlayer.HasBuff(BuffType<StellaglyphReady>()))
 			{
 				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 3)//Tier 3
@@ -835,7 +835,7 @@ namespace StarsAbove.UI.CelestialCartography
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive)
 				return;
 
-
+			return;
 			if (Main.LocalPlayer.HasBuff(BuffType<PortalReady>()) || Main.LocalPlayer.HasBuff(BuffType<StellaglyphReady>()))
 			{
 				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 3)//Tier 3
@@ -883,7 +883,7 @@ namespace StarsAbove.UI.CelestialCartography
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive)
 				return;
 
-
+			return;
 			if (Main.LocalPlayer.HasBuff(BuffType<PortalReady>()) || Main.LocalPlayer.HasBuff(BuffType<StellaglyphReady>()))
 			{
 				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2)//Tier 2
@@ -931,7 +931,7 @@ namespace StarsAbove.UI.CelestialCartography
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive)
 				return;
 
-
+			return;
 			if (Main.LocalPlayer.HasBuff(BuffType<PortalReady>()) || Main.LocalPlayer.HasBuff(BuffType<StellaglyphReady>()))
 			{
 				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2)//Tier 2
@@ -1155,6 +1155,66 @@ namespace StarsAbove.UI.CelestialCartography
 				{
 					spriteBatch.Draw(
 				(Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/CompassLocations/CompassPyxis"),
+				hitbox,
+				null,
+				Color.White * (modPlayer.CelestialCompassVisibility),
+				MathHelper.ToRadians(0),
+				compassCenter,
+				SpriteEffects.None,
+				1f);
+				}
+				if (DreamingCity.IsMouseHovering)
+				{
+					spriteBatch.Draw(
+				(Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/CompassLocations/CompassPurplePlanet"),
+				hitbox,
+				null,
+				Color.White * (modPlayer.CelestialCompassVisibility),
+				MathHelper.ToRadians(0),
+				compassCenter,
+				SpriteEffects.None,
+				1f);
+				}
+				if (Theranhad.IsMouseHovering)
+				{
+					spriteBatch.Draw(
+				(Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/CompassLocations/CompassUnknown"),
+				hitbox,
+				null,
+				Color.White * (modPlayer.CelestialCompassVisibility),
+				MathHelper.ToRadians(0),
+				compassCenter,
+				SpriteEffects.None,
+				1f);
+				}
+				if (UltraPlant.IsMouseHovering)
+				{
+					spriteBatch.Draw(
+				(Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/CompassLocations/CompassUltraPlant"),
+				hitbox,
+				null,
+				Color.White * (modPlayer.CelestialCompassVisibility),
+				MathHelper.ToRadians(0),
+				compassCenter,
+				SpriteEffects.None,
+				1f);
+				}
+				if (Celestia.IsMouseHovering)
+				{
+					spriteBatch.Draw(
+				(Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/CompassLocations/CompassWhitePlanet"),
+				hitbox,
+				null,
+				Color.White * (modPlayer.CelestialCompassVisibility),
+				MathHelper.ToRadians(0),
+				compassCenter,
+				SpriteEffects.None,
+				1f);
+				}
+				if (FaintArchives.IsMouseHovering)
+				{
+					spriteBatch.Draw(
+				(Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/CompassLocations/CompassWhitePlanet"),
 				hitbox,
 				null,
 				Color.White * (modPlayer.CelestialCompassVisibility),

@@ -53,6 +53,9 @@ using StarsAbove.NPCs.WarriorOfLight;
 using StarsAbove.Buffs.StellarNovas;
 using StarsAbove.Projectiles.StellarNovas.GuardiansLight;
 using StarsAbove.Buffs.EmberFlask;
+using Terraria.GameContent.UI.Elements;
+using Terraria.IO;
+using StarsAbove.UI.Starfarers;
 
 namespace StarsAbove
 {
@@ -11745,6 +11748,8 @@ namespace StarsAbove
                 Projectile.NewProjectile(null, placement2.X, placement2.Y, 0, 0, Mod.Find<ModProjectile>("VoidsentBurst").Type, damage / 10, 0f, 0);
             }
         }
+        
+
         public override void ResetEffects()
         {
             

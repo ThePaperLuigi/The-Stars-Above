@@ -202,7 +202,8 @@ Mods: {
 					// Name: The Dreaming City
 					// Description: A majestic stronghold once populated by a long forgotten race. It is plagued by hostile entites suffused with paracausal darkness, and is oft drifting between another plane of existence. Contributed by: Tatriskel
 					// Threat: Threat Level: B
-					// Requirement: Tier III Stellaglyph required for transit.
+					//Tier 3
+					// Requirement: Transit impossible at this time.
 					// Loot: Resources: Unique upgrade materials
 				}
 
@@ -210,7 +211,8 @@ Mods: {
 					// Name: Fallen Theranhad
 					// Description: A floating archipelago left abandoned after its emperor became the vessel to a malevolent cosmic deity. A dark energy permeates the air. Contributed by: hakomari
 					// Threat: Threat Level: B-
-					// Requirement: Tier III Stellaglyph required for transit.
+					//Tier 3
+					// Requirement: Transit impossible at this time.
 					// Loot: Resources: Prismatic Cores
 				}
 
@@ -218,7 +220,8 @@ Mods: {
 					// Name: Celestia
 					// Description: A collection of well-preserved, brilliant structures bound by mystic energy, once in service of a powerful figure, albeit lost to time. Contributed by: Izanagi, The wanderer of stars
 					// Threat: Threat Level: C
-					// Requirement: Tier II Stellaglyph required for transit.
+					//Tier 2
+					// Requirement: Transit impossible at this time.
 					// Loot: Resources: Prismatic Cores
 				}
 
@@ -226,7 +229,8 @@ Mods: {
 					// Name: Faint Archives
 					// Description: A strange, pristine locale sitting utop a cloudy expanse. The walls are home to myriad secrets and mysteries, some which threaten to come apart at the seams. Contributed by: UnkownSToast
 					// Threat: Threat Level: B
-					// Requirement: Tier III Stellaglyph required for transit.
+					//Tier 3
+					// Requirement: Transit impossible at this time.
 					// Loot: Resources: Prismatic Cores
 				}
 
@@ -234,7 +238,8 @@ Mods: {
 					// Name: Ultra Plant
 					// Description: A unknown locale populated with strange figures both inert and living. The constant bursts of electricity provides a hostile evironment to traverse and explore. Contributed by: Hockerzocker
 					// Threat: Threat Level: C-B
-					// Requirement: Tier II Stellaglyph required for transit.
+					//Tier 2
+					// Requirement: Transit impossible at this time.
 					// Loot: Resources: Prismatic Cores
 				}
 
