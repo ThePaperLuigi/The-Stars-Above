@@ -335,6 +335,7 @@ namespace StarsAbove
 			}
 			if (musicDisplay != null)
             {
+				/*
 				void AddMusic(string path, string name) => musicDisplay.Call("AddMusic", (short)MusicLoader.GetMusicSlot(this, path), name, "The Stars Above");
 
 				AddMusic("Sounds/Music/CosmicWill", "PaperLuigi - Cosmic Will (Stars Above OST)");
@@ -352,7 +353,7 @@ namespace StarsAbove
 
 				AddMusic("Sounds/Music/FirstWarning", "Studio EIM - First Warning (LoR ver.) (Library of Ruina OST)");
 				AddMusic("Sounds/Music/SecondWarning", "Studio EIM - Second Warning (LoR ver.) (Library of Ruina OST)");
-
+				*/
 			}
 		}
 		

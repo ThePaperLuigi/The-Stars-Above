@@ -58,6 +58,8 @@ namespace StarsAbove.Items.Prisms
 		{
 			CreateRecipe(1)
 				.AddIngredient(ItemType<PrismaticCore>(), 7)
+				.DisableDecraft()
+
 				.Register();
 
 			
