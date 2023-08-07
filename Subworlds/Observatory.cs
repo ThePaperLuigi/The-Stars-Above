@@ -22,7 +22,7 @@ namespace StarsAbove.Subworlds
 
 		public override bool ShouldSave => false;
 		public override bool NoPlayerSaving => false;
-		public override bool NormalUpdates => false;
+		public override bool NormalUpdates => true;
 
 		//public override bool noWorldUpdate => true;
 		private const string assetPath = "StarsAbove/Subworlds/LoadingScreens";
@@ -176,7 +176,7 @@ namespace StarsAbove.Subworlds
 			//Main.cloudAlpha = 0f;
 			//Main.resetClouds = true;
 
-			SubworldSystem.noReturn = false;
+			//SubworldSystem.noReturn = false;
 			
 
 		}
