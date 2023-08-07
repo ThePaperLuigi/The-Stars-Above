@@ -727,17 +727,17 @@ Mods: {
 
 				SkeletronPrime: {
 					Asphodene: {
-						1: You've done it! Skeletron Prime has been defeated. A bit of a monster, huh?
-						2: The appendages were a smart idea. Almost got you a few times there.
-						3: It looks as if another upgrade is available in the Stellar Array.
-						4: I guess that's all I have for now.
+						1: Ce l'hai fatta! Skeletron Prime è stato sconfitto. Un po' un mostro, eh?
+						2: Le braccia erano un'idea intelligente. Ti ha quasi beccato un paio di volte.
+						3: Sembra che sia disponibile un altro potenziamento nello Stellar Array.
+						4: Immagino che sia tutto per ora.
 					}
 
 					Eridani: {
 						1: And that takes care of Skeletron Prime. It certainly looked the part... if you're a total edgelord.
-						2: If you took offense, I apologize. You can be as edgy as you want. Anyways...
-						3: It looks as if yet another upgrade is available in the Stellar Array. Pretty serendipitous.
-						4: That's all for now.
+						2: Se ti sei offeso, chiedo scusa. Puoi essere spigoloso quanto vuoi. Comunque...
+						3: Sembra che sia disponibile un altro potenziamento nello Stellar Array. Abbastanza fortuito.
+						4: Questo è tutto per ora.
 					}
 				}
 
