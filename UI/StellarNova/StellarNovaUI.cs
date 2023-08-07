@@ -1143,32 +1143,42 @@ namespace StarsAbove.UI.StellarNova
 				}
 			}
 			
-	
-			if (!_affixSlot1.Item.IsAir)
-			{
-				if (_affixSlot1.Item.type == ItemType<PrismOfTheRuinedKing>())
-				{
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/affixRuinedKing"), hitbox, Color.White * (modPlayer.novaUIOpacity));
 
-				}
-				else if (_affixSlot1.Item.type == ItemType<PrismOfTheCosmicPhoenix>())
+			if(_affixSlot1.Item != null)
+            {
+				if (!_affixSlot1.Item.IsAir)
 				{
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/affixCosmicPhoenix"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+					if (_affixSlot1.Item.type == ItemType<PrismOfTheRuinedKing>())
+					{
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/affixRuinedKing"), hitbox, Color.White * (modPlayer.novaUIOpacity));
 
-				}
-				else
-				{
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/affix1"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+					}
+					else if (_affixSlot1.Item.type == ItemType<PrismOfTheCosmicPhoenix>())
+					{
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/affixCosmicPhoenix"), hitbox, Color.White * (modPlayer.novaUIOpacity));
 
+					}
+					else
+					{
+						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/affix1"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+
+					}
 				}
 			}
-			if (!_affixSlot2.Item.IsAir)
+			
+			if (_affixSlot2.Item != null)
 			{
-				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/affix2"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+				if (!_affixSlot2.Item.IsAir )
+				{
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/affix2"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+				}
 			}
-			if (!_affixSlot3.Item.IsAir)
+			if ( _affixSlot3.Item != null)
 			{
-				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/affix3"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+				if (!_affixSlot3.Item.IsAir)
+				{
+					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/affix3"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+				}
 			}
 
 
@@ -1331,10 +1341,21 @@ namespace StarsAbove.UI.StellarNova
 
 			
 
+			if(_affixSlot1.Item != null)
+            {
+				modPlayer.affix1 = _affixSlot1.Item.Name;
 
-			modPlayer.affix1 = _affixSlot1.Item.Name;
-			modPlayer.affix2 = _affixSlot2.Item.Name;
-			modPlayer.affix3 = _affixSlot3.Item.Name;
+			}
+			if (_affixSlot2.Item != null)
+			{
+				modPlayer.affix2 = _affixSlot2.Item.Name;
+
+			}
+			if (_affixSlot3.Item != null)
+			{
+				modPlayer.affix3 = _affixSlot3.Item.Name;
+
+			}
 
 			modPlayer.affixItem1 = _affixSlot1.Item;
 			modPlayer.affixItem2 = _affixSlot2.Item;
