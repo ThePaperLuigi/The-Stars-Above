@@ -250,7 +250,7 @@ namespace StarsAbove
 					"LogBoss",
 					this,
 					nameof(VagrantBoss),
-					1.9f,
+					2.9f,
 					() => DownedBossSystem.downedVagrant,
 					ModContent.NPCType<VagrantBoss>(),
 					new Dictionary<string, object>()
