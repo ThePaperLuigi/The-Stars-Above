@@ -6,6 +6,7 @@ Mods: {
 		}
 
 		// Boss.WarriorOfLight: The Warrior of Light descends!
+		// TempInfo: Hello! It looks like you're playing The Stars Above in Multiplayer! It is recommended to use a dedicated server to host multiplayer sessions. Additionally, try having one player in the main world at all times to avoid issues!
 
 		CombatText: {
 			Adornment: {

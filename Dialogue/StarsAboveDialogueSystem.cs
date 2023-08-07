@@ -2547,7 +2547,7 @@ namespace StarsAbove
                 {
                     if (dialoguePrep == true)
                     {
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("MnemonicTrace").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace").Type);
                         dialogueLeft = 6;
                         dialoguePrep = false;
                     }
@@ -2612,7 +2612,7 @@ namespace StarsAbove
                 {
                     if (dialoguePrep == true)
                     {
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("MnemonicTrace").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace").Type);
                         dialogueLeft = 6;
                         dialoguePrep = false;
                     }
@@ -2688,7 +2688,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheCosmos").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheCosmos").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 3)
@@ -2727,7 +2727,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 4;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheCosmos").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheCosmos").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 4)
@@ -2780,7 +2780,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 4;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheBeginningAndEnd").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheBeginningAndEnd").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 4)
@@ -2830,7 +2830,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 4;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheBeginningAndEnd").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheBeginningAndEnd").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 4)
@@ -2883,7 +2883,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 4;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("MnemonicTrace4").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace4").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 4)
@@ -2934,7 +2934,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 4;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("MnemonicTrace4").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace4").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 4)
@@ -2988,7 +2988,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 4;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("MnemonicTrace2").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace2").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 4)
@@ -3039,7 +3039,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 4;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("MnemonicTrace2").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace2").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 4)
@@ -3092,7 +3092,7 @@ namespace StarsAbove
                 {
                     if (dialoguePrep == true)
                     {
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("MnemonicTrace3").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace3").Type);
                         dialogueLeft = 3;
                         dialoguePrep = false;
                     }
@@ -3131,7 +3131,7 @@ namespace StarsAbove
                 {
                     if (dialoguePrep == true)
                     {
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("MnemonicTrace3").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace3").Type);
                         dialogueLeft = 3;
                         dialoguePrep = false;
                     }
@@ -3174,7 +3174,7 @@ namespace StarsAbove
                 {
                     if (dialoguePrep == true)
                     {
-                        //Player.QuickSpawnItem(null, Mod.Find<ModItem>("MnemonicTrace4").Type);
+                        //Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace4").Type);
                         dialogueLeft = 3;
                         dialoguePrep = false;
                     }
@@ -3213,7 +3213,7 @@ namespace StarsAbove
                 {
                     if (dialoguePrep == true)
                     {
-                        //Player.QuickSpawnItem(null, Mod.Find<ModItem>("MnemonicTrace4").Type);
+                        //Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace4").Type);
                         dialogueLeft = 3;
                         dialoguePrep = false;
                     }
@@ -3256,7 +3256,7 @@ namespace StarsAbove
                 {
                     if (dialoguePrep == true)
                     {
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("SpatialMemoriam").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("SpatialMemoriam").Type);
                         dialogueLeft = 4;
                         dialoguePrep = false;
                     }
@@ -3308,7 +3308,7 @@ namespace StarsAbove
                 {
                     if (dialoguePrep == true)
                     {
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("SpatialMemoriam").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("SpatialMemoriam").Type);
                         dialogueLeft = 4;
                         dialoguePrep = false;
                     }
@@ -3573,7 +3573,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 3;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("ShatteredDisk").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("ShatteredDisk").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 3)
@@ -3612,7 +3612,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 3;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("ShatteredDisk").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("ShatteredDisk").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 3)
@@ -4525,7 +4525,7 @@ namespace StarsAbove
                     {
                         dialogueLeft = 2;
 
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheFreeshooter").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheFreeshooter").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 2)
@@ -4552,7 +4552,7 @@ namespace StarsAbove
                     {
                         dialogueLeft = 1;
 
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheSharpshooter").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheSharpshooter").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 1)
@@ -4575,7 +4575,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheHallownest").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheHallownest").Type);
 
                         dialoguePrep = false;
                     }
@@ -4604,7 +4604,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 3;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfThePegasus").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfThePegasus").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 3)
@@ -4647,7 +4647,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfBitterfrost").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfBitterfrost").Type);
 
                         dialoguePrep = false;
                     }
@@ -4676,7 +4676,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfFingers").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfFingers").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 2)
@@ -4709,7 +4709,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheAegis").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheAegis").Type);
 
                         dialoguePrep = false;
                     }
@@ -4738,7 +4738,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfStyle").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfStyle").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 2)
@@ -4771,7 +4771,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSilverAsh").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSilverAsh").Type);
 
                         dialoguePrep = false;
                     }
@@ -4800,7 +4800,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheVoid").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheVoid").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 1)
@@ -4824,7 +4824,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfButterflies").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfButterflies").Type);
 
                         dialoguePrep = false;
                     }
@@ -4853,7 +4853,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfDeathsApprentice").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDeathsApprentice").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 2)
@@ -4885,7 +4885,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheBull").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheBull").Type);
 
                         dialoguePrep = false;
                     }
@@ -4914,7 +4914,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheDragonslayer").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheDragonslayer").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 2)
@@ -4947,7 +4947,7 @@ namespace StarsAbove
                     {
                         dialogueLeft = 2;
 
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheSwarm").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheSwarm").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 2)
@@ -4975,7 +4975,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheFallen").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheFallen").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 2)
@@ -5007,7 +5007,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheMoonlitAdepti").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheMoonlitAdepti").Type);
 
                         dialoguePrep = false;
                     }
@@ -5036,7 +5036,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheHarbinger").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheHarbinger").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 1)
@@ -5061,7 +5061,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheUnyieldingEarth").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheUnyieldingEarth").Type);
 
                         dialoguePrep = false;
                     }
@@ -5082,7 +5082,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfDrivingThunder").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDrivingThunder").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 1)
@@ -5107,7 +5107,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfStarsong").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfStarsong").Type);
 
                         dialoguePrep = false;
                     }
@@ -5128,7 +5128,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfLunarDominion").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfLunarDominion").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 1)
@@ -5153,7 +5153,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheTreasury").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheTreasury").Type);
                         dialoguePrep = false;
                     }
 
@@ -5182,7 +5182,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSurpassingLimits").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSurpassingLimits").Type);
 
                         dialoguePrep = false;
                     }
@@ -5215,7 +5215,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfIzanagi").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfIzanagi").Type);
                         dialoguePrep = false;
                     }
 
@@ -5244,7 +5244,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheHawkmoon").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheHawkmoon").Type);
 
                         dialoguePrep = false;
                     }
@@ -5277,7 +5277,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSin").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSin").Type);
                         dialoguePrep = false;
                     }
 
@@ -5306,7 +5306,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfAlpha").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfAlpha").Type);
 
                         dialoguePrep = false;
                     }
@@ -5339,7 +5339,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfThePhantom").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfThePhantom").Type);
                         dialoguePrep = false;
                     }
 
@@ -5368,7 +5368,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheHollowheart").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheHollowheart").Type);
 
                         dialoguePrep = false;
                     }
@@ -5401,7 +5401,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfEuthymia").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfEuthymia").Type);
                         dialoguePrep = false;
                     }
 
@@ -5423,7 +5423,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTime").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTime").Type);
 
                         dialoguePrep = false;
                     }
@@ -5456,7 +5456,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfLiberation").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfLiberation").Type);
                         dialoguePrep = false;
                     }
 
@@ -5478,7 +5478,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfAzakana").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfAzakana").Type);
 
                         dialoguePrep = false;
                     }
@@ -5505,7 +5505,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfMisery").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfMisery").Type);
                         dialoguePrep = false;
                     }
 
@@ -5527,7 +5527,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfMisery").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfMisery").Type);
 
                         dialoguePrep = false;
                     }
@@ -5554,7 +5554,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheGunlance").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheGunlance").Type);
                         dialoguePrep = false;
                     }
 
@@ -5576,7 +5576,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheGunlance").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheGunlance").Type);
 
                         dialoguePrep = false;
                     }
@@ -5603,7 +5603,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheChimera").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheChimera").Type);
                         dialoguePrep = false;
                     }
 
@@ -5625,7 +5625,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheChimera").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheChimera").Type);
 
                         dialoguePrep = false;
                     }
@@ -5652,7 +5652,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheOcean").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheOcean").Type);
                         dialoguePrep = false;
                     }
 
@@ -5674,7 +5674,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheOcean").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheOcean").Type);
 
                         dialoguePrep = false;
                     }
@@ -5701,7 +5701,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheObservatory").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheObservatory").Type);
                         dialoguePrep = false;
                     }
 
@@ -5730,7 +5730,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheObservatory").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheObservatory").Type);
 
                         dialoguePrep = false;
                     }
@@ -5763,7 +5763,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheBionis").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheBionis").Type);
                         dialoguePrep = false;
                     }
 
@@ -5784,7 +5784,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheBionis").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheBionis").Type);
 
                         dialoguePrep = false;
                     }
@@ -5811,7 +5811,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfDuality").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDuality").Type);
                         dialoguePrep = false;
                     }
 
@@ -5833,7 +5833,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfIRyS").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfIRyS").Type);
 
                         dialoguePrep = false;
                     }
@@ -5866,7 +5866,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfRadiance").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfRadiance").Type);
                         dialoguePrep = false;
                     }
 
@@ -5887,7 +5887,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfRadiance").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfRadiance").Type);
 
                         dialoguePrep = false;
                     }
@@ -5914,7 +5914,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfInk").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfInk").Type);
                         dialoguePrep = false;
                     }
 
@@ -5935,7 +5935,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfInk").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfInk").Type);
 
                         dialoguePrep = false;
                     }
@@ -5962,7 +5962,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfFoxfire").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfFoxfire").Type);
                         dialoguePrep = false;
                     }
 
@@ -5984,7 +5984,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfFoxfire").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfFoxfire").Type);
 
                         dialoguePrep = false;
                     }
@@ -6011,7 +6011,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfLuminance").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfLuminance").Type);
                         dialoguePrep = false;
                     }
 
@@ -6033,7 +6033,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfLuminance").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfLuminance").Type);
 
                         dialoguePrep = false;
                     }
@@ -6060,7 +6060,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfBlasting").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfBlasting").Type);
                         dialoguePrep = false;
                     }
 
@@ -6082,7 +6082,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfBlasting").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfBlasting").Type);
 
                         dialoguePrep = false;
                     }
@@ -6109,7 +6109,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfExplosions").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfExplosions").Type);
                         dialoguePrep = false;
                     }
 
@@ -6131,7 +6131,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfExplosions").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfExplosions").Type);
 
                         dialoguePrep = false;
                     }
@@ -6158,7 +6158,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfOuterGods").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfOuterGods").Type);
                         dialoguePrep = false;
                     }
 
@@ -6180,7 +6180,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfOuterGods").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfOuterGods").Type);
 
                         dialoguePrep = false;
                     }
@@ -6207,7 +6207,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTwinStars").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTwinStars").Type);
                         dialoguePrep = false;
                     }
 
@@ -6229,7 +6229,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTwinStars").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTwinStars").Type);
 
                         dialoguePrep = false;
                     }
@@ -6256,7 +6256,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheAerialAce").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheAerialAce").Type);
                         dialoguePrep = false;
                     }
 
@@ -6278,7 +6278,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheAerialAce").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheAerialAce").Type);
 
                         dialoguePrep = false;
                     }
@@ -6305,7 +6305,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheDarkMoon").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheDarkMoon").Type);
                         dialoguePrep = false;
                     }
 
@@ -6327,7 +6327,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheGardener").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheGardener").Type);
 
                         dialoguePrep = false;
                     }
@@ -6354,7 +6354,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheAnomaly").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheAnomaly").Type);
                         dialoguePrep = false;
                     }
 
@@ -6376,7 +6376,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfAsh").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfAsh").Type);
 
                         dialoguePrep = false;
                     }
@@ -6403,7 +6403,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheFuture").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheFuture").Type);
                         dialoguePrep = false;
                     }
 
@@ -6425,7 +6425,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheFuture").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheFuture").Type);
 
                         dialoguePrep = false;
                     }
@@ -6451,7 +6451,7 @@ namespace StarsAbove
                 if (dialoguePrep == true)                                     // |
                 {
                     dialogueLeft = 3;
-                    Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfBloodshed").Type);
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfBloodshed").Type);
                     dialoguePrep = false;
                 }
 
@@ -6494,7 +6494,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTechnology").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTechnology").Type);
                         dialoguePrep = false;
                     }
 
@@ -6525,7 +6525,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTechnology").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTechnology").Type);
 
                         dialoguePrep = false;
                     }
@@ -6559,7 +6559,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfBlood").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfBlood").Type);
                         dialoguePrep = false;
                     }
 
@@ -6582,7 +6582,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfBlood").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfBlood").Type);
 
                         dialoguePrep = false;
                     }
@@ -6610,7 +6610,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSakura").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSakura").Type);
                         dialoguePrep = false;
                     }
 
@@ -6633,7 +6633,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSakura").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSakura").Type);
 
                         dialoguePrep = false;
                     }
@@ -6660,7 +6660,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfEternity").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfEternity").Type);
                         dialoguePrep = false;
                     }
 
@@ -6691,7 +6691,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfEternity").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfEternity").Type);
 
                         dialoguePrep = false;
                     }
@@ -6725,7 +6725,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfAdagium").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfAdagium").Type);
                         dialoguePrep = false;
                     }
 
@@ -6756,7 +6756,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfAdagium").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfAdagium").Type);
 
                         dialoguePrep = false;
                     }
@@ -6783,7 +6783,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheAscendant").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheAscendant").Type);
                         dialoguePrep = false;
                     }
 
@@ -6806,7 +6806,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheAscendant").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheAscendant").Type);
 
                         dialoguePrep = false;
                     }
@@ -6840,7 +6840,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfChemtech").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfChemtech").Type);
                         dialoguePrep = false;
                     }
 
@@ -6863,7 +6863,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfChemtech").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfChemtech").Type);
 
                         dialoguePrep = false;
                     }
@@ -6889,7 +6889,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfLifethirsting").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfLifethirsting").Type);
                         dialoguePrep = false;
                     }
 
@@ -6912,7 +6912,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfLifethirsting").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfLifethirsting").Type);
 
                         dialoguePrep = false;
                     }
@@ -6938,7 +6938,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfVampirism").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfVampirism").Type);
                         dialoguePrep = false;
                     }
 
@@ -6961,7 +6961,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfVampirism").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfVampirism").Type);
 
                         dialoguePrep = false;
                     }
@@ -6987,7 +6987,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheHunt").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheHunt").Type);
                         dialoguePrep = false;
                     }
 
@@ -7010,7 +7010,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfStaticShock").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfStaticShock").Type);
 
                         dialoguePrep = false;
                     }
@@ -7043,7 +7043,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfDestiny").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDestiny").Type);
                         dialoguePrep = false;
                     }
 
@@ -7074,7 +7074,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 3;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfDestiny").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDestiny").Type);
                         dialoguePrep = false;
                     }
 
@@ -7119,7 +7119,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfBalance").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfBalance").Type);
                         dialoguePrep = false;
                     }
 
@@ -7150,7 +7150,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfBalance").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfBalance").Type);
                         dialoguePrep = false;
                     }
 
@@ -7186,7 +7186,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheOverwhelmingBlaze").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheOverwhelmingBlaze").Type);
                         dialoguePrep = false;
                     }
 
@@ -7217,7 +7217,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheOverwhelmingBlaze").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheOverwhelmingBlaze").Type);
                         dialoguePrep = false;
                     }
 
@@ -7253,7 +7253,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheAbyss").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheAbyss").Type);
                         dialoguePrep = false;
                     }
 
@@ -7284,7 +7284,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheAbyss").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheAbyss").Type);
                         dialoguePrep = false;
                     }
 
@@ -7312,7 +7312,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheRenegade").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheRenegade").Type);
                         dialoguePrep = false;
                     }
 
@@ -7335,7 +7335,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheRenegade").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheRenegade").Type);
                         dialoguePrep = false;
                     }
 
@@ -7363,7 +7363,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfQuantum").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfQuantum").Type);
                         dialoguePrep = false;
                     }
 
@@ -7386,7 +7386,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfQuantum").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfQuantum").Type);
                         dialoguePrep = false;
                     }
 
@@ -7414,7 +7414,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSilence").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSilence").Type);
                         dialoguePrep = false;
                     }
 
@@ -7445,7 +7445,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 3;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSilence").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSilence").Type);
                         dialoguePrep = false;
                     }
 
@@ -7490,7 +7490,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSouls").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSouls").Type);
                         dialoguePrep = false;
                     }
 
@@ -7513,7 +7513,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSouls").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSouls").Type);
                         dialoguePrep = false;
                     }
 
@@ -7539,7 +7539,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfGold").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfGold").Type);
                         dialoguePrep = false;
                     }
 
@@ -7562,7 +7562,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfGold").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfGold").Type);
                         dialoguePrep = false;
                     }
 
@@ -7588,7 +7588,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfFarewells").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfFarewells").Type);
                         dialoguePrep = false;
                     }
 
@@ -7611,7 +7611,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfOffseeing").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfOffseeing").Type);
                         dialoguePrep = false;
                     }
 
@@ -7646,7 +7646,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheAutomaton").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheAutomaton").Type);
                         dialoguePrep = false;
                     }
 
@@ -7669,7 +7669,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfNature").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfNature").Type);
                         dialoguePrep = false;
                     }
 
@@ -7695,7 +7695,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheTimeless").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheTimeless").Type);
                         dialoguePrep = false;
                     }
 
@@ -7718,7 +7718,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheTimeless").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheTimeless").Type);
                         dialoguePrep = false;
                     }
 
@@ -7744,7 +7744,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfPiracy").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfPiracy").Type);
                         dialoguePrep = false;
                     }
 
@@ -7767,7 +7767,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfPiracy").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfPiracy").Type);
                         dialoguePrep = false;
                     }
 
@@ -7793,7 +7793,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfAbsoluteChaos").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfAbsoluteChaos").Type);
                         dialoguePrep = false;
                     }
 
@@ -7816,7 +7816,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfAbsoluteChaos").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfAbsoluteChaos").Type);
                         dialoguePrep = false;
                     }
 
@@ -7842,7 +7842,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheWatch").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheWatch").Type);
                         dialoguePrep = false;
                     }
 
@@ -7873,7 +7873,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheWatch").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheWatch").Type);
                         dialoguePrep = false;
                     }
 
@@ -7899,7 +7899,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheBehemothTyphoon").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheBehemothTyphoon").Type);
                         dialoguePrep = false;
                     }
 
@@ -7922,7 +7922,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheBehemothTyphoon").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheBehemothTyphoon").Type);
                         dialoguePrep = false;
                     }
 
@@ -7948,7 +7948,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfLightning").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfLightning").Type);
                         dialoguePrep = false;
                     }
 
@@ -7971,7 +7971,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfLightning").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfLightning").Type);
                         dialoguePrep = false;
                     }
 
@@ -7997,7 +7997,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfNanomachines").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfNanomachines").Type);
                         dialoguePrep = false;
                     }
 
@@ -8020,7 +8020,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfNanomachines").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfNanomachines").Type);
                         dialoguePrep = false;
                     }
 
@@ -8046,7 +8046,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfDespair").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDespair").Type);
                         dialoguePrep = false;
                     }
 
@@ -8077,7 +8077,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfDespair").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDespair").Type);
                         dialoguePrep = false;
                     }
 
@@ -8103,7 +8103,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSurya").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSurya").Type);
                         dialoguePrep = false;
                     }
 
@@ -8126,7 +8126,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSurya").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSurya").Type);
                         dialoguePrep = false;
                     }
 
@@ -8152,7 +8152,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfMania").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfMania").Type);
                         dialoguePrep = false;
                     }
 
@@ -8173,7 +8173,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfMania").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfMania").Type);
                         dialoguePrep = false;
                     }
 
@@ -8199,7 +8199,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfAuthority").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfAuthority").Type);
                         dialoguePrep = false;
                     }
 
@@ -8220,7 +8220,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfAuthority").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfAuthority").Type);
                         dialoguePrep = false;
                     }
 
@@ -8246,7 +8246,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfKinetics").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfKinetics").Type);
                         dialoguePrep = false;
                     }
 
@@ -8267,7 +8267,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfKinetics").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfKinetics").Type);
                         dialoguePrep = false;
                     }
 
@@ -8301,7 +8301,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheSoldier").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheSoldier").Type);
                         dialoguePrep = false;
                     }
 
@@ -8322,7 +8322,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheSoldier").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheSoldier").Type);
                         dialoguePrep = false;
                     }
 
@@ -8348,7 +8348,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfDreams").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDreams").Type);
                         dialoguePrep = false;
                     }
 
@@ -8369,7 +8369,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfDreams").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDreams").Type);
                         dialoguePrep = false;
                     }
 
@@ -8395,7 +8395,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSpinning").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSpinning").Type);
                         dialoguePrep = false;
                     }
 
@@ -8416,7 +8416,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSpinning").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSpinning").Type);
                         dialoguePrep = false;
                     }
 
@@ -8443,7 +8443,7 @@ namespace StarsAbove
                 if (dialoguePrep == true)                                     // |
                 {
                     dialogueLeft = 4;
-                    Player.QuickSpawnItem(null, Mod.Find<ModItem>("AncientShard").Type);
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("AncientShard").Type);
                     dialoguePrep = false;
                 }
 
@@ -8492,7 +8492,7 @@ namespace StarsAbove
                 if (dialoguePrep == true)                                     // |
                 {
                     dialogueLeft = 4;
-                    Player.QuickSpawnItem(null, Mod.Find<ModItem>("UnsulliedCanvas").Type);
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("UnsulliedCanvas").Type);
                     dialoguePrep = false;
                 }
 
@@ -8543,7 +8543,7 @@ namespace StarsAbove
                 if (dialoguePrep == true)                                     // |
                 {
                     dialogueLeft = 4;
-                    Player.QuickSpawnItem(null, Mod.Find<ModItem>("DemonicCrux").Type);
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("DemonicCrux").Type);
                     dialoguePrep = false;
                 }
 
@@ -8598,7 +8598,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 12;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("ProgenitorWish").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("ProgenitorWish").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 12)
@@ -8717,7 +8717,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 12;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("ProgenitorWish").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("ProgenitorWish").Type);
                         dialoguePrep = false;
                     }
 
@@ -8843,7 +8843,7 @@ namespace StarsAbove
                 if (dialoguePrep == true)                                     // |
                 {
                     dialogueLeft = 4;
-                    Player.QuickSpawnItem(null, Mod.Find<ModItem>("TwincruxPendant").Type);
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("TwincruxPendant").Type);
                     dialoguePrep = false;
                 }
 

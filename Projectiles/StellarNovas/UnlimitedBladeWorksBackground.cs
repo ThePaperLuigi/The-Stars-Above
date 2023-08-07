@@ -307,16 +307,11 @@ namespace StarsAbove.Projectiles.StellarNovas
 
 						if (tile.HasTile)
 						{
-							if (!tileAboveTile.HasTile)
-							{
-								//reset stuff
-								tile.IsTileFullbright = false;
+                            tile.IsTileFullbright = false;
 
 
-							}
-
-						}
-					}
+                        }
+                    }
 				}
 			}
 		}

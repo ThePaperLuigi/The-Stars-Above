@@ -3,6 +3,7 @@ using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using SubworldLibrary;
+using StarsAbove.Subworlds;
 
 namespace StarsAbove.Items.Consumables
 {
@@ -33,9 +34,7 @@ namespace StarsAbove.Items.Consumables
 		}
 		public override void HoldItem(Player player)
         {
-			player.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = true;
-			//Test
-			SubworldSystem.Exit();
+			
 
             base.HoldItem(player);
         }
@@ -66,7 +65,8 @@ namespace StarsAbove.Items.Consumables
 		}
 
 		public override bool? UseItem(Player player) {
-			
+
+			SubworldSystem.Enter<Observatory>();
 			return true;
 		}
 		public override void AddRecipes()

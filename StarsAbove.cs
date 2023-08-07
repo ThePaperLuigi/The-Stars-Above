@@ -22,6 +22,8 @@ using StarsAbove.NPCs;
 using Terraria.GameContent.UI.Elements;
 using Terraria.IO;
 using StarsAbove.UI.Starfarers;
+using System.IO;
+using SubworldLibrary;
 
 namespace StarsAbove
 {
@@ -123,7 +125,37 @@ namespace StarsAbove
 			base.Unload();
 		}
 
-		
+		public override void HandlePacket(BinaryReader reader, int whoAmI)
+		{
+			SubworldSystem.MovePlayerToSubworld("Observatory", whoAmI);
+
+			byte msgType = reader.ReadByte();
+			switch (msgType)
+			{
+				case 0://Attempting to enter a suwbworld
+
+					string id = reader.ReadString();
+					SubworldSystem.MovePlayerToSubworld("StarsAbove/" + id, whoAmI);
+
+					/*
+					switch (id)
+					{
+						case "Observatory":
+							break;
+						case "Test":
+							break;
+						default:
+							Logger.WarnFormat("StarsAbove: Unknown Subworld");
+							break;
+					}*/
+
+					break;
+				default:
+					Logger.WarnFormat("StarsAbove: Unknown Message type: {0}", msgType);
+					break;
+			}
+		}
+
 
 		public override object Call(params object[] args)
 		{

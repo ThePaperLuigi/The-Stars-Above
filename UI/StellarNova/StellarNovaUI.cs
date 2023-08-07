@@ -366,21 +366,21 @@ namespace StarsAbove.UI.StellarNova
 			if (!_affixSlot1.Item.IsAir)
 			{
 				// QuickSpawnClonedItem will preserve mod data of the item. QuickSpawnItem will just spawn a fresh version of the item, losing the prefix.
-				Main.LocalPlayer.QuickSpawnItem(null, _affixSlot1.Item, _affixSlot1.Item.stack);
+				Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_FromThis(), _affixSlot1.Item, _affixSlot1.Item.stack);
 				// Now that we've spawned the item back onto the player, we reset the item by turning it into air.
 				_affixSlot1.Item.TurnToAir();
 			}
 			if (!_affixSlot2.Item.IsAir)
 			{
 				// QuickSpawnClonedItem will preserve mod data of the item. QuickSpawnItem will just spawn a fresh version of the item, losing the prefix.
-				Main.LocalPlayer.QuickSpawnItem(null, _affixSlot2.Item, _affixSlot2.Item.stack);
+				Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_FromThis(), _affixSlot2.Item, _affixSlot2.Item.stack);
 				// Now that we've spawned the item back onto the player, we reset the item by turning it into air.
 				_affixSlot2.Item.TurnToAir();
 			}
 			if (!_affixSlot3.Item.IsAir)
 			{
 				// QuickSpawnClonedItem will preserve mod data of the item. QuickSpawnItem will just spawn a fresh version of the item, losing the prefix.
-				Main.LocalPlayer.QuickSpawnItem(null, _affixSlot3.Item, _affixSlot3.Item.stack);
+				Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_FromThis(), _affixSlot3.Item, _affixSlot3.Item.stack);
 				// Now that we've spawned the item back onto the player, we reset the item by turning it into air.
 				_affixSlot3.Item.TurnToAir();
 			}

@@ -16,10 +16,17 @@ namespace StarsAbove
         {
 			
         }
-        
+        public override void PreUpdatePlayers()
+        {
+            
+            SubworldSystem.MovePlayerToSubworld("Observatory", Main.LocalPlayer.whoAmI);
+
+            base.PreUpdatePlayers();
+        }
+
         public override void PreUpdateInvasions()
         {
-
+            
             if (NPC.downedMoonlord && !DownedBossSystem.downedWarrior)
 			{
 				Main.eclipse = false;

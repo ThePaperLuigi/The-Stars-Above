@@ -304,7 +304,7 @@ namespace StarsAbove
                         ActivateVNDialogue(Player);
 
                         //Give the player the reward, a tier 1 Bag
-                        Player.QuickSpawnItem(null, ModContent.ItemType<StellarFociGrabBagTier1>());
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), ModContent.ItemType<StellarFociGrabBagTier1>());
 
                         //Reset values.
                         AcceptedGarridineQuest = false;

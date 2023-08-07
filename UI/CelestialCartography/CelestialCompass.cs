@@ -350,9 +350,22 @@ namespace StarsAbove.UI.CelestialCartography
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive)
 				return;
 
-			
-			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 			SubworldSystem.Exit();
+
+			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
+			
+			/*if (Main.netMode == NetmodeID.SinglePlayer)
+			{
+
+			}
+			else
+			{
+				ModPacket packet = ModContent.GetInstance<StarsAbove>().GetPacket();
+				packet.Write((byte)0); // id
+				packet.Write("Home"); // message
+				packet.Send();
+			}
+			*/
 
 		}
 		private void TeleportObservatory(UIMouseEvent evt, UIElement listeningElement)
@@ -364,7 +377,7 @@ namespace StarsAbove.UI.CelestialCartography
 			{
 				if(!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
                 {
-					Main.LocalPlayer.QuickSpawnItem(null, ModContent.ItemType<CelestriadRoot>());
+					Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), ModContent.ItemType<CelestriadRoot>());
 					Main.LocalPlayer.AddBuff(BuffType<SubworldLootCooldown>(), 36000);
 					Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.MultiplayerCompatibility"), 215, 215, 255);
 				}
@@ -376,8 +389,22 @@ namespace StarsAbove.UI.CelestialCartography
 
 			}
 
+			if(Main.netMode == NetmodeID.SinglePlayer)
+            {
+				SubworldSystem.Enter("StarsAbove/Observatory");
+
+			}
+			else
+            {
+				ModPacket packet = ModContent.GetInstance<StarsAbove>().GetPacket();
+				packet.Write((byte)0); // id
+				packet.Write("Observatory"); // message
+				packet.Send();
+			}
+			
+			
+			
 			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
-			SubworldSystem.Enter<Observatory>();
 
 		}
 
@@ -396,7 +423,7 @@ namespace StarsAbove.UI.CelestialCartography
 					{
 						if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
 						{
-							Main.LocalPlayer.QuickSpawnItem(null, ModContent.ItemType<PrismaticCore>(), 5);
+							Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), ModContent.ItemType<PrismaticCore>(), 5);
 							Main.LocalPlayer.AddBuff(BuffType<SubworldLootCooldown>(), 36000);
 							Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.MultiplayerCompatibility"), 215, 215, 255);
 						}
@@ -407,8 +434,18 @@ namespace StarsAbove.UI.CelestialCartography
 						return;
 
 					}
+					if (Main.netMode == NetmodeID.SinglePlayer)
+					{
+						SubworldSystem.Enter("StarsAbove/CygnusAsteroids");
 
-					SubworldSystem.Enter<CygnusAsteroids>();
+					}
+					else
+					{
+						ModPacket packet = ModContent.GetInstance<StarsAbove>().GetPacket();
+						packet.Write((byte)0); // id
+						packet.Write("CygnusAsteroids"); // message
+						packet.Send();
+					}
 					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 
 				}
@@ -450,7 +487,7 @@ namespace StarsAbove.UI.CelestialCartography
 					{
 						if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
 						{
-							Main.LocalPlayer.QuickSpawnItem(null, ModContent.ItemType<PrismaticCore>(), 5);
+							Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), ModContent.ItemType<PrismaticCore>(), 5);
 							Main.LocalPlayer.AddBuff(BuffType<SubworldLootCooldown>(), 36000);
 							Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.MultiplayerCompatibility"), 215, 215, 255);
 						}
@@ -461,8 +498,18 @@ namespace StarsAbove.UI.CelestialCartography
 						return;
 
 					}
+					if (Main.netMode == NetmodeID.SinglePlayer)
+					{
+						SubworldSystem.Enter("StarsAbove/MiningStationAries");
 
-					SubworldSystem.Enter<MiningStationAries>();
+					}
+					else
+					{
+						ModPacket packet = ModContent.GetInstance<StarsAbove>().GetPacket();
+						packet.Write((byte)0); // id
+						packet.Write("MiningStationAries"); // message
+						packet.Send();
+					}
 					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 
 				}
@@ -499,7 +546,7 @@ namespace StarsAbove.UI.CelestialCartography
 					{
 						if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
 						{
-							Main.LocalPlayer.QuickSpawnItem(null, ModContent.ItemType<InertShard>(), 5);
+							Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), ModContent.ItemType<InertShard>(), 5);
 							Main.LocalPlayer.AddBuff(BuffType<SubworldLootCooldown>(), 36000);
 							Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.MultiplayerCompatibility"), 215, 215, 255);
 						}
@@ -510,7 +557,18 @@ namespace StarsAbove.UI.CelestialCartography
 						return;
 
 					}
-					SubworldSystem.Enter<BleachedPlanet>();
+					if (Main.netMode == NetmodeID.SinglePlayer)
+					{
+						SubworldSystem.Enter("StarsAbove/BleachedPlanet");
+
+					}
+					else
+					{
+						ModPacket packet = ModContent.GetInstance<StarsAbove>().GetPacket();
+						packet.Write((byte)0); // id
+						packet.Write("BleachedPlanet"); // message
+						packet.Send();
+					}
 					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 
 				}
@@ -547,8 +605,8 @@ namespace StarsAbove.UI.CelestialCartography
 					{
 						if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
 						{
-							Main.LocalPlayer.QuickSpawnItem(null, ItemID.VilePowder, 15);
-							Main.LocalPlayer.QuickSpawnItem(null, ItemID.RottenChunk, 15);
+							Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), ItemID.VilePowder, 15);
+							Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), ItemID.RottenChunk, 15);
 
 							Main.LocalPlayer.AddBuff(BuffType<SubworldLootCooldown>(), 36000);
 							Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.MultiplayerCompatibility"), 215, 215, 255);
@@ -560,7 +618,18 @@ namespace StarsAbove.UI.CelestialCartography
 						return;
 
 					}
-					SubworldSystem.Enter<Serpens>();
+					if (Main.netMode == NetmodeID.SinglePlayer)
+					{
+						SubworldSystem.Enter("StarsAbove/Serpens");
+
+					}
+					else
+					{
+						ModPacket packet = ModContent.GetInstance<StarsAbove>().GetPacket();
+						packet.Write((byte)0); // id
+						packet.Write("Serpens"); // message
+						packet.Send();
+					}
 					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 
 				}
@@ -597,8 +666,8 @@ namespace StarsAbove.UI.CelestialCartography
 					{
 						if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
 						{
-							Main.LocalPlayer.QuickSpawnItem(null, ItemID.Vertebrae, 15);
-							Main.LocalPlayer.QuickSpawnItem(null, ItemID.ViciousPowder, 15);
+							Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), ItemID.Vertebrae, 15);
+							Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), ItemID.ViciousPowder, 15);
 
 
 							Main.LocalPlayer.AddBuff(BuffType<SubworldLootCooldown>(), 36000);
@@ -648,8 +717,8 @@ namespace StarsAbove.UI.CelestialCartography
 					{
 						if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
 						{
-							Main.LocalPlayer.QuickSpawnItem(null, ItemID.JungleSpores, 15);
-							Main.LocalPlayer.QuickSpawnItem(null, ItemID.Stinger, 5);
+							Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), ItemID.JungleSpores, 15);
+							Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), ItemID.Stinger, 5);
 
 							Main.LocalPlayer.AddBuff(BuffType<SubworldLootCooldown>(), 36000);
 							Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.MultiplayerCompatibility"), 215, 215, 255);
@@ -661,7 +730,18 @@ namespace StarsAbove.UI.CelestialCartography
 						return;
 
 					}
-					SubworldSystem.Enter<Tucana>();
+					if (Main.netMode == NetmodeID.SinglePlayer)
+					{
+						SubworldSystem.Enter("StarsAbove/Tucana");
+
+					}
+					else
+					{
+						ModPacket packet = ModContent.GetInstance<StarsAbove>().GetPacket();
+						packet.Write((byte)0); // id
+						packet.Write("Tucana"); // message
+						packet.Send();
+					}
 					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 
 				}
@@ -698,7 +778,7 @@ namespace StarsAbove.UI.CelestialCartography
 					{
 						if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
 						{
-							Main.LocalPlayer.QuickSpawnItem(null, ModContent.ItemType<BandedTenebrium>(), 5);
+							Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), ModContent.ItemType<BandedTenebrium>(), 5);
 
 							Main.LocalPlayer.AddBuff(BuffType<SubworldLootCooldown>(), 36000);
 							Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.MultiplayerCompatibility"), 215, 215, 255);
@@ -710,7 +790,18 @@ namespace StarsAbove.UI.CelestialCartography
 						return;
 
 					}
-					SubworldSystem.Enter<Corvus>();
+					if (Main.netMode == NetmodeID.SinglePlayer)
+					{
+						SubworldSystem.Enter("StarsAbove/Corvus");
+
+					}
+					else
+					{
+						ModPacket packet = ModContent.GetInstance<StarsAbove>().GetPacket();
+						packet.Write((byte)0); // id
+						packet.Write("Corvus"); // message
+						packet.Send();
+					}
 					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 
 				}
@@ -747,7 +838,7 @@ namespace StarsAbove.UI.CelestialCartography
 					{
 						if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
 						{
-							//Main.LocalPlayer.QuickSpawnItem(null, ModContent.ItemType<BandedTenebrium>(), 5);
+							//Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), ModContent.ItemType<BandedTenebrium>(), 5);
 
 							Main.LocalPlayer.AddBuff(BuffType<SubworldLootCooldown>(), 36000);
 							Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.MultiplayerCompatibility"), 215, 215, 255);
@@ -994,7 +1085,18 @@ namespace StarsAbove.UI.CelestialCartography
 						}
 						
 					}
-					SubworldSystem.Enter<Pyxis>();
+					if (Main.netMode == NetmodeID.SinglePlayer)
+					{
+						SubworldSystem.Enter("StarsAbove/Pyxis");
+
+					}
+					else
+					{
+						ModPacket packet = ModContent.GetInstance<StarsAbove>().GetPacket();
+						packet.Write((byte)0); // id
+						packet.Write("Pyxis"); // message
+						packet.Send();
+					}
 					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 				}
 				else
@@ -1040,8 +1142,8 @@ namespace StarsAbove.UI.CelestialCartography
 						{
 							if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
 							{
-								Main.LocalPlayer.QuickSpawnItem(null, ModContent.ItemType<Items.Consumables.DemonicCrux>(), 1);
-								Main.LocalPlayer.QuickSpawnItem(null, ModContent.ItemType<Items.Accessories.AlienCoral>(), 1);
+								Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), ModContent.ItemType<Items.Consumables.DemonicCrux>(), 1);
+								Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), ModContent.ItemType<Items.Accessories.AlienCoral>(), 1);
 
 								Main.LocalPlayer.AddBuff(BuffType<SubworldLootCooldown>(), 36000);
 								Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.MultiplayerCompatibility"), 215, 215, 255);
@@ -1053,7 +1155,18 @@ namespace StarsAbove.UI.CelestialCartography
 							return;
 
 						}
-						SubworldSystem.Enter<Lyra>();
+						if (Main.netMode == NetmodeID.SinglePlayer)
+						{
+							SubworldSystem.Enter("StarsAbove/Lyra");
+
+						}
+						else
+						{
+							ModPacket packet = ModContent.GetInstance<StarsAbove>().GetPacket();
+							packet.Write((byte)0); // id
+							packet.Write("Lyra"); // message
+							packet.Send();
+						}
 						Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 						Main.LocalPlayer.AddBuff(BuffType<VoyageCooldown>(), 108000);
 
