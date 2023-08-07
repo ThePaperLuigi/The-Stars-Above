@@ -65,14 +65,14 @@ namespace StarsAbove.Projectiles.Pod
 
 			if (player.whoAmI == Main.myPlayer && StarsAbove.weaponActionKey.Old)
 			{
-				
-				if (Projectile.ai[1] > 6)
+				if (player.statMana > 2)
 				{
-					if (player.statMana > 2)
+					Projectile.ai[1]++;
+
+					if (Projectile.ai[1] > 6)
 					{
 						player.manaRegenDelay = 60;
 						player.statMana -= 2;
-						Projectile.ai[1]++;
 						Projectile.ai[1] = 0;
 						int type = ProjectileType<PodShot>();
 						SoundEngine.PlaySound(SoundID.Item11, Projectile.Center);
@@ -89,11 +89,12 @@ namespace StarsAbove.Projectiles.Pod
 						int index = Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y, type, (int)(Projectile.damage * 1.1), 0f, projOwner.whoAmI);
 
 					}
-					else
-                    {
-						Projectile.ai[1] = 0;
+					
 
-					}
+				}
+				else
+				{
+					Projectile.ai[1] = 0;
 
 				}
 			}
