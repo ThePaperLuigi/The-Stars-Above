@@ -53,8 +53,8 @@ namespace StarsAbove.Projectiles.StellarNovas
                 if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     Projectile.timeLeft = (int)Projectile.ai[1] + 60;
-                    Projectile.NewProjectile(null, Projectile.Center, Vector2.Zero, ProjectileType<UnlimitedBladeWorksBorder>(), 0, 0, Main.player[Projectile.owner].whoAmI,0,Projectile.timeLeft);
-                    Projectile.NewProjectile(null, Projectile.Center, Vector2.Zero, ProjectileType<radiate>(), 0, 0, Main.player[Projectile.owner].whoAmI);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<UnlimitedBladeWorksBorder>(), 0, 0, Main.player[Projectile.owner].whoAmI,0,Projectile.timeLeft);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<radiate>(), 0, 0, Main.player[Projectile.owner].whoAmI);
                    
                 }
                 float dustAmount = 120f;
@@ -169,19 +169,19 @@ namespace StarsAbove.Projectiles.StellarNovas
                         for (int i = 0; i < 24; i++)
                         {
                             float offsetAmount = i * 15;
-                            Projectile.NewProjectile(null, Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ProjectileType<UBWBladeFollowUpDelay>(), 1, 0, Main.player[Projectile.owner].whoAmI, 0, offsetAmount, 600);
+                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ProjectileType<UBWBladeFollowUpDelay>(), 1, 0, Main.player[Projectile.owner].whoAmI, 0, offsetAmount, 600);
 
                         }
                         for (int i = 0; i < 18; i++)
                         {
                             float offsetAmount = i * 20;
-                            Projectile.NewProjectile(null, Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ProjectileType<UBWBladeFollowUpDelay>(), 1, 0, Main.player[Projectile.owner].whoAmI, 1, offsetAmount, 550);
+                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ProjectileType<UBWBladeFollowUpDelay>(), 1, 0, Main.player[Projectile.owner].whoAmI, 1, offsetAmount, 550);
 
                         }
                         for (int i = 0; i < 12; i++)
                         {
                             float offsetAmount = i * 30;
-                            Projectile.NewProjectile(null, Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ProjectileType<UBWBladeFollowUpDelay>(), 1, 0, Main.player[Projectile.owner].whoAmI, 0, offsetAmount, 500);
+                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ProjectileType<UBWBladeFollowUpDelay>(), 1, 0, Main.player[Projectile.owner].whoAmI, 0, offsetAmount, 500);
 
                         }
                     }
@@ -256,7 +256,7 @@ namespace StarsAbove.Projectiles.StellarNovas
                                 Vector2 tileCenter = new Point16(tileX, tileY).ToWorldCoordinates();
                                 if (Main.rand.NextBool(2) && Main.netMode != NetmodeID.MultiplayerClient && Projectile.timeLeft > 60 && Projectile.owner == Main.LocalPlayer.whoAmI)
                                 {
-                                    Projectile.NewProjectile(null, new Vector2(tileCenter.X + Main.rand.Next(-10, 11), tileCenter.Y - 30), Vector2.Zero, ProjectileType<UBWBladeProjectile>(), Projectile.damage, 0, Main.player[Projectile.owner].whoAmI, 0, 0, Projectile.timeLeft - 20 - radius);
+                                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), new Vector2(tileCenter.X + Main.rand.Next(-10, 11), tileCenter.Y - 30), Vector2.Zero, ProjectileType<UBWBladeProjectile>(), Projectile.damage, 0, Main.player[Projectile.owner].whoAmI, 0, 0, Projectile.timeLeft - 20 - radius);
 
                                     /*if (bladeAllotment > 0)
                                     {

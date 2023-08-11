@@ -122,7 +122,7 @@ namespace StarsAbove.Projectiles.StellarNovas.GuardiansLight
 			if (Main.netMode != NetmodeID.MultiplayerClient)
 			{
 
-				Projectile.NewProjectile(null, Projectile.Center, Vector2.Zero, ModContent.ProjectileType<SilenceSquallDamageField>(), Projectile.damage, 0, Main.player[Projectile.owner].whoAmI);
+				Projectile.NewProjectile(projOwner.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<SilenceSquallDamageField>(), Projectile.damage, 0, Main.player[Projectile.owner].whoAmI);
 
 			}
 			for (int d = 0; d < 8; d++)

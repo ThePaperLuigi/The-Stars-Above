@@ -85,7 +85,6 @@ namespace StarsAbove.Projectiles.Tsukiyomi
 				}
 				else
 				{
-					//Projectile.NewProjectile(null, Projectile.Center.X, Projectile.Center.Y, 0, 0, Mod.Find<ModProjectile>("radiate").Type, 0, 0f, Main.myPlayer);
 					Projectile.frame = 0;
 				}
 

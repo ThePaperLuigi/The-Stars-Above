@@ -65,7 +65,7 @@ namespace StarsAbove.Projectiles.BurningDesire
 		}
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-			Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0, 0, ProjectileType<ChainsawFollowUpExplosion>(), damageDone / 4, 0f, Main.player[Projectile.owner].whoAmI, 0);
+			Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center.X, target.Center.Y, 0, 0, ProjectileType<ChainsawFollowUpExplosion>(), damageDone / 4, 0f, Main.player[Projectile.owner].whoAmI, 0);
 			Projectile.Kill();
 
 			 

@@ -63,7 +63,7 @@ namespace StarsAbove.Projectiles.StellarNovas.GuardiansLight
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					
-					Projectile.NewProjectile(null, Projectile.Center, Vector2.Zero, ModContent.ProjectileType<GoldenGunExplosion>(), Projectile.damage, 0, Main.player[Projectile.owner].whoAmI);
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<GoldenGunExplosion>(), Projectile.damage, 0, Main.player[Projectile.owner].whoAmI);
 
 				}
 			}

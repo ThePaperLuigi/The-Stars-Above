@@ -148,7 +148,7 @@ namespace StarsAbove.Projectiles.CatalystMemory
 			{
 
 				Vector2 vel = new Vector2(Main.rand.NextFloat(-3, 3), Main.rand.NextFloat(-3, 3));
-				Projectile.NewProjectile(null, Projectile.Center, vel, ProjectileType<PrismicShards>(), Projectile.damage/5, 3, Main.player[Projectile.owner].whoAmI, 0, 1);
+				Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, vel, ProjectileType<PrismicShards>(), Projectile.damage/5, 3, Main.player[Projectile.owner].whoAmI, 0, 1);
 			}
 			for (int d = 0; d < 18; d++)
 			{

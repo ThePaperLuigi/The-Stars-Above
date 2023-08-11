@@ -156,7 +156,7 @@ namespace StarsAbove.Projectiles.KissOfDeath
         {
 			Main.player[Projectile.owner].MinionAttackTargetNPC = target.whoAmI;
 
-			Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0, 0, ProjectileType<KissOfDeathBoom>(), damageDone, 0f, Main.player[Projectile.owner].whoAmI, 0);
+			Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center.X, target.Center.Y, 0, 0, ProjectileType<KissOfDeathBoom>(), damageDone, 0f, Main.player[Projectile.owner].whoAmI, 0);
 
 
 

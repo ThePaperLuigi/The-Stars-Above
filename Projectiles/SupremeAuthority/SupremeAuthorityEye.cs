@@ -112,62 +112,123 @@ namespace StarsAbove.Projectiles.SupremeAuthority
 			{
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_Deify, player.Center);
 				player.GetModPlayer<StarsAbovePlayer>().activateAuthorityShockwaveEffect = true;
-
-				for (int i = 0; i < Main.maxNPCs; i++)
+				if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
 				{
-					NPC npc = Main.npc[i];
-					if (npc.active && npc.friendly && npc.HasBuff(BuffType<AuthoritySacrificeMark>()))
+					for (int i = 0; i < Main.maxNPCs; i++)
 					{
-						player.AddBuff(BuffType<DeifiedBuff>(), 60 * 60);
-
-						//Dust visuals.
-						for (int ir = 0; ir < 50; ir++)
+						NPC npc = Main.npc[i];
+						if (npc.active && npc.friendly && npc.Distance(Projectile.Center) < 660)
 						{
-							Vector2 position = Vector2.Lerp(Projectile.Center, npc.Center, (float)ir / 50);
-							Dust da = Dust.NewDustPerfect(position, DustID.GemTopaz, null, 240, default(Color), 2.7f);
-							da.fadeIn = 0.5f;
-							da.noLight = false;
-							da.noGravity = true;
+							player.AddBuff(BuffType<DeifiedBuff>(), 60 * 60);
+
+							//Dust visuals.
+							for (int ir = 0; ir < 50; ir++)
+							{
+								Vector2 position = Vector2.Lerp(Projectile.Center, npc.Center, (float)ir / 50);
+								Dust da = Dust.NewDustPerfect(position, DustID.GemTopaz, null, 240, default(Color), 2.7f);
+								da.fadeIn = 0.5f;
+								da.noLight = false;
+								da.noGravity = true;
+
+							}
+							for (int d1 = 0; d1 < 25; d1++)
+							{
+								Dust.NewDust(npc.Center, 0, 0, DustID.GemTopaz, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 1.5f);
+							}
+
+							//Give the projectile owner stats for each consumption.
+							player.GetModPlayer<WeaponPlayer>().SupremeAuthorityConsumedNPCs++;
+							player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -70;
+
+							//Kill the npc.
+							npc.life = 0;
+							npc.HitEffect();
+							npc.checkDead();
+							npc.active = false;
+
+							for (int d1 = 0; d1 < 15; d1++)
+							{
+								Dust.NewDust(Projectile.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1.5f);
+							}
+
+							// Smoke Dust spawn
+							for (int i5 = 0; i5 < 10; i5++)
+							{
+								int dustIndex = Dust.NewDust(new Vector2(Projectile.Center.X, Projectile.Center.Y), 0, 0, DustID.GemTopaz, 0f + Main.rand.Next(-26, 26), 0f + Main.rand.Next(-6, 6), 100, default(Color), 2f);
+								Main.dust[dustIndex].velocity *= 1.4f;
+							}
+
+
+							for (int d1 = 0; d1 < 15; d1++)
+							{
+								Dust.NewDust(player.Center, 0, 0, DustID.GemAmethyst, 0f + Main.rand.Next(-7, 7), 0f + Main.rand.Next(-3, 3), 150, default(Color), 1f);
+								Dust.NewDust(player.Center, 0, 0, DustID.GemTopaz, 0f + Main.rand.Next(-3, 3), 0f + Main.rand.Next(-3, 3), 150, default(Color), 1f);
+
+
+							}
 
 						}
-						for (int d1 = 0; d1 < 25; d1++)
-						{
-							Dust.NewDust(npc.Center, 0, 0, DustID.GemTopaz, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 1.5f);
-						}
-
-						//Give the projectile owner stats for each consumption.
-						player.GetModPlayer<WeaponPlayer>().SupremeAuthorityConsumedNPCs++;
-						player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -70;
-
-						//Kill the npc.
-						npc.life = 0;
-						npc.HitEffect();
-						npc.checkDead();
-						npc.active = false;
-
-						for (int d1 = 0; d1 < 15; d1++)
-						{
-							Dust.NewDust(Projectile.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1.5f);
-						}
-						
-						// Smoke Dust spawn
-						for (int i5 = 0; i5 < 10; i5++)
-						{
-							int dustIndex = Dust.NewDust(new Vector2(Projectile.Center.X, Projectile.Center.Y), 0, 0, DustID.GemTopaz, 0f + Main.rand.Next(-26, 26), 0f + Main.rand.Next(-6, 6), 100, default(Color), 2f);
-							Main.dust[dustIndex].velocity *= 1.4f;
-						}
-
-
-						for (int d1 = 0; d1 < 15; d1++)
-						{
-							Dust.NewDust(player.Center, 0, 0, DustID.GemAmethyst, 0f + Main.rand.Next(-7, 7), 0f + Main.rand.Next(-3, 3), 150, default(Color), 1f);
-							Dust.NewDust(player.Center, 0, 0, DustID.GemTopaz, 0f + Main.rand.Next(-3, 3), 0f + Main.rand.Next(-3, 3), 150, default(Color), 1f);
-
-
-						}
-
 					}
 				}
+				else
+                {
+					for (int i = 0; i < Main.maxNPCs; i++)
+					{
+						NPC npc = Main.npc[i];
+						if (npc.active && npc.friendly && npc.HasBuff(BuffType<AuthoritySacrificeMark>()))
+						{
+							player.AddBuff(BuffType<DeifiedBuff>(), 60 * 60);
+
+							//Dust visuals.
+							for (int ir = 0; ir < 50; ir++)
+							{
+								Vector2 position = Vector2.Lerp(Projectile.Center, npc.Center, (float)ir / 50);
+								Dust da = Dust.NewDustPerfect(position, DustID.GemTopaz, null, 240, default(Color), 2.7f);
+								da.fadeIn = 0.5f;
+								da.noLight = false;
+								da.noGravity = true;
+
+							}
+							for (int d1 = 0; d1 < 25; d1++)
+							{
+								Dust.NewDust(npc.Center, 0, 0, DustID.GemTopaz, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 1.5f);
+							}
+
+							//Give the projectile owner stats for each consumption.
+							player.GetModPlayer<WeaponPlayer>().SupremeAuthorityConsumedNPCs++;
+							player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -70;
+
+							//Kill the npc.
+							npc.life = 0;
+							npc.HitEffect();
+							npc.checkDead();
+							npc.active = false;
+
+							for (int d1 = 0; d1 < 15; d1++)
+							{
+								Dust.NewDust(Projectile.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1.5f);
+							}
+
+							// Smoke Dust spawn
+							for (int i5 = 0; i5 < 10; i5++)
+							{
+								int dustIndex = Dust.NewDust(new Vector2(Projectile.Center.X, Projectile.Center.Y), 0, 0, DustID.GemTopaz, 0f + Main.rand.Next(-26, 26), 0f + Main.rand.Next(-6, 6), 100, default(Color), 2f);
+								Main.dust[dustIndex].velocity *= 1.4f;
+							}
+
+
+							for (int d1 = 0; d1 < 15; d1++)
+							{
+								Dust.NewDust(player.Center, 0, 0, DustID.GemAmethyst, 0f + Main.rand.Next(-7, 7), 0f + Main.rand.Next(-3, 3), 150, default(Color), 1f);
+								Dust.NewDust(player.Center, 0, 0, DustID.GemTopaz, 0f + Main.rand.Next(-3, 3), 0f + Main.rand.Next(-3, 3), 150, default(Color), 1f);
+
+
+							}
+
+						}
+					}
+				}
+				
 			}
 			
 			if(Projectile.timeLeft < 60)

@@ -223,7 +223,7 @@ namespace StarsAbove.Projectiles.SanguineDespair
 		{
 			
 			SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode, target.Center);
-			Projectile.NewProjectile(null, Projectile.Center.X, Projectile.Center.Y, 0, 7, ProjectileType<SanguineExplosion>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+			Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 7, ProjectileType<SanguineExplosion>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
 			
 			Player player = Main.player[Projectile.owner];
 			player.Heal((int)(damageDone * 0.3f));

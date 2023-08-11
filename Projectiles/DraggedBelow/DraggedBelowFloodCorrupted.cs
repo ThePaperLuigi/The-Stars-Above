@@ -155,7 +155,7 @@ namespace StarsAbove.Projectiles.DraggedBelow
 		{
 			if (Main.netMode != NetmodeID.MultiplayerClient)
 			{
-				Projectile.NewProjectile(null, Projectile.Center, Vector2.Zero, ModContent.ProjectileType<DraggedBelowFloodExplosionCorrupted>(), Projectile.damage, 0, Main.player[Projectile.owner].whoAmI);
+				Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<DraggedBelowFloodExplosionCorrupted>(), Projectile.damage, 0, Main.player[Projectile.owner].whoAmI);
 			}
 		}
 	}

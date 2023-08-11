@@ -894,7 +894,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 					if (Main.netMode != NetmodeID.MultiplayerClient)
 					{
 
-						Projectile.NewProjectile(null, new Vector2(NPC.Center.X, NPC.Center.Y + 44), Vector2.Zero, ProjectileType<reverseRadiate>(), 0, 0f, Main.myPlayer);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), new Vector2(NPC.Center.X, NPC.Center.Y + 44), Vector2.Zero, ProjectileType<reverseRadiate>(), 0, 0f, Main.myPlayer);
 
 					}
 					
@@ -1102,10 +1102,10 @@ namespace StarsAbove.NPCs.Tsukiyomi
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					
 
-					Projectile.NewProjectile(null, new Vector2(NPC.Center.X + 30, NPC.Center.Y - 35), Vector2.Zero, ProjectileType<TsukiWormhole>(), 0, 0f, Main.myPlayer);
-					Projectile.NewProjectile(null, NPC.Center, Vector2.Zero, ProjectileType<TsukiTeleport>(), 0, 0f, Main.myPlayer);
+
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), new Vector2(NPC.Center.X + 30, NPC.Center.Y - 35), Vector2.Zero, ProjectileType<TsukiWormhole>(), 0, 0f, Main.myPlayer);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ProjectileType<TsukiTeleport>(), 0, 0f, Main.myPlayer);
 
 
 

@@ -86,10 +86,10 @@ namespace StarsAbove.Items
 
 			SoundEngine.PlaySound(StarsAboveAudio.SFX_GuntriggerParryPrep, player.Center);
 
-			Projectile.NewProjectile(null, player.Center, Vector2.Zero, ProjectileType<NanomachinaShieldProjectile>(), 0, 0, player.whoAmI);
+			Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ProjectileType<NanomachinaShieldProjectile>(), 0, 0, player.whoAmI);
 			player.statMana = 0;
 			player.manaRegenDelay = 600;
-			player.GetModPlayer<WeaponPlayer>().nanomachinaShieldHPMax = (int)MathHelper.Min((float)(player.statLifeMax2 * 0.2), 100f);
+			player.GetModPlayer<WeaponPlayer>().nanomachinaShieldHPMax = (int)MathHelper.Min((float)(player.statLifeMax2 * 0.2), 50f);
 			player.GetModPlayer<WeaponPlayer>().nanomachinaShieldHP = player.GetModPlayer<WeaponPlayer>().nanomachinaShieldHPMax;
 
 

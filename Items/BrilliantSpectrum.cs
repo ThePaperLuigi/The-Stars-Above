@@ -142,21 +142,21 @@ namespace StarsAbove.Items
 			{
 				if (player.ownedProjectileCounts[ProjectileType<SpectrumVFX1>()] < 1)
 				{
-					Projectile.NewProjectile(null, player.Center.X, player.Center.Y, 0, 0, ProjectileType<SpectrumVFX1>(), 0, 0, player.whoAmI, 0f);
+					Projectile.NewProjectile(player.GetSource_FromThis(), player.Center.X, player.Center.Y, 0, 0, ProjectileType<SpectrumVFX1>(), 0, 0, player.whoAmI, 0f);
 				}
 			}
 			if (modPlayer.refractionGauge >= 20 && modPlayer.refractionGauge < 90)
 			{
 				if (player.ownedProjectileCounts[ProjectileType<SpectrumVFX2>()] < 1)
 				{
-					Projectile.NewProjectile(null, player.Center.X, player.Center.Y, 0, 0, ProjectileType<SpectrumVFX2>(), 0, 0, player.whoAmI, 0f);
+					Projectile.NewProjectile(player.GetSource_FromThis(), player.Center.X, player.Center.Y, 0, 0, ProjectileType<SpectrumVFX2>(), 0, 0, player.whoAmI, 0f);
 				}
 			}
 			if (modPlayer.refractionGauge >= 90)
 			{
 				if (player.ownedProjectileCounts[ProjectileType<SpectrumVFX3>()] < 1)
 				{
-					Projectile.NewProjectile(null, player.Center.X, player.Center.Y, 0, 0, ProjectileType<SpectrumVFX3>(), 0, 0, player.whoAmI, 0f);
+					Projectile.NewProjectile(player.GetSource_FromThis(), player.Center.X, player.Center.Y, 0, 0, ProjectileType<SpectrumVFX3>(), 0, 0, player.whoAmI, 0f);
 				}
 			}
 			if (modPlayer.refractionGauge >= 80)

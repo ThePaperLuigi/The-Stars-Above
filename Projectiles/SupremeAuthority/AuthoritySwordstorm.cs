@@ -177,7 +177,7 @@ namespace StarsAbove.Projectiles.SupremeAuthority
 
 
 			}
-			Projectile.NewProjectile(null, Projectile.Center.X, Projectile.Center.Y, 0, 0, ProjectileType<SwordstormFinish>(), Projectile.damage, 0, projOwner.whoAmI, 0f);
+			Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ProjectileType<SwordstormFinish>(), Projectile.damage, 0, projOwner.whoAmI, 0f);
 
 			base.Kill(timeLeft);
         }

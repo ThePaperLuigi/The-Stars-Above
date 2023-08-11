@@ -71,7 +71,7 @@ namespace StarsAbove.Items
 				if (StarsAbove.weaponActionKey.JustPressed && !player.HasBuff(BuffType<GossamerAOECooldown>()))
 				{
 					player.Heal(15);
-					Projectile.NewProjectile(null, player.Center, Vector2.Zero, ProjectileType<GossamerAOEAttack>(), player.GetWeaponDamage(Item), 0, player.whoAmI);
+					Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ProjectileType<GossamerAOEAttack>(), player.GetWeaponDamage(Item), 0, player.whoAmI);
 					player.AddBuff(BuffType<GossamerAOECooldown>(), 600);
 				}
 

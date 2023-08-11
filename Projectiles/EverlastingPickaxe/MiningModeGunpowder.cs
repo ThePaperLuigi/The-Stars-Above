@@ -49,7 +49,7 @@ namespace StarsAbove.Projectiles.EverlastingPickaxe
             {
 				if (Main.player[Projectile.owner].Distance(Projectile.Center) < 40)
                 {
-					Projectile.NewProjectile(null, new Vector2(Projectile.Center.X, Projectile.Center.Y), Vector2.Zero, ProjectileType<EverlastingPickaxeExplosion>(), 0, 0, Main.player[Projectile.owner].whoAmI);
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), new Vector2(Projectile.Center.X, Projectile.Center.Y), Vector2.Zero, ProjectileType<EverlastingPickaxeExplosion>(), 0, 0, Main.player[Projectile.owner].whoAmI);
 					for (int ix = 0; ix < 5; ix++)
 					{
 						Vector2 position = Vector2.Lerp(Projectile.Center, Main.player[Projectile.owner].GetModPlayer<StarsAbovePlayer>().playerMousePos, (float)ix / 5);
@@ -58,7 +58,7 @@ namespace StarsAbove.Projectiles.EverlastingPickaxe
 						Main.projectile[index].originalDamage = Projectile.damage;
 
 					}
-					Projectile.NewProjectile(null, new Vector2(Projectile.Center.X, Projectile.Center.Y - 60), Vector2.Zero, ProjectileID.DD2ExplosiveTrapT3Explosion, 0, 0, Main.player[Projectile.owner].whoAmI);
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), new Vector2(Projectile.Center.X, Projectile.Center.Y - 60), Vector2.Zero, ProjectileID.DD2ExplosiveTrapT3Explosion, 0, 0, Main.player[Projectile.owner].whoAmI);
 					Projectile.Kill();
 				}
             }

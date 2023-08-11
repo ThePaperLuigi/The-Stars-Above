@@ -59,7 +59,7 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 					int type = ProjectileType<NalhaunExplosion>();
 					int damage = 50;
 
-					Projectile.NewProjectile(null, new Vector2(Projectile.Center.X, Projectile.Center.Y), Vector2.Zero, type, damage, 0f, Main.myPlayer, 0f, 0f);
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), new Vector2(Projectile.Center.X, Projectile.Center.Y), Vector2.Zero, type, damage, 0f, Main.myPlayer, 0f, 0f);
 
 					Projectile.Kill();
 				}

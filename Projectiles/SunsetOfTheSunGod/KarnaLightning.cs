@@ -177,7 +177,7 @@ namespace StarsAbove.Projectiles.SunsetOfTheSunGod
 				{
 					float num806 = (float)Main.rand.Next(-3, 4) * ((float)Math.PI / 3f) / 3f;
 					Vector2 vector63 = Projectile.ai[0].ToRotationVector2().RotatedBy(num806) * Projectile.velocity.Length();
-					Projectile.NewProjectile(null, Projectile.Center.X - vector63.X, Projectile.Center.Y - vector63.Y, vector63.X, vector63.Y, Projectile.type, Projectile.damage/2, Projectile.knockBack, Projectile.owner, vector63.ToRotation() + 1000f, Projectile.ai[1]);
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X - vector63.X, Projectile.Center.Y - vector63.Y, vector63.X, vector63.Y, Projectile.type, Projectile.damage/2, Projectile.knockBack, Projectile.owner, vector63.ToRotation() + 1000f, Projectile.ai[1]);
 
 				}
 			}
@@ -236,7 +236,7 @@ namespace StarsAbove.Projectiles.SunsetOfTheSunGod
 			SoundEngine.PlaySound(SoundID.DD2_LightningAuraZap, target.Center);
 			if(Main.player[Projectile.owner].HasBuff(BuffType<GatheringLevinstorm>()) && hit.Crit)
             {
-				Projectile.NewProjectile(null, Projectile.Center.X, Projectile.Center.Y - 600, 0, 7, Projectile.type, Projectile.damage / 4, Projectile.knockBack, Projectile.owner, MathHelper.ToRadians(90), 1);
+				Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y - 600, 0, 7, Projectile.type, Projectile.damage / 4, Projectile.knockBack, Projectile.owner, MathHelper.ToRadians(90), 1);
 
 			}
 		}

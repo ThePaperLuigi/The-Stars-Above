@@ -115,7 +115,7 @@ namespace StarsAbove.Projectiles.MorningStar
 			Main.player[Projectile.owner].MinionAttackTargetNPC = target.whoAmI;
 			Projectile.damage = (int)(damageDone * 0.7f); // Multihit penalty. Decrease the damage the more enemies the whip hits.
 
-			Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0, 0, ProjectileType<MorningStarHitBoom>(), damageDone/4, 0f, Main.player[Projectile.owner].whoAmI, 0);
+			Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center.X, target.Center.Y, 0, 0, ProjectileType<MorningStarHitBoom>(), damageDone/4, 0f, Main.player[Projectile.owner].whoAmI, 0);
 
 
 		}

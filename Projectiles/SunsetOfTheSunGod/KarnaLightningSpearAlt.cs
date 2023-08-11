@@ -187,13 +187,13 @@ namespace StarsAbove.Projectiles.SunsetOfTheSunGod
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			KarnaOnHitDust(target);
-			Projectile.NewProjectile(null, target.Center.X, target.Center.Y, Main.rand.Next(-2, 2), Main.rand.Next(-2, 2), ProjectileType<KarnaLightning>(), Projectile.damage / 4, Projectile.knockBack, Projectile.owner, Main.rand.Next(0, 360) + 1000f, 1);
+			Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center.X, target.Center.Y, Main.rand.Next(-2, 2), Main.rand.Next(-2, 2), ProjectileType<KarnaLightning>(), Projectile.damage / 4, Projectile.knockBack, Projectile.owner, Main.rand.Next(0, 360) + 1000f, 1);
 			if (Main.rand.NextBool())
 			{
-				Projectile.NewProjectile(null, target.Center.X, target.Center.Y, Main.rand.Next(-2, 2), Main.rand.Next(-2, 2), ProjectileType<KarnaLightning>(), Projectile.damage / 4, Projectile.knockBack, Projectile.owner, Main.rand.Next(0, 360) + 1000f, 1);
+				Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center.X, target.Center.Y, Main.rand.Next(-2, 2), Main.rand.Next(-2, 2), ProjectileType<KarnaLightning>(), Projectile.damage / 4, Projectile.knockBack, Projectile.owner, Main.rand.Next(0, 360) + 1000f, 1);
 				if (Main.rand.NextBool())
 				{
-					Projectile.NewProjectile(null, target.Center.X, target.Center.Y, Main.rand.Next(-2, 2), Main.rand.Next(-2, 2), ProjectileType<KarnaLightning>(), Projectile.damage / 4, Projectile.knockBack, Projectile.owner, Main.rand.Next(0, 360) + 1000f, 1);
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center.X, target.Center.Y, Main.rand.Next(-2, 2), Main.rand.Next(-2, 2), ProjectileType<KarnaLightning>(), Projectile.damage / 4, Projectile.knockBack, Projectile.owner, Main.rand.Next(0, 360) + 1000f, 1);
 
 				}
 			}

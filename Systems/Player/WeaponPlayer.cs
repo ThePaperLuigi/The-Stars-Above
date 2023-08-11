@@ -679,7 +679,7 @@ namespace StarsAbove
             }
             if (Player.HasBuff(BuffType<AstarteDriver>()) && player.starfarerOutfit == 3)
             {
-                Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0f, 0f, ProjectileType<StarfarerFollowUp>(), damageDone / 3, 0, Player.whoAmI);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center.X, target.Center.Y, 0f, 0f, ProjectileType<StarfarerFollowUp>(), damageDone / 3, 0, Player.whoAmI);
 
             }
             
@@ -770,7 +770,7 @@ namespace StarsAbove
             {
                 SoundEngine.PlaySound(StarsAboveAudio.SFX_electroSmack, Player.Center);
 
-                Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0, 0, ProjectileType<EuthymiaFollowUp>(), Math.Min(damageDone / 5, 500), 0, Player.whoAmI, 0f);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center.X, target.Center.Y, 0, 0, ProjectileType<EuthymiaFollowUp>(), Math.Min(damageDone / 5, 500), 0, Player.whoAmI, 0f);
                 euthymiaCooldown = 120 - (eternityGauge / 10);
 
             }
@@ -987,7 +987,7 @@ namespace StarsAbove
                     Vector2 targetPosition = Player.Center;
 
 
-                    Projectile.NewProjectile(null, targetPosition.X, targetPosition.Y, velocity.X, velocity.Y, ProjectileType<SkyStrikerClaw>(), damageDone, 2f, Player.whoAmI, 0, Main.rand.Next(-200, 200) * 0.001f * Player.gravDir);
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), targetPosition.X, targetPosition.Y, velocity.X, velocity.Y, ProjectileType<SkyStrikerClaw>(), damageDone, 2f, Player.whoAmI, 0, Main.rand.Next(-200, 200) * 0.001f * Player.gravDir);
 
                 }
 
@@ -1114,7 +1114,7 @@ namespace StarsAbove
 
                 for (int i = 0; i < 2 + Main.rand.Next(1, 3); i++)
                 {
-                    Projectile.NewProjectile(null, proj.position.X, proj.position.Y - 800, 0 + Main.rand.Next(-10, 10), 0 + Main.rand.Next(1, 40), ProjectileID.StarWrath, damageDone / 2, 0, Player.whoAmI, 0f);
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), proj.position.X, proj.position.Y - 800, 0 + Main.rand.Next(-10, 10), 0 + Main.rand.Next(1, 40), ProjectileID.StarWrath, damageDone / 2, 0, Player.whoAmI, 0f);
 
                 }
                 for (int d = 0; d < 8; d++)
@@ -1143,7 +1143,7 @@ namespace StarsAbove
                 Player.statMana += 10;
                 Player.AddBuff(BuffID.Swiftness, 120);
 
-                Projectile.NewProjectile(null, proj.position.X, proj.position.Y - 800, 0 + Main.rand.Next(-10, 10), 0 + Main.rand.Next(1, 40), ProjectileID.LunarFlare, damageDone / 2, 0, Player.whoAmI, 0f);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), proj.position.X, proj.position.Y - 800, 0 + Main.rand.Next(-10, 10), 0 + Main.rand.Next(1, 40), ProjectileID.LunarFlare, damageDone / 2, 0, Player.whoAmI, 0f);
 
 
                 for (int d = 0; d < 8; d++)
@@ -1412,7 +1412,7 @@ namespace StarsAbove
                     {
 
                         Vector2 vel = new Vector2(Main.rand.NextFloat(-4, 4), Main.rand.NextFloat(-4, 4));
-                        Projectile.NewProjectile(null, target.Center, vel, ProjectileType<Bubble>(), damageDone / 8, 3, Player.whoAmI, 0, 1);
+                        Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center, vel, ProjectileType<Bubble>(), damageDone / 8, 3, Player.whoAmI, 0, 1);
                     }
 
                     int index = target.FindBuffIndex(BuffType<Buffs.OceanCulling>());
@@ -1430,7 +1430,7 @@ namespace StarsAbove
                 {
 
                     Vector2 vel = new Vector2(Main.rand.NextFloat(-4, 4), Main.rand.NextFloat(-4, 4));
-                    Projectile.NewProjectile(null, target.Center, vel, ProjectileType<Asteroid>(), damageDone / 4, 3, Player.whoAmI, 0, 1);
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center, vel, ProjectileType<Asteroid>(), damageDone / 4, 3, Player.whoAmI, 0, 1);
                 }
 
             }
@@ -1445,7 +1445,7 @@ namespace StarsAbove
                     }
                     Player.AddBuff(BuffType<Buffs.CelestialCacophony>(), 720);
                 }
-                //Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0, 0, ProjectileType<UltimaFollowUp>(), 0, 0, Player.whoAmI, 0f);
+                //Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center.X, target.Center.Y, 0, 0, ProjectileType<UltimaFollowUp>(), 0, 0, Player.whoAmI, 0f);
             }
             if (proj.type == ProjectileType<BlueStarBit>())
             {
@@ -1994,7 +1994,7 @@ namespace StarsAbove
             }
             if (proj.type == ProjectileType<PaintSwingR>())
             {
-                Projectile.NewProjectile(null, target.Center, Vector2.Zero, ProjectileType<SplatterRed>(), 0, 0, Player.whoAmI, 0, 1);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center, Vector2.Zero, ProjectileType<SplatterRed>(), 0, 0, Player.whoAmI, 0, 1);
                 target.AddBuff(BuffID.OnFire, 240);
                 if (target.HasBuff(BuffType<RedPaint>()))
                 {
@@ -2017,7 +2017,7 @@ namespace StarsAbove
             }
             if (proj.type == ProjectileType<PaintSwingO>())
             {
-                Projectile.NewProjectile(null, target.Center, Vector2.Zero, ProjectileType<SplatterOrange>(), 0, 0, Player.whoAmI, 0, 1);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center, Vector2.Zero, ProjectileType<SplatterOrange>(), 0, 0, Player.whoAmI, 0, 1);
                 target.AddBuff(BuffID.Ichor, 240);
                 if (target.HasBuff(BuffType<OrangePaint>()))
                 {
@@ -2039,7 +2039,7 @@ namespace StarsAbove
             }
             if (proj.type == ProjectileType<PaintSwingY>())
             {
-                Projectile.NewProjectile(null, target.Center, Vector2.Zero, ProjectileType<SplatterYellow>(), 0, 0, Player.whoAmI, 0, 1);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center, Vector2.Zero, ProjectileType<SplatterYellow>(), 0, 0, Player.whoAmI, 0, 1);
                 target.AddBuff(BuffID.Midas, 240);
                 if (target.HasBuff(BuffType<YellowPaint>()))
                 {
@@ -2061,7 +2061,7 @@ namespace StarsAbove
             }
             if (proj.type == ProjectileType<PaintSwingG>())
             {
-                Projectile.NewProjectile(null, target.Center, Vector2.Zero, ProjectileType<SplatterGreen>(), 0, 0, Player.whoAmI, 0, 1);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center, Vector2.Zero, ProjectileType<SplatterGreen>(), 0, 0, Player.whoAmI, 0, 1);
                 target.AddBuff(BuffID.CursedInferno, 240);
                 if (target.HasBuff(BuffType<GreenPaint>()))
                 {
@@ -2083,7 +2083,7 @@ namespace StarsAbove
             }
             if (proj.type == ProjectileType<PaintSwingB>())
             {
-                Projectile.NewProjectile(null, target.Center, Vector2.Zero, ProjectileType<SplatterBlue>(), 0, 0, Player.whoAmI, 0, 1);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center, Vector2.Zero, ProjectileType<SplatterBlue>(), 0, 0, Player.whoAmI, 0, 1);
                 target.AddBuff(BuffID.Frostburn, 240);
                 if (target.HasBuff(BuffType<BluePaint>()))
                 {
@@ -2106,7 +2106,7 @@ namespace StarsAbove
             }
             if (proj.type == ProjectileType<PaintSwingP>())
             {
-                Projectile.NewProjectile(null, target.Center, Vector2.Zero, ProjectileType<SplatterPurple>(), 0, 0, Player.whoAmI, 0, 1);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center, Vector2.Zero, ProjectileType<SplatterPurple>(), 0, 0, Player.whoAmI, 0, 1);
                 target.AddBuff(BuffID.Venom, 240);
                 if (target.HasBuff(BuffType<PurplePaint>()))
                 {
@@ -2815,7 +2815,7 @@ namespace StarsAbove
                     if (Player.buffTime[i] == 1)
                     {
                         Vector2 placement2 = new Vector2((Player.Center.X), Player.Center.Y);
-                        Projectile.NewProjectile(null, placement2.X, placement2.Y, 0, 0, ProjectileType<radiate>(), 0, 0f, 0);
+                        Projectile.NewProjectile(Player.GetSource_FromThis(), placement2.X, placement2.Y, 0, 0, ProjectileType<radiate>(), 0, 0f, 0);
                         Player.AddBuff(BuffType<Buffs.CosmicRecoil>(), 60);
                         player.screenShakeTimerGlobal = 0;
                         for (int i2 = 0; i2 < 70; i2++)
@@ -2824,7 +2824,7 @@ namespace StarsAbove
                             Vector2 vel = new Vector2(Main.rand.NextFloat(-9, 9), Main.rand.NextFloat(-9, 9));
                             int type = Main.rand.Next(new int[] { ProjectileID.NebulaArcanum, ProjectileID.NebulaBlaze2, ProjectileID.NebulaBlaze2, ProjectileID.NebulaBlaze2, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, });
 
-                            Projectile.NewProjectile(null, Player.Center, vel, type, Player.GetWeaponDamage(Player.HeldItem), 6, Player.whoAmI, 0, 1);
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, vel, type, Player.GetWeaponDamage(Player.HeldItem), 6, Player.whoAmI, 0, 1);
                         }
 
 
@@ -2969,8 +2969,8 @@ namespace StarsAbove
                     {
                         //Spawn the attacking projectile here.
                         Vector2 placement2 = new Vector2((Player.Center.X), Player.Center.Y);
-                        Projectile.NewProjectile(null, placement2.X, placement2.Y, 0, 0, ProjectileType<radiateChaos>(), 0, 0f, 0);
-                        Projectile.NewProjectile(null, placement2.X, placement2.Y, 0, 0, ProjectileType<UnforgottenBurst>(), soulUnboundDamage / 3, 0f, 0);
+                        Projectile.NewProjectile(Player.GetSource_FromThis(), placement2.X, placement2.Y, 0, 0, ProjectileType<radiateChaos>(), 0, 0f, 0);
+                        Projectile.NewProjectile(Player.GetSource_FromThis(), placement2.X, placement2.Y, 0, 0, ProjectileType<UnforgottenBurst>(), soulUnboundDamage / 3, 0f, 0);
                         Player.AddBuff(BuffType<Buffs.SoulUnboundCooldown>(), 1320);
                         Player.Teleport(soulUnboundLocation, 1, 0);
                         NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float)Player.whoAmI, soulUnboundLocation.X, soulUnboundLocation.Y, 1, 0, 0);
@@ -3338,7 +3338,7 @@ namespace StarsAbove
                 Player.AddBuff(BuffType<JetstreamBloodshed>(), 10);
                 Player.ClearBuff(BuffType<ImpactRecoil>());
                 Player.AddBuff(BuffType<Invincibility>(), 20);
-                Projectile.NewProjectile(null, Player.Center.X, Player.Center.Y, 0, 0, ProjectileType<fastRadiate>(), 0, 0, Player.whoAmI, 0f);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, 0, 0, ProjectileType<fastRadiate>(), 0, 0, Player.whoAmI, 0f);
                 SoundEngine.PlaySound(StarsAboveAudio.SFX_GuntriggerParry, Player.Center);
 
                 if (Player.statLife <= 100)
@@ -4019,11 +4019,11 @@ namespace StarsAbove
             {
                 if (Player.ownedProjectileCounts[ProjectileType<Projectiles.SupremeAuthority.AuthorityLantern2>()] < 1)
                 {
-                    Projectile.NewProjectile(null, Player.Center.X, Player.Center.Y, 0, 0, ProjectileType<Projectiles.SupremeAuthority.AuthorityLantern2>(), 0, 0, Player.whoAmI, 0f);
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, 0, 0, ProjectileType<Projectiles.SupremeAuthority.AuthorityLantern2>(), 0, 0, Player.whoAmI, 0f);
                 }
                 if (Player.ownedProjectileCounts[ProjectileType<Projectiles.SupremeAuthority.AuthorityLantern1>()] < 1)
                 {
-                    Projectile.NewProjectile(null, Player.Center.X, Player.Center.Y, 0, 0, ProjectileType<Projectiles.SupremeAuthority.AuthorityLantern1>(), 0, 0, Player.whoAmI, 0f);
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, 0, 0, ProjectileType<Projectiles.SupremeAuthority.AuthorityLantern1>(), 0, 0, Player.whoAmI, 0f);
                 }
             }
             if(SupremeAuthorityConsumedNPCs > 0)

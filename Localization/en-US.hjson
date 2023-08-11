@@ -7903,7 +7903,11 @@ Mods: {
 
 			StellarSpoils: {
 				DisplayName: Stellar Spoils
-				Tooltip: ""
+				Tooltip:
+					'''
+					Concentrated confluence of celestial energy
+					Contains unique Stellar Spoils, obtained from celestial bosses
+					'''
 			}
 
 			StellarRemnant: {

@@ -75,7 +75,6 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 					}
 					if(Projectile.frame == 1)
                     {
-						//Projectile.NewProjectile(null, Projectile.Center.X, Projectile.Center.Y, 0, 0, ProjectileType<TheOnlyThingIKnowForRealSpin2>(), 0, 3, Main.player[Projectile.owner].whoAmI, 0f);
 
 					}
 					//Main.PlaySound(SoundLoader.customSoundType, (int)projectile.Center.X, (int)projectile.Center.Y, mod.GetSoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Custom/electroSmack"));

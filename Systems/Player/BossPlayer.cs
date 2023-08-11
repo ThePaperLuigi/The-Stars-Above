@@ -187,7 +187,7 @@ namespace StarsAbove
             hasBossAggro = Math.Clamp(hasBossAggro, 0, 10);
             if(hasBossAggro > 0 && Player.ownedProjectileCounts[ProjectileType<BossAggroMarker>()] < 1)
             {
-                Projectile.NewProjectile(null, Player.Center, Vector2.Zero, ProjectileType<BossAggroMarker>(), 0, 0, Player.whoAmI);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ProjectileType<BossAggroMarker>(), 0, 0, Player.whoAmI);
 
             }
 

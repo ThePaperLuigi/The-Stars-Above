@@ -117,7 +117,7 @@ namespace StarsAbove.Projectiles.BurningDesire
 			}
 			if(projOwner.HasBuff(BuffType<BoilingBloodBuff>()))
             {
-				Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0, 0, Mod.Find<ModProjectile>("ChainsawFollowUpAttack").Type, Projectile.damage, 0, projOwner.whoAmI, 0f);
+				Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center.X, target.Center.Y, 0, 0, Mod.Find<ModProjectile>("ChainsawFollowUpAttack").Type, Projectile.damage, 0, projOwner.whoAmI, 0f);
 
 			}
 

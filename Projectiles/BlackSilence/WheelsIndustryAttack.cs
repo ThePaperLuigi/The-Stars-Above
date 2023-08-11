@@ -82,8 +82,8 @@ namespace StarsAbove.Projectiles.BlackSilence
 				if (slamReady)
 				{
 					projOwner.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
-					Projectile.NewProjectile(null, Projectile.Center.X, Projectile.Center.Y, 0, 0, ProjectileType<WheelsIndustrySlamDamage>(), Projectile.damage, 0, Main.player[Projectile.owner].whoAmI, 0f);
-					Projectile.NewProjectile(null, Projectile.Center.X, Projectile.Center.Y, 0, 0, ProjectileType<fastRadiate>(), 0, 0, Main.player[Projectile.owner].whoAmI, 0f);
+					Projectile.NewProjectile(Main.player[Projectile.owner].GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ProjectileType<WheelsIndustrySlamDamage>(), Projectile.damage, 0, Main.player[Projectile.owner].whoAmI, 0f);
+					Projectile.NewProjectile(Main.player[Projectile.owner].GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ProjectileType<fastRadiate>(), 0, 0, Main.player[Projectile.owner].whoAmI, 0f);
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_BlackSilenceGreatsword, Main.LocalPlayer.Center);
 
 

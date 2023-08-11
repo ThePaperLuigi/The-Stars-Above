@@ -50,8 +50,8 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 				if(Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					Projectile.timeLeft = (int)(Projectile.ai[2] + 60);
-					Projectile.NewProjectile(null, Projectile.Center, Vector2.Zero, ProjectileType<SpacePowerBorder>(), 0, 0, Main.player[Projectile.owner].whoAmI,0,0,Projectile.timeLeft);
-					Projectile.NewProjectile(null, Projectile.Center, Vector2.Zero, ProjectileType<radiate>(), 0, 0, Main.player[Projectile.owner].whoAmI);
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<SpacePowerBorder>(), 0, 0, Main.player[Projectile.owner].whoAmI,0,0,Projectile.timeLeft);
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<radiate>(), 0, 0, Main.player[Projectile.owner].whoAmI);
 				}
 				float dustAmount = 120f;
 				for (int i = 0; (float)i < dustAmount; i++)

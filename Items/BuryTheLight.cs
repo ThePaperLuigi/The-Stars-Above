@@ -186,7 +186,7 @@ namespace StarsAbove.Items
 					SoundEngine.PlaySound(SoundID.Item1, player.Center);
 					player.immune = true;
 					player.immuneTime = 120;
-					Projectile.NewProjectile(null, player.Center.X + Main.rand.Next(-50, 50), player.Center.Y + Main.rand.Next(-50, 50), 0, 0, ProjectileType<BuryTheLightSlash2Pre>(), player.GetWeaponDamage(Item), 0, player.whoAmI);
+					Projectile.NewProjectile(player.GetSource_FromThis(), player.Center.X + Main.rand.Next(-50, 50), player.Center.Y + Main.rand.Next(-50, 50), 0, 0, ProjectileType<BuryTheLightSlash2Pre>(), player.GetWeaponDamage(Item), 0, player.whoAmI);
 
 				}
 				if (player.GetModPlayer<WeaponPlayer>().judgementCutTimer == 1)

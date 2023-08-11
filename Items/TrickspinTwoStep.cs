@@ -145,7 +145,7 @@ namespace StarsAbove.Items
 
 					Vector2 directionMouse = Vector2.Normalize(Main.MouseWorld - player.Center);
 					Vector2 arrowVelocityMouse = directionMouse * launchSpeed;
-					Projectile.NewProjectile(null, player.Center.X, player.Center.Y,arrowVelocityMouse.X, arrowVelocityMouse.Y, ProjectileType<TrickspinSuspendYoyo>(), 0, 0, player.whoAmI, 0f);
+					Projectile.NewProjectile(player.GetSource_FromThis(), player.Center.X, player.Center.Y,arrowVelocityMouse.X, arrowVelocityMouse.Y, ProjectileType<TrickspinSuspendYoyo>(), 0, 0, player.whoAmI, 0f);
 					float rotation = (float)Math.Atan2(player.Center.Y - Main.MouseWorld.Y, player.Center.X - Main.MouseWorld.X);
 
 					for (int d = 0; d < 35; d++)

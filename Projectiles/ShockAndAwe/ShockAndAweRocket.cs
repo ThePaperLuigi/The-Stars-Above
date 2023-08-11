@@ -101,7 +101,7 @@ namespace StarsAbove.Projectiles.ShockAndAwe
 
 			if(Main.myPlayer == Projectile.owner)
 			{
-				Projectile.NewProjectile(null, Projectile.Center, Vector2.Zero, ProjectileType<ShockAndAweRocketExplosion>(), Projectile.damage, 0, Projectile.owner);
+				Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<ShockAndAweRocketExplosion>(), Projectile.damage, 0, Projectile.owner);
 
 			}
 		}

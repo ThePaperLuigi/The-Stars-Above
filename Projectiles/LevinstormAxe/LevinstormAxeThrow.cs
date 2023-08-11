@@ -108,20 +108,20 @@ namespace StarsAbove.Projectiles.LevinstormAxe
 		}
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-			Projectile.NewProjectile(null, target.Center.X, target.Center.Y, Main.rand.Next(-2, 2), Main.rand.Next(-2, 2), ProjectileType<LevinstormLightning>(), Projectile.damage / 4, Projectile.knockBack, Projectile.owner, Main.rand.Next(0, 360) + 1000f, 1);
+			Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center.X, target.Center.Y, Main.rand.Next(-2, 2), Main.rand.Next(-2, 2), ProjectileType<LevinstormLightning>(), Projectile.damage / 4, Projectile.knockBack, Projectile.owner, Main.rand.Next(0, 360) + 1000f, 1);
 			if(Main.rand.NextBool())
             {
-				Projectile.NewProjectile(null, target.Center.X, target.Center.Y, Main.rand.Next(-2, 2), Main.rand.Next(-2, 2), ProjectileType<LevinstormLightning>(), Projectile.damage / 4, Projectile.knockBack, Projectile.owner, Main.rand.Next(0, 360) + 1000f, 1);
+				Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center.X, target.Center.Y, Main.rand.Next(-2, 2), Main.rand.Next(-2, 2), ProjectileType<LevinstormLightning>(), Projectile.damage / 4, Projectile.knockBack, Projectile.owner, Main.rand.Next(0, 360) + 1000f, 1);
 				if (Main.rand.NextBool())
 				{
-					Projectile.NewProjectile(null, target.Center.X, target.Center.Y, Main.rand.Next(-2, 2), Main.rand.Next(-2, 2), ProjectileType<LevinstormLightning>(), Projectile.damage / 4, Projectile.knockBack, Projectile.owner, Main.rand.Next(0, 360) + 1000f, 1);
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center.X, target.Center.Y, Main.rand.Next(-2, 2), Main.rand.Next(-2, 2), ProjectileType<LevinstormLightning>(), Projectile.damage / 4, Projectile.knockBack, Projectile.owner, Main.rand.Next(0, 360) + 1000f, 1);
 
 				}
 			}
 
 			if (hit.Crit && Main.player[Projectile.owner].HasBuff(BuffType<GatheringLevinstorm>()))
             {
-				Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0,0, ProjectileType<LevinstormExplosion>(), damageDone, Projectile.knockBack, Projectile.owner);
+				Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center.X, target.Center.Y, 0,0, ProjectileType<LevinstormExplosion>(), damageDone, Projectile.knockBack, Projectile.owner);
 
 			}
 

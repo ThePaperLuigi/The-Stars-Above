@@ -93,7 +93,7 @@ namespace StarsAbove.Items
 					player.AddBuff(BuffType<Buffs.MorningStar.AlucardSwordBuff3>(), 2);
 
 
-					int index = Projectile.NewProjectile(null, player.Center, Vector2.Zero, ProjectileType<AlucardSword3>(), player.GetWeaponDamage(player.HeldItem), 4, player.whoAmI, 0f);
+					int index = Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ProjectileType<AlucardSword3>(), player.GetWeaponDamage(player.HeldItem), 4, player.whoAmI, 0f);
 					Main.projectile[index].originalDamage = player.GetWeaponDamage(player.HeldItem);
 
 				}
@@ -103,7 +103,7 @@ namespace StarsAbove.Items
 
 					player.AddBuff(BuffType<Buffs.MorningStar.AlucardSwordBuff2>(), 2);
 
-					int index1 = Projectile.NewProjectile(null, player.Center, Vector2.Zero, ProjectileType<AlucardSword2>(), player.GetWeaponDamage(player.HeldItem), 4, player.whoAmI, 0f);
+					int index1 = Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ProjectileType<AlucardSword2>(), player.GetWeaponDamage(player.HeldItem), 4, player.whoAmI, 0f);
 					Main.projectile[index1].originalDamage = player.GetWeaponDamage(player.HeldItem);
 
 				}
@@ -112,7 +112,7 @@ namespace StarsAbove.Items
 					//if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue($"Tried 1"), 250, 100, 247);}
 
 					player.AddBuff(BuffType<Buffs.MorningStar.AlucardSwordBuff1>(), 2);
-					int index2 = Projectile.NewProjectile(null, player.Center, Vector2.Zero, ProjectileType<AlucardSword1>(), player.GetWeaponDamage(player.HeldItem), 4, player.whoAmI, 0f);
+					int index2 = Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ProjectileType<AlucardSword1>(), player.GetWeaponDamage(player.HeldItem), 4, player.whoAmI, 0f);
 					Main.projectile[index2].originalDamage = player.GetWeaponDamage(player.HeldItem);
 
 				}

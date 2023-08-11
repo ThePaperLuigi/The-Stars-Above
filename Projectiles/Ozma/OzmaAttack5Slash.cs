@@ -75,7 +75,7 @@ namespace StarsAbove.Projectiles.Ozma
 					}
 					if(Projectile.frame == 1)
                     {
-						Projectile.NewProjectile(null, Projectile.Center.X, Projectile.Center.Y, 0, 0, ProjectileType<OzmaAttack5Slash2>(), 0, 3, projOwner.whoAmI, 0f);
+						Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ProjectileType<OzmaAttack5Slash2>(), 0, 3, projOwner.whoAmI, 0f);
 
 					}
 					//Main.PlaySound(SoundLoader.customSoundType, (int)projectile.Center.X, (int)projectile.Center.Y, mod.GetSoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Custom/electroSmack"));

@@ -45,7 +45,7 @@ namespace StarsAbove.Projectiles.BlackSilence
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 
-			Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0, 0, ProjectileType<CrystalAtelierFollowUp>(), Projectile.damage, 0, Main.player[Projectile.owner].whoAmI, 0f);
+			Projectile.NewProjectile(Main.player[Projectile.owner].GetSource_FromThis(), target.Center.X, target.Center.Y, 0, 0, ProjectileType<CrystalAtelierFollowUp>(), Projectile.damage, 0, Main.player[Projectile.owner].whoAmI, 0f);
 
 		}
 		public override void AI()

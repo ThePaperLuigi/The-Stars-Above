@@ -60,7 +60,7 @@ namespace StarsAbove.Projectiles.DreamersInkwell
 			{
 				if (Main.myPlayer == Projectile.owner)
 				{
-					Projectile.NewProjectile(null, Projectile.Center, Vector2.Zero, ProjectileID.MolotovFire, Projectile.damage, 0, projOwner.whoAmI);
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileID.MolotovFire, Projectile.damage, 0, projOwner.whoAmI);
 				}
 			}
 		}
