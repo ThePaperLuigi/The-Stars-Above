@@ -3254,7 +3254,7 @@ Mods: {
 			WarriorOfLight.DisplayName: The Warrior Of Light
 			Nalhaun.DisplayName: Mods.StarsAbove.NPCName.Nalhaun
 			Tsukiyomi.DisplayName: Mods.StarsAbove.NPCName.Tsukiyomi
-			Tsukiyomi2.DisplayName: Mods.StarsAbove.NPCName.Tsukiyomi2
+			Tsukiyomi2.DisplayName: Mods.StarsAbove.NPCName.Tsukiyomi
 			AmethystHeadpiercer.DisplayName: Amethyst Headpiercer
 			AmethystSwordsinner.DisplayName: Amethyst Swordsinner
 			AsteroidWormBody.DisplayName: Stardigrade
@@ -3269,7 +3269,7 @@ Mods: {
 
 				BossChecklistIntegration: {
 					EntryName: The Vagrant of Space and Time
-					SpawnInfo: Defeat this strange foe through the Shattered Disk, obtained from your Starfarer after King Slime is defeated. This fight will be critical to progression later!
+					SpawnInfo: Defeat this strange foe through the Shattered Disk, obtained from your Starfarer after the Eye of Cthulhu is defeated. This fight will be critical to progression later!
 					DespawnMessage: ""
 				}
 			}
