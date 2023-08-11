@@ -21,7 +21,7 @@ using Microsoft.Xna.Framework.Audio;
 using StarsAbove.Dusts;
 using StarsAbove.Items.Consumables;
 using StarsAbove.UI.StellarNova;
-using SubworldLibrary;
+ 
 using StarsAbove.Buffs.SubworldModifiers;
 using StarsAbove.Projectiles.Otherworld;
 using StarsAbove.Projectiles.SkyStriker;
@@ -1637,7 +1637,7 @@ namespace StarsAbove
 
         public override void OnEnterWorld()
         {
-            SubworldSystem.noReturn = false; //Fix missing save and quit bug?
+            SubworldSystem.noReturn = false; //Fix missing save and quit bug? As of 8/9/23 this is still relevant (just found that out the fun way)
 
             if (Player.whoAmI == Main.myPlayer && enableWorldLock)
             {
@@ -4903,251 +4903,254 @@ namespace StarsAbove
             novaCritChanceMod = 0;
             novaCritDamageMod = 0;
             novaChargeMod = 0;
+            if (affixItem1 != null && affixItem2 != null && affixItem3 != null)
+            {
+                //TODO: replace with a better system.
+                //Just in case the idea of "different slots provide different bonuses" becomes true.
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<RefulgentPrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<RefulgentPrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<RefulgentPrism>())
+                {
+                    novaDamageMod += 0.2;//20%
+                    novaCritChanceMod -= 14;
+                    novaCritDamageMod -= 0.1;
+                    novaChargeMod += 5;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<EverflamePrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<EverflamePrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<EverflamePrism>())
+                {
+                    novaDamageMod += 0.1;
+                    novaCritChanceMod += 7;
+                    novaCritDamageMod += 0.1;
+                    novaChargeMod -= 15;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<CrystallinePrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<CrystallinePrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<CrystallinePrism>())
+                {
+                    novaDamageMod -= 0.2;
+                    novaCritChanceMod -= 7;
+                    novaCritDamageMod += 0.3;
+                    //novaChargeMod -= 15;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<VerdantPrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<VerdantPrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<VerdantPrism>())
+                {
+                    //novaDamageMod += 50;
+                    novaCritChanceMod += 21;
+                    //novaCritDamageMod += 225;
+                    novaChargeMod -= 15;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<RadiantPrism>() ||
+                     affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<RadiantPrism>() ||
+                     affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<RadiantPrism>())
+                {
+                    novaDamageMod -= 0.1;
+                    novaCritChanceMod -= 7;
+                    novaCritDamageMod -= 0.1;
+                    novaChargeMod += 15;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<ApocryphicPrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<ApocryphicPrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<ApocryphicPrism>())
+                {
+                    novaDamageMod += 0.2;
+                    novaCritChanceMod -= 14;
+                    novaCritDamageMod += 0.1;
+                    novaChargeMod -= 5;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<AlchemicPrism>() ||
+                     affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<AlchemicPrism>() ||
+                     affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<AlchemicPrism>())
+                {
+                    novaDamageMod -= 0.1;
+                    novaCritChanceMod += 14;
+                    novaCritDamageMod += 0.1;
+                    novaChargeMod -= 10;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<CastellicPrism>() ||
+                     affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<CastellicPrism>() ||
+                     affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<CastellicPrism>())
+                {
+                    novaDamageMod += 0.3;
+                    novaCritChanceMod -= 7;
+                    novaCritDamageMod -= 0.2;
+                    //novaChargeMod -= 10;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<LucentPrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<LucentPrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<LucentPrism>())
+                {
+                    novaDamageMod -= 0.3;
+                    //novaCritChanceMod -= 7;
+                    novaCritDamageMod += 0.1;
+                    novaChargeMod += 10;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<PhylacticPrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<PhylacticPrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<PhylacticPrism>())
+                {
+                    novaDamageMod -= 0.1;
+                    novaCritChanceMod += 21;
+                    //novaCritDamageMod += 75;
+                    novaChargeMod -= 10;
+                }
 
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<LightswornPrism>() ||
+                     affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<LightswornPrism>() ||
+                     affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<LightswornPrism>())
+                {
+                    lightswornPrism = true;
+                }
+                else
+                {
+                    lightswornPrism = false;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<BurnishedPrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<BurnishedPrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<BurnishedPrism>())
+                {
+                    burnishedPrism = true;
+                }
+                else
+                {
+                    burnishedPrism = false;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<GeminiPrism>() ||
+                     affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<GeminiPrism>() ||
+                     affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<GeminiPrism>())
+                {
+                    geminiPrism = true;
+                }
+                else
+                {
+                    geminiPrism = false;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<SpatialPrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<SpatialPrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<SpatialPrism>())
+                {
+                    spatialPrism = true;
+                }
+                else
+                {
+                    spatialPrism = false;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<PaintedPrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<PaintedPrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<PaintedPrism>())
+                {
+                    paintedPrism = true;
+                }
+                else
+                {
+                    paintedPrism = false;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<VoidsentPrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<VoidsentPrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<VoidsentPrism>())
+                {
+                    voidsentPrism = true;
+                }
+                //1.1.6 prisms
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<RoyalSlimePrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<RoyalSlimePrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<RoyalSlimePrism>())
+                {
+                    royalSlimePrism = true;
+                }
+                else
+                {
+                    royalSlimePrism = false;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<MechanicalPrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<MechanicalPrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<MechanicalPrism>())
+                {
+                    mechanicalPrism = true;
+                }
+                else
+                {
+                    mechanicalPrism = false;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<OvergrownPrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<OvergrownPrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<OvergrownPrism>())
+                {
+                    overgrownPrism = true;
+                }
+                else
+                {
+                    overgrownPrism = false;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<LihzahrdPrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<LihzahrdPrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<LihzahrdPrism>())
+                {
+                    lihzahrdPrism = true;
+                }
+                else
+                {
+                    lihzahrdPrism = false;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<TyphoonPrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<TyphoonPrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<TyphoonPrism>())
+                {
+                    typhoonPrism = true;
+                }
+                else
+                {
+                    typhoonPrism = false;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<EmpressPrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<EmpressPrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<EmpressPrism>())
+                {
+                    empressPrism = true;
+                }
+                else
+                {
+                    empressPrism = false;
+                }
+                if (affixItem1 != null && !affixItem1.IsAir && affixItem1.type == ItemType<LuminitePrism>() ||
+                    affixItem2 != null && !affixItem2.IsAir && affixItem2.type == ItemType<LuminitePrism>() ||
+                    affixItem3 != null && !affixItem3.IsAir && affixItem3.type == ItemType<LuminitePrism>())
+                {
+                    luminitePrism = true;
+                }
+                else
+                {
+                    luminitePrism = false;
+                }
+                //Tier 3 Prisms
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<PrismOfTheRuinedKing>())
+                {
+                    ruinedKingPrism = true;
+
+                }
+                else
+                {
+                    ruinedKingPrism = false;
+
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<PrismOfTheCosmicPhoenix>())
+                {
+                    cosmicPhoenixPrism = true;
+
+                }
+                else
+                {
+                    cosmicPhoenixPrism = false;
+
+                }
+            }
             
-            //TODO: replace with a better system.
-            //Just in case the idea of "different slots provide different bonuses" becomes true.
-            if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<RefulgentPrism>() ||
-                affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<RefulgentPrism>() ||
-                affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<RefulgentPrism>())
-            {
-                novaDamageMod += 0.2;//20%
-                novaCritChanceMod -= 14;
-                novaCritDamageMod -= 0.1;
-                novaChargeMod += 5;
-            }
-            if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<EverflamePrism>() ||
-                affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<EverflamePrism>() ||
-                affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<EverflamePrism>())
-            {
-                novaDamageMod += 0.1;
-                novaCritChanceMod += 7;
-                novaCritDamageMod += 0.1;
-                novaChargeMod -= 15;
-            }
-            if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<CrystallinePrism>() ||
-                affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<CrystallinePrism>() ||
-                affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<CrystallinePrism>())
-            {
-                novaDamageMod -= 0.2;
-                novaCritChanceMod -= 7;
-                novaCritDamageMod += 0.3;
-                //novaChargeMod -= 15;
-            }
-            if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<VerdantPrism>() ||
-                affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<VerdantPrism>() ||
-                affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<VerdantPrism>())
-            {
-                //novaDamageMod += 50;
-                novaCritChanceMod += 21;
-                //novaCritDamageMod += 225;
-                novaChargeMod -= 15;
-            }
-            if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<RadiantPrism>() ||
-                 affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<RadiantPrism>() ||
-                 affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<RadiantPrism>())
-            {
-                novaDamageMod -= 0.1;
-                novaCritChanceMod -= 7;
-                novaCritDamageMod -= 0.1;
-                novaChargeMod += 15;
-            }
-            if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<ApocryphicPrism>() ||
-                affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<ApocryphicPrism>() ||
-                affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<ApocryphicPrism>())
-            {
-                novaDamageMod += 0.2;
-                novaCritChanceMod -= 14;
-                novaCritDamageMod += 0.1;
-                novaChargeMod -= 5;
-            }
-            if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<AlchemicPrism>() ||
-                 affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<AlchemicPrism>() ||
-                 affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<AlchemicPrism>())
-            {
-                novaDamageMod -= 0.1;
-                novaCritChanceMod += 14;
-                novaCritDamageMod += 0.1;
-                novaChargeMod -= 10;
-            }
-            if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<CastellicPrism>() ||
-                 affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<CastellicPrism>() ||
-                 affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<CastellicPrism>())
-            {
-                novaDamageMod += 0.3;
-                novaCritChanceMod -= 7;
-                novaCritDamageMod -= 0.2;
-                //novaChargeMod -= 10;
-            }
-            if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<LucentPrism>() ||
-                affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<LucentPrism>() ||
-                affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<LucentPrism>())
-            {
-                novaDamageMod -= 0.3;
-                //novaCritChanceMod -= 7;
-                novaCritDamageMod += 0.1;
-                novaChargeMod += 10;
-            }
-            if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<PhylacticPrism>() ||
-                affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<PhylacticPrism>() ||
-                affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<PhylacticPrism>())
-            {
-                novaDamageMod -= 0.1;
-                novaCritChanceMod += 21;
-                //novaCritDamageMod += 75;
-                novaChargeMod -= 10;
-            }
-
-            if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<LightswornPrism>() ||
-                 affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<LightswornPrism>() ||
-                 affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<LightswornPrism>())
-            {
-                lightswornPrism = true;
-            }
-            else
-            {
-                lightswornPrism = false;
-            }
-            if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<BurnishedPrism>() ||
-                affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<BurnishedPrism>() ||
-                affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<BurnishedPrism>())
-            {
-                burnishedPrism = true;
-            }
-            else
-            {
-                burnishedPrism = false;
-            }
-            if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<GeminiPrism>() ||
-                 affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<GeminiPrism>() ||
-                 affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<GeminiPrism>())
-            {
-                geminiPrism = true;
-            }
-            else
-            {
-                geminiPrism = false;
-            }
-            if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<SpatialPrism>() ||
-                affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<SpatialPrism>() ||
-                affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<SpatialPrism>())
-            {
-                spatialPrism = true;
-            }
-            else
-            {
-                spatialPrism = false;
-            }
-            if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<PaintedPrism>() ||
-                affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<PaintedPrism>() ||
-                affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<PaintedPrism>())
-            {
-                paintedPrism = true;
-            }
-            else
-            {
-                paintedPrism = false;
-            }
-            if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<VoidsentPrism>() ||
-                affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<VoidsentPrism>() ||
-                affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<VoidsentPrism>())
-            {
-                voidsentPrism = true;
-            }
-            //1.1.6 prisms
-            if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<RoyalSlimePrism>() ||
-                affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<RoyalSlimePrism>() ||
-                affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<RoyalSlimePrism>())
-            {
-                royalSlimePrism = true;
-            }
-            else
-            {
-                royalSlimePrism = false;
-            }
-            if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<MechanicalPrism>() ||
-                affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<MechanicalPrism>() ||
-                affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<MechanicalPrism>())
-            {
-                mechanicalPrism = true;
-            }
-            else
-            {
-                mechanicalPrism = false;
-            }
-            if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<OvergrownPrism>() ||
-                affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<OvergrownPrism>() ||
-                affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<OvergrownPrism>())
-            {
-                overgrownPrism = true;
-            }
-            else
-            {
-                overgrownPrism = false;
-            }
-            if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<LihzahrdPrism>() ||
-                affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<LihzahrdPrism>() ||
-                affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<LihzahrdPrism>())
-            {
-                lihzahrdPrism = true;
-            }
-            else
-            {
-                lihzahrdPrism = false;
-            }
-            if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<TyphoonPrism>() ||
-                affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<TyphoonPrism>() ||
-                affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<TyphoonPrism>())
-            {
-                typhoonPrism = true;
-            }
-            else
-            {
-                typhoonPrism = false;
-            }
-            if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<EmpressPrism>() ||
-                affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<EmpressPrism>() ||
-                affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<EmpressPrism>())
-            {
-                empressPrism = true;
-            }
-            else
-            {
-                empressPrism = false;
-            }
-            if (affixItem1 != null && !affixItem1.IsAir && affixItem1.type == ItemType<LuminitePrism>() ||
-                affixItem2 != null && !affixItem2.IsAir && affixItem2.type == ItemType<LuminitePrism>() ||
-                affixItem3 != null && !affixItem3.IsAir && affixItem3.type == ItemType<LuminitePrism>())
-            {
-                luminitePrism = true;
-            }
-            else
-            {
-                luminitePrism = false;
-            }
-            //Tier 3 Prisms
-            if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<PrismOfTheRuinedKing>())
-            {
-                ruinedKingPrism = true;
-
-            }
-            else
-            {
-                ruinedKingPrism = false;
-
-            }
-            if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<PrismOfTheCosmicPhoenix>())
-            {
-                cosmicPhoenixPrism = true;
-
-            }
-            else
-            {
-                cosmicPhoenixPrism = false;
-
-            }
+            
             //Starfarer stuff here.
-            if (starfarerArmorEquipped.ModItem != null)
+            if (starfarerArmorEquipped != null)
             {
                 if (starfarerArmorEquipped.type == ItemType<FaerieVoyagerAttire>())
                 {
@@ -5178,7 +5181,7 @@ namespace StarsAbove
                     starfarerOutfit = 6;
                 }
             }
-            if (starfarerVanityEquipped.ModItem != null)
+            if (starfarerVanityEquipped != null)
             {
                 if (starfarerVanityEquipped.type == ItemType<FaerieVoyagerAttire>())
                 {
