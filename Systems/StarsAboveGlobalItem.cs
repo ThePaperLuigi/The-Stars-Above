@@ -759,7 +759,7 @@ namespace StarsAbove
 			{
 				if(!disableCalamityWeaponBuffs && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
                 {
-					damage += 0.3f;
+					damage += 0.2f;
 
 				}
 				
