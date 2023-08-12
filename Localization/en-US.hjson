@@ -4309,8 +4309,8 @@ Mods: {
 			DeathInFourActs: {
 				Tooltip:
 					'''
-					Every fourth shot will always deal critical damage and grant Swiftness
-					After the fourth shot is taken, the gun will take time to reload
+					Every fourth shot will always be a critical strike and grant Swiftness
+					After the fourth shot is taken, the gun will two seconds to reload
 					'In carnage, I bloom, like a flower in the dawn'
 					'''
 				DisplayName: Death In Four Acts
@@ -8105,6 +8105,15 @@ Mods: {
 					[c/73C84E:Suppress] becomes [c/C84EB6:Corrupted Suppress], consuming 50 HP to restore 50% Max MP and increase [c/7A1AE7:Void Corruption] by 25%
 					'..and so it comes... for all of us.'
 					'''
+			}
+
+			Poltergrasp5000: {
+				Tooltip:
+					'''
+					When held, vaccums all nearby items to your position instantly
+					Use the item to grab items further away
+					'''
+				DisplayName: Poltergrasp 5000
 			}
 		}
 
