@@ -8015,6 +8015,15 @@ Mods: {
 					'..and so it comes... for all of us.'
 					''' */
 			}
+
+			Poltergrasp5000: {
+				/* Tooltip:
+					'''
+					When held, vaccums all nearby items to your position instantly
+					Use the item to grab items further away
+					''' */
+				// DisplayName: Poltergrasp 5000
+			}
 		}
 
 		UIElements: {
