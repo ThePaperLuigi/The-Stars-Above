@@ -48,27 +48,27 @@ namespace StarsAbove.UI.StellarNova
 			//area.Top.Set(0, 0f); 
 			area.Width.Set(1000, 0f); 
 			area.Height.Set(810, 0f);
-			area.HAlign = 0f; // 1
-			area.VAlign = 0f;
+			area.HAlign = 0.5f; // 1
+			area.VAlign = 0.5f;
 
 			barFrame = new UIImage(Request<Texture2D>("StarsAbove/UI/Starfarers/blank"));
 			barFrame.Left.Set(-250, 0f);
-			barFrame.Top.Set(330, 0f);
+			barFrame.Top.Set(0, 0f);
 			barFrame.Width.Set(540, 0f);
 			barFrame.Height.Set(710, 0f);
 			bg = new UIImage(Request<Texture2D>("StarsAbove/UI/Starfarers/blank"));
 			bg.Left.Set(-250, 0f);
-			bg.Top.Set(380, 0f);
+			bg.Top.Set(0, 0f);
 			bg.Width.Set(840, 0f);
 			bg.Height.Set(810, 0f);
 			bg2 = new UIImage(Request<Texture2D>("StarsAbove/UI/Starfarers/blank"));
 			bg2.Left.Set(-250, 0f);
-			bg2.Top.Set(380, 0f);
+			bg2.Top.Set(0, 0f);
 			bg2.Width.Set(840, 0f);
 			bg2.Height.Set(810, 0f);
 			bg3 = new UIImage(Request<Texture2D>("StarsAbove/UI/Starfarers/blank"));
 			bg3.Left.Set(30, 0f);
-			bg3.Top.Set(760, 0f);
+			bg3.Top.Set(0, 0f);
 			bg3.Width.Set(1000, 0f);
 			bg3.Height.Set(114, 0f);
 
@@ -139,8 +139,11 @@ namespace StarsAbove.UI.StellarNova
 		{
 			base.DrawSelf(spriteBatch);
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			//area.Top.Set(50, 0f);
 			// Calculate quotient
-			
+			area.VAlign = 1f;
+			area.Top.Set(0 + Main.screenHeight / 8, 0f);
+			area.HAlign = 0f;
 			Rectangle hitbox = barFrame.GetInnerDimensions().ToRectangle();
 			if(modPlayer.NovaCutInTimer > 100)
 			{
