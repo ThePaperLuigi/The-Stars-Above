@@ -31,11 +31,7 @@ namespace StarsAbove.Items.Loot
 		
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Stellar Foci Grab Bag (Tier 1)");
-			/* Tooltip.SetDefault("10% chance to upgrade upon opening" +
-                "\n{$CommonItemTooltip.RightClickToOpen}"); */ // References a language key that says "Right Click To Open" in the language of the game
-
-			//ItemID.Sets.BossBag[Type] = true;
+			
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
 		}
@@ -123,7 +119,8 @@ namespace StarsAbove.Items.Loot
                 ItemType<PerfectlyGenericAccessory>(),
                 ItemType<ToMurder>(),
                 ItemType<EmberFlask>(),
-                ItemType<ShepherdSunstone>()
+                ItemType<ShepherdSunstone>(),
+                ItemType<Poltergrasp5000>()
                 ));
 
             IItemDropRule StarArmorRule = ItemDropRule.Common(ItemType<StarArmorHead>(), 1);
@@ -220,7 +217,8 @@ namespace StarsAbove.Items.Loot
                 ItemType<PerfectlyGenericAccessory>(),
                 ItemType<ToMurder>(),
                 ItemType<EmberFlask>(),
-                ItemType<ShepherdSunstone>()
+                ItemType<ShepherdSunstone>(),
+                ItemType<Poltergrasp5000>()
                 ))
             );
 
