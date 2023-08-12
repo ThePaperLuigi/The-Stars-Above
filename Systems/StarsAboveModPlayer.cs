@@ -4423,6 +4423,7 @@ namespace StarsAbove
                     novaGaugeUnlocked = true;
                     if (prototokia == 0)
                     {
+                        chosenStellarNova = 1;
                         prototokia = 1;
                     }
                 }
@@ -8704,7 +8705,7 @@ namespace StarsAbove
                 if (Main.rand.Next(0, 8) == 0)
                 {
                     starfarerPromptActive("onTakeHeavyDamage");
-
+                    
                 }
             }
             if (Player.HasBuff(BuffType<SpatialStratagemCooldown>()) && artofwar == 2)
