@@ -7,6 +7,7 @@ using static Terraria.ModLoader.ModContent;
 using StarsAbove.Items.Essences;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
+using StarsAbove.Buffs;
 
 namespace StarsAbove.Items
 {
@@ -44,7 +45,10 @@ namespace StarsAbove.Items
 		int missingHP = 0;
 		public override bool CanUseItem(Player player)
 		{
-			
+			if(player.HasBuff(BuffType<ComboCooldown>()))
+            {
+				return false;
+            }
 			return base.CanUseItem(player);
 		}
         public override bool? UseItem(Player player)
@@ -62,28 +66,20 @@ namespace StarsAbove.Items
 				}
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_DeathInFourActsFinish, player.Center);
 				player.AddBuff(BuffID.Swiftness, 340);
-				Item.useTime = 20;
-				Item.useAnimation = 20;
-				Item.reuseDelay = 40;
 
-
+				player.AddBuff(BuffType<ComboCooldown>(), 120);
+				
 			}
 			else
 			{
 				if (shotCount == 3)
 				{
-					Item.useTime = 70;
-					Item.useAnimation = 70;
-					Item.reuseDelay = 70;
 					Item.shootSpeed = 86f;
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_DeathInFourActsShoot, player.Center);
 				}
 				else
 				{
 					Item.crit = 10;
-					Item.useTime = 20;
-					Item.useAnimation = 20;
-					Item.reuseDelay = 40;
 					Item.shootSpeed = 86f;
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_DeathInFourActsShoot, player.Center);
 				}
