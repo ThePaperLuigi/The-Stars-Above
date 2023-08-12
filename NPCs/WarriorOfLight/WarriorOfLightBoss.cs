@@ -613,7 +613,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
                 }
 				for (int i = 0; i < Main.maxPlayers; i++)
 				{
-					Player player = Main.player[i];
+					/*Player player = Main.player[i];
 					if (player.active)
 					{
 						int k = Item.NewItem(null, (int)NPC.position.X, (int)NPC.position.Y, 0, 0, ModContent.ItemType<SigilOfHope>(), 1, false);
@@ -623,7 +623,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 						}
 
 					}
-
+					*/
 
 				}
 				
