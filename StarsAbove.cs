@@ -60,8 +60,10 @@ namespace StarsAbove
 			ModLoader.TryGetMod("Wikithis", out Mod wikithis);
 			if(wikithis != null && !Main.dedServ)
             {
-				wikithis.Call("AddModURL", this, "terrariamods.wiki.gg$The_Stars_Above");
-            }
+				
+				wikithis.Call("AddModURL", this, "https://terrariamods.wiki.gg/wiki/The_Stars_Above/{}");
+
+			}
 
 			if (Main.netMode != NetmodeID.Server)
 			{

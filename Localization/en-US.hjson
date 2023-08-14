@@ -3006,8 +3006,8 @@ Mods: {
 				UnlimitedBladeWorks: {
 					AbilityName: Unlimited Blade Works
 					AbilitySubName: "[c/FC643B:Projected Reality of Wrought Iron]"
-					AbilityDescription: Summon a portal to a world of blades, creating a field of empowerment for 20 seconds. After activation, rain down a barrage of blades, reducing enemy damage dealt by 10% for 20 seconds on hit. Additonally, all allies within the radius will gain Bladeforged, which increases damage, knockback, critical strike chance, and armor penetration by 2% up to 10% depending on current HP (capped at 500 HP.) Duration in seconds is proportional to Energy Cost divided by 10.
-					AstralBonus: Bladeforged's cap is raised to 15% and now increases defense based on percentage values up to 8. Additonally, Bladeforged perists for 10 seconds after the Nova ends.
+					AbilityDescription: Summon a portal to a world of blades, creating a field of empowerment for 20 seconds. After activation, rain down a barrage of blades, reducing enemy damage dealt by 10% for 20 seconds on hit. Additionally, all allies within the radius will gain Bladeforged, which increases damage, knockback, critical strike chance, and armor penetration by 2% up to 10% depending on current HP (capped at 500 HP.) Duration in seconds is proportional to Energy Cost divided by 10.
+					AstralBonus: Bladeforged's cap is raised to 15% and now increases defense based on percentage values up to 8. Additionally, Bladeforged perists for 10 seconds after the Nova ends.
 					UmbralBonus: Bladeforged no longer increases damage, but attacking with projectiles trigger follow-up attacks (3 second cooldown.) Foes within the field take 10% more damage.
 				}
 
@@ -4263,7 +4263,7 @@ Mods: {
 					Calls forth an instance of your rebellious heart
 					Unleashes incredibly powerful bullets
 					Gain a sizeable amount of bonus damage relative to Max HP and MP
-					Additonally, the highest critical chance percentage of all damage types is converted into bonus damage
+					Additionally, the highest critical chance percentage of all damage types is converted into bonus damage
 					Only one can be summoned at a time
 					Uses 5 minion slots
 					'Ravage them'
@@ -5379,7 +5379,7 @@ Mods: {
 					Will fire a blade of light that will deal double damage and burn foes with 50 mana if mana is available
 					Right click to unleash your inner potential, gaining the unrivaled strength of [c/F1AF42:Limit Break] for 20 seconds (1 minute cooldown)
 					While under the influence of [c/F1AF42:Limit Break], health will be converted to mana without limit until mana is full
-					Additonally, all damage is increased by 10% and all magic damage is increased by an additional 100%
+					Additionally, all damage is increased by 10% and all magic damage is increased by an additional 100%
 					'I shall transcend you!'
 					'''
 				DisplayName: Light Unrelenting
@@ -6670,7 +6670,7 @@ Mods: {
 					[c/25ACF0:Riptide Bolts] will apply [c/4A91FF:Riptide] to foes struck for 12 seconds
 					Right click to consume 200 mana, entering [c/2361C1:Raging Tides] for 8 seconds
 					Within [c/2361C1:Raging Tides], attacks are changed into rapid close-ranged melee strikes that deal double damage and mana will not regenerate
-					Additonally, gain extra Movement Speed for the buff's duration
+					Additionally, gain extra Movement Speed for the buff's duration
 					Attacking foes afflicted with [c/4A91FF:Riptide] in this stance will deal extra damage
 					This weapon does not use ammo
 					'Shouldn't let your guard down!'
