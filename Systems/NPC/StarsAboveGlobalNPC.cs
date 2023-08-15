@@ -63,15 +63,15 @@ namespace StarsAbove
         {
 			if(player.HasBuff(BuffType<BossEnemySpawnMod>()))
             {
-				maxSpawns = 0;
+				//maxSpawns = 0;
             }
 			if (player.HasBuff(BuffType<OffSeersPurpose>()))
 			{
-				spawnRate += 10;
+				//spawnRate += 10;
 			}
 			if (player.HasBuff(BuffType<Conversationalist>()))
 			{
-				spawnRate -= 30;
+				//spawnRate -= 30;
 			}
 			base.EditSpawnRate(player, ref spawnRate, ref maxSpawns);
         }
