@@ -61,7 +61,7 @@ namespace StarsAbove
                 case 6:
                     return baseDamage / 4;
                 case 7:
-                    return baseDamage / 5;
+                    return baseDamage / 3;
                 default:
                     break;
             }
