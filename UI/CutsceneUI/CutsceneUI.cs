@@ -30,8 +30,8 @@ namespace StarsAbove.UI.CutsceneUI
 			area = new UIElement();
 			area.Top.Set(0, 0f);
 			area.Left.Set(0, 0f);
-			area.Width.Set(Main.screenWidth, 1f);
-			area.Height.Set(Main.screenHeight, 1f);
+			area.Width.Set(Main.screenWidth, 0f);
+			area.Height.Set(Main.screenHeight, 0f);
 			area.HAlign = area.VAlign = 0.5f; // 1
 
 			edinGenesisQuasarTransition = new UIImage(Request<Texture2D>("StarsAbove/UI/CutsceneUI/EdinGenesisQuasarTransition"));
@@ -42,7 +42,8 @@ namespace StarsAbove.UI.CutsceneUI
             {
                 ScaleToFit = true,
                 WaitForStart = true,
-                DoLoop = false
+                DoLoop = false,
+                AllowResizingDimensions = true
             };
 
             nalhaunCutsceneVideo = new UIVideo(Request<Video>("StarsAbove/Video/NalhaunBossCutscene"))
@@ -55,35 +56,42 @@ namespace StarsAbove.UI.CutsceneUI
             {
                 ScaleToFit = true,
                 WaitForStart = true,
-                DoLoop = false
+                DoLoop = false,
+                AllowResizingDimensions = true
             };
             tsukiCutsceneVideo2 = new UIVideo(Request<Video>("StarsAbove/Video/TsukiyomiNovaCutscene"))
             {
                 
                 ScaleToFit = true,
                 WaitForStart = true,
-                DoLoop = false
+                DoLoop = false,
+                AllowResizingDimensions = true
             };
             warriorCutsceneVideo = new UIVideo(Request<Video>("StarsAbove/Video/WarriorIntroCutscene"))
             {
 
                 ScaleToFit = true,
                 WaitForStart = true,
-                DoLoop = false
+                DoLoop = false,
+                AllowResizingDimensions = true
+
             };
             warriorCutsceneVideo2 = new UIVideo(Request<Video>("StarsAbove/Video/WarriorFinalPhaseCutscene"))
             {
 
                 ScaleToFit = true,
                 WaitForStart = true,
-                DoLoop = false
+                DoLoop = false,
+                AllowResizingDimensions = true
+
             };
             starfarerIntroVideo = new UIVideo(Request<Video>("StarsAbove/Video/StarfarerIntroCutscene"))
             {
 
                 ScaleToFit = true,
                 WaitForStart = true,
-                DoLoop = false
+                DoLoop = false,
+                AllowResizingDimensions = true
             };
             //area.Append(edinGenesisQuasarVideo);
             Append(area);
