@@ -1310,102 +1310,91 @@ namespace StarsAbove.Items.Consumables
 			if (modPlayer.uniqueDialogueTimer <= 0)
 			{
 				modPlayer.uniqueDialogueTimer = Main.rand.Next(1800, 3600);
-				randomDialogue = Main.rand.Next(1, 9); //1-20 are idle lines, 50+ are boss dialogue lines, and 100+ is items available to be crafted (1 less than max)
 				if (Main.hardMode)
 				{
-					randomDialogue += 9;//New dialogue when Hardmode is reached
+					randomDialogue = Main.rand.Next(1, 15);
+
+					switch (randomDialogue)
+					{
+						case 1:
+							modPlayer.chosenDialogue = 12;
+							break;
+						case 2:
+							modPlayer.chosenDialogue = 13;
+							break;
+						case 3:
+							modPlayer.chosenDialogue = 14;
+							break;
+						case 4:
+							modPlayer.chosenDialogue = 15;
+							break;
+						case 5:
+							modPlayer.chosenDialogue = 16;
+							break;
+						case 6:
+							modPlayer.chosenDialogue = 17;
+							break;
+						case 7:
+							modPlayer.chosenDialogue = 18;
+							break;
+						case 8:
+							modPlayer.chosenDialogue = 19;
+							break;
+						case 9:
+							modPlayer.chosenDialogue = 20;
+							break;
+						case 10:
+							modPlayer.chosenDialogue = 400;
+							break;
+						case 11:
+							modPlayer.chosenDialogue = 401;
+							break;
+						case 12:
+							modPlayer.chosenDialogue = 402;
+							break;
+						case 13:
+							modPlayer.chosenDialogue = 403;
+							break;
+						case 14:
+							modPlayer.chosenDialogue = 404;
+							break;
+					}
 				}
-				if (randomDialogue == 1)
+				else
 				{
-					modPlayer.chosenDialogue = 3;
+					randomDialogue = Main.rand.Next(1, 9); //1-20 are idle lines, 50+ are boss dialogue lines, and 100+ is items available to be crafted (1 less than max)
 
-				}
-				if (randomDialogue == 2)
-				{
-					modPlayer.chosenDialogue = 4;
-
-				}
-				if (randomDialogue == 3)
-				{
-					modPlayer.chosenDialogue = 5;
-
-				}
-				if (randomDialogue == 4)
-				{
-					modPlayer.chosenDialogue = 6;
-
-				}
-				if (randomDialogue == 5)
-				{
-					modPlayer.chosenDialogue = 7;
-
-				}
-				if (randomDialogue == 6)
-				{
-					modPlayer.chosenDialogue = 8;
-
-				}
-				if (randomDialogue == 7)
-				{
-					modPlayer.chosenDialogue = 9;
-
-				}
-				if (randomDialogue == 8)
-				{
-					modPlayer.chosenDialogue = 10;
-
-				}
-				if (randomDialogue == 9)
-				{
-					modPlayer.chosenDialogue = 11;//Pre hardmode end
-
-				}
-				if (randomDialogue == 10)
-				{
-					modPlayer.chosenDialogue = 12;
-
-				}
-				if (randomDialogue == 11)
-				{
-					modPlayer.chosenDialogue = 13;
-
-				}
-				if (randomDialogue == 12)
-				{
-					modPlayer.chosenDialogue = 14;
-
-				}
-				if (randomDialogue == 13)
-				{
-					modPlayer.chosenDialogue = 15;
-
-				}
-				if (randomDialogue == 14)
-				{
-					modPlayer.chosenDialogue = 16;
-
-				}
-				if (randomDialogue == 15)
-				{
-					modPlayer.chosenDialogue = 17;
-
-				}
-				if (randomDialogue == 16)
-				{
-					modPlayer.chosenDialogue = 18;
-
-				}
-				if (randomDialogue == 17)
-				{
-					modPlayer.chosenDialogue = 19;
-
-				}
-				if (randomDialogue == 18)
-				{
-					modPlayer.chosenDialogue = 20;
-
-				}
-
+					switch (randomDialogue)
+                    {
+						case 1:
+							modPlayer.chosenDialogue = 3;
+							break;
+						case 2:
+							modPlayer.chosenDialogue = 4;
+							break;
+						case 3:
+							modPlayer.chosenDialogue = 5;
+							break;
+						case 4:
+							modPlayer.chosenDialogue = 6;
+							break;
+						case 5:
+							modPlayer.chosenDialogue = 7;
+							break;
+						case 6:
+							modPlayer.chosenDialogue = 8;
+							break;
+						case 7:
+							modPlayer.chosenDialogue = 9;
+							break;
+						case 8:
+							modPlayer.chosenDialogue = 10;
+							break;
+						case 9:
+							modPlayer.chosenDialogue = 11;
+							break;
+					}
+                }
 			}
 			else
 			{

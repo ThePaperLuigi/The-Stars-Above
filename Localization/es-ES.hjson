@@ -1443,16 +1443,8 @@ Mods: {
 				}
 
 				HardIdleDialogue5: {
-					Asphodene: {
-						1: Después de que todo esto termine, ¿qué tal si te me unes? ¡Piensa en todos los buenos momentos que ya hemos tenido!
-						2: Uh, Cierto. Un montón de ellos ha sido solo pelear contra cosas.
-						3: Pero hey- Ha sido divertido también, ¿Acaso no?
-					}
-
-					Eridani: {
-						1: Podría usar tu ayuda en los próximos tiempos... No te molestaría unirte, ¿no?
-						2: ..Tal vez deveríamos volver a esta conversación. Tenemos todavía un largo camino que seguir.
-					}
+					Asphodene.1: Después de que todo esto termine, ¿qué tal si te me unes? ¡Piensa en todos los buenos momentos que ya hemos tenido!
+					Eridani.1: Podría usar tu ayuda en los próximos tiempos... No te molestaría unirte, ¿no?
 				}
 
 				HardIdleDialogue6: {
@@ -1499,6 +1491,74 @@ Mods: {
 					Eridani: {
 						1: Viendo atrás por nuestro camino.. hemos llegado bastante lejos.
 						2: Y aún así, tenemos muchas mas cosas que lograr.
+						// 3: Let's keep something straight though- there's usually other options, and you have to weigh those as well. Always resorting to crime is what bad people do.
+					}
+				}
+
+				HardIdleDialogue10: {
+					Asphodene: {
+						// 1: From looking at her, you probably get the impression that Eridani is a bit of a "honor student" type, right?
+						// 2: Think again! She does whatever the heck she wants most of the time. Luckily she still has her moral compass, or I'd set her straight!
+					}
+
+					Eridani: {
+						// 1: Asphodene is technically the older one... but I bet you couldn't tell.
+						// 2: She has that sort of air about her. No, I wouldn't say childlike- more like... chaotic? Yes, chaotic.
+					}
+				}
+
+				HardIdleDialogue11: {
+					Asphodene: {
+						// 1: What I like? Waking up when I want to! Yes, I'd say that nears the top of the list.
+						// 2: Okay, it's a little vapid of me. I like fresh fruit too, is that better?
+						// 3: Oh, oh- magical food is the best. Once you've tried some, things aren't the same.
+						// 4: Travelling is a blast, as well- if your heart doesn't flutter upon visiting new vistas, are you even alive?
+					}
+
+					Eridani: {
+						// 1: Things that I like? Are you asking about banal things, or... Okay.
+						// 2: Well, I do enjoy the night air. Surrounded by life and noise, yet everything's still. Right, tranquility and silence.
+						// 3: If you're looking for something more material, well... I concede, I have a bit of a sweet tooth.
+					}
+				}
+
+				HardIdleDialogue12: {
+					Asphodene: {
+						// 1: Things that I dislike? Let's see...
+						// 2: I hate being weak, but being too strong makes things boring, which isn't what I want either. You get it, right?
+						// 3: Oh, I also really don't like being sick, but who does?
+					}
+
+					Eridani: {
+						// 1: What I dislike? Other than bugs... Okay, may I vent a little?
+						// 2: There are times when you start something, get really, really close to finishing, and then it all blows up in your face. And then-
+						// 3: The second time around, you only get a third of the way through before it gets all messed up again. I can't think of anything more demoralizing...
+					}
+				}
+
+				HardIdleDialogue13: {
+					Asphodene: {
+						// 1: My hobbies, huh. Well, I collect knicknacks from the places I visit. That's cool, right?
+						// 2: I also, uh, try to create new weapons. Most of them are a little volatile, but I am getting better!
+						// 3: I also play the piano! Not great, but... It's a step by step process. When I mean step by step, I really mean it.
+					}
+
+					Eridani: {
+						// 1: Hobbies? Well, the biggest thing I can think of is alchemy. Yes, alchemy has been solved- if you think on a planetary scale.
+						// 2: Mix fundamentals from even two different planets with epochs of divergent history, things start getting quite messy.
+						// 3: Sure, it's overwhelming- that's why it's a hobby, and not anything more. I'm no genius, but it is quite enjoyable.
+					}
+				}
+
+				HardIdleDialogue14: {
+					Asphodene: {
+						// 1: Truly... The Hallowed is just a big facade.
+						// 2: For such a pretty biome, it REALLY wants to kill you.
+					}
+
+					Eridani: {
+						// 1: Strip away the Hallowed's mask, and it may even be harsher than the Underworld itself.
+						// 2: If you're off to farm Souls, stay safe. Even the best can can be caught off-guard.
 					}
 				}
 
@@ -10702,7 +10762,7 @@ Mods: {
 
 			LVBuff: {
 				// DisplayName: LV
-				// Description: ""
+				// Description: Empowered by karmic strength
 			}
 
 			ManiacalJusticeCooldown: {
@@ -10961,18 +11021,6 @@ Mods: {
 
 			// ManaSicknessAlter.Description: All damage reduced by {0}%
 			// DarkAuraBuff.Description: "{0} sacrifice(s) have been consumed"
-			/* LVBuff20.Description:
-				'''
-				Attack speed increased by 20%
-				Cooldown of Slaughtering Slash halved
-				''' */
-			/* LVBuff50.Description:
-				'''
-				Attack speed increased by 30%
-				Cooldown of Slaughtering Slash halved
-				Attacks inflict Karmic Retribution for 10 seconds
-				''' */
-			// LVBuff100.Description: Able to unleash a Special Attack upon pressing the Weapon Action Key
 
 			SpectrumAbsorption: {
 				// DisplayName: Refractive Absorption

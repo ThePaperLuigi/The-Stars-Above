@@ -826,25 +826,13 @@ namespace StarsAbove
                 {
                     if (dialoguePrep == true)
                     {
-                        dialogueLeft = 3;
+                        dialogueLeft = 1;
                         dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue5.Asphodene.1", Player.name); //After all this is over with, how do you feel about joining me? Think of all the good times we've had already!
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue5.Asphodene.2", Player.name); //Uh, yeah. A lot of it was just fighting things.
-                        //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue5.Asphodene.3", Player.name); //But hey- that was fun too, wasn't it?
+                        expression = 1;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue5.Asphodene.1", Player.name); //After all this is over with, how do you feel about joining me? Think of all the good times we've had already!
                         //	" ";
                     }
                 }
@@ -855,16 +843,10 @@ namespace StarsAbove
                         dialogueLeft = 2;
                         dialoguePrep = false;
                     }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue5.Eridani.1", Player.name); //I could use your aid in the days to come... You wouldn't mind joining me, no?
-                        //	" ";
-                    }
                     if (dialogueLeft == 1)
                     {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue5.Eridani.2", Player.name); //..Maybe we should come back to this conversation. We've still got a long way to go.
+                        expression = 1;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue5.Eridani.1", Player.name); //..Maybe we should come back to this conversation. We've still got a long way to go.
                         //	" ";
                     }
 
@@ -985,7 +967,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 0;
+                        expression = 4;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue8.Asphodene.2", Player.name); //For such a pretty biome, it REALLY wants to kill you.
                         //	" ";
                     }
@@ -1032,7 +1014,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 5;
+                        expression = 4;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue9.Asphodene.2", Player.name); //That doesn't mean it's time to stop!
                         //	" ";
                     }
@@ -1041,19 +1023,25 @@ namespace StarsAbove
                 {
                     if (dialoguePrep == true)
                     {
-                        dialogueLeft = 2;
+                        dialogueLeft = 3;
                         dialoguePrep = false;
                     }
-                    if (dialogueLeft == 2)
+                    if (dialogueLeft == 3)
                     {
                         expression = 0;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue9.Eridani.1", Player.name); //Looking back on this journey.. We've come far.
                         //	" ";
                     }
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue9.Eridani.2", Player.name); //Looking back on this journey.. We've come far.
+                        //	" ";
+                    }
                     if (dialogueLeft == 1)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue9.Eridani.2", Player.name); //And yet, we have so much more to accomplish.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue9.Eridani.3", Player.name); //And yet, we have so much more to accomplish.
                         //	" ";
                     }
                 }
@@ -1381,8 +1369,276 @@ namespace StarsAbove
 
 
             }//In space (Idle, Unused)
-            #endregion//Finished rework.
-            //46% complete
+
+            //wow this code sucks! Too lazy to refactor atm.
+            if (chosenDialogue == 400) // Passive Dialogue
+            {
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
+                {
+                    if (dialoguePrep == true)
+                    {
+                        dialogueLeft = 2;
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue10.Asphodene.1", Player.name); //We've come a long way..  don't you think?
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 1;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue10.Asphodene.2", Player.name); //That doesn't mean it's time to stop!
+                        //	" ";
+                    }
+                }
+                if (chosenStarfarer == 2)  //placeholder
+                {
+                    if (dialoguePrep == true)
+                    {
+                        dialogueLeft = 2;
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue10.Eridani.1", Player.name); //Looking back on this journey.. We've come far.
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue10.Eridani.2", Player.name); //And yet, we have so much more to accomplish.
+                        //	" ";
+                    }
+                }
+
+
+            }
+            if (chosenDialogue == 401) // Passive Dialogue
+            {
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
+                {
+                    if (dialoguePrep == true)
+                    {
+                        dialogueLeft = 4;
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 4)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue11.Asphodene.1", Player.name); //We've come a long way..  don't you think?
+                        //	" ";
+                    }
+                    if (dialogueLeft == 3)
+                    {
+                        expression = 5;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue11.Asphodene.2", Player.name); //That doesn't mean it's time to stop!
+                        //	" ";
+                    }
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 4;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue11.Asphodene.3", Player.name); //That doesn't mean it's time to stop!
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 4;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue11.Asphodene.4", Player.name); //That doesn't mean it's time to stop!
+                        //	" ";
+                    }
+                }
+                if (chosenStarfarer == 2)
+                {
+                    if (dialoguePrep == true)
+                    {
+                        dialogueLeft = 3;
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 3)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue11.Eridani.1", Player.name); //Looking back on this journey.. We've come far.
+                        //	" ";
+                    }
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 4;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue11.Eridani.2", Player.name); //And yet, we have so much more to accomplish.
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 5;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue11.Eridani.3", Player.name); //And yet, we have so much more to accomplish.
+                        //	" ";
+                    }
+                }
+
+
+            }
+            if (chosenDialogue == 402) // Passive Dialogue
+            {
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
+                {
+                    if (dialoguePrep == true)
+                    {
+                        dialogueLeft = 3;
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 3)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue12.Asphodene.1", Player.name); //We've come a long way..  don't you think?
+                        //	" ";
+                    }
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 1;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue12.Asphodene.2", Player.name); //That doesn't mean it's time to stop!
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 1;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue12.Asphodene.3", Player.name); //That doesn't mean it's time to stop!
+                        //	" ";
+                    }
+                }
+                if (chosenStarfarer == 2)
+                {
+                    if (dialoguePrep == true)
+                    {
+                        dialogueLeft = 3;
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 3)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue12.Eridani.1", Player.name); //Looking back on this journey.. We've come far.
+                        //	" ";
+                    }
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 1;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue12.Eridani.2", Player.name); //And yet, we have so much more to accomplish.
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 2;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue12.Eridani.3", Player.name); //And yet, we have so much more to accomplish.
+                        //	" ";
+                    }
+                }
+
+
+            }
+            if (chosenDialogue == 403) // Passive Dialogue
+            {
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
+                {
+                    if (dialoguePrep == true)
+                    {
+                        dialogueLeft = 3;
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 3)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Asphodene.1", Player.name); 
+                        //	" ";
+                    }
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 5;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Asphodene.2", Player.name); 
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Asphodene.3", Player.name);
+                        //	" ";
+                    }
+                }
+                if (chosenStarfarer == 2)
+                {
+                    if (dialoguePrep == true)
+                    {
+                        dialogueLeft = 3;
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 3)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Eridani.1", Player.name);
+                        //	" ";
+                    }
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 4;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Eridani.2", Player.name);
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 5;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Eridani.3", Player.name);
+                        //	" ";
+                    }
+                }
+
+
+            }
+            if (chosenDialogue == 404) // Passive Dialogue
+            {
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
+                {
+                    if (dialoguePrep == true)
+                    {
+                        dialogueLeft = 2;
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Asphodene.1", Player.name); //We've come a long way..  don't you think?
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Asphodene.2", Player.name); //That doesn't mean it's time to stop!
+                        //	" ";
+                    }
+                }
+                if (chosenStarfarer == 2)
+                {
+                    if (dialoguePrep == true)
+                    {
+                        dialogueLeft = 2;
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Eridani.1", Player.name); //Looking back on this journey.. We've come far.
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Eridani.2", Player.name); //And yet, we have so much more to accomplish.
+                        //	" ";
+                    }
+                }
+
+
+            }
+            #endregion
             #region bossDialogue
             //Boss dialogue
             if (chosenDialogue == 51) // Boss dialogue - Slime King
@@ -4513,7 +4769,6 @@ namespace StarsAbove
 
             }//Astrum Deus 37
             #endregion
-            //0% complete
             #region weaponDialogue
 
             //Weapon conversations...........................................................................................................
