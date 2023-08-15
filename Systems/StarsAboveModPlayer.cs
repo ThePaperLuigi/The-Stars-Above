@@ -1638,7 +1638,11 @@ namespace StarsAbove
 
         public override void OnEnterWorld()
         {
-            SubworldSystem.noReturn = false; //Fix missing save and quit bug? As of 8/9/23 this is still relevant (just found that out the fun way)
+            if(SubworldSystem.noReturn == true)
+            {
+                SubworldSystem.noReturn = false; //Fix missing save and quit bug? As of 8/9/23 this is still relevant (just found that out the fun way)
+
+            }
 
             if (Player.whoAmI == Main.myPlayer && enableWorldLock)
             {
@@ -5644,7 +5648,7 @@ namespace StarsAbove
                 {
                     if (Main.npc[i].boss && Main.npc[i].active)
                     {
-                        Player.AddBuff(BuffType<BossEnemySpawnMod>(), 10);
+                        //Player.AddBuff(BuffType<BossEnemySpawnMod>(), 10);
                     }
 
                 }
