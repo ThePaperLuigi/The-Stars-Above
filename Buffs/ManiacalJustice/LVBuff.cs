@@ -35,23 +35,7 @@ namespace StarsAbove.Buffs.ManiacalJustice
         }
         public override void ModifyBuffText(ref string buffName, ref string tip, ref int rare)
         {
-            int LVAmount = Main.LocalPlayer.GetModPlayer<WeaponPlayer>().LVStacks;
-            tip = LangHelper.GetTextValue("BuffDescription.LVBuff", LVAmount);
-            if(LVAmount == 100)
-            {
-                tip += LangHelper.GetTextValue("BuffDescription.LVBuff100", LVAmount);
-            }
-            else if(LVAmount >= 50)
-            {
-                tip += LangHelper.GetTextValue("BuffDescription.LVBuff50", LVAmount);
-
-            }
-            else if(LVAmount >= 20)
-            {
-                tip += LangHelper.GetTextValue("BuffDescription.LVBuff20", LVAmount);
-
-            }
-
+            
              
         }
     }
