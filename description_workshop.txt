@@ -110,4 +110,4 @@ Chinese translation team:  Soammer(夏沫), MeireiHakuya(冥岭白夜), (亚砜)
 Spanish translation team: Bluefire72, Haturok, Aka Tofu, Karus
 Thank you, translators!
 
-[H1]Please report bugs to the Discord's bug reports channel so I can respond as quickly as possible- thank you![/h1]
+[H1]I'm active in the Discord, so please visit there if you want to ask questions or report bugs![/h1]
