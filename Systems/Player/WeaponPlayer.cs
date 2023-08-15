@@ -1680,7 +1680,7 @@ namespace StarsAbove
                 if (target.HasBuff(BuffType<Buffs.NanitePlague>()))
                 {
                     target.GetGlobalNPC<StarsAboveGlobalNPC>().NanitePlagueLevel++;
-                    modifiers.SourceDamage+= target.GetGlobalNPC<StarsAboveGlobalNPC>().NanitePlagueLevel;
+                    modifiers.SourceDamage.Flat += target.GetGlobalNPC<StarsAboveGlobalNPC>().NanitePlagueLevel;
                     modifiers.CritDamage /= 2;  //remove vanilla 2x bonus
                     modifiers.CritDamage += 3f; //crank that baby up
 
