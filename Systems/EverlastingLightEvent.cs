@@ -57,8 +57,16 @@ namespace StarsAbove
 			{
 				tag["daysAfterMoonLord"] = daysAfterMoonLord;
 			}
-			
-		}
+            if (daysUntilEverlastingLight > 0)
+            {
+                tag["daysLight"] = daysUntilEverlastingLight;
+            }
+            if (daysUntilEverlastingLightPreview > 0)
+            {
+                tag["daysLightPreview"] = daysUntilEverlastingLightPreview;
+            }
+
+        }
 
 		public override void LoadWorldData(TagCompound tag)
 		{
@@ -66,7 +74,8 @@ namespace StarsAbove
 			isEverlastingLightPreviewActive = tag.GetBool("isEverlastingLightPreviewActive");
 			afterMoonLordDayTimer = tag.GetInt("afterMoonLordDayTimer");
 			daysAfterMoonLord = tag.GetInt("daysAfterMoonLord");
-			
+            daysUntilEverlastingLight = tag.GetInt("daysLight");
+            daysUntilEverlastingLightPreview = tag.GetInt("daysLightPreview");
 		}
 
 		public override void NetSend(BinaryWriter writer)
@@ -75,9 +84,14 @@ namespace StarsAbove
 			var flags = new BitsByte();
 			flags[0] = isEverlastingLightActive;
 			flags[1] = isEverlastingLightPreviewActive;
-			writer.Write(flags);
+            writer.Write(flags);
 
-		}
+            writer.Write(daysAfterMoonLord);
+            writer.Write(afterMoonLordDayTimer);
+            writer.Write(daysUntilEverlastingLight);
+            writer.Write(daysUntilEverlastingLightPreview);
+
+        }
 
 		public override void NetReceive(BinaryReader reader)
 		{
@@ -85,8 +99,12 @@ namespace StarsAbove
 			BitsByte flags = reader.ReadByte();
 			isEverlastingLightActive = flags[0];
 			isEverlastingLightPreviewActive = flags[1];
-			
-		}
+
+            daysAfterMoonLord = reader.ReadInt32();
+            afterMoonLordDayTimer = reader.ReadInt32();
+            daysUntilEverlastingLight = reader.ReadInt32();
+            daysUntilEverlastingLightPreview = reader.ReadInt32();
+        }
 
         public override void PostUpdateTime()
         {
