@@ -300,7 +300,7 @@ Mods: {
 
 				UmbralEntropy: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Umbral Entropy']"
-					Description: All projectiles and melee attacks inflict Starblight on a critical strike. Gain Lifesteal on foes inflicted with Starblight. Healing is capped at 5 HP per second.
+					Description: All attacks inflict Starblight on a critical strike. Gain Lifesteal on foes inflicted with Starblight. Healing is capped at 5 HP per second.
 					Unlock: "[c/9D9D9D:Locked:] Defeat the Moon Lord"
 				}
 
