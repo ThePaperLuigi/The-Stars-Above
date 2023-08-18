@@ -38,7 +38,7 @@ namespace StarsAbove.Buffs.BurningDesire
                 }
             }
             
-            if (player.HeldItem.ModItem is Items.BurningDesire)
+            if (player.HeldItem.ModItem is Items.Weapons.Melee.BurningDesire)
             {
 
             }

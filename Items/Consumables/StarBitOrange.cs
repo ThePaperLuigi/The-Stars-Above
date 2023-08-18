@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-
+using StarsAbove.Items.Weapons.Summon;
 
 namespace StarsAbove.Items.Consumables
 {

@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using StarsAbove.Items;
+using StarsAbove.Items; using StarsAbove.Items.Weapons; using StarsAbove.Items.Weapons.Summon; using StarsAbove.Items.Weapons.Ranged; using StarsAbove.Items.Weapons.Other; using StarsAbove.Items.Weapons.Celestial; using StarsAbove.Items.Weapons.Melee; using StarsAbove.Items.Weapons.Magic;
 using System;
 using Terraria;
 using Terraria.ID;

@@ -6,7 +6,7 @@ using Terraria.ID;
 using static Terraria.ModLoader.ModContent;
 using System;
 using StarsAbove.Buffs.Youmu;
-using StarsAbove.Items;
+using StarsAbove.Items; using StarsAbove.Items.Weapons; using StarsAbove.Items.Weapons.Summon; using StarsAbove.Items.Weapons.Ranged; using StarsAbove.Items.Weapons.Other; using StarsAbove.Items.Weapons.Celestial; using StarsAbove.Items.Weapons.Melee; using StarsAbove.Items.Weapons.Magic;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles.Youmu
