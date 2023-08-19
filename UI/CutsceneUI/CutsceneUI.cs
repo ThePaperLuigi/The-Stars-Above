@@ -30,70 +30,77 @@ namespace StarsAbove.UI.CutsceneUI
 			area = new UIElement();
 			area.Top.Set(0, 0f);
 			area.Left.Set(0, 0f);
-			area.Width.Set(Main.screenWidth, 0f);
-			area.Height.Set(Main.screenHeight, 0f);
+			area.Width.Set(Main.screenWidth, 1f);
+			area.Height.Set(Main.screenHeight, 1f);
 			area.HAlign = area.VAlign = 0.5f; // 1
 
 			edinGenesisQuasarTransition = new UIImage(Request<Texture2D>("StarsAbove/UI/CutsceneUI/EdinGenesisQuasarTransition"));
-			edinGenesisQuasarTransition.Width.Set(Main.screenWidth, 0f);
-			edinGenesisQuasarTransition.Height.Set(Main.screenHeight, 0f);
+			edinGenesisQuasarTransition.Width.Set(Main.screenWidth, 1f);
+			edinGenesisQuasarTransition.Height.Set(Main.screenHeight, 1f);
 
             edinGenesisQuasarVideo = new UIVideo(Request<Video>("StarsAbove/Video/EdinGenesisQuasar"))
             {
-                AllowResizingDimensions = true,
                 ScaleToFit = true,
                 WaitForStart = true,
                 DoLoop = false
             };
+            edinGenesisQuasarVideo.Width.Set(Main.screenWidth, 1f);
+            edinGenesisQuasarVideo.Height.Set(Main.screenHeight, 1f);
 
             nalhaunCutsceneVideo = new UIVideo(Request<Video>("StarsAbove/Video/NalhaunBossCutscene"))
             {
-                AllowResizingDimensions = true,
                 ScaleToFit = true,
                 WaitForStart = true,
                 DoLoop = false
-
             };
+            nalhaunCutsceneVideo.Width.Set(Main.screenWidth, 1f);
+            nalhaunCutsceneVideo.Height.Set(Main.screenHeight, 1f);
+
             tsukiCutsceneVideo = new UIVideo(Request<Video>("StarsAbove/Video/TsukiyomiBossCutscene"))
             {
-                AllowResizingDimensions = true,
                 ScaleToFit = true,
                 WaitForStart = true,
                 DoLoop = false
             };
+            tsukiCutsceneVideo.Width.Set(Main.screenWidth, 1f);
+            tsukiCutsceneVideo.Height.Set(Main.screenHeight, 1f);
+
             tsukiCutsceneVideo2 = new UIVideo(Request<Video>("StarsAbove/Video/TsukiyomiNovaCutscene"))
             {
-                AllowResizingDimensions = true,
                 ScaleToFit = true,
                 WaitForStart = true,
                 DoLoop = false
-                
             };
+            tsukiCutsceneVideo2.Width.Set(Main.screenWidth, 1f);
+            tsukiCutsceneVideo2.Height.Set(Main.screenHeight, 1f);
+
             warriorCutsceneVideo = new UIVideo(Request<Video>("StarsAbove/Video/WarriorIntroCutscene"))
             {
-                AllowResizingDimensions = true,
                 ScaleToFit = true,
                 WaitForStart = true,
                 DoLoop = false
-                
-
             };
+            warriorCutsceneVideo.Width.Set(Main.screenWidth, 1f);
+            warriorCutsceneVideo.Height.Set(Main.screenHeight, 1f);
+
             warriorCutsceneVideo2 = new UIVideo(Request<Video>("StarsAbove/Video/WarriorFinalPhaseCutscene"))
             {
-                AllowResizingDimensions = true,
                 ScaleToFit = true,
                 WaitForStart = true,
                 DoLoop = false
-
             };
+            warriorCutsceneVideo2.Width.Set(Main.screenWidth, 1f);
+            warriorCutsceneVideo2.Height.Set(Main.screenHeight, 1f);
+
             starfarerIntroVideo = new UIVideo(Request<Video>("StarsAbove/Video/StarfarerIntroCutscene"))
             {
-                AllowResizingDimensions = true,
                 ScaleToFit = true,
                 WaitForStart = true,
                 DoLoop = false
-
             };
+            starfarerIntroVideo.Width.Set(Main.screenWidth, 1f);
+            starfarerIntroVideo.Height.Set(Main.screenHeight, 1f);
+
             //area.Append(edinGenesisQuasarVideo);
             Append(area);
 		}
