@@ -239,6 +239,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 				{
 
 					AI_RotationNumber = 16;
+					NPC.netUpdate = true;
 				}
 				
 			}
@@ -898,10 +899,21 @@ namespace StarsAbove.NPCs.WarriorOfLight
 			if(NPC.localAI[0] == 0)
             {
 				Main.LocalPlayer.GetModPlayer<BossPlayer>().warriorCutsceneProgress = 10;
+				
+
 				NPC.position.X = Main.player[NPC.target].Center.X - 50;
 				NPC.position.Y = Main.player[NPC.target].position.Y - 160;
 			}
-			
+			if (!NPC.AnyNPCs(NPCType<WarriorWallsNPC>()))
+			{
+				int index = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<WarriorWallsNPC>(), NPC.whoAmI);
+
+
+				if (Main.netMode == NetmodeID.Server && index < Main.maxNPCs)
+				{
+					NetMessage.SendData(MessageID.SyncNPC, number: index);
+				}
+			}
 
 			NPC.netUpdate = true;
 			if (Main.netMode == NetmodeID.SinglePlayer)
