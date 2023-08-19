@@ -2255,7 +2255,11 @@ namespace StarsAbove.UI.Starfarers
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
 			// Calculate quotient
 			base.DrawSelf(spriteBatch);
+
+			UI.StarfarerMenu.StarfarerMenu.AdjustAreaBasedOnPlayerVelocity(ref area,30,100);
+
 			area.Top.Set(area.Top.Pixels - modPlayer.stellarArrayMoveIn, 0);
+
 			Rectangle hitbox = area.GetInnerDimensions().ToRectangle();
 			Rectangle hitbox2 = area.GetInnerDimensions().ToRectangle();
 			Rectangle starshowerArea = starshower.GetInnerDimensions().ToRectangle();

@@ -1195,6 +1195,7 @@ namespace StarsAbove.UI.CelestialCartography
 		protected override void DrawSelf(SpriteBatch spriteBatch) {
 			base.DrawSelf(spriteBatch);
 			var modPlayer = Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>();
+			UI.StarfarerMenu.StarfarerMenu.AdjustAreaBasedOnPlayerVelocity(ref area, 60,0);
 
 			Rectangle starmapHitbox = Starmap.GetInnerDimensions().ToRectangle();
 			Rectangle hitbox = CompassRegion.GetInnerDimensions().ToRectangle();
@@ -1893,8 +1894,8 @@ namespace StarsAbove.UI.CelestialCartography
 
 			CompassRegion.Top.Set(240 - modPlayer.locationDescriptionAlpha * 100 - modPlayer.quadraticFloat*4, 0);
 			GearRegion.Top.Set(350 - modPlayer.locationDescriptionAlpha * 100 - modPlayer.quadraticFloat*4, 0);
-			area.Left.Set(60, 0);
-			Starmap.Left.Set(80, 0);
+			//area.Left.Set(60, 0);
+			//Starmap.Left.Set(80, 0);
 			
 
 			TextboxRegion.Top.Set(250, 0);

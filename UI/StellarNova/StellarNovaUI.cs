@@ -990,6 +990,8 @@ namespace StarsAbove.UI.StellarNova
 			hoverText.Left.Set(Main.mouseX + 20, 0f); // Place the resource bar to the left of the hearts.
 			hoverText.Top.Set(Main.mouseY, 0f); // Placing it just a bit below the top of the screen.
 
+			UI.StarfarerMenu.StarfarerMenu.AdjustAreaBasedOnPlayerVelocity(ref area, 0,0);
+
 			Rectangle hitbox = area.GetInnerDimensions().ToRectangle();
 			Rectangle starfarer = starfarerPicture.GetInnerDimensions().ToRectangle();
 			starfarerPicture.Top.Set(-40,0f);
