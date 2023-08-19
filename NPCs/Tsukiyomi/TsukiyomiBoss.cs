@@ -208,10 +208,13 @@ namespace StarsAbove.NPCs.Tsukiyomi
 				if (NPC.life <= (NPC.lifeMax * 0.9) && AI_RotationNumber < 26) //At 80% HP, she transitions into Phase 2
 				{
 					AI_RotationNumber = 26;
+					NPC.netUpdate = true;
 				}
 				if (NPC.life <= (NPC.lifeMax * 0.5) && AI_RotationNumber < 54 && Main.expertMode) //At 50% HP in Expert Mode, she goes to Phase 3
 				{
 					AI_RotationNumber = 54;
+					NPC.netUpdate = true;
+
 				}
 			}
 			else if (AI_Timer >= AttackTimer) //An attack is active. (Temp 480, usually 120, or 2 seconds)
