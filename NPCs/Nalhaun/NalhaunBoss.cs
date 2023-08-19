@@ -725,8 +725,8 @@ namespace StarsAbove.NPCs.Nalhaun
 
 				if (!NPC.AnyNPCs(NPCType<NalhaunBossPhase2>()))
 				{
-					int index = NPC.NewNPC(null, (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<NalhaunBossPhase2>(), NPC.whoAmI);
-					int index2 = NPC.NewNPC(null, (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<NalhaunPhase2WallsNPC>(), NPC.whoAmI);
+					int index = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<NalhaunBossPhase2>(), NPC.whoAmI);
+					int index2 = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<NalhaunPhase2WallsNPC>(), NPC.whoAmI);
 
 
 					if (Main.netMode == NetmodeID.Server && index < Main.maxNPCs)
