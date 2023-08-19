@@ -2006,6 +2006,16 @@ Mods: {
 						}
 					}
 
+					2: {
+						Dialogue.0: This world is not the world your character originally came from and may have progression further than your own. Sync world progression to your character?
+
+						Choices: {
+							1: Sync progression from this world.
+							2: Do not sync progression.
+							3: Always sync progress, and don't ask again.
+						}
+					}
+
 					3: {
 						Dialogue: {
 							0: Greetings! I am Asphodene- a Starfarer, and in turn, that makes you my Starbearer.
@@ -3855,7 +3865,7 @@ Mods: {
 					'''
 					Critical strikes with this weapon will grant a stack of [c/F1AF42:Radiance] (Up to 10)
 					Right click with 5 stacks of [c/F1AF42:Radiance] to unleash the [c/F35B43:Radiant Soul], consuming all [c/F1AF42:Radiance]
-					When the [c/F35B43:Radiant Soul] is unleashed, gain 2 seconds of Invincibility
+					When the [c/F35B43:Radiant Soul] is unleashed, gain 1 second of Invincibility
 					The [c/F35B43:Radiant Soul] will deal powerful critical damage to nearby foes in a large radius
 					The [c/F35B43:Radiant Soul]'s damage is influenced by a portion of defense and current stacks of [c/F1AF42:Radiance]
 					Gaining [c/F1AF42:Radiance] past 10 stacks will instead grant Ironskin for 4 seconds
@@ -8174,6 +8184,11 @@ Mods: {
 					Use the item to grab items further away
 					'''
 				DisplayName: Poltergrasp 5000
+			}
+
+			GundbitStaves: {
+				DisplayName: Gundbit Staves
+				Tooltip: ""
 			}
 		}
 

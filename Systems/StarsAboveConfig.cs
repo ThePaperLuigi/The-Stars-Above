@@ -107,9 +107,9 @@ namespace StarsAbove
 		[Tooltip("$Mods.StarsAbove.Config.EnableMusicOverride.Tooltip")]
 		public bool EnableMusicOverride;
 
-		[Label("$Mods.StarsAbove.Config.EnablePlayerWorldLock.Label")]
-		[Tooltip("$Mods.StarsAbove.Config.EnablePlayerWorldLock.Tooltip")]
-		public bool EnablePlayerWorldLock;
+		//[Label("$Mods.StarsAbove.Config.EnablePlayerWorldLock.Label")]
+		//[Tooltip("$Mods.StarsAbove.Config.EnablePlayerWorldLock.Tooltip")]
+		//public bool EnablePlayerWorldLock;
 		/*
 		[Label("$Mods.StarsAbove.Config.EnableAprilFools.Label")]
 		[Tooltip("$Mods.StarsAbove.Config.EnableAprilFools.Tooltip")]
@@ -145,7 +145,6 @@ namespace StarsAbove
 			StarsAbovePlayer.voicesEnabled = EnableStarfarerVoices;
 			StarsAbovePlayer.dialogueScrollTimerMax = DialogueScrollValue;
 			StarsAbovePlayer.dialogueAudio = DialogueAudio;
-			StarsAbovePlayer.enableWorldLock = EnablePlayerWorldLock;
 			if (EnableMusicOverride)
             {
 				SceneEffects.SuistrumeAudio.setPriority = SceneEffectPriority.BossHigh + 1;

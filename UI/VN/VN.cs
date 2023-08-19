@@ -231,25 +231,20 @@ namespace StarsAbove.UI.VN
 			//Special stuff for the intro
 			if(modPlayer.sceneID == 0)
             {
-				Main.LocalPlayer.GetModPlayer<BossPlayer>().introCutsceneProgress = 3;
-				Main.LocalPlayer.GetModPlayer<BossPlayer>().VideoDuration = 360 + 3;
+                Main.LocalPlayer.GetModPlayer<BossPlayer>().introCutsceneProgress = 3;
+                Main.LocalPlayer.GetModPlayer<BossPlayer>().VideoDuration = 360 + 3;
 
-				modPlayer.VNDialogueActive = false;
-				modPlayer.VNDialogueChoiceActive = false;
-				modPlayer.sceneID = -1;
-				modPlayer.sceneProgression = 0;
-				modPlayer.sceneLength = 0;
-				modPlayer.dialogue = " ";
-				modPlayer.dialogueScrollTimer = 0;
-				modPlayer.dialogueScrollNumber = 0;
+                ResetVNDialogue(modPlayer);
+                return;
+            }
+			if (modPlayer.sceneID == 2)
+			{
+				modPlayer.SyncWorldProgress = true;
 
-				modPlayer.VNDialogueChoice1 = " ";
-				modPlayer.VNDialogueChoice2 = " ";
-				modPlayer.VNDialogueChoice3 = " ";
-
-				modPlayer.VNDialogueThirdOption = false;
+				ResetVNDialogue(modPlayer);
 				return;
 			}
+
 
 			modPlayer.dialogueScrollTimer = 0;
 			modPlayer.dialogueScrollNumber = 0;
@@ -261,11 +256,37 @@ namespace StarsAbove.UI.VN
 			modPlayer.VNDialogueChoiceActive = false;
 
 		}
-		private void DialogueOption2Click(UIMouseEvent evt, UIElement listeningElement)
+
+        private static void ResetVNDialogue(StarsAbovePlayer modPlayer)
+        {
+            modPlayer.VNDialogueActive = false;
+            modPlayer.VNDialogueChoiceActive = false;
+            modPlayer.sceneID = -1;
+            modPlayer.sceneProgression = 0;
+            modPlayer.sceneLength = 0;
+            modPlayer.dialogue = " ";
+            modPlayer.dialogueScrollTimer = 0;
+            modPlayer.dialogueScrollNumber = 0;
+
+            modPlayer.VNDialogueChoice1 = " ";
+            modPlayer.VNDialogueChoice2 = " ";
+            modPlayer.VNDialogueChoice3 = " ";
+
+            modPlayer.VNDialogueThirdOption = false;
+        }
+
+        private void DialogueOption2Click(UIMouseEvent evt, UIElement listeningElement)
 		{
 			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().VNDialogueChoiceActive))
 				return;
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			if (modPlayer.sceneID == 2)
+			{
+				modPlayer.SyncWorldProgress = false;
+
+				ResetVNDialogue(modPlayer);
+				return;
+			}
 			modPlayer.dialogueScrollTimer = 0;
 			modPlayer.dialogueScrollNumber = 0;
 			modPlayer.sceneID = (int)VNScenes.SetupVNSystem(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneID, Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneProgression)[5];
@@ -283,6 +304,13 @@ namespace StarsAbove.UI.VN
 			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().VNDialogueChoiceActive))
 				return;
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			if (modPlayer.sceneID == 2)
+			{
+				modPlayer.SyncWorldProgress = true;
+				modPlayer.AlwaysSyncWorldProgress = true;
+				ResetVNDialogue(modPlayer);
+				return;
+			}
 			modPlayer.dialogueScrollTimer = 0;
 			modPlayer.dialogueScrollNumber = 0;
 			modPlayer.sceneID = (int)VNScenes.SetupVNSystem(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneID, Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneProgression)[16];

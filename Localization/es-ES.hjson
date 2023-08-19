@@ -2006,6 +2006,16 @@ Mods: {
 						}
 					}
 
+					2: {
+						// Dialogue.0: This world is not the world your character originally came from and may have progression further than your own. Sync world progression to your character?
+
+						Choices: {
+							// 1: Sync progression from this world.
+							// 2: Do not sync progression.
+							// 3: Always sync progress, and don't ask again.
+						}
+					}
+
 					3: {
 						Dialogue: {
 							// 0: Greetings! I am Asphodene- a Starfarer, and in turn, that makes you my Starbearer.
@@ -8083,6 +8093,11 @@ Mods: {
 					Use the item to grab items further away
 					''' */
 				// DisplayName: Poltergrasp 5000
+			}
+
+			GundbitStaves: {
+				// DisplayName: Gundbit Staves
+				// Tooltip: ""
 			}
 		}
 

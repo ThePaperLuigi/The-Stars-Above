@@ -69,7 +69,8 @@ namespace StarsAbove
         public int firstJoinedWorld = 0;//Sets the world so progress doesn't get overwritten by joining other worlds.
         public string firstJoinedWorldName;
         public static bool enableWorldLock = false;
-
+        public bool SyncWorldProgress = false;
+        public bool AlwaysSyncWorldProgress = false;
        
 
         public static bool BossEnemySpawnModDisabled = false;
@@ -1283,6 +1284,8 @@ namespace StarsAbove
             tag["firstJoinedWorld"] = firstJoinedWorld;
             tag["firstJoinedWorldName"] = firstJoinedWorldName;
 
+            tag["AlwaysSync"] = AlwaysSyncWorldProgress;
+
             tag["seenIntroCutscene"] = seenIntroCutscene;
             base.SaveData(tag);
         }
@@ -1293,7 +1296,7 @@ namespace StarsAbove
 
             firstJoinedWorld = tag.GetInt("firstJoinedWorld");
             firstJoinedWorldName = tag.GetString("firstJoinedWorldName");
-
+            AlwaysSyncWorldProgress = tag.GetBool("AlwaysSync");
 
             chosenStarfarer = tag.GetInt("chosenStarfarer");
 
@@ -1644,36 +1647,38 @@ namespace StarsAbove
 
             }
 
-            if (Player.whoAmI == Main.myPlayer && enableWorldLock)
+            //If this is the first time a character has joined a world.
+            if (firstJoinedWorld == 0)
             {
-                if (firstJoinedWorld == 0)
-                {
-                    firstJoinedWorld = Main.worldID;
-                    firstJoinedWorldName = Main.worldName;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue($"{Player.name} has been binded to {Main.worldName}."), 220, 100, 247); }
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue($"The Stars Above progression will only occur on this world. (Check Mod Settings if necessary)"), 255, 126, 114); }
-
-                }
-                if (Main.worldID != firstJoinedWorld)
-                {
-                    if (firstJoinedWorldName != null)
-                    {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue($"{Player.name} has already been binded to {firstJoinedWorldName}. (World ID {firstJoinedWorld})"), 220, 100, 247); }
-
-                    }
-                    else
-                    {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue($"{Player.name} has already been binded to World ID {firstJoinedWorld}."), 220, 100, 247); }
-
-                    }
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue($"Disable the client-side configuration option 'Enable Player Progress World Lock' to enable The Stars Above progression on this world."), 255, 126, 114); }
-
-                }
-
-
-
+                firstJoinedWorld = Main.worldID;
+                firstJoinedWorldName = Main.worldName;    
             }
-           
+            //If the player has already joined a world...
+            if(firstJoinedWorld == Main.worldID) //If it's the same world, sync progress.
+            {
+                SyncWorldProgress = true;
+            }
+            else //If it's a different world, don't automatically sync progress.
+            {
+                SyncWorldProgress = false;
+            }
+            if (!AlwaysSyncWorldProgress)
+            {
+                //Prompt the player to sync progress or not.
+                if (chosenStarfarer != 0 && firstJoinedWorld != Main.worldID)
+                {
+                    sceneID = 2;
+                    VNDialogueActive = true;
+                }
+                return;
+            }
+            else
+            {
+                //If AlwaysSyncWorldProgress is true, ignore the check.
+                SyncWorldProgress = true;
+            }
+            
+            
             if (novaGaugeUnlocked)
             {
                 if(!affixItem1.IsAir && affixItem1.ModItem != null)
@@ -3185,8 +3190,9 @@ namespace StarsAbove
                 }
                 if ((bool)calamityMod.Call("GetBossDowned", "devourerofgods"))
                 {
-                    stellarGaugeMax++;
                     baseNovaDamageAdd = 27500;
+
+                    stellarGaugeMax++;
                     if (stellarGaugeUpgraded != 1)
                     {
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array reaches new heights!"), 255, 0, 115); }
@@ -3205,7 +3211,7 @@ namespace StarsAbove
         }
         private void StellarDiskDialogue()
         {
-            if (Main.worldID == firstJoinedWorld || !enableWorldLock)
+            if (SyncWorldProgress)
             {
                 /*  if (SubworldSystem.IsActive<Observatory>() && observatoryDialogue == 0)
                   {
