@@ -57,7 +57,7 @@ namespace StarsAbove.Items.Weapons.Melee
 			{
 				if (player.GetModPlayer<WeaponPlayer>().radiance >= 5)
 				{
-					player.AddBuff(BuffType<Buffs.Invincibility>(), 120);
+					player.AddBuff(BuffType<Buffs.Invincibility>(), 60);
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),new Vector2(player.Center.X, player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("ErinysFX").Type, 0, 0, player.whoAmI, 0, 1);
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, player.Center);
 
