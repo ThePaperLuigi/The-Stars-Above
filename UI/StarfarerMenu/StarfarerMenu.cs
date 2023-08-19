@@ -1535,7 +1535,7 @@ namespace StarsAbove.UI.StarfarerMenu
             AsphodeneBodyPosition = new Vector2(hitbox.X - 300, (hitbox.Y) - 325 + animationModPlayer.StarfarerMenuIdleMovement);
             AsphodeneEyeRightPosition = new Vector2(hitbox.X - 96 + animationModPlayer.AsphodeneEyeMovementRX, hitbox.Y - 118 + animationModPlayer.StarfarerMenuIdleMovement + animationModPlayer.AsphodeneEyeMovementY);
             AsphodeneEyeLeftPosition = new Vector2(hitbox.X - 96 + animationModPlayer.AsphodeneEyeMovementLX, hitbox.Y - 118 + animationModPlayer.StarfarerMenuIdleMovement + animationModPlayer.AsphodeneEyeMovementY);
-			int archiveMovement = 200;
+			int archiveMovement = 0;
 			if (archivePlayer.archiveActive)
             {
                 AsphodeneHeadPosition.X -= archiveMovement;
@@ -1595,7 +1595,7 @@ namespace StarsAbove.UI.StarfarerMenu
             EridaniBookPosition = new Vector2(hitbox.X - 126, hitbox.Y + 12 + animationModPlayer.StarfarerMenuHeadRotation / 2);
             EridaniArmsCrossedPosition = new Vector2(hitbox.X - 102, hitbox.Y - 42 + animationModPlayer.StarfarerMenuIdleMovement);
 			
-			int archiveMovement = 200;
+			int archiveMovement = 0;
 			if (archivePlayer.archiveActive)
             {
                 EridaniHeadPosition.X -= archiveMovement;
