@@ -9011,6 +9011,8 @@ Mods: {
 			// DraggedBelowFloodCorrupted.DisplayName: Dragged Below Flood Corrupted
 			// DraggedBelowFloodExplosion.DisplayName: Dragged Below Flood Explosion
 			// DraggedBelowFloodExplosionCorrupted.DisplayName: Dragged Below Flood Explosion Corrupted
+			// VagrantTrackingStar.DisplayName: Starmatter
+			// YoumuHeld.DisplayName: Youmu Held
 		}
 
 		Buffs: {

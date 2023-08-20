@@ -1325,7 +1325,7 @@ Mods: {
 
 				NormalIdleDialogue4: {
 					Asphodene: {
-						1: What is a 'Starfarer' you ask? Would you be suprised if I said I nearly no idea?
+						1: What is a 'Starfarer' you ask? Would you be suprised if I said I had nearly no idea?
 						2: We appear through summoning, and then... Well, our brother sent us off.
 						3: You know what? I don't even remember how or when I or Eri was summoned- isn't that strange?
 					}
@@ -5401,8 +5401,6 @@ Mods: {
 					Attacks fire quick long-ranged bullets
 					Proximity to hostile projectiles or enemies with contact damage grants the buff Death's Dance for 2 seconds
 					Death's Dance grants 30% increased damage
-					Right click to activate [c/A6F3C4:Phantom Slash], spinning the weapon around you for 3x base damage (8 second cooldown)
-					If Death's Dance is currently active, [c/A6F3C4:Phantom Slash] will do 6x base damage instead and grant Swiftness for 4 seconds
 					'If there is something I can't make clear, I try cutting it!'
 					'''
 				DisplayName: Konpaku Katana
@@ -9044,6 +9042,8 @@ Mods: {
 			DraggedBelowFloodCorrupted.DisplayName: Dragged Below Flood Corrupted
 			DraggedBelowFloodExplosion.DisplayName: Dragged Below Flood Explosion
 			DraggedBelowFloodExplosionCorrupted.DisplayName: Dragged Below Flood Explosion Corrupted
+			VagrantTrackingStar.DisplayName: Starmatter
+			YoumuHeld.DisplayName: Youmu Held
 		}
 
 		Buffs: {

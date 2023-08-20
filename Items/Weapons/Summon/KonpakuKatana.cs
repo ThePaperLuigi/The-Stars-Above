@@ -8,6 +8,7 @@ using StarsAbove.Items.Essences;
 using System;
 using StarsAbove.Projectiles.Youmu;
 using StarsAbove.Buffs.Youmu;
+using Terraria.GameContent.Drawing;
 
 namespace StarsAbove.Items.Weapons.Summon
 {
@@ -35,8 +36,9 @@ namespace StarsAbove.Items.Weapons.Summon
 			Item.height = 20;
 			Item.useTime = 15;
 			Item.useAnimation = 15;
-			Item.useStyle = 5;
+			Item.useStyle = ItemUseStyleID.HiddenAnimation;
 			Item.noMelee = true; //so the item's animation doesn't do damage
+			Item.noUseGraphic = true;
 			Item.knockBack = 4;
 			Item.rare = ItemRarityID.Green;
 			Item.autoReuse = true;
@@ -45,10 +47,6 @@ namespace StarsAbove.Items.Weapons.Summon
 			Item.shootSpeed = 16f;
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
 		}
-		public override bool AltFunctionUse(Player player)
-		{
-			return true;
-		}
 		public override void HoldItem(Player player)
 		{
 			if (player.ownedProjectileCounts[ProjectileType<YoumuSpirit>()] < 1)
@@ -56,6 +54,7 @@ namespace StarsAbove.Items.Weapons.Summon
 				player.AddBuff(BuffType<PhantomMinion>(), 999);
 				
 				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<YoumuSpirit>(), Item.damage, 4, player.whoAmI, 0f);
+				//Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<YoumuHeld>(), 0, 0, player.whoAmI, 0f);
 
 
 				Main.projectile[index].originalDamage = Item.damage;
@@ -158,24 +157,11 @@ namespace StarsAbove.Items.Weapons.Summon
 			{
 				position += muzzleOffset;
 			}
-			if (player.altFunctionUse == 2)
-			{
-				player.AddBuff(BuffType<YoumuCooldown>(), 480);
-				type = ProjectileType<Projectiles.Youmu.YoumuSpin>();
-				damage *= 3;
-				if(player.HasBuff(BuffType<DeathsDance>()))
-                {
-					damage *= 2;
-					player.AddBuff(BuffID.Swiftness, 240);
-                }
-			}
-			else
-			{
-				
-			}
-
+			
 			int index = Projectile.NewProjectile(source, position, velocity, type, Item.damage, 4, player.whoAmI, 0f);
-
+			ParticleOrchestraSettings particleOrchestraSettings = default(ParticleOrchestraSettings);
+			particleOrchestraSettings.PositionInWorld = position;
+			ParticleOrchestrator.RequestParticleSpawn(false, ParticleOrchestraType.Excalibur, particleOrchestraSettings, player.whoAmI);
 
 			Main.projectile[index].originalDamage = Item.damage;
 			return false;
