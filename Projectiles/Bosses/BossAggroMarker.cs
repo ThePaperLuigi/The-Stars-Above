@@ -38,7 +38,11 @@ namespace StarsAbove.Projectiles.Bosses
 			
 		}
 
-
+		public override Color? GetAlpha(Color lightColor)
+		{
+			//Fullbright projectile
+			return Color.White;
+		}
 		int idlePause;
 		bool floatUpOrDown; //false is Up, true is Down
 		public override void AI()
@@ -46,7 +50,7 @@ namespace StarsAbove.Projectiles.Bosses
 			Projectile.timeLeft = 10;
 			Player projOwner = Main.player[Projectile.owner];
 			Projectile.scale = 1f;
-			if (projOwner.dead && !projOwner.active || projOwner.GetModPlayer<BossPlayer>().hasBossAggro <= 0)
+			if ((projOwner.dead && !projOwner.active) || projOwner.GetModPlayer<BossPlayer>().hasBossAggro <= 0)
 			{
 				Projectile.alpha += 10;
 			}
