@@ -1646,42 +1646,10 @@ namespace StarsAbove
                 SubworldSystem.noReturn = false; //Fix missing save and quit bug? As of 8/9/23 this is still relevant (just found that out the fun way)
 
             }
-
-            //If this is the first time a character has joined a world.
-            if (firstJoinedWorld == 0)
-            {
-                firstJoinedWorld = Main.worldID;
-                firstJoinedWorldName = Main.worldName;    
-            }
-            //If the player has already joined a world...
-            if(firstJoinedWorld == Main.worldID) //If it's the same world, sync progress.
-            {
-                SyncWorldProgress = true;
-            }
-            else //If it's a different world, don't automatically sync progress.
-            {
-                SyncWorldProgress = false;
-            }
-            if (!AlwaysSyncWorldProgress)
-            {
-                //Prompt the player to sync progress or not.
-                if (chosenStarfarer != 0 && firstJoinedWorld != Main.worldID)
-                {
-                    sceneID = 2;
-                    VNDialogueActive = true;
-                }
-                return;
-            }
-            else
-            {
-                //If AlwaysSyncWorldProgress is true, ignore the check.
-                SyncWorldProgress = true;
-            }
-            
-            
+            //Load the equipment.
             if (novaGaugeUnlocked)
             {
-                if(!affixItem1.IsAir && affixItem1.ModItem != null)
+                if (!affixItem1.IsAir && affixItem1.ModItem != null)
                 {
                     StellarNovaUI._affixSlot1.Item = affixItem1;
                     affix1 = affixItem1.Name;
@@ -1717,6 +1685,39 @@ namespace StarsAbove
             {
 
             }
+            //If this is the first time a character has joined a world.
+            if (firstJoinedWorld == 0)
+            {
+                firstJoinedWorld = Main.worldID;
+                firstJoinedWorldName = Main.worldName;    
+            }
+            //If the player has already joined a world...
+            if(firstJoinedWorld == Main.worldID) //If it's the same world, sync progress.
+            {
+                SyncWorldProgress = true;
+            }
+            else //If it's a different world, don't automatically sync progress.
+            {
+                SyncWorldProgress = false;
+            }
+            if (!AlwaysSyncWorldProgress)
+            {
+                //Prompt the player to sync progress or not.
+                if (chosenStarfarer != 0 && firstJoinedWorld != Main.worldID)
+                {
+                    sceneID = 2;
+                    VNDialogueActive = true;
+                }
+                return;
+            }
+            else
+            {
+                //If AlwaysSyncWorldProgress is true, ignore the check.
+                SyncWorldProgress = true;
+            }
+            
+            
+            
 
 
 
