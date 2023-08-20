@@ -92,6 +92,31 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				SoundEngine.PlaySound(SoundID.Item1, npc.Center);
 				//Charge towards the target player.
+
+				if (Main.netMode != NetmodeID.MultiplayerClient && Main.expertMode)
+				{
+					float Speed = 7f;  //projectile speed
+					Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
+					int damage = npc.damage;  //projectile damage
+					int type = ProjectileType<VagrantTrackingStar>(); //Type of projectile
+
+					float rotation = 0f;
+					Vector2 velocity = new Vector2((float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1));
+					//Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, 0, 0, ProjectileType<TsukiMoonlightSwing>(), 0, 0, Main.myPlayer);
+
+
+					float numberProjectiles = 4;
+					float adjustedRotation = MathHelper.ToRadians(180);
+
+					for (int i = 0; i < numberProjectiles; i++)
+					{
+						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
+						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, perturbedSpeed.X * 5, perturbedSpeed.Y * 5, type, damage, 0, Main.myPlayer);
+					}
+
+
+				}
+
 				Vector2 vector8 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
 				{
 					float rotation = (float)Math.Atan2((vector8.Y) - (Main.player[npc.target].position.Y + (Main.player[npc.target].height * 0.5f)), (vector8.X) - (Main.player[npc.target].position.X + (Main.player[npc.target].width * 0.5f)));
@@ -99,11 +124,8 @@ namespace StarsAbove.NPCs.AttackLibrary
 					npc.velocity.Y = (float)(Math.Sin(rotation) * 32) * -1;
 				}
 
-				if (Main.netMode != NetmodeID.MultiplayerClient)
-				{
-					
-
-				}
+				
+				
 				npc.netUpdate = true;
 				#endregion
 
@@ -215,17 +237,9 @@ namespace StarsAbove.NPCs.AttackLibrary
 					}
 
 
-					/*Projectile.NewProjectile(npc.GetSource_FromAI(), 
-						StartPosition.X, 
-						StartPosition.Y, 
-						(float)((Math.Cos(rotation) * Speed) * -1), 
-						(float)((Math.Sin(rotation) * Speed) * -1), 
-						type, 
-						damage, 
-						0f, 
-						Main.myPlayer);*/
+					
 				}
-
+				
 
 				#endregion
 
@@ -339,7 +353,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 						0f, 
 						Main.myPlayer);*/
 				}
-
+				
 
 				#endregion
 
@@ -541,7 +555,29 @@ namespace StarsAbove.NPCs.AttackLibrary
 					}
 
 				}
+				if (Main.netMode != NetmodeID.MultiplayerClient && Main.expertMode)
+				{
+					float Speed = 7f;  //projectile speed
+					Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
+					int damage = npc.damage;  //projectile damage
+					int type = ProjectileType<VagrantTrackingStar>(); //Type of projectile
 
+					float rotation = 0f;
+					Vector2 velocity = new Vector2((float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1));
+					//Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, 0, 0, ProjectileType<TsukiMoonlightSwing>(), 0, 0, Main.myPlayer);
+
+
+					float numberProjectiles = 6;
+					float adjustedRotation = MathHelper.ToRadians(180);
+
+					for (int i = 0; i < numberProjectiles; i++)
+					{
+						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
+						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, perturbedSpeed.X * 5, perturbedSpeed.Y * 5, type, damage, 0, Main.myPlayer);
+					}
+
+
+				}
 
 				#endregion
 
@@ -637,7 +673,29 @@ namespace StarsAbove.NPCs.AttackLibrary
 					}
 
 				}
+				if (Main.netMode != NetmodeID.MultiplayerClient && Main.expertMode)
+				{
+					float Speed = 7f;  //projectile speed
+					Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
+					int damage = npc.damage;  //projectile damage
+					int type = ProjectileType<VagrantTrackingStar>(); //Type of projectile
 
+					float rotation = 0f;
+					Vector2 velocity = new Vector2((float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1));
+					//Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, 0, 0, ProjectileType<TsukiMoonlightSwing>(), 0, 0, Main.myPlayer);
+
+
+					float numberProjectiles = 6;
+					float adjustedRotation = MathHelper.ToRadians(180);
+
+					for (int i = 0; i < numberProjectiles; i++)
+					{
+						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
+						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, perturbedSpeed.X * 5, perturbedSpeed.Y * 5, type, damage, 0, Main.myPlayer);
+					}
+
+
+				}
 
 				#endregion
 
@@ -723,7 +781,29 @@ namespace StarsAbove.NPCs.AttackLibrary
 					}
 
 				}
+				if (Main.netMode != NetmodeID.MultiplayerClient && Main.expertMode)
+				{
+					float Speed = 7f;  //projectile speed
+					Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
+					int damage = npc.damage;  //projectile damage
+					int type = ProjectileType<VagrantTrackingStar>(); //Type of projectile
 
+					float rotation = 0f;
+					Vector2 velocity = new Vector2((float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1));
+					//Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, 0, 0, ProjectileType<TsukiMoonlightSwing>(), 0, 0, Main.myPlayer);
+
+
+					float numberProjectiles = 6;
+					float adjustedRotation = MathHelper.ToRadians(180);
+
+					for (int i = 0; i < numberProjectiles; i++)
+					{
+						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
+						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, perturbedSpeed.X * 5, perturbedSpeed.Y * 5, type, damage, 0, Main.myPlayer);
+					}
+
+
+				}
 
 				#endregion
 
@@ -809,7 +889,29 @@ namespace StarsAbove.NPCs.AttackLibrary
 					}
 
 				}
+				if (Main.netMode != NetmodeID.MultiplayerClient && Main.expertMode)
+				{
+					float Speed = 7f;  //projectile speed
+					Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
+					int damage = npc.damage;  //projectile damage
+					int type = ProjectileType<VagrantTrackingStar>(); //Type of projectile
 
+					float rotation = 0f;
+					Vector2 velocity = new Vector2((float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1));
+					//Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, 0, 0, ProjectileType<TsukiMoonlightSwing>(), 0, 0, Main.myPlayer);
+
+
+					float numberProjectiles = 6;
+					float adjustedRotation = MathHelper.ToRadians(180);
+
+					for (int i = 0; i < numberProjectiles; i++)
+					{
+						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
+						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, perturbedSpeed.X * 5, perturbedSpeed.Y * 5, type, damage, 0, Main.myPlayer);
+					}
+
+
+				}
 
 				#endregion
 
@@ -880,7 +982,29 @@ namespace StarsAbove.NPCs.AttackLibrary
 					
 
 				}
+				if (Main.netMode != NetmodeID.MultiplayerClient && Main.expertMode)
+				{
+					float Speed = 7f;  //projectile speed
+					Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
+					int damage = npc.damage;  //projectile damage
+					int type = ProjectileType<VagrantTrackingStar>(); //Type of projectile
 
+					float rotation = 0f;
+					Vector2 velocity = new Vector2((float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1));
+					//Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, 0, 0, ProjectileType<TsukiMoonlightSwing>(), 0, 0, Main.myPlayer);
+
+
+					float numberProjectiles = 4;
+					float adjustedRotation = MathHelper.ToRadians(180);
+
+					for (int i = 0; i < numberProjectiles; i++)
+					{
+						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
+						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, perturbedSpeed.X * 5, perturbedSpeed.Y * 5, type, damage, 0, Main.myPlayer);
+					}
+
+
+				}
 
 				#endregion
 
