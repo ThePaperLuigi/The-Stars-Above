@@ -89,15 +89,37 @@ namespace StarsAbove.Items.Weapons.Other
 		public override void AddRecipes()
 		{
 			
-				CreateRecipe(1)
-
+			CreateRecipe(1)
 				.AddIngredient(ItemID.Wood, 8)
 				.AddIngredient(ItemID.Gravestone)
 				.AddIngredient(ItemType<EssenceOfOffseeing>())
 				.AddTile(TileID.Anvils)
 				.Register();
-			
-			
+			CreateRecipe(1)
+				.AddIngredient(ItemID.Wood, 8)
+				.AddIngredient(ItemID.Tombstone)
+				.AddIngredient(ItemType<EssenceOfOffseeing>())
+				.AddTile(TileID.Anvils)
+				.Register();
+			CreateRecipe(1)
+				.AddIngredient(ItemID.Wood, 8)
+				.AddIngredient(ItemID.CrossGraveMarker)
+				.AddIngredient(ItemType<EssenceOfOffseeing>())
+				.AddTile(TileID.Anvils)
+				.Register();
+			CreateRecipe(1)
+				.AddIngredient(ItemID.Wood, 8)
+				.AddIngredient(ItemID.Headstone)
+				.AddIngredient(ItemType<EssenceOfOffseeing>())
+				.AddTile(TileID.Anvils)
+				.Register();
+			CreateRecipe(1)
+				.AddIngredient(ItemID.Wood, 8)
+				.AddIngredient(ItemID.Obelisk)
+				.AddIngredient(ItemType<EssenceOfOffseeing>())
+				.AddTile(TileID.Anvils)
+				.Register();
+
 		}
 	}
 
