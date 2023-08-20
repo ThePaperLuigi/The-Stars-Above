@@ -51,7 +51,7 @@ namespace StarsAbove.Projectiles.ShockAndAwe
 				}
 
 			}
-			
+			Projectile.netUpdate = true;
 
 			Projectile.ai[0] += 1f;
 
