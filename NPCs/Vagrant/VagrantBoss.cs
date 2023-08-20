@@ -133,6 +133,17 @@ namespace StarsAbove.NPCs.Vagrant
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
 			NPC.netAlways = true;
 		}
+
+        public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)
+        {
+			if(Main.expertMode)
+            {
+				NPC.lifeMax += (int)(numPlayers * 900);
+
+			}
+
+			base.ApplyDifficultyAndPlayerScaling(numPlayers, balance, bossAdjustment);
+        }
         public override bool CanHitPlayer(Player target, ref int cooldownSlot)
         {
 			return false;
