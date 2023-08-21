@@ -2225,7 +2225,7 @@ namespace StarsAbove
             }
             if (proj.type == ProjectileType<BuryTheLightSlash2>())
             {
-                if (Main.netMode != NetmodeID.MultiplayerClient)
+                if (proj.owner == Player.whoAmI)
                 {
                     if(!target.boss && target.CanBeChasedBy())
                     {

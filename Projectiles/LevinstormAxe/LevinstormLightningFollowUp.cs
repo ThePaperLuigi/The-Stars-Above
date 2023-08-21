@@ -171,7 +171,7 @@ namespace StarsAbove.Projectiles.LevinstormAxe
 				Projectile.localAI[0] += spinningpoint7.X * (float)(Projectile.extraUpdates + 1) * 2f * num803;
 				Projectile.velocity = spinningpoint7.RotatedBy(Projectile.ai[0] + (float)Math.PI / 2f) * num803;
 				Projectile.rotation = Projectile.velocity.ToRotation() + (float)Math.PI / 2f;
-				if (Main.rand.Next(4) == 0 && Main.netMode != NetmodeID.MultiplayerClient && Projectile.localAI[1] == 0f)
+				if (Main.rand.Next(4) == 0 && Projectile.owner == Main.myPlayer && Projectile.localAI[1] == 0f)
 				{
 					float num806 = (float)Main.rand.Next(-3, 4) * ((float)Math.PI / 3f) / 3f;
 					Vector2 vector63 = Projectile.ai[0].ToRotationVector2().RotatedBy(num806) * Projectile.velocity.Length();

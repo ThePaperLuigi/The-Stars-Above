@@ -7989,7 +7989,7 @@ Mods: {
 
 			QuantumButterflyBody: {
 				DisplayName: Quantum Butterfly Garb
-				Tooltip: "'This is getting troublesome..."
+				Tooltip: "'This is getting troublesome...'"
 			}
 
 			QuantumButterflyLegs: {
@@ -8004,7 +8004,7 @@ Mods: {
 
 			BaselessBladeLegs: {
 				DisplayName: Baseless Blade Leggings
-				Tooltip: "'I think it's time to retire'"
+				Tooltip: ""
 			}
 
 			ReprintedBlueprint: {

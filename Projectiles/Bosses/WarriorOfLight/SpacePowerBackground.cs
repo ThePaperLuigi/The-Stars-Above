@@ -47,7 +47,7 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 		{
 			if(firstSpawn)
             {
-				if(Main.netMode != NetmodeID.MultiplayerClient)
+				if(Projectile.owner == Main.myPlayer)
 				{
 					Projectile.timeLeft = (int)(Projectile.ai[2] + 60);
 					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<SpacePowerBorder>(), 0, 0, Main.player[Projectile.owner].whoAmI,0,0,Projectile.timeLeft);

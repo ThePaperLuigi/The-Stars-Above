@@ -60,7 +60,7 @@ namespace StarsAbove.Projectiles.StellarNovas.GuardiansLight
 			Player projOwner = Main.player[Projectile.owner];
 			if(hit.Crit)
             {
-				if (Main.netMode != NetmodeID.MultiplayerClient)
+				if (Projectile.owner == Main.myPlayer)
 				{
 					
 					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<GoldenGunExplosion>(), Projectile.damage, 0, Main.player[Projectile.owner].whoAmI);

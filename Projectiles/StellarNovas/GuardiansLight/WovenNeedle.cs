@@ -111,7 +111,7 @@ namespace StarsAbove.Projectiles.StellarNovas.GuardiansLight
 			{
 				Dust.NewDust(new Vector2(Projectile.Center.X, Projectile.Center.Y), 0, 0, DustID.FireworkFountain_Green, 0f + Main.rand.Next(-3, 3), 0f + Main.rand.Next(-3, 3), 150, default(Color), 0.6f);
 			}
-			if (Main.netMode != NetmodeID.MultiplayerClient)
+			if (Projectile.owner == Main.myPlayer)
 			{
 				Vector2 vel = new Vector2(Main.rand.NextFloat(-3, 3), Main.rand.NextFloat(-6, -12));
 				Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, vel, ModContent.ProjectileType<Threadling>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, 1);

@@ -60,21 +60,17 @@ namespace StarsAbove.Items.Accessories
                     {
 						target.StrikeNPC(hit);
 						NetMessage.SendStrikeNPC(target, hit);
-						if (Main.netMode != NetmodeID.MultiplayerClient)
-						{
-							Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(target.Center.X, target.Center.Y - target.height - 10), Vector2.Zero, ProjectileType<LamentClashWin>(), 0, 0, Player.whoAmI);
-						}
+						Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(target.Center.X, target.Center.Y - target.height - 10), Vector2.Zero, ProjectileType<LamentClashWin>(), 0, 0, Player.whoAmI);
+
 					}
 					else
                     {
 						Player.AddBuff(BuffType<Vulnerable>(), 180);
-						if (Main.netMode != NetmodeID.MultiplayerClient)
-						{
-							Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(target.Center.X, target.Center.Y - target.height - 10), Vector2.Zero, ProjectileType<LamentClashLose>(), 0, 0, Player.whoAmI);
-						}
+						Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(target.Center.X, target.Center.Y - target.height - 10), Vector2.Zero, ProjectileType<LamentClashLose>(), 0, 0, Player.whoAmI);
+
 					}
-					
-                }
+
+				}
 				//Spawn coin on enemy to signify
 				
 

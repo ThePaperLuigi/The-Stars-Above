@@ -129,7 +129,7 @@ namespace StarsAbove.Projectiles.StellarNovas.GuardiansLight
 
 		public override void Kill(int timeLeft)
 		{
-			if (Main.netMode != NetmodeID.MultiplayerClient)
+			if (Projectile.owner == Main.myPlayer)
 			{
 				Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<NovaBombExplosion>(), Projectile.damage, 0, Main.player[Projectile.owner].whoAmI);
 			}

@@ -119,7 +119,7 @@ namespace StarsAbove.Projectiles.StellarNovas.GuardiansLight
 			SoundEngine.PlaySound(StarsAboveAudio.SFX_SilenceSquall1, Projectile.Center);
 
 			projOwner.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -95;
-			if (Main.netMode != NetmodeID.MultiplayerClient)
+			if (Projectile.owner == Main.myPlayer)
 			{
 
 				Projectile.NewProjectile(projOwner.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<SilenceSquallDamageField>(), Projectile.damage, 0, Main.player[Projectile.owner].whoAmI);
