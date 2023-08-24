@@ -8185,8 +8185,18 @@ Mods: {
 			}
 
 			GundbitStaves: {
-				DisplayName: Gundbit Staves
-				Tooltip: ""
+				DisplayName: Gund-bit Siege
+				Tooltip:
+					'''
+					Holding this weapon summons [Bit Staves] and grants [Aerial Defensive Array], granting bonus defense based on current Mana (up to 10)
+					Attacks with this weapon fire piercing lasers and cause the [Bit Staves] to attack centered on your cursor
+					Allies near the [Bit Staves] will also gain the effects of [Aerial Defensive Array]'s defense increase
+					Right click to recall all [Bit Staves] to form a defensive shield for 5 seconds (20 second cooldown)
+					During this time, the shield will follow your cursor and destroy all hostile projectiles while additionally magnifing the effect of [Aerial Defensive Array] by 50%
+					Press the Weapon Action Key to recall all [Bit Staves], transforming the weapon after a short delay (20 second cooldown)
+					When the weapon is transformed, the next attack will be a powerful sustained beam for 3 seconds that deals bonus damage based on current Mana (up to 30%)
+					Only one effect that utilizes the [Bit Staves] can be active at a time
+					'''
 			}
 		}
 
@@ -9044,6 +9054,7 @@ Mods: {
 			DraggedBelowFloodExplosionCorrupted.DisplayName: Dragged Below Flood Explosion Corrupted
 			VagrantTrackingStar.DisplayName: Starmatter
 			YoumuHeld.DisplayName: Youmu Held
+			GundbitGunUncharged.DisplayName: Gundbit Gun Uncharged
 		}
 
 		Buffs: {
