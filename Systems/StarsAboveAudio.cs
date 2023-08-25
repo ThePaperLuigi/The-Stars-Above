@@ -709,6 +709,10 @@ namespace StarsAbove
 		#endregion
 
 		#region Weapon Sound Effects
+		public static readonly SoundStyle SFX_GundamLaser = new($"{nameof(StarsAbove)}/Sounds/SFX/GundamLaser")
+		{
+
+		};
 		public static readonly SoundStyle SFX_ShockAndAweRocket = new($"{nameof(StarsAbove)}/Sounds/SFX/ShockAndAweRocket")
 		{
 

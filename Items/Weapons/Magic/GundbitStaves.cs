@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs;
+using StarsAbove.Buffs.Gundbits;
 using StarsAbove.Buffs.RedMage;
 using StarsAbove.Items.Essences;
 using StarsAbove.Items.Prisms;
@@ -32,8 +33,8 @@ namespace StarsAbove.Items.Weapons.Magic
 			Item.DamageType = DamageClass.Magic;          //Is your weapon a melee weapon?
 			Item.width = 52;            //Weapon's texture's width
 			Item.height = 52;           //Weapon's texture's height
-			Item.useTime = 35;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
-			Item.useAnimation = 35;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
+			Item.useTime = 45;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
+			Item.useAnimation = 45;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
 			Item.useStyle = ItemUseStyleID.Shoot;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
 			//item.knockback = 12;         //The force of knockback of the weapon. Maximum is 20
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
@@ -42,8 +43,8 @@ namespace StarsAbove.Items.Weapons.Magic
 			Item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
 			Item.noUseGraphic = true;
 			Item.noMelee = true;
-			Item.shoot = 1;
-			Item.shootSpeed = 14;
+			Item.shoot = ProjectileID.WoodenArrowFriendly;
+			Item.shootSpeed = 35;
 			Item.mana = 18;
 		}
 		int stabTimer;
@@ -71,8 +72,18 @@ namespace StarsAbove.Items.Weapons.Magic
 			Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
 			Vector2 arrowVelocity = direction * launchSpeed;
 			Vector2 perturbedSpeed = new Vector2(arrowVelocity.X, arrowVelocity.Y).RotatedByRandom(MathHelper.ToRadians(25));
-			player.AddBuff(BuffType<RedMageHeldBuff>(), 10);
+			player.AddBuff(BuffType<AerialDefensiveArray>(), 10);
 			
+			if(player.ownedProjectileCounts[ProjectileType<Gundbits>()] < 1 && player.whoAmI == Main.myPlayer)
+            {
+				//Spawn 11 bit staves each with a unique iD
+				for(int i = 0; i < 11; i++)
+                {
+					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Gundbits>(), player.GetWeaponDamage(Item), 0, player.whoAmI, 0f,Main.rand.Next(0,360),i);
+
+				}
+			}
+
 			//player.GetModPlayer<WeaponPlayer>().blackMana--;
 			//player.GetModPlayer<WeaponPlayer>().whiteMana--;
 			base.HoldItem(player);
@@ -93,33 +104,26 @@ namespace StarsAbove.Items.Weapons.Magic
 			
 			if (player.altFunctionUse == 2)
 			{
+				player.AddBuff(BuffType<GundbitBeamAttack>(), 3 * 60);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<GundbitGunCharged>(), damage, 0, player.whoAmI, 0f);
+				SoundEngine.PlaySound(SoundID.DD2_DefenseTowerSpawn, player.Center);
 
-				
+				//Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileType<GundbitUnchargedLaser>(), damage, 0, player.whoAmI, 0f);
+
 			}
 			else
 			{
 				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<GundbitGunUncharged>(), 0, 0, player.whoAmI, 0f);
 				SoundEngine.PlaySound(SoundID.Item125, player.Center);
 
-				//Projectile.NewProjectile(source, player.GetModPlayer<StarsAbovePlayer>().playerMousePos.X, player.GetModPlayer<StarsAbovePlayer>().playerMousePos.Y, 0, 0, ProjectileType<Verholy>(), damage, 0, player.whoAmI, 0f);
+				Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileType<GundbitUnchargedLaser>(), damage, 0, player.whoAmI, 0f);
 			}
 			return false;
 		}
 
 		public override void AddRecipes()
 		{
-			/*
-			CreateRecipe(1)
-				.AddIngredient(ItemType<PrismaticCore>(), 5)
-				.AddIngredient(ItemID.SoulofNight, 15)
-				.AddIngredient(ItemID.SoulofLight, 15)
-				.AddIngredient(ItemID.DarkShard, 1)
-				.AddIngredient(ItemID.LightShard, 1)
-				.AddIngredient(ItemID.Ruby, 7)
-				.AddIngredient(ItemID.ManaCrystal, 3)
-				.AddIngredient(ItemType<EssenceOfBalance>())
-				.AddTile(TileID.Anvils)
-				.Register();*/
+			
 		}
 	}
 }

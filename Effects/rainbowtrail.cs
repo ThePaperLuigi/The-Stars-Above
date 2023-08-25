@@ -576,7 +576,7 @@ namespace StarsAbove.Effects
 		{
 			MiscShaderData miscShaderData = GameShaders.Misc["RainbowRod"];
 			miscShaderData.UseSaturation(-2.8f);
-			miscShaderData.UseOpacity(4f);
+			miscShaderData.UseOpacity(proj.scale);
 			miscShaderData.Apply();
 			_vertexStrip.PrepareStripWithProceduralPadding(proj.oldPos, proj.oldRot, StripColors, StripWidth, -Main.screenPosition + proj.Size / 2f);
 			_vertexStrip.DrawTrail();

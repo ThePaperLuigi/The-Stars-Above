@@ -279,6 +279,12 @@ namespace StarsAbove
         //Key of the Sinner
         public bool SatanaelMinion = false;
 
+        //Gundbits
+        public bool GundbitsActive = false;
+
+        //For all guns
+        public Vector2 MuzzlePosition;
+
         //Vermilion Riposte
         public int blackMana;
         public int whiteMana;
@@ -3636,6 +3642,7 @@ namespace StarsAbove
             starblessedCooldown--;
             RobotSpiderMinion = false;
             SatanaelMinion = false;
+            GundbitsActive = false;
             AlucardSwordMinion1 = false;
             AlucardSwordMinion2 = false;
             AlucardSwordMinion3 = false;
