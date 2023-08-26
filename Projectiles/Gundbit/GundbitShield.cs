@@ -16,9 +16,9 @@ using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.Gundbit
 {
-    public class GundbitGunCharged : StarsAboveGun
+    public class GundbitShield : StarsAboveGun
 	{
-		public override string Texture => "StarsAbove/Projectiles/Gundbit/GundbitGunUncharged";
+		public override string Texture => "StarsAbove/Projectiles/Gundbit/Shield0";
 		public override string TextureFlash => "StarsAbove/Projectiles/Gundbit/GundbitGunUnchargedFlash";
 		//Use the extra recoil/reload code.
 		public override bool UseRecoil => false;
@@ -40,8 +40,8 @@ namespace StarsAbove.Projectiles.Gundbit
 		}
 		public override void SetDefaults()
 		{
-			Projectile.width = 180;
-			Projectile.height = 64;
+			Projectile.width = 34;
+			Projectile.height = 90;
 
 			Projectile.ignoreWater = true;
 			Projectile.tileCollide = false;
@@ -65,26 +65,44 @@ namespace StarsAbove.Projectiles.Gundbit
         {
 			Player projOwner = Main.player[Projectile.owner];
 
-			TransformationProgress += 0.02f;
+			TransformationProgress += 0.06f;
 
 			if (TransformationProgress >= 1f && projOwner.whoAmI == Main.myPlayer && projOwner.ownedProjectileCounts[ProjectileType<GundbitLaser>()] < 1)
 			{
-				for (int d = 0; d < 15; d++)
-				{
-					int dustIndex = Dust.NewDust(Projectile.Center, 0, 0, DustID.MinecartSpark, 0f + Main.rand.Next(-2, 2), 0f + Main.rand.Next(-2, 2), 0, default(Color), 1f);
-					Main.dust[dustIndex].noGravity = true;
-				}
-				int index = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ModContent.ProjectileType<GundbitLaser>(), (int)(Projectile.damage), 0f, projOwner.whoAmI);
-				projOwner.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
-				SoundEngine.PlaySound(StarsAboveAudio.SFX_GundamLaser, Projectile.Center);
 
 			}
 			if (TransformationProgress >= 1f)
 			{
-				
+				Projectile closest = null;
+				float closestDistance = 9999999;
+				for (int i = 0; i < Main.maxProjectiles; i++)
+				{
+					Projectile projectile = Main.projectile[i];
+					float distance = Vector2.Distance(projectile.Center, projOwner.Center);
+
+
+					if (projectile.hostile && projectile.Distance(projOwner.position) < closestDistance && projectile.damage > 0)
+					{
+						closest = projectile;
+						closestDistance = projectile.Distance(projOwner.position);
+					}
+
+					if (closestDistance < 90f && closest.active)
+					{
+						for (int d = 0; d < 15; d++)
+						{
+							int dustIndex = Dust.NewDust(closest.Center, 0, 0, DustID.Flare, 0f + Main.rand.Next(-2, 2), 0f + Main.rand.Next(-2, 2), 0, default(Color), 2f);
+							Main.dust[dustIndex].noGravity = true;
+						}
+						closest.Kill();
+						closest.active = false;
+					}
+
+
+				}
 			}
 
-			if (!projOwner.HasBuff(BuffType<GundbitBeamAttack>()))
+			if (!projOwner.HasBuff(BuffType<GundbitShieldBuff>()))
 			{
 				for (int d = 0; d < 15; d++)
 				{
@@ -119,17 +137,17 @@ namespace StarsAbove.Projectiles.Gundbit
 			// Getting texture of projectile
 			Texture2D texture = TextureAssets.Projectile[Type].Value;
 
-			Texture2D textureGundbit1 = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Gundbit/Gundbit4");
-			Texture2D textureGundbit2 = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Gundbit/Gundbit5");
-			Texture2D textureGundbit3 = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Gundbit/Gundbit6");
-			Texture2D textureGundbit4 = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Gundbit/Gundbit1");
-			Texture2D textureGundbit5 = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Gundbit/Gundbit2");
-			Texture2D textureGundbit6 = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Gundbit/Gundbit3");
-			Texture2D textureGundbit7 = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Gundbit/Gundbit7");
-			Texture2D textureGundbit8 = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Gundbit/Gundbit8");
-			Texture2D textureGundbit9 = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Gundbit/Gundbit9");
-			Texture2D textureGundbit10 = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Gundbit/Gundbit10");
-			Texture2D textureGundbit11 = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Gundbit/Gundbit11");
+			Texture2D textureGundbit1 = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Gundbit/Shield4");
+			Texture2D textureGundbit2 = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Gundbit/Shield5");
+			Texture2D textureGundbit3 = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Gundbit/Shield6");
+			Texture2D textureGundbit4 = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Gundbit/Shield1");
+			Texture2D textureGundbit5 = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Gundbit/Shield2");
+			Texture2D textureGundbit6 = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Gundbit/Shield3");
+			Texture2D textureGundbit7 = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Gundbit/Shield7");
+			Texture2D textureGundbit8 = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Gundbit/Shield8");
+			Texture2D textureGundbit9 = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Gundbit/Shield9");
+			Texture2D textureGundbit10 = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Gundbit/Shield10");
+			Texture2D textureGundbit11 = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Gundbit/Shield11");
 
 			// Get the currently selected frame on the texture.
 			Rectangle sourceRectangle = texture.Frame(1, Main.projFrames[Type], frameY: Projectile.frame);

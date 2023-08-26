@@ -38,14 +38,14 @@ namespace StarsAbove.Items.Weapons.Magic
 			Item.useStyle = ItemUseStyleID.Shoot;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
 			//item.knockback = 12;         //The force of knockback of the weapon. Maximum is 20
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
-			Item.rare = ItemRarityID.Red;              //The rarity of the weapon, from -1 to 13
+			Item.rare = ItemRarityID.LightRed;              //The rarity of the weapon, from -1 to 13
 			//Item.UseSound = SoundID.Item1;      //The sound when the weapon is using
 			Item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
 			Item.noUseGraphic = true;
 			Item.noMelee = true;
 			Item.shoot = ProjectileID.WoodenArrowFriendly;
 			Item.shootSpeed = 35;
-			Item.mana = 18;
+			Item.mana = 7;
 		}
 		int stabTimer;
 		public override bool AltFunctionUse(Player player)
@@ -55,10 +55,7 @@ namespace StarsAbove.Items.Weapons.Magic
 
 		public override bool CanUseItem(Player player)
 		{
-		
 			return true;
-
-			
 		}
 
 		public override void MeleeEffects(Player player, Rectangle hitbox)
@@ -83,7 +80,18 @@ namespace StarsAbove.Items.Weapons.Magic
 
 				}
 			}
+			if (Main.myPlayer == player.whoAmI)
+			{
+				if (StarsAbove.weaponActionKey.JustPressed && !player.HasBuff(BuffType<GundbitShieldCooldown>()) && !player.HasBuff(BuffType<GundbitBeamAttack>()))
+				{
+					player.AddBuff(BuffType<GundbitShieldBuff>(), 60 * 3);
+					player.AddBuff(BuffType<GundbitShieldCooldown>(), 60 * 10);
+					SoundEngine.PlaySound(SoundID.DD2_DefenseTowerSpawn, player.Center);
 
+					Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ProjectileType<GundbitShield>(), 0, 0, player.whoAmI);
+				}
+
+			}
 			//player.GetModPlayer<WeaponPlayer>().blackMana--;
 			//player.GetModPlayer<WeaponPlayer>().whiteMana--;
 			base.HoldItem(player);
@@ -102,7 +110,7 @@ namespace StarsAbove.Items.Weapons.Magic
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
 			
-			if (player.altFunctionUse == 2)
+			if (player.altFunctionUse == 2 && !player.HasBuff(BuffType<GundbitLaserCooldown>()) && !player.HasBuff(BuffType<GundbitShieldBuff>()))
 			{
 				player.AddBuff(BuffType<GundbitBeamAttack>(), 3 * 60);
 				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<GundbitGunCharged>(), damage, 0, player.whoAmI, 0f);

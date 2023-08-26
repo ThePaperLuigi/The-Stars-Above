@@ -180,6 +180,8 @@ namespace StarsAbove.Projectiles.Gundbit
 				dust.scale = 1.2f;
 				
 			}
+			int dustID = DustID.RainbowMk2;
+			Color dustColor = Color.SkyBlue;
 			Vector2 playerToMouse = Main.MouseWorld - projOwner.Center;
 			playerToMouse = Vector2.Normalize(playerToMouse);
 			Vector2 MuzzlePosition = new Vector2(projOwner.Center.X,projOwner.Center.Y - 6) + Vector2.Normalize(playerToMouse) * 76;
@@ -188,48 +190,54 @@ namespace StarsAbove.Projectiles.Gundbit
 				Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - projOwner.Center).RotatedByRandom(MathHelper.ToRadians(23));
 				float scale = 22f - (Main.rand.NextFloat() * 21f);
 				perturbedSpeed *= scale;
-				int dustIndex = Dust.NewDust(MuzzlePosition, 0, 0, DustID.GemSapphire, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 1.7f);
+				int dustIndex = Dust.NewDust(MuzzlePosition, 0, 0, dustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 1.7f);
 				Main.dust[dustIndex].noGravity = true;
+				Main.dust[dustIndex].color = dustColor;
 			}
 			for (int d = 0; d < 30; d++)
 			{
 				Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - projOwner.Center).RotatedByRandom(MathHelper.ToRadians(120));
 				float scale = 4f - (Main.rand.NextFloat() * 3f);
 				perturbedSpeed *= -scale;
-				int dustIndex = Dust.NewDust(MuzzlePosition, 0, 0, DustID.GemSapphire, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 0.7f);
+				int dustIndex = Dust.NewDust(MuzzlePosition, 0, 0, dustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 0.7f);
 				Main.dust[dustIndex].noGravity = true;
+				Main.dust[dustIndex].color = dustColor;
 			}
 			for (int d = 0; d < 10; d++)
 			{
 				Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - projOwner.Center).RotatedBy(MathHelper.ToRadians(50));
 				float scale = 8f - (Main.rand.NextFloat() * 3f);
 				perturbedSpeed *= -scale;
-				int dustIndex = Dust.NewDust(MuzzlePosition, 0, 0, DustID.GemSapphire, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 0.8f);
+				int dustIndex = Dust.NewDust(MuzzlePosition, 0, 0, dustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 0.8f);
 				Main.dust[dustIndex].noGravity = true;
+				Main.dust[dustIndex].color = dustColor;
 			}
 			for (int d = 0; d < 10; d++)
 			{
 				Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - projOwner.Center).RotatedBy(MathHelper.ToRadians(-50));
 				float scale = 8f - (Main.rand.NextFloat() * 3f);
 				perturbedSpeed *= -scale;
-				int dustIndex = Dust.NewDust(MuzzlePosition, 0, 0, DustID.GemSapphire, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 0.8f);
+				int dustIndex = Dust.NewDust(MuzzlePosition, 0, 0, dustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 0.8f);
 				Main.dust[dustIndex].noGravity = true;
+				Main.dust[dustIndex].color = dustColor;
 			}
 			for (int d = 0; d < 20; d++)
 			{
 				Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - projOwner.Center).RotatedByRandom(MathHelper.ToRadians(2));
 				float scale = 102f - (Main.rand.NextFloat() * 101f);
 				perturbedSpeed *= scale;
-				int dustIndex = Dust.NewDust(MuzzlePosition, 0, 0, DustID.GemSapphire, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 2f);
+				int dustIndex = Dust.NewDust(MuzzlePosition, 0, 0, dustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 2f);
 				Main.dust[dustIndex].noGravity = true;
+				Main.dust[dustIndex].color = dustColor;
 			}
 			for (int d = 0; d < 10; d++)
 			{
 				Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - projOwner.Center).RotatedBy(MathHelper.ToRadians(80));
 				float scale = 8f - (Main.rand.NextFloat() * 1f);
 				perturbedSpeed *= scale;
-				int dustIndex = Dust.NewDust(MuzzlePosition, 0, 0, DustID.GemSapphire, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 1f);
+				int dustIndex = Dust.NewDust(MuzzlePosition, 0, 0, dustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 1f);
 				Main.dust[dustIndex].noGravity = true;
+				Main.dust[dustIndex].color = dustColor;
 
 			}
 			for (int d = 0; d < 10; d++)
@@ -237,8 +245,9 @@ namespace StarsAbove.Projectiles.Gundbit
 				Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - projOwner.Center).RotatedBy(MathHelper.ToRadians(-80));
 				float scale = 8f - (Main.rand.NextFloat() * 1f);
 				perturbedSpeed *= scale;
-				int dustIndex = Dust.NewDust(MuzzlePosition, 0, 0, DustID.GemSapphire, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 1f);
+				int dustIndex = Dust.NewDust(MuzzlePosition, 0, 0, dustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 1f);
 				Main.dust[dustIndex].noGravity = true;
+				Main.dust[dustIndex].color = dustColor;
 
 			}
 			float rotation = (float)Math.Atan2(Main.player[Projectile.owner].MountedCenter.Y - (Main.MouseWorld.Y), Main.player[Projectile.owner].MountedCenter.X - (Main.MouseWorld.X));//Aim towards mouse

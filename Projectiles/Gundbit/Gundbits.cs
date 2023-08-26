@@ -115,7 +115,7 @@ namespace StarsAbove.Projectiles.Gundbit
 				Projectile.ai[0] = 0;
 
 			}
-			if (owner.HasBuff(BuffType<GundbitBeamAttack>()))
+			if (owner.HasBuff(BuffType<GundbitBeamAttack>()) || owner.HasBuff(BuffType<GundbitShieldBuff>()))
 			{
 				if(Projectile.alpha <= 200)
                 {

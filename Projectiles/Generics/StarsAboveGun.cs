@@ -30,7 +30,7 @@ namespace StarsAbove.Projectiles.Generics
         public abstract int MuzzleDistance { get; }
         public abstract int StartingState { get; }//0 is shooting, 1 is recoil, 2 is idle.
         public abstract bool KillOnIdle { get; }
-
+        public abstract int ScreenShakeTime { get; }
 
         Vector2 MuzzlePosition;
 
@@ -151,7 +151,7 @@ namespace StarsAbove.Projectiles.Generics
                 else
                 {
                     flashAlpha = 1f;
-                    projOwner.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -95;
+                    projOwner.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -ScreenShakeTime;
 
                 }
 
@@ -262,7 +262,7 @@ namespace StarsAbove.Projectiles.Generics
         }
         private void Idle(Player projOwner)
         {
-            if(projOwner.itemTime == projOwner.itemTimeMax)
+            if(projOwner.itemTime == projOwner.itemTimeMax && KillOnIdle)
             {
                 Projectile.Kill();
             }

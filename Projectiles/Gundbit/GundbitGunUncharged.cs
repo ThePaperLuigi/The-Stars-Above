@@ -28,6 +28,7 @@ namespace StarsAbove.Projectiles.Gundbit
 		public override float BaseDistance => 40;
 		public override int StartingState => 0;
         public override bool KillOnIdle => true;
+        public override int ScreenShakeTime => 95;
         public override void SetStaticDefaults()
 		{
 			Main.projFrames[Projectile.type] = 1;

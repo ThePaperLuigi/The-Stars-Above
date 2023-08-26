@@ -8099,14 +8099,14 @@ Mods: {
 				// DisplayName: Gund-bit Siege
 				/* Tooltip:
 					'''
-					Holding this weapon summons [Bit Staves] and grants [Aerial Defensive Array], granting bonus defense based on current Mana (up to 10)
-					Attacks with this weapon fire piercing lasers and mark targets, causing the [Bit Staves] to orbit and attack
-					Allies near the [Bit Staves] will also gain the effects of [Aerial Defensive Array]
-					Press the Weapon Action Key to recall all [Bit Staves] to form a defensive shield for 5 seconds (20 second cooldown)
-					During this time, the shield will follow your cursor and destroy all hostile projectiles in contact while additionally magnifing the effect of [Aerial Defensive Array] by 50%
-					Right click to recall all [Bit Staves], transforming the weapon after a short delay (40 second cooldown)
-					After the weapon is transformed, it will unleash an extremely powerful beam that ignores collision and strikes multiple times after which the [Bit Staves] will decouple
-					Only one effect that utilizes the [Bit Staves] can be active at a time
+					Holding this weapon summons [c/B6E3F5:Bit Staves] and grants [c/3899E1:Aerial Defensive Array], granting bonus defense based on current Mana (up to 10)
+					Attacks with this weapon fire piercing lasers and mark targets, causing the [c/B6E3F5:Bit Staves] to orbit and attack
+					Press the Weapon Action Key to recall all [c/B6E3F5:Bit Staves] to form a defensive shield for 3 seconds (20 second cooldown)
+					During this time, the shield will follow your cursor and destroy all hostile projectiles in contact
+					Additionally, while the shield is active the effect of [c/3899E1:Aerial Defensive Array] is amplified by 50%
+					Right click to recall all [c/B6E3F5:Bit Staves], transforming the weapon after a short delay (30 second cooldown)
+					After transformation, unleash an extremely powerful beam that ignores collision and strikes multiple times
+					Only one effect that utilizes the [c/B6E3F5:Bit Staves] can be active at a time
 					''' */
 			}
 		}
@@ -8971,6 +8971,7 @@ Mods: {
 			// Gundbits.DisplayName: Gundbits
 			// GundbitLaser.DisplayName: Gundbit Laser
 			// GundbitMinionLaser.DisplayName: Gundbit Minion Laser
+			// GundbitShield.DisplayName: Gundbit Shield
 		}
 
 		Buffs: {
@@ -11253,6 +11254,21 @@ Mods: {
 			GundbitMarked: {
 				// DisplayName: Gundbit Marked
 				// Description: Mods.StarsAbove.Buffs.GundbitMarked.Description
+			}
+
+			GundbitLaserCooldown: {
+				// DisplayName: Gundbit Laser Cooldown
+				// Description: Mods.StarsAbove.Buffs.GundbitLaserCooldown.Description
+			}
+
+			GundbitShieldBuff: {
+				// DisplayName: Gundbit Shield Buff
+				// Description: Mods.StarsAbove.Buffs.GundbitShieldBuff.Description
+			}
+
+			GundbitShieldCooldown: {
+				// DisplayName: Gundbit Shield Cooldown
+				// Description: Mods.StarsAbove.Buffs.GundbitShieldCooldown.Description
 			}
 		}
 
