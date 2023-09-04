@@ -109,8 +109,8 @@ namespace StarsAbove.NPCs.Vagrant
 		public override void SetDefaults()
 		{
 			NPC.lifeMax = 3200;
-			NPC.damage = 15;
-			NPC.defense = 20;
+			NPC.damage = 5;
+			NPC.defense = 5;
 			NPC.knockBackResist = 0f;
 			NPC.width = 160;
 			NPC.height = 160;

@@ -91,6 +91,7 @@ using StarsAbove.Projectiles.BuryTheLight;
 using StarsAbove.Items.Armor.BlackSilence;
 using StarsAbove.Items.Armor.DraggedBelow;
 using StarsAbove.Buffs.DraggedBelow;
+using StarsAbove.Buffs.DragaliaFound;
 
 namespace StarsAbove
 {
@@ -3795,6 +3796,17 @@ namespace StarsAbove
 
                     layer.Hide();
 
+                }
+            }
+            if (Player.HasBuff(BuffType<DragonshiftActiveBuff>()))//
+            {
+                foreach (var layer in PlayerDrawLayerLoader.Layers)
+                {
+                    if (layer.ToString() == "MountFront" || layer.ToString() == "MountBack")
+                    {
+                        continue;
+                    }
+                    layer.Hide();
                 }
             }
 
