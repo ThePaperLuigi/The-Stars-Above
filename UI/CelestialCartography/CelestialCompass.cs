@@ -388,10 +388,11 @@ namespace StarsAbove.UI.CelestialCartography
 				return;
 
 			}
-
-			if(Main.netMode == NetmodeID.SinglePlayer)
+			SubworldSystem.Enter("StarsAbove/Observatory");
+			/*
+			if (Main.netMode == NetmodeID.SinglePlayer)
             {
-				SubworldSystem.Enter("StarsAbove/Observatory");
+				
 
 			}
 			else
@@ -401,7 +402,7 @@ namespace StarsAbove.UI.CelestialCartography
 				packet.Write("Observatory"); // message
 				packet.Send();
 			}
-			
+			*/
 			
 			
 			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;

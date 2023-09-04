@@ -188,7 +188,7 @@ namespace StarsAbove
 		}
 		public override void Load()
 		{
-			SubworldSystem.noReturn = true;
+			//SubworldSystem.noReturn = true;
 
 
 

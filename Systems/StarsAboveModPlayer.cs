@@ -1643,7 +1643,7 @@ namespace StarsAbove
         {
             if(SubworldSystem.noReturn == true)
             {
-                SubworldSystem.noReturn = false; //Fix missing save and quit bug? As of 8/9/23 this is still relevant (just found that out the fun way)
+               // SubworldSystem.noReturn = false; //Fix missing save and quit bug? As of 8/9/23 this is still relevant (just found that out the fun way)
 
             }
             //Load the equipment.
