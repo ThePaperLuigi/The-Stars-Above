@@ -29,7 +29,6 @@ namespace StarsAbove.Items.Prisms
 				""); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
-			Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(7, 8));
 			ItemID.Sets.ItemNoGravity[Item.type] = true;
 			
 		}
@@ -68,13 +67,7 @@ namespace StarsAbove.Items.Prisms
 
 		public override void AddRecipes()
 		{
-			CreateRecipe(1)
-				.AddIngredient(ItemType<TotemOfLightEmpowered>())
-				.AddIngredient(ItemType<PrismaticCore>(), 20)
-				.AddIngredient(ItemType<VoidsentPrism>())
-				.AddIngredient(ItemType<BurnishedPrism>())
-				.AddTile(TileID.Anvils)
-				.Register();
+			
 			
 		}
 	}
