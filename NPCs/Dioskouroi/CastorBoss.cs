@@ -559,10 +559,19 @@ namespace StarsAbove.NPCs.Dioskouroi
 			
 				Vector2 initialMoveTo = new Vector2(Main.player[NPC.target].Center.X - 500, Main.player[NPC.target].Center.Y - 80);
 				NPC.position = initialMoveTo;
-			
+
 			//SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Journey, NPC.Center);
 
+			if (!NPC.AnyNPCs(NPCType<DioskouroiWallsNPC>()))
+			{
+				int index = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<DioskouroiWallsNPC>(), NPC.whoAmI);
 
+
+				if (Main.netMode == NetmodeID.Server && index < Main.maxNPCs)
+				{
+					NetMessage.SendData(MessageID.SyncNPC, number: index);
+				}
+			}
 
 			NPC.netUpdate = true;
 			//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_NalhaunIntroQuote, NPC.Center);
