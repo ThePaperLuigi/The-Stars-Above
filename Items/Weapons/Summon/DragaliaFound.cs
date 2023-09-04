@@ -76,11 +76,13 @@ namespace StarsAbove.Items.Weapons.Summon
 		}
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			player.GetModPlayer<StarsAbovePlayer>().WhiteFade = 20;
+			Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<DragaliaFoundSword>(), damage, 0, player.whoAmI,0,0,player.direction);
+
+			/*player.GetModPlayer<StarsAbovePlayer>().WhiteFade = 20;
 			Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<DragonArm>(), 0, 0, player.whoAmI);
 			player.mount.SetMount(MountType<DragonshiftMount>(), player);
-			player.AddBuff(BuffType<DragonshiftActiveBuff>(), 240);
-			return true;
+			player.AddBuff(BuffType<DragonshiftActiveBuff>(), 240);*/
+			return false;
 		}
 		public override void AddRecipes()
 		{

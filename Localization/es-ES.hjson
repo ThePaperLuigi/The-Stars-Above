@@ -8119,7 +8119,7 @@ Mods: {
 					After completing a combo, gain [Bondforged Blade] for 3 seconds, charging [Dragonshift Energy] when active
 					Right click to unleash a blade of wind, piercing foes while charging [Dragonshift Energy] on kill (8 second cooldown)
 					Once [Dragonshift Energy] reaches 50%, press the Weapon Action Key to consume 50% [Dragonshift Energy] and activate [Windwyrm State] for 12 seconds
-					[Windwyrm State] transforms yourself into a powerful dragon, healing 100 HP instantly while granting 30% increased attack, health regeneration, and unlimited flight
+					[Windwyrm State] transforms yourself into a powerful dragon, healing 100 HP instantly
 					Within [Windwyrm State], attacks become powerful blasts of wind that deal damage in a large area and inflict [Stormlash] for 6 seconds
 					[Stormlash] is consumed when minions deal damage and increases damage dealt by 1% for every minion slot
 					Swapping off this weapon will immediately end [Pactbind State] and reset [Dragonshift Energy]
@@ -8989,6 +8989,8 @@ Mods: {
 			// GundbitMinionLaser.DisplayName: Gundbit Minion Laser
 			// GundbitShield.DisplayName: Gundbit Shield
 			// DragonArm.DisplayName: Dragon Arm
+			// StarsAboveSwordEffect.DisplayName: Stars Above Sword Effect
+			// DragaliaFoundSword.DisplayName: Dragalia Found Sword
 		}
 
 		Buffs: {
@@ -11070,7 +11072,11 @@ Mods: {
 				// Description: Timeless Potential will fail to be obtained if this debuff is present
 			}
 
-			// ManaSicknessAlter.Description: All damage reduced by {0}%
+			ManaSicknessAlter: {
+				// DisplayName: Mana Sickness
+				// Description: All damage reduced by {0}%
+			}
+
 			// DarkAuraBuff.Description: "{0} sacrifice(s) have been consumed"
 
 			SpectrumAbsorption: {
@@ -11250,12 +11256,12 @@ Mods: {
 
 			BladeWorksDamageReduction: {
 				// DisplayName: Blade Works Damage Reduction
-				// Description: Mods.StarsAbove.Buffs.BladeWorksDamageReduction.Description
+				// Description: ""
 			}
 
 			BladeworksDefenseReduction: {
 				// DisplayName: Bladeworks Defense Reduction
-				// Description: Mods.StarsAbove.Buffs.BladeworksDefenseReduction.Description
+				// Description: ""
 			}
 
 			AerialDefensiveArray: {
@@ -11265,32 +11271,32 @@ Mods: {
 
 			GundbitBeamAttack: {
 				// DisplayName: Gundbit Beam Attack
-				// Description: Mods.StarsAbove.Buffs.GundbitBeamAttack.Description
+				// Description: ""
 			}
 
 			GundbitMarked: {
 				// DisplayName: Gundbit Marked
-				// Description: Mods.StarsAbove.Buffs.GundbitMarked.Description
+				// Description: ""
 			}
 
 			GundbitLaserCooldown: {
 				// DisplayName: Gundbit Laser Cooldown
-				// Description: Mods.StarsAbove.Buffs.GundbitLaserCooldown.Description
+				// Description: ""
 			}
 
 			GundbitShieldBuff: {
-				// DisplayName: Gundbit Shield Buff
-				// Description: Mods.StarsAbove.Buffs.GundbitShieldBuff.Description
+				// DisplayName: Gundbit Shield
+				// Description: ""
 			}
 
 			GundbitShieldCooldown: {
 				// DisplayName: Gundbit Shield Cooldown
-				// Description: Mods.StarsAbove.Buffs.GundbitShieldCooldown.Description
+				// Description: ""
 			}
 
 			DragonshiftActiveBuff: {
-				// DisplayName: Dragonshift Active Buff
-				// Description: Mods.StarsAbove.Buffs.DragonshiftActiveBuff.Description
+				// DisplayName: Windwyrm Shift
+				// Description: Transformed into a wind-aspected dragon
 			}
 		}
 

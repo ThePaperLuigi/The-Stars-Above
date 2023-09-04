@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using StarsAbove.Utilities;
 using System;
 using Terraria;
 using Terraria.GameContent;
@@ -53,6 +54,7 @@ namespace StarsAbove.Projectiles.Generics
 			// We will spawn the visuals around the arc ourselves in the AI().
 			Projectile.noEnchantmentVisuals = true;
 		}
+		float startingRotation;
 
 		public override void AI()
 		{
@@ -66,14 +68,29 @@ namespace StarsAbove.Projectiles.Generics
 			// if (Projectile.localAI[0] == 0f) {
 			// 	SoundEngine.PlaySound(SoundID.Item60 with { Volume = 0.65f }, Projectile.position);
 			// }
-
-			Projectile.localAI[0]++; // Current time that the projectile has been alive.
 			Player player = Main.player[Projectile.owner];
+
+			if (Projectile.localAI[0] == 0f)
+			{
+				startingRotation = MathHelper.ToDegrees((float)Math.Atan2(Main.MouseWorld.Y -  player.Center.Y, Main.MouseWorld.X - player.Center.X));
+
+			}
+			Projectile.localAI[0]++; // Current time that the projectile has been alive.
 			float percentageOfLife = Projectile.localAI[0] / Projectile.ai[1]; // The current time over the max time.
 			float direction = Projectile.ai[0];
 			float velocityRotation = Projectile.velocity.ToRotation();
-			float adjustedRotation = MathHelper.Pi * direction * percentageOfLife + velocityRotation + direction * MathHelper.Pi + player.fullRotation;
-			Projectile.rotation = adjustedRotation; // Set the rotation to our to the new rotation we calculated.
+			//float adjustedRotation = //MathHelper.Pi * direction * percentageOfLife + velocityRotation + direction * MathHelper.Pi + player.fullRotation;
+			
+			if(Projectile.ai[0] == 1)
+			{
+				Projectile.rotation = MathHelper.ToRadians(MathHelper.Lerp(startingRotation - 115, startingRotation + 45, EaseHelper.InOutQuad(percentageOfLife))); // Set the rotation to our to the new rotation we calculated.
+
+			}
+			else
+			{
+				Projectile.rotation = MathHelper.ToRadians(MathHelper.Lerp(startingRotation + 115, startingRotation - 45, EaseHelper.InOutQuad(percentageOfLife))); // Set the rotation to our to the new rotation we calculated.
+
+			}
 
 			float scaleMulti = 0.6f; // Excalibur, Terra Blade, and The Horseman's Blade is 0.6f; True Excalibur is 1f; default is 0.2f 
 			float scaleAdder = 1f; // Excalibur, Terra Blade, and The Horseman's Blade is 1f; True Excalibur is 1.2f; default is 1f 

@@ -31,7 +31,7 @@ namespace StarsAbove
 			
 			if (type == BuffID.ManaSickness && !DisableManaSicknessChange)
             {
-				tip = LangHelper.GetTextValue($"BuffDescription.ManaSicknessAlter", ((int)(player.manaSickReduction * 100f) + 1));
+				tip = LangHelper.GetTextValue($"Buffs.ManaSicknessAlter.Description", ((int)(player.manaSickReduction * 100f) + 1));
 			}
 			
 		}

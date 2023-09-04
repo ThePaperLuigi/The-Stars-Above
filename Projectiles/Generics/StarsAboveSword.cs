@@ -20,20 +20,7 @@ namespace StarsAbove.Projectiles.Generics
     public abstract class StarsAboveSword : ModProjectile
 	{
 		public override string Texture => "StarsAbove/Projectiles/Generics/StarsAboveGun";
-
-        //This allows the gun to set its own muzzle flash.
-        public abstract string TextureFlash { get; }
-
         public abstract bool UseRecoil { get; }
-        public abstract int FlashDustID { get; }
-        public abstract int SmokeDustID { get; }
-        public abstract int MuzzleDistance { get; }
-        public abstract int StartingState { get; }//0 is shooting, 1 is recoil, 2 is idle.
-        public abstract bool KillOnIdle { get; }
-        public abstract int ScreenShakeTime { get; }
-
-        Vector2 MuzzlePosition;
-
 
         public override void SetStaticDefaults()
 		{
@@ -64,6 +51,8 @@ namespace StarsAbove.Projectiles.Generics
 		}
         public ref float AI_State => ref Projectile.ai[0];
         public ref float Rotation => ref Projectile.ai[1];
+        public ref float PlayerDirection => ref Projectile.ai[2];
+
 
         public abstract float BaseDistance { get; } //This changes depending on the size of the gun.
         
@@ -121,30 +110,60 @@ namespace StarsAbove.Projectiles.Generics
             Projectile.position.X = projOwner.Center.X - (int)(Math.Cos(rad) * dist) - Projectile.width / 2;
             Projectile.position.Y = projOwner.Center.Y - (int)(Math.Sin(rad) * dist) - Projectile.height / 2;
             OrientSprite(projOwner);
-            projOwner.GetModPlayer<WeaponPlayer>().MuzzlePosition = MuzzlePosition;
+            //projOwner.GetModPlayer<WeaponPlayer>().MuzzlePosition = MuzzlePosition;
+            MathHelper.Clamp(Projectile.alpha, 0, 255);
+
         }
+        float startingPosition = 0f;
 
         private void SwingAnimation(Player projOwner)
         {
             //Remember this is activating every tick.
-            if (UseRecoil)
+            if (swingAnimationProgress == 0f)
             {
-                swingAnimationProgressMax = projOwner.itemTimeMax / 2; //Half of the time spent after using the item is this animation.
-            }
-            else
-            {
-                swingAnimationProgressMax = projOwner.itemTimeMax * 0.9f; //90% of the time spent after using this item is this animation.
+                startingPosition = MathHelper.ToDegrees((float)Math.Atan2(Main.MouseWorld.Y - projOwner.Center.Y, Main.MouseWorld.X - projOwner.Center.X)) - 180;
+                if (UseRecoil)
+                {
+                    swingAnimationProgressMax = projOwner.itemTimeMax / 2; //Half of the time spent after using the item is this animation.
+                }
+                else
+                {
+                    swingAnimationProgressMax = projOwner.itemTimeMax;
+                }
+                Projectile.NewProjectile(projOwner.GetSource_FromThis(), projOwner.MountedCenter, new Vector2(projOwner.direction, 0f), ProjectileType<StarsAboveSwordEffect>(), 0, 0, projOwner.whoAmI, projOwner.direction, projOwner.itemAnimationMax, 1);
+
+                distance = BaseDistance;
+                Projectile.alpha = 0;
+
+               
             }
             //In order:
             //The blade spawns at a specificed offset from where the player is facing.
             //The blade then sweeps depending on animation progress, creating effects and the 1.4.4 swing trail
             //The blade disappears
-            swingAnimationProgress = MathHelper.Lerp(0, 180, EaseHelper.InOutQuad(swingAnimationProgress));
-            swingAnimationProgress = Math.Clamp(swingAnimationProgress, 0, 1f);
+
+            if(PlayerDirection == 1)
+            {
+                Rotation = MathHelper.Lerp(startingPosition - 90, startingPosition + 90, EaseHelper.InOutQuad(swingAnimationProgress / swingAnimationProgressMax));
+            }
+            else
+            {
+                Rotation = MathHelper.Lerp(startingPosition + 90, startingPosition - 90, EaseHelper.InOutQuad(swingAnimationProgress / swingAnimationProgressMax));
+            }
+
+            if (swingAnimationProgress / swingAnimationProgressMax > 0.4f)
+            {
+                Projectile.alpha += 40;
+            }
+
             if (swingAnimationProgress >= swingAnimationProgressMax && swingAnimationProgress != 0f)
             {
+                //It's a sword, kill it.
+                Projectile.Kill();
+
+
                 //Return to the idle state. (Alternatively, switch to the recoil state but that's unused)
-                AI_State = (float)ActionState.Idle;
+                //AI_State = (float)ActionState.Idle;
             }
             swingAnimationProgress += 1f;
         }
@@ -154,31 +173,19 @@ namespace StarsAbove.Projectiles.Generics
         }
         private void Idle(Player projOwner)
         {
-            if(projOwner.itemTime == projOwner.itemTimeMax && KillOnIdle)
+            if(projOwner.itemTime == projOwner.itemTimeMax)
             {
-                Projectile.Kill();
+
             }
-            Rotation = MathHelper.ToDegrees((float)Math.Atan2(Main.MouseWorld.Y - projOwner.Center.Y, Main.MouseWorld.X - projOwner.Center.X)) - 180;
+            //Rotation = MathHelper.ToDegrees((float)Math.Atan2(Main.MouseWorld.Y - projOwner.Center.Y, Main.MouseWorld.X - projOwner.Center.X)) - 180;
             Vector2 playerToMouse = Main.MouseWorld - projOwner.Center;
             playerToMouse = Vector2.Normalize(playerToMouse);
-            MuzzlePosition = Vector2.Normalize(playerToMouse) * (MuzzleDistance);
         }
         private void OrientSprite(Player projOwner)
         {
-            Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(180f);
-
+            Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(-90f);
             //Main.NewText(MathHelper.ToDegrees(Projectile.rotation));
-            if (Projectile.rotation >= MathHelper.ToRadians(90) && Projectile.rotation <= MathHelper.ToRadians(270))
-            {
-                Projectile.spriteDirection = 0;
-                Projectile.rotation += MathHelper.Pi;
-                projOwner.direction = 0;
-            }
-            else
-            {
-                Projectile.spriteDirection = 1;
-                projOwner.direction = 1;
-            }
+            
         }
         public override bool PreDraw(ref Color lightColor)
         {
@@ -187,9 +194,6 @@ namespace StarsAbove.Projectiles.Generics
 
             // Getting texture of projectile
             Texture2D texture = TextureAssets.Projectile[Type].Value;
-
-            //Getting texture of the muzzle flash
-            Texture2D textureFlash = (Texture2D)ModContent.Request<Texture2D>(TextureFlash);
 
             // Get the currently selected frame on the texture.
             Rectangle sourceRectangle = texture.Frame(1, Main.projFrames[Type], frameY: Projectile.frame);
@@ -203,7 +207,7 @@ namespace StarsAbove.Projectiles.Generics
             {
                 Main.EntitySpriteDraw(texture,
                    Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY),
-                   sourceRectangle, lightColor, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
+                   sourceRectangle, drawColor, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
             }
            
             // It's important to return false, otherwise we also draw the original texture.
@@ -217,12 +221,11 @@ namespace StarsAbove.Projectiles.Generics
             projOwner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (projOwner.Center -
                             new Vector2(Projectile.Center.X + (projOwner.velocity.X * 0.05f), Projectile.Center.Y + (projOwner.velocity.Y * 0.05f))
                             ).ToRotation() + MathHelper.PiOver2);
-            Projectile.alpha -= 90;
 
-            projOwner.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.Full, (projOwner.Center -
+            /*projOwner.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.Full, (projOwner.Center -
                 new Vector2(Projectile.Center.X + (projOwner.velocity.X * 0.05f), Projectile.Center.Y + (projOwner.velocity.Y * 0.05f))
                 ).ToRotation() + MathHelper.PiOver2);
-            Projectile.alpha -= 90;
+            Projectile.alpha -= 90;*/
         }
 
         public override void Kill(int timeLeft)

@@ -152,7 +152,16 @@ namespace StarsAbove.Mounts.DragaliaFound
 					num14 = 0.0f;
 				Microsoft.Xna.Framework.Rectangle r2 = texture2D2.Frame(1, 1, 0, 0);
 				//drawOrigin = r2.Size() / 2f;
-				Vector2 position3 = position1 + new Vector2(0.0f, -100f);
+				Vector2 position3 = position1 + new Vector2(0f, -100f);
+
+				if (drawPlayer.direction == 1)
+				{
+					position3 = position1 + new Vector2(-30f, -100f);
+				}
+				else
+				{
+					position3 = position1 + new Vector2(30f, -100f);
+				}
 				Microsoft.Xna.Framework.Color color3 = new Microsoft.Xna.Framework.Color(178, 255, 190); //This is the color of the pulse!
 																												//Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3, NPC.rotation, drawOrigin, NPC.scale * 0.5f, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
 				float num15 = 2f; //+ num11 * 2.75f; //Scale?
