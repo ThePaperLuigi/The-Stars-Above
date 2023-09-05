@@ -100,28 +100,35 @@ namespace StarsAbove
 						pool.Add(ModContent.NPCType<NPCs.Arbitration>(), 0.5f);
 
 					}
-					
-
-				}
 
 
+                }
 
-			}
-			if (spawnInfo.Player.InModBiome<CorvusBiome>())
+
+
+            }
+            if (spawnInfo.Player.InModBiome<CorvusBiome>())
+            {
+                pool.Clear();
+                pool.Add(ModContent.NPCType<NPCs.PrismLoot>(), 0.05f);
+                pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.AmethystHeadpiercer>(), 1f);
+                pool.Add(NPCID.BlackSlime, 1f);
+                pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.AmethystSwordsinner>(), 1f);
+                pool.Add(NPCID.DemonEye, 0.4f);
+
+                if (!NPC.AnyNPCs(ModContent.NPCType<NPCs.TownNPCs.Yojimbo>()))
+                {
+                    pool.Add(ModContent.NPCType<NPCs.TownNPCs.Yojimbo>(), 0.1f);
+
+                }
+
+            }
+			if (SubworldSystem.IsActive<Tucana>())
 			{
-				pool.Clear();
-				pool.Add(ModContent.NPCType<NPCs.PrismLoot>(), 0.05f);
-				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.AmethystHeadpiercer>(), 1f);
-				pool.Add(NPCID.BlackSlime, 1f);
-				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.AmethystSwordsinner>(), 1f);
-				pool.Add(NPCID.DemonEye, 0.4f);
+				pool.Remove(NPCID.BoundGoblin);
+				pool.Remove(NPCID.BoundWizard);
+				pool.Remove(NPCID.DD2Bartender);
 
-				if (!NPC.AnyNPCs(ModContent.NPCType<NPCs.TownNPCs.Yojimbo>()))
-				{
-					pool.Add(ModContent.NPCType<NPCs.TownNPCs.Yojimbo>(), 0.1f);
-
-				}
-				
 			}
 			if (SubworldSystem.IsActive<Pyxis>())
 			{
