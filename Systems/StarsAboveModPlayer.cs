@@ -7229,6 +7229,15 @@ namespace StarsAbove
         {
             if (Main.LocalPlayer.active && !Main.LocalPlayer.dead && !Player.GetModPlayer<BossPlayer>().QTEActive && novaDrain <= 0)
             {
+                if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+                {
+                    if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("DevourerofGodsBody").Type))
+                    {
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.BlockedNova"), 241, 255, 180); }
+                        return;    
+                    }
+                }
+                   
                 if (chosenStellarNova == 6 && Player.ownedProjectileCounts[ProjectileType<UnlimitedBladeWorksBackground>()] >= 1)
                 {
                     return;

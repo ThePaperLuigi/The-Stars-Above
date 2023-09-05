@@ -6,16 +6,6 @@ using Terraria.ModLoader.Config;
 
 namespace StarsAbove
 {
-    // This file contains 2 real ModConfigs (and also a bunch of fake ModConfigs showcasing various ideas). One is set to ConfigScope.ServerSide and the other ConfigScope.ClientSide
-    // ModConfigs contain Public Fields and Properties that represent the choices available to the user. 
-    // Those Fields or Properties will be presented to users in the Config menu.
-    // DONT use static members anywhere in this class (except for an automatically assigned field named Instance with the same Type as the ModConfig class, if you'd rather write "MyConfigClass.Instance" instead of "ModContent.GetInstance<MyConfigClass>()"), tModLoader maintains several instances of ModConfig classes which will not work well with static properties or fields.
-
-    /// <summary>
-    /// ExampleConfigServer has Server-wide effects. Things that happen on the server, on the world, or influence autoload go here
-    /// ConfigScope.ServerSide ModConfigs are SHARED from the server to all clients connecting in MP.
-    /// </summary>
-
     public class StarsAboveConfigClient : ModConfig
 	{
 		//public new string Name => "Stars Above Config (Client)";
@@ -24,52 +14,34 @@ namespace StarsAbove
 
 		[Header("$Mods.StarsAbove.Config.StellarNovaHeader")]
 
-		[Label("$Mods.StarsAbove.Config.DisableStellarNovaCutIns.Label")]
-		[Tooltip("$Mods.StarsAbove.Config.DisableStellarNovaCutIns.Tooltip")]
 		public bool DisableStellarNovaCutIns;
 
-		[Label("$Mods.StarsAbove.Config.EnableStarfarerVoices.Label")]
-		[Tooltip("$Mods.StarsAbove.Config.EnableStarfarerVoices.Tooltip")]
 		public bool EnableStarfarerVoices;
 
-		[Label("$Mods.StarsAbove.Config.DisableStellarNovaDialogue.Label")]
-		[Tooltip("$Mods.StarsAbove.Config.DisableStellarNovaDialogue.Tooltip")]
 		public bool DisableStellarNovaDialogue;
 
 		[Header("$Mods.StarsAbove.Config.PopUpDialogueHeader")]
 
-		[Label("$Mods.StarsAbove.Config.DisableStarfarerCommentary.Label")]
-		[Tooltip("$Mods.StarsAbove.Config.DisableStarfarerCommentary.Tooltip")]
 		public bool DisableStarfarerCommentary;
 
-		[Label("$Mods.StarsAbove.Config.DisableStarfarerCommentaryBuffs.Label")]
-		[Tooltip("$Mods.StarsAbove.Config.DisableStarfarerCommentaryBuffs.Tooltip")]
 		public bool DisableStarfarerCommentaryBuffs;
 
-		[Label("$Mods.StarsAbove.Config.DisableStarfarerCommentaryCombat.Label")]
-		[Tooltip("$Mods.StarsAbove.Config.DisableStarfarerCommentaryCombat.Tooltip")]
 		public bool DisableStarfarerCommentaryCombat;
 
 		[Increment(1)]
 		[Range(1, 60)]
 		[DefaultValue(8)]
 		[Slider] // The Slider attribute makes this field be presented with a slider rather than a text input. The default ticks is 1.
-		[Label("$Mods.StarsAbove.Config.StarfarerPromptCooldown.Label")]
-		[Tooltip("$Mods.StarsAbove.Config.StarfarerPromptCooldown.Tooltip")]
 		public int StarfarerPromptCooldown;
 
 		[Increment(5)]
 		[Range(0, 300)]
 		[DefaultValue(100)]
 		[Slider] // The Slider attribute makes this field be presented with a slider rather than a text input. The default ticks is 1.
-		[Label("$Mods.StarsAbove.Config.CommentaryTimer.Label")]
-		[Tooltip("$Mods.StarsAbove.Config.CommentaryTimer.Tooltip")]
 		public int CommentaryTimer;
 
 		[DefaultValue(typeof(Vector2), "-1360, -510")]
 		[Range(-1920f, 0f)]
-		[Label("$Mods.StarsAbove.Config.PromptLoc.Label")]
-		[Tooltip("$Mods.StarsAbove.Config.PromptLoc.Tooltip")]
 		public Vector2 PromptLoc { get; set; }
 
 
@@ -79,32 +51,24 @@ namespace StarsAbove
 		[Range(1, 5)]
 		[DefaultValue(2)]
 		[Slider] // The Slider attribute makes this field be presented with a slider rather than a text input. The default ticks is 1.
-		[Label("$Mods.StarsAbove.Config.DialogueScrollValue.Label")]
-		[Tooltip("$Mods.StarsAbove.Config.DialogueScrollValue.Tooltip")]
 		public int DialogueScrollValue;
 
 		[Increment(1)]
 		[Range(1, 5)]
 		[DefaultValue(3)]
 		[Slider] // The Slider attribute makes this field be presented with a slider rather than a text input. The default ticks is 1.
-		[Label("$Mods.StarsAbove.Config.DialogueAudio.Label")]
-		[Tooltip("$Mods.StarsAbove.Config.DialogueAudio.Tooltip")]
 		public int DialogueAudio;
 
-		[Label("$Mods.StarsAbove.Config.InstantText.Label")]
-		[Tooltip("$Mods.StarsAbove.Config.InstantText.Tooltip")]
 		public bool InstantText;
 
-		[Label("$Mods.StarsAbove.Config.DisableDraggingDialogue.Label")]
-		[Tooltip("$Mods.StarsAbove.Config.DisableDraggingDialogue.Tooltip")]
-		[DefaultValue(true)]
-		public bool DisableDraggingDialogue;
+		[Increment(0.1f)]
+		[Range(0f, 2f)]
+		[DefaultValue(1.5)]
+		[Slider]
+		public float MovingDialogueAmount;
 
 
 		[Header("$Mods.StarsAbove.Config.MiscHeader")]
-
-		[Label("$Mods.StarsAbove.Config.EnableMusicOverride.Label")]
-		[Tooltip("$Mods.StarsAbove.Config.EnableMusicOverride.Tooltip")]
 		public bool EnableMusicOverride;
 
 		//[Label("$Mods.StarsAbove.Config.EnablePlayerWorldLock.Label")]
@@ -115,8 +79,6 @@ namespace StarsAbove
 		[Tooltip("$Mods.StarsAbove.Config.EnableAprilFools.Tooltip")]
 		public bool EnableAprilFools;*/
 
-		[Label("$Mods.StarsAbove.Config.DisableWeaponCutIn.Label")]
-		[Tooltip("$Mods.StarsAbove.Config.DisableWeaponCutIn.Tooltip")]
 		public bool DisableWeaponCutIns;
 
 		//[Label("Show mod origin in tooltip")]
@@ -134,7 +96,7 @@ namespace StarsAbove
 			//UI.StellarNovaGauge.NovaGaugePos = NovaGaugeLoc;
 			UI.StellarNova.StellarNovaCutIn.Visible = DisableStellarNovaCutIns;
 			UI.StellarNova.StellarNovaCutIn.disableDialogue = DisableStellarNovaDialogue;
-			UI.Starfarers.StarfarerText.Draggable = DisableDraggingDialogue;
+			UI.StarfarerMenu.StarfarerMenu.AdjustmentFactor = MovingDialogueAmount;
 			//StarsAbovePlayer.noLockedCamera = DisableLockedCamera;
 			StarsAbovePlayer.disablePrompts = DisableStarfarerCommentary;
 			StarsAbovePlayer.starfarerPromptCooldownMax = StarfarerPromptCooldown;

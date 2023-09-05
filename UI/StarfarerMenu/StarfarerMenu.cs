@@ -63,7 +63,7 @@ namespace StarsAbove.UI.StarfarerMenu
 		private UIText baseStats;
 		private UIText adjustedStats;
 
-		
+		static public float AdjustmentFactor = 1.5f;
 
 		static public VanillaItemSlotWrapper _starfarerArmorSlot;
 		static public VanillaItemSlotWrapper _starfarerVanitySlot;
@@ -1276,7 +1276,7 @@ namespace StarsAbove.UI.StarfarerMenu
 
             // The factor which determines the speed of rectangle movement relative to player velocity.
             // This can be adjusted based on how responsive you want the movement to be.
-            float factor = 1.5f;
+            float factor = AdjustmentFactor;
 
             // Modify the position based on the player's X and Y velocity
             float newX = startX - playerVelocityX * factor;
