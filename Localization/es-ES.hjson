@@ -3161,9 +3161,9 @@ Mods: {
 				Tooltip: Ignora la opción de velocidad del texto, todo el texto aparecerá de inmediato.
 			}
 
-			DisableDraggingDialogue: {
-				Label: Desactivar el arrastrado del cuadro de diálogo
-				Tooltip: El diálogo de la Viajera Estelar estará fijado en su posición.
+			MovingDialogueAmount: {
+				// Label: Starfarer Menu Movement
+				// Tooltip: Adjust how much the Starfarer menus move while you're moving.
 			}
 
 			PromptLoc: {
@@ -3260,6 +3260,7 @@ Mods: {
 			// SpeedUpLight: The everlasting light is catalyzed, preventing night from falling...
 			// TsukiyomiBossChecklist: The Boss Checklist updates to reveal a hidden foe!
 			// CanBeShimmeredSpoils: Can be Shimmered, converting into Stellar Remnants
+			// BlockedNova: A powerful foe prevents use of the Stellar Nova!
 			`: El arma falló al reaccionar a tu aspecto, dejándola inutilizable. Solo puedes usar armas Astrales con Asphodene.
 		}
 
@@ -8099,6 +8100,7 @@ Mods: {
 				// DisplayName: Gund-bit Siege
 				/* Tooltip:
 					'''
+					WORK IN PROGRESS
 					Holding this weapon summons [c/B6E3F5:Bit Staves] and grants [c/3899E1:Aerial Defensive Array], granting bonus defense based on current Mana (up to 10)
 					Attacks with this weapon fire piercing lasers and mark targets, causing the [c/B6E3F5:Bit Staves] to orbit and attack
 					Press the Weapon Action Key to recall all [c/B6E3F5:Bit Staves] to form a defensive shield for 3 seconds (20 second cooldown)
@@ -8114,6 +8116,7 @@ Mods: {
 				// DisplayName: Dragalia Found
 				/* Tooltip:
 					'''
+					WORK IN PROGRESS
 					Holding this weapon grants [Tempest's Dragonlight], reducing damage taken by 2% for every minion slot up to 30%
 					Attacks with this weapon execute five close-ranged combo swings, charging [Dragonshift Energy] on critical strikes
 					After completing a combo, gain [Bondforged Blade] for 3 seconds, charging [Dragonshift Energy] when active
@@ -8991,6 +8994,11 @@ Mods: {
 			// DragonArm.DisplayName: Dragon Arm
 			// StarsAboveSwordEffect.DisplayName: Stars Above Sword Effect
 			// DragaliaFoundSword.DisplayName: Dragalia Found Sword
+			// DragaliaFoundSwordRecoil.DisplayName: Dragalia Found Sword Recoil
+			// DragaliaFoundSwordSpin.DisplayName: Dragalia Found Sword Spin
+			// StarsAboveSwordEffectSpin.DisplayName: Stars Above Sword Effect Spin
+			// DragaliaFoundStab.DisplayName: Dragalia Found Stab
+			// DragaliaFoundDragonAttack.DisplayName: Dragalia Found Dragon Attack
 		}
 
 		Buffs: {
@@ -11518,6 +11526,11 @@ Mods: {
 				PromptLoc: {
 					// Label: "{$Mods.StarsAbove.Config.PromptLoc.Label}"
 					// Tooltip: "{$Mods.StarsAbove.Config.PromptLoc.Tooltip}"
+				}
+
+				MovingDialogueAmount: {
+					// Label: Moving Dialogue Amount
+					// Tooltip: ""
 				}
 			}
 

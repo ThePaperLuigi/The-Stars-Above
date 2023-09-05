@@ -8,10 +8,9 @@ using Terraria.GameContent.Drawing;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace StarsAbove.Projectiles.Generics
+namespace StarsAbove.Projectiles.DragaliaFound
 {
-	// This is a copy of the Excalibur's projectile (TEMP)
-	public class StarsAboveSwordEffect : ModProjectile
+	public class DragaliaFoundDragonAttack : ModProjectile
 	{
 
 		// We could use a vanilla texture if we want instead of supplying our own.
@@ -31,8 +30,8 @@ namespace StarsAbove.Projectiles.Generics
 			// The width and height don't really matter here because we have custom collision.
 			Projectile.width = 16;
 			Projectile.height = 16;
-			Projectile.friendly = false; //Does no damage as the melee swing will take care of it 
-			Projectile.DamageType = DamageClass.Melee;
+			Projectile.friendly = true; //Does no damage as the melee swing will take care of it 
+			Projectile.DamageType = DamageClass.SummonMeleeSpeed;
 			Projectile.penetrate = 3; // The projectile can hit 3 enemies.
 			Projectile.usesLocalNPCImmunity = true;
 			Projectile.localNPCHitCooldown = -1;
@@ -40,7 +39,7 @@ namespace StarsAbove.Projectiles.Generics
 			Projectile.ignoreWater = true;
 			Projectile.ownerHitCheck = true; // A line of sight check so the projectile can't deal damage through tiles.
 			Projectile.ownerHitCheckDistance = 300f; // The maximum range that the projectile can hit a target. 300 pixels is 18.75 tiles.
-			Projectile.usesOwnerMeleeHitCD = true; // This will make the projectile apply the standard number of immunity frames as normal melee attacks.
+			//Projectile.usesOwnerMeleeHitCD = true; // This will make the projectile apply the standard number of immunity frames as normal melee attacks.
 												   // Normally, projectiles die after they have hit all the enemies they can.
 												   // But, for this case, we want the projectile to continue to live so we can have the visuals of the swing.
 			Projectile.stopsDealingDamageAfterPenetrateHits = true;
@@ -101,25 +100,7 @@ namespace StarsAbove.Projectiles.Generics
 			// This example only includes the Excalibur.
 			// Look at AI_190_NightsEdge() in Projectile.cs for the others.
 
-			// Here we spawn some dust inside the arc of the swing.
-			float dustRotation = Projectile.rotation + Main.rand.NextFloatDirection() * MathHelper.PiOver2 * 0.7f;
-			Vector2 dustPosition = Projectile.Center + dustRotation.ToRotationVector2() * 84f * Projectile.scale;
-			Vector2 dustVelocity = (dustRotation + Projectile.ai[0] * MathHelper.PiOver2).ToRotationVector2();
-			if (Main.rand.NextFloat() * 2f < Projectile.Opacity)
-			{
-				// Original Excalibur color: Color.Gold, Color.White
-				Color dustColor = Color.Lerp(Color.SkyBlue, Color.White, Main.rand.NextFloat() * 0.3f);
-				Dust coloredDust = Dust.NewDustPerfect(Projectile.Center + dustRotation.ToRotationVector2() * (Main.rand.NextFloat() * 80f * Projectile.scale + 20f * Projectile.scale), DustID.FireworksRGB, dustVelocity * 1f, 100, dustColor, 0.4f);
-				coloredDust.fadeIn = 0.4f + Main.rand.NextFloat() * 0.15f;
-				coloredDust.noGravity = true;
-			}
-
-			if (Main.rand.NextFloat() * 1.5f < Projectile.Opacity)
-			{
-				// Original Excalibur color: Color.White
-				Dust.NewDustPerfect(dustPosition, DustID.TintableDustLighted, dustVelocity, 100, Color.SkyBlue * Projectile.Opacity, 1.2f * Projectile.Opacity);
-			}
-
+			
 			Projectile.scale *= Projectile.ai[2]; // Set the scale of the projectile to the scale of the item.
 
 			// If the projectile is as old as the max animation time, kill the projectile.
@@ -195,15 +176,61 @@ namespace StarsAbove.Projectiles.Generics
 			// The particles from the Particle Orchestra are predefined by vanilla and most can not be customized that much.
 			// Use auto complete to see the other ParticleOrchestraType types there are.
 			// Here we are spawning the Excalibur particle randomly inside of the target's hitbox.
-			ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Excalibur,
-				new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(target.Hitbox) },
-				Projectile.owner);
+			float dustAmount = 40f;
+			for (int i = 0; (float)i < dustAmount; i++)
+			{
+				Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+				spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(14f, 1f);
+				spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
+				int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+				Main.dust[dust].scale = 2f;
+				Main.dust[dust].noGravity = true;
+				Main.dust[dust].position = target.Center + spinningpoint5;
+				Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 4f;
+			}
+			for (int i = 0; (float)i < dustAmount; i++)
+			{
+				Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+				spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(14f, 1f);
+				spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation() + MathHelper.ToRadians(90));
+				int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+				Main.dust[dust].scale = 2f;
+				Main.dust[dust].noGravity = true;
+				Main.dust[dust].position = target.Center + spinningpoint5;
+				Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 4f;
+			}
 
 			// You could also spawn dusts at the enemy position. Here is simple an example:
 			// Dust.NewDust(Main.rand.NextVector2FromRectangle(target.Hitbox), 0, 0, ModContent.DustType<Content.Dusts.Sparkle>());
 
 			// Set the target's hit direction to away from the player so the knockback is in the correct direction.
 			hit.HitDirection = (Main.player[Projectile.owner].Center.X < target.Center.X) ? 1 : (-1);
+			if(hit.Crit)
+            {
+				Main.player[Projectile.owner].GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
+				for (int i = 0; (float)i < dustAmount; i++)
+				{
+					Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+					spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(14f, 1f);
+					spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
+					int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+					Main.dust[dust].scale = 2f;
+					Main.dust[dust].noGravity = true;
+					Main.dust[dust].position = target.Center + spinningpoint5;
+					Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 14f;
+				}
+				for (int i = 0; (float)i < dustAmount; i++)
+				{
+					Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+					spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(14f, 1f);
+					spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation() + MathHelper.ToRadians(90));
+					int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+					Main.dust[dust].scale = 2f;
+					Main.dust[dust].noGravity = true;
+					Main.dust[dust].position = target.Center + spinningpoint5;
+					Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 14f;
+				}
+			}
 		}
 
 		public override void OnHitPlayer(Player target, Player.HurtInfo info)

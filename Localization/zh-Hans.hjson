@@ -3161,9 +3161,9 @@ Mods: {
 				Tooltip: 无视星海旅者文本速度设置；所有文本都会立刻显示。
 			}
 
-			DisableDraggingDialogue: {
-				Label: 禁用拖动星海旅者对话框
-				Tooltip: 星海旅者的对话框会被固定在一个位置。
+			MovingDialogueAmount: {
+				// Label: Starfarer Menu Movement
+				// Tooltip: Adjust how much the Starfarer menus move while you're moving.
 			}
 
 			PromptLoc: {
@@ -3260,6 +3260,7 @@ Mods: {
 			SpeedUpLight: 永恒之光受到催化，夜幕不再降临……
 			TsukiyomiBossChecklist: BossCheckList已经更新！并为你揭露了一位隐藏的敌人！
 			CanBeShimmeredSpoils: 可以被微光转化为星体残片
+			// BlockedNova: A powerful foe prevents use of the Stellar Nova!
 			`: Mods.StarsAbove.Common.`
 		}
 
@@ -8157,6 +8158,7 @@ Mods: {
 				// DisplayName: Gund-bit Siege
 				/* Tooltip:
 					'''
+					WORK IN PROGRESS
 					Holding this weapon summons [c/B6E3F5:Bit Staves] and grants [c/3899E1:Aerial Defensive Array], granting bonus defense based on current Mana (up to 10)
 					Attacks with this weapon fire piercing lasers and mark targets, causing the [c/B6E3F5:Bit Staves] to orbit and attack
 					Press the Weapon Action Key to recall all [c/B6E3F5:Bit Staves] to form a defensive shield for 3 seconds (20 second cooldown)
@@ -8172,6 +8174,7 @@ Mods: {
 				// DisplayName: Dragalia Found
 				/* Tooltip:
 					'''
+					WORK IN PROGRESS
 					Holding this weapon grants [Tempest's Dragonlight], reducing damage taken by 2% for every minion slot up to 30%
 					Attacks with this weapon execute five close-ranged combo swings, charging [Dragonshift Energy] on critical strikes
 					After completing a combo, gain [Bondforged Blade] for 3 seconds, charging [Dragonshift Energy] when active
@@ -9049,6 +9052,11 @@ Mods: {
 			// DragonArm.DisplayName: Dragon Arm
 			// StarsAboveSwordEffect.DisplayName: Stars Above Sword Effect
 			// DragaliaFoundSword.DisplayName: Dragalia Found Sword
+			// DragaliaFoundSwordRecoil.DisplayName: Dragalia Found Sword Recoil
+			// DragaliaFoundSwordSpin.DisplayName: Dragalia Found Sword Spin
+			// StarsAboveSwordEffectSpin.DisplayName: Stars Above Sword Effect Spin
+			// DragaliaFoundStab.DisplayName: Dragalia Found Stab
+			// DragaliaFoundDragonAttack.DisplayName: Dragalia Found Dragon Attack
 		}
 
 		Buffs: {
@@ -11581,6 +11589,11 @@ Mods: {
 				PromptLoc: {
 					Label: "{$Mods.StarsAbove.Config.PromptLoc.Label}"
 					Tooltip: "{$Mods.StarsAbove.Config.PromptLoc.Tooltip}"
+				}
+
+				MovingDialogueAmount: {
+					// Label: Moving Dialogue Amount
+					// Tooltip: ""
 				}
 			}
 

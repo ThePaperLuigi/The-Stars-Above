@@ -14,13 +14,14 @@ using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.Generics
 {
-	/* This class is a held projectile that animates a gun firing.
+	/* This class is a held projectile that animates a sword swing.
 	 * 
 	 * */
     public abstract class StarsAboveSword : ModProjectile
 	{
-		public override string Texture => "StarsAbove/Projectiles/Generics/StarsAboveGun";
+		public override string Texture => "StarsAbove/Projectiles/Generics/StarsAboveSword";//Replace in the implementation
         public abstract bool UseRecoil { get; }
+        public abstract bool DoSpin { get; }
 
         public override void SetStaticDefaults()
 		{
@@ -50,7 +51,8 @@ namespace StarsAbove.Projectiles.Generics
 			Projectile.tileCollide = false;
 		}
         public ref float AI_State => ref Projectile.ai[0];
-        public ref float Rotation => ref Projectile.ai[1];
+        public ref float SwingDirection => ref Projectile.ai[1];//0 is normal, 1 is reversed
+        public ref float Rotation => ref Projectile.localAI[1];
         public ref float PlayerDirection => ref Projectile.ai[2];
 
 
@@ -60,7 +62,8 @@ namespace StarsAbove.Projectiles.Generics
 
         float swingAnimationProgress;
         float swingAnimationProgressMax = 10f;
-
+        float recoilAnimationProgress;
+        float recoilAnimationProgressMax = 10f;
         double deg;
 
         float flashAlpha;
@@ -128,9 +131,31 @@ namespace StarsAbove.Projectiles.Generics
                 }
                 else
                 {
-                    swingAnimationProgressMax = projOwner.itemTimeMax;
+                    swingAnimationProgressMax = projOwner.itemTimeMax * 0.9f;
                 }
-                Projectile.NewProjectile(projOwner.GetSource_FromThis(), projOwner.MountedCenter, new Vector2(projOwner.direction, 0f), ProjectileType<StarsAboveSwordEffect>(), 0, 0, projOwner.whoAmI, projOwner.direction, projOwner.itemAnimationMax, 1);
+                if (SwingDirection == 0)//0 is normal, 1 is reverse
+                {
+                    int projType = ProjectileType<StarsAboveSwordEffect>();
+                    if(DoSpin)
+                    {
+                        projType = ProjectileType<StarsAboveSwordEffectSpin>();
+                    }
+                    Projectile.NewProjectile(projOwner.GetSource_FromThis(), projOwner.MountedCenter, new Vector2(projOwner.direction, 0f), projType, 0, 0, projOwner.whoAmI, projOwner.direction, swingAnimationProgressMax, 1);
+
+                }
+                else
+                {
+                    if(PlayerDirection == 1)
+                    {
+                        Projectile.NewProjectile(projOwner.GetSource_FromThis(), projOwner.MountedCenter, new Vector2(projOwner.direction, 0f), ProjectileType<StarsAboveSwordEffect>(), 0, 0, projOwner.whoAmI, -1, swingAnimationProgressMax, 1);
+                    }
+                    else
+                    {
+                        Projectile.NewProjectile(projOwner.GetSource_FromThis(), projOwner.MountedCenter, new Vector2(projOwner.direction, 0f), ProjectileType<StarsAboveSwordEffect>(), 0, 0, projOwner.whoAmI, 1, swingAnimationProgressMax, 1);
+
+                    }
+
+                }
 
                 distance = BaseDistance;
                 Projectile.alpha = 0;
@@ -141,25 +166,55 @@ namespace StarsAbove.Projectiles.Generics
             //The blade spawns at a specificed offset from where the player is facing.
             //The blade then sweeps depending on animation progress, creating effects and the 1.4.4 swing trail
             //The blade disappears
-
-            if(PlayerDirection == 1)
+            int bonusMovement = 0;
+            if (DoSpin)
             {
-                Rotation = MathHelper.Lerp(startingPosition - 90, startingPosition + 90, EaseHelper.InOutQuad(swingAnimationProgress / swingAnimationProgressMax));
+                bonusMovement = 360;
+            }
+
+            if (PlayerDirection == 1)
+            {
+                if(SwingDirection == 0)//0 is normal, 1 is reverse
+                {
+                    Rotation = MathHelper.Lerp(startingPosition - 90, startingPosition + 90 + bonusMovement, EaseHelper.InOutQuad(swingAnimationProgress / swingAnimationProgressMax));
+
+                }
+                else
+                {
+                    Rotation = MathHelper.Lerp(startingPosition + 90, startingPosition - 90 - bonusMovement, EaseHelper.InOutQuad(swingAnimationProgress / swingAnimationProgressMax));
+
+                }
             }
             else
             {
-                Rotation = MathHelper.Lerp(startingPosition + 90, startingPosition - 90, EaseHelper.InOutQuad(swingAnimationProgress / swingAnimationProgressMax));
+                if (SwingDirection == 0)//0 is normal, 1 is reverse
+                {
+                    Rotation = MathHelper.Lerp(startingPosition + 90, startingPosition - 90 - bonusMovement, EaseHelper.InOutQuad(swingAnimationProgress / swingAnimationProgressMax));
+                }
+                else
+                {
+                    Rotation = MathHelper.Lerp(startingPosition - 90, startingPosition + 90 + bonusMovement, EaseHelper.InOutQuad(swingAnimationProgress / swingAnimationProgressMax));
+                }
             }
 
-            if (swingAnimationProgress / swingAnimationProgressMax > 0.4f)
+            if (swingAnimationProgress / swingAnimationProgressMax > 0.4f && !UseRecoil)
             {
                 Projectile.alpha += 40;
             }
 
             if (swingAnimationProgress >= swingAnimationProgressMax && swingAnimationProgress != 0f)
             {
-                //It's a sword, kill it.
-                Projectile.Kill();
+                if(UseRecoil)
+                {
+                    AI_State = (float)ActionState.Recoil;
+                }
+                else
+                {
+                    //It's a sword, kill it.
+                    Projectile.Kill();
+                }
+
+               
 
 
                 //Return to the idle state. (Alternatively, switch to the recoil state but that's unused)
@@ -169,7 +224,53 @@ namespace StarsAbove.Projectiles.Generics
         }
         private void RecoilAnimation(Player projOwner)
         {
-            //Pretty much the reverse of the shoot animation- the gun is lowered a little bit, pulled back again, and then reset to idle position.
+            if (recoilAnimationProgress == 0f)
+            {
+                startingPosition = MathHelper.ToDegrees((float)Math.Atan2(Main.MouseWorld.Y - projOwner.Center.Y, Main.MouseWorld.X - projOwner.Center.X)) - 180;
+                
+                recoilAnimationProgressMax = projOwner.itemTimeMax / 2; //Half of the time spent after using the item is this animation.
+
+                distance = BaseDistance;
+                //Projectile.alpha = 0;
+            }
+            //In order:
+            //The blade spins to prep for the stab
+
+            if (PlayerDirection == 1)
+            {
+                if (SwingDirection == 0)//0 is normal, 1 is reverse
+                {
+                    Rotation = MathHelper.Lerp(startingPosition + 90, startingPosition, EaseHelper.InOutQuad(recoilAnimationProgress / recoilAnimationProgressMax));
+
+                }
+                else
+                {
+                    Rotation = MathHelper.Lerp(startingPosition - 90, startingPosition, EaseHelper.InOutQuad(recoilAnimationProgress / recoilAnimationProgressMax));
+
+                }
+            }
+            else
+            {
+                if (SwingDirection == 0)//0 is normal, 1 is reverse
+                {
+                    Rotation = MathHelper.Lerp(startingPosition - 90, startingPosition, EaseHelper.InOutQuad(recoilAnimationProgress / recoilAnimationProgressMax));
+                }
+                else
+                {
+                    Rotation = MathHelper.Lerp(startingPosition + 90, startingPosition, EaseHelper.InOutQuad(recoilAnimationProgress / recoilAnimationProgressMax));
+                }
+            }
+
+            if (recoilAnimationProgress / recoilAnimationProgressMax > 0.4f)
+            {
+                Projectile.alpha += 40;
+            }
+
+            if (recoilAnimationProgress >= recoilAnimationProgressMax && recoilAnimationProgress != 0f)
+            {
+                Projectile.Kill();
+            }
+            recoilAnimationProgress += 1f;
         }
         private void Idle(Player projOwner)
         {

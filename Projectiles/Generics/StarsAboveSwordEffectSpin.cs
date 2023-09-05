@@ -10,12 +10,11 @@ using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles.Generics
 {
-	// This is a copy of the Excalibur's projectile (TEMP)
-	public class StarsAboveSwordEffect : ModProjectile
+	public class StarsAboveSwordEffectSpin : ModProjectile
 	{
 
 		// We could use a vanilla texture if we want instead of supplying our own.
-		// public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.Excalibur;
+		public override string Texture => "StarsAbove/Projectiles/Generics/StarsAboveSwordEffect";
 
 		public override void SetStaticDefaults()
 		{
@@ -83,11 +82,11 @@ namespace StarsAbove.Projectiles.Generics
 			
 			if(Projectile.ai[0] == 1)
 			{
-				Projectile.rotation = MathHelper.ToRadians(MathHelper.Lerp(startingRotation - 115, startingRotation + 45, EaseHelper.InOutQuad(percentageOfLife))); // Set the rotation to our to the new rotation we calculated.
+				Projectile.rotation = MathHelper.ToRadians(MathHelper.Lerp(startingRotation - 115, startingRotation + 45 + 360, EaseHelper.InOutQuad(percentageOfLife))); // Set the rotation to our to the new rotation we calculated.
 			}
 			else
 			{
-				Projectile.rotation = MathHelper.ToRadians(MathHelper.Lerp(startingRotation + 115, startingRotation - 45, EaseHelper.InOutQuad(percentageOfLife))); // Set the rotation to our to the new rotation we calculated.
+				Projectile.rotation = MathHelper.ToRadians(MathHelper.Lerp(startingRotation + 115, startingRotation - 45 - 360, EaseHelper.InOutQuad(percentageOfLife))); // Set the rotation to our to the new rotation we calculated.
 
 			}
 

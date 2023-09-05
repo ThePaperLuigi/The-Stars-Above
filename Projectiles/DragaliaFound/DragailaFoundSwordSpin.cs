@@ -12,11 +12,11 @@ using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.DragaliaFound
 {
-    public class DragaliaFoundSword : StarsAboveSword
+    public class DragaliaFoundSwordSpin : StarsAboveSword
 	{
 		public override string Texture => "StarsAbove/Projectiles/DragaliaFound/DragaliaFoundSword";
 		public override bool UseRecoil => false;
-		public override bool DoSpin => false;
+		public override bool DoSpin => true;
 		public override float BaseDistance => 50;
 		public override void SetStaticDefaults()
 		{
@@ -25,6 +25,7 @@ namespace StarsAbove.Projectiles.DragaliaFound
 		public override void SetDefaults()
 		{
 			Projectile.DamageType = DamageClass.SummonMeleeSpeed;
+
 			Projectile.width = 132;
 			Projectile.height = 132;
 			Projectile.friendly = true;
@@ -32,21 +33,21 @@ namespace StarsAbove.Projectiles.DragaliaFound
 			Projectile.tileCollide = false;
 			Projectile.penetrate = -1;
 			Projectile.usesLocalNPCImmunity = true;
-			Projectile.localNPCHitCooldown = -1;
+			Projectile.localNPCHitCooldown = 7;
+		}
+		public override void ModifyDamageHitbox(ref Rectangle hitbox)
+		{
+			hitbox.X -= 60;
+			hitbox.Y -= 60;
+			hitbox.Width += 120;
+			hitbox.Height += 120;
+			base.ModifyDamageHitbox(ref hitbox);
 		}
 		public override bool PreAI()
         {
 			Player player = Main.player[Projectile.owner];
 			//DrawOriginOffsetY = -6;
 			return true;
-		}
-		public override void ModifyDamageHitbox(ref Rectangle hitbox)
-		{
-			hitbox.X -= 30;
-			hitbox.Y -= 30;
-			hitbox.Width += 60;
-			hitbox.Height += 60;
-			base.ModifyDamageHitbox(ref hitbox);
 		}
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{

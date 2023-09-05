@@ -18,7 +18,8 @@ namespace StarsAbove.Projectiles.DragaliaFound
 	{
 		public override void SetStaticDefaults()
 		{
-			
+			//Main.projFrames[Projectile.type] = 2;
+
 		}
 
 		public override void SetDefaults()
@@ -73,7 +74,25 @@ namespace StarsAbove.Projectiles.DragaliaFound
             /distance for the desired distance away from the player minus the projectile's width   /
             /and height divided by two so the center of the projectile is at the right place.     */
 			
-			Projectile.rotation = Vector2.Normalize(Main.MouseWorld - Projectile.Center).ToRotation() + MathHelper.ToRadians(90f);
+			if(projOwner.ownedProjectileCounts[ProjectileType<DragaliaFoundDragonAttack>()] > 0)
+            {
+				for(int i = 0; i < Main.maxProjectiles; i++)
+                {
+					Projectile other = Main.projectile[i];
+
+					if (i != Projectile.whoAmI && other.active && other.owner == Projectile.owner &&
+						(other.type == ProjectileType<DragaliaFoundDragonAttack>()))
+					{
+						Projectile.rotation = other.rotation + MathHelper.ToRadians(90f);
+
+					}
+				}
+            }
+			else
+            {
+				Projectile.rotation = Vector2.Normalize(Main.MouseWorld - Projectile.Center).ToRotation() + MathHelper.ToRadians(90f);
+
+			}
 
 			int frameMod = 0;
 			switch (projOwner.mount._frame)

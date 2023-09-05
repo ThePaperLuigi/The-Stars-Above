@@ -12,10 +12,10 @@ using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.DragaliaFound
 {
-    public class DragaliaFoundSword : StarsAboveSword
+    public class DragaliaFoundSwordRecoil : StarsAboveSword
 	{
 		public override string Texture => "StarsAbove/Projectiles/DragaliaFound/DragaliaFoundSword";
-		public override bool UseRecoil => false;
+		public override bool UseRecoil => true;
 		public override bool DoSpin => false;
 		public override float BaseDistance => 50;
 		public override void SetStaticDefaults()
@@ -24,7 +24,6 @@ namespace StarsAbove.Projectiles.DragaliaFound
 		}
 		public override void SetDefaults()
 		{
-			Projectile.DamageType = DamageClass.SummonMeleeSpeed;
 			Projectile.width = 132;
 			Projectile.height = 132;
 			Projectile.friendly = true;
