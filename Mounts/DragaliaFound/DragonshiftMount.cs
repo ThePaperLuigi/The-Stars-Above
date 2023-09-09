@@ -95,6 +95,7 @@ namespace StarsAbove.Mounts.DragaliaFound
 
 		public override void UpdateEffects(Player player)
 		{
+			Dust.NewDust(player.MountedCenter, 0, 0, DustID.GreenFairy, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 0.5f);
 
 			// This code spawns some dust if we are moving fast enough.
 			if (Math.Abs(player.velocity.X) > 4f)

@@ -140,7 +140,9 @@ namespace StarsAbove
         public int nanomachinaShieldHP;
         public int nanomachinaShieldHPMax;
         public float nanomachinaGauge;
-        
+
+        public bool DragaliaFoundHeld;
+        public float DragonshiftGauge;
 
         //The Kiss of Death
         public bool KissOfDeathHeld;
@@ -2463,7 +2465,7 @@ namespace StarsAbove
                 Player.AddBuff(BuffType<HunterSymphonyCooldown>(), 1200);
                 HunterSongPlaying = 0;
             }
-           
+
 
             BuryTheLight();
 
@@ -2501,201 +2503,21 @@ namespace StarsAbove
 
             //foreach (Player castPlayer in Main.player)
             //{ 
-            if (stellarPerformanceStart == true)
-            {
-                stellarPerformanceActive = true;
-                stellarPerformancePrep = true;
-                stellarPerformancePostPrep = false;
-                stellarPerformanceEnding = false;
-                stellarPerformanceSongTimer = 0;
-
-                //SoundEffectInstance x = Main.PlaySound(SoundLoader.customSoundType, (int)player.Center.X, (int)player.Center.Y, mod.GetSoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Custom/SuistrumeSound"));
-                //stellarPerformanceSoundInstance = x;
-                stellarPerformanceClosingIn = 1000f;
-                stellarPerformanceIndicator = false;
-                stellarPerformanceStart = false;
-            }
-            if (stellarPerformanceActive == true)//The song lasts for 5000~ ticks
+            Suistrume();
+            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.ButterflyTrance>()))
             {
 
+                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                Vector2 position = Main.LocalPlayer.position;
+                int playerWidth = Main.LocalPlayer.width;
+                int playerHeight = Main.LocalPlayer.height;
 
-                stellarPerformanceSongTimer++;
-                if (stellarPerformanceSongTimer >= 5061)
-                {
+                Dust.NewDust(position, playerWidth, playerHeight, 164, 0f, 0f, 150, default(Color), 1.5f);
 
-                    for (int d = 0; d < 40; d++)
-                    {
-                        Dust.NewDust(Player.position, Player.width, Player.height, 21, 0f + Main.rand.Next(-30, 30), 0f + Main.rand.Next(-30, 30), 150, default(Color), 1.5f);
-                    }
-                    for (int d = 0; d < 35; d++)
-                    {
-                        Dust.NewDust(Player.position, Player.width, Player.height, 45, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 1.5f);
-                    }
-                    Player.AddBuff(BuffType<Buffs.StellarPerformanceCooldown>(), 3600);
 
-                    stellarPerformanceEnding = true;
-                    stellarPerformancePostPrep = false;
-                    PerformanceResourceCurrent = 0;
-
-                    stellarPerformanceActive = false;
-
-                }
-
-            }
-            if (stellarPerformancePrep == true)
-            {
-
-                for (int i = 0; i < 10; i++)
-                {
-                    Vector2 vector = new Vector2(
-                        Main.rand.Next(-2048, 2048) * (0.003f * stellarPerformanceClosingIn / 6) - 10,
-                        Main.rand.Next(-2048, 2048) * (0.003f * stellarPerformanceClosingIn / 6) - 10);
-                    Dust d = Main.dust[Dust.NewDust(
-                        Player.MountedCenter + vector, 1, 1,
-                        45, 0, 0, 255,
-                        new Color(0.8f, 0.4f, 1f), 1.5f)];
-                    d.velocity = -vector / 16;
-                    d.velocity -= Player.velocity / 8;
-                    d.noLight = true;
-                    d.noGravity = true;
-
-                }
-                for (int i = 0; i < 30; i++)
-                {//Circle
-                    Vector2 offset = new Vector2();
-                    double angle = Main.rand.NextDouble() * 2d * Math.PI;
-                    offset.X += (float)(Math.Sin(angle) * stellarPerformanceClosingIn);
-                    offset.Y += (float)(Math.Cos(angle) * stellarPerformanceClosingIn);
-
-                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 45, Player.velocity, 200, default(Color), 0.7f);
-                    d.fadeIn = 1f;
-                    d.noGravity = true;
-                }
-
-                stellarPerformanceClosingIn -= 2;
-                stellarPerformancePrepTimer += 0.1f;
-                if (stellarPerformancePrepTimer >= 0.401f)
-                {
-                    PerformanceResourceCurrent++;
-                    stellarPerformancePrepTimer = 0;
-                }
-                if (PerformanceResourceCurrent >= 100)
-                {
-                    for (int d = 0; d < 100; d++)
-                    {
-                        Dust.NewDust(Player.position, Player.width, Player.height, 21, 0f + Main.rand.Next(-40, 40), 0f + Main.rand.Next(-40, 40), 150, default(Color), 1.5f);
-                    }
-                    for (int d = 0; d < 35; d++)
-                    {
-                        Dust.NewDust(Player.position, Player.width, Player.height, 45, 0f + Main.rand.Next(-45, 45), 0f + Main.rand.Next(-45, 45), 150, default(Color), 1.5f);
-                    }
-                    stellarPerformancePulseRadius = 0;
-                    stellarPerformancePostPrep = true;
-                    stellarPerformancePrep = false;
-
-                }
-            }
-            if (stellarPerformancePostPrep == true)
-            {
-                stellarPerformanceDepletion++;
-                Player.AddBuff(BuffType<Buffs.StellarPerformance>(), 2);
-                if (stellarPerformancePulseRadius < 320)
-                    stellarPerformancePulseRadius += 5.3f;
-                if (stellarPerformancePulseRadius >= 320 && stellarPerformancePulseRadius < 420)
-                    stellarPerformancePulseRadius += 2;
-                if (stellarPerformancePulseRadius >= 420)
-                    stellarPerformancePulseRadius++;
-
-                if (stellarPerformanceDepletion >= 5)
-                {
-                    if (!(Player.velocity == Vector2.Zero))
-                    {
-                        if (PerformanceResourceCurrent < 100)
-                        {
-                            PerformanceResourceCurrent++;
-                        }
-                    }
-                    else
-                    {
-                        PerformanceResourceCurrent--;
-                    }
-                    stellarPerformanceDepletion = 0;
-                }
-                if (Main.rand.NextBool(3))
-                {
-                    Dust.NewDust(Player.position, Player.width, Player.height, 45, 0f + Main.rand.Next(-30, 30), 0f + Main.rand.Next(-30, 30), 150, default(Color), 1.5f);
-                }
-                if (!(Player.velocity == Vector2.Zero))
-                {
-                    if (Main.rand.NextBool(5))
-                    {
-                        Dust.NewDust(Player.position, Player.width, Player.height, DustType<MusicNote>(), 0f + Main.rand.Next(-25, 25), 0f + Main.rand.Next(-25, 25), 150, default(Color), 1.5f);
-                    }
-                }
-                if (Main.rand.NextBool(2))
-                {
-                    Vector2 position = new Vector2(Player.position.X - (800 / 2), Player.position.Y - (800 / 2));
-                    Dust.NewDust(position, 800, 800, DustType<MusicNote>(), 0f + Main.rand.Next(-25, 25), 0f + Main.rand.Next(-25, 25), 150, default(Color), 1.5f);
-                }
-
-                if (stellarPerformanceIndicator == true)
-                {
-                    for (int i = 0; i < 30; i++)
-                    {//Circle
-                        Vector2 offset = new Vector2();
-                        double angle = Main.rand.NextDouble() * 2d * Math.PI;
-                        offset.X += (float)(Math.Sin(angle) * 520f);
-                        offset.Y += (float)(Math.Cos(angle) * 520f);
-
-                        Dust d = Dust.NewDustPerfect(Player.Center + offset, 45, Player.velocity, 200, default(Color), 0.7f);
-                        d.fadeIn = 1f;
-                        d.noGravity = true;
-                    }
-                }
-                for (int i = 0; i < 30; i++)
-                {//Circle pulse
-                    Vector2 offset = new Vector2();
-                    double angle = Main.rand.NextDouble() * 2d * Math.PI;
-                    offset.X += (float)(Math.Sin(angle) * stellarPerformancePulseRadius);
-                    offset.Y += (float)(Math.Cos(angle) * stellarPerformancePulseRadius);
-
-                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 45, Player.velocity, 200, default(Color), 0.7f);
-                    d.fadeIn = 0.2f;
-                    d.noGravity = true;
-                }
-                if (stellarPerformancePulseRadius >= 520)
-                {
-                    stellarPerformanceIndicator = true;
-                    stellarPerformancePulseRadius = 0;
-                }
 
 
             }
-            if (stellarPerformancePostPrep == true)
-            {
-                Player.AddBuff(BuffType<Buffs.StellarPerformance>(), 1);
-
-
-            }
-            if (stellarPerformancePostPrep == true)
-            {
-
-                if (PerformanceResourceCurrent < 0)
-                {
-                    stellarPerformanceSoundInstance?.Stop();
-                    SoundEngine.PlaySound(StarsAboveAudio.SFX_SuistrumeFail, Player.Center);
-                    Player.AddBuff(BuffType<Buffs.StellarPerformanceCooldown>(), 7200);
-
-                    stellarPerformanceActive = false;
-                    stellarPerformanceEnding = true;
-                    stellarPerformancePostPrep = false;
-                    PerformanceResourceCurrent = 0;
-
-                }
-
-            }
-
-
             if (Main.LocalPlayer.HasBuff(BuffType<Buffs.ButterflyTrance>()))
             {
 
@@ -2793,7 +2615,7 @@ namespace StarsAbove
                             NPC npc = Main.npc[ib];
                             if (npc.active && npc.boss)
                             {
-                                Player.AddBuff(BuffType<Mortality>(), 60*15);
+                                Player.AddBuff(BuffType<Mortality>(), 60 * 15);
 
                             }
                         }
@@ -3128,6 +2950,203 @@ namespace StarsAbove
 
         }
 
+        private void Suistrume()
+        {
+            if (stellarPerformanceStart == true)
+            {
+                stellarPerformanceActive = true;
+                stellarPerformancePrep = true;
+                stellarPerformancePostPrep = false;
+                stellarPerformanceEnding = false;
+                stellarPerformanceSongTimer = 0;
+
+                //SoundEffectInstance x = Main.PlaySound(SoundLoader.customSoundType, (int)player.Center.X, (int)player.Center.Y, mod.GetSoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Custom/SuistrumeSound"));
+                //stellarPerformanceSoundInstance = x;
+                stellarPerformanceClosingIn = 1000f;
+                stellarPerformanceIndicator = false;
+                stellarPerformanceStart = false;
+            }
+            if (stellarPerformanceActive == true)//The song lasts for 5000~ ticks
+            {
+
+
+                stellarPerformanceSongTimer++;
+                if (stellarPerformanceSongTimer >= 5061)
+                {
+
+                    for (int d = 0; d < 40; d++)
+                    {
+                        Dust.NewDust(Player.position, Player.width, Player.height, 21, 0f + Main.rand.Next(-30, 30), 0f + Main.rand.Next(-30, 30), 150, default(Color), 1.5f);
+                    }
+                    for (int d = 0; d < 35; d++)
+                    {
+                        Dust.NewDust(Player.position, Player.width, Player.height, 45, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 1.5f);
+                    }
+                    Player.AddBuff(BuffType<Buffs.StellarPerformanceCooldown>(), 3600);
+
+                    stellarPerformanceEnding = true;
+                    stellarPerformancePostPrep = false;
+                    PerformanceResourceCurrent = 0;
+
+                    stellarPerformanceActive = false;
+
+                }
+
+            }
+            if (stellarPerformancePrep == true)
+            {
+
+                for (int i = 0; i < 10; i++)
+                {
+                    Vector2 vector = new Vector2(
+                        Main.rand.Next(-2048, 2048) * (0.003f * stellarPerformanceClosingIn / 6) - 10,
+                        Main.rand.Next(-2048, 2048) * (0.003f * stellarPerformanceClosingIn / 6) - 10);
+                    Dust d = Main.dust[Dust.NewDust(
+                        Player.MountedCenter + vector, 1, 1,
+                        45, 0, 0, 255,
+                        new Color(0.8f, 0.4f, 1f), 1.5f)];
+                    d.velocity = -vector / 16;
+                    d.velocity -= Player.velocity / 8;
+                    d.noLight = true;
+                    d.noGravity = true;
+
+                }
+                for (int i = 0; i < 30; i++)
+                {//Circle
+                    Vector2 offset = new Vector2();
+                    double angle = Main.rand.NextDouble() * 2d * Math.PI;
+                    offset.X += (float)(Math.Sin(angle) * stellarPerformanceClosingIn);
+                    offset.Y += (float)(Math.Cos(angle) * stellarPerformanceClosingIn);
+
+                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 45, Player.velocity, 200, default(Color), 0.7f);
+                    d.fadeIn = 1f;
+                    d.noGravity = true;
+                }
+
+                stellarPerformanceClosingIn -= 2;
+                stellarPerformancePrepTimer += 0.1f;
+                if (stellarPerformancePrepTimer >= 0.401f)
+                {
+                    PerformanceResourceCurrent++;
+                    stellarPerformancePrepTimer = 0;
+                }
+                if (PerformanceResourceCurrent >= 100)
+                {
+                    for (int d = 0; d < 100; d++)
+                    {
+                        Dust.NewDust(Player.position, Player.width, Player.height, 21, 0f + Main.rand.Next(-40, 40), 0f + Main.rand.Next(-40, 40), 150, default(Color), 1.5f);
+                    }
+                    for (int d = 0; d < 35; d++)
+                    {
+                        Dust.NewDust(Player.position, Player.width, Player.height, 45, 0f + Main.rand.Next(-45, 45), 0f + Main.rand.Next(-45, 45), 150, default(Color), 1.5f);
+                    }
+                    stellarPerformancePulseRadius = 0;
+                    stellarPerformancePostPrep = true;
+                    stellarPerformancePrep = false;
+
+                }
+            }
+            if (stellarPerformancePostPrep == true)
+            {
+                stellarPerformanceDepletion++;
+                Player.AddBuff(BuffType<Buffs.StellarPerformance>(), 2);
+                if (stellarPerformancePulseRadius < 320)
+                    stellarPerformancePulseRadius += 5.3f;
+                if (stellarPerformancePulseRadius >= 320 && stellarPerformancePulseRadius < 420)
+                    stellarPerformancePulseRadius += 2;
+                if (stellarPerformancePulseRadius >= 420)
+                    stellarPerformancePulseRadius++;
+
+                if (stellarPerformanceDepletion >= 5)
+                {
+                    if (!(Player.velocity == Vector2.Zero))
+                    {
+                        if (PerformanceResourceCurrent < 100)
+                        {
+                            PerformanceResourceCurrent++;
+                        }
+                    }
+                    else
+                    {
+                        PerformanceResourceCurrent--;
+                    }
+                    stellarPerformanceDepletion = 0;
+                }
+                if (Main.rand.NextBool(3))
+                {
+                    Dust.NewDust(Player.position, Player.width, Player.height, 45, 0f + Main.rand.Next(-30, 30), 0f + Main.rand.Next(-30, 30), 150, default(Color), 1.5f);
+                }
+                if (!(Player.velocity == Vector2.Zero))
+                {
+                    if (Main.rand.NextBool(5))
+                    {
+                        Dust.NewDust(Player.position, Player.width, Player.height, DustType<MusicNote>(), 0f + Main.rand.Next(-25, 25), 0f + Main.rand.Next(-25, 25), 150, default(Color), 1.5f);
+                    }
+                }
+                if (Main.rand.NextBool(2))
+                {
+                    Vector2 position = new Vector2(Player.position.X - (800 / 2), Player.position.Y - (800 / 2));
+                    Dust.NewDust(position, 800, 800, DustType<MusicNote>(), 0f + Main.rand.Next(-25, 25), 0f + Main.rand.Next(-25, 25), 150, default(Color), 1.5f);
+                }
+
+                if (stellarPerformanceIndicator == true)
+                {
+                    for (int i = 0; i < 30; i++)
+                    {//Circle
+                        Vector2 offset = new Vector2();
+                        double angle = Main.rand.NextDouble() * 2d * Math.PI;
+                        offset.X += (float)(Math.Sin(angle) * 520f);
+                        offset.Y += (float)(Math.Cos(angle) * 520f);
+
+                        Dust d = Dust.NewDustPerfect(Player.Center + offset, 45, Player.velocity, 200, default(Color), 0.7f);
+                        d.fadeIn = 1f;
+                        d.noGravity = true;
+                    }
+                }
+                for (int i = 0; i < 30; i++)
+                {//Circle pulse
+                    Vector2 offset = new Vector2();
+                    double angle = Main.rand.NextDouble() * 2d * Math.PI;
+                    offset.X += (float)(Math.Sin(angle) * stellarPerformancePulseRadius);
+                    offset.Y += (float)(Math.Cos(angle) * stellarPerformancePulseRadius);
+
+                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 45, Player.velocity, 200, default(Color), 0.7f);
+                    d.fadeIn = 0.2f;
+                    d.noGravity = true;
+                }
+                if (stellarPerformancePulseRadius >= 520)
+                {
+                    stellarPerformanceIndicator = true;
+                    stellarPerformancePulseRadius = 0;
+                }
+
+
+            }
+            if (stellarPerformancePostPrep == true)
+            {
+                Player.AddBuff(BuffType<Buffs.StellarPerformance>(), 1);
+
+
+            }
+            if (stellarPerformancePostPrep == true)
+            {
+
+                if (PerformanceResourceCurrent < 0)
+                {
+                    stellarPerformanceSoundInstance?.Stop();
+                    SoundEngine.PlaySound(StarsAboveAudio.SFX_SuistrumeFail, Player.Center);
+                    Player.AddBuff(BuffType<Buffs.StellarPerformanceCooldown>(), 7200);
+
+                    stellarPerformanceActive = false;
+                    stellarPerformanceEnding = true;
+                    stellarPerformancePostPrep = false;
+                    PerformanceResourceCurrent = 0;
+
+                }
+
+            }
+        }
+
         private void BuryTheLight()
         {
             judgementCutTimer--;
@@ -3223,6 +3242,7 @@ namespace StarsAbove
                     PerformanceResourceCurrent -= info.Damage;
                 }
             }
+            
             if(DraggedBelowHeld)
             {
                 DraggedBelowCorruption++;
@@ -3269,6 +3289,13 @@ namespace StarsAbove
         }
         public override bool FreeDodge(Player.HurtInfo info)
         {
+            if (Player.HasBuff(BuffType<DragonshiftActiveBuff>()) && !Player.immune)
+            {
+                Player.immune = true;
+                Player.immuneTime = 30;
+                DragonshiftGauge -= 10;
+                return true;
+            }
             if (Player.HasBuff(BuffType<SpectrumAbsorption>()) && Player.immuneTime <= 0)
             {
                 SoundEngine.PlaySound(SoundID.Item130, Player.Center);
@@ -3612,6 +3639,11 @@ namespace StarsAbove
         public override void ResetEffects()
         {
             WeaponGaugeOffset = 0;
+            if(!DragaliaFoundHeld)
+            {
+                DragonshiftGauge = 0;
+            }
+            DragaliaFoundHeld = false;
             DraggedBelowHeld = false;
             KevesiFarewellInInventory = false;
             AgnianFarewellInInventory = false;

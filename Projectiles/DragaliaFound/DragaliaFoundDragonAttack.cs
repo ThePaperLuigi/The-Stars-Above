@@ -176,7 +176,48 @@ namespace StarsAbove.Projectiles.DragaliaFound
 			// The particles from the Particle Orchestra are predefined by vanilla and most can not be customized that much.
 			// Use auto complete to see the other ParticleOrchestraType types there are.
 			// Here we are spawning the Excalibur particle randomly inside of the target's hitbox.
+		
 			float dustAmount = 40f;
+			for (int i = 0; (float)i < dustAmount; i++)
+			{
+				Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+				spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(14f, 2f);
+				spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
+				int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+				Main.dust[dust].scale = 2f;
+				Main.dust[dust].noGravity = true;
+				Main.dust[dust].position = target.Center + spinningpoint5;
+				Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 2f;
+			}
+			for (int i = 0; (float)i < dustAmount; i++)
+			{
+				Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+				spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(140f, 6f);
+				spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation() + MathHelper.ToRadians(90));
+				int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+				Main.dust[dust].scale = 2f;
+				Main.dust[dust].noGravity = true;
+				Main.dust[dust].position = target.Center + spinningpoint5;
+				Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 6f;
+			}
+			for (int i = 0; (float)i < dustAmount; i++)
+			{
+				Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+				spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(20f, 1f);
+				spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation() + MathHelper.ToRadians(90));
+				int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+				Main.dust[dust].scale = 2f;
+				Main.dust[dust].noGravity = true;
+				Main.dust[dust].position = target.Center + spinningpoint5;
+				Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 2f;
+			}
+
+			// You could also spawn dusts at the enemy position. Here is simple an example:
+			// Dust.NewDust(Main.rand.NextVector2FromRectangle(target.Hitbox), 0, 0, ModContent.DustType<Content.Dusts.Sparkle>());
+
+			// Set the target's hit direction to away from the player so the knockback is in the correct direction.
+			hit.HitDirection = (Main.player[Projectile.owner].Center.X < target.Center.X) ? 1 : (-1);
+			Main.player[Projectile.owner].GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
 			for (int i = 0; (float)i < dustAmount; i++)
 			{
 				Vector2 spinningpoint5 = Vector2.UnitX * 0f;
@@ -188,49 +229,7 @@ namespace StarsAbove.Projectiles.DragaliaFound
 				Main.dust[dust].position = target.Center + spinningpoint5;
 				Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 4f;
 			}
-			for (int i = 0; (float)i < dustAmount; i++)
-			{
-				Vector2 spinningpoint5 = Vector2.UnitX * 0f;
-				spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(14f, 1f);
-				spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation() + MathHelper.ToRadians(90));
-				int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
-				Main.dust[dust].scale = 2f;
-				Main.dust[dust].noGravity = true;
-				Main.dust[dust].position = target.Center + spinningpoint5;
-				Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 4f;
-			}
 
-			// You could also spawn dusts at the enemy position. Here is simple an example:
-			// Dust.NewDust(Main.rand.NextVector2FromRectangle(target.Hitbox), 0, 0, ModContent.DustType<Content.Dusts.Sparkle>());
-
-			// Set the target's hit direction to away from the player so the knockback is in the correct direction.
-			hit.HitDirection = (Main.player[Projectile.owner].Center.X < target.Center.X) ? 1 : (-1);
-			if(hit.Crit)
-            {
-				Main.player[Projectile.owner].GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
-				for (int i = 0; (float)i < dustAmount; i++)
-				{
-					Vector2 spinningpoint5 = Vector2.UnitX * 0f;
-					spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(14f, 1f);
-					spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
-					int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
-					Main.dust[dust].scale = 2f;
-					Main.dust[dust].noGravity = true;
-					Main.dust[dust].position = target.Center + spinningpoint5;
-					Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 14f;
-				}
-				for (int i = 0; (float)i < dustAmount; i++)
-				{
-					Vector2 spinningpoint5 = Vector2.UnitX * 0f;
-					spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(14f, 1f);
-					spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation() + MathHelper.ToRadians(90));
-					int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
-					Main.dust[dust].scale = 2f;
-					Main.dust[dust].noGravity = true;
-					Main.dust[dust].position = target.Center + spinningpoint5;
-					Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 14f;
-				}
-			}
 		}
 
 		public override void OnHitPlayer(Player target, Player.HurtInfo info)

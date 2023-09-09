@@ -92,8 +92,7 @@ namespace StarsAbove.Items.Weapons.Magic
 				}
 
 			}
-			//player.GetModPlayer<WeaponPlayer>().blackMana--;
-			//player.GetModPlayer<WeaponPlayer>().whiteMana--;
+
 			base.HoldItem(player);
 		}
         public override bool? UseItem(Player player)

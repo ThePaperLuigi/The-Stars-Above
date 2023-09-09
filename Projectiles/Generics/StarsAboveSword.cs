@@ -22,6 +22,9 @@ namespace StarsAbove.Projectiles.Generics
 		public override string Texture => "StarsAbove/Projectiles/Generics/StarsAboveSword";//Replace in the implementation
         public abstract bool UseRecoil { get; }
         public abstract bool DoSpin { get; }
+        public abstract Color BackDarkColor { get; }
+        public abstract Color MiddleMediumColor { get; }
+        public abstract Color FrontLightColor  { get; }
 
         public override void SetStaticDefaults()
 		{
@@ -136,23 +139,45 @@ namespace StarsAbove.Projectiles.Generics
                 if (SwingDirection == 0)//0 is normal, 1 is reverse
                 {
                     int projType = ProjectileType<StarsAboveSwordEffect>();
+
+                    //Projectile.NewProjectile(projOwner.GetSource_FromThis(), projOwner.MountedCenter, new Vector2(projOwner.direction, 0f), projType, 0, 0, projOwner.whoAmI, projOwner.direction, swingAnimationProgressMax, 1);
+                    int proj = Projectile.NewProjectile(projOwner.GetSource_FromThis(), projOwner.MountedCenter, new Vector2(projOwner.direction, 0f), projType, 0, 0, projOwner.whoAmI, projOwner.direction, swingAnimationProgressMax, Projectile.scale);
+                    StarsAboveSwordEffect projectile = Main.projectile[proj].ModProjectile as StarsAboveSwordEffect;
+                    projectile.backDarkColor = BackDarkColor;
+                    projectile.middleMediumColor = MiddleMediumColor;
+                    projectile.frontLightColor = FrontLightColor;
                     if(DoSpin)
                     {
-                        projType = ProjectileType<StarsAboveSwordEffectSpin>();
+                        projectile.spin = true;
                     }
-                    Projectile.NewProjectile(projOwner.GetSource_FromThis(), projOwner.MountedCenter, new Vector2(projOwner.direction, 0f), projType, 0, 0, projOwner.whoAmI, projOwner.direction, swingAnimationProgressMax, 1);
-
                 }
                 else
                 {
-                    if(PlayerDirection == 1)
+                    int projType = ProjectileType<StarsAboveSwordEffect>();
+
+                    if (PlayerDirection == 1)
                     {
-                        Projectile.NewProjectile(projOwner.GetSource_FromThis(), projOwner.MountedCenter, new Vector2(projOwner.direction, 0f), ProjectileType<StarsAboveSwordEffect>(), 0, 0, projOwner.whoAmI, -1, swingAnimationProgressMax, 1);
+                        int proj = Projectile.NewProjectile(projOwner.GetSource_FromThis(), projOwner.MountedCenter, new Vector2(projOwner.direction, 0f), projType, 0, 0, projOwner.whoAmI, -1, swingAnimationProgressMax, Projectile.scale);
+                        StarsAboveSwordEffect projectile = Main.projectile[proj].ModProjectile as StarsAboveSwordEffect;
+                        projectile.backDarkColor = BackDarkColor;
+                        projectile.middleMediumColor = MiddleMediumColor;
+                        projectile.frontLightColor = FrontLightColor;
+                        if (DoSpin)
+                        {
+                            projectile.spin = true;
+                        }
                     }
                     else
                     {
-                        Projectile.NewProjectile(projOwner.GetSource_FromThis(), projOwner.MountedCenter, new Vector2(projOwner.direction, 0f), ProjectileType<StarsAboveSwordEffect>(), 0, 0, projOwner.whoAmI, 1, swingAnimationProgressMax, 1);
-
+                        int proj = Projectile.NewProjectile(projOwner.GetSource_FromThis(), projOwner.MountedCenter, new Vector2(projOwner.direction, 0f), projType, 0, 0, projOwner.whoAmI, 1, swingAnimationProgressMax, Projectile.scale);
+                        StarsAboveSwordEffect projectile = Main.projectile[proj].ModProjectile as StarsAboveSwordEffect;
+                        projectile.backDarkColor = BackDarkColor;
+                        projectile.middleMediumColor = MiddleMediumColor;
+                        projectile.frontLightColor = FrontLightColor;
+                        if (DoSpin)
+                        {
+                            projectile.spin = true;
+                        }
                     }
 
                 }

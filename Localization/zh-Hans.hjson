@@ -8175,15 +8175,17 @@ Mods: {
 				/* Tooltip:
 					'''
 					WORK IN PROGRESS
-					Holding this weapon grants [Tempest's Dragonlight], reducing damage taken by 2% for every minion slot up to 30%
-					Attacks with this weapon execute five close-ranged combo swings, charging [Dragonshift Energy] on critical strikes
+					Holding this weapon grants [Tempest's Dragonlight], granting 2 defense for every minion slot
+					Attacks with this weapon execute a close-ranged combo, granting Invincibility for a short time before finishing the combo
 					After completing a combo, gain [Bondforged Blade] for 3 seconds, charging [Dragonshift Energy] when active
-					Right click to unleash a blade of wind, piercing foes while charging [Dragonshift Energy] on kill (8 second cooldown)
-					Once [Dragonshift Energy] reaches 50%, press the Weapon Action Key to consume 50% [Dragonshift Energy] and activate [Windwyrm State] for 12 seconds
-					[Windwyrm State] transforms yourself into a powerful dragon, healing 100 HP instantly
-					Within [Windwyrm State], attacks become powerful blasts of wind that deal damage in a large area and inflict [Stormlash] for 6 seconds
+					Once [Dragonshift Energy] reaches 50% or more, press the Weapon Action Key to activate [Windwyrm State]
+					[Windwyrm State] transforms yourself into a powerful dragon, healing 100 HP instantly while constantly draining [Dragonshift Energy]
+					Within [Windwyrm State], attacks become powerful claw slashes that deal 2x damage in a large area and inflict [Stormlash] for 6 seconds
+					Additionally, taking damage subtracts [Dragonshift Energy] instead
 					[Stormlash] is consumed when minions deal damage and increases damage dealt by 1% for every minion slot
-					Swapping off this weapon will immediately end [Pactbind State] and reset [Dragonshift Energy]
+					Right click to unleash a burst of wind energy, dealing critical damage to all nearby foes while inflicting [Stormlash] for 12 seconds (3 second cooldown)
+					[Windwyrm State] ends when all [Dragonshift Energy] is depleted
+					Swapping off this weapon will immediately end [Windwyrm State] and reset [Dragonshift Energy]
 					''' */
 			}
 		}
@@ -9057,6 +9059,7 @@ Mods: {
 			// StarsAboveSwordEffectSpin.DisplayName: Stars Above Sword Effect Spin
 			// DragaliaFoundStab.DisplayName: Dragalia Found Stab
 			// DragaliaFoundDragonAttack.DisplayName: Dragalia Found Dragon Attack
+			// DragonTornado.DisplayName: Dragon Tornado
 		}
 
 		Buffs: {
@@ -11368,6 +11371,21 @@ Mods: {
 			DragonshiftActiveBuff: {
 				// DisplayName: Windwyrm Shift
 				// Description: Transformed into a wind-aspected dragon
+			}
+
+			BondforgedBladeBuff: {
+				// DisplayName: Bondforged Blade
+				// Description: Charging draconic energy
+			}
+
+			DragonshiftSpecialAttackCooldownBuff: {
+				// DisplayName: Dragonshift Special Attack Cooldown
+				// Description: ""
+			}
+
+			TempestDragonlightBuff: {
+				// DisplayName: Tempest's Dragonlight
+				// Description: Gaining draconic defenses based on minion slots
 			}
 		}
 

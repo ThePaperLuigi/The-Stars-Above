@@ -10,7 +10,6 @@ using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles.Generics
 {
-	// This is a copy of the Excalibur's projectile (TEMP)
 	public class StarsAboveSwordEffect : ModProjectile
 	{
 
@@ -55,7 +54,10 @@ namespace StarsAbove.Projectiles.Generics
 			Projectile.noEnchantmentVisuals = true;
 		}
 		float startingRotation;
-
+		public Color backDarkColor = new Color(60, 160, 180); // Original Excalibur color: Color(180, 160, 60)
+		public Color middleMediumColor = new Color(80, 255, 255); // Original Excalibur color: Color(255, 255, 80)
+		public Color frontLightColor = new Color(150, 240, 255); // Original Excalibur color: Color(255, 240, 150)
+		public bool spin = false;
 		public override void AI()
 		{
 			// In our item, we spawn the projectile with the direction, max time, and scale
@@ -81,15 +83,31 @@ namespace StarsAbove.Projectiles.Generics
 			float velocityRotation = Projectile.velocity.ToRotation();
 			//float adjustedRotation = //MathHelper.Pi * direction * percentageOfLife + velocityRotation + direction * MathHelper.Pi + player.fullRotation;
 			
-			if(Projectile.ai[0] == 1)
-			{
-				Projectile.rotation = MathHelper.ToRadians(MathHelper.Lerp(startingRotation - 115, startingRotation + 45, EaseHelper.InOutQuad(percentageOfLife))); // Set the rotation to our to the new rotation we calculated.
+			if(spin)
+            {
+				if (Projectile.ai[0] == 1)
+				{
+					Projectile.rotation = MathHelper.ToRadians(MathHelper.Lerp(startingRotation - 115, startingRotation + 45 + 360, EaseHelper.InOutQuad(percentageOfLife))); // Set the rotation to our to the new rotation we calculated.
+				}
+				else
+				{
+					Projectile.rotation = MathHelper.ToRadians(MathHelper.Lerp(startingRotation + 115, startingRotation - 45 - 360, EaseHelper.InOutQuad(percentageOfLife))); // Set the rotation to our to the new rotation we calculated.
+
+				}
 			}
 			else
-			{
-				Projectile.rotation = MathHelper.ToRadians(MathHelper.Lerp(startingRotation + 115, startingRotation - 45, EaseHelper.InOutQuad(percentageOfLife))); // Set the rotation to our to the new rotation we calculated.
+            {
+				if (Projectile.ai[0] == 1)
+				{
+					Projectile.rotation = MathHelper.ToRadians(MathHelper.Lerp(startingRotation - 115, startingRotation + 45, EaseHelper.InOutQuad(percentageOfLife))); // Set the rotation to our to the new rotation we calculated.
+				}
+				else
+				{
+					Projectile.rotation = MathHelper.ToRadians(MathHelper.Lerp(startingRotation + 115, startingRotation - 45, EaseHelper.InOutQuad(percentageOfLife))); // Set the rotation to our to the new rotation we calculated.
 
+				}
 			}
+			
 
 			float scaleMulti = 0.6f; // Excalibur, Terra Blade, and The Horseman's Blade is 0.6f; True Excalibur is 1f; default is 0.2f 
 			float scaleAdder = 1f; // Excalibur, Terra Blade, and The Horseman's Blade is 1f; True Excalibur is 1.2f; default is 1f 
@@ -234,9 +252,7 @@ namespace StarsAbove.Projectiles.Generics
 			float lightingColor = Lighting.GetColor(Projectile.Center.ToTileCoordinates()).ToVector3().Length() / (float)Math.Sqrt(3.0);
 			lightingColor = Utils.Remap(lightingColor, 0.2f, 1f, 0f, 1f);
 
-			Color backDarkColor = new Color(60, 160, 180); // Original Excalibur color: Color(180, 160, 60)
-			Color middleMediumColor = new Color(80, 255, 255); // Original Excalibur color: Color(255, 255, 80)
-			Color frontLightColor = new Color(150, 240, 255); // Original Excalibur color: Color(255, 240, 150)
+			
 
 			Color whiteTimesLerpTime = Color.White * lerpTime * 0.5f;
 			whiteTimesLerpTime.A = (byte)(whiteTimesLerpTime.A * (1f - lightingColor));

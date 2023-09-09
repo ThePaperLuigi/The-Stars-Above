@@ -18,6 +18,11 @@ namespace StarsAbove.Projectiles.DragaliaFound
 		public override bool UseRecoil => false;
 		public override bool DoSpin => true;
 		public override float BaseDistance => 50;
+		public override Color BackDarkColor => new Color(184, 236, 104);
+		public override Color MiddleMediumColor => new Color(255, 255, 80);
+		public override Color FrontLightColor => new Color(150, 240, 255);
+
+
 		public override void SetStaticDefaults()
 		{
 			Main.projFrames[Projectile.type] = 1;

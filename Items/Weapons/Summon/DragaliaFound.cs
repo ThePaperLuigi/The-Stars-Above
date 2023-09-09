@@ -3,11 +3,14 @@ using StarsAbove.Buffs;
 using StarsAbove.Buffs.DragaliaFound;
 using StarsAbove.Items.Essences;
 using StarsAbove.Mounts.DragaliaFound;
+using StarsAbove.Projectiles;
 using StarsAbove.Projectiles.DragaliaFound;
 using StarsAbove.Projectiles.Generics;
 using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
+using Terraria.GameContent.Drawing;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -54,7 +57,10 @@ namespace StarsAbove.Items.Weapons.Summon
 			{
 				return false;
 			}
-
+			if (!player.HasBuff(BuffType<DragonshiftActiveBuff>()) && player.altFunctionUse == 2)
+			{
+				return false;
+			}
 			return base.CanUseItem(player);
 		}
 
@@ -65,6 +71,8 @@ namespace StarsAbove.Items.Weapons.Summon
 		}
 		public override void HoldItem(Player player)
 		{
+			player.GetModPlayer<WeaponPlayer>().DragaliaFoundHeld = true;
+			player.AddBuff(BuffType<TempestDragonlightBuff>(), 10);
 			attackComboCooldown--;
 			if(attackComboCooldown <= 0)
             {
@@ -75,6 +83,59 @@ namespace StarsAbove.Items.Weapons.Summon
 				//The stab is faster
 				player.GetAttackSpeed(DamageClass.Generic) += 0.4f;
             }
+			if (Main.myPlayer == player.whoAmI)
+			{
+				if (StarsAbove.weaponActionKey.JustPressed && !player.HasBuff(BuffType<DragonshiftActiveBuff>()) && player.GetModPlayer<WeaponPlayer>().DragonshiftGauge >= 50)
+				{
+					player.GetModPlayer<StarsAbovePlayer>().WhiteFade = 20;
+					Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ProjectileType<DragonArm>(), 0, 0, player.whoAmI);
+
+					player.mount.SetMount(MountType<DragonshiftMount>(), player);
+					player.AddBuff(BuffType<DragonshiftActiveBuff>(), 240);
+					player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -70;
+					//Boom
+					SoundEngine.PlaySound(SoundID.Roar, player.Center);
+					Projectile.NewProjectile(player.GetSource_FromThis(), player.MountedCenter, Vector2.Zero, ProjectileType<radiate>(), 0, 0, player.whoAmI);
+
+
+					for (int d = 0; d < 50; d++)
+					{
+						Dust.NewDust(player.MountedCenter, 0, 0, DustID.GemEmerald, 0f + Main.rand.Next(-10, 10), 0f + Main.rand.Next(-5, 5), 150, default(Color), 1.5f);
+					}
+					for (int d = 0; d < 54; d++)
+					{
+						Dust.NewDust(player.MountedCenter, 0, 0, DustID.FireworkFountain_Green, 0f + Main.rand.Next(-25, 25), 0f + Main.rand.Next(-25, 25), 150, default(Color), 1.5f);
+					}
+					for (int d = 0; d < 54; d++)
+					{
+						Dust.NewDust(player.MountedCenter, 0, 0, DustID.GreenFairy, 0f + Main.rand.Next(-25, 25), 0f + Main.rand.Next(-25, 25), 150, default(Color), 2.5f);
+					}
+					float dustAmount = 120f;
+					for (int i = 0; (float)i < dustAmount; i++)
+					{
+						Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+						spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+						spinningpoint5 = spinningpoint5.RotatedBy(player.velocity.ToRotation());
+						int dust = Dust.NewDust(player.MountedCenter, 0, 0, DustID.GemEmerald);
+						Main.dust[dust].scale = 2f;
+						Main.dust[dust].noGravity = true;
+						Main.dust[dust].position = player.MountedCenter + spinningpoint5;
+						Main.dust[dust].velocity = player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 30f;
+					}
+					for (int i = 0; (float)i < dustAmount; i++)
+					{
+						Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+						spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+						spinningpoint5 = spinningpoint5.RotatedBy(player.velocity.ToRotation());
+						int dust = Dust.NewDust(player.MountedCenter, 0, 0, DustID.GemEmerald);
+						Main.dust[dust].scale = 2f;
+						Main.dust[dust].noGravity = true;
+						Main.dust[dust].position = player.MountedCenter + spinningpoint5;
+						Main.dust[dust].velocity = player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 40f;
+					}
+				}
+
+			}
 			base.HoldItem(player);
 		}
 
@@ -94,12 +155,57 @@ namespace StarsAbove.Items.Weapons.Summon
 		{
 			attackComboCooldown = 30;
 			if(player.altFunctionUse == 2)
-				//temp
             {
-				player.GetModPlayer<StarsAbovePlayer>().WhiteFade = 20;
-				Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<DragonArm>(), 0, 0, player.whoAmI);
-				player.mount.SetMount(MountType<DragonshiftMount>(), player);
-				player.AddBuff(BuffType<DragonshiftActiveBuff>(), 240);
+				if(!player.HasBuff(BuffType<DragonshiftSpecialAttackCooldownBuff>()))
+                {
+					player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
+					//Boom
+					SoundEngine.PlaySound(SoundID.Roar, player.Center);
+					Projectile.NewProjectile(player.GetSource_FromThis(), player.MountedCenter, Vector2.Zero, ProjectileType<fastRadiate>(), 0, 0, player.whoAmI);
+
+					for(int i = 0; i < 2; i++)
+                    {
+						Projectile.NewProjectile(player.GetSource_FromThis(), new Vector2(player.MountedCenter.X - i * 300,player.MountedCenter.Y), Vector2.Zero, ProjectileType<DragonTornado>(), damage * 2, 0, player.whoAmI,0);
+						Projectile.NewProjectile(player.GetSource_FromThis(), new Vector2(player.MountedCenter.X + i * 300, player.MountedCenter.Y), Vector2.Zero, ProjectileType<DragonTornado>(), damage * 2, 0, player.whoAmI,0);
+
+					}
+
+					for (int d = 0; d < 50; d++)
+					{
+						Dust.NewDust(player.MountedCenter, 0, 0, DustID.GemEmerald, 0f + Main.rand.Next(-10, 10), 0f + Main.rand.Next(-5, 5), 150, default(Color), 1f);
+					}
+					for (int d = 0; d < 54; d++)
+					{
+						Dust.NewDust(player.MountedCenter, 0, 0, DustID.FireworkFountain_Green, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1f);
+					}
+					for (int d = 0; d < 54; d++)
+					{
+						Dust.NewDust(player.MountedCenter, 0, 0, DustID.GreenFairy, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1f);
+					}
+					float dustAmount = 120f;
+					for (int i = 0; (float)i < dustAmount; i++)
+					{
+						Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+						spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+						spinningpoint5 = spinningpoint5.RotatedBy(player.velocity.ToRotation());
+						int dust = Dust.NewDust(player.MountedCenter, 0, 0, DustID.GemEmerald);
+						Main.dust[dust].scale = 2f;
+						Main.dust[dust].noGravity = true;
+						Main.dust[dust].position = player.MountedCenter + spinningpoint5;
+						Main.dust[dust].velocity = player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 10f;
+					}
+					for (int i = 0; (float)i < dustAmount; i++)
+					{
+						Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+						spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+						spinningpoint5 = spinningpoint5.RotatedBy(player.velocity.ToRotation());
+						int dust = Dust.NewDust(player.MountedCenter, 0, 0, DustID.GemEmerald);
+						Main.dust[dust].scale = 2f;
+						Main.dust[dust].noGravity = true;
+						Main.dust[dust].position = player.MountedCenter + spinningpoint5;
+						Main.dust[dust].velocity = player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 20f;
+					}
+				}
 			}
 			else
             {
@@ -110,10 +216,14 @@ namespace StarsAbove.Items.Weapons.Summon
 						case 0: //Swing downwards
 							Projectile.NewProjectile(source, player.Center, velocity*2, ProjectileType<DragaliaFoundDragonAttack>(), damage*2, knockback*3, player.whoAmI, -1, player.itemTimeMax, 1.5f);
 							attackType++;
+							player.velocity = velocity * 2f;
 							return false;
 						case 1: //Swing upwards
 							Projectile.NewProjectile(source, player.Center, velocity*2, ProjectileType<DragaliaFoundDragonAttack>(), damage*2, knockback*3, player.whoAmI, 1, player.itemTimeMax, 1.5f);
 							attackType = 0;
+							player.velocity = velocity * 2f;
+							
+
 							return false;
 					}
 				}
@@ -128,6 +238,7 @@ namespace StarsAbove.Items.Weapons.Summon
 						case 1: //Swing upwards
 							Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<DragaliaFoundSword>(), damage, knockback, player.whoAmI, 0, 1, player.direction);
 							attackType++;
+							player.velocity.Y -= 4;
 							return false;
 						case 2: //Swing down again but faster + prep stab
 							Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<DragaliaFoundSwordRecoil>(), damage, knockback, player.whoAmI, 0, 0, player.direction);
@@ -154,6 +265,7 @@ namespace StarsAbove.Items.Weapons.Summon
 							return false;
 						case 4: //Spin
 							Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<DragaliaFoundSwordSpin>(), damage, knockback, player.whoAmI, 0, 0, player.direction);
+							player.AddBuff(BuffType<BondforgedBladeBuff>(), 180);
 							attackType = 0;
 							return false;
 					}

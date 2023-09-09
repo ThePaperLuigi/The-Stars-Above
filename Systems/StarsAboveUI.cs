@@ -43,6 +43,9 @@ namespace StarsAbove
 		private UserInterface _DraggedBelowBarUserInterface;
 		internal DraggedBelowBar DraggedBelowBar;
 
+		private UserInterface _DragonshiftGaugeUserInterface;
+		internal DragonshiftGauge DragonshiftGauge;
+
 		private UserInterface _DreamersInkwellUIUserInterface;
 		internal DreamersInkwellGauge DreamersInkwellUI;
 
@@ -217,6 +220,10 @@ namespace StarsAbove
 				ButterflyResourceBar = new ButterflyResourceBar();
 				_ButterflyResourceBarUserInterface = new UserInterface();
 				_ButterflyResourceBarUserInterface.SetState(ButterflyResourceBar);
+
+				DragonshiftGauge = new DragonshiftGauge();
+				_DragonshiftGaugeUserInterface = new UserInterface();
+				_DragonshiftGaugeUserInterface.SetState(DragonshiftGauge);
 
 				DraggedBelowBar = new DraggedBelowBar();
 				_DraggedBelowBarUserInterface = new UserInterface();
@@ -442,6 +449,7 @@ namespace StarsAbove
 
 			_NanomachinaGaugeUserInterface?.Update(gameTime);
 			_ButterflyResourceBarUserInterface?.Update(gameTime);
+			_DragonshiftGaugeUserInterface?.Update(gameTime);
 			_DraggedBelowBarUserInterface?.Update(gameTime);
 
 			_DreamersInkwellUIUserInterface?.Update(gameTime);
@@ -595,6 +603,15 @@ namespace StarsAbove
 					delegate
 					{
 						_ButterflyResourceBarUserInterface.Draw(Main.spriteBatch, new GameTime());
+						return true;
+					},
+					InterfaceScaleType.UI)
+				);
+				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+					"StarsAbove: Dragonshift Gauge",
+					delegate
+					{
+						_DragonshiftGaugeUserInterface.Draw(Main.spriteBatch, new GameTime());
 						return true;
 					},
 					InterfaceScaleType.UI)
