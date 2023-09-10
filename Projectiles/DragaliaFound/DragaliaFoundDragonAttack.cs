@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using StarsAbove.Buffs.TagDamage;
 using StarsAbove.Utilities;
 using System;
 using Terraria;
@@ -176,7 +177,7 @@ namespace StarsAbove.Projectiles.DragaliaFound
 			// The particles from the Particle Orchestra are predefined by vanilla and most can not be customized that much.
 			// Use auto complete to see the other ParticleOrchestraType types there are.
 			// Here we are spawning the Excalibur particle randomly inside of the target's hitbox.
-		
+			target.AddBuff(ModContent.BuffType<DragaliaTagDamage>(), 180);
 			float dustAmount = 40f;
 			for (int i = 0; (float)i < dustAmount; i++)
 			{

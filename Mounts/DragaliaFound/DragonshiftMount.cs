@@ -96,7 +96,17 @@ namespace StarsAbove.Mounts.DragaliaFound
 		public override void UpdateEffects(Player player)
 		{
 			Dust.NewDust(player.MountedCenter, 0, 0, DustID.GreenFairy, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 0.5f);
+			for (int i2 = 0; i2 < 25; i2++)
+			{//Circle
+				Vector2 offset = new Vector2();
+				double angle = Main.rand.NextDouble() * 2d * Math.PI;
+				offset.X += (float)(Math.Sin(angle) * 600f);
+				offset.Y += (float)(Math.Cos(angle) * 600f);
 
+				Dust d2 = Dust.NewDustPerfect(player.Center + offset, DustID.GemEmerald, player.velocity, 200, default(Color), 0.7f);
+				d2.fadeIn = 0.0001f;
+				d2.noGravity = true;
+			}
 			// This code spawns some dust if we are moving fast enough.
 			if (Math.Abs(player.velocity.X) > 4f)
 			{

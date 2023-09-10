@@ -7,6 +7,7 @@ using Terraria.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria.GameContent;
+using StarsAbove.Buffs.TagDamage;
 
 namespace StarsAbove.Projectiles.DragaliaFound
 {
@@ -22,7 +23,7 @@ namespace StarsAbove.Projectiles.DragaliaFound
 			Projectile.aiStyle = 0;             //The ai style of the projectile, please reference the source code of Terraria
 			Projectile.friendly = true;         //Can the projectile deal damage to enemies?
 			Projectile.hostile = false;         //Can the projectile deal damage to the player?
-			Projectile.penetrate = 1;           //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
+			Projectile.penetrate = -1;           //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
 			Projectile.timeLeft = 240;          //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
 			Projectile.alpha = 255;             //The transparency of the projectile, 255 for completely transparent. (aiStyle 1 quickly fades the projectile in) Make sure to delete Projectile if you aren't using an aiStyle that fades in. You'll wonder why your projectile is invisible.
 			Projectile.light = 0.5f;            //How much light emit around the projectile
@@ -30,7 +31,8 @@ namespace StarsAbove.Projectiles.DragaliaFound
 			Projectile.tileCollide = true;          //Can the projectile collide with tiles?
 			Projectile.extraUpdates = 0;            //Set to above 0 if you want the projectile to update multiple time in a frame
 			Projectile.DamageType = DamageClass.SummonMeleeSpeed;
-
+			Projectile.usesLocalNPCImmunity = true;
+			Projectile.localNPCHitCooldown = 7;
 		}
 		public override void AI()
         {
@@ -50,7 +52,7 @@ namespace StarsAbove.Projectiles.DragaliaFound
 			{
 				Projectile.Kill();
 			}
-			if (Projectile.type == 656 && Projectile.localAI[0] >= 30f)
+			if (Projectile.localAI[0] >= 30f)
 			{
 				Projectile.damage = 0;
 				if (Projectile.ai[0] < num27 - 120f)
@@ -99,28 +101,7 @@ namespace StarsAbove.Projectiles.DragaliaFound
 			{
 				return;
 			}
-			for (int num33 = 0; num33 < 1; num33++)
-			{
-				float value70 = -0.5f;
-				float value71 = 0.9f;
-				float amount3 = Main.rand.NextFloat();
-				Vector2 value72 = new Vector2(MathHelper.Lerp(0.1f, 1f, Main.rand.NextFloat()), MathHelper.Lerp(value70, value71, amount3));
-				value72.X *= MathHelper.Lerp(2.2f, 0.6f, amount3);
-				value72.X *= -1f;
-				Vector2 value73 = new Vector2(6f, 10f);
-				Vector2 position3 = vector8 + value69 * value72 * 0.5f + value73;
-				Dust dust185 = Main.dust[Dust.NewDust(position3, 0, 0, DustID.Sandnado)];
-				dust185.color = Color.Green;
-				dust185.position = position3;
-				dust185.customData = vector8 + value73;
-				dust185.fadeIn = 1f;
-				dust185.scale = 0.3f;
-				if (value72.X > -1.2f)
-				{
-					dust185.velocity.X = 1f + Main.rand.NextFloat();
-				}
-				dust185.velocity.Y = Main.rand.NextFloat() * -0.5f - 1f;
-			}
+			
 			
 			
 			Projectile.AI();
@@ -165,8 +146,8 @@ namespace StarsAbove.Projectiles.DragaliaFound
 
 		public override bool PreDraw(ref Color lightColor) {
 			float num274 = 1400f;
-			float num275 = 2f;//upper height
-			float num276 = 32f;// number of tendrils?
+			float num275 = 4f;//upper height
+			float num276 = 12f;// number of tendrils?
 			float num277 = Projectile.ai[0];
 			float num278 = MathHelper.Clamp(num277 / 30f, 0f, 1f);
 			if (num277 > num274 - 60f)
@@ -216,13 +197,59 @@ namespace StarsAbove.Projectiles.DragaliaFound
 			}
 			return false;
 		}
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+		{
+			// Vanilla has several particles that can easily be used anywhere.
+			// The particles from the Particle Orchestra are predefined by vanilla and most can not be customized that much.
+			// Use auto complete to see the other ParticleOrchestraType types there are.
+			// Here we are spawning the Excalibur particle randomly inside of the target's hitbox.
+			target.AddBuff(ModContent.BuffType<DragaliaTagDamage>(), 60);
 
+			float dustAmount = 10f;
+			for (int i = 0; (float)i < dustAmount; i++)
+			{
+				Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+				spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(14f, 2f);
+				spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
+				int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+				Main.dust[dust].scale = 2f;
+				Main.dust[dust].noGravity = true;
+				Main.dust[dust].position = target.Center + spinningpoint5;
+				Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 2f;
+			}
+			for (int i = 0; (float)i < dustAmount; i++)
+			{
+				Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+				spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(140f, 6f);
+				spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation() + MathHelper.ToRadians(90));
+				int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+				Main.dust[dust].scale = 2f;
+				Main.dust[dust].noGravity = true;
+				Main.dust[dust].position = target.Center + spinningpoint5;
+				Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 6f;
+			}
+			for (int i = 0; (float)i < dustAmount; i++)
+			{
+				Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+				spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(20f, 1f);
+				spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation() + MathHelper.ToRadians(90));
+				int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+				Main.dust[dust].scale = 2f;
+				Main.dust[dust].noGravity = true;
+				Main.dust[dust].position = target.Center + spinningpoint5;
+				Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 2f;
+			}
+
+			// You could also spawn dusts at the enemy position. Here is simple an example:
+			// Dust.NewDust(Main.rand.NextVector2FromRectangle(target.Hitbox), 0, 0, ModContent.DustType<Content.Dusts.Sparkle>());
+
+			// Set the target's hit direction to away from the player so the knockback is in the correct direction.
+			
+
+		}
 		public override void Kill(int timeLeft)
 		{
-			//if (Projectile.owner == Main.myPlayer)
-			//{
-				//Projectile.NewProjectile(Projectile.GetSource_FromProjectile(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<NovaBombExplosion>(), Projectile.damage, 0, Main.player[Projectile.owner].whoAmI);
-			//}
+			
 		}
 	}
 }

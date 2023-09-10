@@ -29,7 +29,7 @@ namespace StarsAbove.Items.Weapons.Summon
 
 		public override void SetDefaults()
 		{
-			Item.damage = 70;           //The damage of your weapon
+			Item.damage = 90;           //The damage of your weapon
 			Item.DamageType = DamageClass.SummonMeleeSpeed;          //Is your weapon a melee weapon?
 			Item.width = 38;            //Weapon's texture's width
 			Item.height = 132;           //Weapon's texture's height
@@ -38,7 +38,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			Item.UseSound = SoundID.Item1;      //The sound when the weapon is using
 			Item.useStyle = ItemUseStyleID.HiddenAnimation;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
 			Item.knockBack = 2;         //The force of knockback of the weapon. Maximum is 20
-			Item.rare = ItemRarityID.Red;              //The rarity of the weapon, from -1 to 13
+			Item.rare = ItemRarityID.Yellow;              //The rarity of the weapon, from -1 to 13
 			Item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
 			Item.noMelee = true;
 			Item.noUseGraphic = true;
@@ -158,53 +158,60 @@ namespace StarsAbove.Items.Weapons.Summon
             {
 				if(!player.HasBuff(BuffType<DragonshiftSpecialAttackCooldownBuff>()))
                 {
+					player.AddBuff(BuffType<DragonshiftSpecialAttackCooldownBuff>(), 60 * 6);
+
 					player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
 					//Boom
 					SoundEngine.PlaySound(SoundID.Roar, player.Center);
 					Projectile.NewProjectile(player.GetSource_FromThis(), player.MountedCenter, Vector2.Zero, ProjectileType<fastRadiate>(), 0, 0, player.whoAmI);
+					for (int ir = 0; ir < Main.maxNPCs; ir++)
+					{
+						NPC npc = Main.npc[ir];
+						if (npc.active && npc.CanBeChasedBy() && !npc.HasBuff(BuffType<DragonshiftSpecialAttackCooldownBuff>()) && npc.Distance(player.Center) < 600)
+						{
+							npc.AddBuff(BuffType<DragonshiftSpecialAttackCooldownBuff>(), 180);
+							Projectile.NewProjectile(player.GetSource_FromThis(), npc.Center, Vector2.Zero, ProjectileType<DragonTornado>(), damage / 2, 0, player.whoAmI, 0);
 
-					for(int i = 0; i < 2; i++)
-                    {
-						Projectile.NewProjectile(player.GetSource_FromThis(), new Vector2(player.MountedCenter.X - i * 300,player.MountedCenter.Y), Vector2.Zero, ProjectileType<DragonTornado>(), damage * 2, 0, player.whoAmI,0);
-						Projectile.NewProjectile(player.GetSource_FromThis(), new Vector2(player.MountedCenter.X + i * 300, player.MountedCenter.Y), Vector2.Zero, ProjectileType<DragonTornado>(), damage * 2, 0, player.whoAmI,0);
+							for (int d = 0; d < 20; d++)
+							{
+								Dust.NewDust(npc.Center, 0, 0, DustID.GemEmerald, 0f + Main.rand.Next(-10, 10), 0f + Main.rand.Next(-5, 5), 150, default(Color), 1f);
+							}
+							for (int d = 0; d < 24; d++)
+							{
+								Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Green, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1f);
+							}
+							for (int d = 0; d < 24; d++)
+							{
+								Dust.NewDust(npc.Center, 0, 0, DustID.GreenFairy, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1f);
+							}
+							float dustAmount = 40f;
+							for (int i = 0; (float)i < dustAmount; i++)
+							{
+								Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+								spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+								spinningpoint5 = spinningpoint5.RotatedBy(player.velocity.ToRotation());
+								int dust = Dust.NewDust(npc.Center, 0, 0, DustID.GemEmerald);
+								Main.dust[dust].scale = 2f;
+								Main.dust[dust].noGravity = true;
+								Main.dust[dust].position = npc.Center + spinningpoint5;
+								Main.dust[dust].velocity = player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 10f;
+							}
+							for (int i = 0; (float)i < dustAmount; i++)
+							{
+								Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+								spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+								spinningpoint5 = spinningpoint5.RotatedBy(player.velocity.ToRotation());
+								int dust = Dust.NewDust(npc.Center, 0, 0, DustID.GemEmerald);
+								Main.dust[dust].scale = 2f;
+								Main.dust[dust].noGravity = true;
+								Main.dust[dust].position = npc.Center + spinningpoint5;
+								Main.dust[dust].velocity = player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 20f;
+							}
+						}
+					}
+					
 
-					}
-
-					for (int d = 0; d < 50; d++)
-					{
-						Dust.NewDust(player.MountedCenter, 0, 0, DustID.GemEmerald, 0f + Main.rand.Next(-10, 10), 0f + Main.rand.Next(-5, 5), 150, default(Color), 1f);
-					}
-					for (int d = 0; d < 54; d++)
-					{
-						Dust.NewDust(player.MountedCenter, 0, 0, DustID.FireworkFountain_Green, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1f);
-					}
-					for (int d = 0; d < 54; d++)
-					{
-						Dust.NewDust(player.MountedCenter, 0, 0, DustID.GreenFairy, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1f);
-					}
-					float dustAmount = 120f;
-					for (int i = 0; (float)i < dustAmount; i++)
-					{
-						Vector2 spinningpoint5 = Vector2.UnitX * 0f;
-						spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
-						spinningpoint5 = spinningpoint5.RotatedBy(player.velocity.ToRotation());
-						int dust = Dust.NewDust(player.MountedCenter, 0, 0, DustID.GemEmerald);
-						Main.dust[dust].scale = 2f;
-						Main.dust[dust].noGravity = true;
-						Main.dust[dust].position = player.MountedCenter + spinningpoint5;
-						Main.dust[dust].velocity = player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 10f;
-					}
-					for (int i = 0; (float)i < dustAmount; i++)
-					{
-						Vector2 spinningpoint5 = Vector2.UnitX * 0f;
-						spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
-						spinningpoint5 = spinningpoint5.RotatedBy(player.velocity.ToRotation());
-						int dust = Dust.NewDust(player.MountedCenter, 0, 0, DustID.GemEmerald);
-						Main.dust[dust].scale = 2f;
-						Main.dust[dust].noGravity = true;
-						Main.dust[dust].position = player.MountedCenter + spinningpoint5;
-						Main.dust[dust].velocity = player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 20f;
-					}
+					
 				}
 			}
 			else
