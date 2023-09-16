@@ -7,6 +7,8 @@ using StarsAbove.Projectiles;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Items.Essences;
 using Terraria.Audio;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Magic
 {

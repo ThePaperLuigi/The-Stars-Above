@@ -27,10 +27,12 @@ using StarsAbove.Projectiles;
 using SubworldLibrary;
 using StarsAbove.NPCs.WarriorOfLight;
 using StarsAbove.Items.Loot;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.NPCs.Tsukiyomi
 {
-	[AutoloadBossHead]
+    [AutoloadBossHead]
 
 	public class TsukiyomiBoss : ModNPC
 	{

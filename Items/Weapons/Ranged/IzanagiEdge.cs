@@ -9,6 +9,8 @@ using StarsAbove.Items.Essences;
 using StarsAbove.Items.Materials;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Ranged
 {

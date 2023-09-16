@@ -3,6 +3,8 @@ using StarsAbove.Buffs;
 using StarsAbove.Buffs.BurningDesire;
 using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles.BurningDesire;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;

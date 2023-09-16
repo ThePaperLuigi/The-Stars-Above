@@ -12,7 +12,14 @@ using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.ModLoader.IO;
-using StarsAbove.Items; using StarsAbove.Items.Weapons; using StarsAbove.Items.Weapons.Summon; using StarsAbove.Items.Weapons.Ranged; using StarsAbove.Items.Weapons.Other; using StarsAbove.Items.Weapons.Celestial; using StarsAbove.Items.Weapons.Melee; using StarsAbove.Items.Weapons.Magic;
+using StarsAbove.Items;
+using StarsAbove.Items.Weapons;
+using StarsAbove.Items.Weapons.Summon;
+using StarsAbove.Items.Weapons.Ranged;
+using StarsAbove.Items.Weapons.Other;
+using StarsAbove.Items.Weapons.Celestial;
+using StarsAbove.Items.Weapons.Melee;
+using StarsAbove.Items.Weapons.Magic;
 using StarsAbove.Projectiles;
 using StarsAbove.Buffs;
 using StarsAbove.NPCs;
@@ -27,8 +34,9 @@ using StarsAbove.NPCs.OffworldNPCs;
 using StarsAbove.NPCs.TownNPCs;
 using StarsAbove.Utilities;
 using StarsAbove.Items.Loot;
+using StarsAbove.Subworlds.ThirdRegion;
 
-namespace StarsAbove
+namespace StarsAbove.Systems
 {
     public class SubworldPlayer : ModPlayer
     {
@@ -56,31 +64,31 @@ namespace StarsAbove
         public override void LoadData(TagCompound tag)
         {
             GarridineQuest = tag.GetInt("GQuest");
-            
+
         }
 
 
         public override void PreUpdate()
         {
-            if (Main.LocalPlayer.isNearNPC(ModContent.NPCType<Yojimbo>(), 150) || Main.LocalPlayer.isNearNPC(ModContent.NPCType<Garridine>(), 150))
+            if (Main.LocalPlayer.isNearNPC(NPCType<Yojimbo>(), 150) || Main.LocalPlayer.isNearNPC(NPCType<Garridine>(), 150))
             {
-                
+
             }
 
             GarridineQuestCooldown--;
             DoYojimboDialogue();
             DoGarridineDialogue();
 
-            if(SubworldSystem.Current == null)
+            if (SubworldSystem.Current == null)
             {
                 //If not in a subworld
-                
+
             }
 
         }
         private void DoYojimboDialogue()
         {
-            if (Main.LocalPlayer.isNearNPC(ModContent.NPCType<Yojimbo>(), 150))
+            if (Main.LocalPlayer.isNearNPC(NPCType<Yojimbo>(), 150))
             {
                 //Player.GetModPlayer<StarsAbovePlayer>().yojimboIntroDialogue = 0;
                 if (!inYojimboRange)
@@ -88,17 +96,17 @@ namespace StarsAbove
                     Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
                     CombatText.NewText(textPos, new Color(43, 255, 43, 240), LangHelper.GetTextValue("NPCDialogue.Talk"), false, false);
                     inYojimboRange = true;
-                    
+
                 }
                 if (Main.mouseRight && !Player.GetModPlayer<StarsAbovePlayer>().VNDialogueActive)
                 {
-                    
+
                     if (Player.GetModPlayer<StarsAbovePlayer>().yojimboIntroDialogue == 2)
                     {
                         Player.AddBuff(BuffType<YojimboBuff>(), 7200);
-                        
+
                         int randomDialogue = Main.rand.Next(0, 3);
-                        if(randomDialogue == 0)
+                        if (randomDialogue == 0)
                         {
                             Player.GetModPlayer<StarsAbovePlayer>().sceneID = 100;
                             ActivateVNDialogue(Player);
@@ -116,11 +124,11 @@ namespace StarsAbove
                             ActivateVNDialogue(Player);
                             return;
                         }
-                        
+
                     }
                     else
                     {
-                        
+
                         Player.GetModPlayer<StarsAbovePlayer>().yojimboIntroDialogue = 2;
                         if (Player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
                         {
@@ -136,25 +144,25 @@ namespace StarsAbove
 
                         }
 
-                        
 
-                        
+
+
                     }
                 }
-                
-                
+
+
             }
             else
             {
                 inYojimboRange = false;
-                
+
             }
         }
 
         private void DoGarridineDialogue()
         {
             //Maybe if no quest is active, Garridine gives you a random objective, and you have to get her the item?
-            if (Main.LocalPlayer.isNearNPC(ModContent.NPCType<Garridine>(), 150))
+            if (Main.LocalPlayer.isNearNPC(NPCType<Garridine>(), 150))
             {
                 //Player.GetModPlayer<StarsAbovePlayer>().garridineIntroDialogue = 0;
                 if (!inGarridineRange)
@@ -196,19 +204,19 @@ namespace StarsAbove
 
                         }
                         //Depending on the quest, check for the specified item, and then reward the player.
-                        if(GarridineQuest == 1)
+                        if (GarridineQuest == 1)
                         {
                             ActivateQuest(new int[] { ItemID.WaterBolt });
                         }
                         else if (GarridineQuest == 2)
                         {
-                            ActivateQuest(new int[] { ModContent.ItemType<AgnianFarewell>(), ModContent.ItemType<KevesiFarewell>() });
+                            ActivateQuest(new int[] { ItemType<AgnianFarewell>(), ItemType<KevesiFarewell>() });
                         }
-                        else if(GarridineQuest == 3)
+                        else if (GarridineQuest == 3)
                         {
                             ActivateQuest(new int[] { ItemID.GoldButterfly });
                         }
-                        else if(GarridineQuest == 4)
+                        else if (GarridineQuest == 4)
                         {
                             ActivateQuest(new int[] { ItemID.FlyingCarpet });
                         }
@@ -304,7 +312,7 @@ namespace StarsAbove
                         ActivateVNDialogue(Player);
 
                         //Give the player the reward, a tier 1 Bag
-                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), ModContent.ItemType<StellarFociGrabBagTier1>());
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), ItemType<StellarFociGrabBagTier1>());
 
                         //Reset values.
                         AcceptedGarridineQuest = false;
@@ -320,8 +328,8 @@ namespace StarsAbove
                     }
                 }
             }
-                
-            
+
+
             //If the item wasn't found...
 
             // If the item wasn't found, play the quest dialogue again. (This won't appear if the item is found because of the return statement.
@@ -332,8 +340,8 @@ namespace StarsAbove
         public override void PostUpdate()
         {
 
-           
-           
+
+
         }
         public override void OnRespawn()
         {
@@ -351,7 +359,7 @@ namespace StarsAbove
             }
             else
             {
-                if (Player.InModBiome(ModContent.GetInstance<LyraBiome>()))
+                if (Player.InModBiome(GetInstance<LyraBiome>()))
                 {
                     //Make sure the player can't do what's not allowed:
                     Player.AddBuff(BuffType<Superimposed>(), 10);
@@ -376,16 +384,16 @@ namespace StarsAbove
                 {
                     anomalyTimer = 0;
                 }
-                if (Player.InModBiome(ModContent.GetInstance<FriendlySpaceBiome>()))
+                if (Player.InModBiome(GetInstance<FriendlySpaceBiome>()))
                 {
                     //Make sure the player can't do what's not allowed:
                     Player.AddBuff(BuffType<Superimposed>(), 10);
                     Player.noBuilding = true;
 
                     //Will change if new friendly space places are added.
-                    if (!NPC.AnyNPCs(ModContent.NPCType<NPCs.TownNPCs.Garridine>()) && Player.velocity.Y == 0)//Make sure Garridine isn't already there, and also check if you're standing.
+                    if (!NPC.AnyNPCs(NPCType<Garridine>()) && Player.velocity.Y == 0)//Make sure Garridine isn't already there, and also check if you're standing.
                     {
-                        int index = NPC.NewNPC(null, (int)Player.Center.X + 1150, (int)Player.Center.Y, ModContent.NPCType<Garridine>());
+                        int index = NPC.NewNPC(null, (int)Player.Center.X + 1150, (int)Player.Center.Y, NPCType<Garridine>());
                         NPC GarridineNPC = Main.npc[index];
 
                         // Finally, syncing, only sync on server and if the NPC actually exists (Main.maxNPCs is the index of a dummy NPC, there is no point syncing it)
@@ -405,7 +413,7 @@ namespace StarsAbove
                         Player.velocity = new Vector2(Player.velocity.X, -17);
                     }
                 }
-                if (Player.InModBiome(ModContent.GetInstance<SeaOfStarsBiome>()))
+                if (Player.InModBiome(GetInstance<SeaOfStarsBiome>()))
                 {
                     //Make sure the player can't do what's not allowed:
                     Player.AddBuff(BuffType<Superimposed>(), 10);
@@ -422,7 +430,7 @@ namespace StarsAbove
                         Player.velocity = new Vector2(Player.velocity.X, -17);
                     }
                 }
-                if (Player.InModBiome(ModContent.GetInstance<CorvusBiome>()))
+                if (Player.InModBiome(GetInstance<CorvusBiome>()))
                 {
                     //Make sure the player can't do what's not allowed:
 
@@ -447,7 +455,7 @@ namespace StarsAbove
 
 
                 }
-                if (Player.InModBiome(ModContent.GetInstance<BleachedWorldBiome>()))
+                if (Player.InModBiome(GetInstance<BleachedWorldBiome>()))
                 {
                     //Make sure the player can't do what's not allowed:
                     Player.AddBuff(BuffType<Superimposed>(), 10);
@@ -523,7 +531,7 @@ namespace StarsAbove
                 }
             }
 
-            
+
 
             base.PostUpdateBuffs();
         }
@@ -540,12 +548,12 @@ namespace StarsAbove
             }
 
 
-             
+
         }
 
         public override void ResetEffects()
         {
-            
+
 
         }
 

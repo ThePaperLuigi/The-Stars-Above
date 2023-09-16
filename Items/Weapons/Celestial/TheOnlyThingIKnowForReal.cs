@@ -10,6 +10,8 @@ using StarsAbove.Items.Essences;
 using Terraria.Audio;
 using StarsAbove.Projectiles.TheOnlyThingIKnowForReal;
 using StarsAbove.Buffs.TheOnlyThingIKnowForReal;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Celestial
 {

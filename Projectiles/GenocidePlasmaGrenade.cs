@@ -2,15 +2,17 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Buffs;
 using System;
-using Terraria;using Terraria.GameContent;
+using Terraria;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles
 {
-	public class GenocidePlasmaGrenade : ModProjectile
+    public class GenocidePlasmaGrenade : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			// DisplayName.SetDefault("Genocide Plasma Grenade");     //The English name of the projectile

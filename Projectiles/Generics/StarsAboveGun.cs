@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Buffs.CatalystMemory;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using System;
 using Terraria;
@@ -14,7 +16,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.Generics
 {
-	/* This class is a held projectile that animates a gun firing.
+    /* This class is a held projectile that animates a gun firing.
 	 * 
 	 * */
     public abstract class StarsAboveGun : ModProjectile
@@ -166,9 +168,19 @@ namespace StarsAbove.Projectiles.Generics
                 {
                     shootAnimationProgressMax = projOwner.itemTimeMax * 0.9f ; //90% of the time spent after using this item is this animation.
                 }
-                recoilRotation = recoilRotationStart;
 
-                
+                int fakeRotation = (int)MathHelper.ToDegrees((float)Math.Atan2(Main.MouseWorld.Y - projOwner.Center.Y, Main.MouseWorld.X - projOwner.Center.X)) - 180;
+                Main.NewText(fakeRotation);
+                if(fakeRotation < -235 && fakeRotation > -300)
+                {
+                    recoilRotationStart = 0;
+                }
+                else
+                {
+                    recoilRotationStart = 30f;
+                }
+
+
             }
 
             Vector2 playerToMouse = Main.MouseWorld - projOwner.Center;
@@ -274,17 +286,25 @@ namespace StarsAbove.Projectiles.Generics
         private void OrientSprite(Player projOwner)
         {
             Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(180f);
-
+            
             //Main.NewText(MathHelper.ToDegrees(Projectile.rotation));
             if (Projectile.rotation >= MathHelper.ToRadians(90) && Projectile.rotation <= MathHelper.ToRadians(270))
             {
                 Projectile.spriteDirection = 0;
                 Projectile.rotation += MathHelper.Pi;
+                if (recoilRotation > 1)
+                {
+                    return;
+                }
                 projOwner.direction = 0;
             }
             else
             {
                 Projectile.spriteDirection = 1;
+                if (recoilRotation > 1)
+                {
+                    return;
+                }
                 projOwner.direction = 1;
             }
         }

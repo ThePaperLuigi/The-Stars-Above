@@ -8,6 +8,7 @@ using Terraria.GameContent.UI.Elements;
 using Terraria.UI;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Localization;
+using StarsAbove.Systems;
 
 namespace StarsAbove.UI.StellarNova
 {

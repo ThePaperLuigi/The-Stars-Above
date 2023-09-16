@@ -10,6 +10,8 @@ using StarsAbove.Projectiles.VermillionDaemon;
 using StarsAbove.Buffs.VermillionDaemon;
 using StarsAbove.Buffs;
 using System;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Magic
 {

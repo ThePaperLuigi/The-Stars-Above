@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.Graphics.Effects;
+using StarsAbove.Systems;
 
 namespace StarsAbove.SceneEffects
 {

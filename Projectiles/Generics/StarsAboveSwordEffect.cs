@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using StarsAbove.Dusts;
 using StarsAbove.Utilities;
 using System;
 using Terraria;
@@ -126,8 +127,8 @@ namespace StarsAbove.Projectiles.Generics
 			if (Main.rand.NextFloat() * 2f < Projectile.Opacity)
 			{
 				// Original Excalibur color: Color.Gold, Color.White
-				Color dustColor = Color.Lerp(Color.SkyBlue, Color.White, Main.rand.NextFloat() * 0.3f);
-				Dust coloredDust = Dust.NewDustPerfect(Projectile.Center + dustRotation.ToRotationVector2() * (Main.rand.NextFloat() * 80f * Projectile.scale + 20f * Projectile.scale), DustID.FireworksRGB, dustVelocity * 1f, 100, dustColor, 0.4f);
+				Color dustColor = Color.Lerp(Color.White, Color.White, Main.rand.NextFloat() * 0.3f);
+				Dust coloredDust = Dust.NewDustPerfect(Projectile.Center + dustRotation.ToRotationVector2() * (Main.rand.NextFloat() * 80f * Projectile.scale + 20f * Projectile.scale), ModContent.DustType<Shine>(), dustVelocity * 1f, 100, dustColor, 0.4f);
 				coloredDust.fadeIn = 0.4f + Main.rand.NextFloat() * 0.15f;
 				coloredDust.noGravity = true;
 			}
@@ -135,7 +136,7 @@ namespace StarsAbove.Projectiles.Generics
 			if (Main.rand.NextFloat() * 1.5f < Projectile.Opacity)
 			{
 				// Original Excalibur color: Color.White
-				Dust.NewDustPerfect(dustPosition, DustID.TintableDustLighted, dustVelocity, 100, Color.SkyBlue * Projectile.Opacity, 1.2f * Projectile.Opacity);
+				Dust.NewDustPerfect(dustPosition, ModContent.DustType<Shine>(), dustVelocity, 100, Color.White * Projectile.Opacity, 0.5f * Projectile.Opacity);
 			}
 
 			Projectile.scale *= Projectile.ai[2]; // Set the scale of the projectile to the scale of the item.

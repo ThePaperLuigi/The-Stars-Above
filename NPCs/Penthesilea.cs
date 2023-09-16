@@ -18,6 +18,7 @@ using Terraria.GameContent.ItemDropRules;
 using Conditions = Terraria.GameContent.ItemDropRules.Conditions;
 using StarsAbove.Items.BossBags;
 using StarsAbove.Items.Loot;
+using StarsAbove.Systems;
 
 namespace StarsAbove.NPCs
 {

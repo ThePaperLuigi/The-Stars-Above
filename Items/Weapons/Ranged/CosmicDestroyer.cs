@@ -8,6 +8,8 @@ using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles.CosmicDestroyer;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Ranged
 {

@@ -24,10 +24,12 @@ using StarsAbove.Utilities;
 using StarsAbove.Projectiles.Bosses.WarriorOfLight;
 using Terraria.Graphics.Shaders;
 using StarsAbove.Items.Loot;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.NPCs.WarriorOfLight
 {
-	[AutoloadBossHead]
+    [AutoloadBossHead]
 
 	public class WarriorOfLightBossFinalPhase : ModNPC
 	{

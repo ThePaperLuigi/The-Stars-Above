@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Buffs.CarianDarkMoon;
 using StarsAbove.NPCs.Tsukiyomi;
+using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using Terraria;
 using Terraria.Audio;
@@ -13,7 +14,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 {
-	public class TsukiVoiceOfTheOutbreak2 : ModProjectile
+    public class TsukiVoiceOfTheOutbreak2 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			// DisplayName.SetDefault("Tsukiyomi, the First Starfarer");

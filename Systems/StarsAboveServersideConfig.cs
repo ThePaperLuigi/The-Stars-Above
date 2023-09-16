@@ -1,10 +1,11 @@
 ﻿using StarsAbove.NPCs;
+using StarsAbove.Systems;
 using StarsAbove.UI.CelestialCartography;
 using System;
 using System.ComponentModel;
 using Terraria.ModLoader.Config;
 
-namespace StarsAbove
+namespace StarsAbove.Systems
 {
     // This file contains 2 real ModConfigs (and also a bunch of fake ModConfigs showcasing various ideas). One is set to ConfigScope.ServerSide and the other ConfigScope.ClientSide
     // ModConfigs contain Public Fields and Properties that represent the choices available to the user. 
@@ -17,71 +18,71 @@ namespace StarsAbove
     /// </summary>
 
     public class StarsAboveServersideConfig : ModConfig
-	{
+    {
 
-		//public new string Name => "Stars Above Config (Server)";
-		public override ConfigScope Mode => ConfigScope.ServerSide;
+        //public new string Name => "Stars Above Config (Server)";
+        public override ConfigScope Mode => ConfigScope.ServerSide;
 
-		[Label("$Mods.StarsAbove.Config.DisableTypePenalty.Label")]
-		[Tooltip("$Mods.StarsAbove.Config.DisableTypePenalty.Tooltip")]
-		public bool DisableTypePenalty;
+        [Label("$Mods.StarsAbove.Config.DisableTypePenalty.Label")]
+        [Tooltip("$Mods.StarsAbove.Config.DisableTypePenalty.Tooltip")]
+        public bool DisableTypePenalty;
 
-		[Label("$Mods.StarsAbove.Config.DisableBossAggro.Label")]
-		[Tooltip("$Mods.StarsAbove.Config.DisableBossAggro.Tooltip")]
-		public bool DisableBossAggro;
+        [Label("$Mods.StarsAbove.Config.DisableBossAggro.Label")]
+        [Tooltip("$Mods.StarsAbove.Config.DisableBossAggro.Tooltip")]
+        public bool DisableBossAggro;
 
-		[Label("$Mods.StarsAbove.Config.DisableCalamityWeaponBuffs.Label")]
-		[Tooltip("$Mods.StarsAbove.Config.DisableCalamityWeaponBuffs.Tooltip")]
-		public bool DisableCalamityWeaponBuffs;
+        [Label("$Mods.StarsAbove.Config.DisableCalamityWeaponBuffs.Label")]
+        [Tooltip("$Mods.StarsAbove.Config.DisableCalamityWeaponBuffs.Tooltip")]
+        public bool DisableCalamityWeaponBuffs;
 
-		[Label("$Mods.StarsAbove.Config.DisableWeaponRestrictions.Label")]
-		[Tooltip("$Mods.StarsAbove.Config.DisableWeaponRestrictions.Tooltip")]
-		public bool DisableWeaponRestrictions;
-		
-		[Label("$Mods.StarsAbove.Config.DisableBossEnemySpawnMod.Label")]
-		[Tooltip("$Mods.StarsAbove.Config.DisableBossEnemySpawnMod.Tooltip")]
-		//[DefaultValue(true)]
-		public bool DisableBossEnemySpawnMod;
+        [Label("$Mods.StarsAbove.Config.DisableWeaponRestrictions.Label")]
+        [Tooltip("$Mods.StarsAbove.Config.DisableWeaponRestrictions.Tooltip")]
+        public bool DisableWeaponRestrictions;
 
-		[Label("$Mods.StarsAbove.Config.DisableManaSicknessChange.Label")]
-		[Tooltip("$Mods.StarsAbove.Config.DisableManaSicknessChange.Tooltip")]
-		//[DefaultValue(true)]
-		public bool DisableManaSicknessChange;
+        [Label("$Mods.StarsAbove.Config.DisableBossEnemySpawnMod.Label")]
+        [Tooltip("$Mods.StarsAbove.Config.DisableBossEnemySpawnMod.Tooltip")]
+        //[DefaultValue(true)]
+        public bool DisableBossEnemySpawnMod;
 
-		[Label("$Mods.StarsAbove.Config.ColorblindBoss.Label")]
-		[Tooltip("$Mods.StarsAbove.Config.ColorblindBoss.Tooltip")]
-		public bool ColorblindBoss;
+        [Label("$Mods.StarsAbove.Config.DisableManaSicknessChange.Label")]
+        [Tooltip("$Mods.StarsAbove.Config.DisableManaSicknessChange.Tooltip")]
+        //[DefaultValue(true)]
+        public bool DisableManaSicknessChange;
 
-		[Label("$Mods.StarsAbove.Config.SubworldCompatibility.Label")]
-		[Tooltip("$Mods.StarsAbove.Config.SubworldCompatibility.Tooltip")]
-		[DefaultValue(false)]
-		public bool DisableCompatibilityMode;
+        [Label("$Mods.StarsAbove.Config.ColorblindBoss.Label")]
+        [Tooltip("$Mods.StarsAbove.Config.ColorblindBoss.Tooltip")]
+        public bool ColorblindBoss;
 
-		[Increment(1)]
-		[Range(5, 60)]
-		[DefaultValue(15)]
-		[Slider] // The Slider attribute makes this field be presented with a slider rather than a text input. The default ticks is 1.
-		[Label("$Mods.StarsAbove.Config.CombatTimer.Label")]
-		[Tooltip("$Mods.StarsAbove.Config.CombatTimer.Tooltip")]
-		public int CombatTimer;
+        [Label("$Mods.StarsAbove.Config.SubworldCompatibility.Label")]
+        [Tooltip("$Mods.StarsAbove.Config.SubworldCompatibility.Tooltip")]
+        [DefaultValue(false)]
+        public bool DisableCompatibilityMode;
+
+        [Increment(1)]
+        [Range(5, 60)]
+        [DefaultValue(15)]
+        [Slider] // The Slider attribute makes this field be presented with a slider rather than a text input. The default ticks is 1.
+        [Label("$Mods.StarsAbove.Config.CombatTimer.Label")]
+        [Tooltip("$Mods.StarsAbove.Config.CombatTimer.Tooltip")]
+        public int CombatTimer;
 
 
-		//[Label("Show mod origin in tooltip")]
-		//public bool ShowModOriginTooltip;
+        //[Label("Show mod origin in tooltip")]
+        //public bool ShowModOriginTooltip;
 
-		public override void OnChanged()
-		{
-			// Here we use the OnChanged hook to initialize ExampleUI.visible with the new values.
-			// We maintain both ExampleUI.visible and ShowCoinUI as separate values so ShowCoinUI can act as a default while ExampleUI.visible can change within a play session.
-			StarsAboveGlobalItem.disableAspectPenalty = DisableTypePenalty;
-			StarsAboveGlobalItem.disableWeaponRestriction = DisableWeaponRestrictions;
-			StarsAboveGlobalItem.disableCalamityWeaponBuffs = DisableCalamityWeaponBuffs;
-			StarsAbovePlayer.inCombatMax = CombatTimer*60;
-			StarsAbovePlayer.BossEnemySpawnModDisabled = DisableBossEnemySpawnMod;
-			StarsAboveGlobalBuff.DisableManaSicknessChange = DisableManaSicknessChange;
-			BossPlayer.disableBossAggro = DisableBossAggro;
-			Penthesilea.ColorblindEnabled = ColorblindBoss;
-			CelestialCompass.DisableMultiplayerCompatibility = DisableCompatibilityMode;
-		}
-	}
+        public override void OnChanged()
+        {
+            // Here we use the OnChanged hook to initialize ExampleUI.visible with the new values.
+            // We maintain both ExampleUI.visible and ShowCoinUI as separate values so ShowCoinUI can act as a default while ExampleUI.visible can change within a play session.
+            StarsAboveGlobalItem.disableAspectPenalty = DisableTypePenalty;
+            StarsAboveGlobalItem.disableWeaponRestriction = DisableWeaponRestrictions;
+            StarsAboveGlobalItem.disableCalamityWeaponBuffs = DisableCalamityWeaponBuffs;
+            StarsAbovePlayer.inCombatMax = CombatTimer * 60;
+            StarsAbovePlayer.BossEnemySpawnModDisabled = DisableBossEnemySpawnMod;
+            StarsAboveGlobalBuff.DisableManaSicknessChange = DisableManaSicknessChange;
+            BossPlayer.disableBossAggro = DisableBossAggro;
+            Penthesilea.ColorblindEnabled = ColorblindBoss;
+            CelestialCompass.DisableMultiplayerCompatibility = DisableCompatibilityMode;
+        }
+    }
 }

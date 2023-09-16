@@ -8,6 +8,7 @@ using static Terraria.ModLoader.ModContent;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Subworlds
 {
@@ -22,7 +23,7 @@ namespace StarsAbove.Subworlds
 
 		public override bool ShouldSave => false;
 		public override bool NoPlayerSaving => false;
-		public override bool NormalUpdates => true;
+		public override bool NormalUpdates => false;
 
 		//public override bool noWorldUpdate => true;
 		private const string assetPath = "StarsAbove/Subworlds/LoadingScreens";
@@ -157,7 +158,8 @@ namespace StarsAbove.Subworlds
 		}
 		public override void OnEnter()
         {
-			
+			Main.dayTime = true;
+			Main.time = 18000;
 			//DownedBossSystem.downedWarrior = SubworldSystem.ReadCopiedWorldData<bool>("downedWarrior");
 
 			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "Observatory";
@@ -169,8 +171,7 @@ namespace StarsAbove.Subworlds
         public override void OnLoad()
 		{
 
-			Main.dayTime = true;
-			Main.time = 18000;
+			
 
 
 			//Main.cloudAlpha = 0f;

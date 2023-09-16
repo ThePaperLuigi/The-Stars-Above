@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using StarsAbove.Projectiles;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Items.Essences;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Other
 {

@@ -12,7 +12,14 @@ using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.ModLoader.IO;
-using StarsAbove.Items; using StarsAbove.Items.Weapons; using StarsAbove.Items.Weapons.Summon; using StarsAbove.Items.Weapons.Ranged; using StarsAbove.Items.Weapons.Other; using StarsAbove.Items.Weapons.Celestial; using StarsAbove.Items.Weapons.Melee; using StarsAbove.Items.Weapons.Magic;
+using StarsAbove.Items;
+using StarsAbove.Items.Weapons;
+using StarsAbove.Items.Weapons.Summon;
+using StarsAbove.Items.Weapons.Ranged;
+using StarsAbove.Items.Weapons.Other;
+using StarsAbove.Items.Weapons.Celestial;
+using StarsAbove.Items.Weapons.Melee;
+using StarsAbove.Items.Weapons.Magic;
 using StarsAbove.Projectiles;
 using StarsAbove.Buffs;
 using StarsAbove.NPCs;
@@ -46,8 +53,9 @@ using StarsAbove.Items.Armor.StarfarerArmor;
 using StarsAbove.Buffs.BlackSilence;
 using StarsAbove.Projectiles.BlackSilence;
 using StarsAbove.Items.Armor.BlackSilence;
+using StarsAbove.Systems;
 
-namespace StarsAbove
+namespace StarsAbove.Systems
 {
     public class BlackSilencePlayer : ModPlayer
     {
@@ -90,18 +98,18 @@ namespace StarsAbove
                 atelierLogicUsed = false;//6
                 crystalAtelierUsed = false;//7
                 wheelsIndustryUsed = false;//8
-    }
-            if(weaponSwapPrep)
+            }
+            if (weaponSwapPrep)
             {
                 Player.AddBuff(BuffType<BlackSilenceChoiceCooldown>(), 300);
 
                 weaponSwapPrep = false;
             }
 
-           if(BlackSilenceUIVisible)
-           {
+            if (BlackSilenceUIVisible)
+            {
                 UIOpacity += 0.05f;
-                
+
                 if (UIAnimateIn > 0f)
                 {
                     UIAnimateIn -= 2f;
@@ -111,12 +119,12 @@ namespace StarsAbove
                     UIAnimateIn = 0f;
                 }
 
-           }
-           else
-           {
+            }
+            else
+            {
                 UIOpacity = 0f;
                 UIAnimateIn = 20f;
-           }
+            }
         }
         public override void PostUpdateRunSpeeds()
         {
@@ -145,14 +153,14 @@ namespace StarsAbove
         }
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Projectile, consider using ModifyHitNPC instead */
         {
-           
+
             if (Player.HasBuff(BuffType<MookBuff>()) || Player.HasBuff(BuffType<FuriosoBuff>()))
             {
                 target.AddBuff(BuffID.Bleeding, 240);
             }
             if (Player.HasBuff(BuffType<ZelkovaBuff>()) || Player.HasBuff(BuffType<FuriosoBuff>()))
             {
-                if(target.life < target.lifeMax/2)//Less than half HP
+                if (target.life < target.lifeMax / 2)//Less than half HP
                 {
 
                     modifiers.SourceDamage += 1.3f;
@@ -164,7 +172,7 @@ namespace StarsAbove
             }
             if (Player.HasBuff(BuffType<DurandalBuff>()) || Player.HasBuff(BuffType<FuriosoBuff>()))
             {
-                if(target.life < target.lifeMax/2)
+                if (target.life < target.lifeMax / 2)
                 {
                     modifiers.CritDamage += 1.5f;
                 }
@@ -174,7 +182,7 @@ namespace StarsAbove
         public override void PreUpdateBuffs()
         {
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.BlackSilence.FuriosoBuff>())
+                if (Player.buffType[i] == BuffType<FuriosoBuff>())
                 {
                     if (Player.buffTime[i] == 1)
                     {//When Furioso runs out...
@@ -223,19 +231,19 @@ namespace StarsAbove
             }
             if (durandalUsed && zelkovaUsed && rangaUsed && oldBoysUsed && allasUsed && mookUsed && atelierLogicUsed && crystalAtelierUsed && wheelsIndustryUsed)
             {//Furioso use condition
-                if(furiosoReadyPrompt)
+                if (furiosoReadyPrompt)
                 {
                     Rectangle textPos = new Rectangle((int)Main.LocalPlayer.position.X, (int)Main.LocalPlayer.position.Y - 20, Main.LocalPlayer.width, Main.LocalPlayer.height);
                     CombatText.NewText(textPos, new Color(255, 255, 255, 240), LangHelper.GetTextValue($"UIElements.BlackSilence.FuriosoReady"), false, false);
                     furiosoReadyPrompt = false;
                 }
-               
+
             }
         }
         public override void ResetEffects()
         {
             //When the weapon isn't held, hide the UI.
-            if(!BlackSilenceHeld)
+            if (!BlackSilenceHeld)
             {
                 BlackSilenceUIVisible = false;
             }
@@ -249,16 +257,16 @@ namespace StarsAbove
             {
                 if (Player.HasBuff(BuffType<FuriosoBuff>()))
                 {
-                   
+
                     Player.head = EquipLoader.GetEquipSlot(Mod, "BlackSilenceHead", EquipType.Head);
-                    
-                   
+
+
 
                 }
-                if(BlackSilenceHeld)
+                if (BlackSilenceHeld)
                 {
-                    Player.UpdateVisibleAccessories(new Item(ModContent.ItemType<BlackSilenceGloves>()), false);
-                    
+                    Player.UpdateVisibleAccessories(new Item(ItemType<BlackSilenceGloves>()), false);
+
                 }
 
 
@@ -273,13 +281,13 @@ namespace StarsAbove
         }
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Projectile, consider using OnHitNPC instead */
         {
-            if(BlackSilenceHeld)
+            if (BlackSilenceHeld)
             {
                 BlackSilenceHitVFX(target);
-                if(proj.type == ProjectileType<WheelsIndustrySlamDamage>())
+                if (proj.type == ProjectileType<WheelsIndustrySlamDamage>())
                 {//Blunt
                     int randomSound = Main.rand.Next(0, 2);
-                    
+
                     if (randomSound == 0)
                     {
                         SoundEngine.PlaySound(StarsAboveAudio.SFX_BlackSilenceMace, Main.LocalPlayer.Center);
@@ -292,7 +300,7 @@ namespace StarsAbove
                 }
                 if (proj.type == ProjectileType<RangaDamage>())
                 {//Slash
-                    
+
                     SoundEngine.PlaySound(StarsAboveAudio.SFX_BlackSilenceDurandalHit, Main.LocalPlayer.Center);
 
                 }

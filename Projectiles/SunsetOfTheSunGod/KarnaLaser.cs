@@ -10,6 +10,8 @@ using static Terraria.ModLoader.ModContent;
 using StarsAbove.Buffs.SunsetOfTheSunGod;
 using Terraria.Audio;
 using Terraria.ID;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles.SunsetOfTheSunGod
 {

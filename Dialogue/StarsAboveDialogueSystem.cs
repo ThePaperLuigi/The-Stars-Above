@@ -1,9 +1,10 @@
+using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using System;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace StarsAbove
+namespace StarsAbove.Dialogue
 {
     public static class StarsAboveDialogueSystem
     {
@@ -1548,13 +1549,13 @@ namespace StarsAbove
                     if (dialogueLeft == 3)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Asphodene.1", Player.name); 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Asphodene.1", Player.name);
                         //	" ";
                     }
                     if (dialogueLeft == 2)
                     {
                         expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Asphodene.2", Player.name); 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Asphodene.2", Player.name);
                         //	" ";
                     }
                     if (dialogueLeft == 1)
@@ -8980,7 +8981,7 @@ namespace StarsAbove
                     {
                         expression = 3;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.1", Player.name);
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.1", Player.name);
 
 
                         //	" ";
@@ -8989,7 +8990,7 @@ namespace StarsAbove
                     {
                         expression = 12;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.2", Player.name);
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.2", Player.name);
 
 
                         //	" ";
@@ -8998,7 +8999,7 @@ namespace StarsAbove
                     {
                         expression = 1;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.3", Player.name);
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.3", Player.name);
 
 
                         //	" ";
@@ -9007,7 +9008,7 @@ namespace StarsAbove
                     {
                         expression = 12;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.4", Player.name);
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.4", Player.name);
 
 
                         //	" ";
@@ -9016,7 +9017,7 @@ namespace StarsAbove
                     {
                         expression = 1;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.5", Player.name);
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.5", Player.name);
 
 
                         //	" ";
@@ -9025,7 +9026,7 @@ namespace StarsAbove
                     {
                         expression = 12;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.6", Player.name);
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.6", Player.name);
 
 
                         //	" ";
@@ -9034,7 +9035,7 @@ namespace StarsAbove
                     {
                         expression = 1;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.7", Player.name);
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.7", Player.name);
 
 
                         //	" ";
@@ -9043,7 +9044,7 @@ namespace StarsAbove
                     {
                         expression = 12;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.8", Player.name);
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.8", Player.name);
 
 
                         //	" ";
@@ -9052,7 +9053,7 @@ namespace StarsAbove
                     {
                         expression = 12;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.9", Player.name);
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.9", Player.name);
 
 
                         //	" ";
@@ -9061,7 +9062,7 @@ namespace StarsAbove
                     {
                         expression = 12;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.10", Player.name);
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.10", Player.name);
 
 
                         //	" ";
@@ -9070,7 +9071,7 @@ namespace StarsAbove
                     {
                         expression = 12;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.11", Player.name);
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.11", Player.name);
 
 
                         //	" ";
@@ -9079,7 +9080,7 @@ namespace StarsAbove
                     {
                         expression = 2;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.12", Player.name);
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.12", Player.name);
 
 
                         //	" ";

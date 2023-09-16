@@ -3,6 +3,7 @@ using StarsAbove.Buffs.GossamerNeedle;
 using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles;
 using StarsAbove.Projectiles.GossamerNeedle;
+using StarsAbove.Systems;
 using System;
 using Terraria;
 using Terraria.Audio;

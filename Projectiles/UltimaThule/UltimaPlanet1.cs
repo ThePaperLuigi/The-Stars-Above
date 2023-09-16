@@ -7,6 +7,7 @@ using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.Graphics.Shaders;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles.UltimaThule
 {

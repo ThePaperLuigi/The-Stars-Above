@@ -1,4 +1,4 @@
-﻿namespace StarsAbove.UI
+﻿namespace StarsAbove.UI.Tooltips
 {
 
 }

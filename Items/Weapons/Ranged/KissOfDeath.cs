@@ -9,6 +9,7 @@ using StarsAbove.Items.Essences;
 using Terraria.Audio;
 using StarsAbove.Projectiles.KissOfDeath;
 using StarsAbove.Utilities;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Ranged
 {

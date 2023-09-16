@@ -9,6 +9,8 @@ using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using StarsAbove.Projectiles.VirtuesEdge;
 using StarsAbove.Buffs.VirtuesEdge;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Celestial
 {

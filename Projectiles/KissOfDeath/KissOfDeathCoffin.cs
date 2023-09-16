@@ -10,13 +10,15 @@ using static Terraria.ModLoader.ModContent;
 using Terraria.GameContent;
 using ReLogic.Content;
 using StarsAbove.Buffs.KissOfDeath;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles.KissOfDeath
 {
-	// Example Advanced Flail is a complete adaption of Ball O' Hurt projectile. The code has been rewritten a bit to make it easier to follow. Compare this code against the decompiled Terraria code for an example of adapting vanilla code. A few comments and extra code snippets show features from other vanilla flails as well.
-	// Example Advanced Flail shows a plethora of advanced AI and collision topics.
-	// See ExampleFlail for a simpler but less customizable flail projectile example.
-	public class KissOfDeathCoffin : ModProjectile
+    // Example Advanced Flail is a complete adaption of Ball O' Hurt projectile. The code has been rewritten a bit to make it easier to follow. Compare this code against the decompiled Terraria code for an example of adapting vanilla code. A few comments and extra code snippets show features from other vanilla flails as well.
+    // Example Advanced Flail shows a plethora of advanced AI and collision topics.
+    // See ExampleFlail for a simpler but less customizable flail projectile example.
+    public class KissOfDeathCoffin : ModProjectile
 	{
 		private const string ChainTexturePath = "StarsAbove/Projectiles/KissOfDeath/Chain"; // The folder path to the flail chain sprite
 		private const string ChainTextureExtraPath = "StarsAbove/Projectiles/KissOfDeath/Chain";  // This texture and related code is optional and used for a unique effect

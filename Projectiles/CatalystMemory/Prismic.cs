@@ -7,6 +7,8 @@ using StarsAbove.Buffs.Ozma;
 using StarsAbove.Buffs.CatalystMemory;
 using Terraria.Audio;
 using System;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles.CatalystMemory
 {

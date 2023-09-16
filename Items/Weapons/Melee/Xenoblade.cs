@@ -8,6 +8,8 @@ using static Terraria.ModLoader.ModContent;
 using StarsAbove.Items.Essences;
 using StarsAbove.Items.Prisms;
 using Terraria.Audio;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Melee
 {

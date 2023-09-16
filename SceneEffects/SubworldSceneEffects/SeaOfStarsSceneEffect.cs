@@ -3,14 +3,15 @@ using Terraria.ModLoader;
 using Terraria.Graphics.Effects;
 using StarsAbove.Buffs.SubworldModifiers;
 using SubworldLibrary;
+using StarsAbove.Subworlds.ThirdRegion;
 
-namespace StarsAbove.SceneEffects
+namespace StarsAbove.SceneEffects.SubworldSceneEffects
 {
     public class SeaOfStarsSceneEffect : ModSceneEffect
-	{
+    {
         public override bool IsSceneEffectActive(Player player)
         {
-			
+
             return true;
         }
         public override void SpecialVisuals(Player player, bool isActive)
@@ -33,9 +34,9 @@ namespace StarsAbove.SceneEffects
             }
 
         }
-        
 
-		
+
+
 
 
     }

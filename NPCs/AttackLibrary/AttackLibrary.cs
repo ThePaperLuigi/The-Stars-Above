@@ -26,11 +26,13 @@ using Terraria.DataStructures;
 using StarsAbove.NPCs.Dioskouroi;
 using StarsAbove.Projectiles.Bosses.WarriorOfLight;
 using StarsAbove.NPCs.WarriorOfLight;
-
+using StarsAbove.Systems;
+using StarsAbove.Systems;
+using StarsAbove.Subworlds;
 
 namespace StarsAbove.NPCs.AttackLibrary
 {
-	public class AttackLibrary
+    public class AttackLibrary
 	{
 		// Here we define an enum we will use with the State slot. Using an ai slot as a means to store "state" can simplify things greatly. Think flowchart.
 		// All bosses will look at this ActionState and go from there. Remember this takes the role of NPC.ai[0] so nothing else can go there.

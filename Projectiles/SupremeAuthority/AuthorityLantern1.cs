@@ -6,6 +6,7 @@ using static Terraria.ModLoader.ModContent;
 using StarsAbove.Buffs.Ozma;
 using System;
 using StarsAbove.Buffs.SupremeAuthority;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles.SupremeAuthority
 {

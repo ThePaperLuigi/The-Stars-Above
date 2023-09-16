@@ -8,6 +8,7 @@ using System;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Buffs.EternalStar;
 using static Terraria.ModLoader.ModContent;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Consumables.EternalStar
 {

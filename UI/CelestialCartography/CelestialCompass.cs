@@ -6,6 +6,9 @@ using StarsAbove.Items.Materials;
 using StarsAbove.Items.Placeable;
 using StarsAbove.Items.Prisms;
 using StarsAbove.Subworlds;
+using StarsAbove.Subworlds.ThirdRegion;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using SubworldLibrary;
 using System;
@@ -388,7 +391,7 @@ namespace StarsAbove.UI.CelestialCartography
 				return;
 
 			}
-			SubworldSystem.Enter("StarsAbove/Observatory");
+			SubworldSystem.Enter<Observatory>();
 			/*
 			if (Main.netMode == NetmodeID.SinglePlayer)
             {
@@ -435,18 +438,8 @@ namespace StarsAbove.UI.CelestialCartography
 						return;
 
 					}
-					if (Main.netMode == NetmodeID.SinglePlayer)
-					{
-						SubworldSystem.Enter("StarsAbove/CygnusAsteroids");
+					SubworldSystem.Enter<CygnusAsteroids>();
 
-					}
-					else
-					{
-						ModPacket packet = ModContent.GetInstance<StarsAbove>().GetPacket();
-						packet.Write((byte)0); // id
-						packet.Write("CygnusAsteroids"); // message
-						packet.Send();
-					}
 					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 
 				}
@@ -474,12 +467,6 @@ namespace StarsAbove.UI.CelestialCartography
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive)
 				return;
 
-			if (NPC.LunarApocalypseIsUp)
-			{
-				if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.LunarEvents"), 255, 255, 100); }
-				return;
-			}
-
 			if (Main.LocalPlayer.HasBuff(BuffType<PortalReady>()) || Main.LocalPlayer.HasBuff(BuffType<StellaglyphReady>()))
 			{
 				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 1)
@@ -499,18 +486,8 @@ namespace StarsAbove.UI.CelestialCartography
 						return;
 
 					}
-					if (Main.netMode == NetmodeID.SinglePlayer)
-					{
-						SubworldSystem.Enter("StarsAbove/MiningStationAries");
+					SubworldSystem.Enter<MiningStationAries>();
 
-					}
-					else
-					{
-						ModPacket packet = ModContent.GetInstance<StarsAbove>().GetPacket();
-						packet.Write((byte)0); // id
-						packet.Write("MiningStationAries"); // message
-						packet.Send();
-					}
 					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 
 				}
@@ -558,18 +535,8 @@ namespace StarsAbove.UI.CelestialCartography
 						return;
 
 					}
-					if (Main.netMode == NetmodeID.SinglePlayer)
-					{
-						SubworldSystem.Enter("StarsAbove/BleachedPlanet");
+					SubworldSystem.Enter<BleachedPlanet>();
 
-					}
-					else
-					{
-						ModPacket packet = ModContent.GetInstance<StarsAbove>().GetPacket();
-						packet.Write((byte)0); // id
-						packet.Write("BleachedPlanet"); // message
-						packet.Send();
-					}
 					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 
 				}
@@ -619,18 +586,8 @@ namespace StarsAbove.UI.CelestialCartography
 						return;
 
 					}
-					if (Main.netMode == NetmodeID.SinglePlayer)
-					{
-						SubworldSystem.Enter("StarsAbove/Serpens");
+					SubworldSystem.Enter<Serpens>();
 
-					}
-					else
-					{
-						ModPacket packet = ModContent.GetInstance<StarsAbove>().GetPacket();
-						packet.Write((byte)0); // id
-						packet.Write("Serpens"); // message
-						packet.Send();
-					}
 					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 
 				}
@@ -731,18 +688,8 @@ namespace StarsAbove.UI.CelestialCartography
 						return;
 
 					}
-					if (Main.netMode == NetmodeID.SinglePlayer)
-					{
-						SubworldSystem.Enter("StarsAbove/Tucana");
+					SubworldSystem.Enter<Tucana>();
 
-					}
-					else
-					{
-						ModPacket packet = ModContent.GetInstance<StarsAbove>().GetPacket();
-						packet.Write((byte)0); // id
-						packet.Write("Tucana"); // message
-						packet.Send();
-					}
 					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 
 				}
@@ -791,18 +738,8 @@ namespace StarsAbove.UI.CelestialCartography
 						return;
 
 					}
-					if (Main.netMode == NetmodeID.SinglePlayer)
-					{
-						SubworldSystem.Enter("StarsAbove/Corvus");
+					SubworldSystem.Enter<Corvus>();
 
-					}
-					else
-					{
-						ModPacket packet = ModContent.GetInstance<StarsAbove>().GetPacket();
-						packet.Write((byte)0); // id
-						packet.Write("Corvus"); // message
-						packet.Send();
-					}
 					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 
 				}

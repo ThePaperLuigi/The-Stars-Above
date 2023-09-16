@@ -6,6 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 using Terraria.Graphics.Shaders;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles.StellarNovas
 {

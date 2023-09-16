@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using StarsAbove.Buffs.TrickspinTwoStep;
 using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles.TrickspinTwoStep;
+using StarsAbove.Systems;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -12,7 +13,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Items.Weapons.Summon
 {
-	public class TrickspinTwoStep : ModItem
+    public class TrickspinTwoStep : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

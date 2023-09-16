@@ -3566,7 +3566,7 @@ Mods: {
 					[c/FFAB4D:Melee]: The weapon swings much faster and defense is added to critical strike damage
 					[c/EF4DFF:Magic]: Instead of swinging, the weapon will will conjure 6 explosive blasts in a fan pattern dealing 1/3 base damage
 					[c/4DFF5B:Ranged]: Instead of swinging, the weapon will quickly fire piercing shots without consuming ammo, dealing 1/2 base damage
-					[c/00CDFF:Summon]: The [c/6EF367:Luminary Armament] periodically attacks nearby foes independently, dealing half of your current HP as base damage and can crit
+					[c/00CDFF:Summon]: The [c/6EF367:Luminary Armament] periodically attacks nearby foes and can deal critical strikes
 					'For the future!'
 					'''
 				DisplayName: Architect's Luminance
@@ -11420,6 +11420,11 @@ Mods: {
 			TempestDragonlightBuff: {
 				DisplayName: Tempest's Dragonlight
 				Description: Gaining draconic defenses based on minion slots
+			}
+
+			DragaliaTagDamage: {
+				DisplayName: Dragalia Tag Damage
+				Description: Mods.StarsAbove.Buffs.DragaliaTagDamage.Description
 			}
 		}
 

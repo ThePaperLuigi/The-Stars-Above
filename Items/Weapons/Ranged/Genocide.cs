@@ -9,6 +9,8 @@ using static Terraria.ModLoader.ModContent;
 using StarsAbove.Items.Essences;
 using System;
 using Terraria.GameContent.Creative;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Ranged
 {

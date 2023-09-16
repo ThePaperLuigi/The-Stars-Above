@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles.UltimaThule
 {

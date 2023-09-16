@@ -8,6 +8,7 @@ using Terraria.Enums;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.ID;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles.TwinStars
 {

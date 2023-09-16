@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using StarsAbove.Buffs;
 using StarsAbove.Buffs.StellarNovas;
+using StarsAbove.Systems;
 using System;
 using Terraria;
 using Terraria.Audio;

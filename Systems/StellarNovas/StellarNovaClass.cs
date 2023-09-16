@@ -5,21 +5,21 @@ using System;
 using Terraria;
 using Terraria.Graphics.Effects;
 
-namespace StarsAbove
+namespace StarsAbove.Systems
 {
-	public class SetupStellarNovas
+    public class SetupStellarNovas
     {
-		int id;
-		int novaGaugeRequired;
-		int novaCritChance;
-		int novaCritChanceModifier;
+        int id;
+        int novaGaugeRequired;
+        int novaCritChance;
+        int novaCritChanceModifier;
 
-		string abilityName;
-		string abilitySubName;
-		string abilityDescription;
+        string abilityName;
+        string abilitySubName;
+        string abilityDescription;
 
-		string starfarerBonusAsphodene;
-		string starfarerBonusEridani;
+        string starfarerBonusAsphodene;
+        string starfarerBonusEridani;
 
         public string GetInfo(int id, string grab, int baseDamage)
         {
@@ -126,16 +126,16 @@ namespace StarsAbove
                 case 4:
                     return 100;
                 case 5:
-                    return (int)((baseDamage / 10) * 1.3);
+                    return (int)(baseDamage / 10 * 1.3);
                 case 6:
-                    return baseDamage/2;
+                    return baseDamage / 2;
                 case 7:
                     return (int)(baseDamage * 0.4f);
                 default:
                     break;
             }
             return 1;
-            
+
         }
     }
 

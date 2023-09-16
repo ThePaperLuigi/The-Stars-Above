@@ -12,6 +12,8 @@ using Terraria.Audio;
 using StarsAbove.Projectiles.ManiacalJustice;
 using StarsAbove.Utilities;
 using StarsAbove.Buffs.ManiacalJustice;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Melee
 {

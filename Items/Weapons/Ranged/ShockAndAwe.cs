@@ -9,6 +9,7 @@ using StarsAbove.Items.Essences;
 using Terraria.Audio;
 using StarsAbove.Projectiles.ShockAndAwe;
 using System;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Ranged
 {

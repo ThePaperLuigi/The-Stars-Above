@@ -8,6 +8,8 @@ using System;
 using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles.NeoDealmaker;
 using Terraria.Audio;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Ranged
 {

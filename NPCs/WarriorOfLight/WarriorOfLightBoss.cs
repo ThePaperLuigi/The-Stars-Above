@@ -23,10 +23,12 @@ using StarsAbove.Buffs;
 using StarsAbove.Utilities;
 using StarsAbove.Projectiles.Bosses.WarriorOfLight;
 using StarsAbove.Items.Accessories;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.NPCs.WarriorOfLight
 {
-	[AutoloadBossHead]
+    [AutoloadBossHead]
 
 	public class WarriorOfLightBoss : ModNPC
 	{

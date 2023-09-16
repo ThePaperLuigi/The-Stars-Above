@@ -12,7 +12,14 @@ using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.ModLoader.IO;
-using StarsAbove.Items; using StarsAbove.Items.Weapons; using StarsAbove.Items.Weapons.Summon; using StarsAbove.Items.Weapons.Ranged; using StarsAbove.Items.Weapons.Other; using StarsAbove.Items.Weapons.Celestial; using StarsAbove.Items.Weapons.Melee; using StarsAbove.Items.Weapons.Magic;
+using StarsAbove.Items;
+using StarsAbove.Items.Weapons;
+using StarsAbove.Items.Weapons.Summon;
+using StarsAbove.Items.Weapons.Ranged;
+using StarsAbove.Items.Weapons.Other;
+using StarsAbove.Items.Weapons.Celestial;
+using StarsAbove.Items.Weapons.Melee;
+using StarsAbove.Items.Weapons.Magic;
 using StarsAbove.Projectiles;
 using StarsAbove.Buffs;
 using StarsAbove.NPCs;
@@ -20,9 +27,9 @@ using Microsoft.Xna.Framework.Audio;
 using StarsAbove.NPCs.Vagrant;
 using StarsAbove.Utilities;
 
-namespace StarsAbove
+namespace StarsAbove.Systems
 {
-    public class ArchivePlayer: ModPlayer
+    public class ArchivePlayer : ModPlayer
     {
         public bool archivePopulated = false;
         public bool archiveActive;
@@ -1237,16 +1244,16 @@ namespace StarsAbove
         public override void PostUpdate()
         {
 
-            
-           
+
+
         }
 
 
 
         public override void ResetEffects()
         {
-           
-            
+
+
         }
 
     }

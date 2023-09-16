@@ -12,7 +12,14 @@ using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.ModLoader.IO;
-using StarsAbove.Items; using StarsAbove.Items.Weapons; using StarsAbove.Items.Weapons.Summon; using StarsAbove.Items.Weapons.Ranged; using StarsAbove.Items.Weapons.Other; using StarsAbove.Items.Weapons.Celestial; using StarsAbove.Items.Weapons.Melee; using StarsAbove.Items.Weapons.Magic;
+using StarsAbove.Items;
+using StarsAbove.Items.Weapons;
+using StarsAbove.Items.Weapons.Summon;
+using StarsAbove.Items.Weapons.Ranged;
+using StarsAbove.Items.Weapons.Other;
+using StarsAbove.Items.Weapons.Celestial;
+using StarsAbove.Items.Weapons.Melee;
+using StarsAbove.Items.Weapons.Magic;
 using StarsAbove.Projectiles;
 using StarsAbove.Buffs;
 using StarsAbove.NPCs;
@@ -21,7 +28,7 @@ using Microsoft.Xna.Framework.Audio;
 using StarsAbove.Dusts;
 using StarsAbove.Items.Consumables;
 using StarsAbove.UI.StellarNova;
- 
+
 using StarsAbove.Buffs.SubworldModifiers;
 using StarsAbove.Projectiles.Otherworld;
 using StarsAbove.Projectiles.SkyStriker;
@@ -57,8 +64,12 @@ using Terraria.GameContent.UI.Elements;
 using Terraria.IO;
 using StarsAbove.UI.Starfarers;
 using SubworldLibrary;
+using StarsAbove.Dialogue;
+using StarsAbove.Systems;
+using StarsAbove.Subworlds.ThirdRegion;
+ 
 
-namespace StarsAbove
+namespace StarsAbove.Systems
 {
     public class StarsAbovePlayer : ModPlayer
     {
@@ -71,7 +82,7 @@ namespace StarsAbove
         public static bool enableWorldLock = false;
         public bool SyncWorldProgress = false;
         public bool AlwaysSyncWorldProgress = false;
-       
+
 
         public static bool BossEnemySpawnModDisabled = false;
 
@@ -223,7 +234,7 @@ namespace StarsAbove
         //Light Monolith
         public bool lightMonolith;
 
-        
+
 
         //Starfarers ///////////////////////////////////////////////////////////////////////////////////////////////////
         public float StarfarerSelectionVisibility = 0f;
@@ -416,7 +427,7 @@ namespace StarsAbove
         public int observatoryIntroDialogue;
         public int yojimboIntroDialogue;
         public int garridineIntroDialogue;
-        
+
 
 
         //Weapon lines
@@ -547,7 +558,7 @@ namespace StarsAbove
         public int mysticforging = 0;
         public int flashfreeze = 0;
         //Tier 2
-        public int  healthyConfidence = 0;//
+        public int healthyConfidence = 0;//
         public int bloomingflames = 0;//
         public int astralmantle = 0;//
         public int avataroflight = 0;
@@ -730,9 +741,9 @@ namespace StarsAbove
         public int inCombat = 0;//If greater than 0, player is inCombat. default is 15 seconds, or 1200 ticks. Additonally, the NovaGauge will decrease if out of combat, or increase if Asphodene.
         public static int inCombatMax = 900;//Default is 900, or 15 seconds in combat.
 
-        
+
         // These are the variables for the Starfarer Prompt system
-        
+
 
         public float promptVisibility = 0f;
         public float promptMoveIn = 0f;
@@ -882,7 +893,7 @@ namespace StarsAbove
         public bool seenInfernon;
         public bool seenDusking;
         public bool seenAtlas;
-        
+
         public bool seenUnknownBoss;
         public int seenUnknownBossTimer;
         public List<int> seenBossesList = new List<int>();
@@ -917,11 +928,11 @@ namespace StarsAbove
         public float costumeChangeOpacity;
         int starfarerOutfitSaved = 0;
 
-        
+
 
         //Lore list?
         //
-       
+
 
         public bool seenMusicWarning;
 
@@ -937,7 +948,7 @@ namespace StarsAbove
         //public int cachedSpawnX = player.SpawnX;
 
 
-        
+
 
 
         //player.GetModPlayer<StarsAbovePlayer>().VARIABLENAME = VALUE;
@@ -962,7 +973,7 @@ namespace StarsAbove
             tag["mysticforging"] = mysticforging;
             tag["flashfreeze"] = flashfreeze;
 
-            tag[" healthyConfidence"] =  healthyConfidence;
+            tag[" healthyConfidence"] = healthyConfidence;
             tag["bloomingflames"] = bloomingflames;
             tag["astralmantle"] = astralmantle;
             tag["avataroflight"] = avataroflight;
@@ -1462,7 +1473,7 @@ namespace StarsAbove
             mysticforging = tag.GetInt("mysticforging");
             flashfreeze = tag.GetInt("flashfreeze");
 
-             healthyConfidence = tag.GetInt(" healthyConfidence");
+            healthyConfidence = tag.GetInt(" healthyConfidence");
             bloomingflames = tag.GetInt("bloomingflames");
             astralmantle = tag.GetInt("astralmantle");
             avataroflight = tag.GetInt("avataroflight");
@@ -1624,7 +1635,7 @@ namespace StarsAbove
             affixItem2 = tag.Get<Item>("affixSlot2");
             affixItem3 = tag.Get<Item>("affixSlot3");
 
-            
+
 
             //tag["starfarerVisibleOutfit"] = starfarerOutfitVisible;
             starfarerArmorEquipped = tag.Get<Item>("starfarerOutfitItem");
@@ -1641,9 +1652,9 @@ namespace StarsAbove
 
         public override void OnEnterWorld()
         {
-            if(SubworldSystem.noReturn == true)
+            if (SubworldSystem.noReturn == true)
             {
-               // SubworldSystem.noReturn = false; //Fix missing save and quit bug? As of 8/9/23 this is still relevant (just found that out the fun way)
+                // SubworldSystem.noReturn = false; //Fix missing save and quit bug? As of 8/9/23 this is still relevant (just found that out the fun way)
 
             }
             //Load the equipment.
@@ -1689,10 +1700,10 @@ namespace StarsAbove
             if (firstJoinedWorld == 0)
             {
                 firstJoinedWorld = Main.worldID;
-                firstJoinedWorldName = Main.worldName;    
+                firstJoinedWorldName = Main.worldName;
             }
             //If the player has already joined a world...
-            if(firstJoinedWorld == Main.worldID) //If it's the same world, sync progress.
+            if (firstJoinedWorld == Main.worldID) //If it's the same world, sync progress.
             {
                 SyncWorldProgress = true;
             }
@@ -1715,9 +1726,9 @@ namespace StarsAbove
                 //If AlwaysSyncWorldProgress is true, ignore the check.
                 SyncWorldProgress = true;
             }
-            
-            
-            
+
+
+
 
 
 
@@ -1727,7 +1738,7 @@ namespace StarsAbove
 
 
             return new[] {
-                new Item(ModContent.ItemType<SpatialDisk>()),
+                new Item(ItemType<SpatialDisk>()),
                 //new Item(ModContent.ItemType<Bifrost>()),
             };
         }
@@ -1749,7 +1760,7 @@ namespace StarsAbove
                 inCombat = inCombatMax;
             }
             //Astarte Driver
-            if (Player.HasBuff(BuffType<Buffs.AstarteDriver>()) && !target.HasBuff(BuffType<Buffs.AstarteDriverEnemyCooldown>()))
+            if (Player.HasBuff(BuffType<AstarteDriver>()) && !target.HasBuff(BuffType<AstarteDriverEnemyCooldown>()))
             {
                 if (hit.Crit)
                 {
@@ -1761,11 +1772,11 @@ namespace StarsAbove
                         }
                     }
                 }
-                target.AddBuff(BuffType<Buffs.AstarteDriverEnemyCooldown>(), 60);
+                target.AddBuff(BuffType<AstarteDriverEnemyCooldown>(), 60);
                 OnEnemyHitWithNova(target, 5, ref damageDone, ref hit.Crit);
             }
 
-            if (target.HasBuff(BuffType<Buffs.Starblight>()) && umbralentropy == 2)
+            if (target.HasBuff(BuffType<Starblight>()) && umbralentropy == 2)
             {
                 if (umbralEntropyCooldown <= 0)
                 {
@@ -1774,7 +1785,7 @@ namespace StarsAbove
                 }
             }
 
-            if (Player.HasBuff(BuffType<Buffs.SovereignDominion>()) && target.HasBuff(BuffType<Buffs.Ruination>()))
+            if (Player.HasBuff(BuffType<SovereignDominion>()) && target.HasBuff(BuffType<Ruination>()))
             {
                 if (hit.Crit)
                 {
@@ -1783,7 +1794,7 @@ namespace StarsAbove
             }
             if (ruinedKingPrism && target.life <= target.lifeMax / 2 && hit.Crit)
             {
-                target.AddBuff(BuffType<Buffs.Ruination>(), 1800);
+                target.AddBuff(BuffType<Ruination>(), 1800);
             }
             if (hit.Crit)
             {
@@ -1806,14 +1817,14 @@ namespace StarsAbove
                 }
                 if (umbralentropy == 2)
                 {
-                    target.AddBuff(BuffType<Buffs.Starblight>(), 180);
+                    target.AddBuff(BuffType<Starblight>(), 180);
 
                 }
-                if (Player.HasBuff(BuffType<Buffs.AstarteDriver>()) && !target.HasBuff(BuffType<Buffs.AstarteDriverEnemyCooldown>()))
+                if (Player.HasBuff(BuffType<AstarteDriver>()) && !target.HasBuff(BuffType<AstarteDriverEnemyCooldown>()))
                 {
 
                     OnEnemyHitWithNova(target, 5, ref damageDone, ref hit.Crit);
-                    target.AddBuff(BuffType<Buffs.AstarteDriverEnemyCooldown>(), 60);
+                    target.AddBuff(BuffType<AstarteDriverEnemyCooldown>(), 60);
 
                 }
             }
@@ -1831,22 +1842,22 @@ namespace StarsAbove
                     || target.HasBuff(BuffID.Frostburn)
                     || target.HasBuff(BuffID.ShadowFlame))
                 {
-                    if (damageDone + (damageDone * 0.25) < target.life)
+                    if (damageDone + damageDone * 0.25 < target.life)
                     {
                         Rectangle textPos = new Rectangle((int)target.position.X, (int)target.position.Y - 20, target.width, target.height);
                         CombatText.NewText(textPos, new Color(255, 30, 30, 240), $"{Math.Round(damageDone * 0.2)}", false, false);
                         target.life -= (int)(damageDone * 0.25);
                     }
                 }
-                else if (damageDone + (damageDone * 0.1) < target.life)
+                else if (damageDone + damageDone * 0.1 < target.life)
                 {
                     Rectangle textPos = new Rectangle((int)target.position.X, (int)target.position.Y - 20, target.width, target.height);
                     CombatText.NewText(textPos, new Color(255, 30, 30, 240), $"{Math.Round(damageDone * 0.1)}", false, false);
                     target.life -= (int)(damageDone * 0.1);
                 }
-               
+
             }
-            if (Player.HasBuff(BuffType<Buffs.SurtrTwilight>()))
+            if (Player.HasBuff(BuffType<SurtrTwilight>()))
             {
                 target.AddBuff(BuffID.OnFire, 480);
             }
@@ -1857,7 +1868,7 @@ namespace StarsAbove
         }
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Projectile, consider using OnHitNPC instead */
         {
-            if (Player.HasBuff(BuffType<Buffs.SurtrTwilight>()) && proj.type != ProjectileType<LaevateinnDamage>())
+            if (Player.HasBuff(BuffType<SurtrTwilight>()) && proj.type != ProjectileType<LaevateinnDamage>())
             {
 
                 target.AddBuff(BuffID.OnFire, 480);
@@ -1875,11 +1886,11 @@ namespace StarsAbove
                 for (int i = 0; i < 3; i++)
                 {
                     float offsetAmount = i * 120;
-                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, 0f, 0f, ProjectileType<UBWBladeFollowUp>(), baseNovaDamageAdd, 0, Player.whoAmI,0 ,offsetAmount);
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, 0f, 0f, ProjectileType<UBWBladeFollowUp>(), baseNovaDamageAdd, 0, Player.whoAmI, 0, offsetAmount);
 
                 }
                 int killBlades = 3;
-                if(killBlades > 0)
+                if (killBlades > 0)
                 {
                     for (int i = 0; i < Main.maxProjectiles; i++)
                     {
@@ -1893,7 +1904,7 @@ namespace StarsAbove
                                 for (int ix = 0; ix < 30; ix++)
                                 {
                                     Vector2 position = Vector2.Lerp(Player.Center, projTarget.Center, (float)ix / 30);
-                                    Dust d = Dust.NewDustPerfect(position, DustID.GemTopaz, null, 240, default(Color), 0.6f);
+                                    Dust d = Dust.NewDustPerfect(position, DustID.GemTopaz, null, 240, default, 0.6f);
                                     d.fadeIn = 0.3f;
                                     d.noGravity = true;
 
@@ -1941,32 +1952,32 @@ namespace StarsAbove
 
             if (proj.type == ProjectileType<kiwamiryukenstun>())
             {
-                Player.AddBuff(BuffType<Buffs.KiwamiRyukenConfirm>(), 60);
+                Player.AddBuff(BuffType<KiwamiRyukenConfirm>(), 60);
                 for (int d = 0; d < 4; d++)
                 {
                     Dust.NewDust(target.position, target.width, target.height, 113, 0f + Main.rand.Next(-2, 2), 0f + Main.rand.Next(-2, 2), 150, default(Color), 1.5f);
                 }
             }
 
-            
+
             if (proj.type == ProjectileType<Prototokia>())
             {
                 prototokiaOnHit(target);
-                target.AddBuff(BuffType<Buffs.VoidAtrophy1>(), 1800);
+                target.AddBuff(BuffType<VoidAtrophy1>(), 1800);
                 OnEnemyHitWithNova(target, 1, ref damageDone, ref hit.Crit);
             }
 
             if (proj.type == ProjectileType<Prototokia2>())
             {
-                if (target.HasBuff(BuffType<Buffs.VoidAtrophy1>()))
+                if (target.HasBuff(BuffType<VoidAtrophy1>()))
                 {
                     if (chosenStarfarer == 1)
                     {
-                        target.AddBuff(BuffType<Buffs.VoidAtrophy2>(), 1800);
+                        target.AddBuff(BuffType<VoidAtrophy2>(), 1800);
                     }
                     else
                     {
-                        Player.AddBuff(BuffType<Buffs.VoidStrength>(), 300);
+                        Player.AddBuff(BuffType<VoidStrength>(), 300);
                     }
 
                 }
@@ -1982,12 +1993,12 @@ namespace StarsAbove
             {
                 OnEnemyHitWithNova(target, 2, ref damageDone, ref hit.Crit);
             }
-            if (proj.type == ProjectileType<Projectiles.StellarNovas.kiwamiryukenconfirm>())
+            if (proj.type == ProjectileType<kiwamiryukenconfirm>())
             {
                 KiwamiRyukenOnHit(target);
                 OnEnemyHitWithNova(target, 3, ref damageDone, ref hit.Crit);
             }
-            
+
         }
 
         private void OnHitStarfarerDialogue(NPC target)
@@ -2034,22 +2045,22 @@ namespace StarsAbove
 
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            
+
 
             if (mysticforging == 2)
             {
                 modifiers.DisableCrit();
-                modifiers.SourceDamage += (1 + (MathHelper.Lerp(0, 1, Player.GetCritChance(DamageClass.Generic) / 100)) / 2);
+                modifiers.SourceDamage += 1 + MathHelper.Lerp(0, 1, Player.GetCritChance(DamageClass.Generic) / 100) / 2;
             }
 
             if (beyondinfinity == 2 && beyondInfinityDamageMod > 0)
             {
-                modifiers.SourceDamage += (1 + beyondInfinityDamageMod);
+                modifiers.SourceDamage += 1 + beyondInfinityDamageMod;
                 beyondInfinityDamageMod = 0;
             }
 
             //Will be replaced when these bosses get their new AI.
-            
+
             if (target.type == NPCType<Arbitration>())
             {
                 inArbiterFightTimer = 1200;
@@ -2086,7 +2097,7 @@ namespace StarsAbove
             {
                 modifiers.SourceDamage += 0.5f;
             }
-            if (Player.HasBuff(BuffType<Buffs.AstarteDriver>()) && !target.HasBuff(BuffType<Buffs.AstarteDriverEnemyCooldown>()))
+            if (Player.HasBuff(BuffType<AstarteDriver>()) && !target.HasBuff(BuffType<AstarteDriverEnemyCooldown>()))
             {
                 modifiers.DamageVariationScale *= 0;
 
@@ -2123,7 +2134,7 @@ namespace StarsAbove
                     {
                         modifiers.SetCrit();
                         modifiers.FinalDamage.Flat += baseNovaDamageAdd / 4;
-                        
+
                     }
                 }
 
@@ -2135,12 +2146,12 @@ namespace StarsAbove
 
 
             }
-            
+
 
         }
         public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Item, consider using OnHitNPC instead */
         {
-            
+
 
         }
         //Melee hits
@@ -2160,7 +2171,7 @@ namespace StarsAbove
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.016f;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.016f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2168,7 +2179,7 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.016f;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.016f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2208,7 +2219,7 @@ namespace StarsAbove
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.33f;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.33f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2216,7 +2227,7 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.33f;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.33f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2231,7 +2242,7 @@ namespace StarsAbove
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.5f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2239,7 +2250,7 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.5f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2254,7 +2265,7 @@ namespace StarsAbove
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.5f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2262,7 +2273,7 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.5f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2277,7 +2288,7 @@ namespace StarsAbove
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod)))/8f;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) / 8f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2285,7 +2296,7 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod)))/8f;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) / 8f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2300,7 +2311,7 @@ namespace StarsAbove
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.5f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2308,7 +2319,7 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.5f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2323,7 +2334,7 @@ namespace StarsAbove
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.5f;
                     modifiers.FinalDamage *= 0.5f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
@@ -2332,7 +2343,7 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.5f;
                     modifiers.FinalDamage *= 0.5f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
@@ -2348,7 +2359,7 @@ namespace StarsAbove
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.5f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2356,7 +2367,7 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.5f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2371,7 +2382,7 @@ namespace StarsAbove
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod)))/10;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) / 10;
                     modifiers.FinalDamage *= 0.5f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
@@ -2380,7 +2391,7 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod)))/10;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) / 10;
                     modifiers.FinalDamage *= 0.5f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
@@ -2396,7 +2407,7 @@ namespace StarsAbove
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) / 10;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) / 10;
                     modifiers.FinalDamage *= 0.5f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
@@ -2405,7 +2416,7 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) / 10;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) / 10;
                     modifiers.FinalDamage *= 0.5f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
@@ -2426,26 +2437,26 @@ namespace StarsAbove
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
                     if (proj.penetrate < 999)
                     {//If the projectile has penetrated at least 1 target
-                        modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.25f;
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.25f;
                     }
                     else
                     {
-                        modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.5f;
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.5f;
                     }
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
-                    
+
                 }
                 else
                 {
                     modifiers.DisableCrit();
                     if (proj.penetrate < 999)
                     {//If the projectile has penetrated at least 1 target
-                        modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.25f;
+                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.25f;
                     }
                     else
                     {
-                        modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.5f;
+                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.5f;
                     }
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
@@ -2470,32 +2481,32 @@ namespace StarsAbove
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
                     if (proj.penetrate < 999)
                     {//If the projectile has penetrated at least 1 target
-                        modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.25f;
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.25f;
                     }
                     else
                     {
-                        modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.5f;
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.5f;
                     }
-                    
+
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
-                    
+
                 }
                 else
                 {
                     modifiers.DisableCrit();
                     if (proj.penetrate < 999)
                     {//If the projectile has penetrated at least 1 target
-                        modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.25f;
+                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.25f;
                     }
                     else
                     {
-                        modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.5f;
+                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.5f;
                     }
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
-                
+
 
             }
             if (proj.type == ProjectileType<Prototokia3>())
@@ -2512,26 +2523,26 @@ namespace StarsAbove
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
                     if (proj.penetrate < 999)
                     {//If the projectile has penetrated at least 1 target
-                        modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.08f;
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.08f;
                     }
                     else
                     {
-                        modifiers.FinalDamage.Flat += ((float)(novaCritDamage * (1 + novaCritDamageMod))) * 0.25f;
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.25f;
                     }
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
-                    
+
                 }
                 else
                 {
                     modifiers.DisableCrit();
                     if (proj.penetrate < 999)
                     {//If the projectile has penetrated at least 1 target
-                        modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.08f;
+                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.08f;
                     }
                     else
                     {
-                        modifiers.FinalDamage.Flat += ((float)(novaDamage * (1 + novaDamageMod))) * 0.25f;
+                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.25f;
                     }
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
@@ -2580,7 +2591,7 @@ namespace StarsAbove
                 }
 
             }
-            if (proj.type == ProjectileType<Projectiles.StellarNovas.kiwamiryukenconfirm>())
+            if (proj.type == ProjectileType<kiwamiryukenconfirm>())
             {
                 modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
 
@@ -2606,7 +2617,7 @@ namespace StarsAbove
                 }
 
             }
-            if (Player.HasBuff(BuffType<Buffs.AstarteDriver>()) && !target.HasBuff(BuffType<Buffs.AstarteDriverEnemyCooldown>()))
+            if (Player.HasBuff(BuffType<AstarteDriver>()) && !target.HasBuff(BuffType<AstarteDriverEnemyCooldown>()))
             {
                 modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
 
@@ -2647,7 +2658,7 @@ namespace StarsAbove
                     }
                 }
 
-                target.AddBuff(BuffType<Buffs.AstarteDriverEnemyCooldown>(), 60);
+                target.AddBuff(BuffType<AstarteDriverEnemyCooldown>(), 60);
             }
         }
 
@@ -2676,34 +2687,34 @@ namespace StarsAbove
             }
             for (int i = 0; i < 70; i++)
             {
-                int dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 31, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default(Color), 2f);
+                int dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 31, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default, 2f);
                 Main.dust[dustIndex].velocity *= 1.4f;
             }
             // Fire Dust spawn
             for (int i = 0; i < 80; i++)
             {
-                int dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 6, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default(Color), 3f);
+                int dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 6, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default, 3f);
                 Main.dust[dustIndex].noGravity = true;
                 Main.dust[dustIndex].velocity *= 5f;
-                dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 6, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default(Color), 2f);
+                dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 6, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default, 2f);
                 Main.dust[dustIndex].velocity *= 3f;
             }
             // Large Smoke Gore spawn
             for (int g = 0; g < 4; g++)
             {
-                int goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                int goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
                 Main.gore[goreIndex].scale = 1.5f;
                 Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
                 Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
-                goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
                 Main.gore[goreIndex].scale = 1.5f;
                 Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
                 Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
-                goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
                 Main.gore[goreIndex].scale = 1.5f;
                 Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
                 Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
-                goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
                 Main.gore[goreIndex].scale = 1.5f;
                 Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
                 Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
@@ -2733,7 +2744,7 @@ namespace StarsAbove
             {
                 Dust.NewDust(target.position, target.width, target.height, 220, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
             }
-            
+
         }
 
 
@@ -2760,7 +2771,7 @@ namespace StarsAbove
             {
                 screenCache = Main.screenPosition;
             }
-            
+
             if (screenShakeTimerGlobal < 0 && screenShakeTimerGlobal > -100)
             {
                 Main.screenPosition += new Vector2(Main.rand.Next(-screenShakeVelocity / 100, screenShakeVelocity / 100), Main.rand.Next(-screenShakeVelocity / 100, screenShakeVelocity / 100));
@@ -2778,7 +2789,7 @@ namespace StarsAbove
             base.ModifyScreenPosition();
         }
 
-       
+
         public override void SetStaticDefaults()
         {
 
@@ -2852,7 +2863,7 @@ namespace StarsAbove
                 promptIsActive = false;
                 promptDialogueScrollTimer = 0;
                 promptDialogueScrollNumber = 0;
-                starfarerPromptCooldown = (starfarerPromptCooldownMax * 60) * 60;
+                starfarerPromptCooldown = starfarerPromptCooldownMax * 60 * 60;
                 //starfarerPromptCooldown = 200;
             }
             if (cosmicPhoenixPrism)
@@ -3011,7 +3022,7 @@ namespace StarsAbove
                     Dust dust;
                     for (int d = 0; d < 50; d++)
                     {
-                        dust = Main.dust[Terraria.Dust.NewDust(Player.Center, 0, 0, 181, 0f + Main.rand.Next(-22, 22), 0f + Main.rand.Next(-22, 22), 0, new Color(255, 255, 255), 1f)];
+                        dust = Main.dust[Dust.NewDust(Player.Center, 0, 0, 181, 0f + Main.rand.Next(-22, 22), 0f + Main.rand.Next(-22, 22), 0, new Color(255, 255, 255), 1f)];
                     }
 
                     chosenStarfarerEffect = false;
@@ -3055,7 +3066,7 @@ namespace StarsAbove
                 }
                 if (Main.netMode != NetmodeID.Server && Filters.Scene["Shockwave"].IsActive())
                 {
-                    float progress = (shockwaveProgress) / 140f;
+                    float progress = shockwaveProgress / 140f;
                     Filters.Scene["Shockwave"].GetShader().UseProgress(progress).UseOpacity(distortStrength * (1 - progress / 3f));
                 }
                 if (shockwaveProgress >= 480)
@@ -3137,47 +3148,47 @@ namespace StarsAbove
             if (NPC.downedMechBossAny)
             {
                 baseNovaDamageAdd = 1450;
-                
+
 
             }
             if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
             {
 
                 baseNovaDamageAdd = 2350;
-                
+
             }
 
             if (NPC.downedPlantBoss)
             {
                 baseNovaDamageAdd = 3050;
-               
+
 
             }
-            
+
             if (NPC.downedGolemBoss)
             {
                 baseNovaDamageAdd = 4000;
             }
-            
+
             if (NPC.downedAncientCultist)
             {
                 baseNovaDamageAdd = 5200;
 
             }
-            
+
             if (NPC.downedMoonlord)
             {
                 baseNovaDamageAdd = 6600;
-                
+
             }
-            
+
             if (DownedBossSystem.downedWarrior)
             {
                 baseNovaDamageAdd = 17550;
-                
+
             }
-            
-            
+
+
 
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
             {
@@ -3286,7 +3297,7 @@ namespace StarsAbove
                     NewStellarArrayAbility = true;
 
                 }
-                
+
                 if (NPC.downedBoss3 && SkeletonDialogue == 0)
                 {
                     SkeletonDialogue = 1;
@@ -3470,7 +3481,7 @@ namespace StarsAbove
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                     NewDiskDialogue = true;
 
-                    
+
 
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                     NewStellarArrayAbility = true;
@@ -3520,9 +3531,9 @@ namespace StarsAbove
                     //NewDiskDialogue = true;
                 }
 
-                if(tsukiyomiDialogue >= 1)
+                if (tsukiyomiDialogue >= 1)
                 {
-                    if(edingenesisquasar == 0)
+                    if (edingenesisquasar == 0)
                     {
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.NewNova"), 241, 255, 180); }
 
@@ -3628,18 +3639,18 @@ namespace StarsAbove
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
                     NewDiskDialogue = true;
                 }
-                if((EverlastingLightEvent.isEverlastingLightPreviewActive || EverlastingLightEvent.isEverlastingLightActive) && warriorBossItemDialogue == 0 && vagrantDialogue == 2)
+                if ((EverlastingLightEvent.isEverlastingLightPreviewActive || EverlastingLightEvent.isEverlastingLightActive) && warriorBossItemDialogue == 0 && vagrantDialogue == 2 && !SubworldSystem.AnyActive())
                 {
                     warriorBossItemDialogue = 1;
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue("Common.HarshLight"), 239, 221, 106); }
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
 
                 }
-                if (EverlastingLightEvent.isEverlastingLightActive && !onEverlastingLightText)
+                if (EverlastingLightEvent.isEverlastingLightActive && !onEverlastingLightText && !SubworldSystem.AnyActive())
                 {
                     onEverlastingLightText = true;
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue("Common.EverlastingLight"), 239, 221, 106); }
-                
+
 
                 }
                 if (DownedBossSystem.downedWarrior && WarriorOfLightDialogue == 0)
@@ -3681,7 +3692,7 @@ namespace StarsAbove
 
 
                 }
-               
+
                 if (NPC.downedBoss1 && NPC.downedSlimeKing && NPC.downedBoss2 && NPC.downedBoss3 && NPC.downedQueenBee && NPC.downedQueenSlime && NPC.downedEmpressOfLight && Main.hardMode && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && NPC.downedPlantBoss && NPC.downedGolemBoss && NPC.downedFishron && NPC.downedMoonlord && AllVanillaBossesDefeatedDialogue == 0)
                 {
                     AllVanillaBossesDefeatedDialogue = 1;
@@ -3753,7 +3764,7 @@ namespace StarsAbove
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 151, 255, 90); }
 
                 }
-                
+
                 //Zone specific weapons do not have delay
                 if (Player.ZoneHallow && GoldWeaponDialogue == 0)
                 {
@@ -4384,7 +4395,7 @@ namespace StarsAbove
 
 
 
-                
+
                 if (NPC.downedSlimeKing && Main.expertMode == true)
                 {
 
@@ -4424,9 +4435,9 @@ namespace StarsAbove
                 }
                 if (Main.hardMode)
                 {
-                    if ( healthyConfidence == 0)
+                    if (healthyConfidence == 0)
                     {
-                         healthyConfidence = 1;
+                        healthyConfidence = 1;
                     }
                 }
                 if (DownedBossSystem.downedVagrant)
@@ -4540,7 +4551,7 @@ namespace StarsAbove
                 }
                 if (NPC.downedAncientCultist)
                 {
-                    
+
                 }
                 if (NPC.downedAncientCultist && Main.expertMode == true)
                 {
@@ -4585,7 +4596,7 @@ namespace StarsAbove
                     {
                         keyofchronology = 1;
                     }
-                    
+
                 }
                 if (DownedBossSystem.downedWarrior && DownedBossSystem.downedVagrant && DownedBossSystem.downedPenth && DownedBossSystem.downedNalhaun)
                 {
@@ -5160,8 +5171,8 @@ namespace StarsAbove
 
                 }
             }
-            
-            
+
+
             //Starfarer stuff here.
             if (starfarerArmorEquipped != null)
             {
@@ -5248,7 +5259,7 @@ namespace StarsAbove
 
                 abilityName = NovaSetup.GetInfo(chosenStellarNova, "AbilityName", baseNovaDamageAdd);
                 abilitySubName = NovaSetup.GetInfo(chosenStellarNova, "AbilitySubName", baseNovaDamageAdd);
-                if(chosenStellarNova == 7)//Guardian's Light
+                if (chosenStellarNova == 7)//Guardian's Light
                 {
                     if (MeleeAspect == 2)
                     {
@@ -5275,7 +5286,7 @@ namespace StarsAbove
                 {
                     abilityDescription = NovaSetup.GetInfo(chosenStellarNova, "AbilityDescription", baseNovaDamageAdd);
                 }
-                
+
 
                 if (chosenStarfarer == 1)
                 {
@@ -5288,7 +5299,7 @@ namespace StarsAbove
 
                 }
 
-                if(chosenStellarNova != 4)
+                if (chosenStellarNova != 4)
                 {
                     baseStats = "" +
                     $"{novaDamage} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseDamage") +
@@ -5311,10 +5322,10 @@ namespace StarsAbove
                     $"\n{novaGaugeMax - novaChargeMod} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EnergyCost");
                 }
 
-                
+
 
             }
-            
+
             abilityDescription = LangHelper.Wrap(abilityDescription, 85);
             starfarerBonus = LangHelper.Wrap(starfarerBonus, 85);
         }
@@ -5533,9 +5544,9 @@ namespace StarsAbove
         }
         private void MysticForging()
         {
-            if(mysticforging == 2)
+            if (mysticforging == 2)
             {
-                Player.GetAttackSpeed(DamageClass.Generic) += (MathHelper.Lerp(0f, 0.15f, Player.GetCritChance(DamageClass.Generic) / 100));
+                Player.GetAttackSpeed(DamageClass.Generic) += MathHelper.Lerp(0f, 0.15f, Player.GetCritChance(DamageClass.Generic) / 100);
 
             }
         }
@@ -5547,7 +5558,7 @@ namespace StarsAbove
             }
             if (butchersDozenKills >= 12 && !Player.dead && Player.active)
             {
-                if (!Player.HasBuff(BuffType<Buffs.ButchersDozen>()))
+                if (!Player.HasBuff(BuffType<ButchersDozen>()))
                 {
                     /*
                     if (chosenStarfarer == 1)
@@ -5566,9 +5577,9 @@ namespace StarsAbove
                     {
                         starfarerPromptActive("onButchersDozen");
                     }
-                    
+
                 }
-                Player.AddBuff(BuffType<Buffs.ButchersDozen>(), 240);
+                Player.AddBuff(BuffType<ButchersDozen>(), 240);
                 butchersDozenKills = 0;
             }
         }
@@ -5579,12 +5590,12 @@ namespace StarsAbove
             {
                 if (betweenTheBoundaryEbb)
                 {
-                    Player.AddBuff(BuffType<Buffs.Ebb>(), 480);
+                    Player.AddBuff(BuffType<Ebb>(), 480);
                     betweenTheBoundaryEbb = false;
                 }
                 else
                 {
-                    Player.AddBuff(BuffType<Buffs.Flow>(), 480);
+                    Player.AddBuff(BuffType<Flow>(), 480);
                     betweenTheBoundaryEbb = true;
                 }
 
@@ -5595,22 +5606,22 @@ namespace StarsAbove
         }
         private void HealthyConfidence()
         {
-            if ( healthyConfidence == 2 && Player.active && !Player.dead)
+            if (healthyConfidence == 2 && Player.active && !Player.dead)
             {
-                if(healthyConfidenceHealAmount > 0)
+                if (healthyConfidenceHealAmount > 0)
                 {
                     healthyConfidenceHealTimer++;
-                    if(healthyConfidenceHealTimer >= 60)
+                    if (healthyConfidenceHealTimer >= 60)
                     {
                         healthyConfidenceHealTimer = 0;
                         Player.statLife += (int)(healthyConfidenceHealAmount * 0.1);
-                        if((int)(healthyConfidenceHealAmount * 0.1) > 0)
+                        if ((int)(healthyConfidenceHealAmount * 0.1) > 0)
                         {
                             Player.HealEffect((int)(healthyConfidenceHealAmount * 0.1));
 
                         }
                         healthyConfidenceHealAmount -= (int)(healthyConfidenceHealAmount * 0.1);
-                        
+
                     }
                 }
             }
@@ -5621,7 +5632,7 @@ namespace StarsAbove
             {
                 beyondInfinityTimer++;
             }
-            if(inCombat <= 0)
+            if (inCombat <= 0)
             {
                 beyondInfinityTimer = 0;
                 beyondInfinityDamageMod = 0;
@@ -5659,7 +5670,7 @@ namespace StarsAbove
                     }
 
                 }
-                
+
             }
         }
         private void DialogueScroll()
@@ -5862,7 +5873,7 @@ namespace StarsAbove
             {
                 //player.maxRunSpeed += 0.1f;
             }
-            
+
         }
         public override void PostUpdate()
         {
@@ -5952,7 +5963,7 @@ namespace StarsAbove
             BossStarfarerPrompts();
 
             OtherModBossStarfarerPrompts();
-            
+
             //If the boss isn't listed...
             UnknownBossStarfarerPrompts();
 
@@ -5960,12 +5971,12 @@ namespace StarsAbove
             BiomePrompts();
             ModdedBiomePrompts();
 
-            
 
 
-            
-            
-            
+
+
+
+
 
             //Weather
             if (Player.ZoneRain && !seenRain)
@@ -5993,7 +6004,7 @@ namespace StarsAbove
                 starfarerPromptActive("onSandstorm");
             }
 
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.AstarteDriver>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<AstarteDriver>()))
             {
                 novaGauge = 0;
             }
@@ -6003,7 +6014,7 @@ namespace StarsAbove
             }
             astarteDriverCooldown--;
             ryukenTimer--;
-            
+
             trueNovaGaugeMax = novaGaugeMax - novaChargeMod;
         }
         private void BiomePrompts()
@@ -7035,7 +7046,7 @@ namespace StarsAbove
                 starfarerPromptActive("onMoonLord");
                 seenUnknownBossTimer = 300;
             }
-            if (NPC.AnyNPCs(ModContent.NPCType<WarriorOfLightBoss>()) && !seenWarriorOfLight)
+            if (NPC.AnyNPCs(NPCType<WarriorOfLightBoss>()) && !seenWarriorOfLight)
             {
                 if (starfarerPromptCooldown > 0)
                 {
@@ -7044,7 +7055,7 @@ namespace StarsAbove
                 starfarerPromptActive("onWarriorOfLight");
                 seenUnknownBossTimer = 300;
             }
-            if (NPC.AnyNPCs(ModContent.NPCType<NPCs.Vagrant.VagrantBoss>()) && !seenVagrant)
+            if (NPC.AnyNPCs(NPCType<NPCs.Vagrant.VagrantBoss>()) && !seenVagrant)
             {
                 if (starfarerPromptCooldown > 0)
                 {
@@ -7053,7 +7064,7 @@ namespace StarsAbove
                 starfarerPromptActive("onVagrant");
                 seenUnknownBossTimer = 300;
             }
-            if (NPC.AnyNPCs(ModContent.NPCType<NPCs.Nalhaun.NalhaunBoss>()) && !seenNalhaun)
+            if (NPC.AnyNPCs(NPCType<NalhaunBoss>()) && !seenNalhaun)
             {
                 if (starfarerPromptCooldown > 0)
                 {
@@ -7062,7 +7073,7 @@ namespace StarsAbove
                 starfarerPromptActive("onNalhaun");
                 seenUnknownBossTimer = 300;
             }
-            if (NPC.AnyNPCs(ModContent.NPCType<NPCs.Penthesilea>()) && !seenPenth)
+            if (NPC.AnyNPCs(NPCType<Penthesilea>()) && !seenPenth)
             {
                 if (starfarerPromptCooldown > 0)
                 {
@@ -7071,7 +7082,7 @@ namespace StarsAbove
                 starfarerPromptActive("onPenth");
                 seenUnknownBossTimer = 300;
             }
-            if (NPC.AnyNPCs(ModContent.NPCType<NPCs.Arbitration>()) && !seenArbiter)
+            if (NPC.AnyNPCs(NPCType<Arbitration>()) && !seenArbiter)
             {
                 if (starfarerPromptCooldown > 0)
                 {
@@ -7081,7 +7092,7 @@ namespace StarsAbove
                 seenUnknownBossTimer = 300;
             }
         }
-       
+
         private void OnKillEnemy(NPC npc)
         {
             if (aquaaffinity == 2)//Cyclic Hunter
@@ -7089,7 +7100,7 @@ namespace StarsAbove
 
                 if (ammoRecycleCooldown <= 0)
                 {
-                    Player.AddBuff(BuffType<Buffs.AmmoRecycle>(), 30);
+                    Player.AddBuff(BuffType<AmmoRecycle>(), 30);
                     ammoRecycleCooldown = 120;
                     Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
                     CombatText.NewText(textPos, new Color(81, 62, 247, 240), $"{12 + (int)(npc.lifeMax * 0.05)}", false, false);
@@ -7112,7 +7123,7 @@ namespace StarsAbove
             //
             if (starfarerOutfit == 3)//Celestial
             {
-                
+
                 if (!npc.SpawnedFromStatue)
                 {
                     if (Player.HasBuff(BuffType<AstarteDriver>()))
@@ -7122,7 +7133,7 @@ namespace StarsAbove
                 }
 
             }
-            
+
         }
 
         private void TsukiyomiTeleport(NPC npc)
@@ -7161,8 +7172,8 @@ namespace StarsAbove
                 }
             }
         }
-       
-        
+
+
         private void PenthTeleport(NPC npc)
         {
             if (inPenthFightTimer > 0 && Player.immuneTime <= 0)
@@ -7216,13 +7227,13 @@ namespace StarsAbove
         }
         public static bool SameTeam(Player player1, Player player2)
         {
-            
+
             if (player1.whoAmI == player2.whoAmI) return true;
-            
+
             if (player1.team > 0 && player1.team != player2.team) return false;
-            
+
             if (player1.hostile && player2.hostile && (player1.team == 0 || player2.team == 0)) return false;
-            
+
             return true;
         }
         public override void ProcessTriggers(TriggersSet triggersSet)
@@ -7231,13 +7242,13 @@ namespace StarsAbove
             {
                 if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
                 {
-                    if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("DevourerofGodsBody").Type))
+                    if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("DevourerofGodsBody").Type) && StarsAbove.novaKey.JustPressed)
                     {
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.BlockedNova"), 241, 255, 180); }
-                        return;    
+                        return;
                     }
                 }
-                   
+
                 if (chosenStellarNova == 6 && Player.ownedProjectileCounts[ProjectileType<UnlimitedBladeWorksBackground>()] >= 1)
                 {
                     return;
@@ -7255,30 +7266,30 @@ namespace StarsAbove
                     for (int d = 0; d < 37; d++)//Visual effects
                     {
                         Vector2 perturbedSpeed = new Vector2(Target.X, Target.Y).RotatedByRandom(MathHelper.ToRadians(8));
-                        float scale = 1f - (Main.rand.NextFloat() * 1f);
+                        float scale = 1f - Main.rand.NextFloat() * 1f;
                         perturbedSpeed = perturbedSpeed * scale;
-                        int dustIndex = Dust.NewDust(Player.Center, 0, 0, DustID.GemSapphire, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 2f);
+                        int dustIndex = Dust.NewDust(Player.Center, 0, 0, DustID.GemSapphire, perturbedSpeed.X, perturbedSpeed.Y, 150, default, 2f);
                         Main.dust[dustIndex].noGravity = true;
 
                     }
                 }
                 if (chosenStellarNova == 7 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && Player.HasBuff(BuffType<BearerOfLight>()) || Player.HasBuff(BuffType<BearerOfDarkness>()))
                 {
-                    if(goldenGunShots > 0)
+                    if (goldenGunShots > 0)
                     {
                         goldenGunShots--;
                         FireGoldenGunBullet();
                     }
-                    
+
                 }
-                if (chosenStellarNova == 1 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && Main.LocalPlayer.HasBuff(BuffType<Buffs.PrototokiaTricast>()))//prototokia Tricast
+                if (chosenStellarNova == 1 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && Main.LocalPlayer.HasBuff(BuffType<PrototokiaTricast>()))//prototokia Tricast
                 {
 
                     if (Player.whoAmI == Main.myPlayer)
                     {
                         //
                         for (int i = 0; i < Player.CountBuffs(); i++)
-                            if (Player.buffType[i] == BuffType<Buffs.PrototokiaTricast>())
+                            if (Player.buffType[i] == BuffType<PrototokiaTricast>())
                             {
                                 Player.DelBuff(i);
 
@@ -7286,28 +7297,28 @@ namespace StarsAbove
                             }
                         for (int d = 0; d < 105; d++)
                         {
-                            Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                            Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                         }
                         for (int d = 0; d < 105; d++)
                         {
-                            Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                            Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                         }
                         SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, Player.Center);
 
                         Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<Prototokia3>(), novaDamage, 4, Player.whoAmI, 0, 1);                                                                                                                                                             //Vector2 mousePosition = Main.MouseWorld;
-                                                                                                                                                                                                                                                                                                                                                                 //Projectile.NewProjectile(Player.GetSource_FromThis(),new Vector2(player.Center.X - 100, player.Center.Y), Vector2.Zero, mod.ProjectileType("prototokia2"), novaDamage + novaDamageMod, 4, player.whoAmI, 0, 1);                                                                                                                                                                                                                                                                                                                                             //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
-                                                                                                                                                                                                                                                                                                                                                                 //Projectile.NewProjectile(Player.GetSource_FromThis(),player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
+                                                                                                                                                                                                                                                                                                                                                                           //Projectile.NewProjectile(Player.GetSource_FromThis(),new Vector2(player.Center.X - 100, player.Center.Y), Vector2.Zero, mod.ProjectileType("prototokia2"), novaDamage + novaDamageMod, 4, player.whoAmI, 0, 1);                                                                                                                                                                                                                                                                                                                                             //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
+                                                                                                                                                                                                                                                                                                                                                                           //Projectile.NewProjectile(Player.GetSource_FromThis(),player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
 
                     }
                 }
                 //dualCast
-                if (chosenStellarNova == 1 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && Main.LocalPlayer.HasBuff(BuffType<Buffs.PrototokiaDualcast>()))//prototokia Dualcast
+                if (chosenStellarNova == 1 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && Main.LocalPlayer.HasBuff(BuffType<PrototokiaDualcast>()))//prototokia Dualcast
                 {
                     if (Player.whoAmI == Main.myPlayer)
                     {
                         //
                         for (int i = 0; i < Player.CountBuffs(); i++)
-                            if (Player.buffType[i] == BuffType<Buffs.PrototokiaDualcast>())
+                            if (Player.buffType[i] == BuffType<PrototokiaDualcast>())
                             {
                                 Player.DelBuff(i);
 
@@ -7315,19 +7326,19 @@ namespace StarsAbove
                             }
                         for (int d = 0; d < 105; d++)
                         {
-                            Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                            Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                         }
                         for (int d = 0; d < 105; d++)
                         {
-                            Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                            Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                         }
                         SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, Player.Center);
 
                         Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<Prototokia2>(), novaDamage, 4, Player.whoAmI, 0, 1);                                                                                                                                                             //Vector2 mousePosition = Main.MouseWorld;
-                                                                                                                                                                                                                                                                                                                                                                 //Projectile.NewProjectile(Player.GetSource_FromThis(),new Vector2(player.Center.X - 100, player.Center.Y), Vector2.Zero, mod.ProjectileType("prototokia2"), novaDamage + novaDamageMod, 4, player.whoAmI, 0, 1);                                                                                                                                                                                                                                                                                                                                             //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
+                                                                                                                                                                                                                                                                                                                                                                           //Projectile.NewProjectile(Player.GetSource_FromThis(),new Vector2(player.Center.X - 100, player.Center.Y), Vector2.Zero, mod.ProjectileType("prototokia2"), novaDamage + novaDamageMod, 4, player.whoAmI, 0, 1);                                                                                                                                                                                                                                                                                                                                             //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
                         if (chosenStarfarer == 1)
                         {
-                            Player.AddBuff(BuffType<Buffs.PrototokiaTricast>(), 600);
+                            Player.AddBuff(BuffType<PrototokiaTricast>(), 600);
 
                         }
 
@@ -7344,20 +7355,20 @@ namespace StarsAbove
                             SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, Player.Center);
                             for (int d = 0; d < 105; d++)
                             {
-                                Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                                Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                             }
                             for (int d = 0; d < 105; d++)
                             {
-                                Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                                Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                             }
                             if (chosenStarfarer == 1)
                             {
-                                Player.AddBuff(BuffType<Buffs.KiwamiRyuken>(), 60);
+                                Player.AddBuff(BuffType<KiwamiRyuken>(), 60);
 
                             }
                             else
                             {
-                                Player.AddBuff(BuffType<Buffs.KiwamiRyuken>(), 60);
+                                Player.AddBuff(BuffType<KiwamiRyuken>(), 60);
 
                             }
 
@@ -7382,20 +7393,20 @@ namespace StarsAbove
                         if (chosenStellarNova == 1)//Prototokia Aster
                         {
                             SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, Player.Center);
-                            Player.AddBuff(BuffType<Buffs.PrototokiaDualcast>(), 600);
+                            Player.AddBuff(BuffType<PrototokiaDualcast>(), 600);
                             for (int d = 0; d < 105; d++)
                             {
-                                Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                                Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                             }
                             for (int d = 0; d < 105; d++)
                             {
-                                Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                                Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                             }
 
                             Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<Prototokia>(), novaDamage, 4, Player.whoAmI, 0, 1);//The 1 here means that ai1 will be set to 1. this is good for the first cast.
-                                                                                                                                                                                                       //Vector2 mousePosition = Main.MouseWorld;
-                                                                                                                                                                                                       //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
-                                                                                                                                                                                                       //Projectile.NewProjectile(Player.GetSource_FromThis(),player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
+                                                                                                                                                                                                                 //Vector2 mousePosition = Main.MouseWorld;
+                                                                                                                                                                                                                 //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
+                                                                                                                                                                                                                 //Projectile.NewProjectile(Player.GetSource_FromThis(),player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
                             onActivateStellarNova();
                         }
                         if (chosenStellarNova == 2)//Ars Laevateinn
@@ -7403,16 +7414,16 @@ namespace StarsAbove
                             SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, Player.Center);
                             for (int d = 0; d < 105; d++)
                             {
-                                Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                                Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                             }
                             for (int d = 0; d < 105; d++)
                             {
-                                Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                                Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                             }
 
                             Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 860), Vector2.Zero, Mod.Find<ModProjectile>("Laevateinn").Type, novaDamage, 4, Player.whoAmI, 0, 1);//The 1 here means that ai1 will be set to 1. this is good for the first cast.
-                            Player.AddBuff(BuffType<Buffs.SurtrTwilight>(), 600);                                                                                                        //Vector2 mousePosition = Main.MouseWorld;
-                                                                                                                                                                                         //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
+                            Player.AddBuff(BuffType<SurtrTwilight>(), 600);                                                                                                        //Vector2 mousePosition = Main.MouseWorld;
+                                                                                                                                                                                   //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
                             onActivateStellarNova();                                                                                                                                                           //Projectile.NewProjectile(Player.GetSource_FromThis(),player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
                         }
                         if (chosenStellarNova == 4)//The Garden of Avalon
@@ -7420,11 +7431,11 @@ namespace StarsAbove
                             //Main.PlaySound(SoundLoader.customSoundType, (int)player.Center.X, (int)player.Center.Y, mod.GetSoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Custom/prototokiaActive"));
                             for (int d = 0; d < 105; d++)
                             {
-                                Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                                Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                             }
                             for (int d = 0; d < 105; d++)
                             {
-                                Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                                Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                             }
 
                             Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 860), Vector2.Zero, Mod.Find<ModProjectile>("GardenOfAvalon").Type, novaDamage, 4, Player.whoAmI, 0, 1);//The 1 here means that ai1 will be set to 1. this is good for the first cast.
@@ -7438,20 +7449,20 @@ namespace StarsAbove
                             Player.AddBuff(BuffType<Buffs.GardenOfAvalon>(), 8 * 60);
                             if (chosenStarfarer == 2)
                             {
-                                Player.AddBuff(BuffType<Buffs.DreamlikeCharisma>(), 8 * 60);
+                                Player.AddBuff(BuffType<DreamlikeCharisma>(), 8 * 60);
 
                             }
 
 
                             if (chosenStarfarer == 1)
                             {
-                                Player.AddBuff(BuffType<Buffs.Invincibility>(), (4 * 60));
+                                Player.AddBuff(BuffType<Invincibility>(), 4 * 60);
                                 Player.statLife += 100;
 
                             }
                             else
                             {
-                                Player.AddBuff(BuffType<Buffs.Invincibility>(), (2 * 60));
+                                Player.AddBuff(BuffType<Invincibility>(), 2 * 60);
                             }
                             int uniqueCrit = Main.rand.Next(100);
                             if (uniqueCrit <= novaCritChance + novaCritChanceMod)
@@ -7462,7 +7473,7 @@ namespace StarsAbove
                                 Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 40, Player.width, Player.height); //Heal
                                 CombatText.NewText(textPos, new Color(63, 221, 53, 240), $"{(int)(novaCritDamage * (1 + novaCritDamageMod))}", false, false);
                                 Player.statLife += (int)(novaCritDamage * (1 + novaCritDamageMod));
-                                Player.AddBuff(BuffType<Buffs.SolemnAegis>(), (15 * 60));
+                                Player.AddBuff(BuffType<SolemnAegis>(), 15 * 60);
                             }
                             else
                             {
@@ -7477,8 +7488,8 @@ namespace StarsAbove
 
                             onActivateStellarNova();
                             astarteCutsceneProgress = 180;
-                            Player.AddBuff(BuffType<Buffs.AstarteDriverPrep>(), 180);
-                            Player.AddBuff(BuffType<Buffs.Invincibility>(), 400);
+                            Player.AddBuff(BuffType<AstarteDriverPrep>(), 180);
+                            Player.AddBuff(BuffType<Invincibility>(), 400);
 
 
                         }
@@ -7488,14 +7499,14 @@ namespace StarsAbove
 
                             onActivateStellarNova();
                             SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, Player.Center);
-                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<UnlimitedBladeWorksBackground>(), novaDamage, 0, Player.whoAmI, 0, (trueNovaGaugeMax/10)*60);
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<UnlimitedBladeWorksBackground>(), novaDamage, 0, Player.whoAmI, 0, trueNovaGaugeMax / 10 * 60);
 
                         }
                         if (chosenStellarNova == 7)//Guardian's Light
                         {
                             onActivateStellarNova();
 
-                            if(MeleeAspect == 2)
+                            if (MeleeAspect == 2)
                             {
                                 //Thundercrash
                                 Player.AddBuff(BuffType<BearerOfLight>(), 60 * 10);
@@ -7509,7 +7520,7 @@ namespace StarsAbove
                                 Player.AddBuff(BuffType<Invincibility>(), 180);
                                 return;
                             }
-                            else if(RangedAspect == 2)
+                            else if (RangedAspect == 2)
                             {
                                 Player.AddBuff(BuffType<BearerOfLight>(), 60 * 10);
 
@@ -7520,7 +7531,7 @@ namespace StarsAbove
                                 goldenGunShots = 2;
                                 return;
                             }
-                            else if(MagicAspect == 2)
+                            else if (MagicAspect == 2)
                             {
                                 Player.AddBuff(BuffType<BearerOfLight>(), 60 * 10);
 
@@ -7534,15 +7545,15 @@ namespace StarsAbove
                                 for (int d = 0; d < 57; d++)//Visual effects
                                 {
                                     Vector2 perturbedSpeed = new Vector2(Target.X, Target.Y).RotatedByRandom(MathHelper.ToRadians(20));
-                                    float scale = 2f - (Main.rand.NextFloat() * 1f);
+                                    float scale = 2f - Main.rand.NextFloat() * 1f;
                                     perturbedSpeed = perturbedSpeed * scale;
-                                    int dustIndex = Dust.NewDust(Player.Center, 0, 0, DustID.GemAmethyst, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 2f);
+                                    int dustIndex = Dust.NewDust(Player.Center, 0, 0, DustID.GemAmethyst, perturbedSpeed.X, perturbedSpeed.Y, 150, default, 2f);
                                     Main.dust[dustIndex].noGravity = true;
 
                                 }
                                 return;
                             }
-                            else if(SummonAspect == 2)
+                            else if (SummonAspect == 2)
                             {
                                 Player.AddBuff(BuffType<BearerOfDarkness>(), 60 * 10);
                                 SoundEngine.PlaySound(StarsAboveAudio.SFX_Needlestorm, Player.Center);
@@ -7561,9 +7572,9 @@ namespace StarsAbove
                                 for (int d = 0; d < 37; d++)//Visual effects
                                 {
                                     Vector2 perturbedSpeed = new Vector2(Target.X, Target.Y).RotatedByRandom(MathHelper.ToRadians(68));
-                                    float scale = 1f - (Main.rand.NextFloat() * 1f);
+                                    float scale = 1f - Main.rand.NextFloat() * 1f;
                                     perturbedSpeed = perturbedSpeed * scale;
-                                    int dustIndex = Dust.NewDust(Player.Center, 0, 0, DustID.GemEmerald, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 1f);
+                                    int dustIndex = Dust.NewDust(Player.Center, 0, 0, DustID.GemEmerald, perturbedSpeed.X, perturbedSpeed.Y, 150, default, 1f);
                                     Main.dust[dustIndex].noGravity = true;
 
                                 }
@@ -7575,15 +7586,15 @@ namespace StarsAbove
                                 //Silence and Squall
                                 SoundEngine.PlaySound(StarsAboveAudio.SFX_SilenceSquall2, Player.Center);
                                 Vector2 Target = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 30f;
-                                
+
                                 Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Target, ProjectileType<SilenceSquall1>(), novaDamage, 0, Player.whoAmI);
 
                                 for (int d = 0; d < 37; d++)//Visual effects
                                 {
                                     Vector2 perturbedSpeed = new Vector2(Target.X, Target.Y).RotatedByRandom(MathHelper.ToRadians(8));
-                                    float scale = 1f - (Main.rand.NextFloat() * 1f);
+                                    float scale = 1f - Main.rand.NextFloat() * 1f;
                                     perturbedSpeed = perturbedSpeed * scale;
-                                    int dustIndex = Dust.NewDust(Player.Center, 0, 0, DustID.GemSapphire, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 2f);
+                                    int dustIndex = Dust.NewDust(Player.Center, 0, 0, DustID.GemSapphire, perturbedSpeed.X, perturbedSpeed.Y, 150, default, 2f);
                                     Main.dust[dustIndex].noGravity = true;
 
                                 }
@@ -7592,10 +7603,10 @@ namespace StarsAbove
 
                                 return;
                             }
-                            
-                            
-                            
-                           // Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<UnlimitedBladeWorksBackground>(), novaDamage, 0, Player.whoAmI, 0, (trueNovaGaugeMax / 10) * 60);
+
+
+
+                            // Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<UnlimitedBladeWorksBackground>(), novaDamage, 0, Player.whoAmI, 0, (trueNovaGaugeMax / 10) * 60);
 
                         }
                     }
@@ -7616,9 +7627,9 @@ namespace StarsAbove
             for (int d = 0; d < 37; d++)//Visual effects
             {
                 Vector2 perturbedSpeed = new Vector2(Target.X, Target.Y).RotatedByRandom(MathHelper.ToRadians(8));
-                float scale = 1f - (Main.rand.NextFloat() * 1f);
+                float scale = 1f - Main.rand.NextFloat() * 1f;
                 perturbedSpeed = perturbedSpeed * scale;
-                int dustIndex = Dust.NewDust(Player.Center, 0, 0, DustID.GemTopaz, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 2f);
+                int dustIndex = Dust.NewDust(Player.Center, 0, 0, DustID.GemTopaz, perturbedSpeed.X, perturbedSpeed.Y, 150, default, 2f);
                 Main.dust[dustIndex].noGravity = true;
 
             }
@@ -7637,11 +7648,11 @@ namespace StarsAbove
 
         private void StellarNovaVoice()
         {
-            
+
             //If the ModConfig's voices are enabled, continue.
             if (!voicesEnabled)
             {
-                if(Main.rand.NextBool(5) && chosenStellarNova != 7)//1 in 5 chance to play a Nova specific line. (No unique quotes for Guardian's Light)
+                if (Main.rand.NextBool(5) && chosenStellarNova != 7)//1 in 5 chance to play a Nova specific line. (No unique quotes for Guardian's Light)
                 {
                     novaDialogue = LangHelper.Wrap(LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + ".Special" + $"{chosenStellarNova}"), 20);
 
@@ -7717,9 +7728,9 @@ namespace StarsAbove
                 }
                 else
                 {
-                    if(Main.rand.NextBool(100))
+                    if (Main.rand.NextBool(100))
                     {
-                        string novaQuote = (LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + $".10"));
+                        string novaQuote = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + $".10");
                         novaDialogue = LangHelper.Wrap(novaQuote, 20);
 
                         //1 in 20 chance for a rare line to play.
@@ -7741,7 +7752,7 @@ namespace StarsAbove
                         string novaQuote = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + $".{randomNovaDialogue + 1}");
                         novaDialogue = LangHelper.Wrap(novaQuote, 20);
 
-                        
+
 
                     }
                     if (randomNovaDialogue == 0)
@@ -7770,7 +7781,7 @@ namespace StarsAbove
 
                         }
                     }
-                    else if(randomNovaDialogue == 2)
+                    else if (randomNovaDialogue == 2)
                     {
                         if (chosenStarfarer == 1)
                         {
@@ -7783,7 +7794,7 @@ namespace StarsAbove
 
                         }
                     }
-                    else if(randomNovaDialogue == 3)
+                    else if (randomNovaDialogue == 3)
                     {
                         if (chosenStarfarer == 1)
                         {
@@ -7796,7 +7807,7 @@ namespace StarsAbove
 
                         }
                     }
-                    else if(randomNovaDialogue == 4)
+                    else if (randomNovaDialogue == 4)
                     {
                         if (chosenStarfarer == 1)
                         {
@@ -7809,7 +7820,7 @@ namespace StarsAbove
 
                         }
                     }
-                    else if(randomNovaDialogue == 5)
+                    else if (randomNovaDialogue == 5)
                     {
                         if (chosenStarfarer == 1)
                         {
@@ -7822,7 +7833,7 @@ namespace StarsAbove
 
                         }
                     }
-                    else if(randomNovaDialogue == 6)
+                    else if (randomNovaDialogue == 6)
                     {
                         if (chosenStarfarer == 1)
                         {
@@ -7835,7 +7846,7 @@ namespace StarsAbove
 
                         }
                     }
-                    else if(randomNovaDialogue == 7)
+                    else if (randomNovaDialogue == 7)
                     {
                         if (chosenStarfarer == 1)
                         {
@@ -7848,7 +7859,7 @@ namespace StarsAbove
 
                         }
                     }
-                    else if(randomNovaDialogue == 8)
+                    else if (randomNovaDialogue == 8)
                     {
                         if (chosenStarfarer == 1)
                         {
@@ -7861,9 +7872,9 @@ namespace StarsAbove
 
                         }
                     }
-                    else if(randomNovaDialogue == 9)
+                    else if (randomNovaDialogue == 9)
                     {
-                        
+
                     }
 
                 }
@@ -7873,7 +7884,7 @@ namespace StarsAbove
         private void EdinGenesisQuasar()
         {
             //Edin Genesis Quasar Casts
-            if (chosenStellarNova == 5 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && astarteDriverAttacks > 0 && Main.LocalPlayer.HasBuff(BuffType<Buffs.AstarteDriver>()) && astarteDriverCooldown < 0)
+            if (chosenStellarNova == 5 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && astarteDriverAttacks > 0 && Main.LocalPlayer.HasBuff(BuffType<AstarteDriver>()) && astarteDriverCooldown < 0)
             {
 
                 if (Player.whoAmI == Main.myPlayer)
@@ -7884,11 +7895,11 @@ namespace StarsAbove
 
                     for (int d = 0; d < 105; d++)
                     {
-                        Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                        Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                     }
                     for (int d = 0; d < 105; d++)
                     {
-                        Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                        Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                     }
                     SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, Player.Center);
                     Vector2 mousePosition = Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos) * Main.rand.Next(20, 22);
@@ -7912,7 +7923,7 @@ namespace StarsAbove
                     Player.velocity = shotKnockback;
                     if (chosenStarfarer == 2)
                     {
-                        Player.AddBuff(BuffType<Buffs.Invincibility>(), 60);
+                        Player.AddBuff(BuffType<Invincibility>(), 60);
                     }
                     //Vector2 mousePosition = Main.MouseWorld;
                     //Projectile.NewProjectile(Player.GetSource_FromThis(),new Vector2(player.Center.X - 100, player.Center.Y), Vector2.Zero, mod.ProjectileType("prototokia2"), novaDamage + novaDamageMod, 4, player.whoAmI, 0, 1);                                                                                                                                                                                                                                                                                                                                             //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
@@ -7943,7 +7954,7 @@ namespace StarsAbove
             }
             else
             {
-                if(!NPC.AnyNPCs(NPCType<TsukiyomiBoss>()))
+                if (!NPC.AnyNPCs(NPCType<TsukiyomiBoss>()))
                 {
                     if (Player.HasBuff(BuffType<MoonTurmoil>()))
                     {
@@ -7954,18 +7965,18 @@ namespace StarsAbove
                         Player.ClearBuff(BuffType<ChaosTurmoil>());
                     }
                 }
-                
+
             }
 
             if (stellarArray == false)
             {
-                
+
                 if (ironskin == 2)
                 {
                     Player.statDefense += 6;
 
                 }
-                if ( healthyConfidence == 2)
+                if (healthyConfidence == 2)
                 {
 
                 }
@@ -7983,10 +7994,10 @@ namespace StarsAbove
 
 
                 }
-                
+
                 if (avataroflight == 2)
                 {
-                    Player.statLifeMax2 += (Player.statManaMax2 / 2);
+                    Player.statLifeMax2 += Player.statManaMax2 / 2;
                     if (Player.statLife >= 500)
                     {
                         Player.statDefense += 10;
@@ -7995,8 +8006,8 @@ namespace StarsAbove
                 }
                 if (hikari == 2)
                 {
-                    Player.GetDamage(DamageClass.Generic) += (0.01f * (Player.statLifeMax2 / 20));
-                    Player.statDefense += (Player.statLifeMax2 / 20);
+                    Player.GetDamage(DamageClass.Generic) += 0.01f * (Player.statLifeMax2 / 20);
+                    Player.statDefense += Player.statLifeMax2 / 20;
                     //player.moveSpeed *= 1 + (0.02f * (player.statLifeMax2 / 20));
                 }
                 if (celestialevanesence == 2)
@@ -8006,14 +8017,14 @@ namespace StarsAbove
                 }
                 if (afterburner == 2)
                 {
-                    if (Player.statMana <= 40 && !Main.LocalPlayer.HasBuff(BuffType<Buffs.AfterburnerCooldown>()) && !Main.LocalPlayer.HasBuff(BuffType<Buffs.Afterburner>()))
+                    if (Player.statMana <= 40 && !Main.LocalPlayer.HasBuff(BuffType<AfterburnerCooldown>()) && !Main.LocalPlayer.HasBuff(BuffType<Afterburner>()))
                     {
                         Player.statMana += 150;
-                        Player.AddBuff(BuffType<Buffs.Afterburner>(), 240);
+                        Player.AddBuff(BuffType<Afterburner>(), 240);
 
                     }
                 }
-               
+
             }
 
             for (int k = 0; k < 200; k++)
@@ -8026,30 +8037,30 @@ namespace StarsAbove
                     break;
                 }
             }
-            
+
             if (stellarSickness == true)
             {
-                Player.AddBuff(BuffType<Buffs.StellarSickness>(), 3600);
+                Player.AddBuff(BuffType<StellarSickness>(), 3600);
 
                 stellarSickness = false;
             }
             screenShakeTimerGlobal--;
 
-            
+
 
             if (Player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
             {
-                Player.AddBuff(BuffType<Buffs.AsphodeneBlessing>(), 2);
+                Player.AddBuff(BuffType<AsphodeneBlessing>(), 2);
 
             }
             if (Player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
             {
-                Player.AddBuff(BuffType<Buffs.EridaniBlessing>(), 2);
+                Player.AddBuff(BuffType<EridaniBlessing>(), 2);
 
             }
 
 
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.ButterflyTrance>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<ButterflyTrance>()))
             {
 
                 // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
@@ -8057,7 +8068,7 @@ namespace StarsAbove
                 int playerWidth = Main.LocalPlayer.width;
                 int playerHeight = Main.LocalPlayer.height;
 
-                Dust.NewDust(position, playerWidth, playerHeight, 164, 0f, 0f, 150, default(Color), 1.5f);
+                Dust.NewDust(position, playerWidth, playerHeight, 164, 0f, 0f, 150, default, 1.5f);
 
 
 
@@ -8066,10 +8077,10 @@ namespace StarsAbove
 
             if (inWarriorOfLightFightTimer > 0)
             {
-                Player.AddBuff(BuffType<Buffs.Determination>(), 2);
+                Player.AddBuff(BuffType<Determination>(), 2);
             }
 
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.LivingDead>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<LivingDead>()))
             {
                 Dust dust;
                 // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
@@ -8078,13 +8089,13 @@ namespace StarsAbove
                 int playerHeight = Main.LocalPlayer.height;
                 for (int d = 0; d < 5; d++)
                 {
-                    dust = Main.dust[Terraria.Dust.NewDust(position, playerWidth, playerHeight, 258, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
+                    dust = Main.dust[Dust.NewDust(position, playerWidth, playerHeight, 258, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
                 }
 
 
             }
-            
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.KiwamiRyuken>()))
+
+            if (Main.LocalPlayer.HasBuff(BuffType<KiwamiRyuken>()))
             {
 
                 // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
@@ -8093,13 +8104,13 @@ namespace StarsAbove
                 int playerHeight = Main.LocalPlayer.height;
                 for (int d = 0; d < 5; d++)
                 {
-                    Dust.NewDust(position, playerWidth, playerHeight, 206, 0f, 0f, 150, default(Color), 1.5f);
+                    Dust.NewDust(position, playerWidth, playerHeight, 206, 0f, 0f, 150, default, 1.5f);
                 }
 
 
 
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.KiwamiRyukenConfirm>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<KiwamiRyukenConfirm>()))
             {
 
 
@@ -8110,7 +8121,7 @@ namespace StarsAbove
                     offset.X += (float)(Math.Sin(angle) * ryukenTimer * 12);
                     offset.Y += (float)(Math.Cos(angle) * ryukenTimer * 12);
 
-                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 90, Player.velocity, 20, default(Color), 0.4f);
+                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 90, Player.velocity, 20, default, 0.4f);
 
                     d.fadeIn = 1f;
                     d.noGravity = true;
@@ -8118,21 +8129,21 @@ namespace StarsAbove
 
 
             }
-           
+
 
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.Afterburner>())
+                if (Player.buffType[i] == BuffType<Afterburner>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
-                        Player.AddBuff(BuffType<Buffs.AfterburnerCooldown>(), 1500);
+                        Player.AddBuff(BuffType<AfterburnerCooldown>(), 1500);
 
 
                     }
                 }
 
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.TwincastActive>())
+                if (Player.buffType[i] == BuffType<TwincastActive>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
@@ -8149,25 +8160,25 @@ namespace StarsAbove
                     offset.X += (float)(Math.Sin(angle) * 30f);
                     offset.Y += (float)(Math.Cos(angle) * 30f);
 
-                    Dust d2 = Dust.NewDustPerfect(Player.Center + offset, DustID.Flare, Player.velocity, 200, default(Color), 0.7f);
+                    Dust d2 = Dust.NewDustPerfect(Player.Center + offset, DustID.Flare, Player.velocity, 200, default, 0.7f);
                     d2.fadeIn = 0.0001f;
                     d2.noGravity = true;
                 }
-                
+
                 if (Player.velocity.Y == 0)
                 {
                     for (int i3 = 0; i3 < 50; i3++)
                     {
 
-                        Dust d = Main.dust[Dust.NewDust(new Vector2(Player.Center.X - Player.width, Player.Center.Y + Player.height / 2), Player.width * 2 - 3, 0, DustID.Flare, 0, Main.rand.Next(-5, -2), 150, default(Color), 0.3f)];
+                        Dust d = Main.dust[Dust.NewDust(new Vector2(Player.Center.X - Player.width, Player.Center.Y + Player.height / 2), Player.width * 2 - 3, 0, DustID.Flare, 0, Main.rand.Next(-5, -2), 150, default, 0.3f)];
                         d.fadeIn = 0.3f;
                         d.noLight = true;
                         d.noGravity = true;
                     }
                 }
-                
+
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.LeftDebuff>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<LeftDebuff>()))
             {
                 for (int i = 0; i < 2; i++)
                 {//
@@ -8178,7 +8189,7 @@ namespace StarsAbove
                     for (int i3 = 0; i3 < 50; i3++)
                     {
                         Vector2 position = Vector2.Lerp(Player.Center, vector32, (float)i3 / 50);
-                        Dust d = Dust.NewDustPerfect(position, 20, null, 240, default(Color), 0.3f);
+                        Dust d = Dust.NewDustPerfect(position, 20, null, 240, default, 0.3f);
                         d.fadeIn = 0.3f;
                         d.noLight = true;
                         d.noGravity = true;
@@ -8190,13 +8201,13 @@ namespace StarsAbove
                         offset.X += (float)(Math.Sin(angle) * 30f);
                         offset.Y += (float)(Math.Cos(angle) * 30f);
 
-                        Dust d2 = Dust.NewDustPerfect(vector32 + offset, 20, Player.velocity, 200, default(Color), 0.7f);
+                        Dust d2 = Dust.NewDustPerfect(vector32 + offset, 20, Player.velocity, 200, default, 0.7f);
                         d2.fadeIn = 0.0001f;
                         d2.noGravity = true;
                     }
                 }
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.RightDebuff>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<RightDebuff>()))
             {
                 for (int i = 0; i < 2; i++)
                 {//
@@ -8207,7 +8218,7 @@ namespace StarsAbove
                     for (int i3 = 0; i3 < 50; i3++)
                     {
                         Vector2 position = Vector2.Lerp(Player.Center, vector32, (float)i3 / 50);
-                        Dust d = Dust.NewDustPerfect(position, 20, null, 240, default(Color), 0.3f);
+                        Dust d = Dust.NewDustPerfect(position, 20, null, 240, default, 0.3f);
                         d.fadeIn = 0.3f;
                         d.noLight = true;
                         d.noGravity = true;
@@ -8219,13 +8230,13 @@ namespace StarsAbove
                         offset.X += (float)(Math.Sin(angle) * 30f);
                         offset.Y += (float)(Math.Cos(angle) * 30f);
 
-                        Dust d2 = Dust.NewDustPerfect(vector32 + offset, 20, Player.velocity, 200, default(Color), 0.7f);
+                        Dust d2 = Dust.NewDustPerfect(vector32 + offset, 20, Player.velocity, 200, default, 0.7f);
                         d2.fadeIn = 0.0001f;
                         d2.noGravity = true;
                     }
                 }
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.RedPaint>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<RedPaint>()))
             {
                 for (int i = 0; i < 5; i++)
                 {//Circle
@@ -8234,12 +8245,12 @@ namespace StarsAbove
                     offset.X += (float)(Math.Sin(angle) * 30f);
                     offset.Y += (float)(Math.Cos(angle) * 30f);
 
-                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 219, Player.velocity, 200, default(Color), 0.7f);
+                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 219, Player.velocity, 200, default, 0.7f);
                     d.fadeIn = 0.0001f;
                     d.noGravity = true;
                 }
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.BluePaint>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<BluePaint>()))
             {
                 for (int i = 0; i < 5; i++)
                 {//Circle
@@ -8248,12 +8259,12 @@ namespace StarsAbove
                     offset.X += (float)(Math.Sin(angle) * 30f);
                     offset.Y += (float)(Math.Cos(angle) * 30f);
 
-                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 221, Player.velocity, 200, default(Color), 0.7f);
+                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 221, Player.velocity, 200, default, 0.7f);
                     d.fadeIn = 0.0001f;
                     d.noGravity = true;
                 }
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.YellowPaint>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<YellowPaint>()))
             {
                 for (int i = 0; i < 5; i++)
                 {//Circle
@@ -8262,12 +8273,12 @@ namespace StarsAbove
                     offset.X += (float)(Math.Sin(angle) * 30f);
                     offset.Y += (float)(Math.Cos(angle) * 30f);
 
-                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 222, Player.velocity, 200, default(Color), 0.7f);
+                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 222, Player.velocity, 200, default, 0.7f);
                     d.fadeIn = 0.0001f;
                     d.noGravity = true;
                 }
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.Pyretic>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<Pyretic>()))
             {
                 for (int i = 0; i < 30; i++)
                 {//Circle
@@ -8276,12 +8287,12 @@ namespace StarsAbove
                     offset.X += (float)(Math.Sin(angle) * 70f);
                     offset.Y += (float)(Math.Cos(angle) * 70f);
 
-                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 90, Player.velocity, 200, default(Color), 0.7f);
+                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 90, Player.velocity, 200, default, 0.7f);
                     d.fadeIn = 1f;
                     d.noGravity = true;
                 }
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.DeepFreeze>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<DeepFreeze>()))
             {
                 for (int i = 0; i < 30; i++)
                 {//Circle
@@ -8290,12 +8301,12 @@ namespace StarsAbove
                     offset.X += (float)(Math.Sin(angle) * 70f);
                     offset.Y += (float)(Math.Cos(angle) * 70f);
 
-                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 135, Player.velocity, 200, default(Color), 0.7f);
+                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 135, Player.velocity, 200, default, 0.7f);
                     d.fadeIn = 1f;
                     d.noGravity = true;
                 }
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.Invincibility>()))//Invincibility VFX
+            if (Main.LocalPlayer.HasBuff(BuffType<Invincibility>()))//Invincibility VFX
             {
                 for (int i = 0; i < 12; i++)
                 {
@@ -8303,8 +8314,8 @@ namespace StarsAbove
                 }
 
             }
-            
-            if (Player.HasBuff(BuffType<Buffs.AstarteDriverPrep>()))//Astarte Effects
+
+            if (Player.HasBuff(BuffType<AstarteDriverPrep>()))//Astarte Effects
             {
                 for (int i = 0; i < 5; i++)
                 {
@@ -8324,7 +8335,7 @@ namespace StarsAbove
                 }
 
             }
-            if (Player.HasBuff(BuffType<Buffs.AstarteDriver>()))//Astarte Effects
+            if (Player.HasBuff(BuffType<AstarteDriver>()))//Astarte Effects
             {
 
                 for (int i = 0; i < 1; i++)
@@ -8350,53 +8361,53 @@ namespace StarsAbove
                 Player.AddBuff(BuffType<Invisibility>(), 2);
                 Vector2 Leap = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 20f;
                 Player.velocity = Leap;
-                if(playerMousePos.X < Player.Center.X)
+                if (playerMousePos.X < Player.Center.X)
                 {
                     Player.direction = -1;
-                }    
+                }
                 for (int d = 0; d < 10; d++)
                 {
-                    Dust du = Main.dust[Dust.NewDust(Player.Center, 5, 5, DustID.Electric, 0f, 0f, 150, default(Color), 2f)];
+                    Dust du = Main.dust[Dust.NewDust(Player.Center, 5, 5, DustID.Electric, 0f, 0f, 150, default, 2f)];
                     du.noGravity = true;
                 }
                 for (int d = 0; d < 2; d++)
                 {
-                    Dust du = Main.dust[Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Blue, 0f, 0f, 150, default(Color), 0.8f)];
+                    Dust du = Main.dust[Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Blue, 0f, 0f, 150, default, 0.8f)];
                     du.noGravity = true;
 
                 }
             }
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.LeftDebuff>())
+                if (Player.buffType[i] == BuffType<LeftDebuff>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
                         //player.velocity = Vector2.Zero;
                         Vector2 vector32 = new Vector2(Player.position.X - 500, Player.position.Y);
                         Player.Teleport(vector32, 1, 0);
-                        NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float)Player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
+                        NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, Player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
 
                     }
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.RightDebuff>())
+                if (Player.buffType[i] == BuffType<RightDebuff>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
                         //player.velocity = Vector2.Zero;
                         Vector2 vector32 = new Vector2(Player.position.X + 500, Player.position.Y);
                         Player.Teleport(vector32, 1, 0);
-                        NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float)Player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
+                        NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, Player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
                     }
                 }
 
-           
+
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.LivingDead>())
+                if (Player.buffType[i] == BuffType<LivingDead>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
-                        Player.AddBuff(BuffType<Buffs.LivingDeadCooldown>(), 14400);//7200 is 2 minutes, 14400 is 4 minutes.
+                        Player.AddBuff(BuffType<LivingDeadCooldown>(), 14400);//7200 is 2 minutes, 14400 is 4 minutes.
 
                         if (Player.statLife < 150)
                         {
@@ -8409,19 +8420,19 @@ namespace StarsAbove
                         }
                     }
                 }
-            
+
 
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.StarshieldBuff>())
+                if (Player.buffType[i] == BuffType<StarshieldBuff>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
-                        Player.AddBuff(BuffType<Buffs.StarshieldCooldown>(), 1200);//
+                        Player.AddBuff(BuffType<StarshieldCooldown>(), 1200);//
                     }
                 }
-           
+
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.Pyretic>())
+                if (Player.buffType[i] == BuffType<Pyretic>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
@@ -8443,28 +8454,28 @@ namespace StarsAbove
                     }
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.AstarteDriverPrep>())
+                if (Player.buffType[i] == BuffType<AstarteDriverPrep>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
                         //Change
 
                         astarteDriverAttacks = 3;
-                        Player.AddBuff(BuffType<Buffs.AstarteDriver>(), 1500);
+                        Player.AddBuff(BuffType<AstarteDriver>(), 1500);
                         SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, Player.Center);
-                        
+
                     }
 
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.AstarteDriver>())
+                if (Player.buffType[i] == BuffType<AstarteDriver>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
                         //Change
                         WhiteFade = 20;
-                        
-                        
+
+
                     }
                     for (int a = 0; a < 15; a++)
                     {//Circle
@@ -8493,7 +8504,7 @@ namespace StarsAbove
                     }
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.DeepFreeze>())
+                if (Player.buffType[i] == BuffType<DeepFreeze>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
@@ -8515,15 +8526,15 @@ namespace StarsAbove
                     }
                 }
 
-            
+
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.KiwamiRyuken>())
+                if (Player.buffType[i] == BuffType<KiwamiRyuken>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
                         if (chosenStarfarer == 2)
                         {
-                            novaGauge = (trueNovaGaugeMax / 2) + 10;
+                            novaGauge = trueNovaGaugeMax / 2 + 10;
                         }
                         else
                         {
@@ -8533,7 +8544,7 @@ namespace StarsAbove
                     }
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.KiwamiRyukenConfirm>())
+                if (Player.buffType[i] == BuffType<KiwamiRyukenConfirm>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
@@ -8615,7 +8626,7 @@ namespace StarsAbove
 
                 for (int d = 0; d < 70; d++)
                 {
-                    Dust.NewDust(Player.position, Player.width, Player.height, 60, 0f, 0f, 150, default(Color), 1.5f);
+                    Dust.NewDust(Player.position, Player.width, Player.height, 60, 0f, 0f, 150, default, 1.5f);
 
                 }
             }
@@ -8629,7 +8640,7 @@ namespace StarsAbove
         {
             if (proj.type == Mod.Find<ModProjectile>("RedSplatterDamage").Type)
             {
-                if (Main.LocalPlayer.HasBuff(BuffType<Buffs.RedPaint>()))
+                if (Main.LocalPlayer.HasBuff(BuffType<RedPaint>()))
                 {
 
                     return false;
@@ -8637,7 +8648,7 @@ namespace StarsAbove
             }
             if (proj.type == Mod.Find<ModProjectile>("YellowSplatterDamage").Type)
             {
-                if (Main.LocalPlayer.HasBuff(BuffType<Buffs.YellowPaint>()))
+                if (Main.LocalPlayer.HasBuff(BuffType<YellowPaint>()))
                 {
 
                     return false;
@@ -8645,7 +8656,7 @@ namespace StarsAbove
             }
             if (proj.type == Mod.Find<ModProjectile>("BlueSplatterDamage").Type)
             {
-                if (Main.LocalPlayer.HasBuff(BuffType<Buffs.BluePaint>()))
+                if (Main.LocalPlayer.HasBuff(BuffType<BluePaint>()))
                 {
 
                     return false;
@@ -8668,14 +8679,14 @@ namespace StarsAbove
             {
                 if (Main.expertMode == true)
                 {
-                    Main.LocalPlayer.AddBuff(BuffType<Buffs.Vulnerable>(), 1800);
+                    Main.LocalPlayer.AddBuff(BuffType<Vulnerable>(), 1800);
                 }
             }
 
         }
         public override bool ImmuneTo(PlayerDeathReason damageSource, int cooldownCounter, bool dodgeable)
         {
-            
+
             if (Player.HasBuff(BuffType<Invincibility>()))
             {
                 return true;
@@ -8725,7 +8736,7 @@ namespace StarsAbove
                 if (Main.rand.Next(0, 8) == 0)
                 {
                     starfarerPromptActive("onTakeHeavyDamage");
-                    
+
                 }
             }
             if (Player.HasBuff(BuffType<SpatialStratagemCooldown>()) && artofwar == 2)
@@ -8740,7 +8751,7 @@ namespace StarsAbove
                 Player.statMana += 20;
                 Player.ManaEffect(20);
             }
-            if (Player.HasBuff(BuffType<Buffs.UniversalManipulation>()))
+            if (Player.HasBuff(BuffType<UniversalManipulation>()))
             {
                 int index = Player.FindBuffIndex(BuffType<UniversalManipulation>());
                 if (index > -1)
@@ -8750,10 +8761,10 @@ namespace StarsAbove
             }
             if (cosmicPhoenixPrism)
             {
-                if (Player.statLife - info.Damage < 50 && !Main.LocalPlayer.HasBuff(BuffType<Buffs.GoingSupercriticalCooldown>()))
+                if (Player.statLife - info.Damage < 50 && !Main.LocalPlayer.HasBuff(BuffType<GoingSupercriticalCooldown>()))
                 {
                     novaGauge = novaGaugeMax;
-                    Main.LocalPlayer.AddBuff(BuffType<Buffs.GoingSupercriticalCooldown>(), 7200);
+                    Main.LocalPlayer.AddBuff(BuffType<GoingSupercriticalCooldown>(), 7200);
                 }
             }
             if (starfarerOutfit == 1)
@@ -8774,11 +8785,11 @@ namespace StarsAbove
         }
         public override bool ConsumableDodge(Player.HurtInfo info)
         {
-            if (Player.HasBuff(BuffType<Buffs.SolemnAegis>()))
+            if (Player.HasBuff(BuffType<SolemnAegis>()))
             {
                 for (int d = 0; d < 16; d++)
                 {
-                    Dust.NewDust(Player.position, Player.width, Player.height, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 1.5f);
+                    Dust.NewDust(Player.position, Player.width, Player.height, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default, 1.5f);
                 }
                 Player.immune = true;
                 Player.immuneTime = 30;
@@ -8789,7 +8800,7 @@ namespace StarsAbove
                 }
                 return true;
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.FlashOfEternity>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<FlashOfEternity>()))
             {
                 Player.immune = true;
                 Player.immuneTime = 30;
@@ -8818,7 +8829,7 @@ namespace StarsAbove
             }
             if (Player.GetModPlayer<StarsAbovePlayer>().keyofchronology == 2)
             {
-                if (info.Damage >= 200 && !(Main.LocalPlayer.HasBuff(BuffType<Buffs.KeyOfChronologyCooldown>())))
+                if (info.Damage >= 200 && !Main.LocalPlayer.HasBuff(BuffType<KeyOfChronologyCooldown>()))
                 {
                     if (starfarerPromptCooldown > 0)
                     {
@@ -8828,7 +8839,7 @@ namespace StarsAbove
                     SoundEngine.PlaySound(StarsAboveAudio.SFX_TimeEffect, Player.Center);
                     for (int d = 0; d < 12; d++)
                     {
-                        Dust.NewDust(Player.position, 0, 0, 113, 0f + Main.rand.Next(-7, 7), 0f + Main.rand.Next(-7, 7), 150, default(Color), 1.5f);
+                        Dust.NewDust(Player.position, 0, 0, 113, 0f + Main.rand.Next(-7, 7), 0f + Main.rand.Next(-7, 7), 150, default, 1.5f);
                     }
                     Player.Heal(info.Damage);
                     for (int i = 0; i < Main.maxNPCs; i++)
@@ -8840,8 +8851,8 @@ namespace StarsAbove
                         }
                     }
 
-                    Player.AddBuff(BuffType<Buffs.Invincibility>(), 300);
-                    Player.AddBuff(BuffType<Buffs.KeyOfChronologyCooldown>(), 7200);
+                    Player.AddBuff(BuffType<Invincibility>(), 300);
+                    Player.AddBuff(BuffType<KeyOfChronologyCooldown>(), 7200);
 
                     if (starfarerOutfit == 4)
                     {
@@ -8857,7 +8868,7 @@ namespace StarsAbove
 
                 return false;
             }
-            if (Player.HasBuff(BuffType<Buffs.KiwamiRyuken>()))
+            if (Player.HasBuff(BuffType<KiwamiRyuken>()))
             {
                 StellarNovaCutIn();
                 ryukenTimer = 60;
@@ -8894,7 +8905,7 @@ namespace StarsAbove
                     return true;
                 }
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.DashInvincibility>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<DashInvincibility>()))
             {
                 return true;
             }
@@ -8913,7 +8924,7 @@ namespace StarsAbove
             {
                 modifiers.FinalDamage -= 0.5f;
             }
-            if(Player.GetModPlayer<StarsAbovePlayer>().starfarerOutfit == 3)
+            if (Player.GetModPlayer<StarsAbovePlayer>().starfarerOutfit == 3)
             {
                 modifiers.FinalDamage -= 0.1f;
                 novaGauge += 3;
@@ -8951,8 +8962,8 @@ namespace StarsAbove
 
                 }
             }
-            
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.LivingDead>()))
+
+            if (Main.LocalPlayer.HasBuff(BuffType<LivingDead>()))
             {
                 playSound = false;
                 genGore = false;
@@ -8960,20 +8971,20 @@ namespace StarsAbove
 
                 return false;
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.SpatialBurn>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<SpatialBurn>()))
             {
 
                 damageSource = PlayerDeathReason.ByCustomReason(Player.name + " couldn't handle the vacuum of space.");
 
                 return true;
             }
-            
+
             if (livingdead == 2)
             {
 
-                if (!Main.LocalPlayer.HasBuff(BuffType<Buffs.LivingDead>()))
+                if (!Main.LocalPlayer.HasBuff(BuffType<LivingDead>()))
                 {
-                    if (!Main.LocalPlayer.HasBuff(BuffType<Buffs.LivingDeadCooldown>()))
+                    if (!Main.LocalPlayer.HasBuff(BuffType<LivingDeadCooldown>()))
                     {
                         if (starfarerPromptCooldown > 0)
                         {
@@ -8993,11 +9004,11 @@ namespace StarsAbove
                                 Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurst").Type, 0, 0, Player.whoAmI, 0, 1);
 
                         }*/
-                        Player.AddBuff(BuffType<Buffs.LivingDead>(), 360);
+                        Player.AddBuff(BuffType<LivingDead>(), 360);
                         Dust dust;
                         // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
                         Vector2 position = Player.Center;
-                        dust = Main.dust[Terraria.Dust.NewDust(position, 0, 0, 247, 0f, 0f, 0, new Color(255, 0, 0), 1f)];
+                        dust = Main.dust[Dust.NewDust(position, 0, 0, 247, 0f, 0f, 0, new Color(255, 0, 0), 1f)];
 
 
                         Player.statLife = 1;
@@ -9016,7 +9027,7 @@ namespace StarsAbove
                 }
                 return true;
             }
-            
+
             if (Main.rand.Next(0, 5) == 0)
             {
                 starfarerPromptActive("onDeath");
@@ -9049,7 +9060,7 @@ namespace StarsAbove
                 //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
                 if (chosenStarfarer == 1) //Asphodene's lines                                          | Soft limit
                 {
-                    
+
                     //When the player is debuffed..
                     if (eventPrompt == "onPoison")
                     {
@@ -9777,7 +9788,7 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onAres")
                     {
-                       
+
                         promptExpression = 1;
                         //promptDialogue = $"Heads up, {Player.name}!" +
                         //                $" That machine is blotting out the sky!";
@@ -10265,7 +10276,7 @@ namespace StarsAbove
                 }
                 if (chosenStarfarer == 2) //Eridani's lines                                              | Soft limit
                 {
-                    
+
                     //When the player is debuffed..c
                     if (eventPrompt == "onPoison")
                     {
@@ -11014,7 +11025,7 @@ namespace StarsAbove
                         promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.121", Player.name); //Who does this guy think he is, wielding celestial power all willy-nilly? Not to mention... Ugh- I don't have to spell it out, do I?
 
-                        
+
                         seenEridanus = true;
                     }
                     if (eventPrompt == "onAbominationn")
@@ -11022,7 +11033,7 @@ namespace StarsAbove
                         promptExpression = 0;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.122", Player.name); //Well, no time like the present. His arsenal revolves around invader events- we've seen our share of those.
 
-                        
+
                         seenAbominationn = true;
                     }
                     if (eventPrompt == "onMutant")
@@ -11030,7 +11041,7 @@ namespace StarsAbove
                         promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.123", Player.name); //Oh, you just HAD to throw that thing into lava, did you? Well, good luck, because Mutant is pissed. Didn't see that coming- wait, I did.
 
-                        
+
                         seenMutant = true;
                     }
                     if (eventPrompt == "onScarabeus")
@@ -11508,7 +11519,7 @@ namespace StarsAbove
                         novaGaugeChargeTimer = 0;
                         //If any effect speeds up the Nova gauge charging, add it here.
                         NovaChargeModifiers();
-                        
+
                     }
                 }
 
@@ -11642,8 +11653,8 @@ namespace StarsAbove
         {
             Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("SpaceBurstFX").Type, 0, 0, Player.whoAmI, 0, 1);
             Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("SpaceBurstFX2").Type, 0, 0, Player.whoAmI, 0, 1);
-            
-            if(chosenStellarNova != 7)
+
+            if (chosenStellarNova != 7)
             {
                 activateShockwaveEffect = true;
             }
@@ -11665,7 +11676,7 @@ namespace StarsAbove
             }
             if (ruinedKingPrism)
             {
-                Player.AddBuff(BuffType<Buffs.SovereignDominion>(), 900);
+                Player.AddBuff(BuffType<SovereignDominion>(), 900);
             }
             if (cosmicPhoenixPrism)
             {
@@ -11680,9 +11691,9 @@ namespace StarsAbove
             }
             if (lightswornPrism)
             {
-                Player.AddBuff(BuffType<Buffs.Lightblessed>(), 480);
+                Player.AddBuff(BuffType<Lightblessed>(), 480);
             }
-            
+
             if (spatialPrism)
             {
                 Player.AddBuff(BuffID.Regeneration, 720);
@@ -11691,7 +11702,7 @@ namespace StarsAbove
             }
             if (voidsentPrism)
             {
-                Vector2 placement2 = new Vector2((Player.Center.X), Player.Center.Y);
+                Vector2 placement2 = new Vector2(Player.Center.X, Player.Center.Y);
                 Projectile.NewProjectile(Player.GetSource_FromThis(), placement2.X, placement2.Y, 0, 0, Mod.Find<ModProjectile>("radiate").Type, 0, 0f, 0);
                 Projectile.NewProjectile(Player.GetSource_FromThis(), placement2.X, placement2.Y, 0, 0, Mod.Find<ModProjectile>("VoidsentBurst").Type, baseNovaDamageAdd / 10, 0f, 0);
             }
@@ -11711,7 +11722,7 @@ namespace StarsAbove
             }
             if (geminiPrism)
             {
-                if(!Player.HasBuff(BuffType<GeminiPrismCooldown>()))
+                if (!Player.HasBuff(BuffType<GeminiPrismCooldown>()))
                 {
                     Player.AddBuff(BuffType<GeminiPrismCooldown>(), 7200);
 
@@ -11735,7 +11746,7 @@ namespace StarsAbove
         {
             if (royalSlimePrism)
             {
-               modifiers.FinalDamage *= 0.8f;
+                modifiers.FinalDamage *= 0.8f;
             }
         }
         private void ModifyHitEnemyWithNova(NPC target, ref NPC.HitModifiers modifiers)
@@ -11795,26 +11806,26 @@ namespace StarsAbove
             {
                 Player.ClearBuff(BuffType<MechanicalPrismBuff>());
                 target.AddBuff(BuffType<Stun>(), 120);
-                Vector2 placement2 = new Vector2((target.Center.X), target.Center.Y);
+                Vector2 placement2 = new Vector2(target.Center.X, target.Center.Y);
 
                 Projectile.NewProjectile(Player.GetSource_FromThis(), placement2.X, placement2.Y, 0, 0, Mod.Find<ModProjectile>("VoidsentBurst").Type, damage / 10, 0f, 0);
             }
         }
-        
+
 
         public override void ResetEffects()
         {
-            
 
-           
+
+
 
             Observatory = false;
             SeaOfStars = false;
-            
-            IsVoidActive = false;
-            
 
-            
+            IsVoidActive = false;
+
+
+
             WarriorBarActive = false;
             WarriorOfLightActive = false;
             NalhaunBarActive = false;
@@ -11835,18 +11846,18 @@ namespace StarsAbove
             TsukiyomiActive = false;
             TsukiyomiBarActive = false;
 
-            
+
         }
-        
+
 
 
         public override void ModifyDrawInfo(ref PlayerDrawSet drawInfo)
         {
             base.ModifyDrawInfo(ref drawInfo);
         }
-        
 
-        
+
+
     }
 
 };

@@ -9,6 +9,7 @@ using Terraria.Enums;
 using System;
 using ReLogic.Content;
 using Terraria.Localization;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Tiles.BossLoot
 {

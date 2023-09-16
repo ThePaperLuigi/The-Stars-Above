@@ -7,6 +7,7 @@ using Terraria.Audio;
 using Terraria.GameContent;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Projectiles.Bosses.Nalhaun;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 {

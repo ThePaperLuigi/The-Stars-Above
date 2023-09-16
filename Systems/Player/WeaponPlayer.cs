@@ -12,7 +12,14 @@ using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.ModLoader.IO;
-using StarsAbove.Items; using StarsAbove.Items.Weapons; using StarsAbove.Items.Weapons.Summon; using StarsAbove.Items.Weapons.Ranged; using StarsAbove.Items.Weapons.Other; using StarsAbove.Items.Weapons.Celestial; using StarsAbove.Items.Weapons.Melee; using StarsAbove.Items.Weapons.Magic;
+using StarsAbove.Items;
+using StarsAbove.Items.Weapons;
+using StarsAbove.Items.Weapons.Summon;
+using StarsAbove.Items.Weapons.Ranged;
+using StarsAbove.Items.Weapons.Other;
+using StarsAbove.Items.Weapons.Celestial;
+using StarsAbove.Items.Weapons.Melee;
+using StarsAbove.Items.Weapons.Magic;
 using StarsAbove.Items.Weapons.Summon;
 using StarsAbove.Items.Weapons.Ranged;
 using StarsAbove.Items.Weapons.Other;
@@ -37,7 +44,14 @@ using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.ModLoader.IO;
-using StarsAbove.Items; using StarsAbove.Items.Weapons; using StarsAbove.Items.Weapons.Summon; using StarsAbove.Items.Weapons.Ranged; using StarsAbove.Items.Weapons.Other; using StarsAbove.Items.Weapons.Celestial; using StarsAbove.Items.Weapons.Melee; using StarsAbove.Items.Weapons.Magic;
+using StarsAbove.Items;
+using StarsAbove.Items.Weapons;
+using StarsAbove.Items.Weapons.Summon;
+using StarsAbove.Items.Weapons.Ranged;
+using StarsAbove.Items.Weapons.Other;
+using StarsAbove.Items.Weapons.Celestial;
+using StarsAbove.Items.Weapons.Melee;
+using StarsAbove.Items.Weapons.Magic;
 using StarsAbove.Projectiles;
 using StarsAbove.Buffs;
 using StarsAbove.NPCs;
@@ -92,10 +106,11 @@ using StarsAbove.Items.Armor.BlackSilence;
 using StarsAbove.Items.Armor.DraggedBelow;
 using StarsAbove.Buffs.DraggedBelow;
 using StarsAbove.Buffs.DragaliaFound;
+using StarsAbove.Systems;
 
-namespace StarsAbove
+namespace StarsAbove.Systems
 {
-    public class WeaponPlayer: ModPlayer
+    public class WeaponPlayer : ModPlayer
     {
         /* Miscellaneous weapon code (gauges, projectiles, etc.)
          * Also includes accessories.
@@ -125,7 +140,7 @@ namespace StarsAbove
         public int izanagiPerfect = 0;
         public bool edgeHoned = false;
 
-        
+
 
         //Naganadel
         public bool naganadelWeapon1Summoned;
@@ -335,7 +350,7 @@ namespace StarsAbove
 
         public int activeMinions;
 
-        
+
 
         //Virtue's Edge
         public int VirtueGauge;
@@ -571,18 +586,18 @@ namespace StarsAbove
                     Player.AddBuff(BuffType<NanomachinaLeechCooldown>(), 360);
                 }
             }
-            if (target.HasBuff(BuffType<Buffs.InfernalBleed>()))
+            if (target.HasBuff(BuffType<InfernalBleed>()))
             {
-                if (target.life - Math.Min((-(target.life - target.lifeMax)) * 0.02, 250) > 1)
+                if (target.life - Math.Min(-(target.life - target.lifeMax) * 0.02, 250) > 1)
                 {
-                    target.life -= (int)Math.Min((-(target.life - target.lifeMax)) * 0.02, 250);
+                    target.life -= (int)Math.Min(-(target.life - target.lifeMax) * 0.02, 250);
                     Rectangle textPos = new Rectangle((int)target.position.X, (int)target.position.Y - 20, target.width, target.height);
-                    CombatText.NewText(textPos, new Color(234, 0, 0, 100), $"{(int)Math.Min((-(target.life - target.lifeMax)) * 0.02, 250)}", false, false);
+                    CombatText.NewText(textPos, new Color(234, 0, 0, 100), $"{(int)Math.Min(-(target.life - target.lifeMax) * 0.02, 250)}", false, false);
                 }
 
                 Player.AddBuff(BuffID.Rage, 480);
             }
-            if (Player.HasBuff(BuffType<Buffs.SurtrTwilight>()))
+            if (Player.HasBuff(BuffType<SurtrTwilight>()))
             {
                 target.AddBuff(BuffID.OnFire, 480);
             }
@@ -602,7 +617,7 @@ namespace StarsAbove
                 modifiers.SourceDamage += 0.5f;
             }
         }
-        
+
 
         public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Item, consider using OnHitNPC instead */
         {
@@ -610,7 +625,7 @@ namespace StarsAbove
 
             if (item.ModItem is LiberationBlazing)
             {
-                if (Player.HasBuff(BuffType<Buffs.CoreOfFlames>()))
+                if (Player.HasBuff(BuffType<CoreOfFlames>()))
                 {
                     SoundEngine.PlaySound(StarsAboveAudio.SFX_electroSmack, Player.Center);
 
@@ -697,7 +712,7 @@ namespace StarsAbove
                 Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center.X, target.Center.Y, 0f, 0f, ProjectileType<StarfarerFollowUp>(), damageDone / 3, 0, Player.whoAmI);
 
             }
-            
+
 
             if (!target.active)
             {
@@ -707,12 +722,12 @@ namespace StarsAbove
         public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Item, consider using ModifyHitNPC instead */
         {
             var player = Player.GetModPlayer<StarsAbovePlayer>();
-            
+
             if (item.ModItem is ArchitectLuminance && player.MeleeAspect == 2)
             {
                 modifiers.CritDamage.Flat += Player.statDefense;
             }
-            
+
         }
         public override void OnConsumeMana(Item item, int manaConsumed)
         {
@@ -736,25 +751,25 @@ namespace StarsAbove
             }
             if (proj.type == ProjectileType<SteelTempestSwing3>())
             {
-                target.AddBuff(BuffType<Buffs.MortalWounds>(), 600);
+                target.AddBuff(BuffType<MortalWounds>(), 600);
                 soulUnboundDamage += damageDone;
             }
             if (proj.type == ProjectileType<SteelTempestSwing2>())
             {
                 Rectangle textPos = new Rectangle((int)target.position.X, (int)target.position.Y - 20, target.width, target.height);
-                CombatText.NewText(textPos, new Color(255, 30, 30, 240), $"{(damageDone / 2)}", false, false);
+                CombatText.NewText(textPos, new Color(255, 30, 30, 240), $"{damageDone / 2}", false, false);
                 if (target.life - damageDone / 2 > 1)
                 {
-                    target.life -= (damageDone / 2);
+                    target.life -= damageDone / 2;
                 }
                 soulUnboundDamage += damageDone;
             }
             if (proj.type == ProjectileType<SteelTempestSwing4>())
             {
-                if (target.HasBuff(BuffType<Buffs.MortalWounds>()))
+                if (target.HasBuff(BuffType<MortalWounds>()))
                 {
 
-                    
+
                     for (int d = 0; d < 40; d++)
                     {
                         Dust.NewDust(target.position, target.width, target.height, 235, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1.5f);
@@ -776,9 +791,9 @@ namespace StarsAbove
             }
             if (proj.type == ProjectileType<RexLapisMeteor2>())
             {
-                if (!target.HasBuff(BuffType<Buffs.Petrified>()) && hit.Crit)
+                if (!target.HasBuff(BuffType<Petrified>()) && hit.Crit)
                 {
-                    target.AddBuff(BuffType<Buffs.Petrified>(), 180);
+                    target.AddBuff(BuffType<Petrified>(), 180);
                 }
             }
             if (proj.type != ProjectileType<EuthymiaFollowUp>() && euthymiaActive && euthymiaCooldown <= 0)
@@ -786,7 +801,7 @@ namespace StarsAbove
                 SoundEngine.PlaySound(StarsAboveAudio.SFX_electroSmack, Player.Center);
 
                 Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center.X, target.Center.Y, 0, 0, ProjectileType<EuthymiaFollowUp>(), Math.Min(damageDone / 5, 500), 0, Player.whoAmI, 0f);
-                euthymiaCooldown = 120 - (eternityGauge / 10);
+                euthymiaCooldown = 120 - eternityGauge / 10;
 
             }
             if (proj.type == ProjectileType<WhisperRound>())
@@ -797,7 +812,7 @@ namespace StarsAbove
                 }
                 if (hit.Crit)
                 {
-                    
+
                     whisperShotCount = 0;
                     for (int d = 0; d < 30; d++)
                     {
@@ -810,7 +825,7 @@ namespace StarsAbove
                 }
 
             }
-            if (proj.type == ProjectileType<HuckleberryRound>() && (!target.active))
+            if (proj.type == ProjectileType<HuckleberryRound>() && !target.active)
             {
                 Player.statMana += 12;
                 Player.AddBuff(BuffID.Wrath, 100);
@@ -899,7 +914,7 @@ namespace StarsAbove
             if (proj.type == ProjectileType<AmiyaSlash>())
             {
                 target.AddBuff(BuffID.Frostburn, 1200);
-                target.AddBuff(BuffType<Buffs.Stun>(), 60);
+                target.AddBuff(BuffType<Stun>(), 60);
 
             }
             if (proj.type == ProjectileType<NaganadelProjectileFinal2>())
@@ -943,7 +958,7 @@ namespace StarsAbove
                     Dust.NewDust(target.position, target.width, target.height, 247, 0f + Main.rand.Next(-10, 10), 0f + Main.rand.Next(-10, 10), 150, default(Color), 1.5f);
                 }
 
-               
+
                 target.AddBuff(BuffID.Poisoned, 240);
 
             }
@@ -978,7 +993,7 @@ namespace StarsAbove
                 }
 
             }
-            if (proj.type == ProjectileType<yunlaiSwing>() && (!target.active))
+            if (proj.type == ProjectileType<yunlaiSwing>() && !target.active)
             {
                 Player.statMana += 80;
 
@@ -1018,7 +1033,7 @@ namespace StarsAbove
                     }
                 }
                 Dust.NewDust(target.position, target.width, target.height, 21, 0f, 0f, 150, default(Color), 1.5f);
-                target.AddBuff(BuffType<Buffs.Starblight>(), 91020);
+                target.AddBuff(BuffType<Starblight>(), 91020);
 
             }
             if (proj.type == ProjectileType<tartagliaSwing>())
@@ -1243,7 +1258,7 @@ namespace StarsAbove
             {
                 for (int d = 0; d < 7; d++)
                 {
-                    Dust dust = Main.dust[Terraria.Dust.NewDust(target.position, target.width, target.height, 159, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1.5f)];
+                    Dust dust = Main.dust[Dust.NewDust(target.position, target.width, target.height, 159, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1.5f)];
                     dust.shader = GameShaders.Armor.GetSecondaryShader(103, Main.LocalPlayer);
 
 
@@ -1251,11 +1266,11 @@ namespace StarsAbove
             }
             if (proj.type == ProjectileType<StygianSwing3>())
             {
-                if (Main.LocalPlayer.HasBuff(BuffType<Buffs.ClawsOfNyx>()))
+                if (Main.LocalPlayer.HasBuff(BuffType<ClawsOfNyx>()))
                 {
                     for (int d = 0; d < 4; d++)
                     {
-                        Dust dust = Main.dust[Terraria.Dust.NewDust(target.position, target.width, target.height, 219, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1.5f)];
+                        Dust dust = Main.dust[Dust.NewDust(target.position, target.width, target.height, 219, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1.5f)];
                         //dust.shader = GameShaders.Armor.GetSecondaryShader(103, Main.LocalPlayer);
 
                     }
@@ -1264,7 +1279,7 @@ namespace StarsAbove
                 {
                     for (int d = 0; d < 7; d++)
                     {
-                        Dust dust = Main.dust[Terraria.Dust.NewDust(target.position, target.width, target.height, 159, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1.5f)];
+                        Dust dust = Main.dust[Dust.NewDust(target.position, target.width, target.height, 159, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1.5f)];
                         dust.shader = GameShaders.Armor.GetSecondaryShader(103, Main.LocalPlayer);
 
 
@@ -1322,24 +1337,24 @@ namespace StarsAbove
                 player.screenShakeTimerGlobal = -80;
                 for (int d = 0; d < 30; d++)
                 {
-                    Dust.NewDust(proj.position, proj.width, proj.height, 0, 0f + Main.rand.Next(-10, 10), 0f + Main.rand.Next(-10, 10), 150, default(Color), 1.5f);
+                    Dust.NewDust(proj.position, proj.width, proj.height, 0, 0f + Main.rand.Next(-10, 10), 0f + Main.rand.Next(-10, 10), 150, default, 1.5f);
                 }
 
                 for (int d = 0; d < 26; d++)
                 {
-                    Dust.NewDust(proj.position, proj.width, proj.height, 133, 0f + Main.rand.Next(-16, 16), 0f + Main.rand.Next(-16, 16), 150, default(Color), 1.5f);
+                    Dust.NewDust(proj.position, proj.width, proj.height, 133, 0f + Main.rand.Next(-16, 16), 0f + Main.rand.Next(-16, 16), 150, default, 1.5f);
                 }
                 for (int d = 0; d < 30; d++)
                 {
-                    Dust.NewDust(proj.position, proj.width, proj.height, 7, 0f + Main.rand.Next(-13, 13), 0f + Main.rand.Next(-13, 13), 150, default(Color), 1.5f);
+                    Dust.NewDust(proj.position, proj.width, proj.height, 7, 0f + Main.rand.Next(-13, 13), 0f + Main.rand.Next(-13, 13), 150, default, 1.5f);
                 }
                 for (int d = 0; d < 40; d++)
                 {
-                    Dust.NewDust(proj.position, proj.width, proj.height, 269, 0f + Main.rand.Next(-13, 13), 0f + Main.rand.Next(-13, 13), 150, default(Color), 1.5f);
+                    Dust.NewDust(proj.position, proj.width, proj.height, 269, 0f + Main.rand.Next(-13, 13), 0f + Main.rand.Next(-13, 13), 150, default, 1.5f);
                 }
                 for (int d = 0; d < 50; d++)
                 {
-                    Dust.NewDust(proj.position, proj.width, proj.height, 78, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1.5f);
+                    Dust.NewDust(proj.position, proj.width, proj.height, 78, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default, 1.5f);
                 }
 
                 // Play explosion sound
@@ -1347,34 +1362,34 @@ namespace StarsAbove
                 // Smoke Dust spawn
                 for (int i = 0; i < 70; i++)
                 {
-                    int dustIndex = Dust.NewDust(new Vector2(proj.position.X, proj.position.Y), proj.width, proj.height, 31, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default(Color), 2f);
+                    int dustIndex = Dust.NewDust(new Vector2(proj.position.X, proj.position.Y), proj.width, proj.height, 31, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default, 2f);
                     Main.dust[dustIndex].velocity *= 1.4f;
                 }
                 // Fire Dust spawn
                 for (int i = 0; i < 80; i++)
                 {
-                    int dustIndex = Dust.NewDust(new Vector2(proj.position.X, proj.position.Y), proj.width, proj.height, 6, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default(Color), 3f);
+                    int dustIndex = Dust.NewDust(new Vector2(proj.position.X, proj.position.Y), proj.width, proj.height, 6, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default, 3f);
                     Main.dust[dustIndex].noGravity = true;
                     Main.dust[dustIndex].velocity *= 5f;
-                    dustIndex = Dust.NewDust(new Vector2(proj.position.X, proj.position.Y), proj.width, proj.height, 6, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default(Color), 2f);
+                    dustIndex = Dust.NewDust(new Vector2(proj.position.X, proj.position.Y), proj.width, proj.height, 6, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default, 2f);
                     Main.dust[dustIndex].velocity *= 3f;
                 }
                 // Large Smoke Gore spawn
                 for (int g = 0; g < 4; g++)
                 {
-                    int goreIndex = Gore.NewGore(null, new Vector2(proj.position.X + (float)(proj.width / 2) - 24f, proj.position.Y + (float)(proj.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                    int goreIndex = Gore.NewGore(null, new Vector2(proj.position.X + proj.width / 2 - 24f, proj.position.Y + proj.height / 2 - 24f), default, Main.rand.Next(61, 64), 1f);
                     Main.gore[goreIndex].scale = 1.5f;
                     Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
                     Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
-                    goreIndex = Gore.NewGore(null, new Vector2(proj.position.X + (float)(proj.width / 2) - 24f, proj.position.Y + (float)(proj.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                    goreIndex = Gore.NewGore(null, new Vector2(proj.position.X + proj.width / 2 - 24f, proj.position.Y + proj.height / 2 - 24f), default, Main.rand.Next(61, 64), 1f);
                     Main.gore[goreIndex].scale = 1.5f;
                     Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
                     Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
-                    goreIndex = Gore.NewGore(null, new Vector2(proj.position.X + (float)(proj.width / 2) - 24f, proj.position.Y + (float)(proj.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                    goreIndex = Gore.NewGore(null, new Vector2(proj.position.X + proj.width / 2 - 24f, proj.position.Y + proj.height / 2 - 24f), default, Main.rand.Next(61, 64), 1f);
                     Main.gore[goreIndex].scale = 1.5f;
                     Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
                     Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
-                    goreIndex = Gore.NewGore(null, new Vector2(proj.position.X + (float)(proj.width / 2) - 24f, proj.position.Y + (float)(proj.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                    goreIndex = Gore.NewGore(null, new Vector2(proj.position.X + proj.width / 2 - 24f, proj.position.Y + proj.height / 2 - 24f), default, Main.rand.Next(61, 64), 1f);
                     Main.gore[goreIndex].scale = 1.5f;
                     Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
                     Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
@@ -1383,7 +1398,7 @@ namespace StarsAbove
             }
             if (proj.type == ProjectileType<DrachenlanceProjectile>())
             {
-                if (Player.HasBuff(BuffType<Buffs.BloodOfTheDragon>()))
+                if (Player.HasBuff(BuffType<BloodOfTheDragon>()))
                 {
                     //Main.LocalPlayer.velocity = Main.LocalPlayer.velocity * -1;
                     for (int d = 0; d < 15; d++)
@@ -1393,7 +1408,7 @@ namespace StarsAbove
 
 
                 }
-                if (Main.LocalPlayer.HasBuff(BuffType<Buffs.LifeOfTheDragon>()))
+                if (Main.LocalPlayer.HasBuff(BuffType<LifeOfTheDragon>()))
                 {
                     //Main.LocalPlayer.velocity = Main.LocalPlayer.velocity * -1;
                     //Main.LocalPlayer.statLife += 50;
@@ -1418,10 +1433,10 @@ namespace StarsAbove
             if (proj.type == ProjectileType<ApalistikProjectile>() || proj.type == ProjectileType<ApalistikUpgradedProjectile>())
             {
 
-                target.AddBuff(BuffType<Buffs.Riptide>(), 240);
+                target.AddBuff(BuffType<Riptide>(), 240);
 
 
-                if (target.HasBuff(BuffType<Buffs.OceanCulling>()))
+                if (target.HasBuff(BuffType<OceanCulling>()))
                 {
                     for (int i = 0; i < 5; i++)
                     {
@@ -1430,7 +1445,7 @@ namespace StarsAbove
                         Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center, vel, ProjectileType<Bubble>(), damageDone / 8, 3, Player.whoAmI, 0, 1);
                     }
 
-                    int index = target.FindBuffIndex(BuffType<Buffs.OceanCulling>());
+                    int index = target.FindBuffIndex(BuffType<OceanCulling>());
                     if (index > -1)
                     {
                         target.DelBuff(index);
@@ -1439,7 +1454,7 @@ namespace StarsAbove
             }
             if (proj.type == ProjectileType<UltimaPlanet1>() || proj.type == ProjectileType<UltimaPlanet2>() || proj.type == ProjectileType<UltimaPlanet3>() || proj.type == ProjectileType<UltimaPlanet4>() || proj.type == ProjectileType<UltimaPlanet5>())
             {
-                Player.AddBuff(BuffType<Buffs.UniversalManipulation>(), 720);
+                Player.AddBuff(BuffType<UniversalManipulation>(), 720);
 
                 for (int i = 0; i < 3; i++)
                 {
@@ -1451,14 +1466,14 @@ namespace StarsAbove
             }
             if (proj.type == ProjectileType<UltimaSwing1>())
             {
-                if (Player.HasBuff(BuffType<Buffs.UniversalManipulation>()))
+                if (Player.HasBuff(BuffType<UniversalManipulation>()))
                 {
                     int index = Player.FindBuffIndex(BuffType<UniversalManipulation>());
                     if (index > -1)
                     {
                         Player.DelBuff(index);
                     }
-                    Player.AddBuff(BuffType<Buffs.CelestialCacophony>(), 720);
+                    Player.AddBuff(BuffType<CelestialCacophony>(), 720);
                 }
                 //Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center.X, target.Center.Y, 0, 0, ProjectileType<UltimaFollowUp>(), 0, 0, Player.whoAmI, 0f);
             }
@@ -1475,7 +1490,7 @@ namespace StarsAbove
             }
             if (proj.type == ProjectileType<PurpleStarBit>())
             {
-                target.AddBuff(BuffType<Buffs.Starblight>(), 240);
+                target.AddBuff(BuffType<Starblight>(), 240);
 
             }
             if (proj.type == ProjectileType<PhantomInTheMirrorProjectile>())
@@ -1486,13 +1501,13 @@ namespace StarsAbove
             }
             if (proj.type == ProjectileType<BuryTheLightSlash>())
             {
-               
+
 
             }
         }
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Projectile, consider using ModifyHitNPC instead */
         {
-            if (target.HasBuff(BuffType<Buffs.IrysGaze>()))
+            if (target.HasBuff(BuffType<IrysGaze>()))
             {
                 modifiers.FlatBonusDamage += 50;
                 if (proj.minion)
@@ -1515,8 +1530,8 @@ namespace StarsAbove
 
                 }
             }
-            
-            
+
+
             if (proj.type == ProjectileType<HawkmoonRound>())
             {
                 modifiers.SetCrit();
@@ -1568,46 +1583,46 @@ namespace StarsAbove
             }
             if (proj.type == ProjectileType<SteelTempestSwing4>())
             {
-                if (target.HasBuff(BuffType<Buffs.MortalWounds>()))
+                if (target.HasBuff(BuffType<MortalWounds>()))
                 {
                     modifiers.SourceDamage *= 10;
                     modifiers.SetCrit();
                 }
             }
 
-           
+
             if (proj.type == ProjectileType<WhisperRound>())
             {
                 modifiers.CritDamage /= 2;  //remove vanilla 2x bonus
                 modifiers.CritDamage += 15f; //crank that baby up
 
             }
-           
-            
+
+
             if (proj.type == ProjectileType<TakonomiconLaser>())
             {
-               modifiers.SourceDamage /= 3;
+                modifiers.SourceDamage /= 3;
                 takodachiGauge += 3;
 
 
             }
             if (proj.type == ProjectileType<TwinStarLaser1>() || proj.type == ProjectileType<TwinStarLaser2>())
             {
-                
+
                 if (Player.statMana > 250)
                 {
                     modifiers.SourceDamage += 1.5f;
                 }
-               modifiers.SourceDamage.Flat += Player.statManaMax2 / 8;
+                modifiers.SourceDamage.Flat += Player.statManaMax2 / 8;
 
             }
-            
+
             if (proj.type == ProjectileType<IzanagiRound>())
             {
                 if (edgeHoned)
                 {
-                   modifiers.SourceDamage/= 2;  //remove vanilla 2x bonus
-                   modifiers.SourceDamage += 5f; //that's a lot of damage
+                    modifiers.SourceDamage /= 2;  //remove vanilla 2x bonus
+                    modifiers.SourceDamage += 5f; //that's a lot of damage
                     if (Player.GetModPlayer<StarsAbovePlayer>().MeleeAspect != 2)
                     {
                         Player.statMana += 100;
@@ -1631,9 +1646,9 @@ namespace StarsAbove
                 if (savedHullwroughtShot >= 5)
                 {
                     modifiers.SetCrit();
-                    target.AddBuff(BuffType<Buffs.Stun>(), 20);
+                    target.AddBuff(BuffType<Stun>(), 20);
                 }
-               modifiers.SourceDamage.Flat += savedHullwroughtShot * 180;
+                modifiers.SourceDamage.Flat += savedHullwroughtShot * 180;
 
 
             }
@@ -1641,14 +1656,14 @@ namespace StarsAbove
             {
                 if (Player.statLife < Player.statLifeMax2)
                 {
-                   modifiers.CritDamage *= -(Player.statLife / Player.statLifeMax2) + 1;
+                    modifiers.CritDamage *= -(Player.statLife / Player.statLifeMax2) + 1;
                 }
 
 
 
             }
 
-            
+
             if (proj.type == ProjectileType<CarianSwingE1>() || proj.type == ProjectileType<CarianSwingE2>())
             {
 
@@ -1656,10 +1671,10 @@ namespace StarsAbove
 
 
             }
-            
+
             if (proj.type == ProjectileType<CosmicDestroyerRound2>())
             {
-                if (target.life < (target.lifeMax / 2))
+                if (target.life < target.lifeMax / 2)
                 {
                     modifiers.SetCrit();
                 }
@@ -1668,10 +1683,10 @@ namespace StarsAbove
             }
             if (proj.type == ProjectileType<SkyStrikerRailgunRound>())
             {
-                
+
                 modifiers.CritDamage += 2f;
-                   
-               
+
+
 
 
             }
@@ -1680,7 +1695,7 @@ namespace StarsAbove
                 modifiers.CritDamage.Flat += 50;
 
             }
-            
+
             if (proj.type == ProjectileType<AmiyaSwingE1>() || proj.type == ProjectileType<AmiyaSwingE2>())
             {
                 modifiers.SetCrit();
@@ -1688,11 +1703,11 @@ namespace StarsAbove
                 //target.AddBuff(BuffType<Buffs.Stun>(), 120);
 
             }
-            
+
             if (proj.type == ProjectileType<OutbreakRound>())
             {
 
-                if (target.HasBuff(BuffType<Buffs.NanitePlague>()))
+                if (target.HasBuff(BuffType<NanitePlague>()))
                 {
                     target.GetGlobalNPC<StarsAboveGlobalNPC>().NanitePlagueLevel++;
                     modifiers.SourceDamage.Flat += target.GetGlobalNPC<StarsAboveGlobalNPC>().NanitePlagueLevel;
@@ -1703,7 +1718,7 @@ namespace StarsAbove
                 }
                 else
                 {
-                    target.AddBuff(BuffType<Buffs.NanitePlague>(), 360);
+                    target.AddBuff(BuffType<NanitePlague>(), 360);
 
 
                 }
@@ -1711,7 +1726,7 @@ namespace StarsAbove
             }
             if (proj.type == ProjectileType<NaganadelProjectileFinal1>())
             {
-                modifiers.SourceDamage/= 2;
+                modifiers.SourceDamage /= 2;
                 for (int d = 0; d < 15; d++)
                 {
                     Dust.NewDust(target.position, target.width, target.height, 172, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 1.5f);
@@ -1723,7 +1738,7 @@ namespace StarsAbove
 
                 modifiers.CritDamage /= 2;  //remove vanilla 2x bonus
                 modifiers.CritDamage += 6f; //crank that baby up
-                
+
             }
             if (proj.type == ProjectileType<NaganadelProjectileFinal3>())
             {
@@ -1734,19 +1749,19 @@ namespace StarsAbove
             }
             if (proj.type == ProjectileType<NaganadelProjectileFinal5>())
             {
-                
+
                 modifiers.CritDamage /= 2;  //remove vanilla 2x bonus
                 modifiers.CritDamage += 3f; //crank that baby up
 
             }
-            
-           
+
+
             if (proj.type == ProjectileType<ButterflyProjectile>())
             {
                 if (target.HasBuff(BuffID.Confused))
                 {
 
-                   modifiers.SourceDamage+= 12;
+                    modifiers.SourceDamage += 12;
 
                 }
                 target.AddBuff(BuffID.Confused, 340);
@@ -1756,7 +1771,7 @@ namespace StarsAbove
             {
                 if (target.HasBuff(BuffID.Frostburn))
                 {
-                    modifiers.SourceDamage+= 50;
+                    modifiers.SourceDamage += 50;
                     modifiers.SetCrit();
                     int index = target.FindBuffIndex(BuffID.Frostburn);
                     if (index > -1)
@@ -1769,10 +1784,10 @@ namespace StarsAbove
                     // Fire Dust spawn
                     for (int i = 0; i < 20; i++)
                     {
-                        int dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 6, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default(Color), 3f);
+                        int dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 6, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default, 3f);
                         Main.dust[dustIndex].noGravity = true;
                         Main.dust[dustIndex].velocity *= 5f;
-                        dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 6, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default(Color), 2f);
+                        dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 6, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default, 2f);
                         Main.dust[dustIndex].velocity *= 3f;
                     }
                     target.AddBuff(BuffID.OnFire, 360);
@@ -1790,26 +1805,26 @@ namespace StarsAbove
                 // Smoke Dust spawn
                 for (int i = 0; i < 10; i++)
                 {
-                    int dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 31, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default(Color), 2f);
+                    int dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 31, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default, 2f);
                     Main.dust[dustIndex].velocity *= 1.4f;
                 }
 
                 // Large Smoke Gore spawn
                 for (int g = 0; g < 2; g++)
                 {
-                    int goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                    int goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
                     Main.gore[goreIndex].scale = 1.5f;
                     Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
                     Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
-                    goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                    goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
                     Main.gore[goreIndex].scale = 1.5f;
                     Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
                     Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
-                    goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                    goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
                     Main.gore[goreIndex].scale = 1.5f;
                     Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
                     Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
-                    goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                    goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
                     Main.gore[goreIndex].scale = 1.5f;
                     Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
                     Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
@@ -1819,7 +1834,7 @@ namespace StarsAbove
             {
                 if (target.HasBuff(BuffID.OnFire))
                 {
-                   modifiers.SourceDamage+= 50;
+                    modifiers.SourceDamage += 50;
                     modifiers.SetCrit();
                     int index = target.FindBuffIndex(BuffID.OnFire);
                     if (index > -1)
@@ -1831,10 +1846,10 @@ namespace StarsAbove
                 {
                     for (int i = 0; i < 20; i++)
                     {
-                        int dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 20, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default(Color), 3f);
+                        int dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 20, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default, 3f);
                         Main.dust[dustIndex].noGravity = true;
                         Main.dust[dustIndex].velocity *= 5f;
-                        dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 20, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default(Color), 2f);
+                        dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 20, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default, 2f);
                         Main.dust[dustIndex].velocity *= 3f;
                     }
                     target.AddBuff(BuffID.Frostburn, 360);
@@ -1851,7 +1866,7 @@ namespace StarsAbove
                 // Smoke Dust spawn
                 for (int i = 0; i < 10; i++)
                 {
-                    int dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 31, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default(Color), 2f);
+                    int dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 31, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default, 2f);
                     Main.dust[dustIndex].velocity *= 1.4f;
                 }
                 // Fire Dust spawn
@@ -1859,19 +1874,19 @@ namespace StarsAbove
                 // Large Smoke Gore spawn
                 for (int g = 0; g < 2; g++)
                 {
-                    int goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                    int goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
                     Main.gore[goreIndex].scale = 1.5f;
                     Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
                     Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
-                    goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                    goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
                     Main.gore[goreIndex].scale = 1.5f;
                     Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
                     Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
-                    goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                    goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
                     Main.gore[goreIndex].scale = 1.5f;
                     Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
                     Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
-                    goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                    goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
                     Main.gore[goreIndex].scale = 1.5f;
                     Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
                     Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
@@ -1887,7 +1902,7 @@ namespace StarsAbove
             if (proj.type == ProjectileType<RiptideBolt>())
             {
 
-                target.AddBuff(BuffType<Buffs.Riptide>(), 720);
+                target.AddBuff(BuffType<Riptide>(), 720);
 
             }
             if (proj.type == ProjectileType<IzanagiRound>())
@@ -1905,7 +1920,7 @@ namespace StarsAbove
             }
             if (proj.type == ProjectileType<Bubble>())
             {
-                if (target.HasBuff(BuffType<Buffs.Riptide>()))
+                if (target.HasBuff(BuffType<Riptide>()))
                 {
                     modifiers.SetCrit();
                 }
@@ -1998,7 +2013,7 @@ namespace StarsAbove
             {
                 if (Main.rand.Next(0, 101) <= 10)//
                 {
-                    target.AddBuff(BuffType<Buffs.OceanCulling>(), 240);
+                    target.AddBuff(BuffType<OceanCulling>(), 240);
                 }
 
             }
@@ -2019,12 +2034,12 @@ namespace StarsAbove
                 {
                     if (target.HasBuff(BuffType<GreenPaint>()))
                     {
-                       modifiers.SourceDamage/= 3;
+                        modifiers.SourceDamage /= 3;
 
                     }
                     else
                     {
-                       modifiers.SourceDamage/= 2;
+                        modifiers.SourceDamage /= 2;
 
                     }
                 }
@@ -2042,12 +2057,12 @@ namespace StarsAbove
                 {
                     if (target.HasBuff(BuffType<BluePaint>()))
                     {
-                       modifiers.SourceDamage/= 3;
+                        modifiers.SourceDamage /= 3;
 
                     }
                     else
                     {
-                       modifiers.SourceDamage/= 2;
+                        modifiers.SourceDamage /= 2;
 
                     }
                 }
@@ -2064,12 +2079,12 @@ namespace StarsAbove
                 {
                     if (target.HasBuff(BuffType<PurplePaint>()))
                     {
-                       modifiers.SourceDamage/= 3;
+                        modifiers.SourceDamage /= 3;
 
                     }
                     else
                     {
-                       modifiers.SourceDamage/= 2;
+                        modifiers.SourceDamage /= 2;
 
                     }
                 }
@@ -2086,12 +2101,12 @@ namespace StarsAbove
                 {
                     if (target.HasBuff(BuffType<RedPaint>()))
                     {
-                       modifiers.SourceDamage/= 3;
+                        modifiers.SourceDamage /= 3;
 
                     }
                     else
                     {
-                       modifiers.SourceDamage/= 2;
+                        modifiers.SourceDamage /= 2;
 
                     }
                 }
@@ -2108,12 +2123,12 @@ namespace StarsAbove
                 {
                     if (target.HasBuff(BuffType<OrangePaint>()))
                     {
-                       modifiers.SourceDamage/= 3;
+                        modifiers.SourceDamage /= 3;
 
                     }
                     else
                     {
-                       modifiers.SourceDamage/= 2;
+                        modifiers.SourceDamage /= 2;
 
                     }
 
@@ -2131,19 +2146,19 @@ namespace StarsAbove
                 {
                     if (target.HasBuff(BuffType<YellowPaint>()))
                     {
-                       modifiers.SourceDamage/= 3;
+                        modifiers.SourceDamage /= 3;
 
                     }
                     else
                     {
-                       modifiers.SourceDamage/= 2;
+                        modifiers.SourceDamage /= 2;
 
                     }
                 }
             }
             if (proj.minion && proj.type != ProjectileType<ApalistikProjectile>() && proj.type != ProjectileType<ApalistikUpgradedProjectile>())
             {
-                if (target.HasBuff(BuffType<Buffs.Riptide>()))
+                if (target.HasBuff(BuffType<Riptide>()))
                 {
 
                     modifiers.SourceDamage += 1.3f;
@@ -2154,10 +2169,10 @@ namespace StarsAbove
                     }
                     for (int d = 0; d < 28; d++)
                     {
-                        Dust.NewDust(target.Center, 0, 0, DustType<Dusts.bubble>(), 0f + Main.rand.Next(-25, 25), 0f + Main.rand.Next(-15, 15), 0, default(Color), 1.5f);
+                        Dust.NewDust(target.Center, 0, 0, DustType<bubble>(), 0f + Main.rand.Next(-25, 25), 0f + Main.rand.Next(-15, 15), 0, default(Color), 1.5f);
                     }
 
-                    int index = target.FindBuffIndex(BuffType<Buffs.Riptide>());
+                    int index = target.FindBuffIndex(BuffType<Riptide>());
                     if (index > -1)
                     {
                         target.DelBuff(index);
@@ -2167,39 +2182,39 @@ namespace StarsAbove
             }
             if (proj.type == ProjectileType<ApalistikProjectile>() || proj.type == ProjectileType<ApalistikUpgradedProjectile>())
             {
-                if (target.HasBuff(BuffType<Buffs.OceanCulling>()))
+                if (target.HasBuff(BuffType<OceanCulling>()))
                 {
-                    modifiers.SourceDamage += 1.5f; 
+                    modifiers.SourceDamage += 1.5f;
                 }
             }
             if (proj.type == ProjectileType<UltimaPlanet1>() || proj.type == ProjectileType<UltimaPlanet2>() || proj.type == ProjectileType<UltimaPlanet3>() || proj.type == ProjectileType<UltimaPlanet4>() || proj.type == ProjectileType<UltimaPlanet5>())
             {
                 modifiers.SetCrit();
-                
+
             }
-           
+
             if (proj.type == ProjectileType<tartagliaSwing>())
             {
-                if (target.HasBuff(BuffType<Buffs.Riptide>()))
+                if (target.HasBuff(BuffType<Riptide>()))
                 {
-                   modifiers.SourceDamage.Flat += 90;
+                    modifiers.SourceDamage.Flat += 90;
                 }
 
             }
             if (proj.type == ProjectileType<Starchild>())
             {
-               modifiers.SourceDamage.Flat += Player.statDefense;
+                modifiers.SourceDamage.Flat += Player.statDefense;
 
             }
             if (proj.type == ProjectileType<ClaimhBurst>())
             {
-               modifiers.SetCrit();
-               modifiers.SourceDamage.Flat += (Player.statDefense * 20) + (radiance * 50);
+                modifiers.SetCrit();
+                modifiers.SourceDamage.Flat += Player.statDefense * 20 + radiance * 50;
 
             }
             if (proj.type == ProjectileType<YellowStarBit>())
             {
-                target.AddBuff(BuffType<Buffs.Stun>(), 60);
+                target.AddBuff(BuffType<Stun>(), 60);
 
             }
             if (proj.type == ProjectileType<GreenStarBit>())
@@ -2210,14 +2225,14 @@ namespace StarsAbove
                 }
 
             }
-            
+
             if (proj.type == ProjectileType<BloodstainedCrescent>())
             {
 
                 if (target.HasBuff(BuffID.Frostburn))
                 {
                     Player.statMana += 90;
-                    modifiers.SourceDamage+= 200;
+                    modifiers.SourceDamage += 200;
                     int index = target.FindBuffIndex(BuffID.Frostburn);
                     if (index > -1)
                     {
@@ -2230,13 +2245,13 @@ namespace StarsAbove
             }
             if (proj.type == ProjectileType<BuryTheLightSlash>())
             {
-                
+
             }
             if (proj.type == ProjectileType<BuryTheLightSlash2>())
             {
                 if (proj.owner == Player.whoAmI)
                 {
-                    if(!target.boss && target.CanBeChasedBy())
+                    if (!target.boss && target.CanBeChasedBy())
                     {
                         for (int d = 0; d < 26; d++)
                         {
@@ -2250,7 +2265,7 @@ namespace StarsAbove
                         modifiers.SourceDamage += 100f;
                         modifiers.FinalDamage.Flat += (int)(target.lifeMax * 0.1);
                     }
-                   
+
                 }
             }
 
@@ -2260,14 +2275,14 @@ namespace StarsAbove
                 if (target.HasBuff(BuffID.OnFire))
                 {
                     target.AddBuff(BuffID.OnFire, 640);
-                   modifiers.SourceDamage+= 5;
+                    modifiers.SourceDamage += 5;
 
                 }
                 target.AddBuff(BuffID.OnFire, 640);
 
                 if (aegisGauge >= 100)
                 {
-                   modifiers.SourceDamage*= 2;
+                    modifiers.SourceDamage *= 2;
                     modifiers.SetCrit();
                     aegisGauge = 0;
                     SoundEngine.PlaySound(StarsAboveAudio.SFX_GunbladeImpact, Player.Center);
@@ -2288,34 +2303,34 @@ namespace StarsAbove
                     // Smoke Dust spawn
                     for (int i = 0; i < 70; i++)
                     {
-                        int dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 31, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default(Color), 2f);
+                        int dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 31, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default, 2f);
                         Main.dust[dustIndex].velocity *= 1.4f;
                     }
                     // Fire Dust spawn
                     for (int i = 0; i < 80; i++)
                     {
-                        int dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 6, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default(Color), 3f);
+                        int dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 6, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default, 3f);
                         Main.dust[dustIndex].noGravity = true;
                         Main.dust[dustIndex].velocity *= 5f;
-                        dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 6, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default(Color), 2f);
+                        dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 6, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default, 2f);
                         Main.dust[dustIndex].velocity *= 3f;
                     }
                     // Large Smoke Gore spawn
                     for (int g = 0; g < 4; g++)
                     {
-                        int goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                        int goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
                         Main.gore[goreIndex].scale = 1.5f;
                         Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
                         Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
-                        goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                        goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
                         Main.gore[goreIndex].scale = 1.5f;
                         Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
                         Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
-                        goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                        goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
                         Main.gore[goreIndex].scale = 1.5f;
                         Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
                         Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
-                        goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                        goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
                         Main.gore[goreIndex].scale = 1.5f;
                         Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
                         Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
@@ -2340,10 +2355,10 @@ namespace StarsAbove
             {
                 Player.AddBuff(BuffType<GenocideBuff>(), 240);
             }
-            
+
 
         }
-       
+
         public override void PostUpdateRunSpeeds()
         {
             if (BrilliantSpectrumHeld)
@@ -2504,7 +2519,7 @@ namespace StarsAbove
             //foreach (Player castPlayer in Main.player)
             //{ 
             Suistrume();
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.ButterflyTrance>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<ButterflyTrance>()))
             {
 
                 // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
@@ -2512,13 +2527,13 @@ namespace StarsAbove
                 int playerWidth = Main.LocalPlayer.width;
                 int playerHeight = Main.LocalPlayer.height;
 
-                Dust.NewDust(position, playerWidth, playerHeight, 164, 0f, 0f, 150, default(Color), 1.5f);
+                Dust.NewDust(position, playerWidth, playerHeight, 164, 0f, 0f, 150, default, 1.5f);
 
 
 
 
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.ButterflyTrance>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<ButterflyTrance>()))
             {
 
                 // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
@@ -2526,14 +2541,14 @@ namespace StarsAbove
                 int playerWidth = Main.LocalPlayer.width;
                 int playerHeight = Main.LocalPlayer.height;
 
-                Dust.NewDust(position, playerWidth, playerHeight, 164, 0f, 0f, 150, default(Color), 1.5f);
+                Dust.NewDust(position, playerWidth, playerHeight, 164, 0f, 0f, 150, default, 1.5f);
 
 
 
 
             }
 
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.StellarListener>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<StellarListener>()))
             {
 
                 // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
@@ -2541,19 +2556,19 @@ namespace StarsAbove
                 int playerWidth = Main.LocalPlayer.width;
                 int playerHeight = Main.LocalPlayer.height;
 
-                Dust.NewDust(position, playerWidth, playerHeight, 206, 0f, 0f, 150, default(Color), 1.5f);
+                Dust.NewDust(position, playerWidth, playerHeight, 206, 0f, 0f, 150, default, 1.5f);
                 if (!(Player.velocity == Vector2.Zero))
                 {
                     if (Main.rand.NextBool(5))
                     {
-                        Dust.NewDust(Player.position, Player.width, Player.height, DustType<MusicNote>(), 0f + Main.rand.Next(-25, 25), 0f + Main.rand.Next(-25, 25), 150, default(Color), 1.5f);
+                        Dust.NewDust(Player.position, Player.width, Player.height, DustType<MusicNote>(), 0f + Main.rand.Next(-25, 25), 0f + Main.rand.Next(-25, 25), 150, default, 1.5f);
                     }
                 }
 
 
 
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.StellarPerformanceCooldown>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<StellarPerformanceCooldown>()))
             {
                 stellarPerformanceCooldown = true;
 
@@ -2564,7 +2579,7 @@ namespace StarsAbove
 
             }
 
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.BloodOfTheDragon>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<BloodOfTheDragon>()))
             {
 
                 // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
@@ -2573,7 +2588,7 @@ namespace StarsAbove
                 int playerHeight = Main.LocalPlayer.height;
                 for (int d = 0; d < 5; d++)
                 {
-                    Dust.NewDust(position, playerWidth, playerHeight, 206, 0f, 0f, 150, default(Color), 1.5f);
+                    Dust.NewDust(position, playerWidth, playerHeight, 206, 0f, 0f, 150, default, 1.5f);
                 }
 
 
@@ -2581,7 +2596,7 @@ namespace StarsAbove
             }
 
 
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.LifeOfTheDragon>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<LifeOfTheDragon>()))
             {
 
                 // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
@@ -2590,17 +2605,17 @@ namespace StarsAbove
                 int playerHeight = Main.LocalPlayer.height;
                 for (int d = 0; d < 5; d++)
                 {
-                    Dust.NewDust(position, playerWidth, playerHeight, 258, 0f, 0f, 150, default(Color), 1.5f);
+                    Dust.NewDust(position, playerWidth, playerHeight, 258, 0f, 0f, 150, default, 1.5f);
                 }
 
 
             }
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.LimitBreak>())
+                if (Player.buffType[i] == BuffType<LimitBreak>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
-                        Player.AddBuff(BuffType<Buffs.LimitBreakCooldown>(), 3600);
+                        Player.AddBuff(BuffType<LimitBreakCooldown>(), 3600);
 
 
                     }
@@ -2634,24 +2649,24 @@ namespace StarsAbove
                     }
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.CosmicConception>())
+                if (Player.buffType[i] == BuffType<CosmicConception>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
-                        Player.AddBuff(BuffType<Buffs.CosmicConceptionCooldown>(), 7200);
+                        Player.AddBuff(BuffType<CosmicConceptionCooldown>(), 7200);
 
 
                     }
                 }
 
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.Voidform>())
+                if (Player.buffType[i] == BuffType<Voidform>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
-                        Vector2 placement2 = new Vector2((Player.Center.X), Player.Center.Y);
+                        Vector2 placement2 = new Vector2(Player.Center.X, Player.Center.Y);
                         Projectile.NewProjectile(Player.GetSource_FromThis(), placement2.X, placement2.Y, 0, 0, ProjectileType<radiate>(), 0, 0f, 0);
-                        Player.AddBuff(BuffType<Buffs.CosmicRecoil>(), 60);
+                        Player.AddBuff(BuffType<CosmicRecoil>(), 60);
                         player.screenShakeTimerGlobal = 0;
                         for (int i2 = 0; i2 < 70; i2++)
                         {
@@ -2667,28 +2682,28 @@ namespace StarsAbove
                 }
 
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.WrathfulCeruleanFlame>())
+                if (Player.buffType[i] == BuffType<WrathfulCeruleanFlame>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
-                        Player.AddBuff(BuffType<Buffs.Burnout>(), 1200);
+                        Player.AddBuff(BuffType<Burnout>(), 1200);
 
 
                     }
                 }
 
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.Afterburner>())
+                if (Player.buffType[i] == BuffType<Afterburner>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
-                        Player.AddBuff(BuffType<Buffs.AfterburnerCooldown>(), 1500);
+                        Player.AddBuff(BuffType<AfterburnerCooldown>(), 1500);
 
 
                     }
                 }
 
-            if (Player.HasBuff(BuffType<Buffs.LimitBreak>()))
+            if (Player.HasBuff(BuffType<LimitBreak>()))
             {
                 Vector2 position = Main.LocalPlayer.position;
                 int playerWidth = Main.LocalPlayer.width;
@@ -2697,12 +2712,12 @@ namespace StarsAbove
                 for (int d = 0; d < 5; d++)
                 {
 
-                    Dust.NewDust(position, playerWidth, playerHeight, 206, 0f + Main.rand.Next(-2, 2), 0f + Main.rand.Next(-2, 2), 150, default(Color), 1.5f);
+                    Dust.NewDust(position, playerWidth, playerHeight, 206, 0f + Main.rand.Next(-2, 2), 0f + Main.rand.Next(-2, 2), 150, default, 1.5f);
 
                     Dust dust;
                     // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
 
-                    dust = Main.dust[Terraria.Dust.NewDust(position, playerWidth, playerHeight, 206, 0f + Main.rand.Next(-2, 2), 0f + Main.rand.Next(-2, 2), 0, new Color(255, 255, 255), 1f)];
+                    dust = Main.dust[Dust.NewDust(position, playerWidth, playerHeight, 206, 0f + Main.rand.Next(-2, 2), 0f + Main.rand.Next(-2, 2), 0, new Color(255, 255, 255), 1f)];
                     dust.shader = GameShaders.Armor.GetSecondaryShader(81, Main.LocalPlayer);
 
                 }
@@ -2712,13 +2727,13 @@ namespace StarsAbove
                     Player.statLife -= 2;
                     if (Player.statLife <= 0)
                     {
-                        if (!Main.LocalPlayer.HasBuff(BuffType<Buffs.LivingDead>()))
+                        if (!Main.LocalPlayer.HasBuff(BuffType<LivingDead>()))
                         {
                             for (int d = 0; d < 50; d++)
                             {
                                 Dust dust;
-                                Dust.NewDust(position, playerWidth, playerHeight, 106, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 1.5f);
-                                dust = Main.dust[Terraria.Dust.NewDust(position, playerWidth, playerHeight, 206, 0f + Main.rand.Next(-2, 2), 0f + Main.rand.Next(-2, 2), 0, new Color(255, 255, 255), 1f)];
+                                Dust.NewDust(position, playerWidth, playerHeight, 106, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default, 1.5f);
+                                dust = Main.dust[Dust.NewDust(position, playerWidth, playerHeight, 206, 0f + Main.rand.Next(-2, 2), 0f + Main.rand.Next(-2, 2), 0, new Color(255, 255, 255), 1f)];
                                 dust.shader = GameShaders.Armor.GetSecondaryShader(81, Player);
 
                             }
@@ -2735,7 +2750,7 @@ namespace StarsAbove
 
             }
 
-            if (Player.HasBuff(BuffType<Buffs.FlashOfEternity>()) && Player.whoAmI == Main.myPlayer)
+            if (Player.HasBuff(BuffType<FlashOfEternity>()) && Player.whoAmI == Main.myPlayer)
             {
                 for (int i = 0; i < 2; i++)
                 {
@@ -2747,7 +2762,7 @@ namespace StarsAbove
                             Main.rand.Next(-6, 6) * (0.003f * 200) - 10);
                         Dust d = Main.dust[Dust.NewDust(
                             Player.Center + vector, 1, 1,
-                            DustType<Dusts.Butterfly>(), 0, 0, 255,
+                            DustType<Butterfly>(), 0, 0, 255,
                             new Color(1f, 1f, 1f), 1.5f)];
                         // d.shader = GameShaders.Armor.GetSecondaryShader(77, Main.LocalPlayer);
                         d.velocity = -vector / 16;
@@ -2761,7 +2776,7 @@ namespace StarsAbove
             }
 
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.EyeOfEuthymiaBuff>())
+                if (Player.buffType[i] == BuffType<EyeOfEuthymiaBuff>())
                 {
                     if (Player.buffTime[i] == 600)
                     {
@@ -2770,7 +2785,7 @@ namespace StarsAbove
                     }
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.CoreOfFlames>())
+                if (Player.buffType[i] == BuffType<CoreOfFlames>())
                 {
                     if (Player.buffTime[i] == 300)
                     {
@@ -2779,7 +2794,7 @@ namespace StarsAbove
                     }
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.BurningDesire.BoilingBloodBuff>())
+                if (Player.buffType[i] == BuffType<BoilingBloodBuff>())
                 {
                     if (Player.buffTime[i] == 300)
                     {
@@ -2788,7 +2803,7 @@ namespace StarsAbove
                     }
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.CoreOfFlamesCooldown>())
+                if (Player.buffType[i] == BuffType<CoreOfFlamesCooldown>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
@@ -2798,43 +2813,43 @@ namespace StarsAbove
                 }
 
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.SoulUnbound>())
+                if (Player.buffType[i] == BuffType<SoulUnbound>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
                         //Spawn the attacking projectile here.
-                        Vector2 placement2 = new Vector2((Player.Center.X), Player.Center.Y);
+                        Vector2 placement2 = new Vector2(Player.Center.X, Player.Center.Y);
                         Projectile.NewProjectile(Player.GetSource_FromThis(), placement2.X, placement2.Y, 0, 0, ProjectileType<radiateChaos>(), 0, 0f, 0);
                         Projectile.NewProjectile(Player.GetSource_FromThis(), placement2.X, placement2.Y, 0, 0, ProjectileType<UnforgottenBurst>(), soulUnboundDamage / 3, 0f, 0);
-                        Player.AddBuff(BuffType<Buffs.SoulUnboundCooldown>(), 1320);
+                        Player.AddBuff(BuffType<SoulUnboundCooldown>(), 1320);
                         Player.Teleport(soulUnboundLocation, 1, 0);
-                        NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float)Player.whoAmI, soulUnboundLocation.X, soulUnboundLocation.Y, 1, 0, 0);
+                        NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, Player.whoAmI, soulUnboundLocation.X, soulUnboundLocation.Y, 1, 0, 0);
                         soulUnboundActive = false;
                         soulUnboundDamage = 0;
                     }
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.SeabornWrath>())
+                if (Player.buffType[i] == BuffType<SeabornWrath>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
-                        Player.AddBuff(BuffType<Buffs.SeabornCooldown>(), 1800);//7
+                        Player.AddBuff(BuffType<SeabornCooldown>(), 1800);//7
 
                     }
                 }
 
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.BurningDesire.BoilingBloodBuff>())
+                if (Player.buffType[i] == BuffType<BoilingBloodBuff>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
-                        Player.AddBuff(BuffType<Buffs.BurningDesire.BoilingBloodCooldown>(), 1200);
+                        Player.AddBuff(BuffType<BoilingBloodCooldown>(), 1200);
 
 
                     }
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.VermillionDaemon.Retribution>())
+                if (Player.buffType[i] == BuffType<Retribution>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
@@ -2842,11 +2857,11 @@ namespace StarsAbove
                     }
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.ArtificeSirenBuff>())
+                if (Player.buffType[i] == BuffType<ArtificeSirenBuff>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
-                        Player.AddBuff(BuffType<Buffs.ArtificeSirenCooldown>(), 3600);//3600 is 1 min
+                        Player.AddBuff(BuffType<ArtificeSirenCooldown>(), 3600);//3600 is 1 min
                     }
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
@@ -2884,7 +2899,7 @@ namespace StarsAbove
                         else
                         {
                             CallOfTheVoid = 0;
-                            NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float)Player.whoAmI, AshenAmbitionOldPosition.X, AshenAmbitionOldPosition.Y, 1, 0, 0);
+                            NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, Player.whoAmI, AshenAmbitionOldPosition.X, AshenAmbitionOldPosition.Y, 1, 0, 0);
                         }
                         Player.Teleport(AshenAmbitionOldPosition, 1, 0);
 
@@ -2900,28 +2915,28 @@ namespace StarsAbove
                     }
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.CosmicDestroyer.MagitonOverheat>())
+                if (Player.buffType[i] == BuffType<MagitonOverheat>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
-                        Player.AddBuff(BuffType<Buffs.CosmicDestroyer.Overheated>(), 60);//7200 is 2 minutes
+                        Player.AddBuff(BuffType<Overheated>(), 60);//7200 is 2 minutes
                     }
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.TakodachiLaserBuff>())
+                if (Player.buffType[i] == BuffType<TakodachiLaserBuff>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
-                        Player.AddBuff(BuffType<Buffs.TakodachiLaserBuffCooldown>(), 3600);//3600 is 1 minute
+                        Player.AddBuff(BuffType<TakodachiLaserBuffCooldown>(), 3600);//3600 is 1 minute
                     }
                 }
 
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.StarshieldBuff>())
+                if (Player.buffType[i] == BuffType<StarshieldBuff>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
-                        Player.AddBuff(BuffType<Buffs.StarshieldCooldown>(), 1200);//
+                        Player.AddBuff(BuffType<StarshieldCooldown>(), 1200);//
                     }
                 }
 
@@ -2936,11 +2951,11 @@ namespace StarsAbove
                     }
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.BerserkerMode>())
+                if (Player.buffType[i] == BuffType<BerserkerMode>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
-                        Player.AddBuff(BuffType<Buffs.BerserkerModeCooldown>(), 1800);
+                        Player.AddBuff(BuffType<BerserkerModeCooldown>(), 1800);
 
                     }
                 }
@@ -2976,13 +2991,13 @@ namespace StarsAbove
 
                     for (int d = 0; d < 40; d++)
                     {
-                        Dust.NewDust(Player.position, Player.width, Player.height, 21, 0f + Main.rand.Next(-30, 30), 0f + Main.rand.Next(-30, 30), 150, default(Color), 1.5f);
+                        Dust.NewDust(Player.position, Player.width, Player.height, 21, 0f + Main.rand.Next(-30, 30), 0f + Main.rand.Next(-30, 30), 150, default, 1.5f);
                     }
                     for (int d = 0; d < 35; d++)
                     {
-                        Dust.NewDust(Player.position, Player.width, Player.height, 45, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 1.5f);
+                        Dust.NewDust(Player.position, Player.width, Player.height, 45, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default, 1.5f);
                     }
-                    Player.AddBuff(BuffType<Buffs.StellarPerformanceCooldown>(), 3600);
+                    Player.AddBuff(BuffType<StellarPerformanceCooldown>(), 3600);
 
                     stellarPerformanceEnding = true;
                     stellarPerformancePostPrep = false;
@@ -3018,7 +3033,7 @@ namespace StarsAbove
                     offset.X += (float)(Math.Sin(angle) * stellarPerformanceClosingIn);
                     offset.Y += (float)(Math.Cos(angle) * stellarPerformanceClosingIn);
 
-                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 45, Player.velocity, 200, default(Color), 0.7f);
+                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 45, Player.velocity, 200, default, 0.7f);
                     d.fadeIn = 1f;
                     d.noGravity = true;
                 }
@@ -3034,11 +3049,11 @@ namespace StarsAbove
                 {
                     for (int d = 0; d < 100; d++)
                     {
-                        Dust.NewDust(Player.position, Player.width, Player.height, 21, 0f + Main.rand.Next(-40, 40), 0f + Main.rand.Next(-40, 40), 150, default(Color), 1.5f);
+                        Dust.NewDust(Player.position, Player.width, Player.height, 21, 0f + Main.rand.Next(-40, 40), 0f + Main.rand.Next(-40, 40), 150, default, 1.5f);
                     }
                     for (int d = 0; d < 35; d++)
                     {
-                        Dust.NewDust(Player.position, Player.width, Player.height, 45, 0f + Main.rand.Next(-45, 45), 0f + Main.rand.Next(-45, 45), 150, default(Color), 1.5f);
+                        Dust.NewDust(Player.position, Player.width, Player.height, 45, 0f + Main.rand.Next(-45, 45), 0f + Main.rand.Next(-45, 45), 150, default, 1.5f);
                     }
                     stellarPerformancePulseRadius = 0;
                     stellarPerformancePostPrep = true;
@@ -3049,7 +3064,7 @@ namespace StarsAbove
             if (stellarPerformancePostPrep == true)
             {
                 stellarPerformanceDepletion++;
-                Player.AddBuff(BuffType<Buffs.StellarPerformance>(), 2);
+                Player.AddBuff(BuffType<StellarPerformance>(), 2);
                 if (stellarPerformancePulseRadius < 320)
                     stellarPerformancePulseRadius += 5.3f;
                 if (stellarPerformancePulseRadius >= 320 && stellarPerformancePulseRadius < 420)
@@ -3074,19 +3089,19 @@ namespace StarsAbove
                 }
                 if (Main.rand.NextBool(3))
                 {
-                    Dust.NewDust(Player.position, Player.width, Player.height, 45, 0f + Main.rand.Next(-30, 30), 0f + Main.rand.Next(-30, 30), 150, default(Color), 1.5f);
+                    Dust.NewDust(Player.position, Player.width, Player.height, 45, 0f + Main.rand.Next(-30, 30), 0f + Main.rand.Next(-30, 30), 150, default, 1.5f);
                 }
                 if (!(Player.velocity == Vector2.Zero))
                 {
                     if (Main.rand.NextBool(5))
                     {
-                        Dust.NewDust(Player.position, Player.width, Player.height, DustType<MusicNote>(), 0f + Main.rand.Next(-25, 25), 0f + Main.rand.Next(-25, 25), 150, default(Color), 1.5f);
+                        Dust.NewDust(Player.position, Player.width, Player.height, DustType<MusicNote>(), 0f + Main.rand.Next(-25, 25), 0f + Main.rand.Next(-25, 25), 150, default, 1.5f);
                     }
                 }
                 if (Main.rand.NextBool(2))
                 {
-                    Vector2 position = new Vector2(Player.position.X - (800 / 2), Player.position.Y - (800 / 2));
-                    Dust.NewDust(position, 800, 800, DustType<MusicNote>(), 0f + Main.rand.Next(-25, 25), 0f + Main.rand.Next(-25, 25), 150, default(Color), 1.5f);
+                    Vector2 position = new Vector2(Player.position.X - 800 / 2, Player.position.Y - 800 / 2);
+                    Dust.NewDust(position, 800, 800, DustType<MusicNote>(), 0f + Main.rand.Next(-25, 25), 0f + Main.rand.Next(-25, 25), 150, default, 1.5f);
                 }
 
                 if (stellarPerformanceIndicator == true)
@@ -3098,7 +3113,7 @@ namespace StarsAbove
                         offset.X += (float)(Math.Sin(angle) * 520f);
                         offset.Y += (float)(Math.Cos(angle) * 520f);
 
-                        Dust d = Dust.NewDustPerfect(Player.Center + offset, 45, Player.velocity, 200, default(Color), 0.7f);
+                        Dust d = Dust.NewDustPerfect(Player.Center + offset, 45, Player.velocity, 200, default, 0.7f);
                         d.fadeIn = 1f;
                         d.noGravity = true;
                     }
@@ -3110,7 +3125,7 @@ namespace StarsAbove
                     offset.X += (float)(Math.Sin(angle) * stellarPerformancePulseRadius);
                     offset.Y += (float)(Math.Cos(angle) * stellarPerformancePulseRadius);
 
-                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 45, Player.velocity, 200, default(Color), 0.7f);
+                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 45, Player.velocity, 200, default, 0.7f);
                     d.fadeIn = 0.2f;
                     d.noGravity = true;
                 }
@@ -3124,7 +3139,7 @@ namespace StarsAbove
             }
             if (stellarPerformancePostPrep == true)
             {
-                Player.AddBuff(BuffType<Buffs.StellarPerformance>(), 1);
+                Player.AddBuff(BuffType<StellarPerformance>(), 1);
 
 
             }
@@ -3135,7 +3150,7 @@ namespace StarsAbove
                 {
                     stellarPerformanceSoundInstance?.Stop();
                     SoundEngine.PlaySound(StarsAboveAudio.SFX_SuistrumeFail, Player.Center);
-                    Player.AddBuff(BuffType<Buffs.StellarPerformanceCooldown>(), 7200);
+                    Player.AddBuff(BuffType<StellarPerformanceCooldown>(), 7200);
 
                     stellarPerformanceActive = false;
                     stellarPerformanceEnding = true;
@@ -3189,7 +3204,7 @@ namespace StarsAbove
                 Player.statMana = Player.statManaMax2;
                 stellarPerformanceEnding = false;
             }
-            
+
         }
 
         private void applySuistrumeBuff()
@@ -3210,7 +3225,7 @@ namespace StarsAbove
                                 otherPlayer.position.Y >= buffPlayer.position.Y - 500 &&
                                 otherPlayer.position.Y <= buffPlayer.position.Y + 500)
                         {
-                            otherPlayer.AddBuff(BuffType<Buffs.StellarListener>(), 2);
+                            otherPlayer.AddBuff(BuffType<StellarListener>(), 2);
                         }
                     }
                 }
@@ -3242,8 +3257,8 @@ namespace StarsAbove
                     PerformanceResourceCurrent -= info.Damage;
                 }
             }
-            
-            if(DraggedBelowHeld)
+
+            if (DraggedBelowHeld)
             {
                 DraggedBelowCorruption++;
             }
@@ -3255,7 +3270,7 @@ namespace StarsAbove
             {
                 Player.ClearBuff(BuffType<JetstreamBloodshed>());
             }
-            
+
             if (Player.HasBuff(BuffType<Bedazzled>()))//If the player has a Prismic...
             {
                 CatalystPrismicHP -= (int)(info.Damage * 0.8);//The Prismic absorbs 80% of the damage taken.
@@ -3264,7 +3279,7 @@ namespace StarsAbove
                 for (int i = 0; i < 100; i++)
                 {
                     Vector2 position = Vector2.Lerp(Player.Center, CatalystPrismicPosition, (float)i / 100);
-                    Dust d = Dust.NewDustPerfect(position, DustID.PurpleCrystalShard, null, 240, default(Color), 0.6f);
+                    Dust d = Dust.NewDustPerfect(position, DustID.PurpleCrystalShard, null, 240, default, 0.6f);
                     d.fadeIn = 0.3f;
                     d.noLight = true;
                     d.noGravity = true;
@@ -3284,7 +3299,7 @@ namespace StarsAbove
         }
         public override bool ImmuneTo(PlayerDeathReason damageSource, int cooldownCounter, bool dodgeable)
         {
-            
+
             return base.ImmuneTo(damageSource, cooldownCounter, dodgeable);
         }
         public override bool FreeDodge(Player.HurtInfo info)
@@ -3304,17 +3319,17 @@ namespace StarsAbove
                 int adjustedDamage = 0;
                 adjustedDamage = info.SourceDamage / 3;
                 refractionGauge += adjustedDamage;
-                if(Player.HasBuff<SpectrumBlazeAffinity>())
+                if (Player.HasBuff<SpectrumBlazeAffinity>())
                 {
                     refractionGauge += 3;
                 }
                 float dustAmount = 26f;
                 if (refractionGauge < 20)
                 {
-                    for (int i = 0; (float)i < dustAmount; i++)
+                    for (int i = 0; i < dustAmount; i++)
                     {
                         Vector2 spinningpoint5 = Vector2.UnitX * 0f;
-                        spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
                         spinningpoint5 = spinningpoint5.RotatedBy(Player.velocity.ToRotation());
                         int dust = Dust.NewDust(Player.Center, 0, 0, DustID.GemTopaz);
                         Main.dust[dust].scale = 2f;
@@ -3325,10 +3340,10 @@ namespace StarsAbove
                 }
                 if (refractionGauge >= 20 && refractionGauge < 90)
                 {
-                    for (int i = 0; (float)i < dustAmount; i++)
+                    for (int i = 0; i < dustAmount; i++)
                     {
                         Vector2 spinningpoint5 = Vector2.UnitX * 0f;
-                        spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
                         spinningpoint5 = spinningpoint5.RotatedBy(Player.velocity.ToRotation());
                         int dust = Dust.NewDust(Player.Center, 0, 0, DustID.GemDiamond);
                         Main.dust[dust].color = new Color(51, 255, 147);
@@ -3340,10 +3355,10 @@ namespace StarsAbove
                 }
                 if (refractionGauge >= 90)
                 {
-                    for (int i = 0; (float)i < dustAmount; i++)
+                    for (int i = 0; i < dustAmount; i++)
                     {
                         Vector2 spinningpoint5 = Vector2.UnitX * 0f;
-                        spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
                         spinningpoint5 = spinningpoint5.RotatedBy(Player.velocity.ToRotation());
                         int dust = Dust.NewDust(Player.Center, 0, 0, DustID.GemSapphire);
                         Main.dust[dust].scale = 2f;
@@ -3365,13 +3380,13 @@ namespace StarsAbove
                     Player.immuneTime = 30;
                     return true;
                 }
-                
+
             }
             return base.FreeDodge(info);
         }
         public override bool ConsumableDodge(Player.HurtInfo info)
         {
-              
+
             if (Player.HasBuff(BuffType<GuntriggerParry>()))
             {
 
@@ -3394,7 +3409,7 @@ namespace StarsAbove
                     Projectile proj = Main.projectile[i];
 
                     if (proj.owner == Player.whoAmI &&
-                        (proj.type == ProjectileType<TimePulse>()) && proj.Distance(Player.Center) <= proj.ai[0] && proj.active)
+                        proj.type == ProjectileType<TimePulse>() && proj.Distance(Player.Center) <= proj.ai[0] && proj.active)
                     {
                         Player.AddBuff(BuffType<Invincibility>(), 20);
                         Player.AddBuff(BuffType<TimeBubbleCooldown>(), 1200);
@@ -3417,11 +3432,11 @@ namespace StarsAbove
                         //The shield breaks!
                         for (int d = 0; d < 32; d++)
                         {
-                            Dust.NewDust(Player.Center, 0, 0, DustID.Flare, 0f + Main.rand.Next(-12, 12), 0f + Main.rand.Next(-12, 12), 150, default(Color), 1f);
+                            Dust.NewDust(Player.Center, 0, 0, DustID.Flare, 0f + Main.rand.Next(-12, 12), 0f + Main.rand.Next(-12, 12), 150, default, 1f);
                         }
                         for (int d = 0; d < 12; d++)
                         {
-                            Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-2, 2), 150, default(Color), 0.5f);
+                            Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-2, 2), 150, default, 0.5f);
                         }
                         SoundEngine.PlaySound(SoundID.NPCHit34, Player.Center);
 
@@ -3440,11 +3455,11 @@ namespace StarsAbove
                             //Clash sound effects and dust
                             for (int d = 0; d < 12; d++)
                             {
-                                Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-2, 2), 150, default(Color), 0.5f);
+                                Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-2, 2), 150, default, 0.5f);
                             }
                             for (int d = 0; d < 12; d++)
                             {
-                                Dust.NewDust(Player.Center, 0, 0, DustID.Flare, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-2, 2), 150, default(Color), 0.5f);
+                                Dust.NewDust(Player.Center, 0, 0, DustID.Flare, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-2, 2), 150, default, 0.5f);
                             }
                             SoundEngine.PlaySound(SoundID.NPCHit53, Player.Center);
 
@@ -3484,7 +3499,7 @@ namespace StarsAbove
                 modifiers.FinalDamage *= 0.75f;
             }
 
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.ButterflyTrance>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<ButterflyTrance>()))
             {
                 modifiers.FinalDamage /= 2;
             }
@@ -3522,7 +3537,7 @@ namespace StarsAbove
 
                 }
             }
-            if(Player.HasBuff(BuffType<AtrophiedDeifiedBuff>()))
+            if (Player.HasBuff(BuffType<AtrophiedDeifiedBuff>()))
             {
                 damageSource = PlayerDeathReason.ByCustomReason(Player.name + " " + LangHelper.GetTextValue($"DeathReason.SupremeAuthority"));
                 for (int i = 0; i < Main.maxPlayers; i++)
@@ -3538,7 +3553,7 @@ namespace StarsAbove
 
                 }
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.LivingDead>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<LivingDead>()))
             {
                 playSound = false;
                 genGore = false;
@@ -3546,7 +3561,7 @@ namespace StarsAbove
 
                 return false;
             }
-            
+
             if (stellarPerformanceActive == true)
             {
 
@@ -3563,16 +3578,16 @@ namespace StarsAbove
             if (willpowerOfZagreus)
             {
 
-                if (!Main.LocalPlayer.HasBuff(BuffType<Buffs.DeathDefianceCooldown>()))
+                if (!Main.LocalPlayer.HasBuff(BuffType<DeathDefianceCooldown>()))
                 {
 
 
                     Dust dust;
                     // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
                     Vector2 position = Player.Center;
-                    dust = Main.dust[Terraria.Dust.NewDust(position, 0, 0, 247, 0f, 0f, 0, new Color(255, 0, 0), 1f)];
+                    dust = Main.dust[Dust.NewDust(position, 0, 0, 247, 0f, 0f, 0, new Color(255, 0, 0), 1f)];
 
-                    Player.AddBuff(BuffType<Buffs.DeathDefianceCooldown>(), 28800);
+                    Player.AddBuff(BuffType<DeathDefianceCooldown>(), 28800);
 
                     Player.statLife = Player.statLifeMax / 2;
                     return false;
@@ -3580,19 +3595,19 @@ namespace StarsAbove
 
                 }
             }
-            
+
             if (darkHourglass)
             {
 
-                if (!Main.LocalPlayer.HasBuff(BuffType<Buffs.LivingDead>()))
+                if (!Main.LocalPlayer.HasBuff(BuffType<LivingDead>()))
                 {
-                    if (!Main.LocalPlayer.HasBuff(BuffType<Buffs.LivingDeadCooldown>()))
+                    if (!Main.LocalPlayer.HasBuff(BuffType<LivingDeadCooldown>()))
                     {
-                        Player.AddBuff(BuffType<Buffs.LivingDead>(), 600);
+                        Player.AddBuff(BuffType<LivingDead>(), 600);
                         Dust dust;
                         // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
                         Vector2 position = Main.LocalPlayer.Center;
-                        dust = Main.dust[Terraria.Dust.NewDust(position, 0, 0, 247, 0f, 0f, 0, new Color(255, 0, 0), 1f)];
+                        dust = Main.dust[Dust.NewDust(position, 0, 0, 247, 0f, 0f, 0, new Color(255, 0, 0), 1f)];
 
 
                         Player.statLife = 1;
@@ -3620,7 +3635,7 @@ namespace StarsAbove
             {
                 SoundEngine.PlaySound(StarsAboveAudio.SFX_GuardianDown, Player.Center);
             }
-                      
+
             return true;
         }
 
@@ -3630,7 +3645,7 @@ namespace StarsAbove
             {
                 Player.AddBuff(BuffID.PotionSickness, 3600);
             }
-            if(soulUnboundActive)
+            if (soulUnboundActive)
             {
                 soulUnboundActive = false;
             }
@@ -3639,7 +3654,7 @@ namespace StarsAbove
         public override void ResetEffects()
         {
             WeaponGaugeOffset = 0;
-            if(!DragaliaFoundHeld)
+            if (!DragaliaFoundHeld)
             {
                 DragonshiftGauge = 0;
             }
@@ -3661,7 +3676,7 @@ namespace StarsAbove
             ChemtankHeld = false;
             HunterSymphonyHeld = false;
             SkyStrikerHeld = false;
-            
+
             euthymiaActive = false;
             SoulReaverHeld = false;
 
@@ -3785,7 +3800,7 @@ namespace StarsAbove
         }
         public override void HideDrawLayers(PlayerDrawSet drawInfo)
         {
-            if (Player.HasBuff(BuffType<Buffs.Ignited>()))//
+            if (Player.HasBuff(BuffType<Ignited>()))//
             {
                 foreach (var layer in PlayerDrawLayerLoader.Layers)
                 {
@@ -3794,7 +3809,7 @@ namespace StarsAbove
 
                 }
             }
-            if (Player.HasBuff(BuffType<Buffs.FlashOfEternity>()))//
+            if (Player.HasBuff(BuffType<FlashOfEternity>()))//
             {
                 foreach (var layer in PlayerDrawLayerLoader.Layers)
                 {
@@ -3803,7 +3818,7 @@ namespace StarsAbove
 
                 }
             }
-            if (Player.HasBuff(BuffType<Buffs.Voidform>()))//
+            if (Player.HasBuff(BuffType<Voidform>()))//
             {
                 foreach (var layer in PlayerDrawLayerLoader.Layers)
                 {
@@ -3812,7 +3827,7 @@ namespace StarsAbove
 
                 }
             }
-            if (Player.HasBuff(BuffType<Buffs.IrysBuff>()))//
+            if (Player.HasBuff(BuffType<IrysBuff>()))//
             {
                 foreach (var layer in PlayerDrawLayerLoader.Layers)
                 {
@@ -3821,7 +3836,7 @@ namespace StarsAbove
 
                 }
             }
-            if (Player.HasBuff(BuffType<Buffs.Invisibility>()))//
+            if (Player.HasBuff(BuffType<Invisibility>()))//
             {
                 foreach (var layer in PlayerDrawLayerLoader.Layers)
                 {
@@ -3846,7 +3861,7 @@ namespace StarsAbove
         }
         private void OnKillEnemy(NPC npc)
         {
-            if(Player.HasBuff(BuffType<RealizedNanomachinaBuff>()))
+            if (Player.HasBuff(BuffType<RealizedNanomachinaBuff>()))
             {
                 nanomachinaGauge += 5;
             }
@@ -3894,7 +3909,7 @@ namespace StarsAbove
             gaugeChangeAlpha -= 0.1f;
 
             //# of active minions
-            activeMinions = (int)(Player.slotsMinions);
+            activeMinions = (int)Player.slotsMinions;
 
             //Values that reset out of combat
             if (player.inCombat < 0)
@@ -3943,7 +3958,7 @@ namespace StarsAbove
         {
             DraggedBelowTarget = Player.GetModPlayer<StarsAbovePlayer>().playerMousePos;
             DraggedBelowTarget2 = Vector2.Lerp(DraggedBelowTarget2, Player.GetModPlayer<StarsAbovePlayer>().playerMousePos, 0.02f);
-            if(DraggedBelowHeld)
+            if (DraggedBelowHeld)
             {
                 DraggedBelowCorruptionTimer++;
 
@@ -3959,7 +3974,7 @@ namespace StarsAbove
                     }
                     DraggedBelowCorruptionTimer = 0;
                 }
-                if(DraggedBelowCorruption >= 100 && !DraggedBelowInCorruption)
+                if (DraggedBelowCorruption >= 100 && !DraggedBelowInCorruption)
                 {
                     DraggedBelowInCorruption = true;
                     Player.ClearBuff(BuffType<DraggedBelowCooldown>());
@@ -3967,17 +3982,17 @@ namespace StarsAbove
                     Player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
                     for (int d = 0; d < 30; d++)
                     {
-                        Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Red, 0f + Main.rand.Next(-10, 10), 0f + Main.rand.Next(-10, 10), 150, default(Color), 1f);
+                        Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Red, 0f + Main.rand.Next(-10, 10), 0f + Main.rand.Next(-10, 10), 150, default, 1f);
                     }
                     for (int d = 0; d < 30; d++)
                     {
-                        Dust.NewDust(Player.Center, 0, 0, DustID.LifeDrain, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1f);
+                        Dust.NewDust(Player.Center, 0, 0, DustID.LifeDrain, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default, 1f);
                     }
                 }
-                if(DraggedBelowInCorruption)
+                if (DraggedBelowInCorruption)
                 {
                     Player.AddBuff(BuffType<DraggedBelowCorruption>(), 10);
-                    Dust.NewDust(Player.Center, 0, 0, DustID.LifeDrain, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 0.7f);
+                    Dust.NewDust(Player.Center, 0, 0, DustID.LifeDrain, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default, 0.7f);
 
                     if (DraggedBelowCorruption <= 0)
                     {
@@ -3985,7 +4000,7 @@ namespace StarsAbove
                         //effects
                         for (int d = 0; d < 15; d++)
                         {
-                            Dust.NewDust(Player.Center, 0, 0, DustID.Smoke, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 1f);
+                            Dust.NewDust(Player.Center, 0, 0, DustID.Smoke, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default, 1f);
                         }
                     }
                 }
@@ -3995,7 +4010,7 @@ namespace StarsAbove
         private void DreamersInkwell()
         {
             InkwellMana = Player.statManaMax2;
-            for(int i = 0; i < Player.ownedProjectileCounts[ProjectileType<InkwellEarthInk>()]; i++)
+            for (int i = 0; i < Player.ownedProjectileCounts[ProjectileType<InkwellEarthInk>()]; i++)
             {
                 InkwellMana -= 4;
             }
@@ -4018,7 +4033,7 @@ namespace StarsAbove
             }
             else
             {
-                
+
                 InkwellUIAlpha -= 0.1f;
             }
             InkwellMana = (int)MathHelper.Clamp(InkwellMana, 0, Player.statManaMax2);
@@ -4028,7 +4043,7 @@ namespace StarsAbove
                 InkwellUIAdjustment -= 0.3f;
             }
             InkwellUIAdjustment = MathHelper.Clamp(InkwellUIAdjustment, 0, 100);
-            InkwellUIRotation+= 0.5f;
+            InkwellUIRotation += 0.5f;
             if (InkwellUIRotation > 360)
             {
                 InkwellUIRotation = 0;
@@ -4038,7 +4053,7 @@ namespace StarsAbove
 
         private void BrilliantSpectrum()
         {
-            if(BrilliantSpectrumHeld)
+            if (BrilliantSpectrumHeld)
             {
                 refractionGaugeTimer++;
                 refractionGauge = Math.Clamp(refractionGauge, 0, refractionGaugeMax);
@@ -4062,15 +4077,15 @@ namespace StarsAbove
             {
                 refractionGauge = 0;
             }
-           
+
         }
 
         private void SupremeAuthority()
         {
-            if(!Player.HasBuff(BuffType<DeifiedBuff>()))
+            if (!Player.HasBuff(BuffType<DeifiedBuff>()))
             {
                 SupremeAuthorityConsumedNPCs = 0;
-                
+
             }
             else
             {
@@ -4083,11 +4098,11 @@ namespace StarsAbove
                     Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, 0, 0, ProjectileType<Projectiles.SupremeAuthority.AuthorityLantern1>(), 0, 0, Player.whoAmI, 0f);
                 }
             }
-            if(SupremeAuthorityConsumedNPCs > 0)
+            if (SupremeAuthorityConsumedNPCs > 0)
             {
                 Player.AddBuff(BuffType<DarkAura>(), 10);
             }
-           
+
         }
         private void SunsetOfTheSunGod()
         {
@@ -4108,7 +4123,7 @@ namespace StarsAbove
                 //Shield was restored!!
                 for (int d = 0; d < 32; d++)
                 {
-                    Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-12, 12), 0f + Main.rand.Next(-12, 12), 150, default(Color), 1f);
+                    Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-12, 12), 0f + Main.rand.Next(-12, 12), 150, default, 1f);
                 }
                 SoundEngine.PlaySound(StarsAboveAudio.SFX_GuntriggerParryPrep, Player.Center);
                 Player.AddBuff(BuffType<RealizedNanomachinaBuff>(), 1200);
@@ -4137,7 +4152,7 @@ namespace StarsAbove
                     CombatText.NewText(textPos, new Color(255, 255, 125, 240), "The Timeframe vanishes...", false, false);
                     powderGaugeIndicatorOn = false;
                     kroniicTeleport = false;
-                    Player.AddBuff(BuffType<Buffs.KroniicPrincipalityCooldown>(), 3600);//7200 is 2 minutes
+                    Player.AddBuff(BuffType<KroniicPrincipalityCooldown>(), 3600);//7200 is 2 minutes
                 }
 
             }
@@ -4150,13 +4165,13 @@ namespace StarsAbove
                     offset.X += (float)(Math.Sin(angle) * 44);
                     offset.Y += (float)(Math.Cos(angle) * 44);
 
-                    Dust d = Dust.NewDustPerfect(kroniicSavedPosition + offset, 20, Vector2.Zero, 200, default(Color), 0.7f);
+                    Dust d = Dust.NewDustPerfect(kroniicSavedPosition + offset, 20, Vector2.Zero, 200, default, 0.7f);
                     d.fadeIn = 0.1f;
                     d.noGravity = true;
                 }
             }
             powderGauge = Math.Clamp(powderGauge, 0, 100);
-            
+
         }
 
         private void EyeOfEuthymia()
@@ -4190,7 +4205,7 @@ namespace StarsAbove
                 SkyStrikerTransformPrep = false;
                 for (int i = 0; i < 10; i++)
                 {
-                    int dustIndex = Dust.NewDust(new Vector2(Player.Center.X, Player.Center.Y), 0, 0, 31, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default(Color), 2f);
+                    int dustIndex = Dust.NewDust(new Vector2(Player.Center.X, Player.Center.Y), 0, 0, 31, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default, 2f);
                     Main.dust[dustIndex].velocity *= 1.4f;
                 }
                 // Fire Dust spawn
@@ -4198,19 +4213,19 @@ namespace StarsAbove
                 // Large Smoke Gore spawn
                 for (int g = 0; g < 2; g++)
                 {
-                    int goreIndex = Gore.NewGore(null, new Vector2(Player.position.X + (float)(Player.width / 2) - 24f, Player.position.Y + (float)(Player.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                    int goreIndex = Gore.NewGore(null, new Vector2(Player.position.X + Player.width / 2 - 24f, Player.position.Y + Player.height / 2 - 24f), default, Main.rand.Next(61, 64), 1f);
                     Main.gore[goreIndex].scale = 1.5f;
                     Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
                     Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
-                    goreIndex = Gore.NewGore(null, new Vector2(Player.position.X + (float)(Player.width / 2) - 24f, Player.position.Y + (float)(Player.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                    goreIndex = Gore.NewGore(null, new Vector2(Player.position.X + Player.width / 2 - 24f, Player.position.Y + Player.height / 2 - 24f), default, Main.rand.Next(61, 64), 1f);
                     Main.gore[goreIndex].scale = 1.5f;
                     Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
                     Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
-                    goreIndex = Gore.NewGore(null, new Vector2(Player.position.X + (float)(Player.width / 2) - 24f, Player.position.Y + (float)(Player.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                    goreIndex = Gore.NewGore(null, new Vector2(Player.position.X + Player.width / 2 - 24f, Player.position.Y + Player.height / 2 - 24f), default, Main.rand.Next(61, 64), 1f);
                     Main.gore[goreIndex].scale = 1.5f;
                     Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
                     Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
-                    goreIndex = Gore.NewGore(null, new Vector2(Player.position.X + (float)(Player.width / 2) - 24f, Player.position.Y + (float)(Player.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                    goreIndex = Gore.NewGore(null, new Vector2(Player.position.X + Player.width / 2 - 24f, Player.position.Y + Player.height / 2 - 24f), default, Main.rand.Next(61, 64), 1f);
                     Main.gore[goreIndex].scale = 1.5f;
                     Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
                     Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;

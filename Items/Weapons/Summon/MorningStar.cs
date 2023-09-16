@@ -10,6 +10,8 @@ using static Terraria.ModLoader.ModContent;
 using Terraria.GameContent.Creative;
 using StarsAbove.Projectiles.MorningStar;
 using StarsAbove.Buffs.MorningStar;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Summon
 {

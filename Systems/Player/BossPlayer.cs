@@ -12,7 +12,14 @@ using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.ModLoader.IO;
-using StarsAbove.Items; using StarsAbove.Items.Weapons; using StarsAbove.Items.Weapons.Summon; using StarsAbove.Items.Weapons.Ranged; using StarsAbove.Items.Weapons.Other; using StarsAbove.Items.Weapons.Celestial; using StarsAbove.Items.Weapons.Melee; using StarsAbove.Items.Weapons.Magic;
+using StarsAbove.Items;
+using StarsAbove.Items.Weapons;
+using StarsAbove.Items.Weapons.Summon;
+using StarsAbove.Items.Weapons.Ranged;
+using StarsAbove.Items.Weapons.Other;
+using StarsAbove.Items.Weapons.Celestial;
+using StarsAbove.Items.Weapons.Melee;
+using StarsAbove.Items.Weapons.Magic;
 using StarsAbove.Projectiles;
 using StarsAbove.Buffs;
 using StarsAbove.NPCs;
@@ -26,9 +33,9 @@ using StarsAbove.NPCs.WarriorOfLight;
 using StarsAbove.Buffs.Boss;
 using StarsAbove.Utilities;
 
-namespace StarsAbove
+namespace StarsAbove.Systems
 {
-    public class BossPlayer: ModPlayer
+    public class BossPlayer : ModPlayer
     {
         public bool VagrantBarActive = false;//This changes depending on the boss
         public bool NalhaunBarActive = false;
@@ -93,14 +100,14 @@ namespace StarsAbove
                 NPC npc = Main.npc[k];
                 if (npc.active && npc.type == NPCType<WarriorOfLightBoss>() && Player.Distance(npc.Center) < 2000)
                 {
-                    if(Main.expertMode)
+                    if (Main.expertMode)
                     {
                         Player.AddBuff(BuffType<Vulnerable>(), 60);
 
                     }
                     break;
                 }
-                
+
 
             }
 
@@ -108,16 +115,16 @@ namespace StarsAbove
         }
         public override void PreUpdate()
         {
-            if(QTEActive)
+            if (QTEActive)
             {
                 if (StarsAbove.novaKey.JustPressed)
                 {
-                    
+
                     SoundEngine.PlaySound(SoundID.Item48, Player.Center);
 
                     for (int d = 0; d < 3; d++)
                     {
-                        Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-3, 3), 0f + Main.rand.Next(-3, 3), 0, default(Color), 1.5f);
+                        Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-3, 3), 0f + Main.rand.Next(-3, 3), 0, default, 1.5f);
                     }
                     Player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
 
@@ -136,7 +143,7 @@ namespace StarsAbove
                             {
                                 Vector2 positionNew = Vector2.Lerp(Player.Center, new Vector2(npc.Center.X, npc.Center.Y), (float)ir / 20);
 
-                                Dust da = Dust.NewDustPerfect(positionNew, DustID.FireworkFountain_Yellow, null, 240, default(Color), 1f);
+                                Dust da = Dust.NewDustPerfect(positionNew, DustID.FireworkFountain_Yellow, null, 240, default, 1f);
                                 da.fadeIn = 0.1f;
                                 da.noLight = true;
                                 da.noGravity = true;
@@ -144,7 +151,7 @@ namespace StarsAbove
                             }
                             break;
                         }
-                        
+
 
                     }
                     QTEDifficulty = 0.1f;
@@ -161,7 +168,7 @@ namespace StarsAbove
                     Player.ClearBuff(BuffType<BindingLight>());
                     for (int d = 0; d < 20; d++)
                     {
-                        Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-6, 6), 0, default(Color), 1.5f);
+                        Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-6, 6), 0, default, 1.5f);
                     }
                     Player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
                     SoundEngine.PlaySound(SoundID.Shatter, Player.Center);
@@ -170,7 +177,7 @@ namespace StarsAbove
             }
 
             //Aggro marker.
-            if(Main.netMode != NetmodeID.SinglePlayer && !disableBossAggro)
+            if (Main.netMode != NetmodeID.SinglePlayer && !disableBossAggro)
             {
                 for (int i = 0; i <= Main.maxNPCs; i++)
                 {
@@ -182,16 +189,16 @@ namespace StarsAbove
                 }
 
             }
-            
+
             hasBossAggro--;
             hasBossAggro = Math.Clamp(hasBossAggro, 0, 10);
-            if(hasBossAggro > 0 && Player.ownedProjectileCounts[ProjectileType<BossAggroMarker>()] < 1)
+            if (hasBossAggro > 0 && Player.ownedProjectileCounts[ProjectileType<BossAggroMarker>()] < 1)
             {
                 Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ProjectileType<BossAggroMarker>(), 0, 0, Player.whoAmI);
 
             }
 
-            if(NPC.AnyNPCs(NPCType<VagrantBoss>())
+            if (NPC.AnyNPCs(NPCType<VagrantBoss>())
                 || NPC.AnyNPCs(NPCType<PolluxBoss>())
                 || NPC.AnyNPCs(NPCType<CastorBoss>())
                 || NPC.AnyNPCs(NPCType<Penthesilea>())
@@ -205,12 +212,12 @@ namespace StarsAbove
             }
             else
             {
-                if(bossTimer > 0)
+                if (bossTimer > 0)
                 {
-                    if(bossTimer < 600 && !speedrunEasterEgg && Main.LocalPlayer.active && !Main.LocalPlayer.dead)
+                    if (bossTimer < 600 && !speedrunEasterEgg && Main.LocalPlayer.active && !Main.LocalPlayer.dead)
                     {
                         speedrunEasterEgg = true;
-                        
+
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"CombatText.EasterEgg"), 190, 100, 247); }
                         SoundEngine.PlaySound(StarsAboveAudio.SFX_SpeedrunEasterEgg, null);
 
@@ -245,7 +252,7 @@ namespace StarsAbove
                     VagrantTeleportVertical(npc);
                     break;
                 }
-                if (npc.active && npc.type == NPCType<NPCs.Nalhaun.NalhaunBoss>() && Player.Distance(npc.Center) < 2000)
+                if (npc.active && npc.type == NPCType<NalhaunBoss>() && Player.Distance(npc.Center) < 2000)
                 {
                     //If nearby the boss.
                     NalhaunWalls(npc);
@@ -257,13 +264,13 @@ namespace StarsAbove
                     NalhaunPhase2Walls(npc);
                     break;
                 }
-                if (npc.active && (npc.type == NPCType<NPCs.Tsukiyomi.TsukiyomiBoss>()))
+                if (npc.active && npc.type == NPCType<TsukiyomiBoss>())
                 {
                     //If nearby the boss.
                     TsukiyomiTeleport(npc);
                     break;
                 }
-                if (npc.active && (npc.type == NPCType<NPCs.Dioskouroi.DioskouroiWallsNPC>()))
+                if (npc.active && npc.type == NPCType<DioskouroiWallsNPC>())
                 {
                     //If nearby the boss.
                     DioskouroiWalls(npc);
@@ -278,9 +285,9 @@ namespace StarsAbove
             tsukiCutscene2Progress--;
             warriorCutsceneProgress--;
             warriorCutsceneProgress2--;
-            
+
             VideoDuration--;
-            
+
             BlackAlpha = Math.Clamp(BlackAlpha, 0, 1);
             WhiteAlpha = Math.Clamp(WhiteAlpha, 0, 1);
 
@@ -289,12 +296,12 @@ namespace StarsAbove
             for (int k = 0; k < 200; k++)
             {
                 NPC npc = Main.npc[k];
-                if (npc.active && (npc.type == NPCType<NPCs.Dioskouroi.DioskouroiWallsNPC>()))
+                if (npc.active && npc.type == NPCType<DioskouroiWallsNPC>())
                 {
                     //Closer to Pollux
-                    if(Player.position.X > npc.position.X)
+                    if (Player.position.X > npc.position.X)
                     {
-                        if(temperatureGaugeHot <= 0)
+                        if (temperatureGaugeHot <= 0)
                         {
                             temperatureGaugeCold += 0.4f;
                         }
@@ -321,19 +328,19 @@ namespace StarsAbove
                 }
 
             }
-            temperatureGaugeCold = Math.Clamp(temperatureGaugeCold,0, 100);
+            temperatureGaugeCold = Math.Clamp(temperatureGaugeCold, 0, 100);
             temperatureGaugeHot = Math.Clamp(temperatureGaugeHot, 0, 100);
 
-            if (!NPC.AnyNPCs(NPCType<NPCs.Dioskouroi.CastorBoss>()) && !NPC.AnyNPCs(NPCType<NPCs.Dioskouroi.PolluxBoss>()))
+            if (!NPC.AnyNPCs(NPCType<CastorBoss>()) && !NPC.AnyNPCs(NPCType<PolluxBoss>()))
             {
                 temperatureGaugeHot = 0;
                 temperatureGaugeCold = 0;
             }
-            if(temperatureGaugeHot >= 90)
+            if (temperatureGaugeHot >= 90)
             {
                 Player.AddBuff(BuffID.OnFire, 10);
             }
-            if(temperatureGaugeCold >= 90)
+            if (temperatureGaugeCold >= 90)
             {
                 Player.AddBuff(BuffID.Frostburn, 10);
             }
@@ -343,8 +350,8 @@ namespace StarsAbove
         public override void PostUpdate()
         {
 
-            
-           
+
+
         }
 
         public override void ResetEffects()
@@ -375,41 +382,41 @@ namespace StarsAbove
             if (!DisableDamageModifier)
             {
                 bossReductionMod = 0;
-                if (npc.type == ModContent.NPCType<DummyEnemy>())
+                if (npc.type == NPCType<DummyEnemy>())
                 {
                     bossReductionMod = 500;
                 }
-                if (npc.type == ModContent.NPCType<VagrantBoss>())
+                if (npc.type == NPCType<VagrantBoss>())
                 {
                     bossReductionMod = 700;
 
                 }
-                if (npc.type == ModContent.NPCType<CastorBoss>() || npc.type == ModContent.NPCType<PolluxBoss>())
+                if (npc.type == NPCType<CastorBoss>() || npc.type == NPCType<PolluxBoss>())
                 {
                     bossReductionMod = 1000;
 
                 }
-                if (npc.type == ModContent.NPCType<Penthesilea>())
+                if (npc.type == NPCType<Penthesilea>())
                 {
                     bossReductionMod = 1100;
 
                 }
-                if (npc.type == ModContent.NPCType<NalhaunBoss>() || npc.type == ModContent.NPCType<NalhaunBossPhase2>())
+                if (npc.type == NPCType<NalhaunBoss>() || npc.type == NPCType<NalhaunBossPhase2>())
                 {
                     bossReductionMod = 1400;
 
                 }
-                if (npc.type == ModContent.NPCType<WarriorOfLightBoss>() || npc.type == ModContent.NPCType<WarriorOfLightBossFinalPhase>())
+                if (npc.type == NPCType<WarriorOfLightBoss>() || npc.type == NPCType<WarriorOfLightBossFinalPhase>())
                 {
                     bossReductionMod = 1000;
 
                 }
-                if (npc.type == ModContent.NPCType<Arbitration>())
+                if (npc.type == NPCType<Arbitration>())
                 {
                     bossReductionMod = 500;
 
                 }
-                if (npc.type == ModContent.NPCType<TsukiyomiBoss>())
+                if (npc.type == NPCType<TsukiyomiBoss>())
                 {
                     bossReductionMod = 2000;
 
@@ -417,13 +424,13 @@ namespace StarsAbove
                 if (bossReductionMod > 0)
                 {
 
-                    modifiers.FinalDamage *= (1 - damageReductionAmount);
-                    
+                    modifiers.FinalDamage *= 1 - damageReductionAmount;
 
-                   
+
+
                 }
 
-                
+
             }
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -649,8 +656,8 @@ namespace StarsAbove
         {
             if (Player.whoAmI == Main.myPlayer)
             {
-                int halfWidth = NPCs.Nalhaun.NalhaunBoss.arenaWidth / 2;
-                int halfHeight = NPCs.Nalhaun.NalhaunBoss.arenaHeight / 2;
+                int halfWidth = NalhaunBoss.arenaWidth / 2;
+                int halfHeight = NalhaunBoss.arenaHeight / 2;
                 Vector2 newPosition = Player.position;
                 if (Player.position.X <= npc.Center.X - halfWidth)//Left wall
                 {

@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles;
+using StarsAbove.Systems;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;

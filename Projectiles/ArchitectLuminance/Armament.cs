@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles.ArchitectLuminance
 {
@@ -21,7 +22,7 @@ namespace StarsAbove.Projectiles.ArchitectLuminance
 			Projectile.width = 200;               //The width of projectile hitbox
 			Projectile.height = 200;              //The height of projectile hitbox
 			Projectile.aiStyle = 0;             //The ai style of the projectile, please reference the source code of Terraria
-			Projectile.friendly = true;         //Can the projectile deal damage to enemies?
+			Projectile.friendly = false;         //Can the projectile deal damage to enemies?
 			Projectile.hostile = false;         //Can the projectile deal damage to the player?
 			Projectile.minion = true;
 			Projectile.penetrate = -1;           //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
@@ -85,7 +86,7 @@ namespace StarsAbove.Projectiles.ArchitectLuminance
 			}
 			
 
-			if (Projectile.ai[0] > 40)
+			if (Projectile.ai[0] > 20)
 			{
 
 				if (closest.CanBeChasedBy() && closestDistance < 1200f)
@@ -102,7 +103,7 @@ namespace StarsAbove.Projectiles.ArchitectLuminance
 					Vector2 direction = Vector2.Normalize(closest.position - Projectile.Center);
 					Vector2 velocity = direction * launchSpeed;
 
-					Projectile.NewProjectile(Projectile.GetSource_FromThis(),position.X, position.Y, velocity.X, velocity.Y, type, projOwner.statLife/2, 0f, player.whoAmI);
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(),position.X, position.Y, velocity.X, velocity.Y, type, Projectile.damage, 0f, player.whoAmI);
 
 				}
 			}

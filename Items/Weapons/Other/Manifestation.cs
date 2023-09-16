@@ -15,6 +15,8 @@ using StarsAbove.Buffs.SoulReaver;
 using StarsAbove.Projectiles;
 using StarsAbove.Projectiles.Manifestation;
 using StarsAbove.Buffs.Manifestation;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Other
 {

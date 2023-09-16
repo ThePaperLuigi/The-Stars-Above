@@ -6,6 +6,8 @@ using StarsAbove.Mounts.DragaliaFound;
 using StarsAbove.Projectiles;
 using StarsAbove.Projectiles.DragaliaFound;
 using StarsAbove.Projectiles.Generics;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -96,7 +98,6 @@ namespace StarsAbove.Items.Weapons.Summon
 					//Boom
 					SoundEngine.PlaySound(SoundID.Roar, player.Center);
 					Projectile.NewProjectile(player.GetSource_FromThis(), player.MountedCenter, Vector2.Zero, ProjectileType<radiate>(), 0, 0, player.whoAmI);
-
 
 					for (int d = 0; d < 50; d++)
 					{

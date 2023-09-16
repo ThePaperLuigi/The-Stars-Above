@@ -22,10 +22,12 @@ using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Buffs;
 using StarsAbove.Items.BossBags;
 using StarsAbove.Items.Loot;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.NPCs.Nalhaun
 {
-	[AutoloadBossHead]
+    [AutoloadBossHead]
 
 	public class NalhaunBossPhase2 : ModNPC
 	{

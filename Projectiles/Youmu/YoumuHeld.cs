@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs.CatalystMemory;
 using StarsAbove.Buffs.Youmu;
+using StarsAbove.Systems;
 using System;
 using Terraria;
 using Terraria.Audio;

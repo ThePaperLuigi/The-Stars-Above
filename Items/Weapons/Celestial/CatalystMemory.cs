@@ -5,6 +5,8 @@ using StarsAbove.Buffs.CatalystMemory;
 using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles.BurningDesire;
 using StarsAbove.Projectiles.CatalystMemory;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;

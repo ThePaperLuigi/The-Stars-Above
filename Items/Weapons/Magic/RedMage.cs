@@ -4,6 +4,8 @@ using StarsAbove.Buffs.RedMage;
 using StarsAbove.Items.Essences;
 using StarsAbove.Items.Prisms;
 using StarsAbove.Projectiles.RedMage;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;

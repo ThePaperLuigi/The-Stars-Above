@@ -7,6 +7,7 @@ using static Terraria.ModLoader.ModContent;
 using Terraria.GameContent.Creative;
 using StarsAbove.Projectiles.MorningStar;
 using StarsAbove.Projectiles.RupturedHeaven;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Summon
 {

@@ -15,6 +15,8 @@ using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using StarsAbove.Projectiles.BuryTheLight;
 using StarsAbove.Buffs.BuryTheLight;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Celestial
 {

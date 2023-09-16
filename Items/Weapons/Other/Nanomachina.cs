@@ -18,6 +18,8 @@ using StarsAbove.Buffs.Adornment;
 using StarsAbove.Utilities;
 using StarsAbove.Buffs.Nanomachina;
 using StarsAbove.Projectiles.Nanomachina;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Other
 {

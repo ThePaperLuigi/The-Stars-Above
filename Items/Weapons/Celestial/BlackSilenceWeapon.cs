@@ -7,6 +7,8 @@ using StarsAbove.Projectiles;
 using StarsAbove.Projectiles.BlackSilence;
 using StarsAbove.Projectiles.KazimierzSeraphim;
 using StarsAbove.Projectiles.KeyOfTheKingsLaw;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;

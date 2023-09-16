@@ -6,6 +6,7 @@ using Terraria.Audio;
 using System;
 using StarsAbove.Buffs;
 using static Terraria.ModLoader.ModContent;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles.SanguineDespair
 {

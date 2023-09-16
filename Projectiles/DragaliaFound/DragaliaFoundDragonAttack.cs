@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Buffs.TagDamage;
+using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using System;
 using Terraria;
@@ -11,7 +12,7 @@ using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles.DragaliaFound
 {
-	public class DragaliaFoundDragonAttack : ModProjectile
+    public class DragaliaFoundDragonAttack : ModProjectile
 	{
 
 		// We could use a vanilla texture if we want instead of supplying our own.

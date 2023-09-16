@@ -8,6 +8,7 @@ using System;
 using Terraria.ModLoader;
 using StarsAbove.Buffs;
 using Terraria.Audio;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles.TrickspinTwoStep
 {

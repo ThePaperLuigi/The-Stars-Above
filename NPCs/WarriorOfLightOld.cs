@@ -12,6 +12,7 @@ using Terraria.Audio;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Conditions = Terraria.GameContent.ItemDropRules.Conditions;
+using StarsAbove.Systems;
 
 namespace StarsAbove.NPCs
 {

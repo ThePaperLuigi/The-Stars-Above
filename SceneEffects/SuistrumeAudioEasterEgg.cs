@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Buffs.Pets;
+using StarsAbove.Systems;
 
 namespace StarsAbove.SceneEffects
 {

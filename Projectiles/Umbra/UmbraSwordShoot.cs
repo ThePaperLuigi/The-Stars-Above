@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 using System;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles.Umbra
 {

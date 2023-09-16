@@ -6,6 +6,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Consumables
 {

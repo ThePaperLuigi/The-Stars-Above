@@ -13,6 +13,8 @@ using Terraria.Audio;
 using StarsAbove.Projectiles.SoulReaver;
 using StarsAbove.Buffs.SoulReaver;
 using StarsAbove.Projectiles;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Melee
 {

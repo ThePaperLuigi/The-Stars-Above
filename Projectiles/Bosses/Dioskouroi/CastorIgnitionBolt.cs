@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using StarsAbove.NPCs.Dioskouroi;
 using StarsAbove.NPCs.Nalhaun;
 using StarsAbove.NPCs.Tsukiyomi;
+using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using System;
 using Terraria;

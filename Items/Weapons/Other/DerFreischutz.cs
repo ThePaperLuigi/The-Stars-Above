@@ -7,6 +7,7 @@ using static Terraria.ModLoader.ModContent;
 using StarsAbove.Items.Essences;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Other
 {

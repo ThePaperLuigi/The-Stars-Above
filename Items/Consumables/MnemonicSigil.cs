@@ -2,6 +2,7 @@
 using StarsAbove.Buffs;
 using StarsAbove.NPCs.Tsukiyomi;
 using StarsAbove.Subworlds;
+using StarsAbove.Systems;
 using SubworldLibrary;
 using Terraria;
 using Terraria.ID;

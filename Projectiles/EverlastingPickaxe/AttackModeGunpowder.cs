@@ -8,7 +8,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.EverlastingPickaxe
 {
-	public class AttackModeGunpowder : ModProjectile
+    public class AttackModeGunpowder : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

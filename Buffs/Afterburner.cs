@@ -15,12 +15,8 @@ namespace StarsAbove.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            
-            player.GetCritChance(DamageClass.Magic) = 100;
-            player.GetCritChance(DamageClass.Melee) = 100;
-            player.GetCritChance(DamageClass.Ranged) = 100;
-            player.GetCritChance(ModContent.GetInstance<Systems.CelestialDamageClass>()) = 100;
-            player.GetCritChance(DamageClass.Throwing) = 100;
+            player.GetCritChance(DamageClass.Generic) = 100;
+
 
             /*Mod Calamity = ModLoader.GetMod("CalamityMod");
             if (Calamity != null)

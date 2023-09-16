@@ -3,13 +3,13 @@ using Terraria.ModLoader;
 using Terraria.Graphics.Effects;
 using StarsAbove.Buffs.SubworldModifiers;
 
-namespace StarsAbove.SceneEffects
+namespace StarsAbove.SceneEffects.SubworldSceneEffects
 {
     public class MoonSceneEffect : ModSceneEffect
-	{
+    {
         public override bool IsSceneEffectActive(Player player)
         {
-			
+
             return true;
         }
         public override void SpecialVisuals(Player player, bool isActive)
@@ -29,9 +29,9 @@ namespace StarsAbove.SceneEffects
                 SkyManager.Instance.Deactivate("StarsAbove:MoonSky");
             }
         }
-        
 
-		
+
+
 
 
     }

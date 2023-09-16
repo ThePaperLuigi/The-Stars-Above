@@ -1,46 +1,48 @@
 using Terraria.ModLoader;
 
-namespace StarsAbove.Backgrounds
+namespace StarsAbove.Backgrounds.BackgroundStyle
 {
     public class MoonBackgroundStyle : ModSurfaceBackgroundStyle
-	{
+    {
 
 
 
-		// Use this to keep far Backgrounds like the mountains.
-		public override void ModifyFarFades(float[] fades, float transitionSpeed)
-		{
-			for (int i = 0; i < fades.Length; i++)
-			{
-				if (i == Slot)
-				{
-					fades[i] += transitionSpeed;
-					if (fades[i] > 1f)
-					{
-						fades[i] = 1f;
-					}
-				}
-				else
-				{
-					fades[i] -= transitionSpeed;
-					if (fades[i] < 0f)
-					{
-						fades[i] = 0f;
-					}
-				}
-			}
-		}
+        // Use this to keep far Backgrounds like the mountains.
+        public override void ModifyFarFades(float[] fades, float transitionSpeed)
+        {
+            for (int i = 0; i < fades.Length; i++)
+            {
+                if (i == Slot)
+                {
+                    fades[i] += transitionSpeed;
+                    if (fades[i] > 1f)
+                    {
+                        fades[i] = 1f;
+                    }
+                }
+                else
+                {
+                    fades[i] -= transitionSpeed;
+                    if (fades[i] < 0f)
+                    {
+                        fades[i] = 0f;
+                    }
+                }
+            }
+        }
 
 
-		public override int ChooseFarTexture() {
-			//return BackgroundTextureLoader.GetBackgroundSlot("StarsAbove/Backgrounds/ObservatoryFar");
-			return -1;
-		}
+        public override int ChooseFarTexture()
+        {
+            //return BackgroundTextureLoader.GetBackgroundSlot("StarsAbove/Backgrounds/ObservatoryFar");
+            return -1;
+        }
 
-		private static int SurfaceFrameCounter;
-		private static int SurfaceFrame;
-		public override int ChooseMiddleTexture() {
-			/*if (++SurfaceFrameCounter > 12) {
+        private static int SurfaceFrameCounter;
+        private static int SurfaceFrame;
+        public override int ChooseMiddleTexture()
+        {
+            /*if (++SurfaceFrameCounter > 12) {
 				SurfaceFrame = (SurfaceFrame + 1) % 4;
 				SurfaceFrameCounter = 0;
 			}
@@ -56,14 +58,15 @@ namespace StarsAbove.Backgrounds
 				default:
 					return -1;
 			}*/
-			return -1;
-			//return BackgroundTextureLoader.GetBackgroundSlot("StarsAbove/Backgrounds/ObservatoryMid");
+            return -1;
+            //return BackgroundTextureLoader.GetBackgroundSlot("StarsAbove/Backgrounds/ObservatoryMid");
 
-		}
+        }
 
-		public override int ChooseCloseTexture(ref float scale, ref double parallax, ref float a, ref float b) {
-			return -1;
-			//return BackgroundTextureLoader.GetBackgroundSlot("StarsAbove/Backgrounds/Void");
-		}
-	}
+        public override int ChooseCloseTexture(ref float scale, ref double parallax, ref float a, ref float b)
+        {
+            return -1;
+            //return BackgroundTextureLoader.GetBackgroundSlot("StarsAbove/Backgrounds/Void");
+        }
+    }
 }

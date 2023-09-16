@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs.ManiacalJustice;
+using StarsAbove.Systems;
 using System;
 using Terraria;
 using Terraria.ID;

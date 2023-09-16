@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Buffs.CatalystMemory;
 using StarsAbove.Buffs.Gundbits;
 using StarsAbove.Projectiles.Generics;
+using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using System;
 using Terraria;

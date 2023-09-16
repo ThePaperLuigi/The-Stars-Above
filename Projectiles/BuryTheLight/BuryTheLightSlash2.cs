@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles.BuryTheLight
 {
-	public class BuryTheLightSlash2 : ModProjectile
+    public class BuryTheLightSlash2 : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			// DisplayName.SetDefault("Bury The Light");

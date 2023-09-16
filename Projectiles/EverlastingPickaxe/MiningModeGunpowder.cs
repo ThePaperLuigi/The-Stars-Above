@@ -1,6 +1,7 @@
 
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs.EverlastingPickaxe;
+using StarsAbove.Systems;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
@@ -9,7 +10,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.EverlastingPickaxe
 {
-	public class MiningModeGunpowder : ModProjectile
+    public class MiningModeGunpowder : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

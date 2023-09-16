@@ -4,6 +4,8 @@ using StarsAbove.Items.BossBags;
 using StarsAbove.Items.Loot;
 using StarsAbove.NPCs.OffworldNPCs;
 using StarsAbove.Projectiles.Bosses.Vagrant;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 using System;
 using Terraria;
 using Terraria.DataStructures;
@@ -17,7 +19,7 @@ using static StarsAbove.NPCs.AttackLibrary.AttackLibrary;
 
 namespace StarsAbove.NPCs.Vagrant
 {
-	[AutoloadBossHead]
+    [AutoloadBossHead]
 
 	public class VagrantBoss : ModNPC
 	{

@@ -15,6 +15,8 @@ using StarsAbove.Projectiles;
 using StarsAbove.Projectiles.BrilliantSpectrum;
 using StarsAbove.Buffs.BrilliantSpectrum;
 using Terraria.Graphics.Shaders;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Celestial
 {

@@ -9,6 +9,8 @@ using Terraria.Audio;
 using StarsAbove.Buffs;
 using StarsAbove.Buffs.Ozma;
 using StarsAbove.Projectiles.Ozma;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Magic
 {

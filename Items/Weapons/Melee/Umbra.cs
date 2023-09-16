@@ -9,6 +9,7 @@ using static Terraria.ModLoader.ModContent;
 using StarsAbove.Buffs.BloodBlade;
 using StarsAbove.Projectiles.BloodBlade;
 using StarsAbove.Projectiles.Umbra;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Melee
 {

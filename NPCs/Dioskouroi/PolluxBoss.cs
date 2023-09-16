@@ -28,10 +28,12 @@ using SubworldLibrary;
 using StarsAbove.Projectiles.Bosses.Dioskouroi;
 using StarsAbove.Items.BossBags;
 using StarsAbove.Items.Loot;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.NPCs.Dioskouroi
 {
-	[AutoloadBossHead]
+    [AutoloadBossHead]
 
 	public class PolluxBoss : ModNPC
 	{

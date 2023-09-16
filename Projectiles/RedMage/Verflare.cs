@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using System;
 using Terraria.GameContent.Drawing;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles.RedMage
 {

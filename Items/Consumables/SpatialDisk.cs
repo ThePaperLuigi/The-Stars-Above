@@ -12,11 +12,12 @@ using StarsAbove.Subworlds;
 using StarsAbove.Utilities;
 using System;
 using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Consumables
 {
 
-	public class SpatialDisk : ModItem
+    public class SpatialDisk : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

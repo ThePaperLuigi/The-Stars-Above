@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using Terraria.Graphics.Effects;
 using SubworldLibrary;
 using StarsAbove.Subworlds;
+using StarsAbove.Systems;
 
 namespace StarsAbove.SceneEffects
 {

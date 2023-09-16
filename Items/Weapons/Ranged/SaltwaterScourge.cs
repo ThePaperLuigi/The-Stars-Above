@@ -13,6 +13,8 @@ using StarsAbove.Projectiles.SaltwaterScourge;
 using Terraria.Audio;
 using StarsAbove.Buffs.SaltwaterScourge;
 using System;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Ranged
 {

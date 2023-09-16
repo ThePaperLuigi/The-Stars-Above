@@ -9,6 +9,7 @@ using StarsAbove.Buffs;
 using StarsAbove.Items.Pets;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Other
 {
@@ -99,7 +100,7 @@ namespace StarsAbove.Items.Weapons.Other
 			player.AddBuff(BuffType<Buffs.ArchitectLuminanceBuff>(), 2);
 			if (player.ownedProjectileCounts[ProjectileType<Projectiles.ArchitectLuminance.Armament>()] < 1)
 			{
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.ArchitectLuminance.Armament>(), 0, 4, player.whoAmI, 0f);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.ArchitectLuminance.Armament>(), player.GetWeaponDamage(Item), 4, player.whoAmI, 0f);
 
 
 			}

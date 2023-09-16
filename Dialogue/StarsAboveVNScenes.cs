@@ -1,7 +1,7 @@
 ﻿using StarsAbove.Utilities;
 using Terraria;
 
-namespace StarsAbove
+namespace StarsAbove.Dialogue
 {
     //Basic outline of visual novel code: (flowchart)
     /*
@@ -248,7 +248,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID."+ sceneID +".Dialogue." + sceneProgress);
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
                 }
                 if (sceneProgress == 1)
                 {
@@ -576,7 +576,7 @@ namespace StarsAbove
 
 
                     //What is the dialogue?
-                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID."+ sceneID +".Dialogue." + sceneProgress);
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress);
                 }
                 if (sceneProgress == 2)
                 {
@@ -2969,7 +2969,7 @@ namespace StarsAbove
                     //What is the dialogue?
                     dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
-                
+
             }
             //The Starfarers introduce Cosmic Voyages part 2.
             if (sceneID == 17)
@@ -3516,7 +3516,7 @@ namespace StarsAbove
                     //What is the dialogue?
                     dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
-                
+
 
             }
             //Yojimbo's intro dialogue (Asphodene)
@@ -5413,7 +5413,7 @@ namespace StarsAbove
                     //What is the dialogue?
                     dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
-                
+
 
             }
 
@@ -5457,7 +5457,7 @@ namespace StarsAbove
                     //What is the dialogue?
                     dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
-                
+
 
 
             }
@@ -6369,12 +6369,12 @@ namespace StarsAbove
         }
 
 
-        
+
 
 
 
     }
 
-    
+
 
 }

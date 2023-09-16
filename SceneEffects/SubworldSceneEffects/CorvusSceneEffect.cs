@@ -4,8 +4,9 @@ using Terraria.Graphics.Effects;
 using StarsAbove.Buffs.SubworldModifiers;
 using SubworldLibrary;
 using StarsAbove.Biomes;
+using StarsAbove.Systems;
 
-namespace StarsAbove.SceneEffects
+namespace StarsAbove.SceneEffects.SubworldSceneEffects
 {
     public class CorvusSceneEffect : ModSceneEffect
     {
@@ -18,7 +19,7 @@ namespace StarsAbove.SceneEffects
                 return true;
             }
             return false;
-           
+
         }
         public override void SpecialVisuals(Player player, bool isActive)
         {
@@ -33,11 +34,11 @@ namespace StarsAbove.SceneEffects
                 Main.cloudBGAlpha = 0f;
 
                 Main.moonPhase = 4;
-                
+
                 player.ZoneSnow = false;
                 if (player.GetModPlayer<StarsAbovePlayer>().inCombat > 0)
                 {
-                    
+
                     player.ManageSpecialBiomeVisuals("Blizzard", Main.UseStormEffects);
                     //In combat, change the music and add the Blizzard effect.
                 }
@@ -49,12 +50,12 @@ namespace StarsAbove.SceneEffects
             }
             if (isActive)
             {
-               
+
 
             }
             else
             {
-                
+
             }
         }
 

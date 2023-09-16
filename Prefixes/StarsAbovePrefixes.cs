@@ -1,10 +1,11 @@
+using StarsAbove.Systems;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Prefixes
 {
-	// This class serves as an example for declaring item 'prefixes', or 'modifiers' in other words.
-	public class NovaPrefix1 : ModPrefix
+    // This class serves as an example for declaring item 'prefixes', or 'modifiers' in other words.
+    public class NovaPrefix1 : ModPrefix
 	{
 		public override void SetStaticDefaults()
 		{

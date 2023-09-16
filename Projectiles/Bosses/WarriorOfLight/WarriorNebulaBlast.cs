@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using Terraria.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.Graphics.Shaders;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 {

@@ -27,10 +27,12 @@ using StarsAbove.Projectiles;
 using SubworldLibrary;
 using StarsAbove.Projectiles.Bosses.Dioskouroi;
 using StarsAbove.Items.BossBags;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.NPCs.Dioskouroi
 {
-	[AutoloadBossHead]
+    [AutoloadBossHead]
 
 	public class CastorBoss : ModNPC
 	{

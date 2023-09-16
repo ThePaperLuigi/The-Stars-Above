@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Effects;
+using StarsAbove.Systems;
 using System;
 using Terraria;
 using Terraria.GameContent;

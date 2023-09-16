@@ -21,10 +21,12 @@ using Terraria.GameContent;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Buffs;
 using StarsAbove.Utilities;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.NPCs.Nalhaun
 {
-	[AutoloadBossHead]
+    [AutoloadBossHead]
 
 	public class NalhaunBoss : ModNPC
 	{

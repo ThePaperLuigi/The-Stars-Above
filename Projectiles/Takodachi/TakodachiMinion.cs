@@ -7,6 +7,7 @@ using static Terraria.ModLoader.ModContent;
 using System;
 using Terraria.ModLoader;
 using StarsAbove.Buffs;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles.Takodachi
 {

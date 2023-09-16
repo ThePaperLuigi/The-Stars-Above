@@ -12,6 +12,8 @@ using Terraria.GameContent.Creative;
 using StarsAbove.Projectiles.SunsetOfTheSunGod;
 using System;
 using StarsAbove.Buffs.SunsetOfTheSunGod;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Other
 {
