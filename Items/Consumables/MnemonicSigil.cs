@@ -72,6 +72,7 @@ namespace StarsAbove.Items.Consumables
 			if (Main.netMode == NetmodeID.MultiplayerClient)
 			{
 				NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: type);
+				return false;
 			}
 			else
             {
