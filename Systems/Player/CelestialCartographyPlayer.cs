@@ -330,11 +330,6 @@ namespace StarsAbove.Systems
 
         private bool CheckVoyageEligibility()
         {
-            if (NPC.downedAncientCultist && !NPC.downedMoonlord)
-            {
-                return false;
-            }
-
             if (nearGateway)
             {
                 //add buff to signify this
