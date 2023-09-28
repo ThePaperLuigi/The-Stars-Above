@@ -190,7 +190,7 @@ namespace StarsAbove.Projectiles.DragaliaFound
 			
 
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			
 

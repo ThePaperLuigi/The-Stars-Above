@@ -64,7 +64,7 @@ namespace StarsAbove.Projectiles.RedMage
 			target.AddBuff(BuffID.OnFire, 240);
              
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
 		{
 			
 			for (int d = 0; d < 14; d++)

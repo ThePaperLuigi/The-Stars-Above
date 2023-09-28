@@ -69,7 +69,7 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 			Projectile.ai[1]--;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			
 

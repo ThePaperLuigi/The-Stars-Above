@@ -77,7 +77,7 @@ namespace StarsAbove.Projectiles.MorningStar
 				modifiers.SourceDamage += 0.1f;
             }
 		}
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
 		{
 			
 

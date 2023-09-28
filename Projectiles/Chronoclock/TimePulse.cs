@@ -166,7 +166,7 @@ namespace StarsAbove.Projectiles.Chronoclock
 
            
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
 			Projectile.friendly = true;
 			
@@ -185,7 +185,7 @@ namespace StarsAbove.Projectiles.Chronoclock
 
 			Main.projectile[index].originalDamage = Projectile.damage;
 
-			base.Kill(timeLeft);
+			base.OnKill(timeLeft);
         }
     }
 }

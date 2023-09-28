@@ -114,7 +114,7 @@ namespace StarsAbove.Projectiles.StellarNovas.GuardiansLight
 			
 			base.OnHitNPC(target, hit, damageDone);
         }
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			Player projOwner = Main.player[Projectile.owner];
 			SoundEngine.PlaySound(StarsAboveAudio.SFX_SilenceSquall1, Projectile.Center);
@@ -160,7 +160,7 @@ namespace StarsAbove.Projectiles.StellarNovas.GuardiansLight
 			{
 				Dust.NewDust(Projectile.Center, Projectile.width, Projectile.height, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(-10, 10), 0f + Main.rand.Next(-10, 10), 150, default(Color), 1f);
 			}
-			base.Kill(timeLeft);
+			base.OnKill(timeLeft);
 		}
 	}
 

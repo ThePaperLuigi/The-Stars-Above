@@ -141,7 +141,7 @@ namespace StarsAbove.Projectiles.TrickspinTwoStep
 		}
 
 		
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.MaxMana, Projectile.Center);
 

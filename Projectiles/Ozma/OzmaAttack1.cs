@@ -83,7 +83,7 @@ namespace StarsAbove.Projectiles.Ozma
 
 		
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			Player projOwner = Main.player[Projectile.owner];
 			if (projOwner.HasBuff(BuffType<AnnihilationState>()))

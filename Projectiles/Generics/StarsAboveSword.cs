@@ -354,7 +354,7 @@ namespace StarsAbove.Projectiles.Generics
             Projectile.alpha -= 90;*/
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
 		{
 			
 

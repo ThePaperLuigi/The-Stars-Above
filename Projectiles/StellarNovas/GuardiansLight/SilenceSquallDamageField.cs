@@ -72,12 +72,12 @@ namespace StarsAbove.Projectiles.StellarNovas.GuardiansLight
         {
             base.OnHitNPC(target, hit, damageDone);
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
 		{
 			Player projOwner = Main.player[Projectile.owner];
 			
 			
-			base.Kill(timeLeft);
+			base.OnKill(timeLeft);
         }
     }
 }

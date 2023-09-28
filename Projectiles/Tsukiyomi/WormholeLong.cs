@@ -105,7 +105,7 @@ namespace StarsAbove.Projectiles.Tsukiyomi
 
 		}
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
 			for (int d = 0; d < 26; d++)
 			{
@@ -116,7 +116,7 @@ namespace StarsAbove.Projectiles.Tsukiyomi
 				Dust.NewDust(new Vector2(Projectile.Center.X, Projectile.Center.Y), 0, 0, 221, 0f + Main.rand.Next(-16, 16), 0f + Main.rand.Next(-16, 16), 0, default(Color), 1f);
 			}
 
-			base.Kill(timeLeft);
+			base.OnKill(timeLeft);
         }
     }
 }

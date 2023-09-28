@@ -171,7 +171,7 @@ namespace StarsAbove.Projectiles.SaltwaterScourge
 			
 		}
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
 			// Smoke Dust spawn
 			for (int i = 0; i < 10; i++)
@@ -201,7 +201,7 @@ namespace StarsAbove.Projectiles.SaltwaterScourge
 				Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
 			}
 
-			base.Kill(timeLeft);
+			base.OnKill(timeLeft);
         }
     }
 }

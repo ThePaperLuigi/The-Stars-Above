@@ -79,7 +79,7 @@ namespace StarsAbove.Projectiles.Skofnung
         {
 			modifiers.CritDamage *= 0.5f;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
 		{
 			
 

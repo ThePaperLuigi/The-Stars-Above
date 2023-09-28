@@ -154,7 +154,7 @@ namespace StarsAbove.Projectiles.RedMage
 			Player player = Main.player[Projectile.owner];
 			
 		}
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
 
 			for (int d = 0; d < 12; d++)
@@ -163,7 +163,7 @@ namespace StarsAbove.Projectiles.RedMage
 
 			}
 
-			base.Kill(timeLeft);
+			base.OnKill(timeLeft);
         }
 
     }

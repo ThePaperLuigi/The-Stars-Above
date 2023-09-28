@@ -50,7 +50,7 @@ namespace StarsAbove.Projectiles.StellarNovas.GuardiansLight
 			target.AddBuff(BuffID.ShadowFlame, 60 * 10);
             base.OnHitNPC(target, hit, damageDone);
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
 		{
 			Player projOwner = Main.player[Projectile.owner];
 			projOwner.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
@@ -104,7 +104,7 @@ namespace StarsAbove.Projectiles.StellarNovas.GuardiansLight
 				ParticleOrchestrator.RequestParticleSpawn(false, ParticleOrchestraType.PrincessWeapon, particleOrchestraSettings, Projectile.owner);
 
 			}
-			base.Kill(timeLeft);
+			base.OnKill(timeLeft);
         }
     }
 }

@@ -49,7 +49,7 @@ namespace StarsAbove.Projectiles.DraggedBelow
         {
             base.OnHitNPC(target, hit, damageDone);
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
 		{
 			Player projOwner = Main.player[Projectile.owner];
 			projOwner.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
@@ -91,7 +91,7 @@ namespace StarsAbove.Projectiles.DraggedBelow
 			}
 			
 			
-			base.Kill(timeLeft);
+			base.OnKill(timeLeft);
         }
     }
 }

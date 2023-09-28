@@ -74,7 +74,7 @@ namespace StarsAbove.Projectiles.Tsukiyomi
 				dust.velocity *= 0.2f;
 			}
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			// This code and the similar code above in OnTileCollide spawn dust from the tiles collided with. SoundID.Item10 is the bounce sound you hear.
 			

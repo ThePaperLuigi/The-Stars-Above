@@ -169,7 +169,7 @@ namespace StarsAbove.Projectiles.SupremeAuthority
 		}
 		public static Texture2D texture;
 		
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			Player projOwner = Main.player[Projectile.owner];
 
@@ -181,7 +181,7 @@ namespace StarsAbove.Projectiles.SupremeAuthority
 			}
 			Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ProjectileType<SwordstormFinish>(), Projectile.damage, 0, projOwner.whoAmI, 0f);
 
-			base.Kill(timeLeft);
+			base.OnKill(timeLeft);
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{

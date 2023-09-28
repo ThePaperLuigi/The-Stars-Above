@@ -101,7 +101,7 @@ namespace StarsAbove.Projectiles.StellarNovas.GuardiansLight
 
 			return closestNPC;
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			Vector2 position = Main.rand.NextVector2FromRectangle(Projectile.Hitbox);
 			ParticleOrchestraSettings particleOrchestraSettings = default(ParticleOrchestraSettings);

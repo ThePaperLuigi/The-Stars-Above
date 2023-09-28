@@ -53,7 +53,7 @@ namespace StarsAbove.Projectiles.IrminsulDream
             }				
             base.AI();
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
 		{
 			
 

@@ -94,7 +94,7 @@ namespace StarsAbove.Projectiles.ShockAndAwe
             base.ModifyHitNPC(target, ref modifiers);
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
 		{
 			Collision.HitTiles(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
 			SoundEngine.PlaySound(SoundID.Item14, Projectile.position);

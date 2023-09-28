@@ -57,7 +57,7 @@ namespace StarsAbove.Projectiles.RedMage
 			Projectile.damage = (int)(Projectile.damage * 0.8);
 			// 
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 
 			

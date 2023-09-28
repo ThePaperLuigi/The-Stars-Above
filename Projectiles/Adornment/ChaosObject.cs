@@ -105,7 +105,7 @@ namespace StarsAbove.Projectiles.Adornment
 
 			//Projectile.AI();
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
 			for (int d = 0; d < 8; d++)
 			{
@@ -113,7 +113,7 @@ namespace StarsAbove.Projectiles.Adornment
 				Dust.NewDust(Projectile.Center, 0, 0, DustID.FireworkFountain_Yellow, Main.rand.NextFloat(-2, 2), Main.rand.NextFloat(-2, 2), 150, default(Color), 0.4f);
 
 			}
-			base.Kill(timeLeft);
+			base.OnKill(timeLeft);
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {

@@ -146,7 +146,7 @@ namespace StarsAbove.Projectiles
             }
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             for (int j = 0; j < 40; j++)
             {

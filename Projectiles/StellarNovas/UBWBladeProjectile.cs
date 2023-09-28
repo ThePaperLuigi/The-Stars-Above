@@ -124,7 +124,7 @@ namespace StarsAbove.Projectiles.StellarNovas
 			Projectile.velocity = Vector2.Zero;
             return false;
         }
-        public override void Kill(int timeLeft) {
+        public override void OnKill(int timeLeft) {
 			
 			//SoundEngine.PlaySound(SoundID.Dig, Projectile.position); // Play a death sound
 			Vector2 usePos = Projectile.position; // Position to use for dusts

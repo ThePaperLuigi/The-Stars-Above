@@ -58,7 +58,7 @@ namespace StarsAbove.Projectiles.Chronoclock
 			target.AddBuff(BuffType<ChronoclockTagDamage>(), 240);
            
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
 			
 			for (int d = 0; d < 30; d++)
@@ -79,7 +79,7 @@ namespace StarsAbove.Projectiles.Chronoclock
 			{
 				Dust.NewDust(Projectile.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1.5f);
 			}
-			base.Kill(timeLeft);
+			base.OnKill(timeLeft);
         }
     }
 }

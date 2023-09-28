@@ -142,7 +142,7 @@ namespace StarsAbove.Projectiles.CatalystMemory
 				
 			}
 		}
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
 			SoundEngine.PlaySound(StarsAboveAudio.SFX_PrismicBreak, Projectile.Center);
 			Main.player[Projectile.owner].GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
@@ -160,7 +160,7 @@ namespace StarsAbove.Projectiles.CatalystMemory
 				Dust.NewDust(Projectile.Center, 0, 0, DustID.PurpleCrystalShard, Main.rand.NextFloat(-8, 8), Main.rand.NextFloat(-8, 8), 150, default(Color), 1f);
 			}
 
-			base.Kill(timeLeft);
+			base.OnKill(timeLeft);
         }
         private void UpdateMovement()
         {

@@ -75,7 +75,7 @@ namespace StarsAbove.Projectiles.DreamersInkwell
 			target.AddBuff(BuffID.OnFire3, 60 * 8);
 
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			
 		}

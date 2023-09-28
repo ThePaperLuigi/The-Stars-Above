@@ -88,7 +88,7 @@ namespace StarsAbove.Projectiles.EverlastingPickaxe
 
 			
 		}
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
 			{
 				int explosionRadius = 9;
@@ -177,7 +177,7 @@ namespace StarsAbove.Projectiles.EverlastingPickaxe
 				}
 				AchievementsHelper.CurrentlyMining = false;
 			}
-			base.Kill(timeLeft);
+			base.OnKill(timeLeft);
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {

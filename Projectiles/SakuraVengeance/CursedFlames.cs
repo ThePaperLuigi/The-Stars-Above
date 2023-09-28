@@ -76,7 +76,7 @@ namespace StarsAbove.Projectiles.SakuraVengeance
 			target.AddBuff(BuffID.CursedInferno, 480);
              
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
 		{
 			
 

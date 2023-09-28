@@ -108,7 +108,7 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 			
 			
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			
 

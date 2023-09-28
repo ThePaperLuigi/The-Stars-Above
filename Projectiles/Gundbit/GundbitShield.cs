@@ -237,7 +237,7 @@ namespace StarsAbove.Projectiles.Gundbit
 			base.PostDraw(lightColor);
         }
         //For posterity, the draw code of this gun is going to have each part of the upgraded gun seperate and they will draw in with a white flash.
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
 		{
 			
 

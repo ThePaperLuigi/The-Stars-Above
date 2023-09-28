@@ -69,7 +69,7 @@ namespace StarsAbove.Projectiles.EverlastingPickaxe
 			return projHitbox.Intersects(targetHitbox);
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			Vector2 usePos = Projectile.position; // Position to use for dusts
 

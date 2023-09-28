@@ -143,10 +143,10 @@ namespace StarsAbove.Projectiles.SupremeAuthority
 
 			return false;
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
         {
 			
-			base.Kill(timeLeft);
+			base.OnKill(timeLeft);
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{

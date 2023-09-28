@@ -46,7 +46,7 @@ namespace StarsAbove.Projectiles.StellarNovas.GuardiansLight
 			Projectile.timeLeft = 1;
             base.OnHitNPC(target, hit, damageDone);
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
 		{
 			Player projOwner = Main.player[Projectile.owner];
 			projOwner.ClearBuff(BuffType<ThundercrashActive>());
@@ -91,7 +91,7 @@ namespace StarsAbove.Projectiles.StellarNovas.GuardiansLight
 				Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 4.5f + Main.rand.Next(-18, 18);
 			}
 
-			base.Kill(timeLeft);
+			base.OnKill(timeLeft);
         }
     }
 }

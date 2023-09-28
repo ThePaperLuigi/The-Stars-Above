@@ -101,7 +101,7 @@ namespace StarsAbove.Projectiles.BloodBlade
 
 		}
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
 
 			SoundEngine.PlaySound(StarsAboveAudio.SFX_GunbladeImpact, Main.player[Projectile.owner].Center);

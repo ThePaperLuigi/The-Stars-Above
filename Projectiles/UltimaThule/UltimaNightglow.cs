@@ -43,7 +43,7 @@ namespace StarsAbove.Projectiles.UltimaThule
 
         // While there are several different ways to change how our projectile could behave differently, lets make it so
         // when our projectile finally dies, it will explode into 4 regular Meowmere projectiles.
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
 		{
 			Color fairyQueenWeaponsColor = Color.LightSeaGreen;
 			

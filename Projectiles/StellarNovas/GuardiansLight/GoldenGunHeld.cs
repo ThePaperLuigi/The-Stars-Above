@@ -207,7 +207,7 @@ namespace StarsAbove.Projectiles.StellarNovas.GuardiansLight
 
 			
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			
 

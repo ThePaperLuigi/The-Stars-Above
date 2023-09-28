@@ -104,10 +104,10 @@ namespace StarsAbove.Projectiles.EverlastingPickaxe
 
 			
 		}
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
 			
-			base.Kill(timeLeft);
+			base.OnKill(timeLeft);
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {

@@ -73,7 +73,7 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
         // when our projectile finally dies, it will explode into 4 regular Meowmere projectiles.
         
        
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
 		{
 			for (int d = 0; d < 18; d++)
 			{

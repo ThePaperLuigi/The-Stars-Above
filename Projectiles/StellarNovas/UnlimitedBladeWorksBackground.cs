@@ -277,7 +277,7 @@ namespace StarsAbove.Projectiles.StellarNovas
             }
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
 			float dustAmount = 50f;
 			for (int i = 0; (float)i < dustAmount; i++)

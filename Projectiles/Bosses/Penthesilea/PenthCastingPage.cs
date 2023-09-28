@@ -162,7 +162,7 @@ namespace StarsAbove.Projectiles.Bosses.Penthesilea
 
 		}
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
 			for (int d = 0; d < 16; d++)
 			{
