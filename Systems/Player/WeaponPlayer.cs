@@ -2275,14 +2275,14 @@ namespace StarsAbove.Systems
                 if (target.HasBuff(BuffID.OnFire))
                 {
                     target.AddBuff(BuffID.OnFire, 640);
-                    modifiers.SourceDamage += 5;
+                    modifiers.SourceDamage.Flat += 5;
 
                 }
                 target.AddBuff(BuffID.OnFire, 640);
 
                 if (aegisGauge >= 100)
                 {
-                    modifiers.SourceDamage *= 2;
+                    modifiers.SourceDamage += 1;
                     modifiers.SetCrit();
                     aegisGauge = 0;
                     SoundEngine.PlaySound(StarsAboveAudio.SFX_GunbladeImpact, Player.Center);
