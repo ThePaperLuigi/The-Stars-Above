@@ -243,7 +243,8 @@ namespace StarsAbove.UI.VN
 			if (modPlayer.sceneID == 2)
 			{
 				modPlayer.SyncWorldProgress = true;
-
+				modPlayer.firstJoinedWorld = Main.worldID;
+				modPlayer.firstJoinedWorldName = Main.worldName;
 				ResetVNDialogue(modPlayer);
 				return;
 			}
