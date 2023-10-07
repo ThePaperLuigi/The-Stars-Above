@@ -20,8 +20,8 @@ namespace StarsAbove.Projectiles.Ranged.KissOfDeath
     // See ExampleFlail for a simpler but less customizable flail projectile example.
     public class KissOfDeathCoffin : ModProjectile
     {
-        private const string ChainTexturePath = "StarsAbove/Projectiles/KissOfDeath/Chain"; // The folder path to the flail chain sprite
-        private const string ChainTextureExtraPath = "StarsAbove/Projectiles/KissOfDeath/Chain";  // This texture and related code is optional and used for a unique effect
+        private const string ChainTexturePath = "StarsAbove/Projectiles/Ranged/KissOfDeath/Chain"; // The folder path to the flail chain sprite
+        private const string ChainTextureExtraPath = "StarsAbove/Projectiles/Ranged/KissOfDeath/Chain";  // This texture and related code is optional and used for a unique effect
 
         private enum AIState
         {

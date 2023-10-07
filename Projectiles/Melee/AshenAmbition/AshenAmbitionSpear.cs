@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.Melee.AshenAmbition
     public class AshenAmbitionSpear : ModProjectile
     {
         // The folder path to the flail chain sprite
-        private const string ChainTexturePath = "StarsAbove/Projectiles/AshenAmbition/AshenAmbitionChain";
+        private const string ChainTexturePath = "StarsAbove/Projectiles/Melee/AshenAmbition/AshenAmbitionChain";
 
         public override void SetStaticDefaults()
         {

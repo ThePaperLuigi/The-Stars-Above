@@ -41,7 +41,7 @@ namespace StarsAbove.Projectiles.StellarArray
         public override bool PreDraw(ref Color lightColor)
         {
 
-            Texture2D texture = (Texture2D)Request<Texture2D>("StarsAbove/Projectiles/Starshield");
+            Texture2D texture = (Texture2D)Request<Texture2D>("StarsAbove/Projectiles/StellarArray/Starshield");
 
             const float TwoPi = (float)Math.PI * 2f;
             float offset = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 5f);

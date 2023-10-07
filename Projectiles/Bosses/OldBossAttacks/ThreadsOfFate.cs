@@ -195,7 +195,7 @@ namespace StarsAbove.Projectiles.Bosses.OldBossAttacks
 
                 Utils.DrawLaser(
                     spritebatch,
-                    Mod.Assets.Request<Texture2D>("Projectiles/ThreadOfFateBeam").Value,
+                    Mod.Assets.Request<Texture2D>("Projectiles/Bosses/OldBossAttacks/ThreadOfFateBeam").Value,
                     start - Main.screenPosition,
                     end - Main.screenPosition,
                     new Vector2(Projectile.ai[1]),

@@ -11,7 +11,7 @@ namespace StarsAbove.Projectiles.Melee.SkyStriker
     public class SkyStrikerClaw : ModProjectile
     {
         // The folder path to the flail chain sprite
-        private const string ChainTexturePath = "StarsAbove/Projectiles/SkyStriker/SkyStrikerChain";
+        private const string ChainTexturePath = "StarsAbove/Projectiles/Melee/SkyStriker/SkyStrikerChain";
 
         public override void SetStaticDefaults()
         {
