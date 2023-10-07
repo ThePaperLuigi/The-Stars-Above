@@ -21,7 +21,7 @@ namespace StarsAbove.Subworlds.ThirdRegion
 
         //public override ModWorld modWorld => ModContent.GetInstance < your modworld here>();
 
-        public override bool ShouldSave => true;
+        public override bool ShouldSave => false;
         public override bool NoPlayerSaving => false;
         public override bool NormalUpdates => false;
 
