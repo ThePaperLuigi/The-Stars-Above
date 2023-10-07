@@ -37,6 +37,7 @@ namespace StarsAbove.Systems
                         projectile.DamageType = calamityMod.Find<DamageClass>("RogueDamageClass");
                         if (!projectile.minion)
                         {
+                            calamityMod.Call("SetStealthProjectile", projectile, true);
 
                         }
 

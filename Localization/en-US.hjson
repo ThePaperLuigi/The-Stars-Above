@@ -261,7 +261,7 @@ Mods: {
 			}
 
 			AspectedDamageType: {
-				Description: If the weapon's type has changed, the weapon deals 10% less damage when active. (15`% less when Melee)
+				Description: If the weapon's type has changed, the weapon deals 10% less damage when active. (15% less when Melee)
 				LockHover: Aspected Weapon damage type is saved even after re-entering the world.
 				Melee.Name: Change the held Aspected Weapon to [c/FFAB4D:Melee Damage].
 				Rogue.Name: Change the held Aspected Weapon to [c/707070:Rogue Damage].

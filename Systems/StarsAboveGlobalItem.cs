@@ -792,7 +792,6 @@ namespace StarsAbove.Systems
                                 {
                                     damage = player.GetTotalDamage(calamityMod.Find<DamageClass>("RogueDamageClass"));
 
-
                                 }
 
                                 if (!disableAspectPenalty)
