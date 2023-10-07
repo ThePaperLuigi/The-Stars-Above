@@ -8,10 +8,10 @@ using static Terraria.ModLoader.ModContent;
 using StarsAbove.Buffs.VermillionDaemon;
 using StarsAbove.Buffs;
 using System;
-using StarsAbove.Projectiles.SakuraVengeance;
 using StarsAbove.Buffs.SakuraVengeance;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
+using StarsAbove.Projectiles.Melee.SakuraVengeance;
 
 namespace StarsAbove.Items.Weapons.Melee
 {

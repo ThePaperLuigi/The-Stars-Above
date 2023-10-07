@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Items.Essences;
-using StarsAbove.Projectiles.EternalStar;
+using StarsAbove.Projectiles.Magic.EternalStar;
 using StarsAbove.Systems;
 using Terraria;
 using Terraria.DataStructures;

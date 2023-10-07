@@ -3,12 +3,12 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using StarsAbove.Projectiles;
 using StarsAbove.Buffs;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Items.Essences;
 using Terraria.GameContent.Creative;
 using StarsAbove.Systems;
+using StarsAbove.Projectiles.Ranged.ForceOfNature;
 
 namespace StarsAbove.Items.Weapons.Ranged
 {

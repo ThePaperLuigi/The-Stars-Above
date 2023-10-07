@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Items.Essences;
 using StarsAbove.Items.Materials;
-using StarsAbove.Projectiles.KeyOfTheKingsLaw;
+using StarsAbove.Projectiles.Summon.KeyOfTheKingsLaw;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;

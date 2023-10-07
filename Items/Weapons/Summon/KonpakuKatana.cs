@@ -6,9 +6,9 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Items.Essences;
 using System;
-using StarsAbove.Projectiles.Youmu;
 using StarsAbove.Buffs.Youmu;
 using Terraria.GameContent.Drawing;
+using StarsAbove.Projectiles.Summon.Youmu;
 
 namespace StarsAbove.Items.Weapons.Summon
 {
@@ -43,7 +43,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			Item.rare = ItemRarityID.Green;
 			Item.autoReuse = true;
 			Item.UseSound = SoundID.Item11;
-			Item.shoot = ProjectileType<Projectiles.Youmu.YoumuRound>();
+			Item.shoot = ProjectileType<Projectiles.Summon.Youmu.YoumuRound>();
 			Item.shootSpeed = 16f;
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
 		}

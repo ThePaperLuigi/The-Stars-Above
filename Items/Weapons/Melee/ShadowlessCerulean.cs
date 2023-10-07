@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs;
 using StarsAbove.Items.Essences;
-using StarsAbove.Projectiles;
 using System;
 using Terraria;
 using Terraria.DataStructures;
@@ -11,6 +10,7 @@ using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
+using StarsAbove.Projectiles.Melee.ShadowlessCerulean;
 
 namespace StarsAbove.Items.Weapons.Melee
 {

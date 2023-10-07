@@ -3,7 +3,6 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using StarsAbove.Projectiles;
 using StarsAbove.Buffs;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Items.Essences;
@@ -11,6 +10,7 @@ using System;
 using Terraria.GameContent.Creative;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
+using StarsAbove.Projectiles.Ranged.Genocide;
 
 namespace StarsAbove.Items.Weapons.Ranged
 {
@@ -207,7 +207,7 @@ namespace StarsAbove.Items.Weapons.Ranged
 					Vector2 direction = Vector2.Normalize(closest.Center - player.Center);
 					Vector2 velocity1 = direction * launchSpeed;
 
-					Projectile.NewProjectile(source, player.Center.X, player.Center.Y, velocity1.X, velocity1.Y, ProjectileType<Projectiles.GenocidePlasmaGrenade>(), damage, 0f, player.whoAmI, 2);
+					Projectile.NewProjectile(source, player.Center.X, player.Center.Y, velocity1.X, velocity1.Y, ProjectileType<Projectiles.Ranged.Genocide.GenocidePlasmaGrenade>(), damage, 0f, player.whoAmI, 2);
 
 					
 

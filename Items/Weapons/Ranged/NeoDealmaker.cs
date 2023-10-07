@@ -6,10 +6,10 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using System;
 using StarsAbove.Items.Essences;
-using StarsAbove.Projectiles.NeoDealmaker;
 using Terraria.Audio;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
+using StarsAbove.Projectiles.Ranged.NeoDealmaker;
 
 namespace StarsAbove.Items.Weapons.Ranged
 {

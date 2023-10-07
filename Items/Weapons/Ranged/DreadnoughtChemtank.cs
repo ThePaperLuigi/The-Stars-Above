@@ -6,8 +6,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Buffs.Chemtank;
-using StarsAbove.Projectiles.Chemtank;
 using StarsAbove.Systems;
+using StarsAbove.Projectiles.Ranged.Chemtank;
 
 namespace StarsAbove.Items.Weapons.Ranged
 {
@@ -113,39 +113,39 @@ namespace StarsAbove.Items.Weapons.Ranged
 			
 			player.AddBuff(BuffType<Buffs.Chemtank.ChemtankBuff>(), 2);
 			player.GetModPlayer<WeaponPlayer>().ChemtankHeld = true;
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Chemtank.ChemtankMarker1>()] < 1)
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Ranged.Chemtank.ChemtankMarker1>()] < 1)
 			{
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Chemtank.ChemtankMarker1>(), 10, 4, player.whoAmI, 0f);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Ranged.Chemtank.ChemtankMarker1>(), 10, 4, player.whoAmI, 0f);
 
 
 			}
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Chemtank.ChemtankMarker2>()] < 1)
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Ranged.Chemtank.ChemtankMarker2>()] < 1)
 			{
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Chemtank.ChemtankMarker2>(), 10, 4, player.whoAmI, 0f);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Ranged.Chemtank.ChemtankMarker2>(), 10, 4, player.whoAmI, 0f);
 
 
 			}
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Chemtank.ChemtankMarker3>()] < 1)
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Ranged.Chemtank.ChemtankMarker3>()] < 1)
 			{
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Chemtank.ChemtankMarker3>(), 10, 4, player.whoAmI, 0f);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Ranged.Chemtank.ChemtankMarker3>(), 10, 4, player.whoAmI, 0f);
 
 
 			}
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Chemtank.ChemtankMarker4>()] < 1)
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Ranged.Chemtank.ChemtankMarker4>()] < 1)
 			{
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Chemtank.ChemtankMarker4>(), 10, 4, player.whoAmI, 0f);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Ranged.Chemtank.ChemtankMarker4>(), 10, 4, player.whoAmI, 0f);
 
 
 			}
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Chemtank.ChemtankMarker5>()] < 1)
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Ranged.Chemtank.ChemtankMarker5>()] < 1)
 			{
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Chemtank.ChemtankMarker5>(), 10, 4, player.whoAmI, 0f);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Ranged.Chemtank.ChemtankMarker5>(), 10, 4, player.whoAmI, 0f);
 
 
 			}
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Chemtank.ChemtankMarker6>()] < 1)
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Ranged.Chemtank.ChemtankMarker6>()] < 1)
 			{
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Chemtank.ChemtankMarker6>(), 10, 4, player.whoAmI, 0f);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Ranged.Chemtank.ChemtankMarker6>(), 10, 4, player.whoAmI, 0f);
 
 
 			}

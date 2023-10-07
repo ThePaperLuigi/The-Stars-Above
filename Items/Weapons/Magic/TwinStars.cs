@@ -49,7 +49,7 @@ namespace StarsAbove.Items.Weapons.Magic
 			Item.value = Item.buyPrice(gold: 1);          
 			Item.noMelee = true;
 			Item.noUseGraphic = true;
-			Item.shoot = ProjectileType<Projectiles.TwinStars.TwinStarLaser1>();
+			Item.shoot = ProjectileType<Projectiles.Magic.TwinStars.TwinStarLaser1>();
 			Item.shootSpeed = 14f;
 		}
 		 
@@ -72,15 +72,15 @@ namespace StarsAbove.Items.Weapons.Magic
 		{
 
 			player.AddBuff(BuffType<Buffs.TwinStarsBuff>(), 2);
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.TwinStars.TwinStar1>()] < 1)
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Magic.TwinStars.TwinStar1>()] < 1)
 			{
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.TwinStars.TwinStar1>(), 0, 4, player.whoAmI, 0f);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Magic.TwinStars.TwinStar1>(), 0, 4, player.whoAmI, 0f);
 
 
 			}
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.TwinStars.TwinStar2>()] < 1)
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Magic.TwinStars.TwinStar2>()] < 1)
 			{
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.TwinStars.TwinStar2>(), 0, 4, player.whoAmI, 0f);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Magic.TwinStars.TwinStar2>(), 0, 4, player.whoAmI, 0f);
 
 
 			}
@@ -98,9 +98,9 @@ namespace StarsAbove.Items.Weapons.Magic
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, velocity.X, velocity.Y,ProjectileType<Projectiles.TwinStars.TwinStarLaser2>(), damage, 0f, player.whoAmI);
-			Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.GetModPlayer<WeaponPlayer>().starPosition1, Vector2.Zero, ProjectileType<Projectiles.TwinStars.TwinStarShine1>(), 0, 0f, player.whoAmI);
-			Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.GetModPlayer<WeaponPlayer>().starPosition2, Vector2.Zero, ProjectileType<Projectiles.TwinStars.TwinStarShine2>(), 0, 0f, player.whoAmI);
+			Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, velocity.X, velocity.Y,ProjectileType<Projectiles.Magic.TwinStars.TwinStarLaser2>(), damage, 0f, player.whoAmI);
+			Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.GetModPlayer<WeaponPlayer>().starPosition1, Vector2.Zero, ProjectileType<Projectiles.Magic.TwinStars.TwinStarShine1>(), 0, 0f, player.whoAmI);
+			Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.GetModPlayer<WeaponPlayer>().starPosition2, Vector2.Zero, ProjectileType<Projectiles.Magic.TwinStars.TwinStarShine2>(), 0, 0f, player.whoAmI);
 
 
 			player.manaRegenDelay = 240;

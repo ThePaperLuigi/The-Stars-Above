@@ -1,15 +1,12 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs;
 using StarsAbove.Items.Essences;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using StarsAbove.Buffs.BloodBlade;
-using StarsAbove.Projectiles.BloodBlade;
-using StarsAbove.Projectiles.Umbra;
 using StarsAbove.Systems;
+using StarsAbove.Projectiles.Melee.Umbra;
 
 namespace StarsAbove.Items.Weapons.Melee
 {

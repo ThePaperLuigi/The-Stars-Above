@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs.SkyStrikerBuffs;
 using StarsAbove.Items.Essences;
-using StarsAbove.Projectiles.SkyStriker;
+using StarsAbove.Projectiles.Melee.SkyStriker;
 using StarsAbove.Systems;
 using Terraria;
 using Terraria.DataStructures;

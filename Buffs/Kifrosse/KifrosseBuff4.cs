@@ -16,7 +16,7 @@ namespace StarsAbove.Buffs.Kifrosse
 
 		public override void Update(Player player, ref int buffIndex) {
 			WeaponPlayer modPlayer = player.GetModPlayer<WeaponPlayer>();
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Kifrosse.Kifrosse4>()] > 0) {
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Summon.Kifrosse.Kifrosse4>()] > 0) {
 				modPlayer.Kifrosse4 = true;
 			}
 			if (!modPlayer.Kifrosse4) {

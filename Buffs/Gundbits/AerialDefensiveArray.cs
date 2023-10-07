@@ -16,7 +16,7 @@ namespace StarsAbove.Buffs.Gundbits
 
 		public override void Update(Player player, ref int buffIndex) {
 			WeaponPlayer modPlayer = player.GetModPlayer<WeaponPlayer>();
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Gundbit.Gundbits>()] > 0) {
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Magic.Gundbit.Gundbits>()] > 0) {
 				modPlayer.GundbitsActive = true;
 			}
 			if (!modPlayer.GundbitsActive) {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using StarsAbove.Items.Essences;
-using StarsAbove.Projectiles;
+using StarsAbove.Projectiles.Summon.Apalistik;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.Creative;

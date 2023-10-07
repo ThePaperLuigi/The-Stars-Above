@@ -6,8 +6,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Buffs.HunterSymphony;
-using StarsAbove.Projectiles.HunterSymphony;
 using StarsAbove.Systems;
+using StarsAbove.Projectiles.Magic.HunterSymphony;
 
 namespace StarsAbove.Items.Weapons.Magic
 {

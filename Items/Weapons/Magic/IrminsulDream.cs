@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using StarsAbove.Items.Essences;
 using StarsAbove.Items.Prisms;
-using StarsAbove.Projectiles.IrminsulDream;
+using StarsAbove.Projectiles.Magic.IrminsulDream;
 using StarsAbove.Systems;
 using System;
 using Terraria;
@@ -52,7 +52,7 @@ namespace StarsAbove.Items.Weapons.Magic
 			Item.value = Item.buyPrice(gold: 1);          
 			Item.noMelee = true;
 			Item.noUseGraphic = true;
-			Item.shoot = ProjectileType<Projectiles.TwinStars.TwinStarLaser1>();
+			Item.shoot = ProjectileType<Projectiles.Magic.TwinStars.TwinStarLaser1>();
 			Item.shootSpeed = 14f;
 		}
 		 

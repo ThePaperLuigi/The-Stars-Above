@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs.TrickspinTwoStep;
 using StarsAbove.Items.Essences;
-using StarsAbove.Projectiles.TrickspinTwoStep;
+using StarsAbove.Projectiles.Summon.TrickspinTwoStep;
 using StarsAbove.Systems;
 using System;
 using Terraria;

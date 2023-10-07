@@ -8,9 +8,9 @@ using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using StarsAbove.Buffs;
 using StarsAbove.Buffs.Ozma;
-using StarsAbove.Projectiles.Ozma;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
+using StarsAbove.Projectiles.Magic.Ozma;
 
 namespace StarsAbove.Items.Weapons.Magic
 {

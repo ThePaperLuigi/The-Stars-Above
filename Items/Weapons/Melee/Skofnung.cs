@@ -5,7 +5,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using StarsAbove.Projectiles.Skofnung;
+using StarsAbove.Projectiles.Melee.Skofnung;
 
 namespace StarsAbove.Items.Weapons.Melee
 {
@@ -73,9 +73,9 @@ namespace StarsAbove.Items.Weapons.Melee
 		public override void HoldItem(Player player)
 		{
 			player.AddBuff(BuffType<Buffs.Skofnung.SkofnungBuff>(), 2);
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Skofnung.SkofnungSummon>()] < 1)
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Melee.Skofnung.SkofnungSummon>()] < 1)
 			{
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Skofnung.SkofnungSummon>(), 8, 4, player.whoAmI, 0f);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Melee.Skofnung.SkofnungSummon>(), 8, 4, player.whoAmI, 0f);
 
 
 			}

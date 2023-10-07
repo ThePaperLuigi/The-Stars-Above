@@ -3,7 +3,7 @@ using StarsAbove.Buffs;
 using StarsAbove.Buffs.RedMage;
 using StarsAbove.Items.Essences;
 using StarsAbove.Items.Prisms;
-using StarsAbove.Projectiles.RedMage;
+using StarsAbove.Projectiles.Magic.RedMage;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
 using Terraria;

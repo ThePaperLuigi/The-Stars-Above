@@ -16,7 +16,7 @@ namespace StarsAbove.Buffs.MorningStar
 
 		public override void Update(Player player, ref int buffIndex) {
 			WeaponPlayer modPlayer = player.GetModPlayer<WeaponPlayer>();
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.MorningStar.AlucardSword3>()] > 0) {
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Summon.MorningStar.AlucardSword3>()] > 0) {
 				modPlayer.AlucardSwordMinion3 = true;
 			}
 			if (!modPlayer.AlucardSwordMinion3) {

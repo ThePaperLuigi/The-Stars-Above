@@ -55,7 +55,7 @@ namespace StarsAbove.Items.Consumables
 		{
 			if (player.HeldItem.ModItem is LuminaryWand)
 			{
-				int type = ProjectileType<Projectiles.Starchild.GreenStarBit>();
+				int type = ProjectileType<Projectiles.Summon.Starchild.GreenStarBit>();
 				Vector2 position = player.GetModPlayer<WeaponPlayer>().lumaPosition;
 
 				float Speed = 28f;  //projectile speed

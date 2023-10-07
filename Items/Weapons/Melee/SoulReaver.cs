@@ -6,15 +6,11 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using StarsAbove.Buffs.BloodBlade;
-using StarsAbove.Projectiles.BloodBlade;
 using System;
 using Terraria.Audio;
-using StarsAbove.Projectiles.SoulReaver;
 using StarsAbove.Buffs.SoulReaver;
-using StarsAbove.Projectiles;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
+using StarsAbove.Projectiles.Melee.SoulReaver;
 
 namespace StarsAbove.Items.Weapons.Melee
 {

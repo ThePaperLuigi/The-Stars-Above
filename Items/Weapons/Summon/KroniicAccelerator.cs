@@ -3,7 +3,6 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using StarsAbove.Projectiles;
 using static Terraria.ModLoader.ModContent;
 using System;
 using StarsAbove.Items.Essences;
@@ -11,6 +10,7 @@ using StarsAbove.Items.Prisms;
 using Terraria.Audio;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
+using StarsAbove.Projectiles.Summon.KroniicPrincipality;
 
 namespace StarsAbove.Items.Weapons.Summon
 {
@@ -112,20 +112,20 @@ namespace StarsAbove.Items.Weapons.Summon
 		{
 			
 			player.GetModPlayer<WeaponPlayer>().kroniicHeld = 10;
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.TemporalTimepiece2>()] < 1)
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Summon.KroniicPrincipality.TemporalTimepiece2>()] < 1)
 			{
 				
-				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.TemporalTimepiece2>(), Item.damage, 4, player.whoAmI, 0f);
+				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Summon.KroniicPrincipality.TemporalTimepiece2>(), Item.damage, 4, player.whoAmI, 0f);
 
 
 				Main.projectile[index].originalDamage = Item.damage;
 
 			}
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.TemporalTimepiece3>()] < 1)
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Summon.KroniicPrincipality.TemporalTimepiece3>()] < 1)
 			{
 				
 
-				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.TemporalTimepiece3>(), Item.damage, 4, player.whoAmI, 0f);
+				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Summon.KroniicPrincipality.TemporalTimepiece3>(), Item.damage, 4, player.whoAmI, 0f);
 
 
 				Main.projectile[index].originalDamage = Item.damage;

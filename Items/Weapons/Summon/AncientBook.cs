@@ -7,12 +7,12 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using System;
 using StarsAbove.Items.Essences;
-using StarsAbove.Projectiles.Takodachi;
 using StarsAbove.Buffs;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
+using StarsAbove.Projectiles.Summon.Takodachi;
 
 namespace StarsAbove.Items.Weapons.Summon
 {

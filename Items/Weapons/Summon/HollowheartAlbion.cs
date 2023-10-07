@@ -49,7 +49,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			Item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
 			Item.noMelee = true; // Important because the spear is actually a projectile instead of an item. This prevents the melee hitbox of this item.
 			Item.noUseGraphic = true; // Important, it's kind of wired if people see two spears at one time. This prevents the melee animation of this item.
-			Item.shoot = ProjectileType<Projectiles.MelusineBeam>();
+			Item.shoot = ProjectileType<Projectiles.Summon.HollowheartAlbion.MelusineBeam>();
 			Item.shootSpeed = 90f;
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
 		}
@@ -92,7 +92,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			if (player.altFunctionUse == 2)
 			{
 
-				type = ProjectileType<Projectiles.ArondightBeam>();
+				type = ProjectileType<Projectiles.Summon.HollowheartAlbion.ArondightBeam>();
 				position = player.GetModPlayer<WeaponPlayer>().arondightPosition;
 
 				float Speed = 28f;  //projectile speed
@@ -128,7 +128,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			}
 			else
 			{
-				type = ProjectileType<Projectiles.MelusineBeam>();
+				type = ProjectileType<Projectiles.Summon.HollowheartAlbion.MelusineBeam>();
 				float Speed = 28f;
 
 				position = player.GetModPlayer<WeaponPlayer>().melusinePosition;//Synced from the projectile
@@ -172,15 +172,15 @@ namespace StarsAbove.Items.Weapons.Summon
 		{
 			
 			player.GetModPlayer<WeaponPlayer>().albionHeld = 10;
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Melusine>()] < 1)
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Summon.HollowheartAlbion.Melusine>()] < 1)
 			{
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Melusine>(), 0, 4, player.whoAmI, 0f);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Summon.HollowheartAlbion.Melusine>(), 0, 4, player.whoAmI, 0f);
 
 
 			}
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Arondight>()] < 1)
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Summon.HollowheartAlbion.Arondight>()] < 1)
 			{
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Arondight>(), 0, 4, player.whoAmI, 0f);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Summon.HollowheartAlbion.Arondight>(), 0, 4, player.whoAmI, 0f);
 
 
 			}

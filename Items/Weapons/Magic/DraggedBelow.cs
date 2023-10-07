@@ -2,7 +2,7 @@
 using StarsAbove.Buffs.DraggedBelow;
 using StarsAbove.Items.Essences;
 using StarsAbove.Items.Prisms;
-using StarsAbove.Projectiles.DraggedBelow;
+using StarsAbove.Projectiles.Magic.DraggedBelow;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
 using Terraria;

@@ -1,11 +1,7 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs;
-using StarsAbove.Buffs.BurningDesire;
 using StarsAbove.Buffs.CatalystMemory;
 using StarsAbove.Items.Essences;
-using StarsAbove.Projectiles.BurningDesire;
-using StarsAbove.Projectiles.CatalystMemory;
-using StarsAbove.Systems;
+using StarsAbove.Projectiles.Celestial.CatalystMemory;
 using StarsAbove.Systems;
 using Terraria;
 using Terraria.Audio;

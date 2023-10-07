@@ -3,10 +3,10 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using StarsAbove.Projectiles;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Items.Essences;
 using StarsAbove.Systems;
+using StarsAbove.Projectiles.Magic.VenerationOfButterflies;
 
 namespace StarsAbove.Items.Weapons.Other
 {

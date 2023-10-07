@@ -16,7 +16,6 @@ using StarsAbove.Items.BossBags;
 using StarsAbove.Projectiles.Bosses.Vagrant;
 using StarsAbove.NPCs.Vagrant;
 using StarsAbove.Buffs.Boss;
-using StarsAbove.Projectiles;
 using StarsAbove.Utilities;
 using StarsAbove.Projectiles.Bosses.Nalhaun;
 using SubworldLibrary;
@@ -29,6 +28,8 @@ using StarsAbove.NPCs.WarriorOfLight;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
 using StarsAbove.Subworlds;
+using StarsAbove.Projectiles.Bosses.OldBossAttacks;
+using StarsAbove.Projectiles.Extra;
 
 namespace StarsAbove.NPCs.AttackLibrary
 {
@@ -5924,7 +5925,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 
 				}
-				npc.AddBuff(BuffType<TsukiyomiTeleport>(), 500);
+				npc.AddBuff(BuffType<TsukiyomiTeleportBuff>(), 500);
 				if (SubworldSystem.IsActive<EternalConfluence>())
 				{
 					Vector2 moveTo = new Vector2(npc.position.X + 4900, npc.position.Y + 100);
@@ -6013,7 +6014,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					npc.localAI[0] = 2;
 					//SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Tedious, npc.Center);
 				}
-				npc.AddBuff(BuffType<TsukiyomiTeleport>(), 180);
+				npc.AddBuff(BuffType<TsukiyomiTeleportBuff>(), 180);
 
 				npc.netUpdate = true;
 				#endregion
@@ -6448,7 +6449,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					float speed = 10f;
-					int type = ProjectileType<Projectiles.Tsukiyomi.PlusPlanet>();
+					int type = ProjectileType<Projectiles.Bosses.Tsukiyomi.PlusPlanet>();
 					int damage = npc.damage/2 + 40/2;
 					var entitySource = npc.GetSource_FromAI();
 					SoundEngine.PlaySound(SoundID.Item124, npc.Center);
@@ -6520,7 +6521,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					float speed = 10f;
-					int type = ProjectileType<Projectiles.Tsukiyomi.PlusPlanet>();
+					int type = ProjectileType<Projectiles.Bosses.Tsukiyomi.PlusPlanet>();
 					int damage = npc.damage/2 + 40/2;
 					var entitySource = npc.GetSource_FromAI();
 					SoundEngine.PlaySound(SoundID.Item124, npc.Center);
@@ -7024,7 +7025,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					float speed = 1f;
-					int type = ProjectileType<Projectiles.Tsukiyomi.TsukiyomiStar>();
+					int type = ProjectileType<Projectiles.Bosses.Tsukiyomi.TsukiyomiStar>();
 					int damage = npc.damage/2 + 40/2;
 					var entitySource = npc.GetSource_FromAI();
 
@@ -7107,7 +7108,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					float speed = 1f;
-					int type = ProjectileType<Projectiles.Tsukiyomi.TsukiyomiStar>();
+					int type = ProjectileType<Projectiles.Bosses.Tsukiyomi.TsukiyomiStar>();
 					int damage = npc.damage/2 + 40/2;
 					var entitySource = npc.GetSource_FromAI();
 
@@ -7222,7 +7223,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					float speed = 7f;
-					int type = ProjectileType<Projectiles.Tsukiyomi.TsukiyomiStar>();
+					int type = ProjectileType<Projectiles.Bosses.Tsukiyomi.TsukiyomiStar>();
 					int damage = npc.damage/2 + 20/2;
 					var entitySource = npc.GetSource_FromAI();
 
@@ -7345,7 +7346,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					float speed = 7f;
-					int type = ProjectileType<Projectiles.Tsukiyomi.TsukiyomiStar>();
+					int type = ProjectileType<Projectiles.Bosses.Tsukiyomi.TsukiyomiStar>();
 					int damage = npc.damage/2 + 20/2;
 					var entitySource = npc.GetSource_FromAI();
 
@@ -8021,7 +8022,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					Projectile.NewProjectile(npc.GetSource_FromAI(), new Vector2(npc.Center.X + 30, npc.Center.Y - 35), Vector2.Zero, ProjectileType<TsukiWormhole>(), 0, 0f, Main.myPlayer);
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center, Vector2.Zero, ProjectileType<TsukiTeleport>(), 0, 0f, Main.myPlayer);
 
-					npc.AddBuff(BuffType<TsukiyomiTeleport>(), 380);
+					npc.AddBuff(BuffType<TsukiyomiTeleportBuff>(), 380);
 
 					
 
@@ -8106,7 +8107,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					Projectile.NewProjectile(npc.GetSource_FromAI(), new Vector2(npc.Center.X + 30, npc.Center.Y - 35), Vector2.Zero, ProjectileType<TsukiWormhole>(), 0, 0f, Main.myPlayer);
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center, Vector2.Zero, ProjectileType<TsukiTeleport>(), 0, 0f, Main.myPlayer);
 
-					npc.AddBuff(BuffType<TsukiyomiTeleport>(), 380);
+					npc.AddBuff(BuffType<TsukiyomiTeleportBuff>(), 380);
 
 
 
@@ -8186,7 +8187,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					Projectile.NewProjectile(npc.GetSource_FromAI(), new Vector2(npc.Center.X + 30, npc.Center.Y - 35), Vector2.Zero, ProjectileType<TsukiWormhole>(), 0, 0f, Main.myPlayer);
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center, Vector2.Zero, ProjectileType<TsukiTeleport>(), 0, 0f, Main.myPlayer);
 
-					npc.AddBuff(BuffType<TsukiyomiTeleport>(), 420);
+					npc.AddBuff(BuffType<TsukiyomiTeleportBuff>(), 420);
 
 					
 
@@ -8263,7 +8264,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					Projectile.NewProjectile(npc.GetSource_FromAI(), new Vector2(npc.Center.X + 30, npc.Center.Y - 35), Vector2.Zero, ProjectileType<TsukiWormhole>(), 0, 0f, Main.myPlayer);
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center, Vector2.Zero, ProjectileType<TsukiTeleport>(), 0, 0f, Main.myPlayer);
 
-					npc.AddBuff(BuffType<TsukiyomiTeleport>(), 420);
+					npc.AddBuff(BuffType<TsukiyomiTeleportBuff>(), 420);
 
 
 
@@ -8352,7 +8353,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				#region attack
 				SoundEngine.PlaySound(SoundID.DD2_DarkMageCastHeal, new Vector2(npc.position.X, npc.position.Y));
-				npc.AddBuff(BuffType<TsukiyomiTeleport>(), 220);
+				npc.AddBuff(BuffType<TsukiyomiTeleportBuff>(), 220);
 
 				int type = ProjectileType<TsukiShadowlessCeruleanAfterimage>();
 				int damage = npc.damage/2 + 50/2;
@@ -8759,7 +8760,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				#region attack
 
-				npc.AddBuff(BuffType<TsukiyomiTeleport>(), 60);
+				npc.AddBuff(BuffType<TsukiyomiTeleportBuff>(), 60);
 				Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<fastRadiate>(), 0, 0, Main.myPlayer, 0f);
 
 				//SoundEngine.PlaySound(StarsAboveAudio.SFX_BuryTheLightPrep, npc.Center);
@@ -8832,7 +8833,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 				#region attack
-				npc.AddBuff(BuffType<TsukiyomiTeleport>(), 220);
+				npc.AddBuff(BuffType<TsukiyomiTeleportBuff>(), 220);
 
 				
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_BuryTheLightPrep, npc.Center);
@@ -8943,7 +8944,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 				#region attack
-				npc.AddBuff(BuffType<TsukiyomiTeleport>(), 220);
+				npc.AddBuff(BuffType<TsukiyomiTeleportBuff>(), 220);
 
 
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_BuryTheLightPrep, npc.Center);
@@ -12191,7 +12192,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					float speed = 1f;
-					int type = ProjectileType<Projectiles.Tsukiyomi.TsukiyomiStar>();
+					int type = ProjectileType<Projectiles.Bosses.Tsukiyomi.TsukiyomiStar>();
 					int damage = npc.damage/2 + 50/2;
 					var entitySource = npc.GetSource_FromAI();
 
@@ -12343,8 +12344,8 @@ namespace StarsAbove.NPCs.AttackLibrary
 					{
 						Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y + 400), 0, 0, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
 					}
-					Projectile.NewProjectile(entitySource, new Vector2(npc.Center.X, npc.Center.Y - 400), Vector2.Zero, ProjectileType<Projectiles.Tsukiyomi.PlusPlanet>(), damage * 2, 0f, Main.myPlayer);
-					Projectile.NewProjectile(entitySource, new Vector2(npc.Center.X, npc.Center.Y + 400), Vector2.Zero, ProjectileType<Projectiles.Tsukiyomi.PlusPlanet>(), damage * 2, 0f, Main.myPlayer);
+					Projectile.NewProjectile(entitySource, new Vector2(npc.Center.X, npc.Center.Y - 400), Vector2.Zero, ProjectileType<Projectiles.Bosses.Tsukiyomi.PlusPlanet>(), damage * 2, 0f, Main.myPlayer);
+					Projectile.NewProjectile(entitySource, new Vector2(npc.Center.X, npc.Center.Y + 400), Vector2.Zero, ProjectileType<Projectiles.Bosses.Tsukiyomi.PlusPlanet>(), damage * 2, 0f, Main.myPlayer);
 					
 				}
 

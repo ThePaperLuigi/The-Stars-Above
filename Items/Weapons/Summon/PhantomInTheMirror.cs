@@ -45,7 +45,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			Item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
 			Item.noMelee = true; // Important because the spear is actually a projectile instead of an item. This prevents the melee hitbox of this item.
 			Item.noUseGraphic = true; // Important, it's kind of wired if people see two spears at one time. This prevents the melee animation of this item.
-			Item.shoot = ProjectileType<Projectiles.PhantomInTheMirrorProjectile>();
+			Item.shoot = ProjectileType<Projectiles.Summon.PhantomInTheMirror.PhantomInTheMirrorProjectile>();
 			Item.shootSpeed = 3f;
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
 		}
@@ -85,7 +85,7 @@ namespace StarsAbove.Items.Weapons.Summon
 							}
 							teleportCooldown = 30;
 							vector32.X -= (float)(player.width / 2);
-							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),vector32.X, vector32.Y, 0, 0, ProjectileType<Projectiles.PhantomMarker>(), 0, 0, player.whoAmI, 0f);
+							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),vector32.X, vector32.Y, 0, 0, ProjectileType<Projectiles.Summon.PhantomInTheMirror.PhantomMarker>(), 0, 0, player.whoAmI, 0f);
 						}
 						else
 						{
@@ -101,13 +101,13 @@ namespace StarsAbove.Items.Weapons.Summon
 							player.GetModPlayer<WeaponPlayer>().phantomKill = true;
 							player.GetModPlayer<WeaponPlayer>().phantomSavedPosition = new Vector2(player.Center.X, player.Center.Y - 5);
 							Vector2 teleportPosition = new Vector2(player.Center.X, player.Center.Y - 5);
-							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.Center.X, player.Center.Y, 0, 0, ProjectileType<Projectiles.BloodstainedCrescent>(), 90, 0, player.whoAmI, 0f);
+							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.Center.X, player.Center.Y, 0, 0, ProjectileType<Projectiles.Summon.PhantomInTheMirror.BloodstainedCrescent>(), 90, 0, player.whoAmI, 0f);
 
 
 							
 							player.Teleport(vector32, 1, 0);
 							NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float)player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
-							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.Center.X, player.Center.Y, 0, 0, ProjectileType<Projectiles.BloodstainedCrescent>(), 90, 0, player.whoAmI, 0f);
+							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.Center.X, player.Center.Y, 0, 0, ProjectileType<Projectiles.Summon.PhantomInTheMirror.BloodstainedCrescent>(), 90, 0, player.whoAmI, 0f);
 
 							teleportCooldown = 30;
 							vector32 = teleportPosition;

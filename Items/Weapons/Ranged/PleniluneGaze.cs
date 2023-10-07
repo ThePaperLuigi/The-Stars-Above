@@ -3,13 +3,13 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using StarsAbove.Projectiles;
 using static Terraria.ModLoader.ModContent;
 using System;
 using StarsAbove.Items.Essences;
 using Terraria.Audio;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
+using StarsAbove.Projectiles.Ranged.PleniluneGaze;
 
 namespace StarsAbove.Items.Weapons.Ranged
 {

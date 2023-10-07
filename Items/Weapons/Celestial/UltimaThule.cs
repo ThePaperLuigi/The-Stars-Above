@@ -3,7 +3,6 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using StarsAbove.Projectiles;
 using StarsAbove.Buffs;
 using static Terraria.ModLoader.ModContent;
 using System;
@@ -13,6 +12,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
+using StarsAbove.Projectiles.Celestial.UltimaThule;
 
 namespace StarsAbove.Items.Weapons.Celestial
 {
@@ -180,12 +180,12 @@ namespace StarsAbove.Items.Weapons.Celestial
                     player.AddBuff(BuffType<Buffs.Voidform>(), 590);
                     SoundEngine.PlaySound(StarsAboveAudio.SFX_CelestialConception, player.Center);
 
-                    if (player.ownedProjectileCounts[ProjectileType<Projectiles.UltimaThule.UltimaStar>()] < 1)
+                    if (player.ownedProjectileCounts[ProjectileType<Projectiles.Celestial.UltimaThule.UltimaStar>()] < 1)
                     {
                         //Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.UltimaThule.UltimaVFX2>(), 0, 0, player.whoAmI, 0f);
-                        Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.UltimaThule.UltimaBurstFX>(), player.GetWeaponDamage(Item) * 2, 0, player.whoAmI, 0f);
-                        Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.UltimaThule.UltimaStar>(), player.GetWeaponDamage(Item)*2, 0, player.whoAmI, 0f);
-                        Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.UltimaThule.UltimaVFX1>(), 0, 0, player.whoAmI, 0f);
+                        Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Celestial.UltimaThule.UltimaBurstFX>(), player.GetWeaponDamage(Item) * 2, 0, player.whoAmI, 0f);
+                        Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Celestial.UltimaThule.UltimaStar>(), player.GetWeaponDamage(Item)*2, 0, player.whoAmI, 0f);
+                        Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Celestial.UltimaThule.UltimaVFX1>(), 0, 0, player.whoAmI, 0f);
 
                     }
                 }
@@ -201,33 +201,33 @@ namespace StarsAbove.Items.Weapons.Celestial
         {
             player.AddBuff(BuffType<Buffs.Ultima>(), 2);
             
-            if (player.ownedProjectileCounts[ProjectileType<Projectiles.UltimaThule.UltimaPlanet1>()] < 1)
+            if (player.ownedProjectileCounts[ProjectileType<Projectiles.Celestial.UltimaThule.UltimaPlanet1>()] < 1)
             {
-                Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.UltimaThule.UltimaPlanet1>(), player.GetWeaponDamage(Item), 4, player.whoAmI, 0f);
+                Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Celestial.UltimaThule.UltimaPlanet1>(), player.GetWeaponDamage(Item), 4, player.whoAmI, 0f);
 
 
             }
-            if (player.ownedProjectileCounts[ProjectileType<Projectiles.UltimaThule.UltimaPlanet2>()] < 1)
+            if (player.ownedProjectileCounts[ProjectileType<Projectiles.Celestial.UltimaThule.UltimaPlanet2>()] < 1)
             {
-                Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.UltimaThule.UltimaPlanet2>(), player.GetWeaponDamage(Item), 4, player.whoAmI, 0f);
+                Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Celestial.UltimaThule.UltimaPlanet2>(), player.GetWeaponDamage(Item), 4, player.whoAmI, 0f);
 
 
             }
-            if (player.ownedProjectileCounts[ProjectileType<Projectiles.UltimaThule.UltimaPlanet3>()] < 1)
+            if (player.ownedProjectileCounts[ProjectileType<Projectiles.Celestial.UltimaThule.UltimaPlanet3>()] < 1)
             {
-                Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.UltimaThule.UltimaPlanet3>(), player.GetWeaponDamage(Item), 4, player.whoAmI, 0f);
+                Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Celestial.UltimaThule.UltimaPlanet3>(), player.GetWeaponDamage(Item), 4, player.whoAmI, 0f);
 
 
             }
-            if (player.ownedProjectileCounts[ProjectileType<Projectiles.UltimaThule.UltimaPlanet4>()] < 1)
+            if (player.ownedProjectileCounts[ProjectileType<Projectiles.Celestial.UltimaThule.UltimaPlanet4>()] < 1)
             {
-                Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.UltimaThule.UltimaPlanet4>(), player.GetWeaponDamage(Item), 4, player.whoAmI, 0f);
+                Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Celestial.UltimaThule.UltimaPlanet4>(), player.GetWeaponDamage(Item), 4, player.whoAmI, 0f);
 
 
             }
-            if (player.ownedProjectileCounts[ProjectileType<Projectiles.UltimaThule.UltimaPlanet5>()] < 1)
+            if (player.ownedProjectileCounts[ProjectileType<Projectiles.Celestial.UltimaThule.UltimaPlanet5>()] < 1)
             {
-                Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.UltimaThule.UltimaPlanet5>(), player.GetWeaponDamage(Item), 4, player.whoAmI, 0f);
+                Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Celestial.UltimaThule.UltimaPlanet5>(), player.GetWeaponDamage(Item), 4, player.whoAmI, 0f);
 
 
             }
@@ -244,7 +244,7 @@ namespace StarsAbove.Items.Weapons.Celestial
                     Vector2 left = new Vector2(player.position.X - 1000 + Main.rand.Next(-200, 200), player.position.Y + Main.rand.Next(-1200, 1200));
                     Vector2 right = new Vector2(player.position.X + 1000 + Main.rand.Next(-200, 200), player.position.Y + Main.rand.Next(-1200, 1200));
                     int damage = player.GetWeaponDamage(Item);  //projectile damage
-                    int type = Main.rand.Next(new int[] { ProjectileType<Projectiles.UltimaThule.UltimaStarProjectile>(), ProjectileType<Projectiles.UltimaThule.RandomPlanets>(), ProjectileType<Projectiles.UltimaThule.UltimaStarProjectile>(), ProjectileType<Projectiles.UltimaThule.UltimaStarProjectile>(), ProjectileType<Projectiles.LongAsteroid>(), ProjectileID.FairyQueenMagicItemShot, ProjectileID.FairyQueenRangedItemShot });
+                    int type = Main.rand.Next(new int[] { ProjectileType<Projectiles.Celestial.UltimaThule.UltimaStarProjectile>(), ProjectileType<Projectiles.Celestial.UltimaThule.RandomPlanets>(), ProjectileType<Projectiles.Celestial.UltimaThule.UltimaStarProjectile>(), ProjectileType<Projectiles.Celestial.UltimaThule.UltimaStarProjectile>(), ProjectileType<Projectiles.Celestial.UltimaThule.LongAsteroid>(), ProjectileID.FairyQueenMagicItemShot, ProjectileID.FairyQueenRangedItemShot });
 
                     float rotation1 = (float)Math.Atan2(above.Y - (player.position.Y + (player.height * 0.5f)), above.X - (player.position.X + (player.width * 0.5f)));
                     float rotation2 = (float)Math.Atan2(below.Y - (player.position.Y + (player.height * 0.5f)), below.X - (player.position.X + (player.width * 0.5f)));
@@ -451,7 +451,7 @@ namespace StarsAbove.Items.Weapons.Celestial
                         //Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity.X, arrowVelocity.Y, ProjectileType<UltimaStab>(), 0, 0, player.whoAmI);
                         if (player.HasBuff(BuffType<CelestialCacophony>()))
                         {
-                            Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.Center.X + Main.rand.Next(-100, 100), player.Center.Y - 600, meteorVelocity.X, meteorVelocity.Y, ProjectileType<Projectiles.UltimaThule.RandomPlanetProjectile>(), player.GetWeaponDamage(Item) * 3, 5, player.whoAmI, 0, 0);
+                            Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.Center.X + Main.rand.Next(-100, 100), player.Center.Y - 600, meteorVelocity.X, meteorVelocity.Y, ProjectileType<Projectiles.Celestial.UltimaThule.RandomPlanetProjectile>(), player.GetWeaponDamage(Item) * 3, 5, player.whoAmI, 0, 0);
 
                             numberProjectiles = 7 + Main.rand.Next(5); //random shots
                             numberProjectiles2 = 3 + Main.rand.Next(5); //random shots
@@ -465,7 +465,7 @@ namespace StarsAbove.Items.Weapons.Celestial
                         }
                         else
                         {
-                            Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.Center.X + Main.rand.Next(-100, 100), player.Center.Y - 600, meteorVelocity.X, meteorVelocity.Y, ProjectileType<Projectiles.UltimaThule.RandomPlanetProjectile>(), player.GetWeaponDamage(Item), 5, player.whoAmI, 0, 1);
+                            Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.Center.X + Main.rand.Next(-100, 100), player.Center.Y - 600, meteorVelocity.X, meteorVelocity.Y, ProjectileType<Projectiles.Celestial.UltimaThule.RandomPlanetProjectile>(), player.GetWeaponDamage(Item), 5, player.whoAmI, 0, 1);
 
                             numberProjectiles = 2 + Main.rand.Next(2); //random shots
                             numberProjectiles2 = 3 + Main.rand.Next(2); //random shots
@@ -512,7 +512,7 @@ namespace StarsAbove.Items.Weapons.Celestial
                                                                                                                // If you want to randomize the speed to stagger the projectiles
                             float scale = 1f - (Main.rand.NextFloat() * .9f);
                             perturbedSpeed = perturbedSpeed * scale;
-                            Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X + Main.rand.Next(-100, 100), player.MountedCenter.Y - 600, perturbedSpeed.X, perturbedSpeed.Y, ProjectileType<Projectiles.UltimaThule.UltimaStarProjectile2>(), player.GetWeaponDamage(Item) / 3, 5, player.whoAmI);
+                            Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X + Main.rand.Next(-100, 100), player.MountedCenter.Y - 600, perturbedSpeed.X, perturbedSpeed.Y, ProjectileType<Projectiles.Celestial.UltimaThule.UltimaStarProjectile2>(), player.GetWeaponDamage(Item) / 3, 5, player.whoAmI);
                         }
                         for (int i = 0; i < numberProjectiles2; i++)
                         {

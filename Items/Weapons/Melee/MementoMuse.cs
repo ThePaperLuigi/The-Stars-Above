@@ -43,7 +43,7 @@ namespace StarsAbove.Items.Weapons.Melee
 			Item.rare = ItemRarityID.LightPurple;              //The rarity of the weapon, from -1 to 13
 			Item.UseSound = SoundID.Item1;      //The sound when the weapon is using
 			Item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
-			Item.shoot = ProjectileType<Projectiles.MementoMuseProjectile>();
+			Item.shoot = ProjectileType<Projectiles.Melee.MementoMuse.MementoMuseProjectile>();
 			Item.shootSpeed = 2f;
 		}
 

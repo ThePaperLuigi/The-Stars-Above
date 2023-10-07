@@ -9,17 +9,17 @@ using Terraria.GameContent.Bestiary;
 using System.Collections.Generic;
 using StarsAbove.Biomes;
 using StarsAbove.Utilities;
-using StarsAbove.Projectiles.SkyStriker;
 using Microsoft.Xna.Framework;
+using StarsAbove.Projectiles.Melee.SkyStriker;
 
 namespace StarsAbove.NPCs.TownNPCs
 {
-	/// <summary>
-	/// The main focus of this NPC is to show how to make something similar to the vanilla bone merchant;
-	/// which means that the NPC will act like any other town NPC but won't have a happiness button, won't appear on the minimap,
-	/// and will spawn like an enemy NPC. If you want a traditional town NPC instead, see <see cref="ExamplePerson"/>.
-	/// </summary>
-	public class Yojimbo : ModNPC
+    /// <summary>
+    /// The main focus of this NPC is to show how to make something similar to the vanilla bone merchant;
+    /// which means that the NPC will act like any other town NPC but won't have a happiness button, won't appear on the minimap,
+    /// and will spawn like an enemy NPC. If you want a traditional town NPC instead, see <see cref="ExamplePerson"/>.
+    /// </summary>
+    public class Yojimbo : ModNPC
 	{
 		public override void SetStaticDefaults()
 		{

@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Items.Essences;
-using StarsAbove.Projectiles.KazimierzSeraphim;
+using StarsAbove.Projectiles.Summon.KazimierzSeraphim;
 using StarsAbove.Systems;
 using Terraria;
 using Terraria.DataStructures;
@@ -74,10 +74,10 @@ namespace StarsAbove.Items.Weapons.Summon
 		public override void HoldItem(Player player)
 		{
 			player.GetModPlayer<WeaponPlayer>().seraphimHeld = 10;
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.KazimierzSeraphimProjectile>()] < 1)
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Summon.KazimierzSeraphim.KazimierzSeraphimProjectile>()] < 1)
 			{
 				
-				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.KazimierzSeraphimProjectile>(), 39, 4, player.whoAmI, 0f);
+				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Summon.KazimierzSeraphim.KazimierzSeraphimProjectile>(), 39, 4, player.whoAmI, 0f);
 
 
 				Main.projectile[index].originalDamage = Item.damage;

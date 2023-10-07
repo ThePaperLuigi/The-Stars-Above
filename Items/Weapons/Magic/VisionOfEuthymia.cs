@@ -63,9 +63,9 @@ namespace StarsAbove.Items.Weapons.Magic
         public override bool? UseItem(Player player)
         {
 			player.AddBuff(BuffType<Buffs.EyeOfEuthymiaBuff>(), 2400);
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.EyeOfEuthymia>()] < 1)
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Magic.EyeOfEuthymia.EyeOfEuthymia>()] < 1)
 			{
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.EyeOfEuthymia>(), 66, 4, player.whoAmI, 0f);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Magic.EyeOfEuthymia.EyeOfEuthymia>(), 66, 4, player.whoAmI, 0f);
 
 
 			}

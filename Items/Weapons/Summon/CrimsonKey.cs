@@ -5,12 +5,12 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using StarsAbove.Projectiles;
 using System;
 using StarsAbove.Items.Essences;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using StarsAbove.Systems;
+using StarsAbove.Projectiles.Summon.KeyOfTheSinner;
 
 namespace StarsAbove.Items.Weapons.Summon
 {

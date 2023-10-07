@@ -19,7 +19,7 @@ namespace StarsAbove.Buffs.Chronoclock
         public override void Update(Player player, ref int buffIndex)
         {
             StarsAbovePlayer modPlayer = player.GetModPlayer<StarsAbovePlayer>();
-            if (player.ownedProjectileCounts[ProjectileType<Projectiles.Chronoclock.FragmentOfTimeMinion>()] > 0)
+            if (player.ownedProjectileCounts[ProjectileType<Projectiles.Summon.Chronoclock.FragmentOfTimeMinion>()] > 0)
             {
                 player.buffTime[buffIndex] = 18000;
             }

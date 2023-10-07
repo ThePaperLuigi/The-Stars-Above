@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using StarsAbove.Projectiles.Extra;
 using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using System;

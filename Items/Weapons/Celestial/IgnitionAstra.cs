@@ -55,7 +55,7 @@ namespace StarsAbove.Items.Weapons.Celestial
 			Item.rare = ItemRarityID.Purple;              //The rarity of the weapon, from -1 to 13
 			Item.UseSound = SoundID.Item1;      //The sound when the weapon is using
 			Item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
-			Item.shoot = ProjectileType<Projectiles.ignitionAstraSwing>();
+			Item.shoot = ProjectileType<Projectiles.Celestial.IgnitionAstra.ignitionAstraSwing>();
 			Item.shootSpeed = 10f;
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
 

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using StarsAbove.Buffs;
 using StarsAbove.Buffs.LamentingPocketwatch;
-using StarsAbove.Projectiles.LamentingPocketwatch;
+using StarsAbove.Projectiles.Summon.LamentingPocketwatch;
 using StarsAbove.Systems;
 using Terraria;
 using Terraria.DataStructures;

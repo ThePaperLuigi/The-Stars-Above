@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Items.Essences;
 using StarsAbove.Items.Prisms;
-using StarsAbove.Projectiles.Starchild;
+using StarsAbove.Projectiles.Summon.Starchild;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;

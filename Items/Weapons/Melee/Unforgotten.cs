@@ -3,7 +3,6 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using StarsAbove.Projectiles;
 using static Terraria.ModLoader.ModContent;
 using System;
 using StarsAbove.Items.Essences;
@@ -11,6 +10,7 @@ using StarsAbove.Items.Prisms;
 using Terraria.Audio;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
+using StarsAbove.Projectiles.Melee.Unforgotten;
 
 namespace StarsAbove.Items.Weapons.Melee
 {
@@ -93,7 +93,7 @@ namespace StarsAbove.Items.Weapons.Melee
                     //Main.PlaySound(SoundLoader.customSoundType, (int)player.Center.X, (int)player.Center.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/TeleportPrep"));
                     player.GetModPlayer<WeaponPlayer>().soulUnboundLocation = new Vector2(player.Center.X, player.Center.Y - 5);
                     vector32 = new Vector2(player.Center.X, player.Center.Y - 5);
-                    Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),vector32.X, vector32.Y, 0, 0, ProjectileType<Projectiles.SoulMarker>(), 0, 0, player.whoAmI, 0f);
+                    Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),vector32.X, vector32.Y, 0, 0, ProjectileType<Projectiles.Melee.Unforgotten.SoulMarker>(), 0, 0, player.whoAmI, 0f);
                     player.GetModPlayer<WeaponPlayer>().soulUnboundActive = true;
 
 

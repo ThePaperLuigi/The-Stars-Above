@@ -16,7 +16,7 @@ namespace StarsAbove.Buffs
 
 		public override void Update(Player player, ref int buffIndex) {
 			WeaponPlayer modPlayer = player.GetModPlayer<WeaponPlayer>();
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Satanael>()] > 0) {
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Summon.KeyOfTheSinner.Satanael>()] > 0) {
 				modPlayer.SatanaelMinion = true;
 			}
 			if (!modPlayer.SatanaelMinion) {

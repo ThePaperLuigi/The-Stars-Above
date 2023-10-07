@@ -1,5 +1,7 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Items.Essences;
+using Microsoft.Xna.Framework;
+using StarsAbove.Items.Essences;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -9,9 +11,9 @@ using StarsAbove.Buffs;
 using StarsAbove.Items.Pets;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
-using StarsAbove.Projectiles.LevinstormAxe;
 using StarsAbove.Buffs.LevinstormAxe;
 using StarsAbove.Systems;
+using StarsAbove.Projectiles.Other.LevinstormAxe;
 
 namespace StarsAbove.Items.Weapons.Other
 {
@@ -54,7 +56,7 @@ namespace StarsAbove.Items.Weapons.Other
 			Item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
 			Item.noUseGraphic = true;
-			Item.shoot = ProjectileType<Projectiles.LevinstormAxe.LevinstormAxe1>();
+			Item.shoot = ProjectileType<Projectiles.Other.LevinstormAxe.LevinstormAxe1>();
 			Item.shootSpeed = 2;
 		}
 

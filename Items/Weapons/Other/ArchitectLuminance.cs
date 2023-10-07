@@ -51,7 +51,7 @@ namespace StarsAbove.Items.Weapons.Other
 			Item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
 			
-			Item.shoot = ProjectileType<Projectiles.ArchitectLuminance.ArchitectShoot>();
+			Item.shoot = ProjectileType<Projectiles.Other.ArchitectLuminance.ArchitectShoot>();
 			Item.shootSpeed = 38;
 		}
 
@@ -98,9 +98,9 @@ namespace StarsAbove.Items.Weapons.Other
 		{
 			Item.scale = 2f;
 			player.AddBuff(BuffType<Buffs.ArchitectLuminanceBuff>(), 2);
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.ArchitectLuminance.Armament>()] < 1)
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Other.ArchitectLuminance.Armament>()] < 1)
 			{
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.ArchitectLuminance.Armament>(), player.GetWeaponDamage(Item), 4, player.whoAmI, 0f);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Other.ArchitectLuminance.Armament>(), player.GetWeaponDamage(Item), 4, player.whoAmI, 0f);
 
 
 			}
@@ -158,7 +158,7 @@ namespace StarsAbove.Items.Weapons.Other
 
 				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, velocity.X, velocity.Y,ProjectileID.MoonlordBullet, damage/2, knockback, player.whoAmI);
 				
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, velocity.X/2, velocity.Y/2, ProjectileType<Projectiles.ArchitectLuminance.ArchitectShoot>(), 0, 3, player.whoAmI, 0f);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, velocity.X/2, velocity.Y/2, ProjectileType<Projectiles.Other.ArchitectLuminance.ArchitectShoot>(), 0, 3, player.whoAmI, 0f);
 
 
 			}
@@ -173,7 +173,7 @@ namespace StarsAbove.Items.Weapons.Other
 					Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, ProjectileID.LunarFlare, damage/3 , knockback, player.whoAmI);
 				}
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, velocity.X/2, velocity.Y/2, ProjectileType<Projectiles.ArchitectLuminance.ArchitectShoot>(), 0, 3, player.whoAmI, 0f);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, velocity.X/2, velocity.Y/2, ProjectileType<Projectiles.Other.ArchitectLuminance.ArchitectShoot>(), 0, 3, player.whoAmI, 0f);
 
 
 			}

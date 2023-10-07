@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Items.Essences;
-using StarsAbove.Projectiles;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -10,6 +9,8 @@ using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
+using StarsAbove.Projectiles.Bosses.OldBossAttacks;
+using StarsAbove.Projectiles.Melee.CrimsonSakuraAlpha;
 
 namespace StarsAbove.Items.Weapons.Melee
 {
@@ -55,7 +56,7 @@ namespace StarsAbove.Items.Weapons.Melee
 			Item.crit = 10;
 			Item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
-			Item.shoot = ProjectileType<Projectiles.bladeWillAttack>();
+			Item.shoot = ProjectileType<Projectiles.Melee.CrimsonSakuraAlpha.bladeWillAttack>();
 			Item.shootSpeed = 10f;
 		}
 		public override bool AltFunctionUse(Player player)

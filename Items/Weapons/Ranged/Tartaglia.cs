@@ -3,13 +3,13 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using StarsAbove.Projectiles;
 using static Terraria.ModLoader.ModContent;
 using System;
 using StarsAbove.Items.Essences;
 using Terraria.Audio;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
+using StarsAbove.Projectiles.Ranged.Tartaglia;
 
 namespace StarsAbove.Items.Weapons.Ranged
 {
@@ -46,7 +46,7 @@ namespace StarsAbove.Items.Weapons.Ranged
 			//item.UseSound = SoundID.Item11;
 			Item.autoReuse = true;
 			Item.channel = true;//Important for all "bows"
-			Item.shoot = ProjectileType<Projectiles.tartagliaSwing>(); ;
+			Item.shoot = ProjectileType<Projectiles.Ranged.Tartaglia.tartagliaSwing>(); ;
 			Item.shootSpeed = 15f;
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
 

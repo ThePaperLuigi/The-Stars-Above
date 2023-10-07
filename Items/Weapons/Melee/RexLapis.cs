@@ -1,16 +1,15 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Items.Essences;
-using StarsAbove.Projectiles;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
-using StarsAbove.Projectiles.RexLapis;
 using StarsAbove.Buffs.RexLapis;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
+using StarsAbove.Projectiles.Melee.RexLapis;
 
 namespace StarsAbove.Items.Weapons.Melee
 {

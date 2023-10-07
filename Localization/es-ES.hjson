@@ -11328,6 +11328,11 @@ Mods: {
 				// DisplayName: Dragalia Tag Damage
 				// Description: Mods.StarsAbove.Buffs.DragaliaTagDamage.Description
 			}
+
+			TsukiyomiTeleportBuff: {
+				// DisplayName: Tsukiyomi Teleport Buff
+				// Description: Mods.StarsAbove.Buffs.TsukiyomiTeleportBuff.Description
+			}
 		}
 
 		Bestiary: {

@@ -23,12 +23,12 @@ using StarsAbove.Buffs;
 using StarsAbove.Utilities;
 using Terraria.Graphics.Shaders;
 using StarsAbove.Projectiles.Bosses.Tsukiyomi;
-using StarsAbove.Projectiles;
 using SubworldLibrary;
 using StarsAbove.NPCs.WarriorOfLight;
 using StarsAbove.Items.Loot;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
+using StarsAbove.Projectiles.Extra;
 
 namespace StarsAbove.NPCs.Tsukiyomi
 {
@@ -890,7 +890,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 
 
 			//Returning from the teleport.
-			int index = NPC.FindBuffIndex(BuffType<TsukiyomiTeleport>());
+			int index = NPC.FindBuffIndex(BuffType<TsukiyomiTeleportBuff>());
 			if (index >= 0)
             {
 				NPC.dontTakeDamage = true;
@@ -976,7 +976,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 		{
 			// This makes the sprite flip horizontally in conjunction with the npc.direction.
 			//NPC.spriteDirection = NPC.direction;
-			if(NPC.HasBuff(BuffType<TsukiyomiTeleport>()))
+			if(NPC.HasBuff(BuffType<TsukiyomiTeleportBuff>()))
             {
 				NPC.frame.Y = (int)Frame.Empty * frameHeight;
 				return;
@@ -1102,7 +1102,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 			
 			if(NPC.localAI[1] == 10)
             {
-				NPC.AddBuff(BuffType<TsukiyomiTeleport>(), 240);
+				NPC.AddBuff(BuffType<TsukiyomiTeleportBuff>(), 240);
 				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Stronger, NPC.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)

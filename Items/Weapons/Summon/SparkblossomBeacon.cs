@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Items.Essences;
 using Terraria.GameContent.Creative;
-using StarsAbove.Projectiles.SparkblossomBeacon;
+using StarsAbove.Projectiles.Summon.SparkblossomBeacon;
 
 namespace StarsAbove.Items.Weapons.Summon
 {

@@ -1,112 +1,87 @@
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using Terraria.Audio;
-using Terraria.DataStructures;
-using Terraria.GameInput;
-using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
-using Terraria.ID;
-using Terraria.Localization;
-using Terraria;
-using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
-using Terraria.ModLoader.IO;
-using StarsAbove.Items;
-using StarsAbove.Items.Weapons;
-using StarsAbove.Items.Weapons.Summon;
-using StarsAbove.Items.Weapons.Ranged;
-using StarsAbove.Items.Weapons.Other;
-using StarsAbove.Items.Weapons.Celestial;
-using StarsAbove.Items.Weapons.Melee;
-using StarsAbove.Items.Weapons.Magic;
-using StarsAbove.Items.Weapons.Summon;
-using StarsAbove.Items.Weapons.Ranged;
-using StarsAbove.Items.Weapons.Other;
-using StarsAbove.Items.Weapons.Celestial;
-using StarsAbove.Items.Weapons.Melee;
-using StarsAbove.Items.Weapons.Magic;
-using StarsAbove.Projectiles;
-using StarsAbove.Buffs;
-using StarsAbove.NPCs;
 using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using Terraria.Audio;
-using Terraria.DataStructures;
-using Terraria.GameInput;
-using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
-using Terraria.ID;
-using Terraria.Localization;
-using Terraria;
-using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
-using Terraria.ModLoader.IO;
-using StarsAbove.Items;
-using StarsAbove.Items.Weapons;
-using StarsAbove.Items.Weapons.Summon;
-using StarsAbove.Items.Weapons.Ranged;
-using StarsAbove.Items.Weapons.Other;
-using StarsAbove.Items.Weapons.Celestial;
-using StarsAbove.Items.Weapons.Melee;
-using StarsAbove.Items.Weapons.Magic;
-using StarsAbove.Projectiles;
 using StarsAbove.Buffs;
-using StarsAbove.NPCs;
-using Microsoft.Xna.Framework.Audio;
-
-using StarsAbove.Dusts;
-using StarsAbove.Items.Consumables;
-using StarsAbove.UI.StellarNova;
-using SubworldLibrary;
-using StarsAbove.Buffs.SubworldModifiers;
-using StarsAbove.Projectiles.Otherworld;
-using StarsAbove.Projectiles.SkyStriker;
-using StarsAbove.Buffs.CosmicDestroyer;
-using StarsAbove.Buffs.CarianDarkMoon;
 using StarsAbove.Buffs.AshenAmbition;
-using StarsAbove.Biomes;
-using StarsAbove.Buffs.TheOnlyThingIKnowForReal;
-using StarsAbove.Buffs.VermillionDaemon;
-using StarsAbove.Subworlds;
-using StarsAbove.Buffs.Ozma;
-using StarsAbove.Prefixes;
-using StarsAbove.UI.StarfarerMenu;
-using StarsAbove.Buffs.StarfarerAttire;
-using StarsAbove.Buffs.HunterSymphony;
-using StarsAbove.Buffs.RedMage;
-using StarsAbove.Buffs.TagDamage;
-using StarsAbove.Buffs.BurningDesire;
-using StarsAbove.Utilities;
-using StarsAbove.Buffs.CatalystMemory;
-using StarsAbove.Items.Armor.StarfarerArmor;
-using StarsAbove.Buffs.Farewells;
-using StarsAbove.Buffs.Umbra;
-using StarsAbove.Projectiles.Chronoclock;
-using StarsAbove.Buffs.Chronoclock;
-using StarsAbove.Buffs.Nanomachina;
-using StarsAbove.Buffs.ManiacalJustice;
-using StarsAbove.Buffs.SupremeAuthority;
-using StarsAbove.Projectiles.CarianDarkMoon;
-using StarsAbove.Projectiles.AshenAmbition;
-using StarsAbove.Projectiles.TwinStars;
-using StarsAbove.Projectiles.Takodachi;
-using StarsAbove.Projectiles.BloodBlade;
-using StarsAbove.Projectiles.CosmicDestroyer;
-using StarsAbove.Projectiles.StellarNovas;
-using StarsAbove.Projectiles.Starchild;
-using StarsAbove.Projectiles.Pigment;
-using StarsAbove.Projectiles.UltimaThule;
 using StarsAbove.Buffs.BrilliantSpectrum;
-using StarsAbove.Projectiles.DreamersInkwell;
-using StarsAbove.Projectiles.BuryTheLight;
-using StarsAbove.Items.Armor.BlackSilence;
-using StarsAbove.Items.Armor.DraggedBelow;
-using StarsAbove.Buffs.DraggedBelow;
+using StarsAbove.Buffs.BurningDesire;
+using StarsAbove.Buffs.CarianDarkMoon;
+using StarsAbove.Buffs.CatalystMemory;
+using StarsAbove.Buffs.Chronoclock;
+using StarsAbove.Buffs.CosmicDestroyer;
 using StarsAbove.Buffs.DragaliaFound;
-using StarsAbove.Systems;
+using StarsAbove.Buffs.DraggedBelow;
+using StarsAbove.Buffs.Farewells;
+using StarsAbove.Buffs.HunterSymphony;
+using StarsAbove.Buffs.ManiacalJustice;
+using StarsAbove.Buffs.Nanomachina;
+using StarsAbove.Buffs.Ozma;
+using StarsAbove.Buffs.RedMage;
+using StarsAbove.Buffs.SupremeAuthority;
+using StarsAbove.Buffs.TagDamage;
+using StarsAbove.Buffs.TheOnlyThingIKnowForReal;
+using StarsAbove.Buffs.Umbra;
+using StarsAbove.Buffs.VermillionDaemon;
+using StarsAbove.Dusts;
+using StarsAbove.Items.Armor.DraggedBelow;
+using StarsAbove.Items.Weapons.Celestial;
+using StarsAbove.Items.Weapons.Melee;
+using StarsAbove.Items.Weapons.Other;
+using StarsAbove.Items.Weapons.Summon;
+using StarsAbove.Projectiles.Celestial.BuryTheLight;
+using StarsAbove.Projectiles.Celestial.IgnitionAstra;
+using StarsAbove.Projectiles.Celestial.UltimaThule;
+using StarsAbove.Projectiles.Extra;
+using StarsAbove.Projectiles.Magic.AegisDriver;
+using StarsAbove.Projectiles.Magic.CarianDarkMoon;
+using StarsAbove.Projectiles.Magic.DreamersInkwell;
+using StarsAbove.Projectiles.Magic.EyeOfEuthymia;
+using StarsAbove.Projectiles.Magic.StygianNymph;
+using StarsAbove.Projectiles.Magic.SupremeAuthority;
+using StarsAbove.Projectiles.Magic.TwinStars;
+using StarsAbove.Projectiles.Magic.VenerationOfButterflies;
+using StarsAbove.Projectiles.Magic.VoiceOfTheFallen;
+using StarsAbove.Projectiles.Melee.AshenAmbition;
+using StarsAbove.Projectiles.Melee.BloodBlade;
+using StarsAbove.Projectiles.Melee.ClaimhSolais;
+using StarsAbove.Projectiles.Melee.Drachenlance;
+using StarsAbove.Projectiles.Melee.Hullwrought;
+using StarsAbove.Projectiles.Melee.LiberationBlazing;
+using StarsAbove.Projectiles.Melee.Naganadel;
+using StarsAbove.Projectiles.Melee.Pigment;
+using StarsAbove.Projectiles.Melee.RexLapis;
+using StarsAbove.Projectiles.Melee.ShadowlessCerulean;
+using StarsAbove.Projectiles.Melee.SkyStriker;
+using StarsAbove.Projectiles.Melee.Unforgotten;
+using StarsAbove.Projectiles.Melee.Xenoblade;
+using StarsAbove.Projectiles.Melee.YunlaiStiletto;
+using StarsAbove.Projectiles.Other.Hawkmoon;
+using StarsAbove.Projectiles.Ranged.CosmicDestroyer;
+using StarsAbove.Projectiles.Ranged.CrimsonOutbreak;
+using StarsAbove.Projectiles.Ranged.ForceOfNature;
+using StarsAbove.Projectiles.Ranged.Genocide;
+using StarsAbove.Projectiles.Ranged.Huckleberry;
+using StarsAbove.Projectiles.Ranged.IzanagisEdge;
+using StarsAbove.Projectiles.Ranged.Tartaglia;
+using StarsAbove.Projectiles.StellarNovas;
+using StarsAbove.Projectiles.Summon.Apalistik;
+using StarsAbove.Projectiles.Summon.Chronoclock;
+using StarsAbove.Projectiles.Summon.HollowheartAlbion;
+using StarsAbove.Projectiles.Summon.KazimierzSeraphim;
+using StarsAbove.Projectiles.Summon.KeyOfTheSinner;
+using StarsAbove.Projectiles.Summon.KroniicPrincipality;
+using StarsAbove.Projectiles.Summon.PhantomInTheMirror;
+using StarsAbove.Projectiles.Summon.Starchild;
+using StarsAbove.Projectiles.Summon.Takodachi;
+using StarsAbove.Utilities;
+using SubworldLibrary;
+using System;
+using Terraria;
+using Terraria.Audio;
+using Terraria.DataStructures;
+using Terraria.Graphics.Shaders;
+using Terraria.ID;
+using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Systems
 {
@@ -951,7 +926,7 @@ namespace StarsAbove.Systems
                 }
 
             }
-            if (proj.type == ProjectileType<NaganadelProjectileFinal5>())
+            if (proj.type == ProjectileType<Projectiles.Melee.Naganadel.NaganadelProjectileFinal5>())
             {
                 for (int d = 0; d < 30; d++)
                 {
@@ -1771,7 +1746,7 @@ namespace StarsAbove.Systems
             {
                 if (target.HasBuff(BuffID.Frostburn))
                 {
-                    modifiers.SourceDamage += 50;
+                    modifiers.SourceDamage.Flat += 50;
                     modifiers.SetCrit();
                     int index = target.FindBuffIndex(BuffID.Frostburn);
                     if (index > -1)
@@ -1834,7 +1809,7 @@ namespace StarsAbove.Systems
             {
                 if (target.HasBuff(BuffID.OnFire))
                 {
-                    modifiers.SourceDamage += 50;
+                    modifiers.SourceDamage.Flat += 50;
                     modifiers.SetCrit();
                     int index = target.FindBuffIndex(BuffID.OnFire);
                     if (index > -1)
@@ -4089,13 +4064,13 @@ namespace StarsAbove.Systems
             }
             else
             {
-                if (Player.ownedProjectileCounts[ProjectileType<Projectiles.SupremeAuthority.AuthorityLantern2>()] < 1)
+                if (Player.ownedProjectileCounts[ProjectileType<AuthorityLantern2>()] < 1)
                 {
-                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, 0, 0, ProjectileType<Projectiles.SupremeAuthority.AuthorityLantern2>(), 0, 0, Player.whoAmI, 0f);
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, 0, 0, ProjectileType<AuthorityLantern2>(), 0, 0, Player.whoAmI, 0f);
                 }
-                if (Player.ownedProjectileCounts[ProjectileType<Projectiles.SupremeAuthority.AuthorityLantern1>()] < 1)
+                if (Player.ownedProjectileCounts[ProjectileType<AuthorityLantern1>()] < 1)
                 {
-                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, 0, 0, ProjectileType<Projectiles.SupremeAuthority.AuthorityLantern1>(), 0, 0, Player.whoAmI, 0f);
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, 0, 0, ProjectileType<AuthorityLantern1>(), 0, 0, Player.whoAmI, 0f);
                 }
             }
             if (SupremeAuthorityConsumedNPCs > 0)

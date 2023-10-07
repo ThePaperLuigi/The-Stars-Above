@@ -3,7 +3,6 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using StarsAbove.Projectiles;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Items.Essences;
 using StarsAbove.Items.Materials;
@@ -11,6 +10,7 @@ using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
+using StarsAbove.Projectiles.Ranged.IzanagisEdge;
 
 namespace StarsAbove.Items.Weapons.Ranged
 {

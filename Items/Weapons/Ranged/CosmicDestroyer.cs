@@ -5,11 +5,11 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Items.Essences;
-using StarsAbove.Projectiles.CosmicDestroyer;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
+using StarsAbove.Projectiles.Ranged.CosmicDestroyer;
 
 namespace StarsAbove.Items.Weapons.Ranged
 {

@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Systems;
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

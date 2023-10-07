@@ -45,7 +45,7 @@ namespace StarsAbove.Items.Weapons.Melee
 			Item.crit = 10;
 			Item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
 
-			Item.shoot = ProjectileType<Projectiles.yunlaiSwing>();
+			Item.shoot = ProjectileType<Projectiles.Melee.YunlaiStiletto.yunlaiSwing>();
 			Item.shootSpeed = 10f;
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
 		}
@@ -80,7 +80,7 @@ namespace StarsAbove.Items.Weapons.Melee
 							vector32.Y = Main.screenPosition.Y + (float)Main.screenHeight - (float)Main.mouseY;
 						}
 						vector32.X -= (float)(player.width / 2);
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),vector32.X,vector32.Y, 0, 0, ProjectileType<Projectiles.StilettoMarker>(), 0, 0, player.whoAmI, 0f);
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),vector32.X,vector32.Y, 0, 0, ProjectileType<Projectiles.Melee.YunlaiStiletto.StilettoMarker>(), 0, 0, player.whoAmI, 0f);
 					}
 					else
 					{

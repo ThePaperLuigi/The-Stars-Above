@@ -38,7 +38,7 @@ namespace StarsAbove.Items.Weapons.Melee
 			Item.rare = ItemRarityID.Cyan;
 			Item.UseSound = SoundID.Item23;
 			Item.autoReuse = true;
-			Item.shoot = ProjectileType<Projectiles.InugamiRipsaw>();
+			Item.shoot = ProjectileType<Projectiles.Melee.InugamiRipsaw.InugamiRipsaw>();
 			Item.shootSpeed = 40f;
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
 		}

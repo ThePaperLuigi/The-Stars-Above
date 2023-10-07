@@ -6,12 +6,12 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
-using StarsAbove.Projectiles.VermillionDaemon;
 using StarsAbove.Buffs.VermillionDaemon;
 using StarsAbove.Buffs;
 using System;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
+using StarsAbove.Projectiles.Magic.VermillionDaemon;
 
 namespace StarsAbove.Items.Weapons.Magic
 {
