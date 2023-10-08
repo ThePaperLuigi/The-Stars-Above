@@ -8181,6 +8181,11 @@ Mods: {
 					该武器的伤害会随着世界进度的推进而增加
 					'''
 			}
+
+			Wavedancer: {
+				// DisplayName: Wavedancer
+				// Tooltip: ""
+			}
 		}
 
 		UIElements: {

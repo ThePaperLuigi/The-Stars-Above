@@ -6,9 +6,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-namespace StarsAbove.Items.Accessories
+namespace StarsAbove.Items.Memories
 {
-    public class SigilOfHope : StargazerRelic
+    public class SigilOfHope : WeaponMemory
 	{
 		public override void SetStaticDefaults() {
 			
