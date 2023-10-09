@@ -274,7 +274,7 @@ namespace StarsAbove.Projectiles.Generics
         }
         private void Idle(Player projOwner)
         {
-            if(projOwner.itemTime == projOwner.itemTimeMax && KillOnIdle)
+            if(KillOnIdle)
             {
                 Projectile.Kill();
             }

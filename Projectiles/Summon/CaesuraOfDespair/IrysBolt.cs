@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace StarsAbove.Projectiles.CaesuraOfDespair
+namespace StarsAbove.Projectiles.Summon.CaesuraOfDespair
 {
     public class IrysBolt : ModProjectile
     {

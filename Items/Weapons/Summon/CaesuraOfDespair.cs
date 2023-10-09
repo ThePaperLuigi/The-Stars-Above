@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using StarsAbove.Items.Essences;
-using StarsAbove.Projectiles.CaesuraOfDespair;
+using StarsAbove.Projectiles.Summon.CaesuraOfDespair;
 using StarsAbove.Systems;
 using System;
 using Terraria;
@@ -72,39 +72,39 @@ namespace StarsAbove.Items.Weapons.Summon
 		public override void HoldItem(Player player)
 		{
 			player.AddBuff(BuffType<Buffs.IrysBuff>(), 2);
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.CaesuraOfDespair.Irys>()] < 1)
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Summon.CaesuraOfDespair.Irys>()] < 1)
 			{
 
-				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.CaesuraOfDespair.Irys>(), 0, 4, player.whoAmI, 0f);
+				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Summon.CaesuraOfDespair.Irys>(), 0, 4, player.whoAmI, 0f);
 				Main.projectile[index].originalDamage = Item.damage;
 
 			}
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.CaesuraOfDespair.IrysCrystalMain>()] < 1)
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Summon.CaesuraOfDespair.IrysCrystalMain>()] < 1)
 			{
-				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.CaesuraOfDespair.IrysCrystalMain>(), 0, 4, player.whoAmI, 0f);
+				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Summon.CaesuraOfDespair.IrysCrystalMain>(), 0, 4, player.whoAmI, 0f);
 
 				Main.projectile[index].originalDamage = Item.damage;
 
 			}
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.CaesuraOfDespair.IrysCrystal1>()] < 1)
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Summon.CaesuraOfDespair.IrysCrystal1>()] < 1)
 			{
 
-				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.CaesuraOfDespair.IrysCrystal1>(), player.GetWeaponDamage(Item), 4, player.whoAmI, 0f);
+				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Summon.CaesuraOfDespair.IrysCrystal1>(), player.GetWeaponDamage(Item), 4, player.whoAmI, 0f);
 
 
 				Main.projectile[index].originalDamage = Item.damage;
 			}
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.CaesuraOfDespair.IrysCrystal2>()] < 1)
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Summon.CaesuraOfDespair.IrysCrystal2>()] < 1)
 			{
 				
-				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.CaesuraOfDespair.IrysCrystal2>(), player.GetWeaponDamage(Item), 4, player.whoAmI, 0f);
+				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Summon.CaesuraOfDespair.IrysCrystal2>(), player.GetWeaponDamage(Item), 4, player.whoAmI, 0f);
 
 				Main.projectile[index].originalDamage = Item.damage;
 
 			}
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.CaesuraOfDespair.IrysCrystal3>()] < 1)
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Summon.CaesuraOfDespair.IrysCrystal3>()] < 1)
 			{
-				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.CaesuraOfDespair.IrysCrystal3>(), player.GetWeaponDamage(Item), 4, player.whoAmI, 0f);
+				int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Summon.CaesuraOfDespair.IrysCrystal3>(), player.GetWeaponDamage(Item), 4, player.whoAmI, 0f);
 
 
 				Main.projectile[index].originalDamage = Item.damage;

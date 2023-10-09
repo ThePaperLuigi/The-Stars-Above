@@ -247,10 +247,10 @@ namespace StarsAbove.Projectiles.Other.SunsetOfTheSunGod
             // Multiplayer support here, only run this code if the client running it is the owner of the projectile
             if (Projectile.owner == Main.myPlayer)
             {
-                Vector2 diff = player.GetModPlayer<WeaponPlayer>().KarnaTarget - player.Center;
+                Vector2 diff = player.GetModPlayer<WeaponPlayer>().karnaTarget - player.Center;
                 diff.Normalize();
                 Projectile.velocity = diff;
-                Projectile.direction = player.GetModPlayer<WeaponPlayer>().KarnaTarget.X > player.Center.X ? 1 : -1;
+                Projectile.direction = player.GetModPlayer<WeaponPlayer>().karnaTarget.X > player.Center.X ? 1 : -1;
                 Projectile.netUpdate = true;
             }
             int dir = Projectile.direction;

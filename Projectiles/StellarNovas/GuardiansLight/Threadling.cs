@@ -14,7 +14,7 @@ namespace StarsAbove.Projectiles.StellarNovas.GuardiansLight
 		public override void SetStaticDefaults() {
 			// DisplayName.SetDefault("Takonomicon");     //The English name of the projectile
 			Main.projFrames[Projectile.type] = 4;
-			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30;    //The length of old position to be recorded
+			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 50;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
 		}
 

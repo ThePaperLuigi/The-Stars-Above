@@ -25,7 +25,7 @@ namespace StarsAbove.Projectiles.Generics
         public abstract Color BackDarkColor { get; }
         public abstract Color MiddleMediumColor { get; }
         public abstract Color FrontLightColor  { get; }
-
+        public abstract bool CenterOnPlayer { get; }
         public override void SetStaticDefaults()
 		{
 			Main.projFrames[Projectile.type] = 1;
@@ -113,8 +113,12 @@ namespace StarsAbove.Projectiles.Generics
             /*Position the player based on where the player is, the Sin/Cos of the angle times the /
             /distance for the desired distance away from the player minus the projectile's width   /
             /and height divided by two so the center of the projectile is at the right place.     */
-            Projectile.position.X = projOwner.Center.X - (int)(Math.Cos(rad) * dist) - Projectile.width / 2;
-            Projectile.position.Y = projOwner.Center.Y - (int)(Math.Sin(rad) * dist) - Projectile.height / 2;
+            if(CenterOnPlayer)
+            {
+                Projectile.position.X = projOwner.Center.X - (int)(Math.Cos(rad) * dist) - Projectile.width / 2;
+                Projectile.position.Y = projOwner.Center.Y - (int)(Math.Sin(rad) * dist) - Projectile.height / 2;
+            }
+            
             OrientSprite(projOwner);
             //projOwner.GetModPlayer<WeaponPlayer>().MuzzlePosition = MuzzlePosition;
             MathHelper.Clamp(Projectile.alpha, 0, 255);

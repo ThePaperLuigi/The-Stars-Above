@@ -100,7 +100,7 @@ namespace StarsAbove.Items.Weapons.Other
 					player.AddBuff(BuffID.Featherfall, 120);
 					player.AddBuff(BuffType<KarnaCooldown>(), 60 * 60);
 					player.AddBuff(BuffType<KarnaLaserBuff>(), 120);
-					player.GetModPlayer<WeaponPlayer>().KarnaTarget = Main.MouseWorld;
+					player.GetModPlayer<WeaponPlayer>().karnaTarget = Main.MouseWorld;
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, player.Center);
 
 

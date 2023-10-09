@@ -294,7 +294,11 @@ namespace StarsAbove.Systems
         public Vector2 takoTarget;
 
         //Sunset of the Sun God
-        public Vector2 KarnaTarget;
+        public Vector2 karnaTarget;
+
+        //Wavedancer
+        public Vector2 wavedancerTarget;
+        public bool WavedancerMinion = false;
 
         //Sparkblossom's Beacon
         public bool FleetingSparkMinion = false;
@@ -3666,6 +3670,7 @@ namespace StarsAbove.Systems
             RobotSpiderMinion = false;
             SatanaelMinion = false;
             GundbitsActive = false;
+            WavedancerMinion = false;
             AlucardSwordMinion1 = false;
             AlucardSwordMinion2 = false;
             AlucardSwordMinion3 = false;
@@ -3909,6 +3914,7 @@ namespace StarsAbove.Systems
             TwinStarsOfAlbiero(player);
             AshenAmbition();
             SunsetOfTheSunGod();
+            Wavedancer();
             VermilionDaemon();
             SupremeAuthority();
             SakuraVengenace();
@@ -4081,10 +4087,13 @@ namespace StarsAbove.Systems
         }
         private void SunsetOfTheSunGod()
         {
-            KarnaTarget = Vector2.Lerp(KarnaTarget, Main.MouseWorld, 0.01f);
+            karnaTarget = Vector2.Lerp(karnaTarget, Main.MouseWorld, 0.01f);
 
         }
-
+        private void Wavedancer()
+        {
+            wavedancerTarget = Vector2.Lerp(wavedancerTarget, Main.MouseWorld, 0.1f);
+        }
         private void Nanomachina()
         {
             if (!Player.HasBuff(BuffType<RealizedNanomachinaBuff>()))

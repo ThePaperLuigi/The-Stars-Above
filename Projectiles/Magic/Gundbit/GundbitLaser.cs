@@ -335,8 +335,6 @@ namespace StarsAbove.Projectiles.Magic.Gundbit
 
             player.itemTime = 2; // Set item time to 2 frames while we are used
             player.itemAnimation = 2; // Set item animation time to 2 frames while we are used
-            player.AddBuff(BuffID.Slow, 10);
-            player.statMana--;
             //player.itemTime = 35; // Set item time to 2 frames while we are used
             //player.itemAnimation = 35; // Set item animation time to 2 frames while we are used
             //player.itemRotation = (float)Math.Atan2(Projectile.velocity.Y * dir, Projectile.velocity.X * dir); // Set the item rotation to where we are shooting

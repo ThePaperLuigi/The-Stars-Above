@@ -10,18 +10,19 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-namespace StarsAbove.Projectiles.Summon.DragaliaFound
+namespace StarsAbove.Projectiles.Summon.Wavedancer
 {
-    public class DragaliaFoundSwordRecoil : StarsAboveSword
+    public class WavedancerSwordSpin : StarsAboveSword
     {
-        public override string Texture => "StarsAbove/Projectiles/Summon/DragaliaFound/DragaliaFoundSword";
-        public override bool UseRecoil => true;
-        public override bool DoSpin => false;
+        public override string Texture => "StarsAbove/Projectiles/Summon/Wavedancer/WavedancerSummon";
+        public override bool UseRecoil => false;
+        public override bool DoSpin => true;
         public override float BaseDistance => 50;
-        public override Color BackDarkColor => new Color(184, 236, 104);
-        public override Color MiddleMediumColor => new Color(255, 255, 80);
-        public override Color FrontLightColor => new Color(150, 240, 255);
-        public override bool CenterOnPlayer => true;
+        public override Color BackDarkColor => new Color(106, 188, 192);
+        public override Color MiddleMediumColor => new Color(89, 223, 215);
+        public override Color FrontLightColor => new Color(180, 255, 250);
+
+        public override bool CenterOnPlayer => false;
 
         public override void SetStaticDefaults()
         {
@@ -29,6 +30,8 @@ namespace StarsAbove.Projectiles.Summon.DragaliaFound
         }
         public override void SetDefaults()
         {
+            Projectile.DamageType = DamageClass.Summon;
+
             Projectile.width = 132;
             Projectile.height = 132;
             Projectile.friendly = true;
@@ -36,7 +39,15 @@ namespace StarsAbove.Projectiles.Summon.DragaliaFound
             Projectile.tileCollide = false;
             Projectile.penetrate = -1;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = -1;
+            Projectile.localNPCHitCooldown = 7;
+        }
+        public override void ModifyDamageHitbox(ref Rectangle hitbox)
+        {
+            hitbox.X -= 60;
+            hitbox.Y -= 60;
+            hitbox.Width += 120;
+            hitbox.Height += 120;
+            base.ModifyDamageHitbox(ref hitbox);
         }
         public override bool PreAI()
         {
@@ -44,21 +55,13 @@ namespace StarsAbove.Projectiles.Summon.DragaliaFound
             //DrawOriginOffsetY = -6;
             return true;
         }
-        public override void ModifyDamageHitbox(ref Rectangle hitbox)
-        {
-            hitbox.X -= 30;
-            hitbox.Y -= 30;
-            hitbox.Width += 60;
-            hitbox.Height += 60;
-            base.ModifyDamageHitbox(ref hitbox);
-        }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             // Vanilla has several particles that can easily be used anywhere.
             // The particles from the Particle Orchestra are predefined by vanilla and most can not be customized that much.
             // Use auto complete to see the other ParticleOrchestraType types there are.
             // Here we are spawning the Excalibur particle randomly inside of the target's hitbox.
-            ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Excalibur,
+            ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Keybrand,
                 new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(target.Hitbox) },
                 Projectile.owner);
 

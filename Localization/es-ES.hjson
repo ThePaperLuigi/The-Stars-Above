@@ -8132,7 +8132,16 @@ Mods: {
 
 			Wavedancer: {
 				// DisplayName: Wavedancer
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					Right click to summon this weapon to target and attack foes automatically
+					The weapon requires 3 minion slots available to be summoned but does not consume minion slots
+					When holding this weapon, holding left click while the weapon is summoned will allow for manual control of the weapon with your cursor
+					Additionally, damage is increased by 40% and gain 2% critical strike chance per minion slot for this weapon only
+					Critical strikes with this weapon deal only 70% of critical strike damage, but inflicts [c/4A91FF:Riptide] for 2 seconds and grants Swiftness for 4 seconds
+					When a minion strikes an enemy with [c/4A91FF:Riptide], they take 30% extra damage, removing [c/4A91FF:Riptide]
+					'Bends the swiftness and power of an ocean storm to the protection of its owner'
+					''' */
 			}
 		}
 
@@ -9006,6 +9015,8 @@ Mods: {
 			// DragaliaFoundStab.DisplayName: Dragalia Found Stab
 			// DragaliaFoundDragonAttack.DisplayName: Dragalia Found Dragon Attack
 			// DragonTornado.DisplayName: Dragon Tornado
+			// WavedancerSummon.DisplayName: Wavedancer Summon
+			// WavedancerSwordSpin.DisplayName: Wavedancer Sword Spin
 		}
 
 		Buffs: {
@@ -11281,7 +11292,7 @@ Mods: {
 
 			AerialDefensiveArray: {
 				// DisplayName: Aerial Defensive Array
-				// Description: Mods.StarsAbove.Buffs.AerialDefensiveArray.Description
+				// Description: ""
 			}
 
 			GundbitBeamAttack: {
@@ -11337,6 +11348,11 @@ Mods: {
 			TsukiyomiTeleportBuff: {
 				// DisplayName: Tsukiyomi Teleport Buff
 				// Description: Mods.StarsAbove.Buffs.TsukiyomiTeleportBuff.Description
+			}
+
+			WavedancerBuff: {
+				// DisplayName: Wavedancer Active
+				// Description: ""
 			}
 		}
 

@@ -6,9 +6,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-namespace StarsAbove.Projectiles.CaesuraOfDespair
+namespace StarsAbove.Projectiles.Summon.CaesuraOfDespair
 {
-    public class IrysCrystal1 : ModProjectile
+    public class IrysCrystal3 : ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -26,7 +26,7 @@ namespace StarsAbove.Projectiles.CaesuraOfDespair
             Projectile.hostile = false;         //Can the projectile deal damage to the player?
             Projectile.minion = true;
             Projectile.penetrate = -1;           //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
-            Projectile.timeLeft = 999;          //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
+            Projectile.timeLeft = 10;          //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
             Projectile.alpha = 0;             //The transparency of the projectile, 255 for completely transparent. (aiStyle 1 quickly fades the projectile in) Make sure to delete this if you aren't using an aiStyle that fades in. You'll wonder why your projectile is invisible.
             Projectile.light = 0.5f;            //How much light emit around the projectile
             Projectile.ignoreWater = true;          //Does the projectile's speed be influenced by water?
@@ -36,12 +36,15 @@ namespace StarsAbove.Projectiles.CaesuraOfDespair
 
         }
         float rotationSpeed = 0f;
-        NPC chosenTarget;
-        float chosenTargetDistance;
+        bool firstSpawn = true;
         public override void AI()
         {
-
-            Projectile.timeLeft = 999;
+            if (firstSpawn)
+            {
+                Projectile.ai[1] = 120;
+                firstSpawn = false;
+            }
+            Projectile.timeLeft = 10;
             Player player = Main.player[Projectile.owner];
             if (player.dead && !player.active || !player.HasBuff(BuffType<Buffs.IrysBuff>()))
             {
@@ -59,7 +62,6 @@ namespace StarsAbove.Projectiles.CaesuraOfDespair
             double rad = deg * (Math.PI / 180); //Convert degrees to radians
             double dist = 108; //Distance away from the player
             Vector2 adjustedPosition = new Vector2(player.Center.X, player.Center.Y - 20);
-
             /*Position the player based on where the player is, the Sin/Cos of the angle times the /
             /distance for the desired distance away from the player minus the projectile's width   /
             /and height divided by two so the center of the projectile is at the right place.     */
@@ -72,7 +74,8 @@ namespace StarsAbove.Projectiles.CaesuraOfDespair
 
             float rotationsPerSecond = rotationSpeed;
             rotationSpeed -= 0.4f;
-            bool rotateClockwise = true;
+
+
 
             SearchForTargets(player, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter);
             if (foundTarget)
@@ -92,7 +95,7 @@ namespace StarsAbove.Projectiles.CaesuraOfDespair
                 if (foundTarget)
                 {
                     Projectile.ai[0] = 0;
-                    int type = ProjectileType<IrysBolt>();
+                    int type = ProjectileType<Projectiles.Summon.CaesuraOfDespair.IrysBolt>();
 
 
                     Vector2 position = Projectile.Center;
@@ -110,15 +113,28 @@ namespace StarsAbove.Projectiles.CaesuraOfDespair
                 }
             }
             Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(-90f);
+
             Projectile.ai[0]++;
+            //The rotation is set here
+            //projectile.rotation += (rotateClockwise ? 1 : -1) * MathHelper.ToRadians(rotationsPerSecond * 6f);
 
 
-
-
-
-
-
+            /*if (Main.rand.NextBool(3))
+			{
+				Dust dust = Dust.NewDustDirect(projectile.position, projectile.height, projectile.width, 20,
+					projectile.velocity.X * .2f, projectile.velocity.Y * .2f, 200, Scale: 1.2f);
+				dust.velocity += projectile.velocity * 0.3f;
+				dust.velocity *= 0.2f;
+			}
+			if (Main.rand.NextBool(4))
+			{
+				Dust dust = Dust.NewDustDirect(projectile.position, projectile.height, projectile.width, 20,
+					0, 0, 254, Scale: 0.3f);
+				dust.velocity += projectile.velocity * 0.5f;
+				dust.velocity *= 0.5f;
+			}*/
         }
+
         private void SearchForTargets(Player owner, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter)
         {
             // Starting search distance
@@ -175,7 +191,6 @@ namespace StarsAbove.Projectiles.CaesuraOfDespair
 
             //Projectile.friendly = foundTarget;
         }
-
 
     }
 }

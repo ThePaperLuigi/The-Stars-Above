@@ -59,7 +59,7 @@ namespace StarsAbove.Projectiles.Other.SunsetOfTheSunGod
 
             Projectile.scale = 1f;
 
-            Projectile.ai[1] = MathHelper.ToDegrees((float)Math.Atan2(Main.player[Projectile.owner].GetModPlayer<WeaponPlayer>().KarnaTarget.Y - player.Center.Y, Main.player[Projectile.owner].GetModPlayer<WeaponPlayer>().KarnaTarget.X - player.Center.X) + MathHelper.ToRadians(0));
+            Projectile.ai[1] = MathHelper.ToDegrees((float)Math.Atan2(Main.player[Projectile.owner].GetModPlayer<WeaponPlayer>().karnaTarget.Y - player.Center.Y, Main.player[Projectile.owner].GetModPlayer<WeaponPlayer>().karnaTarget.X - player.Center.X) + MathHelper.ToRadians(0));
 
             if (player.dead && !player.active)
             {
@@ -86,7 +86,7 @@ namespace StarsAbove.Projectiles.Other.SunsetOfTheSunGod
             Projectile.position.X = player.Center.X - (int)(Math.Cos(rad) * dist) - Projectile.width / 2;
             Projectile.position.Y = player.Center.Y - (int)(Math.Sin(rad) * dist) - Projectile.height / 2;
 
-            Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].GetModPlayer<WeaponPlayer>().KarnaTarget - Projectile.Center).ToRotation() + MathHelper.ToRadians(90f);
+            Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].GetModPlayer<WeaponPlayer>().karnaTarget - Projectile.Center).ToRotation() + MathHelper.ToRadians(90f);
 
 
             /*if (Projectile.ai[] % 10 == 0)

@@ -19,14 +19,7 @@ namespace StarsAbove.Buffs.Gundbits
 			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Magic.Gundbit.Gundbits>()] > 0) {
 				modPlayer.GundbitsActive = true;
 			}
-			if (!modPlayer.GundbitsActive) {
-				player.DelBuff(buffIndex);
-				buffIndex--;
-			}
-			else {
-				player.buffTime[buffIndex] = 18000;
-
-			}
+			
 
 
 		}

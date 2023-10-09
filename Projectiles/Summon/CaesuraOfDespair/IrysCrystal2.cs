@@ -6,7 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-namespace StarsAbove.Projectiles.CaesuraOfDespair
+namespace StarsAbove.Projectiles.Summon.CaesuraOfDespair
 {
     public class IrysCrystal2 : ModProjectile
     {
@@ -93,7 +93,7 @@ namespace StarsAbove.Projectiles.CaesuraOfDespair
                 if (foundTarget)
                 {
                     Projectile.ai[0] = 0;
-                    int type = ProjectileType<Projectiles.CaesuraOfDespair.IrysBolt>();
+                    int type = ProjectileType<Projectiles.Summon.CaesuraOfDespair.IrysBolt>();
 
 
                     Vector2 position = Projectile.Center;
