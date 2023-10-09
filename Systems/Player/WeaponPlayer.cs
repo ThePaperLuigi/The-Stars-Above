@@ -298,6 +298,7 @@ namespace StarsAbove.Systems
 
         //Wavedancer
         public Vector2 wavedancerTarget;
+        public Vector2 wavedancerPosition;
         public bool WavedancerMinion = false;
 
         //Sparkblossom's Beacon

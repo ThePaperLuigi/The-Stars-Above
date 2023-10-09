@@ -8220,12 +8220,13 @@ Mods: {
 				DisplayName: Wavedancer
 				Tooltip:
 					'''
-					Right click to summon this weapon to target and attack foes automatically
+					Summons an oceanblessed blade to assail foes
 					The weapon requires 3 minion slots available to be summoned but does not consume minion slots
 					When holding this weapon, holding left click while the weapon is summoned will allow for manual control of the weapon with your cursor
-					Additionally, damage is increased by 40% and gain 2% critical strike chance per minion slot for this weapon only
-					Critical strikes with this weapon deal only 70% of critical strike damage, but inflicts [c/4A91FF:Riptide] for 2 seconds and grants Swiftness for 4 seconds
-					When a minion strikes an enemy with [c/4A91FF:Riptide], they take 30% extra damage, removing [c/4A91FF:Riptide]
+					Additionally, damage is reduced or multipled up to 1.5x depending on speed and gain 2% critical strike chance per minion slot for this weapon only
+					Critical strikes with this weapon will inflict [c/4A91FF:Riptide] for 2 seconds and grants Swiftness for 4 seconds
+					[c/4A91FF:Riptide] increases the damage of the next minion attack by 30% (This weapon can detonate this effect)
+					Press the Weapon Action Key when manually controlling the weapon to slash in an area around the weapon, inflicting [c/4A91FF:Riptide] for 2 seconds (4 second cooldown)
 					'Bends the swiftness and power of an ocean storm to the protection of its owner'
 					'''
 			}
@@ -11450,7 +11451,12 @@ Mods: {
 			}
 
 			WavedancerBuff: {
-				DisplayName: Wavedancer Active
+				DisplayName: Wavedancer's Edge
+				Description: ""
+			}
+
+			WavedancerCooldown: {
+				DisplayName: Wavedancer Cooldown
 				Description: ""
 			}
 		}

@@ -6,6 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Projectiles.Summon.Wavedancer;
+using StarsAbove.Buffs.Wavedancer;
 
 namespace StarsAbove.Items.Weapons.Summon
 {
@@ -21,7 +22,7 @@ namespace StarsAbove.Items.Weapons.Summon
 
 		public override void SetDefaults()
 		{
-			Item.damage = 12;           //The damage of your weapon
+			Item.damage = 22;           //The damage of your weapon
 			Item.DamageType = DamageClass.Summon;          //Is your weapon a melee weapon?
 			Item.width = 68;            //Weapon's texture's width
 			Item.height = 68;           //Weapon's texture's height
@@ -53,14 +54,15 @@ namespace StarsAbove.Items.Weapons.Summon
 
 		public override bool? UseItem(Player player)
 		{
-			if(player.altFunctionUse == 2)
-            {
-				player.AddBuff(BuffType<Buffs.Wavedancer.WavedancerBuff>(), 10);
-				if (player.ownedProjectileCounts[ProjectileType<WavedancerSummon>()] < 1)
-				{
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<WavedancerSummon>(), player.GetWeaponDamage(Item), 4, player.whoAmI, 0f);
+			player.AddBuff(BuffType<Buffs.Wavedancer.WavedancerBuff>(), 10);
+			if (player.ownedProjectileCounts[ProjectileType<WavedancerSummon>()] < 1)
+			{
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<WavedancerSummon>(), player.GetWeaponDamage(Item), 4, player.whoAmI, 0f);
 
-				}
+			}
+			if (player.altFunctionUse == 2)
+            {
+				
 			}
 			
 			return true;
@@ -72,6 +74,19 @@ namespace StarsAbove.Items.Weapons.Summon
             {
 				player.GetModPlayer<Systems.WeaponPlayer>().wavedancerTarget = player.Center;
             }
+			else
+            {
+				if (Main.myPlayer == player.whoAmI)
+				{
+					if (StarsAbove.weaponActionKey.JustPressed && !player.HasBuff(BuffType<WavedancerCooldown>()))
+					{
+						Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ProjectileType<WavedancerSwordSpin>(), player.GetWeaponDamage(Item), 0, player.whoAmI);
+						player.AddBuff(BuffType<WavedancerCooldown>(), 240);
+					}
+
+				}
+			}
+			
 			base.HoldItem(player);
 		}
 		public override void MeleeEffects(Player player, Rectangle hitbox)

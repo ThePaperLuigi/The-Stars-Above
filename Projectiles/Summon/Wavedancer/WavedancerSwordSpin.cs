@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
+using StarsAbove.Buffs;
 using StarsAbove.Buffs.CatalystMemory;
 using StarsAbove.Projectiles.Generics;
 using System;
@@ -67,6 +68,7 @@ namespace StarsAbove.Projectiles.Summon.Wavedancer
 
             // You could also spawn dusts at the enemy position. Here is simple an example:
             // Dust.NewDust(Main.rand.NextVector2FromRectangle(target.Hitbox), 0, 0, ModContent.DustType<Content.Dusts.Sparkle>());
+            target.AddBuff(BuffType<Riptide>(), 120);
 
             // Set the target's hit direction to away from the player so the knockback is in the correct direction.
             hit.HitDirection = Main.player[Projectile.owner].Center.X < target.Center.X ? 1 : -1;

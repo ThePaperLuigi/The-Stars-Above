@@ -3,6 +3,7 @@ using StarsAbove.Buffs;
 using StarsAbove.Buffs.Skofnung;
 using StarsAbove.Buffs.Wavedancer;
 using StarsAbove.Systems;
+using System;
 using Terraria;
 using Terraria.GameContent.Drawing;
 using Terraria.ID;
@@ -54,23 +55,29 @@ namespace StarsAbove.Projectiles.Summon.Wavedancer
 
             return true;
         }
-        public override Color? GetAlpha(Color lightColor)
-        {
-            return Color.White;
-            //return new Color(255, 255, 255, 0) * (1f - Projectile.alpha / 255f);
-        }
+        
         public override bool PreAI()
         {
             Player player = Main.player[Projectile.owner];
-            
-            Projectile.alpha -= 90;
+            Lighting.AddLight(Projectile.Center, TorchID.Ice);
+
+            if (player.ownedProjectileCounts[ProjectileType<WavedancerSwordSpin>()] > 0)
+            {
+                Projectile.alpha = 250;
+                Projectile.friendly = false;
+            }
+            else
+            {
+                Projectile.friendly = true;
+                Projectile.alpha -= 90;
+
+            }
             player.empressBlade = false;
-            if (!player.HasBuff(BuffType<WavedancerBuff>()))
+            if (!player.HasBuff(BuffType<WavedancerBuff>()) || !player.active || player.dead)
             {
                 Projectile.Kill();
             }
             Projectile.timeLeft = 10;
-            Projectile.alpha -= 10;
             if (player.channel)
             {
                 player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (player.Center -
@@ -80,38 +87,14 @@ namespace StarsAbove.Projectiles.Summon.Wavedancer
                 Projectile.Center = player.GetModPlayer<WeaponPlayer>().wavedancerTarget;
                 Projectile.rotation = Vector2.Normalize(Main.MouseWorld - Projectile.Center).ToRotation() + MathHelper.ToRadians(90f);
                 SearchForTargets(player, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter);
-                Projectile.ai[2]++;
-
-                //If an enemy is nearby and the weapon is being manually controlled, summon the sword slash
-                if (Projectile.ai[2] > 60)
-                {
-
-                    if (foundTarget)
-                    {
-                        Projectile.ai[2] = 0;
-                        int type = ProjectileType<WavedancerSwordSpin>();
-
-
-                        Vector2 position = Projectile.Center;
-
-                        float launchSpeed = 1f;
-                        Vector2 mousePosition = player.GetModPlayer<StarsAbovePlayer>().playerMousePos;
-                        Vector2 direction = Vector2.Normalize(targetCenter - Projectile.Center);
-                        Vector2 velocity = direction * launchSpeed;
-
-                        int index = Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y, type, Projectile.damage, 0f, player.whoAmI);
-
-                        Main.projectile[index].originalDamage = Projectile.damage;
-
-                    }
-                }
-                Projectile.localNPCHitCooldown = 30;
+                player.GetModPlayer<WeaponPlayer>().wavedancerPosition = Projectile.Center;
+                Projectile.localNPCHitCooldown = 10;
 
                 return false;
             }
             else
             {
-                Projectile.localNPCHitCooldown = 240;
+                Projectile.localNPCHitCooldown = 20;
 
             }
 
@@ -207,7 +190,19 @@ namespace StarsAbove.Projectiles.Summon.Wavedancer
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            modifiers.CritDamage -= 0.3f;
+            Player player = Main.player[Projectile.owner];
+
+            if(player.channel)
+            {
+                if (Main.rand.Next(0, 101) <= player.maxMinions * 2)
+                {
+                    modifiers.SetCrit();
+
+                }
+                modifiers.SourceDamage += MathHelper.Lerp(-1, 1.5f, Math.Clamp(Vector2.Distance(Main.MouseWorld, Projectile.Center) / 400, 0f,1f));
+            }
+            
+
         }
         public override void OnKill(int timeLeft)
         {

@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Dusts;
+using StarsAbove.Projectiles.Summon.Wavedancer;
+using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using System;
 using Terraria;
@@ -59,6 +61,7 @@ namespace StarsAbove.Projectiles.Generics
 		public Color middleMediumColor = new Color(80, 255, 255); // Original Excalibur color: Color(255, 255, 80)
 		public Color frontLightColor = new Color(150, 240, 255); // Original Excalibur color: Color(255, 240, 150)
 		public bool spin = false;
+		public bool centerOnMouse = false;
 		public override void AI()
 		{
 			// In our item, we spawn the projectile with the direction, max time, and scale
@@ -113,7 +116,25 @@ namespace StarsAbove.Projectiles.Generics
 			float scaleMulti = 0.6f; // Excalibur, Terra Blade, and The Horseman's Blade is 0.6f; True Excalibur is 1f; default is 0.2f 
 			float scaleAdder = 1f; // Excalibur, Terra Blade, and The Horseman's Blade is 1f; True Excalibur is 1.2f; default is 1f 
 
-			Projectile.Center = player.RotatedRelativePoint(player.MountedCenter) - Projectile.velocity;
+			if(centerOnMouse)
+            {
+				if (player.ownedProjectileCounts[ModContent.ProjectileType<WavedancerSummon>()] > 0 && player.channel)
+				{
+					Projectile.Center = player.GetModPlayer<WeaponPlayer>().wavedancerPosition;
+
+				}
+				else
+                {
+					Projectile.Center = Main.MouseWorld - Projectile.velocity;
+
+				}
+
+			}
+			else
+            {
+				Projectile.Center = player.RotatedRelativePoint(player.MountedCenter) - Projectile.velocity;
+
+			}
 			Projectile.scale = scaleAdder + percentageOfLife * scaleMulti;
 
 			// The other sword projectiles that use AI Style 190 have different effects.

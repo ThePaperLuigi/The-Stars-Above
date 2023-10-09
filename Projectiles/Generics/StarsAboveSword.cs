@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Buffs.CatalystMemory;
+using StarsAbove.Projectiles.Summon.Wavedancer;
+using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using System;
 using Terraria;
@@ -118,6 +120,21 @@ namespace StarsAbove.Projectiles.Generics
                 Projectile.position.X = projOwner.Center.X - (int)(Math.Cos(rad) * dist) - Projectile.width / 2;
                 Projectile.position.Y = projOwner.Center.Y - (int)(Math.Sin(rad) * dist) - Projectile.height / 2;
             }
+            else
+            {
+                //ew
+                if (projOwner.ownedProjectileCounts[ProjectileType<WavedancerSummon>()] > 0)
+                {
+                    Projectile.position.X = projOwner.GetModPlayer<WeaponPlayer>().wavedancerPosition.X - (int)(Math.Cos(rad) * dist) - Projectile.width / 2;
+                    Projectile.position.Y = projOwner.GetModPlayer<WeaponPlayer>().wavedancerPosition.Y - (int)(Math.Sin(rad) * dist) - Projectile.height / 2;
+                }
+                else
+                {
+                    Projectile.position.X = Main.MouseWorld.X - (int)(Math.Cos(rad) * dist) - Projectile.width / 2;
+                    Projectile.position.Y = Main.MouseWorld.Y - (int)(Math.Sin(rad) * dist) - Projectile.height / 2;
+                }
+               
+            }
             
             OrientSprite(projOwner);
             //projOwner.GetModPlayer<WeaponPlayer>().MuzzlePosition = MuzzlePosition;
@@ -153,6 +170,10 @@ namespace StarsAbove.Projectiles.Generics
                     if(DoSpin)
                     {
                         projectile.spin = true;
+                    }
+                    if(!CenterOnPlayer)
+                    {
+                        projectile.centerOnMouse = true;
                     }
                 }
                 else
@@ -313,9 +334,18 @@ namespace StarsAbove.Projectiles.Generics
         }
         private void OrientSprite(Player projOwner)
         {
-            Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(-90f);
+            if (CenterOnPlayer)
+            {
+                Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(-90f);
+
+            }
+            else
+            {
+                Projectile.rotation = Vector2.Normalize(Main.MouseWorld - Projectile.Center).ToRotation() + MathHelper.ToRadians(-90f);
+
+            }
             //Main.NewText(MathHelper.ToDegrees(Projectile.rotation));
-            
+
         }
         public override bool PreDraw(ref Color lightColor)
         {
