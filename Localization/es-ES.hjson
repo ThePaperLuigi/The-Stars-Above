@@ -3384,6 +3384,7 @@ Mods: {
 			// WealthFocusTier2Tile.MapEntry: Mods.StarsAbove.MapObject.StellarFoci
 			// WealthFocusTier3Tile.MapEntry: Mods.StarsAbove.MapObject.StellarFoci
 			// ReprintedBlueprintTile.MapEntry: Reprinted Blueprint Tile
+			// CosmoturgyStation.MapEntry: Cosmoturgy Station
 		}
 
 		Items: {
@@ -8137,12 +8138,17 @@ Mods: {
 					Summons an oceanblessed blade to assail foes
 					The weapon requires 3 minion slots available to be summoned but does not consume minion slots
 					When holding this weapon, holding left click while the weapon is summoned will allow for manual control of the weapon with your cursor
-					Additionally, damage is reduced by half or multipled up to 3x depending on speed and gain 2% critical strike chance per minion slot for this weapon only
-					Critical strikes with this weapon deal damage multiple times in an AOE grants Swiftness for 4 seconds
-					Additionally, critical strikes will inflict [c/4A91FF:Riptide] for 2 seconds, increasing the damage of the next minion attack by 30% (This weapon can detonate this effect)
+					Additionally, damage is reduced or multipled up to 1.5x depending on speed and gain 2% critical strike chance per minion slot for this weapon only
+					Critical strikes with this weapon will inflict [c/4A91FF:Riptide] for 2 seconds and grants Swiftness for 4 seconds
+					[c/4A91FF:Riptide] increases the damage of the next minion attack by 30% (This weapon can detonate this effect)
 					Press the Weapon Action Key when manually controlling the weapon to slash in an area around the weapon, inflicting [c/4A91FF:Riptide] for 2 seconds (4 second cooldown)
 					'Bends the swiftness and power of an ocean storm to the protection of its owner'
 					''' */
+			}
+
+			CosmoturgyStationItem: {
+				// DisplayName: Cosmoturgy Station Item
+				// Tooltip: ""
 			}
 		}
 

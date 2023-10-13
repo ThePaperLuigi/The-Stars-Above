@@ -730,22 +730,7 @@ namespace StarsAbove.Systems
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            if (AstralWeapons.Contains(item.type))
-            {
-                TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: AstralIdentifier", $"[i:{ItemType<Astral>()}]") { OverrideColor = Color.White };
-                tooltips.Add(tooltip);
-            }
-            if (UmbralWeapons.Contains(item.type))
-            {
-                TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: UmbralIdentifier", $"[i:{ItemType<Umbral>()}]") { OverrideColor = Color.White };
-                tooltips.Add(tooltip);
-            }
-            if (SpatialWeapons.Contains(item.type))
-            {
-                TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: SpatialIdentifier", $"[i:{ItemType<Spatial>()}]") { OverrideColor = Color.White };
-                tooltips.Add(tooltip);
-                //
-            }
+            
             if (item.OriginalRarity == GetInstance<StellarSpoilsRarity>().Type && item.type != ItemType<StellarRemnant>() && item.type != ItemType<StellarSpoils>())
             {
                 TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: StellarSpoils", LangHelper.GetTextValue("Common.CanBeShimmeredSpoils")) { OverrideColor = Color.White };

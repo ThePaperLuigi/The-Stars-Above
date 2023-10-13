@@ -29,11 +29,17 @@ using StarsAbove.Buffs.StellarNovas;
 using StarsAbove.Items.Loot;
 using StarsAbove.Systems;
 using Terraria.DataStructures;
+using Terraria.ModLoader.IO;
 
 namespace StarsAbove.Systems.Items
 {
     public class ItemMemorySystem : GlobalItem
     {
+        public List<string> EquippedMemories = new List<string>()
+        {
+
+        };
+
         public bool ChoiceGlasses;
         public bool RedSpiderLily;
         public bool AetherBarrel;
@@ -52,7 +58,6 @@ namespace StarsAbove.Systems.Items
         public bool MatterManipulator;
         public bool BottledChaos;
         public bool Trumpet;
-        public bool TarotCard;
         public bool GuppyHead;
         public bool Pawn;
         public bool ReprintedBlueprint;
@@ -66,6 +71,10 @@ namespace StarsAbove.Systems.Items
         public bool SimulacraShifter;
         public bool BlackLightbulb;
         public bool SigilOfHope;
+
+        //Each weapon has a random tarot card effect assigned.
+        public bool TarotCard;
+        public int tarotCardType = 0;
 
         //Garridine's Protocores
         public bool ProtocoreMonoclaw;
@@ -89,17 +98,65 @@ namespace StarsAbove.Systems.Items
 
         public bool AeonsealTrailblazer;
 
+        //Stats
+        public int cooldownReduction;
+        public float damageModAdditive;
+        public float damageModMultiplicative;
 
-        public override bool InstancePerEntity => true;
-        public override GlobalItem Clone(Item item, Item itemClone)
+        StarsAboveGlobalItem globalItem = new StarsAboveGlobalItem();
+        public override bool InstancePerEntity => true;     
+        public override void SetDefaults(Item entity)
         {
-            return base.Clone(item, itemClone);
+            if (globalItem.AstralWeapons.Contains(entity.type) || globalItem.UmbralWeapons.Contains(entity.type) || globalItem.SpatialWeapons.Contains(entity.type))
+            {
+                //1 fool, 2 magician, 3 priestess, 4 empress, 5 emperor, 6 heirophant, 7 lovers, 8 chariot,
+                tarotCardType = Main.rand.Next(0, 21);
+
+            }
         }
-        public override void OnCreated(Item item, ItemCreationContext context)
+        public override void SaveData(Item item, TagCompound tag)
         {
-            //base.OnCreated(item, context);
+            tag["Memories"] = EquippedMemories;
+
+            base.SaveData(item, tag);
         }
+        public override void LoadData(Item item, TagCompound tag)
+        {
+            EquippedMemories = tag.Get<List<string>>("Memories");
+            base.LoadData(item, tag);
+        }
+        public override void UpdateInventory(Item item, Player player)
+        {
 
+        }
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            if (globalItem.AstralWeapons.Contains(item.type) || globalItem.UmbralWeapons.Contains(item.type) || globalItem.SpatialWeapons.Contains(item.type))
+            {
+                string tooltipAddition = "";
+                //Determine the aspect of aspected weapons.
+                if (globalItem.AstralWeapons.Contains(item.type))
+                {
+                    tooltipAddition = $"[i:{ItemType<Astral>()}]";
+                }
+                if (globalItem.UmbralWeapons.Contains(item.type))
+                {
+                    tooltipAddition = $"[i:{ItemType<Umbral>()}]";
+                }
+                if (globalItem.SpatialWeapons.Contains(item.type))
+                {
+                    tooltipAddition = $"[i:{ItemType<Spatial>()}]";
+                }
+                //Add in the icons of the Memories.
+                if(EquippedMemories.Count > 0)
+                {
+                    tooltipAddition += " : ";
 
+                }
+
+                TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: AspectIdentifier", tooltipAddition) { OverrideColor = Color.White };
+                tooltips.Add(tooltip);
+            }
+        }
     }
 }

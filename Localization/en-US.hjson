@@ -3384,6 +3384,7 @@ Mods: {
 			WealthFocusTier2Tile.MapEntry: Mods.StarsAbove.MapObject.StellarFoci
 			WealthFocusTier3Tile.MapEntry: Mods.StarsAbove.MapObject.StellarFoci
 			ReprintedBlueprintTile.MapEntry: Reprinted Blueprint Tile
+			CosmoturgyStation.MapEntry: Cosmoturgy Station
 		}
 
 		Items: {
@@ -8229,6 +8230,11 @@ Mods: {
 					Press the Weapon Action Key when manually controlling the weapon to slash in an area around the weapon, inflicting [c/4A91FF:Riptide] for 2 seconds (4 second cooldown)
 					'Bends the swiftness and power of an ocean storm to the protection of its owner'
 					'''
+			}
+
+			CosmoturgyStationItem: {
+				DisplayName: Cosmoturgy Station Item
+				Tooltip: ""
 			}
 		}
 
