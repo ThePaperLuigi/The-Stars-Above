@@ -44,6 +44,7 @@ namespace StarsAbove.Tiles.Cosmoturgy
 			}
 			else
 			{
+				
 
 			}
 
@@ -53,7 +54,9 @@ namespace StarsAbove.Tiles.Cosmoturgy
 		}
 		public override bool RightClick(int i, int j)
 		{
-			//Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = true;
+			Main.LocalPlayer.GetModPlayer<CosmoturgyPlayer>().cosmoturgyUIActive = true;
+			Main.LocalPlayer.GetModPlayer<CosmoturgyPlayer>().description = LangHelper.GetTextValue($"UIElements.Cosmoturgy.InsertWeapon", Main.LocalPlayer);
+			Main.LocalPlayer.velocity = Vector2.Zero;
 			return true;
 		}
 		public override void MouseOver(int i, int j)

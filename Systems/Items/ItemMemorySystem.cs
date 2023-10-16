@@ -30,15 +30,23 @@ using StarsAbove.Items.Loot;
 using StarsAbove.Systems;
 using Terraria.DataStructures;
 using Terraria.ModLoader.IO;
+using StarsAbove.Items.Memories;
 
 namespace StarsAbove.Systems.Items
 {
     public class ItemMemorySystem : GlobalItem
     {
-        public List<string> EquippedMemories = new List<string>()
+        public List<string> EquippedMemories = new List<string>()//Unused
         {
-
+            "1","2","3"
         };
+        public int memoryCount;
+
+        public string memorySlot1 = "";
+        public string memorySlot2 = "";
+        public string memorySlot3 = "";
+
+        public bool isMemory = false;
 
         public bool ChoiceGlasses;
         public bool RedSpiderLily;
@@ -116,18 +124,34 @@ namespace StarsAbove.Systems.Items
         }
         public override void SaveData(Item item, TagCompound tag)
         {
-            tag["Memories"] = EquippedMemories;
+            tag["M1"] = memorySlot1;
+            tag["M2"] = memorySlot1;
+            tag["M3"] = memorySlot1;
 
             base.SaveData(item, tag);
         }
         public override void LoadData(Item item, TagCompound tag)
         {
-            EquippedMemories = tag.Get<List<string>>("Memories");
+            memorySlot1 = tag.Get<string>("M1");
+            memorySlot2 = tag.Get<string>("M2");
+            memorySlot3 = tag.Get<string>("M3");
+
             base.LoadData(item, tag);
         }
         public override void UpdateInventory(Item item, Player player)
         {
+            memoryCount = 0;
+            SigilOfHope = false;
 
+            string check = "";
+
+            check = "Sigil Of Hope";//This does not work when translated, find a better solution
+            if(memorySlot1 == check || memorySlot2 == check || memorySlot3 == check)
+            {
+                SigilOfHope = true;
+                memoryCount++;
+            }
+            //End
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
@@ -148,10 +172,14 @@ namespace StarsAbove.Systems.Items
                     tooltipAddition = $"[i:{ItemType<Spatial>()}]";
                 }
                 //Add in the icons of the Memories.
-                if(EquippedMemories.Count > 0)
+                if(memoryCount > 0)
                 {
                     tooltipAddition += " : ";
 
+                    if(SigilOfHope)
+                    {
+                        tooltipAddition += $"[i:{ItemType<SigilOfHope>()}]";
+                    }
                 }
 
                 TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: AspectIdentifier", tooltipAddition) { OverrideColor = Color.White };

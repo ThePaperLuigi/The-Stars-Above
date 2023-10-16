@@ -640,7 +640,7 @@ namespace StarsAbove.Systems
         public string starfarerBonus;
         public string baseStats;
 
-
+        
 
         public string affix1; //Name of the affix.
         public string affix2;
@@ -2890,6 +2890,7 @@ namespace StarsAbove.Systems
                         starfarerMenuUIOpacity = 0f;
                     starfarerMenuUIOpacity -= 0.1f;
                 }
+                
                 if (novaUIActive)
                 {
                     if (novaUIOpacity > 1f)

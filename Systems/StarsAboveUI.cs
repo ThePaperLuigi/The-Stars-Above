@@ -22,6 +22,7 @@ using StarsAbove.UI.InkwellGauge;
 using StarsAbove.UI.BlackSilenceGauge;
 using StarsAbove.UI.SkyStrikerGauge;
 using StarsAbove.UI.InkGauge;
+using StarsAbove.UI.Cosmoturgy;
 
 namespace StarsAbove.Systems
 {
@@ -185,6 +186,9 @@ namespace StarsAbove.Systems
 
         private UserInterface _StellarNovaUIUserInterface;
         internal StellarNovaUI StellarNovaUI;
+
+        private UserInterface _CosmoturgyUIUserInterface;
+        internal CosmoturgyUI CosmoturgyUI;
 
         private UserInterface _BattleBoxUserInterface;
         internal BattleBox BattleBox;
@@ -417,6 +421,10 @@ namespace StarsAbove.Systems
                 _StellarNovaUIUserInterface = new UserInterface();
                 _StellarNovaUIUserInterface.SetState(StellarNovaUI);
 
+                CosmoturgyUI = new CosmoturgyUI();
+                _CosmoturgyUIUserInterface = new UserInterface();
+                _CosmoturgyUIUserInterface.SetState(CosmoturgyUI);
+
                 BattleBox = new BattleBox();
                 _BattleBoxUserInterface = new UserInterface();
                 _BattleBoxUserInterface.SetState(BattleBox);
@@ -501,6 +509,8 @@ namespace StarsAbove.Systems
             _StellarArrayUserInterface?.Update(gameTime);
             _StellarNovaCutInUserInterface?.Update(gameTime);
             _StellarNovaUIUserInterface?.Update(gameTime);
+            _CosmoturgyUIUserInterface?.Update(gameTime);
+
             _BattleBoxUserInterface?.Update(gameTime);
             _StellarNovaGaugeUserInterface?.Update(gameTime);
             _NalhaunCastBarUserInterface?.Update(gameTime);
@@ -1044,6 +1054,15 @@ namespace StarsAbove.Systems
                        delegate
                        {
                            _StellarNovaUIUserInterface.Draw(Main.spriteBatch, new GameTime());
+                           return true;
+                       },
+                       InterfaceScaleType.UI)
+                   );
+                layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+                       "StarsAbove: Cosmoturgy UI",
+                       delegate
+                       {
+                           _CosmoturgyUIUserInterface.Draw(Main.spriteBatch, new GameTime());
                            return true;
                        },
                        InterfaceScaleType.UI)
