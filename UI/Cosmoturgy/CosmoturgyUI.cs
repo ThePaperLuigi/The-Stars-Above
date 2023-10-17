@@ -11,6 +11,7 @@ using Terraria.Localization;
 using StarsAbove.Systems;
 using StarsAbove.Systems.Items;
 using Terraria.ModLoader;
+using StarsAbove.Items.Memories;
 
 namespace StarsAbove.UI.Cosmoturgy
 {
@@ -20,6 +21,7 @@ namespace StarsAbove.UI.Cosmoturgy
 		private UIText hoverText;
 		private UIElement area;
 		private UIElement areaCrystal;
+		private UIElement areaGlow;
 
 		private Vector2 offset;
 
@@ -47,6 +49,10 @@ namespace StarsAbove.UI.Cosmoturgy
 			areaCrystal = new UIElement();
 			areaCrystal.Width.Set(226, 0f);
 			areaCrystal.Height.Set(186, 0f);
+
+			areaGlow = new UIElement();
+			areaGlow.Width.Set(300, 0f);
+			areaGlow.Height.Set(300, 0f);
 
 			confirm = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Confirm"));
 			confirm.OnLeftClick += Confirm;
@@ -89,6 +95,8 @@ namespace StarsAbove.UI.Cosmoturgy
 			{
 				Left = { Pixels = 264 },
 				Top = { Pixels = 604 },
+				Width = { Pixels = 70 },
+				Height = { Pixels = 70 },
 				MaxWidth = { Pixels = 70 },
 				MaxHeight = { Pixels = 70 },
 
@@ -133,7 +141,7 @@ namespace StarsAbove.UI.Cosmoturgy
 			area.Append(_weaponSlot);
 			area.Append(text);
 			area.Append(areaCrystal);
-	
+			area.Append(areaGlow);
 			area.Append(confirm);
 			//area.Append(reset);
 			Append(area);
@@ -280,39 +288,50 @@ namespace StarsAbove.UI.Cosmoturgy
 				{
 					if(_affixSlot1.Item.GetGlobalItem<ItemMemorySystem>().isMemory)
                     {
-						_weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().memorySlot1 = _affixSlot1.Item.Name;
+						_weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().itemMemorySlot1 = GetMemoryID(_affixSlot1.Item);
 						_affixSlot1.Item.TurnToAir();
-					}
-					
-
+					}			
 				}
 				if (!_affixSlot2.Item.IsAir)
 				{
 					if(_affixSlot2.Item.GetGlobalItem<ItemMemorySystem>().isMemory)
                     {
-						_weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().memorySlot2 = _affixSlot2.Item.Name;
+						_weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().itemMemorySlot2 = GetMemoryID(_affixSlot2.Item);
 						_affixSlot2.Item.TurnToAir();
-					}
-					
-
+					}				
 				}
 				if (!_affixSlot3.Item.IsAir)
 				{
 					if(_affixSlot3.Item.GetGlobalItem<ItemMemorySystem>().isMemory)
                     {
-						_weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().memorySlot3 = _affixSlot3.Item.Name;
+						_weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().itemMemorySlot3 = GetMemoryID(_affixSlot3.Item);
 						_affixSlot3.Item.TurnToAir();
-					}
-					
-
+					}				
 				}
+				Main.LocalPlayer.GetModPlayer<CosmoturgyPlayer>().imbueSuccessAnimationTimer = 1f;
 				Main.LocalPlayer.GetModPlayer<CosmoturgyPlayer>().description = LangHelper.GetTextValue($"UIElements.Cosmoturgy.MemoriesImprinted", Main.LocalPlayer);
-
 			}
-
-
 		}
-
+		private int GetMemoryID(Item memory)
+        {
+			if (memory.type == ItemType<CapedFeather>())
+			{
+				return 5;
+			}			
+			if (memory.type == ItemType<ResonanceGem>())
+			{
+				return 22;
+			}
+			if (memory.type == ItemType<SigilOfHope>())
+			{
+				return 31;
+			}
+			if (memory.type == ItemType<KnightsShovelhead>())
+			{
+				return 33;
+			}
+			return 0;
+        }
 		private void HoverOff(UIMouseEvent evt, UIElement listeningElement)
 		{
 			if (Main.LocalPlayer.GetModPlayer<CosmoturgyPlayer>().cosmoturgyUIOpacity < 0.1f)
@@ -327,12 +346,12 @@ namespace StarsAbove.UI.Cosmoturgy
             {
 				if(_weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().memoryCount != 1)
                 {
-					Main.LocalPlayer.GetModPlayer<CosmoturgyPlayer>().description = LangHelper.GetTextValue($"UIElements.Cosmoturgy.CurrentWeapon", _weaponSlot.Item.Name) + " " + LangHelper.GetTextValue($"UIElements.Cosmoturgy.WeaponStatusPlural", _weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().memoryCount);
+					Main.LocalPlayer.GetModPlayer<CosmoturgyPlayer>().description = LangHelper.GetTextValue($"UIElements.Cosmoturgy.CurrentWeapon", _weaponSlot.Item.Name);
 
 				}
 				else
                 {
-					Main.LocalPlayer.GetModPlayer<CosmoturgyPlayer>().description = LangHelper.GetTextValue($"UIElements.Cosmoturgy.CurrentWeapon", _weaponSlot.Item.Name) + " " + LangHelper.GetTextValue($"UIElements.Cosmoturgy.WeaponStatus", _weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().memoryCount);
+					Main.LocalPlayer.GetModPlayer<CosmoturgyPlayer>().description = LangHelper.GetTextValue($"UIElements.Cosmoturgy.CurrentWeapon", _weaponSlot.Item.Name);
 
 				}
 
@@ -360,18 +379,44 @@ namespace StarsAbove.UI.Cosmoturgy
 			UI.StarfarerMenu.StarfarerMenu.AdjustAreaBasedOnPlayerVelocity(ref area, 0,0);
 
 			areaCrystal.Left.Set(340, 0f);
-			areaCrystal.Top.Set(10, 0f);
+			areaCrystal.Top.Set(10 + MathHelper.Lerp(-5,5,modPlayer.quadraticFloat), 0f);
+
 			Rectangle hitbox = area.GetInnerDimensions().ToRectangle();
 			Rectangle crystal = areaCrystal.GetInnerDimensions().ToRectangle();
+			Rectangle glow = areaGlow.GetInnerDimensions().ToRectangle();
+			Vector2 glowCenter = new Vector2(areaGlow.GetInnerDimensions().Width/2, areaGlow.GetInnerDimensions().Height/2);
+			areaGlow.Top.Set(230, 0f);
+			areaGlow.Left.Set(300, 0f);
+
 			confirm.Top.Set(470, 0f);
 			confirm.Left.Set(44, 0f);
 			//reset.Top.Set(450, 0f);
 			//reset.Left.Set(44, 0f);
 			Rectangle trim = new Rectangle(0, 0, 400, 400);
+			Texture2D crystalTexture = (Texture2D)Request<Texture2D>("StarsAbove/UI/Cosmoturgy/CosmoturgyCrystal");
 
 			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Cosmoturgy/CosmoturgyUI"), hitbox, Color.White * (modPlayer.cosmoturgyUIOpacity));
-			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Cosmoturgy/CosmoturgyCrystal"), crystal, Color.White * (modPlayer.cosmoturgyUIOpacity));
+			spriteBatch.Draw(crystalTexture, crystal, crystalTexture.Frame(1,7,0,modPlayer.crystalFrame), Color.White * (modPlayer.cosmoturgyUIOpacity));
 			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Cosmoturgy/CosmoturgyUITop"), hitbox, Color.White * (modPlayer.cosmoturgyUIOpacity));
+
+			spriteBatch.Draw(
+				(Texture2D)Request<Texture2D>("StarsAbove/Effects/GodRays"),
+				glow,
+				null,
+				Color.White * modPlayer.cosmoturgyUIOpacity * modPlayer.weaponGlowOpacity,
+				MathHelper.ToRadians(modPlayer.smoothRotation),//Very mechanical animation, ends on neutral
+				glowCenter,
+				SpriteEffects.None,
+				1f);
+			spriteBatch.Draw(
+				(Texture2D)Request<Texture2D>("StarsAbove/Effects/GodRays"),
+				glow,
+				null,
+				Color.White * modPlayer.cosmoturgyUIOpacity * modPlayer.weaponGlowOpacity,
+				MathHelper.ToRadians(-modPlayer.smoothRotation),//Very mechanical animation, ends on neutral
+				glowCenter,
+				SpriteEffects.None,
+				1f);
 
 			_affixSlot1.Top.Set(302, 0f);
 			_affixSlot1.Left.Set(160, 0f);
@@ -392,21 +437,25 @@ namespace StarsAbove.UI.Cosmoturgy
             {
 				if (!_weaponSlot.Item.IsAir)
 				{
-					if (_weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().memorySlot1 != "")
-                    {
+					if (_weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().itemMemorySlot1 != 0)
+					{
 						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Cosmoturgy/Slot1Filled"), hitbox, Color.White * (modPlayer.cosmoturgyUIOpacity));
 
 					}
-					if (_weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().memorySlot2 != "")
+					
+					if (_weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().itemMemorySlot2 != 0)
 					{
 						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Cosmoturgy/Slot2Filled"), hitbox, Color.White * (modPlayer.cosmoturgyUIOpacity));
 
 					}
-					if (_weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().memorySlot3 != "")
+					
+					if (_weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().itemMemorySlot3 != 0)
 					{
 						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Cosmoturgy/Slot3Filled"), hitbox, Color.White * (modPlayer.cosmoturgyUIOpacity));
 
 					}
+					
+					
 				}
 			}
 			

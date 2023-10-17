@@ -5190,7 +5190,6 @@ Mods: {
 					Right click to reload the weapon with 12 rounds
 					Time the reload perfectly to gain [c/0059FF:Paracausal Anomaly] until all bullets are spent
 					[c/0059FF:Paracausal Anomaly] increases damage while making all attacks critical
-					This weapon can be re-crafted to swap between Magic and Ranged damage
 					'What you call Darkness is the end of your evolution'
 					'''
 				DisplayName: Hawkmoon
@@ -8013,7 +8012,13 @@ Mods: {
 
 			SigilOfHope: {
 				DisplayName: Sigil Of Hope
-				Tooltip: ""
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When imbued into a weapon, gain the following effects:
+					When below 50% HP, increase the potency of all other Memory effects by 10%
+					'''
+				TooltipAttached: When below 50% HP, increase the potency of all other Memory effects by 10%
 			}
 
 			OceanHuedHunterBody: {
@@ -8233,8 +8238,41 @@ Mods: {
 			}
 
 			CosmoturgyStationItem: {
-				DisplayName: Cosmoturgy Station Item
+				DisplayName: Cosmoturgy Station
 				Tooltip: ""
+			}
+
+			CapedFeather: {
+				DisplayName: Caped Feather
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When imbued into a weapon, gain the following effects: 
+					Gain 8% increased damage while airborne
+					'''
+				TooltipAttached: Gain 8% increased damage while airborne
+			}
+
+			KnightsShovelhead: {
+				DisplayName: Knight's Shovelhead
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When imbued into a weapon, gain the following effects: 
+					Striking foes launches you airborne
+					'''
+				TooltipAttached: Striking foes launches you airborne
+			}
+
+			ResonanceGem: {
+				DisplayName: Resonance Gem
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When imbued into a weapon, gain the following effects: 
+					Lowers the cooldown of all other Memory effects by 25%
+					'''
+				TooltipAttached: Lowers the cooldown of all other Memory effects by 25%
 			}
 		}
 
@@ -8253,6 +8291,7 @@ Mods: {
 			}
 
 			Cosmoturgy: {
+				NoMemoriesInWeapon: There are no Memories Imprinted in this weapon
 				InsertWeapon: Insert an Aspected Weapon into the Cosmoturgy Station to begin.
 				InsertWeaponHover: Insert an Aspected Weapon into this slot to Imprint Memories, granting bonus effects.
 				CurrentWeapon: You are currently modifying the weapon [c/4A91FF:{0}].
@@ -11601,6 +11640,7 @@ Mods: {
 		Keybinds: {
 			"Stellar Nova.DisplayName": Stellar Nova
 			"Weapon Action.DisplayName": Weapon Action
+			"Show Memory Info.DisplayName": Show  Memory  Info
 		}
 
 		Prefixes: {

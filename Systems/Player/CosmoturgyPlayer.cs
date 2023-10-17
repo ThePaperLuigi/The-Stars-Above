@@ -34,6 +34,18 @@ namespace StarsAbove.Systems
 
     public class CosmoturgyPlayer : ModPlayer
     {
+        //Crystal animation
+        public float quadraticFloatTimer;
+        public float quadraticFloat;
+        public float quadraticFloatIdle;
+
+        public float imbueSuccessAnimationTimer = 0;
+
+        public float smoothRotation;
+        public float weaponGlowOpacity;
+        public int crystalFrame;
+        public int crystalFrameTimer;
+
         public bool cosmoturgyUIActive;
         public float cosmoturgyUIOpacity;
 
@@ -41,7 +53,8 @@ namespace StarsAbove.Systems
 
         public override void PreUpdate()
         {
-            
+            UIAnimation();
+
             if (cosmoturgyUIActive)
             {
                 if (Player.velocity != Vector2.Zero && cosmoturgyUIOpacity >= 1f)
@@ -90,14 +103,49 @@ namespace StarsAbove.Systems
         }
         bool quadraticFloatReverse = false;
 
-        private void QuadraticFloatAnimation()
+        private void UIAnimation()
         {
+            imbueSuccessAnimationTimer -= 0.003f;
+            imbueSuccessAnimationTimer = MathHelper.Clamp(imbueSuccessAnimationTimer, 0f, 1f);
 
-            
+            //Give time for the crystal to flash its animation before the weapon starts glowing
+            if(imbueSuccessAnimationTimer < 0.92f)
+            {
+                weaponGlowOpacity = MathHelper.Lerp(0, 1, imbueSuccessAnimationTimer);
+                crystalFrame = 0;
+            }
+            else
+            {
+                weaponGlowOpacity+= 0.1f;
+            }
+            if (imbueSuccessAnimationTimer > 0.92f)
+            {
+                crystalFrameTimer++;
+            }
+            if(crystalFrameTimer > 3)
+            {
+                crystalFrameTimer = 0;
+                crystalFrame++;
+                crystalFrame = Math.Clamp(crystalFrame, 0, 6);
+            }
+
+            quadraticFloatTimer += 0.0005f;
+            quadraticFloat = InOutQuad(pulse(quadraticFloatTimer));
+         
+            smoothRotation += 0.5f;
+            if(smoothRotation > 360)
+            {
+                smoothRotation = 0f;
+            }
 
         }
-        
-        
+        float pulse(float time)
+        {
+            const float pi = (float)Math.PI;
+            const float frequency = 10; // Frequency in Hz
+            return (float)(0.5 * (1 + Math.Sin(2 * pi * frequency * time)));
+        }
+
         public override void ResetEffects()
         {
             

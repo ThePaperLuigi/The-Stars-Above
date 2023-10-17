@@ -19,8 +19,8 @@ namespace StarsAbove.Items.Memories
 		{
 			Item.GetGlobalItem<ItemMemorySystem>().isMemory = true;
 
-			Item.width = 32;
-			Item.height = 32;
+			Item.width = 30;
+			Item.height = 30;
 			Item.accessory = true;
 			Item.value = Item.sellPrice(silver: 30);
 			Item.rare = ModContent.GetInstance<StellarRarity>().Type; // Custom Rarity

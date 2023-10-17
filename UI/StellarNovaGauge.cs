@@ -179,8 +179,6 @@ namespace StarsAbove.UI
 				
 			}
 
-			
-
 			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNovaGauge"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);
 			
 			if(quotient == 1f)

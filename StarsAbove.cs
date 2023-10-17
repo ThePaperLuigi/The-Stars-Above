@@ -41,6 +41,7 @@ namespace StarsAbove
 
 		public static ModKeybind novaKey;
 		public static ModKeybind weaponActionKey;
+		public static ModKeybind showMemoryInfoKey;
 
 		public static bool sharedAudio;
 		public static StarsAbove Instance { get; set; }
@@ -110,6 +111,8 @@ namespace StarsAbove
 
 			novaKey = KeybindLoader.RegisterKeybind(this, "Stellar Nova", "Z");
 			weaponActionKey = KeybindLoader.RegisterKeybind(this, "Weapon Action", "X");
+			showMemoryInfoKey = KeybindLoader.RegisterKeybind(this, "Show Memory Info", "C");
+
 		}
 		private void Hook_UICharacterList(On_UICharacterListItem.orig_ctor orig, UICharacterListItem self, PlayerFileData data, int snapPointIndex)
 		{        //Thank you to tMod discord member pure_epic
