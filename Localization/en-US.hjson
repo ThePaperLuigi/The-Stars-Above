@@ -2635,7 +2635,7 @@ Mods: {
 		StarfarerMenuDialogue: {
 			StarfarerSelection: {
 				Choice: Choose a Starfarer to aid you on your journey.
-				Warning: "[c/E36666:This decision is permanent! (per character)]"
+				Warning: "[c/E36666:This decision is permanent! (per character)]. Starfarer choice has no bearing on class."
 				ManaIncrease: Maximum mana increased by 20!
 				Talk: The Spatial Disk begins to resonate; looks like someone wants to talk.
 
@@ -8015,10 +8015,10 @@ Mods: {
 				Tooltip:
 					'''
 					[c/D294FF:Weapon Memory]
-					When imbued into a weapon, gain the following effects:
-					When below 50% HP, increase the potency of all other Memory effects by 10%
+					When Imprinted into a weapon, gain the following effects:
+					When below 50% HP, increase the potency of all other Memory effects by 30%
 					'''
-				TooltipAttached: When below 50% HP, increase the potency of all other Memory effects by 10%
+				TooltipAttached: When below 50% HP, increase the potency of all other Memory effects by 30%
 			}
 
 			OceanHuedHunterBody: {
@@ -8239,7 +8239,11 @@ Mods: {
 
 			CosmoturgyStationItem: {
 				DisplayName: Cosmoturgy Station
-				Tooltip: ""
+				Tooltip:
+					'''
+					A mystical plinth utilized to upgrade Aspected Weapons with [c/D294FF:Weapon Memories]
+					Right click to interact (Interaction is canceled upon movement)
+					'''
 			}
 
 			CapedFeather: {
@@ -8247,7 +8251,7 @@ Mods: {
 				Tooltip:
 					'''
 					[c/D294FF:Weapon Memory]
-					When imbued into a weapon, gain the following effects: 
+					When Imprinted into a weapon, gain the following effects: 
 					Gain 8% increased damage while airborne
 					'''
 				TooltipAttached: Gain 8% increased damage while airborne
@@ -8258,8 +8262,9 @@ Mods: {
 				Tooltip:
 					'''
 					[c/D294FF:Weapon Memory]
-					When imbued into a weapon, gain the following effects: 
+					When Imprinted into a weapon, gain the following effects: 
 					Striking foes launches you airborne
+					'Strike the earth!'
 					'''
 				TooltipAttached: Striking foes launches you airborne
 			}
@@ -8269,10 +8274,98 @@ Mods: {
 				Tooltip:
 					'''
 					[c/D294FF:Weapon Memory]
-					When imbued into a weapon, gain the following effects: 
+					When Imprinted into a weapon, gain the following effects: 
 					Lowers the cooldown of all other Memory effects by 25%
 					'''
 				TooltipAttached: Lowers the cooldown of all other Memory effects by 25%
+			}
+
+			AetherBarrel: {
+				DisplayName: Aether Barrel
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Gain 2 [c/9DE0DC:Powder Charges] after using a consumable healing item (Max 2)
+					On a critical strike, expend a [c/9DE0DC:Powder Charge] to cause an explosion, dealing damage again in a wide area
+					'''
+				TooltipAttached:
+					'''
+					Gain 2 [c/9DE0DC:Powder Charges] after using a consumable healing item (Max 2)
+					On a critical strike, expend a [c/9DE0DC:Powder Charge] to cause an explosion, dealing damage again in a wide area
+					'''
+			}
+
+			ChoiceGlasses: {
+				DisplayName: Choice Glasses
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Gain 50% increased damage, but using this weapon prevents any other items from being used for 60 seconds
+					'''
+				TooltipAttached: Gain 50% increased damage, but using this weapon prevents any other items from being used for 60 seconds
+			}
+
+			NookMilesTicket: {
+				DisplayName: Nook Miles Ticket
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Increase the potency of other Memory defensive effects by 30%
+					'''
+				TooltipAttached: Increase the potency of other Memory defensive effects by 30%
+			}
+
+			RedSpiderLily: {
+				DisplayName: Red Spider Lily
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					When health is reduced through any means, gain one stack of [c/BD3535:Accursed Edge] (Max 5) (2 second fixed cooldown)
+					At max stacks of [c/BD3535:Accursed Edge], the next attack consumes all stacks, dealing 40% more damage while healing 20% Max HP
+					'''
+				TooltipAttached:
+					'''
+					When health is reduced through any means, gain one stack of [c/BD3535:Accursed Edge] (Max 5) (2 second fixed cooldown)
+					At max stacks of [c/BD3535:Accursed Edge], the next attack consumes all stacks, dealing 40% more damage while healing 20% Max HP
+					'''
+			}
+
+			TarotCard: {
+				DisplayName: Tarot Card
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Gain 8% increased damage while fulfilling a specific condition (condition is randomly assigned per weapon)
+					This boost is doubled to 16% when below half health or when under the effect of [c/FF7DEF:Fate Divined]
+					'''
+
+				TooltipAttached: {
+					Fool: The Fool: Gain 8% increased damage (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Magician: The Magician: Gain 8% increased damage at max Mana (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Priestess: The Priestess: Gain 8% increased damage in a Town (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Empress: The Empress: Gain 8% increased damage while feminine (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Emperor: The Emperor: Gain 8% increased damage while masculine (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Heirophant: The Heirophant: Gain 8% increased damage at Max HP (increased to 16% under the effect of [c/FF7DEF:Fate Divined])
+					Lovers: The Lovers: Gain 8% increased damage when in Multiplayer (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Chariot: The Chariot: Gain 8% increased damage when moving quickly horizontally (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Justice: Justice: Gain 8% increased damage during an invasion (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Hermit: The Hermit: Gain 8% increased damage when in Singleplayer (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Fortune: Fortune: Gain 8% increased damage randomly (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Strength: Strength: Gain 8% increased damage if this weapon has strong knockback or higher (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					HangedMan: The Hanged Man: Gain 8% increased damage when below 75% HP (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Death: Death: Gain 16% increased damage (decreased to 8% when below half health)
+					Temperance: Temperance: Gain 8% increased damage when Well Fed (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Devil: The Devil: Gain 8% increased damage in the Underworld (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Tower: Tower: Gain 8% increased damage in the Dungeon (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Star: Star: Gain 8% increased damage in space (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Moon: Moon: Gain 8% increased damage during the night (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Sun: Sun: Gain 8% increased damage during the day (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+				}
 			}
 		}
 
@@ -9163,6 +9256,7 @@ Mods: {
 			DragonTornado.DisplayName: Dragon Tornado
 			WavedancerSummon.DisplayName: Wavedancer Summon
 			WavedancerSwordSpin.DisplayName: Wavedancer Sword Spin
+			PowderChargeExplosion.DisplayName: Powder Charge Explosion
 		}
 
 		Buffs: {
@@ -11501,12 +11595,12 @@ Mods: {
 
 			DragaliaTagDamage: {
 				DisplayName: Dragalia Tag Damage
-				Description: Mods.StarsAbove.Buffs.DragaliaTagDamage.Description
+				Description: ""
 			}
 
 			TsukiyomiTeleportBuff: {
 				DisplayName: Tsukiyomi Teleport Buff
-				Description: Mods.StarsAbove.Buffs.TsukiyomiTeleportBuff.Description
+				Description: ""
 			}
 
 			WavedancerBuff: {
@@ -11517,6 +11611,31 @@ Mods: {
 			WavedancerCooldown: {
 				DisplayName: Wavedancer Cooldown
 				Description: ""
+			}
+
+			AccursedEdge: {
+				DisplayName: Accursed Edge
+				Description: Prepared to unleash an empowered attack after loss of life
+			}
+
+			AccursedEdgeCooldown: {
+				DisplayName: Accursed Edge Cooldown
+				Description: ""
+			}
+
+			ChoiceGlassesLock: {
+				DisplayName: Choice Glasses Lock
+				Description: Locked from using any other items
+			}
+
+			FateDivined: {
+				DisplayName: Fate Divined
+				Description: Fate has been divined, increasing the potency of all Tarot Card Weapon Memories
+			}
+
+			PowderCharge: {
+				DisplayName: Powder Charge
+				Description: Powder charges have been stored and will be expended upon a critical strike to explode nearby foes
 			}
 		}
 
@@ -11743,6 +11862,11 @@ Mods: {
 
 				MovingDialogueAmount: {
 					Label: Moving Dialogue Amount
+					Tooltip: ""
+				}
+
+				DisableBlur: {
+					Label: Disable Blur
 					Tooltip: ""
 				}
 			}

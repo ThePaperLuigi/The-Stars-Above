@@ -12,6 +12,7 @@ using StarsAbove.Systems;
 using StarsAbove.Systems.Items;
 using Terraria.ModLoader;
 using StarsAbove.Items.Memories;
+using StarsAbove.Items.Memories.TarotCard;
 
 namespace StarsAbove.UI.Cosmoturgy
 {
@@ -314,6 +315,22 @@ namespace StarsAbove.UI.Cosmoturgy
 		}
 		private int GetMemoryID(Item memory)
         {
+			if (memory.type == ItemType<ChoiceGlasses>())
+			{
+				return 1;
+			}
+			if (memory.type == ItemType<RedSpiderLily>())
+			{
+				return 2;
+			}
+			if (memory.type == ItemType<AetherBarrel>())
+			{
+				return 3;
+			}
+			if (memory.type == ItemType<NookMilesTicket>())
+			{
+				return 4;
+			}
 			if (memory.type == ItemType<CapedFeather>())
 			{
 				return 5;
@@ -329,6 +346,10 @@ namespace StarsAbove.UI.Cosmoturgy
 			if (memory.type == ItemType<KnightsShovelhead>())
 			{
 				return 33;
+			}
+			if (memory.type == ItemType<TarotCard>())
+			{
+				return 100;
 			}
 			return 0;
         }
@@ -485,7 +506,7 @@ namespace StarsAbove.UI.Cosmoturgy
 				modPlayer.description = "test";
 
 			}
-			text.SetText($"{LangHelper.Wrap(modPlayer.description, 38)}");
+			text.SetText($"{LangHelper.Wrap(modPlayer.description, 44)}");
 
 			if (!modPlayer.cosmoturgyUIActive)
             {
