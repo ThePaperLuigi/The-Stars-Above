@@ -70,6 +70,7 @@ namespace StarsAbove.Systems
 
         [Header("$Mods.StarsAbove.Config.MiscHeader")]
         public bool EnableMusicOverride;
+        public bool DisableBlur;
 
         //[Label("$Mods.StarsAbove.Config.EnablePlayerWorldLock.Label")]
         //[Tooltip("$Mods.StarsAbove.Config.EnablePlayerWorldLock.Tooltip")]
@@ -107,6 +108,8 @@ namespace StarsAbove.Systems
             StarsAbovePlayer.voicesEnabled = EnableStarfarerVoices;
             StarsAbovePlayer.dialogueScrollTimerMax = DialogueScrollValue;
             StarsAbovePlayer.dialogueAudio = DialogueAudio;
+            StarsAbovePlayer.disableBlur = DisableBlur;
+
             if (EnableMusicOverride)
             {
                 SceneEffects.SuistrumeAudio.setPriority = SceneEffectPriority.BossHigh + 1;

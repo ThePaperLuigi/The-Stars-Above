@@ -8,6 +8,7 @@ using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
+using Terraria.Graphics.Effects;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.UI;

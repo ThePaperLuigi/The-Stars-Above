@@ -883,6 +883,8 @@ namespace StarsAbove.Systems
         public static bool disablePromptsBuffs;
         public static bool disablePromptsCombat;
 
+        public static bool disableBlur;
+
         public static bool noLockedCamera;
 
         public static bool voicesEnabled;
@@ -2776,7 +2778,6 @@ namespace StarsAbove.Systems
             DialogueEnemySpawnModifier();
 
             CutsceneProgress();
-
             timeAfterGettingHit++;
 
             //Stellar Array Values
@@ -2878,31 +2879,35 @@ namespace StarsAbove.Systems
 
                 costumeChangeOpacity -= 0.1f;
 
+
                 if (starfarerMenuActive)
                 {
-                    if (starfarerMenuUIOpacity > 1f)
-                        starfarerMenuUIOpacity = 1f;
                     starfarerMenuUIOpacity += 0.1f;
+                    gaussianBlurProgress += 0.2f;
                 }
                 else
                 {
-                    if (starfarerMenuUIOpacity < 0f)
-                        starfarerMenuUIOpacity = 0f;
                     starfarerMenuUIOpacity -= 0.1f;
                 }
-                
                 if (novaUIActive)
                 {
-                    if (novaUIOpacity > 1f)
-                        novaUIOpacity = 1f;
+                    gaussianBlurProgress += 0.2f;
+
                     novaUIOpacity += 0.1f;
                 }
                 else
                 {
-                    if (novaUIOpacity < 0f)
-                        novaUIOpacity = 0f;
                     novaUIOpacity -= 0.1f;
                 }
+                if(stellarArray)
+                {
+                    gaussianBlurProgress += 0.2f;
+
+                }
+                starfarerMenuUIOpacity = MathHelper.Clamp(starfarerMenuUIOpacity, 0, 1);
+                novaUIOpacity = MathHelper.Clamp(novaUIOpacity, 0, 1);
+
+
                 if (descriptionY >= 40)
                 {
                     descriptionY = 40;
@@ -2943,6 +2948,8 @@ namespace StarsAbove.Systems
                     NovaCutInVelocity += 1;
 
                 }
+
+
 
                 WarriorOfLightUndertale();
 
@@ -3060,6 +3067,44 @@ namespace StarsAbove.Systems
             }
 
 
+        }
+
+        public float gaussianBlurProgress;
+        private void GaussianBlur()
+        {
+            if(disableBlur)
+            {
+                if (Filters.Scene["GaussianBlur"].IsActive() && Main.netMode != NetmodeID.Server)
+                {
+                    Filters.Scene.Deactivate("GaussianBlur");
+
+                }
+                return;
+            }
+            gaussianBlurProgress -= 0.1f;
+            if (Filters.Scene["GaussianBlur"].IsActive() && Main.netMode != NetmodeID.Server)
+            {
+                Filters.Scene["GaussianBlur"].GetShader().UseColor((float)(gaussianBlurProgress), 1, 1);
+
+            }
+            
+            if (gaussianBlurProgress > 0f)//|| novaUIOpacity >= 1f || stellarArray || Player.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive)
+            {
+                if (!Filters.Scene["GaussianBlur"].IsActive() && Main.netMode != NetmodeID.Server)
+                {
+                    Filters.Scene.Activate("GaussianBlur").GetShader().UseColor(1,1,1);
+
+                }
+            }
+            else if(gaussianBlurProgress <= 0f)
+            {
+                if (Filters.Scene["GaussianBlur"].IsActive() && Main.netMode != NetmodeID.Server)
+                {
+                    Filters.Scene.Deactivate("GaussianBlur");
+
+                }
+            }
+            gaussianBlurProgress = MathHelper.Clamp(gaussianBlurProgress, 0f, 1f);
         }
 
         private void EmberFlask()
@@ -4705,7 +4750,7 @@ namespace StarsAbove.Systems
             }
             if (VNDialogueActive)
             {
-
+                gaussianBlurProgress += 0.2f;
 
                 if (starfarerVNDialogueVisibility < 1f)
                 {
@@ -5845,6 +5890,7 @@ namespace StarsAbove.Systems
         }
         public override void PostUpdate()
         {
+            GaussianBlur();
 
             //These trigger Starfarer prompts
 

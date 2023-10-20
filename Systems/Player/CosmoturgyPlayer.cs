@@ -61,6 +61,7 @@ namespace StarsAbove.Systems
                 {
                     cosmoturgyUIActive = false;
                 }
+                Player.GetModPlayer<StarsAbovePlayer>().gaussianBlurProgress += 0.2f;
                 cosmoturgyUIOpacity += 0.1f;
             }
             else

@@ -88,10 +88,12 @@ namespace StarsAbove
 				SkyManager.Instance["StarsAbove:ObservatorySkyDay"] = new ObservatorySkyDay();
 				SkyManager.Instance["StarsAbove:EdinGenesisQuasarSky"] = new EdinGenesisQuasarSky();
 
-
 				Filters.Scene["StarsAbove:MoonSky"] = new Filter(new ScreenShaderData("FilterTower").UseColor(0f, 0.5f, 1f).UseOpacity(0.5f), EffectPriority.High);
 				SkyManager.Instance["StarsAbove:MoonSky"] = new MoonSky();
 
+				Ref<Effect> blurRef = new Ref<Effect>(ModContent.Request<Effect>("StarsAbove/Effects/GaussianBlur", AssetRequestMode.ImmediateLoad).Value); // The path to the compiled shader file.
+				Filters.Scene["GaussianBlur"] = new Filter(new ScreenShaderData(blurRef, "Test"), EffectPriority.High);
+				Filters.Scene["GaussianBlur"].Load();
 
 				Ref<Effect> screenRef = new Ref<Effect>(ModContent.Request<Effect>("StarsAbove/Effects/ShockwaveEffect", AssetRequestMode.ImmediateLoad).Value); // The path to the compiled shader file.
 				Filters.Scene["Shockwave"] = new Filter(new ScreenShaderData(screenRef, "Shockwave"), EffectPriority.High);
@@ -111,7 +113,7 @@ namespace StarsAbove
 
 			novaKey = KeybindLoader.RegisterKeybind(this, "Stellar Nova", "Z");
 			weaponActionKey = KeybindLoader.RegisterKeybind(this, "Weapon Action", "X");
-			showMemoryInfoKey = KeybindLoader.RegisterKeybind(this, "Show Memory Info", "C");
+			showMemoryInfoKey = KeybindLoader.RegisterKeybind(this, "Show Memory Info", "V");
 
 		}
 		private void Hook_UICharacterList(On_UICharacterListItem.orig_ctor orig, UICharacterListItem self, PlayerFileData data, int snapPointIndex)

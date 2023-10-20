@@ -459,6 +459,7 @@ namespace StarsAbove.Systems
         {
             if (CelestialCartographyActive)
             {
+                Player.GetModPlayer<StarsAbovePlayer>().gaussianBlurProgress += 0.2f;
                 CelestialCompassFrameTimer++;
 
                 if (CelestialCompassFrameTimer > 5)
