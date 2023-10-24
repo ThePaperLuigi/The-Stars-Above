@@ -47,6 +47,8 @@ namespace StarsAbove.Items.Placeable.Cosmoturgy
 			Item.maxStack = 1;
 			Item.rare = ItemRarityID.Blue;
 			Item.useAnimation = 20;
+			Item.value = Item.buyPrice(gold: 3);
+
 			Item.useTime = 20;
 			Item.useStyle = 1;
 			Item.UseSound = SoundID.Item44;

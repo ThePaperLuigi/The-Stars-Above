@@ -62,6 +62,20 @@ Mods: {
 
 			#These are pretty much debug lines just in case something breaks.
 			// Garridine.1: You needn't have come all this way- a letter would have sufficed. Hmm, how would the letter arrive? I see.
+
+			Astrologian: {
+				// WizardDialogue: I'm not sure what to think of {0}. They're obviously a cosplayer- you'd expect them to know no magic... and yet..!
+				// FirstDialogue: Salulations, friend. My collection magecraft has led me to you- I see you've found a celestially-aligned relic. If you are willing to part with some coin, a portion of my collection can be yours- or, I can also sell you the means to utilize that relic.
+				// StandardDialogue1: You want to know more information about Starfarers? Hmm, did you know all information pertaining to the Second Starfarer Ritual is incredibly rare? We know next to nothing about that time period.
+				// StandardDialogue2: I've heard of a location called the Champion's Causeway in the Second Region. It's said to contain a veritable endless font of riches for those worthy.
+				// StandardDialogue3: You want to know more information about Starfarers? They're a known phenomenon, but most of their impact is consigned to history books. Not many people would believe you if you said you voyaged with one.
+				// StandardDialogue4: Astrology extends far beyond star signs and constellations. To an extent, you must have ample magical knowledge and scientific expertise.
+				// StandardDialogue5: I collect and categorize celestial relics. You most likely are not interested in the majority of them, so I'll keep my shop focused on the selection I feel can assist you.
+				// RareDialogue1: Haha, you say I resemble other members of my profession? Have you ever considered... they're also me?
+				// RareDialogue2: Have you guessed? Yes, I'm faekin- a faerie. No, I don't do magic tricks.
+				// AstralDialogue: I can sense the Astral Aspect upon you- if you were not aware, 'aspect' is a misnomer. In fact, being Astral aspected is more of a polarity. How you are aspected itself is a wonder... Is there something I can't see?
+				// UmbralAspect: I can sense the Umbral Aspect upon you- if you were not aware, 'aspect' is a misnomer. In fact, being Umbral aspected is more of a polarity. How you are aspected itself is a wonder... Is there something I can't see?
+			}
 		}
 
 		CosmicVoyages: {
@@ -3261,12 +3275,38 @@ Mods: {
 			// TsukiyomiBossChecklist: The Boss Checklist updates to reveal a hidden foe!
 			// CanBeShimmeredSpoils: Can be Shimmered, converting into Stellar Remnants
 			// BlockedNova: A powerful foe prevents use of the Stellar Nova!
-			`: El arma falló al reaccionar a tu aspecto, dejándola inutilizable. Solo puedes usar armas Astrales con Asphodene.
 		}
 
 		DamageClass.CelestialDamageClass: Daño Espacial
 
 		NPCs: {
+			Astrologian: {
+				// DisplayName: Astrologian
+
+				# This is what displays during all of an NPC's happiness levels.
+				TownNPCMood: {
+					// Content: I have no complaints.
+					// NoHome: Just because I enjoy looking at the stars does not mean I wish to be without a roof.
+					// FarFromHome: I hate to ask, but where am I?
+					// LoveSpace: Extra space to take measurements is always appreciated.
+					// DislikeCrowded: I enjoy the lively atmosphere, but everything has its limit- I've found mine.
+					// HateCrowded: You've got to be kidding me. I can't even setup my telescope without it getting knocked over, to say nothing of the light pollution.
+					// LoveBiome: Is it not obvious? The best location to view the stars is {BiomeName}.
+					// LikeBiome: I have no complaints about {BiomeName}. The horizon is a poigant view, after all.
+					// DislikeBiome: As a faerie, you'd think I'd prefer {BiomeName}. Let it be known that I do not. Try looking through a telescope while being trampled by a unicorn.
+					// HateBiome: Seriously? {BiomeName}? You must have some grievances against me... Feel free to share.
+					// LoveNPC: There's no way around it: {NPCName} is much better at magecraft than I. I'd love to learn under his tutelage.
+					// LikeNPC: A fellow scientist in {NPCName} provides valuable discourse.
+					// DislikeNPC: It's not that I hate {NPCName}... however, we couldn't be more different in our tastes.
+					// HateNPC: Brash, unlearned, and uncouth. {NPCName} is the distilled essence of individual I wish to never lay eyes on.
+					// LikeNPC_Princess: "{NPCName} is a princess? It may be pertinent to build rapport- their coffers could afford stronger instruments, for one."
+					// Princess_LovesNPC: "{NPCName} is so exotic! Isn't that something to admire?"
+				}
+
+				# This key is generated and used when the "Census" mod is enabled: It allows the user to see the spawn condition of this town NPC in the Housing UI
+				// Census.SpawnCondition: Have a Weapon Memory in your inventory
+			}
+
 			// Arbitration.DisplayName: Arbitration
 			AstralCell.DisplayName: Célula Astral
 			DummyEnemy.DisplayName: Maniquí
@@ -8280,6 +8320,31 @@ Mods: {
 					// Moon: Moon: Gain 8% increased damage during the night (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
 					// Sun: Sun: Gain 8% increased damage during the day (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
 				}
+			}
+
+			ArgentumShard: {
+				// DisplayName: Argentum Shard
+				// Tooltip: ""
+			}
+
+			NetheriteBar: {
+				// DisplayName: Netherite Bar
+				// Tooltip: ""
+			}
+
+			PearlescentOrb: {
+				// DisplayName: Pearlescent Orb
+				// Tooltip: ""
+			}
+
+			PhantomMask: {
+				// DisplayName: Phantom Mask
+				// Tooltip: ""
+			}
+
+			PrimeCut: {
+				// DisplayName: Prime Cut
+				// Tooltip: ""
 			}
 		}
 

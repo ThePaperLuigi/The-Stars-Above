@@ -62,7 +62,7 @@ namespace StarsAbove.Systems.Items
         public bool PhantomMask;//7
         public bool NetheriteIngot;//8
         public bool EnderPearl;//9
-        public bool Shard;//10
+        public bool ArgentumShard;//10
         public bool PowerMoon;//11
         public bool YoumuHilt;//12
         public bool Rageblade;//13
@@ -468,7 +468,7 @@ namespace StarsAbove.Systems.Items
             PhantomMask = false;//7
             NetheriteIngot = false;//8
             EnderPearl = false;//9
-            Shard = false;//10
+            ArgentumShard = false;//10
             PowerMoon = false;//11
             YoumuHilt = false;//12
             Rageblade = false;//13
@@ -894,7 +894,7 @@ namespace StarsAbove.Systems.Items
         public bool PhantomMask;//7
         public bool NetheriteIngot;//8
         public bool EnderPearl;//9
-        public bool Shard;//10
+        public bool ArgentumShard;//10
         public bool PowerMoon;//11
         public bool YoumuHilt;//12
         public bool Rageblade;//13
@@ -1043,7 +1043,7 @@ namespace StarsAbove.Systems.Items
             PhantomMask = false;//7
             NetheriteIngot = false;//8
             EnderPearl = false;//9
-            Shard = false;//10
+            ArgentumShard = false;//10
             PowerMoon = false;//11
             YoumuHilt = false;//12
             Rageblade = false;//13

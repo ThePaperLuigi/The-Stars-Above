@@ -102,6 +102,9 @@ namespace StarsAbove
 				var MiscEffect = new Ref<Effect>(Assets.Request<Effect>("Effects/MiscEffect", AssetRequestMode.ImmediateLoad).Value);
 				GameShaders.Misc["CyclePass"] = new MiscShaderData(MiscEffect, "CyclePass");
 
+				var AdditiveBlendEffect = new Ref<Effect>(Assets.Request<Effect>("Effects/AdditiveBlend", AssetRequestMode.ImmediateLoad).Value);
+				GameShaders.Misc["BlendPass"] = new MiscShaderData(AdditiveBlendEffect, "BlendPass");
+
 				GameShaders.Misc["StarsAbove:DeathAnimation"] = new MiscShaderData(
 				  new Ref<Effect>(ModContent.Request<Effect>("StarsAbove/Effects/EffectDeath", AssetRequestMode.ImmediateLoad).Value),
 				  "DeathAnimation"
