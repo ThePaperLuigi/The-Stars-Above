@@ -222,6 +222,8 @@ namespace StarsAbove.UI.Starfarers
 				return;
 			}
 
+			warning.Left.Set(92, 0);
+
 			Rectangle hitbox = barFrame.GetInnerDimensions().ToRectangle();
 			hitbox.X += 12;
 			hitbox.Width -= 24;
@@ -242,7 +244,7 @@ namespace StarsAbove.UI.Starfarers
 			Rectangle EridaniI = Eridani.GetInnerDimensions().ToRectangle();
 			EridaniI.X += modPlayer.EridaniX/2;
 
-			//spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/base"), indicator, Color.White * modPlayer.StarfarerSelectionVisibility);
+			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/base"), indicator, Color.White * modPlayer.StarfarerSelectionVisibility);
 
 			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/AsphodeneS"), AsphodeneI, Color.White * (modPlayer.StarfarerSelectionVisibility - 0.3f));
 			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/Asphodene"), AsphodeneStatic, Color.White * (modPlayer.StarfarerSelectionVisibility - 0.5f));
