@@ -95,7 +95,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 		{
 			NPC.boss = true;
 			NPC.lifeMax = 220000;
-			NPC.damage = 30;
+			NPC.damage = 25;
 			NPC.defense = 45;
 			NPC.knockBackResist = 0f;
 			NPC.width = 200;
