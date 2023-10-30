@@ -13,6 +13,8 @@ using StarsAbove.Systems.Items;
 using Terraria.ModLoader;
 using StarsAbove.Items.Memories;
 using StarsAbove.Items.Memories.TarotCard;
+using System.Collections.Generic;
+using System;
 
 namespace StarsAbove.UI.Cosmoturgy
 {
@@ -313,44 +315,25 @@ namespace StarsAbove.UI.Cosmoturgy
 				Main.LocalPlayer.GetModPlayer<CosmoturgyPlayer>().description = LangHelper.GetTextValue($"UIElements.Cosmoturgy.MemoriesImprinted", Main.LocalPlayer);
 			}
 		}
+		private Dictionary<int, int> memoryIDs = new Dictionary<int, int>
+		{
+			{ItemType<ChoiceGlasses>(), 1 },
+			{ItemType<RedSpiderLily>(), 2 },
+			{ItemType<AetherBarrel>(), 3 },
+			{ItemType<NookMilesTicket>(), 4 },
+			{ItemType<CapedFeather>(), 5 },
+			{ItemType<ResonanceGem>(), 22 },
+			{ItemType<SigilOfHope>(), 31 },
+			{ItemType<KnightsShovelhead>(), 33 },
+			{ItemType<TarotCard>(), 100 }
+		};
 		private int GetMemoryID(Item memory)
         {
-			if (memory.type == ItemType<ChoiceGlasses>())
+			if (memoryIDs.TryGetValue(memory.type, out int id))
 			{
-				return 1;
+				return id;
 			}
-			if (memory.type == ItemType<RedSpiderLily>())
-			{
-				return 2;
-			}
-			if (memory.type == ItemType<AetherBarrel>())
-			{
-				return 3;
-			}
-			if (memory.type == ItemType<NookMilesTicket>())
-			{
-				return 4;
-			}
-			if (memory.type == ItemType<CapedFeather>())
-			{
-				return 5;
-			}			
-			if (memory.type == ItemType<ResonanceGem>())
-			{
-				return 22;
-			}
-			if (memory.type == ItemType<SigilOfHope>())
-			{
-				return 31;
-			}
-			if (memory.type == ItemType<KnightsShovelhead>())
-			{
-				return 33;
-			}
-			if (memory.type == ItemType<TarotCard>())
-			{
-				return 100;
-			}
+
 			return 0;
         }
 		private void HoverOff(UIMouseEvent evt, UIElement listeningElement)

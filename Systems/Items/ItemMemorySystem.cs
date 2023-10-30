@@ -35,6 +35,7 @@ using StarsAbove.Items.Memories.TarotCard;
 using StarsAbove.Buffs.Memories;
 using StarsAbove.Projectiles.Memories;
 using System;
+using Terraria.GameInput;
 
 namespace StarsAbove.Systems.Items
 {
@@ -431,7 +432,27 @@ namespace StarsAbove.Systems.Items
                         break;
                 }
             }
-
+            if (RawMeat)
+            {
+                if (player.HasBuff(BuffID.WellFed) || player.HasBuff(BuffID.WellFed2) || player.HasBuff(BuffID.WellFed3))
+                {
+                    damage += (0.04f + damageModAdditive * damageModMultiplicative) * memoryGlobalMod;
+                }
+            }
+            if (PhantomMask)
+            {
+                if (player.slotsMinions == 1)
+                {
+                    damage += ((0.02f*(player.maxMinions-1)) + damageModAdditive * damageModMultiplicative) * memoryGlobalMod;
+                }
+            }
+            if(ArgentumShard)
+            {
+                if(player.statMana > 80)
+                {
+                    damage += ((0.05f * (player.statMana/80)) + damageModAdditive * damageModMultiplicative) * memoryGlobalMod;
+                }
+            }
 
             base.ModifyWeaponDamage(item, player, ref damage);
         }
@@ -542,18 +563,7 @@ namespace StarsAbove.Systems.Items
         //All other memories.
         private void Memories(Player player)
         {
-            if(ChoiceGlasses)
-            {
-
-            }
-            if (CapeFeather)
-            {
-
-            }
-            if(KnightsShovelhead)
-            {
-                
-            }
+            
         }
         private void CheckMemories(Item item, int slot, Player player)
         {
@@ -948,7 +958,29 @@ namespace StarsAbove.Systems.Items
         public int powderCharges = 0;
         public int oldHP;
         public int accursedEdgeStacks = 0;
+        public override void ProcessTriggers(TriggersSet triggersSet)
+        {
+            if (Main.LocalPlayer.active && !Main.LocalPlayer.dead && !Player.GetModPlayer<BossPlayer>().QTEActive && StarsAbove.weaponMemoryKey.JustPressed)
+            {
+                if(EnderPearl && !Player.HasBuff(BuffType<EnderpearlCooldown>()))
+                {
+                    //Teleport
+                    Vector2 vector32 = new Vector2(Main.MouseWorld.X, Main.MouseWorld.Y);
+                    Player.Teleport(vector32, 1, 0);
+                    NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, Player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
+                    Player.AddBuff(BuffType<EnderpearlCooldown>(), 60 * 40);
 
+                }
+                if (NetheriteIngot && !Player.HasBuff(BuffType<NetheriteIngotBuffCooldown>()))
+                {
+                    //Defense
+                    Player.AddBuff(BuffType<NetheriteIngotBuff>(), 120);
+                    Player.AddBuff(BuffType<NetheriteIngotBuffCooldown>(), 60 * 18);
+
+                }
+            }
+            base.ProcessTriggers(triggersSet);
+        }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if(KnightsShovelhead)

@@ -3133,7 +3133,7 @@ namespace StarsAbove.Dialogue
                     }
                 }
             }//Everything Vanilla + WoL 18
-            if (chosenDialogue == 69) // Boss dialogue - Vagrant of Space and Time
+            if (chosenDialogue == 69) // Boss dialogue - Dioskouroi
             {
                 if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
