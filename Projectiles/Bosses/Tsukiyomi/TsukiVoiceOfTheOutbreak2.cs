@@ -42,7 +42,8 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 		
 		public override void AI() {
 
-			//DrawOriginOffsetY = -90;
+			DrawOriginOffsetY = -20;
+
 			Projectile.timeLeft = 10;
 			Projectile.alpha -= 10;
 			Projectile.ai[0]--;

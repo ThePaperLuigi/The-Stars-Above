@@ -32,8 +32,8 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 		// It appears that for this AI, only the ai0 field is used!
 		public override void AI() {
 
-			DrawOffsetX = -9;
-			DrawOriginOffsetY = 10;
+			DrawOffsetX = -30;
+			DrawOriginOffsetY = 64;
 
 			// Since we access the owner player instance so much, it's useful to create a helper local variable for this
 			// Sadly, Projectile/ModProjectile does not have its own

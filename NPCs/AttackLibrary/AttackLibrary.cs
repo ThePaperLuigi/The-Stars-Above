@@ -1084,7 +1084,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
 
 					int type = ProjectileType<BossTheofania>();
-					int damage = npc.damage + 50;
+					int damage = npc.damage + 20;
 					var entitySource = npc.GetSource_FromAI();
 					Projectile.NewProjectile(entitySource, new Vector2(position.X, position.Y - 700), Vector2.UnitY * 14, type, damage, 0f, Main.myPlayer);
 					for (int ir = 0; ir < 100; ir++)
@@ -8019,7 +8019,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 						Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
 					}
 
-					Projectile.NewProjectile(npc.GetSource_FromAI(), new Vector2(npc.Center.X + 30, npc.Center.Y - 35), Vector2.Zero, ProjectileType<TsukiWormhole>(), 0, 0f, Main.myPlayer);
+					Projectile.NewProjectile(npc.GetSource_FromAI(), new Vector2(npc.Center.X, npc.Center.Y), Vector2.Zero, ProjectileType<TsukiWormhole>(), 0, 0f, Main.myPlayer);
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center, Vector2.Zero, ProjectileType<TsukiTeleport>(), 0, 0f, Main.myPlayer);
 
 					npc.AddBuff(BuffType<TsukiyomiTeleportBuff>(), 380);
@@ -8104,7 +8104,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 						Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
 					}
 
-					Projectile.NewProjectile(npc.GetSource_FromAI(), new Vector2(npc.Center.X + 30, npc.Center.Y - 35), Vector2.Zero, ProjectileType<TsukiWormhole>(), 0, 0f, Main.myPlayer);
+					Projectile.NewProjectile(npc.GetSource_FromAI(), new Vector2(npc.Center.X, npc.Center.Y), Vector2.Zero, ProjectileType<TsukiWormhole>(), 0, 0f, Main.myPlayer);
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center, Vector2.Zero, ProjectileType<TsukiTeleport>(), 0, 0f, Main.myPlayer);
 
 					npc.AddBuff(BuffType<TsukiyomiTeleportBuff>(), 380);
@@ -8184,7 +8184,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 						Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
 					}
 
-					Projectile.NewProjectile(npc.GetSource_FromAI(), new Vector2(npc.Center.X + 30, npc.Center.Y - 35), Vector2.Zero, ProjectileType<TsukiWormhole>(), 0, 0f, Main.myPlayer);
+					Projectile.NewProjectile(npc.GetSource_FromAI(), new Vector2(npc.Center.X, npc.Center.Y), Vector2.Zero, ProjectileType<TsukiWormhole>(), 0, 0f, Main.myPlayer);
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center, Vector2.Zero, ProjectileType<TsukiTeleport>(), 0, 0f, Main.myPlayer);
 
 					npc.AddBuff(BuffType<TsukiyomiTeleportBuff>(), 420);
@@ -8261,7 +8261,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 						Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
 					}
 
-					Projectile.NewProjectile(npc.GetSource_FromAI(), new Vector2(npc.Center.X + 30, npc.Center.Y - 35), Vector2.Zero, ProjectileType<TsukiWormhole>(), 0, 0f, Main.myPlayer);
+					Projectile.NewProjectile(npc.GetSource_FromAI(), new Vector2(npc.Center.X, npc.Center.Y), Vector2.Zero, ProjectileType<TsukiWormhole>(), 0, 0f, Main.myPlayer);
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center, Vector2.Zero, ProjectileType<TsukiTeleport>(), 0, 0f, Main.myPlayer);
 
 					npc.AddBuff(BuffType<TsukiyomiTeleportBuff>(), 420);

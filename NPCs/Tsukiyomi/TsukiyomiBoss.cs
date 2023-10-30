@@ -112,20 +112,19 @@ namespace StarsAbove.NPCs.Tsukiyomi
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 233000;
-			NPC.damage = 65;
+			NPC.lifeMax = 290000;
+			NPC.damage = 85;
 			NPC.defense = 45;
 			NPC.knockBackResist = 0f;
 			NPC.width = 150;
 			NPC.height = 150;
 			NPC.scale = 1f;
 			NPC.npcSlots = 1f;
-			NPC.aiStyle = -1;
+			NPC.aiStyle = 0;
 			NPC.lavaImmune = true;
 			NPC.noGravity = true;
 			NPC.noTileCollide = false;
 			NPC.value = 0f;
-			DrawOffsetY = 42;
 
 			//NPC.HitSound = SoundID.NPCHit54;
 			//NPC.DeathSound = SoundID.NPCDeath52;
@@ -172,7 +171,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 
 		public override void AI()
         {
-			
+			DrawOffsetY = 94;
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
             var bossPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
@@ -1109,7 +1108,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 				{
 
 
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), new Vector2(NPC.Center.X + 30, NPC.Center.Y - 35), Vector2.Zero, ProjectileType<TsukiWormhole>(), 0, 0f, Main.myPlayer);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), new Vector2(NPC.Center.X, NPC.Center.Y), Vector2.Zero, ProjectileType<TsukiWormhole>(), 0, 0f, Main.myPlayer);
 					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ProjectileType<TsukiTeleport>(), 0, 0f, Main.myPlayer);
 
 
@@ -1255,11 +1254,21 @@ namespace StarsAbove.NPCs.Tsukiyomi
 				for (int i = 0; i < 5; i++)
 				{//Circle
 
-
-					Dust d = Main.dust[Dust.NewDust(new Vector2(NPC.Center.X + 29, NPC.Center.Y + 24), 0, 2, 20, Main.rand.NextFloat(-0.2f, 0.2f), Main.rand.NextFloat(-0.5f, -4.5f), 20, default(Color), 0.7f)];
-					d.shader = GameShaders.Armor.GetSecondaryShader(114, Main.LocalPlayer);
-					d.fadeIn = 1f;
-					d.noGravity = true;
+					if(NPC.direction == 1)
+                    {
+						Dust d = Main.dust[Dust.NewDust(new Vector2(NPC.Center.X + 29, NPC.Center.Y + 54), 0, 2, 20, Main.rand.NextFloat(-0.2f, 0.2f), Main.rand.NextFloat(-0.5f, -4.5f), 20, default(Color), 0.7f)];
+						d.shader = GameShaders.Armor.GetSecondaryShader(114, Main.LocalPlayer);
+						d.fadeIn = 1f;
+						d.noGravity = true;
+					}
+					else
+                    {
+						Dust d = Main.dust[Dust.NewDust(new Vector2(NPC.Center.X - 29, NPC.Center.Y + 54), 0, 2, 20, Main.rand.NextFloat(-0.2f, 0.2f), Main.rand.NextFloat(-0.5f, -4.5f), 20, default(Color), 0.7f)];
+						d.shader = GameShaders.Armor.GetSecondaryShader(114, Main.LocalPlayer);
+						d.fadeIn = 1f;
+						d.noGravity = true;
+					}
+					
 				}
 
 				for (int i = 0; i < 3; i++)
