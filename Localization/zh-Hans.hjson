@@ -8372,27 +8372,64 @@ Mods: {
 
 			ArgentumShard: {
 				// DisplayName: Argentum Shard
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Gain 5% increased damage per 80 Mana
+					''' */
+				// TooltipAttached: Gain 5% increased damage per 80 Mana
 			}
 
 			NetheriteBar: {
-				// DisplayName: Netherite Bar
-				// Tooltip: ""
+				// DisplayName: Bastion Ingot
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Gain 4 defense while holding this weapon
+					Press the Weapon Memory Key to instantly gain 20 defense for 2 seconds (18 second cooldown)
+					'Those were the days'
+					''' */
+				/* TooltipAttached:
+					'''
+					Gain 4 defense while holding this weapon
+					Press the Weapon Memory Key to instantly gain 20 defense for 2 seconds (18 second cooldown)
+					''' */
 			}
 
 			PearlescentOrb: {
 				// DisplayName: Pearlescent Orb
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Press the Weapon Memory Key to instantly teleport to your cursor (40 second cooldown)
+					''' */
+				// TooltipAttached: Press the Weapon Memory Key to instantly teleport to your cursor (40 second cooldown)
 			}
 
 			PhantomMask: {
 				// DisplayName: Phantom Mask
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					If you have exactly one minion slot used, gain 2% increased damage per unused minion slot
+					'Checkmate'
+					''' */
+				// TooltipAttached: If you have exactly one minion slot used, gain 2% increased damage per unused minion slot
 			}
 
 			PrimeCut: {
 				// DisplayName: Prime Cut
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Gain 4% increased damage while Well Fed
+					''' */
+				// TooltipAttached: Gain 4% increased damage while Well Fed
 			}
 		}
 
@@ -11656,6 +11693,21 @@ Mods: {
 				// DisplayName: Powder Charge
 				// Description: Powder charges have been stored and will be expended upon a critical strike to explode nearby foes
 			}
+
+			NetheriteIngotBuff: {
+				// DisplayName: Bastion Defense
+				// Description: ""
+			}
+
+			NetheriteIngotBuffCooldown: {
+				// DisplayName: Bastion Defense Cooldown
+				// Description: ""
+			}
+
+			EnderpearlCooldown: {
+				// DisplayName: Enderpearl Cooldown
+				// Description: Mods.StarsAbove.Buffs.EnderpearlCooldown.Description
+			}
 		}
 
 		Bestiary: {
@@ -11779,6 +11831,7 @@ Mods: {
 			"Stellar Nova.DisplayName": 天体新星
 			"Weapon Action.DisplayName": 武器技能
 			// "Show Memory Info.DisplayName": Show  Memory  Info
+			// "Weapon Memory Action.DisplayName": Weapon  Memory  Action
 		}
 
 		Prefixes: {

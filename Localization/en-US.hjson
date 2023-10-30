@@ -218,16 +218,16 @@ Mods: {
 					Description: A majestic stronghold once populated by a long forgotten race. It is plagued by hostile entites suffused with paracausal darkness, and is oft drifting between another plane of existence. Contributed by: Tatriskel
 					Threat: Threat Level: B
 					//Tier 3
-					Requirement: Transit impossible at this time.
-					Loot: Resources: Unique upgrade materials
+					Requirement: Tier III Stellaglyph required for transit.
+					Loot: Resources: Rare accessory components
 				}
 
 				Theranhad: {
 					Name: Fallen Theranhad
 					Description: A floating archipelago left abandoned after its emperor became the vessel to a malevolent cosmic deity. A dark energy permeates the air. Contributed by: hakomari
-					Threat: Threat Level: B-
+					Threat: Threat Level: B- Anomaly
 					//Tier 3
-					Requirement: Transit impossible at this time.
+					Requirement: Tier III Stellaglyph required for transit.
 					Loot: Resources: Prismatic Cores
 				}
 
@@ -236,7 +236,7 @@ Mods: {
 					Description: A collection of well-preserved, brilliant structures bound by mystic energy, once in service of a powerful figure, albeit lost to time. Contributed by: Izanagi, The wanderer of stars
 					Threat: Threat Level: C
 					//Tier 2
-					Requirement: Transit impossible at this time.
+					Requirement: Tier II Stellaglyph required for transit.
 					Loot: Resources: Prismatic Cores
 				}
 
@@ -245,7 +245,7 @@ Mods: {
 					Description: A strange, pristine locale sitting utop a cloudy expanse. The walls are home to myriad secrets and mysteries, some which threaten to come apart at the seams. Contributed by: UnkownSToast
 					Threat: Threat Level: B
 					//Tier 3
-					Requirement: Transit impossible at this time.
+					Requirement: Tier III Stellaglyph required for transit.
 					Loot: Resources: Prismatic Cores
 				}
 
@@ -254,7 +254,7 @@ Mods: {
 					Description: A unknown locale populated with strange figures both inert and living. The constant bursts of electricity provides a hostile evironment to traverse and explore. Contributed by: Hockerzocker
 					Threat: Threat Level: C-B
 					//Tier 2
-					Requirement: Transit impossible at this time.
+					Requirement: Tier II Stellaglyph required for transit.
 					Loot: Resources: Prismatic Cores
 				}
 
@@ -4098,40 +4098,40 @@ Mods: {
 				Tooltip:
 					'''
 					A trace of the First Starfarer's rampage
-					'Memories of salvation'
-
+					Use this item to gaze into the past...
+					'What will is truly my own?'
 					'''
-				DisplayName: Mnemonic Trace
+				DisplayName: Mnemonic Trace IV
 			}
 
 			MnemonicTrace2: {
 				Tooltip:
 					'''
 					A trace of the First Starbearer's rampage
-					'Memories of apocalypse'
-
+					Use this item to gaze into the past...
+					'If I could simply have one more chance.'
 					'''
-				DisplayName: Mnemonic Trace
+				DisplayName: Mnemonic Trace III
 			}
 
 			MnemonicTrace3: {
 				Tooltip:
 					'''
 					A trace of the First Starbearer's rampage
-					'Memories of annihilation'
-
+					Use this item to gaze into the past...
+					'I can see my faults. They are plentiful, and they never leave me.'
 					'''
-				DisplayName: Mnemonic Trace
+				DisplayName: Mnemonic Trace II
 			}
 
 			MnemonicTrace4: {
 				Tooltip:
 					'''
 					A trace of the First Starbearer's rampage
-					'Memories of catastrophe'
-
+					Use this item to gaze into the past...
+					'When I rose again, it was the beginning of the end.'
 					'''
-				DisplayName: Mnemonic Trace
+				DisplayName: Mnemonic Trace I
 			}
 
 			ProgenitorWish: {
@@ -4477,6 +4477,7 @@ Mods: {
 			EssenceOfAdagium: {
 				Tooltip:
 					'''
+					Obtained after defeating Moon Lord
 					A gift from your Starfarer
 					Utilized in the creation of 'Vermilion Daemon'
 					'''
@@ -4486,6 +4487,7 @@ Mods: {
 			EssenceOfAlpha: {
 				Tooltip:
 					'''
+					Obtained after defeating Duke Fishron
 					A gift from your Starfarer
 					Utilized in the creation of 'Crimson Sakura Alpha'
 					'''
@@ -4495,6 +4497,7 @@ Mods: {
 			EssenceOfAsh: {
 				Tooltip:
 					'''
+					Obtained after defeating the World Evil Boss
 					A gift from your Starfarer
 					Utilized in the creation of 'Ashen Ambition'
 					'''
@@ -4504,6 +4507,7 @@ Mods: {
 			EssenceOfAzakana: {
 				Tooltip:
 					'''
+					Obtained after defeating Nalhaun, the Burnished King
 					A gift from your Starfarer
 					Utilized in the creation of 'Unforgotten'
 					'''
@@ -4513,6 +4517,7 @@ Mods: {
 			EssenceOfBalance: {
 				Tooltip:
 					'''
+					Obtained after defeating the Warrior of Light
 					A gift from your Starfarer
 					Utilized in the creation of 'Vermilion Riposte'
 					'''
@@ -4522,6 +4527,7 @@ Mods: {
 			EssenceOfBitterfrost: {
 				Tooltip:
 					'''
+					Obtained after defeating Queen Bee
 					A gift from your Starfarer
 					Utilized in the creation of 'Skofnung'
 					'''
@@ -4531,6 +4537,7 @@ Mods: {
 			EssenceOfBlasting: {
 				Tooltip:
 					'''
+					Obtained after defeating the Wall of Flesh
 					A gift from your Starfarer
 					Utilized in the creation of 'Force-of-Nature'
 					'''
@@ -4540,6 +4547,7 @@ Mods: {
 			EssenceOfBlood: {
 				Tooltip:
 					'''
+					Obtained after defeating Golem
 					A gift from your Starfarer
 					Utilized in the creation of 'Mercy'
 					'''
@@ -4549,6 +4557,7 @@ Mods: {
 			EssenceOfBloodshed: {
 				Tooltip:
 					'''
+					Obtained from Arbitration
 					A gift from your Starfarer
 					Utilized in the creation of 'The Only Thing I Know For Real'
 					'''
@@ -4558,6 +4567,7 @@ Mods: {
 			EssenceOfButterflies: {
 				Tooltip:
 					'''
+					Obtained after defeating any mechanical boss
 					A gift from your Starfarer
 					Utilized in the creation of 'Veneration of Butterflies'
 					'''
@@ -4567,6 +4577,7 @@ Mods: {
 			EssenceOfChemtech: {
 				Tooltip:
 					'''
+					Obtained after defeating Queen Slime
 					A gift from your Starfarer
 					Utilized in the creation of 'Dreadnought Chemtank'
 					'''
@@ -4576,6 +4587,7 @@ Mods: {
 			EssenceOfDeathsApprentice: {
 				Tooltip:
 					'''
+					Obtained after defeating any mechanical boss
 					A gift from your Starfarer
 					Utilized in the creation of 'Memento Muse'
 					'''
@@ -4585,6 +4597,7 @@ Mods: {
 			EssenceOfDestiny: {
 				Tooltip:
 					'''
+					Obtained after defeating Moon Lord
 					A gift from your Starfarer
 					Utilized in the creation of 'Virtue's Edge'
 					'''
@@ -4594,6 +4607,7 @@ Mods: {
 			EssenceOfDrivingThunder: {
 				Tooltip:
 					'''
+					Obtained after defeating the Lunatic Cultist
 					A gift from your Starfarer
 					Utilized in the creation of 'Yunlai Stiletto'
 					'''
@@ -4603,6 +4617,7 @@ Mods: {
 			EssenceOfDuality: {
 				Tooltip:
 					'''
+					Obtained after defeating Ice Queen
 					A gift from your Starfarer
 					Utilized in the creation of 'Stygian Nymph'
 					'''
@@ -4612,6 +4627,7 @@ Mods: {
 			EssenceOfEternity: {
 				Tooltip:
 					'''
+					Obtained after defeating Moon Lord
 					A gift from your Starfarer
 					Utilized in the creation of 'Eternal Star'
 					'''
@@ -4621,6 +4637,7 @@ Mods: {
 			EssenceOfEuthymia: {
 				Tooltip:
 					'''
+					Obtained after defeating Penthesilea, the Witch of Ink
 					A gift from your Starfarer
 					Utilized in the creation of 'Vision of Euthymia'
 					'''
@@ -4630,6 +4647,7 @@ Mods: {
 			EssenceOfExplosions: {
 				Tooltip:
 					'''
+					Obtained after defeating Golem
 					A gift from your Starfarer
 					Utilized in the creation of 'Genocide'
 					'''
@@ -4639,6 +4657,7 @@ Mods: {
 			EssenceOfFingers: {
 				Tooltip:
 					'''
+					Obtained after defeating Queen Bee
 					A gift from your Starfarer
 					Utilized in the creation of 'Inugami Ripsaw'
 					'''
@@ -4648,6 +4667,7 @@ Mods: {
 			EssenceOfFoxfire: {
 				Tooltip:
 					'''
+					Obtained after defeating Plantera
 					A gift from your Starfarer
 					Utilized in the creation of 'Kifrosse'
 					'''
@@ -4657,6 +4677,7 @@ Mods: {
 			EssenceOfInk: {
 				Tooltip:
 					'''
+					Obtained after defeating Penthesilea, the Witch of Ink
 					A gift from your Starfarer
 					Utilized in the creation of 'Penthesilea's Muse'
 					'''
@@ -4666,6 +4687,7 @@ Mods: {
 			EssenceOfIRyS: {
 				Tooltip:
 					'''
+					Obtained after defeating Ice Queen
 					A gift from your Starfarer
 					Utilized in the creation of 'Cæsura of Despair'
 					'''
@@ -4675,6 +4697,7 @@ Mods: {
 			EssenceOfIzanagi: {
 				Tooltip:
 					'''
+					Obtained after defeating Queen Slime
 					A gift from your Starfarer
 					Utilized in the creation of 'Izanagi's Edge'
 					'''
@@ -4684,6 +4707,7 @@ Mods: {
 			EssenceOfLiberation: {
 				Tooltip:
 					'''
+					Obtained after defeating Nalhaun, the Burnished King
 					A gift from your Starfarer
 					Utilized in the creation of 'Liberation Blazing'
 					'''
@@ -4693,6 +4717,7 @@ Mods: {
 			EssenceOfLifethirsting: {
 				Tooltip:
 					'''
+					Obtained after defeating Pumpking
 					A gift from your Starfarer
 					Utilized in the creation of 'The Blood Blade'
 					'''
@@ -4702,6 +4727,7 @@ Mods: {
 			EssenceOfLuminance: {
 				Tooltip:
 					'''
+					Obtained after defeating Tsukiyomi, the First Starfarer
 					A gift from your Starfarer
 					Utilized in the creation of 'Architect's Luminance'
 					'''
@@ -4711,6 +4737,7 @@ Mods: {
 			EssenceOfLunarDominion: {
 				Tooltip:
 					'''
+					Obtained after defeating Moon Lord
 					A gift from your Starfarer
 					Utilized in the creation of 'Naganadel'
 					'''
@@ -4720,6 +4747,7 @@ Mods: {
 			EssenceOfMisery: {
 				Tooltip:
 					'''
+					Obtained after defeating Skeletron
 					A gift from your Starfarer
 					Utilized in the creation of 'Misery's Company'
 					'''
@@ -4729,6 +4757,7 @@ Mods: {
 			EssenceOfOuterGods: {
 				Tooltip:
 					'''
+					Obtained after defeating the World Evil Boss
 					A gift from your Starfarer
 					Utilized in the creation of 'Takonomicon'
 					'''
@@ -4738,6 +4767,7 @@ Mods: {
 			EssenceOfPerfection: {
 				Tooltip:
 					'''
+					Unobtainable
 					A gift from your Starfarer
 					Utilized in the creation of 'Every Moment Matters'
 					'''
@@ -4747,6 +4777,7 @@ Mods: {
 			EssenceOfRadiance: {
 				Tooltip:
 					'''
+					Obtained after defeating Nalhaun, the Burnished King
 					A gift from your Starfarer
 					Utilized in the creation of 'Claimh Solais'
 					'''
@@ -4756,6 +4787,7 @@ Mods: {
 			EssenceOfSakura: {
 				Tooltip:
 					'''
+					Obtained after defeating Empress of Light
 					A gift from your Starfarer
 					Utilized in the creation of 'Sakura's Vengeance'
 					'''
@@ -4765,6 +4797,7 @@ Mods: {
 			EssenceOfSilverAsh: {
 				Tooltip:
 					'''
+					Obtained after defeating Wall of Flesh
 					A gift from your Starfarer
 					Utilized in the creation of 'Karlan Truesilver'
 					'''
@@ -4774,6 +4807,7 @@ Mods: {
 			EssenceOfSin: {
 				Tooltip:
 					'''
+					Obtained after defeating Duke Fishron
 					A gift from your Starfarer
 					Utilized in the creation of 'Key of the Sinner'
 					'''
@@ -4783,6 +4817,7 @@ Mods: {
 			EssenceOfStarsong: {
 				Tooltip:
 					'''
+					Obtained after defeating Moon Lord
 					A gift from your Starfarer
 					Utilized in the creation of 'Suistrume'
 					'''
@@ -4792,6 +4827,7 @@ Mods: {
 			EssenceOfStaticShock: {
 				Tooltip:
 					'''
+					Obtained after defeating Queen Slime
 					A gift from your Starfarer
 					Utilized in the creation of 'Sparkblossom's Beacon'
 					'''
@@ -4801,6 +4837,7 @@ Mods: {
 			EssenceOfStyle: {
 				Tooltip:
 					'''
+					Obtained after defeating King Slime
 					A gift from your Starfarer
 					Utilized in the creation of 'Rad Gun'
 					'''
@@ -4810,6 +4847,7 @@ Mods: {
 			EssenceOfSurpassingLimits: {
 				Tooltip:
 					'''
+					Obtained after defeating the Warrior of Light
 					A gift from your Starfarer
 					Utilized in the creation of 'Light Unrelenting'
 					'''
@@ -4819,6 +4857,7 @@ Mods: {
 			EssenceOfTechnology: {
 				Tooltip:
 					'''
+					Obtained after defeating Empress of Light
 					A gift from your Starfarer
 					Utilized in the creation of 'Arachnid Needlepoint'
 					'''
@@ -4828,6 +4867,7 @@ Mods: {
 			EssenceOfTheAegis: {
 				Tooltip:
 					'''
+					Obtained after defeating King Slime
 					A gift from your Starfarer
 					Utilized in the creation of 'Aegis Driver'
 					'''
@@ -4837,6 +4877,7 @@ Mods: {
 			EssenceOfTheAerialAce: {
 				Tooltip:
 					'''
+					Obtained after defeating Skeletron Prime
 					A gift from your Starfarer
 					Utilized in the creation of 'Armaments of the Sky Striker'
 					'''
@@ -4846,6 +4887,7 @@ Mods: {
 			EssenceOfTheAnomaly: {
 				Tooltip:
 					'''
+					Obtained after defeating the World Evil Boss
 					A gift from your Starfarer
 					Utilized in the creation of 'Neo Dealmaker'
 					'''
@@ -4855,6 +4897,7 @@ Mods: {
 			EssenceOfTheAscendant: {
 				Tooltip:
 					'''
+					Obtained after defeating the Lunatic Cultist
 					A gift from your Starfarer
 					Utilized in the creation of 'Ozma Ascendant'
 					'''
@@ -4864,6 +4907,7 @@ Mods: {
 			EssenceOfTheBeginningAndEnd: {
 				Tooltip:
 					'''
+					Obtained after defeating all vanilla bosses and the Warrior of Light
 					A gift from your Starfarer
 					Utilized in the creation of 'Bury The Light'
 					'''
@@ -4873,6 +4917,7 @@ Mods: {
 			EssenceOfTheBionis: {
 				Tooltip:
 					'''
+					Obtained after defeating any mechanical boss
 					A gift from your Starfarer
 					Utilized in the creation of 'Xenoblade'
 					'''
@@ -4882,6 +4927,7 @@ Mods: {
 			EssenceOfTheBull: {
 				Tooltip:
 					'''
+					Obtained after defeating any mechanical boss
 					A gift from your Starfarer
 					Utilized in the creation of 'Ride The Bull'
 					'''
@@ -4891,6 +4937,7 @@ Mods: {
 			EssenceOfTheChimera: {
 				Tooltip:
 					'''
+					Obtained after defeating Moon Lord
 					A gift from your Starfarer
 					Utilized in the creation of 'Shadowless Cerulean'
 					'''
@@ -4900,6 +4947,7 @@ Mods: {
 			EssenceOfTheCosmos: {
 				Tooltip:
 					'''
+					Unobtainable
 					A gift from your Starfarer
 					Utilized in the creation of 'Ignition Astra'
 					'''
@@ -4909,6 +4957,7 @@ Mods: {
 			EssenceOfTheDarkMoon: {
 				Tooltip:
 					'''
+					Obtained after defeating Eye of Cthulhu
 					A gift from your Starfarer
 					Utilized in the creation of 'Carian Dark Moon'
 					'''
@@ -4918,6 +4967,7 @@ Mods: {
 			EssenceOfTheDragonslayer: {
 				Tooltip:
 					'''
+					Obtained after defeating all mechanical bosses
 					A gift from your Starfarer
 					Utilized in the creation of 'Drachenlance'
 					'''
@@ -4927,6 +4977,7 @@ Mods: {
 			EssenceOfTheFallen: {
 				Tooltip:
 					'''
+					Obtained after defeating Plantera
 					A gift from your Starfarer
 					Utilized in the creation of 'Voice Of The Fallen'
 					'''
@@ -4936,6 +4987,7 @@ Mods: {
 			EssenceOfTheFreeshooter: {
 				Tooltip:
 					'''
+					Obtained after defeating Skeletron
 					A gift from your Starfarer
 					Utilized in the creation of 'Der Freischutz'
 					'''
@@ -4945,6 +4997,7 @@ Mods: {
 			EssenceOfTheFuture: {
 				Tooltip:
 					'''
+					Obtained after defeating Tsukiyomi, the First Starfarer
 					A gift from your Starfarer
 					Utilized in the creation of 'Cosmic Destroyer'
 					'''
@@ -4954,6 +5007,7 @@ Mods: {
 			EssenceOfTheGardener: {
 				Tooltip:
 					'''
+					Obtained after defeating Eye of Cthulhu
 					A gift from your Starfarer
 					Utilized in the creation of 'Konpaku Katana'
 					'''
@@ -4963,6 +5017,7 @@ Mods: {
 			EssenceOfTheGunlance: {
 				Tooltip:
 					'''
+					Obtained after defeating all mechanical bosses
 					A gift from your Starfarer
 					Utilized in the creation of 'Hullwrought'
 					'''
@@ -4972,6 +5027,7 @@ Mods: {
 			EssenceOfTheHarbinger: {
 				Tooltip:
 					'''
+					Obtained after defeating Golem
 					A gift from your Starfarer
 					Utilized in the creation of 'Tartaglia'
 					'''
@@ -4981,6 +5037,7 @@ Mods: {
 			EssenceOfTheHawkmoon: {
 				Tooltip:
 					'''
+					Obtained after defeating Queen Slime
 					A gift from your Starfarer
 					Utilized in the creation of 'Hawkmoon'
 					'''
@@ -4990,6 +5047,7 @@ Mods: {
 			EssenceOfTheHollowheart: {
 				Tooltip:
 					'''
+					Obtained after defeating Dioskouroi, the Twin Forces
 					A gift from your Starfarer
 					Utilized in the creation of 'Hollowheart Albion'
 					'''
@@ -4999,6 +5057,7 @@ Mods: {
 			EssenceOfTheHunt: {
 				Tooltip:
 					'''
+					Obtained after defeating Queen Slime
 					A gift from your Starfarer
 					Utilized in the creation of 'Hunter's Symphony'
 					'''
@@ -5008,6 +5067,7 @@ Mods: {
 			EssenceOfTheMoonlitAdepti: {
 				Tooltip:
 					'''
+					Obtained after defeating Golem
 					A gift from your Starfarer
 					Utilized in the creation of 'Plenilune Gaze'
 					'''
@@ -5017,6 +5077,7 @@ Mods: {
 			EssenceOfTheObservatory: {
 				Tooltip:
 					'''
+					Obtained after defeating Wall of Flesh
 					A gift from your Starfarer
 					Utilized in the creation of 'Luminary Wand'
 					'''
@@ -5026,6 +5087,7 @@ Mods: {
 			EssenceOfTheOcean: {
 				Tooltip:
 					'''
+					Obtained after defeating Skeletron, then visiting the Ocean
 					A gift from your Starfarer
 					Utilized in the creation of 'Apalistik'
 					'''
@@ -5035,6 +5097,7 @@ Mods: {
 			EssenceOfTheOverwhelmingBlaze: {
 				Tooltip:
 					'''
+					Obtained after defeating the Warrior of Light
 					A gift from your Starfarer
 					Utilized in the creation of 'Burning Desire'
 					'''
@@ -5044,6 +5107,7 @@ Mods: {
 			EssenceOfThePegasus: {
 				Tooltip:
 					'''
+					Obtained after defeating Skeletron, then visiting the Underworld
 					A gift from your Starfarer
 					Utilized in the creation of 'Kazimierz Seraphim'
 					'''
@@ -5053,6 +5117,7 @@ Mods: {
 			EssenceOfThePhantom: {
 				Tooltip:
 					'''
+					Obtained after defeating Dioskouroi, the Twin Forces
 					A gift from your Starfarer
 					Utilized in the creation of 'Phantom in the Mirror'
 					'''
@@ -5062,6 +5127,7 @@ Mods: {
 			EssenceOfTheSharpshooter: {
 				Tooltip:
 					'''
+					Obtained after defeating Skeletron
 					A gift from your Starfarer
 					Utilized in the creation of 'Death in Four Acts'
 					'''
@@ -5071,6 +5137,7 @@ Mods: {
 			EssenceOfTheSwarm: {
 				Tooltip:
 					'''
+					Obtained after defeating Plantera
 					A gift from your Starfarer
 					Utilized in the creation of 'Crimson Outbreak'
 					'''
@@ -5080,6 +5147,7 @@ Mods: {
 			EssenceOfTheTreasury: {
 				Tooltip:
 					'''
+					Obtained after defeating the Warrior of Light
 					A gift from your Starfarer
 					Utilized in the creation of 'Key of the King's Law'
 					'''
@@ -5089,6 +5157,7 @@ Mods: {
 			EssenceOfTheUnderworldGoddess: {
 				Tooltip:
 					'''
+					Unobtainable
 					A gift from your Starfarer
 					Utilized in the creation of 'Persephone'
 					'''
@@ -5098,6 +5167,7 @@ Mods: {
 			EssenceOfTheUnyieldingEarth: {
 				Tooltip:
 					'''
+					Obtained after defeating Lunatic Cultist
 					A gift from your Starfarer
 					Utilized in the creation of 'Rex Lapis'
 					'''
@@ -5107,6 +5177,7 @@ Mods: {
 			EssenceOfTime: {
 				Tooltip:
 					'''
+					Obtained after defeating Penthesilea, the Witch of Ink
 					A gift from your Starfarer
 					Utilized in the creation of 'Kroniic Principality'
 					'''
@@ -5116,6 +5187,7 @@ Mods: {
 			EssenceOfTwinStars: {
 				Tooltip:
 					'''
+					Obtained after defeating Lunatic Cultist
 					A gift from your Starfarer
 					Utilized in the creation of 'Twin Stars of Albireo'
 					'''
@@ -5125,6 +5197,7 @@ Mods: {
 			EssenceOfVampirism: {
 				Tooltip:
 					'''
+					Obtained after defeating Deerclops
 					A gift from your Starfarer
 					Utilized in the creation of 'The Morning Star'
 					'''
@@ -7128,6 +7201,7 @@ Mods: {
 			EssenceOfAbsoluteChaos: {
 				Tooltip:
 					'''
+					Obtained after defeating Queen Slime
 					A gift from your Starfarer
 					Utilized in the creation of 'Adornment of the Chaotic God'
 					'''
@@ -7137,6 +7211,7 @@ Mods: {
 			EssenceOfAuthority: {
 				Tooltip:
 					'''
+					Obtained after defeating the Warrior of Light
 					A gift from your Starfarer
 					Utilized in the creation of 'Supreme Authority'
 					'''
@@ -7146,6 +7221,7 @@ Mods: {
 			EssenceOfDespair: {
 				Tooltip:
 					'''
+					Obtained after finding a Guide Voodoo Doll on a Hardcore character
 					A gift from your Starfarer
 					Utilized in the creation of 'Sanguine Despair'
 					'''
@@ -7155,6 +7231,7 @@ Mods: {
 			EssenceOfFarewells: {
 				Tooltip:
 					'''
+					Obtained after visiting a Graveyard
 					A gift from your Starfarer
 					Utilized in the creation of 'Kevesi Farewell'
 					'''
@@ -7164,6 +7241,7 @@ Mods: {
 			EssenceOfGold: {
 				Tooltip:
 					'''
+					OObtained after visiting the Hallow
 					A gift from your Starfarer
 					Utilized in the creation of 'Aurum Edge'
 					'''
@@ -7173,6 +7251,7 @@ Mods: {
 			EssenceOfLightning: {
 				Tooltip:
 					'''
+					Obtained after defeating Nalhaun, the Burnished King
 					A gift from your Starfarer
 					Utilized in the creation of 'Boltstorm Axe'
 					'''
@@ -7182,6 +7261,7 @@ Mods: {
 			EssenceOfMania: {
 				Tooltip:
 					'''
+					Obtained after defeating Duke Fishron
 					A gift from your Starfarer
 					Utilized in the creation of 'Maniacal Justice'
 					'''
@@ -7191,6 +7271,7 @@ Mods: {
 			EssenceOfMimicry: {
 				Tooltip:
 					'''
+					Obtained from Arbitration
 					A gift from your Starfarer
 					Utilized in the creation of 'Manifestation'
 					'''
@@ -7200,6 +7281,7 @@ Mods: {
 			EssenceOfNanomachines: {
 				Tooltip:
 					'''
+					Obtained after defeating Skeletron
 					A gift from your Starfarer
 					Utilized in the creation of 'Nanomachina Reactor'
 					'''
@@ -7209,6 +7291,7 @@ Mods: {
 			EssenceOfNature: {
 				Tooltip:
 					'''
+					Obtained after placing a Tier 2 Stellaglyph
 					A gift from your Starfarer
 					Utilized in the creation of 'Irminsul's Dream'
 					'''
@@ -7218,6 +7301,7 @@ Mods: {
 			EssenceOfOffseeing: {
 				Tooltip:
 					'''
+					Obtained after visiting a Graveyard
 					A gift from your Starfarer
 					Utilized in the creation of 'Agnian Farewell'
 					'''
@@ -7227,6 +7311,7 @@ Mods: {
 			EssenceOfPiracy: {
 				Tooltip:
 					'''
+					Obtained after defeating a pirate invasion
 					A gift from your Starfarer
 					Utilized in the creation of 'Saltwater Scourge'
 					'''
@@ -7236,6 +7321,7 @@ Mods: {
 			EssenceOfQuantum: {
 				Tooltip:
 					'''
+					Obtained after defeating Lunatic Cultist
 					A gift from your Starfarer
 					Utilized in the creation of 'Catalyst's Memory'
 					'''
@@ -7245,6 +7331,7 @@ Mods: {
 			EssenceOfSilence: {
 				Tooltip:
 					'''
+					Obtained after defeating Golem
 					A gift from your Starfarer
 					Utilized in the creation of 'Gloves of the Black Silence'
 					'''
@@ -7254,6 +7341,7 @@ Mods: {
 			EssenceOfSouls: {
 				Tooltip:
 					'''
+					Obtained after defeating Moon Lord
 					A gift from your Starfarer
 					Utilized in the creation of 'Soul Reaver'
 					'''
@@ -7263,6 +7351,7 @@ Mods: {
 			EssenceOfSurya: {
 				Tooltip:
 					'''
+					Obtained after defeating Tsukiyomi, the First Starfarer
 					A gift from your Starfarer
 					Utilized in the creation of 'Sunset of the Sun God'
 					'''
@@ -7272,6 +7361,7 @@ Mods: {
 			EssenceOfTheAbyss: {
 				Tooltip:
 					'''
+					Obtained after defeating the Warrior of Light
 					A gift from your Starfarer
 					Utilized in the creation of 'The Everlasting Pickaxe'
 					'''
@@ -7281,6 +7371,7 @@ Mods: {
 			EssenceOfTheAutomaton: {
 				Tooltip:
 					'''
+					Obtained after placing a Tier 2 Stellaglyph
 					A gift from your Starfarer
 					Utilized in the creation of 'Pod Zero-42'
 					'''
@@ -7290,6 +7381,7 @@ Mods: {
 			EssenceOfTheBehemothTyphoon: {
 				Tooltip:
 					'''
+					Obtained after defeating Martian Madness
 					A gift from your Starfarer
 					Utilized in the creation of 'The Kiss of Death'
 					'''
@@ -7299,6 +7391,7 @@ Mods: {
 			EssenceOfTheRenegade: {
 				Tooltip:
 					'''
+					Obtained after defeating all mechanical bosses
 					A gift from your Starfarer
 					Utilized in the creation of 'El Capitan's Hardware'
 					'''
@@ -7308,6 +7401,7 @@ Mods: {
 			EssenceOfTheTimeless: {
 				Tooltip:
 					'''
+					Obtained after defeating Lunatic Cultist
 					A gift from your Starfarer
 					Utilized in the creation of 'Umbra'
 					'''
@@ -7317,6 +7411,7 @@ Mods: {
 			EssenceOfTheWatch: {
 				Tooltip:
 					'''
+					Obtained after defeating the Vagrant of Space and Time
 					A gift from your Starfarer
 					Utilized in the creation of 'Chronoclock'
 					'''
@@ -8095,6 +8190,7 @@ Mods: {
 				DisplayName: Essence Of Dreams
 				Tooltip:
 					'''
+					Obtained after defeating Plantera
 					A gift from your Starfarer
 					Utilized in the creation of 'Dreamer's Inkwell'
 					'''
@@ -8104,6 +8200,7 @@ Mods: {
 				DisplayName: Essence Of Kinetics
 				Tooltip:
 					'''
+					Obtained after defeating Duke Fishron
 					A gift from your Starfarer
 					Utilized in the creation of 'Kariumu's Favor'
 					'''
@@ -8113,6 +8210,7 @@ Mods: {
 				DisplayName: Essence Of Spinning
 				Tooltip:
 					'''
+					Obtained after defeating the Vagrant of Space and Time
 					A gift from your Starfarer
 					Utilized in the creation of 'Trickspin Two-Step'
 					'''
@@ -8122,6 +8220,7 @@ Mods: {
 				DisplayName: Essence Of The Soldier
 				Tooltip:
 					'''
+					Obtained after defeating the World Evil Boss
 					A gift from your Starfarer
 					Utilized in the creation of 'Shock & Awe'
 					'''
@@ -8131,6 +8230,7 @@ Mods: {
 				DisplayName: Essence Of The Hallownest
 				Tooltip:
 					'''
+					Obtained after defeating Skeletron, and then visiting the Underworld
 					A gift from your Starfarer
 					Utilized in the creation of 'Gossamer Needle'
 					'''
@@ -8191,6 +8291,7 @@ Mods: {
 				DisplayName: Essence Of The Void
 				Tooltip:
 					'''
+					Obtained after defeating the Wall of Flesh
 					A gift from your Starfarer
 					Utilized in the creation of 'Dragged Below'
 					'''
@@ -8410,27 +8511,64 @@ Mods: {
 
 			ArgentumShard: {
 				DisplayName: Argentum Shard
-				Tooltip: ""
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Gain 5% increased damage per 80 Mana
+					'''
+				TooltipAttached: Gain 5% increased damage per 80 Mana
 			}
 
 			NetheriteBar: {
-				DisplayName: Netherite Bar
-				Tooltip: ""
+				DisplayName: Bastion Ingot
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Gain 4 defense while holding this weapon
+					Press the Weapon Memory Key to instantly gain 20 defense for 2 seconds (18 second cooldown)
+					'Those were the days'
+					'''
+				TooltipAttached:
+					'''
+					Gain 4 defense while holding this weapon
+					Press the Weapon Memory Key to instantly gain 20 defense for 2 seconds (18 second cooldown)
+					'''
 			}
 
 			PearlescentOrb: {
 				DisplayName: Pearlescent Orb
-				Tooltip: ""
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Press the Weapon Memory Key to instantly teleport to your cursor (40 second cooldown)
+					'''
+				TooltipAttached: Press the Weapon Memory Key to instantly teleport to your cursor (40 second cooldown)
 			}
 
 			PhantomMask: {
 				DisplayName: Phantom Mask
-				Tooltip: ""
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					If you have exactly one minion slot used, gain 2% increased damage per unused minion slot
+					'Checkmate'
+					'''
+				TooltipAttached: If you have exactly one minion slot used, gain 2% increased damage per unused minion slot
 			}
 
 			PrimeCut: {
 				DisplayName: Prime Cut
-				Tooltip: ""
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Gain 4% increased damage while Well Fed
+					'''
+				TooltipAttached: Gain 4% increased damage while Well Fed
 			}
 		}
 
@@ -11702,6 +11840,21 @@ Mods: {
 				DisplayName: Powder Charge
 				Description: Powder charges have been stored and will be expended upon a critical strike to explode nearby foes
 			}
+
+			NetheriteIngotBuff: {
+				DisplayName: Bastion Defense
+				Description: ""
+			}
+
+			NetheriteIngotBuffCooldown: {
+				DisplayName: Bastion Defense Cooldown
+				Description: ""
+			}
+
+			EnderpearlCooldown: {
+				DisplayName: Enderpearl Cooldown
+				Description: Mods.StarsAbove.Buffs.EnderpearlCooldown.Description
+			}
 		}
 
 		Bestiary: {
@@ -11825,6 +11978,7 @@ Mods: {
 			"Stellar Nova.DisplayName": Stellar Nova
 			"Weapon Action.DisplayName": Weapon Action
 			"Show Memory Info.DisplayName": Show  Memory  Info
+			"Weapon Memory Action.DisplayName": Weapon  Memory  Action
 		}
 
 		Prefixes: {
