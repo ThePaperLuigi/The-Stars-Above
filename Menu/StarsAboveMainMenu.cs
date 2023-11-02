@@ -26,7 +26,7 @@ namespace StarsAbove.Menu
 
 		//public override ModSurfaceBackgroundStyle MenuBackgroundStyle => ModContent.GetInstance<NoBackground>();
 
-		public override string DisplayName => "The Stars Above";
+		public override string DisplayName => "The Stars Above Original Menu";
 
 		int menuTime;
 		float flipTime;
@@ -74,8 +74,6 @@ namespace StarsAbove.Menu
 		}
 		public override bool PreDrawLogo(SpriteBatch spriteBatch, ref Vector2 logoDrawCenter, ref float logoRotation, ref float logoScale, ref Color drawColor)
 		{
-			
-
 			walkFromScreenEdgeToEdge++;
 			walkFromScreenEdgeToEdgeEridani++;
 			menuTime++;
