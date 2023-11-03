@@ -883,6 +883,11 @@ namespace StarsAbove.Systems
         #endregion
 
         #region Miscellaneous Sound Effects
+        public static readonly SoundStyle SFX_Trumpet = new($"{nameof(StarsAbove)}/Sounds/SFX/Trumpet")
+        {
+            PitchVariance = 0.3f,
+            
+        };
         public static readonly SoundStyle SFX_SpeedrunEasterEgg = new($"{nameof(StarsAbove)}/Sounds/SFX/SpeedrunEasterEgg")
         {
 

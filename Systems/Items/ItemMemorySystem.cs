@@ -36,6 +36,8 @@ using StarsAbove.Buffs.Memories;
 using StarsAbove.Projectiles.Memories;
 using System;
 using Terraria.GameInput;
+using System.Reflection;
+using Terraria.Audio;
 
 namespace StarsAbove.Systems.Items
 {
@@ -55,14 +57,13 @@ namespace StarsAbove.Systems.Items
 
         public bool ChoiceGlasses;//1
         public bool RedSpiderLily;//2
-
         public bool AetherBarrel;//3
         public bool NookMiles;//4
         public bool CapeFeather;//5
-        public bool RawMeat;//6
+        public bool PrimeCut;//6
         public bool PhantomMask;//7
-        public bool NetheriteIngot;//8
-        public bool EnderPearl;//9
+        public bool NetheriteBar;//8
+        public bool PearlescentOrb;//9
         public bool ArgentumShard;//10
         public bool PowerMoon;//11
         public bool YoumuHilt;//12
@@ -121,7 +122,7 @@ namespace StarsAbove.Systems.Items
         public float damageModAdditive;
         public float damageModMultiplicative;
 
-        //Support mods (increase defense given, increase speed given, etc)
+        //Support mods (increase defense given, increase speed given, etc) UNUSED
         public float supportModAdditive;
         public float supportModMultiplicative;
 
@@ -177,9 +178,31 @@ namespace StarsAbove.Systems.Items
                 player.AddBuff(BuffType<ChoiceGlassesLock>(), 60 * 60);
                 HeldWeaponTypeChoice = item.type;
             }
-
-
+            if(PowerMoon && player.altFunctionUse == 2)
+            {
+                player.GetModPlayer<StarsAbovePlayer>().novaGauge += 4;
+            }
+            if(Trumpet)
+            {
+                SoundEngine.PlaySound(StarsAboveAudio.SFX_Trumpet, player.Center);
+            }
             return base.UseItem(item, player);
+        }
+        int dekuNutCD;
+        public override void OnConsumeMana(Item item, Player player, int manaConsumed)
+        {
+            if(DekuNut)
+            {
+                if(dekuNutCD <= 0)
+                {
+                    player.Heal(1);
+                    dekuNutCD = 3;
+                    return;
+                }
+                dekuNutCD--;
+            }
+
+            base.OnConsumeMana(item, player, manaConsumed);
         }
         public override void OnConsumeItem(Item item, Player player)
         {
@@ -219,9 +242,74 @@ namespace StarsAbove.Systems.Items
         }
         public override void HoldItem(Item item, Player player)
         {
+            SyncMemoriesToModPlayer(player);
+
             
-            base.HoldItem(item, player);
         }
+
+        private void SyncMemoriesToModPlayer(Player player)
+        {
+            var modPlayer = player.GetModPlayer<ItemMemorySystemPlayer>();
+            modPlayer.ChoiceGlasses = ChoiceGlasses;//1
+            modPlayer.RedSpiderLily = RedSpiderLily;//2
+            modPlayer.AetherBarrel = AetherBarrel;//3
+            modPlayer.NookMiles = NookMiles;//4
+            modPlayer.CapeFeather = CapeFeather;//5
+            modPlayer.PrimeCut = PrimeCut;//6
+            modPlayer.PhantomMask = PhantomMask;//7
+            modPlayer.NetheriteBar = NetheriteBar;//8
+            modPlayer.PearlescentOrb = PearlescentOrb;//9
+            modPlayer.ArgentumShard = ArgentumShard;//10
+            modPlayer.PowerMoon = PowerMoon;//11
+            modPlayer.YoumuHilt = YoumuHilt;//12
+            modPlayer.Rageblade = Rageblade;//13
+            modPlayer.ElectricGuitarPick = ElectricGuitarPick;//14
+            modPlayer.DekuNut = DekuNut;//15
+            modPlayer.MatterManipulator = MatterManipulator;//16
+            modPlayer.BottledChaos = BottledChaos;//17
+            modPlayer.Trumpet = Trumpet;//18
+            modPlayer.GuppyHead = GuppyHead;//19
+            modPlayer.Pawn = Pawn;//20
+            modPlayer.ReprintedBlueprint = ReprintedBlueprint;//21
+            modPlayer.ResonanceGem = ResonanceGem;//22
+            modPlayer.RuinedCrown = RuinedCrown;//23
+            modPlayer.DescenderGemstone = DescenderGemstone;//24
+            modPlayer.MonsterNail = MonsterNail;//25
+            modPlayer.MindflayerWorm = MindflayerWorm;//26
+            modPlayer.MercenaryAuracite = MercenaryAuracite;//27
+            modPlayer.ChronalDecelerator = ChronalDecelerator;//28
+            modPlayer.SimulacraShifter = SimulacraShifter;//29
+            modPlayer.BlackLightbulb = BlackLightbulb;//30
+            modPlayer.SigilOfHope = SigilOfHope;//31
+            modPlayer.JackalMask = JackalMask;//32
+            modPlayer.KnightsShovelhead = KnightsShovelhead;//33
+
+            //Each weapon has a random tarot card effect assigned.
+            modPlayer.TarotCard = TarotCard;//100
+
+            //Garridine's Protocores
+            modPlayer.ProtocoreMonoclaw = ProtocoreMonoclaw;//201
+            modPlayer.ProtocoreManacoil = ProtocoreManacoil;//202
+            modPlayer.ProtocoreShockrod = ProtocoreShockrod;//203
+
+            //Sigils
+            modPlayer.RangedSigil = RangedSigil;//301
+            modPlayer.MagicSigil = MagicSigil;//302
+            modPlayer.MeleeSigil = MeleeSigil;//303
+            modPlayer.SummonSigil = SummonSigil;//304
+
+            //Aeonseals
+            modPlayer.AeonsealDestruction = AeonsealDestruction;//401
+            modPlayer.AeonsealHunt = AeonsealHunt;//402
+            modPlayer.AeonsealErudition = AeonsealErudition;//403
+            modPlayer.AeonsealHarmony = AeonsealHarmony;//404
+            modPlayer.AeonsealNihility = AeonsealNihility;//405
+            modPlayer.AeonsealPreservation = AeonsealPreservation;//406
+            modPlayer.AeonsealAbundance = AeonsealAbundance;//407
+
+            modPlayer.AeonsealTrailblazer = AeonsealTrailblazer;//408
+        }
+
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {
             if (CapeFeather && player.velocity.Y != 0)
@@ -432,7 +520,7 @@ namespace StarsAbove.Systems.Items
                         break;
                 }
             }
-            if (RawMeat)
+            if (PrimeCut)
             {
                 if (player.HasBuff(BuffID.WellFed) || player.HasBuff(BuffID.WellFed2) || player.HasBuff(BuffID.WellFed3))
                 {
@@ -443,7 +531,7 @@ namespace StarsAbove.Systems.Items
             {
                 if (player.slotsMinions == 1)
                 {
-                    damage += ((0.02f*(player.maxMinions-1)) + damageModAdditive * damageModMultiplicative) * memoryGlobalMod;
+                    damage += ((0.07f*(player.maxMinions-1)) + damageModAdditive * damageModMultiplicative) * memoryGlobalMod;
                 }
             }
             if(ArgentumShard)
@@ -485,10 +573,10 @@ namespace StarsAbove.Systems.Items
             AetherBarrel = false;//3
             NookMiles = false;//4
             CapeFeather = false;//5
-            RawMeat = false;//6
+            PrimeCut = false;//6
             PhantomMask = false;//7
-            NetheriteIngot = false;//8
-            EnderPearl = false;//9
+            NetheriteBar = false;//8
+            PearlescentOrb = false;//9
             ArgentumShard = false;//10
             PowerMoon = false;//11
             YoumuHilt = false;//12
@@ -557,8 +645,9 @@ namespace StarsAbove.Systems.Items
             }
             if(NookMiles)
             {
-                supportModAdditive += 0.3f;
+                damageModAdditive += 0.08f;
             }
+            player.GetModPlayer<ItemMemorySystemPlayer>().cooldownMod = cooldownReductionMod;
         }
         //All other memories.
         private void Memories(Player player)
@@ -567,189 +656,36 @@ namespace StarsAbove.Systems.Items
         }
         private void CheckMemories(Item item, int slot, Player player)
         {
-            check = 1;//Choice Glasses
-            if (slot == check)
-            {
-                ChoiceGlasses = true;
-                if (player.HeldItem == item)
-                    player.GetModPlayer<ItemMemorySystemPlayer>().ChoiceGlasses = true;
-                string itemIcon = $"[i:{ItemType<ChoiceGlasses>()}]";
-                string itemName = "ChoiceGlasses";
+            //This would be a lot easier with reflection, but I don't want to risk problems with that!
 
-                memoryTooltip += itemIcon;
-                if (memoryTooltipInfo == "")
-                {
-                    memoryTooltipInfo += itemIcon + ": " + LangHelper.GetTextValue($"Items." + $"{itemName}" + ".TooltipAttached");
+            SetMemory(slot, 1, "ChoiceGlasses", ref ChoiceGlasses, item, player);
+            SetMemory(slot, 2, "RedSpiderLily", ref RedSpiderLily, item, player);
+            SetMemory(slot, 3, "AetherBarrel", ref AetherBarrel, item, player);
+            SetMemory(slot, 4, "NookMiles", ref NookMiles, item, player);
+            SetMemory(slot, 5, "CapedFeather", ref CapeFeather, item, player);
+            SetMemory(slot, 6, "PrimeCut", ref PrimeCut, item, player);
+            SetMemory(slot, 7, "PhantomMask", ref PhantomMask, item, player);
+            SetMemory(slot, 8, "NetheriteBar", ref NetheriteBar, item, player);
+            SetMemory(slot, 9, "PearlescentOrb", ref PearlescentOrb, item, player);
+            SetMemory(slot, 10, "ArgentumShard", ref ArgentumShard, item, player);
+            SetMemory(slot, 11, "PowerMoon", ref PowerMoon, item, player);
+            SetMemory(slot, 12, "YoumuHilt", ref YoumuHilt, item, player);
+            SetMemory(slot, 13, "Rageblade", ref Rageblade, item, player);
+            SetMemory(slot, 14, "ElectricGuitarPick", ref ElectricGuitarPick, item, player);
+            SetMemory(slot, 15, "DekuNut", ref DekuNut, item, player);
+            SetMemory(slot, 16, "MatterManipulator", ref MatterManipulator, item, player);
+            SetMemory(slot, 17, "BottledChaos", ref BottledChaos, item, player);
+            SetMemory(slot, 18, "Trumpet", ref Trumpet, item, player);
+            SetMemory(slot, 19, "GuppyHead", ref GuppyHead, item, player);
+            SetMemory(slot, 20, "Pawn", ref Pawn, item, player);
+            SetMemory(slot, 22, "ResonanceGem", ref ResonanceGem, item, player);
+            SetMemory(slot, 31, "SigilOfHope", ref SigilOfHope, item, player);
+            SetMemory(slot, 33, "KnightsShovelhead", ref KnightsShovelhead, item, player);
 
-                }
-                else
-                {
-                    memoryTooltipInfo += "\n" + itemIcon + ": " + LangHelper.GetTextValue($"Items." + $"{itemName}" + ".TooltipAttached");
-
-                }
-                memoryCount++;
-            }
-            check = 2;//RedSpiderLily
-            if (slot == check)
-            {
-                    RedSpiderLily = true;
-                if (player.HeldItem == item)
-
-                    player.GetModPlayer<ItemMemorySystemPlayer>().RedSpiderLily = true;
-                string itemIcon = $"[i:{ItemType<RedSpiderLily>()}]";
-                string itemName = "RedSpiderLily";
-
-                memoryTooltip += itemIcon;
-                if (memoryTooltipInfo == "")
-                {
-                    memoryTooltipInfo += itemIcon + ": " + LangHelper.GetTextValue($"Items." + $"{itemName}" + ".TooltipAttached");
-
-                }
-                else
-                {
-                    memoryTooltipInfo += "\n" + itemIcon + ": " + LangHelper.GetTextValue($"Items." + $"{itemName}" + ".TooltipAttached");
-
-                }
-                memoryCount++;
-            }
-            check = 3;//AetherBarrel
-            if (slot == check)
-            {
-                    AetherBarrel = true;
-                if (player.HeldItem == item)
-
-                    player.GetModPlayer<ItemMemorySystemPlayer>().AetherBarrel = true;
-                string itemIcon = $"[i:{ItemType<AetherBarrel>()}]";
-                string itemName = "AetherBarrel";
-
-                memoryTooltip += itemIcon;
-                if (memoryTooltipInfo == "")
-                {
-                    memoryTooltipInfo += itemIcon + ": " + LangHelper.GetTextValue($"Items." + $"{itemName}" + ".TooltipAttached");
-
-                }
-                else
-                {
-                    memoryTooltipInfo += "\n" + itemIcon + ": " + LangHelper.GetTextValue($"Items." + $"{itemName}" + ".TooltipAttached");
-
-                }
-                memoryCount++;
-            }
-            check = 4;//NookMiles
-            if (slot == check)
-            {
-                    NookMiles = true;
-                if (player.HeldItem == item)
-
-                    player.GetModPlayer<ItemMemorySystemPlayer>().NookMiles = true;
-                string itemIcon = $"[i:{ItemType<NookMilesTicket>()}]";
-                string itemName = "NookMilesTicket";
-
-                memoryTooltip += itemIcon;
-                if (memoryTooltipInfo == "")
-                {
-                    memoryTooltipInfo += itemIcon + ": " + LangHelper.GetTextValue($"Items." + $"{itemName}" + ".TooltipAttached");
-
-                }
-                else
-                {
-                    memoryTooltipInfo += "\n" + itemIcon + ": " + LangHelper.GetTextValue($"Items." + $"{itemName}" + ".TooltipAttached");
-
-                }
-                memoryCount++;
-            }
-            check = 5;//Caped Feather ID
-            if (slot == check)
-            {
-                    CapeFeather = true;
-                if (player.HeldItem == item)
-
-                    player.GetModPlayer<ItemMemorySystemPlayer>().CapeFeather = true;
-                string itemIcon = $"[i:{ItemType<CapedFeather>()}]";
-                string itemName = "CapedFeather";
-
-                memoryTooltip += itemIcon;
-                if (memoryTooltipInfo == "")
-                {
-                    memoryTooltipInfo += itemIcon + ": " + LangHelper.GetTextValue($"Items." + $"{itemName}" + ".TooltipAttached");
-
-                }
-                else
-                {
-                    memoryTooltipInfo += "\n" + itemIcon + ": " + LangHelper.GetTextValue($"Items." + $"{itemName}" + ".TooltipAttached");
-
-                }
-                memoryCount++;
-            }
-            check = 22;//Resonance Gem
-            if (slot == check)
-            {
-                    ResonanceGem = true;
-                if (player.HeldItem == item)
-
-                    player.GetModPlayer<ItemMemorySystemPlayer>().ResonanceGem = true;
-                string itemIcon = $"[i:{ItemType<ResonanceGem>()}]";
-                string itemName = "ResonanceGem";
-
-                memoryTooltip += itemIcon;
-                if (memoryTooltipInfo == "")
-                {
-                    memoryTooltipInfo += itemIcon + ": " + LangHelper.GetTextValue($"Items." + $"{itemName}" + ".TooltipAttached");
-
-                }
-                else
-                {
-                    memoryTooltipInfo += "\n" + itemIcon + ": " + LangHelper.GetTextValue($"Items." + $"{itemName}" + ".TooltipAttached");
-
-                }
-                memoryCount++;
-            }
-            check = 31;//Sigil of Hope ID
-            if (slot == check)
-            {
-                    SigilOfHope = true;
-                if (player.HeldItem == item)
-
-                    player.GetModPlayer<ItemMemorySystemPlayer>().SigilOfHope = true;
-                string itemIcon = $"[i:{ItemType<SigilOfHope>()}]";
-                string itemName = "SigilOfHope";
-
-                memoryTooltip += itemIcon;
-                if (memoryTooltipInfo == "")
-                {
-                    memoryTooltipInfo += itemIcon + ": " + LangHelper.GetTextValue($"Items." + $"{itemName}" + ".TooltipAttached");
-
-                }
-                else
-                {
-                    memoryTooltipInfo += "\n" + itemIcon + ": " + LangHelper.GetTextValue($"Items." + $"{itemName}" + ".TooltipAttached");
-
-                }
-                memoryCount++;
-            }
-            check = 33;//Knight's Shovelhead
-            if (slot == check)
-            {
-                    KnightsShovelhead = true;
-                if (player.HeldItem == item)
-
-                    player.GetModPlayer<ItemMemorySystemPlayer>().KnightsShovelhead = true;
-                string itemIcon = $"[i:{ItemType<KnightsShovelhead>()}]";
-                string itemName = "KnightsShovelhead";
-
-                memoryTooltip += itemIcon;
-                if (memoryTooltipInfo == "")
-                {
-                    memoryTooltipInfo += itemIcon + ": " + LangHelper.GetTextValue($"Items." + $"{itemName}" + ".TooltipAttached");
-
-                }
-                else
-                {
-                    memoryTooltipInfo += "\n" + itemIcon + ": " + LangHelper.GetTextValue($"Items." + $"{itemName}" + ".TooltipAttached");
-
-                }
-                memoryCount++;
-            }
+            SetMemory(slot, 301, "RangedSigil", ref RangedSigil, item, player);
+            SetMemory(slot, 302, "MagicSigil", ref MagicSigil, item, player);
+            SetMemory(slot, 303, "MeleeSigil", ref MeleeSigil, item, player);
+            SetMemory(slot, 304, "SummonSigil", ref SummonSigil, item, player);
             check = 100;//TarotCard
             if (slot == check)
             {
@@ -838,7 +774,27 @@ namespace StarsAbove.Systems.Items
                 memoryCount++;
             }
         }
+        private void SetMemory(int slot, int check, string itemName, ref bool itemFlag, Item item, Player player)
+        {
+            if (slot == check)
+            {
+                itemFlag = true;
+                
+                int itemType = Mod.Find<ModItem>(itemName).Type;
+                string itemIcon = $"[i:{itemType}]";
 
+                memoryTooltip += itemIcon;
+                if (memoryTooltipInfo == "")
+                {
+                    memoryTooltipInfo += itemIcon + ": " + LangHelper.GetTextValue($"Items.{itemName}.TooltipAttached");
+                }
+                else
+                {
+                    memoryTooltipInfo += "\n" + itemIcon + ": " + LangHelper.GetTextValue($"Items.{itemName}.TooltipAttached");
+                }
+                memoryCount++;
+            }
+        }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             if (globalItem.AstralWeapons.Contains(item.type) || globalItem.UmbralWeapons.Contains(item.type) || globalItem.SpatialWeapons.Contains(item.type))
@@ -900,10 +856,10 @@ namespace StarsAbove.Systems.Items
         public bool AetherBarrel;//3
         public bool NookMiles;//4
         public bool CapeFeather;//5
-        public bool RawMeat;//6
+        public bool PrimeCut;//6
         public bool PhantomMask;//7
-        public bool NetheriteIngot;//8
-        public bool EnderPearl;//9
+        public bool NetheriteBar;//8
+        public bool PearlescentOrb;//9
         public bool ArgentumShard;//10
         public bool PowerMoon;//11
         public bool YoumuHilt;//12
@@ -955,35 +911,84 @@ namespace StarsAbove.Systems.Items
 
         public bool AeonsealTrailblazer;//408
 
+        public float cooldownMod;
+
         public int powderCharges = 0;
         public int oldHP;
         public int accursedEdgeStacks = 0;
+        public float ragebladeStacks = 0f;
+
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
             if (Main.LocalPlayer.active && !Main.LocalPlayer.dead && !Player.GetModPlayer<BossPlayer>().QTEActive && StarsAbove.weaponMemoryKey.JustPressed)
             {
-                if(EnderPearl && !Player.HasBuff(BuffType<EnderpearlCooldown>()))
+                if(PearlescentOrb && !Player.HasBuff(BuffType<EnderpearlCooldown>()))
                 {
                     //Teleport
                     Vector2 vector32 = new Vector2(Main.MouseWorld.X, Main.MouseWorld.Y);
                     Player.Teleport(vector32, 1, 0);
                     NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, Player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
-                    Player.AddBuff(BuffType<EnderpearlCooldown>(), 60 * 40);
+                    Player.AddBuff(BuffType<EnderpearlCooldown>(), (int)((60 * 40) * 1f - cooldownMod));
 
                 }
-                if (NetheriteIngot && !Player.HasBuff(BuffType<NetheriteIngotBuffCooldown>()))
+                if (NetheriteBar && !Player.HasBuff(BuffType<NetheriteIngotBuffCooldown>()))
                 {
                     //Defense
                     Player.AddBuff(BuffType<NetheriteIngotBuff>(), 120);
-                    Player.AddBuff(BuffType<NetheriteIngotBuffCooldown>(), 60 * 18);
+                    Player.AddBuff(BuffType<NetheriteIngotBuffCooldown>(), (int)((60 * 18) * 1f - cooldownMod));
+
+                }
+                if (YoumuHilt && !Player.HasBuff(BuffType<PhantomHiltCooldown>()))
+                {
+                    //Defense
+                    Player.AddBuff(BuffType<PhantomHiltBuff>(), 240);
+                    Player.AddBuff(BuffType<PhantomHiltCooldown>(), (int)((60 * 30) * 1f - cooldownMod));
 
                 }
             }
             base.ProcessTriggers(triggersSet);
         }
+        public override void PreUpdate()
+        {
+            if (Rageblade)
+            {
+                if (Player.GetModPlayer<StarsAbovePlayer>().inCombat <= 0)
+                {
+                    ragebladeStacks = 0;
+                }
+            }
+            else
+            {
+                ragebladeStacks = 0;
+
+            }
+            base.PreUpdate();
+        }
+        public override void PostUpdateRunSpeeds()
+        {
+            if (Player.HasBuff(BuffType<PhantomHiltBuff>()))
+            {
+                Player.maxRunSpeed *= 1.4f;
+                Player.accRunSpeed *= 1.4f;
+
+            }
+            
+        }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if(KnightsShovelhead)
+            if (!target.active)
+            {
+                OnKillNPC(target);
+            }
+            if(Rageblade)
+            {
+                ragebladeStacks += 0.01f;
+                if (ragebladeStacks > 0.20f)
+                {
+                    ragebladeStacks = 0.20f;
+                }
+            }
+            if (KnightsShovelhead)
             {
                 Player.velocity.Y -= 10f;
             }
@@ -1014,7 +1019,29 @@ namespace StarsAbove.Systems.Items
                 Player.Heal((int)(Player.statLifeMax2 * 0.2f));
                 accursedEdgeStacks = 0;
             }
+            if(ElectricGuitarPick && !Player.HasBuff(BuffType<ElectricGuitarPickCooldown>()))
+            {
+                Player.AddBuff(BuffType < ElectricGuitarPickCooldown >(), (int)((60 * 4) * 1f - cooldownMod));
+                //Spawn lightning on hit!
+                Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center.X, target.Center.Y, Main.rand.Next(-2, 2), Main.rand.Next(-2, 2), ProjectileType<MemoryLightning>(), damageDone / 8, 0, Player.whoAmI, Main.rand.Next(0, 360) + 1000f, 1);
+                if (Main.rand.NextBool())
+                {
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center.X, target.Center.Y, Main.rand.Next(-2, 2), Main.rand.Next(-2, 2), ProjectileType<MemoryLightning>(), damageDone / 8, 0, Player.whoAmI, Main.rand.Next(0, 360) + 1000f, 1);
+                    if (Main.rand.NextBool())
+                    {
+                        Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center.X, target.Center.Y, Main.rand.Next(-2, 2), Main.rand.Next(-2, 2), ProjectileType<MemoryLightning>(), damageDone / 8, 0, Player.whoAmI, Main.rand.Next(0, 360) + 1000f, 1);
+                    }
+                }
+            }
             base.OnHitNPC(target, hit, damageDone);
+        }
+
+        public void OnKillNPC(NPC target)
+        {
+            if(MatterManipulator)
+            {
+                Player.AddBuff(BuffID.Mining, 60 * 30);
+            }
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
@@ -1061,9 +1088,18 @@ namespace StarsAbove.Systems.Items
             {
                 Player.AddBuff(BuffType<AccursedEdge>(), 10);
             }
+            if (ragebladeStacks > 0)
+            {
+                Player.AddBuff(BuffType<RagebladeBuff>(), 10);
+            }
             base.PreUpdateBuffs();
         }
-        
+
+        public override void PostUpdateBuffs()
+        {
+            
+            base.PostUpdateBuffs();
+        }
         public override void ResetEffects()
         {
             ChoiceGlasses = false;//1
@@ -1071,10 +1107,10 @@ namespace StarsAbove.Systems.Items
             AetherBarrel = false;//3
             NookMiles = false;//4
             CapeFeather = false;//5
-            RawMeat = false;//6
+            PrimeCut = false;//6
             PhantomMask = false;//7
-            NetheriteIngot = false;//8
-            EnderPearl = false;//9
+            NetheriteBar = false;//8
+            PearlescentOrb = false;//9
             ArgentumShard = false;//10
             PowerMoon = false;//11
             YoumuHilt = false;//12

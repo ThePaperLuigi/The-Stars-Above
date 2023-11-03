@@ -439,6 +439,40 @@ Mods: {
 				Name: 默认空置对话
 				Description: 如果你看到过正常的空置对话，就会看到这句话。
 			}
+
+			UnlockConditions: {
+				// VisitGraveyard: Visit a Graveyard.
+				// KingSlime: Defeat King Slime.
+				// EyeOfCthulhu: Defeat Eye of Cthulhu.
+				// WorldEvil: Defeat the World Evil boss.
+				// QueenBee: Defeat Queen Bee.
+				// ObtainTier2Stellaglyph: Obtain a Tier 2 Stellaglyph.
+				// Skeletron: Defeat Skeletron.
+				// SkeletronBeach: Defeat Skeletron, then visit the Beach.
+				// SkeletronUnderworld: Defeat Skeletron, then visit the Underworld.
+				// WallOfFlesh: Defeat the Wall of Flesh.
+				// GuideVoodooDoll: Find a Guide Voodoo Doll on a Hardcore character.
+				// Hallowed: Visit the Hallowed.
+				// PirateInvasion: Defeat a Pirate Invasion.
+				// QueenSlime: Defeat Queen Slime.
+				// AnyMechanical: Defeat any mechanical boss.
+				// SkeletronPrime: Defeat Skeletron Prime.
+				// AllMechanical: Defeat all mechanical bosses.
+				// Nalhaun: Defeat Nalhaun, the Burnished King.
+				// Plantera: Defeat Plantera.
+				// FrostQueen: Defeat the Frost Queen.
+				// Penthesilea: Defeat Penthesilea, the Witch of Ink.
+				// Golem: Defeat Golem.
+				// MartianMadness: Defeat Martian Madness.
+				// DukeFishron: Defeat Duke Fishron.
+				// LunaticCultist: Defeat the Lunatic Cultist.
+				// MoonLord: Defeat Moon Lord.
+				// WarriorOfLight: Defeat the Warrior of Light.
+				// Tsukiyomi: Defeat ???
+				// EmpressOfLight: Defeat the Empress of Light.
+				// Pumpking: Defeat Pumpking.
+				// Deerclops: Defeat Deerclops.
+			}
 		}
 
 		Dialogue: {
@@ -7933,16 +7967,6 @@ Mods: {
 					'''
 			}
 
-			GuppyHead: {
-				DisplayName: 嗝屁猫
-				Tooltip:
-					'''
-					击杀敌人或者受到伤害后，在你的位置生成3只苍蝇
-					苍蝇会攻击附近的敌人，并造成相当于你最大生命值3%的伤害
-					每3秒只会生效一次
-					'''
-			}
-
 			LamentingPocketwatch: {
 				DisplayName: 哀鸣怀表
 				Tooltip:
@@ -8315,9 +8339,9 @@ Mods: {
 					'''
 					[c/D294FF:Weapon Memory]
 					When Imprinted into a weapon, gain the following effects:
-					Increase the potency of other Memory defensive effects by 30%
+					Increase the potency of other Memory damage bonuses by 8%
 					''' */
-				// TooltipAttached: Increase the potency of other Memory defensive effects by 30%
+				// TooltipAttached: Increase the potency of other Memory damage bonuses by 8%
 			}
 
 			RedSpiderLily: {
@@ -8405,6 +8429,7 @@ Mods: {
 					[c/D294FF:Weapon Memory]
 					When Imprinted into a weapon, gain the following effects:
 					Press the Weapon Memory Key to instantly teleport to your cursor (40 second cooldown)
+					'The end?'
 					''' */
 				// TooltipAttached: Press the Weapon Memory Key to instantly teleport to your cursor (40 second cooldown)
 			}
@@ -8415,10 +8440,10 @@ Mods: {
 					'''
 					[c/D294FF:Weapon Memory]
 					When Imprinted into a weapon, gain the following effects:
-					If you have exactly one minion slot used, gain 2% increased damage per unused minion slot
+					If you have exactly one minion slot used, gain 7% increased damage per unused minion slot
 					'Checkmate'
 					''' */
-				// TooltipAttached: If you have exactly one minion slot used, gain 2% increased damage per unused minion slot
+				// TooltipAttached: If you have exactly one minion slot used, gain 7% increased damage per unused minion slot
 			}
 
 			PrimeCut: {
@@ -8430,6 +8455,124 @@ Mods: {
 					Gain 4% increased damage while Well Fed
 					''' */
 				// TooltipAttached: Gain 4% increased damage while Well Fed
+			}
+
+			DekuNut: {
+				// DisplayName: Deku Nut
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					If Mana is consumed through use of the weapon's left-click attack, restore 1 HP (3 use cooldown)
+					''' */
+				// TooltipAttached: If Mana is consumed through use of the weapon's left-click attack, restore 1 HP on use (3 use cooldown)
+			}
+
+			ElectricGuitarPick: {
+				// DisplayName: Electric Guitar Pick
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Striking foes unleashes up to 3 lightning arcs that deal 1/8th damage in a small area (4 second cooldown)
+					'...and his music was...'
+					''' */
+				// TooltipAttached: Striking foes unleashes up to 3 lightning arcs that deal 1/8th damage in a small area (4 second cooldown)
+			}
+
+			MatterManipulator: {
+				// DisplayName: Matter Modulator
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Gain the Mining buff for 30 seconds when defeating an enemy
+					'Modulate anything that matters'
+					''' */
+				// TooltipAttached: Gain the Mining buff for 30 seconds when defeating an enemy
+			}
+
+			PowerMoon: {
+				// DisplayName: Power Moon
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					If this weapon has a right-click ability, it now charges Stellar Nova Energy by 4 when used
+					''' */
+				// TooltipAttached: If this weapon has a right-click ability, it now charges Stellar Nova Energy by 4 when used
+			}
+
+			Rageblade: {
+				// DisplayName: Furious Dirk
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Gain 0.1% increased attack speed when striking foes, capped at 20% increased attack speed
+					Resets outside of combat
+					''' */
+				/* TooltipAttached:
+					'''
+					Gain 0.1% increased attack speed when striking foes, capped at 20% increased attack speed
+					Resets outside of combat
+					''' */
+			}
+
+			YoumuHilt: {
+				// DisplayName: Ghostly Hilt
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Press the Weapon Memory Key to gain 40% increased movement speed for 4 seconds (30 second cooldown)
+					''' */
+				// TooltipAttached: Press the Weapon Memory Key to gain 40% increased movement speed for 4 seconds (30 second cooldown)
+			}
+
+			BottledChaos: {
+				// DisplayName: Bottled Chaos
+				// Tooltip: ""
+			}
+
+			GuppyHead: {
+				DisplayName: 嗝屁猫
+				Tooltip:
+					'''
+					击杀敌人或者受到伤害后，在你的位置生成3只苍蝇
+					苍蝇会攻击附近的敌人，并造成相当于你最大生命值3%的伤害
+					每3秒只会生效一次
+					'''
+			}
+
+			MagicSigil: {
+				// DisplayName: Magic Sigil
+				// Tooltip: ""
+			}
+
+			MeleeSigil: {
+				// DisplayName: Melee Sigil
+				// Tooltip: ""
+			}
+
+			Pawn: {
+				// DisplayName: Pawn
+				// Tooltip: ""
+			}
+
+			RangedSigil: {
+				// DisplayName: Ranged Sigil
+				// Tooltip: ""
+			}
+
+			SummonSigil: {
+				// DisplayName: Summon Sigil
+				// Tooltip: ""
+			}
+
+			Trumpet: {
+				// DisplayName: Trumpet
+				// Tooltip: ""
 			}
 		}
 
@@ -9321,6 +9464,7 @@ Mods: {
 			// WavedancerSummon.DisplayName: Wavedancer Summon
 			// WavedancerSwordSpin.DisplayName: Wavedancer Sword Spin
 			// PowderChargeExplosion.DisplayName: Powder Charge Explosion
+			// MemoryLightning.DisplayName: Memory Lightning
 		}
 
 		Buffs: {
@@ -11696,7 +11840,7 @@ Mods: {
 
 			NetheriteIngotBuff: {
 				// DisplayName: Bastion Defense
-				// Description: ""
+				// Description: Defenses are drastically increased
 			}
 
 			NetheriteIngotBuffCooldown: {
@@ -11706,14 +11850,34 @@ Mods: {
 
 			EnderpearlCooldown: {
 				// DisplayName: Enderpearl Cooldown
-				// Description: Mods.StarsAbove.Buffs.EnderpearlCooldown.Description
+				// Description: ""
+			}
+
+			ElectricGuitarPickCooldown: {
+				// DisplayName: Electric Guitar Pick Cooldown
+				// Description: ""
+			}
+
+			PhantomHiltBuff: {
+				// DisplayName: Ghostly Hilt
+				// Description: Movement speed is increased
+			}
+
+			PhantomHiltCooldown: {
+				// DisplayName: Ghostly Hilt Cooldown
+				// Description: ""
+			}
+
+			RagebladeBuff: {
+				// DisplayName: Furious Dirk
+				// Description: ""
 			}
 		}
 
 		Bestiary: {
 			Arbitration: 一个神秘的声影，据说是宇宙之平衡的具现。对这个敌人所知甚少……被第一位星海旅者撕成碎片。
 			AstralCell: 时空流浪者召唤的奇怪蓝色物体。它的食物是水汽。
-			Nalhaun: 一位曾经强大的君主，他因为他的宫廷的背叛被降下永生诅咒。他独自一人坚守在一个空无一物的星球上，直到第一位星之传承者惧怕他会干扰他的计划，前来终结了他漫长而悲惨的统治。他本可以尽其所能，但漫长内战让他的世界支离破碎，他也因此不堪重负。
+			// NalhaunBossPhase2: A once mighty monarch, cursed to live eternally by means of a betrayal from his royal court. He persisted alone on an empty planet until the First Starbearer ended his long and tragic reign, as he would be able to interfere with his plans. While he may have stood a chance at his full might, he was burdened by a dreadful civil war tearing his world apart.
 			PaintedAttendantA: 被彭忒希勒娅用来……打你的脸。最好的法师知道什么时间任何事下才是唯一解。
 			Penthesilea: 多彩魔女是一位非常强大的法师。她曾经统治过一个完全由她“画”出来的星球。作为一个魔术师，她掌握了十分专业的魔术技巧，但却仅仅是为了对她的同事进行恶作剧，这却也能证明她的聪明才智。在长时间的对峙下，她最终死在了第一位星之传承者的手下——因为她再这么下去，会干扰到他的计划……
 			PrismLoot: 棱晶状的潜在魔法能量有会影响它们在银河中的漂泊。抓住一个，你就会得到奖励！
@@ -11721,7 +11885,7 @@ Mods: {
 			TsukiyomiBoss: 源初之星海旅者，月读，她有着星轨和天体的控制权。行星及其天然卫星的引力给予了她力量。她引导光之战士步入歧途，用他的力量和善意征服和摧毁了无数的星球……然而……
 			CastorBoss: 一位炽炎灾裔。灾裔是一个极具冲突的恶魔种族，它们的血缘关系只会进一步点燃它们之间的冲突之火。它们完全沉浸在兄弟之间的决斗中，除了对方的行动之外，他们什么都不在乎。令人感到讽刺的是，这个特性却会导致它们在面对其他敌人时表现的平平无奇。它们被第一位星之传承者彻底消灭，因为它们之间永恒的战斗无意中干扰到了他的计划。
 			PolluxBoss: 一位冰河灾裔。灾裔是一个极具冲突的恶魔种族，它们的血缘关系只会进一步点燃它们之间的冲突之火。它们完全沉浸在兄弟之间的决斗中，除了对方的行动之外，他们什么都不在乎。令人感到讽刺的是，这个特性却会导致它们在面对其他敌人时表现的平平无奇。它们被第一位星之传承者彻底消灭，因为它们之间永恒的战斗无意中干扰到了他的计划。
-			VagrantOfSpaceAndTime: 神秘的星海旅者珀尔修斯。他的外表展现了自信……但他只是一个装酷的傻瓜。他的姊妹们也认同这点。
+			// VagrantBoss: The enigmatic Starfarer Perseus. His outward appearance is that of utmost confidence... but he's just kind of a dork trying to look cool. His sisters agree on this. He continues to have power over spatial distances, but seems to have lost the power to control time (but not the moniker.)
 			WarriorOfLight: 光之战士，或者说第一位星之传承者，曾经通过他的行动和他的星海旅者的帮助维护银河的正义。他曾经统治着一个和平的世界，但无助地看着自己的人民走向灭亡。后发誓再也不让其他人共享同样的命运——无论代价。
 			AsteroidWorm: 这些令人难以置信的极端耐寒生物已经获得了在真空中漫无目的漂流的能力——这也许不是关于它们的进化的最佳描述。虽然他、它们的食物很少，但是它们对食物的需求也很低。它们有着强韧的外壳，但是没有什么攻击能力。
 			Soulless: 无论“天启”是否降临至雕具星上，它们都是不幸的受害者。漫游的魔力使他们的肉身得以存活，但它们曾经所拥有的任何思维的痕迹已然不见踪影。

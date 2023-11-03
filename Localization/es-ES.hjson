@@ -439,6 +439,40 @@ Mods: {
 				Name: Diálogo ocioso por defecto
 				Description: Este diálogo aparece cuando ya has visto un diálogo inactivo normal recientemente.
 			}
+
+			UnlockConditions: {
+				// VisitGraveyard: Visit a Graveyard.
+				// KingSlime: Defeat King Slime.
+				// EyeOfCthulhu: Defeat Eye of Cthulhu.
+				// WorldEvil: Defeat the World Evil boss.
+				// QueenBee: Defeat Queen Bee.
+				// ObtainTier2Stellaglyph: Obtain a Tier 2 Stellaglyph.
+				// Skeletron: Defeat Skeletron.
+				// SkeletronBeach: Defeat Skeletron, then visit the Beach.
+				// SkeletronUnderworld: Defeat Skeletron, then visit the Underworld.
+				// WallOfFlesh: Defeat the Wall of Flesh.
+				// GuideVoodooDoll: Find a Guide Voodoo Doll on a Hardcore character.
+				// Hallowed: Visit the Hallowed.
+				// PirateInvasion: Defeat a Pirate Invasion.
+				// QueenSlime: Defeat Queen Slime.
+				// AnyMechanical: Defeat any mechanical boss.
+				// SkeletronPrime: Defeat Skeletron Prime.
+				// AllMechanical: Defeat all mechanical bosses.
+				// Nalhaun: Defeat Nalhaun, the Burnished King.
+				// Plantera: Defeat Plantera.
+				// FrostQueen: Defeat the Frost Queen.
+				// Penthesilea: Defeat Penthesilea, the Witch of Ink.
+				// Golem: Defeat Golem.
+				// MartianMadness: Defeat Martian Madness.
+				// DukeFishron: Defeat Duke Fishron.
+				// LunaticCultist: Defeat the Lunatic Cultist.
+				// MoonLord: Defeat Moon Lord.
+				// WarriorOfLight: Defeat the Warrior of Light.
+				// Tsukiyomi: Defeat ???
+				// EmpressOfLight: Defeat the Empress of Light.
+				// Pumpking: Defeat Pumpking.
+				// Deerclops: Defeat Deerclops.
+			}
 		}
 
 		Dialogue: {
@@ -7902,16 +7936,6 @@ Mods: {
 					''' */
 			}
 
-			GuppyHead: {
-				// DisplayName: Misfortunate Cat
-				/* Tooltip:
-					'''
-					Upon taking damage or defeating a foe, spawn three files at your position
-					Flies attack nearby foes, dealing 3% of your Max HP in damage
-					Can only activate every 3 seconds
-					''' */
-			}
-
 			LamentingPocketwatch: {
 				// DisplayName: Lamenting Pocketwatch
 				/* Tooltip:
@@ -8295,9 +8319,9 @@ Mods: {
 					'''
 					[c/D294FF:Weapon Memory]
 					When Imprinted into a weapon, gain the following effects:
-					Increase the potency of other Memory defensive effects by 30%
+					Increase the potency of other Memory damage bonuses by 8%
 					''' */
-				// TooltipAttached: Increase the potency of other Memory defensive effects by 30%
+				// TooltipAttached: Increase the potency of other Memory damage bonuses by 8%
 			}
 
 			RedSpiderLily: {
@@ -8385,6 +8409,7 @@ Mods: {
 					[c/D294FF:Weapon Memory]
 					When Imprinted into a weapon, gain the following effects:
 					Press the Weapon Memory Key to instantly teleport to your cursor (40 second cooldown)
+					'The end?'
 					''' */
 				// TooltipAttached: Press the Weapon Memory Key to instantly teleport to your cursor (40 second cooldown)
 			}
@@ -8395,10 +8420,10 @@ Mods: {
 					'''
 					[c/D294FF:Weapon Memory]
 					When Imprinted into a weapon, gain the following effects:
-					If you have exactly one minion slot used, gain 2% increased damage per unused minion slot
+					If you have exactly one minion slot used, gain 7% increased damage per unused minion slot
 					'Checkmate'
 					''' */
-				// TooltipAttached: If you have exactly one minion slot used, gain 2% increased damage per unused minion slot
+				// TooltipAttached: If you have exactly one minion slot used, gain 7% increased damage per unused minion slot
 			}
 
 			PrimeCut: {
@@ -8410,6 +8435,119 @@ Mods: {
 					Gain 4% increased damage while Well Fed
 					''' */
 				// TooltipAttached: Gain 4% increased damage while Well Fed
+			}
+
+			DekuNut: {
+				// DisplayName: Deku Nut
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					If Mana is consumed through use of the weapon's left-click attack, restore 1 HP (3 use cooldown)
+					''' */
+				// TooltipAttached: If Mana is consumed through use of the weapon's left-click attack, restore 1 HP on use (3 use cooldown)
+			}
+
+			ElectricGuitarPick: {
+				// DisplayName: Electric Guitar Pick
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Striking foes unleashes up to 3 lightning arcs that deal 1/8th damage in a small area (4 second cooldown)
+					'...and his music was...'
+					''' */
+				// TooltipAttached: Striking foes unleashes up to 3 lightning arcs that deal 1/8th damage in a small area (4 second cooldown)
+			}
+
+			MatterManipulator: {
+				// DisplayName: Matter Modulator
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Gain the Mining buff for 30 seconds when defeating an enemy
+					'Modulate anything that matters'
+					''' */
+				// TooltipAttached: Gain the Mining buff for 30 seconds when defeating an enemy
+			}
+
+			PowerMoon: {
+				// DisplayName: Power Moon
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					If this weapon has a right-click ability, it now charges Stellar Nova Energy by 4 when used
+					''' */
+				// TooltipAttached: If this weapon has a right-click ability, it now charges Stellar Nova Energy by 4 when used
+			}
+
+			Rageblade: {
+				// DisplayName: Furious Dirk
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Gain 0.1% increased attack speed when striking foes, capped at 20% increased attack speed
+					Resets outside of combat
+					''' */
+				/* TooltipAttached:
+					'''
+					Gain 0.1% increased attack speed when striking foes, capped at 20% increased attack speed
+					Resets outside of combat
+					''' */
+			}
+
+			YoumuHilt: {
+				// DisplayName: Ghostly Hilt
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Press the Weapon Memory Key to gain 40% increased movement speed for 4 seconds (30 second cooldown)
+					''' */
+				// TooltipAttached: Press the Weapon Memory Key to gain 40% increased movement speed for 4 seconds (30 second cooldown)
+			}
+
+			BottledChaos: {
+				// DisplayName: Bottled Chaos
+				// Tooltip: ""
+			}
+
+			GuppyHead: {
+				// DisplayName: Guppy Head
+				// Tooltip: ""
+			}
+
+			MagicSigil: {
+				// DisplayName: Magic Sigil
+				// Tooltip: ""
+			}
+
+			MeleeSigil: {
+				// DisplayName: Melee Sigil
+				// Tooltip: ""
+			}
+
+			Pawn: {
+				// DisplayName: Pawn
+				// Tooltip: ""
+			}
+
+			RangedSigil: {
+				// DisplayName: Ranged Sigil
+				// Tooltip: ""
+			}
+
+			SummonSigil: {
+				// DisplayName: Summon Sigil
+				// Tooltip: ""
+			}
+
+			Trumpet: {
+				// DisplayName: Trumpet
+				// Tooltip: ""
 			}
 		}
 
@@ -9301,6 +9439,7 @@ Mods: {
 			// WavedancerSummon.DisplayName: Wavedancer Summon
 			// WavedancerSwordSpin.DisplayName: Wavedancer Sword Spin
 			// PowderChargeExplosion.DisplayName: Powder Charge Explosion
+			// MemoryLightning.DisplayName: Memory Lightning
 		}
 
 		Buffs: {
@@ -11671,7 +11810,7 @@ Mods: {
 
 			NetheriteIngotBuff: {
 				// DisplayName: Bastion Defense
-				// Description: ""
+				// Description: Defenses are drastically increased
 			}
 
 			NetheriteIngotBuffCooldown: {
@@ -11681,22 +11820,42 @@ Mods: {
 
 			EnderpearlCooldown: {
 				// DisplayName: Enderpearl Cooldown
-				// Description: Mods.StarsAbove.Buffs.EnderpearlCooldown.Description
+				// Description: ""
+			}
+
+			ElectricGuitarPickCooldown: {
+				// DisplayName: Electric Guitar Pick Cooldown
+				// Description: ""
+			}
+
+			PhantomHiltBuff: {
+				// DisplayName: Ghostly Hilt
+				// Description: Movement speed is increased
+			}
+
+			PhantomHiltCooldown: {
+				// DisplayName: Ghostly Hilt Cooldown
+				// Description: ""
+			}
+
+			RagebladeBuff: {
+				// DisplayName: Furious Dirk
+				// Description: ""
 			}
 		}
 
 		Bestiary: {
 			Arbitration: Una figura misteriosa, Se dice que manifestaba el equilibrio a través de la galaxia. Poco se conoce de este enemigo... fue destrozado por el Primer Portador Estelar.
 			AstralCell: Un extraño objeto azul invocado por el vagabundo del Espacio y Tiempo. Come vapor de agua.
-			Nalhaun: Una vez un monarca poderoso, maldecido a vivir eternamente incluso cuando su reino se desmoronaba a su alrededor. La habilidad de invocar poderosas bestias fue concevida a el por su último seguidor a punto de morir. Persistió solo en un planeta vacío hasta que el Primer Portador Estelar terminó su largo y trágico reinado.
+			// NalhaunBossPhase2: A once mighty monarch, cursed to live eternally by means of a betrayal from his royal court. He persisted alone on an empty planet until the First Starbearer ended his long and tragic reign, as he would be able to interfere with his plans. While he may have stood a chance at his full might, he was burdened by a dreadful civil war tearing his world apart.
 			PaintedAttendantA: Utilizado por Pentesilia para... golpearte en la cara. Los mejores magos saben cuando la violencia física es la respuesta.
 			Penthesilea: Una maga increíblemente poderosa, la Bruja Pintada una vez gobernó un planeta enteramente "dibujado" por ella. Siempre una bromista, Dominó la hechicería solo para realizar bromas con las obras de sus colegas, un testamento a su ingenio. Encontró su final en las manos del Primer Portador Estelar luego de un largo conflicto.
 			PrismLoot: La energía mágica latente de los Núcleos Prismáticos pueden a veces influenciarse a varar a la deriva por la galaxia. ¡Atrapa uno, y serás recompensado!
 			SpectreOfLight: Un héroe de otro mundo, invocado por el Primer Portador Estelar para atacar estar tierras.
 			// TsukiyomiBoss: The First Starfarer, Tsukiyomi, who holds dominion over orbiting celestial bodies. The gravitational pull of a planet and its natural satellites gives her power. She led the Warrior of Light astray- using his strength and goodwill to conquer and destroy myriad stars... and yet...
 			// CastorBoss: The Force of Fire, a Baleborn. The Baleborn are an incredibly competitive race of demonkin, and their blood relations have served only to further kindle the fires of conflict. They are completely engrossed in their duel, aware of nothing but their opponent's actions. Ironically, this has made them quite mediocre fighters against any other opponent. They were utterly destroyed by the First Starbearer, attacking him as he unwittingly interfered with their eternal battle.
-			// PolluxBoss: The Force of Ice, a Baleborn. The Baleborn are an incredibly competitive race of demonkin, and their blood relations have served only to further kindle the fires of conflict. They are completely engrossed in their duel, aware of nothing but their opponent's actions. Ironically, this has made them quite mediocre fighters against any other opponent. They were utterly destroyed by the First Starbearer, attacking him as he unwittingly interfered with their eternal battle.
-			VagrantOfSpaceAndTime: El enigmático Viajero Estelar Perseo. Su apariencia exterior irradia confianza en sí mismo... pero es solo un poco idiota intentando hacerse el interesante. Sus hermanas están de acuerdo con esto.
+			// PolluxBoss: The Forces of Ice and Fire, twin Baleborn. The Baleborn are an incredibly competitive race of demonkin, and their blood relations have served only to further kindle the fires of conflict. They are completely engrossed in their duel, aware of nothing but their opponent's actions. Ironically, this has made them quite mediocre fighters against any other opponent. They were utterly destroyed by the First Starbearer, attacking him as he unwittingly interfered with their eternal battle.
+			// VagrantBoss: The enigmatic Starfarer Perseus. His outward appearance is that of utmost confidence... but he's just kind of a dork trying to look cool. His sisters agree on this. He continues to have power over spatial distances, but seems to have lost the power to control time (but not the moniker.)
 			WarriorOfLight: El Guerrero de la Luz, o el primer Portador Estelar, una vez defendió la justicia en la galaxia a través de sus acciones, y con la ayuda de su Viajera Estelar. Una vez lideró un mundo pacífico, pero fue forzado a observar impotente como su gente conoció su muerte, prometiéndose a nunca más permitir que otros compartan el mismo destino- sin importar el costo.
 			// AsteroidWorm: These incredibly hardy creatures have grown the capability to aimlessly drift through the vacuum of space- perhaps not the best depiction of evolution. While their meals are scarce, their need for food is nigh nonexistant. Gifted with a strong outer shell, but low overall attacking strength.
 			// Soulless: An unfortunate victim of whatever apocalypse befell Caelum. Mana keeps their incarnation alive, but whatever trace of thought they may have once had has long since departed.
