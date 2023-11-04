@@ -8,6 +8,7 @@ using StarsAbove.Items.Essences;
 using Terraria.Audio;
 using StarsAbove.Projectiles.Melee.MiserysCompany;
 using StarsAbove.Projectiles.Melee.KarlanTruesilver;
+using StarsAbove.Utilities;
 
 namespace StarsAbove.Items.Weapons.Melee
 {
@@ -43,7 +44,11 @@ namespace StarsAbove.Items.Weapons.Melee
 			Item.autoReuse = true;
 			Item.shoot = ProjectileType<TruesilverSlash>();
 			Item.shootSpeed = 10f;
-			Item.value = Item.buyPrice(gold: 1);          
+			Item.value = Item.buyPrice(gold: 1);
+
+			Item.noMelee = true;
+			Item.noUseGraphic = true;
+			Item.autoReuse = true;
 		}
 		int mode;//0 = sword | 1 = scythe | 2 = shotgun
 		int swapCooldown;
@@ -51,8 +56,6 @@ namespace StarsAbove.Items.Weapons.Melee
 		{
 			if (player.altFunctionUse == 2 )//Did the player right click?
 			{
-				
-
 				if (mode == 0 && swapCooldown <= 0)
 				{
 					SoundEngine.PlaySound(SoundID.Item23, player.position);
@@ -61,7 +64,7 @@ namespace StarsAbove.Items.Weapons.Melee
 					if (player.whoAmI == Main.myPlayer)
 					{
 						Rectangle textPos = new Rectangle((int)player.position.X, (int)player.position.Y - 20, player.width, player.height);
-						CombatText.NewText(textPos, new Color(0, 125, 250, 240), "Scythe deployed!", false, false);
+						CombatText.NewText(textPos, new Color(0, 125, 250, 240), LangHelper.GetTextValue($"CombatText.MiserysCompany.Scythe"), false, false);
 					}
 				}
 				if (mode == 1 && swapCooldown <= 0)
@@ -72,7 +75,7 @@ namespace StarsAbove.Items.Weapons.Melee
 					if (player.whoAmI == Main.myPlayer)
 					{
 						Rectangle textPos = new Rectangle((int)player.position.X, (int)player.position.Y - 20, player.width, player.height);
-						CombatText.NewText(textPos, new Color(0, 125, 250, 240), "Shotgun deployed!", false, false);
+						CombatText.NewText(textPos, new Color(0, 125, 250, 240), LangHelper.GetTextValue($"CombatText.MiserysCompany.Shotgun"), false, false);
 					}
 				}
 				if (mode == 2 && swapCooldown <= 0)
@@ -83,9 +86,10 @@ namespace StarsAbove.Items.Weapons.Melee
 					if (player.whoAmI == Main.myPlayer)
 					{
 						Rectangle textPos = new Rectangle((int)player.position.X, (int)player.position.Y - 20, player.width, player.height);
-						CombatText.NewText(textPos, new Color(0, 125, 250, 240), "Blade deployed!", false, false);
+						CombatText.NewText(textPos, new Color(0, 125, 250, 240), LangHelper.GetTextValue($"CombatText.MiserysCompany.Blade"), false, false);
 					}
 				}
+				return false;
 			}
 			return base.CanUseItem(player);
 		}
@@ -110,33 +114,27 @@ namespace StarsAbove.Items.Weapons.Melee
 			swapCooldown--;
 			if(mode == 0)
             {
-				Item.useStyle = 1;
+				Item.useStyle = ItemUseStyleID.HiddenAnimation;
 				Item.shootSpeed = 10f;
 				Item.useTime = 20;
 				Item.useAnimation = 20;
-				Item.noMelee = false;
-				Item.noUseGraphic = false;
-				Item.autoReuse = true;
+
 			}
 			if (mode == 1)
 			{
-				Item.useStyle = 1;
+				Item.useStyle = ItemUseStyleID.Swing;
 				Item.shootSpeed = 8f;
 				Item.useTime = 85;
 				Item.useAnimation = 85;
-				Item.noMelee = true;
-				Item.noUseGraphic = true;
-				Item.autoReuse = true;
+
 			}
 			if (mode == 2)
 			{
-				Item.useStyle = 5;
-				Item.shootSpeed = 9f;
+				Item.useStyle = ItemUseStyleID.Shoot;
+				Item.shootSpeed = 15f;
 				Item.useTime = 30;
 				Item.useAnimation = 30;
-				Item.noMelee = true;
-				Item.noUseGraphic = true;
-				Item.autoReuse = true;
+
 			}
 
 			base.HoldItem(player);
@@ -145,6 +143,7 @@ namespace StarsAbove.Items.Weapons.Melee
 		{
 
 		}
+		bool altSwing;
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
 			if (player.altFunctionUse == 2)
@@ -175,28 +174,22 @@ namespace StarsAbove.Items.Weapons.Melee
 																														perturbedSpeed = perturbedSpeed * scale; 
 						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, ProjectileType<MiseryRound>(), damage/2, knockback, player.whoAmI);
 					}
-					for (int d = 0; d < 21; d++)
-					{
-						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(47));
-						float scale = 2f - (Main.rand.NextFloat() * .9f);
-						perturbedSpeed = perturbedSpeed * scale;
-						int dustIndex = Dust.NewDust(position, 0, 0, 127, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 2f);
-						Main.dust[dustIndex].noGravity = true;
-
-					}
-					for (int d = 0; d < 16; d++)
-					{
-						Vector2 perturbedSpeed = new Vector2(velocity.X / 2, velocity.Y / 2).RotatedByRandom(MathHelper.ToRadians(47));
-						float scale = 2f - (Main.rand.NextFloat() * .9f);
-						perturbedSpeed = perturbedSpeed * scale;
-						int dustIndex = Dust.NewDust(position, 0, 0, 31, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 1f);
-						Main.dust[dustIndex].noGravity = true;
-					}
+					
 					SoundEngine.PlaySound(SoundID.Item11, player.position);
 				}
 			}
 			if(mode == 0)
-            {
+			{
+				if(altSwing)
+				{
+					Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<MiserySword>(), damage, knockback, player.whoAmI, 0, 0, player.direction);
+					altSwing = false;
+                }
+				else
+				{
+					Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<MiserySword>(), damage, knockback, player.whoAmI, 0, 1, player.direction);
+					altSwing = true;
+                }
 				SoundEngine.PlaySound(SoundID.Item1, player.position);
 			}
 			

@@ -9,6 +9,12 @@ Mods: {
 		TempInfo: 你好！你看起来正在在多人模式下游玩《星海苍穹》！请注意，到目前为止，不建议关闭多人兼容模式。
 
 		CombatText: {
+			MiserysCompany: {
+				// Scythe: Scythe deployed!
+				// Shotgun: Shotgun deployed!
+				// Blade: Blade deployed!
+			}
+
 			Adornment: {
 				Positive: 正向混沌！
 				Negative: 逆向混沌！
@@ -8532,7 +8538,13 @@ Mods: {
 
 			BottledChaos: {
 				// DisplayName: Bottled Chaos
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Damage variance is tripled
+					''' */
+				// TooltipAttached: Damage variance is tripled
 			}
 
 			GuppyHead: {
@@ -8543,36 +8555,76 @@ Mods: {
 					苍蝇会攻击附近的敌人，并造成相当于你最大生命值3%的伤害
 					每3秒只会生效一次
 					'''
+				/* TooltipAttached:
+					'''
+					Press the Weapon Memory Key to launch 3 flies that attack foes, dealing 1/3 weapon damage each (20 second cooldown)
+					Cooldown is reduced by 1 second for every critical strike
+					''' */
 			}
 
 			MagicSigil: {
-				// DisplayName: Magic Sigil
-				// Tooltip: ""
+				// DisplayName: Spellcaster Sigil
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					If aspected to Magic damage, gain 12% increased damage
+					''' */
+				// TooltipAttached: If aspected to Magic damage, gain 12% increased damage
 			}
 
 			MeleeSigil: {
-				// DisplayName: Melee Sigil
-				// Tooltip: ""
+				// DisplayName: Gladiator Sigil
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					If aspected to Melee damage, gain 12% increased damage
+					''' */
+				// TooltipAttached: If aspected to Melee damage, gain 12% increased damage
 			}
 
 			Pawn: {
-				// DisplayName: Pawn
-				// Tooltip: ""
+				// DisplayName: Ferrum Pawn
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					Defeating an enemy grants Endurance and Ironskin for 12 seconds
+					''' */
+				// TooltipAttached: Defeating an enemy grants Endurance and Ironskin for 12 seconds
 			}
 
 			RangedSigil: {
-				// DisplayName: Ranged Sigil
-				// Tooltip: ""
+				// DisplayName: Arbalest Sigil
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					If aspected to Ranged damage, gain 12% increased damage
+					''' */
+				// TooltipAttached: If aspected to Ranged damage, gain 12% increased damage
 			}
 
 			SummonSigil: {
-				// DisplayName: Summon Sigil
-				// Tooltip: ""
+				// DisplayName: Beastmaster Sigil
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					If aspected to Summon damage, gain 12% increased damage
+					''' */
+				// TooltipAttached: If aspected to Summon damage, gain 12% increased damage
 			}
 
 			Trumpet: {
-				// DisplayName: Trumpet
-				// Tooltip: ""
+				// DisplayName: Brass Bugle
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Using this weapon makes trumpet noises
+					''' */
+				// TooltipAttached: Using this weapon makes trumpet noises
 			}
 		}
 
@@ -9465,6 +9517,8 @@ Mods: {
 			// WavedancerSwordSpin.DisplayName: Wavedancer Sword Spin
 			// PowderChargeExplosion.DisplayName: Powder Charge Explosion
 			// MemoryLightning.DisplayName: Memory Lightning
+			// GuppyFlies.DisplayName: Guppy Flies
+			// MiserySword.DisplayName: Misery Sword
 		}
 
 		Buffs: {
@@ -11871,6 +11925,11 @@ Mods: {
 			RagebladeBuff: {
 				// DisplayName: Furious Dirk
 				// Description: ""
+			}
+
+			GuppyHeadCooldown: {
+				// DisplayName: Guppy Head Cooldown
+				// Description: Mods.StarsAbove.Buffs.GuppyHeadCooldown.Description
 			}
 		}
 

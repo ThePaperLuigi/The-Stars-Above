@@ -320,7 +320,23 @@ namespace StarsAbove.Systems.Items
             {
                 damage += (0.18f + damageModAdditive * damageModMultiplicative) * memoryGlobalMod;
             }
-            if(TarotCard)
+            if(MeleeSigil && player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
+            {
+                damage += (0.12f + damageModAdditive * damageModMultiplicative) * memoryGlobalMod;
+            }
+            if (MagicSigil && player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2)
+            {
+                damage += (0.12f + damageModAdditive * damageModMultiplicative) * memoryGlobalMod;
+            }
+            if (RangedSigil && player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
+            {
+                damage += (0.12f + damageModAdditive * damageModMultiplicative) * memoryGlobalMod;
+            }
+            if (SummonSigil && player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2)
+            {
+                damage += (0.12f + damageModAdditive * damageModMultiplicative) * memoryGlobalMod;
+            }
+            if (TarotCard)
             {
                 switch (tarotCardType)
                 {
@@ -945,6 +961,24 @@ namespace StarsAbove.Systems.Items
                     Player.AddBuff(BuffType<PhantomHiltCooldown>(), (int)((60 * 30) * 1f - cooldownMod));
 
                 }
+                if (YoumuHilt && !Player.HasBuff(BuffType<PhantomHiltCooldown>()))
+                {
+                    //Defense
+                    Player.AddBuff(BuffType<PhantomHiltBuff>(), 240);
+                    Player.AddBuff(BuffType<PhantomHiltCooldown>(), (int)((60 * 30) * 1f - cooldownMod));
+
+                }
+                if (GuppyHead && !Player.HasBuff(BuffType<GuppyHeadCooldown>()))
+                {
+                    for(int i = 0; i < 3; i++)
+                    {
+                        Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, Main.rand.Next(-2, 2), Main.rand.Next(-2, 2), ProjectileType<GuppyFlies>(), Player.GetWeaponDamage(Player.HeldItem) / 3, 0, Player.whoAmI, 0, 0);
+                    }
+
+                    Player.AddBuff(BuffType<GuppyHeadCooldown>(), (int)((60 * 20) * 1f - cooldownMod));
+
+                }
+
             }
             base.ProcessTriggers(triggersSet);
         }
@@ -979,6 +1013,13 @@ namespace StarsAbove.Systems.Items
             if (!target.active)
             {
                 OnKillNPC(target);
+            }
+            if(hit.Crit && GuppyHead)
+            {
+                if(Player.HasBuff(BuffType<GuppyHeadCooldown>()))
+                {
+                    Player.buffTime[Player.FindBuffIndex(BuffType<GuppyHeadCooldown>())] -= 60;
+                }
             }
             if(Rageblade)
             {
@@ -1042,9 +1083,18 @@ namespace StarsAbove.Systems.Items
             {
                 Player.AddBuff(BuffID.Mining, 60 * 30);
             }
+            if(Pawn)
+            {
+                Player.AddBuff(BuffID.Endurance, 60 * 12);
+                Player.AddBuff(BuffID.Ironskin, 60 * 12);
+            }
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
+            if(BottledChaos)
+            {
+                modifiers.DamageVariationScale *= 3f;
+            }
             if(Player.HasBuff(BuffType<AccursedEdge>()))
             {
                 modifiers.FinalDamage += 0.4f;
