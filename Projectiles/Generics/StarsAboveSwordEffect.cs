@@ -62,6 +62,9 @@ namespace StarsAbove.Projectiles.Generics
 		public Color frontLightColor = new Color(150, 240, 255); // Original Excalibur color: Color(255, 240, 150)
 		public bool spin = false;
 		public bool centerOnMouse = false;
+
+		public float scaleMulti = 0.6f; // Excalibur, Terra Blade, and The Horseman's Blade is 0.6f; True Excalibur is 1f; default is 0.2f 
+		public float scaleAdder = 1f; // Excalibur, Terra Blade, and The Horseman's Blade is 1f; True Excalibur is 1.2f; default is 1f 
 		public override void AI()
 		{
 			// In our item, we spawn the projectile with the direction, max time, and scale
@@ -111,10 +114,6 @@ namespace StarsAbove.Projectiles.Generics
 
 				}
 			}
-			
-
-			float scaleMulti = 0.6f; // Excalibur, Terra Blade, and The Horseman's Blade is 0.6f; True Excalibur is 1f; default is 0.2f 
-			float scaleAdder = 1f; // Excalibur, Terra Blade, and The Horseman's Blade is 1f; True Excalibur is 1.2f; default is 1f 
 
 			if(centerOnMouse)
             {

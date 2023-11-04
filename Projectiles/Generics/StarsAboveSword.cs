@@ -27,7 +27,10 @@ namespace StarsAbove.Projectiles.Generics
         public abstract Color BackDarkColor { get; }
         public abstract Color MiddleMediumColor { get; }
         public abstract Color FrontLightColor  { get; }
-        public abstract bool CenterOnPlayer { get; }
+        public virtual bool CenterOnPlayer { get; }
+        public virtual bool Rotate45Degrees { get; }
+        public virtual float EffectScaleMulti { get; } = 0.6f;
+        public virtual float EffectScaleAdder { get; } = 1f;
         public override void SetStaticDefaults()
 		{
 			Main.projFrames[Projectile.type] = 1;
@@ -167,6 +170,8 @@ namespace StarsAbove.Projectiles.Generics
                     projectile.backDarkColor = BackDarkColor;
                     projectile.middleMediumColor = MiddleMediumColor;
                     projectile.frontLightColor = FrontLightColor;
+                    projectile.scaleMulti = EffectScaleMulti;
+                    projectile.scaleAdder = EffectScaleAdder;
                     if(DoSpin)
                     {
                         projectile.spin = true;
@@ -187,6 +192,8 @@ namespace StarsAbove.Projectiles.Generics
                         projectile.backDarkColor = BackDarkColor;
                         projectile.middleMediumColor = MiddleMediumColor;
                         projectile.frontLightColor = FrontLightColor;
+                        projectile.scaleMulti = EffectScaleMulti;
+                        projectile.scaleAdder = EffectScaleAdder;
                         if (DoSpin)
                         {
                             projectile.spin = true;
@@ -199,6 +206,8 @@ namespace StarsAbove.Projectiles.Generics
                         projectile.backDarkColor = BackDarkColor;
                         projectile.middleMediumColor = MiddleMediumColor;
                         projectile.frontLightColor = FrontLightColor;
+                        projectile.scaleMulti = EffectScaleMulti;
+                        projectile.scaleAdder = EffectScaleAdder;
                         if (DoSpin)
                         {
                             projectile.spin = true;
@@ -336,12 +345,66 @@ namespace StarsAbove.Projectiles.Generics
         {
             if (CenterOnPlayer)
             {
-                Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(-90f);
+                if(Rotate45Degrees)
+                {
+                    if (PlayerDirection == 1)
+                    {
+                        if (Projectile.ai[1] == 1)
+                        {
+                            Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(-45f);
+
+                        }
+                        else
+                        {
+                            Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(-135f);
+
+                        }
+                    }
+                    else
+                    {
+                        if (Projectile.ai[1] == 1)
+                        {
+                            Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(-135f);
+
+                        }
+                        else
+                        {
+                            Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(-45f);
+
+                        }
+                    }
+                    
+
+                }
+                else
+                {
+                    Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(-90f);
+
+                }
 
             }
             else
             {
-                Projectile.rotation = Vector2.Normalize(Main.MouseWorld - Projectile.Center).ToRotation() + MathHelper.ToRadians(-90f);
+                if (Rotate45Degrees)
+                {
+                    if (Projectile.ai[1] == 1)
+                    {
+                        Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(-90f);
+
+
+                    }
+                    else
+                    {
+                        Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(-135f);
+
+                    }
+
+                }
+                else
+                {
+                    Projectile.rotation = Vector2.Normalize(Main.MouseWorld - Projectile.Center).ToRotation() + MathHelper.ToRadians(-90f);
+
+                }
 
             }
             //Main.NewText(MathHelper.ToDegrees(Projectile.rotation));
@@ -349,8 +412,35 @@ namespace StarsAbove.Projectiles.Generics
         }
         public override bool PreDraw(ref Color lightColor)
         {
+            SpriteEffects spriteEffects = ((Projectile.spriteDirection > 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None);
+
             // This is where we specify which way to flip the sprite. If the projectile is moving to the left, then flip it vertically.
-            SpriteEffects spriteEffects = ((Projectile.spriteDirection <= 0) ? SpriteEffects.FlipHorizontally : SpriteEffects.None);
+            if (PlayerDirection == 1)
+            {
+                if (Projectile.ai[1] == 1)
+                {
+                    spriteEffects = SpriteEffects.FlipHorizontally;
+                }
+                else
+                {
+                    spriteEffects = SpriteEffects.None;
+
+                }
+            }
+            else
+            {
+                if (Projectile.ai[1] == 1)
+                {
+                    spriteEffects = SpriteEffects.None;
+                }
+                else
+                {
+                    spriteEffects = SpriteEffects.FlipHorizontally;
+
+
+                }
+            }
+            
 
             // Getting texture of projectile
             Texture2D texture = TextureAssets.Projectile[Type].Value;

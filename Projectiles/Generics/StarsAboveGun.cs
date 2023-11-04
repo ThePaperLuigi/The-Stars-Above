@@ -170,7 +170,7 @@ namespace StarsAbove.Projectiles.Generics
                 }
 
                 int fakeRotation = (int)MathHelper.ToDegrees((float)Math.Atan2(Main.MouseWorld.Y - projOwner.Center.Y, Main.MouseWorld.X - projOwner.Center.X)) - 180;
-                Main.NewText(fakeRotation);
+                //Main.NewText(fakeRotation);
                 if(fakeRotation < -235 && fakeRotation > -300)
                 {
                     recoilRotationStart = 0;
@@ -245,7 +245,7 @@ namespace StarsAbove.Projectiles.Generics
                 Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - projOwner.Center).RotatedByRandom(MathHelper.ToRadians(6));
                 float scale = 22f - (Main.rand.NextFloat() * 21f);
                 perturbedSpeed *= scale;
-                int dustIndex = Dust.NewDust(MuzzlePos, 0, 0, DustID.GemSapphire, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 1.7f);
+                int dustIndex = Dust.NewDust(MuzzlePos, 0, 0, FlashDustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 1.7f);
                 Main.dust[dustIndex].noGravity = true;
             }
             for (int d = 0; d < 10; d++)
@@ -253,7 +253,7 @@ namespace StarsAbove.Projectiles.Generics
                 Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - projOwner.Center).RotatedBy(MathHelper.ToRadians(90));
                 float scale = 6f - (Main.rand.NextFloat() * 1f);
                 perturbedSpeed *= scale;
-                int dustIndex = Dust.NewDust(MuzzlePos, 0, 0, DustID.GemSapphire, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 1f);
+                int dustIndex = Dust.NewDust(MuzzlePos, 0, 0, FlashDustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 1f);
                 Main.dust[dustIndex].noGravity = true;
 
             }
@@ -262,7 +262,7 @@ namespace StarsAbove.Projectiles.Generics
                 Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - projOwner.Center).RotatedBy(MathHelper.ToRadians(-90));
                 float scale = 6f - (Main.rand.NextFloat() * 1f);
                 perturbedSpeed *= scale;
-                int dustIndex = Dust.NewDust(MuzzlePos, 0, 0, DustID.GemSapphire, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 1f);
+                int dustIndex = Dust.NewDust(MuzzlePos, 0, 0, FlashDustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 1f);
                 Main.dust[dustIndex].noGravity = true;
 
             }
@@ -321,6 +321,7 @@ namespace StarsAbove.Projectiles.Generics
 
             // Get the currently selected frame on the texture.
             Rectangle sourceRectangle = texture.Frame(1, Main.projFrames[Type], frameY: Projectile.frame);
+            Rectangle sourceRectangleFlash = textureFlash.Frame(1, Main.projFrames[Type], frameY: Projectile.frame);
 
             Vector2 origin = sourceRectangle.Size() / 2f;
 

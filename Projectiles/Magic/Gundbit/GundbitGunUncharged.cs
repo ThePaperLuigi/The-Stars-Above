@@ -21,7 +21,7 @@ namespace StarsAbove.Projectiles.Magic.Gundbit
         public override int SmokeDustID => Terraria.ID.DustID.Smoke;
 
         //The dust that fires from the barrel after shooting.
-        public override int FlashDustID => Terraria.ID.DustID.Electric;
+        public override int FlashDustID => Terraria.ID.DustID.GemSapphire;
         //The distance the gun's muzzle is relative to the player. Remember this also is influenced by base distance.
         public override int MuzzleDistance => 62;
         //The distance the gun is relative to the player.
