@@ -678,14 +678,14 @@ namespace StarsAbove.Systems
                       $"[i:{ItemType<Umbral>()}] Hawkmoon.", //Description of the listing.
                       player.VagrantWeaponDialogue == 2, //Unlock requirements.
                       115,
-                      "Defeat the Vagrant of Space and Time.")); //Corresponding dialogue ID.
+                      "Defeat Queen Slime.")); //Corresponding dialogue ID.
                 WeaponArchiveList.Add(new WeaponArchiveListing(
                       "Queen Slime Weapon", //Name of the archive listing.
                       $"Grants the Essence for " +
                      $"[i:{ItemType<Spatial>()}] Chronoclock. ", //Description of the listing.
                       player.ClockWeaponDialogue == 2, //Unlock requirements.
                       164,
-                      "Defeat the Vagrant of Space and Time.")); //Corresponding dialogue ID.
+                      "Defeat Queen Slime.")); //Corresponding dialogue ID.
                 WeaponArchiveList.Add(new WeaponArchiveListing(
                       "Any Mechanical Boss Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
