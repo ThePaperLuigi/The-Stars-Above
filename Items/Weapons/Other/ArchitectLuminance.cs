@@ -10,6 +10,7 @@ using StarsAbove.Items.Pets;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using StarsAbove.Systems;
+using StarsAbove.Projectiles.Other.ArchitectLuminance;
 
 namespace StarsAbove.Items.Weapons.Other
 {
@@ -50,7 +51,9 @@ namespace StarsAbove.Items.Weapons.Other
 			Item.UseSound = SoundID.Item15;      //The sound when the weapon is using
 			Item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
-			
+			Item.noUseGraphic = true;
+			Item.noMelee = true;
+
 			Item.shoot = ProjectileType<Projectiles.Other.ArchitectLuminance.ArchitectShoot>();
 			Item.shootSpeed = 38;
 		}
@@ -106,9 +109,7 @@ namespace StarsAbove.Items.Weapons.Other
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
 			{
-				Item.useStyle = 1;
-				Item.noUseGraphic = false;
-				Item.noMelee = false;
+				Item.useStyle = ItemUseStyleID.HiddenAnimation;
 				Item.useTime = 20;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
 				Item.useAnimation = 20;
 				Item.UseSound = SoundID.Item15;
@@ -116,8 +117,6 @@ namespace StarsAbove.Items.Weapons.Other
 			if (player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2)
 			{
 				Item.useStyle = 5;
-				Item.noUseGraphic = true;
-				Item.noMelee = true;
 				Item.useTime = 35;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
 				Item.useAnimation = 35;
 				Item.UseSound = SoundID.Item125;
@@ -125,17 +124,13 @@ namespace StarsAbove.Items.Weapons.Other
 			if (player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
 			{
 				Item.useStyle = 5;
-				Item.noUseGraphic = true;
-				Item.noMelee = true;
 				Item.useTime = 12;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
 				Item.useAnimation = 12;
 				Item.UseSound = SoundID.Item125;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2)
 			{
-				Item.useStyle = 1;
-				Item.noUseGraphic = false;
-				Item.noMelee = false;
+				Item.useStyle = ItemUseStyleID.HiddenAnimation;
 				Item.useTime = 35;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
 				Item.useAnimation = 35;
 				Item.UseSound = SoundID.Item15;
@@ -150,7 +145,7 @@ namespace StarsAbove.Items.Weapons.Other
 			//player.GetModPlayer<WeaponPlayer>().radiance++;
 			
 		}
-
+		private bool altSwing;
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
 			if (player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
@@ -162,7 +157,7 @@ namespace StarsAbove.Items.Weapons.Other
 
 
 			}
-			if (player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2)
+			else if (player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2)
 			{
 
 				float numberProjectiles = 6;
@@ -173,9 +168,22 @@ namespace StarsAbove.Items.Weapons.Other
 					Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, ProjectileID.LunarFlare, damage/3 , knockback, player.whoAmI);
 				}
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, velocity.X/2, velocity.Y/2, ProjectileType<Projectiles.Other.ArchitectLuminance.ArchitectShoot>(), 0, 3, player.whoAmI, 0f);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, velocity.X, velocity.Y, ProjectileType<Projectiles.Other.ArchitectLuminance.ArchitectShoot>(), 0, 3, player.whoAmI, 0f);
 
 
+			}
+			else
+            {
+				if (altSwing)
+				{
+					Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<ArchitectSword>(), damage, knockback, player.whoAmI, 0, 0, player.direction);
+					altSwing = false;
+				}
+				else
+				{
+					Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<ArchitectSword>(), damage, knockback, player.whoAmI, 0, 1, player.direction);
+					altSwing = true;
+				}
 			}
 			return false;
 		}

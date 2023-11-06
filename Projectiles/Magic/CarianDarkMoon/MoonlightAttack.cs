@@ -60,7 +60,7 @@ namespace StarsAbove.Projectiles.Magic.CarianDarkMoon
             Projectile.alpha -= 25;
             if (Projectile.alpha < 100)
             {
-                Projectile.alpha = 100;
+                //Projectile.alpha = 100;
             }
 
             // Slow down
@@ -71,7 +71,10 @@ namespace StarsAbove.Projectiles.Magic.CarianDarkMoon
 
                 Projectile.scale -= 0.05f;
             }
-
+            if(Projectile.ai[0] < 20)
+            {
+                Projectile.alpha = 255;
+            }
 
             // Kill this projectile after 1 second
             if (Projectile.ai[0] >= 60f)
@@ -106,7 +109,11 @@ namespace StarsAbove.Projectiles.Magic.CarianDarkMoon
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            default(LargeBlueTrail).Draw(Projectile);
+            if(Projectile.alpha < 200)
+            {
+                default(LargeBlueTrail).Draw(Projectile);
+
+            }
 
             return true;
         }

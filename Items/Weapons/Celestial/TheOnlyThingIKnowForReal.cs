@@ -58,7 +58,7 @@ namespace StarsAbove.Items.Weapons.Celestial
 			Item.master = false;
 			Item.masterOnly = false;
 			//item.UseSound = SoundID.Item11;
-			Item.autoReuse = true;
+			Item.autoReuse = false;
 			Item.channel = true;//Important for all "bows"
 			Item.noUseGraphic = true;
 			Item.shoot = ProjectileType<TheOnlyThingIKnowForRealSlash>();
@@ -154,8 +154,8 @@ namespace StarsAbove.Items.Weapons.Celestial
 
 				if (player.channel)
 				{
-					Item.useTime = 2;
-					Item.useAnimation = 2;
+					//Item.useTime = 2;
+					//Item.useAnimation = 2;
 					player.GetModPlayer<WeaponPlayer>().bowChargeActive = true;
 					player.GetModPlayer<WeaponPlayer>().bowCharge += 2;
 					if (player.GetModPlayer<WeaponPlayer>().bowCharge == 1)
@@ -284,15 +284,15 @@ namespace StarsAbove.Items.Weapons.Celestial
                             {
 								if(altSwing)
 								{
-									Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<TheOnlyThingIKnowForRealSlash2>(), player.GetWeaponDamage(Item), 3, player.whoAmI, 0f);
-									Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<TheOnlyThingIKnowForRealSlashVFX2>(), player.GetWeaponDamage(Item), 3, player.whoAmI, 0f);
+									Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center, Vector2.Zero, ProjectileType<TheOnlyThingIKnowForRealSlash>(), player.GetWeaponDamage(Item), 3, player.whoAmI, 0, 1, player.direction);
+
 
 									altSwing = false;
                                 }
 								else
 								{
-									Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<TheOnlyThingIKnowForRealSlash>(), player.GetWeaponDamage(Item), 3, player.whoAmI, 0f);
-									Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<TheOnlyThingIKnowForRealSlashVFX>(), player.GetWeaponDamage(Item), 3, player.whoAmI, 0f);
+									Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center, Vector2.Zero, ProjectileType<TheOnlyThingIKnowForRealSlash>(), player.GetWeaponDamage(Item), 3, player.whoAmI, 0, 0, player.direction);
+
 
 									altSwing = true;
                                 }
@@ -302,15 +302,15 @@ namespace StarsAbove.Items.Weapons.Celestial
                             {
 								if (altSwing)
 								{
-									Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<TheOnlyThingIKnowForRealSlash>(), player.GetWeaponDamage(Item), 3, player.whoAmI, 0f);
-									Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<TheOnlyThingIKnowForRealSlashVFX>(), player.GetWeaponDamage(Item), 3, player.whoAmI, 0f);
+									Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center, Vector2.Zero, ProjectileType<TheOnlyThingIKnowForRealSlash>(), player.GetWeaponDamage(Item), 3, player.whoAmI, 0, 0, player.direction);
+
 
 									altSwing = false;
 								}
 								else
 								{
-									Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<TheOnlyThingIKnowForRealSlash2>(), player.GetWeaponDamage(Item), 3, player.whoAmI, 0f);
-									Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<TheOnlyThingIKnowForRealSlashVFX2>(), player.GetWeaponDamage(Item), 3, player.whoAmI, 0f);
+									Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center, Vector2.Zero, ProjectileType<TheOnlyThingIKnowForRealSlash>(), player.GetWeaponDamage(Item), 3, player.whoAmI, 0, 1, player.direction);
+
 
 									altSwing = true;
 								}

@@ -50,7 +50,7 @@ namespace StarsAbove.Items.Weapons.Melee
 			Item.useAnimation = 15;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
 			Item.UseSound = SoundID.Item1;      //The sound when the weapon is using
 
-			Item.useStyle = 1;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
+			Item.useStyle = ItemUseStyleID.HiddenAnimation;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
 			Item.knockBack = 5;         //The force of knockback of the weapon. Maximum is 20
 			Item.rare = ItemRarityID.Red;              //The rarity of the weapon, from -1 to 13
 			Item.crit = 10;
@@ -58,6 +58,7 @@ namespace StarsAbove.Items.Weapons.Melee
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
 			Item.shoot = ProjectileType<Projectiles.Melee.CrimsonSakuraAlpha.bladeWillAttack>();
 			Item.shootSpeed = 10f;
+			Item.noUseGraphic = true;
 		}
 		public override bool AltFunctionUse(Player player)
 		{
@@ -232,6 +233,7 @@ namespace StarsAbove.Items.Weapons.Melee
 
 
 		}
+		private bool altSwing;
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
 			if (player.altFunctionUse == 2)
@@ -240,6 +242,16 @@ namespace StarsAbove.Items.Weapons.Melee
 			}
 			else
 			{
+				if (altSwing)
+				{
+					Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<CrimsonSakuraAlphaSword>(), damage, knockback, player.whoAmI, 0, 0, player.direction);
+					altSwing = false;
+				}
+				else
+				{
+					Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<CrimsonSakuraAlphaSword>(), damage, knockback, player.whoAmI, 0, 1, player.direction);
+					altSwing = true;
+				}
 				if (player.GetModPlayer<WeaponPlayer>().bladeWill)
 				{
 					Item.UseSound = StarsAboveAudio.SFX_YunlaiSwing1;

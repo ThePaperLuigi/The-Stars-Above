@@ -108,64 +108,11 @@ namespace StarsAbove.Items.Weapons.Magic
 
 			
 		}
-        public override bool? UseItem(Player player)
+		bool altSwing;
+
+		public override bool? UseItem(Player player)
         {
-			float launchSpeed = 110f;
-			float launchSpeed2 = 10f;
-			Vector2 mousePosition = Main.MouseWorld;
-			Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
-			Vector2 arrowVelocity3 = direction * launchSpeed;
-			Vector2 projectile = direction * launchSpeed2;
-
-			Vector2 muzzleOffset = Vector2.Normalize(projectile) * 50f;
-
-			if (player.altFunctionUse != 2 && Main.myPlayer == player.whoAmI)
-			{
-				if (currentSwing == 0)
-				{
-					if (player.HasBuff(BuffType<MoonlitGreatblade>()))
-					{
-						
-							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity3.X, arrowVelocity3.Y, ProjectileType<CarianSwingE1>(), player.GetWeaponDamage(Item) + 10, 3, player.whoAmI, 0f);
-							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter + muzzleOffset, projectile, ProjectileType<MoonlightAttack>(), player.GetWeaponDamage(Item) + 10, 3, player.whoAmI, 0f);
-
-						
-
-						SoundEngine.PlaySound(SoundID.Item1, player.position);
-
-					}
-					else
-					{
-						
-							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity3.X, arrowVelocity3.Y, ProjectileType<CarianSwing1>(), player.GetWeaponDamage(Item), 3, player.whoAmI, 0f);
-						
-						SoundEngine.PlaySound(SoundID.Item1, player.position);
-					}
-
-					currentSwing++;
-				}
-				else
-				{
-					if (player.HasBuff(BuffType<MoonlitGreatblade>()))
-					{
-						
-							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity3.X, arrowVelocity3.Y, ProjectileType<CarianSwingE2>(), player.GetWeaponDamage(Item) + 10, 3, player.whoAmI, 0f);
-							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter + muzzleOffset, projectile, ProjectileType<MoonlightAttack>(), player.GetWeaponDamage(Item) + 10, 3, player.whoAmI, 0f);
-						
-						SoundEngine.PlaySound(SoundID.Item1, player.position);
-
-					}
-					else
-					{
-						
-							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity3.X, arrowVelocity3.Y, ProjectileType<CarianSwing2>(), player.GetWeaponDamage(Item), 3, player.whoAmI, 0f);
-						
-						SoundEngine.PlaySound(SoundID.Item1, player.position);
-					}
-					currentSwing = 0;
-				}
-			}
-
+			
 
 			return true;
         }
@@ -184,8 +131,49 @@ namespace StarsAbove.Items.Weapons.Magic
        
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			 
-			
+			float launchSpeed = 110f;
+			float launchSpeed2 = 10f;
+			Vector2 mousePosition = Main.MouseWorld;
+			Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
+			Vector2 arrowVelocity3 = direction * launchSpeed;
+			Vector2 projectile = direction * launchSpeed2;
+
+			Vector2 muzzleOffset = Vector2.Normalize(projectile) * 50f;
+
+			if (player.altFunctionUse != 2 && Main.myPlayer == player.whoAmI)
+			{
+				if (player.HasBuff(BuffType<MoonlitGreatblade>()))
+				{
+					if (altSwing)
+					{
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center, Vector2.Zero, ProjectileType<DarkmoonSwordEmpowered>(), player.GetWeaponDamage(Item) + 10, 3, player.whoAmI, 0, 0, player.direction);
+						altSwing = false;
+					}
+					else
+					{
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center, Vector2.Zero, ProjectileType<DarkmoonSwordEmpowered>(), player.GetWeaponDamage(Item) + 10, 3, player.whoAmI, 0, 1, player.direction);
+						altSwing = true;
+					}
+					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter, projectile, ProjectileType<MoonlightAttack>(), player.GetWeaponDamage(Item) + 10, 3, player.whoAmI, 0f);
+					SoundEngine.PlaySound(SoundID.Item1, player.position);
+				}
+				else
+				{
+					if (altSwing)
+					{
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center, Vector2.Zero, ProjectileType<DarkmoonSword>(), player.GetWeaponDamage(Item) + 10, 3, player.whoAmI, 0, 0, player.direction);
+						altSwing = false;
+					}
+					else
+					{
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center, Vector2.Zero, ProjectileType<DarkmoonSword>(), player.GetWeaponDamage(Item) + 10, 3, player.whoAmI, 0, 1, player.direction);
+						altSwing = true;
+					}
+					SoundEngine.PlaySound(SoundID.Item1, player.position);
+				}
+
+			}
+
 			return false;
 		}
 

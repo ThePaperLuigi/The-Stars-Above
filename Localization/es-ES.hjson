@@ -8783,6 +8783,7 @@ Mods: {
 			HullwroughtSwing22.DisplayName: Casco Templado
 			HornSlash1.DisplayName: Sinfonía del Cazador
 			HornSlash2.DisplayName: Sinfonía del Cazador
+			// HornSlash.DisplayName: Horn Slash
 			MusicRadiate.DisplayName: Sinfonía del Cazador
 			Icebolt.DisplayName: Descarga de hielo
 			Icebolt2.DisplayName: Descarga de hielo2
@@ -9500,6 +9501,22 @@ Mods: {
 			// MemoryLightning.DisplayName: Memory Lightning
 			// GuppyFlies.DisplayName: Guppy Flies
 			// MiserySword.DisplayName: Misery Sword
+			// ClaimhSolaisSword.DisplayName: Claimh Solais Sword
+			// HawkmoonGun.DisplayName: Hawkmoon Gun
+			// DeathInFourActsGun.DisplayName: Death In Four Acts Gun
+			// DarkmoonSword.DisplayName: Darkmoon Sword
+			// DarkmoonSwordEmpowered.DisplayName: Darkmoon Sword Empowered
+			// ForceOfNatureGun.DisplayName: Force Of Nature Gun
+			// RideTheBullGun.DisplayName: Ride The Bull Gun
+			// IzanagisEdgeGun.DisplayName: Izanagis Edge Gun
+			// CrimsonOutbreakGun.DisplayName: Crimson Outbreak Gun
+			// CrimsonSakuraAlphaSword.DisplayName: Crimson Sakura Alpha Sword
+			// YunlaiStilettoSword.DisplayName: Yunlai Stiletto Sword
+			// LiberationBlazingSword.DisplayName: Liberation Blazing Sword
+			// MercySword.DisplayName: Mercy Sword
+			// LightUnrelentingSword.DisplayName: Light Unrelenting Sword
+			// ArchitectSword.DisplayName: Architect Sword
+			// KazimierzSeraphimSword.DisplayName: Kazimierz Seraphim Sword
 		}
 
 		Buffs: {

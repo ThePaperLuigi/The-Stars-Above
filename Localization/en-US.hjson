@@ -5409,7 +5409,7 @@ Mods: {
 					'''
 					Attacks with this weapon will sweep in an arc
 					Mana regeneration is increased when not actively attacking
-					Right click while holding directional keys to play [c/72D16A:Hunter's Melodies] (20 second cooldown)
+					Right click while holding directional keys to play [c/72D16A:Hunter's Melodies] (20 second cooldown, reduced when striking foes with this weapon)
 					[c/72D16A:Hunter's Melodies] grant unique buffs based on the direction pressed to yourself and nearby allies for 20 seconds
 					Up: [c/49C0F0:Bracing Melody] grants 12 defense and Knockback Resistance
 					Down: [c/F04949:Challenger Melody] grants 6% increased damage
@@ -5791,8 +5791,7 @@ Mods: {
 					Attacks with this weapon will rapidly sweep in a short-ranged arc
 					Right click to unleash [c/DC3961:Edge of Anguish] (12 second cooldown)
 					[c/DC3961:Edge of Anguish] will target the nearest enemy to your cursor and charge towards them
-					Gain Invincibility for the duration of the dash
-					Striking foes deals 3x base damage
+					Gain Invincibility for the duration of the dash and striking foes deals 3x base damage		
 					Upon contact, inflict [c/FF3200:Infernal Hemorrhage] for 3 seconds, dealing powerful damage over time
 					Additionally, deal 10% of the foe's missing HP as bonus true damage (Up to 2000)
 					Critical strikes with this weapon's basic attacks instantly cleanse the cooldown of [c/DC3961:Edge of Anguish]
@@ -6902,8 +6901,7 @@ Mods: {
 					'''
 					[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes]
 					[c/F7D76A:Hold left click to charge the weapon; the longer the weapon is charged, the stronger the resulting attack will become]
-					Uncharged attacks with this weapon swing in the cursor's direction
-					Striking foes with the tip of the blade deals damage twice
+					Uncharged attacks with this weapon swing in a wide arc
 					Charged attacks will execute [c/8D0404:Guntrigger Execution], teleporting to your cursor (in range), granting Invincibility for 2 seconds, and slashing foes around you
 					When charging the weapon, movement is disabled
 					After use of [c/8D0404:Guntrigger Execution], you are inflicted with the debuff [c/B96B6B:Impact Recoil] for 12 seconds
@@ -7085,11 +7083,10 @@ Mods: {
 			YunlaiStiletto: {
 				Tooltip:
 					'''
-					Striking foes will grant Rage
 					Right click to expend 80 mana, placing a [c/CB8EE3:Lightning Stiletto] at your cursor's location
 					Once a [c/CB8EE3:Lightning Stiletto] is present, using right click again will teleport you to the position of the [c/CB8EE3:Lightning Stiletto]
 					Additionally, your next attack will become [c/B703FF:Driving Thunder]
-					[c/B703FF:Driving Thunder] will sweep in a wide arc, dealing high amounts of damage
+					[c/B703FF:Driving Thunder] will sweep in a wide arc, dealing 3x damage
 					If [c/B703FF:Driving Thunder] defeats an opponent, the mana used for placing the [c/CB8EE3:Lightning Stiletto] will be refunded
 					If you attempt to teleport to an unaccessable location, you will consume the [c/CB8EE3:Lightning Stiletto] without teleporting but still prepare [c/B703FF:Driving Thunder]
 					'Woven from lightning itself, from a land where gods roam free'
@@ -8942,6 +8939,7 @@ Mods: {
 			HullwroughtSwing22.DisplayName: Hullwrought
 			HornSlash1.DisplayName: Hunter's Symphony
 			HornSlash2.DisplayName: Hunter's Symphony
+			HornSlash.DisplayName: Horn Slash
 			MusicRadiate.DisplayName: Hunter's Symphony
 			Icebolt.DisplayName: Icebolt
 			Icebolt2.DisplayName: Icebolt2
@@ -9659,6 +9657,22 @@ Mods: {
 			MemoryLightning.DisplayName: Memory Lightning
 			GuppyFlies.DisplayName: Guppy Flies
 			MiserySword.DisplayName: Misery Sword
+			ClaimhSolaisSword.DisplayName: Claimh Solais Sword
+			HawkmoonGun.DisplayName: Hawkmoon Gun
+			DeathInFourActsGun.DisplayName: Death In Four Acts Gun
+			DarkmoonSword.DisplayName: Darkmoon Sword
+			DarkmoonSwordEmpowered.DisplayName: Darkmoon Sword Empowered
+			ForceOfNatureGun.DisplayName: Force Of Nature Gun
+			RideTheBullGun.DisplayName: Ride The Bull Gun
+			IzanagisEdgeGun.DisplayName: Izanagis Edge Gun
+			CrimsonOutbreakGun.DisplayName: Crimson Outbreak Gun
+			CrimsonSakuraAlphaSword.DisplayName: Crimson Sakura Alpha Sword
+			YunlaiStilettoSword.DisplayName: Yunlai Stiletto Sword
+			LiberationBlazingSword.DisplayName: Liberation Blazing Sword
+			MercySword.DisplayName: Mercy Sword
+			LightUnrelentingSword.DisplayName: Light Unrelenting Sword
+			ArchitectSword.DisplayName: Architect Sword
+			KazimierzSeraphimSword.DisplayName: Kazimierz Seraphim Sword
 		}
 
 		Buffs: {

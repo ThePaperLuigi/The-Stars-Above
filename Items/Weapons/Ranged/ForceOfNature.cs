@@ -46,6 +46,7 @@ namespace StarsAbove.Items.Weapons.Ranged
 			Item.shootSpeed = 20f;
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
 			Item.UseSound = SoundID.Item11;
+			Item.noUseGraphic = true;
 		}
 		public override bool AltFunctionUse(Player player)
 		{
@@ -54,15 +55,6 @@ namespace StarsAbove.Items.Weapons.Ranged
 		public override void HoldItem(Player player)
 		{
 
-			if (player.HasBuff(BuffType<ForceOfNatureReloadBuff>()))
-			{
-				Item.noUseGraphic = true;
-			}
-			else
-			{
-				Item.noUseGraphic = false;
-
-			}
 
 
 
@@ -134,7 +126,8 @@ namespace StarsAbove.Items.Weapons.Ranged
 
 				Vector2 Lunge = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * -16f;
 				player.velocity = Lunge;
-				
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, 0, 0, ProjectileType<ForceOfNatureGun>(), 0, knockback, player.whoAmI);
+
 				player.AddBuff(BuffType<BlastingChargeCooldownBuff>(), 360);
 				//player.GetModPlayer<WeaponPlayer>().forceBullets--;
 				for (int d = 0; d < 27; d++)
@@ -153,9 +146,10 @@ namespace StarsAbove.Items.Weapons.Ranged
 			}
 			if (player.GetModPlayer<WeaponPlayer>().forceBullets > 0)
             {
-				
-				
-					int numberProjectiles = 12 + Main.rand.Next(2); //random shots
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, 0, 0, ProjectileType<ForceOfNatureGun>(), 0, knockback, player.whoAmI);
+
+
+				int numberProjectiles = 12 + Main.rand.Next(2); //random shots
 					for (int i = 0; i < numberProjectiles; i++)
 					{
 						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(45)); // 30 degree spread.

@@ -43,6 +43,8 @@ namespace StarsAbove.Items.Weapons.Other
 			//item.UseSound = SoundID.Item11;
 			Item.scale = 0.7f;
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
+			Item.noUseGraphic = true;
+			Item.autoReuse = true;
 		}
 		int rounds;
 		public override bool AltFunctionUse(Player player)
@@ -158,7 +160,9 @@ namespace StarsAbove.Items.Weapons.Other
 			}
 			else
 			{
-				if(player.GetModPlayer<WeaponPlayer>().hawkmoonPerfectReload == true)
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, velocity.X, velocity.Y, ProjectileType<HawkmoonGun>(), 0, knockback, player.whoAmI);
+
+				if (player.GetModPlayer<WeaponPlayer>().hawkmoonPerfectReload == true)
 				{
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, velocity.X, velocity.Y,ProjectileType<HawkmoonRound>(), damage, knockback, player.whoAmI, 1f);
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_HuckleberryShoot, player.Center);

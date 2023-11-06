@@ -35,6 +35,7 @@ using StarsAbove.Projectiles.Magic.AegisDriver;
 using StarsAbove.Projectiles.Magic.CarianDarkMoon;
 using StarsAbove.Projectiles.Magic.DreamersInkwell;
 using StarsAbove.Projectiles.Magic.EyeOfEuthymia;
+using StarsAbove.Projectiles.Magic.HunterSymphony;
 using StarsAbove.Projectiles.Magic.StygianNymph;
 using StarsAbove.Projectiles.Magic.SupremeAuthority;
 using StarsAbove.Projectiles.Magic.TwinStars;
@@ -546,6 +547,55 @@ namespace StarsAbove.Systems
                     target.AddBuff(BuffType<Glitterglued>(), 240);
                 }
             }
+            if (sakuraHeld)
+            {
+                if (!bladeWill)
+                {
+                    if (Main.rand.Next(15) == 1)
+                    {
+                        //player.QuickSpawnItem(null,mod.ItemType("RedOrb"));
+                        int k = Item.NewItem(Player.GetSource_OnHit(target), (int)target.position.X + Main.rand.Next(-20, 20), (int)target.position.Y + Main.rand.Next(-20, 20), target.width, target.height, Mod.Find<ModItem>("RedOrb").Type, 1, false);
+                        if (Main.netMode == 1)
+                        {
+                            NetMessage.SendData(21, -1, -1, null, k, 1f);
+                        }
+
+                    }
+                    if (Main.rand.Next(15) == 1)
+                    {
+                        //player.QuickSpawnItem(null,mod.ItemType("BlueOrb"));
+                        int k = Item.NewItem(Player.GetSource_OnHit(target), (int)target.position.X + Main.rand.Next(-20, 20), (int)target.position.Y + Main.rand.Next(-20, 20), target.width, target.height, Mod.Find<ModItem>("BlueOrb").Type, 1, false);
+                        if (Main.netMode == 1)
+                        {
+                            NetMessage.SendData(21, -1, -1, null, k, 1f);
+                        }
+
+                    }
+                    if (Main.rand.Next(15) == 1)
+                    {
+                        //player.QuickSpawnItem(null,mod.ItemTypeif("YellowOrb"));
+                        int k = Item.NewItem(Player.GetSource_OnHit(target), (int)target.position.X + Main.rand.Next(-20, 20), (int)target.position.Y + Main.rand.Next(-20, 20), target.width, target.height, Mod.Find<ModItem>("YellowOrb").Type, 1, false);
+                        if (Main.netMode == 1)
+                        {
+                            NetMessage.SendData(21, -1, -1, null, k, 1f);
+                        }
+
+                    }
+                }
+                else
+                {
+                    if (Main.rand.Next(3) == 1)
+                    {
+                        //player.QuickSpawnItem(null,mod.ItemType("BladeOrb"));
+                        int k = Item.NewItem(Player.GetSource_OnHit(target), (int)target.position.X + Main.rand.Next(-20, 20), (int)target.position.Y + Main.rand.Next(-20, 20), target.width, target.height, Mod.Find<ModItem>("BladeOrb").Type, 1, false);
+                        if (Main.netMode == 1)
+                        {
+                            NetMessage.SendData(21, -1, -1, null, k, 1f);
+                        }
+
+                    }
+                }
+            }
             if (!target.active && luciferium)
             {
                 Player.AddBuff(BuffType<SatedAnguish>(), 900);
@@ -566,6 +616,7 @@ namespace StarsAbove.Systems
                     Player.AddBuff(BuffType<NanomachinaLeechCooldown>(), 360);
                 }
             }
+            
             if (target.HasBuff(BuffType<InfernalBleed>()))
             {
                 if (target.life - Math.Min(-(target.life - target.lifeMax) * 0.02, 250) > 1)
@@ -614,71 +665,8 @@ namespace StarsAbove.Systems
 
                     Projectile.NewProjectile(Player.GetSource_ItemUse(item), target.Center.X, target.Center.Y, 0, 0, ProjectileType<ScarletOutburst>(), damageDone, 0, Player.whoAmI, 0f);
                 }
-            }
-            if (item.ModItem is ClaimhSolais)
-            {
-                if (hit.Crit)
-                {
-                    if (radiance >= 10)
-                    {
-                        Player.AddBuff(BuffID.Ironskin, 240);
-                    }
-                    else
-                    {
-                        radiance++;
-                    }
-
-                }
-            }
-            if (sakuraHeld)
-            {
-                if (!bladeWill)
-                {
-                    if (Main.rand.Next(15) == 1)
-                    {
-                        //player.QuickSpawnItem(null,mod.ItemType("RedOrb"));
-                        int k = Item.NewItem(Player.GetSource_ItemUse(item), (int)target.position.X + Main.rand.Next(-20, 20), (int)target.position.Y + Main.rand.Next(-20, 20), target.width, target.height, Mod.Find<ModItem>("RedOrb").Type, 1, false);
-                        if (Main.netMode == 1)
-                        {
-                            NetMessage.SendData(21, -1, -1, null, k, 1f);
-                        }
-
-                    }
-                    if (Main.rand.Next(15) == 1)
-                    {
-                        //player.QuickSpawnItem(null,mod.ItemType("BlueOrb"));
-                        int k = Item.NewItem(Player.GetSource_ItemUse(item), (int)target.position.X + Main.rand.Next(-20, 20), (int)target.position.Y + Main.rand.Next(-20, 20), target.width, target.height, Mod.Find<ModItem>("BlueOrb").Type, 1, false);
-                        if (Main.netMode == 1)
-                        {
-                            NetMessage.SendData(21, -1, -1, null, k, 1f);
-                        }
-
-                    }
-                    if (Main.rand.Next(15) == 1)
-                    {
-                        //player.QuickSpawnItem(null,mod.ItemTypeif("YellowOrb"));
-                        int k = Item.NewItem(Player.GetSource_ItemUse(item), (int)target.position.X + Main.rand.Next(-20, 20), (int)target.position.Y + Main.rand.Next(-20, 20), target.width, target.height, Mod.Find<ModItem>("YellowOrb").Type, 1, false);
-                        if (Main.netMode == 1)
-                        {
-                            NetMessage.SendData(21, -1, -1, null, k, 1f);
-                        }
-
-                    }
-                }
-                else
-                {
-                    if (Main.rand.Next(3) == 1)
-                    {
-                        //player.QuickSpawnItem(null,mod.ItemType("BladeOrb"));
-                        int k = Item.NewItem(Player.GetSource_ItemUse(item), (int)target.position.X + Main.rand.Next(-20, 20), (int)target.position.Y + Main.rand.Next(-20, 20), target.width, target.height, Mod.Find<ModItem>("BladeOrb").Type, 1, false);
-                        if (Main.netMode == 1)
-                        {
-                            NetMessage.SendData(21, -1, -1, null, k, 1f);
-                        }
-
-                    }
-                }
-            }
+            }         
+            
 
             if (Glitterglue)
             {
@@ -733,6 +721,28 @@ namespace StarsAbove.Systems
             {
                 target.AddBuff(BuffType<MortalWounds>(), 600);
                 soulUnboundDamage += damageDone;
+            }
+            if(proj.type == ProjectileType<HornSlash>())
+            {
+                if (Player.HasBuff(BuffType<HunterSymphonyCooldown>()))
+                {
+                    Player.buffTime[Player.FindBuffIndex(BuffType<HunterSymphonyCooldown>())] -= 120;
+                }
+            }
+            if (proj.type == ProjectileType<ClaimhSolaisSword>())
+            {
+                if (hit.Crit)
+                {
+                    if (radiance >= 10)
+                    {
+                        Player.AddBuff(BuffID.Ironskin, 240);
+                    }
+                    else
+                    {
+                        radiance++;
+                    }
+
+                }
             }
             if (proj.type == ProjectileType<SteelTempestSwing2>())
             {
@@ -965,7 +975,7 @@ namespace StarsAbove.Systems
                 }
 
             }
-            if (proj.type == ProjectileType<CarianSwing1>() || proj.type == ProjectileType<CarianSwing2>())
+            if (proj.type == ProjectileType<DarkmoonSword>())
             {
                 if (hit.Crit)
                 {
@@ -1300,7 +1310,7 @@ namespace StarsAbove.Systems
                     {
                         Dust.NewDust(target.position, target.width, target.height, 220, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
                     }
-
+                    Player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
 
                     edgeHoned = false;
                 }
@@ -1399,7 +1409,7 @@ namespace StarsAbove.Systems
 
                 }
             }
-            if (proj.type == ProjectileType<CarianSwingE1>() || proj.type == ProjectileType<CarianSwingE2>())
+            if (proj.type == ProjectileType<DarkmoonSwordEmpowered>())
             {
 
                 for (int d = 0; d < 6; d++)
@@ -1644,7 +1654,7 @@ namespace StarsAbove.Systems
             }
 
 
-            if (proj.type == ProjectileType<CarianSwingE1>() || proj.type == ProjectileType<CarianSwingE2>())
+            if (proj.type == ProjectileType<DarkmoonSwordEmpowered>())
             {
 
                 target.AddBuff(BuffID.Frostburn, 180);

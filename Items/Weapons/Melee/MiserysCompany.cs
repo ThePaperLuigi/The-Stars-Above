@@ -164,7 +164,8 @@ namespace StarsAbove.Items.Weapons.Melee
 					{
 						position += muzzleOffset;
 					}
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, velocity.X, velocity.Y,ProjectileType<MiseryShotgun>(), 0, knockback, player.whoAmI);
+					//Gun shoot graphic
+					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, 0, 0,ProjectileType<MiseryShotgun>(), 0, 0, player.whoAmI);
 					int numberProjectiles = 3 + Main.rand.Next(4); //random shots
 					for (int i = 0; i < numberProjectiles; i++)
 					{

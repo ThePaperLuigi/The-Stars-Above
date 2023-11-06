@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -36,39 +37,29 @@ namespace StarsAbove.Projectiles.Other.ArchitectLuminance
             get => Projectile.ai[0];
             set => Projectile.ai[0] = value;
         }
-
-        // It appears that for this AI, only the ai0 field is used!
+        double deg;
+        bool firstSpawn = true;
         public override void AI()
         {
-            // Since we access the owner player instance so much, it's useful to create a helper local variable for this
-            // Sadly, Projectile/ModProjectile does not have its own
+
             Player projOwner = Main.player[Projectile.owner];
-            // Here we set some of the projectile's owner properties, such as held item and itemtime, along with projectile direction and position based on the player
             Vector2 ownerMountedCenter = projOwner.RotatedRelativePoint(projOwner.MountedCenter, true);
             Projectile.direction = projOwner.direction;
             projOwner.heldProj = Projectile.whoAmI;
             projOwner.itemTime = projOwner.itemAnimation;
-            Projectile.position.X = ownerMountedCenter.X - Projectile.width / 2;
-            Projectile.position.Y = ownerMountedCenter.Y - Projectile.height / 2;
-            // As long as the player isn't frozen, the spear can move
-            if (!projOwner.frozen)
+            if (firstSpawn)
             {
-                if (movementFactor == 0f) // When initially thrown out, the ai0 will be 0f
-                {
-                    movementFactor = 7f; // Make sure the spear moves forward when initially thrown out
-                    Projectile.netUpdate = true; // Make sure to netUpdate this spear
-                }
-                if (projOwner.itemAnimation < projOwner.itemAnimationMax / 3) // Somewhere along the item animation, make sure the spear moves back
-                {
-                    //movementFactor -= 2.4f;
-                }
-                else // Otherwise, increase the movement factor
-                {
-                    //movementFactor += 2.4f;
-                }
+                //When the blade appears, it's rotated a bit.
+                Projectile.ai[1] = MathHelper.ToDegrees((float)Math.Atan2(Main.MouseWorld.Y - projOwner.Center.Y, Main.MouseWorld.X - projOwner.Center.X)) - 180;
+                firstSpawn = false;
             }
-            // Change the spear position based off of the velocity and the movementFactor
-            Projectile.position += Projectile.velocity * movementFactor;
+            deg = Projectile.ai[1];
+            double rad = deg * (Math.PI / 180);
+            double dist = 128;
+
+            Projectile.position.X = projOwner.Center.X - (int)(Math.Cos(rad) * dist) - Projectile.width / 2;
+            Projectile.position.Y = projOwner.Center.Y - (int)(Math.Sin(rad) * dist) - Projectile.height / 2;
+
             // When we reach the end of the animation, we can kill the spear projectile
             if (projOwner.itemAnimation == 1)
             {
@@ -76,26 +67,13 @@ namespace StarsAbove.Projectiles.Other.ArchitectLuminance
             }
             // Apply proper rotation, with an offset of 135 degrees due to the sprite's rotation, notice the usage of MathHelper, use this class!
             // MathHelper.ToRadians(xx degrees here)
-            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(135f);
+            Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(135f);
             // Offset by 90 degrees here
             if (Projectile.spriteDirection == -1)
             {
                 Projectile.rotation -= MathHelper.ToRadians(90f);
             }
 
-            // These dusts are added later, for the 'ExampleMod' effect
-            /*if (Main.rand.NextBool(3)) {
-				Dust dust = Dust.NewDustDirect(projectile.position, projectile.height, projectile.width, 20,
-					projectile.velocity.X * .2f, projectile.velocity.Y * .2f, 200, Scale: 1.2f);
-				dust.velocity += projectile.velocity * 0.3f;
-				dust.velocity *= 0.2f;
-			}
-			if (Main.rand.NextBool(4)) {
-				Dust dust = Dust.NewDustDirect(projectile.position, projectile.height, projectile.width,20,
-					0, 0, 254, Scale: 0.3f);
-				dust.velocity += projectile.velocity * 0.5f;
-				dust.velocity *= 0.5f;
-			}*/
         }
     }
 }

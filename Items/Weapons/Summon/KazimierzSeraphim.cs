@@ -45,7 +45,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			Item.UseSound = SoundID.Item1;      //The sound when the weapon is using
 			Item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
-			Item.shoot = ProjectileType<KazimierzSlash1>();
+			Item.shoot = ProjectileType<KazimierzSeraphimSword>();
 		}
 		bool altSwing;
 		public override bool AltFunctionUse(Player player)
@@ -97,44 +97,18 @@ namespace StarsAbove.Items.Weapons.Summon
 			WeaponPlayer modPlayer = player.GetModPlayer<WeaponPlayer>();
 			if (player.altFunctionUse != 2)
 			{
-				if (player.direction == 1)
+				if (altSwing)
 				{
-					if (altSwing)
-					{
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<KazimierzSlash2>(), damage, knockback, player.whoAmI, 0f);
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<KazVFX2>(), 0, knockback, player.whoAmI, 0f);
-
-						altSwing = false;
-					}
-					else
-					{
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<KazimierzSlash1>(), damage, knockback, player.whoAmI, 0f);
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<KazVFX1>(), 0, knockback, player.whoAmI, 0f);
-
-						altSwing = true;
-					}
-
+					Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<KazimierzSeraphimSword>(), damage, knockback, player.whoAmI, 0, 0, player.direction);
+					altSwing = false;
 				}
 				else
 				{
-					if (altSwing)
-					{
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<KazimierzSlash1>(), damage, knockback, player.whoAmI, 0f);
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<KazVFX1>(), 0, knockback, player.whoAmI, 0f);
-
-						altSwing = false;
-					}
-					else
-					{
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<KazimierzSlash2>(), damage, knockback, player.whoAmI, 0f);
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<KazVFX2>(), 0, knockback, player.whoAmI, 0f);
-
-
-						altSwing = true;
-					}
+					Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<KazimierzSeraphimSword>(), damage, knockback, player.whoAmI, 0, 1, player.direction);
+					altSwing = true;
 				}
-			}
 
+			}
 			return false;
 		}
 

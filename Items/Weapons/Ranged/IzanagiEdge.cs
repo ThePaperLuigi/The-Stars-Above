@@ -39,8 +39,8 @@ namespace StarsAbove.Items.Weapons.Ranged
 			Item.DamageType = DamageClass.Ranged;
 			Item.width = 106;
 			Item.height = 40;
-			Item.useTime = 20;
-			Item.useAnimation = 20;
+			Item.useTime = 50;
+			Item.useAnimation = 50;
 			Item.useStyle = 5;
 			Item.noMelee = true; //so the item's animation doesn't do damage
 			Item.knockBack = 4;
@@ -53,6 +53,7 @@ namespace StarsAbove.Items.Weapons.Ranged
 			Item.reuseDelay = 40;
 			Item.shoot = ProjectileType<IzanagiRound>();
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
+			Item.noUseGraphic = true;
 		}
 
 		int shotCount = 0;
@@ -71,19 +72,19 @@ namespace StarsAbove.Items.Weapons.Ranged
 			{
 				position += muzzleOffset;
 			}
+			Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, 0, 0, ProjectileType<IzanagisEdgeGun>(), 0, 0, player.whoAmI);
 
 			shotCount++;
 			if (player.GetModPlayer<WeaponPlayer>().edgeHoned)
 			{
 				player.GetModPlayer<WeaponPlayer>().edgeHoned = false;
 			}
+			SoundEngine.PlaySound(StarsAboveAudio.SFX_izanagiShoot, player.Center);
 
 			if (shotCount == 4)
 			{
 				if (edgeHonedPrep == 1)
 				{
-					
-
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_izanagiShootBuff, player.Center);
 					player.GetModPlayer<WeaponPlayer>().edgeHoned = true;
 					edgeHonedPrep = 0;
@@ -109,46 +110,23 @@ namespace StarsAbove.Items.Weapons.Ranged
 					edgeHonedPrep = 1;
 
 					shotCount = 3;
-					Item.useTime = 70;
-					Item.useAnimation = 70;
-					Item.reuseDelay = 70;
+
 				}
 				else
 				{
 					
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_izanagiReload, player.Center);
-					Item.useTime = 20;
-					Item.useAnimation = 20;
-					Item.reuseDelay = 40;
+
 				}
-				
-				
-				
+
+
+
 				player.GetModPlayer<WeaponPlayer>().izanagiPerfect = 0;
 
 			}
 			else
 			{
-				if (shotCount == 3)
-				{
-					
-					Item.damage = 120 + shotCount * 20;
-					Item.useTime = 70;
-					Item.useAnimation = 70;
-					Item.reuseDelay = 70;
-					Item.shootSpeed = 86f;
-					SoundEngine.PlaySound(StarsAboveAudio.SFX_izanagiShoot, player.Center);
-				}
-				else
-				{
-					Item.damage =120 + shotCount * 20;
-					Item.crit = 10;
-					Item.useTime = 20;
-					Item.useAnimation = 20;
-					Item.reuseDelay = 40;
-					Item.shootSpeed = 86f;
-					SoundEngine.PlaySound(StarsAboveAudio.SFX_izanagiShoot, player.Center);
-				}
+				
 			}
 
 			return true;
@@ -172,6 +150,22 @@ namespace StarsAbove.Items.Weapons.Ranged
 			{
 				
 
+			}
+			if (shotCount == 3)
+			{
+
+				Item.damage = 120 + shotCount * 20;
+
+				Item.reuseDelay = 70;
+				Item.shootSpeed = 86f;
+			}
+			else
+			{
+				Item.damage = 120 + shotCount * 20;
+				Item.crit = 10;
+
+				Item.reuseDelay = 40;
+				Item.shootSpeed = 86f;
 			}
 		}
 		

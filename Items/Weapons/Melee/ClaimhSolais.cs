@@ -46,6 +46,11 @@ namespace StarsAbove.Items.Weapons.Melee
 			Item.UseSound = SoundID.Item1;      //The sound when the weapon is using
 			Item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
+			Item.shoot = 10;
+			Item.crit = 26;
+			Item.noMelee = true;
+			Item.noUseGraphic = true;
+			Item.autoReuse = true;
 		}
 
 		public override bool AltFunctionUse(Player player)
@@ -110,11 +115,20 @@ namespace StarsAbove.Items.Weapons.Melee
 			//player.GetModPlayer<WeaponPlayer>().radiance++;
 			
 		}
-
+		public bool altSwing;
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			
-			
+			if (altSwing)
+			{
+				Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<Projectiles.Melee.ClaimhSolais.ClaimhSolaisSword>(), damage, knockback, player.whoAmI, 0, 0, player.direction);
+				altSwing = false;
+			}
+			else
+			{
+				Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<Projectiles.Melee.ClaimhSolais.ClaimhSolaisSword>(), damage, knockback, player.whoAmI, 0, 1, player.direction);
+				altSwing = true;
+			}
+
 			return false;
 		}
 

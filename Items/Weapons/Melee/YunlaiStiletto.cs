@@ -8,6 +8,7 @@ using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
+using StarsAbove.Projectiles.Melee.YunlaiStiletto;
 
 namespace StarsAbove.Items.Weapons.Melee
 {
@@ -39,7 +40,7 @@ namespace StarsAbove.Items.Weapons.Melee
 			Item.useAnimation = 25;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
 			Item.UseSound = SoundID.Item1;      //The sound when the weapon is using
 
-			Item.useStyle = 1;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
+			Item.useStyle = ItemUseStyleID.HiddenAnimation;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
 			Item.knockBack = 2;         //The force of knockback of the weapon. Maximum is 20
 			Item.rare = ItemRarityID.Red;              //The rarity of the weapon, from -1 to 13
 			Item.crit = 10;
@@ -48,6 +49,7 @@ namespace StarsAbove.Items.Weapons.Melee
 			Item.shoot = ProjectileType<Projectiles.Melee.YunlaiStiletto.yunlaiSwing>();
 			Item.shootSpeed = 10f;
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
+			Item.noUseGraphic = true;
 		}
 		public override bool AltFunctionUse(Player player)
 		{
@@ -89,7 +91,7 @@ namespace StarsAbove.Items.Weapons.Melee
 				}
 				else
 				{
-					if (Main.myPlayer == player.whoAmI)//weaponout code
+					if (Main.myPlayer == player.whoAmI)
 					{
 						
 							if (!Collision.SolidCollision(vector32, player.width, player.height))
@@ -100,7 +102,7 @@ namespace StarsAbove.Items.Weapons.Melee
 							}
 						player.GetModPlayer<WeaponPlayer>().yunlaiTeleport = false;
 						powerSwingReady = true;
-						
+						return false;
 					}
 				}
 			}
@@ -162,19 +164,6 @@ namespace StarsAbove.Items.Weapons.Melee
 			base.HoldItem(player);
 		}
 
-		
-		public override void MeleeEffects(Player player, Rectangle hitbox)
-		{
-			if (Main.rand.NextBool(3))
-			{
-				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 21);
-				
-			}
-			
-					Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 112);
-			
-		}
-
 		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			// 
@@ -182,6 +171,7 @@ namespace StarsAbove.Items.Weapons.Melee
 			player.AddBuff(BuffID.Rage, 240);
 			
 		}
+		private bool altSwing;
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
 			if (player.altFunctionUse == 2)
@@ -190,6 +180,16 @@ namespace StarsAbove.Items.Weapons.Melee
 			}
 			else
 			{
+				if (altSwing)
+				{
+					Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<YunlaiStilettoSword>(), damage, knockback, player.whoAmI, 0, 0, player.direction);
+					altSwing = false;
+				}
+				else
+				{
+					Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<YunlaiStilettoSword>(), damage, knockback, player.whoAmI, 0, 1, player.direction);
+					altSwing = true;
+				}
 				if (powerSwingReady)
 				{
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, velocity.X, velocity.Y,type, damage * 3, knockback * 2, player.whoAmI, 0f);

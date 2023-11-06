@@ -102,7 +102,7 @@ namespace StarsAbove.Projectiles.Melee.YunlaiStiletto
             // Offset by 90 degrees here
             if (Projectile.spriteDirection == -1)
             {
-                Projectile.rotation -= MathHelper.ToRadians(90f);
+                Projectile.rotation -= MathHelper.ToRadians(180f);
             }
 
             // These dusts are added later, for the 'ExampleMod' effect

@@ -39,6 +39,7 @@ namespace StarsAbove.Items.Weapons.Ranged
 			Item.shoot = ProjectileType<HuckleberryRound>();
 			Item.shootSpeed = 16f;
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
+			Item.noUseGraphic = true;
 		}
 
 		public override void HoldItem(Player player)
@@ -68,6 +69,7 @@ namespace StarsAbove.Items.Weapons.Ranged
 			{
 				position += muzzleOffset;
 			}
+			Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, 0, 0, ProjectileType<RideTheBullGun>(), 0, 0, player.whoAmI);
 
 			if (player.statMana > 5)
 			{

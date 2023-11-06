@@ -33,6 +33,7 @@ namespace StarsAbove.Projectiles.Generics
         public abstract int StartingState { get; }//0 is shooting, 1 is recoil, 2 is idle.
         public abstract bool KillOnIdle { get; }
         public abstract int ScreenShakeTime { get; }
+        public virtual float ScaleModifier { get; } = 1f;
 
         Vector2 MuzzlePosition;
 
@@ -332,10 +333,10 @@ namespace StarsAbove.Projectiles.Generics
             {
                 Main.EntitySpriteDraw(texture,
                    Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY),
-                   sourceRectangle, lightColor, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
+                   sourceRectangle, lightColor, Projectile.rotation, origin, Projectile.scale * ScaleModifier, spriteEffects, 0);
                 Main.EntitySpriteDraw(textureFlash,
                    Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY),
-                   sourceRectangle, Color.White * flashAlpha, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
+                   sourceRectangle, Color.White * flashAlpha, Projectile.rotation, origin, Projectile.scale * ScaleModifier, spriteEffects, 0);
             }
            
             // It's important to return false, otherwise we also draw the original texture.

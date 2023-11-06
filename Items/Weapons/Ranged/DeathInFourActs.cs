@@ -9,6 +9,7 @@ using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using StarsAbove.Buffs;
 using StarsAbove.Systems;
+using StarsAbove.Projectiles.Ranged.DeathInFourActs;
 
 namespace StarsAbove.Items.Weapons.Ranged
 {
@@ -40,10 +41,10 @@ namespace StarsAbove.Items.Weapons.Ranged
 			Item.shoot = 10;
 			Item.useAmmo = AmmoID.Bullet;
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
+			Item.noUseGraphic = true;
 		}
 
 		int shotCount = 0;
-		int missingHP = 0;
 		public override bool CanUseItem(Player player)
 		{
 			if(player.HasBuff(BuffType<ComboCooldown>()))
@@ -89,6 +90,8 @@ namespace StarsAbove.Items.Weapons.Ranged
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
+			Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, 0, 0, ProjectileType<DeathInFourActsGun>(), 0, knockback, player.whoAmI);
+
 			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 25f;
 			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
 			{

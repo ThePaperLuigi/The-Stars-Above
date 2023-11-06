@@ -155,36 +155,15 @@ namespace StarsAbove.Items.Weapons.Magic
 			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();
 			if (player.altFunctionUse != 2)
             {
-				if (player.direction == 1)
+				if (altSwing)
 				{
-					if (altSwing)
-					{
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<HornSlash2>(), player.GetWeaponDamage(Item), knockback, player.whoAmI, 0f);
-
-						altSwing = false;
-					}
-					else
-					{
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<HornSlash1>(), player.GetWeaponDamage(Item), knockback, player.whoAmI, 0f);
-
-						altSwing = true;
-					}
-
+					Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<HornSlash>(), damage, knockback, player.whoAmI, 0, 0, player.direction);
+					altSwing = false;
 				}
 				else
 				{
-					if (altSwing)
-					{
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<HornSlash1>(), player.GetWeaponDamage(Item), knockback, player.whoAmI, 0f);
-
-						altSwing = false;
-					}
-					else
-					{
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<HornSlash2>(), player.GetWeaponDamage(Item), knockback, player.whoAmI, 0f);
-
-						altSwing = true;
-					}
+					Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<HornSlash>(), damage, knockback, player.whoAmI, 0, 1, player.direction);
+					altSwing = true;
 				}
 			}
 			else
@@ -197,31 +176,26 @@ namespace StarsAbove.Items.Weapons.Magic
 
 					return false;
 				}
-				if(Main.netMode != NetmodeID.MultiplayerClient)
-                {
-					if (player.controlUp && !player.HasBuff(BuffType<HunterSymphonyCooldown>()))
-					{
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<MusicRadiate>(), 0, 3, player.whoAmI, 0f, 0);
-						return false;
-					}
-					if (player.controlDown && !player.HasBuff(BuffType<HunterSymphonyCooldown>()))
-					{
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<MusicRadiate>(), 0, 3, player.whoAmI, 0f, 1);
-						return false;
-					}
-					if (player.controlLeft && !player.HasBuff(BuffType<HunterSymphonyCooldown>()))
-					{
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<MusicRadiate>(), 0, 3, player.whoAmI, 0f, 2);
-						return false;
-					}
-					if (player.controlRight && !player.HasBuff(BuffType<HunterSymphonyCooldown>()))
-					{
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<MusicRadiate>(), 0, 3, player.whoAmI, 0f, 3);
-						return false;
-					}
+				if (player.controlUp && !player.HasBuff(BuffType<HunterSymphonyCooldown>()))
+				{
+					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<MusicRadiate>(), 0, 3, player.whoAmI, 0f, 0);
+					return false;
 				}
-				
-				
+				if (player.controlDown && !player.HasBuff(BuffType<HunterSymphonyCooldown>()))
+				{
+					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<MusicRadiate>(), 0, 3, player.whoAmI, 0f, 1);
+					return false;
+				}
+				if (player.controlLeft && !player.HasBuff(BuffType<HunterSymphonyCooldown>()))
+				{
+					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<MusicRadiate>(), 0, 3, player.whoAmI, 0f, 2);
+					return false;
+				}
+				if (player.controlRight && !player.HasBuff(BuffType<HunterSymphonyCooldown>()))
+				{
+					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<MusicRadiate>(), 0, 3, player.whoAmI, 0f, 3);
+					return false;
+				}
 			}
 			
 			return false;

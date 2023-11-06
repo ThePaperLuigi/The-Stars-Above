@@ -9,6 +9,7 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using StarsAbove.Systems;
+using StarsAbove.Projectiles.Magic.LightUnrelenting;
 
 namespace StarsAbove.Items.Weapons.Magic
 {
@@ -43,6 +44,7 @@ namespace StarsAbove.Items.Weapons.Magic
 			Item.shoot = 116;
 			Item.shootSpeed = 30f;
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
+			Item.noUseGraphic = true;	
 		}
 
 		public override bool AltFunctionUse(Player player)
@@ -107,9 +109,23 @@ namespace StarsAbove.Items.Weapons.Magic
 				target.AddBuff(BuffID.OnFire, 120);
 			}
 		}
-
+		private bool altSwing;
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
+			if (player.altFunctionUse != 2)
+			{
+				if (altSwing)
+				{
+					Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<LightUnrelentingSword>(), damage, knockback, player.whoAmI, 0, 0, player.direction);
+					altSwing = false;
+				}
+				else
+				{
+					Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<LightUnrelentingSword>(), damage, knockback, player.whoAmI, 0, 1, player.direction);
+					altSwing = true;
+				}
+
+			}
 			if (player.statMana >= 50)
 			{
 				player.statMana -= 50;

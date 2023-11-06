@@ -1,96 +1,80 @@
+﻿
 using Microsoft.Xna.Framework;
+using StarsAbove.Buffs.CatalystMemory;
+using StarsAbove.Projectiles.Generics;
 using System;
 using Terraria;
-using Terraria.ID;
+using Terraria.Audio;
+using Terraria.GameContent.Drawing;
+using Terraria.Localization;
 using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.Celestial.TheOnlyThingIKnowForReal
 {
-    public class TheOnlyThingIKnowForRealSlash : ModProjectile
+    public class TheOnlyThingIKnowForRealSlash : StarsAboveSword
     {
+        public override string Texture => "StarsAbove/Projectiles/Celestial/TheOnlyThingIKnowForReal/TheOnlyThingIKnowForRealSlash";
+        public override bool UseRecoil => false;
+        public override bool DoSpin => false;
+        public override float BaseDistance => 70;
+        public override Color BackDarkColor => new Color(176, 11, 11);
+        public override Color MiddleMediumColor => new Color(234, 69, 69);
+        public override Color FrontLightColor => new Color(255, 131, 131);
+        public override bool CenterOnPlayer => true;
+        public override bool Rotate45Degrees => false;
+        public override float EffectScaleAdder => 1.3f;
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("The Only Thing I Know For Real");     //The English name of the projectile
-            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;    //The length of old position to be recorded
-            ProjectileID.Sets.TrailingMode[Projectile.type] = 0;        //The recording mode
-                                                                        //DrawOffsetX = 40;
-                                                                        //DrawOriginOffsetY = 81;
+            Main.projFrames[Projectile.type] = 1;
         }
-
         public override void SetDefaults()
         {
-            Projectile.width = 140;               //The width of projectile hitbox
-            Projectile.height = 140;              //The height of projectile hitbox
-            Projectile.aiStyle = 1;             //The ai style of the projectile, please reference the source code of Terraria
-            Projectile.friendly = true;         //Can the projectile deal damage to enemies?
-            Projectile.hostile = false;         //Can the projectile deal damage to the player?
             Projectile.DamageType = ModContent.GetInstance<Systems.CelestialDamageClass>();
-            Projectile.penetrate = -1;           //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
-            Projectile.timeLeft = 25;          //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
-            Projectile.alpha = 0;             //The transparency of the projectile, 255 for completely transparent. (aiStyle 1 quickly fades the projectile in) Make sure to delete this if you aren't using an aiStyle that fades in. You'll wonder why your projectile is invisible.
-            Projectile.light = 0.5f;            //How much light emit around the projectile
-            Projectile.ignoreWater = true;          //Does the projectile's speed be influenced by water?
-            Projectile.tileCollide = false;          //Can the projectile collide with tiles?
-            Projectile.extraUpdates = 0;            //Set to above 0 if you want the projectile to update multiple time in a frame
-
+            Projectile.width = 140;
+            Projectile.height = 140;
+            Projectile.friendly = true;
+            Projectile.ignoreWater = true;
+            Projectile.tileCollide = false;
+            Projectile.penetrate = -1;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = -1;
         }
-        int direction;//0 is right 1 is left
-        float rotationStrength = 0.1f;
-        bool firstSpawn = true;
-        double deg;
-        public override void AI()
+        public override bool PreAI()
         {
-
             Player player = Main.player[Projectile.owner];
-            player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (player.Center - Projectile.Center).ToRotation() + MathHelper.PiOver2);
+            //DrawOriginOffsetY = -6;
+            return true;
+        }
+        public override void ModifyDamageHitbox(ref Rectangle hitbox)
+        {
+            hitbox.X -= 30;
+            hitbox.Y -= 30;
+            hitbox.Width += 60;
+            hitbox.Height += 60;
+            base.ModifyDamageHitbox(ref hitbox);
+        }
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            // Vanilla has several particles that can easily be used anywhere.
+            // The particles from the Particle Orchestra are predefined by vanilla and most can not be customized that much.
+            // Use auto complete to see the other ParticleOrchestraType types there are.
+            // Here we are spawning the Excalibur particle randomly inside of the target's hitbox.
+            ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Excalibur,
+                new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(target.Hitbox) },
+                Projectile.owner);
 
-            if (firstSpawn)
-            {
-                Projectile.ai[1] = MathHelper.ToDegrees((float)Math.Atan2(Main.MouseWorld.Y - player.Center.Y, Main.MouseWorld.X - player.Center.X) - 30);
-                firstSpawn = false;
-            }
-            if (player.dead && !player.active)
-            {
-                Projectile.Kill();
-            }
-            if (Projectile.timeLeft > 20)
-            {
-                rotationStrength += 0.8f;
-            }
-            else
-            {
-                rotationStrength -= 1.2f;
-                if (rotationStrength < -12f)
-                {
-                    rotationStrength = -12f;
-                }
-                Projectile.alpha += 12;
-            }
+            // You could also spawn dusts at the enemy position. Here is simple an example:
+            // Dust.NewDust(Main.rand.NextVector2FromRectangle(target.Hitbox), 0, 0, ModContent.DustType<Content.Dusts.Sparkle>());
 
-
-
-            deg = Projectile.ai[1] += 12f + rotationStrength;
-
-
-
-            double rad = deg * (Math.PI / 180);
-            double dist = 68;
-
-            /*Position the player based on where the player is, the Sin/Cos of the angle times the /
-            /distance for the desired distance away from the player minus the projectile's width   /
-            /and height divided by two so the center of the projectile is at the right place.     */
-            Projectile.position.X = player.Center.X - (int)(Math.Cos(rad) * dist) - Projectile.width / 2;
-            Projectile.position.Y = player.Center.Y - (int)(Math.Sin(rad) * dist) - Projectile.height / 2;
-
-            Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(0f);
-            //player.itemRotation = Projectile.rotation;
+            // Set the target's hit direction to away from the player so the knockback is in the correct direction.
+            hit.HitDirection = Main.player[Projectile.owner].Center.X < target.Center.X ? 1 : -1;
+        }
+        public override void OnKill(int timeLeft)
+        {
 
 
         }
-
-
 
     }
 }

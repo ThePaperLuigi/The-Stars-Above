@@ -208,36 +208,15 @@ namespace StarsAbove.Items.Weapons.Melee
 			 
 			if(player.altFunctionUse != 2)
             {
-				if (player.direction == 1)
+				if (altSwing)
 				{
-					if (altSwing)
-					{
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<MercySlash2>(), player.GetWeaponDamage(Item), 3, player.whoAmI, 0f);
-
-						altSwing = false;
-					}
-					else
-					{
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<MercySlash>(), player.GetWeaponDamage(Item), 3, player.whoAmI, 0f);
-
-						altSwing = true;
-					}
-
+					Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<MercySword>(), damage, knockback, player.whoAmI, 0, 0, player.direction);
+					altSwing = false;
 				}
 				else
 				{
-					if (altSwing)
-					{
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<MercySlash>(), player.GetWeaponDamage(Item), 3, player.whoAmI, 0f);
-
-						altSwing = false;
-					}
-					else
-					{
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<MercySlash2>(), player.GetWeaponDamage(Item), 3, player.whoAmI, 0f);
-
-						altSwing = true;
-					}
+					Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<MercySword>(), damage, knockback, player.whoAmI, 0, 1, player.direction);
+					altSwing = true;
 				}
 			}
 			

@@ -43,6 +43,7 @@ namespace StarsAbove.Items.Weapons.Ranged
 			Item.shoot = ProjectileType<OutbreakRound>();
 			Item.shootSpeed = 20f;
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
+			Item.noUseGraphic = true;
 		}
 
 
@@ -84,6 +85,8 @@ namespace StarsAbove.Items.Weapons.Ranged
 			{
 				position += muzzleOffset;
 			}
+			Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, 0, 0, ProjectileType<CrimsonOutbreakGun>(), 0, knockback, player.whoAmI);
+
 			if (!(player.itemAnimation < Item.useAnimation - 2))
 			{
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_outbreakShoot, player.Center);

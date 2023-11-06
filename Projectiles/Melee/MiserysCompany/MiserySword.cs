@@ -30,7 +30,7 @@ namespace StarsAbove.Projectiles.Melee.MiserysCompany
         }
         public override void SetDefaults()
         {
-            Projectile.DamageType = DamageClass.SummonMeleeSpeed;
+            Projectile.DamageType = DamageClass.Melee;
             Projectile.width = 132;
             Projectile.height = 132;
             Projectile.friendly = true;
