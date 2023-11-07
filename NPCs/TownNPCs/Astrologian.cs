@@ -235,13 +235,9 @@ namespace StarsAbove.NPCs.TownNPCs
 				"Merope",
 				"Electra",
 				"Selene",
-				"Artemis",
 				"Sana",
-				"Suisei",
-				"Lunala",
-				"Astesia",
-				"Mona"
-
+				"Tiphereth",
+				"Lunala"
 			};
 		}
 
@@ -262,34 +258,51 @@ namespace StarsAbove.NPCs.TownNPCs
 		{
 			WeightedRandom<string> chat = new WeightedRandom<string>();
 
-			int partyGirl = NPC.FindFirstNPC(NPCID.PartyGirl);
-			if (partyGirl >= 0 && Main.rand.NextBool(4))
+			int wizard = NPC.FindFirstNPC(NPCID.Wizard);
+			if (wizard >= 0 && Main.rand.NextBool(4))
 			{
-				chat.Add(LangHelper.GetTextValue($"NPCDialogue.Astrologian.PartyGirlDialogue", Main.npc[partyGirl].GivenName));
+				chat.Add(LangHelper.GetTextValue($"NPCDialogue.Astrologian.WizardDialogue", Main.npc[wizard].GivenName));
 			}
 			// These are things that the NPC has a chance of telling you when you talk to it.
 			chat.Add(LangHelper.GetTextValue($"NPCDialogue.Astrologian.StandardDialogue1"));
 			chat.Add(LangHelper.GetTextValue($"NPCDialogue.Astrologian.StandardDialogue2"));
 			chat.Add(LangHelper.GetTextValue($"NPCDialogue.Astrologian.StandardDialogue3"));
 			chat.Add(LangHelper.GetTextValue($"NPCDialogue.Astrologian.StandardDialogue4"));
+			chat.Add(LangHelper.GetTextValue($"NPCDialogue.Astrologian.StandardDialogue5"));
+			chat.Add(LangHelper.GetTextValue($"NPCDialogue.Astrologian.StandardDialogue6"));
 			chat.Add(LangHelper.GetTextValue($"NPCDialogue.Astrologian.RareDialogue1"), 0.1);
 			chat.Add(LangHelper.GetTextValue($"NPCDialogue.Astrologian.RareDialogue2"), 0.1);
 
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
             {
-				chat.Add(LangHelper.GetTextValue($"NPCDialogue.Astrologian.AstralDialogue"));
+				chat.Add(LangHelper.GetTextValue($"NPCDialogue.Astrologian.AstralDialogue"), 0.2);
 
 			}
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
 			{
-				chat.Add(LangHelper.GetTextValue($"NPCDialogue.Astrologian.UmbralDialogue"));
+				chat.Add(LangHelper.GetTextValue($"NPCDialogue.Astrologian.UmbralDialogue"), 0.2);
+
+			}
+			if(Main.bloodMoon)
+            {
+				chat.Add(LangHelper.GetTextValue($"NPCDialogue.Astrologian.BloodMoon"));
+
+			}
+			if (Main.LocalPlayer.ZoneGraveyard)
+            {
+				chat.Add(LangHelper.GetTextValue($"NPCDialogue.Astrologian.Graveyard"));
+
+			}
+			if (Terraria.GameContent.Events.BirthdayParty.PartyIsUp)
+            {
+				chat.Add(LangHelper.GetTextValue($"NPCDialogue.Astrologian.Party"));
 
 			}
 			NumberOfTimesTalkedTo++;
-			if (NumberOfTimesTalkedTo >= 10)
+			if (NumberOfTimesTalkedTo <= 1)
 			{
 				//This counter is linked to a single instance of the NPC, so if ExamplePerson is killed, the counter will reset.
-				chat.Add(LangHelper.GetTextValue($"NPCDialogue.Astrologian.TalkALot"));
+				chat.Add(LangHelper.GetTextValue($"NPCDialogue.Astrologian.FirstDialogue"));
 			}
 
 			string chosenChat = chat; // chat is implicitly cast to a string. This is where the random choice is made.
@@ -307,6 +320,7 @@ namespace StarsAbove.NPCs.TownNPCs
 		public override void SetChatButtons(ref string button, ref string button2)
 		{ // What the chat buttons are when you open up the chat UI
 			button = Language.GetTextValue("LegacyInterface.28");
+			button2 = LangHelper.GetTextValue("NPCDialogue.Astrologian.StrangePotion");
 			/*
 			button2 = "Awesomeify";
 			if (Main.LocalPlayer.HasItem(ItemID.HiveBackpack))
@@ -337,6 +351,33 @@ namespace StarsAbove.NPCs.TownNPCs
 				}*/
 
 				shop = ShopName; // Name of the shop tab we want to open.
+			}
+			else
+            {
+				//Boss
+				//If World evil boss is defeated, continue or else "you aren't ready yet"
+				if(NPC.downedBoss2)
+                {
+					Main.npcChatText = LangHelper.GetTextValue("NPCDialogue.Astrologian.ThespianReady");
+					//Give player the boss summon item.
+					//Main.npcChatCornerItem = ItemID.HiveBackpack;
+					//Main.LocalPlayer.QuickSpawnItem(entitySource, ModContent.ItemType<WaspNest>());
+				}
+				else
+                {
+                    if (!WorldGen.crimson)
+                    {
+						Main.npcChatText = LangHelper.GetTextValue("NPCDialogue.Astrologian.ThespianNotReadyCorruption");
+
+					}
+					else
+					{
+						Main.npcChatText = LangHelper.GetTextValue("NPCDialogue.Astrologian.ThespianNotReadyCrimson");
+
+						//crimson
+					}
+				}
+
 			}
 		}
 
