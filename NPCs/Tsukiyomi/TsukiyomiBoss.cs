@@ -113,7 +113,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 		{
 			NPC.boss = true;
 			NPC.lifeMax = 290000;
-			NPC.damage = 85;
+			NPC.damage = 75;
 			NPC.defense = 45;
 			NPC.knockBackResist = 0f;
 			NPC.width = 150;
