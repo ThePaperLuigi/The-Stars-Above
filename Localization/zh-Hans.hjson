@@ -71,12 +71,20 @@ Mods: {
 
 			Astrologian: {
 				// WizardDialogue: I'm not sure what to think of {0}. They're obviously a cosplayer- you'd expect them to know no magic... and yet..!
-				// FirstDialogue: Salulations, friend. My collection magecraft has led me to you- I see you've found a celestially-aligned relic. If you are willing to part with some coin, a portion of my collection can be yours- or, I can also sell you the means to utilize that relic.
-				// StandardDialogue1: You want to know more information about Starfarers? Hmm, did you know all information pertaining to the Second Starfarer Ritual is incredibly rare? We know next to nothing about that time period.
-				// StandardDialogue2: I've heard of a location called the Champion's Causeway in the Second Region. It's said to contain a veritable endless font of riches for those worthy.
-				// StandardDialogue3: You want to know more information about Starfarers? They're a known phenomenon, but most of their impact is consigned to history books. Not many people would believe you if you said you voyaged with one.
+				// FirstDialogue: Salulations, friend. My collection magecraft has led me to you- I see you've found a celestial relic. If you are willing to part with some coin, a portion of my collection can be yours- or, I can also sell you the means to utilize it.
+				// StandardDialogue1: I think I'm going broke.
+				// StandardDialogue2: Looks like today's going to be bad luck. Or is it good luck? If only I had a better view.
+				// StandardDialogue3: You want to know more information about Starfarers? They're a known phenomenon, but most of their impact is consigned to history books. In fact, it's strange you ask.
 				// StandardDialogue4: Astrology extends far beyond star signs and constellations. To an extent, you must have ample magical knowledge and scientific expertise.
-				// StandardDialogue5: I collect and categorize celestial relics. You most likely are not interested in the majority of them, so I'll keep my shop focused on the selection I feel can assist you.
+				// StandardDialogue5: I collect and categorize celestial relics. You most likely are not interested in the majority of them...
+				// StandardDialogue6: Yes, things are expensive- that's just how it is. How am I to buy anything?
+				// BloodMoon: Hmm, a strange celestial body seems to be affecting our moon. Feeling worse for wear?
+				// Party: Yeah, right. I'm not going outside, but I will partake in the food.
+				// Graveyard: Where in the world is all this accursed fog coming from?
+				// StrangePotion: Strange Potion
+				// ThespianNotReadyCorruption: I have something you may be interested in, but you must prepare better. How about dealing with the issues in the Corruption first?
+				// ThespianNotReadyCrimson: I have something you may be interested in, but you must prepare better. How about dealing with the issues in the Crimson first?
+				// ThespianReady: Here's something you might take interest with: this potion has a magical trace I've never once encountered before- very powerful. I would take caution when consuming it.
 				// RareDialogue1: Haha, you say I resemble other members of my profession? Have you ever considered... they're also me?
 				// RareDialogue2: Have you guessed? Yes, I'm faekin- a faerie. No, I don't do magic tricks.
 				// AstralDialogue: I can sense the Astral Aspect upon you- if you were not aware, 'aspect' is a misnomer. In fact, being Astral aspected is more of a polarity. How you are aspected itself is a wonder... Is there something I can't see?
@@ -8625,6 +8633,11 @@ Mods: {
 					Using this weapon makes trumpet noises
 					''' */
 				// TooltipAttached: Using this weapon makes trumpet noises
+			}
+
+			MalsaineDraught: {
+				// DisplayName: Malsaine Draught
+				// Tooltip: ""
 			}
 		}
 
