@@ -8617,7 +8617,19 @@ Mods: {
 			}
 
 			MalsaineDraught: {
-				// DisplayName: Malsaine Draught
+				/* Tooltip:
+					'''
+					This concoction reeks with chaos
+					[c/F1AF42:Summons Thespian, the Act of Alchemy] (Night only)
+					This boss is available early, but you may find it much too difficult
+					Prepare accordingly, and consider postponing this fight until you are stronger
+					Is not consumed upon use
+					''' */
+				// DisplayName: The Malsaine Draught
+			}
+
+			OriginInfinity: {
+				// DisplayName: Origin Infinity
 				// Tooltip: ""
 			}
 		}

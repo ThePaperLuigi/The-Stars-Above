@@ -3934,7 +3934,6 @@ Mods: {
 			CarianDarkMoon: {
 				Tooltip:
 					'''
-					Attacks with this weapon will sweep in a wide arc
 					Critical strikes will inflict Frostburn for 3 seconds
 					Right click to consume 100 Mana, gaining the buff [c/92D7FF:Moonlit Greatblade] for 18 seconds after a short delay, during which the weapon is unusable
 					[c/92D7FF:Moonlit Greatblade] empowers this weapon with lunar energy, granting 10 extra damage and 12 armor penetration
@@ -5489,7 +5488,6 @@ Mods: {
 			KazimierzSeraphim: {
 				Tooltip:
 					'''
-					Attacks with this weapons swing in a wide arc
 					Holding this weapon will conjure a [c/FF8B00:Brilliant Spark] to orbit you, dealing contact damage
 					Striking foes with this weapon grants stacks of [c/F1AF42:Radiance] (Up to 10)
 					Critical strikes grant two stacks of [c/F1AF42:Radiance]
@@ -6761,7 +6759,6 @@ Mods: {
 			SakuraVengeance: {
 				Tooltip:
 					'''
-					Attacks with this weapon swing in a wide arc
 					Every 30 seconds, the weapon cycles through 4 [c/FF71D8:Elemental Arts]
 					[c/55B168:Earthsplitter] increases defense by 10 and grants 25% damage resistance
 					Attacks stun enemies for 1 second (Critical strikes stun enemies for 4 seconds and grant Invincibility briefly)
@@ -6909,7 +6906,6 @@ Mods: {
 					'''
 					[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes]
 					[c/F7D76A:Hold left click to charge the weapon; the longer the weapon is charged, the stronger the resulting attack will become]
-					Uncharged attacks with this weapon swing in a wide arc
 					Charged attacks will execute [c/8D0404:Guntrigger Execution], teleporting to your cursor (in range), granting Invincibility for 2 seconds, and slashing foes around you
 					When charging the weapon, movement is disabled
 					After use of [c/8D0404:Guntrigger Execution], you are inflicted with the debuff [c/B96B6B:Impact Recoil] for 12 seconds
@@ -8776,12 +8772,29 @@ Mods: {
 				Tooltip:
 					'''
 					This concoction reeks with chaos
-					[c/F1AF42:Summons Thespian, the Act of Alchemy]
+					[c/F1AF42:Summons Thespian, the Act of Alchemy] (Night only)
 					This boss is available early, but you may find it much too difficult
 					Prepare accordingly, and consider postponing this fight until you are stronger
 					Is not consumed upon use
 					'''
 				DisplayName: The Malsaine Draught
+			}
+
+			OriginInfinity: {
+				DisplayName: Origin's Infinity
+				Tooltip:
+					'''
+					Attacks with this weapon grant Stellar Nova Energy upon striking foes
+					Holding this weapon changes the active Stellar Nova to [Infinity Blade]
+					When [Infinity Blade] is activated, cleave a wide area in front of you with an incredibly powerful attack after a short delay
+					This attack ignores all forms of invincibility, permanently shreds foe defense by 30%, and deals true damage while granting [Unlimited Sword] for 20 seconds
+					[Unlimited Sword] drastically amplifies this weapon's abilities
+					Attacks while under the effect of [Unlimited Sword] ignore all defense and have a 3% chance to instantly defeat non-boss enemies
+					Additionally, this weapon inherits 15% of the Stellar Nova's damage and critical strike chance
+					Right click to unleash [Tachyon Slash], a powerful multi-hit attack which extends the duration of [Unlimited Sword] upon landing critical strikes (6 second cooldown)
+					Press the Weapon Action Key to prematurely end [Unlimited Sword], refunding Stellar Nova energy depending on the time remaining
+					'We will seize our destiny!'
+					'''
 			}
 		}
 
