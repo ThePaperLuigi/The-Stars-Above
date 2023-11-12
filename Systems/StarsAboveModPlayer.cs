@@ -1637,12 +1637,12 @@ namespace StarsAbove.Systems
                 if (!affixItem2.IsAir && affixItem3.ModItem != null)
                 {
                     StellarNovaUI._affixSlot2.Item = affixItem2;
-                    affix1 = affixItem2.Name;
+                    affix2 = affixItem2.Name;
                 }
                 if (!affixItem3.IsAir && affixItem3.ModItem != null)
                 {
                     StellarNovaUI._affixSlot3.Item = affixItem3;
-                    affix1 = affixItem3.Name;
+                    affix3 = affixItem3.Name;
                 }
             }
             else
