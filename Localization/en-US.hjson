@@ -8219,13 +8219,13 @@ Mods: {
 			Wavedancer: {
 				DisplayName: Wavedancer
 				Tooltip:
-					'''				
+					'''
 					Right click to summon this weapon to target and attack foes automatically, consuming no summon slots
 					When holding this weapon, holding left click while the weapon is summoned will allow for manual control of the weapon with your cursor
 					Additionally, damage is increased by 40%
 					Striking foes with the weapon inflicts [c/4A91FF:Riptide] for 2 seconds
 					When a minion strikes an enemy with [c/4A91FF:Riptide], they take 30% extra damage, removing [c/4A91FF:Riptide]
-					
+
 					'Bends the swiftness and power of an ocean storm to the protection of its owner'
 					'''
 			}
