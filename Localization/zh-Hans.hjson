@@ -8648,8 +8648,69 @@ Mods: {
 			}
 
 			OriginInfinity: {
-				// DisplayName: Origin Infinity
-				// Tooltip: ""
+				// DisplayName: Origin's Infinity
+				/* Tooltip:
+					'''
+					Attacks with this weapon grant Stellar Nova Energy upon striking foes
+					Holding this weapon changes the active Stellar Nova to [Infinity Blade]
+					When [Infinity Blade] is activated, cleave a wide area in front of you with an incredibly powerful attack after a short delay
+					This attack ignores all forms of invincibility, permanently shreds foe defense by 30%, and deals true damage while granting [Unlimited Sword] for 20 seconds
+					[Unlimited Sword] drastically amplifies this weapon's abilities
+					Attacks while under the effect of [Unlimited Sword] ignore all defense and have a 3% chance to instantly defeat non-boss enemies
+					Additionally, this weapon inherits 15% of the Stellar Nova's damage and critical strike chance
+					Right click to unleash [Tachyon Slash], a powerful multi-hit attack which extends the duration of [Unlimited Sword] upon landing critical strikes (6 second cooldown)
+					Press the Weapon Action Key to prematurely end [Unlimited Sword], refunding Stellar Nova energy depending on the time remaining
+					'We will seize our destiny!'
+					''' */
+			}
+
+			RebellionBloodArthur: {
+				// DisplayName: Clarent Rebellion
+				/* Tooltip:
+					'''
+					Attacks with this weapon cleave nearby foes and grants Rage for 8 seconds on hit
+					Holding this weapon amplifies the effects of Rage, Endurance, and Ironskin by 50%
+					Dealing or taking damage grants stacks of [Rebellion] (Rebellion is lost out of combat)
+					At certain thresholds of [Rebellion], manifest portions of the [Crimson Armor], gaining 5 defense per armor
+					Once [Rebellion] is at maximum and all portions of the [Crimson Armor] are equipped, increase defense gains further and gain access to [Clarent Blood Arthur]
+					Additionally, attacks will now burst into red lightning when striking foes, dealing bonus damage based on current defense
+					[Clarent Blood Arthur] deals 2x damage in a colossal radius in front of you and is a guaranteed critical strike against bosses (1 minute cooldown)
+					Gaining [Rebellion] after all portions of the [Crimson Armor] are manifested will instead empower [Clarent Blood Arthur] up to 3x
+					''' */
+			}
+
+			SoliloquyOfSovereignSeas: {
+				// DisplayName: Soliloquy Of Sovereign Seas
+				/* Tooltip:
+					'''
+					[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from both Magic and Summon damage]
+					[c/F7D76A:Hold left click to charge the weapon; if the weapon is fully charged, the attack varies]
+					Press the Weapon Action Key to swap between [Pneuma] and [Ousia], changing this weapon's abilities
+					While attuned to [Pneuma], attacks burst on your cursor, dealing damage in a small area while inflicting [c/4A91FF:Riptide] for 3 seconds
+					When a minion strikes an enemy with [c/4A91FF:Riptide], they take 30% extra damage, removing [c/4A91FF:Riptide]
+					Every third attack deals bonus damage based on Max HP (up to 2x base damage) and additionally conjures a [Sourcewater Droplet] if it strikes a foe
+					Charged attacks fire a powerful beam for 2 seconds that deal bonus damage based on Max HP (up to 2x base damage)
+					Collecting [Sourcewater Droplets] will hasten the charge
+					While attuned to [Ousia], left click to summon 3 [Salon Attendants], consuming 1 minion slot (10 second cooldown)
+					Only one group of [Salon Attendants] can be summoned at a time
+					Attacks with this weapon become close-ranged strikes that inflict [c/4A91FF:Riptide] for 3 seconds and charged attacks are disabled
+					The [Salon Attendants] automatically attack nearby foes with homing bolts and have a 5% chance upon dealing damage to spawn a Mana Star
+					Additionally, striking foes has a 1% chance to drop a Heart, increased up to 5% based on Max HP
+					[Salon Attendants] will disappear if this weapon is swapped to [Pneuma]
+					'The tides beckon; the show begins'
+					''' */
+			}
+
+			DevotedHavoc: {
+				// DisplayName: Devoted Havoc
+				/* Tooltip:
+					'''
+					This weapon has a delay before firing, but fires faster over time
+					Press the Weapon Action Key to swap ordinance between the [Energy Star] and the [Ignition Flare]
+					Right click to throw the selected ordinance (12 second cooldown)
+					The [Energy Star] sticks to foes and explodes after a short delay, stunning all nearby non-boss foes for 1 second
+					The [Ignition Flare] creates a damaging field of fire on impact that lasts for 4 seconds
+					''' */
 			}
 		}
 
@@ -9561,6 +9622,14 @@ Mods: {
 			// LightUnrelentingSword.DisplayName: Light Unrelenting Sword
 			// ArchitectSword.DisplayName: Architect Sword
 			// KazimierzSeraphimSword.DisplayName: Kazimierz Seraphim Sword
+			// OriginInfinitySword.DisplayName: Origin Infinity Sword
+			// OriginInfinitySwordUnsheathed.DisplayName: Origin Infinity Sword Unsheathed
+			// SoliloquyCrabSummon.DisplayName: Soliloquy Crab Summon
+			// SoliloquyJellySummon.DisplayName: Soliloquy Jelly Summon
+			// SoliloquySeahorseSummon.DisplayName: Soliloquy Seahorse Summon
+			// SoliloquySummonProjectile.DisplayName: Soliloquy Summon Projectile
+			// RebellionSword.DisplayName: Rebellion Sword
+			// SoliloquySword.DisplayName: Soliloquy Sword
 		}
 
 		Buffs: {
@@ -11971,7 +12040,12 @@ Mods: {
 
 			GuppyHeadCooldown: {
 				// DisplayName: Guppy Head Cooldown
-				// Description: Mods.StarsAbove.Buffs.GuppyHeadCooldown.Description
+				// Description: ""
+			}
+
+			SoliloquyMinionBuff: {
+				// DisplayName: Salon Attendants
+				// Description: The salon attendants muse to your whims
 			}
 		}
 
@@ -12090,13 +12164,14 @@ Mods: {
 			GadgetDamageClass.DisplayName: 小工具强度
 			IncarnationDamageClass.DisplayName: 化身损伤
 			PsychomentDamageClass.DisplayName: 心理损伤
+			// ArkheDamageClass.DisplayName: arkhe damage
 		}
 
 		Keybinds: {
 			"Stellar Nova.DisplayName": 天体新星
 			"Weapon Action.DisplayName": 武器技能
-			// "Show Memory Info.DisplayName": Show  Memory  Info
-			// "Weapon Memory Action.DisplayName": Weapon  Memory  Action
+			// "Show Memory Info.DisplayName": Show Memory Info
+			// "Weapon Memory Action.DisplayName": Weapon Memory Action
 		}
 
 		Prefixes: {

@@ -36,6 +36,9 @@ namespace StarsAbove.Projectiles.Celestial.BuryTheLight
             Projectile.tileCollide = false;
             DrawOriginOffsetY = -200;
             DrawOffsetX = 48;
+
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = -1;
         }
 
         // In here the AI uses this example, to make the code more organized and readable

@@ -69,6 +69,59 @@ namespace StarsAbove.Items.Weapons.Summon
         }
         public override void HoldItem(Player player)
         {
+            if (NPC.downedSlimeKing)
+            {
+                Item.damage = 15;
+            }
+            if (NPC.downedBoss1)
+            {
+                Item.damage = 16;
+            }
+            if (NPC.downedBoss2)
+            {
+                Item.damage = 17;
+            }
+            if (NPC.downedQueenBee)
+            {
+                Item.damage = 18;
+            }
+            if (NPC.downedBoss3)
+            {
+                Item.damage = 29;
+            }
+            if (Main.hardMode)
+            {
+                Item.damage = 32;
+            }
+            if (NPC.downedMechBossAny)
+            {
+                Item.damage = 40;
+            }
+            if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
+            {
+                Item.damage = 50;
+            }
+            if (NPC.downedPlantBoss)
+            {
+                Item.damage = 70;
+            }
+            if (NPC.downedGolemBoss)
+            {
+                Item.damage = 80;
+            }
+            if (NPC.downedFishron)
+            {
+                Item.damage = 90;
+            }
+            if (NPC.downedAncientCultist)
+            {
+                Item.damage = 111;
+            }
+            if (NPC.downedMoonlord)
+            {
+                Item.damage = 151;
+            }
+
             player.GetModPlayer<WeaponPlayer>().DragaliaFoundHeld = true;
             player.AddBuff(BuffType<TempestDragonlightBuff>(), 10);
             attackComboCooldown--;

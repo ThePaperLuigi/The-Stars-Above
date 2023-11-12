@@ -9,12 +9,11 @@ using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
-using StarsAbove.Projectiles.Celestial.OriginInfinity;
+using StarsAbove.Projectiles.Melee.RebellionBloodArthur;
 
-namespace StarsAbove.Items.Weapons.Celestial
+namespace StarsAbove.Items.Weapons.Melee
 {
-    public class OriginInfinity : ModItem
+    public class RebellionBloodArthur : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -24,12 +23,12 @@ namespace StarsAbove.Items.Weapons.Celestial
 
 		public override void SetDefaults()
 		{
-			Item.damage = 99;           //The damage of your weapon
-			Item.DamageType = ModContent.GetInstance<Systems.CelestialDamageClass>();
+			Item.damage = 119;           //The damage of your weapon
+			Item.DamageType = DamageClass.Melee;          //Is your weapon a melee weapon?
 			Item.width = 96;            //Weapon's texture's width
 			Item.height = 96;           //Weapon's texture's height
-			Item.useTime = 35;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
-			Item.useAnimation = 35;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
+			Item.useTime = 25;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
+			Item.useAnimation = 25;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
 			Item.useStyle = ItemUseStyleID.HiddenAnimation;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
 			Item.knockBack = 12;         //The force of knockback of the weapon. Maximum is 20
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
@@ -38,7 +37,6 @@ namespace StarsAbove.Items.Weapons.Celestial
 			Item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
 			Item.shoot = 10;
-			Item.crit = 26;
 			Item.noMelee = true;
 			Item.noUseGraphic = true;
 			Item.autoReuse = true;
@@ -53,35 +51,15 @@ namespace StarsAbove.Items.Weapons.Celestial
 		{
 			if (player.altFunctionUse == 2)
 			{
-				if (player.GetModPlayer<WeaponPlayer>().radiance >= 5)
-				{
-					
-				}
-				else
-				{
-					return false;
-				}
+				
 
 			}
 			
 			return base.CanUseItem(player);
 		}
-
-		public override void MeleeEffects(Player player, Rectangle hitbox)
-		{
-			if (Main.rand.NextBool(3))
-			{
-				//Emit dusts when swing the sword
-				
-					Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 269);
-				
-				
-				
-			}
-		}
 		public override void HoldItem(Player player)
 		{
-			
+			player.GetModPlayer<WeaponPlayer>().RebellionHeld = true;
 			base.HoldItem(player);
 		}
 		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
@@ -96,12 +74,12 @@ namespace StarsAbove.Items.Weapons.Celestial
 		{
 			if (altSwing)
 			{
-				Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<OriginInfinitySword>(), damage, knockback, player.whoAmI, 0, 0, player.direction);
+				Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<RebellionSword>(), damage, knockback, player.whoAmI, 0, 0, player.direction);
 				altSwing = false;
 			}
 			else
 			{
-				Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<OriginInfinitySword>(), damage, knockback, player.whoAmI, 0, 1, player.direction);
+				Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<RebellionSword>(), damage, knockback, player.whoAmI, 0, 1, player.direction);
 				altSwing = true;
 			}
 
@@ -110,7 +88,14 @@ namespace StarsAbove.Items.Weapons.Celestial
 
 		public override void AddRecipes()
 		{
-			
+			CreateRecipe(1)
+				.AddIngredient(ItemID.LifeFruit, 3)
+				.AddIngredient(ItemID.BrokenHeroSword, 1)
+				.AddIngredient(ItemID.SoulofLight, 12)
+				.AddIngredient(ItemID.EyeoftheGolem, 1)
+				.AddIngredient(ItemType<EssenceOfRadiance>())
+				.AddTile(TileID.Anvils)
+				.Register();
 		}
 	}
 }

@@ -246,6 +246,7 @@ namespace StarsAbove.Items.Weapons.Celestial
 			else
 			{
 				Vector2 perturbedSpeed = new Vector2(velocity.X/100, velocity.Y/100).RotatedByRandom(MathHelper.ToRadians(35));
+				Projectile.NewProjectile(source, Main.MouseWorld.X, Main.MouseWorld.Y, perturbedSpeed.X, perturbedSpeed.Y, ProjectileType<BuryTheLightSlash>(), damage/2, knockback, player.whoAmI);
 
 				if (Main.rand.NextBool())
                 {

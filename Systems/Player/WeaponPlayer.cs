@@ -234,6 +234,11 @@ namespace StarsAbove.Systems
         public int kroniicSavedMP;
         public int kroniicTimer;
 
+        public bool RebellionHeld;
+        public int rebellionGauge;
+        public float rebellionGaugeMaxBuff;//After reaching max Rebellion, this empowers the next Clarent Blood Arthur cast.
+        public Vector2 rebellionTarget;
+
         //Hawkmoon Code
         public bool hawkmoonPerfectReload = false;
         public float hawkmoonReloadTimer = 0;
@@ -293,6 +298,9 @@ namespace StarsAbove.Systems
         public int takodachiGauge = 0;
         public Vector2 takoMinionTarget;
         public Vector2 takoTarget;
+
+        //SoliloquyOfSovereignSeas
+        public bool SoliloquyMinions = false;
 
         //Sunset of the Sun God
         public Vector2 karnaTarget;
@@ -3247,7 +3255,10 @@ namespace StarsAbove.Systems
                     PerformanceResourceCurrent -= info.Damage;
                 }
             }
-
+            if(RebellionHeld)
+            {
+                rebellionGauge++;
+            }
             if (DraggedBelowHeld)
             {
                 DraggedBelowCorruption++;
@@ -3648,6 +3659,11 @@ namespace StarsAbove.Systems
             {
                 DragonshiftGauge = 0;
             }
+            if(!RebellionHeld)
+            {
+                rebellionGauge = 0;
+            }
+            RebellionHeld = false;
             DragaliaFoundHeld = false;
             DraggedBelowHeld = false;
             KevesiFarewellInInventory = false;
@@ -3686,6 +3702,7 @@ namespace StarsAbove.Systems
             AlucardSwordMinion2 = false;
             AlucardSwordMinion3 = false;
             TakodachiMinion = false;
+            SoliloquyMinions = false;
             FleetingSparkMinion = false;
             YoumuMinion = false;
             Kifrosse1 = false;
@@ -3780,6 +3797,19 @@ namespace StarsAbove.Systems
                 if (ChemtankHeld)
                 {
                     Player.legs = EquipLoader.GetEquipSlot(Mod, "UrgotLegs", EquipType.Legs);
+
+                }
+                if(rebellionGauge >= 5)
+                {
+                    Player.legs = EquipLoader.GetEquipSlot(Mod, "RebellionLegs", EquipType.Legs);
+                }
+                if(rebellionGauge >= 10)
+                {
+                    Player.body = EquipLoader.GetEquipSlot(Mod, "RebellionBody", EquipType.Body);
+                }
+                if (rebellionGauge >= 15)
+                {
+                    Player.head = EquipLoader.GetEquipSlot(Mod, "RebellionHead", EquipType.Head);
 
                 }
                 if (DraggedBelowHeld)
