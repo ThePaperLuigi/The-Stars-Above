@@ -23,7 +23,7 @@ using StarsAbove.Systems;
 namespace StarsAbove.NPCs
 {
     [AutoloadBossHead]
-    public class Penthesilea : ModNPC
+    public class PenthesileaOld : ModNPC
     {
         public static readonly int arenaWidth = (int)(1.2f * 2000);
         public static readonly int arenaHeight = (int)(1.2f * 1000);

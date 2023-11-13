@@ -19,7 +19,7 @@ using StarsAbove.Systems;
 namespace StarsAbove.NPCs
 {
     [AutoloadBossHead]
-    public class Arbitration : ModNPC
+    public class ArbitrationOld : ModNPC
     {
         public override void SetStaticDefaults()
         {

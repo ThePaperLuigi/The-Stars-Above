@@ -14,6 +14,8 @@ namespace StarsAbove.Systems
         public static bool downedNalhaun = false;
         public static bool downedTsuki = false;
         public static bool downedDioskouroi = false;
+        public static bool downedThespian = false;
+        public static bool downedStarfarers = false;
 
         public override void OnWorldLoad()
         {
@@ -24,7 +26,8 @@ namespace StarsAbove.Systems
             downedNalhaun = false;
             downedTsuki = false;
             downedDioskouroi = false;
-
+            downedThespian = false;
+            downedStarfarers = false;
         }
 
         public override void OnWorldUnload()
@@ -36,6 +39,8 @@ namespace StarsAbove.Systems
             downedNalhaun = false;
             downedTsuki = false;
             downedDioskouroi = false;
+            downedThespian = false;
+            downedStarfarers = false;
         }
         public override void SaveWorldData(TagCompound tag)
         {
@@ -67,6 +72,14 @@ namespace StarsAbove.Systems
             {
                 tag["downedDioskouroi"] = true;
             }
+            if (downedThespian)
+            {
+                tag["downedThespian"] = true;
+            }
+            if (downedStarfarers)
+            {
+                tag["downedStarfarers"] = true;
+            }
             // if (downedOtherBoss) {
             //	tag["downedOtherBoss"] = true;
             // }
@@ -81,6 +94,9 @@ namespace StarsAbove.Systems
             downedArbiter = tag.ContainsKey("downedArbiter");
             downedTsuki = tag.ContainsKey("downedTsuki");
             downedDioskouroi = tag.ContainsKey("downedDioskouroi");
+            downedThespian = tag.ContainsKey("downedThespian");
+            downedStarfarers = tag.ContainsKey("downedStarfarers");
+
         }
 
         public override void NetSend(BinaryWriter writer)
@@ -94,6 +110,8 @@ namespace StarsAbove.Systems
             flags[4] = downedArbiter;
             flags[5] = downedTsuki;
             flags[6] = downedDioskouroi;
+            flags[7] = downedThespian;
+            flags[8] = downedStarfarers;
 
             writer.Write(flags);
 
@@ -110,6 +128,8 @@ namespace StarsAbove.Systems
             downedArbiter = flags[4];
             downedTsuki = flags[5];
             downedDioskouroi = flags[6];
+            downedThespian = flags[7];
+            downedStarfarers = flags[8];
         }
     }
 }

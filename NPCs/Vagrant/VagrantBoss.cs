@@ -8,6 +8,7 @@ using StarsAbove.Systems;
 using StarsAbove.Systems;
 using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
@@ -86,7 +87,7 @@ namespace StarsAbove.NPCs.Vagrant
 			// Automatically group with other bosses
 			NPCID.Sets.BossBestiaryPriority.Add(Type);
 
-			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers()
 			{ // Influences how the NPC looks in the Bestiary
 				CustomTexturePath = "StarsAbove/Bestiary/PerseusPortrait", // If the NPC is multiple parts like a worm, a custom texture for the Bestiary is encouraged.
 				Position = new Vector2(142f, 74f),
@@ -131,7 +132,7 @@ namespace StarsAbove.NPCs.Vagrant
 
 			NPC.value = Item.buyPrice(0, 1, 75, 45);
 			
-			Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/CosmicWill");
+			Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Boss/Vagrant/ChartTheCosmos");
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
 			NPC.netAlways = true;
 		}
@@ -622,6 +623,11 @@ namespace StarsAbove.NPCs.Vagrant
 			NPC.SetEventFlagCleared(ref DownedBossSystem.downedVagrant, -1);
 
 		}
+		public SoundStyle Music_ChartTheCosmosIntro = new($"{nameof(StarsAbove)}/Sounds/Music/Boss/Vagrant/ChartTheCosmosIntro")
+		{
+			Volume = Main.musicVolume - 0.2f,
+		};
+		ActiveSound introActive;
 		private void SpawnAnimation()
 		{
 			//This will play the "superman landing" animation, knock back all players, and begin the fight. Note that unlike the old Vagrant this one can be hit.
@@ -639,7 +645,18 @@ namespace StarsAbove.NPCs.Vagrant
 				}
 			}
 
+			var sound = SoundEngine.PlaySound(Music_ChartTheCosmosIntro);
+			if(SoundEngine.TryGetActiveSound(sound,out introActive))
+            {
+				Main.musicFade[MusicLoader.GetMusicSlot("StarsAbove/Sounds/Music/Boss/Vagrant/ChartTheCosmos")] = 0f;
 
+			}
+			else
+            {
+				
+
+			}
+			Main.musicFade[MusicLoader.GetMusicSlot("StarsAbove/Sounds/Music/Boss/Vagrant/ChartTheCosmos")] = 1f;
 			NPC.position.X = Main.player[NPC.target].position.X;
 			NPC.position.Y = Main.player[NPC.target].position.Y-160;
 			NPC.netUpdate = true;

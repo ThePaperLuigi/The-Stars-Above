@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.Audio;
 using Terraria.ModLoader;
 

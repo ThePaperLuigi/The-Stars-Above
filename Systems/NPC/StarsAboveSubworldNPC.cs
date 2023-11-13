@@ -97,9 +97,9 @@ namespace StarsAbove.Systems
 
                 if (spawnInfo.Player.GetModPlayer<SubworldPlayer>().anomalyTimer >= 7200)
                 {
-                    if (!NPC.AnyNPCs(NPCType<NPCs.Arbitration>()))
+                    if (!NPC.AnyNPCs(NPCType<NPCs.Arbitration.ArbitrationBoss>()))
                     {
-                        pool.Add(NPCType<NPCs.Arbitration>(), 0.5f);
+                        pool.Add(NPCType<NPCs.Arbitration.ArbitrationBoss>(), 0.5f);
 
                     }
 

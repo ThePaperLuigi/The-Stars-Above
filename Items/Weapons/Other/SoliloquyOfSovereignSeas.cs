@@ -47,8 +47,16 @@ namespace StarsAbove.Items.Weapons.Other
 			Item.noUseGraphic = true;
 		}
 		int curse = 0;
+        public override bool AltFunctionUse(Player player)
+        {
+			if (player.ownedProjectileCounts[ProjectileType<SoliloquyJellySummon>()] <= 0)
+			{
+				return true;
+			}
 
-		public override bool CanUseItem(Player player)
+			return base.AltFunctionUse(player);
+        }
+        public override bool CanUseItem(Player player)
 		{
 			
 			return base.CanUseItem(player);
@@ -61,16 +69,19 @@ namespace StarsAbove.Items.Weapons.Other
 		bool altSwing;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
+			if(player.altFunctionUse == 2)
+            {
+				player.AddBuff(BuffType<SoliloquyMinionBuff>(), 2);
+				if (player.ownedProjectileCounts[ProjectileType<SoliloquyJellySummon>()] <= 0)
+				{
+					player.SpawnMinionOnCursor(source, player.whoAmI, ProjectileType<SoliloquyJellySummon>(), damage, knockback);
 
-			
-			player.AddBuff(BuffType<SoliloquyMinionBuff>(), 2);
-            if (player.ownedProjectileCounts[ProjectileType<SoliloquyJellySummon>()] <= 0)
-			{
-				player.SpawnMinionOnCursor(source, player.whoAmI, ProjectileType<SoliloquyJellySummon>(), damage, knockback);
-
-				player.SpawnMinionOnCursor(source, player.whoAmI, ProjectileType<SoliloquyCrabSummon>(), damage, knockback);
-				player.SpawnMinionOnCursor(source, player.whoAmI, ProjectileType<SoliloquySeahorseSummon>(), damage, knockback);
+					player.SpawnMinionOnCursor(source, player.whoAmI, ProjectileType<SoliloquyCrabSummon>(), damage, knockback);
+					player.SpawnMinionOnCursor(source, player.whoAmI, ProjectileType<SoliloquySeahorseSummon>(), damage, knockback);
+				}
 			}
+			
+			
 			if (altSwing)
 			{
 				Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<SoliloquySword>(), damage, knockback, player.whoAmI, 0, 0, player.direction);

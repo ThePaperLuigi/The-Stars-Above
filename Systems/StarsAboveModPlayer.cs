@@ -10,7 +10,9 @@ using StarsAbove.Items.Armor.StarfarerArmor;
 using StarsAbove.Items.Consumables;
 using StarsAbove.Items.Prisms;
 using StarsAbove.NPCs;
+using StarsAbove.NPCs.Arbitration;
 using StarsAbove.NPCs.Nalhaun;
+using StarsAbove.NPCs.Penthesilea;
 using StarsAbove.NPCs.Tsukiyomi;
 using StarsAbove.NPCs.WarriorOfLight;
 using StarsAbove.Projectiles.StellarArray;
@@ -1778,7 +1780,6 @@ namespace StarsAbove.Systems
                 {
                     //damage += target.lifeMax;
                     SoundEngine.PlaySound(StarsAboveAudio.SFX_electroSmack, Player.Center);
-
                     Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center.X, target.Center.Y, 0, 0, Mod.Find<ModProjectile>("FlashFreezeExplosion").Type, damageDone / 4, 0, Player.whoAmI, 0f);
                     flashFreezeCooldown = 480;
 
@@ -2030,12 +2031,12 @@ namespace StarsAbove.Systems
 
             //Will be replaced when these bosses get their new AI.
 
-            if (target.type == NPCType<Arbitration>())
+            if (target.type == NPCType<ArbitrationBoss>())
             {
                 inArbiterFightTimer = 1200;
 
             }
-            if (target.type == NPCType<Penthesilea>())
+            if (target.type == NPCType<PenthesileaBoss>())
             {
                 inPenthFightTimer = 1200;
 
@@ -7087,7 +7088,7 @@ namespace StarsAbove.Systems
                 starfarerPromptActive("onNalhaun");
                 seenUnknownBossTimer = 300;
             }
-            if (NPC.AnyNPCs(NPCType<Penthesilea>()) && !seenPenth)
+            if (NPC.AnyNPCs(NPCType<PenthesileaBoss>()) && !seenPenth)
             {
                 if (starfarerPromptCooldown > 0)
                 {
@@ -7096,7 +7097,7 @@ namespace StarsAbove.Systems
                 starfarerPromptActive("onPenth");
                 seenUnknownBossTimer = 300;
             }
-            if (NPC.AnyNPCs(NPCType<Arbitration>()) && !seenArbiter)
+            if (NPC.AnyNPCs(NPCType<ArbitrationBoss>()) && !seenArbiter)
             {
                 if (starfarerPromptCooldown > 0)
                 {
@@ -7192,8 +7193,8 @@ namespace StarsAbove.Systems
         {
             if (inPenthFightTimer > 0 && Player.immuneTime <= 0)
             {
-                int halfWidth = Penthesilea.arenaWidth / 2;
-                int halfHeight = Penthesilea.arenaHeight / 2;
+                int halfWidth = PenthesileaBoss.arenaWidth / 2;
+                int halfHeight = PenthesileaBoss.arenaHeight / 2;
                 Vector2 newPosition = Player.position;
                 if (Player.position.X <= npc.Center.X - halfWidth)
                 {
@@ -8044,7 +8045,7 @@ namespace StarsAbove.Systems
             for (int k = 0; k < 200; k++)
             {
                 NPC npc = Main.npc[k];
-                if (npc.active && npc.type == NPCType<Penthesilea>())
+                if (npc.active && npc.type == NPCType<PenthesileaBoss>())
                 {
 
                     PenthTeleport(npc);

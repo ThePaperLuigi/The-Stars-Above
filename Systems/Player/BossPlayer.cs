@@ -32,6 +32,8 @@ using StarsAbove.Projectiles.Bosses;
 using StarsAbove.NPCs.WarriorOfLight;
 using StarsAbove.Buffs.Boss;
 using StarsAbove.Utilities;
+using StarsAbove.NPCs.Penthesilea;
+using StarsAbove.NPCs.Arbitration;
 
 namespace StarsAbove.Systems
 {
@@ -201,7 +203,7 @@ namespace StarsAbove.Systems
             if (NPC.AnyNPCs(NPCType<VagrantBoss>())
                 || NPC.AnyNPCs(NPCType<PolluxBoss>())
                 || NPC.AnyNPCs(NPCType<CastorBoss>())
-                || NPC.AnyNPCs(NPCType<Penthesilea>())
+                || NPC.AnyNPCs(NPCType<PenthesileaBoss>())
                 || NPC.AnyNPCs(NPCType<NalhaunBoss>())
                 || NPC.AnyNPCs(NPCType<NalhaunBossPhase2>())
                 || NPC.AnyNPCs(NPCType<WarriorOfLightBossFinalPhase>())
@@ -396,7 +398,7 @@ namespace StarsAbove.Systems
                     bossReductionMod = 1000;
 
                 }
-                if (npc.type == NPCType<Penthesilea>())
+                if (npc.type == NPCType<PenthesileaBoss>())
                 {
                     bossReductionMod = 1100;
 
@@ -411,7 +413,7 @@ namespace StarsAbove.Systems
                     bossReductionMod = 1000;
 
                 }
-                if (npc.type == NPCType<Arbitration>())
+                if (npc.type == NPCType<ArbitrationBoss>())
                 {
                     bossReductionMod = 500;
 

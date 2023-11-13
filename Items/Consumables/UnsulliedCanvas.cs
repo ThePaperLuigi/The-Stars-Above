@@ -39,7 +39,7 @@ namespace StarsAbove.Items.Consumables
 		// We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
 		public override bool CanUseItem(Player player) {
 
-			return !NPC.AnyNPCs(NPCType<NPCs.Penthesilea>()) && SubworldSystem.Current == null;
+			return !NPC.AnyNPCs(NPCType<NPCs.Penthesilea.PenthesileaBoss>()) && SubworldSystem.Current == null;
 		}
 
 		public override bool? UseItem(Player player) {
@@ -49,7 +49,7 @@ namespace StarsAbove.Items.Consumables
 				// (explicitely excluded serverside here)
 
 
-				int type = ModContent.NPCType<NPCs.Penthesilea>();
+				int type = ModContent.NPCType<NPCs.Penthesilea.PenthesileaBoss>();
 
 				if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("Magical energy coalesces around you..."), 210, 100, 175);}
 				if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("Penthesilea, The Witch of Ink draws near!"), 200, 150, 125);}
@@ -67,7 +67,7 @@ namespace StarsAbove.Items.Consumables
 			}
 
 			
-			//NPC.NewNPC(null, (int)player.Center.X,(int)player.Center.Y-900, NPCType<NPCs.Penthesilea>());
+			//NPC.NewNPC(null, (int)player.Center.X,(int)player.Center.Y-900, NPCType<NPCs.Penthesilea.PenthesileaBoss>());
 			//Main.PlaySound(SoundID.Roar, player.position, 0);
 			return true;
 		}

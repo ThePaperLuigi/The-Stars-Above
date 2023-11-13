@@ -31,6 +31,8 @@ using Terraria.IO;
 using StarsAbove.UI.Starfarers;
 using System.IO;
 using SubworldLibrary;
+using StarsAbove.NPCs.Arbitration;
+using StarsAbove.NPCs.Penthesilea;
 
 namespace StarsAbove
 {
@@ -308,10 +310,10 @@ namespace StarsAbove
 				bossChecklist.Call(
 					"LogBoss",
 					this,
-					nameof(Penthesilea),
+					nameof(PenthesileaBoss),
 					13.5f,
 					() => DownedBossSystem.downedPenth,
-					ModContent.NPCType<Penthesilea>(),
+					ModContent.NPCType<PenthesileaBoss>(),
 					new Dictionary<string, object>()
 					{
 						["spawnItems"] = ModContent.ItemType<Items.Consumables.UnsulliedCanvas>(),
@@ -340,10 +342,10 @@ namespace StarsAbove
 				bossChecklist.Call(
 					"LogBoss",
 					this,
-					nameof(Arbitration),
+					nameof(ArbitrationBoss),
 					15.1f,
 					() => DownedBossSystem.downedArbiter,
-					ModContent.NPCType<Arbitration>(),
+					ModContent.NPCType<ArbitrationBoss>(),
 					new Dictionary<string, object>()
 					{
 

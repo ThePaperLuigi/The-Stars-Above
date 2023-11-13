@@ -10,6 +10,7 @@ using StarsAbove.Items.Materials;
 using StarsAbove.Items.Prisms;
 using Terraria.GameContent.ItemDropRules;
 using StarsAbove.Items.Loot;
+using StarsAbove.NPCs.Penthesilea;
 
 namespace StarsAbove.Items.BossBags
 {
@@ -17,7 +18,7 @@ namespace StarsAbove.Items.BossBags
 	public class PenthBossBag : ModItem
 	{
 		// Sets the associated NPC this treasure bag is dropped from
-		//public override int BossBagNPC => ModContent.NPCType<Penthesilea>();
+		//public override int BossBagNPC => ModContent.NPCType<PenthesileaBoss>();
 
 		public override void SetStaticDefaults()
 		{
@@ -52,7 +53,7 @@ namespace StarsAbove.Items.BossBags
 			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<PaintedPrism>(), 4, 1, 1));
 			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<FaerieVoyagerAttirePrecursor>(), 4, 1, 1));
 
-			itemLoot.Add(ItemDropRule.CoinsBasedOnNPCValue(ModContent.NPCType<Penthesilea>()));
+			itemLoot.Add(ItemDropRule.CoinsBasedOnNPCValue(ModContent.NPCType<PenthesileaBoss>()));
 		}
 		
 		// Below is code for the visuals

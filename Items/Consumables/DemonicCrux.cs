@@ -40,7 +40,7 @@ namespace StarsAbove.Items.Consumables
 		// We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
 		public override bool CanUseItem(Player player) {
 
-			return !NPC.AnyNPCs(NPCType<NPCs.Arbitration>()) && SubworldSystem.Current == null;
+			return !NPC.AnyNPCs(NPCType<NPCs.Arbitration.ArbitrationBoss>()) && SubworldSystem.Current == null;
 		}
 
 		public override bool? UseItem(Player player) {
@@ -50,7 +50,7 @@ namespace StarsAbove.Items.Consumables
 				// (explicitely excluded serverside here)
 
 
-				int type = ModContent.NPCType<NPCs.Arbitration>();
+				int type = ModContent.NPCType<NPCs.Arbitration.ArbitrationBoss>();
 
 				if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("The world shudders in anticipation..."), 210, 100, 175);}
 				if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("Arbitration descends!"), 200, 150, 125);}
@@ -67,7 +67,7 @@ namespace StarsAbove.Items.Consumables
 				}
 			}
 			
-			//NPC.NewNPC(null, (int)player.Center.X,(int)player.Center.Y-900, NPCType<NPCs.Arbitration>());
+			//NPC.NewNPC(null, (int)player.Center.X,(int)player.Center.Y-900, NPCType<NPCs.Arbitration.ArbitrationBoss>());
 			//Main.PlaySound(SoundID.Roar, player.position, 0);
 			return true;
 		}

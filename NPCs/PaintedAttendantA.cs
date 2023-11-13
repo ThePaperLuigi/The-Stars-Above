@@ -47,7 +47,7 @@ namespace StarsAbove.NPCs
 		public override void AI()
 		{
 			//NPC.spriteDirection = NPC.direction;
-			if (!NPC.AnyNPCs(ModContent.NPCType<NPCs.Penthesilea>()))
+			if (!NPC.AnyNPCs(ModContent.NPCType<NPCs.Penthesilea.PenthesileaBoss>()))
 			{
 				NPC.HitEffect();
 				NPC.life = 0;

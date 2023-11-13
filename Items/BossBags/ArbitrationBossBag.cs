@@ -10,6 +10,7 @@ using StarsAbove.Items.Prisms;
 using Terraria.GameContent.ItemDropRules;
 using StarsAbove.Items.Materials;
 using StarsAbove.Items.Loot;
+using StarsAbove.NPCs.Arbitration;
 
 namespace StarsAbove.Items.BossBags
 {
@@ -17,7 +18,7 @@ namespace StarsAbove.Items.BossBags
     public class ArbitrationBossBag : ModItem
 	{
 		// Sets the associated NPC this treasure bag is dropped from
-		//public override int BossBagNPC => ModContent.NPCType<Arbitration>();
+		//public override int BossBagNPC => ModContent.NPCType<ArbitrationBoss>();
 
 		public override void SetStaticDefaults()
 		{
@@ -54,7 +55,7 @@ namespace StarsAbove.Items.BossBags
 
 			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Essences.EssenceOfBloodshed>(), 2, 1, 1)).OnFailedRoll(ItemDropRule.Common(ModContent.ItemType<Essences.EssenceOfMimicry>(), 1, 1, 1));
 
-			itemLoot.Add(ItemDropRule.CoinsBasedOnNPCValue(ModContent.NPCType<Arbitration>()));
+			itemLoot.Add(ItemDropRule.CoinsBasedOnNPCValue(ModContent.NPCType<ArbitrationBoss>()));
 		}
 		
 

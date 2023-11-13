@@ -3443,6 +3443,7 @@ Mods: {
 			WarriorOfLightOld.DisplayName: ""
 			WarriorOfLightBossFinalPhase.DisplayName: The Warrior Of Light
 			GardenOfAvalonNPC.DisplayName: Garden Of Avalon
+			ThespianBoss.DisplayName: Thespian Boss
 		}
 
 		Tiles: {
@@ -7661,7 +7662,7 @@ Mods: {
 					A mystical dias formed by the Celestriad Root
 					Allows for the traversal of the cosmos through use of [c/F1AFFF:Celestial Cartography] in the [c/EC356F:Starfarer Menu] once placed
 					Must stay in proximity to the Stellaglyph for travel
-					Can be upgraded to Tier 2 through crafting
+					Can be upgraded to Tier 3 through crafting
 					Can be enhanced by placing [c/FF1B8D:Stellar Foci] nearby to grant buffs during Cosmic Voyages
 					Able to sustain 8 [c/FF1B8D:Stellar Foci]
 					'''
@@ -8784,6 +8785,7 @@ Mods: {
 				DisplayName: Origin's Infinity
 				Tooltip:
 					'''
+					[c/F56BC9:This weapon modifies your active Stellar Nova]
 					Attacks with this weapon grant Stellar Nova Energy upon striking foes
 					Holding this weapon changes the active Stellar Nova to [Infinity Blade]
 					When [Infinity Blade] is activated, cleave a wide area in front of you with an incredibly powerful attack after a short delay
@@ -8805,7 +8807,7 @@ Mods: {
 					Holding this weapon amplifies the effects of Rage, Endurance, and Ironskin by 50%
 					Dealing or taking damage grants stacks of [Rebellion] (Rebellion is lost out of combat)
 					At certain thresholds of [Rebellion], manifest portions of the [Crimson Armor], gaining 5 defense per armor
-					Once [Rebellion] is at maximum and all portions of the [Crimson Armor] are equipped, increase defense gains further and gain access to [Clarent Blood Arthur]
+					Once [Rebellion] is at maximum and all portions of the [Crimson Armor] are equipped, increase defense further and gain access to [Clarent Blood Arthur]
 					Additionally, attacks will now burst into red lightning when striking foes, dealing bonus damage based on current defense
 					[Clarent Blood Arthur] deals 2x damage in a colossal radius in front of you and is a guaranteed critical strike against bosses (1 minute cooldown)
 					Gaining [Rebellion] after all portions of the [Crimson Armor] are manifested will instead empower [Clarent Blood Arthur] up to 3x
@@ -8817,19 +8819,14 @@ Mods: {
 				Tooltip:
 					'''
 					[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from both Magic and Summon damage]
-					[c/F7D76A:Hold left click to charge the weapon; if the weapon is fully charged, the attack varies]
-					Press the Weapon Action Key to swap between [Pneuma] and [Ousia], changing this weapon's abilities
-					While attuned to [Pneuma], attacks burst on your cursor, dealing damage in a small area while inflicting [c/4A91FF:Riptide] for 3 seconds
-					When a minion strikes an enemy with [c/4A91FF:Riptide], they take 30% extra damage, removing [c/4A91FF:Riptide]
-					Every third attack deals bonus damage based on Max HP (up to 2x base damage) and additionally conjures a [Sourcewater Droplet] if it strikes a foe
-					Charged attacks fire a powerful beam for 2 seconds that deal bonus damage based on Max HP (up to 2x base damage)
-					Collecting [Sourcewater Droplets] will hasten the charge
-					While attuned to [Ousia], left click to summon 3 [Salon Attendants], consuming 1 minion slot (10 second cooldown)
-					Only one group of [Salon Attendants] can be summoned at a time
-					Attacks with this weapon become close-ranged strikes that inflict [c/4A91FF:Riptide] for 3 seconds and charged attacks are disabled
-					The [Salon Attendants] automatically attack nearby foes with homing bolts and have a 5% chance upon dealing damage to spawn a Mana Star
-					Additionally, striking foes has a 1% chance to drop a Heart, increased up to 5% based on Max HP
-					[Salon Attendants] will disappear if this weapon is swapped to [Pneuma]
+					Gain 1 bonus damage based on every 1% of HP above 60% Max HP (Up to 30 bonus damage)
+					Press the Weapon Action Key to swap [Arkhe Alignment] between [Pneuma] and [Ousia], changing this weapon's abilities
+					While attuned to [Pneuma], right click to summon the [Singer of Seas], consuming 1 minion slot (Only one [Singer of Seas] can be summoned at a time)
+					The [Singer of Seas] will heal all allies for 5% of this weapon's damage every 5 seconds
+					While attuned to [Ousia], right click to summon 3 [Salon Attendants], consuming 1 minion slot (Only one group of [Salon Attendants] can be summoned at a time)				
+					The [Salon Attendants] automatically attack nearby foes with homing bolts with a 1% chance to spawn a [Sourcewater Droplet], increased up to 10% based on missing HP
+					[Sourcewater Droplets] will accelerate all charged attacks when acquired and additionally heal 5% Max HP
+					Summons will disappear when swapping [Arkhe Alignment]
 					'The tides beckon; the show begins'
 					'''
 			}
@@ -8841,9 +8838,24 @@ Mods: {
 					This weapon has a delay before firing, but fires faster over time
 					Press the Weapon Action Key to swap ordinance between the [Energy Star] and the [Ignition Flare]
 					Right click to throw the selected ordinance (12 second cooldown)
-					The [Energy Star] sticks to foes and explodes after a short delay, stunning all nearby non-boss foes for 1 second
+					The [Energy Star] sticks to foes and explodes after a short delay, dealing damage and stunning all nearby non-boss foes for 1 second
 					The [Ignition Flare] creates a damaging field of fire on impact that lasts for 4 seconds
 					'''
+			}
+
+			RebellionBody: {
+				DisplayName: Rebellion Body
+				Tooltip: ""
+			}
+
+			RebellionHead: {
+				DisplayName: Rebellion Head
+				Tooltip: ""
+			}
+
+			RebellionLegs: {
+				DisplayName: Rebellion Legs
+				Tooltip: ""
 			}
 		}
 
@@ -9763,6 +9775,9 @@ Mods: {
 			SoliloquySummonProjectile.DisplayName: Soliloquy Summon Projectile
 			RebellionSword.DisplayName: Rebellion Sword
 			SoliloquySword.DisplayName: Soliloquy Sword
+			RebellionLaser.DisplayName: Rebellion Laser
+			RebellionLightning.DisplayName: Rebellion Lightning
+			RebellionTarget.DisplayName: Rebellion Target
 		}
 
 		Buffs: {
@@ -12187,6 +12202,11 @@ Mods: {
 			SoliloquyMinionBuff: {
 				DisplayName: Salon Attendants
 				Description: The salon attendants muse to your whims
+			}
+
+			RebellionLaserBuff: {
+				DisplayName: Rebellion Laser Buff
+				Description: Mods.StarsAbove.Buffs.RebellionLaserBuff.Description
 			}
 		}
 

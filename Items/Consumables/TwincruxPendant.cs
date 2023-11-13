@@ -77,7 +77,7 @@ namespace StarsAbove.Items.Consumables
 				}
 			}
 			
-			//NPC.NewNPC(null, (int)player.Center.X,(int)player.Center.Y-900, NPCType<NPCs.Arbitration>());
+			//NPC.NewNPC(null, (int)player.Center.X,(int)player.Center.Y-900, NPCType<NPCs.Arbitration.ArbitrationBoss>());
 			//Main.PlaySound(SoundID.Roar, player.position, 0);
 			return true;
 		}

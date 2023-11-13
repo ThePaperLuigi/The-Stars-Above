@@ -81,7 +81,7 @@ namespace StarsAbove.Systems
             StarsAbovePlayer.BossEnemySpawnModDisabled = DisableBossEnemySpawnMod;
             StarsAboveGlobalBuff.DisableManaSicknessChange = DisableManaSicknessChange;
             BossPlayer.disableBossAggro = DisableBossAggro;
-            Penthesilea.ColorblindEnabled = ColorblindBoss;
+            //PenthesileaBoss.ColorblindEnabled = ColorblindBoss;
             CelestialCompass.DisableMultiplayerCompatibility = DisableCompatibilityMode;
         }
     }

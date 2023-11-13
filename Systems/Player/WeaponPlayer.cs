@@ -236,6 +236,9 @@ namespace StarsAbove.Systems
 
         public bool RebellionHeld;
         public int rebellionGauge;
+        public bool rebellionState1;
+        public bool rebellionState2;
+        public bool rebellionState3;
         public float rebellionGaugeMaxBuff;//After reaching max Rebellion, this empowers the next Clarent Blood Arthur cast.
         public Vector2 rebellionTarget;
 
@@ -3801,16 +3804,96 @@ namespace StarsAbove.Systems
                 }
                 if(rebellionGauge >= 5)
                 {
+                    if(rebellionState1 == false)
+                    {
+                        //effects
+                        float dustAmount = 33f;
+                        float randomConstant = MathHelper.ToRadians(Main.rand.Next(0, 360));
+                        for (int i = 0; i < dustAmount; i++)
+                        {
+                            Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                            spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+                            spinningpoint5 = spinningpoint5.RotatedBy(Player.velocity.ToRotation() + randomConstant);
+                            int dust = Dust.NewDust(Player.Center, 0, 0, DustID.LifeDrain);
+                            Main.dust[dust].scale = 1.5f;
+                            Main.dust[dust].noGravity = true;
+                            Main.dust[dust].position = Player.Center + spinningpoint5;
+                            Main.dust[dust].velocity = Player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 6f;
+                        }
+                        Player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
+                        SoundEngine.PlaySound(SoundID.Item52, Player.Center);
+
+                    }
+                    Player.statDefense += 5;
+
+                    rebellionState1 = true;
                     Player.legs = EquipLoader.GetEquipSlot(Mod, "RebellionLegs", EquipType.Legs);
+                }
+                else
+                {
+                    rebellionState1 = false;
                 }
                 if(rebellionGauge >= 10)
                 {
+                    if (rebellionState2 == false)
+                    {
+                        //effects
+                        float dustAmount = 33f;
+                        float randomConstant = MathHelper.ToRadians(Main.rand.Next(0, 360));
+                        for (int i = 0; i < dustAmount; i++)
+                        {
+                            Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                            spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+                            spinningpoint5 = spinningpoint5.RotatedBy(Player.velocity.ToRotation() + randomConstant);
+                            int dust = Dust.NewDust(Player.Center, 0, 0, DustID.LifeDrain);
+                            Main.dust[dust].scale = 1.5f;
+                            Main.dust[dust].noGravity = true;
+                            Main.dust[dust].position = Player.Center + spinningpoint5;
+                            Main.dust[dust].velocity = Player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 6f;
+                        }
+                        SoundEngine.PlaySound(SoundID.Item53, Player.Center);
+
+                        Player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
+                    }
+                    Player.statDefense += 5;
+
+                    rebellionState2 = true;
                     Player.body = EquipLoader.GetEquipSlot(Mod, "RebellionBody", EquipType.Body);
+                }
+                else
+                {
+                    rebellionState2 = false;
                 }
                 if (rebellionGauge >= 15)
                 {
+                    if (rebellionState3 == false)
+                    {
+                        //effects
+                        float dustAmount = 33f;
+                        float randomConstant = MathHelper.ToRadians(Main.rand.Next(0, 360));
+                        for (int i = 0; i < dustAmount; i++)
+                        {
+                            Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                            spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+                            spinningpoint5 = spinningpoint5.RotatedBy(Player.velocity.ToRotation() + randomConstant);
+                            int dust = Dust.NewDust(Player.Center, 0, 0, DustID.LifeDrain);
+                            Main.dust[dust].scale = 1.5f;
+                            Main.dust[dust].noGravity = true;
+                            Main.dust[dust].position = Player.Center + spinningpoint5;
+                            Main.dust[dust].velocity = Player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 6f;
+                        }
+                        SoundEngine.PlaySound(SoundID.AbigailUpgrade, Player.Center);
+
+                        Player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
+                    }
+                    rebellionState3 = true;
+                    Player.statDefense += 10;
                     Player.head = EquipLoader.GetEquipSlot(Mod, "RebellionHead", EquipType.Head);
 
+                }
+                else
+                {
+                    rebellionState3 = false;
                 }
                 if (DraggedBelowHeld)
                 {

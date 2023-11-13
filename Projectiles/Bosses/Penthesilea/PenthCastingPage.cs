@@ -51,7 +51,7 @@ namespace StarsAbove.Projectiles.Bosses.Penthesilea
 			
 			Projectile.timeLeft = 10;
 
-			if (!NPC.AnyNPCs(NPCType<NPCs.Penthesilea>()))
+			if (!NPC.AnyNPCs(NPCType<NPCs.Penthesilea.PenthesileaBoss>()))
 			{
 
 				Projectile.Kill();
@@ -63,7 +63,7 @@ namespace StarsAbove.Projectiles.Bosses.Penthesilea
 
 
 
-				if (npc.active && npc.type == NPCType<NPCs.Penthesilea>())
+				if (npc.active && npc.type == NPCType<NPCs.Penthesilea.PenthesileaBoss>())
 				{
 					//Projectile.Center = npc.Center;
 					Projectile.position.X = npc.Center.X - Projectile.width / 2 + 55;

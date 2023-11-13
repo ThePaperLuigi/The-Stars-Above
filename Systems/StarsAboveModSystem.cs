@@ -74,7 +74,7 @@ namespace StarsAbove.Systems
         public override void Load()
         {
             base.Load();
-            //To be used with v1.6
+            //To be used with 2.0
             var uiModItemType = typeof(ModLoader).Assembly.GetType("Terraria.ModLoader.UI.UIModItem")!;
             var onInitializeMethod = uiModItemType.GetMethod("OnInitialize", BindingFlags.Public | BindingFlags.Instance)!;
             uiModItemOnInitializeHook = new ILHook(onInitializeMethod, AnimateModIcon);
