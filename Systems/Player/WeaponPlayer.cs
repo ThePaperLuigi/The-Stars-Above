@@ -304,6 +304,7 @@ namespace StarsAbove.Systems
 
         //SoliloquyOfSovereignSeas
         public bool SoliloquyMinions = false;
+        public bool ousiaAligned = false;
 
         //Sunset of the Sun God
         public Vector2 karnaTarget;

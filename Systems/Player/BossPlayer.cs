@@ -34,6 +34,7 @@ using StarsAbove.Buffs.Boss;
 using StarsAbove.Utilities;
 using StarsAbove.NPCs.Penthesilea;
 using StarsAbove.NPCs.Arbitration;
+using StarsAbove.NPCs.Thespian;
 
 namespace StarsAbove.Systems
 {
@@ -236,6 +237,12 @@ namespace StarsAbove.Systems
                     VagrantTeleport(npc);
                     break;
                 }
+                if (npc.active && npc.type == NPCType<ThespianBoss>() && Player.Distance(npc.Center) < 2000)
+                {
+
+                    ThespianTeleport(npc);
+                    break;
+                }
                 if (npc.active && npc.type == NPCType<WarriorWallsNPC>() && Player.Distance(npc.Center) < 2000)
                 {
 
@@ -371,8 +378,108 @@ namespace StarsAbove.Systems
             TsukiyomiBarActive = false;
             WarriorOfLightBarActive = false;
             CastorBarActive = false;
-            PolluxBarActive = false;
+            PolluxBarActive = false; 
 
+        }
+        public override void PreUpdateBuffs()
+        {
+            for (int i = 0; i < Player.CountBuffs(); i++)
+                if (Player.buffType[i] == BuffType<ForceMoveRight>())
+                {
+                    if (Player.buffTime[i] == 180)
+                    {
+                        Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                        CombatText.NewText(textPos, new Color(255, 0, 125, 240), LangHelper.GetTextValue("CombatText.Thespian.MoveRight",3), false, false);
+                    }
+                    else if (Player.buffTime[i] == 120)
+                    {
+                        Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                        CombatText.NewText(textPos, new Color(255, 0, 125, 240), LangHelper.GetTextValue("CombatText.Thespian.MoveRight", 2), false, false);
+                    }
+                    else if (Player.buffTime[i] == 60)
+                    {
+                        Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                        CombatText.NewText(textPos, new Color(255, 0, 125, 240), LangHelper.GetTextValue("CombatText.Thespian.MoveRight", 1), false, false);
+                    }
+                    else if (Player.buffTime[i] == 1)
+                    {
+                        if(Player.velocity.X > 0)
+                        {
+                            Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                            CombatText.NewText(textPos, new Color(142, 240, 167, 240), LangHelper.GetTextValue("CombatText.Thespian.Success", 1), false, false);
+                        }
+                        else
+                        {
+                            Player.Hurt(PlayerDeathReason.ByCustomReason(Player.name + LangHelper.GetTextValue("DeathReason.Thespian")), (int)(Player.statLifeMax2 * 0.3f), 0, false, false, -1, false, 0, 0, 0);
+                        }
+                    }
+                    
+                }
+            for (int i = 0; i < Player.CountBuffs(); i++)
+                if (Player.buffType[i] == BuffType<ForceMoveLeft>())
+                {
+                    if (Player.buffTime[i] == 180)
+                    {
+                        Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                        CombatText.NewText(textPos, new Color(255, 0, 125, 240), LangHelper.GetTextValue("CombatText.Thespian.MoveLeft", 3), false, false);
+                    }
+                    else if (Player.buffTime[i] == 120)
+                    {
+                        Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                        CombatText.NewText(textPos, new Color(255, 0, 125, 240), LangHelper.GetTextValue("CombatText.Thespian.MoveLeft", 2), false, false);
+                    }
+                    else if (Player.buffTime[i] == 60)
+                    {
+                        Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                        CombatText.NewText(textPos, new Color(255, 0, 125, 240), LangHelper.GetTextValue("CombatText.Thespian.MoveLeft", 1), false, false);
+                    }
+                    else if (Player.buffTime[i] == 1)
+                    {
+                        if (Player.velocity.X < 0)
+                        {
+                            Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                            CombatText.NewText(textPos, new Color(142, 240, 167, 240), LangHelper.GetTextValue("CombatText.Thespian.Success", 1), false, false);
+                        }
+                        else
+                        {
+                            Player.Hurt(PlayerDeathReason.ByCustomReason(Player.name + LangHelper.GetTextValue("DeathReason.Thespian")), (int)(Player.statLifeMax2 * 0.3f), 0, false, false, -1, false, 0, 0, 0);
+                        }
+                    }
+
+                }
+            for (int i = 0; i < Player.CountBuffs(); i++)
+                if (Player.buffType[i] == BuffType<ForceStopMoving>())
+                {
+                    if (Player.buffTime[i] == 180)
+                    {
+                        Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                        CombatText.NewText(textPos, new Color(255, 0, 125, 240), LangHelper.GetTextValue("CombatText.Thespian.StopMoving", 3), false, false);
+                    }
+                    else if (Player.buffTime[i] == 120)
+                    {
+                        Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                        CombatText.NewText(textPos, new Color(255, 0, 125, 240), LangHelper.GetTextValue("CombatText.Thespian.StopMoving", 2), false, false);
+                    }
+                    else if (Player.buffTime[i] == 60)
+                    {
+                        Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                        CombatText.NewText(textPos, new Color(255, 0, 125, 240), LangHelper.GetTextValue("CombatText.Thespian.StopMoving", 1), false, false);
+                    }
+                    else if (Player.buffTime[i] == 1)
+                    {
+                        if (Player.velocity != Vector2.Zero)
+                        {
+                            Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                            CombatText.NewText(textPos, new Color(142, 240, 167, 240), LangHelper.GetTextValue("CombatText.Thespian.Success", 1), false, false);
+                        }
+                        else
+                        {
+                            Player.Hurt(PlayerDeathReason.ByCustomReason(Player.name + LangHelper.GetTextValue("DeathReason.Thespian")), (int)(Player.statLifeMax2 * 0.3f), 0, false, false, -1, false, 0, 0, 0);
+                        }
+                    }
+
+                }
+            base.PreUpdateBuffs();
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
@@ -391,6 +498,11 @@ namespace StarsAbove.Systems
                 if (npc.type == NPCType<VagrantBoss>())
                 {
                     bossReductionMod = 700;
+
+                }
+                if (npc.type == NPCType<ThespianBoss>())
+                {
+                    bossReductionMod = 800;
 
                 }
                 if (npc.type == NPCType<CastorBoss>() || npc.type == NPCType<PolluxBoss>())
@@ -653,7 +765,75 @@ namespace StarsAbove.Systems
                 }
             }
         }
+        private void ThespianTeleport(NPC npc)
+        {
+            if (Player.whoAmI == Main.myPlayer)
+            {
+                int halfWidth = ThespianBoss.arenaWidth / 2;
+                int halfHeight = ThespianBoss.arenaHeight / 2;
+                Vector2 newPosition = Player.position;
+                if (Player.position.X <= npc.Center.X - halfWidth)//Left wall
+                {
+                    newPosition.X = npc.Center.X - halfWidth - Player.width - 1;
+                    Player.velocity = new Vector2(8, Player.velocity.Y);
+                    // if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("1"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.X -= 8f;
 
+                    }
+                    if(Player.HasBuff(BuffType<AthanoricCurse>()))
+                    {
+                        Player.Hurt(PlayerDeathReason.ByCustomReason(Player.name + LangHelper.GetTextValue("DeathReason.Thespian")), (int)(Player.statLifeMax2 * 0.1f), 0, false, false, -1, false, 0, 0, 0);
+                    }
+                }
+                else if (Player.position.X + Player.width >= npc.Center.X + halfWidth)//Right Wall
+                {
+                    newPosition.X = npc.Center.X + halfWidth + 1;
+                    Player.velocity = new Vector2(-8, Player.velocity.Y);
+                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("2"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.X += 8f;
+
+                    }
+                    if (Player.HasBuff(BuffType<AthanoricCurse>()))
+                    {
+                        Player.Hurt(PlayerDeathReason.ByCustomReason(Player.name + LangHelper.GetTextValue("DeathReason.Thespian")), (int)(Player.statLifeMax2 * 0.1f), 0, false, false, -1, false, 0, 0, 0);
+                    }
+                }
+                else if (Player.position.Y <= npc.Center.Y - halfHeight)//Top
+                {
+                    newPosition.Y = npc.Center.Y - halfHeight - Player.height - 1;
+                    Player.velocity = new Vector2(Player.velocity.X, 8);
+                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("3"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.Y -= 8f;
+
+                    }
+                    if (Player.HasBuff(BuffType<AthanoricCurse>()))
+                    {
+                        Player.Hurt(PlayerDeathReason.ByCustomReason(Player.name + LangHelper.GetTextValue("DeathReason.Thespian")), (int)(Player.statLifeMax2 * 0.1f), 0, false, false, -1, false, 0, 0, 0);
+                    }
+                }
+                else if (Player.position.Y + Player.height >= npc.Center.Y + halfHeight)//Bottom
+                {
+                    newPosition.Y = npc.Center.Y + halfHeight + 1;
+                    Player.velocity = new Vector2(Player.velocity.X, -8);
+                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("4"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+
+                        newPosition.Y += 8f;
+                    }
+                    if (Player.HasBuff(BuffType<AthanoricCurse>()))
+                    {
+                        Player.Hurt(PlayerDeathReason.ByCustomReason(Player.name + LangHelper.GetTextValue("DeathReason.Thespian")), (int)(Player.statLifeMax2 * 0.1f), 0, false, false, -1, false, 0, 0, 0);
+                    }
+                }
+            }
+        }
         private void NalhaunWalls(NPC npc)
         {
             if (Player.whoAmI == Main.myPlayer)

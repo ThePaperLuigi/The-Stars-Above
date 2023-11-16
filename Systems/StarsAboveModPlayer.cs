@@ -4346,6 +4346,7 @@ namespace StarsAbove.Systems
 
                         return;
                     }
+                    //move to thespian
                     if (ClockWeaponDialogue == 0 && VagrantWeaponDialogue == 2)
                     {
                         ClockWeaponDialogue = 1;

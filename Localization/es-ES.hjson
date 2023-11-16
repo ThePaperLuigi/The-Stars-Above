@@ -3,6 +3,7 @@ Mods: {
 		DeathReason: {
 			// SanguineDespair: drained themselves of all life.
 			// SupremeAuthority: returned to the void.
+			// Thespian: failed to follow the act.
 		}
 
 		// Boss.WarriorOfLight: The Warrior of Light descends!
@@ -43,6 +44,15 @@ Mods: {
 				// QTE: Rapidly press the Stellar Nova button!
 			}
 
+			Thespian: {
+				// AthanoricCurse: The walls of the arena pulse with corrosive energy!
+				// RingmastersWill: The Ringmaster compels you to act!
+				// MoveLeft: Move left in {0}...
+				// MoveRight: Move right in {0}...
+				// StopMoving: Stop moving in {0}...
+				// Success: Success!
+			}
+
 			// Dioskouroi.Clash: The Dioskouroi clash, equalizing their HP!
 			// Tsukiyomi.FinalPhase: The Starfarer before you unleashes her true might, empowering her attacks but leaving her defenses open!
 			// EasterEgg: You've defeated the boss in less than 10 seconds, probably a new record! Perhaps you're a little too powerful?
@@ -76,19 +86,19 @@ Mods: {
 				// StandardDialogue2: Looks like today's going to be bad luck. Or is it good luck? If only I had a better view.
 				// StandardDialogue3: You want to know more information about Starfarers? They're a known phenomenon, but most of their impact is consigned to history books. In fact, it's strange you ask.
 				// StandardDialogue4: Astrology extends far beyond star signs and constellations. To an extent, you must have ample magical knowledge and scientific expertise.
-				// StandardDialogue5: I collect and categorize celestial relics. You most likely are not interested in the majority of them...
+				// StandardDialogue5: I collect and categorize celestial relics. You most likely are not interested in the majority of them.
 				// StandardDialogue6: Yes, things are expensive- that's just how it is. How am I to buy anything?
-				// BloodMoon: Hmm, a strange celestial body seems to be affecting our moon. Feeling worse for wear?
+				// BloodMoon: Hmm, a strange celestial body seems to be affecting our moon. What a pain.
 				// Party: Yeah, right. I'm not going outside, but I will partake in the food.
 				// Graveyard: Where in the world is all this accursed fog coming from?
 				// StrangePotion: Strange Potion
 				// ThespianNotReadyCorruption: I have something you may be interested in, but you must prepare better. How about dealing with the issues in the Corruption first?
 				// ThespianNotReadyCrimson: I have something you may be interested in, but you must prepare better. How about dealing with the issues in the Crimson first?
-				// ThespianReady: Here's something you might take interest with: this potion has a magical trace I've never once encountered before- very powerful. I would take caution when consuming it.
+				// ThespianReady: Here's something you might take interest with: this potion has a magical trace I've never once encountered before- very powerful. It does no good languishing in my stockpile, so take it before I change my mind.
 				// RareDialogue1: Haha, you say I resemble other members of my profession? Have you ever considered... they're also me?
 				// RareDialogue2: Have you guessed? Yes, I'm faekin- a faerie. No, I don't do magic tricks.
-				// AstralDialogue: I can sense the Astral Aspect upon you- if you were not aware, 'aspect' is a misnomer. In fact, being Astral aspected is more of a polarity. How you are aspected itself is a wonder... Is there something I can't see?
-				// UmbralAspect: I can sense the Umbral Aspect upon you- if you were not aware, 'aspect' is a misnomer. In fact, being Umbral aspected is more of a polarity. How you are aspected itself is a wonder... Is there something I can't see?
+				// AstralDialogue: I can sense the Astral Aspect upon you- if you were not aware, 'aspect' is a misnomer. In fact, being Astral aspected is more of a polarity. How you are aspected itself is a wonder... You must be hiding something.
+				// UmbralAspect: I can sense the Umbral Aspect upon you- if you were not aware, 'aspect' is a misnomer. In fact, being Umbral aspected is more of a polarity. How you are aspected itself is a wonder... You must be hiding something.
 			}
 		}
 
@@ -3443,7 +3453,10 @@ Mods: {
 			// WarriorOfLightOld.DisplayName: ""
 			// WarriorOfLightBossFinalPhase.DisplayName: The Warrior Of Light
 			// GardenOfAvalonNPC.DisplayName: Garden Of Avalon
-			// ThespianBoss.DisplayName: Thespian Boss
+			// ThespianBoss.DisplayName: Thespian, the Act of Alchemy
+			// PenthesileaBoss.DisplayName: Penthesilea, the Witch of Ink
+			// ArbitrationBoss.DisplayName: Arbitration
+			// StarfarerBoss.DisplayName: Asphodene and Eridani
 		}
 
 		Tiles: {
@@ -7511,7 +7524,7 @@ Mods: {
 					A mystical dias formed by the Celestriad Root
 					Allows for the traversal of the cosmos through use of [c/F1AFFF:Celestial Cartography] in the [c/EC356F:Starfarer Menu] once placed
 					Must stay in proximity to the Stellaglyph for travel
-					Can be upgraded to Tier 2 through crafting
+					Can be upgraded to Tier 3 through crafting
 					Can be enhanced by placing [c/FF1B8D:Stellar Foci] nearby to grant buffs during Cosmic Voyages
 					Able to sustain 8 [c/FF1B8D:Stellar Foci]
 					''' */
@@ -8622,7 +8635,7 @@ Mods: {
 				/* Tooltip:
 					'''
 					This concoction reeks with chaos
-					[c/F1AF42:Summons Thespian, the Act of Alchemy] (Night only)
+					[c/F1AF42:Summons Thespian, the Act of Alchemy]
 					This boss is available early, but you may find it much too difficult
 					Prepare accordingly, and consider postponing this fight until you are stronger
 					Is not consumed upon use
@@ -8657,7 +8670,7 @@ Mods: {
 					Dealing or taking damage grants stacks of [Rebellion] (Rebellion is lost out of combat)
 					At certain thresholds of [Rebellion], manifest portions of the [Crimson Armor], gaining 5 defense per armor
 					Once [Rebellion] is at maximum and all portions of the [Crimson Armor] are equipped, increase defense further and gain access to [Clarent Blood Arthur]
-					Additionally, attacks will now burst into red lightning when striking foes, dealing bonus damage based on current defense
+					Additionally, gain a 3rd combo attack and striking foes now burst into red lightning (3rd combo strike empowers lightning)
 					[Clarent Blood Arthur] deals 2x damage in a colossal radius in front of you and is a guaranteed critical strike against bosses (1 minute cooldown)
 					Gaining [Rebellion] after all portions of the [Crimson Armor] are manifested will instead empower [Clarent Blood Arthur] up to 3x
 					''' */
@@ -8668,15 +8681,15 @@ Mods: {
 				/* Tooltip:
 					'''
 					[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from both Magic and Summon damage]
-					Gain 1 bonus damage based on every 1% of HP above 60% Max HP (Up to 30 bonus damage)
-					Press the Weapon Action Key to swap [Arkhe Alignment] between [Pneuma] and [Ousia], changing this weapon's abilities
-					While attuned to [Pneuma], right click to summon the [Singer of Seas], consuming 1 minion slot (Only one [Singer of Seas] can be summoned at a time)
-					The [Singer of Seas] will heal all allies for 5% of this weapon's damage every 5 seconds
-					While attuned to [Ousia], right click to summon 3 [Salon Attendants], consuming 1 minion slot (Only one group of [Salon Attendants] can be summoned at a time)				
-					The [Salon Attendants] automatically attack nearby foes with homing bolts with a 1% chance to spawn a [Sourcewater Droplet], increased up to 10% based on missing HP
-					[Sourcewater Droplets] will accelerate all charged attacks when acquired and additionally heal 5% Max HP
-					Summons will disappear when swapping [Arkhe Alignment]
-					'The tides beckon; the show begins'
+					Gain up to 30 bonus damage based on percentage of HP above 60% Max HP
+					Press the Weapon Action Key to swap [c/A9D5F0:Arkhe Alignment] between [c/F0DFA9:Pneuma] and [c/6C5BE8:Ousia], changing this weapon's abilities
+					While attuned to [c/F0DFA9:Pneuma], right click to summon the [c/5BBFE8:Singer of Seas], consuming 1 minion slot (Only one [c/5BBFE8:Singer of Seas] can be summoned at a time)
+					The [c/5BBFE8:Singer of Seas] will heal all allies in a wide radius for 5% of this weapon's damage every 5 seconds
+					While attuned to [c/6C5BE8:Ousia], right click to summon 3 [c/5BBFE8:Salon Attendants], consuming 1 minion slot (Only one group of [c/5BBFE8:Salon Attendants] can be summoned at a time)
+					The [c/5BBFE8:Salon Attendants] automatically attack nearby foes with homing bolts
+					Gain Waterwalking while summons are present
+					Summons will disappear when swapping [c/A9D5F0:Arkhe Alignment]
+					'Let the world come alive!'
 					''' */
 			}
 
@@ -9627,6 +9640,13 @@ Mods: {
 			// RebellionLaser.DisplayName: Rebellion Laser
 			// RebellionLightning.DisplayName: Rebellion Lightning
 			// RebellionTarget.DisplayName: Rebellion Target
+			// StygianAugurDown.DisplayName: Stygian Augur Down
+			// StygianAugurLeft.DisplayName: Stygian Augur Left
+			// StygianAugurRight.DisplayName: Stygian Augur Right
+			// StygianAugurUp.DisplayName: Stygian Augur Up
+			// ThespianBolt.DisplayName: Thespian Bolt
+			// RebellionSwordSpin.DisplayName: Rebellion Sword Spin
+			// SoliloquySinger.DisplayName: Soliloquy Singer
 		}
 
 		Buffs: {
@@ -12042,7 +12062,27 @@ Mods: {
 
 			RebellionLaserBuff: {
 				// DisplayName: Rebellion Laser Buff
-				// Description: Mods.StarsAbove.Buffs.RebellionLaserBuff.Description
+				// Description: ""
+			}
+
+			AthanoricCurse: {
+				// DisplayName: Athanoric Curse
+				// Description: The walls of the arena will corrode you!
+			}
+
+			ForceMoveLeft: {
+				// DisplayName: Force Move Left
+				// Description: You are compelled to move left once this debuff ends
+			}
+
+			ForceMoveRight: {
+				// DisplayName: Force Move Right
+				// Description: You are compelled to move right once this debuff ends
+			}
+
+			ForceStopMoving: {
+				// DisplayName: Force Stop Moving
+				// Description: You are compelled to stop moving once this debuff ends
 			}
 		}
 

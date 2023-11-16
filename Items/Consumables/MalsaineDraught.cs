@@ -39,7 +39,7 @@ namespace StarsAbove.Items.Consumables
 		// We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
 		public override bool CanUseItem(Player player) {
 
-			return !NPC.AnyNPCs(NPCType<NPCs.Nalhaun.NalhaunBoss>()) && !NPC.AnyNPCs(NPCType<NPCs.Nalhaun.NalhaunBossPhase2>()) && SubworldSystem.Current == null;
+			return !NPC.AnyNPCs(NPCType<NPCs.Thespian.ThespianBoss>()) && SubworldSystem.Current == null;
 		}
 
 		public override bool? UseItem(Player player) {
@@ -50,10 +50,8 @@ namespace StarsAbove.Items.Consumables
 				// (explicitely excluded serverside here)
 
 
-				int type = ModContent.NPCType<NPCs.Nalhaun.NalhaunBoss>();
+				int type = ModContent.NPCType<NPCs.Thespian.ThespianBoss>();
 
-				//if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("A mysterious throne descends from the heavens..."), 210, 100, 175);}
-				if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("Nalhaun, the Burnished King appears!"), 200, 150, 125);}
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					// If the player is not in multiplayer, spawn directly

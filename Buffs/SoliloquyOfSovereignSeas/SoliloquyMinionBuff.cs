@@ -16,7 +16,7 @@ namespace StarsAbove.Buffs.SoliloquyOfSovereignSeas
 
 		public override void Update(Player player, ref int buffIndex) {
 			WeaponPlayer modPlayer = player.GetModPlayer<WeaponPlayer>();
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Other.SoliloquyOfSovereignSeas.SoliloquyJellySummon>()] > 0) {
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Other.SoliloquyOfSovereignSeas.SoliloquyJellySummon>()] > 0 || player.ownedProjectileCounts[ProjectileType<Projectiles.Other.SoliloquyOfSovereignSeas.SoliloquySinger>()] > 0) {
 				modPlayer.SoliloquyMinions = true;
 			}
 			if (!modPlayer.SoliloquyMinions) {

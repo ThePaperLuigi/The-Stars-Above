@@ -761,7 +761,7 @@ namespace StarsAbove.Systems
                       "Plantera Weapon", //Name of the archive listing.
                       $"Grants the Essence for " +
                       $"[i:{ItemType<Spatial>()}] Dreamer's Inkwell. ", //Description of the listing.
-                      player.TrickspinWeaponDialogue == 2, //Unlock requirements.
+                      player.DreamerWeaponDialogue == 2, //Unlock requirements.
                       174,
                       LangHelper.GetTextValue($"Archive.UnlockConditions.Plantera"))); //Corresponding dialogue ID.
                 WeaponArchiveList.Add(new WeaponArchiveListing(

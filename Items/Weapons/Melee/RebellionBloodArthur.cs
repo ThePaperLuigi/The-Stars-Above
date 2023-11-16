@@ -69,20 +69,33 @@ namespace StarsAbove.Items.Weapons.Melee
 			//player.GetModPlayer<WeaponPlayer>().radiance++;
 			
 		}
-		public bool altSwing;
+		public int attackType;
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			if (altSwing)
+			switch (attackType)
 			{
-				Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<RebellionSword>(), damage, knockback, player.whoAmI, 0, 0, player.direction);
-				altSwing = false;
-			}
-			else
-			{
-				Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<RebellionSword>(), damage, knockback, player.whoAmI, 0, 1, player.direction);
-				altSwing = true;
-			}
+				case 0: //Swing downwards
+					Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<RebellionSword>(), damage, knockback, player.whoAmI, 0, 0, player.direction);
+					attackType++;
+					return false;
+				case 1: //Swing upwards
+					Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<RebellionSword>(), damage, knockback, player.whoAmI, 0, 1, player.direction);
+					if(player.GetModPlayer<WeaponPlayer>().rebellionGauge>=15)
+                    {
+						attackType++;
 
+					}
+					else
+                    {
+						attackType = 0;
+
+					}
+					return false;
+				case 2: //Spin
+					Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<RebellionSwordSpin>(), damage, knockback, player.whoAmI, 0, 0, player.direction);
+					attackType = 0;
+					return false;
+			}
 			return false;
 		}
 

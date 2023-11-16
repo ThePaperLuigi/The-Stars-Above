@@ -220,7 +220,7 @@ namespace StarsAbove.Menu
 			}
 
 			Texture2D Rings = (Texture2D)ModContent.Request<Texture2D>($"{menuAssetPath}/Rings");
-
+			
 			spriteBatch.Draw(
 				Rings, //The texture being drawn.
 				logoDrawPos, //The position of the texture.
@@ -228,7 +228,7 @@ namespace StarsAbove.Menu
 				Color.White, //The color of the texture.
 				MathHelper.ToRadians(Rotation1) + MathHelper.ToRadians(190), // The rotation of the texture.
 				Rings.Size() * 0.5f, //The centerpoint of the texture.
-				0.9f, //The scale of the texture.
+				0.7f, //The scale of the texture.
 				SpriteEffects.None,
 				0f);
 			spriteBatch.Draw(
@@ -237,11 +237,12 @@ namespace StarsAbove.Menu
 				new Rectangle(0, 0, Rings.Width, Rings.Height),
 				Color.White, //The color of the texture.
 				MathHelper.ToRadians(Rotation2) + MathHelper.ToRadians(190), // The rotation of the texture.
-				Rings.Size() * 0.5f, //The centerpoint of the texture.
-				0.7f, //The scale of the texture.
+				Rings.Size() * 0.8f, //The centerpoint of the texture.
+				0.8f, //The scale of the texture.
 				SpriteEffects.None,
 				0f);
 
+            /*
 			#region circle
 			spriteBatch.Draw(
 				WhiteCircle1, //The texture being drawn.
@@ -274,6 +275,8 @@ namespace StarsAbove.Menu
 				SpriteEffects.None,
 				0f);
 			#endregion
+
+
 			#region lines
 			spriteBatch.Draw(
 				WhiteLine1, //The texture being drawn.
@@ -446,14 +449,18 @@ namespace StarsAbove.Menu
 				0.94f, //The scale of the texture.
 				SpriteEffects.None,
 				0f);
-			spriteBatch.Draw(MenuFG, new Vector2(zero.X + MathHelper.Lerp(-93, -87, MousePositionFloatX), zero.Y + MathHelper.Lerp(-78, -77, MousePositionFloatY)), (Rectangle?)null, Color.White, 0f, Vector2.Zero, width * 1.1f, (SpriteEffects)0, 0f);
-
-			Texture2D OceanTop = (Texture2D)ModContent.Request<Texture2D>($"{menuAssetPath}/OceanTop");
+			*/
+            spriteBatch.Draw(MenuFG, new Vector2(zero.X + MathHelper.Lerp(-93, -87, MousePositionFloatX), zero.Y + MathHelper.Lerp(-78, -77, MousePositionFloatY)), (Rectangle?)null, Color.White, 0f, Vector2.Zero, width * 1.1f, (SpriteEffects)0, 0f);
+            
+			Texture2D OceanWaves = (Texture2D)ModContent.Request<Texture2D>($"{menuAssetPath}/OceanWaves");
+            Texture2D OceanTop = (Texture2D)ModContent.Request<Texture2D>($"{menuAssetPath}/OceanTop");
 			Texture2D OceanBottom1 = (Texture2D)ModContent.Request<Texture2D>($"{menuAssetPath}/OceanBottom1");
 			Texture2D OceanBottom2 = (Texture2D)ModContent.Request<Texture2D>($"{menuAssetPath}/OceanBottom2");
+            Texture2D OceanFog = (Texture2D)ModContent.Request<Texture2D>($"{menuAssetPath}/OceanFog");//Background
 
-			//Animate ocean:
-			quadraticFloatTimer += 0.0001f;
+
+            //Animate ocean:
+            quadraticFloatTimer += 0.0001f;
 			quadraticFloat = InOutQuad(pulse(quadraticFloatTimer));
 
 			if(menuTime > 60)
@@ -470,10 +477,12 @@ namespace StarsAbove.Menu
 			spriteBatch.Draw(OceanBottom1, new Vector2(zero.X + MathHelper.Lerp(-93, -87, MousePositionFloatX) + oceanAdjustment2, zero.Y + MathHelper.Lerp(-78, -77, MousePositionFloatY)), (Rectangle?)null, Color.White, 0f, Vector2.Zero, width * 1.1f, (SpriteEffects)0, 0f);
 
 			spriteBatch.Draw(OceanTop, new Vector2(zero.X + MathHelper.Lerp(-93, -87, MousePositionFloatX) + oceanAdjustment, zero.Y + MathHelper.Lerp(-78, -77, MousePositionFloatY)), (Rectangle?)null, Color.White, 0f, Vector2.Zero, width * 1.1f, (SpriteEffects)0, 0f);
+            spriteBatch.Draw(OceanWaves, new Vector2(zero.X + MathHelper.Lerp(-93, -87, MousePositionFloatX) + oceanAdjustment2, zero.Y + MathHelper.Lerp(-78, -77, MousePositionFloatY)), (Rectangle?)null, Color.White*0.5f, 0f, Vector2.Zero, width * 1.1f, (SpriteEffects)0, 0f);
+            spriteBatch.Draw(OceanFog, new Vector2(zero.X + MathHelper.Lerp(-93, -87, MousePositionFloatX), zero.Y + MathHelper.Lerp(-78, -77, MousePositionFloatY)), (Rectangle?)null, Color.White, 0f, Vector2.Zero, width * 1.1f, (SpriteEffects)0, 0f);
 
-			spriteBatch.Draw(Starfarers, new Vector2(zero.X + 12 + MathHelper.Lerp(42, -12, MousePositionFloatX), zero.Y + MathHelper.Lerp(-34, -30, MousePositionFloatY)), (Rectangle?)null, Color.White, 0f, Vector2.Zero, width, (SpriteEffects)0, 0f);
+            spriteBatch.Draw(Starfarers, new Vector2(zero.X + 12 + MathHelper.Lerp(42, -12, MousePositionFloatX), zero.Y + MathHelper.Lerp(-34, -30, MousePositionFloatY)), (Rectangle?)null, Color.White, 0f, Vector2.Zero, width, (SpriteEffects)0, 0f);
 
-			spriteBatch.Draw(ScreenDarkened, new Vector2(zero.X, zero.Y), (Rectangle?)null, Color.White, 0f, Vector2.Zero, width, (SpriteEffects)0, 0f);
+            spriteBatch.Draw(ScreenDarkened, new Vector2(zero.X, zero.Y), (Rectangle?)null, Color.White, 0f, Vector2.Zero, width, (SpriteEffects)0, 0f);
 
 			//Float from 0 to 1 from left to right side of the screen
 			MousePositionFloatX = ((Math.Min(Main.screenWidth, Main.MouseScreen.X) - 0) * 100) / (Main.screenWidth - 0) / 100;

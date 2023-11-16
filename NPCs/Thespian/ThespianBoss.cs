@@ -36,6 +36,8 @@ namespace StarsAbove.NPCs.Thespian
 
 	public class ThespianBoss : ModNPC
 	{
+		public static readonly int arenaWidth = (int)(1f * 1000);
+		public static readonly int arenaHeight = (int)(1f * 520);
 
 		public int AttackTimer = 120;
 
@@ -56,6 +58,11 @@ namespace StarsAbove.NPCs.Thespian
 
 			Defeat
 
+		}
+		private int portalFrame
+		{
+			get => (int)NPC.localAI[2];
+			set => NPC.localAI[2] = value;
 		}
 
 		// These are reference properties. One, for example, lets us write AI_State as if it's NPC.ai[0], essentially giving the index zero our own name.
@@ -81,7 +88,7 @@ namespace StarsAbove.NPCs.Thespian
 			NPCID.Sets.CantTakeLunchMoney[Type] = true;
 			
 			//Phase 1, so no bestiary
-			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new(0)
+			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new()
 			{
 				Hide = false // Hides this NPC from the bestiary
 			};
@@ -106,11 +113,11 @@ namespace StarsAbove.NPCs.Thespian
 			NPC.damage = 15;
 			NPC.defense = 15;
 			NPC.knockBackResist = 0f;
-			NPC.width = 150;
-			NPC.height = 150;
+			NPC.width = 100;
+			NPC.height = 100;
 			NPC.scale = 1f;
 			NPC.npcSlots = 1f;
-			NPC.aiStyle = 0;
+			NPC.aiStyle = -1;
 			NPC.lavaImmune = true;
 			NPC.noGravity = true;
 			NPC.noTileCollide = false;
@@ -119,7 +126,7 @@ namespace StarsAbove.NPCs.Thespian
 			//NPC.HitSound = SoundID.NPCHit54;
 			//NPC.DeathSound = SoundID.NPCDeath52;
 
-			Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TheExtremeIntro");
+			Music = MusicID.OtherworldlyUGHallow;
 
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
 			NPC.netAlways = true;
@@ -161,7 +168,6 @@ namespace StarsAbove.NPCs.Thespian
 
 		public override void AI()
         {
-			DrawOffsetY = 94;
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
             var bossPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
@@ -209,13 +215,31 @@ namespace StarsAbove.NPCs.Thespian
 				{
 
 					case 0:
-						ThreadsOfFate1(P, NPC);
+						StygianAugurUp(P, NPC);
 						break;
 					case 1:
-						Anosios1(P, NPC);
+						StygianAugurRight(P, NPC);
+						break;
+					case 2:
+						PhlogistonPyrotechnics(P, NPC);
+						break;
+					case 3:
+						StygianAugurDown(P, NPC);
+						break;
+					case 4:
+						StygianAugurLeft(P, NPC);
+						break;
+					case 5:
+						Lixiviate(P, NPC);
+						break;
+					case 6:
+						RingmastersWill(P, NPC);
+						break;
+					case 7:
+						AthanoricArena(P, NPC);
 						break;
 					default:
-						AI_RotationNumber = 55;//Once phase 2 is reached, always go back to the 1st mechanic after phase 2.
+						AI_RotationNumber = 0;//Once phase 2 is reached, always go back to the 1st mechanic after phase 2.
 						return;
 
 				}
@@ -233,13 +257,11 @@ namespace StarsAbove.NPCs.Thespian
 					//If boss is in phase 2...
 					if (NPC.localAI[0] == 1 || NPC.localAI[0] == 2)
 					{
-						player.AddBuff(BuffType<Buffs.SubworldModifiers.MoonTurmoil>(), 18000);//5 minutes
 
 					}
 					//If boss is in phase 3...
 					if (NPC.localAI[0] == 2)
 					{
-						player.AddBuff(BuffType<Buffs.SubworldModifiers.ChaosTurmoil>(), 18000);
 						
 					}
                     else
@@ -252,38 +274,8 @@ namespace StarsAbove.NPCs.Thespian
 
 
 			}
-			if(Main.expertMode)
-            {
-				if (NPC.localAI[0] == 2)
-				{
-					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Angela3");
-					NPC.defense = 25;
-				}
-				else if (NPC.localAI[0] == 1)
-				{
-					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Angela2");
-					NPC.defense = 120;
-				}
-				else
-                {
-					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Angela1");
-					NPC.defense = 120;
 
-				}
-			}
-			else
-            {
-				if (NPC.localAI[0] != 0)
-				{
-					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TheExtreme");
-					NPC.defense = 5;
-				}
-				else
-				{
-					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TheExtremeIntro");
-					NPC.defense = 120;
-				}
-			}
+			
 		}
 		private void FindTargetPlayer()
         {
@@ -427,7 +419,15 @@ namespace StarsAbove.NPCs.Thespian
 					}
 					else
 					{
-						NPC.frameCounter = 0;
+						for (int i = 0; i < 2; i++)
+						{
+							Dust d2 = Main.dust[Dust.NewDust(new Vector2(NPC.Center.X + 22, NPC.Center.Y + 1), 0, 2, DustID.GemAmethyst, Main.rand.NextFloat(-0.02f, 0.02f), Main.rand.NextFloat(-0.5f, -2.5f), 20, default(Color), 0.7f)];
+							d2.fadeIn = 1f;
+							d2.velocity.X *= 0.3f;
+							d2.noGravity = true;
+
+						}
+						NPC.frame.Y = (int)Frame.Cast5 * frameHeight;
 					}
 
 					break;
@@ -523,16 +523,8 @@ namespace StarsAbove.NPCs.Thespian
 			//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
 			//Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, 0, 0, ModContent.ProjectileType<VagrantSlamSprite>(), 0, 0, Main.myPlayer);
 
-			if(SubworldSystem.AnyActive<StarsAbove>())
-            {
-				Vector2 initialMoveTo = new Vector2(14184, 6445);
-				NPC.position = initialMoveTo;
-			}
-			else
-            {
-				Vector2 initialMoveTo = new Vector2(Main.player[NPC.target].Center.X - 80, Main.player[NPC.target].Center.Y - 350);
-				NPC.position = initialMoveTo;
-			}
+			Vector2 initialMoveTo = new Vector2(Main.player[NPC.target].Center.X - 50, Main.player[NPC.target].Center.Y - 200);
+			NPC.position = initialMoveTo;
 			//SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Journey, NPC.Center);
 
 
@@ -563,7 +555,18 @@ namespace StarsAbove.NPCs.Thespian
 
 			AI_Timer++;//The boss's rotation timer ticks upwards.
 
+			for (int i = 0; i < 2; i++)
+			{//Circle
+				Dust d = Main.dust[Dust.NewDust(new Vector2(NPC.Center.X + 16, NPC.Center.Y + 1), 0, 2, DustID.GemAmethyst, Main.rand.NextFloat(-0.02f, 0.02f), Main.rand.NextFloat(-0.5f, -4.5f), 20, default(Color), 0.7f)];
+				d.fadeIn = 1f;
+				d.velocity.X *= 0.3f;
+				d.noGravity = true;
+				Dust d2 = Main.dust[Dust.NewDust(new Vector2(NPC.Center.X - 28, NPC.Center.Y + 1), 0, 2, DustID.GemAmethyst, Main.rand.NextFloat(-0.02f, 0.02f), Main.rand.NextFloat(-0.5f, -4.5f), 20, default(Color), 0.7f)];
+				d2.fadeIn = 1f;
+				d2.velocity.X *= 0.3f;
+				d2.noGravity = true;
 
+			}
 		}
 		private void Casting()
 		{
@@ -572,28 +575,10 @@ namespace StarsAbove.NPCs.Thespian
 			NPC.direction = (Main.player[NPC.target].Center.X < NPC.Center.X).ToDirectionInt();//Face the target.
 			modPlayer.CastTime = (int)NPC.localAI[3];
 			modPlayer.CastTimeMax = (int)NPC.ai[3];
-
-			if(NPC.frame.Y != (int)Frame.Empty)
+			
+			if (NPC.frame.Y != (int)Frame.Empty)
             {
-				for (int i = 0; i < 5; i++)
-				{//Circle
-
-					if(NPC.direction == 1)
-                    {
-						Dust d = Main.dust[Dust.NewDust(new Vector2(NPC.Center.X + 29, NPC.Center.Y + 54), 0, 2, 20, Main.rand.NextFloat(-0.2f, 0.2f), Main.rand.NextFloat(-0.5f, -4.5f), 20, default(Color), 0.7f)];
-						d.shader = GameShaders.Armor.GetSecondaryShader(114, Main.LocalPlayer);
-						d.fadeIn = 1f;
-						d.noGravity = true;
-					}
-					else
-                    {
-						Dust d = Main.dust[Dust.NewDust(new Vector2(NPC.Center.X - 29, NPC.Center.Y + 54), 0, 2, 20, Main.rand.NextFloat(-0.2f, 0.2f), Main.rand.NextFloat(-0.5f, -4.5f), 20, default(Color), 0.7f)];
-						d.shader = GameShaders.Armor.GetSecondaryShader(114, Main.LocalPlayer);
-						d.fadeIn = 1f;
-						d.noGravity = true;
-					}
-					
-				}
+				
 
 				for (int i = 0; i < 3; i++)
 				{
@@ -603,14 +588,17 @@ namespace StarsAbove.NPCs.Thespian
 						Main.rand.Next(-2048, 2048) * (0.003f * 200) - 10);
 					Dust d = Main.dust[Dust.NewDust(
 						NPC.Center + vector, 1, 1,
-						20, 0, 0, 255,
-						new Color(1f, 1f, 1f), 1.5f)];
-					d.shader = GameShaders.Armor.GetSecondaryShader(114, Main.LocalPlayer);
+						DustID.GemAmethyst, 0, 0, 255,
+						new Color(1f, 1f, 1f), 0.9f)];
 					d.velocity = -vector / 16;
 					d.velocity -= NPC.velocity / 8;
-					d.noLight = true;
+					d.noLight = false;
 					d.noGravity = true;
 				}
+			}
+			if(NPC.frame.Y == (int)Frame.Cast5 * NPC.height)
+            {
+				
 			}
 			
 			//Casting Dust
@@ -624,12 +612,70 @@ namespace StarsAbove.NPCs.Thespian
 
         public override void ModifyHitByProjectile(Projectile projectile, ref NPC.HitModifiers modifiers)
         {
-			modifiers.FinalDamage *= 0.7f;
+			
 		}
         public override void ModifyHitByItem(Player player, Item item, ref NPC.HitModifiers modifiers)
         {
 
         }
+		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+		{
+			Microsoft.Xna.Framework.Color color1 = Lighting.GetColor((int)((double)NPC.position.X + (double)NPC.width * 0.5) / 16, (int)(((double)NPC.position.Y + (double)NPC.height * 0.5) / 16.0));
+			Vector2 drawOrigin = new Vector2(NPC.width * 0.5f, NPC.height * 0.5f);
+			int r1 = (int)color1.R;
+			//drawOrigin.Y += 34f;
+			//drawOrigin.Y += 8f;
+			--drawOrigin.X;
+			Vector2 position1 = NPC.Bottom - Main.screenPosition;
+			Texture2D texture2D2 = (Texture2D)Request<Texture2D>("StarsAbove/Effects/ThespianWallsEffect");
+			float num11 = (float)((double)Main.GlobalTimeWrappedHourly % 4.0 / 4.0);
+			float num12 = num11;
+			if ((double)num12 > 0.5)
+				num12 = 1f - num11;
+			if ((double)num12 < 0.0)
+				num12 = 0.0f;
+			float num13 = (float)(((double)num11 + 0.5) % 1.0);
+			float num14 = num13;
+			if ((double)num14 > 0.5)
+				num14 = 1f - num13;
+			if ((double)num14 < 0.0)
+				num14 = 0.0f;
+			Microsoft.Xna.Framework.Rectangle r2 = texture2D2.Frame(1, 1, 0, 0);
+			drawOrigin = r2.Size() / 2f;
+			Vector2 position3 = position1 + new Vector2(0.0f, -46f);
+			Microsoft.Xna.Framework.Color color3 = Color.Pink;
+			Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3, NPC.rotation, drawOrigin, 1f, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
+			float num15 = 1f + num11 * 0.15f;
+			Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3 * num12, NPC.rotation, drawOrigin, 1f * num15, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
+			float num16 = 1f + num13 * 0.15f;
+			Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3 * num14, NPC.rotation, drawOrigin, 1f * num16, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
 
-    }
+			/*
+			int portalWidth = 48;
+			int portalDepth = 18;
+			Color color = new Color(242, 166, 231);
+			int centerX = (int)NPC.Center.X;
+			int centerY = (int)NPC.Center.Y;
+			Main.instance.LoadProjectile(ProjectileID.PortalGunGate);
+			for (int x = centerX - arenaWidth / 2; x < centerX + arenaWidth / 2; x += portalWidth)
+			{
+				int frameNum = (portalFrame / 6 + x / portalWidth) % Main.projFrames[ProjectileID.PortalGunGate];
+				Rectangle frame = new Rectangle(0, frameNum * (portalWidth + 2), portalDepth, portalWidth);
+				Vector2 drawPos = new Vector2(x + portalWidth / 2, centerY - arenaHeight / 2) - Main.screenPosition;
+				spriteBatch.Draw((Texture2D)TextureAssets.Projectile[ProjectileID.PortalGunGate], drawPos, frame, color, (float)-Math.PI / 2f, new Vector2(portalDepth / 2, portalWidth / 2), 1f, SpriteEffects.None, 0f);
+				drawPos.Y += arenaHeight;
+				spriteBatch.Draw((Texture2D)TextureAssets.Projectile[ProjectileID.PortalGunGate], drawPos, frame, color, (float)Math.PI / 2f, new Vector2(portalDepth / 2, portalWidth / 2), 1f, SpriteEffects.None, 0f);
+			}
+			for (int y = centerY - arenaHeight / 2; y < centerY + arenaHeight / 2; y += portalWidth)
+			{
+				int frameNum = (portalFrame / 6 + y / portalWidth) % Main.projFrames[ProjectileID.PortalGunGate];
+				Rectangle frame = new Rectangle(0, frameNum * (portalWidth + 2), portalDepth, portalWidth);
+				Vector2 drawPos = new Vector2(centerX - arenaWidth / 2, y + portalWidth / 2) - Main.screenPosition;
+				spriteBatch.Draw((Texture2D)TextureAssets.Projectile[ProjectileID.PortalGunGate], drawPos, frame, color, (float)Math.PI, new Vector2(portalDepth / 2, portalWidth / 2), 1f, SpriteEffects.None, 0f);
+				drawPos.X += arenaWidth;
+				spriteBatch.Draw((Texture2D)TextureAssets.Projectile[ProjectileID.PortalGunGate], drawPos, frame, color, 0f, new Vector2(portalDepth / 2, portalWidth / 2), 1f, SpriteEffects.None, 0f);
+			}
+			*/
+		}
+	}
 }
