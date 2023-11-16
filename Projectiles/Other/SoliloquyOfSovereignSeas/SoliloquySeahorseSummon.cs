@@ -65,7 +65,16 @@ namespace StarsAbove.Projectiles.Other.SoliloquyOfSovereignSeas
             SearchForTargets(owner, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter);
             Movement(foundTarget, distanceFromTarget, targetCenter, distanceToIdlePosition, vectorToIdlePosition);
             Visuals();
+            WeaponPlayer modPlayer = owner.GetModPlayer<WeaponPlayer>();
 
+            if (!modPlayer.ousiaAligned)
+            {
+                for (int d = 0; d < 20; d++)
+                {
+                    Dust.NewDust(Projectile.Center, 0, 0, DustID.GemSapphire, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 1f);
+                }
+                Projectile.Kill();
+            }
             if (Projectile.ai[2] > 120)
             {
 
