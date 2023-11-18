@@ -12,4 +12,4 @@ If you would like to help translate The Stars Above, thank you! Please take a lo
 If you would like to translate The Stars Above to another language, please look in the Discord Server's #translation-information channel, this will make your job a lot easier.
 
 # Mod Support
-If you're a mod developer, and you'd like Starfarer dialogue for your bosses or biomes, please shoot me a DM on Discord (PaperLuigi#0001) and I'll try to get back to you.
+If you're a mod developer, and you'd like Starfarer dialogue for your bosses or biomes, please shoot me a DM on Discord (paperluigi) and I'll try to get back to you.
