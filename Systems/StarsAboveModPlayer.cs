@@ -1685,7 +1685,7 @@ namespace StarsAbove.Systems
             if (!AlwaysSyncWorldProgress)
             {
                 //Prompt the player to sync progress or not.
-                if (chosenStarfarer != 0 && firstJoinedWorld != Main.worldID)
+                if (firstJoinedWorld != Main.worldID)
                 {
                     sceneID = 2;
                     VNDialogueActive = true;
