@@ -7,9 +7,9 @@ Please read these short messages before viewing and/or utilizing any code in thi
 3. I develop this mod for free, and my time is limited. As I have to balance between art, programming, writing, and testing, sometimes I take concessions with programming. I will reiterate: please only use this mod's code sparingly and with prior knowledge in C#. Let me speak from experience: don't try to teach yourself programming with Terraria code. It isn't worth it- take a real class!
 
 # Translation
-If you would like to help translate The Stars Above, thank you! However, tModloader 1.4.4 is going to change localization drastically, so the translation environment may change drastically.
+If you would like to help translate The Stars Above, thank you! Please take a look at the en-US.hjson file to get started. Please make sure to use proper hjson syntax, use zh-Hans.hjson as an example. I would appreciate it if you also test translations beforehand!
 
 If you would like to translate The Stars Above to another language, please look in the Discord Server's #translation-information channel, this will make your job a lot easier.
 
 # Mod Support
-If you're a mod developer, and you'd like Starfarer dialogue for your bosses or biomes, please shoot me a DM on Discord (PaperLuigi#0001) and I'll try to get back to you.
+If you're a mod developer, and you'd like Starfarer dialogue for your bosses or biomes, please shoot me a DM on Discord (paperluigi) and I'll try to get back to you.
