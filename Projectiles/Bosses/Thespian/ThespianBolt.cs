@@ -29,9 +29,14 @@ namespace StarsAbove.Projectiles.Bosses.Thespian
 			Projectile.extraUpdates = 1;            //Set to above 0 if you want the projectile to update multiple time in a frame
 			AIType = ProjectileID.Bullet;           //Act exactly like default Bullet
 		}
-		public override bool PreDraw(ref Color lightColor)
+        public override Color? GetAlpha(Color lightColor)
+        {
+            //return Color.White;
+            return new Color(255, 255, 255, 0) * (1f - Projectile.alpha / 255f);
+        }
+        public override bool PreDraw(ref Color lightColor)
 		{
-			default(Effects.GreenTrail).Draw(Projectile);
+			//default(Effects.GreenTrail).Draw(Projectile);
 
 			return true;
 		}
@@ -44,7 +49,8 @@ namespace StarsAbove.Projectiles.Bosses.Thespian
 
 		public override void AI()
 		{
-			
+			DrawOffsetX = -14;
+			DrawOriginOffsetY = -12;
 		}
 
 		public override void OnKill(int timeLeft)

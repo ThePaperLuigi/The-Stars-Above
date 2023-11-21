@@ -223,18 +223,18 @@ namespace StarsAbove.NPCs.Thespian
 					case 2:
 						PhlogistonPyrotechnics(P, NPC);
 						break;
-					case 3:
+                    case 3:
+                        RingmastersWill(P, NPC);
+                        break;
+                    case 4:
 						StygianAugurDown(P, NPC);
 						break;
-					case 4:
+					case 5:
 						StygianAugurLeft(P, NPC);
 						break;
-					case 5:
-						Lixiviate(P, NPC);
-						break;
 					case 6:
-						RingmastersWill(P, NPC);
-						break;
+						Lixiviate(P, NPC);
+						break;				
 					case 7:
 						AthanoricArena(P, NPC);
 						break;
@@ -247,7 +247,12 @@ namespace StarsAbove.NPCs.Thespian
 			}
 			
 		}
-		private void BossVisuals()
+        public override Color? GetAlpha(Color lightColor)
+        {
+            //return Color.White;
+            return new Color(255, 255, 255, 0) * (1f - NPC.alpha / 255f);
+        }
+        private void BossVisuals()
         {
 			for (int i = 0; i < Main.maxPlayers; i++)
 			{
@@ -628,7 +633,11 @@ namespace StarsAbove.NPCs.Thespian
 			--drawOrigin.X;
 			Vector2 position1 = NPC.Bottom - Main.screenPosition;
 			Texture2D texture2D2 = (Texture2D)Request<Texture2D>("StarsAbove/Effects/ThespianWallsEffect");
-			float num11 = (float)((double)Main.GlobalTimeWrappedHourly % 4.0 / 4.0);
+            float num11 = (float)((double)Main.GlobalTimeWrappedHourly % 4.0 / 4.0);
+            if (Main.LocalPlayer.HasBuff(BuffType<AthanoricCurse>()))
+			{
+                num11 = (float)((double)Main.GlobalTimeWrappedHourly % 0.5 / 0.5);
+            }
 			float num12 = num11;
 			if ((double)num12 > 0.5)
 				num12 = 1f - num11;

@@ -5871,7 +5871,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Stygian Augur";//The name of the attack.
+				modPlayer.NextAttack = "Argyropeia";//The name of the attack.
 				npc.ai[3] = 60;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
