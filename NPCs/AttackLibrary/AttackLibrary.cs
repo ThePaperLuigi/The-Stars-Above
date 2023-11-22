@@ -6715,12 +6715,252 @@ namespace StarsAbove.NPCs.AttackLibrary
 				return;
 			}
 		}
-		#endregion
 
-		#region Tsukiyomi
-		//Cutscene activation. Teleports the boss to the right (the other arena.)
+        public static void ParadigmOfChaos(Player target, NPC npc)//
+        {
+            var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
-		public static void TsukiyomiPhaseChange(Player target, NPC npc)//
+            //Each attack in the Library has 3 important segments.
+            //Part 1: Name of the attack and cast time. (ActionState.Idle)
+            //Part 2: The actual execution of the attack. (ActionState.Casting)
+            //Part 3: If the attack lasts longer than the initial attack, execute the active code. (ActionState.PersistentCast)
+
+            //Global attack-specific variables
+
+            if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
+            {
+
+                //Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
+                //Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
+
+                //CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
+
+                modPlayer.NextAttack = "Paradigm of Chaos";//The name of the attack.
+                npc.ai[3] = 60;//This is the time it takes for the cast to finish.
+                npc.localAI[3] = 0;//This resets the cast time.
+                npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
+                npc.netUpdate = true;//NetUpdate for good measure.
+                                     //The NPC will recieve the message when this code is run: "Oh, I'm casting."
+                                     //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
+
+
+
+                return;
+            }
+            if (npc.ai[0] == (float)ActionState.PersistentCast)//If an attack lasts, it'll be moved to PersistentCast until the cast finishes.
+            {
+
+                return;
+            }
+            if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
+            {
+                //
+
+
+                #region attack
+                SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
+                
+
+                //Clear old emotion
+                int index = npc.FindBuffIndex(BuffType<ThespianAngry>());
+                if (index >= 0)
+                    npc.DelBuff(index);
+
+                int index2 = npc.FindBuffIndex(BuffType<ThespianSad>());
+                if (index2 >= 0)
+                    npc.DelBuff(index2);
+
+                int random = Main.rand.Next(0, 3);
+				
+				switch (random)
+				{
+					case 0:
+                        for (int d = 0; d < 30; d++)
+                        {
+                            Dust.NewDust(npc.Center, 0, 0, DustID.GemTopaz, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 2f);
+                        }
+                        break;
+
+					case 1:
+                        for (int d = 0; d < 30; d++)
+                        {
+                            Dust.NewDust(npc.Center, 0, 0, DustID.GemRuby, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 2f);
+                        }
+                        npc.AddBuff(BuffType<ThespianAngry>(), 180000);
+                        break;
+
+					case 2:
+                        for (int d = 0; d < 30; d++)
+                        {
+                            Dust.NewDust(npc.Center, 0, 0, DustID.GemSapphire, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 2f);
+                        }
+                        npc.AddBuff(BuffType<ThespianSad>(), 180000);
+                        break;
+				}
+
+                #endregion
+
+
+                //After the attack ends, we do some cleanup.
+                ResetAttack(target, npc);
+
+                npc.ai[0] = (float)ActionState.Idle;//If the attack continues, change ActionState to PersistentCast instead
+                modPlayer.NextAttack = "";//Empty the UI text.
+                npc.localAI[3] = 0;//Reset the cast.
+                npc.ai[1] = 60;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
+                npc.ai[2] += 1;//Increment the rotation counter.
+                npc.netUpdate = true;//NetUpdate for good measure.
+
+                return;
+            }
+        }
+        public static void AlchemicalAnarchy(Player target, NPC npc)//
+        {
+            var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
+
+            //Each attack in the Library has 3 important segments.
+            //Part 1: Name of the attack and cast time. (ActionState.Idle)
+            //Part 2: The actual execution of the attack. (ActionState.Casting)
+            //Part 3: If the attack lasts longer than the initial attack, execute the active code. (ActionState.PersistentCast)
+
+            //Global attack-specific variables
+
+            if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
+            {
+
+                //Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
+                //Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
+
+                //CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
+
+                modPlayer.NextAttack = "Alchemical Anarchy";//The name of the attack.
+                npc.ai[3] = 120;//This is the time it takes for the cast to finish.
+                npc.localAI[3] = 0;//This resets the cast time.
+                npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
+                npc.netUpdate = true;//NetUpdate for good measure.
+                                     //The NPC will recieve the message when this code is run: "Oh, I'm casting."
+                                     //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
+				if(npc.HasBuff(BuffType<ThespianSad>()))
+				{
+                    if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CombatText.Thespian.Sad"), 241, 255, 180); }
+                }
+                else if (npc.HasBuff(BuffType<ThespianSad>()))
+                {
+                    if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CombatText.Thespian.Angry"), 241, 255, 180); }
+
+                }
+                else
+				{
+                    if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CombatText.Thespian.Happy"), 241, 255, 180); }
+
+                }
+
+
+                return;
+            }
+            if (npc.ai[0] == (float)ActionState.PersistentCast)//If an attack lasts, it'll be moved to PersistentCast until the cast finishes.
+            {
+
+                return;
+            }
+            if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
+            {
+                //if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CombatText.Thespian.Chaos"), 241, 255, 180); }
+
+
+                #region attack
+                SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
+
+				int state = 0;//happy
+                if (npc.HasBuff(BuffType<ThespianSad>()))
+                {
+					state = 2;
+				}
+                else if (npc.HasBuff(BuffType<ThespianAngry>()))
+                {
+					state = 1;
+
+                }
+                else
+                {
+
+                }
+
+                switch (state)
+                {
+                    case 0://Happy
+                        for (int d = 0; d < 30; d++)
+                        {
+                            Dust.NewDust(target.Center, 0, 0, DustID.GemTopaz, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 2f);
+                        }
+						//A bunch of projectiles go up and down towards all players like teeth
+                        break;
+
+                    case 1://Angry
+                        for (int d = 0; d < 30; d++)
+                        {
+                            Dust.NewDust(target.Center, 0, 0, DustID.GemRuby, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 2f);
+                        }
+                        //Inflict all players with either a left or right debuff; once this ends, they will be launched in that direction
+                        if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
+                        {
+                            for (int i = 0; i < Main.maxPlayers; i++)
+                            {
+                                Player player = Main.player[i];
+                                if (player.active)
+                                {
+                                    if (Main.rand.NextBool())
+                                    {
+                                        player.AddBuff(BuffType<Buffs.Boss.LaunchLeft>(), 240);
+
+                                    }
+                                    else
+                                    {
+                                        player.AddBuff(BuffType<Buffs.Boss.LaunchRight>(), 240);
+
+                                    }
+                                    for (int d = 0; d < 30; d++)
+                                    {
+                                        Dust.NewDust(target.Center, 0, 0, DustID.FireworkFountain_Pink, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1f);
+                                    }
+                                }
+                            }
+                        }
+                        break;
+
+                    case 2://Sad
+                        for (int d = 0; d < 30; d++)
+                        {
+                            Dust.NewDust(target.Center, 0, 0, DustID.GemSapphire, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 2f);
+                        }
+						//Inflict the MAIN target player with a debuff; this debuff causes them to periodically spawn dangerous bombs behind them that need to be avoided
+
+
+                        break;
+                }
+
+                #endregion
+
+
+                //After the attack ends, we do some cleanup.
+                ResetAttack(target, npc);
+
+                npc.ai[0] = (float)ActionState.Idle;//If the attack continues, change ActionState to PersistentCast instead
+                modPlayer.NextAttack = "";//Empty the UI text.
+                npc.localAI[3] = 0;//Reset the cast.
+                npc.ai[1] = 0;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
+                npc.ai[2] += 1;//Increment the rotation counter.
+                npc.netUpdate = true;//NetUpdate for good measure.
+
+                return;
+            }
+        }
+        #endregion
+
+        #region Tsukiyomi
+        //Cutscene activation. Teleports the boss to the right (the other arena.)
+
+        public static void TsukiyomiPhaseChange(Player target, NPC npc)//
 		{
 			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 

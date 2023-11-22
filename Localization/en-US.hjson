@@ -4,6 +4,7 @@ Mods: {
 			SanguineDespair: drained themselves of all life.
 			SupremeAuthority: returned to the void.
 			Thespian: failed to follow the act.
+			ShockAndAwe: tried to rocket jump too hard.
 		}
 
 		Boss.WarriorOfLight: The Warrior of Light descends!
@@ -51,6 +52,9 @@ Mods: {
 				MoveRight: Move right in {0}...
 				StopMoving: Stop moving in {0}...
 				Success: Success!
+				Happy: The Ringmaster's delight begets chaos...
+				Angry: The Ringmaster's fury begets chaos...
+				Sad: The Ringmaster's despair begets chaos...
 			}
 
 			Dioskouroi.Clash: The Dioskouroi clash, equalizing their HP!
@@ -4539,7 +4543,7 @@ Mods: {
 					'''
 					Obtained after defeating Moon Lord
 					A gift from your Starfarer
-					Utilized in the creation of 'Vermilion Daemon'
+					Utilized in the creation of 'Vermilion Daemon' (Magic)
 					'''
 				DisplayName: Essence of Adagium
 			}
@@ -4549,7 +4553,7 @@ Mods: {
 					'''
 					Obtained after defeating Duke Fishron
 					A gift from your Starfarer
-					Utilized in the creation of 'Crimson Sakura Alpha'
+					Utilized in the creation of 'Crimson Sakura Alpha' (Melee)
 					'''
 				DisplayName: Essence of the Alpha
 			}
@@ -4559,7 +4563,7 @@ Mods: {
 					'''
 					Obtained after defeating the World Evil Boss
 					A gift from your Starfarer
-					Utilized in the creation of 'Ashen Ambition'
+					Utilized in the creation of 'Ashen Ambition' (Melee)
 					'''
 				DisplayName: Essence of Ash
 			}
@@ -4569,7 +4573,7 @@ Mods: {
 					'''
 					Obtained after defeating Nalhaun, the Burnished King
 					A gift from your Starfarer
-					Utilized in the creation of 'Unforgotten'
+					Utilized in the creation of 'Unforgotten' (Melee)
 					'''
 				DisplayName: Essence of Azakana
 			}
@@ -4579,7 +4583,7 @@ Mods: {
 					'''
 					Obtained after defeating the Warrior of Light
 					A gift from your Starfarer
-					Utilized in the creation of 'Vermilion Riposte'
+					Utilized in the creation of 'Vermilion Riposte' (Magic)
 					'''
 				DisplayName: Essence of Balance
 			}
@@ -4589,7 +4593,7 @@ Mods: {
 					'''
 					Obtained after defeating Queen Bee
 					A gift from your Starfarer
-					Utilized in the creation of 'Skofnung'
+					Utilized in the creation of 'Skofnung' (Melee)
 					'''
 				DisplayName: Essence of Bitterfrost
 			}
@@ -4599,7 +4603,7 @@ Mods: {
 					'''
 					Obtained after defeating the Wall of Flesh
 					A gift from your Starfarer
-					Utilized in the creation of 'Force-of-Nature'
+					Utilized in the creation of 'Force-of-Nature' (Ranged)
 					'''
 				DisplayName: Essence of Blasting
 			}
@@ -4609,7 +4613,7 @@ Mods: {
 					'''
 					Obtained after defeating Golem
 					A gift from your Starfarer
-					Utilized in the creation of 'Mercy'
+					Utilized in the creation of 'Mercy' (Melee)
 					'''
 				DisplayName: Essence of Blood
 			}
@@ -4619,7 +4623,7 @@ Mods: {
 					'''
 					Obtained from Arbitration
 					A gift from your Starfarer
-					Utilized in the creation of 'The Only Thing I Know For Real'
+					Utilized in the creation of 'The Only Thing I Know For Real' (Celestial)
 					'''
 				DisplayName: Essence of Bloodshed
 			}
@@ -4629,7 +4633,7 @@ Mods: {
 					'''
 					Obtained after defeating any mechanical boss
 					A gift from your Starfarer
-					Utilized in the creation of 'Veneration of Butterflies'
+					Utilized in the creation of 'Veneration of Butterflies' (Magic)
 					'''
 				DisplayName: Essence of Butterflies
 			}
@@ -4639,7 +4643,7 @@ Mods: {
 					'''
 					Obtained after defeating Queen Slime
 					A gift from your Starfarer
-					Utilized in the creation of 'Dreadnought Chemtank'
+					Utilized in the creation of 'Dreadnought Chemtank' (Ranged)
 					'''
 				DisplayName: Essence of Chemtech
 			}
@@ -4649,7 +4653,7 @@ Mods: {
 					'''
 					Obtained after defeating any mechanical boss
 					A gift from your Starfarer
-					Utilized in the creation of 'Memento Muse'
+					Utilized in the creation of 'Memento Muse' (Melee)
 					'''
 				DisplayName: Essence of Death's Apprentice
 			}
@@ -4659,7 +4663,7 @@ Mods: {
 					'''
 					Obtained after defeating Moon Lord
 					A gift from your Starfarer
-					Utilized in the creation of 'Virtue's Edge'
+					Utilized in the creation of 'Virtue's Edge' (Celestial)
 					'''
 				DisplayName: Essence of Destiny
 			}
@@ -4669,7 +4673,7 @@ Mods: {
 					'''
 					Obtained after defeating the Lunatic Cultist
 					A gift from your Starfarer
-					Utilized in the creation of 'Yunlai Stiletto'
+					Utilized in the creation of 'Yunlai Stiletto' (Melee)
 					'''
 				DisplayName: Essence of Driving Thunder
 			}
@@ -4679,7 +4683,7 @@ Mods: {
 					'''
 					Obtained after defeating Ice Queen
 					A gift from your Starfarer
-					Utilized in the creation of 'Stygian Nymph'
+					Utilized in the creation of 'Stygian Nymph' (Magic)
 					'''
 				DisplayName: Essence of Duality
 			}
@@ -4689,7 +4693,7 @@ Mods: {
 					'''
 					Obtained after defeating Moon Lord
 					A gift from your Starfarer
-					Utilized in the creation of 'Eternal Star'
+					Utilized in the creation of 'Eternal Star' (Magic)
 					'''
 				DisplayName: Essence of Eternity
 			}
@@ -4699,7 +4703,7 @@ Mods: {
 					'''
 					Obtained after defeating Penthesilea, the Witch of Ink
 					A gift from your Starfarer
-					Utilized in the creation of 'Vision of Euthymia'
+					Utilized in the creation of 'Vision of Euthymia' (Magic)
 					'''
 				DisplayName: Essence of Euthymia
 			}
@@ -4709,7 +4713,7 @@ Mods: {
 					'''
 					Obtained after defeating Golem
 					A gift from your Starfarer
-					Utilized in the creation of 'Genocide'
+					Utilized in the creation of 'Genocide' (Ranged)
 					'''
 				DisplayName: Essence of Explosions
 			}
@@ -4719,7 +4723,7 @@ Mods: {
 					'''
 					Obtained after defeating Queen Bee
 					A gift from your Starfarer
-					Utilized in the creation of 'Inugami Ripsaw'
+					Utilized in the creation of 'Inugami Ripsaw' (Melee)
 					'''
 				DisplayName: Essence of Fingers
 			}
@@ -4729,7 +4733,7 @@ Mods: {
 					'''
 					Obtained after defeating Plantera
 					A gift from your Starfarer
-					Utilized in the creation of 'Kifrosse'
+					Utilized in the creation of 'Kifrosse' (Summon)
 					'''
 				DisplayName: Essence of Foxfire
 			}
@@ -4739,7 +4743,7 @@ Mods: {
 					'''
 					Obtained after defeating Penthesilea, the Witch of Ink
 					A gift from your Starfarer
-					Utilized in the creation of 'Penthesilea's Muse'
+					Utilized in the creation of 'Penthesilea's Muse' (Melee)
 					'''
 				DisplayName: Essence of Ink
 			}
@@ -4749,7 +4753,7 @@ Mods: {
 					'''
 					Obtained after defeating Ice Queen
 					A gift from your Starfarer
-					Utilized in the creation of 'Cæsura of Despair'
+					Utilized in the creation of 'Cæsura of Despair' (Summon)
 					'''
 				DisplayName: Essence of Hope
 			}
@@ -4759,7 +4763,7 @@ Mods: {
 					'''
 					Obtained after defeating Queen Slime
 					A gift from your Starfarer
-					Utilized in the creation of 'Izanagi's Edge'
+					Utilized in the creation of 'Izanagi's Edge' (Ranged)
 					'''
 				DisplayName: Essence of Izanagi
 			}
@@ -4769,7 +4773,7 @@ Mods: {
 					'''
 					Obtained after defeating Nalhaun, the Burnished King
 					A gift from your Starfarer
-					Utilized in the creation of 'Liberation Blazing'
+					Utilized in the creation of 'Liberation Blazing' (Melee)
 					'''
 				DisplayName: Essence of Liberation
 			}
@@ -4779,7 +4783,7 @@ Mods: {
 					'''
 					Obtained after defeating Pumpking
 					A gift from your Starfarer
-					Utilized in the creation of 'The Blood Blade'
+					Utilized in the creation of 'The Blood Blade' (Melee)
 					'''
 				DisplayName: Essence of Lifethirsting
 			}
@@ -4789,7 +4793,7 @@ Mods: {
 					'''
 					Obtained after defeating Tsukiyomi, the First Starfarer
 					A gift from your Starfarer
-					Utilized in the creation of 'Architect's Luminance'
+					Utilized in the creation of 'Architect's Luminance' (Melee/Magic/Summon/Ranged)
 					'''
 				DisplayName: Essence of Luminance
 			}
@@ -4799,7 +4803,7 @@ Mods: {
 					'''
 					Obtained after defeating Moon Lord
 					A gift from your Starfarer
-					Utilized in the creation of 'Naganadel'
+					Utilized in the creation of 'Naganadel' (Melee)
 					'''
 				DisplayName: Essence of Lunar Dominion
 			}
@@ -4809,7 +4813,7 @@ Mods: {
 					'''
 					Obtained after defeating Skeletron
 					A gift from your Starfarer
-					Utilized in the creation of 'Misery's Company'
+					Utilized in the creation of 'Misery's Company' (Melee)
 					'''
 				DisplayName: Essence of Misery
 			}
@@ -4819,7 +4823,7 @@ Mods: {
 					'''
 					Obtained after defeating the World Evil Boss
 					A gift from your Starfarer
-					Utilized in the creation of 'Takonomicon'
+					Utilized in the creation of 'Takonomicon' (Summon)
 					'''
 				DisplayName: Essence of Outer Gods
 			}
@@ -4829,7 +4833,7 @@ Mods: {
 					'''
 					Unobtainable
 					A gift from your Starfarer
-					Utilized in the creation of 'Every Moment Matters'
+					Utilized in the creation of 'Every Moment Matters' (N/A)
 					'''
 				DisplayName: Essence of Perfection
 			}
@@ -4839,7 +4843,7 @@ Mods: {
 					'''
 					Obtained after defeating Nalhaun, the Burnished King
 					A gift from your Starfarer
-					Utilized in the creation of 'Claimh Solais'
+					Utilized in the creation of 'Claimh Solais' (Melee)
 					'''
 				DisplayName: Essence of Radiance
 			}
@@ -4849,7 +4853,7 @@ Mods: {
 					'''
 					Obtained after defeating Empress of Light
 					A gift from your Starfarer
-					Utilized in the creation of 'Sakura's Vengeance'
+					Utilized in the creation of 'Sakura's Vengeance' (Melee)
 					'''
 				DisplayName: Essence of Sakura
 			}
@@ -4859,7 +4863,7 @@ Mods: {
 					'''
 					Obtained after defeating Wall of Flesh
 					A gift from your Starfarer
-					Utilized in the creation of 'Karlan Truesilver'
+					Utilized in the creation of 'Karlan Truesilver' (Melee)
 					'''
 				DisplayName: Essence of Silver Ash
 			}
@@ -4869,7 +4873,7 @@ Mods: {
 					'''
 					Obtained after defeating Duke Fishron
 					A gift from your Starfarer
-					Utilized in the creation of 'Key of the Sinner'
+					Utilized in the creation of 'Key of the Sinner' (Summon)
 					'''
 				DisplayName: Essence of Sin
 			}
@@ -4879,7 +4883,7 @@ Mods: {
 					'''
 					Obtained after defeating Moon Lord
 					A gift from your Starfarer
-					Utilized in the creation of 'Suistrume'
+					Utilized in the creation of 'Suistrume' (Special)
 					'''
 				DisplayName: Essence of Starsong
 			}
@@ -4889,7 +4893,7 @@ Mods: {
 					'''
 					Obtained after defeating Queen Slime
 					A gift from your Starfarer
-					Utilized in the creation of 'Sparkblossom's Beacon'
+					Utilized in the creation of 'Sparkblossom's Beacon' (Summon)
 					'''
 				DisplayName: Essence of Static Shock
 			}
@@ -4899,7 +4903,7 @@ Mods: {
 					'''
 					Obtained after defeating King Slime
 					A gift from your Starfarer
-					Utilized in the creation of 'Rad Gun'
+					Utilized in the creation of 'Rad Gun' (Magic)
 					'''
 				DisplayName: Essence of Style
 			}
@@ -4909,7 +4913,7 @@ Mods: {
 					'''
 					Obtained after defeating the Warrior of Light
 					A gift from your Starfarer
-					Utilized in the creation of 'Light Unrelenting'
+					Utilized in the creation of 'Light Unrelenting' (Magic)
 					'''
 				DisplayName: Essence of Surpassing Limits
 			}
@@ -4919,7 +4923,7 @@ Mods: {
 					'''
 					Obtained after defeating Empress of Light
 					A gift from your Starfarer
-					Utilized in the creation of 'Arachnid Needlepoint'
+					Utilized in the creation of 'Arachnid Needlepoint' (Summon)
 					'''
 				DisplayName: Essence of Technology
 			}
@@ -4929,7 +4933,7 @@ Mods: {
 					'''
 					Obtained after defeating King Slime
 					A gift from your Starfarer
-					Utilized in the creation of 'Aegis Driver'
+					Utilized in the creation of 'Aegis Driver' (Magic)
 					'''
 				DisplayName: Essence of the Aegis
 			}
@@ -4939,7 +4943,7 @@ Mods: {
 					'''
 					Obtained after defeating Skeletron Prime
 					A gift from your Starfarer
-					Utilized in the creation of 'Armaments of the Sky Striker'
+					Utilized in the creation of 'Armaments of the Sky Striker' (Melee/Magic/Summon/Ranged)
 					'''
 				DisplayName: Essence of the Aerial Ace
 			}
@@ -4949,7 +4953,7 @@ Mods: {
 					'''
 					Obtained after defeating the World Evil Boss
 					A gift from your Starfarer
-					Utilized in the creation of 'Neo Dealmaker'
+					Utilized in the creation of 'Neo Dealmaker' (Ranged)
 					'''
 				DisplayName: Essence of the Anomaly
 			}
@@ -4959,7 +4963,7 @@ Mods: {
 					'''
 					Obtained after defeating the Lunatic Cultist
 					A gift from your Starfarer
-					Utilized in the creation of 'Ozma Ascendant'
+					Utilized in the creation of 'Ozma Ascendant' (Magic)
 					'''
 				DisplayName: Essence of the Ascendant
 			}
@@ -4969,7 +4973,7 @@ Mods: {
 					'''
 					Obtained after defeating all vanilla bosses and the Warrior of Light
 					A gift from your Starfarer
-					Utilized in the creation of 'Bury The Light'
+					Utilized in the creation of 'Bury The Light' (Celestial)
 					'''
 				DisplayName: Essence of the Beginning and End
 			}
@@ -4979,7 +4983,7 @@ Mods: {
 					'''
 					Obtained after defeating any mechanical boss
 					A gift from your Starfarer
-					Utilized in the creation of 'Xenoblade'
+					Utilized in the creation of 'Xenoblade' (Melee)
 					'''
 				DisplayName: Essence of the Bionis
 			}
@@ -4989,7 +4993,7 @@ Mods: {
 					'''
 					Obtained after defeating any mechanical boss
 					A gift from your Starfarer
-					Utilized in the creation of 'Ride The Bull'
+					Utilized in the creation of 'Ride The Bull' (Ranged)
 					'''
 				DisplayName: Essence of the Bull
 			}
@@ -4999,7 +5003,7 @@ Mods: {
 					'''
 					Obtained after defeating Moon Lord
 					A gift from your Starfarer
-					Utilized in the creation of 'Shadowless Cerulean'
+					Utilized in the creation of 'Shadowless Cerulean' (Magic)
 					'''
 				DisplayName: Essence of the Chimera
 			}
@@ -5009,7 +5013,7 @@ Mods: {
 					'''
 					Unobtainable
 					A gift from your Starfarer
-					Utilized in the creation of 'Ignition Astra'
+					Utilized in the creation of 'Ignition Astra' (N/A)
 					'''
 				DisplayName: Essence of the Cosmos
 			}
@@ -5019,7 +5023,7 @@ Mods: {
 					'''
 					Obtained after defeating Eye of Cthulhu
 					A gift from your Starfarer
-					Utilized in the creation of 'Carian Dark Moon'
+					Utilized in the creation of 'Carian Dark Moon' (Magic)
 					'''
 				DisplayName: Essence of the Dark Moon
 			}
@@ -5029,7 +5033,7 @@ Mods: {
 					'''
 					Obtained after defeating all mechanical bosses
 					A gift from your Starfarer
-					Utilized in the creation of 'Drachenlance'
+					Utilized in the creation of 'Drachenlance' (Melee)
 					'''
 				DisplayName: Essence of the Dragonslayer
 			}
@@ -5039,7 +5043,7 @@ Mods: {
 					'''
 					Obtained after defeating Plantera
 					A gift from your Starfarer
-					Utilized in the creation of 'Voice Of The Fallen'
+					Utilized in the creation of 'Voice Of The Fallen' (Ranged)
 					'''
 				DisplayName: Essence of the Fallen
 			}
@@ -5049,7 +5053,7 @@ Mods: {
 					'''
 					Obtained after defeating Skeletron
 					A gift from your Starfarer
-					Utilized in the creation of 'Der Freischutz'
+					Utilized in the creation of 'Der Freischutz' (Special)
 					'''
 				DisplayName: Essence of The Freeshooter
 			}
@@ -5059,7 +5063,7 @@ Mods: {
 					'''
 					Obtained after defeating Tsukiyomi, the First Starfarer
 					A gift from your Starfarer
-					Utilized in the creation of 'Cosmic Destroyer'
+					Utilized in the creation of 'Cosmic Destroyer' (Ranged)
 					'''
 				DisplayName: Essence of the Future
 			}
@@ -5069,7 +5073,7 @@ Mods: {
 					'''
 					Obtained after defeating Eye of Cthulhu
 					A gift from your Starfarer
-					Utilized in the creation of 'Konpaku Katana'
+					Utilized in the creation of 'Konpaku Katana' (Summon)
 					'''
 				DisplayName: Essence of the Gardener
 			}
@@ -5079,7 +5083,7 @@ Mods: {
 					'''
 					Obtained after defeating all mechanical bosses
 					A gift from your Starfarer
-					Utilized in the creation of 'Hullwrought'
+					Utilized in the creation of 'Hullwrought' (Melee)
 					'''
 				DisplayName: Essence of the Gunlance
 			}
@@ -5089,7 +5093,7 @@ Mods: {
 					'''
 					Obtained after defeating Golem
 					A gift from your Starfarer
-					Utilized in the creation of 'Tartaglia'
+					Utilized in the creation of 'Tartaglia' (Ranged)
 					'''
 				DisplayName: Essence of the Harbinger
 			}
@@ -5099,7 +5103,7 @@ Mods: {
 					'''
 					Obtained after defeating Queen Slime
 					A gift from your Starfarer
-					Utilized in the creation of 'Hawkmoon'
+					Utilized in the creation of 'Hawkmoon' (Magic/Ranged)
 					'''
 				DisplayName: Essence of the Hawkmoon
 			}
@@ -5109,7 +5113,7 @@ Mods: {
 					'''
 					Obtained after defeating Dioskouroi, the Twin Forces
 					A gift from your Starfarer
-					Utilized in the creation of 'Hollowheart Albion'
+					Utilized in the creation of 'Hollowheart Albion' (Summon)
 					'''
 				DisplayName: Essence of the Hollowheart
 			}
@@ -5119,7 +5123,7 @@ Mods: {
 					'''
 					Obtained after defeating Queen Slime
 					A gift from your Starfarer
-					Utilized in the creation of 'Hunter's Symphony'
+					Utilized in the creation of 'Hunter's Symphony' (Magic)
 					'''
 				DisplayName: Essence of the Hunt
 			}
@@ -5129,7 +5133,7 @@ Mods: {
 					'''
 					Obtained after defeating Golem
 					A gift from your Starfarer
-					Utilized in the creation of 'Plenilune Gaze'
+					Utilized in the creation of 'Plenilune Gaze' (Ranged)
 					'''
 				DisplayName: Essence of The Moonlit Adepti
 			}
@@ -5139,7 +5143,7 @@ Mods: {
 					'''
 					Obtained after defeating Wall of Flesh
 					A gift from your Starfarer
-					Utilized in the creation of 'Luminary Wand'
+					Utilized in the creation of 'Luminary Wand' (Summon)
 					'''
 				DisplayName: Essence of the Observatory
 			}
@@ -5149,7 +5153,7 @@ Mods: {
 					'''
 					Obtained after defeating Skeletron, then visiting the Ocean
 					A gift from your Starfarer
-					Utilized in the creation of 'Apalistik'
+					Utilized in the creation of 'Apalistik' (Summon)
 					'''
 				DisplayName: Essence of the Ocean
 			}
@@ -5159,7 +5163,7 @@ Mods: {
 					'''
 					Obtained after defeating the Warrior of Light
 					A gift from your Starfarer
-					Utilized in the creation of 'Burning Desire'
+					Utilized in the creation of 'Burning Desire' (Melee)
 					'''
 				DisplayName: Essence of the Overwhelming Blaze
 			}
@@ -5169,7 +5173,7 @@ Mods: {
 					'''
 					Obtained after defeating Skeletron, then visiting the Underworld
 					A gift from your Starfarer
-					Utilized in the creation of 'Kazimierz Seraphim'
+					Utilized in the creation of 'Kazimierz Seraphim' (Summon)
 					'''
 				DisplayName: Essence of The Pegasus
 			}
@@ -5179,7 +5183,7 @@ Mods: {
 					'''
 					Obtained after defeating Dioskouroi, the Twin Forces
 					A gift from your Starfarer
-					Utilized in the creation of 'Phantom in the Mirror'
+					Utilized in the creation of 'Phantom in the Mirror' (Summon)
 					'''
 				DisplayName: Essence of the Phantom
 			}
@@ -5189,7 +5193,7 @@ Mods: {
 					'''
 					Obtained after defeating Skeletron
 					A gift from your Starfarer
-					Utilized in the creation of 'Death in Four Acts'
+					Utilized in the creation of 'Death in Four Acts' (Ranged)
 					'''
 				DisplayName: Essence of The Sharpshooter
 			}
@@ -5199,7 +5203,7 @@ Mods: {
 					'''
 					Obtained after defeating Plantera
 					A gift from your Starfarer
-					Utilized in the creation of 'Crimson Outbreak'
+					Utilized in the creation of 'Crimson Outbreak' (Ranged)
 					'''
 				DisplayName: Essence of the Swarm
 			}
@@ -5209,7 +5213,7 @@ Mods: {
 					'''
 					Obtained after defeating the Warrior of Light
 					A gift from your Starfarer
-					Utilized in the creation of 'Key of the King's Law'
+					Utilized in the creation of 'Key of the King's Law' (Summon)
 					'''
 				DisplayName: Essence of the Treasury
 			}
@@ -5219,7 +5223,7 @@ Mods: {
 					'''
 					Unobtainable
 					A gift from your Starfarer
-					Utilized in the creation of 'Persephone'
+					Utilized in the creation of 'Persephone' (N/A)
 					'''
 				DisplayName: Essence of The Underworld Goddess
 			}
@@ -5229,7 +5233,7 @@ Mods: {
 					'''
 					Obtained after defeating Lunatic Cultist
 					A gift from your Starfarer
-					Utilized in the creation of 'Rex Lapis'
+					Utilized in the creation of 'Rex Lapis' (Melee)
 					'''
 				DisplayName: Essence of the Unyielding Earth
 			}
@@ -5239,7 +5243,7 @@ Mods: {
 					'''
 					Obtained after defeating Penthesilea, the Witch of Ink
 					A gift from your Starfarer
-					Utilized in the creation of 'Kroniic Principality'
+					Utilized in the creation of 'Kroniic Principality' (Summon)
 					'''
 				DisplayName: Essence of Time
 			}
@@ -5249,7 +5253,7 @@ Mods: {
 					'''
 					Obtained after defeating Lunatic Cultist
 					A gift from your Starfarer
-					Utilized in the creation of 'Twin Stars of Albireo'
+					Utilized in the creation of 'Twin Stars of Albiero' (Magic)
 					'''
 				DisplayName: Essence of Twin Stars
 			}
@@ -5259,7 +5263,7 @@ Mods: {
 					'''
 					Obtained after defeating Deerclops
 					A gift from your Starfarer
-					Utilized in the creation of 'The Morning Star'
+					Utilized in the creation of 'The Morning Star' (Summon)
 					'''
 				DisplayName: Essence of Vampirism
 			}
@@ -7257,7 +7261,7 @@ Mods: {
 					'''
 					Obtained after defeating Queen Slime
 					A gift from your Starfarer
-					Utilized in the creation of 'Adornment of the Chaotic God'
+					Utilized in the creation of 'Adornment of the Chaotic God' (Summon)
 					'''
 				DisplayName: Essence of Absolute Chaos
 			}
@@ -7267,7 +7271,7 @@ Mods: {
 					'''
 					Obtained after defeating the Warrior of Light
 					A gift from your Starfarer
-					Utilized in the creation of 'Supreme Authority'
+					Utilized in the creation of 'Supreme Authority' (Magic)
 					'''
 				DisplayName: Essence of Authority
 			}
@@ -7277,7 +7281,7 @@ Mods: {
 					'''
 					Obtained after finding a Guide Voodoo Doll on a Hardcore character
 					A gift from your Starfarer
-					Utilized in the creation of 'Sanguine Despair'
+					Utilized in the creation of 'Sanguine Despair' (Magic)
 					'''
 				DisplayName: Essence of Despair
 			}
@@ -7287,7 +7291,7 @@ Mods: {
 					'''
 					Obtained after visiting a Graveyard
 					A gift from your Starfarer
-					Utilized in the creation of 'Kevesi Farewell'
+					Utilized in the creation of 'Kevesi Farewell' (Special)
 					'''
 				DisplayName: Essence of Farewells
 			}
@@ -7297,7 +7301,7 @@ Mods: {
 					'''
 					OObtained after visiting the Hallow
 					A gift from your Starfarer
-					Utilized in the creation of 'Aurum Edge'
+					Utilized in the creation of 'Aurum Edge' (Melee/Magic)
 					'''
 				DisplayName: Essence of Gold
 			}
@@ -7307,7 +7311,7 @@ Mods: {
 					'''
 					Obtained after defeating Nalhaun, the Burnished King
 					A gift from your Starfarer
-					Utilized in the creation of 'Boltstorm Axe'
+					Utilized in the creation of 'Boltstorm Axe'(Melee/Magic)
 					'''
 				DisplayName: Essence of Lightning
 			}
@@ -7317,7 +7321,7 @@ Mods: {
 					'''
 					Obtained after defeating Duke Fishron
 					A gift from your Starfarer
-					Utilized in the creation of 'Maniacal Justice'
+					Utilized in the creation of 'Maniacal Justice' (Melee)
 					'''
 				DisplayName: Essence of Mania
 			}
@@ -7327,7 +7331,7 @@ Mods: {
 					'''
 					Obtained from Arbitration
 					A gift from your Starfarer
-					Utilized in the creation of 'Manifestation'
+					Utilized in the creation of 'Manifestation' (Celestial)
 					'''
 				DisplayName: Essence of Mimicry
 			}
@@ -7337,7 +7341,7 @@ Mods: {
 					'''
 					Obtained after defeating Skeletron
 					A gift from your Starfarer
-					Utilized in the creation of 'Nanomachina Reactor'
+					Utilized in the creation of 'Nanomachina Reactor' (Special)
 					'''
 				DisplayName: Essence of Nanomachines
 			}
@@ -7347,7 +7351,7 @@ Mods: {
 					'''
 					Obtained after placing a Tier 2 Stellaglyph
 					A gift from your Starfarer
-					Utilized in the creation of 'Irminsul's Dream'
+					Utilized in the creation of 'Irminsul's Dream' (Magic)
 					'''
 				DisplayName: Essence of Nature
 			}
@@ -7357,7 +7361,7 @@ Mods: {
 					'''
 					Obtained after visiting a Graveyard
 					A gift from your Starfarer
-					Utilized in the creation of 'Agnian Farewell'
+					Utilized in the creation of 'Agnian Farewell' (Special)
 					'''
 				DisplayName: Essence of Offseeing
 			}
@@ -7367,7 +7371,7 @@ Mods: {
 					'''
 					Obtained after defeating a pirate invasion
 					A gift from your Starfarer
-					Utilized in the creation of 'Saltwater Scourge'
+					Utilized in the creation of 'Saltwater Scourge' (Ranged)
 					'''
 				DisplayName: Essence of Piracy
 			}
@@ -7377,7 +7381,7 @@ Mods: {
 					'''
 					Obtained after defeating Lunatic Cultist
 					A gift from your Starfarer
-					Utilized in the creation of 'Catalyst's Memory'
+					Utilized in the creation of 'Catalyst's Memory' (Celestial)
 					'''
 				DisplayName: Essence of Quantum
 			}
@@ -7387,7 +7391,7 @@ Mods: {
 					'''
 					Obtained after defeating Golem
 					A gift from your Starfarer
-					Utilized in the creation of 'Gloves of the Black Silence'
+					Utilized in the creation of 'Gloves of the Black Silence' (Celestial)
 					'''
 				DisplayName: Essence of Silence
 			}
@@ -7397,7 +7401,7 @@ Mods: {
 					'''
 					Obtained after defeating Moon Lord
 					A gift from your Starfarer
-					Utilized in the creation of 'Soul Reaver'
+					Utilized in the creation of 'Soul Reaver' (Melee)
 					'''
 				DisplayName: Essence of Souls
 			}
@@ -7407,7 +7411,7 @@ Mods: {
 					'''
 					Obtained after defeating Tsukiyomi, the First Starfarer
 					A gift from your Starfarer
-					Utilized in the creation of 'Sunset of the Sun God'
+					Utilized in the creation of 'Sunset of the Sun God' (Melee/Magic/Summon/Ranged)
 					'''
 				DisplayName: Essence of Surya
 			}
@@ -7417,7 +7421,7 @@ Mods: {
 					'''
 					Obtained after defeating the Warrior of Light
 					A gift from your Starfarer
-					Utilized in the creation of 'The Everlasting Pickaxe'
+					Utilized in the creation of 'The Everlasting Pickaxe' (Celestial)
 					'''
 				DisplayName: Essence of the Abyss
 			}
@@ -7427,7 +7431,7 @@ Mods: {
 					'''
 					Obtained after placing a Tier 2 Stellaglyph
 					A gift from your Starfarer
-					Utilized in the creation of 'Pod Zero-42'
+					Utilized in the creation of 'Pod Zero-42' (Summon)
 					'''
 				DisplayName: Essence of the Automaton
 			}
@@ -7437,7 +7441,7 @@ Mods: {
 					'''
 					Obtained after defeating Martian Madness
 					A gift from your Starfarer
-					Utilized in the creation of 'The Kiss of Death'
+					Utilized in the creation of 'The Kiss of Death' (Ranged)
 					'''
 				DisplayName: Essence of the Behemoth Typhoon
 			}
@@ -7447,7 +7451,7 @@ Mods: {
 					'''
 					Obtained after defeating all mechanical bosses
 					A gift from your Starfarer
-					Utilized in the creation of 'El Capitan's Hardware'
+					Utilized in the creation of 'El Capitan's Hardware' (Ranged)
 					'''
 				DisplayName: Essence of the Renegade
 			}
@@ -7457,7 +7461,7 @@ Mods: {
 					'''
 					Obtained after defeating Lunatic Cultist
 					A gift from your Starfarer
-					Utilized in the creation of 'Umbra'
+					Utilized in the creation of 'Umbra' (Melee)
 					'''
 				DisplayName: Essence of the Timeless
 			}
@@ -7467,7 +7471,7 @@ Mods: {
 					'''
 					Obtained after defeating the Vagrant of Space and Time
 					A gift from your Starfarer
-					Utilized in the creation of 'Chronoclock'
+					Utilized in the creation of 'Chronoclock' (Summon)
 					'''
 				DisplayName: Essence of the Watch
 			}
@@ -8093,7 +8097,7 @@ Mods: {
 					Rocket contact damage and explosion damage occur separately
 					Direct hits on airborne foes will guarantee a critical strike
 					Rocket explosions will launch players and non-boss enemies and explosion proximity increases travel distance
-					Launching yourself will grant the buff [c/E74336:Death from Above] for 4 seconds (Buff is removed upon landing)
+					Launching yourself will deal 5% Max HP in self damage, but grants the buff [c/E74336:Death from Above] for 4 seconds (Buff is removed upon landing)
 					During this time, rocket explosions deal 20% increased non-critical strike damage and 40% increased critical strike damage
 					Right click to swing the [c/83D26E:Bargain Gardener], dealing damage to nearby foes (Critical strikes are disabled)
 					Striking foes with the [c/83D26E:Bargain Gardener] while airborne under the effect of [c/E74336:Death from Above] will guarantee a 2x damage critical strike
@@ -8237,7 +8241,7 @@ Mods: {
 					'''
 					Obtained after defeating Plantera
 					A gift from your Starfarer
-					Utilized in the creation of 'Dreamer's Inkwell'
+					Utilized in the creation of 'Dreamer's Inkwell' (Magic)
 					'''
 			}
 
@@ -8247,7 +8251,7 @@ Mods: {
 					'''
 					Obtained after defeating Duke Fishron
 					A gift from your Starfarer
-					Utilized in the creation of 'Kariumu's Favor'
+					Utilized in the creation of 'Kariumu's Favor' (Celestial)
 					'''
 			}
 
@@ -8257,7 +8261,7 @@ Mods: {
 					'''
 					Obtained after defeating the Vagrant of Space and Time
 					A gift from your Starfarer
-					Utilized in the creation of 'Trickspin Two-Step'
+					Utilized in the creation of 'Trickspin Two-Step' (Summon)
 					'''
 			}
 
@@ -8267,7 +8271,7 @@ Mods: {
 					'''
 					Obtained after defeating the World Evil Boss
 					A gift from your Starfarer
-					Utilized in the creation of 'Shock & Awe'
+					Utilized in the creation of 'Shock & Awe' (Ranged)
 					'''
 			}
 
@@ -8277,7 +8281,7 @@ Mods: {
 					'''
 					Obtained after defeating Skeletron, and then visiting the Underworld
 					A gift from your Starfarer
-					Utilized in the creation of 'Gossamer Needle'
+					Utilized in the creation of 'Gossamer Needle' (Melee/Magic)
 					'''
 			}
 
@@ -8338,7 +8342,7 @@ Mods: {
 					'''
 					Obtained after defeating the Wall of Flesh
 					A gift from your Starfarer
-					Utilized in the creation of 'Dragged Below'
+					Utilized in the creation of 'Dragged Below' (Magic)
 					'''
 			}
 

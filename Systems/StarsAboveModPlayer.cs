@@ -4346,8 +4346,7 @@ namespace StarsAbove.Systems
 
                         return;
                     }
-                    //move to thespian
-                    if (ClockWeaponDialogue == 0 && VagrantWeaponDialogue == 2)
+                    if (ClockWeaponDialogue == 0 && vagrantDialogue == 2)
                     {
                         ClockWeaponDialogue = 1;
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }

@@ -14,7 +14,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Utilities;
 using static Terraria.ModLoader.ModContent;
-
+using Terraria.Utilities;
 using static StarsAbove.NPCs.AttackLibrary.AttackLibrary;
 using StarsAbove.Buffs.Boss;
 using Terraria.GameContent;
@@ -29,6 +29,7 @@ using StarsAbove.Items.Loot;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
 using StarsAbove.Projectiles.Extra;
+using StarsAbove.Dusts;
 
 namespace StarsAbove.NPCs.Thespian
 {
@@ -623,7 +624,29 @@ namespace StarsAbove.NPCs.Thespian
         {
 
         }
-		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+        public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+        {
+
+            SpriteEffects spriteEffects = SpriteEffects.None;
+
+            // Getting texture of projectile
+            Texture2D texture = (Texture2D)Request<Texture2D>("StarsAbove/NPCs/Thespian/ThespianCurseAngry");
+
+            Texture2D bossAngry = (Texture2D)Request<Texture2D>("StarsAbove/NPCs/Thespian/ThespianCurseAngry");
+            Texture2D bossHappy = (Texture2D)Request<Texture2D>("StarsAbove/NPCs/Thespian/ThespianCurseHappy");
+            Texture2D bossSad = (Texture2D)Request<Texture2D>("StarsAbove/NPCs/Thespian/ThespianCurseSad");
+
+            Rectangle sourceRectangle = new(0, (int)NPC.frame.Y, texture.Width, 200);
+
+            Vector2 origin = sourceRectangle.Size() / 2f;
+
+            Main.EntitySpriteDraw(bossAngry,
+                    NPC.Center - screenPos,
+                    sourceRectangle, drawColor, NPC.rotation, origin, NPC.scale, spriteEffects, 0);
+
+            return base.PreDraw(spriteBatch, screenPos, drawColor);
+        }
+        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
 			Microsoft.Xna.Framework.Color color1 = Lighting.GetColor((int)((double)NPC.position.X + (double)NPC.width * 0.5) / 16, (int)(((double)NPC.position.Y + (double)NPC.height * 0.5) / 16.0));
 			Vector2 drawOrigin = new Vector2(NPC.width * 0.5f, NPC.height * 0.5f);

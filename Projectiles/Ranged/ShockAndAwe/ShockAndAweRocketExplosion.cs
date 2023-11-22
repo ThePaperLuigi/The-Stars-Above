@@ -1,8 +1,10 @@
 ﻿
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs.ShockAndAwe;
+using StarsAbove.Utilities;
 using System;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -29,12 +31,13 @@ namespace StarsAbove.Projectiles.Ranged.ShockAndAwe
             Projectile.hostile = false;
             Projectile.friendly = true;
             Projectile.tileCollide = false;
-
+            Projectile.netImportant = true;
         }
 
 
         public override void AI()
         {
+            Projectile.netUpdate = true;
             //Main.PlaySound(SoundLoader.customSoundType, (int)projectile.Center.X, (int)projectile.Center.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/GunbladeImpact"));
             for (int i = 0; i < Main.maxPlayers; i++)
             {
@@ -49,6 +52,7 @@ namespace StarsAbove.Projectiles.Ranged.ShockAndAwe
                     p.velocity.X = MathHelper.Clamp(p.velocity.X, -18f, 18f);
                     if (Projectile.owner == p.whoAmI)
                     {
+                        p.Hurt(PlayerDeathReason.ByCustomReason(p.name + LangHelper.GetTextValue("DeathReason.ShockAndAwe")), (int)(p.statLifeMax2 * 0.05f), 0, false, false, -1, false, 0, 0, 0);
                         p.AddBuff(BuffType<DeathFromAbove>(), 240);
                     }
                 }
