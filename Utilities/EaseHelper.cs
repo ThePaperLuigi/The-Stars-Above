@@ -51,5 +51,5 @@ internal static class EaseHelper
     {
         return MathHelper.Lerp(EaseIn(t), EaseOut(t), t);
     }
-
+    
 }

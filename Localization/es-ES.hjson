@@ -4,6 +4,7 @@ Mods: {
 			// SanguineDespair: drained themselves of all life.
 			// SupremeAuthority: returned to the void.
 			// Thespian: failed to follow the act.
+			// ShockAndAwe: tried to rocket jump too hard.
 		}
 
 		// Boss.WarriorOfLight: The Warrior of Light descends!
@@ -50,7 +51,12 @@ Mods: {
 				// MoveLeft: Move left in {0}...
 				// MoveRight: Move right in {0}...
 				// StopMoving: Stop moving in {0}...
+				// LaunchLeft: Launched left in {0}...
+				// LaunchRight: Launched right in {0}...
 				// Success: Success!
+				// Happy: The Ringmaster's [c/E8DB5B:delight] begets chaos...
+				// Angry: The Ringmaster's [c/D83838:fury] begets chaos...
+				// Sad: The Ringmaster's [c/3888D8:despair] begets chaos...
 			}
 
 			// Dioskouroi.Clash: The Dioskouroi clash, equalizing their HP!
@@ -7106,7 +7112,7 @@ Mods: {
 					'''
 					Obtained after defeating Queen Slime
 					A gift from your Starfarer
-					Utilized in the creation of 'Adornment of the Chaotic God'
+					Utilized in the creation of 'Adornment of the Chaotic God' (Summon)
 					''' */
 				// DisplayName: Essence of Absolute Chaos
 			}
@@ -7116,7 +7122,7 @@ Mods: {
 					'''
 					Obtained after defeating the Warrior of Light
 					A gift from your Starfarer
-					Utilized in the creation of 'Supreme Authority'
+					Utilized in the creation of 'Supreme Authority' (Magic)
 					''' */
 				// DisplayName: Essence of Authority
 			}
@@ -7126,7 +7132,7 @@ Mods: {
 					'''
 					Obtained after finding a Guide Voodoo Doll on a Hardcore character
 					A gift from your Starfarer
-					Utilized in the creation of 'Sanguine Despair'
+					Utilized in the creation of 'Sanguine Despair' (Magic)
 					''' */
 				// DisplayName: Essence of Despair
 			}
@@ -7136,7 +7142,7 @@ Mods: {
 					'''
 					Obtained after visiting a Graveyard
 					A gift from your Starfarer
-					Utilized in the creation of 'Kevesi Farewell'
+					Utilized in the creation of 'Kevesi Farewell' (Special)
 					''' */
 				// DisplayName: Essence of Farewells
 			}
@@ -7146,7 +7152,7 @@ Mods: {
 					'''
 					OObtained after visiting the Hallow
 					A gift from your Starfarer
-					Utilized in the creation of 'Aurum Edge'
+					Utilized in the creation of 'Aurum Edge' (Melee/Magic)
 					''' */
 				// DisplayName: Essence of Gold
 			}
@@ -7156,7 +7162,7 @@ Mods: {
 					'''
 					Obtained after defeating Nalhaun, the Burnished King
 					A gift from your Starfarer
-					Utilized in the creation of 'Boltstorm Axe'
+					Utilized in the creation of 'Boltstorm Axe'(Melee/Magic)
 					''' */
 				// DisplayName: Essence of Lightning
 			}
@@ -7166,7 +7172,7 @@ Mods: {
 					'''
 					Obtained after defeating Duke Fishron
 					A gift from your Starfarer
-					Utilized in the creation of 'Maniacal Justice'
+					Utilized in the creation of 'Maniacal Justice' (Melee)
 					''' */
 				// DisplayName: Essence of Mania
 			}
@@ -7176,7 +7182,7 @@ Mods: {
 					'''
 					Obtained from Arbitration
 					A gift from your Starfarer
-					Utilized in the creation of 'Manifestation'
+					Utilized in the creation of 'Manifestation' (Celestial)
 					''' */
 				// DisplayName: Essence of Mimicry
 			}
@@ -7186,7 +7192,7 @@ Mods: {
 					'''
 					Obtained after defeating Skeletron
 					A gift from your Starfarer
-					Utilized in the creation of 'Nanomachina Reactor'
+					Utilized in the creation of 'Nanomachina Reactor' (Special)
 					''' */
 				// DisplayName: Essence of Nanomachines
 			}
@@ -7196,7 +7202,7 @@ Mods: {
 					'''
 					Obtained after placing a Tier 2 Stellaglyph
 					A gift from your Starfarer
-					Utilized in the creation of 'Irminsul's Dream'
+					Utilized in the creation of 'Irminsul's Dream' (Magic)
 					''' */
 				// DisplayName: Essence of Nature
 			}
@@ -7206,7 +7212,7 @@ Mods: {
 					'''
 					Obtained after visiting a Graveyard
 					A gift from your Starfarer
-					Utilized in the creation of 'Agnian Farewell'
+					Utilized in the creation of 'Agnian Farewell' (Special)
 					''' */
 				// DisplayName: Essence of Offseeing
 			}
@@ -7216,7 +7222,7 @@ Mods: {
 					'''
 					Obtained after defeating a pirate invasion
 					A gift from your Starfarer
-					Utilized in the creation of 'Saltwater Scourge'
+					Utilized in the creation of 'Saltwater Scourge' (Ranged)
 					''' */
 				// DisplayName: Essence of Piracy
 			}
@@ -7226,7 +7232,7 @@ Mods: {
 					'''
 					Obtained after defeating Lunatic Cultist
 					A gift from your Starfarer
-					Utilized in the creation of 'Catalyst's Memory'
+					Utilized in the creation of 'Catalyst's Memory' (Celestial)
 					''' */
 				DisplayName: Esencia Quantica
 			}
@@ -7236,7 +7242,7 @@ Mods: {
 					'''
 					Obtained after defeating Golem
 					A gift from your Starfarer
-					Utilized in the creation of 'Gloves of the Black Silence'
+					Utilized in the creation of 'Gloves of the Black Silence' (Celestial)
 					''' */
 				// DisplayName: Essence of Silence
 			}
@@ -7246,7 +7252,7 @@ Mods: {
 					'''
 					Obtained after defeating Moon Lord
 					A gift from your Starfarer
-					Utilized in the creation of 'Soul Reaver'
+					Utilized in the creation of 'Soul Reaver' (Melee)
 					''' */
 				// DisplayName: Essence of Souls
 			}
@@ -7256,7 +7262,7 @@ Mods: {
 					'''
 					Obtained after defeating Tsukiyomi, the First Starfarer
 					A gift from your Starfarer
-					Utilized in the creation of 'Sunset of the Sun God'
+					Utilized in the creation of 'Sunset of the Sun God' (Melee/Magic/Summon/Ranged)
 					''' */
 				// DisplayName: Essence of Surya
 			}
@@ -7266,7 +7272,7 @@ Mods: {
 					'''
 					Obtained after defeating the Warrior of Light
 					A gift from your Starfarer
-					Utilized in the creation of 'The Everlasting Pickaxe'
+					Utilized in the creation of 'The Everlasting Pickaxe' (Celestial)
 					''' */
 				// DisplayName: Essence of the Abyss
 			}
@@ -7276,7 +7282,7 @@ Mods: {
 					'''
 					Obtained after placing a Tier 2 Stellaglyph
 					A gift from your Starfarer
-					Utilized in the creation of 'Pod Zero-42'
+					Utilized in the creation of 'Pod Zero-42' (Summon)
 					''' */
 				// DisplayName: Essence of the Automaton
 			}
@@ -7286,7 +7292,7 @@ Mods: {
 					'''
 					Obtained after defeating Martian Madness
 					A gift from your Starfarer
-					Utilized in the creation of 'The Kiss of Death'
+					Utilized in the creation of 'The Kiss of Death' (Ranged)
 					''' */
 				// DisplayName: Essence of the Behemoth Typhoon
 			}
@@ -7296,7 +7302,7 @@ Mods: {
 					'''
 					Obtained after defeating all mechanical bosses
 					A gift from your Starfarer
-					Utilized in the creation of 'El Capitan's Hardware'
+					Utilized in the creation of 'El Capitan's Hardware' (Ranged)
 					''' */
 				DisplayName: Esencia del Renegado
 			}
@@ -7306,7 +7312,7 @@ Mods: {
 					'''
 					Obtained after defeating Lunatic Cultist
 					A gift from your Starfarer
-					Utilized in the creation of 'Umbra'
+					Utilized in the creation of 'Umbra' (Melee)
 					''' */
 				// DisplayName: Essence of the Timeless
 			}
@@ -7316,7 +7322,7 @@ Mods: {
 					'''
 					Obtained after defeating the Vagrant of Space and Time
 					A gift from your Starfarer
-					Utilized in the creation of 'Chronoclock'
+					Utilized in the creation of 'Chronoclock' (Summon)
 					''' */
 				// DisplayName: Essence of the Watch
 			}
@@ -7942,7 +7948,7 @@ Mods: {
 					Rocket contact damage and explosion damage occur separately
 					Direct hits on airborne foes will guarantee a critical strike
 					Rocket explosions will launch players and non-boss enemies and explosion proximity increases travel distance
-					Launching yourself will grant the buff [c/E74336:Death from Above] for 4 seconds (Buff is removed upon landing)
+					Launching yourself will deal 5% Max HP in self damage, but grants the buff [c/E74336:Death from Above] for 4 seconds (Buff is removed upon landing)
 					During this time, rocket explosions deal 20% increased non-critical strike damage and 40% increased critical strike damage
 					Right click to swing the [c/83D26E:Bargain Gardener], dealing damage to nearby foes (Critical strikes are disabled)
 					Striking foes with the [c/83D26E:Bargain Gardener] while airborne under the effect of [c/E74336:Death from Above] will guarantee a 2x damage critical strike
@@ -8086,7 +8092,7 @@ Mods: {
 					'''
 					Obtained after defeating Plantera
 					A gift from your Starfarer
-					Utilized in the creation of 'Dreamer's Inkwell'
+					Utilized in the creation of 'Dreamer's Inkwell' (Magic)
 					''' */
 			}
 
@@ -8096,7 +8102,7 @@ Mods: {
 					'''
 					Obtained after defeating Duke Fishron
 					A gift from your Starfarer
-					Utilized in the creation of 'Kariumu's Favor'
+					Utilized in the creation of 'Kariumu's Favor' (Celestial)
 					''' */
 			}
 
@@ -8106,7 +8112,7 @@ Mods: {
 					'''
 					Obtained after defeating the Vagrant of Space and Time
 					A gift from your Starfarer
-					Utilized in the creation of 'Trickspin Two-Step'
+					Utilized in the creation of 'Trickspin Two-Step' (Summon)
 					''' */
 			}
 
@@ -8116,7 +8122,7 @@ Mods: {
 					'''
 					Obtained after defeating the World Evil Boss
 					A gift from your Starfarer
-					Utilized in the creation of 'Shock & Awe'
+					Utilized in the creation of 'Shock & Awe' (Ranged)
 					''' */
 			}
 
@@ -8126,7 +8132,7 @@ Mods: {
 					'''
 					Obtained after defeating Skeletron, and then visiting the Underworld
 					A gift from your Starfarer
-					Utilized in the creation of 'Gossamer Needle'
+					Utilized in the creation of 'Gossamer Needle' (Melee/Magic)
 					''' */
 			}
 
@@ -8187,7 +8193,7 @@ Mods: {
 					'''
 					Obtained after defeating the Wall of Flesh
 					A gift from your Starfarer
-					Utilized in the creation of 'Dragged Below'
+					Utilized in the creation of 'Dragged Below' (Magic)
 					''' */
 			}
 
@@ -9647,6 +9653,9 @@ Mods: {
 			// ThespianBolt.DisplayName: Thespian Bolt
 			// RebellionSwordSpin.DisplayName: Rebellion Sword Spin
 			// SoliloquySinger.DisplayName: Soliloquy Singer
+			// ThespianSadBolt.DisplayName: Thespian Sad Bolt
+			// ThespianExplosion.DisplayName: Thespian Explosion
+			// ThespianExplosionIndicator.DisplayName: Thespian Explosion Indicator
 		}
 
 		Buffs: {
@@ -12083,6 +12092,41 @@ Mods: {
 			ForceStopMoving: {
 				// DisplayName: Force Stop Moving
 				// Description: You are compelled to stop moving once this debuff ends
+			}
+
+			LaunchLeft: {
+				// DisplayName: Launch Left
+				// Description: Mods.StarsAbove.Buffs.LaunchLeft.Description
+			}
+
+			LaunchRight: {
+				// DisplayName: Launch Right
+				// Description: Mods.StarsAbove.Buffs.LaunchRight.Description
+			}
+
+			ThespianAngry: {
+				// DisplayName: Thespian Angry
+				// Description: Mods.StarsAbove.Buffs.ThespianAngry.Description
+			}
+
+			ThespianSad: {
+				// DisplayName: Thespian Sad
+				// Description: Mods.StarsAbove.Buffs.ThespianSad.Description
+			}
+
+			ThespianSadAttack: {
+				// DisplayName: Thespian Sad Attack
+				// Description: Mods.StarsAbove.Buffs.ThespianSadAttack.Description
+			}
+
+			ThespianHappyAttack: {
+				// DisplayName: Thespian Happy Attack
+				// Description: Mods.StarsAbove.Buffs.ThespianHappyAttack.Description
+			}
+
+			ThespianTransition: {
+				// DisplayName: Thespian Transition
+				// Description: Mods.StarsAbove.Buffs.ThespianTransition.Description
 			}
 		}
 

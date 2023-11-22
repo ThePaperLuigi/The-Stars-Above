@@ -5956,7 +5956,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Stygian Augur";//The name of the attack.
+				modPlayer.NextAttack = "Argyropeia";//The name of the attack.
 				npc.ai[3] = 60;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -6041,7 +6041,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Stygian Augur";//The name of the attack.
+				modPlayer.NextAttack = "Argyropeia";//The name of the attack.
 				npc.ai[3] = 60;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -6126,7 +6126,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Stygian Augur";//The name of the attack.
+				modPlayer.NextAttack = "Argyropeia";//The name of the attack.
 				npc.ai[3] = 60;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -6231,7 +6231,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				{
 
 
-					int type = ProjectileType<NalhaunExplosionIndicator>();
+					int type = ProjectileType<ThespianExplosionIndicator>();
 					int damage = npc.damage;
 					var entitySource = npc.GetSource_FromAI();
 
@@ -6387,7 +6387,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.ai[0] = (float)ActionState.Idle;//If the attack continues, change ActionState to PersistentCast instead
 				modPlayer.NextAttack = "";//Empty the UI text.
 				npc.localAI[3] = 0;//Reset the cast.
-				npc.ai[1] = 0;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
+				npc.ai[1] = 100;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
 				npc.ai[2] += 1;//Increment the rotation counter.
 				npc.netUpdate = true;//NetUpdate for good measure.
 
@@ -6432,8 +6432,6 @@ namespace StarsAbove.NPCs.AttackLibrary
 			}
 			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
 			{
-
-
 				#region attack
 				SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
 				if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CombatText.Thespian.AthanoricCurse"), 241, 255, 180); }
@@ -6461,8 +6459,8 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				npc.ai[0] = (float)ActionState.Idle;//If the attack continues, change ActionState to PersistentCast instead
 				modPlayer.NextAttack = "";//Empty the UI text.
-				npc.localAI[3] = 0;//Reset the cast.
-				npc.ai[1] = 0;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
+				npc.localAI[3] = 00;//Reset the cast.
+				npc.ai[1] = 100;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
 				npc.ai[2] += 1;//Increment the rotation counter.
 				npc.netUpdate = true;//NetUpdate for good measure.
 
@@ -6632,7 +6630,7 @@ namespace StarsAbove.NPCs.AttackLibrary
                 npc.ai[0] = (float)ActionState.Idle;//If the attack continues, change ActionState to PersistentCast instead
                 modPlayer.NextAttack = "";//Empty the UI text.
                 npc.localAI[3] = 0;//Reset the cast.
-                npc.ai[1] = 60;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
+                npc.ai[1] = 120;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
                 npc.ai[2] += 1;//Increment the rotation counter.
                 npc.netUpdate = true;//NetUpdate for good measure.
 
@@ -6754,12 +6752,16 @@ namespace StarsAbove.NPCs.AttackLibrary
             }
             if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
             {
-                //
-
-
+				//
+				
                 #region attack
                 SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
-                
+
+				//Confetti
+                for (int g = 0; g < 24; g++)
+                {
+                    int goreIndex = Gore.NewGore(null, new Vector2(npc.position.X + npc.width / 2 - 24f, npc.position.Y + npc.height / 2 - 24f), new Vector2(Main.rand.Next(-12,12), Main.rand.Next(-12, 12)), Main.rand.Next(276, 283), 1f);
+                }
 
                 //Clear old emotion
                 int index = npc.FindBuffIndex(BuffType<ThespianAngry>());
@@ -6779,6 +6781,8 @@ namespace StarsAbove.NPCs.AttackLibrary
                         {
                             Dust.NewDust(npc.Center, 0, 0, DustID.GemTopaz, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 2f);
                         }
+                        npc.AddBuff(BuffType<ThespianTransition>(), 10);
+
                         break;
 
 					case 1:
@@ -6787,6 +6791,8 @@ namespace StarsAbove.NPCs.AttackLibrary
                             Dust.NewDust(npc.Center, 0, 0, DustID.GemRuby, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 2f);
                         }
                         npc.AddBuff(BuffType<ThespianAngry>(), 180000);
+                        npc.AddBuff(BuffType<ThespianTransition>(), 10);
+
                         break;
 
 					case 2:
@@ -6795,6 +6801,8 @@ namespace StarsAbove.NPCs.AttackLibrary
                             Dust.NewDust(npc.Center, 0, 0, DustID.GemSapphire, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 2f);
                         }
                         npc.AddBuff(BuffType<ThespianSad>(), 180000);
+                        npc.AddBuff(BuffType<ThespianTransition>(), 10);
+
                         break;
 				}
 
@@ -6807,13 +6815,14 @@ namespace StarsAbove.NPCs.AttackLibrary
                 npc.ai[0] = (float)ActionState.Idle;//If the attack continues, change ActionState to PersistentCast instead
                 modPlayer.NextAttack = "";//Empty the UI text.
                 npc.localAI[3] = 0;//Reset the cast.
-                npc.ai[1] = 60;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
+                npc.ai[1] = 120;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
                 npc.ai[2] += 1;//Increment the rotation counter.
                 npc.netUpdate = true;//NetUpdate for good measure.
 
                 return;
             }
         }
+		//Random effect based on Paradigm of Chaos emotion
         public static void AlchemicalAnarchy(Player target, NPC npc)//
         {
             var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
@@ -6844,7 +6853,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				{
                     if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CombatText.Thespian.Sad"), 241, 255, 180); }
                 }
-                else if (npc.HasBuff(BuffType<ThespianSad>()))
+                else if (npc.HasBuff(BuffType<ThespianAngry>()))
                 {
                     if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CombatText.Thespian.Angry"), 241, 255, 180); }
 
@@ -6886,14 +6895,24 @@ namespace StarsAbove.NPCs.AttackLibrary
 
                 }
 
+				//Debug
+				//state = 0;
+
                 switch (state)
                 {
                     case 0://Happy
-                        for (int d = 0; d < 30; d++)
+                        for (int i = 0; i < Main.maxPlayers; i++)
                         {
-                            Dust.NewDust(target.Center, 0, 0, DustID.GemTopaz, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 2f);
+                            Player player = Main.player[i];
+                            if (player.active)
+                            {
+                                player.AddBuff(BuffType<Buffs.Boss.ThespianHappyAttack>(), 190);
+                                for (int d = 0; d < 30; d++)
+                                {
+                                    Dust.NewDust(target.Center, 0, 0, DustID.FireworkFountain_Pink, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1f);
+                                }
+                            }
                         }
-						//A bunch of projectiles go up and down towards all players like teeth
                         break;
 
                     case 1://Angry
@@ -6909,14 +6928,16 @@ namespace StarsAbove.NPCs.AttackLibrary
                                 Player player = Main.player[i];
                                 if (player.active)
                                 {
+                                    player.AddBuff(BuffType<Buffs.Boss.AthanoricCurse>(), 220);
+
                                     if (Main.rand.NextBool())
                                     {
-                                        player.AddBuff(BuffType<Buffs.Boss.LaunchLeft>(), 240);
+                                        player.AddBuff(BuffType<Buffs.Boss.LaunchLeft>(), 190);
 
                                     }
                                     else
                                     {
-                                        player.AddBuff(BuffType<Buffs.Boss.LaunchRight>(), 240);
+                                        player.AddBuff(BuffType<Buffs.Boss.LaunchRight>(), 190);
 
                                     }
                                     for (int d = 0; d < 30; d++)
@@ -6933,8 +6954,18 @@ namespace StarsAbove.NPCs.AttackLibrary
                         {
                             Dust.NewDust(target.Center, 0, 0, DustID.GemSapphire, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 2f);
                         }
-						//Inflict the MAIN target player with a debuff; this debuff causes them to periodically spawn dangerous bombs behind them that need to be avoided
-
+                        for (int i = 0; i < Main.maxPlayers; i++)
+                        {
+                            Player player = Main.player[i];
+                            if (player.active)
+                            {
+                                player.AddBuff(BuffType<Buffs.Boss.ThespianSadAttack>(), 190);
+                                for (int d = 0; d < 30; d++)
+                                {
+                                    Dust.NewDust(target.Center, 0, 0, DustID.FireworkFountain_Pink, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1f);
+                                }
+                            }
+                        }
 
                         break;
                 }
@@ -6949,6 +6980,98 @@ namespace StarsAbove.NPCs.AttackLibrary
                 modPlayer.NextAttack = "";//Empty the UI text.
                 npc.localAI[3] = 0;//Reset the cast.
                 npc.ai[1] = 0;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
+                npc.ai[2] += 1;//Increment the rotation counter.
+                npc.netUpdate = true;//NetUpdate for good measure.
+
+                return;
+            }
+        }
+
+        public static void LetsCelebrate(Player target, NPC npc)//
+        {
+            var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
+
+            //Each attack in the Library has 3 important segments.
+            //Part 1: Name of the attack and cast time. (ActionState.Idle)
+            //Part 2: The actual execution of the attack. (ActionState.Casting)
+            //Part 3: If the attack lasts longer than the initial attack, execute the active code. (ActionState.PersistentCast)
+
+            //Global attack-specific variables
+
+            if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
+            {
+
+
+                modPlayer.NextAttack = "Let's Celebrate!";//The name of the attack.
+                npc.ai[3] = 120;//This is the time it takes for the cast to finish.
+                npc.localAI[3] = 0;//This resets the cast time.
+                npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
+                npc.netUpdate = true;//NetUpdate for good measure.
+                                     //The NPC will recieve the message when this code is run: "Oh, I'm casting."
+                                     //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
+
+
+                return;
+            }
+            if (npc.ai[0] == (float)ActionState.PersistentCast)//If an attack lasts, it'll be moved to PersistentCast until the cast finishes.
+            {
+
+                return;
+            }
+            if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
+            {
+
+                #region attack
+                SoundEngine.PlaySound(SoundID.Item156, npc.Center);
+
+                for (int d = 0; d < 30; d++)
+                {
+                    Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
+                }
+
+                float Speed = 6f;  //projectile speed
+                Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y - 400);
+                int damage = npc.damage / 2;  //projectile damage
+				int type = ProjectileID.HappyBomb; //Type of projectile
+
+                float rotation = (float)Math.Atan2(StartPosition.Y - (target.position.Y + (target.height * 0.5f)), StartPosition.X - (target.position.X + (target.width * 0.5f)));
+                Vector2 velocity = new Vector2((float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1));
+
+                SoundEngine.PlaySound(SoundID.Item43, npc.Center);
+                //Confetti
+                for (int g = 0; g < 24; g++)
+                {
+                    int goreIndex = Gore.NewGore(null, new Vector2(npc.position.X + npc.width / 2 - 24f, npc.position.Y + npc.height / 2 - 24f), new Vector2(Main.rand.Next(-12, 12), Main.rand.Next(-12, 12)), Main.rand.Next(276, 283), 1f);
+                }
+                if (Main.netMode != NetmodeID.MultiplayerClient)
+                {
+                    Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, 0, 0, ProjectileType<TsukiMoonlightSwing>(), 0, 0, Main.myPlayer);
+
+
+                    float numberProjectiles = 5;
+                    float adjustedRotation = MathHelper.ToRadians(80);
+
+                    for (int i = 0; i < numberProjectiles; i++)
+                    {
+                        Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
+                        Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, perturbedSpeed.X * 5, perturbedSpeed.Y * 5, type, damage, 0, Main.myPlayer);
+                    }
+
+
+                }
+
+
+
+                #endregion
+
+
+                //After the attack ends, we do some cleanup.
+                ResetAttack(target, npc);
+
+                npc.ai[0] = (float)ActionState.Idle;//If the attack continues, change ActionState to PersistentCast instead
+                modPlayer.NextAttack = "";//Empty the UI text.
+                npc.localAI[3] = 0;//Reset the cast.
+                npc.ai[1] = 60;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
                 npc.ai[2] += 1;//Increment the rotation counter.
                 npc.netUpdate = true;//NetUpdate for good measure.
 

@@ -39,7 +39,8 @@ namespace StarsAbove.Items.Consumables
 		// We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
 		public override bool CanUseItem(Player player) {
 
-			return !NPC.AnyNPCs(NPCType<NPCs.Thespian.ThespianBoss>()) && SubworldSystem.Current == null;
+			
+			return !NPC.AnyNPCs(NPCType<NPCs.Thespian.ThespianBoss>()) && SubworldSystem.Current == null && !Main.dayTime;
 		}
 
 		public override bool? UseItem(Player player) {

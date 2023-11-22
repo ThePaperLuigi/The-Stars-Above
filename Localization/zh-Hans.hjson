@@ -4,6 +4,7 @@ Mods: {
 			SanguineDespair: 抽干了他自己的生命。
 			SupremeAuthority: 回归到虚空
 			// Thespian: failed to follow the act.
+			// ShockAndAwe: tried to rocket jump too hard.
 		}
 
 		Boss.WarriorOfLight: 光之战士 降临！
@@ -50,7 +51,12 @@ Mods: {
 				// MoveLeft: Move left in {0}...
 				// MoveRight: Move right in {0}...
 				// StopMoving: Stop moving in {0}...
+				// LaunchLeft: Launched left in {0}...
+				// LaunchRight: Launched right in {0}...
 				// Success: Success!
+				// Happy: The Ringmaster's [c/E8DB5B:delight] begets chaos...
+				// Angry: The Ringmaster's [c/D83838:fury] begets chaos...
+				// Sad: The Ringmaster's [c/3888D8:despair] begets chaos...
 			}
 
 			Dioskouroi.Clash: 狄俄斯库洛伊们互相碰撞，平衡了二者的生命力！
@@ -9665,6 +9671,9 @@ Mods: {
 			// ThespianBolt.DisplayName: Thespian Bolt
 			// RebellionSwordSpin.DisplayName: Rebellion Sword Spin
 			// SoliloquySinger.DisplayName: Soliloquy Singer
+			// ThespianSadBolt.DisplayName: Thespian Sad Bolt
+			// ThespianExplosion.DisplayName: Thespian Explosion
+			// ThespianExplosionIndicator.DisplayName: Thespian Explosion Indicator
 		}
 
 		Buffs: {
@@ -12106,6 +12115,41 @@ Mods: {
 			ForceStopMoving: {
 				// DisplayName: Force Stop Moving
 				// Description: You are compelled to stop moving once this debuff ends
+			}
+
+			LaunchLeft: {
+				// DisplayName: Launch Left
+				// Description: Mods.StarsAbove.Buffs.LaunchLeft.Description
+			}
+
+			LaunchRight: {
+				// DisplayName: Launch Right
+				// Description: Mods.StarsAbove.Buffs.LaunchRight.Description
+			}
+
+			ThespianAngry: {
+				// DisplayName: Thespian Angry
+				// Description: Mods.StarsAbove.Buffs.ThespianAngry.Description
+			}
+
+			ThespianSad: {
+				// DisplayName: Thespian Sad
+				// Description: Mods.StarsAbove.Buffs.ThespianSad.Description
+			}
+
+			ThespianSadAttack: {
+				// DisplayName: Thespian Sad Attack
+				// Description: Mods.StarsAbove.Buffs.ThespianSadAttack.Description
+			}
+
+			ThespianHappyAttack: {
+				// DisplayName: Thespian Happy Attack
+				// Description: Mods.StarsAbove.Buffs.ThespianHappyAttack.Description
+			}
+
+			ThespianTransition: {
+				// DisplayName: Thespian Transition
+				// Description: Mods.StarsAbove.Buffs.ThespianTransition.Description
 			}
 		}
 

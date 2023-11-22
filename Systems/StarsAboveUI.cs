@@ -115,6 +115,12 @@ namespace StarsAbove.Systems
         private UserInterface _VagrantCastBarUserInterface;
         internal VagrantCastBar VagrantCastBar;
 
+        private UserInterface _ThespianCastBarUserInterface;
+        internal ThespianCastBar ThespianCastBar;
+
+        private UserInterface _StarfarerBossCastBarUserInterface;
+        internal StarfarerBossCastBar StarfarerBossCastBar;
+
         private UserInterface _PenthCastBarUserInterface;
         internal PenthCastBar PenthCastBar;
 
@@ -325,6 +331,14 @@ namespace StarsAbove.Systems
                 _VagrantCastBarUserInterface = new UserInterface();
                 _VagrantCastBarUserInterface.SetState(VagrantCastBar);
 
+                ThespianCastBar = new ThespianCastBar();
+                _ThespianCastBarUserInterface = new UserInterface();
+                _ThespianCastBarUserInterface.SetState(ThespianCastBar);
+
+                StarfarerBossCastBar = new StarfarerBossCastBar();
+                _StarfarerBossCastBarUserInterface = new UserInterface();
+                _StarfarerBossCastBarUserInterface.SetState(StarfarerBossCastBar);
+
                 PenthCastBar = new PenthCastBar();
                 _PenthCastBarUserInterface = new UserInterface();
                 _PenthCastBarUserInterface.SetState(PenthCastBar);
@@ -519,6 +533,10 @@ namespace StarsAbove.Systems
             _CastorCastBarUserInterface?.Update(gameTime);
             _PolluxCastBarUserInterface?.Update(gameTime);
             _VagrantCastBarUserInterface?.Update(gameTime);
+            _ThespianCastBarUserInterface?.Update(gameTime);
+            _StarfarerBossCastBarUserInterface?.Update(gameTime);
+
+
             _PenthCastBarUserInterface?.Update(gameTime);
             _SpectrumGaugeUserInterface?.Update(gameTime);
             _StarfarerPromptUserInterface?.Update(gameTime);
@@ -933,6 +951,24 @@ namespace StarsAbove.Systems
                     delegate
                     {
                         _VagrantCastBarUserInterface.Draw(Main.spriteBatch, new GameTime());
+                        return true;
+                    },
+                    InterfaceScaleType.UI)
+                );
+                layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+                    "StarsAbove: Thespian Cast Bar",
+                    delegate
+                    {
+                        _ThespianCastBarUserInterface.Draw(Main.spriteBatch, new GameTime());
+                        return true;
+                    },
+                    InterfaceScaleType.UI)
+                );
+                layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+                    "StarsAbove: Starfarer Boss Cast Bar",
+                    delegate
+                    {
+                        _StarfarerBossCastBarUserInterface.Draw(Main.spriteBatch, new GameTime());
                         return true;
                     },
                     InterfaceScaleType.UI)

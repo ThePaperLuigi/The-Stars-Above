@@ -30,6 +30,8 @@ using StarsAbove.Systems;
 using StarsAbove.Systems;
 using StarsAbove.Projectiles.Extra;
 using StarsAbove.Dusts;
+using System.Collections.Generic;
+using static Terraria.GameContent.Animations.IL_Actions.NPCs;
 
 namespace StarsAbove.NPCs.Thespian
 {
@@ -166,14 +168,15 @@ namespace StarsAbove.NPCs.Thespian
 			}
 			return true;
 		}
-
-		public override void AI()
+        public delegate void RotationAction(Player player, NPC npc);
+        
+        public override void AI()
         {
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
             var bossPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
 			//REPLACE BAR WITH YOUR OWN
-            bossPlayer.TsukiyomiBarActive = true;
+            bossPlayer.ThespianBarActive = true;
 
             NPC.velocity *= 0.98f; //So the dashes don't propel the boss away
 
@@ -206,13 +209,61 @@ namespace StarsAbove.NPCs.Thespian
 			{
 				if (NPC.life <= (NPC.lifeMax * 0.9) && AI_RotationNumber < 26) //At a certain HP threshold, skip ahead to Phase 2 (Phase 2 can be naturally reached by waiting)
 				{
-					AI_RotationNumber = 1;
-					NPC.netUpdate = true;
+					//AI_RotationNumber = 1;
+					//NPC.netUpdate = true;
 				}
 			}
 			else if (AI_Timer >= AttackTimer) //An attack is active. (Temp 480, usually 120, or 2 seconds)
             {
-				switch (AI_RotationNumber)
+                List<RotationAction> bossRotation = new List<RotationAction>
+				{
+					StygianAugurUp,
+					StygianAugurRight,
+					PhlogistonPyrotechnics, // exploding from the left
+					AthanoricArena,
+                    ParadigmOfChaos,
+                    AlchemicalAnarchy, // use random buff from Paradigm to do an effect
+                    ParadigmOfChaos, //gain random buff       
+					RingmastersWill,
+					StygianAugurDown,
+					StygianAugurLeft,
+					LetsCelebrate,
+					Lixiviate,
+                    AlchemicalAnarchy,
+                    AthanoricArena,
+                    ParadigmOfChaos,
+                    AlchemicalAnarchy,
+                    StygianAugurUp,
+                    StygianAugurDown,
+                    ParadigmOfChaos,
+                    LetsCelebrate,
+                    AlchemicalAnarchy,
+					Lixiviate,
+                    PhlogistonPyrotechnics,
+                    StygianAugurDown,
+                    RingmastersWillStopMoving,
+					StygianAugurUp,
+					RingmastersWill,
+                    AlchemicalAnarchy,
+                    StygianAugurLeft,
+                    LetsCelebrate,
+                    StygianAugurRight,
+                    ParadigmOfChaos,
+                    AlchemicalAnarchy,
+
+
+                };
+                if (AI_RotationNumber >= 0 && AI_RotationNumber < bossRotation.Count)
+                {
+                    bossRotation[(int)AI_RotationNumber](P, NPC);
+                }
+                else
+                {
+                    AI_RotationNumber = 0;
+                    return;
+                }
+                /*
+                switch (AI_RotationNumber)
 				{
 
 					case 0:
@@ -243,9 +294,9 @@ namespace StarsAbove.NPCs.Thespian
 						AI_RotationNumber = 0;//Once phase 2 is reached, always go back to the 1st mechanic after phase 2.
 						return;
 
-				}
+				}*/
 
-			}
+            }
 			
 		}
         public override Color? GetAlpha(Color lightColor)
@@ -624,6 +675,9 @@ namespace StarsAbove.NPCs.Thespian
         {
 
         }
+        public float quadraticFloatTimer;
+        public float quadraticFloat;
+		public float faceTransition;
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
 
@@ -635,14 +689,42 @@ namespace StarsAbove.NPCs.Thespian
             Texture2D bossAngry = (Texture2D)Request<Texture2D>("StarsAbove/NPCs/Thespian/ThespianCurseAngry");
             Texture2D bossHappy = (Texture2D)Request<Texture2D>("StarsAbove/NPCs/Thespian/ThespianCurseHappy");
             Texture2D bossSad = (Texture2D)Request<Texture2D>("StarsAbove/NPCs/Thespian/ThespianCurseSad");
+            Texture2D bossTransition = (Texture2D)Request<Texture2D>("StarsAbove/NPCs/Thespian/ThespianCurseTransition");
 
             Rectangle sourceRectangle = new(0, (int)NPC.frame.Y, texture.Width, 200);
 
             Vector2 origin = sourceRectangle.Size() / 2f;
 
-            Main.EntitySpriteDraw(bossAngry,
-                    NPC.Center - screenPos,
-                    sourceRectangle, drawColor, NPC.rotation, origin, NPC.scale, spriteEffects, 0);
+            quadraticFloatTimer += 0.0001f + MathHelper.Lerp(0.0001f,0f,NPC.life/NPC.lifeMax);
+            quadraticFloat = EaseHelper.InOutQuad(EaseHelper.Pulse(quadraticFloatTimer));
+
+            if (NPC.HasBuff(BuffType<ThespianAngry>()))
+			{
+                Main.EntitySpriteDraw(bossAngry,
+                    new Vector2(NPC.Center.X, NPC.Center.Y - 20 - MathHelper.Lerp(-5, 35, quadraticFloat)) - screenPos ,
+                    sourceRectangle, Color.White, NPC.rotation, origin, NPC.scale, spriteEffects, 0);
+            }
+            else if (NPC.HasBuff(BuffType<ThespianSad>()))
+            {
+                Main.EntitySpriteDraw(bossSad,
+                    new Vector2(NPC.Center.X,NPC.Center.Y - 20 - MathHelper.Lerp(-5, 35, quadraticFloat)) - screenPos,
+                    sourceRectangle, Color.White, NPC.rotation, origin, NPC.scale, spriteEffects, 0);
+            }
+			else
+			{
+                Main.EntitySpriteDraw(bossHappy,
+                    new Vector2(NPC.Center.X, NPC.Center.Y - 20 - MathHelper.Lerp(-5, 35, quadraticFloat)) - screenPos,
+                    sourceRectangle, Color.White, NPC.rotation, origin, NPC.scale, spriteEffects, 0);
+            }
+            if(NPC.HasBuff(BuffType<ThespianTransition>()))
+			{
+				faceTransition = 1f;
+			}
+			faceTransition -= 0.01f;
+			faceTransition = MathHelper.Clamp(faceTransition, 0f, 1f);
+            Main.EntitySpriteDraw(bossTransition,
+                   new Vector2(NPC.Center.X, NPC.Center.Y - 20 - MathHelper.Lerp(-5, 35, quadraticFloat)) - screenPos,
+                   sourceRectangle, Color.White * faceTransition, NPC.rotation, origin, NPC.scale, spriteEffects, 0);
 
             return base.PreDraw(spriteBatch, screenPos, drawColor);
         }

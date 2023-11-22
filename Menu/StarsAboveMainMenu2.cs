@@ -461,14 +461,14 @@ namespace StarsAbove.Menu
 
             //Animate ocean:
             quadraticFloatTimer += 0.0001f;
-			quadraticFloat = InOutQuad(pulse(quadraticFloatTimer));
+			quadraticFloat = InOutQuad(Pulse(quadraticFloatTimer));
 
 			if(menuTime > 60)
             {
 				quadraticFloatTimer2 += 0.0001f;
 
 			}
-			quadraticFloat2 = InOutQuad(pulse(quadraticFloatTimer2));
+			quadraticFloat2 = InOutQuad(Pulse(quadraticFloatTimer2));
 
 			float oceanAdjustment = MathHelper.Lerp(-5, 35, quadraticFloat);
 			float oceanAdjustment2 = MathHelper.Lerp(-5, 35, quadraticFloat2);
@@ -537,7 +537,7 @@ namespace StarsAbove.Menu
 			if (t < 0.5) return InQuad(t * 2) / 2;
 			return 1 - InQuad((1 - t) * 2) / 2;
 		}
-		float pulse(float time)
+		float Pulse(float time)
 		{
 			const float pi = (float)Math.PI;
 			const float frequency = 10; // Frequency in Hz

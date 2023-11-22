@@ -51,10 +51,12 @@ Mods: {
 				MoveLeft: Move left in {0}...
 				MoveRight: Move right in {0}...
 				StopMoving: Stop moving in {0}...
+				LaunchLeft: Launched left in {0}...
+				LaunchRight: Launched right in {0}...
 				Success: Success!
-				Happy: The Ringmaster's delight begets chaos...
-				Angry: The Ringmaster's fury begets chaos...
-				Sad: The Ringmaster's despair begets chaos...
+				Happy: The Ringmaster's [c/E8DB5B:delight] begets chaos...
+				Angry: The Ringmaster's [c/D83838:fury] begets chaos...
+				Sad: The Ringmaster's [c/3888D8:despair] begets chaos...
 			}
 
 			Dioskouroi.Clash: The Dioskouroi clash, equalizing their HP!
@@ -8790,7 +8792,7 @@ Mods: {
 				Tooltip:
 					'''
 					This concoction reeks with chaos
-					[c/F1AF42:Summons Thespian, the Act of Alchemy]
+					[c/F1AF42:Summons Thespian, the Act of Alchemy] (Night only)
 					This boss is available early, but you may find it much too difficult
 					Prepare accordingly, and consider postponing this fight until you are stronger
 					Is not consumed upon use
@@ -9802,6 +9804,9 @@ Mods: {
 			ThespianBolt.DisplayName: Thespian Bolt
 			RebellionSwordSpin.DisplayName: Rebellion Sword Spin
 			SoliloquySinger.DisplayName: Soliloquy Singer
+			ThespianSadBolt.DisplayName: Thespian Sad Bolt
+			ThespianExplosion.DisplayName: Thespian Explosion
+			ThespianExplosionIndicator.DisplayName: Thespian Explosion Indicator
 		}
 
 		Buffs: {
@@ -12251,6 +12256,41 @@ Mods: {
 			ForceStopMoving: {
 				DisplayName: Force Stop Moving
 				Description: You are compelled to stop moving once this debuff ends
+			}
+
+			LaunchLeft: {
+				DisplayName: Launch Left
+				Description: Mods.StarsAbove.Buffs.LaunchLeft.Description
+			}
+
+			LaunchRight: {
+				DisplayName: Launch Right
+				Description: Mods.StarsAbove.Buffs.LaunchRight.Description
+			}
+
+			ThespianAngry: {
+				DisplayName: Thespian Angry
+				Description: Mods.StarsAbove.Buffs.ThespianAngry.Description
+			}
+
+			ThespianSad: {
+				DisplayName: Thespian Sad
+				Description: Mods.StarsAbove.Buffs.ThespianSad.Description
+			}
+
+			ThespianSadAttack: {
+				DisplayName: Thespian Sad Attack
+				Description: Mods.StarsAbove.Buffs.ThespianSadAttack.Description
+			}
+
+			ThespianHappyAttack: {
+				DisplayName: Thespian Happy Attack
+				Description: Mods.StarsAbove.Buffs.ThespianHappyAttack.Description
+			}
+
+			ThespianTransition: {
+				DisplayName: Thespian Transition
+				Description: Mods.StarsAbove.Buffs.ThespianTransition.Description
 			}
 		}
 
