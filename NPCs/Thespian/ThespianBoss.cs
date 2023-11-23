@@ -32,6 +32,9 @@ using StarsAbove.Projectiles.Extra;
 using StarsAbove.Dusts;
 using System.Collections.Generic;
 using static Terraria.GameContent.Animations.IL_Actions.NPCs;
+using StarsAbove.Items.BossBags;
+using StarsAbove.Items.Memories;
+using Terraria.UI;
 
 namespace StarsAbove.NPCs.Thespian
 {
@@ -124,12 +127,13 @@ namespace StarsAbove.NPCs.Thespian
 			NPC.lavaImmune = true;
 			NPC.noGravity = true;
 			NPC.noTileCollide = false;
-			NPC.value = 0f;
+            NPC.value = Item.buyPrice(0, 3, 15, 45);
 
-			//NPC.HitSound = SoundID.NPCHit54;
-			//NPC.DeathSound = SoundID.NPCDeath52;
 
-			Music = MusicID.OtherworldlyUGHallow;
+            //NPC.HitSound = SoundID.NPCHit54;
+            //NPC.DeathSound = SoundID.NPCDeath52;
+
+            Music = MusicID.OtherworldlyUGHallow;
 
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
 			NPC.netAlways = true;
@@ -217,6 +221,7 @@ namespace StarsAbove.NPCs.Thespian
             {
                 List<RotationAction> bossRotation = new List<RotationAction>
 				{
+					AethericAlkaheist,
 					StygianAugurUp,
 					StygianAugurRight,
 					PhlogistonPyrotechnics, // exploding from the left
@@ -228,7 +233,8 @@ namespace StarsAbove.NPCs.Thespian
 					StygianAugurDown,
 					StygianAugurLeft,
 					LetsCelebrate,
-					Lixiviate,
+                    AethericAlkaheist,
+                    Lixiviate,
                     AlchemicalAnarchy,
                     AthanoricArena,
                     ParadigmOfChaos,
@@ -238,12 +244,14 @@ namespace StarsAbove.NPCs.Thespian
                     ParadigmOfChaos,
                     LetsCelebrate,
                     AlchemicalAnarchy,
-					Lixiviate,
+                    AethericAlkaheist,
+                    Lixiviate,
                     PhlogistonPyrotechnics,
                     StygianAugurDown,
                     RingmastersWillStopMoving,
 					StygianAugurUp,
-					RingmastersWill,
+                    AethericAlkaheist,
+                    RingmastersWill,
                     AlchemicalAnarchy,
                     StygianAugurLeft,
                     LetsCelebrate,
@@ -509,7 +517,7 @@ namespace StarsAbove.NPCs.Thespian
 				
 
 
-				//DownedBossSystem.downedTsuki = true;
+				DownedBossSystem.downedThespian = true;
 				
 				if (Main.netMode == NetmodeID.Server)
 				{
@@ -536,19 +544,18 @@ namespace StarsAbove.NPCs.Thespian
 			return;
 		}
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
-		{/*
-		  * 
+        {
 			// Do NOT misuse the ModifyNPCLoot and OnKill hooks: the former is only used for registering drops, the latter for everything else
-			//Chance for a Prism
 
 			// Add the treasure bag using ItemDropRule.BossBag (automatically checks for expert mode)
-			//npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<VagrantBossBag>()));
+			npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<ThespianBossBag>()));
 
-			// Trophies are spawned with 1/10 chance
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.BossLoot.NalhaunTrophyItem>(), 10));
+            // Trophies are spawned with 1/10 chance
+            //npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.BossLoot.VagrantTrophyItem>(), 10));
 
-			// ItemDropRule.MasterModeCommonDrop for the relic
-			npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<Items.Placeable.BossLoot.NalhaunBossRelicItem>()));
+
+            // ItemDropRule.MasterModeCommonDrop for the relic
+            npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<Items.Placeable.BossLoot.ThespianBossRelicItem>()));
 
 			// ItemDropRule.MasterModeDropOnAllPlayers for the pet
 			//npcLoot.Add(ItemDropRule.MasterModeDropOnAllPlayers(ModContent.ItemType<MinionBossPetItem>(), 4));
@@ -556,20 +563,10 @@ namespace StarsAbove.NPCs.Thespian
 			// All our drops here are based on "not expert", meaning we use .OnSuccess() to add them into the rule, which then gets added
 			LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
 			LeadingConditionRule ExpertRule = new LeadingConditionRule(new Conditions.IsExpert());
-
-			// Notice we use notExpertRule.OnSuccess instead of npcLoot.Add so it only applies in normal mode
-			// Boss masks are spawned with 1/7 chance
-			//notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<MinionBossMask>(), 7));
-
-			notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.BurnishedPrism>(), 4));
-
-			// Finally add the leading rule
-			npcLoot.Add(ExpertRule);
-			npcLoot.Add(notExpertRule);*/
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Materials.CelestialPrincessGenesisPrecursor>(), 4));
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StellarSpoils>(), 1, 5, 5));
-
-			StellarSpoils.SetupBossStellarSpoils(npcLoot);
+            notExpertRule.OnSuccess(npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<NetheriteBar>(), 4, 1, 1)));
+            notExpertRule.OnSuccess(npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ElectricGuitarPick>(), 4, 1, 1)));
+            notExpertRule.OnSuccess(npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BottledChaos>(), 4, 1, 1)));
+            StellarSpoils.SetupBossStellarSpoils(npcLoot);
 		}
 		
 		private void SpawnAnimation()
@@ -790,6 +787,6 @@ namespace StarsAbove.NPCs.Thespian
 				spriteBatch.Draw((Texture2D)TextureAssets.Projectile[ProjectileID.PortalGunGate], drawPos, frame, color, 0f, new Vector2(portalDepth / 2, portalWidth / 2), 1f, SpriteEffects.None, 0f);
 			}
 			*/
-		}
+        }
 	}
 }

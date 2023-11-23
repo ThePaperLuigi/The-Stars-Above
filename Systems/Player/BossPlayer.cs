@@ -576,27 +576,48 @@ namespace StarsAbove.Systems
                         SoundEngine.PlaySound(SoundID.Item21, Player.Center);
 
                         Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2*0.1f), 0, Player.whoAmI);
+                        if(Main.netMode == NetmodeID.SinglePlayer)
+                        {
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X + 100, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI);
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X - 100, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI);
+
+                        }
                     }
                     else if (Player.buffTime[i] == 120)
                     {
                         SoundEngine.PlaySound(SoundID.Item21, Player.Center);
 
                         Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI);
+                        if (Main.netMode == NetmodeID.SinglePlayer)
+                        {
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X + 100, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI);
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X - 100, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI);
 
+                        }
                     }
                     else if (Player.buffTime[i] == 60)
                     {
                         SoundEngine.PlaySound(SoundID.Item21, Player.Center);
 
                         Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI);
+                        if (Main.netMode == NetmodeID.SinglePlayer)
+                        {
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X + 100, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI);
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X - 100, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI);
 
+                        }
                     }
                     else if (Player.buffTime[i] == 1)
                     {
                         SoundEngine.PlaySound(SoundID.Item21, Player.Center);
 
                         Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI);
+                        if (Main.netMode == NetmodeID.SinglePlayer)
+                        {
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X + 100, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI);
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X - 100, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI);
 
+                        }
                     }
 
                 }

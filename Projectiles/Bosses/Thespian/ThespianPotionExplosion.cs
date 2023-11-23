@@ -6,17 +6,17 @@ using Terraria.ModLoader;
 namespace StarsAbove.Projectiles.Bosses.Thespian
 {
     //
-    public class ThespianExplosion : ModProjectile
+    public class ThespianPotionExplosion : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{
 			// DisplayName.SetDefault("Apostate's Truth");
-			Main.projFrames[Projectile.type] = 5;
+			Main.projFrames[Projectile.type] = 7;
 		}
 		public override void SetDefaults()
 		{
-			Projectile.width = 176;
-			Projectile.height = 176;
+			Projectile.width = 98;
+			Projectile.height = 98;
 			Projectile.penetrate = -1;
 			Projectile.scale = 1f;
 			Projectile.alpha = 0;
@@ -42,7 +42,7 @@ namespace StarsAbove.Projectiles.Bosses.Thespian
 			Lighting.AddLight(Projectile.Center, TorchID.Yellow);
 			
 			Player projOwner = Main.player[Projectile.owner];
-			if (Projectile.frame == 5)
+			if (Projectile.frame >= 7)
 			{
 				
 				Projectile.Kill();
@@ -50,7 +50,7 @@ namespace StarsAbove.Projectiles.Bosses.Thespian
 			if (++Projectile.frameCounter >= 3)
 			{
 				Projectile.frameCounter = 0;
-				if (Projectile.frame < 5)
+				if (Projectile.frame < 7)
 				{
 					Projectile.frame++;
 				}
