@@ -10,6 +10,8 @@ using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using StarsAbove.Systems;
 using StarsAbove.Projectiles.Melee.RebellionBloodArthur;
+using StarsAbove.Buffs.RebellionBloodArthur;
+using StarsAbove.Buffs;
 
 namespace StarsAbove.Items.Weapons.Melee
 {
@@ -49,7 +51,11 @@ namespace StarsAbove.Items.Weapons.Melee
 
 		public override bool CanUseItem(Player player)
 		{
-			if (player.altFunctionUse == 2)
+            if (player.HasBuff(BuffType<RebellionLaserBuff>()))
+            {
+				return false;
+            }
+            if (player.altFunctionUse == 2)
 			{
 				
 
@@ -60,6 +66,28 @@ namespace StarsAbove.Items.Weapons.Melee
 		public override void HoldItem(Player player)
 		{
 			player.GetModPlayer<WeaponPlayer>().RebellionHeld = true;
+
+			if(player.HasBuff(BuffType<RebellionLaserBuff>()))
+			{
+                for (int i = 0; i < player.CountBuffs(); i++)
+                    if (player.buffType[i] == BuffType<RebellionLaserBuff>())
+                    {
+						Vector2 target = Main.MouseWorld;
+                        if (player.buffTime[i] > 60)
+                        {
+                            target = new Vector2(player.Center.X, player.Center.Y - 200);//Above the player
+
+                        }
+						else
+						{
+                            Vector2 Leap = Vector2.Normalize(player.DirectionTo(player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * -0.15f;
+                            player.velocity += Leap;
+
+                        }
+                        player.GetModPlayer<WeaponPlayer>().rebellionTarget = Vector2.Lerp(player.GetModPlayer<WeaponPlayer>().rebellionTarget, target, 0.1f);
+
+                    }
+            }
 			base.HoldItem(player);
 		}
 		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
@@ -72,7 +100,42 @@ namespace StarsAbove.Items.Weapons.Melee
 		public int attackType;
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			switch (attackType)
+            if (player.altFunctionUse == 2)
+            {
+				if(player.direction == 1)
+				{
+					player.velocity.X--;
+				}
+                for (int g = 0; g < 4; g++)
+                {
+                    int goreIndex = Gore.NewGore(null, new Vector2(player.position.X + (float)(player.width / 2) - 24f, player.position.Y + (float)(player.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
+                    Main.gore[goreIndex].scale = 1.5f;
+                    Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
+                    Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
+                    goreIndex = Gore.NewGore(null, new Vector2(player.position.X + (float)(player.width / 2) - 24f, player.position.Y + (float)(player.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
+                    Main.gore[goreIndex].scale = 1.5f;
+                    Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
+                    Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
+                    goreIndex = Gore.NewGore(null, new Vector2(player.position.X + (float)(player.width / 2) - 24f, player.position.Y + (float)(player.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
+                    Main.gore[goreIndex].scale = 1.5f;
+                    Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
+                    Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
+                    goreIndex = Gore.NewGore(null, new Vector2(player.position.X + (float)(player.width / 2) - 24f, player.position.Y + (float)(player.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
+                    Main.gore[goreIndex].scale = 1.5f;
+                    Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
+                    Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
+                }
+                player.AddBuff(BuffType<RebellionLaserBuff>(),120);
+				player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
+                player.GetModPlayer<BossPlayer>().WhiteAlpha = 0.3f;
+                player.GetModPlayer<WeaponPlayer>().rebellionTarget = new Vector2(player.Center.X, player.Center.Y - 1);
+                Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<RebellionLaser>(), damage, knockback, player.whoAmI);
+                Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<RebellionSwordLaser>(), 0, knockback, player.whoAmI);
+                SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, player.Center);
+
+                return false;
+            }
+            switch (attackType)
 			{
 				case 0: //Swing downwards
 					Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<RebellionSword>(), damage, knockback, player.whoAmI, 0, 0, player.direction);

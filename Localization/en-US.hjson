@@ -4624,10 +4624,10 @@ Mods: {
 				Tooltip:
 					'''
 					Obtained from Arbitration
-					A gift from your Starfarer
+					Resembles a gift from your Starfarer
 					Utilized in the creation of 'The Only Thing I Know For Real' (Celestial)
 					'''
-				DisplayName: Essence of Bloodshed
+				DisplayName: Demi-Essence of Bloodshed
 			}
 
 			EssenceOfButterflies: {
@@ -6270,7 +6270,7 @@ Mods: {
 				Tooltip:
 					'''
 					'Mage of Violet (Instrumental)' - Hololive Productions
-					Performed by Murasaki Shion
+					Composed by Three
 
 					'''
 				DisplayName: Music Box (Penthesilea)
@@ -6332,7 +6332,7 @@ Mods: {
 					Composed by Hidenori Shoji
 
 					'''
-				DisplayName: Music Box (The Warrior of Light - 2nd Phase)
+				DisplayName: Music Box (Unused)
 			}
 
 			UnmatchingPiecesMusicBox: {
@@ -7332,10 +7332,10 @@ Mods: {
 				Tooltip:
 					'''
 					Obtained from Arbitration
-					A gift from your Starfarer
+					Resembles a gift from your Starfarer
 					Utilized in the creation of 'Manifestation' (Celestial)
 					'''
-				DisplayName: Essence of Mimicry
+				DisplayName: Demi-Essence of Mimicry
 			}
 
 			EssenceOfNanomachines: {
@@ -8824,12 +8824,11 @@ Mods: {
 					'''
 					Attacks with this weapon cleave nearby foes and grants Rage for 8 seconds on hit
 					Holding this weapon amplifies the effects of Rage, Endurance, and Ironskin by 50%
-					Dealing or taking damage grants stacks of [Rebellion] (Rebellion is lost out of combat)
-					At certain thresholds of [Rebellion], manifest portions of the [Crimson Armor], gaining 5 defense per armor
-					Once [Rebellion] is at maximum and all portions of the [Crimson Armor] are equipped, increase defense further and gain access to [Clarent Blood Arthur]
+					Dealing or taking damage grants stacks of [c/D81919:Rebellion] (Rebellion is lost out of combat)
+					At certain thresholds of [c/D81919:Rebellion], manifest portions of the [c/EC2B65:Crimson Armor], gaining 5 defense per armor
+					Once [c/D81919:Rebellion] is at maximum and all portions of the [c/EC2B65:Crimson Armor] are equipped, increase defense further and gain access to [c/8D0404:Clarent Blood Arthur]
 					Additionally, gain a 3rd combo attack and striking foes now burst into red lightning (3rd combo strike empowers lightning)
-					[Clarent Blood Arthur] deals 2x damage in a colossal radius in front of you and is a guaranteed critical strike against bosses (1 minute cooldown)
-					Gaining [Rebellion] after all portions of the [Crimson Armor] are manifested will instead empower [Clarent Blood Arthur] up to 3x
+					Right click to unleash [c/8D0404:Clarent Blood Arthur], dealing 2x damage in a powerful burst towards your cursor after a delay and deals guaranteed critical strike against bosses (1 minute cooldown)
 					'''
 			}
 
@@ -8874,6 +8873,16 @@ Mods: {
 
 			RebellionLegs: {
 				DisplayName: Rebellion Legs
+				Tooltip: ""
+			}
+
+			ThespianBossBag: {
+				DisplayName: Thespian Boss Bag
+				Tooltip: ""
+			}
+
+			ThespianBossRelicItem: {
+				DisplayName: Thespian Boss Relic Item
 				Tooltip: ""
 			}
 		}
@@ -9807,6 +9816,10 @@ Mods: {
 			ThespianSadBolt.DisplayName: Thespian Sad Bolt
 			ThespianExplosion.DisplayName: Thespian Explosion
 			ThespianExplosionIndicator.DisplayName: Thespian Explosion Indicator
+			ThespianLingeringDamageField.DisplayName: Thespian Lingering Damage Field
+			ThespianPotion.DisplayName: Thespian Potion
+			ThespianPotionExplosion.DisplayName: Thespian Potion Explosion
+			RebellionSwordLaser.DisplayName: Rebellion Sword Laser
 		}
 
 		Buffs: {

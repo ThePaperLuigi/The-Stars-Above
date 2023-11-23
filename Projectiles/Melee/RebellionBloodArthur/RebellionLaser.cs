@@ -11,6 +11,8 @@ using Terraria.ID;
 using Terraria.Graphics.Shaders;
 using StarsAbove.Buffs.DraggedBelow;
 using StarsAbove.Buffs.Gundbits;
+using StarsAbove.Buffs.RebellionBloodArthur;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles.Melee.RebellionBloodArthur
 {
@@ -23,7 +25,7 @@ namespace StarsAbove.Projectiles.Melee.RebellionBloodArthur
         // The maximum charge value
         private const float MAX_CHARGE = 1f;
         //The distance charge particle from the player center
-        private const float MOVE_DISTANCE = 88f;
+        private const float MOVE_DISTANCE = 48f;
 
         // The actual distance is stored in the ai0 field
         // By making a property to handle this it makes our life easier, and the accessibility more readable
@@ -118,9 +120,16 @@ namespace StarsAbove.Projectiles.Melee.RebellionBloodArthur
         // Set custom immunity time on hitting an NPC
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+            if(!target.HasBuff(BuffType<ComboCooldown>()))
+            {
+                Main.player[Projectile.owner].GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
+
+            }
+            target.AddBuff(BuffType<ComboCooldown>(), 120);
+
             target.immune[Projectile.owner] = 4;
             //Main.player[Projectile.owner].GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -98;
-            float dustAmount = 4f;
+            float dustAmount = 44f;
             float randomConstant = MathHelper.ToRadians(Main.rand.Next(0, 360));
             for (int i = 0; i < dustAmount; i++)
             {
@@ -131,8 +140,10 @@ namespace StarsAbove.Projectiles.Melee.RebellionBloodArthur
                 Main.dust[dust].scale = 1.5f;
                 Main.dust[dust].noGravity = true;
                 Main.dust[dust].position = target.Center + spinningpoint5;
-                Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 3f;
+                Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 13f;
             }
+            
+            
             for (int i = 0; i < dustAmount; i++)
             {
                 Vector2 spinningpoint5 = Vector2.UnitX * 0f;
@@ -142,7 +153,18 @@ namespace StarsAbove.Projectiles.Melee.RebellionBloodArthur
                 Main.dust[dust].scale = 1.5f;
                 Main.dust[dust].noGravity = true;
                 Main.dust[dust].position = target.Center + spinningpoint5;
-                Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 3f;
+                Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 13f;
+            }
+            for (int i = 0; i < dustAmount; i++)
+            {
+                Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+                spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                int dust = Dust.NewDust(target.Center, 0, 0, DustID.LifeDrain);
+                Main.dust[dust].scale = 1.5f;
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].position = target.Center + spinningpoint5;
+                Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 5f;
             }
         }
 
@@ -190,21 +212,13 @@ namespace StarsAbove.Projectiles.Melee.RebellionBloodArthur
             }
             int dustID = DustID.RainbowMk2;
             Color dustColor = Color.Red;
-            Vector2 playerToMouse = Main.MouseWorld - projOwner.Center;
+            Vector2 playerToMouse = player.GetModPlayer<WeaponPlayer>().rebellionTarget - projOwner.Center;
             playerToMouse = Vector2.Normalize(playerToMouse);
-            Vector2 MuzzlePosition = new Vector2(projOwner.Center.X, projOwner.Center.Y - 6) + Vector2.Normalize(playerToMouse) * 76;
-            for (int d = 0; d < 10; d++)
-            {
-                Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - projOwner.Center).RotatedByRandom(MathHelper.ToRadians(23));
-                float scale = 22f - Main.rand.NextFloat() * 21f;
-                perturbedSpeed *= scale;
-                int dustIndex = Dust.NewDust(MuzzlePosition, 0, 0, dustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default, 1.7f);
-                Main.dust[dustIndex].noGravity = true;
-                Main.dust[dustIndex].color = dustColor;
-            }
+            Vector2 MuzzlePosition = new Vector2(projOwner.Center.X, projOwner.Center.Y - 6) + Vector2.Normalize(playerToMouse) * 44;
+
             for (int d = 0; d < 30; d++)
             {
-                Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - projOwner.Center).RotatedByRandom(MathHelper.ToRadians(120));
+                Vector2 perturbedSpeed = Vector2.Normalize(player.GetModPlayer<WeaponPlayer>().rebellionTarget - projOwner.Center).RotatedByRandom(MathHelper.ToRadians(120));
                 float scale = 4f - Main.rand.NextFloat() * 3f;
                 perturbedSpeed *= -scale;
                 int dustIndex = Dust.NewDust(MuzzlePosition, 0, 0, dustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default, 0.7f);
@@ -213,7 +227,7 @@ namespace StarsAbove.Projectiles.Melee.RebellionBloodArthur
             }
             for (int d = 0; d < 10; d++)
             {
-                Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - projOwner.Center).RotatedBy(MathHelper.ToRadians(50));
+                Vector2 perturbedSpeed = Vector2.Normalize(player.GetModPlayer<WeaponPlayer>().rebellionTarget - projOwner.Center).RotatedBy(MathHelper.ToRadians(50));
                 float scale = 8f - Main.rand.NextFloat() * 3f;
                 perturbedSpeed *= -scale;
                 int dustIndex = Dust.NewDust(MuzzlePosition, 0, 0, dustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default, 0.8f);
@@ -222,25 +236,16 @@ namespace StarsAbove.Projectiles.Melee.RebellionBloodArthur
             }
             for (int d = 0; d < 10; d++)
             {
-                Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - projOwner.Center).RotatedBy(MathHelper.ToRadians(-50));
+                Vector2 perturbedSpeed = Vector2.Normalize(player.GetModPlayer<WeaponPlayer>().rebellionTarget - projOwner.Center).RotatedBy(MathHelper.ToRadians(-50));
                 float scale = 8f - Main.rand.NextFloat() * 3f;
                 perturbedSpeed *= -scale;
                 int dustIndex = Dust.NewDust(MuzzlePosition, 0, 0, dustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default, 0.8f);
                 Main.dust[dustIndex].noGravity = true;
                 Main.dust[dustIndex].color = dustColor;
             }
-            for (int d = 0; d < 20; d++)
-            {
-                Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - projOwner.Center).RotatedByRandom(MathHelper.ToRadians(2));
-                float scale = 102f - Main.rand.NextFloat() * 101f;
-                perturbedSpeed *= scale;
-                int dustIndex = Dust.NewDust(MuzzlePosition, 0, 0, dustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default, 2f);
-                Main.dust[dustIndex].noGravity = true;
-                Main.dust[dustIndex].color = dustColor;
-            }
             for (int d = 0; d < 10; d++)
             {
-                Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - projOwner.Center).RotatedBy(MathHelper.ToRadians(80));
+                Vector2 perturbedSpeed = Vector2.Normalize(player.GetModPlayer<WeaponPlayer>().rebellionTarget - projOwner.Center).RotatedBy(MathHelper.ToRadians(80));
                 float scale = 8f - Main.rand.NextFloat() * 1f;
                 perturbedSpeed *= scale;
                 int dustIndex = Dust.NewDust(MuzzlePosition, 0, 0, dustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default, 1f);
@@ -250,7 +255,7 @@ namespace StarsAbove.Projectiles.Melee.RebellionBloodArthur
             }
             for (int d = 0; d < 10; d++)
             {
-                Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - projOwner.Center).RotatedBy(MathHelper.ToRadians(-80));
+                Vector2 perturbedSpeed = Vector2.Normalize(player.GetModPlayer<WeaponPlayer>().rebellionTarget - projOwner.Center).RotatedBy(MathHelper.ToRadians(-80));
                 float scale = 8f - Main.rand.NextFloat() * 1f;
                 perturbedSpeed *= scale;
                 int dustIndex = Dust.NewDust(MuzzlePosition, 0, 0, dustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default, 1f);
@@ -258,7 +263,7 @@ namespace StarsAbove.Projectiles.Melee.RebellionBloodArthur
                 Main.dust[dustIndex].color = dustColor;
 
             }
-            float rotation = (float)Math.Atan2(Main.player[Projectile.owner].MountedCenter.Y - Main.MouseWorld.Y, Main.player[Projectile.owner].MountedCenter.X - Main.MouseWorld.X);//Aim towards mouse
+            float rotation = (float)Math.Atan2(Main.player[Projectile.owner].MountedCenter.Y - player.GetModPlayer<WeaponPlayer>().rebellionTarget.Y, Main.player[Projectile.owner].MountedCenter.X - player.GetModPlayer<WeaponPlayer>().rebellionTarget.X);//Aim towards mouse
 
 
 
@@ -272,8 +277,8 @@ namespace StarsAbove.Projectiles.Melee.RebellionBloodArthur
         {
             Player projOwner = Main.player[Projectile.owner];
 
-            Vector2 playerToMouse = Main.MouseWorld - projOwner.Center;
-            playerToMouse = Vector2.Normalize(playerToMouse);
+            Vector2 playerToMouse = player.GetModPlayer<WeaponPlayer>().rebellionTarget - projOwner.Center;
+            playerToMouse = Vector2.Normalize(player.GetModPlayer<WeaponPlayer>().rebellionTarget);
             Vector2 MuzzlePosition = projOwner.Center + Vector2.Normalize(playerToMouse) * 76;
 
             for (Distance = MOVE_DISTANCE; Distance <= 2200f; Distance += 5f)
@@ -290,7 +295,7 @@ namespace StarsAbove.Projectiles.Melee.RebellionBloodArthur
         private void ChargeLaser(Player player)
         {
             // Kill the projectile if the player stops channeling
-            if (!player.HasBuff(BuffType<GundbitBeamAttack>()))
+            if (!player.HasBuff(BuffType<RebellionLaserBuff>()))
             {
                 Projectile.Kill();
             }
@@ -323,10 +328,10 @@ namespace StarsAbove.Projectiles.Melee.RebellionBloodArthur
             // Multiplayer support here, only run this code if the client running it is the owner of the projectile
             if (Projectile.owner == Main.myPlayer)
             {
-                Vector2 diff = Main.MouseWorld - player.MountedCenter;
+                Vector2 diff = player.GetModPlayer<WeaponPlayer>().rebellionTarget - player.MountedCenter;
                 diff.Normalize();
                 Projectile.velocity = diff;
-                Projectile.direction = Main.MouseWorld.X > player.MountedCenter.X ? 1 : -1;
+                Projectile.direction = player.GetModPlayer<WeaponPlayer>().rebellionTarget.X > player.MountedCenter.X ? 1 : -1;
                 Projectile.netUpdate = true;
             }
             int dir = Projectile.direction;

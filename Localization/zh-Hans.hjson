@@ -8659,7 +8659,7 @@ Mods: {
 				/* Tooltip:
 					'''
 					This concoction reeks with chaos
-					[c/F1AF42:Summons Thespian, the Act of Alchemy]
+					[c/F1AF42:Summons Thespian, the Act of Alchemy] (Night only)
 					This boss is available early, but you may find it much too difficult
 					Prepare accordingly, and consider postponing this fight until you are stronger
 					Is not consumed upon use
@@ -8695,8 +8695,7 @@ Mods: {
 					At certain thresholds of [Rebellion], manifest portions of the [Crimson Armor], gaining 5 defense per armor
 					Once [Rebellion] is at maximum and all portions of the [Crimson Armor] are equipped, increase defense further and gain access to [Clarent Blood Arthur]
 					Additionally, gain a 3rd combo attack and striking foes now burst into red lightning (3rd combo strike empowers lightning)
-					[Clarent Blood Arthur] deals 2x damage in a colossal radius in front of you and is a guaranteed critical strike against bosses (1 minute cooldown)
-					Gaining [Rebellion] after all portions of the [Crimson Armor] are manifested will instead empower [Clarent Blood Arthur] up to 3x
+					Right click to unleash [Clarent Blood Arthur], dealing 2x damage in a powerful burst towards your cursor after a delay and deals guaranteed critical strike against bosses (1 minute cooldown)
 					''' */
 			}
 
@@ -8741,6 +8740,16 @@ Mods: {
 
 			RebellionLegs: {
 				// DisplayName: Rebellion Legs
+				// Tooltip: ""
+			}
+
+			ThespianBossBag: {
+				// DisplayName: Thespian Boss Bag
+				// Tooltip: ""
+			}
+
+			ThespianBossRelicItem: {
+				// DisplayName: Thespian Boss Relic Item
 				// Tooltip: ""
 			}
 		}
@@ -9674,6 +9683,10 @@ Mods: {
 			// ThespianSadBolt.DisplayName: Thespian Sad Bolt
 			// ThespianExplosion.DisplayName: Thespian Explosion
 			// ThespianExplosionIndicator.DisplayName: Thespian Explosion Indicator
+			// ThespianLingeringDamageField.DisplayName: Thespian Lingering Damage Field
+			// ThespianPotion.DisplayName: Thespian Potion
+			// ThespianPotionExplosion.DisplayName: Thespian Potion Explosion
+			// RebellionSwordLaser.DisplayName: Rebellion Sword Laser
 		}
 
 		Buffs: {
