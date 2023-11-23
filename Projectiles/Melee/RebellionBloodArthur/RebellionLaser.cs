@@ -65,7 +65,7 @@ namespace StarsAbove.Projectiles.Melee.RebellionBloodArthur
                 Main.spriteBatch.End();
                 Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 
-                //ArmorShaderData data = GameShaders.Armor.GetSecondaryShader((byte)GameShaders.Armor.GetShaderIdFromItemId(ItemID.StardustDye), Main.LocalPlayer);
+                //ArmorShaderData data = GameShaders.Armor.GetSecondaryShader((byte)GameShaders.Armor.GetShaderIdFromItemId(ItemID.ShiftingSandsDye), Main.LocalPlayer);
                 //data.Apply(null);
                 DrawLaser(Main.spriteBatch, (Texture2D)TextureAssets.Projectile[Projectile.type], Main.player[Projectile.owner].Center,
                     Projectile.velocity, 10, Projectile.damage, -1.57f, 1f, 1000f, Color.White, (int)MOVE_DISTANCE);
@@ -85,11 +85,11 @@ namespace StarsAbove.Projectiles.Melee.RebellionBloodArthur
             // Draws the laser 'body'
             for (float i = transDist; i <= Distance; i += step)
             {
-                Color c = Color.White;
+                Color c = Color.Lerp(Color.White,Color.Red,i/250);
                 var origin = start + i * unit;
                 spriteBatch.Draw(texture, origin - Main.screenPosition,
                     //36 is the width of the laser!
-                    new Rectangle(0, 26, 36, 26), i < transDist ? Color.Transparent : c, r,
+                    new Rectangle(0, 26, 36 , 26), i < transDist ? Color.Transparent : c, r,
                     new Vector2(36 * .5f, 26 * .5f), scale, 0, 0);
             }
 

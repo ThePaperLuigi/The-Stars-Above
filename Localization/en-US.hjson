@@ -4,11 +4,11 @@ Mods: {
 			SanguineDespair: drained themselves of all life.
 			SupremeAuthority: returned to the void.
 			Thespian: failed to follow the act.
-			ShockAndAwe: tried to rocket jump too hard.
+			ShockAndAwe: ... tried to rocket jump too hard.
 		}
 
 		Boss.WarriorOfLight: The Warrior of Light descends!
-		TempInfo: Hello! It looks like you're playing The Stars Above in Multiplayer! Please note that as of now, disabling Multiplayer Compatibility Mode is not recommended.
+		TempInfo: Hello! It looks like you're playing The Stars Above in Multiplayer! Please note that as of now, disabling Multiplayer Compatibility Mode is not recommended. With it enabled, attempting to travel to Cosmic Voyage locations will give you their respective items on a timer.
 
 		CombatText: {
 			MiserysCompany: {
@@ -8828,7 +8828,7 @@ Mods: {
 					At certain thresholds of [c/D81919:Rebellion], manifest portions of the [c/EC2B65:Crimson Armor], gaining 5 defense per armor
 					Once [c/D81919:Rebellion] is at maximum and all portions of the [c/EC2B65:Crimson Armor] are equipped, increase defense further and gain access to [c/8D0404:Clarent Blood Arthur]
 					Additionally, gain a 3rd combo attack and striking foes now burst into red lightning (3rd combo strike empowers lightning)
-					Right click to unleash [c/8D0404:Clarent Blood Arthur], dealing 2x damage in a powerful burst towards your cursor after a delay and deals guaranteed critical strike against bosses (1 minute cooldown)
+					Right click to unleash [c/8D0404:Clarent Blood Arthur], dealing 2x damage in a powerful burst towards your cursor after a delay and is a guaranteed critical strike against bosses (1 minute cooldown)
 					'''
 			}
 
