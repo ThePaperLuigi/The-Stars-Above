@@ -513,7 +513,7 @@ namespace StarsAbove.Systems
         //if ((abilityCost + stellarGauge) <= stellarGaugeMax)
         //Remember to push the abilityCost!
 
-        //Tier 1
+        //Tier 1 Asphodene
         public int starshower = 0; //
         public int ironskin = 0; //
         public int evasionmastery = 0;//
@@ -526,6 +526,21 @@ namespace StarsAbove.Systems
         public int butchersdozen = 0; //
         public int mysticforging = 0;
         public int flashfreeze = 0;
+
+        //Tier 1 Eridani
+        public int spectralNail = 0; //
+        public int armsthrift = 0; //
+        public int mysticIncision = 0;//
+        public int stayTheCourse = 0;//
+        public int catharsis = 0;
+        public int fabledFashion = 0;
+        public int kineticConversion = 0;
+        public int kiTwinburst = 0;
+        public int arborealEchoes = 0;
+        public int swiftstrikeTheory = 0; //
+        public int inevitableEnd = 0;
+        public int lavenderRefrain = 0;
+
         //Tier 2
         public int healthyConfidence = 0;//
         public int bloomingflames = 0;//
@@ -943,6 +958,19 @@ namespace StarsAbove.Systems
             tag["butchersdozen"] = butchersdozen;
             tag["mysticforging"] = mysticforging;
             tag["flashfreeze"] = flashfreeze;
+
+            tag["spectralNail"] = spectralNail;
+            tag["armsthrift"] = armsthrift;
+            tag["mysticIncision"] = mysticIncision;
+            tag["stayTheCourse"] = stayTheCourse;
+            tag["catharsis"] = catharsis;
+            tag["fabledFashion"] = fabledFashion;
+            tag["kineticConversion"] = kineticConversion;
+            tag["kiTwinburst"] = kiTwinburst;
+            tag["arborealEchoes"] = arborealEchoes;
+            tag["swiftstrikeTheory"] = swiftstrikeTheory;
+            tag["inevitableEnd"] = inevitableEnd;
+            tag["lavenderRefrain"] = lavenderRefrain;
 
             tag[" healthyConfidence"] = healthyConfidence;
             tag["bloomingflames"] = bloomingflames;
@@ -1443,6 +1471,19 @@ namespace StarsAbove.Systems
             butchersdozen = tag.GetInt("butchersdozen");
             mysticforging = tag.GetInt("mysticforging");
             flashfreeze = tag.GetInt("flashfreeze");
+
+            spectralNail = tag.GetInt("spectralNail");
+            armsthrift = tag.GetInt("armsthrift");
+            mysticIncision = tag.GetInt("mysticIncision");
+            stayTheCourse = tag.GetInt("stayTheCourse");
+            catharsis = tag.GetInt("catharsis");
+            fabledFashion = tag.GetInt("fabledFashion");
+            kineticConversion = tag.GetInt("kineticConversion");
+            kiTwinburst = tag.GetInt("kiTwinburst");
+            arborealEchoes = tag.GetInt("arborealEchoes");
+            swiftstrikeTheory = tag.GetInt("swiftstrikeTheory");
+            inevitableEnd = tag.GetInt("inevitableEnd");
+            lavenderRefrain = tag.GetInt("lavenderRefrain");
 
             healthyConfidence = tag.GetInt(" healthyConfidence");
             bloomingflames = tag.GetInt("bloomingflames");
@@ -4417,6 +4458,11 @@ namespace StarsAbove.Systems
                     {
                         aquaaffinity = 1;
                     }
+                    if(stayTheCourse == 0)
+                    {
+                        stayTheCourse = 1;
+
+                    }
                 }
                 if (NPC.downedBoss1)
                 {
@@ -4425,12 +4471,22 @@ namespace StarsAbove.Systems
                     {
                         starshower = 1;
                     }
+                    if(spectralNail == 0)
+                    {
+                        spectralNail = 1;
+
+                    }
                 }
                 if (NPC.downedBoss2) // Eater/Brain
                 {
                     if (ironskin == 0)
                     {
                         ironskin = 1;
+                    }
+                    if(armsthrift == 0)
+                    {
+                        armsthrift = 1;
+
                     }
                 }
                 if (NPC.downedQueenBee)
@@ -4439,12 +4495,22 @@ namespace StarsAbove.Systems
                     {
                         evasionmastery = 1;
                     }
+                    if(mysticIncision == 0)
+                    {
+                        mysticIncision = 1;
+
+                    }
                 }
                 if (NPC.downedBoss3) // Skeletron
                 {
                     if (inneralchemy == 0)
                     {
                         inneralchemy = 1;
+                    }
+                    if (catharsis == 0)
+                    {
+                        catharsis = 1;
+
                     }
                 }
                 if (Main.hardMode)
@@ -4489,6 +4555,11 @@ namespace StarsAbove.Systems
                     {
                         butchersdozen = 1;
                     }
+                    if(swiftstrikeTheory == 0)
+                    {
+                        swiftstrikeTheory = 1;
+
+                    }
                     if (laevateinn == 0)
                     {
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.NewNova"), 241, 255, 180); }
@@ -4501,6 +4572,11 @@ namespace StarsAbove.Systems
                     if (mysticforging == 0)
                     {
                         mysticforging = 1;
+                        lavenderRefrain = 1;
+                    }
+                    if(lavenderRefrain == 0)
+                    {
+                        lavenderRefrain = 1;
                     }
                     if (gardenofavalon == 0)
                     {
@@ -4544,12 +4620,22 @@ namespace StarsAbove.Systems
                     {
                         livingdead = 1;
                     }
+                    if(kineticConversion == 0)
+                    {
+                        kineticConversion = 1;
+
+                    }
                 }
                 if (NPC.downedChristmasIceQueen)
                 {
                     if (hikari == 0)
                     {
                         hikari = 1;
+                    }
+                    if(fabledFashion == 0)
+                    {
+                        fabledFashion = 1;
+
                     }
                 }
                 if (NPC.downedGolemBoss)
@@ -4573,12 +4659,22 @@ namespace StarsAbove.Systems
                     {
                         celestialevanesence = 1;
                     }
+                    if(arborealEchoes == 0)
+                    {
+                        arborealEchoes = 1;
+
+                    }
                 }
                 if (NPC.downedMoonlord)
                 {
                     if (umbralentropy == 0)
                     {
                         umbralentropy = 1;
+                    }
+                    if(kiTwinburst == 0)
+                    {
+                        kiTwinburst = 1;
+
                     }
 
                 }
@@ -4598,9 +4694,11 @@ namespace StarsAbove.Systems
 
                         flashfreeze = 1;
                     }
+                    if(inevitableEnd == 0)
+                    {
+                        inevitableEnd = 1;
 
-
-
+                    }
 
                 }
 

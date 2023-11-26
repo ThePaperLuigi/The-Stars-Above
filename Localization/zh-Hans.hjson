@@ -4,7 +4,7 @@ Mods: {
 			SanguineDespair: 抽干了他自己的生命。
 			SupremeAuthority: 回归到虚空
 			// Thespian: failed to follow the act.
-			// ShockAndAwe: tried to rocket jump too hard.
+			// ShockAndAwe: ... tried to rocket jump too hard.
 		}
 
 		Boss.WarriorOfLight: 光之战士 降临！
@@ -376,6 +376,66 @@ Mods: {
 					Name: "[c/C2BDFF:1阶] [c/FFEED1:“天体幻灭”]"
 					Description: 暴击率会额外加上当前最大魔力值除以20后的数值。攻击造成暴击时会获得等同于伤害量5%的魔力值（每次命中至多获得5点魔力值）
 					Unlock: "[c/9D9D9D:已锁定：] 击败专家模式下的拜月教邪教徒"
+				}
+
+				SpectralNail: {
+					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Spectral Nail']"
+					// Description: Every 5 strikes against a foe deals 30% bonus true damage. 6 second cooldown.
+				}
+
+				Armsthrift: {
+					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Armsthrift']"
+					// Description: Weapons lose durability over time in combat and when you take damage; when durability reaches 0, the weapon can't be used. Durability resets out of combat. Gain up to 250% bonus damage the closer the weapon is to 0 durability.
+				}
+
+				MysticIncision: {
+					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Mystic Incision']"
+					// Description: Attacks gain 20% armor penetration. Critical strikes inflict 20% defense shred for 3 seconds. After applying defense shred, all allies except you deal 8% more damage to your target for the duration of the shred (Does not stack.)
+				}
+
+				StayTheCourse: {
+					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Stay The Course']"
+					// Description: For each second in combat, gain 1% damage reduction and 1% critical strike chance, up to 15%/30%.
+				}
+
+				Catharsis: {
+					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Enigmatic Brilliance']"
+					// Description: When health is reduced through any means, gain a damaging aura that lasts for 4 seconds that deals damage to all nearby foes. Aura damage is based on current held weapon.
+				}
+
+				FabledFashion: {
+					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Fabled Fashion']"
+					// Description: Equipped vanity armor is treated as if it is normal armor (Set bonuses do not apply.) Outgoing damage is reduced by 50%. Defense is reduced by 15, and maximum health is reduced by 150.
+				}
+
+				KineticConversion: {
+					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Kinetic Conversion']"
+					// Description: A portion of movement velocity is added to outgoing damage.
+				}
+
+				KiTwinburst: {
+					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Ki Twinburst']"
+					// Description: Attacks deal half damage but trigger a follow-up attack that deals 90% of the remaining damage.
+				}
+
+				ArborealEchoes: {
+					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Arboreal Echoes']"
+					// Description: Dealing damage to unhurt foes heals 10 HP and increases damage of the first hit by 50%. Defeating foes heals 5 HP. Increase the potency of healing items by 30%.
+				}
+
+				SwiftstrikeTheory: {
+					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Swiftstrike Theory']"
+					// Description: Gain drastic attack speed while immune to damage. When health is reduced to 0, become Invincible for 2 seconds. (2 minute cooldown.)
+				}
+
+				InevitableEnd: {
+					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Inevitable End']"
+					// Description: Foes explode when defeated, dealing 50% of their Max HP in damage to nearby foes. When you die, erupt in a massive explosion, dealing 500% of your held weapon's damage to both enemies and allies.
+				}
+
+				LavenderRefrain: {
+					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Lavender Refrain']"
+					// Description: Gain up to 20 defense as your mana is drained. Taking damage restores 100 Mana and 50 HP, but reduces defense by 50% for 6 seconds. 12 second cooldown.
 				}
 
 				HealthyConfidence: {
@@ -8691,11 +8751,11 @@ Mods: {
 					'''
 					Attacks with this weapon cleave nearby foes and grants Rage for 8 seconds on hit
 					Holding this weapon amplifies the effects of Rage, Endurance, and Ironskin by 50%
-					Dealing or taking damage grants stacks of [Rebellion] (Rebellion is lost out of combat)
-					At certain thresholds of [Rebellion], manifest portions of the [Crimson Armor], gaining 5 defense per armor
-					Once [Rebellion] is at maximum and all portions of the [Crimson Armor] are equipped, increase defense further and gain access to [Clarent Blood Arthur]
+					Dealing or taking damage grants stacks of [c/D81919:Rebellion] (Rebellion is lost out of combat)
+					At certain thresholds of [c/D81919:Rebellion], manifest portions of the [c/EC2B65:Crimson Armor], gaining 5 defense per armor
+					Once [c/D81919:Rebellion] is at maximum and all portions of the [c/EC2B65:Crimson Armor] are equipped, increase defense further and gain access to [c/8D0404:Clarent Blood Arthur]
 					Additionally, gain a 3rd combo attack and striking foes now burst into red lightning (3rd combo strike empowers lightning)
-					Right click to unleash [Clarent Blood Arthur], dealing 2x damage in a powerful burst towards your cursor after a delay and deals guaranteed critical strike against bosses (1 minute cooldown)
+					Right click to unleash [c/8D0404:Clarent Blood Arthur], dealing 2x damage in a powerful burst towards your cursor after a delay and is a guaranteed critical strike against bosses (1 minute cooldown)
 					''' */
 			}
 

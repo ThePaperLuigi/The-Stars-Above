@@ -343,7 +343,7 @@ Mods: {
 				}
 
 				UmbralEntropy: {
-					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Umbral Entropy']"
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Entropic Blight']"
 					Description: All attacks inflict Starblight on a critical strike. Gain Lifesteal on foes inflicted with Starblight. Healing is capped at 5 HP per second.
 					Unlock: "[c/9D9D9D:Locked:] Defeat the Moon Lord"
 				}
@@ -367,15 +367,75 @@ Mods: {
 				}
 
 				Hikari: {
-					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Hikari']"
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Crystalline Heart']"
 					Description: Gain bonus attack and defense proportional to Max HP divided by 20. Taking damage reduces outgoing damage by half for 6 seconds.
 					Unlock: "[c/9D9D9D:Locked:] Defeat the Ice Queen"
 				}
 
 				CelestialEvanesence: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Celestial Evanesence']"
-					Description: Critical strike rate is increased based on current Mana divided by 20. Landing a critical strike grants 5% of the damage dealt as Mana. (Max 5 per hit)
+					Description: Critical strike chance is increased based on current Mana divided by 20. Landing a critical strike grants 5% of the damage dealt as Mana. (Max 5 per hit)
 					Unlock: "[c/9D9D9D:Locked:] Defeat the Lunatic Cultist in Expert Mode"
+				}
+
+				SpectralNail: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Spectral Nail']"
+					Description: Every 5 strikes against a foe deals 30% bonus true damage. (6 second cooldown.)
+				}
+
+				Armsthrift: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Armsthrift']"
+					Description: Weapons lose durability over time in combat and when you take damage; when durability reaches 0, the weapon can't be used. Durability resets out of combat. Gain up to 250% bonus damage the closer the weapon is to 0 durability.
+				}
+
+				MysticIncision: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Mystic Incision']"
+					Description: Attacks gain 20% armor penetration. Critical strikes inflict 20% defense shred for 3 seconds, and grants Swiftness for the same duration.
+				}
+
+				StayTheCourse: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Stay The Course']"
+					Description: For each second in combat, gain 1% damage reduction and 1% critical strike chance, up to 15%/30%.
+				}
+
+				Catharsis: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Catharsis']"
+					Description: When health is reduced through any means, gain a damaging aura that lasts for 4 seconds that deals damage to all nearby foes. Aura damage is based on current held weapon.
+				}
+
+				FabledFashion: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Fabled Fashion']"
+					Description: Equipped vanity armor is treated as if it is normal armor (Set bonuses do not apply.) Outgoing damage is reduced by 50%. Defense is reduced by 15, and maximum health is reduced by 150.
+				}
+
+				KineticConversion: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Kinetic Conversion']"
+					Description: A portion of movement velocity is added to outgoing damage. Gain Invincibility when moving very quickly in a short period of time (12 second cooldown.)
+				}
+
+				KiTwinburst: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Ki Twinburst']"
+					Description: Attacks deal half damage but trigger a follow-up attack that deals 90% of the remaining damage.
+				}
+
+				ArborealEchoes: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Arboreal Echoes']"
+					Description: Dealing damage to unhurt foes heals 10 HP and increases damage of the first hit by 50%. Defeating foes heals 5 HP. Increase the potency of healing items by 30%.
+				}
+
+				SwiftstrikeTheory: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Swiftstrike Theory']"
+					Description: Gain drastic attack speed while immune to damage. When health is reduced to 0, become Invincible for 2 seconds. (2 minute cooldown.)
+				}
+
+				InevitableEnd: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Inevitable End']"
+					Description: Foes explode when defeated, dealing 50% of their Max HP in damage to nearby foes. When you die, erupt in a massive explosion, dealing 500% of your held weapon's damage to both enemies and allies.
+				}
+
+				LavenderRefrain: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Lavender Refrain']"
+					Description: Gain up to 20 defense as your mana is drained. Taking damage restores 100 Mana and 50 HP, but reduces defense by 50% for 6 seconds (12 second cooldown.)
 				}
 
 				HealthyConfidence: {

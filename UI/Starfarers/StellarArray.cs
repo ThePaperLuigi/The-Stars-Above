@@ -53,7 +53,21 @@ namespace StarsAbove.UI.Starfarers
 		private UIImageButton flashfreeze;
 		private UIImageButton aprismatism;
 
-		private UIImageButton MeleeAspect;
+        //Eri's new t1 skills
+        private UIImageButton spectralNail;
+        private UIImageButton armsthrift;
+        private UIImageButton mysticIncision;
+        private UIImageButton stayTheCourse;
+        private UIImageButton catharsis;
+        private UIImageButton fabledFashion;
+        private UIImageButton kineticConversion;
+        private UIImageButton kiTwinburst;
+        private UIImageButton arborealEchoes;
+        private UIImageButton swiftstrikeTheory;
+        private UIImageButton inevitableEnd;
+        private UIImageButton lavenderRefrain;
+
+        private UIImageButton MeleeAspect;
 		private UIImageButton MagicAspect;
 		private UIImageButton RangedAspect;
 		private UIImageButton SummonAspect;
@@ -123,7 +137,16 @@ namespace StarsAbove.UI.Starfarers
 			butchersdozen.OnMouseOver += ButchersDozenHover;
 			butchersdozen.OnMouseOut += HoverOff;
 
-			starshower = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Starshower") );
+            swiftstrikeTheory = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/swiftstrikeTheory"));
+            swiftstrikeTheory.OnLeftClick += swiftstrikeTheoryClick;
+            swiftstrikeTheory.Width.Set(56, 0f);
+            swiftstrikeTheory.Height.Set(44, 0f);
+            swiftstrikeTheory.Left.Set(78, 0f);
+            swiftstrikeTheory.Top.Set(200, 0f);//Row 4
+            swiftstrikeTheory.OnMouseOver += swiftstrikeTheoryHover;
+            swiftstrikeTheory.OnMouseOut += HoverOff;
+
+            starshower = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Starshower") );
 			starshower.OnLeftClick += StarshowerClick;
 			starshower.Width.Set(56, 0f);
 			starshower.Height.Set(44, 0f);
@@ -132,7 +155,16 @@ namespace StarsAbove.UI.Starfarers
 			starshower.OnMouseOver += StarshowerHover;
 			starshower.OnMouseOut += HoverOff;
 
-			MeleeAspect = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Melee") );
+            spectralNail = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/spectralNail"));
+            spectralNail.OnLeftClick += spectralNailClick;
+            spectralNail.Width.Set(56, 0f);
+            spectralNail.Height.Set(44, 0f);
+            spectralNail.Left.Set(78, 0f);
+            spectralNail.Top.Set(56, 0f);
+            spectralNail.OnMouseOver += spectralNailHover;
+            spectralNail.OnMouseOut += HoverOff;
+
+            MeleeAspect = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/Melee") );
 			MeleeAspect.OnLeftClick += MeleeAspectClick;
 			MeleeAspect.Width.Set(32, 0f);
 			MeleeAspect.Height.Set(44, 0f);
@@ -222,7 +254,16 @@ namespace StarsAbove.UI.Starfarers
 			ironskin.OnMouseOver += IronskinHover;
 			ironskin.OnMouseOut += HoverOff;
 
-			evasionmastery = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/evasionmastery") );
+            armsthrift = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/armsthrift"));
+            armsthrift.OnLeftClick += armsthriftClick;
+            armsthrift.Width.Set(56, 0f);
+            armsthrift.Height.Set(44, 0f);
+            armsthrift.Left.Set(136, 0f);
+            armsthrift.Top.Set(56, 0f);
+            armsthrift.OnMouseOver += armsthriftHover;
+            armsthrift.OnMouseOut += HoverOff;
+
+            evasionmastery = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/evasionmastery") );
 			evasionmastery.OnLeftClick += evasionmasteryClick;
 			evasionmastery.Width.Set(56, 0f);
 			evasionmastery.Height.Set(44, 0f);
@@ -231,7 +272,16 @@ namespace StarsAbove.UI.Starfarers
 			evasionmastery.OnMouseOver += EvasionMasteryHover;
 			evasionmastery.OnMouseOut += HoverOff;
 
-			aquaaffinity = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/aquaaffinity") );
+            mysticIncision = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/mysticIncision"));
+            mysticIncision.OnLeftClick += mysticIncisionClick;
+            mysticIncision.Width.Set(56, 0f);
+            mysticIncision.Height.Set(44, 0f);
+            mysticIncision.Left.Set(194, 0f);
+            mysticIncision.Top.Set(56, 0f);
+            mysticIncision.OnMouseOver += mysticIncisionHover;
+            mysticIncision.OnMouseOut += HoverOff;
+
+            aquaaffinity = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/aquaaffinity") );
 			aquaaffinity.OnLeftClick += aquaaffinityClick;
 			aquaaffinity.Width.Set(56, 0f);
 			aquaaffinity.Height.Set(44, 0f);
@@ -239,8 +289,17 @@ namespace StarsAbove.UI.Starfarers
 			aquaaffinity.Top.Set(104, 0f);
 			aquaaffinity.OnMouseOver += aquaaffinityHover;
 			aquaaffinity.OnMouseOut += HoverOff;
-			
-			inneralchemy = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/inneralchemy") );
+
+            stayTheCourse = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/stayTheCourse"));
+            stayTheCourse.OnLeftClick += stayTheCourseClick;
+            stayTheCourse.Width.Set(56, 0f);
+            stayTheCourse.Height.Set(44, 0f);
+            stayTheCourse.Left.Set(78, 0f);
+            stayTheCourse.Top.Set(104, 0f);
+            stayTheCourse.OnMouseOver += stayTheCourseHover;
+            stayTheCourse.OnMouseOut += HoverOff;
+
+            inneralchemy = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/inneralchemy") );
 			inneralchemy.OnLeftClick += inneralchemyClick;
 			inneralchemy.Width.Set(56, 0f);
 			inneralchemy.Height.Set(44, 0f);
@@ -249,7 +308,16 @@ namespace StarsAbove.UI.Starfarers
 			inneralchemy.OnMouseOver += inneralchemyHover;
 			inneralchemy.OnMouseOut += HoverOff;
 
-			umbralentropy = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/umbralentropy") );
+            catharsis = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/catharsis"));
+            catharsis.OnLeftClick += catharsisClick;
+            catharsis.Width.Set(56, 0f);
+            catharsis.Height.Set(44, 0f);
+            catharsis.Left.Set(136, 0f);
+            catharsis.Top.Set(104, 0f);
+            catharsis.OnMouseOver += catharsisHover;
+            catharsis.OnMouseOut += HoverOff;
+
+            umbralentropy = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/umbralentropy") );
 			umbralentropy.OnLeftClick += umbralentropyClick;
 			umbralentropy.Width.Set(56, 0f);
 			umbralentropy.Height.Set(44, 0f);
@@ -258,7 +326,16 @@ namespace StarsAbove.UI.Starfarers
 			umbralentropy.OnMouseOver += umbralentropyHover;
 			umbralentropy.OnMouseOut += HoverOff;
 
-			flashfreeze = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/flashfreeze") );
+            kiTwinburst = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/kiTwinburst"));
+            kiTwinburst.OnLeftClick += kiTwinburstClick;
+            kiTwinburst.Width.Set(56, 0f);
+            kiTwinburst.Height.Set(44, 0f);
+            kiTwinburst.Left.Set(136, 0f);
+            kiTwinburst.Top.Set(152, 0f);
+            kiTwinburst.OnMouseOver += kiTwinburstHover;
+            kiTwinburst.OnMouseOut += HoverOff;
+
+            flashfreeze = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/flashfreeze") );
 			flashfreeze.OnLeftClick += flashfreezeClick;
 			flashfreeze.Width.Set(56, 0f);
 			flashfreeze.Height.Set(44, 0f);
@@ -267,7 +344,16 @@ namespace StarsAbove.UI.Starfarers
 			flashfreeze.OnMouseOver += flashfreezeHover;
 			flashfreeze.OnMouseOut += HoverOff;
 
-			mysticforging = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/mysticforging") );
+            inevitableEnd = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/inevitableEnd"));
+            inevitableEnd.OnLeftClick += inevitableEndClick;
+            inevitableEnd.Width.Set(56, 0f);
+            inevitableEnd.Height.Set(44, 0f);
+            inevitableEnd.Left.Set(136, 0f);
+            inevitableEnd.Top.Set(200, 0f);
+            inevitableEnd.OnMouseOver += inevitableEndHover;
+            inevitableEnd.OnMouseOut += HoverOff;
+
+            mysticforging = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/mysticforging") );
 			mysticforging.OnLeftClick += mysticforgingClick;
 			mysticforging.Width.Set(56, 0f);
 			mysticforging.Height.Set(44, 0f);
@@ -276,7 +362,16 @@ namespace StarsAbove.UI.Starfarers
 			mysticforging.OnMouseOver += mysticforgingHover;
 			mysticforging.OnMouseOut += HoverOff;
 
-			hikari = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/hikari") );
+            lavenderRefrain = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/lavenderRefrain"));
+            lavenderRefrain.OnLeftClick += lavenderRefrainClick;
+            lavenderRefrain.Width.Set(56, 0f);
+            lavenderRefrain.Height.Set(44, 0f);
+            lavenderRefrain.Left.Set(194, 0f);
+            lavenderRefrain.Top.Set(200, 0f);
+            lavenderRefrain.OnMouseOver += lavenderRefrainHover;
+            lavenderRefrain.OnMouseOut += HoverOff;
+
+            hikari = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/hikari") );
 			hikari.OnLeftClick += hikariClick;
 			hikari.Width.Set(56, 0f);
 			hikari.Height.Set(44, 0f);
@@ -285,7 +380,16 @@ namespace StarsAbove.UI.Starfarers
 			hikari.OnMouseOver += hikariHover;
 			hikari.OnMouseOut += HoverOff;
 
-			celestialevanesence = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/celestialevanesence") );
+            fabledFashion = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/fabledFashion"));
+            fabledFashion.OnLeftClick += fabledFashionClick;
+            fabledFashion.Width.Set(56, 0f);
+            fabledFashion.Height.Set(44, 0f);
+            fabledFashion.Left.Set(194, 0f);
+            fabledFashion.Top.Set(104, 0f);
+            fabledFashion.OnMouseOver += fabledFashionHover;
+            fabledFashion.OnMouseOut += HoverOff;
+
+            celestialevanesence = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/celestialevanesence") );
 			celestialevanesence.OnLeftClick += celestialevanesenceClick;
 			celestialevanesence.Width.Set(56, 0f);
 			celestialevanesence.Height.Set(44, 0f);
@@ -294,7 +398,16 @@ namespace StarsAbove.UI.Starfarers
 			celestialevanesence.OnMouseOver += celestialevanesenceHover;
 			celestialevanesence.OnMouseOut += HoverOff;
 
-			healthyConfidence = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/healthyConfidence") );
+            arborealEchoes = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/arborealEchoes"));
+            arborealEchoes.OnLeftClick += arborealEchoesClick;
+            arborealEchoes.Width.Set(56, 0f);
+            arborealEchoes.Height.Set(44, 0f);
+            arborealEchoes.Left.Set(194, 0f);
+            arborealEchoes.Top.Set(152, 0f);
+            arborealEchoes.OnMouseOver += arborealEchoesHover;
+            arborealEchoes.OnMouseOut += HoverOff;
+
+            healthyConfidence = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/healthyConfidence") );
 			healthyConfidence.OnLeftClick += healthyConfidenceClick;
 			healthyConfidence.Width.Set(56, 0f);
 			healthyConfidence.Height.Set(44, 0f);
@@ -321,7 +434,16 @@ namespace StarsAbove.UI.Starfarers
 			livingdead.OnMouseOver += livingdeadHover;
 			livingdead.OnMouseOut += HoverOff;
 
-			astralmantle = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/astralmantle") );
+            kineticConversion = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/kineticConversion"));
+            kineticConversion.OnLeftClick += kineticConversionClick;
+            kineticConversion.Width.Set(56, 0f);
+            kineticConversion.Height.Set(44, 0f);
+            kineticConversion.Left.Set(78, 0f);
+            kineticConversion.Top.Set(152, 0f);
+            kineticConversion.OnMouseOver += kineticConversionHover;
+            kineticConversion.OnMouseOut += HoverOff;
+
+            astralmantle = new UIImageButton(Request<Texture2D>("StarsAbove/UI/Starfarers/astralmantle") );
 			astralmantle.OnLeftClick += astralmantleClick;
 			astralmantle.Width.Set(56, 0f);
 			astralmantle.Height.Set(44, 0f);
@@ -446,31 +568,20 @@ namespace StarsAbove.UI.Starfarers
 			
 			area.Append(text);
 
+			
 
-			area.Append(starshower);
-			area.Append(ironskin);
-			area.Append(evasionmastery);
-			area.Append(aquaaffinity);
-			area.Append(livingdead);
-			area.Append(healthyConfidence);
+            area.Append(healthyConfidence);
 			area.Append(bloomingflames);
 			area.Append(beyondinfinity);
 			area.Append(astralmantle);
 			area.Append(afterburner);
 			area.Append(artofwar);
-			area.Append(inneralchemy);
-			area.Append(umbralentropy);
-			area.Append(flashfreeze);
-			area.Append(celestialevanesence);
-			area.Append(hikari);
 			area.Append(avataroflight);
 			area.Append(keyofchronology);
 			area.Append(unbridledradiance);
 			area.Append(beyondtheboundary);
 			area.Append(weaknessexploit);
 			area.Append(aprismatism);
-			area.Append(butchersdozen);
-			area.Append(mysticforging);
 
 			
 			
@@ -1082,7 +1193,236 @@ namespace StarsAbove.UI.Starfarers
 
 			// We can do stuff in here!
 		}
-		private void hikariHover(UIMouseEvent evt, UIElement listeningElement)
+
+        private void spectralNailHover(UIMouseEvent evt, UIElement listeningElement)
+        {
+			var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            if (!(player.stellarArrayVisibility >= 2f && player.stellarArray == true))
+                return;
+
+			string abilityName = "SpectralNail";
+
+            if (player.spectralNail == 0)
+            {
+                player.description = LangHelper.GetTextValue($"StellarArray.Abilities.Starshield.Unlock", Main.LocalPlayer);
+            }
+            else
+            {
+                player.passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities." + abilityName + ".Name", Main.LocalPlayer);
+                player.description = LangHelper.GetTextValue($"StellarArray.Abilities." + abilityName + ".Description", Main.LocalPlayer);
+            }
+            player.textVisible = true;
+        }
+        private void armsthriftHover(UIMouseEvent evt, UIElement listeningElement)
+        {
+            var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            if (!(player.stellarArrayVisibility >= 2f && player.stellarArray == true))
+                return;
+
+            string abilityName = "Armsthrift";
+
+            if (player.armsthrift == 0)
+            {
+                player.description = LangHelper.GetTextValue($"StellarArray.Abilities.IronWill.Unlock", Main.LocalPlayer);
+            }
+            else
+            {
+                player.passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities." + abilityName + ".Name", Main.LocalPlayer);
+                player.description = LangHelper.GetTextValue($"StellarArray.Abilities." + abilityName + ".Description", Main.LocalPlayer);
+            }
+            player.textVisible = true;
+        }
+        private void mysticIncisionHover(UIMouseEvent evt, UIElement listeningElement)
+        {
+            var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            if (!(player.stellarArrayVisibility >= 2f && player.stellarArray == true))
+                return;
+
+            string abilityName = "MysticIncision";
+
+            if (player.mysticIncision == 0)
+            {
+                player.description = LangHelper.GetTextValue($"StellarArray.Abilities.EvasionMastery.Unlock", Main.LocalPlayer);
+            }
+            else
+            {
+                player.passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities." + abilityName + ".Name", Main.LocalPlayer);
+                player.description = LangHelper.GetTextValue($"StellarArray.Abilities." + abilityName + ".Description", Main.LocalPlayer);
+            }
+            player.textVisible = true;
+        }
+        private void stayTheCourseHover(UIMouseEvent evt, UIElement listeningElement)
+        {
+            var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            if (!(player.stellarArrayVisibility >= 2f && player.stellarArray == true))
+                return;
+
+            string abilityName = "StayTheCourse";
+
+            if (player.stayTheCourse == 0)
+            {
+                player.description = LangHelper.GetTextValue($"StellarArray.Abilities.CyclicHunter.Unlock", Main.LocalPlayer);
+            }
+            else
+            {
+                player.passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities." + abilityName + ".Name", Main.LocalPlayer);
+                player.description = LangHelper.GetTextValue($"StellarArray.Abilities." + abilityName + ".Description", Main.LocalPlayer);
+            }
+            player.textVisible = true;
+        }
+        private void catharsisHover(UIMouseEvent evt, UIElement listeningElement)
+        {
+            var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            if (!(player.stellarArrayVisibility >= 2f && player.stellarArray == true))
+                return;
+
+            string abilityName = "Catharsis";
+
+            if (player.catharsis == 0)
+            {
+                player.description = LangHelper.GetTextValue($"StellarArray.Abilities.InnerAlchemy.Unlock", Main.LocalPlayer);
+            }
+            else
+            {
+                player.passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities." + abilityName + ".Name", Main.LocalPlayer);
+                player.description = LangHelper.GetTextValue($"StellarArray.Abilities." + abilityName + ".Description", Main.LocalPlayer);
+            }
+            player.textVisible = true;
+        }
+        private void fabledFashionHover(UIMouseEvent evt, UIElement listeningElement)
+        {
+            var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            if (!(player.stellarArrayVisibility >= 2f && player.stellarArray == true))
+                return;
+
+            string abilityName = "FabledFashion";
+
+            if (player.fabledFashion == 0)
+            {
+                player.description = LangHelper.GetTextValue($"StellarArray.Abilities.Hikari.Unlock", Main.LocalPlayer);
+            }
+            else
+            {
+                player.passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities." + abilityName + ".Name", Main.LocalPlayer);
+                player.description = LangHelper.GetTextValue($"StellarArray.Abilities." + abilityName + ".Description", Main.LocalPlayer);
+            }
+            player.textVisible = true;
+        }
+        private void kineticConversionHover(UIMouseEvent evt, UIElement listeningElement)
+        {
+            var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            if (!(player.stellarArrayVisibility >= 2f && player.stellarArray == true))
+                return;
+
+            string abilityName = "KineticConversion";
+
+            if (player.kineticConversion == 0)
+            {
+                player.description = LangHelper.GetTextValue($"StellarArray.Abilities.LivingDead.Unlock", Main.LocalPlayer);
+            }
+            else
+            {
+                player.passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities." + abilityName + ".Name", Main.LocalPlayer);
+                player.description = LangHelper.GetTextValue($"StellarArray.Abilities." + abilityName + ".Description", Main.LocalPlayer);
+            }
+            player.textVisible = true;
+        }
+        private void kiTwinburstHover(UIMouseEvent evt, UIElement listeningElement)
+        {
+            var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            if (!(player.stellarArrayVisibility >= 2f && player.stellarArray == true))
+                return;
+
+            string abilityName = "KiTwinburst";
+
+            if (player.kiTwinburst == 0)
+            {
+                player.description = LangHelper.GetTextValue($"StellarArray.Abilities.UmbralEntropy.Unlock", Main.LocalPlayer);
+            }
+            else
+            {
+                player.passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities." + abilityName + ".Name", Main.LocalPlayer);
+                player.description = LangHelper.GetTextValue($"StellarArray.Abilities." + abilityName + ".Description", Main.LocalPlayer);
+            }
+            player.textVisible = true;
+        }
+        private void arborealEchoesHover(UIMouseEvent evt, UIElement listeningElement)
+        {
+            var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            if (!(player.stellarArrayVisibility >= 2f && player.stellarArray == true))
+                return;
+
+            string abilityName = "ArborealEchoes";
+
+            if (player.arborealEchoes == 0)
+            {
+                player.description = LangHelper.GetTextValue($"StellarArray.Abilities.CelestialEvanesence.Unlock", Main.LocalPlayer);
+            }
+            else
+            {
+                player.passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities." + abilityName + ".Name", Main.LocalPlayer);
+                player.description = LangHelper.GetTextValue($"StellarArray.Abilities." + abilityName + ".Description", Main.LocalPlayer);
+            }
+            player.textVisible = true;
+        }
+        private void swiftstrikeTheoryHover(UIMouseEvent evt, UIElement listeningElement)
+        {
+            var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            if (!(player.stellarArrayVisibility >= 2f && player.stellarArray == true))
+                return;
+
+            string abilityName = "SwiftstrikeTheory";
+
+            if (player.swiftstrikeTheory == 0)
+            {
+                player.description = LangHelper.GetTextValue($"StellarArray.Abilities.ButchersDozen.Unlock", Main.LocalPlayer);
+            }
+            else
+            {
+                player.passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities." + abilityName + ".Name", Main.LocalPlayer);
+                player.description = LangHelper.GetTextValue($"StellarArray.Abilities." + abilityName + ".Description", Main.LocalPlayer);
+            }
+            player.textVisible = true;
+        }
+        private void inevitableEndHover(UIMouseEvent evt, UIElement listeningElement)
+        {
+            var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            if (!(player.stellarArrayVisibility >= 2f && player.stellarArray == true))
+                return;
+
+            string abilityName = "InevitableEnd";
+
+            if (player.inevitableEnd == 0)
+            {
+                player.description = LangHelper.GetTextValue($"StellarArray.Abilities.FlashFreeze.Unlock", Main.LocalPlayer);
+            }
+            else
+            {
+                player.passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities." + abilityName + ".Name", Main.LocalPlayer);
+                player.description = LangHelper.GetTextValue($"StellarArray.Abilities." + abilityName + ".Description", Main.LocalPlayer);
+            }
+            player.textVisible = true;
+        }
+        private void lavenderRefrainHover(UIMouseEvent evt, UIElement listeningElement)
+        {
+            var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            if (!(player.stellarArrayVisibility >= 2f && player.stellarArray == true))
+                return;
+
+            string abilityName = "LavenderRefrain";
+
+            if (player.lavenderRefrain == 0)
+            {
+                player.description = LangHelper.GetTextValue($"StellarArray.Abilities.MysticForging.Unlock", Main.LocalPlayer);
+            }
+            else
+            {
+                player.passiveTitle = LangHelper.GetTextValue($"StellarArray.Abilities." + abilityName + ".Name", Main.LocalPlayer);
+                player.description = LangHelper.GetTextValue($"StellarArray.Abilities." + abilityName + ".Description", Main.LocalPlayer);
+            }
+            player.textVisible = true;
+        }
+        private void hikariHover(UIMouseEvent evt, UIElement listeningElement)
 		{
 			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArrayVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArray == true))
 				return;
@@ -1450,12 +1790,216 @@ namespace StarsAbove.UI.Starfarers
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starshower = 1;
 			}
 
+            
 
 
-
-			// We can do stuff in here!
-		}
-		private void BardAspectClick(UIMouseEvent evt, UIElement listeningElement)
+            // We can do stuff in here!
+        }
+        private void spectralNailClick(UIMouseEvent evt, UIElement listeningElement)
+        {
+            var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            if (!(player.stellarArrayVisibility >= 2f && player.stellarArray == true))
+                return;
+            if (player.stellarGauge + 1 <= player.stellarGaugeMax && player.spectralNail == 1)
+            {
+                player.stellarGauge += 1;
+                player.spectralNail = 2;
+            }
+            else
+            if (player.armsthrift == 2)
+            {
+                player.stellarGauge -= 1;
+                player.spectralNail = 1;
+            }
+        }
+        private void armsthriftClick(UIMouseEvent evt, UIElement listeningElement)
+        {
+            var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            if (!(player.stellarArrayVisibility >= 2f && player.stellarArray == true))
+                return;
+            if (player.stellarGauge + 1 <= player.stellarGaugeMax && player.armsthrift == 1)
+            {
+                player.stellarGauge += 1;
+                player.armsthrift = 2;
+            }
+            else
+            if (player.armsthrift == 2)
+            {
+                player.stellarGauge -= 1;
+                player.armsthrift = 1;
+            }
+        }
+        private void mysticIncisionClick(UIMouseEvent evt, UIElement listeningElement)
+        {
+            var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            if (!(player.stellarArrayVisibility >= 2f && player.stellarArray == true))
+                return;
+            if (player.stellarGauge + 1 <= player.stellarGaugeMax && player.mysticIncision == 1)
+            {
+                player.stellarGauge += 1;
+                player.mysticIncision = 2;
+            }
+            else
+            if (player.mysticIncision == 2)
+            {
+                player.stellarGauge -= 1;
+                player.mysticIncision = 1;
+            }
+        }
+        private void stayTheCourseClick(UIMouseEvent evt, UIElement listeningElement)
+        {
+            var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            if (!(player.stellarArrayVisibility >= 2f && player.stellarArray == true))
+                return;
+            if (player.stellarGauge + 1 <= player.stellarGaugeMax && player.stayTheCourse == 1)
+            {
+                player.stellarGauge += 1;
+                player.stayTheCourse = 2;
+            }
+            else
+            if (player.stayTheCourse == 2)
+            {
+                player.stellarGauge -= 1;
+                player.stayTheCourse = 1;
+            }
+        }
+        private void catharsisClick(UIMouseEvent evt, UIElement listeningElement)
+        {
+            var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            if (!(player.stellarArrayVisibility >= 2f && player.stellarArray == true))
+                return;
+            if (player.stellarGauge + 1 <= player.stellarGaugeMax && player.catharsis == 1)
+            {
+                player.stellarGauge += 1;
+                player.catharsis = 2;
+            }
+            else
+            if (player.catharsis == 2)
+            {
+                player.stellarGauge -= 1;
+                player.catharsis = 1;
+            }
+        }
+        private void fabledFashionClick(UIMouseEvent evt, UIElement listeningElement)
+        {
+            var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            if (!(player.stellarArrayVisibility >= 2f && player.stellarArray == true))
+                return;
+            if (player.stellarGauge + 1 <= player.stellarGaugeMax && player.fabledFashion == 1)
+            {
+                player.stellarGauge += 1;
+                player.fabledFashion = 2;
+            }
+            else
+            if (player.fabledFashion == 2)
+            {
+                player.stellarGauge -= 1;
+                player.fabledFashion = 1;
+            }
+        }
+        private void kineticConversionClick(UIMouseEvent evt, UIElement listeningElement)
+        {
+            var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            if (!(player.stellarArrayVisibility >= 2f && player.stellarArray == true))
+                return;
+            if (player.stellarGauge + 1 <= player.stellarGaugeMax && player.kineticConversion == 1)
+            {
+                player.stellarGauge += 1;
+                player.kineticConversion = 2;
+            }
+            else
+            if (player.kineticConversion == 2)
+            {
+                player.stellarGauge -= 1;
+                player.kineticConversion = 1;
+            }
+        }
+        private void kiTwinburstClick(UIMouseEvent evt, UIElement listeningElement)
+        {
+            var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            if (!(player.stellarArrayVisibility >= 2f && player.stellarArray == true))
+                return;
+            if (player.stellarGauge + 1 <= player.stellarGaugeMax && player.kiTwinburst == 1)
+            {
+                player.stellarGauge += 1;
+                player.kiTwinburst = 2;
+            }
+            else
+            if (player.kiTwinburst == 2)
+            {
+                player.stellarGauge -= 1;
+                player.kiTwinburst = 1;
+            }
+        }
+        private void arborealEchoesClick(UIMouseEvent evt, UIElement listeningElement)
+        {
+            var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            if (!(player.stellarArrayVisibility >= 2f && player.stellarArray == true))
+                return;
+            if (player.stellarGauge + 1 <= player.stellarGaugeMax && player.arborealEchoes == 1)
+            {
+                player.stellarGauge += 1;
+                player.arborealEchoes = 2;
+            }
+            else
+            if (player.arborealEchoes == 2)
+            {
+                player.stellarGauge -= 1;
+                player.arborealEchoes = 1;
+            }
+        }
+        private void swiftstrikeTheoryClick(UIMouseEvent evt, UIElement listeningElement)
+        {
+            var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            if (!(player.stellarArrayVisibility >= 2f && player.stellarArray == true))
+                return;
+            if (player.stellarGauge + 1 <= player.stellarGaugeMax && player.swiftstrikeTheory == 1)
+            {
+                player.stellarGauge += 1;
+                player.swiftstrikeTheory = 2;
+            }
+            else
+            if (player.swiftstrikeTheory == 2)
+            {
+                player.stellarGauge -= 1;
+                player.swiftstrikeTheory = 1;
+            }
+        }
+        private void inevitableEndClick(UIMouseEvent evt, UIElement listeningElement)
+        {
+            var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            if (!(player.stellarArrayVisibility >= 2f && player.stellarArray == true))
+                return;
+            if (player.stellarGauge + 1 <= player.stellarGaugeMax && player.inevitableEnd == 1)
+            {
+                player.stellarGauge += 1;
+                player.inevitableEnd = 2;
+            }
+            else
+            if (player.inevitableEnd == 2)
+            {
+                player.stellarGauge -= 1;
+                player.inevitableEnd = 1;
+            }
+        }
+        private void lavenderRefrainClick(UIMouseEvent evt, UIElement listeningElement)
+        {
+            var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            if (!(player.stellarArrayVisibility >= 2f && player.stellarArray == true))
+                return;
+            if (player.stellarGauge + 1 <= player.stellarGaugeMax && player.lavenderRefrain == 1)
+            {
+                player.stellarGauge += 1;
+                player.lavenderRefrain = 2;
+            }
+            else
+            if (player.lavenderRefrain == 2)
+            {
+                player.stellarGauge -= 1;
+                player.lavenderRefrain = 1;
+            }
+        }
+        private void BardAspectClick(UIMouseEvent evt, UIElement listeningElement)
 		{
 			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArrayVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArray == true))
 				return;
@@ -2288,7 +2832,20 @@ namespace StarsAbove.UI.Starfarers
 			Rectangle beyondtheboundaryArea = beyondtheboundary.GetInnerDimensions().ToRectangle();
 			Rectangle flashfreezeArea = flashfreeze.GetInnerDimensions().ToRectangle();
 
-			Rectangle MeleeAspectArea = MeleeAspect.GetInnerDimensions().ToRectangle();
+            Rectangle spectralNailArea = spectralNail.GetInnerDimensions().ToRectangle();
+            Rectangle armsthriftArea = armsthrift.GetInnerDimensions().ToRectangle();
+            Rectangle mysticIncisionArea = mysticIncision.GetInnerDimensions().ToRectangle();
+            Rectangle stayTheCourseArea = stayTheCourse.GetInnerDimensions().ToRectangle();
+            Rectangle catharsisArea = catharsis.GetInnerDimensions().ToRectangle();
+            Rectangle fabledFashionArea = fabledFashion.GetInnerDimensions().ToRectangle();
+            Rectangle kineticConversionArea = kineticConversion.GetInnerDimensions().ToRectangle();
+            Rectangle kiTwinburstArea = kiTwinburst.GetInnerDimensions().ToRectangle();
+            Rectangle arborealEchoesArea = arborealEchoes.GetInnerDimensions().ToRectangle();
+            Rectangle swiftstrikeTheoryArea = swiftstrikeTheory.GetInnerDimensions().ToRectangle();
+            Rectangle inevitableEndArea = inevitableEnd.GetInnerDimensions().ToRectangle();
+            Rectangle lavenderRefrainArea = lavenderRefrain.GetInnerDimensions().ToRectangle();
+
+            Rectangle MeleeAspectArea = MeleeAspect.GetInnerDimensions().ToRectangle();
 			Rectangle SummonAspectArea = SummonAspect.GetInnerDimensions().ToRectangle();
 			Rectangle MagicAspectArea = MagicAspect.GetInnerDimensions().ToRectangle();
 			Rectangle RangedAspectArea = RangedAspect.GetInnerDimensions().ToRectangle();
@@ -2307,6 +2864,63 @@ namespace StarsAbove.UI.Starfarers
 
 			//Rectangle dialogueBox = new Rectangle((50), (480), (700), (300));
 
+			if(modPlayer.chosenStarfarer == 1)
+			{
+                //Asphodene's Stellar array.
+                area.Append(starshower);
+                area.Append(ironskin);
+                area.Append(evasionmastery);
+                area.Append(mysticforging);
+                area.Append(butchersdozen);
+                area.Append(hikari);
+                area.Append(celestialevanesence);
+                area.Append(flashfreeze);
+                area.Append(umbralentropy);
+                area.Append(inneralchemy);
+                area.Append(aquaaffinity);
+                area.Append(livingdead);
+				
+                spectralNail.Remove();
+                armsthrift.Remove();
+                mysticIncision.Remove();
+                stayTheCourse.Remove();
+                catharsis.Remove();
+                fabledFashion.Remove();
+                kineticConversion.Remove();
+                kiTwinburst.Remove();
+                arborealEchoes.Remove();
+                swiftstrikeTheory.Remove();
+                inevitableEnd.Remove();
+                lavenderRefrain.Remove();
+            }
+			else if (modPlayer.chosenStarfarer == 2)
+			{
+                area.Append(spectralNail);
+                area.Append(armsthrift);
+                area.Append(mysticIncision);
+                area.Append(stayTheCourse);
+                area.Append(catharsis);
+                area.Append(fabledFashion);
+                area.Append(kineticConversion);
+                area.Append(kiTwinburst);
+                area.Append(arborealEchoes);
+                area.Append(swiftstrikeTheory);
+                area.Append(inevitableEnd);
+                area.Append(lavenderRefrain);
+
+                starshower.Remove();
+                ironskin.Remove();
+                evasionmastery.Remove();
+                mysticforging.Remove();
+                butchersdozen.Remove();
+                hikari.Remove();
+                celestialevanesence.Remove();
+                flashfreeze.Remove();
+                umbralentropy.Remove();
+                inneralchemy.Remove();
+                aquaaffinity.Remove();
+                livingdead.Remove();
+            }
 
 			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/StellarArray"), hitbox, Color.White * modPlayer.stellarArrayVisibility);
 			if(modPlayer.stellarGauge<=5)
@@ -2453,7 +3067,56 @@ namespace StarsAbove.UI.Starfarers
 			{
 				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/aprismatism"), aprismatismArea, Color.White * modPlayer.stellarArrayVisibility);
 			}
-			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArrayVisibility > 0))
+
+            if (modPlayer.spectralNail == 2)
+            {
+                spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/spectralNail"), spectralNailArea, Color.White * modPlayer.stellarArrayVisibility);
+            }
+            if (modPlayer.armsthrift == 2)
+            {
+                spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/armsthrift"), armsthriftArea, Color.White * modPlayer.stellarArrayVisibility);
+            }
+            if (modPlayer.mysticIncision == 2)
+            {
+                spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/mysticIncision"), mysticIncisionArea, Color.White * modPlayer.stellarArrayVisibility);
+            }
+            if (modPlayer.stayTheCourse == 2)
+            {
+                spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/stayTheCourse"), stayTheCourseArea, Color.White * modPlayer.stellarArrayVisibility);
+            }
+            if (modPlayer.catharsis == 2)
+            {
+                spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/catharsis"), catharsisArea, Color.White * modPlayer.stellarArrayVisibility);
+            }
+            if (modPlayer.fabledFashion == 2)
+            {
+                spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/fabledFashion"), fabledFashionArea, Color.White * modPlayer.stellarArrayVisibility);
+            }
+            if (modPlayer.kineticConversion == 2)
+            {
+                spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/kineticConversion"), kineticConversionArea, Color.White * modPlayer.stellarArrayVisibility);
+            }
+            if (modPlayer.kiTwinburst == 2)
+            {
+                spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/kiTwinburst"), kiTwinburstArea, Color.White * modPlayer.stellarArrayVisibility);
+            }
+            if (modPlayer.arborealEchoes == 2)
+            {
+                spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/arborealEchoes"), arborealEchoesArea, Color.White * modPlayer.stellarArrayVisibility);
+            }
+            if (modPlayer.swiftstrikeTheory == 2)
+            {
+                spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/swiftstrikeTheory"), swiftstrikeTheoryArea, Color.White * modPlayer.stellarArrayVisibility);
+            }
+            if (modPlayer.inevitableEnd == 2)
+            {
+                spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/inevitableEnd"), inevitableEndArea, Color.White * modPlayer.stellarArrayVisibility);
+            }
+            if (modPlayer.lavenderRefrain == 2)
+            {
+                spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/lavenderRefrain"), lavenderRefrainArea, Color.White * modPlayer.stellarArrayVisibility);
+            }
+            if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArrayVisibility > 0))
 			{
 				area.Remove();
 				confirm.Remove();
