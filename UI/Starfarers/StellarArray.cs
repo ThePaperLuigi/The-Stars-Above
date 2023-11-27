@@ -1806,7 +1806,7 @@ namespace StarsAbove.UI.Starfarers
                 player.spectralNail = 2;
             }
             else
-            if (player.armsthrift == 2)
+            if (player.spectralNail == 2)
             {
                 player.stellarGauge -= 1;
                 player.spectralNail = 1;

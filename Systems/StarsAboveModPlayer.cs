@@ -1,7 +1,9 @@
+using Microsoft.CodeAnalysis;
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs;
 using StarsAbove.Buffs.EmberFlask;
 using StarsAbove.Buffs.StarfarerAttire;
+using StarsAbove.Buffs.StellarArray;
 using StarsAbove.Buffs.StellarNovas;
 using StarsAbove.Buffs.SubworldModifiers;
 using StarsAbove.Buffs.Umbra;
@@ -37,6 +39,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using Terraria.UI;
+using Terraria.WorldBuilding;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Systems
@@ -575,6 +578,8 @@ namespace StarsAbove.Systems
 
         public int unbridledRadianceStack = 0;//Will increase every 1000 kills.
 
+        int stayTheCourseTimer;
+        float stayTheCourseStacks;
         int aprismatismCooldown;
         int butchersDozenKills;
         int ammoRecycleCooldown;
@@ -583,6 +588,9 @@ namespace StarsAbove.Systems
         int healthyConfidenceHealTimer;
         int beyondInfinityTimer;
         float beyondInfinityDamageMod;
+
+        public int armsthriftWeaponIDOld = 0;
+        public DamageClass armsthriftWeaponTypeOld;
 
         int timeAfterGettingHit;
 
@@ -1788,7 +1796,7 @@ namespace StarsAbove.Systems
                 target.AddBuff(BuffType<AstarteDriverEnemyCooldown>(), 60);
                 OnEnemyHitWithNova(target, 5, ref damageDone, ref hit.Crit);
             }
-
+            
             if (target.HasBuff(BuffType<Starblight>()) && umbralentropy == 2)
             {
                 if (umbralEntropyCooldown <= 0)
@@ -2057,8 +2065,14 @@ namespace StarsAbove.Systems
 
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-
-
+            if (stayTheCourseStacks >= 0.15f && stayTheCourse == 2)
+            {
+                modifiers.CritDamage += 0.15f;
+            }
+            if (kineticConversion == 2)
+            {
+                modifiers.SourceDamage *= 0.1f + Player.velocity.Length() / 7f * 0.2f;
+            }
             if (mysticforging == 2)
             {
                 modifiers.DisableCrit();
@@ -2800,7 +2814,22 @@ namespace StarsAbove.Systems
             }
             base.ModifyScreenPosition();
         }
-
+        public override void UpdateEquips()
+        {
+            if(fabledFashion == 2)
+            {
+                for (int k = 10; k < 13; k++)
+                {
+                    Item item = Player.armor[k];
+                    if (!item.IsAir && Player.IsItemSlotUnlockedAndUsable(k) && (!item.expertOnly || Main.expertMode))
+                    {
+                        Player.GrantArmorBenefits(item);
+                    }
+                }
+            }
+            
+            base.UpdateEquips();
+        }
 
         public override void SetStaticDefaults()
         {
@@ -2833,6 +2862,7 @@ namespace StarsAbove.Systems
             aprismatismCooldown--;
             ButchersDozen();
             MysticForging();
+            StayTheCourse();
             umbralEntropyCooldown--;
 
             EmberFlask();
@@ -2840,7 +2870,7 @@ namespace StarsAbove.Systems
             DialogueScroll();
 
             AspectedDamageModification();
-
+            Armsthrift();
 
             //Prevents "unknown boss" dialogue from repeating.
             seenUnknownBossTimer--;
@@ -2942,7 +2972,7 @@ namespace StarsAbove.Systems
                 {
                     novaUIOpacity -= 0.1f;
                 }
-                if(stellarArray)
+                if (stellarArray)
                 {
                     gaussianBlurProgress += 0.2f;
 
@@ -3112,6 +3142,41 @@ namespace StarsAbove.Systems
 
         }
 
+        private void Armsthrift()
+        {
+            if (armsthrift == 2)
+            {
+                if (armsthriftWeaponIDOld == 0)
+                {
+                    armsthriftWeaponIDOld = Player.HeldItem.type;
+                    armsthriftWeaponTypeOld = Player.HeldItem.DamageType;
+                    return;
+                }
+                if(armsthriftWeaponIDOld != Player.HeldItem.type && !Player.HasBuff(BuffType<ArmsthriftCooldown>()) && Player.HeldItem.damage > 0)
+                {
+                    Player.AddBuff(BuffType<ArmsthriftCooldown>(), 10 * 60);
+
+                    if (armsthriftWeaponTypeOld != Player.HeldItem.DamageType)
+                    {
+                        //stronger buff
+                        Player.AddBuff(BuffType<ArmsthriftBuffStrong>(), 60 * 5);
+                    }
+                    else
+                    {
+                        //buff
+                        Player.AddBuff(BuffType<ArmsthriftBuff>(), 60 * 5);
+
+                    }
+                }
+                if(Player.HeldItem.damage > 0)
+                {
+                    armsthriftWeaponIDOld = Player.HeldItem.type;
+                    armsthriftWeaponTypeOld = Player.HeldItem.DamageType;
+                }
+                
+            }
+        }
+
         public float gaussianBlurProgress;
         private void GaussianBlur()
         {
@@ -3164,7 +3229,29 @@ namespace StarsAbove.Systems
                 }
             }
         }
-
+        private void StayTheCourse()
+        {
+            if (inCombat > 0 && stayTheCourse == 2)
+            {
+                stayTheCourseTimer++;
+                if(stayTheCourseTimer > 60 * 10)
+                {
+                    //10 seconds has passed
+                    stayTheCourseStacks += 0.1f;
+                    stayTheCourseTimer = 0;
+                    if(stayTheCourseStacks >= 0.15f)
+                    {
+                        stayTheCourseStacks = 0.15f;
+                    }
+                }
+                //Main.NewText(stayTheCourseStacks);
+            }
+            else
+            {
+                stayTheCourseStacks = 0;
+                stayTheCourseTimer = 0;
+            }
+        }
         private void CutsceneProgress()
         {
             astarteCutsceneProgress--;
@@ -5986,6 +6073,15 @@ namespace StarsAbove.Systems
             {
                 //player.maxRunSpeed += 0.1f;
             }
+            if(kineticConversion == 2)
+            {
+                if (Player.velocity.Length() >= 15f && ! Player.HasBuff(BuffType<KineticConversionCooldown>()))
+                {
+                    Player.AddBuff(BuffType<Invincibility>(), 60);
+                    Player.AddBuff(BuffType<KineticConversionCooldown>(), 60 * 12);
+
+                }
+            }
 
         }
         public override void PostUpdate()
@@ -8728,25 +8824,20 @@ namespace StarsAbove.Systems
         }
         public override void PostUpdateBuffs()
         {
-
-            if (Player.GetModPlayer<StarsAbovePlayer>().lifeforce < 0 && !Player.immune)
+            if(stayTheCourse == 2)
             {
-                Player.GetModPlayer<StarsAbovePlayer>().lifeforce = 100;
+                Player.GetCritChance(DamageClass.Generic) += (100 * stayTheCourseStacks);
 
-                Player.KillMe(PlayerDeathReason.ByCustomReason(Player.name + "'s life was drained away."), 500, 0);
-
-
-                SoundEngine.PlaySound(StarsAboveAudio.SFX_Death, Player.Center);
-
-                for (int d = 0; d < 70; d++)
+            }
+            if(fabledFashion == 2)
+            {
+                if(Player.statLifeMax > 151)
                 {
-                    Dust.NewDust(Player.position, Player.width, Player.height, 60, 0f, 0f, 150, default, 1.5f);
+                    Player.statLifeMax2 -= 150;
 
                 }
-            }
-            if (Player.immune && lifeforce < 50)
-            {
-                lifeforce++;
+                Player.GetDamage(DamageClass.Generic) -= 0.5f;
+                Player.statDefense *= 0.5f;
             }
         }
 
@@ -9042,6 +9133,10 @@ namespace StarsAbove.Systems
             {
                 modifiers.FinalDamage -= 0.1f;
                 novaGauge += 3;
+            }
+            if(stayTheCourse == 2)
+            {
+                modifiers.FinalDamage -= stayTheCourseStacks;
             }
         }
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)

@@ -46,6 +46,7 @@ namespace StarsAbove.Systems
         public bool AuthoritySacrificeMark;
         public int NanitePlagueLevel = 0;
         public int JudgementStacks = 0;
+        public int spectralNailStacks = 0;
 
         int dustTimer = 0;
 
@@ -753,7 +754,7 @@ namespace StarsAbove.Systems
             {
                 modifiers.FinalDamage += 1f;
             }
-
+            
 
 
         }
@@ -769,6 +770,21 @@ namespace StarsAbove.Systems
 
 
 
+        }
+        public override void OnHitByProjectile(NPC npc, Projectile projectile, NPC.HitInfo hit, int damageDone)
+        {
+            if (Main.player[projectile.owner].GetModPlayer<StarsAbovePlayer>().spectralNail == 2)
+            {
+                spectralNailStacks++;
+                if(spectralNailStacks >= 5)
+                {
+                    Rectangle textPos = new Rectangle((int)npc.position.X, (int)npc.position.Y - 20, npc.width, npc.height);
+                    CombatText.NewText(textPos, new Color(255, 62, 247, 240), $"{(int)(damageDone * 0.2)}", false, false);
+                    npc.life -= (int)(damageDone * 0.2);
+                    spectralNailStacks = 0;
+                }
+            }
+            base.OnHitByProjectile(npc, projectile, hit, damageDone);
         }
 
 

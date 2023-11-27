@@ -380,12 +380,12 @@ Mods: {
 
 				SpectralNail: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Spectral Nail']"
-					// Description: Every 5 strikes against a foe deals 30% bonus true damage. (6 second cooldown.)
+					// Description: Every 5 strikes against a foe deals 30% bonus true damage (6 second cooldown.)
 				}
 
 				Armsthrift: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Armsthrift']"
-					// Description: Weapons lose durability over time in combat and when you take damage; when durability reaches 0, the weapon can't be used. Durability resets out of combat. Gain up to 250% bonus damage the closer the weapon is to 0 durability.
+					// Description: Swapping weapons grants a 15% damage bonus for 5 seconds. This value is tripled if the weapon does not share the same damage type as the original weapon. (10 second cooldown.)
 				}
 
 				MysticIncision: {
@@ -395,27 +395,27 @@ Mods: {
 
 				StayTheCourse: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Stay The Course']"
-					// Description: For each second in combat, gain 1% damage reduction and 1% critical strike chance, up to 15%/20%.
+					// Description: Every 10 seconds in combat, gain 1% damage reduction and 1% critical strike chance, up to 15%. After reaching the maximum buff, buff critical strike damage by the same amount.
 				}
 
 				Catharsis: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Catharsis']"
-					// Description: When health is reduced through any means, gain a damaging aura that lasts for 4 seconds that deals damage to all nearby foes. Aura damage is based on current held weapon.
+					// Description: When health is reduced through any means, deal true damage to all nearby foes based 20% of the damage of your current held weapon. (2 second cooldown.)
 				}
 
 				FabledFashion: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Fabled Fashion']"
-					// Description: Equipped vanity armor is treated as if it is normal armor (Set bonuses do not apply.) Outgoing damage is reduced by 50%. Defense is reduced by 15, and maximum health is reduced by 150.
+					// Description: Equipped vanity armor is treated as if it is normal armor (Set bonuses do not apply.) Outgoing damage is reduced by 50%, defense is reduced by 50%, and maximum health is reduced by 150.
 				}
 
 				KineticConversion: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Kinetic Conversion']"
-					// Description: A portion of movement velocity is added to outgoing damage. Gain Invincibility when moving very quickly in a short period of time (12 second cooldown.)
+					// Description: A portion of movement velocity is added to outgoing damage. Gain brief Invincibility when dashing or moving quickly. (12 second cooldown.)
 				}
 
 				KiTwinburst: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Ki Twinburst']"
-					// Description: Attacks deal half damage but trigger a follow-up attack that deals 90% of the remaining damage.
+					// Description: Attacks deal half damage but trigger a follow-up attack that deals 90% of the remaining damage. If this hit is a critical strike, gain Alacrity for 2 seconds.
 				}
 
 				ArborealEchoes: {
@@ -425,7 +425,7 @@ Mods: {
 
 				SwiftstrikeTheory: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Swiftstrike Theory']"
-					// Description: Gain drastic attack speed while immune to damage. When health is reduced to 0, become Invincible for 2 seconds. (2 minute cooldown.)
+					// Description: Gain drastic attack speed while immune to damage. When taking lethal damage, instead set health to 1 and become Invincible for 2 seconds. (2 minute cooldown.)
 				}
 
 				InevitableEnd: {
@@ -12223,6 +12223,26 @@ Mods: {
 			ThespianTransition: {
 				// DisplayName: Thespian Transition
 				// Description: Mods.StarsAbove.Buffs.ThespianTransition.Description
+			}
+
+			KineticConversionCooldown: {
+				// DisplayName: Kinetic Conversion Cooldown
+				// Description: Mods.StarsAbove.Buffs.KineticConversionCooldown.Description
+			}
+
+			ArmsthriftBuff: {
+				// DisplayName: Armsthrift Buff
+				// Description: Mods.StarsAbove.Buffs.ArmsthriftBuff.Description
+			}
+
+			ArmsthriftBuffStrong: {
+				// DisplayName: Armsthrift Buff Strong
+				// Description: Mods.StarsAbove.Buffs.ArmsthriftBuffStrong.Description
+			}
+
+			ArmsthriftCooldown: {
+				// DisplayName: Armsthrift Cooldown
+				// Description: Mods.StarsAbove.Buffs.ArmsthriftCooldown.Description
 			}
 		}
 
