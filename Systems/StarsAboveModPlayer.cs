@@ -36,6 +36,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
+using Terraria.UI;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Systems
@@ -3283,14 +3284,14 @@ namespace StarsAbove.Systems
                 /*  if (SubworldSystem.IsActive<Observatory>() && observatoryDialogue == 0)
                   {
                       observatoryDialogue = 1;
-                      if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                          InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                       NewDiskDialogue = true;
 
                   }
                   if (observatoryDialogue == 2 && cosmicVoyageDialogue == 0)
                   {
                       cosmicVoyageDialogue = 1;
-                      if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                          InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                       NewDiskDialogue = true;
 
                   }*/
@@ -3298,20 +3299,20 @@ namespace StarsAbove.Systems
                 if (NPC.downedSlimeKing && slimeDialogue == 0)
                 {
                     slimeDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
                     if (Main.expertMode)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                         NewStellarArrayAbility = true;
                     }
                 }
                 if (NPC.downedBoss1 && eyeDialogue == 0)
                 {
                     eyeDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                     NewStellarArrayAbility = true;
 
 
@@ -3319,7 +3320,7 @@ namespace StarsAbove.Systems
                 if (slimeDialogue == 2 && astrolabeIntroDialogue == 0)
                 {
                     astrolabeIntroDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
 
@@ -3328,7 +3329,7 @@ namespace StarsAbove.Systems
                 if (observatoryIntroDialogue == 0 && astrolabeIntroDialogue == 2 && SubworldSystem.IsActive<Observatory>())
                 {
                     observatoryIntroDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
 
@@ -3337,18 +3338,18 @@ namespace StarsAbove.Systems
                 if (NPC.downedBoss2 && corruptBossDialogue == 0)
                 {
                     corruptBossDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                     NewStellarArrayAbility = true;
 
                 }
                 if (NPC.downedQueenBee && BeeBossDialogue == 0)
                 {
                     BeeBossDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                     NewStellarArrayAbility = true;
 
                 }
@@ -3356,16 +3357,16 @@ namespace StarsAbove.Systems
                 if (NPC.downedBoss3 && SkeletonDialogue == 0)
                 {
                     SkeletonDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                     NewStellarArrayAbility = true;
 
                 }
                 if (NPC.downedDeerclops && DeerclopsDialogue == 0)
                 {
                     DeerclopsDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
                 }
@@ -3373,16 +3374,16 @@ namespace StarsAbove.Systems
                 {
                     WallOfFleshDialogue = 1;
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                     NewStellarArrayAbility = true;
                 }
                 if (WallOfFleshWeaponDialogue == 2 && ForceWeaponDialogue == 0)//Hardmode
                 {
                     ForceWeaponDialogue = 1;
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
                 }
@@ -3390,7 +3391,7 @@ namespace StarsAbove.Systems
                 {
                     GenocideWeaponDialogue = 1;
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
                 }
@@ -3398,18 +3399,18 @@ namespace StarsAbove.Systems
                 {
                     TakodachiWeaponDialogue = 1;
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
                 }
                 if (NPC.downedMechBoss1 && TwinsDialogue == 0)//The Twins
                 {
                     TwinsDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
                     if (bloomingflames == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                         NewStellarArrayAbility = true;
                     }
 
@@ -3419,7 +3420,7 @@ namespace StarsAbove.Systems
                 {
                     SkyStrikerWeaponDialogue = 1;
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
                 }
@@ -3427,7 +3428,7 @@ namespace StarsAbove.Systems
                 {
                     TwinStarsWeaponDialogue = 1;
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
                 }
@@ -3438,86 +3439,86 @@ namespace StarsAbove.Systems
                 {
                     if ((bool)calamityMod.Call("GetBossDowned", "desertscourge") && desertscourgeDialogue == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         desertscourgeDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "crabulon") && crabulonDialogue == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         crabulonDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "hivemind") && hivemindDialogue == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         hivemindDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "perforator") && perforatorDialogue == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         perforatorDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "slimegod") && slimegodDialogue == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         slimegodDialogue = 1;
                     }
                     //Hardmode
                     if ((bool)calamityMod.Call("GetBossDowned", "cryogen") && cryogenDialogue == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         cryogenDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "aquaticscourge") && aquaticscourgeDialogue == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         aquaticscourgeDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "brimstoneelemental") && brimstoneelementalDialogue == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         brimstoneelementalDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "calamitasClone") && calamitasDialogue == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         calamitasDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "anahitaleviathan") && leviathanDialogue == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         leviathanDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "astrumaureus") && astrumaureusDialogue == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         astrumaureusDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "plaguebringergoliath") && plaguebringerDialogue == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         plaguebringerDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "ravager") && ravagerDialogue == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         ravagerDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "astrumdeus") && astrumdeusDialogue == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         astrumdeusDialogue = 1;
                     }
@@ -3526,19 +3527,19 @@ namespace StarsAbove.Systems
                 if (NPC.downedQueenSlime && QueenSlimeDialogue == 0)
                 {
                     QueenSlimeDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
                 }
                 if (DownedBossSystem.downedNalhaun && nalhaunDialogue == 0)
                 {
                     nalhaunDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
 
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                     NewStellarArrayAbility = true;
 
 
@@ -3546,7 +3547,7 @@ namespace StarsAbove.Systems
                 if (DownedBossSystem.downedDioskouroi && dioskouroiDialogue == 0)
                 {
                     dioskouroiDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
                     //NewStellarNova = true;
@@ -3558,11 +3559,11 @@ namespace StarsAbove.Systems
                 if (DownedBossSystem.downedPenth && penthDialogue == 0)
                 {
                     penthDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
                     NewStellarNova = true;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                     NewStellarArrayAbility = true;
 
 
@@ -3570,7 +3571,7 @@ namespace StarsAbove.Systems
                 if (DownedBossSystem.downedArbiter && arbiterDialogue == 0)
                 {
                     arbiterDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
                     //NewStellarNova = true;
@@ -3590,7 +3591,7 @@ namespace StarsAbove.Systems
                 {
                     if (edingenesisquasar == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.NewNova"), 241, 255, 180); }
+                    InGameNotificationsTracker.AddNotification(new NewNovaNotification());
 
                         edingenesisquasar = 1;
                     }
@@ -3600,11 +3601,11 @@ namespace StarsAbove.Systems
                 if (NPC.downedMechBoss2 && DestroyerDialogue == 0)//The Destroyer
                 {
                     DestroyerDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
                     if (bloomingflames == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                         NewStellarArrayAbility = true;
                     }
 
@@ -3613,11 +3614,11 @@ namespace StarsAbove.Systems
                 if (NPC.downedMechBoss3 && SkeletronPrimeDialogue == 0)//Skeletron Prime
                 {
                     SkeletronPrimeDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
                     if (bloomingflames == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                         NewStellarArrayAbility = true;
                     }
 
@@ -3626,7 +3627,7 @@ namespace StarsAbove.Systems
                 if (SkeletronPrimeDialogue == 2 && TwinsDialogue == 2 && DestroyerDialogue == 2 && AllMechsDefeatedDialogue == 0)//All Mech Bosses Defeated + Dialogue read
                 {
                     AllMechsDefeatedDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
 
@@ -3636,9 +3637,9 @@ namespace StarsAbove.Systems
                 if (NPC.downedPlantBoss && PlanteraDialogue == 0)
                 {
                     PlanteraDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                     NewStellarArrayAbility = true;
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("You have acquired a new Stellar Nova!"), 190, 100, 247);}
 
@@ -3646,11 +3647,11 @@ namespace StarsAbove.Systems
                 if (NPC.downedGolemBoss && GolemDialogue == 0)
                 {
                     GolemDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
                     if (Main.expertMode)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                         NewStellarArrayAbility = true;
                     }
 
@@ -3658,7 +3659,7 @@ namespace StarsAbove.Systems
                 if (NPC.downedEmpressOfLight && EmpressDialogue == 0)
                 {
                     EmpressDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
 
@@ -3666,11 +3667,11 @@ namespace StarsAbove.Systems
                 if (NPC.downedAncientCultist && CultistDialogue == 0)
                 {
                     CultistDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
                     if (Main.expertMode)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                         NewStellarArrayAbility = true;
                     }
 
@@ -3680,10 +3681,10 @@ namespace StarsAbove.Systems
                     MoonLordDialogue = 1;
 
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                     NewStellarArrayAbility = true;
 
 
@@ -3691,14 +3692,14 @@ namespace StarsAbove.Systems
                 if (NPC.downedFishron && DukeFishronDialogue == 0)
                 {
                     DukeFishronDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
                 }
                 if ((EverlastingLightEvent.isEverlastingLightPreviewActive || EverlastingLightEvent.isEverlastingLightActive) && warriorBossItemDialogue == 0 && vagrantDialogue == 2 && !SubworldSystem.AnyActive())
                 {
                     warriorBossItemDialogue = 1;
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue("Common.HarshLight"), 239, 221, 106); }
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
 
                 }
                 if (EverlastingLightEvent.isEverlastingLightActive && !onEverlastingLightText && !SubworldSystem.AnyActive())
@@ -3719,7 +3720,7 @@ namespace StarsAbove.Systems
                     }
 
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
                     if (BossChecklist != null)
                     {
@@ -3727,7 +3728,7 @@ namespace StarsAbove.Systems
 
                     }
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                     NewStellarArrayAbility = true;
 
 
@@ -3736,13 +3737,13 @@ namespace StarsAbove.Systems
                 {
                     vagrantDialogue = 1;
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                     NewStellarArrayAbility = true;
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.NovaUnlocked"), 241, 255, 180); }
+                    InGameNotificationsTracker.AddNotification(new NewNovaNotification());
                     NewStellarNova = true;
 
 
@@ -3751,7 +3752,7 @@ namespace StarsAbove.Systems
                 if (NPC.downedBoss1 && NPC.downedSlimeKing && NPC.downedBoss2 && NPC.downedBoss3 && NPC.downedQueenBee && NPC.downedQueenSlime && NPC.downedEmpressOfLight && Main.hardMode && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && NPC.downedPlantBoss && NPC.downedGolemBoss && NPC.downedFishron && NPC.downedMoonlord && AllVanillaBossesDefeatedDialogue == 0)
                 {
                     //AllVanillaBossesDefeatedDialogue = 1;
-                    //if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                    //                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     //NewDiskDialogue = true;
 
                     //if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
@@ -3763,10 +3764,10 @@ namespace StarsAbove.Systems
                 {
                     //Expert mode only
                     EverythingDefeatedDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                     NewStellarArrayAbility = true;
 
 
@@ -3775,21 +3776,21 @@ namespace StarsAbove.Systems
                 if (Player.ZoneUnderworldHeight && SkeletonWeaponDialogue == 2 && HellWeaponDialogue == 0)
                 {
                     HellWeaponDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
                 }
                 if (Player.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2 && Stellaglyph2WeaponDialogue == 0)
                 {
                     Stellaglyph2WeaponDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
                 }
                 if (SkeletonWeaponDialogue == 2 && NanomachineWeaponDialogue == 0)
                 {
                     NanomachineWeaponDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
                 }
@@ -3797,26 +3798,26 @@ namespace StarsAbove.Systems
                 if (vagrantBossItemDialogue == 0 && NPC.downedBoss1)
                 {
                     vagrantBossItemDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 151, 255, 90); }
+                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
 
                 }
                 if (dioskouroiBossItemDialogue == 0 && (SkeletronPrimeDialogue == 2 || TwinsDialogue == 2 || DestroyerDialogue == 2) && vagrantDialogue == 2)
                 {
                     dioskouroiBossItemDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 151, 255, 90); }
+                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
 
                 }
                 if (penthBossItemDialogue == 0 && PlanteraDialogue == 2 && vagrantDialogue == 2)
                 {
                     penthBossItemDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 151, 255, 90); }
+                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
 
                 }
                 if (nalhaunBossItemDialogue == 0 && GolemDialogue == 2 && vagrantDialogue == 2)
                 {
 
                     nalhaunBossItemDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 151, 255, 90); }
+                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
 
                 }
 
@@ -3824,7 +3825,7 @@ namespace StarsAbove.Systems
                 if (Player.ZoneHallow && GoldWeaponDialogue == 0)
                 {
                     GoldWeaponDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
                     return;
@@ -3833,7 +3834,7 @@ namespace StarsAbove.Systems
                 if (Player.ZoneGraveyard && FarewellWeaponDialogue == 0)
                 {
                     FarewellWeaponDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
                     return;
@@ -3846,7 +3847,7 @@ namespace StarsAbove.Systems
                         TrickspinWeaponDialogue = 1;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                     }
                     if (NPC.downedBoss2 && SoldierWeaponDialogue == 0)
@@ -3854,7 +3855,7 @@ namespace StarsAbove.Systems
                         SoldierWeaponDialogue = 1;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                     }
                     if (PlanteraWeaponDialogue == 2 && DreamerWeaponDialogue == 0)
@@ -3862,7 +3863,7 @@ namespace StarsAbove.Systems
                         DreamerWeaponDialogue = 1;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                     }
                     if (DukeFishronWeaponDialogue == 2 && KineticWeaponDialogue == 0)
@@ -3870,13 +3871,13 @@ namespace StarsAbove.Systems
                         KineticWeaponDialogue = 1;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                     }
                     if (SkeletonDialogue == 2 && SkeletonWeaponDialogue == 0)
                     {
                         SkeletonWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -3885,7 +3886,7 @@ namespace StarsAbove.Systems
                     if (tsukiyomiDialogue == 2 && ArchitectWeaponDialogue == 0)
                     {
                         ArchitectWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
 
 
@@ -3898,7 +3899,7 @@ namespace StarsAbove.Systems
                     if (ArchitectWeaponDialogue == 2 && CosmicDestroyerWeaponDialogue == 0)
                     {
                         CosmicDestroyerWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
 
 
@@ -3911,7 +3912,7 @@ namespace StarsAbove.Systems
                     if (CosmicDestroyerWeaponDialogue == 2 && KarnaWeaponDialogue == 0)
                     {
                         KarnaWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
 
 
@@ -3926,7 +3927,7 @@ namespace StarsAbove.Systems
                         //Obtained from Arbitration now.
 
                         //MurasamaWeaponDialogue = 1;
-                        //if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                        //                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         //NewDiskDialogue = true;
                         //WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         //return;
@@ -3934,7 +3935,7 @@ namespace StarsAbove.Systems
                     if (MercyWeaponDialogue == 0 && NPC.downedGolemBoss)
                     {
                         MercyWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -3942,7 +3943,7 @@ namespace StarsAbove.Systems
                     if (SakuraWeaponDialogue == 0 && NPC.downedEmpressOfLight)
                     {
                         SakuraWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -3950,7 +3951,7 @@ namespace StarsAbove.Systems
                     if (EternalWeaponDialogue == 0 && NPC.downedMoonlord)
                     {
                         EternalWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -3958,7 +3959,7 @@ namespace StarsAbove.Systems
                     if (DaemonWeaponDialogue == 0 && NPC.downedMoonlord)
                     {
                         DaemonWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -3966,7 +3967,7 @@ namespace StarsAbove.Systems
                     if (OzmaWeaponDialogue == 0 && NPC.downedAncientCultist)
                     {
                         OzmaWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -3974,7 +3975,7 @@ namespace StarsAbove.Systems
                     if (UrgotWeaponDialogue == 0 && NPC.downedQueenSlime)
                     {
                         UrgotWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -3982,7 +3983,7 @@ namespace StarsAbove.Systems
                     if (BloodWeaponDialogue == 0 && NPC.downedHalloweenKing)
                     {
                         BloodWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -3990,7 +3991,7 @@ namespace StarsAbove.Systems
                     if (MorningStarWeaponDialogue == 0 && NPC.downedDeerclops)
                     {
                         MorningStarWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -3998,7 +3999,7 @@ namespace StarsAbove.Systems
                     if (VirtueWeaponDialogue == 0 && NPC.downedMoonlord)
                     {
                         VirtueWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -4006,7 +4007,7 @@ namespace StarsAbove.Systems
                     if (QueenSlimeWeaponDialogue == 0 && NPC.downedQueenSlime)
                     {
                         QueenSlimeWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -4014,7 +4015,7 @@ namespace StarsAbove.Systems
                     if (NeedlepointWeaponDialogue == 0 && NPC.downedEmpressOfLight)
                     {
                         NeedlepointWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -4022,7 +4023,7 @@ namespace StarsAbove.Systems
                     if (eyeDialogue == 2 && EyeBossWeaponDialogue == 0)
                     {
                         EyeBossWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -4031,7 +4032,7 @@ namespace StarsAbove.Systems
                     if (corruptBossDialogue == 2 && CorruptBossWeaponDialogue == 0)
                     {
                         CorruptBossWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -4041,7 +4042,7 @@ namespace StarsAbove.Systems
                     if (dioskouroiDialogue == 2 && NalhaunWeaponDialogue == 0)
                     {
                         NalhaunWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4052,7 +4053,7 @@ namespace StarsAbove.Systems
                     if (QueenSlimeWeaponDialogue == 2 && VagrantWeaponDialogue == 0)
                     {
                         VagrantWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4062,7 +4063,7 @@ namespace StarsAbove.Systems
                     if (BeeBossDialogue == 2 && QueenBeeWeaponDialogue == 0)
                     {
                         QueenBeeWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4072,7 +4073,7 @@ namespace StarsAbove.Systems
                     if (SkeletonWeaponDialogue == 2 && OceanWeaponDialogue == 0 && Player.ZoneBeach)
                     {
                         OceanWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4082,7 +4083,7 @@ namespace StarsAbove.Systems
                     if (SkeletonWeaponDialogue == 2 && MiseryWeaponDialogue == 0)
                     {
                         MiseryWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4092,7 +4093,7 @@ namespace StarsAbove.Systems
                     if (slimeDialogue == 2 && KingSlimeWeaponDialogue == 0)
                     {
                         KingSlimeWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4102,7 +4103,7 @@ namespace StarsAbove.Systems
                     if (WallOfFleshDialogue == 2 && WallOfFleshWeaponDialogue == 0)
                     {
                         WallOfFleshWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4111,7 +4112,7 @@ namespace StarsAbove.Systems
                     if (WallOfFleshWeaponDialogue == 2 && LumaWeaponDialogue == 0)
                     {
                         LumaWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4120,7 +4121,7 @@ namespace StarsAbove.Systems
                     if ((TwinsDialogue == 2 || DestroyerDialogue == 2 || SkeletronPrimeDialogue == 2) && MechBossWeaponDialogue == 0)
                     {
                         MechBossWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4129,7 +4130,7 @@ namespace StarsAbove.Systems
                     if (TwinsDialogue == 2 && DestroyerDialogue == 2 && SkeletronPrimeDialogue == 2 && AllMechBossWeaponDialogue == 0 && MechBossWeaponDialogue == 2 && AllMechBossWeaponDialogue == 0)
                     {
                         AllMechBossWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4139,7 +4140,7 @@ namespace StarsAbove.Systems
                     if (MechBossWeaponDialogue == 2 && HullwroughtWeaponDialogue == 0)
                     {
                         HullwroughtWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4149,7 +4150,7 @@ namespace StarsAbove.Systems
                     if (HullwroughtWeaponDialogue == 2 && MonadoWeaponDialogue == 0)
                     {
                         MonadoWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4160,7 +4161,7 @@ namespace StarsAbove.Systems
                     if (PlanteraDialogue == 2 && PlanteraWeaponDialogue == 0)
                     {
                         PlanteraWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4170,7 +4171,7 @@ namespace StarsAbove.Systems
                     if (NPC.downedChristmasIceQueen && FrostMoonWeaponDialogue == 0)
                     {
                         FrostMoonWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4180,7 +4181,7 @@ namespace StarsAbove.Systems
                     if (GolemDialogue == 2 && GolemWeaponDialogue == 0)
                     {
                         GolemWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4190,7 +4191,7 @@ namespace StarsAbove.Systems
                     if (penthDialogue == 2 && PenthesileaWeaponDialogue == 0)
                     {
                         PenthesileaWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4200,7 +4201,7 @@ namespace StarsAbove.Systems
                     if (PenthesileaWeaponDialogue == 2 && MuseWeaponDialogue == 0)
                     {
                         MuseWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4210,7 +4211,7 @@ namespace StarsAbove.Systems
                     if (PlanteraWeaponDialogue == 2 && KifrosseWeaponDialogue == 0)
                     {
                         KifrosseWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4221,7 +4222,7 @@ namespace StarsAbove.Systems
                     if (nalhaunDialogue == 2 && ArbitrationWeaponDialogue == 0)
                     {
                         ArbitrationWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4231,7 +4232,7 @@ namespace StarsAbove.Systems
                     if (ArbitrationWeaponDialogue == 2 && LevinstormWeaponDialogue == 0)
                     {
                         LevinstormWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4241,7 +4242,7 @@ namespace StarsAbove.Systems
                     if (ArbitrationWeaponDialogue == 2 && ClaimhWeaponDialogue == 0)
                     {
                         ClaimhWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4251,7 +4252,7 @@ namespace StarsAbove.Systems
                     if (DukeFishronDialogue == 2 && DukeFishronWeaponDialogue == 0)
                     {
                         DukeFishronWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4261,7 +4262,7 @@ namespace StarsAbove.Systems
                     if (DukeFishronWeaponDialogue == 2 && ManiacalWeaponDialogue == 0)
                     {
                         ManiacalWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4271,7 +4272,7 @@ namespace StarsAbove.Systems
                     if (CultistDialogue == 2 && LunaticCultistWeaponDialogue == 0)
                     {
                         LunaticCultistWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4281,7 +4282,7 @@ namespace StarsAbove.Systems
                     if (MoonLordDialogue == 2 && MoonLordWeaponDialogue == 0)
                     {
                         MoonLordWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4291,7 +4292,7 @@ namespace StarsAbove.Systems
                     if (MoonLordWeaponDialogue == 2 && ShadowlessWeaponDialogue == 0)
                     {
                         ShadowlessWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4301,7 +4302,7 @@ namespace StarsAbove.Systems
                     if (WarriorOfLightDialogue == 2 && WarriorWeaponDialogue == 0)
                     {
                         WarriorWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4311,7 +4312,7 @@ namespace StarsAbove.Systems
                     if (WarriorOfLightDialogue == 2 && AuthorityWeaponDialogue == 0)
                     {
                         AuthorityWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4321,7 +4322,7 @@ namespace StarsAbove.Systems
                     if (WarriorOfLightDialogue == 2 && RedMageWeaponDialogue == 0)
                     {
                         RedMageWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4331,7 +4332,7 @@ namespace StarsAbove.Systems
                     if (WarriorOfLightDialogue == 2 && BlazeWeaponDialogue == 0)
                     {
                         BlazeWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4341,7 +4342,7 @@ namespace StarsAbove.Systems
                     if (WarriorOfLightDialogue == 2 && PickaxeWeaponDialogue == 0)
                     {
                         PickaxeWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4351,7 +4352,7 @@ namespace StarsAbove.Systems
                     if (AllMechsDefeatedDialogue == 2 && HardwareWeaponDialogue == 0)
                     {
                         HardwareWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4361,7 +4362,7 @@ namespace StarsAbove.Systems
                     if (LunaticCultistWeaponDialogue == 2 && CatalystWeaponDialogue == 0)
                     {
                         CatalystWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4371,7 +4372,7 @@ namespace StarsAbove.Systems
                     if (CatalystWeaponDialogue == 2 && UmbraWeaponDialogue == 0)
                     {
                         UmbraWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4381,7 +4382,7 @@ namespace StarsAbove.Systems
                     if (SaltwaterWeaponDialogue == 0 && NPC.downedPirates)
                     {
                         SaltwaterWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4390,7 +4391,7 @@ namespace StarsAbove.Systems
                     if (ClockWeaponDialogue == 0 && vagrantDialogue == 2)
                     {
                         ClockWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4399,7 +4400,7 @@ namespace StarsAbove.Systems
                     if (SanguineWeaponDialogue == 0 && Player.HasItem(ItemID.GuideVoodooDoll) && Player.difficulty == PlayerDifficultyID.Hardcore)
                     {
                         SanguineWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4408,7 +4409,7 @@ namespace StarsAbove.Systems
                     if (GoldlewisWeaponDialogue == 0 && NPC.downedMartians)
                     {
                         GoldlewisWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4417,7 +4418,7 @@ namespace StarsAbove.Systems
                     if (ChaosWeaponDialogue == 0 && NPC.downedQueenSlime)
                     {
                         ChaosWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4426,7 +4427,7 @@ namespace StarsAbove.Systems
                     if (GolemWeaponDialogue == 2 && SilenceWeaponDialogue == 0)
                     {
                         SilenceWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4436,7 +4437,7 @@ namespace StarsAbove.Systems
                     if (MoonLordWeaponDialogue == 2 && SoulWeaponDialogue == 0)
                     {
                         SoulWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4533,7 +4534,7 @@ namespace StarsAbove.Systems
                 {
                     if (unlimitedbladeworks == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.NewNova"), 241, 255, 180); }
+                    InGameNotificationsTracker.AddNotification(new NewNovaNotification());
                         NewStellarNova = true;
                         unlimitedbladeworks = 1;
                     }
@@ -4543,7 +4544,7 @@ namespace StarsAbove.Systems
                 {
                     if (guardianslight == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.NewNova"), 241, 255, 180); }
+                    InGameNotificationsTracker.AddNotification(new NewNovaNotification());
                         NewStellarNova = true;
                         guardianslight = 1;
                     }
@@ -4562,7 +4563,7 @@ namespace StarsAbove.Systems
                     }
                     if (laevateinn == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.NewNova"), 241, 255, 180); }
+                    InGameNotificationsTracker.AddNotification(new NewNovaNotification());
                         NewStellarNova = true;
                         laevateinn = 1;
                     }
@@ -4580,7 +4581,7 @@ namespace StarsAbove.Systems
                     }
                     if (gardenofavalon == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.NewNova"), 241, 255, 180); }
+                    InGameNotificationsTracker.AddNotification(new NewNovaNotification());
                         NewStellarNova = true;
                         gardenofavalon = 1;
                     }
@@ -4599,7 +4600,7 @@ namespace StarsAbove.Systems
 
                     if (astralmantle == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                         NewStellarArrayAbility = true;
                         astralmantle = 1;
                     }
@@ -4716,7 +4717,7 @@ namespace StarsAbove.Systems
 
                     if (artofwar == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                         NewStellarArrayAbility = true;
                         artofwar = 1;
                     }
@@ -4728,7 +4729,7 @@ namespace StarsAbove.Systems
 
                     if (aprismatism == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                         NewStellarArrayAbility = true;
                         aprismatism = 1;
                     }
@@ -4756,7 +4757,7 @@ namespace StarsAbove.Systems
                 {
                     if (beyondtheboundary == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                         NewStellarArrayAbility = true;
                         beyondtheboundary = 1;
                     }

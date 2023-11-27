@@ -395,7 +395,7 @@ Mods: {
 
 				StayTheCourse: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Stay The Course']"
-					Description: For each second in combat, gain 1% damage reduction and 1% critical strike chance, up to 15%/30%.
+					Description: For each second in combat, gain 1% damage reduction and 1% critical strike chance, up to 15%/20%.
 				}
 
 				Catharsis: {
@@ -410,7 +410,7 @@ Mods: {
 
 				KineticConversion: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Kinetic Conversion']"
-					Description: A portion of movement velocity is added to outgoing damage. Gain Invincibility when moving very quickly in a short period of time (12 second cooldown.)
+					Description: A portion of movement velocity is added to outgoing damage. Gain brief Invincibility when moving very quickly (12 second cooldown.)
 				}
 
 				KiTwinburst: {
@@ -3386,7 +3386,7 @@ Mods: {
 		}
 
 		Common: {
-			DiskReady: The Spatial Disk begins to resonate. Left click to interact.
+			DiskReady: The Spatial Disk begins to resonate. Left click while holding the Disk to interact.
 			ArrayAbility: The Stellar Array has gained a new ability!
 			NovaUnlocked: Stellar Novas have been unlocked!
 			NewNova: A new Stellar Nova has been unlocked!

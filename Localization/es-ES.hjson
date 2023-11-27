@@ -380,7 +380,7 @@ Mods: {
 
 				SpectralNail: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Spectral Nail']"
-					// Description: Every 5 strikes against a foe deals 30% bonus true damage. 6 second cooldown.
+					// Description: Every 5 strikes against a foe deals 30% bonus true damage. (6 second cooldown.)
 				}
 
 				Armsthrift: {
@@ -390,16 +390,16 @@ Mods: {
 
 				MysticIncision: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Mystic Incision']"
-					// Description: Attacks gain 20% armor penetration. Critical strikes inflict 20% defense shred for 3 seconds. After applying defense shred, all allies except you deal 8% more damage to your target for the duration of the shred (Does not stack.)
+					// Description: Attacks gain 20% armor penetration. Critical strikes inflict 20% defense shred for 3 seconds, and grants Swiftness for the same duration.
 				}
 
 				StayTheCourse: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Stay The Course']"
-					// Description: For each second in combat, gain 1% damage reduction and 1% critical strike chance, up to 15%/30%.
+					// Description: For each second in combat, gain 1% damage reduction and 1% critical strike chance, up to 15%/20%.
 				}
 
 				Catharsis: {
-					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Enigmatic Brilliance']"
+					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Catharsis']"
 					// Description: When health is reduced through any means, gain a damaging aura that lasts for 4 seconds that deals damage to all nearby foes. Aura damage is based on current held weapon.
 				}
 
@@ -410,7 +410,7 @@ Mods: {
 
 				KineticConversion: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Kinetic Conversion']"
-					// Description: A portion of movement velocity is added to outgoing damage.
+					// Description: A portion of movement velocity is added to outgoing damage. Gain Invincibility when moving very quickly in a short period of time (12 second cooldown.)
 				}
 
 				KiTwinburst: {
@@ -435,7 +435,7 @@ Mods: {
 
 				LavenderRefrain: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Lavender Refrain']"
-					// Description: Gain up to 20 defense as your mana is drained. Taking damage restores 100 Mana and 50 HP, but reduces defense by 50% for 6 seconds. 12 second cooldown.
+					// Description: Gain up to 20 defense as your mana is drained. Taking damage restores 100 Mana and 50 HP, but reduces defense by 50% for 6 seconds (12 second cooldown.)
 				}
 
 				HealthyConfidence: {
