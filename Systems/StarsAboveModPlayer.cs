@@ -2,6 +2,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs;
 using StarsAbove.Buffs.EmberFlask;
+using StarsAbove.Buffs.Memories;
 using StarsAbove.Buffs.StarfarerAttire;
 using StarsAbove.Buffs.StellarArray;
 using StarsAbove.Buffs.StellarNovas;
@@ -591,6 +592,8 @@ namespace StarsAbove.Systems
 
         public int armsthriftWeaponIDOld = 0;
         public DamageClass armsthriftWeaponTypeOld;
+
+        public int oldHP;
 
         int timeAfterGettingHit;
 
@@ -1780,6 +1783,12 @@ namespace StarsAbove.Systems
             {
                 inCombat = inCombatMax;
             }
+           
+            if(kiTwinburst == 2)
+            {
+                target.SimpleStrikeNPC(damageDone,hit.HitDirection,hit.Crit,hit.Knockback,hit.DamageType);
+                
+            }
             //Astarte Driver
             if (Player.HasBuff(BuffType<AstarteDriver>()) && !target.HasBuff(BuffType<AstarteDriverEnemyCooldown>()))
             {
@@ -2065,6 +2074,18 @@ namespace StarsAbove.Systems
 
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
+            if (arborealEchoes == 2)
+            {
+                if (target.life == target.lifeMax)
+                {
+                    modifiers.FinalDamage += 0.3f;
+                    Player.Heal(10);
+                }
+            }
+            if (kiTwinburst == 2)
+            {
+                modifiers.FinalDamage /= 2;
+            }
             if (stayTheCourseStacks >= 0.15f && stayTheCourse == 2)
             {
                 modifiers.CritDamage += 0.15f;
@@ -2863,8 +2884,9 @@ namespace StarsAbove.Systems
             ButchersDozen();
             MysticForging();
             StayTheCourse();
+            MysticIncision();
             umbralEntropyCooldown--;
-
+            SwiftstrikeTheory();
             EmberFlask();
 
             DialogueScroll();
@@ -3141,7 +3163,30 @@ namespace StarsAbove.Systems
 
 
         }
+        private void SwiftstrikeTheory()
+        {
+            if (swiftstrikeTheory == 2)
+            {
+                if (Player.immune && Player.immuneTime > 0)
+                {
+                    Player.GetAttackSpeed(DamageClass.Generic) += 0.8f;
+                }
+            }
+        }
+        private void MysticIncision()
+        {
+            Player.GetArmorPenetration(DamageClass.Generic) += 20f;
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                NPC npc = Main.npc[i];
+                if (npc.active && !npc.boss && npc.Distance(Player.Center) < 100)
+                {
+                    Player.GetArmorPenetration(DamageClass.Generic) += 50f;
 
+                }
+            }
+        }
+        
         private void Armsthrift()
         {
             if (armsthrift == 2)
@@ -6086,8 +6131,23 @@ namespace StarsAbove.Systems
         }
         public override void PostUpdate()
         {
-            GaussianBlur();
+            if(catharsis == 2)
+            {
+                if (Player.statLife < oldHP)
+                {
+                    for (int i = 0; i < Main.maxNPCs; i++)
+                    {
+                        NPC npc = Main.npc[i];
+                        if (npc.active && !npc.boss && npc.Distance(Player.Center) < 100)
+                        {
+                            npc.SimpleStrikeNPC((int)(Player.GetWeaponDamage(Player.HeldItem) * 0.2), 0, false, 0, DamageClass.Generic, true, 0);
 
+                        }
+                    }
+                }
+            }
+            GaussianBlur();
+            oldHP = Player.statLife;
             //These trigger Starfarer prompts
 
             //Debuffs / buffs(maybe later?)
@@ -8898,6 +8958,15 @@ namespace StarsAbove.Systems
             }
             return false;
         }
+        public override void GetHealLife(Item item, bool quickHeal, ref int healValue)
+        {
+            if(arborealEchoes == 2)
+            {
+                healValue = (int)(healValue * 1.3);
+            }
+
+            base.GetHealLife(item, quickHeal, ref healValue);
+        }
         public override void OnHurt(Player.HurtInfo info)
         {
             if (!Main.dedServ)
@@ -8912,6 +8981,16 @@ namespace StarsAbove.Systems
                 Player.AddBuff(BuffID.Ironskin, 480);
                 Player.AddBuff(BuffID.Regeneration, 480);
                 Player.AddBuff(BuffID.Endurance, 480);
+            }
+            if(lavenderRefrain == 2)
+            {
+                if(Player.statMana > 0)
+                {
+                    //If mana isn't enough to mitigate all the damage (as in Consumable Dodge)
+                    info.Damage -= Player.statMana;
+                    Player.statMana = 0;
+                    Player.manaRegenDelay = 240;
+                }
             }
             if (ruinedKingPrism)
             {
@@ -8990,6 +9069,17 @@ namespace StarsAbove.Systems
         }
         public override bool ConsumableDodge(Player.HurtInfo info)
         {
+            if(lavenderRefrain == 2)
+            {
+                if(Player.statMana >= info.Damage)
+                {
+                    Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                    CombatText.NewText(textPos, new Color(122, 113, 153, 255), $"{info.Damage}", false, false);
+                    Player.statMana -= info.Damage;
+                    Player.manaRegenDelay = 240;
+                    return true;
+                }
+            }
             if (Player.HasBuff(BuffType<SolemnAegis>()))
             {
                 for (int d = 0; d < 16; d++)

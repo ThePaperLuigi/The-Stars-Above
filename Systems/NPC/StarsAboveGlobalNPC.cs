@@ -22,6 +22,7 @@ using StarsAbove.Items.Materials;
 using StarsAbove.NPCs;
 using StarsAbove.Buffs.Boss;
 using StarsAbove.NPCs.Vagrant;
+using Microsoft.CodeAnalysis;
 
 namespace StarsAbove.Systems
 {
@@ -745,7 +746,17 @@ namespace StarsAbove.Systems
         }
         public override void OnHitByItem(NPC npc, Player player, Item item, NPC.HitInfo hit, int damageDone)
         {
-
+            if (player.GetModPlayer<StarsAbovePlayer>().spectralNail == 2)
+            {
+                spectralNailStacks++;
+                if (spectralNailStacks >= 5)
+                {
+                    Rectangle textPos = new Rectangle((int)npc.position.X, (int)npc.position.Y - 20, npc.width, npc.height);
+                    CombatText.NewText(textPos, new Color(255, 62, 247, 240), $"{(int)(damageDone * 0.2)}", false, false);
+                    npc.life -= (int)(damageDone * 0.2);
+                    spectralNailStacks = 0;
+                }
+            }
 
         }
         public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
