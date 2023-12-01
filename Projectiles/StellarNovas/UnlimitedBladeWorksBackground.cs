@@ -225,7 +225,7 @@ namespace StarsAbove.Projectiles.StellarNovas
                             if (!tileAboveTile.HasTile)
                             {
                                 //reset stuff
-                                tile.IsTileFullbright = false;
+                                //tile.IsTileFullbright = false;
 
 
                             }
@@ -252,10 +252,10 @@ namespace StarsAbove.Projectiles.StellarNovas
                         if (tile.HasTile)
                         {
                             //If there is no tile above the tile
-                            if (!tileAboveTile.HasTile && !tile.IsTileFullbright && !tile.IsActuated && !tile.IsTileInvisible)//Fullbright so the roll to spawn the projectile only happens once
+                            if (!tileAboveTile.HasTile && !tile.IsActuated && !tile.IsTileInvisible)//
                             {
                                 Vector2 tileCenter = new Point16(tileX, tileY).ToWorldCoordinates();
-                                if (Main.rand.NextBool(2) && Projectile.owner == Main.myPlayer && Projectile.timeLeft > 60 && Projectile.owner == Main.LocalPlayer.whoAmI)
+                                if (Main.rand.NextBool(700) && Projectile.owner == Main.myPlayer && Projectile.timeLeft > 60 && Projectile.owner == Main.LocalPlayer.whoAmI)
                                 {
                                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), new Vector2(tileCenter.X + Main.rand.Next(-10, 11), tileCenter.Y - 30), Vector2.Zero, ProjectileType<UBWBladeProjectile>(), Projectile.damage, 0, Main.player[Projectile.owner].whoAmI, 0, 0, Projectile.timeLeft - 20 - radius);
 
@@ -267,7 +267,7 @@ namespace StarsAbove.Projectiles.StellarNovas
 
                                 }
 
-                                tile.IsTileFullbright = true;
+                                //tile.IsTileFullbright = true;
 
 
                             }
