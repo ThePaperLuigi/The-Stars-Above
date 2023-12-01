@@ -2071,7 +2071,22 @@ namespace StarsAbove.Systems
                 }
             }
         }
-
+        public override void GetHealMana(Item item, bool quickHeal, ref int healValue)
+        {
+            if(lavenderRefrain == 2)
+            {
+                healValue /= 2;
+            }
+            base.GetHealMana(item, quickHeal, ref healValue);
+        }
+        public override void OnMissingMana(Item item, int neededMana)
+        {
+            if(mysticIncision == 2)
+            {
+                Player.statMana = neededMana;
+            }
+            base.OnMissingMana(item, neededMana);
+        }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
             if (arborealEchoes == 2)
@@ -2886,6 +2901,7 @@ namespace StarsAbove.Systems
             StayTheCourse();
             MysticIncision();
             umbralEntropyCooldown--;
+            InevitableEnd();
             SwiftstrikeTheory();
             EmberFlask();
 
@@ -3172,6 +3188,22 @@ namespace StarsAbove.Systems
                     Player.GetAttackSpeed(DamageClass.Generic) += 0.8f;
                 }
             }
+        }
+        private void InevitableEnd()
+        {
+            if(inevitableEnd == 2)
+            {
+                for (int i = 0; i < Main.maxNPCs; i++)
+                {
+                    NPC npc = Main.npc[i];
+                    if (npc.active && !npc.boss && npc.Distance(Player.Center) < 300 && npc.life < npc.lifeMax * 0.1 && !npc.boss)
+                    {
+                        npc.StrikeInstantKill();//should be fine?
+
+                    }
+                }
+            }
+            
         }
         private void MysticIncision()
         {
@@ -8967,6 +8999,34 @@ namespace StarsAbove.Systems
 
             base.GetHealLife(item, quickHeal, ref healValue);
         }
+        public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
+        {
+            if (inevitableEnd == 2)
+            {
+                for (int i = 0; i < Main.maxNPCs; i++)
+                {
+                    NPC npc = Main.npc[i];
+                    if (npc.active && !npc.boss && npc.Distance(Player.Center) < 1000)
+                    {
+                        npc.SimpleStrikeNPC(Player.GetWeaponDamage(Player.HeldItem), 0, true, 0, DamageClass.Generic, false, 0);
+                    }
+                }
+                for (int i = 0; i < Main.maxPlayers; i++)
+                {
+                    Player p = Main.player[i];
+                    if (p.active && p.Distance(Player.Center) < 1000 && !p.dead)
+                    {
+                        p.Hurt(PlayerDeathReason.ByCustomReason(LangHelper.GetTextValue($"DeathReason.InevitableEnd", Player.name)), Player.GetWeaponDamage(Player.HeldItem), 0);
+                    }
+                }
+                for (int i = 0; i < 100; i++)
+                {
+                    int dustIndex = Dust.NewDust(new Vector2(Player.Center.X, Player.Center.Y), 0, 0, DustID.LifeDrain, 0f + Main.rand.Next(-36, 36), 0f + Main.rand.Next(-36, 36), 100, default, 2f);
+                    Main.dust[dustIndex].velocity *= 1.4f;
+                }
+            }
+            base.Kill(damage, hitDirection, pvp, damageSource);
+        }
         public override void OnHurt(Player.HurtInfo info)
         {
             if (!Main.dedServ)
@@ -8982,6 +9042,7 @@ namespace StarsAbove.Systems
                 Player.AddBuff(BuffID.Regeneration, 480);
                 Player.AddBuff(BuffID.Endurance, 480);
             }
+            
             if(lavenderRefrain == 2)
             {
                 if(Player.statMana > 0)

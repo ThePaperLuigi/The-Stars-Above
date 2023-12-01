@@ -5,6 +5,7 @@ Mods: {
 			SupremeAuthority: returned to the void.
 			Thespian: failed to follow the act.
 			ShockAndAwe: ... tried to rocket jump too hard.
+			InevitableEnd: was caught in the crossfire of {0}'s Inevitable End.
 		}
 
 		Boss.WarriorOfLight: The Warrior of Light descends!
@@ -390,7 +391,7 @@ Mods: {
 
 				MysticIncision: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Mystic Incision']"
-					Description: Gain 20% armor penetration. Gain an extra 50% armor penetration when in close proximity to foes.
+					Description: Gain 20% armor penetration. Gain an extra 50% armor penetration when in close proximity to foes. If you do not have enough Mana to use a weapon, gain that amount of Mana on use.
 				}
 
 				StayTheCourse: {
@@ -430,12 +431,12 @@ Mods: {
 
 				InevitableEnd: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Inevitable End']"
-					Description: Foes explode when defeated, dealing 50% of their Max HP in damage to nearby foes. When you die, erupt in a massive explosion, dealing 500% of your held weapon's damage to both enemies and allies.
+					Description: Foes explode when defeated, dealing 50% of their Max HP in damage to nearby foes. When you die, deal 500% of your held weapon's damage to both nearby enemies and allies.
 				}
 
 				LavenderRefrain: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Lavender Refrain']"
-					Description: When taking damage, Mana is treated as bonus health. Defense is reduced by up to 20 as Mana approaches 0.
+					Description: When taking damage, Mana is treated as bonus health. Reduces the potency of items that restore Mana by 50%.
 				}
 
 				HealthyConfidence: {
