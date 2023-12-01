@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 using Terraria.Utilities;
 using StarsAbove.Systems;
+using Terraria.IO;
 
 namespace StarsAbove.Subworlds.ThirdRegion
 {
@@ -21,48 +22,42 @@ namespace StarsAbove.Subworlds.ThirdRegion
 
         //public override ModWorld modWorld => ModContent.GetInstance < your modworld here>();
 
-        public override bool ShouldSave => false;
-        public override bool NoPlayerSaving => false;
-        public override bool NormalUpdates => false;
 
-
-        public override List<GenPass> Tasks => new List<GenPass>()
+        public override List<GenPass> Tasks => new() { new PassLegacy("Subworld", SubworldGeneration) };
+        private void SubworldGeneration(GenerationProgress progress, GameConfiguration configuration)
         {
-            new PassLegacy("DreamingCity", (progress, _) =>
+            progress.Message = "Loading"; //Sets the text above the worldgen progress bar
+
+            Main.spawnTileX = 760;
+            Main.spawnTileY = 250;
+
+
+            Main.worldSurface = Main.maxTilesY / 2 + 420;
+            Main.rockLayer = Main.maxTilesY / 2 + 600;
+
+            int tileAdjustment = 360;
+            int tileAdjustmentX = 300 + 459;
+
+
+            StructureHelper.Generator.GenerateStructure("Structures/DreamingCity/DreamingCity", new Terraria.DataStructures.Point16(Main.maxTilesX / 2 - tileAdjustmentX, Main.maxTilesY / 2 - tileAdjustment), StarsAbove.Instance);
+
+            for (int i = 0; i < Main.maxTilesX; i++)
             {
-                progress.Message = "Loading"; //Sets the text above the worldgen progress bar
-
-				Main.spawnTileX = 760;
-                Main.spawnTileY = 250;
-
-
-                Main.worldSurface = Main.maxTilesY/2 + 420;
-                Main.rockLayer = Main.maxTilesY/2 + 600;
-
-                int tileAdjustment = 360;
-                int tileAdjustmentX = 300 + 459;
-
-
-                StructureHelper.Generator.GenerateStructure("Structures/DreamingCity/DreamingCity", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - tileAdjustmentX, Main.maxTilesY/2 - tileAdjustment), StarsAbove.Instance);
-
-                for (int i = 0; i < Main.maxTilesX; i++)
+                for (int j = 0; j < Main.maxTilesY; j++)
                 {
-                    for (int j = 0; j < Main.maxTilesY; j++)
-                    {
 
 
-                        progress.Set((j + i * Main.maxTilesY) / (float)(Main.maxTilesX * Main.maxTilesY)); //Controls the progress bar, should only be set between 0f and 1f
-						//Main.tile[i, j].active(true);
-						//Main.tile[i, j].type = TileID.Air;
-					}
-                    if(i == Main.maxTilesX/2)
-                    {
-
-                    }
+                    progress.Set((j + i * Main.maxTilesY) / (float)(Main.maxTilesX * Main.maxTilesY)); //Controls the progress bar, should only be set between 0f and 1f
+                                                                                                       //Main.tile[i, j].active(true);
+                                                                                                       //Main.tile[i, j].type = TileID.Air;
                 }
-            })
+                if (i == Main.maxTilesX / 2)
+                {
 
-        };
+                }
+            }
+        }
+
         private const string assetPath = "StarsAbove/Subworlds/LoadingScreens";
 
         public override void DrawMenu(GameTime gameTime)

@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 using Terraria.Utilities;
 using StarsAbove.Systems;
+using Terraria.IO;
 
 namespace StarsAbove.Subworlds.ThirdRegion
 {
@@ -19,45 +20,36 @@ namespace StarsAbove.Subworlds.ThirdRegion
         public override int Width => 1600;
         public override int Height => 800;
 
-        //public override ModWorld modWorld => ModContent.GetInstance < your modworld here>();
-
-        public override bool ShouldSave => false;
-        public override bool NoPlayerSaving => false;
-        public override bool NormalUpdates => false;
-
-        public override List<GenPass> Tasks => new List<GenPass>()
+        public override List<GenPass> Tasks => new() { new PassLegacy("Subworld", SubworldGeneration) };
+        private void SubworldGeneration(GenerationProgress progress, GameConfiguration configuration)
         {
-            new PassLegacy("Serpens", (progress, _) =>
+            progress.Message = "Loading"; //Sets the text above the worldgen progress bar
+
+
+
+            Main.worldSurface = Main.maxTilesY + 250; //Hides the underground layer just out of bounds
+            Main.rockLayer = Main.maxTilesY + 200; //Hides the cavern layer way out of bounds
+
+            //variantWorld = Main.rand.Next(3);
+            StructureHelper.Generator.GenerateStructure("Structures/Serpens/Serpens1", new Terraria.DataStructures.Point16(Main.maxTilesX / 2 - 200, Main.maxTilesY / 2 - 80), StarsAbove.Instance);
+            StructureHelper.Generator.GenerateStructure("Structures/Serpens/Serpens2", new Terraria.DataStructures.Point16(Main.maxTilesX / 2, Main.maxTilesY / 2 - 80), StarsAbove.Instance);
+
+            for (int i = 0; i < Main.maxTilesX; i++)
             {
-                    progress.Message = "Loading"; //Sets the text above the worldgen progress bar
-
-				
-
-					Main.worldSurface = Main.maxTilesY + 250; //Hides the underground layer just out of bounds
-					Main.rockLayer = Main.maxTilesY + 200; //Hides the cavern layer way out of bounds
-
-					//variantWorld = Main.rand.Next(3);
-					StructureHelper.Generator.GenerateStructure("Structures/Serpens/Serpens1", new Terraria.DataStructures.Point16(Main.maxTilesX/2 - 200, Main.maxTilesY/2 - 80), StarsAbove.Instance);
-                    StructureHelper.Generator.GenerateStructure("Structures/Serpens/Serpens2", new Terraria.DataStructures.Point16(Main.maxTilesX/2, Main.maxTilesY/2 - 80), StarsAbove.Instance);
-
-                    for (int i = 0; i < Main.maxTilesX; i++)
-                    {
-                        for (int j = 0; j < Main.maxTilesY; j++)
-                        {
+                for (int j = 0; j < Main.maxTilesY; j++)
+                {
 
 
-                            progress.Set((j + i * Main.maxTilesY) / (float)(Main.maxTilesX * Main.maxTilesY)); //Controls the progress bar, should only be set between 0f and 1f
-							//Main.tile[i, j].active(true);
-							//Main.tile[i, j].type = TileID.Air;
-						}
-                        if(i == Main.maxTilesX/2)
-                        {
+                    progress.Set((j + i * Main.maxTilesY) / (float)(Main.maxTilesX * Main.maxTilesY)); //Controls the progress bar, should only be set between 0f and 1f
+                                                                                                       //Main.tile[i, j].active(true);
+                                                                                                       //Main.tile[i, j].type = TileID.Air;
+                }
+                if (i == Main.maxTilesX / 2)
+                {
 
-                        }
-                    }
-            })
-
-        };
+                }
+            }
+        }
         private const string assetPath = "StarsAbove/Subworlds/LoadingScreens";
 
         public override void DrawMenu(GameTime gameTime)

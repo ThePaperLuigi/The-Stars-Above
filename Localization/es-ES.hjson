@@ -2149,7 +2149,7 @@ Mods: {
 						// Dialogue.0: This world is not the world your character originally came from and may have progression further than your own. Sync world progression to your character?
 
 						Choices: {
-							// 1: Sync progression from this world and make this world the new main world.
+							// 1: Sync progression and make this world the new main world.
 							// 2: Do not sync progression.
 							// 3: Always sync progress, and don't ask again.
 						}
