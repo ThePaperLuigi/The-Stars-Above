@@ -250,7 +250,7 @@ Mods: {
 					// Threat: Threat Level: B
 					//Tier 3
 					// Requirement: Tier III Stellaglyph required for transit.
-					// Loot: Resources: Rare accessory components
+					// Loot: Resources: Stellar Remnants
 				}
 
 				Theranhad: {
@@ -277,7 +277,7 @@ Mods: {
 					// Threat: Threat Level: B
 					//Tier 3
 					// Requirement: Tier III Stellaglyph required for transit.
-					// Loot: Resources: Prismatic Cores
+					// Loot: Resources: Unique Weapon Memory
 				}
 
 				UltraPlant: {
@@ -286,7 +286,7 @@ Mods: {
 					// Threat: Threat Level: C-B
 					//Tier 2
 					// Requirement: Tier II Stellaglyph required for transit.
-					// Loot: Resources: Prismatic Cores
+					// Loot: Resources: Unique Weapon Memory
 				}
 
 				QuestionMark: {
@@ -8471,14 +8471,14 @@ Mods: {
 			}
 
 			ArgentumShard: {
-				// DisplayName: Argentum Shard
+				// DisplayName: Fragment of Lost Memory
 				/* Tooltip:
 					'''
 					[c/D294FF:Weapon Memory]
 					When Imprinted into a weapon, gain the following effects:
-					Gain 5% increased damage per 80 Mana
+					Gain 9% increased damage per 80 Mana
 					''' */
-				// TooltipAttached: Gain 5% increased damage per 80 Mana
+				// TooltipAttached: Gain 9% increased damage per 80 Mana
 			}
 
 			NetheriteBar: {
@@ -8787,13 +8787,13 @@ Mods: {
 			}
 
 			ThespianBossBag: {
-				// DisplayName: Thespian Boss Bag
-				// Tooltip: ""
+				// Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
+				// DisplayName: Treasure Bag (Nalhaun, the Burnished King)
 			}
 
 			ThespianBossRelicItem: {
-				// DisplayName: Thespian Boss Relic Item
 				// Tooltip: ""
+				// DisplayName: Thespian Relic
 			}
 		}
 
@@ -11689,7 +11689,7 @@ Mods: {
 				/* Description:
 					'''
 					The nearby surroundings disobey laws of reality
-					Lingering for too long will result in a catastrophic danger approaching
+					Lingering for too long will result in something terrifying occuring...
 					''' */
 			}
 
@@ -11697,8 +11697,8 @@ Mods: {
 				// DisplayName: "[c/EFB43E:Approaching Evil]"
 				/* Description:
 					'''
-					A horrifying entity is approaching...
-					Defenses have been drastically reduced!
+					You are compelled by a strange force...
+					Leave now, or else!
 					''' */
 			}
 

@@ -554,7 +554,7 @@ namespace StarsAbove.Systems.Items
             {
                 if(player.statMana > 80)
                 {
-                    damage += ((0.05f * (player.statMana/80)) + damageModAdditive * damageModMultiplicative) * memoryGlobalMod;
+                    damage += ((0.09f * (player.statMana/80)) + damageModAdditive * damageModMultiplicative) * memoryGlobalMod;
                 }
             }
 

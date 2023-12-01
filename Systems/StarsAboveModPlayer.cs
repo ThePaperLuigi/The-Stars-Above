@@ -2079,6 +2079,7 @@ namespace StarsAbove.Systems
             }
             base.GetHealMana(item, quickHeal, ref healValue);
         }
+
         public override void OnMissingMana(Item item, int neededMana)
         {
             if(mysticIncision == 2)

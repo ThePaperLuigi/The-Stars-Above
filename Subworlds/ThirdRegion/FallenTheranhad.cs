@@ -15,9 +15,9 @@ using Terraria.IO;
 
 namespace StarsAbove.Subworlds.ThirdRegion
 {
-    public class DreamingCity : Subworld
+    public class FallenTheranhad : Subworld
     {
-        public override int Width => 1600;
+        public override int Width => 2600;
         public override int Height => 800;
 
         //public override ModWorld modWorld => ModContent.GetInstance < your modworld here>();
@@ -28,8 +28,8 @@ namespace StarsAbove.Subworlds.ThirdRegion
         {
             progress.Message = "Loading"; //Sets the text above the worldgen progress bar
 
-            Main.spawnTileX = 681;
-            Main.spawnTileY = 250;
+            Main.spawnTileX = 1849;
+            Main.spawnTileY = 454;
 
 
             Main.worldSurface = Main.maxTilesY / 2 + 420;
@@ -39,7 +39,7 @@ namespace StarsAbove.Subworlds.ThirdRegion
             int tileAdjustmentX = 300 + 459;
 
 
-            StructureHelper.Generator.GenerateStructure("Structures/DreamingCity/DreamingCity", new Terraria.DataStructures.Point16(Main.maxTilesX / 2 - tileAdjustmentX, Main.maxTilesY / 2 - tileAdjustment), StarsAbove.Instance);
+            StructureHelper.Generator.GenerateStructure("Structures/FallenTheranhad/FallenTheranhad", new Terraria.DataStructures.Point16(Main.maxTilesX / 2 - tileAdjustmentX, Main.maxTilesY / 2 - tileAdjustment), StarsAbove.Instance);
 
             for (int i = 0; i < Main.maxTilesX; i++)
             {
@@ -160,7 +160,7 @@ namespace StarsAbove.Subworlds.ThirdRegion
 
         public override bool GetLight(Tile tile, int x, int y, ref FastRandom rand, ref Vector3 color)
         {
-            color = new Vector3(0.00f, 0.00f, 0.00f);
+            color = new Vector3(0.01f, 0.00f, 0.00f);
             return base.GetLight(tile, x, y, ref rand, ref color);
         }
         public override void OnLoad()
@@ -178,7 +178,7 @@ namespace StarsAbove.Subworlds.ThirdRegion
             Main.cloudAlpha = 0f;
             Main.resetClouds = true;
             Main.moonPhase = 4;
-            Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "TheDreamingCity";
+            Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "FallenTheranhad";
             Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().loadingScreenOpacity = 1f;
 
         }

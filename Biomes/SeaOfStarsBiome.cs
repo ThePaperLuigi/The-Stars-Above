@@ -1,8 +1,10 @@
 ﻿
 using Microsoft.Xna.Framework;
+using StarsAbove.Subworlds;
 using StarsAbove.Subworlds.ThirdRegion;
 using SubworldLibrary;
 using Terraria;
+using Terraria.GameContent.Personalities;
 using Terraria.Graphics.Capture;
 using Terraria.ModLoader;
 
@@ -37,9 +39,14 @@ namespace StarsAbove.Biomes
 		public override bool IsBiomeActive(Player player) {
 			if(SubworldSystem.IsActive<CygnusAsteroids>() 
 				|| SubworldSystem.IsActive<MiningStationAries>() 
-				|| SubworldSystem.IsActive<Serpens>() 
-				|| SubworldSystem.IsActive<Scorpius>())
+				|| SubworldSystem.IsActive<Serpens>()
+                || SubworldSystem.IsActive<FallenTheranhad>()
+                || SubworldSystem.IsActive<FaintArchives>()
+                || SubworldSystem.IsActive<Katabasis>()
+                || SubworldSystem.IsActive<DreamingCity>()
+                || SubworldSystem.IsActive<Scorpius>())
             {
+				player.ZoneJungle = false;
 				return true;
             }
 			return false;

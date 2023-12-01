@@ -15,7 +15,7 @@ using Terraria.IO;
 
 namespace StarsAbove.Subworlds.ThirdRegion
 {
-    public class DreamingCity : Subworld
+    public class UltraPlant : Subworld
     {
         public override int Width => 1600;
         public override int Height => 800;
@@ -28,8 +28,8 @@ namespace StarsAbove.Subworlds.ThirdRegion
         {
             progress.Message = "Loading"; //Sets the text above the worldgen progress bar
 
-            Main.spawnTileX = 681;
-            Main.spawnTileY = 250;
+            Main.spawnTileX = 609;
+            Main.spawnTileY = 208;
 
 
             Main.worldSurface = Main.maxTilesY / 2 + 420;
@@ -39,7 +39,7 @@ namespace StarsAbove.Subworlds.ThirdRegion
             int tileAdjustmentX = 300 + 459;
 
 
-            StructureHelper.Generator.GenerateStructure("Structures/DreamingCity/DreamingCity", new Terraria.DataStructures.Point16(Main.maxTilesX / 2 - tileAdjustmentX, Main.maxTilesY / 2 - tileAdjustment), StarsAbove.Instance);
+            StructureHelper.Generator.GenerateStructure("Structures/UltraPlant/UltraPlant", new Terraria.DataStructures.Point16(Main.maxTilesX / 2 - tileAdjustmentX, Main.maxTilesY / 2 - tileAdjustment), StarsAbove.Instance);
 
             for (int i = 0; i < Main.maxTilesX; i++)
             {
@@ -178,7 +178,7 @@ namespace StarsAbove.Subworlds.ThirdRegion
             Main.cloudAlpha = 0f;
             Main.resetClouds = true;
             Main.moonPhase = 4;
-            Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "TheDreamingCity";
+            Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "UltraPlant";
             Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().loadingScreenOpacity = 1f;
 
         }

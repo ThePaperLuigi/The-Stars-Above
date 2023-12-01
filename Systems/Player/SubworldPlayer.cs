@@ -35,6 +35,8 @@ using StarsAbove.NPCs.TownNPCs;
 using StarsAbove.Utilities;
 using StarsAbove.Items.Loot;
 using StarsAbove.Subworlds.ThirdRegion;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.WorldBuilding;
 
 namespace StarsAbove.Systems
 {
@@ -379,6 +381,10 @@ namespace StarsAbove.Systems
                         Player.AddBuff(BuffType<ApproachingEvilBuff>(), 10);
 
                     }
+                    if(anomalyTimer > 8000)
+                    {
+                        //Yoink the player into Katabasis for taking too long!
+                    }
                 }
                 else
                 {
@@ -513,7 +519,14 @@ namespace StarsAbove.Systems
 
                     Player.gravity -= gravityMod;
                 }
+                if (SubworldSystem.IsActive<DreamingCity>())
+                {
+                    if(Player.GetModPlayer<StarsAbovePlayer>().inCombat > 0)
+                    {
+                        Player.shimmerMonolithShader = true;
 
+                    }
+                }
                 //Final boss arena.
                 if (SubworldSystem.IsActive<EternalConfluence>())
                 {
@@ -534,6 +547,16 @@ namespace StarsAbove.Systems
 
 
             base.PostUpdateBuffs();
+        }
+        public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
+        {
+            if (SubworldSystem.Current != null) //Within subworlds...
+            {
+                SubworldSystem.Exit();
+
+            }
+
+            base.Kill(damage, hitDirection, pvp, damageSource);
         }
 
         public override void ModifyHitByProjectile(Projectile proj, ref Player.HurtModifiers modifiers)
@@ -569,4 +592,18 @@ namespace StarsAbove.Systems
         }
     }
 
+    public class SubworldTile : GlobalTile
+    {
+        public override bool PreDraw(int i, int j, int type, SpriteBatch spriteBatch)
+        {
+            if(SubworldSystem.AnyActive())
+            {
+                if(type == TileID.FogMachine || type == TileID.Teleporter || type == TileID.LunarMonolith || type == TileID.MusicBoxes)
+                Framing.GetTileSafely(i, j).IsTileInvisible = true;
+                
+            }
+            
+            return base.PreDraw(i, j, type, spriteBatch);
+        }
+    }
 };
