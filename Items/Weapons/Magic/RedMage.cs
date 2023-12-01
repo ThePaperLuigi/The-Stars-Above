@@ -54,7 +54,7 @@ namespace StarsAbove.Items.Weapons.Magic
 			}
 			else
 			{
-				Item.damage = 175;
+				Item.damage = 205;
 			}
 			          //The damage of your weapon
 			Item.DamageType = DamageClass.Magic;          //Is your weapon a melee weapon?

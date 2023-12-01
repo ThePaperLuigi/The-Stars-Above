@@ -2091,7 +2091,7 @@ namespace StarsAbove.Systems
         {
             if (arborealEchoes == 2)
             {
-                if (target.life == target.lifeMax)
+                if (target.life == target.lifeMax && target.CanBeChasedBy())
                 {
                     modifiers.FinalDamage += 0.3f;
                     Player.Heal(10);
@@ -8996,7 +8996,7 @@ namespace StarsAbove.Systems
             {
                 healValue = (int)(healValue * 1.3);
             }
-
+            
             base.GetHealLife(item, quickHeal, ref healValue);
         }
         public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
@@ -9050,7 +9050,9 @@ namespace StarsAbove.Systems
                     //If mana isn't enough to mitigate all the damage (as in Consumable Dodge)
                     info.Damage -= Player.statMana;
                     Player.statMana = 0;
-                    Player.manaRegenDelay = 240;
+                    Player.manaRegenDelay = 480;
+
+
                 }
             }
             if (ruinedKingPrism)
@@ -9137,7 +9139,9 @@ namespace StarsAbove.Systems
                     Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
                     CombatText.NewText(textPos, new Color(122, 113, 153, 255), $"{info.Damage}", false, false);
                     Player.statMana -= info.Damage;
-                    Player.manaRegenDelay = 240;
+                    Player.manaRegenDelay = 480;
+                    Player.immune = true;
+                    Player.immuneTime = 60;
                     return true;
                 }
             }

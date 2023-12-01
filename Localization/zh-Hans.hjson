@@ -5,6 +5,7 @@ Mods: {
 			SupremeAuthority: 回归到虚空
 			// Thespian: failed to follow the act.
 			// ShockAndAwe: ... tried to rocket jump too hard.
+			// InevitableEnd: was caught in the crossfire of {0}'s Inevitable End.
 		}
 
 		Boss.WarriorOfLight: 光之战士 降临！
@@ -380,7 +381,7 @@ Mods: {
 
 				SpectralNail: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Spectral Nail']"
-					// Description: Every 5 strikes against a foe deals 30% bonus true damage (6 second cooldown.)
+					// Description: Every 5 strikes against a foe deals 30% bonus true damage. (6 second cooldown.)
 				}
 
 				Armsthrift: {
@@ -390,7 +391,7 @@ Mods: {
 
 				MysticIncision: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Mystic Incision']"
-					// Description: Attacks gain 20% armor penetration. Critical strikes inflict 20% defense shred for 3 seconds, and grants Swiftness for the same duration.
+					// Description: Gain 20% armor penetration. Gain an extra 50% armor penetration when in close proximity to foes. If you do not have enough Mana to use a weapon, gain that amount of Mana on use.
 				}
 
 				StayTheCourse: {
@@ -400,7 +401,7 @@ Mods: {
 
 				Catharsis: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Catharsis']"
-					// Description: When health is reduced through any means, deal true damage to all nearby foes based 20% of the damage of your current held weapon. (2 second cooldown.)
+					// Description: When health is reduced through any means, deal damage to all nearby foes based on 20% of the damage of your current held weapon.
 				}
 
 				FabledFashion: {
@@ -410,32 +411,32 @@ Mods: {
 
 				KineticConversion: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Kinetic Conversion']"
-					// Description: A portion of movement velocity is added to outgoing damage. Gain brief Invincibility when dashing or moving quickly. (12 second cooldown.)
+					// Description: A portion of movement velocity is added to outgoing damage. Gain brief Invincibility when dashing or moving quickly. (40 second cooldown.)
 				}
 
 				KiTwinburst: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Ki Twinburst']"
-					// Description: Attacks deal half damage but trigger a follow-up attack that deals 90% of the remaining damage. If this hit is a critical strike, gain Alacrity for 2 seconds.
+					// Description: All attacks are divided into two instances of damage.
 				}
 
 				ArborealEchoes: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Arboreal Echoes']"
-					// Description: Dealing damage to unhurt foes heals 10 HP and increases damage of the first hit by 50%. Defeating foes heals 5 HP. Increase the potency of healing items by 30%.
+					// Description: Dealing damage to unhurt foes heals 10 HP and increases damage of the first hit by 30%. Increase the potency of healing items by 30%.
 				}
 
 				SwiftstrikeTheory: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Swiftstrike Theory']"
-					// Description: Gain drastic attack speed while immune to damage. When taking lethal damage, instead set health to 1 and become Invincible for 2 seconds. (2 minute cooldown.)
+					// Description: Gain 80% increased attack speed during immunity frames.
 				}
 
 				InevitableEnd: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Inevitable End']"
-					// Description: Foes explode when defeated, dealing 50% of their Max HP in damage to nearby foes. When you die, erupt in a massive explosion, dealing 500% of your held weapon's damage to both enemies and allies.
+					// Description: Foes explode when defeated, dealing 50% of their Max HP in damage to nearby foes. When you die, deal 500% of your held weapon's damage to both nearby enemies and allies.
 				}
 
 				LavenderRefrain: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Lavender Refrain']"
-					// Description: Gain up to 20 defense as your mana is drained. Taking damage restores 100 Mana and 50 HP, but reduces defense by 50% for 6 seconds (12 second cooldown.)
+					// Description: When taking damage, Mana is treated as bonus health. Mana lost in this manner increases Mana regeneration delay significantly. Reduces the potency of items that restore Mana by 50%.
 				}
 
 				HealthyConfidence: {

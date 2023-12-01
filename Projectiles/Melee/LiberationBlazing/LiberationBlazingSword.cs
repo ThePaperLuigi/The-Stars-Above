@@ -17,7 +17,7 @@ namespace StarsAbove.Projectiles.Melee.LiberationBlazing
         public override string Texture => "StarsAbove/Projectiles/Melee/LiberationBlazing/LiberationBlazingSword";
         public override bool UseRecoil => false;
         public override bool DoSpin => false;
-        public override float BaseDistance => 70;
+        public override float BaseDistance => 50;
         public override Color BackDarkColor => new Color(238, 44, 44);
         public override Color MiddleMediumColor => new Color(237, 113, 74);
         public override Color FrontLightColor => new Color(244, 204, 141);

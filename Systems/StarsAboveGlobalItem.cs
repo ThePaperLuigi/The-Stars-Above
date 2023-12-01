@@ -468,6 +468,7 @@ namespace StarsAbove.Systems
             ItemType<EssenceOfTheSoldier>(),
             ItemType<EssenceOfSpinning>(),
             ItemType<EssenceOfDreams>(),
+            ItemType<EssenceOfAuthority>(),
 
         };
         public static bool disableAspectPenalty;

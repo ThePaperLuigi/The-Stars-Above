@@ -35,7 +35,7 @@ namespace StarsAbove.Items.Weapons.Magic
 
 		public override void SetDefaults()
 		{
-			Item.damage = 49;          
+			Item.damage = 57;          
 			Item.DamageType = DamageClass.Magic;          
 			Item.width = 40;            
 			Item.mana = 20;

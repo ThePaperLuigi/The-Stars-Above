@@ -436,7 +436,7 @@ Mods: {
 
 				LavenderRefrain: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Lavender Refrain']"
-					Description: When taking damage, Mana is treated as bonus health. Reduces the potency of items that restore Mana by 50%.
+					Description: When taking damage, Mana is treated as bonus health. Mana lost in this manner increases Mana regeneration delay significantly. Reduces the potency of items that restore Mana by 50%.
 				}
 
 				HealthyConfidence: {
@@ -2149,7 +2149,7 @@ Mods: {
 						Dialogue.0: This world is not the world your character originally came from and may have progression further than your own. Sync world progression to your character?
 
 						Choices: {
-							1: Sync progression from this world and make this world the new main world.
+							1: Sync progression and make this world the new main world.
 							2: Do not sync progression.
 							3: Always sync progress, and don't ask again.
 						}
@@ -7042,7 +7042,7 @@ Mods: {
 				Tooltip:
 					'''
 					Debug cheat item
-					Enables all ablities in the Stellar Array- do NOT deselect abilities; use the Debug Disk.
+					Don't use me
 					'''
 				DisplayName: Umbral Item
 			}
