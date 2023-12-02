@@ -4,6 +4,7 @@ using Terraria.Graphics.Effects;
 using StarsAbove.Buffs.SubworldModifiers;
 using SubworldLibrary;
 using StarsAbove.Subworlds.ThirdRegion;
+using StarsAbove.Subworlds;
 
 namespace StarsAbove.SceneEffects.SubworldSceneEffects
 {
@@ -20,6 +21,12 @@ namespace StarsAbove.SceneEffects.SubworldSceneEffects
                 || SubworldSystem.IsActive<MiningStationAries>()
                 || SubworldSystem.IsActive<BleachedPlanet>()
                 || SubworldSystem.IsActive<Pyxis>()
+                || SubworldSystem.IsActive<DreamingCity>()
+                || SubworldSystem.IsActive<Celestia>()
+                || SubworldSystem.IsActive<FallenTheranhad>()
+                || SubworldSystem.IsActive<FaintArchives>()
+                || SubworldSystem.IsActive<UltraPlant>()
+                || SubworldSystem.IsActive<Katabasis>()
                 )
             {
                 Main.dayTime = false;

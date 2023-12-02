@@ -46,6 +46,7 @@ namespace StarsAbove.Biomes
                 || SubworldSystem.IsActive<DreamingCity>()
                 || SubworldSystem.IsActive<Scorpius>())
             {
+				
 				player.ZoneJungle = false;
 				return true;
             }

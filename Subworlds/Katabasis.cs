@@ -19,7 +19,7 @@ namespace StarsAbove.Subworlds
 	{
 		public override string Name => "Katabasis";
 
-		public override int Width => 750;
+		public override int Width => 1750;
 		public override int Height => 750;
 
 		//public override bool ShouldSave => false;
@@ -44,6 +44,9 @@ namespace StarsAbove.Subworlds
         public override List<GenPass> Tasks => new() { new PassLegacy("Subworld", SubworldGeneration) };
         private void SubworldGeneration(GenerationProgress progress, GameConfiguration configuration)
         {
+            Main.spawnTileX = 929;
+            Main.spawnTileY = 333;
+
             Main.worldSurface = 600.0;
             Main.rockLayer = Main.maxTilesY;
             SubworldSystem.hideUnderworld = true;
