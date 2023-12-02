@@ -597,9 +597,10 @@ namespace StarsAbove.NPCs.Thespian
 			{
 				Dust.NewDust(NPC.Center, 0, 0, DustID.BlueFairy, 0f + Main.rand.Next(-36, 36), 0f + Main.rand.Next(-36, 36), 150, default(Color), 1.5f);
 			}
-			
 
-			AI_State = (float)ActionState.Idle;
+            Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "Thespian";//lol
+            Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().loadingScreenOpacity = 1f;
+            AI_State = (float)ActionState.Idle;
 		}
 		private void Idle()
 		{

@@ -37,6 +37,7 @@ using StarsAbove.Items.Loot;
 using StarsAbove.Subworlds.ThirdRegion;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.WorldBuilding;
+using StarsAbove.NPCs.Arbitration;
 
 namespace StarsAbove.Systems
 {
@@ -357,7 +358,7 @@ namespace StarsAbove.Systems
             if (SubworldSystem.Current == null)
             {
                 //If not in a subworld
-
+                anomalyTimer = 0;
             }
             else
             {
@@ -384,11 +385,13 @@ namespace StarsAbove.Systems
                     if(anomalyTimer > 8000)
                     {
                         //Yoink the player into Katabasis for taking too long!
+                        SubworldSystem.Enter<Katabasis>();
+
                     }
                 }
                 else
                 {
-                    anomalyTimer = 0;
+                    
                 }
                 if (Player.InModBiome(GetInstance<FriendlySpaceBiome>()))
                 {
@@ -425,15 +428,61 @@ namespace StarsAbove.Systems
                     Player.AddBuff(BuffType<Superimposed>(), 10);
                     Player.noBuilding = true;
 
-                    //Space gravity!
-                    Player.gravity -= 0.3f;
-
+                   
                     //Fall too far into the void, and you'll be launched back up while taking heavy DoT.
                     if ((int)(Player.Center.Y / 16) > 520)
                     {
                         Player.AddBuff(BuffType<SpatialBurn>(), 120);
 
                         Player.velocity = new Vector2(Player.velocity.X, -17);
+                    }
+
+                    if(SubworldSystem.IsActive<DreamingCity>())
+                    {
+                        Player.AddBuff(BuffType<AnomalyBuff>(), 10);
+
+                        //The anomaly's evil approaches!
+                        anomalyTimer++;
+
+                        //More time then Lyra
+                        if (anomalyTimer > 20800)
+                        {
+                            Player.AddBuff(BuffType<ApproachingEvilBuff>(), 10);
+
+                        }
+                        if (anomalyTimer > 22000)
+                        {
+                            //Yoink the player into Katabasis for taking too long!
+                            SubworldSystem.Enter<Katabasis>();
+                        }
+                    }
+                    else
+                    {
+                        if(SubworldSystem.IsActive<Katabasis>() || SubworldSystem.IsActive<FaintArchives>())
+                        {
+                            if(SubworldSystem.IsActive<Katabasis>())
+                            {
+                                if (!NPC.AnyNPCs(NPCType<ArbitrationBoss>()) && anomalyTimer > 0)
+                                {
+                                    anomalyTimer = 0;
+                                    int index = NPC.NewNPC(null, (int)Player.Center.X + 1150, (int)Player.Center.Y, NPCType<ArbitrationBoss>());
+
+                                    // Finally, syncing, only sync on server and if the NPC actually exists (Main.maxNPCs is the index of a dummy NPC, there is no point syncing it)
+                                    if (Main.netMode == NetmodeID.Server && index < Main.maxNPCs)
+                                    {
+                                        NetMessage.SendData(MessageID.SyncNPC, number: index);
+                                    }
+
+                                }
+                            }
+                            
+                        }
+                        else
+                        {
+                            Player.gravity -= 0.3f;
+
+                        }
+                        //Space gravity!
                     }
                 }
                 if (Player.InModBiome(GetInstance<CorvusBiome>()))
@@ -598,9 +647,17 @@ namespace StarsAbove.Systems
         {
             if(SubworldSystem.AnyActive())
             {
-                if(type == TileID.FogMachine || type == TileID.Teleporter || type == TileID.LunarMonolith || type == TileID.MusicBoxes)
+                if(type == TileID.FogMachine || type == TileID.Teleporter || type == TileID.LunarMonolith || type == TileID.MusicBoxes || type == TileID.ShimmerMonolith || type == TileID.LogicSensor)
                 Framing.GetTileSafely(i, j).IsTileInvisible = true;
                 
+                if(type == TileID.Torches)
+                {
+                    if(Framing.GetTileSafely(i, j).TileFrameX == 0)
+                    {
+                        Framing.GetTileSafely(i, j).IsTileInvisible = true;
+
+                    }
+                }
             }
             
             return base.PreDraw(i, j, type, spriteBatch);

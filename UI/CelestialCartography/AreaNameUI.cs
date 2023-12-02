@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Systems;
+using StarsAbove.Utilities;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.UI;
@@ -93,22 +94,58 @@ namespace StarsAbove.UI.CelestialCartography
 			spriteBatch.Draw(vignette, Vector2.Zero, (Rectangle?)null, Color.White * (modPlayer.locationPopUpAlpha), 0f, Vector2.Zero, width, (SpriteEffects)0, 0f);
 			if (modPlayer.locationName != "")
 			{
-				spriteBatch.Draw(
-				(Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationNames/" + modPlayer.locationName),
-				hitbox,
-				Color.White * (modPlayer.locationPopUpAlpha)
-				);
+				if(modPlayer.locationName == "WarriorOfLight" ||
+					modPlayer.locationName == "FirstStarfarer" ||
+                    modPlayer.locationName == "Vagrant" ||
+                    modPlayer.locationName == "Thespian" ||
+                    modPlayer.locationName == "Dioskouroi" ||
+                    modPlayer.locationName == "Penthesilea" ||
+                    modPlayer.locationName == "Nalhaun" ||
+                    modPlayer.locationName == "Arbitration" ||
+                    modPlayer.locationName == "Starfarers")
+				{
+ 
+					if(modPlayer.locationPopUpAlpha == 0.1f)
+					{
+                        Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
+                    }
+                    spriteBatch.Draw(
+                        (Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationNames/" + modPlayer.locationName),
+                        new Vector2(Main.screenWidth/2, Main.screenHeight/2 ),
+						(Rectangle?)null,
+						Color.White * (modPlayer.locationPopUpAlpha),
+						0f,
+                        new Vector2(hitbox.Width / 2, hitbox.Height / 2),
+						MathHelper.Lerp(2,1,EaseHelper.InOutQuad(modPlayer.locationPopUpAlpha)),//scale
+						(SpriteEffects)0,
+						0f);
+
+                }
+				else
+				{
+                    spriteBatch.Draw(
+					(Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationNames/" + modPlayer.locationName),
+					hitbox,
+					Color.White * (modPlayer.locationPopUpAlpha)
+					);
+                }
+				
 			}
-			spriteBatch.Draw(screen, new Vector2(0, -30), (Rectangle?)null, Color.White * (modPlayer.loadingScreenOpacity), 0f, Vector2.Zero, menuWidth, (SpriteEffects)0, 0f);
-			
+            if (modPlayer.locationName != "WarriorOfLight" && modPlayer.locationName != "FirstStarfarer")
+            {
+                //spriteBatch.Draw(screen, new Vector2(0, -30), (Rectangle?)null, Color.White * (modPlayer.loadingScreenOpacity), 0f, Vector2.Zero, menuWidth, (SpriteEffects)0, 0f);
+
+            }
 
 
 
-			//text.Top.Set(modPlayer.locationPopUpPlacement, 0f);
+
+
+            //text.Top.Set(modPlayer.locationPopUpPlacement, 0f);
 
 
 
-		}
+        }
 
 
 		public override void Update(GameTime gameTime) {

@@ -660,8 +660,9 @@ namespace StarsAbove.NPCs.Vagrant
 			NPC.position.X = Main.player[NPC.target].position.X;
 			NPC.position.Y = Main.player[NPC.target].position.Y-160;
 			NPC.netUpdate = true;
-
-			AI_State = (float)ActionState.Idle;
+            Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "Vagrant";//lol
+            Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().loadingScreenOpacity = 1f;
+            AI_State = (float)ActionState.Idle;
 		}
 		private void Idle()
 		{

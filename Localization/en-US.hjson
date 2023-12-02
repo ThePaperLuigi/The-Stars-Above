@@ -209,7 +209,7 @@ Mods: {
 					Description: A strange planet known as Anomaly Iota. It is recorded emitting strange, powerful vibrations periodically akin to a beating heart. Exploration is limited due to a highly acidic surface.
 					Threat: Threat Level: B++ Anomaly
 					Requirement: Tier III Stellaglyph required for transit.
-					Loot: Resources: Prismatic Cores
+					Loot: Resources: Rare Enemies
 				}
 
 				Pyxis: {
@@ -247,7 +247,7 @@ Mods: {
 				DreamingCity: {
 					Name: The Dreaming City
 					Description: A majestic stronghold once populated by a long forgotten race. It is plagued by hostile entites suffused with paracausal darkness, and is oft drifting between another plane of existence. Contributed by: Tatriskel
-					Threat: Threat Level: A
+					Threat: Threat Level: A- Anomaly
 					//Tier 3
 					Requirement: Tier III Stellaglyph required for transit.
 					Loot: Resources: Stellar Remnants
@@ -256,7 +256,7 @@ Mods: {
 				Theranhad: {
 					Name: Fallen Theranhad
 					Description: A floating archipelago left abandoned after its emperor became the vessel to a malevolent cosmic deity. A dark energy permeates the air. Contributed by: hakomari
-					Threat: Threat Level: B- Anomaly
+					Threat: Threat Level: B-
 					//Tier 3
 					Requirement: Tier III Stellaglyph required for transit.
 					Loot: Resources: Prismatic Cores
@@ -4149,9 +4149,7 @@ Mods: {
 				Tooltip:
 					'''
 					This object feels worryingly wrong
-					[c/F1AF42:Summons Arbitration]
-					This boss is available early, but you may find it much too difficult
-					Prepare accordingly, and consider postponing this fight until you are stronger
+					[c/F1AF42:Takes you to Katabasis, where Arbitration awaits]
 					Is not consumed upon use
 					'''
 				DisplayName: The Beating Crux

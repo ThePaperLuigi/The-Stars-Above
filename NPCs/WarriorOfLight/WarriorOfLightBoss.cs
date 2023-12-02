@@ -901,9 +901,9 @@ namespace StarsAbove.NPCs.WarriorOfLight
 			if(NPC.localAI[0] == 0)
             {
 				Main.LocalPlayer.GetModPlayer<BossPlayer>().warriorCutsceneProgress = 10;
-				
+                
 
-				NPC.position.X = Main.player[NPC.target].Center.X - 50;
+                NPC.position.X = Main.player[NPC.target].Center.X - 50;
 				NPC.position.Y = Main.player[NPC.target].position.Y - 160;
 			}
 			if (!NPC.AnyNPCs(NPCType<WarriorWallsNPC>()))
@@ -941,8 +941,9 @@ namespace StarsAbove.NPCs.WarriorOfLight
 				NPC.dontTakeDamage = false;
 
 				NPC.netUpdate = true;
-
-				AI_State = (float)ActionState.Idle;
+                Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "WarriorOfLight";//lol
+                Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().loadingScreenOpacity = 1f;
+                AI_State = (float)ActionState.Idle;
 			}
 		}
 		private void Idle()

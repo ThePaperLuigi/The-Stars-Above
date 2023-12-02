@@ -517,26 +517,18 @@ namespace StarsAbove.NPCs.Arbitration
 		private void SpawnAnimation()
 		{
 
-			//Once the spawn animation is done, change to ActionState.Idle
+            //Once the spawn animation is done, change to ActionState.Idle
 
-			//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
-			//Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, 0, 0, ModContent.ProjectileType<VagrantSlamSprite>(), 0, 0, Main.myPlayer);
+            //Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
+            //Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, 0, 0, ModContent.ProjectileType<VagrantSlamSprite>(), 0, 0, Main.myPlayer);
 
-			if(SubworldSystem.AnyActive<StarsAbove>())
-            {
-				Vector2 initialMoveTo = new Vector2(14184, 6445);
-				NPC.position = initialMoveTo;
-			}
-			else
-            {
-				Vector2 initialMoveTo = new Vector2(Main.player[NPC.target].Center.X - 80, Main.player[NPC.target].Center.Y - 350);
-				NPC.position = initialMoveTo;
-			}
-			//SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Journey, NPC.Center);
+            Vector2 initialMoveTo = new Vector2(14601, 5124);
+            NPC.position = initialMoveTo;
+            //SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Journey, NPC.Center);
 
 
 
-			NPC.netUpdate = true;
+            NPC.netUpdate = true;
 			//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_NalhaunIntroQuote, NPC.Center);
 			for (int d = 0; d < 130; d++)
 			{
@@ -550,9 +542,10 @@ namespace StarsAbove.NPCs.Arbitration
 			{
 				Dust.NewDust(NPC.Center, 0, 0, DustID.BlueFairy, 0f + Main.rand.Next(-36, 36), 0f + Main.rand.Next(-36, 36), 150, default(Color), 1.5f);
 			}
-			
 
-			AI_State = (float)ActionState.Idle;
+            Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "Arbitration";//lol
+            Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().loadingScreenOpacity = 1f;
+            AI_State = (float)ActionState.Idle;
 		}
 		private void Idle()
 		{
