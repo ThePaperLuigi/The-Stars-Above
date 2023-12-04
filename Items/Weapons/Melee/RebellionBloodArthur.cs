@@ -165,11 +165,10 @@ namespace StarsAbove.Items.Weapons.Melee
 		public override void AddRecipes()
 		{
 			CreateRecipe(1)
-				.AddIngredient(ItemID.LifeFruit, 3)
-				.AddIngredient(ItemID.BrokenHeroSword, 1)
-				.AddIngredient(ItemID.SoulofLight, 12)
-				.AddIngredient(ItemID.EyeoftheGolem, 1)
-				.AddIngredient(ItemType<EssenceOfRadiance>())
+				.AddIngredient(ItemID.SoulofMight, 8)
+				.AddIngredient(ItemID.Excalibur, 1)
+				.AddIngredient(ItemID.WarriorEmblem, 1)
+				.AddIngredient(ItemType<EssenceOfKingslaying>())
 				.AddTile(TileID.Anvils)
 				.Register();
 		}

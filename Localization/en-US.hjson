@@ -5,13 +5,21 @@ Mods: {
 			SupremeAuthority: returned to the void.
 			Thespian: failed to follow the act.
 			ShockAndAwe: ... tried to rocket jump too hard.
-			InevitableEnd: was caught in the crossfire of {0}'s Inevitable End.
+			InevitableEnd: was caught in the crossfire of {0}'s Inevitable End.tooltip
 		}
 
 		Boss.WarriorOfLight: The Warrior of Light descends!
 		TempInfo: Hello! It looks like you're playing The Stars Above in Multiplayer! Please note that as of now, disabling Multiplayer Compatibility Mode is not recommended. With it enabled, attempting to travel to Cosmic Voyage locations will give you their respective items on a timer.
 
 		CombatText: {
+			StellarNovaReady: Stellar Nova ready!
+
+			DevotedHavoc: {
+				Grenade: Grenade prepped
+				Shuriken: Shuriken prepped
+				Molotov: Molotov prepped
+			}
+
 			MiserysCompany: {
 				Scythe: Scythe deployed!
 				Shotgun: Shotgun deployed!
@@ -675,6 +683,12 @@ Mods: {
 					94: This Ranged-essence seems to lead to a classic rocket-launcher weapon- I've heard of using explosives for traversal, so it shouldn't hurt to try, right?
 					95: This Magic Essence is pretty unique: you can draw directly onto the world to cause different effects to occur.
 					96: Looks like a yo-yo Essence is here- a Summon-type one as well. Seems to boast some helpful movement tools as well!
+					97: This Summon-type weapon isn't like anything you've seen before, I think. Best to just give it a go- how good's your swordsmanship?
+					98: With this Essence, you'll have a Magic-type weapon with some crazy stopping power! Let's give this one a shot!
+					99: This Summon weapon is an elegant blade- you can control it manually, or it will slice foes all on its own. Why can't everything do that?
+					100: This Melee blade has one goal in mind... You could probably guess from its name. It'll make a powerful weapon, that's for sure.
+					101: This Ranged weapon has a lot of tools to deal with swarming crowds. I'm not complaining!
+					102: Look here- this Summon essence's weapon can create allies of pure water to heal or aid you in combat. How brilliant!
 				}
 
 				Eridani: {
@@ -776,6 +790,12 @@ Mods: {
 					96: This Ranged-type rocket launcher has a unique melee counterpart, but it requires you to- well, I hope you have strong legs.
 					97: Take into consideration this Magic essence: in short, it turns the world into a canvas you can interact and attack with.
 					98: Here is a new Essence for your perusal- it'll deal Summon damage. It's rather close-ranged but boasts movement capabilities to help close the gap.
+					99: You'd think this Summon-type essence wouldn't be a sword, but here it is. It has a very special power hidden within... Something you probably don't expect.
+					100: I hope you have steady aim- this Magic weapon has powerful piercing strength, as long as you keep your target in your sights.
+					101: This Summon essence will create a mystical blade to aid you in combat- you can also control it magically, if you need better precision.
+					102: A Melee essence, huh? It looks like it has some powerful abilities. Just be glad it listens to you.
+					103: This Ranged weapon has the option for different types of accessory attacks for different scenarios. Try giving it a shot.
+					104: It seems this Summon essence creates powerful allies of water to give you the upper hand in combat.
 				}
 
 				Perseus: {
@@ -1893,7 +1913,7 @@ Mods: {
 					175: You've made it to the Observatory! So, what do you think?
 					176: Looks like you've arrived.  These are asteroids of interest- let's do some exploring.
 					177: We've made it. This planet is strange.. The surface has been wiped clean... What happened?
-					178: She was so close all along... Use the Mnemonic Sigil on the arena's center to begin.
+					178: What is this place?
 					179: It looks like we can't explore this yet... Maybe next time.
 					180: Wow, this place is seriously covered in greenery. Looks like a fun trip- let's get to exploring!
 					181: Okay, that slime's stopped holding back. Let's dig in our heels for a fight.
@@ -1917,6 +1937,8 @@ Mods: {
 					199: A demon approaches! I guess it makes sense- we are in the Underworld, after all! Let's give them a warm welcome.
 					200: I don't know what you just used, but a terrifying skull monster is on its way. Guess I should've seen this coming.
 					201: A huge crystalline foe approaches- needless to say, prepare for a fight.
+					202: Ack; looks like that potion did summon something. Don't let your guard down.
+					203: Get ready, because I won't hold back!
 				}
 
 				Eridani: {
@@ -2095,7 +2117,7 @@ Mods: {
 					173: Celestial coordinates established. Welcome to the Observatory Hyperborea.
 					174: We've made it. These are asteroids of interest. Let's look around.
 					175: This is it. An entire planet that's devoid of color? The surface looks like it was wiped away somehow...
-					176: She was here the whole time...? Well.. I'm ready when you are. Use the Sigil in the middle.
+					176: Where is this place? It looks very familiar...
 					177: It looks like we can't explore this yet... Maybe next time.
 					178: A being of the apocalypse has appeared. It wields destruction in all its appendages!
 					179: This huge amalgamate draws from the world's evils! Killing one slime will empower the other!
@@ -2122,6 +2144,8 @@ Mods: {
 					201: I hate to say this, but you seem to have caught the attention of a fearsome demon- time to prepare for combat.
 					202: That crown you just used seems to have summoned a demonic skull... these things aren't usually friendly!
 					203: A colossal earthen entity is approaching- and it's hostile, no doubt. A fight it is.
+					204: That potion the Astrologian gave you definitely was 'strange' for a reason. Prepare yourself!
+					205: I trust you're ready for this?
 				}
 			}
 
@@ -5097,6 +5121,11 @@ Mods: {
 					Utilized in the creation of 'Drachenlance' (Melee)
 					'''
 				DisplayName: Essence of the Dragonslayer
+			}
+
+			EssenceOfTheDragon: {
+				DisplayName: Essence Of The Dragon
+				Tooltip: ""
 			}
 
 			EssenceOfTheFallen: {
@@ -8699,10 +8728,10 @@ Mods: {
 					'''
 					[c/D294FF:Weapon Memory]
 					When Imprinted into a weapon, gain the following effects:
-					Striking foes unleashes up to 3 lightning arcs that deal 1/8th damage in a small area (4 second cooldown)
+					Striking foes unleashes up to 3 lightning arcs that deal 1/8th damage in a small area (2 second cooldown)
 					'...and his music was...'
 					'''
-				TooltipAttached: Striking foes unleashes up to 3 lightning arcs that deal 1/8th damage in a small area (4 second cooldown)
+				TooltipAttached: Striking foes unleashes up to 3 lightning arcs that deal 1/8th damage in a small area (2 second cooldown)
 			}
 
 			MatterManipulator: {
@@ -8912,11 +8941,13 @@ Mods: {
 				DisplayName: Devoted Havoc
 				Tooltip:
 					'''
-					This weapon has a delay before firing, but fires faster over time
-					Press the Weapon Action Key to swap ordinance between the [Energy Star] and the [Ignition Flare]
-					Right click to throw the selected ordinance (12 second cooldown)
-					The [Energy Star] sticks to foes and explodes after a short delay, dealing damage and stunning all nearby non-boss foes for 1 second
-					The [Ignition Flare] creates a damaging field of fire on impact that lasts for 4 seconds
+					This weapon fires faster over time
+					Press the Weapon Action Key to swap between Grenade, Shuriken, and Molotov Cocktail
+					Right click to consume the selected ordinance (4 second cooldown)
+					When thrown with this weapon's right click ability, certain throwable items are empowered and inherit this weapon's damage
+					Grenades are upgraded into [c/FFB969:High-Velocity Grenades], dealing 3x damage
+					Shurikens are upgraded into [c/91CED3:Energy Stars], stunning non-boss foes struck for 1 second
+					Molotov Cocktails are upgraded into [c/FF5740:Thermal Flares], spawning more fire in a condensed area
 					'''
 			}
 
@@ -8943,6 +8974,31 @@ Mods: {
 			ThespianBossRelicItem: {
 				Tooltip: ""
 				DisplayName: Thespian Relic
+			}
+
+			EssenceOfDancingSeas: {
+				DisplayName: Essence Of Dancing Seas
+				Tooltip: ""
+			}
+
+			EssenceOfEnergy: {
+				DisplayName: Essence Of Energy
+				Tooltip: ""
+			}
+
+			EssenceOfFirepower: {
+				DisplayName: Essence Of Firepower
+				Tooltip: ""
+			}
+
+			EssenceOfHydro: {
+				DisplayName: Essence Of Hydro
+				Tooltip: ""
+			}
+
+			EssenceOfKingslaying: {
+				DisplayName: Essence Of Kingslaying
+				Tooltip: ""
 			}
 		}
 
@@ -9879,6 +9935,11 @@ Mods: {
 			ThespianPotion.DisplayName: Thespian Potion
 			ThespianPotionExplosion.DisplayName: Thespian Potion Explosion
 			RebellionSwordLaser.DisplayName: Rebellion Sword Laser
+			DevotedHavocGun.DisplayName: Devoted Havoc Gun
+			DevotedHavocShot.DisplayName: Devoted Havoc Shot
+			EnergyStar.DisplayName: Energy Star
+			FragmentationGrenade.DisplayName: Fragmentation Grenade
+			ThermalFlare.DisplayName: Thermal Flare
 		}
 
 		Buffs: {

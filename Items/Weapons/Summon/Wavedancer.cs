@@ -109,7 +109,21 @@ namespace StarsAbove.Items.Weapons.Summon
 
 		public override void AddRecipes()
 		{
-			
-		}
+            CreateRecipe(1)
+                .AddIngredient(ItemID.Coral, 8)
+                .AddIngredient(ItemID.Sapphire, 3)
+                .AddIngredient(ItemID.EnchantedSword, 1)
+                .AddIngredient(ItemType<EssenceOfDancingSeas>())
+                .AddTile(TileID.Anvils)
+                .Register();
+
+            CreateRecipe(1)
+                .AddIngredient(ItemID.Coral, 8)
+                .AddIngredient(ItemID.Sapphire, 3)
+                .AddIngredient(ItemID.Diamond, 8)
+                .AddIngredient(ItemType<EssenceOfDancingSeas>())
+                .AddTile(TileID.Anvils)
+                .Register();
+        }
 	}
 }

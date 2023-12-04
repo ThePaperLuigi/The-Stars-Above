@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs.Gundbits;
+using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles.Magic.Gundbit;
 using Terraria;
 using Terraria.Audio;
@@ -124,7 +125,13 @@ namespace StarsAbove.Items.Weapons.Magic
 
         public override void AddRecipes()
         {
-
+            CreateRecipe(1)
+                .AddIngredient(ItemID.Nanites, 50)
+                .AddIngredient(ItemID.FragmentNebula, 10)
+                .AddIngredient(ItemID.MartianConduitPlating, 20)
+                .AddIngredient(ItemType<EssenceOfDancingSeas>())
+                .AddTile(TileID.Anvils)
+                .Register();
         }
     }
 }

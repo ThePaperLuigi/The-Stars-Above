@@ -15,19 +15,14 @@ using StarsAbove.Mounts.DragaliaFound;
 using StarsAbove.Projectiles.Extra;
 using StarsAbove.Projectiles.Summon.DragaliaFound;
 using System;
+using StarsAbove.Items.Prisms;
 
 namespace StarsAbove.Items.Weapons.Other
 {
     public class SoliloquyOfSovereignSeas : ModItem
 	{
 		public override void SetStaticDefaults() {
-			/* Tooltip.SetDefault("[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes at 70% efficiency, but inherits 150% from critical strike chance modifiers]" +
-                "\nBullets will fire from your cursor" +
-				"\nLine of sight is not required, but bullets will inherit direction" +
-				"\nCritical rate and damage will increase with the amount of bullets fired, but the seventh shot will have recoil damage and damage allies" +
-				"\nIf the recoil damage would kill you, the gun will misfire" +
-				"\n'This magical bullet can truly hit anyone- just like you say'" +
-				$""); */
+			
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
@@ -237,12 +232,13 @@ namespace StarsAbove.Items.Weapons.Other
 		
 		public override void AddRecipes()
 		{
-			CreateRecipe(1)
-				.AddIngredient(ItemID.Handgun, 1)
-				.AddIngredient(ItemType<EssenceOfTheFreeshooter>())
-				.AddTile(TileID.Anvils)
-				.Register();
-		}
+            CreateRecipe(1)
+                .AddIngredient(ItemID.Sapphire, 10)
+                .AddIngredient(ItemType<PrismaticCore>(), 12)
+                .AddIngredient(ItemType<EssenceOfHydro>())
+                .AddTile(TileID.Anvils)
+                .Register();
+        }
 	}
 
 }

@@ -16,6 +16,8 @@ using StarsAbove.NPCs;
 using StarsAbove.NPCs.Arbitration;
 using StarsAbove.NPCs.Nalhaun;
 using StarsAbove.NPCs.Penthesilea;
+using StarsAbove.NPCs.StarfarerBoss;
+using StarsAbove.NPCs.Thespian;
 using StarsAbove.NPCs.Tsukiyomi;
 using StarsAbove.NPCs.WarriorOfLight;
 using StarsAbove.Projectiles.StellarArray;
@@ -782,6 +784,8 @@ namespace StarsAbove.Systems
         public bool seenNalhaun;
         public bool seenPenth;
         public bool seenArbiter;
+        public bool seenThespian;
+        public bool seenStarfarers;
 
         //Biomes
         public bool seenDesertBiome;
@@ -1187,6 +1191,8 @@ namespace StarsAbove.Systems
             tag["seenNalhaun"] = seenNalhaun;
             tag["seenPenth"] = seenPenth;
             tag["seenArbiter"] = seenArbiter;
+            tag["seenThespian"] = seenThespian;
+            tag["seenStarfarers"] = seenStarfarers;
 
             tag["seenDeerclops"] = seenDeerclops;
             tag["seenQueenSlime"] = seenQueenSlime;
@@ -1550,6 +1556,8 @@ namespace StarsAbove.Systems
             seenNalhaun = tag.GetBool("seenNalhaun");
             seenPenth = tag.GetBool("seenPenth");
             seenArbiter = tag.GetBool("seenArbiter");
+            seenThespian = tag.GetBool("seenThespian");
+            seenStarfarers = tag.GetBool("seenStarfarers");
 
             seenDeerclops = tag.GetBool("seenDeerclops");
             seenQueenSlime = tag.GetBool("seenQueenSlime");
@@ -3964,15 +3972,14 @@ namespace StarsAbove.Systems
                 {
                     vagrantBossItemDialogue = 1;
                     InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-
                 }
-                if (dioskouroiBossItemDialogue == 0 && (SkeletronPrimeDialogue == 2 || TwinsDialogue == 2 || DestroyerDialogue == 2) && vagrantDialogue == 2)
+                if (dioskouroiBossItemDialogue == 0 && SkeletonDialogue == 2 && vagrantDialogue == 2)
                 {
                     dioskouroiBossItemDialogue = 1;
                     InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
 
                 }
-                if (penthBossItemDialogue == 0 && PlanteraDialogue == 2 && vagrantDialogue == 2)
+                if (penthBossItemDialogue == 0 && (SkeletronPrimeDialogue == 2 || TwinsDialogue == 2 || DestroyerDialogue == 2) && vagrantDialogue == 2)
                 {
                     penthBossItemDialogue = 1;
                     InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
@@ -7394,6 +7401,24 @@ namespace StarsAbove.Systems
                 starfarerPromptActive("onArbiter");
                 seenUnknownBossTimer = 300;
             }
+            if (NPC.AnyNPCs(NPCType<ThespianBoss>()) && !seenThespian)
+            {
+                if (starfarerPromptCooldown > 0)
+                {
+                    starfarerPromptCooldown = 0;
+                }
+                starfarerPromptActive("onThespian");
+                seenUnknownBossTimer = 300;
+            }
+            if (NPC.AnyNPCs(NPCType<StarfarerBoss>()) && !seenStarfarers)
+            {
+                if (starfarerPromptCooldown > 0)
+                {
+                    starfarerPromptCooldown = 0;
+                }
+                starfarerPromptActive("onStarfarerBoss");
+                seenUnknownBossTimer = 300;
+            }
         }
 
         private void OnKillEnemy(NPC npc)
@@ -9943,6 +9968,18 @@ namespace StarsAbove.Systems
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.86", Player.name); //This thing changes its attack patterns! Take note of its stances, or else!
                         seenArbiter = true;
                     }
+                    if (eventPrompt == "onThespian")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.202", Player.name); //This thing changes its attack patterns! Take note of its stances, or else!
+                        seenThespian = true;
+                    }
+                    if (eventPrompt == "onStarfarerBoss")
+                    {
+                        promptExpression = 0;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.203", Player.name); //This thing changes its attack patterns! Take note of its stances, or else!
+                        seenStarfarers = true;
+                    }
                     //Calamity mod bosses!
                     if (eventPrompt == "onDesertScourge")
                     {
@@ -11151,6 +11188,18 @@ namespace StarsAbove.Systems
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.86", Player.name); //It seems to be able to swap forms! Try to memorize its attacks..!
                         seenArbiter = true;
                     }
+                    if (eventPrompt == "onThespian")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.204", Player.name); //This thing changes its attack patterns! Take note of its stances, or else!
+                        seenThespian = true;
+                    }
+                    if (eventPrompt == "onStarfarerBoss")
+                    {
+                        promptExpression = 0;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.205", Player.name); //This thing changes its attack patterns! Take note of its stances, or else!
+                        seenStarfarers = true;
+                    }
                     //Calamity Mod Bosses
 
                     if (eventPrompt == "onDesertScourge")
@@ -11919,7 +11968,7 @@ namespace StarsAbove.Systems
                     novaReadyInfo = false;
                     SoundEngine.PlaySound(StarsAboveAudio.SFX_superReadySFX, Player.Center);
                     Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
-                    CombatText.NewText(textPos, new Color(255, 0, 125, 240), "Stellar Nova ready!", false, false);
+                    CombatText.NewText(textPos, new Color(255, 0, 125, 240), LangHelper.GetTextValue("CombatText.StellarNovaReady"), false, false);
                     if (Main.rand.Next(0, 5) == 0)
                     {
                         starfarerPromptActive("onStellarNovaCharged");

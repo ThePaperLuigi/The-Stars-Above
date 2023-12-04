@@ -5,13 +5,21 @@ Mods: {
 			SupremeAuthority: 回归到虚空
 			// Thespian: failed to follow the act.
 			// ShockAndAwe: ... tried to rocket jump too hard.
-			// InevitableEnd: was caught in the crossfire of {0}'s Inevitable End.
+			// InevitableEnd: was caught in the crossfire of {0}'s Inevitable End.tooltip
 		}
 
 		Boss.WarriorOfLight: 光之战士 降临！
 		TempInfo: 你好！你看起来正在在多人模式下游玩《星海苍穹》！请注意，到目前为止，不建议关闭多人兼容模式。
 
 		CombatText: {
+			// StellarNovaReady: Stellar Nova ready!
+
+			DevotedHavoc: {
+				// Grenade: Grenade prepped
+				// Shuriken: Shuriken prepped
+				// Molotov: Molotov prepped
+			}
+
 			MiserysCompany: {
 				// Scythe: Scythe deployed!
 				// Shotgun: Shotgun deployed!
@@ -675,6 +683,12 @@ Mods: {
 					94: 这个远程精华对应了一把经典的火箭发射器——我曾听说有人借助爆炸赶路，反正试一试又不疼，不是吗？
 					95: 唔，这个魔法精华有些与众不同：你可以用它在这个世界作画，并引发不同的效果。
 					96: 看看这个悠悠球精华——它对应着一把召唤武器，看上去也是个不错的机动装置。
+					// 97: This Summon-type weapon isn't like anything you've seen before, I think. Best to just give it a go- how good's your swordsmanship?
+					// 98: With this Essence, you'll have a Magic-type weapon with some crazy stopping power! Let's give this one a shot!
+					// 99: This Summon weapon is an elegant blade- you can control it manually, or it will slice foes all on its own. Why can't everything do that?
+					// 100: This Melee blade has one goal in mind... You could probably guess from its name. It'll make a powerful weapon, that's for sure.
+					// 101: This Ranged weapon has a lot of tools to deal with swarming crowds. I'm not complaining!
+					// 102: Look here- this Summon essence's weapon can create allies of pure water to heal or aid you in combat. How brilliant!
 				}
 
 				Eridani: {
@@ -776,6 +790,12 @@ Mods: {
 					96: 这个远程火箭发射器兼备了近战能力，但它需要你有——呃，足够结实的双腿。
 					97: 看看这个魔法精华：简而言之，你将以世界为画布，与之沟通并以此发动攻击。
 					98: 一个新的精华，供你好好研究——它能造成召唤伤害。尽管它的攻击范围较窄，但它提供的强大机动性弥补了不足。
+					// 99: You'd think this Summon-type essence wouldn't be a sword, but here it is. It has a very special power hidden within... Something you probably don't expect.
+					// 100: I hope you have steady aim- this Magic weapon has powerful piercing strength, as long as you keep your target in your sights.
+					// 101: This Summon essence will create a mystical blade to aid you in combat- you can also control it magically, if you need better precision.
+					// 102: A Melee essence, huh? It looks like it has some powerful abilities. Just be glad it listens to you.
+					// 103: This Ranged weapon has the option for different types of accessory attacks for different scenarios. Try giving it a shot.
+					// 104: It seems this Summon essence creates powerful allies of water to give you the upper hand in combat.
 				}
 
 				Perseus: {
@@ -1917,6 +1937,8 @@ Mods: {
 					199: 一只恶魔现身了！我想这是有原因的——毕竟我们正身处地狱！让我们给它们一点“热情”的问候。
 					200: 我不知道你刚刚又干了什么，但这个可怕的骷髅头朝我们冲过来了。我想这种情况不是第一次了。
 					201: 一尊水晶巨像接近了——无需多言，准备战斗。
+					// 202: Ack; looks like that potion did summon something. Don't let your guard down.
+					// 203: Get ready, because I won't hold back!
 				}
 
 				Eridani: {
@@ -2122,6 +2144,8 @@ Mods: {
 					201: 我也不想这么说，但你似乎引起了一只可怕恶魔的注意——是时候准备作战了。
 					202: 你刚刚使用的王冠似乎召唤出了一个恶魔骷髅头……这些家伙通常不怎么友好！
 					203: 一具巨型岩石魔像正在接近——毫无疑问，它对你充满敌意。今日一场大战不可避免。
+					// 204: That potion the Astrologian gave you definitely was 'strange' for a reason. Prepare yourself!
+					// 205: I trust you're ready for this?
 				}
 			}
 
@@ -5052,6 +5076,11 @@ Mods: {
 					用于创造“穿心枪盖博尔格”
 					'''
 				DisplayName: 屠龙者之精华
+			}
+
+			EssenceOfTheDragon: {
+				// DisplayName: Essence Of The Dragon
+				// Tooltip: ""
 			}
 
 			EssenceOfTheFallen: {
@@ -8569,10 +8598,10 @@ Mods: {
 					'''
 					[c/D294FF:Weapon Memory]
 					When Imprinted into a weapon, gain the following effects:
-					Striking foes unleashes up to 3 lightning arcs that deal 1/8th damage in a small area (4 second cooldown)
+					Striking foes unleashes up to 3 lightning arcs that deal 1/8th damage in a small area (2 second cooldown)
 					'...and his music was...'
 					''' */
-				// TooltipAttached: Striking foes unleashes up to 3 lightning arcs that deal 1/8th damage in a small area (4 second cooldown)
+				// TooltipAttached: Striking foes unleashes up to 3 lightning arcs that deal 1/8th damage in a small area (2 second cooldown)
 			}
 
 			MatterManipulator: {
@@ -8781,11 +8810,13 @@ Mods: {
 				// DisplayName: Devoted Havoc
 				/* Tooltip:
 					'''
-					This weapon has a delay before firing, but fires faster over time
-					Press the Weapon Action Key to swap ordinance between the [Energy Star] and the [Ignition Flare]
-					Right click to throw the selected ordinance (12 second cooldown)
-					The [Energy Star] sticks to foes and explodes after a short delay, dealing damage and stunning all nearby non-boss foes for 1 second
-					The [Ignition Flare] creates a damaging field of fire on impact that lasts for 4 seconds
+					This weapon fires faster over time
+					Press the Weapon Action Key to swap between Grenade, Shuriken, and Molotov Cocktail
+					Right click to consume the selected ordinance (4 second cooldown)
+					When thrown with this weapon's right click ability, certain throwable items are empowered and inherit this weapon's damage
+					Grenades are upgraded into [c/FFB969:High-Velocity Grenades], dealing 3x damage
+					Shurikens are upgraded into [c/91CED3:Energy Stars], stunning non-boss foes struck for 1 second
+					Molotov Cocktails are upgraded into [c/FF5740:Thermal Flares], spawning more fire in a condensed area
 					''' */
 			}
 
@@ -8812,6 +8843,31 @@ Mods: {
 			ThespianBossRelicItem: {
 				// Tooltip: ""
 				// DisplayName: Thespian Relic
+			}
+
+			EssenceOfDancingSeas: {
+				// DisplayName: Essence Of Dancing Seas
+				// Tooltip: ""
+			}
+
+			EssenceOfEnergy: {
+				// DisplayName: Essence Of Energy
+				// Tooltip: ""
+			}
+
+			EssenceOfFirepower: {
+				// DisplayName: Essence Of Firepower
+				// Tooltip: ""
+			}
+
+			EssenceOfHydro: {
+				// DisplayName: Essence Of Hydro
+				// Tooltip: ""
+			}
+
+			EssenceOfKingslaying: {
+				// DisplayName: Essence Of Kingslaying
+				// Tooltip: ""
 			}
 		}
 
@@ -9748,6 +9804,11 @@ Mods: {
 			// ThespianPotion.DisplayName: Thespian Potion
 			// ThespianPotionExplosion.DisplayName: Thespian Potion Explosion
 			// RebellionSwordLaser.DisplayName: Rebellion Sword Laser
+			// DevotedHavocGun.DisplayName: Devoted Havoc Gun
+			// DevotedHavocShot.DisplayName: Devoted Havoc Shot
+			// EnergyStar.DisplayName: Energy Star
+			// FragmentationGrenade.DisplayName: Fragmentation Grenade
+			// ThermalFlare.DisplayName: Thermal Flare
 		}
 
 		Buffs: {

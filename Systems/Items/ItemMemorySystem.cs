@@ -1062,7 +1062,7 @@ namespace StarsAbove.Systems.Items
             }
             if(ElectricGuitarPick && !Player.HasBuff(BuffType<ElectricGuitarPickCooldown>()))
             {
-                Player.AddBuff(BuffType < ElectricGuitarPickCooldown >(), (int)((60 * 4) * 1f - cooldownMod));
+                Player.AddBuff(BuffType < ElectricGuitarPickCooldown >(), (int)((60 * 2) * 1f - cooldownMod));
                 //Spawn lightning on hit!
                 Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center.X, target.Center.Y, Main.rand.Next(-2, 2), Main.rand.Next(-2, 2), ProjectileType<MemoryLightning>(), damageDone / 8, 0, Player.whoAmI, Main.rand.Next(0, 360) + 1000f, 1);
                 if (Main.rand.NextBool())

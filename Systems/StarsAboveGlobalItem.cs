@@ -71,6 +71,7 @@ namespace StarsAbove.Systems
             ItemType<KevesiFarewell>(),
             ItemType<PodZero42>(),
             ItemType<GossamerNeedle>(),
+            ItemType<DevotedHavoc>(),
 
 			//ModContent.ItemType<EssenceOf>(),
 			ItemType<EssenceOfTheDarkMoon>(),
@@ -97,6 +98,7 @@ namespace StarsAbove.Systems
             ItemType<EssenceOfFarewells>(),
             ItemType<EssenceOfTheAutomaton>(),
             ItemType<EssenceOfTheHallownest>(),
+            ItemType<EssenceOfEnergy>(),
 
         };
         public List<int> UmbralWeapons = new List<int>() {
@@ -124,6 +126,7 @@ namespace StarsAbove.Systems
             ItemType<IrminsulDream>(),
             ItemType<AgnianFarewell>(),
             ItemType<DraggedBelow>(),
+            ItemType<SoliloquyOfSovereignSeas>(),
 
             ItemType<EssenceOfAlpha>(),
             ItemType<EssenceOfAsh>(),
@@ -148,6 +151,7 @@ namespace StarsAbove.Systems
             ItemType<EssenceOfStaticShock>(),
             ItemType<EssenceOfOffseeing>(),
             ItemType<EssenceOfTheVoid>(),
+            ItemType<EssenceOfHydro>(),
 
         };
         public List<int> SpatialWeapons = new List<int>(){
@@ -216,6 +220,12 @@ namespace StarsAbove.Systems
             ItemType<ShockAndAwe>(),
             ItemType<TrickspinTwoStep>(),
 
+            //Stars Above v2.0
+            ItemType<DragaliaFound>(),
+            ItemType<GundbitStaves>(),
+            ItemType<Wavedancer>(),
+            ItemType<RebellionBloodArthur>(),
+
             ItemType<EssenceOfAdagium>(),
             ItemType<EssenceOfBloodshed>(),
             ItemType<EssenceOfChemtech>(),
@@ -269,6 +279,11 @@ namespace StarsAbove.Systems
             ItemType<EssenceOfDreams>(),
             ItemType<EssenceOfTheSoldier>(),
             ItemType<EssenceOfSpinning>(),
+
+            ItemType<EssenceOfHydro>(),
+            ItemType<EssenceOfKingslaying>(),
+            ItemType<EssenceOfFirepower>(),
+            ItemType<EssenceOfTheDragon>(),
         };
 
         public List<int> Prisms = new List<int>() {
@@ -469,6 +484,13 @@ namespace StarsAbove.Systems
             ItemType<EssenceOfSpinning>(),
             ItemType<EssenceOfDreams>(),
             ItemType<EssenceOfAuthority>(),
+
+            ItemType<EssenceOfHydro>(),
+            ItemType<EssenceOfFirepower>(),
+            ItemType<EssenceOfKingslaying>(),
+            ItemType<EssenceOfDancingSeas>(),
+            ItemType<EssenceOfEnergy>(),
+            ItemType<EssenceOfTheDragon>(),
 
         };
         public static bool disableAspectPenalty;

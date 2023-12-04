@@ -114,8 +114,8 @@ namespace StarsAbove.NPCs.Dioskouroi
 		{
 			NPC.boss = true;
 			NPC.lifeMax = 35000;
-			NPC.damage = 30;
-			NPC.defense = 15;
+			NPC.damage = 20;
+			NPC.defense = 5;
 			NPC.knockBackResist = 0f;
 			NPC.width = 100;
 			NPC.height = 100;

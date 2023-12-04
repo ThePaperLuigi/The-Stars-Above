@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs;
 using StarsAbove.Buffs.DragaliaFound;
+using StarsAbove.Items.Essences;
 using StarsAbove.Mounts.DragaliaFound;
 using StarsAbove.Projectiles.Extra;
 using StarsAbove.Projectiles.Summon.DragaliaFound;
@@ -339,7 +340,13 @@ namespace StarsAbove.Items.Weapons.Summon
         }
         public override void AddRecipes()
         {
-
+            CreateRecipe(1)
+                .AddIngredient(ItemID.Obsidian, 12)
+                .AddIngredient(ItemID.Feather, 8)
+                .AddIngredient(ItemID.BladeofGrass, 1)
+                .AddIngredient(ItemType<EssenceOfTheDragon>())
+                .AddTile(TileID.Anvils)
+                .Register();
         }
     }
 }
