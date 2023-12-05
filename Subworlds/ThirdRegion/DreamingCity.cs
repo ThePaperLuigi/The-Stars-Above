@@ -17,7 +17,7 @@ namespace StarsAbove.Subworlds.ThirdRegion
 {
     public class DreamingCity : Subworld
     {
-        public override int Width => 1600;
+        public override int Width => 2300;
         public override int Height => 800;
 
         //public override ModWorld modWorld => ModContent.GetInstance < your modworld here>();
