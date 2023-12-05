@@ -183,10 +183,10 @@ namespace StarsAbove.Items.Weapons.Other
                     player.AddBuff(BuffType<SoliloquyMinionBuff>(), 2);
                     if (player.ownedProjectileCounts[ProjectileType<SoliloquyJellySummon>()] <= 0)
                     {
-                        player.SpawnMinionOnCursor(source, player.whoAmI, ProjectileType<SoliloquyJellySummon>(), damage, knockback);
+                        player.SpawnMinionOnCursor(source, player.whoAmI, ProjectileType<SoliloquyJellySummon>(), damage/3, knockback);
 
-                        player.SpawnMinionOnCursor(source, player.whoAmI, ProjectileType<SoliloquyCrabSummon>(), damage, knockback);
-                        player.SpawnMinionOnCursor(source, player.whoAmI, ProjectileType<SoliloquySeahorseSummon>(), damage, knockback);
+                        player.SpawnMinionOnCursor(source, player.whoAmI, ProjectileType<SoliloquyCrabSummon>(), damage/3, knockback);
+                        player.SpawnMinionOnCursor(source, player.whoAmI, ProjectileType<SoliloquySeahorseSummon>(), damage/3, knockback);
                     }
                 }
 				
