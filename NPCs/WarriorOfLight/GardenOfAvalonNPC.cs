@@ -23,7 +23,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 		}
 		public override void SetDefaults() {
 			NPC.width = 292;
-			NPC.height = 1296;
+			NPC.height = 292;
 			NPC.damage = 0;
 			NPC.defense = 0;
 			NPC.lifeMax = 21000;
