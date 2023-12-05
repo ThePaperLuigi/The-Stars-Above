@@ -5,7 +5,7 @@ Mods: {
 			SupremeAuthority: returned to the void.
 			Thespian: failed to follow the act.
 			ShockAndAwe: ... tried to rocket jump too hard.
-			InevitableEnd: was caught in the crossfire of {0}'s Inevitable End.tooltip
+			InevitableEnd: was caught in the crossfire of {0}'s Inevitable End
 		}
 
 		Boss.WarriorOfLight: The Warrior of Light descends!
@@ -5125,7 +5125,12 @@ Mods: {
 
 			EssenceOfTheDragon: {
 				DisplayName: Essence Of The Dragon
-				Tooltip: ""
+				Tooltip:
+					'''
+					Obtained after defeating Thespian, the Act of Alchemy
+					A gift from your Starfarer
+					Utilized in the creation of 'Dragalia Found' (Summon)
+					'''
 			}
 
 			EssenceOfTheFallen: {
@@ -8978,27 +8983,168 @@ Mods: {
 
 			EssenceOfDancingSeas: {
 				DisplayName: Essence Of Dancing Seas
-				Tooltip: ""
+				Tooltip:
+					'''
+					Obtained after defeating Thespian, the Act of Alchemy
+					A gift from your Starfarer
+					Utilized in the creation of 'Wavedancer' (Summon)
+					'''
 			}
 
 			EssenceOfEnergy: {
 				DisplayName: Essence Of Energy
-				Tooltip: ""
+				Tooltip:
+					'''
+					Obtained after defeating Thespian, the Act of Alchemy
+					A gift from your Starfarer
+					Utilized in the creation of 'Devoted Havoc' (Ranged)
+					'''
 			}
 
 			EssenceOfFirepower: {
 				DisplayName: Essence Of Firepower
-				Tooltip: ""
+				Tooltip:
+					'''
+					Obtained after defeating Lunatic Cultist
+					A gift from your Starfarer
+					Utilized in the creation of 'Gund-bit Siege' (Magic)
+					'''
 			}
 
 			EssenceOfHydro: {
 				DisplayName: Essence Of Hydro
-				Tooltip: ""
+				Tooltip:
+					'''
+					Obtained after defeating Thespian, the Act of Alchemy
+					A gift from your Starfarer
+					Utilized in the creation of 'Soliloquy of Sovereign Seas' (Magic/Summon)
+					'''
 			}
 
 			EssenceOfKingslaying: {
 				DisplayName: Essence Of Kingslaying
-				Tooltip: ""
+				Tooltip:
+					'''
+					Obtained after defeating Nalhaun, the Burnished King
+					A gift from your Starfarer
+					Utilized in the creation of 'Clarent Rebellion' (Melee)
+					'''
+			}
+
+			BlackLightbulb: {
+				DisplayName: Black Lightbulb
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Critical strikes have a 14% chance to instantly execute non-boss enemies
+					'Do you remember?'
+					'''
+				TooltipAttached: Critical strikes have a 14% chance to instantly execute non-boss enemies
+			}
+
+			ChronalDeccelerator: {
+				DisplayName: Chronal Deccelerator
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Increases projectile velocity dramatically
+					'''
+				TooltipAttached: Increases projectile velocity dramatically
+			}
+
+			DescenderGemstone: {
+				DisplayName: Descender's Gemstone
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					Gain 0.5% critical strike chance every time an enemy is struck with a non-critical strike (Consumed upon landing a critical strike)
+					'''
+				TooltipAttached: Gain 0.5% critical strike chance every time an enemy is struck with a non-critical strike (Consumed upon landing a critical strike)
+			}
+
+			MercenaryAuracite: {
+				DisplayName: Mercenary's Auracite
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Deal 30% increased damage against Fighter enemies
+					'The Amethyst's power source'
+					'''
+				TooltipAttached: Deal 30% increased damage against Fighter enemies
+			}
+
+			MindflayerWorm: {
+				DisplayName: Mindflayer Worm
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Press the Weapon Relic Key to stun all nearby foes for 3 seconds (40 second cooldown)
+					Enemies have a 30% chance to resist the stun and bosses are not affected
+					'Authority'
+					'''
+				TooltipAttached:
+					'''
+					Press the Weapon Relic Key to stun all nearby foes for 3 seconds (40 second cooldown)
+					Enemies have a 30% chance to resist the stun and bosses are not affected
+					'''
+			}
+
+			MonsterTooth: {
+				DisplayName: Monster Tooth
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Defeating foes has a 40% chance of dropping a healing orb which heals 5% current HP
+					'''
+				TooltipAttached: Defeating foes has a 40% chance of dropping a healing orb which heals 5% current HP
+			}
+
+			OnyxJackal: {
+				DisplayName: Onyx Jackal
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Minions now target foes struck by this weapon
+					Gain 5 Summon Tag Damage 
+					'''
+				TooltipAttached:
+					'''
+					Minions now target foes struck by this weapon
+					Gain 5 Summon Tag Damage 
+					'''
+			}
+
+			RuinedCrown: {
+				DisplayName: Ruined Crown
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					If this weapon has a right-click ability, it now grants the buff Ruined King's Blade after a short delay
+					Ruined King's Blade grants 15% increased damage and 3% lifesteal against the next foe hit (10 second cooldown)
+					'You matter so little!'
+					'''
+				TooltipAttached:
+					'''
+					If this weapon has a right-click ability, it now grants the buff Ruined King's Blade after a short delay
+					Ruined King's Blade grants 15% increased damage and 3% lifesteal against the next foe hit (10 second cooldown)
+					'''
+			}
+
+			SimulacraShifter: {
+				DisplayName: Simulacra Shifter
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Press the Weapon Relic Key to become Invincible for 6 seconds, but you can not damage foes for the same duration (2 minute cooldown)
+					'''
+				TooltipAttached: Press the Weapon Relic Key to become Invincible for 6 seconds, but you can not damage foes for the same duration (2 minute cooldown)
 			}
 		}
 
