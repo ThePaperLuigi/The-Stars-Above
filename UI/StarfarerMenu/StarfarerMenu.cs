@@ -73,7 +73,7 @@ namespace StarsAbove.UI.StarfarerMenu
 		public static bool ShadesVisible;
 
 		private UIImageButton confirm;
-		private UIImageButton reset;
+		private UIImageButton credits;
 
 		public bool dragging = false;
 
@@ -144,7 +144,16 @@ namespace StarsAbove.UI.StarfarerMenu
 			confirm.OnMouseOver += ConfirmHover;
 			confirm.OnMouseOut += HoverOff;
 
-			stellarNova = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/StellarNova"));
+            credits = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Credits"));
+            credits.OnLeftClick += CreditsConfirm;
+            credits.Width.Set(70, 0f);
+            credits.Height.Set(52, 0f);
+            credits.Left.Set(474, 0f);
+            credits.Top.Set(419, 0f);
+            credits.OnMouseOver += CreditsHover;
+            credits.OnMouseOut += HoverOff;
+
+            stellarNova = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/StellarNova"));
 			stellarNova.OnLeftClick += StellarNovaConfirm;
 			stellarNova.Width.Set(74, 0f);
 			stellarNova.Height.Set(50, 0f);
@@ -355,6 +364,7 @@ namespace StarsAbove.UI.StarfarerMenu
 			area.Append(stellarArray);
 			area.Append(stellarNova);
 			area.Append(confirm);
+			area.Append(credits);
 			area.Append(text);
 			Append(area);
 			Append(hoverText);
@@ -400,7 +410,28 @@ namespace StarsAbove.UI.StarfarerMenu
 
 			// We can do stuff in here!
 		}
-		private void IdleDialogueConfirm(UIMouseEvent evt, UIElement listeningElement)
+        private void CreditsConfirm(UIMouseEvent evt, UIElement listeningElement)
+        {
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive)
+                return;
+
+            InGameNotificationsTracker.AddNotification(new Credits());
+
+            Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveActive = false;
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollNumber = 0;
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive = false;
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().animatedStarfarerMenuDialogue = "";
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "";
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = false;
+            //Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().animatedDescription = "";
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollNumber = 0;
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;
+
+
+            // We can do stuff in here!
+        }
+        private void IdleDialogueConfirm(UIMouseEvent evt, UIElement listeningElement)
 		{
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive)
 				return;
@@ -706,9 +737,20 @@ namespace StarsAbove.UI.StarfarerMenu
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
 			// We can do stuff in here!
 		}
+        private void CreditsHover(UIMouseEvent evt, UIElement listeningElement)
+        {
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive)
+                return;
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollNumber = 0;
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"Common.CreditsHover");
 
 
-		private void ArchiveHover(UIMouseEvent evt, UIElement listeningElement)
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
+            // We can do stuff in here!
+        }
+
+        private void ArchiveHover(UIMouseEvent evt, UIElement listeningElement)
 		{
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveActive)
 				return;
@@ -1974,7 +2016,6 @@ namespace StarsAbove.UI.StarfarerMenu
 			{
 				Append(area);
 			}
-
 			
 		
 

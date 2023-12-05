@@ -3424,6 +3424,27 @@ Mods: {
 			// TsukiyomiBossChecklist: The Boss Checklist updates to reveal a hidden foe!
 			// CanBeShimmeredSpoils: Can be Shimmered, converting into Stellar Remnants
 			// BlockedNova: A powerful foe prevents use of the Stellar Nova!
+			// CreditsHover: "[View the credits for the mod!]"
+			/* Credits:
+				'''
+					"Programming/Art/Testing: PaperLuigi"
+
+					"Original Sound Track Composers"
+					"Sunset, Stardust: PaperLuigi"
+					"Legends Yet Unspun: ShadyCicada"
+					"Chart the Cosmos: EchoLane"
+					"Even Stars Must Fall: EchoLane"
+
+					"External Music: Studio EIM, HoloPro, Masayoshi Soken, REVO, Daiki Ishikawa, Nobuo Uematsu"
+					"Subworld Contest Builders: Tatriskel, hakomari, Izanagi The wanderer of stars, UnkownSToast, Hockerzocker"
+					"Patreon Supporters: GodRugal7, Grevias, koimeiji, Red_E, BloodPlasmaKing, Epsilain, Yahir Aguilar, yitao private Wang, Rhakta SILKA, Thomas S An, shwomplr, Andrew Ng, Nguyen Bui, Black Knight Regalia, Kirin11, Gavin Leeman, Lance, Novofy, yitangtang, Doogle, Jake Rylander, Thekingsley0, My Thanks, Bakka Taco, HighInPotassium, Martin Fack, chairius , Oxalic Acid, Bryce Gibson, Kristopher Soul, Konin, Caspar Wong, EggSlashEther, Mad61, EarleGrey, Lazy Titan, Aaron, Winter, Todd Griffin, eraogon, Andrew Robinson, Keegan Pelot, SammyroxxGaming, Loligeddon, EpsilonFighter761, Hal Abbe, Punch A Cookie, Zuikaku (J6Unlimited), Daniel Brown, Max , Hero, Tomat (Stevie), xAqult, Hyper Undone, TotallyThePope, WASDemons The Wandering Demon, Maridea, Soviet Onion, Coolmike5000, Judah Washington, Mr. Luggy, VitaMuze, SixFlabs, '-Teleports behind you-, SunriseSyrene, Rifren, Anthony Kapelos, bunny 11261, Silence EXE, riley, SimplyATable, Skadi :3, Antoine Si, KFCHero1, Bailey Victorio, Otokonoko Culture, The Large Mug, dryspartan1 ., Ffff, Yotoniom ・｢, Enmeram, Knight vibe, Earl Ong, Bananas101, Merithos , Beta, Nethertrain, Eaten Sandwich, Th3 Rose, Loro Lukic, nicc nacc, Hayden Kneller, Patcheresu , gallidom gallade, Driser, LunatheUmbreon, Vexcint, Rosetta horse, ae aea, Dratinii-san, WrathOfOlympus "
+					
+					"Special Thanks"
+					"Discord Moderators: the_alu, ifune, loligeddon, polluxe, not02"
+					"Libraries: SubworldLibrary, StructureHelper"
+					"Open-Source Code: ScalarVector, tomat, jopojelly"
+					
+				''' */
 		}
 
 		DamageClass.CelestialDamageClass: Daño Espacial
