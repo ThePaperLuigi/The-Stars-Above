@@ -107,6 +107,8 @@ namespace StarsAbove.Items.Weapons.Magic
             if (player.altFunctionUse == 2 && !player.HasBuff(BuffType<GundbitLaserCooldown>()) && !player.HasBuff(BuffType<GundbitShieldBuff>()))
             {
                 player.AddBuff(BuffType<GundbitBeamAttack>(), 3 * 60);
+                player.AddBuff(BuffType<GundbitLaserCooldown>(), 30 * 60);
+
                 Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<GundbitGunCharged>(), damage, 0, player.whoAmI, 0f);
                 SoundEngine.PlaySound(SoundID.DD2_DefenseTowerSpawn, player.Center);
 
