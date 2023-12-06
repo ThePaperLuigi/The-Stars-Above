@@ -3570,8 +3570,8 @@ Mods: {
 			PenthesileaBoss.DisplayName: Penthesilea, the Witch of Ink
 			ArbitrationBoss.DisplayName: Arbitration
 			StarfarerBoss.DisplayName: Asphodene and Eridani
-			ParacausalOgre.DisplayName: Paracausal Ogre
-			ParacausalEntity.DisplayName: Paracausal Entity
+			ParacausalEntity.DisplayName: Paracausal Watcher
+			ParacausalEnigma.DisplayName: Paracausal Enigma
 		}
 
 		Tiles: {

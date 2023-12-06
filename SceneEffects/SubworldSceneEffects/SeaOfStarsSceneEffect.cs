@@ -10,6 +10,8 @@ namespace StarsAbove.SceneEffects.SubworldSceneEffects
 {
     public class SeaOfStarsSceneEffect : ModSceneEffect
     {
+        public static SceneEffectPriority setPriority = SceneEffectPriority.BossLow;
+
         public override bool IsSceneEffectActive(Player player)
         {
 
@@ -42,7 +44,8 @@ namespace StarsAbove.SceneEffects.SubworldSceneEffects
 
         }
 
-
+        public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/MareLamentorum");
+        public override SceneEffectPriority Priority => setPriority;
 
 
 

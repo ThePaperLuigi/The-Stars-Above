@@ -88,7 +88,7 @@ namespace StarsAbove
 
 				SkyManager.Instance["StarsAbove:CorvusSky"] = new CorvusSky();
 
-				SkyManager.Instance["StarsAbove:ObservatorySkyDay"] = new ObservatorySkyDay();
+				SkyManager.Instance["StarsAbove:DreamingCitySky"] = new DreamingCitySky();
 				SkyManager.Instance["StarsAbove:EdinGenesisQuasarSky"] = new EdinGenesisQuasarSky();
 
 				Filters.Scene["StarsAbove:MoonSky"] = new Filter(new ScreenShaderData("FilterTower").UseColor(0f, 0.5f, 1f).UseOpacity(0.5f), EffectPriority.High);

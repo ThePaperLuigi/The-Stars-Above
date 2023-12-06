@@ -10,7 +10,7 @@ using Terraria.ModLoader;
 
 namespace StarsAbove.Biomes
 {
-    public class SeaOfStarsBiome : ModBiome
+    public class DreamingCityBiome : ModBiome
 	{
 
 		// Use SetStaticDefaults to assign the display name
@@ -27,7 +27,7 @@ namespace StarsAbove.Biomes
 		public override CaptureBiome.TileColorStyle TileColorStyle => CaptureBiome.TileColorStyle.Normal;
 
 		// Select Music
-		public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/MareLamentorum");
+		public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/CosmicVoyage/DreamingCityAmbient");
 
 		// Populate the Bestiary Filter
 		public override string BestiaryIcon => "StarsAbove/Biomes/SeaOfStarsBestiaryIcon";
@@ -37,13 +37,7 @@ namespace StarsAbove.Biomes
 		
 		// Calculate when the biome is active.
 		public override bool IsBiomeActive(Player player) {
-			if(SubworldSystem.IsActive<CygnusAsteroids>() 
-				|| SubworldSystem.IsActive<MiningStationAries>() 
-				|| SubworldSystem.IsActive<Serpens>()
-                || SubworldSystem.IsActive<FallenTheranhad>()
-                || SubworldSystem.IsActive<FaintArchives>()
-                || SubworldSystem.IsActive<Katabasis>()
-                || SubworldSystem.IsActive<Scorpius>())
+			if(SubworldSystem.IsActive<DreamingCity>())
             {
 				player.ZoneSkyHeight = false;
                 player.ZoneJungle = false;

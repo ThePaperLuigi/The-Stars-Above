@@ -428,7 +428,7 @@ namespace StarsAbove.Systems
                     Player.AddBuff(BuffType<Superimposed>(), 10);
                     Player.noBuilding = true;
 
-                   
+
                     //Fall too far into the void, and you'll be launched back up while taking heavy DoT.
                     if ((int)(Player.Center.Y / 16) > 520)
                     {
@@ -437,7 +437,7 @@ namespace StarsAbove.Systems
                         Player.velocity = new Vector2(Player.velocity.X, -17);
                     }
 
-                    if(SubworldSystem.IsActive<DreamingCity>())
+                    if (SubworldSystem.IsActive<DreamingCity>())
                     {
                         Player.AddBuff(BuffType<AnomalyBuff>(), 10);
 
@@ -458,9 +458,9 @@ namespace StarsAbove.Systems
                     }
                     else
                     {
-                        if(SubworldSystem.IsActive<Katabasis>() || SubworldSystem.IsActive<FaintArchives>())
+                        if (SubworldSystem.IsActive<Katabasis>() || SubworldSystem.IsActive<FaintArchives>())
                         {
-                            if(SubworldSystem.IsActive<Katabasis>())
+                            if (SubworldSystem.IsActive<Katabasis>())
                             {
                                 if (!NPC.AnyNPCs(NPCType<ArbitrationBoss>()) && anomalyTimer > 0)
                                 {
@@ -475,7 +475,7 @@ namespace StarsAbove.Systems
 
                                 }
                             }
-                            
+
                         }
                         else
                         {
@@ -483,6 +483,32 @@ namespace StarsAbove.Systems
 
                         }
                         //Space gravity!
+                    }
+                }
+                if (Player.InModBiome(GetInstance<DreamingCityBiome>()))
+                {
+                    //Make sure the player can't do what's not allowed:
+                    Player.AddBuff(BuffType<Superimposed>(), 10);
+                    Player.noBuilding = true;
+
+
+
+
+                    Player.AddBuff(BuffType<AnomalyBuff>(), 10);
+
+                    //The anomaly's evil approaches!
+                    anomalyTimer++;
+
+                    //More time then Lyra
+                    if (anomalyTimer > 20800)
+                    {
+                        Player.AddBuff(BuffType<ApproachingEvilBuff>(), 10);
+
+                    }
+                    if (anomalyTimer > 22000)
+                    {
+                        //Yoink the player into Katabasis for taking too long!
+                        SubworldSystem.Enter<Katabasis>();
                     }
                 }
                 if (Player.InModBiome(GetInstance<CorvusBiome>()))

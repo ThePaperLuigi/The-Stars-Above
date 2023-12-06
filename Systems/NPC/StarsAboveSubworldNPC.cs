@@ -64,7 +64,26 @@ namespace StarsAbove.Systems
 				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.WaywardPredictor>(), 0.1f);
 				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.WaywardVortexian>(), 0.1f);*/
             }
-
+            if (spawnInfo.Player.InModBiome<DreamingCityBiome>())
+            {
+                pool.Clear();
+                pool.Add(NPCType<NPCs.PrismLoot>(), 0.005f);
+                pool.Add(NPCType<NPCs.OffworldNPCs.AsteroidWormHead>(), 0.001f);
+                pool.Add(NPCType<NPCs.OffworldNPCs.DreamingCity.ParacausalEntity>(), 0.05f);
+                pool.Add(NPCType<NPCs.OffworldNPCs.DreamingCity.ParacausalEnigma>(), 0.02f);
+                if(Main.hardMode)
+                {
+                    pool.Add(NPCID.DesertGhoulHallow, 0.01f);
+                    pool.Add(NPCID.ChaosElemental, 0.001f);
+                    pool.Add(NPCID.IlluminantSlime, 0.02f);
+                    pool.Add(NPCID.PossessedArmor, 0.01f);
+                }
+                
+                /*
+				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.WaywardSelenian>(), 0.1f);
+				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.WaywardPredictor>(), 0.1f);
+				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.WaywardVortexian>(), 0.1f);*/
+            }
             if (spawnInfo.Player.InModBiome<LyraBiome>()) // Anomaly planet stuff
             {
                 pool.Clear();

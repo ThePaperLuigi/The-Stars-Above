@@ -28,7 +28,7 @@ namespace StarsAbove.Subworlds.ThirdRegion
         {
             progress.Message = "Loading"; //Sets the text above the worldgen progress bar
 
-            Main.spawnTileX = 681;
+            Main.spawnTileX = 1032;
             Main.spawnTileY = 250;
 
 
