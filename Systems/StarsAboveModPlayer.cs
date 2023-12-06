@@ -3205,7 +3205,7 @@ namespace StarsAbove.Systems
                 for (int i = 0; i < Main.maxNPCs; i++)
                 {
                     NPC npc = Main.npc[i];
-                    if (npc.active && !npc.boss && npc.Distance(Player.Center) < 300 && npc.life < npc.lifeMax * 0.1 && !npc.boss)
+                    if (npc.active && !npc.boss && npc.Distance(Player.Center) < 300 && npc.life < npc.lifeMax * 0.1 )
                     {
                         npc.StrikeInstantKill();//should be fine?
 
