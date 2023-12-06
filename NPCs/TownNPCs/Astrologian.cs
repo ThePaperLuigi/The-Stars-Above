@@ -139,7 +139,7 @@ namespace StarsAbove.NPCs.TownNPCs
 
 				// You can add multiple elements if you really wanted to
 				// You can also use localization keys (see Localization/en-US.lang)
-				new FlavorTextBestiaryInfoElement("Mods.ExampleMod.Bestiary.ExamplePerson")
+				//new FlavorTextBestiaryInfoElement("Mods.ExampleMod.Bestiary.ExamplePerson")
 			});
 		}
 
@@ -209,8 +209,8 @@ namespace StarsAbove.NPCs.TownNPCs
 					continue;
 				}
 
-				// If player has a Memory
-				if (player.inventory.Any(item => item.GetGlobalItem<ItemMemorySystem>().isMemory))
+				// After defeating Vagrant
+				if (DownedBossSystem.downedVagrant)
 				{
 					return true;
 				}
