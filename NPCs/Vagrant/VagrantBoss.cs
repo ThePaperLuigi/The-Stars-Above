@@ -648,7 +648,7 @@ namespace StarsAbove.NPCs.Vagrant
 			var sound = SoundEngine.PlaySound(Music_ChartTheCosmosIntro);
 			if(SoundEngine.TryGetActiveSound(sound,out introActive))
             {
-				Main.musicFade[MusicLoader.GetMusicSlot("StarsAbove/Sounds/Music/Boss/Vagrant/ChartTheCosmos")] = 0f;
+				//Main.musicFade[MusicLoader.GetMusicSlot("StarsAbove/Sounds/Music/Boss/Vagrant/ChartTheCosmos")] = 0f;
 
 			}
 			else
@@ -656,7 +656,7 @@ namespace StarsAbove.NPCs.Vagrant
 				
 
 			}
-			Main.musicFade[MusicLoader.GetMusicSlot("StarsAbove/Sounds/Music/Boss/Vagrant/ChartTheCosmos")] = 1f;
+			//Main.musicFade[MusicLoader.GetMusicSlot("StarsAbove/Sounds/Music/Boss/Vagrant/ChartTheCosmos")] = 1f;
 			NPC.position.X = Main.player[NPC.target].position.X;
 			NPC.position.Y = Main.player[NPC.target].position.Y-160;
 			NPC.netUpdate = true;

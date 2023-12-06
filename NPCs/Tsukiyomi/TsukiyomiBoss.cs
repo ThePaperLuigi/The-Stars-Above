@@ -857,34 +857,34 @@ namespace StarsAbove.NPCs.Tsukiyomi
             {
 				if (NPC.localAI[0] == 2)
 				{
-					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Angela3");
-					NPC.defense = 25;
+                    Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Boss/Tsukiyomi/EvenStarsMustDie");
+                    NPC.defense = 25;
 				}
 				else if (NPC.localAI[0] == 1)
 				{
-					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Angela2");
-					NPC.defense = 120;
+                    Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Boss/Vagrant/ChartTheCosmos");
+                    NPC.defense = 150;
 				}
 				else
                 {
-					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Angela1");
-					NPC.defense = 120;
+                    Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Boss/Vagrant/ChartTheCosmos");
+                    NPC.defense = 150;
 
 				}
 			}
 			else
             {
-				if (NPC.localAI[0] != 0)
-				{
-					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TheExtreme");
-					NPC.defense = 5;
-				}
-				else
-				{
-					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TheExtremeIntro");
-					NPC.defense = 120;
-				}
-			}
+                if (NPC.localAI[0] != 0)
+                {
+                    Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Boss/Tsukiyomi/EvenStarsMustDie");
+                    NPC.defense = 5;
+                }
+                else
+                {
+                    Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Boss/Vagrant/ChartTheCosmos");
+                    NPC.defense = 150;
+                }
+            }
 			
 
 
