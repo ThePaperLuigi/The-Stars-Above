@@ -337,10 +337,24 @@ namespace StarsAbove.UI.Cosmoturgy
 			{ItemType<Trumpet>(), 18 },
 			{ItemType<GuppyHead>(), 19 },
 			{ItemType<Pawn>(), 20 },
-			{ItemType<ResonanceGem>(), 22 },
-			{ItemType<SigilOfHope>(), 31 },
-			{ItemType<KnightsShovelhead>(), 33 },
-			{ItemType<TarotCard>(), 100 },
+            {ItemType<ReprintedBlueprint>(), 21 }, //Done
+            {ItemType<ResonanceGem>(), 22 },
+			//Garridine's Protocores
+
+            {ItemType<RuinedCrown>(), 26 },
+            {ItemType<DescenderGemstone>(), 27 },
+            {ItemType<MonsterTooth>(), 28 }, //Done
+            {ItemType<MindflayerWorm>(), 29 },
+            {ItemType<MercenaryAuracite>(), 30 },
+            {ItemType<SigilOfHope>(), 31 },
+            {ItemType<ChronalDeccelerator>(), 32 },
+            {ItemType<KnightsShovelhead>(), 33 },
+            {ItemType<SimulacraShifter>(), 34 },
+            {ItemType<BlackLightbulb>(), 35 },
+            {ItemType<OnyxJackal>(), 36 },
+
+            {ItemType<TarotCard>(), 100 },
+
 			{ItemType<RangedSigil>(), 301 },
 			{ItemType<MagicSigil>(), 302 },
 			{ItemType<MeleeSigil>(), 303 },

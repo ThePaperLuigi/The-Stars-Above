@@ -306,7 +306,7 @@ namespace StarsAbove.Systems
 
         public override void AI(NPC npc)
         {
-            if (EverlastingLightEvent.isEverlastingLightActive && !npc.boss && npc.damage > 0 && !npc.friendly)
+            if (EverlastingLightEvent.isEverlastingLightActive && !npc.boss && npc.damage > 0 && !npc.friendly && SubworldSystem.Current == null)
             {
 
                 if (Main.rand.Next(2000) < 2)

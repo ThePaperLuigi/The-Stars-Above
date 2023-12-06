@@ -38,6 +38,8 @@ using System;
 using Terraria.GameInput;
 using System.Reflection;
 using Terraria.Audio;
+using StarsAbove.Buffs.TagDamage;
+using Terraria.WorldBuilding;
 
 namespace StarsAbove.Systems.Items
 {
@@ -182,7 +184,13 @@ namespace StarsAbove.Systems.Items
             {
                 player.GetModPlayer<StarsAbovePlayer>().novaGauge += 4;
             }
-            if(Trumpet)
+            if (RuinedCrown && player.altFunctionUse == 2 && !player.HasBuff(BuffType<RuinedCrownCooldown>()))
+            {
+                player.AddBuff(BuffType<RuinedCrownCooldown>(), 60 * 10);
+                player.AddBuff(BuffType<RuinedCrownBuff>(), 60 * 2);
+
+            }
+            if (Trumpet)
             {
                 SoundEngine.PlaySound(StarsAboveAudio.SFX_Trumpet, player.Center);
             }
@@ -213,6 +221,18 @@ namespace StarsAbove.Systems.Items
 
 
             base.OnConsumeItem(item, player);
+        }
+        public override void ModifyShootStats(Item item, Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
+        {
+            if(ChronalDecelerator)
+            {
+                velocity *= 2f;
+            }
+            if(MercenaryAuracite)
+            {
+                knockback = 0f;
+            }
+            base.ModifyShootStats(item, player, ref position, ref velocity, ref type, ref damage, ref knockback);
         }
         public override void UpdateInventory(Item item, Player player)
         {
@@ -312,6 +332,10 @@ namespace StarsAbove.Systems.Items
 
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {
+            if(ReprintedBlueprint && player.ShoppingZone_AnyBiome)
+            {
+                damage += (0.1f + damageModAdditive * damageModMultiplicative) * memoryGlobalMod;
+            }
             if (CapeFeather && player.velocity.Y != 0)
             {
                 damage += (0.1f + damageModAdditive * damageModMultiplicative) * memoryGlobalMod;
@@ -694,9 +718,23 @@ namespace StarsAbove.Systems.Items
             SetMemory(slot, 18, "Trumpet", ref Trumpet, item, player);
             SetMemory(slot, 19, "GuppyHead", ref GuppyHead, item, player);
             SetMemory(slot, 20, "Pawn", ref Pawn, item, player);
+            SetMemory(slot, 21, "ReprintedBlueprint", ref Pawn, item, player);
             SetMemory(slot, 22, "ResonanceGem", ref ResonanceGem, item, player);
+
+            SetMemory(slot, 26, "RuinedCrown", ref RuinedCrown, item, player);
+            SetMemory(slot, 27, "DesenderGemstone", ref DescenderGemstone, item, player);
+            SetMemory(slot, 28, "MonsterTooth", ref MonsterNail, item, player);
+            SetMemory(slot, 29, "MindflayerWorm", ref MindflayerWorm, item, player);
+            SetMemory(slot, 30, "MercenaryAuracite", ref MercenaryAuracite, item, player);
+
             SetMemory(slot, 31, "SigilOfHope", ref SigilOfHope, item, player);
+            SetMemory(slot, 32, "ChronalDeccelerator", ref ChronalDecelerator, item, player);
+
             SetMemory(slot, 33, "KnightsShovelhead", ref KnightsShovelhead, item, player);
+
+            SetMemory(slot, 34, "SimulacraShifter", ref SimulacraShifter, item, player);
+            SetMemory(slot, 35, "BlackLightbulb", ref BlackLightbulb, item, player);
+            SetMemory(slot, 36, "OnyxJackal", ref JackalMask, item, player);
 
             SetMemory(slot, 301, "RangedSigil", ref RangedSigil, item, player);
             SetMemory(slot, 302, "MagicSigil", ref MagicSigil, item, player);
@@ -938,7 +976,56 @@ namespace StarsAbove.Systems.Items
         {
             if (Main.LocalPlayer.active && !Main.LocalPlayer.dead && !Player.GetModPlayer<BossPlayer>().QTEActive && StarsAbove.weaponMemoryKey.JustPressed)
             {
-                if(PearlescentOrb && !Player.HasBuff(BuffType<EnderpearlCooldown>()))
+                if (PearlescentOrb && !Player.HasBuff(BuffType<SimulacraShifterCooldown>()))
+                {
+                    Player.AddBuff(BuffType<Invincibility>(), 6 * 60);
+                    Player.AddBuff(BuffType<SimulacraShifterCooldown>(), (int)((60 * 120) * 1f - cooldownMod));
+                    float dustAmount = 10f;
+                    float randomConstant = MathHelper.ToRadians(Main.rand.Next(0, 360));
+                    for (int i = 0; i < dustAmount; i++)
+                    {
+                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+                        spinningpoint5 = spinningpoint5.RotatedBy(Player.velocity.ToRotation() + randomConstant);
+                        int dust = Dust.NewDust(Player.Center, 0, 0, DustID.GemTopaz);
+                        Main.dust[dust].scale = 1.8f;
+                        Main.dust[dust].noGravity = true;
+                        Main.dust[dust].position = Player.Center + spinningpoint5;
+                        Main.dust[dust].velocity = Player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 6f;
+                    }
+                }
+                if (MindflayerWorm && !Player.HasBuff(BuffType<MindflayerWormCooldown>()))
+                {
+                    Player.AddBuff(BuffType<MindflayerWormCooldown>(), (int)((60 * 40) * 1f - cooldownMod));
+                    float dustAmount = 70f;
+                    float randomConstant = MathHelper.ToRadians(Main.rand.Next(0, 360));
+                    for (int i = 0; i < Main.maxNPCs; i++)
+                    {
+                        NPC npc = Main.npc[i];
+                        
+                        if (npc.active && !npc.boss && npc.Distance(Player.Center) < 500)
+                        {
+                            if (Main.rand.NextFloat() > 0.2f)
+                            {
+                                npc.AddBuff(BuffType<Stun>(), 180);
+
+                            }
+
+                        }
+                    }
+                    for (int i = 0; i < dustAmount; i++)
+                    {
+                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+                        spinningpoint5 = spinningpoint5.RotatedBy(Player.velocity.ToRotation() + randomConstant);
+                        int dust = Dust.NewDust(Player.Center, 0, 0, DustID.GemAmethyst);
+                        Main.dust[dust].scale = 1.8f;
+                        Main.dust[dust].noGravity = true;
+                        Main.dust[dust].position = Player.Center + spinningpoint5;
+                        Main.dust[dust].velocity = Player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 36f;
+                    }
+                }
+                if (PearlescentOrb && !Player.HasBuff(BuffType<EnderpearlCooldown>()))
                 {
                     //Teleport
                     Vector2 vector32 = new Vector2(Main.MouseWorld.X, Main.MouseWorld.Y);
@@ -952,21 +1039,38 @@ namespace StarsAbove.Systems.Items
                     //Defense
                     Player.AddBuff(BuffType<NetheriteIngotBuff>(), 120);
                     Player.AddBuff(BuffType<NetheriteIngotBuffCooldown>(), (int)((60 * 18) * 1f - cooldownMod));
-
+                    float dustAmount = 10f;
+                    float randomConstant = MathHelper.ToRadians(Main.rand.Next(0, 360));
+                    for (int i = 0; i < dustAmount; i++)
+                    {
+                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+                        spinningpoint5 = spinningpoint5.RotatedBy(Player.velocity.ToRotation() + randomConstant);
+                        int dust = Dust.NewDust(Player.Center, 0, 0, DustID.GemTopaz);
+                        Main.dust[dust].scale = 1.8f;
+                        Main.dust[dust].noGravity = true;
+                        Main.dust[dust].position = Player.Center + spinningpoint5;
+                        Main.dust[dust].velocity = Player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 6f;
+                    }
                 }
                 if (YoumuHilt && !Player.HasBuff(BuffType<PhantomHiltCooldown>()))
                 {
                     //Defense
                     Player.AddBuff(BuffType<PhantomHiltBuff>(), 240);
                     Player.AddBuff(BuffType<PhantomHiltCooldown>(), (int)((60 * 30) * 1f - cooldownMod));
-
-                }
-                if (YoumuHilt && !Player.HasBuff(BuffType<PhantomHiltCooldown>()))
-                {
-                    //Defense
-                    Player.AddBuff(BuffType<PhantomHiltBuff>(), 240);
-                    Player.AddBuff(BuffType<PhantomHiltCooldown>(), (int)((60 * 30) * 1f - cooldownMod));
-
+                    float dustAmount = 10f;
+                    float randomConstant = MathHelper.ToRadians(Main.rand.Next(0, 360));
+                    for (int i = 0; i < dustAmount; i++)
+                    {
+                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+                        spinningpoint5 = spinningpoint5.RotatedBy(Player.velocity.ToRotation() + randomConstant);
+                        int dust = Dust.NewDust(Player.Center, 0, 0, DustID.GemTopaz);
+                        Main.dust[dust].scale = 1.8f;
+                        Main.dust[dust].noGravity = true;
+                        Main.dust[dust].position = Player.Center + spinningpoint5;
+                        Main.dust[dust].velocity = Player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 6f;
+                    }
                 }
                 if (GuppyHead && !Player.HasBuff(BuffType<GuppyHeadCooldown>()))
                 {
@@ -976,7 +1080,19 @@ namespace StarsAbove.Systems.Items
                     }
 
                     Player.AddBuff(BuffType<GuppyHeadCooldown>(), (int)((60 * 20) * 1f - cooldownMod));
-
+                    float dustAmount = 10f;
+                    float randomConstant = MathHelper.ToRadians(Main.rand.Next(0, 360));
+                    for (int i = 0; i < dustAmount; i++)
+                    {
+                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+                        spinningpoint5 = spinningpoint5.RotatedBy(Player.velocity.ToRotation() + randomConstant);
+                        int dust = Dust.NewDust(Player.Center, 0, 0, DustID.GemTopaz);
+                        Main.dust[dust].scale = 1.8f;
+                        Main.dust[dust].noGravity = true;
+                        Main.dust[dust].position = Player.Center + spinningpoint5;
+                        Main.dust[dust].velocity = Player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 6f;
+                    }
                 }
 
             }
@@ -996,6 +1112,10 @@ namespace StarsAbove.Systems.Items
                 ragebladeStacks = 0;
 
             }
+            if(MercenaryAuracite)
+            {
+                Player.GetCritChance(DamageClass.Generic) += MercenaryCritChance;
+            }
             base.PreUpdate();
         }
         public override void PostUpdateRunSpeeds()
@@ -1008,17 +1128,39 @@ namespace StarsAbove.Systems.Items
             }
             
         }
+        public float MercenaryCritChance = 0f;
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (!target.active)
             {
                 OnKillNPC(target);
             }
-            if(hit.Crit && GuppyHead)
+            if(JackalMask)
+            {
+                Player.MinionAttackTargetNPC = target.whoAmI;
+                
+            }
+            if (Player.HasBuff(BuffType<RuinedCrownBuff>()))
+            {
+                Player.Heal((int)(damageDone * 0.2f));
+                Player.ClearBuff(BuffType<RuinedCrownBuff>());
+            }
+            if (hit.Crit && GuppyHead)
             {
                 if(Player.HasBuff(BuffType<GuppyHeadCooldown>()))
                 {
                     Player.buffTime[Player.FindBuffIndex(BuffType<GuppyHeadCooldown>())] -= 60;
+                }
+            }
+            if(MercenaryAuracite)
+            {
+                if(hit.Crit)
+                {
+                    MercenaryCritChance = 0f;
+                }
+                else
+                {
+                    MercenaryCritChance += 0.5f;
                 }
             }
             if(Rageblade)
@@ -1076,7 +1218,17 @@ namespace StarsAbove.Systems.Items
             }
             base.OnHitNPC(target, hit, damageDone);
         }
-
+        public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if(JackalMask)
+            {
+                if(!proj.minion)
+                {
+                    target.AddBuff(BuffType<OnyxJackalTagDamage>(), 240);
+                }
+            }
+            base.OnHitNPCWithProj(proj, target, hit, damageDone);
+        }
         public void OnKillNPC(NPC target)
         {
             if(MatterManipulator)
@@ -1088,6 +1240,18 @@ namespace StarsAbove.Systems.Items
                 Player.AddBuff(BuffID.Endurance, 60 * 12);
                 Player.AddBuff(BuffID.Ironskin, 60 * 12);
             }
+            if(MonsterNail)
+            {
+                if(Main.rand.NextBool(4))
+                {
+                    int k = Item.NewItem(Player.GetSource_OnHit(target), (int)target.position.X, (int)target.position.Y, target.width, target.height, ItemID.Heart, 1, false);
+                    if (Main.netMode == 1)
+                    {
+                        NetMessage.SendData(21, -1, -1, null, k, 1f);
+                    }
+                }
+                
+            }
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
@@ -1098,6 +1262,17 @@ namespace StarsAbove.Systems.Items
             if(Player.HasBuff(BuffType<AccursedEdge>()))
             {
                 modifiers.FinalDamage += 0.4f;
+            }
+            if(MercenaryAuracite)
+            {
+                if(target.aiStyle == NPCAIStyleID.Fighter)
+                {
+                    modifiers.FinalDamage += 0.3f;
+                }
+            }
+            if(Player.HasBuff(BuffType<RuinedCrownBuff>()))
+            {
+                modifiers.FinalDamage += 0.15f;
             }
             base.ModifyHitNPC(target, ref modifiers);
         }

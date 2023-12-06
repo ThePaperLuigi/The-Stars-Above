@@ -3428,14 +3428,14 @@ Mods: {
 			Credits:
 				'''
 				Credits
-				[c/FFF6CD:Programming/Art/Testing: PaperLuigi]
+				[c/FFF6CD:Programming/Art/Testing/Etc: PaperLuigi]
 				[c/F19559:- Original Soundtrack Composers -]
 				[c/FFF6CD:Sunset, Stardust: PaperLuigi]
 				[c/FFF6CD:Legends Yet Unspun: ShadyCicada]
 				[c/FFF6CD:Chart the Cosmos / Even Stars Must Fall: EchoLane]
 				[c/F19559:- Special Thanks -]
 				[c/DADADA:All Patreon supporters!]
-				[c/DADADA:External Music: Studio EIM, HoloPro, Masayoshi Soken, REVO, Daiki Ishikawa, Nobuo Uematsu]
+				[c/DADADA:External Music: Studio EIM, HoloPro, Masayoshi Soken, REVO, Daiki Ishikawa, Nobuo Uematsu, Michael Salvatori]
 				[c/DADADA:Subworld Contest Builders: Tatriskel, hakomari, Izanagi The wanderer of stars, UnkownSToast, Hockerzocker]
 				[c/DADADA:Discord Moderators: the_alu, ifune, loligeddon, polluxe, not02]
 				[c/DADADA:ES Translators: haturok, Tofu and bluefire]
@@ -3570,6 +3570,8 @@ Mods: {
 			PenthesileaBoss.DisplayName: Penthesilea, the Witch of Ink
 			ArbitrationBoss.DisplayName: Arbitration
 			StarfarerBoss.DisplayName: Asphodene and Eridani
+			ParacausalOgre.DisplayName: Paracausal Ogre
+			ParacausalEntity.DisplayName: Paracausal Entity
 		}
 
 		Tiles: {
@@ -8308,7 +8310,13 @@ Mods: {
 
 			ReprintedBlueprint: {
 				DisplayName: Reprinted Blueprint
-				Tooltip: ""
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Deal 10% more damage in a town
+					'''
+				TooltipAttached: Deal 10% more damage in a town
 			}
 
 			SigilOfHope: {
@@ -9081,9 +9089,9 @@ Mods: {
 				Tooltip:
 					'''
 					[c/D294FF:Weapon Memory]
-					Gain 0.5% critical strike chance every time an enemy is struck with a non-critical strike (Consumed upon landing a critical strike)
+					Gain 0.5% critical strike chance every time an enemy is struck with a non-critical strike (Reset upon landing a critical strike)
 					'''
-				TooltipAttached: Gain 0.5% critical strike chance every time an enemy is struck with a non-critical strike (Consumed upon landing a critical strike)
+				TooltipAttached: Gain 0.5% critical strike chance every time an enemy is struck with a non-critical strike (Reset upon landing a critical strike)
 			}
 
 			MercenaryAuracite: {
@@ -9092,10 +9100,10 @@ Mods: {
 					'''
 					[c/D294FF:Weapon Memory]
 					When Imprinted into a weapon, gain the following effects:
-					Deal 30% increased damage against Fighter enemies
+					Deal 30% increased damage against Fighter enemies and negate weapon knockback
 					'The Amethyst's power source'
 					'''
-				TooltipAttached: Deal 30% increased damage against Fighter enemies
+				TooltipAttached: Deal 30% increased damage against Fighter enemies and negate weapon knockback
 			}
 
 			MindflayerWorm: {
@@ -9105,13 +9113,13 @@ Mods: {
 					[c/D294FF:Weapon Memory]
 					When Imprinted into a weapon, gain the following effects:
 					Press the Weapon Relic Key to stun all nearby foes for 3 seconds (40 second cooldown)
-					Enemies have a 30% chance to resist the stun and bosses are not affected
+					Enemies have a 20% chance to resist the stun and bosses are not affected
 					'Authority'
 					'''
 				TooltipAttached:
 					'''
 					Press the Weapon Relic Key to stun all nearby foes for 3 seconds (40 second cooldown)
-					Enemies have a 30% chance to resist the stun and bosses are not affected
+					Enemies have a 20% chance to resist the stun and bosses are not affected
 					'''
 			}
 
@@ -9121,9 +9129,9 @@ Mods: {
 					'''
 					[c/D294FF:Weapon Memory]
 					When Imprinted into a weapon, gain the following effects:
-					Defeating foes has a 40% chance of dropping a healing orb which heals 5% current HP
+					Defeating foes has a small chance of dropping an extra heart
 					'''
-				TooltipAttached: Defeating foes has a 40% chance of dropping a healing orb which heals 5% current HP
+				TooltipAttached: Defeating foes has a small chance of dropping an extra heart
 			}
 
 			OnyxJackal: {
@@ -9133,12 +9141,12 @@ Mods: {
 					[c/D294FF:Weapon Memory]
 					When Imprinted into a weapon, gain the following effects:
 					Minions now target foes struck by this weapon
-					Gain 5 Summon Tag Damage 
+					Non-minion attacks gain 5 Summon Tag Damage 
 					'''
 				TooltipAttached:
 					'''
 					Minions now target foes struck by this weapon
-					Gain 5 Summon Tag Damage 
+					Non-minion attacks gain 5 Summon Tag Damage 
 					'''
 			}
 
@@ -9147,14 +9155,14 @@ Mods: {
 				Tooltip:
 					'''
 					[c/D294FF:Weapon Memory]
-					If this weapon has a right-click ability, it now grants the buff Ruined King's Blade after a short delay
-					Ruined King's Blade grants 15% increased damage and 3% lifesteal against the next foe hit (10 second cooldown)
+					If this weapon has a right-click ability, it now grants the buff [c/6ECBA5:Ruined King's Blade] for 2 seconds on use (10 second cooldown)
+					[c/6ECBA5:Ruined King's Blade] grants 15% increased damage and heal 20% of damage dealt on the next hit
 					'You matter so little!'
 					'''
 				TooltipAttached:
 					'''
-					If this weapon has a right-click ability, it now grants the buff Ruined King's Blade after a short delay
-					Ruined King's Blade grants 15% increased damage and 3% lifesteal against the next foe hit (10 second cooldown)
+					If this weapon has a right-click ability, it now grants the buff [c/6ECBA5:Ruined King's Blade] for 2 seconds on use (10 second cooldown)
+					[c/6ECBA5:Ruined King's Blade] grants 15% increased damage and heal 20% of damage dealt on the next hit
 					'''
 			}
 
@@ -9164,9 +9172,9 @@ Mods: {
 					'''
 					[c/D294FF:Weapon Memory]
 					When Imprinted into a weapon, gain the following effects:
-					Press the Weapon Relic Key to become Invincible for 6 seconds, but you can not damage foes for the same duration (2 minute cooldown)
+					Press the Weapon Relic Key to become Invincible for 6 seconds, but you can no longer use this weapon while Invincible (2 minute cooldown)
 					'''
-				TooltipAttached: Press the Weapon Relic Key to become Invincible for 6 seconds, but you can not damage foes for the same duration (2 minute cooldown)
+				TooltipAttached: Press the Weapon Relic Key to become Invincible for 6 seconds, but you can no longer use this weapon while Invincible (2 minute cooldown)
 			}
 		}
 
@@ -12613,6 +12621,31 @@ Mods: {
 				DisplayName: Armsthrift Cooldown
 				Description: Mods.StarsAbove.Buffs.ArmsthriftCooldown.Description
 			}
+
+			MindflayerWormCooldown: {
+				DisplayName: Mindflayer Worm Cooldown
+				Description: Mods.StarsAbove.Buffs.MindflayerWormCooldown.Description
+			}
+
+			RuinedCrownBuff: {
+				DisplayName: Ruined Crown Buff
+				Description: Mods.StarsAbove.Buffs.RuinedCrownBuff.Description
+			}
+
+			RuinedCrownCooldown: {
+				DisplayName: Ruined Crown Cooldown
+				Description: Mods.StarsAbove.Buffs.RuinedCrownCooldown.Description
+			}
+
+			SimulacraShifterCooldown: {
+				DisplayName: Simulacra Shifter Cooldown
+				Description: Mods.StarsAbove.Buffs.SimulacraShifterCooldown.Description
+			}
+
+			OnyxJackalTagDamage: {
+				DisplayName: Onyx Jackal Tag Damage
+				Description: Mods.StarsAbove.Buffs.OnyxJackalTagDamage.Description
+			}
 		}
 
 		Bestiary: {
@@ -12710,6 +12743,11 @@ Mods: {
 			LyraBiome: {
 				DisplayName: Lyra
 				TownNPCDialogueName: the Lyra Biome
+			}
+
+			DreamingCityBiome: {
+				DisplayName: Dreaming City Biome
+				TownNPCDialogueName: the Dreaming City Biome
 			}
 		}
 
