@@ -684,11 +684,10 @@ Mods: {
 					// 95: This Magic Essence is pretty unique: you can draw directly onto the world to cause different effects to occur.
 					// 96: Looks like a yo-yo Essence is here- a Summon-type one as well. Seems to boast some helpful movement tools as well!
 					// 97: This Summon-type weapon isn't like anything you've seen before, I think. Best to just give it a go- how good's your swordsmanship?
-					// 98: With this Essence, you'll have a Magic-type weapon with some crazy stopping power! Let's give this one a shot!
+					// 98: With this Essence, you'll have a Magic-type weapon with some crazy stopping power! Let's give this one a 'shot'!
 					// 99: This Summon weapon is an elegant blade- you can control it manually, or it will slice foes all on its own. Why can't everything do that?
 					// 100: This Melee blade has one goal in mind... You could probably guess from its name. It'll make a powerful weapon, that's for sure.
-					// 101: This Ranged weapon has a lot of tools to deal with swarming crowds. I'm not complaining!
-					// 102: Look here- this Summon essence's weapon can create allies of pure water to heal or aid you in combat. How brilliant!
+					// 101: This Ranged weapon can empower some throwing weapons... Or, you could just blast foes away with bullets. You know, I like both of these options!
 				}
 
 				Eridani: {
@@ -790,12 +789,11 @@ Mods: {
 					// 96: This Ranged-type rocket launcher has a unique melee counterpart, but it requires you to- well, I hope you have strong legs.
 					// 97: Take into consideration this Magic essence: in short, it turns the world into a canvas you can interact and attack with.
 					// 98: Here is a new Essence for your perusal- it'll deal Summon damage. It's rather close-ranged but boasts movement capabilities to help close the gap.
-					// 99: You'd think this Summon-type essence wouldn't be a sword, but here it is. It has a very special power hidden within... Something you probably don't expect.
+					// 99: You'd think this Summon-type essence wouldn't be a sword, but here it is. It has a very special power hidden within... Just don't unleash it indoors.
 					// 100: I hope you have steady aim- this Magic weapon has powerful piercing strength, as long as you keep your target in your sights.
 					// 101: This Summon essence will create a mystical blade to aid you in combat- you can also control it magically, if you need better precision.
 					// 102: A Melee essence, huh? It looks like it has some powerful abilities. Just be glad it listens to you.
-					// 103: This Ranged weapon has the option for different types of accessory attacks for different scenarios. Try giving it a shot.
-					// 104: It seems this Summon essence creates powerful allies of water to give you the upper hand in combat.
+					// 103: It seems this Summon essence creates powerful allies of water to give you the upper hand in combat. How brilliant!
 				}
 
 				Perseus: {
@@ -1199,6 +1197,18 @@ Mods: {
 						2: Era un poco terrorífico, pero por suerte su preza anterior estaba condenada al suelo. parece que tenemos la ventaja del terreno aquí.
 					}
 				}
+
+				Thespian: {
+					Asphodene: {
+						// 1: That was quite the battle! Remind me to never touch strange potions ever again.
+						// 2: Actually, this one wasn't even my fault. Remind me to remind you to never touch strange potions again.
+					}
+
+					Eridani: {
+						// 1: Looks like you came out of that fight with Thespian in one piece. What a curious phenomenon.
+						// 2: An alchemist reanimated by a clown that only appears at night time. Hey, am I missing a punchline here?
+					}
+				}
 			}
 
 			CalamityBossDialogue: {
@@ -1388,14 +1398,14 @@ Mods: {
 
 			BossItemDialogue: {
 				VagrantAsphodene: {
-					// 1: Hang on- I have something you might be interested in.
+					// 1: Hang on- I have something you might be interested in. I can't recall how I came across it, but...
 					// 2: It feels like I should know what it is, but I just can't- kind of like it's stopping me from doing so.
-					// 3: At least that tells me one thing- it's important! I'd prefer you examine it as soon as you are able.
+					// 3: At least that tells me one thing- it's important! I'd prefer you examine it as soon as you are able. No pressure. Okay, a little pressure.
 				}
 
 				VagrantEridani: {
 					// 1: Hold on a moment. I neglected to bring this up before, but I have something for you... Perhaps you can help me determine its origin.
-					// 2: It looks so familiar, and yet something's stopping me from placing its identity- how vexing.
+					// 2: It looks so familiar, and yet something's stopping me from placing its identity- how vexing. I can't even recall when I acquired it.
 					// 3: They say encountering obstacles means you're heading in the right direction. Let's take a closer look as soon as possible.
 				}
 
@@ -1937,7 +1947,7 @@ Mods: {
 					// 199: A demon approaches! I guess it makes sense- we are in the Underworld, after all! Let's give them a warm welcome.
 					// 200: I don't know what you just used, but a terrifying skull monster is on its way. Guess I should've seen this coming.
 					// 201: A huge crystalline foe approaches- needless to say, prepare for a fight.
-					// 202: Ack; looks like that potion did summon something. Don't let your guard down.
+					// 202: Ack; looks like that potion did do something. Don't let your guard down.
 					// 203: Get ready, because I won't hold back!
 				}
 
@@ -2528,6 +2538,40 @@ Mods: {
 						}
 					}
 
+					23: {
+						Dialogue: {
+							// 0: Hey, {0}. Remember how you fought our brother? Yes, we have a bit of a hypothesis we'd like to try out.
+							// 1: Wait, wait wait- this was an Eri-original idea. While I concede that I am curious, well...
+							// 2: It'll be fine. Anyway, we're going to do some friendly sparring to try out a hypothesis of mine. On one condition- We need to borrow a bit of your power.
+							// 3: Isn't that just so funny...! What's this called, dramatic irony? Haha... but it's true. We'd totally lose instantly in a fair match.
+							// 4: Just use this item when you're ready. Find a nice open space, too.
+						}
+
+						Choices: {
+							// 1: X
+							// 2: X
+						}
+					}
+
+					24: {
+						Dialogue: {
+							// 0: Well, I have some answers and more questions... to be honest, they've been in my mind for quite some time. During our fight, I could tell that we don't command the same powers as our brother.
+							// 1: Now that you mention it, we've really been kept in the dark. I can't quite picture our time before Perseus guided us, like it's a memory that's been sealed away.
+							// 2: You know, you'd think with the Essences and all, we'd have a better track record!
+							// 3: ...
+							// 4: Hey, wouldn't it be crazy if-
+							// 5: No, that doesn't make sense. We can use the Array and Novas, right?
+							// 6: Maybe there's something else we're overlooking. Maybe we're cursed! I'd ask Perseus directly, but you know how he is. Jerk.
+							// 7: Anyways, thanks again for our little sparring match. If you want another go, just give us the signal.
+							// 8: Right...
+						}
+
+						Choices: {
+							// 1: X
+							// 2: X
+						}
+					}
+
 					100: {
 						Dialogue: {
 							// 0: Best be gettin' a clear picture of the Ardor, if you'd be interested in fixin' it. How 'bout a history lesson, eh?
@@ -2784,6 +2828,79 @@ Mods: {
 						Dialogue: {
 							// 0: Torches are quite the archaic implement, but there exists one that burns through an actual bone.
 							// 1: Could you hopefully locate one of these artifacts for me? Apologies in advance for the trouble.
+						}
+
+						Choices: {
+							// 1: X
+							// 2: X
+						}
+					}
+
+					300: {
+						Dialogue: {
+							// 0: When I awoke, I felt numb.
+							// 1: Aimless.
+							// 2: My memories were addled, incomplete, and terrifying. I succeeded, but doing what?
+							// 3: Most of all, I felt warm. For some reason, this banal sensation gave me immeasurable joy, but... it was dreadfully wrong.
+							// 4: I did not know it yet, but this was the moment that doomed this galaxy forever.
+						}
+
+						Choices: {
+							// 1: X
+							// 2: X
+						}
+					}
+
+					301: {
+						Dialogue: {
+							// 0: When we first met, I knew he could see right through me. I am a sinner, after all.
+							// 1: His frozen world was the Ardor's doing, the stark white reminder of my failures.
+							// 2: There was nothing I could say. Amidst the ruin of his people, I could only extend my hand... If he cut me down then, it would have been a mercy. This was the moment I discovered that my greatest, most fervent wish failed.
+							// 3: Instead, he stayed his blade. I offered him the only thing I could- to watch over me as I conducted my penance. Now my most stalwart ally, and I erased everything he loved. What does that make me?
+							// 4: I often return to this place. The cold bites into my skin... it's what I deserve.
+						}
+
+						Choices: {
+							// 1: X
+							// 2: X
+						}
+					}
+
+					302: {
+						Dialogue: {
+							// 0: The despondent fervor when you know you've just done something terrible... it never leaves me.
+							// 1: I decided that the only way I could atone was to try again to make things right.
+							// 2: I knew that I spent my energy already. I knew that failure was the most likely outcome. I know now, still. I continue to work towards this goal... I can't bear to think of anything past it.
+							// 3: Some inhabitants of this newborn galaxy stand in my way. My Warrior strikes them down... I do not deserve such a gallant champion.
+							// 4: Even now, he shoulders the blame. Guilt does not begin to describe the anguish I feel. When will I get used to it? Will I ever?
+						}
+
+						Choices: {
+							// 1: X
+							// 2: X
+						}
+					}
+
+					303: {
+						// Dialogue.0: Melancholy. Regret. Anguish. You can make out these fervored emotions, but without knowledge of the other Mnemonic Traces, this story remains shrouded in mystery.
+
+						Choices: {
+							// 1: X
+							// 2: X
+						}
+					}
+
+					304: {
+						Dialogue: {
+							// 0: In a time before now, there existed a galaxy much like this one. In fact, is a perfect facsimile, or so was the naïve hope I shared.
+							// 1: Without warning, the Ardor swept through it. There was no struggle, because there was nothing to struggle against. The cold does not care. It does not hate, and it does not love. Eventually, the stillness was all that remained.
+							// 2: With the energy gained from my long, storied existence, I begun everything again. As if nothing happened, I spun again the web of the galaxy from nil, my one final act of providence. Warm and full of life.
+							// 3: However, I made one mistake... Haha. It hurts to think about it.
+							// 4: I spared myself of the cruel fate of annihilation. It may have been subconsciously, or an active decision of the primal self, but does it really matter anymore? My very concept of being let the Ardor return, a specter of my past, haunting me forever.
+							// 5: ...
+							// 6: Why do I continue to try and avert this disaster?
+							// 7: This desire- the desire to help others- was imprinted to my very concept upon entering this existence. What agency is my own, and what was hoisted upon me by others?
+							// 8: Like many other things, the answer is lost to the cold. Or is that what I tell myself?
 						}
 
 						Choices: {
@@ -8925,7 +9042,7 @@ Mods: {
 			}
 
 			ChronalDeccelerator: {
-				// DisplayName: Chronal Deccelerator
+				// DisplayName: Chronal Decelerator
 				/* Tooltip:
 					'''
 					[c/D294FF:Weapon Memory]
@@ -9967,6 +10084,7 @@ Mods: {
 			// EnergyStar.DisplayName: Energy Star
 			// FragmentationGrenade.DisplayName: Fragmentation Grenade
 			// ThermalFlare.DisplayName: Thermal Flare
+			// PenthesileaCast.DisplayName: Penthesilea Cast
 		}
 
 		Buffs: {

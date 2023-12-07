@@ -294,7 +294,7 @@ Mods: {
 					Threat: Threat Level: C-B
 					//Tier 2
 					Requirement: Tier II Stellaglyph required for transit.
-					Loot: Resources: ???
+					Loot: Resources: Unique Weapon Memory
 				}
 
 				QuestionMark: {
@@ -4387,6 +4387,7 @@ Mods: {
 			MnemonicTrace: {
 				Tooltip:
 					'''
+					Acquired from the Warrior of Light
 					A trace of the First Starfarer's journey
 					Use this item to gaze into the past- as long as you have gleaned the knowledge from the other Mnemonic Traces
 					'What will is truly my own?'
@@ -4397,6 +4398,7 @@ Mods: {
 			MnemonicTrace2: {
 				Tooltip:
 					'''
+					Acquired from Nalhaun, the Burnished King
 					A trace of the First Starbearer's rampage
 					Use this item to gaze into the past...
 					'If I could simply have one more chance.'
@@ -4407,6 +4409,7 @@ Mods: {
 			MnemonicTrace3: {
 				Tooltip:
 					'''
+					Acquired from Penthesilea, the Witch of Ink
 					A trace of the First Starbearer's rampage
 					Use this item to gaze into the past...
 					'I can see my faults. They are plentiful, and they never leave me.'
@@ -4417,6 +4420,7 @@ Mods: {
 			MnemonicTrace4: {
 				Tooltip:
 					'''
+					Acquired from Dioskouroi, the Twin Forces
 					A trace of the First Starbearer's rampage
 					Use this item to gaze into the past...
 					'When I rose again, it was the beginning of the end.'
@@ -9120,7 +9124,7 @@ Mods: {
 
 			ThespianBossBag: {
 				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
-				DisplayName: Treasure Bag (Nalhaun, the Burnished King)
+				DisplayName: Treasure Bag (Thespian, the Act of Alchemy)
 			}
 
 			ThespianBossRelicItem: {
@@ -9229,13 +9233,13 @@ Mods: {
 					'''
 					[c/D294FF:Weapon Memory]
 					When Imprinted into a weapon, gain the following effects:
-					Press the Weapon Relic Key to stun all nearby foes for 3 seconds (40 second cooldown)
+					Press the Weapon Memory Key to stun all nearby foes for 3 seconds (40 second cooldown)
 					Enemies have a 20% chance to resist the stun and bosses are not affected
 					'Authority'
 					'''
 				TooltipAttached:
 					'''
-					Press the Weapon Relic Key to stun all nearby foes for 3 seconds (40 second cooldown)
+					Press the Weapon Memory Key to stun all nearby foes for 3 seconds (40 second cooldown)
 					Enemies have a 20% chance to resist the stun and bosses are not affected
 					'''
 			}

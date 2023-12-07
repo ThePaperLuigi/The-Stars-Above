@@ -110,7 +110,7 @@ namespace StarsAbove.NPCs.Arbitration
 			NPC.height = 150;
 			NPC.scale = 1f;
 			NPC.npcSlots = 1f;
-			NPC.aiStyle = 0;
+			NPC.aiStyle = -1;
 			NPC.lavaImmune = true;
 			NPC.noGravity = true;
 			NPC.noTileCollide = false;
@@ -119,7 +119,7 @@ namespace StarsAbove.NPCs.Arbitration
 			//NPC.HitSound = SoundID.NPCHit54;
 			//NPC.DeathSound = SoundID.NPCDeath52;
 
-			Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TheExtremeIntro");
+			Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Boss/Arbitration/SecondWarning");
 
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
 			NPC.netAlways = true;
