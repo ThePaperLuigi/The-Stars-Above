@@ -23,6 +23,7 @@ using StarsAbove.NPCs;
 using StarsAbove.Buffs.Boss;
 using StarsAbove.NPCs.Vagrant;
 using Microsoft.CodeAnalysis;
+using StarsAbove.Items.Memories;
 
 namespace StarsAbove.Systems
 {
@@ -806,18 +807,65 @@ namespace StarsAbove.Systems
             if (npc.type == NPCID.QueenSlimeBoss)
             {
                 npcLoot.Add(ItemDropRule.Common(ItemType<RoyalSlimePrism>(), 4));
+                npcLoot.Add(ItemDropRule.Common(ItemType<YoumuHilt>(), 4));
+
             }
             if (npc.type == NPCID.Spazmatism || npc.type == NPCID.Retinazer || npc.type == NPCID.TheDestroyer || npc.type == NPCID.SkeletronPrime)
             {
                 npcLoot.Add(ItemDropRule.Common(ItemType<MechanicalPrism>(), 4));
             }
+            if (npc.type == NPCID.EyeofCthulhu)
+            {
+                npcLoot.Add(ItemDropRule.Common(ItemType<Pawn>(), 10));
+
+            }
+            if (npc.type == NPCID.Zombie)
+            {
+                npcLoot.Add(ItemDropRule.Common(ItemType<PrimeCut>(), 50));
+
+            }
+            if (npc.type == NPCID.WallofFlesh)
+            {
+                npcLoot.Add(ItemDropRule.Common(ItemType<RedSpiderLily>(), 4));
+                if(Main.expertMode)
+                {
+                    npcLoot.Add(ItemDropRule.Common(ItemType<MindflayerWorm>(), 4));
+
+                }
+            }
+            if (npc.type == NPCID.Harpy)
+            {
+                npcLoot.Add(ItemDropRule.Common(ItemType<CapedFeather>(), 50));
+
+            }
             if (npc.type == NPCID.Plantera)
             {
                 npcLoot.Add(ItemDropRule.Common(ItemType<OvergrownPrism>(), 4));
+                npcLoot.Add(ItemDropRule.Common(ItemType<DekuNut>(), 4));
+
+            }
+            if (npc.type == NPCID.MartianWalker)
+            {
+                npcLoot.Add(ItemDropRule.Common(ItemType<ChronalDeccelerator>(), 10));
+
+            }
+            if (npc.type == NPCID.Pumpking)
+            {
+                npcLoot.Add(ItemDropRule.Common(ItemType<GuppyHead>(), 10));
+
+            }
+            if (npc.type == NPCID.Deerclops)
+            {
+                npcLoot.Add(ItemDropRule.Common(ItemType<MonsterTooth>(), 10));
+
             }
             if (npc.type == NPCID.Golem)
             {
                 npcLoot.Add(ItemDropRule.Common(ItemType<LihzahrdPrism>(), 4));
+            }
+            if (npc.type == NPCID.SkeletronPrime)
+            {
+                npcLoot.Add(ItemDropRule.Common(ItemType<Rageblade>(), 4));
             }
             if (npc.type == NPCID.HallowBoss)
             {
@@ -832,7 +880,11 @@ namespace StarsAbove.Systems
                 npcLoot.Add(ItemDropRule.Common(ItemType<LuminitePrism>(), 4));
 
             }
+            if (npc.type == NPCID.MoonLordCore || npc.type == NPCID.CultistBoss)
+            {
+                npcLoot.Add(ItemDropRule.Common(ItemType<PearlescentOrb>(), 4));
 
+            }
 
 
             VagrantDrops VagrantDropCondition = new VagrantDrops();
