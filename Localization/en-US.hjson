@@ -2542,7 +2542,7 @@ Mods: {
 							0: Hey, {0}. Remember how you fought our brother? Yes, we have a bit of a hypothesis we'd like to try out.
 							1: Wait, wait wait- this was an Eri-original idea. While I concede that I am curious, well...
 							2: It'll be fine. Anyway, we're going to do some friendly sparring to try out a hypothesis of mine. On one condition- We need to borrow a bit of your power.
-							3: Isn't that just so funny...! What's this called, dramatic irony? Haha... but it's true. We'd lose instantly in a fair match.
+							3: Isn't that just so funny...! What's this called, dramatic irony? Haha... but it's true. We'd totally lose instantly in a fair match.
 							4: Just use this item when you're ready. Find a nice open space, too.
 						}
 
@@ -9191,7 +9191,7 @@ Mods: {
 			}
 
 			ChronalDeccelerator: {
-				DisplayName: Chronal Deccelerator
+				DisplayName: Chronal Decelerator
 				Tooltip:
 					'''
 					[c/D294FF:Weapon Memory]

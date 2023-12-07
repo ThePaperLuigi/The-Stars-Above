@@ -4051,6 +4051,12 @@ namespace StarsAbove.Systems
                     InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
 
                 }
+                if (starfarerPostBattleDialogue == 0 && DownedBossSystem.downedStarfarers)
+                {
+                    starfarerPostBattleDialogue = 1;
+                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+
+                }
                 if (nalhaunBossItemDialogue == 0 && GolemDialogue == 2 && vagrantDialogue == 2)
                 {
 

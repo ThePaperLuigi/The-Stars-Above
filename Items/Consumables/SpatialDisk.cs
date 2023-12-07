@@ -1062,7 +1062,33 @@ namespace StarsAbove.Items.Consumables
 				return true;
 
 			}
-			if (modPlayer.nalhaunDialogue == 1)
+            if (modPlayer.starfarerBossItemDialogue == 1)
+            {
+                modPlayer.dialogueScrollTimer = 0;
+                modPlayer.dialogueScrollNumber = 0;
+                modPlayer.sceneProgression = 0;
+                modPlayer.sceneID = 23;
+                modPlayer.VNDialogueActive = true;
+                modPlayer.starfarerBossItemDialogue = 2;
+
+
+				//Spawn item here.
+                return true;
+
+            }
+            if (modPlayer.starfarerPostBattleDialogue == 1)
+            {
+                modPlayer.dialogueScrollTimer = 0;
+                modPlayer.dialogueScrollNumber = 0;
+                modPlayer.sceneProgression = 0;
+                modPlayer.sceneID = 24;
+                modPlayer.VNDialogueActive = true;
+                modPlayer.starfarerPostBattleDialogue = 2;
+
+                return true;
+
+            }
+            if (modPlayer.nalhaunDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 70;
 				modPlayer.nalhaunDialogue = 2;
