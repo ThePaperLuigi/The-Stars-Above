@@ -564,7 +564,6 @@ namespace StarsAbove.NPCs.Thespian
 			LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
 			LeadingConditionRule ExpertRule = new LeadingConditionRule(new Conditions.IsExpert());
             notExpertRule.OnSuccess(npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<NetheriteBar>(), 4, 1, 1)));
-            notExpertRule.OnSuccess(npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ElectricGuitarPick>(), 4, 1, 1)));
             notExpertRule.OnSuccess(npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BottledChaos>(), 4, 1, 1)));
             StellarSpoils.SetupBossStellarSpoils(npcLoot);
 		}
