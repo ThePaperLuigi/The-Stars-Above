@@ -14,8 +14,24 @@ namespace StarsAbove.SceneEffects.SubworldSceneEffects
 
         public override bool IsSceneEffectActive(Player player)
         {
-
-            return true;
+            if (SubworldSystem.IsActive<CygnusAsteroids>()
+                || SubworldSystem.IsActive<MiningStationAries>()
+                || SubworldSystem.IsActive<BleachedPlanet>()
+                || SubworldSystem.IsActive<Pyxis>()
+                || SubworldSystem.IsActive<DreamingCity>()
+                || SubworldSystem.IsActive<Celestia>()
+                || SubworldSystem.IsActive<FallenTheranhad>()
+                || SubworldSystem.IsActive<FaintArchives>()
+                || SubworldSystem.IsActive<UltraPlant>()
+                || SubworldSystem.IsActive<Katabasis>()
+                )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         public override void SpecialVisuals(Player player, bool isActive)
         {
