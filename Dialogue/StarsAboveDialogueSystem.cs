@@ -3896,6 +3896,65 @@ namespace StarsAbove.Dialogue
 
                 }
             }//Vagrant
+            //Thespian
+            if (chosenDialogue == 78)
+            {
+                if (chosenStarfarer == 1) // Asphodene
+                {
+                    if (dialoguePrep == true)
+                    {
+                        dialogueLeft = 2;
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 2)
+                    {
+
+
+
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Thespian.Asphodene.1", Player.name);
+
+
+
+                    }
+                    if (dialogueLeft == 1)
+                    {
+
+
+
+                        expression = 1;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Thespian.Asphodene.2", Player.name);
+
+
+
+                    }
+
+                }
+                if (chosenStarfarer == 2)  //placeholder
+                {
+                    if (dialoguePrep == true)
+                    {
+                        dialogueLeft = 2;
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 2)
+                    {
+
+                        expression = 1;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Thespian.Eridani.1", Player.name);
+
+                    }
+                    if (dialogueLeft == 1)
+                    {
+
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Thespian.Eridani.2", Player.name);
+
+                    }
+
+
+                }
+            }
 
 
             //Calamity boss dialogue: (Reminder: Calamity boss dialogue starts past 200) If Calamity is not detected, stop at 23. Otherwise...
@@ -8644,6 +8703,7 @@ namespace StarsAbove.Dialogue
 
 
             }//Dreamer's Inkwell
+            //Trickspin Two-Step
             if (chosenDialogue == 175)
             {
                 if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
@@ -8690,7 +8750,248 @@ namespace StarsAbove.Dialogue
                 }
 
 
-            }//Trickspin Two-Step
+            }
+            //Dragalia
+            if (chosenDialogue == 176)
+            {
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheDragon").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 4;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.97", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+                if (chosenStarfarer == 2)  //placeholder
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheDragon").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.99", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+
+
+            }
+            //Gundbit
+            if (chosenDialogue == 177)
+            {
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfFirepower").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.98", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+                if (chosenStarfarer == 2)  //placeholder
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfFirepower").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.100", Player.name);
+
+
+                        //	" ";
+                    }
+                }
+            }
+            //Wavedancer
+            if (chosenDialogue == 178)
+            {
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDancingSeas").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 4;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.99", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+                if (chosenStarfarer == 2)  //placeholder
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDancingSeas").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.101", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+
+
+            }
+            //Clarent
+            if (chosenDialogue == 179)
+            {
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfKingslaying").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 4;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.100", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+                if (chosenStarfarer == 2)  //placeholder
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfKingslaying").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.102", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+
+
+            }
+            //Thespian Weapons (Soliloquy, Havoc)
+            if (chosenDialogue == 180)
+            {
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfEnergy").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.101", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+                if (chosenStarfarer == 2)  //placeholder
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfHydro").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.103", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+
+
+            }
+            
+            
+            
+            
+            
             #endregion
             //Boss item dialogues.
             if (chosenDialogue == 301) //Nalhaun item

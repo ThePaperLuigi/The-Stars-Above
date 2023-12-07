@@ -356,6 +356,8 @@ namespace StarsAbove.Systems
         public int penthDialogue = 0;
         public int arbiterDialogue = 0;
         public int tsukiyomiDialogue = 0;
+        public int thespianDialogue = 0;
+        public int starfarerPostBattleDialogue = 0;
 
         public int vagrantBossItemDialogue = 0;
         public int dioskouroiBossItemDialogue = 0;
@@ -363,6 +365,7 @@ namespace StarsAbove.Systems
         public int penthBossItemDialogue = 0;
         public int arbiterBossItemDialogue = 0;
         public int warriorBossItemDialogue = 0;
+        public int starfarerBossItemDialogue = 0;
 
         public int allModdedBosses = 0;
 
@@ -404,7 +407,10 @@ namespace StarsAbove.Systems
         public int yojimboIntroDialogue;
         public int garridineIntroDialogue;
 
-
+        public int MnemonicDialogue1;
+        public int MnemonicDialogue2;
+        public int MnemonicDialogue3;
+        public int MnemonicDialogue4;
 
         //Weapon lines
         public int WeaponDialogueTimer = Main.rand.Next(3600, 7200);
@@ -489,7 +495,12 @@ namespace StarsAbove.Systems
         public int SoldierWeaponDialogue = 0;
         public int TrickspinWeaponDialogue = 0;
 
-
+        //v2.0
+        public int DragaliaWeaponDialogue = 0;
+        public int GundbitWeaponDialogue = 0;
+        public int WavedancerWeaponDialogue = 0;
+        public int ClarentWeaponDialogue = 0;
+        public int ThespianWeaponDialogue = 0;
 
         //Subworld dialogues
         public int observatoryDialogue = 0;
@@ -1038,6 +1049,8 @@ namespace StarsAbove.Systems
             tag["penthDialogue"] = penthDialogue;
             tag["arbiterDialogue"] = arbiterDialogue;
             tag["tsukiyomiDialogue"] = tsukiyomiDialogue;
+            tag["thespianDialogue"] = thespianDialogue;
+            tag["starfarerPostBattleDialogue"] = starfarerPostBattleDialogue;
 
             tag["vagrantitem"] = vagrantBossItemDialogue;
             tag["dioskouroiitem"] = dioskouroiBossItemDialogue;
@@ -1045,6 +1058,7 @@ namespace StarsAbove.Systems
             tag["penthitem"] = penthBossItemDialogue;
             tag["arbiteritem"] = arbiterBossItemDialogue;
             tag["warrioritem"] = warriorBossItemDialogue;
+            tag["starfareritem"] = starfarerBossItemDialogue;
 
             tag["allModdedBosses"] = allModdedBosses;
             tag["AllVanillaBossesDefeatedDialogue"] = AllVanillaBossesDefeatedDialogue;
@@ -1072,6 +1086,10 @@ namespace StarsAbove.Systems
             tag["yojimboIntroDialogue"] = yojimboIntroDialogue;
             tag["garridineIntroDialogue"] = garridineIntroDialogue;
 
+            tag["MnemonicDialogue1"] = MnemonicDialogue1;
+            tag["MnemonicDialogue2"] = MnemonicDialogue2;
+            tag["MnemonicDialogue3"] = MnemonicDialogue3;
+            tag["MnemonicDialogue4"] = MnemonicDialogue4;
 
 
             tag["EyeBossWeaponDialogue"] = EyeBossWeaponDialogue;
@@ -1153,6 +1171,12 @@ namespace StarsAbove.Systems
             tag["DreamerWeaponDialogue"] = DreamerWeaponDialogue;
             tag["SoldierWeaponDialogue"] = SoldierWeaponDialogue;
             tag["TrickspinWeaponDialogue"] = TrickspinWeaponDialogue;
+
+            tag["DragaliaWeaponDialogue"] = DragaliaWeaponDialogue;
+            tag["GundbitWeaponDialogue"] = GundbitWeaponDialogue;
+            tag["WavedancerWeaponDialogue"] = WavedancerWeaponDialogue;
+            tag["ClarentWeaponDialogue"] = ClarentWeaponDialogue;
+            tag["ThespianWeaponDialogue"] = ThespianWeaponDialogue;
 
 
             tag["observatoryDialogue"] = observatoryDialogue;
@@ -1358,6 +1382,8 @@ namespace StarsAbove.Systems
             penthDialogue = tag.GetInt("penthDialogue");
             arbiterDialogue = tag.GetInt("arbiterDialogue");
             tsukiyomiDialogue = tag.GetInt("tsukiyomiDialogue");
+            thespianDialogue = tag.GetInt("thespianDialogue");
+            starfarerPostBattleDialogue = tag.GetInt("starfarerPostBattleDialogue");
 
             vagrantBossItemDialogue = tag.GetInt("vagrantitem");
             dioskouroiBossItemDialogue = tag.GetInt("dioskouroiitem");
@@ -1365,6 +1391,7 @@ namespace StarsAbove.Systems
             penthBossItemDialogue = tag.GetInt("penthitem");
             arbiterBossItemDialogue = tag.GetInt("arbiteritem");
             warriorBossItemDialogue = tag.GetInt("warrioritem");
+            starfarerBossItemDialogue = tag.GetInt("starfareritem");
 
 
             allModdedBosses = tag.GetInt("allModdedBosses");
@@ -1391,6 +1418,11 @@ namespace StarsAbove.Systems
             observatoryIntroDialogue = tag.GetInt("observatoryIntroDialogue");
             yojimboIntroDialogue = tag.GetInt("yojimboIntroDialogue");
             garridineIntroDialogue = tag.GetInt("garridineIntroDialogue");
+
+            MnemonicDialogue1 = tag.GetInt("MnemonicDialogue1");
+            MnemonicDialogue2 = tag.GetInt("MnemonicDialogue2");
+            MnemonicDialogue3 = tag.GetInt("MnemonicDialogue3");
+            MnemonicDialogue4 = tag.GetInt("MnemonicDialogue4");
 
 
             EyeBossWeaponDialogue = tag.GetInt("EyeBossWeaponDialogue");
@@ -1470,6 +1502,12 @@ namespace StarsAbove.Systems
             DreamerWeaponDialogue = tag.GetInt("DreamerWeaponDialogue");
             SoldierWeaponDialogue = tag.GetInt("SoldierWeaponDialogue");
             TrickspinWeaponDialogue = tag.GetInt("TrickspinWeaponDialogue");
+
+            DragaliaWeaponDialogue = tag.GetInt("DragaliaWeaponDialogue");
+            GundbitWeaponDialogue = tag.GetInt("GundbitWeaponDialogue");
+            WavedancerWeaponDialogue = tag.GetInt("WavedancerWeaponDialogue");
+            ClarentWeaponDialogue = tag.GetInt("ClarentWeaponDialogue");
+            ThespianWeaponDialogue = tag.GetInt("ThespianWeaponDialogue");
 
 
             observatoryDialogue = tag.GetInt("observatoryDialogue");
@@ -3922,6 +3960,28 @@ namespace StarsAbove.Systems
 
                 }
 
+                if (DownedBossSystem.downedThespian && thespianDialogue == 0)
+                {
+                    thespianDialogue = 1;
+
+                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                    NewDiskDialogue = true;
+
+                    
+
+
+                }
+                if (DownedBossSystem.downedStarfarers && starfarerPostBattleDialogue == 0)
+                {
+                    starfarerPostBattleDialogue = 1;
+
+                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                    NewDiskDialogue = true;
+
+
+
+
+                }
                 if (NPC.downedBoss1 && NPC.downedSlimeKing && NPC.downedBoss2 && NPC.downedBoss3 && NPC.downedQueenBee && NPC.downedQueenSlime && NPC.downedEmpressOfLight && Main.hardMode && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && NPC.downedPlantBoss && NPC.downedGolemBoss && NPC.downedFishron && NPC.downedMoonlord && AllVanillaBossesDefeatedDialogue == 0)
                 {
                     //AllVanillaBossesDefeatedDialogue = 1;
@@ -3982,6 +4042,12 @@ namespace StarsAbove.Systems
                 if (penthBossItemDialogue == 0 && (SkeletronPrimeDialogue == 2 || TwinsDialogue == 2 || DestroyerDialogue == 2) && vagrantDialogue == 2)
                 {
                     penthBossItemDialogue = 1;
+                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+
+                }
+                if (starfarerBossItemDialogue == 0 && DownedBossSystem.downedPenth)
+                {
+                    starfarerBossItemDialogue = 1;
                     InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
 
                 }
@@ -4108,6 +4174,46 @@ namespace StarsAbove.Systems
                     {
                         MercyWeaponDialogue = 1;
                                             InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                        NewDiskDialogue = true;
+                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                        return;
+                    }
+                    if (ThespianWeaponDialogue == 0 && thespianDialogue == 2)
+                    {
+                        ThespianWeaponDialogue = 1;
+                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                        NewDiskDialogue = true;
+                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                        return;
+                    }
+                    if (DragaliaWeaponDialogue == 0 && ThespianWeaponDialogue == 2)
+                    {
+                        DragaliaWeaponDialogue = 1;
+                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                        NewDiskDialogue = true;
+                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                        return;
+                    }
+                    if (WavedancerWeaponDialogue == 0 && ThespianWeaponDialogue == 2)
+                    {
+                        WavedancerWeaponDialogue = 1;
+                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                        NewDiskDialogue = true;
+                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                        return;
+                    }
+                    if (ClarentWeaponDialogue == 0 && NalhaunWeaponDialogue == 2)
+                    {
+                        ClarentWeaponDialogue = 1;
+                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                        NewDiskDialogue = true;
+                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                        return;
+                    }
+                    if (GundbitWeaponDialogue == 0 && LunaticCultistWeaponDialogue == 2)
+                    {
+                        GundbitWeaponDialogue = 1;
+                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;

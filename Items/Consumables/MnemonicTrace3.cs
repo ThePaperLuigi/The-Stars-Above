@@ -51,12 +51,18 @@ namespace StarsAbove.Items.Consumables
 		public override bool? UseItem(Player player)
 		{
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
-			
+
+            modPlayer.dialogueScrollTimer = 0;
+            modPlayer.dialogueScrollNumber = 0;
+            modPlayer.sceneProgression = 0;
+            modPlayer.sceneID = 302;
+            modPlayer.VNDialogueActive = true;
+
+            modPlayer.MnemonicDialogue3 = 1;
 
 
 
-
-			return true;
+            return true;
 		}
 
 		public override void AddRecipes()

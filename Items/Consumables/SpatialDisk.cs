@@ -749,7 +749,7 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.MonadoWeaponDialogue == 1)
+            if (modPlayer.MonadoWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 125;
 				modPlayer.MonadoWeaponDialogue = 2;
@@ -893,7 +893,47 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.BloodWeaponDialogue == 1)
+            if (modPlayer.DragaliaWeaponDialogue == 1)
+            {
+                modPlayer.chosenDialogue = 176;
+				modPlayer.DragaliaWeaponDialogue = 2;
+                activateDialogue(player);
+
+                return true;
+            }
+            if (modPlayer.GundbitWeaponDialogue == 1)
+            {
+                modPlayer.chosenDialogue = 177;
+                modPlayer.GundbitWeaponDialogue = 2;
+                activateDialogue(player);
+
+                return true;
+            }
+            if (modPlayer.WavedancerWeaponDialogue == 1)
+            {
+                modPlayer.chosenDialogue = 178;
+                modPlayer.WavedancerWeaponDialogue = 2;
+                activateDialogue(player);
+
+                return true;
+            }
+            if (modPlayer.ClarentWeaponDialogue == 1)
+            {
+                modPlayer.chosenDialogue = 179;
+                modPlayer.ClarentWeaponDialogue = 2;
+                activateDialogue(player);
+
+                return true;
+            }
+            if (modPlayer.ThespianWeaponDialogue == 1)
+            {
+                modPlayer.chosenDialogue = 180;
+                modPlayer.ThespianWeaponDialogue = 2;
+                activateDialogue(player);
+
+                return true;
+            }
+            if (modPlayer.BloodWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 147;
 				modPlayer.BloodWeaponDialogue = 2;

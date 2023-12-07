@@ -5,7 +5,7 @@ Mods: {
 			SupremeAuthority: 回归到虚空
 			// Thespian: failed to follow the act.
 			// ShockAndAwe: ... tried to rocket jump too hard.
-			// InevitableEnd: was caught in the crossfire of {0}'s Inevitable End
+			// InevitableEnd: was caught in the crossfire of {0}'s Inevitable End.
 		}
 
 		Boss.WarriorOfLight: 光之战士 降临！
@@ -12604,6 +12604,11 @@ Mods: {
 			DreamingCityBiome: {
 				// DisplayName: Dreaming City Biome
 				// TownNPCDialogueName: the Dreaming City Biome
+			}
+
+			OtherworldBiome: {
+				// DisplayName: Otherworld Biome
+				// TownNPCDialogueName: the Otherworld Biome
 			}
 		}
 
