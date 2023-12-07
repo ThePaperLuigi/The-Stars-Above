@@ -34,7 +34,7 @@ namespace StarsAbove.Items.Weapons.Melee
 			Item.useStyle = ItemUseStyleID.HiddenAnimation;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
 			Item.knockBack = 12;         //The force of knockback of the weapon. Maximum is 20
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
-			Item.rare = ItemRarityID.Purple;              //The rarity of the weapon, from -1 to 13
+			Item.rare = ItemRarityID.Cyan;              //The rarity of the weapon, from -1 to 13
 			Item.UseSound = SoundID.Item1;      //The sound when the weapon is using
 			Item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
