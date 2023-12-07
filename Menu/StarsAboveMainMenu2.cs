@@ -480,7 +480,7 @@ namespace StarsAbove.Menu
             spriteBatch.Draw(OceanWaves, new Vector2(zero.X + MathHelper.Lerp(-93, -87, MousePositionFloatX) + oceanAdjustment2, zero.Y + MathHelper.Lerp(-78, -77, MousePositionFloatY)), (Rectangle?)null, Color.White*0.5f, 0f, Vector2.Zero, width * 1.1f, (SpriteEffects)0, 0f);
             spriteBatch.Draw(OceanFog, new Vector2(zero.X + MathHelper.Lerp(-93, -87, MousePositionFloatX), zero.Y + MathHelper.Lerp(-78, -77, MousePositionFloatY)), (Rectangle?)null, Color.White, 0f, Vector2.Zero, width * 1.1f, (SpriteEffects)0, 0f);
 
-            spriteBatch.Draw(Starfarers, new Vector2(zero.X + 12 + MathHelper.Lerp(42, -12, MousePositionFloatX), zero.Y + MathHelper.Lerp(-34, -30, MousePositionFloatY)), (Rectangle?)null, Color.White, 0f, Vector2.Zero, width, (SpriteEffects)0, 0f);
+            spriteBatch.Draw(Starfarers, new Vector2(zero.X + 12 + MathHelper.Lerp(42, -12, MousePositionFloatX), zero.Y + MathHelper.Lerp(-24, -20, MousePositionFloatY)), (Rectangle?)null, Color.White, 0f, Vector2.Zero, width, (SpriteEffects)0, 0f);
 
             spriteBatch.Draw(ScreenDarkened, new Vector2(zero.X, zero.Y), (Rectangle?)null, Color.White, 0f, Vector2.Zero, width, (SpriteEffects)0, 0f);
 
