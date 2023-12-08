@@ -210,7 +210,19 @@ namespace StarsAbove.NPCs.TownNPCs
 				}
 
 				// After defeating Vagrant
-				if (DownedBossSystem.downedVagrant)
+				if (DownedBossSystem.downedVagrant || 
+					player.HasItemInAnyInventory(ModContent.ItemType<ElectricGuitarPick>()) || //Early game memories
+                    player.HasItemInAnyInventory(ModContent.ItemType<CapedFeather>()) ||
+                    player.HasItemInAnyInventory(ModContent.ItemType<PrimeCut>()) ||
+                    player.HasItemInAnyInventory(ModContent.ItemType<RuinedCrown>()) ||
+                    player.HasItemInAnyInventory(ModContent.ItemType<Trumpet>()) ||
+                    player.HasItemInAnyInventory(ModContent.ItemType<Pawn>()) ||
+                    player.HasItemInAnyInventory(ModContent.ItemType<MonsterTooth>()) ||
+                    player.HasItemInAnyInventory(ModContent.ItemType<NetheriteBar>()) ||
+                    player.HasItemInAnyInventory(ModContent.ItemType<MercenaryAuracite>()) ||
+                    player.HasItemInAnyInventory(ModContent.ItemType<RedSpiderLily>())
+					)
+                    
 				{
 					return true;
 				}
@@ -388,11 +400,18 @@ namespace StarsAbove.NPCs.TownNPCs
 			var npcShop = new NPCShop(Type, ShopName)
 				.Add<CosmoturgyStationItem>()
 				.Add<TarotCard>()
-				.Add<CapedFeather>()
-				.Add<AetherBarrel>(Condition.DownedSkeletron)
-				.Add<ChoiceGlasses>(Condition.DownedSkeletron)
-				.Add<RedSpiderLily>(Condition.Hardmode)
-				.Add<ResonanceGem>(Condition.DownedQueenSlime)
+				.Add<KnightsShovelhead>()
+                .Add<ChoiceGlasses>(Condition.InExpertMode)
+                .Add<ReprintedBlueprint>(Condition.DownedEyeOfCthulhu)
+                .Add<MatterManipulator>(Condition.DownedEarlygameBoss)
+                .Add<AetherBarrel>(Condition.DownedSkeletron)
+                .Add<MagicSigil>(Condition.Hardmode)
+				.Add<MeleeSigil>(Condition.Hardmode)
+                .Add<RangedSigil>(Condition.Hardmode)
+                .Add<SummonSigil>(Condition.Hardmode)
+                .Add<OnyxJackal>(Condition.DownedQueenSlime)
+                .Add<SimulacraShifter>(Condition.DownedDestroyer)
+                .Add<NookMilesTicket>(Condition.DownedPlantera)
 				.Add<SigilOfHope>(Condition.DownedMoonLord)
 				;
 
