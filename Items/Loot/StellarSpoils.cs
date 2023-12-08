@@ -22,6 +22,7 @@ using StarsAbove.Items.Vanity.QuantumButterfly;
 using StarsAbove.Items.Vanity.BaselessBlade;
 using StarsAbove.Items.Vanity.OceanHuedHunter;
 using StarsAbove.Items.Armor.StarfarerArmor;
+using StarsAbove.Items.Memories;
 
 namespace StarsAbove.Items.Loot
 {
@@ -217,6 +218,8 @@ namespace StarsAbove.Items.Loot
                 ItemType<PerfectlyGenericAccessory>(),
                 ItemType<ToMurder>(),
                 ItemType<EmberFlask>(),
+                ItemType<RuinedCrown>(),
+                ItemType<Trumpet>(),
                 ItemType<ShepherdSunstone>(),
                 ItemType<Poltergrasp5000>()
                 ))
