@@ -3551,10 +3551,10 @@ Mods: {
 				[c/FFF6CD:Chart the Cosmos / Even Stars Must Fall: EchoLane]
 				[c/F19559:- Special Thanks -]
 				[c/DADADA:All Patreon supporters!]
-				[c/DADADA:External Music: Studio EIM, HoloPro, Masayoshi Soken, REVO, Daiki Ishikawa, Nobuo Uematsu, Michael Salvatori]
+				[c/DADADA:External Music: Studio EIM, Kairiki Bear, Masayoshi Soken, REVO, Daiki Ishikawa, Nobuo Uematsu, Michael Salvatori]
 				[c/DADADA:Subworld Contest Builders: Tatriskel, hakomari, Izanagi The wanderer of stars, UnkownSToast, Hockerzocker]
 				[c/DADADA:Discord Moderators: the_alu, ifune, loligeddon, polluxe, not02]
-				[c/DADADA:ES Translators: haturok, Tofu and bluefire]
+				[c/DADADA:ES Translators: Tofu and Zeldris]
 				[c/DADADA:CN Translators: Koibumi Group(灾厄维基汉化组)]
 				[c/DADADA:Libraries: SubworldLibrary, StructureHelper]
 				[c/DADADA:Open-Source Code: ScalarVector, tomat, jopojelly, John Snail, Kazzymodus]
@@ -6507,8 +6507,8 @@ Mods: {
 			MageOfVioletMusicBox: {
 				Tooltip:
 					'''
-					'Mage of Violet (Instrumental)' - Hololive Productions
-					Composed by Three
+					'Mage of Violet (Instrumental)' - HoloPro
+					Composed by Kairiki Bear
 
 					'''
 				DisplayName: Music Box (Penthesilea)
@@ -7360,7 +7360,7 @@ Mods: {
 					'''
 					[c/2DD2FE:Stargazer Relic]
 					Critical strikes are disabled
-					When damage is dealt, either deal 40% more damage (40% chance), 40% less damage (30% chance), 400% more damage (20% chance), or 1 damage (10% chance)
+					When damage is dealt, either deal 40% more damage (40% chance), 40% less damage (30% chance), 100% more damage (20% chance), or 1 damage (10% chance)
 					Positive results will additionally become critical strikes
 					[c/ADEEFF:Only one Stargazer Relic can be equipped at a time]
 					'###?'
