@@ -29,6 +29,9 @@ using StarsAbove.Items.Loot;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
 using StarsAbove.Projectiles.Extra;
+using StarsAbove.Buffs.SubworldModifiers;
+using StarsAbove.Items.Accessories;
+using StarsAbove.Items.BossBags;
 
 namespace StarsAbove.NPCs.Arbitration
 {
@@ -478,38 +481,30 @@ namespace StarsAbove.NPCs.Arbitration
 			return;
 		}
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
-		{/*
-		  * 
-			// Do NOT misuse the ModifyNPCLoot and OnKill hooks: the former is only used for registering drops, the latter for everything else
-			//Chance for a Prism
-
+		{
+		  
 			// Add the treasure bag using ItemDropRule.BossBag (automatically checks for expert mode)
-			//npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<VagrantBossBag>()));
+            npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<ArbitrationBossBag>()));
 
-			// Trophies are spawned with 1/10 chance
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.BossLoot.NalhaunTrophyItem>(), 10));
+            // Trophies are spawned with 1/10 chance
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.BossLoot.ArbitrationTrophyItem>(), 10));
 
-			// ItemDropRule.MasterModeCommonDrop for the relic
-			npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<Items.Placeable.BossLoot.NalhaunBossRelicItem>()));
+            // ItemDropRule.MasterModeCommonDrop for the relic
+            npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<Items.Placeable.BossLoot.ArbitrationBossRelicItem>()));
 
-			// ItemDropRule.MasterModeDropOnAllPlayers for the pet
-			//npcLoot.Add(ItemDropRule.MasterModeDropOnAllPlayers(ModContent.ItemType<MinionBossPetItem>(), 4));
+            // ItemDropRule.MasterModeDropOnAllPlayers for the pet
+            //npcLoot.Add(ItemDropRule.MasterModeDropOnAllPlayers(ModContent.ItemType<MinionBossPetItem>(), 4));
 
-			// All our drops here are based on "not expert", meaning we use .OnSuccess() to add them into the rule, which then gets added
-			LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
-			LeadingConditionRule ExpertRule = new LeadingConditionRule(new Conditions.IsExpert());
+            // All our drops here are based on "not expert", meaning we use .OnSuccess() to add them into the rule, which then gets added
+            LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
 
-			// Notice we use notExpertRule.OnSuccess instead of npcLoot.Add so it only applies in normal mode
-			// Boss masks are spawned with 1/7 chance
-			//notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<MinionBossMask>(), 7));
+            StellarSpoils.SetupBossStellarSpoils(npcLoot);
 
-			notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.BurnishedPrism>(), 4));
+            notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.VoidsentPrism>(), 4));
+            notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AnomalyByte>(), 4));
 
-			// Finally add the leading rule
-			npcLoot.Add(ExpertRule);
-			npcLoot.Add(notExpertRule);*/
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Materials.CelestialPrincessGenesisPrecursor>(), 4));
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StellarSpoils>(), 1, 5, 5));
+            notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Essences.EssenceOfBloodshed>(), 2)).OnFailedRoll(ItemDropRule.Common(ModContent.ItemType<Items.Essences.EssenceOfMimicry>(), 2));
+
 
 			StellarSpoils.SetupBossStellarSpoils(npcLoot);
 		}
