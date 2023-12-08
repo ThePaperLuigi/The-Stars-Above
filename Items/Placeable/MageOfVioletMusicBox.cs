@@ -17,7 +17,7 @@ namespace StarsAbove.Items.Placeable
 				+ $"\n"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
-			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/MageOfViolet"), ModContent.ItemType<MageOfVioletMusicBox>(), ModContent.TileType<Tiles.MageOfVioletMusicBox>());
+			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Boss/Penthesilea/MageOfViolet"), ModContent.ItemType<MageOfVioletMusicBox>(), ModContent.TileType<Tiles.MageOfVioletMusicBox>());
 
 		}
 

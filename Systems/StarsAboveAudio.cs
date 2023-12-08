@@ -230,74 +230,59 @@ namespace StarsAbove.Systems
         #endregion
 
         #region Penthesilea Voice Lines
-        public static readonly SoundStyle Penthesilea_AlrightMyTurn = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/AlrightMyTurn")
+        public static readonly SoundStyle Penthesilea_HelloLittlePaintbrush = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/HelloLittlePaintbrush")
         {
 
         };
-        public static readonly SoundStyle Penthesilea_CutThrough = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/CutThrough")
+        public static readonly SoundStyle Penthesilea_FasterThanThat = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/FasterThanThat")
         {
 
         };
-        public static readonly SoundStyle Penthesilea_Enough = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/Enough")
+        public static readonly SoundStyle Penthesilea_UnderestimatedYou = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/UnderestimatedYou")
         {
 
         };
-        public static readonly SoundStyle Penthesilea_HowFoolish = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/HowFoolish")
+        public static readonly SoundStyle Penthesilea_DontGetTooDirty = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/DontGetTooDirty")
         {
 
         };
-        public static readonly SoundStyle Penthesilea_HowFun = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/HowFun")
+        public static readonly SoundStyle Penthesilea_IDontThinkYoullLikeWhatComesNext = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/IDontThinkYoullLikeWhatComesNext")
         {
 
         };
-        public static readonly SoundStyle Penthesilea_INeedntHoldBack = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/INeedntHoldBack")
+        public static readonly SoundStyle Penthesilea_MoreWhereThatCameFrom = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/MoreWhereThatCameFrom")
         {
 
         };
-        public static readonly SoundStyle Penthesilea_ISenseTheirResolve = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/ISenseTheirResolve")
+        public static readonly SoundStyle Penthesilea_MyNextCanvas = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/MyNextCanvas")
         {
 
         };
-        public static readonly SoundStyle Penthesilea_IveEnduredFarWorse = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/IveEnduredFarWorse")
+        public static readonly SoundStyle Penthesilea_QuicklyNow = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/QuicklyNow")
         {
 
         };
-        public static readonly SoundStyle Penthesilea_OutOfMyWay = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/OutOfMyWay")
+        public static readonly SoundStyle Penthesilea_RainButPrettier = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/RainButPrettier")
         {
 
         };
-        public static readonly SoundStyle Penthesilea_PenthLaugh = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/PenthLaugh")
+        public static readonly SoundStyle Penthesilea_TooMuchColor = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/TooMuchColor")
         {
 
         };
-        public static readonly SoundStyle Penthesilea_QuickQuick = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/QuickQuick")
+        public static readonly SoundStyle Penthesilea_WhatColor = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/WhatColor")
         {
 
         };
-        public static readonly SoundStyle Penthesilea_ThisllCheerMeUp = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/ThisllCheerMeUp")
+        public static readonly SoundStyle Penthesilea_WouldntItBeSoFunny = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/WouldntItBeSoFunny")
         {
 
         };
-        public static readonly SoundStyle Penthesilea_ToPieces = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/ToPieces")
+        public static readonly SoundStyle Penthesilea_WrappedThingsUp = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/WrappedThingsUp")
         {
 
         };
-        public static readonly SoundStyle Penthesilea_ToShreds = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/ToShreds")
-        {
 
-        };
-        public static readonly SoundStyle Penthesilea_TryAgainIDareYou = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/TryAgainIDareYou")
-        {
-
-        };
-        public static readonly SoundStyle Penthesilea_WithHaste = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/WithHaste")
-        {
-
-        };
-        public static readonly SoundStyle Penthesilea_WhateverItTakes = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/WhateverItTakes")
-        {
-
-        };
         #endregion
 
         #region Arbitration Voice Lines

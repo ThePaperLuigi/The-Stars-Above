@@ -3552,10 +3552,10 @@ Mods: {
 				[c/FFF6CD:Chart the Cosmos / Even Stars Must Fall: EchoLane]
 				[c/F19559:- Special Thanks -]
 				[c/DADADA:All Patreon supporters!]
-				[c/DADADA:External Music: Studio EIM, HoloPro, Masayoshi Soken, REVO, Daiki Ishikawa, Nobuo Uematsu, Michael Salvatori]
+				[c/DADADA:External Music: Studio EIM, Kairiki Bear, Masayoshi Soken, REVO, Daiki Ishikawa, Nobuo Uematsu, Michael Salvatori]
 				[c/DADADA:Subworld Contest Builders: Tatriskel, hakomari, Izanagi The wanderer of stars, UnkownSToast, Hockerzocker]
 				[c/DADADA:Discord Moderators: the_alu, ifune, loligeddon, polluxe, not02]
-				[c/DADADA:ES Translators: haturok, Tofu and bluefire]
+				[c/DADADA:ES Translators: Tofu and Zeldris]
 				[c/DADADA:CN Translators: Koibumi Group(灾厄维基汉化组)]
 				[c/DADADA:Libraries: SubworldLibrary, StructureHelper]
 				[c/DADADA:Open-Source Code: ScalarVector, tomat, jopojelly, John Snail, Kazzymodus]
@@ -8984,7 +8984,7 @@ Mods: {
 
 			ThespianBossBag: {
 				// Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
-				// DisplayName: Treasure Bag (Nalhaun, the Burnished King)
+				// DisplayName: Treasure Bag (Thespian, the Act of Alchemy)
 			}
 
 			ThespianBossRelicItem: {
@@ -9093,13 +9093,13 @@ Mods: {
 					'''
 					[c/D294FF:Weapon Memory]
 					When Imprinted into a weapon, gain the following effects:
-					Press the Weapon Relic Key to stun all nearby foes for 3 seconds (40 second cooldown)
+					Press the Weapon Memory Key to stun all nearby foes for 3 seconds (40 second cooldown)
 					Enemies have a 20% chance to resist the stun and bosses are not affected
 					'Authority'
 					''' */
 				/* TooltipAttached:
 					'''
-					Press the Weapon Relic Key to stun all nearby foes for 3 seconds (40 second cooldown)
+					Press the Weapon Memory Key to stun all nearby foes for 3 seconds (40 second cooldown)
 					Enemies have a 20% chance to resist the stun and bosses are not affected
 					''' */
 			}
@@ -10098,6 +10098,8 @@ Mods: {
 			// FragmentationGrenade.DisplayName: Fragmentation Grenade
 			// ThermalFlare.DisplayName: Thermal Flare
 			// PenthesileaCast.DisplayName: Penthesilea Cast
+			// PenthesileaInkRain.DisplayName: Penthesilea Ink Rain
+			// PenthBrush.DisplayName: Penth Brush
 		}
 
 		Buffs: {

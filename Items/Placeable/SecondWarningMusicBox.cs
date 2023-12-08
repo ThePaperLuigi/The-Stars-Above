@@ -17,7 +17,7 @@ namespace StarsAbove.Items.Placeable
 				+ $"\n"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
-			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/SecondWarning"),
+			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Boss/Arbitration/SecondWarning"),
 				ModContent.ItemType<SecondWarningMusicBox>(),
 				ModContent.TileType<Tiles.SecondWarningMusicBox>());
 		}

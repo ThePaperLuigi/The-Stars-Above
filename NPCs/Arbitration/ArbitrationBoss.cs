@@ -142,11 +142,21 @@ namespace StarsAbove.NPCs.Arbitration
 		}
         public override void BossLoot(ref string name, ref int potionType)
         {
-			
-			potionType = ItemID.None;
+
+            potionType = ItemID.GreaterHealingPotion;
 
 
-			base.BossLoot(ref name, ref potionType);
+            if (!DownedBossSystem.downedArbiter)
+            {
+                DownedBossSystem.downedArbiter = true;
+                if (Main.netMode == NetmodeID.Server)
+                {
+                    NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
+                }
+            }
+
+
+            base.BossLoot(ref name, ref potionType);
         }
         public override bool CheckDead()
 		{
@@ -169,7 +179,7 @@ namespace StarsAbove.NPCs.Arbitration
             var bossPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
 			//REPLACE BAR WITH YOUR OWN
-            bossPlayer.TsukiyomiBarActive = true;
+            bossPlayer.ArbitrationBarActive = true;
 
             NPC.velocity *= 0.98f; //So the dashes don't propel the boss away
 

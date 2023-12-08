@@ -41,11 +41,14 @@ namespace StarsAbove.Projectiles.Bosses.Penthesilea
             get => Projectile.ai[0];
             set => Projectile.ai[0] = value;
         }
-
+        public override Color? GetAlpha(Color lightColor)
+        {
+            //return Color.White;
+            return new Color(255, 255, 255, 0) * (1f - Projectile.alpha / 255f);
+        }
         // It appears that for this AI, only the ai0 field is used!
         public override void AI()
         {
-            Lighting.AddLight(Projectile.Center, new Vector3(0.99f, 0.6f, 0.3f));
 
             if (Projectile.velocity.Y > 0)
             {

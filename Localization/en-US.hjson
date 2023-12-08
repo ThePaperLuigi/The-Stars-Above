@@ -1197,6 +1197,7 @@ Mods: {
 						2: It was a little terrifying, but luckily it seems its previous prey was confined to the ground. Looks like we had home turf advantage here.
 					}
 				}
+
 				Thespian: {
 					Asphodene: {
 						1: That was quite the battle! Remind me to never touch strange potions ever again.
@@ -2879,16 +2880,16 @@ Mods: {
 							2: X
 						}
 					}
+
 					303: {
-						Dialogue: {
-							0: Melancholy. Regret. Anguish. You can make out these fervored emotions, but without knowledge of the other Mnemonic Traces, this story remains shrouded in mystery.
-						}
+						Dialogue.0: Melancholy. Regret. Anguish. You can make out these fervored emotions, but without knowledge of the other Mnemonic Traces, this story remains shrouded in mystery.
 
 						Choices: {
 							1: X
 							2: X
 						}
 					}
+
 					304: {
 						Dialogue: {
 							0: In a time before now, there existed a galaxy much like this one. In fact, is a perfect facsimile, or so was the naïve hope I shared.
@@ -2899,7 +2900,7 @@ Mods: {
 							5: ...
 							6: Why do I continue to try and avert this disaster?
 							7: This desire- the desire to help others- was imprinted to my very concept upon entering this existence. What agency is my own, and what was hoisted upon me by others?
-							8: Like many other things, the answer is lost to the cold. Or is that what I tell myself? 
+							8: Like many other things, the answer is lost to the cold. Or is that what I tell myself?
 						}
 
 						Choices: {
@@ -10237,6 +10238,9 @@ Mods: {
 			EnergyStar.DisplayName: Energy Star
 			FragmentationGrenade.DisplayName: Fragmentation Grenade
 			ThermalFlare.DisplayName: Thermal Flare
+			PenthesileaCast.DisplayName: Penthesilea Cast
+			PenthesileaInkRain.DisplayName: Penthesilea Ink Rain
+			PenthBrush.DisplayName: Penth Brush
 		}
 
 		Buffs: {

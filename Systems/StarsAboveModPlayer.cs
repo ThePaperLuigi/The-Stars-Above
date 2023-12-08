@@ -7616,53 +7616,7 @@ namespace StarsAbove.Systems
 
         private void PenthTeleport(NPC npc)
         {
-            if (inPenthFightTimer > 0 && Player.immuneTime <= 0)
-            {
-                int halfWidth = PenthesileaBoss.arenaWidth / 2;
-                int halfHeight = PenthesileaBoss.arenaHeight / 2;
-                Vector2 newPosition = Player.position;
-                if (Player.position.X <= npc.Center.X - halfWidth)
-                {
-
-                    newPosition.X = npc.Center.X - halfWidth + 1;
-                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
-                    {
-                        newPosition.X += 16f;
-                    }
-                }
-                else if (Player.position.X + Player.width >= npc.Center.X + halfWidth)
-                {
-                    newPosition.X = npc.Center.X + halfWidth - Player.width - 1;
-                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
-                    {
-                        newPosition.X -= 16f;
-                    }
-                }
-                else if (Player.position.Y <= npc.Center.Y - halfHeight)
-                {
-                    newPosition.Y = npc.Center.Y - halfHeight + 1;
-                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
-                    {
-                        newPosition.Y += 16f;
-                    }
-                }
-                else if (Player.position.Y + Player.height >= npc.Center.Y + halfHeight)
-                {
-
-
-                    newPosition.Y = npc.Center.Y + halfHeight - Player.height - 1;
-                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
-                    {
-                        newPosition.Y -= 16f;
-                    }
-                }
-                if (newPosition != Player.position)
-                {
-                    Player.Teleport(newPosition, 1, 0);
-                    NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, Player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
-
-                }
-            }
+            
 
         }
         public static bool SameTeam(Player player1, Player player2)

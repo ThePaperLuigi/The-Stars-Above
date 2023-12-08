@@ -28,7 +28,7 @@ namespace StarsAbove.Projectiles.Bosses.Penthesilea
             Projectile.ownerHitCheck = true;
             Projectile.tileCollide = false;
             Projectile.friendly = false;
-            Projectile.hostile = true;
+            Projectile.hostile = false;
             Projectile.netUpdate = true;
             AIType = ProjectileID.Bullet;
 
@@ -42,21 +42,15 @@ namespace StarsAbove.Projectiles.Bosses.Penthesilea
             get => Projectile.ai[0];
             set => Projectile.ai[0] = value;
         }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            //return Color.White;
+            return new Color(115, 115, 255, 155) * (1f - Projectile.alpha / 255f);
+        }
 
         // It appears that for this AI, only the ai0 field is used!
         public override void AI()
         {
-            Lighting.AddLight(Projectile.Center, new Vector3(0.99f, 0.6f, 0.3f));
-
-            if (Projectile.timeLeft > 50)
-            {
-                Projectile.damage = 0;
-            }
-            if (Projectile.timeLeft < 50)
-            {
-                Projectile.damage = 100;
-            }
-
 
             if (++Projectile.frameCounter >= 4)
             {
@@ -67,28 +61,28 @@ namespace StarsAbove.Projectiles.Bosses.Penthesilea
                     Vector2 vector8 = new Vector2(Projectile.position.X + Projectile.width / 2, Projectile.position.Y + Projectile.height / 2);
                     Vector2 vel = new Vector2(-1, -1);
                     vel *= 4f;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vel.X, vel.Y, Mod.Find<ModProjectile>("InkBlot").Type, 60, 0, Main.myPlayer);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vel.X, vel.Y, Mod.Find<ModProjectile>("InkBlot").Type, Projectile.damage, 0, Main.myPlayer);
                     Vector2 vel2 = new Vector2(1, 1);
                     vel2 *= 4f;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vel2.X, vel2.Y, Mod.Find<ModProjectile>("InkBlot").Type, 60, 0, Main.myPlayer);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vel2.X, vel2.Y, Mod.Find<ModProjectile>("InkBlot").Type, Projectile.damage, 0, Main.myPlayer);
                     Vector2 vel3 = new Vector2(1, -1);
                     vel3 *= 4f;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vel3.X, vel3.Y, Mod.Find<ModProjectile>("InkBlot").Type, 60, 0, Main.myPlayer);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vel3.X, vel3.Y, Mod.Find<ModProjectile>("InkBlot").Type, Projectile.damage, 0, Main.myPlayer);
                     Vector2 vel4 = new Vector2(-1, 1);
                     vel4 *= 4f;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vel4.X, vel4.Y, Mod.Find<ModProjectile>("InkBlot").Type, 60, 0, Main.myPlayer);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vel4.X, vel4.Y, Mod.Find<ModProjectile>("InkBlot").Type, Projectile.damage, 0, Main.myPlayer);
                     Vector2 vel5 = new Vector2(0, -1);
                     vel5 *= 4f;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vel5.X, vel5.Y, Mod.Find<ModProjectile>("InkBlot").Type, 60, 0, Main.myPlayer);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vel5.X, vel5.Y, Mod.Find<ModProjectile>("InkBlot").Type, Projectile.damage, 0, Main.myPlayer);
                     Vector2 vel6 = new Vector2(0, 1);
                     vel6 *= 4f;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vel6.X, vel6.Y, Mod.Find<ModProjectile>("InkBlot").Type, 60, 0, Main.myPlayer);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vel6.X, vel6.Y, Mod.Find<ModProjectile>("InkBlot").Type, Projectile.damage, 0, Main.myPlayer);
                     Vector2 vel7 = new Vector2(1, 0);
                     vel7 *= 4f;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vel7.X, vel7.Y, Mod.Find<ModProjectile>("InkBlot").Type, 60, 0, Main.myPlayer);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vel7.X, vel7.Y, Mod.Find<ModProjectile>("InkBlot").Type, Projectile.damage, 0, Main.myPlayer);
                     Vector2 vel8 = new Vector2(-1, 0);
                     vel8 *= 4f;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vel8.X, vel8.Y, Mod.Find<ModProjectile>("InkBlot").Type, 60, 0, Main.myPlayer);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vel8.X, vel8.Y, Mod.Find<ModProjectile>("InkBlot").Type, Projectile.damage, 0, Main.myPlayer);
                     Projectile.Kill();
 
                 }
