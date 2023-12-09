@@ -566,11 +566,11 @@ namespace StarsAbove.NPCs.Penthesilea
 
 			if(AI_CastTimer > 60*5)
 			{
-				AI_CastTimer = 0;
+				
                 Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "Penthesilea";//lol
                 Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().loadingScreenOpacity = 1f;
                 AI_State = (float)ActionState.Idle;
-
+                AI_CastTimer = 120;
             }
 
         }

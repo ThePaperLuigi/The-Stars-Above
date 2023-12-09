@@ -42,6 +42,9 @@ namespace StarsAbove.Biomes
 				|| SubworldSystem.IsActive<Serpens>()
                 || SubworldSystem.IsActive<FallenTheranhad>()
                 || SubworldSystem.IsActive<FaintArchives>()
+                || SubworldSystem.IsActive<UltraPlant>()
+                                || SubworldSystem.IsActive<Celestia>()
+
                 || SubworldSystem.IsActive<Katabasis>()
                 || SubworldSystem.IsActive<Scorpius>())
             {

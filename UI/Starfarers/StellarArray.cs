@@ -816,8 +816,68 @@ namespace StarsAbove.UI.Starfarers
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGauge -= 2;
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().artofwar = 1;
 			}
-			// Remember to add to here
-		}
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().mysticIncision == 2)
+            {
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGauge -= 1;
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().mysticIncision = 1;
+            }
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().lavenderRefrain == 2)
+            {
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGauge -= 1;
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().lavenderRefrain = 1;
+            }
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().swiftstrikeTheory == 2)
+            {
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGauge -= 1;
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().swiftstrikeTheory = 1;
+            }
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().inevitableEnd == 2)
+            {
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGauge -= 1;
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().inevitableEnd = 1;
+            }
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().arborealEchoes == 2)
+            {
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGauge -= 1;
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().arborealEchoes = 1;
+            }
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().kiTwinburst == 2)
+            {
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGauge -= 1;
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().kiTwinburst = 1;
+            }
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().kineticConversion == 2)
+            {
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGauge -= 1;
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().kineticConversion = 1;
+            }
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().fabledFashion == 2)
+            {
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGauge -= 1;
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().fabledFashion = 1;
+            }
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().catharsis == 2)
+            {
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGauge -= 1;
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().catharsis = 1;
+            }
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stayTheCourse == 2)
+            {
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGauge -= 1;
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stayTheCourse = 1;
+            }
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().armsthrift == 2)
+            {
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGauge -= 1;
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().armsthrift = 1;
+            }
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().spectralNail == 2)
+            {
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarGauge -= 1;
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().spectralNail = 1;
+            }
+            // Remember to add to here
+        }
 
 		private void ConfirmHover(UIMouseEvent evt, UIElement listeningElement)
 		{

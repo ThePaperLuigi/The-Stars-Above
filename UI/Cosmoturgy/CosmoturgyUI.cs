@@ -15,6 +15,8 @@ using StarsAbove.Items.Memories;
 using StarsAbove.Items.Memories.TarotCard;
 using System.Collections.Generic;
 using System;
+using Terraria.Audio;
+using Terraria.ID;
 
 namespace StarsAbove.UI.Cosmoturgy
 {
@@ -311,7 +313,8 @@ namespace StarsAbove.UI.Cosmoturgy
 						_affixSlot3.Item.TurnToAir();
 					}				
 				}
-				Main.LocalPlayer.GetModPlayer<CosmoturgyPlayer>().imbueSuccessAnimationTimer = 1f;
+                SoundEngine.PlaySound(SoundID.Item29);
+                Main.LocalPlayer.GetModPlayer<CosmoturgyPlayer>().imbueSuccessAnimationTimer = 1f;
 				Main.LocalPlayer.GetModPlayer<CosmoturgyPlayer>().description = LangHelper.GetTextValue($"UIElements.Cosmoturgy.MemoriesImprinted", Main.LocalPlayer);
 			}
 		}

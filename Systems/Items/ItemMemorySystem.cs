@@ -701,7 +701,7 @@ namespace StarsAbove.Systems.Items
             SetMemory(slot, 1, "ChoiceGlasses", ref ChoiceGlasses, item, player);
             SetMemory(slot, 2, "RedSpiderLily", ref RedSpiderLily, item, player);
             SetMemory(slot, 3, "AetherBarrel", ref AetherBarrel, item, player);
-            SetMemory(slot, 4, "NookMiles", ref NookMiles, item, player);
+            SetMemory(slot, 4, "NookMilesTicket", ref NookMiles, item, player);
             SetMemory(slot, 5, "CapedFeather", ref CapeFeather, item, player);
             SetMemory(slot, 6, "PrimeCut", ref PrimeCut, item, player);
             SetMemory(slot, 7, "PhantomMask", ref PhantomMask, item, player);
@@ -722,7 +722,7 @@ namespace StarsAbove.Systems.Items
             SetMemory(slot, 22, "ResonanceGem", ref ResonanceGem, item, player);
 
             SetMemory(slot, 26, "RuinedCrown", ref RuinedCrown, item, player);
-            SetMemory(slot, 27, "DesenderGemstone", ref DescenderGemstone, item, player);
+            SetMemory(slot, 27, "DescenderGemstone", ref DescenderGemstone, item, player);
             SetMemory(slot, 28, "MonsterTooth", ref MonsterNail, item, player);
             SetMemory(slot, 29, "MindflayerWorm", ref MindflayerWorm, item, player);
             SetMemory(slot, 30, "MercenaryAuracite", ref MercenaryAuracite, item, player);
