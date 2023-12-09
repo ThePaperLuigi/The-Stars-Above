@@ -63,9 +63,15 @@ Mods: {
 				// LaunchLeft: Launched left in {0}...
 				// LaunchRight: Launched right in {0}...
 				// Success: Success!
-				// Happy: The Ringmaster's [c/E8DB5B:delight] begets chaos...
+				// Happy: The Ringmaster's [c/D83838:fury] begets chaos...
 				// Angry: The Ringmaster's [c/D83838:fury] begets chaos...
 				// Sad: The Ringmaster's [c/3888D8:despair] begets chaos...
+			}
+
+			Penthesilea: {
+				// BluePaint: You've been coated in [c/3888D8:blue] paint!
+				// RedPaint: You've been coated in [c/D83838:red] paint!
+				// YellowPaint: You've been coated in [c/D83838:yellow] paint!
 			}
 
 			Dioskouroi.Clash: 狄俄斯库洛伊们互相碰撞，平衡了二者的生命力！
@@ -10100,6 +10106,7 @@ Mods: {
 			// PenthesileaCast.DisplayName: Penthesilea Cast
 			// PenthesileaInkRain.DisplayName: Penthesilea Ink Rain
 			// PenthBrush.DisplayName: Penth Brush
+			// PenthesileaIntroSprite.DisplayName: Penthesilea Intro Sprite
 		}
 
 		Buffs: {

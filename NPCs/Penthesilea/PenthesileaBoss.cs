@@ -106,10 +106,12 @@ namespace StarsAbove.NPCs.Penthesilea
 				new FlavorTextBestiaryInfoElement($"Mods.StarsAbove.Bestiary.{Name}")
 			});
 		}
-		public override void SetDefaults()
+        public float quadraticFloatTimer;
+        public float quadraticFloat;
+        public override void SetDefaults()
 		{
 			NPC.boss = true;
-            NPC.lifeMax = 166000;
+            NPC.lifeMax = 116000;
             NPC.defense = 15;
             NPC.damage = 15;
 			NPC.knockBackResist = 0f;
@@ -126,7 +128,7 @@ namespace StarsAbove.NPCs.Penthesilea
 			//NPC.HitSound = SoundID.NPCHit54;
 			//NPC.DeathSound = SoundID.NPCDeath52;
 
-			Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Boss/Penthesilea");
+			Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Boss/Penthesilea/MageOfViolet");
 
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
 			NPC.netAlways = true;
@@ -141,7 +143,6 @@ namespace StarsAbove.NPCs.Penthesilea
 		}
 		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */
 		{
-			NPC.lifeMax = (int)(NPC.lifeMax * bossAdjustment * balance);
 			//NPC.defense *= numPlayers * 5;
 		}
         public override void BossLoot(ref string name, ref int potionType)
@@ -183,7 +184,11 @@ namespace StarsAbove.NPCs.Penthesilea
             var bossPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
 			//REPLACE BAR WITH YOUR OWN
-            bossPlayer.PenthesileaBarActive = true;
+			if(AI_State != (float)ActionState.Spawning)
+			{
+                bossPlayer.PenthesileaBarActive = true;
+                
+            }
 
             NPC.velocity *= 0.98f; //So the dashes don't propel the boss away
 
@@ -214,27 +219,48 @@ namespace StarsAbove.NPCs.Penthesilea
             }
 			if (AI_Timer < 120 && AI_State == (float)ActionState.Idle)
 			{
-				if (NPC.life <= (NPC.lifeMax * 0.9) && AI_RotationNumber < 26) //At a certain HP threshold, skip ahead to Phase 2 (Phase 2 can be naturally reached by waiting)
-				{
-					AI_RotationNumber = 1;
-					NPC.netUpdate = true;
-				}
+				
 			}
 			else if (AI_Timer >= AttackTimer) //An attack is active. (Temp 480, usually 120, or 2 seconds)
             {
                 List<RotationAction> bossRotation = new List<RotationAction>
                 {
+                    LinearMystics,        
                     SpilledViolet,
-					SkyViolet,
-					ElegantBrushwork,
+                    SkyViolet,
+                    ElegantBrushwork,
                     ChromaticCascade,
                     ArcipluvianArcanaChromaticCascade,
+					InkOver,
+                    SplatteredSundering,
+					PenthesileaRightSide,
                     LinearMystics,
-					EfflouresentBrushwork,
-					ArcipluvianArcanaEfflouresentBrushwork,//If you're doing this, you have to have some easy mechanics after
-					SpilledViolet,
+                    SpilledViolet,
+                    EfflouresentBrushwork,
+					SkyViolet,
+					ElegantBrushwork,
+					InkOver,
+					SplatteredSundering,
 					LinearMystics,
-
+					ArcipluvianArcanaLinearMystics,
+					SpilledViolet,
+					TeleportLeftOrRight,
+                    PenthesileaRightSide,
+                    ChromaticCascade,
+                    TeleportLeftOrRight,
+                    SkyViolet,
+					LinearMystics,
+					InkOver,
+                    EfflouresentBrushwork,
+					ArcipluvianArcanaEfflouresentBrushwork,//If you're doing this, you have to have some easy mechanics after
+					SplatteredSundering,
+					LinearMystics,
+					ChromaticCascade,
+					SpilledViolet,
+                    PenthesileaRightSide,
+                    InkOver,
+					TeleportLeftOrRight,
+					SplatteredSundering,
 
                  };
                 if (AI_RotationNumber >= 0 && AI_RotationNumber < bossRotation.Count)
@@ -308,8 +334,7 @@ namespace StarsAbove.NPCs.Penthesilea
 				Projectile other = Main.projectile[i];
 
 				if (other.active && (other.type == ModContent.ProjectileType<PenthesileaCast>()
-					|| other.type == ModContent.ProjectileType<TsukiBuryTheLight>()
-					|| other.type == ModContent.ProjectileType<TsukiTakonomicon>()
+					|| other.type == ModContent.ProjectileType<PenthesileaIntroSprite>()
 					|| other.type == ModContent.ProjectileType<TsukiShadowlessCerulean>()
 					|| other.type == ModContent.ProjectileType<TsukiDeathInFourActs>()
 					|| other.type == ModContent.ProjectileType<TsukiDeathInFourActs2>()
@@ -360,10 +385,6 @@ namespace StarsAbove.NPCs.Penthesilea
 						{
 							NPC.frame.Y = (int)Frame.Idle4 * frameHeight;
 						}
-						else if (NPC.frameCounter < 50)
-						{
-							NPC.frame.Y = (int)Frame.Idle5 * frameHeight;
-						}
 						else
 						{
 							NPC.frameCounter = 0;
@@ -400,7 +421,37 @@ namespace StarsAbove.NPCs.Penthesilea
 					}
 
 					break;
-			}
+                case (float)ActionState.Spawning:
+                    NPC.frameCounter++;
+
+                    if (NPC.frameCounter < 10)
+                    {
+                        NPC.frame.Y = (int)Frame.Idle1 * frameHeight;
+                    }
+                    else if (NPC.frameCounter < 20)
+                    {
+                        NPC.frame.Y = (int)Frame.Idle2 * frameHeight;
+                    }
+                    else if (NPC.frameCounter < 30)
+                    {
+                        NPC.frame.Y = (int)Frame.Idle3 * frameHeight;
+                    }
+                    else if (NPC.frameCounter < 40)
+                    {
+                        NPC.frame.Y = (int)Frame.Idle4 * frameHeight;
+                    }
+                    else if (NPC.frameCounter < 50)
+                    {
+                        NPC.frame.Y = (int)Frame.Idle5 * frameHeight;
+                    }
+                    else
+                    {
+                        NPC.frameCounter = 0;
+                    }
+
+
+                    break;
+            }
 		}
 
 		public override bool? CanFallThroughPlatforms()
@@ -484,40 +535,52 @@ namespace StarsAbove.NPCs.Penthesilea
             //Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
             //Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, 0, 0, ModContent.ProjectileType<VagrantSlamSprite>(), 0, 0, Main.myPlayer);
 
-            Vector2 initialMoveTo = new Vector2(Main.player[NPC.target].Center.X - 80, Main.player[NPC.target].Center.Y - 250);
-            NPC.position = initialMoveTo;
-            SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_HelloLittlePaintbrush, NPC.Center);
-
-
-
-			NPC.netUpdate = true;
-			//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_NalhaunIntroQuote, NPC.Center);
-			for (int d = 0; d < 130; d++)
+			if(AI_CastTimer == 0)
 			{
-				Dust.NewDust(NPC.Center, 0, 0, DustID.SparksMech, 0f + Main.rand.Next(-30, 30), 0f + Main.rand.Next(-30, 30), 150, default(Color), 1.5f);
-			}
-			for (int d = 0; d < 144; d++)
-			{
-				Dust.NewDust(NPC.Center, 0, 0, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(-35, 35), 0f + Main.rand.Next(-35, 35), 150, default(Color), 1.5f);
-			}
-			for (int d = 0; d < 126; d++)
-			{
-				Dust.NewDust(NPC.Center, 0, 0, DustID.BlueFairy, 0f + Main.rand.Next(-36, 36), 0f + Main.rand.Next(-36, 36), 150, default(Color), 1.5f);
-			}
+                Vector2 initialMoveTo = new Vector2(Main.player[NPC.target].Center.X - 80, Main.player[NPC.target].Center.Y - 250);
+                NPC.position = initialMoveTo;
+                SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_HelloLittlePaintbrush, NPC.Center);
+                NPC.netUpdate = true;
+                //SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_NalhaunIntroQuote, NPC.Center);
+                for (int d = 0; d < 130; d++)
+                {
+                    Dust.NewDust(NPC.Center, 0, 0, DustID.SparksMech, 0f + Main.rand.Next(-30, 30), 0f + Main.rand.Next(-30, 30), 150, default(Color), 1.5f);
+                }
+                for (int d = 0; d < 144; d++)
+                {
+                    Dust.NewDust(NPC.Center, 0, 0, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(-35, 35), 0f + Main.rand.Next(-35, 35), 150, default(Color), 1.5f);
+                }
+                for (int d = 0; d < 126; d++)
+                {
+                    Dust.NewDust(NPC.Center, 0, 0, DustID.BlueFairy, 0f + Main.rand.Next(-36, 36), 0f + Main.rand.Next(-36, 36), 150, default(Color), 1.5f);
+                }
+                if (Main.netMode != NetmodeID.MultiplayerClient)
+                {
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, 0, 0, ModContent.ProjectileType<PenthesileaIntroSprite>(), 0, 0, Main.myPlayer);
 
-            Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "Penthesilea";//lol
-            Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().loadingScreenOpacity = 1f;
-			AI_CastTimer = -240;
-            AI_State = (float)ActionState.Idle;
-		}
+                }
+            }
+
+
+			AI_CastTimer++;
+
+			if(AI_CastTimer > 60*5)
+			{
+				AI_CastTimer = 0;
+                Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "Penthesilea";//lol
+                Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().loadingScreenOpacity = 1f;
+                AI_State = (float)ActionState.Idle;
+
+            }
+
+        }
 		private void Idle()
 		{
 			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 			modPlayer.NextAttack = "";
+            
 
-			AI_Timer++;//The boss's rotation timer ticks upwards.
-
-
+            AI_Timer++;//The boss's rotation timer ticks upwards.
 		}
 		private void Casting()
 		{
@@ -525,7 +588,7 @@ namespace StarsAbove.NPCs.Penthesilea
 
 			if (NPC.localAI[3] <= 0)
 			{
-                if (Main.netMode != NetmodeID.MultiplayerClient)
+                if (Main.netMode != NetmodeID.MultiplayerClient && NPC.frame.Y != (int)Frame.Empty)
                 {
                     Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, 0, 0, ModContent.ProjectileType<PenthCastingPage>(), 0, 0, Main.myPlayer, 40);
 
@@ -570,8 +633,9 @@ namespace StarsAbove.NPCs.Penthesilea
 			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
 		}
-        public float quadraticFloatTimer;
-        public float quadraticFloat;
+        
+
+
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
 

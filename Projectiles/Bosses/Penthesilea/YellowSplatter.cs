@@ -23,6 +23,8 @@ namespace StarsAbove.Projectiles.Bosses.Penthesilea
             Projectile.penetrate = -1;
             Projectile.scale = 1f;
             Projectile.alpha = 255;
+            Projectile.light = 1f;
+
             Projectile.penetrate = -1;
             Projectile.hostile = true;
 
@@ -45,7 +47,7 @@ namespace StarsAbove.Projectiles.Bosses.Penthesilea
 
             if (Projectile.timeLeft == 1)
             {
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<YellowSplatterDamage>(), 200, 0f, Projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<YellowSplatterDamage>(), 100, 0f, Projectile.owner, 0f, 0f);
             }
             // Fade in
             Projectile.alpha--;

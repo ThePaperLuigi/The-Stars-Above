@@ -230,6 +230,14 @@ namespace StarsAbove.Systems
         #endregion
 
         #region Penthesilea Voice Lines
+        public static readonly SoundStyle Penthesilea_AlrightMyTurn = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/AlrightMyTurn")
+        {
+
+        };
+        public static readonly SoundStyle Penthesilea_HandsOn = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/HandsOn")
+        {
+
+        };
         public static readonly SoundStyle Penthesilea_HelloLittlePaintbrush = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/HelloLittlePaintbrush")
         {
 

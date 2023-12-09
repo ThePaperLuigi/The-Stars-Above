@@ -1,4 +1,5 @@
 ﻿using StarsAbove.NPCs;
+using StarsAbove.NPCs.AttackLibrary;
 using StarsAbove.Systems;
 using StarsAbove.UI.CelestialCartography;
 using System;
@@ -51,6 +52,7 @@ namespace StarsAbove.Systems
 
         [Label("$Mods.StarsAbove.Config.ColorblindBoss.Label")]
         [Tooltip("$Mods.StarsAbove.Config.ColorblindBoss.Tooltip")]
+        [DefaultValue(false)]
         public bool ColorblindBoss;
 
         [Label("$Mods.StarsAbove.Config.SubworldCompatibility.Label")]
@@ -81,7 +83,7 @@ namespace StarsAbove.Systems
             StarsAbovePlayer.BossEnemySpawnModDisabled = DisableBossEnemySpawnMod;
             StarsAboveGlobalBuff.DisableManaSicknessChange = DisableManaSicknessChange;
             BossPlayer.disableBossAggro = DisableBossAggro;
-            //PenthesileaBoss.ColorblindEnabled = ColorblindBoss;
+            AttackLibrary.ColorblindEnabled = ColorblindBoss;
             CelestialCompass.DisableMultiplayerCompatibility = DisableCompatibilityMode;
         }
     }

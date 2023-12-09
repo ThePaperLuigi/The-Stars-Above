@@ -26,7 +26,7 @@ namespace StarsAbove.Projectiles.Bosses.Penthesilea
 			Projectile.hostile = true;         //Can the projectile deal damage to the player?
 			//projectile.minion = true;           //Is the projectile shoot by a ranged weapon?
 			Projectile.penetrate = 99;           //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
-			Projectile.timeLeft = 240;          //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
+			Projectile.timeLeft = 360;          //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
 			Projectile.alpha = 255;             //The transparency of the projectile, 255 for completely transparent. (aiStyle 1 quickly fades the projectile in) Make sure to delete this if you aren't using an aiStyle that fades in. You'll wonder why your projectile is invisible.
 			Projectile.light = 1f;            //How much light emit around the projectile
 			Projectile.ignoreWater = true;          //Does the projectile's speed be influenced by water?
@@ -77,12 +77,25 @@ namespace StarsAbove.Projectiles.Bosses.Penthesilea
 
 					if(Main.netMode != NetmodeID.MultiplayerClient)
 					{
-                        int index = Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X + Main.rand.Next(-800,800), position.Y, 0, velocity.Y, type, Projectile.damage, 0f, Main.myPlayer);
-
+						int randomPosition = Main.rand.Next(-800, 800);
+                        int index = Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X + randomPosition, position.Y, 0, velocity.Y, type, Projectile.damage, 0f, Main.myPlayer);
+                        
+						float dustAmount = 30f;
+                        for (int i = 0; (float)i < dustAmount; i++)
+                        {
+                            Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                            spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+                            spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
+                            int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.GemAmethyst);
+                            Main.dust[dust].scale = 2f;
+                            Main.dust[dust].noGravity = true;
+                            Main.dust[dust].position = new Vector2(Projectile.Center.X + randomPosition, Projectile.Center.Y) + spinningpoint5;
+                            Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 3f;
+                        }
                     }
+                    
 
-
-				}
+                }
 
 				Projectile.ai[0] = 0;
 			}
