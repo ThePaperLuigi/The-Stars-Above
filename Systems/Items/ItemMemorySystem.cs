@@ -976,7 +976,7 @@ namespace StarsAbove.Systems.Items
         {
             if (Main.LocalPlayer.active && !Main.LocalPlayer.dead && !Player.GetModPlayer<BossPlayer>().QTEActive && StarsAbove.weaponMemoryKey.JustPressed)
             {
-                if (PearlescentOrb && !Player.HasBuff(BuffType<SimulacraShifterCooldown>()))
+                if (SimulacraShifter && !Player.HasBuff(BuffType<SimulacraShifterCooldown>()))
                 {
                     Player.AddBuff(BuffType<Invincibility>(), 6 * 60);
                     Player.AddBuff(BuffType<SimulacraShifterCooldown>(), (int)((60 * 120) * 1f - cooldownMod));
@@ -1008,7 +1008,17 @@ namespace StarsAbove.Systems.Items
                             if (Main.rand.NextFloat() > 0.2f)
                             {
                                 npc.AddBuff(BuffType<Stun>(), 180);
-
+                                for (int i2 = 0; i2 < dustAmount; i2++)
+                                {
+                                    Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                                    spinningpoint5 += -Vector2.UnitY.RotatedBy(i2 * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+                                    spinningpoint5 = spinningpoint5.RotatedBy(npc.Center.ToRotation() + randomConstant);
+                                    int dust = Dust.NewDust(npc.Center, 0, 0, DustID.GemAmethyst);
+                                    Main.dust[dust].scale = 1f;
+                                    Main.dust[dust].noGravity = true;
+                                    Main.dust[dust].position = npc.Center + spinningpoint5;
+                                    Main.dust[dust].velocity = npc.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 5f;
+                                }
                             }
 
                         }

@@ -9187,7 +9187,7 @@ Mods: {
 				// WeaponStatus: It currently has 1 Memory Imprinted.
 				// WeaponStatusPlural: It currently has {0} Memories Imprinted.
 				// MemorySlot: Place a Memory into this slot to Imprint it. Once a Memory is Imprinted, it is permanently attached and can not be removed, only overwritten. Duplicates do not count.
-				// ConfirmImprint: Are you sure you would like to Imprint these Memories? Remember, this is permanent.
+				// ConfirmImprint: Are you sure you would like to Imprint these Memories? Remember, this is final.
 				// ConfirmImprintOverwrite: Are you sure you would like to Imprint these Memories? Some prior Memories will be overwritten.
 				// ConfirmImprintNoMemories: There are no applicable Memories able to be Imprinted.
 				// ConfirmImprintNoWeapon: There is no weapon in the Cosmoturgy Station.
