@@ -9304,6 +9304,21 @@ Mods: {
 					'''
 				TooltipAttached: Press the Weapon Relic Key to become Invincible for 6 seconds, but you can no longer use this weapon while Invincible (2 minute cooldown)
 			}
+
+			ChartTheCosmosMusicBox: {
+				DisplayName: Chart The Cosmos Music Box
+				Tooltip: ""
+			}
+
+			EvenStarsMustFallMusicBox: {
+				DisplayName: Even Stars Must Fall Music Box
+				Tooltip: ""
+			}
+
+			LegendsYetUnspunMusicBox: {
+				DisplayName: Legends Yet Unspun Music Box
+				Tooltip: ""
+			}
 		}
 
 		UIElements: {

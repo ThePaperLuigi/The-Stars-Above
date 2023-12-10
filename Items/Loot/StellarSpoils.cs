@@ -55,16 +55,16 @@ namespace StarsAbove.Items.Loot
         {
             //Bags only! 5% chance for a music box.
             itemLoot.Add(ItemDropRule.OneFromOptions(20,
-                ItemType<CosmicWillMusicBox>(),
+                ItemType<ChartTheCosmosMusicBox>(),
                 ItemType<ElpisMusicBox>(),
-                ItemType<FirstWarningMusicBox>(),
+                ItemType<LegendsYetUnspunMusicBox>(),
                 ItemType<FleetingMomentMusicBox>(),
                 ItemType<MageOfVioletMusicBox>(),
                 ItemType<MightOfTheHellbladeMusicBox>(),
                 ItemType<SecondWarningMusicBox>(),
                 ItemType<ShadowsCastByTheMightyMusicBox>(),
                 ItemType<SunsetStardustMusicBox>(),
-                ItemType<TheExtremeMusicBox>(),
+                ItemType<EvenStarsMustFallMusicBox>(),
                 ItemType<ToTheEdgeMusicBox>(),
                 ItemType<UnmatchingPiecesMusicBox>(),
                 ItemType<VoyageMusicBox>()
