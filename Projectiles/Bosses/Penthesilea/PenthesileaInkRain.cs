@@ -67,11 +67,16 @@ namespace StarsAbove.Projectiles.Bosses.Penthesilea
 
 					Projectile.ai[0] = 0;
 					int type = ModContent.ProjectileType<InkBlot>();
+                    float launchSpeed = 10f;
 
+                    if (Main.rand.NextBool(6))
+					{
+						launchSpeed = 5f;
+                        type = ModContent.ProjectileType<InkClot>();
+                    }
 
 					Vector2 position = Projectile.Center;
 
-					float launchSpeed = 10f;
 					Vector2 direction = Vector2.Normalize(targetCenter - Projectile.Center);
 					Vector2 velocity = direction * launchSpeed;
 

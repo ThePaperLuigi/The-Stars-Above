@@ -111,7 +111,7 @@ namespace StarsAbove.UI.CelestialCartography
                     }
                     spriteBatch.Draw(
                         (Texture2D)Request<Texture2D>("StarsAbove/UI/CelestialCartography/LocationNames/" + modPlayer.locationName),
-                        new Vector2(Main.screenWidth/2, Main.screenHeight/2 ),
+                        new Vector2(Main.screenWidth/2, Main.screenHeight/2 - 40),
 						(Rectangle?)null,
 						Color.White * (modPlayer.locationPopUpAlpha),
 						0f,

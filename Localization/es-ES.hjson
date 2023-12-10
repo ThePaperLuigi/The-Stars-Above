@@ -63,7 +63,7 @@ Mods: {
 				// LaunchLeft: Launched left in {0}...
 				// LaunchRight: Launched right in {0}...
 				// Success: Success!
-				// Happy: The Ringmaster's [c/D83838:fury] begets chaos...
+				// Happy: The Ringmaster's [c/FADE5D:delight] begets chaos...
 				// Angry: The Ringmaster's [c/D83838:fury] begets chaos...
 				// Sad: The Ringmaster's [c/3888D8:despair] begets chaos...
 			}
@@ -71,7 +71,7 @@ Mods: {
 			Penthesilea: {
 				// BluePaint: You've been coated in [c/3888D8:blue] paint!
 				// RedPaint: You've been coated in [c/D83838:red] paint!
-				// YellowPaint: You've been coated in [c/D83838:yellow] paint!
+				// YellowPaint: You've been coated in [c/FADE5D:yellow] paint!
 			}
 
 			// Dioskouroi.Clash: The Dioskouroi clash, equalizing their HP!
@@ -2861,8 +2861,8 @@ Mods: {
 						Dialogue: {
 							// 0: When we first met, I knew he could see right through me. I am a sinner, after all.
 							// 1: His frozen world was the Ardor's doing, the stark white reminder of my failures.
-							// 2: There was nothing I could say. Amidst the ruin of his people, I could only extend my hand... If he cut me down then, it would have been a mercy. This was the moment I discovered that my greatest, most fervent wish failed.
-							// 3: Instead, he stayed his blade. I offered him the only thing I could- to watch over me as I conducted my penance. Now my most stalwart ally, and I erased everything he loved. What does that make me?
+							// 2: There was nothing I could say. Amidst the ruin of his people, I could only extend my hand... If he cut me down then, it would have been a mercy. This was the moment I discovered that I failed.
+							// 3: Instead, he stayed his blade. I offered him the only thing I could- to watch over me as I conducted my penance. Now my most stalwart ally, and I erased everything he loved.
 							// 4: I often return to this place. The cold bites into my skin... it's what I deserve.
 						}
 
