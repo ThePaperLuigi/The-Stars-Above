@@ -83,21 +83,10 @@ namespace StarsAbove.Tiles.BossLoot
 			// The placeStyle calculated here corresponds to whatever placeStyle you specified on your items that place this tile (Either through Item.placeTile or Item.DefaultToPlacableTile)
 			int placeStyle = frameX / FrameWidth;
 
-			int itemType = 0;
-			switch (placeStyle)
-			{
-				case 0:
-					itemType = ModContent.ItemType<Items.Placeable.BossLoot.WarriorBossRelicItem>();
-					break;
-					// Optional: Add more cases here
-			}
+            int itemType = ModContent.ItemType<Items.Placeable.BossLoot.WarriorBossRelicItem>();
 
-			if (itemType > 0)
-			{
-				// Spawn the item
-				//Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, itemType);
-			}
-		}
+            Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, itemType);
+        }
 
 		public override bool CreateDust(int i, int j, ref int type)
 		{
