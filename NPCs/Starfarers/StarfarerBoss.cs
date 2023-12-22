@@ -32,6 +32,7 @@ using StarsAbove.Projectiles.Extra;
 using static StarsAbove.NPCs.Thespian.ThespianBoss;
 using System.Collections.Generic;
 using StarsAbove.Projectiles.Bosses.Penthesilea;
+using StarsAbove.Items.Memories;
 
 namespace StarsAbove.NPCs.Starfarers
 {
@@ -199,18 +200,11 @@ namespace StarsAbove.NPCs.Starfarers
             }
 			if (AI_Timer < 120 && AI_State == (float)ActionState.Idle)
 			{
-				if (NPC.life <= (NPC.lifeMax * 0.9) && AI_RotationNumber < 26) //At a certain HP threshold, skip ahead to Phase 2 (Phase 2 can be naturally reached by waiting)
-				{
-					AI_RotationNumber = 1;
-					NPC.netUpdate = true;
-				}
+				
 			}
 			else if (AI_Timer >= AttackTimer) //An attack is active. (Temp 480, usually 120, or 2 seconds)
             {
 
-
-
-                //TODO.
                 
                 if (DownedBossSystem.downedTsuki)
                 {
@@ -595,8 +589,11 @@ namespace StarsAbove.NPCs.Starfarers
 			npcLoot.Add(notExpertRule);*/
 			//npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Materials.CelestialPrincessGenesisPrecursor>(), 4));
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StellarSpoils>(), 1, 2, 3));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DescenderGemstone>(), 4, 1, 1));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PhantomMask>(), 4, 1, 1));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PowerMoon>(), 4, 1, 1));
 
-			StellarSpoils.SetupBossStellarSpoils(npcLoot);
+            StellarSpoils.SetupBossStellarSpoils(npcLoot);
 		}
 		
 		private void SpawnAnimation()
