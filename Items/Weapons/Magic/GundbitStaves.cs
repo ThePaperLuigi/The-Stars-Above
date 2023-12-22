@@ -131,7 +131,7 @@ namespace StarsAbove.Items.Weapons.Magic
                 .AddIngredient(ItemID.Nanites, 50)
                 .AddIngredient(ItemID.FragmentNebula, 10)
                 .AddIngredient(ItemID.MartianConduitPlating, 20)
-                .AddIngredient(ItemType<EssenceOfDancingSeas>())
+                .AddIngredient(ItemType<EssenceOfFirepower>())
                 .AddTile(TileID.Anvils)
                 .Register();
         }
