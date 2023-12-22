@@ -60,7 +60,7 @@ namespace StarsAbove.UI
 		public override void Draw(SpriteBatch spriteBatch) {
 			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
-			if (modPlayer.VagrantBarActive == false)
+			if (modPlayer.StarfarerBossBarActive == false)
 				return;
 
 			base.Draw(spriteBatch);

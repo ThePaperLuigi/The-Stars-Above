@@ -32,6 +32,8 @@ using StarsAbove.Projectiles.Extra;
 using StarsAbove.Buffs.SubworldModifiers;
 using StarsAbove.Items.Accessories;
 using StarsAbove.Items.BossBags;
+using static StarsAbove.NPCs.Thespian.ThespianBoss;
+using System.Collections.Generic;
 
 namespace StarsAbove.NPCs.Arbitration
 {
@@ -84,7 +86,7 @@ namespace StarsAbove.NPCs.Arbitration
 			NPCID.Sets.CantTakeLunchMoney[Type] = true;
 			
 			//Phase 1, so no bestiary
-			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new(0)
+			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new()
 			{
 				Hide = false // Hides this NPC from the bestiary
 			};
@@ -93,15 +95,11 @@ namespace StarsAbove.NPCs.Arbitration
 		}
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
-			int associatedNPCType = ModContent.NPCType<WarriorOfLightBoss>();
-			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[associatedNPCType], quickUnlock: true);
+            bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 
-			// We can use AddRange instead of calling Add multiple times in order to add multiple items at once
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-
-				new FlavorTextBestiaryInfoElement($"Mods.StarsAbove.Bestiary.{Name}")
-			});
-		}
+                new FlavorTextBestiaryInfoElement($"Mods.StarsAbove.Bestiary.{Name}")
+                });
+        }
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
@@ -180,7 +178,7 @@ namespace StarsAbove.NPCs.Arbitration
 
 			//REPLACE BAR WITH YOUR OWN
             bossPlayer.ArbitrationBarActive = true;
-
+            Lighting.AddLight(NPC.Center, TorchID.White);
             NPC.velocity *= 0.98f; //So the dashes don't propel the boss away
 
             Player P = Main.player[NPC.target];//THIS IS THE BOSS'S MAIN TARGET
@@ -210,93 +208,71 @@ namespace StarsAbove.NPCs.Arbitration
             }
 			if (AI_Timer < 120 && AI_State == (float)ActionState.Idle)
 			{
-				if (NPC.life <= (NPC.lifeMax * 0.9) && AI_RotationNumber < 26) //At a certain HP threshold, skip ahead to Phase 2 (Phase 2 can be naturally reached by waiting)
-				{
-					AI_RotationNumber = 1;
-					NPC.netUpdate = true;
-				}
+				
 			}
 			else if (AI_Timer >= AttackTimer) //An attack is active. (Temp 480, usually 120, or 2 seconds)
             {
-				switch (AI_RotationNumber)
-				{
+                List<RotationAction> bossRotation = new List<RotationAction>
+                {
+					Titanomachia,
+					BloodMoon1,
+                    VisionsBeyond,
+                    Titanomachia2,
+					DarkDeluge,		
+					DarkDesign,
+                    Titanomachia,
+                    DarkDeluge,
+					SeveredFate1,
+                    OrdainedEnd,
+					BloodMoon1,
+                    DarkDeluge,
+					Titanomachia,
+                    ShadowsWithal,
+                    DarkDeluge,
+                    DeathRecital,
+					BloodMoon3,
+                    Titanomachia,
+                    BloodMoon2,
+					SeveredFate2,
+                    DarkDeluge,
+                    Titanomachia2,
+                    Titanomachia,
+                    DarkDeluge,
+                    BloodMoon3,
+					OrdainedEnd,
+                    SeveredFate1,
+                    OrdainedEnd,
+                    BloodMoon3,
+                    BloodMoon3,
+                    DarkDeluge,
+                    Titanomachia,
+                    ShadowsWithal,
+                    DarkDeluge,
+                    DeathRecital,
+                    DeathRecital,
+                    BloodMoon3,
+                    Titanomachia2,      
+                    BloodMoon2,
+                    SeveredFate2,
+                    
 
-					case 0:
-						ThreadsOfFate1(P, NPC);
-						break;
-					case 1:
-						Anosios1(P, NPC);
-						break;
-					default:
-						AI_RotationNumber = 55;//Once phase 2 is reached, always go back to the 1st mechanic after phase 2.
-						return;
 
-				}
-
-			}
+                 };
+                if (AI_RotationNumber >= 0 && AI_RotationNumber < bossRotation.Count)
+                {
+                    bossRotation[(int)AI_RotationNumber](P, NPC);
+                }
+                else
+                {
+                    AI_RotationNumber = 4;
+                    return;
+                }
+            }
 			
 		}
 		private void BossVisuals()
-        {
-			for (int i = 0; i < Main.maxPlayers; i++)
-			{
-				Player player = Main.player[i];
-				if (player.active)
-				{
-					//If boss is in phase 2...
-					if (NPC.localAI[0] == 1 || NPC.localAI[0] == 2)
-					{
-						player.AddBuff(BuffType<Buffs.SubworldModifiers.MoonTurmoil>(), 18000);//5 minutes
+		{
 
-					}
-					//If boss is in phase 3...
-					if (NPC.localAI[0] == 2)
-					{
-						player.AddBuff(BuffType<Buffs.SubworldModifiers.ChaosTurmoil>(), 18000);
-						
-					}
-                    else
-                    {
-						
-                    }
-
-
-				}
-
-
-			}
-			if(Main.expertMode)
-            {
-				if (NPC.localAI[0] == 2)
-				{
-					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Angela3");
-					NPC.defense = 25;
-				}
-				else if (NPC.localAI[0] == 1)
-				{
-					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Angela2");
-					NPC.defense = 120;
-				}
-				else
-                {
-					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Angela1");
-					NPC.defense = 120;
-
-				}
-			}
-			else
-            {
-				if (NPC.localAI[0] != 0)
-				{
-					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TheExtreme");
-					NPC.defense = 5;
-				}
-				else
-				{
-					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TheExtremeIntro");
-					NPC.defense = 120;
-				}
-			}
 		}
 		private void FindTargetPlayer()
         {
@@ -460,7 +436,7 @@ namespace StarsAbove.NPCs.Arbitration
 			NPC.dontTakeDamage = true;
 			
 			NPC.localAI[1] += 1f;
-			if (NPC.localAI[1] >= 240f)
+			if (NPC.localAI[1] >= 10f)
 			{
 				
 
@@ -499,6 +475,7 @@ namespace StarsAbove.NPCs.Arbitration
             // Trophies are spawned with 1/10 chance
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.BossLoot.ArbitrationTrophyItem>(), 10));
 
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Consumables.DemonicCrux>(), 1));
             // ItemDropRule.MasterModeCommonDrop for the relic
             npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<Items.Placeable.BossLoot.ArbitrationBossRelicItem>()));
 
@@ -527,7 +504,7 @@ namespace StarsAbove.NPCs.Arbitration
             //Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
             //Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, 0, 0, ModContent.ProjectileType<VagrantSlamSprite>(), 0, 0, Main.myPlayer);
 
-            Vector2 initialMoveTo = new Vector2(14601, 5124);
+            Vector2 initialMoveTo = new Vector2(14601, 5054);
             NPC.position = initialMoveTo;
             //SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Journey, NPC.Center);
 
@@ -535,17 +512,9 @@ namespace StarsAbove.NPCs.Arbitration
 
             NPC.netUpdate = true;
 			//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_NalhaunIntroQuote, NPC.Center);
-			for (int d = 0; d < 130; d++)
-			{
-				Dust.NewDust(NPC.Center, 0, 0, DustID.SparksMech, 0f + Main.rand.Next(-30, 30), 0f + Main.rand.Next(-30, 30), 150, default(Color), 1.5f);
-			}
 			for (int d = 0; d < 144; d++)
 			{
-				Dust.NewDust(NPC.Center, 0, 0, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(-35, 35), 0f + Main.rand.Next(-35, 35), 150, default(Color), 1.5f);
-			}
-			for (int d = 0; d < 126; d++)
-			{
-				Dust.NewDust(NPC.Center, 0, 0, DustID.BlueFairy, 0f + Main.rand.Next(-36, 36), 0f + Main.rand.Next(-36, 36), 150, default(Color), 1.5f);
+				Dust.NewDust(NPC.Center, 0, 0, DustID.LifeDrain, 0f + Main.rand.Next(-35, 35), 0f + Main.rand.Next(-35, 35), 150, default(Color), 1.5f);
 			}
 
             Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "Arbitration";//lol
@@ -572,25 +541,7 @@ namespace StarsAbove.NPCs.Arbitration
 
 			if(NPC.frame.Y != (int)Frame.Empty)
             {
-				for (int i = 0; i < 5; i++)
-				{//Circle
-
-					if(NPC.direction == 1)
-                    {
-						Dust d = Main.dust[Dust.NewDust(new Vector2(NPC.Center.X + 29, NPC.Center.Y + 54), 0, 2, 20, Main.rand.NextFloat(-0.2f, 0.2f), Main.rand.NextFloat(-0.5f, -4.5f), 20, default(Color), 0.7f)];
-						d.shader = GameShaders.Armor.GetSecondaryShader(114, Main.LocalPlayer);
-						d.fadeIn = 1f;
-						d.noGravity = true;
-					}
-					else
-                    {
-						Dust d = Main.dust[Dust.NewDust(new Vector2(NPC.Center.X - 29, NPC.Center.Y + 54), 0, 2, 20, Main.rand.NextFloat(-0.2f, 0.2f), Main.rand.NextFloat(-0.5f, -4.5f), 20, default(Color), 0.7f)];
-						d.shader = GameShaders.Armor.GetSecondaryShader(114, Main.LocalPlayer);
-						d.fadeIn = 1f;
-						d.noGravity = true;
-					}
-					
-				}
+				
 
 				for (int i = 0; i < 3; i++)
 				{
@@ -600,9 +551,8 @@ namespace StarsAbove.NPCs.Arbitration
 						Main.rand.Next(-2048, 2048) * (0.003f * 200) - 10);
 					Dust d = Main.dust[Dust.NewDust(
 						NPC.Center + vector, 1, 1,
-						20, 0, 0, 255,
+						DustID.LifeDrain, 0, 0, 255,
 						new Color(1f, 1f, 1f), 1.5f)];
-					d.shader = GameShaders.Armor.GetSecondaryShader(114, Main.LocalPlayer);
 					d.velocity = -vector / 16;
 					d.velocity -= NPC.velocity / 8;
 					d.noLight = true;

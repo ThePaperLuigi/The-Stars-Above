@@ -16,7 +16,7 @@ using StarsAbove.NPCs;
 using StarsAbove.NPCs.Arbitration;
 using StarsAbove.NPCs.Nalhaun;
 using StarsAbove.NPCs.Penthesilea;
-using StarsAbove.NPCs.StarfarerBoss;
+using StarsAbove.NPCs.Starfarers;
 using StarsAbove.NPCs.Thespian;
 using StarsAbove.NPCs.Tsukiyomi;
 using StarsAbove.NPCs.WarriorOfLight;
@@ -905,6 +905,16 @@ namespace StarsAbove.Systems
         public bool seenDusking;
         public bool seenAtlas;
 
+        //Wrath of the Gods
+        public bool seenNoxusEgg;
+        public bool seenEntropicGod;
+        public bool seenNamelessDeity;
+
+        //Starlight River
+        public bool seenCeiros;
+        public bool seenGlassweaver;
+        public bool seenAuroracle;
+
         public bool seenUnknownBoss;
         public int seenUnknownBossTimer;
         public List<int> seenBossesList = new List<int>();
@@ -1291,6 +1301,13 @@ namespace StarsAbove.Systems
             tag["seenDusking"] = seenDusking;
             tag["seenAtlas"] = seenAtlas;
 
+            tag["seenNoxusEgg"] = seenNoxusEgg;
+            tag["seenEntropicGod"] = seenEntropicGod;
+            tag["seenNamelessDeity"] = seenNamelessDeity;
+
+            tag["seenCeiros"] = seenCeiros;
+            tag["seenGlassweaver"] = seenGlassweaver;
+            tag["seenAuroracle"] = seenAuroracle;
 
             tag["seenObservatory"] = seenObservatory;
             tag["seenCygnusAsteroids"] = seenCygnusAsteroids;
@@ -1669,6 +1686,14 @@ namespace StarsAbove.Systems
             seenInfernon = tag.GetBool("seenInfernon");
             seenDusking = tag.GetBool("seenDusking");
             seenAtlas = tag.GetBool("seenAtlas");
+
+            seenNoxusEgg = tag.GetBool("seenNoxusEgg");
+            seenEntropicGod = tag.GetBool("seenEntropicGod");
+            seenNamelessDeity = tag.GetBool("seenNamelessDeity");
+
+            seenCeiros = tag.GetBool("seenCeiros");
+            seenGlassweaver = tag.GetBool("seenGlassweaver");
+            seenAuroracle = tag.GetBool("seenAuroracle");
 
 
             seenObservatory = tag.GetBool("seenObservatory");
@@ -4045,7 +4070,7 @@ namespace StarsAbove.Systems
                     InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
 
                 }
-                if (starfarerBossItemDialogue == 0 && DownedBossSystem.downedPenth)
+                if (starfarerBossItemDialogue == 0 && DownedBossSystem.downedPenth && DownedBossSystem.downedThespian && DownedBossSystem.downedDioskouroi && DownedBossSystem.downedVagrant && NPC.downedPlantBoss)
                 {
                     starfarerBossItemDialogue = 1;
                     InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
@@ -7276,6 +7301,69 @@ namespace StarsAbove.Systems
                     seenUnknownBossTimer = 300;
                 }
             }
+
+            //Wrath of the Gods
+            if (ModLoader.TryGetMod("NoxusBoss", out Mod wrathOfTheGods))
+            {
+                if (NPC.AnyNPCs(wrathOfTheGods.Find<ModNPC>("NoxusEgg").Type) && !seenNoxusEgg)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onNoxusEgg");
+                    seenUnknownBossTimer = 300;
+                }
+                if (NPC.AnyNPCs(wrathOfTheGods.Find<ModNPC>("EntropicGod").Type) && !seenEntropicGod)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onEntropicGod");
+                    seenUnknownBossTimer = 300;
+                }
+                if (NPC.AnyNPCs(wrathOfTheGods.Find<ModNPC>("NamelessDeityBoss").Type) && !seenNamelessDeity)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onNamelessDeity");
+                    seenUnknownBossTimer = 300;
+                }
+            }
+            //Starlight River
+            if (ModLoader.TryGetMod("StarlightRiver", out Mod starlightRiver))
+            {
+                if (NPC.AnyNPCs(starlightRiver.Find<ModNPC>("Glassweaver").Type) && !seenGlassweaver)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onGlassweaver");
+                    seenUnknownBossTimer = 300;
+                }
+                if (NPC.AnyNPCs(starlightRiver.Find<ModNPC>("VitricBoss").Type) && !seenCeiros)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onCeiros");
+                    seenUnknownBossTimer = 300;
+                }
+                if (NPC.AnyNPCs(starlightRiver.Find<ModNPC>("SquidBoss").Type) && !seenAuroracle)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onAuroracle");
+                    seenUnknownBossTimer = 300;
+                }
+            }
         }
         private void UnknownBossStarfarerPrompts()
         {
@@ -9024,6 +9112,14 @@ namespace StarsAbove.Systems
                 Player.statDefense *= 0.5f;
             }
         }
+        public override bool CanUseItem(Item item)
+        {
+            if(VNDialogueActive)
+            {
+                return false;
+            }
+            return base.CanUseItem(item);
+        }
 
         public override bool CanBeHitByProjectile(Projectile proj)
         {
@@ -10350,6 +10446,44 @@ namespace StarsAbove.Systems
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.201", Player.name);
                         seenAtlas = true;
                     }
+                    //Wrath of the Gods
+                    if (eventPrompt == "onNoxusEgg")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.204", Player.name);
+                        seenNoxusEgg = true;
+                    }
+                    if (eventPrompt == "onEntropicGod")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.205", Player.name);
+                        seenEntropicGod = true;
+                    }
+                    if (eventPrompt == "onNamelessDeity")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.206", Player.name);
+                        seenNamelessDeity = true;
+                    }
+                    //Starlight River
+                    if (eventPrompt == "onGlassweaver")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.207", Player.name);
+                        seenGlassweaver = true;
+                    }               
+                    if (eventPrompt == "onAuroracle")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.208", Player.name);
+                        seenAuroracle = true;
+                    }
+                    if (eventPrompt == "onCeiros")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.209", Player.name);
+                        seenCeiros = true;
+                    }
                     //Thorium bosses.
                     if (eventPrompt == "onGrandThunderBird")
                     {
@@ -11571,6 +11705,44 @@ namespace StarsAbove.Systems
                         promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.203", Player.name);
                         seenAtlas = true;
+                    }
+                    //Wrath of the Gods
+                    if (eventPrompt == "onNoxusEgg")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.206", Player.name);
+                        seenNoxusEgg = true;
+                    }
+                    if (eventPrompt == "onEntropicGod")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.207", Player.name);
+                        seenEntropicGod = true;
+                    }
+                    if (eventPrompt == "onNamelessDeity")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.208", Player.name);
+                        seenNamelessDeity = true;
+                    }
+                    //Starlight River
+                    if (eventPrompt == "onGlassweaver")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.209", Player.name);
+                        seenGlassweaver = true;
+                    }
+                    if (eventPrompt == "onAuroracle")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.210", Player.name);
+                        seenAuroracle = true;
+                    }
+                    if (eventPrompt == "onCeiros")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.211", Player.name);
+                        seenCeiros = true;
                     }
                     //Thorium bosses.
                     if (eventPrompt == "onGrandThunderBird")

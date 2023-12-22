@@ -88,7 +88,7 @@ namespace StarsAbove.NPCs.Penthesilea
 			NPCID.Sets.CantTakeLunchMoney[Type] = true;
 			
 			//Phase 1, so no bestiary
-			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new(0)
+			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new()
 			{
 				Hide = false // Hides this NPC from the bestiary
 			};
@@ -97,21 +97,17 @@ namespace StarsAbove.NPCs.Penthesilea
 		}
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
-			int associatedNPCType = ModContent.NPCType<WarriorOfLightBoss>();
-			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[associatedNPCType], quickUnlock: true);
+            bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 
-			// We can use AddRange instead of calling Add multiple times in order to add multiple items at once
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-
-				new FlavorTextBestiaryInfoElement($"Mods.StarsAbove.Bestiary.{Name}")
-			});
-		}
+                new FlavorTextBestiaryInfoElement($"Mods.StarsAbove.Bestiary.{Name}")
+                });
+        }
         public float quadraticFloatTimer;
         public float quadraticFloat;
         public override void SetDefaults()
 		{
 			NPC.boss = true;
-            NPC.lifeMax = 116000;
+            NPC.lifeMax = 76000;
             NPC.defense = 15;
             NPC.damage = 15;
 			NPC.knockBackResist = 0f;
@@ -572,7 +568,7 @@ namespace StarsAbove.NPCs.Penthesilea
                 Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "Penthesilea";//lol
                 Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().loadingScreenOpacity = 1f;
                 AI_State = (float)ActionState.Idle;
-                AI_CastTimer = 120;
+                AI_Timer = 120;
             }
 
         }

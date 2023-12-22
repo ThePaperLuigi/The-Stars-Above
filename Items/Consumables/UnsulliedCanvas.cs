@@ -51,8 +51,6 @@ namespace StarsAbove.Items.Consumables
 
 				int type = ModContent.NPCType<NPCs.Penthesilea.PenthesileaBoss>();
 
-				if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("Magical energy coalesces around you..."), 210, 100, 175);}
-				if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("Penthesilea, The Witch of Ink draws near!"), 200, 150, 125);}
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					// If the player is not in multiplayer, spawn directly

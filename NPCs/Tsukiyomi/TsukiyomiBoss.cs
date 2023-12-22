@@ -1167,7 +1167,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.BossLoot.NalhaunTrophyItem>(), 10));
 
 			// ItemDropRule.MasterModeCommonDrop for the relic
-			npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<Items.Placeable.BossLoot.NalhaunBossRelicItem>()));
+			
 
 			// ItemDropRule.MasterModeDropOnAllPlayers for the pet
 			//npcLoot.Add(ItemDropRule.MasterModeDropOnAllPlayers(ModContent.ItemType<MinionBossPetItem>(), 4));
@@ -1187,8 +1187,8 @@ namespace StarsAbove.NPCs.Tsukiyomi
 			npcLoot.Add(notExpertRule);*/
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Materials.CelestialPrincessGenesisPrecursor>(), 4));
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StellarSpoils>(), 1, 5, 5));
-
-			StellarSpoils.SetupBossStellarSpoils(npcLoot);
+            npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<Items.Placeable.BossLoot.TsukiyomiBossRelicItem>()));
+            StellarSpoils.SetupBossStellarSpoils(npcLoot);
 		}
 		
 		private void SpawnAnimation()

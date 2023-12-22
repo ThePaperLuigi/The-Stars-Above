@@ -29,7 +29,7 @@ namespace StarsAbove.UI
 			area.Height.Set(60, 0f);
 			area.HAlign = area.VAlign = 0.5f; // 1
 
-			barFrame = new UIImage(Request<Texture2D>("StarsAbove/UI/blank"));
+			barFrame = new UIImage(Request<Texture2D>("StarsAbove/UI/ArbiterCastBarFrame"));
 			barFrame.Left.Set(22, 0f);
 			barFrame.Top.Set(0, 0f);
 			barFrame.Width.Set(138, 0f);

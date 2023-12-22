@@ -294,73 +294,22 @@ namespace StarsAbove.Systems
         #endregion
 
         #region Arbitration Voice Lines
-        public static readonly SoundStyle Arbitration_ABlightTakesThisLand = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Arbitration/ABlightTakesThisLand")
-        {
-
-        };
-        public static readonly SoundStyle Arbitration_ArbiterGrunt = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Arbitration/ArbiterGrunt")
-        {
-
-        };
-        public static readonly SoundStyle Arbitration_ArbiterLaugh = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Arbitration/ArbiterLaugh")
+        public static readonly SoundStyle Arbitration_Voice = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Arbitration/ArbitrationReverse")
         {
             Variants = new[]
             {
-                1,2,3,4
+                1,2,3,4,5,6
             }
         };
 
-        public static readonly SoundStyle Arbitration_DepriveThemOfLife = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Arbitration/DepriveThemOfLife")
+        #endregion
+        #region Starfarer Boss Voice Lines
+        public static readonly SoundStyle StarfarerBoss_Intro = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/BossLines/StarfarerIntro")
         {
-
-        };
-        public static readonly SoundStyle Arbitration_DespairInOurPresence = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Arbitration/DespairInOurPresence")
-        {
-
-        };
-        public static readonly SoundStyle Arbitration_FateCanNotBeAverted = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Arbitration/FateCanNotBeAverted")
-        {
-
-        };
-        public static readonly SoundStyle Arbitration_FulfillDestiny = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Arbitration/FulfillDestiny")
-        {
-
-        };
-        public static readonly SoundStyle Arbitration_LongHaveWeWaited = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Arbitration/LongHaveWeWaited")
-        {
-
-        };
-        public static readonly SoundStyle Arbitration_Oblivion = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Arbitration/Oblivion")
-        {
-
-        };
-        public static readonly SoundStyle Arbitration_PierceTheVeil = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Arbitration/PierceTheVeil")
-        {
-
-        };
-        public static readonly SoundStyle Arbitration_SoItMustBe = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Arbitration/SoItMustBe")
-        {
-
-        };
-        public static readonly SoundStyle Arbitration_TheEndOfDaysDrawsNear = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Arbitration/TheEndOfDaysDrawsNear")
-        {
-
-        };
-        public static readonly SoundStyle Arbitration_TheFirstAreWeTheLastAreWe = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Arbitration/TheFirstAreWeTheLastAreWe")
-        {
-
-        };
-        public static readonly SoundStyle Arbitration_TheyAreRightToFear = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Arbitration/TheyAreRightToFear")
-        {
-
-        };
-        public static readonly SoundStyle Arbitration_WasIsAndWillForeverBe = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Arbitration/WasIsAndWillForeverBe")
-        {
-
-        };
-        public static readonly SoundStyle Arbitration_WeTranscendTime = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Arbitration/WeTranscendTime")
-        {
-
+            Variants = new[]
+            {
+                1,2
+            }
         };
 
         #endregion

@@ -38,6 +38,7 @@ using StarsAbove.Subworlds.ThirdRegion;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.WorldBuilding;
 using StarsAbove.NPCs.Arbitration;
+using StarsAbove.Buffs.Boss;
 
 namespace StarsAbove.Systems
 {
@@ -462,6 +463,13 @@ namespace StarsAbove.Systems
                         {
                             if (SubworldSystem.IsActive<Katabasis>())
                             {
+                                Player.shimmerMonolithShader = true;
+
+                                if (Player.velocity.X == 0)
+                                {
+                                    Player.AddBuff(BuffType<VisionsBeyondBuff>(), 10);
+                                }
+
                                 if (!NPC.AnyNPCs(NPCType<ArbitrationBoss>()) && anomalyTimer > 0)
                                 {
                                     anomalyTimer = 0;

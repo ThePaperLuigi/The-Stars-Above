@@ -33,6 +33,8 @@ using System.IO;
 using SubworldLibrary;
 using StarsAbove.NPCs.Arbitration;
 using StarsAbove.NPCs.Penthesilea;
+using StarsAbove.NPCs.Thespian;
+using StarsAbove.NPCs.Starfarers;
 
 namespace StarsAbove
 {
@@ -245,7 +247,19 @@ namespace StarsAbove
 
 				return canSeeBoss;
 			};
-			/*
+            Func<bool> CanSeeStarfarers = () =>
+            {
+                bool PenthDowned = DownedBossSystem.downedPenth;
+                bool canSeeBoss = false;
+                if (PenthDowned && NPC.downedPlantBoss)
+				{
+					canSeeBoss = true;
+				}
+                
+
+                return canSeeBoss;
+            };
+            /*
 			if (recipeBrowser != null && !Main.dedServ)
 			{
 				recipeBrowser.Call(new object[5]
@@ -264,7 +278,7 @@ namespace StarsAbove
 				})
 				});
 			}*/
-			if (bossChecklist != null)
+            if (bossChecklist != null)
 			{
 				//Vagrant of Space and Time
 				bossChecklist.Call(
@@ -286,17 +300,30 @@ namespace StarsAbove
 
 					}
 				);
-				//Dioskouroi
-				bossChecklist.Call(
+                //Thespian
+                bossChecklist.Call(
+                    "LogBoss",
+                    this,
+                    nameof(ThespianBoss),
+                    3.5f,
+                    () => DownedBossSystem.downedThespian,
+                    ModContent.NPCType<ThespianBoss>(),
+                    new Dictionary<string, object>()
+                    {
+                        ["spawnItems"] = ModContent.ItemType<Items.Consumables.MalsaineDraught>(),
+                    }
+                );
+                //Dioskouroi
+                bossChecklist.Call(
 					"LogBoss",
 					this,
 					nameof(PolluxBoss),
-					9.5f,
+					6.5f,
 					() => DownedBossSystem.downedDioskouroi,
 					ModContent.NPCType<PolluxBoss>(),
 					new Dictionary<string, object>()
 					{
-						["spawnItems"] = ModContent.ItemType<Items.Consumables.ShatteredDisk>(),
+						["spawnItems"] = ModContent.ItemType<Items.Consumables.TwincruxPendant>(),
 						["customPortrait"] = (SpriteBatch sb, Rectangle rect, Color color) =>
 						{
 							Texture2D texture = ModContent.Request<Texture2D>("StarsAbove/Bestiary/Dioskouroi_Bestiary").Value;
@@ -311,7 +338,7 @@ namespace StarsAbove
 					"LogBoss",
 					this,
 					nameof(PenthesileaBoss),
-					13.5f,
+					11.5f,
 					() => DownedBossSystem.downedPenth,
 					ModContent.NPCType<PenthesileaBoss>(),
 					new Dictionary<string, object>()
@@ -319,8 +346,28 @@ namespace StarsAbove
 						["spawnItems"] = ModContent.ItemType<Items.Consumables.UnsulliedCanvas>(),
 					}
 				);
-				//Nalhaun
-				bossChecklist.Call(
+				//The Starfarers
+                bossChecklist.Call(
+                    "LogBoss",
+                    this,
+                    nameof(StarfarerBoss),
+                    12.5f,
+                    () => DownedBossSystem.downedStarfarers,
+                    ModContent.NPCType<StarfarerBoss>(),
+                    new Dictionary<string, object>()
+                    {
+                        ["spawnItems"] = ModContent.ItemType<Items.Consumables.StarfarerEssence>(),
+                        ["availability"] = CanSeeStarfarers,
+                        ["customPortrait"] = (SpriteBatch sb, Rectangle rect, Color color) =>
+                        {
+                            Texture2D texture = ModContent.Request<Texture2D>("StarsAbove/Bestiary/StarfarerBoss_Bestiary").Value;
+                            Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
+                            sb.Draw(texture, centered, color);
+                        }
+                    }
+                );
+                //Nalhaun
+                bossChecklist.Call(
 					"LogBoss",
 					this,
 					nameof(NalhaunBossPhase2),
@@ -343,7 +390,7 @@ namespace StarsAbove
 					"LogBoss",
 					this,
 					nameof(ArbitrationBoss),
-					15.1f,
+					17.9f,
 					() => DownedBossSystem.downedArbiter,
 					ModContent.NPCType<ArbitrationBoss>(),
 					new Dictionary<string, object>()

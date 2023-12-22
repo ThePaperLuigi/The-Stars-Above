@@ -1072,7 +1072,8 @@ namespace StarsAbove.Items.Consumables
                 modPlayer.starfarerBossItemDialogue = 2;
 
 
-				//Spawn item here.
+                //Spawn item here.
+                player.QuickSpawnItem(player.GetSource_GiftOrReward(), ItemType<StarfarerEssence>());
                 return true;
 
             }

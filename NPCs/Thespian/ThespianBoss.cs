@@ -103,15 +103,11 @@ namespace StarsAbove.NPCs.Thespian
 		}
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
-			int associatedNPCType = ModContent.NPCType<WarriorOfLightBoss>();
-			bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[associatedNPCType], quickUnlock: true);
+            bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 
-			// We can use AddRange instead of calling Add multiple times in order to add multiple items at once
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-
-				new FlavorTextBestiaryInfoElement($"Mods.StarsAbove.Bestiary.{Name}")
-			});
-		}
+                new FlavorTextBestiaryInfoElement($"Mods.StarsAbove.Bestiary.{Name}")
+                });
+        }
 		public override void SetDefaults()
 		{
 			NPC.boss = true;

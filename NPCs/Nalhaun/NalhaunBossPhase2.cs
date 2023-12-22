@@ -87,7 +87,7 @@ namespace StarsAbove.NPCs.Nalhaun
 			// Enemies can pick up coins, let's prevent it for this NPC
 			NPCID.Sets.CantTakeLunchMoney[Type] = true;
 			// Automatically group with other bosses
-			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers()
 			{ // Influences how the NPC looks in the Bestiary
 				CustomTexturePath = "StarsAbove/Bestiary/Nalhaun_Bestiary", // If the NPC is multiple parts like a worm, a custom texture for the Bestiary is encouraged.
 				Position = new Vector2(0f, 0f),

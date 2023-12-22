@@ -53,7 +53,6 @@ namespace StarsAbove.Items.Consumables
 				int type2 = ModContent.NPCType<NPCs.Dioskouroi.CastorBoss>();
 				int type3 = ModContent.NPCType<NPCs.Dioskouroi.DioskouroiWallsNPC>();
 
-				if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("Two demons, locked in conflict, appear at your sides."), 210, 100, 175);}
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					// If the player is not in multiplayer, spawn directly

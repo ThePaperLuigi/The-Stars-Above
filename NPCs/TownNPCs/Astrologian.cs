@@ -22,6 +22,7 @@ using StarsAbove.Systems;
 using StarsAbove.Items.Placeable.Cosmoturgy;
 using StarsAbove.Items.Memories;
 using StarsAbove.Items.Memories.TarotCard;
+using StarsAbove.Items.Consumables;
 
 namespace StarsAbove.NPCs.TownNPCs
 {
@@ -132,7 +133,7 @@ namespace StarsAbove.NPCs.TownNPCs
 			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				// Sets the preferred biomes of this town NPC listed in the bestiary.
 				// With Town NPCs, you usually set this to what biome it likes the most in regards to NPC happiness.
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
+				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
 
 				// Sets your NPC's flavor text in the bestiary.
 				//new FlavorTextBestiaryInfoElement("Hailing from a mysterious greyscale cube world, the Example Person is here to help you understand everything about tModLoader."),
@@ -239,6 +240,7 @@ namespace StarsAbove.NPCs.TownNPCs
 		public override List<string> SetNPCNameList()
 		{
 			return new List<string>() {
+				"Odette",
 				"Asterope",
 				"Maia",
 				"Taygete",
@@ -371,9 +373,10 @@ namespace StarsAbove.NPCs.TownNPCs
 				if(NPC.downedBoss2)
                 {
 					Main.npcChatText = LangHelper.GetTextValue("NPCDialogue.Astrologian.ThespianReady");
-					//Give player the boss summon item.
-					//Main.npcChatCornerItem = ItemID.HiveBackpack;
-					//Main.LocalPlayer.QuickSpawnItem(entitySource, ModContent.ItemType<WaspNest>());
+                    //Give player the boss summon item.
+                    //Main.npcChatCornerItem = ItemID.HiveBackpack;
+                    var entitySource = NPC.GetSource_GiftOrReward();
+                    Main.LocalPlayer.QuickSpawnItem(entitySource, ModContent.ItemType<MalsaineDraught>());
 				}
 				else
                 {

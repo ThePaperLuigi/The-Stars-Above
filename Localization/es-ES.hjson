@@ -6,6 +6,7 @@ Mods: {
 			// Thespian: failed to follow the act.
 			// ShockAndAwe: ... tried to rocket jump too hard.
 			// InevitableEnd: was caught in the crossfire of {0}'s Inevitable End.
+			// Arbitration: was doomed to chaos.
 		}
 
 		// Boss.WarriorOfLight: The Warrior of Light descends!
@@ -66,6 +67,11 @@ Mods: {
 				// Happy: The Ringmaster's [c/FADE5D:delight] begets chaos...
 				// Angry: The Ringmaster's [c/D83838:fury] begets chaos...
 				// Sad: The Ringmaster's [c/3888D8:despair] begets chaos...
+			}
+
+			Arbitration: {
+				// SeveredFate: Fate is severed; restore the thread of fate or perish...
+				// VisionsBeyond: Eldritch powers grant you visions beyond- Standing still and keeping focus will mimic this effect...
 			}
 
 			Penthesilea: {
@@ -1955,6 +1961,12 @@ Mods: {
 					// 201: A huge crystalline foe approaches- needless to say, prepare for a fight.
 					// 202: Ack; looks like that potion did do something. Don't let your guard down.
 					// 203: Get ready, because I won't hold back!
+					// 204: What IS that thing?! A being of pure void energy...
+					// 205: It's even stronger now?! Hey, isn't this, like... really bad?
+					// 206: You're kidding me.
+					// 207: Well, let's show 'em what we can do.
+					// 208: You've attracted that squid! So... what now? Beat it up, I guess?
+					// 209: So this is that sentinel, huh? Looks pretty tough!
 				}
 
 				Eridani: {
@@ -2162,6 +2174,12 @@ Mods: {
 					// 203: A colossal earthen entity is approaching- and it's hostile, no doubt. A fight it is.
 					// 204: That potion the Astrologian gave you definitely was 'strange' for a reason. Prepare yourself!
 					// 205: I trust you're ready for this?
+					// 206: What is this void... thing? It's nothing short of terrifying.
+					// 207: It's even stronger now?! Any other things I should know about?
+					// 208: You're kidding me.
+					// 209: Let's show this Glassweaver we mean business.
+					// 210: Looks like it took the bait. Time to get to work!
+					// 211: I'm going to wager a guess and say this is whom the Glassweaver spoke of. Don't get careless.
 				}
 			}
 
@@ -2549,7 +2567,7 @@ Mods: {
 							// 0: Hey, {0}. Remember how you fought our brother? Yes, we have a bit of a hypothesis we'd like to try out.
 							// 1: Wait, wait wait- this was an Eri-original idea. While I concede that I am curious, well...
 							// 2: It'll be fine. Anyway, we're going to do some friendly sparring to try out a hypothesis of mine. On one condition- We need to borrow a bit of your power.
-							// 3: Isn't that just so funny...! What's this called, dramatic irony? Haha... but it's true. We'd totally lose instantly in a fair match.
+							// 3: Isn't that just so funny...! What's this called, dramatic irony? ...but it's true. We'd lose quite rapidly in an even match.
 							// 4: Just use this item when you're ready. Find a nice open space, too.
 						}
 
@@ -2567,9 +2585,9 @@ Mods: {
 							// 3: ...
 							// 4: Hey, wouldn't it be crazy if-
 							// 5: No, that doesn't make sense. We can use the Array and Novas, right?
-							// 6: Maybe there's something else we're overlooking. Maybe we're cursed! I'd ask Perseus directly, but you know how he is. Jerk.
+							// 6: Maybe there's something else we're overlooking. We could be cursed! I'd ask Perseus directly, but you know how he is. Jerk.
 							// 7: Anyways, thanks again for our little sparring match. If you want another go, just give us the signal.
-							// 8: Right...
+							// 8: Right... it's like she likes getting blown up or something.
 						}
 
 						Choices: {
@@ -2899,10 +2917,10 @@ Mods: {
 					304: {
 						Dialogue: {
 							// 0: In a time before now, there existed a galaxy much like this one. In fact, is a perfect facsimile, or so was the naïve hope I shared.
-							// 1: Without warning, the Ardor swept through it. There was no struggle, because there was nothing to struggle against. The cold does not care. It does not hate, and it does not love. Eventually, the stillness was all that remained.
-							// 2: With the energy gained from my long, storied existence, I begun everything again. As if nothing happened, I spun again the web of the galaxy from nil, my one final act of providence. Warm and full of life.
+							// 1: Without warning, the Ardor swept through it. There was no struggle, because there was nothing to struggle against. The cold does not care. It does not hate, and it does not love.
+							// 2: With the energy gained from my long, storied existence, I begun everything again. As if nothing happened, I spun again the web of the galaxy from nil, my one final act of providence.
 							// 3: However, I made one mistake... Haha. It hurts to think about it.
-							// 4: I spared myself of the cruel fate of annihilation. It may have been subconsciously, or an active decision of the primal self, but does it really matter anymore? My very concept of being let the Ardor return, a specter of my past, haunting me forever.
+							// 4: I spared myself of the cruel fate of annihilation. It may have been subconsciously, or an active decision of the primal self, but does it really matter anymore?
 							// 5: ...
 							// 6: Why do I continue to try and avert this disaster?
 							// 7: This desire- the desire to help others- was imprinted to my very concept upon entering this existence. What agency is my own, and what was hoisted upon me by others?
@@ -3564,7 +3582,7 @@ Mods: {
 				[c/DADADA:ES Translators: Tofu and Zeldris]
 				[c/DADADA:CN Translators: Koibumi Group(灾厄维基汉化组)]
 				[c/DADADA:Libraries: SubworldLibrary, StructureHelper]
-				[c/DADADA:Open-Source Code: ScalarVector, tomat, jopojelly, John Snail, Kazzymodus]
+				[c/DADADA:Open-Source Code: ScalarVector, tomat, jopojelly, John Snail, Kazzymodus, Mirsario]
 
 
 
@@ -3604,62 +3622,16 @@ Mods: {
 			// Arbitration.DisplayName: Arbitration
 			AstralCell.DisplayName: Célula Astral
 			DummyEnemy.DisplayName: Maniquí
-
-			PolluxBoss: {
-				// DisplayName: Pollux, Baleborn Force
-
-				BossChecklistIntegration: {
-					// EntryName: Dioskouroi, the Twin Forces
-					// SpawnInfo: Defeat these demonic twins through use of the Twincrux Pendant, granted after defeating a Mechanical Boss. (The Vagrant of Space and Time must have been defeated.)
-					// DespawnMessage: ""
-				}
-			}
-
 			// CastorBoss.DisplayName: Castor, Baleborn Force
 			// Dioskouroi.DisplayName: Dioskouroi, the Twin Forces
 			// NalhaunBoss.DisplayName: Nalhaun, the Burnished King
-
-			NalhaunBossPhase2: {
-				// DisplayName: Nalhaun, Ruler of the Hollow World
-
-				BossChecklistIntegration: {
-					// EntryName: Nalhaun, the Burnished King
-					// SpawnInfo: Confront this aged monarch with the Ancient Crown, given to you by your Starfarer after Golem is defeated. (The Vagrant of Space and Time must have been defeated.)
-					// DespawnMessage: ""
-				}
-			}
-
 			PaintedAttendantA.DisplayName: Pincel Vivo
 			PaintedAttendantB.DisplayName: Pincel Vivo
-
-			Penthesilea: {
-				DisplayName: Pentesilia, La Bruja de Tinta
-
-				BossChecklistIntegration: {
-					// EntryName: Penthesilea, the Witch of Ink
-					// SpawnInfo: Face this fearsome foe with the Unsullied Canvas, given to you by your Starfarer after Plantera is bested. (The Vagrant of Space and Time must have been defeated.)
-					// DespawnMessage: ""
-				}
-			}
-
 			PrismLoot.DisplayName: Núcleo Prismático
 			SpectreOfLight.DisplayName: Espectro de Luz
-
-			TsukiyomiBoss: {
-				// DisplayName: Tsukiyomi, the First Starfarer
-
-				BossChecklistIntegration: {
-					// EntryName: Tsukiyomi, the First Starfarer
-					// SpawnInfo: The time has finally come. Craft all the Mnemonic Traces together with the Celestriad Root to create the Mnemonic Sigil, and use it to be taken to Tsukiyomi's boss arena.
-					// DespawnMessage: ""
-				}
-			}
-
 			VagrantOfSpaceAndTime.DisplayName: El Vagabundo del Espacio y Tiempo
 			WarriorOfLight.DisplayName: Guerrero de la Luz
 			Nalhaun.DisplayName: Nalhaun, El Rey Bruñido
-			Tsukiyomi.DisplayName: Tsukiyomi, La primera Viajera Estelar
-			Tsukiyomi2.DisplayName: Tsukiyomi, La Sucesora de la Salvación
 			// AmethystHeadpiercer.DisplayName: Amethyst Headpiercer
 			// AmethystSwordsinner.DisplayName: Amethyst Swordsinner
 			// AsteroidWormBody.DisplayName: Stardigrade
@@ -3668,6 +3640,15 @@ Mods: {
 			// Soulless.DisplayName: Soulless
 			// Garridine.DisplayName: Garridine
 			// Yojimbo.DisplayName: Yojimbo
+			// DioskouroiWallsNPC.DisplayName: Dioskouroi Walls N P C
+			// NalhaunPhase2WallsNPC.DisplayName: Nalhaun Phase2 Walls N P C
+			// VagrantWalls.DisplayName: Vagrant Walls
+			// VagrantWallsHorizontal.DisplayName: Vagrant Walls Horizontal
+			// VagrantWallsVertical.DisplayName: Vagrant Walls Vertical
+			// WarriorOfLightBoss.DisplayName: The Warrior Of Light
+			// WarriorWallsNPC.DisplayName: ""
+			// WarriorOfLightOld.DisplayName: ""
+			// GardenOfAvalonNPC.DisplayName: Garden Of Avalon
 
 			VagrantBoss: {
 				// DisplayName: The Vagrant of Space and Time
@@ -3679,22 +3660,89 @@ Mods: {
 				}
 			}
 
-			// DioskouroiWallsNPC.DisplayName: Dioskouroi Walls N P C
-			// NalhaunPhase2WallsNPC.DisplayName: Nalhaun Phase2 Walls N P C
-			// VagrantWalls.DisplayName: Vagrant Walls
-			// VagrantWallsHorizontal.DisplayName: Vagrant Walls Horizontal
-			// VagrantWallsVertical.DisplayName: Vagrant Walls Vertical
-			// WarriorOfLightBoss.DisplayName: The Warrior Of Light
-			// WarriorWallsNPC.DisplayName: ""
-			// WarriorOfLightOld.DisplayName: ""
-			// WarriorOfLightBossFinalPhase.DisplayName: The Warrior Of Light
-			// GardenOfAvalonNPC.DisplayName: Garden Of Avalon
-			// ThespianBoss.DisplayName: Thespian, the Act of Alchemy
-			// PenthesileaBoss.DisplayName: Penthesilea, the Witch of Ink
-			// ArbitrationBoss.DisplayName: Arbitration
-			// StarfarerBoss.DisplayName: Asphodene and Eridani
+			ThespianBoss: {
+				// DisplayName: Thespian, the Act of Alchemy
+
+				BossChecklistIntegration: {
+					// EntryName: Thespian, the Act of Alchemy
+					// SpawnInfo: Challenge this strange enemy through inquiring about the Strange Potion with the Astrologian. She moves into town after you obtain a Weapon Memory or defeat the Vagrant of Space and Time.
+					// DespawnMessage: ""
+				}
+			}
+
+			PolluxBoss: {
+				// DisplayName: Pollux, Baleborn Force
+
+				BossChecklistIntegration: {
+					// EntryName: Dioskouroi, the Twin Forces
+					// SpawnInfo: Defeat these demonic twins through use of the Twincrux Pendant, granted after defeating Skeletron. (The Vagrant of Space and Time must have been defeated.)
+					// DespawnMessage: ""
+				}
+			}
+
+			PenthesileaBoss: {
+				// DisplayName: Penthesilea, the Witch of Ink
+
+				BossChecklistIntegration: {
+					// EntryName: Penthesilea, the Witch of Ink
+					// SpawnInfo: Face this fearsome foe with the Unsullied Canvas, given to you by your Starfarer after the mechanical twin eyes are bested. (The Vagrant of Space and Time must have been defeated.)
+					// DespawnMessage: ""
+				}
+			}
+
+			NalhaunBossPhase2: {
+				// DisplayName: Nalhaun, Ruler of the Hollow World
+
+				BossChecklistIntegration: {
+					// EntryName: Nalhaun, the Burnished King
+					// SpawnInfo: Confront this aged monarch with the Ancient Crown, given to you by your Starfarer after Golem is defeated. (The Vagrant of Space and Time must have been defeated.)
+					// DespawnMessage: ""
+				}
+			}
+
+			ArbitrationBoss: {
+				// DisplayName: Arbitration
+
+				BossChecklistIntegration: {
+					// EntryName: Arbitration
+					// SpawnInfo: This mysterious foe lurks in Anomaly subworlds- staying too long in one will take you to Katabasis, where it awaits. Defeating this boss drops an item which will take you immediately to Katabasis. With MP Compatibility Mode, you can get this item by traveling to Lyra.
+					// DespawnMessage: ""
+				}
+			}
+
+			StarfarerBoss: {
+				// DisplayName: Asphodene and Eridani
+
+				BossChecklistIntegration: {
+					// EntryName: Asphodene and Eridani
+					// SpawnInfo: Face your Starfarers in this friendly bout- unlocked after defeating Plantera (ALL prior bosses from The Stars Above must have been defeated!)
+					// DespawnMessage: ""
+				}
+			}
+
+			WarriorOfLightBossFinalPhase: {
+				// DisplayName: The Warrior of Light
+
+				BossChecklistIntegration: {
+					// EntryName: The Warrior of Light
+					// SpawnInfo: After defeating the Moon Lord, strange events may occur. After 2 in game days (this can not be sped up through any means) you can obtain an item from your Starfarer to continue.
+					// DespawnMessage: ""
+				}
+			}
+
+			TsukiyomiBoss: {
+				// DisplayName: Tsukiyomi, the First Starfarer
+
+				BossChecklistIntegration: {
+					// EntryName: Tsukiyomi, the First Starfarer
+					// SpawnInfo: The time has finally come. Craft all the Mnemonic Traces together with the Celestriad Root to create the Mnemonic Sigil, and use it to be taken to Tsukiyomi's boss arena.
+					// DespawnMessage: ""
+				}
+			}
+
 			// ParacausalEntity.DisplayName: Paracausal Watcher
 			// ParacausalEnigma.DisplayName: Paracausal Enigma
+			// StarfarerBossWallsNPC.DisplayName: Starfarer Boss Walls N P C
 		}
 
 		Tiles: {
@@ -8750,7 +8798,7 @@ Mods: {
 					[c/D294FF:Weapon Memory]
 					When Imprinted into a weapon, gain the following effects:
 					Gain the Mining buff for 30 seconds when defeating an enemy
-					'Modulate anything that matters'
+					'Rock and stone!'
 					''' */
 				// TooltipAttached: Gain the Mining buff for 30 seconds when defeating an enemy
 			}
@@ -9163,6 +9211,11 @@ Mods: {
 
 			LegendsYetUnspunMusicBox: {
 				// DisplayName: Legends Yet Unspun Music Box
+				// Tooltip: ""
+			}
+
+			TsukiyomiBossRelicItem: {
+				// DisplayName: Tsukiyomi Boss Relic Item
 				// Tooltip: ""
 			}
 		}
@@ -9578,6 +9631,7 @@ Mods: {
 			OrangeStarBit.DisplayName: Varita Luminar
 			PurpleStarBit.DisplayName: Varita Luminar
 			RedStarBit.DisplayName: Varita Luminar
+			// RedStar.DisplayName: Red Star
 			Starchild.DisplayName: Niño Estelar
 			YellowStarBit.DisplayName: Varita Luminar
 			StarfarerFollowUp.DisplayName: Aprismatismo
@@ -10086,10 +10140,10 @@ Mods: {
 			// RebellionLaser.DisplayName: Rebellion Laser
 			// RebellionLightning.DisplayName: Rebellion Lightning
 			// RebellionTarget.DisplayName: Rebellion Target
-			// StygianAugurDown.DisplayName: Stygian Augur Down
-			// StygianAugurLeft.DisplayName: Stygian Augur Left
-			// StygianAugurRight.DisplayName: Stygian Augur Right
-			// StygianAugurUp.DisplayName: Stygian Augur Up
+			// StygianAugurDown.DisplayName: Stygian Augur
+			// StygianAugurLeft.DisplayName: Stygian Augur
+			// StygianAugurRight.DisplayName: Stygian Augur
+			// StygianAugurUp.DisplayName: Stygian Augur
 			// ThespianBolt.DisplayName: Thespian Bolt
 			// RebellionSwordSpin.DisplayName: Rebellion Sword Spin
 			// SoliloquySinger.DisplayName: Soliloquy Singer
@@ -10108,7 +10162,16 @@ Mods: {
 			// PenthesileaCast.DisplayName: Penthesilea Cast
 			// PenthesileaInkRain.DisplayName: Penthesilea Ink Rain
 			// PenthBrush.DisplayName: Penth Brush
-			// PenthesileaIntroSprite.DisplayName: Penthesilea Intro Sprite
+			// PenthesileaIntroSprite.DisplayName: Penthesilea
+			// ArbitrationOrbitingTurret.DisplayName: Crimson Star
+			// ArbitrationStationaryTurret.DisplayName: Crimson Star
+			// ArbitrationOrbitingStar.DisplayName: Crimson Star
+			// ArbitrationOrbitingTurretSlow.DisplayName: Crimson Star
+			// ArbitrationBolt.DisplayName: Demi-Star
+			// ArbitrationOrbitingTurretWeakProjectiles.DisplayName: Arbitration Orbiting Turret Weak Projectiles
+			// WeakRedStar.DisplayName: Crimson Star
+			// BossPrototokia.DisplayName: Prototokia Aster
+			// ArbitrationTower.DisplayName: Arbitration Tower
 		}
 
 		Buffs: {
@@ -12549,12 +12612,12 @@ Mods: {
 
 			LaunchLeft: {
 				// DisplayName: Launch Left
-				// Description: Mods.StarsAbove.Buffs.LaunchLeft.Description
+				// Description: ""
 			}
 
 			LaunchRight: {
 				// DisplayName: Launch Right
-				// Description: Mods.StarsAbove.Buffs.LaunchRight.Description
+				// Description: ""
 			}
 
 			ThespianAngry: {
@@ -12584,56 +12647,76 @@ Mods: {
 
 			KineticConversionCooldown: {
 				// DisplayName: Kinetic Conversion Cooldown
-				// Description: Mods.StarsAbove.Buffs.KineticConversionCooldown.Description
+				// Description: ""
 			}
 
 			ArmsthriftBuff: {
-				// DisplayName: Armsthrift Buff
-				// Description: Mods.StarsAbove.Buffs.ArmsthriftBuff.Description
+				// DisplayName: Armsthrift
+				// Description: ""
 			}
 
 			ArmsthriftBuffStrong: {
-				// DisplayName: Armsthrift Buff Strong
-				// Description: Mods.StarsAbove.Buffs.ArmsthriftBuffStrong.Description
+				// DisplayName: Armsthrift Empowered
+				// Description: ""
 			}
 
 			ArmsthriftCooldown: {
 				// DisplayName: Armsthrift Cooldown
-				// Description: Mods.StarsAbove.Buffs.ArmsthriftCooldown.Description
+				// Description: ""
 			}
 
 			MindflayerWormCooldown: {
 				// DisplayName: Mindflayer Worm Cooldown
-				// Description: Mods.StarsAbove.Buffs.MindflayerWormCooldown.Description
+				// Description: ""
 			}
 
 			RuinedCrownBuff: {
-				// DisplayName: Ruined Crown Buff
-				// Description: Mods.StarsAbove.Buffs.RuinedCrownBuff.Description
+				// DisplayName: Ruined Crown
+				// Description: ""
 			}
 
 			RuinedCrownCooldown: {
 				// DisplayName: Ruined Crown Cooldown
-				// Description: Mods.StarsAbove.Buffs.RuinedCrownCooldown.Description
+				// Description: ""
 			}
 
 			SimulacraShifterCooldown: {
 				// DisplayName: Simulacra Shifter Cooldown
-				// Description: Mods.StarsAbove.Buffs.SimulacraShifterCooldown.Description
+				// Description: ""
 			}
 
 			OnyxJackalTagDamage: {
 				// DisplayName: Onyx Jackal Tag Damage
 				// Description: Mods.StarsAbove.Buffs.OnyxJackalTagDamage.Description
 			}
+
+			VisionsBeyondBuff: {
+				// DisplayName: Visions Beyond
+				// Description: ""
+			}
+
+			TerrorTether: {
+				// DisplayName: Terror Tether
+				// Description: Mods.StarsAbove.Buffs.TerrorTether.Description
+			}
+
+			SharedPower: {
+				// DisplayName: Shared Power
+				// Description: Your Starfarer is borrowing some of your power, reducing damage, max HP, and defense
+			}
+
+			SharedPowerSpecial: {
+				// DisplayName: True Shared Power
+				// Description: Your Starfarer is borrowing nearly all of your power, leaving you with only 100 Max HP and 90% less damage
+			}
 		}
 
 		Bestiary: {
-			Arbitration: Una figura misteriosa, Se dice que manifestaba el equilibrio a través de la galaxia. Poco se conoce de este enemigo... fue destrozado por el Primer Portador Estelar.
+			// ArbitrationBoss: A horrifying figure encountered within a mysterious location known as Katabasis. While it appears evil to a human, eldritch anomalies such as these know not the concept of malice.
 			AstralCell: Un extraño objeto azul invocado por el vagabundo del Espacio y Tiempo. Come vapor de agua.
 			// NalhaunBossPhase2: A once mighty monarch, cursed to live eternally by means of a betrayal from his royal court. He persisted alone on an empty planet until the First Starbearer ended his long and tragic reign, as he would be able to interfere with his plans. While he may have stood a chance at his full might, he was burdened by a dreadful civil war tearing his world apart.
 			PaintedAttendantA: Utilizado por Pentesilia para... golpearte en la cara. Los mejores magos saben cuando la violencia física es la respuesta.
-			Penthesilea: Una maga increíblemente poderosa, la Bruja Pintada una vez gobernó un planeta enteramente "dibujado" por ella. Siempre una bromista, Dominó la hechicería solo para realizar bromas con las obras de sus colegas, un testamento a su ingenio. Encontró su final en las manos del Primer Portador Estelar luego de un largo conflicto.
+			// PenthesileaBoss: An incredibly powerful mage, the Painted Witch once ruled a planet entirely 'drawn' by her. Ever the trickster, she mastered expert magecraft simply to play pranks upon the works of her colleagues, a testament to her ingenuity. She met her end at the hands of the First Starbearer after a long conflict- if she were to persist, she would interfere with his plans...
 			PrismLoot: La energía mágica latente de los Núcleos Prismáticos pueden a veces influenciarse a varar a la deriva por la galaxia. ¡Atrapa uno, y serás recompensado!
 			SpectreOfLight: Un héroe de otro mundo, invocado por el Primer Portador Estelar para atacar estar tierras.
 			// TsukiyomiBoss: The First Starfarer, Tsukiyomi, who holds dominion over orbiting celestial bodies. The gravitational pull of a planet and its natural satellites gives her power. She led the Warrior of Light astray- using his strength and goodwill to conquer and destroy myriad stars... and yet...
@@ -12648,6 +12731,8 @@ Mods: {
 			// AmethystHeadpiercer: Foot soldier of a wide-reaching paramilitary organization, referred to as the Amethyst. Equipped with a Vortexian powersuit fitted with a jetpack for ease of travel, even in the vacuum of space.
 			// AmethystSwordsinner: Foot soldier of a wide-reaching paramilitary organization, referred to as the Amethyst. Utilizes a hardlight blade with ferocious efficiency, specifically for countering ranged offense.
 			Tsukiyomi2: La primera Viajera Estelar, Tsukiyomi, quien posee el dominio sobre los cuerpos celestes. La atracción gravitatoria de un planeta y sus satélites naturales le otorgan poder. Lideró al Guerrero de la Luz por un mal camino- utilizando su fuerza y bondadez para conquistar y destruir incontables estrellas... y aún así...
+			// ThespianBoss: A legendary alchemist long dead reanimated by a terrifying agent of chaos. For one as far gone as he, you must act as he demands, lest you meet your untimely end...
+			// StarfarerBoss: Yep, it's us.
 		}
 
 		Prefix: {

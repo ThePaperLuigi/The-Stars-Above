@@ -8,6 +8,7 @@ This mod includes:
    lines of dialogue and custom UI to support it
 - Modular, upgradable ultimate abilities that scale
    with boss progression
+- Upgrade weapons with interesting and varied collectables
 - Explore many unique premade locations throughout
    the galaxy with help from Subworld Library
 - 24 custom unlockable passive abilities present in a
