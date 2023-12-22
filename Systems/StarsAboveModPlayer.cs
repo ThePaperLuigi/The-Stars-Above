@@ -2936,6 +2936,24 @@ namespace StarsAbove.Systems
                 }
             }
             
+
+            //Fix old array stuff
+            if(chosenStarfarer == 2)
+            {
+               starshower = 0; //
+                ironskin = 0; //
+               evasionmastery = 0;//
+                aquaaffinity = 0;//
+                inneralchemy = 0;
+                hikari = 0;
+                livingdead = 0;
+                umbralentropy = 0;
+               celestialevanesence = 0;
+               butchersdozen = 0; //
+               mysticforging = 0;
+                flashfreeze = 0;
+            }
+
             base.UpdateEquips();
         }
 
@@ -3062,7 +3080,7 @@ namespace StarsAbove.Systems
 
                 costumeChangeOpacity -= 0.1f;
 
-
+                GaussianBlur();
                 if (starfarerMenuActive)
                 {
                     starfarerMenuUIOpacity += 0.1f;
@@ -5159,7 +5177,7 @@ namespace StarsAbove.Systems
             }
             if (VNDialogueActive)
             {
-                gaussianBlurProgress += 0.2f;
+                
 
                 if (starfarerVNDialogueVisibility < 1f)
                 {
@@ -6323,7 +6341,6 @@ namespace StarsAbove.Systems
                     }
                 }
             }
-            GaussianBlur();
             oldHP = Player.statLife;
             //These trigger Starfarer prompts
 

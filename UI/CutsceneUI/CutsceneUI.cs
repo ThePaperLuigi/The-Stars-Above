@@ -173,7 +173,7 @@ namespace StarsAbove.UI.CutsceneUI
             }
             if(anyCutsceneActive)
             {
-                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().gaussianBlurProgress = 1f;
+                //Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().gaussianBlurProgress = 1f;
             }
 
 
