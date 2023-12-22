@@ -857,7 +857,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
             {
 				if (NPC.localAI[0] == 2)
 				{
-                    Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Boss/Tsukiyomi/EvenStarsMustDie");
+                    Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Boss/Tsukiyomi/EvenStarsMustFall");
                     NPC.defense = 25;
 				}
 				else if (NPC.localAI[0] == 1)
@@ -876,7 +876,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
             {
                 if (NPC.localAI[0] != 0)
                 {
-                    Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Boss/Tsukiyomi/EvenStarsMustDie");
+                    Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Boss/Tsukiyomi/EvenStarsMustFall");
                     NPC.defense = 5;
                 }
                 else
