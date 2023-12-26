@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using StarsAbove.Systems;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.UI.Elements;
@@ -57,9 +58,9 @@ namespace StarsAbove.UI
 		}
 
 		public override void Draw(SpriteBatch spriteBatch) {
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
-			if (modPlayer.PenthBarActive == false)
+			if (modPlayer.PenthesileaBarActive == false)
 				return;
 
 			base.Draw(spriteBatch);
@@ -68,9 +69,9 @@ namespace StarsAbove.UI
 		protected override void DrawSelf(SpriteBatch spriteBatch) {
 			base.DrawSelf(spriteBatch);
 
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 			// Calculate quotient
-			float quotient = (float)modPlayer.PenthCastTime / (float)modPlayer.PenthCastTimeMax; // Creating a quotient that represents the difference of your currentResource vs your maximumResource, resulting in a float of 0-1f.
+			float quotient = (float)modPlayer.CastTime / (float)modPlayer.CastTimeMax; // Creating a quotient that represents the difference of your currentResource vs your maximumResource, resulting in a float of 0-1f.
 			quotient = Utils.Clamp(quotient, 0f, 1f); // Clamping it to 0-1f so it doesn't go over that.
 
 			// Here we get the screen dimensions of the barFrame element, then tweak the resulting rectangle to arrive at a rectangle within the barFrame texture that we will draw the gradient. These values were measured in a drawing program.
@@ -91,14 +92,14 @@ namespace StarsAbove.UI
 			}
 		}
 		public override void Update(GameTime gameTime) {
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
-			if (modPlayer.PenthBarActive == false)
+			if (modPlayer.PenthesileaBarActive == false)
 				return;
 
 			
 			// Setting the text per tick to update and show our resource values.
-			text.SetText($"[c/FF9D4B:{modPlayer.PenthNextAttack}]");
+			text.SetText($"[c/FF9D4B:{modPlayer.NextAttack} ]");
 			base.Update(gameTime);
 		}
 	}

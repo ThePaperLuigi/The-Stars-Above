@@ -1,3 +1,4 @@
+using StarsAbove.Systems;
 using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -15,7 +16,7 @@ namespace StarsAbove.Buffs.Kifrosse
 
 		public override void Update(Player player, ref int buffIndex) {
 			WeaponPlayer modPlayer = player.GetModPlayer<WeaponPlayer>();
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Kifrosse.Kifrosse5>()] > 0) {
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Summon.Kifrosse.Kifrosse5>()] > 0) {
 				modPlayer.Kifrosse5 = true;
 			}
 			if (!modPlayer.Kifrosse5) {

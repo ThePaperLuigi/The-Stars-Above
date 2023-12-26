@@ -2,10 +2,18 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Items;
+using StarsAbove.Items.Weapons;
+using StarsAbove.Items.Weapons.Summon;
+using StarsAbove.Items.Weapons.Ranged;
+using StarsAbove.Items.Weapons.Other;
+using StarsAbove.Items.Weapons.Celestial;
+using StarsAbove.Items.Weapons.Melee;
+using StarsAbove.Items.Weapons.Magic;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.UI;
 using static Terraria.ModLoader.ModContent;
+using StarsAbove.Systems;
 
 namespace StarsAbove.UI.Hawkmoon
 {
@@ -64,7 +72,7 @@ namespace StarsAbove.UI.Hawkmoon
 
 		public override void Draw(SpriteBatch spriteBatch) {
 			// This prevents drawing unless we are using an ExampleDamageItem
-			if (!(Main.LocalPlayer.HeldItem.ModItem is HawkmoonRanged || Main.LocalPlayer.HeldItem.ModItem is HawkmoonMagic))
+			if (!(Main.LocalPlayer.HeldItem.ModItem is Items.Weapons.Other.Hawkmoon))
 				return;
 
 			base.Draw(spriteBatch);
@@ -102,7 +110,7 @@ namespace StarsAbove.UI.Hawkmoon
 		}
 		public override void Update(GameTime gameTime) {
 			//if (!(Main.LocalPlayer.HeldItem.ModItem is HawkmoonRanged) || !(Main.LocalPlayer.HeldItem.ModItem is HawkmoonMagic))
-			if (!(Main.LocalPlayer.HeldItem.ModItem is HawkmoonRanged || Main.LocalPlayer.HeldItem.ModItem is HawkmoonMagic))
+			if (!(Main.LocalPlayer.HeldItem.ModItem is Items.Weapons.Other.Hawkmoon))
 				return;
 
 			var modPlayer = Main.LocalPlayer.GetModPlayer<WeaponPlayer>();

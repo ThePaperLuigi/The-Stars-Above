@@ -4,9 +4,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 using StarsAbove.Items.Armor.StarfarerArmor;
 using StarsAbove.Systems;
+using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
+using Terraria.Graphics.Effects;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.UI;
@@ -63,7 +65,7 @@ namespace StarsAbove.UI.StarfarerMenu
 		private UIText baseStats;
 		private UIText adjustedStats;
 
-		
+		static public float AdjustmentFactor = 1.5f;
 
 		static public VanillaItemSlotWrapper _starfarerArmorSlot;
 		static public VanillaItemSlotWrapper _starfarerVanitySlot;
@@ -71,7 +73,7 @@ namespace StarsAbove.UI.StarfarerMenu
 		public static bool ShadesVisible;
 
 		private UIImageButton confirm;
-		private UIImageButton reset;
+		private UIImageButton credits;
 
 		public bool dragging = false;
 
@@ -142,7 +144,16 @@ namespace StarsAbove.UI.StarfarerMenu
 			confirm.OnMouseOver += ConfirmHover;
 			confirm.OnMouseOut += HoverOff;
 
-			stellarNova = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/StellarNova"));
+            credits = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Credits"));
+            credits.OnLeftClick += CreditsConfirm;
+            credits.Width.Set(70, 0f);
+            credits.Height.Set(52, 0f);
+            credits.Left.Set(474, 0f);
+            credits.Top.Set(419, 0f);
+            credits.OnMouseOver += CreditsHover;
+            credits.OnMouseOut += HoverOff;
+
+            stellarNova = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/StellarNova"));
 			stellarNova.OnLeftClick += StellarNovaConfirm;
 			stellarNova.Width.Set(74, 0f);
 			stellarNova.Height.Set(50, 0f);
@@ -284,14 +295,14 @@ namespace StarsAbove.UI.StarfarerMenu
 			reset.OnMouseOver += ResetHover;
 			reset.OnMouseOut += HoverOff;
 
-			theofania = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/theofania"));
-			theofania.OnClick += theofaniaSelected;
-			theofania.Width.Set(98, 0f);
-			theofania.Height.Set(52, 0f);
-			theofania.Left.Set(864, 0f);
-			theofania.Top.Set(266, 0f);
-			theofania.OnMouseOver += TheofaniaHover;
-			theofania.OnMouseOut += HoverOff;*/
+			Theofania = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Theofania"));
+			Theofania.OnClick += TheofaniaSelected;
+			Theofania.Width.Set(98, 0f);
+			Theofania.Height.Set(52, 0f);
+			Theofania.Left.Set(864, 0f);
+			Theofania.Top.Set(266, 0f);
+			Theofania.OnMouseOver += TheofaniaHover;
+			Theofania.OnMouseOut += HoverOff;*/
 
 
 			/*Asphodene = new UIImage(Request<Texture2D>("StarsAbove/UI/Starfarers/Eridani"));
@@ -328,7 +339,7 @@ namespace StarsAbove.UI.StarfarerMenu
 
 			//area.Append(bg2);
 			//area.Append(bg);
-			//area.Append(theofania);
+			//area.Append(Theofania);
 			//area.Append(laevateinn);
 			//area.Append(kiwamiryuken);
 			//area.Append(gardenofavalon);
@@ -353,6 +364,7 @@ namespace StarsAbove.UI.StarfarerMenu
 			area.Append(stellarArray);
 			area.Append(stellarNova);
 			area.Append(confirm);
+			area.Append(credits);
 			area.Append(text);
 			Append(area);
 			Append(hoverText);
@@ -398,7 +410,28 @@ namespace StarsAbove.UI.StarfarerMenu
 
 			// We can do stuff in here!
 		}
-		private void IdleDialogueConfirm(UIMouseEvent evt, UIElement listeningElement)
+        private void CreditsConfirm(UIMouseEvent evt, UIElement listeningElement)
+        {
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive)
+                return;
+
+            InGameNotificationsTracker.AddNotification(new Credits());
+
+            Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveActive = false;
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollNumber = 0;
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive = false;
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().animatedStarfarerMenuDialogue = "";
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = "";
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = false;
+            //Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().animatedDescription = "";
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollNumber = 0;
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;
+
+
+            // We can do stuff in here!
+        }
+        private void IdleDialogueConfirm(UIMouseEvent evt, UIElement listeningElement)
 		{
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive)
 				return;
@@ -501,11 +534,12 @@ namespace StarsAbove.UI.StarfarerMenu
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().astrolabeIntroDialogue != 2 || Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveActive)
 				return;
 
-			if (NPC.downedAncientCultist && !NPC.downedMoonlord)
+			if (NPC.AnyNPCs(NPCID.LunarTowerNebula) || NPC.AnyNPCs(NPCID.LunarTowerSolar) || NPC.AnyNPCs(NPCID.LunarTowerStardust) || NPC.AnyNPCs(NPCID.LunarTowerVortex))
 			{
 				if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.LunarEvents"), 255, 255, 100); }
 				return;
 			}
+			if (Main.LocalPlayer.whoAmI == Main.myPlayer && Main.netMode == NetmodeID.MultiplayerClient) { Main.NewText(LangHelper.GetTextValue("TempInfo"), 220, 100, 247); }
 
 			Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveActive = false;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaUIOpacity = 0;
@@ -703,9 +737,20 @@ namespace StarsAbove.UI.StarfarerMenu
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
 			// We can do stuff in here!
 		}
+        private void CreditsHover(UIMouseEvent evt, UIElement listeningElement)
+        {
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive)
+                return;
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollNumber = 0;
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"Common.CreditsHover");
 
 
-		private void ArchiveHover(UIMouseEvent evt, UIElement listeningElement)
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
+            // We can do stuff in here!
+        }
+
+        private void ArchiveHover(UIMouseEvent evt, UIElement listeningElement)
 		{
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveActive)
 				return;
@@ -936,8 +981,17 @@ namespace StarsAbove.UI.StarfarerMenu
             var archivePlayer = Main.LocalPlayer.GetModPlayer<ArchivePlayer>();
 
             var animationModPlayer = Main.LocalPlayer.GetModPlayer<StarfarerMenuAnimation>();
+			if (archivePlayer.archiveActive)
+			{
+				AdjustAreaBasedOnPlayerVelocity(ref area, 0, 0);
 
-            Rectangle hitbox = area.GetInnerDimensions().ToRectangle();
+			}
+			else
+			{
+				AdjustAreaBasedOnPlayerVelocity(ref area, 200, 0);
+
+			}
+			Rectangle hitbox = area.GetInnerDimensions().ToRectangle();
             Rectangle bodyHitbox = area.GetInnerDimensions().ToRectangle();
             Rectangle dialogue = barFrame.GetInnerDimensions().ToRectangle();
             Rectangle archiveSelected = archive.GetInnerDimensions().ToRectangle();
@@ -959,7 +1013,7 @@ namespace StarsAbove.UI.StarfarerMenu
             //Step 5: draw Menu
             Texture2D AsphodeneEyeBase, AsphodeneHeadBase, AsphodeneHairBehindHead, AsphodeneHeadBaseH, AsphodeneHairBehindHeadH, AsphodeneNeck, AsphodeneGrab, AsphodeneHandOpen, AsphodeneTheofania, AsphodeneRightLeg, AsphodeneLeftLeg, AsphodeneEyeRight, AsphodeneEyeLeft, AsphodeneTailRight, AsphodeneTailLeft, AsphodeneTailRightH, AsphodeneTailLeftH, AsphodeneRightArmLower, AsphodeneRightArmUpper;
             Vector2 AsphodeneHeadPosition, AsphodeneUpperArmPosition, AsphodeneLowerArmPosition, SwordPosition, AsphodeneRightLegPosition, AsphodeneLeftLegPosition, AsphodeneBodyPosition, AsphodeneEyeRightPosition, AsphodeneEyeLeftPosition, AsphodenePonytailPosition1, AsphodenePonytailPosition2;
-            SetupAsphodeneTextures(archivePlayer, animationModPlayer, out AsphodeneEyeBase, out AsphodeneHeadBase, out AsphodeneHairBehindHead, out AsphodeneHeadBaseH, out AsphodeneHairBehindHeadH, out AsphodeneNeck, out AsphodeneGrab, out AsphodeneHandOpen, out AsphodeneTheofania, out AsphodeneRightLeg, out AsphodeneLeftLeg, out AsphodeneEyeRight, out AsphodeneEyeLeft, out AsphodeneTailRight, out AsphodeneTailLeft, out AsphodeneTailRightH, out AsphodeneTailLeftH, out AsphodeneRightArmLower, out AsphodeneRightArmUpper, out AsphodeneHeadPosition, out AsphodeneUpperArmPosition, out AsphodeneLowerArmPosition, out SwordPosition, out AsphodeneRightLegPosition, out AsphodeneLeftLegPosition, out AsphodeneBodyPosition, out AsphodeneEyeRightPosition, out AsphodeneEyeLeftPosition, out AsphodenePonytailPosition1, out AsphodenePonytailPosition2);
+            SetupAsphodeneTextures(hitbox, archivePlayer, animationModPlayer, out AsphodeneEyeBase, out AsphodeneHeadBase, out AsphodeneHairBehindHead, out AsphodeneHeadBaseH, out AsphodeneHairBehindHeadH, out AsphodeneNeck, out AsphodeneGrab, out AsphodeneHandOpen, out AsphodeneTheofania, out AsphodeneRightLeg, out AsphodeneLeftLeg, out AsphodeneEyeRight, out AsphodeneEyeLeft, out AsphodeneTailRight, out AsphodeneTailLeft, out AsphodeneTailRightH, out AsphodeneTailLeftH, out AsphodeneRightArmLower, out AsphodeneRightArmUpper, out AsphodeneHeadPosition, out AsphodeneUpperArmPosition, out AsphodeneLowerArmPosition, out SwordPosition, out AsphodeneRightLegPosition, out AsphodeneLeftLegPosition, out AsphodeneBodyPosition, out AsphodeneEyeRightPosition, out AsphodeneEyeLeftPosition, out AsphodenePonytailPosition1, out AsphodenePonytailPosition2);
 
             Texture2D vignette = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/vignette");
             float width = (float)Main.screenWidth / (float)vignette.Width;
@@ -985,18 +1039,18 @@ namespace StarsAbove.UI.StarfarerMenu
 
             if (modPlayer.chosenStarfarer == 1) // Asphodene's code.
             {
-                DrawAsphodeneHead(spriteBatch, modPlayer, animationModPlayer, AsphodeneHeadBase, AsphodeneHairBehindHead, AsphodeneHairBehindHeadH, AsphodeneTailRight, AsphodeneTailLeft, AsphodeneTailRightH, AsphodeneTailLeftH, AsphodeneHeadPosition, AsphodenePonytailPosition1, AsphodenePonytailPosition2);
+                DrawAsphodeneHead(hitbox, spriteBatch, modPlayer, animationModPlayer, AsphodeneHeadBase, AsphodeneHairBehindHead, AsphodeneHairBehindHeadH, AsphodeneTailRight, AsphodeneTailLeft, AsphodeneTailRightH, AsphodeneTailLeftH, AsphodeneHeadPosition, AsphodenePonytailPosition1, AsphodenePonytailPosition2);
                 //Draw the neck.
-                DrawAsphodeneBody(spriteBatch, modPlayer, animationModPlayer, AsphodeneHeadBase, AsphodeneNeck, AsphodeneRightLeg, AsphodeneLeftLeg, AsphodeneTailLeft, AsphodeneRightArmLower, AsphodeneHeadPosition, AsphodeneLowerArmPosition, AsphodeneRightLegPosition, AsphodeneLeftLegPosition, AsphodeneBodyPosition);
+                DrawAsphodeneBody(hitbox, spriteBatch, modPlayer, animationModPlayer, AsphodeneHeadBase, AsphodeneNeck, AsphodeneRightLeg, AsphodeneLeftLeg, AsphodeneTailLeft, AsphodeneRightArmLower, AsphodeneHeadPosition, AsphodeneLowerArmPosition, AsphodeneRightLegPosition, AsphodeneLeftLegPosition, AsphodeneBodyPosition);
                 //Draw the eyes.
-                DrawAsphodeneEyes(spriteBatch, modPlayer, animationModPlayer, AsphodeneEyeBase, AsphodeneHeadBase, AsphodeneEyeRight, AsphodeneEyeLeft, AsphodeneHeadPosition, AsphodeneEyeRightPosition, AsphodeneEyeLeftPosition);
-                DrawAsphodeneHeadBase(spriteBatch, modPlayer, animationModPlayer, AsphodeneHeadBase, AsphodeneHeadBaseH, AsphodeneHeadPosition);
-                DrawAsphodeneExpression(spriteBatch, modPlayer, animationModPlayer, AsphodeneHeadBase, AsphodeneHeadPosition);
+                DrawAsphodeneEyes(hitbox, spriteBatch, modPlayer, animationModPlayer, AsphodeneEyeBase, AsphodeneHeadBase, AsphodeneEyeRight, AsphodeneEyeLeft, AsphodeneHeadPosition, AsphodeneEyeRightPosition, AsphodeneEyeLeftPosition);
+                DrawAsphodeneHeadBase(hitbox, spriteBatch, modPlayer, animationModPlayer, AsphodeneHeadBase, AsphodeneHeadBaseH, AsphodeneHeadPosition);
+                DrawAsphodeneExpression(hitbox, spriteBatch, modPlayer, animationModPlayer, AsphodeneHeadBase, AsphodeneHeadPosition);
 
 
 
                 //Idle animation.
-                DrawAsphodeneIdleAnimation(spriteBatch, modPlayer, animationModPlayer, AsphodeneHeadBase, AsphodeneGrab, AsphodeneHandOpen, AsphodeneTheofania, AsphodeneRightArmUpper, AsphodeneHeadPosition, AsphodeneUpperArmPosition, AsphodeneLowerArmPosition, SwordPosition);
+                DrawAsphodeneIdleAnimation(hitbox, spriteBatch, modPlayer, animationModPlayer, AsphodeneHeadBase, AsphodeneGrab, AsphodeneHandOpen, AsphodeneTheofania, AsphodeneRightArmUpper, AsphodeneHeadPosition, AsphodeneUpperArmPosition, AsphodeneLowerArmPosition, SwordPosition);
                 /*
 				//Draw the hair behind the body.
 				if (modPlayer.vagrantDialogue == 2)
@@ -1027,23 +1081,23 @@ namespace StarsAbove.UI.StarfarerMenu
             //Eridani's code.
             Texture2D EridaniEyeBase, EridaniHeadBase, EridaniMouthAlt, EridaniHeadBaseH, EridaniHairBehindHeadH, EridaniPonytailH, EridaniHairBehindHead, EridaniNeck, EridaniRightLeg, EridaniLeftLeg, EridaniPonytail, EridaniLeftArm, EridaniBehindSkirtAndCape, EridaniEyeRight, EridaniEyeLeft, EridaniArmsCrossed, EridaniBook, EridaniBookWhite;
             Vector2 EridaniHeadPosition, EridaniLowerArmPosition, EridaniPonytailPosition, EridaniRightLegPosition, EridaniLeftLegPosition, EridaniBodyPosition, EridaniEyeRightPosition, EridaniEyeLeftPosition, EridaniBookPosition, EridaniArmsCrossedPosition;
-            SetupEridaniTextures(archivePlayer, animationModPlayer, out EridaniEyeBase, out EridaniHeadBase, out EridaniMouthAlt, out EridaniHeadBaseH, out EridaniHairBehindHeadH, out EridaniPonytailH, out EridaniHairBehindHead, out EridaniNeck, out EridaniRightLeg, out EridaniLeftLeg, out EridaniPonytail, out EridaniLeftArm, out EridaniBehindSkirtAndCape, out EridaniEyeRight, out EridaniEyeLeft, out EridaniArmsCrossed, out EridaniBook, out EridaniBookWhite, out EridaniHeadPosition, out EridaniLowerArmPosition, out EridaniPonytailPosition, out EridaniRightLegPosition, out EridaniLeftLegPosition, out EridaniBodyPosition, out EridaniEyeRightPosition, out EridaniEyeLeftPosition, out EridaniBookPosition, out EridaniArmsCrossedPosition);
+            SetupEridaniTextures(hitbox, archivePlayer, animationModPlayer, out EridaniEyeBase, out EridaniHeadBase, out EridaniMouthAlt, out EridaniHeadBaseH, out EridaniHairBehindHeadH, out EridaniPonytailH, out EridaniHairBehindHead, out EridaniNeck, out EridaniRightLeg, out EridaniLeftLeg, out EridaniPonytail, out EridaniLeftArm, out EridaniBehindSkirtAndCape, out EridaniEyeRight, out EridaniEyeLeft, out EridaniArmsCrossed, out EridaniBook, out EridaniBookWhite, out EridaniHeadPosition, out EridaniLowerArmPosition, out EridaniPonytailPosition, out EridaniRightLegPosition, out EridaniLeftLegPosition, out EridaniBodyPosition, out EridaniEyeRightPosition, out EridaniEyeLeftPosition, out EridaniBookPosition, out EridaniArmsCrossedPosition);
 
             if (modPlayer.chosenStarfarer == 2)
             {
-                DrawEridaniHead(spriteBatch, modPlayer, animationModPlayer, EridaniHeadBase, EridaniHairBehindHeadH, EridaniPonytailH, EridaniHairBehindHead, EridaniPonytail, EridaniHeadPosition, EridaniPonytailPosition);
+                DrawEridaniHead(hitbox, spriteBatch, modPlayer, animationModPlayer, EridaniHeadBase, EridaniHairBehindHeadH, EridaniPonytailH, EridaniHairBehindHead, EridaniPonytail, EridaniHeadPosition, EridaniPonytailPosition);
 
-                DrawEridaniBody(spriteBatch, modPlayer, animationModPlayer, EridaniHeadBase, EridaniNeck, EridaniRightLeg, EridaniLeftLeg, EridaniLeftArm, EridaniBehindSkirtAndCape, EridaniHeadPosition, EridaniLowerArmPosition, EridaniRightLegPosition, EridaniLeftLegPosition, EridaniBodyPosition);
-                DrawEridaniEyes(spriteBatch, modPlayer, animationModPlayer, EridaniEyeBase, EridaniHeadBase, EridaniEyeRight, EridaniEyeLeft, EridaniHeadPosition, EridaniEyeRightPosition, EridaniEyeLeftPosition);
+                DrawEridaniBody(hitbox, spriteBatch, modPlayer, animationModPlayer, EridaniHeadBase, EridaniNeck, EridaniRightLeg, EridaniLeftLeg, EridaniLeftArm, EridaniBehindSkirtAndCape, EridaniHeadPosition, EridaniLowerArmPosition, EridaniRightLegPosition, EridaniLeftLegPosition, EridaniBodyPosition);
+                DrawEridaniEyes(hitbox, spriteBatch, modPlayer, animationModPlayer, EridaniEyeBase, EridaniHeadBase, EridaniEyeRight, EridaniEyeLeft, EridaniHeadPosition, EridaniEyeRightPosition, EridaniEyeLeftPosition);
 
-                DrawEridaniHeadBase(spriteBatch, modPlayer, animationModPlayer, EridaniHeadBase, EridaniHeadBaseH, EridaniHeadPosition);
-				DrawEridaniExpression(spriteBatch, modPlayer, animationModPlayer, EridaniHeadBase, EridaniHeadPosition);
+                DrawEridaniHeadBase(hitbox, spriteBatch, modPlayer, animationModPlayer, EridaniHeadBase, EridaniHeadBaseH, EridaniHeadPosition);
+                DrawEridaniExpression(hitbox, spriteBatch, modPlayer, animationModPlayer, EridaniHeadBase, EridaniHeadPosition);
 
 
 
-				//Idle animation.
+                //Idle animation.
 
-				if (animationModPlayer.idleAnimationActive && animationModPlayer.idleAnimationProgress < 0.4)
+                if (animationModPlayer.idleAnimationActive && animationModPlayer.idleAnimationProgress < 0.4)
                 {
                     spriteBatch.Draw(
                         EridaniLeftArm, //The texture being drawn.
@@ -1259,7 +1313,34 @@ namespace StarsAbove.UI.StarfarerMenu
 
         }
 
-        private static void DrawEridaniHeadBase(SpriteBatch spriteBatch, StarsAbovePlayer modPlayer, StarfarerMenuAnimation animationModPlayer, Texture2D EridaniHeadBase, Texture2D EridaniHeadBaseH, Vector2 EridaniHeadPosition)
+        public static void AdjustAreaBasedOnPlayerVelocity(ref UIElement area, float startX, float startY)
+        {
+			float playerVelocityX = Main.LocalPlayer.velocity.X;
+			float playerVelocityY = Main.LocalPlayer.velocity.Y;
+
+            // The factor which determines the speed of rectangle movement relative to player velocity.
+            // This can be adjusted based on how responsive you want the movement to be.
+            float factor = AdjustmentFactor;
+
+            // Modify the position based on the player's X and Y velocity
+            float newX = startX - playerVelocityX * factor;
+            float newY = startY - playerVelocityY * factor;
+
+            // If either velocity is 0, move the rectangle back towards its original point.
+            if (playerVelocityX == 0)
+            {
+                newX = startX;
+            }
+            if (playerVelocityY == 0)
+            {
+                newY = startY;
+            }
+
+            area.Left.Set(newX, 0f);
+            area.Top.Set(newY, 0f);
+        }
+
+        private static void DrawEridaniHeadBase(Rectangle hitbox, SpriteBatch spriteBatch, StarsAbovePlayer modPlayer, StarfarerMenuAnimation animationModPlayer, Texture2D EridaniHeadBase, Texture2D EridaniHeadBaseH, Vector2 EridaniHeadPosition)
         {
             if (modPlayer.vagrantDialogue == 2)
             {
@@ -1291,7 +1372,7 @@ namespace StarsAbove.UI.StarfarerMenu
             }
         }
 
-        private static void DrawEridaniEyes(SpriteBatch spriteBatch, StarsAbovePlayer modPlayer, StarfarerMenuAnimation animationModPlayer, Texture2D EridaniEyeBase, Texture2D EridaniHeadBase, Texture2D EridaniEyeRight, Texture2D EridaniEyeLeft, Vector2 EridaniHeadPosition, Vector2 EridaniEyeRightPosition, Vector2 EridaniEyeLeftPosition)
+        private static void DrawEridaniEyes(Rectangle hitbox, SpriteBatch spriteBatch, StarsAbovePlayer modPlayer, StarfarerMenuAnimation animationModPlayer, Texture2D EridaniEyeBase, Texture2D EridaniHeadBase, Texture2D EridaniEyeRight, Texture2D EridaniEyeLeft, Vector2 EridaniHeadPosition, Vector2 EridaniEyeRightPosition, Vector2 EridaniEyeLeftPosition)
         {
             //Draw the eyes.
             spriteBatch.Draw(
@@ -1327,7 +1408,7 @@ namespace StarsAbove.UI.StarfarerMenu
                 0f);
         }
 
-        private static void DrawEridaniBody(SpriteBatch spriteBatch, StarsAbovePlayer modPlayer, StarfarerMenuAnimation animationModPlayer, Texture2D EridaniHeadBase, Texture2D EridaniNeck, Texture2D EridaniRightLeg, Texture2D EridaniLeftLeg, Texture2D EridaniLeftArm, Texture2D EridaniBehindSkirtAndCape, Vector2 EridaniHeadPosition, Vector2 EridaniLowerArmPosition, Vector2 EridaniRightLegPosition, Vector2 EridaniLeftLegPosition, Vector2 EridaniBodyPosition)
+        private static void DrawEridaniBody(Rectangle hitbox, SpriteBatch spriteBatch, StarsAbovePlayer modPlayer, StarfarerMenuAnimation animationModPlayer, Texture2D EridaniHeadBase, Texture2D EridaniNeck, Texture2D EridaniRightLeg, Texture2D EridaniLeftLeg, Texture2D EridaniLeftArm, Texture2D EridaniBehindSkirtAndCape, Vector2 EridaniHeadPosition, Vector2 EridaniLowerArmPosition, Vector2 EridaniRightLegPosition, Vector2 EridaniLeftLegPosition, Vector2 EridaniBodyPosition)
         {
             //Draw the neck.
             spriteBatch.Draw(
@@ -1399,7 +1480,7 @@ namespace StarsAbove.UI.StarfarerMenu
             }
         }
 
-        private static void DrawEridaniHead(SpriteBatch spriteBatch, StarsAbovePlayer modPlayer, StarfarerMenuAnimation animationModPlayer, Texture2D EridaniHeadBase, Texture2D EridaniHairBehindHeadH, Texture2D EridaniPonytailH, Texture2D EridaniHairBehindHead, Texture2D EridaniPonytail, Vector2 EridaniHeadPosition, Vector2 EridaniPonytailPosition)
+        private static void DrawEridaniHead(Rectangle hitbox, SpriteBatch spriteBatch, StarsAbovePlayer modPlayer, StarfarerMenuAnimation animationModPlayer, Texture2D EridaniHeadBase, Texture2D EridaniHairBehindHeadH, Texture2D EridaniPonytailH, Texture2D EridaniHairBehindHead, Texture2D EridaniPonytail, Vector2 EridaniHeadPosition, Vector2 EridaniPonytailPosition)
         {
             if (modPlayer.vagrantDialogue == 2)
             {
@@ -1457,7 +1538,7 @@ namespace StarsAbove.UI.StarfarerMenu
             }
         }
 
-        private static void SetupAsphodeneTextures(ArchivePlayer archivePlayer, StarfarerMenuAnimation animationModPlayer, out Texture2D AsphodeneEyeBase, out Texture2D AsphodeneHeadBase, out Texture2D AsphodeneHairBehindHead, out Texture2D AsphodeneHeadBaseH, out Texture2D AsphodeneHairBehindHeadH, out Texture2D AsphodeneNeck, out Texture2D AsphodeneGrab, out Texture2D AsphodeneHandOpen, out Texture2D AsphodeneTheofania, out Texture2D AsphodeneRightLeg, out Texture2D AsphodeneLeftLeg, out Texture2D AsphodeneEyeRight, out Texture2D AsphodeneEyeLeft, out Texture2D AsphodeneTailRight, out Texture2D AsphodeneTailLeft, out Texture2D AsphodeneTailRightH, out Texture2D AsphodeneTailLeftH, out Texture2D AsphodeneRightArmLower, out Texture2D AsphodeneRightArmUpper, out Vector2 AsphodeneHeadPosition, out Vector2 AsphodeneUpperArmPosition, out Vector2 AsphodeneLowerArmPosition, out Vector2 SwordPosition, out Vector2 AsphodeneRightLegPosition, out Vector2 AsphodeneLeftLegPosition, out Vector2 AsphodeneBodyPosition, out Vector2 AsphodeneEyeRightPosition, out Vector2 AsphodeneEyeLeftPosition, out Vector2 AsphodenePonytailPosition1, out Vector2 AsphodenePonytailPosition2)
+        private static void SetupAsphodeneTextures(Rectangle hitbox, ArchivePlayer archivePlayer, StarfarerMenuAnimation animationModPlayer, out Texture2D AsphodeneEyeBase, out Texture2D AsphodeneHeadBase, out Texture2D AsphodeneHairBehindHead, out Texture2D AsphodeneHeadBaseH, out Texture2D AsphodeneHairBehindHeadH, out Texture2D AsphodeneNeck, out Texture2D AsphodeneGrab, out Texture2D AsphodeneHandOpen, out Texture2D AsphodeneTheofania, out Texture2D AsphodeneRightLeg, out Texture2D AsphodeneLeftLeg, out Texture2D AsphodeneEyeRight, out Texture2D AsphodeneEyeLeft, out Texture2D AsphodeneTailRight, out Texture2D AsphodeneTailLeft, out Texture2D AsphodeneTailRightH, out Texture2D AsphodeneTailLeftH, out Texture2D AsphodeneRightArmLower, out Texture2D AsphodeneRightArmUpper, out Vector2 AsphodeneHeadPosition, out Vector2 AsphodeneUpperArmPosition, out Vector2 AsphodeneLowerArmPosition, out Vector2 SwordPosition, out Vector2 AsphodeneRightLegPosition, out Vector2 AsphodeneLeftLegPosition, out Vector2 AsphodeneBodyPosition, out Vector2 AsphodeneEyeRightPosition, out Vector2 AsphodeneEyeLeftPosition, out Vector2 AsphodenePonytailPosition1, out Vector2 AsphodenePonytailPosition2)
         {
             AsphodeneEyeBase = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/AEyeBase");
             AsphodeneHeadBase = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/AHeadBase");
@@ -1484,18 +1565,21 @@ namespace StarsAbove.UI.StarfarerMenu
             AsphodeneRightArmLower = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/ARightArmLower0");
             AsphodeneRightArmUpper = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/ARightArmUpper0");
 
-            AsphodeneHeadPosition = new Vector2(Main.screenWidth / 2 - 96, Main.screenHeight / 2 - 118 + animationModPlayer.StarfarerMenuIdleMovement);
-            AsphodeneUpperArmPosition = new Vector2(Main.screenWidth / 2 - 126, Main.screenHeight / 2 - 82 + animationModPlayer.StarfarerMenuIdleMovement);
-            AsphodeneLowerArmPosition = new Vector2(Main.screenWidth / 2 - 132, Main.screenHeight / 2 - 64 + animationModPlayer.StarfarerMenuIdleMovement);
-            Vector2 GripPosition = new Vector2(Main.screenWidth / 2 - 132, Main.screenHeight / 2 - 64 + animationModPlayer.StarfarerMenuIdleMovement);
-            SwordPosition = new Vector2(Main.screenWidth / 2 - 114, Main.screenHeight / 2 + 10 + animationModPlayer.StarfarerMenuIdleMovement);
+			hitbox.X += 300;
+			hitbox.Y += 325;
 
-            AsphodeneRightLegPosition = new Vector2(Main.screenWidth / 2 - 126, Main.screenHeight / 2 + 100 + animationModPlayer.StarfarerMenuIdleMovement / 2);
-            AsphodeneLeftLegPosition = new Vector2(Main.screenWidth / 2 - 72, Main.screenHeight / 2 + 90 + animationModPlayer.StarfarerMenuIdleMovement / 2);
-            AsphodeneBodyPosition = new Vector2(Main.screenWidth / 2 - 300, (Main.screenHeight / 2) - 325 + animationModPlayer.StarfarerMenuIdleMovement);
-            AsphodeneEyeRightPosition = new Vector2(Main.screenWidth / 2 - 96 + animationModPlayer.AsphodeneEyeMovementRX, Main.screenHeight / 2 - 118 + animationModPlayer.StarfarerMenuIdleMovement + animationModPlayer.AsphodeneEyeMovementY);
-            AsphodeneEyeLeftPosition = new Vector2(Main.screenWidth / 2 - 96 + animationModPlayer.AsphodeneEyeMovementLX, Main.screenHeight / 2 - 118 + animationModPlayer.StarfarerMenuIdleMovement + animationModPlayer.AsphodeneEyeMovementY);
-			int archiveMovement = 200;
+			AsphodeneHeadPosition = new Vector2(hitbox.X - 96, hitbox.Y - 118 + animationModPlayer.StarfarerMenuIdleMovement);
+            AsphodeneUpperArmPosition = new Vector2(hitbox.X - 126, hitbox.Y - 82 + animationModPlayer.StarfarerMenuIdleMovement);
+            AsphodeneLowerArmPosition = new Vector2(hitbox.X - 132, hitbox.Y - 64 + animationModPlayer.StarfarerMenuIdleMovement);
+            Vector2 GripPosition = new Vector2(hitbox.X - 132, hitbox.Y - 64 + animationModPlayer.StarfarerMenuIdleMovement);
+            SwordPosition = new Vector2(hitbox.X - 114, hitbox.Y + 10 + animationModPlayer.StarfarerMenuIdleMovement);
+
+            AsphodeneRightLegPosition = new Vector2(hitbox.X - 126, hitbox.Y + 100 + animationModPlayer.StarfarerMenuIdleMovement / 2);
+            AsphodeneLeftLegPosition = new Vector2(hitbox.X - 72, hitbox.Y + 90 + animationModPlayer.StarfarerMenuIdleMovement / 2);
+            AsphodeneBodyPosition = new Vector2(hitbox.X - 300, (hitbox.Y) - 325 + animationModPlayer.StarfarerMenuIdleMovement);
+            AsphodeneEyeRightPosition = new Vector2(hitbox.X - 96 + animationModPlayer.AsphodeneEyeMovementRX, hitbox.Y - 118 + animationModPlayer.StarfarerMenuIdleMovement + animationModPlayer.AsphodeneEyeMovementY);
+            AsphodeneEyeLeftPosition = new Vector2(hitbox.X - 96 + animationModPlayer.AsphodeneEyeMovementLX, hitbox.Y - 118 + animationModPlayer.StarfarerMenuIdleMovement + animationModPlayer.AsphodeneEyeMovementY);
+			int archiveMovement = 0;
 			if (archivePlayer.archiveActive)
             {
                 AsphodeneHeadPosition.X -= archiveMovement;
@@ -1518,7 +1602,7 @@ namespace StarsAbove.UI.StarfarerMenu
             AsphodenePonytailPosition2 = new Vector2(AsphodeneHeadPosition.X + 46, AsphodeneHeadPosition.Y - 59 + animationModPlayer.StarfarerMenuIdleMovement / 2);
         }
 
-        private static void SetupEridaniTextures(ArchivePlayer archivePlayer, StarfarerMenuAnimation animationModPlayer, out Texture2D EridaniEyeBase, out Texture2D EridaniHeadBase, out Texture2D EridaniMouthAlt, out Texture2D EridaniHeadBaseH, out Texture2D EridaniHairBehindHeadH, out Texture2D EridaniPonytailH, out Texture2D EridaniHairBehindHead, out Texture2D EridaniNeck, out Texture2D EridaniRightLeg, out Texture2D EridaniLeftLeg, out Texture2D EridaniPonytail, out Texture2D EridaniLeftArm, out Texture2D EridaniBehindSkirtAndCape, out Texture2D EridaniEyeRight, out Texture2D EridaniEyeLeft, out Texture2D EridaniArmsCrossed, out Texture2D EridaniBook, out Texture2D EridaniBookWhite, out Vector2 EridaniHeadPosition, out Vector2 EridaniLowerArmPosition, out Vector2 EridaniPonytailPosition, out Vector2 EridaniRightLegPosition, out Vector2 EridaniLeftLegPosition, out Vector2 EridaniBodyPosition, out Vector2 EridaniEyeRightPosition, out Vector2 EridaniEyeLeftPosition, out Vector2 EridaniBookPosition, out Vector2 EridaniArmsCrossedPosition)
+        private static void SetupEridaniTextures(Rectangle hitbox, ArchivePlayer archivePlayer, StarfarerMenuAnimation animationModPlayer, out Texture2D EridaniEyeBase, out Texture2D EridaniHeadBase, out Texture2D EridaniMouthAlt, out Texture2D EridaniHeadBaseH, out Texture2D EridaniHairBehindHeadH, out Texture2D EridaniPonytailH, out Texture2D EridaniHairBehindHead, out Texture2D EridaniNeck, out Texture2D EridaniRightLeg, out Texture2D EridaniLeftLeg, out Texture2D EridaniPonytail, out Texture2D EridaniLeftArm, out Texture2D EridaniBehindSkirtAndCape, out Texture2D EridaniEyeRight, out Texture2D EridaniEyeLeft, out Texture2D EridaniArmsCrossed, out Texture2D EridaniBook, out Texture2D EridaniBookWhite, out Vector2 EridaniHeadPosition, out Vector2 EridaniLowerArmPosition, out Vector2 EridaniPonytailPosition, out Vector2 EridaniRightLegPosition, out Vector2 EridaniLeftLegPosition, out Vector2 EridaniBodyPosition, out Vector2 EridaniEyeRightPosition, out Vector2 EridaniEyeLeftPosition, out Vector2 EridaniBookPosition, out Vector2 EridaniArmsCrossedPosition)
         {
             EridaniEyeBase = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/EEyeBase");
             EridaniHeadBase = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/EHeadBase");
@@ -1541,19 +1625,21 @@ namespace StarsAbove.UI.StarfarerMenu
             EridaniBook = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/EIdleBook");
             EridaniBookWhite = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/EIdleBookWhite");
 
-            EridaniHeadPosition = new Vector2(Main.screenWidth / 2 - 96, Main.screenHeight / 2 - 112 + animationModPlayer.StarfarerMenuIdleMovement);
-            EridaniLowerArmPosition = new Vector2(Main.screenWidth / 2 - 22, Main.screenHeight / 2 - 14 + animationModPlayer.StarfarerMenuIdleMovement);
-            EridaniPonytailPosition = new Vector2(Main.screenWidth / 2 - 96, Main.screenHeight / 2 - 82 + animationModPlayer.StarfarerMenuIdleMovement);
+			hitbox.X += 300;
+			hitbox.Y += 325;
+            EridaniHeadPosition = new Vector2(hitbox.X - 96, hitbox.Y - 112 + animationModPlayer.StarfarerMenuIdleMovement);
+            EridaniLowerArmPosition = new Vector2(hitbox.X - 22, hitbox.Y - 14 + animationModPlayer.StarfarerMenuIdleMovement);
+            EridaniPonytailPosition = new Vector2(hitbox.X - 96, hitbox.Y - 82 + animationModPlayer.StarfarerMenuIdleMovement);
 
-            EridaniRightLegPosition = new Vector2(Main.screenWidth / 2 - 106, Main.screenHeight / 2 + 94 + animationModPlayer.StarfarerMenuIdleMovement / 2);
-            EridaniLeftLegPosition = new Vector2(Main.screenWidth / 2 - 72, Main.screenHeight / 2 + 84 + animationModPlayer.StarfarerMenuIdleMovement / 2);
-            EridaniBodyPosition = new Vector2(Main.screenWidth / 2 - 308, (Main.screenHeight / 2) - 328 + animationModPlayer.StarfarerMenuIdleMovement);
-            EridaniEyeRightPosition = new Vector2(Main.screenWidth / 2 - 96 + animationModPlayer.EridaniEyeMovementRX, Main.screenHeight / 2 - 112 + animationModPlayer.StarfarerMenuIdleMovement + animationModPlayer.EridaniEyeMovementY);
-            EridaniEyeLeftPosition = new Vector2(Main.screenWidth / 2 - 97 + animationModPlayer.EridaniEyeMovementLX, Main.screenHeight / 2 - 112 + animationModPlayer.StarfarerMenuIdleMovement + animationModPlayer.EridaniEyeMovementY);
-            EridaniBookPosition = new Vector2(Main.screenWidth / 2 - 126, Main.screenHeight / 2 + 12 + animationModPlayer.StarfarerMenuHeadRotation / 2);
-            EridaniArmsCrossedPosition = new Vector2(Main.screenWidth / 2 - 102, Main.screenHeight / 2 - 42 + animationModPlayer.StarfarerMenuIdleMovement);
+            EridaniRightLegPosition = new Vector2(hitbox.X - 106, hitbox.Y + 94 + animationModPlayer.StarfarerMenuIdleMovement / 2);
+            EridaniLeftLegPosition = new Vector2(hitbox.X - 72, hitbox.Y + 84 + animationModPlayer.StarfarerMenuIdleMovement / 2);
+            EridaniBodyPosition = new Vector2(hitbox.X - 308, (hitbox.Y) - 328 + animationModPlayer.StarfarerMenuIdleMovement);
+            EridaniEyeRightPosition = new Vector2(hitbox.X - 96 + animationModPlayer.EridaniEyeMovementRX, hitbox.Y - 112 + animationModPlayer.StarfarerMenuIdleMovement + animationModPlayer.EridaniEyeMovementY);
+            EridaniEyeLeftPosition = new Vector2(hitbox.X - 97 + animationModPlayer.EridaniEyeMovementLX, hitbox.Y - 112 + animationModPlayer.StarfarerMenuIdleMovement + animationModPlayer.EridaniEyeMovementY);
+            EridaniBookPosition = new Vector2(hitbox.X - 126, hitbox.Y + 12 + animationModPlayer.StarfarerMenuHeadRotation / 2);
+            EridaniArmsCrossedPosition = new Vector2(hitbox.X - 102, hitbox.Y - 42 + animationModPlayer.StarfarerMenuIdleMovement);
 			
-			int archiveMovement = 200;
+			int archiveMovement = 0;
 			if (archivePlayer.archiveActive)
             {
                 EridaniHeadPosition.X -= archiveMovement;
@@ -1569,7 +1655,7 @@ namespace StarsAbove.UI.StarfarerMenu
             }
         }
 
-        private static void DrawAsphodeneIdleAnimation(SpriteBatch spriteBatch, StarsAbovePlayer modPlayer, StarfarerMenuAnimation animationModPlayer, Texture2D AsphodeneHeadBase, Texture2D AsphodeneGrab, Texture2D AsphodeneHandOpen, Texture2D AsphodeneTheofania, Texture2D AsphodeneRightArmUpper, Vector2 AsphodeneHeadPosition, Vector2 AsphodeneUpperArmPosition, Vector2 AsphodeneLowerArmPosition, Vector2 SwordPosition)
+        private static void DrawAsphodeneIdleAnimation(Rectangle hitbox, SpriteBatch spriteBatch, StarsAbovePlayer modPlayer, StarfarerMenuAnimation animationModPlayer, Texture2D AsphodeneHeadBase, Texture2D AsphodeneGrab, Texture2D AsphodeneHandOpen, Texture2D AsphodeneTheofania, Texture2D AsphodeneRightArmUpper, Vector2 AsphodeneHeadPosition, Vector2 AsphodeneUpperArmPosition, Vector2 AsphodeneLowerArmPosition, Vector2 SwordPosition)
         {
             if (modPlayer.starfarerOutfitVisible == 0)//
             {
@@ -1640,7 +1726,7 @@ namespace StarsAbove.UI.StarfarerMenu
             }
         }
 
-        private static void DrawAsphodeneBody(SpriteBatch spriteBatch, StarsAbovePlayer modPlayer, StarfarerMenuAnimation animationModPlayer, Texture2D AsphodeneHeadBase, Texture2D AsphodeneNeck, Texture2D AsphodeneRightLeg, Texture2D AsphodeneLeftLeg, Texture2D AsphodeneTailLeft, Texture2D AsphodeneRightArmLower, Vector2 AsphodeneHeadPosition, Vector2 AsphodeneLowerArmPosition, Vector2 AsphodeneRightLegPosition, Vector2 AsphodeneLeftLegPosition, Vector2 AsphodeneBodyPosition)
+        private static void DrawAsphodeneBody(Rectangle hitbox, SpriteBatch spriteBatch, StarsAbovePlayer modPlayer, StarfarerMenuAnimation animationModPlayer, Texture2D AsphodeneHeadBase, Texture2D AsphodeneNeck, Texture2D AsphodeneRightLeg, Texture2D AsphodeneLeftLeg, Texture2D AsphodeneTailLeft, Texture2D AsphodeneRightArmLower, Vector2 AsphodeneHeadPosition, Vector2 AsphodeneLowerArmPosition, Vector2 AsphodeneRightLegPosition, Vector2 AsphodeneLeftLegPosition, Vector2 AsphodeneBodyPosition)
         {
             spriteBatch.Draw(
                                 AsphodeneNeck, //The texture being drawn.
@@ -1716,7 +1802,7 @@ namespace StarsAbove.UI.StarfarerMenu
             }
         }
 
-        private static void DrawAsphodeneEyes(SpriteBatch spriteBatch, StarsAbovePlayer modPlayer, StarfarerMenuAnimation animationModPlayer, Texture2D AsphodeneEyeBase, Texture2D AsphodeneHeadBase, Texture2D AsphodeneEyeRight, Texture2D AsphodeneEyeLeft, Vector2 AsphodeneHeadPosition, Vector2 AsphodeneEyeRightPosition, Vector2 AsphodeneEyeLeftPosition)
+        private static void DrawAsphodeneEyes(Rectangle hitbox, SpriteBatch spriteBatch, StarsAbovePlayer modPlayer, StarfarerMenuAnimation animationModPlayer, Texture2D AsphodeneEyeBase, Texture2D AsphodeneHeadBase, Texture2D AsphodeneEyeRight, Texture2D AsphodeneEyeLeft, Vector2 AsphodeneHeadPosition, Vector2 AsphodeneEyeRightPosition, Vector2 AsphodeneEyeLeftPosition)
         {
             spriteBatch.Draw(
                                 AsphodeneEyeBase, //The texture being drawn.
@@ -1750,7 +1836,7 @@ namespace StarsAbove.UI.StarfarerMenu
                 0f);
         }
 
-        private static void DrawAsphodeneHead(SpriteBatch spriteBatch, StarsAbovePlayer modPlayer, StarfarerMenuAnimation animationModPlayer, Texture2D AsphodeneHeadBase, Texture2D AsphodeneHairBehindHead, Texture2D AsphodeneHairBehindHeadH, Texture2D AsphodeneTailRight, Texture2D AsphodeneTailLeft, Texture2D AsphodeneTailRightH, Texture2D AsphodeneTailLeftH, Vector2 AsphodeneHeadPosition, Vector2 AsphodenePonytailPosition1, Vector2 AsphodenePonytailPosition2)
+        private static void DrawAsphodeneHead(Rectangle hitbox, SpriteBatch spriteBatch, StarsAbovePlayer modPlayer, StarfarerMenuAnimation animationModPlayer, Texture2D AsphodeneHeadBase, Texture2D AsphodeneHairBehindHead, Texture2D AsphodeneHairBehindHeadH, Texture2D AsphodeneTailRight, Texture2D AsphodeneTailLeft, Texture2D AsphodeneTailRightH, Texture2D AsphodeneTailLeftH, Vector2 AsphodeneHeadPosition, Vector2 AsphodenePonytailPosition1, Vector2 AsphodenePonytailPosition2)
         {
             if (modPlayer.vagrantDialogue == 2)
             {
@@ -1828,7 +1914,7 @@ namespace StarsAbove.UI.StarfarerMenu
             }
         }
 
-        private static void DrawAsphodeneHeadBase(SpriteBatch spriteBatch, StarsAbovePlayer modPlayer, StarfarerMenuAnimation animationModPlayer, Texture2D AsphodeneHeadBase, Texture2D AsphodeneHeadBaseH, Vector2 AsphodeneHeadPosition)
+        private static void DrawAsphodeneHeadBase(Rectangle hitbox, SpriteBatch spriteBatch, StarsAbovePlayer modPlayer, StarfarerMenuAnimation animationModPlayer, Texture2D AsphodeneHeadBase, Texture2D AsphodeneHeadBaseH, Vector2 AsphodeneHeadPosition)
         {
             if (modPlayer.vagrantDialogue == 2)
             {
@@ -1860,7 +1946,7 @@ namespace StarsAbove.UI.StarfarerMenu
             }
         }
 
-        private static void DrawAsphodeneExpression(SpriteBatch spriteBatch, StarsAbovePlayer modPlayer, StarfarerMenuAnimation animationModPlayer, Texture2D AsphodeneHeadBase, Vector2 AsphodeneHeadPosition)
+        private static void DrawAsphodeneExpression(Rectangle hitbox, SpriteBatch spriteBatch, StarsAbovePlayer modPlayer, StarfarerMenuAnimation animationModPlayer, Texture2D AsphodeneHeadBase, Vector2 AsphodeneHeadPosition)
         {
             if (Main.LocalPlayer.GetModPlayer<StarfarerMenuAnimation>().idleAnimationActive)
             {
@@ -1889,7 +1975,7 @@ namespace StarsAbove.UI.StarfarerMenu
                     0f);
             }
         }
-		private static void DrawEridaniExpression(SpriteBatch spriteBatch, StarsAbovePlayer modPlayer, StarfarerMenuAnimation animationModPlayer, Texture2D EridaniHeadBase, Vector2 EridaniHeadPosition)
+		private static void DrawEridaniExpression(Rectangle hitbox, SpriteBatch spriteBatch, StarsAbovePlayer modPlayer, StarfarerMenuAnimation animationModPlayer, Texture2D EridaniHeadBase, Vector2 EridaniHeadPosition)
 		{
 			if (modPlayer.expression == 0)
 			{
@@ -1930,7 +2016,6 @@ namespace StarsAbove.UI.StarfarerMenu
 			{
 				Append(area);
 			}
-
 			
 		
 
@@ -1981,14 +2066,7 @@ namespace StarsAbove.UI.StarfarerMenu
 				//modPlayer.CelestialCartographyActive = true;
             }
 
-			if(archivePlayer.archiveActive)
-            {
-				area.Left.Set(0, 0f);
-            }
-			else
-            {
-				area.Left.Set(200, 0f);
-			}
+			
 			// Setting the text per tick to update and show our resource values.
 
 			hoverText.SetText($"{archivePlayer.archiveListNumber}/{archivePlayer.archiveListMax}");

@@ -21,20 +21,19 @@ using Terraria.GameContent;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Buffs;
 using StarsAbove.Items.BossBags;
+using StarsAbove.Items.Loot;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.NPCs.Nalhaun
 {
-	[AutoloadBossHead]
+    [AutoloadBossHead]
 
 	public class NalhaunBossPhase2 : ModNPC
 	{
 
-		
-		
+		public int AttackTimer = 120;
 
-
-		// Our texture is 36x36 with 2 pixels of padding vertically, so 38 is the vertical spacing.
-		// These are for our benefit and the numbers could easily be used directly in the code below, but this is how we keep code organized.
 		private enum Frame
 		{
 			Empty,
@@ -88,7 +87,7 @@ namespace StarsAbove.NPCs.Nalhaun
 			// Enemies can pick up coins, let's prevent it for this NPC
 			NPCID.Sets.CantTakeLunchMoney[Type] = true;
 			// Automatically group with other bosses
-			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers()
 			{ // Influences how the NPC looks in the Bestiary
 				CustomTexturePath = "StarsAbove/Bestiary/Nalhaun_Bestiary", // If the NPC is multiple parts like a worm, a custom texture for the Bestiary is encouraged.
 				Position = new Vector2(0f, 0f),
@@ -111,9 +110,9 @@ namespace StarsAbove.NPCs.Nalhaun
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 330000;
-			NPC.damage = 0;
-			NPC.defense = 35;
+			NPC.lifeMax = 155000;
+			NPC.damage = 20;
+			NPC.defense = 15;
 			NPC.knockBackResist = 0f;
 			NPC.width = 160;
 			NPC.height = 160;
@@ -134,7 +133,10 @@ namespace StarsAbove.NPCs.Nalhaun
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
 			NPC.netAlways = true;
 		}
-
+		public override bool CanHitPlayer(Player target, ref int cooldownSlot)
+		{
+			return false;
+		}
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			return 0f;
@@ -213,7 +215,11 @@ namespace StarsAbove.NPCs.Nalhaun
                     Idle();
                     break;
             }
-            if (AI_Timer >= 120) //An attack is active.
+			if(Main.expertMode)
+            {
+				AttackTimer = 100;
+            }
+            if (AI_Timer >= AttackTimer) //An attack is active.
             {
 
                 //Attacks begin here.
@@ -756,9 +762,7 @@ namespace StarsAbove.NPCs.Nalhaun
 			LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
 			LeadingConditionRule ExpertRule = new LeadingConditionRule(new Conditions.IsExpert());
 
-			// Notice we use notExpertRule.OnSuccess instead of npcLoot.Add so it only applies in normal mode
-			// Boss masks are spawned with 1/7 chance
-			//notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<MinionBossMask>(), 7));
+			StellarSpoils.SetupBossStellarSpoils(npcLoot);
 
 			notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.BurnishedPrism>(), 4));
 

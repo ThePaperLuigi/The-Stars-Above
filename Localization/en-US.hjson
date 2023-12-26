@@ -3,11 +3,30 @@ Mods: {
 		DeathReason: {
 			SanguineDespair: drained themselves of all life.
 			SupremeAuthority: returned to the void.
+			Thespian: failed to follow the act.
+			ShockAndAwe: ... tried to rocket jump too hard.
+			InevitableEnd: was caught in the crossfire of {0}'s Inevitable End.
+			Arbitration: was doomed to chaos.
 		}
 
 		Boss.WarriorOfLight: The Warrior of Light descends!
+		TempInfo: Hello! It looks like you're playing The Stars Above in Multiplayer! Please note that as of now, disabling Multiplayer Compatibility Mode is not recommended. With it enabled, attempting to travel to Cosmic Voyage locations will give you their respective items on a timer.
 
 		CombatText: {
+			StellarNovaReady: Stellar Nova ready!
+
+			DevotedHavoc: {
+				Grenade: Grenade prepped
+				Shuriken: Shuriken prepped
+				Molotov: Molotov prepped
+			}
+
+			MiserysCompany: {
+				Scythe: Scythe deployed!
+				Shotgun: Shotgun deployed!
+				Blade: Blade deployed!
+			}
+
 			Adornment: {
 				Positive: Positive Chaos!
 				Negative: Negative Chaos!
@@ -36,8 +55,34 @@ Mods: {
 				QTE: Rapidly press the Stellar Nova button!
 			}
 
+			Thespian: {
+				AthanoricCurse: The walls of the arena pulse with corrosive energy!
+				RingmastersWill: The Ringmaster compels you to act!
+				MoveLeft: Move left in {0}...
+				MoveRight: Move right in {0}...
+				StopMoving: Stop moving in {0}...
+				LaunchLeft: Launched left in {0}...
+				LaunchRight: Launched right in {0}...
+				Success: Success!
+				Happy: The Ringmaster's [c/FADE5D:delight] begets chaos...
+				Angry: The Ringmaster's [c/D83838:fury] begets chaos...
+				Sad: The Ringmaster's [c/3888D8:despair] begets chaos...
+			}
+
+			Arbitration: {
+				SeveredFate: Fate is severed; restore the thread of fate or perish...
+				VisionsBeyond: Eldritch powers grant you visions beyond- Standing still and keeping focus will mimic this effect...
+			}
+
+			Penthesilea: {
+				BluePaint: You've been coated in [c/3888D8:blue] paint!
+				RedPaint: You've been coated in [c/D83838:red] paint!
+				YellowPaint: You've been coated in [c/FADE5D:yellow] paint!
+			}
+
 			Dioskouroi.Clash: The Dioskouroi clash, equalizing their HP!
 			Tsukiyomi.FinalPhase: The Starfarer before you unleashes her true might, empowering her attacks but leaving her defenses open!
+			EasterEgg: You've defeated the boss in less than 10 seconds, probably a new record! Perhaps you're a little too powerful?
 
 			KissOfDeath: {
 				Skyfish: Skyfish deployed!
@@ -60,6 +105,28 @@ Mods: {
 
 			#These are pretty much debug lines just in case something breaks.
 			Garridine.1: You needn't have come all this way- a letter would have sufficed. Hmm, how would the letter arrive? I see.
+
+			Astrologian: {
+				WizardDialogue: I'm not sure what to think of {0}. They're obviously a cosplayer- you'd expect them to know no magic... and yet..!
+				FirstDialogue: Salulations, friend. My collection magecraft has led me to you- I see you've found a celestial relic. If you are willing to part with some coin, a portion of my collection can be yours- or, I can also sell you the means to utilize it.
+				StandardDialogue1: I think I'm going broke.
+				StandardDialogue2: Looks like today's going to be bad luck. Or is it good luck? If only I had a better view.
+				StandardDialogue3: You want to know more information about Starfarers? They're a known phenomenon, but most of their impact is consigned to history books. In fact, it's strange you ask.
+				StandardDialogue4: Astrology extends far beyond star signs and constellations. To an extent, you must have ample magical knowledge and scientific expertise.
+				StandardDialogue5: I collect and categorize celestial relics. You most likely are not interested in the majority of them.
+				StandardDialogue6: Yes, things are expensive- that's just how it is. How am I to buy anything?
+				BloodMoon: Hmm, a strange celestial body seems to be affecting our moon. What a pain.
+				Party: Yeah, right. I'm not going outside, but I will partake in the food.
+				Graveyard: Where in the world is all this accursed fog coming from?
+				StrangePotion: Strange Potion
+				ThespianNotReadyCorruption: I have something you may be interested in, but you must prepare better. How about dealing with the issues in the Corruption first?
+				ThespianNotReadyCrimson: I have something you may be interested in, but you must prepare better. How about dealing with the issues in the Crimson first?
+				ThespianReady: Here's something you might take interest with: this potion has a magical trace I've never once encountered before- very powerful. It does no good languishing in my stockpile, so take it before I change my mind.
+				RareDialogue1: Haha, you say I resemble other members of my profession? Have you ever considered... they're also me?
+				RareDialogue2: Have you guessed? Yes, I'm faekin- a faerie. No, I don't do magic tricks.
+				AstralDialogue: I can sense the Astral Aspect upon you- if you were not aware, 'aspect' is a misnomer. In fact, being Astral aspected is more of a polarity. How you are aspected itself is a wonder... You must be hiding something.
+				UmbralAspect: I can sense the Umbral Aspect upon you- if you were not aware, 'aspect' is a misnomer. In fact, being Umbral aspected is more of a polarity. How you are aspected itself is a wonder... You must be hiding something.
+			}
 		}
 
 		CosmicVoyages: {
@@ -67,7 +134,7 @@ Mods: {
 				NoPortal: No nearby portal detected!
 				WeakStellaglyph: Your Stellaglyph is not powerful enough to attempt transit!
 				AnomalyCooldown: Anomaly voyages are currently on cooldown.
-				LunarEvents: Celestial energy prevents the Astrolabe from functioning- try defeating the invading creatures first!
+				LunarEvents: Celestial energy prevents the Astrolabe from functioning...
 				MultiplayerCompatibility: Multiplayer compatibility mode enabled; spawning relevant items instead of attempting transit.
 				MultiplayerNoLoot: Multiplayer compatibility mode enabled; transit disabled at this time.
 				LootCooldown: Loot still on cooldown!
@@ -162,7 +229,7 @@ Mods: {
 					Description: A strange planet known as Anomaly Iota. It is recorded emitting strange, powerful vibrations periodically akin to a beating heart. Exploration is limited due to a highly acidic surface.
 					Threat: Threat Level: B++ Anomaly
 					Requirement: Tier III Stellaglyph required for transit.
-					Loot: Resources: Prismatic Cores
+					Loot: Resources: Rare Enemies
 				}
 
 				Pyxis: {
@@ -197,6 +264,51 @@ Mods: {
 					Loot: Resources: N/A
 				}
 
+				DreamingCity: {
+					Name: The Dreaming City
+					Description: A majestic stronghold once populated by a long forgotten race. It is plagued by hostile entites suffused with paracausal darkness, and is oft drifting between another plane of existence. Contributed by: Tatriskel
+					Threat: Threat Level: A- Anomaly
+					//Tier 3
+					Requirement: Tier III Stellaglyph required for transit.
+					Loot: Resources: Stellar Remnants
+				}
+
+				Theranhad: {
+					Name: Fallen Theranhad
+					Description: A floating archipelago left abandoned after its emperor became the vessel to a malevolent cosmic deity. A dark energy permeates the air. Contributed by: hakomari
+					Threat: Threat Level: B-
+					//Tier 3
+					Requirement: Tier III Stellaglyph required for transit.
+					Loot: Resources: Prismatic Cores
+				}
+
+				Celestia: {
+					Name: Celestia
+					Description: A collection of well-preserved, brilliant structures bound by mystic energy, once in service of a powerful figure, albeit lost to time. Contributed by: Izanagi, The wanderer of stars
+					Threat: Threat Level: C
+					//Tier 2
+					Requirement: Tier II Stellaglyph required for transit.
+					Loot: Resources: Prismatic Cores
+				}
+
+				FaintArchives: {
+					Name: Faint Archives
+					Description: A strange, pristine locale sitting utop a cloudy expanse. The walls are home to myriad secrets and mysteries, some which threaten to come apart at the seams. Contributed by: UnkownSToast
+					Threat: Threat Level: B
+					//Tier 3
+					Requirement: Tier III Stellaglyph required for transit.
+					Loot: Resources: Unique Weapon Memory
+				}
+
+				UltraPlant: {
+					Name: Ultra Plant
+					Description: A unknown locale populated with strange figures both inert and living. The constant bursts of electricity provides a hostile evironment to traverse and explore. Contributed by: Hockerzocker
+					Threat: Threat Level: C-B
+					//Tier 2
+					Requirement: Tier II Stellaglyph required for transit.
+					Loot: Resources: Unique Weapon Memory
+				}
+
 				QuestionMark: {
 					Name: " "
 					Description: The Stellaglyph can't take you past this point yet... (Content will be added at a later date!)
@@ -214,7 +326,7 @@ Mods: {
 			}
 
 			AspectedDamageType: {
-				Description: If the weapon's type has changed, the weapon deals 10% less damage when active. (15`% less when Melee)
+				Description: If the weapon's type has changed, the weapon deals 10% less damage when active. (15% less when changed to Melee Damage)
 				LockHover: Aspected Weapon damage type is saved even after re-entering the world.
 				Melee.Name: Change the held Aspected Weapon to [c/FFAB4D:Melee Damage].
 				Rogue.Name: Change the held Aspected Weapon to [c/707070:Rogue Damage].
@@ -252,8 +364,8 @@ Mods: {
 				}
 
 				UmbralEntropy: {
-					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Umbral Entropy']"
-					Description: All projectiles and melee attacks inflict Starblight on a critical strike. Gain Lifesteal on foes inflicted with Starblight. Healing is capped at 5 HP per second.
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Entropic Blight']"
+					Description: All attacks inflict Starblight on a critical strike. Gain Lifesteal on foes inflicted with Starblight. Healing is capped at 5 HP per second.
 					Unlock: "[c/9D9D9D:Locked:] Defeat the Moon Lord"
 				}
 
@@ -276,15 +388,75 @@ Mods: {
 				}
 
 				Hikari: {
-					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Hikari']"
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Crystalline Heart']"
 					Description: Gain bonus attack and defense proportional to Max HP divided by 20. Taking damage reduces outgoing damage by half for 6 seconds.
 					Unlock: "[c/9D9D9D:Locked:] Defeat the Ice Queen"
 				}
 
 				CelestialEvanesence: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Celestial Evanesence']"
-					Description: Critical strike rate is increased based on current Mana divided by 20. Landing a critical strike grants 5% of the damage dealt as Mana. (Max 5 per hit)
+					Description: Critical strike chance is increased based on current Mana divided by 20. Landing a critical strike grants 5% of the damage dealt as Mana. (Max 5 per hit)
 					Unlock: "[c/9D9D9D:Locked:] Defeat the Lunatic Cultist in Expert Mode"
+				}
+
+				SpectralNail: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Spectral Nail']"
+					Description: Every 5 strikes against a foe deals 30% bonus true damage. (6 second cooldown.)
+				}
+
+				Armsthrift: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Armsthrift']"
+					Description: Swapping weapons grants a 15% damage bonus for 5 seconds. This value is tripled if the weapon does not share the same damage type as the original weapon. (10 second cooldown.)
+				}
+
+				MysticIncision: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Mystic Incision']"
+					Description: Gain 20% armor penetration. Gain an extra 50% armor penetration when in close proximity to foes. If you do not have enough Mana to use a weapon, gain that amount of Mana on use.
+				}
+
+				StayTheCourse: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Stay The Course']"
+					Description: Every 10 seconds in combat, gain 1% damage reduction and 1% critical strike chance, up to 15%. After reaching the maximum buff, buff critical strike damage by the same amount.
+				}
+
+				Catharsis: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Catharsis']"
+					Description: When health is reduced through any means, deal damage to all nearby foes based on 20% of the damage of your current held weapon.
+				}
+
+				FabledFashion: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Fabled Fashion']"
+					Description: Equipped vanity armor is treated as if it is normal armor (Set bonuses do not apply.) Outgoing damage is reduced by 50%, defense is reduced by 50%, and maximum health is reduced by 150.
+				}
+
+				KineticConversion: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Kinetic Conversion']"
+					Description: A portion of movement velocity is added to outgoing damage. Gain brief Invincibility when dashing or moving quickly. (40 second cooldown.)
+				}
+
+				KiTwinburst: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Ki Twinburst']"
+					Description: All attacks are divided into two instances of damage.
+				}
+
+				ArborealEchoes: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Arboreal Echoes']"
+					Description: Dealing damage to unhurt foes heals 10 HP and increases damage of the first hit by 30%. Increase the potency of healing items by 30%.
+				}
+
+				SwiftstrikeTheory: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Swiftstrike Theory']"
+					Description: Gain 80% increased attack speed during immunity frames.
+				}
+
+				InevitableEnd: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Inevitable End']"
+					Description: Foes explode when defeated, dealing 50% of their Max HP in damage to nearby foes. When you die, deal 500% of your held weapon's damage to both nearby enemies and allies.
+				}
+
+				LavenderRefrain: {
+					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Lavender Refrain']"
+					Description: When taking damage, Mana is treated as bonus health. Mana lost in this manner increases Mana regeneration delay significantly. Reduces the potency of items that restore Mana by 50%.
 				}
 
 				HealthyConfidence: {
@@ -301,13 +473,13 @@ Mods: {
 
 				AvatarOfLight: {
 					Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Avatar of Light']"
-					Description: Half of Max Mana is added to Max HP. At 500 HP or above, gain 10 defense, 5% damage, and 5 Stellar Nova Energy Regeneration.
+					Description: Half of Max Mana is added to Max HP. At 500 HP or above, gain 10 defense, 5% damage, and 3 Stellar Nova Energy Regeneration.
 					Unlock: "[c/9D9D9D:Locked:] Defeat the Warrior of Light"
 				}
 
 				AstralMantle: {
 					Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Astral Mantle']"
-					Description: 1/10th of current Mana is added to Defense (Max 5% of current Max HP.) Gain 15 Stellar Nova Energy Regeneration above 200 Mana.
+					Description: 1/10th of current Mana is added to Defense (Max 5% of current Max HP.) Gain 5 Stellar Nova Energy Regeneration above 200 Mana.
 					Unlock: "[c/9D9D9D:Locked:] Defeat all Mechanical bosses"
 				}
 
@@ -355,7 +527,7 @@ Mods: {
 
 				LivingDead: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Living Dead']"
-					Description: Survive most fatal damage for 10 seconds, but if HP is not healed above 150 when the buff ends, you will die. (4 minute cooldown) You need 200+ Max HP to confirm this ability.
+					Description: Survive most fatal damage for 6 seconds, but if HP is not healed above 150 when the buff ends, you will die. (4 minute cooldown) You need 200+ Max HP to confirm this ability.
 					Unlock: "[c/9D9D9D:Locked:] Defeat Pumpking"
 				}
 
@@ -378,6 +550,40 @@ Mods: {
 				Name: Default Idle Dialogue
 				Description: This dialogue appears when you've already seen the normal idle dialogue recently.
 			}
+
+			UnlockConditions: {
+				VisitGraveyard: Visit a Graveyard.
+				KingSlime: Defeat King Slime.
+				EyeOfCthulhu: Defeat Eye of Cthulhu.
+				WorldEvil: Defeat the World Evil boss.
+				QueenBee: Defeat Queen Bee.
+				ObtainTier2Stellaglyph: Obtain a Tier 2 Stellaglyph.
+				Skeletron: Defeat Skeletron.
+				SkeletronBeach: Defeat Skeletron, then visit the Beach.
+				SkeletronUnderworld: Defeat Skeletron, then visit the Underworld.
+				WallOfFlesh: Defeat the Wall of Flesh.
+				GuideVoodooDoll: Find a Guide Voodoo Doll on a Hardcore character.
+				Hallowed: Visit the Hallowed.
+				PirateInvasion: Defeat a Pirate Invasion.
+				QueenSlime: Defeat Queen Slime.
+				AnyMechanical: Defeat any mechanical boss.
+				SkeletronPrime: Defeat Skeletron Prime.
+				AllMechanical: Defeat all mechanical bosses.
+				Nalhaun: Defeat Nalhaun, the Burnished King.
+				Plantera: Defeat Plantera.
+				FrostQueen: Defeat the Frost Queen.
+				Penthesilea: Defeat Penthesilea, the Witch of Ink.
+				Golem: Defeat Golem.
+				MartianMadness: Defeat Martian Madness.
+				DukeFishron: Defeat Duke Fishron.
+				LunaticCultist: Defeat the Lunatic Cultist.
+				MoonLord: Defeat Moon Lord.
+				WarriorOfLight: Defeat the Warrior of Light.
+				Tsukiyomi: Defeat ???
+				EmpressOfLight: Defeat the Empress of Light.
+				Pumpking: Defeat Pumpking.
+				Deerclops: Defeat Deerclops.
+			}
 		}
 
 		Dialogue: {
@@ -395,9 +601,9 @@ Mods: {
 				Asphodene: {
 					1: Here's another Essence you can use. It'll make a Ranged-type weapon with unique properties. Something tells me it's cursed, so..
 					2: Good luck! I did warn you.
-					3: Here is another Essence for you. This one's from a goddess of the Underworld, or so I'm told. It seems to be a melee weapon.
+					3: Here is another Essence for you. Looks like this fancy sewing needle has some pretty powerful movement capabilities.
 					4: Keep up the good work!
-					5: Here is another Essence for you. Apparently, this originates from 'Midgard.' It looks to be a rather powerful melee weapon.
+					5: Here is another Essence for you. It looks to be a rather powerful melee weapon.
 					6: That's it for now. Keep up the good work!
 					7: Another Essence for you. This firey sword is classified as Magic. It seems to explode when sufficiently charged.
 					8: I trust you'll know what to do.
@@ -473,7 +679,7 @@ Mods: {
 					78: Looks like this Graveyard seems to have some connection to this Essence. Hopefully all these graves weren't just from you dying, right?
 					79: Hmm... this Summon-type Essence will create some sort of controllable drone- I wonder if it can talk?
 					80: This is certainly a Melee weapon- furthermore, it seems to be one that excels at a distance, as well as providing extra firepower in close combat. Nice.
-					81: I plundered a Ranged-sort of essence from the likeness of those pirates. Sea... water... Actually, looks like I'm nearly dry with ocean jokes, so I'll anchor myself now.
+					81: I plundered a Ranged-sort of essence from the likeness of those pirates. Sea... water... Actually, looks like I'm nearly dry with jokes, so I'll anchor myself now.
 					82: Well, I'm not sure what to make of this Essence, other than that it's a Summon weapon. Best you give it a go, before anything else goes haywire.
 					83: This watch is a Summon-type weapon- looks like it'll call forth a cute time-aspected ally. She'll help with support if you can work with her combat style.
 					84: Hmm... Perhaps you could even use it to dodge incoming attacks...?
@@ -481,14 +687,19 @@ Mods: {
 					85: It looks to me like this Ranged-weapon has the ability to down hordes of foes pretty easily. Sounds like it'll come in handy- especially the giant coffin swings!
 					87: How about this Essence? It'll give you an enhanced barrier, able to protect yourself while helping you deal some damage without worry of repercussions.
 					88: Seems that this Essence came from that voodoo doll we found in the Underworld- a strange sight. Are you certain that using a weapon like this is worth the risk?
-					89: Who am I kidding- of course you're certain! You're MY Starbearer, after all! Just don't get TOO reckless, now. I don't think resurrection is something I can pull off on you.
+					89: Who am I kidding- of course you're certain! You're MY Starbearer, after all! Just don't get TOO reckless, now.
 					90: This Essence is aspected to this world's star- your sun! Needless to say, the power of the sun would be quite the boon- let's see this thing in action!
 					91: Hmm, I'd advise healthy amounts of caution with this Essence- it's a Melee essence with high potential, but it looks like you're leaving your defenses open for it.
 					92: Looks to me like this Magic Essence has some powerful potential, but I'm not quite sure what it requires in turn... Perhaps you should give it a look.
-					93: You aren't going to believe this, but this Essence was sitting in an alleyway. Just sitting there! You should craft it and see what it makes- I'm curious too.
+					93: You aren't going to believe this, but someone gave this Essence to me- how is that possible? They said something like 'It's just a game, so it's OK.' What even?
 					94: This Ranged-essence seems to lead to a classic rocket-launcher weapon- I've heard of using explosives for traversal, so it shouldn't hurt to try, right?
-					95: Well, this Magic Essence is pretty unique: you can draw directly onto the world to cause different effects to occur.
+					95: This Magic Essence is pretty unique: you can draw directly onto the world to cause different effects to occur.
 					96: Looks like a yo-yo Essence is here- a Summon-type one as well. Seems to boast some helpful movement tools as well!
+					97: This Summon-type weapon isn't like anything you've seen before, I think. Best to just give it a go- how good's your swordsmanship?
+					98: With this Essence, you'll have a Magic-type weapon with some crazy stopping power! Let's give this one a 'shot'!
+					99: This Summon weapon is an elegant blade- you can control it manually, or it will slice foes all on its own. Why can't everything do that?
+					100: This Melee blade has one goal in mind... You could probably guess from its name. It'll make a powerful weapon, that's for sure.
+					101: This Ranged weapon can empower some throwing weapons... Or, you could just blast foes away with bullets. You know, I like both of these options!
 				}
 
 				Eridani: {
@@ -500,7 +711,7 @@ Mods: {
 					6: Whatever it may be, it should prove useful to you. Ignore the fact that it talks.
 					7: I've gotten an Essence for you. This one will create a Magic-type weapon. Apparently, proper timing is needed to better utilize this weapon.
 					8: I have no doubts you can get a handle on it easily. Okay, saying 'no doubts' would be a lie. Maybe 1/4th of a doubt.
-					9: This Essence is used to craft an upgrade to Death in Four Acts. It will most likely boast incredible Ranged power.
+					9: This Magic Essence channels void energies to empower you with unique attacks, but don't get too attached. Void stuff is always dangerous.
 					10: The weapon made from this Essence is based around music.. Timing your swings will be critical in using this to its fullest.
 					11: Even holding it makes you feel a certain type of beat...
 					12: This Essence will create a legendary weapon made for slaying dragons. Jump into the air and pierce your foes with its strength.
@@ -585,11 +796,16 @@ Mods: {
 					91: An Essence attuned to the power of our Sun- and it is quite radiant, indeed. Let's make good use of it.
 					92: This Essence exudes an unhealthy amount of madness- it's a Melee weapon that trades defensive prowess for offensive might. Do be careful.
 					93: A Magic-type essence. It seems to harbor incredible power, but it also seems to require sacrifices in return...
-					94: How can I say this...? Unlike the other Essences, this one was located in... an alley. Just sitting there. It was quite the departure from the norm.
+					94: How can I say this...? Unlike the other Essences, I felt a presence give this one to me. They said something like... 'It's just a game, so it's OK.'
 					95: It seems to be able to absorb hostile energy and use it to empower you in turn. I, too, am curious on how it looks.
 					96: This Ranged-type rocket launcher has a unique melee counterpart, but it requires you to- well, I hope you have strong legs.
 					97: Take into consideration this Magic essence: in short, it turns the world into a canvas you can interact and attack with.
 					98: Here is a new Essence for your perusal- it'll deal Summon damage. It's rather close-ranged but boasts movement capabilities to help close the gap.
+					99: You'd think this Summon-type essence wouldn't be a sword, but here it is. It has a very special power hidden within... Just don't unleash it indoors.
+					100: I hope you have steady aim- this Magic weapon has powerful piercing strength, as long as you keep your target in your sights.
+					101: This Summon essence will create a mystical blade to aid you in combat- you can also control it magically, if you need better precision.
+					102: A Melee essence, huh? It looks like it has some powerful abilities. Just be glad it listens to you.
+					103: It seems this Summon essence creates powerful allies of water to give you the upper hand in combat. How brilliant!
 				}
 
 				Perseus: {
@@ -940,7 +1156,7 @@ Mods: {
 				Tsukiyomi: {
 					Asphodene: {
 						1: It.. it's over. Tsukiyomi has vanished. We're still missing so many clues. She doesn't seem out of it, so what caused her to do what she did?
-						2: Hopefully one day, we'll find the answers to the questions we seek.
+						2: Hopefully one day, we'll find the answers to the questions we seek... I have a feeling this journey isn't over yet.
 						3: I've gathered some of the leftover residue from the fight. It will likely have use as a stand-in to an Essence, for creating a weapon.
 						4: With this victory.. the galaxy is saved. There may be more evils ahead, but know that nothing is insurmountable. We've come this far.
 					}
@@ -985,12 +1201,24 @@ Mods: {
 				Deerclops: {
 					Asphodene: {
 						1: Okay, we've taken care of that strange abomination.  I have no idea where it even came from.
-						2: Why did it even attack us? Was it trying not to starve? Huh. Something's a little off about what I said.
+						2: Why did it even attack us? Was it trying not to starve? Huh.
 					}
 
 					Eridani: {
 						1: Great work- you've defeated that strange deer thing.
 						2: It was a little terrifying, but luckily it seems its previous prey was confined to the ground. Looks like we had home turf advantage here.
+					}
+				}
+
+				Thespian: {
+					Asphodene: {
+						1: That was quite the battle! Remind me to never touch strange potions ever again.
+						2: Actually, this one wasn't even my fault. Remind me to remind you to never touch strange potions again.
+					}
+
+					Eridani: {
+						1: Looks like you came out of that fight with Thespian in one piece. What a curious phenomenon.
+						2: An alchemist reanimated by a clown that only appears at night time. Hey, am I missing a punchline here?
 					}
 				}
 			}
@@ -1181,6 +1409,18 @@ Mods: {
 			}
 
 			BossItemDialogue: {
+				VagrantAsphodene: {
+					1: Hang on- I have something you might be interested in. I can't recall how I came across it, but...
+					2: It feels like I should know what it is, but I just can't- kind of like it's stopping me from doing so.
+					3: At least that tells me one thing- it's important! I'd prefer you examine it as soon as you are able. No pressure. Okay, a little pressure.
+				}
+
+				VagrantEridani: {
+					1: Hold on a moment. I neglected to bring this up before, but I have something for you... Perhaps you can help me determine its origin.
+					2: It looks so familiar, and yet something's stopping me from placing its identity- how vexing. I can't even recall when I acquired it.
+					3: They say encountering obstacles means you're heading in the right direction. Let's take a closer look as soon as possible.
+				}
+
 				Nalhaun: {
 					1: We meet again, {0}. Again, I have another foe for you to defeat.
 					2: I've given you the 'Ancient Crown.' With it, you can call forth a powerful foe, the Burnished King.
@@ -1266,15 +1506,15 @@ Mods: {
 
 				NormalIdleDialogue4: {
 					Asphodene: {
-						1: What is a 'Starfarer' you ask? Hmm, there's a lot to go over.
-						2: In short, we're the manifestation of the universe's will to vanquish threats...?
-						3: Sorry. I think my memory's a little foggy. Just know I'm on your side, whatever may come.
+						1: What is a 'Starfarer' you ask? Would you be suprised if I said I had nearly no idea?
+						2: We appear through summoning, and then... Well, our brother sent us off.
+						3: You know what? I don't even remember how or when I or Eri was summoned- isn't that strange?
 					}
 
 					Eridani: {
-						1: What is a 'Starfarer'? Let me see...
-						2: Using your terms, we would be referred to as a sort of demigod. The universe calls us into action when needed.
-						3: That wasn't very helpful? Sorry. I feel like my memories are foggy. Don't fret, though- I'm with you all the way.
+						1: What is a 'Starfarer'? I hate to tell you this, but we only have cursory knowledge.
+						2: We appear through a summoning spell- no, I can't remember my summoning, strangely.
+						3: My earliest memories are being reoriented by my brother. Other than that...
 					}
 				}
 
@@ -1384,16 +1624,8 @@ Mods: {
 				}
 
 				HardIdleDialogue5: {
-					Asphodene: {
-						1: After all this is over with, how do you feel about joining me? Think of all the good times we've had already!
-						2: Uh, yeah. A lot of it was just fighting things.
-						3: But hey- that was fun too, wasn't it?
-					}
-
-					Eridani: {
-						1: I could use your aid in the days to come... You wouldn't mind joining me, no?
-						2: ..Maybe we should come back to this conversation. We've still got a long way to go.
-					}
+					Asphodene.1: I could seriously do with a break...
+					Eridani.1: Let's, uh... take a break from time to time.
 				}
 
 				HardIdleDialogue6: {
@@ -1421,6 +1653,86 @@ Mods: {
 
 				HardIdleDialogue8: {
 					Asphodene: {
+						1: Okay, theoretically, because I can resurrect you from the brink of death at your bed...
+						2: What if- hear me out- we tied the bed to you. Boom, invincibility! Right? Right...
+					}
+
+					Eridani: {
+						1: Have you ever tried... using two weapons at once? Like, one weapon in each hand?
+						2: You spend so much time in the air, your feet are open. Maybe we could quadruple our damage ou- It would be too difficult? I see. I guess I knew that.
+					}
+				}
+
+				HardIdleDialogue9: {
+					Asphodene: {
+						1: Yes, my hair does get a bit frazzled from time to time. Actually, Eri does my hair- could you tell?
+						2: If I'm quick enough, I can leave the Observatory in the morning before she finds me. Heh.
+					}
+
+					Eridani: {
+						1: Asphodene likes to follow rules as much as possible, but to be honest, there's a time and place for everything.
+						2: Sometimes, you have to bend the regulations to help who you need. That's just how things work. If you're quick enough, nobody will even notice.
+						3: Let's keep something straight though- there's usually other options, and you have to weigh those as well. Always resorting to crime is what bad people do.
+					}
+				}
+
+				HardIdleDialogue10: {
+					Asphodene: {
+						1: From looking at her, you probably get the impression that Eridani is a bit of a "honor student" type, right?
+						2: Think again! She does whatever the heck she wants most of the time. Luckily she still has her moral compass, or I'd set her straight!
+					}
+
+					Eridani: {
+						1: Asphodene is technically the older one... but I bet you couldn't tell.
+						2: She has that sort of air about her. No, I wouldn't say childlike- more like... chaotic? Yes, chaotic.
+					}
+				}
+
+				HardIdleDialogue11: {
+					Asphodene: {
+						1: What I like? Waking up when I want to! Yes, I'd say that nears the top of the list.
+						2: Okay, it's a little vapid of me. I like fresh fruit too, is that better?
+						3: Oh, oh- magical food is the best. Once you've tried some, things aren't the same.
+						4: Travelling is a blast, as well- if your heart doesn't flutter upon visiting new vistas, are you even alive?
+					}
+
+					Eridani: {
+						1: Things that I like? Are you asking about banal things, or... Okay.
+						2: Well, I do enjoy the night air. Surrounded by life and noise, yet everything's still. Right, tranquility and silence.
+						3: If you're looking for something more material, well... I concede, I have a bit of a sweet tooth.
+					}
+				}
+
+				HardIdleDialogue12: {
+					Asphodene: {
+						1: Things that I dislike? Let's see...
+						2: I hate being weak, but being too strong makes things boring, which isn't what I want either. You get it, right?
+						3: Oh, I also really don't like being sick, but who does?
+					}
+
+					Eridani: {
+						1: What I dislike? Other than bugs... Okay, may I vent a little?
+						2: There are times when you start something, get really, really close to finishing, and then it all blows up in your face. And then-
+						3: The second time around, you only get a third of the way through before it gets all messed up again. I can't think of anything more demoralizing...
+					}
+				}
+
+				HardIdleDialogue13: {
+					Asphodene: {
+						1: My hobbies, huh. Well, I collect knicknacks from the places I visit. That's cool, right?
+						2: I also, uh, try to create new weapons. Most of them are a little volatile, but I am getting better!
+						3: I also play the piano! Not great, but... It's a step by step process. When I mean step by step, I really mean it.
+					}
+
+					Eridani: {
+						1: Hobbies? Well, the biggest thing I can think of is alchemy. Yes, alchemy has been solved- if you think on a planetary scale.
+						2: Mix fundamentals from even two different planets with epochs of divergent history, things start getting quite messy.
+						3: Sure, it's overwhelming- that's why it's a hobby, and not anything more. I'm no genius, but it is quite enjoyable.
+					}
+				}
+
+				HardIdleDialogue14: {
+					Asphodene: {
 						1: Truly... The Hallowed is just a big facade.
 						2: For such a pretty biome, it REALLY wants to kill you.
 					}
@@ -1428,18 +1740,6 @@ Mods: {
 					Eridani: {
 						1: Strip away the Hallowed's mask, and it may even be harsher than the Underworld itself.
 						2: If you're off to farm Souls, stay safe. Even the best can can be caught off-guard.
-					}
-				}
-
-				HardIdleDialogue9: {
-					Asphodene: {
-						1: We've come a long way..  don't you think?
-						2: That doesn't mean it's time to stop!
-					}
-
-					Eridani: {
-						1: Looking back on this journey.. We've come far.
-						2: And yet, we have so much more to accomplish.
 					}
 				}
 
@@ -1605,7 +1905,7 @@ Mods: {
 					145: It's the Hallow, the stuff of legend! Awesome! Everything here wants to kill us, though. Bummer.
 					146: Whoa! This place is funky. You don't see these mushrooms every day.
 					147: There's a skele-ton of enemies here! Don't you enjoy a little danger? I sure do.
-					148: So this is the meteor impact we heard. I bet we can make some crazy stuff with a meteorite.
+					148: So this is the meteor impact we heard...
 					149: This is.. the Brimstone Crag. Something dreadful happened here.
 					150: So this is the Astral Infection. I've read about it, but actually seeing it...
 					151: Wow.. This place is quite unique. I can't quite explain.
@@ -1635,7 +1935,7 @@ Mods: {
 					175: You've made it to the Observatory! So, what do you think?
 					176: Looks like you've arrived.  These are asteroids of interest- let's do some exploring.
 					177: We've made it. This planet is strange.. The surface has been wiped clean... What happened?
-					178: She was so close all along... Use the Mnemonic Sigil on the arena's center to begin.
+					178: What is this place?
 					179: It looks like we can't explore this yet... Maybe next time.
 					180: Wow, this place is seriously covered in greenery. Looks like a fun trip- let's get to exploring!
 					181: Okay, that slime's stopped holding back. Let's dig in our heels for a fight.
@@ -1659,6 +1959,14 @@ Mods: {
 					199: A demon approaches! I guess it makes sense- we are in the Underworld, after all! Let's give them a warm welcome.
 					200: I don't know what you just used, but a terrifying skull monster is on its way. Guess I should've seen this coming.
 					201: A huge crystalline foe approaches- needless to say, prepare for a fight.
+					202: Ack; looks like that potion did do something. Don't let your guard down.
+					203: Get ready, because I won't hold back!
+					204: What IS that thing?! A being of pure void energy...
+					205: It's even stronger now?! Hey, isn't this, like... really bad?
+					206: You're kidding me.
+					207: Well, let's show 'em what we can do.
+					208: You've attracted that squid! So... what now? Beat it up, I guess?
+					209: So this is that sentinel, huh? Looks pretty tough!
 				}
 
 				Eridani: {
@@ -1807,7 +2115,7 @@ Mods: {
 					143: We've stepped straight into fairytale land. It would be prettier if everything here wasn't hostile.
 					144: Giant glowing mushrooms.. It feels rather.. welcoming? We should take some back home, just in case.
 					145: I can feel traps everywhere. Strong weapons are buried here as well. Stay ready.
-					146: So this is the meteor impact we heard. Wonder what you can make out of it..?
+					146: So this is the meteor impact we heard...
 					147: The Brimstone Crag.. I can feel the horrors of the past..
 					148: This is the Astral Infection. A subject I'm all too familiar with...
 					149: This place is quite beautiful. Who knew it would be under the desert..?
@@ -1837,7 +2145,7 @@ Mods: {
 					173: Celestial coordinates established. Welcome to the Observatory Hyperborea.
 					174: We've made it. These are asteroids of interest. Let's look around.
 					175: This is it. An entire planet that's devoid of color? The surface looks like it was wiped away somehow...
-					176: She was here the whole time...? Well.. I'm ready when you are. Use the Sigil in the middle.
+					176: Where is this place? It looks very familiar...
 					177: It looks like we can't explore this yet... Maybe next time.
 					178: A being of the apocalypse has appeared. It wields destruction in all its appendages!
 					179: This huge amalgamate draws from the world's evils! Killing one slime will empower the other!
@@ -1864,11 +2172,47 @@ Mods: {
 					201: I hate to say this, but you seem to have caught the attention of a fearsome demon- time to prepare for combat.
 					202: That crown you just used seems to have summoned a demonic skull... these things aren't usually friendly!
 					203: A colossal earthen entity is approaching- and it's hostile, no doubt. A fight it is.
+					204: That potion the Astrologian gave you definitely was 'strange' for a reason. Prepare yourself!
+					205: I trust you're ready for this?
+					206: What is this void... thing? It's nothing short of terrifying.
+					207: It's even stronger now?! Any other things I should know about?
+					208: You're kidding me.
+					209: Let's show this Glassweaver we mean business.
+					210: Looks like it took the bait. Time to get to work!
+					211: I'm going to wager a guess and say this is whom the Glassweaver spoke of. Don't get careless.
 				}
 			}
 
 			VNDialogue: {
 				SceneID: {
+					0: {
+						Dialogue.0: In your palm sits a mysterious disk- myriad reflections glittering across its starry surface. It seems to be petitioning your aid. Gaze deeper?
+
+						Choices: {
+							1: Continue.
+							2: Relent.
+						}
+					}
+
+					1: {
+						Dialogue.0: Perhaps another time.
+
+						Choices: {
+							1: X
+							2: X
+						}
+					}
+
+					2: {
+						Dialogue.0: This world is not the world your character originally came from and may have progression further than your own. Sync world progression to your character?
+
+						Choices: {
+							1: Sync progression and make this world the new main world.
+							2: Do not sync progression.
+							3: Always sync progress, and don't ask again.
+						}
+					}
+
 					3: {
 						Dialogue: {
 							0: Greetings! I am Asphodene- a Starfarer, and in turn, that makes you my Starbearer.
@@ -1969,7 +2313,7 @@ Mods: {
 							12: That is all for now. I must continue to track the First Starbearer. Good luck- I will have need of you soon.
 							13: I know he's a loner, but.. I wish we could have spoken more. Stay safe, Perseus. I can't help but feel he's hiding something from me, though. Just me?
 							14: Anyways, he was right. I do feel stronger- and my hair's gone all shiny! This power should be an amazing boon going forward.
-							15: Looks like my Stellar Nova is called 'Theofania Inanis.' Perhaps we'll get to use some more once we defeat more powerful foes?
+							15: Looks like my Stellar Nova is called 'Prototokia Aster.' Perhaps we'll get to use some more once we defeat more powerful foes?
 							16: After binding the Stellar Nova Key, you should be able to equip the Stellar Nova through the Spatial Disk, like usual.
 							17: You should have some Prismatic Cores already. With their power, I theorize you can upgrade Stellar Novas with crafting.
 							18: This is important. You need Stellar Nova Energy to cast Novas. You gain Nova energy in combat, and it depletes outside of combat.
@@ -1999,7 +2343,7 @@ Mods: {
 							11: I've already bequeathed the power to her the second you've won our duel.
 							12: That is all for now. I must continue to track the First Starbearer. Good luck- I will have need of you soon.
 							13: Perseus was never one for sticking around. I think he wasn't letting something slip... Anyways, this power is incredible, but I need to get used to it.
-							14: My Stellar Nova is called 'Theofania Inanis.' Perhaps we will be able to utilize more once we become stronger.
+							14: My Stellar Nova is called 'Prototokia Aster.' Perhaps we will be able to utilize more once we become stronger.
 							15: After binding the Stellar Nova Key, you should be able to equip the Stellar Nova through the Spatial Disk, like usual.
 							16: With Prismatic Cores, you can craft upgrades to the Stellar Nova, I believe. You can affix them in the menu directly.
 							17: Don't forget: You need Stellar Nova Energy to cast Stellar Novas. You can only accrue Energy in combat.
@@ -2113,7 +2457,7 @@ Mods: {
 							5: Of course, there's a few downsides. We're transposing you there instead of normal travel (like with a starship) so you'll have most movement abilities unavailable.
 							6: Oh, I recommend taking something like a grappling hook to service you on the Cosmic Voyages. Trust me on this one.
 							7: That makes sense. Keep in mind you'll need to be near the Gateway to go to other locations- but if you get stuck, you can just teleport home or the Observatory.
-							8: Speaking of locations... any loot you find won't be replenished when you visit again, except for Anomalies.
+							8: Speaking of locations... if you find any foes on your adventures, you can kill them for a chance at some useful items.
 							9: Anomaly locations have much greater loot and rarer enemies, but if you stay for too long...
 							10: Let's just say there's a whole host of nasties in the galaxy, and they love visiting these places. Once they're alerted to your presence, they'll come hunting.
 							11: After visiting an Anomaly, there'll be a long cooldown before you can visit again, so make every visit count.
@@ -2210,6 +2554,40 @@ Mods: {
 							8: To make this worth your time, I'll craft some Stellar Foci for you after a visit.
 							9: Hmm... that would prove useful- especially avoiding having to craft them ourselves.
 							10: Wonderful. Let us hope this relationship is a fruitful one.
+						}
+
+						Choices: {
+							1: X
+							2: X
+						}
+					}
+
+					23: {
+						Dialogue: {
+							0: Hey, {0}. Remember how you fought our brother? Yes, we have a bit of a hypothesis we'd like to try out.
+							1: Wait, wait wait- this was an Eri-original idea. While I concede that I am curious, well...
+							2: It'll be fine. Anyway, we're going to do some friendly sparring to try out a hypothesis of mine. On one condition- We need to borrow a bit of your power.
+							3: Isn't that just so funny...! What's this called, dramatic irony? ...but it's true. We'd lose quite rapidly in an even match.
+							4: Just use this item when you're ready. Find a nice open space, too.
+						}
+
+						Choices: {
+							1: X
+							2: X
+						}
+					}
+
+					24: {
+						Dialogue: {
+							0: Well, I have some answers and more questions... to be honest, they've been in my mind for quite some time. During our fight, I could tell that we don't command the same powers as our brother.
+							1: Now that you mention it, we've really been kept in the dark. I can't quite picture our time before Perseus guided us, like it's a memory that's been sealed away.
+							2: You know, you'd think with the Essences and all, we'd have a better track record!
+							3: ...
+							4: Hey, wouldn't it be crazy if-
+							5: No, that doesn't make sense. We can use the Array and Novas, right?
+							6: Maybe there's something else we're overlooking. We could be cursed! I'd ask Perseus directly, but you know how he is. Jerk.
+							7: Anyways, thanks again for our little sparring match. If you want another go, just give us the signal.
+							8: Right... it's like she likes getting blown up or something.
 						}
 
 						Choices: {
@@ -2481,6 +2859,79 @@ Mods: {
 							2: X
 						}
 					}
+
+					300: {
+						Dialogue: {
+							0: When I awoke, I felt numb.
+							1: Aimless.
+							2: My memories were addled, incomplete, and terrifying. I succeeded, but doing what?
+							3: Most of all, I felt warm. For some reason, this banal sensation gave me immeasurable joy, but... it was dreadfully wrong.
+							4: I did not know it yet, but this was the moment that doomed this galaxy forever.
+						}
+
+						Choices: {
+							1: X
+							2: X
+						}
+					}
+
+					301: {
+						Dialogue: {
+							0: When we first met, I knew he could see right through me. I am a sinner, after all.
+							1: His frozen world was the Ardor's doing, the stark white reminder of my failures.
+							2: There was nothing I could say. Amidst the ruin of his people, I could only extend my hand... If he cut me down then, it would have been a mercy. This was the moment I discovered that I failed.
+							3: Instead, he stayed his blade. I offered him the only thing I could- to watch over me as I conducted my penance. Now my most stalwart ally, and I erased everything he loved.
+							4: I often return to this place. The cold bites into my skin... it's what I deserve.
+						}
+
+						Choices: {
+							1: X
+							2: X
+						}
+					}
+
+					302: {
+						Dialogue: {
+							0: The despondent fervor when you know you've just done something terrible... it never leaves me.
+							1: I decided that the only way I could atone was to try again to make things right.
+							2: I knew that I spent my energy already. I knew that failure was the most likely outcome. I know now, still. I continue to work towards this goal... I can't bear to think of anything past it.
+							3: Some inhabitants of this newborn galaxy stand in my way. My Warrior strikes them down... I do not deserve such a gallant champion.
+							4: Even now, he shoulders the blame. Guilt does not begin to describe the anguish I feel. When will I get used to it? Will I ever?
+						}
+
+						Choices: {
+							1: X
+							2: X
+						}
+					}
+
+					303: {
+						Dialogue.0: Melancholy. Regret. Anguish. You can make out these fervored emotions, but without knowledge of the other Mnemonic Traces, this story remains shrouded in mystery.
+
+						Choices: {
+							1: X
+							2: X
+						}
+					}
+
+					304: {
+						Dialogue: {
+							0: In a time before now, there existed a galaxy much like this one. In fact, is a perfect facsimile, or so was the naïve hope I shared.
+							1: Without warning, the Ardor swept through it. There was no struggle, because there was nothing to struggle against. The cold does not care. It does not hate, and it does not love.
+							2: With the energy gained from my long, storied existence, I begun everything again. As if nothing happened, I spun again the web of the galaxy from nil, my one final act of providence.
+							3: However, I made one mistake... Haha. It hurts to think about it.
+							4: I spared myself of the cruel fate of annihilation. It may have been subconsciously, or an active decision of the primal self, but does it really matter anymore?
+							5: ...
+							6: Why do I continue to try and avert this disaster?
+							7: This desire- the desire to help others- was imprinted to my very concept upon entering this existence. What agency is my own, and what was hoisted upon me by others?
+							8: Like many other things, the answer is lost to the cold. Or is that what I tell myself?
+						}
+
+						Choices: {
+							1: X
+							2: X
+						}
+					}
 				}
 			}
 		}
@@ -2488,7 +2939,7 @@ Mods: {
 		StarfarerMenuDialogue: {
 			StarfarerSelection: {
 				Choice: Choose a Starfarer to aid you on your journey.
-				Warning: "[c/E36666:This decision is permanent! (per character)]"
+				Warning: "[c/E36666:This decision is permanent per character and class-independent!]"
 				ManaIncrease: Maximum mana increased by 20!
 				Talk: The Spatial Disk begins to resonate; looks like someone wants to talk.
 
@@ -2734,6 +3185,7 @@ Mods: {
 						Special3: With only one strike!
 						Special4: Your wish is my command.
 						Special5: Just give up! At this point, even I can't stop myself.
+						Special6: I have no regrets; this is the only path.
 						1: I've been waiting for this exact moment!
 						2: I am not about to stop here.
 						3: I'll reduce you to stardust!
@@ -2752,6 +3204,7 @@ Mods: {
 						Special3: Didn't see that one coming, huh?
 						Special4: I'll show you the domain of the soul.
 						Special5: Know that you are dimensions below me.
+						Special6: I am the bone of my sword...
 						1: Time to finish this.
 						2: Go back to where you belong.
 						3: Submit to entropy.
@@ -2803,10 +3256,10 @@ Mods: {
 					}
 				}
 
-				TheofaniaInanis: {
+				PrototokiaAster: {
 					Unlocked: {
-						Asphodene: This is Theofania Inanis, a general use Stellar Nova that applies a powerful debuff.
-						Eridani: This is Theofania Inanis: a general Stellar Nova that can apply a powerful debuff.
+						Asphodene: This is Prototokia Aster, a general use Stellar Nova that applies a powerful debuff.
+						Eridani: This is Prototokia Aster: a general Stellar Nova that can apply a powerful debuff.
 					}
 				}
 
@@ -2857,15 +3310,39 @@ Mods: {
 						Eridani: We can't use this yet. We have to defeat a foe with spatial powers.
 					}
 				}
+
+				UnlimitedBladeWorks: {
+					Unlocked: {
+						Asphodene: With Unlimited Blade Works, you can mold the battlefield to one that empowers your abilities.
+						Eridani: You can use this Stellar Nova, Unlimited Blade Works, to create a powerful empowerment field.
+					}
+
+					Locked: {
+						Asphodene: We don't have access to this yet.
+						Eridani: We can't use this yet.
+					}
+				}
+
+				GuardiansLight: {
+					Unlocked: {
+						Asphodene: The power of the Guardian's Light differ depending on your Aspected Damage type.
+						Eridani: The capabilities of the Guardian's Light are altered depending on your Aspected Damage type.
+					}
+
+					Locked: {
+						Asphodene: We don't have access to this yet.
+						Eridani: We can't use this yet.
+					}
+				}
 			}
 
 			StellarNovaInfo: {
-				TheofaniaInanis: {
-					AbilityName: Theofania Inanis
-					AbilitySubName: "[c/C2BDFF:Limitless Starry Void]"
-					AbilityDescription: Conjure a colossal blade to cleave foes in twain. After casting, you will be able to re-cast Theofania Inanis for 10 seconds at no additional cost. Striking foes with Theofania Inanis will inflict Void Atrophy, dealing powerful damage over time. The second cast of Theofania Inanis will double the potency of Void Atrophy, if applicable. This debuff lasts for 30 seconds. If the attack crits, refund a portion of consumed Stellar Nova Energy. Each cast does 50% of Stellar Nova damage.
-					AstralBonus: You may re-cast Theofania Inanis again to a total of 3 times, dealing 25% damage. This cast does not inflict Void Atrophy, nor does it strengthen it.
-					UmbralBonus: The second hit of Theofania Inanis does not strengthen Void Atrophy, but increases self damage output by 400% for 5 seconds.
+				PrototokiaAster: {
+					AbilityName: Prototokia Aster
+					AbilitySubName: "[c/C2BDFF:Limitless Starry Blade]"
+					AbilityDescription: Conjure a colossal blade to cleave foes in twain. After casting, you will be able to re-cast Prototokia Aster for 10 seconds at no additional cost. Striking foes with Prototokia Aster will inflict Void Atrophy, dealing powerful damage over time. The second cast of Prototokia Aster will double the potency of Void Atrophy, if applicable. This debuff lasts for 30 seconds. If the attack crits, refund a portion of consumed Stellar Nova Energy. Each cast does 50% of Stellar Nova damage.
+					AstralBonus: You may re-cast Prototokia Aster again to a total of 3 times, dealing 25% damage. This cast does not inflict Void Atrophy, nor does it strengthen it.
+					UmbralBonus: The second hit of Prototokia Aster does not strengthen Void Atrophy, but increases self damage output by 400% for 5 seconds.
 				}
 
 				ArsLaevateinn: {
@@ -2887,7 +3364,7 @@ Mods: {
 				GardenOfAvalon: {
 					AbilityName: Garden of Avalon
 					AbilitySubName: "[c/ECB3FC:The Forever-Sealed Utopia]"
-					AbilityDescription: Call forth the Garden of Avalon, infusing the world with radiant energy. Grant powerful Health and Mana regeneration periodically for 8 seconds, scaling with Stellar Nova Damage. Gain Invincibility for 2 seconds. If the cast would be critical, gain Health, modified by Stellar Nova crit modifiers. Additionally, upon a critical cast, gain the buff 'Solemn Aegis' for 15 seconds, which negates one hit of damage independently of Invincibility.
+					AbilityDescription: Call forth the Garden of Avalon, infusing the world with radiant energy. Grant powerful Health and Mana regeneration periodically for 8 seconds, scaling with Stellar Nova Damage. Gain Invincibility for 2 seconds. If the cast would be critical, gain Health, modified by Stellar Nova crit modifiers. Additionally, upon a critical cast, gain the buff Solemn Aegis for 15 seconds, which negates one hit of damage independently of Invincibility.
 					AstralBonus: Invincibility lasts for 4 seconds instead of 2. Instantly heal 100 HP upon casting Garden of Avalon.
 					UmbralBonus: Gain an extra buff on cast: Dreamlike Charisma. (Can not stack.) Dreamlike Charisma increases damage by 16%, doubled above 100 Mana.
 				}
@@ -2898,6 +3375,30 @@ Mods: {
 					AbilityDescription: Upon cast, become immobile and invincible temporarily. Gain 'Astarte Driver' for 25 seconds. Astarte Driver grants infinite flight and three Cosmic Charges. ALL attacks while Astarte Driver is active will inherit the stats of the Stellar Nova. Pressing the Starfarer Action Key with a Cosmic Charge available will launch a barrage of spatial projectiles (2 second use cooldown.) After activating Astarte Driver's stat-changing effect, the target will be immune for a very short period.
 					AstralBonus: Critical hits do an additional {0} damage in Astarte Driver. You will gain a Cosmic Charge after defeating a foe with a critical hit. (Max 5 charges.)
 					UmbralBonus: Astarte Driver attacks will execute any foe below {0} HP. Gain 1 second of Invincibility when a Cosmic Charge is expended.
+				}
+
+				UnlimitedBladeWorks: {
+					AbilityName: Unlimited Blade Works
+					AbilitySubName: "[c/FC643B:Projected Reality of Wrought Iron]"
+					AbilityDescription: Summon a portal to a world of blades, creating a field of empowerment for 20 seconds. After activation, rain down a barrage of blades, reducing enemy damage dealt by 10% for 20 seconds on hit. Additionally, all allies within the radius will gain Bladeforged, which increases damage, knockback, critical strike chance, and armor penetration by 2% up to 10% depending on current HP (capped at 500 HP.) Duration in seconds is proportional to Energy Cost divided by 10.
+					AstralBonus: Bladeforged's cap is raised to 15% and now increases defense based on percentage values up to 8. Additionally, Bladeforged perists for 10 seconds after the Nova ends.
+					UmbralBonus: Bladeforged no longer increases damage, but attacking with projectiles trigger follow-up attacks (3 second cooldown.) Foes within the field take 10% more damage.
+				}
+
+				GuardiansLight: {
+					AbilityName: Guardian's Light
+					AbilitySubName: "[c/C0EEFF:Lucidity of the Traveler's Will]"
+
+					AbilityDescription: {
+						Melee: Wield paracausal energy through myriad abilities depending on Aspected Damage Type: Thundercrash if Melee, Golden Gun if Ranged, Nova Bomb if Magic, Needlestorm if Summoner, and Silence and Squall otherwise. Thundercrash: After activation, gain Bearer of Light for 10 seconds and fly towards your cursor, dealing incredibly powerful damage to the first foe struck. Gain Invincibility for 3 seconds upon activation, independent of the attack's duration.
+						Ranged: Wield paracausal energy through myriad abilities depending on Aspected Damage Type: Thundercrash if Melee, Golden Gun if Ranged, Nova Bomb if Magic, Needlestorm if Summoner, and Silence and Squall otherwise. Golden Gun: After activation, gain Bearer of Light for 10 seconds while unleashing a bolt of piercing light. You can press the Stellar Nova key 2 more times to repeat the attack while Bearer of Light is active, dealing 1/3 damage. Critical strikes explode, dealing 50% base damage.
+						Magic: Wield paracausal energy through myriad abilities depending on Aspected Damage Type: Thundercrash if Melee, Golden Gun if Ranged, Nova Bomb if Magic, Needlestorm if Summoner, and Silence and Squall otherwise. Nova Bomb: After activation, gain Bearer of Light for 10 seconds while unleashing a powerful void projectile that tracks foes. After 2 seconds or after striking a foe, the attack will detonate in a large explosion. Inflicts Shadowflame for 10 seconds on foes struck by the blast.
+						Summon: Wield paracausal energy through myriad abilities depending on Aspected Damage Type: Thundercrash if Melee, Golden Gun if Ranged, Nova Bomb if Magic, Needlestorm if Summoner, and Silence and Squall otherwise. Needlestorm: After activation, gain Bearer of Darkness for 10 seconds and unleash 5 Woven Needles. After striking a foe or a surface, the needles weave into Threadlings and attack nearby foes (treated as minions.) Damage is split between Woven Needles and Threadlings.
+						Other: Wield paracausal energy through myriad abilities depending on Aspected Damage Type: Thundercrash if Melee, Golden Gun if Ranged, Nova Bomb if Magic, Needlestorm if Summoner, and Silence and Squall otherwise. Silence and Squall: After activation, gain Bearer of Darkness for 10 seconds while unleashing Silence, inflicting Frostburn for 8 seconds. Instantly follow up with Squall, dealing damage while creating a frost field on impact that deals damage over time for 8 seconds.
+					}
+
+					AstralBonus: Bearer of Light increases health regeneration. Bearer of Darkness reduces damage taken by 10%. Taking lethal damage consumes either buff and restores 30 HP.
+					UmbralBonus: Bearer of Light increases damage by 8%. Bearer of Darkness increases critical strike damage by 15%. While either buff is active, Aspected Damage Type penalty is negated.
 				}
 
 				BaseDamage: Base Damage
@@ -2964,9 +3465,9 @@ Mods: {
 				Tooltip: Ignores the Starfarer Text Speed option; all text will appear instantly.
 			}
 
-			DisableDraggingDialogue: {
-				Label: Disable dragging Starfarer Dialogue
-				Tooltip: Starfarer Dialogue is locked in position.
+			MovingDialogueAmount: {
+				Label: Starfarer Menu Movement
+				Tooltip: Adjust how much the Starfarer menus move while you're moving.
 			}
 
 			PromptLoc: {
@@ -3051,8 +3552,10 @@ Mods: {
 		}
 
 		Common: {
-			DiskReady: The Spatial Disk begins to resonate. Left click to interact.
+			DiskReady: The Spatial Disk begins to resonate. Left click while holding the Disk to interact.
 			ArrayAbility: The Stellar Array has gained a new ability!
+			NovaUnlocked: Stellar Novas have been unlocked!
+			NewNova: A new Stellar Nova has been unlocked!
 			AstralLocked: The weapon fails to react to your Aspect, rendering it unusable. You can only use Astral weapons with Asphodene.
 			UmbralLocked: The weapon fails to react to your Aspect, rendering it unusable. You can only use Umbral weapons with Eridani.
 			HarshLight: The sky becomes unbearably bright...
@@ -3060,31 +3563,75 @@ Mods: {
 			EverlastingLightEnd: The Light flooding this world has been cleansed!
 			SpeedUpLight: The everlasting light is catalyzed, preventing night from falling...
 			TsukiyomiBossChecklist: The Boss Checklist updates to reveal a hidden foe!
-			`: Mods.StarsAbove.Common.`
+			CanBeShimmeredSpoils: Can be Shimmered, converting into Stellar Remnants
+			BlockedNova: A powerful foe prevents use of the Stellar Nova!
+			CreditsHover: "[View the credits for the mod!]"
+			Credits:
+				'''
+				Credits
+				[c/FFF6CD:Programming/Art/Testing/Etc: PaperLuigi]
+				[c/F19559:- Original Soundtrack Composers -]
+				[c/FFF6CD:Sunset, Stardust: PaperLuigi]
+				[c/FFF6CD:Legends Yet Unspun: ShadyCicada]
+				[c/FFF6CD:Chart the Cosmos / Even Stars Must Fall: EchoLane]
+				[c/F19559:- Special Thanks -]
+				[c/DADADA:All Patreon supporters!]
+				[c/DADADA:External Music: Studio EIM, Kairiki Bear, Masayoshi Soken, REVO, Daiki Ishikawa, Nobuo Uematsu, Michael Salvatori]
+				[c/DADADA:Subworld Contest Builders: Tatriskel, hakomari, Izanagi The wanderer of stars, UnkownSToast, Hockerzocker]
+				[c/DADADA:Discord Moderators: the_alu, ifune, loligeddon, polluxe, not02]
+				[c/DADADA:ES Translators: Tofu and Zeldris]
+				[c/DADADA:CN Translators: Koibumi Group(灾厄维基汉化组)]
+				[c/DADADA:Libraries: SubworldLibrary, StructureHelper]
+				[c/DADADA:Open-Source Code: ScalarVector, tomat, jopojelly, John Snail, Kazzymodus, Mirsario]
+
+
+
+				'''
 		}
 
 		DamageClass.CelestialDamageClass: celestial damage
 
 		NPCs: {
+			Astrologian: {
+				DisplayName: Astrologian
+
+				# This is what displays during all of an NPC's happiness levels.
+				TownNPCMood: {
+					Content: I have no complaints.
+					NoHome: Just because I enjoy looking at the stars does not mean I wish to be without a roof.
+					FarFromHome: I hate to ask, but where am I?
+					LoveSpace: Extra space to take measurements is always appreciated.
+					DislikeCrowded: I enjoy the lively atmosphere, but everything has its limit- I've found mine.
+					HateCrowded: You've got to be kidding me. I can't even setup my telescope without it getting knocked over, to say nothing of the light pollution.
+					LoveBiome: Is it not obvious? The best location to view the stars is {BiomeName}.
+					LikeBiome: I have no complaints about {BiomeName}. The horizon is a poigant view, after all.
+					DislikeBiome: As a faerie, you'd think I'd prefer {BiomeName}. Let it be known that I do not. Try looking through a telescope while being trampled by a unicorn.
+					HateBiome: Seriously? {BiomeName}? You must have some grievances against me... Feel free to share.
+					LoveNPC: There's no way around it: {NPCName} is much better at magecraft than I. I'd love to learn under his tutelage.
+					LikeNPC: A fellow scientist in {NPCName} provides valuable discourse.
+					DislikeNPC: It's not that I hate {NPCName}... however, we couldn't be more different in our tastes.
+					HateNPC: Brash, unlearned, and uncouth. {NPCName} is the distilled essence of individual I wish to never lay eyes on.
+					LikeNPC_Princess: "{NPCName} is a princess? It may be pertinent to build rapport- their coffers could afford stronger instruments, for one."
+					Princess_LovesNPC: "{NPCName} is so exotic! Isn't that something to admire?"
+				}
+
+				# This key is generated and used when the "Census" mod is enabled: It allows the user to see the spawn condition of this town NPC in the Housing UI
+				Census.SpawnCondition: Have a Weapon Memory in your inventory
+			}
+
 			Arbitration.DisplayName: Arbitration
 			AstralCell.DisplayName: Starcell
 			DummyEnemy.DisplayName: Dummy Enemy
-			PolluxBoss.DisplayName: Pollux, Baleborn Force
 			CastorBoss.DisplayName: Castor, Baleborn Force
 			Dioskouroi.DisplayName: Dioskouroi, the Twin Forces
 			NalhaunBoss.DisplayName: Nalhaun, the Burnished King
-			NalhaunBossPhase2.DisplayName: Nalhaun, Ruler of the Hollow World
 			PaintedAttendantA.DisplayName: Living Brush
 			PaintedAttendantB.DisplayName: Living Brush
-			Penthesilea.DisplayName: Penthesilea, the Witch of Ink
 			PrismLoot.DisplayName: Prismatic Core
 			SpectreOfLight.DisplayName: Spectre Of Light
-			TsukiyomiBoss.DisplayName: Tsukiyomi, the First Starfarer
 			VagrantOfSpaceAndTime.DisplayName: The Vagrant of Space and Time
 			WarriorOfLight.DisplayName: The Warrior Of Light
 			Nalhaun.DisplayName: Mods.StarsAbove.NPCName.Nalhaun
-			Tsukiyomi.DisplayName: Mods.StarsAbove.NPCName.Tsukiyomi
-			Tsukiyomi2.DisplayName: Mods.StarsAbove.NPCName.Tsukiyomi2
 			AmethystHeadpiercer.DisplayName: Amethyst Headpiercer
 			AmethystSwordsinner.DisplayName: Amethyst Swordsinner
 			AsteroidWormBody.DisplayName: Stardigrade
@@ -3093,7 +3640,6 @@ Mods: {
 			Soulless.DisplayName: Soulless
 			Garridine.DisplayName: Garridine
 			Yojimbo.DisplayName: Yojimbo
-			VagrantBoss.DisplayName: The Vagrant of Space and Time
 			DioskouroiWallsNPC.DisplayName: Dioskouroi Walls N P C
 			NalhaunPhase2WallsNPC.DisplayName: Nalhaun Phase2 Walls N P C
 			VagrantWalls.DisplayName: Vagrant Walls
@@ -3102,8 +3648,101 @@ Mods: {
 			WarriorOfLightBoss.DisplayName: The Warrior Of Light
 			WarriorWallsNPC.DisplayName: ""
 			WarriorOfLightOld.DisplayName: ""
-			WarriorOfLightBossFinalPhase.DisplayName: The Warrior Of Light
 			GardenOfAvalonNPC.DisplayName: Garden Of Avalon
+
+			VagrantBoss: {
+				DisplayName: The Vagrant of Space and Time
+
+				BossChecklistIntegration: {
+					EntryName: The Vagrant of Space and Time
+					SpawnInfo: Defeat this strange foe through the Shattered Disk, obtained from your Starfarer after the Eye of Cthulhu is defeated. This fight will be critical to progression later!
+					DespawnMessage: ""
+				}
+			}
+
+			ThespianBoss: {
+				DisplayName: Thespian, the Act of Alchemy
+
+				BossChecklistIntegration: {
+					EntryName: Thespian, the Act of Alchemy
+					SpawnInfo: Challenge this strange enemy through inquiring about the Strange Potion with the Astrologian. She moves into town after you obtain a Weapon Memory or defeat the Vagrant of Space and Time.
+					DespawnMessage: ""
+				}
+			}
+
+			PolluxBoss: {
+				DisplayName: Pollux, Baleborn Force
+
+				BossChecklistIntegration: {
+					EntryName: Dioskouroi, the Twin Forces
+					SpawnInfo: Defeat these demonic twins through use of the Twincrux Pendant, granted after defeating Skeletron. (The Vagrant of Space and Time must have been defeated.)
+					DespawnMessage: ""
+				}
+			}
+
+			PenthesileaBoss: {
+				DisplayName: Penthesilea, the Witch of Ink
+
+				BossChecklistIntegration: {
+					EntryName: Penthesilea, the Witch of Ink
+					SpawnInfo: Face this fearsome foe with the Unsullied Canvas, given to you by your Starfarer after the mechanical twin eyes are bested. (The Vagrant of Space and Time must have been defeated.)
+					DespawnMessage: ""
+				}
+			}
+
+			NalhaunBossPhase2: {
+				DisplayName: Nalhaun, Ruler of the Hollow World
+
+				BossChecklistIntegration: {
+					EntryName: Nalhaun, the Burnished King
+					SpawnInfo: Confront this aged monarch with the Ancient Crown, given to you by your Starfarer after Golem is defeated. (The Vagrant of Space and Time must have been defeated.)
+					DespawnMessage: ""
+				}
+			}
+
+			ArbitrationBoss: {
+				DisplayName: Arbitration
+
+				BossChecklistIntegration: {
+					EntryName: Arbitration
+					SpawnInfo: This mysterious foe lurks in Anomaly subworlds- staying too long in one will take you to Katabasis, where it awaits. Defeating this boss drops an item which will take you immediately to Katabasis. With MP Compatibility Mode, you can get this item by traveling to Lyra.
+					DespawnMessage: ""
+				}
+			}
+
+			StarfarerBoss: {
+				DisplayName: Asphodene and Eridani
+
+				BossChecklistIntegration: {
+					EntryName: Asphodene and Eridani
+					SpawnInfo: Face your Starfarers in this friendly bout- unlocked after defeating Plantera (ALL prior bosses from The Stars Above must have been defeated!)
+					DespawnMessage: ""
+				}
+			}
+
+			WarriorOfLightBossFinalPhase: {
+				DisplayName: The Warrior of Light
+
+				BossChecklistIntegration: {
+					EntryName: The Warrior of Light
+					SpawnInfo: After defeating the Moon Lord, strange events may occur. After 2 in game days (this can not be sped up through any means) you can obtain an item from your Starfarer to continue.
+					DespawnMessage: ""
+				}
+			}
+
+			TsukiyomiBoss: {
+				DisplayName: Tsukiyomi, the First Starfarer
+
+				BossChecklistIntegration: {
+					EntryName: Tsukiyomi, the First Starfarer
+					SpawnInfo: The time has finally come. Craft all the Mnemonic Traces together with the Celestriad Root to create the Mnemonic Sigil, and use it to be taken to Tsukiyomi's boss arena.
+					DespawnMessage: ""
+				}
+			}
+
+			ParacausalEntity.DisplayName: Paracausal Watcher
+			ParacausalEnigma.DisplayName: Paracausal Enigma
+			StarfarerBossWallsNPC.DisplayName: Starfarer Boss Walls N P C
 		}
 
 		Tiles: {
@@ -3132,28 +3771,8 @@ Mods: {
 			WealthFocusTier1Tile.MapEntry: Mods.StarsAbove.MapObject.StellarFoci
 			WealthFocusTier2Tile.MapEntry: Mods.StarsAbove.MapObject.StellarFoci
 			WealthFocusTier3Tile.MapEntry: Mods.StarsAbove.MapObject.StellarFoci
-		}
-
-		ItemTooltip: {
-			BuryTheLight: {
-				$parentVal:
-					'''
-					[c/FF5858:This weapon's attacks will slash at your cursor and deal true damage]
-					Each strike will restore Health and Mana
-					Critical hits will inflict Starblight for 20 seconds
-					On a critical hit, foes that are currently inflicted with Starblight will take extra damage and also be inflicted with Frostburn for 20 seconds
-					On a critical hit, foes that are currently inflicted with Frostburn will take extra damage and also be inflicted with Shadowflame for 20 seconds
-					Striking foes and inflicting debuffs will charge the [c/654D9C:Judgement Gauge]
-					Swapping off the weapon will drain the [c/654D9C:Judgement Gauge]
-					Once the [c/654D9C:Judgement Gauge] has reached its maximum, right click to unleash [c/902FEC:Judgement Cut], disabling your normal attacks
-					After a brief charge, [c/902FEC:Judgement Cut] dashes forwards and unleashes a myriad of deadly slices where you were previously
-					You are invincible for the duration of [c/902FEC:Judgement Cut]
-					Foes afflicted with Starblight, Frostburn, or Shadowflame will take extra critical damage, purging the debuffs in the process
-					The more debuffs on the foe, the more damage they will take, increasing dramatically
-					'Now you're motivated'
-					'''
-				Calamity: If the foe has been inflicted with all three debuffs, [c/902FEC:Judgement Cut] will additionally deal 10% of the enemy's Max HP (Capped at 1,000,000)
-			}
+			ReprintedBlueprintTile.MapEntry: Reprinted Blueprint Tile
+			CosmoturgyStation.MapEntry: Cosmoturgy Station
 		}
 
 		Items: {
@@ -3336,7 +3955,7 @@ Mods: {
 					[c/FFAB4D:Melee]: The weapon swings much faster and defense is added to critical strike damage
 					[c/EF4DFF:Magic]: Instead of swinging, the weapon will will conjure 6 explosive blasts in a fan pattern dealing 1/3 base damage
 					[c/4DFF5B:Ranged]: Instead of swinging, the weapon will quickly fire piercing shots without consuming ammo, dealing 1/2 base damage
-					[c/00CDFF:Summon]: The [c/6EF367:Luminary Armament] periodically attacks nearby foes independently, dealing half of your current HP as base damage and can crit
+					[c/00CDFF:Summon]: The [c/6EF367:Luminary Armament] periodically attacks nearby foes and can deal critical strikes
 					'For the future!'
 					'''
 				DisplayName: Architect's Luminance
@@ -3571,11 +4190,7 @@ Mods: {
 			}
 
 			VagrantBossBag: {
-				Tooltip:
-					'''
-					Currently unobtainable
-					{$CommonItemTooltip.RightClickToOpen}
-					'''
+				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
 				DisplayName: Treasure Bag (Vagrant of Space and Time)
 			}
 
@@ -3619,7 +4234,6 @@ Mods: {
 			CarianDarkMoon: {
 				Tooltip:
 					'''
-					Attacks with this weapon will sweep in a wide arc
 					Critical strikes will inflict Frostburn for 3 seconds
 					Right click to consume 100 Mana, gaining the buff [c/92D7FF:Moonlit Greatblade] for 18 seconds after a short delay, during which the weapon is unusable
 					[c/92D7FF:Moonlit Greatblade] empowers this weapon with lunar energy, granting 10 extra damage and 12 armor penetration
@@ -3636,12 +4250,11 @@ Mods: {
 					'''
 					Critical strikes with this weapon will grant a stack of [c/F1AF42:Radiance] (Up to 10)
 					Right click with 5 stacks of [c/F1AF42:Radiance] to unleash the [c/F35B43:Radiant Soul], consuming all [c/F1AF42:Radiance]
-					When the [c/F35B43:Radiant Soul] is unleashed, gain 2 seconds of Invincibility
+					When the [c/F35B43:Radiant Soul] is unleashed, gain 1 second of Invincibility
 					The [c/F35B43:Radiant Soul] will deal powerful critical damage to nearby foes in a large radius
 					The [c/F35B43:Radiant Soul]'s damage is influenced by a portion of defense and current stacks of [c/F1AF42:Radiance]
 					Gaining [c/F1AF42:Radiance] past 10 stacks will instead grant Ironskin for 4 seconds
-					The weapon grows in scale based upon a portion of defense
-					'An indefatigable sword. Its blade glitters with light'
+					'An indefatigable sword- its blade glitters with light'
 					'''
 				DisplayName: Claimh Solais
 			}
@@ -3724,8 +4337,9 @@ Mods: {
 			DebugDisk: {
 				Tooltip:
 					'''
-					Resets all player data from The Stars Above
+					Resets some player data from The Stars Above
 					Includes Starfarer, Stellar Array passives, dialogue, and Stellar Nova
+					Not updated- please create a new character
 					Affects all active players
 					Does not work during a Cosmic Voyage
 					May cause issues; this is a debug item
@@ -3755,9 +4369,7 @@ Mods: {
 				Tooltip:
 					'''
 					This object feels worryingly wrong
-					[c/F1AF42:Summons Arbitration]
-					This boss is available early, but you may find it much too difficult
-					Prepare accordingly, and consider postponing this fight until you are stronger
+					[c/F1AF42:Takes you to Katabasis, where Arbitration awaits]
 					Is not consumed upon use
 					'''
 				DisplayName: The Beating Crux
@@ -3830,41 +4442,45 @@ Mods: {
 			MnemonicTrace: {
 				Tooltip:
 					'''
-					A trace of the First Starfarer's rampage
-					'Memories of salvation'
-
+					Acquired from the Warrior of Light
+					A trace of the First Starfarer's journey
+					Use this item to gaze into the past- as long as you have gleaned the knowledge from the other Mnemonic Traces
+					'What will is truly my own?'
 					'''
-				DisplayName: Mnemonic Trace
+				DisplayName: Mnemonic Trace IV
 			}
 
 			MnemonicTrace2: {
 				Tooltip:
 					'''
+					Acquired from Nalhaun, the Burnished King
 					A trace of the First Starbearer's rampage
-					'Memories of apocalypse'
-
+					Use this item to gaze into the past...
+					'If I could simply have one more chance.'
 					'''
-				DisplayName: Mnemonic Trace
+				DisplayName: Mnemonic Trace III
 			}
 
 			MnemonicTrace3: {
 				Tooltip:
 					'''
+					Acquired from Penthesilea, the Witch of Ink
 					A trace of the First Starbearer's rampage
-					'Memories of annihilation'
-
+					Use this item to gaze into the past...
+					'I can see my faults. They are plentiful, and they never leave me.'
 					'''
-				DisplayName: Mnemonic Trace
+				DisplayName: Mnemonic Trace II
 			}
 
 			MnemonicTrace4: {
 				Tooltip:
 					'''
+					Acquired from Dioskouroi, the Twin Forces
 					A trace of the First Starbearer's rampage
-					'Memories of catastrophe'
-
+					Use this item to gaze into the past...
+					'When I rose again, it was the beginning of the end.'
 					'''
-				DisplayName: Mnemonic Trace
+				DisplayName: Mnemonic Trace I
 			}
 
 			ProgenitorWish: {
@@ -4104,7 +4720,7 @@ Mods: {
 					Calls forth an instance of your rebellious heart
 					Unleashes incredibly powerful bullets
 					Gain a sizeable amount of bonus damage relative to Max HP and MP
-					Additonally, the highest critical chance percentage of all damage types is converted into bonus damage
+					Additionally, the highest critical chance percentage of all damage types is converted into bonus damage
 					Only one can be summoned at a time
 					Uses 5 minion slots
 					'Ravage them'
@@ -4150,8 +4766,8 @@ Mods: {
 			DeathInFourActs: {
 				Tooltip:
 					'''
-					Every fourth shot will always deal critical damage and grant Swiftness
-					After the fourth shot is taken, the gun will take time to reload
+					Every fourth shot will always be a critical strike and grant Swiftness
+					After the fourth shot is taken, the gun will two seconds to reload
 					'In carnage, I bloom, like a flower in the dawn'
 					'''
 				DisplayName: Death In Four Acts
@@ -4210,8 +4826,9 @@ Mods: {
 			EssenceOfAdagium: {
 				Tooltip:
 					'''
+					Obtained after defeating Moon Lord
 					A gift from your Starfarer
-					Utilized in the creation of 'Vermilion Daemon'
+					Utilized in the creation of 'Vermilion Daemon' (Magic)
 					'''
 				DisplayName: Essence of Adagium
 			}
@@ -4219,8 +4836,9 @@ Mods: {
 			EssenceOfAlpha: {
 				Tooltip:
 					'''
+					Obtained after defeating Duke Fishron
 					A gift from your Starfarer
-					Utilized in the creation of 'Crimson Sakura Alpha'
+					Utilized in the creation of 'Crimson Sakura Alpha' (Melee)
 					'''
 				DisplayName: Essence of the Alpha
 			}
@@ -4228,8 +4846,9 @@ Mods: {
 			EssenceOfAsh: {
 				Tooltip:
 					'''
+					Obtained after defeating the World Evil Boss
 					A gift from your Starfarer
-					Utilized in the creation of 'Ashen Ambition'
+					Utilized in the creation of 'Ashen Ambition' (Melee)
 					'''
 				DisplayName: Essence of Ash
 			}
@@ -4237,8 +4856,9 @@ Mods: {
 			EssenceOfAzakana: {
 				Tooltip:
 					'''
+					Obtained after defeating Nalhaun, the Burnished King
 					A gift from your Starfarer
-					Utilized in the creation of 'Unforgotten'
+					Utilized in the creation of 'Unforgotten' (Melee)
 					'''
 				DisplayName: Essence of Azakana
 			}
@@ -4246,8 +4866,9 @@ Mods: {
 			EssenceOfBalance: {
 				Tooltip:
 					'''
+					Obtained after defeating the Warrior of Light
 					A gift from your Starfarer
-					Utilized in the creation of 'Vermilion Riposte'
+					Utilized in the creation of 'Vermilion Riposte' (Magic)
 					'''
 				DisplayName: Essence of Balance
 			}
@@ -4255,8 +4876,9 @@ Mods: {
 			EssenceOfBitterfrost: {
 				Tooltip:
 					'''
+					Obtained after defeating Queen Bee
 					A gift from your Starfarer
-					Utilized in the creation of 'Skofnung'
+					Utilized in the creation of 'Skofnung' (Melee)
 					'''
 				DisplayName: Essence of Bitterfrost
 			}
@@ -4264,8 +4886,9 @@ Mods: {
 			EssenceOfBlasting: {
 				Tooltip:
 					'''
+					Obtained after defeating the Wall of Flesh
 					A gift from your Starfarer
-					Utilized in the creation of 'Force-of-Nature'
+					Utilized in the creation of 'Force-of-Nature' (Ranged)
 					'''
 				DisplayName: Essence of Blasting
 			}
@@ -4273,8 +4896,9 @@ Mods: {
 			EssenceOfBlood: {
 				Tooltip:
 					'''
+					Obtained after defeating Golem
 					A gift from your Starfarer
-					Utilized in the creation of 'Mercy'
+					Utilized in the creation of 'Mercy' (Melee)
 					'''
 				DisplayName: Essence of Blood
 			}
@@ -4282,17 +4906,19 @@ Mods: {
 			EssenceOfBloodshed: {
 				Tooltip:
 					'''
-					A gift from your Starfarer
-					Utilized in the creation of 'The Only Thing I Know For Real'
+					Obtained from Arbitration
+					Resembles a gift from your Starfarer
+					Utilized in the creation of 'The Only Thing I Know For Real' (Celestial)
 					'''
-				DisplayName: Essence of Bloodshed
+				DisplayName: Demi-Essence of Bloodshed
 			}
 
 			EssenceOfButterflies: {
 				Tooltip:
 					'''
+					Obtained after defeating any mechanical boss
 					A gift from your Starfarer
-					Utilized in the creation of 'Veneration of Butterflies'
+					Utilized in the creation of 'Veneration of Butterflies' (Magic)
 					'''
 				DisplayName: Essence of Butterflies
 			}
@@ -4300,8 +4926,9 @@ Mods: {
 			EssenceOfChemtech: {
 				Tooltip:
 					'''
+					Obtained after defeating Queen Slime
 					A gift from your Starfarer
-					Utilized in the creation of 'Dreadnought Chemtank'
+					Utilized in the creation of 'Dreadnought Chemtank' (Ranged)
 					'''
 				DisplayName: Essence of Chemtech
 			}
@@ -4309,8 +4936,9 @@ Mods: {
 			EssenceOfDeathsApprentice: {
 				Tooltip:
 					'''
+					Obtained after defeating any mechanical boss
 					A gift from your Starfarer
-					Utilized in the creation of 'Memento Muse'
+					Utilized in the creation of 'Memento Muse' (Melee)
 					'''
 				DisplayName: Essence of Death's Apprentice
 			}
@@ -4318,8 +4946,9 @@ Mods: {
 			EssenceOfDestiny: {
 				Tooltip:
 					'''
+					Obtained after defeating Moon Lord
 					A gift from your Starfarer
-					Utilized in the creation of 'Virtue's Edge'
+					Utilized in the creation of 'Virtue's Edge' (Celestial)
 					'''
 				DisplayName: Essence of Destiny
 			}
@@ -4327,8 +4956,9 @@ Mods: {
 			EssenceOfDrivingThunder: {
 				Tooltip:
 					'''
+					Obtained after defeating the Lunatic Cultist
 					A gift from your Starfarer
-					Utilized in the creation of 'Yunlai Stiletto'
+					Utilized in the creation of 'Yunlai Stiletto' (Melee)
 					'''
 				DisplayName: Essence of Driving Thunder
 			}
@@ -4336,8 +4966,9 @@ Mods: {
 			EssenceOfDuality: {
 				Tooltip:
 					'''
+					Obtained after defeating Ice Queen
 					A gift from your Starfarer
-					Utilized in the creation of 'Stygian Nymph'
+					Utilized in the creation of 'Stygian Nymph' (Magic)
 					'''
 				DisplayName: Essence of Duality
 			}
@@ -4345,8 +4976,9 @@ Mods: {
 			EssenceOfEternity: {
 				Tooltip:
 					'''
+					Obtained after defeating Moon Lord
 					A gift from your Starfarer
-					Utilized in the creation of 'Eternal Star'
+					Utilized in the creation of 'Eternal Star' (Magic)
 					'''
 				DisplayName: Essence of Eternity
 			}
@@ -4354,8 +4986,9 @@ Mods: {
 			EssenceOfEuthymia: {
 				Tooltip:
 					'''
+					Obtained after defeating Penthesilea, the Witch of Ink
 					A gift from your Starfarer
-					Utilized in the creation of 'Vision of Euthymia'
+					Utilized in the creation of 'Vision of Euthymia' (Magic)
 					'''
 				DisplayName: Essence of Euthymia
 			}
@@ -4363,8 +4996,9 @@ Mods: {
 			EssenceOfExplosions: {
 				Tooltip:
 					'''
+					Obtained after defeating Golem
 					A gift from your Starfarer
-					Utilized in the creation of 'Genocide'
+					Utilized in the creation of 'Genocide' (Ranged)
 					'''
 				DisplayName: Essence of Explosions
 			}
@@ -4372,8 +5006,9 @@ Mods: {
 			EssenceOfFingers: {
 				Tooltip:
 					'''
+					Obtained after defeating Queen Bee
 					A gift from your Starfarer
-					Utilized in the creation of 'Inugami Ripsaw'
+					Utilized in the creation of 'Inugami Ripsaw' (Melee)
 					'''
 				DisplayName: Essence of Fingers
 			}
@@ -4381,8 +5016,9 @@ Mods: {
 			EssenceOfFoxfire: {
 				Tooltip:
 					'''
+					Obtained after defeating Plantera
 					A gift from your Starfarer
-					Utilized in the creation of 'Kifrosse'
+					Utilized in the creation of 'Kifrosse' (Summon)
 					'''
 				DisplayName: Essence of Foxfire
 			}
@@ -4390,8 +5026,9 @@ Mods: {
 			EssenceOfInk: {
 				Tooltip:
 					'''
+					Obtained after defeating Penthesilea, the Witch of Ink
 					A gift from your Starfarer
-					Utilized in the creation of 'Penthesilea's Muse'
+					Utilized in the creation of 'Penthesilea's Muse' (Melee)
 					'''
 				DisplayName: Essence of Ink
 			}
@@ -4399,8 +5036,9 @@ Mods: {
 			EssenceOfIRyS: {
 				Tooltip:
 					'''
+					Obtained after defeating Ice Queen
 					A gift from your Starfarer
-					Utilized in the creation of 'Cæsura of Despair'
+					Utilized in the creation of 'Cæsura of Despair' (Summon)
 					'''
 				DisplayName: Essence of Hope
 			}
@@ -4408,8 +5046,9 @@ Mods: {
 			EssenceOfIzanagi: {
 				Tooltip:
 					'''
+					Obtained after defeating Queen Slime
 					A gift from your Starfarer
-					Utilized in the creation of 'Izanagi's Edge'
+					Utilized in the creation of 'Izanagi's Edge' (Ranged)
 					'''
 				DisplayName: Essence of Izanagi
 			}
@@ -4417,8 +5056,9 @@ Mods: {
 			EssenceOfLiberation: {
 				Tooltip:
 					'''
+					Obtained after defeating Nalhaun, the Burnished King
 					A gift from your Starfarer
-					Utilized in the creation of 'Liberation Blazing'
+					Utilized in the creation of 'Liberation Blazing' (Melee)
 					'''
 				DisplayName: Essence of Liberation
 			}
@@ -4426,8 +5066,9 @@ Mods: {
 			EssenceOfLifethirsting: {
 				Tooltip:
 					'''
+					Obtained after defeating Pumpking
 					A gift from your Starfarer
-					Utilized in the creation of 'The Blood Blade'
+					Utilized in the creation of 'The Blood Blade' (Melee)
 					'''
 				DisplayName: Essence of Lifethirsting
 			}
@@ -4435,8 +5076,9 @@ Mods: {
 			EssenceOfLuminance: {
 				Tooltip:
 					'''
+					Obtained after defeating Tsukiyomi, the First Starfarer
 					A gift from your Starfarer
-					Utilized in the creation of 'Architect's Luminance'
+					Utilized in the creation of 'Architect's Luminance' (Melee/Magic/Summon/Ranged)
 					'''
 				DisplayName: Essence of Luminance
 			}
@@ -4444,8 +5086,9 @@ Mods: {
 			EssenceOfLunarDominion: {
 				Tooltip:
 					'''
+					Obtained after defeating Moon Lord
 					A gift from your Starfarer
-					Utilized in the creation of 'Naganadel'
+					Utilized in the creation of 'Naganadel' (Melee)
 					'''
 				DisplayName: Essence of Lunar Dominion
 			}
@@ -4453,8 +5096,9 @@ Mods: {
 			EssenceOfMisery: {
 				Tooltip:
 					'''
+					Obtained after defeating Skeletron
 					A gift from your Starfarer
-					Utilized in the creation of 'Misery's Company'
+					Utilized in the creation of 'Misery's Company' (Melee)
 					'''
 				DisplayName: Essence of Misery
 			}
@@ -4462,8 +5106,9 @@ Mods: {
 			EssenceOfOuterGods: {
 				Tooltip:
 					'''
+					Obtained after defeating the World Evil Boss
 					A gift from your Starfarer
-					Utilized in the creation of 'Takonomicon'
+					Utilized in the creation of 'Takonomicon' (Summon)
 					'''
 				DisplayName: Essence of Outer Gods
 			}
@@ -4471,8 +5116,9 @@ Mods: {
 			EssenceOfPerfection: {
 				Tooltip:
 					'''
+					Unobtainable
 					A gift from your Starfarer
-					Utilized in the creation of 'Every Moment Matters'
+					Utilized in the creation of 'Every Moment Matters' (N/A)
 					'''
 				DisplayName: Essence of Perfection
 			}
@@ -4480,8 +5126,9 @@ Mods: {
 			EssenceOfRadiance: {
 				Tooltip:
 					'''
+					Obtained after defeating Nalhaun, the Burnished King
 					A gift from your Starfarer
-					Utilized in the creation of 'Claimh Solais'
+					Utilized in the creation of 'Claimh Solais' (Melee)
 					'''
 				DisplayName: Essence of Radiance
 			}
@@ -4489,8 +5136,9 @@ Mods: {
 			EssenceOfSakura: {
 				Tooltip:
 					'''
+					Obtained after defeating Empress of Light
 					A gift from your Starfarer
-					Utilized in the creation of 'Sakura's Vengeance'
+					Utilized in the creation of 'Sakura's Vengeance' (Melee)
 					'''
 				DisplayName: Essence of Sakura
 			}
@@ -4498,8 +5146,9 @@ Mods: {
 			EssenceOfSilverAsh: {
 				Tooltip:
 					'''
+					Obtained after defeating Wall of Flesh
 					A gift from your Starfarer
-					Utilized in the creation of 'Karlan Truesilver'
+					Utilized in the creation of 'Karlan Truesilver' (Melee)
 					'''
 				DisplayName: Essence of Silver Ash
 			}
@@ -4507,8 +5156,9 @@ Mods: {
 			EssenceOfSin: {
 				Tooltip:
 					'''
+					Obtained after defeating Duke Fishron
 					A gift from your Starfarer
-					Utilized in the creation of 'Key of the Sinner'
+					Utilized in the creation of 'Key of the Sinner' (Summon)
 					'''
 				DisplayName: Essence of Sin
 			}
@@ -4516,8 +5166,9 @@ Mods: {
 			EssenceOfStarsong: {
 				Tooltip:
 					'''
+					Obtained after defeating Moon Lord
 					A gift from your Starfarer
-					Utilized in the creation of 'Suistrume'
+					Utilized in the creation of 'Suistrume' (Special)
 					'''
 				DisplayName: Essence of Starsong
 			}
@@ -4525,8 +5176,9 @@ Mods: {
 			EssenceOfStaticShock: {
 				Tooltip:
 					'''
+					Obtained after defeating Queen Slime
 					A gift from your Starfarer
-					Utilized in the creation of 'Sparkblossom's Beacon'
+					Utilized in the creation of 'Sparkblossom's Beacon' (Summon)
 					'''
 				DisplayName: Essence of Static Shock
 			}
@@ -4534,8 +5186,9 @@ Mods: {
 			EssenceOfStyle: {
 				Tooltip:
 					'''
+					Obtained after defeating King Slime
 					A gift from your Starfarer
-					Utilized in the creation of 'Rad Gun'
+					Utilized in the creation of 'Rad Gun' (Magic)
 					'''
 				DisplayName: Essence of Style
 			}
@@ -4543,8 +5196,9 @@ Mods: {
 			EssenceOfSurpassingLimits: {
 				Tooltip:
 					'''
+					Obtained after defeating the Warrior of Light
 					A gift from your Starfarer
-					Utilized in the creation of 'Light Unrelenting'
+					Utilized in the creation of 'Light Unrelenting' (Magic)
 					'''
 				DisplayName: Essence of Surpassing Limits
 			}
@@ -4552,8 +5206,9 @@ Mods: {
 			EssenceOfTechnology: {
 				Tooltip:
 					'''
+					Obtained after defeating Empress of Light
 					A gift from your Starfarer
-					Utilized in the creation of 'Arachnid Needlepoint'
+					Utilized in the creation of 'Arachnid Needlepoint' (Summon)
 					'''
 				DisplayName: Essence of Technology
 			}
@@ -4561,8 +5216,9 @@ Mods: {
 			EssenceOfTheAegis: {
 				Tooltip:
 					'''
+					Obtained after defeating King Slime
 					A gift from your Starfarer
-					Utilized in the creation of 'Aegis Driver'
+					Utilized in the creation of 'Aegis Driver' (Magic)
 					'''
 				DisplayName: Essence of the Aegis
 			}
@@ -4570,8 +5226,9 @@ Mods: {
 			EssenceOfTheAerialAce: {
 				Tooltip:
 					'''
+					Obtained after defeating Skeletron Prime
 					A gift from your Starfarer
-					Utilized in the creation of 'Armaments of the Sky Striker'
+					Utilized in the creation of 'Armaments of the Sky Striker' (Melee/Magic/Summon/Ranged)
 					'''
 				DisplayName: Essence of the Aerial Ace
 			}
@@ -4579,8 +5236,9 @@ Mods: {
 			EssenceOfTheAnomaly: {
 				Tooltip:
 					'''
+					Obtained after defeating the World Evil Boss
 					A gift from your Starfarer
-					Utilized in the creation of 'Neo Dealmaker'
+					Utilized in the creation of 'Neo Dealmaker' (Ranged)
 					'''
 				DisplayName: Essence of the Anomaly
 			}
@@ -4588,8 +5246,9 @@ Mods: {
 			EssenceOfTheAscendant: {
 				Tooltip:
 					'''
+					Obtained after defeating the Lunatic Cultist
 					A gift from your Starfarer
-					Utilized in the creation of 'Ozma Ascendant'
+					Utilized in the creation of 'Ozma Ascendant' (Magic)
 					'''
 				DisplayName: Essence of the Ascendant
 			}
@@ -4597,8 +5256,9 @@ Mods: {
 			EssenceOfTheBeginningAndEnd: {
 				Tooltip:
 					'''
+					Obtained after defeating all vanilla bosses and the Warrior of Light
 					A gift from your Starfarer
-					Utilized in the creation of 'Bury The Light'
+					Utilized in the creation of 'Bury The Light' (Celestial)
 					'''
 				DisplayName: Essence of the Beginning and End
 			}
@@ -4606,8 +5266,9 @@ Mods: {
 			EssenceOfTheBionis: {
 				Tooltip:
 					'''
+					Obtained after defeating any mechanical boss
 					A gift from your Starfarer
-					Utilized in the creation of 'Xenoblade'
+					Utilized in the creation of 'Xenoblade' (Melee)
 					'''
 				DisplayName: Essence of the Bionis
 			}
@@ -4615,8 +5276,9 @@ Mods: {
 			EssenceOfTheBull: {
 				Tooltip:
 					'''
+					Obtained after defeating any mechanical boss
 					A gift from your Starfarer
-					Utilized in the creation of 'Ride The Bull'
+					Utilized in the creation of 'Ride The Bull' (Ranged)
 					'''
 				DisplayName: Essence of the Bull
 			}
@@ -4624,8 +5286,9 @@ Mods: {
 			EssenceOfTheChimera: {
 				Tooltip:
 					'''
+					Obtained after defeating Moon Lord
 					A gift from your Starfarer
-					Utilized in the creation of 'Shadowless Cerulean'
+					Utilized in the creation of 'Shadowless Cerulean' (Magic)
 					'''
 				DisplayName: Essence of the Chimera
 			}
@@ -4633,8 +5296,9 @@ Mods: {
 			EssenceOfTheCosmos: {
 				Tooltip:
 					'''
+					Unobtainable
 					A gift from your Starfarer
-					Utilized in the creation of 'Ignition Astra'
+					Utilized in the creation of 'Ignition Astra' (N/A)
 					'''
 				DisplayName: Essence of the Cosmos
 			}
@@ -4642,8 +5306,9 @@ Mods: {
 			EssenceOfTheDarkMoon: {
 				Tooltip:
 					'''
+					Obtained after defeating Eye of Cthulhu
 					A gift from your Starfarer
-					Utilized in the creation of 'Carian Dark Moon'
+					Utilized in the creation of 'Carian Dark Moon' (Magic)
 					'''
 				DisplayName: Essence of the Dark Moon
 			}
@@ -4651,17 +5316,29 @@ Mods: {
 			EssenceOfTheDragonslayer: {
 				Tooltip:
 					'''
+					Obtained after defeating all mechanical bosses
 					A gift from your Starfarer
-					Utilized in the creation of 'Drachenlance'
+					Utilized in the creation of 'Drachenlance' (Melee)
 					'''
 				DisplayName: Essence of the Dragonslayer
+			}
+
+			EssenceOfTheDragon: {
+				DisplayName: Essence Of The Dragon
+				Tooltip:
+					'''
+					Obtained after defeating Thespian, the Act of Alchemy
+					A gift from your Starfarer
+					Utilized in the creation of 'Dragalia Found' (Summon)
+					'''
 			}
 
 			EssenceOfTheFallen: {
 				Tooltip:
 					'''
+					Obtained after defeating Plantera
 					A gift from your Starfarer
-					Utilized in the creation of 'Voice Of The Fallen'
+					Utilized in the creation of 'Voice Of The Fallen' (Ranged)
 					'''
 				DisplayName: Essence of the Fallen
 			}
@@ -4669,8 +5346,9 @@ Mods: {
 			EssenceOfTheFreeshooter: {
 				Tooltip:
 					'''
+					Obtained after defeating Skeletron
 					A gift from your Starfarer
-					Utilized in the creation of 'Der Freischutz'
+					Utilized in the creation of 'Der Freischutz' (Special)
 					'''
 				DisplayName: Essence of The Freeshooter
 			}
@@ -4678,8 +5356,9 @@ Mods: {
 			EssenceOfTheFuture: {
 				Tooltip:
 					'''
+					Obtained after defeating Tsukiyomi, the First Starfarer
 					A gift from your Starfarer
-					Utilized in the creation of 'Cosmic Destroyer'
+					Utilized in the creation of 'Cosmic Destroyer' (Ranged)
 					'''
 				DisplayName: Essence of the Future
 			}
@@ -4687,8 +5366,9 @@ Mods: {
 			EssenceOfTheGardener: {
 				Tooltip:
 					'''
+					Obtained after defeating Eye of Cthulhu
 					A gift from your Starfarer
-					Utilized in the creation of 'Konpaku Katana'
+					Utilized in the creation of 'Konpaku Katana' (Summon)
 					'''
 				DisplayName: Essence of the Gardener
 			}
@@ -4696,8 +5376,9 @@ Mods: {
 			EssenceOfTheGunlance: {
 				Tooltip:
 					'''
+					Obtained after defeating all mechanical bosses
 					A gift from your Starfarer
-					Utilized in the creation of 'Hullwrought'
+					Utilized in the creation of 'Hullwrought' (Melee)
 					'''
 				DisplayName: Essence of the Gunlance
 			}
@@ -4705,8 +5386,9 @@ Mods: {
 			EssenceOfTheHarbinger: {
 				Tooltip:
 					'''
+					Obtained after defeating Golem
 					A gift from your Starfarer
-					Utilized in the creation of 'Tartaglia'
+					Utilized in the creation of 'Tartaglia' (Ranged)
 					'''
 				DisplayName: Essence of the Harbinger
 			}
@@ -4714,8 +5396,9 @@ Mods: {
 			EssenceOfTheHawkmoon: {
 				Tooltip:
 					'''
+					Obtained after defeating Queen Slime
 					A gift from your Starfarer
-					Utilized in the creation of 'Hawkmoon'
+					Utilized in the creation of 'Hawkmoon' (Magic/Ranged)
 					'''
 				DisplayName: Essence of the Hawkmoon
 			}
@@ -4723,8 +5406,9 @@ Mods: {
 			EssenceOfTheHollowheart: {
 				Tooltip:
 					'''
+					Obtained after defeating Dioskouroi, the Twin Forces
 					A gift from your Starfarer
-					Utilized in the creation of 'Hollowheart Albion'
+					Utilized in the creation of 'Hollowheart Albion' (Summon)
 					'''
 				DisplayName: Essence of the Hollowheart
 			}
@@ -4732,8 +5416,9 @@ Mods: {
 			EssenceOfTheHunt: {
 				Tooltip:
 					'''
+					Obtained after defeating Queen Slime
 					A gift from your Starfarer
-					Utilized in the creation of 'Hunter's Symphony'
+					Utilized in the creation of 'Hunter's Symphony' (Magic)
 					'''
 				DisplayName: Essence of the Hunt
 			}
@@ -4741,8 +5426,9 @@ Mods: {
 			EssenceOfTheMoonlitAdepti: {
 				Tooltip:
 					'''
+					Obtained after defeating Golem
 					A gift from your Starfarer
-					Utilized in the creation of 'Plenilune Gaze'
+					Utilized in the creation of 'Plenilune Gaze' (Ranged)
 					'''
 				DisplayName: Essence of The Moonlit Adepti
 			}
@@ -4750,8 +5436,9 @@ Mods: {
 			EssenceOfTheObservatory: {
 				Tooltip:
 					'''
+					Obtained after defeating Wall of Flesh
 					A gift from your Starfarer
-					Utilized in the creation of 'Luminary Wand'
+					Utilized in the creation of 'Luminary Wand' (Summon)
 					'''
 				DisplayName: Essence of the Observatory
 			}
@@ -4759,8 +5446,9 @@ Mods: {
 			EssenceOfTheOcean: {
 				Tooltip:
 					'''
+					Obtained after defeating Skeletron, then visiting the Ocean
 					A gift from your Starfarer
-					Utilized in the creation of 'Apalistik'
+					Utilized in the creation of 'Apalistik' (Summon)
 					'''
 				DisplayName: Essence of the Ocean
 			}
@@ -4768,8 +5456,9 @@ Mods: {
 			EssenceOfTheOverwhelmingBlaze: {
 				Tooltip:
 					'''
+					Obtained after defeating the Warrior of Light
 					A gift from your Starfarer
-					Utilized in the creation of 'Burning Desire'
+					Utilized in the creation of 'Burning Desire' (Melee)
 					'''
 				DisplayName: Essence of the Overwhelming Blaze
 			}
@@ -4777,8 +5466,9 @@ Mods: {
 			EssenceOfThePegasus: {
 				Tooltip:
 					'''
+					Obtained after defeating Skeletron, then visiting the Underworld
 					A gift from your Starfarer
-					Utilized in the creation of 'Kazimierz Seraphim'
+					Utilized in the creation of 'Kazimierz Seraphim' (Summon)
 					'''
 				DisplayName: Essence of The Pegasus
 			}
@@ -4786,8 +5476,9 @@ Mods: {
 			EssenceOfThePhantom: {
 				Tooltip:
 					'''
+					Obtained after defeating Dioskouroi, the Twin Forces
 					A gift from your Starfarer
-					Utilized in the creation of 'Phantom in the Mirror'
+					Utilized in the creation of 'Phantom in the Mirror' (Summon)
 					'''
 				DisplayName: Essence of the Phantom
 			}
@@ -4795,8 +5486,9 @@ Mods: {
 			EssenceOfTheSharpshooter: {
 				Tooltip:
 					'''
+					Obtained after defeating Skeletron
 					A gift from your Starfarer
-					Utilized in the creation of 'Death in Four Acts'
+					Utilized in the creation of 'Death in Four Acts' (Ranged)
 					'''
 				DisplayName: Essence of The Sharpshooter
 			}
@@ -4804,8 +5496,9 @@ Mods: {
 			EssenceOfTheSwarm: {
 				Tooltip:
 					'''
+					Obtained after defeating Plantera
 					A gift from your Starfarer
-					Utilized in the creation of 'Crimson Outbreak'
+					Utilized in the creation of 'Crimson Outbreak' (Ranged)
 					'''
 				DisplayName: Essence of the Swarm
 			}
@@ -4813,8 +5506,9 @@ Mods: {
 			EssenceOfTheTreasury: {
 				Tooltip:
 					'''
+					Obtained after defeating the Warrior of Light
 					A gift from your Starfarer
-					Utilized in the creation of 'Key of the King's Law'
+					Utilized in the creation of 'Key of the King's Law' (Summon)
 					'''
 				DisplayName: Essence of the Treasury
 			}
@@ -4822,8 +5516,9 @@ Mods: {
 			EssenceOfTheUnderworldGoddess: {
 				Tooltip:
 					'''
+					Unobtainable
 					A gift from your Starfarer
-					Utilized in the creation of 'Persephone'
+					Utilized in the creation of 'Persephone' (N/A)
 					'''
 				DisplayName: Essence of The Underworld Goddess
 			}
@@ -4831,8 +5526,9 @@ Mods: {
 			EssenceOfTheUnyieldingEarth: {
 				Tooltip:
 					'''
+					Obtained after defeating Lunatic Cultist
 					A gift from your Starfarer
-					Utilized in the creation of 'Rex Lapis'
+					Utilized in the creation of 'Rex Lapis' (Melee)
 					'''
 				DisplayName: Essence of the Unyielding Earth
 			}
@@ -4840,8 +5536,9 @@ Mods: {
 			EssenceOfTime: {
 				Tooltip:
 					'''
+					Obtained after defeating Penthesilea, the Witch of Ink
 					A gift from your Starfarer
-					Utilized in the creation of 'Kroniic Principality'
+					Utilized in the creation of 'Kroniic Principality' (Summon)
 					'''
 				DisplayName: Essence of Time
 			}
@@ -4849,8 +5546,9 @@ Mods: {
 			EssenceOfTwinStars: {
 				Tooltip:
 					'''
+					Obtained after defeating Lunatic Cultist
 					A gift from your Starfarer
-					Utilized in the creation of 'Twin Stars of Albireo'
+					Utilized in the creation of 'Twin Stars of Albiero' (Magic)
 					'''
 				DisplayName: Essence of Twin Stars
 			}
@@ -4858,8 +5556,9 @@ Mods: {
 			EssenceOfVampirism: {
 				Tooltip:
 					'''
+					Obtained after defeating Deerclops
 					A gift from your Starfarer
-					Utilized in the creation of 'The Morning Star'
+					Utilized in the creation of 'The Morning Star' (Summon)
 					'''
 				DisplayName: Essence of Vampirism
 			}
@@ -4867,11 +5566,14 @@ Mods: {
 			StarfarerEssence: {
 				Tooltip:
 					'''
-					A mystical gift from your Starfarer
-					Doesn't do anything.
-
+					This Memory is indeed quite familiar to you
+					[c/F1AF42:Petitions the Starfarers for a test]
+					[c/FA5D5D:Once all bosses from The Stars Above have been defeated, this fight is drastically upgraded!]
+					No extra rewards will be given for this special difficulty
+					Warning: not recommended for casual playthroughs!
+					Is not consumed upon use
 					'''
-				DisplayName: Starfarer Essence
+				DisplayName: Starfarer's Memoria
 			}
 
 			EternalStar: {
@@ -4956,27 +5658,13 @@ Mods: {
 				DisplayName: Genocide
 			}
 
-			HawkmoonMagic: {
+			Hawkmoon: {
 				Tooltip:
 					'''
-					Right click to reload the gun with 12 rounds
+					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty when aspected to Ranged or Magic damage]
+					Right click to reload the weapon with 12 rounds
 					Time the reload perfectly to gain [c/0059FF:Paracausal Anomaly] until all bullets are spent
 					[c/0059FF:Paracausal Anomaly] increases damage while making all attacks critical
-					This weapon does not use ammo
-					This weapon can be re-crafted to swap between Magic and Ranged damage
-					'What you call Darkness is the end of your evolution'
-					'''
-				DisplayName: Hawkmoon
-			}
-
-			HawkmoonRanged: {
-				Tooltip:
-					'''
-					Right click to reload the gun with 12 rounds
-					Time the reload perfectly to gain [c/0059FF:Paracausal Anomaly] until all bullets are spent
-					[c/0059FF:Paracausal Anomaly] increases damage while making all attacks critical
-					This weapon does not use ammo
-					This weapon can be re-crafted to swap between Magic and Ranged damage
 					'What you call Darkness is the end of your evolution'
 					'''
 				DisplayName: Hawkmoon
@@ -5043,7 +5731,7 @@ Mods: {
 					'''
 					Attacks with this weapon will sweep in an arc
 					Mana regeneration is increased when not actively attacking
-					Right click while holding directional keys to play [c/72D16A:Hunter's Melodies] (20 second cooldown)
+					Right click while holding directional keys to play [c/72D16A:Hunter's Melodies] (20 second cooldown, reduced when striking foes with this weapon)
 					[c/72D16A:Hunter's Melodies] grant unique buffs based on the direction pressed to yourself and nearby allies for 20 seconds
 					Up: [c/49C0F0:Bracing Melody] grants 12 defense and Knockback Resistance
 					Down: [c/F04949:Challenger Melody] grants 6% increased damage
@@ -5058,6 +5746,7 @@ Mods: {
 			IgnitionAstra: {
 				Tooltip:
 					'''
+					REMOVED WEAPON
 					Wielding this blade will suffuse your surroundings with the power of the Astral or Umbral Aspect
 					Switch between aspects with right click (2 second cooldown)
 					During [c/5dc2e3:Astral Aspect], striking foes will restore a portion of mana
@@ -5074,7 +5763,10 @@ Mods: {
 			InugamiRipsaw: {
 				Tooltip:
 					'''
-					Right click to activate Berserker Mode for 5 seconds, increasing damage dealt but dealing damage to yourself (20 second cooldown)
+					Attacks deal constant damage and grant Endurance for 3 seconds on hit
+					Defeating foes will heal 5 HP
+					Defeating foes while below 100 HP will instead heal 15 HP
+					Right click to activate [c/b03fed:Berserker Mode] for 5 seconds, increasing damage dealt but dealing damage over time to yourself (20 second cooldown)
 					'It preys on stray fingers'
 					'''
 				DisplayName: Inugami Ripsaw
@@ -5111,7 +5803,6 @@ Mods: {
 			KazimierzSeraphim: {
 				Tooltip:
 					'''
-					Attacks with this weapons swing in a wide arc
 					Holding this weapon will conjure a [c/FF8B00:Brilliant Spark] to orbit you, dealing contact damage
 					Striking foes with this weapon grants stacks of [c/F1AF42:Radiance] (Up to 10)
 					Critical strikes grant two stacks of [c/F1AF42:Radiance]
@@ -5182,8 +5873,6 @@ Mods: {
 					Attacks fire quick long-ranged bullets
 					Proximity to hostile projectiles or enemies with contact damage grants the buff Death's Dance for 2 seconds
 					Death's Dance grants 30% increased damage
-					Right click to activate [c/A6F3C4:Phantom Slash], spinning the weapon around you for 3x base damage (8 second cooldown)
-					If Death's Dance is currently active, [c/A6F3C4:Phantom Slash] will do 6x base damage instead and grant Swiftness for 4 seconds
 					'If there is something I can't make clear, I try cutting it!'
 					'''
 				DisplayName: Konpaku Katana
@@ -5230,7 +5919,7 @@ Mods: {
 					Will fire a blade of light that will deal double damage and burn foes with 50 mana if mana is available
 					Right click to unleash your inner potential, gaining the unrivaled strength of [c/F1AF42:Limit Break] for 20 seconds (1 minute cooldown)
 					While under the influence of [c/F1AF42:Limit Break], health will be converted to mana without limit until mana is full
-					Additonally, all damage is increased by 10% and all magic damage is increased by an additional 100%
+					Additionally, all damage is increased by 10% and all magic damage is increased by an additional 100%
 					'I shall transcend you!'
 					'''
 				DisplayName: Light Unrelenting
@@ -5423,8 +6112,7 @@ Mods: {
 					Attacks with this weapon will rapidly sweep in a short-ranged arc
 					Right click to unleash [c/DC3961:Edge of Anguish] (12 second cooldown)
 					[c/DC3961:Edge of Anguish] will target the nearest enemy to your cursor and charge towards them
-					Gain Invincibility for the duration of the dash
-					Striking foes deals 3x base damage
+					Gain Invincibility for the duration of the dash and striking foes deals 3x base damage		
 					Upon contact, inflict [c/FF3200:Infernal Hemorrhage] for 3 seconds, dealing powerful damage over time
 					Additionally, deal 10% of the foe's missing HP as bonus true damage (Up to 2000)
 					Critical strikes with this weapon's basic attacks instantly cleanse the cooldown of [c/DC3961:Edge of Anguish]
@@ -5557,6 +6245,7 @@ Mods: {
 			Persephone: {
 				Tooltip:
 					'''
+					Unobtainable
 					Applies frostburn to foes and fires an icy projectile when in the confines of the underworld
 					'Only thorns left on this rose'
 					'''
@@ -5876,8 +6565,8 @@ Mods: {
 			MageOfVioletMusicBox: {
 				Tooltip:
 					'''
-					'Mage of Violet (Instrumental)' - Hololive Productions
-					Performed by Murasaki Shion
+					'Mage of Violet (Instrumental)' - HoloPro
+					Composed by Kairiki Bear
 
 					'''
 				DisplayName: Music Box (Penthesilea)
@@ -5939,7 +6628,7 @@ Mods: {
 					Composed by Hidenori Shoji
 
 					'''
-				DisplayName: Music Box (The Warrior of Light - 2nd Phase)
+				DisplayName: Music Box (Unused)
 			}
 
 			UnmatchingPiecesMusicBox: {
@@ -6183,6 +6872,7 @@ Mods: {
 			PrismOfTheCosmicPhoenix: {
 				Tooltip:
 					'''
+					Legacy item (Unobtainable)
 					[c/FF4F9F:Tier 3 Stellar Prism]
 					Affix to a Stellar Nova to gain the following abilities:
 					[c/C05CC8:Stellar Drive]
@@ -6194,7 +6884,6 @@ Mods: {
 					[c/796B8C:On Wings of Faith]
 					Lose the ability to fly below 40 Mana
 					[c/C77878:Tier 3 Prisms can only be slotted in the first slot of the Stellar Nova Menu]
-					'I'm not about to stop here!'
 					'''
 				DisplayName: Prism of the Cosmic Phoenix
 			}
@@ -6202,6 +6891,7 @@ Mods: {
 			PrismOfTheRuinedKing: {
 				Tooltip:
 					'''
+					Legacy item (Unobtainable)
 					[c/FF4F9F:Tier 3 Stellar Prism]
 					Affix to a Stellar Nova to gain the following abilities:
 					[c/6ECBA5:Harrowed Path]
@@ -6215,7 +6905,6 @@ Mods: {
 					[c/9AC89F:The Mist Recedes]
 					Lose Stellar Nova Energy upon getting hit
 					[c/C77878:Tier 3 Prisms can only be slotted in the first slot of the Stellar Nova Menu]
-					'You are not the hero of this tale! You are not anything!'
 					'''
 				DisplayName: Prism of the Ruined King
 			}
@@ -6385,7 +7074,6 @@ Mods: {
 			SakuraVengeance: {
 				Tooltip:
 					'''
-					Attacks with this weapon swing in a wide arc
 					Every 30 seconds, the weapon cycles through 4 [c/FF71D8:Elemental Arts]
 					[c/55B168:Earthsplitter] increases defense by 10 and grants 25% damage resistance
 					Attacks stun enemies for 1 second (Critical strikes stun enemies for 4 seconds and grant Invincibility briefly)
@@ -6520,7 +7208,7 @@ Mods: {
 					[c/25ACF0:Riptide Bolts] will apply [c/4A91FF:Riptide] to foes struck for 12 seconds
 					Right click to consume 200 mana, entering [c/2361C1:Raging Tides] for 8 seconds
 					Within [c/2361C1:Raging Tides], attacks are changed into rapid close-ranged melee strikes that deal double damage and mana will not regenerate
-					Additonally, gain extra Movement Speed for the buff's duration
+					Additionally, gain extra Movement Speed for the buff's duration
 					Attacking foes afflicted with [c/4A91FF:Riptide] in this stance will deal extra damage
 					This weapon does not use ammo
 					'Shouldn't let your guard down!'
@@ -6533,8 +7221,6 @@ Mods: {
 					'''
 					[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes]
 					[c/F7D76A:Hold left click to charge the weapon; the longer the weapon is charged, the stronger the resulting attack will become]
-					Uncharged attacks with this weapon swing in the cursor's direction
-					Striking foes with the tip of the blade deals damage twice
 					Charged attacks will execute [c/8D0404:Guntrigger Execution], teleporting to your cursor (in range), granting Invincibility for 2 seconds, and slashing foes around you
 					When charging the weapon, movement is disabled
 					After use of [c/8D0404:Guntrigger Execution], you are inflicted with the debuff [c/B96B6B:Impact Recoil] for 12 seconds
@@ -6591,7 +7277,7 @@ Mods: {
 				Tooltip:
 					'''
 					Debug cheat item
-					Enables all ablities in the Stellar Array- do NOT deselect abilities; use the Debug Disk.
+					Don't use me
 					'''
 				DisplayName: Umbral Item
 			}
@@ -6659,7 +7345,7 @@ Mods: {
 					The [c/495DEC:Celestial Void] will pulse powerful damage to all nearby foes, dragging them inwards
 					Attacks with this weapon during this time will fill the [c/4C3BB6:Virtue Gauge] with [c/6C38E3:Umbral Flux]
 					If the [c/4C3BB6:Virtue Gauge] is full once the [c/495DEC:Celestial Void] ends, it will collapse in a massive explosion, dealing 5x base damage
-					There is a 45 cooldown between the re-activation of [c/495DEC:Celestial Void]
+					There is a 45 second cooldown between the re-activation of [c/495DEC:Celestial Void]
 					'Pierce through all matter!'
 					'''
 				DisplayName: Virtue's Edge
@@ -6716,11 +7402,10 @@ Mods: {
 			YunlaiStiletto: {
 				Tooltip:
 					'''
-					Striking foes will grant Rage
 					Right click to expend 80 mana, placing a [c/CB8EE3:Lightning Stiletto] at your cursor's location
 					Once a [c/CB8EE3:Lightning Stiletto] is present, using right click again will teleport you to the position of the [c/CB8EE3:Lightning Stiletto]
 					Additionally, your next attack will become [c/B703FF:Driving Thunder]
-					[c/B703FF:Driving Thunder] will sweep in a wide arc, dealing high amounts of damage
+					[c/B703FF:Driving Thunder] will sweep in a wide arc, dealing 3x damage
 					If [c/B703FF:Driving Thunder] defeats an opponent, the mana used for placing the [c/CB8EE3:Lightning Stiletto] will be refunded
 					If you attempt to teleport to an unaccessable location, you will consume the [c/CB8EE3:Lightning Stiletto] without teleporting but still prepare [c/B703FF:Driving Thunder]
 					'Woven from lightning itself, from a land where gods roam free'
@@ -6733,7 +7418,7 @@ Mods: {
 					'''
 					[c/2DD2FE:Stargazer Relic]
 					Critical strikes are disabled
-					When damage is dealt, either deal 40% more damage (40% chance), 40% less damage (30% chance), 400% more damage (20% chance), or 1 damage (10% chance)
+					When damage is dealt, either deal 40% more damage (40% chance), 40% less damage (30% chance), 100% more damage (20% chance), or 1 damage (10% chance)
 					Positive results will additionally become critical strikes
 					[c/ADEEFF:Only one Stargazer Relic can be equipped at a time]
 					'###?'
@@ -6872,8 +7557,9 @@ Mods: {
 			EssenceOfAbsoluteChaos: {
 				Tooltip:
 					'''
+					Obtained after defeating Queen Slime
 					A gift from your Starfarer
-					Utilized in the creation of 'Adornment of the Chaotic God'
+					Utilized in the creation of 'Adornment of the Chaotic God' (Summon)
 					'''
 				DisplayName: Essence of Absolute Chaos
 			}
@@ -6881,8 +7567,9 @@ Mods: {
 			EssenceOfAuthority: {
 				Tooltip:
 					'''
+					Obtained after defeating the Warrior of Light
 					A gift from your Starfarer
-					Utilized in the creation of 'Supreme Authority'
+					Utilized in the creation of 'Supreme Authority' (Magic)
 					'''
 				DisplayName: Essence of Authority
 			}
@@ -6890,8 +7577,9 @@ Mods: {
 			EssenceOfDespair: {
 				Tooltip:
 					'''
+					Obtained after finding a Guide Voodoo Doll on a Hardcore character
 					A gift from your Starfarer
-					Utilized in the creation of 'Sanguine Despair'
+					Utilized in the creation of 'Sanguine Despair' (Magic)
 					'''
 				DisplayName: Essence of Despair
 			}
@@ -6899,8 +7587,9 @@ Mods: {
 			EssenceOfFarewells: {
 				Tooltip:
 					'''
+					Obtained after visiting a Graveyard
 					A gift from your Starfarer
-					Utilized in the creation of 'Kevesi Farewell'
+					Utilized in the creation of 'Kevesi Farewell' (Special)
 					'''
 				DisplayName: Essence of Farewells
 			}
@@ -6908,8 +7597,9 @@ Mods: {
 			EssenceOfGold: {
 				Tooltip:
 					'''
+					OObtained after visiting the Hallow
 					A gift from your Starfarer
-					Utilized in the creation of 'Aurum Edge'
+					Utilized in the creation of 'Aurum Edge' (Melee/Magic)
 					'''
 				DisplayName: Essence of Gold
 			}
@@ -6917,8 +7607,9 @@ Mods: {
 			EssenceOfLightning: {
 				Tooltip:
 					'''
+					Obtained after defeating Nalhaun, the Burnished King
 					A gift from your Starfarer
-					Utilized in the creation of 'Boltstorm Axe'
+					Utilized in the creation of 'Boltstorm Axe'(Melee/Magic)
 					'''
 				DisplayName: Essence of Lightning
 			}
@@ -6926,8 +7617,9 @@ Mods: {
 			EssenceOfMania: {
 				Tooltip:
 					'''
+					Obtained after defeating Duke Fishron
 					A gift from your Starfarer
-					Utilized in the creation of 'Maniacal Justice'
+					Utilized in the creation of 'Maniacal Justice' (Melee)
 					'''
 				DisplayName: Essence of Mania
 			}
@@ -6935,17 +7627,19 @@ Mods: {
 			EssenceOfMimicry: {
 				Tooltip:
 					'''
-					A gift from your Starfarer
-					Utilized in the creation of 'Manifestation'
+					Obtained from Arbitration
+					Resembles a gift from your Starfarer
+					Utilized in the creation of 'Manifestation' (Celestial)
 					'''
-				DisplayName: Essence of Mimicry
+				DisplayName: Demi-Essence of Mimicry
 			}
 
 			EssenceOfNanomachines: {
 				Tooltip:
 					'''
+					Obtained after defeating Skeletron
 					A gift from your Starfarer
-					Utilized in the creation of 'Nanomachina Reactor'
+					Utilized in the creation of 'Nanomachina Reactor' (Special)
 					'''
 				DisplayName: Essence of Nanomachines
 			}
@@ -6953,8 +7647,9 @@ Mods: {
 			EssenceOfNature: {
 				Tooltip:
 					'''
+					Obtained after placing a Tier 2 Stellaglyph
 					A gift from your Starfarer
-					Utilized in the creation of 'Irminsul's Dream'
+					Utilized in the creation of 'Irminsul's Dream' (Magic)
 					'''
 				DisplayName: Essence of Nature
 			}
@@ -6962,8 +7657,9 @@ Mods: {
 			EssenceOfOffseeing: {
 				Tooltip:
 					'''
+					Obtained after visiting a Graveyard
 					A gift from your Starfarer
-					Utilized in the creation of 'Agnian Farewell'
+					Utilized in the creation of 'Agnian Farewell' (Special)
 					'''
 				DisplayName: Essence of Offseeing
 			}
@@ -6971,8 +7667,9 @@ Mods: {
 			EssenceOfPiracy: {
 				Tooltip:
 					'''
+					Obtained after defeating a pirate invasion
 					A gift from your Starfarer
-					Utilized in the creation of 'Saltwater Scourge'
+					Utilized in the creation of 'Saltwater Scourge' (Ranged)
 					'''
 				DisplayName: Essence of Piracy
 			}
@@ -6980,8 +7677,9 @@ Mods: {
 			EssenceOfQuantum: {
 				Tooltip:
 					'''
+					Obtained after defeating Lunatic Cultist
 					A gift from your Starfarer
-					Utilized in the creation of 'Catalyst's Memory'
+					Utilized in the creation of 'Catalyst's Memory' (Celestial)
 					'''
 				DisplayName: Essence of Quantum
 			}
@@ -6989,8 +7687,9 @@ Mods: {
 			EssenceOfSilence: {
 				Tooltip:
 					'''
+					Obtained after defeating Golem
 					A gift from your Starfarer
-					Utilized in the creation of 'Gloves of the Black Silence'
+					Utilized in the creation of 'Gloves of the Black Silence' (Celestial)
 					'''
 				DisplayName: Essence of Silence
 			}
@@ -6998,8 +7697,9 @@ Mods: {
 			EssenceOfSouls: {
 				Tooltip:
 					'''
+					Obtained after defeating Moon Lord
 					A gift from your Starfarer
-					Utilized in the creation of 'Soul Reaver'
+					Utilized in the creation of 'Soul Reaver' (Melee)
 					'''
 				DisplayName: Essence of Souls
 			}
@@ -7007,8 +7707,9 @@ Mods: {
 			EssenceOfSurya: {
 				Tooltip:
 					'''
+					Obtained after defeating Tsukiyomi, the First Starfarer
 					A gift from your Starfarer
-					Utilized in the creation of 'Sunset of the Sun God'
+					Utilized in the creation of 'Sunset of the Sun God' (Melee/Magic/Summon/Ranged)
 					'''
 				DisplayName: Essence of Surya
 			}
@@ -7016,8 +7717,9 @@ Mods: {
 			EssenceOfTheAbyss: {
 				Tooltip:
 					'''
+					Obtained after defeating the Warrior of Light
 					A gift from your Starfarer
-					Utilized in the creation of 'The Everlasting Pickaxe'
+					Utilized in the creation of 'The Everlasting Pickaxe' (Celestial)
 					'''
 				DisplayName: Essence of the Abyss
 			}
@@ -7025,8 +7727,9 @@ Mods: {
 			EssenceOfTheAutomaton: {
 				Tooltip:
 					'''
+					Obtained after placing a Tier 2 Stellaglyph
 					A gift from your Starfarer
-					Utilized in the creation of 'Pod Zero-42'
+					Utilized in the creation of 'Pod Zero-42' (Summon)
 					'''
 				DisplayName: Essence of the Automaton
 			}
@@ -7034,8 +7737,9 @@ Mods: {
 			EssenceOfTheBehemothTyphoon: {
 				Tooltip:
 					'''
+					Obtained after defeating Martian Madness
 					A gift from your Starfarer
-					Utilized in the creation of 'The Kiss of Death'
+					Utilized in the creation of 'The Kiss of Death' (Ranged)
 					'''
 				DisplayName: Essence of the Behemoth Typhoon
 			}
@@ -7043,8 +7747,9 @@ Mods: {
 			EssenceOfTheRenegade: {
 				Tooltip:
 					'''
+					Obtained after defeating all mechanical bosses
 					A gift from your Starfarer
-					Utilized in the creation of 'El Capitan's Hardware'
+					Utilized in the creation of 'El Capitan's Hardware' (Ranged)
 					'''
 				DisplayName: Essence of the Renegade
 			}
@@ -7052,8 +7757,9 @@ Mods: {
 			EssenceOfTheTimeless: {
 				Tooltip:
 					'''
+					Obtained after defeating Lunatic Cultist
 					A gift from your Starfarer
-					Utilized in the creation of 'Umbra'
+					Utilized in the creation of 'Umbra' (Melee)
 					'''
 				DisplayName: Essence of the Timeless
 			}
@@ -7061,8 +7767,9 @@ Mods: {
 			EssenceOfTheWatch: {
 				Tooltip:
 					'''
+					Obtained after defeating the Vagrant of Space and Time
 					A gift from your Starfarer
-					Utilized in the creation of 'Chronoclock'
+					Utilized in the creation of 'Chronoclock' (Summon)
 					'''
 				DisplayName: Essence of the Watch
 			}
@@ -7270,7 +7977,7 @@ Mods: {
 					A mystical dias formed by the Celestriad Root
 					Allows for the traversal of the cosmos through use of [c/F1AFFF:Celestial Cartography] in the [c/EC356F:Starfarer Menu] once placed
 					Must stay in proximity to the Stellaglyph for travel
-					Can be upgraded to Tier 2 through crafting
+					Can be upgraded to Tier 3 through crafting
 					Can be enhanced by placing [c/FF1B8D:Stellar Foci] nearby to grant buffs during Cosmic Voyages
 					Able to sustain 8 [c/FF1B8D:Stellar Foci]
 					'''
@@ -7630,8 +8337,23 @@ Mods: {
 			}
 
 			BuryTheLight: {
+				Tooltip:
+					'''
+					[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes]
+					When this weapon is held, gain 100% armor penetration but defense is halved
+					Attacks rapidly cleave a large area and attacks will build stacks of [c/16DBF3:Judgement] on foes struck (Critical strikes apply two stacks of [c/16DBF3:Judgement])
+					Additionally, 50% of the damage is dealt as an additional slash at your cursor that does not build [c/16DBF3:Judgement]
+					At 20 stacks of [c/16DBF3:Judgement] the next application of [c/16DBF3:Judgement] will burst in a barrage of slashes while removing all stacks of [c/16DBF3:Judgement]
+					Right click to consume 50 mana, summoning [c/88F2FF:Mirage Blades] at your cursor which heal 5 HP upon striking foes (3 second cooldown)
+					Striking foes with [c/88F2FF:Mirage Blades] and executing [c/16DBF3:Judgement] will charge the [c/654D9C:Judgement Gauge] (Drained when swapping weapons)
+					Press the Weapon Action Key to execute [c/902FEC:Judgement Finale], disabling attacks and consuming the [c/654D9C:Judgement Gauge]
+					Upon activation of [c/902FEC:Judgement Finale], dash forward after a short delay while unleashing a barrage of slashes
+					[c/902FEC:Judgement Finale] resolves after a short delay, instantly defeating any non-boss foe struck
+					Bosses will take 100x critical damage and 10% of their Max HP as damage instead
+					You are invincible for the duration of [c/902FEC:Judgement Finale]
+					'Now you're motivated'
+					'''
 				DisplayName: Bury The Light
-				Tooltip: ""
 			}
 
 			TestArmorHead: {
@@ -7673,7 +8395,7 @@ Mods: {
 					Rocket contact damage and explosion damage occur separately
 					Direct hits on airborne foes will guarantee a critical strike
 					Rocket explosions will launch players and non-boss enemies and explosion proximity increases travel distance
-					Launching yourself will grant the buff [c/E74336:Death from Above] for 4 seconds (Buff is removed upon landing)
+					Launching yourself will deal 5% Max HP in self damage, but grants the buff [c/E74336:Death from Above] for 4 seconds (Buff is removed upon landing)
 					During this time, rocket explosions deal 20% increased non-critical strike damage and 40% increased critical strike damage
 					Right click to swing the [c/83D26E:Bargain Gardener], dealing damage to nearby foes (Critical strikes are disabled)
 					Striking foes with the [c/83D26E:Bargain Gardener] while airborne under the effect of [c/E74336:Death from Above] will guarantee a 2x damage critical strike
@@ -7696,66 +8418,14 @@ Mods: {
 					'''
 			}
 
-			SigilOfHope: {
-				DisplayName: Sigil Of Hope
-				Tooltip:
-					'''
-					While fighting the Warrior of Light during Everlasting Light, gain 120 defense
-					However, rewards will be reduced
-					'''
-			}
-
-			ArbalestSigil: {
-				DisplayName: Arbalest's Anarchy
-				Tooltip: Negates the damage penalty when swapping weapons to Ranged damage
-			}
-
-			BeastmasterSigil: {
-				DisplayName: Beastmaster's Anarchy
-				Tooltip: Negates the damage penalty when swapping weapons to Summon damage
-			}
-
-			Blueprint: {
-				DisplayName: Blueprint
-				Tooltip: Drastically increases block placement range while stationary
-			}
-
-			DoubledPawns: {
-				DisplayName: Pawn's Initiative
-				Tooltip:
-					'''
-					Instantly kill non-boss foes at 3% Max HP or lower when in close proximity
-					'It's forced!'
-					'''
-			}
-
-			GladiatorSigil: {
-				DisplayName: Gladiator's Anarchy
-				Tooltip: Reduces the damage penalty when swapping weapons to Melee damage by 10%
-			}
-
-			SpellcasterSigil: {
-				DisplayName: Spellcaster's Anarchy
-				Tooltip: Negates the damage penalty when swapping weapons to Magic damage
-			}
-
-			GuppyHead: {
-				DisplayName: Misfortunate Cat
-				Tooltip:
-					'''
-					Upon taking damage or defeating a foe, spawn three files at your position
-					Flies attack nearby foes, dealing 3% of your Max HP in damage
-					Can only activate every 3 seconds
-					'''
-			}
-
 			LamentingPocketwatch: {
 				DisplayName: Lamenting Pocketwatch
 				Tooltip:
 					'''
 					Damage variance is disabled
 					Upon landing a critical strike, flip a coin
-					If heads, damage is increased by 50%; If tails, critical strikes are disabled for 3 seconds and you become Vulnerable for the same duration
+					If heads, damage is inflicted again; If tails, you become Vulnerable for 3 seconds
+					Additionally, damage is reduced by 40% while Vulnerable and natural critical strikes are disabled
 					Can only activate every 3 seconds
 					'''
 			}
@@ -7781,25 +8451,928 @@ Mods: {
 
 			StellarSpoils: {
 				DisplayName: Stellar Spoils
-				Tooltip: ""
+				Tooltip:
+					'''
+					Concentrated confluence of celestial energy
+					Contains unique Stellar Spoils, obtained from celestial bosses
+					'''
 			}
 
 			StellarRemnant: {
 				DisplayName: Stellar Remnant
 				Tooltip:
 					'''
-					Leftover confluence from opened Stellar Spoils
+					Leftover confluence from Stellar Spoils
 					Can be used to craft Stellar Spoil items
 					'''
 			}
 
 			QuantumButterflyBody: {
 				DisplayName: Quantum Butterfly Garb
-				Tooltip: ""
+				Tooltip: "'This is getting troublesome...'"
 			}
 
 			QuantumButterflyLegs: {
 				DisplayName: Quantum Butterfly Boots
+				Tooltip: ""
+			}
+
+			BaselessBladeBody: {
+				DisplayName: Baseless Blade Armguard
+				Tooltip: "'Projection, commence'"
+			}
+
+			BaselessBladeLegs: {
+				DisplayName: Baseless Blade Leggings
+				Tooltip: ""
+			}
+
+			ReprintedBlueprint: {
+				DisplayName: Reprinted Blueprint
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Deal 10% more damage in a town
+					'''
+				TooltipAttached: Deal 10% more damage in a town
+			}
+
+			SigilOfHope: {
+				DisplayName: Sigil Of Hope
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					When below 50% HP, increase the potency of all other Memory effects by 30%
+					'''
+				TooltipAttached: When below 50% HP, increase the potency of all other Memory effects by 30%
+			}
+
+			OceanHuedHunterBody: {
+				DisplayName: Ocean-Hued Hunter Vestments
+				Tooltip: "'Perfect for fighting Seaborn'"
+			}
+
+			OceanHuedHunterHead: {
+				DisplayName: Ocean-Hued Hunter Tricorn
+				Tooltip: ""
+			}
+
+			OceanHuedHunterLegs: {
+				DisplayName: Ocean-Hued Hunter Leggings
+				Tooltip: ""
+			}
+
+			StarpopBody: {
+				DisplayName: Starpop Body
+				Tooltip: "'You too can be a diamond in the rough'"
+			}
+
+			StarpopHead: {
+				DisplayName: Starpop Head
+				Tooltip: ""
+			}
+
+			StarpopLegs: {
+				DisplayName: Starpop Legs
+				Tooltip: ""
+			}
+
+			EssenceOfDreams: {
+				DisplayName: Essence Of Dreams
+				Tooltip:
+					'''
+					Obtained after defeating Plantera
+					A gift from your Starfarer
+					Utilized in the creation of 'Dreamer's Inkwell' (Magic)
+					'''
+			}
+
+			EssenceOfKinetics: {
+				DisplayName: Essence Of Kinetics
+				Tooltip:
+					'''
+					Obtained after defeating Duke Fishron
+					A gift from your Starfarer
+					Utilized in the creation of 'Kariumu's Favor' (Celestial)
+					'''
+			}
+
+			EssenceOfSpinning: {
+				DisplayName: Essence Of Spinning
+				Tooltip:
+					'''
+					Obtained after defeating the Vagrant of Space and Time
+					A gift from your Starfarer
+					Utilized in the creation of 'Trickspin Two-Step' (Summon)
+					'''
+			}
+
+			EssenceOfTheSoldier: {
+				DisplayName: Essence Of The Soldier
+				Tooltip:
+					'''
+					Obtained after defeating the World Evil Boss
+					A gift from your Starfarer
+					Utilized in the creation of 'Shock & Awe' (Ranged)
+					'''
+			}
+
+			EssenceOfTheHallownest: {
+				DisplayName: Essence Of The Hallownest
+				Tooltip:
+					'''
+					Obtained after defeating Skeletron, and then visiting the Underworld
+					A gift from your Starfarer
+					Utilized in the creation of 'Gossamer Needle' (Melee/Magic)
+					'''
+			}
+
+			EmberFlask: {
+				DisplayName: Ember Flask
+				Tooltip:
+					'''
+					When used, heal 30% of Max HP (Potion Sickness duration is decreased to 20 seconds)
+					Can only be used once during combat
+					Replenishes out of combat
+					'Praise the sun!'
+					'''
+			}
+
+			GarmentsOfWinterRainAttire: {
+				DisplayName: Garments Of Winter Rain
+				Tooltip:
+					'''
+					One of the storied garbs from legends past
+					Equip to your Starfarer to gain the following:
+					[c/C0C0C0:No effect]
+					Vanity Item
+					'''
+			}
+
+			SeventhSigilAutumnAttire: {
+				DisplayName: Seventh Sigil's Autumn
+				Tooltip:
+					'''
+					One of the storied garbs from legends past
+					Equip to your Starfarer to gain the following:
+					[c/C0C0C0:No effect]
+					Vanity Item
+					'''
+			}
+
+			TsukiBossBag: {
+				DisplayName: Tsuki Boss Bag
+				Tooltip: ""
+			}
+
+			GossamerNeedle: {
+				DisplayName: Gossamer Needle
+				Tooltip:
+					'''
+					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty when aspected to Melee or Magic damage]
+					Attacks with this weapon stab forwards, piercing foes
+					Right click to dash towards your cursor (4 second cooldown)
+					Press the Weapon Action Key to unleash [c/B9F1FA:Gossamer Storm], healing 15 HP and striking nearby foes 3 times (10 second cooldown)
+					If [c/B9F1FA:Gossamer Storm] inflicts a critical strike, gain Alacrity for 5 seconds, increasing attack and movement speed
+					'Too weak, little ghost...'
+					'''
+			}
+
+			EssenceOfTheVoid: {
+				DisplayName: Essence Of The Void
+				Tooltip:
+					'''
+					Obtained after defeating the Wall of Flesh
+					A gift from your Starfarer
+					Utilized in the creation of 'Dragged Below' (Magic)
+					'''
+			}
+
+			DraggedBelowGloves: {
+				DisplayName: Dragged Below Gloves
+				Tooltip: ""
+			}
+
+			DraggedBelow: {
+				DisplayName: Dragged Below
+				Tooltip:
+					'''
+					Attacks with this weapon unleashes [c/7444FF:Drown], firing a weak piercing bolt that strikes 2 times, dealing 15% bonus damage to foes afflicted with Shadowflame
+					Right click to unleash [c/9036F5:Flood], firing a bolt of void energy that explodes on impact, dealing 4x damage while inflicting Shadowflame for 5 seconds (8 second cooldown)
+					Taking damage or using [c/7444FF:Drown] increases [c/7A1AE7:Void Corruption] ([c/7A1AE7:Void Corruption] passively increases over time) 
+					Pressing the Weapon Action Key will consume 25% [c/7A1AE7:Void Corruption] to activate [c/73C84E:Suppress], healing 25 HP and 25% Max MP (2 second cooldown)
+					Consecutive activations of [c/73C84E:Suppress] heals 5 HP instead
+					When [c/7A1AE7:Void Corruption] reaches maxiumum, become afflicted with [c/E71A1A:Fiendish Corruption]
+					While under the effects of [c/E71A1A:Fiendish Corruption], gain 12 defense, [c/7A1AE7:Void Corruption] drains over time, and weapon abilities are transformed
+					[c/7444FF:Drown] becomes [c/CD1717:Corrupted Drown], transforming into a channeled beam that deals powerful damage, but no longer charges [c/7A1AE7:Void Corruption] and inflicts Slow on self when active
+					[c/9036F5:Flood] becomes [c/B1296D:Corrupted Flood], dealing 10x damage and cooldown is reduced to 4 seconds, but does not inflict Shadowflame
+					[c/73C84E:Suppress] becomes [c/C84EB6:Corrupted Suppress], consuming 50 HP to restore 50% Max MP and increase [c/7A1AE7:Void Corruption] by 25%
+					'..and so it comes... for all of us.'
+					'''
+			}
+
+			Poltergrasp5000: {
+				Tooltip:
+					'''
+					When held, vaccums all nearby items to your position instantly
+					Use the item to grab items further away
+					'''
+				DisplayName: Poltergrasp 5000
+			}
+
+			GundbitStaves: {
+				DisplayName: Gund-bit Siege
+				Tooltip:
+					'''
+					Holding this weapon summons [c/B6E3F5:Bit Staves] and grants [c/3899E1:Aerial Defensive Array], granting bonus defense based on current Mana (up to 10)
+					Attacks with this weapon fire piercing lasers and mark targets, causing the [c/B6E3F5:Bit Staves] to orbit and attack
+					Press the Weapon Action Key to recall all [c/B6E3F5:Bit Staves] to form a defensive shield for 3 seconds (20 second cooldown)
+					During this time, the shield will follow your cursor and destroy all hostile projectiles in contact
+					Additionally, while the shield is active the effect of [c/3899E1:Aerial Defensive Array] is amplified by 50%
+					Right click to recall all [c/B6E3F5:Bit Staves], transforming the weapon after a short delay (30 second cooldown)
+					After transformation, unleash an extremely powerful beam that ignores collision and strikes multiple times
+					Only one effect that utilizes the [c/B6E3F5:Bit Staves] can be active at a time
+					'''
+			}
+
+			DragaliaFound: {
+				DisplayName: Dragalia Found
+				Tooltip:
+					'''
+					Holding this weapon grants [c/CAFF93:Tempest's Dragonlight], granting 2 defense for every minion slot
+					Attacks with this weapon execute a close-ranged combo, granting Invincibility for a short time before finishing the combo
+					After completing a combo, gain [c/FFF593:Bondforged Blade] for 3 seconds, charging [c/78F178:Dragonshift Energy] when active
+					Once [c/78F178:Dragonshift Energy] reaches 50% or more, press the Weapon Action Key to activate [c/9AFE35:Windwyrm State]
+					[c/9AFE35:Windwyrm State] transforms yourself into a powerful dragon, healing 100 HP instantly while constantly draining [c/78F178:Dragonshift Energy]
+					Additionally, taking damage subtracts [c/78F178:Dragonshift Energy] instead
+					Within [c/9AFE35:Windwyrm State], attacks become powerful claw slashes that deal 2x damage in a large area and inflict [c/CCEDAA:Stormlash] for 3 seconds
+					[c/CCEDAA:Stormlash] is consumed when minions deal damage and increases damage dealt by 1% for every minion slot
+					Right click to summon powerful tornadoes on all nearby foes while inflicting [c/CCEDAA:Stormlash] for 1 second per hit (6 second cooldown)
+					[c/9AFE35:Windwyrm State] ends when all [c/78F178:Dragonshift Energy] is depleted
+					Swapping off this weapon will immediately end [c/9AFE35:Windwyrm State] and reset [c/78F178:Dragonshift Energy]
+					Damage scales with world progression
+					'''
+			}
+
+			Wavedancer: {
+				DisplayName: Wavedancer
+				Tooltip:
+					'''
+					Summons an oceanblessed blade to assail foes
+					The weapon requires 3 minion slots available to be summoned but does not consume minion slots
+					When holding this weapon, holding left click while the weapon is summoned will allow for manual control of the weapon with your cursor
+					Additionally, damage is reduced or multipled up to 1.5x depending on speed and gain 2% critical strike chance per minion slot for this weapon only
+					Critical strikes with this weapon will inflict [c/4A91FF:Riptide] for 2 seconds and grants Swiftness for 4 seconds
+					[c/4A91FF:Riptide] increases the damage of the next minion attack by 30% (This weapon can detonate this effect)
+					Press the Weapon Action Key when manually controlling the weapon to slash in an area around the weapon, inflicting [c/4A91FF:Riptide] for 2 seconds (4 second cooldown)
+					'Bends the swiftness and power of an ocean storm to the protection of its owner'
+					'''
+			}
+
+			CosmoturgyStationItem: {
+				DisplayName: Cosmoturgy Station
+				Tooltip:
+					'''
+					A mystical plinth utilized to upgrade Aspected Weapons with [c/D294FF:Weapon Memories]
+					Right click to interact (Interaction is canceled upon movement)
+					'''
+			}
+
+			CapedFeather: {
+				DisplayName: Caped Feather
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects: 
+					Gain 8% increased damage while airborne
+					'''
+				TooltipAttached: Gain 8% increased damage while airborne
+			}
+
+			KnightsShovelhead: {
+				DisplayName: Knight's Shovelhead
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects: 
+					Striking foes launches you airborne
+					'Strike the earth!'
+					'''
+				TooltipAttached: Striking foes launches you airborne
+			}
+
+			ResonanceGem: {
+				DisplayName: Resonance Gem
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects: 
+					Lowers the cooldown of all other Memory effects by 25%
+					'''
+				TooltipAttached: Lowers the cooldown of all other Memory effects by 25%
+			}
+
+			AetherBarrel: {
+				DisplayName: Aether Barrel
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Gain 2 [c/9DE0DC:Powder Charges] after using a consumable healing item (Max 2)
+					On a critical strike, expend a [c/9DE0DC:Powder Charge] to cause an explosion, dealing damage again in a wide area
+					'''
+				TooltipAttached:
+					'''
+					Gain 2 [c/9DE0DC:Powder Charges] after using a consumable healing item (Max 2)
+					On a critical strike, expend a [c/9DE0DC:Powder Charge] to cause an explosion, dealing damage again in a wide area
+					'''
+			}
+
+			ChoiceGlasses: {
+				DisplayName: Choice Glasses
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Gain 50% increased damage, but using this weapon prevents any other items from being used for 60 seconds
+					'''
+				TooltipAttached: Gain 50% increased damage, but using this weapon prevents any other items from being used for 60 seconds
+			}
+
+			NookMilesTicket: {
+				DisplayName: Nook Miles Ticket
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Increase the potency of other Memory damage bonuses by 8%
+					'''
+				TooltipAttached: Increase the potency of other Memory damage bonuses by 8%
+			}
+
+			RedSpiderLily: {
+				DisplayName: Red Spider Lily
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					When health is reduced through any means, gain one stack of [c/BD3535:Accursed Edge] (Max 5) (2 second fixed cooldown)
+					At max stacks of [c/BD3535:Accursed Edge], the next attack consumes all stacks, dealing 40% more damage while healing 20% Max HP
+					'''
+				TooltipAttached:
+					'''
+					When health is reduced through any means, gain one stack of [c/BD3535:Accursed Edge] (Max 5) (2 second fixed cooldown)
+					At max stacks of [c/BD3535:Accursed Edge], the next attack consumes all stacks, dealing 40% more damage while healing 20% Max HP
+					'''
+			}
+
+			TarotCard: {
+				DisplayName: Tarot Card
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Gain 8% increased damage while fulfilling a specific condition (condition is randomly assigned per weapon)
+					This boost is doubled to 16% when below half health or when under the effect of [c/FF7DEF:Fate Divined]
+					'''
+
+				TooltipAttached: {
+					Fool: The Fool: Gain 8% increased damage (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Magician: The Magician: Gain 8% increased damage at max Mana (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Priestess: The Priestess: Gain 8% increased damage in a Town (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Empress: The Empress: Gain 8% increased damage while feminine (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Emperor: The Emperor: Gain 8% increased damage while masculine (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Heirophant: The Heirophant: Gain 8% increased damage at Max HP (increased to 16% under the effect of [c/FF7DEF:Fate Divined])
+					Lovers: The Lovers: Gain 8% increased damage when in Multiplayer (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Chariot: The Chariot: Gain 8% increased damage when moving quickly horizontally (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Justice: Justice: Gain 8% increased damage during an invasion (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Hermit: The Hermit: Gain 8% increased damage when in Singleplayer (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Fortune: Fortune: Gain 8% increased damage randomly (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Strength: Strength: Gain 8% increased damage if this weapon has strong knockback or higher (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					HangedMan: The Hanged Man: Gain 8% increased damage when below 75% HP (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Death: Death: Gain 16% increased damage (decreased to 8% when below half health)
+					Temperance: Temperance: Gain 8% increased damage when Well Fed (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Devil: The Devil: Gain 8% increased damage in the Underworld (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Tower: Tower: Gain 8% increased damage in the Dungeon (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Star: Star: Gain 8% increased damage in space (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Moon: Moon: Gain 8% increased damage during the night (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Sun: Sun: Gain 8% increased damage during the day (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+				}
+			}
+
+			ArgentumShard: {
+				DisplayName: Fragment of Lost Memory
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Gain 9% increased damage per 80 Mana
+					'''
+				TooltipAttached: Gain 9% increased damage per 80 Mana
+			}
+
+			NetheriteBar: {
+				DisplayName: Bastion Ingot
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Gain 4 defense while holding this weapon
+					Press the Weapon Memory Key to instantly gain 20 defense for 2 seconds (18 second cooldown)
+					'Those were the days'
+					'''
+				TooltipAttached:
+					'''
+					Gain 4 defense while holding this weapon
+					Press the Weapon Memory Key to instantly gain 20 defense for 2 seconds (18 second cooldown)
+					'''
+			}
+
+			PearlescentOrb: {
+				DisplayName: Pearlescent Orb
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Press the Weapon Memory Key to instantly teleport to your cursor (40 second cooldown)
+					'The end?'
+					'''
+				TooltipAttached: Press the Weapon Memory Key to instantly teleport to your cursor (40 second cooldown)
+			}
+
+			PhantomMask: {
+				DisplayName: Phantom Mask
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					If you have exactly one minion slot used, gain 7% increased damage per unused minion slot
+					'Checkmate'
+					'''
+				TooltipAttached: If you have exactly one minion slot used, gain 7% increased damage per unused minion slot
+			}
+
+			PrimeCut: {
+				DisplayName: Prime Cut
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Gain 4% increased damage while Well Fed
+					'''
+				TooltipAttached: Gain 4% increased damage while Well Fed
+			}
+
+			DekuNut: {
+				DisplayName: Deku Nut
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					If Mana is consumed through use of the weapon's left-click attack, restore 1 HP (3 use cooldown)
+					'''
+				TooltipAttached: If Mana is consumed through use of the weapon's left-click attack, restore 1 HP on use (3 use cooldown)
+			}
+
+			ElectricGuitarPick: {
+				DisplayName: Electric Guitar Pick
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Striking foes unleashes up to 3 lightning arcs that deal 1/8th damage in a small area (2 second cooldown)
+					'...and his music was...'
+					'''
+				TooltipAttached: Striking foes unleashes up to 3 lightning arcs that deal 1/8th damage in a small area (2 second cooldown)
+			}
+
+			MatterManipulator: {
+				DisplayName: Matter Modulator
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Gain the Mining buff for 30 seconds when defeating an enemy
+					'Rock and stone!'
+					'''
+				TooltipAttached: Gain the Mining buff for 30 seconds when defeating an enemy
+			}
+
+			PowerMoon: {
+				DisplayName: Power Moon
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					If this weapon has a right-click ability, it now charges Stellar Nova Energy by 4 when used
+					'''
+				TooltipAttached: If this weapon has a right-click ability, it now charges Stellar Nova Energy by 4 when used
+			}
+
+			Rageblade: {
+				DisplayName: Furious Dirk
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Gain 0.1% increased attack speed when striking foes, capped at 20% increased attack speed
+					Resets outside of combat
+					'''
+				TooltipAttached:
+					'''
+					Gain 0.1% increased attack speed when striking foes, capped at 20% increased attack speed
+					Resets outside of combat
+					'''
+			}
+
+			YoumuHilt: {
+				DisplayName: Ghostly Hilt
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Press the Weapon Memory Key to gain 40% increased movement speed for 4 seconds (30 second cooldown)
+					'''
+				TooltipAttached: Press the Weapon Memory Key to gain 40% increased movement speed for 4 seconds (30 second cooldown)
+			}
+
+			BottledChaos: {
+				DisplayName: Bottled Chaos
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Damage variance is tripled
+					'''
+				TooltipAttached: Damage variance is tripled
+			}
+
+			GuppyHead: {
+				DisplayName: Misfortunate Cat
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Press the Weapon Memory Key to launch 3 flies that attack foes, dealing 1/3 weapon damage each (20 second cooldown)
+					Cooldown is reduced by 1 second for every critical strike
+					'''
+				TooltipAttached:
+					'''
+					Press the Weapon Memory Key to launch 3 flies that attack foes, dealing 1/3 weapon damage each (20 second cooldown)
+					Cooldown is reduced by 1 second for every critical strike
+					'''
+			}
+
+			MagicSigil: {
+				DisplayName: Spellcaster Sigil
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					If aspected to Magic damage, gain 12% increased damage
+					'''
+				TooltipAttached: If aspected to Magic damage, gain 12% increased damage
+			}
+
+			MeleeSigil: {
+				DisplayName: Gladiator Sigil
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					If aspected to Melee damage, gain 12% increased damage
+					'''
+				TooltipAttached: If aspected to Melee damage, gain 12% increased damage
+			}
+
+			Pawn: {
+				DisplayName: Ferrum Pawn
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					Defeating an enemy grants Endurance and Ironskin for 12 seconds
+					'''
+				TooltipAttached: Defeating an enemy grants Endurance and Ironskin for 12 seconds
+			}
+
+			RangedSigil: {
+				DisplayName: Arbalest Sigil
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					If aspected to Ranged damage, gain 12% increased damage
+					'''
+				TooltipAttached: If aspected to Ranged damage, gain 12% increased damage
+			}
+
+			SummonSigil: {
+				DisplayName: Beastmaster Sigil
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					If aspected to Summon damage, gain 12% increased damage
+					'''
+				TooltipAttached: If aspected to Summon damage, gain 12% increased damage
+			}
+
+			Trumpet: {
+				DisplayName: Brass Bugle
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Using this weapon makes trumpet noises
+					'''
+				TooltipAttached: Using this weapon makes trumpet noises
+			}
+
+			MalsaineDraught: {
+				Tooltip:
+					'''
+					This concoction reeks with chaos
+					[c/F1AF42:Summons Thespian, the Act of Alchemy] (Night only)
+					This boss is available early, but you may find it much too difficult
+					Prepare accordingly, and consider postponing this fight until you are stronger
+					Is not consumed upon use
+					'''
+				DisplayName: The Malsaine Draught
+			}
+
+			OriginInfinity: {
+				DisplayName: Origin's Infinity
+				Tooltip:
+					'''
+					[c/F56BC9:This weapon modifies your active Stellar Nova]
+					Attacks with this weapon grant Stellar Nova Energy upon striking foes
+					Holding this weapon changes the active Stellar Nova to [Infinity Blade]
+					When [Infinity Blade] is activated, cleave a wide area in front of you with an incredibly powerful attack after a short delay
+					This attack ignores all forms of invincibility, permanently shreds foe defense by 30%, and deals true damage while granting [Unlimited Sword] for 20 seconds
+					[Unlimited Sword] drastically amplifies this weapon's abilities
+					Attacks while under the effect of [Unlimited Sword] ignore all defense and have a 3% chance to instantly defeat non-boss enemies
+					Additionally, this weapon inherits 15% of the Stellar Nova's damage and critical strike chance
+					Right click to unleash [Tachyon Slash], a powerful multi-hit attack which extends the duration of [Unlimited Sword] upon landing critical strikes (6 second cooldown)
+					Press the Weapon Action Key to prematurely end [Unlimited Sword], refunding Stellar Nova energy depending on the time remaining
+					'We will seize our destiny!'
+					'''
+			}
+
+			RebellionBloodArthur: {
+				DisplayName: Clarent Rebellion
+				Tooltip:
+					'''
+					Attacks with this weapon cleave nearby foes and grants Rage for 8 seconds on hit
+					Holding this weapon amplifies the effects of Rage, Endurance, and Ironskin by 50%
+					Dealing or taking damage grants stacks of [c/D81919:Rebellion] (Rebellion is lost out of combat)
+					At certain thresholds of [c/D81919:Rebellion], manifest portions of the [c/EC2B65:Crimson Armor], gaining 5 defense per armor
+					Once [c/D81919:Rebellion] is at maximum and all portions of the [c/EC2B65:Crimson Armor] are equipped, increase defense further and gain access to [c/8D0404:Clarent Blood Arthur]
+					Additionally, gain a 3rd combo attack and striking foes now burst into red lightning (3rd combo strike empowers lightning)
+					Right click to unleash [c/8D0404:Clarent Blood Arthur], dealing 2x damage in a powerful burst towards your cursor after a delay and is a guaranteed critical strike against bosses (1 minute cooldown)
+					'''
+			}
+
+			SoliloquyOfSovereignSeas: {
+				DisplayName: Soliloquy Of Sovereign Seas
+				Tooltip:
+					'''
+					[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from both Magic and Summon damage]
+					Gain up to 30 bonus damage based on percentage of HP above 60% Max HP
+					Press the Weapon Action Key to swap [c/A9D5F0:Arkhe Alignment] between [c/F0DFA9:Pneuma] and [c/6C5BE8:Ousia], changing this weapon's abilities
+					While attuned to [c/F0DFA9:Pneuma], right click to summon the [c/5BBFE8:Singer of Seas], consuming 1 minion slot (Only one [c/5BBFE8:Singer of Seas] can be summoned at a time)
+					The [c/5BBFE8:Singer of Seas] will heal all allies in a wide radius for 5% of this weapon's damage every 5 seconds
+					While attuned to [c/6C5BE8:Ousia], right click to summon 3 [c/5BBFE8:Salon Attendants], consuming 1 minion slot (Only one group of [c/5BBFE8:Salon Attendants] can be summoned at a time)
+					The [c/5BBFE8:Salon Attendants] automatically attack nearby foes with homing bolts
+					Gain Waterwalking while summons are present
+					Summons will disappear when swapping [c/A9D5F0:Arkhe Alignment]
+					'Let the world come alive!'
+					'''
+			}
+
+			DevotedHavoc: {
+				DisplayName: Devoted Havoc
+				Tooltip:
+					'''
+					This weapon fires faster over time
+					Press the Weapon Action Key to swap between Grenade, Shuriken, and Molotov Cocktail
+					Right click to consume the selected ordinance (4 second cooldown)
+					When thrown with this weapon's right click ability, certain throwable items are empowered and inherit this weapon's damage
+					Grenades are upgraded into [c/FFB969:High-Velocity Grenades], dealing 3x damage
+					Shurikens are upgraded into [c/91CED3:Energy Stars], stunning non-boss foes struck for 1 second
+					Molotov Cocktails are upgraded into [c/FF5740:Thermal Flares], spawning more fire in a condensed area
+					'''
+			}
+
+			RebellionBody: {
+				DisplayName: Rebellion Body
+				Tooltip: ""
+			}
+
+			RebellionHead: {
+				DisplayName: Rebellion Head
+				Tooltip: ""
+			}
+
+			RebellionLegs: {
+				DisplayName: Rebellion Legs
+				Tooltip: ""
+			}
+
+			ThespianBossBag: {
+				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
+				DisplayName: Treasure Bag (Thespian, the Act of Alchemy)
+			}
+
+			ThespianBossRelicItem: {
+				Tooltip: ""
+				DisplayName: Thespian Relic
+			}
+
+			EssenceOfDancingSeas: {
+				DisplayName: Essence Of Dancing Seas
+				Tooltip:
+					'''
+					Obtained after defeating Thespian, the Act of Alchemy
+					A gift from your Starfarer
+					Utilized in the creation of 'Wavedancer' (Summon)
+					'''
+			}
+
+			EssenceOfEnergy: {
+				DisplayName: Essence Of Energy
+				Tooltip:
+					'''
+					Obtained after defeating Thespian, the Act of Alchemy
+					A gift from your Starfarer
+					Utilized in the creation of 'Devoted Havoc' (Ranged)
+					'''
+			}
+
+			EssenceOfFirepower: {
+				DisplayName: Essence Of Firepower
+				Tooltip:
+					'''
+					Obtained after defeating Lunatic Cultist
+					A gift from your Starfarer
+					Utilized in the creation of 'Gund-bit Siege' (Magic)
+					'''
+			}
+
+			EssenceOfHydro: {
+				DisplayName: Essence Of Hydro
+				Tooltip:
+					'''
+					Obtained after defeating Thespian, the Act of Alchemy
+					A gift from your Starfarer
+					Utilized in the creation of 'Soliloquy of Sovereign Seas' (Magic/Summon)
+					'''
+			}
+
+			EssenceOfKingslaying: {
+				DisplayName: Essence Of Kingslaying
+				Tooltip:
+					'''
+					Obtained after defeating Nalhaun, the Burnished King
+					A gift from your Starfarer
+					Utilized in the creation of 'Clarent Rebellion' (Melee)
+					'''
+			}
+
+			BlackLightbulb: {
+				DisplayName: Black Lightbulb
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Critical strikes have a 14% chance to instantly execute non-boss enemies
+					'Do you remember?'
+					'''
+				TooltipAttached: Critical strikes have a 14% chance to instantly execute non-boss enemies
+			}
+
+			ChronalDeccelerator: {
+				DisplayName: Chronal Decelerator
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Increases projectile velocity dramatically
+					'''
+				TooltipAttached: Increases projectile velocity dramatically
+			}
+
+			DescenderGemstone: {
+				DisplayName: Descender's Gemstone
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					Gain 0.5% critical strike chance every time an enemy is struck with a non-critical strike (Reset upon landing a critical strike)
+					'''
+				TooltipAttached: Gain 0.5% critical strike chance every time an enemy is struck with a non-critical strike (Reset upon landing a critical strike)
+			}
+
+			MercenaryAuracite: {
+				DisplayName: Mercenary's Auracite
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Deal 30% increased damage against Fighter enemies and negate weapon knockback
+					'The Amethyst's power source'
+					'''
+				TooltipAttached: Deal 30% increased damage against Fighter enemies and negate weapon knockback
+			}
+
+			MindflayerWorm: {
+				DisplayName: Mindflayer Worm
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Press the Weapon Memory Key to stun all nearby foes for 3 seconds (40 second cooldown)
+					Enemies have a 20% chance to resist the stun and bosses are not affected
+					'Authority'
+					'''
+				TooltipAttached:
+					'''
+					Press the Weapon Memory Key to stun all nearby foes for 3 seconds (40 second cooldown)
+					Enemies have a 20% chance to resist the stun and bosses are not affected
+					'''
+			}
+
+			MonsterTooth: {
+				DisplayName: Monster Tooth
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Defeating foes has a small chance of dropping an extra heart
+					'''
+				TooltipAttached: Defeating foes has a small chance of dropping an extra heart
+			}
+
+			OnyxJackal: {
+				DisplayName: Onyx Jackal
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Minions now target foes struck by this weapon
+					Non-minion attacks gain 5 Summon Tag Damage 
+					'''
+				TooltipAttached:
+					'''
+					Minions now target foes struck by this weapon
+					Non-minion attacks gain 5 Summon Tag Damage 
+					'''
+			}
+
+			RuinedCrown: {
+				DisplayName: Ruined Crown
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					If this weapon has a right-click ability, it now grants the buff [c/6ECBA5:Ruined King's Blade] for 2 seconds on use (10 second cooldown)
+					[c/6ECBA5:Ruined King's Blade] grants 15% increased damage and heal 20% of damage dealt on the next hit
+					'You matter so little!'
+					'''
+				TooltipAttached:
+					'''
+					If this weapon has a right-click ability, it now grants the buff [c/6ECBA5:Ruined King's Blade] for 2 seconds on use (10 second cooldown)
+					[c/6ECBA5:Ruined King's Blade] grants 15% increased damage and heal 20% of damage dealt on the next hit
+					'''
+			}
+
+			SimulacraShifter: {
+				DisplayName: Simulacra Shifter
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Press the Weapon Relic Key to become Invincible for 6 seconds, but you can no longer use this weapon while Invincible (2 minute cooldown)
+					'''
+				TooltipAttached: Press the Weapon Relic Key to become Invincible for 6 seconds, but you can no longer use this weapon while Invincible (2 minute cooldown)
+			}
+
+			ChartTheCosmosMusicBox: {
+				DisplayName: Chart The Cosmos Music Box
+				Tooltip: ""
+			}
+
+			EvenStarsMustFallMusicBox: {
+				DisplayName: Even Stars Must Fall Music Box
+				Tooltip: ""
+			}
+
+			LegendsYetUnspunMusicBox: {
+				DisplayName: Legends Yet Unspun Music Box
+				Tooltip: ""
+			}
+
+			TsukiyomiBossRelicItem: {
+				DisplayName: Tsukiyomi Boss Relic Item
 				Tooltip: ""
 			}
 		}
@@ -7816,6 +9389,21 @@ Mods: {
 				CrystalAtelier: Crystal Atelier
 				WheelsIndustry: Wheels Industry
 				FuriosoReady: Furioso is ready!
+			}
+
+			Cosmoturgy: {
+				NoMemoriesInWeapon: There are no Memories Imprinted in this weapon
+				InsertWeapon: Insert an Aspected Weapon into the Cosmoturgy Station to begin.
+				InsertWeaponHover: Insert an Aspected Weapon into this slot to Imprint Memories, granting bonus effects.
+				CurrentWeapon: You are currently modifying the weapon [c/4A91FF:{0}].
+				WeaponStatus: It currently has 1 Memory Imprinted.
+				WeaponStatusPlural: It currently has {0} Memories Imprinted.
+				MemorySlot: Place a Memory into this slot to Imprint it. Once a Memory is Imprinted, it is permanently attached and can not be removed, only overwritten. Duplicates do not count.
+				ConfirmImprint: Are you sure you would like to Imprint these Memories? Remember, this is final.
+				ConfirmImprintOverwrite: Are you sure you would like to Imprint these Memories? Some prior Memories will be overwritten.
+				ConfirmImprintNoMemories: There are no applicable Memories able to be Imprinted.
+				ConfirmImprintNoWeapon: There is no weapon in the Cosmoturgy Station.
+				MemoriesImprinted: Memories have been Imprinted.
 			}
 		}
 
@@ -7878,7 +9466,7 @@ Mods: {
 			BossGarden.DisplayName: The Garden of Avalon
 			BossLaevateinn.DisplayName: Ars Laevateinn
 			BossLaevateinnDamage.DisplayName: Ars Laevateinn
-			BossTheofania.DisplayName: Theofania Inanis
+			Bossprototokia.DisplayName: Prototokia Aster
 			BrushStroke.DisplayName: Brush Stroke
 			BrushStrokeDamage.DisplayName: Brush Stroke
 			Bubble.DisplayName: Heavy Arrow
@@ -7963,6 +9551,7 @@ Mods: {
 			HullwroughtSwing22.DisplayName: Hullwrought
 			HornSlash1.DisplayName: Hunter's Symphony
 			HornSlash2.DisplayName: Hunter's Symphony
+			HornSlash.DisplayName: Horn Slash
 			MusicRadiate.DisplayName: Hunter's Symphony
 			Icebolt.DisplayName: Icebolt
 			Icebolt2.DisplayName: Icebolt2
@@ -8199,6 +9788,7 @@ Mods: {
 			OrangeStarBit.DisplayName: Luminary Wand
 			PurpleStarBit.DisplayName: Luminary Wand
 			RedStarBit.DisplayName: Luminary Wand
+			RedStar.DisplayName: Red Star
 			Starchild.DisplayName: Starchild
 			YellowStarBit.DisplayName: Luminary Wand
 			StarfarerFollowUp.DisplayName: Aprismatism
@@ -8228,9 +9818,9 @@ Mods: {
 			LaevateinnDamage.DisplayName: Ars Laevateinn
 			SpaceBurstFX.DisplayName: NovaFX
 			SpaceBurstFX2.DisplayName: NovaFX2
-			Theofania.DisplayName: Theofania Inanis
-			Theofania2.DisplayName: Theofania Inanis
-			Theofania3.DisplayName: Theofania Inanis
+			prototokia.DisplayName: Prototokia Aster
+			prototokia2.DisplayName: Prototokia Aster
+			prototokia3.DisplayName: Prototokia Aster
 			StilettoMarker.DisplayName: Yunlai Stiletto
 			StygianSwing1.DisplayName: Stygian Swing
 			StygianSwing2.DisplayName: Stygian Swing
@@ -8613,6 +10203,132 @@ Mods: {
 			WarriorOrbitingLight.DisplayName: Lightblast
 			WarriorOfLightFinalPhaseCastingSprite.DisplayName: ""
 			WarriorOfLightFinalPhaseSwingingSprite.DisplayName: ""
+			BuryTheLightFollowUp.DisplayName: Bury The Light
+			BuryTheLightSlashFollowUp.DisplayName: Bury The Light
+			BuryTheLightSwing1.DisplayName: Bury The Light
+			BuryTheLightSwing2.DisplayName: Bury The Light
+			BuryTheLightSheathe.DisplayName: Bury The Light
+			MirageBlade.DisplayName: Bury The Light
+			MirageBladeAlt.DisplayName: Bury The Light
+			LamentClashWin.DisplayName: Lament Clash Win
+			LamentClashLose.DisplayName: Lament Clash Lose
+			UnlimitedBladeWorksBackground.DisplayName: Unlimited Blade Works Background
+			UnlimitedBladeWorksBorder.DisplayName: Unlimited Blade Works Border
+			UBWBladeProjectile.DisplayName: Forged Blade
+			SpacePowerBackground.DisplayName: Space Power Background
+			SpacePowerBorder.DisplayName: Space Power Border
+			UBWBladeFollowUp.DisplayName: Forged Blade
+			UBWBladeFollowUpDelay.DisplayName: Forged Blade
+			BossTheofania.DisplayName: Demi-Prototokia
+			Prototokia.DisplayName: Prototokia
+			Prototokia2.DisplayName: Prototokia
+			Prototokia3.DisplayName: Prototokia
+			GoldenGunHeld.DisplayName: Golden Gun Held
+			ThundercrashDamage.DisplayName: Thundercrash Damage
+			GoldenGunBullet.DisplayName: Golden Gun Bullet
+			GoldenGunExplosion.DisplayName: Golden Gun Explosion
+			NovaBomb.DisplayName: Nova Bomb
+			NovaBombExplosion.DisplayName: Nova Bomb Explosion
+			SilenceSquall1.DisplayName: Silence Squall1
+			SilenceSquall2.DisplayName: Silence Squall2
+			SilenceSquallDamageField.DisplayName: Silence Squall Damage Field
+			Threadling.DisplayName: Threadling
+			WovenNeedle.DisplayName: Woven Needle
+			GossamerAOEAttack.DisplayName: Gossamer Needle
+			GossamerNeedleStab.DisplayName: Gossamer Needle
+			DraggedBelowLaser.DisplayName: Dragged Below Laser
+			DraggedBelowLaserCorrupt.DisplayName: Dragged Below Laser Corrupt
+			AsphodeneBurst5.DisplayName: Asphodene Burst5
+			AsphodeneBurst6.DisplayName: Asphodene Burst6
+			EridaniBurst5.DisplayName: Eridani Burst5
+			EridaniBurst6.DisplayName: Eridani Burst6
+			DraggedBelowFlood.DisplayName: Dragged Below Flood
+			DraggedBelowFloodCorrupted.DisplayName: Dragged Below Flood Corrupted
+			DraggedBelowFloodExplosion.DisplayName: Dragged Below Flood Explosion
+			DraggedBelowFloodExplosionCorrupted.DisplayName: Dragged Below Flood Explosion Corrupted
+			VagrantTrackingStar.DisplayName: Starmatter
+			YoumuHeld.DisplayName: Youmu Held
+			GundbitGunUncharged.DisplayName: Gundbit Gun Uncharged
+			GundbitUnchargedLaser.DisplayName: Gundbit Uncharged Laser
+			GundbitGunCharged.DisplayName: Gundbit Gun Charged
+			Gundbits.DisplayName: Gundbits
+			GundbitLaser.DisplayName: Gundbit Laser
+			GundbitMinionLaser.DisplayName: Gundbit Minion Laser
+			GundbitShield.DisplayName: Gundbit Shield
+			DragonArm.DisplayName: Dragon Arm
+			StarsAboveSwordEffect.DisplayName: Stars Above Sword Effect
+			DragaliaFoundSword.DisplayName: Dragalia Found Sword
+			DragaliaFoundSwordRecoil.DisplayName: Dragalia Found Sword Recoil
+			DragaliaFoundSwordSpin.DisplayName: Dragalia Found Sword Spin
+			StarsAboveSwordEffectSpin.DisplayName: Stars Above Sword Effect Spin
+			DragaliaFoundStab.DisplayName: Dragalia Found Stab
+			DragaliaFoundDragonAttack.DisplayName: Dragalia Found Dragon Attack
+			DragonTornado.DisplayName: Dragon Tornado
+			WavedancerSummon.DisplayName: Wavedancer Summon
+			WavedancerSwordSpin.DisplayName: Wavedancer Sword Spin
+			PowderChargeExplosion.DisplayName: Powder Charge Explosion
+			MemoryLightning.DisplayName: Memory Lightning
+			GuppyFlies.DisplayName: Guppy Flies
+			MiserySword.DisplayName: Misery Sword
+			ClaimhSolaisSword.DisplayName: Claimh Solais Sword
+			HawkmoonGun.DisplayName: Hawkmoon Gun
+			DeathInFourActsGun.DisplayName: Death In Four Acts Gun
+			DarkmoonSword.DisplayName: Darkmoon Sword
+			DarkmoonSwordEmpowered.DisplayName: Darkmoon Sword Empowered
+			ForceOfNatureGun.DisplayName: Force Of Nature Gun
+			RideTheBullGun.DisplayName: Ride The Bull Gun
+			IzanagisEdgeGun.DisplayName: Izanagis Edge Gun
+			CrimsonOutbreakGun.DisplayName: Crimson Outbreak Gun
+			CrimsonSakuraAlphaSword.DisplayName: Crimson Sakura Alpha Sword
+			YunlaiStilettoSword.DisplayName: Yunlai Stiletto Sword
+			LiberationBlazingSword.DisplayName: Liberation Blazing Sword
+			MercySword.DisplayName: Mercy Sword
+			LightUnrelentingSword.DisplayName: Light Unrelenting Sword
+			ArchitectSword.DisplayName: Architect Sword
+			KazimierzSeraphimSword.DisplayName: Kazimierz Seraphim Sword
+			OriginInfinitySword.DisplayName: Origin Infinity Sword
+			OriginInfinitySwordUnsheathed.DisplayName: Origin Infinity Sword Unsheathed
+			SoliloquyCrabSummon.DisplayName: Soliloquy Crab Summon
+			SoliloquyJellySummon.DisplayName: Soliloquy Jelly Summon
+			SoliloquySeahorseSummon.DisplayName: Soliloquy Seahorse Summon
+			SoliloquySummonProjectile.DisplayName: Soliloquy Summon Projectile
+			RebellionSword.DisplayName: Rebellion Sword
+			SoliloquySword.DisplayName: Soliloquy Sword
+			RebellionLaser.DisplayName: Rebellion Laser
+			RebellionLightning.DisplayName: Rebellion Lightning
+			RebellionTarget.DisplayName: Rebellion Target
+			StygianAugurDown.DisplayName: Stygian Augur
+			StygianAugurLeft.DisplayName: Stygian Augur
+			StygianAugurRight.DisplayName: Stygian Augur
+			StygianAugurUp.DisplayName: Stygian Augur
+			ThespianBolt.DisplayName: Thespian Bolt
+			RebellionSwordSpin.DisplayName: Rebellion Sword Spin
+			SoliloquySinger.DisplayName: Soliloquy Singer
+			ThespianSadBolt.DisplayName: Thespian Sad Bolt
+			ThespianExplosion.DisplayName: Thespian Explosion
+			ThespianExplosionIndicator.DisplayName: Thespian Explosion Indicator
+			ThespianLingeringDamageField.DisplayName: Thespian Lingering Damage Field
+			ThespianPotion.DisplayName: Thespian Potion
+			ThespianPotionExplosion.DisplayName: Thespian Potion Explosion
+			RebellionSwordLaser.DisplayName: Rebellion Sword Laser
+			DevotedHavocGun.DisplayName: Devoted Havoc Gun
+			DevotedHavocShot.DisplayName: Devoted Havoc Shot
+			EnergyStar.DisplayName: Energy Star
+			FragmentationGrenade.DisplayName: Fragmentation Grenade
+			ThermalFlare.DisplayName: Thermal Flare
+			PenthesileaCast.DisplayName: Penthesilea Cast
+			PenthesileaInkRain.DisplayName: Penthesilea Ink Rain
+			PenthBrush.DisplayName: Penth Brush
+			PenthesileaIntroSprite.DisplayName: Penthesilea
+			ArbitrationOrbitingTurret.DisplayName: Crimson Star
+			ArbitrationStationaryTurret.DisplayName: Crimson Star
+			ArbitrationOrbitingStar.DisplayName: Crimson Star
+			ArbitrationOrbitingTurretSlow.DisplayName: Crimson Star
+			ArbitrationBolt.DisplayName: Demi-Star
+			ArbitrationOrbitingTurretWeakProjectiles.DisplayName: Arbitration Orbiting Turret Weak Projectiles
+			WeakRedStar.DisplayName: Crimson Star
+			BossPrototokia.DisplayName: Prototokia Aster
+			ArbitrationTower.DisplayName: Arbitration Tower
 		}
 
 		Buffs: {
@@ -10010,14 +11726,14 @@ Mods: {
 				Description: Takonomicon's laser will fail to activate if this debuff is present
 			}
 
-			TheofaniaDualcast: {
-				DisplayName: Theofania Dualcast
-				Description: You are able to cast Theofania Inanis again without cost
+			PrototokiaDualcast: {
+				DisplayName: Prototokia Dualcast
+				Description: You are able to cast Prototokia Aster again without cost
 			}
 
-			TheofaniaTricast: {
-				DisplayName: Theofania Tricast
-				Description: You are able to cast Theofania Inanis yet again without cost at limited power
+			PrototokiaTricast: {
+				DisplayName: Prototokia Tricast
+				Description: You are able to cast Prototokia Aster yet again without cost at limited power
 			}
 
 			GuntriggerParry: {
@@ -10450,7 +12166,7 @@ Mods: {
 
 			LVBuff: {
 				DisplayName: LV
-				Description: ""
+				Description: Empowered by karmic strength
 			}
 
 			ManiacalJusticeCooldown: {
@@ -10585,7 +12301,7 @@ Mods: {
 				Description:
 					'''
 					The nearby surroundings disobey laws of reality
-					Lingering for too long will result in a catastrophic danger approaching
+					Lingering for too long will result in something terrifying occuring...
 					'''
 			}
 
@@ -10593,8 +12309,8 @@ Mods: {
 				DisplayName: "[c/EFB43E:Approaching Evil]"
 				Description:
 					'''
-					A horrifying entity is approaching...
-					Defenses have been drastically reduced!
+					You are compelled by a strange force...
+					Leave now, or else!
 					'''
 			}
 
@@ -10707,20 +12423,12 @@ Mods: {
 				Description: Timeless Potential will fail to be obtained if this debuff is present
 			}
 
-			ManaSicknessAlter.Description: All damage reduced by {0}%
+			ManaSicknessAlter: {
+				DisplayName: Mana Sickness
+				Description: All damage reduced by {0}%
+			}
+
 			DarkAuraBuff.Description: "{0} sacrifice(s) have been consumed"
-			LVBuff20.Description:
-				'''
-				Attack speed increased by 20%
-				Cooldown of Slaughtering Slash halved
-				'''
-			LVBuff50.Description:
-				'''
-				Attack speed increased by 30%
-				Cooldown of Slaughtering Slash halved
-				Attacks inflict Karmic Retribution for 10 seconds
-				'''
-			LVBuff100.Description: Able to unleash a Special Attack upon pressing the Weapon Action Key
 
 			SpectrumAbsorption: {
 				DisplayName: Refractive Absorption
@@ -10809,64 +12517,382 @@ Mods: {
 
 			BindingLight: {
 				DisplayName: Binding Light
-				Description: Mods.StarsAbove.Buffs.BindingLight.Description
-			}
-		}
-
-		BossChecklist: {
-			WarriorOfLight: {
-				SpawnInfo: Dispel the unending Light through defeating this foe, summoned with your Starfarer's help from the Moon Lord's corpse. (The Vagrant of Space and Time must have been defeated.)
-				DespawnMessage: The Flood of Light has consumed all...
+				Description: Frozen light is binding you
 			}
 
-			VagrantOfSpaceAndTime: {
-				SpawnInfo: Defeat this strange foe through the Shattered Disk, obtained from the Wall of Flesh. This fight will be critical to progression later!
-				DespawnMessage: Space and time return to normal...
+			MirageBladeCooldown: {
+				DisplayName: Mirage Blade Cooldown
+				Description: ""
 			}
 
-			Nalhaun: {
-				SpawnInfo: Confront this aged monarch with the Ancient Crown, given to you by your Starfarer after any Mechanical Boss is defeated. (The Vagrant of Space and Time must have been defeated.)
-				DespawnMessage: The king's crimson blade rings true yet again...
+			LamentingPocketwatchCooldown: {
+				DisplayName: Lamenting Pocketwatch Cooldown
+				Description: ""
 			}
 
-			Penthesilea: {
-				SpawnInfo: Face this fearsome foe with the Unsullied Canvas, given to you by your Starfarer after Plantera is bested. (The Vagrant of Space and Time must have been defeated.)
-				DespawnMessage: You have been splattered away...
+			Bladeforged: {
+				DisplayName: Bladeforged
+				Description: Projected reality is granting increased damage, knockback, critical strike chance, and armor penetration
 			}
 
-			Dioskouroi: {
-				SpawnInfo: Duel(?) these powerful twin demons through defeating a mechanical boss and obtaining the Twincrux Pendant.
-				DespawnMessage: Without binds, the Dioskouroi move their conflict elsewhere...
+			UBWFollowUpCooldown: {
+				DisplayName: Follow Up Cooldown
+				Description: ""
 			}
 
-			Arbitration: {
-				SpawnInfo: This foe embodies true fear... Discover this foe through visiting an Anomaly location with the Astrolabe's help. Due to this boss being fought within a Subworld under normal conditions, Boss Checklist progress must be manual.
-				DespawnMessage: ...
+			BearerOfDarkness: {
+				DisplayName: Bearer Of Darkness
+				Description: Paracausal darkness is granting newfound strength
 			}
 
-			TsukiyomiBoss: {
-				SpawnInfo: The time has finally come. Craft all the Mnemonic Traces together with the Celestriad Root to create the Mnemonic Sigil, and use it to be taken to Tsukiyomi's boss arena. Due to this boss being fought within a Subworld under normal conditions, Boss Checklist progress must be manual.
-				DespawnMessage: ...
+			BearerOfLight: {
+				DisplayName: Bearer Of Light
+				Description: Paracausal light is granting newfound strength
 			}
 
-			Tsukiyomi2: {
-				SpawnInfo: Mods.StarsAbove.BossChecklist.Tsukiyomi2.SpawnInfo
-				DespawnMessage: Mods.StarsAbove.BossChecklist.Tsukiyomi2.DespawnMessage
+			ThundercrashActive: {
+				DisplayName: Thundercrash Active
+				Description: ""
+			}
+
+			DebugInfiniteNova: {
+				DisplayName: Debug Infinite Nova
+				Description: Mods.StarsAbove.Buffs.DebugInfiniteNova.Description
+			}
+
+			EmberFlaskUsed: {
+				DisplayName: Ember Flask Used
+				Description: The Ember Flask is empty and will only refill out of combat
+			}
+
+			ShepherdSunstoneCooldown: {
+				DisplayName: Shepherd Sunstone Cooldown
+				Description: ""
+			}
+
+			GossamerAOECooldown: {
+				DisplayName: Gossamer Storm Cooldown
+				Description: ""
+			}
+
+			GossamerDashCooldown: {
+				DisplayName: Gossamer Dash Cooldown
+				Description: ""
+			}
+
+			DraggedBelowCooldown: {
+				DisplayName: Dragged Below Flood Cooldown
+				Description: ""
+			}
+
+			DraggedBelowCorruption: {
+				DisplayName: Fiendish Corruption
+				Description: Void energy is corrupting mortal form, changing effects of Dragged Below
+			}
+
+			DraggedBelowDrownActive: {
+				DisplayName: Dragged Below Drown Active
+				Description: ""
+			}
+
+			DraggedBelowSuppressCooldown: {
+				DisplayName: Dragged Below Suppress Cooldown
+				Description: ""
+			}
+
+			DraggedBelowHealCooldown: {
+				DisplayName: Dragged Below Heal Cooldown
+				Description: ""
+			}
+
+			BladeWorksDamageReduction: {
+				DisplayName: Blade Works Damage Reduction
+				Description: ""
+			}
+
+			BladeworksDefenseReduction: {
+				DisplayName: Bladeworks Defense Reduction
+				Description: ""
+			}
+
+			AerialDefensiveArray: {
+				DisplayName: Aerial Defensive Array
+				Description: ""
+			}
+
+			GundbitBeamAttack: {
+				DisplayName: Gundbit Beam Attack
+				Description: ""
+			}
+
+			GundbitMarked: {
+				DisplayName: Gundbit Marked
+				Description: ""
+			}
+
+			GundbitLaserCooldown: {
+				DisplayName: Gundbit Laser Cooldown
+				Description: ""
+			}
+
+			GundbitShieldBuff: {
+				DisplayName: Gundbit Shield
+				Description: ""
+			}
+
+			GundbitShieldCooldown: {
+				DisplayName: Gundbit Shield Cooldown
+				Description: ""
+			}
+
+			DragonshiftActiveBuff: {
+				DisplayName: Windwyrm Shift
+				Description: Transformed into a wind-aspected dragon
+			}
+
+			BondforgedBladeBuff: {
+				DisplayName: Bondforged Blade
+				Description: Charging draconic energy
+			}
+
+			DragonshiftSpecialAttackCooldownBuff: {
+				DisplayName: Dragonshift Special Attack Cooldown
+				Description: ""
+			}
+
+			TempestDragonlightBuff: {
+				DisplayName: Tempest's Dragonlight
+				Description: Gaining draconic defenses based on minion slots
+			}
+
+			DragaliaTagDamage: {
+				DisplayName: Dragalia Tag Damage
+				Description: ""
+			}
+
+			TsukiyomiTeleportBuff: {
+				DisplayName: Tsukiyomi Teleport Buff
+				Description: ""
+			}
+
+			WavedancerBuff: {
+				DisplayName: Wavedancer's Edge
+				Description: ""
+			}
+
+			WavedancerCooldown: {
+				DisplayName: Wavedancer Cooldown
+				Description: ""
+			}
+
+			AccursedEdge: {
+				DisplayName: Accursed Edge
+				Description: Prepared to unleash an empowered attack after loss of life
+			}
+
+			AccursedEdgeCooldown: {
+				DisplayName: Accursed Edge Cooldown
+				Description: ""
+			}
+
+			ChoiceGlassesLock: {
+				DisplayName: Choice Glasses Lock
+				Description: Locked from using any other items
+			}
+
+			FateDivined: {
+				DisplayName: Fate Divined
+				Description: Fate has been divined, increasing the potency of all Tarot Card Weapon Memories
+			}
+
+			PowderCharge: {
+				DisplayName: Powder Charge
+				Description: Powder charges have been stored and will be expended upon a critical strike to explode nearby foes
+			}
+
+			NetheriteIngotBuff: {
+				DisplayName: Bastion Defense
+				Description: Defenses are drastically increased
+			}
+
+			NetheriteIngotBuffCooldown: {
+				DisplayName: Bastion Defense Cooldown
+				Description: ""
+			}
+
+			EnderpearlCooldown: {
+				DisplayName: Enderpearl Cooldown
+				Description: ""
+			}
+
+			ElectricGuitarPickCooldown: {
+				DisplayName: Electric Guitar Pick Cooldown
+				Description: ""
+			}
+
+			PhantomHiltBuff: {
+				DisplayName: Ghostly Hilt
+				Description: Movement speed is increased
+			}
+
+			PhantomHiltCooldown: {
+				DisplayName: Ghostly Hilt Cooldown
+				Description: ""
+			}
+
+			RagebladeBuff: {
+				DisplayName: Furious Dirk
+				Description: ""
+			}
+
+			GuppyHeadCooldown: {
+				DisplayName: Guppy Head Cooldown
+				Description: ""
+			}
+
+			SoliloquyMinionBuff: {
+				DisplayName: Salon Attendants
+				Description: The salon attendants muse to your whims
+			}
+
+			RebellionLaserBuff: {
+				DisplayName: Rebellion Laser Buff
+				Description: ""
+			}
+
+			AthanoricCurse: {
+				DisplayName: Athanoric Curse
+				Description: The walls of the arena will corrode you!
+			}
+
+			ForceMoveLeft: {
+				DisplayName: Force Move Left
+				Description: You are compelled to move left once this debuff ends
+			}
+
+			ForceMoveRight: {
+				DisplayName: Force Move Right
+				Description: You are compelled to move right once this debuff ends
+			}
+
+			ForceStopMoving: {
+				DisplayName: Force Stop Moving
+				Description: You are compelled to stop moving once this debuff ends
+			}
+
+			LaunchLeft: {
+				DisplayName: Launch Left
+				Description: ""
+			}
+
+			LaunchRight: {
+				DisplayName: Launch Right
+				Description: ""
+			}
+
+			ThespianAngry: {
+				DisplayName: Thespian Angry
+				Description: Mods.StarsAbove.Buffs.ThespianAngry.Description
+			}
+
+			ThespianSad: {
+				DisplayName: Thespian Sad
+				Description: Mods.StarsAbove.Buffs.ThespianSad.Description
+			}
+
+			ThespianSadAttack: {
+				DisplayName: Thespian Sad Attack
+				Description: Mods.StarsAbove.Buffs.ThespianSadAttack.Description
+			}
+
+			ThespianHappyAttack: {
+				DisplayName: Thespian Happy Attack
+				Description: Mods.StarsAbove.Buffs.ThespianHappyAttack.Description
+			}
+
+			ThespianTransition: {
+				DisplayName: Thespian Transition
+				Description: Mods.StarsAbove.Buffs.ThespianTransition.Description
+			}
+
+			KineticConversionCooldown: {
+				DisplayName: Kinetic Conversion Cooldown
+				Description: ""
+			}
+
+			ArmsthriftBuff: {
+				DisplayName: Armsthrift
+				Description: ""
+			}
+
+			ArmsthriftBuffStrong: {
+				DisplayName: Armsthrift Empowered
+				Description: ""
+			}
+
+			ArmsthriftCooldown: {
+				DisplayName: Armsthrift Cooldown
+				Description: ""
+			}
+
+			MindflayerWormCooldown: {
+				DisplayName: Mindflayer Worm Cooldown
+				Description: ""
+			}
+
+			RuinedCrownBuff: {
+				DisplayName: Ruined Crown
+				Description: ""
+			}
+
+			RuinedCrownCooldown: {
+				DisplayName: Ruined Crown Cooldown
+				Description: ""
+			}
+
+			SimulacraShifterCooldown: {
+				DisplayName: Simulacra Shifter Cooldown
+				Description: ""
+			}
+
+			OnyxJackalTagDamage: {
+				DisplayName: Onyx Jackal Tag Damage
+				Description: Mods.StarsAbove.Buffs.OnyxJackalTagDamage.Description
+			}
+
+			VisionsBeyondBuff: {
+				DisplayName: Visions Beyond
+				Description: ""
+			}
+
+			TerrorTether: {
+				DisplayName: Terror Tether
+				Description: Mods.StarsAbove.Buffs.TerrorTether.Description
+			}
+
+			SharedPower: {
+				DisplayName: Shared Power
+				Description: Your Starfarer is borrowing some of your power, reducing damage, max HP, and defense
+			}
+
+			SharedPowerSpecial: {
+				DisplayName: True Shared Power
+				Description: Your Starfarer is borrowing nearly all of your power, leaving you with only 100 Max HP and 90% less damage
 			}
 		}
 
 		Bestiary: {
-			Arbitration: A horrifying figure encountered upon an Anomaly planet. While it appears evil to a human, eldritch anomalies such as these know not the concept of malice, only how to consume.
+			ArbitrationBoss: A horrifying figure encountered within a mysterious location known as Katabasis. While it appears evil to a human, eldritch anomalies such as these know not the concept of malice.
 			AstralCell: A strange blue object. It eats water vapor.
-			Nalhaun: A once mighty monarch, cursed to live eternally by means of a betrayal from his royal court. He persisted alone on an empty planet until the First Starbearer ended his long and tragic reign, as he would be able to interfere with his plans. While he may have stood a chance at his full might, he was burdened by a dreadful civil war tearing his world apart.
+			NalhaunBossPhase2: A once mighty monarch, cursed to live eternally by means of a betrayal from his royal court. He persisted alone on an empty planet until the First Starbearer ended his long and tragic reign, as he would be able to interfere with his plans. While he may have stood a chance at his full might, he was burdened by a dreadful civil war tearing his world apart.
 			PaintedAttendantA: Utilized by Penthesilea to... smack you in the face. The best mages know when physical violence is the answer.
-			Penthesilea: An incredibly powerful mage, the Painted Witch once ruled a planet entirely 'drawn' by her. Ever the trickster, she mastered expert magecraft simply to play pranks upon the works of her colleagues, a testament to her ingenuity. She met her end at the hands of the First Starbearer after a long conflict- if she were to persist, she would interfere with his plans...
+			PenthesileaBoss: An incredibly powerful mage, the Painted Witch once ruled a planet entirely 'drawn' by her. Ever the trickster, she mastered expert magecraft simply to play pranks upon the works of her colleagues, a testament to her ingenuity. She met her end at the hands of the First Starbearer after a long conflict- if she were to persist, she would interfere with his plans...
 			PrismLoot: The latent magical energy of Prismatic Cores can sometimes influence them to drift around the galaxy. Catch one, and you'll be rewarded!
 			SpectreOfLight: An otherworldy hero, summoned forth by the First Starbearer to assail this land.
 			TsukiyomiBoss: The First Starfarer, Tsukiyomi, who holds dominion over orbiting celestial bodies. The gravitational pull of a planet and its natural satellites gives her power. She led the Warrior of Light astray- using his strength and goodwill to conquer and destroy myriad stars... and yet...
 			CastorBoss: The Force of Fire, a Baleborn. The Baleborn are an incredibly competitive race of demonkin, and their blood relations have served only to further kindle the fires of conflict. They are completely engrossed in their duel, aware of nothing but their opponent's actions. Ironically, this has made them quite mediocre fighters against any other opponent. They were utterly destroyed by the First Starbearer, attacking him as he unwittingly interfered with their eternal battle.
-			PolluxBoss: The Force of Ice, a Baleborn. The Baleborn are an incredibly competitive race of demonkin, and their blood relations have served only to further kindle the fires of conflict. They are completely engrossed in their duel, aware of nothing but their opponent's actions. Ironically, this has made them quite mediocre fighters against any other opponent. They were utterly destroyed by the First Starbearer, attacking him as he unwittingly interfered with their eternal battle.
-			VagrantOfSpaceAndTime: The enigmatic Starfarer Perseus. His outward appearance is that of utmost confidence... but he's just kind of a dork trying to look cool. His sisters agree on this. He continues to have power over spatial distances, but seems to have lost the power to control time (but not the moniker.)
+			PolluxBoss: The Forces of Ice and Fire, twin Baleborn. The Baleborn are an incredibly competitive race of demonkin, and their blood relations have served only to further kindle the fires of conflict. They are completely engrossed in their duel, aware of nothing but their opponent's actions. Ironically, this has made them quite mediocre fighters against any other opponent. They were utterly destroyed by the First Starbearer, attacking him as he unwittingly interfered with their eternal battle.
+			VagrantBoss: The enigmatic Starfarer Perseus. His outward appearance is that of utmost confidence... but he's just kind of a dork trying to look cool. His sisters agree on this. He continues to have power over spatial distances, but seems to have lost the power to control time (but not the moniker.)
 			WarriorOfLight: The Warrior of Light, or the First Starbearer, once championed justice in the galaxy through his actions and the aid of his Starfarer. He once ruled a peaceful world, but was forced to watch helplessly as his people met their demise, vowing to never again let others share the same fate- no matter the cost.
 			AsteroidWorm: These incredibly hardy creatures have grown the capability to aimlessly drift through the vacuum of space- perhaps not the best depiction of evolution. While their meals are scarce, their need for food is nigh nonexistant. Gifted with a strong outer shell, but low overall attacking strength.
 			Soulless: An unfortunate victim of whatever apocalypse befell Caelum. Mana keeps their incarnation alive, but whatever trace of thought they may have once had has long since departed.
@@ -10874,7 +12900,9 @@ Mods: {
 			Garridine: A lupine demihuman you discovered residing on a far-flung starship, a blacksmith and gadgeteer. Her manner of speaking belies a high-class upbringing, but the facade tends to drop when she flubs her words (which is often.) Strangely protective of the watch by her side.
 			AmethystHeadpiercer: Foot soldier of a wide-reaching paramilitary organization, referred to as the Amethyst. Equipped with a Vortexian powersuit fitted with a jetpack for ease of travel, even in the vacuum of space.
 			AmethystSwordsinner: Foot soldier of a wide-reaching paramilitary organization, referred to as the Amethyst. Utilizes a hardlight blade with ferocious efficiency, specifically for countering ranged offense.
-			Tsukiyomi2: Mods.StarsAbove.Bestiary.Tsukiyomi2
+			Tsukiyomi2: ???
+			ThespianBoss: A legendary alchemist long dead reanimated by a terrifying agent of chaos. For one as far gone as he, you must act as he demands, lest you meet your untimely end...
+			StarfarerBoss: Yep, it's us.
 		}
 
 		Prefix: {
@@ -10951,6 +12979,16 @@ Mods: {
 				DisplayName: Lyra
 				TownNPCDialogueName: the Lyra Biome
 			}
+
+			DreamingCityBiome: {
+				DisplayName: Dreaming City Biome
+				TownNPCDialogueName: the Dreaming City Biome
+			}
+
+			OtherworldBiome: {
+				DisplayName: Otherworld Biome
+				TownNPCDialogueName: the Otherworld Biome
+			}
 		}
 
 		GameTips: {
@@ -10970,11 +13008,14 @@ Mods: {
 			GadgetDamageClass.DisplayName: gadget strength
 			IncarnationDamageClass.DisplayName: incarnated damage
 			PsychomentDamageClass.DisplayName: psychoment damage
+			ArkheDamageClass.DisplayName: arkhe damage
 		}
 
 		Keybinds: {
-			"Stellar Nova.DisplayName": Stellar  Nova
-			"Weapon Action.DisplayName": Weapon  Action
+			"Stellar Nova.DisplayName": Stellar Nova
+			"Weapon Action.DisplayName": Weapon Action
+			"Show Memory Info.DisplayName": Show Memory Info
+			"Weapon Memory Action.DisplayName": Weapon Memory Action
 		}
 
 		Prefixes: {
@@ -11073,6 +13114,16 @@ Mods: {
 				PromptLoc: {
 					Label: "{$Mods.StarsAbove.Config.PromptLoc.Label}"
 					Tooltip: "{$Mods.StarsAbove.Config.PromptLoc.Tooltip}"
+				}
+
+				MovingDialogueAmount: {
+					Label: Moving Dialogue Amount
+					Tooltip: ""
+				}
+
+				DisableBlur: {
+					Label: Disable Blur
+					Tooltip: ""
 				}
 			}
 

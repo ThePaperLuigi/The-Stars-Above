@@ -5,7 +5,9 @@ using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-
+using StarsAbove.Items.Weapons.Summon;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Consumables
 {
@@ -53,7 +55,7 @@ namespace StarsAbove.Items.Consumables
 		{
 			if (player.HeldItem.ModItem is LuminaryWand)
 			{
-				int type = ProjectileType<Projectiles.Starchild.BlueStarBit>();
+				int type = ProjectileType<Projectiles.Summon.Starchild.BlueStarBit>();
 				Vector2 position = player.GetModPlayer<WeaponPlayer>().lumaPosition;
 
 				float Speed = 28f;  //projectile speed

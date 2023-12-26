@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using StarsAbove.Systems;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.UI.Elements;
@@ -118,6 +119,9 @@ namespace StarsAbove.UI
 		}
 		int animationTimer;
 		int animationFrame = 1;
+
+		int animationTimer2;
+		int animationFrame2 = 1;
 		protected override void DrawSelf(SpriteBatch spriteBatch) {
 			base.DrawSelf(spriteBatch);
 
@@ -130,30 +134,35 @@ namespace StarsAbove.UI
 			Rectangle hitbox = barFrame.GetInnerDimensions().ToRectangle();
 			hitbox.X += 12;
 			hitbox.Width -= 24;
-			hitbox.Y += 12;
+			hitbox.Y += 10;
 			hitbox.Height -= 16;
-			Rectangle animationHitbox = barFrame.GetInnerDimensions().ToRectangle();
-			animationHitbox.X -= 50;
-			animationHitbox.Width += 102;
-			animationHitbox.Y -= 112;
-			animationHitbox.Height += 200;
+			Rectangle animationHitbox = new Rectangle(hitbox.X,hitbox.Y,72,46);
+			animationHitbox.X += 28;
+			//animationHitbox.Y -= 53;
+			animationHitbox.Y -= 43;
+
 			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNovaGaugeBack"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);
 
+			Texture2D NovaGaugeAnimation = (Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNovaGaugeAnimation/NovaGaugeAnimation");
+			Texture2D NovaGaugeGlow = (Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNovaGaugeReady");
+			Texture2D NovaGaugeChargingEffect = (Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNovaGaugeCharge");
+			Texture2D NovaGaugeChargedFlash = (Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNovaGaugeAnimation/NovaChargedFlash");
+
+			int frameHeight = 46;
 			if (quotient == 1f)
 			{
-				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNovaGaugeReady"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);
+				spriteBatch.Draw(NovaGaugeGlow, barFrame.GetInnerDimensions().ToRectangle(), Color.White);
 				animationTimer++;
 				if (animationTimer > 4)
 				{
 					animationFrame++;
-					if (animationFrame > 11)
+					if (animationFrame > 10)
 					{
 						animationFrame = 1;
 					}
 					animationTimer = 0;
 				}
-				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNovaGaugeAnimation/NovaGaugeAnimation" + animationFrame), animationHitbox, Color.White);
-
+				spriteBatch.Draw(NovaGaugeAnimation, animationHitbox, NovaGaugeAnimation.Frame(1, 11, 0, animationFrame), Color.White);
 			}
 			// Now, using this hitbox, we draw a gradient by drawing vertical lines while slowly interpolating between the 2 colors.
 			int left = hitbox.Left;
@@ -166,14 +175,46 @@ namespace StarsAbove.UI
 				spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y, 1, 12), Color.Lerp(TopMiddleGradient1, TopMiddleGradient2, percent));//1 above the bottom.
 				spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y + 4, 1, 4), Color.Lerp(TopGradient1, TopGradient2, percent));
 				spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y + 8, 1, 2), Color.White);
-
-
+				spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y, 1, 18), Color.White * modPlayer.novaGaugeChangeAlpha);
+				
 			}
+
 			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNovaGauge"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);
+			
 			if(quotient == 1f)
             {
-				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNovaGaugeReady"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);
+				spriteBatch.Draw(NovaGaugeGlow, barFrame.GetInnerDimensions().ToRectangle(), Color.White);
 				
+			}
+            else if (modPlayer.novaGaugeChangeAlphaSlow > 0)
+			{
+				spriteBatch.Draw(NovaGaugeGlow, barFrame.GetInnerDimensions().ToRectangle(), Color.White * modPlayer.novaGaugeChangeAlphaSlow);
+			}
+			if (quotient < 1f)
+			{
+				spriteBatch.Draw(NovaGaugeChargingEffect, new Rectangle(left + steps - 20, hitbox.Y - 12, 40, 40), Color.White * Main.rand.NextFloat(0.8f, 1f));
+
+			}
+			if (modPlayer.gaugeChargeAnimation)
+			{
+				animationTimer2++;
+				if (animationTimer2 > 2)
+				{
+					animationFrame2++;
+					if (animationFrame2 > 6)
+					{
+						modPlayer.gaugeChargeAnimation = false;
+						animationFrame2 = 6;
+					}
+					animationTimer2 = 0;
+				}
+				spriteBatch.Draw(NovaGaugeChargedFlash, barFrame.GetInnerDimensions().ToRectangle(), NovaGaugeChargedFlash.Frame(1, 7, 0, animationFrame2), Color.White);
+			}
+			else
+            {
+				animationFrame2 = 0;
+				animationTimer2 = 0;
+
 			}
 		}
 		public override void Update(GameTime gameTime) {

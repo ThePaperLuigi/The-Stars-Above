@@ -56,7 +56,8 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 		public override void AI()
 		{//Ai 2 is the rotation value (usually 1)
 			Player player = Main.player[Projectile.owner];
-
+			DrawOffsetX = -33;
+			DrawOriginOffsetY = -33;
 			//Orbit Nalhaun. ai[0] is the max orbit distance, ai[1] is the rotation starting position
 
 			if (firstSpawn)
@@ -131,7 +132,7 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 			}
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			// This code and the similar code above in OnTileCollide spawn dust from the tiles collided with. SoundID.Item10 is the bounce sound you hear.
 			//Collision.HitTiles(projectile.position + projectile.velocity, projectile.velocity, projectile.width, projectile.height);

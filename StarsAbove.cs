@@ -10,10 +10,31 @@ using ReLogic.Content;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
 using StarsAbove.Items;
+using StarsAbove.Items.Weapons;
+using StarsAbove.Items.Weapons.Summon;
+using StarsAbove.Items.Weapons.Ranged;
+using StarsAbove.Items.Weapons.Other;
+using StarsAbove.Items.Weapons.Celestial;
+using StarsAbove.Items.Weapons.Melee;
+using StarsAbove.Items.Weapons.Magic;
 using ReLogic.Content.Sources;
 
 using StarsAbove.Systems;
 using StarsAbove.NPCs.WarriorOfLight;
+using StarsAbove.NPCs.Vagrant;
+using StarsAbove.NPCs.Tsukiyomi;
+using StarsAbove.NPCs.Dioskouroi;
+using StarsAbove.NPCs.Nalhaun;
+using StarsAbove.NPCs;
+using Terraria.GameContent.UI.Elements;
+using Terraria.IO;
+using StarsAbove.UI.Starfarers;
+using System.IO;
+using SubworldLibrary;
+using StarsAbove.NPCs.Arbitration;
+using StarsAbove.NPCs.Penthesilea;
+using StarsAbove.NPCs.Thespian;
+using StarsAbove.NPCs.Starfarers;
 
 namespace StarsAbove
 {
@@ -24,6 +45,8 @@ namespace StarsAbove
 
 		public static ModKeybind novaKey;
 		public static ModKeybind weaponActionKey;
+		public static ModKeybind showMemoryInfoKey;
+		public static ModKeybind weaponMemoryKey;
 
 		public static bool sharedAudio;
 		public static StarsAbove Instance { get; set; }
@@ -50,8 +73,10 @@ namespace StarsAbove
 			ModLoader.TryGetMod("Wikithis", out Mod wikithis);
 			if(wikithis != null && !Main.dedServ)
             {
-				wikithis.Call("AddModURL", this, "terrariamods.wiki.gg$The_Stars_Above");
-            }
+				
+				wikithis.Call("AddModURL", this, "https://terrariamods.wiki.gg/wiki/The_Stars_Above/{}");
+
+			}
 
 			if (Main.netMode != NetmodeID.Server)
 			{
@@ -65,30 +90,54 @@ namespace StarsAbove
 
 				SkyManager.Instance["StarsAbove:CorvusSky"] = new CorvusSky();
 
-				SkyManager.Instance["StarsAbove:ObservatorySkyDay"] = new ObservatorySkyDay();
+				SkyManager.Instance["StarsAbove:DreamingCitySky"] = new DreamingCitySky();
 				SkyManager.Instance["StarsAbove:EdinGenesisQuasarSky"] = new EdinGenesisQuasarSky();
-
 
 				Filters.Scene["StarsAbove:MoonSky"] = new Filter(new ScreenShaderData("FilterTower").UseColor(0f, 0.5f, 1f).UseOpacity(0.5f), EffectPriority.High);
 				SkyManager.Instance["StarsAbove:MoonSky"] = new MoonSky();
 
+				Ref<Effect> blurRef = new Ref<Effect>(ModContent.Request<Effect>("StarsAbove/Effects/GaussianBlur", AssetRequestMode.ImmediateLoad).Value); // The path to the compiled shader file.
+				Filters.Scene["GaussianBlur"] = new Filter(new ScreenShaderData(blurRef, "Test"), EffectPriority.High);
+				Filters.Scene["GaussianBlur"].Load();
 
 				Ref<Effect> screenRef = new Ref<Effect>(ModContent.Request<Effect>("StarsAbove/Effects/ShockwaveEffect", AssetRequestMode.ImmediateLoad).Value); // The path to the compiled shader file.
 				Filters.Scene["Shockwave"] = new Filter(new ScreenShaderData(screenRef, "Shockwave"), EffectPriority.High);
 				Filters.Scene["Shockwave"].Load();
 
-				//Ref<Effect> dyeRef = new Ref<Effect>(ModContent.Request<Effect>("StarsAbove/Effects/Shader", AssetRequestMode.ImmediateLoad).Value);
-				//GameShaders.Armor.BindShader(ModContent.ItemType<Spatial>(), new ArmorShaderData(dyeRef, "GalaxyPass")).UseImage("StarsAbove/Effects/GalaxyTest");
+				var MiscEffect = new Ref<Effect>(Assets.Request<Effect>("Effects/MiscEffect", AssetRequestMode.ImmediateLoad).Value);
+				GameShaders.Misc["CyclePass"] = new MiscShaderData(MiscEffect, "CyclePass");
+
+				var AdditiveBlendEffect = new Ref<Effect>(Assets.Request<Effect>("Effects/AdditiveBlend", AssetRequestMode.ImmediateLoad).Value);
+				GameShaders.Misc["BlendPass"] = new MiscShaderData(AdditiveBlendEffect, "BlendPass");
 
 				GameShaders.Misc["StarsAbove:DeathAnimation"] = new MiscShaderData(
 				  new Ref<Effect>(ModContent.Request<Effect>("StarsAbove/Effects/EffectDeath", AssetRequestMode.ImmediateLoad).Value),
 				  "DeathAnimation"
 				);
 
+				//Shelved for later. Doesn't work yet.
+				//Terraria.GameContent.UI.Elements.On_UICharacterListItem.ctor += Hook_UICharacterList;
 			}
 
 			novaKey = KeybindLoader.RegisterKeybind(this, "Stellar Nova", "Z");
 			weaponActionKey = KeybindLoader.RegisterKeybind(this, "Weapon Action", "X");
+			weaponMemoryKey = KeybindLoader.RegisterKeybind(this, "Weapon Memory Action", "C");
+			showMemoryInfoKey = KeybindLoader.RegisterKeybind(this, "Show Memory Info", "V");
+
+		}
+		private void Hook_UICharacterList(On_UICharacterListItem.orig_ctor orig, UICharacterListItem self, PlayerFileData data, int snapPointIndex)
+		{        //Thank you to tMod discord member pure_epic
+
+			orig(self, data, snapPointIndex);
+			if (data.Player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
+			{
+				MainMenuIcon Icon = new MainMenuIcon();
+				self.Append(Icon);
+			}
+			else if (data.Player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
+			{
+				self.Append(MainMenuIcon.umbral);
+			}
 		}
 		public override void Unload()
 		{
@@ -99,7 +148,37 @@ namespace StarsAbove
 			base.Unload();
 		}
 
-		
+		public override void HandlePacket(BinaryReader reader, int whoAmI)
+		{
+			SubworldSystem.MovePlayerToSubworld("Observatory", whoAmI);
+
+			byte msgType = reader.ReadByte();
+			switch (msgType)
+			{
+				case 0://Attempting to enter a suwbworld
+
+					string id = reader.ReadString();
+					SubworldSystem.MovePlayerToSubworld("StarsAbove/" + id, whoAmI);
+
+					/*
+					switch (id)
+					{
+						case "Observatory":
+							break;
+						case "Test":
+							break;
+						default:
+							Logger.WarnFormat("StarsAbove: Unknown Subworld");
+							break;
+					}*/
+
+					break;
+				default:
+					Logger.WarnFormat("StarsAbove: Unknown Message type: {0}", msgType);
+					break;
+			}
+		}
+
 
 		public override object Call(params object[] args)
 		{
@@ -155,123 +234,208 @@ namespace StarsAbove
 		{
 			Mod bossChecklist;
 			ModLoader.TryGetMod("BossChecklist", out bossChecklist);
+			Mod recipeBrowser;
+			ModLoader.TryGetMod("RecipeBrowser", out recipeBrowser);
 			Mod musicDisplay;
 			ModLoader.TryGetMod("MusicDisplay", out musicDisplay);
-			if (bossChecklist != null)
+
+			Func<bool> CanSeeTsuki = () =>
 			{
-				
-				bossChecklist.Call(
-					"AddBoss", //Entry Type
-					this, //Mod Instance
-					"$Mods.StarsAbove.NPCName.WarriorOfLight", //Boss Name
-					ModContent.NPCType<WarriorOfLightBoss>(), //Boss ID
-					18.1f, //Progression
-					(Func<bool>)(() => DownedBossSystem.downedWarrior), //Downed boolean
-					() => true, //Availability
-					new List<int> { ModContent.ItemType<Items.Prisms.PrismOfTheRuinedKing>(), ModContent.ItemType<Items.Prisms.PrismOfTheCosmicPhoenix>(), ModContent.ItemType<Items.Materials.DullTotemOfLight>(), ModContent.ItemType<Items.Materials.TotemOfLightEmpowered>() },//Collection
-					ModContent.ItemType<Items.Consumables.ProgenitorWish>(),//Spawn Item
-					"$Mods.StarsAbove.BossChecklist.WarriorOfLight.SpawnInfo", //Spawn Item
-					"$Mods.StarsAbove.BossChecklist.WarriorOfLight.DespawnMessage" //Despawn Message
-					); //Boss Portrait
+				bool WarriorDowned = DownedBossSystem.downedWarrior;
 
-				bossChecklist.Call(
-					"AddBoss", //Entry Type
-					this, //Mod Instance
-					"$Mods.StarsAbove.NPCName.VagrantOfSpaceAndTime", //Boss Name
-					ModContent.NPCType<NPCs.Vagrant.VagrantBoss>(), //Boss ID
-					7.1f, //Progression
-					(Func<bool>)(() => DownedBossSystem.downedVagrant), //Downed boolean
-					() => true, //Availability
-					new List<int> { ModContent.ItemType<Items.Materials.EnigmaticDust>(), ModContent.ItemType<Items.Prisms.SpatialPrism>() },//Collection
-					ModContent.ItemType<Items.Consumables.ShatteredDisk>(),//Spawn Item
-					"$Mods.StarsAbove.BossChecklist.VagrantOfSpaceAndTime.SpawnInfo", //Spawn Item
-					"$Mods.StarsAbove.BossChecklist.VagrantOfSpaceAndTime.DespawnMessage", //Despawn Message
-					(SpriteBatch sb, Rectangle rect, Color color) => {
-						Texture2D texture = ModContent.Request<Texture2D>("StarsAbove/Bestiary/PerseusBossChecklist").Value;
-						Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
-						sb.Draw(texture, centered, color);
-					}); //Boss Portrait
-				bossChecklist.Call(
-					"AddBoss", //Entry Type
-					this, //Mod Instance
-					"$Mods.StarsAbove.NPCName.Dioskouroi", //Boss Name
-					ModContent.NPCType<NPCs.Dioskouroi.PolluxBoss>(), //Boss ID
-					11.9f, //Progression
-					(Func<bool>)(() => DownedBossSystem.downedDioskouroi), //Downed boolean
-					() => true, //Availability
-					new List<int> { ModContent.ItemType<Items.Prisms.GeminiPrism>() },//Collection
-					ModContent.ItemType<Items.Consumables.TwincruxPendant>(),//Spawn Item
-					"$Mods.StarsAbove.BossChecklist.Dioskouroi.SpawnInfo", //Spawn Item
-					"$Mods.StarsAbove.BossChecklist.Dioskouroi.DespawnMessage", //Despawn Message
-					(SpriteBatch sb, Rectangle rect, Color color) => {
-						Texture2D texture = ModContent.Request<Texture2D>("StarsAbove/Bestiary/Dioskouroi_Bestiary").Value;
-						Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
-						sb.Draw(texture, centered, color);
-					}); //Boss Portrait //Boss Portrait
+				bool canSeeBoss = WarriorDowned;
 
-				bossChecklist.Call(
-					"AddBoss", //Entry Type
-					this, //Mod Instance
-					"$Mods.StarsAbove.NPCName.NalhaunBoss", //Boss Name
-					ModContent.NPCType<NPCs.Nalhaun.NalhaunBossPhase2>(), //Boss ID
-					17.1f, //Progression
-					(Func<bool>)(() => DownedBossSystem.downedNalhaun), //Downed boolean
-					() => true, //Availability
-					new List<int> { ModContent.ItemType<Items.Prisms.BurnishedPrism>() },//Collection
-					ModContent.ItemType<Items.Consumables.AncientShard>(),//Spawn Item
-					"$Mods.StarsAbove.BossChecklist.Nalhaun.SpawnInfo", //Spawn Item
-					"$Mods.StarsAbove.BossChecklist.Nalhaun.DespawnMessage", //Despawn Message
-					(SpriteBatch sb, Rectangle rect, Color color) => {
-						Texture2D texture = ModContent.Request<Texture2D>("StarsAbove/Bestiary/Nalhaun_Bestiary").Value;
-						Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
-						sb.Draw(texture, centered, color);
-					}); //Boss Portrait //Boss Portrait
+				return canSeeBoss;
+			};
+            Func<bool> CanSeeStarfarers = () =>
+            {
+                bool PenthDowned = DownedBossSystem.downedPenth;
+                bool canSeeBoss = false;
+                if (PenthDowned && NPC.downedPlantBoss)
+				{
+					canSeeBoss = true;
+				}
+                
 
+                return canSeeBoss;
+            };
+            /*
+			if (recipeBrowser != null && !Main.dedServ)
+			{
+				recipeBrowser.Call(new object[5]
+				{
+				"AddItemCategory",
+				"Astral",
+				"Weapons",
+				ModContent.Request<Texture2D>("StarsAbove/Items/Astral"), // 24x24 icon
+				(Predicate<Item>)((Item item) =>
+				{
+				if (item.damage > 0)
+				{
+					return item.ModItem is Astral;
+				}
+				return false;
+				})
+				});
+			}*/
+            if (bossChecklist != null)
+			{
+				//Vagrant of Space and Time
 				bossChecklist.Call(
-					"AddBoss", //Entry Type
-					this, //Mod Instance
-					"$Mods.StarsAbove.NPCName.Penthesilea", //Boss Name
-					ModContent.NPCType<NPCs.Penthesilea>(), //Boss ID
-					14.1f, //Progression
-					(Func<bool>)(() => DownedBossSystem.downedPenth), //Downed boolean
-					() => true, //Availability
-					new List<int> {ModContent.ItemType<Items.Prisms.PaintedPrism>() },//Collection
-					ModContent.ItemType<Items.Consumables.UnsulliedCanvas>(),//Spawn Item
-					"$Mods.StarsAbove.BossChecklist.Penthesilea.SpawnInfo", //Spawn Item
-					"$Mods.StarsAbove.BossChecklist.Penthesilea.DespawnMessage" //Despawn Message
-					); //Boss Portrait
+					"LogBoss",
+					this,
+					nameof(VagrantBoss),
+					2.9f,
+					() => DownedBossSystem.downedVagrant,
+					ModContent.NPCType<VagrantBoss>(),
+					new Dictionary<string, object>()
+					{
+						["spawnItems"] = ModContent.ItemType<Items.Consumables.ShatteredDisk>(),
+						["customPortrait"] = (SpriteBatch sb, Rectangle rect, Color color) =>
+						{
+							Texture2D texture = ModContent.Request<Texture2D>("StarsAbove/Bestiary/PerseusBossChecklist").Value;
+							Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
+							sb.Draw(texture, centered, color);
+						}
 
-				/*bossChecklist.Call(
-					"AddBoss", //Entry Type
-					this, //Mod Instance
-					"$Mods.StarsAbove.NPCName.Arbitration", //Boss Name
-					ModContent.NPCType<NPCs.Arbitration>(), //Boss ID
-					15.5f, //Progression
-					(Func<bool>)(() => DownedBossSystem.downedArbiter), //Downed boolean
-					() => true, //Availability
-					new List<int> { ModContent.ItemType<Items.Prisms.VoidsentPrism>() },//Collection
-					ModContent.ItemType<Items.Consumables.DemonicCrux>(),//Spawn Item
-					"$Mods.StarsAbove.BossChecklist.Arbitration.SpawnInfo", //Spawn Item
-					"$Mods.StarsAbove.BossChecklist.Arbitration.DespawnMessage" //Despawn Message
-					); //Boss Portrait
-				*/
+					}
+				);
+                //Thespian
+                bossChecklist.Call(
+                    "LogBoss",
+                    this,
+                    nameof(ThespianBoss),
+                    3.5f,
+                    () => DownedBossSystem.downedThespian,
+                    ModContent.NPCType<ThespianBoss>(),
+                    new Dictionary<string, object>()
+                    {
+                        ["spawnItems"] = ModContent.ItemType<Items.Consumables.MalsaineDraught>(),
+                    }
+                );
+                //Dioskouroi
+                bossChecklist.Call(
+					"LogBoss",
+					this,
+					nameof(PolluxBoss),
+					6.5f,
+					() => DownedBossSystem.downedDioskouroi,
+					ModContent.NPCType<PolluxBoss>(),
+					new Dictionary<string, object>()
+					{
+						["spawnItems"] = ModContent.ItemType<Items.Consumables.TwincruxPendant>(),
+						["customPortrait"] = (SpriteBatch sb, Rectangle rect, Color color) =>
+						{
+							Texture2D texture = ModContent.Request<Texture2D>("StarsAbove/Bestiary/Dioskouroi_Bestiary").Value;
+							Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
+							sb.Draw(texture, centered, color);
+						}
+					}
+
+				);
+				//Penthesilea
 				bossChecklist.Call(
-					"AddBoss", //Entry Type
-					this, //Mod Instance
-					"$Mods.StarsAbove.NPCName.TsukiyomiBoss", //Boss Name
-					ModContent.NPCType<NPCs.Tsukiyomi.TsukiyomiBoss>(), //Boss ID
-					18.3f, //Progression
-					(Func<bool>)(() => DownedBossSystem.downedTsuki), //Downed boolean
-					(Func<bool>)(() => DownedBossSystem.downedWarrior), //Availability
-					new List<int> { ModContent.ItemType<Items.Consumables.SpatialMemoriam>() },//Collection
-					ModContent.ItemType<Items.Consumables.MnemonicSigil>(),//Spawn Item
-					"$Mods.StarsAbove.BossChecklist.Tsukiyomi2.SpawnInfo", //Spawn Item
-					"$Mods.StarsAbove.BossChecklist.Tsukiyomi2.DespawnMessage" //Despawn Message
-					); //Boss Portrait
+					"LogBoss",
+					this,
+					nameof(PenthesileaBoss),
+					11.5f,
+					() => DownedBossSystem.downedPenth,
+					ModContent.NPCType<PenthesileaBoss>(),
+					new Dictionary<string, object>()
+					{
+						["spawnItems"] = ModContent.ItemType<Items.Consumables.UnsulliedCanvas>(),
+					}
+				);
+				//The Starfarers
+                bossChecklist.Call(
+                    "LogBoss",
+                    this,
+                    nameof(StarfarerBoss),
+                    12.5f,
+                    () => DownedBossSystem.downedStarfarers,
+                    ModContent.NPCType<StarfarerBoss>(),
+                    new Dictionary<string, object>()
+                    {
+                        ["spawnItems"] = ModContent.ItemType<Items.Consumables.StarfarerEssence>(),
+                        ["availability"] = CanSeeStarfarers,
+                        ["customPortrait"] = (SpriteBatch sb, Rectangle rect, Color color) =>
+                        {
+                            Texture2D texture = ModContent.Request<Texture2D>("StarsAbove/Bestiary/StarfarerBoss_Bestiary").Value;
+                            Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
+                            sb.Draw(texture, centered, color);
+                        }
+                    }
+                );
+                //Nalhaun
+                bossChecklist.Call(
+					"LogBoss",
+					this,
+					nameof(NalhaunBossPhase2),
+					14.5f,
+					() => DownedBossSystem.downedNalhaun,
+					ModContent.NPCType<NalhaunBossPhase2>(),
+					new Dictionary<string, object>()
+					{
+						["spawnItems"] = ModContent.ItemType<Items.Consumables.AncientShard>(),
+						["customPortrait"] = (SpriteBatch sb, Rectangle rect, Color color) =>
+						{
+							Texture2D texture = ModContent.Request<Texture2D>("StarsAbove/Bestiary/Nalhaun_Bestiary").Value;
+							Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
+							sb.Draw(texture, centered, color);
+						}
+					}
+				);
+				//Arbitration
+				bossChecklist.Call(
+					"LogBoss",
+					this,
+					nameof(ArbitrationBoss),
+					17.9f,
+					() => DownedBossSystem.downedArbiter,
+					ModContent.NPCType<ArbitrationBoss>(),
+					new Dictionary<string, object>()
+					{
 
+					}
+				);
+				//The Warrior of Light
+				bossChecklist.Call(
+					"LogBoss",
+					this,
+					nameof(WarriorOfLightBoss),
+					18.1f,
+					() => DownedBossSystem.downedWarrior,
+					ModContent.NPCType<WarriorOfLightBossFinalPhase>(),
+					new Dictionary<string, object>()
+					{
+						["spawnItems"] = ModContent.ItemType<Items.Consumables.ProgenitorWish>(),
+						["customPortrait"] = (SpriteBatch sb, Rectangle rect, Color color) =>
+						{
+							Texture2D texture = ModContent.Request<Texture2D>("StarsAbove/Bestiary/WarriorOfLight_Bestiary").Value;
+							Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
+							sb.Draw(texture, centered, color);
+						}
+					}
+				);
+				//Tsukiyomi
+				bossChecklist.Call(
+					"LogBoss",
+					this,
+					nameof(TsukiyomiBoss),
+					18.3f,
+					() => DownedBossSystem.downedTsuki,
+					ModContent.NPCType<TsukiyomiBoss>(),
+					new Dictionary<string, object>()
+					{
+						["spawnItems"] = ModContent.ItemType<Items.Consumables.MnemonicSigil>(),
+						["availability"] = CanSeeTsuki,
+
+					}
+				);
 			}
 			if (musicDisplay != null)
             {
+				/*
 				void AddMusic(string path, string name) => musicDisplay.Call("AddMusic", (short)MusicLoader.GetMusicSlot(this, path), name, "The Stars Above");
 
 				AddMusic("Sounds/Music/CosmicWill", "PaperLuigi - Cosmic Will (Stars Above OST)");
@@ -289,7 +453,7 @@ namespace StarsAbove
 
 				AddMusic("Sounds/Music/FirstWarning", "Studio EIM - First Warning (LoR ver.) (Library of Ruina OST)");
 				AddMusic("Sounds/Music/SecondWarning", "Studio EIM - Second Warning (LoR ver.) (Library of Ruina OST)");
-
+				*/
 			}
 		}
 		

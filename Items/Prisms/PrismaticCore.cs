@@ -57,33 +57,52 @@ namespace StarsAbove.Items.Prisms
 		{
 			CreateRecipe(1)
 				.AddIngredient(ItemType<ApocryphicPrism>())
+				.DisableDecraft()
 				.Register();
 			CreateRecipe(1)
 				.AddIngredient(ItemType<AlchemicPrism>())
+								.DisableDecraft()
+
 				.Register();
 			CreateRecipe(1)
 				.AddIngredient(ItemType<CastellicPrism>())
+								.DisableDecraft()
+
 				.Register();
 			CreateRecipe(1)
 				.AddIngredient(ItemType<CrystallinePrism>())
+								.DisableDecraft()
+
 				.Register();
 			CreateRecipe(1)
 				.AddIngredient(ItemType<EverflamePrism>())
+								.DisableDecraft()
+
 				.Register();
 			CreateRecipe(1)
 				.AddIngredient(ItemType<LucentPrism>())
+								.DisableDecraft()
+
 				.Register();
 			CreateRecipe(1)
 				.AddIngredient(ItemType<PhylacticPrism>())
+								.DisableDecraft()
+
 				.Register();
 			CreateRecipe(1)
 				.AddIngredient(ItemType<RadiantPrism>())
+								.DisableDecraft()
+
 				.Register();
 			CreateRecipe(1)
 				.AddIngredient(ItemType<RefulgentPrism>())
+								.DisableDecraft()
+
 				.Register();
 			CreateRecipe(1)
 				.AddIngredient(ItemType<VerdantPrism>())
+								.DisableDecraft()
+
 				.Register();
 
 			/*ModRecipe recipe11 = new ModRecipe(mod);

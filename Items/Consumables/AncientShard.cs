@@ -52,8 +52,6 @@ namespace StarsAbove.Items.Consumables
 
 				int type = ModContent.NPCType<NPCs.Nalhaun.NalhaunBoss>();
 
-				//if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("A mysterious throne descends from the heavens..."), 210, 100, 175);}
-				if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("Nalhaun, the Burnished King appears!"), 200, 150, 125);}
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					// If the player is not in multiplayer, spawn directly

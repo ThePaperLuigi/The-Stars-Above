@@ -2,6 +2,7 @@
 using StarsAbove.Buffs;
 using StarsAbove.NPCs.Tsukiyomi;
 using StarsAbove.Subworlds;
+using StarsAbove.Systems;
 using SubworldLibrary;
 using Terraria;
 using Terraria.ID;
@@ -70,7 +71,8 @@ namespace StarsAbove.Items.Consumables
 
 			if (Main.netMode == NetmodeID.MultiplayerClient)
 			{
-				//NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: type);
+				NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: type);
+				return false;
 			}
 			else
             {

@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
+using StarsAbove.Subworlds.ThirdRegion;
 using SubworldLibrary;
 using Terraria;
 using Terraria.Graphics.Capture;

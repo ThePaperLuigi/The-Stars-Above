@@ -1,4 +1,6 @@
-﻿using Terraria;
+﻿using StarsAbove.Systems;
+using Terraria;
+using System;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
@@ -18,7 +20,7 @@ namespace StarsAbove.Buffs.Adornment
         public override void Update(Player player, ref int buffIndex)
         {
             StarsAbovePlayer modPlayer = player.GetModPlayer<StarsAbovePlayer>();
-            if (player.ownedProjectileCounts[ProjectileType<Projectiles.Adornment.AdornmentMinion>()] > 0)
+            if (player.ownedProjectileCounts[ProjectileType<Projectiles.Summon.Adornment.AdornmentMinion>()] > 0)
             {
                 player.buffTime[buffIndex] = 18000;
             }

@@ -1,17 +1,18 @@
+using StarsAbove.Systems;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Prefixes
 {
-	// This class serves as an example for declaring item 'prefixes', or 'modifiers' in other words.
-	public class NovaPrefix1 : ModPrefix
+    // This class serves as an example for declaring item 'prefixes', or 'modifiers' in other words.
+    public class NovaPrefix1 : ModPrefix
 	{
 		public override void SetStaticDefaults()
 		{
 			// DisplayName.SetDefault("Bright");
 		}
 		// We declare a custom *virtual* property here, so that another type, ExampleDerivedPrefix, could override it and change the effective power for itself.
-		public virtual float Power => 1f;
+		public virtual float Power => 0f;
 
 		// Change your category this way, defaults to PrefixCategory.Custom. Affects which items can get this prefix.
 		public override PrefixCategory Category => PrefixCategory.AnyWeapon;
@@ -22,7 +23,7 @@ namespace StarsAbove.Prefixes
 		// Note: if you use PrefixCategory.Custom, actually use ModItem.ChoosePrefix instead.
 		public override float RollChance(Item item)
 		{
-			return 0.9f;
+			return 0f;
 		}
 
 		// Determines if it can roll at all.
@@ -66,7 +67,7 @@ namespace StarsAbove.Prefixes
 			// DisplayName.SetDefault("Glowing");
 		}
 		// We declare a custom *virtual* property here, so that another type, ExampleDerivedPrefix, could override it and change the effective power for itself.
-		public virtual float Power => 2f;
+		public virtual float Power => 0f;
 
 		// Change your category this way, defaults to PrefixCategory.Custom. Affects which items can get this prefix.
 		public override PrefixCategory Category => PrefixCategory.AnyWeapon;
@@ -77,7 +78,7 @@ namespace StarsAbove.Prefixes
 		// Note: if you use PrefixCategory.Custom, actually use ModItem.ChoosePrefix instead.
 		public override float RollChance(Item item)
 		{
-			return 0.8f;
+			return 0f;
 		}
 
 		// Determines if it can roll at all.
@@ -121,7 +122,7 @@ namespace StarsAbove.Prefixes
 			// DisplayName.SetDefault("Luminous");
 		}
 		// We declare a custom *virtual* property here, so that another type, ExampleDerivedPrefix, could override it and change the effective power for itself.
-		public virtual float Power => 3f;
+		public virtual float Power => 0f;
 
 		// Change your category this way, defaults to PrefixCategory.Custom. Affects which items can get this prefix.
 		public override PrefixCategory Category => PrefixCategory.AnyWeapon;
@@ -132,7 +133,7 @@ namespace StarsAbove.Prefixes
 		// Note: if you use PrefixCategory.Custom, actually use ModItem.ChoosePrefix instead.
 		public override float RollChance(Item item)
 		{
-			return 0.7f;
+			return 0f;
 		}
 
 		// Determines if it can roll at all.
@@ -176,7 +177,7 @@ namespace StarsAbove.Prefixes
 			// DisplayName.SetDefault("Radiant");
 		}
 		// We declare a custom *virtual* property here, so that another type, ExampleDerivedPrefix, could override it and change the effective power for itself.
-		public virtual float Power => 4f;
+		public virtual float Power => 0f;
 
 		// Change your category this way, defaults to PrefixCategory.Custom. Affects which items can get this prefix.
 		public override PrefixCategory Category => PrefixCategory.AnyWeapon;
@@ -187,7 +188,7 @@ namespace StarsAbove.Prefixes
 		// Note: if you use PrefixCategory.Custom, actually use ModItem.ChoosePrefix instead.
 		public override float RollChance(Item item)
 		{
-			return 0.6f;
+			return 0f;
 		}
 
 		// Determines if it can roll at all.
@@ -231,7 +232,7 @@ namespace StarsAbove.Prefixes
 			// DisplayName.SetDefault("Bleak");
 		}
 		// We declare a custom *virtual* property here, so that another type, ExampleDerivedPrefix, could override it and change the effective power for itself.
-		public virtual float Power => 1f;
+		public virtual float Power => 0f;
 
 		// Change your category this way, defaults to PrefixCategory.Custom. Affects which items can get this prefix.
 		public override PrefixCategory Category => PrefixCategory.AnyWeapon;
@@ -242,7 +243,7 @@ namespace StarsAbove.Prefixes
 		// Note: if you use PrefixCategory.Custom, actually use ModItem.ChoosePrefix instead.
 		public override float RollChance(Item item)
 		{
-			return 0.8f;
+			return 0f;
 		}
 
 		// Determines if it can roll at all.
@@ -286,7 +287,7 @@ namespace StarsAbove.Prefixes
 			// DisplayName.SetDefault("Lightless");
 		}
 		// We declare a custom *virtual* property here, so that another type, ExampleDerivedPrefix, could override it and change the effective power for itself.
-		public virtual float Power => 2f;
+		public virtual float Power => 0f;
 
 		// Change your category this way, defaults to PrefixCategory.Custom. Affects which items can get this prefix.
 		public override PrefixCategory Category => PrefixCategory.AnyWeapon;
@@ -297,7 +298,7 @@ namespace StarsAbove.Prefixes
 		// Note: if you use PrefixCategory.Custom, actually use ModItem.ChoosePrefix instead.
 		public override float RollChance(Item item)
 		{
-			return 0.6f;
+			return 0f;
 		}
 
 		// Determines if it can roll at all.

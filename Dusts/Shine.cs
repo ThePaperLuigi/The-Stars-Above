@@ -6,6 +6,7 @@ namespace StarsAbove.Dusts
 {
 	public class Shine : ModDust
 	{
+		
 		public override void OnSpawn(Dust dust) {
 			//dust.velocity *= 0.4f;
 			dust.noGravity = true;
@@ -17,30 +18,35 @@ namespace StarsAbove.Dusts
 		bool flashy;
 		int flashySwap;
 		int flashyInt;
+        public override Color? GetAlpha(Dust dust, Color lightColor)
+        {
+			return Color.White * ((float)dust.alpha/255);
+        }
 
-		public override bool Update(Dust dust) {
+        public override bool Update(Dust dust) {
 			dust.position += dust.velocity;
-			dust.scale -= 0.01f;
-			if(flashy)
+			dust.scale -= 0.015f;
+			if (flashy)
             {
-				flashyInt--;
+				dust.alpha-=20;
             }
 			if(!flashy)
             {
-				flashyInt++;
+				dust.alpha+=20;
 			}
-			if(flashyInt > 200)
+			//dust.alpha = (int)MathHelper.Clamp(dust.alpha,0, 255);
+			if(dust.alpha > 254)
             {
 				flashy = true;
             }
-			if(flashyInt < 0)
+			if(dust.alpha < 0)
             {
 				flashy = false;
             }
-			dust.alpha = flashyInt;
+
 			float light = 0.35f * dust.scale;
 			Lighting.AddLight(dust.position, light, light, light);
-			if (dust.scale < 0.3f) {
+			if (dust.scale < 0f) {
 				dust.active = false;
 			}
 			return false;

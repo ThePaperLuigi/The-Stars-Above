@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using StarsAbove.Systems;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -118,7 +119,7 @@ namespace StarsAbove.Projectiles.Bosses.WarriorOfLight
 			if (Projectile.ai[0] == 0)
 			{
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_GunbladeImpact, Projectile.Center);
-				Projectile.NewProjectile(null, Projectile.Center,Vector2.Zero, ModContent.ProjectileType<CoruscantSaberAnimation>(), 0, 0f, Main.myPlayer, 0,0);
+				Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center,Vector2.Zero, ModContent.ProjectileType<CoruscantSaberAnimation>(), 0, 0f, Main.myPlayer, 0,0);
 
 				for (int i = 0; i < 85; i++)
 				{

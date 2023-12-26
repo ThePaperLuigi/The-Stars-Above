@@ -103,13 +103,14 @@ namespace StarsAbove.Items
 
 		public override void AddRecipes()
 		{
+			/*
 			CreateRecipe(1)
 				.AddIngredient(ItemID.Fireblossom, 1)
 				.AddIngredient(ItemID.SnowBlock, 40)
 				.AddIngredient(ItemID.IceBlade, 1)
 				.AddIngredient(ItemType<EssenceOfTheUnderworldGoddess>())
 				.AddTile(TileID.Anvils)
-				.Register();
+				.Register();*/
 		}
 	}
 }

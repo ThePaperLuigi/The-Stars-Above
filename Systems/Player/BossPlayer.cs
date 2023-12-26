@@ -13,6 +13,13 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.ModLoader.IO;
 using StarsAbove.Items;
+using StarsAbove.Items.Weapons;
+using StarsAbove.Items.Weapons.Summon;
+using StarsAbove.Items.Weapons.Ranged;
+using StarsAbove.Items.Weapons.Other;
+using StarsAbove.Items.Weapons.Celestial;
+using StarsAbove.Items.Weapons.Melee;
+using StarsAbove.Items.Weapons.Magic;
 using StarsAbove.Projectiles;
 using StarsAbove.Buffs;
 using StarsAbove.NPCs;
@@ -24,10 +31,17 @@ using StarsAbove.NPCs.Dioskouroi;
 using StarsAbove.Projectiles.Bosses;
 using StarsAbove.NPCs.WarriorOfLight;
 using StarsAbove.Buffs.Boss;
+using StarsAbove.Utilities;
+using StarsAbove.NPCs.Penthesilea;
+using StarsAbove.NPCs.Arbitration;
+using StarsAbove.NPCs.Thespian;
+using StarsAbove.Projectiles.StellarNovas.GuardiansLight;
+using StarsAbove.Projectiles.Bosses.Thespian;
+using StarsAbove.NPCs.Starfarers;
 
-namespace StarsAbove
+namespace StarsAbove.Systems
 {
-    public class BossPlayer: ModPlayer
+    public class BossPlayer : ModPlayer
     {
         public bool VagrantBarActive = false;//This changes depending on the boss
         public bool NalhaunBarActive = false;
@@ -36,6 +50,11 @@ namespace StarsAbove
 
         public bool CastorBarActive = false;
         public bool PolluxBarActive = false;
+
+        public bool ThespianBarActive = false;
+        public bool StarfarerBossBarActive = false;
+        public bool PenthesileaBarActive = false;
+        public bool ArbitrationBarActive = false;
 
         public float temperatureGaugeHot;
         public float temperatureGaugeCold;
@@ -54,6 +73,8 @@ namespace StarsAbove
         public string NextAttackAlt = "";
 
         public int inVagrantFightTimer; //Check to see if you've recently hit the boss.
+
+        public int introCutsceneProgress = 0;
 
         public int nalhaunCutsceneProgress = 0;
         public int tsukiCutsceneProgress = 0;
@@ -80,6 +101,9 @@ namespace StarsAbove
         float stress;
         float damageReductionAmount;
 
+        bool speedrunEasterEgg;
+        int bossTimer;
+
         public override void OnHurt(Player.HurtInfo info)
         {
             for (int k = 0; k < Main.maxNPCs; k++)
@@ -87,14 +111,14 @@ namespace StarsAbove
                 NPC npc = Main.npc[k];
                 if (npc.active && npc.type == NPCType<WarriorOfLightBoss>() && Player.Distance(npc.Center) < 2000)
                 {
-                    if(Main.expertMode)
+                    if (Main.expertMode)
                     {
                         Player.AddBuff(BuffType<Vulnerable>(), 60);
 
                     }
                     break;
                 }
-                
+
 
             }
 
@@ -102,16 +126,16 @@ namespace StarsAbove
         }
         public override void PreUpdate()
         {
-            if(QTEActive)
+            if (QTEActive)
             {
                 if (StarsAbove.novaKey.JustPressed)
                 {
-                    
+
                     SoundEngine.PlaySound(SoundID.Item48, Player.Center);
 
                     for (int d = 0; d < 3; d++)
                     {
-                        Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-3, 3), 0f + Main.rand.Next(-3, 3), 0, default(Color), 1.5f);
+                        Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-3, 3), 0f + Main.rand.Next(-3, 3), 0, default, 1.5f);
                     }
                     Player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
 
@@ -130,7 +154,7 @@ namespace StarsAbove
                             {
                                 Vector2 positionNew = Vector2.Lerp(Player.Center, new Vector2(npc.Center.X, npc.Center.Y), (float)ir / 20);
 
-                                Dust da = Dust.NewDustPerfect(positionNew, DustID.FireworkFountain_Yellow, null, 240, default(Color), 1f);
+                                Dust da = Dust.NewDustPerfect(positionNew, DustID.FireworkFountain_Yellow, null, 240, default, 1f);
                                 da.fadeIn = 0.1f;
                                 da.noLight = true;
                                 da.noGravity = true;
@@ -138,7 +162,7 @@ namespace StarsAbove
                             }
                             break;
                         }
-                        
+
 
                     }
                     QTEDifficulty = 0.1f;
@@ -155,7 +179,7 @@ namespace StarsAbove
                     Player.ClearBuff(BuffType<BindingLight>());
                     for (int d = 0; d < 20; d++)
                     {
-                        Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-6, 6), 0, default(Color), 1.5f);
+                        Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Yellow, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-6, 6), 0, default, 1.5f);
                     }
                     Player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
                     SoundEngine.PlaySound(SoundID.Shatter, Player.Center);
@@ -164,7 +188,7 @@ namespace StarsAbove
             }
 
             //Aggro marker.
-            if(Main.netMode != NetmodeID.SinglePlayer && !disableBossAggro)
+            if (Main.netMode != NetmodeID.SinglePlayer && !disableBossAggro)
             {
                 for (int i = 0; i <= Main.maxNPCs; i++)
                 {
@@ -176,16 +200,42 @@ namespace StarsAbove
                 }
 
             }
-            
+
             hasBossAggro--;
             hasBossAggro = Math.Clamp(hasBossAggro, 0, 10);
-            if(hasBossAggro > 0 && Player.ownedProjectileCounts[ProjectileType<BossAggroMarker>()] < 1)
+            if (hasBossAggro > 0 && Player.ownedProjectileCounts[ProjectileType<BossAggroMarker>()] < 1)
             {
-                Projectile.NewProjectile(null, Player.Center, Vector2.Zero, ProjectileType<BossAggroMarker>(), 0, 0, Player.whoAmI);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ProjectileType<BossAggroMarker>(), 0, 0, Player.whoAmI);
 
             }
 
+            if (NPC.AnyNPCs(NPCType<VagrantBoss>())
+                || NPC.AnyNPCs(NPCType<PolluxBoss>())
+                || NPC.AnyNPCs(NPCType<CastorBoss>())
+                || NPC.AnyNPCs(NPCType<PenthesileaBoss>())
+                || NPC.AnyNPCs(NPCType<NalhaunBoss>())
+                || NPC.AnyNPCs(NPCType<NalhaunBossPhase2>())
+                || NPC.AnyNPCs(NPCType<WarriorOfLightBossFinalPhase>())
+                || NPC.AnyNPCs(NPCType<WarriorOfLightBoss>())
+                || NPC.AnyNPCs(NPCType<TsukiyomiBoss>()))
+            {
+                bossTimer++;
+            }
+            else
+            {
+                if (bossTimer > 0)
+                {
+                    if (bossTimer < 600 && !speedrunEasterEgg && Main.LocalPlayer.active && !Main.LocalPlayer.dead)
+                    {
+                        speedrunEasterEgg = true;
 
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"CombatText.EasterEgg"), 190, 100, 247); }
+                        SoundEngine.PlaySound(StarsAboveAudio.SFX_SpeedrunEasterEgg, null);
+
+                    }
+                }
+                bossTimer = 0;
+            }
             for (int k = 0; k < 200; k++)
             {
                 NPC npc = Main.npc[k];
@@ -193,6 +243,24 @@ namespace StarsAbove
                 {
 
                     VagrantTeleport(npc);
+                    break;
+                }
+                if (npc.active && npc.type == NPCType<ThespianBoss>() && Player.Distance(npc.Center) < 2000)
+                {
+
+                    ThespianTeleport(npc);
+                    break;
+                }
+                if (npc.active && npc.type == NPCType<PenthesileaBoss>() && Player.Distance(npc.Center) < 2000)
+                {
+
+                    PenthesileaTeleport(npc);
+                    break;
+                }
+                if (npc.active && npc.type == NPCType<StarfarerBossWallsNPC>() && Player.Distance(npc.Center) < 2000)
+                {
+
+                    StarfarerBossTeleport(npc);
                     break;
                 }
                 if (npc.active && npc.type == NPCType<WarriorWallsNPC>() && Player.Distance(npc.Center) < 2000)
@@ -213,7 +281,7 @@ namespace StarsAbove
                     VagrantTeleportVertical(npc);
                     break;
                 }
-                if (npc.active && npc.type == NPCType<NPCs.Nalhaun.NalhaunBoss>() && Player.Distance(npc.Center) < 2000)
+                if (npc.active && npc.type == NPCType<NalhaunBoss>() && Player.Distance(npc.Center) < 2000)
                 {
                     //If nearby the boss.
                     NalhaunWalls(npc);
@@ -225,13 +293,13 @@ namespace StarsAbove
                     NalhaunPhase2Walls(npc);
                     break;
                 }
-                if (npc.active && (npc.type == NPCType<NPCs.Tsukiyomi.TsukiyomiBoss>()))
+                if (npc.active && npc.type == NPCType<TsukiyomiBoss>())
                 {
                     //If nearby the boss.
                     TsukiyomiTeleport(npc);
                     break;
                 }
-                if (npc.active && (npc.type == NPCType<NPCs.Dioskouroi.DioskouroiWallsNPC>()))
+                if (npc.active && npc.type == NPCType<DioskouroiWallsNPC>())
                 {
                     //If nearby the boss.
                     DioskouroiWalls(npc);
@@ -240,14 +308,15 @@ namespace StarsAbove
 
             }
 
+            introCutsceneProgress--;
             nalhaunCutsceneProgress--;
             tsukiCutsceneProgress--;
             tsukiCutscene2Progress--;
             warriorCutsceneProgress--;
             warriorCutsceneProgress2--;
-            
+
             VideoDuration--;
-            
+
             BlackAlpha = Math.Clamp(BlackAlpha, 0, 1);
             WhiteAlpha = Math.Clamp(WhiteAlpha, 0, 1);
 
@@ -256,12 +325,12 @@ namespace StarsAbove
             for (int k = 0; k < 200; k++)
             {
                 NPC npc = Main.npc[k];
-                if (npc.active && (npc.type == NPCType<NPCs.Dioskouroi.DioskouroiWallsNPC>()))
+                if (npc.active && npc.type == NPCType<DioskouroiWallsNPC>())
                 {
                     //Closer to Pollux
-                    if(Player.position.X > npc.position.X)
+                    if (Player.position.X > npc.position.X)
                     {
-                        if(temperatureGaugeHot <= 0)
+                        if (temperatureGaugeHot <= 0)
                         {
                             temperatureGaugeCold += 0.4f;
                         }
@@ -288,19 +357,19 @@ namespace StarsAbove
                 }
 
             }
-            temperatureGaugeCold = Math.Clamp(temperatureGaugeCold,0, 100);
+            temperatureGaugeCold = Math.Clamp(temperatureGaugeCold, 0, 100);
             temperatureGaugeHot = Math.Clamp(temperatureGaugeHot, 0, 100);
 
-            if (!NPC.AnyNPCs(NPCType<NPCs.Dioskouroi.CastorBoss>()) && !NPC.AnyNPCs(NPCType<NPCs.Dioskouroi.PolluxBoss>()))
+            if (!NPC.AnyNPCs(NPCType<CastorBoss>()) && !NPC.AnyNPCs(NPCType<PolluxBoss>()))
             {
                 temperatureGaugeHot = 0;
                 temperatureGaugeCold = 0;
             }
-            if(temperatureGaugeHot >= 90)
+            if (temperatureGaugeHot >= 90)
             {
                 Player.AddBuff(BuffID.OnFire, 10);
             }
-            if(temperatureGaugeCold >= 90)
+            if (temperatureGaugeCold >= 90)
             {
                 Player.AddBuff(BuffID.Frostburn, 10);
             }
@@ -310,8 +379,8 @@ namespace StarsAbove
         public override void PostUpdate()
         {
 
-            
-           
+
+
         }
 
         public override void ResetEffects()
@@ -329,8 +398,262 @@ namespace StarsAbove
             TsukiyomiBarActive = false;
             WarriorOfLightBarActive = false;
             CastorBarActive = false;
-            PolluxBarActive = false;
+            PolluxBarActive = false; 
+            ThespianBarActive = false;
+            StarfarerBossBarActive = false;
+            PenthesileaBarActive = false;
+            ArbitrationBarActive = false;
+        }
+        int buffEffectTimer = 0;
+        public override void PreUpdateBuffs()
+        {
+            for (int i = 0; i < Player.CountBuffs(); i++)
+                if (Player.buffType[i] == BuffType<ForceMoveRight>())
+                {
+                    if (Player.buffTime[i] == 180)
+                    {
+                        Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                        CombatText.NewText(textPos, new Color(155, 90, 155, 240), LangHelper.GetTextValue("CombatText.Thespian.MoveRight",3), false, false);
+                    }
+                    else if (Player.buffTime[i] == 120)
+                    {
+                        Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                        CombatText.NewText(textPos, new Color(155, 90, 155, 240), LangHelper.GetTextValue("CombatText.Thespian.MoveRight", 2), false, false);
+                    }
+                    else if (Player.buffTime[i] == 60)
+                    {
+                        Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                        CombatText.NewText(textPos, new Color(155, 90, 155, 240), LangHelper.GetTextValue("CombatText.Thespian.MoveRight", 1), false, false);
+                    }
+                    else if (Player.buffTime[i] == 1)
+                    {
+                        if(Player.velocity.X > 0)
+                        {
+                            for (int g = 0; g < 12; g++)
+                            {
+                                int goreIndex = Gore.NewGore(null, new Vector2(Player.position.X + Player.width / 2 - 24f, Player.position.Y + Player.height / 2 - 24f), new Vector2(Main.rand.Next(-4, 4), Main.rand.Next(-4, 4)), Main.rand.Next(276, 283), 1f);
+                            }
+                            Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                            CombatText.NewText(textPos, new Color(142, 240, 167, 240), LangHelper.GetTextValue("CombatText.Thespian.Success", 1), false, false);
+                        }
+                        else
+                        {
+                            Player.Hurt(PlayerDeathReason.ByCustomReason(Player.name + LangHelper.GetTextValue("DeathReason.Thespian")), (int)(Player.statLifeMax2 * 0.3f), 0, false, false, -1, false, 0, 0, 0);
+                        }
+                    }
+                    
+                }
+            for (int i = 0; i < Player.CountBuffs(); i++)
+                if (Player.buffType[i] == BuffType<ForceMoveLeft>())
+                {
+                    if (Player.buffTime[i] == 180)
+                    {
+                        Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                        CombatText.NewText(textPos, new Color(155, 90, 155, 240), LangHelper.GetTextValue("CombatText.Thespian.MoveLeft", 3), false, false);
+                    }
+                    else if (Player.buffTime[i] == 120)
+                    {
+                        Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                        CombatText.NewText(textPos, new Color(155, 90, 155, 240), LangHelper.GetTextValue("CombatText.Thespian.MoveLeft", 2), false, false);
+                    }
+                    else if (Player.buffTime[i] == 60)
+                    {
+                        Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                        CombatText.NewText(textPos, new Color(155, 90, 155, 240), LangHelper.GetTextValue("CombatText.Thespian.MoveLeft", 1), false, false);
+                    }
+                    else if (Player.buffTime[i] == 1)
+                    {
+                        if (Player.velocity.X < 0)
+                        {
+                            for (int g = 0; g < 12; g++)
+                            {
+                                int goreIndex = Gore.NewGore(null, new Vector2(Player.position.X + Player.width / 2 - 24f, Player.position.Y + Player.height / 2 - 24f), new Vector2(Main.rand.Next(-4, 4), Main.rand.Next(-4, 4)), Main.rand.Next(276, 283), 1f);
+                            }
+                            Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                            CombatText.NewText(textPos, new Color(142, 240, 167, 240), LangHelper.GetTextValue("CombatText.Thespian.Success", 1), false, false);
+                        }
+                        else
+                        {
+                            Player.Hurt(PlayerDeathReason.ByCustomReason(Player.name + LangHelper.GetTextValue("DeathReason.Thespian")), (int)(Player.statLifeMax2 * 0.3f), 0, false, false, -1, false, 0, 0, 0);
+                        }
+                    }
 
+                }
+            for (int i = 0; i < Player.CountBuffs(); i++)
+                if (Player.buffType[i] == BuffType<ForceStopMoving>())
+                {
+                    if (Player.buffTime[i] == 180)
+                    {
+                        Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                        CombatText.NewText(textPos, new Color(155, 90, 155, 240), LangHelper.GetTextValue("CombatText.Thespian.StopMoving", 3), false, false);
+                    }
+                    else if (Player.buffTime[i] == 120)
+                    {
+                        Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                        CombatText.NewText(textPos, new Color(155, 90, 155, 240), LangHelper.GetTextValue("CombatText.Thespian.StopMoving", 2), false, false);
+                    }
+                    else if (Player.buffTime[i] == 60)
+                    {
+                        Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                        CombatText.NewText(textPos, new Color(155, 90, 155, 240), LangHelper.GetTextValue("CombatText.Thespian.StopMoving", 1), false, false);
+                    }
+                    else if (Player.buffTime[i] == 1)
+                    {
+                        if (Player.velocity == Vector2.Zero)
+                        {
+                            for (int g = 0; g < 12; g++)
+                            {
+                                int goreIndex = Gore.NewGore(null, new Vector2(Player.position.X + Player.width / 2 - 24f, Player.position.Y + Player.height / 2 - 24f), new Vector2(Main.rand.Next(-4, 4), Main.rand.Next(-4, 4)), Main.rand.Next(276, 283), 1f);
+                            }
+                            Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                            CombatText.NewText(textPos, new Color(142, 240, 167, 240), LangHelper.GetTextValue("CombatText.Thespian.Success", 1), false, false);
+                        }
+                        else
+                        {
+                            Player.Hurt(PlayerDeathReason.ByCustomReason(Player.name + LangHelper.GetTextValue("DeathReason.Thespian")), (int)(Player.statLifeMax2 * 0.3f), 0, false, false, -1, false, 0, 0, 0);
+                        }
+                    }
+
+                }
+            for (int i = 0; i < Player.CountBuffs(); i++)
+                if (Player.buffType[i] == BuffType<LaunchRight>())
+                {
+                    int d = Dust.NewDust(Player.Center, 0, 0, DustID.GemRuby, 0f + Main.rand.Next(3, 6), 0f + Main.rand.Next(-3, 3), 0, default, 1f);
+                    Main.dust[d].noGravity = true;
+                    if (Player.buffTime[i] == 180)
+                    {
+                        Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                        CombatText.NewText(textPos, new Color(255, 0, 125, 240), LangHelper.GetTextValue("CombatText.Thespian.LaunchRight", 3), false, false);
+                    }
+                    else if (Player.buffTime[i] == 120)
+                    {
+                        Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                        CombatText.NewText(textPos, new Color(255, 0, 125, 240), LangHelper.GetTextValue("CombatText.Thespian.LaunchRight", 2), false, false);
+                    }
+                    else if (Player.buffTime[i] == 60)
+                    {
+
+                        Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                        CombatText.NewText(textPos, new Color(255, 0, 125, 240), LangHelper.GetTextValue("CombatText.Thespian.LaunchRight", 1), false, false);
+                    }
+                    else if (Player.buffTime[i] == 10)
+                    {
+                        Player.AddBuff(BuffType<DownForTheCount>(), 30);
+
+                    }
+                    else if (Player.buffTime[i] == 1)
+                    {
+                        Player.velocity.X = 15;
+                        Player.velocity.Y = -5;
+                    }
+
+                }
+            for (int i = 0; i < Player.CountBuffs(); i++)
+                if (Player.buffType[i] == BuffType<LaunchLeft>())
+                {
+                    int d = Dust.NewDust(Player.Center, 0, 0, DustID.GemRuby, 0f + Main.rand.Next(-6, -3), 0f + Main.rand.Next(-3, 3), 0, default, 1f);
+                    Main.dust[d].noGravity = true;
+
+                    if (Player.buffTime[i] == 180)
+                    {
+                        Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                        CombatText.NewText(textPos, new Color(255, 0, 125, 240), LangHelper.GetTextValue("CombatText.Thespian.LaunchLeft", 3), false, false);
+                    }
+                    else if (Player.buffTime[i] == 120)
+                    {
+                        Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                        CombatText.NewText(textPos, new Color(255, 0, 125, 240), LangHelper.GetTextValue("CombatText.Thespian.LaunchLeft", 2), false, false);
+                    }
+                    else if (Player.buffTime[i] == 60)
+                    {
+                        Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                        CombatText.NewText(textPos, new Color(255, 0, 125, 240), LangHelper.GetTextValue("CombatText.Thespian.LaunchLeft", 1), false, false);
+                    }
+                    else if (Player.buffTime[i] == 10)
+                    {
+                        Player.AddBuff(BuffType<DownForTheCount>(), 30);
+                        
+                    }
+                    else if (Player.buffTime[i] == 1)
+                    {
+                        Player.velocity.X = -15;
+                        Player.velocity.Y = -5;
+                    }
+
+                }
+            for (int i = 0; i < Player.CountBuffs(); i++)
+                if (Player.buffType[i] == BuffType<ThespianSadAttack>())
+                {    
+                    if (Player.buffTime[i] == 180)
+                    {
+                        SoundEngine.PlaySound(SoundID.Item21, Player.Center);
+
+                        Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2*0.1f), 0, Player.whoAmI);
+                        if(Main.netMode == NetmodeID.SinglePlayer)
+                        {
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X + 100, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI);
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X - 100, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI);
+
+                        }
+                    }
+                    else if (Player.buffTime[i] == 120)
+                    {
+                        SoundEngine.PlaySound(SoundID.Item21, Player.Center);
+
+                        Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI);
+                        if (Main.netMode == NetmodeID.SinglePlayer)
+                        {
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X + 100, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI);
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X - 100, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI);
+
+                        }
+                    }
+                    else if (Player.buffTime[i] == 60)
+                    {
+                        SoundEngine.PlaySound(SoundID.Item21, Player.Center);
+
+                        Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI);
+                        if (Main.netMode == NetmodeID.SinglePlayer)
+                        {
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X + 100, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI);
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X - 100, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI);
+
+                        }
+                    }
+                    else if (Player.buffTime[i] == 1)
+                    {
+                        SoundEngine.PlaySound(SoundID.Item21, Player.Center);
+
+                        Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI);
+                        if (Main.netMode == NetmodeID.SinglePlayer)
+                        {
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X + 100, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI);
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X - 100, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI);
+
+                        }
+                    }
+
+                }
+            for (int i = 0; i < Player.CountBuffs(); i++)
+                if (Player.buffType[i] == BuffType<ThespianHappyAttack>())
+                {
+                    //Clean later (or not)
+                    buffEffectTimer++;
+                    if(buffEffectTimer >= 10)
+                    {
+                        SoundEngine.PlaySound(SoundID.Item21, Player.Center);
+
+                        Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), new Vector2(0, 0), ProjectileType<ThespianExplosionIndicator>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI, 120);
+                        buffEffectTimer = 0;
+                    }
+                    if (Player.buffTime[i] == 180)
+                    {
+                        
+                    }
+                    
+
+                }
+            base.PreUpdateBuffs();
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
@@ -338,44 +661,50 @@ namespace StarsAbove
         }
         private void BossDamageModifier(NPC npc, ref NPC.HitModifiers modifiers)
         {
+            //(lower means weaker weapons do more avg. damage)
             if (!DisableDamageModifier)
             {
                 bossReductionMod = 0;
-                if (npc.type == ModContent.NPCType<DummyEnemy>())
+                if (npc.type == NPCType<DummyEnemy>())
                 {
                     bossReductionMod = 500;
                 }
-                if (npc.type == ModContent.NPCType<VagrantBoss>())
+                if (npc.type == NPCType<VagrantBoss>())
                 {
                     bossReductionMod = 700;
 
                 }
-                if (npc.type == ModContent.NPCType<CastorBoss>() || npc.type == ModContent.NPCType<PolluxBoss>())
+                if (npc.type == NPCType<ThespianBoss>())
+                {
+                    bossReductionMod = 800;
+
+                }
+                if (npc.type == NPCType<CastorBoss>() || npc.type == NPCType<PolluxBoss>())
                 {
                     bossReductionMod = 1000;
 
                 }
-                if (npc.type == ModContent.NPCType<Penthesilea>())
+                if (npc.type == NPCType<PenthesileaBoss>())
                 {
                     bossReductionMod = 1100;
 
                 }
-                if (npc.type == ModContent.NPCType<NalhaunBoss>() || npc.type == ModContent.NPCType<NalhaunBossPhase2>())
+                if (npc.type == NPCType<NalhaunBoss>() || npc.type == NPCType<NalhaunBossPhase2>())
                 {
                     bossReductionMod = 1400;
 
                 }
-                if (npc.type == ModContent.NPCType<WarriorOfLightBoss>() || npc.type == ModContent.NPCType<WarriorOfLightBossFinalPhase>())
+                if (npc.type == NPCType<WarriorOfLightBoss>() || npc.type == NPCType<WarriorOfLightBossFinalPhase>())
                 {
-                    bossReductionMod = 1800;
+                    bossReductionMod = 1000;
 
                 }
-                if (npc.type == ModContent.NPCType<Arbitration>())
+                if (npc.type == NPCType<ArbitrationBoss>())
                 {
                     bossReductionMod = 500;
 
                 }
-                if (npc.type == ModContent.NPCType<TsukiyomiBoss>())
+                if (npc.type == NPCType<TsukiyomiBoss>())
                 {
                     bossReductionMod = 2000;
 
@@ -383,13 +712,13 @@ namespace StarsAbove
                 if (bossReductionMod > 0)
                 {
 
-                    modifiers.FinalDamage *= (1 - damageReductionAmount);
-                    
+                    modifiers.FinalDamage *= 1 - damageReductionAmount;
 
-                   
+
+
                 }
 
-                
+
             }
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -397,8 +726,8 @@ namespace StarsAbove
             if (bossReductionMod > 0)
             {
                 decayRate = 0.8f;
-                //Main.NewText(Language.GetTextValue($"Damage Pre-Modifier: {damage}"), 60, 170, 247);
-                //Main.NewText(Language.GetTextValue($"Damage: {damage}"), 120, 100, 147);
+                //Main.NewText(Language.GetTextValue($"Damage Pre-Modifier: {hit.SourceDamage}"), 60, 170, 247);
+                //Main.NewText(Language.GetTextValue($"Damage: {damageDone}"), 120, 100, 147);
                 //Main.NewText(Language.GetTextValue($"Stress: {stress}"), 150, 150, 247);
                 //Main.NewText(Language.GetTextValue($"Damage Reduction: {damageReductionAmount}"), 220, 100, 247);
 
@@ -610,13 +939,212 @@ namespace StarsAbove
                 }
             }
         }
+        private void ThespianTeleport(NPC npc)
+        {
+            if (Player.whoAmI == Main.myPlayer)
+            {
+                int halfWidth = ThespianBoss.arenaWidth / 2;
+                int halfHeight = ThespianBoss.arenaHeight / 2;
+                Vector2 newPosition = Player.position;
+                if (Player.position.X <= npc.Center.X - halfWidth)//Left wall
+                {
+                    newPosition.X = npc.Center.X - halfWidth - Player.width - 1;
+                    Player.velocity = new Vector2(8, Player.velocity.Y);
+                    // if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("1"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.X -= 8f;
 
+                    }
+                    if(Player.HasBuff(BuffType<AthanoricCurse>()))
+                    {
+                        for (int d = 0; d < 10; d++)
+                        {
+                            Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Red, 0f + Main.rand.Next(-3, 3), 0f + Main.rand.Next(-3, 3), 0, default, 1.5f);
+                        }
+                        Player.Hurt(PlayerDeathReason.ByCustomReason(Player.name + LangHelper.GetTextValue("DeathReason.Thespian")), (int)(Player.statLifeMax2 * 0.3f), 0, false, false, -1, false, 0, 0, 0);
+                    }
+                }
+                else if (Player.position.X + Player.width >= npc.Center.X + halfWidth)//Right Wall
+                {
+                    newPosition.X = npc.Center.X + halfWidth + 1;
+                    Player.velocity = new Vector2(-8, Player.velocity.Y);
+                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("2"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.X += 8f;
+
+                    }
+                    if (Player.HasBuff(BuffType<AthanoricCurse>()))
+                    {
+                        for (int d = 0; d < 10; d++)
+                        {
+                            Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Red, 0f + Main.rand.Next(-3, 3), 0f + Main.rand.Next(-3, 3), 0, default, 1.5f);
+                        }
+                        Player.Hurt(PlayerDeathReason.ByCustomReason(Player.name + LangHelper.GetTextValue("DeathReason.Thespian")), (int)(Player.statLifeMax2 * 0.3f), 0, false, false, -1, false, 0, 0, 0);
+                    }
+                }
+                else if (Player.position.Y <= npc.Center.Y - halfHeight)//Top
+                {
+                    newPosition.Y = npc.Center.Y - halfHeight - Player.height - 1;
+                    Player.velocity = new Vector2(Player.velocity.X, 8);
+                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("3"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.Y -= 8f;
+
+                    }
+                    if (Player.HasBuff(BuffType<AthanoricCurse>()))
+                    {
+                        for (int d = 0; d < 10; d++)
+                        {
+                            Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Red, 0f + Main.rand.Next(-3, 3), 0f + Main.rand.Next(-3, 3), 0, default, 1.5f);
+                        }
+                        Player.Hurt(PlayerDeathReason.ByCustomReason(Player.name + LangHelper.GetTextValue("DeathReason.Thespian")), (int)(Player.statLifeMax2 * 0.3f), 0, false, false, -1, false, 0, 0, 0);
+                    }
+                }
+                else if (Player.position.Y + Player.height >= npc.Center.Y + halfHeight)//Bottom
+                {
+                    newPosition.Y = npc.Center.Y + halfHeight + 1;
+                    Player.velocity = new Vector2(Player.velocity.X, -8);
+                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("4"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+
+                        newPosition.Y += 8f;
+                    }
+                    if (Player.HasBuff(BuffType<AthanoricCurse>()))
+                    {
+                        for (int d = 0; d < 10; d++)
+                        {
+                            Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Red, 0f + Main.rand.Next(-3, 3), 0f + Main.rand.Next(-3, 3), 0, default, 1.5f);
+                        }
+                        Player.Hurt(PlayerDeathReason.ByCustomReason(Player.name + LangHelper.GetTextValue("DeathReason.Thespian")), (int)(Player.statLifeMax2 * 0.3f), 0, false, false, -1, false, 0, 0, 0);
+                    }
+                }
+            }
+        }
+        private void PenthesileaTeleport(NPC npc)
+        {
+            if (Player.whoAmI == Main.myPlayer)
+            {
+                int halfWidth = PenthesileaBoss.arenaWidth / 2;
+                int halfHeight = PenthesileaBoss.arenaHeight / 2;
+                Vector2 newPosition = Player.position;
+                if (Player.position.X <= npc.Center.X - halfWidth)//Left wall
+                {
+                    newPosition.X = npc.Center.X - halfWidth - Player.width - 1;
+                    Player.velocity = new Vector2(8, Player.velocity.Y);
+                    // if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("1"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.X -= 8f;
+
+                    }
+                    
+                }
+                else if (Player.position.X + Player.width >= npc.Center.X + halfWidth)//Right Wall
+                {
+                    newPosition.X = npc.Center.X + halfWidth + 1;
+                    Player.velocity = new Vector2(-8, Player.velocity.Y);
+                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("2"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.X += 8f;
+
+                    }
+                   
+                }
+                else if (Player.position.Y <= npc.Center.Y - halfHeight)//Top
+                {
+                    newPosition.Y = npc.Center.Y - halfHeight - Player.height - 1;
+                    Player.velocity = new Vector2(Player.velocity.X, 8);
+                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("3"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.Y -= 8f;
+
+                    }
+                    
+                }
+                else if (Player.position.Y + Player.height >= npc.Center.Y + halfHeight)//Bottom
+                {
+                    newPosition.Y = npc.Center.Y + halfHeight + 1;
+                    Player.velocity = new Vector2(Player.velocity.X, -8);
+                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("4"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+
+                        newPosition.Y += 8f;
+                    }
+                    
+                }
+            }
+        }
+
+        private void StarfarerBossTeleport(NPC npc)
+        {
+            if (Player.whoAmI == Main.myPlayer)
+            {
+                int halfWidth = StarfarerBossWallsNPC.arenaWidth / 2;
+                int halfHeight = StarfarerBossWallsNPC.arenaHeight / 2;
+                Vector2 newPosition = Player.position;
+                if (Player.position.X <= npc.Center.X - halfWidth)//Left wall
+                {
+                    newPosition.X = npc.Center.X - halfWidth - Player.width - 1;
+                    Player.velocity = new Vector2(8, Player.velocity.Y);
+                    // if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("1"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.X -= 8f;
+
+                    }
+
+                }
+                else if (Player.position.X + Player.width >= npc.Center.X + halfWidth)//Right Wall
+                {
+                    newPosition.X = npc.Center.X + halfWidth + 1;
+                    Player.velocity = new Vector2(-8, Player.velocity.Y);
+                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("2"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.X += 8f;
+
+                    }
+
+                }
+                else if (Player.position.Y <= npc.Center.Y - halfHeight)//Top
+                {
+                    newPosition.Y = npc.Center.Y - halfHeight - Player.height - 1;
+                    Player.velocity = new Vector2(Player.velocity.X, 8);
+                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("3"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+                        newPosition.Y -= 8f;
+
+                    }
+
+                }
+                else if (Player.position.Y + Player.height >= npc.Center.Y + halfHeight)//Bottom
+                {
+                    newPosition.Y = npc.Center.Y + halfHeight + 1;
+                    Player.velocity = new Vector2(Player.velocity.X, -8);
+                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("4"), 190, 100, 247);}
+                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
+                    {
+
+                        newPosition.Y += 8f;
+                    }
+
+                }
+            }
+        }
         private void NalhaunWalls(NPC npc)
         {
             if (Player.whoAmI == Main.myPlayer)
             {
-                int halfWidth = NPCs.Nalhaun.NalhaunBoss.arenaWidth / 2;
-                int halfHeight = NPCs.Nalhaun.NalhaunBoss.arenaHeight / 2;
+                int halfWidth = NalhaunBoss.arenaWidth / 2;
+                int halfHeight = NalhaunBoss.arenaHeight / 2;
                 Vector2 newPosition = Player.position;
                 if (Player.position.X <= npc.Center.X - halfWidth)//Left wall
                 {

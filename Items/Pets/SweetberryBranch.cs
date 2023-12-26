@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Items.Prisms;
+using StarsAbove.Systems;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -26,7 +27,7 @@ namespace StarsAbove.Items.Pets
 			Item.UseSound = SoundID.Item2;
 			Item.useAnimation = 20;
 			Item.useTime = 20;
-			Item.rare = ItemRarityID.Yellow;
+			Item.rare = ModContent.GetInstance<StellarSpoilsRarity>().Type; // Custom Rarity
 			Item.noMelee = true;
 			Item.value = Item.sellPrice(0, 0, 10, 0);
 			Item.buffType = BuffType<Buffs.Pets.MumeiPetBuff>();
@@ -35,7 +36,8 @@ namespace StarsAbove.Items.Pets
 		public override void AddRecipes()
 		{
 			CreateRecipe(1)
-				.AddIngredient(ItemType<PrismaticCore>(), 3)
+				.AddIngredient(ItemType<Materials.StellarRemnant>(), 10)
+				.AddCustomShimmerResult(ItemType<Materials.StellarRemnant>(), 3)
 				.AddTile(TileID.Anvils)
 				.Register();
 		}

@@ -1,4 +1,4 @@
-﻿namespace StarsAbove
+﻿namespace StarsAbove.Systems
 {
     //Basic outline of visual novel code: (flowchart)
     /*

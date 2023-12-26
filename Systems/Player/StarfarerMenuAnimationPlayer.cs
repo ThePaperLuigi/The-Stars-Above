@@ -13,15 +13,22 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.ModLoader.IO;
 using StarsAbove.Items;
+using StarsAbove.Items.Weapons;
+using StarsAbove.Items.Weapons.Summon;
+using StarsAbove.Items.Weapons.Ranged;
+using StarsAbove.Items.Weapons.Other;
+using StarsAbove.Items.Weapons.Celestial;
+using StarsAbove.Items.Weapons.Melee;
+using StarsAbove.Items.Weapons.Magic;
 using StarsAbove.Projectiles;
 using StarsAbove.Buffs;
 using StarsAbove.NPCs;
 using Microsoft.Xna.Framework.Audio;
 
 
-namespace StarsAbove
+namespace StarsAbove.Systems
 {
-    public class StarfarerMenuAnimation: ModPlayer
+    public class StarfarerMenuAnimation : ModPlayer
     {
         // Animated Starfarer Menu variables.
         public float quadraticFloatTimer;
@@ -53,19 +60,19 @@ namespace StarsAbove
         public float idleAnimationAlphaFast = 0f;//Increments to 0 when idle is active, decreases to 0 as idle finishes.
 
         public float idleAnimationReading = 0f; //For Eridani's idle animation; her eyes will dart back and forth as if she's reading the sentences.
-        //This means that when the idle animation is active it quickly goes from 0 to 1f and then resets
+                                                //This means that when the idle animation is active it quickly goes from 0 to 1f and then resets
 
-        
+
 
         public override void PreUpdate()
         {
             QuadraticFloatAnimation();
             StarfarerMenuIdleAnimation();
-            if(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuUIOpacity > 0 && !idleAnimationActive && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerOutfitVisible == 0)
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuUIOpacity > 0 && !idleAnimationActive && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerOutfitVisible == 0)
             {
                 idleAnimationTimer += 1;
             }
-            
+
             if (idleAnimationTimer > 1800)//Change this to something like.. 18 seconds maybe? (1080)
             {
                 if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuUIOpacity > 0)
@@ -78,7 +85,7 @@ namespace StarsAbove
                     idleAnimationTimer = 0;
                 }
             }
-            if(idleAnimationActive)
+            if (idleAnimationActive)
             {
                 idleAnimationProgress += 0.0025f;
 
@@ -124,20 +131,20 @@ namespace StarsAbove
             {
                 idleAnimationActive = false;
                 idleAnimationProgress = 1f;
-                
+
             }
-            
+
 
         }
-        
-       
-        
-        
+
+
+
+
         public override void ResetEffects()
         {
-            
+
         }
-        
+
         bool quadraticFloatReverse = false;
 
         private void QuadraticFloatAnimation()
@@ -178,7 +185,7 @@ namespace StarsAbove
 
             StarfarerMenuIdleAnimationRotation = MathHelper.Lerp(0, 11, quadraticFloatIdle);
 
-            if(idleAnimationActive)//Progresses until full, then decreases depending on the idle animation's timer.
+            if (idleAnimationActive)//Progresses until full, then decreases depending on the idle animation's timer.
             {
                 if (idleAnimationProgress > 0.6f)
                 {
@@ -210,10 +217,10 @@ namespace StarsAbove
                     idleAnimationProgressAlt = 0f;
                 }
             }
-            
+
             //Float from 0 to 1 from left to right side of the screen
-            MousePositionFloatX = ((Math.Min(Main.screenWidth, Main.MouseScreen.X) - 0) * 100) / (Main.screenWidth - 0) / 100;
-            MousePositionFloatY = ((Math.Min(Main.screenHeight, Main.MouseScreen.Y) - 0) * 100) / (Main.screenHeight - 0) / 100;
+            MousePositionFloatX = (Math.Min(Main.screenWidth, Main.MouseScreen.X) - 0) * 100 / (Main.screenWidth - 0) / 100;
+            MousePositionFloatY = (Math.Min(Main.screenHeight, Main.MouseScreen.Y) - 0) * 100 / (Main.screenHeight - 0) / 100;
 
             if (MousePositionFloatX < 0)
             {
@@ -224,7 +231,7 @@ namespace StarsAbove
                 MousePositionFloatY = 0;
             }
 
-           
+
 
             if (!idleAnimationActive)
             {
@@ -239,7 +246,7 @@ namespace StarsAbove
             }
             else
             {
-                if(modPlayer.chosenStarfarer == 1)//Asphodene's idle animation; she looks down on her summoned sword.
+                if (modPlayer.chosenStarfarer == 1)//Asphodene's idle animation; she looks down on her summoned sword.
                 {
                     AsphodeneEyeMovementRX = MathHelper.Lerp(1, 3, idleAnimationProgressAlt);
                     AsphodeneEyeMovementLX = MathHelper.Lerp(0, 2, idleAnimationProgressAlt);
@@ -253,10 +260,10 @@ namespace StarsAbove
                     EridaniEyeMovementY = 0;
                 }
             }
-            
+
 
         }
-        
+
 
     }
 

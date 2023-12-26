@@ -5,7 +5,7 @@ using StarsAbove.Buffs.SubworldModifiers;
 using SubworldLibrary;
 using StarsAbove.Biomes;
 
-namespace StarsAbove.SceneEffects
+namespace StarsAbove.SceneEffects.SubworldSceneEffects
 {
     public class LyraSceneEffect : ModSceneEffect
     {
@@ -13,9 +13,9 @@ namespace StarsAbove.SceneEffects
 
         public override bool IsSceneEffectActive(Player player)
         {
-            
+
             return false;
-           
+
         }
         public override void SpecialVisuals(Player player, bool isActive)
         {
@@ -33,14 +33,14 @@ namespace StarsAbove.SceneEffects
 
                 player.ZoneSnow = false;
                 player.ZoneHallow = false;
-                
-                
+
+
             }
             else
             {
                 //SkyManager.Instance.Deactivate("StarsAbove:CorvusSky");
             }
-            
+
         }
 
         public override SceneEffectPriority Priority => setPriority;

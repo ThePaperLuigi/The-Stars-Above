@@ -13,6 +13,13 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.ModLoader.IO;
 using StarsAbove.Items;
+using StarsAbove.Items.Weapons;
+using StarsAbove.Items.Weapons.Summon;
+using StarsAbove.Items.Weapons.Ranged;
+using StarsAbove.Items.Weapons.Other;
+using StarsAbove.Items.Weapons.Celestial;
+using StarsAbove.Items.Weapons.Melee;
+using StarsAbove.Items.Weapons.Magic;
 using StarsAbove.Projectiles;
 using StarsAbove.Buffs;
 using StarsAbove.NPCs;
@@ -22,7 +29,7 @@ using SubworldLibrary;
 using StarsAbove.Utilities;
 using StarsAbove.Tiles.StellarFoci;
 
-namespace StarsAbove
+namespace StarsAbove.Systems
 {
     public class CountStellarFoci : ModSystem
     {
@@ -52,29 +59,29 @@ namespace StarsAbove
 
         public override void TileCountsAvailable(ReadOnlySpan<int> tileCounts)
         {
-            ResistanceT1 = tileCounts[ModContent.TileType<ResistanceFocusTier1Tile>()] / 12;
-            ResistanceT2 = tileCounts[ModContent.TileType<ResistanceFocusTier2Tile>()] / 12;
-            ResistanceT3 = tileCounts[ModContent.TileType<ResistanceFocusTier3Tile>()] / 12;
+            ResistanceT1 = tileCounts[TileType<ResistanceFocusTier1Tile>()] / 12;
+            ResistanceT2 = tileCounts[TileType<ResistanceFocusTier2Tile>()] / 12;
+            ResistanceT3 = tileCounts[TileType<ResistanceFocusTier3Tile>()] / 12;
 
-            AgilityT1 = tileCounts[ModContent.TileType<AgilityFocusTier1Tile>()] / 12;
-            AgilityT2 = tileCounts[ModContent.TileType<AgilityFocusTier2Tile>()] / 12;
-            AgilityT3 = tileCounts[ModContent.TileType<AgilityFocusTier3Tile>()] / 12;
+            AgilityT1 = tileCounts[TileType<AgilityFocusTier1Tile>()] / 12;
+            AgilityT2 = tileCounts[TileType<AgilityFocusTier2Tile>()] / 12;
+            AgilityT3 = tileCounts[TileType<AgilityFocusTier3Tile>()] / 12;
 
-            LuckT1 = tileCounts[ModContent.TileType<LuckFocusTier1Tile>()] / 12;
-            LuckT2 = tileCounts[ModContent.TileType<LuckFocusTier2Tile>()] / 12;
-            LuckT3 = tileCounts[ModContent.TileType<LuckFocusTier3Tile>()] / 12;
+            LuckT1 = tileCounts[TileType<LuckFocusTier1Tile>()] / 12;
+            LuckT2 = tileCounts[TileType<LuckFocusTier2Tile>()] / 12;
+            LuckT3 = tileCounts[TileType<LuckFocusTier3Tile>()] / 12;
 
-            WealthT1 = tileCounts[ModContent.TileType<WealthFocusTier1Tile>()] / 12;
-            WealthT2 = tileCounts[ModContent.TileType<WealthFocusTier2Tile>()] / 12;
-            WealthT3 = tileCounts[ModContent.TileType<WealthFocusTier3Tile>()] / 12;
+            WealthT1 = tileCounts[TileType<WealthFocusTier1Tile>()] / 12;
+            WealthT2 = tileCounts[TileType<WealthFocusTier2Tile>()] / 12;
+            WealthT3 = tileCounts[TileType<WealthFocusTier3Tile>()] / 12;
 
-            PowerT1 = tileCounts[ModContent.TileType<PowerFocusTier1Tile>()] / 12;
-            PowerT2 = tileCounts[ModContent.TileType<PowerFocusTier2Tile>()] / 12;
-            PowerT3 = tileCounts[ModContent.TileType<PowerFocusTier3Tile>()] / 12;
+            PowerT1 = tileCounts[TileType<PowerFocusTier1Tile>()] / 12;
+            PowerT2 = tileCounts[TileType<PowerFocusTier2Tile>()] / 12;
+            PowerT3 = tileCounts[TileType<PowerFocusTier3Tile>()] / 12;
 
-            ConstitutionT1 = tileCounts[ModContent.TileType<ConstitutionFocusTier1Tile>()] / 12;
-            ConstitutionT2 = tileCounts[ModContent.TileType<ConstitutionFocusTier2Tile>()] / 12;
-            ConstitutionT3 = tileCounts[ModContent.TileType<ConstitutionFocusTier3Tile>()] / 12;
+            ConstitutionT1 = tileCounts[TileType<ConstitutionFocusTier1Tile>()] / 12;
+            ConstitutionT2 = tileCounts[TileType<ConstitutionFocusTier2Tile>()] / 12;
+            ConstitutionT3 = tileCounts[TileType<ConstitutionFocusTier3Tile>()] / 12;
 
         }
     }
@@ -172,7 +179,7 @@ namespace StarsAbove
             //Recalculate all the Stellar Foci passives.
             CalculateStellarFoci();
 
-            
+
 
             LocationDescriptionAnimation();
             QuadraticFloatAnimation();
@@ -228,52 +235,52 @@ namespace StarsAbove
             }
 
             //Increase defense by 3 for each Tier 1 Resistance Focus
-            defenseFocus += ModContent.GetInstance<CountStellarFoci>().ResistanceT1 * 3;
+            defenseFocus += GetInstance<CountStellarFoci>().ResistanceT1 * 3;
             //Increase by 5
-            defenseFocus += ModContent.GetInstance<CountStellarFoci>().ResistanceT2 * 5;
+            defenseFocus += GetInstance<CountStellarFoci>().ResistanceT2 * 5;
             //Increase by 7
-            defenseFocus += ModContent.GetInstance<CountStellarFoci>().ResistanceT3 * 7;
+            defenseFocus += GetInstance<CountStellarFoci>().ResistanceT3 * 7;
 
-            attackFocus += ModContent.GetInstance<CountStellarFoci>().PowerT1 * 0.02f;
-            attackFocus += ModContent.GetInstance<CountStellarFoci>().PowerT2 * 0.03f;
-            attackFocus += ModContent.GetInstance<CountStellarFoci>().PowerT3 * 0.04f;
+            attackFocus += GetInstance<CountStellarFoci>().PowerT1 * 0.02f;
+            attackFocus += GetInstance<CountStellarFoci>().PowerT2 * 0.03f;
+            attackFocus += GetInstance<CountStellarFoci>().PowerT3 * 0.04f;
 
-            luckFocus += ModContent.GetInstance<CountStellarFoci>().LuckT1 * 0.04f;
-            luckFocus += ModContent.GetInstance<CountStellarFoci>().LuckT2 * 0.08f;
-            luckFocus += ModContent.GetInstance<CountStellarFoci>().LuckT3 * 0.12f;
+            luckFocus += GetInstance<CountStellarFoci>().LuckT1 * 0.04f;
+            luckFocus += GetInstance<CountStellarFoci>().LuckT2 * 0.08f;
+            luckFocus += GetInstance<CountStellarFoci>().LuckT3 * 0.12f;
 
-            speedFocus += ModContent.GetInstance<CountStellarFoci>().AgilityT1 * 0.03f;
-            speedFocus += ModContent.GetInstance<CountStellarFoci>().AgilityT2 * 0.05f;
-            speedFocus += ModContent.GetInstance<CountStellarFoci>().AgilityT3 * 0.07f;
+            speedFocus += GetInstance<CountStellarFoci>().AgilityT1 * 0.03f;
+            speedFocus += GetInstance<CountStellarFoci>().AgilityT2 * 0.05f;
+            speedFocus += GetInstance<CountStellarFoci>().AgilityT3 * 0.07f;
 
-            moneyFocus += ModContent.GetInstance<CountStellarFoci>().LuckT1 * 7;
-            moneyFocus += ModContent.GetInstance<CountStellarFoci>().LuckT2 * 15;
-            moneyFocus += ModContent.GetInstance<CountStellarFoci>().LuckT3 * 30;
+            moneyFocus += GetInstance<CountStellarFoci>().LuckT1 * 7;
+            moneyFocus += GetInstance<CountStellarFoci>().LuckT2 * 15;
+            moneyFocus += GetInstance<CountStellarFoci>().LuckT3 * 30;
 
-            maxStatFocus += ModContent.GetInstance<CountStellarFoci>().ConstitutionT1 * 10;
-            maxStatFocus += ModContent.GetInstance<CountStellarFoci>().ConstitutionT2 * 16;
-            maxStatFocus += ModContent.GetInstance<CountStellarFoci>().ConstitutionT3 * 24;
+            maxStatFocus += GetInstance<CountStellarFoci>().ConstitutionT1 * 10;
+            maxStatFocus += GetInstance<CountStellarFoci>().ConstitutionT2 * 16;
+            maxStatFocus += GetInstance<CountStellarFoci>().ConstitutionT3 * 24;
 
 
             stellarFociAmount +=
-                ModContent.GetInstance<CountStellarFoci>().ResistanceT1 +
-                ModContent.GetInstance<CountStellarFoci>().ResistanceT2 +
-                ModContent.GetInstance<CountStellarFoci>().ResistanceT3 +
-                ModContent.GetInstance<CountStellarFoci>().PowerT1 +
-                ModContent.GetInstance<CountStellarFoci>().PowerT2 +
-                ModContent.GetInstance<CountStellarFoci>().PowerT3 +
-                ModContent.GetInstance<CountStellarFoci>().LuckT1 +
-                ModContent.GetInstance<CountStellarFoci>().LuckT2 +
-                ModContent.GetInstance<CountStellarFoci>().LuckT3 +
-                ModContent.GetInstance<CountStellarFoci>().ConstitutionT1 +
-                ModContent.GetInstance<CountStellarFoci>().ConstitutionT2 +
-                ModContent.GetInstance<CountStellarFoci>().ConstitutionT3 +
-                ModContent.GetInstance<CountStellarFoci>().WealthT1 +
-                ModContent.GetInstance<CountStellarFoci>().WealthT2 +
-                ModContent.GetInstance<CountStellarFoci>().WealthT3 +
-                ModContent.GetInstance<CountStellarFoci>().AgilityT1 +
-                ModContent.GetInstance<CountStellarFoci>().AgilityT2 +
-                ModContent.GetInstance<CountStellarFoci>().AgilityT3;
+                GetInstance<CountStellarFoci>().ResistanceT1 +
+                GetInstance<CountStellarFoci>().ResistanceT2 +
+                GetInstance<CountStellarFoci>().ResistanceT3 +
+                GetInstance<CountStellarFoci>().PowerT1 +
+                GetInstance<CountStellarFoci>().PowerT2 +
+                GetInstance<CountStellarFoci>().PowerT3 +
+                GetInstance<CountStellarFoci>().LuckT1 +
+                GetInstance<CountStellarFoci>().LuckT2 +
+                GetInstance<CountStellarFoci>().LuckT3 +
+                GetInstance<CountStellarFoci>().ConstitutionT1 +
+                GetInstance<CountStellarFoci>().ConstitutionT2 +
+                GetInstance<CountStellarFoci>().ConstitutionT3 +
+                GetInstance<CountStellarFoci>().WealthT1 +
+                GetInstance<CountStellarFoci>().WealthT2 +
+                GetInstance<CountStellarFoci>().WealthT3 +
+                GetInstance<CountStellarFoci>().AgilityT1 +
+                GetInstance<CountStellarFoci>().AgilityT2 +
+                GetInstance<CountStellarFoci>().AgilityT3;
         }
 
         private void ManageFociBuffs()
@@ -323,32 +330,27 @@ namespace StarsAbove
 
         private bool CheckVoyageEligibility()
         {
-            if (NPC.downedAncientCultist && !NPC.downedMoonlord)
-            {
-                return false;
-            }
-            
             if (nearGateway)
             {
                 //add buff to signify this
                 Player.AddBuff(BuffType<PortalReady>(), 10);
-                
+
                 return true;
             }
             if (nearStellaglyph)
             {
                 Player.AddBuff(BuffType<StellaglyphReady>(), 10);
-                
+
                 return true;
             }
-            
+
             return false;
         }
-        
-        
+
+
         private void StarmapStarAnimation()
         {
-            if(CelestialCartographyActive)
+            if (CelestialCartographyActive)
             {
                 StarmapStarsAlpha = quadraticFloat;
             }
@@ -365,7 +367,7 @@ namespace StarsAbove
                 locationPopUpAlpha = 0;
                 locationPopUp = true;
             }
-            if(locationPopUpTimer > 1 && locationPopUp)
+            if (locationPopUpTimer > 1 && locationPopUp)
             {
                 locationPopUp = false;
                 locationName = "";
@@ -374,7 +376,7 @@ namespace StarsAbove
             //locationPopUpProgress = InOutQuad(locationPopUpTimer);
             //locationPopUpPlacement = MathHelper.Lerp(0, 1, locationPopUpProgress);
 
-            if(locationPopUpTimer < 0.3f)
+            if (locationPopUpTimer < 0.3f)
             {
                 locationPopUpAlpha += 0.1f;
             }
@@ -388,7 +390,7 @@ namespace StarsAbove
         }
         private void LocationDescriptionAnimation()
         {
-           
+
             if (locationMapName != "")
             {
                 locationDescriptionAlpha += 0.1f;
@@ -451,12 +453,13 @@ namespace StarsAbove
             }
 
 
-            
+
         }
         private void CelestialCartography()//Intro and idle animation for the Celestial Cartography UI.
         {
             if (CelestialCartographyActive)
             {
+                Player.GetModPlayer<StarsAbovePlayer>().gaussianBlurProgress += 0.2f;
                 CelestialCompassFrameTimer++;
 
                 if (CelestialCompassFrameTimer > 5)

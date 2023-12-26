@@ -10,6 +10,19 @@ using StarsAbove.Items.Prisms;
 using Terraria.GameContent.ItemDropRules;
 using StarsAbove.Items.Placeable.StellarFoci;
 using StarsAbove.Systems;
+using static Terraria.ModLoader.ModContent;
+using StarsAbove.Items.Pets;
+using StarsAbove.Items.Materials;
+using StarsAbove.Items.Placeable;
+using StarsAbove.Items.Accessories;
+using StarsAbove.Items.Tools;
+using StarsAbove.Items.Vanity;
+using StarsAbove.Items.Vanity.Starpop;
+using StarsAbove.Items.Vanity.QuantumButterfly;
+using StarsAbove.Items.Vanity.BaselessBlade;
+using StarsAbove.Items.Vanity.OceanHuedHunter;
+using StarsAbove.Items.Armor.StarfarerArmor;
+using StarsAbove.Items.Memories;
 
 namespace StarsAbove.Items.Loot
 {
@@ -19,11 +32,7 @@ namespace StarsAbove.Items.Loot
 		
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Stellar Foci Grab Bag (Tier 1)");
-			/* Tooltip.SetDefault("10% chance to upgrade upon opening" +
-                "\n{$CommonItemTooltip.RightClickToOpen}"); */ // References a language key that says "Right Click To Open" in the language of the game
-
-			//ItemID.Sets.BossBag[Type] = true;
+			
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
 		}
@@ -43,25 +52,222 @@ namespace StarsAbove.Items.Loot
 			return true;
 		}
 		public override void ModifyItemLoot(ItemLoot itemLoot)
-		{
-			// We have to replicate the expert drops from MinionBossBody here via QuickSpawnItem
+        {
+            //Bags only! 5% chance for a music box.
+            itemLoot.Add(ItemDropRule.OneFromOptions(20,
+                ItemType<ChartTheCosmosMusicBox>(),
+                ItemType<ElpisMusicBox>(),
+                ItemType<LegendsYetUnspunMusicBox>(),
+                ItemType<FleetingMomentMusicBox>(),
+                ItemType<MageOfVioletMusicBox>(),
+                ItemType<MightOfTheHellbladeMusicBox>(),
+                ItemType<SecondWarningMusicBox>(),
+                ItemType<ShadowsCastByTheMightyMusicBox>(),
+                ItemType<SunsetStardustMusicBox>(),
+                ItemType<EvenStarsMustFallMusicBox>(),
+                ItemType<ToTheEdgeMusicBox>(),
+                ItemType<UnmatchingPiecesMusicBox>(),
+                ItemType<VoyageMusicBox>()
+                ));
 
-			//itemLoot.Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<LightswornPrism>(), 7));
-			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<StellarFociGrabBagTier2>(), 10, 1, 1)).
-				OnFailedRoll(ItemDropRule.OneFromOptionsNotScalingWithLuck(1,
-				ModContent.ItemType<AgilityFocusTier1>(),
-				ModContent.ItemType<ConstitutionFocusTier1>(),
-				ModContent.ItemType<LuckFocusTier1>(),
-				ModContent.ItemType<PowerFocusTier1>(),
-				ModContent.ItemType<ResistanceFocusTier1>(),
-				ModContent.ItemType<WealthFocusTier1>()));
+            SetupStellarSpoils(itemLoot);
+        }
 
-		}
-		
+        public static void SetupStellarSpoils(ItemLoot itemLoot)
+        {
+            //1/100 chance to get 10 Remnants. If not, guarantee 1, and 30% chance for 1 more.
+            itemLoot.Add(ItemDropRule.Common(ItemType<StellarRemnant>(), 100, 10, 10))
+                .OnFailedRoll(itemLoot.Add(ItemDropRule.Common(ItemType<StellarRemnant>()))
+                .OnSuccess(itemLoot.Add(ItemDropRule.Common(ItemType<StellarRemnant>(), 3))));
 
-		// Below is code for the visuals
+            //25% chance to give a random pet.
+            itemLoot.Add(ItemDropRule.OneFromOptions(4,
+                ItemType<AegisCrystal>(),
+                ItemType<Astrobread>(),
+                ItemType<BladeWolfPetItem>(),
+                ItemType<BugHat>(),
+                ItemType<CrystalTowerFigure>(),
+                ItemType<DemonicRibbon>(),
+                ItemType<DigiEgg>(),
+                ItemType<Digivice>(),
+                ItemType<DragonEgg>(),
+                ItemType<DustyCartridge>(),
+                ItemType<FerryLikeness>(),
+                ItemType<FuneralPass>(),
+                ItemType<GhostPet>(),
+                ItemType<HolographicToken>(),
+                ItemType<MonochromeKnife>(),
+                ItemType<MysticalCore>(),
+                ItemType<MysticPokeball>(),
+                ItemType<NecoArcItem>(),
+                ItemType<PetalsOfKur>(),
+                ItemType<ProgenitorShard>(),
+                ItemType<RockstarGuitar>(),
+                ItemType<SlightlyParanormalCap>(),
+                ItemType<StarstruckAxe>(),
+                ItemType<SweetberryBranch>(),
+                ItemType<TNTCarrot>(),
+                ItemType<ToyDemonfireDagger>(),
+                ItemType<TunaMicrophone>()
+                ));
 
-		public override Color? GetAlpha(Color lightColor)
+            //10% chance for a Stellar Spoil unique accessory/utility.
+            itemLoot.Add(ItemDropRule.OneFromOptions(10,
+                ItemType<GaleflameFeather>(),
+                ItemType<Glitterglue>(),
+                ItemType<LamentingPocketwatch>(),
+                ItemType<Luciferium>(),
+                ItemType<PerfectlyGenericAccessory>(),
+                ItemType<ToMurder>(),
+                ItemType<EmberFlask>(),
+                ItemType<ShepherdSunstone>(),
+                ItemType<Poltergrasp5000>()
+                ));
+
+            IItemDropRule StarArmorRule = ItemDropRule.Common(ItemType<StarArmorHead>(), 1);
+            StarArmorRule.OnSuccess(ItemDropRule.Common(ItemType<StarArmorTop>(), 1));
+            StarArmorRule.OnSuccess(ItemDropRule.Common(ItemType<StarArmorLegs>(), 1));
+
+            IItemDropRule StarpopRule = ItemDropRule.Common(ItemType<StarpopHead>(), 1);
+            StarpopRule.OnSuccess(ItemDropRule.Common(ItemType<StarpopBody>(), 1));
+            StarpopRule.OnSuccess(ItemDropRule.Common(ItemType<StarpopLegs>(), 1));
+
+            IItemDropRule QuantumButterflyRule = ItemDropRule.Common(ItemType<QuantumButterflyBody>(), 1);
+            QuantumButterflyRule.OnSuccess(ItemDropRule.Common(ItemType<QuantumButterflyLegs>(), 1));
+
+            IItemDropRule BaselessBladeRule = ItemDropRule.Common(ItemType<BaselessBladeBody>(), 1);
+            BaselessBladeRule.OnSuccess(ItemDropRule.Common(ItemType<BaselessBladeLegs>(), 1));
+
+            IItemDropRule OceanHuedHunterRule = ItemDropRule.Common(ItemType<OceanHuedHunterHead>(), 1);
+            OceanHuedHunterRule.OnSuccess(ItemDropRule.Common(ItemType<OceanHuedHunterBody>(), 1));
+            OceanHuedHunterRule.OnSuccess(ItemDropRule.Common(ItemType<OceanHuedHunterLegs>(), 1));
+
+            //10% chance for a vanity set
+            itemLoot.Add(new OneFromRulesRule(10,
+                StarArmorRule,
+                StarpopRule,
+                QuantumButterflyRule,
+                OceanHuedHunterRule,
+                BaselessBladeRule
+                ));
+
+            //1% chance for a Starfarer Vanity
+            itemLoot.Add(ItemDropRule.OneFromOptions(100,
+                ItemType<FamiliarLookingAttire>(),
+                ItemType<StellarCasualAttire>(),
+                ItemType<GarmentsOfWinterRainAttire>(),
+                ItemType<SeventhSigilAutumnAttire>()
+                ));
+
+            //1% chance for another bag (Expert mode exclusive!)
+            itemLoot.Add(ItemDropRule.Common(ItemType<StellarSpoils>(), 100, 1, 1));
+        }
+        public static void SetupBossStellarSpoils(NPCLoot itemLoot)
+        {
+            //All of this uses the Not Expert rule because boss bags use the above method.
+            LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
+
+            //1/100 chance to get 10 Remnants. If not, guarantee 1, and 30% chance for 1 more.
+            notExpertRule.OnSuccess(
+            itemLoot.Add(ItemDropRule.Common(ItemType<StellarRemnant>(), 100, 10, 10))
+                .OnFailedRoll(itemLoot.Add(ItemDropRule.Common(ItemType<StellarRemnant>()))
+                .OnSuccess(itemLoot.Add(ItemDropRule.Common(ItemType<StellarRemnant>(), 3))))
+                );
+
+            //25% chance to give a random pet.
+            notExpertRule.OnSuccess(
+            itemLoot.Add(ItemDropRule.OneFromOptions(4,
+                ItemType<AegisCrystal>(),
+                ItemType<Astrobread>(),
+                ItemType<BladeWolfPetItem>(),
+                ItemType<BugHat>(),
+                ItemType<CrystalTowerFigure>(),
+                ItemType<DemonicRibbon>(),
+                ItemType<DigiEgg>(),
+                ItemType<Digivice>(),
+                ItemType<DragonEgg>(),
+                ItemType<DustyCartridge>(),
+                ItemType<FerryLikeness>(),
+                ItemType<FuneralPass>(),
+                ItemType<GhostPet>(),
+                ItemType<HolographicToken>(),
+                ItemType<MonochromeKnife>(),
+                ItemType<MysticalCore>(),
+                ItemType<MysticPokeball>(),
+                ItemType<NecoArcItem>(),
+                ItemType<PetalsOfKur>(),
+                ItemType<ProgenitorShard>(),
+                ItemType<RockstarGuitar>(),
+                ItemType<SlightlyParanormalCap>(),
+                ItemType<StarstruckAxe>(),
+                ItemType<SweetberryBranch>(),
+                ItemType<TNTCarrot>(),
+                ItemType<ToyDemonfireDagger>(),
+                ItemType<TunaMicrophone>()
+                ))
+            );
+
+
+            //10% chance for a Stellar Spoil unique accessory/utility.
+            notExpertRule.OnSuccess(
+            itemLoot.Add(ItemDropRule.OneFromOptions(10,
+                ItemType<GaleflameFeather>(),
+                ItemType<Glitterglue>(),
+                ItemType<LamentingPocketwatch>(),
+                ItemType<Luciferium>(),
+                ItemType<PerfectlyGenericAccessory>(),
+                ItemType<ToMurder>(),
+                ItemType<EmberFlask>(),
+                ItemType<RuinedCrown>(),
+                ItemType<Trumpet>(),
+                ItemType<ShepherdSunstone>(),
+                ItemType<Poltergrasp5000>()
+                ))
+            );
+
+            IItemDropRule StarArmorRule = ItemDropRule.Common(ItemType<StarArmorHead>(), 1);
+            StarArmorRule.OnSuccess(ItemDropRule.Common(ItemType<StarArmorTop>(), 1));
+            StarArmorRule.OnSuccess(ItemDropRule.Common(ItemType<StarArmorLegs>(), 1));
+
+            IItemDropRule StarpopRule = ItemDropRule.Common(ItemType<StarpopHead>(), 1);
+            StarpopRule.OnSuccess(ItemDropRule.Common(ItemType<StarpopBody>(), 1));
+            StarpopRule.OnSuccess(ItemDropRule.Common(ItemType<StarpopLegs>(), 1));
+
+            IItemDropRule QuantumButterflyRule = ItemDropRule.Common(ItemType<QuantumButterflyBody>(), 1);
+            QuantumButterflyRule.OnSuccess(ItemDropRule.Common(ItemType<QuantumButterflyLegs>(), 1));
+
+            IItemDropRule BaselessBladeRule = ItemDropRule.Common(ItemType<BaselessBladeBody>(), 1);
+            BaselessBladeRule.OnSuccess(ItemDropRule.Common(ItemType<BaselessBladeLegs>(), 1));
+
+            IItemDropRule OceanHuedHunterRule = ItemDropRule.Common(ItemType<OceanHuedHunterHead>(), 1);
+            OceanHuedHunterRule.OnSuccess(ItemDropRule.Common(ItemType<OceanHuedHunterBody>(), 1));
+            OceanHuedHunterRule.OnSuccess(ItemDropRule.Common(ItemType<OceanHuedHunterLegs>(), 1));
+
+            //10% chance for a vanity set
+            notExpertRule.OnSuccess(
+            itemLoot.Add(new OneFromRulesRule(10,
+                StarArmorRule,
+                StarpopRule,
+                QuantumButterflyRule,
+                OceanHuedHunterRule,
+                BaselessBladeRule
+                ))
+            );
+
+            //1% chance for a Starfarer Vanity
+            notExpertRule.OnSuccess(
+            itemLoot.Add(ItemDropRule.OneFromOptions(100,
+                ItemType<FamiliarLookingAttire>(),
+                ItemType<StellarCasualAttire>(),
+                ItemType<GarmentsOfWinterRainAttire>(),
+                ItemType<SeventhSigilAutumnAttire>()
+                ))
+            );
+        }
+
+        // Below is code for the visuals
+
+        public override Color? GetAlpha(Color lightColor)
 		{
 			// Makes sure the dropped bag is always visible
 			return Color.Lerp(lightColor, Color.White, 0.4f);

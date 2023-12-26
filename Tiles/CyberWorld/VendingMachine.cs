@@ -51,11 +51,11 @@ namespace StarsAbove.Tiles.CyberWorld
 					switch (Main.rand.Next(2))
 					{
 						case 0:
-							player.QuickSpawnItem(null, Mod.Find<ModItem>("Onigiri").Type);
+							player.QuickSpawnItem(player.GetSource_FromThis(), Mod.Find<ModItem>("Onigiri").Type);
 							counter++;
 							break;
 						case 1:
-							player.QuickSpawnItem(null, Mod.Find<ModItem>("JojaCola").Type);
+							player.QuickSpawnItem(player.GetSource_FromThis(), Mod.Find<ModItem>("JojaCola").Type);
 							counter++;
 							break;
 						

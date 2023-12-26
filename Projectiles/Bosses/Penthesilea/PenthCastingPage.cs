@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Buffs;
+using static StarsAbove.NPCs.AttackLibrary.AttackLibrary;
 
 namespace StarsAbove.Projectiles.Bosses.Penthesilea
 {
@@ -33,8 +34,6 @@ namespace StarsAbove.Projectiles.Bosses.Penthesilea
 			Projectile.tileCollide = false;          //Can the projectile collide with tiles?
 			Projectile.extraUpdates = 0;            //Set to above 0 if you want the projectile to update multiple time in a frame
 			Projectile.hide = true;
-			DrawOriginOffsetY = -15;
-			DrawOffsetX = -26;
 		}
 		float rotationSpeed = 10f;
 		int offsetVelocity;
@@ -51,7 +50,7 @@ namespace StarsAbove.Projectiles.Bosses.Penthesilea
 			
 			Projectile.timeLeft = 10;
 
-			if (!NPC.AnyNPCs(NPCType<NPCs.Penthesilea>()))
+			if (!NPC.AnyNPCs(NPCType<NPCs.Penthesilea.PenthesileaBoss>()))
 			{
 
 				Projectile.Kill();
@@ -63,13 +62,13 @@ namespace StarsAbove.Projectiles.Bosses.Penthesilea
 
 
 
-				if (npc.active && npc.type == NPCType<NPCs.Penthesilea>())
+				if (npc.active && npc.type == NPCType<NPCs.Penthesilea.PenthesileaBoss>())
 				{
 					//Projectile.Center = npc.Center;
-					Projectile.position.X = npc.Center.X - Projectile.width / 2 + 55;
-					Projectile.position.Y = npc.Center.Y - Projectile.height / 2 + 5;
-					
-					if(npc.HasBuff(BuffType<CastFinished>()))
+					Projectile.position.X = npc.Center.X - Projectile.width / 2 - 55;
+					Projectile.position.Y = npc.Center.Y - Projectile.height / 2 + 55;
+
+					if (npc.ai[0] != (float)ActionState.Casting)
                     {
 						Projectile.Kill();
                     }
@@ -162,7 +161,7 @@ namespace StarsAbove.Projectiles.Bosses.Penthesilea
 
 		}
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
 			for (int d = 0; d < 16; d++)
 			{

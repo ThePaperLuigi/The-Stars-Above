@@ -9,6 +9,7 @@ using StarsAbove.NPCs;
 using StarsAbove.Items.Prisms;
 using Terraria.GameContent.ItemDropRules;
 using StarsAbove.NPCs.Nalhaun;
+using StarsAbove.Items.Loot;
 
 namespace StarsAbove.Items.BossBags
 {
@@ -45,8 +46,8 @@ namespace StarsAbove.Items.BossBags
 		public override void ModifyItemLoot(ItemLoot itemLoot)
 		{
 			// We have to replicate the expert drops from MinionBossBody here via QuickSpawnItem
-
-			//itemLoot.Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<LightswornPrism>(), 7));
+			StellarSpoils.SetupStellarSpoils(itemLoot);
+			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<StellarSpoils>(), 2, 1, 5));
 			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<BurnishedPrism>(), 4, 1, 1));
 			itemLoot.Add(ItemDropRule.CoinsBasedOnNPCValue(ModContent.NPCType<NalhaunBoss>()));
 		}

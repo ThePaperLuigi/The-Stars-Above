@@ -1,4 +1,6 @@
 using Microsoft.Xna.Framework;
+using StarsAbove.Systems;
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -47,7 +49,7 @@ namespace StarsAbove.Projectiles.Bosses.Dioskouroi
 			
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int d = 0; d < 12; d++)
 			{

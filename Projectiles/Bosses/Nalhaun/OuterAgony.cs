@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using StarsAbove.Systems;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -95,7 +96,7 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 			if(Projectile.ai[0] == 0)
 			{
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_Laevateinn, Projectile.Center);
-				Projectile.NewProjectile(null, Projectile.Center,Vector2.Zero, ModContent.ProjectileType<OuterAgonyAnimation>(), 0, 0f, Main.myPlayer);
+				Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center,Vector2.Zero, ModContent.ProjectileType<OuterAgonyAnimation>(), 0, 0f, Main.myPlayer);
 
 				for (int i = 0; i < 55; i++)
 				{

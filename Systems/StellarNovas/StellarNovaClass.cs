@@ -5,28 +5,28 @@ using System;
 using Terraria;
 using Terraria.Graphics.Effects;
 
-namespace StarsAbove
+namespace StarsAbove.Systems
 {
-	public class SetupStellarNovas
+    public class SetupStellarNovas
     {
-		int id;
-		int novaGaugeRequired;
-		int novaCritChance;
-		int novaCritChanceModifier;
+        int id;
+        int novaGaugeRequired;
+        int novaCritChance;
+        int novaCritChanceModifier;
 
-		string abilityName;
-		string abilitySubName;
-		string abilityDescription;
+        string abilityName;
+        string abilitySubName;
+        string abilityDescription;
 
-		string starfarerBonusAsphodene;
-		string starfarerBonusEridani;
+        string starfarerBonusAsphodene;
+        string starfarerBonusEridani;
 
         public string GetInfo(int id, string grab, int baseDamage)
         {
             switch (id)
             {
                 case 1:
-                    return LangHelper.GetTextValue("StellarNova.StellarNovaInfo.TheofaniaInanis." + grab);
+                    return LangHelper.GetTextValue("StellarNova.StellarNovaInfo.PrototokiaAster." + grab);
                 case 2:
                     return LangHelper.GetTextValue("StellarNova.StellarNovaInfo.ArsLaevateinn." + grab);
                 case 3:
@@ -35,6 +35,10 @@ namespace StarsAbove
                     return LangHelper.GetTextValue("StellarNova.StellarNovaInfo.GardenOfAvalon." + grab);
                 case 5:
                     return LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EdinGenesisQuasar." + grab, baseDamage);
+                case 6:
+                    return LangHelper.GetTextValue("StellarNova.StellarNovaInfo.UnlimitedBladeWorks." + grab);
+                case 7:
+                    return LangHelper.GetTextValue("StellarNova.StellarNovaInfo.GuardiansLight." + grab);
                 default:
                     break;
             }
@@ -54,6 +58,10 @@ namespace StarsAbove
                     return baseDamage / 500;
                 case 5:
                     return baseDamage / 15;
+                case 6:
+                    return baseDamage / 4;
+                case 7:
+                    return baseDamage / 3;
                 default:
                     break;
             }
@@ -73,6 +81,10 @@ namespace StarsAbove
                     return 150;
                 case 5:
                     return 180;
+                case 6:
+                    return 140;
+                case 7:
+                    return 65;
                 default:
                     break;
             }
@@ -92,6 +104,10 @@ namespace StarsAbove
                     return 35;
                 case 5:
                     return 25;
+                case 6:
+                    return 15;
+                case 7:
+                    return 10;
                 default:
                     break;
             }
@@ -110,12 +126,16 @@ namespace StarsAbove
                 case 4:
                     return 100;
                 case 5:
-                    return (int)((baseDamage / 10) * 1.3);
+                    return (int)(baseDamage / 10 * 1.3);
+                case 6:
+                    return baseDamage / 2;
+                case 7:
+                    return (int)(baseDamage * 0.4f);
                 default:
                     break;
             }
             return 1;
-            
+
         }
     }
 

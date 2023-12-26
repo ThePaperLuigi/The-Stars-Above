@@ -11,11 +11,13 @@ using Terraria.Audio;
 using StarsAbove.Subworlds;
 using StarsAbove.Utilities;
 using System;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Consumables
 {
 
-	public class SpatialDisk : ModItem
+    public class SpatialDisk : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -44,7 +46,7 @@ namespace StarsAbove.Items.Consumables
 			Item.width = 20;
 			Item.height = 20;
 			Item.maxStack = 1;
-			Item.rare = ItemRarityID.Red;
+			Item.rare = ModContent.GetInstance<StellarRarity>().Type;
 			Item.useAnimation = 45;
 			Item.useTime = 45;
 			Item.useStyle = ItemUseStyleID.HoldUp;
@@ -86,9 +88,18 @@ namespace StarsAbove.Items.Consumables
 			var modPlayer = player.GetModPlayer<StarsAbovePlayer>();
 
 			pingCooldown--;
-			if (modPlayer.StarfarerSelectionVisibility < 2f)
+			if (!modPlayer.seenIntroCutscene)
 			{
-				modPlayer.StarfarerSelectionVisibility += 0.03f;
+				if (modPlayer.IntroDialogueTimer <= 0 && modPlayer.chosenStarfarer == 0 && player.GetModPlayer<BossPlayer>().VideoDuration <= 0 && modPlayer.StarfarerSelectionVisibility <= 0)
+				{
+					modPlayer.IntroDialogueTimer = 300;//20 seconds if you say no.
+					modPlayer.sceneID = 0;
+					modPlayer.VNDialogueActive = true;
+				}
+
+
+				
+				return;
 			}
 			base.HoldItem(player);
 		}
@@ -239,6 +250,7 @@ namespace StarsAbove.Items.Consumables
 
 			}
 			SoundEngine.PlaySound(SoundID.MenuOpen, player.position);
+			
 			if (modPlayer.starfarerIntro == true)
 			{
 				//modPlayer.chosenDialogue = 1;
@@ -633,6 +645,14 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
+			if (modPlayer.vagrantBossItemDialogue == 1)
+			{
+				modPlayer.chosenDialogue = 77;
+				modPlayer.vagrantBossItemDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
 			if (modPlayer.nalhaunBossItemDialogue == 1 && DownedBossSystem.downedVagrant)
 			{
 				modPlayer.chosenDialogue = 301;
@@ -729,7 +749,7 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.MonadoWeaponDialogue == 1)
+            if (modPlayer.MonadoWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 125;
 				modPlayer.MonadoWeaponDialogue = 2;
@@ -841,7 +861,79 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.BloodWeaponDialogue == 1)
+			if (modPlayer.KineticWeaponDialogue == 1)
+			{
+				modPlayer.chosenDialogue = 172;
+				modPlayer.KineticWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
+			if (modPlayer.SoldierWeaponDialogue == 1)
+			{
+				modPlayer.chosenDialogue = 173;
+				modPlayer.SoldierWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
+			if (modPlayer.DreamerWeaponDialogue == 1)
+			{
+				modPlayer.chosenDialogue = 174;
+				modPlayer.DreamerWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
+			if (modPlayer.TrickspinWeaponDialogue == 1)
+			{
+				modPlayer.chosenDialogue = 175;
+				modPlayer.TrickspinWeaponDialogue = 2;
+				activateDialogue(player);
+
+				return true;
+			}
+            if (modPlayer.DragaliaWeaponDialogue == 1)
+            {
+                modPlayer.chosenDialogue = 176;
+				modPlayer.DragaliaWeaponDialogue = 2;
+                activateDialogue(player);
+
+                return true;
+            }
+            if (modPlayer.GundbitWeaponDialogue == 1)
+            {
+                modPlayer.chosenDialogue = 177;
+                modPlayer.GundbitWeaponDialogue = 2;
+                activateDialogue(player);
+
+                return true;
+            }
+            if (modPlayer.WavedancerWeaponDialogue == 1)
+            {
+                modPlayer.chosenDialogue = 178;
+                modPlayer.WavedancerWeaponDialogue = 2;
+                activateDialogue(player);
+
+                return true;
+            }
+            if (modPlayer.ClarentWeaponDialogue == 1)
+            {
+                modPlayer.chosenDialogue = 179;
+                modPlayer.ClarentWeaponDialogue = 2;
+                activateDialogue(player);
+
+                return true;
+            }
+            if (modPlayer.ThespianWeaponDialogue == 1)
+            {
+                modPlayer.chosenDialogue = 180;
+                modPlayer.ThespianWeaponDialogue = 2;
+                activateDialogue(player);
+
+                return true;
+            }
+            if (modPlayer.BloodWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 147;
 				modPlayer.BloodWeaponDialogue = 2;
@@ -970,7 +1062,34 @@ namespace StarsAbove.Items.Consumables
 				return true;
 
 			}
-			if (modPlayer.nalhaunDialogue == 1)
+            if (modPlayer.starfarerBossItemDialogue == 1)
+            {
+                modPlayer.dialogueScrollTimer = 0;
+                modPlayer.dialogueScrollNumber = 0;
+                modPlayer.sceneProgression = 0;
+                modPlayer.sceneID = 23;
+                modPlayer.VNDialogueActive = true;
+                modPlayer.starfarerBossItemDialogue = 2;
+
+
+                //Spawn item here.
+                player.QuickSpawnItem(player.GetSource_GiftOrReward(), ItemType<StarfarerEssence>());
+                return true;
+
+            }
+            if (modPlayer.starfarerPostBattleDialogue == 1)
+            {
+                modPlayer.dialogueScrollTimer = 0;
+                modPlayer.dialogueScrollNumber = 0;
+                modPlayer.sceneProgression = 0;
+                modPlayer.sceneID = 24;
+                modPlayer.VNDialogueActive = true;
+                modPlayer.starfarerPostBattleDialogue = 2;
+
+                return true;
+
+            }
+            if (modPlayer.nalhaunDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 70;
 				modPlayer.nalhaunDialogue = 2;
@@ -1259,102 +1378,91 @@ namespace StarsAbove.Items.Consumables
 			if (modPlayer.uniqueDialogueTimer <= 0)
 			{
 				modPlayer.uniqueDialogueTimer = Main.rand.Next(1800, 3600);
-				randomDialogue = Main.rand.Next(1, 9); //1-20 are idle lines, 50+ are boss dialogue lines, and 100+ is items available to be crafted (1 less than max)
 				if (Main.hardMode)
 				{
-					randomDialogue += 9;//New dialogue when Hardmode is reached
+					randomDialogue = Main.rand.Next(1, 15);
+
+					switch (randomDialogue)
+					{
+						case 1:
+							modPlayer.chosenDialogue = 12;
+							break;
+						case 2:
+							modPlayer.chosenDialogue = 13;
+							break;
+						case 3:
+							modPlayer.chosenDialogue = 14;
+							break;
+						case 4:
+							modPlayer.chosenDialogue = 15;
+							break;
+						case 5:
+							modPlayer.chosenDialogue = 16;
+							break;
+						case 6:
+							modPlayer.chosenDialogue = 17;
+							break;
+						case 7:
+							modPlayer.chosenDialogue = 18;
+							break;
+						case 8:
+							modPlayer.chosenDialogue = 19;
+							break;
+						case 9:
+							modPlayer.chosenDialogue = 20;
+							break;
+						case 10:
+							modPlayer.chosenDialogue = 400;
+							break;
+						case 11:
+							modPlayer.chosenDialogue = 401;
+							break;
+						case 12:
+							modPlayer.chosenDialogue = 402;
+							break;
+						case 13:
+							modPlayer.chosenDialogue = 403;
+							break;
+						case 14:
+							modPlayer.chosenDialogue = 404;
+							break;
+					}
 				}
-				if (randomDialogue == 1)
+				else
 				{
-					modPlayer.chosenDialogue = 3;
+					randomDialogue = Main.rand.Next(1, 9); //1-20 are idle lines, 50+ are boss dialogue lines, and 100+ is items available to be crafted (1 less than max)
 
-				}
-				if (randomDialogue == 2)
-				{
-					modPlayer.chosenDialogue = 4;
-
-				}
-				if (randomDialogue == 3)
-				{
-					modPlayer.chosenDialogue = 5;
-
-				}
-				if (randomDialogue == 4)
-				{
-					modPlayer.chosenDialogue = 6;
-
-				}
-				if (randomDialogue == 5)
-				{
-					modPlayer.chosenDialogue = 7;
-
-				}
-				if (randomDialogue == 6)
-				{
-					modPlayer.chosenDialogue = 8;
-
-				}
-				if (randomDialogue == 7)
-				{
-					modPlayer.chosenDialogue = 9;
-
-				}
-				if (randomDialogue == 8)
-				{
-					modPlayer.chosenDialogue = 10;
-
-				}
-				if (randomDialogue == 9)
-				{
-					modPlayer.chosenDialogue = 11;//Pre hardmode end
-
-				}
-				if (randomDialogue == 10)
-				{
-					modPlayer.chosenDialogue = 12;
-
-				}
-				if (randomDialogue == 11)
-				{
-					modPlayer.chosenDialogue = 13;
-
-				}
-				if (randomDialogue == 12)
-				{
-					modPlayer.chosenDialogue = 14;
-
-				}
-				if (randomDialogue == 13)
-				{
-					modPlayer.chosenDialogue = 15;
-
-				}
-				if (randomDialogue == 14)
-				{
-					modPlayer.chosenDialogue = 16;
-
-				}
-				if (randomDialogue == 15)
-				{
-					modPlayer.chosenDialogue = 17;
-
-				}
-				if (randomDialogue == 16)
-				{
-					modPlayer.chosenDialogue = 18;
-
-				}
-				if (randomDialogue == 17)
-				{
-					modPlayer.chosenDialogue = 19;
-
-				}
-				if (randomDialogue == 18)
-				{
-					modPlayer.chosenDialogue = 20;
-
-				}
-
+					switch (randomDialogue)
+                    {
+						case 1:
+							modPlayer.chosenDialogue = 3;
+							break;
+						case 2:
+							modPlayer.chosenDialogue = 4;
+							break;
+						case 3:
+							modPlayer.chosenDialogue = 5;
+							break;
+						case 4:
+							modPlayer.chosenDialogue = 6;
+							break;
+						case 5:
+							modPlayer.chosenDialogue = 7;
+							break;
+						case 6:
+							modPlayer.chosenDialogue = 8;
+							break;
+						case 7:
+							modPlayer.chosenDialogue = 9;
+							break;
+						case 8:
+							modPlayer.chosenDialogue = 10;
+							break;
+						case 9:
+							modPlayer.chosenDialogue = 11;
+							break;
+					}
+                }
 			}
 			else
 			{

@@ -3,15 +3,35 @@ using Terraria.ModLoader;
 using Terraria.Graphics.Effects;
 using StarsAbove.Buffs.SubworldModifiers;
 using SubworldLibrary;
+using StarsAbove.Subworlds.ThirdRegion;
+using StarsAbove.Subworlds;
 
-namespace StarsAbove.SceneEffects
+namespace StarsAbove.SceneEffects.SubworldSceneEffects
 {
     public class SeaOfStarsSceneEffect : ModSceneEffect
-	{
+    {
+        public static SceneEffectPriority setPriority = SceneEffectPriority.BossLow;
+
         public override bool IsSceneEffectActive(Player player)
         {
-			
-            return true;
+            if (SubworldSystem.IsActive<CygnusAsteroids>()
+                || SubworldSystem.IsActive<MiningStationAries>()
+                || SubworldSystem.IsActive<BleachedPlanet>()
+                || SubworldSystem.IsActive<Pyxis>()
+                || SubworldSystem.IsActive<DreamingCity>()
+                || SubworldSystem.IsActive<Celestia>()
+                || SubworldSystem.IsActive<FallenTheranhad>()
+                || SubworldSystem.IsActive<FaintArchives>()
+                || SubworldSystem.IsActive<UltraPlant>()
+                || SubworldSystem.IsActive<Katabasis>()
+                )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         public override void SpecialVisuals(Player player, bool isActive)
         {
@@ -19,6 +39,12 @@ namespace StarsAbove.SceneEffects
                 || SubworldSystem.IsActive<MiningStationAries>()
                 || SubworldSystem.IsActive<BleachedPlanet>()
                 || SubworldSystem.IsActive<Pyxis>()
+                || SubworldSystem.IsActive<DreamingCity>()
+                || SubworldSystem.IsActive<Celestia>()
+                || SubworldSystem.IsActive<FallenTheranhad>()
+                || SubworldSystem.IsActive<FaintArchives>()
+                || SubworldSystem.IsActive<UltraPlant>()
+                || SubworldSystem.IsActive<Katabasis>()
                 )
             {
                 Main.dayTime = false;
@@ -33,9 +59,10 @@ namespace StarsAbove.SceneEffects
             }
 
         }
-        
 
-		
+        public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/MareLamentorum");
+        public override SceneEffectPriority Priority => setPriority;
+
 
 
     }

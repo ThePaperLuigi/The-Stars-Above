@@ -2,6 +2,7 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.ID;
 using StarsAbove.Items.Prisms;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Placeable
 {
@@ -16,7 +17,7 @@ namespace StarsAbove.Items.Placeable
 				+ $"\n"); */
 			Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
-			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/SecondWarning"),
+			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Boss/Arbitration/SecondWarning"),
 				ModContent.ItemType<SecondWarningMusicBox>(),
 				ModContent.TileType<Tiles.SecondWarningMusicBox>());
 		}
@@ -32,15 +33,16 @@ namespace StarsAbove.Items.Placeable
 			Item.createTile = Mod.Find<ModTile>("SecondWarningMusicBox").Type;
 			Item.width = 24;
 			Item.height = 24;
-			Item.rare = 10;
+			Item.rare = ModContent.GetInstance<StellarSpoilsRarity>().Type; // Custom Rarity
 			Item.value = 1;
 			Item.accessory = true;
 		}
 		public override void AddRecipes()
 		{
 			CreateRecipe(1)
-				.AddIngredient(ItemType<PrismaticCore>(), 8)
-				.AddTile(TileID.WorkBenches)
+				.AddIngredient(ModContent.ItemType<Materials.StellarRemnant>(), 20)
+				.AddCustomShimmerResult(ModContent.ItemType<Materials.StellarRemnant>(), 3)
+				.AddTile(Terraria.ID.TileID.Anvils)
 				.Register();
 		}
 	}

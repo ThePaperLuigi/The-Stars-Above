@@ -53,7 +53,7 @@ namespace StarsAbove.NPCs.OffworldNPCs
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
 
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BandedTenebrium>(), 8, 1, 1));
+			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BandedTenebrium>(), 4, 1, 1));
 
 
 		}

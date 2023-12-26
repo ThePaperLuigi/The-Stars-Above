@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using StarsAbove.Systems;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -20,7 +21,7 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 			Projectile.height = 42;              //The height of projectile hitbox
 			Projectile.aiStyle = -1;             //The ai style of the projectile, please reference the source code of Terraria
 			Projectile.friendly = false;         //Can the projectile deal damage to enemies?
-			Projectile.hostile = true;         //Can the projectile deal damage to the player?
+			Projectile.hostile = false;         //Can the projectile deal damage to the player?
 			Projectile.penetrate = 99;           //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
 			Projectile.timeLeft = 120;          //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
 			Projectile.alpha = 255;             //The transparency of the projectile, 255 for completely transparent. (aiStyle 1 quickly fades the projectile in) Make sure to delete this if you aren't using an aiStyle that fades in. You'll wonder why your projectile is invisible.
@@ -59,7 +60,7 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 					int type = ProjectileType<NalhaunExplosion>();
 					int damage = 50;
 
-					Projectile.NewProjectile(null, new Vector2(Projectile.Center.X, Projectile.Center.Y), Vector2.Zero, type, damage, 0f, Main.myPlayer, 0f, 0f);
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), new Vector2(Projectile.Center.X, Projectile.Center.Y), Vector2.Zero, type, damage, 0f, Main.myPlayer, 0f, 0f);
 
 					Projectile.Kill();
 				}
@@ -68,7 +69,7 @@ namespace StarsAbove.Projectiles.Bosses.Nalhaun
 			Projectile.ai[1]--;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			
 

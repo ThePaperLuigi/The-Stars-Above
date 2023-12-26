@@ -20,7 +20,7 @@ namespace StarsAbove.Items.Essences
 			Item.width = 20;
 			Item.height = 20;
 			Item.value = 100;
-			Item.rare = ItemRarityID.Red;
+			Item.rare = ModContent.GetInstance<Systems.StellarRarity>().Type;
 			Item.maxStack = 999;
 		}
 

@@ -1,6 +1,37 @@
+using Microsoft.CodeAnalysis;
 using Microsoft.Xna.Framework;
+using StarsAbove.Buffs;
+using StarsAbove.Buffs.EmberFlask;
+using StarsAbove.Buffs.Memories;
+using StarsAbove.Buffs.StarfarerAttire;
+using StarsAbove.Buffs.StellarArray;
+using StarsAbove.Buffs.StellarNovas;
+using StarsAbove.Buffs.SubworldModifiers;
+using StarsAbove.Buffs.Umbra;
+using StarsAbove.Dialogue;
+using StarsAbove.Items.Armor.StarfarerArmor;
+using StarsAbove.Items.Consumables;
+using StarsAbove.Items.Prisms;
+using StarsAbove.NPCs;
+using StarsAbove.NPCs.Arbitration;
+using StarsAbove.NPCs.Nalhaun;
+using StarsAbove.NPCs.Penthesilea;
+using StarsAbove.NPCs.Starfarers;
+using StarsAbove.NPCs.Thespian;
+using StarsAbove.NPCs.Tsukiyomi;
+using StarsAbove.NPCs.WarriorOfLight;
+using StarsAbove.Projectiles.StellarArray;
+using StarsAbove.Projectiles.StellarNovas;
+using StarsAbove.Projectiles.StellarNovas.GuardiansLight;
+using StarsAbove.Subworlds;
+using StarsAbove.Subworlds.ThirdRegion;
+using StarsAbove.UI.StarfarerMenu;
+using StarsAbove.UI.StellarNova;
+using StarsAbove.Utilities;
+using SubworldLibrary;
 using System;
 using System.Collections.Generic;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameInput;
@@ -8,50 +39,13 @@ using Terraria.Graphics.Effects;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.Localization;
-using Terraria;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 using Terraria.ModLoader.IO;
-using StarsAbove.Items;
-using StarsAbove.Projectiles;
-using StarsAbove.Buffs;
-using StarsAbove.NPCs;
-using Microsoft.Xna.Framework.Audio;
+using Terraria.UI;
+using Terraria.WorldBuilding;
+using static Terraria.ModLoader.ModContent;
 
-using StarsAbove.Dusts;
-using StarsAbove.Items.Consumables;
-using StarsAbove.UI.StellarNova;
-using SubworldLibrary;
-using StarsAbove.Buffs.SubworldModifiers;
-using StarsAbove.Projectiles.Otherworld;
-using StarsAbove.Projectiles.SkyStriker;
-using StarsAbove.Buffs.CosmicDestroyer;
-using StarsAbove.Buffs.CarianDarkMoon;
-using StarsAbove.Buffs.AshenAmbition;
-using StarsAbove.Biomes;
-using StarsAbove.Buffs.TheOnlyThingIKnowForReal;
-using StarsAbove.Buffs.VermillionDaemon;
-using StarsAbove.Subworlds;
-using StarsAbove.Buffs.Ozma;
-using StarsAbove.Prefixes;
-using StarsAbove.UI.StarfarerMenu;
-using StarsAbove.Buffs.StarfarerAttire;
-using StarsAbove.Buffs.HunterSymphony;
-using StarsAbove.Buffs.RedMage;
-using StarsAbove.Buffs.TagDamage;
-using StarsAbove.Buffs.BurningDesire;
-using StarsAbove.Utilities;
-using StarsAbove.Buffs.CatalystMemory;
-using StarsAbove.Items.Armor.StarfarerArmor;
-using StarsAbove.Buffs.Farewells;
-using StarsAbove.Buffs.Umbra;
-using StarsAbove.NPCs.Nalhaun;
-using StarsAbove.NPCs.Tsukiyomi;
-using StarsAbove.Projectiles.StellarNovas;
-using StarsAbove.Items.Prisms;
-using StarsAbove.NPCs.WarriorOfLight;
-
-namespace StarsAbove
+namespace StarsAbove.Systems
 {
     public class StarsAbovePlayer : ModPlayer
     {
@@ -62,12 +56,14 @@ namespace StarsAbove
         public int firstJoinedWorld = 0;//Sets the world so progress doesn't get overwritten by joining other worlds.
         public string firstJoinedWorldName;
         public static bool enableWorldLock = false;
+        public bool SyncWorldProgress = false;
+        public bool AlwaysSyncWorldProgress = false;
 
-       
 
         public static bool BossEnemySpawnModDisabled = false;
 
-        
+        public bool seenIntroCutscene = false;
+        public int IntroDialogueTimer;
 
         public int screenShakeTimerGlobal = -1000;
 
@@ -214,7 +210,7 @@ namespace StarsAbove
         //Light Monolith
         public bool lightMonolith;
 
-        
+
 
         //Starfarers ///////////////////////////////////////////////////////////////////////////////////////////////////
         public float StarfarerSelectionVisibility = 0f;
@@ -360,12 +356,16 @@ namespace StarsAbove
         public int penthDialogue = 0;
         public int arbiterDialogue = 0;
         public int tsukiyomiDialogue = 0;
+        public int thespianDialogue = 0;
+        public int starfarerPostBattleDialogue = 0;
 
+        public int vagrantBossItemDialogue = 0;
         public int dioskouroiBossItemDialogue = 0;
         public int nalhaunBossItemDialogue = 0;
         public int penthBossItemDialogue = 0;
         public int arbiterBossItemDialogue = 0;
         public int warriorBossItemDialogue = 0;
+        public int starfarerBossItemDialogue = 0;
 
         public int allModdedBosses = 0;
 
@@ -406,8 +406,11 @@ namespace StarsAbove
         public int observatoryIntroDialogue;
         public int yojimboIntroDialogue;
         public int garridineIntroDialogue;
-        
 
+        public int MnemonicDialogue1;
+        public int MnemonicDialogue2;
+        public int MnemonicDialogue3;
+        public int MnemonicDialogue4;
 
         //Weapon lines
         public int WeaponDialogueTimer = Main.rand.Next(3600, 7200);
@@ -486,7 +489,18 @@ namespace StarsAbove
         public int ManiacalWeaponDialogue = 0;
         public int AuthorityWeaponDialogue = 0;
 
+        //v1.5
+        public int KineticWeaponDialogue = 0;
+        public int DreamerWeaponDialogue = 0;
+        public int SoldierWeaponDialogue = 0;
+        public int TrickspinWeaponDialogue = 0;
 
+        //v2.0
+        public int DragaliaWeaponDialogue = 0;
+        public int GundbitWeaponDialogue = 0;
+        public int WavedancerWeaponDialogue = 0;
+        public int ClarentWeaponDialogue = 0;
+        public int ThespianWeaponDialogue = 0;
 
         //Subworld dialogues
         public int observatoryDialogue = 0;
@@ -517,7 +531,7 @@ namespace StarsAbove
         //if ((abilityCost + stellarGauge) <= stellarGaugeMax)
         //Remember to push the abilityCost!
 
-        //Tier 1
+        //Tier 1 Asphodene
         public int starshower = 0; //
         public int ironskin = 0; //
         public int evasionmastery = 0;//
@@ -530,8 +544,23 @@ namespace StarsAbove
         public int butchersdozen = 0; //
         public int mysticforging = 0;
         public int flashfreeze = 0;
+
+        //Tier 1 Eridani
+        public int spectralNail = 0; //
+        public int armsthrift = 0; //
+        public int mysticIncision = 0;//
+        public int stayTheCourse = 0;//
+        public int catharsis = 0;
+        public int fabledFashion = 0;
+        public int kineticConversion = 0;
+        public int kiTwinburst = 0;
+        public int arborealEchoes = 0;
+        public int swiftstrikeTheory = 0; //
+        public int inevitableEnd = 0;
+        public int lavenderRefrain = 0;
+
         //Tier 2
-        public int  healthyConfidence = 0;//
+        public int healthyConfidence = 0;//
         public int bloomingflames = 0;//
         public int astralmantle = 0;//
         public int avataroflight = 0;
@@ -563,6 +592,8 @@ namespace StarsAbove
 
         public int unbridledRadianceStack = 0;//Will increase every 1000 kills.
 
+        int stayTheCourseTimer;
+        float stayTheCourseStacks;
         int aprismatismCooldown;
         int butchersDozenKills;
         int ammoRecycleCooldown;
@@ -571,6 +602,11 @@ namespace StarsAbove
         int healthyConfidenceHealTimer;
         int beyondInfinityTimer;
         float beyondInfinityDamageMod;
+
+        public int armsthriftWeaponIDOld = 0;
+        public DamageClass armsthriftWeaponTypeOld;
+
+        public int oldHP;
 
         int timeAfterGettingHit;
 
@@ -596,13 +632,20 @@ namespace StarsAbove
         /// </summary>
         //Stellar Nova Code
 
-        public int chosenStellarNova = 0;//0: No Nova chosen. 1: Theofania Inanis 2: Ars Laevateinn
+        public int chosenStellarNova = 0;//0: No Nova chosen. 1: Prototokia Aster 2: Ars Laevateinn
+
+        public bool novaReadyInfo = false;
+        public bool gaugeChargeAnimation = false;
 
         public int novaGauge;
         public int novaGaugeMax = 100;//This is affected by the chosen Nova
         public int novaGaugeChargeTimer;
         public int novaGaugeLossTimer;
 
+        public float novaDrain = 0f;
+
+        public float novaGaugeChangeAlpha = 0f;
+        public float novaGaugeChangeAlphaSlow = 0f;
 
         public int baseNovaDamageAdd = 1;
         public int novaDamage = 300;
@@ -639,7 +682,7 @@ namespace StarsAbove
         public string starfarerBonus;
         public string baseStats;
 
-
+        
 
         public string affix1; //Name of the affix.
         public string affix2;
@@ -657,11 +700,16 @@ namespace StarsAbove
 
         public bool apocryphicPrism;
 
-        public int theofania; //0 = LOCKED, 1 = UNLOCKED, 2 = SELECTED
+        public int prototokia; //0 = LOCKED, 1 = UNLOCKED, 2 = SELECTED
         public int laevateinn; //0 = LOCKED, 1 = UNLOCKED, 2 = SELECTED
         public int kiwamiryuken; //0 = LOCKED, 1 = UNLOCKED, 2 = SELECTED 2 does not matter really
         public int gardenofavalon; //0 = LOCKED, 1 = UNLOCKED, 2 = SELECTED 2 does not matter really
         public int edingenesisquasar; //0 = LOCKED, 1 = UNLOCKED, 2 = SELECTED 2 does not matter really
+        public int unlimitedbladeworks;
+        public int guardianslight;
+
+        public int goldenGunShots;
+        public bool squallReady;
 
         //Cutscenes, new feature
         public int astarteCutsceneProgress = 0;
@@ -702,9 +750,9 @@ namespace StarsAbove
         public int inCombat = 0;//If greater than 0, player is inCombat. default is 15 seconds, or 1200 ticks. Additonally, the NovaGauge will decrease if out of combat, or increase if Asphodene.
         public static int inCombatMax = 900;//Default is 900, or 15 seconds in combat.
 
-        
+
         // These are the variables for the Starfarer Prompt system
-        
+
 
         public float promptVisibility = 0f;
         public float promptMoveIn = 0f;
@@ -747,6 +795,8 @@ namespace StarsAbove
         public bool seenNalhaun;
         public bool seenPenth;
         public bool seenArbiter;
+        public bool seenThespian;
+        public bool seenStarfarers;
 
         //Biomes
         public bool seenDesertBiome;
@@ -854,7 +904,17 @@ namespace StarsAbove
         public bool seenInfernon;
         public bool seenDusking;
         public bool seenAtlas;
-        
+
+        //Wrath of the Gods
+        public bool seenNoxusEgg;
+        public bool seenEntropicGod;
+        public bool seenNamelessDeity;
+
+        //Starlight River
+        public bool seenCeiros;
+        public bool seenGlassweaver;
+        public bool seenAuroracle;
+
         public bool seenUnknownBoss;
         public int seenUnknownBossTimer;
         public List<int> seenBossesList = new List<int>();
@@ -877,6 +937,8 @@ namespace StarsAbove
         public static bool disablePromptsBuffs;
         public static bool disablePromptsCombat;
 
+        public static bool disableBlur;
+
         public static bool noLockedCamera;
 
         public static bool voicesEnabled;
@@ -889,11 +951,11 @@ namespace StarsAbove
         public float costumeChangeOpacity;
         int starfarerOutfitSaved = 0;
 
-        
+
 
         //Lore list?
         //
-       
+
 
         public bool seenMusicWarning;
 
@@ -909,7 +971,7 @@ namespace StarsAbove
         //public int cachedSpawnX = player.SpawnX;
 
 
-        
+
 
 
         //player.GetModPlayer<StarsAbovePlayer>().VARIABLENAME = VALUE;
@@ -934,7 +996,20 @@ namespace StarsAbove
             tag["mysticforging"] = mysticforging;
             tag["flashfreeze"] = flashfreeze;
 
-            tag[" healthyConfidence"] =  healthyConfidence;
+            tag["spectralNail"] = spectralNail;
+            tag["armsthrift"] = armsthrift;
+            tag["mysticIncision"] = mysticIncision;
+            tag["stayTheCourse"] = stayTheCourse;
+            tag["catharsis"] = catharsis;
+            tag["fabledFashion"] = fabledFashion;
+            tag["kineticConversion"] = kineticConversion;
+            tag["kiTwinburst"] = kiTwinburst;
+            tag["arborealEchoes"] = arborealEchoes;
+            tag["swiftstrikeTheory"] = swiftstrikeTheory;
+            tag["inevitableEnd"] = inevitableEnd;
+            tag["lavenderRefrain"] = lavenderRefrain;
+
+            tag[" healthyConfidence"] = healthyConfidence;
             tag["bloomingflames"] = bloomingflames;
             tag["astralmantle"] = astralmantle;
             tag["avataroflight"] = avataroflight;
@@ -984,12 +1059,16 @@ namespace StarsAbove
             tag["penthDialogue"] = penthDialogue;
             tag["arbiterDialogue"] = arbiterDialogue;
             tag["tsukiyomiDialogue"] = tsukiyomiDialogue;
+            tag["thespianDialogue"] = thespianDialogue;
+            tag["starfarerPostBattleDialogue"] = starfarerPostBattleDialogue;
 
+            tag["vagrantitem"] = vagrantBossItemDialogue;
             tag["dioskouroiitem"] = dioskouroiBossItemDialogue;
             tag["nalhaunitem"] = nalhaunBossItemDialogue;
             tag["penthitem"] = penthBossItemDialogue;
             tag["arbiteritem"] = arbiterBossItemDialogue;
             tag["warrioritem"] = warriorBossItemDialogue;
+            tag["starfareritem"] = starfarerBossItemDialogue;
 
             tag["allModdedBosses"] = allModdedBosses;
             tag["AllVanillaBossesDefeatedDialogue"] = AllVanillaBossesDefeatedDialogue;
@@ -1017,6 +1096,10 @@ namespace StarsAbove
             tag["yojimboIntroDialogue"] = yojimboIntroDialogue;
             tag["garridineIntroDialogue"] = garridineIntroDialogue;
 
+            tag["MnemonicDialogue1"] = MnemonicDialogue1;
+            tag["MnemonicDialogue2"] = MnemonicDialogue2;
+            tag["MnemonicDialogue3"] = MnemonicDialogue3;
+            tag["MnemonicDialogue4"] = MnemonicDialogue4;
 
 
             tag["EyeBossWeaponDialogue"] = EyeBossWeaponDialogue;
@@ -1094,6 +1177,17 @@ namespace StarsAbove
             tag["ManiacalWeaponDialogue"] = ManiacalWeaponDialogue;
             tag["AuthorityWeaponDialogue"] = AuthorityWeaponDialogue;
 
+            tag["KineticWeaponDialogue"] = KineticWeaponDialogue;
+            tag["DreamerWeaponDialogue"] = DreamerWeaponDialogue;
+            tag["SoldierWeaponDialogue"] = SoldierWeaponDialogue;
+            tag["TrickspinWeaponDialogue"] = TrickspinWeaponDialogue;
+
+            tag["DragaliaWeaponDialogue"] = DragaliaWeaponDialogue;
+            tag["GundbitWeaponDialogue"] = GundbitWeaponDialogue;
+            tag["WavedancerWeaponDialogue"] = WavedancerWeaponDialogue;
+            tag["ClarentWeaponDialogue"] = ClarentWeaponDialogue;
+            tag["ThespianWeaponDialogue"] = ThespianWeaponDialogue;
+
 
             tag["observatoryDialogue"] = observatoryDialogue;
             tag["cosmicVoyageDialogue"] = cosmicVoyageDialogue;
@@ -1101,11 +1195,13 @@ namespace StarsAbove
             tag["unbridledRadianceStack"] = unbridledRadianceStack;
 
             tag["novaGaugeUnlocked"] = novaGaugeUnlocked;
-            tag["theofania"] = theofania;
+            tag["prototokia"] = prototokia;
             tag["laevateinn"] = laevateinn;
             tag["kiwamiryuken"] = kiwamiryuken;
             tag["gardenofavalon"] = gardenofavalon;
             tag["edingenesisquasar"] = edingenesisquasar;
+            tag["unlimitedbladeworks"] = unlimitedbladeworks;
+            tag["guardianslight"] = guardianslight;
             tag["chosenStellarNova"] = chosenStellarNova;
 
             tag["seenEyeOfCthulhu"] = seenEyeOfCthulhu;
@@ -1129,6 +1225,8 @@ namespace StarsAbove
             tag["seenNalhaun"] = seenNalhaun;
             tag["seenPenth"] = seenPenth;
             tag["seenArbiter"] = seenArbiter;
+            tag["seenThespian"] = seenThespian;
+            tag["seenStarfarers"] = seenStarfarers;
 
             tag["seenDeerclops"] = seenDeerclops;
             tag["seenQueenSlime"] = seenQueenSlime;
@@ -1203,6 +1301,13 @@ namespace StarsAbove
             tag["seenDusking"] = seenDusking;
             tag["seenAtlas"] = seenAtlas;
 
+            tag["seenNoxusEgg"] = seenNoxusEgg;
+            tag["seenEntropicGod"] = seenEntropicGod;
+            tag["seenNamelessDeity"] = seenNamelessDeity;
+
+            tag["seenCeiros"] = seenCeiros;
+            tag["seenGlassweaver"] = seenGlassweaver;
+            tag["seenAuroracle"] = seenAuroracle;
 
             tag["seenObservatory"] = seenObservatory;
             tag["seenCygnusAsteroids"] = seenCygnusAsteroids;
@@ -1248,15 +1353,19 @@ namespace StarsAbove
             tag["firstJoinedWorld"] = firstJoinedWorld;
             tag["firstJoinedWorldName"] = firstJoinedWorldName;
 
+            tag["AlwaysSync"] = AlwaysSyncWorldProgress;
 
+            tag["seenIntroCutscene"] = seenIntroCutscene;
             base.SaveData(tag);
         }
 
         public override void LoadData(TagCompound tag)
         {
+            seenIntroCutscene = tag.GetBool("seenIntroCutscene");
+
             firstJoinedWorld = tag.GetInt("firstJoinedWorld");
             firstJoinedWorldName = tag.GetString("firstJoinedWorldName");
-
+            AlwaysSyncWorldProgress = tag.GetBool("AlwaysSync");
 
             chosenStarfarer = tag.GetInt("chosenStarfarer");
 
@@ -1290,12 +1399,16 @@ namespace StarsAbove
             penthDialogue = tag.GetInt("penthDialogue");
             arbiterDialogue = tag.GetInt("arbiterDialogue");
             tsukiyomiDialogue = tag.GetInt("tsukiyomiDialogue");
+            thespianDialogue = tag.GetInt("thespianDialogue");
+            starfarerPostBattleDialogue = tag.GetInt("starfarerPostBattleDialogue");
 
+            vagrantBossItemDialogue = tag.GetInt("vagrantitem");
             dioskouroiBossItemDialogue = tag.GetInt("dioskouroiitem");
             nalhaunBossItemDialogue = tag.GetInt("nalhaunitem");
             penthBossItemDialogue = tag.GetInt("penthitem");
             arbiterBossItemDialogue = tag.GetInt("arbiteritem");
             warriorBossItemDialogue = tag.GetInt("warrioritem");
+            starfarerBossItemDialogue = tag.GetInt("starfareritem");
 
 
             allModdedBosses = tag.GetInt("allModdedBosses");
@@ -1322,6 +1435,11 @@ namespace StarsAbove
             observatoryIntroDialogue = tag.GetInt("observatoryIntroDialogue");
             yojimboIntroDialogue = tag.GetInt("yojimboIntroDialogue");
             garridineIntroDialogue = tag.GetInt("garridineIntroDialogue");
+
+            MnemonicDialogue1 = tag.GetInt("MnemonicDialogue1");
+            MnemonicDialogue2 = tag.GetInt("MnemonicDialogue2");
+            MnemonicDialogue3 = tag.GetInt("MnemonicDialogue3");
+            MnemonicDialogue4 = tag.GetInt("MnemonicDialogue4");
 
 
             EyeBossWeaponDialogue = tag.GetInt("EyeBossWeaponDialogue");
@@ -1397,6 +1515,16 @@ namespace StarsAbove
             ManiacalWeaponDialogue = tag.GetInt("ManiacalWeaponDialogue");
             AuthorityWeaponDialogue = tag.GetInt("AuthorityWeaponDialogue");
 
+            KineticWeaponDialogue = tag.GetInt("KineticWeaponDialogue");
+            DreamerWeaponDialogue = tag.GetInt("DreamerWeaponDialogue");
+            SoldierWeaponDialogue = tag.GetInt("SoldierWeaponDialogue");
+            TrickspinWeaponDialogue = tag.GetInt("TrickspinWeaponDialogue");
+
+            DragaliaWeaponDialogue = tag.GetInt("DragaliaWeaponDialogue");
+            GundbitWeaponDialogue = tag.GetInt("GundbitWeaponDialogue");
+            WavedancerWeaponDialogue = tag.GetInt("WavedancerWeaponDialogue");
+            ClarentWeaponDialogue = tag.GetInt("ClarentWeaponDialogue");
+            ThespianWeaponDialogue = tag.GetInt("ThespianWeaponDialogue");
 
 
             observatoryDialogue = tag.GetInt("observatoryDialogue");
@@ -1417,7 +1545,20 @@ namespace StarsAbove
             mysticforging = tag.GetInt("mysticforging");
             flashfreeze = tag.GetInt("flashfreeze");
 
-             healthyConfidence = tag.GetInt(" healthyConfidence");
+            spectralNail = tag.GetInt("spectralNail");
+            armsthrift = tag.GetInt("armsthrift");
+            mysticIncision = tag.GetInt("mysticIncision");
+            stayTheCourse = tag.GetInt("stayTheCourse");
+            catharsis = tag.GetInt("catharsis");
+            fabledFashion = tag.GetInt("fabledFashion");
+            kineticConversion = tag.GetInt("kineticConversion");
+            kiTwinburst = tag.GetInt("kiTwinburst");
+            arborealEchoes = tag.GetInt("arborealEchoes");
+            swiftstrikeTheory = tag.GetInt("swiftstrikeTheory");
+            inevitableEnd = tag.GetInt("inevitableEnd");
+            lavenderRefrain = tag.GetInt("lavenderRefrain");
+
+            healthyConfidence = tag.GetInt(" healthyConfidence");
             bloomingflames = tag.GetInt("bloomingflames");
             astralmantle = tag.GetInt("astralmantle");
             avataroflight = tag.GetInt("avataroflight");
@@ -1442,11 +1583,13 @@ namespace StarsAbove
 
             novaGaugeUnlocked = tag.GetBool("novaGaugeUnlocked");
             chosenStellarNova = tag.GetInt("chosenStellarNova");
-            theofania = tag.GetInt("theofania");
+            prototokia = tag.GetInt("prototokia");
             laevateinn = tag.GetInt("laevateinn");
             kiwamiryuken = tag.GetInt("kiwamiryuken");
             gardenofavalon = tag.GetInt("gardenofavalon");
             edingenesisquasar = tag.GetInt("edingenesisquasar");
+            unlimitedbladeworks = tag.GetInt("unlimitedbladeworks");
+            guardianslight = tag.GetInt("guardianslight");
 
             seenEyeOfCthulhu = tag.GetBool("seenEyeOfCthulhu");
             seenKingSlime = tag.GetBool("seenKingSlime");
@@ -1468,6 +1611,8 @@ namespace StarsAbove
             seenNalhaun = tag.GetBool("seenNalhaun");
             seenPenth = tag.GetBool("seenPenth");
             seenArbiter = tag.GetBool("seenArbiter");
+            seenThespian = tag.GetBool("seenThespian");
+            seenStarfarers = tag.GetBool("seenStarfarers");
 
             seenDeerclops = tag.GetBool("seenDeerclops");
             seenQueenSlime = tag.GetBool("seenQueenSlime");
@@ -1542,6 +1687,14 @@ namespace StarsAbove
             seenDusking = tag.GetBool("seenDusking");
             seenAtlas = tag.GetBool("seenAtlas");
 
+            seenNoxusEgg = tag.GetBool("seenNoxusEgg");
+            seenEntropicGod = tag.GetBool("seenEntropicGod");
+            seenNamelessDeity = tag.GetBool("seenNamelessDeity");
+
+            seenCeiros = tag.GetBool("seenCeiros");
+            seenGlassweaver = tag.GetBool("seenGlassweaver");
+            seenAuroracle = tag.GetBool("seenAuroracle");
+
 
             seenObservatory = tag.GetBool("seenObservatory");
             seenCygnusAsteroids = tag.GetBool("seenCygnusAsteroids");
@@ -1573,11 +1726,11 @@ namespace StarsAbove
             seenMarbleBiome = tag.GetBool("seenMarble");
 
             seenVerdantBiome = tag.GetBool("seenVerdant");
-
-
             affixItem1 = tag.Get<Item>("affixSlot1");
             affixItem2 = tag.Get<Item>("affixSlot2");
             affixItem3 = tag.Get<Item>("affixSlot3");
+
+
 
             //tag["starfarerVisibleOutfit"] = starfarerOutfitVisible;
             starfarerArmorEquipped = tag.Get<Item>("starfarerOutfitItem");
@@ -1594,50 +1747,83 @@ namespace StarsAbove
 
         public override void OnEnterWorld()
         {
-            SubworldSystem.noReturn = false; //Fix missing save and quit bug?
-
-            if (Player.whoAmI == Main.myPlayer && enableWorldLock)
+            if (SubworldSystem.noReturn == true)
             {
-                if (firstJoinedWorld == 0)
-                {
-                    firstJoinedWorld = Main.worldID;
-                    firstJoinedWorldName = Main.worldName;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue($"{Player.name} has been binded to {Main.worldName}."), 220, 100, 247); }
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue($"The Stars Above progression will only occur on this world. (Check Mod Settings if necessary)"), 255, 126, 114); }
-
-                }
-                if (Main.worldID != firstJoinedWorld)
-                {
-                    if (firstJoinedWorldName != null)
-                    {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue($"{Player.name} has already been binded to {firstJoinedWorldName}. (World ID {firstJoinedWorld})"), 220, 100, 247); }
-
-                    }
-                    else
-                    {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue($"{Player.name} has already been binded to World ID {firstJoinedWorld}."), 220, 100, 247); }
-
-                    }
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue($"Disable the client-side configuration option 'Enable Player Progress World Lock' to enable The Stars Above progression on this world."), 255, 126, 114); }
-
-                }
-
-
+                // SubworldSystem.noReturn = false; //Fix missing save and quit bug? As of 8/9/23 this is still relevant (just found that out the fun way)
 
             }
-           
+            //Load the equipment.
             if (novaGaugeUnlocked)
             {
-                StellarNovaUI._affixSlot1.Item = affixItem1;
-                StellarNovaUI._affixSlot2.Item = affixItem2;
-                StellarNovaUI._affixSlot3.Item = affixItem3;
-                //StellarNovaUI.loadPrisms = true;
-                affix1 = affixItem1.Name;
-                affix2 = affixItem2.Name;
-                affix3 = affixItem3.Name;
+                if (!affixItem1.IsAir && affixItem1.ModItem != null)
+                {
+                    StellarNovaUI._affixSlot1.Item = affixItem1;
+                    affix1 = affixItem1.Name;
+                }
+                if (!affixItem2.IsAir && affixItem3.ModItem != null)
+                {
+                    StellarNovaUI._affixSlot2.Item = affixItem2;
+                    affix2 = affixItem2.Name;
+                }
+                if (!affixItem3.IsAir && affixItem3.ModItem != null)
+                {
+                    StellarNovaUI._affixSlot3.Item = affixItem3;
+                    affix3 = affixItem3.Name;
+                }
+            }
+            else
+            {
+                //affixItem1 = null;
+                //affixItem2 = null;
+                //affixItem3 = null;
+                //StellarNovaUI._affixSlot1.Item = null;
+                //StellarNovaUI._affixSlot2.Item = null;
+                //StellarNovaUI._affixSlot3.Item = null;
             }
             StarfarerMenu._starfarerArmorSlot.Item = starfarerArmorEquipped;
             StarfarerMenu._starfarerVanitySlot.Item = starfarerVanityEquipped;
+
+            if (starfarerArmorEquipped != null && starfarerArmorEquipped.IsAir)
+            {
+
+            }
+            if (starfarerVanityEquipped != null && starfarerVanityEquipped.IsAir)
+            {
+
+            }
+            //If this is the first time a character has joined a world.
+            if (firstJoinedWorld == 0)
+            {
+                firstJoinedWorld = Main.worldID;
+                firstJoinedWorldName = Main.worldName;
+            }
+            //If the player has already joined a world...
+            if (firstJoinedWorld == Main.worldID) //If it's the same world, sync progress.
+            {
+                SyncWorldProgress = true;
+            }
+            else //If it's a different world, don't automatically sync progress.
+            {
+                SyncWorldProgress = false;
+            }
+            if (!AlwaysSyncWorldProgress)
+            {
+                //Prompt the player to sync progress or not.
+                if (firstJoinedWorld != Main.worldID)
+                {
+                    sceneID = 2;
+                    VNDialogueActive = true;
+                }
+                return;
+            }
+            else
+            {
+                //If AlwaysSyncWorldProgress is true, ignore the check.
+                SyncWorldProgress = true;
+            }
+
+
+
 
 
 
@@ -1647,7 +1833,7 @@ namespace StarsAbove
 
 
             return new[] {
-                new Item(ModContent.ItemType<SpatialDisk>()),
+                new Item(ItemType<SpatialDisk>()),
                 //new Item(ModContent.ItemType<Bifrost>()),
             };
         }
@@ -1668,8 +1854,14 @@ namespace StarsAbove
             {
                 inCombat = inCombatMax;
             }
+           
+            if(kiTwinburst == 2)
+            {
+                target.SimpleStrikeNPC(damageDone,hit.HitDirection,hit.Crit,hit.Knockback,hit.DamageType);
+                
+            }
             //Astarte Driver
-            if (Player.HasBuff(BuffType<Buffs.AstarteDriver>()) && !target.HasBuff(BuffType<Buffs.AstarteDriverEnemyCooldown>()))
+            if (Player.HasBuff(BuffType<AstarteDriver>()) && !target.HasBuff(BuffType<AstarteDriverEnemyCooldown>()))
             {
                 if (hit.Crit)
                 {
@@ -1681,10 +1873,11 @@ namespace StarsAbove
                         }
                     }
                 }
-                target.AddBuff(BuffType<Buffs.AstarteDriverEnemyCooldown>(), 60);
+                target.AddBuff(BuffType<AstarteDriverEnemyCooldown>(), 60);
                 OnEnemyHitWithNova(target, 5, ref damageDone, ref hit.Crit);
             }
-            if (target.HasBuff(BuffType<Buffs.Starblight>()) && umbralentropy == 2)
+            
+            if (target.HasBuff(BuffType<Starblight>()) && umbralentropy == 2)
             {
                 if (umbralEntropyCooldown <= 0)
                 {
@@ -1693,7 +1886,7 @@ namespace StarsAbove
                 }
             }
 
-            if (Player.HasBuff(BuffType<Buffs.SovereignDominion>()) && target.HasBuff(BuffType<Buffs.Ruination>()))
+            if (Player.HasBuff(BuffType<SovereignDominion>()) && target.HasBuff(BuffType<Ruination>()))
             {
                 if (hit.Crit)
                 {
@@ -1702,7 +1895,7 @@ namespace StarsAbove
             }
             if (ruinedKingPrism && target.life <= target.lifeMax / 2 && hit.Crit)
             {
-                target.AddBuff(BuffType<Buffs.Ruination>(), 1800);
+                target.AddBuff(BuffType<Ruination>(), 1800);
             }
             if (hit.Crit)
             {
@@ -1717,22 +1910,21 @@ namespace StarsAbove
                 {
                     //damage += target.lifeMax;
                     SoundEngine.PlaySound(StarsAboveAudio.SFX_electroSmack, Player.Center);
-
-                    Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0, 0, Mod.Find<ModProjectile>("FlashFreezeExplosion").Type, damageDone / 4, 0, Player.whoAmI, 0f);
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center.X, target.Center.Y, 0, 0, Mod.Find<ModProjectile>("FlashFreezeExplosion").Type, damageDone / 4, 0, Player.whoAmI, 0f);
                     flashFreezeCooldown = 480;
 
 
                 }
                 if (umbralentropy == 2)
                 {
-                    target.AddBuff(BuffType<Buffs.Starblight>(), 180);
+                    target.AddBuff(BuffType<Starblight>(), 180);
 
                 }
-                if (Player.HasBuff(BuffType<Buffs.AstarteDriver>()) && !target.HasBuff(BuffType<Buffs.AstarteDriverEnemyCooldown>()))
+                if (Player.HasBuff(BuffType<AstarteDriver>()) && !target.HasBuff(BuffType<AstarteDriverEnemyCooldown>()))
                 {
 
                     OnEnemyHitWithNova(target, 5, ref damageDone, ref hit.Crit);
-                    target.AddBuff(BuffType<Buffs.AstarteDriverEnemyCooldown>(), 60);
+                    target.AddBuff(BuffType<AstarteDriverEnemyCooldown>(), 60);
 
                 }
             }
@@ -1750,22 +1942,22 @@ namespace StarsAbove
                     || target.HasBuff(BuffID.Frostburn)
                     || target.HasBuff(BuffID.ShadowFlame))
                 {
-                    if (damageDone + (damageDone * 0.25) < target.life)
+                    if (damageDone + damageDone * 0.25 < target.life)
                     {
                         Rectangle textPos = new Rectangle((int)target.position.X, (int)target.position.Y - 20, target.width, target.height);
                         CombatText.NewText(textPos, new Color(255, 30, 30, 240), $"{Math.Round(damageDone * 0.2)}", false, false);
                         target.life -= (int)(damageDone * 0.25);
                     }
                 }
-                else if (damageDone + (damageDone * 0.1) < target.life)
+                else if (damageDone + damageDone * 0.1 < target.life)
                 {
                     Rectangle textPos = new Rectangle((int)target.position.X, (int)target.position.Y - 20, target.width, target.height);
                     CombatText.NewText(textPos, new Color(255, 30, 30, 240), $"{Math.Round(damageDone * 0.1)}", false, false);
                     target.life -= (int)(damageDone * 0.1);
                 }
-               
+
             }
-            if (Player.HasBuff(BuffType<Buffs.SurtrTwilight>()))
+            if (Player.HasBuff(BuffType<SurtrTwilight>()))
             {
                 target.AddBuff(BuffID.OnFire, 480);
             }
@@ -1776,17 +1968,61 @@ namespace StarsAbove
         }
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Projectile, consider using OnHitNPC instead */
         {
-            if (Player.HasBuff(BuffType<Buffs.SurtrTwilight>()) && proj.type != ProjectileType<LaevateinnDamage>())
+            if (Player.HasBuff(BuffType<SurtrTwilight>()) && proj.type != ProjectileType<LaevateinnDamage>())
             {
 
                 target.AddBuff(BuffID.OnFire, 480);
             }
-            
 
 
+            if (Player.ownedProjectileCounts[ProjectileType<UnlimitedBladeWorksBackground>()] >= 1
+                && proj.type != ProjectileType<UBWBladeFollowUp>()
+                && proj.type != ProjectileType<UBWBladeFollowUpDelay>()
+                && !Player.HasBuff(BuffType<UBWFollowUpCooldown>())
+                && chosenStarfarer == 2
+                && Player.HasBuff(BuffType<Bladeforged>()))
+            {
+                Player.AddBuff(BuffType<UBWFollowUpCooldown>(), 180);
+                for (int i = 0; i < 3; i++)
+                {
+                    float offsetAmount = i * 120;
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, 0f, 0f, ProjectileType<UBWBladeFollowUp>(), baseNovaDamageAdd, 0, Player.whoAmI, 0, offsetAmount);
+
+                }
+                int killBlades = 3;
+                if (killBlades > 0)
+                {
+                    for (int i = 0; i < Main.maxProjectiles; i++)
+                    {
+                        Projectile projTarget = Main.projectile[i];
+
+                        if (projTarget.active && projTarget.type == ProjectileType<UBWBladeProjectile>())
+                        {
+                            if (Main.rand.NextBool(3))
+                            {
+                                SoundEngine.PlaySound(SoundID.Item37, Player.Center);
+                                for (int ix = 0; ix < 30; ix++)
+                                {
+                                    Vector2 position = Vector2.Lerp(Player.Center, projTarget.Center, (float)ix / 30);
+                                    Dust d = Dust.NewDustPerfect(position, DustID.GemTopaz, null, 240, default, 0.6f);
+                                    d.fadeIn = 0.3f;
+                                    d.noGravity = true;
+
+                                }
+                                projTarget.Kill();
+                                killBlades--;
+                            }
+                            else
+                            {
+                                continue;
+                            }
+                        }
+                    }
+                }
+            }
             if (Player.HasBuff(BuffType<AstarteDriver>()) && starfarerOutfit == 3 && proj.type != ProjectileType<StarfarerFollowUp>())
             {
-                Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0f, 0f, ProjectileType<StarfarerFollowUp>(), damageDone / 3, 0, Player.whoAmI);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center.X, target.Center.Y, 0f, 0f, ProjectileType<StarfarerFollowUp>(), damageDone / 3, 0, Player.whoAmI);
 
             }
 
@@ -1799,7 +2035,7 @@ namespace StarsAbove
                 //damage += target.lifeMax;
                 SoundEngine.PlaySound(StarsAboveAudio.SFX_electroSmack, Player.Center);
 
-                Projectile.NewProjectile(null, target.Center.X, target.Center.Y, 0, 0, Mod.Find<ModProjectile>("FlashFreezeExplosion").Type, damageDone / 4, 0, Player.whoAmI, 0f);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center.X, target.Center.Y, 0, 0, Mod.Find<ModProjectile>("FlashFreezeExplosion").Type, damageDone / 4, 0, Player.whoAmI, 0f);
                 flashFreezeCooldown = 240;
 
 
@@ -1816,53 +2052,53 @@ namespace StarsAbove
 
             if (proj.type == ProjectileType<kiwamiryukenstun>())
             {
-                Player.AddBuff(BuffType<Buffs.KiwamiRyukenConfirm>(), 60);
+                Player.AddBuff(BuffType<KiwamiRyukenConfirm>(), 60);
                 for (int d = 0; d < 4; d++)
                 {
                     Dust.NewDust(target.position, target.width, target.height, 113, 0f + Main.rand.Next(-2, 2), 0f + Main.rand.Next(-2, 2), 150, default(Color), 1.5f);
                 }
             }
 
-            
-            if (proj.type == ProjectileType<Theofania>())
+
+            if (proj.type == ProjectileType<Prototokia>())
             {
-                TheofaniaOnHit(target);
-                target.AddBuff(BuffType<Buffs.VoidAtrophy1>(), 1800);
+                prototokiaOnHit(target);
+                target.AddBuff(BuffType<VoidAtrophy1>(), 1800);
                 OnEnemyHitWithNova(target, 1, ref damageDone, ref hit.Crit);
             }
 
-            if (proj.type == ProjectileType<Theofania2>())
+            if (proj.type == ProjectileType<Prototokia2>())
             {
-                if (target.HasBuff(BuffType<Buffs.VoidAtrophy1>()))
+                if (target.HasBuff(BuffType<VoidAtrophy1>()))
                 {
                     if (chosenStarfarer == 1)
                     {
-                        target.AddBuff(BuffType<Buffs.VoidAtrophy2>(), 1800);
+                        target.AddBuff(BuffType<VoidAtrophy2>(), 1800);
                     }
                     else
                     {
-                        Player.AddBuff(BuffType<Buffs.VoidStrength>(), 300);
+                        Player.AddBuff(BuffType<VoidStrength>(), 300);
                     }
 
                 }
-                TheofaniaOnHit(target);
+                prototokiaOnHit(target);
                 OnEnemyHitWithNova(target, 1, ref damageDone, ref hit.Crit);
             }
-            if (proj.type == ProjectileType<Theofania3>())
+            if (proj.type == ProjectileType<Prototokia3>())
             {
-                TheofaniaOnHit(target);
+                prototokiaOnHit(target);
                 OnEnemyHitWithNova(target, 1, ref damageDone, ref hit.Crit);
             }
             if (proj.type == ProjectileType<LaevateinnDamage>())
             {
                 OnEnemyHitWithNova(target, 2, ref damageDone, ref hit.Crit);
             }
-            if (proj.type == ProjectileType<Projectiles.StellarNovas.kiwamiryukenconfirm>())
+            if (proj.type == ProjectileType<kiwamiryukenconfirm>())
             {
                 KiwamiRyukenOnHit(target);
                 OnEnemyHitWithNova(target, 3, ref damageDone, ref hit.Crit);
             }
-            
+
         }
 
         private void OnHitStarfarerDialogue(NPC target)
@@ -1906,31 +2142,65 @@ namespace StarsAbove
                 }
             }
         }
+        public override void GetHealMana(Item item, bool quickHeal, ref int healValue)
+        {
+            if(lavenderRefrain == 2)
+            {
+                healValue /= 2;
+            }
+            base.GetHealMana(item, quickHeal, ref healValue);
+        }
 
+        public override void OnMissingMana(Item item, int neededMana)
+        {
+            if(mysticIncision == 2)
+            {
+                Player.statMana = neededMana;
+            }
+            base.OnMissingMana(item, neededMana);
+        }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            
-
+            if (arborealEchoes == 2)
+            {
+                if (target.life == target.lifeMax && target.CanBeChasedBy())
+                {
+                    modifiers.FinalDamage += 0.3f;
+                    Player.Heal(10);
+                }
+            }
+            if (kiTwinburst == 2)
+            {
+                modifiers.FinalDamage /= 2;
+            }
+            if (stayTheCourseStacks >= 0.15f && stayTheCourse == 2)
+            {
+                modifiers.CritDamage += 0.15f;
+            }
+            if (kineticConversion == 2)
+            {
+                modifiers.SourceDamage *= 0.1f + Player.velocity.Length() / 7f * 0.2f;
+            }
             if (mysticforging == 2)
             {
                 modifiers.DisableCrit();
-                modifiers.SourceDamage += (1 + (MathHelper.Lerp(0, 1, Player.GetCritChance(DamageClass.Generic) / 100)) / 2);
+                modifiers.SourceDamage += 1 + MathHelper.Lerp(0, 1, Player.GetCritChance(DamageClass.Generic) / 100) / 2;
             }
 
             if (beyondinfinity == 2 && beyondInfinityDamageMod > 0)
             {
-                modifiers.SourceDamage += (1 + beyondInfinityDamageMod);
+                modifiers.SourceDamage += 1 + beyondInfinityDamageMod;
                 beyondInfinityDamageMod = 0;
             }
 
             //Will be replaced when these bosses get their new AI.
-            
-            if (target.type == NPCType<Arbitration>())
+
+            if (target.type == NPCType<ArbitrationBoss>())
             {
                 inArbiterFightTimer = 1200;
 
             }
-            if (target.type == NPCType<Penthesilea>())
+            if (target.type == NPCType<PenthesileaBoss>())
             {
                 inPenthFightTimer = 1200;
 
@@ -1961,7 +2231,7 @@ namespace StarsAbove
             {
                 modifiers.SourceDamage += 0.5f;
             }
-            if (Player.HasBuff(BuffType<Buffs.AstarteDriver>()) && !target.HasBuff(BuffType<Buffs.AstarteDriverEnemyCooldown>()))
+            if (Player.HasBuff(BuffType<AstarteDriver>()) && !target.HasBuff(BuffType<AstarteDriverEnemyCooldown>()))
             {
                 modifiers.DamageVariationScale *= 0;
 
@@ -1973,7 +2243,7 @@ namespace StarsAbove
                     //If the attack was a crit
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod));
+                    modifiers.FinalDamage.Flat = (float)(novaCritDamage * (1 + novaCritDamageMod));
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -1986,7 +2256,7 @@ namespace StarsAbove
                 {
                     //If the attack was not a crit
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod));
+                    modifiers.FinalDamage.Flat = (float)(novaDamage * (1 + novaDamageMod));
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -1998,7 +2268,7 @@ namespace StarsAbove
                     {
                         modifiers.SetCrit();
                         modifiers.FinalDamage.Flat += baseNovaDamageAdd / 4;
-                        
+
                     }
                 }
 
@@ -2010,12 +2280,12 @@ namespace StarsAbove
 
 
             }
-            
+
 
         }
         public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Item, consider using OnHitNPC instead */
         {
-            
+
 
         }
         //Melee hits
@@ -2026,20 +2296,16 @@ namespace StarsAbove
 
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Projectile, consider using ModifyHitNPC instead */
         {
-            if (proj.type == ProjectileType<Theofania>())
+            if (proj.type == ProjectileType<UBWBladeFollowUp>() || proj.type == ProjectileType<UBWBladeFollowUpDelay>())
             {
                 modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
 
-                SoundEngine.PlaySound(StarsAboveAudio.SFX_GunbladeImpact, Player.Center);
-                screenShakeTimerGlobal = -80;
                 int uniqueCrit = Main.rand.Next(100);
                 if (uniqueCrit <= novaCritChance + novaCritChanceMod)
                 {
                     modifiers.SetCrit();
-                    novaGauge += trueNovaGaugeMax / 40;
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod));
-                    modifiers.FinalDamage *= 0.5f;//Halve the final damage again due to having two swords.
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.016f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2047,15 +2313,251 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod));
-                    modifiers.FinalDamage *= 0.5f;//Halve the final damage due to having two swords.
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.016f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
 
             }
+            if (proj.type == ProjectileType<ThundercrashDamage>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
 
-            if (proj.type == ProjectileType<Theofania2>())
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod));
+                    //modifiers.FinalDamage *= 0.02f;//Reduce the final damage due to the amount of blades.
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                }
+                else
+                {
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod));
+                    //modifiers.FinalDamage *= 0.02f;//Reduce the final damage due to the amount of blades.
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+            }
+            if (proj.type == ProjectileType<GoldenGunBullet>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.33f;
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                }
+                else
+                {
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.33f;
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+            }
+            if (proj.type == ProjectileType<SilenceSquall1>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.5f;
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                }
+                else
+                {
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.5f;
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+            }
+            if (proj.type == ProjectileType<SilenceSquall2>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.5f;
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                }
+                else
+                {
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.5f;
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+            }
+            if (proj.type == ProjectileType<SilenceSquallDamageField>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) / 8f;
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                }
+                else
+                {
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) / 8f;
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+            }
+            if (proj.type == ProjectileType<GoldenGunExplosion>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.5f;
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                }
+                else
+                {
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.5f;
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+            }
+            if (proj.type == ProjectileType<NovaBomb>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.5f;
+                    modifiers.FinalDamage *= 0.5f;
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                }
+                else
+                {
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.5f;
+                    modifiers.FinalDamage *= 0.5f;
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+            }
+            if (proj.type == ProjectileType<NovaBombExplosion>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.5f;
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                }
+                else
+                {
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.5f;
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+            }
+            if (proj.type == ProjectileType<WovenNeedle>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) / 10;
+                    modifiers.FinalDamage *= 0.5f;
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                }
+                else
+                {
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) / 10;
+                    modifiers.FinalDamage *= 0.5f;
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+            }
+            if (proj.type == ProjectileType<Threadling>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) / 10;
+                    modifiers.FinalDamage *= 0.5f;
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                }
+                else
+                {
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) / 10;
+                    modifiers.FinalDamage *= 0.5f;
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+            }
+            if (proj.type == ProjectileType<Prototokia>())
             {
                 modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
 
@@ -2067,8 +2569,14 @@ namespace StarsAbove
                     modifiers.SetCrit();
                     novaGauge += trueNovaGaugeMax / 40;
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod));
-                    modifiers.FinalDamage *= 0.5f;//Halve the final damage again due to having two swords.
+                    if (proj.penetrate < 999)
+                    {//If the projectile has penetrated at least 1 target
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.25f;
+                    }
+                    else
+                    {
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.5f;
+                    }
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2076,15 +2584,66 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod));
-                    modifiers.FinalDamage *= 0.5f;//Halve the final damage due to having two swords.
+                    if (proj.penetrate < 999)
+                    {//If the projectile has penetrated at least 1 target
+                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.25f;
+                    }
+                    else
+                    {
+                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.5f;
+                    }
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+                if (proj.penetrate < 999)
+                {//If the projectile has penetrated at least 1 target
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage
+                }
+            }
+
+            if (proj.type == ProjectileType<Prototokia2>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                SoundEngine.PlaySound(StarsAboveAudio.SFX_GunbladeImpact, Player.Center);
+                screenShakeTimerGlobal = -80;
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    modifiers.SetCrit();
+                    novaGauge += trueNovaGaugeMax / 40;
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    if (proj.penetrate < 999)
+                    {//If the projectile has penetrated at least 1 target
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.25f;
+                    }
+                    else
+                    {
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.5f;
+                    }
+
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                }
+                else
+                {
+                    modifiers.DisableCrit();
+                    if (proj.penetrate < 999)
+                    {//If the projectile has penetrated at least 1 target
+                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.25f;
+                    }
+                    else
+                    {
+                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.5f;
+                    }
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
 
 
             }
-            if (proj.type == ProjectileType<Theofania3>())
+            if (proj.type == ProjectileType<Prototokia3>())
             {
                 modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
 
@@ -2096,8 +2655,14 @@ namespace StarsAbove
                     modifiers.SetCrit();
                     novaGauge += trueNovaGaugeMax / 40;
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod));
-                    modifiers.FinalDamage *= 0.75f;//Asphodene's third Stellar Nova hit only does 25% base damage.
+                    if (proj.penetrate < 999)
+                    {//If the projectile has penetrated at least 1 target
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.08f;
+                    }
+                    else
+                    {
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.25f;
+                    }
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2105,12 +2670,17 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod));
-                    modifiers.FinalDamage *= 0.75f;//Asphodene's third Stellar Nova hit only does 25% base damage.
+                    if (proj.penetrate < 999)
+                    {//If the projectile has penetrated at least 1 target
+                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.08f;
+                    }
+                    else
+                    {
+                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.25f;
+                    }
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
-
             }
             if (proj.type == ProjectileType<LaevateinnDamage>())
             {
@@ -2121,10 +2691,15 @@ namespace StarsAbove
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) / 5;
                     if (target.HasBuff(BuffID.OnFire))
                     {
-                        modifiers.FinalDamage += 0.05f;
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) / 4;
+
+                    }
+                    else
+                    {
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) / 5;
+
                     }
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
@@ -2150,7 +2725,7 @@ namespace StarsAbove
                 }
 
             }
-            if (proj.type == ProjectileType<Projectiles.StellarNovas.kiwamiryukenconfirm>())
+            if (proj.type == ProjectileType<kiwamiryukenconfirm>())
             {
                 modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
 
@@ -2176,7 +2751,7 @@ namespace StarsAbove
                 }
 
             }
-            if (Player.HasBuff(BuffType<Buffs.AstarteDriver>()) && !target.HasBuff(BuffType<Buffs.AstarteDriverEnemyCooldown>()))
+            if (Player.HasBuff(BuffType<AstarteDriver>()) && !target.HasBuff(BuffType<AstarteDriverEnemyCooldown>()))
             {
                 modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
 
@@ -2217,7 +2792,7 @@ namespace StarsAbove
                     }
                 }
 
-                target.AddBuff(BuffType<Buffs.AstarteDriverEnemyCooldown>(), 60);
+                target.AddBuff(BuffType<AstarteDriverEnemyCooldown>(), 60);
             }
         }
 
@@ -2246,41 +2821,41 @@ namespace StarsAbove
             }
             for (int i = 0; i < 70; i++)
             {
-                int dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 31, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default(Color), 2f);
+                int dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 31, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default, 2f);
                 Main.dust[dustIndex].velocity *= 1.4f;
             }
             // Fire Dust spawn
             for (int i = 0; i < 80; i++)
             {
-                int dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 6, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default(Color), 3f);
+                int dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 6, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default, 3f);
                 Main.dust[dustIndex].noGravity = true;
                 Main.dust[dustIndex].velocity *= 5f;
-                dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 6, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default(Color), 2f);
+                dustIndex = Dust.NewDust(new Vector2(target.Center.X, target.Center.Y), 0, 0, 6, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default, 2f);
                 Main.dust[dustIndex].velocity *= 3f;
             }
             // Large Smoke Gore spawn
             for (int g = 0; g < 4; g++)
             {
-                int goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                int goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
                 Main.gore[goreIndex].scale = 1.5f;
                 Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
                 Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
-                goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
                 Main.gore[goreIndex].scale = 1.5f;
                 Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
                 Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
-                goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
                 Main.gore[goreIndex].scale = 1.5f;
                 Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
                 Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
-                goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                goreIndex = Gore.NewGore(null, new Vector2(target.position.X + (float)(target.width / 2) - 24f, target.position.Y + (float)(target.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
                 Main.gore[goreIndex].scale = 1.5f;
                 Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
                 Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
             }
         }
 
-        private void TheofaniaOnHit(NPC target)
+        private void prototokiaOnHit(NPC target)
         {
             for (int d = 0; d < 30; d++)
             {
@@ -2303,7 +2878,7 @@ namespace StarsAbove
             {
                 Dust.NewDust(target.position, target.width, target.height, 220, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1.5f);
             }
-            
+
         }
 
 
@@ -2330,7 +2905,7 @@ namespace StarsAbove
             {
                 screenCache = Main.screenPosition;
             }
-            
+
             if (screenShakeTimerGlobal < 0 && screenShakeTimerGlobal > -100)
             {
                 Main.screenPosition += new Vector2(Main.rand.Next(-screenShakeVelocity / 100, screenShakeVelocity / 100), Main.rand.Next(-screenShakeVelocity / 100, screenShakeVelocity / 100));
@@ -2347,8 +2922,41 @@ namespace StarsAbove
             }
             base.ModifyScreenPosition();
         }
+        public override void UpdateEquips()
+        {
+            if(fabledFashion == 2)
+            {
+                for (int k = 10; k < 13; k++)
+                {
+                    Item item = Player.armor[k];
+                    if (!item.IsAir && Player.IsItemSlotUnlockedAndUsable(k) && (!item.expertOnly || Main.expertMode))
+                    {
+                        Player.GrantArmorBenefits(item);
+                    }
+                }
+            }
+            
 
-       
+            //Fix old array stuff
+            if(chosenStarfarer == 2)
+            {
+               starshower = 0; //
+                ironskin = 0; //
+               evasionmastery = 0;//
+                aquaaffinity = 0;//
+                inneralchemy = 0;
+                hikari = 0;
+                livingdead = 0;
+                umbralentropy = 0;
+               celestialevanesence = 0;
+               butchersdozen = 0; //
+               mysticforging = 0;
+                flashfreeze = 0;
+            }
+
+            base.UpdateEquips();
+        }
+
         public override void SetStaticDefaults()
         {
 
@@ -2361,14 +2969,13 @@ namespace StarsAbove
             {
                 GlobalRotation = 0;
             }
+            IntroDialogueTimer--;
 
-            
             DrillMountBug();
             BossEnemySpawnModifier();
             DialogueEnemySpawnModifier();
 
             CutsceneProgress();
-
             timeAfterGettingHit++;
 
             //Stellar Array Values
@@ -2381,13 +2988,17 @@ namespace StarsAbove
             aprismatismCooldown--;
             ButchersDozen();
             MysticForging();
+            StayTheCourse();
+            MysticIncision();
             umbralEntropyCooldown--;
-
+            InevitableEnd();
+            SwiftstrikeTheory();
+            EmberFlask();
 
             DialogueScroll();
 
             AspectedDamageModification();
-
+            Armsthrift();
 
             //Prevents "unknown boss" dialogue from repeating.
             seenUnknownBossTimer--;
@@ -2412,16 +3023,16 @@ namespace StarsAbove
                 }
             }
             starfarerPromptCooldown--;
-            
-        
-            
+
+
+
             if (starfarerPromptActiveTimer < 0 && promptIsActive)
             {
                 promptDialogue = "";
                 promptIsActive = false;
                 promptDialogueScrollTimer = 0;
                 promptDialogueScrollNumber = 0;
-                starfarerPromptCooldown = (starfarerPromptCooldownMax * 60) * 60;
+                starfarerPromptCooldown = starfarerPromptCooldownMax * 60 * 60;
                 //starfarerPromptCooldown = 200;
             }
             if (cosmicPhoenixPrism)
@@ -2431,7 +3042,7 @@ namespace StarsAbove
                     Player.wingTime = 0;
                 }
             }
-            
+
             if (!Main.dedServ)
             {
                 if (NalhaunActive)
@@ -2469,30 +3080,35 @@ namespace StarsAbove
 
                 costumeChangeOpacity -= 0.1f;
 
+                GaussianBlur();
                 if (starfarerMenuActive)
                 {
-                    if (starfarerMenuUIOpacity > 1f)
-                        starfarerMenuUIOpacity = 1f;
                     starfarerMenuUIOpacity += 0.1f;
+                    gaussianBlurProgress += 0.2f;
                 }
                 else
                 {
-                    if (starfarerMenuUIOpacity < 0f)
-                        starfarerMenuUIOpacity = 0f;
                     starfarerMenuUIOpacity -= 0.1f;
                 }
                 if (novaUIActive)
                 {
-                    if (novaUIOpacity > 1f)
-                        novaUIOpacity = 1f;
+                    gaussianBlurProgress += 0.2f;
+
                     novaUIOpacity += 0.1f;
                 }
                 else
                 {
-                    if (novaUIOpacity < 0f)
-                        novaUIOpacity = 0f;
                     novaUIOpacity -= 0.1f;
                 }
+                if (stellarArray)
+                {
+                    gaussianBlurProgress += 0.2f;
+
+                }
+                starfarerMenuUIOpacity = MathHelper.Clamp(starfarerMenuUIOpacity, 0, 1);
+                novaUIOpacity = MathHelper.Clamp(novaUIOpacity, 0, 1);
+
+
                 if (descriptionY >= 40)
                 {
                     descriptionY = 40;
@@ -2533,6 +3149,8 @@ namespace StarsAbove
                     NovaCutInVelocity += 1;
 
                 }
+
+
 
                 WarriorOfLightUndertale();
 
@@ -2580,12 +3198,12 @@ namespace StarsAbove
                     Dust dust;
                     for (int d = 0; d < 50; d++)
                     {
-                        dust = Main.dust[Terraria.Dust.NewDust(Player.Center, 0, 0, 181, 0f + Main.rand.Next(-22, 22), 0f + Main.rand.Next(-22, 22), 0, new Color(255, 255, 255), 1f)];
+                        dust = Main.dust[Dust.NewDust(Player.Center, 0, 0, 181, 0f + Main.rand.Next(-22, 22), 0f + Main.rand.Next(-22, 22), 0, new Color(255, 255, 255), 1f)];
                     }
 
                     chosenStarfarerEffect = false;
                 }
-                
+
                 if (activateShockwaveEffect)
                 {
                     rippleCount = 4;
@@ -2624,7 +3242,7 @@ namespace StarsAbove
                 }
                 if (Main.netMode != NetmodeID.Server && Filters.Scene["Shockwave"].IsActive())
                 {
-                    float progress = (shockwaveProgress) / 140f;
+                    float progress = shockwaveProgress / 140f;
                     Filters.Scene["Shockwave"].GetShader().UseProgress(progress).UseOpacity(distortStrength * (1 - progress / 3f));
                 }
                 if (shockwaveProgress >= 480)
@@ -2637,7 +3255,7 @@ namespace StarsAbove
                 //Nova Gauge charging.
                 StellarNovaEnergy();
 
-                
+
             }
             playerMousePos = Main.MouseWorld;
             if (lookAtTsukiyomi)
@@ -2649,7 +3267,157 @@ namespace StarsAbove
                 tsukiyomiCameraFloat -= 0.1f;
             }
 
+
+        }
+        private void SwiftstrikeTheory()
+        {
+            if (swiftstrikeTheory == 2)
+            {
+                if (Player.immune && Player.immuneTime > 0)
+                {
+                    Player.GetAttackSpeed(DamageClass.Generic) += 0.8f;
+                }
+            }
+        }
+        private void InevitableEnd()
+        {
+            if(inevitableEnd == 2)
+            {
+                for (int i = 0; i < Main.maxNPCs; i++)
+                {
+                    NPC npc = Main.npc[i];
+                    if (npc.active && !npc.boss && npc.Distance(Player.Center) < 300 && npc.life < npc.lifeMax * 0.1 )
+                    {
+                        npc.StrikeInstantKill();//should be fine?
+
+                    }
+                }
+            }
             
+        }
+        private void MysticIncision()
+        {
+            Player.GetArmorPenetration(DamageClass.Generic) += 20f;
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                NPC npc = Main.npc[i];
+                if (npc.active && !npc.boss && npc.Distance(Player.Center) < 100)
+                {
+                    Player.GetArmorPenetration(DamageClass.Generic) += 50f;
+
+                }
+            }
+        }
+        
+        private void Armsthrift()
+        {
+            if (armsthrift == 2)
+            {
+                if (armsthriftWeaponIDOld == 0)
+                {
+                    armsthriftWeaponIDOld = Player.HeldItem.type;
+                    armsthriftWeaponTypeOld = Player.HeldItem.DamageType;
+                    return;
+                }
+                if(armsthriftWeaponIDOld != Player.HeldItem.type && !Player.HasBuff(BuffType<ArmsthriftCooldown>()) && Player.HeldItem.damage > 0)
+                {
+                    Player.AddBuff(BuffType<ArmsthriftCooldown>(), 10 * 60);
+
+                    if (armsthriftWeaponTypeOld != Player.HeldItem.DamageType)
+                    {
+                        //stronger buff
+                        Player.AddBuff(BuffType<ArmsthriftBuffStrong>(), 60 * 5);
+                    }
+                    else
+                    {
+                        //buff
+                        Player.AddBuff(BuffType<ArmsthriftBuff>(), 60 * 5);
+
+                    }
+                }
+                if(Player.HeldItem.damage > 0)
+                {
+                    armsthriftWeaponIDOld = Player.HeldItem.type;
+                    armsthriftWeaponTypeOld = Player.HeldItem.DamageType;
+                }
+                
+            }
+        }
+
+        public float gaussianBlurProgress;
+        private void GaussianBlur()
+        {
+            if(disableBlur)
+            {
+                if (Filters.Scene["GaussianBlur"].IsActive() && Main.netMode != NetmodeID.Server)
+                {
+                    Filters.Scene.Deactivate("GaussianBlur");
+
+                }
+                return;
+            }
+            gaussianBlurProgress -= 0.1f;
+            if (Filters.Scene["GaussianBlur"].IsActive() && Main.netMode != NetmodeID.Server)
+            {
+                Filters.Scene["GaussianBlur"].GetShader().UseColor((float)(gaussianBlurProgress), 1, 1);
+
+            }
+            
+            if (gaussianBlurProgress > 0f)//|| novaUIOpacity >= 1f || stellarArray || Player.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive)
+            {
+                if (!Filters.Scene["GaussianBlur"].IsActive() && Main.netMode != NetmodeID.Server)
+                {
+                    Filters.Scene.Activate("GaussianBlur").GetShader().UseColor(1,1,1);
+
+                }
+            }
+            else if(gaussianBlurProgress <= 0f)
+            {
+                if (Filters.Scene["GaussianBlur"].IsActive() && Main.netMode != NetmodeID.Server)
+                {
+                    Filters.Scene.Deactivate("GaussianBlur");
+
+                }
+            }
+            gaussianBlurProgress = MathHelper.Clamp(gaussianBlurProgress, 0f, 1f);
+        }
+
+        private void EmberFlask()
+        {
+            if (Player.HasBuff(BuffType<EmberFlaskUsed>()))
+            {
+                if (inCombat > 0)
+                {
+                    Player.AddBuff(BuffType<EmberFlaskUsed>(), 10);
+                }
+                else
+                {
+                    Player.ClearBuff(BuffType<EmberFlaskUsed>());
+                }
+            }
+        }
+        private void StayTheCourse()
+        {
+            if (inCombat > 0 && stayTheCourse == 2)
+            {
+                stayTheCourseTimer++;
+                if(stayTheCourseTimer > 60 * 10)
+                {
+                    //10 seconds has passed
+                    stayTheCourseStacks += 0.1f;
+                    stayTheCourseTimer = 0;
+                    if(stayTheCourseStacks >= 0.15f)
+                    {
+                        stayTheCourseStacks = 0.15f;
+                    }
+                }
+                //Main.NewText(stayTheCourseStacks);
+            }
+            else
+            {
+                stayTheCourseStacks = 0;
+                stayTheCourseTimer = 0;
+            }
         }
         private void CutsceneProgress()
         {
@@ -2658,52 +3426,79 @@ namespace StarsAbove
         }
         private void StellarNovaSetup()
         {
-            baseNovaDamageAdd = 2000;
+            baseNovaDamageAdd = 100;
+            if (NPC.downedSlimeKing)
+            {
+                baseNovaDamageAdd = 150;
 
+            }
+            if (NPC.downedBoss1)
+            {
+                baseNovaDamageAdd = 220;
+
+            }
+            if (NPC.downedBoss2)
+            {
+                baseNovaDamageAdd = 300;
+
+
+            }
+            if (NPC.downedBoss3)
+            {
+                baseNovaDamageAdd = 400;
+
+
+            }
+            if (Main.hardMode)
+            {
+                baseNovaDamageAdd = 900;
+
+
+            }
             if (NPC.downedMechBossAny)
             {
-                baseNovaDamageAdd = 2150;
-                
+                baseNovaDamageAdd = 1450;
+
 
             }
             if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
             {
 
                 baseNovaDamageAdd = 2350;
-                
+
             }
 
             if (NPC.downedPlantBoss)
             {
                 baseNovaDamageAdd = 3050;
-               
+
 
             }
-            
+
             if (NPC.downedGolemBoss)
             {
                 baseNovaDamageAdd = 4000;
             }
-            
+
             if (NPC.downedAncientCultist)
             {
                 baseNovaDamageAdd = 5200;
 
             }
-            
+
             if (NPC.downedMoonlord)
             {
                 baseNovaDamageAdd = 6600;
-                
+
             }
-            
+
             if (DownedBossSystem.downedWarrior)
             {
                 baseNovaDamageAdd = 17550;
-                
+
             }
-            
-            
+
+
 
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
             {
@@ -2717,8 +3512,9 @@ namespace StarsAbove
                 }
                 if ((bool)calamityMod.Call("GetBossDowned", "devourerofgods"))
                 {
-                    stellarGaugeMax++;
                     baseNovaDamageAdd = 27500;
+
+                    stellarGaugeMax++;
                     if (stellarGaugeUpgraded != 1)
                     {
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("The Stellar Array reaches new heights!"), 255, 0, 115); }
@@ -2737,19 +3533,19 @@ namespace StarsAbove
         }
         private void StellarDiskDialogue()
         {
-            if (Main.worldID == firstJoinedWorld || !enableWorldLock)
+            if (SyncWorldProgress)
             {
                 /*  if (SubworldSystem.IsActive<Observatory>() && observatoryDialogue == 0)
                   {
                       observatoryDialogue = 1;
-                      if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                          InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                       NewDiskDialogue = true;
 
                   }
                   if (observatoryDialogue == 2 && cosmicVoyageDialogue == 0)
                   {
                       cosmicVoyageDialogue = 1;
-                      if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                          InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                       NewDiskDialogue = true;
 
                   }*/
@@ -2757,28 +3553,28 @@ namespace StarsAbove
                 if (NPC.downedSlimeKing && slimeDialogue == 0)
                 {
                     slimeDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
                     if (Main.expertMode)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                         NewStellarArrayAbility = true;
                     }
                 }
                 if (NPC.downedBoss1 && eyeDialogue == 0)
                 {
                     eyeDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                     NewStellarArrayAbility = true;
 
 
                 }
-                if (eyeDialogue == 2 && astrolabeIntroDialogue == 0)
+                if (slimeDialogue == 2 && astrolabeIntroDialogue == 0)
                 {
                     astrolabeIntroDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
 
@@ -2787,7 +3583,7 @@ namespace StarsAbove
                 if (observatoryIntroDialogue == 0 && astrolabeIntroDialogue == 2 && SubworldSystem.IsActive<Observatory>())
                 {
                     observatoryIntroDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
 
@@ -2796,34 +3592,35 @@ namespace StarsAbove
                 if (NPC.downedBoss2 && corruptBossDialogue == 0)
                 {
                     corruptBossDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                     NewStellarArrayAbility = true;
 
                 }
                 if (NPC.downedQueenBee && BeeBossDialogue == 0)
                 {
                     BeeBossDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                     NewStellarArrayAbility = true;
 
                 }
+
                 if (NPC.downedBoss3 && SkeletonDialogue == 0)
                 {
                     SkeletonDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                     NewStellarArrayAbility = true;
 
                 }
                 if (NPC.downedDeerclops && DeerclopsDialogue == 0)
                 {
                     DeerclopsDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
                 }
@@ -2831,16 +3628,16 @@ namespace StarsAbove
                 {
                     WallOfFleshDialogue = 1;
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                     NewStellarArrayAbility = true;
                 }
                 if (WallOfFleshWeaponDialogue == 2 && ForceWeaponDialogue == 0)//Hardmode
                 {
                     ForceWeaponDialogue = 1;
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
                 }
@@ -2848,7 +3645,7 @@ namespace StarsAbove
                 {
                     GenocideWeaponDialogue = 1;
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
                 }
@@ -2856,18 +3653,18 @@ namespace StarsAbove
                 {
                     TakodachiWeaponDialogue = 1;
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
                 }
                 if (NPC.downedMechBoss1 && TwinsDialogue == 0)//The Twins
                 {
                     TwinsDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
                     if (bloomingflames == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                         NewStellarArrayAbility = true;
                     }
 
@@ -2877,7 +3674,7 @@ namespace StarsAbove
                 {
                     SkyStrikerWeaponDialogue = 1;
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
                 }
@@ -2885,7 +3682,7 @@ namespace StarsAbove
                 {
                     TwinStarsWeaponDialogue = 1;
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
                 }
@@ -2896,86 +3693,86 @@ namespace StarsAbove
                 {
                     if ((bool)calamityMod.Call("GetBossDowned", "desertscourge") && desertscourgeDialogue == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         desertscourgeDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "crabulon") && crabulonDialogue == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         crabulonDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "hivemind") && hivemindDialogue == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         hivemindDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "perforator") && perforatorDialogue == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         perforatorDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "slimegod") && slimegodDialogue == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         slimegodDialogue = 1;
                     }
                     //Hardmode
                     if ((bool)calamityMod.Call("GetBossDowned", "cryogen") && cryogenDialogue == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         cryogenDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "aquaticscourge") && aquaticscourgeDialogue == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         aquaticscourgeDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "brimstoneelemental") && brimstoneelementalDialogue == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         brimstoneelementalDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "calamitasClone") && calamitasDialogue == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         calamitasDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "anahitaleviathan") && leviathanDialogue == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         leviathanDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "astrumaureus") && astrumaureusDialogue == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         astrumaureusDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "plaguebringergoliath") && plaguebringerDialogue == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         plaguebringerDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "ravager") && ravagerDialogue == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         ravagerDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "astrumdeus") && astrumdeusDialogue == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         astrumdeusDialogue = 1;
                     }
@@ -2984,18 +3781,19 @@ namespace StarsAbove
                 if (NPC.downedQueenSlime && QueenSlimeDialogue == 0)
                 {
                     QueenSlimeDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
                 }
                 if (DownedBossSystem.downedNalhaun && nalhaunDialogue == 0)
                 {
                     nalhaunDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
-                    NewStellarNova = true;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+
+
+                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                     NewStellarArrayAbility = true;
 
 
@@ -3003,7 +3801,7 @@ namespace StarsAbove
                 if (DownedBossSystem.downedDioskouroi && dioskouroiDialogue == 0)
                 {
                     dioskouroiDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
                     //NewStellarNova = true;
@@ -3015,11 +3813,11 @@ namespace StarsAbove
                 if (DownedBossSystem.downedPenth && penthDialogue == 0)
                 {
                     penthDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
                     NewStellarNova = true;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                     NewStellarArrayAbility = true;
 
 
@@ -3027,7 +3825,7 @@ namespace StarsAbove
                 if (DownedBossSystem.downedArbiter && arbiterDialogue == 0)
                 {
                     arbiterDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
                     //NewStellarNova = true;
@@ -3036,25 +3834,19 @@ namespace StarsAbove
                         //if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
                         //NewStellarArrayAbility = true;
                     }
-
-
-
                 }
                 if (DownedBossSystem.downedTsuki && tsukiyomiDialogue == 0)
                 {
-                    tsukiyomiDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
-                    NewDiskDialogue = true;
-
-
-
-
-
+                    //tsukiyomiDialogue = 1;
+                    //NewDiskDialogue = true;
                 }
-                if(tsukiyomiDialogue >= 1)
+
+                if (tsukiyomiDialogue >= 1)
                 {
-                    if(edingenesisquasar == 0)
+                    if (edingenesisquasar == 0)
                     {
+                    InGameNotificationsTracker.AddNotification(new NewNovaNotification());
+
                         edingenesisquasar = 1;
                     }
                 }
@@ -3063,11 +3855,11 @@ namespace StarsAbove
                 if (NPC.downedMechBoss2 && DestroyerDialogue == 0)//The Destroyer
                 {
                     DestroyerDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
                     if (bloomingflames == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                         NewStellarArrayAbility = true;
                     }
 
@@ -3076,11 +3868,11 @@ namespace StarsAbove
                 if (NPC.downedMechBoss3 && SkeletronPrimeDialogue == 0)//Skeletron Prime
                 {
                     SkeletronPrimeDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
                     if (bloomingflames == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                         NewStellarArrayAbility = true;
                     }
 
@@ -3089,7 +3881,7 @@ namespace StarsAbove
                 if (SkeletronPrimeDialogue == 2 && TwinsDialogue == 2 && DestroyerDialogue == 2 && AllMechsDefeatedDialogue == 0)//All Mech Bosses Defeated + Dialogue read
                 {
                     AllMechsDefeatedDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
 
@@ -3099,9 +3891,9 @@ namespace StarsAbove
                 if (NPC.downedPlantBoss && PlanteraDialogue == 0)
                 {
                     PlanteraDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                     NewStellarArrayAbility = true;
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("You have acquired a new Stellar Nova!"), 190, 100, 247);}
 
@@ -3109,11 +3901,11 @@ namespace StarsAbove
                 if (NPC.downedGolemBoss && GolemDialogue == 0)
                 {
                     GolemDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
                     if (Main.expertMode)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                         NewStellarArrayAbility = true;
                     }
 
@@ -3121,7 +3913,7 @@ namespace StarsAbove
                 if (NPC.downedEmpressOfLight && EmpressDialogue == 0)
                 {
                     EmpressDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
 
@@ -3129,14 +3921,13 @@ namespace StarsAbove
                 if (NPC.downedAncientCultist && CultistDialogue == 0)
                 {
                     CultistDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
                     if (Main.expertMode)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                         NewStellarArrayAbility = true;
                     }
-                    NewStellarNova = true;
 
                 }
                 if (NPC.downedMoonlord && MoonLordDialogue == 0)
@@ -3144,10 +3935,10 @@ namespace StarsAbove
                     MoonLordDialogue = 1;
 
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                     NewStellarArrayAbility = true;
 
 
@@ -3155,21 +3946,21 @@ namespace StarsAbove
                 if (NPC.downedFishron && DukeFishronDialogue == 0)
                 {
                     DukeFishronDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
                 }
-                if((EverlastingLightEvent.isEverlastingLightPreviewActive || EverlastingLightEvent.isEverlastingLightActive) && warriorBossItemDialogue == 0 && vagrantDialogue == 2)
+                if ((EverlastingLightEvent.isEverlastingLightPreviewActive || EverlastingLightEvent.isEverlastingLightActive) && warriorBossItemDialogue == 0 && vagrantDialogue == 2 && !SubworldSystem.AnyActive())
                 {
                     warriorBossItemDialogue = 1;
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue("Common.HarshLight"), 239, 221, 106); }
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
 
                 }
-                if (EverlastingLightEvent.isEverlastingLightActive && !onEverlastingLightText)
+                if (EverlastingLightEvent.isEverlastingLightActive && !onEverlastingLightText && !SubworldSystem.AnyActive())
                 {
                     onEverlastingLightText = true;
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue("Common.EverlastingLight"), 239, 221, 106); }
-                
+
 
                 }
                 if (DownedBossSystem.downedWarrior && WarriorOfLightDialogue == 0)
@@ -3183,7 +3974,7 @@ namespace StarsAbove
                     }
 
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
                     if (BossChecklist != null)
                     {
@@ -3191,7 +3982,7 @@ namespace StarsAbove
 
                     }
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                     NewStellarArrayAbility = true;
 
 
@@ -3199,25 +3990,49 @@ namespace StarsAbove
                 if (DownedBossSystem.downedVagrant && vagrantDialogue == 0)
                 {
                     vagrantDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(Language.GetTextValue("Stellar Novas have been unlocked!"), 255, 225, 107); }
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                     NewStellarArrayAbility = true;
+
+                    InGameNotificationsTracker.AddNotification(new NewNovaNotification());
                     NewStellarNova = true;
+
+
+                }
+
+                if (DownedBossSystem.downedThespian && thespianDialogue == 0)
+                {
+                    thespianDialogue = 1;
+
+                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                    NewDiskDialogue = true;
+
+                    
+
+
+                }
+                if (DownedBossSystem.downedStarfarers && starfarerPostBattleDialogue == 0)
+                {
+                    starfarerPostBattleDialogue = 1;
+
+                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                    NewDiskDialogue = true;
+
+
 
 
                 }
                 if (NPC.downedBoss1 && NPC.downedSlimeKing && NPC.downedBoss2 && NPC.downedBoss3 && NPC.downedQueenBee && NPC.downedQueenSlime && NPC.downedEmpressOfLight && Main.hardMode && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && NPC.downedPlantBoss && NPC.downedGolemBoss && NPC.downedFishron && NPC.downedMoonlord && AllVanillaBossesDefeatedDialogue == 0)
                 {
-                    AllVanillaBossesDefeatedDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
-                    NewDiskDialogue = true;
+                    //AllVanillaBossesDefeatedDialogue = 1;
+                    //                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                    //NewDiskDialogue = true;
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
-                    NewStellarArrayAbility = true;
+                    //if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                    //NewStellarArrayAbility = true;
 
 
                 }
@@ -3225,10 +4040,10 @@ namespace StarsAbove
                 {
                     //Expert mode only
                     EverythingDefeatedDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                     NewStellarArrayAbility = true;
 
 
@@ -3237,50 +4052,67 @@ namespace StarsAbove
                 if (Player.ZoneUnderworldHeight && SkeletonWeaponDialogue == 2 && HellWeaponDialogue == 0)
                 {
                     HellWeaponDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
                 }
                 if (Player.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2 && Stellaglyph2WeaponDialogue == 0)
                 {
                     Stellaglyph2WeaponDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
                 }
                 if (SkeletonWeaponDialogue == 2 && NanomachineWeaponDialogue == 0)
                 {
                     NanomachineWeaponDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
                 }
                 //Boss Spawn items
-                if (dioskouroiBossItemDialogue == 0 && (SkeletronPrimeDialogue == 2 || TwinsDialogue == 2 || DestroyerDialogue == 2) && vagrantDialogue == 2)
+                if (vagrantBossItemDialogue == 0 && NPC.downedBoss1)
+                {
+                    vagrantBossItemDialogue = 1;
+                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                }
+                if (dioskouroiBossItemDialogue == 0 && SkeletonDialogue == 2 && vagrantDialogue == 2)
                 {
                     dioskouroiBossItemDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 151, 255, 90); }
+                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
 
                 }
-                if (penthBossItemDialogue == 0 && PlanteraDialogue == 2 && vagrantDialogue == 2)
+                if (penthBossItemDialogue == 0 && (SkeletronPrimeDialogue == 2 || TwinsDialogue == 2 || DestroyerDialogue == 2) && vagrantDialogue == 2)
                 {
                     penthBossItemDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 151, 255, 90); }
+                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+
+                }
+                if (starfarerBossItemDialogue == 0 && DownedBossSystem.downedPenth && DownedBossSystem.downedThespian && DownedBossSystem.downedDioskouroi && DownedBossSystem.downedVagrant && NPC.downedPlantBoss)
+                {
+                    starfarerBossItemDialogue = 1;
+                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+
+                }
+                if (starfarerPostBattleDialogue == 0 && DownedBossSystem.downedStarfarers)
+                {
+                    starfarerPostBattleDialogue = 1;
+                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
 
                 }
                 if (nalhaunBossItemDialogue == 0 && GolemDialogue == 2 && vagrantDialogue == 2)
                 {
 
                     nalhaunBossItemDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 151, 255, 90); }
+                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
 
                 }
-                
+
                 //Zone specific weapons do not have delay
                 if (Player.ZoneHallow && GoldWeaponDialogue == 0)
                 {
                     GoldWeaponDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
                     return;
@@ -3289,7 +4121,7 @@ namespace StarsAbove
                 if (Player.ZoneGraveyard && FarewellWeaponDialogue == 0)
                 {
                     FarewellWeaponDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                     NewDiskDialogue = true;
 
                     return;
@@ -3297,10 +4129,42 @@ namespace StarsAbove
                 }
                 if (WeaponDialogueTimer <= 0)//7200 = 2 min in between 
                 {//The order of these should not matter.
+                    if (vagrantDialogue == 2 && TrickspinWeaponDialogue == 0)
+                    {
+                        TrickspinWeaponDialogue = 1;
+                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                        NewDiskDialogue = true;
+                    }
+                    if (NPC.downedBoss2 && SoldierWeaponDialogue == 0)
+                    {
+                        SoldierWeaponDialogue = 1;
+                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                        NewDiskDialogue = true;
+                    }
+                    if (PlanteraWeaponDialogue == 2 && DreamerWeaponDialogue == 0)
+                    {
+                        DreamerWeaponDialogue = 1;
+                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                        NewDiskDialogue = true;
+                    }
+                    if (DukeFishronWeaponDialogue == 2 && KineticWeaponDialogue == 0)
+                    {
+                        KineticWeaponDialogue = 1;
+                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                        NewDiskDialogue = true;
+                    }
                     if (SkeletonDialogue == 2 && SkeletonWeaponDialogue == 0)
                     {
                         SkeletonWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -3309,7 +4173,7 @@ namespace StarsAbove
                     if (tsukiyomiDialogue == 2 && ArchitectWeaponDialogue == 0)
                     {
                         ArchitectWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
 
 
@@ -3322,7 +4186,7 @@ namespace StarsAbove
                     if (ArchitectWeaponDialogue == 2 && CosmicDestroyerWeaponDialogue == 0)
                     {
                         CosmicDestroyerWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
 
 
@@ -3335,7 +4199,7 @@ namespace StarsAbove
                     if (CosmicDestroyerWeaponDialogue == 2 && KarnaWeaponDialogue == 0)
                     {
                         KarnaWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
 
 
@@ -3350,7 +4214,7 @@ namespace StarsAbove
                         //Obtained from Arbitration now.
 
                         //MurasamaWeaponDialogue = 1;
-                        //if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                        //                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         //NewDiskDialogue = true;
                         //WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         //return;
@@ -3358,7 +4222,47 @@ namespace StarsAbove
                     if (MercyWeaponDialogue == 0 && NPC.downedGolemBoss)
                     {
                         MercyWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                        NewDiskDialogue = true;
+                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                        return;
+                    }
+                    if (ThespianWeaponDialogue == 0 && thespianDialogue == 2)
+                    {
+                        ThespianWeaponDialogue = 1;
+                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                        NewDiskDialogue = true;
+                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                        return;
+                    }
+                    if (DragaliaWeaponDialogue == 0 && ThespianWeaponDialogue == 2)
+                    {
+                        DragaliaWeaponDialogue = 1;
+                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                        NewDiskDialogue = true;
+                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                        return;
+                    }
+                    if (WavedancerWeaponDialogue == 0 && ThespianWeaponDialogue == 2)
+                    {
+                        WavedancerWeaponDialogue = 1;
+                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                        NewDiskDialogue = true;
+                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                        return;
+                    }
+                    if (ClarentWeaponDialogue == 0 && NalhaunWeaponDialogue == 2)
+                    {
+                        ClarentWeaponDialogue = 1;
+                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                        NewDiskDialogue = true;
+                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                        return;
+                    }
+                    if (GundbitWeaponDialogue == 0 && LunaticCultistWeaponDialogue == 2)
+                    {
+                        GundbitWeaponDialogue = 1;
+                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -3366,7 +4270,7 @@ namespace StarsAbove
                     if (SakuraWeaponDialogue == 0 && NPC.downedEmpressOfLight)
                     {
                         SakuraWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -3374,7 +4278,7 @@ namespace StarsAbove
                     if (EternalWeaponDialogue == 0 && NPC.downedMoonlord)
                     {
                         EternalWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -3382,7 +4286,7 @@ namespace StarsAbove
                     if (DaemonWeaponDialogue == 0 && NPC.downedMoonlord)
                     {
                         DaemonWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -3390,7 +4294,7 @@ namespace StarsAbove
                     if (OzmaWeaponDialogue == 0 && NPC.downedAncientCultist)
                     {
                         OzmaWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -3398,7 +4302,7 @@ namespace StarsAbove
                     if (UrgotWeaponDialogue == 0 && NPC.downedQueenSlime)
                     {
                         UrgotWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -3406,7 +4310,7 @@ namespace StarsAbove
                     if (BloodWeaponDialogue == 0 && NPC.downedHalloweenKing)
                     {
                         BloodWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -3414,7 +4318,7 @@ namespace StarsAbove
                     if (MorningStarWeaponDialogue == 0 && NPC.downedDeerclops)
                     {
                         MorningStarWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -3422,7 +4326,7 @@ namespace StarsAbove
                     if (VirtueWeaponDialogue == 0 && NPC.downedMoonlord)
                     {
                         VirtueWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -3430,7 +4334,7 @@ namespace StarsAbove
                     if (QueenSlimeWeaponDialogue == 0 && NPC.downedQueenSlime)
                     {
                         QueenSlimeWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -3438,7 +4342,7 @@ namespace StarsAbove
                     if (NeedlepointWeaponDialogue == 0 && NPC.downedEmpressOfLight)
                     {
                         NeedlepointWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -3446,7 +4350,7 @@ namespace StarsAbove
                     if (eyeDialogue == 2 && EyeBossWeaponDialogue == 0)
                     {
                         EyeBossWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -3455,7 +4359,7 @@ namespace StarsAbove
                     if (corruptBossDialogue == 2 && CorruptBossWeaponDialogue == 0)
                     {
                         CorruptBossWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -3465,17 +4369,18 @@ namespace StarsAbove
                     if (dioskouroiDialogue == 2 && NalhaunWeaponDialogue == 0)
                     {
                         NalhaunWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
 
                     }
-                    if (vagrantDialogue == 2 && VagrantWeaponDialogue == 0)
+                    //Vagrant weapons have been moved...
+                    if (QueenSlimeWeaponDialogue == 2 && VagrantWeaponDialogue == 0)
                     {
                         VagrantWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3485,7 +4390,7 @@ namespace StarsAbove
                     if (BeeBossDialogue == 2 && QueenBeeWeaponDialogue == 0)
                     {
                         QueenBeeWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3495,7 +4400,7 @@ namespace StarsAbove
                     if (SkeletonWeaponDialogue == 2 && OceanWeaponDialogue == 0 && Player.ZoneBeach)
                     {
                         OceanWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3505,7 +4410,7 @@ namespace StarsAbove
                     if (SkeletonWeaponDialogue == 2 && MiseryWeaponDialogue == 0)
                     {
                         MiseryWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3515,7 +4420,7 @@ namespace StarsAbove
                     if (slimeDialogue == 2 && KingSlimeWeaponDialogue == 0)
                     {
                         KingSlimeWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3525,7 +4430,7 @@ namespace StarsAbove
                     if (WallOfFleshDialogue == 2 && WallOfFleshWeaponDialogue == 0)
                     {
                         WallOfFleshWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3534,7 +4439,7 @@ namespace StarsAbove
                     if (WallOfFleshWeaponDialogue == 2 && LumaWeaponDialogue == 0)
                     {
                         LumaWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3543,7 +4448,7 @@ namespace StarsAbove
                     if ((TwinsDialogue == 2 || DestroyerDialogue == 2 || SkeletronPrimeDialogue == 2) && MechBossWeaponDialogue == 0)
                     {
                         MechBossWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3552,7 +4457,7 @@ namespace StarsAbove
                     if (TwinsDialogue == 2 && DestroyerDialogue == 2 && SkeletronPrimeDialogue == 2 && AllMechBossWeaponDialogue == 0 && MechBossWeaponDialogue == 2 && AllMechBossWeaponDialogue == 0)
                     {
                         AllMechBossWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3562,7 +4467,7 @@ namespace StarsAbove
                     if (MechBossWeaponDialogue == 2 && HullwroughtWeaponDialogue == 0)
                     {
                         HullwroughtWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3572,7 +4477,7 @@ namespace StarsAbove
                     if (HullwroughtWeaponDialogue == 2 && MonadoWeaponDialogue == 0)
                     {
                         MonadoWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3583,7 +4488,7 @@ namespace StarsAbove
                     if (PlanteraDialogue == 2 && PlanteraWeaponDialogue == 0)
                     {
                         PlanteraWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3593,7 +4498,7 @@ namespace StarsAbove
                     if (NPC.downedChristmasIceQueen && FrostMoonWeaponDialogue == 0)
                     {
                         FrostMoonWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3603,7 +4508,7 @@ namespace StarsAbove
                     if (GolemDialogue == 2 && GolemWeaponDialogue == 0)
                     {
                         GolemWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3613,7 +4518,7 @@ namespace StarsAbove
                     if (penthDialogue == 2 && PenthesileaWeaponDialogue == 0)
                     {
                         PenthesileaWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3623,7 +4528,7 @@ namespace StarsAbove
                     if (PenthesileaWeaponDialogue == 2 && MuseWeaponDialogue == 0)
                     {
                         MuseWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3633,7 +4538,7 @@ namespace StarsAbove
                     if (PlanteraWeaponDialogue == 2 && KifrosseWeaponDialogue == 0)
                     {
                         KifrosseWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3644,7 +4549,7 @@ namespace StarsAbove
                     if (nalhaunDialogue == 2 && ArbitrationWeaponDialogue == 0)
                     {
                         ArbitrationWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3654,7 +4559,7 @@ namespace StarsAbove
                     if (ArbitrationWeaponDialogue == 2 && LevinstormWeaponDialogue == 0)
                     {
                         LevinstormWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3664,7 +4569,7 @@ namespace StarsAbove
                     if (ArbitrationWeaponDialogue == 2 && ClaimhWeaponDialogue == 0)
                     {
                         ClaimhWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3674,7 +4579,7 @@ namespace StarsAbove
                     if (DukeFishronDialogue == 2 && DukeFishronWeaponDialogue == 0)
                     {
                         DukeFishronWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3684,7 +4589,7 @@ namespace StarsAbove
                     if (DukeFishronWeaponDialogue == 2 && ManiacalWeaponDialogue == 0)
                     {
                         ManiacalWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3694,7 +4599,7 @@ namespace StarsAbove
                     if (CultistDialogue == 2 && LunaticCultistWeaponDialogue == 0)
                     {
                         LunaticCultistWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3704,7 +4609,7 @@ namespace StarsAbove
                     if (MoonLordDialogue == 2 && MoonLordWeaponDialogue == 0)
                     {
                         MoonLordWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3714,7 +4619,7 @@ namespace StarsAbove
                     if (MoonLordWeaponDialogue == 2 && ShadowlessWeaponDialogue == 0)
                     {
                         ShadowlessWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3724,7 +4629,7 @@ namespace StarsAbove
                     if (WarriorOfLightDialogue == 2 && WarriorWeaponDialogue == 0)
                     {
                         WarriorWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3734,7 +4639,7 @@ namespace StarsAbove
                     if (WarriorOfLightDialogue == 2 && AuthorityWeaponDialogue == 0)
                     {
                         AuthorityWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3744,7 +4649,7 @@ namespace StarsAbove
                     if (WarriorOfLightDialogue == 2 && RedMageWeaponDialogue == 0)
                     {
                         RedMageWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3754,7 +4659,7 @@ namespace StarsAbove
                     if (WarriorOfLightDialogue == 2 && BlazeWeaponDialogue == 0)
                     {
                         BlazeWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3764,7 +4669,7 @@ namespace StarsAbove
                     if (WarriorOfLightDialogue == 2 && PickaxeWeaponDialogue == 0)
                     {
                         PickaxeWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3774,7 +4679,7 @@ namespace StarsAbove
                     if (AllMechsDefeatedDialogue == 2 && HardwareWeaponDialogue == 0)
                     {
                         HardwareWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3784,7 +4689,7 @@ namespace StarsAbove
                     if (LunaticCultistWeaponDialogue == 2 && CatalystWeaponDialogue == 0)
                     {
                         CatalystWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3794,7 +4699,7 @@ namespace StarsAbove
                     if (CatalystWeaponDialogue == 2 && UmbraWeaponDialogue == 0)
                     {
                         UmbraWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3804,16 +4709,16 @@ namespace StarsAbove
                     if (SaltwaterWeaponDialogue == 0 && NPC.downedPirates)
                     {
                         SaltwaterWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
                     }
-                    if (ClockWeaponDialogue == 0 && VagrantWeaponDialogue == 2)
+                    if (ClockWeaponDialogue == 0 && vagrantDialogue == 2)
                     {
                         ClockWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3822,7 +4727,7 @@ namespace StarsAbove
                     if (SanguineWeaponDialogue == 0 && Player.HasItem(ItemID.GuideVoodooDoll) && Player.difficulty == PlayerDifficultyID.Hardcore)
                     {
                         SanguineWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3831,7 +4736,7 @@ namespace StarsAbove
                     if (GoldlewisWeaponDialogue == 0 && NPC.downedMartians)
                     {
                         GoldlewisWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3840,7 +4745,7 @@ namespace StarsAbove
                     if (ChaosWeaponDialogue == 0 && NPC.downedQueenSlime)
                     {
                         ChaosWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3849,7 +4754,7 @@ namespace StarsAbove
                     if (GolemWeaponDialogue == 2 && SilenceWeaponDialogue == 0)
                     {
                         SilenceWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3859,7 +4764,7 @@ namespace StarsAbove
                     if (MoonLordWeaponDialogue == 2 && SoulWeaponDialogue == 0)
                     {
                         SoulWeaponDialogue = 1;
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.DiskReady"), 241, 255, 180); }
+                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -3873,13 +4778,18 @@ namespace StarsAbove
 
 
 
-                
+
                 if (NPC.downedSlimeKing && Main.expertMode == true)
                 {
 
                     if (aquaaffinity == 0)
                     {
                         aquaaffinity = 1;
+                    }
+                    if(stayTheCourse == 0)
+                    {
+                        stayTheCourse = 1;
+
                     }
                 }
                 if (NPC.downedBoss1)
@@ -3889,12 +4799,22 @@ namespace StarsAbove
                     {
                         starshower = 1;
                     }
+                    if(spectralNail == 0)
+                    {
+                        spectralNail = 1;
+
+                    }
                 }
                 if (NPC.downedBoss2) // Eater/Brain
                 {
                     if (ironskin == 0)
                     {
                         ironskin = 1;
+                    }
+                    if(armsthrift == 0)
+                    {
+                        armsthrift = 1;
+
                     }
                 }
                 if (NPC.downedQueenBee)
@@ -3903,6 +4823,11 @@ namespace StarsAbove
                     {
                         evasionmastery = 1;
                     }
+                    if(mysticIncision == 0)
+                    {
+                        mysticIncision = 1;
+
+                    }
                 }
                 if (NPC.downedBoss3) // Skeletron
                 {
@@ -3910,36 +4835,63 @@ namespace StarsAbove
                     {
                         inneralchemy = 1;
                     }
+                    if (catharsis == 0)
+                    {
+                        catharsis = 1;
+
+                    }
                 }
                 if (Main.hardMode)
                 {
-
-                    if ( healthyConfidence == 0)
+                    if (healthyConfidence == 0)
                     {
-                         healthyConfidence = 1;
+                        healthyConfidence = 1;
                     }
                 }
                 if (DownedBossSystem.downedVagrant)
                 {
-
                     novaGaugeUnlocked = true;
-                    if (theofania == 0)
+                    if (prototokia == 0)
                     {
-                        theofania = 1;
+                        chosenStellarNova = 1;
+                        prototokia = 1;
                     }
                 }
-                /*if(novaGaugeUnlocked && Main.hardMode)
+                if (NPC.downedBoss2)
                 {
-                    DownedBossSystem.downedVagrant = true;
-                }*/
+                    if (unlimitedbladeworks == 0)
+                    {
+                    InGameNotificationsTracker.AddNotification(new NewNovaNotification());
+                        NewStellarNova = true;
+                        unlimitedbladeworks = 1;
+                    }
+
+                }
+                if (NPC.downedBoss3 || Player.ZoneMeteor)
+                {
+                    if (guardianslight == 0)
+                    {
+                    InGameNotificationsTracker.AddNotification(new NewNovaNotification());
+                        NewStellarNova = true;
+                        guardianslight = 1;
+                    }
+
+                }
                 if (DownedBossSystem.downedNalhaun)
                 {
                     if (butchersdozen == 0)
                     {
                         butchersdozen = 1;
                     }
+                    if(swiftstrikeTheory == 0)
+                    {
+                        swiftstrikeTheory = 1;
+
+                    }
                     if (laevateinn == 0)
                     {
+                    InGameNotificationsTracker.AddNotification(new NewNovaNotification());
+                        NewStellarNova = true;
                         laevateinn = 1;
                     }
                 }
@@ -3948,9 +4900,16 @@ namespace StarsAbove
                     if (mysticforging == 0)
                     {
                         mysticforging = 1;
+                        lavenderRefrain = 1;
+                    }
+                    if(lavenderRefrain == 0)
+                    {
+                        lavenderRefrain = 1;
                     }
                     if (gardenofavalon == 0)
                     {
+                    InGameNotificationsTracker.AddNotification(new NewNovaNotification());
+                        NewStellarNova = true;
                         gardenofavalon = 1;
                     }
                 }
@@ -3968,7 +4927,7 @@ namespace StarsAbove
 
                     if (astralmantle == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                         NewStellarArrayAbility = true;
                         astralmantle = 1;
                     }
@@ -3989,12 +4948,22 @@ namespace StarsAbove
                     {
                         livingdead = 1;
                     }
+                    if(kineticConversion == 0)
+                    {
+                        kineticConversion = 1;
+
+                    }
                 }
                 if (NPC.downedChristmasIceQueen)
                 {
                     if (hikari == 0)
                     {
                         hikari = 1;
+                    }
+                    if(fabledFashion == 0)
+                    {
+                        fabledFashion = 1;
+
                     }
                 }
                 if (NPC.downedGolemBoss)
@@ -4010,7 +4979,7 @@ namespace StarsAbove
                 }
                 if (NPC.downedAncientCultist)
                 {
-                    
+
                 }
                 if (NPC.downedAncientCultist && Main.expertMode == true)
                 {
@@ -4018,12 +4987,22 @@ namespace StarsAbove
                     {
                         celestialevanesence = 1;
                     }
+                    if(arborealEchoes == 0)
+                    {
+                        arborealEchoes = 1;
+
+                    }
                 }
                 if (NPC.downedMoonlord)
                 {
                     if (umbralentropy == 0)
                     {
                         umbralentropy = 1;
+                    }
+                    if(kiTwinburst == 0)
+                    {
+                        kiTwinburst = 1;
+
                     }
 
                 }
@@ -4043,9 +5022,11 @@ namespace StarsAbove
 
                         flashfreeze = 1;
                     }
+                    if(inevitableEnd == 0)
+                    {
+                        inevitableEnd = 1;
 
-
-
+                    }
 
                 }
 
@@ -4055,7 +5036,7 @@ namespace StarsAbove
                     {
                         keyofchronology = 1;
                     }
-                    
+
                 }
                 if (DownedBossSystem.downedWarrior && DownedBossSystem.downedVagrant && DownedBossSystem.downedPenth && DownedBossSystem.downedNalhaun)
                 {
@@ -4063,7 +5044,7 @@ namespace StarsAbove
 
                     if (artofwar == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                         NewStellarArrayAbility = true;
                         artofwar = 1;
                     }
@@ -4075,7 +5056,7 @@ namespace StarsAbove
 
                     if (aprismatism == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                         NewStellarArrayAbility = true;
                         aprismatism = 1;
                     }
@@ -4103,7 +5084,7 @@ namespace StarsAbove
                 {
                     if (beyondtheboundary == 0)
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
                         NewStellarArrayAbility = true;
                         beyondtheboundary = 1;
                     }
@@ -4163,6 +5144,8 @@ namespace StarsAbove
                 }
                 dialogue = LangHelper.Wrap((string)VNScenes.SetupVNSystem(sceneID, sceneProgression)[13], 50);
                 //animatedDialogue = dialogue.Substring(0, dialogueScrollNumber);
+
+
             }
         }
         private void StarfarerDialogueVisibility()
@@ -4194,7 +5177,7 @@ namespace StarsAbove
             }
             if (VNDialogueActive)
             {
-
+                
 
                 if (starfarerVNDialogueVisibility < 1f)
                 {
@@ -4384,247 +5367,252 @@ namespace StarsAbove
             novaCritChanceMod = 0;
             novaCritDamageMod = 0;
             novaChargeMod = 0;
+            if (affixItem1 != null && affixItem2 != null && affixItem3 != null)
+            {
+                //TODO: replace with a better system.
+                //Just in case the idea of "different slots provide different bonuses" becomes true.
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<RefulgentPrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<RefulgentPrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<RefulgentPrism>())
+                {
+                    novaDamageMod += 0.2;//20%
+                    novaCritChanceMod -= 14;
+                    novaCritDamageMod -= 0.1;
+                    novaChargeMod += 5;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<EverflamePrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<EverflamePrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<EverflamePrism>())
+                {
+                    novaDamageMod += 0.1;
+                    novaCritChanceMod += 7;
+                    novaCritDamageMod += 0.1;
+                    novaChargeMod -= 15;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<CrystallinePrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<CrystallinePrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<CrystallinePrism>())
+                {
+                    novaDamageMod -= 0.2;
+                    novaCritChanceMod -= 7;
+                    novaCritDamageMod += 0.3;
+                    //novaChargeMod -= 15;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<VerdantPrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<VerdantPrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<VerdantPrism>())
+                {
+                    //novaDamageMod += 50;
+                    novaCritChanceMod += 21;
+                    //novaCritDamageMod += 225;
+                    novaChargeMod -= 15;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<RadiantPrism>() ||
+                     affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<RadiantPrism>() ||
+                     affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<RadiantPrism>())
+                {
+                    novaDamageMod -= 0.1;
+                    novaCritChanceMod -= 7;
+                    novaCritDamageMod -= 0.1;
+                    novaChargeMod += 15;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<ApocryphicPrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<ApocryphicPrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<ApocryphicPrism>())
+                {
+                    novaDamageMod += 0.2;
+                    novaCritChanceMod -= 14;
+                    novaCritDamageMod += 0.1;
+                    novaChargeMod -= 5;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<AlchemicPrism>() ||
+                     affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<AlchemicPrism>() ||
+                     affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<AlchemicPrism>())
+                {
+                    novaDamageMod -= 0.1;
+                    novaCritChanceMod += 14;
+                    novaCritDamageMod += 0.1;
+                    novaChargeMod -= 10;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<CastellicPrism>() ||
+                     affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<CastellicPrism>() ||
+                     affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<CastellicPrism>())
+                {
+                    novaDamageMod += 0.3;
+                    novaCritChanceMod -= 7;
+                    novaCritDamageMod -= 0.2;
+                    //novaChargeMod -= 10;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<LucentPrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<LucentPrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<LucentPrism>())
+                {
+                    novaDamageMod -= 0.3;
+                    //novaCritChanceMod -= 7;
+                    novaCritDamageMod += 0.1;
+                    novaChargeMod += 10;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<PhylacticPrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<PhylacticPrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<PhylacticPrism>())
+                {
+                    novaDamageMod -= 0.1;
+                    novaCritChanceMod += 21;
+                    //novaCritDamageMod += 75;
+                    novaChargeMod -= 10;
+                }
 
-            //Just in case the idea of "different slots provide different bonuses" becomes true.
-            if (affixItem1.type == ItemType<RefulgentPrism>() ||
-                affixItem2.type == ItemType<RefulgentPrism>() ||
-                affixItem3.type == ItemType<RefulgentPrism>())
-            {
-                novaDamageMod += 0.2;//20%
-                novaCritChanceMod -= 14;
-                novaCritDamageMod -= 0.1;
-                novaChargeMod += 5;
-            }
-            if (affixItem1.type == ItemType<EverflamePrism>() ||
-                affixItem2.type == ItemType<EverflamePrism>() ||
-                affixItem3.type == ItemType<EverflamePrism>())
-            {
-                novaDamageMod += 0.1;
-                novaCritChanceMod += 7;
-                novaCritDamageMod += 0.1;
-                novaChargeMod -= 15;
-            }
-            if (affixItem1.type == ItemType<CrystallinePrism>() ||
-                affixItem2.type == ItemType<CrystallinePrism>() ||
-                affixItem3.type == ItemType<CrystallinePrism>())
-            {
-                novaDamageMod -= 0.2;
-                novaCritChanceMod -= 7;
-                novaCritDamageMod += 0.4;
-                //novaChargeMod -= 15;
-            }
-            if (affixItem1.type == ItemType<VerdantPrism>() ||
-                affixItem2.type == ItemType<VerdantPrism>() ||
-                affixItem3.type == ItemType<VerdantPrism>())
-            {
-                //novaDamageMod += 50;
-                novaCritChanceMod += 21;
-                //novaCritDamageMod += 225;
-                novaChargeMod -= 15;
-            }
-            if (affixItem1.type == ItemType<RadiantPrism>() ||
-                 affixItem2.type == ItemType<RadiantPrism>() ||
-                 affixItem3.type == ItemType<RadiantPrism>())
-            {
-                novaDamageMod -= 0.1;
-                novaCritChanceMod -= 7;
-                novaCritDamageMod -= 0.1;
-                novaChargeMod += 15;
-            }
-            if (affixItem1.type == ItemType<ApocryphicPrism>() ||
-                affixItem2.type == ItemType<ApocryphicPrism>() ||
-                affixItem3.type == ItemType<ApocryphicPrism>())
-            {
-                novaDamageMod += 0.2;
-                novaCritChanceMod -= 14;
-                novaCritDamageMod += 0.1;
-                novaChargeMod -= 5;
-            }
-            if (affixItem1.type == ItemType<AlchemicPrism>() ||
-                 affixItem2.type == ItemType<AlchemicPrism>() ||
-                 affixItem3.type == ItemType<AlchemicPrism>())
-            {
-                novaDamageMod -= 0.1;
-                novaCritChanceMod += 14;
-                novaCritDamageMod += 0.1;
-                novaChargeMod -= 10;
-            }
-            if (affixItem1.type == ItemType<CastellicPrism>() ||
-                 affixItem2.type == ItemType<CastellicPrism>() ||
-                 affixItem3.type == ItemType<CastellicPrism>())
-            {
-                novaDamageMod += 0.3;
-                novaCritChanceMod -= 7;
-                novaCritDamageMod -= 0.2;
-                //novaChargeMod -= 10;
-            }
-            if (affixItem1.type == ItemType<LucentPrism>() ||
-                affixItem2.type == ItemType<LucentPrism>() ||
-                affixItem3.type == ItemType<LucentPrism>())
-            {
-                novaDamageMod -= 0.3;
-                //novaCritChanceMod -= 7;
-                novaCritDamageMod += 0.1;
-                novaChargeMod += 10;
-            }
-            if (affixItem1.type == ItemType<PhylacticPrism>() ||
-                affixItem2.type == ItemType<PhylacticPrism>() ||
-                affixItem3.type == ItemType<PhylacticPrism>())
-            {
-                novaDamageMod -= 0.1;
-                novaCritChanceMod += 21;
-                //novaCritDamageMod += 75;
-                novaChargeMod -= 10;
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<LightswornPrism>() ||
+                     affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<LightswornPrism>() ||
+                     affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<LightswornPrism>())
+                {
+                    lightswornPrism = true;
+                }
+                else
+                {
+                    lightswornPrism = false;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<BurnishedPrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<BurnishedPrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<BurnishedPrism>())
+                {
+                    burnishedPrism = true;
+                }
+                else
+                {
+                    burnishedPrism = false;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<GeminiPrism>() ||
+                     affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<GeminiPrism>() ||
+                     affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<GeminiPrism>())
+                {
+                    geminiPrism = true;
+                }
+                else
+                {
+                    geminiPrism = false;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<SpatialPrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<SpatialPrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<SpatialPrism>())
+                {
+                    spatialPrism = true;
+                }
+                else
+                {
+                    spatialPrism = false;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<PaintedPrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<PaintedPrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<PaintedPrism>())
+                {
+                    paintedPrism = true;
+                }
+                else
+                {
+                    paintedPrism = false;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<VoidsentPrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<VoidsentPrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<VoidsentPrism>())
+                {
+                    voidsentPrism = true;
+                }
+                //1.1.6 prisms
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<RoyalSlimePrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<RoyalSlimePrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<RoyalSlimePrism>())
+                {
+                    royalSlimePrism = true;
+                }
+                else
+                {
+                    royalSlimePrism = false;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<MechanicalPrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<MechanicalPrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<MechanicalPrism>())
+                {
+                    mechanicalPrism = true;
+                }
+                else
+                {
+                    mechanicalPrism = false;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<OvergrownPrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<OvergrownPrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<OvergrownPrism>())
+                {
+                    overgrownPrism = true;
+                }
+                else
+                {
+                    overgrownPrism = false;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<LihzahrdPrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<LihzahrdPrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<LihzahrdPrism>())
+                {
+                    lihzahrdPrism = true;
+                }
+                else
+                {
+                    lihzahrdPrism = false;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<TyphoonPrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<TyphoonPrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<TyphoonPrism>())
+                {
+                    typhoonPrism = true;
+                }
+                else
+                {
+                    typhoonPrism = false;
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<EmpressPrism>() ||
+                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<EmpressPrism>() ||
+                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<EmpressPrism>())
+                {
+                    empressPrism = true;
+                }
+                else
+                {
+                    empressPrism = false;
+                }
+                if (affixItem1 != null && !affixItem1.IsAir && affixItem1.type == ItemType<LuminitePrism>() ||
+                    affixItem2 != null && !affixItem2.IsAir && affixItem2.type == ItemType<LuminitePrism>() ||
+                    affixItem3 != null && !affixItem3.IsAir && affixItem3.type == ItemType<LuminitePrism>())
+                {
+                    luminitePrism = true;
+                }
+                else
+                {
+                    luminitePrism = false;
+                }
+                //Tier 3 Prisms
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<PrismOfTheRuinedKing>())
+                {
+                    ruinedKingPrism = true;
+
+                }
+                else
+                {
+                    ruinedKingPrism = false;
+
+                }
+                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<PrismOfTheCosmicPhoenix>())
+                {
+                    cosmicPhoenixPrism = true;
+
+                }
+                else
+                {
+                    cosmicPhoenixPrism = false;
+
+                }
             }
 
-            if (affixItem1.type == ItemType<LightswornPrism>() ||
-                 affixItem2.type == ItemType<LightswornPrism>() ||
-                 affixItem3.type == ItemType<LightswornPrism>())
-            {
-                lightswornPrism = true;
-            }
-            else
-            {
-                lightswornPrism = false;
-            }
-            if (affixItem1.type == ItemType<BurnishedPrism>() ||
-                affixItem2.type == ItemType<BurnishedPrism>() ||
-                affixItem3.type == ItemType<BurnishedPrism>())
-            {
-                burnishedPrism = true;
-            }
-            else
-            {
-                burnishedPrism = false;
-            }
-            if (affixItem1.type == ItemType<GeminiPrism>() ||
-                 affixItem2.type == ItemType<GeminiPrism>() ||
-                 affixItem3.type == ItemType<GeminiPrism>())
-            {
-                geminiPrism = true;
-            }
-            else
-            {
-                geminiPrism = false;
-            }
-            if (affixItem1.type == ItemType<SpatialPrism>() ||
-                affixItem2.type == ItemType<SpatialPrism>() ||
-                affixItem3.type == ItemType<SpatialPrism>())
-            {
-                spatialPrism = true;
-            }
-            else
-            {
-                spatialPrism = false;
-            }
-            if (affixItem1.type == ItemType<PaintedPrism>() ||
-                affixItem2.type == ItemType<PaintedPrism>() ||
-                affixItem3.type == ItemType<PaintedPrism>())
-            {
-                paintedPrism = true;
-            }
-            else
-            {
-                paintedPrism = false;
-            }
-            if (affixItem1.type == ItemType<VoidsentPrism>() ||
-                affixItem2.type == ItemType<VoidsentPrism>() ||
-                affixItem3.type == ItemType<VoidsentPrism>())
-            {
-                voidsentPrism = true;
-            }
-            //1.1.6 prisms
-            if (affixItem1.type == ItemType<RoyalSlimePrism>() ||
-                affixItem2.type == ItemType<RoyalSlimePrism>() ||
-                affixItem3.type == ItemType<RoyalSlimePrism>())
-            {
-                royalSlimePrism = true;
-            }
-            else
-            {
-                royalSlimePrism = false;
-            }
-            if (affixItem1.type == ItemType<MechanicalPrism>() ||
-                affixItem2.type == ItemType<MechanicalPrism>() ||
-                affixItem3.type == ItemType<MechanicalPrism>())
-            {
-                mechanicalPrism = true;
-            }
-            else
-            {
-                mechanicalPrism = false;
-            }
-            if (affixItem1.type == ItemType<OvergrownPrism>() ||
-                affixItem2.type == ItemType<OvergrownPrism>() ||
-                affixItem3.type == ItemType<OvergrownPrism>())
-            {
-                overgrownPrism = true;
-            }
-            else
-            {
-                overgrownPrism = false;
-            }
-            if (affixItem1.type == ItemType<LihzahrdPrism>() ||
-                affixItem2.type == ItemType<LihzahrdPrism>() ||
-                affixItem3.type == ItemType<LihzahrdPrism>())
-            {
-                lihzahrdPrism = true;
-            }
-            else
-            {
-                lihzahrdPrism = false;
-            }
-            if (affixItem1.type == ItemType<TyphoonPrism>() ||
-                affixItem2.type == ItemType<TyphoonPrism>() ||
-                affixItem3.type == ItemType<TyphoonPrism>())
-            {
-                typhoonPrism = true;
-            }
-            else
-            {
-                typhoonPrism = false;
-            }
-            if (affixItem1.type == ItemType<EmpressPrism>() ||
-                affixItem2.type == ItemType<EmpressPrism>() ||
-                affixItem3.type == ItemType<EmpressPrism>())
-            {
-                empressPrism = true;
-            }
-            else
-            {
-                empressPrism = false;
-            }
-            if (affixItem1.type == ItemType<LuminitePrism>() ||
-                affixItem2.type == ItemType<LuminitePrism>() ||
-                affixItem3.type == ItemType<LuminitePrism>())
-            {
-                luminitePrism = true;
-            }
-            else
-            {
-                luminitePrism = false;
-            }
-            //Tier 3 Prisms
-            if (affixItem1.type == ItemType<PrismOfTheRuinedKing>())
-            {
-                ruinedKingPrism = true;
 
-            }
-            else
-            {
-                ruinedKingPrism = false;
-
-            }
-            if (affixItem1.type == ItemType<PrismOfTheCosmicPhoenix>())
-            {
-                cosmicPhoenixPrism = true;
-
-            }
-            else
-            {
-                cosmicPhoenixPrism = false;
-
-            }
             //Starfarer stuff here.
             if (starfarerArmorEquipped != null)
             {
@@ -4648,6 +5636,14 @@ namespace StarsAbove
                     starfarerOutfit = 4;
                 }
 
+                if (starfarerArmorEquipped.type == ItemType<SeventhSigilAutumnAttire>())
+                {
+                    starfarerOutfit = 5;
+                }
+                if (starfarerArmorEquipped.type == ItemType<GarmentsOfWinterRainAttire>())
+                {
+                    starfarerOutfit = 6;
+                }
             }
             if (starfarerVanityEquipped != null)
             {
@@ -4666,6 +5662,14 @@ namespace StarsAbove
                 if (starfarerVanityEquipped.type == ItemType<AegisOfHopesLegacy>())
                 {
                     starfarerOutfitVanity = 4;
+                }
+                if (starfarerVanityEquipped.type == ItemType<SeventhSigilAutumnAttire>())
+                {
+                    starfarerOutfitVanity = 5;
+                }
+                if (starfarerVanityEquipped.type == ItemType<GarmentsOfWinterRainAttire>())
+                {
+                    starfarerOutfitVanity = 6;
                 }
                 if (starfarerVanityEquipped.type == ItemType<FamiliarLookingAttire>())
                 {
@@ -4695,7 +5699,34 @@ namespace StarsAbove
 
                 abilityName = NovaSetup.GetInfo(chosenStellarNova, "AbilityName", baseNovaDamageAdd);
                 abilitySubName = NovaSetup.GetInfo(chosenStellarNova, "AbilitySubName", baseNovaDamageAdd);
-                abilityDescription = NovaSetup.GetInfo(chosenStellarNova, "AbilityDescription", baseNovaDamageAdd);
+                if (chosenStellarNova == 7)//Guardian's Light
+                {
+                    if (MeleeAspect == 2)
+                    {
+                        abilityDescription = NovaSetup.GetInfo(chosenStellarNova, "AbilityDescription.Melee", baseNovaDamageAdd);
+                    }
+                    else if (RangedAspect == 2)
+                    {
+                        abilityDescription = NovaSetup.GetInfo(chosenStellarNova, "AbilityDescription.Ranged", baseNovaDamageAdd);
+                    }
+                    else if (MagicAspect == 2)
+                    {
+                        abilityDescription = NovaSetup.GetInfo(chosenStellarNova, "AbilityDescription.Magic", baseNovaDamageAdd);
+                    }
+                    else if (SummonAspect == 2)
+                    {
+                        abilityDescription = NovaSetup.GetInfo(chosenStellarNova, "AbilityDescription.Summon", baseNovaDamageAdd);
+                    }
+                    else
+                    {
+                        abilityDescription = NovaSetup.GetInfo(chosenStellarNova, "AbilityDescription.Other", baseNovaDamageAdd);
+                    }
+                }
+                else
+                {
+                    abilityDescription = NovaSetup.GetInfo(chosenStellarNova, "AbilityDescription", baseNovaDamageAdd);
+                }
+
 
                 if (chosenStarfarer == 1)
                 {
@@ -4708,7 +5739,9 @@ namespace StarsAbove
 
                 }
 
-                baseStats = "" +
+                if (chosenStellarNova != 4)
+                {
+                    baseStats = "" +
                     $"{novaDamage} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseDamage") +
                     $"\n{novaGaugeMax} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseEnergyCost") +
                     $"\n" +
@@ -4716,9 +5749,23 @@ namespace StarsAbove
                     $"\n{novaCritChance + novaCritChanceMod}% " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritChance") +
                     $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritDamage") +
                     $"\n{novaGaugeMax - novaChargeMod} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EnergyCost");
+                }
+                else
+                {
+                    baseStats = "" +
+                    $"{novaDamage} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseHealStrength") +
+                    $"\n{novaGaugeMax} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseEnergyCost") +
+                    $"\n" +
+                    $"\n{Math.Round(novaDamage * (1 + novaDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.HealStrength") +
+                    $"\n{novaCritChance + novaCritChanceMod}% " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritChance") +
+                    $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritHealStrength") +
+                    $"\n{novaGaugeMax - novaChargeMod} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EnergyCost");
+                }
+
+
 
             }
-            
+
             abilityDescription = LangHelper.Wrap(abilityDescription, 85);
             starfarerBonus = LangHelper.Wrap(starfarerBonus, 85);
         }
@@ -4937,9 +5984,9 @@ namespace StarsAbove
         }
         private void MysticForging()
         {
-            if(mysticforging == 2)
+            if (mysticforging == 2)
             {
-                Player.GetAttackSpeed(DamageClass.Generic) += (MathHelper.Lerp(0f, 0.15f, Player.GetCritChance(DamageClass.Generic) / 100));
+                Player.GetAttackSpeed(DamageClass.Generic) += MathHelper.Lerp(0f, 0.15f, Player.GetCritChance(DamageClass.Generic) / 100);
 
             }
         }
@@ -4951,28 +5998,28 @@ namespace StarsAbove
             }
             if (butchersDozenKills >= 12 && !Player.dead && Player.active)
             {
-                if (!Player.HasBuff(BuffType<Buffs.ButchersDozen>()))
+                if (!Player.HasBuff(BuffType<ButchersDozen>()))
                 {
                     /*
                     if (chosenStarfarer == 1)
                     {
                         if (Player.ownedProjectileCounts[Mod.Find<ModProjectile>("AsphodeneBurst").Type] < 1)
-                            Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("AsphodeneBurst").Type, 0, 0, Player.whoAmI, 0, 1);
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("AsphodeneBurst").Type, 0, 0, Player.whoAmI, 0, 1);
 
                     }
                     if (chosenStarfarer == 2)
                     {
                         if (Player.ownedProjectileCounts[Mod.Find<ModProjectile>("EridaniBurst").Type] < 1)
-                            Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurst").Type, 0, 0, Player.whoAmI, 0, 1);
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurst").Type, 0, 0, Player.whoAmI, 0, 1);
 
                     }*/
                     if (starfarerPromptCooldown <= 0)
                     {
                         starfarerPromptActive("onButchersDozen");
                     }
-                    
+
                 }
-                Player.AddBuff(BuffType<Buffs.ButchersDozen>(), 240);
+                Player.AddBuff(BuffType<ButchersDozen>(), 240);
                 butchersDozenKills = 0;
             }
         }
@@ -4983,12 +6030,12 @@ namespace StarsAbove
             {
                 if (betweenTheBoundaryEbb)
                 {
-                    Player.AddBuff(BuffType<Buffs.Ebb>(), 480);
+                    Player.AddBuff(BuffType<Ebb>(), 480);
                     betweenTheBoundaryEbb = false;
                 }
                 else
                 {
-                    Player.AddBuff(BuffType<Buffs.Flow>(), 480);
+                    Player.AddBuff(BuffType<Flow>(), 480);
                     betweenTheBoundaryEbb = true;
                 }
 
@@ -4999,22 +6046,22 @@ namespace StarsAbove
         }
         private void HealthyConfidence()
         {
-            if ( healthyConfidence == 2 && Player.active && !Player.dead)
+            if (healthyConfidence == 2 && Player.active && !Player.dead)
             {
-                if(healthyConfidenceHealAmount > 0)
+                if (healthyConfidenceHealAmount > 0)
                 {
                     healthyConfidenceHealTimer++;
-                    if(healthyConfidenceHealTimer >= 60)
+                    if (healthyConfidenceHealTimer >= 60)
                     {
                         healthyConfidenceHealTimer = 0;
                         Player.statLife += (int)(healthyConfidenceHealAmount * 0.1);
-                        if((int)(healthyConfidenceHealAmount * 0.1) > 0)
+                        if ((int)(healthyConfidenceHealAmount * 0.1) > 0)
                         {
                             Player.HealEffect((int)(healthyConfidenceHealAmount * 0.1));
 
                         }
                         healthyConfidenceHealAmount -= (int)(healthyConfidenceHealAmount * 0.1);
-                        
+
                     }
                 }
             }
@@ -5025,7 +6072,7 @@ namespace StarsAbove
             {
                 beyondInfinityTimer++;
             }
-            if(inCombat <= 0)
+            if (inCombat <= 0)
             {
                 beyondInfinityTimer = 0;
                 beyondInfinityDamageMod = 0;
@@ -5059,11 +6106,11 @@ namespace StarsAbove
                 {
                     if (Main.npc[i].boss && Main.npc[i].active)
                     {
-                        Player.AddBuff(BuffType<BossEnemySpawnMod>(), 10);
+                        //Player.AddBuff(BuffType<BossEnemySpawnMod>(), 10);
                     }
 
                 }
-                
+
             }
         }
         private void DialogueScroll()
@@ -5266,11 +6313,35 @@ namespace StarsAbove
             {
                 //player.maxRunSpeed += 0.1f;
             }
-            
+            if(kineticConversion == 2)
+            {
+                if (Player.velocity.Length() >= 15f && ! Player.HasBuff(BuffType<KineticConversionCooldown>()))
+                {
+                    Player.AddBuff(BuffType<Invincibility>(), 60);
+                    Player.AddBuff(BuffType<KineticConversionCooldown>(), 60 * 12);
+
+                }
+            }
+
         }
         public override void PostUpdate()
         {
+            if(catharsis == 2)
+            {
+                if (Player.statLife < oldHP)
+                {
+                    for (int i = 0; i < Main.maxNPCs; i++)
+                    {
+                        NPC npc = Main.npc[i];
+                        if (npc.active && !npc.boss && npc.Distance(Player.Center) < 100)
+                        {
+                            npc.SimpleStrikeNPC((int)(Player.GetWeaponDamage(Player.HeldItem) * 0.2), 0, false, 0, DamageClass.Generic, true, 0);
 
+                        }
+                    }
+                }
+            }
+            oldHP = Player.statLife;
             //These trigger Starfarer prompts
 
             //Debuffs / buffs(maybe later?)
@@ -5356,7 +6427,7 @@ namespace StarsAbove
             BossStarfarerPrompts();
 
             OtherModBossStarfarerPrompts();
-            
+
             //If the boss isn't listed...
             UnknownBossStarfarerPrompts();
 
@@ -5364,12 +6435,12 @@ namespace StarsAbove
             BiomePrompts();
             ModdedBiomePrompts();
 
-            
 
 
-            
-            
-            
+
+
+
+
 
             //Weather
             if (Player.ZoneRain && !seenRain)
@@ -5397,7 +6468,7 @@ namespace StarsAbove
                 starfarerPromptActive("onSandstorm");
             }
 
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.AstarteDriver>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<AstarteDriver>()))
             {
                 novaGauge = 0;
             }
@@ -5407,10 +6478,7 @@ namespace StarsAbove
             }
             astarteDriverCooldown--;
             ryukenTimer--;
-            if (NovaCutInTimer > 0)
-            {
-                novaGauge -= (trueNovaGaugeMax / 20);
-            }
+
             trueNovaGaugeMax = novaGaugeMax - novaChargeMod;
         }
         private void BiomePrompts()
@@ -6250,6 +7318,69 @@ namespace StarsAbove
                     seenUnknownBossTimer = 300;
                 }
             }
+
+            //Wrath of the Gods
+            if (ModLoader.TryGetMod("NoxusBoss", out Mod wrathOfTheGods))
+            {
+                if (NPC.AnyNPCs(wrathOfTheGods.Find<ModNPC>("NoxusEgg").Type) && !seenNoxusEgg)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onNoxusEgg");
+                    seenUnknownBossTimer = 300;
+                }
+                if (NPC.AnyNPCs(wrathOfTheGods.Find<ModNPC>("EntropicGod").Type) && !seenEntropicGod)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onEntropicGod");
+                    seenUnknownBossTimer = 300;
+                }
+                if (NPC.AnyNPCs(wrathOfTheGods.Find<ModNPC>("NamelessDeityBoss").Type) && !seenNamelessDeity)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onNamelessDeity");
+                    seenUnknownBossTimer = 300;
+                }
+            }
+            //Starlight River
+            if (ModLoader.TryGetMod("StarlightRiver", out Mod starlightRiver))
+            {
+                if (NPC.AnyNPCs(starlightRiver.Find<ModNPC>("Glassweaver").Type) && !seenGlassweaver)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onGlassweaver");
+                    seenUnknownBossTimer = 300;
+                }
+                if (NPC.AnyNPCs(starlightRiver.Find<ModNPC>("VitricBoss").Type) && !seenCeiros)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onCeiros");
+                    seenUnknownBossTimer = 300;
+                }
+                if (NPC.AnyNPCs(starlightRiver.Find<ModNPC>("SquidBoss").Type) && !seenAuroracle)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onAuroracle");
+                    seenUnknownBossTimer = 300;
+                }
+            }
         }
         private void UnknownBossStarfarerPrompts()
         {
@@ -6442,7 +7573,7 @@ namespace StarsAbove
                 starfarerPromptActive("onMoonLord");
                 seenUnknownBossTimer = 300;
             }
-            if (NPC.AnyNPCs(ModContent.NPCType<WarriorOfLightBoss>()) && !seenWarriorOfLight)
+            if (NPC.AnyNPCs(NPCType<WarriorOfLightBoss>()) && !seenWarriorOfLight)
             {
                 if (starfarerPromptCooldown > 0)
                 {
@@ -6451,7 +7582,7 @@ namespace StarsAbove
                 starfarerPromptActive("onWarriorOfLight");
                 seenUnknownBossTimer = 300;
             }
-            if (NPC.AnyNPCs(ModContent.NPCType<NPCs.Vagrant.VagrantBoss>()) && !seenVagrant)
+            if (NPC.AnyNPCs(NPCType<NPCs.Vagrant.VagrantBoss>()) && !seenVagrant)
             {
                 if (starfarerPromptCooldown > 0)
                 {
@@ -6460,7 +7591,7 @@ namespace StarsAbove
                 starfarerPromptActive("onVagrant");
                 seenUnknownBossTimer = 300;
             }
-            if (NPC.AnyNPCs(ModContent.NPCType<NPCs.Nalhaun.NalhaunBoss>()) && !seenNalhaun)
+            if (NPC.AnyNPCs(NPCType<NalhaunBoss>()) && !seenNalhaun)
             {
                 if (starfarerPromptCooldown > 0)
                 {
@@ -6469,7 +7600,7 @@ namespace StarsAbove
                 starfarerPromptActive("onNalhaun");
                 seenUnknownBossTimer = 300;
             }
-            if (NPC.AnyNPCs(ModContent.NPCType<NPCs.Penthesilea>()) && !seenPenth)
+            if (NPC.AnyNPCs(NPCType<PenthesileaBoss>()) && !seenPenth)
             {
                 if (starfarerPromptCooldown > 0)
                 {
@@ -6478,7 +7609,7 @@ namespace StarsAbove
                 starfarerPromptActive("onPenth");
                 seenUnknownBossTimer = 300;
             }
-            if (NPC.AnyNPCs(ModContent.NPCType<NPCs.Arbitration>()) && !seenArbiter)
+            if (NPC.AnyNPCs(NPCType<ArbitrationBoss>()) && !seenArbiter)
             {
                 if (starfarerPromptCooldown > 0)
                 {
@@ -6487,8 +7618,26 @@ namespace StarsAbove
                 starfarerPromptActive("onArbiter");
                 seenUnknownBossTimer = 300;
             }
+            if (NPC.AnyNPCs(NPCType<ThespianBoss>()) && !seenThespian)
+            {
+                if (starfarerPromptCooldown > 0)
+                {
+                    starfarerPromptCooldown = 0;
+                }
+                starfarerPromptActive("onThespian");
+                seenUnknownBossTimer = 300;
+            }
+            if (NPC.AnyNPCs(NPCType<StarfarerBoss>()) && !seenStarfarers)
+            {
+                if (starfarerPromptCooldown > 0)
+                {
+                    starfarerPromptCooldown = 0;
+                }
+                starfarerPromptActive("onStarfarerBoss");
+                seenUnknownBossTimer = 300;
+            }
         }
-       
+
         private void OnKillEnemy(NPC npc)
         {
             if (aquaaffinity == 2)//Cyclic Hunter
@@ -6496,7 +7645,7 @@ namespace StarsAbove
 
                 if (ammoRecycleCooldown <= 0)
                 {
-                    Player.AddBuff(BuffType<Buffs.AmmoRecycle>(), 30);
+                    Player.AddBuff(BuffType<AmmoRecycle>(), 30);
                     ammoRecycleCooldown = 120;
                     Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
                     CombatText.NewText(textPos, new Color(81, 62, 247, 240), $"{12 + (int)(npc.lifeMax * 0.05)}", false, false);
@@ -6519,7 +7668,7 @@ namespace StarsAbove
             //
             if (starfarerOutfit == 3)//Celestial
             {
-                
+
                 if (!npc.SpawnedFromStatue)
                 {
                     if (Player.HasBuff(BuffType<AstarteDriver>()))
@@ -6529,7 +7678,7 @@ namespace StarsAbove
                 }
 
             }
-            
+
         }
 
         private void TsukiyomiTeleport(NPC npc)
@@ -6568,83 +7717,78 @@ namespace StarsAbove
                 }
             }
         }
-       
-        
+
+
         private void PenthTeleport(NPC npc)
         {
-            if (inPenthFightTimer > 0 && Player.immuneTime <= 0)
-            {
-                int halfWidth = Penthesilea.arenaWidth / 2;
-                int halfHeight = Penthesilea.arenaHeight / 2;
-                Vector2 newPosition = Player.position;
-                if (Player.position.X <= npc.Center.X - halfWidth)
-                {
-
-                    newPosition.X = npc.Center.X - halfWidth + 1;
-                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
-                    {
-                        newPosition.X += 16f;
-                    }
-                }
-                else if (Player.position.X + Player.width >= npc.Center.X + halfWidth)
-                {
-                    newPosition.X = npc.Center.X + halfWidth - Player.width - 1;
-                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
-                    {
-                        newPosition.X -= 16f;
-                    }
-                }
-                else if (Player.position.Y <= npc.Center.Y - halfHeight)
-                {
-                    newPosition.Y = npc.Center.Y - halfHeight + 1;
-                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
-                    {
-                        newPosition.Y += 16f;
-                    }
-                }
-                else if (Player.position.Y + Player.height >= npc.Center.Y + halfHeight)
-                {
-
-
-                    newPosition.Y = npc.Center.Y + halfHeight - Player.height - 1;
-                    while (Collision.SolidCollision(newPosition, Player.width, Player.height))
-                    {
-                        newPosition.Y -= 16f;
-                    }
-                }
-                if (newPosition != Player.position)
-                {
-                    Player.Teleport(newPosition, 1, 0);
-                    NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, Player.whoAmI, newPosition.X, newPosition.Y, 1, 0, 0);
-
-                }
-            }
+            
 
         }
         public static bool SameTeam(Player player1, Player player2)
         {
-            
+
             if (player1.whoAmI == player2.whoAmI) return true;
-            
+
             if (player1.team > 0 && player1.team != player2.team) return false;
-            
+
             if (player1.hostile && player2.hostile && (player1.team == 0 || player2.team == 0)) return false;
-            
+
             return true;
         }
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            if (Main.LocalPlayer.active && !Main.LocalPlayer.dead && !Player.GetModPlayer<BossPlayer>().QTEActive)
+            if (Main.LocalPlayer.active && !Main.LocalPlayer.dead && !Player.GetModPlayer<BossPlayer>().QTEActive && novaDrain <= 0)
             {
+                if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+                {
+                    if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("DevourerofGodsBody").Type) && StarsAbove.novaKey.JustPressed)
+                    {
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.BlockedNova"), 241, 255, 180); }
+                        return;
+                    }
+                }
+
+                if (chosenStellarNova == 6 && Player.ownedProjectileCounts[ProjectileType<UnlimitedBladeWorksBackground>()] >= 1)
+                {
+                    return;
+                }
+
                 EdinGenesisQuasar();
-                if (chosenStellarNova == 1 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && chosenStellarNova != 0 && Main.LocalPlayer.HasBuff(BuffType<Buffs.TheofaniaTricast>()))//Theofania Tricast
+                if (squallReady && Player.ownedProjectileCounts[ProjectileType<SilenceSquall1>()] <= 0)
+                {
+                    squallReady = false;
+                    //Silence and Squall
+                    SoundEngine.PlaySound(StarsAboveAudio.SFX_SilenceSquall2, Player.Center);
+                    Vector2 Target = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 30f;
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Target, ProjectileType<SilenceSquall2>(), novaDamage, 0, Player.whoAmI);
+
+                    for (int d = 0; d < 37; d++)//Visual effects
+                    {
+                        Vector2 perturbedSpeed = new Vector2(Target.X, Target.Y).RotatedByRandom(MathHelper.ToRadians(8));
+                        float scale = 1f - Main.rand.NextFloat() * 1f;
+                        perturbedSpeed = perturbedSpeed * scale;
+                        int dustIndex = Dust.NewDust(Player.Center, 0, 0, DustID.GemSapphire, perturbedSpeed.X, perturbedSpeed.Y, 150, default, 2f);
+                        Main.dust[dustIndex].noGravity = true;
+
+                    }
+                }
+                if (chosenStellarNova == 7 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && Player.HasBuff(BuffType<BearerOfLight>()) || Player.HasBuff(BuffType<BearerOfDarkness>()))
+                {
+                    if (goldenGunShots > 0)
+                    {
+                        goldenGunShots--;
+                        FireGoldenGunBullet();
+                    }
+
+                }
+                if (chosenStellarNova == 1 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && Main.LocalPlayer.HasBuff(BuffType<PrototokiaTricast>()))//prototokia Tricast
                 {
 
                     if (Player.whoAmI == Main.myPlayer)
                     {
                         //
                         for (int i = 0; i < Player.CountBuffs(); i++)
-                            if (Player.buffType[i] == BuffType<Buffs.TheofaniaTricast>())
+                            if (Player.buffType[i] == BuffType<PrototokiaTricast>())
                             {
                                 Player.DelBuff(i);
 
@@ -6652,28 +7796,28 @@ namespace StarsAbove
                             }
                         for (int d = 0; d < 105; d++)
                         {
-                            Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                            Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                         }
                         for (int d = 0; d < 105; d++)
                         {
-                            Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                            Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                         }
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, Player.Center);
+                        SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, Player.Center);
 
-                        Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, Mod.Find<ModProjectile>("Theofania3").Type, novaDamage, 4, Player.whoAmI, 0, 1);                                                                                                                                                             //Vector2 mousePosition = Main.MouseWorld;
-                                                                                                                                                                                                                                                                                                                                                                 //Projectile.NewProjectile(null,new Vector2(player.Center.X - 100, player.Center.Y), Vector2.Zero, mod.ProjectileType("Theofania2"), novaDamage + novaDamageMod, 4, player.whoAmI, 0, 1);                                                                                                                                                                                                                                                                                                                                             //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
-                                                                                                                                                                                                                                                                                                                                                                 //Projectile.NewProjectile(null,player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
+                        Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<Prototokia3>(), novaDamage, 4, Player.whoAmI, 0, 1);                                                                                                                                                             //Vector2 mousePosition = Main.MouseWorld;
+                                                                                                                                                                                                                                                                                                                                                                           //Projectile.NewProjectile(Player.GetSource_FromThis(),new Vector2(player.Center.X - 100, player.Center.Y), Vector2.Zero, mod.ProjectileType("prototokia2"), novaDamage + novaDamageMod, 4, player.whoAmI, 0, 1);                                                                                                                                                                                                                                                                                                                                             //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
+                                                                                                                                                                                                                                                                                                                                                                           //Projectile.NewProjectile(Player.GetSource_FromThis(),player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
 
                     }
                 }
                 //dualCast
-                if (chosenStellarNova == 1 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && chosenStellarNova != 0 && Main.LocalPlayer.HasBuff(BuffType<Buffs.TheofaniaDualcast>()))//Theofania Dualcast
+                if (chosenStellarNova == 1 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && Main.LocalPlayer.HasBuff(BuffType<PrototokiaDualcast>()))//prototokia Dualcast
                 {
                     if (Player.whoAmI == Main.myPlayer)
                     {
                         //
                         for (int i = 0; i < Player.CountBuffs(); i++)
-                            if (Player.buffType[i] == BuffType<Buffs.TheofaniaDualcast>())
+                            if (Player.buffType[i] == BuffType<PrototokiaDualcast>())
                             {
                                 Player.DelBuff(i);
 
@@ -6681,19 +7825,19 @@ namespace StarsAbove
                             }
                         for (int d = 0; d < 105; d++)
                         {
-                            Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                            Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                         }
                         for (int d = 0; d < 105; d++)
                         {
-                            Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                            Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                         }
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, Player.Center);
+                        SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, Player.Center);
 
-                        Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, Mod.Find<ModProjectile>("Theofania2").Type, novaDamage, 4, Player.whoAmI, 0, 1);                                                                                                                                                             //Vector2 mousePosition = Main.MouseWorld;
-                                                                                                                                                                                                                                                                                                                                                                 //Projectile.NewProjectile(null,new Vector2(player.Center.X - 100, player.Center.Y), Vector2.Zero, mod.ProjectileType("Theofania2"), novaDamage + novaDamageMod, 4, player.whoAmI, 0, 1);                                                                                                                                                                                                                                                                                                                                             //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
+                        Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<Prototokia2>(), novaDamage, 4, Player.whoAmI, 0, 1);                                                                                                                                                             //Vector2 mousePosition = Main.MouseWorld;
+                                                                                                                                                                                                                                                                                                                                                                           //Projectile.NewProjectile(Player.GetSource_FromThis(),new Vector2(player.Center.X - 100, player.Center.Y), Vector2.Zero, mod.ProjectileType("prototokia2"), novaDamage + novaDamageMod, 4, player.whoAmI, 0, 1);                                                                                                                                                                                                                                                                                                                                             //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
                         if (chosenStarfarer == 1)
                         {
-                            Player.AddBuff(BuffType<Buffs.TheofaniaTricast>(), 600);
+                            Player.AddBuff(BuffType<PrototokiaTricast>(), 600);
 
                         }
 
@@ -6710,98 +7854,90 @@ namespace StarsAbove
                             SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, Player.Center);
                             for (int d = 0; d < 105; d++)
                             {
-                                Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                                Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                             }
                             for (int d = 0; d < 105; d++)
                             {
-                                Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                                Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                             }
                             if (chosenStarfarer == 1)
                             {
-                                Player.AddBuff(BuffType<Buffs.KiwamiRyuken>(), 60);
+                                Player.AddBuff(BuffType<KiwamiRyuken>(), 60);
 
                             }
                             else
                             {
-                                Player.AddBuff(BuffType<Buffs.KiwamiRyuken>(), 60);
+                                Player.AddBuff(BuffType<KiwamiRyuken>(), 60);
 
                             }
 
-                            //Projectile.NewProjectile(null,new Vector2(player.Center.X, player.Center.Y - 860), Vector2.Zero, mod.ProjectileType("Laevateinn"), novaDamage + novaDamageMod, 4, player.whoAmI, 0, 1);//The 1 here means that ai1 will be set to 1. this is good for the first cast.
+                            //Projectile.NewProjectile(Player.GetSource_FromThis(),new Vector2(player.Center.X, player.Center.Y - 860), Vector2.Zero, mod.ProjectileType("Laevateinn"), novaDamage + novaDamageMod, 4, player.whoAmI, 0, 1);//The 1 here means that ai1 will be set to 1. this is good for the first cast.
                             //Vector2 mousePosition = Main.MouseWorld;
                             //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
-                            //Projectile.NewProjectile(null,player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
+                            //Projectile.NewProjectile(Player.GetSource_FromThis(),player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
                         }
                     }
                 }
                 else
+                //This is the Stellar Nova code (barring unique ones like prototokia dualcast or kiwami ryuken
                 if (novaGauge == trueNovaGaugeMax && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && chosenStellarNova != 0)
                 {
                     StellarNovaCutIn();
-                    Player.GetModPlayer<StarsAbovePlayer>().activateShockwaveEffect = true;
+                    //Player.GetModPlayer<StarsAbovePlayer>().activateShockwaveEffect = true;
 
 
                     if (Player.whoAmI == Main.myPlayer)
                     {
                         //Activate the Stellar Novas here.
-                        if (chosenStellarNova == 1)//Theofania Inanis
+                        if (chosenStellarNova == 1)//Prototokia Aster
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, Player.Center);
-                            Player.AddBuff(BuffType<Buffs.TheofaniaDualcast>(), 600);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, Player.Center);
+                            Player.AddBuff(BuffType<PrototokiaDualcast>(), 600);
                             for (int d = 0; d < 105; d++)
                             {
-                                Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                                Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                             }
                             for (int d = 0; d < 105; d++)
                             {
-                                Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                                Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                             }
 
-                            Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, Mod.Find<ModProjectile>("Theofania").Type, novaDamage, 4, Player.whoAmI, 0, 1);//The 1 here means that ai1 will be set to 1. this is good for the first cast.
-                                                                                                                                                                                                       //Vector2 mousePosition = Main.MouseWorld;
-                                                                                                                                                                                                       //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
-                                                                                                                                                                                                       //Projectile.NewProjectile(null,player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<Prototokia>(), novaDamage, 4, Player.whoAmI, 0, 1);//The 1 here means that ai1 will be set to 1. this is good for the first cast.
+                                                                                                                                                                                                                 //Vector2 mousePosition = Main.MouseWorld;
+                                                                                                                                                                                                                 //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
+                                                                                                                                                                                                                 //Projectile.NewProjectile(Player.GetSource_FromThis(),player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
                             onActivateStellarNova();
                         }
-                    }
-
-                    if (Player.whoAmI == Main.myPlayer)
-                    {
-                        //Activate the Stellar Novas here.
                         if (chosenStellarNova == 2)//Ars Laevateinn
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_theofaniaActive, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, Player.Center);
                             for (int d = 0; d < 105; d++)
                             {
-                                Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                                Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                             }
                             for (int d = 0; d < 105; d++)
                             {
-                                Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                                Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                             }
 
-                            Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y - 860), Vector2.Zero, Mod.Find<ModProjectile>("Laevateinn").Type, novaDamage, 4, Player.whoAmI, 0, 1);//The 1 here means that ai1 will be set to 1. this is good for the first cast.
-                            Player.AddBuff(BuffType<Buffs.SurtrTwilight>(), 600);                                                                                                        //Vector2 mousePosition = Main.MouseWorld;
-                                                                                                                                                                                         //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
-                            onActivateStellarNova();                                                                                                                                                           //Projectile.NewProjectile(null,player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 860), Vector2.Zero, Mod.Find<ModProjectile>("Laevateinn").Type, novaDamage, 4, Player.whoAmI, 0, 1);//The 1 here means that ai1 will be set to 1. this is good for the first cast.
+                            Player.AddBuff(BuffType<SurtrTwilight>(), 600);                                                                                                        //Vector2 mousePosition = Main.MouseWorld;
+                                                                                                                                                                                   //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
+                            onActivateStellarNova();                                                                                                                                                           //Projectile.NewProjectile(Player.GetSource_FromThis(),player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
                         }
-                    }
-                    if (Player.whoAmI == Main.myPlayer)
-                    {
-                        //Activate the Stellar Novas here.
                         if (chosenStellarNova == 4)//The Garden of Avalon
                         {
-                            //Main.PlaySound(SoundLoader.customSoundType, (int)player.Center.X, (int)player.Center.Y, mod.GetSoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Custom/theofaniaActive"));
+                            //Main.PlaySound(SoundLoader.customSoundType, (int)player.Center.X, (int)player.Center.Y, mod.GetSoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Custom/prototokiaActive"));
                             for (int d = 0; d < 105; d++)
                             {
-                                Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                                Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                             }
                             for (int d = 0; d < 105; d++)
                             {
-                                Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                                Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                             }
 
-                            Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y - 860), Vector2.Zero, Mod.Find<ModProjectile>("GardenOfAvalon").Type, novaDamage, 4, Player.whoAmI, 0, 1);//The 1 here means that ai1 will be set to 1. this is good for the first cast.
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 860), Vector2.Zero, Mod.Find<ModProjectile>("GardenOfAvalon").Type, novaDamage, 4, Player.whoAmI, 0, 1);//The 1 here means that ai1 will be set to 1. this is good for the first cast.
                             onActivateStellarNova();
                             //player.AddBuff(BuffType<Buffs.GardenOfAvalon>(), (novaDamage / 100));                                                                                                                                                                             //Vector2 mousePosition = Main.MouseWorld;
                             SoundEngine.PlaySound(StarsAboveAudio.SFX_GardenOfAvalonActivated, Player.Center);
@@ -6812,20 +7948,20 @@ namespace StarsAbove
                             Player.AddBuff(BuffType<Buffs.GardenOfAvalon>(), 8 * 60);
                             if (chosenStarfarer == 2)
                             {
-                                Player.AddBuff(BuffType<Buffs.DreamlikeCharisma>(), 8 * 60);
+                                Player.AddBuff(BuffType<DreamlikeCharisma>(), 8 * 60);
 
                             }
 
 
                             if (chosenStarfarer == 1)
                             {
-                                Player.AddBuff(BuffType<Buffs.Invincibility>(), (4 * 60));
+                                Player.AddBuff(BuffType<Invincibility>(), 4 * 60);
                                 Player.statLife += 100;
 
                             }
                             else
                             {
-                                Player.AddBuff(BuffType<Buffs.Invincibility>(), (2 * 60));
+                                Player.AddBuff(BuffType<Invincibility>(), 2 * 60);
                             }
                             int uniqueCrit = Main.rand.Next(100);
                             if (uniqueCrit <= novaCritChance + novaCritChanceMod)
@@ -6836,7 +7972,7 @@ namespace StarsAbove
                                 Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 40, Player.width, Player.height); //Heal
                                 CombatText.NewText(textPos, new Color(63, 221, 53, 240), $"{(int)(novaCritDamage * (1 + novaCritDamageMod))}", false, false);
                                 Player.statLife += (int)(novaCritDamage * (1 + novaCritDamageMod));
-                                Player.AddBuff(BuffType<Buffs.SolemnAegis>(), (15 * 60));
+                                Player.AddBuff(BuffType<SolemnAegis>(), 15 * 60);
                             }
                             else
                             {
@@ -6845,24 +7981,156 @@ namespace StarsAbove
 
 
                         }
-                    }
-                    if (Player.whoAmI == Main.myPlayer)
-                    {
-                        //Activate the Stellar Novas here.
                         if (chosenStellarNova == 5)//Edin Shugra Quasar
                         {
 
 
                             onActivateStellarNova();
                             astarteCutsceneProgress = 180;
-                            Player.AddBuff(BuffType<Buffs.AstarteDriverPrep>(), 180);                                                                                                        //Vector2 mousePosition = Main.MouseWorld;
-                            Player.AddBuff(BuffType<Buffs.Invincibility>(), 400);                                                                                                        //Vector2 mousePosition = Main.MouseWorld;
-                                                                                                                                                                                             //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
-                                                                                                                                                                                             //Projectile.NewProjectile(null,player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
+                            Player.AddBuff(BuffType<AstarteDriverPrep>(), 180);
+                            Player.AddBuff(BuffType<Invincibility>(), 400);
+
+
+                        }
+                        if (chosenStellarNova == 6)//Unlimited Blade Works
+                        {
+
+
+                            onActivateStellarNova();
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, Player.Center);
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<UnlimitedBladeWorksBackground>(), novaDamage, 0, Player.whoAmI, 0, trueNovaGaugeMax / 10 * 60);
+
+                        }
+                        if (chosenStellarNova == 7)//Guardian's Light
+                        {
+                            onActivateStellarNova();
+
+                            if (MeleeAspect == 2)
+                            {
+                                //Thundercrash
+                                Player.AddBuff(BuffType<BearerOfLight>(), 60 * 10);
+                                SoundEngine.PlaySound(StarsAboveAudio.SFX_ThundercrashStart, Player.Center);
+
+                                //Give player velocity towards their cursor, give Invincibility, give a active hitbox that detonates on the first foe struck (pierce 1)
+                                Vector2 Leap = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 10f;
+                                Player.velocity = Leap;
+                                Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<ThundercrashDamage>(), novaDamage, 0, Player.whoAmI);
+                                Player.AddBuff(BuffType<ThundercrashActive>(), 60);
+                                Player.AddBuff(BuffType<Invincibility>(), 180);
+                                return;
+                            }
+                            else if (RangedAspect == 2)
+                            {
+                                Player.AddBuff(BuffType<BearerOfLight>(), 60 * 10);
+
+                                //Golden Gun
+                                //Fire 1 shot and grant 2 more shots later
+
+                                FireGoldenGunBullet();
+                                goldenGunShots = 2;
+                                return;
+                            }
+                            else if (MagicAspect == 2)
+                            {
+                                Player.AddBuff(BuffType<BearerOfLight>(), 60 * 10);
+
+                                //Nova Bomb
+
+
+                                SoundEngine.PlaySound(StarsAboveAudio.SFX_NovaBomb, Player.Center);
+                                Vector2 Target = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 10f;
+                                Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Target, ProjectileType<NovaBomb>(), novaDamage, 0, Player.whoAmI);
+
+                                for (int d = 0; d < 57; d++)//Visual effects
+                                {
+                                    Vector2 perturbedSpeed = new Vector2(Target.X, Target.Y).RotatedByRandom(MathHelper.ToRadians(20));
+                                    float scale = 2f - Main.rand.NextFloat() * 1f;
+                                    perturbedSpeed = perturbedSpeed * scale;
+                                    int dustIndex = Dust.NewDust(Player.Center, 0, 0, DustID.GemAmethyst, perturbedSpeed.X, perturbedSpeed.Y, 150, default, 2f);
+                                    Main.dust[dustIndex].noGravity = true;
+
+                                }
+                                return;
+                            }
+                            else if (SummonAspect == 2)
+                            {
+                                Player.AddBuff(BuffType<BearerOfDarkness>(), 60 * 10);
+                                SoundEngine.PlaySound(StarsAboveAudio.SFX_Needlestorm, Player.Center);
+
+                                //Needlestorm
+                                Vector2 Target = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 30f;
+
+                                float numberProjectiles = 5;
+                                float adjustedRotation = MathHelper.ToRadians(72);
+
+                                for (int i = 0; i < numberProjectiles; i++)
+                                {
+                                    Vector2 perturbedSpeed = Target.RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
+                                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, ProjectileType<WovenNeedle>(), novaDamage, 0, Main.myPlayer);
+                                }
+                                for (int d = 0; d < 37; d++)//Visual effects
+                                {
+                                    Vector2 perturbedSpeed = new Vector2(Target.X, Target.Y).RotatedByRandom(MathHelper.ToRadians(68));
+                                    float scale = 1f - Main.rand.NextFloat() * 1f;
+                                    perturbedSpeed = perturbedSpeed * scale;
+                                    int dustIndex = Dust.NewDust(Player.Center, 0, 0, DustID.GemEmerald, perturbedSpeed.X, perturbedSpeed.Y, 150, default, 1f);
+                                    Main.dust[dustIndex].noGravity = true;
+
+                                }
+                                return;
+                            }
+                            else
+                            {
+
+                                //Silence and Squall
+                                SoundEngine.PlaySound(StarsAboveAudio.SFX_SilenceSquall2, Player.Center);
+                                Vector2 Target = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 30f;
+
+                                Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Target, ProjectileType<SilenceSquall1>(), novaDamage, 0, Player.whoAmI);
+
+                                for (int d = 0; d < 37; d++)//Visual effects
+                                {
+                                    Vector2 perturbedSpeed = new Vector2(Target.X, Target.Y).RotatedByRandom(MathHelper.ToRadians(8));
+                                    float scale = 1f - Main.rand.NextFloat() * 1f;
+                                    perturbedSpeed = perturbedSpeed * scale;
+                                    int dustIndex = Dust.NewDust(Player.Center, 0, 0, DustID.GemSapphire, perturbedSpeed.X, perturbedSpeed.Y, 150, default, 2f);
+                                    Main.dust[dustIndex].noGravity = true;
+
+                                }
+                                squallReady = true;
+                                Player.AddBuff(BuffType<BearerOfDarkness>(), 60 * 10);
+
+                                return;
+                            }
+
+
+
+                            // Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<UnlimitedBladeWorksBackground>(), novaDamage, 0, Player.whoAmI, 0, (trueNovaGaugeMax / 10) * 60);
+
                         }
                     }
 
                 }
+            }
+        }
+
+        private void FireGoldenGunBullet()
+        {
+            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<GoldenGunHeld>(), 0, 0, Player.whoAmI);
+
+
+            SoundEngine.PlaySound(StarsAboveAudio.SFX_FireGoldenGun, Player.Center);
+            Vector2 Target = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 40f;
+            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Target, ProjectileType<GoldenGunBullet>(), novaDamage, 0, Player.whoAmI);
+
+            for (int d = 0; d < 37; d++)//Visual effects
+            {
+                Vector2 perturbedSpeed = new Vector2(Target.X, Target.Y).RotatedByRandom(MathHelper.ToRadians(8));
+                float scale = 1f - Main.rand.NextFloat() * 1f;
+                perturbedSpeed = perturbedSpeed * scale;
+                int dustIndex = Dust.NewDust(Player.Center, 0, 0, DustID.GemTopaz, perturbedSpeed.X, perturbedSpeed.Y, 150, default, 2f);
+                Main.dust[dustIndex].noGravity = true;
+
             }
         }
 
@@ -6879,86 +8147,89 @@ namespace StarsAbove
 
         private void StellarNovaVoice()
         {
-            
+
             //If the ModConfig's voices are enabled, continue.
             if (!voicesEnabled)
             {
-                if(Main.rand.NextBool(5))//1 in 5 chance to play a Nova specific line.
+                if (Main.rand.NextBool(5) && chosenStellarNova != 7)//1 in 5 chance to play a Nova specific line. (No unique quotes for Guardian's Light)
                 {
                     novaDialogue = LangHelper.Wrap(LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + ".Special" + $"{chosenStellarNova}"), 20);
 
-                    if (chosenStellarNova == 1)
+                    switch (chosenStellarNova)
                     {
+                        case 1:
+                            if (chosenStarfarer == 1)
+                            {
+                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial1, Player.Center);
+                            }
+                            else if (chosenStarfarer == 2)
+                            {
+                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial1, Player.Center);
 
-                        if (chosenStarfarer == 1)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.ANSpecial1, Player.Center);
-                        }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.ENSpecial1, Player.Center);
+                            }
+                            break;
+                        case 2:
+                            if (chosenStarfarer == 1)
+                            {
+                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial2, Player.Center);
+                            }
+                            else if (chosenStarfarer == 2)
+                            {
+                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial2, Player.Center);
 
-                        }
+                            }
+                            break;
+                        case 3:
+                            if (chosenStarfarer == 1)
+                            {
+                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial3, Player.Center);
+                            }
+                            else if (chosenStarfarer == 2)
+                            {
+                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial3, Player.Center);
 
-                    }
-                    if (chosenStellarNova == 2)
-                    {
-                        if (chosenStarfarer == 1)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.ANSpecial2, Player.Center);
-                        }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.ENSpecial2, Player.Center);
+                            }
+                            break;
+                        case 4:
+                            if (chosenStarfarer == 1)
+                            {
+                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial4, Player.Center);
+                            }
+                            else if (chosenStarfarer == 2)
+                            {
+                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial4, Player.Center);
 
-                        }
+                            }
+                            break;
+                        case 5:
+                            if (chosenStarfarer == 1)
+                            {
+                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial5, Player.Center);
+                            }
+                            else if (chosenStarfarer == 2)
+                            {
+                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial5, Player.Center);
 
-                    }
-                    if (chosenStellarNova == 3)
-                    {
-                        if (chosenStarfarer == 1)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.ANSpecial3, Player.Center);
-                        }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.ENSpecial3, Player.Center);
+                            }
+                            break;
+                        case 6:
+                            if (chosenStarfarer == 1)
+                            {
+                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial6, Player.Center);
+                            }
+                            else if (chosenStarfarer == 2)
+                            {
+                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial6, Player.Center);
 
-                        }
-
-                    }
-                    if (chosenStellarNova == 4)
-                    {
-                        if (chosenStarfarer == 1)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.ANSpecial4, Player.Center);
-                        }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.ENSpecial4, Player.Center);
-
-                        }
-
-                    }
-                    if (chosenStellarNova == 5)
-                    {
-                        if (chosenStarfarer == 1)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.ANSpecial5, Player.Center);
-                        }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.ENSpecial5, Player.Center);
-
-                        }
-
+                            }
+                            break;
                     }
                 }
                 else
                 {
-                    if(Main.rand.NextBool(20))
+                    if (Main.rand.NextBool(100))
                     {
-                        string novaQuote = (LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + $".10"));
+                        string novaQuote = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + $".10");
                         novaDialogue = LangHelper.Wrap(novaQuote, 20);
 
                         //1 in 20 chance for a rare line to play.
@@ -6980,7 +8251,7 @@ namespace StarsAbove
                         string novaQuote = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + $".{randomNovaDialogue + 1}");
                         novaDialogue = LangHelper.Wrap(novaQuote, 20);
 
-                        
+
 
                     }
                     if (randomNovaDialogue == 0)
@@ -7009,7 +8280,7 @@ namespace StarsAbove
 
                         }
                     }
-                    else if(randomNovaDialogue == 2)
+                    else if (randomNovaDialogue == 2)
                     {
                         if (chosenStarfarer == 1)
                         {
@@ -7022,7 +8293,7 @@ namespace StarsAbove
 
                         }
                     }
-                    else if(randomNovaDialogue == 3)
+                    else if (randomNovaDialogue == 3)
                     {
                         if (chosenStarfarer == 1)
                         {
@@ -7035,7 +8306,7 @@ namespace StarsAbove
 
                         }
                     }
-                    else if(randomNovaDialogue == 4)
+                    else if (randomNovaDialogue == 4)
                     {
                         if (chosenStarfarer == 1)
                         {
@@ -7048,7 +8319,7 @@ namespace StarsAbove
 
                         }
                     }
-                    else if(randomNovaDialogue == 5)
+                    else if (randomNovaDialogue == 5)
                     {
                         if (chosenStarfarer == 1)
                         {
@@ -7061,7 +8332,7 @@ namespace StarsAbove
 
                         }
                     }
-                    else if(randomNovaDialogue == 6)
+                    else if (randomNovaDialogue == 6)
                     {
                         if (chosenStarfarer == 1)
                         {
@@ -7074,7 +8345,7 @@ namespace StarsAbove
 
                         }
                     }
-                    else if(randomNovaDialogue == 7)
+                    else if (randomNovaDialogue == 7)
                     {
                         if (chosenStarfarer == 1)
                         {
@@ -7087,7 +8358,7 @@ namespace StarsAbove
 
                         }
                     }
-                    else if(randomNovaDialogue == 8)
+                    else if (randomNovaDialogue == 8)
                     {
                         if (chosenStarfarer == 1)
                         {
@@ -7100,9 +8371,9 @@ namespace StarsAbove
 
                         }
                     }
-                    else if(randomNovaDialogue == 9)
+                    else if (randomNovaDialogue == 9)
                     {
-                        
+
                     }
 
                 }
@@ -7112,7 +8383,7 @@ namespace StarsAbove
         private void EdinGenesisQuasar()
         {
             //Edin Genesis Quasar Casts
-            if (chosenStellarNova == 5 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && astarteDriverAttacks > 0 && Main.LocalPlayer.HasBuff(BuffType<Buffs.AstarteDriver>()) && astarteDriverCooldown < 0)
+            if (chosenStellarNova == 5 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && astarteDriverAttacks > 0 && Main.LocalPlayer.HasBuff(BuffType<AstarteDriver>()) && astarteDriverCooldown < 0)
             {
 
                 if (Player.whoAmI == Main.myPlayer)
@@ -7123,18 +8394,18 @@ namespace StarsAbove
 
                     for (int d = 0; d < 105; d++)
                     {
-                        Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                        Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                     }
                     for (int d = 0; d < 105; d++)
                     {
-                        Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default(Color), 1.5f);
+                        Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                     }
                     SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, Player.Center);
                     Vector2 mousePosition = Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos) * Main.rand.Next(20, 22);
                     for (int i = 0; i < 10; i++)
                     {
                         int type = Main.rand.Next(new int[] { ProjectileID.NebulaBlaze2, ProjectileID.NebulaBlaze2, ProjectileID.NebulaBlaze2, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, });
-                        Projectile.NewProjectile(null, Player.Center.X, Player.Center.Y, mousePosition.X, mousePosition.Y, type, novaDamage / 10, 3, Player.whoAmI, 0f);
+                        Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, mousePosition.X, mousePosition.Y, type, novaDamage / 10, 3, Player.whoAmI, 0f);
 
                     }
 
@@ -7145,17 +8416,17 @@ namespace StarsAbove
                         Vector2 perturbedSpeed = mousePosition.RotatedByRandom(MathHelper.ToRadians(40));
                         int type = Main.rand.Next(new int[] { ProjectileID.NebulaBlaze2, ProjectileID.NebulaBlaze2, ProjectileID.NebulaBlaze2, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.NebulaBlaze1, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.StarWrath, ProjectileID.Starfury, ProjectileID.Starfury, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.VenomBullet, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, ProjectileID.Meteor1, ProjectileID.Meteor2, ProjectileID.Meteor3, });
 
-                        Projectile.NewProjectile(null, Player.Center.X, Player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, type, novaDamage / 10, 3, Player.whoAmI);
+                        Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, type, novaDamage / 10, 3, Player.whoAmI);
                     }
                     Vector2 shotKnockback = Vector2.Normalize(mousePosition) * 15f * -1f;
                     Player.velocity = shotKnockback;
                     if (chosenStarfarer == 2)
                     {
-                        Player.AddBuff(BuffType<Buffs.Invincibility>(), 60);
+                        Player.AddBuff(BuffType<Invincibility>(), 60);
                     }
                     //Vector2 mousePosition = Main.MouseWorld;
-                    //Projectile.NewProjectile(null,new Vector2(player.Center.X - 100, player.Center.Y), Vector2.Zero, mod.ProjectileType("Theofania2"), novaDamage + novaDamageMod, 4, player.whoAmI, 0, 1);                                                                                                                                                                                                                                                                                                                                             //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
-                    //Projectile.NewProjectile(null,player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
+                    //Projectile.NewProjectile(Player.GetSource_FromThis(),new Vector2(player.Center.X - 100, player.Center.Y), Vector2.Zero, mod.ProjectileType("prototokia2"), novaDamage + novaDamageMod, 4, player.whoAmI, 0, 1);                                                                                                                                                                                                                                                                                                                                             //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
+                    //Projectile.NewProjectile(Player.GetSource_FromThis(),player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
 
                 }
             }
@@ -7163,13 +8434,26 @@ namespace StarsAbove
 
         public override void PreUpdateBuffs()
         {
-            if(SubworldSystem.Current != null)
+            if (seenIntroCutscene && chosenStarfarer == 0)
+            {
+                StarfarerSelectionVisibility += 0.03f;
+                VNDialogueActive = false;
+            }
+            else
+            {
+                StarfarerSelectionVisibility -= 0.1f;
+
+            }
+            StarfarerSelectionVisibility = MathHelper.Clamp(StarfarerSelectionVisibility, 0, 2f);
+
+
+            if (SubworldSystem.Current != null)
             {
 
             }
             else
             {
-                if(!NPC.AnyNPCs(NPCType<TsukiyomiBoss>()))
+                if (!NPC.AnyNPCs(NPCType<TsukiyomiBoss>()))
                 {
                     if (Player.HasBuff(BuffType<MoonTurmoil>()))
                     {
@@ -7180,18 +8464,18 @@ namespace StarsAbove
                         Player.ClearBuff(BuffType<ChaosTurmoil>());
                     }
                 }
-                
+
             }
 
             if (stellarArray == false)
             {
-                
+
                 if (ironskin == 2)
                 {
                     Player.statDefense += 6;
 
                 }
-                if ( healthyConfidence == 2)
+                if (healthyConfidence == 2)
                 {
 
                 }
@@ -7209,10 +8493,10 @@ namespace StarsAbove
 
 
                 }
-                
+
                 if (avataroflight == 2)
                 {
-                    Player.statLifeMax2 += (Player.statManaMax2 / 2);
+                    Player.statLifeMax2 += Player.statManaMax2 / 2;
                     if (Player.statLife >= 500)
                     {
                         Player.statDefense += 10;
@@ -7221,8 +8505,8 @@ namespace StarsAbove
                 }
                 if (hikari == 2)
                 {
-                    Player.GetDamage(DamageClass.Generic) += (0.01f * (Player.statLifeMax2 / 20));
-                    Player.statDefense += (Player.statLifeMax2 / 20);
+                    Player.GetDamage(DamageClass.Generic) += 0.01f * (Player.statLifeMax2 / 20);
+                    Player.statDefense += Player.statLifeMax2 / 20;
                     //player.moveSpeed *= 1 + (0.02f * (player.statLifeMax2 / 20));
                 }
                 if (celestialevanesence == 2)
@@ -7232,60 +8516,50 @@ namespace StarsAbove
                 }
                 if (afterburner == 2)
                 {
-                    if (Player.statMana <= 40 && !Main.LocalPlayer.HasBuff(BuffType<Buffs.AfterburnerCooldown>()) && !Main.LocalPlayer.HasBuff(BuffType<Buffs.Afterburner>()))
+                    if (Player.statMana <= 40 && !Main.LocalPlayer.HasBuff(BuffType<AfterburnerCooldown>()) && !Main.LocalPlayer.HasBuff(BuffType<Afterburner>()))
                     {
                         Player.statMana += 150;
-                        Player.AddBuff(BuffType<Buffs.Afterburner>(), 240);
+                        Player.AddBuff(BuffType<Afterburner>(), 240);
 
                     }
                 }
-               
+
             }
 
             for (int k = 0; k < 200; k++)
             {
                 NPC npc = Main.npc[k];
-                if (npc.active && npc.type == NPCType<Penthesilea>())
+                if (npc.active && npc.type == NPCType<PenthesileaBoss>())
                 {
 
                     PenthTeleport(npc);
                     break;
                 }
             }
-            
+
             if (stellarSickness == true)
             {
-                Player.AddBuff(BuffType<Buffs.StellarSickness>(), 3600);
+                Player.AddBuff(BuffType<StellarSickness>(), 3600);
 
                 stellarSickness = false;
             }
             screenShakeTimerGlobal--;
-            if (Main.LocalPlayer.HeldItem.ModItem is SpatialDisk)
-            {
 
-            }
-            else
-            {
-                StarfarerSelectionVisibility -= 0.1f;
-                if (StarfarerSelectionVisibility < 0)
-                {
-                    StarfarerSelectionVisibility = 0;
-                }
-            }
+
 
             if (Player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
             {
-                Player.AddBuff(BuffType<Buffs.AsphodeneBlessing>(), 2);
+                Player.AddBuff(BuffType<AsphodeneBlessing>(), 2);
 
             }
             if (Player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
             {
-                Player.AddBuff(BuffType<Buffs.EridaniBlessing>(), 2);
+                Player.AddBuff(BuffType<EridaniBlessing>(), 2);
 
             }
 
 
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.ButterflyTrance>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<ButterflyTrance>()))
             {
 
                 // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
@@ -7293,7 +8567,7 @@ namespace StarsAbove
                 int playerWidth = Main.LocalPlayer.width;
                 int playerHeight = Main.LocalPlayer.height;
 
-                Dust.NewDust(position, playerWidth, playerHeight, 164, 0f, 0f, 150, default(Color), 1.5f);
+                Dust.NewDust(position, playerWidth, playerHeight, 164, 0f, 0f, 150, default, 1.5f);
 
 
 
@@ -7302,10 +8576,10 @@ namespace StarsAbove
 
             if (inWarriorOfLightFightTimer > 0)
             {
-                Player.AddBuff(BuffType<Buffs.Determination>(), 2);
+                Player.AddBuff(BuffType<Determination>(), 2);
             }
 
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.LivingDead>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<LivingDead>()))
             {
                 Dust dust;
                 // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
@@ -7314,13 +8588,13 @@ namespace StarsAbove
                 int playerHeight = Main.LocalPlayer.height;
                 for (int d = 0; d < 5; d++)
                 {
-                    dust = Main.dust[Terraria.Dust.NewDust(position, playerWidth, playerHeight, 258, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
+                    dust = Main.dust[Dust.NewDust(position, playerWidth, playerHeight, 258, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
                 }
 
 
             }
-            
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.KiwamiRyuken>()))
+
+            if (Main.LocalPlayer.HasBuff(BuffType<KiwamiRyuken>()))
             {
 
                 // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
@@ -7329,13 +8603,13 @@ namespace StarsAbove
                 int playerHeight = Main.LocalPlayer.height;
                 for (int d = 0; d < 5; d++)
                 {
-                    Dust.NewDust(position, playerWidth, playerHeight, 206, 0f, 0f, 150, default(Color), 1.5f);
+                    Dust.NewDust(position, playerWidth, playerHeight, 206, 0f, 0f, 150, default, 1.5f);
                 }
 
 
 
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.KiwamiRyukenConfirm>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<KiwamiRyukenConfirm>()))
             {
 
 
@@ -7346,7 +8620,7 @@ namespace StarsAbove
                     offset.X += (float)(Math.Sin(angle) * ryukenTimer * 12);
                     offset.Y += (float)(Math.Cos(angle) * ryukenTimer * 12);
 
-                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 90, Player.velocity, 20, default(Color), 0.4f);
+                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 90, Player.velocity, 20, default, 0.4f);
 
                     d.fadeIn = 1f;
                     d.noGravity = true;
@@ -7354,21 +8628,21 @@ namespace StarsAbove
 
 
             }
-           
+
 
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.Afterburner>())
+                if (Player.buffType[i] == BuffType<Afterburner>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
-                        Player.AddBuff(BuffType<Buffs.AfterburnerCooldown>(), 1500);
+                        Player.AddBuff(BuffType<AfterburnerCooldown>(), 1500);
 
 
                     }
                 }
 
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.TwincastActive>())
+                if (Player.buffType[i] == BuffType<TwincastActive>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
@@ -7376,7 +8650,34 @@ namespace StarsAbove
 
                     }
                 }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.LeftDebuff>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<Bladeforged>()))
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {//Circle
+                    Vector2 offset = new Vector2();
+                    double angle = Main.rand.NextDouble() * 2d * Math.PI;
+                    offset.X += (float)(Math.Sin(angle) * 30f);
+                    offset.Y += (float)(Math.Cos(angle) * 30f);
+
+                    Dust d2 = Dust.NewDustPerfect(Player.Center + offset, DustID.Flare, Player.velocity, 200, default, 0.7f);
+                    d2.fadeIn = 0.0001f;
+                    d2.noGravity = true;
+                }
+
+                if (Player.velocity.Y == 0)
+                {
+                    for (int i3 = 0; i3 < 50; i3++)
+                    {
+
+                        Dust d = Main.dust[Dust.NewDust(new Vector2(Player.Center.X - Player.width, Player.Center.Y + Player.height / 2), Player.width * 2 - 3, 0, DustID.Flare, 0, Main.rand.Next(-5, -2), 150, default, 0.3f)];
+                        d.fadeIn = 0.3f;
+                        d.noLight = true;
+                        d.noGravity = true;
+                    }
+                }
+
+            }
+            if (Main.LocalPlayer.HasBuff(BuffType<LeftDebuff>()))
             {
                 for (int i = 0; i < 2; i++)
                 {//
@@ -7387,7 +8688,7 @@ namespace StarsAbove
                     for (int i3 = 0; i3 < 50; i3++)
                     {
                         Vector2 position = Vector2.Lerp(Player.Center, vector32, (float)i3 / 50);
-                        Dust d = Dust.NewDustPerfect(position, 20, null, 240, default(Color), 0.3f);
+                        Dust d = Dust.NewDustPerfect(position, 20, null, 240, default, 0.3f);
                         d.fadeIn = 0.3f;
                         d.noLight = true;
                         d.noGravity = true;
@@ -7399,13 +8700,13 @@ namespace StarsAbove
                         offset.X += (float)(Math.Sin(angle) * 30f);
                         offset.Y += (float)(Math.Cos(angle) * 30f);
 
-                        Dust d2 = Dust.NewDustPerfect(vector32 + offset, 20, Player.velocity, 200, default(Color), 0.7f);
+                        Dust d2 = Dust.NewDustPerfect(vector32 + offset, 20, Player.velocity, 200, default, 0.7f);
                         d2.fadeIn = 0.0001f;
                         d2.noGravity = true;
                     }
                 }
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.RightDebuff>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<RightDebuff>()))
             {
                 for (int i = 0; i < 2; i++)
                 {//
@@ -7416,7 +8717,7 @@ namespace StarsAbove
                     for (int i3 = 0; i3 < 50; i3++)
                     {
                         Vector2 position = Vector2.Lerp(Player.Center, vector32, (float)i3 / 50);
-                        Dust d = Dust.NewDustPerfect(position, 20, null, 240, default(Color), 0.3f);
+                        Dust d = Dust.NewDustPerfect(position, 20, null, 240, default, 0.3f);
                         d.fadeIn = 0.3f;
                         d.noLight = true;
                         d.noGravity = true;
@@ -7428,13 +8729,13 @@ namespace StarsAbove
                         offset.X += (float)(Math.Sin(angle) * 30f);
                         offset.Y += (float)(Math.Cos(angle) * 30f);
 
-                        Dust d2 = Dust.NewDustPerfect(vector32 + offset, 20, Player.velocity, 200, default(Color), 0.7f);
+                        Dust d2 = Dust.NewDustPerfect(vector32 + offset, 20, Player.velocity, 200, default, 0.7f);
                         d2.fadeIn = 0.0001f;
                         d2.noGravity = true;
                     }
                 }
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.RedPaint>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<RedPaint>()))
             {
                 for (int i = 0; i < 5; i++)
                 {//Circle
@@ -7443,12 +8744,12 @@ namespace StarsAbove
                     offset.X += (float)(Math.Sin(angle) * 30f);
                     offset.Y += (float)(Math.Cos(angle) * 30f);
 
-                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 219, Player.velocity, 200, default(Color), 0.7f);
+                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 219, Player.velocity, 200, default, 0.7f);
                     d.fadeIn = 0.0001f;
                     d.noGravity = true;
                 }
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.BluePaint>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<BluePaint>()))
             {
                 for (int i = 0; i < 5; i++)
                 {//Circle
@@ -7457,12 +8758,12 @@ namespace StarsAbove
                     offset.X += (float)(Math.Sin(angle) * 30f);
                     offset.Y += (float)(Math.Cos(angle) * 30f);
 
-                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 221, Player.velocity, 200, default(Color), 0.7f);
+                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 221, Player.velocity, 200, default, 0.7f);
                     d.fadeIn = 0.0001f;
                     d.noGravity = true;
                 }
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.YellowPaint>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<YellowPaint>()))
             {
                 for (int i = 0; i < 5; i++)
                 {//Circle
@@ -7471,12 +8772,12 @@ namespace StarsAbove
                     offset.X += (float)(Math.Sin(angle) * 30f);
                     offset.Y += (float)(Math.Cos(angle) * 30f);
 
-                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 222, Player.velocity, 200, default(Color), 0.7f);
+                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 222, Player.velocity, 200, default, 0.7f);
                     d.fadeIn = 0.0001f;
                     d.noGravity = true;
                 }
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.Pyretic>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<Pyretic>()))
             {
                 for (int i = 0; i < 30; i++)
                 {//Circle
@@ -7485,12 +8786,12 @@ namespace StarsAbove
                     offset.X += (float)(Math.Sin(angle) * 70f);
                     offset.Y += (float)(Math.Cos(angle) * 70f);
 
-                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 90, Player.velocity, 200, default(Color), 0.7f);
+                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 90, Player.velocity, 200, default, 0.7f);
                     d.fadeIn = 1f;
                     d.noGravity = true;
                 }
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.DeepFreeze>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<DeepFreeze>()))
             {
                 for (int i = 0; i < 30; i++)
                 {//Circle
@@ -7499,12 +8800,12 @@ namespace StarsAbove
                     offset.X += (float)(Math.Sin(angle) * 70f);
                     offset.Y += (float)(Math.Cos(angle) * 70f);
 
-                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 135, Player.velocity, 200, default(Color), 0.7f);
+                    Dust d = Dust.NewDustPerfect(Player.Center + offset, 135, Player.velocity, 200, default, 0.7f);
                     d.fadeIn = 1f;
                     d.noGravity = true;
                 }
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.Invincibility>()))//Invincibility VFX
+            if (Main.LocalPlayer.HasBuff(BuffType<Invincibility>()))//Invincibility VFX
             {
                 for (int i = 0; i < 12; i++)
                 {
@@ -7512,8 +8813,8 @@ namespace StarsAbove
                 }
 
             }
-            
-            if (Player.HasBuff(BuffType<Buffs.AstarteDriverPrep>()))//Astarte Effects
+
+            if (Player.HasBuff(BuffType<AstarteDriverPrep>()))//Astarte Effects
             {
                 for (int i = 0; i < 5; i++)
                 {
@@ -7533,7 +8834,7 @@ namespace StarsAbove
                 }
 
             }
-            if (Player.HasBuff(BuffType<Buffs.AstarteDriver>()))//Astarte Effects
+            if (Player.HasBuff(BuffType<AstarteDriver>()))//Astarte Effects
             {
 
                 for (int i = 0; i < 1; i++)
@@ -7554,37 +8855,58 @@ namespace StarsAbove
                 }
 
             }
+            if (Player.HasBuff(BuffType<ThundercrashActive>()))//
+            {
+                Player.AddBuff(BuffType<Invisibility>(), 2);
+                Vector2 Leap = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 20f;
+                Player.velocity = Leap;
+                if (playerMousePos.X < Player.Center.X)
+                {
+                    Player.direction = -1;
+                }
+                for (int d = 0; d < 10; d++)
+                {
+                    Dust du = Main.dust[Dust.NewDust(Player.Center, 5, 5, DustID.Electric, 0f, 0f, 150, default, 2f)];
+                    du.noGravity = true;
+                }
+                for (int d = 0; d < 2; d++)
+                {
+                    Dust du = Main.dust[Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Blue, 0f, 0f, 150, default, 0.8f)];
+                    du.noGravity = true;
+
+                }
+            }
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.LeftDebuff>())
+                if (Player.buffType[i] == BuffType<LeftDebuff>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
                         //player.velocity = Vector2.Zero;
                         Vector2 vector32 = new Vector2(Player.position.X - 500, Player.position.Y);
                         Player.Teleport(vector32, 1, 0);
-                        NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float)Player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
+                        NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, Player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
 
                     }
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.RightDebuff>())
+                if (Player.buffType[i] == BuffType<RightDebuff>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
                         //player.velocity = Vector2.Zero;
                         Vector2 vector32 = new Vector2(Player.position.X + 500, Player.position.Y);
                         Player.Teleport(vector32, 1, 0);
-                        NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float)Player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
+                        NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, Player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
                     }
                 }
 
-           
+
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.LivingDead>())
+                if (Player.buffType[i] == BuffType<LivingDead>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
-                        Player.AddBuff(BuffType<Buffs.LivingDeadCooldown>(), 14400);//7200 is 2 minutes, 14400 is 4 minutes.
+                        Player.AddBuff(BuffType<LivingDeadCooldown>(), 14400);//7200 is 2 minutes, 14400 is 4 minutes.
 
                         if (Player.statLife < 150)
                         {
@@ -7597,19 +8919,19 @@ namespace StarsAbove
                         }
                     }
                 }
-            
+
 
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.StarshieldBuff>())
+                if (Player.buffType[i] == BuffType<StarshieldBuff>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
-                        Player.AddBuff(BuffType<Buffs.StarshieldCooldown>(), 1200);//
+                        Player.AddBuff(BuffType<StarshieldCooldown>(), 1200);//
                     }
                 }
-           
+
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.Pyretic>())
+                if (Player.buffType[i] == BuffType<Pyretic>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
@@ -7631,28 +8953,28 @@ namespace StarsAbove
                     }
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.AstarteDriverPrep>())
+                if (Player.buffType[i] == BuffType<AstarteDriverPrep>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
                         //Change
 
                         astarteDriverAttacks = 3;
-                        Player.AddBuff(BuffType<Buffs.AstarteDriver>(), 1500);
+                        Player.AddBuff(BuffType<AstarteDriver>(), 1500);
                         SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, Player.Center);
-                        
+
                     }
 
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.AstarteDriver>())
+                if (Player.buffType[i] == BuffType<AstarteDriver>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
                         //Change
                         WhiteFade = 20;
-                        
-                        
+
+
                     }
                     for (int a = 0; a < 15; a++)
                     {//Circle
@@ -7681,7 +9003,7 @@ namespace StarsAbove
                     }
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.DeepFreeze>())
+                if (Player.buffType[i] == BuffType<DeepFreeze>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
@@ -7703,15 +9025,15 @@ namespace StarsAbove
                     }
                 }
 
-            
+
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.KiwamiRyuken>())
+                if (Player.buffType[i] == BuffType<KiwamiRyuken>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
                         if (chosenStarfarer == 2)
                         {
-                            novaGauge = (trueNovaGaugeMax / 2) + 10;
+                            novaGauge = trueNovaGaugeMax / 2 + 10;
                         }
                         else
                         {
@@ -7721,7 +9043,7 @@ namespace StarsAbove
                     }
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.KiwamiRyukenConfirm>())
+                if (Player.buffType[i] == BuffType<KiwamiRyukenConfirm>())
                 {
                     if (Player.buffTime[i] == 1)
                     {
@@ -7732,7 +9054,7 @@ namespace StarsAbove
                         Vector2 direction = Vector2.Normalize(mousePosition - Player.Center);
                         Player.velocity = direction * launchSpeed;
 
-                        Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y), direction, Mod.Find<ModProjectile>("kiwamiryukenconfirm").Type, novaDamage, 40, Player.whoAmI, 0, 1);                                                                                                                                                             //Vector2 mousePosition = Main.MouseWorld;
+                        Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), direction, Mod.Find<ModProjectile>("kiwamiryukenconfirm").Type, novaDamage, 40, Player.whoAmI, 0, 1);                                                                                                                                                             //Vector2 mousePosition = Main.MouseWorld;
 
                     }
                 }
@@ -7791,33 +9113,36 @@ namespace StarsAbove
         }
         public override void PostUpdateBuffs()
         {
-
-            if (Player.GetModPlayer<StarsAbovePlayer>().lifeforce < 0 && !Player.immune)
+            if(stayTheCourse == 2)
             {
-                Player.GetModPlayer<StarsAbovePlayer>().lifeforce = 100;
+                Player.GetCritChance(DamageClass.Generic) += (100 * stayTheCourseStacks);
 
-                Player.KillMe(PlayerDeathReason.ByCustomReason(Player.name + "'s life was drained away."), 500, 0);
-
-
-                SoundEngine.PlaySound(StarsAboveAudio.SFX_Death, Player.Center);
-
-                for (int d = 0; d < 70; d++)
+            }
+            if(fabledFashion == 2)
+            {
+                if(Player.statLifeMax > 151)
                 {
-                    Dust.NewDust(Player.position, Player.width, Player.height, 60, 0f, 0f, 150, default(Color), 1.5f);
+                    Player.statLifeMax2 -= 150;
 
                 }
+                Player.GetDamage(DamageClass.Generic) -= 0.5f;
+                Player.statDefense *= 0.5f;
             }
-            if (Player.immune && lifeforce < 50)
+        }
+        public override bool CanUseItem(Item item)
+        {
+            if(VNDialogueActive)
             {
-                lifeforce++;
+                return false;
             }
+            return base.CanUseItem(item);
         }
 
         public override bool CanBeHitByProjectile(Projectile proj)
         {
             if (proj.type == Mod.Find<ModProjectile>("RedSplatterDamage").Type)
             {
-                if (Main.LocalPlayer.HasBuff(BuffType<Buffs.RedPaint>()))
+                if (Main.LocalPlayer.HasBuff(BuffType<RedPaint>()))
                 {
 
                     return false;
@@ -7825,7 +9150,7 @@ namespace StarsAbove
             }
             if (proj.type == Mod.Find<ModProjectile>("YellowSplatterDamage").Type)
             {
-                if (Main.LocalPlayer.HasBuff(BuffType<Buffs.YellowPaint>()))
+                if (Main.LocalPlayer.HasBuff(BuffType<YellowPaint>()))
                 {
 
                     return false;
@@ -7833,7 +9158,7 @@ namespace StarsAbove
             }
             if (proj.type == Mod.Find<ModProjectile>("BlueSplatterDamage").Type)
             {
-                if (Main.LocalPlayer.HasBuff(BuffType<Buffs.BluePaint>()))
+                if (Main.LocalPlayer.HasBuff(BuffType<BluePaint>()))
                 {
 
                     return false;
@@ -7856,19 +9181,56 @@ namespace StarsAbove
             {
                 if (Main.expertMode == true)
                 {
-                    Main.LocalPlayer.AddBuff(BuffType<Buffs.Vulnerable>(), 1800);
+                    Main.LocalPlayer.AddBuff(BuffType<Vulnerable>(), 1800);
                 }
             }
 
         }
         public override bool ImmuneTo(PlayerDeathReason damageSource, int cooldownCounter, bool dodgeable)
         {
-            
+
             if (Player.HasBuff(BuffType<Invincibility>()))
             {
                 return true;
             }
             return false;
+        }
+        public override void GetHealLife(Item item, bool quickHeal, ref int healValue)
+        {
+            if(arborealEchoes == 2)
+            {
+                healValue = (int)(healValue * 1.3);
+            }
+            
+            base.GetHealLife(item, quickHeal, ref healValue);
+        }
+        public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
+        {
+            if (inevitableEnd == 2)
+            {
+                for (int i = 0; i < Main.maxNPCs; i++)
+                {
+                    NPC npc = Main.npc[i];
+                    if (npc.active && !npc.boss && npc.Distance(Player.Center) < 1000)
+                    {
+                        npc.SimpleStrikeNPC(Player.GetWeaponDamage(Player.HeldItem), 0, true, 0, DamageClass.Generic, false, 0);
+                    }
+                }
+                for (int i = 0; i < Main.maxPlayers; i++)
+                {
+                    Player p = Main.player[i];
+                    if (p.active && p.Distance(Player.Center) < 1000 && !p.dead)
+                    {
+                        p.Hurt(PlayerDeathReason.ByCustomReason(LangHelper.GetTextValue($"DeathReason.InevitableEnd", Player.name)), Player.GetWeaponDamage(Player.HeldItem), 0);
+                    }
+                }
+                for (int i = 0; i < 100; i++)
+                {
+                    int dustIndex = Dust.NewDust(new Vector2(Player.Center.X, Player.Center.Y), 0, 0, DustID.LifeDrain, 0f + Main.rand.Next(-36, 36), 0f + Main.rand.Next(-36, 36), 100, default, 2f);
+                    Main.dust[dustIndex].velocity *= 1.4f;
+                }
+            }
+            base.Kill(damage, hitDirection, pvp, damageSource);
         }
         public override void OnHurt(Player.HurtInfo info)
         {
@@ -7884,6 +9246,19 @@ namespace StarsAbove
                 Player.AddBuff(BuffID.Ironskin, 480);
                 Player.AddBuff(BuffID.Regeneration, 480);
                 Player.AddBuff(BuffID.Endurance, 480);
+            }
+            
+            if(lavenderRefrain == 2)
+            {
+                if(Player.statMana > 0)
+                {
+                    //If mana isn't enough to mitigate all the damage (as in Consumable Dodge)
+                    info.Damage -= Player.statMana;
+                    Player.statMana = 0;
+                    Player.manaRegenDelay = 480;
+
+
+                }
             }
             if (ruinedKingPrism)
             {
@@ -7923,12 +9298,12 @@ namespace StarsAbove
             if (!Player.HasBuff(BuffType<StarshieldBuff>()) && !Player.HasBuff(BuffType<StarshieldCooldown>()) && starshower == 2)
             {
                 Player.AddBuff(BuffType<StarshieldBuff>(), 120);
-                Projectile.NewProjectile(null, Player.Center, Vector2.Zero, ProjectileType<Starshield>(), 0, 0, Player.whoAmI);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ProjectileType<Starshield>(), 0, 0, Player.whoAmI);
 
                 Player.statMana += 20;
                 Player.ManaEffect(20);
             }
-            if (Player.HasBuff(BuffType<Buffs.UniversalManipulation>()))
+            if (Player.HasBuff(BuffType<UniversalManipulation>()))
             {
                 int index = Player.FindBuffIndex(BuffType<UniversalManipulation>());
                 if (index > -1)
@@ -7938,10 +9313,10 @@ namespace StarsAbove
             }
             if (cosmicPhoenixPrism)
             {
-                if (Player.statLife - info.Damage < 50 && !Main.LocalPlayer.HasBuff(BuffType<Buffs.GoingSupercriticalCooldown>()))
+                if (Player.statLife - info.Damage < 50 && !Main.LocalPlayer.HasBuff(BuffType<GoingSupercriticalCooldown>()))
                 {
                     novaGauge = novaGaugeMax;
-                    Main.LocalPlayer.AddBuff(BuffType<Buffs.GoingSupercriticalCooldown>(), 7200);
+                    Main.LocalPlayer.AddBuff(BuffType<GoingSupercriticalCooldown>(), 7200);
                 }
             }
             if (starfarerOutfit == 1)
@@ -7962,11 +9337,24 @@ namespace StarsAbove
         }
         public override bool ConsumableDodge(Player.HurtInfo info)
         {
-            if (Player.HasBuff(BuffType<Buffs.SolemnAegis>()))
+            if(lavenderRefrain == 2)
+            {
+                if(Player.statMana >= info.Damage)
+                {
+                    Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                    CombatText.NewText(textPos, new Color(122, 113, 153, 255), $"{info.Damage}", false, false);
+                    Player.statMana -= info.Damage;
+                    Player.manaRegenDelay = 480;
+                    Player.immune = true;
+                    Player.immuneTime = 60;
+                    return true;
+                }
+            }
+            if (Player.HasBuff(BuffType<SolemnAegis>()))
             {
                 for (int d = 0; d < 16; d++)
                 {
-                    Dust.NewDust(Player.position, Player.width, Player.height, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 1.5f);
+                    Dust.NewDust(Player.position, Player.width, Player.height, DustID.FireworkFountain_Blue, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default, 1.5f);
                 }
                 Player.immune = true;
                 Player.immuneTime = 30;
@@ -7977,7 +9365,7 @@ namespace StarsAbove
                 }
                 return true;
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.FlashOfEternity>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<FlashOfEternity>()))
             {
                 Player.immune = true;
                 Player.immuneTime = 30;
@@ -8006,7 +9394,7 @@ namespace StarsAbove
             }
             if (Player.GetModPlayer<StarsAbovePlayer>().keyofchronology == 2)
             {
-                if (info.Damage >= 200 && !(Main.LocalPlayer.HasBuff(BuffType<Buffs.KeyOfChronologyCooldown>())))
+                if (info.Damage >= 200 && !Main.LocalPlayer.HasBuff(BuffType<KeyOfChronologyCooldown>()))
                 {
                     if (starfarerPromptCooldown > 0)
                     {
@@ -8016,7 +9404,7 @@ namespace StarsAbove
                     SoundEngine.PlaySound(StarsAboveAudio.SFX_TimeEffect, Player.Center);
                     for (int d = 0; d < 12; d++)
                     {
-                        Dust.NewDust(Player.position, 0, 0, 113, 0f + Main.rand.Next(-7, 7), 0f + Main.rand.Next(-7, 7), 150, default(Color), 1.5f);
+                        Dust.NewDust(Player.position, 0, 0, 113, 0f + Main.rand.Next(-7, 7), 0f + Main.rand.Next(-7, 7), 150, default, 1.5f);
                     }
                     Player.Heal(info.Damage);
                     for (int i = 0; i < Main.maxNPCs; i++)
@@ -8028,8 +9416,8 @@ namespace StarsAbove
                         }
                     }
 
-                    Player.AddBuff(BuffType<Buffs.Invincibility>(), 300);
-                    Player.AddBuff(BuffType<Buffs.KeyOfChronologyCooldown>(), 7200);
+                    Player.AddBuff(BuffType<Invincibility>(), 300);
+                    Player.AddBuff(BuffType<KeyOfChronologyCooldown>(), 7200);
 
                     if (starfarerOutfit == 4)
                     {
@@ -8040,12 +9428,12 @@ namespace StarsAbove
 
                     }
 
-                    return false;
+                    return true;
                 }
 
-                return true;
+                return false;
             }
-            if (Player.HasBuff(BuffType<Buffs.KiwamiRyuken>()))
+            if (Player.HasBuff(BuffType<KiwamiRyuken>()))
             {
                 StellarNovaCutIn();
                 ryukenTimer = 60;
@@ -8064,7 +9452,7 @@ namespace StarsAbove
                 }
                 Vector2 mousePosition = Main.MouseWorld;
                 Vector2 direction = Vector2.Normalize(mousePosition - Player.Center);
-                Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y), direction, Mod.Find<ModProjectile>("kiwamiryukenstun").Type, 1, 0, Player.whoAmI, 0, 1);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), direction, Mod.Find<ModProjectile>("kiwamiryukenstun").Type, 1, 0, Player.whoAmI, 0, 1);
                 onActivateStellarNova();
                 SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterImpact, Player.Center);
                 return false;
@@ -8082,7 +9470,7 @@ namespace StarsAbove
                     return true;
                 }
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.DashInvincibility>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<DashInvincibility>()))
             {
                 return true;
             }
@@ -8101,10 +9489,14 @@ namespace StarsAbove
             {
                 modifiers.FinalDamage -= 0.5f;
             }
-            if(Player.GetModPlayer<StarsAbovePlayer>().starfarerOutfit == 3)
+            if (Player.GetModPlayer<StarsAbovePlayer>().starfarerOutfit == 3)
             {
                 modifiers.FinalDamage -= 0.1f;
                 novaGauge += 3;
+            }
+            if(stayTheCourse == 2)
+            {
+                modifiers.FinalDamage -= stayTheCourseStacks;
             }
         }
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
@@ -8139,8 +9531,8 @@ namespace StarsAbove
 
                 }
             }
-            
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.LivingDead>()))
+
+            if (Main.LocalPlayer.HasBuff(BuffType<LivingDead>()))
             {
                 playSound = false;
                 genGore = false;
@@ -8148,20 +9540,20 @@ namespace StarsAbove
 
                 return false;
             }
-            if (Main.LocalPlayer.HasBuff(BuffType<Buffs.SpatialBurn>()))
+            if (Main.LocalPlayer.HasBuff(BuffType<SpatialBurn>()))
             {
 
                 damageSource = PlayerDeathReason.ByCustomReason(Player.name + " couldn't handle the vacuum of space.");
 
                 return true;
             }
-            
+
             if (livingdead == 2)
             {
 
-                if (!Main.LocalPlayer.HasBuff(BuffType<Buffs.LivingDead>()))
+                if (!Main.LocalPlayer.HasBuff(BuffType<LivingDead>()))
                 {
-                    if (!Main.LocalPlayer.HasBuff(BuffType<Buffs.LivingDeadCooldown>()))
+                    if (!Main.LocalPlayer.HasBuff(BuffType<LivingDeadCooldown>()))
                     {
                         if (starfarerPromptCooldown > 0)
                         {
@@ -8172,20 +9564,20 @@ namespace StarsAbove
                         if (chosenStarfarer == 1)
                         {
                             if (Player.ownedProjectileCounts[Mod.Find<ModProjectile>("AsphodeneBurst").Type] < 1)
-                                Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("AsphodeneBurst").Type, 0, 0, Player.whoAmI, 0, 1);
+                                Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("AsphodeneBurst").Type, 0, 0, Player.whoAmI, 0, 1);
 
                         }
                         if (chosenStarfarer == 2)
                         {
                             if (Player.ownedProjectileCounts[Mod.Find<ModProjectile>("EridaniBurst").Type] < 1)
-                                Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurst").Type, 0, 0, Player.whoAmI, 0, 1);
+                                Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurst").Type, 0, 0, Player.whoAmI, 0, 1);
 
                         }*/
-                        Player.AddBuff(BuffType<Buffs.LivingDead>(), 600);
+                        Player.AddBuff(BuffType<LivingDead>(), 360);
                         Dust dust;
                         // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
                         Vector2 position = Player.Center;
-                        dust = Main.dust[Terraria.Dust.NewDust(position, 0, 0, 247, 0f, 0f, 0, new Color(255, 0, 0), 1f)];
+                        dust = Main.dust[Dust.NewDust(position, 0, 0, 247, 0f, 0f, 0, new Color(255, 0, 0), 1f)];
 
 
                         Player.statLife = 1;
@@ -8204,7 +9596,7 @@ namespace StarsAbove
                 }
                 return true;
             }
-            
+
             if (Main.rand.Next(0, 5) == 0)
             {
                 starfarerPromptActive("onDeath");
@@ -8237,7 +9629,7 @@ namespace StarsAbove
                 //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
                 if (chosenStarfarer == 1) //Asphodene's lines                                          | Soft limit
                 {
-                    
+
                     //When the player is debuffed..
                     if (eventPrompt == "onPoison")
                     {
@@ -8755,6 +10147,18 @@ namespace StarsAbove
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.86", Player.name); //This thing changes its attack patterns! Take note of its stances, or else!
                         seenArbiter = true;
                     }
+                    if (eventPrompt == "onThespian")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.202", Player.name); //This thing changes its attack patterns! Take note of its stances, or else!
+                        seenThespian = true;
+                    }
+                    if (eventPrompt == "onStarfarerBoss")
+                    {
+                        promptExpression = 0;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.203", Player.name); //This thing changes its attack patterns! Take note of its stances, or else!
+                        seenStarfarers = true;
+                    }
                     //Calamity mod bosses!
                     if (eventPrompt == "onDesertScourge")
                     {
@@ -8965,7 +10369,7 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onAres")
                     {
-                       
+
                         promptExpression = 1;
                         //promptDialogue = $"Heads up, {Player.name}!" +
                         //                $" That machine is blotting out the sky!";
@@ -9058,6 +10462,44 @@ namespace StarsAbove
                         promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.201", Player.name);
                         seenAtlas = true;
+                    }
+                    //Wrath of the Gods
+                    if (eventPrompt == "onNoxusEgg")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.204", Player.name);
+                        seenNoxusEgg = true;
+                    }
+                    if (eventPrompt == "onEntropicGod")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.205", Player.name);
+                        seenEntropicGod = true;
+                    }
+                    if (eventPrompt == "onNamelessDeity")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.206", Player.name);
+                        seenNamelessDeity = true;
+                    }
+                    //Starlight River
+                    if (eventPrompt == "onGlassweaver")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.207", Player.name);
+                        seenGlassweaver = true;
+                    }               
+                    if (eventPrompt == "onAuroracle")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.208", Player.name);
+                        seenAuroracle = true;
+                    }
+                    if (eventPrompt == "onCeiros")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.209", Player.name);
+                        seenCeiros = true;
                     }
                     //Thorium bosses.
                     if (eventPrompt == "onGrandThunderBird")
@@ -9453,7 +10895,7 @@ namespace StarsAbove
                 }
                 if (chosenStarfarer == 2) //Eridani's lines                                              | Soft limit
                 {
-                    
+
                     //When the player is debuffed..c
                     if (eventPrompt == "onPoison")
                     {
@@ -9963,6 +11405,18 @@ namespace StarsAbove
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.86", Player.name); //It seems to be able to swap forms! Try to memorize its attacks..!
                         seenArbiter = true;
                     }
+                    if (eventPrompt == "onThespian")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.204", Player.name); //This thing changes its attack patterns! Take note of its stances, or else!
+                        seenThespian = true;
+                    }
+                    if (eventPrompt == "onStarfarerBoss")
+                    {
+                        promptExpression = 0;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.205", Player.name); //This thing changes its attack patterns! Take note of its stances, or else!
+                        seenStarfarers = true;
+                    }
                     //Calamity Mod Bosses
 
                     if (eventPrompt == "onDesertScourge")
@@ -10202,7 +11656,7 @@ namespace StarsAbove
                         promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.121", Player.name); //Who does this guy think he is, wielding celestial power all willy-nilly? Not to mention... Ugh- I don't have to spell it out, do I?
 
-                        
+
                         seenEridanus = true;
                     }
                     if (eventPrompt == "onAbominationn")
@@ -10210,7 +11664,7 @@ namespace StarsAbove
                         promptExpression = 0;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.122", Player.name); //Well, no time like the present. His arsenal revolves around invader events- we've seen our share of those.
 
-                        
+
                         seenAbominationn = true;
                     }
                     if (eventPrompt == "onMutant")
@@ -10218,7 +11672,7 @@ namespace StarsAbove
                         promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.123", Player.name); //Oh, you just HAD to throw that thing into lava, did you? Well, good luck, because Mutant is pissed. Didn't see that coming- wait, I did.
 
-                        
+
                         seenMutant = true;
                     }
                     if (eventPrompt == "onScarabeus")
@@ -10268,6 +11722,44 @@ namespace StarsAbove
                         promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.203", Player.name);
                         seenAtlas = true;
+                    }
+                    //Wrath of the Gods
+                    if (eventPrompt == "onNoxusEgg")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.206", Player.name);
+                        seenNoxusEgg = true;
+                    }
+                    if (eventPrompt == "onEntropicGod")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.207", Player.name);
+                        seenEntropicGod = true;
+                    }
+                    if (eventPrompt == "onNamelessDeity")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.208", Player.name);
+                        seenNamelessDeity = true;
+                    }
+                    //Starlight River
+                    if (eventPrompt == "onGlassweaver")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.209", Player.name);
+                        seenGlassweaver = true;
+                    }
+                    if (eventPrompt == "onAuroracle")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.210", Player.name);
+                        seenAuroracle = true;
+                    }
+                    if (eventPrompt == "onCeiros")
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.211", Player.name);
+                        seenCeiros = true;
                     }
                     //Thorium bosses.
                     if (eventPrompt == "onGrandThunderBird")
@@ -10667,70 +12159,40 @@ namespace StarsAbove
         }
         public void StellarNovaEnergy()
         {
+            novaGaugeChangeAlpha -= 0.1f;
+            novaGaugeChangeAlphaSlow -= 0.01f;
+
+            //Drain the gauge upon usage of the Stellar Nova.
+            novaDrain = MathHelper.Clamp(novaDrain, 0, 1);
+            if (novaDrain > 0)
+            {
+                novaDrain -= 0.05f;
+                novaGauge = (int)MathHelper.Lerp(0, trueNovaGaugeMax, novaDrain);
+                return;
+            }
+
             if (inCombat > 0)
             {
                 if (chosenStellarNova != 0)
+                {
+                    //Every x ticks, the gauge charges by 1.
                     if (novaGaugeChargeTimer >= 60)
                     {
-
-                        if (novaGauge == trueNovaGaugeMax - 1)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_superReadySFX, Player.Center);
-
-                            Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
-                            CombatText.NewText(textPos, new Color(255, 0, 125, 240), "Stellar Nova ready!", false, false);
-                            if (Main.rand.Next(0, 5) == 0)
-                            {
-                                starfarerPromptActive("onStellarNovaCharged");
-                            }
-                        }
-
                         //Natural charge rate.
                         novaGauge++;
+                        //Special visuals on the gauge
+                        novaGaugeChangeAlpha = 1f;
+                        novaGaugeChangeAlphaSlow = 1f;
 
-                        if (unbridledradiance == 2)
-                        {
-
-                            novaGauge++;
-                        }
-                        if (avataroflight == 2 && Player.statLife >= 500)
-                        {
-
-                            novaGaugeChargeTimer += 5;
-                        }
-                        if (astralmantle == 2 && Player.statMana > 200)
-                        {
-
-                            novaGaugeChargeTimer += 15;
-                        }
-                        if (Player.HeldItem.prefix == ModContent.PrefixType<NovaPrefix1>())
-                        {
-                            novaGaugeChargeTimer += 2;
-                        }
-                        if (Player.HeldItem.prefix == ModContent.PrefixType<NovaPrefix2>())
-                        {
-                            novaGaugeChargeTimer += 4;
-                        }
-                        if (Player.HeldItem.prefix == ModContent.PrefixType<NovaPrefix3>())
-                        {
-                            novaGaugeChargeTimer += 6;
-                        }
-                        if (Player.HeldItem.prefix == ModContent.PrefixType<NovaPrefix4>())
-                        {
-                            novaGaugeChargeTimer += 8;
-                        }
-                        if (Player.HeldItem.prefix == ModContent.PrefixType<BadNovaPrefix1>())
-                        {
-                            novaGaugeChargeTimer -= 2;
-                        }
-                        if (Player.HeldItem.prefix == ModContent.PrefixType<BadNovaPrefix2>())
-                        {
-                            novaGaugeChargeTimer -= 4;
-                        }
+                        //Reset the timer.
                         novaGaugeChargeTimer = 0;
+                        //If any effect speeds up the Nova gauge charging, add it here.
+                        NovaChargeModifiers();
+
                     }
+                }
 
-
+                //If the gauge is unlocked and not max, increase the timer before the gauge charges.
                 if (novaGaugeUnlocked && novaGauge < trueNovaGaugeMax)
                 {
                     novaGaugeChargeTimer++;
@@ -10741,31 +12203,62 @@ namespace StarsAbove
             else
             {
                 novaGaugeChargeTimer = 0;
-                if (unbridledradiance == 2)
+                if (unbridledradiance != 2)
                 {
-
-                }
-                else
-                {
+                    //Unbridled Radiance prevents Nova drain (this is with it disabled.)
                     novaGaugeLossTimer++;
                     if (novaGaugeLossTimer >= 35)
                     {
                         novaGaugeLossTimer = 0;
                         novaGauge--;
                     }
-
                 }
             }
-            if (novaGauge > trueNovaGaugeMax)
-            {
-                novaGauge = trueNovaGaugeMax;
-            }
-            if (novaGauge < 0)
-            {
 
-                novaGauge = 0;
+            if (novaGauge == trueNovaGaugeMax)
+            {
+                if (novaReadyInfo)
+                {
+                    gaugeChargeAnimation = true;
+                    novaReadyInfo = false;
+                    SoundEngine.PlaySound(StarsAboveAudio.SFX_superReadySFX, Player.Center);
+                    Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                    CombatText.NewText(textPos, new Color(255, 0, 125, 240), LangHelper.GetTextValue("CombatText.StellarNovaReady"), false, false);
+                    if (Main.rand.Next(0, 5) == 0)
+                    {
+                        starfarerPromptActive("onStellarNovaCharged");
+                    }
+                }
+
+            }
+            else if (novaGauge < trueNovaGaugeMax)
+            {
+                novaReadyInfo = true;
+
+            }
+
+            novaGauge = (int)MathHelper.Clamp(novaGauge, 0, trueNovaGaugeMax);
+        }
+
+        private void NovaChargeModifiers()
+        {
+            if (unbridledradiance == 2)
+            {
+                //Unbridled Radiance doubles Nova gain.
+                novaGauge++;
+            }
+            if (avataroflight == 2 && Player.statLife >= 500)
+            {
+                //Decrease the time spent charging
+                novaGaugeChargeTimer += 2;
+            }
+            if (astralmantle == 2 && Player.statMana > 200)
+            {
+                //Decrease the time spent charging
+                novaGaugeChargeTimer += 5;
             }
         }
+
         private void SetupStarfarerOutfit()
         {
 
@@ -10827,40 +12320,32 @@ namespace StarsAbove
         }
         public void onActivateStellarNova()
         {
-            //if (player.ownedProjectileCounts[mod.ProjectileType("SpaceBurstFX")] < 1)
-            Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("SpaceBurstFX").Type, 0, 0, Player.whoAmI, 0, 1);
-            Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("SpaceBurstFX2").Type, 0, 0, Player.whoAmI, 0, 1);
-            activateShockwaveEffect = true;
+            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("SpaceBurstFX").Type, 0, 0, Player.whoAmI, 0, 1);
+            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("SpaceBurstFX2").Type, 0, 0, Player.whoAmI, 0, 1);
 
+            if (chosenStellarNova != 7)
+            {
+                activateShockwaveEffect = true;
+            }
+
+            //Drain the Stellar Nova gauge.
+            novaDrain = 1f;
 
             if (chosenStarfarer == 1)
             {
-
-
-                Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("AsphodeneBurstFX").Type, 0, 0, Player.whoAmI, 0, 1);
-                Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("AsphodeneBurstFX2").Type, 0, 0, Player.whoAmI, 0, 1);
-                // Projectile.NewProjectile(null,new Vector2(player.Center.X, player.Center.Y - 500), Vector2.Zero, mod.ProjectileType("BurstFX3"), 0, 0, player.whoAmI, 0, 1);
-                // Projectile.NewProjectile(null,new Vector2(player.Center.X, player.Center.Y - 500), Vector2.Zero, mod.ProjectileType("BurstFX4"), 0, 0, player.whoAmI, 0, 1);
-                // Projectile.NewProjectile(null,new Vector2(player.Center.X, player.Center.Y - 500), Vector2.Zero, mod.ProjectileType("BurstFX5"), 0, 0, player.whoAmI, 0, 1);
-                //Projectile.NewProjectile(null,new Vector2(player.Center.X, player.Center.Y - 500), Vector2.Zero, mod.ProjectileType("BurstFX6"), 0, 0, player.whoAmI, 0, 1);
-                Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("AsphodeneBurst" + starfarerOutfitVisible).Type, 0, 0, Player.whoAmI, 0, 1);
-
-
-
+                Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("AsphodeneBurstFX").Type, 0, 0, Player.whoAmI, 0, 1);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("AsphodeneBurstFX2").Type, 0, 0, Player.whoAmI, 0, 1);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("AsphodeneBurst" + starfarerOutfitVisible).Type, 0, 0, Player.whoAmI, 0, 1);
             }
             if (chosenStarfarer == 2)
             {
-
-                Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurstFX").Type, 0, 0, Player.whoAmI, 0, 1);
-                Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurstFX2").Type, 0, 0, Player.whoAmI, 0, 1);
-                Projectile.NewProjectile(null, new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurst" + starfarerOutfitVisible).Type, 0, 0, Player.whoAmI, 0, 1);
-
-
-
+                Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurstFX").Type, 0, 0, Player.whoAmI, 0, 1);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurstFX2").Type, 0, 0, Player.whoAmI, 0, 1);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurst" + starfarerOutfitVisible).Type, 0, 0, Player.whoAmI, 0, 1);
             }
             if (ruinedKingPrism)
             {
-                Player.AddBuff(BuffType<Buffs.SovereignDominion>(), 900);
+                Player.AddBuff(BuffType<SovereignDominion>(), 900);
             }
             if (cosmicPhoenixPrism)
             {
@@ -10875,9 +12360,9 @@ namespace StarsAbove
             }
             if (lightswornPrism)
             {
-                Player.AddBuff(BuffType<Buffs.Lightblessed>(), 480);
+                Player.AddBuff(BuffType<Lightblessed>(), 480);
             }
-            
+
             if (spatialPrism)
             {
                 Player.AddBuff(BuffID.Regeneration, 720);
@@ -10886,9 +12371,9 @@ namespace StarsAbove
             }
             if (voidsentPrism)
             {
-                Vector2 placement2 = new Vector2((Player.Center.X), Player.Center.Y);
-                Projectile.NewProjectile(null, placement2.X, placement2.Y, 0, 0, Mod.Find<ModProjectile>("radiate").Type, 0, 0f, 0);
-                Projectile.NewProjectile(null, placement2.X, placement2.Y, 0, 0, Mod.Find<ModProjectile>("VoidsentBurst").Type, baseNovaDamageAdd / 10, 0f, 0);
+                Vector2 placement2 = new Vector2(Player.Center.X, Player.Center.Y);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), placement2.X, placement2.Y, 0, 0, Mod.Find<ModProjectile>("radiate").Type, 0, 0f, 0);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), placement2.X, placement2.Y, 0, 0, Mod.Find<ModProjectile>("VoidsentBurst").Type, baseNovaDamageAdd / 10, 0f, 0);
             }
             if (overgrownPrism)
             {
@@ -10906,7 +12391,7 @@ namespace StarsAbove
             }
             if (geminiPrism)
             {
-                if(!Player.HasBuff(BuffType<GeminiPrismCooldown>()))
+                if (!Player.HasBuff(BuffType<GeminiPrismCooldown>()))
                 {
                     Player.AddBuff(BuffType<GeminiPrismCooldown>(), 7200);
 
@@ -10930,7 +12415,7 @@ namespace StarsAbove
         {
             if (royalSlimePrism)
             {
-               modifiers.FinalDamage *= 0.8f;
+                modifiers.FinalDamage *= 0.8f;
             }
         }
         private void ModifyHitEnemyWithNova(NPC target, ref NPC.HitModifiers modifiers)
@@ -10990,24 +12475,26 @@ namespace StarsAbove
             {
                 Player.ClearBuff(BuffType<MechanicalPrismBuff>());
                 target.AddBuff(BuffType<Stun>(), 120);
-                Vector2 placement2 = new Vector2((target.Center.X), target.Center.Y);
+                Vector2 placement2 = new Vector2(target.Center.X, target.Center.Y);
 
-                Projectile.NewProjectile(null, placement2.X, placement2.Y, 0, 0, Mod.Find<ModProjectile>("VoidsentBurst").Type, damage / 10, 0f, 0);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), placement2.X, placement2.Y, 0, 0, Mod.Find<ModProjectile>("VoidsentBurst").Type, damage / 10, 0f, 0);
             }
         }
+
+
         public override void ResetEffects()
         {
-            
 
-           
+
+
 
             Observatory = false;
             SeaOfStars = false;
-            
-            IsVoidActive = false;
-            
 
-            
+            IsVoidActive = false;
+
+
+
             WarriorBarActive = false;
             WarriorOfLightActive = false;
             NalhaunBarActive = false;
@@ -11028,18 +12515,18 @@ namespace StarsAbove
             TsukiyomiActive = false;
             TsukiyomiBarActive = false;
 
-            
+
         }
-        
+
 
 
         public override void ModifyDrawInfo(ref PlayerDrawSet drawInfo)
         {
             base.ModifyDrawInfo(ref drawInfo);
         }
-        
 
-        
+
+
     }
 
 };

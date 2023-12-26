@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using StarsAbove.Projectiles.Celestial.BuryTheLight;
 using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;

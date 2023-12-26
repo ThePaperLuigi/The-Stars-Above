@@ -21,10 +21,12 @@ using Terraria.GameContent;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Buffs;
 using StarsAbove.Utilities;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.NPCs.Nalhaun
 {
-	[AutoloadBossHead]
+    [AutoloadBossHead]
 
 	public class NalhaunBoss : ModNPC
 	{
@@ -37,7 +39,7 @@ namespace StarsAbove.NPCs.Nalhaun
 		public static readonly int arenaWidth = (int)(1.2f * 1000);
 		public static readonly int arenaHeight = (int)(1.2f * 600);
 
-		
+		public int AttackTimer = 120;
 
 
 		// Our texture is 36x36 with 2 pixels of padding vertically, so 38 is the vertical spacing.
@@ -113,8 +115,8 @@ namespace StarsAbove.NPCs.Nalhaun
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 214000;
-			NPC.damage = 0;
+			NPC.lifeMax = 45000;
+			NPC.damage = 20;
 			NPC.defense = 125;
 			NPC.knockBackResist = 0f;
 			NPC.width = 160;
@@ -136,7 +138,10 @@ namespace StarsAbove.NPCs.Nalhaun
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
 			NPC.netAlways = true;
 		}
-
+		public override bool CanHitPlayer(Player target, ref int cooldownSlot)
+		{
+			return false;
+		}
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			return 0f;
@@ -205,7 +210,11 @@ namespace StarsAbove.NPCs.Nalhaun
                     Idle();
                     break;
             }
-            if (AI_Timer >= 120) //An attack is active.
+			if (Main.expertMode)
+			{
+				AttackTimer = 100;
+			}
+			if (AI_Timer >= AttackTimer) //An attack is active.
             {
 
                 //Attacks begin here.
@@ -718,8 +727,8 @@ namespace StarsAbove.NPCs.Nalhaun
 
 				if (!NPC.AnyNPCs(NPCType<NalhaunBossPhase2>()))
 				{
-					int index = NPC.NewNPC(null, (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<NalhaunBossPhase2>(), NPC.whoAmI);
-					int index2 = NPC.NewNPC(null, (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<NalhaunPhase2WallsNPC>(), NPC.whoAmI);
+					int index = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<NalhaunBossPhase2>(), NPC.whoAmI);
+					int index2 = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<NalhaunPhase2WallsNPC>(), NPC.whoAmI);
 
 
 					if (Main.netMode == NetmodeID.Server && index < Main.maxNPCs)
@@ -831,8 +840,9 @@ namespace StarsAbove.NPCs.Nalhaun
 			{
 				Dust.NewDust(NPC.Center, 0, 0, 78, 0f + Main.rand.Next(-35, 35), 0f + Main.rand.Next(-35, 35), 150, default(Color), 1.5f);
 			}
-
-			AI_State = (float)ActionState.Idle;
+            Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "Nalhaun";//lol
+            Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().loadingScreenOpacity = 1f;
+            AI_State = (float)ActionState.Idle;
 		}
 		private void Idle()
 		{
@@ -860,30 +870,37 @@ namespace StarsAbove.NPCs.Nalhaun
 		//Draw the portal
 		public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
-			int portalWidth = 48;
-			int portalDepth = 18;
-			Color color = new Color(181, 43, 43);
-			int centerX = (int)NPC.Center.X;
-			int centerY = (int)NPC.Center.Y;
-			Main.instance.LoadProjectile(ProjectileID.PortalGunGate);
-			for (int x = centerX - arenaWidth / 2; x < centerX + arenaWidth / 2; x += portalWidth)
-			{
-				int frameNum = (portalFrame / 6 + x / portalWidth) % Main.projFrames[ProjectileID.PortalGunGate];
-				Rectangle frame = new Rectangle(0, frameNum * (portalWidth + 2), portalDepth, portalWidth);
-				Vector2 drawPos = new Vector2(x + portalWidth / 2, centerY - arenaHeight / 2) - Main.screenPosition;
-				spriteBatch.Draw((Texture2D)TextureAssets.Projectile[ProjectileID.PortalGunGate], drawPos, frame, color, (float)-Math.PI / 2f, new Vector2(portalDepth / 2, portalWidth / 2), 1f, SpriteEffects.None, 0f);
-				drawPos.Y += arenaHeight;
-				spriteBatch.Draw((Texture2D)TextureAssets.Projectile[ProjectileID.PortalGunGate], drawPos, frame, color, (float)Math.PI / 2f, new Vector2(portalDepth / 2, portalWidth / 2), 1f, SpriteEffects.None, 0f);
-			}
-			for (int y = centerY - arenaHeight / 2; y < centerY + arenaHeight / 2; y += portalWidth)
-			{
-				int frameNum = (portalFrame / 6 + y / portalWidth) % Main.projFrames[ProjectileID.PortalGunGate];
-				Rectangle frame = new Rectangle(0, frameNum * (portalWidth + 2), portalDepth, portalWidth);
-				Vector2 drawPos = new Vector2(centerX - arenaWidth / 2, y + portalWidth / 2) - Main.screenPosition;
-				spriteBatch.Draw((Texture2D)TextureAssets.Projectile[ProjectileID.PortalGunGate], drawPos, frame, color, (float)Math.PI, new Vector2(portalDepth / 2, portalWidth / 2), 1f, SpriteEffects.None, 0f);
-				drawPos.X += arenaWidth;
-				spriteBatch.Draw((Texture2D)TextureAssets.Projectile[ProjectileID.PortalGunGate], drawPos, frame, color, 0f, new Vector2(portalDepth / 2, portalWidth / 2), 1f, SpriteEffects.None, 0f);
-			}
+			Microsoft.Xna.Framework.Color color1 = Lighting.GetColor((int)((double)NPC.position.X + (double)NPC.width * 0.5) / 16, (int)(((double)NPC.position.Y + (double)NPC.height * 0.5) / 16.0));
+			Vector2 drawOrigin = new Vector2(NPC.width * 0.5f, NPC.height * 0.5f);
+			int r1 = (int)color1.R;
+			//drawOrigin.Y += 34f;
+			//drawOrigin.Y += 8f;
+			--drawOrigin.X;
+			Vector2 position1 = NPC.Bottom - Main.screenPosition;
+			Texture2D texture2D2 = (Texture2D)Request<Texture2D>("StarsAbove/Effects/NalhaunPhase1WallsEffect");
+			float num11 = (float)((double)Main.GlobalTimeWrappedHourly % 4.0 / 4.0);
+			float num12 = num11;
+			if ((double)num12 > 0.5)
+				num12 = 1f - num11;
+			if ((double)num12 < 0.0)
+				num12 = 0.0f;
+			float num13 = (float)(((double)num11 + 0.5) % 1.0);
+			float num14 = num13;
+			if ((double)num14 > 0.5)
+				num14 = 1f - num13;
+			if ((double)num14 < 0.0)
+				num14 = 0.0f;
+			Microsoft.Xna.Framework.Rectangle r2 = texture2D2.Frame(1, 1, 0, 0);
+			drawOrigin = r2.Size() / 2f;
+			Vector2 position3 = position1 + new Vector2(-5f, -80f);
+			Microsoft.Xna.Framework.Color color3 = Color.DarkRed;
+			Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3, NPC.rotation, drawOrigin, 1f, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
+			float num15 = 1f + num11 * 0.15f;
+			Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3 * num12, NPC.rotation, drawOrigin, 1f * num15, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
+			float num16 = 1f + num13 * 0.15f;
+			Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3 * num14, NPC.rotation, drawOrigin, 1f * num16, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
+
+
 		}
 	}
 }

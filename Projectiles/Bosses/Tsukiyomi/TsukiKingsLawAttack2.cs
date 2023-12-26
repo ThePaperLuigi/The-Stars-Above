@@ -98,7 +98,7 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 					Vector2 velocity = new Vector2((float)((Math.Cos(rotation) * speed) * -1), (float)((Math.Sin(rotation) * speed) * -1));
 					Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y) * .2f;
 
-					Projectile.NewProjectile(null, positionNew, perturbedSpeed, type, damage, 0f, Main.myPlayer);
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), positionNew, perturbedSpeed, type, damage, 0f, Main.myPlayer);
 
 
 				}
@@ -107,7 +107,7 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 					Vector2 positionNew = Vector2.Lerp(new Vector2(targetCenter.X - 600, targetCenter.Y - 800), new Vector2(targetCenter.X + 700, targetCenter.Y - 800), (float)ir / 8);
 					
 
-					Projectile.NewProjectile(null, positionNew, new Vector2(0, speed), type, damage, 0f, Main.myPlayer);
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), positionNew, new Vector2(0, speed), type, damage, 0f, Main.myPlayer);
 
 
 				}
@@ -140,7 +140,7 @@ namespace StarsAbove.Projectiles.Bosses.Tsukiyomi
 			}
 
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			
 

@@ -1,3 +1,4 @@
+using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using SubworldLibrary;
 using Terraria;
@@ -57,7 +58,7 @@ namespace StarsAbove.Items.Consumables
 				{
 					// If the player is not in multiplayer, spawn directly
 					NPC.SpawnOnPlayer(player.whoAmI, type);
-					NPC.NewNPC(null, (int)player.Center.X, (int)player.Center.Y, type2);
+					//NPC.NewNPC(player.GetSource_FromThis(), (int)player.Center.X, (int)player.Center.Y, type2);
 
 				}
 				else
@@ -65,10 +66,6 @@ namespace StarsAbove.Items.Consumables
 					// If the player is in multiplayer, request a spawn
 					// This will only work if NPCID.Sets.MPAllowedEnemies[type] is true, which we set in MinionBossBody
 					NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: type);
-					if (Main.netMode != NetmodeID.MultiplayerClient)
-					{
-						NPC.NewNPC(null, (int)player.Center.X, (int)player.Center.Y, type2);
-					}
 				}
 			}
 			if(EverlastingLightEvent.isEverlastingLightPreviewActive)

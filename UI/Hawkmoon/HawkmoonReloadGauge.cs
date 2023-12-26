@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using StarsAbove.Systems;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.UI.Elements;
@@ -41,7 +42,7 @@ namespace StarsAbove.UI.Hawkmoon
 			text.Top.Set(40, 0f);
 			text.Left.Set(65, 0f);
 			
-			colorA = new Color(88, 88, 88); // Bad
+			colorA = new Color(22, 88, 255); // Bad
 			colorB = new Color(255, 100, 50); // Good
 
 			area.Append(text);

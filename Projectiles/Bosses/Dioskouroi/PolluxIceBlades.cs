@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs.TagDamage;
+using StarsAbove.Systems;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -84,7 +85,7 @@ namespace StarsAbove.Projectiles.Bosses.Dioskouroi
 				modifiers.SetCrit();
 			}
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int d = 0; d < 18; d++)
 			{

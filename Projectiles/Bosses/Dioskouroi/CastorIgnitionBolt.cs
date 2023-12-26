@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using StarsAbove.NPCs.Dioskouroi;
 using StarsAbove.NPCs.Nalhaun;
 using StarsAbove.NPCs.Tsukiyomi;
+using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using System;
 using Terraria;
@@ -153,7 +154,7 @@ namespace StarsAbove.Projectiles.Bosses.Dioskouroi
 			// You don't need this assignment if your minion is shooting things instead of dealing contact damage
 			//Projectile.friendly = foundTarget;
 		}
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			for (int d = 0; d < 12; d++)
 			{

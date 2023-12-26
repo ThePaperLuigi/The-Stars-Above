@@ -69,17 +69,14 @@ namespace StarsAbove.Items.Armor.StarfarerArmor
 
 			return true;
 		}
-		
+
 		public override void AddRecipes()
-		{//Outfits should be expensive chase goals, with a complicated recipe.
-
+		{
 			CreateRecipe(1)
-				.AddIngredient(ItemType<TwilightNeedle>(), 1)
-				.AddIngredient(ItemType<BoltOfStarsilk>(), 2)
-				.AddIngredient(ItemType<PrismaticCore>(), 20)
-				.AddTile(TileID.Anvils)
+				.AddIngredient(ModContent.ItemType<Materials.StellarRemnant>(), 100)
+				.AddCustomShimmerResult(ModContent.ItemType<Materials.StellarRemnant>(), 3)
+				.AddTile(Terraria.ID.TileID.Anvils)
 				.Register();
-
 		}
 	}
 }

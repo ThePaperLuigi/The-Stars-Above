@@ -1,53 +1,15 @@
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using Terraria.Audio;
-using Terraria.DataStructures;
-using Terraria.GameInput;
-using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
-using Terraria.ID;
-using Terraria.Localization;
+using StarsAbove.Buffs.BlackSilence;
+using StarsAbove.Items.Armor.BlackSilence;
+using StarsAbove.Projectiles.Celestial.BlackSilence;
+using StarsAbove.Utilities;
 using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using Terraria.ModLoader.IO;
-using StarsAbove.Items;
-using StarsAbove.Projectiles;
-using StarsAbove.Buffs;
-using StarsAbove.NPCs;
-using Microsoft.Xna.Framework.Audio;
 
-using StarsAbove.Dusts;
-using StarsAbove.Items.Consumables;
-using StarsAbove.UI.StellarNova;
-using SubworldLibrary;
-using StarsAbove.Buffs.SubworldModifiers;
-using StarsAbove.Projectiles.Otherworld;
-using StarsAbove.Projectiles.SkyStriker;
-using StarsAbove.Buffs.CosmicDestroyer;
-using StarsAbove.Buffs.CarianDarkMoon;
-using StarsAbove.Buffs.AshenAmbition;
-using StarsAbove.Biomes;
-using StarsAbove.Buffs.TheOnlyThingIKnowForReal;
-using StarsAbove.Buffs.VermillionDaemon;
-using StarsAbove.Subworlds;
-using StarsAbove.Buffs.Ozma;
-using StarsAbove.Prefixes;
-using StarsAbove.UI.StarfarerMenu;
-using StarsAbove.Buffs.StarfarerAttire;
-using StarsAbove.Buffs.HunterSymphony;
-using StarsAbove.Buffs.RedMage;
-using StarsAbove.Buffs.TagDamage;
-using StarsAbove.Buffs.BurningDesire;
-using StarsAbove.Utilities;
-using StarsAbove.Buffs.CatalystMemory;
-using StarsAbove.Items.Armor.StarfarerArmor;
-using StarsAbove.Buffs.BlackSilence;
-using StarsAbove.Projectiles.BlackSilence;
-using StarsAbove.Items.Armor.BlackSilence;
-
-namespace StarsAbove
+namespace StarsAbove.Systems
 {
     public class BlackSilencePlayer : ModPlayer
     {
@@ -90,18 +52,18 @@ namespace StarsAbove
                 atelierLogicUsed = false;//6
                 crystalAtelierUsed = false;//7
                 wheelsIndustryUsed = false;//8
-    }
-            if(weaponSwapPrep)
+            }
+            if (weaponSwapPrep)
             {
                 Player.AddBuff(BuffType<BlackSilenceChoiceCooldown>(), 300);
 
                 weaponSwapPrep = false;
             }
 
-           if(BlackSilenceUIVisible)
-           {
+            if (BlackSilenceUIVisible)
+            {
                 UIOpacity += 0.05f;
-                
+
                 if (UIAnimateIn > 0f)
                 {
                     UIAnimateIn -= 2f;
@@ -111,12 +73,12 @@ namespace StarsAbove
                     UIAnimateIn = 0f;
                 }
 
-           }
-           else
-           {
+            }
+            else
+            {
                 UIOpacity = 0f;
                 UIAnimateIn = 20f;
-           }
+            }
         }
         public override void PostUpdateRunSpeeds()
         {
@@ -145,14 +107,14 @@ namespace StarsAbove
         }
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Projectile, consider using ModifyHitNPC instead */
         {
-           
+
             if (Player.HasBuff(BuffType<MookBuff>()) || Player.HasBuff(BuffType<FuriosoBuff>()))
             {
                 target.AddBuff(BuffID.Bleeding, 240);
             }
             if (Player.HasBuff(BuffType<ZelkovaBuff>()) || Player.HasBuff(BuffType<FuriosoBuff>()))
             {
-                if(target.life < target.lifeMax/2)//Less than half HP
+                if (target.life < target.lifeMax / 2)//Less than half HP
                 {
 
                     modifiers.SourceDamage += 1.3f;
@@ -164,7 +126,7 @@ namespace StarsAbove
             }
             if (Player.HasBuff(BuffType<DurandalBuff>()) || Player.HasBuff(BuffType<FuriosoBuff>()))
             {
-                if(target.life < target.lifeMax/2)
+                if (target.life < target.lifeMax / 2)
                 {
                     modifiers.CritDamage += 1.5f;
                 }
@@ -174,7 +136,7 @@ namespace StarsAbove
         public override void PreUpdateBuffs()
         {
             for (int i = 0; i < Player.CountBuffs(); i++)
-                if (Player.buffType[i] == BuffType<Buffs.BlackSilence.FuriosoBuff>())
+                if (Player.buffType[i] == BuffType<FuriosoBuff>())
                 {
                     if (Player.buffTime[i] == 1)
                     {//When Furioso runs out...
@@ -223,19 +185,19 @@ namespace StarsAbove
             }
             if (durandalUsed && zelkovaUsed && rangaUsed && oldBoysUsed && allasUsed && mookUsed && atelierLogicUsed && crystalAtelierUsed && wheelsIndustryUsed)
             {//Furioso use condition
-                if(furiosoReadyPrompt)
+                if (furiosoReadyPrompt)
                 {
                     Rectangle textPos = new Rectangle((int)Main.LocalPlayer.position.X, (int)Main.LocalPlayer.position.Y - 20, Main.LocalPlayer.width, Main.LocalPlayer.height);
                     CombatText.NewText(textPos, new Color(255, 255, 255, 240), LangHelper.GetTextValue($"UIElements.BlackSilence.FuriosoReady"), false, false);
                     furiosoReadyPrompt = false;
                 }
-               
+
             }
         }
         public override void ResetEffects()
         {
             //When the weapon isn't held, hide the UI.
-            if(!BlackSilenceHeld)
+            if (!BlackSilenceHeld)
             {
                 BlackSilenceUIVisible = false;
             }
@@ -249,16 +211,16 @@ namespace StarsAbove
             {
                 if (Player.HasBuff(BuffType<FuriosoBuff>()))
                 {
-                   
+
                     Player.head = EquipLoader.GetEquipSlot(Mod, "BlackSilenceHead", EquipType.Head);
-                    
-                   
+
+
 
                 }
-                if(BlackSilenceHeld)
+                if (BlackSilenceHeld)
                 {
-                    Player.UpdateVisibleAccessories(new Item(ModContent.ItemType<BlackSilenceGloves>()), false);
-                    
+                    Player.UpdateVisibleAccessories(new Item(ItemType<BlackSilenceGloves>()), false);
+
                 }
 
 
@@ -273,13 +235,13 @@ namespace StarsAbove
         }
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Projectile, consider using OnHitNPC instead */
         {
-            if(BlackSilenceHeld)
+            if (BlackSilenceHeld)
             {
                 BlackSilenceHitVFX(target);
-                if(proj.type == ProjectileType<WheelsIndustrySlamDamage>())
+                if (proj.type == ProjectileType<WheelsIndustrySlamDamage>())
                 {//Blunt
                     int randomSound = Main.rand.Next(0, 2);
-                    
+
                     if (randomSound == 0)
                     {
                         SoundEngine.PlaySound(StarsAboveAudio.SFX_BlackSilenceMace, Main.LocalPlayer.Center);
@@ -292,7 +254,7 @@ namespace StarsAbove
                 }
                 if (proj.type == ProjectileType<RangaDamage>())
                 {//Slash
-                    
+
                     SoundEngine.PlaySound(StarsAboveAudio.SFX_BlackSilenceDurandalHit, Main.LocalPlayer.Center);
 
                 }

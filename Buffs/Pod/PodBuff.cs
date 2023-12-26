@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using StarsAbove.Systems;
+using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
@@ -18,7 +19,7 @@ namespace StarsAbove.Buffs.Pod
         public override void Update(Player player, ref int buffIndex)
         {
             StarsAbovePlayer modPlayer = player.GetModPlayer<StarsAbovePlayer>();
-            if (player.ownedProjectileCounts[ProjectileType<Projectiles.Pod.PodMinion>()] > 0)
+            if (player.ownedProjectileCounts[ProjectileType<Projectiles.Summon.Pod.PodMinion>()] > 0)
             {
                 player.buffTime[buffIndex] = 18000;
             }

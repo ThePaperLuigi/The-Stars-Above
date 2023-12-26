@@ -2,6 +2,13 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Items;
+using StarsAbove.Items.Weapons;
+using StarsAbove.Items.Weapons.Summon;
+using StarsAbove.Items.Weapons.Ranged;
+using StarsAbove.Items.Weapons.Other;
+using StarsAbove.Items.Weapons.Celestial;
+using StarsAbove.Items.Weapons.Melee;
+using StarsAbove.Items.Weapons.Magic;
 using StarsAbove.Items.Essences;
 using StarsAbove.Prefixes;
 using SubworldLibrary;
@@ -15,1070 +22,1150 @@ using static Terraria.ModLoader.ModContent;
 using Terraria.GameContent;
 using StarsAbove.Items.Armor.StarfarerArmor;
 using StarsAbove.Items.Materials;
-using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using Terraria.UI.Chat;
 using StarsAbove.Buffs;
+using StarsAbove.Buffs.StellarNovas;
+using StarsAbove.Items.Loot;
+using StarsAbove.Systems;
 
-namespace StarsAbove
+namespace StarsAbove.Systems
 {
 
     public class StarsAboveGlobalItem : GlobalItem
-	{
-		public override bool InstancePerEntity => true;
+    {
+        public override bool InstancePerEntity => true;
         public override GlobalItem Clone(Item item, Item itemClone)
         {
             return base.Clone(item, itemClone);
         }
-       
+
         public int oldType;// 1 is melee, 2 is ranged, 3 is magic, 4 is summon
-		public DamageClass oldDamageClass;
-		//public int aspect; //0 is Astral, 1 is Umbral, 2 is Dual Aspected.
-		public bool spatialWeapon;
-		public bool loadItem = true;
+        public DamageClass oldDamageClass;
+        //public int aspect; //0 is Astral, 1 is Umbral, 2 is Dual Aspected.
+        public bool spatialWeapon;
+        public bool loadItem = true;
 
-		public List<int> AstralWeapons = new List<int>() { 
-			ModContent.ItemType<CarianDarkMoon>(),
-			ModContent.ItemType<NeoDealmaker>(),
-			ModContent.ItemType<DerFreischutz>(),
-			ModContent.ItemType<Persephone>(),
-			ModContent.ItemType<Skofnung>(),
-			ModContent.ItemType<AegisDriver>(),
-			ModContent.ItemType<KarlanTruesilver>(),
-			ModContent.ItemType<IzanagiEdge>(),
-			ModContent.ItemType<VenerationOfButterflies>(),
-			ModContent.ItemType<RideTheBull>(),
-			ModContent.ItemType<CrimsonOutbreak>(),
-			ModContent.ItemType<StygianNymph>(),
-			ModContent.ItemType<CrimsonKey>(),
-			ModContent.ItemType<PhantomInTheMirror>(),
-			ModContent.ItemType<PleniluneGaze>(),
-			ModContent.ItemType<VisionOfEuthymia>(),
-			ModContent.ItemType<RexLapis>(),
-			ModContent.ItemType<LiberationBlazing>(),
-			ModContent.ItemType<Suistrume>(),
-			ModContent.ItemType<KeyOfTheKingsLaw>(),
-			ModContent.ItemType<HunterSymphony>(),
-			ModContent.ItemType<KevesiFarewell>(),
-			ModContent.ItemType<PodZero42>(),
-
+        public List<int> AstralWeapons = new List<int>() {
+            ItemType<CarianDarkMoon>(),
+            ItemType<NeoDealmaker>(),
+            ItemType<DerFreischutz>(),
+            ItemType<Persephone>(),
+            ItemType<Skofnung>(),
+            ItemType<AegisDriver>(),
+            ItemType<KarlanTruesilver>(),
+            ItemType<IzanagiEdge>(),
+            ItemType<VenerationOfButterflies>(),
+            ItemType<RideTheBull>(),
+            ItemType<CrimsonOutbreak>(),
+            ItemType<StygianNymph>(),
+            ItemType<CrimsonKey>(),
+            ItemType<PhantomInTheMirror>(),
+            ItemType<PleniluneGaze>(),
+            ItemType<VisionOfEuthymia>(),
+            ItemType<RexLapis>(),
+            ItemType<LiberationBlazing>(),
+            ItemType<Suistrume>(),
+            ItemType<KeyOfTheKingsLaw>(),
+            ItemType<HunterSymphony>(),
+            ItemType<KevesiFarewell>(),
+            ItemType<PodZero42>(),
+            ItemType<GossamerNeedle>(),
+            ItemType<DevotedHavoc>(),
 
 			//ModContent.ItemType<EssenceOf>(),
-			ModContent.ItemType<EssenceOfTheDarkMoon>(),
-			ModContent.ItemType<EssenceOfBitterfrost>(),
-			ModContent.ItemType<EssenceOfButterflies>(),
-			ModContent.ItemType<EssenceOfDuality>(),
-			ModContent.ItemType<EssenceOfEuthymia>(),
-			ModContent.ItemType<EssenceOfIzanagi>(),
-			ModContent.ItemType<EssenceOfLiberation>(),
-			ModContent.ItemType<EssenceOfSilverAsh>(),
-			ModContent.ItemType<EssenceOfSin>(),
-			ModContent.ItemType<EssenceOfStarsong>(),
-			ModContent.ItemType<EssenceOfTheAegis>(),
-			ModContent.ItemType<EssenceOfTheAnomaly>(),
-			ModContent.ItemType<EssenceOfTheBull>(),
-			ModContent.ItemType<EssenceOfTheFreeshooter>(),
-			ModContent.ItemType<EssenceOfTheMoonlitAdepti>(),
-			ModContent.ItemType<EssenceOfThePhantom>(),
-			ModContent.ItemType<EssenceOfTheSwarm>(),
-			ModContent.ItemType<EssenceOfTheTreasury>(),
-			ModContent.ItemType<EssenceOfTheUnderworldGoddess>(),
-			ModContent.ItemType<EssenceOfTheUnyieldingEarth>(),
-			ModContent.ItemType<EssenceOfTheHunt>(),
-			ModContent.ItemType<EssenceOfFarewells>(),
-			ModContent.ItemType<EssenceOfTheAutomaton>(),
+			ItemType<EssenceOfTheDarkMoon>(),
+            ItemType<EssenceOfBitterfrost>(),
+            ItemType<EssenceOfButterflies>(),
+            ItemType<EssenceOfDuality>(),
+            ItemType<EssenceOfEuthymia>(),
+            ItemType<EssenceOfIzanagi>(),
+            ItemType<EssenceOfLiberation>(),
+            ItemType<EssenceOfSilverAsh>(),
+            ItemType<EssenceOfSin>(),
+            ItemType<EssenceOfStarsong>(),
+            ItemType<EssenceOfTheAegis>(),
+            ItemType<EssenceOfTheAnomaly>(),
+            ItemType<EssenceOfTheBull>(),
+            ItemType<EssenceOfTheFreeshooter>(),
+            ItemType<EssenceOfTheMoonlitAdepti>(),
+            ItemType<EssenceOfThePhantom>(),
+            ItemType<EssenceOfTheSwarm>(),
+            ItemType<EssenceOfTheTreasury>(),
+            ItemType<EssenceOfTheUnderworldGoddess>(),
+            ItemType<EssenceOfTheUnyieldingEarth>(),
+            ItemType<EssenceOfTheHunt>(),
+            ItemType<EssenceOfFarewells>(),
+            ItemType<EssenceOfTheAutomaton>(),
+            ItemType<EssenceOfTheHallownest>(),
+            ItemType<EssenceOfEnergy>(),
 
-		};
-		public List<int> UmbralWeapons = new List<int>() {
-			ModContent.ItemType<KonpakuKatana>(),
-			ModContent.ItemType<AshenAmbition>(),
-			ModContent.ItemType<DeathInFourActs>(),
-			ModContent.ItemType<KazimierzSeraphim>(),
-			ModContent.ItemType<InugamiRipsaw>(),
-			ModContent.ItemType<RadGun>(),
-			ModContent.ItemType<EveryMomentMatters>(),
-			ModContent.ItemType<HawkmoonMagic>(),ModContent.ItemType<HawkmoonRanged>(),
-			ModContent.ItemType<MementoMuse>(),
-			ModContent.ItemType<Drachenlance>(),
-			ModContent.ItemType<VoiceOfTheFallen>(),
-			ModContent.ItemType<CaesuraOfDespair>(),
-			ModContent.ItemType<CrimsonSakuraAlpha>(),
-			ModContent.ItemType<HollowheartAlbion>(),
-			ModContent.ItemType<Tartaglia>(),
-			ModContent.ItemType<KroniicAccelerator>(),
-			ModContent.ItemType<YunlaiStiletto>(),
-			ModContent.ItemType<Unforgotten>(),
-			ModContent.ItemType<Naganadel>(),
-			ModContent.ItemType<LightUnrelenting>(),
-			ModContent.ItemType<SparkblossomBeacon>(),
-			ModContent.ItemType<IrminsulDream>(),
-			ModContent.ItemType<AgnianFarewell>(),
+        };
+        public List<int> UmbralWeapons = new List<int>() {
+            ItemType<KonpakuKatana>(),
+            ItemType<AshenAmbition>(),
+            ItemType<DeathInFourActs>(),
+            ItemType<KazimierzSeraphim>(),
+            ItemType<InugamiRipsaw>(),
+            ItemType<RadGun>(),
+            ItemType<EveryMomentMatters>(),
+            ItemType<Hawkmoon>(),
+            ItemType<MementoMuse>(),
+            ItemType<Drachenlance>(),
+            ItemType<VoiceOfTheFallen>(),
+            ItemType<CaesuraOfDespair>(),
+            ItemType<CrimsonSakuraAlpha>(),
+            ItemType<HollowheartAlbion>(),
+            ItemType<Tartaglia>(),
+            ItemType<KroniicAccelerator>(),
+            ItemType<YunlaiStiletto>(),
+            ItemType<Unforgotten>(),
+            ItemType<Naganadel>(),
+            ItemType<LightUnrelenting>(),
+            ItemType<SparkblossomBeacon>(),
+            ItemType<IrminsulDream>(),
+            ItemType<AgnianFarewell>(),
+            ItemType<DraggedBelow>(),
+            ItemType<SoliloquyOfSovereignSeas>(),
 
-			ModContent.ItemType<EssenceOfAlpha>(),
-			ModContent.ItemType<EssenceOfAsh>(),
-			ModContent.ItemType<EssenceOfAzakana>(),
-			ModContent.ItemType<EssenceOfDeathsApprentice>(),
-			ModContent.ItemType<EssenceOfDrivingThunder>(),
-			ModContent.ItemType<EssenceOfFingers>(),
-			ModContent.ItemType<EssenceOfIRyS>(),
-			ModContent.ItemType<EssenceOfLunarDominion>(),
-			ModContent.ItemType<EssenceOfPerfection>(),
-			ModContent.ItemType<EssenceOfStyle>(),
-			ModContent.ItemType<EssenceOfSurpassingLimits>(),
-			ModContent.ItemType<EssenceOfTheDragonslayer>(),
-			ModContent.ItemType<EssenceOfTheFallen>(),
-			ModContent.ItemType<EssenceOfTheGardener>(),
-			ModContent.ItemType<EssenceOfTheHarbinger>(),
-			ModContent.ItemType<EssenceOfTheHawkmoon>(),
-			ModContent.ItemType<EssenceOfTheHollowheart>(),
-			ModContent.ItemType<EssenceOfThePegasus>(),
-			ModContent.ItemType<EssenceOfTheSharpshooter>(),
-			ModContent.ItemType<EssenceOfTime>(),
-			ModContent.ItemType<EssenceOfStaticShock>(),
+            ItemType<EssenceOfAlpha>(),
+            ItemType<EssenceOfAsh>(),
+            ItemType<EssenceOfAzakana>(),
+            ItemType<EssenceOfDeathsApprentice>(),
+            ItemType<EssenceOfDrivingThunder>(),
+            ItemType<EssenceOfFingers>(),
+            ItemType<EssenceOfIRyS>(),
+            ItemType<EssenceOfLunarDominion>(),
+            ItemType<EssenceOfPerfection>(),
+            ItemType<EssenceOfStyle>(),
+            ItemType<EssenceOfSurpassingLimits>(),
+            ItemType<EssenceOfTheDragonslayer>(),
+            ItemType<EssenceOfTheFallen>(),
+            ItemType<EssenceOfTheGardener>(),
+            ItemType<EssenceOfTheHarbinger>(),
+            ItemType<EssenceOfTheHawkmoon>(),
+            ItemType<EssenceOfTheHollowheart>(),
+            ItemType<EssenceOfThePegasus>(),
+            ItemType<EssenceOfTheSharpshooter>(),
+            ItemType<EssenceOfTime>(),
+            ItemType<EssenceOfStaticShock>(),
+            ItemType<EssenceOfOffseeing>(),
+            ItemType<EssenceOfTheVoid>(),
+            ItemType<EssenceOfHydro>(),
 
-			ModContent.ItemType<EssenceOfOffseeing>(),
-		};
-		public List<int> SpatialWeapons = new List<int>(){
+        };
+        public List<int> SpatialWeapons = new List<int>(){
 
-			ModContent.ItemType<Apalistik>(),
-			ModContent.ItemType<MiserysCompany>(),
-			ModContent.ItemType<AncientBook>(),
-			ModContent.ItemType<LuminaryWand>(),
-			ModContent.ItemType<DreadnoughtChemtank>(),
-			ModContent.ItemType<ApalistikUpgraded>(),
-			ModContent.ItemType<Xenoblade>(),
-			ModContent.ItemType<SkyStrikerArms>(),
-			ModContent.ItemType<ForceOfNature>(),
-			ModContent.ItemType<Hullwrought>(),
-			ModContent.ItemType<PenthesileaMuse>(),
-			ModContent.ItemType<Kifrosse>(),
-			ModContent.ItemType<Genocide>(),
-			ModContent.ItemType<Mercy>(),
-			ModContent.ItemType<ArachnidNeedlepoint>(),
-			ModContent.ItemType<SakuraVengeance>(),
-			ModContent.ItemType<TheOnlyThingIKnowForReal>(),
-			ModContent.ItemType<TwinStars>(),
-			ModContent.ItemType<Ozma>(),
-			ModContent.ItemType<ClaimhSolais>(),
-			ModContent.ItemType<MorningStar>(),
+            ItemType<Apalistik>(),
+            ItemType<MiserysCompany>(),
+            ItemType<AncientBook>(),
+            ItemType<LuminaryWand>(),
+            ItemType<DreadnoughtChemtank>(),
+            ItemType<ApalistikUpgraded>(),
+            ItemType<Xenoblade>(),
+            ItemType<SkyStrikerArms>(),
+            ItemType<ForceOfNature>(),
+            ItemType<Hullwrought>(),
+            ItemType<PenthesileaMuse>(),
+            ItemType<Kifrosse>(),
+            ItemType<Genocide>(),
+            ItemType<Mercy>(),
+            ItemType<ArachnidNeedlepoint>(),
+            ItemType<SakuraVengeance>(),
+            ItemType<TheOnlyThingIKnowForReal>(),
+            ItemType<TwinStars>(),
+            ItemType<Ozma>(),
+            ItemType<ClaimhSolais>(),
+            ItemType<MorningStar>(),
 
-			ModContent.ItemType<EternalStar>(),
-			ModContent.ItemType<VermillionDaemon>(),
-			ModContent.ItemType<ShadowlessCerulean>(),
-			ModContent.ItemType<HullwroughtMKII>(),
-			ModContent.ItemType<IgnitionAstra>(),
-			ModContent.ItemType<BuryTheLight>(),
-			ModContent.ItemType<ArchitectLuminance>(),
-			ModContent.ItemType<CosmicDestroyer>(),
-			ModContent.ItemType<VirtuesEdge>(),
-			ModContent.ItemType<UltimaThule>(),
-			ModContent.ItemType<BloodBlade>(),
-			ModContent.ItemType<RedMage>(),
-			ModContent.ItemType<BurningDesire>(),
-			ModContent.ItemType<EverlastingPickaxe>(),
-			ModContent.ItemType<CatalystMemory>(),
-			ModContent.ItemType<ElCapitansHardware>(),
-			ModContent.ItemType<BlackSilenceWeapon>(),
-			ModContent.ItemType<SoulReaver>(),
-			ModContent.ItemType<GoldenKatana>(),
-			ModContent.ItemType<Manifestation>(),
+            ItemType<EternalStar>(),
+            ItemType<VermillionDaemon>(),
+            ItemType<ShadowlessCerulean>(),
+            ItemType<HullwroughtMKII>(),
+            ItemType<IgnitionAstra>(),
+            ItemType<BuryTheLight>(),
+            ItemType<ArchitectLuminance>(),
+            ItemType<CosmicDestroyer>(),
+            ItemType<VirtuesEdge>(),
+            ItemType<UltimaThule>(),
+            ItemType<BloodBlade>(),
+            ItemType<RedMage>(),
+            ItemType<BurningDesire>(),
+            ItemType<EverlastingPickaxe>(),
+            ItemType<CatalystMemory>(),
+            ItemType<ElCapitansHardware>(),
+            ItemType<BlackSilenceWeapon>(),
+            ItemType<SoulReaver>(),
+            ItemType<GoldenKatana>(),
+            ItemType<Manifestation>(),
 
 			//Stars Above v1.3
-			ModContent.ItemType<Umbra>(),
-			ModContent.ItemType<SaltwaterScourge>(),
-			ModContent.ItemType<AdornmentOfTheChaoticGod>(),
-			ModContent.ItemType<Chronoclock>(),
-			ModContent.ItemType<KissOfDeath>(),
+			ItemType<Umbra>(),
+            ItemType<SaltwaterScourge>(),
+            ItemType<AdornmentOfTheChaoticGod>(),
+            ItemType<Chronoclock>(),
+            ItemType<KissOfDeath>(),
 
 			//Stars Above v1.4
-			ModContent.ItemType<Nanomachina>(),
-			ModContent.ItemType<LevinstormAxe>(),
-			ModContent.ItemType<SanguineDespair>(),
-			ModContent.ItemType<SunsetOfTheSunGod>(),
-			ModContent.ItemType<ManiacalJustice>(),
-			ModContent.ItemType<SupremeAuthority>(),
+			ItemType<Nanomachina>(),
+            ItemType<LevinstormAxe>(),
+            ItemType<SanguineDespair>(),
+            ItemType<SunsetOfTheSunGod>(),
+            ItemType<ManiacalJustice>(),
+            ItemType<SupremeAuthority>(),
 
-			ModContent.ItemType<EssenceOfAdagium>(),
-			ModContent.ItemType<EssenceOfBloodshed>(),
-			ModContent.ItemType<EssenceOfChemtech>(),
-			ModContent.ItemType<EssenceOfEternity>(),
-			ModContent.ItemType<EssenceOfFoxfire>(),
-			ModContent.ItemType<EssenceOfInk>(),
-			ModContent.ItemType<EssenceOfLuminance>(),
-			ModContent.ItemType<EssenceOfMisery>(),
-			ModContent.ItemType<EssenceOfOuterGods>(),
-			ModContent.ItemType<EssenceOfRadiance>(),
-			ModContent.ItemType<EssenceOfSakura>(),
-			ModContent.ItemType<EssenceOfTechnology>(),
-			ModContent.ItemType<EssenceOfTheAerialAce>(),
-			ModContent.ItemType<EssenceOfTheAscendant>(),
-			ModContent.ItemType<EssenceOfTheBeginningAndEnd>(),
-			ModContent.ItemType<EssenceOfExplosions>(),
-			ModContent.ItemType<EssenceOfTheBionis>(),
-			ModContent.ItemType<EssenceOfTheChimera>(),
-			ModContent.ItemType<EssenceOfTheCosmos>(),
-			ModContent.ItemType<EssenceOfTheFuture>(),
-			ModContent.ItemType<EssenceOfBlasting>(),
-			ModContent.ItemType<EssenceOfTheGunlance>(),
-			ModContent.ItemType<EssenceOfTheObservatory>(),
-			ModContent.ItemType<EssenceOfTheOcean>(),
-			ModContent.ItemType<EssenceOfTwinStars>(),
-			ModContent.ItemType<EssenceOfVampirism>(),
-			ModContent.ItemType<EssenceOfDestiny>(),
-			ModContent.ItemType<EssenceOfBlood>(),
-			ModContent.ItemType<EssenceOfLifethirsting>(),
-			ModContent.ItemType<EssenceOfBalance>(),
-			ModContent.ItemType<EssenceOfTheOverwhelmingBlaze>(),
-			ModContent.ItemType<EssenceOfTheAbyss>(),
-			ModContent.ItemType<EssenceOfTheRenegade>(),
-			ModContent.ItemType<EssenceOfQuantum>(),
-			ModContent.ItemType<EssenceOfSilence>(),
-			ModContent.ItemType<EssenceOfSouls>(),
-			ModContent.ItemType<EssenceOfGold>(),
-			ModContent.ItemType<EssenceOfMimicry>(),
-			ModContent.ItemType<EssenceOfTheTimeless>(),
-			ModContent.ItemType<EssenceOfPiracy>(),
-			ModContent.ItemType<EssenceOfAbsoluteChaos>(),
-			ModContent.ItemType<EssenceOfTheWatch>(),
-			ModContent.ItemType<EssenceOfTheBehemothTyphoon>(),
-			ModContent.ItemType<EssenceOfLightning>(),
-			ModContent.ItemType<EssenceOfNanomachines>(),
-			ModContent.ItemType<EssenceOfDespair>(),
-			ModContent.ItemType<EssenceOfMania>(),
-			ModContent.ItemType<EssenceOfSurya>(),
-			ModContent.ItemType<EssenceOfAuthority>(),
+			//Stars Above v1.5
+			ItemType<DreamersInkwell>(),
+            ItemType<BrilliantSpectrum>(),
+            ItemType<ShockAndAwe>(),
+            ItemType<TrickspinTwoStep>(),
 
-		};
+            //Stars Above v2.0
+            ItemType<DragaliaFound>(),
+            ItemType<GundbitStaves>(),
+            ItemType<Wavedancer>(),
+            ItemType<RebellionBloodArthur>(),
 
-		public List<int> Prisms = new List<int>() {
+            ItemType<EssenceOfAdagium>(),
+            ItemType<EssenceOfBloodshed>(),
+            ItemType<EssenceOfChemtech>(),
+            ItemType<EssenceOfEternity>(),
+            ItemType<EssenceOfFoxfire>(),
+            ItemType<EssenceOfInk>(),
+            ItemType<EssenceOfLuminance>(),
+            ItemType<EssenceOfMisery>(),
+            ItemType<EssenceOfOuterGods>(),
+            ItemType<EssenceOfRadiance>(),
+            ItemType<EssenceOfSakura>(),
+            ItemType<EssenceOfTechnology>(),
+            ItemType<EssenceOfTheAerialAce>(),
+            ItemType<EssenceOfTheAscendant>(),
+            ItemType<EssenceOfTheBeginningAndEnd>(),
+            ItemType<EssenceOfExplosions>(),
+            ItemType<EssenceOfTheBionis>(),
+            ItemType<EssenceOfTheChimera>(),
+            ItemType<EssenceOfTheCosmos>(),
+            ItemType<EssenceOfTheFuture>(),
+            ItemType<EssenceOfBlasting>(),
+            ItemType<EssenceOfTheGunlance>(),
+            ItemType<EssenceOfTheObservatory>(),
+            ItemType<EssenceOfTheOcean>(),
+            ItemType<EssenceOfTwinStars>(),
+            ItemType<EssenceOfVampirism>(),
+            ItemType<EssenceOfDestiny>(),
+            ItemType<EssenceOfBlood>(),
+            ItemType<EssenceOfLifethirsting>(),
+            ItemType<EssenceOfBalance>(),
+            ItemType<EssenceOfTheOverwhelmingBlaze>(),
+            ItemType<EssenceOfTheAbyss>(),
+            ItemType<EssenceOfTheRenegade>(),
+            ItemType<EssenceOfQuantum>(),
+            ItemType<EssenceOfSilence>(),
+            ItemType<EssenceOfSouls>(),
+            ItemType<EssenceOfGold>(),
+            ItemType<EssenceOfMimicry>(),
+            ItemType<EssenceOfTheTimeless>(),
+            ItemType<EssenceOfPiracy>(),
+            ItemType<EssenceOfAbsoluteChaos>(),
+            ItemType<EssenceOfTheWatch>(),
+            ItemType<EssenceOfTheBehemothTyphoon>(),
+            ItemType<EssenceOfLightning>(),
+            ItemType<EssenceOfNanomachines>(),
+            ItemType<EssenceOfDespair>(),
+            ItemType<EssenceOfMania>(),
+            ItemType<EssenceOfSurya>(),
+            ItemType<EssenceOfAuthority>(),
+            ItemType<EssenceOfKinetics>(),
+            ItemType<EssenceOfDreams>(),
+            ItemType<EssenceOfTheSoldier>(),
+            ItemType<EssenceOfSpinning>(),
 
-			ModContent.ItemType<PrismaticCore>(),
+            ItemType<EssenceOfHydro>(),
+            ItemType<EssenceOfKingslaying>(),
+            ItemType<EssenceOfFirepower>(),
+            ItemType<EssenceOfTheDragon>(),
+        };
 
-			ModContent.ItemType<AlchemicPrism>(),
-			ModContent.ItemType<ApocryphicPrism>(),
-			ModContent.ItemType<CastellicPrism>(),
-			ModContent.ItemType<CrystallinePrism>(),
-			ModContent.ItemType<EmpressPrism>(),
-			ModContent.ItemType<EverflamePrism>(),
-			ModContent.ItemType<LightswornPrism>(),
-			ModContent.ItemType<LihzahrdPrism>(),
-			ModContent.ItemType<LucentPrism>(),
-			ModContent.ItemType<LuminitePrism>(),
-			ModContent.ItemType<MechanicalPrism>(),
-			ModContent.ItemType<OvergrownPrism>(),
-			ModContent.ItemType<PaintedPrism>(),
-			ModContent.ItemType<PhylacticPrism>(),	
-			ModContent.ItemType<RadiantPrism>(),
-			ModContent.ItemType<RefulgentPrism>(),
-			ModContent.ItemType<RoyalSlimePrism>(),
-			ModContent.ItemType<SpatialPrism>(),
-			ModContent.ItemType<TyphoonPrism>(),
-			ModContent.ItemType<VerdantPrism>(),
-			ModContent.ItemType<VoidsentPrism>(),
-			ModContent.ItemType<PrismOfTheCosmicPhoenix>(),
-			ModContent.ItemType<PrismOfTheRuinedKing>(),
+        public List<int> Prisms = new List<int>() {
+
+            ItemType<PrismaticCore>(),
+
+            ItemType<AlchemicPrism>(),
+            ItemType<ApocryphicPrism>(),
+            ItemType<CastellicPrism>(),
+            ItemType<CrystallinePrism>(),
+            ItemType<EmpressPrism>(),
+            ItemType<EverflamePrism>(),
+            ItemType<LightswornPrism>(),
+            ItemType<LihzahrdPrism>(),
+            ItemType<LucentPrism>(),
+            ItemType<LuminitePrism>(),
+            ItemType<MechanicalPrism>(),
+            ItemType<OvergrownPrism>(),
+            ItemType<PaintedPrism>(),
+            ItemType<PhylacticPrism>(),
+            ItemType<RadiantPrism>(),
+            ItemType<RefulgentPrism>(),
+            ItemType<RoyalSlimePrism>(),
+            ItemType<SpatialPrism>(),
+            ItemType<TyphoonPrism>(),
+            ItemType<VerdantPrism>(),
+            ItemType<VoidsentPrism>(),
+            ItemType<PrismOfTheCosmicPhoenix>(),
+            ItemType<PrismOfTheRuinedKing>(),
 
 
-		};
+        };
 
         #region Gifts
-		//Temporary addition, possibly for the 'Rapport' system, kind of like Social Links.
-        public List<int> AsphodeneLikes = new List<int>() {
+        //Temporary addition, possibly for the 'Rapport' system, kind of like Social Links.
+        public List<int> AsphodeneLikes = new List<int>()
+        {
 
-			//ModContent.ItemType<TotemOfLightEmpowered>(),
-			//ModContent.ItemType<VirtuesEdge>(),
-
-
-		};
-		public List<int> EridaniLikes = new List<int>() {
-
-			//ModContent.ItemType<TotemOfLightEmpowered>(),
-			//ModContent.ItemType<VirtuesEdge>(),
+            //ModContent.ItemType<TotemOfLightEmpowered>(),
+            //ModContent.ItemType<VirtuesEdge>(),
 
 
-		};
-		public List<int> PerseusLikes = new List<int>() {
+        };
+        public List<int> EridaniLikes = new List<int>()
+        {
 
-			//ModContent.ItemType<TotemOfLightEmpowered>(),
-			//ModContent.ItemType<VirtuesEdge>(),
-
-
-		};
-		public List<int> GarridineLikes = new List<int>() {
-
-			//ModContent.ItemType<TotemOfLightEmpowered>(),
-			//ModContent.ItemType<VirtuesEdge>(),
+            //ModContent.ItemType<TotemOfLightEmpowered>(),
+            //ModContent.ItemType<VirtuesEdge>(),
 
 
-		};
-		public List<int> YojimboLikes = new List<int>() {
+        };
+        public List<int> PerseusLikes = new List<int>()
+        {
 
-			//ModContent.ItemType<TotemOfLightEmpowered>(),
-			//ModContent.ItemType<VirtuesEdge>(),
+            //ModContent.ItemType<TotemOfLightEmpowered>(),
+            //ModContent.ItemType<VirtuesEdge>(),
 
 
-		};
+        };
+        public List<int> GarridineLikes = new List<int>()
+        {
+
+            //ModContent.ItemType<TotemOfLightEmpowered>(),
+            //ModContent.ItemType<VirtuesEdge>(),
+
+
+        };
+        public List<int> YojimboLikes = new List<int>()
+        {
+
+            //ModContent.ItemType<TotemOfLightEmpowered>(),
+            //ModContent.ItemType<VirtuesEdge>(),
+
+
+        };
         #endregion
 
         public List<int> Outfits = new List<int>() {
 
-			ModContent.ItemType<FaerieVoyagerAttire>(),
-			ModContent.ItemType<StellarCasualAttire>(),
-			ModContent.ItemType<AegisOfHopesLegacy>(),
-			ModContent.ItemType<CelestialPrincessGenesis>(),
-			ModContent.ItemType<FamiliarLookingAttire>(),
-		}; 
+            ItemType<FaerieVoyagerAttire>(),
+            ItemType<StellarCasualAttire>(),
+            ItemType<AegisOfHopesLegacy>(),
+            ItemType<CelestialPrincessGenesis>(),
+            ItemType<FamiliarLookingAttire>(),
+            ItemType<SeventhSigilAutumnAttire>(),
+            ItemType<GarmentsOfWinterRainAttire>(),
 
-		public List<int> GlowingItems = new List<int>() {
+        };
 
-			ModContent.ItemType<TotemOfLightEmpowered>(),
-			ModContent.ItemType<BlackSilenceWeapon>(),
-			ModContent.ItemType<AdornmentOfTheChaoticGod>(),
-			ModContent.ItemType<Chronoclock>(),
-			ModContent.ItemType<BrilliantSpectrum>(),
-		};
-		public List<int> Essences = new List<int>() {
+        public List<int> GlowingItems = new List<int>() {
 
-			ModContent.ItemType<EssenceOfLifethirsting>(),
-			ModContent.ItemType<EssenceOfTheDarkMoon>(),
-			ModContent.ItemType<EssenceOfAdagium>(),
-			ModContent.ItemType<EssenceOfBloodshed>(),
-			ModContent.ItemType<EssenceOfChemtech>(),
-			ModContent.ItemType<EssenceOfEternity>(),
-			ModContent.ItemType<EssenceOfFoxfire>(),
-			ModContent.ItemType<EssenceOfInk>(),
-			ModContent.ItemType<EssenceOfLuminance>(),
-			ModContent.ItemType<EssenceOfMisery>(),
-			ModContent.ItemType<EssenceOfOuterGods>(),
-			ModContent.ItemType<EssenceOfRadiance>(),
-			ModContent.ItemType<EssenceOfSakura>(),
-			ModContent.ItemType<EssenceOfTechnology>(),
-			ModContent.ItemType<EssenceOfTheAerialAce>(),
-			ModContent.ItemType<EssenceOfTheAscendant>(),
-			ModContent.ItemType<EssenceOfTheBeginningAndEnd>(),
-			ModContent.ItemType<EssenceOfExplosions>(),
-			ModContent.ItemType<EssenceOfTheBionis>(),
-			ModContent.ItemType<EssenceOfTheChimera>(),
-			ModContent.ItemType<EssenceOfTheCosmos>(),
-			ModContent.ItemType<EssenceOfTheFuture>(),
-			ModContent.ItemType<EssenceOfBlasting>(),
-			ModContent.ItemType<EssenceOfTheGunlance>(),
-			ModContent.ItemType<EssenceOfTheObservatory>(),
-			ModContent.ItemType<EssenceOfTheOcean>(),
-			ModContent.ItemType<EssenceOfTwinStars>(),
-			ModContent.ItemType<EssenceOfVampirism>(),
-			ModContent.ItemType<EssenceOfDestiny>(),
-			ModContent.ItemType<EssenceOfAlpha>(),
-			ModContent.ItemType<EssenceOfAsh>(),
-			ModContent.ItemType<EssenceOfAzakana>(),
-			ModContent.ItemType<EssenceOfDeathsApprentice>(),
-			ModContent.ItemType<EssenceOfDrivingThunder>(),
-			ModContent.ItemType<EssenceOfFingers>(),
-			ModContent.ItemType<EssenceOfIRyS>(),
-			ModContent.ItemType<EssenceOfLunarDominion>(),
-			ModContent.ItemType<EssenceOfPerfection>(),
-			ModContent.ItemType<EssenceOfStyle>(),
-			ModContent.ItemType<EssenceOfSurpassingLimits>(),
-			ModContent.ItemType<EssenceOfTheDragonslayer>(),
-			ModContent.ItemType<EssenceOfTheFallen>(),
-			ModContent.ItemType<EssenceOfTheGardener>(),
-			ModContent.ItemType<EssenceOfTheHarbinger>(),
-			ModContent.ItemType<EssenceOfTheHawkmoon>(),
-			ModContent.ItemType<EssenceOfTheHollowheart>(),
-			ModContent.ItemType<EssenceOfThePegasus>(),
-			ModContent.ItemType<EssenceOfTheSharpshooter>(),
-			ModContent.ItemType<EssenceOfTime>(),
-			ModContent.ItemType<EssenceOfStaticShock>(),
-			ModContent.ItemType<EssenceOfBitterfrost>(),
-			ModContent.ItemType<EssenceOfButterflies>(),
-			ModContent.ItemType<EssenceOfDuality>(),
-			ModContent.ItemType<EssenceOfEuthymia>(),
-			ModContent.ItemType<EssenceOfIzanagi>(),
-			ModContent.ItemType<EssenceOfLiberation>(),
-			ModContent.ItemType<EssenceOfSilverAsh>(),
-			ModContent.ItemType<EssenceOfSin>(),
-			ModContent.ItemType<EssenceOfStarsong>(),
-			ModContent.ItemType<EssenceOfTheAegis>(),
-			ModContent.ItemType<EssenceOfTheAnomaly>(),
-			ModContent.ItemType<EssenceOfTheBull>(),
-			ModContent.ItemType<EssenceOfTheFreeshooter>(),
-			ModContent.ItemType<EssenceOfTheMoonlitAdepti>(),
-			ModContent.ItemType<EssenceOfThePhantom>(),
-			ModContent.ItemType<EssenceOfTheSwarm>(),
-			ModContent.ItemType<EssenceOfTheTreasury>(),
-			ModContent.ItemType<EssenceOfTheUnderworldGoddess>(),
-			ModContent.ItemType<EssenceOfTheUnyieldingEarth>(),
-			ModContent.ItemType<EssenceOfTheHunt>(),
-			ModContent.ItemType<EssenceOfBlood>(),
-			ModContent.ItemType<EssenceOfBalance>(),
-			ModContent.ItemType<EssenceOfTheOverwhelmingBlaze>(),
-			ModContent.ItemType<EssenceOfTheAbyss>(),
-			ModContent.ItemType<EssenceOfTheRenegade>(),
-			ModContent.ItemType<EssenceOfQuantum>(),
-			ModContent.ItemType<EssenceOfSilence>(),
-			ModContent.ItemType<EssenceOfSouls>(),
-			ModContent.ItemType<EssenceOfGold>(),
-			ModContent.ItemType<EssenceOfFarewells>(),
-			ModContent.ItemType<EssenceOfOffseeing>(),
-			ModContent.ItemType<EssenceOfMimicry>(),
-			ModContent.ItemType<EssenceOfTheAutomaton>(),
-			ModContent.ItemType<EssenceOfNature>(),
-			ModContent.ItemType<EssenceOfTheTimeless>(),
-			ModContent.ItemType<EssenceOfPiracy>(),
-			ModContent.ItemType<EssenceOfAbsoluteChaos>(),
-			ModContent.ItemType<EssenceOfTheWatch>(),
-			ModContent.ItemType<EssenceOfDespair>(),
-			ModContent.ItemType<EssenceOfTheBehemothTyphoon>(),
-			ModContent.ItemType<EssenceOfLightning>(),
-			ModContent.ItemType<EssenceOfNanomachines>(),
-			ModContent.ItemType<EssenceOfMania>(),
-			ModContent.ItemType<EssenceOfSurya>(),
+            ItemType<TotemOfLightEmpowered>(),
+            ItemType<BlackSilenceWeapon>(),
+            ItemType<AdornmentOfTheChaoticGod>(),
+            ItemType<Chronoclock>(),
+            ItemType<BrilliantSpectrum>(),
+        };
+        public List<int> Essences = new List<int>() {
 
+            ItemType<EssenceOfLifethirsting>(),
+            ItemType<EssenceOfTheDarkMoon>(),
+            ItemType<EssenceOfAdagium>(),
+            ItemType<EssenceOfBloodshed>(),
+            ItemType<EssenceOfChemtech>(),
+            ItemType<EssenceOfEternity>(),
+            ItemType<EssenceOfFoxfire>(),
+            ItemType<EssenceOfInk>(),
+            ItemType<EssenceOfLuminance>(),
+            ItemType<EssenceOfMisery>(),
+            ItemType<EssenceOfOuterGods>(),
+            ItemType<EssenceOfRadiance>(),
+            ItemType<EssenceOfSakura>(),
+            ItemType<EssenceOfTechnology>(),
+            ItemType<EssenceOfTheAerialAce>(),
+            ItemType<EssenceOfTheAscendant>(),
+            ItemType<EssenceOfTheBeginningAndEnd>(),
+            ItemType<EssenceOfExplosions>(),
+            ItemType<EssenceOfTheBionis>(),
+            ItemType<EssenceOfTheChimera>(),
+            ItemType<EssenceOfTheCosmos>(),
+            ItemType<EssenceOfTheFuture>(),
+            ItemType<EssenceOfBlasting>(),
+            ItemType<EssenceOfTheGunlance>(),
+            ItemType<EssenceOfTheObservatory>(),
+            ItemType<EssenceOfTheOcean>(),
+            ItemType<EssenceOfTwinStars>(),
+            ItemType<EssenceOfVampirism>(),
+            ItemType<EssenceOfDestiny>(),
+            ItemType<EssenceOfAlpha>(),
+            ItemType<EssenceOfAsh>(),
+            ItemType<EssenceOfAzakana>(),
+            ItemType<EssenceOfDeathsApprentice>(),
+            ItemType<EssenceOfDrivingThunder>(),
+            ItemType<EssenceOfFingers>(),
+            ItemType<EssenceOfIRyS>(),
+            ItemType<EssenceOfLunarDominion>(),
+            ItemType<EssenceOfPerfection>(),
+            ItemType<EssenceOfStyle>(),
+            ItemType<EssenceOfSurpassingLimits>(),
+            ItemType<EssenceOfTheDragonslayer>(),
+            ItemType<EssenceOfTheFallen>(),
+            ItemType<EssenceOfTheGardener>(),
+            ItemType<EssenceOfTheHarbinger>(),
+            ItemType<EssenceOfTheHawkmoon>(),
+            ItemType<EssenceOfTheHollowheart>(),
+            ItemType<EssenceOfThePegasus>(),
+            ItemType<EssenceOfTheSharpshooter>(),
+            ItemType<EssenceOfTime>(),
+            ItemType<EssenceOfStaticShock>(),
+            ItemType<EssenceOfBitterfrost>(),
+            ItemType<EssenceOfButterflies>(),
+            ItemType<EssenceOfDuality>(),
+            ItemType<EssenceOfEuthymia>(),
+            ItemType<EssenceOfIzanagi>(),
+            ItemType<EssenceOfLiberation>(),
+            ItemType<EssenceOfSilverAsh>(),
+            ItemType<EssenceOfSin>(),
+            ItemType<EssenceOfStarsong>(),
+            ItemType<EssenceOfTheAegis>(),
+            ItemType<EssenceOfTheAnomaly>(),
+            ItemType<EssenceOfTheBull>(),
+            ItemType<EssenceOfTheFreeshooter>(),
+            ItemType<EssenceOfTheMoonlitAdepti>(),
+            ItemType<EssenceOfThePhantom>(),
+            ItemType<EssenceOfTheSwarm>(),
+            ItemType<EssenceOfTheTreasury>(),
+            ItemType<EssenceOfTheUnderworldGoddess>(),
+            ItemType<EssenceOfTheUnyieldingEarth>(),
+            ItemType<EssenceOfTheHunt>(),
+            ItemType<EssenceOfBlood>(),
+            ItemType<EssenceOfBalance>(),
+            ItemType<EssenceOfTheOverwhelmingBlaze>(),
+            ItemType<EssenceOfTheAbyss>(),
+            ItemType<EssenceOfTheRenegade>(),
+            ItemType<EssenceOfQuantum>(),
+            ItemType<EssenceOfSilence>(),
+            ItemType<EssenceOfSouls>(),
+            ItemType<EssenceOfGold>(),
+            ItemType<EssenceOfFarewells>(),
+            ItemType<EssenceOfOffseeing>(),
+            ItemType<EssenceOfMimicry>(),
+            ItemType<EssenceOfTheAutomaton>(),
+            ItemType<EssenceOfNature>(),
+            ItemType<EssenceOfTheTimeless>(),
+            ItemType<EssenceOfPiracy>(),
+            ItemType<EssenceOfAbsoluteChaos>(),
+            ItemType<EssenceOfTheWatch>(),
+            ItemType<EssenceOfDespair>(),
+            ItemType<EssenceOfTheBehemothTyphoon>(),
+            ItemType<EssenceOfLightning>(),
+            ItemType<EssenceOfNanomachines>(),
+            ItemType<EssenceOfMania>(),
+            ItemType<EssenceOfSurya>(),
+            ItemType<EssenceOfTheVoid>(),
+            ItemType<EssenceOfTheHallownest>(),
+            ItemType<EssenceOfKinetics>(),
+            ItemType<EssenceOfTheSoldier>(),
+            ItemType<EssenceOfSpinning>(),
+            ItemType<EssenceOfDreams>(),
+            ItemType<EssenceOfAuthority>(),
 
+            ItemType<EssenceOfHydro>(),
+            ItemType<EssenceOfFirepower>(),
+            ItemType<EssenceOfKingslaying>(),
+            ItemType<EssenceOfDancingSeas>(),
+            ItemType<EssenceOfEnergy>(),
+            ItemType<EssenceOfTheDragon>(),
 
-		};
-		public static bool disableAspectPenalty;
-		public static bool disableCalamityWeaponBuffs;
-		public static bool disableWeaponRestriction = false;
-		
-		public override void SetDefaults(Item item)
-		{
-			//if (item.type == ItemID.CopperShortsword)
-			//{  Here we make sure to only change Copper Shortsword by checking item.type in an if statement
-			//item.damage = 50;       // Changed original CopperShortsword's damage to 50!
-			//}
+        };
+        public static bool disableAspectPenalty;
+        public static bool disableCalamityWeaponBuffs;
+        public static bool disableWeaponRestriction = false;
 
-			
-
-			if(item.DamageType == ModContent.GetInstance<Systems.CelestialDamageClass>())
-            {
-				spatialWeapon = true;
-            }
-
-			oldDamageClass = item.DamageType;
-
-			if (AstralWeapons.Contains(item.type))
-            {
-
-            }
-			if (UmbralWeapons.Contains(item.type))
-			{
-
-			}
-			if (SpatialWeapons.Contains(item.type))
-			{
-
-			}
-
-			if (loadItem)
-            {
-
-				loadItem = false;
-            }
-			
-		}
-		
-		public override bool PreDrawTooltipLine(Item item, DrawableTooltipLine line, ref int yOffset)
+        public override void SetDefaults(Item item)
         {
-			if(item.OriginalRarity == ModContent.GetInstance<StellarRarity>().Type)
+            //if (item.type == ItemID.CopperShortsword)
+            //{  Here we make sure to only change Copper Shortsword by checking item.type in an if statement
+            //item.damage = 50;       // Changed original CopperShortsword's damage to 50!
+            //}
+
+
+
+            if (item.DamageType == GetInstance<CelestialDamageClass>())
             {
-				if (!line.OneDropLogo)
-				{
-					// You are not allowed to change these, modders should use ModifyTooltips to modify them
-					//line.text = "you shall not pass...";
-					//line.oneDropLogo = false;
-					//line.color = Color.AliceBlue;
-					//line.overrideColor = Color.AliceBlue;
-					//line.isModifier = false;
-					//line.isModifierBad = false;
-					//line.index = 1;
+                spatialWeapon = true;
+            }
 
-					// Let's draw the item name centered so it's in the middle, and let's add a form of separator
-					string sepText = "✧ ✦ ✧"; // This is our separator, which will go between the item name and the rest
-					float sepHeight = line.Font.MeasureString(sepText).Y; // Height of our separator
+            oldDamageClass = item.DamageType;
 
-					// If our line text equals our item name, this is our tooltip line for the item name
-					// if (line.text == item.HoverName)
-					// What is more accurate to check is the layer name and mod
-					if (line.Name == "ItemName" && line.Mod == "Terraria")
-					// We check for Terraria so we modify the vanilla tooltip and not a modded one
-					// This could be important, in case some mod does a lot of custom work and removes the standard tooltip
-					// For tooltip layers, check the documentation for TooltipLine
-					{
-						// Our offset is half the width of our box, minus the padding of one side
-						//float boxOffset = boxSize.X / 2 - paddingForBox;
-						// The X coordinate where we draw is where the line would draw, plus the box offset,
-						// which would place the START of the string at the center, so we subtract half of the line width to center it completely
-						float drawX = line.X + (int)line.Font.MeasureString(line.Text).X / 2 - line.Font.MeasureString(sepText).X / 2;
-						float drawY = line.Y + sepHeight / 2;
+            if (AstralWeapons.Contains(item.type))
+            {
 
-						// Note how our line object has many properties we can use for drawing
-						// Here we draw the separator, note that it'd make more sense to use PostDraw for this, but either will work
-						ChatManager.DrawColorCodedStringWithShadow(Main.spriteBatch, line.Font, sepText,
-							new Vector2(drawX, drawY), line.Color, line.Rotation, line.Origin, line.BaseScale, line.MaxWidth, line.Spread);
+            }
+            if (UmbralWeapons.Contains(item.type))
+            {
 
-						// Here we do the same thing as we did for drawX, which will center our ItemName tooltip
-						//line.X += (int)boxOffset - (int)line.Font.MeasureString(line.Text).X / 2;
-						// yOffset affects the offset that is added every next line, so this will cause the line to come after the separator to be drawn slightly lower
-						yOffset = (int)sepHeight / 4;
-					}
-					else
-					{
-						// Reset the offset for other lines
-						//float boxOffset = boxSize.X / 2 - paddingForBox;
-						//line.X = 0;
-						yOffset = 0;
-						//line.X += (int)boxOffset - (int)line.Font.MeasureString(line.Text).X / 2;
-					}
-				}
-			}
-			
-			return true;
+            }
+            if (SpatialWeapons.Contains(item.type))
+            {
+
+            }
+
+            if (loadItem)
+            {
+
+                loadItem = false;
+            }
+
+        }
+
+        public override bool PreDrawTooltipLine(Item item, DrawableTooltipLine line, ref int yOffset)
+        {
+            if (item.OriginalRarity == GetInstance<StellarRarity>().Type)
+            {
+                if (!line.OneDropLogo)
+                {
+                    // You are not allowed to change these, modders should use ModifyTooltips to modify them
+                    //line.text = "you shall not pass...";
+                    //line.oneDropLogo = false;
+                    //line.color = Color.AliceBlue;
+                    //line.overrideColor = Color.AliceBlue;
+                    //line.isModifier = false;
+                    //line.isModifierBad = false;
+                    //line.index = 1;
+
+                    // Let's draw the item name centered so it's in the middle, and let's add a form of separator
+                    string sepText = "✧ ✦ ✧"; // This is our separator, which will go between the item name and the rest
+                    float sepHeight = line.Font.MeasureString(sepText).Y; // Height of our separator
+
+                    // If our line text equals our item name, this is our tooltip line for the item name
+                    // if (line.text == item.HoverName)
+                    // What is more accurate to check is the layer name and mod
+                    if (line.Name == "ItemName" && line.Mod == "Terraria")
+                    // We check for Terraria so we modify the vanilla tooltip and not a modded one
+                    // This could be important, in case some mod does a lot of custom work and removes the standard tooltip
+                    // For tooltip layers, check the documentation for TooltipLine
+                    {
+                        // Our offset is half the width of our box, minus the padding of one side
+                        //float boxOffset = boxSize.X / 2 - paddingForBox;
+                        // The X coordinate where we draw is where the line would draw, plus the box offset,
+                        // which would place the START of the string at the center, so we subtract half of the line width to center it completely
+                        float drawX = line.X + (int)line.Font.MeasureString(line.Text).X / 2 - line.Font.MeasureString(sepText).X / 2;
+                        float drawY = line.Y + sepHeight / 2;
+
+                        // Note how our line object has many properties we can use for drawing
+                        // Here we draw the separator, note that it'd make more sense to use PostDraw for this, but either will work
+                        ChatManager.DrawColorCodedStringWithShadow(Main.spriteBatch, line.Font, sepText,
+                            new Vector2(drawX, drawY), line.Color, line.Rotation, line.Origin, line.BaseScale, line.MaxWidth, line.Spread);
+
+                        // Here we do the same thing as we did for drawX, which will center our ItemName tooltip
+                        //line.X += (int)boxOffset - (int)line.Font.MeasureString(line.Text).X / 2;
+                        // yOffset affects the offset that is added every next line, so this will cause the line to come after the separator to be drawn slightly lower
+                        yOffset = (int)sepHeight / 4;
+                    }
+                    else
+                    {
+                        // Reset the offset for other lines
+                        //float boxOffset = boxSize.X / 2 - paddingForBox;
+                        //line.X = 0;
+                        yOffset = 0;
+                        //line.X += (int)boxOffset - (int)line.Font.MeasureString(line.Text).X / 2;
+                    }
+                }
+            }
+            if (item.OriginalRarity == GetInstance<StellarSpoilsRarity>().Type)
+            {
+                if (!line.OneDropLogo)
+                {
+                    // You are not allowed to change these, modders should use ModifyTooltips to modify them
+                    //line.text = "you shall not pass...";
+                    //line.oneDropLogo = false;
+                    //line.color = Color.AliceBlue;
+                    //line.overrideColor = Color.AliceBlue;
+                    //line.isModifier = false;
+                    //line.isModifierBad = false;
+                    //line.index = 1;
+
+                    // Let's draw the item name centered so it's in the middle, and let's add a form of separator
+                    string sepText = "✦"; // This is our separator, which will go between the item name and the rest
+                    float sepHeight = line.Font.MeasureString(sepText).Y; // Height of our separator
+
+                    // If our line text equals our item name, this is our tooltip line for the item name
+                    // if (line.text == item.HoverName)
+                    // What is more accurate to check is the layer name and mod
+                    if (line.Name == "ItemName" && line.Mod == "Terraria")
+                    // We check for Terraria so we modify the vanilla tooltip and not a modded one
+                    // This could be important, in case some mod does a lot of custom work and removes the standard tooltip
+                    // For tooltip layers, check the documentation for TooltipLine
+                    {
+                        // Our offset is half the width of our box, minus the padding of one side
+                        //float boxOffset = boxSize.X / 2 - paddingForBox;
+                        // The X coordinate where we draw is where the line would draw, plus the box offset,
+                        // which would place the START of the string at the center, so we subtract half of the line width to center it completely
+                        float drawX = line.X + (int)line.Font.MeasureString(line.Text).X / 2 - line.Font.MeasureString(sepText).X / 2;
+                        float drawY = line.Y + sepHeight / 2;
+
+                        // Note how our line object has many properties we can use for drawing
+                        // Here we draw the separator, note that it'd make more sense to use PostDraw for this, but either will work
+                        ChatManager.DrawColorCodedStringWithShadow(Main.spriteBatch, line.Font, sepText,
+                            new Vector2(drawX, drawY), line.Color, line.Rotation, line.Origin, line.BaseScale, line.MaxWidth, line.Spread);
+
+                        // Here we do the same thing as we did for drawX, which will center our ItemName tooltip
+                        //line.X += (int)boxOffset - (int)line.Font.MeasureString(line.Text).X / 2;
+                        // yOffset affects the offset that is added every next line, so this will cause the line to come after the separator to be drawn slightly lower
+                        yOffset = (int)sepHeight / 4;
+                    }
+                    else
+                    {
+                        // Reset the offset for other lines
+                        //float boxOffset = boxSize.X / 2 - paddingForBox;
+                        //line.X = 0;
+                        yOffset = 0;
+                        //line.X += (int)boxOffset - (int)line.Font.MeasureString(line.Text).X / 2;
+                    }
+                }
+            }
+            return true;
         }
         public override bool PreDrawInInventory(Item item, SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
-			if(Prisms.Contains(item.type) || Outfits.Contains(item.type) || GlowingItems.Contains(item.type) || Essences.Contains(item.type))
+            if (Prisms.Contains(item.type) || Outfits.Contains(item.type) || GlowingItems.Contains(item.type) || Essences.Contains(item.type))
             {
-				Texture2D texture = TextureAssets.Item[item.type].Value;
-				for (int i = 0; i < 4; i++)
-				{
-					Vector2 offsetPositon = Vector2.UnitY.RotatedBy(MathHelper.PiOver2 * i) * 2;
-					spriteBatch.Draw(texture, position + offsetPositon, null, Main.DiscoColor, 0, origin, scale, SpriteEffects.None, 0f);
-				}
+                Texture2D texture = TextureAssets.Item[item.type].Value;
+                for (int i = 0; i < 4; i++)
+                {
+                    Vector2 offsetPositon = Vector2.UnitY.RotatedBy(MathHelper.PiOver2 * i) * 2;
+                    spriteBatch.Draw(texture, position + offsetPositon, null, Main.DiscoColor, 0, origin, scale, SpriteEffects.None, 0f);
+                }
 
-				float time = Main.GlobalTimeWrappedHourly;
-				float timer = item.timeSinceItemSpawned / 240f + time * 0.04f;
+                float time = Main.GlobalTimeWrappedHourly;
+                float timer = item.timeSinceItemSpawned / 240f + time * 0.04f;
 
-				time %= 4f;
-				time /= 2f;
+                time %= 4f;
+                time /= 2f;
 
-				if (time >= 1f)
-				{
-					time = 2f - time;
-				}
+                if (time >= 1f)
+                {
+                    time = 2f - time;
+                }
 
-				time = time * 0.5f + 0.5f;
+                time = time * 0.5f + 0.5f;
 
-				for (float i = 0f; i < 1f; i += 0.25f)
-				{
-					float radians = (i + timer) * MathHelper.TwoPi;
+                for (float i = 0f; i < 1f; i += 0.25f)
+                {
+                    float radians = (i + timer) * MathHelper.TwoPi;
 
-					Main.spriteBatch.Draw(texture, position + new Vector2(0f, 8f).RotatedBy(radians) * time, frame, new Color(90, 70, 255, 50), 0, origin, scale, SpriteEffects.None, 0);
-				}
+                    Main.spriteBatch.Draw(texture, position + new Vector2(0f, 8f).RotatedBy(radians) * time, frame, new Color(90, 70, 255, 50), 0, origin, scale, SpriteEffects.None, 0);
+                }
 
-				for (float i = 0f; i < 1f; i += 0.34f)
-				{
-					float radians = (i + timer) * MathHelper.TwoPi;
+                for (float i = 0f; i < 1f; i += 0.34f)
+                {
+                    float radians = (i + timer) * MathHelper.TwoPi;
 
-					Main.spriteBatch.Draw(texture, position + new Vector2(0f, 4f).RotatedBy(radians) * time, frame, new Color(140, 120, 255, 77), 0, origin, scale, SpriteEffects.None, 0);
+                    Main.spriteBatch.Draw(texture, position + new Vector2(0f, 4f).RotatedBy(radians) * time, frame, new Color(140, 120, 255, 77), 0, origin, scale, SpriteEffects.None, 0);
 
-				}
+                }
 
-				
-				
-				return true;
-			}
-			return true;
-		}
+
+
+                return true;
+            }
+            return true;
+        }
         public override bool PreDrawInWorld(Item item, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
-			if (Prisms.Contains(item.type) || Outfits.Contains(item.type) || GlowingItems.Contains(item.type) || Essences.Contains(item.type))
-			{
-				// Draw the periodic glow effect behind the item when dropped in the world (hence PreDrawInWorld)
-				Texture2D texture = TextureAssets.Item[item.type].Value;
+            if (Prisms.Contains(item.type) || Outfits.Contains(item.type) || GlowingItems.Contains(item.type) || Essences.Contains(item.type))
+            {
+                // Draw the periodic glow effect behind the item when dropped in the world (hence PreDrawInWorld)
+                Texture2D texture = TextureAssets.Item[item.type].Value;
 
-				Rectangle frame;
-				
-				if (Main.itemAnimations[item.type] != null)
-				{
-					// In case this item is animated, this picks the correct frame
-					frame = Main.itemAnimations[item.type].GetFrame(texture, Main.itemFrameCounter[whoAmI]);
-				}
-				else
-				{
-					frame = texture.Frame();
-				}
+                Rectangle frame;
 
-				Vector2 frameOrigin = frame.Size() / 2f;
-				Vector2 offset = new Vector2(item.width / 2 - frameOrigin.X, item.height - frame.Height);
-				Vector2 drawPos = item.position - Main.screenPosition + frameOrigin + offset;
-				for (int i = 0; i < 4; i++)
-				{
-					Vector2 offsetPositon = Vector2.UnitY.RotatedBy(MathHelper.PiOver2 * i) * 2;
-					spriteBatch.Draw(texture, drawPos + offsetPositon, null, Main.DiscoColor, 0, frameOrigin, scale, SpriteEffects.None, 0f);
-				}
-				float time = Main.GlobalTimeWrappedHourly;
-				float timer = item.timeSinceItemSpawned / 240f + time * 0.04f;
+                if (Main.itemAnimations[item.type] != null)
+                {
+                    // In case this item is animated, this picks the correct frame
+                    frame = Main.itemAnimations[item.type].GetFrame(texture, Main.itemFrameCounter[whoAmI]);
+                }
+                else
+                {
+                    frame = texture.Frame();
+                }
 
-				time %= 4f;
-				time /= 2f;
+                Vector2 frameOrigin = frame.Size() / 2f;
+                Vector2 offset = new Vector2(item.width / 2 - frameOrigin.X, item.height - frame.Height);
+                Vector2 drawPos = item.position - Main.screenPosition + frameOrigin + offset;
+                for (int i = 0; i < 4; i++)
+                {
+                    Vector2 offsetPositon = Vector2.UnitY.RotatedBy(MathHelper.PiOver2 * i) * 2;
+                    spriteBatch.Draw(texture, drawPos + offsetPositon, null, Main.DiscoColor, 0, frameOrigin, scale, SpriteEffects.None, 0f);
+                }
+                float time = Main.GlobalTimeWrappedHourly;
+                float timer = item.timeSinceItemSpawned / 240f + time * 0.04f;
 
-				if (time >= 1f)
-				{
-					time = 2f - time;
-				}
+                time %= 4f;
+                time /= 2f;
 
-				time = time * 0.5f + 0.5f;
+                if (time >= 1f)
+                {
+                    time = 2f - time;
+                }
 
-				for (float i = 0f; i < 1f; i += 0.25f)
-				{
-					float radians = (i + timer) * MathHelper.TwoPi;
+                time = time * 0.5f + 0.5f;
 
-					spriteBatch.Draw(texture, drawPos + new Vector2(0f, 8f).RotatedBy(radians) * time, frame, new Color(90, 70, 255, 50), rotation, frameOrigin, scale, SpriteEffects.None, 0);
-				}
+                for (float i = 0f; i < 1f; i += 0.25f)
+                {
+                    float radians = (i + timer) * MathHelper.TwoPi;
 
-				for (float i = 0f; i < 1f; i += 0.34f)
-				{
-					float radians = (i + timer) * MathHelper.TwoPi;
+                    spriteBatch.Draw(texture, drawPos + new Vector2(0f, 8f).RotatedBy(radians) * time, frame, new Color(90, 70, 255, 50), rotation, frameOrigin, scale, SpriteEffects.None, 0);
+                }
 
-					spriteBatch.Draw(texture, drawPos + new Vector2(0f, 4f).RotatedBy(radians) * time, frame, new Color(140, 120, 255, 77), rotation, frameOrigin, scale, SpriteEffects.None, 0);
-				}
-				
+                for (float i = 0f; i < 1f; i += 0.34f)
+                {
+                    float radians = (i + timer) * MathHelper.TwoPi;
 
-				return true;
-			}
+                    spriteBatch.Draw(texture, drawPos + new Vector2(0f, 4f).RotatedBy(radians) * time, frame, new Color(140, 120, 255, 77), rotation, frameOrigin, scale, SpriteEffects.None, 0);
+                }
 
-			return true;
-		}
 
-        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
-		{
-			if (AstralWeapons.Contains(item.type))
-			{
-				TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: AstralIdentifier", $"[i:{ItemType<Astral>()}]") { OverrideColor = Color.White };
-				tooltips.Add(tooltip);
-			}
-			if (UmbralWeapons.Contains(item.type))
-			{
-				TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: UmbralIdentifier", $"[i:{ItemType<Umbral>()}]") { OverrideColor = Color.White };
-				tooltips.Add(tooltip);
-			}
-			if (SpatialWeapons.Contains(item.type))
-			{
-				TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: SpatialIdentifier", $"[i:{ItemType<Spatial>()}]") { OverrideColor = Color.White };
-				tooltips.Add(tooltip);
-				//
-			}
+                return true;
+            }
 
-			if (item.ModItem?.Mod == ModLoader.GetMod("StarsAbove") && item.damage > 0)
-			{
-				
-
-			}
-			if (item.prefix == ModContent.PrefixType<NovaPrefix1>())//Weakest one
-			{
-				TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: NovaPrefix", LangHelper.GetTextValue("Prefix.NovaPrefix1.Tooltip")) { OverrideColor = Color.White };
-				tooltips.Add(tooltip);
-				
-			}
-			if (item.prefix == ModContent.PrefixType<NovaPrefix2>())//
-			{
-				TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: NovaPrefix", LangHelper.GetTextValue("Prefix.NovaPrefix2.Tooltip")) { OverrideColor = Color.White };
-				tooltips.Add(tooltip);
-
-			}
-			if (item.prefix == ModContent.PrefixType<NovaPrefix3>())//
-			{
-				TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: NovaPrefix", LangHelper.GetTextValue("Prefix.NovaPrefix3.Tooltip")) { OverrideColor = Color.White };
-				tooltips.Add(tooltip);
-
-			}
-			if (item.prefix == ModContent.PrefixType<NovaPrefix4>())//Strongest one
-			{
-				TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: NovaPrefix", LangHelper.GetTextValue("Prefix.NovaPrefix4.Tooltip")) { OverrideColor = Color.White };
-				tooltips.Add(tooltip);
-
-			}
-			if (item.prefix == ModContent.PrefixType<BadNovaPrefix1>())//Bad 1
-			{
-				TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: NovaPrefix", LangHelper.GetTextValue("Prefix.BadNovaPrefix1.Tooltip")) { OverrideColor = Color.White };
-				tooltips.Add(tooltip);
-
-			}
-			if (item.prefix == ModContent.PrefixType<BadNovaPrefix2>())//Bad 2
-			{
-				TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: NovaPrefix", LangHelper.GetTextValue("Prefix.BadNovaPrefix2.Tooltip")) { OverrideColor = Color.White };
-				tooltips.Add(tooltip);
-
-			}
-			//if (tooltip.Name.Equals("Tooltip0"))
-
-			
-
-		}
-		public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
+            return true;
+        }
+        public override void AddRecipes()
         {
-			//damage += 0.2f;
-			if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
-			{
-				if(!disableCalamityWeaponBuffs && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
+
+        }
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            
+            if (item.OriginalRarity == GetInstance<StellarSpoilsRarity>().Type && item.type != ItemType<StellarRemnant>() && item.type != ItemType<StellarSpoils>())
+            {
+                TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: StellarSpoils", LangHelper.GetTextValue("Common.CanBeShimmeredSpoils")) { OverrideColor = Color.White };
+                tooltips.Add(tooltip);
+                //
+            }
+
+            if (item.ModItem?.Mod == ModLoader.GetMod("StarsAbove") && item.damage > 0)
+            {
+
+
+            }
+
+            //if (tooltip.Name.Equals("Tooltip0"))
+
+
+
+        }
+        public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
+        {
+            //damage += 0.2f;
+            if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+            {
+                if (!disableCalamityWeaponBuffs && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
                 {
-					damage += 0.3f;
+                    damage += 0.2f;
 
-				}
-				
+                }
 
-			}
-							
-			if ((item.ModItem?.Mod == ModLoader.GetMod("StarsAbove") || player.GetModPlayer<StarsAbovePlayer>().aprismatism == 2) && item.damage > 0)
-			{ //
-				if (item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
+
+            }
+
+            if ((item.ModItem?.Mod == ModLoader.GetMod("StarsAbove") || player.GetModPlayer<StarsAbovePlayer>().aprismatism == 2) && item.damage > 0)
+            { //
+                if (item.DamageType != GetInstance<CelestialDamageClass>())
                 {
-					if (player.GetModPlayer<StarsAbovePlayer>().RogueAspect == 2)
-					{
-						if (ModLoader.TryGetMod("CalamityMod", out Mod calamityModX))
-						{
-							if (oldDamageClass != calamityMod.Find<DamageClass>("RogueDamageClass"))
-							{
-								if (ModLoader.TryGetMod("CalamityMod", out Mod calamityModx))
-								{
-									damage = player.GetTotalDamage(calamityMod.Find<DamageClass>("RogueDamageClass"));
+                    if (player.GetModPlayer<StarsAbovePlayer>().RogueAspect == 2)
+                    {
+                        if (ModLoader.TryGetMod("CalamityMod", out Mod calamityModX))
+                        {
+                            if (oldDamageClass != calamityMod.Find<DamageClass>("RogueDamageClass"))
+                            {
+                                if (ModLoader.TryGetMod("CalamityMod", out Mod calamityModx))
+                                {
+                                    damage = player.GetTotalDamage(calamityMod.Find<DamageClass>("RogueDamageClass"));
+
+                                }
+
+                                if (!disableAspectPenalty)
+                                {
+                                    damage -= 0.1f;
+                                }
+
+                            }
+                            else
+                            {
+
+                            }
+                        }
+
+                    }
+                    if (player.GetModPlayer<StarsAbovePlayer>().BardAspect == 2)
+                    {
+                        if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+                        {
+                            if (oldDamageClass != thoriumMod.Find<DamageClass>("BardDamage"))
+                            {
+                                damage = player.GetTotalDamage(thoriumMod.Find<DamageClass>("BardDamage"));
+
+                                if (!disableAspectPenalty)
+                                {
+                                    damage -= 0.1f;
+                                }
+
+                            }
+                            else
+                            {
+
+                            }
+                        }
+
+                    }
+                    if (player.GetModPlayer<StarsAbovePlayer>().HealerAspect == 2)
+                    {
+                        if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+                        {
+                            if (oldDamageClass != thoriumMod.Find<DamageClass>("HealerDamage"))
+                            {
+                                damage = player.GetTotalDamage(thoriumMod.Find<DamageClass>("HealerDamage"));
+
+                                if (!disableAspectPenalty)
+                                {
+                                    damage -= 0.1f;
+                                }
+
+                            }
+                            else
+                            {
+
+                            }
+                        }
+
+                    }
+                    if (player.GetModPlayer<StarsAbovePlayer>().ThrowerAspect == 2)
+                    {
+                        if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+                        {
+                            if (oldDamageClass != DamageClass.Throwing)
+                            {
+                                damage = player.GetTotalDamage(DamageClass.Throwing);
+
+                                if (!disableAspectPenalty)
+                                {
+                                    damage -= 0.1f;
+                                }
+
+                            }
+                            else
+                            {
+
+                            }
+                        }
+
+                    }
+                    if (player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
+                    {
+                        if (oldDamageClass != DamageClass.Melee && oldDamageClass != DamageClass.MeleeNoSpeed)
+                        {
+                            damage = player.GetTotalDamage(DamageClass.Melee);
+
+                            if (!disableAspectPenalty)
+                            {
+                                damage -= 0.15f;
+                            }
+
+                        }
+                        else
+                        {
+
+                        }
+
+                    }
+                    if (player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2)
+                    {
+                        if (oldDamageClass != DamageClass.Magic && oldDamageClass != DamageClass.MagicSummonHybrid)
+                        {
+                            damage = player.GetTotalDamage(DamageClass.Magic);
+                            if (!disableAspectPenalty)
+                            {
+                                damage -= 0.1f;
+                            }
+                        }
+                        else
+                        {
+
+                        }
 
 
-								}
+                    }
+                    if (player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
+                    {
+                        if (oldDamageClass != DamageClass.Ranged)
+                        {
+                            player.GetTotalDamage(DamageClass.Ranged);
+                            if (!disableAspectPenalty)
+                            {
+                                damage -= 0.1f;
+                            }
+                        }
+                        else
+                        {
 
-								if (!disableAspectPenalty)
-								{
-									damage -= 0.1f;
-								}
+                        }
+                    }
+                    if (player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2)
+                    {
+                        if (oldDamageClass != DamageClass.Summon && oldDamageClass != DamageClass.MagicSummonHybrid && oldDamageClass != DamageClass.SummonMeleeSpeed)
+                        {
+                            damage = player.GetTotalDamage(DamageClass.Summon);
 
-							}
-							else
-							{
+                            if (!disableAspectPenalty)
+                            {
+                                damage -= 0.1f;
+                            }
+                        }
+                        else
+                        {
 
-							}
-						}
-
-					}
-					if (player.GetModPlayer<StarsAbovePlayer>().BardAspect == 2)
-					{
-						if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
-						{
-							if (oldDamageClass != thoriumMod.Find<DamageClass>("BardDamage"))
-							{
-								damage = player.GetTotalDamage(thoriumMod.Find<DamageClass>("BardDamage"));
-
-								if (!disableAspectPenalty)
-								{
-									damage -= 0.1f;
-								}
-
-							}
-							else
-							{
-
-							}
-						}
-
-					}
-					if (player.GetModPlayer<StarsAbovePlayer>().HealerAspect == 2)
-					{
-						if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
-						{
-							if (oldDamageClass != thoriumMod.Find<DamageClass>("HealerDamage"))
-							{
-								damage = player.GetTotalDamage(thoriumMod.Find<DamageClass>("HealerDamage"));
-
-								if (!disableAspectPenalty)
-								{
-									damage -= 0.1f;
-								}
-
-							}
-							else
-							{
-
-							}
-						}
-
-					}
-					if (player.GetModPlayer<StarsAbovePlayer>().ThrowerAspect == 2)
-					{
-						if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
-						{
-							if (oldDamageClass != DamageClass.Throwing)
-							{
-								damage = player.GetTotalDamage(DamageClass.Throwing);
-
-								if (!disableAspectPenalty)
-								{
-									damage -= 0.1f;
-								}
-
-							}
-							else
-							{
-
-							}
-						}
-
-					}
-					if (player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
-					{
-						if (oldDamageClass != DamageClass.Melee && oldDamageClass != DamageClass.MeleeNoSpeed)
-						{
-							damage = player.GetTotalDamage(DamageClass.Melee);
-
-							if (!disableAspectPenalty)
-							{
-								damage -= 0.15f;
-							}
-
-						}
-						else
-						{
-
-						}
-
-					}
-					if (player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2)
-					{
-						if (oldDamageClass != DamageClass.Magic && oldDamageClass != DamageClass.MagicSummonHybrid)
-						{
-							damage = player.GetTotalDamage(DamageClass.Magic);
-							if (!disableAspectPenalty)
-							{
-								damage -= 0.1f;
-							}
-						}
-						else
-						{
-
-						}
+                        }
+                    }
+                }
 
 
-					}
-					if (player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
-					{
-						if (oldDamageClass != DamageClass.Ranged)
-						{
-							player.GetTotalDamage(DamageClass.Ranged);
-							if (!disableAspectPenalty)
-							{
-								damage -= 0.1f;
-							}
-						}
-						else
-						{
+            }
 
-						}
-					}
-					if (player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2)
-					{
-						if (oldDamageClass != DamageClass.Summon && oldDamageClass != DamageClass.MagicSummonHybrid && oldDamageClass != DamageClass.SummonMeleeSpeed)
-						{
-							damage = player.GetTotalDamage(DamageClass.Summon);
+            if (!disableAspectPenalty && (player.HasBuff(BuffType<BearerOfLight>()) || player.HasBuff(BuffType<BearerOfDarkness>()) && player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2))
+            {
+                if (player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
+                {
+                    damage += 0.15f;
 
-							if (!disableAspectPenalty)
-							{
-								damage -= 0.1f;
-							}
-						}
-						else
-						{
+                }
+                else
+                {
+                    damage += 0.1f;
 
-						}
-					}
-				}
-				
+                }
+            }
+            if (player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
+            {
+                if (item.ModItem is ArchitectLuminance && !disableAspectPenalty) //Melee weapons
+                {
+                    damage += 0.1f;
+                }
+                if (item.ModItem is SkyStrikerArms && !disableAspectPenalty)
+                {
+                    damage += 0.1f;
+                }
+                if (item.ModItem is SunsetOfTheSunGod && !disableAspectPenalty)
+                {
+                    damage += 0.1f;
+                }
+            }
+            if (player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
+            {
+                if ((item.ModItem is LevinstormAxe || item.ModItem is GossamerNeedle) && !disableAspectPenalty) //Ranged weapons
+                {
+                    damage += 0.1f;
+                }
 
-			}
-			if (player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
-			{
-				if (item.ModItem is ArchitectLuminance && !disableAspectPenalty) //Melee weapons
-				{
-					damage += 0.1f;
-				}
-				if (item.ModItem is SkyStrikerArms && !disableAspectPenalty)
-				{
-					damage += 0.1f;
-				}
-				if (item.ModItem is SunsetOfTheSunGod && !disableAspectPenalty)
-				{
-					damage += 0.1f;
-				}
-			}
-			if (player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
-			{
-				if (item.ModItem is LevinstormAxe && !disableAspectPenalty) //Ranged weapons
-				{
-					damage += 0.1f;
-				}
+            }
+            if (player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
+            {
+                if (item.ModItem is Hawkmoon && !disableAspectPenalty) //Ranged weapons
+                {
+                    damage += 0.1f;
+                }
 
-			}
-			if (player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
-			{
-				if (item.ModItem is CosmicDestroyer && !disableAspectPenalty) //Ranged weapons
-				{
-					damage += 0.1f;
-				}
+            }
+            if (player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
+            {
+                if (item.ModItem is CosmicDestroyer && !disableAspectPenalty) //Ranged weapons
+                {
+                    damage += 0.1f;
+                }
 
-			}
-			if (player.GetModPlayer<WeaponPlayer>().PerfectlyGenericAccessory && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove") && item.damage > 0)
-			{
-				damage += 0.08f;
-			}
+            }
+            if (player.GetModPlayer<WeaponPlayer>().PerfectlyGenericAccessory && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove") && item.damage > 0)
+            {
+                damage += 0.08f;
+            }
 
 
-		}
+        }
         public override void HoldItem(Item item, Player player)
         {
-			if ((item.ModItem?.Mod == ModLoader.GetMod("StarsAbove") || player.GetModPlayer<StarsAbovePlayer>().aprismatism == 2) && item.damage > 0 && item.DamageType != ModContent.GetInstance<Systems.CelestialDamageClass>())
-			{ //
+            if ((item.ModItem?.Mod == ModLoader.GetMod("StarsAbove") || player.GetModPlayer<StarsAbovePlayer>().aprismatism == 2) && item.damage > 0 && item.DamageType != GetInstance<CelestialDamageClass>())
+            { //
 
-				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
-				{
-					item.DamageType = DamageClass.Melee;
-					
-				}
-				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2)
-				{
-					
-					item.DamageType = DamageClass.Magic;
-					
-				}
-				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
-				{
-					
-					item.DamageType = DamageClass.Ranged;
-					
-				}
-				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2)
-				{
-					
-					item.DamageType = DamageClass.Summon;
-					
-				}
-				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RogueAspect == 2)
-				{
-					if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
-					{
-						
-						item.DamageType = calamityMod.Find<DamageClass>("RogueDamageClass");
+                if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
+                {
+                    item.DamageType = DamageClass.Melee;
 
-					}
-					
-				}
-				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().BardAspect == 2)
-				{
-					if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
-					{
+                }
+                if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2)
+                {
 
-						item.DamageType = thoriumMod.Find<DamageClass>("BardDamage");
+                    item.DamageType = DamageClass.Magic;
 
-					}
+                }
+                if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
+                {
 
-				}
-				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().HealerAspect == 2)
-				{
-					if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
-					{
+                    item.DamageType = DamageClass.Ranged;
 
-						item.DamageType = thoriumMod.Find<DamageClass>("HealerDamage");
+                }
+                if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2)
+                {
 
-					}
+                    item.DamageType = DamageClass.Summon;
 
-				}
-				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().ThrowerAspect == 2)
-				{
-					if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
-					{
+                }
+                if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RogueAspect == 2)
+                {
+                    if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+                    {
 
-						item.DamageType = DamageClass.Throwing;
+                        item.DamageType = calamityMod.Find<DamageClass>("RogueDamageClass");
 
-					}
+                    }
 
-				}
+                }
+                if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().BardAspect == 2)
+                {
+                    if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+                    {
+
+                        item.DamageType = thoriumMod.Find<DamageClass>("BardDamage");
+
+                    }
+
+                }
+                if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().HealerAspect == 2)
+                {
+                    if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+                    {
+
+                        item.DamageType = thoriumMod.Find<DamageClass>("HealerDamage");
+
+                    }
+
+                }
+                if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().ThrowerAspect == 2)
+                {
+                    if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+                    {
+
+                        item.DamageType = DamageClass.Throwing;
+
+                    }
+
+                }
 
 
-			}
+            }
 
-			
-			base.HoldItem(item, player);
+
+            base.HoldItem(item, player);
         }
         public override void UpdateInventory(Item item, Player player)
         {
-			if (item.ModItem?.Mod == ModLoader.GetMod("StarsAbove") || player.GetModPlayer<StarsAbovePlayer>().aprismatism == 2)
-			{
-				
-			}
-			item.DamageType = oldDamageClass;
-		}
-
-	
-		public override bool CanUseItem(Item item, Player player)
-        {
-			
-		
-			if(player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer != 1 && player.whoAmI == Main.myPlayer && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
+            if (item.ModItem?.Mod == ModLoader.GetMod("StarsAbove") || player.GetModPlayer<StarsAbovePlayer>().aprismatism == 2)
             {
-				if(AstralWeapons.Contains(item.type) && !disableWeaponRestriction)//Eridani
-				{
-					if(item.type == ItemType<KevesiFarewell>())
+
+            }
+            item.DamageType = oldDamageClass;
+        }
+
+
+        public override bool CanUseItem(Item item, Player player)
+        {
+
+
+            if (player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer != 1 && player.whoAmI == Main.myPlayer && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
+            {
+                if (AstralWeapons.Contains(item.type) && !disableWeaponRestriction)//Eridani
+                {
+                    if (item.type == ItemType<KevesiFarewell>())
                     {
-						return true;
+                        return true;
                     }
 
-					//Add this to localization later.($"Common.DiskReady")
-					if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.AstralLocked"), 241, 255, 180);}
-					player.itemTime = 60;
-					
-					return false;
+                    //Add this to localization later.($"Common.DiskReady")
+                    if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"Common.AstralLocked"), 241, 255, 180); }
+                    player.itemTime = 60;
+
+                    return false;
                 }
             }
-			if (player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer != 2 && player.whoAmI == Main.myPlayer && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
-			{
-				if (UmbralWeapons.Contains(item.type) && !disableWeaponRestriction)//Asphodene
-				{
-					if (item.type == ItemType<AgnianFarewell>())
-					{
-						return true;
-					}
-
-					if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"Common.UmbralLocked"), 241, 255, 180); }
-					player.itemTime = 60;
-
-					return false;
-				}
-			}
-			if (item.type == ItemID.RodofDiscord
-				|| item.type == ItemID.RodOfHarmony
-				|| item.type == ItemID.DirtBomb
-				||item.type == ItemID.RopeCoil
-				|| item.type == ItemID.SilkRopeCoil
-				|| item.type == ItemID.VineRopeCoil
-				|| item.type == ItemID.WebRopeCoil
-				|| item.type == ItemID.WetBomb
-				|| item.type == ItemID.TeleportationPotion
-				|| item.type == ItemID.Clentaminator
-				|| item.type == ItemID.LavaBomb
-				|| item.type == ItemID.HoneyBomb
-				|| item.type == ItemID.DirtStickyBomb
-				)
+            if (player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer != 2 && player.whoAmI == Main.myPlayer && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
             {
-				if(SubworldSystem.Current != null)
+                if (UmbralWeapons.Contains(item.type) && !disableWeaponRestriction)//Asphodene
                 {
-					return false;
-				}
-				
-            }
-			if (item.type == ItemID.RodofDiscord
-				|| item.type == ItemID.RodOfHarmony
-				
-				)
-			{
-				if (player.HasBuff(BuffType<EverlastingLight>()))
-				{
-					return false;
-				}
+                    if (item.type == ItemType<AgnianFarewell>())
+                    {
+                        return true;
+                    }
 
-			}
-			if (player.HasBuff(BuffID.DrillMount) && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
+                    if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"Common.UmbralLocked"), 241, 255, 180); }
+                    player.itemTime = 60;
+
+                    return false;
+                }
+            }
+            if (item.type == ItemID.RodofDiscord
+                || item.type == ItemID.RodOfHarmony
+                || item.type == ItemID.DirtBomb
+                || item.type == ItemID.RopeCoil
+                || item.type == ItemID.SilkRopeCoil
+                || item.type == ItemID.VineRopeCoil
+                || item.type == ItemID.WebRopeCoil
+                || item.type == ItemID.WetBomb
+                || item.type == ItemID.TeleportationPotion
+                || item.type == ItemID.Clentaminator
+                || item.type == ItemID.LavaBomb
+                || item.type == ItemID.HoneyBomb
+                || item.type == ItemID.DirtStickyBomb
+                )
             {
-				return false;
+                if (SubworldSystem.Current != null)
+                {
+                    return false;
+                }
+
+            }
+            if (item.type == ItemID.RodofDiscord
+                || item.type == ItemID.RodOfHarmony
+
+                )
+            {
+                if (player.HasBuff(BuffType<EverlastingLight>()))
+                {
+                    return false;
+                }
+
+            }
+            if (player.HasBuff(BuffID.DrillMount) && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
+            {
+                return false;
             }
             return base.CanUseItem(item, player);
         }
-	
+
     }
 }

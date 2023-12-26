@@ -1,3 +1,4 @@
+using StarsAbove.Systems;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -52,12 +53,31 @@ namespace StarsAbove.Items.Consumables
 		public override bool? UseItem(Player player)
 		{
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
-			
+
+			if(modPlayer.MnemonicDialogue1 == 1 && modPlayer.MnemonicDialogue2 == 1 && modPlayer.MnemonicDialogue3 == 1)
+			{
+                modPlayer.dialogueScrollTimer = 0;
+                modPlayer.dialogueScrollNumber = 0;
+                modPlayer.sceneProgression = 0;
+                modPlayer.sceneID = 304;
+                modPlayer.VNDialogueActive = true;
+
+                modPlayer.MnemonicDialogue4 = 1;
+            }
+			else
+			{
+                modPlayer.dialogueScrollTimer = 0;
+                modPlayer.dialogueScrollNumber = 0;
+                modPlayer.sceneProgression = 0;
+                modPlayer.sceneID = 303;
+                modPlayer.VNDialogueActive = true;
+
+            }
+            
 
 
 
-
-			return true;
+            return true;
 		}
 
 		public override void AddRecipes()

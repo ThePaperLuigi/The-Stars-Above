@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Systems;
 using System;
+using StarsAbove.Buffs.ShepherdSunstone;
 
 namespace StarsAbove.Items.Tools
 {
@@ -13,7 +14,6 @@ namespace StarsAbove.Items.Tools
 	{
 		public override void SetStaticDefaults() {
 			
-			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 		}
 
 		public override void SetDefaults() {
@@ -26,39 +26,29 @@ namespace StarsAbove.Items.Tools
 			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.UseSound = SoundID.Item44;
 			Item.consumable = false;
-			ItemID.Sets.ItemNoGravity[Item.type] = true;
-			Item.ResearchUnlockCount = 0;
+			Item.ResearchUnlockCount = 1;
 
 		}
 
-		// We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
-		public override bool ItemSpace(Player player)
-		{
-			return true;
-		}
+	
 		public override Color? GetAlpha(Color lightColor)
 		{
 			return Color.White;
 		}
-		public override bool CanPickup(Player player)
-		{
-			return true;
-		}
-
-		public override bool OnPickup(Player player)
-		{
-			
-			return false;
-		}
+		
 		public override bool CanUseItem(Player player) {
 
+			if(player.HasBuff(BuffType<ShepherdSunstoneCooldown>()))
+            {
+				return false;
+            }
 			return true;
 		}
 
 		public override bool? UseItem(Player player) {
 
 			float dustAmount = 40f;
-
+			
 			for (int i = 0; i < Main.maxPlayers; i++)
 			{
 				Player other = Main.player[i];
@@ -103,12 +93,16 @@ namespace StarsAbove.Items.Tools
 				Main.dust[dust].velocity = player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 48f;
 			}
 			//add cooldown (de)buff
-
+			player.AddBuff(BuffType<ShepherdSunstoneCooldown>(), 36000);
 			return true;
 		}
 		public override void AddRecipes()
 		{
-			
+			CreateRecipe(1)
+				.AddIngredient(ItemType<Materials.StellarRemnant>(), 40)
+				.AddCustomShimmerResult(ItemType<Materials.StellarRemnant>(), 3)
+				.AddTile(TileID.Anvils)
+				.Register();
 		}
 	}
 }

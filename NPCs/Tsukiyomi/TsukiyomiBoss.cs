@@ -23,21 +23,22 @@ using StarsAbove.Buffs;
 using StarsAbove.Utilities;
 using Terraria.Graphics.Shaders;
 using StarsAbove.Projectiles.Bosses.Tsukiyomi;
-using StarsAbove.Projectiles;
 using SubworldLibrary;
 using StarsAbove.NPCs.WarriorOfLight;
+using StarsAbove.Items.Loot;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
+using StarsAbove.Projectiles.Extra;
 
 namespace StarsAbove.NPCs.Tsukiyomi
 {
-	[AutoloadBossHead]
+    [AutoloadBossHead]
 
 	public class TsukiyomiBoss : ModNPC
 	{
 
-		
-		
-		// Our texture is 36x36 with 2 pixels of padding vertically, so 38 is the vertical spacing.
-		// These are for our benefit and the numbers could easily be used directly in the code below, but this is how we keep code organized.
+		public int AttackTimer = 100;
+
 		private enum Frame
 		{
 			Empty,
@@ -111,20 +112,19 @@ namespace StarsAbove.NPCs.Tsukiyomi
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 1350000;
-			NPC.damage = 0;
-			NPC.defense = 25;
+			NPC.lifeMax = 290000;
+			NPC.damage = 75;
+			NPC.defense = 45;
 			NPC.knockBackResist = 0f;
 			NPC.width = 150;
 			NPC.height = 150;
 			NPC.scale = 1f;
 			NPC.npcSlots = 1f;
-			NPC.aiStyle = -1;
+			NPC.aiStyle = 0;
 			NPC.lavaImmune = true;
 			NPC.noGravity = true;
 			NPC.noTileCollide = false;
 			NPC.value = 0f;
-			DrawOffsetY = 42;
 
 			//NPC.HitSound = SoundID.NPCHit54;
 			//NPC.DeathSound = SoundID.NPCDeath52;
@@ -134,7 +134,10 @@ namespace StarsAbove.NPCs.Tsukiyomi
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
 			NPC.netAlways = true;
 		}
-
+		public override bool CanHitPlayer(Player target, ref int cooldownSlot)
+		{
+			return false;
+		}
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			return 0f;
@@ -168,7 +171,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 
 		public override void AI()
         {
-			
+			DrawOffsetY = 94;
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
             var bossPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
@@ -201,7 +204,21 @@ namespace StarsAbove.NPCs.Tsukiyomi
                     Idle();
                     break;
             }
-            if (AI_Timer >= 120) //An attack is active. (Temp 480, usually 120, or 2 seconds)
+			if (AI_Timer < 120 && AI_State == (float)ActionState.Idle)
+			{
+				if (NPC.life <= (NPC.lifeMax * 0.9) && AI_RotationNumber < 26) //At 80% HP, she transitions into Phase 2
+				{
+					AI_RotationNumber = 26;
+					NPC.netUpdate = true;
+				}
+				if (NPC.life <= (NPC.lifeMax * 0.5) && AI_RotationNumber < 54 && Main.expertMode) //At 50% HP in Expert Mode, she goes to Phase 3
+				{
+					AI_RotationNumber = 54;
+					NPC.netUpdate = true;
+
+				}
+			}
+			else if (AI_Timer >= AttackTimer) //An attack is active. (Temp 480, usually 120, or 2 seconds)
             {
 				if (Main.expertMode)
 				{
@@ -840,39 +857,39 @@ namespace StarsAbove.NPCs.Tsukiyomi
             {
 				if (NPC.localAI[0] == 2)
 				{
-					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Angela3");
-					NPC.defense = 25;
+                    Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Boss/Tsukiyomi/EvenStarsMustFall");
+                    NPC.defense = 25;
 				}
 				else if (NPC.localAI[0] == 1)
 				{
-					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Angela2");
-					NPC.defense = 120;
+                    Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Boss/Vagrant/ChartTheCosmos");
+                    NPC.defense = 150;
 				}
 				else
                 {
-					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Angela1");
-					NPC.defense = 120;
+                    Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Boss/Vagrant/ChartTheCosmos");
+                    NPC.defense = 150;
 
 				}
 			}
 			else
             {
-				if (NPC.localAI[0] != 0)
-				{
-					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TheExtreme");
-					NPC.defense = 5;
-				}
-				else
-				{
-					Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TheExtremeIntro");
-					NPC.defense = 120;
-				}
-			}
+                if (NPC.localAI[0] != 0)
+                {
+                    Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Boss/Tsukiyomi/EvenStarsMustFall");
+                    NPC.defense = 5;
+                }
+                else
+                {
+                    Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Boss/Vagrant/ChartTheCosmos");
+                    NPC.defense = 150;
+                }
+            }
 			
 
 
 			//Returning from the teleport.
-			int index = NPC.FindBuffIndex(BuffType<TsukiyomiTeleport>());
+			int index = NPC.FindBuffIndex(BuffType<TsukiyomiTeleportBuff>());
 			if (index >= 0)
             {
 				NPC.dontTakeDamage = true;
@@ -881,7 +898,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 					if (Main.netMode != NetmodeID.MultiplayerClient)
 					{
 
-						Projectile.NewProjectile(null, new Vector2(NPC.Center.X, NPC.Center.Y + 44), Vector2.Zero, ProjectileType<reverseRadiate>(), 0, 0f, Main.myPlayer);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), new Vector2(NPC.Center.X, NPC.Center.Y + 44), Vector2.Zero, ProjectileType<reverseRadiate>(), 0, 0f, Main.myPlayer);
 
 					}
 					
@@ -958,7 +975,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 		{
 			// This makes the sprite flip horizontally in conjunction with the npc.direction.
 			//NPC.spriteDirection = NPC.direction;
-			if(NPC.HasBuff(BuffType<TsukiyomiTeleport>()))
+			if(NPC.HasBuff(BuffType<TsukiyomiTeleportBuff>()))
             {
 				NPC.frame.Y = (int)Frame.Empty * frameHeight;
 				return;
@@ -1084,15 +1101,15 @@ namespace StarsAbove.NPCs.Tsukiyomi
 			
 			if(NPC.localAI[1] == 10)
             {
-				NPC.AddBuff(BuffType<TsukiyomiTeleport>(), 240);
+				NPC.AddBuff(BuffType<TsukiyomiTeleportBuff>(), 240);
 				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Stronger, NPC.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					
 
-					Projectile.NewProjectile(null, new Vector2(NPC.Center.X + 30, NPC.Center.Y - 35), Vector2.Zero, ProjectileType<TsukiWormhole>(), 0, 0f, Main.myPlayer);
-					Projectile.NewProjectile(null, NPC.Center, Vector2.Zero, ProjectileType<TsukiTeleport>(), 0, 0f, Main.myPlayer);
+
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), new Vector2(NPC.Center.X, NPC.Center.Y), Vector2.Zero, ProjectileType<TsukiWormhole>(), 0, 0f, Main.myPlayer);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ProjectileType<TsukiTeleport>(), 0, 0f, Main.myPlayer);
 
 
 
@@ -1120,8 +1137,13 @@ namespace StarsAbove.NPCs.Tsukiyomi
 				}
 				if (modPlayer.tsukiyomiDialogue == 0)
 				{
-					if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
-					modPlayer.tsukiyomiDialogue = 1;
+					//Force open the dialogue.
+					modPlayer.chosenDialogue = 73;
+					modPlayer.tsukiyomiDialogue = 2;
+					modPlayer.dialoguePrep = true;
+					modPlayer.starfarerDialogue = true;
+					//if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+					modPlayer.tsukiyomiDialogue = 2;
 				}
 				
 				NPC.life = 0;
@@ -1145,7 +1167,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.BossLoot.NalhaunTrophyItem>(), 10));
 
 			// ItemDropRule.MasterModeCommonDrop for the relic
-			npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<Items.Placeable.BossLoot.NalhaunBossRelicItem>()));
+			
 
 			// ItemDropRule.MasterModeDropOnAllPlayers for the pet
 			//npcLoot.Add(ItemDropRule.MasterModeDropOnAllPlayers(ModContent.ItemType<MinionBossPetItem>(), 4));
@@ -1164,7 +1186,9 @@ namespace StarsAbove.NPCs.Tsukiyomi
 			npcLoot.Add(ExpertRule);
 			npcLoot.Add(notExpertRule);*/
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Materials.CelestialPrincessGenesisPrecursor>(), 4));
-
+			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StellarSpoils>(), 1, 5, 5));
+            npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<Items.Placeable.BossLoot.TsukiyomiBossRelicItem>()));
+            StellarSpoils.SetupBossStellarSpoils(npcLoot);
 		}
 		
 		private void SpawnAnimation()
@@ -1203,9 +1227,11 @@ namespace StarsAbove.NPCs.Tsukiyomi
 			{
 				Dust.NewDust(NPC.Center, 0, 0, DustID.BlueFairy, 0f + Main.rand.Next(-36, 36), 0f + Main.rand.Next(-36, 36), 150, default(Color), 1.5f);
 			}
-			
 
-			AI_State = (float)ActionState.Idle;
+
+            Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "FirstStarfarer";//lol
+            Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().loadingScreenOpacity = 1f;
+            AI_State = (float)ActionState.Idle;
 		}
 		private void Idle()
 		{
@@ -1230,11 +1256,21 @@ namespace StarsAbove.NPCs.Tsukiyomi
 				for (int i = 0; i < 5; i++)
 				{//Circle
 
-
-					Dust d = Main.dust[Dust.NewDust(new Vector2(NPC.Center.X + 29, NPC.Center.Y + 24), 0, 2, 20, Main.rand.NextFloat(-0.2f, 0.2f), Main.rand.NextFloat(-0.5f, -4.5f), 20, default(Color), 0.7f)];
-					d.shader = GameShaders.Armor.GetSecondaryShader(114, Main.LocalPlayer);
-					d.fadeIn = 1f;
-					d.noGravity = true;
+					if(NPC.direction == 1)
+                    {
+						Dust d = Main.dust[Dust.NewDust(new Vector2(NPC.Center.X + 29, NPC.Center.Y + 54), 0, 2, 20, Main.rand.NextFloat(-0.2f, 0.2f), Main.rand.NextFloat(-0.5f, -4.5f), 20, default(Color), 0.7f)];
+						d.shader = GameShaders.Armor.GetSecondaryShader(114, Main.LocalPlayer);
+						d.fadeIn = 1f;
+						d.noGravity = true;
+					}
+					else
+                    {
+						Dust d = Main.dust[Dust.NewDust(new Vector2(NPC.Center.X - 29, NPC.Center.Y + 54), 0, 2, 20, Main.rand.NextFloat(-0.2f, 0.2f), Main.rand.NextFloat(-0.5f, -4.5f), 20, default(Color), 0.7f)];
+						d.shader = GameShaders.Armor.GetSecondaryShader(114, Main.LocalPlayer);
+						d.fadeIn = 1f;
+						d.noGravity = true;
+					}
+					
 				}
 
 				for (int i = 0; i < 3; i++)
@@ -1266,47 +1302,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 
         public override void ModifyHitByProjectile(Projectile projectile, ref NPC.HitModifiers modifiers)
         {
-			//Zenith resistance.
-			if(projectile.type == ProjectileID.FinalFractal)
-            {
-				//damage = (int)(damage * 0.2f);
-            }
-
-			if (Main.expertMode)
-			{
-				if (NPC.localAI[0] == 2)
-				{
-					//Phase 3 (Final Phase)
-
-				}
-				else if (NPC.localAI[0] == 1)
-				{
-					//Phase 2
-					modifiers.FinalDamage *= 0.7f;
-
-				}
-				else
-				{
-					//Phase 1
-					modifiers.FinalDamage *= 0.7f;
-
-				}
-			}
-			else
-			{
-				if (NPC.localAI[0] != 0)
-				{
-					//Phase 2
-					modifiers.FinalDamage *= 0.7f;
-
-				}
-				else
-				{
-					//Phase 1
-					modifiers.FinalDamage *= 0.7f;
-
-				}
-			}
+			modifiers.FinalDamage *= 0.7f;
 		}
         public override void ModifyHitByItem(Player player, Item item, ref NPC.HitModifiers modifiers)
         {

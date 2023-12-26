@@ -1,15 +1,16 @@
+using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using System;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace StarsAbove
+namespace StarsAbove.Dialogue
 {
     public static class StarsAboveDialogueSystem
-	{
-		public static void SetupDialogueSystem(int chosenStarfarer, ref int chosenDialogue, ref bool dialoguePrep, ref int dialogueLeft, ref int expression, ref string dialogue, Player Player, Mod Mod)
-		{
-           
+    {
+        public static void SetupDialogueSystem(int chosenStarfarer, ref int chosenDialogue, ref bool dialoguePrep, ref int dialogueLeft, ref int expression, ref string dialogue, Player Player, Mod Mod)
+        {
+
             if (chosenDialogue == 1) // Introduction dialogue. Unused.
             {
                 if (chosenStarfarer == 1) // Asphodene
@@ -25,7 +26,7 @@ namespace StarsAbove
                         expression = 0;
                         //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Greetings! I am Asphodene- a Starfarer, and in turn, that makes you my Starbearer.
 
-                        
+
 
                     }
                     if (dialogueLeft == 5)
@@ -43,7 +44,7 @@ namespace StarsAbove
                     if (dialogueLeft == 3)
                     {
                         expression = 0;
-                       // dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //I've added the 'Bifrost' to your inventory. There's a lot to go over, but in short, it'll let you traverse the galaxy when used. We can talk more about it later.
+                        // dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //I've added the 'Bifrost' to your inventory. There's a lot to go over, but in short, it'll let you traverse the galaxy when used. We can talk more about it later.
                         //	" ";
                     }
                     if (dialogueLeft == 2)
@@ -55,7 +56,7 @@ namespace StarsAbove
                     if (dialogueLeft == 1)
                     {
                         expression = 4;
-                       // dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Right. My power is yours. Let's show this world what we can do.
+                        // dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Right. My power is yours. Let's show this world what we can do.
                         //	" ";
                     }
                 }
@@ -121,7 +122,7 @@ namespace StarsAbove
                             /*dialogue = $"Sorry, {Player.name}. Nothing to" +
                             " comment on right now.";*/
                             dialogue = LangHelper.GetTextValue($"Dialogue.IdleDialogueHardmode.Asphodene", Player.name);
-                            
+
                         }
                         else
                         {
@@ -826,25 +827,13 @@ namespace StarsAbove
                 {
                     if (dialoguePrep == true)
                     {
-                        dialogueLeft = 3;
+                        dialogueLeft = 1;
                         dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue5.Asphodene.1", Player.name); //After all this is over with, how do you feel about joining me? Think of all the good times we've had already!
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue5.Asphodene.2", Player.name); //Uh, yeah. A lot of it was just fighting things.
-                        //	" ";
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue5.Asphodene.3", Player.name); //But hey- that was fun too, wasn't it?
+                        expression = 1;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue5.Asphodene.1", Player.name); //After all this is over with, how do you feel about joining me? Think of all the good times we've had already!
                         //	" ";
                     }
                 }
@@ -855,16 +844,10 @@ namespace StarsAbove
                         dialogueLeft = 2;
                         dialoguePrep = false;
                     }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue5.Eridani.1", Player.name); //I could use your aid in the days to come... You wouldn't mind joining me, no?
-                        //	" ";
-                    }
                     if (dialogueLeft == 1)
                     {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue5.Eridani.2", Player.name); //..Maybe we should come back to this conversation. We've still got a long way to go.
+                        expression = 1;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue5.Eridani.1", Player.name); //..Maybe we should come back to this conversation. We've still got a long way to go.
                         //	" ";
                     }
 
@@ -985,7 +968,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 0;
+                        expression = 4;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue8.Asphodene.2", Player.name); //For such a pretty biome, it REALLY wants to kill you.
                         //	" ";
                     }
@@ -1032,7 +1015,7 @@ namespace StarsAbove
                     }
                     if (dialogueLeft == 1)
                     {
-                        expression = 5;
+                        expression = 4;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue9.Asphodene.2", Player.name); //That doesn't mean it's time to stop!
                         //	" ";
                     }
@@ -1041,19 +1024,25 @@ namespace StarsAbove
                 {
                     if (dialoguePrep == true)
                     {
-                        dialogueLeft = 2;
+                        dialogueLeft = 3;
                         dialoguePrep = false;
                     }
-                    if (dialogueLeft == 2)
+                    if (dialogueLeft == 3)
                     {
                         expression = 0;
                         dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue9.Eridani.1", Player.name); //Looking back on this journey.. We've come far.
                         //	" ";
                     }
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue9.Eridani.2", Player.name); //Looking back on this journey.. We've come far.
+                        //	" ";
+                    }
                     if (dialogueLeft == 1)
                     {
                         expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue9.Eridani.2", Player.name); //And yet, we have so much more to accomplish.
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue9.Eridani.3", Player.name); //And yet, we have so much more to accomplish.
                         //	" ";
                     }
                 }
@@ -1279,7 +1268,7 @@ namespace StarsAbove
                     if (dialogueLeft == 2)
                     {
                         expression = 0;
-                       // dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //This is important: any abilities that have become stronger after defeating foes will be significantly weaker. It's the downside of travelling so far away from the Observatory.
+                        // dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //This is important: any abilities that have become stronger after defeating foes will be significantly weaker. It's the downside of travelling so far away from the Observatory.
                         //	" ";
                     }
                     if (dialogueLeft == 1)
@@ -1354,7 +1343,7 @@ namespace StarsAbove
                     if (dialogueLeft == 1)
                     {
                         expression = 5;
-                       // dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //It draws ambient mana from nearby planets to sustain bodily functions. You can't tell me that doesn't sound neat- just don't fall too far from solid ground.
+                        // dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //It draws ambient mana from nearby planets to sustain bodily functions. You can't tell me that doesn't sound neat- just don't fall too far from solid ground.
                         //	" ";
                     }
                 }
@@ -1381,8 +1370,276 @@ namespace StarsAbove
 
 
             }//In space (Idle, Unused)
-            #endregion//Finished rework.
-            //46% complete
+
+            //wow this code sucks! Too lazy to refactor atm.
+            if (chosenDialogue == 400) // Passive Dialogue
+            {
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
+                {
+                    if (dialoguePrep == true)
+                    {
+                        dialogueLeft = 2;
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue10.Asphodene.1", Player.name); //We've come a long way..  don't you think?
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 1;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue10.Asphodene.2", Player.name); //That doesn't mean it's time to stop!
+                        //	" ";
+                    }
+                }
+                if (chosenStarfarer == 2)  //placeholder
+                {
+                    if (dialoguePrep == true)
+                    {
+                        dialogueLeft = 2;
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue10.Eridani.1", Player.name); //Looking back on this journey.. We've come far.
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue10.Eridani.2", Player.name); //And yet, we have so much more to accomplish.
+                        //	" ";
+                    }
+                }
+
+
+            }
+            if (chosenDialogue == 401) // Passive Dialogue
+            {
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
+                {
+                    if (dialoguePrep == true)
+                    {
+                        dialogueLeft = 4;
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 4)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue11.Asphodene.1", Player.name); //We've come a long way..  don't you think?
+                        //	" ";
+                    }
+                    if (dialogueLeft == 3)
+                    {
+                        expression = 5;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue11.Asphodene.2", Player.name); //That doesn't mean it's time to stop!
+                        //	" ";
+                    }
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 4;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue11.Asphodene.3", Player.name); //That doesn't mean it's time to stop!
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 4;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue11.Asphodene.4", Player.name); //That doesn't mean it's time to stop!
+                        //	" ";
+                    }
+                }
+                if (chosenStarfarer == 2)
+                {
+                    if (dialoguePrep == true)
+                    {
+                        dialogueLeft = 3;
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 3)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue11.Eridani.1", Player.name); //Looking back on this journey.. We've come far.
+                        //	" ";
+                    }
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 4;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue11.Eridani.2", Player.name); //And yet, we have so much more to accomplish.
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 5;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue11.Eridani.3", Player.name); //And yet, we have so much more to accomplish.
+                        //	" ";
+                    }
+                }
+
+
+            }
+            if (chosenDialogue == 402) // Passive Dialogue
+            {
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
+                {
+                    if (dialoguePrep == true)
+                    {
+                        dialogueLeft = 3;
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 3)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue12.Asphodene.1", Player.name); //We've come a long way..  don't you think?
+                        //	" ";
+                    }
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 1;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue12.Asphodene.2", Player.name); //That doesn't mean it's time to stop!
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 1;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue12.Asphodene.3", Player.name); //That doesn't mean it's time to stop!
+                        //	" ";
+                    }
+                }
+                if (chosenStarfarer == 2)
+                {
+                    if (dialoguePrep == true)
+                    {
+                        dialogueLeft = 3;
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 3)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue12.Eridani.1", Player.name); //Looking back on this journey.. We've come far.
+                        //	" ";
+                    }
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 1;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue12.Eridani.2", Player.name); //And yet, we have so much more to accomplish.
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 2;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue12.Eridani.3", Player.name); //And yet, we have so much more to accomplish.
+                        //	" ";
+                    }
+                }
+
+
+            }
+            if (chosenDialogue == 403) // Passive Dialogue
+            {
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
+                {
+                    if (dialoguePrep == true)
+                    {
+                        dialogueLeft = 3;
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 3)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Asphodene.1", Player.name);
+                        //	" ";
+                    }
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 5;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Asphodene.2", Player.name);
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Asphodene.3", Player.name);
+                        //	" ";
+                    }
+                }
+                if (chosenStarfarer == 2)
+                {
+                    if (dialoguePrep == true)
+                    {
+                        dialogueLeft = 3;
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 3)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Eridani.1", Player.name);
+                        //	" ";
+                    }
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 4;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Eridani.2", Player.name);
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 5;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Eridani.3", Player.name);
+                        //	" ";
+                    }
+                }
+
+
+            }
+            if (chosenDialogue == 404) // Passive Dialogue
+            {
+                if (chosenStarfarer == 1) // Asphodene  //placeholder
+                {
+                    if (dialoguePrep == true)
+                    {
+                        dialogueLeft = 2;
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Asphodene.1", Player.name); //We've come a long way..  don't you think?
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Asphodene.2", Player.name); //That doesn't mean it's time to stop!
+                        //	" ";
+                    }
+                }
+                if (chosenStarfarer == 2)
+                {
+                    if (dialoguePrep == true)
+                    {
+                        dialogueLeft = 2;
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Eridani.1", Player.name); //Looking back on this journey.. We've come far.
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Eridani.2", Player.name); //And yet, we have so much more to accomplish.
+                        //	" ";
+                    }
+                }
+
+
+            }
+            #endregion
             #region bossDialogue
             //Boss dialogue
             if (chosenDialogue == 51) // Boss dialogue - Slime King
@@ -2401,7 +2658,7 @@ namespace StarsAbove
                         {
                             expression = 0;
                             dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Cultist.Asphodene.4", Player.name);
-                            
+
                         }
 
 
@@ -2527,7 +2784,7 @@ namespace StarsAbove
 
                         expression = 0;
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.MoonLord.Eridani.3", Player.name);
-                        
+
 
                         //	" ";
                     }
@@ -2547,7 +2804,7 @@ namespace StarsAbove
                 {
                     if (dialoguePrep == true)
                     {
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("MnemonicTrace").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace").Type);
                         dialogueLeft = 6;
                         dialoguePrep = false;
                     }
@@ -2612,7 +2869,7 @@ namespace StarsAbove
                 {
                     if (dialoguePrep == true)
                     {
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("MnemonicTrace").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace").Type);
                         dialogueLeft = 6;
                         dialoguePrep = false;
                     }
@@ -2688,7 +2945,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheCosmos").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheCosmos").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 3)
@@ -2727,7 +2984,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 4;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheCosmos").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheCosmos").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 4)
@@ -2780,7 +3037,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 4;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheBeginningAndEnd").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheBeginningAndEnd").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 4)
@@ -2830,7 +3087,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 4;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheBeginningAndEnd").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheBeginningAndEnd").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 4)
@@ -2876,14 +3133,14 @@ namespace StarsAbove
                     }
                 }
             }//Everything Vanilla + WoL 18
-            if (chosenDialogue == 69) // Boss dialogue - Vagrant of Space and Time
+            if (chosenDialogue == 69) // Boss dialogue - Dioskouroi
             {
                 if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 4;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("MnemonicTrace4").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace4").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 4)
@@ -2934,7 +3191,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 4;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("MnemonicTrace4").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace4").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 4)
@@ -2980,7 +3237,7 @@ namespace StarsAbove
                     }
 
                 }
-            }//Vagrant 19 Unused
+            }//Dioskouroi
             if (chosenDialogue == 70) // Boss dialogue - Nalhaun
             {
                 if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
@@ -2988,7 +3245,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 4;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("MnemonicTrace2").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace2").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 4)
@@ -3031,7 +3288,7 @@ namespace StarsAbove
 
 
                     }
-                   
+
 
                 }
                 if (chosenStarfarer == 2)  //placeholder
@@ -3039,7 +3296,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 4;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("MnemonicTrace2").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace2").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 4)
@@ -3083,7 +3340,7 @@ namespace StarsAbove
 
                         //	" ";
                     }
-                    
+
                 }
             }//Nalhaun 20
             if (chosenDialogue == 71) // Boss dialogue - Penthesilea
@@ -3092,7 +3349,7 @@ namespace StarsAbove
                 {
                     if (dialoguePrep == true)
                     {
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("MnemonicTrace3").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace3").Type);
                         dialogueLeft = 3;
                         dialoguePrep = false;
                     }
@@ -3131,7 +3388,7 @@ namespace StarsAbove
                 {
                     if (dialoguePrep == true)
                     {
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("MnemonicTrace3").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace3").Type);
                         dialogueLeft = 3;
                         dialoguePrep = false;
                     }
@@ -3174,7 +3431,7 @@ namespace StarsAbove
                 {
                     if (dialoguePrep == true)
                     {
-                        //Player.QuickSpawnItem(null, Mod.Find<ModItem>("MnemonicTrace4").Type);
+                        //Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace4").Type);
                         dialogueLeft = 3;
                         dialoguePrep = false;
                     }
@@ -3213,7 +3470,7 @@ namespace StarsAbove
                 {
                     if (dialoguePrep == true)
                     {
-                        //Player.QuickSpawnItem(null, Mod.Find<ModItem>("MnemonicTrace4").Type);
+                        //Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace4").Type);
                         dialogueLeft = 3;
                         dialoguePrep = false;
                     }
@@ -3256,7 +3513,7 @@ namespace StarsAbove
                 {
                     if (dialoguePrep == true)
                     {
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("SpatialMemoriam").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("SpatialMemoriam").Type);
                         dialogueLeft = 4;
                         dialoguePrep = false;
                     }
@@ -3308,7 +3565,7 @@ namespace StarsAbove
                 {
                     if (dialoguePrep == true)
                     {
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("SpatialMemoriam").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("SpatialMemoriam").Type);
                         dialogueLeft = 4;
                         dialoguePrep = false;
                     }
@@ -3463,7 +3720,7 @@ namespace StarsAbove
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.EmpressOfLight.Asphodene.2", Player.name); //Maybe if she stood still at all... 
 
                     }
-                   
+
 
                 }
                 if (chosenStarfarer == 2)  //placeholder
@@ -3487,25 +3744,25 @@ namespace StarsAbove
 
 
                         expression = 2;
-                        if(NPC.downedFishron)
+                        if (NPC.downedFishron)
                         {
                             dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.EmpressOfLight.Eridani.2", Player.name); //If I had a nickel for bosses summoned with insects... We fought that rather large fish, right? That's two. Not very much, is it. I was hoping for a trend. 
                             if (NPC.downedQueenBee)
                             {
                                 dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.EmpressOfLight.Eridani.3", Player.name); //If I had a nickel for bosses summoned with insects... We fought that rather large fish, right? That's two. Not very much, is it. I was hoping for a trend. Maybe we can count the Queen Bee?
                             }
-                           
+
                         }
                         else
                         {
                             dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.EmpressOfLight.Eridani.4", Player.name); //Somehow... I feel like there's yet another boss we'll have to use an insect to summon. That's going to be rather bothersome. 
                         }
-                        
+
 
 
                         //	" ";
                     }
-                    
+
                 }
             }//Empress of Light 25
             if (chosenDialogue == 76) // Boss dialogue - Deerclops
@@ -3555,9 +3812,9 @@ namespace StarsAbove
 
 
 
-                        
+
                         dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Deerclops.Eridani.2", Player.name); //It was a little terrifying, but luckily it seems its previous prey was confined to the ground. Looks like we had home turf advantage here. 
-                        
+
 
 
 
@@ -3566,6 +3823,138 @@ namespace StarsAbove
 
                 }
             }//Deerclops 26
+            if (chosenDialogue == 77) // Vagrant
+            {
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                {
+                    if (dialoguePrep == true)
+                    {
+                        dialogueLeft = 3;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("ShatteredDisk").Type);
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 3)
+                    {
+                        expression = 1;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.VagrantAsphodene.1", Player.name); //So that was the Burnished King. His blade was incredibly powerful, not to mention the magic at his disposal. It was a triumph you survived that.
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 2)
+                    {
+
+
+
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.VagrantAsphodene.2", Player.name); //So that was the Burnished King. His blade was incredibly powerful, not to mention the magic at his disposal. It was a triumph you survived that.
+
+
+
+                    }
+                    if (dialogueLeft == 1)
+                    {
+
+
+
+                        expression = 3;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.VagrantAsphodene.3", Player.name); //So that was the Burnished King. His blade was incredibly powerful, not to mention the magic at his disposal. It was a triumph you survived that.
+
+
+
+                    }
+
+                }
+                if (chosenStarfarer == 2)  //placeholder
+                {
+                    if (dialoguePrep == true)
+                    {
+                        dialogueLeft = 3;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("ShatteredDisk").Type);
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 3)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.VagrantEridani.1", Player.name); //So that was the Burnished King. His blade was incredibly powerful, not to mention the magic at his disposal. It was a triumph you survived that.
+                    }
+                    if (dialogueLeft == 2)
+                    {
+
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.VagrantEridani.2", Player.name); //So that was the Burnished King. His blade was incredibly powerful, not to mention the magic at his disposal. It was a triumph you survived that.
+
+                    }
+                    if (dialogueLeft == 1)
+                    {
+
+                        expression = 1;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.VagrantEridani.3", Player.name); //So that was the Burnished King. His blade was incredibly powerful, not to mention the magic at his disposal. It was a triumph you survived that.
+
+                    }
+
+
+                }
+            }//Vagrant
+            //Thespian
+            if (chosenDialogue == 78)
+            {
+                if (chosenStarfarer == 1) // Asphodene
+                {
+                    if (dialoguePrep == true)
+                    {
+                        dialogueLeft = 2;
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 2)
+                    {
+
+
+
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Thespian.Asphodene.1", Player.name);
+
+
+
+                    }
+                    if (dialogueLeft == 1)
+                    {
+
+
+
+                        expression = 1;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Thespian.Asphodene.2", Player.name);
+
+
+
+                    }
+
+                }
+                if (chosenStarfarer == 2)  //placeholder
+                {
+                    if (dialoguePrep == true)
+                    {
+                        dialogueLeft = 2;
+                        dialoguePrep = false;
+                    }
+                    if (dialogueLeft == 2)
+                    {
+
+                        expression = 1;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Thespian.Eridani.1", Player.name);
+
+                    }
+                    if (dialogueLeft == 1)
+                    {
+
+                        expression = 0;
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Thespian.Eridani.2", Player.name);
+
+                    }
+
+
+                }
+            }
 
 
             //Calamity boss dialogue: (Reminder: Calamity boss dialogue starts past 200) If Calamity is not detected, stop at 23. Otherwise...
@@ -4440,7 +4829,6 @@ namespace StarsAbove
 
             }//Astrum Deus 37
             #endregion
-            //0% complete
             #region weaponDialogue
 
             //Weapon conversations...........................................................................................................
@@ -4452,7 +4840,7 @@ namespace StarsAbove
                     {
                         dialogueLeft = 2;
 
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheFreeshooter").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheFreeshooter").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 2)
@@ -4479,7 +4867,7 @@ namespace StarsAbove
                     {
                         dialogueLeft = 1;
 
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheSharpshooter").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheSharpshooter").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 1)
@@ -4502,7 +4890,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheUnderworldGoddess").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheHallownest").Type);
 
                         dialoguePrep = false;
                     }
@@ -4531,7 +4919,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 3;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfThePegasus").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfThePegasus").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 3)
@@ -4574,7 +4962,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfBitterfrost").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfBitterfrost").Type);
 
                         dialoguePrep = false;
                     }
@@ -4603,7 +4991,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfFingers").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfFingers").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 2)
@@ -4636,7 +5024,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheAegis").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheAegis").Type);
 
                         dialoguePrep = false;
                     }
@@ -4665,7 +5053,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfStyle").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfStyle").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 2)
@@ -4698,7 +5086,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSilverAsh").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSilverAsh").Type);
 
                         dialoguePrep = false;
                     }
@@ -4727,7 +5115,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfPerfection").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheVoid").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 1)
@@ -4751,7 +5139,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfButterflies").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfButterflies").Type);
 
                         dialoguePrep = false;
                     }
@@ -4780,7 +5168,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfDeathsApprentice").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDeathsApprentice").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 2)
@@ -4812,7 +5200,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheBull").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheBull").Type);
 
                         dialoguePrep = false;
                     }
@@ -4841,7 +5229,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheDragonslayer").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheDragonslayer").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 2)
@@ -4874,7 +5262,7 @@ namespace StarsAbove
                     {
                         dialogueLeft = 2;
 
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheSwarm").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheSwarm").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 2)
@@ -4902,7 +5290,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheFallen").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheFallen").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 2)
@@ -4934,7 +5322,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheMoonlitAdepti").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheMoonlitAdepti").Type);
 
                         dialoguePrep = false;
                     }
@@ -4963,7 +5351,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheHarbinger").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheHarbinger").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 1)
@@ -4988,7 +5376,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheUnyieldingEarth").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheUnyieldingEarth").Type);
 
                         dialoguePrep = false;
                     }
@@ -5009,7 +5397,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfDrivingThunder").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDrivingThunder").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 1)
@@ -5034,7 +5422,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfStarsong").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfStarsong").Type);
 
                         dialoguePrep = false;
                     }
@@ -5055,7 +5443,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfLunarDominion").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfLunarDominion").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 1)
@@ -5080,7 +5468,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheTreasury").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheTreasury").Type);
                         dialoguePrep = false;
                     }
 
@@ -5109,7 +5497,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSurpassingLimits").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSurpassingLimits").Type);
 
                         dialoguePrep = false;
                     }
@@ -5142,7 +5530,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfIzanagi").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfIzanagi").Type);
                         dialoguePrep = false;
                     }
 
@@ -5171,7 +5559,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheHawkmoon").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheHawkmoon").Type);
 
                         dialoguePrep = false;
                     }
@@ -5204,7 +5592,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSin").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSin").Type);
                         dialoguePrep = false;
                     }
 
@@ -5233,7 +5621,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfAlpha").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfAlpha").Type);
 
                         dialoguePrep = false;
                     }
@@ -5266,7 +5654,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfThePhantom").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfThePhantom").Type);
                         dialoguePrep = false;
                     }
 
@@ -5295,7 +5683,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheHollowheart").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheHollowheart").Type);
 
                         dialoguePrep = false;
                     }
@@ -5328,7 +5716,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfEuthymia").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfEuthymia").Type);
                         dialoguePrep = false;
                     }
 
@@ -5350,7 +5738,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTime").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTime").Type);
 
                         dialoguePrep = false;
                     }
@@ -5383,7 +5771,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfLiberation").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfLiberation").Type);
                         dialoguePrep = false;
                     }
 
@@ -5405,7 +5793,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfAzakana").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfAzakana").Type);
 
                         dialoguePrep = false;
                     }
@@ -5432,7 +5820,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfMisery").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfMisery").Type);
                         dialoguePrep = false;
                     }
 
@@ -5454,7 +5842,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfMisery").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfMisery").Type);
 
                         dialoguePrep = false;
                     }
@@ -5481,7 +5869,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheGunlance").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheGunlance").Type);
                         dialoguePrep = false;
                     }
 
@@ -5503,7 +5891,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheGunlance").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheGunlance").Type);
 
                         dialoguePrep = false;
                     }
@@ -5530,7 +5918,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheChimera").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheChimera").Type);
                         dialoguePrep = false;
                     }
 
@@ -5552,7 +5940,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheChimera").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheChimera").Type);
 
                         dialoguePrep = false;
                     }
@@ -5579,7 +5967,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheOcean").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheOcean").Type);
                         dialoguePrep = false;
                     }
 
@@ -5601,7 +5989,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheOcean").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheOcean").Type);
 
                         dialoguePrep = false;
                     }
@@ -5628,7 +6016,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheObservatory").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheObservatory").Type);
                         dialoguePrep = false;
                     }
 
@@ -5657,7 +6045,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheObservatory").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheObservatory").Type);
 
                         dialoguePrep = false;
                     }
@@ -5690,7 +6078,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheBionis").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheBionis").Type);
                         dialoguePrep = false;
                     }
 
@@ -5711,7 +6099,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheBionis").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheBionis").Type);
 
                         dialoguePrep = false;
                     }
@@ -5738,7 +6126,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfDuality").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDuality").Type);
                         dialoguePrep = false;
                     }
 
@@ -5760,7 +6148,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfIRyS").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfIRyS").Type);
 
                         dialoguePrep = false;
                     }
@@ -5793,7 +6181,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfRadiance").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfRadiance").Type);
                         dialoguePrep = false;
                     }
 
@@ -5814,7 +6202,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfRadiance").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfRadiance").Type);
 
                         dialoguePrep = false;
                     }
@@ -5841,7 +6229,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfInk").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfInk").Type);
                         dialoguePrep = false;
                     }
 
@@ -5862,7 +6250,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfInk").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfInk").Type);
 
                         dialoguePrep = false;
                     }
@@ -5889,7 +6277,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfFoxfire").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfFoxfire").Type);
                         dialoguePrep = false;
                     }
 
@@ -5911,7 +6299,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfFoxfire").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfFoxfire").Type);
 
                         dialoguePrep = false;
                     }
@@ -5938,7 +6326,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfLuminance").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfLuminance").Type);
                         dialoguePrep = false;
                     }
 
@@ -5960,7 +6348,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfLuminance").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfLuminance").Type);
 
                         dialoguePrep = false;
                     }
@@ -5987,7 +6375,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfBlasting").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfBlasting").Type);
                         dialoguePrep = false;
                     }
 
@@ -6009,7 +6397,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfBlasting").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfBlasting").Type);
 
                         dialoguePrep = false;
                     }
@@ -6036,7 +6424,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfExplosions").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfExplosions").Type);
                         dialoguePrep = false;
                     }
 
@@ -6058,7 +6446,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfExplosions").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfExplosions").Type);
 
                         dialoguePrep = false;
                     }
@@ -6085,7 +6473,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfOuterGods").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfOuterGods").Type);
                         dialoguePrep = false;
                     }
 
@@ -6107,7 +6495,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfOuterGods").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfOuterGods").Type);
 
                         dialoguePrep = false;
                     }
@@ -6134,7 +6522,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTwinStars").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTwinStars").Type);
                         dialoguePrep = false;
                     }
 
@@ -6156,7 +6544,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTwinStars").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTwinStars").Type);
 
                         dialoguePrep = false;
                     }
@@ -6183,7 +6571,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheAerialAce").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheAerialAce").Type);
                         dialoguePrep = false;
                     }
 
@@ -6205,7 +6593,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheAerialAce").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheAerialAce").Type);
 
                         dialoguePrep = false;
                     }
@@ -6232,7 +6620,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheDarkMoon").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheDarkMoon").Type);
                         dialoguePrep = false;
                     }
 
@@ -6254,7 +6642,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheGardener").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheGardener").Type);
 
                         dialoguePrep = false;
                     }
@@ -6281,7 +6669,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheAnomaly").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheAnomaly").Type);
                         dialoguePrep = false;
                     }
 
@@ -6303,7 +6691,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfAsh").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfAsh").Type);
 
                         dialoguePrep = false;
                     }
@@ -6330,7 +6718,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheFuture").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheFuture").Type);
                         dialoguePrep = false;
                     }
 
@@ -6352,7 +6740,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheFuture").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheFuture").Type);
 
                         dialoguePrep = false;
                     }
@@ -6378,7 +6766,7 @@ namespace StarsAbove
                 if (dialoguePrep == true)                                     // |
                 {
                     dialogueLeft = 3;
-                    Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfBloodshed").Type);
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfBloodshed").Type);
                     dialoguePrep = false;
                 }
 
@@ -6421,7 +6809,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTechnology").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTechnology").Type);
                         dialoguePrep = false;
                     }
 
@@ -6452,7 +6840,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTechnology").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTechnology").Type);
 
                         dialoguePrep = false;
                     }
@@ -6486,7 +6874,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfBlood").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfBlood").Type);
                         dialoguePrep = false;
                     }
 
@@ -6500,7 +6888,7 @@ namespace StarsAbove
 
                         //	" ";
                     }
-                    
+
 
 
                 }
@@ -6509,7 +6897,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfBlood").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfBlood").Type);
 
                         dialoguePrep = false;
                     }
@@ -6522,7 +6910,7 @@ namespace StarsAbove
 
                         //	" ";
                     }
-                    
+
 
 
 
@@ -6537,7 +6925,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSakura").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSakura").Type);
                         dialoguePrep = false;
                     }
 
@@ -6551,7 +6939,7 @@ namespace StarsAbove
 
                         //	" ";
                     }
-                    
+
 
 
                 }
@@ -6560,7 +6948,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSakura").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSakura").Type);
 
                         dialoguePrep = false;
                     }
@@ -6572,7 +6960,7 @@ namespace StarsAbove
 
                         //	" ";
                     }
-                    
+
 
 
 
@@ -6587,7 +6975,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfEternity").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfEternity").Type);
                         dialoguePrep = false;
                     }
 
@@ -6618,7 +7006,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfEternity").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfEternity").Type);
 
                         dialoguePrep = false;
                     }
@@ -6652,7 +7040,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfAdagium").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfAdagium").Type);
                         dialoguePrep = false;
                     }
 
@@ -6683,7 +7071,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfAdagium").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfAdagium").Type);
 
                         dialoguePrep = false;
                     }
@@ -6695,7 +7083,7 @@ namespace StarsAbove
 
                         //	" ";
                     }
-                   
+
 
 
 
@@ -6710,7 +7098,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheAscendant").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheAscendant").Type);
                         dialoguePrep = false;
                     }
 
@@ -6724,7 +7112,7 @@ namespace StarsAbove
 
                         //	" ";
                     }
-                   
+
 
 
                 }
@@ -6733,7 +7121,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheAscendant").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheAscendant").Type);
 
                         dialoguePrep = false;
                     }
@@ -6767,7 +7155,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfChemtech").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfChemtech").Type);
                         dialoguePrep = false;
                     }
 
@@ -6790,7 +7178,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfChemtech").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfChemtech").Type);
 
                         dialoguePrep = false;
                     }
@@ -6802,7 +7190,7 @@ namespace StarsAbove
 
                         //	" ";
                     }
-                   
+
 
 
                 }
@@ -6816,7 +7204,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfLifethirsting").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfLifethirsting").Type);
                         dialoguePrep = false;
                     }
 
@@ -6839,7 +7227,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfLifethirsting").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfLifethirsting").Type);
 
                         dialoguePrep = false;
                     }
@@ -6865,7 +7253,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfVampirism").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfVampirism").Type);
                         dialoguePrep = false;
                     }
 
@@ -6888,7 +7276,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfVampirism").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfVampirism").Type);
 
                         dialoguePrep = false;
                     }
@@ -6914,7 +7302,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheHunt").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheHunt").Type);
                         dialoguePrep = false;
                     }
 
@@ -6937,7 +7325,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfStaticShock").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfStaticShock").Type);
 
                         dialoguePrep = false;
                     }
@@ -6970,7 +7358,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfDestiny").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDestiny").Type);
                         dialoguePrep = false;
                     }
 
@@ -7001,7 +7389,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 3;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfDestiny").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDestiny").Type);
                         dialoguePrep = false;
                     }
 
@@ -7046,7 +7434,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfBalance").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfBalance").Type);
                         dialoguePrep = false;
                     }
 
@@ -7077,7 +7465,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfBalance").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfBalance").Type);
                         dialoguePrep = false;
                     }
 
@@ -7113,7 +7501,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheOverwhelmingBlaze").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheOverwhelmingBlaze").Type);
                         dialoguePrep = false;
                     }
 
@@ -7136,7 +7524,7 @@ namespace StarsAbove
 
                         //	" ";
                     }
-                    
+
 
                 }
                 if (chosenStarfarer == 2)  //placeholder
@@ -7144,7 +7532,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheOverwhelmingBlaze").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheOverwhelmingBlaze").Type);
                         dialoguePrep = false;
                     }
 
@@ -7180,7 +7568,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheAbyss").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheAbyss").Type);
                         dialoguePrep = false;
                     }
 
@@ -7211,7 +7599,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheAbyss").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheAbyss").Type);
                         dialoguePrep = false;
                     }
 
@@ -7225,7 +7613,7 @@ namespace StarsAbove
 
                         //	" ";
                     }
-                   
+
 
 
                 }
@@ -7239,7 +7627,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheRenegade").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheRenegade").Type);
                         dialoguePrep = false;
                     }
 
@@ -7253,7 +7641,7 @@ namespace StarsAbove
 
                         //	" ";
                     }
-                    
+
 
 
                 }
@@ -7262,7 +7650,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheRenegade").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheRenegade").Type);
                         dialoguePrep = false;
                     }
 
@@ -7290,7 +7678,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfQuantum").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfQuantum").Type);
                         dialoguePrep = false;
                     }
 
@@ -7313,7 +7701,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfQuantum").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfQuantum").Type);
                         dialoguePrep = false;
                     }
 
@@ -7341,7 +7729,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSilence").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSilence").Type);
                         dialoguePrep = false;
                     }
 
@@ -7350,7 +7738,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.74", Player.name); 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.74", Player.name);
 
 
                         //	" ";
@@ -7359,7 +7747,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.75", Player.name); 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.75", Player.name);
 
 
                         //	" ";
@@ -7372,7 +7760,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 3;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSilence").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSilence").Type);
                         dialoguePrep = false;
                     }
 
@@ -7381,7 +7769,7 @@ namespace StarsAbove
                     {
                         expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.75", Player.name); 
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.75", Player.name);
 
 
                         //	" ";
@@ -7417,7 +7805,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSouls").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSouls").Type);
                         dialoguePrep = false;
                     }
 
@@ -7431,7 +7819,7 @@ namespace StarsAbove
 
                         //	" ";
                     }
-                   
+
 
 
                 }
@@ -7440,7 +7828,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSouls").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSouls").Type);
                         dialoguePrep = false;
                     }
 
@@ -7466,7 +7854,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfGold").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfGold").Type);
                         dialoguePrep = false;
                     }
 
@@ -7489,7 +7877,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfGold").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfGold").Type);
                         dialoguePrep = false;
                     }
 
@@ -7515,7 +7903,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfFarewells").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfFarewells").Type);
                         dialoguePrep = false;
                     }
 
@@ -7538,7 +7926,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfOffseeing").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfOffseeing").Type);
                         dialoguePrep = false;
                     }
 
@@ -7573,7 +7961,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheAutomaton").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheAutomaton").Type);
                         dialoguePrep = false;
                     }
 
@@ -7596,7 +7984,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfNature").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfNature").Type);
                         dialoguePrep = false;
                     }
 
@@ -7609,20 +7997,20 @@ namespace StarsAbove
 
                         //	" ";
                     }
-                    
+
 
                 }
 
 
             }
-            if (chosenDialogue == 161) 
+            if (chosenDialogue == 161)
             {
                 if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheTimeless").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheTimeless").Type);
                         dialoguePrep = false;
                     }
 
@@ -7645,7 +8033,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheTimeless").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheTimeless").Type);
                         dialoguePrep = false;
                     }
 
@@ -7671,7 +8059,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfPiracy").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfPiracy").Type);
                         dialoguePrep = false;
                     }
 
@@ -7694,7 +8082,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfPiracy").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfPiracy").Type);
                         dialoguePrep = false;
                     }
 
@@ -7720,7 +8108,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfAbsoluteChaos").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfAbsoluteChaos").Type);
                         dialoguePrep = false;
                     }
 
@@ -7743,7 +8131,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfAbsoluteChaos").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfAbsoluteChaos").Type);
                         dialoguePrep = false;
                     }
 
@@ -7769,7 +8157,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheWatch").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheWatch").Type);
                         dialoguePrep = false;
                     }
 
@@ -7800,7 +8188,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheWatch").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheWatch").Type);
                         dialoguePrep = false;
                     }
 
@@ -7819,14 +8207,14 @@ namespace StarsAbove
 
 
             }//Chronoclock
-           if (chosenDialogue == 165)
+            if (chosenDialogue == 165)
             {
                 if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheBehemothTyphoon").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheBehemothTyphoon").Type);
                         dialoguePrep = false;
                     }
 
@@ -7840,7 +8228,7 @@ namespace StarsAbove
 
                         //	" ";
                     }
-                    
+
 
 
                 }
@@ -7849,7 +8237,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfTheBehemothTyphoon").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheBehemothTyphoon").Type);
                         dialoguePrep = false;
                     }
 
@@ -7875,7 +8263,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfLightning").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfLightning").Type);
                         dialoguePrep = false;
                     }
 
@@ -7898,7 +8286,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfLightning").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfLightning").Type);
                         dialoguePrep = false;
                     }
 
@@ -7917,14 +8305,14 @@ namespace StarsAbove
 
 
             }//Boltstorm Axe
-           if (chosenDialogue == 167)
+            if (chosenDialogue == 167)
             {
                 if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfNanomachines").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfNanomachines").Type);
                         dialoguePrep = false;
                     }
 
@@ -7938,7 +8326,7 @@ namespace StarsAbove
 
                         //	" ";
                     }
-                    
+
 
 
                 }
@@ -7947,7 +8335,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfNanomachines").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfNanomachines").Type);
                         dialoguePrep = false;
                     }
 
@@ -7973,7 +8361,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 2;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfDespair").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDespair").Type);
                         dialoguePrep = false;
                     }
 
@@ -8004,7 +8392,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfDespair").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDespair").Type);
                         dialoguePrep = false;
                     }
 
@@ -8030,12 +8418,12 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSurya").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSurya").Type);
                         dialoguePrep = false;
                     }
 
 
-                   
+
                     if (dialogueLeft == 1)
                     {
                         expression = 0;
@@ -8053,7 +8441,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfSurya").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSurya").Type);
                         dialoguePrep = false;
                     }
 
@@ -8079,7 +8467,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfMania").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfMania").Type);
                         dialoguePrep = false;
                     }
 
@@ -8100,7 +8488,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfMania").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfMania").Type);
                         dialoguePrep = false;
                     }
 
@@ -8126,7 +8514,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfAuthority").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfAuthority").Type);
                         dialoguePrep = false;
                     }
 
@@ -8147,7 +8535,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 1;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("EssenceOfAuthority").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfAuthority").Type);
                         dialoguePrep = false;
                     }
 
@@ -8165,7 +8553,445 @@ namespace StarsAbove
                 }
 
 
+            }//Supreme Authority
+            if (chosenDialogue == 172)
+            {
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfKinetics").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 4;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.93", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+                if (chosenStarfarer == 2)  //placeholder
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 2;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfKinetics").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 2)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.94", Player.name);
+
+
+                        //	" ";
+                    }
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.95", Player.name);
+
+
+                        //	" ";
+                    }
+
+                }
+
+
+            }//Kariumu's Favor
+            if (chosenDialogue == 173)
+            {
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheSoldier").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 4;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.94", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+                if (chosenStarfarer == 2)  //placeholder
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheSoldier").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.96", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+
+
+            }//Shock and Awe
+            if (chosenDialogue == 174)
+            {
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDreams").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 4;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.95", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+                if (chosenStarfarer == 2)  //placeholder
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDreams").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.97", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+
+
+            }//Dreamer's Inkwell
+            //Trickspin Two-Step
+            if (chosenDialogue == 175)
+            {
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSpinning").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 4;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.96", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+                if (chosenStarfarer == 2)  //placeholder
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSpinning").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.98", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+
+
             }
+            //Dragalia
+            if (chosenDialogue == 176)
+            {
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheDragon").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 4;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.97", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+                if (chosenStarfarer == 2)  //placeholder
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheDragon").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.99", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+
+
+            }
+            //Gundbit
+            if (chosenDialogue == 177)
+            {
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfFirepower").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.98", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+                if (chosenStarfarer == 2)  //placeholder
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfFirepower").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.100", Player.name);
+
+
+                        //	" ";
+                    }
+                }
+            }
+            //Wavedancer
+            if (chosenDialogue == 178)
+            {
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDancingSeas").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 4;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.99", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+                if (chosenStarfarer == 2)  //placeholder
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDancingSeas").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.101", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+
+
+            }
+            //Clarent
+            if (chosenDialogue == 179)
+            {
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfKingslaying").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 4;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.100", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+                if (chosenStarfarer == 2)  //placeholder
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfKingslaying").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.102", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+
+
+            }
+            //Thespian Weapons (Soliloquy, Havoc)
+            if (chosenDialogue == 180)
+            {
+                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfEnergy").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.101", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+                if (chosenStarfarer == 2)  //placeholder
+                {
+                    if (dialoguePrep == true)                                     // |
+                    {
+                        dialogueLeft = 1;
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfHydro").Type);
+                        dialoguePrep = false;
+                    }
+
+                    if (dialogueLeft == 1)
+                    {
+                        expression = 0;
+
+                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.103", Player.name);
+
+
+                        //	" ";
+                    }
+
+
+                }
+
+
+            }
+            
+            
+            
+            
+            
             #endregion
             //Boss item dialogues.
             if (chosenDialogue == 301) //Nalhaun item
@@ -8174,7 +9000,7 @@ namespace StarsAbove
                 if (dialoguePrep == true)                                     // |
                 {
                     dialogueLeft = 4;
-                    Player.QuickSpawnItem(null, Mod.Find<ModItem>("AncientShard").Type);
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("AncientShard").Type);
                     dialoguePrep = false;
                 }
 
@@ -8223,7 +9049,7 @@ namespace StarsAbove
                 if (dialoguePrep == true)                                     // |
                 {
                     dialogueLeft = 4;
-                    Player.QuickSpawnItem(null, Mod.Find<ModItem>("UnsulliedCanvas").Type);
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("UnsulliedCanvas").Type);
                     dialoguePrep = false;
                 }
 
@@ -8274,7 +9100,7 @@ namespace StarsAbove
                 if (dialoguePrep == true)                                     // |
                 {
                     dialogueLeft = 4;
-                    Player.QuickSpawnItem(null, Mod.Find<ModItem>("DemonicCrux").Type);
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("DemonicCrux").Type);
                     dialoguePrep = false;
                 }
 
@@ -8322,14 +9148,14 @@ namespace StarsAbove
             if (chosenDialogue == 304) //Warrior item
             {
 
-                
+
 
                 if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
                 {
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 12;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("ProgenitorWish").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("ProgenitorWish").Type);
                         dialoguePrep = false;
                     }
                     if (dialogueLeft == 12)
@@ -8448,7 +9274,7 @@ namespace StarsAbove
                     if (dialoguePrep == true)                                     // |
                     {
                         dialogueLeft = 12;
-                        Player.QuickSpawnItem(null, Mod.Find<ModItem>("ProgenitorWish").Type);
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("ProgenitorWish").Type);
                         dialoguePrep = false;
                     }
 
@@ -8456,7 +9282,7 @@ namespace StarsAbove
                     {
                         expression = 3;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.1", Player.name);
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.1", Player.name);
 
 
                         //	" ";
@@ -8465,7 +9291,7 @@ namespace StarsAbove
                     {
                         expression = 12;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.2", Player.name);
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.2", Player.name);
 
 
                         //	" ";
@@ -8474,7 +9300,7 @@ namespace StarsAbove
                     {
                         expression = 1;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.3", Player.name);
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.3", Player.name);
 
 
                         //	" ";
@@ -8483,7 +9309,7 @@ namespace StarsAbove
                     {
                         expression = 12;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.4", Player.name);
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.4", Player.name);
 
 
                         //	" ";
@@ -8492,7 +9318,7 @@ namespace StarsAbove
                     {
                         expression = 1;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.5", Player.name);
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.5", Player.name);
 
 
                         //	" ";
@@ -8501,7 +9327,7 @@ namespace StarsAbove
                     {
                         expression = 12;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.6", Player.name);
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.6", Player.name);
 
 
                         //	" ";
@@ -8510,7 +9336,7 @@ namespace StarsAbove
                     {
                         expression = 1;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.7", Player.name);
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.7", Player.name);
 
 
                         //	" ";
@@ -8519,7 +9345,7 @@ namespace StarsAbove
                     {
                         expression = 12;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.8", Player.name);
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.8", Player.name);
 
 
                         //	" ";
@@ -8528,7 +9354,7 @@ namespace StarsAbove
                     {
                         expression = 12;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.9", Player.name);
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.9", Player.name);
 
 
                         //	" ";
@@ -8537,7 +9363,7 @@ namespace StarsAbove
                     {
                         expression = 12;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.10", Player.name);
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.10", Player.name);
 
 
                         //	" ";
@@ -8546,7 +9372,7 @@ namespace StarsAbove
                     {
                         expression = 12;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.11", Player.name);
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.11", Player.name);
 
 
                         //	" ";
@@ -8555,14 +9381,14 @@ namespace StarsAbove
                     {
                         expression = 2;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.12", Player.name);
+                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.12", Player.name);
 
 
                         //	" ";
                     }
 
                 }
-                
+
 
 
 
@@ -8574,7 +9400,7 @@ namespace StarsAbove
                 if (dialoguePrep == true)                                     // |
                 {
                     dialogueLeft = 4;
-                    Player.QuickSpawnItem(null, Mod.Find<ModItem>("TwincruxPendant").Type);
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("TwincruxPendant").Type);
                     dialoguePrep = false;
                 }
 

@@ -53,7 +53,6 @@ namespace StarsAbove.Items.Consumables
 				int type2 = ModContent.NPCType<NPCs.Dioskouroi.CastorBoss>();
 				int type3 = ModContent.NPCType<NPCs.Dioskouroi.DioskouroiWallsNPC>();
 
-				if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("Two demons, locked in conflict, appear at your sides."), 210, 100, 175);}
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					// If the player is not in multiplayer, spawn directly
@@ -77,7 +76,7 @@ namespace StarsAbove.Items.Consumables
 				}
 			}
 			
-			//NPC.NewNPC(null, (int)player.Center.X,(int)player.Center.Y-900, NPCType<NPCs.Arbitration>());
+			//NPC.NewNPC(null, (int)player.Center.X,(int)player.Center.Y-900, NPCType<NPCs.Arbitration.ArbitrationBoss>());
 			//Main.PlaySound(SoundID.Roar, player.position, 0);
 			return true;
 		}

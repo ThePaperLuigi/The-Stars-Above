@@ -6,6 +6,7 @@ using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Menu
@@ -14,6 +15,7 @@ namespace StarsAbove.Menu
 	{
 		private const string menuAssetPath = "StarsAbove/Menu"; // Creates a constant variable representing the texture path, so we don't have to write it out multiple Rotation1s
 
+		
 		public override Asset<Texture2D> Logo => ModContent.Request<Texture2D>($"{menuAssetPath}/StarsAboveLogo");
 
 		//public override Asset<Texture2D> SunTexture => ModContent.Request<Texture2D>($"{menuAssetPath}/Empty");
@@ -24,7 +26,7 @@ namespace StarsAbove.Menu
 
 		//public override ModSurfaceBackgroundStyle MenuBackgroundStyle => ModContent.GetInstance<NoBackground>();
 
-		public override string DisplayName => "The Stars Above";
+		public override string DisplayName => "The Stars Above Original Menu";
 
 		int menuTime;
 		float flipTime;
@@ -154,6 +156,8 @@ namespace StarsAbove.Menu
             }
 			spriteBatch.Draw(MenuBG, new Vector2(zero.X + MathHelper.Lerp(-98, -82, MousePositionFloatX), zero.Y + MathHelper.Lerp(-50, -47, MousePositionFloatY)), (Rectangle?)null, Color.White, 0f, Vector2.Zero, width * 1.1f, (SpriteEffects)0, 0f);
 
+			
+
 			Texture2D AsphoRunAnimation = (Texture2D)ModContent.Request<Texture2D>($"StarsAbove/UI/CelestialCartography/RunAnimation/ARun" + animationFrame + "0");
 			Texture2D EriRunAnimation = (Texture2D)ModContent.Request<Texture2D>($"StarsAbove/UI/CelestialCartography/RunAnimation/ERun" + animationFrame2 + "0");
 
@@ -168,6 +172,7 @@ namespace StarsAbove.Menu
 				walkFromScreenEdgeToEdgeEridani = -1000 - EriRunAnimation.Width;
 
 			}
+
 			Texture2D WhiteCircle1 = (Texture2D)ModContent.Request<Texture2D>($"{menuAssetPath}/WhiteCircle1");//White Circle
 			Texture2D WhiteCircle2 = (Texture2D)ModContent.Request<Texture2D>($"{menuAssetPath}/WhiteCircle2");//White Circle
 			Texture2D WhiteCircle3 = (Texture2D)ModContent.Request<Texture2D>($"{menuAssetPath}/WhiteCircle3");//White Circle
@@ -456,6 +461,16 @@ namespace StarsAbove.Menu
 				1f, //The scale of the texture.
 				SpriteEffects.None,
 				0f);
+
+			if (Language.ActiveCulture.LegacyId == ((int)GameCulture.CultureName.Chinese))
+			{
+				//Draw over the original logo with the Chinese one
+			}
+			else
+			{
+
+			}
+
 			return true;
 		}
 		

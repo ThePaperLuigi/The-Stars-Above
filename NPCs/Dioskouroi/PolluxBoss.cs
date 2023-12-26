@@ -27,18 +27,19 @@ using StarsAbove.Projectiles;
 using SubworldLibrary;
 using StarsAbove.Projectiles.Bosses.Dioskouroi;
 using StarsAbove.Items.BossBags;
+using StarsAbove.Items.Loot;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.NPCs.Dioskouroi
 {
-	[AutoloadBossHead]
+    [AutoloadBossHead]
 
 	public class PolluxBoss : ModNPC
 	{
 
-		
-		
-		// Our texture is 36x36 with 2 pixels of padding vertically, so 38 is the vertical spacing.
-		// These are for our benefit and the numbers could easily be used directly in the code below, but this is how we keep code organized.
+		public int AttackTimer = 120;
+
 		private enum Frame
 		{
 			Empty,
@@ -112,9 +113,9 @@ namespace StarsAbove.NPCs.Dioskouroi
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 85000;
-			NPC.damage = 0;
-			NPC.defense = 15;
+			NPC.lifeMax = 35000;
+			NPC.damage = 20;
+			NPC.defense = 5;
 			NPC.knockBackResist = 0f;
 			NPC.width = 100;
 			NPC.height = 100;
@@ -136,7 +137,10 @@ namespace StarsAbove.NPCs.Dioskouroi
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
 			NPC.netAlways = true;
 		}
-
+		public override bool CanHitPlayer(Player target, ref int cooldownSlot)
+		{
+			return false;
+		}
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			return 0f;
@@ -203,7 +207,7 @@ namespace StarsAbove.NPCs.Dioskouroi
                     Idle();
                     break;
             }
-            if (AI_Timer >= 120) //An attack is active. (Temp 480, usually 120, or 2 seconds)
+            if (AI_Timer >= AttackTimer) //An attack is active. (Temp 480, usually 120, or 2 seconds)
             {
 				if(!NPC.AnyNPCs(NPCType<CastorBoss>()))
                 {
@@ -499,7 +503,7 @@ namespace StarsAbove.NPCs.Dioskouroi
 
 			// ItemDropRule.MasterModeCommonDrop for the relic
 			leadingConditionRule.OnSuccess(npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<Items.Placeable.BossLoot.DioskouroiBossRelicItem>())));
-
+			StellarSpoils.SetupBossStellarSpoils(npcLoot);
 			// ItemDropRule.MasterModeDropOnAllPlayers for the pet
 			//npcLoot.Add(ItemDropRule.MasterModeDropOnAllPlayers(ModContent.ItemType<MinionBossPetItem>(), 4));
 
@@ -571,9 +575,10 @@ namespace StarsAbove.NPCs.Dioskouroi
 			{
 				Dust.NewDust(NPC.Center, 0, 0, DustID.BlueFairy, 0f + Main.rand.Next(-36, 36), 0f + Main.rand.Next(-36, 36), 150, default(Color), 1.5f);
 			}
-			
 
-			AI_State = (float)ActionState.Idle;
+            Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "Dioskouroi";//lol
+            Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().loadingScreenOpacity = 1f;
+            AI_State = (float)ActionState.Idle;
 		}
 		private void Idle()
 		{

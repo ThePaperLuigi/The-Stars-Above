@@ -1,4 +1,5 @@
 using StarsAbove.Items.Materials;
+using StarsAbove.Items.Memories;
 using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
@@ -53,11 +54,11 @@ namespace StarsAbove.NPCs.OffworldNPCs
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
 
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BandedTenebrium>(), 8, 1, 1));
+			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BandedTenebrium>(), 4, 1, 1));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<MercenaryAuracite>(), 10, 1, 1));
 
-
-		}
-		public override void AI()
+        }
+        public override void AI()
 		{
 			Lighting.AddLight(NPC.Center, TorchID.Purple);
 			NPC.velocity *= 0.90f;

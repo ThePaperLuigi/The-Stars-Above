@@ -10,6 +10,7 @@ using System;
 using ReLogic.Content;
 using Terraria.Localization;
 using StarsAbove.Utilities;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Tiles.StellarFoci
 {

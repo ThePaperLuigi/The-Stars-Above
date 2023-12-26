@@ -1,55 +1,15 @@
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
 using Terraria.Audio;
 using Terraria.DataStructures;
-using Terraria.GameInput;
-using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using Terraria.ModLoader.IO;
-using StarsAbove.Items;
-using StarsAbove.Projectiles;
 using StarsAbove.Buffs;
-using StarsAbove.NPCs;
-using Microsoft.Xna.Framework.Audio;
-
-using StarsAbove.Dusts;
-using StarsAbove.Items.Consumables;
-using StarsAbove.UI.StellarNova;
-using SubworldLibrary;
-using StarsAbove.Buffs.SubworldModifiers;
-using StarsAbove.Projectiles.Otherworld;
-using StarsAbove.Projectiles.SkyStriker;
-using StarsAbove.Buffs.CosmicDestroyer;
-using StarsAbove.Buffs.CarianDarkMoon;
-using StarsAbove.Buffs.AshenAmbition;
-using StarsAbove.Biomes;
-using StarsAbove.Buffs.TheOnlyThingIKnowForReal;
-using StarsAbove.Buffs.VermillionDaemon;
-using StarsAbove.Subworlds;
-using StarsAbove.Buffs.Ozma;
-using StarsAbove.Prefixes;
-using StarsAbove.UI.StarfarerMenu;
-using StarsAbove.Buffs.StarfarerAttire;
-using StarsAbove.Buffs.HunterSymphony;
-using StarsAbove.Buffs.RedMage;
-using StarsAbove.Buffs.TagDamage;
-using StarsAbove.Buffs.BurningDesire;
-using StarsAbove.Utilities;
-using StarsAbove.Buffs.CatalystMemory;
-using StarsAbove.Items.Armor.StarfarerArmor;
-using StarsAbove.Buffs.BlackSilence;
-using StarsAbove.Projectiles.BlackSilence;
-using StarsAbove.Items.Armor.BlackSilence;
-using StarsAbove.Items.Armor.Manifestation;
 using StarsAbove.Buffs.Manifestation;
 
-namespace StarsAbove
+namespace StarsAbove.Systems
 {
     public class ManifestationPlayer : ModPlayer
     {
@@ -81,7 +41,7 @@ namespace StarsAbove
             if (Player.HasBuff(BuffType<EGOManifestedBuff>()) && Player.whoAmI == Main.myPlayer)
             {
                 //Dust within EGO form
-                int dustIndex = Dust.NewDust(new Vector2(Player.position.X, Player.Center.Y + Player.height / 2), Player.width, 0, DustID.LifeDrain, 0f + Main.rand.Next(-3, 3), 0f + Main.rand.Next(-6, -1), 100, default(Color), 1.3f);
+                int dustIndex = Dust.NewDust(new Vector2(Player.position.X, Player.Center.Y + Player.height / 2), Player.width, 0, DustID.LifeDrain, 0f + Main.rand.Next(-3, 3), 0f + Main.rand.Next(-6, -1), 100, default, 1.3f);
                 Main.dust[dustIndex].noGravity = true;
                 Main.dust[dustIndex].velocity *= 1f;
                 //Dust.NewDust(new Vector2(Player.position.X, Player.Center.Y + Player.height / 2), Player.width, 0, DustID.LifeDrain, 0f + Main.rand.Next(-3, 3), 0f + Main.rand.Next(-6, -1), 100, default(Color), 1f);
@@ -100,14 +60,14 @@ namespace StarsAbove
                     //dust.color = Color.Purple;
                     dust.alpha = 0;
                 }
-               
+
             }
 
             emotionGaugeDecayTimer--;
             greaterSplitTimer--;
             greatSplitHorizontalTimer--;
 
-            if(!manifestationHeld)
+            if (!manifestationHeld)
             {
                 emotionGauge = 0;
             }
@@ -116,7 +76,7 @@ namespace StarsAbove
 
             greaterSplitAlpha = Math.Clamp(greaterSplitAlpha, 0f, 1f);
             greaterSplitAlpha -= 0.1f;
-            if(greaterSplitTimer > 0)
+            if (greaterSplitTimer > 0)
             {
                 greaterSplitAlpha += 0.1f;
             }
@@ -129,7 +89,7 @@ namespace StarsAbove
             }
 
 
-            if(greatSplitHorizontalTimer > 30)
+            if (greatSplitHorizontalTimer > 30)
             {
                 greatSplitAnimationRotationTimer += 0.02f;
 
@@ -140,14 +100,14 @@ namespace StarsAbove
 
             }
             greatSplitAnimationRotation = MathHelper.Lerp(20, -20, greatSplitAnimationRotationTimer);
-           
+
 
             if (Player.HasBuff(BuffType<EGOManifestedBuff>()))
             {
                 timeSpentInEGO++;
-                if(emotionGaugeDecayTimer < 0)
+                if (emotionGaugeDecayTimer < 0)
                 {
-                    emotionGauge -= 1 ;
+                    emotionGauge -= 1;
                     emotionGaugeDecayTimer = 20 - timeSpentInEGO / 120;
                 }
             }
@@ -155,35 +115,35 @@ namespace StarsAbove
             {
                 timeSpentInEGO = 0;
             }
-            if(emotionGauge >= emotionGaugeMax && !EGOManifested)
+            if (emotionGauge >= emotionGaugeMax && !EGOManifested)
             {
-                if(Main.netMode != NetmodeID.Server)
+                if (Main.netMode != NetmodeID.Server)
                 {
                     SoundEngine.PlaySound(SoundID.Roar, Player.Center);
                     Player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -70;
                     for (int d = 0; d < 30; d++)
                     {
-                        Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Red, 0f + Main.rand.Next(-10, 10), 0f + Main.rand.Next(-10, 10), 150, default(Color), 1.5f);
+                        Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Red, 0f + Main.rand.Next(-10, 10), 0f + Main.rand.Next(-10, 10), 150, default, 1.5f);
                     }
                     for (int d = 0; d < 44; d++)
                     {
-                        Dust.NewDust(Player.Center, 0, 0, 0, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1.5f);
+                        Dust.NewDust(Player.Center, 0, 0, 0, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default, 1.5f);
                     }
                     for (int d = 0; d < 26; d++)
                     {
-                        Dust.NewDust(Player.Center, 0, 0, DustID.Firework_Red, 0f + Main.rand.Next(-16, 16), 0f + Main.rand.Next(-16, 16), 150, default(Color), 1.5f);
+                        Dust.NewDust(Player.Center, 0, 0, DustID.Firework_Red, 0f + Main.rand.Next(-16, 16), 0f + Main.rand.Next(-16, 16), 150, default, 1.5f);
                     }
                     for (int d = 0; d < 30; d++)
                     {
-                        Dust.NewDust(Player.Center, 0, 0, 7, 0f + Main.rand.Next(-13, 13), 0f + Main.rand.Next(-13, 13), 150, default(Color), 1.5f);
+                        Dust.NewDust(Player.Center, 0, 0, 7, 0f + Main.rand.Next(-13, 13), 0f + Main.rand.Next(-13, 13), 150, default, 1.5f);
                     }
                     for (int d = 0; d < 40; d++)
                     {
-                        Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-13, 13), 0f + Main.rand.Next(-13, 13), 150, default(Color), 1.5f);
+                        Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-13, 13), 0f + Main.rand.Next(-13, 13), 150, default, 1.5f);
                     }
                     for (int d = 0; d < 50; d++)
                     {
-                        Dust.NewDust(Player.Center, 0, 0, DustID.LifeDrain, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1.5f);
+                        Dust.NewDust(Player.Center, 0, 0, DustID.LifeDrain, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default, 1.5f);
                     }
                 }
 
@@ -191,7 +151,7 @@ namespace StarsAbove
                 EGOManifested = true; //Enter E.G.O.
                 //emotionGauge = emotionGaugeMax/2;//Halve gauge.
             }
-            if(EGOManifested && emotionGauge < 10)
+            if (EGOManifested && emotionGauge < 10)
             {
                 EGOLossTimer++;
             }
@@ -199,29 +159,29 @@ namespace StarsAbove
             {
                 EGOLossTimer = 0;
             }
-            if(EGOLossTimer > 180)//If time spent below 10% is too long, end EGO.
+            if (EGOLossTimer > 180)//If time spent below 10% is too long, end EGO.
             {
                 EGOManifested = false;
                 if (Main.netMode != NetmodeID.Server)
                 {
                     SoundEngine.PlaySound(SoundID.Shatter, Player.Center);
-                    
+
                     for (int d = 0; d < 30; d++)
                     {
-                        Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Red, 0f + Main.rand.Next(-10, 10), 0f + Main.rand.Next(-10, 10), 150, default(Color), 1.5f);
+                        Dust.NewDust(Player.Center, 0, 0, DustID.FireworkFountain_Red, 0f + Main.rand.Next(-10, 10), 0f + Main.rand.Next(-10, 10), 150, default, 1.5f);
                     }
                     for (int d = 0; d < 44; d++)
                     {
-                        Dust.NewDust(Player.Center, 0, 0, DustID.Clentaminator_Red, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1.5f);
+                        Dust.NewDust(Player.Center, 0, 0, DustID.Clentaminator_Red, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default, 1.5f);
                     }
-                    
+
                 }
-               
+
                 Player.AddBuff(BuffType<Vulnerable>(), 600);
             }
-            
+
             //if EGO is manifested, apply the buff.
-            if(EGOManifested)
+            if (EGOManifested)
             {
                 Player.AddBuff(BuffType<EGOManifestedBuff>(), 10);
             }
@@ -234,23 +194,23 @@ namespace StarsAbove
             {
                 Player.maxRunSpeed *= 1.9f;
                 Player.accRunSpeed *= 1.9f;
-               
+
 
             }
         }
-        
+
         public override void OnHurt(Player.HurtInfo info)
         {
-            
+
         }
-        
+
         public override void PreUpdateBuffs()
         {
-           
+
         }
         public override void PostUpdate()
         {
-            
+
         }
         public override void ResetEffects()
         {
@@ -260,7 +220,7 @@ namespace StarsAbove
         {
             if (manifestationHeld)
             {
-               
+
             }
             gaugeChangeAlpha = 1f;
 
@@ -268,7 +228,7 @@ namespace StarsAbove
         }
         public override void FrameEffects()
         {
-            
+
             if (Player.active && !Player.dead)
             {
                 if (Player.HasBuff(BuffType<EGOManifestedBuff>()))
@@ -292,19 +252,19 @@ namespace StarsAbove
         }
         public override void ModifyDrawInfo(ref PlayerDrawSet drawInfo)
         {
-            
+
             base.ModifyDrawInfo(ref drawInfo);
         }
-        
+
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Projectile, consider using OnHitNPC instead */
         {
-            if(manifestationHeld)
+            if (manifestationHeld)
             {
                 emotionGauge++;
                 gaugeChangeAlpha = 1f;
-                if(hit.Crit)
+                if (hit.Crit)
                 {
-                    if(Player.statLife < 200)
+                    if (Player.statLife < 200)
                     {
                         emotionGauge++;
                     }
@@ -330,7 +290,7 @@ namespace StarsAbove
                     Dust.NewDust(target.Center, 0, 0, DustID.Blood, Main.rand.NextFloat(-4, 4), Main.rand.NextFloat(-4, 4), 0, default(Color), 1f);
 
                 }
-                if(!target.active) //On kill
+                if (!target.active) //On kill
                 {
                     for (int d = 0; d < 22; d++)
                     {
@@ -353,7 +313,7 @@ namespace StarsAbove
         }
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Projectile, consider using ModifyHitNPC instead */
         {
-            if(manifestationHeld)
+            if (manifestationHeld)
             {
                 modifiers.CritDamage += 1.2f;
             }

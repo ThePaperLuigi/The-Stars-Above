@@ -7,39 +7,42 @@
 [url=https://discord.gg/kFURRZZszD] Discord Server [/url][/h1] 
 The Discord Server will be updated with the latest information pertaining to the mod, as well as previews of upcoming content!
 
-[img]https://i.imgur.com/LYiWgE8.gif[/img]
+[img]https://i.imgur.com/ULxjnSA.gif[/img]
 
 [h2]Get high quality Terraria servers, modded or not, with Bisect Hosting!
 Use the promo code "starsabove" to get 25% off your first month- and help support me as well! Thank you![/h2]
 [url=https://www.bisecthosting.com/starsabove] Bisect Hosting [/url] ➔ Game Servers ➔ Terraria
 [img]https://i.imgur.com/giHAnWT.jpg[/img]
 
-
 The Stars Above is a Terraria expansion mod that adds a wide variety of content and a new important game mechanic:
-the Starfarer system. With over 1 million downloads in less than a year, The Stars Above guarantees a unique experience for any playthrough.
+the Starfarer system. With over 1 million downloads in less than a year, The Stars Above guarantees a unique experience for any playthrough!
 
-Choose between either the Umbral or Astral Aspect, and unlock unique equippable abilities
-within the Stellar Array, mixing and matching them to perfect your build.
+A brief overview of the mod's features:
+[list]
+    [*]Full Multiplayer support
+    [*]Two fully furnished deuteroganists with over 1000+ lines of dialogue and custom UI
+    [*]Modular, upgradable ultimate abilities that scale with boss progression
+    [*]Upgrade weapons with tons of interesting and varied collectible items for even more build diversity
+    [*]Ability to explore unique premade locations throughout the galaxy with help from Subworld Library
+    [*]24 custom unlockable passive abilities present in a unique weight-based system
+    [*]80+ special unique weapons that have malleable damage types, alternate abilities, charged attacks, etc.
+    [*]9 unique bosses each with their own special cast-centric AI (some with pre-rendered cutscenes)
+    [*]Plenty of pets, accessories, and utility items
+    [*]Settings to tailor the mod's content to your liking
+    [*]Can be added to any playthrough at any time, and has compatibility with 100% of major content mods (sometimes with unique dialogue)
+    [*]And much more!
+[/list]
 
-With the latest update, explore pre-designed dungeons seperate from the original world through the magic of Cosmic Voyages, meeting new allies and challenging new foes. Bring your friends along too!
-
-Converse with your Starfarer with hundreds of unique dialogue lines- you will become stronger side-by-side with them,
-and arm yourselves for the challenges to come.
-
-Unlock FIVE incredibly powerful Stellar Novas to turn the tide of battle; Stellar Novas have unique sub-abilities exclusive to each Starfarer, so find one that works for you! By defeating bosses, Stellar Novas will become stronger!
-
-Wield tons of incredibly diverse weapons with charged attacks, alternate abilities, and malleable damage types.
-
-[img]https://i.imgur.com/BEnNDqm.png[/img]
+[img]https://i.imgur.com/X17qv7R.png[/img]
 
 [img]https://i.imgur.com/QOTBoxQ.png[/img]
 
 [h1]STARFARERS[/h1]
 
 The Stars Above's flagship feature: Meet Asphodene and Eridani, masters of Astral and Umbral respectively.
-Empowered by their strength and led by their guidance, you will be able to challenge any foe Terraria has to offer. These charismatic deuteragonists boast over 2000+ lines of unique dialogue for bosses, biomes, and more.
+Empowered by their strength and led by their guidance, you will be able to challenge any foe Terraria has to offer. These charismatic deuteragonists boast tons of unique dialogue for bosses, biomes, and more. (However, if you don't care for it, most dialogue can be disabled in the Mod Settings!)
 
-[img]https://i.imgur.com/BEnNDqm.png[/img]
+[img]https://i.imgur.com/X17qv7R.png[/img]
 
 [img]https://i.imgur.com/u9x6xLX.png[/img]
 
@@ -47,7 +50,7 @@ Empowered by their strength and led by their guidance, you will be able to chall
 
 Obtain extraordinary weapons with layers of strategy and myriad powers to overwhelm your foes. Weapons are incredibly unique and can be adjusted to any damage class- including features such as charged attacks, timed counters, energy gauges, and more. Brandish beloved weapons from your favorite game franchises re-imagined into the world of Terraria.
 
-[img]https://i.imgur.com/BEnNDqm.png[/img]
+[img]https://i.imgur.com/X17qv7R.png[/img]
 
 [img]https://i.imgur.com/aWJjPQE.png[/img]
 
@@ -55,15 +58,26 @@ Obtain extraordinary weapons with layers of strategy and myriad powers to overwh
 
 Master the Stellar Array, a powerful supplement to player growth.
 With 24 powerful passive abilities separated into 3 distinct tiers, you can mix and match to become the strongest Terrarian- buildcraft and skill expression tailored to any playthrough.
+Your Starfarer has influence on what abilities you have available!
 
-[img]https://i.imgur.com/BEnNDqm.png[/img]
+[img]https://i.imgur.com/X17qv7R.png[/img]
 
-[img]https://i.imgur.com/xXcCnNS.png[/img]
+[img]https://i.imgur.com/gIs4E0h.png[/img]
 
 [h1]BOSSES[/h1]
 
-Defeat seven powerful unique bosses boasting a custom AI system:
+Defeat nine powerful unique bosses boasting a custom AI system:
 Casted Attacks. Adapt and learn to defeat these formidable enemies!
+
+Face off against the Vagrant of Space and Time, Penthesilea, the Witch of Ink, the Warrior of Light, and much more!
+
+[img]https://i.imgur.com/BEnNDqm.png[/img]
+
+[img]https://i.imgur.com/DxeJHeK.png[/img]
+
+[h1]WEAPON MEMORIES[/h1]
+
+A new system added in The Stars Above v2.0, Weapon Memories are unique items obtained throughout game progression that can be slotted into Aspected Weapons. Give weapons Summon Tag Damage, gain buffs when killing foes, cause lightning to strike from your attacks, gain active abilities to change the tide of battle, and much more!
 
 [img]https://i.imgur.com/BEnNDqm.png[/img]
 
@@ -71,9 +85,12 @@ Casted Attacks. Adapt and learn to defeat these formidable enemies!
 
 [h1]COSMIC VOYAGES[/h1]
 
-Explore the Moirae Galaxy through a brand-new system added in The Stars Above: Celestial Cartography. With the help of Subworld Library, obtain rare materials, powerful accessories, and more. (Alternate material sources are provided in Multiplayer!)
+Explore the Moirae Galaxy through a brand-new system added in The Stars Above: Celestial Cartography. With the help of Subworld Library, obtain rare materials, powerful accessories, and more.
 
-[img]https://i.imgur.com/BEnNDqm.png[/img]
+As of tModLoader 1.4.4, multiplayer Subworld transit is now possible!
+Keep in mind that there may still be issues with the system; if you do encounter said issues, you can enable Multiplayer Compatbility Mode in the Serverside Settings to revert to the old system.
+
+[img]https://i.imgur.com/X17qv7R.png[/img]
 
 [h1]ADDITIONAL CONTENT / MOD CROSSOVER CONTENT[/h1]
 
@@ -82,18 +99,16 @@ The features of The Stars Above doesn't stop here; express yourself with unique 
 Turn Aspected weapons to Rogue Damage from Calamity, or Symphonic/Radiant/Throwing Damage from Thorium!
 
 Your Starfarers will have unique dialogue for content from the following mods:
-Calamity, Secrets of the Shadows, Verdant, Fargo's Souls, the Spirit Mod and the Thorium Mod. More will come soon!
+Calamity, Secrets of the Shadows, Verdant, Fargo's Souls, the Spirit Mod, Starlight River, Calamity: Wrath of the Gods, and the Thorium Mod. More will come soon!
 Additionally, some separate scaling is present for the Calamity Mod. (This can be disabled in the Mod Settings.)
 
-Support for Music Display is also included!
-
-[img]https://i.imgur.com/BEnNDqm.png[/img]
+[img]https://i.imgur.com/X17qv7R.png[/img]
 
 [H1]If you like what you see, please consider donating! I'm just one person doing everything, so any little bit helps. Thanks! (If you can't donate, don't worry. Your support is enough!)
 
 [url=https://www.patreon.com/starsabove] Patreon Page [/url][/h1]
 
-[img]https://i.imgur.com/BEnNDqm.png[/img]
+[img]https://i.imgur.com/X17qv7R.png[/img]
 
 View the official wiki here!
 [url=https://terrariamods.wiki.gg/wiki/The_Stars_Above] The Stars Above Wiki[/url]
@@ -103,6 +118,5 @@ The mod includes localization for Chinese and Spanish, thanks to these individua
 Chinese translation team:  Soammer(夏沫), MeireiHakuya(冥岭白夜), (亚砜), and Yukiko (羽曦)
 Spanish translation team: Bluefire72, Haturok, Aka Tofu, Karus
 Thank you, translators!
-[quote=tModLoader]Developed By PaperLuigi[/quote]
 
-[H1]Please report bugs to the Discord's bug reports channel so I can respond as quickly as possible- thank you![/h1]
+[H1]I'm active in the Discord, so please visit there if you want to ask questions or report bugs![/h1]

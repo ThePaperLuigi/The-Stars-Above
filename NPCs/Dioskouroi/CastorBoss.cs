@@ -27,16 +27,19 @@ using StarsAbove.Projectiles;
 using SubworldLibrary;
 using StarsAbove.Projectiles.Bosses.Dioskouroi;
 using StarsAbove.Items.BossBags;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.NPCs.Dioskouroi
 {
-	[AutoloadBossHead]
+    [AutoloadBossHead]
 
 	public class CastorBoss : ModNPC
 	{
 
-		
-		
+		public int AttackTimer = 120;
+
+
 		// Our texture is 36x36 with 2 pixels of padding vertically, so 38 is the vertical spacing.
 		// These are for our benefit and the numbers could easily be used directly in the code below, but this is how we keep code organized.
 		private enum Frame
@@ -110,9 +113,9 @@ namespace StarsAbove.NPCs.Dioskouroi
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 85000;
-			NPC.damage = 0;
-			NPC.defense = 15;
+			NPC.lifeMax = 35000;
+			NPC.damage = 20;
+			NPC.defense = 5;
 			NPC.knockBackResist = 0f;
 			NPC.width = 100;
 			NPC.height = 100;
@@ -134,7 +137,10 @@ namespace StarsAbove.NPCs.Dioskouroi
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
 			NPC.netAlways = true;
 		}
-
+		public override bool CanHitPlayer(Player target, ref int cooldownSlot)
+		{
+			return false;
+		}
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			return 0f;
@@ -201,7 +207,7 @@ namespace StarsAbove.NPCs.Dioskouroi
                     Idle();
                     break;
             }
-            if (AI_Timer >= 120) //An attack is active. (Temp 480, usually 120, or 2 seconds)
+            if (AI_Timer >= AttackTimer) //An attack is active. (Temp 480, usually 120, or 2 seconds)
             {
 				//If the other Baleborn is dead, cast an enrage attack instead. (Phyrric Gemini)
 				if (!NPC.AnyNPCs(NPCType<PolluxBoss>()))
@@ -555,10 +561,19 @@ namespace StarsAbove.NPCs.Dioskouroi
 			
 				Vector2 initialMoveTo = new Vector2(Main.player[NPC.target].Center.X - 500, Main.player[NPC.target].Center.Y - 80);
 				NPC.position = initialMoveTo;
-			
+
 			//SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Journey, NPC.Center);
 
+			if (!NPC.AnyNPCs(NPCType<DioskouroiWallsNPC>()))
+			{
+				int index = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<DioskouroiWallsNPC>(), NPC.whoAmI);
 
+
+				if (Main.netMode == NetmodeID.Server && index < Main.maxNPCs)
+				{
+					NetMessage.SendData(MessageID.SyncNPC, number: index);
+				}
+			}
 
 			NPC.netUpdate = true;
 			//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_NalhaunIntroQuote, NPC.Center);

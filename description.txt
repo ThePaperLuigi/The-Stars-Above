@@ -8,13 +8,14 @@ This mod includes:
    lines of dialogue and custom UI to support it
 - Modular, upgradable ultimate abilities that scale
    with boss progression
+- Upgrade weapons with interesting and varied collectables
 - Explore many unique premade locations throughout
    the galaxy with help from Subworld Library
 - 24 custom unlockable passive abilities present in a
    unique weight-based system
-- 70+ special weapons that have malleable damage types,
+- 90+ special weapons that have malleable damage types,
    alternate abilities, charged attacks, etc.
-- 7 unique bosses each with their own special
+- 9 unique bosses each with their own special
    cast-centric AI
 - And much more!
 

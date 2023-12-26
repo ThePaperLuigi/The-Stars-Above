@@ -13,6 +13,13 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.ModLoader.IO;
 using StarsAbove.Items;
+using StarsAbove.Items.Weapons;
+using StarsAbove.Items.Weapons.Summon;
+using StarsAbove.Items.Weapons.Ranged;
+using StarsAbove.Items.Weapons.Other;
+using StarsAbove.Items.Weapons.Celestial;
+using StarsAbove.Items.Weapons.Melee;
+using StarsAbove.Items.Weapons.Magic;
 using StarsAbove.Projectiles;
 using StarsAbove.Buffs;
 using StarsAbove.NPCs;
@@ -27,8 +34,13 @@ using StarsAbove.NPCs.OffworldNPCs;
 using StarsAbove.NPCs.TownNPCs;
 using StarsAbove.Utilities;
 using StarsAbove.Items.Loot;
+using StarsAbove.Subworlds.ThirdRegion;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.WorldBuilding;
+using StarsAbove.NPCs.Arbitration;
+using StarsAbove.Buffs.Boss;
 
-namespace StarsAbove
+namespace StarsAbove.Systems
 {
     public class SubworldPlayer : ModPlayer
     {
@@ -56,31 +68,31 @@ namespace StarsAbove
         public override void LoadData(TagCompound tag)
         {
             GarridineQuest = tag.GetInt("GQuest");
-            
+
         }
 
 
         public override void PreUpdate()
         {
-            if (Main.LocalPlayer.isNearNPC(ModContent.NPCType<Yojimbo>(), 150) || Main.LocalPlayer.isNearNPC(ModContent.NPCType<Garridine>(), 150))
+            if (Main.LocalPlayer.isNearNPC(NPCType<Yojimbo>(), 150) || Main.LocalPlayer.isNearNPC(NPCType<Garridine>(), 150))
             {
-                
+
             }
 
             GarridineQuestCooldown--;
             DoYojimboDialogue();
             DoGarridineDialogue();
 
-            if(SubworldSystem.Current == null)
+            if (SubworldSystem.Current == null)
             {
                 //If not in a subworld
-                
+
             }
 
         }
         private void DoYojimboDialogue()
         {
-            if (Main.LocalPlayer.isNearNPC(ModContent.NPCType<Yojimbo>(), 150))
+            if (Main.LocalPlayer.isNearNPC(NPCType<Yojimbo>(), 150))
             {
                 //Player.GetModPlayer<StarsAbovePlayer>().yojimboIntroDialogue = 0;
                 if (!inYojimboRange)
@@ -88,17 +100,17 @@ namespace StarsAbove
                     Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
                     CombatText.NewText(textPos, new Color(43, 255, 43, 240), LangHelper.GetTextValue("NPCDialogue.Talk"), false, false);
                     inYojimboRange = true;
-                    
+
                 }
                 if (Main.mouseRight && !Player.GetModPlayer<StarsAbovePlayer>().VNDialogueActive)
                 {
-                    
+
                     if (Player.GetModPlayer<StarsAbovePlayer>().yojimboIntroDialogue == 2)
                     {
                         Player.AddBuff(BuffType<YojimboBuff>(), 7200);
-                        
+
                         int randomDialogue = Main.rand.Next(0, 3);
-                        if(randomDialogue == 0)
+                        if (randomDialogue == 0)
                         {
                             Player.GetModPlayer<StarsAbovePlayer>().sceneID = 100;
                             ActivateVNDialogue(Player);
@@ -116,11 +128,11 @@ namespace StarsAbove
                             ActivateVNDialogue(Player);
                             return;
                         }
-                        
+
                     }
                     else
                     {
-                        
+
                         Player.GetModPlayer<StarsAbovePlayer>().yojimboIntroDialogue = 2;
                         if (Player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
                         {
@@ -136,25 +148,25 @@ namespace StarsAbove
 
                         }
 
-                        
 
-                        
+
+
                     }
                 }
-                
-                
+
+
             }
             else
             {
                 inYojimboRange = false;
-                
+
             }
         }
 
         private void DoGarridineDialogue()
         {
             //Maybe if no quest is active, Garridine gives you a random objective, and you have to get her the item?
-            if (Main.LocalPlayer.isNearNPC(ModContent.NPCType<Garridine>(), 150))
+            if (Main.LocalPlayer.isNearNPC(NPCType<Garridine>(), 150))
             {
                 //Player.GetModPlayer<StarsAbovePlayer>().garridineIntroDialogue = 0;
                 if (!inGarridineRange)
@@ -196,19 +208,19 @@ namespace StarsAbove
 
                         }
                         //Depending on the quest, check for the specified item, and then reward the player.
-                        if(GarridineQuest == 1)
+                        if (GarridineQuest == 1)
                         {
                             ActivateQuest(new int[] { ItemID.WaterBolt });
                         }
                         else if (GarridineQuest == 2)
                         {
-                            ActivateQuest(new int[] { ModContent.ItemType<AgnianFarewell>(), ModContent.ItemType<KevesiFarewell>() });
+                            ActivateQuest(new int[] { ItemType<AgnianFarewell>(), ItemType<KevesiFarewell>() });
                         }
-                        else if(GarridineQuest == 3)
+                        else if (GarridineQuest == 3)
                         {
                             ActivateQuest(new int[] { ItemID.GoldButterfly });
                         }
-                        else if(GarridineQuest == 4)
+                        else if (GarridineQuest == 4)
                         {
                             ActivateQuest(new int[] { ItemID.FlyingCarpet });
                         }
@@ -304,7 +316,7 @@ namespace StarsAbove
                         ActivateVNDialogue(Player);
 
                         //Give the player the reward, a tier 1 Bag
-                        Player.QuickSpawnItem(null, ModContent.ItemType<StellarFociGrabBagTier1>());
+                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), ItemType<StellarFociGrabBagTier1>());
 
                         //Reset values.
                         AcceptedGarridineQuest = false;
@@ -320,8 +332,8 @@ namespace StarsAbove
                     }
                 }
             }
-                
-            
+
+
             //If the item wasn't found...
 
             // If the item wasn't found, play the quest dialogue again. (This won't appear if the item is found because of the return statement.
@@ -332,8 +344,8 @@ namespace StarsAbove
         public override void PostUpdate()
         {
 
-           
-           
+
+
         }
         public override void OnRespawn()
         {
@@ -347,11 +359,11 @@ namespace StarsAbove
             if (SubworldSystem.Current == null)
             {
                 //If not in a subworld
-
+                anomalyTimer = 0;
             }
             else
             {
-                if (Player.InModBiome(ModContent.GetInstance<LyraBiome>()))
+                if (Player.InModBiome(GetInstance<LyraBiome>()))
                 {
                     //Make sure the player can't do what's not allowed:
                     Player.AddBuff(BuffType<Superimposed>(), 10);
@@ -371,21 +383,27 @@ namespace StarsAbove
                         Player.AddBuff(BuffType<ApproachingEvilBuff>(), 10);
 
                     }
+                    if(anomalyTimer > 8000)
+                    {
+                        //Yoink the player into Katabasis for taking too long!
+                        SubworldSystem.Enter<Katabasis>();
+
+                    }
                 }
                 else
                 {
-                    anomalyTimer = 0;
+                    
                 }
-                if (Player.InModBiome(ModContent.GetInstance<FriendlySpaceBiome>()))
+                if (Player.InModBiome(GetInstance<FriendlySpaceBiome>()))
                 {
                     //Make sure the player can't do what's not allowed:
                     Player.AddBuff(BuffType<Superimposed>(), 10);
                     Player.noBuilding = true;
 
                     //Will change if new friendly space places are added.
-                    if (!NPC.AnyNPCs(ModContent.NPCType<NPCs.TownNPCs.Garridine>()) && Player.velocity.Y == 0)//Make sure Garridine isn't already there, and also check if you're standing.
+                    if (!NPC.AnyNPCs(NPCType<Garridine>()) && Player.velocity.Y == 0)//Make sure Garridine isn't already there, and also check if you're standing.
                     {
-                        int index = NPC.NewNPC(null, (int)Player.Center.X + 1150, (int)Player.Center.Y, ModContent.NPCType<Garridine>());
+                        int index = NPC.NewNPC(null, (int)Player.Center.X + 1150, (int)Player.Center.Y, NPCType<Garridine>());
                         NPC GarridineNPC = Main.npc[index];
 
                         // Finally, syncing, only sync on server and if the NPC actually exists (Main.maxNPCs is the index of a dummy NPC, there is no point syncing it)
@@ -405,14 +423,12 @@ namespace StarsAbove
                         Player.velocity = new Vector2(Player.velocity.X, -17);
                     }
                 }
-                if (Player.InModBiome(ModContent.GetInstance<SeaOfStarsBiome>()))
+                if (Player.InModBiome(GetInstance<SeaOfStarsBiome>()))
                 {
                     //Make sure the player can't do what's not allowed:
                     Player.AddBuff(BuffType<Superimposed>(), 10);
                     Player.noBuilding = true;
 
-                    //Space gravity!
-                    Player.gravity -= 0.3f;
 
                     //Fall too far into the void, and you'll be launched back up while taking heavy DoT.
                     if ((int)(Player.Center.Y / 16) > 520)
@@ -421,8 +437,89 @@ namespace StarsAbove
 
                         Player.velocity = new Vector2(Player.velocity.X, -17);
                     }
+
+                    if (SubworldSystem.IsActive<DreamingCity>())
+                    {
+                        Player.AddBuff(BuffType<AnomalyBuff>(), 10);
+
+                        //The anomaly's evil approaches!
+                        anomalyTimer++;
+
+                        //More time then Lyra
+                        if (anomalyTimer > 20800)
+                        {
+                            Player.AddBuff(BuffType<ApproachingEvilBuff>(), 10);
+
+                        }
+                        if (anomalyTimer > 22000)
+                        {
+                            //Yoink the player into Katabasis for taking too long!
+                            SubworldSystem.Enter<Katabasis>();
+                        }
+                    }
+                    else
+                    {
+                        if (SubworldSystem.IsActive<Katabasis>() || SubworldSystem.IsActive<FaintArchives>())
+                        {
+                            if (SubworldSystem.IsActive<Katabasis>())
+                            {
+                                Player.shimmerMonolithShader = true;
+
+                                if (Player.velocity.X == 0)
+                                {
+                                    Player.AddBuff(BuffType<VisionsBeyondBuff>(), 10);
+                                }
+
+                                if (!NPC.AnyNPCs(NPCType<ArbitrationBoss>()) && anomalyTimer > 0)
+                                {
+                                    anomalyTimer = 0;
+                                    int index = NPC.NewNPC(null, (int)Player.Center.X + 1150, (int)Player.Center.Y, NPCType<ArbitrationBoss>());
+
+                                    // Finally, syncing, only sync on server and if the NPC actually exists (Main.maxNPCs is the index of a dummy NPC, there is no point syncing it)
+                                    if (Main.netMode == NetmodeID.Server && index < Main.maxNPCs)
+                                    {
+                                        NetMessage.SendData(MessageID.SyncNPC, number: index);
+                                    }
+
+                                }
+                            }
+
+                        }
+                        else
+                        {
+                            Player.gravity -= 0.3f;
+
+                        }
+                        //Space gravity!
+                    }
                 }
-                if (Player.InModBiome(ModContent.GetInstance<CorvusBiome>()))
+                if (Player.InModBiome(GetInstance<DreamingCityBiome>()))
+                {
+                    //Make sure the player can't do what's not allowed:
+                    Player.AddBuff(BuffType<Superimposed>(), 10);
+                    Player.noBuilding = true;
+
+
+
+
+                    Player.AddBuff(BuffType<AnomalyBuff>(), 10);
+
+                    //The anomaly's evil approaches!
+                    anomalyTimer++;
+
+                    //More time then Lyra
+                    if (anomalyTimer > 20800)
+                    {
+                        Player.AddBuff(BuffType<ApproachingEvilBuff>(), 10);
+
+                    }
+                    if (anomalyTimer > 22000)
+                    {
+                        //Yoink the player into Katabasis for taking too long!
+                        SubworldSystem.Enter<Katabasis>();
+                    }
+                }
+                if (Player.InModBiome(GetInstance<CorvusBiome>()))
                 {
                     //Make sure the player can't do what's not allowed:
 
@@ -447,7 +544,7 @@ namespace StarsAbove
 
 
                 }
-                if (Player.InModBiome(ModContent.GetInstance<BleachedWorldBiome>()))
+                if (Player.InModBiome(GetInstance<BleachedWorldBiome>()))
                 {
                     //Make sure the player can't do what's not allowed:
                     Player.AddBuff(BuffType<Superimposed>(), 10);
@@ -505,7 +602,14 @@ namespace StarsAbove
 
                     Player.gravity -= gravityMod;
                 }
+                if (SubworldSystem.IsActive<DreamingCity>())
+                {
+                    if(Player.GetModPlayer<StarsAbovePlayer>().inCombat > 0)
+                    {
+                        Player.shimmerMonolithShader = true;
 
+                    }
+                }
                 //Final boss arena.
                 if (SubworldSystem.IsActive<EternalConfluence>())
                 {
@@ -523,9 +627,19 @@ namespace StarsAbove
                 }
             }
 
-            
+
 
             base.PostUpdateBuffs();
+        }
+        public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
+        {
+            if (SubworldSystem.Current != null) //Within subworlds...
+            {
+                SubworldSystem.Exit();
+
+            }
+
+            base.Kill(damage, hitDirection, pvp, damageSource);
         }
 
         public override void ModifyHitByProjectile(Projectile proj, ref Player.HurtModifiers modifiers)
@@ -540,12 +654,12 @@ namespace StarsAbove
             }
 
 
-             
+
         }
 
         public override void ResetEffects()
         {
-            
+
 
         }
 
@@ -561,4 +675,26 @@ namespace StarsAbove
         }
     }
 
+    public class SubworldTile : GlobalTile
+    {
+        public override bool PreDraw(int i, int j, int type, SpriteBatch spriteBatch)
+        {
+            if(SubworldSystem.AnyActive())
+            {
+                if(type == TileID.FogMachine || type == TileID.Teleporter || type == TileID.LunarMonolith || type == TileID.MusicBoxes || type == TileID.ShimmerMonolith || type == TileID.LogicSensor)
+                Framing.GetTileSafely(i, j).IsTileInvisible = true;
+                
+                if(type == TileID.Torches)
+                {
+                    if(Framing.GetTileSafely(i, j).TileFrameX == 0)
+                    {
+                        Framing.GetTileSafely(i, j).IsTileInvisible = true;
+
+                    }
+                }
+            }
+            
+            return base.PreDraw(i, j, type, spriteBatch);
+        }
+    }
 };

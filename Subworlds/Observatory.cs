@@ -8,6 +8,10 @@ using static Terraria.ModLoader.ModContent;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
+using StarsAbove.Systems;
+using Terraria.GameContent.Generation;
+using Terraria.ID;
+using Terraria.IO;
 
 namespace StarsAbove.Subworlds
 {
@@ -18,11 +22,9 @@ namespace StarsAbove.Subworlds
 		public override int Width => 1750;
 		public override int Height => 750;
 
-		//public override ModWorld modWorld => ModContent.GetInstance < your modworld here>();
-
-		public override bool ShouldSave => false;
-		public override bool NoPlayerSaving => false;
-		public override bool NormalUpdates => false;
+		//public override bool ShouldSave => false;
+		//public override bool NoPlayerSaving => false;
+		//public override bool NormalUpdates => false;
 
 		//public override bool noWorldUpdate => true;
 		private const string assetPath = "StarsAbove/Subworlds/LoadingScreens";
@@ -131,24 +133,17 @@ namespace StarsAbove.Subworlds
 
             base.DrawSetup(gameTime);
         }
+        public override List<GenPass> Tasks => new() { new PassLegacy("Subworld", SubworldGeneration) };
+        private void SubworldGeneration(GenerationProgress progress, GameConfiguration configuration)
+        {
+            Main.worldSurface = 600.0;
+            Main.rockLayer = Main.maxTilesY;
+            SubworldSystem.hideUnderworld = true;
 
-        public override List<GenPass> Tasks => new List<GenPass>()
-		{
-			new SubworldGenPass(delegate
-			{
-				
-				Main.worldSurface = 600.0;
-				Main.rockLayer = Main.maxTilesY;
-				SubworldSystem.hideUnderworld = true;
-				//Main.cloudAlpha = 0f;
-				//Main.resetClouds = true;
+            StructureHelper.Generator.GenerateStructure("Structures/Observatory", new Terraria.DataStructures.Point16((Main.maxTilesX / 2) - 24, (Main.maxTilesY / 2) - 68), StarsAbove.Instance);
 
-				StructureHelper.Generator.GenerateStructure("Structures/Observatory", new Terraria.DataStructures.Point16((Main.maxTilesX/2) - 24, (Main.maxTilesY/2) - 68), StarsAbove.Instance);
-
-			})
-			
-
-		};
+        }
+       
 		public override void Load()
 		{
 		
@@ -157,7 +152,8 @@ namespace StarsAbove.Subworlds
 		}
 		public override void OnEnter()
         {
-			
+			Main.dayTime = true;
+			Main.time = 18000;
 			//DownedBossSystem.downedWarrior = SubworldSystem.ReadCopiedWorldData<bool>("downedWarrior");
 
 			Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "Observatory";
@@ -169,14 +165,13 @@ namespace StarsAbove.Subworlds
         public override void OnLoad()
 		{
 
-			Main.dayTime = true;
-			Main.time = 18000;
+			
 
 
 			//Main.cloudAlpha = 0f;
 			//Main.resetClouds = true;
 
-			SubworldSystem.noReturn = false;
+			//SubworldSystem.noReturn = false;
 			
 
 		}

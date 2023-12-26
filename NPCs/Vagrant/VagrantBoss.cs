@@ -1,9 +1,14 @@
 
 using Microsoft.Xna.Framework;
+using StarsAbove.Items.BossBags;
+using StarsAbove.Items.Loot;
 using StarsAbove.NPCs.OffworldNPCs;
 using StarsAbove.Projectiles.Bosses.Vagrant;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
@@ -15,10 +20,13 @@ using static StarsAbove.NPCs.AttackLibrary.AttackLibrary;
 
 namespace StarsAbove.NPCs.Vagrant
 {
-	[AutoloadBossHead]
+    [AutoloadBossHead]
 
 	public class VagrantBoss : ModNPC
 	{
+		public int AttackTimer = 120;
+
+
 		public static readonly int arenaWidth = (int)(1.2f * 960);
 		public static readonly int arenaHeight = (int)(1.2f * 600);
 
@@ -74,14 +82,12 @@ namespace StarsAbove.NPCs.Vagrant
 			
 			
 			NPCID.Sets.MPAllowedEnemies[NPC.type] = true;
-			// By default enemies gain health and attack if hardmode is reached. this NPC should not be affected by that
-			NPCID.Sets.DontDoHardmodeScaling[Type] = true;
 			// Enemies can pick up coins, let's prevent it for this NPC
 			NPCID.Sets.CantTakeLunchMoney[Type] = true;
 			// Automatically group with other bosses
 			NPCID.Sets.BossBestiaryPriority.Add(Type);
 
-			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers()
 			{ // Influences how the NPC looks in the Bestiary
 				CustomTexturePath = "StarsAbove/Bestiary/PerseusPortrait", // If the NPC is multiple parts like a worm, a custom texture for the Bestiary is encouraged.
 				Position = new Vector2(142f, 74f),
@@ -105,10 +111,9 @@ namespace StarsAbove.NPCs.Vagrant
 		}
 		public override void SetDefaults()
 		{
-			NPC.boss = true;
-			NPC.lifeMax = 32000;
-			NPC.damage = 0;
-			NPC.defense = 20;
+			NPC.lifeMax = 3200;
+			NPC.damage = 5;
+			NPC.defense = 5;
 			NPC.knockBackResist = 0f;
 			NPC.width = 160;
 			NPC.height = 160;
@@ -119,25 +124,36 @@ namespace StarsAbove.NPCs.Vagrant
 			NPC.noGravity = false;
 			NPC.noTileCollide = false;
 			DrawOffsetY = -2;
+			
+			NPC.boss = true;
 
 			NPC.HitSound = SoundID.NPCHit54;
 			NPC.DeathSound = SoundID.NPCDeath52;
 
 			NPC.value = Item.buyPrice(0, 1, 75, 45);
-
-			Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/CosmicWill");
+			
+			Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Boss/Vagrant/ChartTheCosmos");
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
 			NPC.netAlways = true;
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
+        public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)
+        {
+			if(Main.expertMode)
+            {
+				NPC.lifeMax += (int)(numPlayers * 900);
+
+			}
+
+			base.ApplyDifficultyAndPlayerScaling(numPlayers, balance, bossAdjustment);
+        }
+        public override bool CanHitPlayer(Player target, ref int cooldownSlot)
+        {
+			return false;
+        }
+        public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			return 0f;
-		}
-		public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */
-		{
-			NPC.lifeMax = (int)(NPC.lifeMax * bossAdjustment * balance);
-			//NPC.defense *= numPlayers * 5;
 		}
 
 		public override bool CheckDead()
@@ -213,7 +229,7 @@ namespace StarsAbove.NPCs.Vagrant
 					Idle();
 					break;
 			}
-			if (AI_Timer >= 120) //An attack is active.
+			if (AI_Timer >= AttackTimer) //An attack is active.
 			{
 				if (AI_RotationNumber == 0)
 				{
@@ -242,7 +258,7 @@ namespace StarsAbove.NPCs.Vagrant
 				}
 				if (AI_RotationNumber == 5)
 				{
-					TheofaniaInanis(P, NPC);
+					PrototokiaAster(P, NPC);
 					return;
 				}
 				if (AI_RotationNumber == 6)
@@ -550,11 +566,9 @@ namespace StarsAbove.NPCs.Vagrant
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
 			// Do NOT misuse the ModifyNPCLoot and OnKill hooks: the former is only used for registering drops, the latter for everything else
-			//Chance for a Prism
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.SpatialPrism>(), 4));
 
 			// Add the treasure bag using ItemDropRule.BossBag (automatically checks for expert mode)
-			//npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<VagrantBossBag>()));
+			npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<VagrantBossBag>()));
 
 			// Trophies are spawned with 1/10 chance
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.BossLoot.VagrantTrophyItem>(), 10));
@@ -569,11 +583,9 @@ namespace StarsAbove.NPCs.Vagrant
 			LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
 			LeadingConditionRule ExpertRule = new LeadingConditionRule(new Conditions.IsExpert());
 
-			// Notice we use notExpertRule.OnSuccess instead of npcLoot.Add so it only applies in normal mode
-			// Boss masks are spawned with 1/7 chance
-			//notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<MinionBossMask>(), 7));
+			StellarSpoils.SetupBossStellarSpoils(npcLoot);
 
-			notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.SpatialPrism>(), 4));
+			notExpertRule.OnSuccess(npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.SpatialPrism>(), 4)));
 
 			// This part is not required for a boss and is just showcasing some advanced stuff you can do with drop rules to control how items spawn
 			// We make 12-15 ExampleItems spawn randomly in all directions, like the lunar pillar fragments. Hereby we need the DropOneByOne rule,
@@ -611,6 +623,11 @@ namespace StarsAbove.NPCs.Vagrant
 			NPC.SetEventFlagCleared(ref DownedBossSystem.downedVagrant, -1);
 
 		}
+		public SoundStyle Music_ChartTheCosmosIntro = new($"{nameof(StarsAbove)}/Sounds/Music/Boss/Vagrant/ChartTheCosmosIntro")
+		{
+			Volume = Main.musicVolume - 0.2f,
+		};
+		ActiveSound introActive;
 		private void SpawnAnimation()
 		{
 			//This will play the "superman landing" animation, knock back all players, and begin the fight. Note that unlike the old Vagrant this one can be hit.
@@ -628,12 +645,24 @@ namespace StarsAbove.NPCs.Vagrant
 				}
 			}
 
+			var sound = SoundEngine.PlaySound(Music_ChartTheCosmosIntro);
+			if(SoundEngine.TryGetActiveSound(sound,out introActive))
+            {
+				//Main.musicFade[MusicLoader.GetMusicSlot("StarsAbove/Sounds/Music/Boss/Vagrant/ChartTheCosmos")] = 0f;
 
+			}
+			else
+            {
+				
+
+			}
+			//Main.musicFade[MusicLoader.GetMusicSlot("StarsAbove/Sounds/Music/Boss/Vagrant/ChartTheCosmos")] = 1f;
 			NPC.position.X = Main.player[NPC.target].position.X;
 			NPC.position.Y = Main.player[NPC.target].position.Y-160;
 			NPC.netUpdate = true;
-
-			AI_State = (float)ActionState.Idle;
+            Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "Vagrant";//lol
+            Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().loadingScreenOpacity = 1f;
+            AI_State = (float)ActionState.Idle;
 		}
 		private void Idle()
 		{

@@ -10,13 +10,14 @@ using System;
 using ReLogic.Content;
 using Terraria.Localization;
 using StarsAbove.Utilities;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Tiles.Stellaglyph
 {
-	// Common code for a Master Mode boss relic
-	// Contains comments for optional Item.placeStyle handling if you wish to add more relics but use the same tile type (then it would be wise to name this class something more generic like BossRelic)
-	// And in case of wanting to add more relics but not wanting to go the optional way, scroll down to the bottom of the file
-	public class StellaglyphTier3 : ModTile
+    // Common code for a Master Mode boss relic
+    // Contains comments for optional Item.placeStyle handling if you wish to add more relics but use the same tile type (then it would be wise to name this class something more generic like BossRelic)
+    // And in case of wanting to add more relics but not wanting to go the optional way, scroll down to the bottom of the file
+    public class StellaglyphTier3 : ModTile
 	{
 		public const int FrameWidth = 18 * 3;
 		public const int FrameHeight = 18 * 4;

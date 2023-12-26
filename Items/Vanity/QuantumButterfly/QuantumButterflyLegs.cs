@@ -5,6 +5,7 @@ using Terraria.ID;
 using StarsAbove.Items.Materials;
 using StarsAbove.Items.Prisms;
 using Terraria.GameContent.Creative;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Vanity.QuantumButterfly
 
@@ -26,15 +27,15 @@ namespace StarsAbove.Items.Vanity.QuantumButterfly
 			Item.width = 28;
 			Item.height = 24;
 			Item.value = 1;
-			Item.rare = 10;
+			Item.rare = ModContent.GetInstance<StellarSpoilsRarity>().Type; // Custom Rarity
 			Item.vanity = true;
 		}
 		public override void AddRecipes()
 		{
 			CreateRecipe(1)
-				.AddIngredient(ItemType<EnigmaticDust>(), 1)
-				.AddIngredient(ItemType<PrismaticCore>(), 3)
-				.AddTile(TileID.Anvils)
+				.AddIngredient(ModContent.ItemType<Materials.StellarRemnant>(), 20)
+				.AddCustomShimmerResult(ModContent.ItemType<Materials.StellarRemnant>(), 3)
+				.AddTile(Terraria.ID.TileID.Anvils)
 				.Register();
 		}
 	}

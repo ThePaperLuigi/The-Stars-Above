@@ -23,16 +23,17 @@ using StarsAbove.Buffs;
 using StarsAbove.Utilities;
 using StarsAbove.Projectiles.Bosses.WarriorOfLight;
 using StarsAbove.Items.Accessories;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.NPCs.WarriorOfLight
 {
-	[AutoloadBossHead]
+    [AutoloadBossHead]
 
 	public class WarriorOfLightBoss : ModNPC
 	{
+		public int AttackTimer = 120;
 
-		// Our texture is 36x36 with 2 pixels of padding vertically, so 38 is the vertical spacing.
-		// These are for our benefit and the numbers could easily be used directly in the code below, but this is how we keep code organized.
 		private enum Frame
 		{
 			Empty,
@@ -93,9 +94,9 @@ namespace StarsAbove.NPCs.WarriorOfLight
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 414000;
-			NPC.damage = 0;
-			NPC.defense = 35;
+			NPC.lifeMax = 220000;
+			NPC.damage = 25;
+			NPC.defense = 45;
 			NPC.knockBackResist = 0f;
 			NPC.width = 200;
 			NPC.height = 200;
@@ -116,7 +117,11 @@ namespace StarsAbove.NPCs.WarriorOfLight
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
 			NPC.netAlways = true;
 		}
-        public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+		public override bool CanHitPlayer(Player target, ref int cooldownSlot)
+		{
+			return false;
+		}
+		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
 			if(NPC.localAI[1] > 0)
             {
@@ -226,11 +231,21 @@ namespace StarsAbove.NPCs.WarriorOfLight
                     break;
             }
 			//if AI_Timer is less than 120, it isn't casting- let's try changing phases here
-			if(AI_Timer < 120 && AI_State == (float)ActionState.Idle)
+			if (Main.expertMode)
+			{
+				AttackTimer = 100;
+			}
+			if (AI_Timer < 120 && AI_State == (float)ActionState.Idle)
             {
+				if (NPC.life <= (NPC.lifeMax * 0.8) && AI_RotationNumber < 16)
+				{
 
-            }
-            else if (AI_Timer >= 120) //An attack is active.
+					AI_RotationNumber = 16;
+					NPC.netUpdate = true;
+				}
+				
+			}
+			else if (AI_Timer >= AttackTimer) //An attack is active.
             {
 				//Test Rotation
 				/*
@@ -345,16 +360,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 				}
 				else if (AI_RotationNumber == 15)
 				{
-					if(NPC.life <= (NPC.lifeMax * 0.8))
-                    {
-						
-						AI_RotationNumber = 16;
-					}
-					else
-					{
-						AI_RotationNumber = 0;
-
-					}
+					AI_RotationNumber = 0;
 					return;
 				}
 				else if (AI_RotationNumber == 16)
@@ -610,7 +616,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
                 }
 				for (int i = 0; i < Main.maxPlayers; i++)
 				{
-					Player player = Main.player[i];
+					/*Player player = Main.player[i];
 					if (player.active)
 					{
 						int k = Item.NewItem(null, (int)NPC.position.X, (int)NPC.position.Y, 0, 0, ModContent.ItemType<SigilOfHope>(), 1, false);
@@ -620,7 +626,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 						}
 
 					}
-
+					*/
 
 				}
 				
@@ -727,6 +733,34 @@ namespace StarsAbove.NPCs.WarriorOfLight
 						NPC.frameCounter = 0;
 					}
 					break;
+				default:
+					NPC.frameCounter++;
+					if (NPC.frameCounter < 10)
+					{
+						NPC.frame.Y = (int)Frame.Idle1 * frameHeight;
+					}
+					else if (NPC.frameCounter < 20)
+					{
+						NPC.frame.Y = (int)Frame.Idle2 * frameHeight;
+					}
+					else if (NPC.frameCounter < 30)
+					{
+						NPC.frame.Y = (int)Frame.Idle3 * frameHeight;
+					}
+					else if (NPC.frameCounter < 40)
+					{
+						NPC.frame.Y = (int)Frame.Idle4 * frameHeight;
+					}
+					else if (NPC.frameCounter < 50)
+					{
+						NPC.frame.Y = (int)Frame.Idle5 * frameHeight;
+					}
+					else
+					{
+						NPC.frameCounter = 0;
+					}
+
+					break;
 			}
 		}
 
@@ -772,7 +806,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 				}
 			}
 
-			if (NPC.ai[1] >= 180f)
+			if (NPC.ai[1] >= 280f)
 			{
 				Main.LocalPlayer.GetModPlayer<BossPlayer>().warriorCutsceneProgress2 = 10;
 				for (int d = 0; d < 305; d++)
@@ -867,10 +901,21 @@ namespace StarsAbove.NPCs.WarriorOfLight
 			if(NPC.localAI[0] == 0)
             {
 				Main.LocalPlayer.GetModPlayer<BossPlayer>().warriorCutsceneProgress = 10;
-				NPC.position.X = Main.player[NPC.target].Center.X - 50;
+                
+
+                NPC.position.X = Main.player[NPC.target].Center.X - 50;
 				NPC.position.Y = Main.player[NPC.target].position.Y - 160;
 			}
-			
+			if (!NPC.AnyNPCs(NPCType<WarriorWallsNPC>()))
+			{
+				int index = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<WarriorWallsNPC>(), NPC.whoAmI);
+
+
+				if (Main.netMode == NetmodeID.Server && index < Main.maxNPCs)
+				{
+					NetMessage.SendData(MessageID.SyncNPC, number: index);
+				}
+			}
 
 			NPC.netUpdate = true;
 			if (Main.netMode == NetmodeID.SinglePlayer)
@@ -896,8 +941,9 @@ namespace StarsAbove.NPCs.WarriorOfLight
 				NPC.dontTakeDamage = false;
 
 				NPC.netUpdate = true;
-
-				AI_State = (float)ActionState.Idle;
+                Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().locationName = "WarriorOfLight";//lol
+                Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().loadingScreenOpacity = 1f;
+                AI_State = (float)ActionState.Idle;
 			}
 		}
 		private void Idle()
