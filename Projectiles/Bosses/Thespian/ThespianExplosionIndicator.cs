@@ -29,6 +29,7 @@ namespace StarsAbove.Projectiles.Bosses.Thespian
 			Projectile.ignoreWater = true;          //Does the projectile's speed be influenced by water?
 			Projectile.tileCollide = false;          //Can the projectile collide with tiles?
 			Projectile.extraUpdates = 0;            //Set to above 0 if you want the projectile to update multiple time in a frame
+			
 		}
 		public override bool PreDraw(ref Color lightColor)
 		{
@@ -45,8 +46,8 @@ namespace StarsAbove.Projectiles.Bosses.Thespian
 		public override void AI()
 		{
 			Projectile.timeLeft = 10;
-
-			if (Projectile.ai[1] > 0)
+            Projectile.netUpdate = true;
+            if (Projectile.ai[1] > 0)
             {
 
             }
