@@ -925,6 +925,14 @@ namespace StarsAbove.Items.Consumables
 
                 return true;
             }
+            if (modPlayer.thespianDialogue == 1)
+            {
+                modPlayer.chosenDialogue = 70;
+                modPlayer.thespianDialogue = 2;
+                activateDialogue(player);
+
+                return true;
+            }
             if (modPlayer.ThespianWeaponDialogue == 1)
             {
                 modPlayer.chosenDialogue = 180;

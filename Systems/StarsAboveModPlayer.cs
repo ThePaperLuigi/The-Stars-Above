@@ -1806,10 +1806,11 @@ namespace StarsAbove.Systems
             {
                 SyncWorldProgress = false;
             }
+
             if (!AlwaysSyncWorldProgress)
             {
                 //Prompt the player to sync progress or not.
-                if (firstJoinedWorld != Main.worldID)
+                if (firstJoinedWorld != Main.worldID && !SubworldSystem.AnyActive())
                 {
                     sceneID = 2;
                     VNDialogueActive = true;
@@ -1822,7 +1823,193 @@ namespace StarsAbove.Systems
                 SyncWorldProgress = true;
             }
 
+            if(chosenStarfarer == 2)
+            {
+                if(starshower == 2 || ironskin == 2 || evasionmastery == 2 || aquaaffinity == 2 || hikari == 2 || livingdead == 2 || umbralentropy == 2 || celestialevanesence == 2 || butchersdozen == 2 || mysticforging == 2 || flashfreeze == 2)
+                {
+                    if ( starshower == 2)
+                    {
+                         stellarGauge -= 1;
+                         starshower = 1;
+                    }
+                    if ( ironskin == 2)
+                    {
+                         stellarGauge -= 1;
+                         ironskin = 1;
+                    }
+                    if ( evasionmastery == 2)
+                    {
+                         stellarGauge -= 1;
+                         evasionmastery = 1;
+                    }
+                    if ( healthyConfidence == 2)
+                    {
+                         stellarGauge -= 2;
+                         healthyConfidence = 1;
+                    }
+                    if ( aquaaffinity == 2)
+                    {
+                         stellarGauge -= 1;
+                         aquaaffinity = 1;
+                    }
+                    if ( bloomingflames == 2)
+                    {
+                         stellarGauge -= 2;
+                         bloomingflames = 1;
+                    }
+                    if ( astralmantle == 2)
+                    {
+                         stellarGauge -= 2;
+                         astralmantle = 1;
+                    }
+                    if ( beyondinfinity == 2)
+                    {
+                         stellarGauge -= 3;
+                         beyondinfinity = 1;
+                    }
+                    if ( keyofchronology == 2)
+                    {
+                         stellarGauge -= 3;
+                         keyofchronology = 1;
 
+                    }
+                    if ( avataroflight == 2)
+                    {
+                         stellarGauge -= 2;
+                         avataroflight = 1;
+                    }
+                    if ( hikari == 2)
+                    {
+                         stellarGauge -= 1;
+                         hikari = 1;
+                    }
+                    if ( inneralchemy == 2)
+                    {
+                         stellarGauge -= 1;
+                         inneralchemy = 1;
+                    }
+                    if ( livingdead == 2)
+                    {
+                         stellarGauge -= 1;
+                         livingdead = 1;
+                    }
+                    if ( umbralentropy == 2)
+                    {
+                         stellarGauge -= 1;
+                         umbralentropy = 1;
+                    }
+                    if ( celestialevanesence == 2)
+                    {
+                         stellarGauge -= 1;
+                         celestialevanesence = 1;
+                    }
+                    if ( afterburner == 2)
+                    {
+                         stellarGauge -= 2;
+                         afterburner = 1;
+                    }
+                    if ( weaknessexploit == 2)
+                    {
+                         stellarGauge -= 2;
+                         weaknessexploit = 1;
+                    }
+                    if ( aprismatism == 2)
+                    {
+                         stellarGauge -= 2;
+                         aprismatism = 1;
+                    }
+                    if ( unbridledradiance == 2)
+                    {
+                         stellarGauge -= 3;
+                         unbridledradiance = 1;
+                    }
+                    if ( beyondtheboundary == 2)
+                    {
+                         stellarGauge -= 3;
+                         beyondtheboundary = 1;
+                    }
+                    if ( butchersdozen == 2)
+                    {
+                         stellarGauge -= 1;
+                         butchersdozen = 1;
+                    }
+                    if ( mysticforging == 2)
+                    {
+                         stellarGauge -= 1;
+                         mysticforging = 1;
+                    }
+                    if ( flashfreeze == 2)
+                    {
+                         stellarGauge -= 1;
+                         flashfreeze = 1;
+                    }
+                    if ( artofwar == 2)
+                    {
+                         stellarGauge -= 2;
+                         artofwar = 1;
+                    }
+                    if ( mysticIncision == 2)
+                    {
+                         stellarGauge -= 1;
+                         mysticIncision = 1;
+                    }
+                    if ( lavenderRefrain == 2)
+                    {
+                         stellarGauge -= 1;
+                         lavenderRefrain = 1;
+                    }
+                    if ( swiftstrikeTheory == 2)
+                    {
+                         stellarGauge -= 1;
+                         swiftstrikeTheory = 1;
+                    }
+                    if ( inevitableEnd == 2)
+                    {
+                         stellarGauge -= 1;
+                         inevitableEnd = 1;
+                    }
+                    if ( arborealEchoes == 2)
+                    {
+                         stellarGauge -= 1;
+                         arborealEchoes = 1;
+                    }
+                    if ( kiTwinburst == 2)
+                    {
+                         stellarGauge -= 1;
+                         kiTwinburst = 1;
+                    }
+                    if ( kineticConversion == 2)
+                    {
+                         stellarGauge -= 1;
+                         kineticConversion = 1;
+                    }
+                    if ( fabledFashion == 2)
+                    {
+                         stellarGauge -= 1;
+                         fabledFashion = 1;
+                    }
+                    if ( catharsis == 2)
+                    {
+                         stellarGauge -= 1;
+                         catharsis = 1;
+                    }
+                    if ( stayTheCourse == 2)
+                    {
+                         stellarGauge -= 1;
+                         stayTheCourse = 1;
+                    }
+                    if ( armsthrift == 2)
+                    {
+                         stellarGauge -= 1;
+                         armsthrift = 1;
+                    }
+                    if ( spectralNail == 2)
+                    {
+                         stellarGauge -= 1;
+                         spectralNail = 1;
+                    }
+                }
+            }
 
 
 
@@ -2179,7 +2366,7 @@ namespace StarsAbove.Systems
             }
             if (kineticConversion == 2)
             {
-                modifiers.SourceDamage *= 0.1f + Player.velocity.Length() / 7f * 0.2f;
+                modifiers.SourceDamage *= 1.1f + Player.velocity.Length() / 7f * 0.2f;
             }
             if (mysticforging == 2)
             {
@@ -2936,23 +3123,6 @@ namespace StarsAbove.Systems
                 }
             }
             
-
-            //Fix old array stuff
-            if(chosenStarfarer == 2)
-            {
-               starshower = 0; //
-                ironskin = 0; //
-               evasionmastery = 0;//
-                aquaaffinity = 0;//
-                inneralchemy = 0;
-                hikari = 0;
-                livingdead = 0;
-                umbralentropy = 0;
-               celestialevanesence = 0;
-               butchersdozen = 0; //
-               mysticforging = 0;
-                flashfreeze = 0;
-            }
 
             base.UpdateEquips();
         }
@@ -4251,7 +4421,7 @@ namespace StarsAbove.Systems
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
                     }
-                    if (ClarentWeaponDialogue == 0 && NalhaunWeaponDialogue == 2)
+                    if (ClarentWeaponDialogue == 0 && DownedBossSystem.downedNalhaun)
                     {
                         ClarentWeaponDialogue = 1;
                         InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
@@ -4900,7 +5070,6 @@ namespace StarsAbove.Systems
                     if (mysticforging == 0)
                     {
                         mysticforging = 1;
-                        lavenderRefrain = 1;
                     }
                     if(lavenderRefrain == 0)
                     {
