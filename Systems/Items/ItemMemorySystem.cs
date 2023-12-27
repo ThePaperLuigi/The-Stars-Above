@@ -214,7 +214,7 @@ namespace StarsAbove.Systems.Items
         }
         public override void OnConsumeItem(Item item, Player player)
         {
-            if(item.healLife > 0)
+            if(item.healLife > 0 && AetherBarrel)
             {
                 player.GetModPlayer<ItemMemorySystemPlayer>().powderCharges = 2;
             }
