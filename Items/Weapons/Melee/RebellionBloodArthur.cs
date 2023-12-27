@@ -57,9 +57,12 @@ namespace StarsAbove.Items.Weapons.Melee
             }
             if (player.altFunctionUse == 2)
 			{
-				
 
-			}
+                if (player.HasBuff(BuffType<RebellionLaserCooldown>()))
+                {
+                    return false;
+                }
+            }
 			
 			return base.CanUseItem(player);
 		}
@@ -126,7 +129,8 @@ namespace StarsAbove.Items.Weapons.Melee
                     Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
                 }
                 player.AddBuff(BuffType<RebellionLaserBuff>(),120);
-				player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
+                player.AddBuff(BuffType<RebellionLaserCooldown>(), 60*60);
+                player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
                 player.GetModPlayer<BossPlayer>().WhiteAlpha = 0.3f;
                 player.GetModPlayer<WeaponPlayer>().rebellionTarget = new Vector2(player.Center.X, player.Center.Y - 1);
                 Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<RebellionLaser>(), damage, knockback, player.whoAmI);
