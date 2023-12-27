@@ -12727,6 +12727,11 @@ Mods: {
 				// DisplayName: True Shared Power
 				// Description: Your Starfarer is borrowing nearly all of your power, leaving you with only 100 Max HP and 90% less damage
 			}
+
+			RebellionLaserCooldown: {
+				// DisplayName: Rebellion Laser Cooldown
+				// Description: Mods.StarsAbove.Buffs.RebellionLaserCooldown.Description
+			}
 		}
 
 		Bestiary: {

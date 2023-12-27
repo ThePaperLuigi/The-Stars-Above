@@ -150,7 +150,7 @@ namespace StarsAbove
 
 		public override void HandlePacket(BinaryReader reader, int whoAmI)
 		{
-			SubworldSystem.MovePlayerToSubworld("Observatory", whoAmI);
+			//SubworldSystem.MovePlayerToSubworld("Observatory", whoAmI);
 
 			byte msgType = reader.ReadByte();
 			switch (msgType)
@@ -206,7 +206,13 @@ namespace StarsAbove
 					case "downedNalhaun":
 						return DownedBossSystem.downedNalhaun;
 
-					case "downedPenthesilea":
+                    case "downedThespian":
+                        return DownedBossSystem.downedThespian;
+
+                    case "downedStarfarers":
+                        return DownedBossSystem.downedStarfarers;
+
+                    case "downedPenthesilea":
 						return DownedBossSystem.downedPenth;
 
 					case "downedArbitration":

@@ -12,9 +12,6 @@
     <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="GraphicsLib">
-      <HintPath>..\Mod Libraries\GraphicsLib_v2.0.0.2.dll</HintPath>
-    </Reference>
     <Reference Include="StructureHelper">
       <HintPath>lib\StructureHelper.dll</HintPath>
     </Reference>
