@@ -111,8 +111,8 @@ namespace StarsAbove.NPCs.Thespian
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 90000;
-			NPC.damage = 15;
+			NPC.lifeMax = 7100;
+			NPC.damage = 5;
 			NPC.defense = 15;
 			NPC.knockBackResist = 0f;
 			NPC.width = 100;

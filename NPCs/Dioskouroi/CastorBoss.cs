@@ -113,8 +113,8 @@ namespace StarsAbove.NPCs.Dioskouroi
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 35000;
-			NPC.damage = 20;
+			NPC.lifeMax = 11000;
+			NPC.damage = 10;
 			NPC.defense = 5;
 			NPC.knockBackResist = 0f;
 			NPC.width = 100;
