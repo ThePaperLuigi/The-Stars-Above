@@ -411,7 +411,7 @@ Mods: {
 
 				MysticIncision: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Mystic Incision']"
-					Description: Gain 20% armor penetration. Gain an extra 50% armor penetration when in close proximity to foes. If you do not have enough Mana to use a weapon, gain that amount of Mana on use.
+					Description: Gain 20% armor penetration. Gain an extra 50% armor penetration when in close proximity to foes. If you do not have enough Mana to use a weapon, gain that amount of Mana on use if HP is above 50%.
 				}
 
 				StayTheCourse: {
@@ -456,7 +456,7 @@ Mods: {
 
 				LavenderRefrain: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Lavender Refrain']"
-					Description: When taking damage, Mana is treated as bonus health. Mana lost in this manner increases Mana regeneration delay significantly. Reduces the potency of items that restore Mana by 50%.
+					Description: When taking damage, Mana is treated as bonus health. When this effect triggers, Max Mana is reduced by 10%. This additively stacks until Max Mana is reduced by 100%. Resets outside of combat.
 				}
 
 				HealthyConfidence: {

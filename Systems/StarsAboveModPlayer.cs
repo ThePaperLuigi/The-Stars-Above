@@ -602,6 +602,7 @@ namespace StarsAbove.Systems
         int healthyConfidenceHealTimer;
         int beyondInfinityTimer;
         float beyondInfinityDamageMod;
+        float lavenderRefrainMaxManaReduction;
 
         public int armsthriftWeaponIDOld = 0;
         public DamageClass armsthriftWeaponTypeOld;
@@ -2333,14 +2334,23 @@ namespace StarsAbove.Systems
         {
             if(lavenderRefrain == 2)
             {
-                healValue /= 2;
+                if(inCombat > 0)
+                {
+                    //No mana regen in combat
+                    healValue = 0;
+                }
+                else
+                {
+                    
+                }
+                
             }
             base.GetHealMana(item, quickHeal, ref healValue);
         }
 
         public override void OnMissingMana(Item item, int neededMana)
         {
-            if(mysticIncision == 2)
+            if(mysticIncision == 2 && Player.statLife >= Player.statLifeMax2/2)
             {
                 Player.statMana = neededMana;
             }
@@ -3164,7 +3174,7 @@ namespace StarsAbove.Systems
             InevitableEnd();
             SwiftstrikeTheory();
             EmberFlask();
-
+            
             DialogueScroll();
 
             AspectedDamageModification();
@@ -3439,6 +3449,20 @@ namespace StarsAbove.Systems
 
 
         }
+
+        private void LavenderRefrain()
+        {
+            if (lavenderRefrain == 2)
+            {
+                lavenderRefrainMaxManaReduction = Math.Clamp(lavenderRefrainMaxManaReduction, 0f, 1f);
+                Player.statManaMax2 = (int)(Player.statManaMax2 * lavenderRefrainMaxManaReduction);
+                if (inCombat <= 0)
+                {
+                    lavenderRefrainMaxManaReduction = 1f;
+                }
+            }
+        }
+
         private void SwiftstrikeTheory()
         {
             if (swiftstrikeTheory == 2)
@@ -6491,7 +6515,7 @@ namespace StarsAbove.Systems
 
                 }
             }
-
+            LavenderRefrain();
         }
         public override void PostUpdate()
         {
@@ -9421,12 +9445,14 @@ namespace StarsAbove.Systems
             {
                 if(Player.statMana > 0)
                 {
+                    Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                    CombatText.NewText(textPos, new Color(122, 113, 153, 255), $"{Player.statMana}", false, false);
                     //If mana isn't enough to mitigate all the damage (as in Consumable Dodge)
                     info.Damage -= Player.statMana;
                     Player.statMana = 0;
                     Player.manaRegenDelay = 480;
 
-
+                    lavenderRefrainMaxManaReduction -= 0.1f;
                 }
             }
             if (ruinedKingPrism)
@@ -9510,12 +9536,15 @@ namespace StarsAbove.Systems
             {
                 if(Player.statMana >= info.Damage)
                 {
+                    
+                    Player.immune = true;
+                    Player.immuneTime = 60;
+
                     Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
                     CombatText.NewText(textPos, new Color(122, 113, 153, 255), $"{info.Damage}", false, false);
                     Player.statMana -= info.Damage;
                     Player.manaRegenDelay = 480;
-                    Player.immune = true;
-                    Player.immuneTime = 60;
+                    lavenderRefrainMaxManaReduction -= 0.1f;
                     return true;
                 }
             }

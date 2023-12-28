@@ -203,9 +203,7 @@ namespace StarsAbove.NPCs.Starfarers
 				
 			}
 			else if (AI_Timer >= AttackTimer) //An attack is active. (Temp 480, usually 120, or 2 seconds)
-            {
-
-                
+            {             
                 if (DownedBossSystem.downedTsuki)
                 {
                     //Ultra boss rotation

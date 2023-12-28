@@ -1130,12 +1130,8 @@ namespace StarsAbove.NPCs.Tsukiyomi
 
 				//SubworldSystem.Exit();
 
-				if(modPlayer.edingenesisquasar == 0)
-                {
-					modPlayer.edingenesisquasar = 1;
 
-				}
-				if (modPlayer.tsukiyomiDialogue == 0)
+				if (modPlayer.tsukiyomiDialogue == 0 || modPlayer.tsukiyomiDialogue == 1)
 				{
 					//Force open the dialogue.
 					modPlayer.chosenDialogue = 73;

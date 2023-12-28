@@ -927,7 +927,7 @@ namespace StarsAbove.Items.Consumables
             }
             if (modPlayer.thespianDialogue == 1)
             {
-                modPlayer.chosenDialogue = 70;
+                modPlayer.chosenDialogue = 78;
                 modPlayer.thespianDialogue = 2;
                 activateDialogue(player);
 
