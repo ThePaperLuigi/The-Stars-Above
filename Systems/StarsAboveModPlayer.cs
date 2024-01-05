@@ -3449,7 +3449,6 @@ namespace StarsAbove.Systems
 
 
         }
-
         private void LavenderRefrain()
         {
             if (lavenderRefrain == 2)

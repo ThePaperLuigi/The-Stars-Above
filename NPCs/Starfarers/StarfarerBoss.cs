@@ -525,15 +525,15 @@ namespace StarsAbove.NPCs.Starfarers
 			NPC.localAI[1] += 1f;
 			if (NPC.localAI[1] >= 240f)
 			{
-				
 
-
-				//DownedBossSystem.downedTsuki = true;
-				
-				if (Main.netMode == NetmodeID.Server)
-				{
-					NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
-				}
+                if (!DownedBossSystem.downedStarfarers)
+                {
+                    DownedBossSystem.downedStarfarers = true;
+                    if (Main.netMode == NetmodeID.Server)
+                    {
+                        NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
+                    }
+                }
 				/*
 				if (modPlayer.tsukiyomiDialogue == 0)
 				{

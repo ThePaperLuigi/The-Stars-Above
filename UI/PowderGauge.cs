@@ -99,7 +99,11 @@ namespace StarsAbove.UI
 			indicator.Y += 0;
 			indicator.Height -= 0;
 
-			if (Main.LocalPlayer.GetModPlayer<WeaponPlayer>().powderGaugeIndicatorOn == true)
+            barFrame.Top.Set(-30 + modPlayer.WeaponGaugeOffset, 0f);
+            modPlayer.WeaponGaugeOffset += 20;
+
+
+            if (Main.LocalPlayer.GetModPlayer<WeaponPlayer>().powderGaugeIndicatorOn == true)
 			{
 				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/PowderGaugeIndicatorOn"), indicator, Color.White);
 			}

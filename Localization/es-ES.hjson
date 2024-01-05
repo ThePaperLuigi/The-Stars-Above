@@ -125,7 +125,7 @@ Mods: {
 				// RareDialogue1: Haha, you say I resemble other members of my profession? Have you ever considered... they're also me?
 				// RareDialogue2: Have you guessed? Yes, I'm faekin- a faerie. No, I don't do magic tricks.
 				// AstralDialogue: I can sense the Astral Aspect upon you- if you were not aware, 'aspect' is a misnomer. In fact, being Astral aspected is more of a polarity. How you are aspected itself is a wonder... You must be hiding something.
-				// UmbralAspect: I can sense the Umbral Aspect upon you- if you were not aware, 'aspect' is a misnomer. In fact, being Umbral aspected is more of a polarity. How you are aspected itself is a wonder... You must be hiding something.
+				// UmbralDialogue: I can sense the Umbral Aspect upon you- if you were not aware, 'aspect' is a misnomer. In fact, being Umbral aspected is more of a polarity. How you are aspected itself is a wonder... You must be hiding something.
 			}
 		}
 
@@ -401,7 +401,7 @@ Mods: {
 
 				SpectralNail: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Spectral Nail']"
-					// Description: Every 5 strikes against a foe deals 30% bonus true damage. (6 second cooldown.)
+					// Description: Every 5 strikes against a foe deals 30% bonus true damage.
 				}
 
 				Armsthrift: {
@@ -3603,7 +3603,7 @@ Mods: {
 					// LoveSpace: Extra space to take measurements is always appreciated.
 					// DislikeCrowded: I enjoy the lively atmosphere, but everything has its limit- I've found mine.
 					// HateCrowded: You've got to be kidding me. I can't even setup my telescope without it getting knocked over, to say nothing of the light pollution.
-					// LoveBiome: Is it not obvious? The best location to view the stars is {BiomeName}.
+					// LoveBiome: Is it not obvious? The best location to view the stars is Space.
 					// LikeBiome: I have no complaints about {BiomeName}. The horizon is a poigant view, after all.
 					// DislikeBiome: As a faerie, you'd think I'd prefer {BiomeName}. Let it be known that I do not. Try looking through a telescope while being trampled by a unicorn.
 					// HateBiome: Seriously? {BiomeName}? You must have some grievances against me... Feel free to share.
@@ -9218,6 +9218,22 @@ Mods: {
 				// DisplayName: Tsukiyomi Boss Relic Item
 				// Tooltip: ""
 			}
+
+			TwoCrownBow: {
+				// DisplayName: Two-Crown Bow
+				/* Tooltip:
+					'''
+					Holding this weapon grants [Echo-String Rites], allowing for a small chance to dodge attacks based on the amount of applicable debuffs on attackers
+					Attacks with this weapon activate [Asteroid Jaeger], firing a barrage of stellar arrows that ignore terrain, dealing 4% bonus damage per applicable debuff
+					Dealing damage with [Asteroid Jaeger] charges [Stellar Terminination] and extends the duration of applicable debuffs
+					Right click to activate [Depravity], instantly firing a barrage of arrows in a wide arc while granting Swiftness for 4 seconds
+					[Depravity] deals 1/4th damage but inflicts random applicable debuffs on opponents struck
+					Once [Stellar Termination] is charged, pressing the Weapon Action Key will consume the gauge and activate [Stellar Termination]
+					[Stellar Termination] fires a powerful beam of light towards your cursor after a short delay which extends the duration of applicable debuffs on foes struck
+					Additionally, grant [Merculight] to all nearby allies, increasing critical strike damage by 30% for 15 seconds
+					If Stellar Nova is fully charged, [Merculight] additionally grants 25% critical strike chance
+					''' */
+			}
 		}
 
 		UIElements: {
@@ -10172,6 +10188,8 @@ Mods: {
 			// WeakRedStar.DisplayName: Crimson Star
 			// BossPrototokia.DisplayName: Prototokia Aster
 			// ArbitrationTower.DisplayName: Arbitration Tower
+			// TwoCrownBowArrow.DisplayName: Two Crown Bow Arrow
+			// TwoCrownVFX.DisplayName: Two Crown V F X
 		}
 
 		Buffs: {
@@ -12713,6 +12731,11 @@ Mods: {
 			RebellionLaserCooldown: {
 				// DisplayName: Rebellion Laser Cooldown
 				// Description: Mods.StarsAbove.Buffs.RebellionLaserCooldown.Description
+			}
+
+			TwoCrownBowFiring: {
+				// DisplayName: Two Crown Bow Firing
+				// Description: Mods.StarsAbove.Buffs.TwoCrownBowFiring.Description
 			}
 		}
 

@@ -29,7 +29,6 @@ namespace StarsAbove.Projectiles.Bosses.Thespian
 			Projectile.ignoreWater = true;          //Does the projectile's speed be influenced by water?
 			Projectile.tileCollide = false;          //Can the projectile collide with tiles?
 			Projectile.extraUpdates = 0;            //Set to above 0 if you want the projectile to update multiple time in a frame
-			
 		}
 		public override bool PreDraw(ref Color lightColor)
 		{
@@ -54,7 +53,7 @@ namespace StarsAbove.Projectiles.Bosses.Thespian
 			else
             {
 				Projectile.alpha -= 10;
-				if (Projectile.ai[0] == 0)
+				if (Projectile.ai[0] <= 0)
 				{
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_Laevateinn, Projectile.Center);
 

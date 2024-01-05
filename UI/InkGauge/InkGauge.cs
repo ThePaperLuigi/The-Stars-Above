@@ -258,10 +258,7 @@ namespace StarsAbove.UI.InkGauge
             {
                 Append(area);
             }
-            if (ContainsPoint(Main.MouseScreen))
-            {
-                Main.LocalPlayer.mouseInterface = true;
-            }
+            
             // Setting the text per tick to update and show our resource values.
             text.SetText($"");
             base.Update(gameTime);

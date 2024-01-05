@@ -642,15 +642,13 @@ namespace StarsAbove.Systems
                     if(buffEffectTimer >= 10)
                     {
                         SoundEngine.PlaySound(SoundID.Item21, Player.Center);
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
+                        {
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), new Vector2(0, 0), ProjectileType<ThespianExplosionIndicator>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI, 120);
 
-                        Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), new Vector2(0, 0), ProjectileType<ThespianExplosionIndicator>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI, 120);
+                        }
                         buffEffectTimer = 0;
                     }
-                    if (Player.buffTime[i] == 180)
-                    {
-                        
-                    }
-                    
 
                 }
             base.PreUpdateBuffs();

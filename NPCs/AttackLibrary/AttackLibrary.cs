@@ -8014,7 +8014,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				#region attack
 				SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
 				if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CombatText.Thespian.AthanoricCurse"), 241, 255, 180); }
-				if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
+				if (npc.HasValidTarget)
 				{
 					for (int i = 0; i < Main.maxPlayers; i++)
 					{
@@ -8091,7 +8091,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				#region attack
 				SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
 				if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CombatText.Thespian.RingmastersWill"), 241, 255, 180); }
-				if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
+				if (npc.HasValidTarget)
 				{
 					for (int i = 0; i < Main.maxPlayers; i++)
 					{
@@ -8175,7 +8175,7 @@ namespace StarsAbove.NPCs.AttackLibrary
                 #region attack
                 SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
                 if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CombatText.Thespian.RingmastersWill"), 241, 255, 180); }
-                if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
+                if (npc.HasValidTarget)
                 {
                     for (int i = 0; i < Main.maxPlayers; i++)
                     {
@@ -8260,7 +8260,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				#region attack
 				SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
 				if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CombatText.Thespian.RingmastersWill"), 241, 255, 180); }
-				if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
+				if (npc.HasValidTarget)
 				{
 					for (int i = 0; i < Main.maxPlayers; i++)
 					{
@@ -8480,18 +8480,46 @@ namespace StarsAbove.NPCs.AttackLibrary
                 switch (state)
                 {
                     case 0://Happy
-                        for (int i = 0; i < Main.maxPlayers; i++)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
-                            Player player = Main.player[i];
-                            if (player.active)
+                            int type = ProjectileType<ThespianExplosionIndicator>();
+                            int damage = npc.damage;
+                            var entitySource = npc.GetSource_FromAI();
+
+
+                            for (int ir = 0; ir < 10; ir++)
                             {
-                                player.AddBuff(BuffType<Buffs.Boss.ThespianHappyAttack>(), 190);
-                                for (int d = 0; d < 30; d++)
+                                Vector2 positionNew = Vector2.Lerp(new Vector2(npc.Center.X - 700, npc.Center.Y - 200), new Vector2(npc.Center.X + 700, npc.Center.Y - 200), (float)ir / 10);
+
+                                Projectile.NewProjectile(entitySource, positionNew, Vector2.Zero, type, damage, 0f, Main.myPlayer, 240 + ir * 5, ir * 5);
+
+
+                            }
+                            for (int ir = 0; ir < 8; ir++)
+                            {
+                                Vector2 positionNew = Vector2.Lerp(new Vector2(npc.Center.X - 600, npc.Center.Y + 200), new Vector2(npc.Center.X + 600, npc.Center.Y + 200), (float)ir / 8);
+
+                                Projectile.NewProjectile(entitySource, positionNew, Vector2.Zero, type, damage, 0f, Main.myPlayer, 240 + ir * 5, ir * 5);
+
+
+                            }
+                        }
+                        if (Main.netMode == NetmodeID.SinglePlayer)
+                        {
+                            for (int i = 0; i < Main.maxPlayers; i++)
+                            {
+                                Player player = Main.player[i];
+                                if (player.active)
                                 {
-                                    Dust.NewDust(target.Center, 0, 0, DustID.FireworkFountain_Pink, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1f);
+                                    player.AddBuff(BuffType<Buffs.Boss.ThespianHappyAttack>(), 190);
+                                    for (int d = 0; d < 30; d++)
+                                    {
+                                        Dust.NewDust(target.Center, 0, 0, DustID.FireworkFountain_Pink, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1f);
+                                    }
                                 }
                             }
                         }
+                        
                         break;
 
                     case 1://Angry
@@ -8500,29 +8528,26 @@ namespace StarsAbove.NPCs.AttackLibrary
                             Dust.NewDust(target.Center, 0, 0, DustID.GemRuby, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 2f);
                         }
                         //Inflict all players with either a left or right debuff; once this ends, they will be launched in that direction
-                        if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
+                        for (int i = 0; i < Main.maxPlayers; i++)
                         {
-                            for (int i = 0; i < Main.maxPlayers; i++)
+                            Player player = Main.player[i];
+                            if (player.active)
                             {
-                                Player player = Main.player[i];
-                                if (player.active)
+                                player.AddBuff(BuffType<Buffs.Boss.AthanoricCurse>(), 220);
+
+                                if (Main.rand.NextBool())
                                 {
-                                    player.AddBuff(BuffType<Buffs.Boss.AthanoricCurse>(), 220);
+                                    player.AddBuff(BuffType<Buffs.Boss.LaunchLeft>(), 190);
 
-                                    if (Main.rand.NextBool())
-                                    {
-                                        player.AddBuff(BuffType<Buffs.Boss.LaunchLeft>(), 190);
+                                }
+                                else
+                                {
+                                    player.AddBuff(BuffType<Buffs.Boss.LaunchRight>(), 190);
 
-                                    }
-                                    else
-                                    {
-                                        player.AddBuff(BuffType<Buffs.Boss.LaunchRight>(), 190);
-
-                                    }
-                                    for (int d = 0; d < 30; d++)
-                                    {
-                                        Dust.NewDust(target.Center, 0, 0, DustID.FireworkFountain_Pink, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1f);
-                                    }
+                                }
+                                for (int d = 0; d < 30; d++)
+                                {
+                                    Dust.NewDust(target.Center, 0, 0, DustID.FireworkFountain_Pink, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1f);
                                 }
                             }
                         }
@@ -9006,50 +9031,47 @@ namespace StarsAbove.NPCs.AttackLibrary
             {
                 #region attack
                 SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
-                if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
+                for (int i = 0; i < Main.maxPlayers; i++)
                 {
-                    for (int i = 0; i < Main.maxPlayers; i++)
+                    Player player = Main.player[i];
+                    if (player.active)
                     {
-                        Player player = Main.player[i];
-                        if (player.active)
+                        player.ClearBuff(BuffType<RedPaint>());
+                        player.ClearBuff(BuffType<BluePaint>());
+                        player.ClearBuff(BuffType<YellowPaint>());
+
+                        int color = Main.rand.Next(0, 3);
+                        switch (color)
                         {
-							player.ClearBuff(BuffType<RedPaint>());
-                            player.ClearBuff(BuffType<BluePaint>());
-                            player.ClearBuff(BuffType<YellowPaint>());
+                            case 0:
+                                if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CombatText.Penthesilea.RedPaint"), 241, 255, 180); }
 
-                            int color = Main.rand.Next(0, 3);
-							switch(color)
-							{
-								case 0:
-                                    if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CombatText.Penthesilea.RedPaint"), 241, 255, 180); }
+                                player.AddBuff(BuffType<RedPaint>(), 900);
+                                for (int d = 0; d < 30; d++)
+                                {
+                                    Dust.NewDust(target.Center, 0, 0, DustID.Firework_Red, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1f);
+                                }
+                                break;
+                            case 1:
+                                if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CombatText.Penthesilea.BluePaint"), 241, 255, 180); }
 
-                                    player.AddBuff(BuffType<RedPaint>(), 900);
-                                    for (int d = 0; d < 30; d++)
-                                    {
-                                        Dust.NewDust(target.Center, 0, 0, DustID.Firework_Red, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1f);
-                                    }
-                                    break;
-								case 1:
-                                    if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CombatText.Penthesilea.BluePaint"), 241, 255, 180); }
+                                player.AddBuff(BuffType<BluePaint>(), 900);
+                                for (int d = 0; d < 30; d++)
+                                {
+                                    Dust.NewDust(target.Center, 0, 0, DustID.Firework_Blue, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1f);
+                                }
+                                break;
+                            case 2:
+                                if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CombatText.Penthesilea.YellowPaint"), 241, 255, 180); }
 
-                                    player.AddBuff(BuffType<BluePaint>(), 900);
-                                    for (int d = 0; d < 30; d++)
-                                    {
-                                        Dust.NewDust(target.Center, 0, 0, DustID.Firework_Blue, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1f);
-                                    }
-                                    break;
-								case 2:
-                                    if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CombatText.Penthesilea.YellowPaint"), 241, 255, 180); }
-
-                                    player.AddBuff(BuffType<YellowPaint>(), 900);
-                                    for (int d = 0; d < 30; d++)
-                                    {
-                                        Dust.NewDust(target.Center, 0, 0, DustID.Firework_Yellow, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1f);
-                                    }
-                                    break;
-							}
-                            
+                                player.AddBuff(BuffType<YellowPaint>(), 900);
+                                for (int d = 0; d < 30; d++)
+                                {
+                                    Dust.NewDust(target.Center, 0, 0, DustID.Firework_Yellow, 0f + Main.rand.Next(-20, 20), 0f + Main.rand.Next(-20, 20), 150, default(Color), 1f);
+                                }
+                                break;
                         }
+
                     }
                 }
 
@@ -9115,7 +9137,7 @@ namespace StarsAbove.NPCs.AttackLibrary
             {
                 #region attack
                 SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
-                if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
+                if (npc.HasValidTarget)
                 {
                     for (int i = 0; i < Main.maxPlayers; i++)
                     {
@@ -15146,21 +15168,21 @@ namespace StarsAbove.NPCs.AttackLibrary
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<TransitionDustEffect>(), 0, 0, Main.myPlayer, 360);
 
 					
-					for (int i = 0; i < Main.maxPlayers; i++)
-					{
-						SoundEngine.PlaySound(StarsAboveAudio.SFX_WarriorStun, npc.Center);
-
-						Player player = Main.player[i];
-						if (player.active && player.Distance(npc.Center) < 1600)
-						{
-							player.AddBuff(BuffType<DownForTheCount>(), 360);
-						}
-					}
+					
 
 				}
+                for (int i = 0; i < Main.maxPlayers; i++)
+                {
+                    SoundEngine.PlaySound(StarsAboveAudio.SFX_WarriorStun, npc.Center);
 
+                    Player player = Main.player[i];
+                    if (player.active && player.Distance(npc.Center) < 1600)
+                    {
+                        player.AddBuff(BuffType<DownForTheCount>(), 360);
+                    }
+                }
 
-				return;
+                return;
 			}
 			if (npc.ai[0] == (float)ActionState.PersistentCast)//If an attack lasts, it'll be moved to PersistentCast until the cast finishes.
 			{
