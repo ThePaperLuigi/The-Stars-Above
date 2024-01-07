@@ -9223,15 +9223,16 @@ Mods: {
 				// DisplayName: Two-Crown Bow
 				/* Tooltip:
 					'''
-					Holding this weapon grants [Echo-String Rites], allowing for a small chance to dodge attacks based on the amount of applicable debuffs on attackers
-					Attacks with this weapon activate [Asteroid Jaeger], firing a barrage of stellar arrows that ignore terrain, dealing 4% bonus damage per applicable debuff
-					Dealing damage with [Asteroid Jaeger] charges [Stellar Terminination] and extends the duration of applicable debuffs
-					Right click to activate [Depravity], instantly firing a barrage of arrows in a wide arc while granting Swiftness for 4 seconds
-					[Depravity] deals 1/4th damage but inflicts random applicable debuffs on opponents struck
-					Once [Stellar Termination] is charged, pressing the Weapon Action Key will consume the gauge and activate [Stellar Termination]
-					[Stellar Termination] fires a powerful beam of light towards your cursor after a short delay which extends the duration of applicable debuffs on foes struck
-					Additionally, grant [Merculight] to all nearby allies, increasing critical strike damage by 30% for 15 seconds
-					If Stellar Nova is fully charged, [Merculight] additionally grants 25% critical strike chance
+					Holding this weapon grants [c/F3ADF4:Echo-String Rites], gaining a 1% chance to dodge attacks per debuff on attackers
+					Attacks with this weapon activate [c/C39AFE:Asteroid Jaeger], firing a barrage of stellar arrows that ignore terrain, dealing 4% bonus damage per debuff on target
+					[c/C39AFE:Asteroid Jaeger] additionally charges [c/E94DEC:Stellar Termination] when striking foes
+					Right click to activate [c/8E4DEC:Depravity], instantly firing a barrage of stellar arrows from the sky for 3 seconds while granting Swiftness for the same duration (20 second cooldown)
+					[c/8E4DEC:Depravity] deals 1/4th damage but inflicts random debuffs on opponents struck for 8 seconds (Does not charge [c/E94DEC:Stellar Termination]
+					Once [c/E94DEC:Stellar Termination] is charged, pressing the Weapon Action Key will consume the gauge and activate [c/E94DEC:Stellar Termination]
+					[c/E94DEC:Stellar Termination] fires a powerful barrage of energy towards your cursor after a short delay which extends debuff durations on foes by 2 seconds per hit (up to 20 seconds)
+					Additionally, grant [c/B6FADC:Merculight] to all nearby allies, increasing critical strike damage by 30% for 15 seconds
+					If Stellar Nova is fully charged, [c/B6FADC:Merculight] additionally grants 25% critical strike chance
+					Once [c/E94DEC:Stellar Termination] ends, all foes struck by [c/E94DEC:Stellar Termination] explode for 3x damage
 					''' */
 			}
 		}
@@ -10190,6 +10191,14 @@ Mods: {
 			// ArbitrationTower.DisplayName: Arbitration Tower
 			// TwoCrownBowArrow.DisplayName: Two Crown Bow Arrow
 			// TwoCrownVFX.DisplayName: Two Crown V F X
+			// TwoCrownBowArrowDebuff.DisplayName: Two Crown Bow Arrow Debuff
+			// TwoCrownBowSkyAttack.DisplayName: Two Crown Bow Sky Attack
+			// TwoCrownBowEmpoweredArrow.DisplayName: Two Crown Bow Empowered Arrow
+			// TwoCrownBowLaser.DisplayName: Two Crown Bow Laser
+			// TwoCrownBowLaserVFX.DisplayName: Two Crown Bow Laser V F X
+			// TwoCrownBowLaserPreVFX.DisplayName: Two Crown Bow Laser Pre V F X
+			// TwoCrownBowLaserPreVFX2.DisplayName: Two Crown Bow Laser Pre V F X2
+			// TwoCrownBowLaserPreVFX3.DisplayName: Two Crown Bow Laser Pre V F X3
 		}
 
 		Buffs: {
@@ -12736,6 +12745,31 @@ Mods: {
 			TwoCrownBowFiring: {
 				// DisplayName: Two Crown Bow Firing
 				// Description: Mods.StarsAbove.Buffs.TwoCrownBowFiring.Description
+			}
+
+			TwoCrownBowDepravity: {
+				// DisplayName: Two Crown Bow Depravity
+				// Description: Mods.StarsAbove.Buffs.TwoCrownBowDepravity.Description
+			}
+
+			StellarTerminationBuff: {
+				// DisplayName: Stellar Termination Buff
+				// Description: Mods.StarsAbove.Buffs.StellarTerminationBuff.Description
+			}
+
+			StellarTerminationPreBuff: {
+				// DisplayName: Stellar Termination Pre Buff
+				// Description: Mods.StarsAbove.Buffs.StellarTerminationPreBuff.Description
+			}
+
+			TwoCrownBowDepravityCooldown: {
+				// DisplayName: Two Crown Bow Depravity Cooldown
+				// Description: Mods.StarsAbove.Buffs.TwoCrownBowDepravityCooldown.Description
+			}
+
+			EchoStringRites: {
+				// DisplayName: Echo String Rites
+				// Description: Mods.StarsAbove.Buffs.EchoStringRites.Description
 			}
 		}
 

@@ -11,7 +11,7 @@ using Terraria.GameContent.Drawing;
 
 namespace StarsAbove.Projectiles.Ranged.TwoCrownBow
 {
-    public class TwoCrownBowArrow : ModProjectile
+    public class TwoCrownBowArrowDebuff : ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -65,44 +65,91 @@ namespace StarsAbove.Projectiles.Ranged.TwoCrownBow
         
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            for (int d = 0; d < 13; d++)//Visual effects
+            for (int d = 0; d < 23; d++)//Visual effects
             {
                 Vector2 perturbedSpeed = new Vector2(Projectile.velocity.X, Projectile.velocity.Y).RotatedByRandom(MathHelper.ToRadians(6));
                 float scale = 1f + Main.rand.NextFloat() * 0.6f;
                 perturbedSpeed = perturbedSpeed * scale;
-                int dustIndex = Dust.NewDust(Projectile.Center, 0, 0, DustID.FireworkFountain_Pink, perturbedSpeed.X, perturbedSpeed.Y, 150, default, 0.5f);
+                int dustIndex = Dust.NewDust(Projectile.Center, 0, 0, DustID.FireworkFountain_Pink, perturbedSpeed.X, perturbedSpeed.Y, 150, default, 0.6f);
                 Main.dust[dustIndex].noGravity = true;
 
             }
             Player player = Main.player[Projectile.owner];
 
-            ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.PrincessWeapon,
+            ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.NightsEdge,
                new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(target.Hitbox) },
                Projectile.owner);
 
-            player.GetModPlayer<WeaponPlayer>().terminationGauge += 1;
-            player.GetModPlayer<WeaponPlayer>().gaugeChangeAlpha = 1f;
-            if (player.GetModPlayer<WeaponPlayer>().terminationGauge >= 100)
+           
+            //player.GetModPlayer<WeaponPlayer>().gaugeChangeAlpha = 1f;
+            int debuff = Main.rand.Next(0, 16);
+            switch(debuff)
             {
-                player.GetModPlayer<WeaponPlayer>().terminationGauge = 100;
+                case 0:
+                    target.AddBuff(BuffID.Ichor, 8 * 60);
 
+                    break;
+                case 1:
+                    target.AddBuff(BuffID.Frostburn, 8 * 60);
+
+                    break;
+                case 2:
+                    target.AddBuff(BuffID.Poisoned, 8 * 60);
+
+                    break;
+                case 3:
+                    target.AddBuff(BuffID.OnFire, 8 * 60);
+
+                    break;
+                case 4:
+                    target.AddBuff(BuffID.Bleeding, 8 * 60);
+
+                    break;
+                case 5:
+                    target.AddBuff(BuffID.Confused, 8 * 60);
+
+                    break;
+                case 6:
+                    target.AddBuff(BuffID.Poisoned, 8 * 60);
+
+                    break;
+                case 7:
+                    target.AddBuff(BuffID.BetsysCurse, 8 * 60);
+
+                    break;
+                case 8:
+                    target.AddBuff(BuffID.Venom, 8 * 60);
+
+                    break;
+                case 9:
+                    target.AddBuff(BuffID.ShadowFlame, 8 * 60);
+
+                    break;
+                case 10:
+                    target.AddBuff(BuffID.Midas, 8 * 60);
+
+                    break;
+                case 11:
+                    target.AddBuff(BuffID.BloodButcherer, 8 * 60);
+
+                    break;
+                case 12:
+                    target.AddBuff(BuffID.ShadowFlame, 8 * 60);
+
+                    break;
+                case 13:
+                    target.AddBuff(BuffID.CursedInferno, 8 * 60);
+
+                    break;
+                case 14:
+                    target.AddBuff(BuffID.Frostburn2, 8 * 60);
+
+                    break;
+                case 15:
+                    target.AddBuff(BuffID.OnFire3, 8 * 60);
+
+                    break;
             }
-        }
-        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
-        {
-            for (int i = 0; i < 12; i++)
-            {
-                if (target.buffType[i] > 0 && Main.debuff[target.buffType[i]])
-                {
-                    modifiers.SourceDamage += 0.04f;
-                    continue;
-                }
-
-                
-                //target.buffTime[i] += 20 * 60;
-            }
-
-            base.ModifyHitNPC(target, ref modifiers);
         }
         public override void OnKill(int timeLeft)
         {

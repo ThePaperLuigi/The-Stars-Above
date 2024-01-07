@@ -11,7 +11,7 @@ using Terraria.GameContent.Drawing;
 
 namespace StarsAbove.Projectiles.Ranged.TwoCrownBow
 {
-    public class TwoCrownBowArrow : ModProjectile
+    public class TwoCrownBowEmpoweredArrow : ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -43,10 +43,9 @@ namespace StarsAbove.Projectiles.Ranged.TwoCrownBow
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            default(Effects.SmallWhiteTrail).Draw(Projectile);
 
-            Texture2D texture = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Ranged/TwoCrownBow/TwoCrownBowArrowWhite");
-            Texture2D texturebase = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Ranged/TwoCrownBow/TwoCrownBowArrow");
+            Texture2D texture = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Ranged/TwoCrownBow/TwoCrownBowEmpoweredArrowWhite");
+            Texture2D texturebase = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Ranged/TwoCrownBow/TwoCrownBowEmpoweredArrow");
 
             Rectangle frame = texture.Frame(1, 1, 0, 0);
             Vector2 origin = frame.Size() / 2f;
@@ -76,30 +75,28 @@ namespace StarsAbove.Projectiles.Ranged.TwoCrownBow
             }
             Player player = Main.player[Projectile.owner];
 
-            ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.PrincessWeapon,
+            ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Excalibur,
                new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(target.Hitbox) },
                Projectile.owner);
 
-            player.GetModPlayer<WeaponPlayer>().terminationGauge += 1;
-            player.GetModPlayer<WeaponPlayer>().gaugeChangeAlpha = 1f;
-            if (player.GetModPlayer<WeaponPlayer>().terminationGauge >= 100)
-            {
-                player.GetModPlayer<WeaponPlayer>().terminationGauge = 100;
-
-            }
+            
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
             for (int i = 0; i < 12; i++)
             {
-                if (target.buffType[i] > 0 && Main.debuff[target.buffType[i]])
+                if (Main.debuff[target.buffType[i]] && target.buffType[i] > 0)
                 {
-                    modifiers.SourceDamage += 0.04f;
+                    if (target.buffTime[i] < 20*60)
+                    {
+                        target.buffTime[i] += 120;
+                    }
+                    
                     continue;
                 }
 
                 
-                //target.buffTime[i] += 20 * 60;
+                //
             }
 
             base.ModifyHitNPC(target, ref modifiers);

@@ -45,6 +45,9 @@ namespace StarsAbove.Systems
         private UserInterface _ButterflyResourceBarUserInterface;
         internal ButterflyResourceBar ButterflyResourceBar;
 
+        private UserInterface _TwoCrownBowGaugeUserInterface;
+        internal TwoCrownBowGauge TwoCrownBowGauge;
+
         private UserInterface _DraggedBelowBarUserInterface;
         internal DraggedBelowBar DraggedBelowBar;
 
@@ -234,6 +237,10 @@ namespace StarsAbove.Systems
                 ButterflyResourceBar = new ButterflyResourceBar();
                 _ButterflyResourceBarUserInterface = new UserInterface();
                 _ButterflyResourceBarUserInterface.SetState(ButterflyResourceBar);
+
+                TwoCrownBowGauge = new TwoCrownBowGauge();
+                _TwoCrownBowGaugeUserInterface = new UserInterface();
+                _TwoCrownBowGaugeUserInterface.SetState(TwoCrownBowGauge);
 
                 DragonshiftGauge = new DragonshiftGauge();
                 _DragonshiftGaugeUserInterface = new UserInterface();
@@ -475,6 +482,8 @@ namespace StarsAbove.Systems
 
             _NanomachinaGaugeUserInterface?.Update(gameTime);
             _ButterflyResourceBarUserInterface?.Update(gameTime);
+            _TwoCrownBowGaugeUserInterface?.Update(gameTime);
+
             _DragonshiftGaugeUserInterface?.Update(gameTime);
             _DraggedBelowBarUserInterface?.Update(gameTime);
 
@@ -635,6 +644,15 @@ namespace StarsAbove.Systems
                     delegate
                     {
                         _ButterflyResourceBarUserInterface.Draw(Main.spriteBatch, new GameTime());
+                        return true;
+                    },
+                    InterfaceScaleType.UI)
+                );
+                layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+                    "StarsAbove: Two Crown Bow Resource Bar",
+                    delegate
+                    {
+                        _TwoCrownBowGaugeUserInterface.Draw(Main.spriteBatch, new GameTime());
                         return true;
                     },
                     InterfaceScaleType.UI)

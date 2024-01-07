@@ -1,3 +1,4 @@
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using StarsAbove.Buffs;
@@ -19,6 +20,7 @@ using StarsAbove.Buffs.RedMage;
 using StarsAbove.Buffs.SupremeAuthority;
 using StarsAbove.Buffs.TagDamage;
 using StarsAbove.Buffs.TheOnlyThingIKnowForReal;
+using StarsAbove.Buffs.TwoCrownBow;
 using StarsAbove.Buffs.Umbra;
 using StarsAbove.Buffs.VermillionDaemon;
 using StarsAbove.Dusts;
@@ -82,6 +84,7 @@ using Terraria.DataStructures;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.WorldBuilding;
 using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Systems
@@ -116,7 +119,9 @@ namespace StarsAbove.Systems
         public int izanagiPerfect = 0;
         public bool edgeHoned = false;
 
-
+        //Two Crown Bow
+        public bool twoCrownBowHeld;
+        public float terminationGauge;
 
         //Naganadel
         public bool naganadelWeapon1Summoned;
@@ -2693,7 +2698,61 @@ namespace StarsAbove.Systems
 
                     }
                 }
+            for (int i = 0; i < Player.CountBuffs(); i++)
+                if (Player.buffType[i] == BuffType<StellarTerminationPreBuff>())
+                {
+                    terminationGauge-= 2;
+                    if(terminationGauge < 0)
+                    {
+                        terminationGauge = 0;
+                    }
+                    for (int ia = 0; ia < 2; ia++)
+                    {
+                        Vector2 vector = new Vector2(
+                            Main.rand.Next(-2048, 2048) * (0.003f * 56) - 10,
+                            Main.rand.Next(-2048, 2048) * (0.003f * 56) - 10);
+                        Dust d = Main.dust[Dust.NewDust(
+                            Player.MountedCenter + vector, 1, 1,
+                            DustID.GemAmethyst, 0, 0, 255,
+                            new Color(0.8f, 0.4f, 1f), 1f)];
+                        d.velocity = -vector / 16;
+                        d.velocity -= Player.velocity / 8;
+                        d.noGravity = true;
 
+                    }
+                    if (Player.buffTime[i] == 1)
+                    {
+                        Player.AddBuff(BuffType<StellarTerminationBuff>(), 120);
+                    }
+                }
+            for (int i = 0; i < Player.CountBuffs(); i++)
+                if (Player.buffType[i] == BuffType<StellarTerminationBuff>())
+                {
+                    if (Player.buffTime[i] == 1)
+                    {
+                        for (int j = 0; j < Main.maxNPCs; j++)
+                        {
+                            NPC npc = Main.npc[j];
+                            if (npc.active && npc.HasBuff(BuffType<StellarTerminationBuff>()))
+                            {
+                                for (int d = 0; d < 50; d++)
+                                {
+                                    Dust.NewDust(npc.Center, 0, 0, DustID.GemAmethyst, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default, 1f);
+
+                                    Dust.NewDust(npc.Center, 0, 0, DustID.Smoke, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default, 0.5f);
+                                }
+                                for (int d = 0; d < 30; d++)
+                                {
+                                    Dust.NewDust(npc.Center, 0, 0, DustID.FireworkFountain_Pink, 0f + Main.rand.Next(-9, 9), 0f + Main.rand.Next(-9, 9), 150, default, 0.8f);
+
+                                }
+
+                                npc.SimpleStrikeNPC((int)(Player.GetWeaponDamage(Player.HeldItem) * 3), 0, false, 0, DamageClass.Ranged, true, 0);
+                                npc.DelBuff(npc.FindBuffIndex(BuffType<StellarTerminationBuff>()));
+                            }
+                        }
+                    }
+                }
             for (int i = 0; i < Player.CountBuffs(); i++)
                 if (Player.buffType[i] == BuffType<Afterburner>())
                 {
@@ -3423,6 +3482,7 @@ namespace StarsAbove.Systems
                     }
                 }
             }
+            
             if (Player.HasBuff(BuffType<RealizedNanomachinaBuff>()))
             {
                 if (nanomachinaShieldHP > 0)
@@ -3475,6 +3535,35 @@ namespace StarsAbove.Systems
 
                         }
                     }
+
+                }
+                if (Player.HasBuff(BuffType<EchoStringRites>()))
+                {
+                    if (info.DamageSource.SourceNPCIndex == 0)
+                    {
+
+                    }
+                    else
+                    {
+                        int dodgeChance = 0;
+                        for (int i = 0; i < 12; i++)
+                        {
+                            NPC npc = Main.npc[info.DamageSource.SourceNPCIndex];
+                            if (npc.buffType[i] > 0 && Main.debuff[npc.buffType[i]])
+                            {
+                                dodgeChance++;
+                                continue;
+                            }
+                            if (Main.rand.Next(0, 101) < dodgeChance)
+                            {
+                                return true;
+                            }
+
+                            //target.buffTime[i] += 20 * 60;
+                        }
+                    }
+
+                    
 
                 }
             }
