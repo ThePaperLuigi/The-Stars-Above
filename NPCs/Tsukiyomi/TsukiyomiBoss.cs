@@ -151,9 +151,14 @@ namespace StarsAbove.NPCs.Tsukiyomi
         {
 			
 			potionType = ItemID.None;
+            DownedBossSystem.downedTsuki = true;
 
+            if (Main.netMode == NetmodeID.Server)
+            {
+                NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
+            }
 
-			base.BossLoot(ref name, ref potionType);
+            base.BossLoot(ref name, ref potionType);
         }
         public override bool CheckDead()
 		{
@@ -1121,12 +1126,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 				
 
 
-				DownedBossSystem.downedTsuki = true;
 				
-				if (Main.netMode == NetmodeID.Server)
-				{
-					NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
-				}
 
 				//SubworldSystem.Exit();
 
