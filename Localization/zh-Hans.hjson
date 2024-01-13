@@ -9248,6 +9248,25 @@ Mods: {
 					Once [c/E94DEC:Stellar Termination] ends, all foes struck by [c/E94DEC:Stellar Termination] explode for 3x damage
 					''' */
 			}
+
+			OrbitalExpresswayPlush: {
+				// DisplayName: Orbital Expressway Plush
+				/* Tooltip:
+					'''
+					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty]
+					Using this weapon marks a location based on your cursor (5 minute cooldown)
+					While this cooldown is active, defense and attack are reduced by 15%
+					After 5 seconds, an orbital train will annihilate your marked location, dealing powerful damage to all foes caught in the crossfire
+					This attack ignores terrain and destroys projectiles it makes contact with
+					The first foe struck by this attack will additionally explode, taking guaranteed critical damage 
+					The current [c/F592BF:Aspected Damage Type] influences this explosion's effects
+					[c/FFAB4D:Melee]: Stun the target for 5 seconds
+					[c/EF4DFF:Magic]: Restore 100 HP and all Mana to all allies
+					[c/4DFF5B:Ranged]: Deals 10% of the foe's HP as true damage
+					[c/00CDFF:Summon]: Inflict 50 Summon Tag Damage (3 second duration)
+					Defeating foes reduces weapon cooldown by 10 seconds (Defeating bosses instantly refreshes cooldown)
+					''' */
+			}
 		}
 
 		UIElements: {
@@ -10212,6 +10231,7 @@ Mods: {
 			// TwoCrownBowLaserPreVFX.DisplayName: Two Crown Bow Laser Pre V F X
 			// TwoCrownBowLaserPreVFX2.DisplayName: Two Crown Bow Laser Pre V F X2
 			// TwoCrownBowLaserPreVFX3.DisplayName: Two Crown Bow Laser Pre V F X3
+			// ExpresswayPlushActive.DisplayName: Expressway Plush Active
 		}
 
 		Buffs: {
@@ -12788,6 +12808,11 @@ Mods: {
 			EchoStringRites: {
 				// DisplayName: Echo String Rites
 				// Description: Mods.StarsAbove.Buffs.EchoStringRites.Description
+			}
+
+			Merculight: {
+				// DisplayName: Merculight
+				// Description: Mods.StarsAbove.Buffs.Merculight.Description
 			}
 		}
 
