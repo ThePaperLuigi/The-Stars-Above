@@ -78,10 +78,13 @@ namespace StarsAbove.Items.Weapons.Magic
 
 					player.statMana -= 100;
 					player.manaRegenDelay = 600;
-					
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, 0, -30, ProjectileType<DarkmoonSpawn>(), 0, 0, player.whoAmI, 0f);//Spawn the sword.
-					//The sword will be thrown above the player, spinning quickly but then slowing down, and then explode in a bunch of particles as it becomes empowered.
-					return true;
+					if(Main.netMode != NetmodeID.MultiplayerClient)
+					{
+                        Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, 0, -30, ProjectileType<DarkmoonSpawn>(), 0, 0, player.whoAmI, 0f);//Spawn the sword.
+
+                    }
+                    //The sword will be thrown above the player, spinning quickly but then slowing down, and then explode in a bunch of particles as it becomes empowered.
+                    return true;
 				}
 				else
                 {
