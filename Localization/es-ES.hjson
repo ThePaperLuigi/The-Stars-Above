@@ -9236,23 +9236,44 @@ Mods: {
 					''' */
 			}
 
+			EssenceOfTheHuntress: {
+				// DisplayName: Essence Of The Huntress
+				/* Tooltip:
+					'''
+					Obtained after defeating Lunatic Cultist
+					A gift from your Starfarer
+					Utilized in the creation of 'Two-Crown Bow' (Ranged)
+					''' */
+			}
+
 			OrbitalExpresswayPlush: {
 				// DisplayName: Orbital Expressway Plush
 				/* Tooltip:
 					'''
 					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty]
-					Using this weapon marks a location based on your cursor (5 minute cooldown)
-					While this cooldown is active, defense and attack are reduced by 15%
-					After 5 seconds, an orbital train will annihilate your marked location, dealing powerful damage to all foes caught in the crossfire
+					Using this weapon marks a location based on your cursor (1 minute cooldown)
+					While cooldown is active, defense and attack are reduced by 5%
+					After 3 seconds, an orbital train will annihilate your marked location, dealing guaranteed critical damage to all foes caught in the crossfire
 					This attack ignores terrain and destroys projectiles it makes contact with
-					The first foe struck by this attack will additionally explode, taking guaranteed critical damage 
-					The current [c/F592BF:Aspected Damage Type] influences this explosion's effects
-					[c/FFAB4D:Melee]: Stun the target for 5 seconds
-					[c/EF4DFF:Magic]: Restore 100 HP and all Mana to all allies
-					[c/4DFF5B:Ranged]: Deals 10% of the foe's HP as true damage
-					[c/00CDFF:Summon]: Inflict 50 Summon Tag Damage (3 second duration)
-					Defeating foes reduces weapon cooldown by 10 seconds (Defeating bosses instantly refreshes cooldown)
+					The first foe struck by this attack will additionally take 50% increased damage
+					Inherits 5% of the Stellar Nova's scaled base damage
+					'Cookie powered'
 					''' */
+			}
+
+			EssenceOfMew: {
+				// DisplayName: Essence Of Mew
+				/* Tooltip:
+					'''
+					Obtained after defeating Queen Slime
+					A gift from your Starfarer
+					Utilized in the creation of 'Orbital Expressway Plush' (Melee/Magic/Summon/Ranged)
+					''' */
+			}
+
+			StarphoenixFunnel: {
+				// DisplayName: Starphoenix Funnel
+				// Tooltip: ""
 			}
 		}
 
@@ -10219,6 +10240,9 @@ Mods: {
 			// TwoCrownBowLaserPreVFX2.DisplayName: Two Crown Bow Laser Pre V F X2
 			// TwoCrownBowLaserPreVFX3.DisplayName: Two Crown Bow Laser Pre V F X3
 			// ExpresswayPlushActive.DisplayName: Expressway Plush Active
+			// ExpresswayProjectile.DisplayName: Expressway Projectile
+			// ExpresswayTarget.DisplayName: Expressway Target
+			// ExpresswayVFX.DisplayName: Expressway V F X
 		}
 
 		Buffs: {
@@ -12795,6 +12819,11 @@ Mods: {
 			Merculight: {
 				// DisplayName: Merculight
 				// Description: Mods.StarsAbove.Buffs.Merculight.Description
+			}
+
+			OrbitalExpresswayPlushCooldown: {
+				// DisplayName: Orbital Expressway Plush Cooldown
+				// Description: Mods.StarsAbove.Buffs.OrbitalExpresswayPlushCooldown.Description
 			}
 		}
 
