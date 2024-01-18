@@ -2,8 +2,13 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Buffs.CarianDarkMoon;
+using StarsAbove.Projectiles.Magic.CarianDarkMoon;
+using StarsAbove.Systems;
+using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.GameContent;
+using Terraria.GameContent.Drawing;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -22,19 +27,18 @@ namespace StarsAbove.Projectiles.Other.OrbitalExpresswayPlush
 
         public override void SetDefaults()
         {
-            Projectile.width = 108;
-            Projectile.height = 108;
-            Projectile.aiStyle = 1;
+            Projectile.width = 40;
+            Projectile.height = 40;
+            Projectile.aiStyle = 0;
             Projectile.penetrate = -1;
             Projectile.scale = 1f;
             Projectile.alpha = 0;
-            Projectile.timeLeft = 160;
+            Projectile.timeLeft = 100;
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.hide = false;
             Projectile.ownerHitCheck = false;
             Projectile.tileCollide = false;
             Projectile.friendly = false;
-            AIType = ProjectileID.Bullet;
         }
 
         // In here the AI uses this example, to make the code more organized and readable
@@ -57,80 +61,18 @@ namespace StarsAbove.Projectiles.Other.OrbitalExpresswayPlush
             //projectile.position.X = projOwner.Center.X - (float)(projectile.width / 2);
             // Apply proper rotation, with an offset of 135 degrees due to the sprite's rotation, notice the usage of MathHelper, use this class!
             // MathHelper.ToRadians(xx degrees here)
-            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(135f);
-            // Offset by 90 degrees here
-            if (Projectile.spriteDirection == -1)
-            {
-                Projectile.rotation -= MathHelper.ToRadians(90f);
-            }
-            Projectile.velocity *= 0.90f;
-            if (Projectile.timeLeft < 140 && Projectile.timeLeft > 120)
-            {
+            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(Projectile.ai[0]);
 
-                Dust.NewDust(new Vector2(Projectile.Center.X - 3, Projectile.Center.Y), 0, 0, 221, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-9, 9), 150, default, 0.2f);
-
-            }
-            if (Projectile.timeLeft < 120 && Projectile.timeLeft > 100)
-            {
-
-                Dust.NewDust(new Vector2(Projectile.Center.X - 3, Projectile.Center.Y), 0, 0, 221, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-9, 9), 150, default, 0.6f);
-
-            }
-            if (Projectile.timeLeft < 100 && Projectile.timeLeft > 80)
-            {
-
-                Dust.NewDust(new Vector2(Projectile.Center.X - 3, Projectile.Center.Y), 0, 0, 221, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-9, 9), 150, default, 1.1f);
-
-            }
-            if (Projectile.timeLeft < 80 && Projectile.timeLeft > 60)
-            {
-                for (int d = 0; d < 3; d++)
-                {
-                    Dust.NewDust(new Vector2(Projectile.Center.X - 3, Projectile.Center.Y), 0, 0, 221, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-14, 14), 150, default, 1.5f);
-                }
-            }
-
-            if (Projectile.timeLeft == 60)
-            {
-                //Change the projectile to empowered version, add particle effects, etc.
-                projOwner.AddBuff(BuffType<MoonlitGreatblade>(), 1080);//The buff lasts as long as the sword transformation animation. Once it's done, grant the buff "Moonlight Greatsword"
-                //train
-
-                for (int d = 0; d < 14; d++)
-                {
-                    Dust.NewDust(new Vector2(Projectile.Center.X - 3, Projectile.Center.Y), 0, 0, 20, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-15, 15), 150, default, 1.5f);
-                }
-                for (int d = 0; d < 16; d++)
-                {
-                    Dust.NewDust(new Vector2(Projectile.Center.X - 3, Projectile.Center.Y), 0, 0, 221, 0f + Main.rand.Next(-16, 16), 0f, 150, default, 1.5f);
-                }
-                for (int d = 0; d < 16; d++)
-                {
-                    Dust.NewDust(new Vector2(Projectile.Center.X - 3, Projectile.Center.Y), 0, 0, 20, 0f + Main.rand.Next(-6, 6), 0f, 150, default, 1.5f);
-                }
-                for (int d = 0; d < 10; d++)
-                {
-                    Dust.NewDust(new Vector2(Projectile.Center.X - 3, Projectile.Center.Y), 0, 0, 221, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-23, 23), 150, default, 1.5f);
-                }
+            Projectile.velocity *= 0.97f;
 
 
-                // Play explosion sound
+            Projectile.ai[0]++;
 
-                // Smoke Dust spawn
-                for (int i = 0; i < 20; i++)
-                {
-                    int dustIndex = Dust.NewDust(new Vector2(Projectile.Center.X, Projectile.Center.Y), 0, 0, 31, 0f + Main.rand.Next(-6, 6), 0f + Main.rand.Next(-6, 6), 100, default, 2f);
-                    Main.dust[dustIndex].velocity *= 1.4f;
-                }
-
-                // Large Smoke Gore spawn
-
-            }
 
             if (Projectile.timeLeft < 60)
             {
-                Projectile.alpha += 20;
-                Projectile.scale += 0.005f;
+                //Projectile.alpha += 20;
+                //Projectile.scale += 0.005f;
             }
 
 
@@ -147,6 +89,27 @@ namespace StarsAbove.Projectiles.Other.OrbitalExpresswayPlush
                 Main.EntitySpriteDraw((Texture2D)TextureAssets.Projectile[Projectile.type], drawPos, null, color, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
             }
             return true;
+        }
+        public override void OnKill(int timeLeft)
+        {
+            SoundEngine.PlaySound(SoundID.Item6, Projectile.Center);
+
+            float dustAmount = 12f;
+            float randomConstant = MathHelper.ToRadians(Main.rand.Next(0, 360));
+            for (int i = 0; i < dustAmount; i++)
+            {
+                Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(15f, 1f);
+                spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation() + randomConstant);
+                int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.GemTopaz);
+                Main.dust[dust].scale = 1.5f;
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].position = Projectile.Center + spinningpoint5;
+                Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 3f;
+            }
+            ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Excalibur,
+              new ParticleOrchestraSettings { PositionInWorld =Projectile.Center },
+              Projectile.owner);
         }
     }
 }

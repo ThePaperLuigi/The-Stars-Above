@@ -652,6 +652,10 @@ namespace StarsAbove.Systems
         #endregion
 
         #region Weapon Sound Effects
+        public static readonly SoundStyle SFX_OrbitalTrain = new($"{nameof(StarsAbove)}/Sounds/SFX/Train")
+        {
+
+        };
         public static readonly SoundStyle SFX_GundamLaser = new($"{nameof(StarsAbove)}/Sounds/SFX/GundamLaser")
         {
 

@@ -1,10 +1,14 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs.Farewells;
+using StarsAbove.Buffs.OrbitalExpresswayPlush;
 using StarsAbove.Items.Essences;
 using StarsAbove.Items.Materials;
+using StarsAbove.Projectiles.Magic.CarianDarkMoon;
+using StarsAbove.Projectiles.Other.OrbitalExpresswayPlush;
 using StarsAbove.Projectiles.Summon.KeyOfTheKingsLaw;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
+using Steamworks;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -33,7 +37,7 @@ namespace StarsAbove.Items.Weapons.Other
 		public override void SetDefaults()
 		{
 			Item.damage = 440;           //Not a weapon.
-
+			Item.DamageType = DamageClass.Melee;
 			Item.width = 40;            //Weapon's texture's width
 			Item.height = 40;           //Weapon's texture's height
 			Item.useTime = 60;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
@@ -58,9 +62,15 @@ namespace StarsAbove.Items.Weapons.Other
 
             base.UpdateInventory(player);
         }
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+			damage.Flat += (int)(player.GetModPlayer<StarsAbovePlayer>().novaDamage * 0.05f);
+
+            base.ModifyWeaponDamage(player, ref damage);
+        }
         public override bool CanUseItem(Player player)
 		{
-			if (player.HasBuff(BuffType<FarewellCooldown>()))
+			if (player.HasBuff(BuffType<OrbitalExpresswayPlushCooldown>()))
 			{
 				return false;
 			}
@@ -78,12 +88,17 @@ namespace StarsAbove.Items.Weapons.Other
 
         public override bool? UseItem(Player player)
         {
-			//player.AddBuff(BuffType<OffSeersPurpose>(), 7200);
-			//player.AddBuff(BuffType<FarewellCooldown>(), 28800);
+            //player.AddBuff(BuffType<OffSeersPurpose>(), 7200);
+            //player.AddBuff(BuffType<FarewellCooldown>(), 28800);
 
-			//Toss the plush into the air, and it disappears in a sparkle. Mark your cursor location with a pulsing orb and draw a line from the sky projectile (where the train will come from) to that location
-
-			return base.UseItem(player);
+            //Toss the plush into the air, and it disappears in a sparkle. Mark your cursor location with a pulsing orb and draw a line from the sky projectile (where the train will come from) to that location
+            if (Main.netMode != NetmodeID.MultiplayerClient)
+            {
+                Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, 0, -5, ProjectileType<ExpresswayPlushActive>(), 0, 0, player.whoAmI, 0f);//Spawn the sword.
+                Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), Main.MouseWorld.X, Main.MouseWorld.Y, 0, 0, ProjectileType<ExpresswayTarget>(), player.GetWeaponDamage(Item), 0, player.whoAmI, 0f);
+				player.AddBuff(BuffType<OrbitalExpresswayPlushCooldown>(), 60 * 60);
+            }
+            return base.UseItem(player);
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -92,14 +107,15 @@ namespace StarsAbove.Items.Weapons.Other
 		}
 		public override void AddRecipes()
 		{
-			/*
+
 			CreateRecipe(1)
-				.AddIngredient(ItemID.Wood, 8)
-				.AddIngredient(ItemID.Gravestone)
-				.AddIngredient(ItemType<EssenceOfOffseeing>())
+				.AddIngredient(ItemID.ChocolateChipCookie, 1)
+				.AddIngredient(ItemID.Diamond, 2)
+				.AddIngredient(ItemID.Minecart)
+				//.AddIngredient(ItemType<EssenceOfOffseeing>())TODO
 				.AddTile(TileID.Anvils)
 				.Register();
-			*/
+			
 
 		}
 	}
