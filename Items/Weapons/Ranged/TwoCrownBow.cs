@@ -125,9 +125,10 @@ namespace StarsAbove.Items.Weapons.Ranged
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-            if (player.altFunctionUse == 2)
+            if (player.altFunctionUse == 2 && !player.HasBuff(BuffType<TwoCrownBowDepravityCooldown>()))
             {
 
+                player.AddBuff(BuffType<TwoCrownBowDepravityCooldown>(), 20 * 60);
                 SoundEngine.PlaySound(SoundID.Item43, player.Center);
                 player.AddBuff(BuffType<TwoCrownBowDepravity>(), 180);
 				player.AddBuff(BuffID.Swiftness, 180);
