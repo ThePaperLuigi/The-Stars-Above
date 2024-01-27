@@ -62,7 +62,7 @@ namespace StarsAbove.Items.Weapons.Ranged
                 && !player.HasBuff(BuffType<StellarTerminationPreBuff>())
                 && player.whoAmI == Main.myPlayer            
                 && StarsAbove.weaponActionKey.JustPressed
-                && player.GetModPlayer<WeaponPlayer>().terminationGauge >= 1)
+                && player.GetModPlayer<WeaponPlayer>().terminationGauge >= 100)
             {
                 SoundEngine.PlaySound(StarsAboveAudio.SFX_RDMCharge, player.Center);
                 Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<TwoCrownBowLaserPreVFX>(), 0, 4, player.whoAmI, 0f);

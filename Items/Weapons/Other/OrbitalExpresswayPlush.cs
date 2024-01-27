@@ -64,7 +64,7 @@ namespace StarsAbove.Items.Weapons.Other
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
-			damage.Flat += (int)(player.GetModPlayer<StarsAbovePlayer>().novaDamage * 0.05f);
+			damage.Flat += (int)(player.GetModPlayer<StarsAbovePlayer>().novaDamage * 0.1f);
 
             base.ModifyWeaponDamage(player, ref damage);
         }

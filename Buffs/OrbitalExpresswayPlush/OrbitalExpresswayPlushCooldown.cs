@@ -16,7 +16,7 @@ namespace StarsAbove.Buffs.OrbitalExpresswayPlush
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.GetDamage(DamageClass.Generic) -= 0.5f;
+            player.GetDamage(DamageClass.Generic) -= 0.05f;
             player.statDefense *= 0.95f; 
         }
     }

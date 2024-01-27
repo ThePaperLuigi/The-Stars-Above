@@ -745,7 +745,7 @@ namespace StarsAbove.Systems
                 if (Player.position.X <= npc.Center.X - halfWidth)//Left wall
                 {
                     newPosition.X = npc.Center.X - halfWidth - Player.width - 1;
-                    Player.velocity = new Vector2(20, Player.velocity.Y);
+                    Player.velocity = new Vector2(4, Player.velocity.Y);
                     // if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("1"), 190, 100, 247);}
                     while (Collision.SolidCollision(newPosition, Player.width, Player.height))
                     {
@@ -756,7 +756,7 @@ namespace StarsAbove.Systems
                 else if (Player.position.X + Player.width >= npc.Center.X + halfWidth)//Right Wall
                 {
                     newPosition.X = npc.Center.X + halfWidth + 1;
-                    Player.velocity = new Vector2(-20, Player.velocity.Y);
+                    Player.velocity = new Vector2(-4, Player.velocity.Y);
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("2"), 190, 100, 247);}
                     while (Collision.SolidCollision(newPosition, Player.width, Player.height))
                     {
@@ -767,7 +767,7 @@ namespace StarsAbove.Systems
                 else if (Player.position.Y <= npc.Center.Y - halfHeight)//Top
                 {
                     newPosition.Y = npc.Center.Y - halfHeight - Player.height - 1;
-                    Player.velocity = new Vector2(Player.velocity.X, 20);
+                    Player.velocity = new Vector2(Player.velocity.X, 4);
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("3"), 190, 100, 247);}
                     while (Collision.SolidCollision(newPosition, Player.width, Player.height))
                     {
@@ -778,7 +778,7 @@ namespace StarsAbove.Systems
                 else if (Player.position.Y + Player.height >= npc.Center.Y + halfHeight)//Bottom
                 {
                     newPosition.Y = npc.Center.Y + halfHeight + 1;
-                    Player.velocity = new Vector2(Player.velocity.X, -20);
+                    Player.velocity = new Vector2(Player.velocity.X, -4);
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("4"), 190, 100, 247);}
                     while (Collision.SolidCollision(newPosition, Player.width, Player.height))
                     {

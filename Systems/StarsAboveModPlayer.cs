@@ -3455,7 +3455,7 @@ namespace StarsAbove.Systems
             {
                 lavenderRefrainMaxManaReduction = Math.Clamp(lavenderRefrainMaxManaReduction, 0f, 1f);
                 Player.statManaMax2 = (int)(Player.statManaMax2 * lavenderRefrainMaxManaReduction);
-                if (inCombat <= 0)
+                if (timeAfterGettingHit > 1200)
                 {
                     lavenderRefrainMaxManaReduction = 1f;
                 }

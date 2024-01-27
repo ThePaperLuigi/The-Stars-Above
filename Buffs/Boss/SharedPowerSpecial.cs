@@ -17,7 +17,7 @@ namespace StarsAbove.Buffs.Boss
         public override void Update(Player player, ref int buffIndex)
         {
             player.GetDamage(DamageClass.Generic) -= 0.9f;
-            player.statLifeMax2 = 100;
+            player.statLifeMax2 -= 100;
           
         }
 

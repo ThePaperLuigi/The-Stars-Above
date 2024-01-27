@@ -180,8 +180,9 @@ namespace StarsAbove.Systems.Items
                 player.AddBuff(BuffType<ChoiceGlassesLock>(), 60 * 60);
                 HeldWeaponTypeChoice = item.type;
             }
-            if(PowerMoon && player.altFunctionUse == 2)
+            if(PowerMoon && player.altFunctionUse == 2  && !player.HasBuff(BuffType<PowerMoonCooldown>()))
             {
+                player.AddBuff(BuffType<PowerMoonCooldown>(), 60 * 4);
                 player.GetModPlayer<StarsAbovePlayer>().novaGauge += 4;
             }
             if (RuinedCrown && player.altFunctionUse == 2 && !player.HasBuff(BuffType<RuinedCrownCooldown>()))

@@ -17,6 +17,7 @@ using StarsAbove.Buffs.ManiacalJustice;
 using StarsAbove.Buffs.Nanomachina;
 using StarsAbove.Buffs.Ozma;
 using StarsAbove.Buffs.RedMage;
+using StarsAbove.Buffs.StarphoenixFunnel;
 using StarsAbove.Buffs.SupremeAuthority;
 using StarsAbove.Buffs.TagDamage;
 using StarsAbove.Buffs.TheOnlyThingIKnowForReal;
@@ -74,6 +75,7 @@ using StarsAbove.Projectiles.Summon.KeyOfTheSinner;
 using StarsAbove.Projectiles.Summon.KroniicPrincipality;
 using StarsAbove.Projectiles.Summon.PhantomInTheMirror;
 using StarsAbove.Projectiles.Summon.Starchild;
+using StarsAbove.Projectiles.Summon.StarphoenixFunnel;
 using StarsAbove.Projectiles.Summon.Takodachi;
 using StarsAbove.Utilities;
 using SubworldLibrary;
@@ -246,6 +248,9 @@ namespace StarsAbove.Systems
         public bool rebellionState3;
         public float rebellionGaugeMaxBuff;//After reaching max Rebellion, this empowers the next Clarent Blood Arthur cast.
         public Vector2 rebellionTarget;
+
+        //Starphoenix Funnel
+        public int alignmentStacks;
 
         //Hawkmoon Code
         public bool hawkmoonPerfectReload = false;
@@ -809,6 +814,13 @@ namespace StarsAbove.Systems
 
                 Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center.X, target.Center.Y, 0, 0, ProjectileType<EuthymiaFollowUp>(), Math.Min(damageDone / 5, 500), 0, Player.whoAmI, 0f);
                 euthymiaCooldown = 120 - eternityGauge / 10;
+
+            }
+            if (proj.type == ProjectileType<CatalystKey>() && Player.HasBuff(BuffType<AlignmentBuff>()))
+            {
+                //SoundEngine.PlaySound(StarsAboveAudio.SFX_electroSmack, Player.Center);
+
+                Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center.X, target.Center.Y, 0, 0, ProjectileType<StarphoenixFollowUp>(), Math.Min(damageDone / 5, 500), 0, Player.whoAmI, 0f);
 
             }
             if (proj.type == ProjectileType<WhisperRound>())

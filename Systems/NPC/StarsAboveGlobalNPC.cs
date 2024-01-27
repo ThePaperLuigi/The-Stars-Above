@@ -24,6 +24,9 @@ using StarsAbove.Buffs.Boss;
 using StarsAbove.NPCs.Vagrant;
 using Microsoft.CodeAnalysis;
 using StarsAbove.Items.Memories;
+using StarsAbove.Projectiles.Summon.StarphoenixFunnel;
+using Terraria.GameContent.Drawing;
+using Terraria.Audio;
 
 namespace StarsAbove.Systems
 {
@@ -49,6 +52,7 @@ namespace StarsAbove.Systems
         public int NanitePlagueLevel = 0;
         public int JudgementStacks = 0;
         public int spectralNailStacks = 0;
+        public int elementalSurgeStacks = 0;
 
         int dustTimer = 0;
 
@@ -629,7 +633,7 @@ namespace StarsAbove.Systems
                     if (Main.rand.NextBool(6))
                     {
                         Main.dust[dust].noGravity = false;
-                        Main.dust[dust].scale = 2f;
+                        Main.dust[dust].scale = 1f;
                     }
 
 
@@ -642,7 +646,7 @@ namespace StarsAbove.Systems
                 if (Main.rand.NextBool(4))
                 {
                     Main.dust[dust2].noGravity = false;
-                    Main.dust[dust2].scale = 1f;
+                    Main.dust[dust2].scale = 0.5f;
                 }
 
             }
@@ -793,13 +797,77 @@ namespace StarsAbove.Systems
         }
         public override void OnHitByProjectile(NPC npc, Projectile projectile, NPC.HitInfo hit, int damageDone)
         {
+            if(projectile.type == ModContent.ProjectileType<StarphoenixRound>())
+            {
+                elementalSurgeStacks++;
+                if (elementalSurgeStacks > 6)
+                {
+                    SoundEngine.PlaySound(SoundID.Item27, npc.Center);
+                    elementalSurgeStacks = 0;
+                    npc.SimpleStrikeNPC((int)(damageDone*1.5), 0, false, 0, DamageClass.Default, false, 0);
+                    Main.player[projectile.owner].GetModPlayer<WeaponPlayer>().alignmentStacks++;
+                    ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Keybrand,
+            new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(npc.Hitbox) },
+            projectile.owner);
+                    if (Main.player[projectile.owner].GetModPlayer<WeaponPlayer>().alignmentStacks > 5)
+                    {
+                        Main.player[projectile.owner].GetModPlayer<WeaponPlayer>().alignmentStacks = 5;
+                    }
+                }
+
+            }
+            if (projectile.type == ModContent.ProjectileType<CatalystKey>())
+            {
+                elementalSurgeStacks++;
+                if (elementalSurgeStacks > 6)
+                {
+                    SoundEngine.PlaySound(SoundID.Item27, npc.Center);
+                    elementalSurgeStacks = 0;
+                    npc.SimpleStrikeNPC((int)(damageDone * 1.5), 0, false, 0, DamageClass.Default, false, 0);
+                    ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Keybrand,
+            new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(npc.Hitbox) },
+            projectile.owner);
+                    if (Main.player[projectile.owner].GetModPlayer<WeaponPlayer>().alignmentStacks > 5)
+                    {
+                        Main.player[projectile.owner].GetModPlayer<WeaponPlayer>().alignmentStacks = 5;
+                    }
+                }
+
+            }
+            if (projectile.type == ModContent.ProjectileType<StarphoenixMinionBullet>())
+            {
+                elementalSurgeStacks++;
+                if (elementalSurgeStacks > 6)
+                {
+                    SoundEngine.PlaySound(SoundID.Item27, npc.Center);
+                    elementalSurgeStacks = 0;
+                    npc.SimpleStrikeNPC((int)(damageDone*1.5), 0, false, 0, DamageClass.Default, false, 0);
+                    Main.player[projectile.owner].GetModPlayer<WeaponPlayer>().alignmentStacks++;
+                    ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Keybrand,
+            new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(npc.Hitbox) },
+            projectile.owner);
+                    if (Main.player[projectile.owner].GetModPlayer<WeaponPlayer>().alignmentStacks > 5)
+                    {
+                        Main.player[projectile.owner].GetModPlayer<WeaponPlayer>().alignmentStacks = 5;
+                    }
+                }
+
+            }
             if (Main.player[projectile.owner].GetModPlayer<StarsAbovePlayer>().spectralNail == 2)
             {
                 spectralNailStacks++;
-                if(spectralNailStacks >= 5)
+                if (spectralNailStacks >= 5)
                 {
                     Rectangle textPos = new Rectangle((int)npc.position.X, (int)npc.position.Y - 20, npc.width, npc.height);
                     CombatText.NewText(textPos, new Color(255, 62, 247, 240), $"{(int)(damageDone * 0.2)}", false, false);
+                    if (npc.life <= npc.life - (int)(damageDone * 0.2))
+                    {
+                        npc.life = 1;
+                        npc.SimpleStrikeNPC((int)(damageDone * 0.2), 0, false, 0, DamageClass.Default, false, 0);
+                        spectralNailStacks = 0;
+                        return;
+                    }
+
                     npc.life -= (int)(damageDone * 0.2);
                     spectralNailStacks = 0;
                 }

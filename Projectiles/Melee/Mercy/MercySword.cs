@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs.CatalystMemory;
+using StarsAbove.Buffs.HunterSymphony;
 using StarsAbove.Buffs.Mercy;
 using StarsAbove.Projectiles.Generics;
 using System;
@@ -75,7 +76,7 @@ namespace StarsAbove.Projectiles.Melee.Mercy
             {
                 if(Main.player[Projectile.owner].HasBuff(BuffType<EdgeOfAnguishCooldown>()))
                 {
-                    Main.player[Projectile.owner].ClearBuff(BuffType<EdgeOfAnguishCooldown>());
+                    Main.player[Projectile.owner].buffTime[Main.player[Projectile.owner].FindBuffIndex(BuffType<EdgeOfAnguishCooldown>())] -= 60;
                 }
             }
         }

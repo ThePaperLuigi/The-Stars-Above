@@ -456,7 +456,7 @@ Mods: {
 
 				LavenderRefrain: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Lavender Refrain']"
-					Description: When taking damage, Mana is treated as bonus health. When this effect triggers, Max Mana is reduced by 10%. This additively stacks until Max Mana is reduced by 100%. Resets outside of combat.
+					Description: When taking damage, Mana is treated as bonus health. When this effect triggers, Max Mana is reduced by 10%. This stacks until Max Mana is reduced by 100%. Resets after not taking damage for 20 seconds.
 				}
 
 				HealthyConfidence: {
@@ -3792,7 +3792,7 @@ Mods: {
 				Tooltip:
 					'''
 					[c/2DD2FE:Stargazer Relic]
-					Max HP is reduced by 300 and defense is reduced by 20, but damage is increased by 100%
+					Max HP is reduced by 300 and defense is reduced by 20, but damage is increased by 50%
 					Only active when unmodified Max HP is 400 or higher
 					[c/ADEEFF:Only one Stargazer Relic can be equipped at a time]
 					'From a world cursed to fade away'
@@ -3854,7 +3854,7 @@ Mods: {
 				Tooltip:
 					'''
 					Activates only when Defense is below 40
-					Gain 10% damage, increased to 45% below 10 Defense
+					Gain 5% damage, increased to 15% below 10 Defense
 					Enemies are drastically more likely to target you
 					'Can you get away with it?'
 					'''
@@ -6115,7 +6115,7 @@ Mods: {
 					Gain Invincibility for the duration of the dash and striking foes deals 3x base damage		
 					Upon contact, inflict [c/FF3200:Infernal Hemorrhage] for 3 seconds, dealing powerful damage over time
 					Additionally, deal 10% of the foe's missing HP as bonus true damage (Up to 2000)
-					Critical strikes with this weapon's basic attacks instantly cleanse the cooldown of [c/DC3961:Edge of Anguish]
+					Critical strikes with this weapon's basic attacks reduce the cooldown of [c/DC3961:Edge of Anguish] by 1 second
 					Allies striking foes under the influence of [c/FF3200:Infernal Hemorrhage] with projectiles grants Rage for 8 seconds
 					Additionally, these attacks deal 2% of the foe's missing HP as bonus true damage (Up to 250)
 					'From the depths of Noxian streets'
@@ -8966,9 +8966,9 @@ Mods: {
 					'''
 					[c/D294FF:Weapon Memory]
 					When Imprinted into a weapon, gain the following effects:
-					If this weapon has a right-click ability, it now charges Stellar Nova Energy by 4 when used
+					If this weapon has a right-click ability, it now charges Stellar Nova Energy by 4 when used (4 second cooldown)
 					'''
-				TooltipAttached: If this weapon has a right-click ability, it now charges Stellar Nova Energy by 4 when used
+				TooltipAttached: If this weapon has a right-click ability, it now charges Stellar Nova Energy by 4 when used (4 second cooldown)
 			}
 
 			Rageblade: {
@@ -9413,7 +9413,7 @@ Mods: {
 					After 3 seconds, an orbital train will annihilate your marked location, dealing guaranteed critical damage to all foes caught in the crossfire
 					This attack ignores terrain and destroys projectiles it makes contact with
 					The first foe struck by this attack will additionally take 50% increased damage
-					Inherits 5% of the Stellar Nova's scaled base damage
+					Inherits 10% of the Stellar Nova's scaled base damage
 					'Cookie powered'
 					'''
 			}
@@ -9436,10 +9436,11 @@ Mods: {
 					Each [Sweetened Monster] utilizes different attacks
 					[Charsugar]: Attacks with close-ranged fire bursts, with a 20% chance of inflicting On Fire for 12 seconds on hit
 					If this attack strikes a Wet or Poisoned enemy, deal 20% bonus damage
-					[Sugartle]: Attacks with slow long range water bursts, with a 20% chance of inflicting Wet for 12 seconds on hit
+					[Sugartle]: Attacks with slow, long-ranged water bursts, with a 20% chance of inflicting Wet for 12 seconds on hit
 					If this attack strikes a On Fire or Poisoned enemy, stun the foe for 2 seconds
 					[Bulbasugar]: Attacks with rapid poisonous seeds, with a 20% chance of inflicting Poison for 12 seconds on hit
 					If this attack strikes a On Fire or Wet enemy, inflict Venom for 12 seconds
+					Press the Weapon Action Key to incite all [Sweetened Monsters] to attack your cursor while inflicting all debuffs for 6 seconds (40 second cooldown)
 					'''
 			}
 
@@ -9449,17 +9450,18 @@ Mods: {
 					'''
 					2 summon tag damage
 					Summon tag damage scales with world progression
-					Attacks with this weapon fire incredibly fast and inflict Starblight for 4 seconds
-					Right click to summon [Catalyst Keys] to assail foes with long-range energy bolts, ignoring 25% of foe's defense
-					Attacks with this weapon inflict stacks of [Elemental Surge] on hit, dealing damage over time
-					[Catalyst Keys] have a 50% chance to inflict [Elemental Surge] when attacking foes
-					At 8 stacks of [Elemental Surge] the next application will instead clease all stacks, causing the foe to explode and take 3x damage
-					Every time [Elemental Surge] is removed in this manner, gain [Alignment]
-					Once [Alignment] is at maximum, press the Weapon Action Key to transform the [Catalyst Keys] for 8 seconds
-					Transformed [Catalyst Keys] strike foes with close-ranged slashes, dealing bonus damage based on the foe's defense
-					Once this transformation state ends, become inflicted with [Catalyst Realignment] for 10 seconds, lowering attack speed and damage of [Catalyst Keys]					
+					Attacks with this weapon travel incredibly fast and inflict Starblight for 4 seconds
+					Additionally, attacks inflict a stack of [Elemental Surge] on hit
+					Holding this weapon summons 3 [Catalyst Keys] to assail foes with long-range energy bolts, ignoring 25% of foe's defense
+					[Catalyst Keys] inflict [Elemental Surge] when attacking foes
+					At 6 stacks of [Elemental Surge] the next application will instead burst all stacks, dealing bonus damage
+					Every time [Elemental Surge] is removed in this manner, gain [Alignment] (Up to 5)
+					Once [Alignment] is at maximum, press the Weapon Action Key to transform the [Catalyst Keys] for 4 seconds
+					Transformed [Catalyst Keys] rapidly strike foes with close-ranged slashes, dealing bonus damage based on the foe's defense
+					Transformed [Catalyst Keys] inflict [Elemental Surge], but do not grant [Alignment]
 					'''
 			}
+
 			LegendaryShield: {
 				DisplayName: Legendary Shield
 				Tooltip:
@@ -9467,40 +9469,42 @@ Mods: {
 					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty]
 					Holding this weapon grants defense proportional to Max HP and reflects all damage taken
 					Right click to ready the shield for 2 seconds, reducing the damage of the next attack by 90% (12 second cooldown)
-					Press the Weapon Action Key to manifest a shield at your cursor that lasts for 5 seconds, destroying all hostile projectiles (12 second cooldown)
-					Swapping to another weapon after activating either of these abilities grants 30% increased damage for 10 seconds
-					The current [c/F592BF:Aspected Damage Type] influences the weapon's abilities when held
-					[c/FFAB4D:Melee]: Attack with this weapon to gain brief Invincibility and dash forwards, dealing damage to all foes in the way (6 second cooldown)
-					[c/EF4DFF:Magic]: Holding this weapon grants massively increased Mana regeneration
-					[c/4DFF5B:Ranged]: Swapping to another weapon causes the next attack to deal an additional 80% damage if it is a critical strike
-					[c/00CDFF:Summon]: Increases damage of all minions by 10%; standing near minions increases their damage by an additional 30%
-					[Other]: Using right click to ready the shield instead grants 2 seconds of Invincibility, but cooldown is extended to 20 seconds
+					Press the Weapon Action Key to manifest a shield at your cursor that lasts for 5 seconds, destroying all hostile projectiles (30 second cooldown)
+					Swapping to another weapon after activating either of these abilities grants [Hero's Bulwark] for 10 seconds, increasing defense by 15%
+					The current [c/F592BF:Aspected Damage Type] influences the effects of [Hero's Bulwark]
+					[c/FFAB4D:Melee]: [Hero's Bulwark] negates the first instance of damage taken, but is then removed
+					[c/EF4DFF:Magic]: [Hero's Bulwark] grants full Mana every time you take damage
+					[c/4DFF5B:Ranged]: [Hero's Bulwark] empowers critical strikes by 40%
+					[c/00CDFF:Summon]: Standing near minions while under the effect of [Hero's Bulwark] increases their damage by 30%
+					[Other]: [Hero's Bulwark] increases defense by an additional 5%
 					'''
 			}
+
 			StringOfCurses: {
 				DisplayName: String of Curses
 				Tooltip:
-					'''					
-					Attacks with this weapon fire powerful bullets, inflicting [Necrosis] for 4 seconds on critical strikes
-					After 27 shots, this weapon takes 2 seconds to reload
+					'''
+					Attacks with this weapon inflict [Necrosis] for 4 seconds on critical strikes
 					Foes inflicted with [Necrosis] have their attack and defense reduced by 15%
+					After 27 shots, this weapon takes 2 seconds to reload (Right click to reload early)					
 					Defeating foes with this weapon charges the Stellar Nova by 2%, refills shots, and grants [Cursewrought] for 7 seconds
 					[Cursewrought] increases damage dealt against foes with [Necrosis] by 20% and allows for bullets to pierce 2 more foes
-					Defeating foes while under the effect of [Cursewrought] heals 10 HP and charges the Stellar Nova by an additional 2 energy
+					Defeating foes while under the effect of [Cursewrought] refreshes the buff, heals 10 HP, and charges the Stellar Nova by an additional 2 energy
 					'''
 			}
+
 			CloakOfAnArbiter: {
 				DisplayName: Cloak of An Arbiter
 				Tooltip:
 					'''
 					12 summon tag damage
-					Holding this weapon grants [Embodied Singularity], drastically increasing Mana regeneration
+					Holding this weapon grants [Embodied Singularity], increasing critical strike damage by 30%
 					Attacks with this weapon inflict [Fairy] for 3 seconds
-					[Fairy] deals damage over time and causes summon tag damage to benefit all weapons
+					[Fairy] allows summon tag damage to benefit all weapons at a flat rate
 					Pressing right click activates an ability, cycling between [Degraded Lock], [Degraded Chain], and [Degraded Pillar] (6 second cooldown)
-					[Degraded Lock]: Damage and stun the foe at your cursor for 2 seconds;
-					[Degraded Chain]: Deal damage to all nearby foes, and inflict [Fairy] for 6 seconds
-					[Degraded Pillar]: Fire a powerful, fast projectile at your cursor that deals guaranteed critical damage
+					[Degraded Lock]: Damage and stun the foe at your cursor for 2 seconds
+					[Degraded Chain]: Deal damage to all nearby foes while inflicting [Fairy] for 6 seconds
+					[Degraded Pillar]: Fire a fast piercing pillar towards your cursor that deals guaranteed critical damage
 					Press the Weapon Action Key to activate [Degraded Shockwave] (90 second cooldown)
 					[Degraded Shockwave] deals 4x damage to all nearby foes, destroys all nearby hostile projectiles, and grants Ironskin to nearby allies for 8 seconds
 					'Now, sink into everlasting quietude'
@@ -10474,6 +10478,11 @@ Mods: {
 			ExpresswayProjectile.DisplayName: Expressway Projectile
 			ExpresswayTarget.DisplayName: Expressway Target
 			ExpresswayVFX.DisplayName: Expressway V F X
+			StarphoenixGun.DisplayName: Starphoenix Gun
+			StarphoenixRound.DisplayName: Starphoenix Round
+			CatalystKey.DisplayName: Catalyst Key
+			StarphoenixMinionBullet.DisplayName: Starphoenix Minion Bullet
+			StarphoenixFollowUp.DisplayName: Starphoenix Follow Up
 		}
 
 		Buffs: {
@@ -13027,47 +13036,92 @@ Mods: {
 
 			RebellionLaserCooldown: {
 				DisplayName: Rebellion Laser Cooldown
-				Description: Mods.StarsAbove.Buffs.RebellionLaserCooldown.Description
+				Description: ""
 			}
 
 			TwoCrownBowFiring: {
 				DisplayName: Two Crown Bow Firing
-				Description: Mods.StarsAbove.Buffs.TwoCrownBowFiring.Description
+				Description: ""
 			}
 
 			TwoCrownBowDepravity: {
 				DisplayName: Two Crown Bow Depravity
-				Description: Mods.StarsAbove.Buffs.TwoCrownBowDepravity.Description
+				Description: ""
 			}
 
 			StellarTerminationBuff: {
-				DisplayName: Stellar Termination Buff
-				Description: Mods.StarsAbove.Buffs.StellarTerminationBuff.Description
+				DisplayName: Stellar Termination
+				Description: ""
 			}
 
 			StellarTerminationPreBuff: {
-				DisplayName: Stellar Termination Pre Buff
-				Description: Mods.StarsAbove.Buffs.StellarTerminationPreBuff.Description
+				DisplayName: Stellar Termination
+				Description: ""
 			}
 
 			TwoCrownBowDepravityCooldown: {
 				DisplayName: Two Crown Bow Depravity Cooldown
-				Description: Mods.StarsAbove.Buffs.TwoCrownBowDepravityCooldown.Description
+				Description: ""
 			}
 
 			EchoStringRites: {
 				DisplayName: Echo String Rites
-				Description: Mods.StarsAbove.Buffs.EchoStringRites.Description
+				Description: ""
 			}
 
 			Merculight: {
 				DisplayName: Merculight
-				Description: Mods.StarsAbove.Buffs.Merculight.Description
+				Description: ""
 			}
 
 			OrbitalExpresswayPlushCooldown: {
 				DisplayName: Orbital Expressway Plush Cooldown
-				Description: Mods.StarsAbove.Buffs.OrbitalExpresswayPlushCooldown.Description
+				Description: ""
+			}
+
+			AlignmentBuff: {
+				DisplayName: Alignment Active
+				Description: Catalyst Keys are surging with power
+			}
+
+			AlignmentStack1: {
+				DisplayName: Alignment
+				Description: ""
+			}
+
+			AlignmentStack2: {
+				DisplayName: Alignment
+				Description: ""
+			}
+
+			AlignmentStack3: {
+				DisplayName: Alignment
+				Description: ""
+			}
+
+			AlignmentStack4: {
+				DisplayName: Alignment
+				Description: ""
+			}
+
+			AlignmentStack5: {
+				DisplayName: Alignment
+				Description: ""
+			}
+
+			ElementalSurge: {
+				DisplayName: Elemental Surge
+				Description: ""
+			}
+
+			CatalystKeyBuff: {
+				DisplayName: Catalyst Keys
+				Description: Catalyst keys are assailing foes
+			}
+
+			PowerMoonCooldown: {
+				DisplayName: Power Moon Cooldown
+				Description: Mods.StarsAbove.Buffs.PowerMoonCooldown.Description
 			}
 		}
 

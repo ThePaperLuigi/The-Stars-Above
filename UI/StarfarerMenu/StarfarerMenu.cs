@@ -991,7 +991,8 @@ namespace StarsAbove.UI.StarfarerMenu
 				AdjustAreaBasedOnPlayerVelocity(ref area, 200, 0);
 
 			}
-			Rectangle hitbox = area.GetInnerDimensions().ToRectangle();
+            Recalculate();
+            Rectangle hitbox = area.GetInnerDimensions().ToRectangle();
             Rectangle bodyHitbox = area.GetInnerDimensions().ToRectangle();
             Rectangle dialogue = barFrame.GetInnerDimensions().ToRectangle();
             Rectangle archiveSelected = archive.GetInnerDimensions().ToRectangle();

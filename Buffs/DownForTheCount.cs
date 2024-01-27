@@ -19,7 +19,7 @@ namespace StarsAbove.Buffs
             player.frozen = true;
             player.immune = true;
             player.immuneTime = 120;
-            
+            player.GetDamage(DamageClass.Generic) -= 100f;
         }
 
     }

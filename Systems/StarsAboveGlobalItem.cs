@@ -280,7 +280,6 @@ namespace StarsAbove.Systems
             ItemType<EssenceOfTheSoldier>(),
             ItemType<EssenceOfSpinning>(),
 
-            ItemType<EssenceOfHydro>(),
             ItemType<EssenceOfKingslaying>(),
             ItemType<EssenceOfFirepower>(),
             ItemType<EssenceOfTheDragon>(),

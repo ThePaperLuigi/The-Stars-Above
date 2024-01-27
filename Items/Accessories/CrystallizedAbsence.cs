@@ -34,7 +34,7 @@ namespace StarsAbove.Items.Accessories
             {
 				player.statLifeMax2 -= 300;
 				player.statDefense -= 20;
-				player.GetDamage(DamageClass.Generic) += 1f;
+				player.GetDamage(DamageClass.Generic) += 0.5f;
             }
 			//player.GetDamage(DamageClass.Generic) += 0.12f;
 			//player.respawnTimer += 600;
