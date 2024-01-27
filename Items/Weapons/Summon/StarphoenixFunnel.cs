@@ -9,6 +9,11 @@ using StarsAbove.Items.Essences;
 using Terraria.GameContent.Creative;
 using StarsAbove.Systems;
 using StarsAbove.Projectiles.Ranged.ForceOfNature;
+using StarsAbove.Projectiles.Summon.StarphoenixFunnel;
+using StarsAbove.Buffs.StarphoenixFunnel;
+using StarsAbove.Buffs.ManiacalJustice;
+using StarsAbove.Utilities;
+using Terraria.Audio;
 
 namespace StarsAbove.Items.Weapons.Summon
 {
@@ -35,8 +40,8 @@ namespace StarsAbove.Items.Weapons.Summon
 			Item.knockBack = 4;
 			Item.rare = ItemRarityID.Yellow;
 			Item.autoReuse = true;
-			Item.shoot = ProjectileType<ForceOfNatureRound>();
-			Item.shootSpeed = 20f;
+			Item.shoot = ProjectileType<StarphoenixRound>();
+			Item.shootSpeed = 80f;
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
 			Item.UseSound = SoundID.Item11;
 			Item.noUseGraphic = true;
@@ -47,43 +52,85 @@ namespace StarsAbove.Items.Weapons.Summon
 		}
 		public override void HoldItem(Player player)
 		{
+            player.AddBuff(BuffType<CatalystKeyBuff>(), 2);
+            if (player.ownedProjectileCounts[ProjectileType<CatalystKey>()] < 3)
+            {
+                Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<CatalystKey>(), player.GetWeaponDamage(Item), 0, player.whoAmI, 0f);
 
 
+            }
+            if (player.HasBuff(BuffType<AlignmentBuff>()))
+            {
+				player.GetModPlayer<WeaponPlayer>().alignmentStacks = 0;
+            }
+            switch (player.GetModPlayer<WeaponPlayer>().alignmentStacks)
+			{
+				case 0:
 
+					break;
+				case 1:
+					player.AddBuff(BuffType<AlignmentStack1>(), 2);
+					break;
+				case 2:
+                    player.AddBuff(BuffType<AlignmentStack2>(), 2);
 
-		}
+                    break;
+				case 3:
+                    player.AddBuff(BuffType<AlignmentStack3>(), 2);
+
+                    break;
+
+				case 4:
+                    player.AddBuff(BuffType<AlignmentStack4>(), 2);
+
+                    break;
+
+				case 5:
+                    player.AddBuff(BuffType<AlignmentStack5>(), 2);
+
+                    break;
+
+			}
+
+            if (player.whoAmI == Main.myPlayer && StarsAbove.weaponActionKey.JustPressed)
+            {
+                if (!player.HasBuff(BuffType<AlignmentBuff>()))
+                {
+                    if (player.GetModPlayer<WeaponPlayer>().alignmentStacks >= 5)
+                    {
+                        SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, Main.MouseWorld);
+
+                        player.GetModPlayer<WeaponPlayer>().alignmentStacks = 0;
+                        player.AddBuff(BuffType<AlignmentBuff>(), 60 * 4);
+                        for (int d = 0; d < 38; d++)
+                        {
+                            Dust.NewDust(player.Center, 0, 0, DustID.GemTopaz, 0f + Main.rand.Next(-24, 24), 0f + Main.rand.Next(-24, 24), 150, default(Color), 1.2f);
+                        }
+                        for (int d = 0; d < 32; d++)
+                        {
+                            Dust.NewDust(player.Center, 0, 0, DustID.GemAmethyst, 0f + Main.rand.Next(-17, 17), 0f + Main.rand.Next(-17, 17), 150, default(Color), 0.8f);
+                        }
+                        player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
+                    }
+                    else
+                    {
+                        
+                    }
+                }
+
+            }
+
+        }
 		public override bool CanUseItem(Player player)
 		{
 			if (player.altFunctionUse == 2)
 			{
-				if (!player.HasBuff(BuffType<BlastingChargeCooldownBuff>()))
-				{
-					player.GetModPlayer<WeaponPlayer>().forceBullets = 2;
-					return true;
-					
-				}
+				
 				return false;
 
 			}
-			if (player.GetModPlayer<WeaponPlayer>().forceBullets <= 0)
-			{
-				
-				
-					player.GetModPlayer<WeaponPlayer>().forceBullets = 2;
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.Center.X, player.Center.Y, Vector2.Zero.X, Vector2.Zero.Y, ProjectileType<ForceOfNatureReload>(), 0, 0, player.whoAmI);
-					player.AddBuff(BuffType<ForceOfNatureReloadBuff>(), 40);
-					return false;
-				
-			}
-			else
-            {
-				if(!player.HasBuff(BuffType<ForceOfNatureReloadBuff>()))
-                {
-					return true;
-				}
-				return false;
-			}
 
+			return true;
 
 			
 		}
@@ -117,71 +164,18 @@ namespace StarsAbove.Items.Weapons.Summon
 			if (player.altFunctionUse == 2)
 			{
 
-				Vector2 Lunge = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * -16f;
-				player.velocity = Lunge;
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, 0, 0, ProjectileType<ForceOfNatureGun>(), 0, knockback, player.whoAmI);
-
-				player.AddBuff(BuffType<BlastingChargeCooldownBuff>(), 360);
-				//player.GetModPlayer<WeaponPlayer>().forceBullets--;
-				for (int d = 0; d < 27; d++)
-				{
-					Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(55));
-					float scale = 3f - (Main.rand.NextFloat() * .3f);
-					perturbedSpeed = perturbedSpeed * scale;
-					int dustIndex = Dust.NewDust(position, 0, 0, 127, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 3f);
-					Main.dust[dustIndex].noGravity = true;
-
-				}
-
+				
 				return false;
 
 
-			}
-			if (player.GetModPlayer<WeaponPlayer>().forceBullets > 0)
-            {
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, 0, 0, ProjectileType<ForceOfNatureGun>(), 0, knockback, player.whoAmI);
-
-
-				int numberProjectiles = 12 + Main.rand.Next(2); //random shots
-					for (int i = 0; i < numberProjectiles; i++)
-					{
-						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(45)); // 30 degree spread.
-																														// If you want to randomize the speed to stagger the projectiles
-						float scale = 1f - (Main.rand.NextFloat() * .3f);
-						perturbedSpeed = perturbedSpeed * scale;
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockback, player.whoAmI);
-					}
-					Vector2 Lunge = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * -8f;
-					player.velocity = Lunge;
-					player.GetModPlayer<WeaponPlayer>().forceBullets--;
-
-
-					for (int d = 0; d < 21; d++)
-					{
-						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(47));
-						float scale = 2f - (Main.rand.NextFloat() * .9f);
-						perturbedSpeed = perturbedSpeed * scale;
-						int dustIndex = Dust.NewDust(position, 0, 0, 127, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 2f);
-						Main.dust[dustIndex].noGravity = true;
-						
-					}
-					for (int d = 0; d < 16; d++)
-					{
-						Vector2 perturbedSpeed = new Vector2(velocity.X / 2, velocity.Y / 2).RotatedByRandom(MathHelper.ToRadians(47));
-						float scale = 2f - (Main.rand.NextFloat() * .9f);
-						perturbedSpeed = perturbedSpeed * scale;
-						int dustIndex = Dust.NewDust(position, 0, 0, 31, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 1f);
-						Main.dust[dustIndex].noGravity = true;
-					}
-
-
-				
 			}
 			else
             {
-				
-				
-				return false;
+                Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, 0, 0, ProjectileType<StarphoenixGun>(), 0, knockback, player.whoAmI);
+                Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, velocity.X, velocity.Y, ProjectileType<StarphoenixRound>(), damage, knockback, player.whoAmI);
+
+                
+                return false;
                 
 			}
 			
