@@ -75,8 +75,8 @@ namespace StarsAbove.Items.Weapons.Magic
 			{
 				if (player.statMana >= 100)
                 {
-
-					player.statMana -= 100;
+                    player.AddBuff(BuffType<MoonlitGreatblade>(), 1180);//The buff lasts as long as the sword transformation animation. Once it's done, grant the buff "Moonlight Greatsword"
+                    player.statMana -= 100;
 					player.manaRegenDelay = 600;
 					if(Main.netMode != NetmodeID.MultiplayerClient)
 					{

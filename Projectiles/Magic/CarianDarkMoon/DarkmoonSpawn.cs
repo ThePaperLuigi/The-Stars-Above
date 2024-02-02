@@ -93,7 +93,7 @@ namespace StarsAbove.Projectiles.Magic.CarianDarkMoon
             if (Projectile.timeLeft == 60)
             {
                 //Change the projectile to empowered version, add particle effects, etc.
-                projOwner.AddBuff(BuffType<MoonlitGreatblade>(), 1080);//The buff lasts as long as the sword transformation animation. Once it's done, grant the buff "Moonlight Greatsword"
+               
 
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, -0.01f, ProjectileType<DarkmoonSpawnEmpowered>(), 0, 0, projOwner.whoAmI, 0f);//Spawn the sword.
 
