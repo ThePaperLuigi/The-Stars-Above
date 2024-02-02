@@ -51,7 +51,7 @@ namespace StarsAbove.Systems
             {
                 pool.Clear();
                 pool.Add(NPCType<NPCs.PrismLoot>(), 0.05f);
-                pool.Add(NPCType<NPCs.OffworldNPCs.AsteroidWormHead>(), 1f);
+                pool.Add(NPCType<NPCs.OffworldNPCs.AsteroidWormHead>(), 0.1f);
                 pool.Add(NPCID.BlackSlime, 1f);
                 pool.Add(NPCType<NPCs.OffworldNPCs.AstralCell>(), 1f);
                 if (!NPC.AnyNPCs(NPCType<NPCs.TownNPCs.Yojimbo>()))
