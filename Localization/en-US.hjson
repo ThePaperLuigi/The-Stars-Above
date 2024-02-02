@@ -377,7 +377,7 @@ Mods: {
 
 				MysticForging: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Mystic Forging']"
-					Description: Critical strike chance is converted into on-hit damage at a 1%:0.5% ratio (Caps at 100%); Critical strikes are disabled unless triggered by a bonus effect. Gain up to 15% increased attack speed based on critical strike chance.
+					Description: Critical strike chance is converted into on-hit damage at a 1%:0.5% ratio (Caps at 60%); Critical strikes are disabled unless triggered by a bonus effect. Gain up to 15% increased attack speed based on critical strike chance.
 					Unlock: "[c/9D9D9D:Locked:] Defeat Penthesilea, the Witch of Ink"
 				}
 
@@ -401,7 +401,7 @@ Mods: {
 
 				SpectralNail: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Spectral Nail']"
-					Description: Every 5 strikes against a foe deals 30% bonus true damage.
+					Description: Every 5 strikes against a foe deals 30% bonus damage.
 				}
 
 				Armsthrift: {
@@ -456,7 +456,7 @@ Mods: {
 
 				LavenderRefrain: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Lavender Refrain']"
-					Description: When taking damage, Mana is treated as bonus health. When this effect triggers, Max Mana is reduced by 10%. This stacks until Max Mana is reduced by 100%. Resets after not taking damage for 20 seconds.
+					Description: When taking damage, Mana is treated as bonus health. When this effect triggers, Max Mana is reduced by 10% until Max Mana is reduced by 100%. Max Mana slowly recovers after not taking damage for 10 seconds.
 				}
 
 				HealthyConfidence: {
@@ -3414,142 +3414,7 @@ Mods: {
 			}
 		}
 
-		Config: {
-			StellarNovaHeader: "[c/EE9DE0:Stellar Nova Settings]"
-			PopUpDialogueHeader: "[c/C076DF:Pop-up Dialogue Settings]"
-			DialogueHeader: "[c/75C792:Disk Dialogue Settings]"
-			MiscHeader: "[c/7A76FF:Miscellaneous Settings]"
-
-			DisableStellarNovaCutIns: {
-				Label: Disable Stellar Nova cut-ins
-				Tooltip: Disables the portrait of your Starfarer when activating your Stellar Nova.
-			}
-
-			DisableStellarNovaDialogue: {
-				Label: Disable Stellar Nova dialogue box
-				Tooltip: Disables the dialogue box during the Stellar Nova cut-in.
-			}
-
-			DisableStarfarerCommentary: {
-				Label: Disable Starfarer commentary
-				Tooltip: Disable Starfarer Prompts entirely.
-			}
-
-			DisableStarfarerCommentaryBuffs: {
-				Label: Disable Starfarer commentary on buffs/debuffs
-				Tooltip: You will no longer recieve Starfarer Prompts for getting buffed/debuffed.
-			}
-
-			DisableStarfarerCommentaryCombat: {
-				Label: Disable Starfarer commentary for combat events
-				Tooltip: You will no longer recieve Starfarer Prompts for killing foes, etc.
-			}
-
-			StarfarerPromptCooldown: {
-				Label: Starfarer Prompt Cooldown
-				Tooltip: The time between Starfarer Prompts in minutes. If a trigger for a prompt occurs during this time, it is ignored. Does not apply to unique prompts (Bosses, etc.)
-			}
-
-			DialogueScrollValue: {
-				Label: Starfarer Text Speed
-				Tooltip: The time for dialogue text to increment in frames. Below 2, it is recommended to disable dialogue sound effects.
-			}
-
-			DialogueAudio: {
-				Label: Starfarer Text Sound Effect
-				Tooltip: The sound effect that plays when letters appear during Starfarer Dialogue. 5 is silence.
-			}
-
-			InstantText: {
-				Label: Instant Text
-				Tooltip: Ignores the Starfarer Text Speed option; all text will appear instantly.
-			}
-
-			MovingDialogueAmount: {
-				Label: Starfarer Menu Movement
-				Tooltip: Adjust how much the Starfarer menus move while you're moving.
-			}
-
-			PromptLoc: {
-				Label: Starfarer Prompt positiion
-				Tooltip: Position is measured from the bottom right of the screen!
-			}
-
-			CommentaryTimer: {
-				Label: Starfarer Prompt Timer
-				Tooltip: Changes the length that Starfarer Prompts stay on screen.
-			}
-
-			EnableStarfarerVoices: {
-				Label: Disable Stellar Nova voice lines
-				Tooltip: Disables the AI voice lines for Asphodene and Eridani during Stellar Novas.
-			}
-
-			EnableMusicOverride: {
-				Label: Weapon music overrides all other music
-				Tooltip: When enabled, weapons that change the game's music will have priority over nearly everything else.
-			}
-
-			EnablePlayerWorldLock: {
-				Label: Enable Player Progress World Lock
-				Tooltip: Enables character progression being tied to the first world they joined.
-			}
-
-			EnableAprilFools: {
-				Label: Enable April Fools mode
-				Tooltip: Adds radical sunglasses to Asphodene and Eridani in the Starfarer menu and during Stellar Novas.
-			}
-
-			DisableWeaponCutIn: {
-				Label: Disable Weapon Cut-In Effect
-				Tooltip: Disable screen-wide animations that play when using certain weapons.
-			}
-
-			DisableTypePenalty: {
-				Label: Disable damage penalty for Aspected Damage modification
-				Tooltip: 10% damage penalty when Aspected Damage modification is enabled is removed.
-			}
-
-			DisableBossAggro: {
-				Label: Disable Boss Aggro Marker
-				Tooltip: Disables the marker that appears over a player's head when a boss targets them.
-			}
-
-			DisableCalamityWeaponBuffs: {
-				Label: Disable global damage modifiers for mod compatibility
-				Tooltip: Disables the 30% increase to Aspected Weapon damage when the Calamity Mod is enabled.
-			}
-
-			DisableWeaponRestrictions: {
-				Label: Disable Aspected Weapon restrictions
-				Tooltip: Disables the restriction for Astral and Umbral weapons being wielded by other players.
-			}
-
-			DisableBossEnemySpawnMod: {
-				Label: Disable Boss Enemy Spawn Mod
-				Tooltip: Disables the buff granted to all players that prevents mob spawning during bosses.
-			}
-
-			DisableManaSicknessChange: {
-				Label: Disable Mana Sickness Change
-				Tooltip: Disables the change to Mana Sickness that applies the damage reduction to all damage and not just Magic.
-			}
-
-			ColorblindBoss: {
-				Label: Enable colorblind-friendly Penthesilea fight
-				Tooltip: Replaces certain color-based mechanics in the Penthesilea boss fight.
-			}
-
-			SubworldCompatibility: {
-				Label: Disable Multiplayer Compatibility-Fix for Cosmic Voyages
-				Tooltip: Allows for users in Multiplayer to undertake Cosmic Voyages- toggle this off to drop items from Subworlds instead of travelling there.
-			}
-
-			CombatTimer: {
-				Label: Combat Timer
-				Tooltip: When striking a foe or getting struck, this is the time in seconds you are 'in combat.'
-			}
-		}
+		
 
 		Common: {
 			DiskReady: The Spatial Disk begins to resonate. Left click while holding the Disk to interact.
@@ -4164,10 +4029,10 @@ Mods: {
 					Gain the buff [c/A20000:Bloodthirsting Blade] when wielding this weapon
 					[c/A20000:Bloodthirsting Blade] grants powerful buffs as HP diminishes, but prevents natural life regeneration
 					Damage, critical strike chance, and critical strike damage is increased based on missing HP
-					Damage bonuses cap at 2x base damage
+					Damage bonuses cap at 200% damage
 					Right click to unleash [c/FF1B00:Blade Art: Dragon], consuming 20% of current HP (20 second cooldown)
 					After a short delay during which you are invulnerable, [c/FF1B00:Blade Art: Dragon] activates
-					[c/FF1B00:Blade Art: Dragon] deals 4x damage to all foes in a wide radius around you
+					[c/FF1B00:Blade Art: Dragon] deals 400% damage to all foes in a wide radius around you
 					Defeating a foe with [c/FF1B00:Blade Art: Dragon] instantly refreshes the cooldown
 					'So, let all become ash!'
 					'''
@@ -4662,7 +4527,7 @@ Mods: {
 					Striking foes will increment the [c/00B7FF:Magiton Gauge]
 					Once the [c/00B7FF:Magiton Gauge] is full, right click to activate [c/FE3727:Magiton Overheat] for 8 seconds
 					During [c/FE3727:Magiton Overheat], attacks will change the next eleven shots into empowered [c/CF1E1E:Magiton Shots]
-					[c/CF1E1E:Magiton Shots] deal 3x base damage and will be critical strikes against foes below 50% HP
+					[c/CF1E1E:Magiton Shots] deal 300% damage and will be critical strikes against foes below 50% HP
 					Once [c/FE3727:Magiton Overheat] is either fully consumed or ends, you are inflicted with [c/A56363:Overheated] for 1 second, causing this weapon to become unusable
 					'This isn't... something you see everyday'
 					'''
@@ -4699,7 +4564,7 @@ Mods: {
 					[c/6C6C6C:Durandal]: Attack in a wide arc with a high critical strike chance; gain 50% bonus critical strike damage against foes below 50% HP
 					[c/6C6C6C:Zelkova]: Alternate between axe and mace, healing for a portion of damage dealt; deal 30% bonus damage to foes below 50% HP
 					[c/6C6C6C:Ranga]: Dash a fixed distance towards your cursor, damaging foes for half base damage (Cooldown after attacking); deal 30% increased critical strike damage
-					[c/6C6C6C:Old Boys]: Throw a returning hammer that hits twice at max range, dealing 2x base damage to foes below 50% HP; gain 20 defense
+					[c/6C6C6C:Old Boys]: Throw a returning hammer that hits twice at max range, dealing 200% damage to foes below 50% HP; gain 20 defense
 					[c/6C6C6C:Allas]: Attack with a piercing mid-ranged stab with wide range and no knockback; gain 30% increased Movement Speed
 					[c/6C6C6C:Mook]: Execute a barrage of close-ranged slashes per attack (Cooldown after attacking); inflict Bleed on hit for 4 seconds
 					[c/6C6C6C:Atelier Logic]: Attack with ranged bullets (every third attack deals 40% increased damage); gain 20% Armor Penetration
@@ -5592,7 +5457,7 @@ Mods: {
 					Additionally, collecting [c/FF6988:Emblazoned Fragments] charges the [c/C2A4AA:Eternal Gauge]
 					Once the [c/C2A4AA:Eternal Gauge] is full, right click to conjure the [c/59FFCD:Immemorial Supernova] at your cursor's location, draining the [c/C2A4AA:Eternal Gauge]
 					The [c/59FFCD:Immemorial Supernova] will persist for 5 seconds, dealing damage to all foes in its vicinity
-					Once the [c/59FFCD:Immemorial Supernova] expires, it will explode, dealing 5x base damage damage to nearby foes
+					Once the [c/59FFCD:Immemorial Supernova] expires, it will explode, dealing 500% damage damage to nearby foes
 					'''
 				DisplayName: Eternal Star
 			}
@@ -5646,9 +5511,9 @@ Mods: {
 					Attacks fire powerful explosive grenades with high knockback
 					Striking an enemy with an attack grants 25% increased movement and critical strike chance for 4 seconds
 					Will automatically take time to reload after 6 shots
-					The final shot before reloading has a larger explosion radius and deals 2x base damage
+					The final shot before reloading has a larger explosion radius and deals 200% damage
 					The weapon will additionally fire an artillery shell at the target (3 second cooldown)
-					Upon arriving at the target destination or hitting a tile the artillery shell will explode, dealing 3x base damage
+					Upon arriving at the target destination or hitting a tile the artillery shell will explode, dealing 300% damage
 					Right click to fire a [c/4BF0DE:Plasma Grenade] (8 second cooldown)
 					The [c/4BF0DE:Plasma Grenade] will automatically bounce to the nearest foe (Up to 3 times)
 					Enemies struck by the [c/4BF0DE:Plasma Grenade] are inflicted with Mortal Wounds for 12 seconds, increasing damage taken from this weapon by 50%
@@ -5780,7 +5645,7 @@ Mods: {
 					Damage will increase with every shot
 					After the fourth shot is taken, the gun will take time to reload
 					If you land enough shots, your next reload will gain the strength of [c/66B2D1:Honed Edge]
-					Once you reload with [c/66B2D1:Honed Edge], the next shot will deal 5x the normal amount critically, and will then reload
+					Once you reload with [c/66B2D1:Honed Edge], the next shot will deal 500% the normal amount critically, and will then reload
 					Gain 100 mana if [c/66B2D1:Honed Edge]'s empowered shot hits an enemy
 					This mana increase does not apply if this weapon is attuned to Melee, but attack speed is drastically increased
 					You have permanent Swiftness when this weapon is in your hands
@@ -6112,7 +5977,7 @@ Mods: {
 					Attacks with this weapon will rapidly sweep in a short-ranged arc
 					Right click to unleash [c/DC3961:Edge of Anguish] (12 second cooldown)
 					[c/DC3961:Edge of Anguish] will target the nearest enemy to your cursor and charge towards them
-					Gain Invincibility for the duration of the dash and striking foes deals 3x base damage		
+					Gain Invincibility for the duration of the dash and striking foes deals 300% damage		
 					Upon contact, inflict [c/FF3200:Infernal Hemorrhage] for 3 seconds, dealing powerful damage over time
 					Additionally, deal 10% of the foe's missing HP as bonus true damage (Up to 2000)
 					Critical strikes with this weapon's basic attacks reduce the cooldown of [c/DC3961:Edge of Anguish] by 1 second
@@ -6160,7 +6025,7 @@ Mods: {
 					Use right click once all blades are summoned to launch all blades at once, dealing random effects
 					Each blade has unique effects:
 					The [c/54AFDF:Stardust Aspect] will restore 20 mana on hit, but deals half damage
-					The [c/54DF80:Vortex Aspect] travels faster and farther, deals 6x damage on a critical hit and grants Swiftness
+					The [c/54DF80:Vortex Aspect] travels faster and farther, deals 600% damage on a critical hit and grants Swiftness
 					The [c/DF8454:Solar Aspect] burns foes on hit and deals double damage to flaming enemies, but travels slower and has less range
 					The [c/C654DF:Nebula Aspect] summons a barrage of falling stars from the sky on hit
 					[c/BDD5B5:Naganadel] costs 50 mana to summon instead, but will apply most other effects with a lunar bonus effect
@@ -6176,7 +6041,7 @@ Mods: {
 					'''
 					[c/F7D76A:Hold left click to charge the weapon; the longer the weapon is charged, the stronger the resulting attack will become]
 					Attacks with this weapon fire small pellets, inflicting Midas for 20 seconds on critical strikes
-					Charged attacks will instead fire a [c/FBD63E:BIG SHOT], dealing 2x base damage
+					Charged attacks will instead fire a [c/FBD63E:BIG SHOT], dealing 200% damage
 					The [c/FBD63E:BIG SHOT] pierces up to 8 foes and ignores terrain
 					Additionally, enemies inflicted with Midas take 15% more damage from the [c/FBD63E:BIG SHOT]
 					Critical strikes increase this modifier to 25%
@@ -7021,7 +6886,7 @@ Mods: {
 					Enchanted attacks are changed, cast instantly, and consumes [c/C36BD5:Mana Stacks] instead of Mana (Both left and right click use enchanted attacks)
 					[c/4E01FF:Black Enchantment] uses the following attacks in succession: [c/FF1515:Redoublement], [c/FF1515:Verflare], [c/FF1515:Scorch]
 					[c/FF1515:Redoublement] deals damage multiple times in a frontal cone; [c/FF1515:Verflare] casts a large AoE centered on your cursor
-					[c/FF1515:Scorch] deals 5x base damage and increases [c/4E01FF:Black Mana] by 11
+					[c/FF1515:Scorch] deals 500% damage and increases [c/4E01FF:Black Mana] by 11
 					[c/FFE7BA:White Enchantment] uses the following attacks in succession: [c/FF1515:Reprise], [c/FF1515:Verholy], [c/FF1515:Resolution]
 					[c/FF1515:Reprise] charges towards the cursor, granting Invincibility for 2 seconds; [c/FF1515:Verholy] casts a large AoE centered on your cursor
 					[c/FF1515:Resolution] pierces, heals 5 HP per foe struck, and increases [c/FFE7BA:White Mana] by 11
@@ -7034,12 +6899,12 @@ Mods: {
 					'''
 					Attacks with this weapon execute rapid stabs
 					Each attack grants [c/F8D496:Bulwark of Jade] for 2 seconds on hit, increasing defenses by 30
-					Right click to consume 150 mana, dropping a colossal earthen meteor from the heavens, dealing 2x base damage (20 second cooldown)
+					Right click to consume 150 mana, dropping a colossal earthen meteor from the heavens, dealing 200% damage (20 second cooldown)
 					Additionally, this attack will deal bonus damage based on 50% of your Max HP
 					This meteor will apply [c/CB8952:Petrification] to foes struck on a critical strike, drastically crippling their movement speed for 3 seconds
 					Attacking [c/CB8952:Petrified] foes with this weapon will deal extra damage
 					Critical strikes will [c/F1D078:Shatter] foes that are [c/CB8952:Petrified]
-					[c/F1D078:Shatter] deals 5x base damage while removing [c/CB8952:Petrification]
+					[c/F1D078:Shatter] deals 500% damage while removing [c/CB8952:Petrification]
 					'I will have order!'
 					'''
 				DisplayName: Rex Lapis
@@ -7137,11 +7002,11 @@ Mods: {
 					Attacks are changed into a held ability that raises a shield in front of you, destroying nearby projectiles (2 second cooldown)
 					Additionally, all allies in the radius gain 10 defense while the shield is active
 					[c/ECCA56:Close Combat]: Gain Wrath for 2 seconds when attacking foes below 50% HP
-					Attacks are changed into a barrage of quick close-ranged strikes that deal 1.2x base damage
+					Attacks are changed into a barrage of quick close-ranged strikes that deal 120% damage
 					Critical strikes launch a claw that pierces enemies (8 second cooldown)
 					[c/66EC56:Railgunner]: Critical strike chance is increased by 20%
-					Attacks are changed into long range piercing bolts, dealing 1.5x base damage
-					Critical strikes deal 4x damage
+					Attacks are changed into long range piercing bolts, dealing 1.500% damage
+					Critical strikes deal 400% damage
 					'''
 				DisplayName: Armaments of the Sky Striker
 			}
@@ -7153,7 +7018,7 @@ Mods: {
 					[c/49EAFA:Fleeting Sparks] will latch onto foes and ignore terrain when targetting
 					Gain 15% increased Armor Penetration for summon weapons when this weapon is held
 					Every time a [c/49EAFA:Fleeting Spark] attacks, it has a 10% chance to explode
-					When a [c/49EAFA:Fleeting Spark] explodes, it deals 2x critical damage to nearby foes and returns
+					When a [c/49EAFA:Fleeting Spark] explodes, it deals 200% critical damage to nearby foes and returns
 					Additionally, explosions have a 50% chance to generate a Mana Star
 					Each attack increases the strength of the [c/49EAFA:Fleeting Spark] by 2% (Maximum 10% increased damage, resets upon exploding)
 					'Keep a good distance - there!'
@@ -7291,7 +7156,7 @@ Mods: {
 					[c/F10079:Spirit Azakana] has no knockback and can not crit but deals half of the damage again as true damage
 					Charged attacks consume 30 mana and change depending on the preluding slash
 					If the last attack was [c/C2E6C1:Mortal Steel], the charge attack will inflict Mortal Wounds, which deals damage over time for 10 seconds
-					If the last attack was [c/F10079:Spirit Azakana], the charge attack will deal 20x critical damage to Mortally Wounded foes and purge the debuff
+					If the last attack was [c/F10079:Spirit Azakana], the charge attack will deal 2000% critical damage to Mortally Wounded foes and purge the debuff
 					Right click to consume 40 mana to perform [c/8E60D1:Soul Unbound]
 					[c/8E60D1:Soul Unbound] will launch you forwards and grant movement speed for 8 seconds
 					Once [c/8E60D1:Soul Unbound] ends, all nearby foes take damage equal to 1/3 of damage you inflicted with this weapon during [c/8E60D1:Soul Unbound]
@@ -7322,7 +7187,7 @@ Mods: {
 					Striking foes with the final swing of the combo attack will grant 15 Mana and inflict [c/B81E1E:Crimson Mark] for 12 seconds
 					Right click to activate [c/F13791:Warp Strike] with 30 Mana, throwing the weapon towards your cursor while disabling normal attacks
 					Striking a tile with [c/F13791:Warp Strike] will teleport you to the tile
-					Striking a foe with [c/F13791:Warp Strike] will teleport you to their position and execute an attack, dealing 2x base damage
+					Striking a foe with [c/F13791:Warp Strike] will teleport you to their position and execute an attack, dealing 200% damage
 					Additionally, this grants 1 second of Invincibility
 					Striking a foe with [c/B81E1E:Crimson Mark] with the [c/F13791:Warp Strike] will grant one stack of [c/F48080:Spectral Arsenal], up to 3
 					Additionally, this removes the [c/B81E1E:Crimson Mark]
@@ -7344,7 +7209,7 @@ Mods: {
 					Right click when the [c/4C3BB6:Virtue Gauge] is full to cleave a tear in spacetime, spawning a [c/495DEC:Celestial Void] for 8 seconds
 					The [c/495DEC:Celestial Void] will pulse powerful damage to all nearby foes, dragging them inwards
 					Attacks with this weapon during this time will fill the [c/4C3BB6:Virtue Gauge] with [c/6C38E3:Umbral Flux]
-					If the [c/4C3BB6:Virtue Gauge] is full once the [c/495DEC:Celestial Void] ends, it will collapse in a massive explosion, dealing 5x base damage
+					If the [c/4C3BB6:Virtue Gauge] is full once the [c/495DEC:Celestial Void] ends, it will collapse in a massive explosion, dealing 500% damage
 					There is a 45 second cooldown between the re-activation of [c/495DEC:Celestial Void]
 					'Pierce through all matter!'
 					'''
@@ -7371,7 +7236,7 @@ Mods: {
 			VoiceOfTheFallen: {
 				Tooltip:
 					'''
-					Critical strikes deal 15x base damage
+					Critical strikes deal 1500% damage
 					Critical strike chance increases by 4% with every shot
 					Once the gun has landed a critical strike, the chance will reset
 					'There are parasites that may benefit the host... teeth sharper than your own'
@@ -7405,7 +7270,7 @@ Mods: {
 					Right click to expend 80 mana, placing a [c/CB8EE3:Lightning Stiletto] at your cursor's location
 					Once a [c/CB8EE3:Lightning Stiletto] is present, using right click again will teleport you to the position of the [c/CB8EE3:Lightning Stiletto]
 					Additionally, your next attack will become [c/B703FF:Driving Thunder]
-					[c/B703FF:Driving Thunder] will sweep in a wide arc, dealing 3x damage
+					[c/B703FF:Driving Thunder] will sweep in a wide arc, dealing 300% damage
 					If [c/B703FF:Driving Thunder] defeats an opponent, the mana used for placing the [c/CB8EE3:Lightning Stiletto] will be refunded
 					If you attempt to teleport to an unaccessable location, you will consume the [c/CB8EE3:Lightning Stiletto] without teleporting but still prepare [c/B703FF:Driving Thunder]
 					'Woven from lightning itself, from a land where gods roam free'
@@ -7784,7 +7649,7 @@ Mods: {
 					Charged attacks with this weapon vary depending on the amount of [c/F7D76A:Overcharge]
 					[c/F7D76A:Overcharging] will additionally drain your HP upon reaching [c/F7D76A:Overcharge] thresholds (Will not reduce health below 1)
 					Charged attacks swing the blade in a colossal arc, inflicting Frostburn for 4 seconds
-					Second stage charge attacks consume 20 HP, but deal 2x base damage and will inflict Shadowflame for 4 seconds
+					Second stage charge attacks consume 20 HP, but deal 200% damage and will inflict Shadowflame for 4 seconds
 					At maximum [c/F7D76A:Overcharge], consume an additional 30 HP but guarantees a critical strike and inflict [c/FF4DF4:Hyperburn] for 4 seconds
 					[c/FF4DF4:Hyperburn] deals powerful damage over time and ignores most resistances
 					'''
@@ -7826,7 +7691,7 @@ Mods: {
 					Bullets will apply [c/F3CE36:Security Level] for 12 seconds, marking the target
 					[c/CF3C32:Thunderbird] allows for the deployment of homing bombs that ignore terrain, exploding and dealing 20% increased damage to foes below 50% HP
 					Explosions will apply [c/F3CE36:Security Level] for 12 seconds, marking the target
-					[c/CF1826:Behemoth Typhoon] swings a massive coffin, dealing 3x damage when released
+					[c/CF1826:Behemoth Typhoon] swings a massive coffin, dealing 300% damage when released
 					Attacks on foes with [c/F3CE36:Security Level] using [c/CF1826:Behemoth Typhoon]'s released attack cleanses the debuff, charging the [c/EB936A:Overdrive Gauge]
 					Holding the Weapon Action Key will charge a powerful attack, consuming the [c/EB936A:Overdrive Gauge]
 					Releasing the Weapon Action Key executes a powerful close-ranged strike, increasing in power with the amount of [c/EB936A:Overdrive Gauge] consumed
@@ -7883,7 +7748,7 @@ Mods: {
 					'''
 					Attacks with this weapon strikes foes multiple times with a close-ranged slash
 					Striking foes grant 1 [c/FC578E:LV] (Critical strikes grant 5 [c/FC578E:LV] instead)
-					Right click to unleash a [c/F4296D:SLAUGHTERING SLASH] at your cursor after a short delay, dealing 3x damage in a vertical slash (6 second cooldown)
+					Right click to unleash a [c/F4296D:SLAUGHTERING SLASH] at your cursor after a short delay, dealing 300% damage in a vertical slash (6 second cooldown)
 					Additionally, the [c/F4296D:SLAUGHTERING SLASH] grants 2 [c/FC578E:LV] per hit
 					[c/FC578E:LV] caps at 100 and will deplete quickly out of combat
 					Taking damage resets [c/FC578E:LV] but reduces damage taken based on amount of [c/FC578E:LV]
@@ -7908,8 +7773,8 @@ Mods: {
 					[c/AE0000:E.G.O. Manifestation] grants 30% increased damage, 40% increased attack speed, and 90% increased movement speed, but reduces defense by 30
 					If [c/AE0000:E.G.O. Manifestation] is active, unique [c/FF0046:Great Split] attacks can be performed
 					Execute [c/FF0046:Great Split: Vertical] with right click or [c/FF0046:Great Split: Horizontal] with the Weapon Action Key (Both attacks share a 1 minute cooldown)
-					[c/FF0046:Great Split: Vertical] will grant Invincibility for 1 second and deal 8x guaranteed close-ranged critical damage after a short delay
-					[c/FF0046:Great Split: Horizontal] will deal 3x guaranteed critical damage to all foes on the screen after a short delay
+					[c/FF0046:Great Split: Vertical] will grant Invincibility for 1 second and deal 800% guaranteed close-ranged critical damage after a short delay
+					[c/FF0046:Great Split: Horizontal] will deal 300% guaranteed critical damage to all foes on the screen after a short delay
 					Both [c/FF0046:Great Split] attacks will execute any non-boss enemy below 30% HP and additionally refill [c/D53B3B:Emotional Turbulence] to full upon activation
 					If [c/AE0000:E.G.O. Manifestation] is active, [c/D53B3B:Emotional Turbulence] will passively decrease over time (Resets when not holding the weapon)
 					The longer [c/AE0000:E.G.O. Manifestation] lasts, the faster [c/D53B3B:Emotional Turbulence] will drain
@@ -8237,12 +8102,12 @@ Mods: {
 					This mana cost can not be negated by any means
 					You can have up to 2 [c/BB3B27:Powder Kegs] active at the same time, and kegs disappear after 20 seconds or when not holding this weapon
 					After a short delay, the [c/BB3B27:Powder Keg] becomes active, and attacking it with this weapon will cause it to explode
-					This explosion deals 4x damage while additionally granting Swiftness for 8 seconds
+					This explosion deals 400% damage while additionally granting Swiftness for 8 seconds
 					Additionally, nearby [c/BB3B27:Powder Kegs] will also explode, dealing 50% more damage than if exploded directly
 					Press the Weapon Action Key to gain 3 stacks of [c/E18121:Cannonfire Deluge] for 12 seconds (1 minute cooldown)
 					With stacks of [c/E18121:Cannonfire Deluge], pressing the Weapon Action Key will consume a stack, causing a rain of explosive cannonballs to descend on your cursor
 					Additionally, gain Swiftness for 12 seconds upon activation
-					The final [c/E18121:Cannonfire Deluge] will end with a larger cannonball that deals 3x damage, stunning foes for 2 seconds
+					The final [c/E18121:Cannonfire Deluge] will end with a larger cannonball that deals 300% damage, stunning foes for 2 seconds
 					'Neither the flames nor the depths could claim me...'
 					'''
 				DisplayName: Saltwater Scourge
@@ -8287,11 +8152,11 @@ Mods: {
 					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty]
 					Right click to unleash [c/FFC500:Vasavi Shakti], leaping into the air, gaining Featherfall and Invincibility for 2 seconds (1 minute cooldown)
 					[c/FFC500:Vasavi Shakti] channels a powerful beam of energy towards your cursor for 2 seconds
-					[c/FFC500:Vasavi Shakti] will conclude with a colossal explosion, dealing 2x guaranteed critical damage and inflicting Daybroken for 8 seconds
+					[c/FFC500:Vasavi Shakti] will conclude with a colossal explosion, dealing 200% guaranteed critical damage and inflicting Daybroken for 8 seconds
 					The current [c/F592BF:Aspected Damage Type] influences the weapon's attacks (Weapon can not be used without [c/F592BF:Aspected Damage Type])
 					[c/FFAB4D:Melee]: Rapidly stab in a close-ranged flurry; Charged attacks swing in a wide arc, burning foes for 8 seconds
 					[c/EF4DFF:Magic]: Lightning spears converge on your cursor after a delay, causing lightning to arc from foes struck
-					[c/4DFF5B:Ranged]: Attacks launch the spear at high velocity, dealing 2x damage and piercing infinitely without damage falloff
+					[c/4DFF5B:Ranged]: Attacks launch the spear at high velocity, dealing 200% damage and piercing infinitely without damage falloff
 					[c/00CDFF:Summon]: Attacks extend a burning whip, causing summons to inflict Daybroken for 2 seconds on hit
 					'With this single strike, I shall inflict extinction!'
 					'''
@@ -8398,7 +8263,7 @@ Mods: {
 					Launching yourself will deal 5% Max HP in self damage, but grants the buff [c/E74336:Death from Above] for 4 seconds (Buff is removed upon landing)
 					During this time, rocket explosions deal 20% increased non-critical strike damage and 40% increased critical strike damage
 					Right click to swing the [c/83D26E:Bargain Gardener], dealing damage to nearby foes (Critical strikes are disabled)
-					Striking foes with the [c/83D26E:Bargain Gardener] while airborne under the effect of [c/E74336:Death from Above] will guarantee a 2x damage critical strike
+					Striking foes with the [c/83D26E:Bargain Gardener] while airborne under the effect of [c/E74336:Death from Above] will guarantee a 200% damage critical strike
 					'Ka-boom!'
 					'''
 			}
@@ -8407,11 +8272,11 @@ Mods: {
 				DisplayName: Trickspin Two-Step
 				Tooltip:
 					'''
-					4 summon tag damage
+					4 summon tag damage 
 					Striking foes with this weapon grants Swiftness for 3 seconds
 					Press the Weapon Action Key to sling a yo-yo forwards, travelling a short distance (Yo-yo returns after two seconds)
 					Press the Weapon Action Key after the yo-yo has stopped movement will launch you towards the yo-yo, returning it
-					Additionally, gain the buff [c/B9F1FA:Kick Start] for 3 seconds, causing the next attack with this weapon to deal 2x damage, consuming the buff
+					Additionally, gain the buff [c/B9F1FA:Kick Start] for 3 seconds, causing the next attack with this weapon to deal 200% damage, consuming the buff
 					Right click to prepare the [c/E08738:Killing Bear], gaining the buff [c/E03838:Me and My Killing Machine] for 8 seconds (30 second cooldown)
 					During this time, striking foes with this weapon will cause the [c/E08738:Killing Bear] to deal a follow-up attack (1 second delay)
 					The [c/E08738:Killing Bear]'s follow-up attacks will additionally grant [c/B9F1FA:Kick Start] for 2 seconds
@@ -8660,14 +8525,14 @@ Mods: {
 				Tooltip:
 					'''
 					Attacks with this weapon unleashes [c/7444FF:Drown], firing a weak piercing bolt that strikes 2 times, dealing 15% bonus damage to foes afflicted with Shadowflame
-					Right click to unleash [c/9036F5:Flood], firing a bolt of void energy that explodes on impact, dealing 4x damage while inflicting Shadowflame for 5 seconds (8 second cooldown)
+					Right click to unleash [c/9036F5:Flood], firing a bolt of void energy that explodes on impact, dealing 400% damage while inflicting Shadowflame for 5 seconds (8 second cooldown)
 					Taking damage or using [c/7444FF:Drown] increases [c/7A1AE7:Void Corruption] ([c/7A1AE7:Void Corruption] passively increases over time) 
 					Pressing the Weapon Action Key will consume 25% [c/7A1AE7:Void Corruption] to activate [c/73C84E:Suppress], healing 25 HP and 25% Max MP (2 second cooldown)
 					Consecutive activations of [c/73C84E:Suppress] heals 5 HP instead
 					When [c/7A1AE7:Void Corruption] reaches maxiumum, become afflicted with [c/E71A1A:Fiendish Corruption]
 					While under the effects of [c/E71A1A:Fiendish Corruption], gain 12 defense, [c/7A1AE7:Void Corruption] drains over time, and weapon abilities are transformed
 					[c/7444FF:Drown] becomes [c/CD1717:Corrupted Drown], transforming into a channeled beam that deals powerful damage, but no longer charges [c/7A1AE7:Void Corruption] and inflicts Slow on self when active
-					[c/9036F5:Flood] becomes [c/B1296D:Corrupted Flood], dealing 10x damage and cooldown is reduced to 4 seconds, but does not inflict Shadowflame
+					[c/9036F5:Flood] becomes [c/B1296D:Corrupted Flood], dealing 1000% damage and cooldown is reduced to 4 seconds, but does not inflict Shadowflame
 					[c/73C84E:Suppress] becomes [c/C84EB6:Corrupted Suppress], consuming 50 HP to restore 50% Max MP and increase [c/7A1AE7:Void Corruption] by 25%
 					'..and so it comes... for all of us.'
 					'''
@@ -8707,7 +8572,7 @@ Mods: {
 					Once [c/78F178:Dragonshift Energy] reaches 50% or more, press the Weapon Action Key to activate [c/9AFE35:Windwyrm State]
 					[c/9AFE35:Windwyrm State] transforms yourself into a powerful dragon, healing 100 HP instantly while constantly draining [c/78F178:Dragonshift Energy]
 					Additionally, taking damage subtracts [c/78F178:Dragonshift Energy] instead
-					Within [c/9AFE35:Windwyrm State], attacks become powerful claw slashes that deal 2x damage in a large area and inflict [c/CCEDAA:Stormlash] for 3 seconds
+					Within [c/9AFE35:Windwyrm State], attacks become powerful claw slashes that deal 200% damage in a large area and inflict [c/CCEDAA:Stormlash] for 3 seconds
 					[c/CCEDAA:Stormlash] is consumed when minions deal damage and increases damage dealt by 1% for every minion slot
 					Right click to summon powerful tornadoes on all nearby foes while inflicting [c/CCEDAA:Stormlash] for 1 second per hit (6 second cooldown)
 					[c/9AFE35:Windwyrm State] ends when all [c/78F178:Dragonshift Energy] is depleted
@@ -8723,7 +8588,7 @@ Mods: {
 					Summons an oceanblessed blade to assail foes
 					The weapon requires 3 minion slots available to be summoned but does not consume minion slots
 					When holding this weapon, holding left click while the weapon is summoned will allow for manual control of the weapon with your cursor
-					Additionally, damage is reduced or multipled up to 1.5x depending on speed and gain 2% critical strike chance per minion slot for this weapon only
+					Additionally, damage is reduced or multipled up to 1.500% depending on speed and gain 2% critical strike chance per minion slot for this weapon only
 					Critical strikes with this weapon will inflict [c/4A91FF:Riptide] for 2 seconds and grants Swiftness for 4 seconds
 					[c/4A91FF:Riptide] increases the damage of the next minion attack by 30% (This weapon can detonate this effect)
 					Press the Weapon Action Key when manually controlling the weapon to slash in an area around the weapon, inflicting [c/4A91FF:Riptide] for 2 seconds (4 second cooldown)
@@ -9130,7 +8995,7 @@ Mods: {
 					At certain thresholds of [c/D81919:Rebellion], manifest portions of the [c/EC2B65:Crimson Armor], gaining 5 defense per armor
 					Once [c/D81919:Rebellion] is at maximum and all portions of the [c/EC2B65:Crimson Armor] are equipped, increase defense further and gain access to [c/8D0404:Clarent Blood Arthur]
 					Additionally, gain a 3rd combo attack and striking foes now burst into red lightning (3rd combo strike empowers lightning)
-					Right click to unleash [c/8D0404:Clarent Blood Arthur], dealing 2x damage in a powerful burst towards your cursor after a delay and is a guaranteed critical strike against bosses (1 minute cooldown)
+					Right click to unleash [c/8D0404:Clarent Blood Arthur], dealing 200% damage in a powerful burst towards your cursor after a delay and is a guaranteed critical strike against bosses (1 minute cooldown)
 					'''
 			}
 
@@ -9159,7 +9024,7 @@ Mods: {
 					Press the Weapon Action Key to swap between Grenade, Shuriken, and Molotov Cocktail
 					Right click to consume the selected ordinance (4 second cooldown)
 					When thrown with this weapon's right click ability, certain throwable items are empowered and inherit this weapon's damage
-					Grenades are upgraded into [c/FFB969:High-Velocity Grenades], dealing 3x damage
+					Grenades are upgraded into [c/FFB969:High-Velocity Grenades], dealing 300% damage
 					Shurikens are upgraded into [c/91CED3:Energy Stars], stunning non-boss foes struck for 1 second
 					Molotov Cocktails are upgraded into [c/FF5740:Thermal Flares], spawning more fire in a condensed area
 					'''
@@ -9389,7 +9254,7 @@ Mods: {
 					[c/E94DEC:Stellar Termination] fires a powerful barrage of energy towards your cursor after a short delay which extends debuff durations on foes by 2 seconds per hit (up to 20 seconds)
 					Additionally, grant [c/B6FADC:Merculight] to all nearby allies, increasing critical strike damage by 30% for 15 seconds
 					If Stellar Nova is fully charged, [c/B6FADC:Merculight] additionally grants 25% critical strike chance
-					Once [c/E94DEC:Stellar Termination] ends, all foes struck by [c/E94DEC:Stellar Termination] explode for 3x damage
+					Once [c/E94DEC:Stellar Termination] ends, all foes struck by [c/E94DEC:Stellar Termination] explode for 300% damage
 					'''
 			}
 
@@ -9451,14 +9316,14 @@ Mods: {
 					2 summon tag damage
 					Summon tag damage scales with world progression
 					Attacks with this weapon travel incredibly fast and inflict Starblight for 4 seconds
-					Additionally, attacks inflict a stack of [Elemental Surge] on hit
-					Holding this weapon summons 3 [Catalyst Keys] to assail foes with long-range energy bolts, ignoring 25% of foe's defense
-					[Catalyst Keys] inflict [Elemental Surge] when attacking foes
-					At 6 stacks of [Elemental Surge] the next application will instead burst all stacks, dealing bonus damage
-					Every time [Elemental Surge] is removed in this manner, gain [Alignment] (Up to 5)
-					Once [Alignment] is at maximum, press the Weapon Action Key to transform the [Catalyst Keys] for 4 seconds
-					Transformed [Catalyst Keys] rapidly strike foes with close-ranged slashes, dealing bonus damage based on the foe's defense
-					Transformed [Catalyst Keys] inflict [Elemental Surge], but do not grant [Alignment]
+					Additionally, attacks inflict a stack of [c/F8FF8B:Elemental Surge] on hit
+					Right click to summon [c/FF5D93:Catalyst Keys] to assail foes with long-range energy bolts, ignoring 25% of foe's defense
+					[c/FF5D93:Catalyst Keys] inflict [c/F8FF8B:Elemental Surge] when attacking foes
+					At 6 stacks of [c/F8FF8B:Elemental Surge] the next application will instead burst all stacks, dealing bonus damage
+					Every time [c/F8FF8B:Elemental Surge] is removed in this manner, gain [c/F28C60:Alignment] (Up to 5)
+					Once [c/F28C60:Alignment] is at maximum, press the Weapon Action Key to transform the [c/FF5D93:Catalyst Keys] for 4 seconds
+					Transformed [c/FF5D93:Catalyst Keys] rapidly strike foes with close-ranged slashes, dealing bonus damage based on the foe's defense
+					Transformed [c/FF5D93:Catalyst Keys] inflict [c/F8FF8B:Elemental Surge], but [c/F28C60:Alignment] can not be gained while transformed
 					'''
 			}
 
@@ -9506,7 +9371,7 @@ Mods: {
 					[Degraded Chain]: Deal damage to all nearby foes while inflicting [Fairy] for 6 seconds
 					[Degraded Pillar]: Fire a fast piercing pillar towards your cursor that deals guaranteed critical damage
 					Press the Weapon Action Key to activate [Degraded Shockwave] (90 second cooldown)
-					[Degraded Shockwave] deals 4x damage to all nearby foes, destroys all nearby hostile projectiles, and grants Ironskin to nearby allies for 8 seconds
+					[Degraded Shockwave] deals 400% damage to all nearby foes, destroys all nearby hostile projectiles, and grants Ironskin to nearby allies for 8 seconds
 					'Now, sink into everlasting quietude'
 					'''
 			}
@@ -13021,7 +12886,7 @@ Mods: {
 
 			TerrorTether: {
 				DisplayName: Terror Tether
-				Description: Mods.StarsAbove.Buffs.TerrorTether.Description
+				Description: ""
 			}
 
 			SharedPower: {
@@ -13244,6 +13109,8 @@ Mods: {
 			StarsAboveTip5: You can obtain Prismatic Cores by going on Cosmic Voyages!
 			StarsAboveTip6: Crafting Stellar Foci to upgrade your Stellaglyph could mean the difference between life and death!
 			StarsAboveTip7: Don't stay for too long on Anomaly planets- an incredibly dangerous foe will appear! Defeating it may offer great rewards, however...
+			StarsAboveTip8: Weapon Memories may be the ticket to success, but remember only Aspected Weapons can equip them!
+			StarsAboveTip9: Weapon Memories don't stack on the same weapon! Mix and match!
 		}
 
 		DamageClasses: {
@@ -13272,151 +13139,145 @@ Mods: {
 		}
 
 		Configs: {
+			StellarNovaHeader: "[c/EE9DE0:Stellar Nova Settings]"
+			PopUpDialogueHeader: "[c/C076DF:Pop-up Dialogue Settings]"
+			DialogueHeader: "[c/75C792:Disk Dialogue Settings]"
+			MiscHeader: "[c/7A76FF:Miscellaneous Settings]"
+
 			StarsAboveConfigClient: {
-				DisplayName: Stars Above Config Client
+				DisplayName: "Stars Above Config (Client-side)"
 
 				DisableStellarNovaCutIns: {
-					Label: "{$Mods.StarsAbove.Config.DisableStellarNovaCutIns.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DisableStellarNovaCutIns.Tooltip}"
+					Label: "Disable Stellar Nova cut-ins"
+					Tooltip: "Disables the portrait of your Starfarer when activating your Stellar Nova."
 				}
 
-				EnableStarfarerVoices: {
-					Label: "{$Mods.StarsAbove.Config.EnableStarfarerVoices.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.EnableStarfarerVoices.Tooltip}"
+				DisableStarfarerVoices: {
+					Label: "Disable Starfarer voice lines"
+					Tooltip: "Disables the Starfarer's voice lines."
 				}
 
 				DisableStellarNovaDialogue: {
-					Label: "{$Mods.StarsAbove.Config.DisableStellarNovaDialogue.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DisableStellarNovaDialogue.Tooltip}"
+					Label: "Disable Stellar Nova dialogue box"
+					Tooltip: "Disables the dialogue box during the Stellar Nova cut-in."
 				}
 
 				DisableStarfarerCommentary: {
-					Label: "{$Mods.StarsAbove.Config.DisableStarfarerCommentary.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DisableStarfarerCommentary.Tooltip}"
+					Label: "Disable Starfarer commentary"
+					Tooltip: "Disable Starfarer Prompts entirely."
 				}
 
 				DisableStarfarerCommentaryBuffs: {
-					Label: "{$Mods.StarsAbove.Config.DisableStarfarerCommentaryBuffs.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DisableStarfarerCommentaryBuffs.Tooltip}"
+					Label: "Disable Starfarer commentary on buffs/debuffs"
+					Tooltip: "You will no longer recieve Starfarer Prompts for getting buffed/debuffed."
 				}
 
 				DisableStarfarerCommentaryCombat: {
-					Label: "{$Mods.StarsAbove.Config.DisableStarfarerCommentaryCombat.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DisableStarfarerCommentaryCombat.Tooltip}"
+					Label: "Disable Starfarer commentary for combat events"
+					Tooltip: "You will no longer recieve Starfarer Prompts for killing foes, etc."
 				}
 
 				StarfarerPromptCooldown: {
-					Label: "{$Mods.StarsAbove.Config.StarfarerPromptCooldown.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.StarfarerPromptCooldown.Tooltip}"
+					Label: "Starfarer Prompt Cooldown"
+					Tooltip: "The time between Starfarer Prompts in minutes. If a trigger for a prompt occurs during this time, it is ignored. Does not apply to unique prompts (Bosses, etc.)"
 				}
 
 				CommentaryTimer: {
-					Label: "{$Mods.StarsAbove.Config.CommentaryTimer.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.CommentaryTimer.Tooltip}"
+					Label: "Starfarer Prompt Timer"
+					Tooltip: "Changes the length that Starfarer Prompts stay on screen."
 				}
 
 				DialogueScrollValue: {
-					Label: "{$Mods.StarsAbove.Config.DialogueScrollValue.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DialogueScrollValue.Tooltip}"
+					Label: "Starfarer Text Speed"
+					Tooltip: "The time for dialogue text to increment in frames. Below 2, it is recommended to disable dialogue sound effects."
 				}
 
 				DialogueAudio: {
-					Label: "{$Mods.StarsAbove.Config.DialogueAudio.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DialogueAudio.Tooltip}"
+					Label: "Starfarer Text Sound Effect"
+					Tooltip: "The sound effect that plays when letters appear during Starfarer Dialogue. Option 5 disables the sound effect."
 				}
 
 				InstantText: {
-					Label: "{$Mods.StarsAbove.Config.InstantText.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.InstantText.Tooltip}"
-				}
-
-				DisableDraggingDialogue: {
-					Label: "{$Mods.StarsAbove.Config.DisableDraggingDialogue.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DisableDraggingDialogue.Tooltip}"
+					Label: "Instant Text"
+					Tooltip: "Ignores the Starfarer Text Speed option; all text will appear instantly."
 				}
 
 				EnableMusicOverride: {
-					Label: "{$Mods.StarsAbove.Config.EnableMusicOverride.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.EnableMusicOverride.Tooltip}"
-				}
-
-				EnablePlayerWorldLock: {
-					Label: "{$Mods.StarsAbove.Config.EnablePlayerWorldLock.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.EnablePlayerWorldLock.Tooltip}"
-				}
-
-				EnableAprilFools: {
-					Label: "{$Mods.StarsAbove.Config.EnableAprilFools.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.EnableAprilFools.Tooltip}"
+					Label: "Weapon music overrides all other music"
+					Tooltip: "When enabled, weapons that change the game's music will have priority over nearly everything else."
 				}
 
 				DisableWeaponCutIns: {
-					Label: "{$Mods.StarsAbove.Config.DisableWeaponCutIn.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DisableWeaponCutIn.Tooltip}"
+					Label: "Disable Weapon Cut-In Effect"
+					Tooltip: "Disable screen-wide animations that play when using certain weapons."
 				}
 
 				PromptLoc: {
-					Label: "{$Mods.StarsAbove.Config.PromptLoc.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.PromptLoc.Tooltip}"
+					Label: "Starfarer Prompt positiion"
+					Tooltip: "Position is measured from the bottom right of the screen!"
 				}
 
 				MovingDialogueAmount: {
-					Label: Moving Dialogue Amount
-					Tooltip: ""
+					Label: "Starfarer Menu Movement"
+					Tooltip: "Adjust how much the Starfarer menus move while you're moving."
 				}
 
 				DisableBlur: {
 					Label: Disable Blur
-					Tooltip: ""
+					Tooltip: "Disables blur effect in menus/cutscenes."
+				}
+				DisableBlur: {
+					Label: Disable Screen Shake
+					Tooltip: "Disables screen shake effects from all sources."
 				}
 			}
 
 			StarsAboveServersideConfig: {
-				DisplayName: Stars Above Serverside Config
+				DisplayName: "Stars Above Config (Server-side)"
 
 				DisableTypePenalty: {
-					Label: "{$Mods.StarsAbove.Config.DisableTypePenalty.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DisableTypePenalty.Tooltip}"
+					Label: "Disable damage penalty for Aspected Damage modification"
+					Tooltip: "10% damage penalty when Aspected Damage modification is enabled is removed. Note that some effects that also remove this effect will be overpowered as a result."
 				}
 
 				DisableBossAggro: {
-					Label: "{$Mods.StarsAbove.Config.DisableBossAggro.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DisableBossAggro.Tooltip}"
+					Label: "Disable Boss Aggro Marker"
+					Tooltip: "Disables the marker that appears over a player's head when a boss targets them. This is a WIP feature."
 				}
 
 				DisableCalamityWeaponBuffs: {
-					Label: "{$Mods.StarsAbove.Config.DisableCalamityWeaponBuffs.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DisableCalamityWeaponBuffs.Tooltip}"
+					Label: "Disable global damage modifiers for mod compatibility"
+					Tooltip: "Disables the increase to Aspected Weapon damage when the Calamity Mod is enabled."
 				}
 
 				DisableWeaponRestrictions: {
-					Label: "{$Mods.StarsAbove.Config.DisableWeaponRestrictions.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DisableWeaponRestrictions.Tooltip}"
+					Label: "Disable Aspected Weapon restrictions"
+					Tooltip: "Disables the restriction for Astral and Umbral weapons being wielded by the opposite Aspect."
 				}
 
 				DisableBossEnemySpawnMod: {
-					Label: "{$Mods.StarsAbove.Config.DisableBossEnemySpawnMod.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DisableBossEnemySpawnMod.Tooltip}"
+					Label: "Disable Boss Enemy Spawn Mod"
+					Tooltip: "Disables the buff granted to all players that prevents mob spawning during bosses. Other mods may sometimes include duplicates of this feature."
 				}
 
 				DisableManaSicknessChange: {
-					Label: "{$Mods.StarsAbove.Config.DisableManaSicknessChange.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DisableManaSicknessChange.Tooltip}"
+					Label: "Disable Mana Sickness Change"
+					Tooltip: "Disables the change to Mana Sickness that applies the damage reduction to all damage and not just Magic. Note that this will make non-Magic weapons that consume Mana overpowered."
 				}
 
 				ColorblindBoss: {
-					Label: "{$Mods.StarsAbove.Config.ColorblindBoss.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.ColorblindBoss.Tooltip}"
+					Label: "Enable colorblind-friendly Penthesilea fight"
+					Tooltip: "Replaces certain color-based mechanics in the Penthesilea boss fight."
 				}
 
 				DisableCompatibilityMode: {
-					Label: "{$Mods.StarsAbove.Config.SubworldCompatibility.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.SubworldCompatibility.Tooltip}"
+					Label: "Disable Multiplayer Compatibility-Fix for Cosmic Voyages"
+					Tooltip: "When disabled, allows for players in Multiplayer to undertake Cosmic Voyages. This is known to cause issues, use at your own risk. When enabled, attempting to conduct Cosmic Voyages will drop their requisite items on a timer."
 				}
 
 				CombatTimer: {
-					Label: "{$Mods.StarsAbove.Config.CombatTimer.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.CombatTimer.Tooltip}"
+					Label: "Combat Timer"
+					Tooltip: "When striking a foe or getting struck, this is the time in seconds you are 'in combat.'"
 				}
 			}
 		}

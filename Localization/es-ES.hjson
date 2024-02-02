@@ -401,7 +401,7 @@ Mods: {
 
 				SpectralNail: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Spectral Nail']"
-					// Description: Every 5 strikes against a foe deals 30% bonus true damage.
+					// Description: Every 5 strikes against a foe deals 30% bonus damage.
 				}
 
 				Armsthrift: {
@@ -456,7 +456,7 @@ Mods: {
 
 				LavenderRefrain: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Lavender Refrain']"
-					// Description: When taking damage, Mana is treated as bonus health. When this effect triggers, Max Mana is reduced by 10%. This stacks until Max Mana is reduced by 100%. Resets after not taking damage for 20 seconds.
+					// Description: When taking damage, Mana is treated as bonus health. When this effect triggers, Max Mana is reduced by 10% until Max Mana is reduced by 100%. Max Mana slowly recovers after not taking damage for 10 seconds.
 				}
 
 				HealthyConfidence: {
@@ -7627,7 +7627,7 @@ Mods: {
 					Charged attacks with this weapon vary depending on the amount of [c/F7D76A:Overcharge]
 					[c/F7D76A:Overcharging] will additionally drain your HP upon reaching [c/F7D76A:Overcharge] thresholds (Will not reduce health below 1)
 					Charged attacks swing the blade in a colossal arc, inflicting Frostburn for 4 seconds
-					Second stage charge attacks consume 20 HP, but deal 2x base damage and will inflict Shadowflame for 4 seconds
+					Second stage charge attacks consume 20 HP, but deal 200% damage and will inflict Shadowflame for 4 seconds
 					At maximum [c/F7D76A:Overcharge], consume an additional 30 HP but guarantees a critical strike and inflict [c/FF4DF4:Hyperburn] for 4 seconds
 					[c/FF4DF4:Hyperburn] deals powerful damage over time and ignores most resistances
 					''' */
@@ -7669,7 +7669,7 @@ Mods: {
 					Bullets will apply [c/F3CE36:Security Level] for 12 seconds, marking the target
 					[c/CF3C32:Thunderbird] allows for the deployment of homing bombs that ignore terrain, exploding and dealing 20% increased damage to foes below 50% HP
 					Explosions will apply [c/F3CE36:Security Level] for 12 seconds, marking the target
-					[c/CF1826:Behemoth Typhoon] swings a massive coffin, dealing 3x damage when released
+					[c/CF1826:Behemoth Typhoon] swings a massive coffin, dealing 300% damage when released
 					Attacks on foes with [c/F3CE36:Security Level] using [c/CF1826:Behemoth Typhoon]'s released attack cleanses the debuff, charging the [c/EB936A:Overdrive Gauge]
 					Holding the Weapon Action Key will charge a powerful attack, consuming the [c/EB936A:Overdrive Gauge]
 					Releasing the Weapon Action Key executes a powerful close-ranged strike, increasing in power with the amount of [c/EB936A:Overdrive Gauge] consumed
@@ -7726,7 +7726,7 @@ Mods: {
 					'''
 					Attacks with this weapon strikes foes multiple times with a close-ranged slash
 					Striking foes grant 1 [c/FC578E:LV] (Critical strikes grant 5 [c/FC578E:LV] instead)
-					Right click to unleash a [c/F4296D:SLAUGHTERING SLASH] at your cursor after a short delay, dealing 3x damage in a vertical slash (6 second cooldown)
+					Right click to unleash a [c/F4296D:SLAUGHTERING SLASH] at your cursor after a short delay, dealing 300% damage in a vertical slash (6 second cooldown)
 					Additionally, the [c/F4296D:SLAUGHTERING SLASH] grants 2 [c/FC578E:LV] per hit
 					[c/FC578E:LV] caps at 100 and will deplete quickly out of combat
 					Taking damage resets [c/FC578E:LV] but reduces damage taken based on amount of [c/FC578E:LV]
@@ -7751,8 +7751,8 @@ Mods: {
 					[c/AE0000:E.G.O. Manifestation] grants 30% increased damage, 40% increased attack speed, and 90% increased movement speed, but reduces defense by 30
 					If [c/AE0000:E.G.O. Manifestation] is active, unique [c/FF0046:Great Split] attacks can be performed
 					Execute [c/FF0046:Great Split: Vertical] with right click or [c/FF0046:Great Split: Horizontal] with the Weapon Action Key (Both attacks share a 1 minute cooldown)
-					[c/FF0046:Great Split: Vertical] will grant Invincibility for 1 second and deal 8x guaranteed close-ranged critical damage after a short delay
-					[c/FF0046:Great Split: Horizontal] will deal 3x guaranteed critical damage to all foes on the screen after a short delay
+					[c/FF0046:Great Split: Vertical] will grant Invincibility for 1 second and deal 800% guaranteed close-ranged critical damage after a short delay
+					[c/FF0046:Great Split: Horizontal] will deal 300% guaranteed critical damage to all foes on the screen after a short delay
 					Both [c/FF0046:Great Split] attacks will execute any non-boss enemy below 30% HP and additionally refill [c/D53B3B:Emotional Turbulence] to full upon activation
 					If [c/AE0000:E.G.O. Manifestation] is active, [c/D53B3B:Emotional Turbulence] will passively decrease over time (Resets when not holding the weapon)
 					The longer [c/AE0000:E.G.O. Manifestation] lasts, the faster [c/D53B3B:Emotional Turbulence] will drain
@@ -8080,12 +8080,12 @@ Mods: {
 					This mana cost can not be negated by any means
 					You can have up to 2 [c/BB3B27:Powder Kegs] active at the same time, and kegs disappear after 20 seconds or when not holding this weapon
 					After a short delay, the [c/BB3B27:Powder Keg] becomes active, and attacking it with this weapon will cause it to explode
-					This explosion deals 4x damage while additionally granting Swiftness for 8 seconds
+					This explosion deals 400% damage while additionally granting Swiftness for 8 seconds
 					Additionally, nearby [c/BB3B27:Powder Kegs] will also explode, dealing 50% more damage than if exploded directly
 					Press the Weapon Action Key to gain 3 stacks of [c/E18121:Cannonfire Deluge] for 12 seconds (1 minute cooldown)
 					With stacks of [c/E18121:Cannonfire Deluge], pressing the Weapon Action Key will consume a stack, causing a rain of explosive cannonballs to descend on your cursor
 					Additionally, gain Swiftness for 12 seconds upon activation
-					The final [c/E18121:Cannonfire Deluge] will end with a larger cannonball that deals 3x damage, stunning foes for 2 seconds
+					The final [c/E18121:Cannonfire Deluge] will end with a larger cannonball that deals 300% damage, stunning foes for 2 seconds
 					'Neither the flames nor the depths could claim me...'
 					''' */
 				// DisplayName: Saltwater Scourge
@@ -8130,11 +8130,11 @@ Mods: {
 					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty]
 					Right click to unleash [c/FFC500:Vasavi Shakti], leaping into the air, gaining Featherfall and Invincibility for 2 seconds (1 minute cooldown)
 					[c/FFC500:Vasavi Shakti] channels a powerful beam of energy towards your cursor for 2 seconds
-					[c/FFC500:Vasavi Shakti] will conclude with a colossal explosion, dealing 2x guaranteed critical damage and inflicting Daybroken for 8 seconds
+					[c/FFC500:Vasavi Shakti] will conclude with a colossal explosion, dealing 200% guaranteed critical damage and inflicting Daybroken for 8 seconds
 					The current [c/F592BF:Aspected Damage Type] influences the weapon's attacks (Weapon can not be used without [c/F592BF:Aspected Damage Type])
 					[c/FFAB4D:Melee]: Rapidly stab in a close-ranged flurry; Charged attacks swing in a wide arc, burning foes for 8 seconds
 					[c/EF4DFF:Magic]: Lightning spears converge on your cursor after a delay, causing lightning to arc from foes struck
-					[c/4DFF5B:Ranged]: Attacks launch the spear at high velocity, dealing 2x damage and piercing infinitely without damage falloff
+					[c/4DFF5B:Ranged]: Attacks launch the spear at high velocity, dealing 200% damage and piercing infinitely without damage falloff
 					[c/00CDFF:Summon]: Attacks extend a burning whip, causing summons to inflict Daybroken for 2 seconds on hit
 					'With this single strike, I shall inflict extinction!'
 					''' */
@@ -8241,7 +8241,7 @@ Mods: {
 					Launching yourself will deal 5% Max HP in self damage, but grants the buff [c/E74336:Death from Above] for 4 seconds (Buff is removed upon landing)
 					During this time, rocket explosions deal 20% increased non-critical strike damage and 40% increased critical strike damage
 					Right click to swing the [c/83D26E:Bargain Gardener], dealing damage to nearby foes (Critical strikes are disabled)
-					Striking foes with the [c/83D26E:Bargain Gardener] while airborne under the effect of [c/E74336:Death from Above] will guarantee a 2x damage critical strike
+					Striking foes with the [c/83D26E:Bargain Gardener] while airborne under the effect of [c/E74336:Death from Above] will guarantee a 200% damage critical strike
 					'Ka-boom!'
 					''' */
 			}
@@ -8254,7 +8254,7 @@ Mods: {
 					Striking foes with this weapon grants Swiftness for 3 seconds
 					Press the Weapon Action Key to sling a yo-yo forwards, travelling a short distance (Yo-yo returns after two seconds)
 					Press the Weapon Action Key after the yo-yo has stopped movement will launch you towards the yo-yo, returning it
-					Additionally, gain the buff [c/B9F1FA:Kick Start] for 3 seconds, causing the next attack with this weapon to deal 2x damage, consuming the buff
+					Additionally, gain the buff [c/B9F1FA:Kick Start] for 3 seconds, causing the next attack with this weapon to deal 200% damage, consuming the buff
 					Right click to prepare the [c/E08738:Killing Bear], gaining the buff [c/E03838:Me and My Killing Machine] for 8 seconds (30 second cooldown)
 					During this time, striking foes with this weapon will cause the [c/E08738:Killing Bear] to deal a follow-up attack (1 second delay)
 					The [c/E08738:Killing Bear]'s follow-up attacks will additionally grant [c/B9F1FA:Kick Start] for 2 seconds
@@ -8503,14 +8503,14 @@ Mods: {
 				/* Tooltip:
 					'''
 					Attacks with this weapon unleashes [c/7444FF:Drown], firing a weak piercing bolt that strikes 2 times, dealing 15% bonus damage to foes afflicted with Shadowflame
-					Right click to unleash [c/9036F5:Flood], firing a bolt of void energy that explodes on impact, dealing 4x damage while inflicting Shadowflame for 5 seconds (8 second cooldown)
+					Right click to unleash [c/9036F5:Flood], firing a bolt of void energy that explodes on impact, dealing 400% damage while inflicting Shadowflame for 5 seconds (8 second cooldown)
 					Taking damage or using [c/7444FF:Drown] increases [c/7A1AE7:Void Corruption] ([c/7A1AE7:Void Corruption] passively increases over time) 
 					Pressing the Weapon Action Key will consume 25% [c/7A1AE7:Void Corruption] to activate [c/73C84E:Suppress], healing 25 HP and 25% Max MP (2 second cooldown)
 					Consecutive activations of [c/73C84E:Suppress] heals 5 HP instead
 					When [c/7A1AE7:Void Corruption] reaches maxiumum, become afflicted with [c/E71A1A:Fiendish Corruption]
 					While under the effects of [c/E71A1A:Fiendish Corruption], gain 12 defense, [c/7A1AE7:Void Corruption] drains over time, and weapon abilities are transformed
 					[c/7444FF:Drown] becomes [c/CD1717:Corrupted Drown], transforming into a channeled beam that deals powerful damage, but no longer charges [c/7A1AE7:Void Corruption] and inflicts Slow on self when active
-					[c/9036F5:Flood] becomes [c/B1296D:Corrupted Flood], dealing 10x damage and cooldown is reduced to 4 seconds, but does not inflict Shadowflame
+					[c/9036F5:Flood] becomes [c/B1296D:Corrupted Flood], dealing 1000% damage and cooldown is reduced to 4 seconds, but does not inflict Shadowflame
 					[c/73C84E:Suppress] becomes [c/C84EB6:Corrupted Suppress], consuming 50 HP to restore 50% Max MP and increase [c/7A1AE7:Void Corruption] by 25%
 					'..and so it comes... for all of us.'
 					''' */
@@ -8550,7 +8550,7 @@ Mods: {
 					Once [c/78F178:Dragonshift Energy] reaches 50% or more, press the Weapon Action Key to activate [c/9AFE35:Windwyrm State]
 					[c/9AFE35:Windwyrm State] transforms yourself into a powerful dragon, healing 100 HP instantly while constantly draining [c/78F178:Dragonshift Energy]
 					Additionally, taking damage subtracts [c/78F178:Dragonshift Energy] instead
-					Within [c/9AFE35:Windwyrm State], attacks become powerful claw slashes that deal 2x damage in a large area and inflict [c/CCEDAA:Stormlash] for 3 seconds
+					Within [c/9AFE35:Windwyrm State], attacks become powerful claw slashes that deal 200% damage in a large area and inflict [c/CCEDAA:Stormlash] for 3 seconds
 					[c/CCEDAA:Stormlash] is consumed when minions deal damage and increases damage dealt by 1% for every minion slot
 					Right click to summon powerful tornadoes on all nearby foes while inflicting [c/CCEDAA:Stormlash] for 1 second per hit (6 second cooldown)
 					[c/9AFE35:Windwyrm State] ends when all [c/78F178:Dragonshift Energy] is depleted
@@ -8566,7 +8566,7 @@ Mods: {
 					Summons an oceanblessed blade to assail foes
 					The weapon requires 3 minion slots available to be summoned but does not consume minion slots
 					When holding this weapon, holding left click while the weapon is summoned will allow for manual control of the weapon with your cursor
-					Additionally, damage is reduced or multipled up to 1.5x depending on speed and gain 2% critical strike chance per minion slot for this weapon only
+					Additionally, damage is reduced or multipled up to 1.500% depending on speed and gain 2% critical strike chance per minion slot for this weapon only
 					Critical strikes with this weapon will inflict [c/4A91FF:Riptide] for 2 seconds and grants Swiftness for 4 seconds
 					[c/4A91FF:Riptide] increases the damage of the next minion attack by 30% (This weapon can detonate this effect)
 					Press the Weapon Action Key when manually controlling the weapon to slash in an area around the weapon, inflicting [c/4A91FF:Riptide] for 2 seconds (4 second cooldown)
@@ -8973,7 +8973,7 @@ Mods: {
 					At certain thresholds of [c/D81919:Rebellion], manifest portions of the [c/EC2B65:Crimson Armor], gaining 5 defense per armor
 					Once [c/D81919:Rebellion] is at maximum and all portions of the [c/EC2B65:Crimson Armor] are equipped, increase defense further and gain access to [c/8D0404:Clarent Blood Arthur]
 					Additionally, gain a 3rd combo attack and striking foes now burst into red lightning (3rd combo strike empowers lightning)
-					Right click to unleash [c/8D0404:Clarent Blood Arthur], dealing 2x damage in a powerful burst towards your cursor after a delay and is a guaranteed critical strike against bosses (1 minute cooldown)
+					Right click to unleash [c/8D0404:Clarent Blood Arthur], dealing 200% damage in a powerful burst towards your cursor after a delay and is a guaranteed critical strike against bosses (1 minute cooldown)
 					''' */
 			}
 
@@ -9002,7 +9002,7 @@ Mods: {
 					Press the Weapon Action Key to swap between Grenade, Shuriken, and Molotov Cocktail
 					Right click to consume the selected ordinance (4 second cooldown)
 					When thrown with this weapon's right click ability, certain throwable items are empowered and inherit this weapon's damage
-					Grenades are upgraded into [c/FFB969:High-Velocity Grenades], dealing 3x damage
+					Grenades are upgraded into [c/FFB969:High-Velocity Grenades], dealing 300% damage
 					Shurikens are upgraded into [c/91CED3:Energy Stars], stunning non-boss foes struck for 1 second
 					Molotov Cocktails are upgraded into [c/FF5740:Thermal Flares], spawning more fire in a condensed area
 					''' */
@@ -9232,7 +9232,7 @@ Mods: {
 					[c/E94DEC:Stellar Termination] fires a powerful barrage of energy towards your cursor after a short delay which extends debuff durations on foes by 2 seconds per hit (up to 20 seconds)
 					Additionally, grant [c/B6FADC:Merculight] to all nearby allies, increasing critical strike damage by 30% for 15 seconds
 					If Stellar Nova is fully charged, [c/B6FADC:Merculight] additionally grants 25% critical strike chance
-					Once [c/E94DEC:Stellar Termination] ends, all foes struck by [c/E94DEC:Stellar Termination] explode for 3x damage
+					Once [c/E94DEC:Stellar Termination] ends, all foes struck by [c/E94DEC:Stellar Termination] explode for 300% damage
 					''' */
 			}
 
@@ -9294,14 +9294,14 @@ Mods: {
 					2 summon tag damage
 					Summon tag damage scales with world progression
 					Attacks with this weapon travel incredibly fast and inflict Starblight for 4 seconds
-					Additionally, attacks inflict a stack of [Elemental Surge] on hit
-					Holding this weapon summons 3 [Catalyst Keys] to assail foes with long-range energy bolts, ignoring 25% of foe's defense
-					[Catalyst Keys] inflict [Elemental Surge] when attacking foes
-					At 6 stacks of [Elemental Surge] the next application will instead burst all stacks, dealing bonus damage
-					Every time [Elemental Surge] is removed in this manner, gain [Alignment] (Up to 5)
-					Once [Alignment] is at maximum, press the Weapon Action Key to transform the [Catalyst Keys] for 4 seconds
-					Transformed [Catalyst Keys] rapidly strike foes with close-ranged slashes, dealing bonus damage based on the foe's defense
-					Transformed [Catalyst Keys] inflict [Elemental Surge], but do not grant [Alignment]
+					Additionally, attacks inflict a stack of [c/F8FF8B:Elemental Surge] on hit
+					Right click to summon [c/FF5D93:Catalyst Keys] to assail foes with long-range energy bolts, ignoring 25% of foe's defense
+					[c/FF5D93:Catalyst Keys] inflict [c/F8FF8B:Elemental Surge] when attacking foes
+					At 6 stacks of [c/F8FF8B:Elemental Surge] the next application will instead burst all stacks, dealing bonus damage
+					Every time [c/F8FF8B:Elemental Surge] is removed in this manner, gain [c/F28C60:Alignment] (Up to 5)
+					Once [c/F28C60:Alignment] is at maximum, press the Weapon Action Key to transform the [c/FF5D93:Catalyst Keys] for 4 seconds
+					Transformed [c/FF5D93:Catalyst Keys] rapidly strike foes with close-ranged slashes, dealing bonus damage based on the foe's defense
+					Transformed [c/FF5D93:Catalyst Keys] inflict [c/F8FF8B:Elemental Surge], but [c/F28C60:Alignment] can not be gained while transformed
 					''' */
 			}
 
@@ -9349,7 +9349,7 @@ Mods: {
 					[Degraded Chain]: Deal damage to all nearby foes while inflicting [Fairy] for 6 seconds
 					[Degraded Pillar]: Fire a fast piercing pillar towards your cursor that deals guaranteed critical damage
 					Press the Weapon Action Key to activate [Degraded Shockwave] (90 second cooldown)
-					[Degraded Shockwave] deals 4x damage to all nearby foes, destroys all nearby hostile projectiles, and grants Ironskin to nearby allies for 8 seconds
+					[Degraded Shockwave] deals 400% damage to all nearby foes, destroys all nearby hostile projectiles, and grants Ironskin to nearby allies for 8 seconds
 					'Now, sink into everlasting quietude'
 					''' */
 			}

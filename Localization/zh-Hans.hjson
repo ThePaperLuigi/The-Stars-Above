@@ -401,7 +401,7 @@ Mods: {
 
 				SpectralNail: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Spectral Nail']"
-					// Description: Every 5 strikes against a foe deals 30% bonus true damage.
+					// Description: Every 5 strikes against a foe deals 30% bonus damage.
 				}
 
 				Armsthrift: {
@@ -456,7 +456,7 @@ Mods: {
 
 				LavenderRefrain: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Lavender Refrain']"
-					// Description: When taking damage, Mana is treated as bonus health. When this effect triggers, Max Mana is reduced by 10%. This stacks until Max Mana is reduced by 100%. Resets after not taking damage for 20 seconds.
+					// Description: When taking damage, Mana is treated as bonus health. When this effect triggers, Max Mana is reduced by 10% until Max Mana is reduced by 100%. Max Mana slowly recovers after not taking damage for 10 seconds.
 				}
 
 				HealthyConfidence: {
@@ -8580,7 +8580,7 @@ Mods: {
 					Summons an oceanblessed blade to assail foes
 					The weapon requires 3 minion slots available to be summoned but does not consume minion slots
 					When holding this weapon, holding left click while the weapon is summoned will allow for manual control of the weapon with your cursor
-					Additionally, damage is reduced or multipled up to 1.5x depending on speed and gain 2% critical strike chance per minion slot for this weapon only
+					Additionally, damage is reduced or multipled up to 1.500% depending on speed and gain 2% critical strike chance per minion slot for this weapon only
 					Critical strikes with this weapon will inflict [c/4A91FF:Riptide] for 2 seconds and grants Swiftness for 4 seconds
 					[c/4A91FF:Riptide] increases the damage of the next minion attack by 30% (This weapon can detonate this effect)
 					Press the Weapon Action Key when manually controlling the weapon to slash in an area around the weapon, inflicting [c/4A91FF:Riptide] for 2 seconds (4 second cooldown)
@@ -8986,7 +8986,7 @@ Mods: {
 					At certain thresholds of [c/D81919:Rebellion], manifest portions of the [c/EC2B65:Crimson Armor], gaining 5 defense per armor
 					Once [c/D81919:Rebellion] is at maximum and all portions of the [c/EC2B65:Crimson Armor] are equipped, increase defense further and gain access to [c/8D0404:Clarent Blood Arthur]
 					Additionally, gain a 3rd combo attack and striking foes now burst into red lightning (3rd combo strike empowers lightning)
-					Right click to unleash [c/8D0404:Clarent Blood Arthur], dealing 2x damage in a powerful burst towards your cursor after a delay and is a guaranteed critical strike against bosses (1 minute cooldown)
+					Right click to unleash [c/8D0404:Clarent Blood Arthur], dealing 200% damage in a powerful burst towards your cursor after a delay and is a guaranteed critical strike against bosses (1 minute cooldown)
 					''' */
 			}
 
@@ -9015,7 +9015,7 @@ Mods: {
 					Press the Weapon Action Key to swap between Grenade, Shuriken, and Molotov Cocktail
 					Right click to consume the selected ordinance (4 second cooldown)
 					When thrown with this weapon's right click ability, certain throwable items are empowered and inherit this weapon's damage
-					Grenades are upgraded into [c/FFB969:High-Velocity Grenades], dealing 3x damage
+					Grenades are upgraded into [c/FFB969:High-Velocity Grenades], dealing 300% damage
 					Shurikens are upgraded into [c/91CED3:Energy Stars], stunning non-boss foes struck for 1 second
 					Molotov Cocktails are upgraded into [c/FF5740:Thermal Flares], spawning more fire in a condensed area
 					''' */
@@ -9245,7 +9245,7 @@ Mods: {
 					[c/E94DEC:Stellar Termination] fires a powerful barrage of energy towards your cursor after a short delay which extends debuff durations on foes by 2 seconds per hit (up to 20 seconds)
 					Additionally, grant [c/B6FADC:Merculight] to all nearby allies, increasing critical strike damage by 30% for 15 seconds
 					If Stellar Nova is fully charged, [c/B6FADC:Merculight] additionally grants 25% critical strike chance
-					Once [c/E94DEC:Stellar Termination] ends, all foes struck by [c/E94DEC:Stellar Termination] explode for 3x damage
+					Once [c/E94DEC:Stellar Termination] ends, all foes struck by [c/E94DEC:Stellar Termination] explode for 300% damage
 					''' */
 			}
 
@@ -9307,14 +9307,14 @@ Mods: {
 					2 summon tag damage
 					Summon tag damage scales with world progression
 					Attacks with this weapon travel incredibly fast and inflict Starblight for 4 seconds
-					Additionally, attacks inflict a stack of [Elemental Surge] on hit
-					Holding this weapon summons 3 [Catalyst Keys] to assail foes with long-range energy bolts, ignoring 25% of foe's defense
-					[Catalyst Keys] inflict [Elemental Surge] when attacking foes
-					At 6 stacks of [Elemental Surge] the next application will instead burst all stacks, dealing bonus damage
-					Every time [Elemental Surge] is removed in this manner, gain [Alignment] (Up to 5)
-					Once [Alignment] is at maximum, press the Weapon Action Key to transform the [Catalyst Keys] for 4 seconds
-					Transformed [Catalyst Keys] rapidly strike foes with close-ranged slashes, dealing bonus damage based on the foe's defense
-					Transformed [Catalyst Keys] inflict [Elemental Surge], but do not grant [Alignment]
+					Additionally, attacks inflict a stack of [c/F8FF8B:Elemental Surge] on hit
+					Right click to summon [c/FF5D93:Catalyst Keys] to assail foes with long-range energy bolts, ignoring 25% of foe's defense
+					[c/FF5D93:Catalyst Keys] inflict [c/F8FF8B:Elemental Surge] when attacking foes
+					At 6 stacks of [c/F8FF8B:Elemental Surge] the next application will instead burst all stacks, dealing bonus damage
+					Every time [c/F8FF8B:Elemental Surge] is removed in this manner, gain [c/F28C60:Alignment] (Up to 5)
+					Once [c/F28C60:Alignment] is at maximum, press the Weapon Action Key to transform the [c/FF5D93:Catalyst Keys] for 4 seconds
+					Transformed [c/FF5D93:Catalyst Keys] rapidly strike foes with close-ranged slashes, dealing bonus damage based on the foe's defense
+					Transformed [c/FF5D93:Catalyst Keys] inflict [c/F8FF8B:Elemental Surge], but [c/F28C60:Alignment] can not be gained while transformed
 					''' */
 			}
 
@@ -9362,7 +9362,7 @@ Mods: {
 					[Degraded Chain]: Deal damage to all nearby foes while inflicting [Fairy] for 6 seconds
 					[Degraded Pillar]: Fire a fast piercing pillar towards your cursor that deals guaranteed critical damage
 					Press the Weapon Action Key to activate [Degraded Shockwave] (90 second cooldown)
-					[Degraded Shockwave] deals 4x damage to all nearby foes, destroys all nearby hostile projectiles, and grants Ironskin to nearby allies for 8 seconds
+					[Degraded Shockwave] deals 400% damage to all nearby foes, destroys all nearby hostile projectiles, and grants Ironskin to nearby allies for 8 seconds
 					'Now, sink into everlasting quietude'
 					''' */
 			}

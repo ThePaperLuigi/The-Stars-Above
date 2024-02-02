@@ -12,15 +12,15 @@ namespace StarsAbove.Systems
 
         public override ConfigScope Mode => ConfigScope.ClientSide;
 
-        [Header("$Mods.StarsAbove.Config.StellarNovaHeader")]
+        [Header("$Mods.StarsAbove.Configs.StellarNovaHeader")]
 
         public bool DisableStellarNovaCutIns;
 
-        public bool EnableStarfarerVoices;
+        public bool DisableStarfarerVoices;
 
         public bool DisableStellarNovaDialogue;
 
-        [Header("$Mods.StarsAbove.Config.PopUpDialogueHeader")]
+        [Header("$Mods.StarsAbove.Configs.PopUpDialogueHeader")]
 
         public bool DisableStarfarerCommentary;
 
@@ -45,7 +45,7 @@ namespace StarsAbove.Systems
         public Vector2 PromptLoc { get; set; }
 
 
-        [Header("$Mods.StarsAbove.Config.DialogueHeader")]
+        [Header("$Mods.StarsAbove.Configs.DialogueHeader")]
 
         [Increment(1)]
         [Range(1, 5)]
@@ -68,10 +68,10 @@ namespace StarsAbove.Systems
         public float MovingDialogueAmount;
 
 
-        [Header("$Mods.StarsAbove.Config.MiscHeader")]
+        [Header("$Mods.StarsAbove.Configs.MiscHeader")]
         public bool EnableMusicOverride;
         public bool DisableBlur;
-
+        public bool DisableScreenShake;
         //[Label("$Mods.StarsAbove.Config.EnablePlayerWorldLock.Label")]
         //[Tooltip("$Mods.StarsAbove.Config.EnablePlayerWorldLock.Tooltip")]
         //public bool EnablePlayerWorldLock;
@@ -105,7 +105,8 @@ namespace StarsAbove.Systems
             StarsAbovePlayer.disablePromptsBuffs = DisableStarfarerCommentaryBuffs;
             StarsAbovePlayer.disablePromptsCombat = DisableStarfarerCommentaryCombat;
             StarsAbovePlayer.starfarerPromptActiveTimerSetting = CommentaryTimer;
-            StarsAbovePlayer.voicesEnabled = EnableStarfarerVoices;
+            StarsAbovePlayer.voicesDisabled = DisableStarfarerVoices;
+            StarsAbovePlayer.disableScreenShake = DisableScreenShake;
             StarsAbovePlayer.dialogueScrollTimerMax = DialogueScrollValue;
             StarsAbovePlayer.dialogueAudio = DialogueAudio;
             StarsAbovePlayer.disableBlur = DisableBlur;

@@ -939,10 +939,11 @@ namespace StarsAbove.Systems
         public static bool disablePromptsCombat;
 
         public static bool disableBlur;
+        public static bool disableScreenShake;
 
         public static bool noLockedCamera;
 
-        public static bool voicesEnabled;
+        public static bool voicesDisabled;
 
         ////////////////////////////////////////////////////////////////////////////////// STARFARER MENU
 
@@ -2334,15 +2335,7 @@ namespace StarsAbove.Systems
         {
             if(lavenderRefrain == 2)
             {
-                if(inCombat > 0)
-                {
-                    //No mana regen in combat
-                    healValue = 0;
-                }
-                else
-                {
-                    
-                }
+                
                 
             }
             base.GetHealMana(item, quickHeal, ref healValue);
@@ -2381,7 +2374,7 @@ namespace StarsAbove.Systems
             if (mysticforging == 2)
             {
                 modifiers.DisableCrit();
-                modifiers.SourceDamage += 1 + MathHelper.Lerp(0, 1, Player.GetCritChance(DamageClass.Generic) / 100) / 2;
+                modifiers.SourceDamage += 0f + MathHelper.Lerp(0f, 0.6f, Player.GetCritChance(DamageClass.Generic) / 100f) / 2f;
             }
 
             if (beyondinfinity == 2 && beyondInfinityDamageMod > 0)
@@ -3105,6 +3098,10 @@ namespace StarsAbove.Systems
 
             if (screenShakeTimerGlobal < 0 && screenShakeTimerGlobal > -100)
             {
+                if(disableScreenShake)
+                {
+                    return;
+                }
                 Main.screenPosition += new Vector2(Main.rand.Next(-screenShakeVelocity / 100, screenShakeVelocity / 100), Main.rand.Next(-screenShakeVelocity / 100, screenShakeVelocity / 100));
                 if (screenShakeVelocity >= 100)
                 {
@@ -3449,15 +3446,23 @@ namespace StarsAbove.Systems
 
 
         }
+        int lavenderRefrainReductionTimer;
         private void LavenderRefrain()
         {
             if (lavenderRefrain == 2)
             {
                 lavenderRefrainMaxManaReduction = Math.Clamp(lavenderRefrainMaxManaReduction, 0f, 1f);
                 Player.statManaMax2 = (int)(Player.statManaMax2 * lavenderRefrainMaxManaReduction);
-                if (timeAfterGettingHit > 1200)
+                if (timeAfterGettingHit > 600)
                 {
-                    lavenderRefrainMaxManaReduction = 1f;
+                    lavenderRefrainReductionTimer++;
+                    if(lavenderRefrainReductionTimer > 120)
+                    {
+                        lavenderRefrainMaxManaReduction += 0.1f;
+
+                        lavenderRefrainReductionTimer = 0;
+                    }
+                    lavenderRefrainMaxManaReduction = MathHelper.Clamp(lavenderRefrainMaxManaReduction, 0f, 1f);
                 }
             }
         }
@@ -8339,9 +8344,36 @@ namespace StarsAbove.Systems
 
         private void StellarNovaVoice()
         {
+            //TEMP until voice acting
+            if (Main.rand.NextBool(5) && chosenStellarNova != 7)//1 in 5 chance to play a Nova specific line. (No unique quotes for Guardian's Light)
+            {
+                novaDialogue = LangHelper.Wrap(LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + ".Special" + $"{chosenStellarNova}"), 20);
+
+
+            }
+            else
+            {
+                if (Main.rand.NextBool(100))
+                {
+                    string novaQuote = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + $".10");
+                    novaDialogue = LangHelper.Wrap(novaQuote, 20);
+
+
+                    return;
+                }
+                else
+                {
+                    randomNovaDialogue = Main.rand.Next(0, 9);
+                    string novaQuote = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + $".{randomNovaDialogue + 1}");
+                    novaDialogue = LangHelper.Wrap(novaQuote, 20);
+
+
+                }
+            }
+            return;//TEMP
 
             //If the ModConfig's voices are enabled, continue.
-            if (!voicesEnabled)
+            if (!voicesDisabled)
             {
                 if (Main.rand.NextBool(5) && chosenStellarNova != 7)//1 in 5 chance to play a Nova specific line. (No unique quotes for Guardian's Light)
                 {
@@ -8568,6 +8600,34 @@ namespace StarsAbove.Systems
 
                     }
 
+                }
+            }
+            else
+            {
+                if (Main.rand.NextBool(5) && chosenStellarNova != 7)//1 in 5 chance to play a Nova specific line. (No unique quotes for Guardian's Light)
+                {
+                    novaDialogue = LangHelper.Wrap(LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + ".Special" + $"{chosenStellarNova}"), 20);
+
+                    
+                }
+                else
+                {
+                    if (Main.rand.NextBool(100))
+                    {
+                        string novaQuote = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + $".10");
+                        novaDialogue = LangHelper.Wrap(novaQuote, 20);
+
+                        
+                        return;
+                    }
+                    else
+                    {
+                        randomNovaDialogue = Main.rand.Next(0, 9);
+                        string novaQuote = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + $".{randomNovaDialogue + 1}");
+                        novaDialogue = LangHelper.Wrap(novaQuote, 20);
+
+
+                    }
                 }
             }
         }
@@ -9442,7 +9502,10 @@ namespace StarsAbove.Systems
             
             if(lavenderRefrain == 2)
             {
-                if(Player.statMana > 0)
+                inCombat = 1200;
+                timeAfterGettingHit = 0;
+
+                if (Player.statMana > 0)
                 {
                     Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
                     CombatText.NewText(textPos, new Color(122, 113, 153, 255), $"{Player.statMana}", false, false);
