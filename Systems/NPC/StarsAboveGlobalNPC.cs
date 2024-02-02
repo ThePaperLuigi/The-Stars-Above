@@ -758,15 +758,8 @@ namespace StarsAbove.Systems
                 {
                     Rectangle textPos = new Rectangle((int)npc.position.X, (int)npc.position.Y - 20, npc.width, npc.height);
                     CombatText.NewText(textPos, new Color(255, 62, 247, 240), $"{(int)(damageDone * 0.2)}", false, false);
-                    if(npc.life <= npc.life - (int)(damageDone * 0.2))
-                    {
-                        npc.life = 1;
-                        npc.SimpleStrikeNPC((int)(damageDone * 0.2), 0, false, 0, DamageClass.Default, false, 0);
-                        spectralNailStacks = 0;
-                        return;
-                    }
+                    npc.SimpleStrikeNPC((int)(damageDone * 0.2), 0, false, 0, DamageClass.Default, false, 0);
 
-                    npc.life -= (int)(damageDone * 0.2);
                     spectralNailStacks = 0;
                 }
             }
@@ -860,15 +853,8 @@ namespace StarsAbove.Systems
                 {
                     Rectangle textPos = new Rectangle((int)npc.position.X, (int)npc.position.Y - 20, npc.width, npc.height);
                     CombatText.NewText(textPos, new Color(255, 62, 247, 240), $"{(int)(damageDone * 0.2)}", false, false);
-                    if (npc.life <= npc.life - (int)(damageDone * 0.2))
-                    {
-                        npc.life = 1;
-                        npc.SimpleStrikeNPC((int)(damageDone * 0.2), 0, false, 0, DamageClass.Default, false, 0);
-                        spectralNailStacks = 0;
-                        return;
-                    }
+                    npc.SimpleStrikeNPC((int)(damageDone * 0.2), 0, false, 0, DamageClass.Default, false, 0);
 
-                    npc.life -= (int)(damageDone * 0.2);
                     spectralNailStacks = 0;
                 }
             }
