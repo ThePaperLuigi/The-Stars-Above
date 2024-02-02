@@ -31,7 +31,15 @@ namespace StarsAbove.Projectiles.Summon.StarphoenixFunnel
 
         public override void Update(Player player, ref int buffIndex)
         {
-            
+            if (player.ownedProjectileCounts[ProjectileType<CatalystKey>()] > 0)
+            {
+                player.buffTime[buffIndex] = 18000;
+            }
+            else
+            {
+                player.DelBuff(buffIndex);
+                buffIndex--;
+            }
         }
     }
 
@@ -75,12 +83,12 @@ namespace StarsAbove.Projectiles.Summon.StarphoenixFunnel
             // Only determines the damage type
             Projectile.minion = true;
             // Amount of slots this minion occupies from the total minion slots available to the player (more on that later)
-            Projectile.minionSlots = 0f;
+            Projectile.minionSlots = 1f;
             // Needed so the minion doesn't despawn on collision with enemies or tiles
             Projectile.penetrate = -1;
 
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 15;
+            Projectile.localNPCHitCooldown = 5;
         }
 
         // Here you can decide if your minion breaks things like grass or pots

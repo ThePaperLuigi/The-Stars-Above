@@ -52,13 +52,7 @@ namespace StarsAbove.Items.Weapons.Summon
 		}
 		public override void HoldItem(Player player)
 		{
-            player.AddBuff(BuffType<CatalystKeyBuff>(), 2);
-            if (player.ownedProjectileCounts[ProjectileType<CatalystKey>()] < 3)
-            {
-                Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<CatalystKey>(), player.GetWeaponDamage(Item), 0, player.whoAmI, 0f);
-
-
-            }
+            
             if (player.HasBuff(BuffType<AlignmentBuff>()))
             {
 				player.GetModPlayer<WeaponPlayer>().alignmentStacks = 0;
@@ -126,7 +120,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			if (player.altFunctionUse == 2)
 			{
 				
-				return false;
+				return true;
 
 			}
 
@@ -163,9 +157,17 @@ namespace StarsAbove.Items.Weapons.Summon
 			}
 			if (player.altFunctionUse == 2)
 			{
+                player.AddBuff(BuffType<CatalystKeyBuff>(), 2);
+                player.SpawnMinionOnCursor(source, player.whoAmI, ProjectileType<CatalystKey>(), damage, knockback);
+                SoundEngine.PlaySound(SoundID.Item15, Main.MouseWorld);
 
-				
-				return false;
+                for (int d = 0; d < 28; d++)
+                {
+                    Dust.NewDust(Main.MouseWorld, 0, 0, DustID.AmberBolt, Main.rand.NextFloat(-2, 2), Main.rand.NextFloat(-2, 2), 150, default, 0.8f);
+                    Dust.NewDust(Main.MouseWorld, 0, 0, DustID.FireworkFountain_Yellow, Main.rand.NextFloat(-2, 2), Main.rand.NextFloat(-2, 2), 150, default, 0.4f);
+
+                }
+                return false;
 
 
 			}
@@ -185,16 +187,7 @@ namespace StarsAbove.Items.Weapons.Summon
 
 		public override void AddRecipes()
 		{
-			CreateRecipe(1)
-				.AddIngredient(ItemID.CobaltBar, 8)
-				.AddIngredient(ItemType<EssenceOfBlasting>())
-				.AddTile(TileID.Anvils)
-				.Register();
-			CreateRecipe(1)
-				.AddIngredient(ItemID.PalladiumBar, 8)
-				.AddIngredient(ItemType<EssenceOfBlasting>())
-				.AddTile(TileID.Anvils)
-				.Register();
+			
 		}
 	}
 }

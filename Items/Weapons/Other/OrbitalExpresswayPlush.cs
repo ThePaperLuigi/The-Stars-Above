@@ -107,7 +107,7 @@ namespace StarsAbove.Items.Weapons.Other
 		}
 		public override void AddRecipes()
 		{
-
+			/*
 			CreateRecipe(1)
 				.AddIngredient(ItemID.ChocolateChipCookie, 1)
 				.AddIngredient(ItemID.Diamond, 2)
@@ -115,7 +115,7 @@ namespace StarsAbove.Items.Weapons.Other
 				//.AddIngredient(ItemType<EssenceOfOffseeing>())TODO
 				.AddTile(TileID.Anvils)
 				.Register();
-			
+			*/
 
 		}
 	}
