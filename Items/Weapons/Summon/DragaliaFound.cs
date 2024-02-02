@@ -32,8 +32,8 @@ namespace StarsAbove.Items.Weapons.Summon
             Item.DamageType = DamageClass.SummonMeleeSpeed;          //Is your weapon a melee weapon?
             Item.width = 38;            //Weapon's texture's width
             Item.height = 132;           //Weapon's texture's height
-            Item.useTime = 35;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
-            Item.useAnimation = 35;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
+            Item.useTime = 30;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
+            Item.useAnimation = 30;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
             Item.UseSound = SoundID.Item1;      //The sound when the weapon is using
             Item.useStyle = ItemUseStyleID.HiddenAnimation;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
             Item.knockBack = 2;         //The force of knockback of the weapon. Maximum is 20
@@ -204,7 +204,7 @@ namespace StarsAbove.Items.Weapons.Summon
         int attackComboCooldown;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            attackComboCooldown = 30;
+            attackComboCooldown = 60;
             if (player.altFunctionUse == 2)
             {
                 if (!player.HasBuff(BuffType<DragonshiftSpecialAttackCooldownBuff>()))
