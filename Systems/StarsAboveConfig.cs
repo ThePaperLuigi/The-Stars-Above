@@ -44,7 +44,7 @@ namespace StarsAbove.Systems
         [Range(-1920f, 0f)]
         public Vector2 PromptLoc { get; set; }
 
-        [DefaultValue(typeof(Vector2), "0.77f, 0.01f")]
+        [DefaultValue(typeof(Vector2), "0.77, 0.01")]
         [Range(0f, 1f)]
         public Vector2 NovaGaugeLoc { get; set; }
 

@@ -9332,7 +9332,7 @@ Mods: {
 					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty]
 					Holding this weapon grants defense proportional to Max HP and reflects all damage taken
 					Right click to ready the shield for 2 seconds, reducing the damage of the next attack by 90% (12 second cooldown)
-					Press the Weapon Action Key to manifest a shield at your cursor that lasts for 5 seconds, destroying all hostile projectiles (30 second cooldown)
+					Press the Weapon Action Key to destroy all nearby hostile projectiles (30 second cooldown)
 					Swapping to another weapon after activating either of these abilities grants [Hero's Bulwark] for 10 seconds, increasing defense by 15%
 					The current [c/F592BF:Aspected Damage Type] influences the effects of [Hero's Bulwark]
 					[c/FFAB4D:Melee]: [Hero's Bulwark] negates the first instance of damage taken, but is then removed
@@ -9349,7 +9349,7 @@ Mods: {
 					'''
 					Attacks with this weapon inflict [Necrosis] for 4 seconds on critical strikes
 					Foes inflicted with [Necrosis] have their attack and defense reduced by 15%
-					After 27 shots, this weapon takes 2 seconds to reload (Right click to reload early)					
+					After 27 shots, this weapon takes 2 seconds to reload (Right click to reload early)
 					Defeating foes with this weapon charges the Stellar Nova by 2%, refills shots, and grants [Cursewrought] for 7 seconds
 					[Cursewrought] increases damage dealt against foes with [Necrosis] by 20% and allows for bullets to pierce 2 more foes
 					Defeating foes while under the effect of [Cursewrought] refreshes the buff, heals 10 HP, and charges the Stellar Nova by an additional 2 energy
@@ -9369,7 +9369,8 @@ Mods: {
 					[Degraded Chain]: Deal damage to all nearby foes while inflicting [Fairy] for 6 seconds
 					[Degraded Pillar]: Fire a fast piercing pillar towards your cursor that deals guaranteed critical damage
 					Press the Weapon Action Key to activate [Degraded Shockwave] (90 second cooldown)
-					[Degraded Shockwave] deals 400% damage to all nearby foes, destroys all nearby hostile projectiles, and grants Ironskin to nearby allies for 8 seconds
+					[Degraded Shockwave] deals 400% damage to all nearby foes, destroys all nearby hostile projectiles, and grants [Degraded Barrier] to nearby allies for 20 seconds
+					[Degraded Barrier] reduces the damage of the next hit by 80%
 					'Now, sink into everlasting quietude'
 					'''
 			}
