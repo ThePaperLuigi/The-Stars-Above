@@ -3095,7 +3095,7 @@ namespace StarsAbove.Systems
             {
                 screenCache = Main.screenPosition;
             }
-
+            
             if (screenShakeTimerGlobal < 0 && screenShakeTimerGlobal > -100)
             {
                 if(disableScreenShake)

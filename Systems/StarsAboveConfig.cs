@@ -44,6 +44,9 @@ namespace StarsAbove.Systems
         [Range(-1920f, 0f)]
         public Vector2 PromptLoc { get; set; }
 
+        [DefaultValue(typeof(Vector2), "0.77f, 0.01f")]
+        [Range(0f, 1f)]
+        public Vector2 NovaGaugeLoc { get; set; }
 
         [Header("$Mods.StarsAbove.Configs.DialogueHeader")]
 
@@ -93,6 +96,7 @@ namespace StarsAbove.Systems
             //UI.StellarNova.StellarNovaCutIn.ShadesVisible = EnableAprilFools;
             UI.EmotionGauge.AnimationDisabled = DisableWeaponCutIns;
 
+            UI.StellarNovaGauge.NovaGaugePos = NovaGaugeLoc;
             UI.Starfarers.StarfarerPrompt.PromptPos = PromptLoc;
             //UI.StellarNovaGauge.NovaGaugePos = NovaGaugeLoc;
             UI.StellarNova.StellarNovaCutIn.Visible = DisableStellarNovaCutIns;

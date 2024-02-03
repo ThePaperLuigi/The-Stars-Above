@@ -3414,143 +3414,6 @@ Mods: {
 			}
 		}
 
-		Config: {
-			// StellarNovaHeader: "[c/EE9DE0:Stellar Nova Settings]"
-			// PopUpDialogueHeader: "[c/C076DF:Pop-up Dialogue Settings]"
-			// DialogueHeader: "[c/75C792:Disk Dialogue Settings]"
-			// MiscHeader: "[c/7A76FF:Miscellaneous Settings]"
-
-			DisableStellarNovaCutIns: {
-				Label: Desactivar las animaciones de la Nova Estelar
-				Tooltip: Desactiva la animación de la Viajera Estelar al activar la Nova Estelar.
-			}
-
-			DisableStellarNovaDialogue: {
-				Label: Desactivar el cuadro de diálogo de la Nova Estelar
-				Tooltip: Desactiva el cuadro de diálogo durante la activación de la Nova Estelar.
-			}
-
-			DisableStarfarerCommentary: {
-				Label: Desactivar comentarios de la Viajera Estelar
-				Tooltip: Desactiva los comentarios generales de tu Viajera Estelar
-			}
-
-			DisableStarfarerCommentaryBuffs: {
-				Label: Desactivar comentarios sobre efectos positivos/negativos de la Viajera Estelar
-				Tooltip: No recibirás comentarios al obtener efectos positivos/negativos.
-			}
-
-			DisableStarfarerCommentaryCombat: {
-				Label: Desactivar comentarios de Viajera Estelar para eventos de combate
-				Tooltip: No recibirás comentarios al derrotar enemigos, etc.
-			}
-
-			StarfarerPromptCooldown: {
-				Label: Enfriamiento del comentario de la Viajera Estelar
-				Tooltip: El tiempo entre los comentarios de la Viajera en minutos. Si se activa un comentario durante este tiempo, es ignorado. No se aplica a comentarios únicos (Bosses, etc.)
-			}
-
-			DialogueScrollValue: {
-				Label: velocidad de texto de diálogo
-				Tooltip: El tiempo es para incrementar la velocidad del diálogo medido en fotogramas, cuando es menor a 2 se recomienda desactivar los efectos de sonido de diálogo.
-			}
-
-			DialogueAudio: {
-				Label: Efecto de sonido de diálogo
-				Tooltip: El efecto de sonido producido por las letras durante el diálogo de la Viajera Estelar. En 5 desactiva el sonido.
-			}
-
-			InstantText: {
-				Label: Texto instantáneo
-				Tooltip: Ignora la opción de velocidad del texto, todo el texto aparecerá de inmediato.
-			}
-
-			MovingDialogueAmount: {
-				// Label: Starfarer Menu Movement
-				// Tooltip: Adjust how much the Starfarer menus move while you're moving.
-			}
-
-			PromptLoc: {
-				Label: Posición del cuadro de diálogo
-				Tooltip: ¡La posición es medida desde la esquina inferior derecha de la pantalla!
-			}
-
-			CommentaryTimer: {
-				Label: Temporiador de los Comentarios de la Viajera Estelar
-				Tooltip: Cambia el tiempo en que los Cometarios de la Viajera Estelar se mantienen en pantalla
-			}
-
-			EnableStarfarerVoices: {
-				Label: Desactivar lineas de voz durante las Novas Estelares
-				Tooltip: Desactiva las lineas de voz para Eridani y Asphodene durante Novas Estelares (cortesía de 15.ai)
-			}
-
-			EnableMusicOverride: {
-				Label: La música de las armas sobreescriben otras canciones
-				Tooltip: Si se activa, las armas que cambian la música del juego tendrán prioridad sobre cualquier otra.
-			}
-
-			EnablePlayerWorldLock: {
-				Label: Activar el Bloqueo del Progreso del Mundo del Jugador
-				Tooltip: Activarlo causa que el progreso del personaje se vincula al primer mundo que se unieron.
-			}
-
-			EnableAprilFools: {
-				Label: Activar modo de Día de los Inocentes
-				Tooltip: Agrega lentes de sol radicales a Eridani y Asphodene en el menú de Viajero Estelar y durante Novas Estelares.
-			}
-
-			DisableWeaponCutIn: {
-				// Label: Disable Weapon Cut-In Effect
-				// Tooltip: Disable screen-wide animations that play when using certain weapons.
-			}
-
-			DisableTypePenalty: {
-				Label: Desactivar la penalización para el modificador de Daño Aspecto
-				Tooltip: Se elimina el penalizador del 10% del daño cuando el modificador de Daño Aspecto es activado.
-			}
-
-			DisableBossAggro: {
-				// Label: Disable Boss Aggro Marker
-				// Tooltip: Disables the marker that appears over a player's head when a boss targets them.
-			}
-
-			DisableCalamityWeaponBuffs: {
-				Label: Desactivar los modificadores de daño globales para la compatibilidad de mod
-				Tooltip: Desactiva el aumento del 20% del daño de Armas Aspecto cuando el mod Calamity es activado.
-			}
-
-			DisableWeaponRestrictions: {
-				Label: Desactivar las restricciones de las Armas Aspecto
-				Tooltip: Desactiva la restricción de uso para las armas Astral y Umbral por otros jugadores.
-			}
-
-			DisableBossEnemySpawnMod: {
-				// Label: Disable Boss Enemy Spawn Mod
-				// Tooltip: Disables the buff granted to all players that prevents mob spawning during bosses.
-			}
-
-			DisableManaSicknessChange: {
-				// Label: Disable Mana Sickness Change
-				// Tooltip: Disables the change to Mana Sickness that applies the damage reduction to all damage and not just Magic.
-			}
-
-			ColorblindBoss: {
-				// Label: Enable colorblind-friendly Penthesilea fight
-				// Tooltip: Replaces certain color-based mechanics in the Penthesilea boss fight.
-			}
-
-			SubworldCompatibility: {
-				// Label: Disable Multiplayer Compatibility-Fix for Cosmic Voyages
-				// Tooltip: Allows for users in Multiplayer to undertake Cosmic Voyages- toggle this off to drop items from Subworlds instead of travelling there.
-			}
-
-			CombatTimer: {
-				Label: Temporizador de Combate
-				Tooltip: Cuando golpeas a un enemigo o eres golpeado, este es el tiempo en segundos donde estás 'en combate'. Afecta el Medidor de la Nova Estelar y al usar el Menú de Viajera Estelar.
-			}
-		}
-
 		Common: {
 			DiskReady: El Disco Espacial comienza a resonar. Click izquierdo para interactuar.
 			ArrayAbility: ¡La Matriz Estelar ha ganado una nueva habilidad!
@@ -8250,7 +8113,7 @@ Mods: {
 				// DisplayName: Trickspin Two-Step
 				/* Tooltip:
 					'''
-					4 summon tag damage
+					4 summon tag damage 
 					Striking foes with this weapon grants Swiftness for 3 seconds
 					Press the Weapon Action Key to sling a yo-yo forwards, travelling a short distance (Yo-yo returns after two seconds)
 					Press the Weapon Action Key after the yo-yo has stopped movement will launch you towards the yo-yo, returning it
@@ -12851,7 +12714,7 @@ Mods: {
 
 			TerrorTether: {
 				// DisplayName: Terror Tether
-				// Description: Mods.StarsAbove.Buffs.TerrorTether.Description
+				// Description: ""
 			}
 
 			SharedPower: {
@@ -13074,6 +12937,8 @@ Mods: {
 			// StarsAboveTip5: You can obtain Prismatic Cores by going on Cosmic Voyages!
 			// StarsAboveTip6: Crafting Stellar Foci to upgrade your Stellaglyph could mean the difference between life and death!
 			// StarsAboveTip7: Don't stay for too long on Anomaly planets- an incredibly dangerous foe will appear! Defeating it may offer great rewards, however...
+			// StarsAboveTip8: Weapon Memories may be the ticket to success, but remember only Aspected Weapons can equip them!
+			// StarsAboveTip9: Weapon Memories don't stack on the same weapon! Mix and match!
 		}
 
 		DamageClasses: {
@@ -13102,151 +12967,151 @@ Mods: {
 		}
 
 		Configs: {
+			// StellarNovaHeader: "[c/EE9DE0:Stellar Nova Settings]"
+			// PopUpDialogueHeader: "[c/C076DF:Pop-up Dialogue Settings]"
+			// DialogueHeader: "[c/75C792:Disk Dialogue Settings]"
+			// MiscHeader: "[c/7A76FF:Miscellaneous Settings]"
+
 			StarsAboveConfigClient: {
-				// DisplayName: Stars Above Config Client
+				// DisplayName: Stars Above Config (Client-side)
 
 				DisableStellarNovaCutIns: {
-					// Label: "{$Mods.StarsAbove.Config.DisableStellarNovaCutIns.Label}"
-					// Tooltip: "{$Mods.StarsAbove.Config.DisableStellarNovaCutIns.Tooltip}"
+					// Label: Disable Stellar Nova cut-ins
+					// Tooltip: Disables the portrait of your Starfarer when activating your Stellar Nova.
 				}
 
-				EnableStarfarerVoices: {
-					// Label: "{$Mods.StarsAbove.Config.EnableStarfarerVoices.Label}"
-					// Tooltip: "{$Mods.StarsAbove.Config.EnableStarfarerVoices.Tooltip}"
+				DisableStarfarerVoices: {
+					// Label: Disable Starfarer voice lines
+					// Tooltip: Disables the Starfarer's voice lines.
 				}
 
 				DisableStellarNovaDialogue: {
-					// Label: "{$Mods.StarsAbove.Config.DisableStellarNovaDialogue.Label}"
-					// Tooltip: "{$Mods.StarsAbove.Config.DisableStellarNovaDialogue.Tooltip}"
+					// Label: Disable Stellar Nova dialogue box
+					// Tooltip: Disables the dialogue box during the Stellar Nova cut-in.
 				}
 
 				DisableStarfarerCommentary: {
-					// Label: "{$Mods.StarsAbove.Config.DisableStarfarerCommentary.Label}"
-					// Tooltip: "{$Mods.StarsAbove.Config.DisableStarfarerCommentary.Tooltip}"
+					// Label: Disable Starfarer commentary
+					// Tooltip: Disable Starfarer Prompts entirely.
 				}
 
 				DisableStarfarerCommentaryBuffs: {
-					// Label: "{$Mods.StarsAbove.Config.DisableStarfarerCommentaryBuffs.Label}"
-					// Tooltip: "{$Mods.StarsAbove.Config.DisableStarfarerCommentaryBuffs.Tooltip}"
+					// Label: Disable Starfarer commentary on buffs/debuffs
+					// Tooltip: You will no longer recieve Starfarer Prompts for getting buffed/debuffed.
 				}
 
 				DisableStarfarerCommentaryCombat: {
-					// Label: "{$Mods.StarsAbove.Config.DisableStarfarerCommentaryCombat.Label}"
-					// Tooltip: "{$Mods.StarsAbove.Config.DisableStarfarerCommentaryCombat.Tooltip}"
+					// Label: Disable Starfarer commentary for combat events
+					// Tooltip: You will no longer recieve Starfarer Prompts for killing foes, etc.
 				}
 
 				StarfarerPromptCooldown: {
-					// Label: "{$Mods.StarsAbove.Config.StarfarerPromptCooldown.Label}"
-					// Tooltip: "{$Mods.StarsAbove.Config.StarfarerPromptCooldown.Tooltip}"
+					// Label: Starfarer Prompt Cooldown
+					// Tooltip: The time between Starfarer Prompts in minutes. If a trigger for a prompt occurs during this time, it is ignored. Does not apply to unique prompts (Bosses, etc.)
 				}
 
 				CommentaryTimer: {
-					// Label: "{$Mods.StarsAbove.Config.CommentaryTimer.Label}"
-					// Tooltip: "{$Mods.StarsAbove.Config.CommentaryTimer.Tooltip}"
+					// Label: Starfarer Prompt Timer
+					// Tooltip: Changes the length that Starfarer Prompts stay on screen.
 				}
 
 				DialogueScrollValue: {
-					// Label: "{$Mods.StarsAbove.Config.DialogueScrollValue.Label}"
-					// Tooltip: "{$Mods.StarsAbove.Config.DialogueScrollValue.Tooltip}"
+					// Label: Starfarer Text Speed
+					// Tooltip: The time for dialogue text to increment in frames. Below 2, it is recommended to disable dialogue sound effects.
 				}
 
 				DialogueAudio: {
-					// Label: "{$Mods.StarsAbove.Config.DialogueAudio.Label}"
-					// Tooltip: "{$Mods.StarsAbove.Config.DialogueAudio.Tooltip}"
+					// Label: Starfarer Text Sound Effect
+					// Tooltip: The sound effect that plays when letters appear during Starfarer Dialogue. Option 5 disables the sound effect.
 				}
 
 				InstantText: {
-					// Label: "{$Mods.StarsAbove.Config.InstantText.Label}"
-					// Tooltip: "{$Mods.StarsAbove.Config.InstantText.Tooltip}"
-				}
-
-				DisableDraggingDialogue: {
-					// Label: "{$Mods.StarsAbove.Config.DisableDraggingDialogue.Label}"
-					// Tooltip: "{$Mods.StarsAbove.Config.DisableDraggingDialogue.Tooltip}"
+					// Label: Instant Text
+					// Tooltip: Ignores the Starfarer Text Speed option; all text will appear instantly.
 				}
 
 				EnableMusicOverride: {
-					// Label: "{$Mods.StarsAbove.Config.EnableMusicOverride.Label}"
-					// Tooltip: "{$Mods.StarsAbove.Config.EnableMusicOverride.Tooltip}"
-				}
-
-				EnablePlayerWorldLock: {
-					// Label: "{$Mods.StarsAbove.Config.EnablePlayerWorldLock.Label}"
-					// Tooltip: "{$Mods.StarsAbove.Config.EnablePlayerWorldLock.Tooltip}"
-				}
-
-				EnableAprilFools: {
-					// Label: "{$Mods.StarsAbove.Config.EnableAprilFools.Label}"
-					// Tooltip: "{$Mods.StarsAbove.Config.EnableAprilFools.Tooltip}"
+					// Label: Weapon music overrides all other music
+					// Tooltip: When enabled, weapons that change the game's music will have priority over nearly everything else.
 				}
 
 				DisableWeaponCutIns: {
-					// Label: "{$Mods.StarsAbove.Config.DisableWeaponCutIn.Label}"
-					// Tooltip: "{$Mods.StarsAbove.Config.DisableWeaponCutIn.Tooltip}"
+					// Label: Disable Weapon Cut-In Effect
+					// Tooltip: Disable screen-wide animations that play when using certain weapons.
 				}
 
 				PromptLoc: {
-					// Label: "{$Mods.StarsAbove.Config.PromptLoc.Label}"
-					// Tooltip: "{$Mods.StarsAbove.Config.PromptLoc.Tooltip}"
+					// Label: Starfarer Prompt position
+					// Tooltip: ""
+				}
+
+				NovaGaugeLoc: {
+					// Label: Nova Gauge position
+					// Tooltip: ""
 				}
 
 				MovingDialogueAmount: {
-					// Label: Moving Dialogue Amount
-					// Tooltip: ""
+					// Label: Starfarer Menu Movement
+					// Tooltip: Adjust how much the Starfarer menus move while you're moving.
 				}
 
 				DisableBlur: {
 					// Label: Disable Blur
-					// Tooltip: ""
+					// Tooltip: Disables blur effect from menu/cutscenes.
+				}
+
+				DisableScreenShake: {
+					// Label: Disable Screen Shake
+					// Tooltip: Disables screen shake effects from all sources.
 				}
 			}
 
 			StarsAboveServersideConfig: {
-				// DisplayName: Stars Above Serverside Config
+				// DisplayName: Stars Above Config (Server-side)
 
 				DisableTypePenalty: {
-					// Label: "{$Mods.StarsAbove.Config.DisableTypePenalty.Label}"
-					// Tooltip: "{$Mods.StarsAbove.Config.DisableTypePenalty.Tooltip}"
+					// Label: Disable damage penalty for Aspected Damage modification
+					// Tooltip: 10% damage penalty when Aspected Damage modification is enabled is removed. Note that some effects that also remove this effect will be overpowered as a result.
 				}
 
 				DisableBossAggro: {
-					// Label: "{$Mods.StarsAbove.Config.DisableBossAggro.Label}"
-					// Tooltip: "{$Mods.StarsAbove.Config.DisableBossAggro.Tooltip}"
+					// Label: Disable Boss Aggro Marker
+					// Tooltip: Disables the marker that appears over a player's head when a boss targets them. This is a WIP feature.
 				}
 
 				DisableCalamityWeaponBuffs: {
-					// Label: "{$Mods.StarsAbove.Config.DisableCalamityWeaponBuffs.Label}"
-					// Tooltip: "{$Mods.StarsAbove.Config.DisableCalamityWeaponBuffs.Tooltip}"
+					// Label: Disable global damage modifiers for mod compatibility
+					// Tooltip: Disables the increase to Aspected Weapon damage when the Calamity Mod is enabled.
 				}
 
 				DisableWeaponRestrictions: {
-					// Label: "{$Mods.StarsAbove.Config.DisableWeaponRestrictions.Label}"
-					// Tooltip: "{$Mods.StarsAbove.Config.DisableWeaponRestrictions.Tooltip}"
+					// Label: Disable Aspected Weapon restrictions
+					// Tooltip: Disables the restriction for Astral and Umbral weapons being wielded by the opposite Aspect.
 				}
 
 				DisableBossEnemySpawnMod: {
-					// Label: "{$Mods.StarsAbove.Config.DisableBossEnemySpawnMod.Label}"
-					// Tooltip: "{$Mods.StarsAbove.Config.DisableBossEnemySpawnMod.Tooltip}"
+					// Label: Disable Boss Enemy Spawn Mod
+					// Tooltip: Disables the buff granted to all players that prevents mob spawning during bosses. Other mods may sometimes include duplicates of this feature.
 				}
 
 				DisableManaSicknessChange: {
-					// Label: "{$Mods.StarsAbove.Config.DisableManaSicknessChange.Label}"
-					// Tooltip: "{$Mods.StarsAbove.Config.DisableManaSicknessChange.Tooltip}"
+					// Label: Disable Mana Sickness Change
+					// Tooltip: Disables the change to Mana Sickness that applies the damage reduction to all damage and not just Magic. Note that this will make non-Magic weapons that consume Mana overpowered.
 				}
 
 				ColorblindBoss: {
-					// Label: "{$Mods.StarsAbove.Config.ColorblindBoss.Label}"
-					// Tooltip: "{$Mods.StarsAbove.Config.ColorblindBoss.Tooltip}"
+					// Label: Enable colorblind-friendly Penthesilea fight
+					// Tooltip: Replaces certain color-based mechanics in the Penthesilea boss fight.
 				}
 
 				DisableCompatibilityMode: {
-					// Label: "{$Mods.StarsAbove.Config.SubworldCompatibility.Label}"
-					// Tooltip: "{$Mods.StarsAbove.Config.SubworldCompatibility.Tooltip}"
+					// Label: Disable Multiplayer Compatibility-Fix for Cosmic Voyages
+					// Tooltip: When disabled, allows for players in Multiplayer to undertake Cosmic Voyages. This is known to cause issues, use at your own risk. When enabled, attempting to conduct Cosmic Voyages will drop their requisite items on a timer.
 				}
 
 				CombatTimer: {
-					// Label: "{$Mods.StarsAbove.Config.CombatTimer.Label}"
-					// Tooltip: "{$Mods.StarsAbove.Config.CombatTimer.Tooltip}"
+					// Label: Combat Timer
+					// Tooltip: When striking a foe or getting struck, this is the time in seconds you are 'in combat.'
 				}
 			}
 		}

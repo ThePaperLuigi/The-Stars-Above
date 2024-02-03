@@ -42,7 +42,7 @@ namespace StarsAbove.UI
 		public override void OnInitialize() {
 			// Create a UIElement for all the elements to sit on top of, this simplifies the numbers as nested elements can be positioned relative to the top left corner of this element. 
 			// UIElement is invisible and has no padding. You can use a UIPanel if you wish for a background.
-			area = new DraggableUIElement();
+			area = new UIElement();
 			area.Left.Set(1200, 0f); //
 			area.Top.Set(30, 0f); // 
 			area.Width.Set(182, 0f); //
@@ -222,36 +222,19 @@ namespace StarsAbove.UI
 				return;
 
 
-			if (StarsAbove.novaKey.Current)
-			{
-				returnTimer++;
-			}
-			else
-            {
-				returnTimer--;
-            }
-			if(returnTimer < 0)
-            {
-				returnTimer = 0;
-            }
-			if(returnTimer >= 120)
-            {
-				area.Left.Set(1200, 0f);
-				area.Top.Set(30, 0f);
-				returnTimer = 120;
-            }
+            area.Left.Set(MathHelper.Lerp(0, Main.screenWidth, NovaGaugePos.X / 1f), 0f);
+            area.Top.Set(MathHelper.Lerp(0, Main.screenHeight, NovaGaugePos.Y / 1f), 0f);
+			
+            // Here we check if the DragableUIPanel is outside the Parent UIElement rectangle. 
+            // (In our example, the parent would be ExampleUI, a UIState. This means that we are checking that the DragableUIPanel is outside the whole screen)
+            // By doing this and some simple math, we can snap the panel back on screen if the user resizes his window or otherwise changes resolution.
+
+            //Vector2 configVec = NovaGaugePos;
+            //Left.Set(configVec.X, 0f);
+            //Top.Set(configVec.Y, 0f);
 
 
-				// Here we check if the DragableUIPanel is outside the Parent UIElement rectangle. 
-				// (In our example, the parent would be ExampleUI, a UIState. This means that we are checking that the DragableUIPanel is outside the whole screen)
-				// By doing this and some simple math, we can snap the panel back on screen if the user resizes his window or otherwise changes resolution.
-
-				//Vector2 configVec = NovaGaugePos;
-				//Left.Set(configVec.X, 0f);
-				//Top.Set(configVec.Y, 0f);
-
-
-				var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
 			// Setting the text per tick to update and show our resource values.
 			//text.SetText($"{modPlayer.novaGauge} / {modPlayer.trueNovaGaugeMax}");
 			//Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaGaugeDescription = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaGaugeDescriptionActive;

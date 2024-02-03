@@ -3414,143 +3414,6 @@ Mods: {
 			}
 		}
 
-		Config: {
-			StellarNovaHeader: "[c/EE9DE0:天体新星设置]"
-			PopUpDialogueHeader: "[c/C076DF:对话框弹窗设置]"
-			DialogueHeader: "[c/75C792:光碟对话框设置]"
-			MiscHeader: "[c/7A76FF:各种各样的设置]"
-
-			DisableStellarNovaCutIns: {
-				Label: 禁用天体新星立绘切入
-				Tooltip: 禁用激活天体新星时你的星海旅者的立绘切入效果。
-			}
-
-			DisableStellarNovaDialogue: {
-				Label: 禁用天体新星对话框
-				Tooltip: 禁用激活天体新星时立绘切入出现的对话框。
-			}
-
-			DisableStarfarerCommentary: {
-				Label: 禁用天体新星立绘切入
-				Tooltip: 禁用激活天体新星时你的星海旅者的立绘切入效果。
-			}
-
-			DisableStarfarerCommentaryBuffs: {
-				Label: 禁用星海旅者对增/减益的反应对话
-				Tooltip: 你不会再因为受到增/减益而收到星海旅者的反应对话。
-			}
-
-			DisableStarfarerCommentaryCombat: {
-				Label: 禁用星海旅者对战斗的反应对话
-				Tooltip: 你不会再因为击杀敌人而收到星海旅者的反应对话。
-			}
-
-			StarfarerPromptCooldown: {
-				Label: 星海旅者提示冷却
-				Tooltip: 星海旅者进行提示的冷却时间。若在此期间出现了提示的触发器，请忽略它。不适用于独特的提示（Boss提示等）
-			}
-
-			DialogueScrollValue: {
-				Label: 星海旅者文本速度
-				Tooltip: 对话在每帧出现的字数。低于2时就会禁用跳字音效。
-			}
-
-			DialogueAudio: {
-				Label: 星海旅者文本音效
-				Tooltip: 星海旅者对话时播放的音效。5是无声。
-			}
-
-			InstantText: {
-				Label: 立刻显示文本
-				Tooltip: 无视星海旅者文本速度设置；所有文本都会立刻显示。
-			}
-
-			MovingDialogueAmount: {
-				// Label: Starfarer Menu Movement
-				// Tooltip: Adjust how much the Starfarer menus move while you're moving.
-			}
-
-			PromptLoc: {
-				Label: 星海旅者出现的位置
-				Tooltip: 位置的原点是屏幕的右下角！
-			}
-
-			CommentaryTimer: {
-				Label: 星海旅者提示位置
-				Tooltip: 位置的原点是屏幕的右下角！
-			}
-
-			EnableStarfarerVoices: {
-				Label: 禁用天体新星配音声线
-				Tooltip: 禁用激活天体新星时爱丝福德妮和埃里达妮的声线。(来自15.ai)
-			}
-
-			EnableMusicOverride: {
-				Label: 武器音乐覆盖其他所有音乐
-				Tooltip: 启用后，会改变游戏音乐的武器的音效会优先于其他所有音效。
-			}
-
-			EnablePlayerWorldLock: {
-				Label: 启用玩家进度世界锁
-				Tooltip: 使角色的进程与他们加入的第一个世界绑定在一起。
-			}
-
-			EnableAprilFools: {
-				Label: 激活愚人节模式
-				Tooltip: 为打开菜单与激活天体新星时的爱丝福德妮和埃里达妮添加了一双酷爆了的眼镜（radical sunglasses）。
-			}
-
-			DisableWeaponCutIn: {
-				Label: 禁用武器全屏效果
-				Tooltip: 使用某些武器时禁用全屏切换效果。
-			}
-
-			DisableTypePenalty: {
-				Label: 禁用伤害惩罚
-				Tooltip: 移除切换伤害类型的10%的伤害惩罚。
-			}
-
-			DisableBossAggro: {
-				Label: 禁用Boss攻击标记
-				Tooltip: 启用后，玩家被Boss瞄准时，不再显示头上的标记。
-			}
-
-			DisableCalamityWeaponBuffs: {
-				Label: 为Mod兼容性禁用全局伤害修改
-				Tooltip: 当灾厄Mod启用时，禁用30%的特定武器增伤。
-			}
-
-			DisableWeaponRestrictions: {
-				Label: 禁用星相武器限制
-				Tooltip: 禁止其他玩家使用星体和本影武器。
-			}
-
-			DisableBossEnemySpawnMod: {
-				Label: 禁用Boss战期间不刷怪
-				Tooltip: 禁用玩家在进行Boss战期间刷怪率降为0的Buff。
-			}
-
-			DisableManaSicknessChange: {
-				Label: 禁用魔力病更改
-				Tooltip: 禁用魔力病的变更：魔力病降低的伤害应用于所有类型的伤害，而不仅仅只降低魔法伤害。
-			}
-
-			ColorblindBoss: {
-				Label: 启用色盲模式 彭忒希勒娅战
-				Tooltip: 取消了彭忒希勒娅战中关于颜色的机制。
-			}
-
-			SubworldCompatibility: {
-				Label: 关闭多人兼容模式——修复寰宇之旅
-				Tooltip: 允许玩家在多人模式下进行寰宇之旅——关闭这个开关可以让进入寰宇之旅变成获取子世界掉落的物品。
-			}
-
-			CombatTimer: {
-				Label: 战斗计时器
-				Tooltip: 当你攻击敌人或者被敌人攻击后，获得一个以秒为单位的进战计时器。
-			}
-		}
-
 		Common: {
 			DiskReady: 空间光盘开始共鸣。点击左键以交互。
 			ArrayAbility: 天体阵列获得了一项新能力！
@@ -12869,7 +12732,7 @@ Mods: {
 
 			TerrorTether: {
 				// DisplayName: Terror Tether
-				// Description: Mods.StarsAbove.Buffs.TerrorTether.Description
+				// Description: ""
 			}
 
 			SharedPower: {
@@ -13092,6 +12955,8 @@ Mods: {
 			StarsAboveTip5: 你可以通过寰宇航行获得棱镜核心！
 			StarsAboveTip6: 制作旅星符台对你的旅行有着生与死的区别！
 			StarsAboveTip7: 不要在异常的行星上逗留太久——一个极其危险的敌人可能会现身！打败他可能会给予你巨大的回报，但是……
+			// StarsAboveTip8: Weapon Memories may be the ticket to success, but remember only Aspected Weapons can equip them!
+			// StarsAboveTip9: Weapon Memories don't stack on the same weapon! Mix and match!
 		}
 
 		DamageClasses: {
@@ -13120,6 +12985,11 @@ Mods: {
 		}
 
 		Configs: {
+			// StellarNovaHeader: "[c/EE9DE0:Stellar Nova Settings]"
+			// PopUpDialogueHeader: "[c/C076DF:Pop-up Dialogue Settings]"
+			// DialogueHeader: "[c/75C792:Disk Dialogue Settings]"
+			// MiscHeader: "[c/7A76FF:Miscellaneous Settings]"
+
 			StarsAboveConfigClient: {
 				DisplayName: 星海苍穹客户端配置
 
@@ -13128,9 +12998,9 @@ Mods: {
 					Tooltip: "{$Mods.StarsAbove.Config.DisableStellarNovaCutIns.Tooltip}"
 				}
 
-				EnableStarfarerVoices: {
-					Label: "{$Mods.StarsAbove.Config.EnableStarfarerVoices.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.EnableStarfarerVoices.Tooltip}"
+				DisableStarfarerVoices: {
+					// Label: Disable Starfarer voice lines
+					// Tooltip: Disables the Starfarer's voice lines.
 				}
 
 				DisableStellarNovaDialogue: {
@@ -13178,24 +13048,9 @@ Mods: {
 					Tooltip: "{$Mods.StarsAbove.Config.InstantText.Tooltip}"
 				}
 
-				DisableDraggingDialogue: {
-					Label: "{$Mods.StarsAbove.Config.DisableDraggingDialogue.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DisableDraggingDialogue.Tooltip}"
-				}
-
 				EnableMusicOverride: {
 					Label: "{$Mods.StarsAbove.Config.EnableMusicOverride.Label}"
 					Tooltip: "{$Mods.StarsAbove.Config.EnableMusicOverride.Tooltip}"
-				}
-
-				EnablePlayerWorldLock: {
-					Label: "{$Mods.StarsAbove.Config.EnablePlayerWorldLock.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.EnablePlayerWorldLock.Tooltip}"
-				}
-
-				EnableAprilFools: {
-					Label: "{$Mods.StarsAbove.Config.EnableAprilFools.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.EnableAprilFools.Tooltip}"
 				}
 
 				DisableWeaponCutIns: {
@@ -13208,6 +13063,11 @@ Mods: {
 					Tooltip: "{$Mods.StarsAbove.Config.PromptLoc.Tooltip}"
 				}
 
+				NovaGaugeLoc: {
+					// Label: Nova Gauge position
+					// Tooltip: ""
+				}
+
 				MovingDialogueAmount: {
 					Label: Moving Dialogue Amount
 					Tooltip: ""
@@ -13215,7 +13075,12 @@ Mods: {
 
 				DisableBlur: {
 					// Label: Disable Blur
-					// Tooltip: ""
+					// Tooltip: Disables blur effect from menu/cutscenes.
+				}
+
+				DisableScreenShake: {
+					// Label: Disable Screen Shake
+					// Tooltip: Disables screen shake effects from all sources.
 				}
 			}
 

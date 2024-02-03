@@ -3414,8 +3414,6 @@ Mods: {
 			}
 		}
 
-		
-
 		Common: {
 			DiskReady: The Spatial Disk begins to resonate. Left click while holding the Disk to interact.
 			ArrayAbility: The Stellar Array has gained a new ability!
@@ -13145,139 +13143,145 @@ Mods: {
 			MiscHeader: "[c/7A76FF:Miscellaneous Settings]"
 
 			StarsAboveConfigClient: {
-				DisplayName: "Stars Above Config (Client-side)"
+				DisplayName: Stars Above Config (Client-side)
 
 				DisableStellarNovaCutIns: {
-					Label: "Disable Stellar Nova cut-ins"
-					Tooltip: "Disables the portrait of your Starfarer when activating your Stellar Nova."
+					Label: Disable Stellar Nova cut-ins
+					Tooltip: Disables the portrait of your Starfarer when activating your Stellar Nova.
 				}
 
 				DisableStarfarerVoices: {
-					Label: "Disable Starfarer voice lines"
-					Tooltip: "Disables the Starfarer's voice lines."
+					Label: Disable Starfarer voice lines
+					Tooltip: Disables the Starfarer's voice lines.
 				}
 
 				DisableStellarNovaDialogue: {
-					Label: "Disable Stellar Nova dialogue box"
-					Tooltip: "Disables the dialogue box during the Stellar Nova cut-in."
+					Label: Disable Stellar Nova dialogue box
+					Tooltip: Disables the dialogue box during the Stellar Nova cut-in.
 				}
 
 				DisableStarfarerCommentary: {
-					Label: "Disable Starfarer commentary"
-					Tooltip: "Disable Starfarer Prompts entirely."
+					Label: Disable Starfarer commentary
+					Tooltip: Disable Starfarer Prompts entirely.
 				}
 
 				DisableStarfarerCommentaryBuffs: {
-					Label: "Disable Starfarer commentary on buffs/debuffs"
-					Tooltip: "You will no longer recieve Starfarer Prompts for getting buffed/debuffed."
+					Label: Disable Starfarer commentary on buffs/debuffs
+					Tooltip: You will no longer recieve Starfarer Prompts for getting buffed/debuffed.
 				}
 
 				DisableStarfarerCommentaryCombat: {
-					Label: "Disable Starfarer commentary for combat events"
-					Tooltip: "You will no longer recieve Starfarer Prompts for killing foes, etc."
+					Label: Disable Starfarer commentary for combat events
+					Tooltip: You will no longer recieve Starfarer Prompts for killing foes, etc.
 				}
 
 				StarfarerPromptCooldown: {
-					Label: "Starfarer Prompt Cooldown"
-					Tooltip: "The time between Starfarer Prompts in minutes. If a trigger for a prompt occurs during this time, it is ignored. Does not apply to unique prompts (Bosses, etc.)"
+					Label: Starfarer Prompt Cooldown
+					Tooltip: The time between Starfarer Prompts in minutes. If a trigger for a prompt occurs during this time, it is ignored. Does not apply to unique prompts (Bosses, etc.)
 				}
 
 				CommentaryTimer: {
-					Label: "Starfarer Prompt Timer"
-					Tooltip: "Changes the length that Starfarer Prompts stay on screen."
+					Label: Starfarer Prompt Timer
+					Tooltip: Changes the length that Starfarer Prompts stay on screen.
 				}
 
 				DialogueScrollValue: {
-					Label: "Starfarer Text Speed"
-					Tooltip: "The time for dialogue text to increment in frames. Below 2, it is recommended to disable dialogue sound effects."
+					Label: Starfarer Text Speed
+					Tooltip: The time for dialogue text to increment in frames. Below 2, it is recommended to disable dialogue sound effects.
 				}
 
 				DialogueAudio: {
-					Label: "Starfarer Text Sound Effect"
-					Tooltip: "The sound effect that plays when letters appear during Starfarer Dialogue. Option 5 disables the sound effect."
+					Label: Starfarer Text Sound Effect
+					Tooltip: The sound effect that plays when letters appear during Starfarer Dialogue. Option 5 disables the sound effect.
 				}
 
 				InstantText: {
-					Label: "Instant Text"
-					Tooltip: "Ignores the Starfarer Text Speed option; all text will appear instantly."
+					Label: Instant Text
+					Tooltip: Ignores the Starfarer Text Speed option; all text will appear instantly.
 				}
 
 				EnableMusicOverride: {
-					Label: "Weapon music overrides all other music"
-					Tooltip: "When enabled, weapons that change the game's music will have priority over nearly everything else."
+					Label: Weapon music overrides all other music
+					Tooltip: When enabled, weapons that change the game's music will have priority over nearly everything else.
 				}
 
 				DisableWeaponCutIns: {
-					Label: "Disable Weapon Cut-In Effect"
-					Tooltip: "Disable screen-wide animations that play when using certain weapons."
+					Label: Disable Weapon Cut-In Effect
+					Tooltip: Disable screen-wide animations that play when using certain weapons.
 				}
 
 				PromptLoc: {
-					Label: "Starfarer Prompt positiion"
-					Tooltip: "Position is measured from the bottom right of the screen!"
+					Label: Starfarer Prompt position
+					Tooltip: ""
+				}
+
+				NovaGaugeLoc: {
+					Label: Nova Gauge position
+					Tooltip: ""
 				}
 
 				MovingDialogueAmount: {
-					Label: "Starfarer Menu Movement"
-					Tooltip: "Adjust how much the Starfarer menus move while you're moving."
+					Label: Starfarer Menu Movement
+					Tooltip: Adjust how much the Starfarer menus move while you're moving.
 				}
 
 				DisableBlur: {
 					Label: Disable Blur
-					Tooltip: "Disables blur effect in menus/cutscenes."
+					Tooltip: Disables blur effect from menu/cutscenes.
 				}
-				DisableBlur: {
+
+				DisableScreenShake: {
 					Label: Disable Screen Shake
-					Tooltip: "Disables screen shake effects from all sources."
+					Tooltip: Disables screen shake effects from all sources.
 				}
 			}
 
 			StarsAboveServersideConfig: {
-				DisplayName: "Stars Above Config (Server-side)"
+				DisplayName: Stars Above Config (Server-side)
 
 				DisableTypePenalty: {
-					Label: "Disable damage penalty for Aspected Damage modification"
-					Tooltip: "10% damage penalty when Aspected Damage modification is enabled is removed. Note that some effects that also remove this effect will be overpowered as a result."
+					Label: Disable damage penalty for Aspected Damage modification
+					Tooltip: 10% damage penalty when Aspected Damage modification is enabled is removed. Note that some effects that also remove this effect will be overpowered as a result.
 				}
 
 				DisableBossAggro: {
-					Label: "Disable Boss Aggro Marker"
-					Tooltip: "Disables the marker that appears over a player's head when a boss targets them. This is a WIP feature."
+					Label: Disable Boss Aggro Marker
+					Tooltip: Disables the marker that appears over a player's head when a boss targets them. This is a WIP feature.
 				}
 
 				DisableCalamityWeaponBuffs: {
-					Label: "Disable global damage modifiers for mod compatibility"
-					Tooltip: "Disables the increase to Aspected Weapon damage when the Calamity Mod is enabled."
+					Label: Disable global damage modifiers for mod compatibility
+					Tooltip: Disables the increase to Aspected Weapon damage when the Calamity Mod is enabled.
 				}
 
 				DisableWeaponRestrictions: {
-					Label: "Disable Aspected Weapon restrictions"
-					Tooltip: "Disables the restriction for Astral and Umbral weapons being wielded by the opposite Aspect."
+					Label: Disable Aspected Weapon restrictions
+					Tooltip: Disables the restriction for Astral and Umbral weapons being wielded by the opposite Aspect.
 				}
 
 				DisableBossEnemySpawnMod: {
-					Label: "Disable Boss Enemy Spawn Mod"
-					Tooltip: "Disables the buff granted to all players that prevents mob spawning during bosses. Other mods may sometimes include duplicates of this feature."
+					Label: Disable Boss Enemy Spawn Mod
+					Tooltip: Disables the buff granted to all players that prevents mob spawning during bosses. Other mods may sometimes include duplicates of this feature.
 				}
 
 				DisableManaSicknessChange: {
-					Label: "Disable Mana Sickness Change"
-					Tooltip: "Disables the change to Mana Sickness that applies the damage reduction to all damage and not just Magic. Note that this will make non-Magic weapons that consume Mana overpowered."
+					Label: Disable Mana Sickness Change
+					Tooltip: Disables the change to Mana Sickness that applies the damage reduction to all damage and not just Magic. Note that this will make non-Magic weapons that consume Mana overpowered.
 				}
 
 				ColorblindBoss: {
-					Label: "Enable colorblind-friendly Penthesilea fight"
-					Tooltip: "Replaces certain color-based mechanics in the Penthesilea boss fight."
+					Label: Enable colorblind-friendly Penthesilea fight
+					Tooltip: Replaces certain color-based mechanics in the Penthesilea boss fight.
 				}
 
 				DisableCompatibilityMode: {
-					Label: "Disable Multiplayer Compatibility-Fix for Cosmic Voyages"
-					Tooltip: "When disabled, allows for players in Multiplayer to undertake Cosmic Voyages. This is known to cause issues, use at your own risk. When enabled, attempting to conduct Cosmic Voyages will drop their requisite items on a timer."
+					Label: Disable Multiplayer Compatibility-Fix for Cosmic Voyages
+					Tooltip: When disabled, allows for players in Multiplayer to undertake Cosmic Voyages. This is known to cause issues, use at your own risk. When enabled, attempting to conduct Cosmic Voyages will drop their requisite items on a timer.
 				}
 
 				CombatTimer: {
-					Label: "Combat Timer"
-					Tooltip: "When striking a foe or getting struck, this is the time in seconds you are 'in combat.'"
+					Label: Combat Timer
+					Tooltip: When striking a foe or getting struck, this is the time in seconds you are 'in combat.'
 				}
 			}
 		}
