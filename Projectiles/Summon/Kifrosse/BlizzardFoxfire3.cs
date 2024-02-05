@@ -126,7 +126,7 @@ namespace StarsAbove.Projectiles.Summon.Kifrosse
 
             SearchForTargets(player, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter);
 
-            if (Projectile.ai[0] > 60)
+            if (Projectile.ai[0] > 60 && foundTarget)
             {
 
                 if (closest.CanBeChasedBy() && closestDistance < 1200f)
