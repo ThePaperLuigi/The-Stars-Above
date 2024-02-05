@@ -9151,15 +9151,16 @@ Mods: {
 				// DisplayName: Candied Sugar Ball
 				/* Tooltip:
 					'''
-					Right click to summon 3 [Sweetened Monsters], consuming 3 minion slots (Only one trio of [Sweetened Monsters] can be summoned at a time)
+					Use to summon a [Sweetened Monster], consuming 1 minion slot (Only one [Sweetened Monster] can be summoned at a time)
+					When a minion deals damage, the [Sweetened Monster] will follow-up with an attack (Cooldown varies per type)
+					Press the Weapon Action Key to cycle between each [Sweetened Monster] (Normal activation moves the [Sweetened Monster] to your cursor)
 					Each [Sweetened Monster] utilizes different attacks
-					[Charsugar]: Attacks with close-ranged fire bursts, with a 20% chance of inflicting On Fire for 12 seconds on hit
-					If this attack strikes a Wet or Poisoned enemy, deal 20% bonus damage
-					[Sugartle]: Attacks with slow, long-ranged water bursts, with a 20% chance of inflicting Wet for 12 seconds on hit
-					If this attack strikes a On Fire or Poisoned enemy, stun the foe for 2 seconds
-					[Bulbasugar]: Attacks with rapid poisonous seeds, with a 20% chance of inflicting Poison for 12 seconds on hit
-					If this attack strikes a On Fire or Wet enemy, inflict Venom for 12 seconds
-					Press the Weapon Action Key to incite all [Sweetened Monsters] to attack your cursor while inflicting all debuffs for 6 seconds (40 second cooldown)
+					[Charsugar]: Attacks with close-ranged fire blasts which inflict On Fire for 6 seconds on hit (2 second cooldown)
+					Friendly minions deal 10% more damage to foes inflicted with On Fire
+					[Sugartle]: Attacks with piercing long-ranged water beams (4 second cooldown)
+					If this attack would be empowered by summon tag damage, the attack becomes a critical strike
+					[Bulbasugar]: Acts like a sentry firing a spread of poisonous seeds, with a 20% chance of inflicting Poison for 12 seconds on hit (0.5 second cooldown)
+					If the foe is already inflicted with Poison, additionally inflict Venom for 6 seconds
 					''' */
 			}
 
@@ -9188,7 +9189,7 @@ Mods: {
 					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty]
 					Holding this weapon grants defense proportional to Max HP and reflects all damage taken
 					Right click to ready the shield for 2 seconds, reducing the damage of the next attack by 90% (12 second cooldown)
-					Press the Weapon Action Key to manifest a shield at your cursor that lasts for 5 seconds, destroying all hostile projectiles (30 second cooldown)
+					Press the Weapon Action Key to destroy all nearby hostile projectiles (30 second cooldown)
 					Swapping to another weapon after activating either of these abilities grants [Hero's Bulwark] for 10 seconds, increasing defense by 15%
 					The current [c/F592BF:Aspected Damage Type] influences the effects of [Hero's Bulwark]
 					[c/FFAB4D:Melee]: [Hero's Bulwark] negates the first instance of damage taken, but is then removed
@@ -9205,9 +9206,8 @@ Mods: {
 					'''
 					Attacks with this weapon inflict [Necrosis] for 4 seconds on critical strikes
 					Foes inflicted with [Necrosis] have their attack and defense reduced by 15%
-					After 27 shots, this weapon takes 2 seconds to reload (Right click to reload early)					
-					Defeating foes with this weapon charges the Stellar Nova by 2%, refills shots, and grants [Cursewrought] for 7 seconds
-					[Cursewrought] increases damage dealt against foes with [Necrosis] by 20% and allows for bullets to pierce 2 more foes
+					Defeating foes with this weapon charges the Stellar Nova by 2% and grants [Cursewrought] for 7 seconds
+					[Cursewrought] increases damage dealt against foes with [Necrosis] by 20% and allows for attacks to pierce 2 more foes
 					Defeating foes while under the effect of [Cursewrought] refreshes the buff, heals 10 HP, and charges the Stellar Nova by an additional 2 energy
 					''' */
 			}
@@ -9225,7 +9225,8 @@ Mods: {
 					[Degraded Chain]: Deal damage to all nearby foes while inflicting [Fairy] for 6 seconds
 					[Degraded Pillar]: Fire a fast piercing pillar towards your cursor that deals guaranteed critical damage
 					Press the Weapon Action Key to activate [Degraded Shockwave] (90 second cooldown)
-					[Degraded Shockwave] deals 400% damage to all nearby foes, destroys all nearby hostile projectiles, and grants Ironskin to nearby allies for 8 seconds
+					[Degraded Shockwave] deals 400% damage to all nearby foes, destroys all nearby hostile projectiles, and grants [Degraded Barrier] to nearby allies for 20 seconds
+					[Degraded Barrier] reduces the damage of the next hit by 80%
 					'Now, sink into everlasting quietude'
 					''' */
 			}
@@ -10202,6 +10203,10 @@ Mods: {
 			// CatalystKey.DisplayName: Catalyst Key
 			// StarphoenixMinionBullet.DisplayName: Starphoenix Minion Bullet
 			// StarphoenixFollowUp.DisplayName: Starphoenix Follow Up
+			// StringOfCursesGun.DisplayName: String Of Curses Gun
+			// StringOfCursesShot.DisplayName: String Of Curses Shot
+			// Charsugar.DisplayName: Charsugar
+			// Sugartle.DisplayName: Sugartle
 		}
 
 		Buffs: {
@@ -12832,7 +12837,22 @@ Mods: {
 
 			PowerMoonCooldown: {
 				// DisplayName: Power Moon Cooldown
-				// Description: Mods.StarsAbove.Buffs.PowerMoonCooldown.Description
+				// Description: ""
+			}
+
+			SugarballMinionBuff: {
+				// DisplayName: Sweetened Monster
+				// Description: Sweetened monsters are aiding you
+			}
+
+			Cursewrought: {
+				// DisplayName: Cursewrought
+				// Description: Cursed energy empowers your weapon
+			}
+
+			Necrosis: {
+				// DisplayName: Necrosis
+				// Description: Stats are reduced
 			}
 		}
 

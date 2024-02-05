@@ -316,6 +316,9 @@ namespace StarsAbove.Systems
         public bool SoliloquyMinions = false;
         public bool ousiaAligned = false;
 
+        public bool sugarballMinions = false;
+        public int sugarballMinionType = 0;//0 is char, 1 is squirt, 2 is bulba
+
         //Sunset of the Sun God
         public Vector2 karnaTarget;
 
@@ -3808,6 +3811,7 @@ namespace StarsAbove.Systems
             AlucardSwordMinion3 = false;
             TakodachiMinion = false;
             SoliloquyMinions = false;
+            sugarballMinions = false;
             FleetingSparkMinion = false;
             YoumuMinion = false;
             Kifrosse1 = false;
