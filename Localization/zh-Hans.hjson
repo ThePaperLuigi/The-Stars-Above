@@ -2,29 +2,29 @@ Mods: {
 	StarsAbove: {
 		DeathReason: {
 			SanguineDespair: 抽干了他自己的生命。
-			SupremeAuthority: 回归到虚空
-			// Thespian: failed to follow the act.
-			// ShockAndAwe: ... tried to rocket jump too hard.
-			// InevitableEnd: was caught in the crossfire of {0}'s Inevitable End.
-			// Arbitration: was doomed to chaos.
+			SupremeAuthority: 回归到虚空。
+			Thespian: 没能跟上动作。
+			ShockAndAwe: ……火箭跳时落地过猛。
+			InevitableEnd: "{0}在交火中迎来了不可避免的结局。"
+			Arbitration: 湮灭于混沌。
 		}
 
 		Boss.WarriorOfLight: 光之战士 降临！
-		TempInfo: 你好！你看起来正在在多人模式下游玩《星海苍穹》！请注意，到目前为止，不建议关闭多人兼容模式。
+		TempInfo: 你好！你看起来正在多人模式下游玩《星海苍穹》！请注意，目前不建议您关闭多人兼容模式。多人兼容开启时，尝试进行寰宇之旅将直接给予你对应的物品，该过程有一定冷却时间。
 
 		CombatText: {
-			// StellarNovaReady: Stellar Nova ready!
+			StellarNovaReady: 天体新星充能完毕！
 
 			DevotedHavoc: {
-				// Grenade: Grenade prepped
-				// Shuriken: Shuriken prepped
-				// Molotov: Molotov prepped
+				Grenade: 手榴弹准备就绪！
+				Shuriken: 手里剑准备就绪！
+				Molotov: 莫托洛夫鸡尾酒准备就绪！
 			}
 
 			MiserysCompany: {
-				// Scythe: Scythe deployed!
-				// Shotgun: Shotgun deployed!
-				// Blade: Blade deployed!
+				Scythe: 切换到战镰形态！
+				Shotgun: 切换到霰弹枪形态！
+				Blade: 切换到刀锋形态！
 			}
 
 			Adornment: {
@@ -56,31 +56,31 @@ Mods: {
 			}
 
 			Thespian: {
-				// AthanoricCurse: The walls of the arena pulse with corrosive energy!
-				// RingmastersWill: The Ringmaster compels you to act!
-				// MoveLeft: Move left in {0}...
-				// MoveRight: Move right in {0}...
-				// StopMoving: Stop moving in {0}...
-				// LaunchLeft: Launched left in {0}...
-				// LaunchRight: Launched right in {0}...
-				// Success: Success!
-				// Happy: The Ringmaster's [c/FADE5D:delight] begets chaos...
-				// Angry: The Ringmaster's [c/D83838:fury] begets chaos...
-				// Sad: The Ringmaster's [c/3888D8:despair] begets chaos...
+				AthanoricCurse: 竞技场的墙壁充满了腐蚀性的能量！
+				RingmastersWill: 表演者正在强迫你的行动！
+				MoveLeft: 在 {0} 秒内向左移动……
+				MoveRight: 在 {0} 秒内向右移动……
+				StopMoving: 在 {0} 秒内停止移动……
+				LaunchLeft: 在 {0} 秒后向左发射……
+				LaunchRight: 在 {0} 秒后向右发射……
+				Success: 成功！
+				Happy: 表演者的[c/FADE5D:欢愉]引发了混乱……
+				Angry: 表演者的[c/D83838:愤怒]引发了混乱……
+				Sad: 表演者的[c/D83838:绝望]引发了混乱……
 			}
 
 			Arbitration: {
-				// SeveredFate: Fate is severed; restore the thread of fate or perish...
-				// VisionsBeyond: Eldritch powers grant you visions beyond- Standing still and keeping focus will mimic this effect...
+				SeveredFate: 命运已经扯断；恢复命运之线，或走向灭亡……
+				VisionsBeyond: 邪术的力量使你超越的视野——站着不动并保持专注着模仿这种效果……
 			}
 
 			Penthesilea: {
-				// BluePaint: You've been coated in [c/3888D8:blue] paint!
-				// RedPaint: You've been coated in [c/D83838:red] paint!
-				// YellowPaint: You've been coated in [c/FADE5D:yellow] paint!
+				BluePaint: 你被涂上了[c/3888D8:蓝色]油墨!
+				RedPaint: 你被涂上了[c/D83838:红色]油墨!
+				YellowPaint: 你被涂上了[c/FADE5D:黄色]油墨!
 			}
 
-			Dioskouroi.Clash: 狄俄斯库洛伊们互相碰撞，平衡了二者的生命力！
+			Dioskouroi.Clash: 狄俄斯库洛伊互相碰撞，平衡了二者的生命力！
 			Tsukiyomi.FinalPhase: 在你面前的星海旅者解放了她真正的力量，增强了他的攻击能力，但这也让她的防守破绽百出！
 			// EasterEgg: You've defeated the boss in less than 10 seconds, probably a new record! Perhaps you're a little too powerful?
 
@@ -107,25 +107,25 @@ Mods: {
 			Garridine.1: 你其实可以不必大老远的跑过来，只需要写封信就行。嗯……信件怎么送过来？好吧……
 
 			Astrologian: {
-				// WizardDialogue: I'm not sure what to think of {0}. They're obviously a cosplayer- you'd expect them to know no magic... and yet..!
-				// FirstDialogue: Salulations, friend. My collection magecraft has led me to you- I see you've found a celestial relic. If you are willing to part with some coin, a portion of my collection can be yours- or, I can also sell you the means to utilize it.
-				// StandardDialogue1: I think I'm going broke.
-				// StandardDialogue2: Looks like today's going to be bad luck. Or is it good luck? If only I had a better view.
-				// StandardDialogue3: You want to know more information about Starfarers? They're a known phenomenon, but most of their impact is consigned to history books. In fact, it's strange you ask.
-				// StandardDialogue4: Astrology extends far beyond star signs and constellations. To an extent, you must have ample magical knowledge and scientific expertise.
-				// StandardDialogue5: I collect and categorize celestial relics. You most likely are not interested in the majority of them.
-				// StandardDialogue6: Yes, things are expensive- that's just how it is. How am I to buy anything?
-				// BloodMoon: Hmm, a strange celestial body seems to be affecting our moon. What a pain.
-				// Party: Yeah, right. I'm not going outside, but I will partake in the food.
-				// Graveyard: Where in the world is all this accursed fog coming from?
-				// StrangePotion: Strange Potion
-				// ThespianNotReadyCorruption: I have something you may be interested in, but you must prepare better. How about dealing with the issues in the Corruption first?
-				// ThespianNotReadyCrimson: I have something you may be interested in, but you must prepare better. How about dealing with the issues in the Crimson first?
-				// ThespianReady: Here's something you might take interest with: this potion has a magical trace I've never once encountered before- very powerful. It does no good languishing in my stockpile, so take it before I change my mind.
-				// RareDialogue1: Haha, you say I resemble other members of my profession? Have you ever considered... they're also me?
-				// RareDialogue2: Have you guessed? Yes, I'm faekin- a faerie. No, I don't do magic tricks.
-				// AstralDialogue: I can sense the Astral Aspect upon you- if you were not aware, 'aspect' is a misnomer. In fact, being Astral aspected is more of a polarity. How you are aspected itself is a wonder... You must be hiding something.
-				// UmbralDialogue: I can sense the Umbral Aspect upon you- if you were not aware, 'aspect' is a misnomer. In fact, being Umbral aspected is more of a polarity. How you are aspected itself is a wonder... You must be hiding something.
+				WizardDialogue: 我不知道该怎么看{0}。他们显然是一群Coser——你可能以为他们对魔法一窍不通……但是……！
+				FirstDialogue: 你好，我的朋友。我的魔法藏品把我带到了你面前——我知道你找到了一件celestial relic。如果你愿意付一点金币的话，我可以把我的部分藏品割爱于你——或是告诉你它们的使用方法。
+				StandardDialogue1: 我想我要破产了。
+				StandardDialogue2: 看起来我今天要倒大霉了。或者说撞大运？要是我看的更清楚就好了。
+				StandardDialogue3: 你想要更多关于星海旅者的信息？它们的存在广为人知，但它们的贡献大多都被载入史册。讲真，问这种问题有点怪。
+				StandardDialogue4: 占星术的力量远不止于星座。某种程度上说，你必须掌握足够的魔法和科学知识。
+				StandardDialogue5: 我热衷于收集和整理celestial relics。但你可能对它们中的大多数都不感兴趣。
+				StandardDialogue6: 当然，那些宝贝不便宜——就是这样。我该怎么进货呢？
+				BloodMoon: 唔，一颗奇怪的天体似乎正影响着月亮。何等痛苦。
+				Party: 哦，当然了。我不准备出去，但我准备好好享受这儿的美食。
+				Graveyard: 这些该死的雾是从哪儿来的？
+				StrangePotion: 奇怪的药水
+				ThespianNotReadyCorruption: 我有件你可能会感兴趣的东西，但你得做好准备才行。先解决腐化之地的麻烦怎么样？
+				ThespianNotReadyCrimson: 我有件你可能会感兴趣的东西，但你得做好准备才行。先解决猩红之地的麻烦怎么样？
+				ThespianReady: 你可能会对这玩意儿感兴趣：一瓶有着我从未见过的魔力痕迹的药水——非常强大。总让它在我的库存里积灰也不太好，所以你最好在我改变主意前拿下它。
+				RareDialogue1: 哈哈，你说我像其它同行？你有没有想过……它们也是我？
+				RareDialogue2: 你猜到了吗？对，我是精灵族人——一个精灵。不，我不会变戏法。
+				AstralDialogue: 我感受到你身上的星体相位之力了——如果你没意识到的话，“相位”一词并不妥当。实际上，星体相位类似于一种极性。你如何能处于这种相位本身就是一个谜……你身上一定隐藏着什么。
+				UmbralDialogue: 我感受到你身上的本影相位之力了——如果你没意识到的话，“相位”一词并不妥当。实际上，本影相位类似于一种极性。你如何能处于这种相位本身就是一个谜……你身上一定隐藏着什么。
 			}
 		}
 
@@ -229,7 +229,7 @@ Mods: {
 					Description: 一颗有着微量异常存在的奇异星球。根据相关的记录，它周期性的释放出奇怪且强大的类似于心脏跳动一般的振动。由于其表面存在强酸性，对其的勘探有很大的限制。
 					Threat: 威胁等级：B++ 异常
 					Requirement: 本次旅行需要三阶旅星符台。
-					Loot: 资源：棱镜核心
+					Loot: 资源：Rare Enemies
 				}
 
 				Pyxis: {
@@ -267,9 +267,9 @@ Mods: {
 				DreamingCity: {
 					Name: 千梦之城
 					Description: 一个曾经居住着被遗忘已久的种族的宏伟要塞。但是它被充满暗影力量的敌对超因果实体诅咒着，在另一个位面之中漂流。贡献者：Tatriskel
-					Threat: 威胁等级：B
+					Threat: 威胁等级：A- 异常
 					//Tier 3
-					Requirement: 本次旅行需要三阶旅星符台，目前无法在此旅行。
+					Requirement: 本次旅行需要三阶旅星符台。
 					Loot: 资源：特殊升级材料
 				}
 
@@ -278,7 +278,7 @@ Mods: {
 					Description: 一座漂浮的群岛，在它的皇帝成为一个邪恶宇宙神之舟后就被遗弃了。一种独特的暗能量弥漫在空气中。贡献者：hakomari
 					Threat: 威胁等级：B-
 					//Tier 3
-					Requirement: 本次旅行需要三阶旅星符台，目前无法在此旅行。
+					Requirement: 本次旅行需要三阶旅星符台。
 					Loot: 资源：棱镜核心
 				}
 
@@ -287,7 +287,7 @@ Mods: {
 					Description: 一群被神秘能量笼罩着的保存完好的辉煌建筑群，曾经为一个强大的存在服务，尽管祂已经遗失在时间的角落。贡献者：Izanagi, The wanderer of stars
 					Threat: 威胁等级：C
 					//Tier 2
-					Requirement: 本次旅行需要二阶旅星符台，目前无法在此旅行。
+					Requirement: 本次旅行需要二阶旅星符台。
 					Loot: 资源：棱镜核心
 				}
 
@@ -296,8 +296,8 @@ Mods: {
 					Description: 一个奇怪而原始的地方，坐落在云雾缭绕的天空之上。高墙是无数神秘和奥秘的家园，其中一些却有可能分崩离析。贡献者：UnkownSToast
 					Threat: 威胁等级：B
 					//Tier 3
-					Requirement: 本次旅行需要三阶旅星符台，目前无法在此旅行。
-					Loot: 资源：棱镜核心
+					Requirement: 本次旅行需要三阶旅星符台。
+					Loot: 资源：独特武器追忆
 				}
 
 				UltraPlant: {
@@ -305,8 +305,8 @@ Mods: {
 					Description: 一个不知名的地方，住满了呆滞或鲜活的奇怪人物。不断爆发的电流为探索和穿越提供了一个恶劣的环境。贡献者：Hockerzocker
 					Threat: 威胁等级：C-B
 					//Tier 2
-					Requirement: 本次旅行需要二阶旅星符台，目前无法在此旅行。
-					Loot: 资源：棱镜核心
+					Requirement: 本次旅行需要二阶旅星符台。
+					Loot: 资源：独特武器追忆
 				}
 
 				QuestionMark: {
@@ -326,7 +326,7 @@ Mods: {
 			}
 
 			AspectedDamageType: {
-				Description: 如果武器的种类被更改，那么武器在激活时造成的伤害减少10%。（种类被为近战时减少15`%）
+				Description: 如果武器的种类被更改，那么武器在激活时造成的伤害减少10%。（种类更换为近战时减少15%）
 				LockHover: 星相武器的伤害类型即使是重新加载世界也会被保存。
 				Melee.Name: 更改手持的星相武器的伤害类型为[c/FFAB4D:近战伤害]。
 				Rogue.Name: 更改手持的星相武器的伤害类型为[c/707070:盗贼伤害]。
@@ -364,7 +364,7 @@ Mods: {
 				}
 
 				UmbralEntropy: {
-					Name: "[c/C2BDFF:1阶] [c/FFEED1:“本影之熵”]"
+					Name: "[c/C2BDFF:1阶] [c/FFEED1:“Entropic Blight”]"
 					Description: 所有的攻击在暴击时会造成源星枯萎减益。从带有源星枯萎的敌人身上获得生命偷取。每秒至多治疗5点生命值。
 					Unlock: "[c/9D9D9D:已锁定：] 击败月球领主"
 				}
@@ -377,7 +377,7 @@ Mods: {
 
 				MysticForging: {
 					Name: "[c/C2BDFF:1阶] [c/FFEED1:“秘术锻铸”]"
-					Description: 将暴击率以1%：0.5%的比例转化为命中伤害（上限为100%）；除非有额外效果的触发，否则你无法再造成暴击。基于暴击率获得攻击速度加成，至多15%。
+					Description: 将暴击率以1%：0.5%的比例转化为命中伤害（上限为60%）；除非有额外效果的触发，否则你无法再造成暴击。基于暴击率获得攻击速度加成，至多15%。
 					Unlock: "[c/9D9D9D:已锁定：] 击败多彩魔女，彭忒希勒娅"
 				}
 
@@ -388,7 +388,7 @@ Mods: {
 				}
 
 				Hikari: {
-					Name: "[c/C2BDFF:1阶] [c/FFEED1:“光”]"
+					Name: "[c/C2BDFF:1阶] [c/FFEED1:“Crystalline Heart”]"
 					Description: 获得与最大生命值除以20的结果成比例的攻击和防御加成。受到伤害时会减半造成的伤害6秒。
 					Unlock: "[c/9D9D9D:已锁定：] 击败冰霜女王"
 				}
@@ -400,63 +400,63 @@ Mods: {
 				}
 
 				SpectralNail: {
-					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Spectral Nail']"
-					// Description: Every 5 strikes against a foe deals 30% bonus damage.
+					Name: "[c/C2BDFF:1阶] [c/FFEED1:“幽影之钉”]"
+					Description: 每对敌人造成5次伤害，会造成30%的额外伤害。
 				}
 
 				Armsthrift: {
-					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Armsthrift']"
-					// Description: Swapping weapons grants a 15% damage bonus for 5 seconds. This value is tripled if the weapon does not share the same damage type as the original weapon. (10 second cooldown.)
+					Name: "[c/C2BDFF:1阶] [c/FFEED1:“武装切换”]"
+					Description: 切换武器增加15%的伤害，持续5秒，若切换的武器与原先的武器伤害类型不同，则增幅增强3倍（10秒冷却）。
 				}
 
 				MysticIncision: {
-					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Mystic Incision']"
-					// Description: Gain 20% armor penetration. Gain an extra 50% armor penetration when in close proximity to foes. If you do not have enough Mana to use a weapon, gain that amount of Mana on use if HP is above 50%.
+					Name: "[c/C2BDFF:1阶] [c/FFEED1:“神秘切口”]"
+					Description: 增加20%护甲穿透。当靠近敌人时，获得额外50%的护甲穿透。如果你没有足够的魔力值使用武器，在当前生命值大于50%的情况下，你会获得使用武器所需的魔力值。
 				}
 
 				StayTheCourse: {
-					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Stay The Course']"
-					// Description: Every 10 seconds in combat, gain 1% damage reduction and 1% critical strike chance, up to 15%. After reaching the maximum buff, buff critical strike damage by the same amount.
+					Name: "[c/C2BDFF:1阶] [c/FFEED1:“坚持不懈”]"
+					Description: 战斗中每10秒获得1%的伤害减免和1%的暴击率，最高叠加至15%。在buff叠加至最大时，获得15%暴击伤害。
 				}
 
 				Catharsis: {
-					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Catharsis']"
-					// Description: When health is reduced through any means, deal damage to all nearby foes based on 20% of the damage of your current held weapon.
+					Name: "[c/C2BDFF:1阶] [c/FFEED1:“宣泄”]"
+					Description: 生命值通过任意方式降低时，对周围所有敌人造成等于当前手持武器20%的伤害。
 				}
 
 				FabledFashion: {
-					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Fabled Fashion']"
-					// Description: Equipped vanity armor is treated as if it is normal armor (Set bonuses do not apply.) Outgoing damage is reduced by 50%, defense is reduced by 50%, and maximum health is reduced by 150.
+					Name: "[c/C2BDFF:1阶] [c/FFEED1:“传说时尚”]"
+					Description: 你的装饰栏位中的护甲也被视为穿着普通护甲（不会触发套装奖励）。你造成的伤害减少50%，防御减少50%，最大生命值减少150点。
 				}
 
 				KineticConversion: {
-					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Kinetic Conversion']"
-					// Description: A portion of movement velocity is added to outgoing damage. Gain brief Invincibility when dashing or moving quickly. (40 second cooldown.)
+					Name: "[c/C2BDFF:1阶] [c/FFEED1:“动能转换”]"
+					Description: 你的部分移动速度会为你提升伤害，并获得短暂的无敌冲刺（40秒冷却）。
 				}
 
 				KiTwinburst: {
-					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Ki Twinburst']"
-					// Description: All attacks are divided into two instances of damage.
+					Name: "[c/C2BDFF:1阶] [c/FFEED1:“疾风连击”]"
+					Description: 所有攻击伤害都被改成为造成50%的伤害2次。
 				}
 
 				ArborealEchoes: {
-					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Arboreal Echoes']"
-					// Description: Dealing damage to unhurt foes heals 10 HP and increases damage of the first hit by 30%. Increase the potency of healing items by 30%.
+					Name: "[c/C2BDFF:1阶] [c/FFEED1:“栖树回声”]"
+					Description: 对未受伤的敌人造成伤害会回复10点生命值，并使那次伤害提高30%。你的治疗物品效果提高30%。
 				}
 
 				SwiftstrikeTheory: {
-					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Swiftstrike Theory']"
-					// Description: Gain 80% increased attack speed during immunity frames.
+					Name: "[c/C2BDFF:1阶] [c/FFEED1:“闪击理论”]"
+					Description: 无敌帧期间获得80%攻速增幅。
 				}
 
 				InevitableEnd: {
-					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Inevitable End']"
-					// Description: Foes explode when defeated, dealing 50% of their Max HP in damage to nearby foes. When you die, deal 500% of your held weapon's damage to both nearby enemies and allies.
+					Name: "[c/C2BDFF:1阶] [c/FFEED1:“必然终局”]"
+					Description: 敌人死亡时会发生爆炸，对附近所有敌人造成其最大生命值50%的伤害。当你死亡时，对附近的敌人和队友造成当前手持武器的基础伤害500%的伤害。
 				}
 
 				LavenderRefrain: {
-					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Lavender Refrain']"
-					// Description: When taking damage, Mana is treated as bonus health. When this effect triggers, Max Mana is reduced by 10% until Max Mana is reduced by 100%. Max Mana slowly recovers after not taking damage for 10 seconds.
+					Name: "[c/C2BDFF:1阶] [c/FFEED1:“薰衣草的副歌”]"
+					Description: 当受到伤害时，你的魔力值被视为额外生命值。此效果触发时，减少10%最大魔力值，直到减少100%最大魔力值。你的最大魔力值会在10秒内不受伤害后逐渐恢复。
 				}
 
 				HealthyConfidence: {
@@ -552,37 +552,37 @@ Mods: {
 			}
 
 			UnlockConditions: {
-				// VisitGraveyard: Visit a Graveyard.
-				// KingSlime: Defeat King Slime.
-				// EyeOfCthulhu: Defeat Eye of Cthulhu.
-				// WorldEvil: Defeat the World Evil boss.
-				// QueenBee: Defeat Queen Bee.
-				// ObtainTier2Stellaglyph: Obtain a Tier 2 Stellaglyph.
-				// Skeletron: Defeat Skeletron.
-				// SkeletronBeach: Defeat Skeletron, then visit the Beach.
-				// SkeletronUnderworld: Defeat Skeletron, then visit the Underworld.
-				// WallOfFlesh: Defeat the Wall of Flesh.
-				// GuideVoodooDoll: Find a Guide Voodoo Doll on a Hardcore character.
-				// Hallowed: Visit the Hallowed.
-				// PirateInvasion: Defeat a Pirate Invasion.
-				// QueenSlime: Defeat Queen Slime.
-				// AnyMechanical: Defeat any mechanical boss.
-				// SkeletronPrime: Defeat Skeletron Prime.
-				// AllMechanical: Defeat all mechanical bosses.
-				// Nalhaun: Defeat Nalhaun, the Burnished King.
-				// Plantera: Defeat Plantera.
-				// FrostQueen: Defeat the Frost Queen.
-				// Penthesilea: Defeat Penthesilea, the Witch of Ink.
-				// Golem: Defeat Golem.
-				// MartianMadness: Defeat Martian Madness.
-				// DukeFishron: Defeat Duke Fishron.
-				// LunaticCultist: Defeat the Lunatic Cultist.
-				// MoonLord: Defeat Moon Lord.
-				// WarriorOfLight: Defeat the Warrior of Light.
-				// Tsukiyomi: Defeat ???
-				// EmpressOfLight: Defeat the Empress of Light.
-				// Pumpking: Defeat Pumpking.
-				// Deerclops: Defeat Deerclops.
+				VisitGraveyard: 进入墓地
+				KingSlime: 击败史莱姆王
+				EyeOfCthulhu: 击败克苏鲁之眼
+				WorldEvil: 击败任意邪恶Boss
+				QueenBee: 击败蜂王
+				ObtainTier2Stellaglyph: 持有二阶旅星符台
+				Skeletron: 击败骷髅王
+				SkeletronBeach: 在击败骷髅王后来到海边
+				SkeletronUnderworld: 在击败骷髅王后来到地下
+				WallOfFlesh: 击败血肉墙
+				GuideVoodooDoll: 硬核人物持有向导巫毒娃娃
+				Hallowed: 进入神圣之地
+				PirateInvasion: 击退一次海盗入侵
+				QueenSlime: 击败史莱姆皇后
+				AnyMechanical: 击败任意机械Boss
+				SkeletronPrime: 击败机械骷髅王
+				AllMechanical: 击败所有机械Boss
+				Nalhaun: 击败复光之君，纳尔赫恩
+				Plantera: 击败世纪之花
+				FrostQueen: 击败冰雪女王
+				Penthesilea: 击败多彩魔女，彭忒希勒娅
+				Golem: 击败石巨人
+				MartianMadness: 击退火星暴乱
+				DukeFishron: 击败猪龙鱼公爵
+				LunaticCultist: 击败拜月教邪教徒
+				MoonLord: 击败月球领主
+				WarriorOfLight: 击败光之战士
+				Tsukiyomi: 击败 ？？？
+				EmpressOfLight: 击败光之女皇
+				Pumpking: 击败南瓜王
+				Deerclops: 击败巨鹿
 			}
 		}
 
@@ -692,14 +692,14 @@ Mods: {
 					91: 唔，你最好小心使用这个精华——这是个潜力十足的近战精华，但你似乎要为此牺牲你的防御。
 					92: 依我看，这个精华潜力无穷，但我不确定使用它需要支付何等代价——也许你需要观望一下。
 					93: 说来你可能不信，但有人给了我这个精华——真不可思议。他们说什么“这不过是场游戏，没什么大不了的。”真的如此吗？
-					94: 这个远程精华对应了一把经典的火箭发射器——我曾听说有人借助爆炸赶路，反正试一试又不疼，不是吗？
+					94: 这个远程精华对应了一把经典火箭发射器——我曾听说有人借助爆炸赶路，反正试一试又不疼，不是吗？
 					95: 唔，这个魔法精华有些与众不同：你可以用它在这个世界作画，并引发不同的效果。
 					96: 看看这个悠悠球精华——它对应着一把召唤武器，看上去也是个不错的机动装置。
-					// 97: This Summon-type weapon isn't like anything you've seen before, I think. Best to just give it a go- how good's your swordsmanship?
-					// 98: With this Essence, you'll have a Magic-type weapon with some crazy stopping power! Let's give this one a 'shot'!
-					// 99: This Summon weapon is an elegant blade- you can control it manually, or it will slice foes all on its own. Why can't everything do that?
-					// 100: This Melee blade has one goal in mind... You could probably guess from its name. It'll make a powerful weapon, that's for sure.
-					// 101: This Ranged weapon can empower some throwing weapons... Or, you could just blast foes away with bullets. You know, I like both of these options!
+					97: 我想这把召唤武器有些不同寻常。你最好上手试试——看看你的剑术究竟如何？
+					98: 有了这个精华，你可以造出一把有着超强压制力的魔法武器！让我们给它一次一“鸣”惊人的机会！
+					99: 这个召唤武器是一把优雅的飞剑——你可以手动操控，或让它自行寻敌。为什么别的武器不能这样？
+					100: 这把巨剑只有一个执念……也许你能从它的名字中略知一二。毋庸置疑，这将是一把强大的武器。
+					101: 这把远程武器能增强你的投掷物……或者用纯粹的重火力击溃你的对手。你知道的，两个我都很喜欢！
 				}
 
 				Eridani: {
@@ -801,11 +801,11 @@ Mods: {
 					96: 这个远程火箭发射器兼备了近战能力，但它需要你有——呃，足够结实的双腿。
 					97: 看看这个魔法精华：简而言之，你将以世界为画布，与之沟通并以此发动攻击。
 					98: 一个新的精华，供你好好研究——它能造成召唤伤害。尽管它的攻击范围较窄，但它提供的强大机动性弥补了不足。
-					// 99: You'd think this Summon-type essence wouldn't be a sword, but here it is. It has a very special power hidden within... Just don't unleash it indoors.
-					// 100: I hope you have steady aim- this Magic weapon has powerful piercing strength, as long as you keep your target in your sights.
-					// 101: This Summon essence will create a mystical blade to aid you in combat- you can also control it magically, if you need better precision.
-					// 102: A Melee essence, huh? It looks like it has some powerful abilities. Just be glad it listens to you.
-					// 103: It seems this Summon essence creates powerful allies of water to give you the upper hand in combat. How brilliant!
+					99: 你可能觉得召唤武器本不该和剑扯上关系，但事实的确如此。剑刃中蕴藏着一股神秘的力量……你最好别在室内释放它。
+					100: 希望你的准头还不错——只要目标还在视野范围内，这把魔法武器就能把敌人穿的透心凉。
+					101: 这个召唤精华可以制造出一把助你作战的神秘飞剑——如果你需要更好的准头，当然也可以手动控制它。
+					102: 一个近战精华，哈？看上去它威力无穷。很高兴它能听从你的意旨。
+					103: 看上去这个召唤精华能召唤出强大的水元素盟友，以在战斗中助你一臂之力。真棒！
 				}
 
 				Perseus: {
@@ -1045,7 +1045,7 @@ Mods: {
 				WarriorOfLight: {
 					Asphodene: {
 						1: 我们看错了……光之战士以为他在拯救宇宙，但这确实是最初的星海旅者的谎言…多么残酷。
-						2: Anyways,光之战士。他设法逃跑了，但……黑夜终于回到了这个世界！
+						2: 不管怎么说,光之战士设法逃跑了，但……黑夜终于回到了这个世界！
 						3: 我们终于有了拼图的最后一块。最初的星海旅者露了一手，这意味着我们有机会了。
 						4: 天体序列还很强—意味着我们需要在接下来的冲突使用它，我相信是这样。
 						5: 一旦你收集了所有的追忆之符，在你准备好的时候使用它。它将把最初的星海旅者直接带到我们身边。
@@ -1201,7 +1201,7 @@ Mods: {
 				Deerclops: {
 					Asphodene: {
 						1: 好，我们已经解决了那个奇怪独眼怪。我不知道它是从哪来的。
-						2: 它为什么要攻击我们？它是不想饥荒吗？嗯。我说的话有点不对劲。
+						2: 它为什么要攻击我们？它是不想饥荒吗？
 					}
 
 					Eridani: {
@@ -1212,13 +1212,13 @@ Mods: {
 
 				Thespian: {
 					Asphodene: {
-						// 1: That was quite the battle! Remind me to never touch strange potions ever again.
-						// 2: Actually, this one wasn't even my fault. Remind me to remind you to never touch strange potions again.
+						1: 真是一场恶战！提醒我以后别再乱动什么奇怪的药水了。
+						2: 实际上，这根本不是我的错。记得让我提醒你以后别再乱动那些奇怪的药水了。
 					}
 
 					Eridani: {
-						// 1: Looks like you came out of that fight with Thespian in one piece. What a curious phenomenon.
-						// 2: An alchemist reanimated by a clown that only appears at night time. Hey, am I missing a punchline here?
+						1: 看来你在和Thespian的战斗中毫发无损。奇怪的现象。
+						2: 一个只在夜间现身的、被小丑控制的药剂师。话说，我是不是漏了什么关键词？
 					}
 				}
 			}
@@ -1410,15 +1410,15 @@ Mods: {
 
 			BossItemDialogue: {
 				VagrantAsphodene: {
-					1: 等等——这颗陨石还包裹着其它东西。
+					1: 等等——这颗陨石还包裹着其它东西。我记不清什么时候见过它，但是……
 					2: 我隐约记得这是什么，但我还是想不起来——一股力量正阻止我探寻事情的真相。
-					3: 但这至少告诉我一件事——它非常重要！希望你尽快调查一下。
+					3: 但这至少告诉我一件事——它非常重要！希望你尽快调查一下。不必那么着急。呃，还是着急一点吧。
 				}
 
 				VagrantEridani: {
 					1: 且慢。这颗陨石包裹着一个有趣的东西。
-					2: 它看上去很眼熟，但有一股力量干扰着我的思绪——真让人恼火。
-					3: 我曾听说：感觉到阻力,说明你正朝着正确的方向前进。让我们尽快进行进一步的研究。
+					2: 它看上去很眼熟，但有一股力量干扰着我的思绪——真让人恼火。我记不清什么时候曾见过它。
+					3: 我曾听说：感觉到阻力,说明你正朝着正确的方向前进。我们尽快开展进一步的调查吧。
 				}
 
 				Nalhaun: {
@@ -1453,7 +1453,7 @@ Mods: {
 					8: 据我所知，不出数日，他对这个世界的控制程度将到达顶峰。
 					9: 如果你有需要在夜间获取的资源，我强烈建议你尽快采取行动。
 					10: 我将给你一件来自他母星的信物；尽管我对他的目的一无所知，但我确信这能提前他的到来。
-					11: 等你准备妥当后再使用它。我们已是孤注一掷。
+					11: 等你准备妥当后再使用它。我们此举已是孤注一掷。
 					12: ……
 				}
 
@@ -1935,7 +1935,7 @@ Mods: {
 					175: 你到达观星台了！所以说你作何感想？
 					176: 看来你已经到了。这里有一些有趣的小行星——让我们开始探索吧。
 					177: 我们到了。这颗星球有点奇怪……它的表面寸草不生……发生什么事了？
-					178: 她一直都近在咫尺……试着使用这片区域中央的追忆印记吧。
+					178: 这是什么地方？
 					179: 看起来我们还没办法探索这里……也许下次吧。
 					180: 哇哦，这里被浓郁的绿色覆盖了。看上去是场有趣的旅行——让我们开始探索吧！
 					181: OK，那只史莱姆不再逃跑了。让我们做好准备开战吧。
@@ -1959,14 +1959,14 @@ Mods: {
 					199: 一只恶魔现身了！我想这是有原因的——毕竟我们正身处地狱！让我们给它们一点“热情”的问候。
 					200: 我不知道你刚刚又干了什么，但这个可怕的骷髅头朝我们冲过来了。我想这种情况不是第一次了。
 					201: 一尊水晶巨像接近了——无需多言，准备战斗。
-					// 202: Ack; looks like that potion did do something. Don't let your guard down.
-					// 203: Get ready, because I won't hold back!
-					// 204: What IS that thing?! A being of pure void energy...
-					// 205: It's even stronger now?! Hey, isn't this, like... really bad?
-					// 206: You're kidding me.
-					// 207: Well, let's show 'em what we can do.
-					// 208: You've attracted that squid! So... what now? Beat it up, I guess?
-					// 209: So this is that sentinel, huh? Looks pretty tough!
+					202: 看起来那瓶药水引发了什么反应。不要放松警惕。
+					203: 做好准备，因为我不会退缩半步！
+					204: 那 到 底 是 什 么 东 西？！纯粹的虚空能量聚合体……
+					205: 它现在变得更强了？！喂……事情是不是……有点棘手？
+					206: 你在开玩笑吧。
+					207: 好了，让他们见识下我们的厉害。
+					208: 你被那条乌贼盯上了！所以……现在该怎么办？最好先干掉它，嗯哼？
+					209: 那么这就是那个哨卫，嗯？看上去有够麻烦的！
 				}
 
 				Eridani: {
@@ -2145,7 +2145,7 @@ Mods: {
 					173: 天体坐标设立完毕。欢迎来到极北天文台。
 					174: 我们做到了。这里有一些有趣的小行星。让我们四处看看吧。
 					175: 我们到了。这颗星球看上去黯淡无色？不知为何，它的表面似乎被抹去了。
-					176: 她一直在这里……？嗯……我随时做好准备。使用区域中央的追忆印记吧。
+					176: 这是哪儿？看上去很眼熟……
 					177: 看起来我们还没办法探索这里……也许下次吧。
 					178: 一位昭示灾难的存在现身了。它那些附肢操纵着毁灭之力！
 					179: 这只庞然巨物汇聚了世界上的邪恶力量！杀死其中一只史莱姆会增强另一只！
@@ -2172,14 +2172,14 @@ Mods: {
 					201: 我也不想这么说，但你似乎引起了一只可怕恶魔的注意——是时候准备作战了。
 					202: 你刚刚使用的王冠似乎召唤出了一个恶魔骷髅头……这些家伙通常不怎么友好！
 					203: 一具巨型岩石魔像正在接近——毫无疑问，它对你充满敌意。今日一场大战不可避免。
-					// 204: That potion the Astrologian gave you definitely was 'strange' for a reason. Prepare yourself!
-					// 205: I trust you're ready for this?
-					// 206: What is this void... thing? It's nothing short of terrifying.
-					// 207: It's even stronger now?! Any other things I should know about?
-					// 208: You're kidding me.
-					// 209: Let's show this Glassweaver we mean business.
-					// 210: Looks like it took the bait. Time to get to work!
-					// 211: I'm going to wager a guess and say this is whom the Glassweaver spoke of. Don't get careless.
+					204: Astrologian给你的药水怎么说都很“可疑”。做好准备！
+					205: 我相信你已经准备好了……？
+					206: 这团虚空到底是什么……东西？总之少不了麻烦。
+					207: 它现在甚至变的更强了？！还有别的注意事项吗？
+					208: 你在开玩笑吧。
+					209: 告诉织璃者我们是认真的。
+					210: 看起来它上钩了。是时候干点正事了！
+					211: 我猜这就是织璃者所说的存在了。别大意。
 				}
 			}
 
@@ -2437,7 +2437,7 @@ Mods: {
 					16: {
 						Dialogue: {
 							0: 当然如此——我不是说过有太阳为这颗星球提供热量吗？呃呜……
-							1: 不管怎样，等你做出旅星符台，你就能通过通过Astrolabe探索宇宙了。
+							1: 不管怎样，等你做出旅星符台，你就能通过天体制图仪探索宇宙了。
 							2: 如果你需要，我可以向你介绍一些基本流程。这说不上复杂，不过你可能很快就会忘。
 						}
 
@@ -2457,8 +2457,8 @@ Mods: {
 							5: 当然，这种方式也存在一些弊端。我们通过非常规的手段把你传送到目的地（而不是用宇宙飞船），所以你绝大部分的机动能力都没法使用了。
 							6: 唔，我推荐你在寰宇之旅途中带上钩爪之类的东西。相信我总没错的。
 							7: 这一点言之有理。记住：你只有在传送门附近才能传送到其它目的地——但如果你被困住了，你就只能选择传送回家或回到天文台。
-							8: 说起目的地……除了某些特异点，你探索途中发现的任何战利品都不会在你再次探索时刷新。
-							9: 特异点中有着更丰富的资源和更稀有的敌人，但如果你停留太久……
+							8: 说起目的地……如果你在旅途中遇到任何敌人，你可以猎杀它们来获取一些有用的物品。
+							// 9: Anomaly locations have much greater loot and rarer enemies, but if you stay for too long...
 							10: 这么说吧，星海中潜藏着大量讨厌的家伙，这些特异点深受他们的青睐。一旦它们注意到你的存在，他们就会前来猎杀你。
 							11: 对特异点的探索之间有很长的冷却时间，因此每次探索都至关重要。
 							12: 通过升级你的旅星符台，寰宇之旅可以抵达更多目的地，但你必须自己给旅星符台升级，当然了，要使用空天之根。
@@ -2564,35 +2564,35 @@ Mods: {
 
 					23: {
 						Dialogue: {
-							// 0: Hey, {0}. Remember how you fought our brother? Yes, we have a bit of a hypothesis we'd like to try out.
-							// 1: Wait, wait wait- this was an Eri-original idea. While I concede that I am curious, well...
-							// 2: It'll be fine. Anyway, we're going to do some friendly sparring to try out a hypothesis of mine. On one condition- We need to borrow a bit of your power.
-							// 3: Isn't that just so funny...! What's this called, dramatic irony? ...but it's true. We'd lose quite rapidly in an even match.
-							// 4: Just use this item when you're ready. Find a nice open space, too.
+							0: 嘿，{0}。还记得你和哥哥的那场战斗吗？对，我们有个假设有待验证。
+							1: 等等，且慢且慢——这是埃里想出来的主意。虽然我承认有那么一丁点好奇，唔……
+							2: 会没事的。不管怎么说，我们打算进行一些友好的较量来验证我的假设。这样的话——我们需要借用你的一点力量。
+							3: 是不是很有趣……！这算是什么，戏剧式讽刺吗？……但这是真的。如果公平竞技的话我们会输的很快。
+							4: 准备好之后就用这个东西召唤我们吧。别忘了找个开阔一点的场地。
 						}
 
 						Choices: {
-							// 1: X
-							// 2: X
+							1: X
+							2: X
 						}
 					}
 
 					24: {
 						Dialogue: {
-							// 0: Well, I have some answers and more questions... to be honest, they've been in my mind for quite some time. During our fight, I could tell that we don't command the same powers as our brother.
-							// 1: Now that you mention it, we've really been kept in the dark. I can't quite picture our time before Perseus guided us, like it's a memory that's been sealed away.
-							// 2: You know, you'd think with the Essences and all, we'd have a better track record!
-							// 3: ...
-							// 4: Hey, wouldn't it be crazy if-
-							// 5: No, that doesn't make sense. We can use the Array and Novas, right?
-							// 6: Maybe there's something else we're overlooking. We could be cursed! I'd ask Perseus directly, but you know how he is. Jerk.
-							// 7: Anyways, thanks again for our little sparring match. If you want another go, just give us the signal.
-							// 8: Right... it's like she likes getting blown up or something.
+							0: 唔，我有了一些答案和更多的问题……讲真，它们一直萦绕在我脑海里。通过战斗，我能感觉到我们的力量远远不如哥哥那样强大。
+							1: 既然你提到了，我们过去一直被蒙在鼓里。我实在不敢想象有珀尔修斯指引我们之前的那段时光，那像是一段被封存的记忆。
+							2: 你知道的，你可能觉得有了那些精华和其它的什么，我们就能创下更高的记录！
+							3: ……
+							4: 嘿，这会不会太疯狂了，如果说——
+							5: 不，这讲不通。我们还可以使用天体序列和天体新星，对吧？
+							6: 或许我们还忽略了什么。我们可能被诅咒了！我会直接问问珀尔修斯，但你也知道他的脾气。这个混蛋。
+							7: 不管怎样，还是谢谢你肯和我们较量。如果你意犹未尽，尽管跟我们说。
+							8: 对……听起来好像她喜欢被炸飞似的。
 						}
 
 						Choices: {
-							// 1: X
-							// 2: X
+							1: X
+							2: X
 						}
 					}
 
@@ -2850,7 +2850,7 @@ Mods: {
 
 					212: {
 						Dialogue: {
-							0: 火把是一种非常古老的照明工具了，据说存在着一种由真正的骨头制成的火把。
+							0: 火把是一种非常古老的照明工具了，据说存在着一种真正由骨头制成的火把。
 							1: 你能帮我找来一根吗？很抱歉给你们带来麻烦。
 						}
 
@@ -2862,74 +2862,74 @@ Mods: {
 
 					300: {
 						Dialogue: {
-							// 0: When I awoke, I felt numb.
-							// 1: Aimless.
-							// 2: My memories were addled, incomplete, and terrifying. I succeeded, but doing what?
-							// 3: Most of all, I felt warm. For some reason, this banal sensation gave me immeasurable joy, but... it was dreadfully wrong.
-							// 4: I did not know it yet, but this was the moment that doomed this galaxy forever.
+							0: 当我醒来时，我感到身体有些迟钝。
+							1: 漫无目的。
+							2: 我的记忆混乱不堪，残缺不全，令我毛骨悚然。我成功了，但我又做了什么呢？
+							3: 最重要的是，我感到了久违的温暖。出于某种原因，这种平平无奇的感觉带给我莫大的愉悦感，但……这简直大错特错。
+							4: 那时我还尚未意识到，那一刻彻底注定了这个星系的命运。
 						}
 
 						Choices: {
-							// 1: X
-							// 2: X
+							1: X
+							2: X
 						}
 					}
 
 					301: {
 						Dialogue: {
-							// 0: When we first met, I knew he could see right through me. I am a sinner, after all.
-							// 1: His frozen world was the Ardor's doing, the stark white reminder of my failures.
-							// 2: There was nothing I could say. Amidst the ruin of his people, I could only extend my hand... If he cut me down then, it would have been a mercy. This was the moment I discovered that I failed.
-							// 3: Instead, he stayed his blade. I offered him the only thing I could- to watch over me as I conducted my penance. Now my most stalwart ally, and I erased everything he loved.
-							// 4: I often return to this place. The cold bites into my skin... it's what I deserve.
+							0: 初次见面，我就知道他能彻底把我看穿。毕竟，我不过是个罪人。
+							1: 他被冰封的世界正是亚铎导致的后果，亦是对我的失败的赤裸裸的提醒。
+							2: 我无言以对。在他的子民被毁灭的时候，我唯一能做的就是伸出援手……如果他当时把它们砍下来，那也是我罪有应得。正是那一刻，我意识到自己已经失败了。
+							3: 但恰恰相反，他收回了他的剑刃。我向他提出了我唯一能提的要求——在我忏悔时注视着我。如今他是我最坚定的盟友，而我曾抹去了他所爱的一切。
+							4: 我经常会回到这个地方。寒冷刺骨……这是我应得的。
 						}
 
 						Choices: {
-							// 1: X
-							// 2: X
+							1: X
+							2: X
 						}
 					}
 
 					302: {
 						Dialogue: {
-							// 0: The despondent fervor when you know you've just done something terrible... it never leaves me.
-							// 1: I decided that the only way I could atone was to try again to make things right.
-							// 2: I knew that I spent my energy already. I knew that failure was the most likely outcome. I know now, still. I continue to work towards this goal... I can't bear to think of anything past it.
-							// 3: Some inhabitants of this newborn galaxy stand in my way. My Warrior strikes them down... I do not deserve such a gallant champion.
-							// 4: Even now, he shoulders the blame. Guilt does not begin to describe the anguish I feel. When will I get used to it? Will I ever?
+							0: 当你得知自己做了一件可怕的事时，那种沮丧的焦灼感……从未离我远去。
+							1: 我想唯一能补救的方法就是让一切恢复原状。
+							2: 我知道我已经消耗了不少精力。我知道失败是最有可能的结果。我现在仍深知这点。我将继续为了这个目标努力……我无法忍受再回想起过去的事了。
+							3: 这个新生星系的一些居民挡住了我的去路。我手下的战士们负责清扫这些障碍……我配不上领导这些勇敢的战士。.
+							4: 时至今日，他仍需承担责任。内疚已经不足以形容我的痛苦了。我何时才能习惯这种感受呢？我做得到吗？
 						}
 
 						Choices: {
-							// 1: X
-							// 2: X
+							1: X
+							2: X
 						}
 					}
 
 					303: {
-						// Dialogue.0: Melancholy. Regret. Anguish. You can make out these fervored emotions, but without knowledge of the other Mnemonic Traces, this story remains shrouded in mystery.
+						Dialogue.0: 忧郁。悔恨。痛苦。你能感受到这些狂热的情绪，但其它追忆之迹的消息尚未明晰，这个故事仍然笼罩在迷雾中。
 
 						Choices: {
-							// 1: X
-							// 2: X
+							1: X
+							2: X
 						}
 					}
 
 					304: {
 						Dialogue: {
-							// 0: In a time before now, there existed a galaxy much like this one. In fact, is a perfect facsimile, or so was the naïve hope I shared.
-							// 1: Without warning, the Ardor swept through it. There was no struggle, because there was nothing to struggle against. The cold does not care. It does not hate, and it does not love.
-							// 2: With the energy gained from my long, storied existence, I begun everything again. As if nothing happened, I spun again the web of the galaxy from nil, my one final act of providence.
-							// 3: However, I made one mistake... Haha. It hurts to think about it.
-							// 4: I spared myself of the cruel fate of annihilation. It may have been subconsciously, or an active decision of the primal self, but does it really matter anymore?
-							// 5: ...
-							// 6: Why do I continue to try and avert this disaster?
-							// 7: This desire- the desire to help others- was imprinted to my very concept upon entering this existence. What agency is my own, and what was hoisted upon me by others?
-							// 8: Like many other things, the answer is lost to the cold. Or is that what I tell myself?
+							0: 曾几何时，也有一片和这里类似的星系。实际上，它是对这里的完美的复制，抑或是我所分享的一丝天真的希望。
+							1: 亚铎毫无征兆地席卷了它。没有任何抵抗，因为任何抵抗都是徒劳。寒冷不会在乎谁。它不会厌恶谁，亦不会偏爱谁。
+							2: 凭借着我漫长而曲折的一生中积蓄的力量，我重新开始了一切。一切仿佛黄粱一梦，我又一次从零织就了银河之网，也是我最后一次应天命而行事。
+							3: 但我犯了一个错误……呵呵，光是想想就让人心痛。
+							4: 我使自己免于被毁灭的残酷命运。这或许是无意识的抉择，又或是我原始一面的真实想法，但事已至此，这些还重要吗？
+							5: ……
+							6: 我为何还要竭力阻止这场灾难呢？
+							7: 这种渴望——拯救他人的渴望——在我到来伊始就已深深烙在了我的脑海中。究竟什么才是我自己的抉择，什么是别人强加与我的意旨？
+							8: 就像其它许多问题，答案早已迷失在彻骨冰寒之中。或者这就是我自认为的全部？
 						}
 
 						Choices: {
-							// 1: X
-							// 2: X
+							1: X
+							2: X
 						}
 					}
 				}
@@ -2939,7 +2939,7 @@ Mods: {
 		StarfarerMenuDialogue: {
 			StarfarerSelection: {
 				Choice: 选择一个在你的旅途中帮助你的星海旅者
-				Warning: "[c/E36666:该选择是永久的 （对每个角色而言）]"
+				Warning: "[c/E36666:该选择是永久的 （对每个角色而言分别独立）]"
 				ManaIncrease: 最大魔力值增加了20点
 				Talk: 空间光盘开始产生共鸣；似乎有人想要和你交流
 
@@ -3415,7 +3415,7 @@ Mods: {
 		}
 
 		Common: {
-			DiskReady: 空间光盘开始共鸣。点击左键以交互。
+			DiskReady: 空间光盘开始共鸣。手持点击左键以交互。
 			ArrayAbility: 天体阵列获得了一项新能力！
 			// NovaUnlocked: Stellar Novas have been unlocked!
 			// NewNova: A new Stellar Nova has been unlocked!
@@ -3428,58 +3428,58 @@ Mods: {
 			TsukiyomiBossChecklist: BossCheckList已经更新！并为你揭露了一位隐藏的敌人！
 			CanBeShimmeredSpoils: 可以被微光转化为星体残片
 			BlockedNova: 一位强大的敌人阻止你使用天体新星！
-			// CreditsHover: "[View the credits for the mod!]"
-			/* Credits:
+			CreditsHover: "[查看该Mod的制作者们！]"
+			Credits:
 				'''
 				Credits
-				[c/FFF6CD:Programming/Art/Testing/Etc: PaperLuigi]
-				[c/F19559:- Original Soundtrack Composers -]
-				[c/FFF6CD:Sunset, Stardust: PaperLuigi]
-				[c/FFF6CD:Legends Yet Unspun: ShadyCicada]
-				[c/FFF6CD:Chart the Cosmos / Even Stars Must Fall: EchoLane]
-				[c/F19559:- Special Thanks -]
-				[c/DADADA:All Patreon supporters!]
-				[c/DADADA:External Music: Studio EIM, Kairiki Bear, Masayoshi Soken, REVO, Daiki Ishikawa, Nobuo Uematsu, Michael Salvatori]
-				[c/DADADA:Subworld Contest Builders: Tatriskel, hakomari, Izanagi The wanderer of stars, UnkownSToast, Hockerzocker]
-				[c/DADADA:Discord Moderators: the_alu, ifune, loligeddon, polluxe, not02]
-				[c/DADADA:ES Translators: Tofu and Zeldris]
-				[c/DADADA:CN Translators: Koibumi Group(灾厄维基汉化组)]
-				[c/DADADA:Libraries: SubworldLibrary, StructureHelper]
-				[c/DADADA:Open-Source Code: ScalarVector, tomat, jopojelly, John Snail, Kazzymodus, Mirsario]
+				[c/FFF6CD:编程/美术/测试等：Paper Luigi]
+				[c/F19559:- 原声配乐作曲家 -]
+				[c/FFF6CD:日落，星尘Sunset, Stardust：PaperLuigi]
+				[c/FFF6CD:未展开的传奇Legends Yet Unspun：ShadyCicada]
+				[c/FFF6CD:绘出寰宇/星尘也会坠落Chart the Cosmos / Even Stars Must Fall：EchoLane]
+				[c/F19559:- 特别感谢 -]
+				[c/DADADA:所有的Patreon支持者！]
+				[c/DADADA:外部音乐：Studio EIM, Kairiki Bear, Masayoshi Soken, REVO, Daiki Ishikawa, Nobuo Uematsu, Michael Salvatori]
+				[c/DADADA:子世界建造者：Tatriskel, hakomari, Izanagi The wanderer of stars, UnkownSToast, Hockerzocker]
+				[c/DADADA:Discord版主：the_alu, ifune, loligeddon, polluxe, not02]
+				[c/DADADA:ES本地化作者：Tofu和Zeldris]
+				[c/DADADA:CN本地化作者：灾厄维基汉化组]
+				[c/DADADA:库：SubworldLibrary, StructureHelper]
+				[c/DADADA:开源代码：ScalarVector, tomat, jopojelly, John Snail, Kazzymodus, Mirsario]
 
 
 
-				''' */
+				'''
 		}
 
 		DamageClass.CelestialDamageClass: 天体伤害
 
 		NPCs: {
 			Astrologian: {
-				// DisplayName: Astrologian
+				DisplayName: 占星术士
 
 				# This is what displays during all of an NPC's happiness levels.
 				TownNPCMood: {
-					// Content: I have no complaints.
-					// NoHome: Just because I enjoy looking at the stars does not mean I wish to be without a roof.
-					// FarFromHome: I hate to ask, but where am I?
-					// LoveSpace: Extra space to take measurements is always appreciated.
-					// DislikeCrowded: I enjoy the lively atmosphere, but everything has its limit- I've found mine.
-					// HateCrowded: You've got to be kidding me. I can't even setup my telescope without it getting knocked over, to say nothing of the light pollution.
-					// LoveBiome: Is it not obvious? The best location to view the stars is Space.
-					// LikeBiome: I have no complaints about {BiomeName}. The horizon is a poigant view, after all.
-					// DislikeBiome: As a faerie, you'd think I'd prefer {BiomeName}. Let it be known that I do not. Try looking through a telescope while being trampled by a unicorn.
-					// HateBiome: Seriously? {BiomeName}? You must have some grievances against me... Feel free to share.
-					// LoveNPC: There's no way around it: {NPCName} is much better at magecraft than I. I'd love to learn under his tutelage.
-					// LikeNPC: A fellow scientist in {NPCName} provides valuable discourse.
-					// DislikeNPC: It's not that I hate {NPCName}... however, we couldn't be more different in our tastes.
-					// HateNPC: Brash, unlearned, and uncouth. {NPCName} is the distilled essence of individual I wish to never lay eyes on.
-					// LikeNPC_Princess: "{NPCName} is a princess? It may be pertinent to build rapport- their coffers could afford stronger instruments, for one."
-					// Princess_LovesNPC: "{NPCName} is so exotic! Isn't that something to admire?"
+					Content: 没什么可抱怨的。
+					NoHome: 喜欢观星不意味着我喜欢无家可归。
+					FarFromHome: 我本不想问的，但我现在在哪？
+					LoveSpace: 设计房间时留出点额外的空间总是好的。
+					DislikeCrowded: 我喜欢热闹的氛围，但任何事物都有其弊端——我觉得也是。
+					HateCrowded: 你在开玩笑吧。我的望远镜都快被挤爆了，更别提这儿的光污染了。
+					LoveBiome: 显而易见，观星的最佳场地是太空。
+					LikeBiome: 我对{BiomeName}没什么可抱怨的。毕竟这里视野开阔。
+					DislikeBiome: 你可能觉得精灵一族会喜欢{BiomeName}.我不这么觉得，望周知。你也试试观星时被独角兽踩到是什么感受。
+					HateBiome: 你认真的？{BiomeName}？你是不是对我有什么不满意的……尽管说就是了。
+					LoveNPC: "{NPCName}的魔法水平要比我强得多。真希望我能跟着他学习。"
+					LikeNPC: "{NPCName}认识的科学家能为我提供宝贵的研究资源。"
+					DislikeNPC: 不是说我讨厌{NPCName}……但我们的品味相差甚远。
+					HateNPC: 鲁莽、无知、粗鲁。{NPCName}是我最不想见到的那一类人。
+					LikeNPC_Princess: "{NPCName}真的是公主吗？和她搞好关系可能是个明智的选择——比如说，她的积蓄能供给我更高级的研究设备。"
+					Princess_LovesNPC: "{NPCName}真是太有个性了！难道这不值得钦佩吗？"
 				}
 
 				# This key is generated and used when the "Census" mod is enabled: It allows the user to see the spawn condition of this town NPC in the Housing UI
-				// Census.SpawnCondition: Have a Weapon Memory in your inventory
+				Census.SpawnCondition: 物品栏中持有武器追忆。
 			}
 
 			Arbitration.DisplayName: 仲裁
@@ -3488,48 +3488,48 @@ Mods: {
 			CastorBoss.DisplayName: 炽炎灾裔，卡斯托尔
 			Dioskouroi.DisplayName: 双子星力，狄俄斯库洛伊
 			NalhaunBoss.DisplayName: 复光之君，纳尔赫恩
-			PaintedAttendantA.DisplayName: 复生画刷
-			PaintedAttendantB.DisplayName: 复生画刷
-			PrismLoot.DisplayName: 棱镜核心
+			PaintedAttendantA.DisplayName: 活笔刷
+			PaintedAttendantB.DisplayName: 活笔刷
+			PrismLoot.DisplayName: 移动核心
 			SpectreOfLight.DisplayName: 光之幽灵
 			VagrantOfSpaceAndTime.DisplayName: 时空流浪者
 			WarriorOfLight.DisplayName: 光之战士
 			Nalhaun.DisplayName: Mods.StarsAbove.NPCName.Nalhaun
-			AmethystHeadpiercer.DisplayName: 紫水晶观察者
-			AmethystSwordsinner.DisplayName: 紫水晶剑首着
-			AsteroidWormBody.DisplayName: 星辰分解者
-			AsteroidWormHead.DisplayName: 星辰分解者
-			AsteroidWormTail.DisplayName: 星辰分解者
-			Soulless.DisplayName: 失魂
+			AmethystHeadpiercer.DisplayName: 紫水晶预言者
+			AmethystSwordsinner.DisplayName: 紫水晶剑咏者
+			AsteroidWormBody.DisplayName: 星熊虫
+			AsteroidWormHead.DisplayName: 星熊虫
+			AsteroidWormTail.DisplayName: 星熊虫
+			Soulless.DisplayName: 无魂
 			Garridine.DisplayName: 嘉里丹妮
 			Yojimbo.DisplayName: 佑今波
 			DioskouroiWallsNPC.DisplayName: 狄俄斯库洛伊墙 N P C
-			NalhaunPhase2WallsNPC.DisplayName: 纳尔赫恩二阶段墙 N P C
+			NalhaunPhase2WallsNPC.DisplayName: 纳尔赫恩2阶段墙 N P C
 			VagrantWalls.DisplayName: 流浪者墙
-			VagrantWallsHorizontal.DisplayName: 水平流浪者墙
-			VagrantWallsVertical.DisplayName: 垂直流浪者墙
+			VagrantWallsHorizontal.DisplayName: 流浪者墙水平
+			VagrantWallsVertical.DisplayName: 流浪者墙垂直
 			WarriorOfLightBoss.DisplayName: 光之战士
 			WarriorWallsNPC.DisplayName: ""
 			WarriorOfLightOld.DisplayName: ""
-			GardenOfAvalonNPC.DisplayName: 阿瓦隆花园
+			GardenOfAvalonNPC.DisplayName: 永世隔绝的理想乡
 
 			VagrantBoss: {
 				DisplayName: 时空流浪者
 
 				BossChecklistIntegration: {
-					// EntryName: The Vagrant of Space and Time
-					// SpawnInfo: Defeat this strange foe through the Shattered Disk, obtained from your Starfarer after the Eye of Cthulhu is defeated. This fight will be critical to progression later!
-					// DespawnMessage: ""
+					EntryName: 时空流浪者
+					SpawnInfo: 击败克苏鲁之眼后，从你的星海旅者处获取破碎光盘来召唤这个奇怪的敌人。这场战斗将是推动游戏进程的关键。
+					DespawnMessage: ""
 				}
 			}
 
 			ThespianBoss: {
-				// DisplayName: Thespian, the Act of Alchemy
+				DisplayName: 炼金术戏剧，狄斯比斯
 
 				BossChecklistIntegration: {
-					// EntryName: Thespian, the Act of Alchemy
-					// SpawnInfo: Challenge this strange enemy through inquiring about the Strange Potion with the Astrologian. She moves into town after you obtain a Weapon Memory or defeat the Vagrant of Space and Time.
-					// DespawnMessage: ""
+					EntryName: 炼金术戏剧，狄斯比斯
+					SpawnInfo: 使用从占星术士处获取的奇怪药水来召唤她。她将在你获得一个武器追忆或击败时空流浪者后作为npc入住城镇。
+					DespawnMessage: ""
 				}
 			}
 
@@ -3537,19 +3537,19 @@ Mods: {
 				DisplayName: 冰河灾裔，波鲁克斯
 
 				BossChecklistIntegration: {
-					// EntryName: Dioskouroi, the Twin Forces
-					// SpawnInfo: Defeat these demonic twins through use of the Twincrux Pendant, granted after defeating Skeletron. (The Vagrant of Space and Time must have been defeated.)
-					// DespawnMessage: ""
+					EntryName: 双子星力，狄俄斯库洛伊
+					SpawnInfo: 在骷髅王被击败后，从你的星海旅者处拿到双十字星吊坠，来击败这对恶魔双胞胎。（必须击败时空流浪者）
+					DespawnMessage: ""
 				}
 			}
 
 			PenthesileaBoss: {
-				// DisplayName: Penthesilea, the Witch of Ink
+				DisplayName: 多彩魔女，彭忒希勒娅
 
 				BossChecklistIntegration: {
-					// EntryName: Penthesilea, the Witch of Ink
-					// SpawnInfo: Face this fearsome foe with the Unsullied Canvas, given to you by your Starfarer after the mechanical twin eyes are bested. (The Vagrant of Space and Time must have been defeated.)
-					// DespawnMessage: ""
+					EntryName: 多彩魔女，彭忒希勒娅
+					SpawnInfo: 在双子魔眼被击败后，使用从星海旅者处获取的无垢画布来直面这个可怕的敌人。（必须击败时空流浪者）
+					DespawnMessage: ""
 				}
 			}
 
@@ -3557,29 +3557,29 @@ Mods: {
 				DisplayName: 空洞世界的统治者，纳尔赫恩
 
 				BossChecklistIntegration: {
-					// EntryName: Nalhaun, the Burnished King
-					// SpawnInfo: Confront this aged monarch with the Ancient Crown, given to you by your Starfarer after Golem is defeated. (The Vagrant of Space and Time must have been defeated.)
-					// DespawnMessage: ""
+					EntryName: 复光之君，纳尔赫恩
+					SpawnInfo: 用你的星海旅者在击败石巨人后给予你的古老的皇冠来挑战这位君主。（必须击败时空流浪者）
+					DespawnMessage: ""
 				}
 			}
 
 			ArbitrationBoss: {
-				// DisplayName: Arbitration
+				DisplayName: 仲裁
 
 				BossChecklistIntegration: {
-					// EntryName: Arbitration
-					// SpawnInfo: This mysterious foe lurks in Anomaly subworlds- staying too long in one will take you to Katabasis, where it awaits. Defeating this boss drops an item which will take you immediately to Katabasis. With MP Compatibility Mode, you can get this item by traveling to Lyra.
-					// DespawnMessage: ""
+					EntryName: 仲裁
+					SpawnInfo: 这个神秘的敌人潜伏在一个异常的子世界中——在异常航行中花费太多时间会将你传送至“喀塔巴斯”，仲裁将在那里等候你的到来。他会掉落一件能将你立即传送到喀塔巴斯的物品。多人兼容模式下，你可以通过前往天琴星获得此物品。
+					DespawnMessage: ""
 				}
 			}
 
 			StarfarerBoss: {
-				// DisplayName: Asphodene and Eridani
+				DisplayName: 爱丝福德妮和埃里达妮
 
 				BossChecklistIntegration: {
-					// EntryName: Asphodene and Eridani
-					// SpawnInfo: Face your Starfarers in this friendly bout- unlocked after defeating Plantera (ALL prior bosses from The Stars Above must have been defeated!)
-					// DespawnMessage: ""
+					EntryName: 爱丝福德妮和埃里达妮
+					SpawnInfo: 在这场友谊赛中面对你的星海旅者们——击败世纪之花后解锁（此前的所有Boss必须全部被击败！）
+					DespawnMessage: ""
 				}
 			}
 
@@ -3587,25 +3587,25 @@ Mods: {
 				DisplayName: 光之战士
 
 				BossChecklistIntegration: {
-					// EntryName: The Warrior of Light
-					// SpawnInfo: After defeating the Moon Lord, strange events may occur. After 2 in game days (this can not be sped up through any means) you can obtain an item from your Starfarer to continue.
-					// DespawnMessage: ""
+					EntryName: 光之战士
+					SpawnInfo: 击败月球领主后，某些奇怪的事件将会发生。在两个游戏日后（该进程无法被任何途径加速）你可以从星海旅者处获得一件物品来推动游戏进程。
+					DespawnMessage: ""
 				}
 			}
 
 			TsukiyomiBoss: {
-				DisplayName: 源初之星海旅者，月读
+				DisplayName: 原初之星海旅者，月读
 
 				BossChecklistIntegration: {
-					// EntryName: Tsukiyomi, the First Starfarer
-					// SpawnInfo: The time has finally come. Craft all the Mnemonic Traces together with the Celestriad Root to create the Mnemonic Sigil, and use it to be taken to Tsukiyomi's boss arena.
-					// DespawnMessage: ""
+					EntryName: 原初之星海旅者，月读
+					SpawnInfo: 终焉已至。在空天之根处使用所有追忆之迹合成最终的追忆印记,使用它将会带你前往月读的Boss战场地。
+					DespawnMessage: ""
 				}
 			}
 
-			// ParacausalEntity.DisplayName: Paracausal Watcher
-			// ParacausalEnigma.DisplayName: Paracausal Enigma
-			// StarfarerBossWallsNPC.DisplayName: Starfarer Boss Walls N P C
+			ParacausalEntity.DisplayName: 超因果看守者
+			ParacausalEnigma.DisplayName: 超因果谜团
+			StarfarerBossWallsNPC.DisplayName: 星海旅者墙 N P C
 		}
 
 		Tiles: {
@@ -3635,7 +3635,7 @@ Mods: {
 			WealthFocusTier2Tile.MapEntry: Mods.StarsAbove.MapObject.StellarFoci
 			WealthFocusTier3Tile.MapEntry: Mods.StarsAbove.MapObject.StellarFoci
 			ReprintedBlueprintTile.MapEntry: 铺设的重绘的蓝图
-			// CosmoturgyStation.MapEntry: Cosmoturgy Station
+			CosmoturgyStation.MapEntry: 宙术站点
 		}
 
 		Items: {
@@ -3655,7 +3655,7 @@ Mods: {
 				Tooltip:
 					'''
 					[c/2DD2FE:观星者的遗物]
-					最大生命值减少300，防御减少20，造成的伤害翻倍
+					最大生命值减少300，防御减少20，造成的伤害提高50%
 					只有默认最大生命值>=400时才会生效
 					[c/ADEEFF:只能同时装备1件观星者的遗物]
 					“来自一个受到消逝诅咒的世界”
@@ -3718,7 +3718,7 @@ Mods: {
 				Tooltip:
 					'''
 					只有防御低于40点时才会激活
-					增加10%的伤害，防御低于10点时改为增加45%的伤害
+					增加5%的伤害，防御低于10点时改为增加15%的伤害
 					敌人更有可能瞄准你
 					“你能侥幸过关吗？”
 					'''
@@ -4028,10 +4028,10 @@ Mods: {
 					当手持该武器时，获得[c/A20000:渴血之刃]增益
 					[c/A20000:渴血之刃]会在你生命值降低时给予你强力的增益，但是会阻止生命自然恢复
 					伤害、暴击率和暴击伤害会随着你的生命值减少而增加
-					伤害加成的上限为基础伤害的2倍
+					伤害加成的上限为200%
 					点击右键消耗当前生命值的20%释放[c/FF1B00:拔刀：炎龙]（20秒冷却）
 					在短暂的带有无敌帧的延迟后，你将释放[c/FF1B00:拔刀：炎龙]
-					[c/FF1B00:拔刀：炎龙]对你周围大范围内的敌人造成4倍伤害
+					[c/FF1B00:拔刀：炎龙]对你周围大范围内的敌人造成400%的伤害
 					使用[c/FF1B00:拔刀：炎龙]击杀敌人后，会立刻刷新冷却时间
 					“那么，让一切都变成灰烬吧!”
 					'''
@@ -4098,7 +4098,6 @@ Mods: {
 			CarianDarkMoon: {
 				Tooltip:
 					'''
-					该武器的攻击会朝光标方向进行大范围的斩击
 					造成暴击会使目标冻伤，持续3秒
 					点击右键消耗100点魔力值，在短暂的咏唱后，获得持续18秒的[c/92D7FF:月光大剑]增益，在咏唱期间无法攻击及切换武器
 					[c/92D7FF:月光大剑]增益会使该武器获得来自月亮的力量，额外造成10点伤害和12点盔甲穿透力
@@ -4119,8 +4118,7 @@ Mods: {
 					[c/F35B43:耀光之魂]会对大范围内的敌人造成大量暴击伤害
 					[c/F35B43:耀光之魂]造成的伤害会受到部分防御值和[c/F1AF42:耀光]层数的影响
 					超过10层的[c/F1AF42:耀光]层数会转而提供4秒铁皮增益
-					这把武器的大小会受到部分防御值的影响
-					“一把不败之剑，剑刃辉光闪耀”
+					“一把不败之剑——剑刃辉光闪耀”
 					'''
 				DisplayName: 克劳索拉斯
 			}
@@ -4202,8 +4200,9 @@ Mods: {
 			DebugDisk: {
 				Tooltip:
 					'''
-					移除所有玩家在星海苍穹模组内的数据
+					移除一些玩家在星海苍穹模组内的数据
 					包括星海旅者、天体序列、对话和天体新星
+					没有更新——请创建一个新角色
 					将会影响所有在线玩家
 					在寰宇之旅中不会生效
 					可能会产生一些问题；这是一个Debug物品
@@ -4233,9 +4232,7 @@ Mods: {
 				Tooltip:
 					'''
 					这个物品不对劲到令人担忧
-					[c/F1AF42:召唤 仲裁]
-					你可能会过早的遇到该Boss，提前挑战可能会比较困难
-					考虑推迟这场战斗，并做好应对准备，直到你足以匹敌
+					[c/F1AF42:带你前往喀塔巴斯，仲裁在此等候你的到来]
 					不消耗
 					'''
 				DisplayName: 恶魔十字架
@@ -4308,41 +4305,48 @@ Mods: {
 			MnemonicTrace: {
 				Tooltip:
 					'''
-					第一位星海旅者暴走的痕迹
-					“救赎之追忆”
-
+					从光之战士处获取
+					第一位星之传承者暴走的痕迹
+					使用以追溯过往——在你遍览其它追忆之迹后
+					‘什么才是真正属于我的？’
 					'''
-				DisplayName: 追忆之迹
+				DisplayName: 追忆之迹IV
 			}
 
 			MnemonicTrace2: {
 				Tooltip:
 					'''
+					从复光之君，纳尔赫恩处获取
 					第一位星之传承者暴走的痕迹
-					“天启之追忆”
+					使用以追溯过往……
+					‘如果再给我一次机会……’
 
 					'''
-				DisplayName: 追忆之迹
+				DisplayName: 追忆之迹III
 			}
 
 			MnemonicTrace3: {
 				Tooltip:
 					'''
+					从多彩魔女，彭忒希勒娅处获取
 					第一位星之传承者暴走的痕迹
-					“湮灭之追忆”
+					使用以追溯过往……
+					‘我的过失仍历历在目。它们久久萦绕，从未远去。’
 
 					'''
-				DisplayName: 追忆之迹
+				DisplayName: 追忆之迹II
 			}
 
 			MnemonicTrace4: {
 				Tooltip:
 					'''
+					从双子星力，狄俄斯库洛伊处获取
 					第一位星之传承者暴走的痕迹
-					“灾祸之追忆”
+					使用以追溯过往……
+					‘吾等重临之日，当为终焉开端之时’
 
 					'''
-				DisplayName: 追忆之迹
+				DisplayName: 追忆之迹I
 			}
 
 			ProgenitorWish: {
@@ -4527,7 +4531,7 @@ Mods: {
 					攻击敌人会累积[c/00B7FF:玛奇顿能量]
 					当[c/00B7FF:玛奇顿能量]充能完成，点击右键发动[c/FE3727:炽热玛奇顿]，持续8秒
 					在[c/FE3727:炽热玛奇顿]期间，接下来的十一发子弹将会变成强力的[c/CF1E1E:玛奇顿射击]
-					[c/CF1E1E:炽热玛奇顿]造成3倍伤害，且对生命值低于50%的敌人必定暴击
+					[c/CF1E1E:炽热玛奇顿]造成300%的伤害，且对生命值低于50%的敌人必定暴击
 					当[c/FE3727:炽热玛奇顿]子弹耗尽或者时间结束，你会获得1秒的[c/A56363:过热]，无法使用该武器
 					“这……并非常见之物”
 					'''
@@ -4562,7 +4566,7 @@ Mods: {
 					[c/6C6C6C:杜兰达尔]：进行大范围扇形斩击，有较高暴击率；对生命值低于50%的敌人额外造成50%的暴击伤害
 					[c/6C6C6C:榉树工坊]：交替挥舞手斧和页锤，造成的伤害的部分会治疗自身；对生命值低于50%的敌人额外造成30%的伤害
 					[c/6C6C6C:琅琊工坊]：朝光标位置冲锋一定距离，对敌人造成一半伤害（攻击后有冷却时间），若冲刺终点有物块阻挡，则不会发生位移；额外造成30%的暴击伤害
-					[c/6C6C6C:老男孩工坊]：投掷一柄锤子，可在最大射程处命中敌人2次，对生命值低于50%的敌人造成2倍伤害；获得20点防御力
+					[c/6C6C6C:老男孩工坊]：投掷一柄锤子，可在最大射程处命中敌人2次，对生命值低于50%的敌人造成200%的伤害；获得20点防御力
 					[c/6C6C6C:阿拉斯工坊]：以中距离的刺击进行攻击，范围较广，没有击退力；提高30%的移动速度
 					[c/6C6C6C:墨工坊]：每次攻击都会在范围内进行处决斩击（攻击后有冷却时间）；命中敌人后对其造成流血，持续4秒
 					[c/6C6C6C:逻辑工作室]：使用枪械和子弹进行远程攻击（每第三次射击额外造成40%的伤害）；获得20%的护甲穿透
@@ -4689,8 +4693,9 @@ Mods: {
 			EssenceOfAdagium: {
 				Tooltip:
 					'''
+					击败 月亮领主 后获得
 					你的星海旅者给予的礼物
-					用于创造“朱红恶魔”
+					用于创造“朱红恶魔”（魔法）
 					'''
 				DisplayName: 亚丹之精华
 			}
@@ -4698,8 +4703,9 @@ Mods: {
 			EssenceOfAlpha: {
 				Tooltip:
 					'''
+					击败 猪龙鱼公爵 后获得
 					你的星海旅者给予的礼物
-					用于创造“红樱”
+					用于创造“红樱”（近战）
 					'''
 				DisplayName: 阿尔法之精华
 			}
@@ -4707,8 +4713,9 @@ Mods: {
 			EssenceOfAsh: {
 				Tooltip:
 					'''
+					击败 任意邪恶Boss 后获得
 					你的星海旅者给予的礼物
-					用于创造“灰烬意识”
+					用于创造“灰烬意识”（近战）
 					'''
 				DisplayName: 灰烬之精华
 			}
@@ -4716,8 +4723,9 @@ Mods: {
 			EssenceOfAzakana: {
 				Tooltip:
 					'''
+					击败 复光之君，纳尔赫恩 后获得
 					你的星海旅者给予的礼物
-					用于创造“封魔双剑”
+					用于创造“封魔双剑”（近战）
 					'''
 				DisplayName: 阿扎卡纳之精华
 			}
@@ -4725,8 +4733,9 @@ Mods: {
 			EssenceOfBalance: {
 				Tooltip:
 					'''
+					击败 光之战士 后获得
 					你的星海旅者给予的礼物
-					用于创造“赤红刺剑”
+					用于创造“赤红刺剑”（魔法）
 					'''
 				DisplayName: 均衡之精华
 			}
@@ -4734,8 +4743,9 @@ Mods: {
 			EssenceOfBitterfrost: {
 				Tooltip:
 					'''
+					击败 蜂后 后获得
 					你的星海旅者给予的礼物
-					用于创造“斯科夫农”
+					用于创造“斯科夫农”（近战）
 					'''
 				DisplayName: 苦寒之精华
 			}
@@ -4743,8 +4753,9 @@ Mods: {
 			EssenceOfBlasting: {
 				Tooltip:
 					'''
+					击败 血肉墙 后获得
 					你的星海旅者给予的礼物
-					用于创造“自然之力”
+					用于创造“自然之力”（远程）
 					'''
 				DisplayName: 爆裂之精华
 			}
@@ -4752,8 +4763,9 @@ Mods: {
 			EssenceOfBlood: {
 				Tooltip:
 					'''
+					击败 石巨人 后获得
 					你的星海旅者给予的礼物
-					用于创造“解脱”
+					用于创造“解脱”（近战）
 					'''
 				DisplayName: 鲜血之精华
 			}
@@ -4761,17 +4773,19 @@ Mods: {
 			EssenceOfBloodshed: {
 				Tooltip:
 					'''
+					击败 仲裁 后获得
 					你的星海旅者给予的礼物
-					用于创造“心只一念”
+					用于创造“心只一念”（天体）
 					'''
-				DisplayName: 戮血之精华
+				DisplayName: 戮血之半精华
 			}
 
 			EssenceOfButterflies: {
 				Tooltip:
 					'''
+					击败 任意机械Boss 后获得
 					你的星海旅者给予的礼物
-					用于创造“蝶之崇拜”
+					用于创造“蝶之崇拜”（魔法）
 					'''
 				DisplayName: 蝴蝶之精华
 			}
@@ -4779,8 +4793,9 @@ Mods: {
 			EssenceOfChemtech: {
 				Tooltip:
 					'''
+					击败 史莱姆王后 后获得
 					你的星海旅者给予的礼物
-					用于创造“无畏炼金罐”
+					用于创造“无畏炼金罐”（远程）
 					'''
 				DisplayName: 炼金科技之精华
 			}
@@ -4788,8 +4803,9 @@ Mods: {
 			EssenceOfDeathsApprentice: {
 				Tooltip:
 					'''
+					击败 任意机械Boss 后获得
 					你的星海旅者给予的礼物
-					用于创造“勿忘缪斯”
+					用于创造“勿忘缪斯”（近战）
 					'''
 				DisplayName: 死亡学徒之精华
 			}
@@ -4797,8 +4813,9 @@ Mods: {
 			EssenceOfDestiny: {
 				Tooltip:
 					'''
+					击败 月亮领主 后获得
 					你的星海旅者给予的礼物
-					用于创造“美德之锋”
+					用于创造“美德之锋”（天体）
 					'''
 				DisplayName: 命运之精华
 			}
@@ -4806,8 +4823,9 @@ Mods: {
 			EssenceOfDrivingThunder: {
 				Tooltip:
 					'''
+					击败 拜月教邪教徒 后获得
 					你的星海旅者给予的礼物
-					用于创造“云来短剑”
+					用于创造“云来短剑”（近战）
 					'''
 				DisplayName: 驭雷之精华
 			}
@@ -4815,8 +4833,9 @@ Mods: {
 			EssenceOfDuality: {
 				Tooltip:
 					'''
+					击败 冰雪女王 后获得
 					你的星海旅者给予的礼物
-					用于创造“彼岸之扉”
+					用于创造“彼岸之扉”（魔法）
 					'''
 				DisplayName: 二元性之精华
 			}
@@ -4824,8 +4843,9 @@ Mods: {
 			EssenceOfEternity: {
 				Tooltip:
 					'''
+					击败 月亮领主 后获得
 					你的星海旅者给予的礼物
-					用于创造“永恒之星”
+					用于创造“永恒之星”（魔法）
 					'''
 				DisplayName: 永恒之精华
 			}
@@ -4833,8 +4853,9 @@ Mods: {
 			EssenceOfEuthymia: {
 				Tooltip:
 					'''
+					击败 多彩魔女，彭忒希勒娅 后获得
 					你的星海旅者给予的礼物
-					用于创造“恶曜之眼”
+					用于创造“恶曜之眼”（魔法）
 					'''
 				DisplayName: 净土之精华
 			}
@@ -4842,8 +4863,9 @@ Mods: {
 			EssenceOfExplosions: {
 				Tooltip:
 					'''
+					击败 石巨人 后获得
 					你的星海旅者给予的礼物
-					用于创造“无边绝望”
+					用于创造“无边绝望”（远程）
 					'''
 				DisplayName: 爆破之精华
 			}
@@ -4851,8 +4873,9 @@ Mods: {
 			EssenceOfFingers: {
 				Tooltip:
 					'''
+					击败 蜂后 后获得
 					你的星海旅者给予的礼物
-					用于创造“面包狗链锯”
+					用于创造“面包狗链锯”（近战）
 					'''
 				DisplayName: 指尖之精华
 			}
@@ -4860,8 +4883,9 @@ Mods: {
 			EssenceOfFoxfire: {
 				Tooltip:
 					'''
+					击败 世纪之花 后获得
 					你的星海旅者给予的礼物
-					用于创造“妖狐灵冬”
+					用于创造“妖狐灵冬”（召唤）
 					'''
 				DisplayName: 火狐之精华
 			}
@@ -4869,17 +4893,19 @@ Mods: {
 			EssenceOfInk: {
 				Tooltip:
 					'''
+					击败 多彩魔女，彭忒希勒娅 后获得
 					你的星海旅者给予的礼物
-					用于创造“彭忒希勒娅之灵感”
+					用于创造“彭忒希勒娅之灵感”（近战）
 					'''
-				DisplayName: 墨水之精华
+				DisplayName: 油墨之精华
 			}
 
 			EssenceOfIRyS: {
 				Tooltip:
 					'''
+					击败 冰雪女王 后获得
 					你的星海旅者给予的礼物
-					用于创造“《绝望之苏拉》”
+					用于创造“《绝望之苏拉》”（召唤）
 					'''
 				DisplayName: 希望之精华
 			}
@@ -4887,8 +4913,9 @@ Mods: {
 			EssenceOfIzanagi: {
 				Tooltip:
 					'''
+					击败 史莱姆皇后 后获得
 					你的星海旅者给予的礼物
-					用于创造“伊邪纳岐的重担”
+					用于创造“伊邪纳岐的重担”（远程）
 					'''
 				DisplayName: 伊邪那岐之精华
 			}
@@ -4896,8 +4923,9 @@ Mods: {
 			EssenceOfLiberation: {
 				Tooltip:
 					'''
+					击败 复光之君，纳尔赫恩 后获得
 					你的星海旅者给予的礼物
-					用于创造“解放烈焰”
+					用于创造“解放烈焰”（近战）
 					'''
 				DisplayName: 解放之精华
 			}
@@ -4905,8 +4933,9 @@ Mods: {
 			EssenceOfLifethirsting: {
 				Tooltip:
 					'''
+					击败 南瓜王 后获得
 					你的星海旅者给予的礼物
-					用于创造“血刃”
+					用于创造“血刃”（近战）
 					'''
 				DisplayName: 渴血之精华
 			}
@@ -4914,8 +4943,9 @@ Mods: {
 			EssenceOfLuminance: {
 				Tooltip:
 					'''
+					击败 源初之星海旅者，月读 后获得
 					你的星海旅者给予的礼物
-					用于创造“创世纪之辉”
+					用于创造“创世纪之辉”（近战/远程/魔法/召唤）
 					'''
 				DisplayName: 辉煌之精华
 			}
@@ -4923,8 +4953,9 @@ Mods: {
 			EssenceOfLunarDominion: {
 				Tooltip:
 					'''
+					击败 月亮领主 后获得
 					你的星海旅者给予的礼物
-					用于创造“纳甘纳德尔”
+					用于创造“纳甘纳德尔”（近战）
 					'''
 				DisplayName: 月之圣域之精华
 			}
@@ -4932,8 +4963,9 @@ Mods: {
 			EssenceOfMisery: {
 				Tooltip:
 					'''
+					击败 骷髅王 后获得
 					你的星海旅者给予的礼物
-					用于创造“厄运缠身”
+					用于创造“厄运缠身”（近战）
 					'''
 				DisplayName: 厄兆之精华
 			}
@@ -4941,8 +4973,9 @@ Mods: {
 			EssenceOfOuterGods: {
 				Tooltip:
 					'''
+					击败 任意邪恶Boss 后获得
 					你的星海旅者给予的礼物
-					用于创造“异体学古书”
+					用于创造“异体学古书”（召唤）
 					'''
 				DisplayName: 外神之精华
 			}
@@ -4950,8 +4983,9 @@ Mods: {
 			EssenceOfPerfection: {
 				Tooltip:
 					'''
+					无法获得
 					你的星海旅者给予的礼物
-					用于创造“完美谢幕”
+					用于创造“完美谢幕”（N/A)
 					'''
 				DisplayName: 完美之精华
 			}
@@ -4959,8 +4993,9 @@ Mods: {
 			EssenceOfRadiance: {
 				Tooltip:
 					'''
+					击败 复光之君，纳尔赫恩 后获得
 					你的星海旅者给予的礼物
-					用于创造“克劳索拉斯”
+					用于创造“克劳索拉斯”（近战）
 					'''
 				DisplayName: 辐光之精华
 			}
@@ -4968,8 +5003,9 @@ Mods: {
 			EssenceOfSakura: {
 				Tooltip:
 					'''
+					击败 光之女皇 后获得
 					你的星海旅者给予的礼物
-					用于创造“樱之复仇”
+					用于创造“樱之复仇”（近战）
 					'''
 				DisplayName: 樱花之精华
 			}
@@ -4977,8 +5013,9 @@ Mods: {
 			EssenceOfSilverAsh: {
 				Tooltip:
 					'''
+					击败 血肉墙 后获得
 					你的星海旅者给予的礼物
-					用于创造“喀兰之真银“
+					用于创造“喀兰之真银“（近战）
 					'''
 				DisplayName: 银灰之精华
 			}
@@ -4986,8 +5023,9 @@ Mods: {
 			EssenceOfSin: {
 				Tooltip:
 					'''
+					击败 猪龙鱼公爵 后获得
 					你的星海旅者给予的礼物
-					用于创造“罪人之钥”
+					用于创造“罪人之钥”（召唤）
 					'''
 				DisplayName: 罪恶之精华
 			}
@@ -4995,8 +5033,9 @@ Mods: {
 			EssenceOfStarsong: {
 				Tooltip:
 					'''
+					击败 月亮领主 后获得
 					你的星海旅者给予的礼物
-					用于创造“星声”
+					用于创造“星声”（特殊）
 					'''
 				DisplayName: 星歌之精华
 			}
@@ -5004,8 +5043,9 @@ Mods: {
 			EssenceOfStaticShock: {
 				Tooltip:
 					'''
+					击败 史莱姆王后 后获得
 					你的星海旅者给予的礼物
-					用于创造“火花绽放”
+					用于创造“火花绽放”（召唤）
 					'''
 				DisplayName: 静电震击之精华
 			}
@@ -5013,8 +5053,9 @@ Mods: {
 			EssenceOfStyle: {
 				Tooltip:
 					'''
+					击败 史莱姆王 后获得
 					你的星海旅者给予的礼物
-					用于创造“拉德枪”
+					用于创造“拉德枪”（魔法）
 					'''
 				DisplayName: 潮流之精华
 			}
@@ -5022,8 +5063,9 @@ Mods: {
 			EssenceOfSurpassingLimits: {
 				Tooltip:
 					'''
+					击败 光之战士 后获得
 					你的星海旅者给予的礼物
-					用于创造“冷酷之光”
+					用于创造“冷酷之光”（魔法）
 					'''
 				DisplayName: 卓尔之精华
 			}
@@ -5031,8 +5073,9 @@ Mods: {
 			EssenceOfTechnology: {
 				Tooltip:
 					'''
+					击败 光之女皇 后获得
 					你的星海旅者给予的礼物
-					用于创造“蛛形纲针鞭”
+					用于创造“蛛形纲针鞭”（召唤）
 					'''
 				DisplayName: 科技之精华
 			}
@@ -5040,8 +5083,9 @@ Mods: {
 			EssenceOfTheAegis: {
 				Tooltip:
 					'''
+					击败 史莱姆王 后获得
 					你的星海旅者给予的礼物
-					用于创造“天之圣杯”
+					用于创造“天之圣杯”（魔法）
 					'''
 				DisplayName: 圣杯之精华
 			}
@@ -5049,8 +5093,9 @@ Mods: {
 			EssenceOfTheAerialAce: {
 				Tooltip:
 					'''
+					击败 机械骷髅王 后获得
 					你的星海旅者给予的礼物
-					用于创造“闪刀机关：闪刀机”
+					用于创造“闪刀机关：闪刀机”（近战/远程/魔法/召唤）
 					'''
 				DisplayName: 空域之王之精华
 			}
@@ -5058,8 +5103,9 @@ Mods: {
 			EssenceOfTheAnomaly: {
 				Tooltip:
 					'''
+					击败 任意邪恶Boss 后获得
 					你的星海旅者给予的礼物
-					用于创造“成交神器·NEO”
+					用于创造“成交神器·NEO”（远程）
 					'''
 				DisplayName: 异象之精华
 			}
@@ -5067,8 +5113,9 @@ Mods: {
 			EssenceOfTheAscendant: {
 				Tooltip:
 					'''
+					击败 拜月教邪教徒 后获得
 					你的星海旅者给予的礼物
-					用于创造“增幅器奥兹玛”
+					用于创造“增幅器奥兹玛”（魔法）
 					'''
 				DisplayName: 升格者之精华
 			}
@@ -5076,8 +5123,9 @@ Mods: {
 			EssenceOfTheBeginningAndEnd: {
 				Tooltip:
 					'''
+					击败 所有原版Boss和光之战士 后获得
 					你的星海旅者给予的礼物
-					用于创造“埋葬光明”
+					用于创造“埋葬光明”（天体）
 					'''
 				DisplayName: 始末之精华
 			}
@@ -5085,8 +5133,9 @@ Mods: {
 			EssenceOfTheBionis: {
 				Tooltip:
 					'''
+					击败 所有机械Boss 后获得
 					你的星海旅者给予的礼物
-					用于创造“异度之刃”
+					用于创造“异度之刃”（近战）
 					'''
 				DisplayName: 巨神之精华
 			}
@@ -5094,8 +5143,9 @@ Mods: {
 			EssenceOfTheBull: {
 				Tooltip:
 					'''
+					击败 所有机械Boss 后获得
 					你的星海旅者给予的礼物
-					用于创造“越橘莓”
+					用于创造“越橘莓”（远程）
 					'''
 				DisplayName: 公牛之精华
 			}
@@ -5103,8 +5153,9 @@ Mods: {
 			EssenceOfTheChimera: {
 				Tooltip:
 					'''
+					击败 月亮领主 后获得
 					你的星海旅者给予的礼物
-					用于创造“影霄”
+					用于创造“影霄”（魔法）
 					'''
 				DisplayName: 奇美拉之精华
 			}
@@ -5112,8 +5163,9 @@ Mods: {
 			EssenceOfTheCosmos: {
 				Tooltip:
 					'''
+					无法获得
 					你的星海旅者给予的礼物
-					用于创造“燃烬群星”
+					用于创造“燃烬群星”（N/A）
 					'''
 				DisplayName: 宇宙之精华
 			}
@@ -5121,8 +5173,9 @@ Mods: {
 			EssenceOfTheDarkMoon: {
 				Tooltip:
 					'''
+					击败 克苏鲁之眼 后获得
 					你的星海旅者给予的礼物
-					用于创造“卡利亚的暗月”
+					用于创造“卡利亚的暗月”（魔法）
 					'''
 				DisplayName: 暗月之精华
 			}
@@ -5130,27 +5183,29 @@ Mods: {
 			EssenceOfTheDragonslayer: {
 				Tooltip:
 					'''
+					击败 所有机械Boss 后获得
 					你的星海旅者给予的礼物
-					用于创造“穿心枪盖博尔格”
+					用于创造“穿心枪盖博尔格”（近战）
 					'''
 				DisplayName: 屠龙者之精华
 			}
 
 			EssenceOfTheDragon: {
-				// DisplayName: Essence Of The Dragon
-				/* Tooltip:
+				DisplayName: 巨龙之精华
+				Tooltip:
 					'''
-					Obtained after defeating Thespian, the Act of Alchemy
-					A gift from your Starfarer
-					Utilized in the creation of 'Dragalia Found' (Summon)
-					''' */
+					击败 炼金术戏剧，狄斯比斯 后获得
+					你的星海旅者给予的礼物
+					用于创造“寻回的龙约”（召唤）
+					'''
 			}
 
 			EssenceOfTheFallen: {
 				Tooltip:
 					'''
+					击败 世纪之花 后获得
 					你的星海旅者给予的礼物
-					用于创造“蠕虫低语”
+					用于创造“蠕虫低语”（远程）
 					'''
 				DisplayName: 堕落深渊之精华
 			}
@@ -5158,8 +5213,9 @@ Mods: {
 			EssenceOfTheFreeshooter: {
 				Tooltip:
 					'''
+					击败 骷髅王 后获得
 					你的星海旅者给予的礼物
-					用于创造“《魔弹射手》”
+					用于创造“《魔弹射手》”（特殊）
 					'''
 				DisplayName: 自由射手之精华
 			}
@@ -5167,8 +5223,9 @@ Mods: {
 			EssenceOfTheFuture: {
 				Tooltip:
 					'''
+					击败 源初之星海旅者，月读 后获得
 					你的星海旅者给予的礼物
-					用于创造“宇宙毁灭者”
+					用于创造“宇宙毁灭者”（远程）
 					'''
 				DisplayName: 未来之精华
 			}
@@ -5176,8 +5233,9 @@ Mods: {
 			EssenceOfTheGardener: {
 				Tooltip:
 					'''
+					击败 克苏鲁之眼 后获得
 					你的星海旅者给予的礼物
-					用于创造“白楼剑”
+					用于创造“白楼剑”（召唤）
 					'''
 				DisplayName: 庭师之精华
 			}
@@ -5185,8 +5243,9 @@ Mods: {
 			EssenceOfTheGunlance: {
 				Tooltip:
 					'''
+					击败 所有机械Boss 后获得
 					你的星海旅者给予的礼物
-					用于创造“厉战”
+					用于创造“厉战”（近战）
 					'''
 				DisplayName: 铳枪之精华
 			}
@@ -5194,8 +5253,9 @@ Mods: {
 			EssenceOfTheHarbinger: {
 				Tooltip:
 					'''
+					击败 石巨人 后获得
 					你的星海旅者给予的礼物
-					用于创造“达达利亚”
+					用于创造“达达利亚”（远程）
 					'''
 				DisplayName: 执行官之精华
 			}
@@ -5203,8 +5263,9 @@ Mods: {
 			EssenceOfTheHawkmoon: {
 				Tooltip:
 					'''
+					击败 史莱姆王后 后获得
 					你的星海旅者给予的礼物
-					用于创造“隼月”
+					用于创造“隼月”（远程/魔法）
 					'''
 				DisplayName: 幼隼之月之精华
 			}
@@ -5212,8 +5273,9 @@ Mods: {
 			EssenceOfTheHollowheart: {
 				Tooltip:
 					'''
+					击败 双子星力，狄俄斯库洛伊 后获得
 					你的星海旅者给予的礼物
-					用于创造“无人知晓的无垢搏动”
+					用于创造“无人知晓的无垢搏动”（召唤）
 					'''
 				DisplayName: 空心之精华
 			}
@@ -5221,8 +5283,9 @@ Mods: {
 			EssenceOfTheHunt: {
 				Tooltip:
 					'''
+					击败 史莱姆王后 后获得
 					你的星海旅者给予的礼物
-					用于创造“猎人的交响乐”
+					用于创造“猎人的交响乐”（魔法）
 					'''
 				DisplayName: 狩猎之精华
 			}
@@ -5230,8 +5293,9 @@ Mods: {
 			EssenceOfTheMoonlitAdepti: {
 				Tooltip:
 					'''
+					击败 石巨人 后获得
 					你的星海旅者给予的礼物
-					用于创造“循循守月”
+					用于创造“循循守月”（远程）
 					'''
 				DisplayName: 璃月仙人之精华
 			}
@@ -5239,8 +5303,9 @@ Mods: {
 			EssenceOfTheObservatory: {
 				Tooltip:
 					'''
+					击败 血肉墙 后获得
 					你的星海旅者给予的礼物
-					用于创造“群星魔棒”
+					用于创造“群星魔棒”（召唤）
 					'''
 				DisplayName: 观星台之精华
 			}
@@ -5248,8 +5313,9 @@ Mods: {
 			EssenceOfTheOcean: {
 				Tooltip:
 					'''
+					击败 骷髅王 后，前往海洋环境获得
 					你的星海旅者给予的礼物
-					用于创造“埃帕利斯克”
+					用于创造“埃帕利斯克”（召唤）
 					'''
 				DisplayName: 海洋之精华
 			}
@@ -5257,8 +5323,9 @@ Mods: {
 			EssenceOfTheOverwhelmingBlaze: {
 				Tooltip:
 					'''
+					击败 光之战士 后获得
 					你的星海旅者给予的礼物
-					用于创造“爆裂热忱”
+					用于创造“爆裂热忱”（近战）
 					'''
 				DisplayName: 热忱烈焰之精华
 			}
@@ -5266,8 +5333,9 @@ Mods: {
 			EssenceOfThePegasus: {
 				Tooltip:
 					'''
+					击败 骷髅王 后，前往地狱环境获得
 					你的星海旅者给予的礼物
-					用于创造“卡西米尔之耀”
+					用于创造“卡西米尔之耀”（召唤）
 					'''
 				DisplayName: 天马之精华
 			}
@@ -5275,8 +5343,9 @@ Mods: {
 			EssenceOfThePhantom: {
 				Tooltip:
 					'''
+					击败 双子星力，狄俄斯库洛伊 后获得
 					你的星海旅者给予的礼物
-					用于创造“镜中虚影”
+					用于创造“镜中虚影”（召唤）
 					'''
 				DisplayName: 傀影之精华
 			}
@@ -5284,8 +5353,9 @@ Mods: {
 			EssenceOfTheSharpshooter: {
 				Tooltip:
 					'''
+					击败 骷髅王 后获得
 					你的星海旅者给予的礼物
-					用于创造“四幕之内的死亡”
+					用于创造“四幕之内的死亡”（远程）
 					'''
 				DisplayName: 神射手之精华
 			}
@@ -5293,8 +5363,9 @@ Mods: {
 			EssenceOfTheSwarm: {
 				Tooltip:
 					'''
+					击败 世纪之花 后获得
 					你的星海旅者给予的礼物
-					用于创造“全面爆发”
+					用于创造“全面爆发”（远程）
 					'''
 				DisplayName: 纳米蜂群之精华
 			}
@@ -5302,8 +5373,9 @@ Mods: {
 			EssenceOfTheTreasury: {
 				Tooltip:
 					'''
+					击败 光之战士 后获得
 					你的星海旅者给予的礼物
-					用于创造“王之宝钥”
+					用于创造“王之宝钥”（召唤）
 					'''
 				DisplayName: 宝库之精华
 			}
@@ -5311,8 +5383,9 @@ Mods: {
 			EssenceOfTheUnderworldGoddess: {
 				Tooltip:
 					'''
+					无法获得
 					你的星海旅者给予的礼物
-					用于创造“帕尔塞福涅”
+					用于创造“帕尔塞福涅”（N/A)
 					'''
 				DisplayName: 冥界女神之精华
 			}
@@ -5320,8 +5393,9 @@ Mods: {
 			EssenceOfTheUnyieldingEarth: {
 				Tooltip:
 					'''
+					击败 拜月教邪教徒 后获得
 					你的星海旅者给予的礼物
-					用于创造“贯虹之槊”
+					用于创造“贯虹之槊”（近战）
 					'''
 				DisplayName: 磐石之精华
 			}
@@ -5329,8 +5403,9 @@ Mods: {
 			EssenceOfTime: {
 				Tooltip:
 					'''
+					击败 多彩魔女，彭忒希勒娅 后获得
 					你的星海旅者给予的礼物
-					用于创造“Kroniic的国度”
+					用于创造“Kroniic的国度”（召唤）
 					'''
 				DisplayName: 时间之精华
 			}
@@ -5338,8 +5413,9 @@ Mods: {
 			EssenceOfTwinStars: {
 				Tooltip:
 					'''
+					击败 拜月教邪教徒 后获得
 					你的星海旅者给予的礼物
-					用于创造“天鹅座双子星”
+					用于创造“天鹅座双子星”（魔法）
 					'''
 				DisplayName: 双子星之精华
 			}
@@ -5347,8 +5423,9 @@ Mods: {
 			EssenceOfVampirism: {
 				Tooltip:
 					'''
+					击败 鹿角怪 后获得
 					你的星海旅者给予的礼物
-					用于创造“晨星”
+					用于创造“晨星”（召唤）
 					'''
 				DisplayName: 吸血者之精华
 			}
@@ -5356,10 +5433,14 @@ Mods: {
 			StarfarerEssence: {
 				Tooltip:
 					'''
-					你的星海旅者给予的神秘礼物
-					百无一用。
+					这段记忆对于你来说确实很熟悉
+					[c/F1AF42:向星海旅者们申请进行测试]
+					[c/FA5D5D:一旦所有星海苍穹的Boss都被击败，这场战斗将升级！]
+					升级后的战斗也不会有特殊奖励
+					警告：不建议休闲玩法！
+					不消耗
 					'''
-				DisplayName: 星海旅者之精华
+				DisplayName: 星海旅者之记忆
 			}
 
 			EternalStar: {
@@ -5378,7 +5459,7 @@ Mods: {
 					此外，蒐集[c/FF6988:纹星碎块]会为[c/C2A4AA:永恒计]充能
 					当[c/C2A4AA:永恒计]充满时，点击右键可消耗你的[c/C2A4AA:永恒计]充能并在光标处召唤[c/59FFCD:太古超星]
 					[c/59FFCD:太古超星]将会持续存在5秒，期间对其附近的所有敌人造成伤害
-					[c/59FFCD:太古超星]消逝时，会产生剧烈的爆炸，对周围的敌人造成5倍伤害
+					[c/59FFCD:太古超星]消逝时，会产生剧烈的爆炸，对周围的敌人造成500%的伤害
 					'''
 				DisplayName: 永恒之星
 			}
@@ -5430,9 +5511,9 @@ Mods: {
 					使用该武器进行攻击会发射一枚有强大击退能力的爆炸弹片
 					命中敌人会使你的移动速度和暴击率增加，持续4秒
 					每六次射击后需要重新装填武器
-					装填之前的最后一发弹片伤害半径更大，且造成2倍伤害
+					装填之前的最后一发弹片伤害半径更大，且造成200%的伤害
 					攻击时，武器会朝目标发射一枚导弹（3秒冷却）
-					在命中目标或者击中物块时，导弹会爆炸，造成3倍伤害
+					在命中目标或者击中物块时，导弹会爆炸，造成300%的伤害
 					点击右键发射[c/4BF0DE:溅射等离子榴弹]（8秒冷却）
 					[c/4BF0DE:溅射等离子榴弹]会自动弹向附近的敌人（最多3次）
 					被[c/4BF0DE:溅射等离子榴弹]命中的敌人会进入重伤状态，使该武器对其造成的伤害提升50%
@@ -5449,7 +5530,6 @@ Mods: {
 					点击右键填装12发子弹
 					在完美的时击装填会获得[c/0059FF:超因果射击]，直到这12发子弹用完
 					[c/0059FF:超因果射击]会提升伤害，同时使得子弹必定暴击
-					该武器可以重新合成来在远程伤害和魔法伤害的版本之间切换
 					“你所谓之暗影，就是你进化之路的终结。”
 					'''
 				// DisplayName: Hawkmoon
@@ -5516,7 +5596,7 @@ Mods: {
 					'''
 					使用该武器进行攻击会朝前方挥舞武器
 					非演奏攻击时增加魔力恢复
-					按住方向键并点击右键来演奏[c/72D16A:猎人旋律]
+					按住方向键并点击右键来演奏[c/72D16A:猎人旋律]（20秒冷却，使用该武器攻击敌人会减少冷却）
 					[c/72D16A:猎人旋律]会根据你释放时所按的方向键给予你和附近的队友不同的独特增益
 					上：[c/49C0F0:激昂旋律]获得12点防御力并抵抗击退
 					下：[c/F04949:挑战旋律]增加6%的伤害
@@ -5531,6 +5611,7 @@ Mods: {
 			IgnitionAstra: {
 				Tooltip:
 					'''
+					已 移 除 武 器 ！
 					挥动这把剑刃会使星光或本影能量在你周围弥漫
 					点击右键以切换星相（2秒冷却）
 					[c/5dc2e3:星体相位]期间，击中敌人会恢复部分魔力值
@@ -5564,7 +5645,7 @@ Mods: {
 					每次射击会增加伤害
 					在第四次射击后，需要一定时间重新装填
 					若射击命中了足够的次数，你的下一次装填会触发[c/66B2D1:砥砺刀锋]
-					[c/66B2D1:砥砺刀锋]触发后的下一次射击将造成5倍的暴击伤害，并立刻重新装填
+					[c/66B2D1:砥砺刀锋]触发后的下一次射击将造成500%的暴击伤害，并立刻重新装填
 					若[c/66B2D1:砥砺刀锋]命中敌人，则获得100魔力值
 					若该武器的伤害类型被变更为近战，则获得魔力值的增益不会生效，但武器攻击速度大幅提升
 					手持该武器时，你获得敏捷增益
@@ -5587,7 +5668,6 @@ Mods: {
 			KazimierzSeraphim: {
 				Tooltip:
 					'''
-					这把剑将进行大幅度的斩击
 					手持该武器会召唤围绕玩家的[c/FF8B00:慑敌辉光]，伤害与其接触的敌人
 					这把剑击中敌人时给予一层[c/F1AF42:耀光] （暴击时改为给予两层，最多10层）
 					当[c/FF8B00:慑敌辉光]攻击敌人时，消耗全部的[c/F1AF42:耀光]，每消耗一层伤害提高5点
@@ -5892,11 +5972,10 @@ Mods: {
 					使用该武器进行攻击会向前方短距离快速挥舞
 					点击右键释放[c/DC3961:苦痛利刃]（12秒冷却）
 					[c/DC3961:苦痛利刃]会标记光标附近的敌人并朝它们冲刺
-					冲刺过程中获得无敌
-					攻击敌人造成3倍伤害
+					冲刺过程中获得无敌，且攻击敌人造成300%的伤害
 					一旦敌人被命中，则会受到[c/FF3200:流血地狱]效果，在短时间内受到大量伤害
 					此外，还会对敌人造成其已损失生命值的10%的真实伤害（最多2000点）
-					该武器的普通攻击产生暴击会立刻刷新[c/DC3961:苦痛利刃]的冷却时间
+					该武器的普通攻击产生暴击会立刻减少[c/DC3961:苦痛利刃]1秒的冷却时间
 					你的队友在攻击处于[c/FF3200:流血地狱]的敌人会获得持续8秒的怒气增益
 					此外，这些攻击还会对敌人造成其已损失生命值的2%的额外真实伤害（最多250点）
 					“从诺贤街的深处而来”
@@ -5940,7 +6019,7 @@ Mods: {
 					当所有的剑刃都被召唤时，点击右键一次性发射所有剑刃，并产生随机的效果
 					每柄剑刃都有独特的效果：
 					[c/54AFDF:星尘之锋]只造成一半伤害，但命中敌人时会为你恢复20点魔力值
-					[c/54DF80:星旋之锋]发射的更远更快，可以使你获得迅捷，且暴击将会造成6倍伤害
+					[c/54DF80:星旋之锋]发射的更远更快，可以使你获得迅捷，且暴击将会造成600%的伤害
 					[c/DF8454:日耀之锋]射速较慢，射程较短，但是会焚烧命中的敌人，且对处于燃烧的敌人造成双倍伤害
 					[c/C654DF:星云之锋]命中敌人时召唤落星协同攻击
 					[c/BDD5B5:纳甘纳德尔]的召唤需要50点魔力值，但是有以上4种剑刃的所有效果
@@ -5956,7 +6035,7 @@ Mods: {
 					'''
 					[c/F7D76A:长按左键为武器蓄力；武器蓄力的时间越长，产生的攻击就越强]
 					使用该武器会发射一枚弹丸，且暴击会为敌人施加持续20秒的迈达斯减益
-					完全充能的攻击会发射一个[c/FBD63E:【大仁物】]，可以最多穿透8个敌人并穿透物块且造成的伤害翻倍
+					完全充能的攻击会发射一个[c/FBD63E:【大仁物】]，可以最多穿透8个敌人并穿透物块且造成200%的伤害
 					[c/FBD63E:【大仁物】]对处于迈达斯状态的敌人造成的伤害提高15%（暴击时改为25%）
 					被[c/FBD63E:【大仁物】]击败的敌人至少掉落5银币
 					“现在你即将成为一位……”
@@ -6330,8 +6409,8 @@ Mods: {
 			MageOfVioletMusicBox: {
 				Tooltip:
 					'''
-					'Mage of Violet (Instrumental)' - Hololive Productions
-					演奏：Murasaki Shion
+					'Mage of Violet (Instrumental)' - HoloPro
+					作曲：Kairiki Bear
 					'''
 				DisplayName: 音乐盒（彭忒希勒娅）
 			}
@@ -6383,7 +6462,7 @@ Mods: {
 					'Two Dragons' - 如龙0 OST
 					作曲：Hidenori Shoji
 					'''
-				DisplayName: 音乐盒（光之战士 - 二阶段）
+				DisplayName: 音乐盒（未使用）
 			}
 
 			UnmatchingPiecesMusicBox: {
@@ -6775,7 +6854,7 @@ Mods: {
 					[c/4E01FF:黑魔]状态下魔攻击会循环使用以下技能：[c/FF1515:魔连攻]，[c/FF1515:赤核爆]和[c/FF1515:焦热]
 					[c/FF1515:魔连攻]在你前方扇形方向发动多次突刺攻击
 					[c/FF1515:赤核爆]会以你的光标为中心吟唱大范围的AOE伤害
-					[c/FF1515:焦热]造成5倍伤害，并增加11点[c/4E01FF:黑魔元]
+					[c/FF1515:焦热]造成500%的伤害，并增加11点[c/4E01FF:黑魔元]
 					[c/FFE7BA:白魔]状态下魔攻击会循环使用以下技能：[c/FF1515:魔续斩]，[c/FF1515:赤神圣]和[c/FF1515:决断]
 					[c/FF1515:魔续斩]使你朝光标处冲锋，并获得2秒无敌
 					[c/FF1515:赤神圣]会以你的光标为中心吟唱大范围的AOE伤害
@@ -6789,11 +6868,12 @@ Mods: {
 					'''
 					使用该武器进行攻击会快速向前方刺击
 					每次攻击命中都会获得持续2秒的[c/F8D496:玉璋护盾]，为你增加30点防御
-					点击右键消耗150点魔力值，从天召唤一颗巨大的岩星，造成双倍伤害
-					这颗流星使被命中的敌人陷入[c/CB8952:石化]，大幅削减他们的移动速度
+					点击右键消耗150点魔力值，从天召唤一颗巨大的岩星，造成200%的伤害
+					此外，这次攻击会额外造成你最大生命值的50%的额外伤害
+					这颗流星使被命中的敌人陷入[c/CB8952:石化]3秒，大幅削减他们的移动速度
 					用该武器攻击陷入[c/CB8952:石化]的敌人会造成额外伤害
 					造成暴击将会[c/F1D078:击碎]被[c/CB8952:石化]的敌人
-					[c/F1D078:击碎][c/CB8952:石化]的敌人时会对其造成4倍伤害
+					[c/F1D078:击碎][c/CB8952:石化]的敌人时会对其造成500%的伤害
 					“天动万象！”
 					'''
 				DisplayName: 贯虹之槊
@@ -6828,7 +6908,6 @@ Mods: {
 			SakuraVengeance: {
 				Tooltip:
 					'''
-					使用该武器进行攻击会向前方挥舞剑刃
 					每30秒，该武器都会循环变更4种[c/FF71D8:元素技能]
 					[c/55B168:崩裂大地]提升10点防御力并减少受到伤害的25%
 					攻击使敌人眩晕1秒（暴击使敌人眩晕4秒并使你获得1秒无敌）
@@ -6894,12 +6973,12 @@ Mods: {
 					此外，举起盾牌时，在盾牌范围内的队友获得10点防御力
 					[c/ECCA56:斗闪模式：魁奈·剪斗交刃]
 					攻击生命值低于50%的敌人时获得持续2秒的愤怒增益
-					攻击变为近距离的急速拳击，造成1.2倍基础伤害
+					攻击变为近距离的急速拳击，造成120%的伤害
 					暴击会发射出能够穿透敌人的黑寡妇飞爪
 					[c/66EC56:击刀模式：飒天·爆风偏向]
 					暴击率提升20%
-					攻击变为极长距离的穿透性炮击，造成1.5倍基础伤害，具有一定的后坐力
-					暴击将造成四倍伤害
+					攻击变为极长距离的穿透性炮击，造成150%的伤害，具有一定的后坐力
+					暴击将造成400%的伤害
 					'''
 				DisplayName: 闪刀机关：闪刀机
 			}
@@ -6908,8 +6987,9 @@ Mods: {
 				Tooltip:
 					'''
 					召唤[c/49EAFA:“浮标”]用追踪的电火花攻击敌怪
-					手持时召唤武器无视敌怪15%的护甲
-					[c/49EAFA:“浮标”]攻击时有10%概率自爆（回到玩家身边）对小范围敌怪造成400%倍率的暴击
+					[c/49EAFA:“浮标”]会自动锁定敌人并忽略地型影响
+					手持时，获得15%护甲穿透
+					[c/49EAFA:“浮标”]攻击时有10%概率自爆，会对小范围敌怪造成200%的暴击伤害并返回玩家身边
 					[c/49EAFA:“浮标”]自爆时有50%概率生成一颗魔力星
 					[c/49EAFA:“浮标”]每次攻击后攻击力+2%(最多+10%，自爆后重置)
 					“控制好距离——嘿！”
@@ -6974,9 +7054,8 @@ Mods: {
 			TheOnlyThingIKnowForReal: {
 				Tooltip:
 					'''
+					[c/8AC1F1:该武器有独特的伤害类型，会继承所有职业的加成]
 					[c/F7D76A:长按左键为武器蓄力；武器蓄力的时间越长，产生的攻击就越强]
-					使用该武器进行未蓄力攻击会朝前方挥舞武器
-					使用剑尖攻击敌人会造成2次伤害
 					蓄力攻击将会释放[c/8D0404:扳机居合]，传送至光标位置（范围内），使你获得2秒无敌，并斩杀周围的敌人
 					当给武器蓄力时，你无法移动
 					当使用[c/8D0404:扳机居合]后，你会受到12秒的[c/B96B6B:后座反冲]减益
@@ -7031,7 +7110,7 @@ Mods: {
 				Tooltip:
 					'''
 					Debug作弊物品
-					启用天体阵列的全部能力-不要取消选择能力；使用Debug光盘。
+					别用我
 					'''
 				DisplayName: 本影物品
 			}
@@ -7045,7 +7124,7 @@ Mods: {
 					[c/F10079:亚扎卡纳之剑]不能造成击退和暴击效果，但会额外追加一次数值为原伤害一半的真实伤害
 					蓄力攻击会消耗30魔力并会根据前一剑的效果而改变
 					若前一剑使用的是[c/C2E6C1:风剑]，则蓄力攻击会使用错玉切，这次攻击会造成错玉断骨减益，在10秒内持续对目标造成伤害
-					若前一剑使用的是[c/F10079:亚扎卡纳之剑]，则蓄力攻击会使用凌神斩，对具有错玉断骨减益的敌人造成20倍暴击伤害并清除该减益
+					若前一剑使用的是[c/F10079:亚扎卡纳之剑]，则蓄力攻击会使用凌神斩，对具有错玉断骨减益的敌人造成2000%的暴击伤害并清除该减益
 					右键以消耗40点魔力使用[c/8E60D1:破障之锋]
 					[c/8E60D1:破障之锋]会使你并向前冲刺并进入灵体状态8秒，期间你的移动速度将得到提升
 					[c/8E60D1:破障之锋]效果结束时，你附近所有敌人受到你在灵体状态下使用该武器造成的总伤害1/3的伤害
@@ -7076,7 +7155,7 @@ Mods: {
 					连击的最后一击命中敌人会获得15点魔力值，并施加[c/B81E1E:赤红标记]，持续12秒
 					点击右键消耗30点魔力值释放[c/F13791:位移破击]，将武器朝光标处投掷，同时期间禁用普通攻击
 					使用[c/F13791:位移破击]命中物块时会将你传送至目标位置
-					使用[c/F13791:位移破击]命中敌人时会将你传送至敌人位置并造成2倍伤害
+					使用[c/F13791:位移破击]命中敌人时会将你传送至敌人位置并造成200%的伤害
 					此外，这会使你获得1秒无敌
 					使用[c/F13791:位移破击]命中拥有[c/B81E1E:赤红标记]的敌人会使你获得一层[c/F48080:幻影武器]，最多拥有3层
 					此外，这将会移除敌人身上的[c/B81E1E:赤红标记]
@@ -7098,7 +7177,7 @@ Mods: {
 					当[c/4C3BB6:美德量谱]填充完成，点击右键在位面中撕开空洞，释放[c/495DEC:天体虚空]，持续8秒
 					[c/495DEC:天体虚空]将持续对周围敌人造成大量伤害，并将它们吸入中心
 					在此期间使用武器命中敌人后，[c/4C3BB6:本影通量]将会填充[c/4C3BB6:美德量谱]
-					若[c/4C3BB6:美德量谱]在[c/495DEC:天体虚空]持续期间被填充满，则[c/495DEC:天体虚空]在结束后会产生坍缩，造成5倍伤害
+					若[c/4C3BB6:美德量谱]在[c/495DEC:天体虚空]持续期间被填充满，则[c/495DEC:天体虚空]在结束后会产生坍缩，造成500%的伤害
 					[c/495DEC:天体虚空]在重新生效前有45秒的冷却时间
 					“穿透一切物质！”
 					'''
@@ -7125,7 +7204,7 @@ Mods: {
 			VoiceOfTheFallen: {
 				Tooltip:
 					'''
-					暴击造成15倍基础伤害
+					暴击造成1500%的伤害
 					每次射击增加4%的暴击率
 					造成暴击后，叠加的暴击率会重置
 					“那里的寄生物会让寄主……的牙齿比你的更加锋利”
@@ -7156,11 +7235,10 @@ Mods: {
 			YunlaiStiletto: {
 				Tooltip:
 					'''
-					击中敌人获得暴怒增益
 					右键消耗80魔力，在光标处放置[c/CB8EE3:雷楔]
 					[c/CB8EE3:雷楔]存在时，再次右键会传送到雷楔的位置
 					并且，你的下一次攻击会变成[c/B703FF:霆霓快雨]
-					[c/B703FF:霆霓快雨]会扫过宽弧形，造成大量伤害
+					[c/B703FF:霆霓快雨]会扫过宽弧形，造成300%的伤害
 					如果[c/B703FF:霆霓快雨]杀死了一个敌人，则返还放置雷楔消耗的魔力
 					如果尝试传送到无法到达的位置，雷楔会被消耗且不会传送，但仍然能使用[c/B703FF:霆霓快雨]
 					“剑光如我，斩尽芜杂！”
@@ -7176,7 +7254,7 @@ Mods: {
 					当你造成伤害时，本次伤害有概率：
 					伤害增加40%（40%）
 					伤害减少40%（30%）
-					伤害增加400%（20%）
+					伤害增加100%（20%）
 					伤害变为1（10%）
 					正面结果的概率将成为额外暴击率
 					[c/ADEEFF:只能同时装备1件观星者的遗物]
@@ -7316,8 +7394,9 @@ Mods: {
 			EssenceOfAbsoluteChaos: {
 				Tooltip:
 					'''
+					击败 史莱姆王后 后获得
 					你的星海旅者给予的礼物
-					用于创造“混沌之神的饰物”
+					用于创造“混沌之神的饰物”（召唤）
 					'''
 				DisplayName: 绝对混沌之精华
 			}
@@ -7325,8 +7404,9 @@ Mods: {
 			EssenceOfAuthority: {
 				Tooltip:
 					'''
+					击败 光之战士 后获得
 					你的星海旅者给予的礼物
-					用于创造“大权在握”
+					用于创造“大权在握”（魔法）
 					'''
 				DisplayName: 权利之精华
 			}
@@ -7334,8 +7414,9 @@ Mods: {
 			EssenceOfDespair: {
 				Tooltip:
 					'''
+					硬核角色找到向导巫毒娃娃后获得
 					你的星海旅者给予的礼物
-					用于创造“乐观绝望”
+					用于创造“血染绝望”（魔法）
 					'''
 				DisplayName: 绝望之精华
 			}
@@ -7343,8 +7424,9 @@ Mods: {
 			EssenceOfFarewells: {
 				Tooltip:
 					'''
+					前往墓地环境后获得
 					你的星海旅者给予的礼物
-					用于创造“克维希的永别”
+					用于创造“克维希的永别”（特殊）
 					'''
 				DisplayName: 永别之精华
 			}
@@ -7352,8 +7434,9 @@ Mods: {
 			EssenceOfGold: {
 				Tooltip:
 					'''
+					前往神圣环境后获得
 					你的星海旅者给予的礼物
-					用于创造“至金之锋”
+					用于创造“至金之锋”（近战/魔法）
 					'''
 				DisplayName: 金之精华
 			}
@@ -7361,8 +7444,9 @@ Mods: {
 			EssenceOfLightning: {
 				Tooltip:
 					'''
+					击败 复光之君，纳尔赫恩 后获得
 					你的星海旅者给予的礼物
-					用于创造“风暴之斧”
+					用于创造“风暴之斧”（近战/魔法）
 					'''
 				DisplayName: 闪电之精华
 			}
@@ -7370,8 +7454,9 @@ Mods: {
 			EssenceOfMania: {
 				Tooltip:
 					'''
+					               击败 猪龙鱼公爵 后获得
 					你的星海旅者给予的礼物
-					用于创造“狂热正义”
+					用于创造“狂乱裁定”（近战）
 					'''
 				DisplayName: 狂热之精华
 			}
@@ -7379,17 +7464,19 @@ Mods: {
 			EssenceOfMimicry: {
 				Tooltip:
 					'''
-					你的星海旅者给予的礼物
-					用于创造“拟态”
+					击败 仲裁 后获得
+					就像一个你的星海旅者给予的礼物
+					用于创造“拟态”（天体）
 					'''
-				DisplayName: 模仿之精华
+				DisplayName: 模仿之半精华
 			}
 
 			EssenceOfNanomachines: {
 				Tooltip:
 					'''
+					击败 骷髅王 后获得
 					你的星海旅者给予的礼物
-					用于创造“纳米机器反应堆”
+					用于创造“纳米机器反应堆”（特殊）
 					'''
 				DisplayName: 纳米机器之精华
 			}
@@ -7397,8 +7484,9 @@ Mods: {
 			EssenceOfNature: {
 				Tooltip:
 					'''
+					放置一个2阶旅星符台后获得
 					你的星海旅者给予的礼物
-					用于创造“千夜浮梦”
+					用于创造“千夜浮梦”（魔法）
 					'''
 				DisplayName: 自然之精华
 			}
@@ -7406,8 +7494,9 @@ Mods: {
 			EssenceOfOffseeing: {
 				Tooltip:
 					'''
+					前往墓地环境后获得
 					你的星海旅者给予的礼物
-					用于创造“阿格尼亚的永别”
+					用于创造“阿格尼亚的永别”（特殊）
 					'''
 				DisplayName: 远离预言之精华
 			}
@@ -7415,8 +7504,9 @@ Mods: {
 			EssenceOfPiracy: {
 				Tooltip:
 					'''
+					完成 海盗入侵 事件后获得
 					你的星海旅者给予的礼物
-					用于创造“海洋之灾”
+					用于创造“海洋之灾”（远程）
 					'''
 				DisplayName: 海盗之精华
 			}
@@ -7424,8 +7514,9 @@ Mods: {
 			EssenceOfQuantum: {
 				Tooltip:
 					'''
+					击败 拜月教邪教徒 后获得
 					你的星海旅者给予的礼物
-					用于创造“触媒之忆”
+					用于创造“触媒之忆”（天体）
 					'''
 				DisplayName: 量子之精华
 			}
@@ -7433,8 +7524,9 @@ Mods: {
 			EssenceOfSilence: {
 				Tooltip:
 					'''
+					击败 石巨人 后获得
 					你的星海旅者给予的礼物
-					用于创造“漆黑噤默的手套”
+					用于创造“漆黑噤默的手套”（天体）
 					'''
 				DisplayName: 噤默之精华
 			}
@@ -7442,8 +7534,9 @@ Mods: {
 			EssenceOfSouls: {
 				Tooltip:
 					'''
+					击败 月亮领主 后获得
 					你的星海旅者给予的礼物
-					用于创造“夺魂”
+					用于创造“夺魂”（近战）
 					'''
 				DisplayName: 灵魂之精华
 			}
@@ -7451,8 +7544,9 @@ Mods: {
 			EssenceOfSurya: {
 				Tooltip:
 					'''
+					击败 源初之星海旅者，月读 后获得
 					你的星海旅者给予的礼物
-					用于创造“太阳神的日落”
+					用于创造“太阳神的日落”（近战/远程/魔法/召唤）
 					'''
 				DisplayName: 苏利耶之精华
 			}
@@ -7460,8 +7554,9 @@ Mods: {
 			EssenceOfTheAbyss: {
 				Tooltip:
 					'''
+					击败 光之战士 后获得
 					你的星海旅者给予的礼物
-					用于创造“无尽锤”
+					用于创造“无尽锤”（天体）
 					'''
 				DisplayName: 阿比斯之精华
 			}
@@ -7469,8 +7564,9 @@ Mods: {
 			EssenceOfTheAutomaton: {
 				Tooltip:
 					'''
+					放置一个2阶旅星符台后获得
 					你的星海旅者给予的礼物
-					用于创造“Pod 0-42”
+					用于创造“辅助机0-42”（召唤）
 					'''
 				DisplayName: 机械纪元之精华
 			}
@@ -7478,8 +7574,9 @@ Mods: {
 			EssenceOfTheBehemothTyphoon: {
 				Tooltip:
 					'''
+					完成 火星人入侵 事件后获得
 					你的星海旅者给予的礼物
-					用于创造“死亡之吻”
+					用于创造“死亡之吻”（远程）
 					'''
 				DisplayName: 贝希摩斯飓风之精华
 			}
@@ -7487,8 +7584,9 @@ Mods: {
 			EssenceOfTheRenegade: {
 				Tooltip:
 					'''
+					击败 所有机械Boss 后获得
 					你的星海旅者给予的礼物
-					用于创造“酋长岩硬件”
+					用于创造“酋长岩硬件”（远程）
 					'''
 				DisplayName: 叛徒之精华
 			}
@@ -7496,8 +7594,9 @@ Mods: {
 			EssenceOfTheTimeless: {
 				Tooltip:
 					'''
+					击败 拜月教邪教徒 后获得
 					你的星海旅者给予的礼物
-					用于创造“本影”
+					用于创造“本影”（近战）
 					'''
 				DisplayName: 无时之精华
 			}
@@ -7505,8 +7604,9 @@ Mods: {
 			EssenceOfTheWatch: {
 				Tooltip:
 					'''
+					击败 时空流浪者 后获得
 					你的星海旅者给予的礼物
-					用于创造“克洛的时钟”
+					用于创造“克洛的时钟”（召唤）
 					'''
 				DisplayName: 怀表之精华
 			}
@@ -7521,7 +7621,7 @@ Mods: {
 					该武器的蓄力攻击效果取决于[c/F7D76A:过量蓄力]的次数
 					每进到下一段[c/F7D76A:过量蓄力]会额外消耗一定量的生命值（不会使你的生命值降至1）
 					蓄力攻击向前方挥舞剑刃，造成4秒霜火效果
-					第二段[c/F7D76A:过量蓄力]会消耗20点生命值，造成2倍基础伤害，并附加4秒暗影焰效果
+					第二段[c/F7D76A:过量蓄力]会消耗20点生命值，造成200%的伤害，并附加4秒暗影焰效果
 					第三段[c/F7D76A:过量蓄力]会消耗30点生命值，必定暴击且附加4秒[c/FF4DF4:超燃烧]
 					[c/FF4DF4:超燃烧]会在一段时间内造成大量伤害并无视大部分抗性
 					'''
@@ -7531,7 +7631,7 @@ Mods: {
 			IrminsulDream: {
 				Tooltip:
 					'''
-					点击左键并拖动可以绘制一个方框，松开左键将会释放[c/6CDA61:所闻遍计]（方框在达到最大大小后自动释放）
+					点击左键并拖动可以绘制一个方框，松开左键将会释放[c/6CDA61:所闻遍计]（方框在达到最大尺寸后自动释放）
 					[c/6CDA61:所闻遍计]会对方框内的所有敌人造成伤害，并施加[c/2EB24A:蕴种印]，持续12秒
 					[c/2EB24A:蕴种印]会在一段时间内造成少量伤害
 					此外，拥有[c/2EB24A:蕴种印]的敌人受到包含着火了！、霜火、诅咒焰或暗影焰的伤害时，它会受到[c/94EF58:灭净三业]
@@ -7563,7 +7663,7 @@ Mods: {
 					子弹将会附加12秒[c/F3CE36:安保等级]，并标记目标
 					[c/CF3C32:雷鸟]会部署无视地形限制的追踪炸弹，命中目标产生爆炸并对生命值低于50%的敌人额外造成20%的伤害
 					爆炸将会附加12秒[c/F3CE36:安保等级]，并标记目标
-					[c/CF1826:巨兽台风]会摆动一个巨大的棺材，释放时造成3倍伤害
+					[c/CF1826:巨兽台风]会摆动一个巨大的棺材，释放时造成300%的伤害
 					使用[c/CF1826:巨兽台风]释放的攻击命中[c/F3CE36:安保等级]的敌人，会增加你的[c/EB936A:瘫痪值]
 					按下武器技能键将发动一次强力的攻击，并消耗[c/EB936A:瘫痪值]
 					使用武器技能会朝前方发动一次强力的近战攻击，其伤害随着消耗[c/EB936A:瘫痪值]的量的增多而增加
@@ -7620,7 +7720,7 @@ Mods: {
 					'''
 					使用该武器进行攻击会对近距离进行多次砍击
 					命中敌人获得1[c/FC578E:L V]（暴击会获得5[c/FC578E:L V]）
-					点击右键在短时间延迟后朝目标处释放[c/F4296D:屠杀挥砍]，造成3倍伤害（6秒冷却时间）
+					点击右键在短时间延迟后朝目标处释放[c/F4296D:屠杀挥砍]，造成300%的伤害（6秒冷却时间）
 					此外，[c/F4296D:屠杀挥砍]每命中一个目标给予你2[c/FC578E:L V]
 					[c/FC578E:L V]上限为100，且在脱离战斗会快速降低
 					受到伤害会重置[c/FC578E:L V]，但会根据[c/FC578E:L V]减少伤害
@@ -7645,8 +7745,8 @@ Mods: {
 					[c/AE0000:E.G.O.展现]会使你增加30%的伤害，40%的攻击速度，90%的移动速度，但是会减少30点防御
 					若处于[c/AE0000:E.G.O.展现]状态，可以执行特殊的[c/FF0046:E.G.O.攻击]
 					可以点击右键使用[c/FF0046:血雾弥漫]或者点击武器技能键使用[c/FF0046:尸横遍野]（两种攻击共享1分钟冷却）
-					[c/FF0046:血雾弥漫]使用后获得1秒无敌，并在短暂的延迟后对近距离目标造成8倍暴击伤害
-					[c/FF0046:尸横遍野]使用后会对屏幕中的所有敌人造成3倍必定暴击的伤害
+					[c/FF0046:血雾弥漫]使用后获得1秒无敌，并在短暂的延迟后对近距离目标造成800%的暴击伤害
+					[c/FF0046:尸横遍野]使用后会对屏幕中的所有敌人造成300%的必定暴击的伤害
 					两个[c/FF0046:E.G.O.攻击]的任何伤害都会直接击杀生命值低于30%的非Boss敌人，并在激活后立刻重新填满[c/D53B3B:情感值]
 					若处于[c/AE0000:E.G.O.展现]状态，[c/D53B3B:情感值]会随着时间推移而逐渐减少（切换武器会直接重置）
 					处于[c/AE0000:E.G.O.展现]状态越久，你的[c/D53B3B:情感值]消耗越快
@@ -7974,12 +8074,12 @@ Mods: {
 					这个魔力消耗无法被任何方式减免和抵消
 					你最多可以同时放置2个[c/BB3B27:火药桶]，且[c/BB3B27:火药桶]会在放置20秒之后或者切换武器后消失
 					在短暂的延迟后，[c/BB3B27:火药桶]进入激活状态，此时使用该武器命中[c/BB3B27:火药桶]会让其发生爆炸
-					爆炸将会造成4倍伤害，且给予8秒敏捷效果
+					爆炸将会造成400%的伤害，且给予8秒敏捷效果
 					此外，处于[c/BB3B27:火药桶]爆炸范围内的其他[c/BB3B27:火药桶]也会发生爆炸，这次爆炸造成的伤害额外提升50%
 					按下武器技能键获得3层[c/E18121:加农炮幕]，持续12秒（1分钟冷却）
 					在拥有[c/E18121:加农炮幕]层数的情况下，按下武器技能键会在光标位置从天而降发射一轮加农炮弹幕
 					此外，在使用后，获得12秒的敏捷效果
-					在使用最后一层[c/E18121:加农炮幕]时，加农炮弹幕的中心还会额外发射一颗巨型炮弹，造成3倍伤害，且眩晕敌人2秒
+					在使用最后一层[c/E18121:加农炮幕]时，加农炮弹幕的中心还会额外发射一颗巨型炮弹，造成300%的伤害，且眩晕敌人2秒
 					“不管是烈火还是深海，都取不走我的命。”
 					'''
 				DisplayName: 海洋之灾
@@ -8024,11 +8124,11 @@ Mods: {
 					[c/F592BF:该武器不受星相武器切换伤害类型的伤害惩罚]
 					点击右键释放[c/FFC500:日轮啊，顺从死亡]，跳至空中，并获得羽落和无敌，持续2秒（1分钟冷却）
 					[c/FFC500:日轮啊，顺从死亡]会朝你的光标引导一束强力光束，这个过程持续2秒
-					[c/FFC500:日轮啊，顺从死亡]会在光束结束后产生巨大的爆炸，造成2倍伤害且必定暴击，且会施加破晓减益，持续8秒
+					[c/FFC500:日轮啊，顺从死亡]会在光束结束后产生巨大的爆炸，造成200%的伤害且必定暴击，且会施加破晓减益，持续8秒
 					当前你所选的[c/F592BF:星相伤害类型]会影响这把武器的攻击方式（若你没有选择[c/F592BF:星相伤害类型]，无法使用该武器）
 					[c/FFAB4D:近战]：进行近距离的快速连刺；蓄力攻击会朝前方挥舞武器，并使敌人燃烧，持续8秒
 					[c/EF4DFF:魔法]：光枪在一段延迟之后在你的光标处汇聚，命中敌人会释放出电弧
-					[c/4DFF5B:远程]：快速投掷一柄高速长枪，造成2倍伤害，可无限穿透敌人和物块，并且没有伤害衰减
+					[c/4DFF5B:远程]：快速投掷一柄高速长枪，造成200%的伤害，可无限穿透敌人和物块，并且没有伤害衰减
 					[c/00CDFF:召唤]：延伸出一条燃烧之鞭，在命中后造成破晓效果
 					“绝灭，即在此一刺。”
 					'''
@@ -8079,6 +8179,7 @@ Mods: {
 					[c/8AC1F1:该武器有独特的伤害类型，会继承所有职业的加成]
 					手持该武器时，获得100%护甲穿透，但防御力减半
 					使用该武器进行攻击会向前方高速挥舞剑刃，攻击将会为敌人叠加[c/16DBF3:审判]（暴击将会叠加2层[c/16DBF3:审判]）
+					此外，在你的光标位置会出现造成50%伤害的远程攻击，且不会叠加[c/16DBF3:审判]
 					在目标拥有20层[c/16DBF3:审判]后，下一次叠加层数会清空其所有[c/16DBF3:审判]层数，同时爆发出一阵强烈斩击
 					点击右键消耗50点魔力值，在你的光标处召唤[c/88F2FF:幻影剑]，每个剑刃命中敌人会为你回复5点生命值
 					使用[c/88F2FF:幻影剑]攻击敌人或者[c/16DBF3:审判]爆发时会为你的[c/654D9C:真魔人槽]充能（切换武器时消耗所有充能）
@@ -8131,10 +8232,10 @@ Mods: {
 					火箭的直击伤害和溅射伤害单独计算
 					直击处于空中的敌人直击伤害将必定暴击
 					火箭的爆炸将会击飞玩家和非Boss敌人，离爆炸中心越近，击退距离越远
-					击退自己将会获得4秒的[c/E74336:天降神兵]增益（落地后立刻移除该增益）
+					击退自己将会受到最大生命值5%的伤害，同时获得4秒的[c/E74336:天降神兵]增益（落地后立刻移除该增益）
 					[c/E74336:天降神兵]期间，火箭造成的非暴击伤害增加20%，暴击伤害增加40%
 					点击右键挥舞[c/83D26E:市场花园铁锹]，对附近的敌人造成伤害（默认无法暴击）
-					[c/E74336:天降神兵]期间，用[c/83D26E:市场花园铁锹]从空中命中敌人将必定造成2倍伤害的暴击
+					[c/E74336:天降神兵]期间，用[c/83D26E:市场花园铁锹]从空中命中敌人将必定造成200%伤害的暴击
 					“咔-嘣！”
 					'''
 			}
@@ -8147,7 +8248,7 @@ Mods: {
 					使用该武器命中敌人会获得3秒的敏捷增益
 					按下武器技能键向前方抛出一个悠悠球（悠悠球将在2秒后返回）
 					在悠悠球停下后，再次按下武器技能键将使你朝悠悠球的方向冲刺，同时回收悠悠球
-					此外，获得3秒的[c/B9F1FA:快速启动]增益，使该武器的下一次攻击造成2倍伤害，并消耗该增益
+					此外，获得3秒的[c/B9F1FA:快速启动]增益，使该武器的下一次攻击造成200%的伤害，并消耗该增益
 					点击右键准备[c/E08738:杀戮熊熊]，获得[c/E03838:我和我的杀戮机器]增益，持续8秒（30秒冷却）
 					在此期间，使用该武器命中敌人会让[c/E08738:杀戮熊熊]进行追加攻击，（1秒冷却）
 					[c/E08738:杀戮熊熊]的追加攻击将使你获得2秒的[c/B9F1FA:快速启动]效果
@@ -8225,18 +8326,24 @@ Mods: {
 
 			ReprintedBlueprint: {
 				DisplayName: 重绘的蓝图
-				Tooltip: ""
-				// TooltipAttached: Deal 10% more damage in a town
+				Tooltip:
+					'''
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					在城镇内额外造成10%伤害
+					'''
+				TooltipAttached: 在城镇内额外造成10%伤害
 			}
 
 			SigilOfHope: {
 				DisplayName: 护魂灵鳞
 				Tooltip:
 					'''
-					在永恒之光中与光之战士对战时，获得120点防御力
-					然而，获得的奖励将会因此减少
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					当生命值低于50%时，使其他武器追忆效果提升30%
 					'''
-				// TooltipAttached: When below 50% HP, increase the potency of all other Memory effects by 30%
+				TooltipAttached: 当生命值低于50%时，使其他武器追忆效果提升30%
 			}
 
 			OceanHuedHunterBody: {
@@ -8273,8 +8380,9 @@ Mods: {
 				DisplayName: 梦之精华
 				Tooltip:
 					'''
+					击败 世纪之花 后获得
 					你的星海旅者给予的礼物
-					用于创造“梦想家的墨水瓶”
+					用于创造“梦想家的墨水瓶”（魔法）
 					'''
 			}
 
@@ -8282,8 +8390,9 @@ Mods: {
 				DisplayName: 动力学之精华
 				Tooltip:
 					'''
+					击败 猪龙鱼公爵 后获得
 					你的星海旅者给予的礼物
-					用于创造“Kariumu的青睐”
+					用于创造“Kariumu的青睐”（天体）
 					'''
 			}
 
@@ -8291,8 +8400,9 @@ Mods: {
 				DisplayName: 旋转之精华
 				Tooltip:
 					'''
+					击败 时空流浪者 后获得
 					你的星海旅者给予的礼物
-					用于创造“旋转技巧·两步舞曲”
+					用于创造“旋转技巧·两步舞曲”（召唤）
 					'''
 			}
 
@@ -8300,8 +8410,9 @@ Mods: {
 				DisplayName: 士兵之精华
 				Tooltip:
 					'''
+					击败 任意邪恶Boss 后获得
 					你的星海旅者给予的礼物
-					用于创造“震惊&敬畏”
+					用于创造“震惊&敬畏”（远程）
 					'''
 			}
 
@@ -8309,8 +8420,9 @@ Mods: {
 				DisplayName: 圣巢之精华
 				Tooltip:
 					'''
+					击败 骷髅王 后，前往地狱环境获得
 					你的星海旅者给予的礼物
-					用于创造“柔丝针钉”
+					用于创造“柔丝针钉”（近战/魔法）
 					'''
 			}
 
@@ -8367,7 +8479,12 @@ Mods: {
 
 			EssenceOfTheVoid: {
 				DisplayName: 虚空之精华
-				Tooltip: ""
+				Tooltip:
+					'''
+					击败 血肉墙 后获得
+					你的星海旅者给予的礼物
+					用于创造“拽入深渊”（魔法）
+					'''
 			}
 
 			DraggedBelowGloves: {
@@ -8380,14 +8497,14 @@ Mods: {
 				Tooltip:
 					'''
 					使用该武器进行攻击会释放[c/7444FF:溺亡]，发射一个有微弱穿透力的光束，会攻击2次，并对被暗影焰影响的敌人造成15%的额外伤害
-					点击右键释放[c/9036F5:腐化流]，发射一枚虚空子弹，子弹撞击后发生爆炸，造成4倍伤害，同时附加暗影焰，持续5秒（8秒冷却）
+					点击右键释放[c/9036F5:腐化流]，发射一枚虚空子弹，子弹撞击后发生爆炸，造成400%的伤害，同时附加暗影焰，持续5秒（8秒冷却）
 					受到伤害或使用[c/9036F5:腐化流]会增加你的[c/7A1AE7:虚空腐化]（[c/7A1AE7:虚空腐化]会随着时间的推移而不断增加）
 					按下武器技能键将消耗25%[c/7A1AE7:虚空腐化]来激活[c/73C84E:抑制]，回复25点生命值和最大魔力值的25%（2秒冷却）
 					短时间内再次激活的[c/73C84E:抑制]只会为你回复5点生命值
 					当完全被[c/7A1AE7:虚空腐化]，自身将转化为更具侵略性的[c/E71A1A:腐化恶鬼]形态
 					在[c/E71A1A:腐化恶鬼]状态下，获得12点防御力，[c/7A1AE7:虚空腐化]会随着时间逐渐消耗
 					[c/7444FF:溺亡]转化为[c/CD1717:腐化溺亡]，变成持续发射一道激光，造成大量伤害，但不再为[c/7A1AE7:虚空腐化]充能，且释放时获得持续减速
-					[c/9036F5:腐化流]转化为[c/9036F5:腐化激流]，造成10倍伤害，冷却时间减少至4秒，但不再附加暗影焰
+					[c/9036F5:腐化流]转化为[c/9036F5:腐化激流]，造成1000%的伤害，冷却时间减少至4秒，但不再附加暗影焰
 					[c/73C84E:抑制]转化为[c/C84EB6:腐化抑制]，改为消耗50点生命值来填充50%的魔力值和25%的[c/7A1AE7:虚空腐化]
 					“……所以祂来了……为了我们所有人”
 					'''
@@ -8427,7 +8544,7 @@ Mods: {
 					一旦[c/78F178:龙化能量]达到50%或以上，可以按下武器技能键激活[c/9AFE35:碧龙状态]
 					[c/9AFE35:碧龙状态]会将自己变为强大的风暴之主，瞬间恢复100点生命值并持续消耗[c/78F178:龙化能量]
 					此外，在这期间受到伤害也会减少[c/78F178:龙化能量]
-					处于[c/9AFE35:碧龙状态]期间，攻击将会变为强力的爪击，在大范围内造成双倍伤害，并造成[c/CCEDAA:暴风一击]，持续3秒
+					处于[c/9AFE35:碧龙状态]期间，攻击将会变为强力的爪击，在大范围内造成200%的伤害，并造成[c/CCEDAA:暴风一击]，持续3秒
 					[c/CCEDAA:暴风一击]在召唤物造成伤害后消耗，且每有一个召唤栏，增加1%的伤害
 					点击右键在所有敌方目标身上召唤强力龙卷风，且每次伤害造成1秒[c/CCEDAA:暴风一击]（6秒冷却）
 					[c/9AFE35:碧龙状态]会在所有[c/78F178:龙化能量]耗尽后结束
@@ -8437,798 +8554,803 @@ Mods: {
 			}
 
 			Wavedancer: {
-				// DisplayName: Wavedancer
-				/* Tooltip:
+				DisplayName: 波浪舞者
+				Tooltip:
 					'''
-					Summons an oceanblessed blade to assail foes
-					The weapon requires 3 minion slots available to be summoned but does not consume minion slots
-					When holding this weapon, holding left click while the weapon is summoned will allow for manual control of the weapon with your cursor
-					Additionally, damage is reduced or multipled up to 1.500% depending on speed and gain 2% critical strike chance per minion slot for this weapon only
-					Critical strikes with this weapon will inflict [c/4A91FF:Riptide] for 2 seconds and grants Swiftness for 4 seconds
-					[c/4A91FF:Riptide] increases the damage of the next minion attack by 30% (This weapon can detonate this effect)
-					Press the Weapon Action Key when manually controlling the weapon to slash in an area around the weapon, inflicting [c/4A91FF:Riptide] for 2 seconds (4 second cooldown)
-					'Bends the swiftness and power of an ocean storm to the protection of its owner'
-					''' */
+					召唤一把被海洋祝福的剑刃攻击敌人
+					该武器需要3个召唤栏才能使用，但不消耗召唤栏
+					手持该武器时，若武器已经被召唤，按住左键将允许使用光标手动操控剑刃攻击
+					此外，根据该武器速度的不同，会增加或减少至多150%的伤害，每个召唤栏会为该武器提高2%暴击率
+					此武器的暴击会造成[c/4A91FF:断流]2秒，并给予玩家4秒迅捷
+					[c/4A91FF:断流]使召唤物下一次对目标造成的伤害提高30%（该武器也可以触发该效果）
+					手动操控剑刃时，按下武器技能键，会让武器进行回旋切割，并使目标陷入[c/4A91FF:断流]2秒（4秒冷却）
+					“利用海洋风暴的速度和力量保护它的主人”
+					'''
 			}
 
 			CosmoturgyStationItem: {
-				// DisplayName: Cosmoturgy Station
-				/* Tooltip:
+				DisplayName: 宙术站点
+				Tooltip:
 					'''
-					A mystical plinth utilized to upgrade Aspected Weapons with [c/D294FF:Weapon Memories]
-					Right click to interact (Interaction is canceled upon movement)
-					''' */
+					一个用于为星相武器刻印[c/D294FF:武器追忆]的神秘站点
+					点击右键与其进行交互（移动时会取消交互）
+					'''
 			}
 
 			CapedFeather: {
-				// DisplayName: Caped Feather
-				/* Tooltip:
+				DisplayName: 披风羽毛
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects: 
-					Gain 8% increased damage while airborne
-					''' */
-				// TooltipAttached: Gain 8% increased damage while airborne
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					处于空中时，增加8%伤害
+					'''
+				TooltipAttached: 处于空中时，增加8%伤害
 			}
 
 			KnightsShovelhead: {
-				// DisplayName: Knight's Shovelhead
-				/* Tooltip:
+				DisplayName: 骑士的锹头
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects: 
-					Striking foes launches you airborne
-					'Strike the earth!'
-					''' */
-				// TooltipAttached: Striking foes launches you airborne
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					攻击敌人会将你发射至空中
+					“击打泥土！”
+					'''
+				TooltipAttached: 攻击敌人会将你发射至空中
 			}
 
 			ResonanceGem: {
-				// DisplayName: Resonance Gem
-				/* Tooltip:
+				DisplayName: 共振宝石
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects: 
-					Lowers the cooldown of all other Memory effects by 25%
-					''' */
-				// TooltipAttached: Lowers the cooldown of all other Memory effects by 25%
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					降低所有其他追忆效果25%的冷却时间
+					'''
+				TooltipAttached: 降低所有其他追忆效果25%的冷却时间
 			}
 
 			AetherBarrel: {
-				// DisplayName: Aether Barrel
-				/* Tooltip:
+				DisplayName: 以太弹巢
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					Gain 2 [c/9DE0DC:Powder Charges] after using a consumable healing item (Max 2)
-					On a critical strike, expend a [c/9DE0DC:Powder Charge] to cause an explosion, dealing damage again in a wide area
-					''' */
-				/* TooltipAttached:
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					使用可消耗的治疗物品会获得2层[c/9DE0DC:火药充能]（最多2层）
+					在产生暴击时，消耗一层[c/9DE0DC:火药充能]造成一次爆炸，在大范围内再次造成伤害
 					'''
-					Gain 2 [c/9DE0DC:Powder Charges] after using a consumable healing item (Max 2)
-					On a critical strike, expend a [c/9DE0DC:Powder Charge] to cause an explosion, dealing damage again in a wide area
-					''' */
+				TooltipAttached:
+					'''
+					使用可消耗的治疗物品会获得2层[c/9DE0DC:火药充能]（最多2层）
+					在产生暴击时，消耗一层[c/9DE0DC:火药充能]造成一次爆炸，在大范围内再次造成伤害
+					'''
 			}
 
 			ChoiceGlasses: {
-				// DisplayName: Choice Glasses
-				/* Tooltip:
+				DisplayName: 精选眼镜
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					Gain 50% increased damage, but using this weapon prevents any other items from being used for 60 seconds
-					''' */
-				// TooltipAttached: Gain 50% increased damage, but using this weapon prevents any other items from being used for 60 seconds
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					增加50%伤害，但是使用该武器会在60秒内禁止你使用任何其他物品
+					'''
+				TooltipAttached: 增加50%伤害，但是使用该武器会在60秒内禁止你使用任何其他物品
 			}
 
 			NookMilesTicket: {
-				// DisplayName: Nook Miles Ticket
-				/* Tooltip:
+				DisplayName: Nook里程票
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					Increase the potency of other Memory damage bonuses by 8%
-					''' */
-				// TooltipAttached: Increase the potency of other Memory damage bonuses by 8%
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					使其他武器追忆造成的伤害提高8%
+					'''
+				TooltipAttached: 使其他武器追忆造成的伤害提高8%
 			}
 
 			RedSpiderLily: {
-				// DisplayName: Red Spider Lily
-				/* Tooltip:
+				DisplayName: 红蜘蛛百合
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					When health is reduced through any means, gain one stack of [c/BD3535:Accursed Edge] (Max 5) (2 second fixed cooldown)
-					At max stacks of [c/BD3535:Accursed Edge], the next attack consumes all stacks, dealing 40% more damage while healing 20% Max HP
-					''' */
-				/* TooltipAttached:
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					生命值通过任意方式降低时，获得一层[c/BD3535:诅咒之锋]（最多5层）（固定2秒冷却）
+					在[c/BD3535:诅咒之锋]层数最大时，下一次攻击将消耗所有[c/BD3535:诅咒之锋]层数，使这次伤害增加40%，并治疗你最大生命值的20%
 					'''
-					When health is reduced through any means, gain one stack of [c/BD3535:Accursed Edge] (Max 5) (2 second fixed cooldown)
-					At max stacks of [c/BD3535:Accursed Edge], the next attack consumes all stacks, dealing 40% more damage while healing 20% Max HP
-					''' */
+				TooltipAttached:
+					'''
+					生命值通过任意方式降低时，获得一层[c/BD3535:诅咒之锋]（最多5层）（固定2秒冷却）
+					在[c/BD3535:诅咒之锋]层数最大时，下一次攻击将消耗所有[c/BD3535:诅咒之锋]层数，使这次伤害增加40%，并治疗你最大生命值的20%
+					'''
 			}
 
 			TarotCard: {
-				// DisplayName: Tarot Card
-				/* Tooltip:
+				DisplayName: 塔罗牌
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					Gain 8% increased damage while fulfilling a specific condition (condition is randomly assigned per weapon)
-					This boost is doubled to 16% when below half health or when under the effect of [c/FF7DEF:Fate Divined]
-					''' */
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					在满足特定条件时增加8%伤害（每个武器的条件是随机的）
+					在生命值低于一半或受到[c/FF7DEF:命运所指]影响时，该加成提升至16%
+					'''
 
 				TooltipAttached: {
-					// Fool: The Fool: Gain 8% increased damage (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
-					// Magician: The Magician: Gain 8% increased damage at max Mana (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
-					// Priestess: The Priestess: Gain 8% increased damage in a Town (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
-					// Empress: The Empress: Gain 8% increased damage while feminine (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
-					// Emperor: The Emperor: Gain 8% increased damage while masculine (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
-					// Heirophant: The Heirophant: Gain 8% increased damage at Max HP (increased to 16% under the effect of [c/FF7DEF:Fate Divined])
-					// Lovers: The Lovers: Gain 8% increased damage when in Multiplayer (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
-					// Chariot: The Chariot: Gain 8% increased damage when moving quickly horizontally (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
-					// Justice: Justice: Gain 8% increased damage during an invasion (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
-					// Hermit: The Hermit: Gain 8% increased damage when in Singleplayer (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
-					// Fortune: Fortune: Gain 8% increased damage randomly (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
-					// Strength: Strength: Gain 8% increased damage if this weapon has strong knockback or higher (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
-					// HangedMan: The Hanged Man: Gain 8% increased damage when below 75% HP (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
-					// Death: Death: Gain 16% increased damage (decreased to 8% when below half health)
-					// Temperance: Temperance: Gain 8% increased damage when Well Fed (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
-					// Devil: The Devil: Gain 8% increased damage in the Underworld (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
-					// Tower: Tower: Gain 8% increased damage in the Dungeon (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
-					// Star: Star: Gain 8% increased damage in space (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
-					// Moon: Moon: Gain 8% increased damage during the night (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
-					// Sun: Sun: Gain 8% increased damage during the day (increased to 16% when below half health or under the effect of [c/FF7DEF:Fate Divined])
+					Fool: 0·愚者：增加8%伤害（在生命值低于一半或受到[c/FF7DEF:命运所指]影响时增加至16%）
+					Magician: I·魔术师：当前魔力值达到最大值时，增加8%伤害（在生命值低于一半或受到[c/FF7DEF:命运所指]影响时增加至16%）
+					Priestess: II·女祭司：在城镇中增加8%伤害（在生命值低于一半或受到[c/FF7DEF:命运所指]影响时增加至16%）
+					Empress: III·女皇：女性化时增加8%伤害（在生命值低于一半或受到[c/FF7DEF:命运所指]影响时增加至16%）
+					Emperor: IV·皇帝：男性化时增加8%伤害（在生命值低于一半或受到[c/FF7DEF:命运所指]影响时增加至16%）
+					Heirophant: V·教皇：处于最大生命值时增加8%伤害（在受到[c/FF7DEF:命运所指]影响时增加至16%）
+					Lovers: VI·恋人：多人模式下增加8%伤害（在生命值低于一半或受到[c/FF7DEF:命运所指]影响时增加至16%）
+					Chariot: VII·战车：快速水平移动时增加8%伤害（在生命值低于一半或受到[c/FF7DEF:命运所指]影响时增加至16%）
+					Justice: XI·正义：入侵事件时增加8%伤害（在生命值低于一半或受到[c/FF7DEF:命运所指]影响时增加至16%）
+					Hermit: IX·隐者：单人模式下增加8%伤害（在生命值低于一半或受到[c/FF7DEF:命运所指]影响时增加至16%）
+					Fortune: X·命运之轮：随机增加8%伤害（在生命值低于一半或受到[c/FF7DEF:命运所指]影响时增加至16%）
+					Strength: VIII·力量：若该武器有强击退或者更高击退效果，增加8%伤害（在生命值低于一半或受到[c/FF7DEF:命运所指]影响时增加至16%）
+					HangedMan: XII·倒吊人：当前生命值低于75%时，增加8%伤害（在生命值低于一半或受到[c/FF7DEF:命运所指]影响时增加至16%）
+					Death: XIII·死神：增加16%伤害（在生命值低于一半时降低至8%）
+					Temperance: XIV·节制：饱腹状态下，增加8%伤害（在生命值低于一半或受到[c/FF7DEF:命运所指]影响时增加至16%）
+					Devil: XV·恶魔：在地狱中增加8%伤害（在生命值低于一半或受到[c/FF7DEF:命运所指]影响时增加至16%）
+					Tower: XVI·塔：在地牢中增加8%伤害（在生命值低于一半或受到[c/FF7DEF:命运所指]影响时增加至16%）
+					Star: XVII·星星：在太空中增加8%伤害（在生命值低于一半或受到[c/FF7DEF:命运所指]影响时增加至16%）
+					Moon: XVIII·月亮：在晚上增加8%伤害（在生命值低于一半或受到[c/FF7DEF:命运所指]影响时增加至16%）
+					Sun: XIX·太阳：在白天增加8%伤害（在生命值低于一半或受到[c/FF7DEF:命运所指]影响时增加至16%）
 				}
 			}
 
 			ArgentumShard: {
-				// DisplayName: Fragment of Lost Memory
-				/* Tooltip:
+				DisplayName: 遗失的记忆片段
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					Gain 9% increased damage per 80 Mana
-					''' */
-				// TooltipAttached: Gain 9% increased damage per 80 Mana
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					每80点魔力值为你增加9%伤害
+					'''
+				TooltipAttached: 每80点魔力值为你增加9%伤害
 			}
 
 			NetheriteBar: {
-				// DisplayName: Bastion Ingot
-				/* Tooltip:
+				DisplayName: 下界合金锭
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					Gain 4 defense while holding this weapon
-					Press the Weapon Memory Key to instantly gain 20 defense for 2 seconds (18 second cooldown)
-					'Those were the days'
-					''' */
-				/* TooltipAttached:
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					手持该武器时获得4点防御
+					按下武器追忆键，瞬间获得20点防御，持续2秒（18秒冷却）
+					“深藏不露”
 					'''
-					Gain 4 defense while holding this weapon
-					Press the Weapon Memory Key to instantly gain 20 defense for 2 seconds (18 second cooldown)
-					''' */
+				TooltipAttached:
+					'''
+					手持该武器时获得4点防御
+					按下武器追忆键，瞬间获得20点防御，持续2秒（18秒冷却）
+					'''
 			}
 
 			PearlescentOrb: {
-				// DisplayName: Pearlescent Orb
-				/* Tooltip:
+				DisplayName: 末影珍珠
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					Press the Weapon Memory Key to instantly teleport to your cursor (40 second cooldown)
-					'The end?'
-					''' */
-				// TooltipAttached: Press the Weapon Memory Key to instantly teleport to your cursor (40 second cooldown)
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					按下武器追忆键，瞬移至你的光标处（40秒冷却）
+					“结束了？”
+					'''
+				TooltipAttached: 按下武器追忆键，瞬移至你的光标处（40秒冷却）
 			}
 
 			PhantomMask: {
-				// DisplayName: Phantom Mask
-				/* Tooltip:
+				DisplayName: 幻影面具
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					If you have exactly one minion slot used, gain 7% increased damage per unused minion slot
-					'Checkmate'
-					''' */
-				// TooltipAttached: If you have exactly one minion slot used, gain 7% increased damage per unused minion slot
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					如果你正好只使用了一个召唤栏，每一个未使用的空闲召唤栏为你增加7%的伤害
+					“将军”
+					'''
+				TooltipAttached: 如果你正好只使用了一个召唤栏，每一个未使用的空闲召唤栏为你增加7%的伤害
 			}
 
 			PrimeCut: {
-				// DisplayName: Prime Cut
-				/* Tooltip:
+				DisplayName: 完美分割
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					Gain 4% increased damage while Well Fed
-					''' */
-				// TooltipAttached: Gain 4% increased damage while Well Fed
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					饱腹时增加4%伤害
+					'''
+				TooltipAttached: 饱腹时增加4%伤害
 			}
 
 			DekuNut: {
-				// DisplayName: Deku Nut
-				/* Tooltip:
+				DisplayName: Deku坚果
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					If Mana is consumed through use of the weapon's left-click attack, restore 1 HP (3 use cooldown)
-					''' */
-				// TooltipAttached: If Mana is consumed through use of the weapon's left-click attack, restore 1 HP on use (3 use cooldown)
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					若该武器的左键攻击消耗魔力值，恢复1点生命值（3秒冷却）
+					'''
+				TooltipAttached: 若该武器的左键攻击消耗魔力值，恢复1点生命值（3秒冷却）
 			}
 
 			ElectricGuitarPick: {
-				// DisplayName: Electric Guitar Pick
-				/* Tooltip:
+				DisplayName: “电”吉他拨片
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					Striking foes unleashes up to 3 lightning arcs that deal 1/8th damage in a small area (2 second cooldown)
-					'...and his music was...'
-					''' */
-				// TooltipAttached: Striking foes unleashes up to 3 lightning arcs that deal 1/8th damage in a small area (2 second cooldown)
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					攻击敌人会释放最多3道电弧，在小范围内造成1/8的伤害（2秒冷却）
+					“……他的音乐是……”
+					'''
+				TooltipAttached: 攻击敌人会释放最多3道电弧，在小范围内造成1/8的伤害（2秒冷却）
 			}
 
 			MatterManipulator: {
-				// DisplayName: Matter Modulator
-				/* Tooltip:
+				DisplayName: 物质枪
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					Gain the Mining buff for 30 seconds when defeating an enemy
-					'Rock and stone!'
-					''' */
-				// TooltipAttached: Gain the Mining buff for 30 seconds when defeating an enemy
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					击败敌人后获得30秒采矿增益
+					“Rock and stone！挖到手软，赚到盆满！”
+					'''
+				TooltipAttached: 击败敌人后获得30秒采矿增益
 			}
 
 			PowerMoon: {
-				// DisplayName: Power Moon
-				/* Tooltip:
+				DisplayName: 力量之月
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					If this weapon has a right-click ability, it now charges Stellar Nova Energy by 4 when used (4 second cooldown)
-					''' */
-				// TooltipAttached: If this weapon has a right-click ability, it now charges Stellar Nova Energy by 4 when used (4 second cooldown)
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					如果该武器有右键技能，则使用时会充能4点天体新星能量（4秒冷却）
+					'''
+				TooltipAttached: 如果该武器有右键技能，则使用时会充能4点天体新星能量（4秒冷却）
 			}
 
 			Rageblade: {
-				// DisplayName: Furious Dirk
-				/* Tooltip:
+				DisplayName: 狂怒短剑
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					Gain 0.1% increased attack speed when striking foes, capped at 20% increased attack speed
-					Resets outside of combat
-					''' */
-				/* TooltipAttached:
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					攻击敌人时增加0.1%攻击速度，最多增加20%攻击速度
+					脱离战斗后加成重置
 					'''
-					Gain 0.1% increased attack speed when striking foes, capped at 20% increased attack speed
-					Resets outside of combat
-					''' */
+				TooltipAttached:
+					'''
+					攻击敌人时增加0.1%攻击速度，最多增加20%攻击速度
+					脱离战斗后加成重置
+					'''
 			}
 
 			YoumuHilt: {
-				// DisplayName: Ghostly Hilt
-				/* Tooltip:
+				DisplayName: 幽灵剑柄
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					Press the Weapon Memory Key to gain 40% increased movement speed for 4 seconds (30 second cooldown)
-					''' */
-				// TooltipAttached: Press the Weapon Memory Key to gain 40% increased movement speed for 4 seconds (30 second cooldown)
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					按下武器追忆键，移动速度提高40%，持续4秒（30秒冷却）
+					'''
+				TooltipAttached: 按下武器追忆键，移动速度提高40%，持续4秒（30秒冷却）
 			}
 
 			BottledChaos: {
-				// DisplayName: Bottled Chaos
-				/* Tooltip:
+				DisplayName: 瓶装混乱
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					Damage variance is tripled
-					''' */
-				// TooltipAttached: Damage variance is tripled
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					武器伤害浮动变为原来的3倍
+					'''
+				TooltipAttached: 武器伤害浮动变为原来的3倍
 			}
 
 			GuppyHead: {
 				DisplayName: 嗝屁猫
 				Tooltip:
 					'''
-					击杀敌人或者受到伤害后，在你的位置生成3只苍蝇
-					苍蝇会攻击附近的敌人，并造成相当于你最大生命值3%的伤害
-					每3秒只会生效一次
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					按下武器追忆键放出3只苍蝇攻击敌人，每只苍蝇造成1/3武器伤害（20秒冷却）
+					每产生一次暴击冷却时间减少1秒
 					'''
-				/* TooltipAttached:
+				TooltipAttached:
 					'''
-					Press the Weapon Memory Key to launch 3 flies that attack foes, dealing 1/3 weapon damage each (20 second cooldown)
-					Cooldown is reduced by 1 second for every critical strike
-					''' */
+					按下武器追忆键放出3只苍蝇攻击敌人，每只苍蝇造成1/3武器伤害（20秒冷却）
+					每产生一次暴击冷却时间减少1秒
+					'''
 			}
 
 			MagicSigil: {
-				// DisplayName: Spellcaster Sigil
-				/* Tooltip:
+				DisplayName: 施法者印记
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					If aspected to Magic damage, gain 12% increased damage
-					''' */
-				// TooltipAttached: If aspected to Magic damage, gain 12% increased damage
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					若该武器造成魔法伤害，则增加12%伤害
+					'''
+				TooltipAttached: 若该武器造成魔法伤害，则增加12%伤害
 			}
 
 			MeleeSigil: {
-				// DisplayName: Gladiator Sigil
-				/* Tooltip:
+				DisplayName: 角斗士印记
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					If aspected to Melee damage, gain 12% increased damage
-					''' */
-				// TooltipAttached: If aspected to Melee damage, gain 12% increased damage
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					若该武器造成近战伤害，则增加12%伤害
+					'''
+				TooltipAttached: 若该武器造成近战伤害，则增加12%伤害
 			}
 
 			Pawn: {
-				// DisplayName: Ferrum Pawn
-				/* Tooltip:
+				DisplayName: 铁质卒子
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					Defeating an enemy grants Endurance and Ironskin for 12 seconds
-					''' */
-				// TooltipAttached: Defeating an enemy grants Endurance and Ironskin for 12 seconds
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					击败敌人获得12秒的耐力和铁皮
+					'''
+				TooltipAttached: 击败敌人获得12秒的耐力和铁皮
 			}
 
 			RangedSigil: {
-				// DisplayName: Arbalest Sigil
-				/* Tooltip:
+				DisplayName: 劲弩印记
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					If aspected to Ranged damage, gain 12% increased damage
-					''' */
-				// TooltipAttached: If aspected to Ranged damage, gain 12% increased damage
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					若该武器造成远程伤害，则增加12%伤害
+					'''
+				TooltipAttached: 若该武器造成远程伤害，则增加12%伤害
 			}
 
 			SummonSigil: {
-				// DisplayName: Beastmaster Sigil
-				/* Tooltip:
+				DisplayName: 兽王印记
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					If aspected to Summon damage, gain 12% increased damage
-					''' */
-				// TooltipAttached: If aspected to Summon damage, gain 12% increased damage
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					若该武器造成召唤伤害，则增加12%伤害
+					'''
+				TooltipAttached: 若该武器造成召唤伤害，则增加12%伤害
 			}
 
 			Trumpet: {
-				// DisplayName: Brass Bugle
-				/* Tooltip:
+				DisplayName: 铜号
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					Using this weapon makes trumpet noises
-					''' */
-				// TooltipAttached: Using this weapon makes trumpet noises
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					使用该武器会发出小号的噪声
+					'''
+				TooltipAttached: 使用该武器会发出小号的噪声
 			}
 
 			MalsaineDraught: {
-				/* Tooltip:
+				Tooltip:
 					'''
-					This concoction reeks with chaos
-					[c/F1AF42:Summons Thespian, the Act of Alchemy] (Night only)
-					This boss is available early, but you may find it much too difficult
-					Prepare accordingly, and consider postponing this fight until you are stronger
-					Is not consumed upon use
-					''' */
-				// DisplayName: The Malsaine Draught
+					这种混合物散发出混沌的气味
+					[c/F1AF42:召唤 炼金术戏剧，狄斯比斯]（只能在晚上召唤）
+					你可能会过早的遇到该Boss，提前挑战可能会比较困难
+					考虑推迟这场战斗，并做好应对准备，直到你足以匹敌
+					不消耗
+					'''
+				DisplayName: 有害药剂
 			}
 
 			OriginInfinity: {
-				// DisplayName: Origin's Infinity
-				/* Tooltip:
+				DisplayName: 起源，无垠
+				Tooltip:
 					'''
-					[c/F56BC9:This weapon modifies your active Stellar Nova]
-					Attacks with this weapon grant Stellar Nova Energy upon striking foes
-					Holding this weapon changes the active Stellar Nova to [Infinity Blade]
-					When [Infinity Blade] is activated, cleave a wide area in front of you with an incredibly powerful attack after a short delay
-					This attack ignores all forms of invincibility, permanently shreds foe defense by 30%, and deals true damage while granting [Unlimited Sword] for 20 seconds
-					[Unlimited Sword] drastically amplifies this weapon's abilities
-					Attacks while under the effect of [Unlimited Sword] ignore all defense and have a 3% chance to instantly defeat non-boss enemies
-					Additionally, this weapon inherits 15% of the Stellar Nova's damage and critical strike chance
-					Right click to unleash [Tachyon Slash], a powerful multi-hit attack which extends the duration of [Unlimited Sword] upon landing critical strikes (6 second cooldown)
-					Press the Weapon Action Key to prematurely end [Unlimited Sword], refunding Stellar Nova energy depending on the time remaining
-					'We will seize our destiny!'
-					''' */
+					[c/F56BC9:该武器可以变更你的天体新星]
+					使用该武器进行攻击时，可以获得天体新星能量
+					持有该武器会将天体新星变更为[无尽之剑]
+					释放[无尽之剑]时，在短暂的延迟后，向前方的巨大范围发动一次十分强力的攻击，劈开你面前的空间
+					本次攻击会忽略目标任何形式的无敌效果，永久摧毁敌人30%的防御力，并造成真实伤害，且给予你20秒[无垠之剑]增益
+					[无垠之剑]会极大幅度增强该武器的能力
+					[无垠之剑]生效时，该武器攻击无视护甲，且有3%概率立刻击杀非Boss敌人
+					此外，该武器还会继承15%天体新星伤害和暴击率
+					点击右键可以释放[超光子连斩]，释放时，进行多次强力攻击，且在暴击时延长[无垠之剑]的持续时间（6秒冷却）
+					按下武器技能键会提前结束[无垠之剑]状态，并根据剩余时间返还一定比例的天体新星能量
+					“我们掌握了自己的命运！”
+					'''
 			}
 
 			RebellionBloodArthur: {
-				// DisplayName: Clarent Rebellion
-				/* Tooltip:
+				DisplayName: 叛逆灾厄之魔剑
+				Tooltip:
 					'''
-					Attacks with this weapon cleave nearby foes and grants Rage for 8 seconds on hit
-					Holding this weapon amplifies the effects of Rage, Endurance, and Ironskin by 50%
-					Dealing or taking damage grants stacks of [c/D81919:Rebellion] (Rebellion is lost out of combat)
-					At certain thresholds of [c/D81919:Rebellion], manifest portions of the [c/EC2B65:Crimson Armor], gaining 5 defense per armor
-					Once [c/D81919:Rebellion] is at maximum and all portions of the [c/EC2B65:Crimson Armor] are equipped, increase defense further and gain access to [c/8D0404:Clarent Blood Arthur]
-					Additionally, gain a 3rd combo attack and striking foes now burst into red lightning (3rd combo strike empowers lightning)
-					Right click to unleash [c/8D0404:Clarent Blood Arthur], dealing 200% damage in a powerful burst towards your cursor after a delay and is a guaranteed critical strike against bosses (1 minute cooldown)
-					''' */
+					使用该武器时会向前挥砍，切割附近的敌人，并在命中时获得8秒怒气增益
+					手持该武器时，使怒气，暴怒和耐力增益的效果提升50%
+					造成或受到伤害时将为你叠加[c/D81919:叛逆]（叛逆会在脱离战斗后逐渐消失）
+					随着[c/D81919:叛逆]的叠加，身体会逐渐解放[c/EC2B65:猩红战甲]的部位，每个护甲部位为你提供5点防御力
+					一旦[c/D81919:叛逆]叠加至最大值，且解放全套[c/EC2B65:猩红战甲]，就会进一步增加防御，且可以使用[c/8D0404:对吾华丽父王的叛逆]
+					此外，现在武器攻击连段中会出现第三段攻击，这次攻击会释放多道猩红闪电攻击敌人
+					点击右键释放[c/8D0404:对吾华丽父王的叛逆]，在短暂延迟后对你光标处位置的敌人造成200%的伤害，且对Boss必定暴击（1分钟冷却）
+					'''
 			}
 
 			SoliloquyOfSovereignSeas: {
-				// DisplayName: Soliloquy Of Sovereign Seas
-				/* Tooltip:
+				DisplayName: 静水流涌之辉
+				Tooltip:
 					'''
-					[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from both Magic and Summon damage]
-					Gain up to 30 bonus damage based on percentage of HP above 60% Max HP
-					Press the Weapon Action Key to swap [c/A9D5F0:Arkhe Alignment] between [c/F0DFA9:Pneuma] and [c/6C5BE8:Ousia], changing this weapon's abilities
-					While attuned to [c/F0DFA9:Pneuma], right click to summon the [c/5BBFE8:Singer of Seas], consuming 1 minion slot (Only one [c/5BBFE8:Singer of Seas] can be summoned at a time)
-					The [c/5BBFE8:Singer of Seas] will heal all allies in a wide radius for 5% of this weapon's damage every 5 seconds
-					While attuned to [c/6C5BE8:Ousia], right click to summon 3 [c/5BBFE8:Salon Attendants], consuming 1 minion slot (Only one group of [c/5BBFE8:Salon Attendants] can be summoned at a time)
-					The [c/5BBFE8:Salon Attendants] automatically attack nearby foes with homing bolts
-					Gain Waterwalking while summons are present
-					Summons will disappear when swapping [c/A9D5F0:Arkhe Alignment]
-					'Let the world come alive!'
-					''' */
+					[c/8AC1F1:该武器有独特的伤害类型，会继承魔法和召唤的伤害加成]
+					当前生命值超过60%时，增加30点基础伤害
+					按下武器技能键切换你的[c/A9D5F0:始基力属性]，可在[c/F0DFA9:芒性]和[c/6C5BE8:荒性]之间切换，并改变武器属性
+					处于[c/F0DFA9:芒性]状态下时，点击右键消耗1个召唤栏召唤1位[c/5BBFE8:众水的歌者]（一次最多只能召唤1个[c/5BBFE8:众水的歌者]）
+					[c/5BBFE8:众水的歌者]每5秒会治疗范围内的所有友军当前武器伤害的5%
+					处于[c/6C5BE8:荒性]状态下时，点击右键消耗1个召唤栏召唤3位[c/5BBFE8:沙龙成员]（一次最多只能召唤1组[c/5BBFE8:沙龙成员]）
+					[c/5BBFE8:沙龙成员]会自动攻击附近的敌人
+					进行召唤后，获得水上漂增益
+					在切换[c/A9D5F0:始基力属性]时，召唤物会消失
+					“永世领唱，无尽圆舞！”
+					'''
 			}
 
 			DevotedHavoc: {
-				// DisplayName: Devoted Havoc
-				/* Tooltip:
+				DisplayName: 专注哈沃克
+				Tooltip:
 					'''
-					This weapon fires faster over time
-					Press the Weapon Action Key to swap between Grenade, Shuriken, and Molotov Cocktail
-					Right click to consume the selected ordinance (4 second cooldown)
-					When thrown with this weapon's right click ability, certain throwable items are empowered and inherit this weapon's damage
-					Grenades are upgraded into [c/FFB969:High-Velocity Grenades], dealing 300% damage
-					Shurikens are upgraded into [c/91CED3:Energy Stars], stunning non-boss foes struck for 1 second
-					Molotov Cocktails are upgraded into [c/FF5740:Thermal Flares], spawning more fire in a condensed area
-					''' */
+					该武器射速会越来越快
+					按下武器技能键让右键技能在投掷高爆手雷/电弧星/铝热剂手雷之间切换
+					点击右键消耗手榴弹/手里剑/莫洛托夫鸡尾酒来投掷对应投射物（4秒冷却）
+					使用该武器右键进行投掷时，投射物会被赋予特殊能力并可继承该武器的伤害
+					手榴弹升级为[c/FFB969:高爆手雷]，造成300%的伤害
+					手里剑升级为[c/91CED3:电弧星]，击晕击中的非Boss敌人1秒
+					莫洛托夫鸡尾酒升级为[c/FF5740:铝热剂手雷]，在一片密集的区域产生更多火焰
+					'''
 			}
 
 			RebellionBody: {
-				// DisplayName: Rebellion Body
-				// Tooltip: ""
+				DisplayName: 叛逆胸甲
+				Tooltip: ""
 			}
 
 			RebellionHead: {
-				// DisplayName: Rebellion Head
-				// Tooltip: ""
+				DisplayName: 叛逆头盔
+				Tooltip: ""
 			}
 
 			RebellionLegs: {
-				// DisplayName: Rebellion Legs
-				// Tooltip: ""
+				DisplayName: 叛逆护腿
+				Tooltip: ""
 			}
 
 			ThespianBossBag: {
-				// Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
-				// DisplayName: Treasure Bag (Thespian, the Act of Alchemy)
+				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
+				DisplayName: 宝藏袋（炼金术戏剧，狄斯比斯）
 			}
 
 			ThespianBossRelicItem: {
-				// Tooltip: ""
-				// DisplayName: Thespian Relic
+				Tooltip: ""
+				DisplayName: 狄斯比斯圣物
 			}
 
 			EssenceOfDancingSeas: {
-				// DisplayName: Essence Of Dancing Seas
-				/* Tooltip:
+				DisplayName: 舞动海洋之精华
+				Tooltip:
 					'''
-					Obtained after defeating Thespian, the Act of Alchemy
-					A gift from your Starfarer
-					Utilized in the creation of 'Wavedancer' (Summon)
-					''' */
+					击败 炼金术戏剧，狄斯比斯 后获得
+					你的星海旅者给予的礼物
+					用于创造“波浪舞者”（召唤）
+					'''
 			}
 
 			EssenceOfEnergy: {
-				// DisplayName: Essence Of Energy
-				/* Tooltip:
+				DisplayName: 能量之精华
+				Tooltip:
 					'''
-					Obtained after defeating Thespian, the Act of Alchemy
-					A gift from your Starfarer
-					Utilized in the creation of 'Devoted Havoc' (Ranged)
-					''' */
+					击败 炼金术戏剧，狄斯比斯 后获得
+					你的星海旅者给予的礼物
+					用于创造“专注哈沃克”（远程）
+					'''
 			}
 
 			EssenceOfFirepower: {
-				// DisplayName: Essence Of Firepower
-				/* Tooltip:
+				DisplayName: 火力之精华
+				Tooltip:
 					'''
-					Obtained after defeating Lunatic Cultist
-					A gift from your Starfarer
-					Utilized in the creation of 'Gund-bit Siege' (Magic)
-					''' */
+					击败 拜月教邪教徒 后获得
+					你的星海旅者给予的礼物
+					用于创造“GUND-BIT围攻”（魔法）
+					'''
 			}
 
 			EssenceOfHydro: {
-				// DisplayName: Essence Of Hydro
-				/* Tooltip:
+				DisplayName: 纯水之精华
+				Tooltip:
 					'''
-					Obtained after defeating Thespian, the Act of Alchemy
-					A gift from your Starfarer
-					Utilized in the creation of 'Soliloquy of Sovereign Seas' (Magic/Summon)
-					''' */
+					击败 炼金术戏剧，狄斯比斯 后获得
+					你的星海旅者给予的礼物
+					用于创造“静水流涌之辉”（魔法/召唤）
+					'''
 			}
 
 			EssenceOfKingslaying: {
-				// DisplayName: Essence Of Kingslaying
-				/* Tooltip:
+				DisplayName: 弑王之精华
+				Tooltip:
 					'''
-					Obtained after defeating Nalhaun, the Burnished King
-					A gift from your Starfarer
-					Utilized in the creation of 'Clarent Rebellion' (Melee)
-					''' */
+					击败 复光之君，纳尔赫恩 后获得
+					你的星海旅者给予的礼物
+					用于创造“叛逆灾厄之魔剑”（近战）
+					'''
 			}
 
 			BlackLightbulb: {
-				// DisplayName: Black Lightbulb
-				/* Tooltip:
+				DisplayName: 黑光灯泡
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					Critical strikes have a 14% chance to instantly execute non-boss enemies
-					'Do you remember?'
-					''' */
-				// TooltipAttached: Critical strikes have a 14% chance to instantly execute non-boss enemies
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					暴击有14%的几率杀死非Boss敌人
+					“你还记得吗？”
+					'''
+				TooltipAttached: 暴击有14%的几率杀死非Boss敌人
 			}
 
 			ChronalDeccelerator: {
-				// DisplayName: Chronal Decelerator
-				/* Tooltip:
+				DisplayName: 时空减速器
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					Increases projectile velocity dramatically
-					''' */
-				// TooltipAttached: Increases projectile velocity dramatically
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					显著提高弹幕速度
+					'''
+				TooltipAttached: 显著提高弹幕速度
 			}
 
 			DescenderGemstone: {
-				// DisplayName: Descender's Gemstone
-				/* Tooltip:
+				DisplayName: 降神宝石
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					Gain 0.5% critical strike chance every time an enemy is struck with a non-critical strike (Reset upon landing a critical strike)
-					''' */
-				// TooltipAttached: Gain 0.5% critical strike chance every time an enemy is struck with a non-critical strike (Reset upon landing a critical strike)
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					每次敌人被未暴击伤害命中时，使你获得0.5%暴击率（暴击后重置）
+					'''
+				TooltipAttached: 每次敌人被未暴击伤害命中时，使你获得0.5%暴击率（暴击后重置）
 			}
 
 			MercenaryAuracite: {
-				// DisplayName: Mercenary's Auracite
-				/* Tooltip:
+				DisplayName: 雇佣兵的圣石
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					Deal 30% increased damage against Fighter enemies and negate weapon knockback
-					'The Amethyst's power source'
-					''' */
-				// TooltipAttached: Deal 30% increased damage against Fighter enemies and negate weapon knockback
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					对敌方战士敌人造成30%额外伤害，取消该武器的击退效果
+					紫水晶士兵们的能量来源
+					'''
+				TooltipAttached: 对敌方战士敌人造成30%额外伤害，取消该武器的击退效果
 			}
 
 			MindflayerWorm: {
-				// DisplayName: Mindflayer Worm
-				/* Tooltip:
+				DisplayName: 夺心魔蝌蚪
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					Press the Weapon Memory Key to stun all nearby foes for 3 seconds (40 second cooldown)
-					Enemies have a 20% chance to resist the stun and bosses are not affected
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					按下武器追忆键，击晕附近所有敌人3秒（40秒冷却）
+					敌人有20%的概率豁免眩晕，Boss不受眩晕影响
 					'Authority'
-					''' */
-				/* TooltipAttached:
 					'''
-					Press the Weapon Memory Key to stun all nearby foes for 3 seconds (40 second cooldown)
-					Enemies have a 20% chance to resist the stun and bosses are not affected
-					''' */
+				TooltipAttached:
+					'''
+					按下武器追忆键，击晕附近所有敌人3秒（40秒冷却）
+					敌人有20%的概率豁免眩晕，Boss不受眩晕影响
+					'''
 			}
 
 			MonsterTooth: {
-				// DisplayName: Monster Tooth
-				/* Tooltip:
+				DisplayName: 怪物的牙
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					Defeating foes has a small chance of dropping an extra heart
-					''' */
-				// TooltipAttached: Defeating foes has a small chance of dropping an extra heart
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					击败敌人有小概率获得额外的红心
+					'''
+				TooltipAttached: 击败敌人有小概率获得额外的红心
 			}
 
 			OnyxJackal: {
-				// DisplayName: Onyx Jackal
-				/* Tooltip:
+				DisplayName: 缟玛瑙豺狼
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					Minions now target foes struck by this weapon
-					Non-minion attacks gain 5 Summon Tag Damage 
-					''' */
-				/* TooltipAttached:
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					召唤物现在会攻击被该武器命中的敌人
+					非召唤物攻击会获得5点召唤标记伤害
 					'''
-					Minions now target foes struck by this weapon
-					Non-minion attacks gain 5 Summon Tag Damage 
-					''' */
+				TooltipAttached:
+					'''
+					召唤物现在会攻击被该武器命中的敌人
+					非召唤物攻击会获得5点召唤标记伤害
+					'''
 			}
 
 			RuinedCrown: {
-				// DisplayName: Ruined Crown
-				/* Tooltip:
+				DisplayName: 破败王冠
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					If this weapon has a right-click ability, it now grants the buff [c/6ECBA5:Ruined King's Blade] for 2 seconds on use (10 second cooldown)
-					[c/6ECBA5:Ruined King's Blade] grants 15% increased damage and heal 20% of damage dealt on the next hit
-					'You matter so little!'
-					''' */
-				/* TooltipAttached:
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					如果该武器有右键技能，则在使用技能后获得2秒的的[c/6ECBA5:破败王剑]增益（10秒冷却）
+					[c/6ECBA5:破败王剑]增益存在下，造成的下一次伤害增加15%，并具有20%的生命吸取
+					“痛！太痛了！”
 					'''
-					If this weapon has a right-click ability, it now grants the buff [c/6ECBA5:Ruined King's Blade] for 2 seconds on use (10 second cooldown)
-					[c/6ECBA5:Ruined King's Blade] grants 15% increased damage and heal 20% of damage dealt on the next hit
-					''' */
+				TooltipAttached:
+					'''
+					如果该武器有右键技能，则在使用技能后获得2秒的的[c/6ECBA5:破败王剑]增益（10秒冷却）
+					[c/6ECBA5:破败王剑]增益存在下，造成的下一次伤害增加15%，并具有20%的生命吸取
+					'''
 			}
 
 			SimulacraShifter: {
-				// DisplayName: Simulacra Shifter
-				/* Tooltip:
+				DisplayName: 相位移动器
+				Tooltip:
 					'''
-					[c/D294FF:Weapon Memory]
-					When Imprinted into a weapon, gain the following effects:
-					Press the Weapon Relic Key to become Invincible for 6 seconds, but you can no longer use this weapon while Invincible (2 minute cooldown)
-					''' */
-				// TooltipAttached: Press the Weapon Relic Key to become Invincible for 6 seconds, but you can no longer use this weapon while Invincible (2 minute cooldown)
+					[c/D294FF:武器追忆]
+					当刻印在武器上时，获得以下效果：
+					按下武器追忆键进入6秒无敌，无敌期间内无法使用该武器（2分钟冷却）
+					'''
+				TooltipAttached: 按下武器追忆键进入6秒无敌，无敌期间内无法使用该武器（2分钟冷却）
 			}
 
 			ChartTheCosmosMusicBox: {
-				// DisplayName: Chart The Cosmos Music Box
-				// Tooltip: ""
+				DisplayName: Chart The Cosmos音乐盒
+				Tooltip: TSA原创音乐
 			}
 
 			EvenStarsMustFallMusicBox: {
-				// DisplayName: Even Stars Must Fall Music Box
-				// Tooltip: ""
+				DisplayName: Even Stars Must Fall音乐盒
+				Tooltip: TSA原创音乐
 			}
 
 			LegendsYetUnspunMusicBox: {
-				// DisplayName: Legends Yet Unspun Music Box
-				// Tooltip: ""
+				DisplayName: Legends Yet Unspun音乐盒
+				Tooltip: TSA原创音乐
 			}
 
 			TsukiyomiBossRelicItem: {
-				// DisplayName: Tsukiyomi Boss Relic Item
-				// Tooltip: ""
+				DisplayName: 月读圣物
+				Tooltip: ""
 			}
 
 			TwoCrownBow: {
-				// DisplayName: Two-Crown Bow
-				/* Tooltip:
+				DisplayName: 二王弓
+				Tooltip:
 					'''
-					Holding this weapon grants [c/F3ADF4:Echo-String Rites], gaining a 1% chance to dodge attacks per debuff on attackers
-					Attacks with this weapon activate [c/C39AFE:Asteroid Jaeger], firing a barrage of stellar arrows that ignore terrain, dealing 4% bonus damage per debuff on target
-					[c/C39AFE:Asteroid Jaeger] additionally charges [c/E94DEC:Stellar Termination] when striking foes
-					Right click to activate [c/8E4DEC:Depravity], instantly firing a barrage of stellar arrows from the sky for 3 seconds while granting Swiftness for the same duration (20 second cooldown)
-					[c/8E4DEC:Depravity] deals 1/4th damage but inflicts random debuffs on opponents struck for 8 seconds (Does not charge [c/E94DEC:Stellar Termination]
-					Once [c/E94DEC:Stellar Termination] is charged, pressing the Weapon Action Key will consume the gauge and activate [c/E94DEC:Stellar Termination]
-					[c/E94DEC:Stellar Termination] fires a powerful barrage of energy towards your cursor after a short delay which extends debuff durations on foes by 2 seconds per hit (up to 20 seconds)
-					Additionally, grant [c/B6FADC:Merculight] to all nearby allies, increasing critical strike damage by 30% for 15 seconds
-					If Stellar Nova is fully charged, [c/B6FADC:Merculight] additionally grants 25% critical strike chance
-					Once [c/E94DEC:Stellar Termination] ends, all foes struck by [c/E94DEC:Stellar Termination] explode for 300% damage
-					''' */
+					手持该武器获得[c/F3ADF4:鸣弦之仪]，攻击者每有一层减益，你就获得1%闪避率
+					使用该武器进行攻击会释放[c/C39AFE:游星猎手]，发射一连串无视物块的箭矢，目标每有1层减益，就额外增加4%伤害
+					[c/C39AFE:游星猎手]释放时会持续为[c/E94DEC:繁星终结]充能
+					点击右键释放[c/8E4DEC:堕化]，立刻让一串箭矢从天而降，持续3秒，同时获得同样时间的敏捷增益
+					[c/8E4DEC:堕化]造成1/4伤害，且随机附加持续8秒的减益（不会为[c/E94DEC:繁星终结]充能）
+					一旦[c/E94DEC:繁星终结]充能完成，就可以按下武器动作键立刻释放[c/E94DEC:繁星终结]
+					[c/E94DEC:繁星终结]释放时，在短暂延迟之后，朝你光标处释放强大的能量光束，每段伤害将会延长目标身上存在的减益2秒
+					此外，给予附近队友[c/B6FADC:魔光]效果，使暴击伤害提高30%，持续15秒
+					若天体新星充能完成，则[c/B6FADC:魔光]还会使他们额外获得25%暴击率
+					[c/E94DEC:繁星终结]释放完毕时，所有被[c/E94DEC:繁星终结]命中过的敌人会受到一次爆炸，造成300%的伤害
+					'''
 			}
 
 			EssenceOfTheHuntress: {
-				// DisplayName: Essence Of The Huntress
-				/* Tooltip:
+				DisplayName: 魔眼猎人之精华
+				Tooltip:
 					'''
-					Obtained after defeating Lunatic Cultist
-					A gift from your Starfarer
-					Utilized in the creation of 'Two-Crown Bow' (Ranged)
-					''' */
+					击败 拜月教邪教徒 后获得
+					你的星海旅者给予的礼物
+					用于创造“二王弓”（远程）
+					'''
 			}
 
 			OrbitalExpresswayPlush: {
-				// DisplayName: Orbital Expressway Plush
-				/* Tooltip:
+				DisplayName: 轨道高速玩偶
+				Tooltip:
 					'''
-					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty]
-					Using this weapon marks a location based on your cursor (1 minute cooldown)
-					While cooldown is active, defense and attack are reduced by 5%
-					After 3 seconds, an orbital train will annihilate your marked location, dealing guaranteed critical damage to all foes caught in the crossfire
-					This attack ignores terrain and destroys projectiles it makes contact with
-					The first foe struck by this attack will additionally take 50% increased damage
-					Inherits 10% of the Stellar Nova's scaled base damage
-					'Cookie powered'
-					''' */
+					[c/F592BF:该武器不受星相武器切换伤害类型的伤害惩罚]
+					使用该武器会标记光标位置（1分钟冷却）
+					该武器冷却时，防御力和攻击力降低5%
+					3秒后，召唤轨道列车朝标记位置撞击，对沿途的目标造成足以致命的伤害
+					这次撞击无视物块且会摧毁沿途的弹幕
+					被此次撞击命中的第一个敌人受到50%额外伤害
+					会继承10%天体新星伤害
+					“曲奇驱动”
+					'''
 			}
 
 			EssenceOfMew: {
-				// DisplayName: Essence Of Mew
-				/* Tooltip:
+				DisplayName: 怪奇之精华
+				Tooltip:
 					'''
-					Obtained after defeating Queen Slime
-					A gift from your Starfarer
-					Utilized in the creation of 'Orbital Expressway Plush' (Melee/Magic/Summon/Ranged)
-					''' */
+					击败 史莱姆王后 后获得
+					你的星海旅者给予的礼物
+					用于创造“轨道高速玩偶”（近战/远程/魔法/召唤）
+					'''
 			}
 
 			CandiedSugarball: {
-				// DisplayName: Candied Sugar Ball
-				/* Tooltip:
+				DisplayName: 糖糖球
+				Tooltip:
 					'''
-					Use to summon a [Sweetened Monster], consuming 1 minion slot (Only one [Sweetened Monster] can be summoned at a time)
-					When a minion deals damage, the [Sweetened Monster] will follow-up with an attack (Cooldown varies per type)
-					Press the Weapon Action Key to cycle between each [Sweetened Monster] (Normal activation moves the [Sweetened Monster] to your cursor)
-					Each [Sweetened Monster] utilizes different attacks
-					[Charsugar]: Attacks with close-ranged fire blasts which inflict On Fire for 6 seconds on hit (2 second cooldown)
-					Friendly minions deal 10% more damage to foes inflicted with On Fire
-					[Sugartle]: Attacks with piercing long-ranged water beams (4 second cooldown)
-					If this attack would be empowered by summon tag damage, the attack becomes a critical strike
-					[Bulbasugar]: Acts like a sentry firing a spread of poisonous seeds, with a 20% chance of inflicting Poison for 12 seconds on hit (0.5 second cooldown)
-					If the foe is already inflicted with Poison, additionally inflict Venom for 6 seconds
-					''' */
+					点击右键消耗3个召唤栏召唤3个[糖可梦]（一次最多只能召唤1组[糖可梦]）
+					每个[糖可梦]都使用不同的攻击方式
+					[糖火龙]：使用近距离的喷射火焰攻击，有20%的概率在命中后造成12秒的燃烧
+					如果此次攻击命中了潮湿或者中毒的敌人，额外造成20%伤害
+					[糖尼龟]：使用远距离的高压水枪攻击，有20%的概率在命中后造成12秒的潮湿
+					如果此次攻击命中了着火或者中毒的敌人，会将其击晕2秒
+					[妙糖种子]：使用快速的种子炸弹攻击敌人，有20%的概率在命中后造成12秒的中毒
+					如果此次攻击命中了着火或者潮湿的敌人，则会朝目标施加12秒毒液
+					按下武器技能键，使所有[糖可梦]同时朝你光标处攻击，同时造成所有上述减益，持续6秒（40秒冷却）
+					“关注B站懿糖糖呀谢谢喵”
+					'''
 			}
 
 			StarphoenixFunnel: {
-				// DisplayName: Starphoenix Funnel
-				/* Tooltip:
+				DisplayName: 星之不死鸟浮游炮
+				Tooltip:
 					'''
-					2 summon tag damage
-					Summon tag damage scales with world progression
-					Attacks with this weapon travel incredibly fast and inflict Starblight for 4 seconds
-					Additionally, attacks inflict a stack of [c/F8FF8B:Elemental Surge] on hit
-					Right click to summon [c/FF5D93:Catalyst Keys] to assail foes with long-range energy bolts, ignoring 25% of foe's defense
-					[c/FF5D93:Catalyst Keys] inflict [c/F8FF8B:Elemental Surge] when attacking foes
-					At 6 stacks of [c/F8FF8B:Elemental Surge] the next application will instead burst all stacks, dealing bonus damage
-					Every time [c/F8FF8B:Elemental Surge] is removed in this manner, gain [c/F28C60:Alignment] (Up to 5)
-					Once [c/F28C60:Alignment] is at maximum, press the Weapon Action Key to transform the [c/FF5D93:Catalyst Keys] for 4 seconds
-					Transformed [c/FF5D93:Catalyst Keys] rapidly strike foes with close-ranged slashes, dealing bonus damage based on the foe's defense
-					Transformed [c/FF5D93:Catalyst Keys] inflict [c/F8FF8B:Elemental Surge], but [c/F28C60:Alignment] can not be gained while transformed
-					''' */
+					2 召唤标记伤害
+					召唤标记伤害会随着世界进度的推进而发生变化
+					该武器的攻击速度很快，且会施加4秒的源星枯萎减益
+					此外，攻击命中后会叠加[c/F8FF8B:元素涌动]
+					点击右键召唤[c/FF5D93:催化密钥]，使用远程能量箭攻击敌人，忽略敌人25%的防御
+					[c/FF5D93:转变密钥]的攻击会叠加[c/F8FF8B:元素涌动]
+					[c/FF5D93:转变密钥]的攻击会叠加[c/F8FF8B:元素涌动]
+					在拥有6层[c/F8FF8B:元素涌动]时，下一次叠加时会引爆所有层数，造成额外伤害
+					每次[c/F8FF8B:元素涌动]以该方式移除时，为你叠加一层[c/F28C60:校准]（最多5层）
+					一旦[c/F28C60:校准]叠加至最大层数，按下武器技能键改变你的[c/FF5D93:转变密钥]4秒
+					变化后的[c/FF5D93:转变密钥]攻击改为用近距离的挥砍攻击敌人，并根据敌人的防御力造成额外伤害
+					变化后的[c/FF5D93:转变密钥]也可以叠加[c/F8FF8B:元素涌动]，但是变化期间无法叠加[c/F28C60:校准]
+					'''
 			}
 
 			LegendaryShield: {
-				// DisplayName: Legendary Shield
-				/* Tooltip:
+				DisplayName: 传说之盾
+				Tooltip:
 					'''
-					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty]
-					Holding this weapon grants defense proportional to Max HP and reflects all damage taken
-					Right click to ready the shield for 2 seconds, reducing the damage of the next attack by 90% (12 second cooldown)
-					Press the Weapon Action Key to destroy all nearby hostile projectiles (30 second cooldown)
-					Swapping to another weapon after activating either of these abilities grants [Hero's Bulwark] for 10 seconds, increasing defense by 15%
-					The current [c/F592BF:Aspected Damage Type] influences the effects of [Hero's Bulwark]
-					[c/FFAB4D:Melee]: [Hero's Bulwark] negates the first instance of damage taken, but is then removed
-					[c/EF4DFF:Magic]: [Hero's Bulwark] grants full Mana every time you take damage
-					[c/4DFF5B:Ranged]: [Hero's Bulwark] empowers critical strikes by 40%
-					[c/00CDFF:Summon]: Standing near minions while under the effect of [Hero's Bulwark] increases their damage by 30%
-					[Other]: [Hero's Bulwark] increases defense by an additional 5%
-					''' */
+					[c/F592BF:该武器不受星相武器切换伤害类型的伤害惩罚]
+					手持该武器时根据最大生命值获得一定比例的防御力，且会反射所有受到的伤害
+					点击右键展开护盾，使受到的下一次攻击伤害减少90%，持续2秒（12秒冷却）
+					按下武器技能键在光标处展开一面盾牌，盾牌会摧毁所有敌方弹幕，持续5秒（30秒冷却）
+					在激活这两个技能后切换至其他武器会获得[英雄壁垒]，使你防御力提高15%，持续10秒
+					不同的[c/F592BF:星相伤害类型]会影响[英雄壁垒]的效果
+					[c/FFAB4D:近战]：[英雄壁垒]会抵消受到的第一次伤害，触发后移除增益
+					[c/EF4DFF:魔法]：[英雄壁垒]使你受到伤害时获得等量魔力值
+					[c/4DFF5B:远程]：[英雄壁垒]使暴击伤害提高40%
+					[c/00CDFF:召唤]：[英雄壁垒]生效时，站在召唤物附近会使他们的伤害提高30%
+					[其他]：[英雄壁垒]额外增加5%防御力
+					'''
 			}
 
 			StringOfCurses: {
-				// DisplayName: String of Curses
-				/* Tooltip:
+				DisplayName: 邪恶符咒
+				Tooltip:
 					'''
-					Attacks with this weapon inflict [Necrosis] for 4 seconds on critical strikes
-					Foes inflicted with [Necrosis] have their attack and defense reduced by 15%
-					Defeating foes with this weapon charges the Stellar Nova by 2% and grants [Cursewrought] for 7 seconds
-					[Cursewrought] increases damage dealt against foes with [Necrosis] by 20% and allows for attacks to pierce 2 more foes
-					Defeating foes while under the effect of [Cursewrought] refreshes the buff, heals 10 HP, and charges the Stellar Nova by an additional 2 energy
-					''' */
+					使用该武器进行攻击时会在暴击后叠加持续4秒的[坏死]
+					陷入[坏死]的敌人攻击力和防御力减少15%
+					进行27次射击后，该武器需要重新装填（右键可以主动装填）				
+					使用该武器击败敌人会获得2点天体新星能量，且获得[诅咒之绳]效果，持续7秒
+					[诅咒之绳]状态下对[坏死]的敌人造成的伤害提高20%，并允许子弹穿透最多2个敌人
+					[诅咒之绳]状态下击败敌人时会刷新[诅咒之绳]持续时间，治疗10点生命值并额外获得2点天体新星能量
+					'''
 			}
 
 			CloakOfAnArbiter: {
-				// DisplayName: Cloak of An Arbiter
-				/* Tooltip:
+				DisplayName: 调律者的斗篷
+				Tooltip:
 					'''
-					12 summon tag damage
-					Holding this weapon grants [Embodied Singularity], increasing critical strike damage by 30%
-					Attacks with this weapon inflict [Fairy] for 3 seconds
-					[Fairy] allows summon tag damage to benefit all weapons at a flat rate
-					Pressing right click activates an ability, cycling between [Degraded Lock], [Degraded Chain], and [Degraded Pillar] (6 second cooldown)
-					[Degraded Lock]: Damage and stun the foe at your cursor for 2 seconds
-					[Degraded Chain]: Deal damage to all nearby foes while inflicting [Fairy] for 6 seconds
-					[Degraded Pillar]: Fire a fast piercing pillar towards your cursor that deals guaranteed critical damage
-					Press the Weapon Action Key to activate [Degraded Shockwave] (90 second cooldown)
-					[Degraded Shockwave] deals 400% damage to all nearby foes, destroys all nearby hostile projectiles, and grants [Degraded Barrier] to nearby allies for 20 seconds
-					[Degraded Barrier] reduces the damage of the next hit by 80%
-					'Now, sink into everlasting quietude'
-					''' */
+					12 召唤标记伤害
+					手持该武器可以获得[劣化奇点]，使你的暴击伤害提高30%
+					使用该武器进行攻击会造成持续3秒的[妖灵]减益
+					[妖灵]允许召唤标记伤害以固定速率对所有武器生效
+					点击右键按顺序激活[劣化之锁]、[劣化之链]和[劣化之柱]之间的一个
+					[劣化之锁]：对你光标下的敌人造成伤害并眩晕2秒
+					[劣化之链]：对所有附近的敌人造成伤害，同时施加[妖灵]，持续6秒
+					[劣化之柱]：向光标处发射一个高速的无视物块的柱子，造成大量伤害
+					按下武器技能键释放[劣化震击]（90秒冷却）
+					[劣化震击]对附近所有敌人造成400%的伤害，摧毁附近所有的敌方弹幕，并给予附近的队友铁皮增益，持续8秒
+					“愿你沉入永寂”
+					'''
 			}
 		}
 
@@ -9406,7 +9528,7 @@ Mods: {
 			HullwroughtSwing22.DisplayName: 厉战
 			HornSlash1.DisplayName: Hunter's Symphony
 			HornSlash2.DisplayName: Hunter's Symphony
-			// HornSlash.DisplayName: Horn Slash
+			HornSlash.DisplayName: Horn Slash
 			MusicRadiate.DisplayName: Hunter's Symphony
 			Icebolt.DisplayName: Icebolt
 			Icebolt2.DisplayName: Icebolt2
@@ -9643,7 +9765,7 @@ Mods: {
 			OrangeStarBit.DisplayName: Luminary Wand
 			PurpleStarBit.DisplayName: Luminary Wand
 			RedStarBit.DisplayName: Luminary Wand
-			// RedStar.DisplayName: Red Star
+			RedStar.DisplayName: Red Star
 			Starchild.DisplayName: Starchild
 			YellowStarBit.DisplayName: Luminary Wand
 			StarfarerFollowUp.DisplayName: Aprismatism
@@ -9961,8 +10083,8 @@ Mods: {
 			SplitHorizontal.DisplayName: Manifestation
 			SplitVertical.DisplayName: Manifestation
 			NanomachinaShieldProjectile.DisplayName: Nanomachina Shield
-			PodMinion.DisplayName: Pod Zero-42
-			PodShot.DisplayName: Pod Zero-42
+			PodMinion.DisplayName: 辅助机0-42
+			PodShot.DisplayName: 辅助机0-42
 			PowderKeg.DisplayName: Saltwater Scourge
 			PowderKegExplosion.DisplayName: Saltwater Scourge
 			SaltwaterCannonball.DisplayName: Saltwater Scourge
@@ -10119,90 +10241,90 @@ Mods: {
 			DragaliaFoundStab.DisplayName: Dragalia Found Stab
 			DragaliaFoundDragonAttack.DisplayName: Dragalia Found Dragon Attack
 			DragonTornado.DisplayName: Dragon Tornado
-			// WavedancerSummon.DisplayName: Wavedancer Summon
-			// WavedancerSwordSpin.DisplayName: Wavedancer Sword Spin
-			// PowderChargeExplosion.DisplayName: Powder Charge Explosion
-			// MemoryLightning.DisplayName: Memory Lightning
-			// GuppyFlies.DisplayName: Guppy Flies
-			// MiserySword.DisplayName: Misery Sword
-			// ClaimhSolaisSword.DisplayName: Claimh Solais Sword
-			// HawkmoonGun.DisplayName: Hawkmoon Gun
-			// DeathInFourActsGun.DisplayName: Death In Four Acts Gun
-			// DarkmoonSword.DisplayName: Darkmoon Sword
-			// DarkmoonSwordEmpowered.DisplayName: Darkmoon Sword Empowered
-			// ForceOfNatureGun.DisplayName: Force Of Nature Gun
-			// RideTheBullGun.DisplayName: Ride The Bull Gun
-			// IzanagisEdgeGun.DisplayName: Izanagis Edge Gun
-			// CrimsonOutbreakGun.DisplayName: Crimson Outbreak Gun
-			// CrimsonSakuraAlphaSword.DisplayName: Crimson Sakura Alpha Sword
-			// YunlaiStilettoSword.DisplayName: Yunlai Stiletto Sword
-			// LiberationBlazingSword.DisplayName: Liberation Blazing Sword
-			// MercySword.DisplayName: Mercy Sword
-			// LightUnrelentingSword.DisplayName: Light Unrelenting Sword
-			// ArchitectSword.DisplayName: Architect Sword
-			// KazimierzSeraphimSword.DisplayName: Kazimierz Seraphim Sword
-			// OriginInfinitySword.DisplayName: Origin Infinity Sword
-			// OriginInfinitySwordUnsheathed.DisplayName: Origin Infinity Sword Unsheathed
-			// SoliloquyCrabSummon.DisplayName: Soliloquy Crab Summon
-			// SoliloquyJellySummon.DisplayName: Soliloquy Jelly Summon
-			// SoliloquySeahorseSummon.DisplayName: Soliloquy Seahorse Summon
-			// SoliloquySummonProjectile.DisplayName: Soliloquy Summon Projectile
-			// RebellionSword.DisplayName: Rebellion Sword
-			// SoliloquySword.DisplayName: Soliloquy Sword
-			// RebellionLaser.DisplayName: Rebellion Laser
-			// RebellionLightning.DisplayName: Rebellion Lightning
-			// RebellionTarget.DisplayName: Rebellion Target
-			// StygianAugurDown.DisplayName: Stygian Augur
-			// StygianAugurLeft.DisplayName: Stygian Augur
-			// StygianAugurRight.DisplayName: Stygian Augur
-			// StygianAugurUp.DisplayName: Stygian Augur
-			// ThespianBolt.DisplayName: Thespian Bolt
-			// RebellionSwordSpin.DisplayName: Rebellion Sword Spin
-			// SoliloquySinger.DisplayName: Soliloquy Singer
-			// ThespianSadBolt.DisplayName: Thespian Sad Bolt
-			// ThespianExplosion.DisplayName: Thespian Explosion
-			// ThespianExplosionIndicator.DisplayName: Thespian Explosion Indicator
-			// ThespianLingeringDamageField.DisplayName: Thespian Lingering Damage Field
-			// ThespianPotion.DisplayName: Thespian Potion
-			// ThespianPotionExplosion.DisplayName: Thespian Potion Explosion
-			// RebellionSwordLaser.DisplayName: Rebellion Sword Laser
-			// DevotedHavocGun.DisplayName: Devoted Havoc Gun
-			// DevotedHavocShot.DisplayName: Devoted Havoc Shot
-			// EnergyStar.DisplayName: Energy Star
-			// FragmentationGrenade.DisplayName: Fragmentation Grenade
-			// ThermalFlare.DisplayName: Thermal Flare
-			// PenthesileaCast.DisplayName: Penthesilea Cast
-			// PenthesileaInkRain.DisplayName: Penthesilea Ink Rain
-			// PenthBrush.DisplayName: Penth Brush
-			// PenthesileaIntroSprite.DisplayName: Penthesilea
-			// ArbitrationOrbitingTurret.DisplayName: Crimson Star
-			// ArbitrationStationaryTurret.DisplayName: Crimson Star
-			// ArbitrationOrbitingStar.DisplayName: Crimson Star
-			// ArbitrationOrbitingTurretSlow.DisplayName: Crimson Star
-			// ArbitrationBolt.DisplayName: Demi-Star
-			// ArbitrationOrbitingTurretWeakProjectiles.DisplayName: Arbitration Orbiting Turret Weak Projectiles
-			// WeakRedStar.DisplayName: Crimson Star
-			// BossPrototokia.DisplayName: Prototokia Aster
-			// ArbitrationTower.DisplayName: Arbitration Tower
-			// TwoCrownBowArrow.DisplayName: Two Crown Bow Arrow
-			// TwoCrownVFX.DisplayName: Two Crown V F X
-			// TwoCrownBowArrowDebuff.DisplayName: Two Crown Bow Arrow Debuff
-			// TwoCrownBowSkyAttack.DisplayName: Two Crown Bow Sky Attack
-			// TwoCrownBowEmpoweredArrow.DisplayName: Two Crown Bow Empowered Arrow
-			// TwoCrownBowLaser.DisplayName: Two Crown Bow Laser
-			// TwoCrownBowLaserVFX.DisplayName: Two Crown Bow Laser V F X
-			// TwoCrownBowLaserPreVFX.DisplayName: Two Crown Bow Laser Pre V F X
-			// TwoCrownBowLaserPreVFX2.DisplayName: Two Crown Bow Laser Pre V F X2
-			// TwoCrownBowLaserPreVFX3.DisplayName: Two Crown Bow Laser Pre V F X3
-			// ExpresswayPlushActive.DisplayName: Expressway Plush Active
-			// ExpresswayProjectile.DisplayName: Expressway Projectile
-			// ExpresswayTarget.DisplayName: Expressway Target
-			// ExpresswayVFX.DisplayName: Expressway V F X
-			// StarphoenixGun.DisplayName: Starphoenix Gun
-			// StarphoenixRound.DisplayName: Starphoenix Round
-			// CatalystKey.DisplayName: Catalyst Key
-			// StarphoenixMinionBullet.DisplayName: Starphoenix Minion Bullet
-			// StarphoenixFollowUp.DisplayName: Starphoenix Follow Up
+			WavedancerSummon.DisplayName: Wavedancer Summon
+			WavedancerSwordSpin.DisplayName: Wavedancer Sword Spin
+			PowderChargeExplosion.DisplayName: Powder Charge Explosion
+			MemoryLightning.DisplayName: Memory Lightning
+			GuppyFlies.DisplayName: Guppy Flies
+			MiserySword.DisplayName: Misery Sword
+			ClaimhSolaisSword.DisplayName: Claimh Solais Sword
+			HawkmoonGun.DisplayName: Hawkmoon Gun
+			DeathInFourActsGun.DisplayName: Death In Four Acts Gun
+			DarkmoonSword.DisplayName: Darkmoon Sword
+			DarkmoonSwordEmpowered.DisplayName: Darkmoon Sword Empowered
+			ForceOfNatureGun.DisplayName: Force Of Nature Gun
+			RideTheBullGun.DisplayName: Ride The Bull Gun
+			IzanagisEdgeGun.DisplayName: Izanagis Edge Gun
+			CrimsonOutbreakGun.DisplayName: Crimson Outbreak Gun
+			CrimsonSakuraAlphaSword.DisplayName: Crimson Sakura Alpha Sword
+			YunlaiStilettoSword.DisplayName: Yunlai Stiletto Sword
+			LiberationBlazingSword.DisplayName: Liberation Blazing Sword
+			MercySword.DisplayName: Mercy Sword
+			LightUnrelentingSword.DisplayName: Light Unrelenting Sword
+			ArchitectSword.DisplayName: Architect Sword
+			KazimierzSeraphimSword.DisplayName: Kazimierz Seraphim Sword
+			OriginInfinitySword.DisplayName: Origin Infinity Sword
+			OriginInfinitySwordUnsheathed.DisplayName: Origin Infinity Sword Unsheathed
+			SoliloquyCrabSummon.DisplayName: Soliloquy Crab Summon
+			SoliloquyJellySummon.DisplayName: Soliloquy Jelly Summon
+			SoliloquySeahorseSummon.DisplayName: Soliloquy Seahorse Summon
+			SoliloquySummonProjectile.DisplayName: Soliloquy Summon Projectile
+			RebellionSword.DisplayName: Rebellion Sword
+			SoliloquySword.DisplayName: Soliloquy Sword
+			RebellionLaser.DisplayName: Rebellion Laser
+			RebellionLightning.DisplayName: Rebellion Lightning
+			RebellionTarget.DisplayName: Rebellion Target
+			StygianAugurDown.DisplayName: Stygian Augur
+			StygianAugurLeft.DisplayName: Stygian Augur
+			StygianAugurRight.DisplayName: Stygian Augur
+			StygianAugurUp.DisplayName: Stygian Augur
+			ThespianBolt.DisplayName: Thespian Bolt
+			RebellionSwordSpin.DisplayName: Rebellion Sword Spin
+			SoliloquySinger.DisplayName: Soliloquy Singer
+			ThespianSadBolt.DisplayName: Thespian Sad Bolt
+			ThespianExplosion.DisplayName: Thespian Explosion
+			ThespianExplosionIndicator.DisplayName: Thespian Explosion Indicator
+			ThespianLingeringDamageField.DisplayName: Thespian Lingering Damage Field
+			ThespianPotion.DisplayName: Thespian Potion
+			ThespianPotionExplosion.DisplayName: Thespian Potion Explosion
+			RebellionSwordLaser.DisplayName: Rebellion Sword Laser
+			DevotedHavocGun.DisplayName: Devoted Havoc Gun
+			DevotedHavocShot.DisplayName: Devoted Havoc Shot
+			EnergyStar.DisplayName: Energy Star
+			FragmentationGrenade.DisplayName: Fragmentation Grenade
+			ThermalFlare.DisplayName: Thermal Flare
+			PenthesileaCast.DisplayName: Penthesilea Cast
+			PenthesileaInkRain.DisplayName: Penthesilea Ink Rain
+			PenthBrush.DisplayName: Penth Brush
+			PenthesileaIntroSprite.DisplayName: Penthesilea
+			ArbitrationOrbitingTurret.DisplayName: Crimson Star
+			ArbitrationStationaryTurret.DisplayName: Crimson Star
+			ArbitrationOrbitingStar.DisplayName: Crimson Star
+			ArbitrationOrbitingTurretSlow.DisplayName: Crimson Star
+			ArbitrationBolt.DisplayName: Demi-Star
+			ArbitrationOrbitingTurretWeakProjectiles.DisplayName: Arbitration Orbiting Turret Weak Projectiles
+			WeakRedStar.DisplayName: Crimson Star
+			BossPrototokia.DisplayName: Prototokia Aster
+			ArbitrationTower.DisplayName: Arbitration Tower
+			TwoCrownBowArrow.DisplayName: Two Crown Bow Arrow
+			TwoCrownVFX.DisplayName: Two Crown V F X
+			TwoCrownBowArrowDebuff.DisplayName: Two Crown Bow Arrow Debuff
+			TwoCrownBowSkyAttack.DisplayName: Two Crown Bow Sky Attack
+			TwoCrownBowEmpoweredArrow.DisplayName: Two Crown Bow Empowered Arrow
+			TwoCrownBowLaser.DisplayName: Two Crown Bow Laser
+			TwoCrownBowLaserVFX.DisplayName: Two Crown Bow Laser V F X
+			TwoCrownBowLaserPreVFX.DisplayName: Two Crown Bow Laser Pre V F X
+			TwoCrownBowLaserPreVFX2.DisplayName: Two Crown Bow Laser Pre V F X2
+			TwoCrownBowLaserPreVFX3.DisplayName: Two Crown Bow Laser Pre V F X3
+			ExpresswayPlushActive.DisplayName: Expressway Plush Active
+			ExpresswayProjectile.DisplayName: Expressway Projectile
+			ExpresswayTarget.DisplayName: Expressway Target
+			ExpresswayVFX.DisplayName: Expressway V F X
+			StarphoenixGun.DisplayName: Starphoenix Gun
+			StarphoenixRound.DisplayName: Starphoenix Round
+			CatalystKey.DisplayName: Catalyst Key
+			StarphoenixMinionBullet.DisplayName: Starphoenix Minion Bullet
+			StarphoenixFollowUp.DisplayName: Starphoenix Follow Up
 			// StringOfCursesGun.DisplayName: String Of Curses Gun
 			// StringOfCursesShot.DisplayName: String Of Curses Shot
 			// Charsugar.DisplayName: Charsugar
@@ -12171,7 +12293,7 @@ Mods: {
 				Description:
 					'''
 					The nearby surroundings disobey laws of reality
-					Lingering for too long will result in a catastrophic danger approaching
+					Lingering for too long will result in something terrifying occuring...
 					'''
 			}
 
@@ -12179,8 +12301,8 @@ Mods: {
 				DisplayName: "[c/EFB43E:Approaching Evil]"
 				Description:
 					'''
-					A horrifying entity is approaching...
-					Defenses have been drastically reduced!
+					You are compelled by a strange force...
+					Leave now, or else!
 					'''
 			}
 
@@ -12294,7 +12416,7 @@ Mods: {
 			}
 
 			ManaSicknessAlter: {
-				DisplayName: Mana Sickness
+				DisplayName: 魔力病
 				Description: 所有的伤害降低{0}%
 			}
 
@@ -12541,303 +12663,303 @@ Mods: {
 			}
 
 			TsukiyomiTeleportBuff: {
-				// DisplayName: Tsukiyomi Teleport Buff
-				// Description: ""
+				DisplayName: Tsukiyomi Teleport Buff
+				Description: ""
 			}
 
 			WavedancerBuff: {
-				// DisplayName: Wavedancer's Edge
-				// Description: ""
+				DisplayName: Wavedancer's Edge
+				Description: ""
 			}
 
 			WavedancerCooldown: {
-				// DisplayName: Wavedancer Cooldown
-				// Description: ""
+				DisplayName: Wavedancer Cooldown
+				Description: ""
 			}
 
 			AccursedEdge: {
-				// DisplayName: Accursed Edge
-				// Description: Prepared to unleash an empowered attack after loss of life
+				DisplayName: Accursed Edge
+				Description: Prepared to unleash an empowered attack after loss of life
 			}
 
 			AccursedEdgeCooldown: {
-				// DisplayName: Accursed Edge Cooldown
-				// Description: ""
+				DisplayName: Accursed Edge Cooldown
+				Description: ""
 			}
 
 			ChoiceGlassesLock: {
-				// DisplayName: Choice Glasses Lock
-				// Description: Locked from using any other items
+				DisplayName: Choice Glasses Lock
+				Description: Locked from using any other items
 			}
 
 			FateDivined: {
-				// DisplayName: Fate Divined
-				// Description: Fate has been divined, increasing the potency of all Tarot Card Weapon Memories
+				DisplayName: Fate Divined
+				Description: Fate has been divined, increasing the potency of all Tarot Card Weapon Memories
 			}
 
 			PowderCharge: {
-				// DisplayName: Powder Charge
-				// Description: Powder charges have been stored and will be expended upon a critical strike to explode nearby foes
+				DisplayName: Powder Charge
+				Description: Powder charges have been stored and will be expended upon a critical strike to explode nearby foes
 			}
 
 			NetheriteIngotBuff: {
-				// DisplayName: Bastion Defense
-				// Description: Defenses are drastically increased
+				DisplayName: Bastion Defense
+				Description: Defenses are drastically increased
 			}
 
 			NetheriteIngotBuffCooldown: {
-				// DisplayName: Bastion Defense Cooldown
-				// Description: ""
+				DisplayName: Bastion Defense Cooldown
+				Description: ""
 			}
 
 			EnderpearlCooldown: {
-				// DisplayName: Enderpearl Cooldown
-				// Description: ""
+				DisplayName: Enderpearl Cooldown
+				Description: ""
 			}
 
 			ElectricGuitarPickCooldown: {
-				// DisplayName: Electric Guitar Pick Cooldown
-				// Description: ""
+				DisplayName: Electric Guitar Pick Cooldown
+				Description: ""
 			}
 
 			PhantomHiltBuff: {
-				// DisplayName: Ghostly Hilt
-				// Description: Movement speed is increased
+				DisplayName: Ghostly Hilt
+				Description: Movement speed is increased
 			}
 
 			PhantomHiltCooldown: {
-				// DisplayName: Ghostly Hilt Cooldown
-				// Description: ""
+				DisplayName: Ghostly Hilt Cooldown
+				Description: ""
 			}
 
 			RagebladeBuff: {
-				// DisplayName: Furious Dirk
-				// Description: ""
+				DisplayName: Furious Dirk
+				Description: ""
 			}
 
 			GuppyHeadCooldown: {
-				// DisplayName: Guppy Head Cooldown
-				// Description: ""
+				DisplayName: Guppy Head Cooldown
+				Description: ""
 			}
 
 			SoliloquyMinionBuff: {
-				// DisplayName: Salon Attendants
-				// Description: The salon attendants muse to your whims
+				DisplayName: Salon Attendants
+				Description: The salon attendants muse to your whims
 			}
 
 			RebellionLaserBuff: {
-				// DisplayName: Rebellion Laser Buff
-				// Description: ""
+				DisplayName: Rebellion Laser Buff
+				Description: ""
 			}
 
 			AthanoricCurse: {
-				// DisplayName: Athanoric Curse
-				// Description: The walls of the arena will corrode you!
+				DisplayName: Athanoric Curse
+				Description: The walls of the arena will corrode you!
 			}
 
 			ForceMoveLeft: {
-				// DisplayName: Force Move Left
-				// Description: You are compelled to move left once this debuff ends
+				DisplayName: Force Move Left
+				Description: You are compelled to move left once this debuff ends
 			}
 
 			ForceMoveRight: {
-				// DisplayName: Force Move Right
-				// Description: You are compelled to move right once this debuff ends
+				DisplayName: Force Move Right
+				Description: You are compelled to move right once this debuff ends
 			}
 
 			ForceStopMoving: {
-				// DisplayName: Force Stop Moving
-				// Description: You are compelled to stop moving once this debuff ends
+				DisplayName: Force Stop Moving
+				Description: You are compelled to stop moving once this debuff ends
 			}
 
 			LaunchLeft: {
-				// DisplayName: Launch Left
-				// Description: ""
+				DisplayName: Launch Left
+				Description: ""
 			}
 
 			LaunchRight: {
-				// DisplayName: Launch Right
-				// Description: ""
+				DisplayName: Launch Right
+				Description: ""
 			}
 
 			ThespianAngry: {
-				// DisplayName: Thespian Angry
-				// Description: Mods.StarsAbove.Buffs.ThespianAngry.Description
+				DisplayName: Thespian Angry
+				Description: Mods.StarsAbove.Buffs.ThespianAngry.Description
 			}
 
 			ThespianSad: {
-				// DisplayName: Thespian Sad
-				// Description: Mods.StarsAbove.Buffs.ThespianSad.Description
+				DisplayName: Thespian Sad
+				Description: Mods.StarsAbove.Buffs.ThespianSad.Description
 			}
 
 			ThespianSadAttack: {
-				// DisplayName: Thespian Sad Attack
-				// Description: Mods.StarsAbove.Buffs.ThespianSadAttack.Description
+				DisplayName: Thespian Sad Attack
+				Description: Mods.StarsAbove.Buffs.ThespianSadAttack.Description
 			}
 
 			ThespianHappyAttack: {
-				// DisplayName: Thespian Happy Attack
-				// Description: Mods.StarsAbove.Buffs.ThespianHappyAttack.Description
+				DisplayName: Thespian Happy Attack
+				Description: Mods.StarsAbove.Buffs.ThespianHappyAttack.Description
 			}
 
 			ThespianTransition: {
-				// DisplayName: Thespian Transition
-				// Description: Mods.StarsAbove.Buffs.ThespianTransition.Description
+				DisplayName: Thespian Transition
+				Description: Mods.StarsAbove.Buffs.ThespianTransition.Description
 			}
 
 			KineticConversionCooldown: {
-				// DisplayName: Kinetic Conversion Cooldown
-				// Description: ""
+				DisplayName: Kinetic Conversion Cooldown
+				Description: ""
 			}
 
 			ArmsthriftBuff: {
-				// DisplayName: Armsthrift
-				// Description: ""
+				DisplayName: Armsthrift
+				Description: ""
 			}
 
 			ArmsthriftBuffStrong: {
-				// DisplayName: Armsthrift Empowered
-				// Description: ""
+				DisplayName: Armsthrift Empowered
+				Description: ""
 			}
 
 			ArmsthriftCooldown: {
-				// DisplayName: Armsthrift Cooldown
-				// Description: ""
+				DisplayName: Armsthrift Cooldown
+				Description: ""
 			}
 
 			MindflayerWormCooldown: {
-				// DisplayName: Mindflayer Worm Cooldown
-				// Description: ""
+				DisplayName: Mindflayer Worm Cooldown
+				Description: ""
 			}
 
 			RuinedCrownBuff: {
-				// DisplayName: Ruined Crown
-				// Description: ""
+				DisplayName: Ruined Crown
+				Description: ""
 			}
 
 			RuinedCrownCooldown: {
-				// DisplayName: Ruined Crown Cooldown
-				// Description: ""
+				DisplayName: Ruined Crown Cooldown
+				Description: ""
 			}
 
 			SimulacraShifterCooldown: {
-				// DisplayName: Simulacra Shifter Cooldown
-				// Description: ""
+				DisplayName: Simulacra Shifter Cooldown
+				Description: ""
 			}
 
 			OnyxJackalTagDamage: {
-				// DisplayName: Onyx Jackal Tag Damage
-				// Description: Mods.StarsAbove.Buffs.OnyxJackalTagDamage.Description
+				DisplayName: Onyx Jackal Tag Damage
+				Description: Mods.StarsAbove.Buffs.OnyxJackalTagDamage.Description
 			}
 
 			VisionsBeyondBuff: {
-				// DisplayName: Visions Beyond
-				// Description: ""
+				DisplayName: Visions Beyond
+				Description: ""
 			}
 
 			TerrorTether: {
-				// DisplayName: Terror Tether
-				// Description: ""
+				DisplayName: Terror Tether
+				Description: ""
 			}
 
 			SharedPower: {
-				// DisplayName: Shared Power
-				// Description: Your Starfarer is borrowing some of your power, reducing damage, max HP, and defense
+				DisplayName: Shared Power
+				Description: Your Starfarer is borrowing some of your power, reducing damage, max HP, and defense
 			}
 
 			SharedPowerSpecial: {
-				// DisplayName: True Shared Power
-				// Description: Your Starfarer is borrowing nearly all of your power, leaving you with only 100 Max HP and 90% less damage
+				DisplayName: True Shared Power
+				Description: Your Starfarer is borrowing nearly all of your power, leaving you with only 100 Max HP and 90% less damage
 			}
 
 			RebellionLaserCooldown: {
-				// DisplayName: Rebellion Laser Cooldown
-				// Description: ""
+				DisplayName: Rebellion Laser Cooldown
+				Description: ""
 			}
 
 			TwoCrownBowFiring: {
-				// DisplayName: Two Crown Bow Firing
-				// Description: ""
+				DisplayName: Two Crown Bow Firing
+				Description: ""
 			}
 
 			TwoCrownBowDepravity: {
-				// DisplayName: Two Crown Bow Depravity
-				// Description: ""
+				DisplayName: Two Crown Bow Depravity
+				Description: ""
 			}
 
 			StellarTerminationBuff: {
-				// DisplayName: Stellar Termination
-				// Description: ""
+				DisplayName: Stellar Termination
+				Description: ""
 			}
 
 			StellarTerminationPreBuff: {
-				// DisplayName: Stellar Termination
-				// Description: ""
+				DisplayName: Stellar Termination
+				Description: ""
 			}
 
 			TwoCrownBowDepravityCooldown: {
-				// DisplayName: Two Crown Bow Depravity Cooldown
-				// Description: ""
+				DisplayName: Two Crown Bow Depravity Cooldown
+				Description: ""
 			}
 
 			EchoStringRites: {
-				// DisplayName: Echo String Rites
-				// Description: ""
+				DisplayName: Echo String Rites
+				Description: ""
 			}
 
 			Merculight: {
-				// DisplayName: Merculight
-				// Description: ""
+				DisplayName: Merculight
+				Description: ""
 			}
 
 			OrbitalExpresswayPlushCooldown: {
-				// DisplayName: Orbital Expressway Plush Cooldown
-				// Description: ""
+				DisplayName: Orbital Expressway Plush Cooldown
+				Description: ""
 			}
 
 			AlignmentBuff: {
-				// DisplayName: Alignment Active
-				// Description: Catalyst Keys are surging with power
+				DisplayName: Alignment Active
+				Description: Catalyst Keys are surging with power
 			}
 
 			AlignmentStack1: {
-				// DisplayName: Alignment
-				// Description: ""
+				DisplayName: Alignment
+				Description: ""
 			}
 
 			AlignmentStack2: {
-				// DisplayName: Alignment
-				// Description: ""
+				DisplayName: Alignment
+				Description: ""
 			}
 
 			AlignmentStack3: {
-				// DisplayName: Alignment
-				// Description: ""
+				DisplayName: Alignment
+				Description: ""
 			}
 
 			AlignmentStack4: {
-				// DisplayName: Alignment
-				// Description: ""
+				DisplayName: Alignment
+				Description: ""
 			}
 
 			AlignmentStack5: {
-				// DisplayName: Alignment
-				// Description: ""
+				DisplayName: Alignment
+				Description: ""
 			}
 
 			ElementalSurge: {
-				// DisplayName: Elemental Surge
-				// Description: ""
+				DisplayName: Elemental Surge
+				Description: ""
 			}
 
 			CatalystKeyBuff: {
-				// DisplayName: Catalyst Keys
-				// Description: Catalyst keys are assailing foes
+				DisplayName: Catalyst Keys
+				Description: Catalyst keys are assailing foes
 			}
 
 			PowerMoonCooldown: {
-				// DisplayName: Power Moon Cooldown
-				// Description: ""
+				DisplayName: Power Moon Cooldown
+				Description: Mods.StarsAbove.Buffs.PowerMoonCooldown.Description
 			}
 
 			SugarballMinionBuff: {
@@ -12857,17 +12979,17 @@ Mods: {
 		}
 
 		Bestiary: {
-			// ArbitrationBoss: A horrifying figure encountered within a mysterious location known as Katabasis. While it appears evil to a human, eldritch anomalies such as these know not the concept of malice.
+			ArbitrationBoss: 在一个叫做喀塔巴斯的神秘地带遇到的可怕人物，虽然他对于人类来说是充满恶意的，但显然这样的异象不知恶意这概念为何物。
 			AstralCell: 时空流浪者召唤的奇怪蓝色物体。它的食物是水汽。
-			// NalhaunBossPhase2: A once mighty monarch, cursed to live eternally by means of a betrayal from his royal court. He persisted alone on an empty planet until the First Starbearer ended his long and tragic reign, as he would be able to interfere with his plans. While he may have stood a chance at his full might, he was burdened by a dreadful civil war tearing his world apart.
+			NalhaunBossPhase2: 一位曾经强大的君主，他因为他的宫廷的背叛被降下永生诅咒。 他独自一人坚守在一个空无一物的星球上，直到第一位星之传承者惧怕他会干扰他的计划，前来终结了他漫长而悲惨的统治。 他本可以尽其所能，但漫长内战让他的世界支离破碎，他也因此不堪重负。
 			PaintedAttendantA: 被彭忒希勒娅用来……打你的脸。最好的法师知道什么时间任何事下才是唯一解。
-			// PenthesileaBoss: An incredibly powerful mage, the Painted Witch once ruled a planet entirely 'drawn' by her. Ever the trickster, she mastered expert magecraft simply to play pranks upon the works of her colleagues, a testament to her ingenuity. She met her end at the hands of the First Starbearer after a long conflict- if she were to persist, she would interfere with his plans...
+			PenthesileaBoss: 多彩魔女是一位非常强大的法师。她曾经统治过一个完全由她“画”出来的星球。作为一个魔术师，她掌握了十分专业的魔术技巧，但却仅仅是为了对她的同事进行恶作剧，这却也能证明她的聪明才智。在长时间的对峙下，她最终死在了第一位星之传承者的手下——因为她再这么下去，会干扰到他的计划……
 			PrismLoot: 棱晶状的潜在魔法能量有会影响它们在银河中的漂泊。抓住一个，你就会得到奖励！
 			SpectreOfLight: 一位异界的英雄，被第一位星海旅者召唤来攻击这片大地。
 			TsukiyomiBoss: 源初之星海旅者，月读，她有着星轨和天体的控制权。行星及其天然卫星的引力给予了她力量。她引导光之战士步入歧途，用他的力量和善意征服和摧毁了无数的星球……然而……
 			CastorBoss: 一位炽炎灾裔。灾裔是一个极具冲突的恶魔种族，它们的血缘关系只会进一步点燃它们之间的冲突之火。它们完全沉浸在兄弟之间的决斗中，除了对方的行动之外，他们什么都不在乎。令人感到讽刺的是，这个特性却会导致它们在面对其他敌人时表现的平平无奇。它们被第一位星之传承者彻底消灭，因为它们之间永恒的战斗无意中干扰到了他的计划。
 			PolluxBoss: 一位冰河灾裔。灾裔是一个极具冲突的恶魔种族，它们的血缘关系只会进一步点燃它们之间的冲突之火。它们完全沉浸在兄弟之间的决斗中，除了对方的行动之外，他们什么都不在乎。令人感到讽刺的是，这个特性却会导致它们在面对其他敌人时表现的平平无奇。它们被第一位星之传承者彻底消灭，因为它们之间永恒的战斗无意中干扰到了他的计划。
-			// VagrantBoss: The enigmatic Starfarer Perseus. His outward appearance is that of utmost confidence... but he's just kind of a dork trying to look cool. His sisters agree on this. He continues to have power over spatial distances, but seems to have lost the power to control time (but not the moniker.)
+			VagrantBoss: 神秘的星海旅者珀尔修斯。他的外表展现了自信……但他只是一个装酷的傻瓜。他的姊妹们也认同这点。
 			WarriorOfLight: 光之战士，或者说第一位星之传承者，曾经通过他的行动和他的星海旅者的帮助维护银河的正义。他曾经统治着一个和平的世界，但无助地看着自己的人民走向灭亡。后发誓再也不让其他人共享同样的命运——无论代价。
 			AsteroidWorm: 这些令人难以置信的极端耐寒生物已经获得了在真空中漫无目的漂流的能力——这也许不是关于它们的进化的最佳描述。虽然他、它们的食物很少，但是它们对食物的需求也很低。它们有着强韧的外壳，但是没有什么攻击能力。
 			Soulless: 无论“天启”是否降临至雕具星上，它们都是不幸的受害者。漫游的魔力使他们的肉身得以存活，但它们曾经所拥有的任何思维的痕迹已然不见踪影。
@@ -12875,9 +12997,9 @@ Mods: {
 			Garridine: 你在一个遥远星系的飞船上发现的羽族人，她是一位铁匠，也是个摆弄小玩意儿的商人。她说话的方式涵盖着她那来自上流社会的教养，但是当她说错话时（这常常发生），他的素养往往会下降。她很执着的保护着她身旁的钟表。
 			AmethystHeadpiercer: 一个广泛分布的准军事组织的士兵，其被称为紫水晶。统一配备涡轮动力服和喷气背包，使它们即便在真空之中也可以轻松行动。
 			AmethystSwordsinner: 一个广泛分布的准军事组织的士兵，其被称为紫水晶。使用强力的光刃攻击，特别擅长反弹远程武器弹幕。
-			Tsukiyomi2: Mods.StarsAbove.Bestiary.Tsukiyomi2
-			// ThespianBoss: A legendary alchemist long dead reanimated by a terrifying agent of chaos. For one as far gone as he, you must act as he demands, lest you meet your untimely end...
-			// StarfarerBoss: Yep, it's us.
+			Tsukiyomi2: ？？？
+			ThespianBoss: 他是一位传说中的炼金术士，肉身早已死去，但是被一位可怕的混沌代理人复活。对于一个向他一样远去的人来说，你必须按照他的要求行事，否则你就会遇到并不合时宜的结局……
+			StarfarerBoss: 是的，就是我们。
 		}
 
 		Prefix: {
@@ -12956,13 +13078,13 @@ Mods: {
 			}
 
 			DreamingCityBiome: {
-				// DisplayName: Dreaming City Biome
-				// TownNPCDialogueName: the Dreaming City Biome
+				DisplayName: 千梦之城
+				TownNPCDialogueName: 千梦之城
 			}
 
 			OtherworldBiome: {
-				// DisplayName: Otherworld Biome
-				// TownNPCDialogueName: the Otherworld Biome
+				DisplayName: 异象
+				TownNPCDialogueName: 异象
 			}
 		}
 
@@ -12975,24 +13097,24 @@ Mods: {
 			StarsAboveTip5: 你可以通过寰宇航行获得棱镜核心！
 			StarsAboveTip6: 制作旅星符台对你的旅行有着生与死的区别！
 			StarsAboveTip7: 不要在异常的行星上逗留太久——一个极其危险的敌人可能会现身！打败他可能会给予你巨大的回报，但是……
-			// StarsAboveTip8: Weapon Memories may be the ticket to success, but remember only Aspected Weapons can equip them!
-			// StarsAboveTip9: Weapon Memories don't stack on the same weapon! Mix and match!
+			StarsAboveTip8: 武器追忆可能是通向成功的门票，但请注意只有星相武器可以装备他们！
+			StarsAboveTip9: 武器追忆不能在同一个武器上叠加生效，注意混合搭配！
 		}
 
 		DamageClasses: {
-			AuricDamageClass.DisplayName: 金色损伤
-			CelestialDamageClass.DisplayName: 天空损伤
+			AuricDamageClass.DisplayName: 金色伤害
+			CelestialDamageClass.DisplayName: 天体伤害
 			GadgetDamageClass.DisplayName: 小工具强度
-			IncarnationDamageClass.DisplayName: 化身损伤
-			PsychomentDamageClass.DisplayName: 心理损伤
-			// ArkheDamageClass.DisplayName: arkhe damage
+			IncarnationDamageClass.DisplayName: 化身伤害
+			PsychomentDamageClass.DisplayName: 情感伤害
+			ArkheDamageClass.DisplayName: 始基力伤害
 		}
 
 		Keybinds: {
 			"Stellar Nova.DisplayName": 天体新星
 			"Weapon Action.DisplayName": 武器技能
-			// "Show Memory Info.DisplayName": Show Memory Info
-			// "Weapon Memory Action.DisplayName": Weapon Memory Action
+			"Show Memory Info.DisplayName": 显示追忆信息
+			"Weapon Memory Action.DisplayName": 武器追忆键
 		}
 
 		Prefixes: {
@@ -13005,151 +13127,151 @@ Mods: {
 		}
 
 		Configs: {
-			// StellarNovaHeader: "[c/EE9DE0:Stellar Nova Settings]"
-			// PopUpDialogueHeader: "[c/C076DF:Pop-up Dialogue Settings]"
-			// DialogueHeader: "[c/75C792:Disk Dialogue Settings]"
-			// MiscHeader: "[c/7A76FF:Miscellaneous Settings]"
+			StellarNovaHeader: "[c/EE9DE0:天体新星设置]"
+			PopUpDialogueHeader: "[c/C076DF:对话框弹窗设置]"
+			DialogueHeader: "[c/75C792:光碟对话框设置]"
+			MiscHeader: "[c/7A76FF:各种各样的设置]"
 
 			StarsAboveConfigClient: {
-				DisplayName: 星海苍穹客户端配置
+				DisplayName: 配置星海苍穹（客户端）
 
 				DisableStellarNovaCutIns: {
-					Label: "{$Mods.StarsAbove.Config.DisableStellarNovaCutIns.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DisableStellarNovaCutIns.Tooltip}"
+					Label: 禁用天体新星立绘切入
+					Tooltip: 禁用激活天体新星时你的星海旅者的立绘切入效果。
 				}
 
 				DisableStarfarerVoices: {
-					// Label: Disable Starfarer voice lines
-					// Tooltip: Disables the Starfarer's voice lines.
+					Label: 禁用星海旅者语音
+					Tooltip: 禁用星海旅者们的语音。
 				}
 
 				DisableStellarNovaDialogue: {
-					Label: "{$Mods.StarsAbove.Config.DisableStellarNovaDialogue.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DisableStellarNovaDialogue.Tooltip}"
+					Label: 禁用天体新星对话框
+					Tooltip: 禁用激活天体新星时立绘切入出现的对话框
 				}
 
 				DisableStarfarerCommentary: {
-					Label: "{$Mods.StarsAbove.Config.DisableStarfarerCommentary.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DisableStarfarerCommentary.Tooltip}"
+					Label: 禁用星海旅者的评论
+					Tooltip: 完全禁用星海旅者们的评论。
 				}
 
 				DisableStarfarerCommentaryBuffs: {
-					Label: "{$Mods.StarsAbove.Config.DisableStarfarerCommentaryBuffs.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DisableStarfarerCommentaryBuffs.Tooltip}"
+					Label: 禁用星海旅者对增/减益的反应对话
+					Tooltip: 你不会再因为受到增/减益而收到星海旅者的反应对话。
 				}
 
 				DisableStarfarerCommentaryCombat: {
-					Label: "{$Mods.StarsAbove.Config.DisableStarfarerCommentaryCombat.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DisableStarfarerCommentaryCombat.Tooltip}"
+					Label: 禁用星海旅者对战斗的反应对话
+					Tooltip: 你不会再因为击杀敌人而收到星海旅者的反应对话。
 				}
 
 				StarfarerPromptCooldown: {
-					Label: "{$Mods.StarsAbove.Config.StarfarerPromptCooldown.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.StarfarerPromptCooldown.Tooltip}"
+					Label: 星海旅者提示冷却
+					Tooltip: 星海旅者进行提示的冷却时间。若在此期间出现了提示的触发器，请忽略它。不适用于独特的提示（Boss提示等）
 				}
 
 				CommentaryTimer: {
-					Label: "{$Mods.StarsAbove.Config.CommentaryTimer.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.CommentaryTimer.Tooltip}"
+					Label: 星海旅者提示计时器
+					Tooltip: 改变星海旅者在你屏幕上留存的时间
 				}
 
 				DialogueScrollValue: {
-					Label: "{$Mods.StarsAbove.Config.DialogueScrollValue.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DialogueScrollValue.Tooltip}"
+					Label: 星海旅者文本速度
+					Tooltip: 对话在每帧出现的字数。低于2时就会禁用跳字音效。
 				}
 
 				DialogueAudio: {
-					Label: "{$Mods.StarsAbove.Config.DialogueAudio.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DialogueAudio.Tooltip}"
+					Label: 星海旅者文本音效
+					Tooltip: 星海旅者对话时播放的音效。5是无声。
 				}
 
 				InstantText: {
-					Label: "{$Mods.StarsAbove.Config.InstantText.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.InstantText.Tooltip}"
+					Label: 立刻显示文本
+					Tooltip: 无视星海旅者文本速度设置；所有文本都会立刻显示。
 				}
 
 				EnableMusicOverride: {
-					Label: "{$Mods.StarsAbove.Config.EnableMusicOverride.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.EnableMusicOverride.Tooltip}"
+					Label: 武器音乐覆盖其他音乐
+					Tooltip: 启用后，武器的特殊音效将覆盖几乎所有其他音效。
 				}
 
 				DisableWeaponCutIns: {
-					Label: "{$Mods.StarsAbove.Config.DisableWeaponCutIn.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DisableWeaponCutIn.Tooltip}"
+					Label: 禁用武器切入特效
+					Tooltip: 禁用使用某些武器时播放的特效。
 				}
 
 				PromptLoc: {
-					Label: "{$Mods.StarsAbove.Config.PromptLoc.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.PromptLoc.Tooltip}"
-				}
-
-				NovaGaugeLoc: {
-					// Label: Nova Gauge position
-					// Tooltip: ""
-				}
-
-				MovingDialogueAmount: {
-					Label: Moving Dialogue Amount
+					Label: 星海旅者提示位置
 					Tooltip: ""
 				}
 
+				NovaGaugeLoc: {
+					Label: 天体新星提示位置
+					Tooltip: ""
+				}
+
+				MovingDialogueAmount: {
+					Label: 星海旅者菜单移动
+					Tooltip: 调整星海旅者菜单在你移动时的移动幅度。
+				}
+
 				DisableBlur: {
-					// Label: Disable Blur
-					// Tooltip: Disables blur effect from menu/cutscenes.
+					Label: 禁用模糊效果
+					Tooltip: 禁用使用菜单/过场动画时的背景模糊效果。
 				}
 
 				DisableScreenShake: {
-					// Label: Disable Screen Shake
-					// Tooltip: Disables screen shake effects from all sources.
+					Label: 禁用屏幕摇晃
+					Tooltip: 禁用所有来源的屏幕摇晃效果。
 				}
 			}
 
 			StarsAboveServersideConfig: {
-				DisplayName: 星海苍穹服务端配置
+				DisplayName: 星海苍穹设置（服务端）
 
 				DisableTypePenalty: {
-					Label: "{$Mods.StarsAbove.Config.DisableTypePenalty.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DisableTypePenalty.Tooltip}"
+					Label: 禁用切换伤害类型的伤害惩罚
+					Tooltip: 10%的切换伤害类型的伤害惩罚被移除。请注意，某些武器自带这个效果，启用的结果将是那些武器将变得更强。
 				}
 
 				DisableBossAggro: {
-					Label: "{$Mods.StarsAbove.Config.DisableBossAggro.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DisableBossAggro.Tooltip}"
+					Label: 禁用Boss攻击标记
+					Tooltip: 当玩家被Boss瞄准时，头上不再显示标记。这是一个制作中特性。
 				}
 
 				DisableCalamityWeaponBuffs: {
-					Label: "{$Mods.StarsAbove.Config.DisableCalamityWeaponBuffs.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DisableCalamityWeaponBuffs.Tooltip}"
+					Label: 为Mod兼容性禁用全局伤害修改器
+					Tooltip: 当灾厄Mod启用时，不再更改本模组内部分武器的伤害。
 				}
 
 				DisableWeaponRestrictions: {
-					Label: "{$Mods.StarsAbove.Config.DisableWeaponRestrictions.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DisableWeaponRestrictions.Tooltip}"
+					Label: 禁用星相武器的相关限制
+					Tooltip: 禁用对星体和本影星相武器的使用限制。
 				}
 
 				DisableBossEnemySpawnMod: {
-					Label: "{$Mods.StarsAbove.Config.DisableBossEnemySpawnMod.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DisableBossEnemySpawnMod.Tooltip}"
+					Label: 禁用Boss存在时禁止刷怪
+					Tooltip: 禁用所有玩家获得在Boss存在期间不会刷怪的buff。其他Mod可能含有相同效果的buff。
 				}
 
 				DisableManaSicknessChange: {
-					Label: "{$Mods.StarsAbove.Config.DisableManaSicknessChange.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.DisableManaSicknessChange.Tooltip}"
+					Label: 禁用魔力疾病的变更
+					Tooltip: 禁用本模组关于魔力病的变更（魔力病的伤害减少不仅仅作用于魔法伤害，而是作用于所有伤害类型）。注意，这将会使得耗费魔力值的非魔法武器变得超模。
 				}
 
 				ColorblindBoss: {
-					Label: "{$Mods.StarsAbove.Config.ColorblindBoss.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.ColorblindBoss.Tooltip}"
+					Label: 开启色盲模式彭忒希勒娅战
+					Tooltip: 改变了彭忒希勒娅战中某些与颜色有关的机制。
 				}
 
 				DisableCompatibilityMode: {
-					Label: "{$Mods.StarsAbove.Config.SubworldCompatibility.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.SubworldCompatibility.Tooltip}"
+					Label: 多人游戏兼容模式-寰宇之旅修复
+					Tooltip: 当禁用时，允许玩家在多人游戏中进行寰宇之旅。这是已知的错误问题，使用后玩家自行承担风险。当启用时，玩家在天体制图仪上点击对应星球时会掉咯里面的物品。
 				}
 
 				CombatTimer: {
-					Label: "{$Mods.StarsAbove.Config.CombatTimer.Label}"
-					Tooltip: "{$Mods.StarsAbove.Config.CombatTimer.Tooltip}"
+					Label: 战斗计时器
+					Tooltip: 当你攻击敌人或者被敌人攻击后，获得一个以秒为单位的进战计时器。
 				}
 			}
 		}
