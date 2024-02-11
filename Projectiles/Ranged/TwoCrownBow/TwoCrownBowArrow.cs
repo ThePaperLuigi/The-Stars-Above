@@ -80,7 +80,7 @@ namespace StarsAbove.Projectiles.Ranged.TwoCrownBow
                new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(target.Hitbox) },
                Projectile.owner);
 
-            player.GetModPlayer<WeaponPlayer>().terminationGauge += 0.1f;
+            player.GetModPlayer<WeaponPlayer>().terminationGauge += 0.3f;
             player.GetModPlayer<WeaponPlayer>().gaugeChangeAlpha = 1f;
             if (player.GetModPlayer<WeaponPlayer>().terminationGauge >= 100)
             {
