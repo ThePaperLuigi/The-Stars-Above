@@ -3663,6 +3663,11 @@ Mods: {
 				DisplayName: Crystallized Absence
 			}
 
+			Crystallize: {
+				DisplayName: Crystallize
+				Tooltip: ""
+			}
+
 			DragonwardTalisman: {
 				Tooltip:
 					'''
@@ -5717,7 +5722,7 @@ Mods: {
 					Less than 3 slots: The [c/7AE1CE:Foxfrost Mystic] will summon a [c/129BE4:Dancing Foxfire], periodically attacking nearby foes and inflicting Frostburn for 2 seconds
 					3 slots: Two [c/129BE4:Dancing Foxfires] are summoned instead of one
 					The [c/7AE1CE:Foxfrost Mystic] will periodically apply [c/88CEFF:Amaterasu's Grace] to the summoner for 3 seconds, increasing damage to Frostburned foes by 50%
-					6 slots: Both [c/129BE4:Dancing Foxfires] are replaced with [c/12DAE4:Blizzard Foxfires], which attack faster and pierce foes
+					6 slots: Both [c/129BE4:Dancing Foxfires] are replaced with [c/12DAE4:Blizzard Foxfires], which attack faster and pierce foes up to 3 times
 					Frostburn is applied for 12 seconds instead of 2
 					[c/88CEFF:Amaterasu's Grace] becomes permanent
 					9 slots: Three [c/12DAE4:Blizzard Foxfires] are summoned instead of two
@@ -7460,7 +7465,7 @@ Mods: {
 			EssenceOfGold: {
 				Tooltip:
 					'''
-					OObtained after visiting the Hallow
+					Obtained after visiting the Hallow
 					A gift from your Starfarer
 					Utilized in the creation of 'Aurum Edge' (Melee/Magic)
 					'''
@@ -9374,6 +9379,31 @@ Mods: {
 					'Now, sink into everlasting quietude'
 					'''
 			}
+
+			CrystalshotCartridge: {
+				DisplayName: Crystalshot Cartridge
+				Tooltip: ""
+			}
+
+			LonelyBand: {
+				DisplayName: Lonely Band
+				Tooltip: ""
+			}
+
+			OutbackWrangler: {
+				DisplayName: Outback Wrangler
+				Tooltip: ""
+			}
+
+			StrangeScrap: {
+				DisplayName: Strange Scrap
+				Tooltip: ""
+			}
+
+			WetCrowbar: {
+				DisplayName: Wet Crowbar
+				Tooltip: ""
+			}
 		}
 
 		UIElements: {
@@ -10351,6 +10381,7 @@ Mods: {
 			StringOfCursesShot.DisplayName: String Of Curses Shot
 			Charsugar.DisplayName: Charsugar
 			Sugartle.DisplayName: Sugartle
+			Bulbasugar.DisplayName: Bulbasugar
 		}
 
 		Buffs: {

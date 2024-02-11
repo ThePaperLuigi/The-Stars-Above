@@ -3661,6 +3661,11 @@ Mods: {
 				DisplayName: Ausencia cristalizada
 			}
 
+			Crystallize: {
+				// DisplayName: Crystallize
+				// Tooltip: ""
+			}
+
 			DragonwardTalisman: {
 				Tooltip:
 					'''
@@ -9217,6 +9222,31 @@ Mods: {
 					'Now, sink into everlasting quietude'
 					''' */
 			}
+
+			CrystalshotCartridge: {
+				// DisplayName: Crystalshot Cartridge
+				// Tooltip: ""
+			}
+
+			LonelyBand: {
+				// DisplayName: Lonely Band
+				// Tooltip: ""
+			}
+
+			OutbackWrangler: {
+				// DisplayName: Outback Wrangler
+				// Tooltip: ""
+			}
+
+			StrangeScrap: {
+				// DisplayName: Strange Scrap
+				// Tooltip: ""
+			}
+
+			WetCrowbar: {
+				// DisplayName: Wet Crowbar
+				// Tooltip: ""
+			}
 		}
 
 		UIElements: {
@@ -10194,6 +10224,7 @@ Mods: {
 			// StringOfCursesShot.DisplayName: String Of Curses Shot
 			// Charsugar.DisplayName: Charsugar
 			// Sugartle.DisplayName: Sugartle
+			// Bulbasugar.DisplayName: Bulbasugar
 		}
 
 		Buffs: {

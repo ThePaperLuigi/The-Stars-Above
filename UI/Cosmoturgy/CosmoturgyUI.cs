@@ -356,6 +356,12 @@ namespace StarsAbove.UI.Cosmoturgy
             {ItemType<BlackLightbulb>(), 35 },
             {ItemType<OnyxJackal>(), 36 },
 
+            {ItemType<WetCrowbar>(), 37 },
+            {ItemType<CrystalshotCartridge>(), 38 },
+            {ItemType<OutbackWrangler>(), 39 },
+            {ItemType<LonelyBand>(), 40 },
+            {ItemType<StrangeScrap>(), 41 },
+
             {ItemType<TarotCard>(), 100 },
 
 			{ItemType<RangedSigil>(), 301 },
