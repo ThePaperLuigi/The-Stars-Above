@@ -97,7 +97,7 @@ namespace StarsAbove.Items.Weapons.Summon
             {
                 if (player.HasBuff(BuffType<SugarballMinionBuff>()))
                 {
-                    SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, Main.MouseWorld);
+                    SoundEngine.PlaySound(SoundID.Item44, Main.MouseWorld);
 
                     player.GetModPlayer<WeaponPlayer>().sugarballMinionType++;
 
@@ -121,18 +121,34 @@ namespace StarsAbove.Items.Weapons.Summon
                         if (proj.active && (
                             proj.type == ProjectileType<Sugartle>() ||
                             proj.type == ProjectileType<Charsugar>() ||
-                            proj.type == ProjectileType<Charsugar>()
+                            proj.type == ProjectileType<Bulbasugar>()
                             ) && proj.owner == player.whoAmI)
                         {
                             proj.Kill();
                         }
                     }
-
-                    ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Excalibur,
-                new ParticleOrchestraSettings { PositionInWorld = Main.MouseWorld },
-                player.whoAmI);
-                    player.SpawnMinionOnCursor(player.GetSource_FromThis(), player.whoAmI, ProjectileType<Sugartle>(), player.GetWeaponDamage(Item), 0);
-
+                    switch (player.GetModPlayer<WeaponPlayer>().sugarballMinionType)
+                    {
+                        case 0:
+                            ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Excalibur,
+                       new ParticleOrchestraSettings { PositionInWorld = Main.MouseWorld },
+                       player.whoAmI);
+                            player.SpawnMinionOnCursor(player.GetSource_FromThis(), player.whoAmI, ProjectileType<Charsugar>(), player.GetWeaponDamage(Item), 0);
+                            break;
+                        case 1:
+                            ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Excalibur,
+                       new ParticleOrchestraSettings { PositionInWorld = Main.MouseWorld },
+                       player.whoAmI);
+                            player.SpawnMinionOnCursor(player.GetSource_FromThis(), player.whoAmI, ProjectileType<Sugartle>(), player.GetWeaponDamage(Item), 0);
+                            break;
+                        case 2:
+                            ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Excalibur,
+                       new ParticleOrchestraSettings { PositionInWorld = Main.MouseWorld },
+                       player.whoAmI);
+                            player.SpawnMinionOnCursor(player.GetSource_FromThis(), player.whoAmI, ProjectileType<Bulbasugar>(), player.GetWeaponDamage(Item), 0);
+                            break;
+                    }
+                    
                 }
 
             }
@@ -178,7 +194,7 @@ namespace StarsAbove.Items.Weapons.Summon
                 if (proj.active && (
                     proj.type == ProjectileType<Sugartle>() ||
                     proj.type == ProjectileType<Charsugar>() ||
-                    proj.type == ProjectileType<Charsugar>()
+                    proj.type == ProjectileType<Bulbasugar>()
                     ) && proj.owner == player.whoAmI)
                 {
                     proj.Kill();
@@ -198,12 +214,11 @@ namespace StarsAbove.Items.Weapons.Summon
                player.whoAmI);
                     player.SpawnMinionOnCursor(source, player.whoAmI, ProjectileType<Sugartle>(), damage, knockback);
                     return false;
-
                 case 2:
                     ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Excalibur,
                new ParticleOrchestraSettings { PositionInWorld = Main.MouseWorld },
                player.whoAmI);
-                    player.SpawnMinionOnCursor(source, player.whoAmI, type, damage, knockback);
+                    player.SpawnMinionOnCursor(source, player.whoAmI, ProjectileType<Bulbasugar>(), damage, knockback);
                     return false;
             }
 

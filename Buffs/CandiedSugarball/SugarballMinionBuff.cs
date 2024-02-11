@@ -15,7 +15,7 @@ namespace StarsAbove.Buffs.CandiedSugarball
 
 		public override void Update(Player player, ref int buffIndex) {
 			WeaponPlayer modPlayer = player.GetModPlayer<WeaponPlayer>();
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Summon.CandiedSugarball.Charsugar>()] > 0 || player.ownedProjectileCounts[ProjectileType<Projectiles.Summon.CandiedSugarball.Sugartle>()] > 0) {
+			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Summon.CandiedSugarball.Charsugar>()] > 0 || player.ownedProjectileCounts[ProjectileType<Projectiles.Summon.CandiedSugarball.Sugartle>()] > 0 || player.ownedProjectileCounts[ProjectileType<Projectiles.Summon.CandiedSugarball.Bulbasugar>()] > 0) {
 				modPlayer.sugarballMinions = true;
 			}
 			if (!modPlayer.sugarballMinions) {

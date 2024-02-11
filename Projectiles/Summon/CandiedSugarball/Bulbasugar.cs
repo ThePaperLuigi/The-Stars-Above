@@ -7,11 +7,11 @@ using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles.Summon.CandiedSugarball
 {
-    public class Charsugar : ModProjectile
+    public class Bulbasugar : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{
-			Main.projFrames[Projectile.type] = 10;
+			Main.projFrames[Projectile.type] = 1;
 			
 			Main.projPet[Projectile.type] = true;
 			ProjectileID.Sets.LightPet[Projectile.type] = true;
@@ -19,44 +19,40 @@ namespace StarsAbove.Projectiles.Summon.CandiedSugarball
 
 		public override void SetDefaults()
 		{
-			Projectile.CloneDefaults(ProjectileID.MiniMinotaur);
-			AIType = ProjectileID.MiniMinotaur;
-			DrawOriginOffsetY = -8;
-			//AnimationType = ProjectileID.BabyDino;
-			Projectile.light = 1f;
-			DrawOffsetX = -20;
-		}
+            Projectile.width = 36;
+            Projectile.height = 32;
+            Projectile.aiStyle = 0;
+            Projectile.timeLeft = 280;
+            Projectile.penetrate = -1;
+            Projectile.scale = 1f;
+            Projectile.alpha = 0;
+            Projectile.penetrate = -1;
+            Projectile.hostile = false;
+            Projectile.friendly = true;
+			Projectile.tileCollide = true;
+        }
 
 		public override bool PreAI()
 		{
 			Player player = Main.player[Projectile.owner];
-			player.miniMinotaur = false; // Relic from AIType
 			return true;
 		}
 		bool invisible;
 		public override void AI()
 		{
+			DrawOriginOffsetY = 2;
+			Projectile.velocity.Y += 0.26f;
 			Projectile.velocity.X *= 1.00f;
 			Player player = Main.player[Projectile.owner];
 			WeaponPlayer modPlayer = player.GetModPlayer<WeaponPlayer>();
 			
-			if(modPlayer.sugarballMinionType != 0)
+			if(modPlayer.sugarballMinionType != 2)
 			{
                 
                 Projectile.Kill();
 			}
 			Vector2 position = Vector2.Zero;
-			if(Projectile.direction == 1)
-			{
-				position = new Vector2(Projectile.Center.X - 28, Projectile.Center.Y);
-			}
-			else
-			{
-                position = new Vector2(Projectile.Center.X + 10, Projectile.Center.Y);
-
-            }
-            Dust.NewDust(position, 0, 0, DustID.Flare, 0f + Main.rand.Next(-3, 3), 0f + Main.rand.Next(-3, 3), 150, default, 0.5f);
-
+			
             if (player.dead)
 			{
 				modPlayer.sugarballMinions = false;
