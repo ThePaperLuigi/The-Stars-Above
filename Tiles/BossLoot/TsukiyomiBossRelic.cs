@@ -83,7 +83,7 @@ namespace StarsAbove.Tiles.BossLoot
 			// The placeStyle calculated here corresponds to whatever placeStyle you specified on your items that place this tile (Either through Item.placeTile or Item.DefaultToPlacableTile)
 			int placeStyle = frameX / FrameWidth;
 
-			int itemType = ModContent.ItemType<Items.Placeable.BossLoot.VagrantBossRelicItem>();
+			int itemType = ModContent.ItemType<Items.Placeable.BossLoot.TsukiyomiBossRelicItem>();
 
             Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, itemType);
         }
