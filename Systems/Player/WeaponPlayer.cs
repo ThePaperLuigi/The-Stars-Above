@@ -3600,7 +3600,7 @@ namespace StarsAbove.Systems
             }
             if (LVStacks > 0)
             {
-                modifiers.FinalDamage -= LVStacks;
+                modifiers.FinalDamage.Flat -= LVStacks;
                 LVStacks = 0;
             }
             if (Player.HasBuff(BuffType<Buffs.SakuraVengeance.SakuraEarthBuff>()) || Player.HasBuff(BuffType<Buffs.SakuraVengeance.ElementalChaos>()))
