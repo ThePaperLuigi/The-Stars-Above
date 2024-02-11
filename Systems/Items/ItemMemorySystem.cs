@@ -91,6 +91,13 @@ namespace StarsAbove.Systems.Items
         public bool JackalMask;//32
         public bool KnightsShovelhead;//33
 
+        //v2.0.5
+        public bool WetCrowbar;
+        public bool CrystalshotCartridge;
+        public bool OutbackWrangler;
+        public bool LonelyBand;
+        public bool StrangeScrap;
+        
         //Each weapon has a random tarot card effect assigned.
         public bool TarotCard;//100
         public int tarotCardType = -1;
@@ -161,6 +168,7 @@ namespace StarsAbove.Systems.Items
         int check;
         string memoryTooltip;
         string memoryTooltipInfo;
+
         public override bool CanUseItem(Item item, Player player)
         {
             if(player.HasBuff(BuffType<ChoiceGlassesLock>()))
@@ -305,6 +313,11 @@ namespace StarsAbove.Systems.Items
             modPlayer.JackalMask = JackalMask;//32
             modPlayer.KnightsShovelhead = KnightsShovelhead;//33
 
+            modPlayer.WetCrowbar = WetCrowbar;
+            modPlayer.CrystalshotCartridge = CrystalshotCartridge;
+            modPlayer.OutbackWrangler = OutbackWrangler;
+            modPlayer.LonelyBand = LonelyBand;
+            modPlayer.StrangeScrap = StrangeScrap;
             //Each weapon has a random tarot card effect assigned.
             modPlayer.TarotCard = TarotCard;//100
 
@@ -643,6 +656,12 @@ namespace StarsAbove.Systems.Items
             JackalMask = false;//32
             KnightsShovelhead = false;//33
 
+            WetCrowbar = false;
+            CrystalshotCartridge = false;
+            OutbackWrangler = false;
+            LonelyBand = false;
+            StrangeScrap = false;
+
             //Each weapon has a random tarot card effect assigned.
             TarotCard = false;//100
 
@@ -736,6 +755,12 @@ namespace StarsAbove.Systems.Items
             SetMemory(slot, 34, "SimulacraShifter", ref SimulacraShifter, item, player);
             SetMemory(slot, 35, "BlackLightbulb", ref BlackLightbulb, item, player);
             SetMemory(slot, 36, "OnyxJackal", ref JackalMask, item, player);
+
+            SetMemory(slot, 37, "WetCrowbar", ref WetCrowbar, item, player);
+            SetMemory(slot, 38, "CrystalshotCartridge", ref CrystalshotCartridge, item, player);
+            SetMemory(slot, 39, "OutbackWrangler", ref OutbackWrangler, item, player);
+            SetMemory(slot, 40, "LonelyBand", ref LonelyBand, item, player);
+            SetMemory(slot, 41, "StrangeScrap", ref StrangeScrap, item, player);
 
             SetMemory(slot, 301, "RangedSigil", ref RangedSigil, item, player);
             SetMemory(slot, 302, "MagicSigil", ref MagicSigil, item, player);
@@ -940,6 +965,12 @@ namespace StarsAbove.Systems.Items
         public bool JackalMask;//32
         public bool KnightsShovelhead;//33
 
+        public bool WetCrowbar;//
+        public bool CrystalshotCartridge;//
+        public bool OutbackWrangler;//
+        public bool LonelyBand;//
+        public bool StrangeScrap;//
+
         //Each weapon has a random tarot card effect assigned.
         public bool TarotCard;//100
         public int tarotCardType = 0;
@@ -972,6 +1003,7 @@ namespace StarsAbove.Systems.Items
         public int oldHP;
         public int accursedEdgeStacks = 0;
         public float ragebladeStacks = 0f;
+        public int crystalshot;
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
@@ -1151,6 +1183,15 @@ namespace StarsAbove.Systems.Items
                 Player.MinionAttackTargetNPC = target.whoAmI;
                 
             }
+            if (CrystalshotCartridge && Main.rand.NextBool(15))
+            {
+                int k = Item.NewItem(Player.GetSource_OnHit(target), (int)target.position.X + Main.rand.Next(-20, 20), (int)target.position.Y + Main.rand.Next(-20, 20), target.width, target.height, Mod.Find<ModItem>("Crystallize").Type, 1, false);
+                if (Main.netMode == NetmodeID.MultiplayerClient)
+                {
+                    NetMessage.SendData(MessageID.SyncItem, -1, -1, null, k, 1f);
+                }
+
+            }
             if (Player.HasBuff(BuffType<RuinedCrownBuff>()))
             {
                 Player.Heal((int)(damageDone * 0.2f));
@@ -1270,7 +1311,12 @@ namespace StarsAbove.Systems.Items
             {
                 modifiers.DamageVariationScale *= 3f;
             }
-            if(Player.HasBuff(BuffType<AccursedEdge>()))
+            if (WetCrowbar && target.life == target.lifeMax)
+            {
+                modifiers.NonCritDamage += 0.3f;
+                modifiers.CritDamage += 0.5f;
+            }
+            if (Player.HasBuff(BuffType<AccursedEdge>()))
             {
                 modifiers.FinalDamage += 0.4f;
             }
