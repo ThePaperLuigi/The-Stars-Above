@@ -2039,7 +2039,7 @@ namespace StarsAbove.Systems
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             OnHitStarfarerDialogue(target);
-            if (target.lifeMax > 5)
+            if (target.lifeMax > 5 && target.CanBeChasedBy())
             {
                 inCombat = inCombatMax;
             }
@@ -9513,7 +9513,8 @@ namespace StarsAbove.Systems
                     info.Damage -= Player.statMana;
                     Player.statMana = 0;
                     Player.manaRegenDelay = 480;
-
+                    Player.immune = true;
+                    Player.immuneTime = 60;
                     lavenderRefrainMaxManaReduction -= 0.1f;
                 }
             }
@@ -9601,6 +9602,9 @@ namespace StarsAbove.Systems
                     
                     Player.immune = true;
                     Player.immuneTime = 60;
+
+                    inCombat = 1200;
+                    timeAfterGettingHit = 0;
 
                     Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
                     CombatText.NewText(textPos, new Color(122, 113, 153, 255), $"{info.Damage}", false, false);
