@@ -372,8 +372,7 @@ namespace StarsAbove.NPCs.Starfarers
         {
             if (Main.player[NPC.target].dead)
             {
-                //Leave if all players are dead.
-				/*
+                
                 Vector2 vector8 = new Vector2(NPC.Center.X, NPC.Center.Y);
                 for (int d = 0; d < 100; d++)
                 {
@@ -393,7 +392,7 @@ namespace StarsAbove.NPCs.Starfarers
                 }
                 NPC.active = false;
 
-				*/
+				
             }
         }
 
