@@ -9010,7 +9010,7 @@ Mods: {
 					Gain up to 30 bonus damage based on percentage of HP above 60% Max HP
 					Press the Weapon Action Key to swap [c/A9D5F0:Arkhe Alignment] between [c/F0DFA9:Pneuma] and [c/6C5BE8:Ousia], changing this weapon's abilities
 					While attuned to [c/F0DFA9:Pneuma], right click to summon the [c/5BBFE8:Singer of Seas], consuming 1 minion slot (Only one [c/5BBFE8:Singer of Seas] can be summoned at a time)
-					The [c/5BBFE8:Singer of Seas] will heal all allies in a wide radius for 5% of this weapon's damage every 5 seconds
+					The [c/5BBFE8:Singer of Seas] will heal all allies in a wide radius for 5% of this weapon's damage every 5 seconds (Increased to 10% below 200 HP)
 					While attuned to [c/6C5BE8:Ousia], right click to summon 3 [c/5BBFE8:Salon Attendants], consuming 1 minion slot (Only one group of [c/5BBFE8:Salon Attendants] can be summoned at a time)
 					The [c/5BBFE8:Salon Attendants] automatically attack nearby foes with homing bolts
 					Gain Waterwalking while summons are present
