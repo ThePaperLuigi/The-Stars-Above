@@ -1,3 +1,9 @@
+global using Microsoft.Xna.Framework;
+global using Microsoft.Xna.Framework.Graphics;
+global using Terraria;
+global using Terraria.Localization;
+global using Terraria.ModLoader;
+
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -9,14 +15,7 @@ using StarsAbove.SceneEffects.CustomSkies;
 using ReLogic.Content;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
-using StarsAbove.Items;
-using StarsAbove.Items.Weapons;
-using StarsAbove.Items.Weapons.Summon;
-using StarsAbove.Items.Weapons.Ranged;
-using StarsAbove.Items.Weapons.Other;
-using StarsAbove.Items.Weapons.Celestial;
-using StarsAbove.Items.Weapons.Melee;
-using StarsAbove.Items.Weapons.Magic;
+
 using ReLogic.Content.Sources;
 
 using StarsAbove.Systems;
