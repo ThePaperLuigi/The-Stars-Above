@@ -40,6 +40,8 @@ using System.Reflection;
 using Terraria.Audio;
 using StarsAbove.Buffs.TagDamage;
 using Terraria.WorldBuilding;
+using StarsAbove.Projectiles.Summon.ArachnidNeedlepoint;
+using static Humanizer.In;
 
 namespace StarsAbove.Systems.Items
 {
@@ -147,6 +149,12 @@ namespace StarsAbove.Systems.Items
         {
             
         }
+        public List<int> ItemsThatHaveMultiplayerEffects = new List<int>() {
+            ItemType<Suistrume>(),
+            ItemType<Chronoclock>(),
+            ItemType<LegendaryShield>(),
+            ItemType<HunterSymphony>(),
+        };
         public override void SaveData(Item item, TagCompound tag)
         {
             tag["M1"] = itemMemorySlot1;
@@ -199,11 +207,53 @@ namespace StarsAbove.Systems.Items
                 player.AddBuff(BuffType<RuinedCrownBuff>(), 60 * 2);
 
             }
+            if (CrystalshotCartridge && player.altFunctionUse == 2 && !player.HasBuff(BuffType<CrystalshotCooldown>()))
+            {
+                Vector2 velocity = Vector2.Normalize(player.DirectionTo(player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 10f;
+
+                int numberProjectiles = player.GetModPlayer<ItemMemorySystemPlayer>().crystalshot; //random shots
+                for (int i = 0; i < numberProjectiles; i++)
+                {
+                    Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(45)); // 30 degree spread.
+                                                                                                                            // If you want to randomize the speed to stagger the projectiles
+                    float scale = 1f - (Main.rand.NextFloat() * .3f);
+                    perturbedSpeed = perturbedSpeed * scale;
+                    Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, ProjectileType<CrystalshotBullet>(), (int)(item.damage*0.4f), 3, player.whoAmI);
+                }
+
+                for (int d = 0; d < 21; d++)
+                {
+                    Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(47));
+                    float scale = 2f - (Main.rand.NextFloat() * .9f);
+                    perturbedSpeed = perturbedSpeed * scale;
+                    int dustIndex = Dust.NewDust(player.Center, 0, 0, 127, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 2f);
+                    Main.dust[dustIndex].noGravity = true;
+
+                }
+                for (int d = 0; d < 16; d++)
+                {
+                    Vector2 perturbedSpeed = new Vector2(velocity.X / 2, velocity.Y / 2).RotatedByRandom(MathHelper.ToRadians(47));
+                    float scale = 2f - (Main.rand.NextFloat() * .9f);
+                    perturbedSpeed = perturbedSpeed * scale;
+                    int dustIndex = Dust.NewDust(player.Center, 0, 0, 31, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 1f);
+                    Main.dust[dustIndex].noGravity = true;
+                }
+
+            }
+
             if (Trumpet)
             {
                 SoundEngine.PlaySound(StarsAboveAudio.SFX_Trumpet, player.Center);
             }
             return base.UseItem(item, player);
+        }
+        public override void ModifyManaCost(Item item, Player player, ref float reduce, ref float mult)
+        {
+            if (LonelyBand && ItemsThatHaveMultiplayerEffects.Contains(item.type) && Main.netMode == NetmodeID.SinglePlayer)
+            {
+                reduce -= 0.8f;
+            }
+            base.ModifyManaCost(item, player, ref reduce, ref mult);
         }
         int dekuNutCD;
         public override void OnConsumeMana(Item item, Player player, int manaConsumed)
@@ -266,8 +316,8 @@ namespace StarsAbove.Systems.Items
             }
 
             //All effects are processed at the end just in case some weapons have 'buff other effect' effects
-            BuffMemories(player);
-            Memories(player);
+            BuffMemories(player, item);
+            Memories(player, item);
         }
         public override void HoldItem(Item item, Player player)
         {
@@ -689,7 +739,7 @@ namespace StarsAbove.Systems.Items
         }
 
         //Memories which provide buffs to other memories are calculated first.
-        private void BuffMemories(Player player)
+        private void BuffMemories(Player player, Item item)
         {
             if(SigilOfHope)
             {
@@ -710,9 +760,14 @@ namespace StarsAbove.Systems.Items
             player.GetModPlayer<ItemMemorySystemPlayer>().cooldownMod = cooldownReductionMod;
         }
         //All other memories.
-        private void Memories(Player player)
+        private void Memories(Player player, Item item)
         {
-            
+            if(StrangeScrap)
+            {
+                player.GetModPlayer<ItemMemorySystemPlayer>().strangeScrapPriceCopper = (int)MathHelper.Clamp(player.GetModPlayer<ItemMemorySystemPlayer>().strangeScrapPriceCopper, 0, 8000000);
+                item.shopCustomPrice = (int?)(player.GetModPlayer<ItemMemorySystemPlayer>().strangeScrapPriceCopper);
+
+            }
         }
         private void CheckMemories(Item item, int slot, Player player)
         {
@@ -1004,6 +1059,8 @@ namespace StarsAbove.Systems.Items
         public int accursedEdgeStacks = 0;
         public float ragebladeStacks = 0f;
         public int crystalshot;
+        public int strangeScrapPriceCopper;
+        public int wranglerCrits;
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
@@ -1096,6 +1153,40 @@ namespace StarsAbove.Systems.Items
                         Main.dust[dust].velocity = Player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 6f;
                     }
                 }
+                if (OutbackWrangler && !Player.HasBuff(BuffType<NetheriteIngotBuffCooldown>()))
+                {
+                    for (int ir = 0; ir < 20; ir++)
+                    {
+                        Vector2 position = Player.Center;
+                        Dust d = Dust.NewDustPerfect(position, DustID.LifeDrain, null, 240, default, 0.7f);
+                        d.fadeIn = 0.3f;
+                        d.noLight = true;
+                        d.noGravity = true;
+
+                    }
+                    Player.statMana = 0;
+                    Player.manaRegenDelay = 480;
+                    for (int i = 0; i < Main.maxProjectiles; i++)
+                    {
+                        Projectile proj = Main.projectile[i];
+
+                        if (proj.active && proj.owner == Player.whoAmI &&
+                            proj.minion && proj.minionSlots > 0)
+                        {
+                            for (int ir = 0; ir < 20; ir++)
+                            {
+                                Vector2 position = proj.Center;
+                                Dust d = Dust.NewDustPerfect(position, DustID.LifeDrain, null, 240, default, 0.7f);
+                                d.fadeIn = 0.3f;
+                                d.noLight = true;
+                                d.noGravity = true;
+
+                            }
+                            wranglerCrits++;
+                            proj.Kill();
+                        }
+                    }
+                }
                 if (YoumuHilt && !Player.HasBuff(BuffType<PhantomHiltCooldown>()))
                 {
                     //Defense
@@ -1158,6 +1249,10 @@ namespace StarsAbove.Systems.Items
             if(MercenaryAuracite)
             {
                 Player.GetCritChance(DamageClass.Generic) += MercenaryCritChance;
+            }
+            if(crystalshot > 0)
+            {
+                Player.AddBuff(BuffType<CrystalshotPrepped>(), 10);
             }
             base.PreUpdate();
         }
@@ -1223,8 +1318,9 @@ namespace StarsAbove.Systems.Items
                     ragebladeStacks = 0.20f;
                 }
             }
-            if (KnightsShovelhead)
+            if (KnightsShovelhead && !Player.HasBuff(BuffType<ComboCooldown>()))
             {
+                Player.AddBuff(BuffType<ComboCooldown>(), 10);
                 Player.velocity.Y -= 10f;
             }
             if(hit.Crit && powderCharges > 0)
@@ -1304,6 +1400,12 @@ namespace StarsAbove.Systems.Items
                 }
                 
             }
+            if(StrangeScrap)
+            {
+                Main.NewText(strangeScrapPriceCopper);
+
+                strangeScrapPriceCopper += 10;
+            }
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
@@ -1326,6 +1428,10 @@ namespace StarsAbove.Systems.Items
                 {
                     modifiers.FinalDamage += 0.3f;
                 }
+            }
+            if(wranglerCrits > 0)
+            {
+                modifiers.SetCrit();
             }
             if(Player.HasBuff(BuffType<RuinedCrownBuff>()))
             {

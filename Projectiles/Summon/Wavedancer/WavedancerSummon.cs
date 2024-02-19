@@ -78,7 +78,7 @@ namespace StarsAbove.Projectiles.Summon.Wavedancer
                 Projectile.Kill();
             }
             Projectile.timeLeft = 10;
-            if (player.channel)
+            if (player.channel && player.GetModPlayer<WeaponPlayer>().wavedancerHeld)
             {
                 player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (player.Center -
                                new Vector2(Projectile.Center.X + (player.velocity.X * 0.05f), Projectile.Center.Y + (player.velocity.Y * 0.05f))

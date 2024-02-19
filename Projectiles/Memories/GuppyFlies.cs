@@ -33,7 +33,8 @@ namespace StarsAbove.Projectiles.Memories
             Projectile.minion = false;
             AIType = ProjectileID.Bullet;           //Act exactly like default Bullet
             Projectile.DamageType = DamageClass.Generic;
-
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = -1;
         }
         public override void AI()
         {

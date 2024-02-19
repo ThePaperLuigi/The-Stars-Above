@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Projectiles.Summon.Wavedancer;
 using StarsAbove.Buffs.Wavedancer;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Summon
 {
@@ -70,6 +71,7 @@ namespace StarsAbove.Items.Weapons.Summon
 
 		public override void HoldItem(Player player)
 		{
+			player.GetModPlayer<WeaponPlayer>().wavedancerHeld = true;
 			if(!player.channel)
             {
 				player.GetModPlayer<Systems.WeaponPlayer>().wavedancerTarget = player.Center;

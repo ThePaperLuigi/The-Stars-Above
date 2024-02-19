@@ -584,8 +584,14 @@ namespace StarsAbove.NPCs.Starfarers
 			// Finally add the leading rule
 			npcLoot.Add(ExpertRule);
 			npcLoot.Add(notExpertRule);*/
-			//npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Materials.CelestialPrincessGenesisPrecursor>(), 4));
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StellarSpoils>(), 1, 2, 3));
+            //npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Materials.CelestialPrincessGenesisPrecursor>(), 4));
+
+            // Trophies are spawned with 1/10 chance
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.BossLoot.AsphodeneTrophyItem>(), 10));
+            // Trophies are spawned with 1/10 chance
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.BossLoot.EridaniTrophyItem>(), 10));
+
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StellarSpoils>(), 1, 2, 3));
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DescenderGemstone>(), 4, 1, 1));
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PhantomMask>(), 4, 1, 1));
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PowerMoon>(), 4, 1, 1));

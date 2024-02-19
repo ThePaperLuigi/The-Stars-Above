@@ -32,8 +32,8 @@ namespace StarsAbove.Items.Weapons.Ranged
 			Item.DamageType = DamageClass.Ranged;
 			Item.width = 40;
 			Item.height = 20;
-			Item.useTime = 12;
-			Item.useAnimation = 12;
+			Item.useTime = 9;
+			Item.useAnimation = 9;
 			Item.useStyle = 5;
 			Item.noMelee = true; //so the item's animation doesn't do damage
 			Item.knockBack = 4;

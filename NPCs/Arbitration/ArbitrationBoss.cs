@@ -504,8 +504,12 @@ namespace StarsAbove.NPCs.Arbitration
             //Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
             //Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, 0, 0, ModContent.ProjectileType<VagrantSlamSprite>(), 0, 0, Main.myPlayer);
 
-            Vector2 initialMoveTo = new Vector2(14601, 5054);
-            NPC.position = initialMoveTo;
+			if(SubworldSystem.AnyActive())
+			{
+                Vector2 initialMoveTo = new Vector2(14601, 5054);
+                NPC.position = initialMoveTo;
+            }
+            
             //SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Journey, NPC.Center);
 
 

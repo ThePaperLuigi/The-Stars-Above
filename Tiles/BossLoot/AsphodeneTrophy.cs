@@ -6,10 +6,10 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace StarsAbove.Tiles.StellarSpoils
+namespace StarsAbove.Tiles.BossLoot
 {
 	// Simple 3x3 tile that can be placed on a wall
-	public class AsphodeneSelfPortrait : ModTile
+	public class AsphodeneTrophy : ModTile
 	{
 		public override void SetStaticDefaults()
 		{

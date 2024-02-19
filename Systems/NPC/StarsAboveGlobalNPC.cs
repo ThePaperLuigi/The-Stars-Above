@@ -127,9 +127,9 @@ namespace StarsAbove.Systems
                     npc.DelBuff(npc.FindBuffIndex(BuffID.OnFire));
                     npc.DelBuff(npc.FindBuffIndex(BuffType<VerdantEmbrace>()));
 
-                    if (npc.life > Math.Min((int)(npc.lifeMax * 0.03), 120))
+                    if (npc.life > Math.Min((int)(npc.lifeMax * 0.1), 120))
                     {
-                        npc.life -= Math.Min((int)(npc.lifeMax * 0.03), 120);
+                        npc.life -= Math.Min((int)(npc.lifeMax * 0.1), 120);
                     }
                     else
                     {
@@ -137,7 +137,7 @@ namespace StarsAbove.Systems
                     }
 
                     Rectangle textPos = new Rectangle((int)npc.position.X, (int)npc.position.Y - 20, npc.width, npc.height);
-                    CombatText.NewText(textPos, new Color(230, 164, 164, 240), $"{Math.Min((int)(npc.lifeMax * 0.03), 120)}", false, false);
+                    CombatText.NewText(textPos, new Color(230, 164, 164, 240), $"{Math.Min((int)(npc.lifeMax * 0.1), 120)}", false, false);
                     return;
                 }
                 if (npc.HasBuff(BuffID.Frostburn))
@@ -145,9 +145,9 @@ namespace StarsAbove.Systems
                     npc.DelBuff(npc.FindBuffIndex(BuffID.Frostburn));
                     npc.DelBuff(npc.FindBuffIndex(BuffType<VerdantEmbrace>()));
 
-                    if (npc.life > Math.Min((int)(npc.lifeMax * 0.03), 120))
+                    if (npc.life > Math.Min((int)(npc.lifeMax * 0.1), 120))
                     {
-                        npc.life -= Math.Min((int)(npc.lifeMax * 0.03), 120);
+                        npc.life -= Math.Min((int)(npc.lifeMax * 0.1), 120);
                     }
                     else
                     {
@@ -163,9 +163,9 @@ namespace StarsAbove.Systems
                     npc.DelBuff(npc.FindBuffIndex(BuffType<VerdantEmbrace>()));
 
                     npc.DelBuff(npc.FindBuffIndex(BuffID.CursedInferno));
-                    if (npc.life > Math.Min((int)(npc.lifeMax * 0.03), 120))
+                    if (npc.life > Math.Min((int)(npc.lifeMax * 0.1), 120))
                     {
-                        npc.life -= Math.Min((int)(npc.lifeMax * 0.03), 120);
+                        npc.life -= Math.Min((int)(npc.lifeMax * 0.1), 120);
                     }
                     else
                     {
@@ -180,9 +180,9 @@ namespace StarsAbove.Systems
                     npc.DelBuff(npc.FindBuffIndex(BuffType<VerdantEmbrace>()));
 
                     npc.DelBuff(npc.FindBuffIndex(BuffID.ShadowFlame));
-                    if (npc.life > Math.Min((int)(npc.lifeMax * 0.03), 120))
+                    if (npc.life > Math.Min((int)(npc.lifeMax * 0.1), 120))
                     {
-                        npc.life -= Math.Min((int)(npc.lifeMax * 0.03), 120);
+                        npc.life -= Math.Min((int)(npc.lifeMax * 0.1), 120);
                     }
                     else
                     {

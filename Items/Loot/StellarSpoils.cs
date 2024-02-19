@@ -23,6 +23,8 @@ using StarsAbove.Items.Vanity.BaselessBlade;
 using StarsAbove.Items.Vanity.OceanHuedHunter;
 using StarsAbove.Items.Armor.StarfarerArmor;
 using StarsAbove.Items.Memories;
+using StarsAbove.Tiles.StellarSpoils;
+using StarsAbove.Items.Placeable.StellarSpoils;
 
 namespace StarsAbove.Items.Loot
 {
@@ -121,7 +123,8 @@ namespace StarsAbove.Items.Loot
                 ItemType<ToMurder>(),
                 ItemType<EmberFlask>(),
                 ItemType<ShepherdSunstone>(),
-                ItemType<Poltergrasp5000>()
+                ItemType<Poltergrasp5000>(),
+                ItemType<MiningPaintingItem>()
                 ));
 
             IItemDropRule StarArmorRule = ItemDropRule.Common(ItemType<StarArmorHead>(), 1);

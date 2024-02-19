@@ -23,9 +23,9 @@ namespace StarsAbove.Projectiles.Ranged.StringOfCurses
         //The dust that fires from the barrel after shooting.
         public override int FlashDustID => Terraria.ID.DustID.GemSapphire; 
         //The distance the gun's muzzle is relative to the player. Remember this also is influenced by base distance.
-        public override int MuzzleDistance => 55;
+        public override int MuzzleDistance => 45;
         //The distance the gun is relative to the player.
-        public override float BaseDistance => 30;
+        public override float BaseDistance => 25;
         public override int StartingState => 0;
         public override bool KillOnIdle => true;
         public override int ScreenShakeTime => 100; //100 is disabled
@@ -35,7 +35,7 @@ namespace StarsAbove.Projectiles.Ranged.StringOfCurses
         }
         public override void SetDefaults()
         {
-            Projectile.width = 130;
+            Projectile.width = 120;
             Projectile.height = 64;
 
             Projectile.ignoreWater = true;

@@ -75,7 +75,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = "Vorpal Assault";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.Vagrant.VorpalAssault");//The name of the attack.
 				npc.ai[3] = 50;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.

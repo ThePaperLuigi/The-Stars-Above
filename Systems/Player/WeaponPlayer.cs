@@ -323,6 +323,7 @@ namespace StarsAbove.Systems
         public Vector2 karnaTarget;
 
         //Wavedancer
+        public bool wavedancerHeld;
         public Vector2 wavedancerTarget;
         public Vector2 wavedancerPosition;
         public bool WavedancerMinion = false;
@@ -3771,6 +3772,7 @@ namespace StarsAbove.Systems
             {
                 rebellionGauge = 0;
             }
+            wavedancerHeld = false;
             RebellionHeld = false;
             DragaliaFoundHeld = false;
             DraggedBelowHeld = false;

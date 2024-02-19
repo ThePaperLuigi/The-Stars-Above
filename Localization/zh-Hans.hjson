@@ -3608,6 +3608,8 @@ Mods: {
 			StarfarerBossWallsNPC.DisplayName: 星海旅者墙 N P C
 		}
 
+		// BossAttacks.Vagrant.VorpalAssault: Vorpal Assault
+
 		Tiles: {
 			VendingMachine.MapEntry: 自动售货机
 			CelestriadRoot.MapEntry: 空天之根
@@ -9360,27 +9362,90 @@ Mods: {
 
 			CrystalshotCartridge: {
 				// DisplayName: Crystalshot Cartridge
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					Attacking foes has a chance to drop Crystalshot which can be picked up (Up to 6)
+					If this weapon has a right-click ability, it now fires a spread of short ranged bullets when used, dealing 40% weapon damage per bullet (12 second cooldown)
+					Up to 12 bullets are fired per Crystalshot acquired
+					'Fire!! (with rocks)'
+					''' */
+				/* TooltipAttached:
+					'''
+					Attacking foes has a chance to drop Crystalshot which can be picked up (Up to 6)
+					If this weapon has a right-click ability, it now fires a spread of short ranged bullets when used, dealing 40% weapon damage per bullet (12 second cooldown)
+					Up to 12 bullets are fired per Crystalshot acquired
+					''' */
 			}
 
 			LonelyBand: {
 				// DisplayName: Lonely Band
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					In Singleplayer, if this weapon has effects that mostly benefit allies in Multiplayer, its mana cost is reduced by 80%
+					''' */
+				// TooltipAttached: In Singleplayer, if this weapon has effects that mostly benefit allies in Multiplayer, its mana cost is reduced by 80%
 			}
 
 			OutbackWrangler: {
 				// DisplayName: Outback Wrangler
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					Minions target foes struck by this weapon
+					Press the Weapon Memory Key to move all sentries to your position (6 second cooldown)
+					Pressing the Weapon Memory Key while the prior ability's cooldown is active will instead reduce Mana to 0 and destroy all minions
+					Gain a guaranteed critical strike for each minion destroyed (Minion must consume minion slots)
+					'Well, guess that'll do'
+					''' */
+				/* TooltipAttached:
+					'''
+					Minions target foes struck by this weapon
+					Press the Weapon Memory Key to reduce Mana to 0 and destroy all minions (20 second cooldown)
+					Gain a guaranteed critical strike for each minion destroyed (Minion must consume minion slots)
+					''' */
 			}
 
 			StrangeScrap: {
 				// DisplayName: Strange Scrap
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					Weapon value is reset to 0 when equipped
+					Defeating foes increases this weapon's value by 1 copper, up to 8 platinum
+					'A great asset to the Company'
+					''' */
+				/* TooltipAttached:
+					'''
+					Weapon value is reset to 0 when equipped
+					Defeating foes increases this weapon's value by 1 copper, up to 8 platinum
+					''' */
 			}
 
 			WetCrowbar: {
 				// DisplayName: Wet Crowbar
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					Attacks against foes at full HP deal 30% increased damage; If this attack is a critical strike, deal 50% increased damage instead
+					''' */
+				// TooltipAttached: Attacks against foes at full HP deal 30% increased damage; If this attack is a critical strike, deal 50% increased damage instead
+			}
+
+			AsphodeneTrophyItem: {
+				// DisplayName: Asphodene's Self Portrait
 				// Tooltip: ""
+			}
+
+			EridaniTrophyItem: {
+				// DisplayName: Eridani's Self Portrait
+				// Tooltip: ""
+			}
+
+			MiningPaintingItem: {
+				// DisplayName: Unorthodox Mining
+				// Tooltip: "'I just needed a little copper!'"
 			}
 		}
 
@@ -10360,6 +10425,7 @@ Mods: {
 			// Charsugar.DisplayName: Charsugar
 			// Sugartle.DisplayName: Sugartle
 			// Bulbasugar.DisplayName: Bulbasugar
+			// CrystalshotBullet.DisplayName: Crystalshot Bullet
 		}
 
 		Buffs: {
@@ -13006,6 +13072,21 @@ Mods: {
 			Necrosis: {
 				// DisplayName: Necrosis
 				// Description: Stats are reduced
+			}
+
+			CrystalshotCooldown: {
+				// DisplayName: Crystalshot Cooldown
+				// Description: Mods.StarsAbove.Buffs.CrystalshotCooldown.Description
+			}
+
+			CrystalshotPrepped: {
+				// DisplayName: Crystalshot Prepped
+				// Description: Mods.StarsAbove.Buffs.CrystalshotPrepped.Description
+			}
+
+			OutbackWranglerCooldown: {
+				// DisplayName: Outback Wrangler Cooldown
+				// Description: Mods.StarsAbove.Buffs.OutbackWranglerCooldown.Description
 			}
 		}
 
