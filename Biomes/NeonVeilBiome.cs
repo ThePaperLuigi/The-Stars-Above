@@ -35,7 +35,6 @@ namespace StarsAbove.Biomes
 
 		// Select all the scenery
 		//public override ModWaterStyle WaterStyle => ModContent.Find<ModWaterStyle>("StarsAbove/ExampleWaterStyle"); // Sets a water style for when inside this biome
-		public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle => ModContent.Find<ModSurfaceBackgroundStyle>("StarsAbove/NeonVeilBackgroundStyle");
 		public override CaptureBiome.TileColorStyle TileColorStyle => CaptureBiome.TileColorStyle.Normal;
 
 		// Select Music
@@ -52,9 +51,9 @@ namespace StarsAbove.Biomes
             bool b1 = ModContent.GetInstance<NeonVeilTileCount>().tileCount >= 40;
 
             bool b2 = player.ZoneUnderworldHeight;
-            return b1 && b2;
+            return b1;
         }
-        public override SceneEffectPriority Priority => SceneEffectPriority.BiomeLow;
+        public override SceneEffectPriority Priority => SceneEffectPriority.Environment;
 
     }
 }

@@ -9469,6 +9469,11 @@ Mods: {
 				DisplayName: Unorthodox Mining
 				Tooltip: "'I just needed a little copper!'"
 			}
+
+			DeepAsphalt: {
+				DisplayName: Deep Asphalt
+				Tooltip: ""
+			}
 		}
 
 		UIElements: {
@@ -13227,6 +13232,11 @@ Mods: {
 			OtherworldBiome: {
 				DisplayName: Otherworld Biome
 				TownNPCDialogueName: the Otherworld Biome
+			}
+
+			NeonVeilBiome: {
+				DisplayName: Neon Veil Biome
+				TownNPCDialogueName: the Neon Veil Biome
 			}
 		}
 

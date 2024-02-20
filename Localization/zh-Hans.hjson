@@ -9447,6 +9447,11 @@ Mods: {
 				// DisplayName: Unorthodox Mining
 				// Tooltip: "'I just needed a little copper!'"
 			}
+
+			DeepAsphalt: {
+				// DisplayName: Deep Asphalt
+				// Tooltip: ""
+			}
 		}
 
 		UIElements: {
@@ -13076,17 +13081,17 @@ Mods: {
 
 			CrystalshotCooldown: {
 				// DisplayName: Crystalshot Cooldown
-				// Description: Mods.StarsAbove.Buffs.CrystalshotCooldown.Description
+				// Description: ""
 			}
 
 			CrystalshotPrepped: {
 				// DisplayName: Crystalshot Prepped
-				// Description: Mods.StarsAbove.Buffs.CrystalshotPrepped.Description
+				// Description: ""
 			}
 
 			OutbackWranglerCooldown: {
 				// DisplayName: Outback Wrangler Cooldown
-				// Description: Mods.StarsAbove.Buffs.OutbackWranglerCooldown.Description
+				// Description: ""
 			}
 		}
 
@@ -13197,6 +13202,11 @@ Mods: {
 			OtherworldBiome: {
 				DisplayName: 异象
 				TownNPCDialogueName: 异象
+			}
+
+			NeonVeilBiome: {
+				// DisplayName: Neon Veil Biome
+				// TownNPCDialogueName: the Neon Veil Biome
 			}
 		}
 
