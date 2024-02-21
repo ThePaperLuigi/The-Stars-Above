@@ -3638,6 +3638,22 @@ Mods: {
 			WealthFocusTier3Tile.MapEntry: Mods.StarsAbove.MapObject.StellarFoci
 			ReprintedBlueprintTile.MapEntry: 铺设的重绘的蓝图
 			CosmoturgyStation.MapEntry: 宙术站点
+			// CorundumOre.MapEntry: Corundum Ore
+			// NeonVeilPylon.MapEntry: Neon Veil Pylon
+			// CubicMountedSignageTile.MapEntry: Cubic Mounted Signage Tile
+			// DeliciousSignageTile.MapEntry: Delicious Signage Tile
+			// DisusedSignageTile.MapEntry: Disused Signage Tile
+			// GenericMountedSignageTile.MapEntry: Generic Mounted Signage Tile
+			// GeometricSignageTile.MapEntry: Geometric Signage Tile
+			// HologramPlinthTreeTile.MapEntry: Hologram Plinth Tree Tile
+			// LockerAlternateTile.MapEntry: Locker Alternate Tile
+			// LockerDefaultTile.MapEntry: Locker Default Tile
+			// PairedMountedSignageTile.MapEntry: Paired Mounted Signage Tile
+			// ParabolicSignageTile.MapEntry: Parabolic Signage Tile
+			// TrashBinTile.MapEntry: Trash Bin Tile
+			// TrashDefaultTile.MapEntry: Trash Default Tile
+			// VendingStationTile.MapEntry: Vending Station Tile
+			// VendorStationTile.MapEntry: Vendor Station Tile
 		}
 
 		Items: {
@@ -9452,6 +9468,81 @@ Mods: {
 				// DisplayName: Deep Asphalt
 				// Tooltip: ""
 			}
+
+			NeonVeilPylonItem: {
+				// DisplayName: Neon Veil Pylon
+				// Tooltip: ""
+			}
+
+			Veilstone: {
+				// DisplayName: Veilstone
+				// Tooltip: ""
+			}
+
+			CubicMountedSignage: {
+				// DisplayName: Cubic Mounted Signage
+				// Tooltip: ""
+			}
+
+			DeliciousSignage: {
+				// DisplayName: Delicious Signage
+				// Tooltip: ""
+			}
+
+			DisusedSignage: {
+				// DisplayName: Disused Signage
+				// Tooltip: ""
+			}
+
+			GenericMountedSignage: {
+				// DisplayName: Generic Mounted Signage
+				// Tooltip: ""
+			}
+
+			GeometricSignage: {
+				// DisplayName: Geometric Signage
+				// Tooltip: ""
+			}
+
+			HologramPlinthTree: {
+				// DisplayName: Hologram Plinth Tree
+				// Tooltip: ""
+			}
+
+			LockerAlternate: {
+				// DisplayName: Locker Alternate
+				// Tooltip: ""
+			}
+
+			LockerDefault: {
+				// DisplayName: Locker Default
+				// Tooltip: ""
+			}
+
+			PairedMountedSignage: {
+				// DisplayName: Paired Mounted Signage
+				// Tooltip: ""
+			}
+
+			ParabolicSignage: {
+				// DisplayName: Parabolic Signage
+				// Tooltip: ""
+			}
+
+			TrashDefault: {
+				// DisplayName: Trash Default
+				// Tooltip: ""
+			}
+
+			VendingStation: {
+				// DisplayName: Vending Station
+				// Tooltip: ""
+			}
+
+			VendorStation: {
+				// DisplayName: Vendor Station
+				// Tooltip: ""
+			}
 		}
 
 		UIElements: {
@@ -13205,8 +13296,8 @@ Mods: {
 			}
 
 			NeonVeilBiome: {
-				// DisplayName: Neon Veil Biome
-				// TownNPCDialogueName: the Neon Veil Biome
+				// DisplayName: Neon Veil
+				// TownNPCDialogueName: the Neon Veil
 			}
 		}
 
@@ -13397,5 +13488,8 @@ Mods: {
 				}
 			}
 		}
+
+		// WorldGen.OrePassMessage: Mods.StarsAbove.WorldGen.OrePassMessage
+		// Conditions.InNeonVeil: Mods.StarsAbove.Conditions.InNeonVeil
 	}
 }

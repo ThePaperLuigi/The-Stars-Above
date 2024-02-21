@@ -5,6 +5,7 @@ using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
 using ReLogic.Content;
+using StarsAbove.Biomes;
 using SubworldLibrary;
 using System.Reflection;
 using Terraria;
@@ -14,7 +15,11 @@ using Terraria.UI;
 
 namespace StarsAbove.Systems
 {
-
+    public static class ModConditions
+    {
+        public static Condition InNeonVeil = new Condition("Mods.StarsAbove.Conditions.InNeonVeil", () => Main.LocalPlayer.InModBiome<NeonVeilBiome>());
+        //public static Condition DownedMinionBoss = new("Mods.ExampleMod.Conditions.DownedMinionBoss", () => DownedBossSystem.downedMinionBoss);
+    }
 
     public class StarsAboveModSystem : ModSystem
     {

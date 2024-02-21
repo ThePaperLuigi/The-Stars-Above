@@ -7,7 +7,7 @@ namespace StarsAbove.Tiles.CyberWorld
 	{
 		public override void SetStaticDefaults() {
 			Main.tileSolid[Type] = true;
-			Main.tileMergeDirt[Type] = false;
+			Main.tileMergeDirt[Type] = true;
 			Main.tileBlockLight[Type] = false;
 			Main.tileLighted[Type] = false;
             AddMapEntry(new Color(18, 23, 23));

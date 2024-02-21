@@ -18,8 +18,8 @@ namespace StarsAbove.Items.Placeable.CyberWorld
 		public override void SetDefaults() {
 			Item.width = 12;
 			Item.height = 12;
-			Item.maxStack = 999;
-			Item.useTurn = true;
+            Item.maxStack = 9999;
+            Item.useTurn = true;
 			Item.autoReuse = true;
 			Item.useAnimation = 15;
 			Item.useTime = 10;
@@ -30,8 +30,12 @@ namespace StarsAbove.Items.Placeable.CyberWorld
 		}
 
 		public override void AddRecipes() {
-			
-		}
+            /*CreateRecipe(1)
+				.AddIngredient(ItemID.AsphaltBlock, 1)
+                .AddIngredient(ItemID.AshBlock, 1)
+                .AddTile(TileID.Anvils)
+                .Register();*/
+        }
 
 		
 	}

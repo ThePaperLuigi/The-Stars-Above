@@ -48,18 +48,22 @@ namespace StarsAbove.Tiles.CyberWorld
 			Player player = Main.player[k];
 			if (player.active)
 				{
-					switch (Main.rand.Next(2))
+					if(Main.rand.NextBool(5))
 					{
-						case 0:
-							player.QuickSpawnItem(player.GetSource_FromThis(), Mod.Find<ModItem>("Onigiri").Type);
-							counter++;
-							break;
-						case 1:
-							player.QuickSpawnItem(player.GetSource_FromThis(), Mod.Find<ModItem>("JojaCola").Type);
-							counter++;
-							break;
-						
-					}
+                        switch (Main.rand.Next(2))
+                        {
+                            case 0:
+                                player.QuickSpawnItem(player.GetSource_FromThis(), Mod.Find<ModItem>("Onigiri").Type);
+                                counter++;
+                                break;
+                            case 1:
+                                player.QuickSpawnItem(player.GetSource_FromThis(), ItemID.JojaCola);
+                                counter++;
+                                break;
+
+                        }
+                    }
+					
 				}
 			}
 			return true;
