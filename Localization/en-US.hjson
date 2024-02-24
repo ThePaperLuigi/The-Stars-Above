@@ -3608,7 +3608,149 @@ Mods: {
 			StarfarerBossWallsNPC.DisplayName: Starfarer Boss Walls N P C
 		}
 
-		BossAttacks.Vagrant.VorpalAssault: Vorpal Assault
+		BossAttacks: {
+			//Vagrant
+			VorpalAssault: Vorpal Assault
+			VorpalBarrage: Vorpal Barrage
+			VorpalSnipe: Vorpal Snipe
+			VorpalSiege: Vorpal Siege
+			InverseStarfall: Inverse Starfall
+			Starfall: Starfall
+			HypertunedStarfall: Hypertuned Starfall
+			HypertunedInverseStarfall: Hypertuned Inverse Starfall
+			MeteorShower: Meteor Shower
+			DemiPrototokia: Demi-Prototokia
+			StarSundering: Star Sundering
+			GeneralRelativity: General Relativity
+			AdvancedRelativity: Advanced Relativity
+			Microcosmos: Microcosmos
+			//Thespian
+			PhlogistonPyrotechnics: Phlogiston Pyrotechnics
+			Lixiviate: Lixiviate
+			AthanoricArena: Athanoric Arena
+			ParadigmOfChaos: Paradigm Of Chaos
+			RingmastersWill: Ringmaster's Will
+			AlchemicalAnarchy: Alchemical Anarchy
+			LetsCelebrate: Let's Celebrate!
+			AethericAlkaheist: Aetheric Alkaheist
+			//Dioskouroi
+			PhyrricGemini: Phyrric Gemini
+			BlazingAzimuth: Blazing Azimuth
+			Balefire: Balefire
+			RiteOfIgnition: Rite Of Ignition
+			WallOfIgnition: Wall Of Ignition
+			InfernoOfIgnition: Inferno Of Ignition
+			Exoflare: Exoflare
+			Eruption: Eruption
+			BalebornClash: Baleborn's Clash
+			FreezingAzimuth: Freezing Azimuth
+			ChillingHail: Chilling Hail
+			DiamondDust: Diamond Dust
+			FrozenArsenal: Frozen Arsenal
+			ArmoryOfIce: Armory Of Ice
+			//Penthesilea
+			ArcipluvianArcana: Arcipluvian Arcana
+			InkOver: Ink Over
+			ArtisticDissonance: Artistic Dissonance
+			LinearMystics: Linear Mystics
+			SplatteredSundering: Splattered Sundering
+			ElegantBrushwork: Elegant Brushwork
+			EfflouresentBrushwork: Efflouresent Brushwork
+			SpilledViolet: Spilled Violet
+			Rhabtophobia: Rhabtophobia
+			BlottedWhims: Blotted Whims
+			ChromaticCascade: Chromatic Cascade
+			//Starfarers
+			TwinPrototokia: Twin Prototokia
+			GeminiBurst: Gemini Burst
+			//Nalhaun
+			InfernalIgnition: Infernal Ignition
+			Relinquishment: Relinquishment
+			MonarchFeint: Monarch's Feint
+			BurnishedBladework: Burnished Bladework
+			IvoryAdmonishment: Ivory Admonishment
+			RightwardRend: Rightward Rend
+			DelayedRightwardRend: Delayed Rightward Rend
+			LeftwardRend: Leftward Rend
+			DelayedLeftwardRend: Delayed Leftward Rend
+			InnerAgony: Inner Agony
+			DelayedInnerAgony: Delayed Inner Agony
+			OuterAgony: Outer Agony
+			DelayedOuterAgony: Delayed Outer Agony
+			VelvetApogee: VelvetApogee
+			VelvetAzimuth: Velvet Azimuth
+			CarrionCall: Carrion Call
+			Apostasy: Apostasy
+			//Arbitration
+			ShadowsWithal: Shadows Withal
+			DarkDeluge: Dark Deluge
+			OrdainedEnd: Ordained End
+			DeathRecital: Death Recital
+			DarkDesign: Dark Design
+			StygianAugur: Stygian Augur
+			BloodMoon: Blood Moon
+			SeveranceOfFate: Severance Of Fate
+			Titanomachia: Titanomachia
+			VisionsBeyond: Visions Beyond
+			Argyropeia: Argyropeia
+			//The Warrior of Light
+			TheBitterEnd: The Bitter End
+			CoruscantSaber: Coruscant Saber
+			ImbuedSaber: Imbued Saber
+			ImbuedCoruscance: Imbued Coruscance
+			SearingLight: Searing Light
+			HopesConfluence: Hope's Confluence
+			EphemeralEdge: Ephemeral Edge
+			AbsoluteSummoning: Absolute Summoning
+			PassageOfArms: Passage of Arms
+			Ascendance: Ascendance
+			AbsoluteZero: Absolute Zero
+			RadiantReprobation: Radiant Reprobation
+			RefulgentReprobation: Refulgent Reprobation
+			ResoluteReprobation: Resolute Reprobation
+			AbsoluteFire: Absolute Fire
+			AbsoluteIce: Absolute Ice
+			Transplacement: Transplacement
+			ScionsAndSinners: Scions And Sinners
+			ToTheLimit: To The Limit
+			ArsLaevateinn: Ars Laevateinn
+			GardenOfAvalon: Garden Of Avalon
+			MortalInstants: Mortal Instants
+			Katakrisis: Katakrisis
+			ParadiseLost: Paradise Lost
+			//Tsukiyomi
+			AsAboveEverBelow: As Above, Ever Below
+			EdinGenesisQuasar: Edin Genesis Quasar
+			TheFirstAspect: The First Aspect
+			ThreadsOfFate: Threads Of Fate
+			HypertunedMeteorShower: Hypertuned Meteor Shower
+			Anosios: Anosios
+			AnosiosTriumverate: AnosiosTriumverate
+			CelestialOpposition: CelestialOpposition
+			HypertunedCelestialOpposition: Hypertuned Celestial Opposition
+			CelestialPandaemonium: Celestial Pandaemonium
+			OriginStarfall: Origin Starfall
+			OriginStarsnipe: Origin Starsnipe
+			CosmicUpsurge: Cosmic Upsurge
+			GraspingVoid: Grasping Void
+			AethericDisruption: Aetheric Disruption
+			CarianDarkMoon: Carian Dark Moon
+			HypertunedCarianDarkMoon: Hypertuned Carian Dark Moon
+			CaesuraOfDespair: Caesura Of Despair
+			KeyOfTheKingsLaw: Key of the King's Law
+			HypertunedKeyOfTheKingsLaw: Hypertuned Key of the King's Law
+			StygianMemento: Stygian Memento
+			HypertunedStygianMemento: Hypertuned Stygian Memento
+			VoiceOfTheOutbreak: Voice Of The Outbreak
+			HypertunedVoiceOfTheOutbreak: Hypertuned Voice Of The Outbreak
+			ShadowlessCerulean: Shadowless Cerulean
+			Takonomicon: Takonomicon
+			LuminaryWand: Luminary Wand
+			JetstreamBloodshed: Jetstream Bloodshed
+			BuryTheLight: Bury The Light
+			DeathInFourActs: Death In Four Acts
+			HypertunedDeathInFourActs: Hypertuned Death In Four Acts
+		}
 
 		Tiles: {
 			VendingMachine.MapEntry: Vending Machine
@@ -9318,16 +9460,28 @@ Mods: {
 				DisplayName: Candied Sugar Ball
 				Tooltip:
 					'''
-					Use to summon a [Sweetened Monster], consuming 1 minion slot (Only one [Sweetened Monster] can be summoned at a time)
-					When a minion deals damage, the [Sweetened Monster] will follow-up with an attack (Cooldown varies per type)
-					Press the Weapon Action Key to cycle between each [Sweetened Monster] (Normal activation moves the [Sweetened Monster] to your cursor)
-					Each [Sweetened Monster] utilizes different attacks
-					[Charsugar]: Attacks with close-ranged flames which inflict Hellfire for 6 seconds on hit (2 second cooldown)
-					When active, friendly minions deal 15% more damage to foes inflicted with Hellfire
-					[Sugartle]: Attacks with piercing long-ranged water beams (4 second cooldown)
-					If this attack would be empowered by summon tag damage, the attack becomes a critical strike
-					[Bulbasugar]: Acts like a sentry firing a spread of poisonous seeds, with a 20% chance of inflicting Poison for 12 seconds on hit (0.5 second cooldown)
-					If the foe is already inflicted with Poison, additionally inflict Venom for 6 seconds
+					Use to summon a trio of [c/FAD1FE:Sweetened Monsters], consuming 2 minion slots (Only one trio can be summoned at a time)
+					Press the Weapon Action Key to cycle between each [c/FAD1FE:Sweetened Monster], empowering them
+					Each [c/FAD1FE:Sweetened Monster] utilizes different attacks
+					[c/FEB2D8:Charsugar]: Attacks with short-ranged flame blasts which inflict Hellfire for 20 seconds on hit
+					This attack is treated as flamethrower damage and can deal critical strikes
+					When empowered: cooldown between attacks is reduced and damage is increased by 15
+					[c/B2F5FE:Sugartle]: Fires a piercing bubble that has a 20% chance to inflict [c/4A91FF:Riptide] for 4 seconds
+					When a minion strikes an enemy with [c/4A91FF:Riptide], they take 30% extra damage, removing [c/4A91FF:Riptide]
+					When empowered: Riptide is guaranteed to be inflicted
+					[c/C4FEB2:Bulbasugar]: Stays stationary while firing a spread of homing seeds
+					Can be moved with re-use; inherits both minion and sentry bonuses
+					When empowered: Fires 3 more seeds, and seeds have a 10% chance of dealing a critical strike
+					'''
+			}
+
+			EssenceOfSugar: {
+				DisplayName: Essence Of Sugar
+				Tooltip:
+					'''
+					Obtained after defeating Queen Slime
+					A gift from your Starfarer
+					Utilized in the creation of 'Candied Sugar Ball' (Summon)
 					'''
 			}
 
@@ -9349,6 +9503,16 @@ Mods: {
 					'''
 			}
 
+			EssenceOfThePhoenix: {
+				DisplayName: Essence Of The Phoenix
+				Tooltip:
+					'''
+					Obtained after defeating ???
+					A gift from your Starfarer
+					Utilized in the creation of 'Starphoenix Funnel' (Summon)
+					'''
+			}
+
 			LegendaryShield: {
 				DisplayName: Legendary Shield
 				Tooltip:
@@ -9362,8 +9526,18 @@ Mods: {
 					[c/FFAB4D:Melee]: [Hero's Bulwark] negates the first instance of damage taken, but is then removed
 					[c/EF4DFF:Magic]: [Hero's Bulwark] grants full Mana every time you take damage
 					[c/4DFF5B:Ranged]: [Hero's Bulwark] empowers critical strikes by 40%
-					[c/00CDFF:Summon]: Standing near minions while under the effect of [Hero's Bulwark] increases their damage by 30%
+					[c/00CDFF:Summon]: [Hero's Bulwark] increases minion damage by 5% of your defense
 					[Other]: [Hero's Bulwark] increases defense by an additional 5%
+					'''
+			}
+
+			EssenceOfTheShieldHero: {
+				DisplayName: Essence Of The Shield Hero
+				Tooltip:
+					'''
+					Obtained after defeating ???
+					A gift from your Starfarer
+					Utilized in the creation of 'Legendary Shield' (Other)
 					'''
 			}
 
@@ -9379,13 +9553,23 @@ Mods: {
 					'''
 			}
 
+			EssenceOfCurses: {
+				DisplayName: Essence Of Curses
+				Tooltip:
+					'''
+					Obtained after defeating ???
+					A gift from your Starfarer
+					Utilized in the creation of 'String of Curses' (Ranged)
+					'''
+			}
+
 			CloakOfAnArbiter: {
 				DisplayName: Cloak of An Arbiter
 				Tooltip:
 					'''
 					12 summon tag damage
-					Holding this weapon grants [Embodied Singularity], increasing critical strike damage by 30%
-					Attacks with this weapon inflict [Fairy] for 3 seconds
+					Holding this weapon grants [Embodied Singularity], increasing critical strike damage by 10%
+					Attacks with this weapon pierce foes and inflict [Fairy] for 3 seconds
 					[Fairy] allows summon tag damage to benefit all weapons at a flat rate
 					Pressing right click activates an ability, cycling between [Degraded Lock], [Degraded Chain], and [Degraded Pillar] (6 second cooldown)
 					[Degraded Lock]: Damage and stun the foe at your cursor for 2 seconds
@@ -9395,6 +9579,16 @@ Mods: {
 					[Degraded Shockwave] deals 400% damage to all nearby foes, destroys all nearby hostile projectiles, and grants [Degraded Barrier] to nearby allies for 20 seconds
 					[Degraded Barrier] reduces the damage of the next hit by 80%
 					'Now, sink into everlasting quietude'
+					'''
+			}
+
+			EssenceOfASingularity: {
+				DisplayName: Essence Of A Singularity
+				Tooltip:
+					'''
+					Obtained after defeating The Warrior Of Light
+					A gift from your Starfarer
+					Utilized in the creation of 'Cloak of An Arbiter' (Magic)
 					'''
 			}
 
@@ -9532,12 +9726,12 @@ Mods: {
 			}
 
 			LockerAlternate: {
-				DisplayName: Locker Alternate
+				DisplayName: Semi-Locked Locker
 				Tooltip: ""
 			}
 
 			LockerDefault: {
-				DisplayName: Locker Default
+				DisplayName: Locked Locker
 				Tooltip: ""
 			}
 
@@ -9552,7 +9746,7 @@ Mods: {
 			}
 
 			TrashDefault: {
-				DisplayName: Trash Default
+				DisplayName: Carefully Assorted Trash
 				Tooltip: ""
 			}
 
@@ -10544,6 +10738,9 @@ Mods: {
 			Sugartle.DisplayName: Sugartle
 			Bulbasugar.DisplayName: Bulbasugar
 			CrystalshotBullet.DisplayName: Crystalshot Bullet
+			CharsugarFlames.DisplayName: Charsugar Flames
+			SugartleBubble.DisplayName: Sugartle Bubble
+			BulbasugarSeeds.DisplayName: Bulbasugar Seeds
 		}
 
 		Buffs: {
