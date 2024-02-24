@@ -25,17 +25,6 @@ namespace StarsAbove.Items.Weapons.Summon
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Chronoclock");
-            /* Tooltip.SetDefault("" +
-				"Summons a [c/EB9FDA:Fragment of Time] to aid you in combat, granting immunity to Slow (Only one can be summoned at a time)" +
-				"\nThe [c/EB9FDA:Fragment of Time] will periodically nurture a [c/52BFDF:Time Bubble] centered on herself, which grows over time" +
-				"\nThe [c/52BFDF:Time Bubble] will pop upon contact with an enemy, dealing damage and additionally exploding in a [c/9FD9EB:Time Pulse]" +
-				"\nThe [c/9FD9EB:Time Pulse] deals damage in a large area, increasing in potency with the size of the [c/52BFDF:Time Bubble], and inflicts 18 summon tag damage" +
-				"\nAfter 10 seconds at max size, the [c/52BFDF:Time Bubble] explodes automatically (Can be manually detonated by pressing the Weapon Action Key)" +
-				"\nStanding within the [c/52BFDF:Time Bubble] will grant [c/E8579B:Alacrity], increasing attack speed by 20% and movement speed by 10%" +
-				"\nAdditionally, taking damage within the [c/52BFDF:Time Bubble] will pop the [c/52BFDF:Time Bubble] prematurely, preventing that instance of damage (20 second cooldown)" +
-				"\n'Well, that sounds like a waste of time'"
-				+ $""); */
 
             ItemID.Sets.GamepadWholeScreenUseRange[Item.type] = true;
             ItemID.Sets.LockOnIgnoresCollision[Item.type] = true;
@@ -47,7 +36,7 @@ namespace StarsAbove.Items.Weapons.Summon
 
         public override void SetDefaults()
         {
-            Item.damage = 60;
+            Item.damage = 62;
             Item.DamageType = DamageClass.Summon;
             Item.mana = 60;
             Item.width = 21;
@@ -60,7 +49,7 @@ namespace StarsAbove.Items.Weapons.Summon
             Item.noUseGraphic = true;
             Item.rare = ItemRarityID.Pink;
             Item.UseSound = SoundID.Item44;
-            Item.shoot = ProjectileType<Charsugar>();
+            Item.shoot = ProjectileID.PurificationPowder;
             Item.buffType = BuffType<SugarballMinionBuff>(); //The buff added to player after used the item
             Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
         }
@@ -97,7 +86,7 @@ namespace StarsAbove.Items.Weapons.Summon
             {
                 if (player.HasBuff(BuffType<SugarballMinionBuff>()))
                 {
-                    SoundEngine.PlaySound(SoundID.Item44, Main.MouseWorld);
+                    SoundEngine.PlaySound(SoundID.Item9, Main.MouseWorld);
 
                     player.GetModPlayer<WeaponPlayer>().sugarballMinionType++;
 
@@ -115,39 +104,6 @@ namespace StarsAbove.Items.Weapons.Summon
                         Dust.NewDust(player.Center, 0, 0, DustID.GemAmethyst, 0f + Main.rand.Next(-7, 7), 0f + Main.rand.Next(-7, 7), 150, default(Color), 0.7f);
                     }
 
-                    for (int l = 0; l < Main.projectile.Length; l++)
-                    {
-                        Projectile proj = Main.projectile[l];
-                        if (proj.active && (
-                            proj.type == ProjectileType<Sugartle>() ||
-                            proj.type == ProjectileType<Charsugar>() ||
-                            proj.type == ProjectileType<Bulbasugar>()
-                            ) && proj.owner == player.whoAmI)
-                        {
-                            proj.Kill();
-                        }
-                    }
-                    switch (player.GetModPlayer<WeaponPlayer>().sugarballMinionType)
-                    {
-                        case 0:
-                            ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Excalibur,
-                       new ParticleOrchestraSettings { PositionInWorld = Main.MouseWorld },
-                       player.whoAmI);
-                            player.SpawnMinionOnCursor(player.GetSource_FromThis(), player.whoAmI, ProjectileType<Charsugar>(), player.GetWeaponDamage(Item), 0);
-                            break;
-                        case 1:
-                            ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Excalibur,
-                       new ParticleOrchestraSettings { PositionInWorld = Main.MouseWorld },
-                       player.whoAmI);
-                            player.SpawnMinionOnCursor(player.GetSource_FromThis(), player.whoAmI, ProjectileType<Sugartle>(), player.GetWeaponDamage(Item), 0);
-                            break;
-                        case 2:
-                            ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Excalibur,
-                       new ParticleOrchestraSettings { PositionInWorld = Main.MouseWorld },
-                       player.whoAmI);
-                            player.SpawnMinionOnCursor(player.GetSource_FromThis(), player.whoAmI, ProjectileType<Bulbasugar>(), player.GetWeaponDamage(Item), 0);
-                            break;
-                    }
                     
                 }
 
@@ -169,7 +125,7 @@ namespace StarsAbove.Items.Weapons.Summon
 
             if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
             {
-                player.AddBuff(Item.buffType, 3600, true);
+                //player.AddBuff(Item.buffType, 3600, true);
             }
         }
 
@@ -177,50 +133,41 @@ namespace StarsAbove.Items.Weapons.Summon
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
 
-            for (int l = 0; l < Main.projectile.Length; l++)
-            {
-                Projectile proj = Main.projectile[l];
-                if (proj.active && proj.type == Item.shoot && proj.owner == player.whoAmI)
-                {
-                    proj.active = false;
-                }
-            }
 
-            player.AddBuff(Item.buffType, 2);
             position = Main.MouseWorld;
-            for (int l = 0; l < Main.projectile.Length; l++)
+            if(player.HasBuff(Item.buffType))
             {
-                Projectile proj = Main.projectile[l];
-                if (proj.active && (
-                    proj.type == ProjectileType<Sugartle>() ||
-                    proj.type == ProjectileType<Charsugar>() ||
-                    proj.type == ProjectileType<Bulbasugar>()
-                    ) && proj.owner == player.whoAmI)
+                for (int l = 0; l < Main.projectile.Length; l++)
                 {
-                    proj.Kill();
+                    Projectile proj = Main.projectile[l];
+                    if (proj.active && (
+                        proj.type == ProjectileType<Bulbasugar>()
+                        ) && proj.owner == player.whoAmI)
+                    {
+                        ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Excalibur,
+                       new ParticleOrchestraSettings { PositionInWorld = proj.Center },
+                       player.whoAmI);
+                        ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Excalibur,
+                       new ParticleOrchestraSettings { PositionInWorld = Main.MouseWorld },
+                       player.whoAmI);
+                        proj.Center = Main.MouseWorld;
+
+                    }
                 }
+                return false;
             }
-            switch(player.GetModPlayer<WeaponPlayer>().sugarballMinionType)
+            else
             {
-                case 0:
-                    ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Excalibur,
-               new ParticleOrchestraSettings { PositionInWorld = Main.MouseWorld },
-               player.whoAmI);
-                    player.SpawnMinionOnCursor(source, player.whoAmI, ProjectileType<Charsugar>(), damage, knockback);
-                    return false;
-                case 1:
-                    ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Excalibur,
-               new ParticleOrchestraSettings { PositionInWorld = Main.MouseWorld },
-               player.whoAmI);
-                    player.SpawnMinionOnCursor(source, player.whoAmI, ProjectileType<Sugartle>(), damage, knockback);
-                    return false;
-                case 2:
-                    ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Excalibur,
-               new ParticleOrchestraSettings { PositionInWorld = Main.MouseWorld },
-               player.whoAmI);
-                    player.SpawnMinionOnCursor(source, player.whoAmI, ProjectileType<Bulbasugar>(), damage, knockback);
-                    return false;
+                player.AddBuff(Item.buffType, 2);
+
+                ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Excalibur,
+                       new ParticleOrchestraSettings { PositionInWorld = Main.MouseWorld },
+                       player.whoAmI);
+                player.SpawnMinionOnCursor(source, player.whoAmI, ProjectileType<Bulbasugar>(), damage, knockback);
+                player.SpawnMinionOnCursor(source, player.whoAmI, ProjectileType<Charsugar>(), damage, knockback);
+                player.SpawnMinionOnCursor(source, player.whoAmI, ProjectileType<Sugartle>(), damage, knockback);
             }
+           
 
             return false;
         }

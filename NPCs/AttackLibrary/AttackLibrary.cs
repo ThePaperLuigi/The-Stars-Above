@@ -75,7 +75,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.Vagrant.VorpalAssault");//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.VorpalAssault");//The name of the attack.
 				npc.ai[3] = 50;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -101,29 +101,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				SoundEngine.PlaySound(SoundID.Item1, npc.Center);
 				//Charge towards the target player.
 
-				if (Main.netMode != NetmodeID.MultiplayerClient && Main.expertMode)
-				{
-					float Speed = 7f;  //projectile speed
-					Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-					int damage = npc.damage;  //projectile damage
-					int type = ProjectileType<VagrantTrackingStar>(); //Type of projectile
-
-					float rotation = 0f;
-					Vector2 velocity = new Vector2((float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1));
-					//Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, 0, 0, ProjectileType<TsukiMoonlightSwing>(), 0, 0, Main.myPlayer);
-
-
-					float numberProjectiles = 4;
-					float adjustedRotation = MathHelper.ToRadians(180);
-
-					for (int i = 0; i < numberProjectiles; i++)
-					{
-						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
-						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, perturbedSpeed.X * 5, perturbedSpeed.Y * 5, type, damage, 0, Main.myPlayer);
-					}
-
-
-				}
+				
 
 				Vector2 vector8 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
 				{
@@ -173,7 +151,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 				
-				modPlayer.NextAttack = "Vorpal Barrage";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.VorpalBarrage");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -280,7 +258,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Vorpal Snipe";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.VorpalSnipe");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -397,7 +375,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				//Boss dialogue
 				 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.VorpalSiege")}", false, false);
-				modPlayer.NextAttack = "Vorpal Siege";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.VorpalSiege");//The name of the attack.
 
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
@@ -513,7 +491,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
 				Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
 				SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
-				modPlayer.NextAttack = "Inverse Starfall";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.InverseStarfall");//The name of the attack.
 				npc.ai[3] = 80;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -563,29 +541,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					}
 
 				}
-				if (Main.netMode != NetmodeID.MultiplayerClient && Main.expertMode)
-				{
-					float Speed = 7f;  //projectile speed
-					Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-					int damage = npc.damage;  //projectile damage
-					int type = ProjectileType<VagrantTrackingStar>(); //Type of projectile
-
-					float rotation = 0f;
-					Vector2 velocity = new Vector2((float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1));
-					//Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, 0, 0, ProjectileType<TsukiMoonlightSwing>(), 0, 0, Main.myPlayer);
-
-
-					float numberProjectiles = 6;
-					float adjustedRotation = MathHelper.ToRadians(180);
-
-					for (int i = 0; i < numberProjectiles; i++)
-					{
-						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
-						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, perturbedSpeed.X * 5, perturbedSpeed.Y * 5, type, damage, 0, Main.myPlayer);
-					}
-
-
-				}
+				
 
 				#endregion
 
@@ -620,7 +576,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
 				Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
 				SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
-				modPlayer.NextAttack = "Starfall";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.Starfall");//The name of the attack.
 				npc.ai[3] = 80;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -681,30 +637,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					}
 
 				}
-				if (Main.netMode != NetmodeID.MultiplayerClient && Main.expertMode)
-				{
-					float Speed = 7f;  //projectile speed
-					Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-					int damage = npc.damage;  //projectile damage
-					int type = ProjectileType<VagrantTrackingStar>(); //Type of projectile
-
-					float rotation = 0f;
-					Vector2 velocity = new Vector2((float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1));
-					//Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, 0, 0, ProjectileType<TsukiMoonlightSwing>(), 0, 0, Main.myPlayer);
-
-
-					float numberProjectiles = 6;
-					float adjustedRotation = MathHelper.ToRadians(180);
-
-					for (int i = 0; i < numberProjectiles; i++)
-					{
-						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
-						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, perturbedSpeed.X * 5, perturbedSpeed.Y * 5, type, damage, 0, Main.myPlayer);
-					}
-
-
-				}
-
+				
 				#endregion
 
 
@@ -739,7 +672,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
 				Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
 				SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
-				modPlayer.NextAttack = "Hypertuned Inverse Starfall";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.HypertunedInverseStarfall");//The name of the attack.
 				npc.ai[3] = 80;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -789,29 +722,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					}
 
 				}
-				if (Main.netMode != NetmodeID.MultiplayerClient && Main.expertMode)
-				{
-					float Speed = 7f;  //projectile speed
-					Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-					int damage = npc.damage;  //projectile damage
-					int type = ProjectileType<VagrantTrackingStar>(); //Type of projectile
-
-					float rotation = 0f;
-					Vector2 velocity = new Vector2((float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1));
-					//Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, 0, 0, ProjectileType<TsukiMoonlightSwing>(), 0, 0, Main.myPlayer);
-
-
-					float numberProjectiles = 6;
-					float adjustedRotation = MathHelper.ToRadians(180);
-
-					for (int i = 0; i < numberProjectiles; i++)
-					{
-						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
-						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, perturbedSpeed.X * 5, perturbedSpeed.Y * 5, type, damage, 0, Main.myPlayer);
-					}
-
-
-				}
+				
 
 				#endregion
 
@@ -846,7 +757,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
 				Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
 				SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
-				modPlayer.NextAttack = "Hypertuned Starfall";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.HypertunedStarfall");//The name of the attack.
 				npc.ai[3] = 80;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -897,29 +808,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					}
 
 				}
-				if (Main.netMode != NetmodeID.MultiplayerClient && Main.expertMode)
-				{
-					float Speed = 7f;  //projectile speed
-					Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-					int damage = npc.damage;  //projectile damage
-					int type = ProjectileType<VagrantTrackingStar>(); //Type of projectile
-
-					float rotation = 0f;
-					Vector2 velocity = new Vector2((float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1));
-					//Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, 0, 0, ProjectileType<TsukiMoonlightSwing>(), 0, 0, Main.myPlayer);
-
-
-					float numberProjectiles = 6;
-					float adjustedRotation = MathHelper.ToRadians(180);
-
-					for (int i = 0; i < numberProjectiles; i++)
-					{
-						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
-						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, perturbedSpeed.X * 5, perturbedSpeed.Y * 5, type, damage, 0, Main.myPlayer);
-					}
-
-
-				}
+				
 
 				#endregion
 
@@ -956,7 +845,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				SoundEngine.PlaySound(SoundID.DD2_EtherianPortalOpen, npc.Center);
 				
-				modPlayer.NextAttack = "Meteor Shower";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.MeteorShower");//The name of the attack.
 				npc.ai[3] = 80;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -990,29 +879,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					
 
 				}
-				if (Main.netMode != NetmodeID.MultiplayerClient && Main.expertMode)
-				{
-					float Speed = 7f;  //projectile speed
-					Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
-					int damage = npc.damage;  //projectile damage
-					int type = ProjectileType<VagrantTrackingStar>(); //Type of projectile
-
-					float rotation = 0f;
-					Vector2 velocity = new Vector2((float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1));
-					//Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, 0, 0, ProjectileType<TsukiMoonlightSwing>(), 0, 0, Main.myPlayer);
-
-
-					float numberProjectiles = 4;
-					float adjustedRotation = MathHelper.ToRadians(180);
-
-					for (int i = 0; i < numberProjectiles; i++)
-					{
-						Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.Lerp(-adjustedRotation, adjustedRotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
-						Projectile.NewProjectile(npc.GetSource_FromAI(), StartPosition.X, StartPosition.Y, perturbedSpeed.X * 5, perturbedSpeed.Y * 5, type, damage, 0, Main.myPlayer);
-					}
-
-
-				}
+				
 
 				#endregion
 
@@ -1052,7 +919,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				SoundEngine.PlaySound(SoundID.DD2_EtherianPortalOpen, npc.Center);
 
-				modPlayer.NextAttack = "Demi-Prototokia";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.DemiPrototokia");//The name of the attack.
 				npc.ai[3] = 80;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -1157,7 +1024,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.UmbralUpsurge")}", false, false);
 
-				modPlayer.NextAttack = "Star Sundering";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.StarSundering");//The name of the attack.
 				npc.ai[3] = 130;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -1227,7 +1094,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				//Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
 				 
  
-				modPlayer.NextAttack = "General Relativity";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.GeneralRelativity");//The name of the attack.
 				npc.ai[3] = 100;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -1299,7 +1166,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
 				//Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
 				
-				modPlayer.NextAttack = "Advanced Relativity";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.AdvancedRelativity");//The name of the attack.
 				npc.ai[3] = 100;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -1372,7 +1239,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				//Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
 				 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.AdvancedRelativity")}", false, false);
-				modPlayer.NextAttack = "Advanced Relativity";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.AdvancedRelativity");//The name of the attack.
 				npc.ai[3] = 100;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -1445,7 +1312,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Microcosmos";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.Microcosmos");//The name of the attack.
 				npc.ai[3] = 100;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -1538,7 +1405,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = "Infernal Ignition";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.InfernalIgnition");//The name of the attack.
 				npc.ai[3] = 60;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -1607,7 +1474,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = "Relinquishment";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.Relinquishment");//The name of the attack.
 				npc.ai[3] = 60;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -1674,7 +1541,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = "Monarch's Feint";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.MonarchFeint");//The name of the attack.
 				npc.ai[3] = 60;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -1747,7 +1614,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				//Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
 
 
-				modPlayer.NextAttack = "Transplacement";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.Transplacement");//The name of the attack.
 				npc.ai[3] = 40;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -1810,7 +1677,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 				//Global attack-specific variables
-				modPlayer.NextAttack = "Burnished Bladework";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.BurnishedBladework");//The name of the attack.
 				npc.ai[3] = 20;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -1892,7 +1759,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = "Burnished Bladework";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.BurnishedBladework");//The name of the attack.
 				npc.ai[3] = 10;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -1969,7 +1836,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = "Burnished Bladework";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.BurnishedBladework");//The name of the attack.
 				npc.ai[3] = 20;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -2050,7 +1917,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = "Burnished Bladework";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.BurnishedBladework");//The name of the attack.
 				npc.ai[3] = 40;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -2137,7 +2004,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = "Burnished Bladework";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.BurnishedBladework");//The name of the attack.
 				npc.ai[3] = 40;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -2235,7 +2102,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = "Burnished Bladework";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.BurnishedBladework");//The name of the attack.
 				npc.ai[3] = 40;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -2323,7 +2190,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = "Burnished Bladework";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.BurnishedBladework");//The name of the attack.
 				npc.ai[3] = 80;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -2449,7 +2316,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<NalhaunCastSprite>(), 0, 0, Main.myPlayer, 80);
 				SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
 
-				modPlayer.NextAttack = "Ivory Admonishment";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.IvoryAdmonishment");//The name of the attack.
 				npc.ai[3] = 80;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -2567,7 +2434,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<NalhaunCastSprite>(), 0, 0, Main.myPlayer, 40);
 				SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
 
-				modPlayer.NextAttack = "Ivory Admonishment";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.IvoryAdmonishment");//The name of the attack.
 				npc.ai[3] = 40;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -2684,7 +2551,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = "Rightward Rend";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.RightwardRend");//The name of the attack.
 				npc.ai[3] = 240;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -2760,7 +2627,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = "Rightward Rend";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.RightwardRend");//The name of the attack.
 				npc.ai[3] = 240;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -2836,7 +2703,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = "Delayed Rightward Rend";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.DelayedRightwardRend");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -2911,7 +2778,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = "Leftward Rend";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.LeftwardRend");//The name of the attack.
 				npc.ai[3] = 240;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -2990,7 +2857,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = "Leftward Rend";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.LeftwardRend");//The name of the attack.
 				npc.ai[3] = 240;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -3069,7 +2936,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = "Delayed Leftward Rend";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.DelayedLeftwardRend");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -3146,7 +3013,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = "Inner Agony";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.InnerAgony");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -3245,7 +3112,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = "Delayed Inner Agony";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.DelayedInnerAgony");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -3344,7 +3211,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = "Inner Agony";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.InnerAgony");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -3444,7 +3311,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = "Outer Agony";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.OuterAgony");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -3543,7 +3410,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = "Delayed Outer Agony";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.DelayedOuterAgony");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -3642,7 +3509,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = "Outer Agony";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.OuterAgony");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -3744,7 +3611,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Velvet Apogee";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.VelvetApogee");//The name of the attack.
 				npc.ai[3] = 40;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -3838,7 +3705,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Velvet Azimuth";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.VelvetAzimuth");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -3927,7 +3794,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Carrion Call";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.CarrionCall");//The name of the attack.
 				npc.ai[3] = 100;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -4018,7 +3885,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Carrion Call";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.CarrionCall");//The name of the attack.
 				npc.ai[3] = 100;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -4120,7 +3987,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Ars Laevateinn";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.ArsLaevateinn");//The name of the attack.
 				npc.ai[3] = 200;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -4190,7 +4057,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Apostasy";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.Apostasy");//The name of the attack.
 				npc.ai[3] = 340;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -4316,7 +4183,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Apostasy";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.Apostasy");//The name of the attack.
 				npc.ai[3] = 340;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -4460,7 +4327,7 @@ namespace StarsAbove.NPCs.AttackLibrary
             {
 
 
-                modPlayer.NextAttack = "Shadows Withal";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.ShadowsWithal");//The name of the attack.
                 npc.ai[3] = 120;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -4552,7 +4419,7 @@ namespace StarsAbove.NPCs.AttackLibrary
                 //Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
 
 
-                modPlayer.NextAttack = "Dark Deluge";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.DarkDeluge");//The name of the attack.
                 npc.ai[3] = 30;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -4633,7 +4500,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
                 //CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-                modPlayer.NextAttack = "Ordained End";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.OrdainedEnd");//The name of the attack.
                 npc.ai[3] = 120;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -4715,7 +4582,7 @@ namespace StarsAbove.NPCs.AttackLibrary
             {
 
 
-                modPlayer.NextAttack = "Death Recital";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.DeathRecital");//The name of the attack.
                 npc.ai[3] = 120;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -4797,7 +4664,7 @@ namespace StarsAbove.NPCs.AttackLibrary
             {
 
 
-                modPlayer.NextAttack = "Dark Design";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.DarkDesign");//The name of the attack.
                 npc.ai[3] = 120;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -4885,7 +4752,7 @@ namespace StarsAbove.NPCs.AttackLibrary
             {
 
 
-                modPlayer.NextAttack = "Stygian Augur";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.StygianAugur");//The name of the attack.
                 npc.ai[3] = 60;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -4984,7 +4851,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
                 //CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-                modPlayer.NextAttack = "Blood Moon";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.BloodMoon");//The name of the attack.
                 npc.ai[3] = 60;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -5104,7 +4971,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
                 //CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-                modPlayer.NextAttack = "Blood Moon";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.BloodMoon");//The name of the attack.
                 npc.ai[3] = 60;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -5224,7 +5091,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
                 //CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-                modPlayer.NextAttack = "Blood Moon";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.BloodMoon");//The name of the attack.
                 npc.ai[3] = 60;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -5346,7 +5213,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
                 //CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-                modPlayer.NextAttack = "Severance of Fate";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.SeveranceOfFate");//The name of the attack.
                 npc.ai[3] = 120;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -5440,7 +5307,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
                 //CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-                modPlayer.NextAttack = "Severance of Fate";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.SeveranceOfFate");//The name of the attack.
                 npc.ai[3] = 120;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -5528,7 +5395,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
             if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
             {
-                modPlayer.NextAttack = "Titanomachia";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.Titanomachia");//The name of the attack.
                 npc.ai[3] = 90;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -5637,7 +5504,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
             if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
             {
-                modPlayer.NextAttack = "Titanomachia";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.Titanomachia");//The name of the attack.
                 npc.ai[3] = 90;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -5752,7 +5619,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
                 //CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-                modPlayer.NextAttack = "Visions Beyond";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.VisionsBeyond");//The name of the attack.
                 npc.ai[3] = 60;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -5829,7 +5696,7 @@ namespace StarsAbove.NPCs.AttackLibrary
             {
 
 
-                modPlayer.NextAttack = "Twin Prototokia";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.TwinPrototokia");//The name of the attack.
                 npc.ai[3] = 120;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -5915,7 +5782,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
             if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
             {
-                modPlayer.NextAttack = "Gemini Burst";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.GeminiBurst");//The name of the attack.
                 npc.ai[3] = 90;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -6030,7 +5897,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttackAlt = "Phyrric Gemini";//The name of the attack.
+				modPlayer.NextAttackAlt = LangHelper.GetTextValue($"BossAttacks.PhyrricGemini");//The name of the attack.
 				npc.ai[3] = 1200;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -6120,7 +5987,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttackAlt = "Blazing Azimuth";//The name of the attack.
+				modPlayer.NextAttackAlt = LangHelper.GetTextValue($"BossAttacks.BlazingAzimuth");//The name of the attack.
 				npc.ai[3] = 60;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -6214,7 +6081,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttackAlt = "Balefire";//The name of the attack.
+				modPlayer.NextAttackAlt = LangHelper.GetTextValue($"BossAttacks.Balefire");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -6295,7 +6162,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttackAlt = "Rite of Ignition";//The name of the attack.
+				modPlayer.NextAttackAlt = LangHelper.GetTextValue($"BossAttacks.RiteOfIgnition");//The name of the attack.
 				npc.ai[3] = 60;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -6371,7 +6238,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttackAlt = "Wall of Ignition";//The name of the attack.
+				modPlayer.NextAttackAlt = LangHelper.GetTextValue($"BossAttacks.WallOfIgnition");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -6447,7 +6314,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttackAlt = "Inferno of Ignition";//The name of the attack.
+				modPlayer.NextAttackAlt = LangHelper.GetTextValue($"BossAttacks.InfernoOfIgnition");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -6527,7 +6394,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttackAlt = "Exoflare";//The name of the attack.
+				modPlayer.NextAttackAlt = LangHelper.GetTextValue($"BossAttacks.Exoflare");//The name of the attack.
 				npc.ai[3] = 240;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -6620,7 +6487,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 				SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
-				modPlayer.NextAttackAlt = "Eruption";//The name of the attack.
+				modPlayer.NextAttackAlt = LangHelper.GetTextValue($"BossAttacks.Eruption");//The name of the attack.
 				npc.ai[3] = 60;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -6705,7 +6572,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttackAlt = "Baleborn's Clash";//The name of the attack.
+				modPlayer.NextAttackAlt = LangHelper.GetTextValue($"BossAttacks.BalebornClash");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -6807,7 +6674,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Phyrric Gemini";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.PhyrricGemini");//The name of the attack.
 				npc.ai[3] = 1200;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -6897,7 +6764,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Freezing Azimuth";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.FreezingAzimuth");//The name of the attack.
 				npc.ai[3] = 60;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -6991,7 +6858,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 				SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
-				modPlayer.NextAttack = "Chilling Hail";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.ChillingHail");//The name of the attack.
 				npc.ai[3] = 60;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -7075,7 +6942,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Baleborn's Clash";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.BalebornClash");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -7176,7 +7043,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Diamond Dust";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.DiamondDust");//The name of the attack.
 				npc.ai[3] = 180;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -7255,7 +7122,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Frozen Arsenal";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.FrozenArsenal");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -7345,7 +7212,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Armory of Ice";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.ArmoryOfIce");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -7450,7 +7317,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Argyropeia";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.Argyropeia");//The name of the attack.
 				npc.ai[3] = 60;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -7535,7 +7402,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Argyropeia";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.Argyropeia");//The name of the attack.
 				npc.ai[3] = 60;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -7620,7 +7487,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Argyropeia";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.Argyropeia");//The name of the attack.
 				npc.ai[3] = 60;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -7705,7 +7572,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Argyropeia";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.Argyropeia");//The name of the attack.
 				npc.ai[3] = 60;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -7796,7 +7663,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Phlogiston Pyrotechnics";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.PhlogistonPyrotechnics");//The name of the attack.
 				npc.ai[3] = 60;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -7887,7 +7754,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Lixiviate";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.Lixiviate");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -7992,7 +7859,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Athanoric Arena";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.AthanoricArena");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -8067,7 +7934,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Ringmaster's Will";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.RingmastersWill");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -8151,7 +8018,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
                 //CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-                modPlayer.NextAttack = "Ringmaster's Will";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.RingmastersWill");//The name of the attack.
                 npc.ai[3] = 120;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -8236,7 +8103,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Ringmaster's Will";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.RingmastersWill");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -8312,7 +8179,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
                 //CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-                modPlayer.NextAttack = "Paradigm of Chaos";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.ParadigmOfChaos");//The name of the attack.
                 npc.ai[3] = 60;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -8421,7 +8288,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
                 //CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-                modPlayer.NextAttack = "Alchemical Anarchy";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.AlchemicalAnarchy");//The name of the attack.
                 npc.ai[3] = 120;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -8606,7 +8473,7 @@ namespace StarsAbove.NPCs.AttackLibrary
             {
 
 
-                modPlayer.NextAttack = "Let's Celebrate!";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.LetsCelebrate");//The name of the attack.
                 npc.ai[3] = 120;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -8698,7 +8565,7 @@ namespace StarsAbove.NPCs.AttackLibrary
             {
 
 
-                modPlayer.NextAttack = "Aetheric Alkaheist";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.AethericAlkaheist");//The name of the attack.
                 npc.ai[3] = 60;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -8790,7 +8657,7 @@ namespace StarsAbove.NPCs.AttackLibrary
             {
 
 
-                modPlayer.NextAttack = "Arcipluvian Arcana";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.ArcipluvianArcana");//The name of the attack.
                 npc.ai[3] = 120;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -8883,7 +8750,7 @@ namespace StarsAbove.NPCs.AttackLibrary
             {
 
 
-                modPlayer.NextAttack = "Arcipluvian Arcana";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.ArcipluvianArcana");//The name of the attack.
                 npc.ai[3] = 120;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -9004,7 +8871,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
                 //CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-                modPlayer.NextAttack = "Ink Over";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.InkOver");//The name of the attack.
                 npc.ai[3] = 120;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -9110,7 +8977,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
                 //CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-                modPlayer.NextAttack = "Artistic Dissonance";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.ArtisticDissonance");//The name of the attack.
                 npc.ai[3] = 180;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -9202,7 +9069,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
                 //CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-                modPlayer.NextAttack = "Linear Mystics";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.LinearMystics");//The name of the attack.
                 npc.ai[3] = 60;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -9288,7 +9155,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
                 //CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-                modPlayer.NextAttack = "Splattered Sundering";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.SplatteredSundering");//The name of the attack.
                 npc.ai[3] = 200;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -9405,7 +9272,7 @@ namespace StarsAbove.NPCs.AttackLibrary
             {
 
 
-                modPlayer.NextAttack = "Elegant Brushwork";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.ElegantBrushwork");//The name of the attack.
                 npc.ai[3] = 60;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -9498,7 +9365,7 @@ namespace StarsAbove.NPCs.AttackLibrary
             {
 
 
-                modPlayer.NextAttack = "Efflouresent Brushwork";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.EfflouresentBrushwork");//The name of the attack.
                 npc.ai[3] = 240;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -9591,7 +9458,7 @@ namespace StarsAbove.NPCs.AttackLibrary
             {
 
 
-                modPlayer.NextAttack = "Arcipluvian Arcana";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.ArcipluvianArcana");//The name of the attack.
                 npc.ai[3] = 240;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -9687,7 +9554,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
                 //CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-                modPlayer.NextAttack = "Spilled Violet";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.SpilledViolet");//The name of the attack.
                 npc.ai[3] = 120;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -9775,7 +9642,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
                 //CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-                modPlayer.NextAttack = "Rhabtophobia";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.Rhabtophobia");//The name of the attack.
                 npc.ai[3] = 120;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -9877,7 +9744,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
                 //CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-                modPlayer.NextAttack = "Blotted Whims";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.BlottedWhims");//The name of the attack.
                 npc.ai[3] = 120;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -10024,7 +9891,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
                 //CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-                modPlayer.NextAttack = "Chromatic Cascade";//The name of the attack.
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.ChromaticCascade");//The name of the attack.
                 npc.ai[3] = 120;//This is the time it takes for the cast to finish.
                 npc.localAI[3] = 0;//This resets the cast time.
                 npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -10140,7 +10007,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				//Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
 
 
-				modPlayer.NextAttack = "As Above, Ever Below";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.AsAboveEverBelow");//The name of the attack.
 				npc.ai[3] = 240;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -10234,7 +10101,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = "Edin Genesis Quasar";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.EdinGenesisQuasar");//The name of the attack.
 				npc.ai[3] = 180;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -10317,7 +10184,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = "The First Aspect";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.TheFirstAspect");//The name of the attack.
 				npc.ai[3] = 180;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -10384,7 +10251,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				//Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
 
 
-				modPlayer.NextAttack = "Threads Of Fate";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.ThreadsOfFate");//The name of the attack.
 				npc.ai[3] = 10;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -10465,7 +10332,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				//Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
 
 
-				modPlayer.NextAttack = "Threads Of Fate";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.ThreadsOfFate");//The name of the attack.
 				npc.ai[3] = 10;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -10544,7 +10411,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				//Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
 
 
-				modPlayer.NextAttack = "Threads Of Fate";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.ThreadsOfFate");//The name of the attack.
 				npc.ai[3] = 10;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -10620,7 +10487,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 				
-				modPlayer.NextAttack = "Hypertuned Meteor Shower";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.HypertunedMeteorShower");//The name of the attack.
 				npc.ai[3] = 80;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -10691,7 +10558,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				//Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
 
 
-				modPlayer.NextAttack = "Anosios";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.Anosios");//The name of the attack.
 				npc.ai[3] = 60;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -10763,7 +10630,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				//Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
 
 
-				modPlayer.NextAttack = "Anosios Triumverate";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.AnosiosTriumverate");//The name of the attack.
 				npc.ai[3] = 60;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -10842,7 +10709,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Celestial Opposition";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.CelestialOpposition");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -10930,7 +10797,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Hypertuned Celestial Opposition";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.HypertunedCelestialOpposition");//The name of the attack.
 				npc.ai[3] = 60;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -11020,7 +10887,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Celestial Pandaemonium";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.CelestialPandaemonium");//The name of the attack.
 				npc.ai[3] = 180;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -11134,7 +11001,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Celestial Pandaemonium";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.CelestialPandaemonium");//The name of the attack.
 				npc.ai[3] = 180;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -11245,7 +11112,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Origin Starfall";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.OriginStarfall");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -11351,7 +11218,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Origin Starsnipe";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.OriginStarsnipe");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -11435,7 +11302,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Cosmic Upsurge";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.CosmicUpsurge");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -11558,7 +11425,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Cosmic Upsurge";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.CosmicUpsurge");//The name of the attack.
 				npc.ai[3] = 30;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -11680,7 +11547,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				//Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
 
 
-				modPlayer.NextAttack = "Grasping Void";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.GraspingVoid");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -11756,7 +11623,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				//Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
 
 
-				modPlayer.NextAttack = "Aetheric Disruption";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.AethericDisruption");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -11827,7 +11694,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Carian Dark Moon";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.CarianDarkMoon");//The name of the attack.
 				npc.ai[3] = 160;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -11925,7 +11792,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Hypertuned Carian Dark Moon";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.HypertunedCarianDarkMoon");//The name of the attack.
 				npc.ai[3] = 160;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -12021,7 +11888,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Caesura of Despair";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.CaesuraOfDespair");//The name of the attack.
 				npc.ai[3] = 160;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -12105,7 +11972,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Key of the King's Law";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.KeyOfTheKingsLaw");//The name of the attack.
 				npc.ai[3] = 80;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -12184,7 +12051,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Hypertuned Key of the King's Law";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.HypertunedKeyOfTheKingsLaw");//The name of the attack.
 				npc.ai[3] = 80;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -12265,7 +12132,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Stygian Memento";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.StygianMemento");//The name of the attack.
 				npc.ai[3] = 80;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -12350,7 +12217,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Hypertuned Stygian Memento";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.HypertunedStygianMemento");//The name of the attack.
 				npc.ai[3] = 80;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -12437,7 +12304,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Voice of the Outbreak";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.VoiceOfTheOutbreak");//The name of the attack.
 				npc.ai[3] = 80;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -12514,7 +12381,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Hypertuned Voice of the Outbreak";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.HypertunedVoiceOfTheOutbreak");//The name of the attack.
 				npc.ai[3] = 80;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -12593,7 +12460,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Shadowless Cerulean";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.ShadowlessCerulean");//The name of the attack.
 				npc.ai[3] = 160;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -12698,7 +12565,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Takonomicon";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.Takonomicon");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -12793,7 +12660,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Takonomicon";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.Takonomicon");//The name of the attack.
 				npc.ai[3] = 40;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -12883,7 +12750,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Luminary Wand";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.LuminaryWand");//The name of the attack.
 				npc.ai[3] = 80;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -12961,7 +12828,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Jetstream Bloodshed";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.JetstreamBloodshed");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -13077,7 +12944,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Bury The Light";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.BuryTheLight");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -13193,7 +13060,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Bury The Light";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.BuryTheLight");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -13313,7 +13180,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Death in Four Acts";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.DeathInFourActs");//The name of the attack.
 				npc.ai[3] = 60;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -13378,7 +13245,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Hypertuned Death in Four Acts";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.HypertunedDeathInFourActs");//The name of the attack.
 				npc.ai[3] = 60;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -13446,7 +13313,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "The Bitter End";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.TheBitterEnd");//The name of the attack.
 				npc.ai[3] = 40;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -13567,7 +13434,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = "Coruscant Saber";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.CoruscantSaber");//The name of the attack.
 				npc.ai[3] = 180;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -13685,7 +13552,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = "Coruscant Saber";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.CoruscantSaber");//The name of the attack.
 				npc.ai[3] = 180;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -13793,7 +13660,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = "Imbued Saber";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.ImbuedSaber");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -13881,7 +13748,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0)//If this is the first time the attack is being called.
 			{
 
-				modPlayer.NextAttack = "Imbued Coruscance";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.ImbuedCoruscance");//The name of the attack.
 				npc.ai[3] = 180;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -14052,7 +13919,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Searing Light";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.SearingLight");//The name of the attack.
 				npc.ai[3] = 60;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -14193,7 +14060,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Hope's Confluence";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.HopesConfluence");//The name of the attack.
 				npc.ai[3] = 100;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -14314,7 +14181,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Ephemeral Edge";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.EphemeralEdge");//The name of the attack.
 				npc.ai[3] = 60;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -14449,7 +14316,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Absolute Summoning";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.AbsoluteSummoning");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -14604,7 +14471,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Absolute Summoning";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.AbsoluteSummoning");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -14757,7 +14624,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Absolute Summoning";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.AbsoluteSummoning");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -14899,7 +14766,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Passage of Arms";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.PassageOfArms");//The name of the attack.
 				npc.ai[3] = 180;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -15018,7 +14885,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Passage Of Arms";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.PassageOfArms");//The name of the attack.
 				npc.ai[3] = 180;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -15137,7 +15004,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				//Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
 
 
-				modPlayer.NextAttack = "Ascendance";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.Ascendance");//The name of the attack.
 				npc.ai[3] = 360;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -15236,7 +15103,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				//Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
 
 
-				modPlayer.NextAttack = "Absolute Zero";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.AbsoluteZero");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -15333,7 +15200,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Radiant Reprobation";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.RadiantReprobation");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -15450,7 +15317,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Refulgent Reprobation";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.RefulgentReprobation");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -15553,7 +15420,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Resolute Reprobation";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.ResoluteReprobation");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -15658,7 +15525,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Absolute Fire";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.AbsoluteFire");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -15761,7 +15628,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Absolute Ice";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.AbsoluteIce");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -15867,7 +15734,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				//Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
 
 
-				modPlayer.NextAttack = "Transplacement";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.Transplacement");//The name of the attack.
 				npc.ai[3] = 40;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -15937,7 +15804,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			{
 
 
-				modPlayer.NextAttack = "Scions and Sinners";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.ScionsAndSinners");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -16036,7 +15903,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				//Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantBurstSprite>(), 0, 0, Main.myPlayer);
 
 
-				modPlayer.NextAttack = "To The Limit";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.ToTheLimit");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -16115,7 +15982,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Ars Laevateinn";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.ArsLaevateinn");//The name of the attack.
 				npc.ai[3] = 60;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -16213,7 +16080,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Garden of Avalon";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.GardenOfAvalon");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -16303,7 +16170,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Mortal Instants";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.MortalInstants");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -16414,7 +16281,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Katakrisis";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.Katakrisis");//The name of the attack.
 				npc.ai[3] = 120;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -16554,7 +16421,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Paradise Lost";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.ParadiseLost");//The name of the attack.
 				npc.ai[3] = 180;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
@@ -16672,7 +16539,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				//CombatText.NewText(textPos, new Color(43, 255, 43, 240), $"{LangHelper.GetTextValue($"BossDialogue.Vagrant.Microcosmos")}", false, false);
 
-				modPlayer.NextAttack = "Debug: Reset State";//The name of the attack.
+				modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.Debug: Reset State");//The name of the attack.
 				npc.ai[3] = 60;//This is the time it takes for the cast to finish.
 				npc.localAI[3] = 0;//This resets the cast time.
 				npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.

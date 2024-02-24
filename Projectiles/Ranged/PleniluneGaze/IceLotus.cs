@@ -73,7 +73,7 @@ namespace StarsAbove.Projectiles.Ranged.PleniluneGaze
             Collision.HitTiles(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
             if (Projectile.ai[1] == 0)
             {
-                for (int i = 0; i < 8; i++)
+                for (int i = 0; i < 5; i++)
                 {
                     // Random upward vector.
                     Vector2 vel = new Vector2(Main.rand.NextFloat(-3, 3), Main.rand.NextFloat(-1, -4));
