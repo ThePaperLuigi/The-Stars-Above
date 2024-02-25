@@ -15,6 +15,7 @@ using System;
 using StarsAbove.Utilities;
 using StarsAbove.Projectiles.Ranged.DevotedHavoc;
 using StarsAbove.Projectiles.Ranged.StringOfCurses;
+using StarsAbove.Buffs.StringOfCurses;
 
 namespace StarsAbove.Items.Weapons.Ranged
 {
@@ -32,14 +33,16 @@ namespace StarsAbove.Items.Weapons.Ranged
 			Item.DamageType = DamageClass.Ranged;
 			Item.width = 40;
 			Item.height = 20;
-			Item.useTime = 9;
-			Item.useAnimation = 9;
-			Item.useStyle = 5;
+			Item.useAnimation = 12;
+            Item.useTime = 4;
+			Item.crit = 16;
+            Item.reuseDelay = 10;
+            Item.useStyle = 5;
 			Item.noMelee = true; //so the item's animation doesn't do damage
 			Item.knockBack = 4;
             Item.rare = ItemRarityID.Orange;
             Item.autoReuse = true;
-			Item.shoot = ProjectileType<DevotedHavocShot>();
+			Item.shoot = ProjectileType<StringOfCursesShot>();
 			Item.shootSpeed = 30f;
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
 			Item.noUseGraphic = true;
@@ -51,7 +54,12 @@ namespace StarsAbove.Items.Weapons.Ranged
 
 		public override void HoldItem(Player player)
 		{
-           
+           if(player.HasBuff(BuffType<Cursewrought>()) && player.GetModPlayer<StarsAbovePlayer>().novaGauge >= player.GetModPlayer<StarsAbovePlayer>().trueNovaGaugeMax)
+			{
+				player.AddBuff(BuffID.Ironskin, 2);
+				player.AddBuff(BuffID.Swiftness, 2);
+				player.AddBuff(BuffID.Heartreach, 2);
+			}
             base.HoldItem(player);
 		}
 

@@ -9545,11 +9545,12 @@ Mods: {
 				DisplayName: String of Curses
 				Tooltip:
 					'''
-					Attacks with this weapon inflict [Necrosis] for 4 seconds on critical strikes
-					Foes inflicted with [Necrosis] have their attack and defense reduced by 15%
-					Defeating foes with this weapon charges the Stellar Nova by 2% and grants [Cursewrought] for 7 seconds
-					[Cursewrought] increases damage dealt against foes with [Necrosis] by 20% and allows for attacks to pierce 2 more foes
-					Defeating foes while under the effect of [Cursewrought] refreshes the buff, heals 10 HP, and charges the Stellar Nova by an additional 2 energy
+					Critical strikes with this weapon deal 50% less damage, but inflict [c/62C29B:Necrosis] for 4 seconds
+					Foes inflicted with [c/62C29B:Necrosis] have their attack and defense reduced by 15%
+					Defeating foes with this weapon charges the Stellar Nova by 2 energy and grants [c/8662C2:Cursewrought] for 7 seconds
+					[c/8662C2:Cursewrought] increases attack speed by 20%, critical strike chance by 20%, and damage dealt against foes with [c/62C29B:Necrosis] by 20%
+					Additionally, gain Swiftness, Ironskin, and Heartreach when the Stellar Nova Gauge is filled
+					Defeating foes while under the effect of [c/8662C2:Cursewrought] refreshes the buff, heals 10 HP, and charges the Stellar Nova by an additional 2 energy
 					'''
 			}
 
@@ -9567,17 +9568,22 @@ Mods: {
 				DisplayName: Cloak of An Arbiter
 				Tooltip:
 					'''
-					12 summon tag damage
-					Holding this weapon grants [Embodied Singularity], increasing critical strike damage by 10%
-					Attacks with this weapon pierce foes and inflict [Fairy] for 3 seconds
-					[Fairy] allows summon tag damage to benefit all weapons at a flat rate
-					Pressing right click activates an ability, cycling between [Degraded Lock], [Degraded Chain], and [Degraded Pillar] (6 second cooldown)
-					[Degraded Lock]: Damage and stun the foe at your cursor for 2 seconds
-					[Degraded Chain]: Deal damage to all nearby foes while inflicting [Fairy] for 6 seconds
-					[Degraded Pillar]: Fire a fast piercing pillar towards your cursor that deals guaranteed critical damage
-					Press the Weapon Action Key to activate [Degraded Shockwave] (90 second cooldown)
-					[Degraded Shockwave] deals 400% damage to all nearby foes, destroys all nearby hostile projectiles, and grants [Degraded Barrier] to nearby allies for 20 seconds
-					[Degraded Barrier] reduces the damage of the next hit by 80%
+					20 summon tag damage
+					Holding this weapon grants [c/9C936F:Degraded Singularity], increasing critical strike damage by 10% against foes with summon tag damage (Does not include [c/FAE88E:Fairy])
+					Attacks with this weapon pierce foes and inflict [c/FAE88E:Fairy] for 3 seconds
+					[c/FAE88E:Fairy] acts as a special variant of summon tag damage that affects all weapons
+					Pressing right click activates an ability, cycling between [c/9C936F:Degraded Lock], [c/9C936F:Degraded Chain], and [c/9C936F:Degraded Pillar] (6 second cooldown)
+					[c/9C936F:Degraded Lock]: Damage foes centered on your cursor and reduce their attack by 90% for 2 seconds
+					[c/9C936F:Degraded Chain]: Deal damage to all nearby foes while inflicting [c/EEC152:Ensnared] for 2 seconds, drastically reducing movement
+					[c/9C936F:Degraded Pillar]: Fire a fast piercing pillar towards your cursor that deals a guaranteed critical strike
+					In Multiplayer, if all allies are dead and a boss is active, gain [c/F9C9AB:Singularity Resonance]
+					In Singleplayer, gain [c/F9C9AB:Singularity Resonance] when below 100 HP if max HP is 400 or more while a boss is active
+					Press the Weapon Action Key when [c/F9C9AB:Singularity Resonance] is active to unleash [c/FFC558:Embodied Singularity], replacing [c/9C936F:Degraded Singularity]
+					Once active, [c/FFC558:Embodied Singularity] persists until death, combat ends, or this weapon is no longer held
+					[c/FFC558:Embodied Singularity] increases all damage by 400%, critical strike damage by 150%, and afflicts all nearby foes with [c/FAE88E:Fairy], but reduces defense to 0
+					Additionally, [c/9C936F:Degraded] ability cooldowns are reduced to 2 seconds
+					During this time, periodically unleash [c/FFC558:Embodied Shockwave] every 6 seconds
+					[c/FFC558:Embodied Shockwave] deals 400% critical damage to all nearby foes while inflicting [c/EEC152:Ensnared] for 1 second, and grants Invincibility for 1 second
 					'Now, sink into everlasting quietude'
 					'''
 			}
@@ -9626,8 +9632,7 @@ Mods: {
 					'''
 					[c/D294FF:Weapon Memory]
 					Minions target foes struck by this weapon
-					Press the Weapon Memory Key to move all sentries to your position (6 second cooldown)
-					Pressing the Weapon Memory Key while the prior ability's cooldown is active will instead reduce Mana to 0 and destroy all minions
+					Press the Weapon Memory Key to reduce Mana to 0 and destroy all minions (20 second cooldown)
 					Gain a guaranteed critical strike for each minion destroyed (Minion must consume minion slots)
 					'Well, guess that'll do'
 					'''
@@ -9757,6 +9762,11 @@ Mods: {
 
 			VendorStation: {
 				DisplayName: Vendor Station
+				Tooltip: ""
+			}
+
+			CloakOfAnArbiterCape: {
+				DisplayName: Cloak Of An Arbiter Cape
 				Tooltip: ""
 			}
 		}
@@ -10741,6 +10751,10 @@ Mods: {
 			CharsugarFlames.DisplayName: Charsugar Flames
 			SugartleBubble.DisplayName: Sugartle Bubble
 			BulbasugarSeeds.DisplayName: Bulbasugar Seeds
+			ArbiterLock.DisplayName: Arbiter Lock
+			ArbiterPillar.DisplayName: Arbiter Pillar
+			FairyAttack.DisplayName: Fairy Attack
+			FairyAttackEffect.DisplayName: Fairy Attack Effect
 		}
 
 		Buffs: {
@@ -13410,6 +13424,51 @@ Mods: {
 			OutbackWranglerCooldown: {
 				DisplayName: Outback Wrangler Cooldown
 				Description: ""
+			}
+
+			ArbiterSpecialCooldown: {
+				DisplayName: Arbiter Special Cooldown
+				Description: ""
+			}
+
+			DegradedSingularity: {
+				DisplayName: Degraded Singularity
+				Description: Manifestations of a Singularity grant increased critical strike damage
+			}
+
+			EmbodiedSingularity: {
+				DisplayName: Embodied Singularity
+				Description: Elegance, grace, and sheer destructive power are at your disposal, drastically increasing critical strike damage but reducing defense to 0
+			}
+
+			Ensnared: {
+				DisplayName: Ensnared
+				Description: ""
+			}
+
+			FairyTagDamage: {
+				DisplayName: Fairy Tag Damage
+				Description: ""
+			}
+
+			LockDebuff: {
+				DisplayName: Lock Debuff
+				Description: ""
+			}
+
+			HerosBulwark: {
+				DisplayName: Hero's Bulwark
+				Description: The legendary shield's aegis furthers your abilities
+			}
+
+			LegendaryShieldRaised: {
+				DisplayName: Legendary Shield Raised
+				Description: Shield is raised, drastically reducing incoming damage
+			}
+
+			SingularityResonance: {
+				DisplayName: Singularity Resonance
+				Description: Dire conflict has incited inner power
 			}
 		}
 

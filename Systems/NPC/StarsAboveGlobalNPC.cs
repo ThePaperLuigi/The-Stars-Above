@@ -27,6 +27,8 @@ using StarsAbove.Items.Memories;
 using StarsAbove.Projectiles.Summon.StarphoenixFunnel;
 using Terraria.GameContent.Drawing;
 using Terraria.Audio;
+using StarsAbove.Buffs.StringOfCurses;
+using StarsAbove.Buffs.CloakOfAnArbiter;
 
 namespace StarsAbove.Systems
 {
@@ -369,7 +371,73 @@ namespace StarsAbove.Systems
                     drawColor = drawColor.MultiplyRGB(Color.Yellow);
                 }
             }
+            if (npc.HasBuff(BuffType<Necrosis>()))
+            {
+                if (Main.rand.Next(4) < 3)
+                {
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, DustID.Bone, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color), 1f);
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 1.8f;
+                    Main.dust[dust].velocity.Y -= 0.5f;
+                    if (Main.rand.NextBool(4))
+                    {
+                        Main.dust[dust].noGravity = false;
+                        Main.dust[dust].scale *= 0.2f;
+                    }
+                }
+                Lighting.AddLight(npc.position, 0.1f, 0.2f, 0.7f);
+            }
+            if (npc.HasBuff(BuffType<FairyTagDamage>()))
+            {
+                if (Main.rand.Next(4) < 3)
+                {
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, DustID.Enchanted_Gold, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color), 1f);
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 1.8f;
+                    Main.dust[dust].velocity.Y -= 0.5f;
+                    if (Main.rand.NextBool(4))
+                    {
+                        Main.dust[dust].noGravity = false;
+                        Main.dust[dust].scale *= 0.2f;
+                    }
+                }
+                Lighting.AddLight(npc.position, 0.1f, 0.2f, 0.7f);
+            }
+            if (npc.HasBuff(BuffType<Ensnared>()))
+            {
+                for (int i3 = 0; i3 < 10; i3++)
+                {
 
+                    Dust d = Main.dust[Dust.NewDust(new Vector2(npc.Center.X - npc.width, npc.Center.Y - npc.height / 3), npc.width * 2, 0, DustID.GoldFlame, 0, Main.rand.Next(-5, -2), 150, default, 0.3f)];
+                    d.fadeIn = 0.3f;
+                    d.noLight = true;
+                    d.noGravity = true;
+                }
+                for (int i3 = 0; i3 < 10; i3++)
+                {
+
+                    Dust d = Main.dust[Dust.NewDust(new Vector2(npc.Center.X - npc.width, npc.Center.Y - npc.height / 4), npc.width * 2, 0, DustID.GoldFlame, 0, Main.rand.Next(-5, -2), 150, default, 0.3f)];
+                    d.fadeIn = 0.3f;
+                    d.noLight = true;
+                    d.noGravity = true;
+                }
+                for (int i3 = 0; i3 < 10; i3++)
+                {
+
+                    Dust d = Main.dust[Dust.NewDust(new Vector2(npc.Center.X - npc.width, npc.Center.Y - npc.height / 2), npc.width * 2, 0, DustID.GoldFlame, 0, Main.rand.Next(-5, -2), 150, default, 0.3f)];
+                    d.fadeIn = 0.3f;
+                    d.noLight = true;
+                    d.noGravity = true;
+                }
+                for (int i3 = 0; i3 < 10; i3++)
+                {
+
+                    Dust d = Main.dust[Dust.NewDust(new Vector2(npc.Center.X - npc.width, npc.Center.Y - npc.height / 1.5f), npc.width * 2, 0, DustID.GoldFlame, 0, Main.rand.Next(-5, -2), 150, default, 0.3f)];
+                    d.fadeIn = 0.3f;
+                    d.noLight = true;
+                    d.noGravity = true;
+                }
+            }
             if (NanitePlague)
             {
                 if (Main.rand.Next(4) < 3)

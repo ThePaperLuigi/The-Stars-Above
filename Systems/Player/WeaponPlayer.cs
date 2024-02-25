@@ -8,6 +8,7 @@ using StarsAbove.Buffs.BurningDesire;
 using StarsAbove.Buffs.CarianDarkMoon;
 using StarsAbove.Buffs.CatalystMemory;
 using StarsAbove.Buffs.Chronoclock;
+using StarsAbove.Buffs.CloakOfAnArbiter;
 using StarsAbove.Buffs.CosmicDestroyer;
 using StarsAbove.Buffs.DragaliaFound;
 using StarsAbove.Buffs.DraggedBelow;
@@ -25,6 +26,7 @@ using StarsAbove.Buffs.TwoCrownBow;
 using StarsAbove.Buffs.Umbra;
 using StarsAbove.Buffs.VermillionDaemon;
 using StarsAbove.Dusts;
+using StarsAbove.Items.Armor.CloakOfAnArbiter;
 using StarsAbove.Items.Armor.DraggedBelow;
 using StarsAbove.Items.Weapons.Celestial;
 using StarsAbove.Items.Weapons.Melee;
@@ -36,6 +38,7 @@ using StarsAbove.Projectiles.Celestial.UltimaThule;
 using StarsAbove.Projectiles.Extra;
 using StarsAbove.Projectiles.Magic.AegisDriver;
 using StarsAbove.Projectiles.Magic.CarianDarkMoon;
+using StarsAbove.Projectiles.Magic.CloakOfAnArbiter;
 using StarsAbove.Projectiles.Magic.DreamersInkwell;
 using StarsAbove.Projectiles.Magic.EyeOfEuthymia;
 using StarsAbove.Projectiles.Magic.HunterSymphony;
@@ -178,6 +181,8 @@ namespace StarsAbove.Systems
         //Trickspin Two-Step
         public bool TrickspinReady = false;
         public Vector2 TrickspinCenter;
+        
+        public bool CloakOfAnArbiterHeld;
 
         //Suistrume
         public float stellarPerformancePrepTimer = 0;
@@ -672,6 +677,22 @@ namespace StarsAbove.Systems
             if (Player.HasBuff(BuffType<Buffs.Kifrosse.AmaterasuGrace>()) && target.HasBuff(BuffID.Frostburn))
             {
                 modifiers.SourceDamage += 0.5f;
+            }
+            if(Player.HasBuff(BuffType<DegradedSingularity>()))
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    if (target.buffType[i] > 0 && BuffID.Sets.IsATagBuff[target.buffType[i]] && target.buffType[i] != ModContent.BuffType<FairyTagDamage>())
+                    {
+                        modifiers.CritDamage += 0.1f;
+                        break;
+                    }
+
+                }
+            }
+            if (Player.HasBuff(BuffType<EmbodiedSingularity>()))
+            {
+                modifiers.CritDamage += 1.5f;
             }
         }
 
@@ -3772,6 +3793,14 @@ namespace StarsAbove.Systems
             {
                 rebellionGauge = 0;
             }
+            if (Player.HasBuff(BuffType<EmbodiedSingularity>()) && !CloakOfAnArbiterHeld)
+            {
+                Player.ClearBuff(BuffType<EmbodiedSingularity>());
+                Player.GetModPlayer<BossPlayer>().WhiteAlpha = 1f;
+            }
+            CloakOfAnArbiterHeld = false;
+            
+
             wavedancerHeld = false;
             RebellionHeld = false;
             DragaliaFoundHeld = false;
@@ -4006,6 +4035,11 @@ namespace StarsAbove.Systems
                 if (DraggedBelowHeld)
                 {
                     Player.UpdateVisibleAccessories(new Item(ItemType<DraggedBelowGloves>()), false);
+
+                }
+                if(CloakOfAnArbiterHeld)
+                {
+                    Player.UpdateVisibleAccessories(new Item(ItemType<CloakOfAnArbiterCape>()), false);
 
                 }
             }

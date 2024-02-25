@@ -31,7 +31,7 @@ namespace StarsAbove.Items.Weapons.Other
 			Item.height = 40;           //Weapon's texture's height
 			Item.useTime = 60;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
 			Item.useAnimation = 60;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
-			Item.useStyle = ItemUseStyleID.EatFood;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
+			Item.useStyle = ItemUseStyleID.HoldUp;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
 			Item.knockBack = 6;         //The force of knockback of the weapon. Maximum is 20
 			Item.rare = ItemRarityID.Green;              //The rarity of the weapon, from -1 to 13
 			//Item.UseSound = StarsAboveAudio.SFX_AgnianTune;      //The sound when the weapon is using
@@ -43,12 +43,10 @@ namespace StarsAbove.Items.Weapons.Other
 		//SoundEngine.PlaySound(StarsAboveAudio.SFX_electroSmack, Player.Center);
 
 		int randomBuff;
-        public override void UpdateInventory(Player player)
+        public override void HoldItem(Player player)
         {
-			player.GetModPlayer<WeaponPlayer>().AgnianFarewellInInventory = true;
 
-
-            base.UpdateInventory(player);
+            base.HoldItem(player);
         }
         public override bool CanUseItem(Player player)
 		{

@@ -98,8 +98,9 @@ namespace StarsAbove
 
 				SkyManager.Instance["StarsAbove:DreamingCitySky"] = new DreamingCitySky();
 				SkyManager.Instance["StarsAbove:EdinGenesisQuasarSky"] = new EdinGenesisQuasarSky();
+                SkyManager.Instance["StarsAbove:ArbiterSky"] = new ArbiterSky();
 
-				Filters.Scene["StarsAbove:MoonSky"] = new Filter(new ScreenShaderData("FilterTower").UseColor(0f, 0.5f, 1f).UseOpacity(0.5f), EffectPriority.High);
+                Filters.Scene["StarsAbove:MoonSky"] = new Filter(new ScreenShaderData("FilterTower").UseColor(0f, 0.5f, 1f).UseOpacity(0.5f), EffectPriority.High);
 				SkyManager.Instance["StarsAbove:MoonSky"] = new MoonSky();
 
 				Ref<Effect> blurRef = new Ref<Effect>(ModContent.Request<Effect>("StarsAbove/Effects/GaussianBlur", AssetRequestMode.ImmediateLoad).Value); // The path to the compiled shader file.

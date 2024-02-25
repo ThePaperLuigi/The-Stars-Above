@@ -9602,8 +9602,7 @@ Mods: {
 					'''
 					[c/D294FF:Weapon Memory]
 					Minions target foes struck by this weapon
-					Press the Weapon Memory Key to move all sentries to your position (6 second cooldown)
-					Pressing the Weapon Memory Key while the prior ability's cooldown is active will instead reduce Mana to 0 and destroy all minions
+					Press the Weapon Memory Key to reduce Mana to 0 and destroy all minions (20 second cooldown)
 					Gain a guaranteed critical strike for each minion destroyed (Minion must consume minion slots)
 					'Well, guess that'll do'
 					''' */
@@ -9733,6 +9732,11 @@ Mods: {
 
 			VendorStation: {
 				// DisplayName: Vendor Station
+				// Tooltip: ""
+			}
+
+			CloakOfAnArbiterCape: {
+				// DisplayName: Cloak Of An Arbiter Cape
 				// Tooltip: ""
 			}
 		}
@@ -10717,6 +10721,10 @@ Mods: {
 			// CharsugarFlames.DisplayName: Charsugar Flames
 			// SugartleBubble.DisplayName: Sugartle Bubble
 			// BulbasugarSeeds.DisplayName: Bulbasugar Seeds
+			// ArbiterLock.DisplayName: Arbiter Lock
+			// ArbiterPillar.DisplayName: Arbiter Pillar
+			// FairyAttack.DisplayName: Fairy Attack
+			// FairyAttackEffect.DisplayName: Fairy Attack Effect
 		}
 
 		Buffs: {
@@ -13378,6 +13386,51 @@ Mods: {
 			OutbackWranglerCooldown: {
 				// DisplayName: Outback Wrangler Cooldown
 				// Description: ""
+			}
+
+			ArbiterSpecialCooldown: {
+				// DisplayName: Arbiter Special Cooldown
+				// Description: ""
+			}
+
+			DegradedSingularity: {
+				// DisplayName: Degraded Singularity
+				// Description: Manifestations of a Singularity grant increased critical strike damage
+			}
+
+			EmbodiedSingularity: {
+				// DisplayName: Embodied Singularity
+				// Description: Elegance, grace, and sheer destructive power are at your disposal, drastically increasing critical strike damage but reducing defense to 0
+			}
+
+			Ensnared: {
+				// DisplayName: Ensnared
+				// Description: ""
+			}
+
+			FairyTagDamage: {
+				// DisplayName: Fairy Tag Damage
+				// Description: ""
+			}
+
+			LockDebuff: {
+				// DisplayName: Lock Debuff
+				// Description: ""
+			}
+
+			HerosBulwark: {
+				// DisplayName: Hero's Bulwark
+				// Description: The legendary shield's aegis furthers your abilities
+			}
+
+			LegendaryShieldRaised: {
+				// DisplayName: Legendary Shield Raised
+				// Description: Shield is raised, drastically reducing incoming damage
+			}
+
+			SingularityResonance: {
+				// DisplayName: Singularity Resonance
+				// Description: Dire conflict has incited inner power
 			}
 		}
 

@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using Terraria.Audio;
 using System;
 using StarsAbove.Systems;
+using StarsAbove.Buffs.StringOfCurses;
 
 namespace StarsAbove.Projectiles.Ranged.StringOfCurses
 {
@@ -36,7 +37,7 @@ namespace StarsAbove.Projectiles.Ranged.StringOfCurses
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            default(Effects.SmallBlueTrail).Draw(Projectile);
+            default(Effects.GreenTrail).Draw(Projectile);
 
             return true;
         }
@@ -52,15 +53,34 @@ namespace StarsAbove.Projectiles.Ranged.StringOfCurses
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            
+            if(hit.Crit)
+            {
+                target.AddBuff(ModContent.BuffType<Necrosis>(), 240);
+
+            }
+            if (!target.active)
+            {
+                Main.player[Projectile.owner].GetModPlayer<StarsAbovePlayer>().novaGauge += 2;
+                if(Main.player[Projectile.owner].HasBuff(ModContent.BuffType<Cursewrought>()))
+                {
+                    Main.player[Projectile.owner].GetModPlayer<StarsAbovePlayer>().novaGauge += 2;
+                    Main.player[Projectile.owner].Heal(10);
+                }
+                Main.player[Projectile.owner].AddBuff(ModContent.BuffType<Cursewrought>(), 7 * 60);
+
+            }
         }
-        
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
+            modifiers.CritDamage -= 0.5f;
+            base.ModifyHitNPC(target, ref modifiers);
+        }
 
         public override void OnKill(int timeLeft)
         {
             for (int d = 0; d < 8; d++)
             {
-                Dust.NewDust(Projectile.Center, 0, 0, DustID.Electric, Main.rand.NextFloat(-2, 2), Main.rand.NextFloat(-2, 2), 150, default, 0.7f);
+                Dust.NewDust(Projectile.Center, 0, 0, DustID.Terra, Main.rand.NextFloat(-2, 2), Main.rand.NextFloat(-2, 2), 150, default, 0.7f);
 
             }
             

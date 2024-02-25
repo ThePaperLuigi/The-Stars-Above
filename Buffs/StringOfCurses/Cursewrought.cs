@@ -13,7 +13,8 @@ namespace StarsAbove.Buffs.StringOfCurses
 
         public override void Update(Player player, ref int buffIndex)
         {
-            
+            player.GetAttackSpeed(DamageClass.Generic) += 0.2f;
+            player.GetCritChance(DamageClass.Generic) += 20;
 
         }
     }

@@ -652,6 +652,22 @@ namespace StarsAbove.Systems
         #endregion
 
         #region Weapon Sound Effects
+        public static readonly SoundStyle SFX_ArbiterShockwave = new($"{nameof(StarsAbove)}/Sounds/SFX/SFX_ArbiterShockwave")
+        {
+            PitchVariance = 0.1f,
+        };
+        public static readonly SoundStyle SFX_ArbiterLock = new($"{nameof(StarsAbove)}/Sounds/SFX/SFX_ArbiterLock")
+        {
+            PitchVariance = 0.1f,
+        };
+        public static readonly SoundStyle SFX_ArbiterChain = new($"{nameof(StarsAbove)}/Sounds/SFX/SFX_ArbiterChain")
+        {
+            PitchVariance = 0.1f,
+        };
+        public static readonly SoundStyle SFX_ArbiterPillar = new($"{nameof(StarsAbove)}/Sounds/SFX/SFX_ArbiterPillar")
+        {
+            PitchVariance = 0.1f,
+        };
         public static readonly SoundStyle SFX_OrbitalTrain = new($"{nameof(StarsAbove)}/Sounds/SFX/Train")
         {
 

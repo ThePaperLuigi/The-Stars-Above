@@ -74,6 +74,7 @@ namespace StarsAbove.Systems
         public bool activateUltimaShockwaveEffect = false;
         public bool activateBlackHoleShockwaveEffect = false;
 
+        public bool activateArbiterShockwaveEffect = false;
 
         //Warrior of Light code //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -3402,6 +3403,24 @@ namespace StarsAbove.Systems
                     if (Main.netMode != NetmodeID.Server && !Filters.Scene["Shockwave"].IsActive())
                     {
                         Filters.Scene.Activate("Shockwave", Player.Center).GetShader().UseColor(rippleCount, rippleSize, rippleSpeed).UseTargetPosition(new Vector2(Player.Center.X, Player.Center.Y - 300));
+                    }
+                    shockwaveProgress = 0;
+                }
+                if (activateArbiterShockwaveEffect)
+                {
+                    if (Main.netMode != NetmodeID.Server && Filters.Scene["Shockwave"].IsActive())
+                    {
+                        Filters.Scene.Deactivate("Shockwave");
+
+                    }
+
+                    rippleCount = 1;
+                    rippleSpeed = 25;
+                    rippleSize = 4;
+                    activateArbiterShockwaveEffect = false;
+                    if (Main.netMode != NetmodeID.Server && !Filters.Scene["Shockwave"].IsActive())
+                    {
+                        Filters.Scene.Activate("Shockwave", Player.Center).GetShader().UseColor(rippleCount, rippleSize, rippleSpeed).UseTargetPosition(new Vector2(Player.Center.X, Player.Center.Y));
                     }
                     shockwaveProgress = 0;
                 }

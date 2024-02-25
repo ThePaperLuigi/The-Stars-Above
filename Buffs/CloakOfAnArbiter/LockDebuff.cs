@@ -1,9 +1,9 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 
-namespace StarsAbove.Buffs.StringOfCurses
+namespace StarsAbove.Buffs.CloakOfAnArbiter
 {
-    public class Necrosis : ModBuff
+    public class LockDebuff : ModBuff
     {
         public override void SetStaticDefaults()
         {
@@ -20,8 +20,7 @@ namespace StarsAbove.Buffs.StringOfCurses
         }
         public override void Update(NPC npc, ref int buffIndex)
         {
-            npc.damage = (int)(npc.defDamage * 0.85);
-            npc.defense = (int)(npc.defDefense * 0.85);
+            npc.damage = (int)(npc.defDamage * 0.1);
 
             base.Update(npc, ref buffIndex);
         }

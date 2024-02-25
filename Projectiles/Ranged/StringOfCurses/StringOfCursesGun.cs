@@ -21,7 +21,7 @@ namespace StarsAbove.Projectiles.Ranged.StringOfCurses
         public override int SmokeDustID => Terraria.ID.DustID.Smoke;
 
         //The dust that fires from the barrel after shooting.
-        public override int FlashDustID => Terraria.ID.DustID.GemSapphire; 
+        public override int FlashDustID => Terraria.ID.DustID.Terra; 
         //The distance the gun's muzzle is relative to the player. Remember this also is influenced by base distance.
         public override int MuzzleDistance => 45;
         //The distance the gun is relative to the player.
