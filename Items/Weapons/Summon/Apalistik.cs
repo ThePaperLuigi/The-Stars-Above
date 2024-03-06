@@ -24,10 +24,10 @@ namespace StarsAbove.Items.Weapons.Summon
 				"\nDamage scales with world progression" +
 				$""); */  //The (English) text shown below your weapon's name
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+            ItemID.Sets.Spears[Item.type] = true;
+        }
 
-		}
-
-		public override void SetDefaults() {
+        public override void SetDefaults() {
 			Item.damage = 6;
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.useAnimation = 45;
