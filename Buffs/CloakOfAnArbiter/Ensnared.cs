@@ -21,11 +21,11 @@ namespace StarsAbove.Buffs.CloakOfAnArbiter
         
         public override void Update(NPC npc, ref int buffIndex)
         {
-            npc.velocity *= 0;
+            
             if(!npc.boss)
             {
-                
-                
+                npc.velocity *= 0;
+
 
             }
             //npc.GetGlobalNPC<StarsAboveGlobalNPC>().Petrified = true;
