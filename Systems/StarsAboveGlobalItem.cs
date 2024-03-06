@@ -152,6 +152,7 @@ namespace StarsAbove.Systems
             ItemType<EssenceOfOffseeing>(),
             ItemType<EssenceOfTheVoid>(),
             ItemType<EssenceOfHydro>(),
+            ItemType<EssenceOfNature>(),
 
         };
         public List<int> SpatialWeapons = new List<int>(){
@@ -283,6 +284,7 @@ namespace StarsAbove.Systems
             ItemType<EssenceOfKingslaying>(),
             ItemType<EssenceOfFirepower>(),
             ItemType<EssenceOfTheDragon>(),
+            ItemType<EssenceOfDancingSeas>(),
         };
 
         public List<int> Prisms = new List<int>() {
