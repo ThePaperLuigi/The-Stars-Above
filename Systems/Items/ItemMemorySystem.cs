@@ -45,7 +45,7 @@ using static Humanizer.In;
 
 namespace StarsAbove.Systems.Items
 {
-    public class ItemMemorySystem : GlobalItem
+    public class ItemMemorySystem : StarsAboveGlobalItem
     {
         public List<string> EquippedMemories = new List<string>()//Unused
         {
@@ -143,13 +143,13 @@ namespace StarsAbove.Systems.Items
         //Affects everything except cooldowns (damage, support) very OP
         public float memoryGlobalMod;
 
-        StarsAboveGlobalItem globalItem = new StarsAboveGlobalItem();
+        StarsAboveGlobalItem StarsAboveGlobalItem = new StarsAboveGlobalItem();
         public override bool InstancePerEntity => true;     
         public override void SetDefaults(Item entity)
         {
             
         }
-        public List<int> ItemsThatHaveMultiplayerEffects = new List<int>() {
+        public static List<int> ItemsThatHaveMultiplayerEffects = new List<int>() {
             ItemType<Suistrume>(),
             ItemType<Chronoclock>(),
             ItemType<LegendaryShield>(),
@@ -295,7 +295,7 @@ namespace StarsAbove.Systems.Items
         }
         public override void UpdateInventory(Item item, Player player)
         {
-            if ((globalItem.AstralWeapons.Contains(item.type) || globalItem.UmbralWeapons.Contains(item.type) || globalItem.SpatialWeapons.Contains(item.type)) && tarotCardType == -1)
+            if ((StarsAboveGlobalItem.AstralWeapons.Contains(item.type) || StarsAboveGlobalItem.UmbralWeapons.Contains(item.type) || StarsAboveGlobalItem.SpatialWeapons.Contains(item.type)) && tarotCardType == -1)
             {
                 //0 fool, 2 magician, 3 priestess, 4 empress, 5 emperor, 6 heirophant, 7 lovers, 8 chariot, 9 justice,
                 //10 hermit, 11 fortune, 12 strength, 13 hanged man, 14 death, 15 temperance, 16 devil, 17 tower, 18 star, 19 moon, 20 sun
@@ -932,19 +932,19 @@ namespace StarsAbove.Systems.Items
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            if (globalItem.AstralWeapons.Contains(item.type) || globalItem.UmbralWeapons.Contains(item.type) || globalItem.SpatialWeapons.Contains(item.type))
+            if (StarsAboveGlobalItem.AstralWeapons.Contains(item.type) || StarsAboveGlobalItem.UmbralWeapons.Contains(item.type) || StarsAboveGlobalItem.SpatialWeapons.Contains(item.type))
             {
                 string tooltipAddition = "";
                 //Determine the aspect of aspected weapons.
-                if (globalItem.AstralWeapons.Contains(item.type))
+                if (StarsAboveGlobalItem.AstralWeapons.Contains(item.type))
                 {
                     tooltipAddition = $"[i:{ItemType<Astral>()}]";
                 }
-                if (globalItem.UmbralWeapons.Contains(item.type))
+                if (StarsAboveGlobalItem.UmbralWeapons.Contains(item.type))
                 {
                     tooltipAddition = $"[i:{ItemType<Umbral>()}]";
                 }
-                if (globalItem.SpatialWeapons.Contains(item.type))
+                if (StarsAboveGlobalItem.SpatialWeapons.Contains(item.type))
                 {
                     tooltipAddition = $"[i:{ItemType<Spatial>()}]";
                 }

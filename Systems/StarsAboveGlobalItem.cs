@@ -46,7 +46,7 @@ namespace StarsAbove.Systems
         public bool spatialWeapon;
         public bool loadItem = true;
 
-        public List<int> AstralWeapons = new List<int>() {
+        public static List<int> AstralWeapons = new List<int>() {
             ItemType<CarianDarkMoon>(),
             ItemType<NeoDealmaker>(),
             ItemType<DerFreischutz>(),
@@ -101,7 +101,7 @@ namespace StarsAbove.Systems
             ItemType<EssenceOfEnergy>(),
 
         };
-        public List<int> UmbralWeapons = new List<int>() {
+        public static List<int> UmbralWeapons = new List<int>() {
             ItemType<KonpakuKatana>(),
             ItemType<AshenAmbition>(),
             ItemType<DeathInFourActs>(),
@@ -155,7 +155,7 @@ namespace StarsAbove.Systems
             ItemType<EssenceOfNature>(),
 
         };
-        public List<int> SpatialWeapons = new List<int>(){
+        public static List<int> SpatialWeapons = new List<int>(){
 
             ItemType<Apalistik>(),
             ItemType<MiserysCompany>(),
@@ -287,7 +287,7 @@ namespace StarsAbove.Systems
             ItemType<EssenceOfDancingSeas>(),
         };
 
-        public List<int> Prisms = new List<int>() {
+        public static List<int> Prisms = new List<int>() {
 
             ItemType<PrismaticCore>(),
 
@@ -362,7 +362,7 @@ namespace StarsAbove.Systems
         };
         #endregion
 
-        public List<int> Outfits = new List<int>() {
+        public static List<int> Outfits = new List<int>() {
 
             ItemType<FaerieVoyagerAttire>(),
             ItemType<StellarCasualAttire>(),
@@ -374,7 +374,7 @@ namespace StarsAbove.Systems
 
         };
 
-        public List<int> GlowingItems = new List<int>() {
+        public static List<int> GlowingItems = new List<int>() {
 
             ItemType<TotemOfLightEmpowered>(),
             ItemType<BlackSilenceWeapon>(),
@@ -382,7 +382,7 @@ namespace StarsAbove.Systems
             ItemType<Chronoclock>(),
             ItemType<BrilliantSpectrum>(),
         };
-        public List<int> Essences = new List<int>() {
+        public static List<int> Essences = new List<int>() {
 
             ItemType<EssenceOfLifethirsting>(),
             ItemType<EssenceOfTheDarkMoon>(),
