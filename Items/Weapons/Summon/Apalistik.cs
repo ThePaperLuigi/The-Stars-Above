@@ -47,66 +47,70 @@ namespace StarsAbove.Items.Weapons.Summon
 			Item.shoot = ProjectileType<ApalistikProjectile>();
 		}
 
-		
 
-		public override bool AltFunctionUse(Player player)
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            if (NPC.downedSlimeKing)
+            {
+                damage += 2;
+            }
+            if (NPC.downedBoss1)
+            {
+                damage += 3;
+            }
+            if (NPC.downedBoss2)
+            {
+                damage += 4;
+            }
+            if (NPC.downedQueenBee)
+            {
+                damage += 5;
+            }
+            if (NPC.downedBoss3)
+            {
+                damage += 5;
+            }
+            if (Main.hardMode)
+            {
+                damage += 5;
+            }
+            if (NPC.downedMechBossAny)
+            {
+                damage += 5;
+            }
+            if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
+            {
+                damage += 5;
+            }
+            if (NPC.downedPlantBoss)
+            {
+                damage += 5;
+            }
+            if (NPC.downedGolemBoss)
+            {
+                damage += 5;
+            }
+            if (NPC.downedFishron)
+            {
+                damage += 5;
+            }
+            if (NPC.downedAncientCultist)
+            {
+                damage += 5;
+            }
+            if (NPC.downedMoonlord)
+            {
+                damage += 5;
+				
+            }
+        }
+        public override bool AltFunctionUse(Player player)
 		{
 			return false;
 		}
         public override void UpdateInventory(Player player)
         {
-			if (NPC.downedSlimeKing)
-			{
-				Item.damage = 8;
-			}
-			if (NPC.downedBoss1)
-			{
-				Item.damage = 12;
-			}
-			if (NPC.downedBoss2)
-			{
-				Item.damage = 14;
-			}
-			if (NPC.downedQueenBee)
-			{
-				Item.damage = 19;
-			}
-			if (NPC.downedBoss3)
-			{
-				Item.damage = 22;
-			}
-			if (Main.hardMode)
-			{
-				Item.damage = 26;
-			}
-			if (NPC.downedMechBossAny)
-			{
-				Item.damage = 35;
-			}
-			if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
-			{
-				Item.damage = 44;
-			}
-			if (NPC.downedPlantBoss)
-			{
-				Item.damage = 68;
-			}
-			if (NPC.downedGolemBoss)
-			{
-				Item.damage = 80;
-			}
-			if (NPC.downedFishron)
-			{
-				Item.damage = 96;
-			}
-			if (NPC.downedAncientCultist)
-			{
-				Item.damage = 110;
-			}
-			if (NPC.downedMoonlord)
-			{
-				Item.damage = 125;
-			}
+			
 			base.UpdateInventory(player);
         }
 

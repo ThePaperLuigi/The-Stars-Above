@@ -43,7 +43,7 @@ namespace StarsAbove.Items.Weapons.Summon
 
 		public override void SetDefaults()
 		{
-			Item.damage = 14;
+			Item.damage = 3;
 			Item.DamageType = DamageClass.Summon;
 			Item.mana = 10;
 			Item.width = 21;
@@ -59,7 +59,63 @@ namespace StarsAbove.Items.Weapons.Summon
 			Item.buffType = BuffType<Buffs.TakodachiBuff>(); //The buff added to player after used the item
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
 		}
-		public override bool AltFunctionUse(Player player)
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            if (NPC.downedSlimeKing)
+            {
+                damage += 2;
+            }
+            if (NPC.downedBoss1)
+            {
+                damage += 3;
+            }
+            if (NPC.downedBoss2)
+            {
+                damage += 4;
+            }
+            if (NPC.downedQueenBee)
+            {
+                damage += 5;
+            }
+            if (NPC.downedBoss3)
+            {
+                damage += 5;
+            }
+            if (Main.hardMode)
+            {
+                damage += 5;
+            }
+            if (NPC.downedMechBossAny)
+            {
+                damage += 5;
+            }
+            if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
+            {
+                damage += 5;
+            }
+            if (NPC.downedPlantBoss)
+            {
+                damage += 5;
+            }
+            if (NPC.downedGolemBoss)
+            {
+                damage += 5;
+            }
+            if (NPC.downedFishron)
+            {
+                damage += 5;
+            }
+            if (NPC.downedAncientCultist)
+            {
+                damage += 5;
+            }
+            if (NPC.downedMoonlord)
+            {
+                damage += 5;
+
+            }
+        }
+        public override bool AltFunctionUse(Player player)
 		{
 			return true;
 		}
@@ -73,7 +129,7 @@ namespace StarsAbove.Items.Weapons.Summon
         }
         public override void HoldItem(Player player)
         {
-			//item.damage = 120 + player.statLifeMax2 / 20 + player.statManaMax2 / 20 + (Math.Max(Math.Max(Math.Max(player.meleeCrit, player.magicCrit), player.rangedCrit), player.thrownCrit));
+			//damage += 120 + player.statLifeMax2 / 20 + player.statManaMax2 / 20 + (Math.Max(Math.Max(Math.Max(player.meleeCrit, player.magicCrit), player.rangedCrit), player.thrownCrit));
             base.HoldItem(player);
 
 			//player.GetModPlayer<WeaponPlayer>().takodachiGauge++;//Debug.
@@ -167,58 +223,7 @@ namespace StarsAbove.Items.Weapons.Summon
 
         public override void UpdateInventory(Player player)
         {
-			if (NPC.downedSlimeKing)
-			{
-				Item.damage = 15;
-			}
-			if (NPC.downedBoss1)
-			{
-				Item.damage = 16;
-			}
-			if (NPC.downedBoss2)
-			{
-				Item.damage = 17;
-			}
-			if (NPC.downedQueenBee)
-			{
-				Item.damage = 18;
-			}
-			if (NPC.downedBoss3)
-			{
-				Item.damage = 19;
-			}
-			if (Main.hardMode)
-			{
-				Item.damage = 22;
-			}
-			if (NPC.downedMechBossAny)
-			{
-				Item.damage = 24;
-			}
-			if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
-			{
-				Item.damage = 26;
-			}
-			if (NPC.downedPlantBoss)
-			{
-				Item.damage = 28;
-			}
-			if (NPC.downedGolemBoss)
-			{
-				Item.damage = 30;
-			}
-			if (NPC.downedFishron)
-			{
-				Item.damage = 34;
-			}
-			if (NPC.downedAncientCultist)
-			{
-				Item.damage = 44;
-			}
-			if (NPC.downedMoonlord)
-			{
-				Item.damage = 60;
-			}
+			
 			
         }
         public override Vector2? HoldoutOffset()

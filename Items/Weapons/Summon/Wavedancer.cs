@@ -50,7 +50,11 @@ namespace StarsAbove.Items.Weapons.Summon
 		}
 		public override bool CanUseItem(Player player)
 		{
-			return true;
+			if(player.maxMinions >= 3)
+			{
+				return true;
+			}
+			return false;
 		}
 
 		public override bool? UseItem(Player player)

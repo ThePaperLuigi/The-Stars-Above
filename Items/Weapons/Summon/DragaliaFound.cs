@@ -68,60 +68,65 @@ namespace StarsAbove.Items.Weapons.Summon
         {
 
         }
-        public override void HoldItem(Player player)
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
             if (NPC.downedSlimeKing)
             {
-                Item.damage = 15;
+                damage += 2;
             }
             if (NPC.downedBoss1)
             {
-                Item.damage = 16;
+                damage += 3;
             }
             if (NPC.downedBoss2)
             {
-                Item.damage = 17;
+                damage += 4;
             }
             if (NPC.downedQueenBee)
             {
-                Item.damage = 18;
+                damage += 5;
             }
             if (NPC.downedBoss3)
             {
-                Item.damage = 29;
+                damage += 5;
             }
             if (Main.hardMode)
             {
-                Item.damage = 32;
+                damage += 5;
             }
             if (NPC.downedMechBossAny)
             {
-                Item.damage = 40;
+                damage += 5;
             }
             if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
             {
-                Item.damage = 50;
+                damage += 5;
             }
             if (NPC.downedPlantBoss)
             {
-                Item.damage = 70;
+                damage += 5;
             }
             if (NPC.downedGolemBoss)
             {
-                Item.damage = 80;
+                damage += 5;
             }
             if (NPC.downedFishron)
             {
-                Item.damage = 90;
+                damage += 5;
             }
             if (NPC.downedAncientCultist)
             {
-                Item.damage = 111;
+                damage += 5;
             }
             if (NPC.downedMoonlord)
             {
-                Item.damage = 151;
+                damage += 5;
+
             }
+        }
+        public override void HoldItem(Player player)
+        {
+            
 
             player.GetModPlayer<WeaponPlayer>().DragaliaFoundHeld = true;
             player.AddBuff(BuffType<TempestDragonlightBuff>(), 10);
