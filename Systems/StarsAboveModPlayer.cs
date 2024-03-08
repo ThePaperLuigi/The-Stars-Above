@@ -1,5 +1,6 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.Xna.Framework;
+using StarsAbove.Biomes;
 using StarsAbove.Buffs;
 using StarsAbove.Buffs.EmberFlask;
 using StarsAbove.Buffs.Memories;
@@ -3259,6 +3260,7 @@ namespace StarsAbove.Systems
                 costumeChangeOpacity -= 0.1f;
 
                 GaussianBlur();
+                NeonVeilShaderEffect();
                 if (starfarerMenuActive)
                 {
                     starfarerMenuUIOpacity += 0.1f;
@@ -3597,6 +3599,26 @@ namespace StarsAbove.Systems
                 }
             }
             gaussianBlurProgress = MathHelper.Clamp(gaussianBlurProgress, 0f, 1f);
+        }
+        private void NeonVeilShaderEffect()
+        {
+            if(Player.InModBiome<NeonVeilBiome>())
+            {
+                if (!Filters.Scene["NeonVeilReflectionEffect"].IsActive() && Main.netMode != NetmodeID.Server)
+                {
+                    Filters.Scene.Activate("NeonVeilReflectionEffect").GetShader().UseColor(0, 0, 1).UseTargetPosition(new Vector2(Player.Center.X, (Main.maxTilesY - 110)*16));
+
+                }
+            }
+            else
+            {
+                if (Filters.Scene["NeonVeilReflectionEffect"].IsActive() && Main.netMode != NetmodeID.Server)
+                {
+                    Filters.Scene.Deactivate("NeonVeilReflectionEffect");
+
+                }
+            }
+
         }
 
         private void EmberFlask()
