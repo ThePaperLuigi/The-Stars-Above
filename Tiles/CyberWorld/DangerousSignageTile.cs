@@ -9,7 +9,7 @@ using StarsAbove.Items.Placeable.CyberWorld;
 
 namespace StarsAbove.Tiles.CyberWorld
 {
-    public class DeliciousSignageTile : ModTile
+    public class DangerousSignageTile : ModTile
 	{
 		public override void SetStaticDefaults()
 		{
@@ -40,7 +40,7 @@ namespace StarsAbove.Tiles.CyberWorld
 		
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			Item.NewItem(new EntitySource_TileBreak(i,j),i * 16, j * 16, 16, 32, ModContent.ItemType<DeliciousSignage>());
+			Item.NewItem(new EntitySource_TileBreak(i,j),i * 16, j * 16, 16, 32, ModContent.ItemType<DangerousSignage>());
 		}
 		
 		

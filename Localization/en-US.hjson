@@ -897,14 +897,14 @@ Mods: {
 						1: Whoa.. I've never seen anything like this.. ever. The entire world seems to be bursting with new magical energy.
 						2: It looks like the Wall of Flesh was either guarding or preventing something drastic from happening. That's my take on it.
 						3: Just to let you know, there's another upgrade in the Stellar Array now. It seems to be more powerful than the ones you've used before.
-						4: Also, it seems to have dropped something.. Whatever it is, it feels.. familiar. Please be careful, but I can't deny I'm curious.
+						4: Anyways, feels like it's time to do some more exploring! Let's get to it.
 					}
 
 					Eridani: {
 						1: Wow.. the world itself seems to have been drastically altered after the defeat of the Wall of Flesh...
 						2: I've never seen anything like it. What was this thing hiding...?
 						3: This power seems to have activated the first Tier 2 ability in the Stellar Array. I hope you can utilize it well.
-						4: Something else dropped from it. I'm not sure what it is, but it feels like I should know. Be mindful of what could go wrong.
+						4: Let's explore these new environs with caution.
 					}
 				}
 
@@ -3796,6 +3796,14 @@ Mods: {
 			TrashDefaultTile.MapEntry: Trash Default Tile
 			VendingStationTile.MapEntry: Vending Station Tile
 			VendorStationTile.MapEntry: Vendor Station Tile
+			DangerousSignageTile.MapEntry: Dangerous Signage Tile
+			EnergeticMountedSignageTile.MapEntry: Energetic Mounted Signage Tile
+			HologramPlinthDrinkTile.MapEntry: Hologram Plinth Drink Tile
+			HydratedMountedSignageTile.MapEntry: Hydrated Mounted Signage Tile
+			LavenderSignageTile.MapEntry: Lavender Signage Tile
+			OfflineMountedSignageTile.MapEntry: Offline Mounted Signage Tile
+			RadialMountedSignageTile.MapEntry: Radial Mounted Signage Tile
+			SmallOfflineMountedSignageTile.MapEntry: Small Offline Mounted Signage Tile
 		}
 
 		Items: {
@@ -4821,16 +4829,12 @@ Mods: {
 					You will also be granted Featherfall for 1 second
 					[c/6090EC:Blood of the Dragon] will apply the following effects:
 					During [c/6090EC:Blood of the Dragon], the next attack will launch you towards your cursor after Featherfall ends
-					During [c/6090EC:Blood of the Dragon], Damage is increased by 40%
-					During [c/6090EC:Blood of the Dragon], Movement speed is increased
-					During [c/6090EC:Blood of the Dragon], you will take no fall damage
+					Additionally, damage is increased by 40%, movement speed is increased, and fall damage is negated
 					After two instances of [c/6090EC:Blood of the Dragon], the next Jump will instead grant [c/EC6060:Life of the Dragon] for 8 seconds
 					[c/EC6060:Life of the Dragon] will apply the following effects:
 					During [c/EC6060:Life of the Dragon], the next attack will fire a barrage of draconic fireballs that lower enemy defense
-					During [c/EC6060:Life of the Dragon], damage and critical chance is increased by 60%
-					During [c/EC6060:Life of the Dragon], every attack after the first will launch you towards your target, dealing high amounts of bonus damage
-					During [c/EC6060:Life of the Dragon], you will gain 1 second of Invincibility after each strike
-					During [c/EC6060:Life of the Dragon], you will take no fall damage
+					Additionally, damage and critical strike chance is increased by 60% and fall damage is negated
+					After the initial attack, every attack will launch you towards your target, dealing high amounts of bonus damage and granting Invincibility for 1 second
 					Jump counters will be reset when swapping off this weapon
 					'Born amidst the timeless conflict between men and dragons, forged that they might better pierce the scaled hides of their mortal foes'
 					'''
@@ -7805,8 +7809,8 @@ Mods: {
 			GoldenKatana: {
 				Tooltip:
 					'''
-					[c/F7D76A:Hold left click to charge the weapon; if the weapon is fully charged, the attack varies]
 					[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from both Melee and Magic damage]
+					[c/F7D76A:Hold left click to charge the weapon; if the weapon is fully charged, the attack varies]
 					Additionally, this weapon can be [c/F7D76A:Overcharged], causing additional effects to occur
 					Uncharged attacks with this weapon are disabled
 					Charged attacks with this weapon vary depending on the amount of [c/F7D76A:Overcharge]
@@ -8651,8 +8655,8 @@ Mods: {
 			}
 
 			TsukiBossBag: {
-				DisplayName: Tsuki Boss Bag
-				Tooltip: ""
+				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
+				DisplayName: Treasure Bag (Tsukiyomi, the First Starfarer)
 			}
 
 			GossamerNeedle: {
@@ -9400,7 +9404,7 @@ Mods: {
 			}
 
 			TsukiyomiBossRelicItem: {
-				DisplayName: Tsukiyomi Boss Relic Item
+				DisplayName: Tsukiyomi Relic
 				Tooltip: ""
 			}
 
@@ -9520,14 +9524,11 @@ Mods: {
 					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty]
 					Holding this weapon grants defense proportional to Max HP and reflects all damage taken
 					Right click to ready the shield for 2 seconds, reducing the damage of the next attack by 90% (12 second cooldown)
-					Press the Weapon Action Key to destroy all nearby hostile projectiles (30 second cooldown)
-					Swapping to another weapon after activating either of these abilities grants [Hero's Bulwark] for 10 seconds, increasing defense by 15%
-					The current [c/F592BF:Aspected Damage Type] influences the effects of [Hero's Bulwark]
-					[c/FFAB4D:Melee]: [Hero's Bulwark] negates the first instance of damage taken, but is then removed
-					[c/EF4DFF:Magic]: [Hero's Bulwark] grants full Mana every time you take damage
-					[c/4DFF5B:Ranged]: [Hero's Bulwark] empowers critical strikes by 40%
-					[c/00CDFF:Summon]: [Hero's Bulwark] increases minion damage by 5% of your defense
-					[Other]: [Hero's Bulwark] increases defense by an additional 5%
+					Press the Weapon Action Key to destroy all nearby hostile projectiles, healing 5 HP per destroyed projectile (40 second cooldown)
+					If under the effect of applicable damaging debuffs, gain [Cursed Rage]
+					Right click under the effect of [Cursed Rage] to inflict cursed energy to all nearby foes, dealing 80% of your defense as true damage (1 second cooldown)
+					Press the Weapon Action Key under the effect of [Cursed Rage] to immediately cleanse all cooldowns and debuffs (3 minute cooldown)
+					This weapon can absorb Weapon Memories without limit, permanently gaining their abilities without consuming slots
 					'''
 			}
 
@@ -9570,11 +9571,11 @@ Mods: {
 					'''
 					20 summon tag damage
 					Holding this weapon grants [c/9C936F:Degraded Singularity], increasing critical strike damage by 10% against foes with summon tag damage (Does not include [c/FAE88E:Fairy])
-					Attacks with this weapon pierce foes and inflict [c/FAE88E:Fairy] for 3 seconds
+					Attacks with this weapon inflict [c/FAE88E:Fairy] for 3 seconds
 					[c/FAE88E:Fairy] acts as a special variant of summon tag damage that affects all weapons
-					Pressing right click activates an ability, cycling between [c/9C936F:Degraded Lock], [c/9C936F:Degraded Chain], and [c/9C936F:Degraded Pillar] (6 second cooldown)
+					Right click to activate an ability, cycling between [c/9C936F:Degraded Lock], [c/9C936F:Degraded Chain], and [c/9C936F:Degraded Pillar] (6 second cooldown)
 					[c/9C936F:Degraded Lock]: Damage foes centered on your cursor and reduce their attack by 90% for 2 seconds
-					[c/9C936F:Degraded Chain]: Deal damage to all nearby foes while inflicting [c/EEC152:Ensnared] for 2 seconds, drastically reducing movement
+					[c/9C936F:Degraded Chain]: Damage to all nearby foes while inflicting [c/EEC152:Ensnared] for 2 seconds, stunning non-boss foes
 					[c/9C936F:Degraded Pillar]: Fire a fast piercing pillar towards your cursor that deals a guaranteed critical strike
 					In Multiplayer, if all allies are dead and a boss is active, gain [c/F9C9AB:Singularity Resonance]
 					In Singleplayer, gain [c/F9C9AB:Singularity Resonance] when below 100 HP if max HP is 400 or more while a boss is active
@@ -9767,6 +9768,95 @@ Mods: {
 
 			CloakOfAnArbiterCape: {
 				DisplayName: Cloak Of An Arbiter Cape
+				Tooltip: ""
+			}
+
+			ParadiseLost: {
+				DisplayName: The White Night
+				Tooltip:
+					'''
+					Holding this weapon grants the buff [Plague's Prophet] (You can not use this weapon to attack while under the effect of [Plague's Prophet])					
+					Right click during [Plague's Prophet] to [Baptise] a town NPC for 10 minutes
+					Press the Weapon Action Key while under the effect of [Plague's Prophet] to ascend into [Paradise Lost]
+					While in [Paradise Lost] state, all damage taken is halved, but health will drain over time when hit
+					Additionally, gain unlimited flight and Max Mana increases by 500
+					Upon ascension, all [Baptised] town NPCs will transform into [Apostles] and will be moved to your location
+					Swapping weapons will immediately end [Paradise Lost] state and additionally inflict [Vulnerability] for 20 seconds, halving defense
+					Within [Paradise Lost] state, attacks with this weapon unleash ????
+					Right click during [Paradise Lost] to unleash [Advent] from all [Apostles], a powerful beam of light towards your cursor (3 second cooldown)
+					Press the Weapon Action Key to cycle between [Governed Truths], active at all times while [Paradise Lost] is active (Governed Truths will additionally change the effect of [Advent])
+					[Confession]: All [Apostles] take no damage, and [Advent] now deals true damage				
+					[Benediction]: All [Apostles] have their attack increased by 70% of this weapon's damage, and [Advent] can now deal critical strikes					
+					[Sentinel]: All damage taken is evenly redirected towards [Apostles], and [Advent] restores Mana and heals [Apostles] when cast
+					When taking fatal damage during [Paradise Lost], deal 666% of this weapon's damage to nearby foes and survive with 1 HP (4 minute cooldown)
+					'Now rise, my servants- Rise and serve me'
+					'''
+			}
+
+			InheritedCase: {
+				DisplayName: Inherited Case, M4A1
+				Tooltip:
+					'''
+					[c/F7D76A:Hold left click to charge the weapon; if the weapon is fully charged, the attack varies]
+					Additionally, this weapon can be [c/F7D76A:Overcharged], causing additional effects to occur
+					After charging, fire rapid and accurate bullets, consuming ammo from your inventory
+					The second stage of [c/F7D76A:Overcharge] will additionally fire a barrage of lasers
+					Upon reaching the final stage of [c/F7D76A:Overcharge], gain a random [Auxiliary Armament] and return to the second stage of [c/F7D76A:Overcharge] (Can be repeated 4 times)
+					[Auxiliary Armaments] provide fire support during combat, but will disappear when taking damage
+					[Auxiliary St-AR15]: Fires rapid bursts of pinpoint accurate bullets
+					[Auxiliary RO635]: Fires a barrage of bullets that home in on two targets, piercing the first
+					[Auxiliary M4-Sop2]: Fires explosive grenades towards the cursor; every 4th grenade can home in and is a guaranteed critical strike
+					[Auxiliary M16A1]: Generates an orbiting shield aimed towards the cursor that can absorb 6 attacks; once destroyed, fire bullets in retaliation and regenerate after 5 seconds
+					Right click to transform the weapon after a short delay, firing a powerful rocket bolt towards your cursor (1 minute cooldown)
+					This attack pierces up to 3 foes, and explodes on hit; the final hit will burst in a massive explosion, dealing 300% weapon damage as a critical strike
+					Foes caught in the explosions will take heavy damage over time for a short duration
+					While holding this weapon, attacks can not be dodged and damage reduction is negated
+					'Commander, we are here'
+					'''
+			}
+
+			LegendaryShieldAccessory: {
+				DisplayName: Legendary Shield Accessory
+				Tooltip: ""
+			}
+
+			DangerousSignage: {
+				DisplayName: Dangerous Signage
+				Tooltip: ""
+			}
+
+			EnergeticMountedSignage: {
+				DisplayName: Energetic Mounted Signage
+				Tooltip: ""
+			}
+
+			HologramPlinthDrink: {
+				DisplayName: Hologram Plinth Drink
+				Tooltip: ""
+			}
+
+			HydratedMountedSignage: {
+				DisplayName: Hydrated Mounted Signage
+				Tooltip: ""
+			}
+
+			LavenderSignage: {
+				DisplayName: Lavender Signage
+				Tooltip: ""
+			}
+
+			OfflineMountedSignage: {
+				DisplayName: Offline Mounted Signage
+				Tooltip: ""
+			}
+
+			RadialMountedSignage: {
+				DisplayName: Radial Mounted Signage
+				Tooltip: ""
+			}
+
+			SmallOfflineMountedSignage: {
+				DisplayName: Small Offline Mounted Signage
 				Tooltip: ""
 			}
 		}
@@ -10755,6 +10845,7 @@ Mods: {
 			ArbiterPillar.DisplayName: Arbiter Pillar
 			FairyAttack.DisplayName: Fairy Attack
 			FairyAttackEffect.DisplayName: Fairy Attack Effect
+			LegendaryShieldBash.DisplayName: Legendary Shield Bash
 		}
 
 		Buffs: {
@@ -13775,7 +13866,11 @@ Mods: {
 			}
 		}
 
-		WorldGen.OrePassMessage: Mods.StarsAbove.WorldGen.OrePassMessage
-		Conditions.InNeonVeil: Mods.StarsAbove.Conditions.InNeonVeil
+		WorldGen: {
+			NeonVeilGenerationMessage: Lighting the Neon Veil
+			ExtraStructuresGenerationMessage: Landing novelties from the stars
+		}
+
+		Conditions.InNeonVeil: In the Neon Veil
 	}
 }

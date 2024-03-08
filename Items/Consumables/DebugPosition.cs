@@ -54,10 +54,11 @@ namespace StarsAbove.Items.Consumables
 			Tile tile = Framing.GetTileSafely(tilePos.X, tilePos.Y);
 			if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue($"Current tile:{tile.TileType}."), 141, 205, 180);}
 
+            if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue($"World height:{Main.UnderworldLayer}."), 141, 205, 180); }
 
 
 
-			return true;
+            return true;
 		}
 		public override void AddRecipes()
 		{
