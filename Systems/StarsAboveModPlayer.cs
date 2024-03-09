@@ -3606,8 +3606,13 @@ namespace StarsAbove.Systems
             {
                 if (!Filters.Scene["NeonVeilReflectionEffect"].IsActive() && Main.netMode != NetmodeID.Server)
                 {
-                    Filters.Scene.Activate("NeonVeilReflectionEffect").GetShader().UseColor(0, 0, 1).UseTargetPosition(new Vector2(Player.Center.X, (Main.maxTilesY - 110)*16));
+                    Filters.Scene.Activate("NeonVeilReflectionEffect").GetShader().UseColor(1, 1, 1).UseTargetPosition(new Vector2(Player.Center.X, (Main.maxTilesY - 110)*16));
 
+                }
+                if (Filters.Scene["NeonVeilReflectionEffect"].IsActive() && Main.netMode != NetmodeID.Server)
+                {
+                    float intensity = MathHelper.Lerp(1f, 3f, MathHelper.Clamp(Math.Abs(Player.Center.Y - ((Main.maxTilesY - 110) * 16)) / 70 - 1.98f, 0f, 1f));
+                    Filters.Scene["NeonVeilReflectionEffect"].GetShader().UseIntensity(intensity).UseTargetPosition(new Vector2(Main.screenPosition.X, (Main.maxTilesY - 110) * 16));
                 }
             }
             else

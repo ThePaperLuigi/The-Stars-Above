@@ -111,6 +111,9 @@ namespace StarsAbove
                 Filters.Scene["NeonVeilReflectionEffect"] = new Filter(new ScreenShaderData(neonVeilRef, "Test"), EffectPriority.High);
                 Filters.Scene["NeonVeilReflectionEffect"].Load();
 
+                //Ref<Effect> neonVeilBlurRef = new Ref<Effect>(ModContent.Request<Effect>("StarsAbove/Effects/NeonVeilBlurEffect", AssetRequestMode.ImmediateLoad).Value); // The path to the compiled shader file.
+                //Filters.Scene["NeonVeilBlurEffect"] = new Filter(new ScreenShaderData(neonVeilBlurRef, "Test"), EffectPriority.High);
+                //Filters.Scene["NeonVeilBlurEffect"].Load();
 
                 Ref<Effect> screenRef = new Ref<Effect>(ModContent.Request<Effect>("StarsAbove/Effects/ShockwaveEffect", AssetRequestMode.ImmediateLoad).Value); // The path to the compiled shader file.
 				Filters.Scene["Shockwave"] = new Filter(new ScreenShaderData(screenRef, "Shockwave"), EffectPriority.High);
