@@ -114,7 +114,7 @@ namespace StarsAbove.Projectiles.Other.SunsetOfTheSunGod
             //target.AddBuff(ModContent.BuffType<ExampleWhipDebuff>(), 240);
             Main.player[Projectile.owner].MinionAttackTargetNPC = target.whoAmI;
             Projectile.damage = (int)(damageDone * 0.7f); // Multihit penalty. Decrease the damage the more enemies the whip hits.
-
+            target.AddBuff(BuffID.Daybreak, 120);
 
 
         }

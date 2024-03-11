@@ -13544,6 +13544,11 @@ Mods: {
 				DisplayName: Singularity Resonance
 				Description: Dire conflict has incited inner power
 			}
+
+			CelestialVoidCooldown: {
+				// DisplayName: Celestial Void Cooldown
+				// Description: Mods.StarsAbove.Buffs.CelestialVoidCooldown.Description
+			}
 		}
 
 		Bestiary: {

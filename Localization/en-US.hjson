@@ -7170,7 +7170,7 @@ Mods: {
 					Additionally, all allies in the radius gain 10 defense while the shield is active
 					[c/ECCA56:Close Combat]: Gain Wrath for 2 seconds when attacking foes below 50% HP
 					Attacks are changed into a barrage of quick close-ranged strikes that deal 120% damage
-					Critical strikes launch a claw that pierces enemies (8 second cooldown)
+					Critical strikes launch a claw that pierces enemies
 					[c/66EC56:Railgunner]: Critical strike chance is increased by 20%
 					Attacks are changed into long range piercing bolts, dealing 1.500% damage
 					Critical strikes deal 400% damage
@@ -7373,11 +7373,10 @@ Mods: {
 					Holding this weapon will cause the [c/4C3BB6:Virtue Gauge] to appear
 					Attacks with this weapon will fill the [c/4C3BB6:Virtue Gauge] with [c/49C7EC:Astral Flux]
 					Critical strikes will fill the [c/4C3BB6:Virtue Gauge] faster
-					Right click when the [c/4C3BB6:Virtue Gauge] is full to cleave a tear in spacetime, spawning a [c/495DEC:Celestial Void] for 8 seconds
+					Right click when the [c/4C3BB6:Virtue Gauge] is full to cleave a tear in spacetime, spawning a [c/495DEC:Celestial Void] for 8 seconds (45 second cooldown)
 					The [c/495DEC:Celestial Void] will pulse powerful damage to all nearby foes, dragging them inwards
 					Attacks with this weapon during this time will fill the [c/4C3BB6:Virtue Gauge] with [c/6C38E3:Umbral Flux]
 					If the [c/4C3BB6:Virtue Gauge] is full once the [c/495DEC:Celestial Void] ends, it will collapse in a massive explosion, dealing 500% damage
-					There is a 45 second cooldown between the re-activation of [c/495DEC:Celestial Void]
 					'Pierce through all matter!'
 					'''
 				DisplayName: Virtue's Edge
@@ -8324,7 +8323,7 @@ Mods: {
 					[c/FFAB4D:Melee]: Rapidly stab in a close-ranged flurry; Charged attacks swing in a wide arc, burning foes for 8 seconds
 					[c/EF4DFF:Magic]: Lightning spears converge on your cursor after a delay, causing lightning to arc from foes struck
 					[c/4DFF5B:Ranged]: Attacks launch the spear at high velocity, dealing 200% damage and piercing infinitely without damage falloff
-					[c/00CDFF:Summon]: Attacks extend a burning whip, causing summons to inflict Daybroken for 2 seconds on hit
+					[c/00CDFF:Summon]: Attacks extend a burning whip, inflicting Daybroken for 2 seconds on hit
 					'With this single strike, I shall inflict extinction!'
 					'''
 				DisplayName: Sunset of the Sun God
@@ -9162,7 +9161,8 @@ Mods: {
 					At certain thresholds of [c/D81919:Rebellion], manifest portions of the [c/EC2B65:Crimson Armor], gaining 5 defense per armor
 					Once [c/D81919:Rebellion] is at maximum and all portions of the [c/EC2B65:Crimson Armor] are equipped, increase defense further and gain access to [c/8D0404:Clarent Blood Arthur]
 					Additionally, gain a 3rd combo attack and striking foes now burst into red lightning (3rd combo strike empowers lightning)
-					Right click to unleash [c/8D0404:Clarent Blood Arthur], dealing 200% damage in a powerful burst towards your cursor after a delay and is a guaranteed critical strike against bosses (1 minute cooldown)
+					Right click to unleash [c/8D0404:Clarent Blood Arthur], dealing 200% damage in a powerful burst towards your cursor after a delay (1 minute cooldown)
+					Additionally, this attack is a guaranteed critical strike against bosses
 					'''
 			}
 
@@ -9290,9 +9290,9 @@ Mods: {
 					'''
 					[c/D294FF:Weapon Memory]
 					When Imprinted into a weapon, gain the following effects:
-					Increases projectile velocity dramatically
+					Increases projectile velocity dramatically (Does not apply to minions)
 					'''
-				TooltipAttached: Increases projectile velocity dramatically
+				TooltipAttached: Increases projectile velocity dramatically (Does not apply to minions)
 			}
 
 			DescenderGemstone: {
@@ -13560,6 +13560,11 @@ Mods: {
 			SingularityResonance: {
 				DisplayName: Singularity Resonance
 				Description: Dire conflict has incited inner power
+			}
+
+			CelestialVoidCooldown: {
+				DisplayName: Celestial Void Cooldown
+				Description: Mods.StarsAbove.Buffs.CelestialVoidCooldown.Description
 			}
 		}
 
