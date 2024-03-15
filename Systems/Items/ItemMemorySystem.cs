@@ -57,6 +57,8 @@ namespace StarsAbove.Systems.Items
         public int itemMemorySlot2;
         public int itemMemorySlot3;
 
+        public List<int> legendaryShieldMemories;
+
         public bool isMemory = false;
 
         public bool ChoiceGlasses;//1
@@ -162,6 +164,8 @@ namespace StarsAbove.Systems.Items
             tag["M3"] = itemMemorySlot3;
             tag["TarotEffect"] = tarotCardType;
 
+            tag["LegendaryShieldMemoryList"] = legendaryShieldMemories;
+
             base.SaveData(item, tag);
         }
         public override void LoadData(Item item, TagCompound tag)
@@ -171,6 +175,7 @@ namespace StarsAbove.Systems.Items
             itemMemorySlot3 = tag.GetInt("M3");
             tarotCardType = tag.GetInt("TarotEffect");
 
+            legendaryShieldMemories = (List<int>)tag.GetList<int>("LegendaryShieldMemoryList");
             base.LoadData(item, tag);
         }
         int check;
@@ -314,7 +319,15 @@ namespace StarsAbove.Systems.Items
             {
                 CheckMemories(item, itemMemorySlot3, player);
             }
+            //Special code for the Legendary Shield's ability to eat all memories
+            if(item.type == ModContent.ItemType<LegendaryShield>())
+            {
+                for(int i = 0; i < legendaryShieldMemories.Count; i++)
+                {
+                    CheckMemories(item, legendaryShieldMemories[i], player);
 
+                }
+            }
             //All effects are processed at the end just in case some weapons have 'buff other effect' effects
             BuffMemories(player, item);
             Memories(player, item);

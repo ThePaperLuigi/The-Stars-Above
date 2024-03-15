@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System;
 using Terraria.Audio;
 using Terraria.ID;
+using StarsAbove.Items.Weapons.Other;
 
 namespace StarsAbove.UI.Cosmoturgy
 {
@@ -289,33 +290,67 @@ namespace StarsAbove.UI.Cosmoturgy
 			}
 			else
 			{
-				if (!_affixSlot1.Item.IsAir)
-				{
-					if(_affixSlot1.Item.GetGlobalItem<ItemMemorySystem>().isMemory)
+                if (_weaponSlot.Item.type == ModContent.ItemType<LegendaryShield>())
+                {
+                    if (!_affixSlot1.Item.IsAir)
                     {
-						_weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().itemMemorySlot1 = GetMemoryID(_affixSlot1.Item);
-						_affixSlot1.Item.TurnToAir();
-					}			
-				}
-				if (!_affixSlot2.Item.IsAir)
-				{
-					if(_affixSlot2.Item.GetGlobalItem<ItemMemorySystem>().isMemory)
+                        if (_affixSlot1.Item.GetGlobalItem<ItemMemorySystem>().isMemory)
+                        {
+                            _weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().legendaryShieldMemories.Add(GetMemoryID(_affixSlot1.Item));
+                            _affixSlot1.Item.TurnToAir();
+                        }
+                    }
+                    if (!_affixSlot2.Item.IsAir)
                     {
-						_weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().itemMemorySlot2 = GetMemoryID(_affixSlot2.Item);
-						_affixSlot2.Item.TurnToAir();
-					}				
-				}
-				if (!_affixSlot3.Item.IsAir)
-				{
-					if(_affixSlot3.Item.GetGlobalItem<ItemMemorySystem>().isMemory)
+                        if (_affixSlot2.Item.GetGlobalItem<ItemMemorySystem>().isMemory)
+                        {
+                            _weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().legendaryShieldMemories.Add(GetMemoryID(_affixSlot2.Item));
+                            _affixSlot2.Item.TurnToAir();
+                        }
+                    }
+                    if (!_affixSlot3.Item.IsAir)
                     {
-						_weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().itemMemorySlot3 = GetMemoryID(_affixSlot3.Item);
-						_affixSlot3.Item.TurnToAir();
-					}				
-				}
-                SoundEngine.PlaySound(SoundID.Item29);
-                Main.LocalPlayer.GetModPlayer<CosmoturgyPlayer>().imbueSuccessAnimationTimer = 1f;
-				Main.LocalPlayer.GetModPlayer<CosmoturgyPlayer>().description = LangHelper.GetTextValue($"UIElements.Cosmoturgy.MemoriesImprinted", Main.LocalPlayer);
+                        if (_affixSlot3.Item.GetGlobalItem<ItemMemorySystem>().isMemory)
+                        {
+                            _weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().legendaryShieldMemories.Add(GetMemoryID(_affixSlot3.Item));
+                            _affixSlot3.Item.TurnToAir();
+                        }
+                    }
+                    SoundEngine.PlaySound(SoundID.Item29);
+                    Main.LocalPlayer.GetModPlayer<CosmoturgyPlayer>().imbueSuccessAnimationTimer = 1f;
+                    Main.LocalPlayer.GetModPlayer<CosmoturgyPlayer>().description = LangHelper.GetTextValue($"UIElements.Cosmoturgy.MemoriesImprinted", Main.LocalPlayer);
+                }
+				else
+				{
+                    if (!_affixSlot1.Item.IsAir)
+                    {
+                        if (_affixSlot1.Item.GetGlobalItem<ItemMemorySystem>().isMemory)
+                        {
+                            _weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().itemMemorySlot1 = GetMemoryID(_affixSlot1.Item);
+                            _affixSlot1.Item.TurnToAir();
+                        }
+                    }
+                    if (!_affixSlot2.Item.IsAir)
+                    {
+                        if (_affixSlot2.Item.GetGlobalItem<ItemMemorySystem>().isMemory)
+                        {
+                            _weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().itemMemorySlot2 = GetMemoryID(_affixSlot2.Item);
+                            _affixSlot2.Item.TurnToAir();
+                        }
+                    }
+                    if (!_affixSlot3.Item.IsAir)
+                    {
+                        if (_affixSlot3.Item.GetGlobalItem<ItemMemorySystem>().isMemory)
+                        {
+                            _weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().itemMemorySlot3 = GetMemoryID(_affixSlot3.Item);
+                            _affixSlot3.Item.TurnToAir();
+                        }
+                    }
+                    SoundEngine.PlaySound(SoundID.Item29);
+                    Main.LocalPlayer.GetModPlayer<CosmoturgyPlayer>().imbueSuccessAnimationTimer = 1f;
+                    Main.LocalPlayer.GetModPlayer<CosmoturgyPlayer>().description = LangHelper.GetTextValue($"UIElements.Cosmoturgy.MemoriesImprinted", Main.LocalPlayer);
+                }
+                
 			}
 		}
 		private Dictionary<int, int> memoryIDs = new Dictionary<int, int>
