@@ -6,10 +6,14 @@ using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
 using ReLogic.Content;
 using StarsAbove.Biomes;
+using StarsAbove.Items.Materials;
+using StarsAbove.Items.Weapons.Celestial;
+using StarsAbove.Items.Weapons.Summon;
 using SubworldLibrary;
 using System.Collections.Generic;
 using System.Reflection;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
 using Terraria.IO;
@@ -35,11 +39,11 @@ namespace StarsAbove.Systems.WorldGeneration
             // 5. We use FindIndex to locate the index of the vanilla world generation task called "Shinies". This ensures our code runs at the correct step.
 
             //Change this index to much later!
-            int HellforgeIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Hellforge"));
-            if (HellforgeIndex != -1)
+            int Index = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
+            if (Index != -1)
             {
-                // 6. We register our world generation pass by passing in an instance of our custom GenPass class below. The GenPass class will execute our world generation code.
-                tasks.Insert(HellforgeIndex + 1, new NeonVeilSurfacePass("Neon Veil (Surface)", 100f));
+                //Commented out
+                //tasks.Insert(Index + 1, new NeonVeilSurfacePass("Neon Veil (Surface)", 100f));
             }
         }
 
@@ -65,32 +69,82 @@ namespace StarsAbove.Systems.WorldGeneration
 
             //The surface and the depths are generated seperately, so it makes for more interesting gameplay. However...
             //Each depth structure has to be the same width as the surface. The depths need to all connect to one another
-            
+
             //Additionally, there should always be a main town hall structure with a route to the depths, and under that is the Resonant Figment. of course the door to that is locked until later
 
             //Make sure the upper layers are null tiles so they can be replaced by stone if necessary
 
             //Test spawn
-            //StructureHelper.Generator.GenerateStructure("Structures/NeonVeil/TestTower", new Terraria.DataStructures.Point16((Main.maxTilesX / 2), (Main.maxTilesY) - 200), StarsAbove.Instance);
+            //
+            
+            var offsetDims = Point16.Zero;
+            int neonVeilSize = 0;
+            int offsetX = 0;
+            //Create a list of all the structures that can be added. This doesn't include the entrance and exits. This list does not change at any time.
+            List<string> neonVeilStructures = new List<string>() {
+                "NeonVeilBuilding1",
+                "NeonVeilBuilding2",
+                "NeonVeilDecor1",
+            };
+            //When a structure is generated, it'll be removed from this list (neonVeilBlueprint). If the list is empty and more things need to be generated, the list will be refilled from "UsedStructures"
+            List<string> neonVeilBlueprint = new List<string>();
 
-
-
-
-
-
-
-            /*
-            // 10. Here we use a for loop to run the code inside the loop many times. This for loop scales to the product of Main.maxTilesX, Main.maxTilesY, and 2E-05. 2E-05 is scientific notation and equal to 0.00002. Sometimes scientific notation is easier to read when dealing with a lot of zeros.
-            // 11. In a small world, this math results in 4200 * 1200 * 0.00002, which is about 100. This means that we'll run the code inside the for loop 100 times. This is the amount Crimtane or Demonite will spawn. Since we are scaling by both dimensions of the world size, the amount spawned will adjust automatically to different world sizes for a consistent distribution of ores.
-            for (int k = 0; k < (int)((Main.maxTilesX * Main.maxTilesY) * 6E-05); k++)
+            //TODO: Some buildings shouldn't repeat (I.E. Lightshow Tower or Garridine's outpost)
+            if (Main.maxTilesX >= 8400)
             {
-                // 12. We randomly choose an x and y coordinate. The x coordinate is chosen from the far left to the far right coordinates. The y coordinate, however, is choosen from between GenVars.worldSurfaceLow and the bottom of the map. We can use this technique to determine the depth that our ore should spawn at.
-                int x = WorldGen.genRand.Next(0, Main.maxTilesX);
-                int y = WorldGen.genRand.Next((int)GenVars.worldSurfaceLow, Main.maxTilesY);
+                //Large (or bigger) world generation
+                neonVeilSize = 20;
+            }
+            else if (Main.maxTilesX >= 6400)
+            {
+                //Medium world generation
+                neonVeilSize = 12;
+            }
+            else
+            {
+                //Small world generation
+                neonVeilSize = 6;
+            }
+            for (int i = 0; i <= neonVeilSize; i++)
+            {
+                progress.Set(i / neonVeilSize);
 
-                // 13. Finally, we do the actual world generation code. In this example, we use the WorldGen.TileRunner method. This method spawns splotches of the Tile type we provide to the method. The behavior of TileRunner is detailed in the Useful Methods section below.
-                WorldGen.TileRunner(x, y, WorldGen.genRand.Next(3, 6), WorldGen.genRand.Next(2, 6), TileID.CobaltBrick);
-            }*/
+                if(i == 0)
+                {
+                    CreateNeonVeilStructure(ref offsetDims, ref offsetX, neonVeilBlueprint, "NeonVeilEntranceLeft");
+                }
+                else if (i == neonVeilSize)//Replace with EntranceRight
+                {
+                    CreateNeonVeilStructure(ref offsetDims, ref offsetX, neonVeilBlueprint, "NeonVeilEntranceLeft");
+                }
+                else
+                {   
+                    if(neonVeilBlueprint.Count > 0)
+                    {
+                        CreateNeonVeilStructure(ref offsetDims, ref offsetX, neonVeilBlueprint, neonVeilBlueprint[Main.rand.Next(neonVeilBlueprint.Count)]);
+
+                    }
+                    else
+                    {
+                        //Refresh the blueprint with already used structures
+                        neonVeilBlueprint = new List<string>(neonVeilStructures);
+                        CreateNeonVeilStructure(ref offsetDims, ref offsetX, neonVeilBlueprint, neonVeilBlueprint[Main.rand.Next(neonVeilBlueprint.Count)]);
+
+                    }
+                }
+            }
+
+        }
+
+        private static void CreateNeonVeilStructure(ref Point16 offsetDims, ref int offsetX, List<string> neonVeilBlueprint, string currentStructure)
+        {
+            StructureHelper.Generator.GenerateStructure("Structures/NeonVeil/" + currentStructure, new Terraria.DataStructures.Point16((Main.maxTilesX / 2) + offsetX, (Main.maxTilesY) - 200), StarsAbove.Instance);
+            StructureHelper.Generator.GetDimensions("Structures/NeonVeil/" + currentStructure, StarsAbove.Instance, ref offsetDims);
+            offsetX += offsetDims.X;
+            if(neonVeilBlueprint.Contains(currentStructure))
+            {
+                neonVeilBlueprint.Remove(currentStructure);
+            }
         }
     }
 }
