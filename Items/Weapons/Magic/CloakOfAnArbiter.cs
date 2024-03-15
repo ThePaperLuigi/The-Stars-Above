@@ -40,7 +40,7 @@ namespace StarsAbove.Items.Weapons.Magic
 			Item.useAnimation = 40;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
 			Item.useStyle = ItemUseStyleID.Shoot;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
 			Item.knockBack = 5;         //The force of knockback of the weapon. Maximum is 20
-			Item.rare = ItemRarityID.LightRed;              //The rarity of the weapon, from -1 to 13
+			Item.rare = ItemRarityID.Red;              //The rarity of the weapon, from -1 to 13
 			Item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
 			Item.shoot = ProjectileType<SanguineDespairBolt>();
 			Item.shootSpeed = 20f;
@@ -92,29 +92,56 @@ namespace StarsAbove.Items.Weapons.Magic
                     d.noGravity = true;
                 }
             }
-            //debug
-            player.AddBuff(BuffType<SingularityResonance>(), 10);
-
             if (!player.HasBuff(BuffType<EmbodiedSingularity>()))
             {
                 player.AddBuff(BuffType<DegradedSingularity>(), 10);
 
                 if (Main.netMode == NetmodeID.SinglePlayer)
                 {
-                    if (player.statLife < 100 && player.statLifeMax >= 400)
+                    if (player.statLife < 100 && player.statLifeMax >= 400 && Main.CurrentFrameFlags.AnyActiveBossNPC)
                     {
                         player.AddBuff(BuffType<SingularityResonance>(), 10);
                     }
                 }
                 else if (Main.netMode == NetmodeID.MultiplayerClient)
                 {
-                    //Check all players for alive
+                    if(Main.CurrentFrameFlags.ActivePlayersCount <= 1)
+                    {
+                        return;
+                    }
+                    bool anyoneAlive = false;
+                    //Check if there is a living player
+                    for(int i = 0; i < Main.maxPlayers; i++)
+                    {
+                        Player p = Main.player[i];
+                        if(p.active)
+                        {
+                            if(!p.dead && p.whoAmI != player.whoAmI)
+                            {
+                                anyoneAlive = true;
+                            }
+                        }
+                    }
+                    if(!anyoneAlive && Main.CurrentFrameFlags.AnyActiveBossNPC)
+                    {
+                        player.AddBuff(BuffType<SingularityResonance>(), 10);
+
+                    }
 
                 }
             }
             else
             {
-                player.AddBuff(BuffType<EmbodiedSingularity>(), 10);
+                if(player.GetModPlayer<StarsAbovePlayer>().inCombat < 0 || !player.active || player.dead)
+                {
+                    player.ClearBuff(BuffType<EmbodiedSingularity>());
+                    player.GetModPlayer<BossPlayer>().WhiteAlpha = 1f;
+                }
+                else
+                {
+                    player.AddBuff(BuffType<EmbodiedSingularity>(), 10);
+
+                }
 
                 for (int i = 0; i < Main.maxNPCs; i++)
                 {
