@@ -27,8 +27,9 @@ using Terraria.UI.Chat;
 using StarsAbove.Buffs;
 using StarsAbove.Buffs.StellarNovas;
 using StarsAbove.Items.Loot;
-using StarsAbove.Systems;
 using System.Reflection.Metadata;
+using StarsAbove.Items.Consumables;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Systems
 {
@@ -235,6 +236,9 @@ namespace StarsAbove.Systems
                 ItemType<GundbitStaves>(),
                 ItemType<Wavedancer>(),
                 ItemType<RebellionBloodArthur>(),
+                
+                //Stars Above v2.1
+                ItemType<LegendaryShield>(),
 
                 ItemType<EssenceOfAdagium>(),
                 ItemType<EssenceOfBloodshed>(),
@@ -341,6 +345,7 @@ namespace StarsAbove.Systems
                 ItemType<AdornmentOfTheChaoticGod>(),
                 ItemType<Chronoclock>(),
                 ItemType<BrilliantSpectrum>(),
+                ItemType<ProgenitorWish>(),
             };
             Essences = new List<int>() {
                 ItemType<EssenceOfLifethirsting>(),
