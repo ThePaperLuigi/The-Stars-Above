@@ -14,12 +14,12 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-namespace StarsAbove.Projectiles.Generics
+namespace StarsAbove.Projectiles.Ranged.InheritedCaseM4A1
 {
     /* This class is a held projectile that animates a gun firing.
 	 * 
 	 * */
-    public abstract class StarsAboveGun : ModProjectile
+    public abstract class InheritedCaseOrbitalsGun : ModProjectile
 	{
 		public override string Texture => "StarsAbove/Projectiles/Generics/StarsAboveGun";
 
@@ -34,6 +34,8 @@ namespace StarsAbove.Projectiles.Generics
         public abstract bool KillOnIdle { get; }
         public abstract int ScreenShakeTime { get; }
         public virtual float ScaleModifier { get; } = 1f;
+        public virtual bool ReActivateAfterIdle { get; }
+        public virtual int ReActivateAfterIdleTimer { get; } = 20;
 
         Vector2 MuzzlePosition;
 
@@ -56,7 +58,7 @@ namespace StarsAbove.Projectiles.Generics
             //Adjust depending on projectile.
 			Projectile.width = 90;
 			Projectile.height = 90;
-            Projectile.friendly = false;
+
 			Projectile.timeLeft = 10;
 			Projectile.penetrate = -1;
 			Projectile.hide = false;
@@ -95,12 +97,7 @@ namespace StarsAbove.Projectiles.Generics
             Projectile.scale = 1f;
             //Projectile.timeLeft = 10;
 
-            projOwner.heldProj = Projectile.whoAmI;//The projectile draws in front of the player.
-
             
-            RotateArms(projOwner);
-            Projectile.alpha -= 10;
-
             switch (AI_State)
             {
                 case (float)ActionState.Shooting:
@@ -114,17 +111,9 @@ namespace StarsAbove.Projectiles.Generics
                     break;
             }
 
-            deg = Rotation;
-            double rad = deg * (Math.PI / 180);
-            double dist = distance;
-
-            /*Position the player based on where the player is, the Sin/Cos of the angle times the /
-            /distance for the desired distance away from the player minus the projectile's width   /
-            /and height divided by two so the center of the projectile is at the right place.     */
-            Projectile.position.X = projOwner.Center.X - (int)(Math.Cos(rad) * dist) - Projectile.width / 2;
-            Projectile.position.Y = projOwner.Center.Y - (int)(Math.Sin(rad) * dist) - Projectile.height / 2;
+            
             OrientSprite(projOwner);
-            projOwner.GetModPlayer<WeaponPlayer>().MuzzlePosition = MuzzlePosition;
+            //projOwner.GetModPlayer<WeaponPlayer>().MuzzlePosition = MuzzlePosition;
         }
 
         private static float recoilRotationStart = 30f;
@@ -157,17 +146,16 @@ namespace StarsAbove.Projectiles.Generics
                     projOwner.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -ScreenShakeTime;
 
                 }
-
-                recoilDistance = BaseDistance - 10f;
+                recoilDistance = 10;
                 //If the shoot animation has just begun...
-                Projectile.alpha = 255;
+                //Projectile.alpha = 255;
                 if(UseRecoil)
                 {
                     shootAnimationProgressMax = projOwner.itemTimeMax / 2; //Half of the time spent after using the item is this animation.
                 }
                 else
                 {
-                    shootAnimationProgressMax = projOwner.itemTimeMax * 0.9f ; //90% of the time spent after using this item is this animation.
+                    shootAnimationProgressMax = ReActivateAfterIdleTimer; //90% of the time spent after using this item is this animation.
                 }
 
                 int fakeRotation = (int)MathHelper.ToDegrees((float)Math.Atan2(Main.MouseWorld.Y - projOwner.Center.Y, Main.MouseWorld.X - projOwner.Center.X)) - 180;
@@ -190,8 +178,8 @@ namespace StarsAbove.Projectiles.Generics
             float rotationX = 0;
             float rotationY = 0;
 
-
-            distance = MathHelper.Lerp(recoilDistance, BaseDistance, EaseHelper.InOutQuad(shootAnimationProgress / shootAnimationProgressMax));
+            distance = BaseDistance;
+            
             recoilRotation = MathHelper.Lerp(recoilRotationStart, 0, EaseHelper.InOutQuad(shootAnimationProgress / shootAnimationProgressMax));
 
             if (Projectile.spriteDirection == 1)
@@ -199,16 +187,16 @@ namespace StarsAbove.Projectiles.Generics
                 float rotationOffset = MathHelper.ToRadians(-recoilRotation);
                 rotationX = (float)(playerToMouse.X * Math.Cos(rotationOffset) - playerToMouse.Y * Math.Sin(rotationOffset));
                 rotationY = (float)(playerToMouse.X * Math.Sin(rotationOffset) + playerToMouse.Y * Math.Cos(rotationOffset));
-                MuzzlePosition = projOwner.Center + new Vector2(rotationX, rotationY) * MuzzleDistance;
-                Rotation = MathHelper.ToDegrees((float)Math.Atan2(Main.MouseWorld.Y - projOwner.Center.Y, Main.MouseWorld.X - projOwner.Center.X)) - 180 - recoilRotation;
+                MuzzlePosition = Projectile.Center + new Vector2(rotationX, rotationY) * MuzzleDistance;
+                Rotation = MathHelper.ToDegrees((float)Math.Atan2(Main.MouseWorld.Y - Projectile.Center.Y, Main.MouseWorld.X - Projectile.Center.X)) - 180 - recoilRotation;
             }
             else
             {
                 float rotationOffset = MathHelper.ToRadians(recoilRotation);
                 rotationX = (float)(playerToMouse.X * Math.Cos(rotationOffset) - playerToMouse.Y * Math.Sin(rotationOffset));
                 rotationY = (float)(playerToMouse.X * Math.Sin(rotationOffset) + playerToMouse.Y * Math.Cos(rotationOffset));
-                MuzzlePosition = projOwner.Center + new Vector2(rotationX, rotationY) * MuzzleDistance;
-                Rotation = MathHelper.ToDegrees((float)Math.Atan2(Main.MouseWorld.Y - projOwner.Center.Y, Main.MouseWorld.X - projOwner.Center.X)) - 180 + recoilRotation;
+                MuzzlePosition = Projectile.Center + new Vector2(rotationX, rotationY) * MuzzleDistance;
+                Rotation = MathHelper.ToDegrees((float)Math.Atan2(Main.MouseWorld.Y - Projectile.Center.Y, Main.MouseWorld.X - Projectile.Center.X)) - 180 + recoilRotation;
             }
             if (shootAnimationProgress == 2)
             {
@@ -225,7 +213,7 @@ namespace StarsAbove.Projectiles.Generics
                 //Return to the idle state. (Alternatively, switch to the recoil state but that's unused)
                 AI_State = (float)ActionState.Idle;
             }
-            projOwner.GetModPlayer<WeaponPlayer>().MuzzlePosition = MuzzlePosition;
+            //projOwner.GetModPlayer<WeaponPlayer>().MuzzlePosition = MuzzlePosition;
             flashAlpha -= 0.07f;
             shootAnimationProgress += 1f;
         }
@@ -239,31 +227,31 @@ namespace StarsAbove.Projectiles.Generics
                     Vector2.Zero, Main.rand.Next(61, 64), 1f);
                 goreIndex.scale = 1.5f;
                 goreIndex.alpha = 210;
-                goreIndex.velocity = Vector2.Normalize(Main.MouseWorld - projOwner.Center);
+                goreIndex.velocity = Vector2.Normalize(Main.MouseWorld - Projectile.Center);
             }
             for (int d = 0; d < 20; d++)
             {
-                Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - projOwner.Center).RotatedByRandom(MathHelper.ToRadians(6));
+                Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - Projectile.Center).RotatedByRandom(MathHelper.ToRadians(6));
                 float scale = 22f - (Main.rand.NextFloat() * 21f);
                 perturbedSpeed *= scale;
-                int dustIndex = Dust.NewDust(MuzzlePos, 0, 0, FlashDustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 1.7f);
+                int dustIndex = Dust.NewDust(MuzzlePos, 0, 0, FlashDustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 0.7f);
                 Main.dust[dustIndex].noGravity = true;
             }
             for (int d = 0; d < 10; d++)
             {
-                Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - projOwner.Center).RotatedBy(MathHelper.ToRadians(90));
+                Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - Projectile.Center).RotatedBy(MathHelper.ToRadians(90));
                 float scale = 6f - (Main.rand.NextFloat() * 1f);
                 perturbedSpeed *= scale;
-                int dustIndex = Dust.NewDust(MuzzlePos, 0, 0, FlashDustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 1f);
+                int dustIndex = Dust.NewDust(MuzzlePos, 0, 0, FlashDustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 0.5f);
                 Main.dust[dustIndex].noGravity = true;
 
             }
             for (int d = 0; d < 10; d++)
             {
-                Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - projOwner.Center).RotatedBy(MathHelper.ToRadians(-90));
+                Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - Projectile.Center).RotatedBy(MathHelper.ToRadians(-90));
                 float scale = 6f - (Main.rand.NextFloat() * 1f);
                 perturbedSpeed *= scale;
-                int dustIndex = Dust.NewDust(MuzzlePos, 0, 0, FlashDustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 1f);
+                int dustIndex = Dust.NewDust(MuzzlePos, 0, 0, FlashDustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 0.5f);
                 Main.dust[dustIndex].noGravity = true;
 
             }
@@ -273,23 +261,44 @@ namespace StarsAbove.Projectiles.Generics
         {
             //Pretty much the reverse of the shoot animation- the gun is lowered a little bit, pulled back again, and then reset to idle position.
         }
+        
         private void Idle(Player projOwner)
         {
             if(KillOnIdle)
             {
                 Projectile.Kill();
             }
-            Rotation = MathHelper.ToDegrees((float)Math.Atan2(Main.MouseWorld.Y - projOwner.Center.Y, Main.MouseWorld.X - projOwner.Center.X)) - 180;
-            Vector2 playerToMouse = Main.MouseWorld - projOwner.Center;
+            else if(ReActivateAfterIdle)
+            {
+                Projectile.localAI[2]++;
+                if (Projectile.localAI[2] > ReActivateAfterIdleTimer && projOwner.itemTime > 0)
+                {
+                    AI_State = (float)ActionState.Shooting;
+                    flashAlpha = 1f;
+                    Projectile.localAI[2] = 0;
+                    Projectile.localAI[1] = 1;//ready to shoot
+                    shootAnimationProgress = 0;
+                }
+            }
+            flashAlpha -= 0.07f;
+            Rotation = MathHelper.ToDegrees((float)Math.Atan2(Main.MouseWorld.Y - Projectile.Center.Y, Main.MouseWorld.X - Projectile.Center.X)) - 180;
+            Vector2 playerToMouse = Main.MouseWorld - Projectile.Center;
             playerToMouse = Vector2.Normalize(playerToMouse);
             MuzzlePosition = Vector2.Normalize(playerToMouse) * (MuzzleDistance);
         }
         private void OrientSprite(Player projOwner)
         {
-            Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(180f);
+            Projectile.rotation = Vector2.Normalize(Main.MouseWorld - Projectile.Center).ToRotation() + MathHelper.ToRadians(0f);
             
-            //Main.NewText(MathHelper.ToDegrees(Projectile.rotation));
-            if (Projectile.rotation >= MathHelper.ToRadians(90) && Projectile.rotation <= MathHelper.ToRadians(270))
+            if (Projectile.rotation >= MathHelper.ToRadians(-90) && Projectile.rotation <= MathHelper.ToRadians(90))
+            {
+                Projectile.spriteDirection = 1;
+                if (recoilRotation > 1)
+                {
+                    return;
+                }
+            }
+            else
             {
                 Projectile.spriteDirection = 0;
                 Projectile.rotation += MathHelper.Pi;
@@ -297,16 +306,7 @@ namespace StarsAbove.Projectiles.Generics
                 {
                     return;
                 }
-                projOwner.direction = 0;
-            }
-            else
-            {
-                Projectile.spriteDirection = 1;
-                if (recoilRotation > 1)
-                {
-                    return;
-                }
-                projOwner.direction = 1;
+                
             }
         }
         public override bool PreDraw(ref Color lightColor)
@@ -329,30 +329,21 @@ namespace StarsAbove.Projectiles.Generics
             // Applying lighting and draw our projectile
             Color drawColor = Projectile.GetAlpha(lightColor);
 
-            if(shootAnimationProgress > 2 || AI_State == (float)ActionState.Idle)
-            {
-                Main.EntitySpriteDraw(texture,
-                   Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY),
+            Vector2 playerToMouse = Main.MouseWorld - Projectile.Center;
+
+            Main.EntitySpriteDraw(texture,
+                   Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY) + Vector2.Normalize(playerToMouse) * -MathHelper.Lerp(recoilDistance, BaseDistance - 100, EaseHelper.InOutQuad(shootAnimationProgress / shootAnimationProgressMax)),
                    sourceRectangle, lightColor, Projectile.rotation, origin, Projectile.scale * ScaleModifier, spriteEffects, 0);
-                Main.EntitySpriteDraw(textureFlash,
-                   Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY),
-                   sourceRectangle, Color.White * flashAlpha, Projectile.rotation, origin, Projectile.scale * ScaleModifier, spriteEffects, 0);
-            }
-           
+            Main.EntitySpriteDraw(textureFlash,
+               Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY),
+               sourceRectangle, Color.White * flashAlpha, Projectile.rotation, origin, Projectile.scale * ScaleModifier, spriteEffects, 0);
+
             // It's important to return false, otherwise we also draw the original texture.
             return false;
         }
         private void RotateArms(Player projOwner)
         {
-            projOwner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (projOwner.Center -
-                            new Vector2(Projectile.Center.X + (projOwner.velocity.X * 0.05f), Projectile.Center.Y + (projOwner.velocity.Y * 0.05f))
-                            ).ToRotation() + MathHelper.PiOver2);
-            Projectile.alpha -= 90;
-
-            projOwner.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.Full, (projOwner.Center -
-                new Vector2(Projectile.Center.X + (projOwner.velocity.X * 0.05f), Projectile.Center.Y + (projOwner.velocity.Y * 0.05f))
-                ).ToRotation() + MathHelper.PiOver2);
-            Projectile.alpha -= 90;
+            
         }
 
         public override void OnKill(int timeLeft)

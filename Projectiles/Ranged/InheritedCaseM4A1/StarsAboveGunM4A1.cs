@@ -14,12 +14,12 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-namespace StarsAbove.Projectiles.Generics
+namespace StarsAbove.Projectiles.Ranged.InheritedCaseM4A1
 {
     /* This class is a held projectile that animates a gun firing.
 	 * 
 	 * */
-    public abstract class StarsAboveGun : ModProjectile
+    public abstract class StarsAboveGunM4A1 : ModProjectile
 	{
 		public override string Texture => "StarsAbove/Projectiles/Generics/StarsAboveGun";
 
@@ -121,8 +121,8 @@ namespace StarsAbove.Projectiles.Generics
             /*Position the player based on where the player is, the Sin/Cos of the angle times the /
             /distance for the desired distance away from the player minus the projectile's width   /
             /and height divided by two so the center of the projectile is at the right place.     */
-            Projectile.position.X = projOwner.Center.X - (int)(Math.Cos(rad) * dist) - Projectile.width / 2;
-            Projectile.position.Y = projOwner.Center.Y - (int)(Math.Sin(rad) * dist) - Projectile.height / 2;
+            Projectile.position.X = projOwner.MountedCenter.X - (int)(Math.Cos(rad) * dist) - Projectile.width / 2;
+            Projectile.position.Y = projOwner.MountedCenter.Y - (int)(Math.Sin(rad) * dist) - Projectile.height / 2;
             OrientSprite(projOwner);
             projOwner.GetModPlayer<WeaponPlayer>().MuzzlePosition = MuzzlePosition;
         }
@@ -167,10 +167,10 @@ namespace StarsAbove.Projectiles.Generics
                 }
                 else
                 {
-                    shootAnimationProgressMax = projOwner.itemTimeMax * 0.9f ; //90% of the time spent after using this item is this animation.
+                    shootAnimationProgressMax = 5; //90% of the time spent after using this item is this animation.
                 }
 
-                int fakeRotation = (int)MathHelper.ToDegrees((float)Math.Atan2(Main.MouseWorld.Y - projOwner.Center.Y, Main.MouseWorld.X - projOwner.Center.X)) - 180;
+                int fakeRotation = (int)MathHelper.ToDegrees((float)Math.Atan2(Main.MouseWorld.Y - projOwner.MountedCenter.Y, Main.MouseWorld.X - projOwner.MountedCenter.X)) - 180;
                 //Main.NewText(fakeRotation);
                 if(fakeRotation < -235 && fakeRotation > -300)
                 {
@@ -178,13 +178,13 @@ namespace StarsAbove.Projectiles.Generics
                 }
                 else
                 {
-                    recoilRotationStart = 30f;
+                    recoilRotationStart = 0f;
                 }
 
 
             }
 
-            Vector2 playerToMouse = Main.MouseWorld - projOwner.Center;
+            Vector2 playerToMouse = Main.MouseWorld - projOwner.MountedCenter;
             playerToMouse = Vector2.Normalize(playerToMouse);
 
             float rotationX = 0;
@@ -199,16 +199,16 @@ namespace StarsAbove.Projectiles.Generics
                 float rotationOffset = MathHelper.ToRadians(-recoilRotation);
                 rotationX = (float)(playerToMouse.X * Math.Cos(rotationOffset) - playerToMouse.Y * Math.Sin(rotationOffset));
                 rotationY = (float)(playerToMouse.X * Math.Sin(rotationOffset) + playerToMouse.Y * Math.Cos(rotationOffset));
-                MuzzlePosition = projOwner.Center + new Vector2(rotationX, rotationY) * MuzzleDistance;
-                Rotation = MathHelper.ToDegrees((float)Math.Atan2(Main.MouseWorld.Y - projOwner.Center.Y, Main.MouseWorld.X - projOwner.Center.X)) - 180 - recoilRotation;
+                MuzzlePosition = projOwner.MountedCenter + new Vector2(rotationX, rotationY) * MuzzleDistance;
+                Rotation = MathHelper.ToDegrees((float)Math.Atan2(Main.MouseWorld.Y - projOwner.MountedCenter.Y, Main.MouseWorld.X - projOwner.MountedCenter.X)) - 180 - recoilRotation;
             }
             else
             {
                 float rotationOffset = MathHelper.ToRadians(recoilRotation);
                 rotationX = (float)(playerToMouse.X * Math.Cos(rotationOffset) - playerToMouse.Y * Math.Sin(rotationOffset));
                 rotationY = (float)(playerToMouse.X * Math.Sin(rotationOffset) + playerToMouse.Y * Math.Cos(rotationOffset));
-                MuzzlePosition = projOwner.Center + new Vector2(rotationX, rotationY) * MuzzleDistance;
-                Rotation = MathHelper.ToDegrees((float)Math.Atan2(Main.MouseWorld.Y - projOwner.Center.Y, Main.MouseWorld.X - projOwner.Center.X)) - 180 + recoilRotation;
+                MuzzlePosition = projOwner.MountedCenter + new Vector2(rotationX, rotationY) * MuzzleDistance;
+                Rotation = MathHelper.ToDegrees((float)Math.Atan2(Main.MouseWorld.Y - projOwner.MountedCenter.Y, Main.MouseWorld.X - projOwner.MountedCenter.X)) - 180 + recoilRotation;
             }
             if (shootAnimationProgress == 2)
             {
@@ -239,31 +239,31 @@ namespace StarsAbove.Projectiles.Generics
                     Vector2.Zero, Main.rand.Next(61, 64), 1f);
                 goreIndex.scale = 1.5f;
                 goreIndex.alpha = 210;
-                goreIndex.velocity = Vector2.Normalize(Main.MouseWorld - projOwner.Center);
+                goreIndex.velocity = Vector2.Normalize(Main.MouseWorld - projOwner.MountedCenter);
             }
             for (int d = 0; d < 20; d++)
             {
-                Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - projOwner.Center).RotatedByRandom(MathHelper.ToRadians(6));
+                Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - projOwner.MountedCenter).RotatedByRandom(MathHelper.ToRadians(6));
                 float scale = 22f - (Main.rand.NextFloat() * 21f);
                 perturbedSpeed *= scale;
-                int dustIndex = Dust.NewDust(MuzzlePos, 0, 0, FlashDustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 1.7f);
+                int dustIndex = Dust.NewDust(MuzzlePos, 0, 0, FlashDustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 0.7f);
                 Main.dust[dustIndex].noGravity = true;
             }
             for (int d = 0; d < 10; d++)
             {
-                Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - projOwner.Center).RotatedBy(MathHelper.ToRadians(90));
+                Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - projOwner.MountedCenter).RotatedBy(MathHelper.ToRadians(90));
                 float scale = 6f - (Main.rand.NextFloat() * 1f);
                 perturbedSpeed *= scale;
-                int dustIndex = Dust.NewDust(MuzzlePos, 0, 0, FlashDustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 1f);
+                int dustIndex = Dust.NewDust(MuzzlePos, 0, 0, FlashDustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 0.7f);
                 Main.dust[dustIndex].noGravity = true;
 
             }
             for (int d = 0; d < 10; d++)
             {
-                Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - projOwner.Center).RotatedBy(MathHelper.ToRadians(-90));
+                Vector2 perturbedSpeed = Vector2.Normalize(Main.MouseWorld - projOwner.MountedCenter).RotatedBy(MathHelper.ToRadians(-90));
                 float scale = 6f - (Main.rand.NextFloat() * 1f);
                 perturbedSpeed *= scale;
-                int dustIndex = Dust.NewDust(MuzzlePos, 0, 0, FlashDustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 1f);
+                int dustIndex = Dust.NewDust(MuzzlePos, 0, 0, FlashDustID, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 0.7f);
                 Main.dust[dustIndex].noGravity = true;
 
             }
@@ -279,8 +279,8 @@ namespace StarsAbove.Projectiles.Generics
             {
                 Projectile.Kill();
             }
-            Rotation = MathHelper.ToDegrees((float)Math.Atan2(Main.MouseWorld.Y - projOwner.Center.Y, Main.MouseWorld.X - projOwner.Center.X)) - 180;
-            Vector2 playerToMouse = Main.MouseWorld - projOwner.Center;
+            Rotation = MathHelper.ToDegrees((float)Math.Atan2(Main.MouseWorld.Y - projOwner.MountedCenter.Y, Main.MouseWorld.X - projOwner.MountedCenter.X)) - 180;
+            Vector2 playerToMouse = Main.MouseWorld - projOwner.MountedCenter;
             playerToMouse = Vector2.Normalize(playerToMouse);
             MuzzlePosition = Vector2.Normalize(playerToMouse) * (MuzzleDistance);
         }
@@ -344,12 +344,12 @@ namespace StarsAbove.Projectiles.Generics
         }
         private void RotateArms(Player projOwner)
         {
-            projOwner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (projOwner.Center -
+            projOwner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (projOwner.MountedCenter -
                             new Vector2(Projectile.Center.X + (projOwner.velocity.X * 0.05f), Projectile.Center.Y + (projOwner.velocity.Y * 0.05f))
                             ).ToRotation() + MathHelper.PiOver2);
             Projectile.alpha -= 90;
 
-            projOwner.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.Full, (projOwner.Center -
+            projOwner.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.Full, (projOwner.MountedCenter -
                 new Vector2(Projectile.Center.X + (projOwner.velocity.X * 0.05f), Projectile.Center.Y + (projOwner.velocity.Y * 0.05f))
                 ).ToRotation() + MathHelper.PiOver2);
             Projectile.alpha -= 90;

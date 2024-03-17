@@ -9784,22 +9784,23 @@ Mods: {
 					''' */
 			}
 
-			InheritedCase: {
+			InheritedCaseM4A1: {
 				// DisplayName: Inherited Case, M4A1
 				/* Tooltip:
 					'''
 					[c/F7D76A:Hold left click to charge the weapon; if the weapon is fully charged, the attack varies]
 					Additionally, this weapon can be [c/F7D76A:Overcharged], causing additional effects to occur
-					After charging, fire rapid and accurate bullets, consuming ammo from your inventory
+					After charging, fire bullets from your inventory (Musket balls are transformed into powerful, fast bullets)
 					The second stage of [c/F7D76A:Overcharge] will additionally fire a barrage of lasers
-					Upon reaching the final stage of [c/F7D76A:Overcharge], gain a random [Auxiliary Armament] and return to the second stage of [c/F7D76A:Overcharge] (Can be repeated 4 times)
-					[Auxiliary Armaments] provide fire support during combat, but will disappear when taking damage
-					[Auxiliary St-AR15]: Fires rapid bursts of pinpoint accurate bullets
-					[Auxiliary RO635]: Fires a barrage of bullets that home in on two targets, piercing the first
-					[Auxiliary M4-Sop2]: Fires explosive grenades towards the cursor; every 4th grenade can home in and is a guaranteed critical strike
-					[Auxiliary M16A1]: Generates an orbiting shield aimed towards the cursor that can absorb 6 attacks; once destroyed, fire bullets in retaliation and regenerate after 5 seconds
-					Right click to transform the weapon after a short delay, firing a powerful rocket bolt towards your cursor (1 minute cooldown)
-					This attack pierces up to 3 foes, and explodes on hit; the final hit will burst in a massive explosion, dealing 300% weapon damage as a critical strike
+					Upon reaching the final stage of [c/F7D76A:Overcharge], gain a random [c/C6F1AE:Auxiliary Armament] and return to the second stage of [c/F7D76A:Overcharge] (Can be repeated 4 times)
+					[c/C6F1AE:Auxiliary Armaments] provide fire support during combat, but one will be destroyed when taking damage (Removed outside of combat)
+					[c/F195F7:Auxiliary St-AR15]: Rapidly fires bursts of pinpoint accurate bullets
+					[c/F5F546:Auxiliary RO635]: Fires a barrage of bullets that home in on two targets, piercing the first
+					[c/F54646:Auxiliary M4-Sop2]: Fires an explosive howitzer towards the cursor, dealing 300% weapon damage; every 4th grenade tracks targets and flies faster
+					[c/DA46F5:Auxiliary M16A1]: Generates an orbiting shield aimed towards the cursor that absorbs 6 projectiles; once destroyed, fire bullets in retaliation and regenerate after 8 seconds
+					Right click to equip the [c/81C671:Inherited Case] after a short delay, changing attacks into powerful rocket bolts towards your cursor but reducing attack speed drastically
+					Additionally, the weapon can not be charged in this state and active [c/C6F1AE:Auxiliary Armaments] will be lost
+					This attack pierces up to 3 foes and explodes on hit; the final hit will burst in a massive explosion, dealing 300% damage as a critical strike
 					Foes caught in the explosions will take heavy damage over time for a short duration
 					While holding this weapon, attacks can not be dodged and damage reduction is negated
 					'Commander, we are here'
@@ -10837,6 +10838,25 @@ Mods: {
 			FairyAttack.DisplayName: Fairy Attack
 			FairyAttackEffect.DisplayName: Fairy Attack Effect
 			// LegendaryShieldBash.DisplayName: Legendary Shield Bash
+			// M4A1Gun.DisplayName: M4 A1 Gun
+			// M4A1Laser.DisplayName: M4 A1 Laser
+			// M4A1Round.DisplayName: M4 A1 Round
+			// StAR15Gun.DisplayName: St A R15 Gun
+			// M16A1Gun.DisplayName: M16 A1 Gun
+			// M4Sop2Gun.DisplayName: M4 Sop2 Gun
+			// RO635Gun.DisplayName: R O635 Gun
+			// StAR15Round.DisplayName: St A R15 Round
+			// M4Sop2Howitzer.DisplayName: M4 Sop2 Howitzer
+			// M4Sop2HowitzerExplosion.DisplayName: M4 Sop2 Howitzer Explosion
+			// M4Sop2HowitzerHoming.DisplayName: M4 Sop2 Howitzer Homing
+			// RO635Round.DisplayName: R O635 Round
+			// M16A1Shield.DisplayName: M16 A1 Shield
+			// M16A1Round.DisplayName: M16 A1 Round
+			// InheritedCaseExplosion.DisplayName: Inherited Case Explosion
+			// InheritedCaseFireField.DisplayName: Inherited Case Fire Field
+			// InheritedCaseGun.DisplayName: Inherited Case Gun
+			// InheritedCaseRocket.DisplayName: Inherited Case Rocket
+			// InheritedCaseSmallExplosion.DisplayName: Inherited Case Small Explosion
 		}
 
 		Buffs: {
@@ -13547,7 +13567,27 @@ Mods: {
 
 			CelestialVoidCooldown: {
 				// DisplayName: Celestial Void Cooldown
-				// Description: Mods.StarsAbove.Buffs.CelestialVoidCooldown.Description
+				// Description: ""
+			}
+
+			AuxiliaryArmamentBuff: {
+				// DisplayName: Auxiliary Armaments
+				// Description: Assailing foes with myriad firearms
+			}
+
+			M16A1ShieldCooldown: {
+				// DisplayName: M16A1 Shield Cooldown
+				// Description: ""
+			}
+
+			M16A1Counterfire: {
+				// DisplayName: M16A1 Counterfire
+				// Description: ""
+			}
+
+			InheritedCaseActive: {
+				// DisplayName: Inherited Case Active
+				// Description: Mods.StarsAbove.Buffs.InheritedCaseActive.Description
 			}
 		}
 
