@@ -11,9 +11,9 @@ using StarsAbove.Buffs;
 using StarsAbove.Items.Pets;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
-using StarsAbove.Buffs.LevinstormAxe;
 using StarsAbove.Systems;
 using StarsAbove.Projectiles.Other.LevinstormAxe;
+using StarsAbove.Buffs.Other.LevinstormAxe;
 
 namespace StarsAbove.Items.Weapons.Other
 {

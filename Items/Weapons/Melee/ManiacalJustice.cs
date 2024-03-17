@@ -10,10 +10,10 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using StarsAbove.Utilities;
-using StarsAbove.Buffs.ManiacalJustice;
-using StarsAbove.Systems;
 using StarsAbove.Systems;
 using StarsAbove.Projectiles.Melee.ManiacalJustice;
+using StarsAbove.Buffs.Melee.ManiacalJustice;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Melee
 {

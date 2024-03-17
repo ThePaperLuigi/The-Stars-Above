@@ -7,12 +7,12 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using System;
 using StarsAbove.Items.Essences;
-using StarsAbove.Buffs;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Summon.Takodachi;
+using StarsAbove.Buffs.Summon.Takonomicon;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Summon
 {
@@ -56,7 +56,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			Item.rare = ItemRarityID.LightRed;
 			Item.UseSound = SoundID.Item44;
 			Item.shoot = ProjectileType<TakodachiMinion>();
-			Item.buffType = BuffType<Buffs.TakodachiBuff>(); //The buff added to player after used the item
+			Item.buffType = BuffType<TakodachiBuff>(); //The buff added to player after used the item
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
 		}
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
@@ -237,7 +237,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			{
 				if (!player.HasBuff(BuffType<TakodachiLaserBuff>()) && !player.HasBuff(BuffType<TakodachiLaserBuffCooldown>()))
 				{
-					player.AddBuff(BuffType<Buffs.TakodachiLaserBuff>(), 180);
+					player.AddBuff(BuffType<TakodachiLaserBuff>(), 180);
 					player.GetModPlayer<WeaponPlayer>().takoTarget = Main.MouseWorld;
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, player.Center);
 					

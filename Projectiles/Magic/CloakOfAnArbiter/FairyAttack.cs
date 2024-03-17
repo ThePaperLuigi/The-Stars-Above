@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.CloakOfAnArbiter;
+using StarsAbove.Buffs.Magic.CloakOfAnArbiter;
 using StarsAbove.Projectiles.Summon.StarphoenixFunnel;
 using StarsAbove.Systems;
 using System;

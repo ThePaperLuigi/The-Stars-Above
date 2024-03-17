@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.HunterSymphony;
+using StarsAbove.Buffs.Magic.HunterSymphony;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
 using Terraria;

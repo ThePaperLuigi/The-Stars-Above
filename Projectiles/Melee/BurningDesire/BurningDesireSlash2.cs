@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.BurningDesire;
+using StarsAbove.Buffs.Melee.BurningDesire;
 using System;
 using Terraria;
 using Terraria.ID;

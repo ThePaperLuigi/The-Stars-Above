@@ -14,9 +14,7 @@ using StarsAbove.Subworlds;
 using StarsAbove.Items.Prisms;
 using StarsAbove.Items.Consumables;
 using StarsAbove.Items.Accessories;
-using StarsAbove.Buffs.Farewells;
 using System;
-using StarsAbove.Buffs.IrminsulDream;
 using StarsAbove.Biomes;
 using StarsAbove.Items.Materials;
 using StarsAbove.NPCs.OffworldNPCs.Caelum;
@@ -71,14 +69,14 @@ namespace StarsAbove.Systems
                 pool.Add(NPCType<NPCs.OffworldNPCs.AsteroidWormHead>(), 0.001f);
                 pool.Add(NPCType<NPCs.OffworldNPCs.DreamingCity.ParacausalEntity>(), 0.05f);
                 pool.Add(NPCType<NPCs.OffworldNPCs.DreamingCity.ParacausalEnigma>(), 0.02f);
-                if(Main.hardMode)
+                if (Main.hardMode)
                 {
                     pool.Add(NPCID.DesertGhoulHallow, 0.01f);
                     pool.Add(NPCID.ChaosElemental, 0.001f);
                     pool.Add(NPCID.IlluminantSlime, 0.02f);
                     pool.Add(NPCID.PossessedArmor, 0.01f);
                 }
-                
+
                 /*
 				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.WaywardSelenian>(), 0.1f);
 				pool.Add(ModContent.NPCType<NPCs.OffworldNPCs.WaywardPredictor>(), 0.1f);

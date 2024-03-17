@@ -44,7 +44,7 @@ namespace StarsAbove.Projectiles.Ranged.TwoCrownBow
 
             Projectile.timeLeft = 999;
             Player player = Main.player[Projectile.owner];
-            if (player.dead && !player.active || !player.HasBuff(BuffType<Buffs.TwoCrownBow.TwoCrownBowDepravity>()))
+            if (player.dead && !player.active || !player.HasBuff(BuffType<Buffs.Ranged.TwoCrownBow.TwoCrownBowDepravity>()))
             {
                 Projectile.Kill();
             }

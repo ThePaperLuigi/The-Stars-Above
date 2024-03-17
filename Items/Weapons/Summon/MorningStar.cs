@@ -8,10 +8,11 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.GameContent.Creative;
-using StarsAbove.Buffs.MorningStar;
-using StarsAbove.Systems;
 using StarsAbove.Systems;
 using StarsAbove.Projectiles.Summon.MorningStar;
+using StarsAbove.Buffs.Summon.MorningStar;
+using StarsAbove.Systems;
+using StarsAbove.Buffs.Melee.Unforgotten;
 
 namespace StarsAbove.Items.Weapons.Summon
 {
@@ -92,7 +93,7 @@ namespace StarsAbove.Items.Weapons.Summon
 
 				if (player.GetModPlayer<WeaponPlayer>().activeMinions + 3 <= player.maxMinions)
 				{
-					player.AddBuff(BuffType<Buffs.MorningStar.AlucardSwordBuff3>(), 2);
+					player.AddBuff(BuffType<Buffs.Summon.MorningStar.AlucardSwordBuff3>(), 2);
 
 
 					int index = Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ProjectileType<AlucardSword3>(), player.GetWeaponDamage(player.HeldItem), 4, player.whoAmI, 0f);
@@ -103,7 +104,7 @@ namespace StarsAbove.Items.Weapons.Summon
 				{
 					//if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue($"Tried 2"), 250, 100, 247);}
 
-					player.AddBuff(BuffType<Buffs.MorningStar.AlucardSwordBuff2>(), 2);
+					player.AddBuff(BuffType<Buffs.Summon.MorningStar.AlucardSwordBuff2>(), 2);
 
 					int index1 = Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ProjectileType<AlucardSword2>(), player.GetWeaponDamage(player.HeldItem), 4, player.whoAmI, 0f);
 					Main.projectile[index1].originalDamage = player.GetWeaponDamage(player.HeldItem);
@@ -113,7 +114,7 @@ namespace StarsAbove.Items.Weapons.Summon
 				{
 					//if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue($"Tried 1"), 250, 100, 247);}
 
-					player.AddBuff(BuffType<Buffs.MorningStar.AlucardSwordBuff1>(), 2);
+					player.AddBuff(BuffType<Buffs.Summon.MorningStar.AlucardSwordBuff1>(), 2);
 					int index2 = Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ProjectileType<AlucardSword1>(), player.GetWeaponDamage(player.HeldItem), 4, player.whoAmI, 0f);
 					Main.projectile[index2].originalDamage = player.GetWeaponDamage(player.HeldItem);
 

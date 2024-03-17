@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 using Terraria.Audio;
 using System;
 using StarsAbove.Systems;
-using StarsAbove.Buffs.StringOfCurses;
+using StarsAbove.Buffs.Ranged.StringOfCurses;
 
 namespace StarsAbove.Projectiles.Ranged.StringOfCurses
 {

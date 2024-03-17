@@ -85,13 +85,13 @@ namespace StarsAbove.Projectiles.Melee.SoulReaver
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 
-            if (!target.active && Main.player[Projectile.owner].HasBuff(BuffType<Buffs.SoulReaver.SoulSplit>()) && !target.SpawnedFromStatue && target.damage > 0)
+            if (!target.active && Main.player[Projectile.owner].HasBuff(BuffType<Buffs.Melee.SoulReaver.SoulSplit>()) && !target.SpawnedFromStatue && target.damage > 0)
             {
 
                 if (hit.Crit)
                 {
-                    Main.player[Projectile.owner].ClearBuff(BuffType<Buffs.SoulReaver.SoulSplit>());
-                    Main.player[Projectile.owner].AddBuff(BuffType<Buffs.SoulReaver.SoulSplit>(), 120);
+                    Main.player[Projectile.owner].ClearBuff(BuffType<Buffs.Melee.SoulReaver.SoulSplit>());
+                    Main.player[Projectile.owner].AddBuff(BuffType<Buffs.Melee.SoulReaver.SoulSplit>(), 120);
 
                 }
             }

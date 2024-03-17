@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.Umbra;
+using StarsAbove.Buffs.Melee.Umbra;
 using System;
 using Terraria;
 using Terraria.ID;

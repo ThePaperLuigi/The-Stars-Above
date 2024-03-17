@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.SkyStrikerBuffs;
+using StarsAbove.Buffs.Melee.SkyStrikerBuffs;
 using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles.Melee.SkyStriker;
 using StarsAbove.Systems;

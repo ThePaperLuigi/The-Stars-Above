@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.Farewells;
-using StarsAbove.Buffs.OrbitalExpresswayPlush;
+using StarsAbove.Buffs.Other.OrbitalExpresswayPlush;
 using StarsAbove.Items.Essences;
 using StarsAbove.Items.Materials;
 using StarsAbove.Projectiles.Magic.CarianDarkMoon;

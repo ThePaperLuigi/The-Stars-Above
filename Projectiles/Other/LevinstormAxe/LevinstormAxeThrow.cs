@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.LevinstormAxe;
+using StarsAbove.Buffs.Other.LevinstormAxe;
 using Terraria;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;

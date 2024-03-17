@@ -43,7 +43,7 @@ namespace StarsAbove.Projectiles.Other.ArchitectLuminance
             Projectile.timeLeft = 10;
             Player projOwner = Main.player[Projectile.owner];
             Player player = Main.player[Projectile.owner];
-            if (projOwner.dead && !projOwner.active || !projOwner.HasBuff(BuffType<Buffs.ArchitectLuminanceBuff>()))
+            if (projOwner.dead && !projOwner.active || !projOwner.HasBuff(BuffType<Buffs.Other.ArchitectsLuminance.ArchitectLuminanceBuff>()))
             {
                 Projectile.Kill();
             }

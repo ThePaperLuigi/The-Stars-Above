@@ -1,8 +1,8 @@
 ﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using StarsAbove.Buffs.CatalystMemory;
-using StarsAbove.Buffs.InheritedCaseM4A1;
+ 
+using StarsAbove.Buffs.Ranged.InheritedCaseM4A1;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
 using StarsAbove.Utilities;

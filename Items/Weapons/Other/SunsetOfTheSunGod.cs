@@ -10,10 +10,10 @@ using StarsAbove.Items.Pets;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using System;
-using StarsAbove.Buffs.SunsetOfTheSunGod;
-using StarsAbove.Systems;
 using StarsAbove.Systems;
 using StarsAbove.Projectiles.Other.SunsetOfTheSunGod;
+using StarsAbove.Buffs.Other.SunsetOfTheSunGod;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Other
 {

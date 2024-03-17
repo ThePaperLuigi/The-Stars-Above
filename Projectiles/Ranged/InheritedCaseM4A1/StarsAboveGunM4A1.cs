@@ -1,8 +1,7 @@
 ﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using StarsAbove.Buffs.CatalystMemory;
-using StarsAbove.Systems;
+ 
 using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using System;

@@ -127,14 +127,14 @@ namespace StarsAbove.Projectiles.Celestial.VirtuesEdge
             }
             Player player = Main.player[Projectile.owner];
             player.GetModPlayer<WeaponPlayer>().VirtueGauge += 3;
-            if (player.HasBuff(BuffType<Buffs.VirtuesEdge.CelestialVoidBuff>()))
+            if (player.HasBuff(BuffType<Buffs.Celestial.VirtuesEdge.CelestialVoidBuff>()))
             {
                 player.GetModPlayer<WeaponPlayer>().VirtueGauge += 3;
             }
             if (hit.Crit)
             {
                 player.GetModPlayer<WeaponPlayer>().VirtueGauge += 6;
-                if (player.HasBuff(BuffType<Buffs.VirtuesEdge.CelestialVoidBuff>()))
+                if (player.HasBuff(BuffType<Buffs.Celestial.VirtuesEdge.CelestialVoidBuff>()))
                 {
                     player.GetModPlayer<WeaponPlayer>().VirtueGauge += 4;
                 }

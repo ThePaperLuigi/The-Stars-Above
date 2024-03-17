@@ -3,8 +3,7 @@ using Terraria.ModLoader;
 using Terraria.Graphics.Effects;
 using StarsAbove.Buffs.SubworldModifiers;
 using StarsAbove.Buffs;
-using StarsAbove.Buffs.CloakOfAnArbiter;
-using StarsAbove.Buffs.Manifestation;
+using StarsAbove.Buffs.Magic.CloakOfAnArbiter;
 
 namespace StarsAbove.SceneEffects
 {

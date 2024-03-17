@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.CarianDarkMoon;
 using StarsAbove.Items.Essences;
 using Terraria;
 using Terraria.DataStructures;
@@ -8,8 +7,9 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Magic.CarianDarkMoon;
+using StarsAbove.Buffs.Magic.CarianDarkMoon;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Magic
 {

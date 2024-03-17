@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.VirtuesEdge;
+using StarsAbove.Buffs.Celestial.VirtuesEdge;
 using StarsAbove.Effects;
 using StarsAbove.Systems;
 using StarsAbove.Systems;

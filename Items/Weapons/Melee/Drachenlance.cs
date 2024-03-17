@@ -75,7 +75,7 @@ namespace StarsAbove.Items.Weapons.Melee
 			
 			if (player.altFunctionUse == 2)
 			{
-				if (!Main.LocalPlayer.HasBuff(BuffType<Buffs.JumpCooldown>()))
+				if (!Main.LocalPlayer.HasBuff(BuffType<Buffs.Melee.Drachenlance.JumpCooldown>()))
 
 				{
 
@@ -85,9 +85,9 @@ namespace StarsAbove.Items.Weapons.Melee
 						dragonBlood = 1;
 						jumpReady = 1;
 
-						player.AddBuff(BuffType<Buffs.BloodOfTheDragon>(), 300);
+						player.AddBuff(BuffType<Buffs.Melee.Drachenlance.BloodOfTheDragon>(), 300);
 						player.AddBuff(BuffID.Featherfall, 60);
-						player.AddBuff(BuffType<Buffs.JumpCooldown>(), 720);
+						player.AddBuff(BuffType<Buffs.Melee.Drachenlance.JumpCooldown>(), 720);
 						specialAttackReady = 60;
 						
 						
@@ -100,8 +100,8 @@ namespace StarsAbove.Items.Weapons.Melee
 						jumpReady = 1;
 						dragonLife = 1;
 						
-						player.AddBuff(BuffType<Buffs.LifeOfTheDragon>(), 480);
-						player.AddBuff(BuffType<Buffs.JumpCooldown>(), 720);
+						player.AddBuff(BuffType<Buffs.Melee.Drachenlance.LifeOfTheDragon>(), 480);
+						player.AddBuff(BuffType<Buffs.Melee.Drachenlance.JumpCooldown>(), 720);
 						//put a playsound dragon roar here
 						player.AddBuff(BuffID.Featherfall, 60);
 						
@@ -207,7 +207,7 @@ namespace StarsAbove.Items.Weapons.Melee
 			cooldown--;
 			specialAttackReady--;
 
-			if (Main.LocalPlayer.HasBuff(BuffType<Buffs.LifeOfTheDragon>()))
+			if (Main.LocalPlayer.HasBuff(BuffType<Buffs.Melee.Drachenlance.LifeOfTheDragon>()))
 			{
 				Item.crit = 60;
 				
@@ -241,7 +241,7 @@ namespace StarsAbove.Items.Weapons.Melee
 
 		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
-			if (Main.LocalPlayer.HasBuff(BuffType<Buffs.BloodOfTheDragon>()))
+			if (Main.LocalPlayer.HasBuff(BuffType<Buffs.Melee.Drachenlance.BloodOfTheDragon>()))
 			{
 				for (int d = 0; d < 30; d++)
 				{
@@ -249,7 +249,7 @@ namespace StarsAbove.Items.Weapons.Melee
 				}
 
 			}
-			if (Main.LocalPlayer.HasBuff(BuffType<Buffs.LifeOfTheDragon>()))
+			if (Main.LocalPlayer.HasBuff(BuffType<Buffs.Melee.Drachenlance.LifeOfTheDragon>()))
 			{
 				player.statLife += 50;
 				for (int d = 0; d < 30; d++)

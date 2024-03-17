@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Systems;
 using System;
-using StarsAbove.Buffs.EmberFlask;
+using StarsAbove.Buffs.StellarSpoils.EmberFlask;
 
 namespace StarsAbove.Items.Tools
 {

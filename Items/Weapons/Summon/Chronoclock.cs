@@ -1,6 +1,6 @@
 
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.Chronoclock;
+using StarsAbove.Buffs.Summon.Chronoclock;
 using StarsAbove.Items.Essences;
 using StarsAbove.Items.Prisms;
 using StarsAbove.Projectiles.Summon.Chronoclock;

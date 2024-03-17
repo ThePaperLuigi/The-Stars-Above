@@ -41,7 +41,7 @@ namespace StarsAbove.Projectiles.Summon.CaesuraOfDespair
         {
             Projectile.timeLeft = 10;
             Player projOwner = Main.player[Projectile.owner];
-            if (projOwner.dead && !projOwner.active || !projOwner.HasBuff(BuffType<Buffs.IrysBuff>()))
+            if (projOwner.dead && !projOwner.active || !projOwner.HasBuff(BuffType<Buffs.Summon.CaesuraOfDespair.IrysBuff>()))
             {
                 Projectile.Kill();
             }
@@ -74,7 +74,7 @@ namespace StarsAbove.Projectiles.Summon.CaesuraOfDespair
 
             if (closest.CanBeChasedBy() && closestDistance < 1200f)
             {
-                closest.AddBuff(BuffType<Buffs.IrysGaze>(), 60);
+                closest.AddBuff(BuffType<Buffs.Summon.CaesuraOfDespair.IrysGaze>(), 60);
                 for (int i3 = 0; i3 < 50; i3++)
                 {
                     Vector2 position2 = Vector2.Lerp(Projectile.Center, closest.Center, (float)i3 / 50);

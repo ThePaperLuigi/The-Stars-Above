@@ -6,9 +6,8 @@ using Terraria.ID;
 using static Terraria.ModLoader.ModContent;
 using System;
 using Terraria.ModLoader;
-using StarsAbove.Buffs.SparkblossomBeacon;
 using Terraria.Audio;
-using StarsAbove.Buffs.Gundbits;
+using StarsAbove.Buffs.Magic.Gundbits;
 
 namespace StarsAbove.Projectiles.Magic.Gundbit
 {

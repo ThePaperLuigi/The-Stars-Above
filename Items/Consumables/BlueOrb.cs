@@ -52,7 +52,7 @@ namespace StarsAbove.Items.Consumables
 		{
 			if(player.HeldItem.ModItem is CrimsonSakuraAlpha)
             {
-				player.AddBuff(BuffType<Buffs.BlueOrb>(), 1200);
+				player.AddBuff(BuffType<Buffs.Melee.CrimsonSakuraAlpha.BlueOrb>(), 1200);
 			}
 			return false;
 		}

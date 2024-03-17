@@ -98,12 +98,12 @@ namespace StarsAbove.Projectiles.Summon.KeyOfTheSinner
         {
             if (owner.dead || !owner.active)
             {
-                owner.ClearBuff(BuffType<Buffs.Satanael>());
+                owner.ClearBuff(BuffType<Buffs.Summon.KeyOfTheSinner.Satanael>());
 
                 return false;
             }
 
-            if (owner.HasBuff(BuffType<Buffs.Satanael>()))
+            if (owner.HasBuff(BuffType<Buffs.Summon.KeyOfTheSinner.Satanael>()))
             {
                 Projectile.timeLeft = 2;
             }

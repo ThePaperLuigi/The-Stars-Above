@@ -8,7 +8,6 @@ using Terraria.GameContent.UI.Elements;
 using Terraria.UI;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Localization;
-using StarsAbove.Systems;
 using StarsAbove.Systems.Items;
 using Terraria.ModLoader;
 using StarsAbove.Items.Memories;
@@ -18,6 +17,8 @@ using System;
 using Terraria.Audio;
 using Terraria.ID;
 using StarsAbove.Items.Weapons.Other;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.UI.Cosmoturgy
 {

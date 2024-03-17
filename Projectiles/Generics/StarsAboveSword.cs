@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using StarsAbove.Buffs.CatalystMemory;
+ 
 using StarsAbove.Projectiles.Summon.Wavedancer;
 using StarsAbove.Systems;
 using StarsAbove.Utilities;
@@ -16,7 +16,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.Generics
 {
-	/* This class is a held projectile that animates a sword swing.
+    /* This class is a held projectile that animates a sword swing.
 	 * 
 	 * */
     public abstract class StarsAboveSword : ModProjectile

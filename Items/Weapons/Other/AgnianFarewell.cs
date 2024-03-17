@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.Farewells;
+using StarsAbove.Buffs.Other.Farewells;
 using StarsAbove.Items.Essences;
 using StarsAbove.Items.Materials;
 using StarsAbove.Projectiles.Summon.KeyOfTheKingsLaw;

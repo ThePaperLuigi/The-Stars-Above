@@ -4,8 +4,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 using System;
-using StarsAbove.Buffs.TrickspinTwoStep;
 using static Terraria.ModLoader.ModContent;
+using StarsAbove.Buffs.Summon.TrickspinTwoStep;
 
 namespace StarsAbove.Projectiles.Summon.TrickspinTwoStep
 {

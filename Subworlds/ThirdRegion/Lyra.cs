@@ -11,8 +11,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 using Terraria.Utilities;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using Terraria.IO;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Subworlds.ThirdRegion
 {

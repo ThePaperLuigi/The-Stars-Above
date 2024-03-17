@@ -1,4 +1,5 @@
 using StarsAbove.Systems;
+using StarsAbove.Systems;
 using System;
 using Terraria;
 using Terraria.GameContent.Drawing;

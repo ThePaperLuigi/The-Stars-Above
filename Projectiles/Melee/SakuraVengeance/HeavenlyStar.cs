@@ -54,7 +54,7 @@ namespace StarsAbove.Projectiles.Melee.SakuraVengeance
 
             Player player = Main.player[Projectile.owner];
 
-            if (player.HasBuff(BuffType<Buffs.SakuraVengeance.ElementalChaos>()))
+            if (player.HasBuff(BuffType<Buffs.Melee.SakuraVengeance.ElementalChaos>()))
             {
                 target.AddBuff(BuffID.Frostburn, 120);
                 target.AddBuff(BuffID.OnFire, 120);

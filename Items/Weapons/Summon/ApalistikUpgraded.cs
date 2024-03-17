@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using StarsAbove.Buffs.Summon.Apalistik;
 using StarsAbove.Projectiles.Summon.Apalistik;
 using Terraria;
 using Terraria.DataStructures;
@@ -119,7 +120,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			
 			if (player.altFunctionUse == 2)
 			{
-				if (!player.HasBuff(BuffType<Buffs.SeabornCooldown>()) && !player.HasBuff(BuffType<Buffs.SeabornWrath>()))
+				if (!player.HasBuff(BuffType<SeabornCooldown>()) && !player.HasBuff(BuffType<SeabornWrath>()))
 				{
 					for (int d = 0; d < 10; d++)
 					{
@@ -129,7 +130,7 @@ namespace StarsAbove.Items.Weapons.Summon
 					{
 						Dust.NewDust(player.Center, 0, 0, DustType<Dusts.bubble>(), 0f + Main.rand.Next(-25, 25), 0f + Main.rand.Next(-15, 15), 0, default(Color), 1.5f);
 					}
-					player.AddBuff(BuffType<Buffs.SeabornWrath>(), 480);
+					player.AddBuff(BuffType<SeabornWrath>(), 480);
 					return true;
 				}
 				else
@@ -168,7 +169,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			}
 			else
             {
-				if (player.HasBuff(BuffType<Buffs.SeabornWrath>()))
+				if (player.HasBuff(BuffType<SeabornWrath>()))
 				{
 					int numberProjectiles = 8 + Main.rand.Next(2); //random shots
 					for (int i = 0; i < numberProjectiles; i++)

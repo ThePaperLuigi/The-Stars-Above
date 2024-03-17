@@ -9,8 +9,8 @@ using Terraria.ModLoader;
 using StarsAbove.Subworlds.ThirdRegion;
 using StarsAbove.Utilities;
 using Terraria.DataStructures;
-using StarsAbove.Buffs;
 using System.Numerics;
+using StarsAbove.Buffs.Boss;
 
 namespace StarsAbove.NPCs.OffworldNPCs.DreamingCity
 {

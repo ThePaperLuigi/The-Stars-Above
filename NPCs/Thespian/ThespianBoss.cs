@@ -27,7 +27,6 @@ using SubworldLibrary;
 using StarsAbove.NPCs.WarriorOfLight;
 using StarsAbove.Items.Loot;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Extra;
 using StarsAbove.Dusts;
 using System.Collections.Generic;
@@ -35,6 +34,7 @@ using static Terraria.GameContent.Animations.IL_Actions.NPCs;
 using StarsAbove.Items.BossBags;
 using StarsAbove.Items.Memories;
 using Terraria.UI;
+using StarsAbove.Systems;
 
 namespace StarsAbove.NPCs.Thespian
 {

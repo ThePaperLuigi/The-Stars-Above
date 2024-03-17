@@ -1,7 +1,6 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.InheritedCaseM4A1;
-using StarsAbove.Buffs.RedMage;
+using StarsAbove.Buffs.Ranged.InheritedCaseM4A1;
 using StarsAbove.Systems;
 using System;
 using Terraria;

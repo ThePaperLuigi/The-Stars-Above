@@ -42,7 +42,7 @@ namespace StarsAbove.Projectiles.Other.Nanomachina
             Projectile.timeLeft = 10;
             Player projOwner = Main.player[Projectile.owner];
             Player player = Main.player[Projectile.owner];
-            if (projOwner.dead && !projOwner.active || !projOwner.HasBuff(BuffType<Buffs.Nanomachina.RealizedNanomachinaBuff>()))
+            if (projOwner.dead && !projOwner.active || !projOwner.HasBuff(BuffType<Buffs.Other.Nanomachina.RealizedNanomachinaBuff>()))
             {
                 Projectile.Kill();
             }

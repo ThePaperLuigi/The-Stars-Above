@@ -6,9 +6,10 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
-using StarsAbove.Buffs.Manifestation;
 using StarsAbove.Systems;
 using StarsAbove.Projectiles.Other.Manifestation;
+using StarsAbove.Buffs.Celestial.Manifestation;
+using StarsAbove.Systems.WeaponSystems;
 
 namespace StarsAbove.Items.Weapons.Other
 {

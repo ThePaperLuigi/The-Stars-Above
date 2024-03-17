@@ -1,9 +1,7 @@
 
 using Microsoft.Xna.Framework;
 using Mono.Cecil;
-using StarsAbove.Buffs.CandiedSugarball;
-using StarsAbove.Buffs.Chronoclock;
-using StarsAbove.Buffs.StarphoenixFunnel;
+using StarsAbove.Buffs.Summon.CandiedSugarball;
 using StarsAbove.Items.Essences;
 using StarsAbove.Items.Prisms;
 using StarsAbove.Projectiles.Summon.CandiedSugarball;

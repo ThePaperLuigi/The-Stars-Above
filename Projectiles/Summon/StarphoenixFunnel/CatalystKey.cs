@@ -14,8 +14,9 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Systems;
 using StarsAbove.Projectiles.Summon.CaesuraOfDespair;
-using StarsAbove.Buffs.StarphoenixFunnel;
 using Terraria.Audio;
+using StarsAbove.Buffs.Summon.StarphoenixFunnel;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles.Summon.StarphoenixFunnel
 {

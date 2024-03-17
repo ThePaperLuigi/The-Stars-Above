@@ -8,8 +8,8 @@ using System;
 using StarsAbove.Items.Essences;
 using Terraria.Audio;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Ranged.Tartaglia;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Ranged
 {
@@ -74,7 +74,7 @@ namespace StarsAbove.Items.Weapons.Ranged
 
 							SoundEngine.PlaySound(SoundID.Drown, player.position);
 							player.statMana -= 200;//water burst particles
-							player.AddBuff(BuffType<Buffs.RagingTidesStance>(), 480);//cosmetic buff
+							player.AddBuff(BuffType<Buffs.Ranged.Tartaglia.RagingTidesStance>(), 480);//cosmetic buff
 							meleeStanceTimer = 480;
 							meleeStance = true;
 							for (int d = 0; d < 22; d++)

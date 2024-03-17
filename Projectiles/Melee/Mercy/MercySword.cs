@@ -1,8 +1,7 @@
 ﻿
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.CatalystMemory;
-using StarsAbove.Buffs.HunterSymphony;
-using StarsAbove.Buffs.Mercy;
+ 
+using StarsAbove.Buffs.Melee.Mercy;
 using StarsAbove.Projectiles.Generics;
 using System;
 using Terraria;

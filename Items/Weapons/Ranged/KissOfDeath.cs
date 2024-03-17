@@ -7,9 +7,9 @@ using static Terraria.ModLoader.ModContent;
 using StarsAbove.Items.Essences;
 using Terraria.Audio;
 using StarsAbove.Utilities;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Ranged.KissOfDeath;
 using StarsAbove.Projectiles.Melee.KarlanTruesilver;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Ranged
 {

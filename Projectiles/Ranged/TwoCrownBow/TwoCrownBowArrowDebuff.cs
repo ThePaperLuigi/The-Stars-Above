@@ -6,7 +6,6 @@ using Terraria.Audio;
 using System;
 using StarsAbove.Systems;
 using Microsoft.Xna.Framework.Graphics;
-using StarsAbove.Buffs.Mercy;
 using Terraria.GameContent.Drawing;
 
 namespace StarsAbove.Projectiles.Ranged.TwoCrownBow

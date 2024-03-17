@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using StarsAbove.Buffs.Ozma;
+using StarsAbove.Buffs.Magic.Ozma;
 
 namespace StarsAbove.Projectiles.Magic.Ozma
 {

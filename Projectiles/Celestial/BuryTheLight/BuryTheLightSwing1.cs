@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using System;
 using Terraria;
 using Terraria.Graphics.Shaders;
@@ -33,7 +32,7 @@ namespace StarsAbove.Projectiles.Celestial.BuryTheLight
 
             Projectile.hide = false;
             Projectile.ownerHitCheck = true;
-            Projectile.DamageType = GetInstance<Systems.CelestialDamageClass>();
+            Projectile.DamageType = GetInstance<CelestialDamageClass>();
             Projectile.tileCollide = false;
             Projectile.friendly = true;
             Projectile.usesLocalNPCImmunity = true;

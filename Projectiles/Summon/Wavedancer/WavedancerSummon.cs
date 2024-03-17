@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
-using StarsAbove.Buffs;
-using StarsAbove.Buffs.Skofnung;
-using StarsAbove.Buffs.Wavedancer;
+ 
+using StarsAbove.Buffs.Summon.Apalistik;
+using StarsAbove.Buffs.Summon.Wavedancer;
 using StarsAbove.Systems;
 using System;
 using Terraria;

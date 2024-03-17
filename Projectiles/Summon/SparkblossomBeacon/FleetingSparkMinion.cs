@@ -6,8 +6,8 @@ using Terraria.ID;
 using static Terraria.ModLoader.ModContent;
 using System;
 using Terraria.ModLoader;
-using StarsAbove.Buffs.SparkblossomBeacon;
 using Terraria.Audio;
+using StarsAbove.Buffs.Summon.SparkblossomBeacon;
 
 namespace StarsAbove.Projectiles.Summon.SparkblossomBeacon
 {

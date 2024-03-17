@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.DraggedBelow;
+using StarsAbove.Buffs.Magic.DraggedBelow;
 using StarsAbove.Items.Essences;
 using StarsAbove.Items.Prisms;
 using StarsAbove.Projectiles.Magic.DraggedBelow;

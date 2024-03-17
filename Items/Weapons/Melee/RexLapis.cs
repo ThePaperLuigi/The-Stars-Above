@@ -6,10 +6,10 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
-using StarsAbove.Buffs.RexLapis;
-using StarsAbove.Systems;
 using StarsAbove.Systems;
 using StarsAbove.Projectiles.Melee.RexLapis;
+using StarsAbove.Buffs.Melee.RexLapis;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Melee
 {

@@ -9,6 +9,7 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using StarsAbove.Systems;
+using StarsAbove.Buffs.Melee.Unforgotten;
 
 namespace StarsAbove.Projectiles.Ranged.Genocide
 {

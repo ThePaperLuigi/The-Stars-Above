@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.CatalystMemory;
+ 
 using StarsAbove.Projectiles.Generics;
 using System;
 using Terraria;

@@ -14,9 +14,7 @@ using StarsAbove.Subworlds;
 using StarsAbove.Items.Prisms;
 using StarsAbove.Items.Consumables;
 using StarsAbove.Items.Accessories;
-using StarsAbove.Buffs.Farewells;
 using System;
-using StarsAbove.Buffs.IrminsulDream;
 using StarsAbove.Biomes;
 using StarsAbove.Items.Materials;
 using StarsAbove.NPCs;
@@ -27,8 +25,11 @@ using StarsAbove.Items.Memories;
 using StarsAbove.Projectiles.Summon.StarphoenixFunnel;
 using Terraria.GameContent.Drawing;
 using Terraria.Audio;
-using StarsAbove.Buffs.StringOfCurses;
-using StarsAbove.Buffs.CloakOfAnArbiter;
+using StarsAbove.Buffs.Magic.CloakOfAnArbiter;
+using StarsAbove.Buffs.Ranged.StringOfCurses;
+using StarsAbove.Buffs.Magic.IrminsulDream;
+using StarsAbove.Buffs.Other.Farewells;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Systems
 {
@@ -839,7 +840,7 @@ namespace StarsAbove.Systems
             {
                 modifiers.FinalDamage += 1f;
             }
-            
+
 
 
         }
@@ -858,14 +859,14 @@ namespace StarsAbove.Systems
         }
         public override void OnHitByProjectile(NPC npc, Projectile projectile, NPC.HitInfo hit, int damageDone)
         {
-            if(projectile.type == ModContent.ProjectileType<StarphoenixRound>())
+            if (projectile.type == ProjectileType<StarphoenixRound>())
             {
                 elementalSurgeStacks++;
                 if (elementalSurgeStacks > 6)
                 {
                     SoundEngine.PlaySound(SoundID.Item27, npc.Center);
                     elementalSurgeStacks = 0;
-                    npc.SimpleStrikeNPC((int)(damageDone*1.5), 0, false, 0, DamageClass.Default, false, 0);
+                    npc.SimpleStrikeNPC((int)(damageDone * 1.5), 0, false, 0, DamageClass.Default, false, 0);
                     Main.player[projectile.owner].GetModPlayer<WeaponPlayer>().alignmentStacks++;
                     ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Keybrand,
             new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(npc.Hitbox) },
@@ -877,7 +878,7 @@ namespace StarsAbove.Systems
                 }
 
             }
-            if (projectile.type == ModContent.ProjectileType<CatalystKey>())
+            if (projectile.type == ProjectileType<CatalystKey>())
             {
                 elementalSurgeStacks++;
                 if (elementalSurgeStacks > 6)
@@ -895,14 +896,14 @@ namespace StarsAbove.Systems
                 }
 
             }
-            if (projectile.type == ModContent.ProjectileType<StarphoenixMinionBullet>())
+            if (projectile.type == ProjectileType<StarphoenixMinionBullet>())
             {
                 elementalSurgeStacks++;
                 if (elementalSurgeStacks > 6)
                 {
                     SoundEngine.PlaySound(SoundID.Item27, npc.Center);
                     elementalSurgeStacks = 0;
-                    npc.SimpleStrikeNPC((int)(damageDone*1.5), 0, false, 0, DamageClass.Default, false, 0);
+                    npc.SimpleStrikeNPC((int)(damageDone * 1.5), 0, false, 0, DamageClass.Default, false, 0);
                     Main.player[projectile.owner].GetModPlayer<WeaponPlayer>().alignmentStacks++;
                     ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Keybrand,
             new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(npc.Hitbox) },
@@ -957,7 +958,7 @@ namespace StarsAbove.Systems
             if (npc.type == NPCID.WallofFlesh)
             {
                 npcLoot.Add(ItemDropRule.Common(ItemType<RedSpiderLily>(), 4));
-                if(Main.expertMode)
+                if (Main.expertMode)
                 {
                     npcLoot.Add(ItemDropRule.Common(ItemType<MindflayerWorm>(), 4));
 

@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.Adornment;
 using System;
 using Terraria;
 using Terraria.Audio;

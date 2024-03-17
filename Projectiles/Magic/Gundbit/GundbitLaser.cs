@@ -9,8 +9,7 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.ID;
 using Terraria.Graphics.Shaders;
-using StarsAbove.Buffs.DraggedBelow;
-using StarsAbove.Buffs.Gundbits;
+using StarsAbove.Buffs.Magic.Gundbits;
 
 namespace StarsAbove.Projectiles.Magic.Gundbit
 {

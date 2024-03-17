@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.SkyStrikerBuffs;
+using StarsAbove.Buffs.Melee.SkyStrikerBuffs;
 using System;
 using Terraria;
 using Terraria.ModLoader;

@@ -57,9 +57,9 @@ namespace StarsAbove.Items.Weapons.Magic
 			
 			if (player.altFunctionUse == 2)
 			{
-				if (!Main.LocalPlayer.HasBuff(BuffType<Buffs.LimitBreakCooldown>()))
+				if (!Main.LocalPlayer.HasBuff(BuffType<Buffs.Magic.LightUnrelenting.LimitBreakCooldown>()))
 				{
-					if (!Main.LocalPlayer.HasBuff(BuffType<Buffs.LimitBreak>()))
+					if (!Main.LocalPlayer.HasBuff(BuffType<Buffs.Magic.LightUnrelenting.LimitBreak>()))
 					{
 						Vector2 position = Main.LocalPlayer.position;
 						int playerWidth = Main.LocalPlayer.width;
@@ -70,7 +70,7 @@ namespace StarsAbove.Items.Weapons.Magic
 							dust = Main.dust[Terraria.Dust.NewDust(position, playerWidth, playerHeight, 106, 0f + Main.rand.Next(-2, 2), 0f + Main.rand.Next(-2, 2), 0, new Color(255, 255, 255), 1f)];
 							dust.shader = GameShaders.Armor.GetSecondaryShader(81, Main.LocalPlayer);
 						}
-						player.AddBuff(BuffType<Buffs.LimitBreak>(), 1200);
+						player.AddBuff(BuffType<Buffs.Magic.LightUnrelenting.LimitBreak>(), 1200);
 						SoundEngine.PlaySound(StarsAboveAudio.SFX_Umbral, player.Center);
 
 					}

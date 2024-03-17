@@ -27,13 +27,13 @@ using SubworldLibrary;
 using StarsAbove.NPCs.WarriorOfLight;
 using StarsAbove.Items.Loot;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Extra;
 using StarsAbove.Buffs.SubworldModifiers;
 using StarsAbove.Items.Accessories;
 using StarsAbove.Items.BossBags;
 using static StarsAbove.NPCs.Thespian.ThespianBoss;
 using System.Collections.Generic;
+using StarsAbove.Systems;
 
 namespace StarsAbove.NPCs.Arbitration
 {

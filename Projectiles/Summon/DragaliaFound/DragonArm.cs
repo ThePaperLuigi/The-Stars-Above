@@ -1,8 +1,8 @@
 ﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using StarsAbove.Buffs.CatalystMemory;
-using StarsAbove.Buffs.DragaliaFound;
+ 
+using StarsAbove.Buffs.Summon.DragaliaFound;
 using System;
 using System.Collections.Generic;
 using Terraria;

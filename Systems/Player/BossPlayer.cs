@@ -398,7 +398,7 @@ namespace StarsAbove.Systems
             TsukiyomiBarActive = false;
             WarriorOfLightBarActive = false;
             CastorBarActive = false;
-            PolluxBarActive = false; 
+            PolluxBarActive = false;
             ThespianBarActive = false;
             StarfarerBossBarActive = false;
             PenthesileaBarActive = false;
@@ -413,7 +413,7 @@ namespace StarsAbove.Systems
                     if (Player.buffTime[i] == 180)
                     {
                         Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
-                        CombatText.NewText(textPos, new Color(155, 90, 155, 240), LangHelper.GetTextValue("CombatText.Thespian.MoveRight",3), false, false);
+                        CombatText.NewText(textPos, new Color(155, 90, 155, 240), LangHelper.GetTextValue("CombatText.Thespian.MoveRight", 3), false, false);
                     }
                     else if (Player.buffTime[i] == 120)
                     {
@@ -427,7 +427,7 @@ namespace StarsAbove.Systems
                     }
                     else if (Player.buffTime[i] == 1)
                     {
-                        if(Player.velocity.X > 0)
+                        if (Player.velocity.X > 0)
                         {
                             for (int g = 0; g < 12; g++)
                             {
@@ -441,7 +441,7 @@ namespace StarsAbove.Systems
                             Player.Hurt(PlayerDeathReason.ByCustomReason(Player.name + LangHelper.GetTextValue("DeathReason.Thespian")), (int)(Player.statLifeMax2 * 0.3f), 0, false, false, -1, false, 0, 0, 0);
                         }
                     }
-                    
+
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
                 if (Player.buffType[i] == BuffType<ForceMoveLeft>())
@@ -572,7 +572,7 @@ namespace StarsAbove.Systems
                     else if (Player.buffTime[i] == 10)
                     {
                         Player.AddBuff(BuffType<DownForTheCount>(), 30);
-                        
+
                     }
                     else if (Player.buffTime[i] == 1)
                     {
@@ -583,13 +583,13 @@ namespace StarsAbove.Systems
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
                 if (Player.buffType[i] == BuffType<ThespianSadAttack>())
-                {    
+                {
                     if (Player.buffTime[i] == 180)
                     {
                         SoundEngine.PlaySound(SoundID.Item21, Player.Center);
 
-                        Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2*0.1f), 0, Player.whoAmI);
-                        if(Main.netMode == NetmodeID.SinglePlayer)
+                        Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI);
+                        if (Main.netMode == NetmodeID.SinglePlayer)
                         {
                             Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X + 100, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI);
                             Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X - 100, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI);
@@ -639,7 +639,7 @@ namespace StarsAbove.Systems
                 {
                     //Clean later (or not)
                     buffEffectTimer++;
-                    if(buffEffectTimer >= 10)
+                    if (buffEffectTimer >= 10)
                     {
                         SoundEngine.PlaySound(SoundID.Item21, Player.Center);
                         if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -954,7 +954,7 @@ namespace StarsAbove.Systems
                         newPosition.X -= 8f;
 
                     }
-                    if(Player.HasBuff(BuffType<AthanoricCurse>()))
+                    if (Player.HasBuff(BuffType<AthanoricCurse>()))
                     {
                         for (int d = 0; d < 10; d++)
                         {
@@ -1039,7 +1039,7 @@ namespace StarsAbove.Systems
                         newPosition.X -= 8f;
 
                     }
-                    
+
                 }
                 else if (Player.position.X + Player.width >= npc.Center.X + halfWidth)//Right Wall
                 {
@@ -1051,7 +1051,7 @@ namespace StarsAbove.Systems
                         newPosition.X += 8f;
 
                     }
-                   
+
                 }
                 else if (Player.position.Y <= npc.Center.Y - halfHeight)//Top
                 {
@@ -1063,7 +1063,7 @@ namespace StarsAbove.Systems
                         newPosition.Y -= 8f;
 
                     }
-                    
+
                 }
                 else if (Player.position.Y + Player.height >= npc.Center.Y + halfHeight)//Bottom
                 {
@@ -1075,7 +1075,7 @@ namespace StarsAbove.Systems
 
                         newPosition.Y += 8f;
                     }
-                    
+
                 }
             }
         }

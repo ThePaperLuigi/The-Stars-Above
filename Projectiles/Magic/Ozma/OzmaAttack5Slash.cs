@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.Ozma;
+using StarsAbove.Buffs.Magic.Ozma;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;

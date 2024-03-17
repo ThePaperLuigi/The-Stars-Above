@@ -3,9 +3,8 @@ using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using StarsAbove.Buffs.Ozma;
 using System;
-using StarsAbove.Buffs.SupremeAuthority;
+using StarsAbove.Buffs.Magic.SupremeAuthority;
 using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles.Magic.SupremeAuthority

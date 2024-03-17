@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.Gundbits;
+using StarsAbove.Buffs.Magic.Gundbits;
 using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles.Magic.Gundbit;
 using Terraria;

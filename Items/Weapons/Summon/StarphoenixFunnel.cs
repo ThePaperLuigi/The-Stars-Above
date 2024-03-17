@@ -10,10 +10,10 @@ using Terraria.GameContent.Creative;
 using StarsAbove.Systems;
 using StarsAbove.Projectiles.Ranged.ForceOfNature;
 using StarsAbove.Projectiles.Summon.StarphoenixFunnel;
-using StarsAbove.Buffs.StarphoenixFunnel;
-using StarsAbove.Buffs.ManiacalJustice;
 using StarsAbove.Utilities;
 using Terraria.Audio;
+using StarsAbove.Buffs.Summon.StarphoenixFunnel;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Summon
 {

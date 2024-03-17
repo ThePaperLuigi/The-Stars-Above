@@ -71,7 +71,7 @@ namespace StarsAbove.Projectiles.Melee.Mercy
             // When we reach the end of the animation, we can kill the spear projectile
             projOwner.itemTime = 10;
             projOwner.itemAnimation = 10;
-            if (!projOwner.HasBuff(BuffType<Buffs.Mercy.EdgeOfAnguish>()))
+            if (!projOwner.HasBuff(BuffType<Buffs.Melee.Mercy.EdgeOfAnguish>()))
             {
                 Projectile.Kill();
             }

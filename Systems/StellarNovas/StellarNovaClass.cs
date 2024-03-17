@@ -5,7 +5,7 @@ using System;
 using Terraria;
 using Terraria.Graphics.Effects;
 
-namespace StarsAbove.Systems
+namespace StarsAbove.Systems.StellarNovas
 {
     public class SetupStellarNovas
     {

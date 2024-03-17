@@ -1046,7 +1046,7 @@ namespace StarsAbove.Systems
                     player.MorningStarWeaponDialogue == 2, //Unlock requirements.
                     148,
                     LangHelper.GetTextValue($"Archive.UnlockConditions.Deerclops"))); //Corresponding dialogue ID.
-                                                       //Corresponding dialogue ID.
+                                                                                      //Corresponding dialogue ID.
 
                 //VN
                 VNArchiveList.Add(new VNArchiveListing(

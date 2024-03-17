@@ -10,8 +10,9 @@ using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using StarsAbove.Systems;
 using StarsAbove.Projectiles.Melee.RebellionBloodArthur;
-using StarsAbove.Buffs.RebellionBloodArthur;
 using StarsAbove.Buffs;
+using StarsAbove.Buffs.Melee.RebellionBloodArthur;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Melee
 {

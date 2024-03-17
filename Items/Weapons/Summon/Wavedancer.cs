@@ -6,7 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Projectiles.Summon.Wavedancer;
-using StarsAbove.Buffs.Wavedancer;
+using StarsAbove.Buffs.Summon.Wavedancer;
 using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Summon
@@ -59,7 +59,7 @@ namespace StarsAbove.Items.Weapons.Summon
 
 		public override bool? UseItem(Player player)
 		{
-			player.AddBuff(BuffType<Buffs.Wavedancer.WavedancerBuff>(), 10);
+			player.AddBuff(BuffType<WavedancerBuff>(), 10);
 			if (player.ownedProjectileCounts[ProjectileType<WavedancerSummon>()] < 1)
 			{
 				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<WavedancerSummon>(), player.GetWeaponDamage(Item), 4, player.whoAmI, 0f);
@@ -78,7 +78,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			player.GetModPlayer<WeaponPlayer>().wavedancerHeld = true;
 			if(!player.channel)
             {
-				player.GetModPlayer<Systems.WeaponPlayer>().wavedancerTarget = player.Center;
+				player.GetModPlayer<WeaponPlayer>().wavedancerTarget = player.Center;
             }
 			else
             {

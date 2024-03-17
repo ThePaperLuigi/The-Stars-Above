@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.Kifrosse;
+using StarsAbove.Buffs.Summon.Kifrosse;
 using StarsAbove.Projectiles.Bosses.OldBossAttacks;
 using StarsAbove.Systems;
 using StarsAbove.Systems;

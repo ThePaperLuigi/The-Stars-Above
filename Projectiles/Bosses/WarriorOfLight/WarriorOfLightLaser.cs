@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using StarsAbove.Buffs;
 using System;
 using Terraria;
 using Terraria.GameContent;
@@ -8,6 +7,7 @@ using Terraria.Enums;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.ID;
+using StarsAbove.Buffs.Magic.TwinStarsOfAlbiero;
 using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles.Bosses.WarriorOfLight

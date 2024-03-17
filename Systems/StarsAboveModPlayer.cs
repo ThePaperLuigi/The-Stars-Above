@@ -2,13 +2,21 @@ using Microsoft.CodeAnalysis;
 using Microsoft.Xna.Framework;
 using StarsAbove.Biomes;
 using StarsAbove.Buffs;
-using StarsAbove.Buffs.EmberFlask;
+using StarsAbove.Buffs.Boss;
+using StarsAbove.Buffs.Celestial.UltimaThule;
+using StarsAbove.Buffs.Magic.StygianNymph;
+using StarsAbove.Buffs.Magic.VenerationOfButterflies;
+using StarsAbove.Buffs.Melee.PenthesileaMuse;
+using StarsAbove.Buffs.Melee.Umbra;
 using StarsAbove.Buffs.Memories;
 using StarsAbove.Buffs.StarfarerAttire;
 using StarsAbove.Buffs.StellarArray;
 using StarsAbove.Buffs.StellarNovas;
+using StarsAbove.Buffs.StellarPrisms;
+using StarsAbove.Buffs.StellarSpoils.EmberFlask;
 using StarsAbove.Buffs.SubworldModifiers;
-using StarsAbove.Buffs.Umbra;
+using StarsAbove.Buffs.Subworlds;
+using StarsAbove.Buffs.Summon.Kifrosse;
 using StarsAbove.Dialogue;
 using StarsAbove.Items.Armor.StarfarerArmor;
 using StarsAbove.Items.Consumables;
@@ -26,6 +34,9 @@ using StarsAbove.Projectiles.StellarNovas;
 using StarsAbove.Projectiles.StellarNovas.GuardiansLight;
 using StarsAbove.Subworlds;
 using StarsAbove.Subworlds.ThirdRegion;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
+using StarsAbove.Systems.StellarNovas;
 using StarsAbove.UI.StarfarerMenu;
 using StarsAbove.UI.StellarNova;
 using StarsAbove.Utilities;
@@ -46,7 +57,7 @@ using Terraria.UI;
 using Terraria.WorldBuilding;
 using static Terraria.ModLoader.ModContent;
 
-namespace StarsAbove.Systems
+namespace StarsAbove
 {
     public class StarsAbovePlayer : ModPlayer
     {
@@ -2419,7 +2430,7 @@ namespace StarsAbove.Systems
                 target.AddBuff(BuffID.OnFire, 60);
             }
 
-            if (Player.HasBuff(BuffType<Buffs.Kifrosse.AmaterasuGrace>()) && target.HasBuff(BuffID.Frostburn))
+            if (Player.HasBuff(BuffType<AmaterasuGrace>()) && target.HasBuff(BuffID.Frostburn))
             {
                 modifiers.SourceDamage += 0.5f;
             }
@@ -8188,7 +8199,7 @@ namespace StarsAbove.Systems
 
 
                             //Garden of Avalon buffs.
-                            Player.AddBuff(BuffType<Buffs.GardenOfAvalon>(), 8 * 60);
+                            Player.AddBuff(BuffType<Buffs.StellarNovas.GardenOfAvalon>(), 8 * 60);
                             if (chosenStarfarer == 2)
                             {
                                 Player.AddBuff(BuffType<DreamlikeCharisma>(), 8 * 60);

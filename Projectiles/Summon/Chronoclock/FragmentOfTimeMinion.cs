@@ -62,7 +62,7 @@ namespace StarsAbove.Projectiles.Summon.Chronoclock
             projOwner.buffImmune[BuffID.Slow] = true;
 
             Projectile.scale = 1f;
-            if (!player.HasBuff(BuffType<Buffs.Chronoclock.ChronoclockMinionBuff>()))
+            if (!player.HasBuff(BuffType<Buffs.Summon.Chronoclock.ChronoclockMinionBuff>()))
             {
                 Projectile.Kill();
             }

@@ -7,10 +7,10 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
-using StarsAbove.Buffs.VirtuesEdge;
-using StarsAbove.Systems;
 using StarsAbove.Systems;
 using StarsAbove.Projectiles.Celestial.VirtuesEdge;
+using StarsAbove.Buffs.Celestial.VirtuesEdge;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Celestial
 {
@@ -51,7 +51,7 @@ namespace StarsAbove.Items.Weapons.Celestial
 			{
 				Item.damage = 225;
 			}
-			Item.DamageType = ModContent.GetInstance<Systems.CelestialDamageClass>();
+			Item.DamageType = ModContent.GetInstance<CelestialDamageClass>();
 			Item.width = 30;
 			Item.height = 30;
 			Item.knockBack = 7;

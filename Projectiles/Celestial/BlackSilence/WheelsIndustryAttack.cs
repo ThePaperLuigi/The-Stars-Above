@@ -1,9 +1,9 @@
 ﻿
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.CatalystMemory;
+ 
 using StarsAbove.Projectiles.Extra;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
+using StarsAbove.Systems.WeaponSystems;
 using System;
 using Terraria;
 using Terraria.Audio;

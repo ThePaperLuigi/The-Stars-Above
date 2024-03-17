@@ -50,7 +50,7 @@ namespace StarsAbove.Projectiles.Ranged.TwoCrownBow
             Projectile.timeLeft = 10;
             Player projOwner = Main.player[Projectile.owner];
             Player player = Main.player[Projectile.owner];
-            if (projOwner.dead && !projOwner.active || (!projOwner.HasBuff(BuffType<Buffs.TwoCrownBow.StellarTerminationPreBuff>()) && !projOwner.HasBuff(BuffType<Buffs.TwoCrownBow.StellarTerminationBuff>())))
+            if (projOwner.dead && !projOwner.active || (!projOwner.HasBuff(BuffType<Buffs.Ranged.TwoCrownBow.StellarTerminationPreBuff>()) && !projOwner.HasBuff(BuffType<Buffs.Ranged.TwoCrownBow.StellarTerminationBuff>())))
             {
                 Projectile.alpha += 50;
             }

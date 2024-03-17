@@ -47,7 +47,7 @@ namespace StarsAbove.Projectiles.Otherworld
 
 			Projectile.timeLeft = 10;
 			Player player = Main.player[Projectile.owner];
-			if(player.HasBuff(BuffType<Buffs.GatewayBuff>()))
+			if(player.HasBuff(BuffType<Buffs.Subworlds.GatewayBuff>()))
             {
 				Projectile.alpha -= 10;
 				if (Projectile.alpha < 0)
@@ -55,7 +55,7 @@ namespace StarsAbove.Projectiles.Otherworld
 					Projectile.alpha = 0;
 				}
 			}
-			if (player.dead && !player.active || !player.HasBuff(BuffType<Buffs.GatewayBuff>()))
+			if (player.dead && !player.active || !player.HasBuff(BuffType<Buffs.Subworlds.GatewayBuff>()))
 			{
 				Projectile.alpha += 30;
 			}

@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
+using StarsAbove.Buffs.Summon.TrickspinTwoStep;
 using StarsAbove.Buffs.TagDamage;
-using StarsAbove.Buffs.TrickspinTwoStep;
 using System;
 using Terraria;
 using Terraria.ID;

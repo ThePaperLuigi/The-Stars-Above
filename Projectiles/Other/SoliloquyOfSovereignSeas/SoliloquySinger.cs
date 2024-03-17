@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.SoliloquyOfSovereignSeas;
+using StarsAbove.Buffs.Other.SoliloquyOfSovereignSeas;
 using StarsAbove.Systems;
 using System;
 using Terraria;

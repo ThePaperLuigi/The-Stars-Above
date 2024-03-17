@@ -9,8 +9,8 @@ using StarsAbove.Items.Essences;
 using StarsAbove.Items.Prisms;
 using Terraria.Audio;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Summon.KroniicPrincipality;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Summon
 {
@@ -73,7 +73,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			
 			if (player.altFunctionUse == 2)
 			{
-				if (player.GetModPlayer<WeaponPlayer>().powderGaugeIndicatorOn == false && blastingChargeTimer < 0 && !Main.LocalPlayer.HasBuff(BuffType<Buffs.KroniicPrincipalityCooldown>()))
+				if (player.GetModPlayer<WeaponPlayer>().powderGaugeIndicatorOn == false && blastingChargeTimer < 0 && !Main.LocalPlayer.HasBuff(BuffType<Buffs.Summon.KroniicPrincipality.KroniicPrincipalityCooldown>()))
 				{
 					if (player.statMana >= 50 && player.GetModPlayer<WeaponPlayer>().powderGauge >= 80)
 					{
@@ -191,7 +191,7 @@ namespace StarsAbove.Items.Weapons.Summon
 				if (player.GetModPlayer<WeaponPlayer>().powderGaugeIndicatorOn == true)
 				{
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_TimeEffect, player.Center);
-					player.AddBuff(BuffType<Buffs.KroniicPrincipalityCooldown>(), 3600);//7200 is 2 minutes
+					player.AddBuff(BuffType<Buffs.Summon.KroniicPrincipality.KroniicPrincipalityCooldown>(), 3600);//7200 is 2 minutes
 					player.Teleport(player.GetModPlayer<WeaponPlayer>().kroniicSavedPosition, 1, 0);
 					player.statLife = player.GetModPlayer<WeaponPlayer>().kroniicSavedHP;
 					player.statMana = player.GetModPlayer<WeaponPlayer>().kroniicSavedMP;

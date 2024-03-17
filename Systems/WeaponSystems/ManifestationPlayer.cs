@@ -7,9 +7,10 @@ using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Buffs;
-using StarsAbove.Buffs.Manifestation;
+using StarsAbove.Buffs.Celestial.Manifestation;
+using StarsAbove.Buffs.Boss;
 
-namespace StarsAbove.Systems
+namespace StarsAbove.Systems.WeaponSystems
 {
     public class ManifestationPlayer : ModPlayer
     {

@@ -47,7 +47,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			Item.UseSound = SoundID.Item44;
 
 			Item.shoot = ProjectileType<FleetingSparkMinion>();
-			Item.buffType = BuffType<Buffs.SparkblossomBeacon.FleetingSparkBuff>(); //The buff added to player after used the item
+			Item.buffType = BuffType<Buffs.Summon.SparkblossomBeacon.FleetingSparkBuff>(); //The buff added to player after used the item
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
 		}
 

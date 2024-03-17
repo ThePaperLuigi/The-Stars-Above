@@ -6,8 +6,8 @@ using Terraria.ID;
 using static Terraria.ModLoader.ModContent;
 using System;
 using Terraria.ModLoader;
-using StarsAbove.Buffs;
 using StarsAbove.Systems;
+using StarsAbove.Buffs.Summon.Takonomicon;
 
 namespace StarsAbove.Projectiles.Summon.Takodachi
 {

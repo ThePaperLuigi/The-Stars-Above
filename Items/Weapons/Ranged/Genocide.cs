@@ -9,8 +9,10 @@ using StarsAbove.Items.Essences;
 using System;
 using Terraria.GameContent.Creative;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Ranged.Genocide;
+using StarsAbove.Buffs.Ranged.Genocide;
+using StarsAbove.Systems;
+using StarsAbove.Buffs.Melee.Unforgotten;
 
 namespace StarsAbove.Items.Weapons.Ranged
 {

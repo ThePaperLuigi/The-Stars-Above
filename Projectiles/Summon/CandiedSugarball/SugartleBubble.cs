@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using StarsAbove.Buffs;
+using StarsAbove.Buffs.Summon.Apalistik;
 using StarsAbove.Systems;
 using System;
 using Terraria;

@@ -3,12 +3,13 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using StarsAbove.Buffs;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Items.Essences;
 using Terraria.GameContent.Creative;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Ranged.ForceOfNature;
+using StarsAbove.Buffs.Ranged.ForceOfNature;
+using StarsAbove.Buffs.Pets.Hullwrought;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Ranged
 {

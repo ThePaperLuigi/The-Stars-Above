@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.CatalystMemory;
+using StarsAbove.Buffs.Celestial.CatalystMemory;
 using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles.Celestial.CatalystMemory;
 using StarsAbove.Systems;

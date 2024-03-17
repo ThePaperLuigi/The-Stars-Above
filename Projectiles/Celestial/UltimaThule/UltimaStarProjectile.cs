@@ -54,7 +54,7 @@ namespace StarsAbove.Projectiles.Celestial.UltimaThule
             {
                 Projectile.Kill();
             }
-            if (!player.HasBuff(BuffType<Buffs.CosmicConception>()))
+            if (!player.HasBuff(BuffType<Buffs.Celestial.UltimaThule.CosmicConception>()))
             {
                 Projectile.alpha += 15;
             }

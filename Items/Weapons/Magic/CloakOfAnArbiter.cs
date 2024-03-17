@@ -8,15 +8,16 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
-using StarsAbove.Buffs.SanguineDespair;
+
 using StarsAbove.Utilities;
 using StarsAbove.Projectiles.Magic.SanguineDespair;
 using StarsAbove.Systems;
 using StarsAbove.Projectiles.Magic.RedMage;
 using StarsAbove.Projectiles.Magic.CloakOfAnArbiter;
-using StarsAbove.Buffs.CloakOfAnArbiter;
-using StarsAbove.Buffs.CandiedSugarball;
+
 using StarsAbove.Buffs;
+using StarsAbove.Buffs.Magic.CloakOfAnArbiter;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Magic
 {

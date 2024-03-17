@@ -383,7 +383,7 @@ namespace StarsAbove.Systems
                         Player.AddBuff(BuffType<ApproachingEvilBuff>(), 10);
 
                     }
-                    if(anomalyTimer > 8000)
+                    if (anomalyTimer > 8000)
                     {
                         //Yoink the player into Katabasis for taking too long!
                         SubworldSystem.Enter<Katabasis>();
@@ -392,7 +392,7 @@ namespace StarsAbove.Systems
                 }
                 else
                 {
-                    
+
                 }
                 if (Player.InModBiome(GetInstance<FriendlySpaceBiome>()))
                 {
@@ -604,7 +604,7 @@ namespace StarsAbove.Systems
                 }
                 if (SubworldSystem.IsActive<DreamingCity>())
                 {
-                    if(Player.GetModPlayer<StarsAbovePlayer>().inCombat > 0)
+                    if (Player.GetModPlayer<StarsAbovePlayer>().inCombat > 0)
                     {
                         Player.shimmerMonolithShader = true;
 
@@ -679,21 +679,21 @@ namespace StarsAbove.Systems
     {
         public override bool PreDraw(int i, int j, int type, SpriteBatch spriteBatch)
         {
-            if(SubworldSystem.AnyActive())
+            if (SubworldSystem.AnyActive())
             {
-                if(type == TileID.FogMachine || type == TileID.Teleporter || type == TileID.LunarMonolith || type == TileID.MusicBoxes || type == TileID.ShimmerMonolith || type == TileID.LogicSensor)
-                Framing.GetTileSafely(i, j).IsTileInvisible = true;
-                
-                if(type == TileID.Torches)
+                if (type == TileID.FogMachine || type == TileID.Teleporter || type == TileID.LunarMonolith || type == TileID.MusicBoxes || type == TileID.ShimmerMonolith || type == TileID.LogicSensor)
+                    Framing.GetTileSafely(i, j).IsTileInvisible = true;
+
+                if (type == TileID.Torches)
                 {
-                    if(Framing.GetTileSafely(i, j).TileFrameX == 0)
+                    if (Framing.GetTileSafely(i, j).TileFrameX == 0)
                     {
                         Framing.GetTileSafely(i, j).IsTileInvisible = true;
 
                     }
                 }
             }
-            
+
             return base.PreDraw(i, j, type, spriteBatch);
         }
     }

@@ -5,7 +5,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 using static Terraria.ModLoader.ModContent;
-using StarsAbove.Buffs.DreamersInkwell;
 using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles.Magic.DreamersInkwell

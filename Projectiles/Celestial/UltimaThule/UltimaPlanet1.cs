@@ -81,7 +81,7 @@ namespace StarsAbove.Projectiles.Celestial.UltimaThule
             }
             Projectile.timeLeft = 10;
 
-            if (player.dead && !player.active || !player.HasBuff(BuffType<Buffs.Ultima>()))
+            if (player.dead && !player.active || !player.HasBuff(BuffType<Buffs.Celestial.UltimaThule.Ultima>()))
             {
                 Projectile.Kill();
             }
@@ -90,7 +90,7 @@ namespace StarsAbove.Projectiles.Celestial.UltimaThule
             {
                 Projectile.velocity.Y = 16f;
             }
-            if (player.HasBuff(BuffType<Buffs.CosmicConception>()))
+            if (player.HasBuff(BuffType<Buffs.Celestial.UltimaThule.CosmicConception>()))
             {
                 if (initialSpeed < 20f)
                 {

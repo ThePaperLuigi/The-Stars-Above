@@ -8,9 +8,11 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using System;
 using Terraria.Audio;
-using StarsAbove.Buffs.SoulReaver;
 using StarsAbove.Systems;
 using StarsAbove.Projectiles.Melee.SoulReaver;
+using StarsAbove.Buffs.Melee.SoulReaver;
+using StarsAbove.Buffs.Boss;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Melee
 {

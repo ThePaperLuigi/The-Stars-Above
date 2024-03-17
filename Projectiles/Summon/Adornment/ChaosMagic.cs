@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.Adornment;
+using StarsAbove.Buffs.Summon.Adornment;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

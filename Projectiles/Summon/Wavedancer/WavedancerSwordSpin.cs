@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs;
-using StarsAbove.Buffs.CatalystMemory;
+ 
+using StarsAbove.Buffs.Summon.Apalistik;
 using StarsAbove.Projectiles.Generics;
 using System;
 using Terraria;

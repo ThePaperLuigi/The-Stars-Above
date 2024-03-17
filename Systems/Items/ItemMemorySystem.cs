@@ -27,7 +27,6 @@ using Terraria.UI.Chat;
 using StarsAbove.Buffs;
 using StarsAbove.Buffs.StellarNovas;
 using StarsAbove.Items.Loot;
-using StarsAbove.Systems;
 using Terraria.DataStructures;
 using Terraria.ModLoader.IO;
 using StarsAbove.Items.Memories;
@@ -42,6 +41,7 @@ using StarsAbove.Buffs.TagDamage;
 using Terraria.WorldBuilding;
 using StarsAbove.Projectiles.Summon.ArachnidNeedlepoint;
 using static Humanizer.In;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Systems.Items
 {

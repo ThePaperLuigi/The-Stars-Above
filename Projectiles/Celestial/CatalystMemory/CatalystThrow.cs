@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.CatalystMemory;
+using StarsAbove.Buffs.Celestial.CatalystMemory;
 using StarsAbove.Systems;
 using Terraria;
 using Terraria.ID;

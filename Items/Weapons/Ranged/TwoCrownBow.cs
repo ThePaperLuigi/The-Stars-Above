@@ -8,18 +8,17 @@ using static Terraria.ModLoader.ModContent;
 using StarsAbove.Items.Essences;
 using Terraria.Audio;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Ranged.ElCapitansHardware;
 using StarsAbove.Projectiles.Ranged.TwoCrownBow;
 using StarsAbove.Projectiles.Ranged.DevotedHavoc;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using StarsAbove.Buffs.TwoCrownBow;
 using SubworldLibrary;
 using Terraria.Map;
 using Terraria.GameContent.Drawing;
-using StarsAbove.Buffs.Gundbits;
 using StarsAbove.Projectiles.Magic.Gundbit;
+using StarsAbove.Buffs.Ranged.TwoCrownBow;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Ranged
 {

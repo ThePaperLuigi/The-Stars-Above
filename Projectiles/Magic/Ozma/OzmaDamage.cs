@@ -1,4 +1,4 @@
-﻿using StarsAbove.Buffs.Ozma;
+﻿using StarsAbove.Buffs.Magic.Ozma;
 using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;

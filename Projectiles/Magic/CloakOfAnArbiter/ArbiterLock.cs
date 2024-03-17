@@ -1,7 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.CloakOfAnArbiter;
-using StarsAbove.Buffs.StringOfCurses;
+using StarsAbove.Buffs.Magic.CloakOfAnArbiter;
 using StarsAbove.Systems;
 using Terraria;
 using Terraria.Audio;

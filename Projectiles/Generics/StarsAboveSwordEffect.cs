@@ -13,7 +13,7 @@ using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles.Generics
 {
-	public class StarsAboveSwordEffect : ModProjectile
+    public class StarsAboveSwordEffect : ModProjectile
 	{
 
 		// We could use a vanilla texture if we want instead of supplying our own.

@@ -1,5 +1,4 @@
-
-using StarsAbove.Buffs;
+using StarsAbove.Buffs.StellarNovas;
 using StarsAbove.Systems;
 using Terraria;
 using Terraria.ID;

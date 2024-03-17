@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using StarsAbove.Buffs;
+using StarsAbove.Buffs.Summon.Takonomicon;
 using StarsAbove.Systems;
 using Terraria;
 using Terraria.GameContent;

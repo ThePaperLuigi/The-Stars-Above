@@ -97,20 +97,20 @@ namespace StarsAbove.Items.Weapons.Melee
         public override void HoldItem(Player player)
         {
 			
-			if(!Main.LocalPlayer.HasBuff(BuffType<Buffs.CoreOfFlamesCooldown>()))
+			if(!Main.LocalPlayer.HasBuff(BuffType<Buffs.Melee.LiberationBlazing.CoreOfFlamesCooldown>()))
 			{
 				
-				player.AddBuff(BuffType<Buffs.CoreOfFlames>(), 1200);
-				player.AddBuff(BuffType<Buffs.CoreOfFlamesCooldown>(), 7200);
+				player.AddBuff(BuffType<Buffs.Melee.LiberationBlazing.CoreOfFlames>(), 1200);
+				player.AddBuff(BuffType<Buffs.Melee.LiberationBlazing.CoreOfFlamesCooldown>(), 7200);
 			}
-			if (!Main.LocalPlayer.HasBuff(BuffType<Buffs.CoreOfFlames>()))
+			if (!Main.LocalPlayer.HasBuff(BuffType<Buffs.Melee.LiberationBlazing.CoreOfFlames>()))
 			{
 
 				player.AddBuff(BuffID.OnFire, 2);
 
 				
 			}
-			if (Main.LocalPlayer.HasBuff(BuffType<Buffs.CoreOfFlames>()))
+			if (Main.LocalPlayer.HasBuff(BuffType<Buffs.Melee.LiberationBlazing.CoreOfFlames>()))
 			{
 
 				
@@ -128,7 +128,7 @@ namespace StarsAbove.Items.Weapons.Melee
 				d.noLight = true;
 				d.noGravity = true;
 			}
-			if (Main.LocalPlayer.HasBuff(BuffType<Buffs.CoreOfFlames>()) && player.HasBuff(BuffID.OnFire))
+			if (Main.LocalPlayer.HasBuff(BuffType<Buffs.Melee.LiberationBlazing.CoreOfFlames>()) && player.HasBuff(BuffID.OnFire))
 			{
 				
 				fireRegen++;

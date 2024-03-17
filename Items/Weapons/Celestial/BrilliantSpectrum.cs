@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs;
-using StarsAbove.Buffs.AshenAmbition;
 using StarsAbove.Items.Essences;
 using System;
 using Terraria;
@@ -11,12 +10,12 @@ using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using StarsAbove.Projectiles;
-using StarsAbove.Buffs.BrilliantSpectrum;
 using Terraria.Graphics.Shaders;
-using StarsAbove.Systems;
 using StarsAbove.Systems;
 using StarsAbove.Projectiles.Melee.AshenAmbition;
 using StarsAbove.Projectiles.Celestial.BrilliantSpectrum;
+using StarsAbove.Buffs.Celestial.BrilliantSpectrum;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Celestial
 {

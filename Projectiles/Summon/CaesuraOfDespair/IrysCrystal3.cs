@@ -46,7 +46,7 @@ namespace StarsAbove.Projectiles.Summon.CaesuraOfDespair
             }
             Projectile.timeLeft = 10;
             Player player = Main.player[Projectile.owner];
-            if (player.dead && !player.active || !player.HasBuff(BuffType<Buffs.IrysBuff>()))
+            if (player.dead && !player.active || !player.HasBuff(BuffType<Buffs.Summon.CaesuraOfDespair.IrysBuff>()))
             {
                 Projectile.Kill();
             }

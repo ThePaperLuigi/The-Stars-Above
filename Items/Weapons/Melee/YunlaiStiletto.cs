@@ -7,8 +7,8 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Melee.YunlaiStiletto;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Melee
 {

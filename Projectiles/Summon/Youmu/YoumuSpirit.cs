@@ -5,7 +5,6 @@ using Terraria;
 using Terraria.ID;
 using static Terraria.ModLoader.ModContent;
 using System;
-using StarsAbove.Buffs.Youmu;
 using StarsAbove.Items;
 using StarsAbove.Items.Weapons;
 using StarsAbove.Items.Weapons.Summon;
@@ -16,6 +15,7 @@ using StarsAbove.Items.Weapons.Melee;
 using StarsAbove.Items.Weapons.Magic;
 using Terraria.ModLoader;
 using StarsAbove.Systems;
+using StarsAbove.Buffs.Summon.Youmu;
 
 namespace StarsAbove.Projectiles.Summon.Youmu
 {

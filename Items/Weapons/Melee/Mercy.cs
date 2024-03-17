@@ -7,9 +7,9 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using StarsAbove.Buffs.Mercy;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Melee.Mercy;
+using StarsAbove.Buffs.Melee.Mercy;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Melee
 {
@@ -82,7 +82,7 @@ namespace StarsAbove.Items.Weapons.Melee
 
 			if (player.altFunctionUse == 2)
 			{
-				if(!player.HasBuff(BuffType<Buffs.Mercy.EdgeOfAnguish>()) && !player.HasBuff(BuffType<Buffs.Mercy.EdgeOfAnguishCooldown>()) && hasTarget)
+				if(!player.HasBuff(BuffType<Buffs.Melee.Mercy.EdgeOfAnguish>()) && !player.HasBuff(BuffType<Buffs.Melee.Mercy.EdgeOfAnguishCooldown>()) && hasTarget)
                 {
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity.X, arrowVelocity.Y, ProjectileType<MercyStab>(), player.GetWeaponDamage(Item)*3, 3, player.whoAmI, 0f);
 					player.AddBuff(BuffType<Invincibility>(), 120);
@@ -150,7 +150,7 @@ namespace StarsAbove.Items.Weapons.Melee
 
 
 			}
-			if (closestnpcDistance < 88f && !player.HasBuff(BuffType<Buffs.Mercy.EdgeOfAnguishCooldown>()))
+			if (closestnpcDistance < 88f && !player.HasBuff(BuffType<Buffs.Melee.Mercy.EdgeOfAnguishCooldown>()))
 			{
 				
 

@@ -8,7 +8,8 @@ using System;
 using Terraria.ModLoader;
 using StarsAbove.Buffs;
 using StarsAbove.Systems;
-using StarsAbove.Buffs.SoliloquyOfSovereignSeas;
+using StarsAbove.Buffs.Other.SoliloquyOfSovereignSeas;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles.Other.SoliloquyOfSovereignSeas
 {
@@ -28,7 +29,7 @@ namespace StarsAbove.Projectiles.Other.SoliloquyOfSovereignSeas
             Projectile.width = 32;
             Projectile.height = 50;
             Projectile.friendly = false;
-            Projectile.DamageType = ModContent.GetInstance<Systems.ArkheDamageClass>();
+            Projectile.DamageType = ModContent.GetInstance<ArkheDamageClass>();
             Projectile.minion = true;
             Projectile.minionSlots = 0;
             Projectile.penetrate = -1;

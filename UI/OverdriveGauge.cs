@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
+using StarsAbove.Systems.WeaponSystems;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.UI.Elements;

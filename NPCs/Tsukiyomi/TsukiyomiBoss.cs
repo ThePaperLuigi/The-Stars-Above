@@ -27,8 +27,8 @@ using SubworldLibrary;
 using StarsAbove.NPCs.WarriorOfLight;
 using StarsAbove.Items.Loot;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Extra;
+using StarsAbove.Systems;
 
 namespace StarsAbove.NPCs.Tsukiyomi
 {

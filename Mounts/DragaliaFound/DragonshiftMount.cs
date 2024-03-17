@@ -7,13 +7,13 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Terraria.ID;
-using StarsAbove.Buffs.DragaliaFound;
 using Terraria.GameContent;
+using StarsAbove.Buffs.Summon.DragaliaFound;
 
 namespace StarsAbove.Mounts.DragaliaFound
 {
-	// This mount is a car with wheels which behaves simillarly to the unicorn mount. The car has 3 baloons attached to the back.
-	public class DragonshiftMount : ModMount
+    // This mount is a car with wheels which behaves simillarly to the unicorn mount. The car has 3 baloons attached to the back.
+    public class DragonshiftMount : ModMount
 	{
 		// Since only a single instance of ModMountData ever exists, we can use player.mount._mountSpecificData to store additional data related to a specific mount.
 		// Using something like this for gameplay effects would require ModPlayer syncing, but this example is purely visual.

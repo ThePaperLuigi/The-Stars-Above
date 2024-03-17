@@ -51,7 +51,7 @@ namespace StarsAbove.Projectiles.Ranged.Chemtank
             }
             Projectile.timeLeft = 999;
             Player player = Main.player[Projectile.owner];
-            if (player.dead && !player.active || !player.HasBuff(BuffType<Buffs.Chemtank.ChemtankBuff>()))
+            if (player.dead && !player.active || !player.HasBuff(BuffType<Buffs.Ranged.Chemtank.ChemtankBuff>()))
             {
                 Projectile.Kill();
             }
@@ -87,9 +87,9 @@ namespace StarsAbove.Projectiles.Ranged.Chemtank
             if (Projectile.ai[0] <= 0)
             {
 
-                if (p.HasBuff(BuffType<Buffs.Chemtank.Chemtank2>()))
+                if (p.HasBuff(BuffType<Buffs.Ranged.Chemtank.Chemtank2>()))
                 {
-                    p.ClearBuff(BuffType<Buffs.Chemtank.Chemtank2>());
+                    p.ClearBuff(BuffType<Buffs.Ranged.Chemtank.Chemtank2>());
                     Projectile.ai[0] = 480;
                     int type = ProjectileType<Projectiles.Ranged.Chemtank.ChemtankRound>();
 

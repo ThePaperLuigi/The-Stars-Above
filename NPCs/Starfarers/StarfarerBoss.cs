@@ -27,12 +27,12 @@ using SubworldLibrary;
 using StarsAbove.NPCs.WarriorOfLight;
 using StarsAbove.Items.Loot;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Extra;
 using static StarsAbove.NPCs.Thespian.ThespianBoss;
 using System.Collections.Generic;
 using StarsAbove.Projectiles.Bosses.Penthesilea;
 using StarsAbove.Items.Memories;
+using StarsAbove.Systems;
 
 namespace StarsAbove.NPCs.Starfarers
 {

@@ -6,7 +6,6 @@ using Terraria.Localization;
 using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using StarsAbove.Buffs;
 
 using Terraria.Audio;
 using Terraria.GameContent.Bestiary;
@@ -26,7 +25,6 @@ using StarsAbove.NPCs.Dioskouroi;
 using StarsAbove.Projectiles.Bosses.WarriorOfLight;
 using StarsAbove.NPCs.WarriorOfLight;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using StarsAbove.Subworlds;
 using StarsAbove.Projectiles.Bosses.OldBossAttacks;
 using StarsAbove.Projectiles.Extra;
@@ -40,6 +38,8 @@ using SteelSeries.GameSense.DeviceZone;
 using StarsAbove.Projectiles.Bosses.Starfarers;
 using StarsAbove.NPCs.Starfarers;
 using StarsAbove.NPCs.Nalhaun;
+using StarsAbove.Systems;
+using StarsAbove.Buffs.Melee.PenthesileaMuse;
 
 namespace StarsAbove.NPCs.AttackLibrary
 {
@@ -9014,7 +9014,7 @@ namespace StarsAbove.NPCs.AttackLibrary
                             int randonBuff = Main.rand.Next(0, 2);
                             if (randonBuff == 0)
                             {
-                                player.AddBuff(BuffType<Buffs.LeftDebuff>(), 200);
+                                player.AddBuff(BuffType<LeftDebuff>(), 200);
                                 for (int d = 0; d < 25; d++)
                                 {
                                     Dust.NewDust(player.Center, 0, 0, DustID.PurificationPowder, 0f + Main.rand.Next(-25, 25), 0f + Main.rand.Next(-25, 25), 150, default(Color), 0.5f);
@@ -9022,7 +9022,7 @@ namespace StarsAbove.NPCs.AttackLibrary
                             }
                             if (randonBuff == 1)
                             {
-                                player.AddBuff(BuffType<Buffs.RightDebuff>(), 200);
+                                player.AddBuff(BuffType<RightDebuff>(), 200);
                                 for (int d = 0; d < 25; d++)
                                 {
                                     Dust.NewDust(player.Center, 0, 0, DustID.PurificationPowder, 0f + Main.rand.Next(-25, 25), 0f + Main.rand.Next(-25, 25), 150, default(Color), 0.5f);

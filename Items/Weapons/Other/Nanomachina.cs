@@ -1,8 +1,9 @@
 
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.Nanomachina;
+using StarsAbove.Buffs.Other.Nanomachina;
 using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles.Other.Nanomachina;
+using StarsAbove.Systems;
 using StarsAbove.Systems;
 using Terraria;
 using Terraria.Audio;
