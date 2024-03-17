@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.CatalystMemory;
+ 
 using StarsAbove.Projectiles.Generics;
 using System;
 using Terraria;
@@ -23,7 +23,7 @@ namespace StarsAbove.Projectiles.Ranged.InheritedCaseM4A1
         //The dust that fires from the barrel after shooting.
         public override int FlashDustID => Terraria.ID.DustID.FireworkFountain_Yellow; 
         //The distance the gun's muzzle is relative to the player. Remember this also is influenced by base distance.
-        public override int MuzzleDistance => 36;
+        public override int MuzzleDistance => 46;
         //The distance the gun is relative to the player.
         public override float BaseDistance => 50;
         public override int StartingState => 0;

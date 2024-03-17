@@ -1,13 +1,13 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs;
-using StarsAbove.Buffs.CatalystMemory;
-using StarsAbove.Buffs.InheritedCaseM4A1;
+using StarsAbove.Buffs.Ranged.InheritedCaseM4A1;
 using StarsAbove.Items.Essences;
 using StarsAbove.Items.Materials;
 using StarsAbove.Items.Weapons.Celestial;
 using StarsAbove.Items.Weapons.Summon;
 using StarsAbove.Projectiles.Other.GoldenKatana;
 using StarsAbove.Projectiles.Ranged.InheritedCaseM4A1;
+using StarsAbove.Systems;
 using StarsAbove.Systems;
 using System;
 using System.Collections.Generic;
@@ -35,14 +35,21 @@ namespace StarsAbove.Items.Weapons.Ranged
         public override void SetDefaults()
         {
 
-            Item.damage = 90;
+            if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+            {
+                Item.damage = 350;
+            }
+            else
+            {
+                Item.damage = 90;
+            }
 
             //The damage of your weapon
             Item.DamageType = DamageClass.Ranged;
             Item.width = 68;            //Weapon's texture's width
             Item.height = 68;           //Weapon's texture's height
-            Item.useTime = 4;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
-            Item.useAnimation = 4;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
+            Item.useTime = 10;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
+            Item.useAnimation = 10;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
             Item.useStyle = ItemUseStyleID.HiddenAnimation;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
             Item.knockBack = 3;         //The force of knockback of the weapon. Maximum is 20
             Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
@@ -89,7 +96,7 @@ namespace StarsAbove.Items.Weapons.Ranged
 
             if (player.altFunctionUse == 2)
             {
-                if (!player.HasBuff(BuffType<CatalystMemoryPrismicCooldown>()))
+                if (!player.HasBuff(BuffType<ComboCooldown>()))
                 {
                     return true;
                 }
@@ -117,7 +124,11 @@ namespace StarsAbove.Items.Weapons.Ranged
             }
             bulletShootDelay--;
             laserShootDelay--;
+            if(inheritedCaseActive)
+            {
+                player.AddBuff(BuffType<InheritedCaseActive>(), 10);
 
+            }
             //Weapon Action Key
             if (player.whoAmI == Main.myPlayer && StarsAbove.weaponActionKey.JustPressed && player.itemTime <= 0)
             {
@@ -127,7 +138,6 @@ namespace StarsAbove.Items.Weapons.Ranged
             {
                 Item.useTime = 90;
                 Item.useAnimation = 90;
-                player.AddBuff(BuffType<InheritedCaseActive>(), 10);
                 if (!player.HasBuff(BuffType<ComboCooldown>()))
                 {
                     float launchSpeed = 20f;
@@ -168,8 +178,8 @@ namespace StarsAbove.Items.Weapons.Ranged
                     {
                         if (player.channel)
                         {
-                            Item.useTime = 5;
-                            Item.useAnimation = 5;
+                            Item.useTime = 1;
+                            Item.useAnimation = 1;
 
 
                             modPlayer.bowChargeActive = true;
@@ -363,8 +373,8 @@ namespace StarsAbove.Items.Weapons.Ranged
                         else
                         {
                             //When the charge is released
-                            Item.useTime = 25;
-                            Item.useAnimation = 25;
+                            Item.useTime = 1;
+                            Item.useAnimation = 1;
                             modPlayer.bowChargeActive = false;
 
                             modPlayer.bowCharge = 0;
@@ -395,6 +405,8 @@ namespace StarsAbove.Items.Weapons.Ranged
 
                 if (!inheritedCaseActive && !player.HasBuff(BuffType<ComboCooldown>()))
                 {
+                    SoundEngine.PlaySound(SoundID.DD2_DefenseTowerSpawn, player.position);
+
                     float dustAmount = 40f;
                     for (int i = 0; i < dustAmount; i++)
                     {
@@ -423,6 +435,8 @@ namespace StarsAbove.Items.Weapons.Ranged
                 }
                 else
                 {
+                    SoundEngine.PlaySound(SoundID.DD2_DefenseTowerSpawn, player.position);
+
                     float dustAmount = 40f;
                     for (int i = 0; i < dustAmount; i++)
                     {
