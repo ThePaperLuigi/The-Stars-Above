@@ -2,32 +2,62 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using StarsAbove.Buffs;
-using StarsAbove.Buffs.AshenAmbition;
-using StarsAbove.Buffs.BrilliantSpectrum;
-using StarsAbove.Buffs.BurningDesire;
-using StarsAbove.Buffs.CarianDarkMoon;
-using StarsAbove.Buffs.CatalystMemory;
-using StarsAbove.Buffs.Chronoclock;
-using StarsAbove.Buffs.CloakOfAnArbiter;
-using StarsAbove.Buffs.CosmicDestroyer;
-using StarsAbove.Buffs.DragaliaFound;
-using StarsAbove.Buffs.DraggedBelow;
-using StarsAbove.Buffs.Farewells;
-using StarsAbove.Buffs.HunterSymphony;
-using StarsAbove.Buffs.ManiacalJustice;
-using StarsAbove.Buffs.Nanomachina;
-using StarsAbove.Buffs.Ozma;
-using StarsAbove.Buffs.RedMage;
-using StarsAbove.Buffs.StarphoenixFunnel;
-using StarsAbove.Buffs.SupremeAuthority;
+using StarsAbove.Buffs.Accessories;
+using StarsAbove.Buffs.Celestial.BrilliantSpectrum;
+using StarsAbove.Buffs.Celestial.CatalystMemory;
+using StarsAbove.Buffs.Celestial.TheOnlyThingIKnowForReal;
+using StarsAbove.Buffs.Celestial.UltimaThule;
+using StarsAbove.Buffs.Magic.CarianDarkMoon;
+using StarsAbove.Buffs.Magic.CloakOfAnArbiter;
+using StarsAbove.Buffs.Magic.DraggedBelow;
+using StarsAbove.Buffs.Magic.HunterSymphony;
+using StarsAbove.Buffs.Magic.LightUnrelenting;
+using StarsAbove.Buffs.Magic.Ozma;
+using StarsAbove.Buffs.Magic.RedMage;
+using StarsAbove.Buffs.Magic.StygianNymph;
+using StarsAbove.Buffs.Magic.SupremeAuthority;
+using StarsAbove.Buffs.Magic.TwinStarsOfAlbiero;
+using StarsAbove.Buffs.Magic.VenerationOfButterflies;
+using StarsAbove.Buffs.Magic.VermillionDaemon;
+using StarsAbove.Buffs.Magic.VisionOfEuthymia;
+using StarsAbove.Buffs.Melee.AshenAmbition;
+using StarsAbove.Buffs.Melee.BurningDesire;
+using StarsAbove.Buffs.Melee.Drachenlance;
+using StarsAbove.Buffs.Melee.InugamiRipsaw;
+using StarsAbove.Buffs.Melee.LiberationBlazing;
+using StarsAbove.Buffs.Melee.ManiacalJustice;
+using StarsAbove.Buffs.Melee.PenthesileaMuse;
+using StarsAbove.Buffs.Melee.SakuraVengeance;
+using StarsAbove.Buffs.Melee.ShadowlessCerulean;
+using StarsAbove.Buffs.Melee.SkyStrikerBuffs;
+using StarsAbove.Buffs.Melee.Umbra;
+using StarsAbove.Buffs.Melee.Unforgotten;
+using StarsAbove.Buffs.Misc;
+using StarsAbove.Buffs.Other.ArchitectsLuminance;
+using StarsAbove.Buffs.Other.Farewells;
+using StarsAbove.Buffs.Other.Nanomachina;
+using StarsAbove.Buffs.Other.Suistrume;
+using StarsAbove.Buffs.Ranged.CosmicDestroyer;
+using StarsAbove.Buffs.Ranged.CrimsonOutbreak;
+using StarsAbove.Buffs.Ranged.Genocide;
+using StarsAbove.Buffs.Ranged.InheritedCaseM4A1;
+using StarsAbove.Buffs.Ranged.TwoCrownBow;
+using StarsAbove.Buffs.StellarArray;
+using StarsAbove.Buffs.StellarNovas;
+using StarsAbove.Buffs.Summon.Apalistik;
+using StarsAbove.Buffs.Summon.CaesuraOfDespair;
+using StarsAbove.Buffs.Summon.Chronoclock;
+using StarsAbove.Buffs.Summon.DragaliaFound;
+using StarsAbove.Buffs.Summon.Kifrosse;
+using StarsAbove.Buffs.Summon.KroniicPrincipality;
+using StarsAbove.Buffs.Summon.StarphoenixFunnel;
+using StarsAbove.Buffs.Summon.Takonomicon;
 using StarsAbove.Buffs.TagDamage;
-using StarsAbove.Buffs.TheOnlyThingIKnowForReal;
-using StarsAbove.Buffs.TwoCrownBow;
-using StarsAbove.Buffs.Umbra;
-using StarsAbove.Buffs.VermillionDaemon;
 using StarsAbove.Dusts;
 using StarsAbove.Items.Armor.CloakOfAnArbiter;
 using StarsAbove.Items.Armor.DraggedBelow;
+using StarsAbove.Items.Armor.LegendaryShield;
+using StarsAbove.Items.Armor.Manifestation;
 using StarsAbove.Items.Weapons.Celestial;
 using StarsAbove.Items.Weapons.Melee;
 using StarsAbove.Items.Weapons.Other;
@@ -67,6 +97,7 @@ using StarsAbove.Projectiles.Ranged.CrimsonOutbreak;
 using StarsAbove.Projectiles.Ranged.ForceOfNature;
 using StarsAbove.Projectiles.Ranged.Genocide;
 using StarsAbove.Projectiles.Ranged.Huckleberry;
+using StarsAbove.Projectiles.Ranged.InheritedCaseM4A1;
 using StarsAbove.Projectiles.Ranged.IzanagisEdge;
 using StarsAbove.Projectiles.Ranged.Tartaglia;
 using StarsAbove.Projectiles.StellarNovas;
@@ -83,6 +114,7 @@ using StarsAbove.Projectiles.Summon.Takodachi;
 using StarsAbove.Utilities;
 using SubworldLibrary;
 using System;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -181,7 +213,7 @@ namespace StarsAbove.Systems
         //Trickspin Two-Step
         public bool TrickspinReady = false;
         public Vector2 TrickspinCenter;
-        
+
         public bool CloakOfAnArbiterHeld;
 
         //Suistrume
@@ -202,6 +234,8 @@ namespace StarsAbove.Systems
 
         public const int PerformanceResourceMax = 100;
         public SoundEffectInstance stellarPerformanceSoundInstance;
+
+        public bool LegendaryShieldHeld;
 
         //Hullwrought
         public int empoweredHullwroughtShot;
@@ -269,6 +303,13 @@ namespace StarsAbove.Systems
         public bool hawkmoonGaugeOn = false;
         public int hawkmoonGaugeAnimateIn = 0;
         public int hawkmoonGaugeAnimateOut = 0;
+
+        //M4A1
+        public bool M4A1Held;
+        public double M4A1deg;
+        public int M4A1UseTimer;
+        public List<int> AuxiliaryGuns = new List<int>();
+        public List<int> ActiveGuns = new List<int>();
 
         //Supreme Authority
         public int SupremeAuthorityConsumedNPCs;
@@ -569,6 +610,10 @@ namespace StarsAbove.Systems
         public bool GrahaPet;
         #endregion
 
+        public override void SetStaticDefaults()
+        {
+
+        }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (Glitterglue)
@@ -647,7 +692,7 @@ namespace StarsAbove.Systems
                     Player.AddBuff(BuffType<NanomachinaLeechCooldown>(), 360);
                 }
             }
-            
+
             if (target.HasBuff(BuffType<InfernalBleed>()))
             {
                 if (target.life - Math.Min(-(target.life - target.lifeMax) * 0.02, 250) > 1)
@@ -674,15 +719,15 @@ namespace StarsAbove.Systems
                     modifiers.SetCrit();
                 }
             }
-            if (Player.HasBuff(BuffType<Buffs.Kifrosse.AmaterasuGrace>()) && target.HasBuff(BuffID.Frostburn))
+            if (Player.HasBuff(BuffType<AmaterasuGrace>()) && target.HasBuff(BuffID.Frostburn))
             {
                 modifiers.SourceDamage += 0.5f;
             }
-            if(Player.HasBuff(BuffType<DegradedSingularity>()))
+            if (Player.HasBuff(BuffType<DegradedSingularity>()))
             {
                 for (int i = 0; i < 12; i++)
                 {
-                    if (target.buffType[i] > 0 && BuffID.Sets.IsATagBuff[target.buffType[i]] && target.buffType[i] != ModContent.BuffType<FairyTagDamage>())
+                    if (target.buffType[i] > 0 && BuffID.Sets.IsATagBuff[target.buffType[i]] && target.buffType[i] != BuffType<FairyTagDamage>())
                     {
                         modifiers.CritDamage += 0.1f;
                         break;
@@ -712,8 +757,8 @@ namespace StarsAbove.Systems
 
                     Projectile.NewProjectile(Player.GetSource_ItemUse(item), target.Center.X, target.Center.Y, 0, 0, ProjectileType<ScarletOutburst>(), damageDone, 0, Player.whoAmI, 0f);
                 }
-            }         
-            
+            }
+
 
             if (Glitterglue)
             {
@@ -769,7 +814,7 @@ namespace StarsAbove.Systems
                 target.AddBuff(BuffType<MortalWounds>(), 600);
                 soulUnboundDamage += damageDone;
             }
-            if(proj.type == ProjectileType<HornSlash>())
+            if (proj.type == ProjectileType<HornSlash>())
             {
                 if (Player.HasBuff(BuffType<HunterSymphonyCooldown>()))
                 {
@@ -995,7 +1040,7 @@ namespace StarsAbove.Systems
                 }
 
             }
-            if (proj.type == ProjectileType<Projectiles.Melee.Naganadel.NaganadelProjectileFinal5>())
+            if (proj.type == ProjectileType<NaganadelProjectileFinal5>())
             {
                 for (int d = 0; d < 30; d++)
                 {
@@ -2465,12 +2510,12 @@ namespace StarsAbove.Systems
                 Player.maxRunSpeed *= 1.20f;
                 Player.accRunSpeed *= 1.20f;
             }
-            if (Player.HasBuff(BuffType<Buffs.SakuraVengeance.SakuraHeavenBuff>()))
+            if (Player.HasBuff(BuffType<SakuraHeavenBuff>()))
             {
                 Player.maxRunSpeed *= 1.20f;
                 Player.accRunSpeed *= 1.20f;
             }
-            if (Player.HasBuff(BuffType<Buffs.SakuraVengeance.ElementalChaos>()))
+            if (Player.HasBuff(BuffType<ElementalChaos>()))
             {
                 Player.maxRunSpeed *= 1.20f;
                 Player.accRunSpeed *= 1.20f;
@@ -2738,8 +2783,8 @@ namespace StarsAbove.Systems
             for (int i = 0; i < Player.CountBuffs(); i++)
                 if (Player.buffType[i] == BuffType<StellarTerminationPreBuff>())
                 {
-                    terminationGauge-= 2;
-                    if(terminationGauge < 0)
+                    terminationGauge -= 2;
+                    if (terminationGauge < 0)
                     {
                         terminationGauge = 0;
                     }
@@ -2784,7 +2829,7 @@ namespace StarsAbove.Systems
 
                                 }
 
-                                npc.SimpleStrikeNPC((int)(Player.GetWeaponDamage(Player.HeldItem) * 3), 0, false, 0, DamageClass.Ranged, true, 0);
+                                npc.SimpleStrikeNPC(Player.GetWeaponDamage(Player.HeldItem) * 3, 0, false, 0, DamageClass.Ranged, true, 0);
                                 npc.DelBuff(npc.FindBuffIndex(BuffType<StellarTerminationBuff>()));
                             }
                         }
@@ -3355,7 +3400,7 @@ namespace StarsAbove.Systems
                     PerformanceResourceCurrent -= info.Damage;
                 }
             }
-            if(RebellionHeld)
+            if (RebellionHeld)
             {
                 rebellionGauge++;
             }
@@ -3487,7 +3532,10 @@ namespace StarsAbove.Systems
         }
         public override bool ConsumableDodge(Player.HurtInfo info)
         {
-
+            if (M4A1Held)
+            {
+                return false;
+            }
             if (Player.HasBuff(BuffType<GuntriggerParry>()))
             {
 
@@ -3519,7 +3567,7 @@ namespace StarsAbove.Systems
                     }
                 }
             }
-            
+
             if (Player.HasBuff(BuffType<RealizedNanomachinaBuff>()))
             {
                 if (nanomachinaShieldHP > 0)
@@ -3600,7 +3648,7 @@ namespace StarsAbove.Systems
                         }
                     }
 
-                    
+
 
                 }
             }
@@ -3625,7 +3673,7 @@ namespace StarsAbove.Systems
                 modifiers.FinalDamage.Flat -= LVStacks;
                 LVStacks = 0;
             }
-            if (Player.HasBuff(BuffType<Buffs.SakuraVengeance.SakuraEarthBuff>()) || Player.HasBuff(BuffType<Buffs.SakuraVengeance.ElementalChaos>()))
+            if (Player.HasBuff(BuffType<SakuraEarthBuff>()) || Player.HasBuff(BuffType<ElementalChaos>()))
             {
                 modifiers.FinalDamage *= 0.75f;
             }
@@ -3789,7 +3837,7 @@ namespace StarsAbove.Systems
             {
                 DragonshiftGauge = 0;
             }
-            if(!RebellionHeld)
+            if (!RebellionHeld)
             {
                 rebellionGauge = 0;
             }
@@ -3798,9 +3846,20 @@ namespace StarsAbove.Systems
                 Player.ClearBuff(BuffType<EmbodiedSingularity>());
                 Player.GetModPlayer<BossPlayer>().WhiteAlpha = 1f;
             }
-            CloakOfAnArbiterHeld = false;
-            
+            if (!M4A1Held || Player.GetModPlayer<StarsAbovePlayer>().inCombat < 0 || Player.HasBuff(BuffType<InheritedCaseActive>()))
+            {
+                ActiveGuns.Clear();
+                AuxiliaryGuns = [
+                    ProjectileType<StAR15Gun>(),
+                    ProjectileType<RO635Gun>(),
+                    ProjectileType<M4Sop2Gun>(),
+                    ProjectileType<M16A1Gun>(),
+                ];
 
+            }
+            CloakOfAnArbiterHeld = false;
+            LegendaryShieldHeld = false;
+            M4A1Held = false;
             wavedancerHeld = false;
             RebellionHeld = false;
             DragaliaFoundHeld = false;
@@ -3907,26 +3966,26 @@ namespace StarsAbove.Systems
             {
                 if (SkyStrikerHeld)
                 {
-                    if (Player.HasBuff(BuffType<Buffs.SkyStrikerBuffs.StrikerAttackBuff>()))
+                    if (Player.HasBuff(BuffType<StrikerAttackBuff>()))
                     {
 
                         Player.legs = EquipLoader.GetEquipSlot(Mod, "AfterburnerBottom", EquipType.Legs);
                         Player.body = EquipLoader.GetEquipSlot(Mod, "AfterburnerTop", EquipType.Body);
                         Player.wings = EquipLoader.GetEquipSlot(Mod, "AfterburnerWings", EquipType.Wings);
                     }
-                    if (Player.HasBuff(BuffType<Buffs.SkyStrikerBuffs.StrikerShieldBuff>()))
+                    if (Player.HasBuff(BuffType<StrikerShieldBuff>()))
                     {
                         Player.legs = EquipLoader.GetEquipSlot(Mod, "ShieldBottom", EquipType.Legs);
                         Player.body = EquipLoader.GetEquipSlot(Mod, "ShieldTop", EquipType.Body);
                         Player.wings = EquipLoader.GetEquipSlot(Mod, "ShieldWings", EquipType.Wings);
                     }
-                    if (Player.HasBuff(BuffType<Buffs.SkyStrikerBuffs.StrikerMeleeBuff>()))
+                    if (Player.HasBuff(BuffType<StrikerMeleeBuff>()))
                     {
                         Player.legs = EquipLoader.GetEquipSlot(Mod, "MeleeBottom", EquipType.Legs);
                         Player.body = EquipLoader.GetEquipSlot(Mod, "MeleeTop", EquipType.Body);
                         Player.wings = EquipLoader.GetEquipSlot(Mod, "MeleeWings", EquipType.Wings);
                     }
-                    if (Player.HasBuff(BuffType<Buffs.SkyStrikerBuffs.StrikerSniperBuff>()))
+                    if (Player.HasBuff(BuffType<StrikerSniperBuff>()))
                     {
                         Player.legs = EquipLoader.GetEquipSlot(Mod, "SniperBottom", EquipType.Legs);
                         Player.body = EquipLoader.GetEquipSlot(Mod, "SniperTop", EquipType.Body);
@@ -3939,9 +3998,9 @@ namespace StarsAbove.Systems
                     Player.legs = EquipLoader.GetEquipSlot(Mod, "UrgotLegs", EquipType.Legs);
 
                 }
-                if(rebellionGauge >= 5)
+                if (rebellionGauge >= 5)
                 {
-                    if(rebellionState1 == false)
+                    if (rebellionState1 == false)
                     {
                         //effects
                         float dustAmount = 33f;
@@ -3970,7 +4029,7 @@ namespace StarsAbove.Systems
                 {
                     rebellionState1 = false;
                 }
-                if(rebellionGauge >= 10)
+                if (rebellionGauge >= 10)
                 {
                     if (rebellionState2 == false)
                     {
@@ -4037,9 +4096,14 @@ namespace StarsAbove.Systems
                     Player.UpdateVisibleAccessories(new Item(ItemType<DraggedBelowGloves>()), false);
 
                 }
-                if(CloakOfAnArbiterHeld)
+                if (CloakOfAnArbiterHeld)
                 {
                     Player.UpdateVisibleAccessories(new Item(ItemType<CloakOfAnArbiterCape>()), false);
+
+                }
+                if (LegendaryShieldHeld)
+                {
+                    Player.UpdateVisibleAccessories(new Item(ItemType<LegendaryShieldAccessory>()), false);
 
                 }
             }
@@ -4191,15 +4255,18 @@ namespace StarsAbove.Systems
             KroniicPrincipality();
             Nanomachina();
             DraggedBelow();
+            if (M4A1Held)
+            {
+                M4A1deg += 0 + MathHelper.Lerp(0.5f, 1.5f, EaseHelper.InOutQuad((float)(M4A1UseTimer / 100f)));
+                M4A1UseTimer--;
+                M4A1UseTimer = (int)MathHelper.Clamp(M4A1UseTimer, 0, 100);
+            }
 
             //Radiance cap (used by certain weapons.)
             if (radiance > 10)
             {
                 radiance = 10;
             }
-
-
-
         }
         private void DraggedBelow()
         {
