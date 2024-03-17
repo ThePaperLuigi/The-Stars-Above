@@ -73,17 +73,18 @@ namespace StarsAbove.Systems
         {
             if (player.HasBuff(BuffType<BossEnemySpawnMod>()))
             {
-                //maxSpawns = 0;
+                spawnRate *= 5;
+                maxSpawns = (int)(maxSpawns * 0.001f);
             }
             if (player.HasBuff(BuffType<OffSeersPurpose>()))
             {
-                //spawnRate += 10;
+                spawnRate = (int)(spawnRate * 0.6);
+                maxSpawns = (int)(maxSpawns * 2.5f);
             }
             if (player.HasBuff(BuffType<Conversationalist>()))
             {
-                //spawnRate -= 30;
+                spawnRate = (int)(spawnRate * 1.2);
             }
-            base.EditSpawnRate(player, ref spawnRate, ref maxSpawns);
         }
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
