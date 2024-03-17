@@ -10,12 +10,11 @@ using Terraria.Audio;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
 using StarsAbove.Projectiles.Ranged.ElCapitansHardware;
-using StarsAbove.Buffs.SaltwaterScourge;
 using System;
 using StarsAbove.Utilities;
 using StarsAbove.Projectiles.Ranged.DevotedHavoc;
 using StarsAbove.Projectiles.Ranged.StringOfCurses;
-using StarsAbove.Buffs.StringOfCurses;
+using StarsAbove.Buffs.Ranged.StringOfCurses;
 
 namespace StarsAbove.Items.Weapons.Ranged
 {
@@ -29,7 +28,7 @@ namespace StarsAbove.Items.Weapons.Ranged
 		}
 
 		public override void SetDefaults() {
-			Item.damage = 21;
+			Item.damage = 15;
 			Item.DamageType = DamageClass.Ranged;
 			Item.width = 40;
 			Item.height = 20;
