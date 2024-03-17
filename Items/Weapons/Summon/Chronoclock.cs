@@ -134,7 +134,6 @@ namespace StarsAbove.Items.Weapons.Summon
                     .AddIngredient(ItemType<PrismaticCore>(), 3)
                     .AddIngredient(ItemID.GoldWatch, 1)
                     .AddIngredient(ItemID.Silk, 8)
-                    .AddIngredient(ItemID.SoulofLight, 3)
                     .AddIngredient(ItemType<EssenceOfTheWatch>())
                     .AddTile(TileID.Anvils)
                     .Register();
@@ -143,7 +142,6 @@ namespace StarsAbove.Items.Weapons.Summon
                     .AddIngredient(ItemType<PrismaticCore>(), 3)
                     .AddIngredient(ItemID.PlatinumWatch, 1)
                     .AddIngredient(ItemID.Silk, 8)
-                    .AddIngredient(ItemID.SoulofLight, 3)
                     .AddIngredient(ItemType<EssenceOfTheWatch>())
                     .AddTile(TileID.Anvils)
                     .Register();
