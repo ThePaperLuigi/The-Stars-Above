@@ -124,7 +124,18 @@ namespace StarsAbove.NPCs.Starfarers
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
 			NPC.netAlways = true;
 		}
-		public override bool CanHitPlayer(Player target, ref int cooldownSlot)
+        public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)
+        {
+            if(DownedBossSystem.downedTsuki)
+			{
+				NPC.lifeMax = (int)(3000000 * balance * bossAdjustment);
+				NPC.damage = 70;
+			}
+
+
+            base.ApplyDifficultyAndPlayerScaling(numPlayers, balance, bossAdjustment);
+        }
+        public override bool CanHitPlayer(Player target, ref int cooldownSlot)
 		{
 			return false;
 		}
@@ -345,19 +356,13 @@ namespace StarsAbove.NPCs.Starfarers
 				Player player = Main.player[i];
 				if (player.active)
 				{
-					if(DownedBossSystem.downedTsuki)
-					{
-                        player.AddBuff(BuffType<SharedPowerSpecial>(), 10);
-                    }
-					else
-					{
-                        player.AddBuff(BuffType<SharedPower>(), 10);
-                    }
-
-				}
+                    player.AddBuff(BuffType<SharedPower>(), 10);
 
 
-			}
+                }
+
+
+            }
 			
 		}
 		private void FindTargetPlayer()
