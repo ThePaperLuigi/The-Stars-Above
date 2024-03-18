@@ -2362,6 +2362,42 @@ namespace StarsAbove
             }
             base.OnMissingMana(item, neededMana);
         }
+        public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
+        {
+            if(beyondinfinity == 2 && item.OriginalDamage <= 100)
+            {
+                bool gray = item.OriginalRarity == ItemRarityID.Gray;
+                bool white = item.OriginalRarity == ItemRarityID.White;
+                bool blue = item.OriginalRarity == ItemRarityID.Blue;
+                bool green = item.OriginalRarity == ItemRarityID.Green;
+                bool orange = item.OriginalRarity == ItemRarityID.Orange;
+                bool lightred = item.OriginalRarity == ItemRarityID.LightRed;
+                bool pink = item.OriginalRarity == ItemRarityID.Pink;
+                bool lightpurple = item.OriginalRarity == ItemRarityID.LightPurple;
+                bool lime = item.OriginalRarity == ItemRarityID.Lime;
+                bool yellow = item.OriginalRarity == ItemRarityID.Yellow;
+                bool cyan = item.OriginalRarity == ItemRarityID.Cyan;
+                bool red = item.OriginalRarity == ItemRarityID.Red;
+                bool purple = item.OriginalRarity == ItemRarityID.Purple;
+
+                float damageMult = 1f +
+                    (gray ? 20f : 0f) + //No weapons have a base rarity of gray, so this is just for fun
+                    (white ? 12f : 0f) +
+                    (blue ? 9f : 0f) +
+                    (green ? 7f : 0f) +
+                    (orange ? 6f : 0f) +
+                    (lightred ? 4f : 0f) +
+                    (pink ? 2f : 0f) +
+                    (lightpurple ? 1.5f : 0f) +
+                    (lime ? 1f : 0f) +
+                    (yellow ? 0.5f : 0f) +
+                    (cyan ? 0.5f : 0f) +
+                    (red ? 0.05f : 0f) +
+                    (purple ? 0.01f : 0f);
+
+                damage *= damageMult;
+            }
+        }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
             if (arborealEchoes == 2)
@@ -2390,11 +2426,6 @@ namespace StarsAbove
                 modifiers.SourceDamage += 0f + MathHelper.Lerp(0f, 0.6f, Player.GetCritChance(DamageClass.Generic) / 100f) / 2f;
             }
 
-            if (beyondinfinity == 2 && beyondInfinityDamageMod > 0)
-            {
-                modifiers.SourceDamage += 1 + beyondInfinityDamageMod;
-                beyondInfinityDamageMod = 0;
-            }
 
             //Will be replaced when these bosses get their new AI.
 
@@ -5039,6 +5070,8 @@ namespace StarsAbove
 
                     if (aquaaffinity == 0)
                     {
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+
                         aquaaffinity = 1;
                     }
                     if(stayTheCourse == 0)
@@ -5052,6 +5085,8 @@ namespace StarsAbove
 
                     if (starshower == 0)
                     {
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+
                         starshower = 1;
                     }
                     if(spectralNail == 0)
@@ -5064,6 +5099,8 @@ namespace StarsAbove
                 {
                     if (ironskin == 0)
                     {
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+
                         ironskin = 1;
                     }
                     if(armsthrift == 0)
@@ -5076,6 +5113,8 @@ namespace StarsAbove
                 {
                     if (evasionmastery == 0)
                     {
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+
                         evasionmastery = 1;
                     }
                     if(mysticIncision == 0)
@@ -5088,6 +5127,8 @@ namespace StarsAbove
                 {
                     if (inneralchemy == 0)
                     {
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+
                         inneralchemy = 1;
                     }
                     if (catharsis == 0)
@@ -5096,10 +5137,12 @@ namespace StarsAbove
 
                     }
                 }
-                if (Main.hardMode)
+                if (Player.statLifeMax >= 400)
                 {
                     if (healthyConfidence == 0)
                     {
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+
                         healthyConfidence = 1;
                     }
                 }
@@ -5136,6 +5179,8 @@ namespace StarsAbove
                 {
                     if (butchersdozen == 0)
                     {
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+
                         butchersdozen = 1;
                     }
                     if(swiftstrikeTheory == 0)
@@ -5150,10 +5195,30 @@ namespace StarsAbove
                         laevateinn = 1;
                     }
                 }
+                if(DownedBossSystem.downedThespian)
+                {
+
+                }
+                if(DownedBossSystem.downedDioskouroi)
+                {
+                    if (celestialevanesence == 0)
+                    {
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+
+                        celestialevanesence = 1;
+                    }
+                    if (arborealEchoes == 0)
+                    {
+                        arborealEchoes = 1;
+
+                    }
+                }
                 if (DownedBossSystem.downedPenth)
                 {
                     if (mysticforging == 0)
                     {
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+
                         mysticforging = 1;
                     }
                     if(lavenderRefrain == 0)
@@ -5171,6 +5236,8 @@ namespace StarsAbove
                 {
                     if (bloomingflames == 0)
                     {
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+
                         bloomingflames = 1;
                     }
 
@@ -5191,6 +5258,8 @@ namespace StarsAbove
                 {
                     if (afterburner == 0)
                     {
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+
                         afterburner = 1;
                     }
 
@@ -5200,6 +5269,8 @@ namespace StarsAbove
 
                     if (livingdead == 0)
                     {
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+
                         livingdead = 1;
                     }
                     if(kineticConversion == 0)
@@ -5212,6 +5283,8 @@ namespace StarsAbove
                 {
                     if (hikari == 0)
                     {
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+
                         hikari = 1;
                     }
                     if(fabledFashion == 0)
@@ -5228,6 +5301,8 @@ namespace StarsAbove
 
                     if (weaknessexploit == 0)
                     {
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+
                         weaknessexploit = 1;
                     }
                 }
@@ -5235,22 +5310,12 @@ namespace StarsAbove
                 {
 
                 }
-                if (NPC.downedAncientCultist && Main.expertMode == true)
-                {
-                    if (celestialevanesence == 0)
-                    {
-                        celestialevanesence = 1;
-                    }
-                    if(arborealEchoes == 0)
-                    {
-                        arborealEchoes = 1;
-
-                    }
-                }
                 if (NPC.downedMoonlord)
                 {
                     if (umbralentropy == 0)
                     {
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+
                         umbralentropy = 1;
                     }
                     if(kiTwinburst == 0)
@@ -5278,6 +5343,8 @@ namespace StarsAbove
                     }
                     if(inevitableEnd == 0)
                     {
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+
                         inevitableEnd = 1;
 
                     }
@@ -5288,11 +5355,13 @@ namespace StarsAbove
                 {
                     if (keyofchronology == 0)
                     {
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+
                         keyofchronology = 1;
                     }
 
                 }
-                if (DownedBossSystem.downedWarrior && DownedBossSystem.downedVagrant && DownedBossSystem.downedPenth && DownedBossSystem.downedNalhaun)
+                if (DownedBossSystem.downedStarfarers)
                 {
 
 
@@ -5304,7 +5373,7 @@ namespace StarsAbove
                     }
 
                 }
-                if (DownedBossSystem.downedWarrior && DownedBossSystem.downedVagrant && DownedBossSystem.downedPenth && DownedBossSystem.downedNalhaun && Main.expertMode == true)
+                if (DownedBossSystem.downedThespian && Main.expertMode)
                 {
 
 
@@ -5316,11 +5385,25 @@ namespace StarsAbove
                     }
 
                 }
-                if (DownedBossSystem.downedWarrior)
+                if (NPC.downedMartians)
                 {
                     if (avataroflight == 0)
                     {
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+
                         avataroflight = 1;
+                    }
+
+
+
+                }
+                if (DownedBossSystem.downedWarrior)
+                {
+                    if (beyondtheboundary == 0)
+                    {
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        NewStellarArrayAbility = true;
+                        beyondtheboundary = 1;
                     }
 
 
@@ -5330,23 +5413,18 @@ namespace StarsAbove
                 {
                     if (beyondinfinity == 0)
                     {
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+
                         beyondinfinity = 1;
                     }
 
-                }
-                if (NPC.downedBoss1 && NPC.downedSlimeKing && NPC.downedBoss2 && NPC.downedBoss3 && NPC.downedQueenBee && Main.hardMode && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && NPC.downedPlantBoss && NPC.downedGolemBoss && NPC.downedFishron && NPC.downedMoonlord && DownedBossSystem.downedWarrior && DownedBossSystem.downedVagrant && DownedBossSystem.downedPenth && DownedBossSystem.downedNalhaun)
-                {
-                    if (beyondtheboundary == 0)
-                    {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
-                        NewStellarArrayAbility = true;
-                        beyondtheboundary = 1;
-                    }
                 }
                 if (NPC.downedBoss1 && NPC.downedSlimeKing && NPC.downedBoss2 && NPC.downedBoss3 && NPC.downedQueenBee && Main.hardMode && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && NPC.downedPlantBoss && NPC.downedGolemBoss && NPC.downedFishron && NPC.downedMoonlord && DownedBossSystem.downedWarrior && Main.expertMode == true)
                 {
                     if (unbridledradiance == 0)
                     {
+                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+
                         unbridledradiance = 1;
                     }
                 }
@@ -6324,18 +6402,18 @@ namespace StarsAbove
         {
             if (inCombat > 0 && beyondinfinity == 2)
             {
-                beyondInfinityTimer++;
+                //beyondInfinityTimer++;
             }
             if (inCombat <= 0)
             {
-                beyondInfinityTimer = 0;
-                beyondInfinityDamageMod = 0;
+                //beyondInfinityTimer = 0;
+                //beyondInfinityDamageMod = 0;
             }
             if (beyondInfinityTimer >= 120 && beyondinfinity == 2)
             {
-                beyondInfinityTimer = 0;
-                beyondInfinityDamageMod += 0.1f;
-                beyondInfinityDamageMod = MathHelper.Clamp(beyondInfinityDamageMod, 0, 1f);
+                //beyondInfinityTimer = 0;
+                //beyondInfinityDamageMod += 0.1f;
+                //beyondInfinityDamageMod = MathHelper.Clamp(beyondInfinityDamageMod, 0, 1f);
             }
         }
         private void InnerAlchemy()
@@ -6358,7 +6436,7 @@ namespace StarsAbove
             {
                 for (int i = 0; i <= Main.maxNPCs; i++)
                 {
-                    if (Main.npc[i].boss && Main.npc[i].active && Main.npc[i].ModNPC?.Mod == ModLoader.GetMod("StarsAbove")
+                    if (Main.npc[i].boss && Main.npc[i].active && Main.npc[i].ModNPC?.Mod == ModLoader.GetMod("StarsAbove"))
                     {
                         Player.AddBuff(BuffType<BossEnemySpawnMod>(), 10);
                     }
@@ -8944,7 +9022,7 @@ namespace StarsAbove
                 {
                     if (Player.buffTime[i] == 1)
                     {
-                        Player.AddBuff(BuffType<AfterburnerCooldown>(), 1500);
+                        Player.AddBuff(BuffType<AfterburnerCooldown>(), 20 * 60);
 
 
                     }
