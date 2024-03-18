@@ -3400,6 +3400,23 @@ namespace StarsAbove.Systems
                     PerformanceResourceCurrent -= info.Damage;
                 }
             }
+            if(M4A1Held)
+            {
+                if(ActiveGuns.Count > 0)
+                {
+                    int randomChoice = Main.rand.Next(ActiveGuns.Count); //Choose a random weapon from the list
+                    int WeaponType = ActiveGuns[randomChoice];//'save' the ProjectileID of that weapon
+                    ActiveGuns.Remove(WeaponType);//Add this weapon to the active guns pool
+                    for(int i = 0; i >= Main.maxProjectiles; i++)
+                    {
+                        if (Main.projectile[i].type == WeaponType)
+                        {
+                            Main.projectile[i].Kill();
+                        }
+                    }
+                    AuxiliaryGuns.Add(randomChoice);
+                }
+            }
             if (RebellionHeld)
             {
                 rebellionGauge++;
