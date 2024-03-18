@@ -219,9 +219,9 @@ namespace StarsAbove.Items.Weapons.Summon
 		public override void AddRecipes()
 		{//Change me
 			CreateRecipe(1)
-				.AddIngredient(ItemID.ShroomiteBar, 2)
-				.AddIngredient(ItemID.TheHorsemansBlade, 1)
-				.AddIngredient(ItemID.ChristmasTreeSword, 1)
+				.AddIngredient(ItemID.HallowedBar, 6)
+				.AddIngredient(ItemID.ThrowingKnife, 1)
+				.AddIngredient(ItemID.MimeMask, 1)
 				.AddIngredient(ItemType<EssenceOfThePhantom>())
 				.AddTile(TileID.Anvils)
 				.Register();
