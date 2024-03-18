@@ -61,59 +61,34 @@ namespace StarsAbove.Items.Weapons.Summon
 		}
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
-            if (NPC.downedSlimeKing)
-            {
-                damage += 2;
-            }
-            if (NPC.downedBoss1)
-            {
-                damage += 3;
-            }
-            if (NPC.downedBoss2)
-            {
-                damage += 4;
-            }
-            if (NPC.downedQueenBee)
-            {
-                damage += 5;
-            }
-            if (NPC.downedBoss3)
-            {
-                damage += 5;
-            }
-            if (Main.hardMode)
-            {
-                damage += 5;
-            }
-            if (NPC.downedMechBossAny)
-            {
-                damage += 5;
-            }
-            if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
-            {
-                damage += 5;
-            }
-            if (NPC.downedPlantBoss)
-            {
-                damage += 5;
-            }
-            if (NPC.downedGolemBoss)
-            {
-                damage += 5;
-            }
-            if (NPC.downedFishron)
-            {
-                damage += 5;
-            }
-            if (NPC.downedAncientCultist)
-            {
-                damage += 5;
-            }
-            if (NPC.downedMoonlord)
-            {
-                damage += 5;
+            bool slimeKing = NPC.downedSlimeKing;
+            bool eye = NPC.downedBoss1;
+            bool evilboss = NPC.downedBoss2;
+            bool queenBee = NPC.downedQueenBee;
+            bool skeletron = NPC.downedBoss3;
+            bool hardmode = Main.hardMode;
+            bool anyMech = NPC.downedMechBossAny;
+            bool allMechs = NPC.downedMechBoss3 && NPC.downedMechBoss2 && NPC.downedMechBoss1;
+            bool plantera = NPC.downedPlantBoss;
+            bool golem = NPC.downedGolemBoss;
+            bool cultist = NPC.downedAncientCultist;
+            bool moonLord = NPC.downedMoonlord;
 
-            }
+            float damageMult = 1f +
+                (slimeKing ? 0.1f : 0f) +
+                (eye ? 0.12f : 0f) +
+                (evilboss ? 0.14f : 0f) +
+                (queenBee ? 0.36f : 0f) +
+                (skeletron ? 0.58f : 0f) +
+                (hardmode ? 1.2f : 0f) +
+                (anyMech ? 1.23f : 0f) +
+                (allMechs ? 1.3f : 0f) +
+                (plantera ? 2.4f : 0f) +
+                (golem ? 3.45f : 0f) +
+                (cultist ? 4f : 0f) +
+                (moonLord ? 5f : 0f);
+
+            damage *= damageMult;
         }
         public override bool AltFunctionUse(Player player)
 		{
