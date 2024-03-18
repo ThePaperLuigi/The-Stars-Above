@@ -783,7 +783,7 @@ namespace StarsAbove.Systems
                         }
 
                     }
-                    if (player.GetModPlayer<StarsAbovePlayer>().BardAspect == 2)
+                    else if (player.GetModPlayer<StarsAbovePlayer>().BardAspect == 2)
                     {
                         if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
                         {
@@ -804,7 +804,7 @@ namespace StarsAbove.Systems
                         }
 
                     }
-                    if (player.GetModPlayer<StarsAbovePlayer>().HealerAspect == 2)
+                    else if(player.GetModPlayer<StarsAbovePlayer>().HealerAspect == 2)
                     {
                         if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
                         {
@@ -825,7 +825,7 @@ namespace StarsAbove.Systems
                         }
 
                     }
-                    if (player.GetModPlayer<StarsAbovePlayer>().ThrowerAspect == 2)
+                    else if(player.GetModPlayer<StarsAbovePlayer>().ThrowerAspect == 2)
                     {
                         if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
                         {
@@ -846,9 +846,9 @@ namespace StarsAbove.Systems
                         }
 
                     }
-                    if (player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
+                    else if(player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
                     {
-                        if (oldDamageClass != DamageClass.Melee && oldDamageClass != DamageClass.MeleeNoSpeed)
+                        if (oldDamageClass != DamageClass.Melee || oldDamageClass != DamageClass.MeleeNoSpeed)
                         {
                             damage = player.GetTotalDamage(DamageClass.Melee);
 
@@ -864,9 +864,9 @@ namespace StarsAbove.Systems
                         }
 
                     }
-                    if (player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2)
+                    else if(player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2)
                     {
-                        if (oldDamageClass != DamageClass.Magic && oldDamageClass != DamageClass.MagicSummonHybrid)
+                        if (oldDamageClass != DamageClass.Magic || oldDamageClass != DamageClass.MagicSummonHybrid)
                         {
                             damage = player.GetTotalDamage(DamageClass.Magic);
                             if (!disableAspectPenalty)
@@ -881,11 +881,11 @@ namespace StarsAbove.Systems
 
 
                     }
-                    if (player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
+                    else if(player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
                     {
                         if (oldDamageClass != DamageClass.Ranged)
                         {
-                            player.GetTotalDamage(DamageClass.Ranged);
+                            damage = player.GetTotalDamage(DamageClass.Ranged);
                             if (!disableAspectPenalty)
                             {
                                 damage -= 0.1f;
@@ -896,9 +896,9 @@ namespace StarsAbove.Systems
 
                         }
                     }
-                    if (player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2)
+                    else if(player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2)
                     {
-                        if (oldDamageClass != DamageClass.Summon && oldDamageClass != DamageClass.MagicSummonHybrid && oldDamageClass != DamageClass.SummonMeleeSpeed)
+                        if (oldDamageClass != DamageClass.Summon || oldDamageClass != DamageClass.MagicSummonHybrid || oldDamageClass != DamageClass.SummonMeleeSpeed)
                         {
                             damage = player.GetTotalDamage(DamageClass.Summon);
 
@@ -917,7 +917,8 @@ namespace StarsAbove.Systems
 
             }
 
-            if (!disableAspectPenalty && (player.HasBuff(BuffType<BearerOfLight>()) || player.HasBuff(BuffType<BearerOfDarkness>()) && player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2))
+            if (!disableAspectPenalty && 
+                ((player.HasBuff(BuffType<BearerOfLight>()) || (player.HasBuff(BuffType<BearerOfDarkness>())) && player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)))
             {
                 if (player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
                 {
@@ -930,6 +931,7 @@ namespace StarsAbove.Systems
 
                 }
             }
+            //TODO: create a list with weapons unaffected by penalty
             if (player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
             {
                 if (item.ModItem is ArchitectLuminance && !disableAspectPenalty) //Melee weapons
