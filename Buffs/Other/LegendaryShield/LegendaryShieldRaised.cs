@@ -15,7 +15,7 @@ namespace StarsAbove.Buffs.Other.LegendaryShield
 
         public override void Update(Player player, ref int buffIndex)
         {
-
+            
         }
 
         public override bool RightClick(int buffIndex)

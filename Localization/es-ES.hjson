@@ -9369,15 +9369,15 @@ Mods: {
 				// DisplayName: Legendary Shield
 				/* Tooltip:
 					'''
-					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty]
-					Holding this weapon grants defense proportional to Max HP and reflects all damage taken
-					Right click to ready the shield for 2 seconds, reducing the damage of the next attack by 90% (12 second cooldown)
-					Press the Weapon Action Key to destroy all nearby hostile projectiles, healing 5 HP per destroyed projectile (40 second cooldown)
-					If under the effect of applicable damaging debuffs, gain [Cursed Rage]
-					Right click under the effect of [Cursed Rage] to inflict cursed energy to all nearby foes, dealing 80% of your defense as true damage (1 second cooldown)
-					Press the Weapon Action Key under the effect of [Cursed Rage] to immediately cleanse all cooldowns and debuffs (3 minute cooldown)
 					This weapon can absorb Weapon Memories without limit, permanently gaining their abilities without consuming slots
-					Can be equipped as an accessory, granting Weapon Memory benefits to the current held weapon
+					Can be equipped as an accessory, granting Weapon Memory benefits to the current held weapon, but reduces outgoing damage by 40% (Original Memories are ignored)
+					Holding this weapon grants defense proportional to Max HP divided by 6
+					Using this weapon readies the shield for 2 seconds, causing the next attack to heal HP based on its original unmitigated damage (6 second cooldown)
+					Damage is still taken while this ability is active; sustained damage is reflected to all nearby foes and reflection potency increases based on defense
+					While the shield is on cooldown, healing from potions is reduced by 80%
+					While this weapon is equipped as an accessory, gain [c/CAF795:Heroic Curse] under the effect of applicable damaging debuffs
+					[c/CAF795:Heroic Curse] negates the damage penalty of equipping the weapon as an accessory and additionally increases defense by 10
+					When either held or equipped as an accessory, gain a directional dash and enemies are more likely to target you
 					''' */
 			}
 
@@ -9397,9 +9397,10 @@ Mods: {
 					'''
 					Critical strikes with this weapon deal 50% less damage, but inflict [c/62C29B:Necrosis] for 4 seconds
 					Foes inflicted with [c/62C29B:Necrosis] have their attack and defense reduced by 15%
-					Defeating foes with this weapon charges the Stellar Nova by 2 energy and grants [c/8662C2:Cursewrought] for 7 seconds
+					Starlight has a 10% increased chance to drop when defeating foes, which can be picked up to restore 5 Stellar Nova Energy
+					Gain Swiftness, Ironskin, and Heartreach when the Stellar Nova Gauge is filled
+					Defeating foes with this weapon charges the Stellar Nova by 2 energy and grants [c/8662C2:Cursewrought] for 7 seconds					
 					[c/8662C2:Cursewrought] increases attack speed by 20%, critical strike chance by 20%, and damage dealt against foes with [c/62C29B:Necrosis] by 20%
-					Additionally, gain Swiftness, Ironskin, and Heartreach when the Stellar Nova Gauge is filled
 					Defeating foes while under the effect of [c/8662C2:Cursewrought] refreshes the buff, heals 10 HP, and charges the Stellar Nova by an additional 2 energy
 					''' */
 			}
@@ -13441,6 +13442,16 @@ Mods: {
 			InheritedCaseActive: {
 				// DisplayName: Inherited Case Active
 				// Description: Mods.StarsAbove.Buffs.InheritedCaseActive.Description
+			}
+
+			HeroicCurse: {
+				// DisplayName: Heroic Curse
+				// Description: Mods.StarsAbove.Buffs.HeroicCurse.Description
+			}
+
+			LegendaryShieldRaisedCooldown: {
+				// DisplayName: Legendary Shield Raised Cooldown
+				// Description: Mods.StarsAbove.Buffs.LegendaryShieldRaisedCooldown.Description
 			}
 		}
 

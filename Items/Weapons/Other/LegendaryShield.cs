@@ -1,13 +1,17 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs;
+using StarsAbove.Buffs.Celestial.BrilliantSpectrum;
 using StarsAbove.Buffs.Other.Farewells;
+using StarsAbove.Buffs.Other.LegendaryShield;
 using StarsAbove.Items.Essences;
 using StarsAbove.Items.Materials;
 using StarsAbove.Projectiles.Other.LegendaryShield;
 using StarsAbove.Projectiles.Summon.KeyOfTheKingsLaw;
 using StarsAbove.Projectiles.Summon.Wavedancer;
 using StarsAbove.Systems;
+using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -26,13 +30,12 @@ namespace StarsAbove.Items.Weapons.Other
 
 		public override void SetDefaults()
 		{
-			Item.damage = 50;
 			//Item.mana = 80;
 			//Item.DamageType = DamageClass.Summon;          //Is your weapon a melee weapon?
 			Item.width = 40;            //Weapon's texture's width
 			Item.height = 40;           //Weapon's texture's height
-			Item.useTime = 20;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
-			Item.useAnimation = 20;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
+			Item.useTime = 120;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
+			Item.useAnimation = 120;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
 			Item.useStyle = ItemUseStyleID.HoldUp;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
 			Item.knockBack = 6;         //The force of knockback of the weapon. Maximum is 20
 			Item.rare = ItemRarityID.Green;              //The rarity of the weapon, from -1 to 13
@@ -41,25 +44,70 @@ namespace StarsAbove.Items.Weapons.Other
 			Item.shoot = ProjectileType<LegendaryShieldBash>();
 			Item.shootSpeed = 15f;
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
+            Item.accessory = true;
 		}
-		//SoundEngine.PlaySound(StarsAboveAudio.SFX_electroSmack, Player.Center);
-
-		int randomBuff;
-        public override void HoldItem(Player player)
+        //SoundEngine.PlaySound(StarsAboveAudio.SFX_electroSmack, Player.Center);
+        public override void UpdateAccessory(Player player, bool hideVisual)
         {
             
-			player.GetModPlayer<WeaponPlayer>().LegendaryShieldHeld = true;
+            base.UpdateAccessory(player, hideVisual);
+        }
+        public override void UpdateEquip(Player player)
+        {
+            player.aggro += 5;
+            player.GetModPlayer<WeaponPlayer>().LegendaryShieldEquippedAsAccessory = true;
+            player.GetModPlayer<LegendaryShieldDashPlayer>().DashAccessoryEquipped = true;
+            if (player.HasBuff(BuffType<HeroicCurse>()))
+            {
+
+            }
+            else
+            {
+                player.GetDamage(DamageClass.Generic) -= 0.4f;
+
+            }
+            if (player.HasBuff(BuffID.OnFire) ||
+                player.HasBuff(BuffID.OnFire3) ||
+                player.HasBuff(BuffID.Burning) ||               
+                player.HasBuff(BuffID.Venom) ||
+                player.HasBuff(BuffID.Poisoned) ||
+                player.HasBuff(BuffID.CursedInferno) ||
+                player.HasBuff(BuffID.Frostburn) ||
+                player.HasBuff(BuffID.Frostburn2) ||
+                player.HasBuff(BuffID.Electrified))
+            {
+
+                player.AddBuff(BuffType<HeroicCurse>(), 2);
+            }
+            base.UpdateEquip(player);
+        }
+        int randomBuff;
+        public override void HoldItem(Player player)
+        {
+            player.aggro += 5;
+            player.statDefense += player.statLifeMax2 / 6;
+            if(player.HasBuff(BuffType<LegendaryShieldRaised>()))
+            {
+                player.thorns = 6f;
+
+            }
+            else
+            {
+                player.thorns = 1f;
+
+            }
+            player.GetModPlayer<WeaponPlayer>().LegendaryShieldHeld = true;
             player.GetModPlayer<LegendaryShieldDashPlayer>().DashAccessoryEquipped = true;
 
             base.HoldItem(player);
         }
         public override bool CanUseItem(Player player)
 		{
-			if (player.HasBuff(BuffType<FarewellCooldown>()))
-			{
-				return false;
-			}
-			return base.CanUseItem(player);
+			if(player.HasBuff(BuffType<LegendaryShieldRaisedCooldown>()))
+            {
+                return false;
+            }
+			return true;
 		}
 		public override void MeleeEffects(Player player, Rectangle hitbox)
 		{
@@ -73,9 +121,31 @@ namespace StarsAbove.Items.Weapons.Other
 
         public override bool? UseItem(Player player)
         {
-			//player.AddBuff(BuffType<OffSeersPurpose>(), 7200);
-			//player.AddBuff(BuffType<FarewellCooldown>(), 28800);
+            Vector2 dustPosition = player.Center;
+            SoundEngine.PlaySound(SoundID.DD2_MonkStaffSwing, player.Center);
 
+            float dustAmount = 40f;
+            for (int i = 0; i < dustAmount; i++)
+            {
+                Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(14f, 15f);
+                spinningpoint5 = spinningpoint5.RotatedBy(player.velocity.ToRotation() + MathHelper.ToRadians(90));
+                int dust = Dust.NewDust(dustPosition, 0, 0, DustID.GemEmerald);
+                Main.dust[dust].scale = 1f;
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].position = dustPosition + spinningpoint5;
+                Main.dust[dust].velocity = player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 10f;
+            }
+            for (int d = 0; d < 16; d++)
+            {
+                Dust.NewDust(player.Center, 0, 0, DustID.GemTopaz, 0f + Main.rand.Next(-7, 7), 0f + Main.rand.Next(-7, 7), 150, default(Color), 0.7f);
+            }
+            for (int d = 0; d < 16; d++)
+            {
+                Dust.NewDust(player.Center, 0, 0, DustID.GemEmerald, 0f + Main.rand.Next(-7, 7), 0f + Main.rand.Next(-7, 7), 150, default(Color), 0.7f);
+            }
+            player.AddBuff(BuffType<LegendaryShieldRaised>(), 120);
+            player.AddBuff(BuffType<LegendaryShieldRaisedCooldown>(), 10 * 60);
 			return base.UseItem(player);
         }
 
@@ -197,7 +267,7 @@ namespace StarsAbove.Items.Weapons.Other
               // Here we take advantage of "player.eocDash" and "player.armorEffectDrawShadowEOCShield" to get the Shield of Cthulhu's afterimage effect
                 Player.eocDash = DashTimer;
                 Player.armorEffectDrawShadowEOCShield = true;
-                Player.AddBuff(BuffType<Invincibility>(), 2);
+                //Player.AddBuff(BuffType<Invincibility>(), 2);
 
                 // count down frames remaining
                 DashTimer--;
@@ -206,7 +276,7 @@ namespace StarsAbove.Items.Weapons.Other
 
         private bool CanUseDash()
         {
-            return Player.HeldItem.type == ModContent.ItemType<LegendaryShield>()
+            return DashAccessoryEquipped || Player.HeldItem.type == ModContent.ItemType<LegendaryShield>()
                 && Player.dashType == DashID.None // player doesn't have Tabi or EoCShield equipped (give priority to those dashes)
                 && !Player.setSolar // player isn't wearing solar armor
                 && !Player.mount.Active; // player isn't mounted, since dashes on a mount look weird

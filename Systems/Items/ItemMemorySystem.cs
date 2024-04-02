@@ -151,6 +151,7 @@ namespace StarsAbove.Systems.Items
         {
             
         }
+        //WIP
         public static List<int> ItemsThatHaveMultiplayerEffects = new List<int>() {
             ItemType<Suistrume>(),
             ItemType<Chronoclock>(),
@@ -159,23 +160,43 @@ namespace StarsAbove.Systems.Items
         };
         public override void SaveData(Item item, TagCompound tag)
         {
-            tag["M1"] = itemMemorySlot1;
-            tag["M2"] = itemMemorySlot2;
-            tag["M3"] = itemMemorySlot3;
-            tag["TarotEffect"] = tarotCardType;
+            if(item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
+            {
+                if (itemMemorySlot1 != 0)
+                {
+                    tag["M1"] = itemMemorySlot1;
 
-            tag["LegendaryShieldMemoryList"] = legendaryShieldMemories;
+                }
+                if (itemMemorySlot2 != 0)
+                {
+                    tag["M2"] = itemMemorySlot2;
+
+                }
+                if (itemMemorySlot2 != 0)
+                {
+                    tag["M3"] = itemMemorySlot3;
+
+                }
+                tag["TarotEffect"] = tarotCardType;
+
+                tag["LegendaryShieldMemoryList"] = legendaryShieldMemories;
+            }
+            
 
             base.SaveData(item, tag);
         }
         public override void LoadData(Item item, TagCompound tag)
         {
-            itemMemorySlot1 = tag.GetInt("M1");
-            itemMemorySlot2 = tag.GetInt("M2");
-            itemMemorySlot3 = tag.GetInt("M3");
-            tarotCardType = tag.GetInt("TarotEffect");
+            if (item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
+            {
+                itemMemorySlot1 = tag.GetInt("M1");
+                itemMemorySlot2 = tag.GetInt("M2");
+                itemMemorySlot3 = tag.GetInt("M3");
+                tarotCardType = tag.GetInt("TarotEffect");
 
-            legendaryShieldMemories = (List<int>)tag.GetList<int>("LegendaryShieldMemoryList");
+                legendaryShieldMemories = (List<int>)tag.GetList<int>("LegendaryShieldMemoryList");
+            }
+            
             base.LoadData(item, tag);
         }
         int check;
@@ -306,6 +327,10 @@ namespace StarsAbove.Systems.Items
                 //10 hermit, 11 fortune, 12 strength, 13 hanged man, 14 death, 15 temperance, 16 devil, 17 tower, 18 star, 19 moon, 20 sun
                 tarotCardType = Main.rand.Next(0, 21);
             }
+            if(player.GetModPlayer<WeaponPlayer>().LegendaryShieldEquippedAsAccessory)
+            {
+                return;
+            }
             ResetMemories(player);
             if (itemMemorySlot1 != 0)
             {
@@ -332,8 +357,35 @@ namespace StarsAbove.Systems.Items
             BuffMemories(player, item);
             Memories(player, item);
         }
+        public override void UpdateEquip(Item item, Player player)
+        {
+            ResetMemories(player);
+
+            //The Legendary Shield can also be equipped as an accessory
+            if (item.type == ModContent.ItemType<LegendaryShield>())
+            {
+                for (int i = 0; i < legendaryShieldMemories.Count; i++)
+                {
+                    CheckMemories(item, legendaryShieldMemories[i], player);
+
+                }
+            }//All effects are processed at the end just in case some weapons have 'buff other effect' effects
+            BuffMemories(player, item);
+            Memories(player, item);
+
+            SyncMemoriesToModPlayer(player);
+
+        }
+        public override void UpdateAccessory(Item item, Player player, bool hideVisual)
+        {
+           
+        }
         public override void HoldItem(Item item, Player player)
         {
+            if (player.GetModPlayer<WeaponPlayer>().LegendaryShieldEquippedAsAccessory)
+            {
+                return;
+            }
             SyncMemoriesToModPlayer(player);
 
             
@@ -1166,7 +1218,7 @@ namespace StarsAbove.Systems.Items
                         Main.dust[dust].velocity = Player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 6f;
                     }
                 }
-                if (OutbackWrangler && !Player.HasBuff(BuffType<NetheriteIngotBuffCooldown>()))
+                if (OutbackWrangler && !Player.HasBuff(BuffType<OutbackWranglerCooldown>()))
                 {
                     for (int ir = 0; ir < 20; ir++)
                     {
@@ -1415,7 +1467,6 @@ namespace StarsAbove.Systems.Items
             }
             if(StrangeScrap)
             {
-                Main.NewText(strangeScrapPriceCopper);
 
                 strangeScrapPriceCopper += 10;
             }

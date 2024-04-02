@@ -13589,6 +13589,16 @@ Mods: {
 				// DisplayName: Inherited Case Active
 				// Description: Mods.StarsAbove.Buffs.InheritedCaseActive.Description
 			}
+
+			HeroicCurse: {
+				// DisplayName: Heroic Curse
+				// Description: Mods.StarsAbove.Buffs.HeroicCurse.Description
+			}
+
+			LegendaryShieldRaisedCooldown: {
+				// DisplayName: Legendary Shield Raised Cooldown
+				// Description: Mods.StarsAbove.Buffs.LegendaryShieldRaisedCooldown.Description
+			}
 		}
 
 		Bestiary: {

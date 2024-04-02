@@ -35,6 +35,7 @@ using StarsAbove.Buffs.Melee.Unforgotten;
 using StarsAbove.Buffs.Misc;
 using StarsAbove.Buffs.Other.ArchitectsLuminance;
 using StarsAbove.Buffs.Other.Farewells;
+using StarsAbove.Buffs.Other.LegendaryShield;
 using StarsAbove.Buffs.Other.Nanomachina;
 using StarsAbove.Buffs.Other.Suistrume;
 using StarsAbove.Buffs.Ranged.CosmicDestroyer;
@@ -236,6 +237,7 @@ namespace StarsAbove.Systems
         public SoundEffectInstance stellarPerformanceSoundInstance;
 
         public bool LegendaryShieldHeld;
+        public bool LegendaryShieldEquippedAsAccessory;
 
         //Hullwrought
         public int empoweredHullwroughtShot;
@@ -3385,6 +3387,14 @@ namespace StarsAbove.Systems
 
             return true;
         }
+        public override void GetHealLife(Item item, bool quickHeal, ref int healValue)
+        {
+            if(Player.HasBuff(BuffType<LegendaryShieldRaisedCooldown>()))
+            {
+                healValue = (int)(healValue * 0.2f);
+            }
+            base.GetHealLife(item, quickHeal, ref healValue);
+        }
 
         public override void OnHurt(Player.HurtInfo info)
         {
@@ -3416,6 +3426,45 @@ namespace StarsAbove.Systems
                     }
                     AuxiliaryGuns.Add(randomChoice);
                 }
+            }
+            if (Player.HasBuff(BuffType<LegendaryShieldRaised>()))
+            {
+                Vector2 dustPosition = Player.Center;
+
+                float dustAmount = 40f;
+                for (int i = 0; i < dustAmount; i++)
+                {
+                    Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                    spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(14f, 15f);
+                    spinningpoint5 = spinningpoint5.RotatedBy(Player.velocity.ToRotation() + MathHelper.ToRadians(90));
+                    int dust = Dust.NewDust(dustPosition, 0, 0, DustID.GemEmerald);
+                    Main.dust[dust].scale = 1f;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].position = dustPosition + spinningpoint5;
+                    Main.dust[dust].velocity = Player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 10f;
+                }
+                for (int d = 0; d < 16; d++)
+                {
+                    Dust.NewDust(Player.Center, 0, 0, DustID.GemTopaz, 0f + Main.rand.Next(-7, 7), 0f + Main.rand.Next(-7, 7), 150, default(Color), 0.7f);
+                }
+                for (int d = 0; d < 16; d++)
+                {
+                    Dust.NewDust(Player.Center, 0, 0, DustID.GemEmerald, 0f + Main.rand.Next(-7, 7), 0f + Main.rand.Next(-7, 7), 150, default(Color), 0.7f);
+                }
+                for (int i = 0; i < Main.maxNPCs; i++)
+                {
+                    NPC npc = Main.npc[i];
+                    if (npc.active && npc.Distance(Player.Center) < 1000 && npc.CanBeChasedBy())
+                    {
+                        npc.SimpleStrikeNPC(info.Damage * (1 + Player.statDefense/150), 0, false, 0, DamageClass.Generic, false, 0);
+                        for (int d = 0; d < 16; d++)
+                        {
+                            Dust.NewDust(npc.Center, 0, 0, DustID.GemEmerald, 0f + Main.rand.Next(-7, 7), 0f + Main.rand.Next(-7, 7), 150, default(Color), 0.7f);
+                        }
+                    }
+                }
+                SoundEngine.PlaySound(SoundID.DD2_MonkStaffGroundImpact, Player.Center);
+                Player.Heal(info.SourceDamage);
             }
             if (RebellionHeld)
             {
@@ -3876,6 +3925,7 @@ namespace StarsAbove.Systems
             }
             CloakOfAnArbiterHeld = false;
             LegendaryShieldHeld = false;
+            LegendaryShieldEquippedAsAccessory = false;
             M4A1Held = false;
             wavedancerHeld = false;
             RebellionHeld = false;
@@ -4118,7 +4168,7 @@ namespace StarsAbove.Systems
                     Player.UpdateVisibleAccessories(new Item(ItemType<CloakOfAnArbiterCape>()), false);
 
                 }
-                if (LegendaryShieldHeld)
+                if ((LegendaryShieldHeld || LegendaryShieldEquippedAsAccessory) && !Player.HasBuff(BuffType<LegendaryShieldRaised>()))
                 {
                     Player.UpdateVisibleAccessories(new Item(ItemType<LegendaryShieldAccessory>()), false);
 
