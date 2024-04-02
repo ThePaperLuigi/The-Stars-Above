@@ -848,7 +848,7 @@ namespace StarsAbove.Systems
                     }
                     else if(player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
                     {
-                        if (oldDamageClass != DamageClass.Melee || oldDamageClass != DamageClass.MeleeNoSpeed)
+                        if (oldDamageClass != DamageClass.Melee && oldDamageClass != DamageClass.MeleeNoSpeed)
                         {
                             damage = player.GetTotalDamage(DamageClass.Melee);
 
@@ -866,7 +866,7 @@ namespace StarsAbove.Systems
                     }
                     else if(player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2)
                     {
-                        if (oldDamageClass != DamageClass.Magic || oldDamageClass != DamageClass.MagicSummonHybrid)
+                        if (oldDamageClass != DamageClass.Magic && oldDamageClass != DamageClass.MagicSummonHybrid)
                         {
                             damage = player.GetTotalDamage(DamageClass.Magic);
                             if (!disableAspectPenalty)
@@ -898,7 +898,7 @@ namespace StarsAbove.Systems
                     }
                     else if(player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2)
                     {
-                        if (oldDamageClass != DamageClass.Summon || oldDamageClass != DamageClass.MagicSummonHybrid || oldDamageClass != DamageClass.SummonMeleeSpeed)
+                        if (oldDamageClass != DamageClass.Summon && oldDamageClass != DamageClass.MagicSummonHybrid && oldDamageClass != DamageClass.SummonMeleeSpeed)
                         {
                             damage = player.GetTotalDamage(DamageClass.Summon);
 
