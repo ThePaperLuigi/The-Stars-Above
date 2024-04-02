@@ -25,8 +25,8 @@ namespace StarsAbove.Buffs.Subworlds
             player.wingTime = 0;
             player.wingsLogic = 0;
             player.wings = 0;
-            player.rocketTime = 0;
-            player.rocketTimeMax = 0;
+            //player.rocketTime = 0;
+            //player.rocketTimeMax = 0;
             //player.carpetTime = 0;
             //player.rocketTime = 0;
             //player.rocketTimeMax = 0;
