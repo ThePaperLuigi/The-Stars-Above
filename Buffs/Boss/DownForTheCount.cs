@@ -19,7 +19,7 @@ namespace StarsAbove.Buffs.Boss
             player.frozen = true;
             player.immune = true;
             player.immuneTime = 120;
-            player.GetDamage(DamageClass.Generic) -= 100f;
+            player.GetDamage(DamageClass.Generic).Flat = 0;
         }
 
     }
