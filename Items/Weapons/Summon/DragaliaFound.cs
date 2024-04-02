@@ -123,6 +123,7 @@ namespace StarsAbove.Items.Weapons.Summon
                     player.GetModPlayer<StarsAbovePlayer>().WhiteFade = 20;
                     Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ProjectileType<DragonArm>(), 0, 0, player.whoAmI);
 
+                    player.Heal(100);
                     player.mount.SetMount(MountType<DragonshiftMount>(), player);
                     player.AddBuff(BuffType<DragonshiftActiveBuff>(), 240);
                     player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -70;
