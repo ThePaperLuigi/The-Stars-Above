@@ -9598,7 +9598,7 @@ namespace StarsAbove
                 for (int i = 0; i < Main.maxNPCs; i++)
                 {
                     NPC npc = Main.npc[i];
-                    if (npc.active && !npc.boss && npc.Distance(Player.Center) < 1000)
+                    if (npc.active && npc.Distance(Player.Center) < 1000)
                     {
                         npc.SimpleStrikeNPC(Player.GetWeaponDamage(Player.HeldItem), 0, true, 0, DamageClass.Generic, false, 0);
                     }
