@@ -105,7 +105,6 @@ namespace StarsAbove.Items.Weapons.Summon
         public override void HoldItem(Player player)
         {
 			//damage += 120 + player.statLifeMax2 / 20 + player.statManaMax2 / 20 + (Math.Max(Math.Max(Math.Max(player.meleeCrit, player.magicCrit), player.rangedCrit), player.thrownCrit));
-            base.HoldItem(player);
 
 			//player.GetModPlayer<WeaponPlayer>().takodachiGauge++;//Debug.
 			Vector2 position = player.Center;
@@ -217,10 +216,10 @@ namespace StarsAbove.Items.Weapons.Summon
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, player.Center);
 					
 					
-					int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center, Vector2.Zero, Mod.Find<ModProjectile>("TakonomiconLaser").Type, Item.damage, 0, player.whoAmI);
-					Main.projectile[index].originalDamage = Item.damage;
+					int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center, Vector2.Zero, Mod.Find<ModProjectile>("TakonomiconLaser").Type, player.GetWeaponDamage(Item), 0, player.whoAmI);
+					Main.projectile[index].originalDamage = player.GetWeaponDamage(Item);
 					int index2 = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center, Vector2.Zero, Mod.Find<ModProjectile>("MagicCircle").Type, 0, 0, player.whoAmI);
-					Main.projectile[index2].originalDamage = Item.damage;
+					Main.projectile[index2].originalDamage = player.GetWeaponDamage(Item);
 					player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
 
 					return false;
@@ -259,7 +258,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			position = Main.MouseWorld;
 			
 
-			player.SpawnMinionOnCursor(source, player.whoAmI, type, 14, knockback);
+			player.SpawnMinionOnCursor(source, player.whoAmI, type, damage, knockback);
 			return false;
 
 		}

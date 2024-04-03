@@ -6,6 +6,8 @@ using Terraria.Audio;
 using System;
 using StarsAbove.Systems;
 using StarsAbove.Buffs.Ranged.StringOfCurses;
+using Steamworks;
+using StarsAbove.Items.Consumables;
 
 namespace StarsAbove.Projectiles.Ranged.StringOfCurses
 {
@@ -60,6 +62,15 @@ namespace StarsAbove.Projectiles.Ranged.StringOfCurses
             }
             if (!target.active)
             {
+                for (int ix = 0; ix < 60; ix++)
+                {
+                    Vector2 position = Vector2.Lerp(Main.player[Projectile.owner].Center, target.Center, (float)ix / 60);
+                    Dust d = Dust.NewDustPerfect(position, DustID.GemEmerald, null, 10, default, 1.5f);
+                    d.fadeIn = 1f;
+                    d.noGravity = true;
+
+                }
+
                 Main.player[Projectile.owner].GetModPlayer<StarsAbovePlayer>().novaGauge += 2;
                 if(Main.player[Projectile.owner].HasBuff(ModContent.BuffType<Cursewrought>()))
                 {
@@ -67,7 +78,16 @@ namespace StarsAbove.Projectiles.Ranged.StringOfCurses
                     Main.player[Projectile.owner].Heal(10);
                 }
                 Main.player[Projectile.owner].AddBuff(ModContent.BuffType<Cursewrought>(), 7 * 60);
+                if (Main.rand.NextBool(10))
+                {
+                    //player.QuickSpawnItem(null,mod.ItemType("RedOrb"));
+                    int k = Item.NewItem(Main.player[Projectile.owner].GetSource_OnHit(target), (int)target.position.X + Main.rand.Next(-20, 20), (int)target.position.Y + Main.rand.Next(-20, 20), target.width, target.height,ModContent.ItemType<Starlight>(), 1, false);
+                    if (Main.netMode == 1)
+                    {
+                        NetMessage.SendData(21, -1, -1, null, k, 1f);
+                    }
 
+                }
             }
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)

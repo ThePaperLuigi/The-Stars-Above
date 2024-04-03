@@ -9622,23 +9622,24 @@ Mods: {
 			}
 
 			ParadiseLost: {
-				// DisplayName: The White Night
+				// DisplayName: Theophobia
 				/* Tooltip:
 					'''
-					Holding this weapon grants the buff [Plague's Prophet] (You can not use this weapon to attack while under the effect of [Plague's Prophet])					
-					Right click during [Plague's Prophet] to [Baptise] a town NPC for 10 minutes
+					Holding this weapon grants the buff [Plague's Prophet] (You can not use this weapon to attack while under the effect of [Plague's Prophet])
+					Right click while under the effect of [Plague's Prophet] to [Baptise] a town NPC for 10 minutes
 					Press the Weapon Action Key while under the effect of [Plague's Prophet] to ascend into [Paradise Lost]
-					While in [Paradise Lost] state, all damage taken is halved, but health will drain over time when hit
-					Additionally, gain unlimited flight and Max Mana increases by 500
+					While in [Paradise Lost] state, all damage taken is halved, but movement speed is drastically slowed
+					Additionally, all nearby foes are inflicted with [Reverence], reducing their damage by 20%
 					Upon ascension, all [Baptised] town NPCs will transform into [Apostles] and will be moved to your location
-					Swapping weapons will immediately end [Paradise Lost] state and additionally inflict [Vulnerability] for 20 seconds, halving defense
-					Within [Paradise Lost] state, attacks with this weapon unleash ????
-					Right click during [Paradise Lost] to unleash [Advent] from all [Apostles], a powerful beam of light towards your cursor (3 second cooldown)
-					Press the Weapon Action Key to cycle between [Governed Truths], active at all times while [Paradise Lost] is active (Governed Truths will additionally change the effect of [Advent])
-					[Confession]: All [Apostles] take no damage, and [Advent] now deals true damage				
-					[Benediction]: All [Apostles] have their attack increased by 70% of this weapon's damage, and [Advent] can now deal critical strikes					
+					[Apostles] deal 50% more damage with their attacks and take 50% less damage; [Apostles] wil revert back to town NPCs if far away
+					Within [Paradise Lost] state, attacks with this weapon unleash beams of light from above
+					Right click during [Paradise Lost] to unleash [Advent] from all [Apostles], dealing damage to all foes caught in its wake (3 second cooldown)
+					Press the Weapon Action Key to cycle between [Governed Truths], active at all times while [Paradise Lost] is active ([Governed Truths] will additionally change the effect of [Advent])
+					[Confession]: All [Apostles] take no damage, and [Advent] now deals true damage
+					[Benediction]: All [Apostles] have their attack increased by 70% of this weapon's damage, and [Advent] can now deal critical strikes
 					[Sentinel]: All damage taken is evenly redirected towards [Apostles], and [Advent] restores Mana and heals [Apostles] when cast
 					When taking fatal damage during [Paradise Lost], deal 666% of this weapon's damage to nearby foes and survive with 1 HP (4 minute cooldown)
+					Swapping weapons will immediately end [Paradise Lost] state and additionally inflict [Vulnerability] for 20 seconds, halving defense
 					'Now rise, my servants- Rise and serve me'
 					''' */
 			}
@@ -10716,6 +10717,7 @@ Mods: {
 			// InheritedCaseGun.DisplayName: Inherited Case Gun
 			// InheritedCaseRocket.DisplayName: Inherited Case Rocket
 			// InheritedCaseSmallExplosion.DisplayName: Inherited Case Small Explosion
+			// ParadiseLostProjectile.DisplayName: Paradise Lost Projectile
 		}
 
 		Buffs: {
@@ -13452,6 +13454,16 @@ Mods: {
 			LegendaryShieldRaisedCooldown: {
 				// DisplayName: Legendary Shield Raised Cooldown
 				// Description: Mods.StarsAbove.Buffs.LegendaryShieldRaisedCooldown.Description
+			}
+
+			ParadiseLostBuff: {
+				// DisplayName: Paradise Lost Buff
+				// Description: Mods.StarsAbove.Buffs.ParadiseLostBuff.Description
+			}
+
+			PlagueProphetBuff: {
+				// DisplayName: Plague Prophet Buff
+				// Description: Mods.StarsAbove.Buffs.PlagueProphetBuff.Description
 			}
 		}
 

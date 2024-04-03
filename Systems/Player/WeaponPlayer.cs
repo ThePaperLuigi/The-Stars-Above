@@ -13,6 +13,7 @@ using StarsAbove.Buffs.Magic.DraggedBelow;
 using StarsAbove.Buffs.Magic.HunterSymphony;
 using StarsAbove.Buffs.Magic.LightUnrelenting;
 using StarsAbove.Buffs.Magic.Ozma;
+using StarsAbove.Buffs.Magic.ParadiseLost;
 using StarsAbove.Buffs.Magic.RedMage;
 using StarsAbove.Buffs.Magic.StygianNymph;
 using StarsAbove.Buffs.Magic.SupremeAuthority;
@@ -2452,6 +2453,11 @@ namespace StarsAbove.Systems
 
         public override void PostUpdateRunSpeeds()
         {
+            if (Player.HasBuff(BuffType<ParadiseLostBuff>()))
+            {
+                Player.maxRunSpeed *= 0.2f;
+                Player.accRunSpeed *= 0.2f;
+            }
             if (BrilliantSpectrumHeld)
             {
                 Player.maxRunSpeed *= refractionGauge / refractionGaugeMax;
@@ -4213,7 +4219,7 @@ namespace StarsAbove.Systems
 
                 }
             }
-            if (Player.HasBuff(BuffType<Invisibility>()))//
+            if (Player.HasBuff(BuffType<Invisibility>()) || Player.HasBuff(BuffType<ParadiseLostBuff>()))//
             {
                 foreach (var layer in PlayerDrawLayerLoader.Layers)
                 {

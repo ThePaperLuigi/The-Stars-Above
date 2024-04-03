@@ -2380,7 +2380,31 @@ namespace StarsAbove
                 bool red = item.OriginalRarity == ItemRarityID.Red;
                 bool purple = item.OriginalRarity == ItemRarityID.Purple;
 
-                float damageMult = 1f +
+                
+
+                if(starfarerOutfit == 4)
+                {
+                    //Aegis of Hope's Legacy
+                    float damageMult = 1f +
+                    (gray ? 50f : 0f) + //No weapons have a base rarity of gray, so this is just for fun
+                    (white ? 20f : 0f) +
+                    (blue ? 12f : 0f) +
+                    (green ? 9f : 0f) +
+                    (orange ? 7f : 0f) +
+                    (lightred ? 6f : 0f) +
+                    (pink ? 4f : 0f) +
+                    (lightpurple ? 2f : 0f) +
+                    (lime ? 1.5f : 0f) +
+                    (yellow ? 1f : 0f) +
+                    (cyan ? 0.5f : 0f) +
+                    (red ? 0.05f : 0f) +
+                    (purple ? 0.01f : 0f);
+                    damage *= damageMult;
+
+                }
+                else
+                {
+                    float damageMult = 1f +
                     (gray ? 20f : 0f) + //No weapons have a base rarity of gray, so this is just for fun
                     (white ? 12f : 0f) +
                     (blue ? 9f : 0f) +
@@ -2394,8 +2418,10 @@ namespace StarsAbove
                     (cyan ? 0.5f : 0f) +
                     (red ? 0.05f : 0f) +
                     (purple ? 0.01f : 0f);
+                    damage *= damageMult;
 
-                damage *= damageMult;
+                }
+
             }
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
