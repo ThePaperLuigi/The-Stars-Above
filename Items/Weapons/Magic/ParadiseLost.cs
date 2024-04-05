@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using StarsAbove.Buffs.Boss;
 using StarsAbove.Buffs.Magic.ParadiseLost;
 using StarsAbove.Buffs.Magic.SupremeAuthority;
 using StarsAbove.Items.Essences;
@@ -30,7 +31,7 @@ namespace StarsAbove.Items.Weapons.Magic
         public override void SetDefaults()
         {
             Item.damage = 230;           //The damage of your weapon
-            Item.DamageType = DamageClass.Magic;          //Is your weapon a melee weapon?
+            Item.DamageType = ModContent.GetInstance<Systems.PsychomentDamageClass>();
             Item.mana = 0;
             Item.width = 40;            //Weapon's texture's width
             Item.height = 40;           //Weapon's texture's height
@@ -53,7 +54,10 @@ namespace StarsAbove.Items.Weapons.Magic
         }
         public override bool CanUseItem(Player player)
         {
-
+            if(player.GetModPlayer<WeaponPlayer>().paradiseLostAnimationTimer > 0)
+            {
+                return false;
+            }
             if (player.altFunctionUse == 2)
             {
 
@@ -72,94 +76,87 @@ namespace StarsAbove.Items.Weapons.Magic
         }
         public override void HoldItem(Player player)
         {
-            //Test
-            player.AddBuff(BuffType<ParadiseLostBuff>(), 2);
-            if (player.ownedProjectileCounts[ProjectileType<ParadiseLostProjectile>()] < 1)
+            if(!player.GetModPlayer<WeaponPlayer>().paradiseLostActive)
             {
-
-                int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<ParadiseLostProjectile>(), 0, 4, player.whoAmI, 0f);
-                Main.projectile[index].originalDamage = Item.damage;
-
+                player.AddBuff(BuffType<PlagueProphetBuff>(), 2);
             }
+            
 
             if (player.whoAmI == Main.myPlayer && StarsAbove.weaponActionKey.JustPressed)
             {
-                //Spawn the eye. After a short delay it consumes all marked NPCs and grants Deified. Logic goes there.
-                if (!player.HasBuff(BuffType<DeifiedBuff>()))
+                if (!player.HasBuff(BuffType<ParadiseLostBuff>()))
                 {
+                    SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, player.Center);
 
-                    if (player.ownedProjectileCounts[ProjectileType<SupremeAuthorityEye>()] < 1)
+                    player.GetModPlayer<WeaponPlayer>().paradiseLostActive = true;
+                    player.AddBuff(BuffType<ParadiseLostBuff>(), 2);
+                    player.GetModPlayer<BossPlayer>().WhiteAlpha = 1f;
+                    if (player.ownedProjectileCounts[ProjectileType<ParadiseLostProjectile>()] < 1)
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_AbsoluteEye, player.Center);
 
-                        Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<SupremeAuthorityEye>(), 0, 0, player.whoAmI, 0f);
+                        int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<ParadiseLostProjectile>(), 0, 4, player.whoAmI, 0f);
+                        Main.projectile[index].originalDamage = Item.damage;
 
+                    }
+                    for (int i = 0; i < Main.maxNPCs; i++)
+                    {
+                        NPC npc = Main.npc[i];
+                        if (npc.active && npc.friendly && npc.townNPC && npc.HasBuff(BuffType<BaptisedBuff>()))
+                        {
+                            npc.AddBuff(BuffType<ApostleBuff>(), 18000);
+                            npc.position = player.position;
 
+                        }
                     }
                 }
                 else
                 {
-                    //If Deified, continue the buff but inflict the debuff
-                    player.AddBuff(BuffType<DeifiedBuff>(), 60 * 60);
-                    player.AddBuff(BuffType<AtrophiedDeifiedBuff>(), 60 * 60);
-                    if (player.statLife / 2 > 1)
-                    {
-                        player.statLife /= 2;
-                    }
-                    else
-                    {
-                        player.statLife = 1;
-                    }
-                    SoundEngine.PlaySound(StarsAboveAudio.SFX_AbsoluteEye, player.Center);
-                    for (int d1 = 0; d1 < 15; d1++)
-                    {
-                        Dust.NewDust(player.Center, 0, 0, DustID.GemAmethyst, 0f + Main.rand.Next(-17, 17), 0f + Main.rand.Next(-3, 3), 150, default(Color), 1f);
-                        Dust.NewDust(player.Center, 0, 0, DustID.GemTopaz, 0f + Main.rand.Next(-3, 3), 0f + Main.rand.Next(-3, 3), 150, default(Color), 1f);
+                    player.AddBuff(BuffType<Vulnerable>(), 60*60);
 
+                    player.GetModPlayer<WeaponPlayer>().paradiseLostActive = false;
+                    player.GetModPlayer<BossPlayer>().WhiteAlpha = 1f;
+                    //End Paradise Lost
+                    for (int i = 0; i < Main.maxNPCs; i++)
+                    {
+                        NPC npc = Main.npc[i];
+                        if (npc.active && npc.friendly && npc.townNPC && npc.HasBuff(BuffType<ApostleBuff>()))
+                        {
+                            npc.DelBuff(npc.FindBuffIndex(BuffType<ApostleBuff>()));
 
+                        }
                     }
-                    player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -70;
-
                 }
 
             }
-            if (player.HasBuff(BuffType<DeifiedBuff>()))
-            {
-                Dust.NewDust(player.Center, 0, 0, DustID.GemAmethyst, 0f + Main.rand.Next(-2, 2), 0f + Main.rand.Next(-3, 3), 150, default(Color), 0.4f);
 
-            }
-            if (activateSwordstormTimer == 1)
-            {
-                int unifiedRandom = (int)MathHelper.ToRadians(Main.rand.Next(0, 364));
-                //Swordstorm
-                Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), savedSwordstormPosition.X, savedSwordstormPosition.Y, 0, 0, ProjectileType<AuthoritySwordstorm>(), player.GetWeaponDamage(Item) + (int)MathHelper.Min(200, (player.GetModPlayer<WeaponPlayer>().SupremeAuthorityConsumedNPCs * 5)), 0, player.whoAmI, 0f, unifiedRandom);
-                Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), savedSwordstormPosition.X, savedSwordstormPosition.Y, 0, 0, ProjectileType<AuthoritySwordstormVFX>(), 0, 0, player.whoAmI, 0f, unifiedRandom);
-
-                float dustAmount = 28f;
-                for (int i = 0; (float)i < dustAmount; i++)
-                {
-                    Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), savedSwordstormPosition.X, savedSwordstormPosition.Y, Main.rand.Next(-15, 15), Main.rand.Next(-15, 15), ProjectileType<SwordstormEffect>(), 0, 0, player.whoAmI, 0f);
-
-                }
-
-            }
             base.HoldItem(player);
         }
 
         public override bool? UseItem(Player player)
         {
-            if (player.altFunctionUse == 2 && player.whoAmI == Main.myPlayer)
+            
+            if (player.altFunctionUse == 2)
             {
-                if (!player.HasBuff(BuffType<DeifiedBuff>()))
+                if (player.HasBuff(BuffType<ParadiseLostBuff>()))
                 {
-                    for (int i = 0; i < Main.maxNPCs; i++)
-                    {
-                        NPC npc = Main.npc[i];
-                        if (npc.active && npc.friendly && npc.townNPC && npc.Distance(player.GetModPlayer<StarsAbovePlayer>().playerMousePos) < 60)
-                        {
-                            npc.AddBuff(BuffType<AuthoritySacrificeMark>(), 18000);
+                    player.GetModPlayer<WeaponPlayer>().paradiseLostAnimationTimer = 1f;
+                    //Advent
 
+                }
+                else
+                {
+                    if (player.whoAmI == Main.myPlayer)
+                    {
+                        for (int i = 0; i < Main.maxNPCs; i++)
+                        {
+                            NPC npc = Main.npc[i];
+                            if (npc.active && npc.friendly && npc.townNPC && npc.Distance(player.GetModPlayer<StarsAbovePlayer>().playerMousePos) < 60)
+                            {
+                                npc.AddBuff(BuffType<BaptisedBuff>(), 18000);
+
+                            }
                         }
+                        
                     }
                     float dustAmount = 24f;
                     for (int i = 0; (float)i < dustAmount; i++)
@@ -167,27 +164,33 @@ namespace StarsAbove.Items.Weapons.Magic
                         Vector2 spinningpoint5 = Vector2.UnitX * 0f;
                         spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(14f, 14f);
                         //spinningpoint5 = spinningpoint5.RotatedBy(player.velocity.ToRotation());
-                        int dust = Dust.NewDust(player.Center, 0, 0, DustID.GemTopaz);
+                        int dust = Dust.NewDust(player.Center, 0, 0, DustID.LifeDrain);
                         Main.dust[dust].scale = 2f;
                         Main.dust[dust].noGravity = true;
                         Main.dust[dust].position = player.Center + spinningpoint5;
                         Main.dust[dust].velocity = player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 15f;
                     }
                     SoundEngine.PlaySound(SoundID.DD2_LightningAuraZap, player.Center);
+                }
+
+            }
+            else
+            {
+                if (player.HasBuff(BuffType<ParadiseLostBuff>()))
+                {
+                    if (player.whoAmI == Main.myPlayer)
+                    {
+                        int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), Main.MouseWorld.X, Main.MouseWorld.Y, 0, 0, ProjectileType<ParadiseLostAttack>(), player.GetWeaponDamage(Item), 0, player.whoAmI, 0f);
+
+                    }
+                    //generic attack
 
                 }
                 else
                 {
-                    if (player.GetModPlayer<WeaponPlayer>().SupremeAuthorityEncroachingStacks >= 2)
-                    {
-                        activateSwordstormTimer = 20;
 
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_DisappearPrep, player.Center);
-                        savedSwordstormPosition = Main.MouseWorld;
-                        player.GetModPlayer<WeaponPlayer>().SupremeAuthorityEncroachingStacks = 0;
-                    }
+                    //nothing
                 }
-
             }
             return base.UseItem(player);
         }
@@ -197,46 +200,7 @@ namespace StarsAbove.Items.Weapons.Magic
         {
             if (player.altFunctionUse != 2)
             {
-                if (player.direction == 1)
-                {
-                    if (altSwing)
-                    {
-                        Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<AuthoritySwing2>(), damage, knockback, player.whoAmI, 0f);
-                        Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<AuthorityVFX2>(), 0, knockback, player.whoAmI, 0f);
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_YunlaiSwing0, player.Center);
-
-                        altSwing = false;
-                    }
-                    else
-                    {
-                        Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<AuthoritySwing1>(), damage, knockback, player.whoAmI, 0f);
-                        Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<AuthorityVFX1>(), 0, knockback, player.whoAmI, 0f);
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_YunlaiSwing1, player.Center);
-
-                        altSwing = true;
-                    }
-
-                }
-                else
-                {
-                    if (altSwing)
-                    {
-                        Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<AuthoritySwing1>(), damage, knockback, player.whoAmI, 0f);
-                        Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<AuthorityVFX1>(), 0, knockback, player.whoAmI, 0f);
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_YunlaiSwing1, player.Center);
-
-                        altSwing = false;
-                    }
-                    else
-                    {
-                        Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<AuthoritySwing2>(), damage, knockback, player.whoAmI, 0f);
-                        Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<AuthorityVFX2>(), 0, knockback, player.whoAmI, 0f);
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_YunlaiSwing0, player.Center);
-
-
-                        altSwing = true;
-                    }
-                }
+                
 
                 return false;
 
@@ -250,12 +214,7 @@ namespace StarsAbove.Items.Weapons.Magic
         public override void AddRecipes()
         {
             CreateRecipe(1)
-                .AddIngredient(ItemID.TopazStaff, 1)
-                .AddIngredient(ItemID.Silk, 8)
-                .AddIngredient(ItemID.NebulaLantern, 1)
-                .AddIngredient(ItemID.SoulofMight, 12)
-                .AddIngredient(ItemID.LunarBar, 5)
-                .AddIngredient(ItemType<EssenceOfAuthority>())
+                
                 .AddTile(TileID.Anvils)
                 .Register();
         }

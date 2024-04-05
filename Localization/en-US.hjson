@@ -14,6 +14,7 @@ Mods: {
 
 		CombatText: {
 			StellarNovaReady: Stellar Nova ready!
+			WarriorOfLightBonus: Determination grants you strength... Health fully restored and cooldowns removed!
 
 			DevotedHavoc: {
 				Grenade: Grenade prepped
@@ -7295,11 +7296,10 @@ Mods: {
 					[c/14E6FF:Spatial Planets] respawn 2 seconds after impact
 					When striking a foe with an uncharged attack during [c/145BFF:Universal Manipulation], the buff becomes [c/14FFB1:Celestial Cacophony] for 12 seconds
 					When using a charged attack during [c/14FFB1:Celestial Cacophony] the [c/FF14A6:Vorpal Planet] deals triple damage and more stars will descend, consuming [c/14FFB1:Celestial Cacophony]
-					Right click to activate [c/FF9F14:Cosmic Conception] which will converge the planets upon yourself, granting the buff [c/EBDD8D:Superimposed]
+					Right click to activate [c/FF9F14:Cosmic Conception] which will converge the planets upon yourself, granting the buff [c/EBDD8D:Superimposed] (2 minute cooldown)
 					Additionally, converging spatial bodies will deal damage to any foe caught in their path
 					[c/EBDD8D:Superimposed] grants incredible health regeneration and Invincibility
 					After 7 seconds, [c/FF9F14:Cosmic Conception] will resolve, bursting in an explosion of cosmic energy
-					[c/FF9F14:Cosmic Conception] has a 2 minute cooldown
 					'And yet you can walk on'
 					'''
 				DisplayName: Ultima Thule
@@ -9774,24 +9774,22 @@ Mods: {
 			}
 
 			ParadiseLost: {
-				DisplayName: Theophobia
+				DisplayName: Paradise Lost
 				Tooltip:
 					'''
-					Holding this weapon grants the buff [Plague's Prophet] (You can not use this weapon to attack while under the effect of [Plague's Prophet])
-					Right click while under the effect of [Plague's Prophet] to [Baptise] a town NPC for 10 minutes
-					Press the Weapon Action Key while under the effect of [Plague's Prophet] to ascend into [Paradise Lost]
-					While in [Paradise Lost] state, all damage taken is halved, but movement speed is drastically slowed
-					Additionally, all nearby foes are inflicted with [Reverence], reducing their damage by 20%
-					Upon ascension, all [Baptised] town NPCs will transform into [Apostles] and will be moved to your location
-					[Apostles] deal 50% more damage with their attacks and take 50% less damage; [Apostles] wil revert back to town NPCs if far away
-					Within [Paradise Lost] state, attacks with this weapon unleash beams of light from above
-					Right click during [Paradise Lost] to unleash [Advent] from all [Apostles], dealing damage to all foes caught in its wake (3 second cooldown)
-					Press the Weapon Action Key to cycle between [Governed Truths], active at all times while [Paradise Lost] is active ([Governed Truths] will additionally change the effect of [Advent])
-					[Confession]: All [Apostles] take no damage, and [Advent] now deals true damage
-					[Benediction]: All [Apostles] have their attack increased by 70% of this weapon's damage, and [Advent] can now deal critical strikes
-					[Sentinel]: All damage taken is evenly redirected towards [Apostles], and [Advent] restores Mana and heals [Apostles] when cast
-					When taking fatal damage during [Paradise Lost], deal 666% of this weapon's damage to nearby foes and survive with 1 HP (4 minute cooldown)
-					Swapping weapons will immediately end [Paradise Lost] state and additionally inflict [Vulnerability] for 20 seconds, halving defense
+					[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes at 70% efficiency, but inherits 150% from critical strike chance modifiers]
+					Holding this weapon grants the buff [c/E2DEB5:Plague's Prophet] (You can not use this weapon to attack while under the effect of [c/E2DEB5:Plague's Prophet])
+					Right click while under the effect of [c/E2DEB5:Plague's Prophet] to [c/F7D76A:Baptise] a town NPC for 10 minutes
+					Press the Weapon Action Key while under the effect of [c/E2DEB5:Plague's Prophet] to ascend into [c/FFD23B:Paradise Lost]
+					While in [c/FFD23B:Paradise Lost] state, damage can not be taken, but health drains over time and health regeneration is disabled (Ends prematurely if health drops below 10)
+					Additionally, all nearby foes are inflicted with [c/D18888:Theophobia], reducing their damage by 20%
+					Upon ascension, all [c/F7D76A:Baptised] town NPCs will transform into [c/EC9797:Apostles] and will be moved to your location
+					[c/EC9797:Apostles] deal 50 more base damage with their attacks and have 400% increased defense; [c/EC9797:Apostles] will lose bonuses if [c/FFD23B:Paradise Lost] state ends
+					Within [c/FFD23B:Paradise Lost] state, attacks with this weapon explode at your cursor, dealing damage in a wide area multiple times
+					Right click during [c/FFD23B:Paradise Lost] to unleash [c/EA1212:Advent], dealing 200% guaranteed critical damage to all nearby foes
+					[c/EA1212:Advent] deals bonus damage based on the amount of active [c/EC9797:Apostles] (Damage bonus caps at 12 [c/EC9797:Apostles])
+					Pressing the Weapon Action Key or swapping weapons in [c/FFD23B:Paradise Lost] state will end [c/FFD23B:Paradise Lost]
+					Additionally, when [c/FFD23B:Paradise Lost] ends, incur Vulnerability for 60 seconds, halving defense ([c/FFD23B:Paradise Lost] can not be activated when Vulnerable)
 					'Now rise, my servants- Rise and serve me'
 					'''
 			}
@@ -10870,6 +10868,11 @@ Mods: {
 			InheritedCaseRocket.DisplayName: Inherited Case Rocket
 			InheritedCaseSmallExplosion.DisplayName: Inherited Case Small Explosion
 			ParadiseLostProjectile.DisplayName: Paradise Lost Projectile
+			ParadiseLostBurst.DisplayName: Paradise Lost Burst
+			ParadiseLostExplosion.DisplayName: Paradise Lost Explosion
+			fastLargeRadiate.DisplayName: fast Large Radiate
+			ParadiseLostAttack.DisplayName: Paradise Lost Attack
+			ParadiseLostAttackDamage.DisplayName: Paradise Lost Attack Damage
 		}
 
 		Buffs: {
@@ -13623,12 +13626,27 @@ Mods: {
 
 			ParadiseLostBuff: {
 				DisplayName: Paradise Lost
-				Description: 'Ye who are drenched in sin. Rise and face me.'
+				Description: Ye who are drenched in sin. Rise and face me.
 			}
 
 			PlagueProphetBuff: {
-				DisplayName: Plague's Prophet 
-				Description: 'Rise, my servants. Rise and serve me.'
+				DisplayName: Plague's Prophet
+				Description: Rise, my servants. Rise and serve me.
+			}
+
+			BaptisedBuff: {
+				DisplayName: Baptised Buff
+				Description: Mods.StarsAbove.Buffs.BaptisedBuff.Description
+			}
+
+			TheophobiaBuff: {
+				DisplayName: Theophobia Buff
+				Description: Mods.StarsAbove.Buffs.TheophobiaBuff.Description
+			}
+
+			ApostleBuff: {
+				DisplayName: Apostle Buff
+				Description: Mods.StarsAbove.Buffs.ApostleBuff.Description
 			}
 		}
 

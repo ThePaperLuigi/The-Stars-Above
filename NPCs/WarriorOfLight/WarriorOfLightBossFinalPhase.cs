@@ -151,7 +151,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 			Microsoft.Xna.Framework.Rectangle r2 = texture2D2.Frame(1, 1, 0, 0);
 			drawOrigin = r2.Size() / 2f;
 			Vector2 position3 = position1 + new Vector2(0.0f, -150f);
-			Microsoft.Xna.Framework.Color color3 = new Microsoft.Xna.Framework.Color(245, 220, 135) * 1.6f; //This is the color of the pulse!
+			Microsoft.Xna.Framework.Color color3 = new Microsoft.Xna.Framework.Color(245, 220, 135, 100) * 1.6f; //This is the color of the pulse!
 																											//Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3, NPC.rotation, drawOrigin, NPC.scale * 0.5f, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
 			float num15 = 3f; //+ num11 * 2.75f; //Scale?
 			Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3, NPC.rotation + num11, drawOrigin, NPC.scale * 0.5f * num15, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);

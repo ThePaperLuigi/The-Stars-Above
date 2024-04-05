@@ -94,7 +94,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 			Microsoft.Xna.Framework.Rectangle r2 = texture2D2.Frame(1, 1, 0, 0);
 			drawOrigin = r2.Size() / 2f;
 			Vector2 position3 = position1 + new Vector2(0.0f, 0f);
-			Microsoft.Xna.Framework.Color color3 = new Color(255, 246, 177);
+			Microsoft.Xna.Framework.Color color3 = new Color(255, 246, 177, 100);
 			Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3, NPC.rotation, drawOrigin, 1f, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
 			float num15 = 1f + num11 * 0.15f;
 			Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3 * num12, NPC.rotation, drawOrigin, 1f * num15, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);

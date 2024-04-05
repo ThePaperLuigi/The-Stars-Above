@@ -30,6 +30,8 @@ using StarsAbove.Buffs.Ranged.StringOfCurses;
 using StarsAbove.Buffs.Magic.IrminsulDream;
 using StarsAbove.Buffs.Other.Farewells;
 using StarsAbove.Systems;
+using StarsAbove.Buffs.Magic.ParadiseLost;
+using Terraria.GameContent;
 
 namespace StarsAbove.Systems
 {
@@ -58,7 +60,14 @@ namespace StarsAbove.Systems
         public int elementalSurgeStacks = 0;
 
         int dustTimer = 0;
-
+        public override void TownNPCAttackStrength(NPC npc, ref int damage, ref float knockback)
+        {
+            if(npc.HasBuff(BuffType<ApostleBuff>()))
+            {
+                damage += 50;
+            }
+            base.TownNPCAttackStrength(npc, ref damage, ref knockback);
+        }
         public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
         {
 
@@ -285,6 +294,62 @@ namespace StarsAbove.Systems
             Hyperburn = false;
             KarmicRetribution = false;
         }
+        public override bool PreDraw(NPC npc, SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+        {
+            if(npc.HasBuff(BuffType<ApostleBuff>()))
+            {
+                // This is where we specify which way to flip the sprite. If the npc is moving to the left, then flip it vertically.
+                SpriteEffects spriteEffects = npc.spriteDirection <= 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+
+                // Getting texture of npc
+                Rectangle sourceRectangle;
+                Vector2 origin;
+                sourceRectangle = new Rectangle((int)npc.Center.X, (int)npc.Center.Y, 260, 260);
+                origin = sourceRectangle.Size() / 2f;
+
+                Microsoft.Xna.Framework.Color color1 = Lighting.GetColor((int)((double)npc.position.X + (double)npc.width * 0.5) / 16, (int)(((double)npc.position.Y + (double)npc.height * 0.5) / 16.0));
+                Vector2 drawOrigin = new Vector2(npc.width * 0.5f, npc.height * 0.5f);
+                int r1 = (int)color1.R;
+                //drawOrigin.Y += 34f;
+                //drawOrigin.Y += 8f;
+                --drawOrigin.X;
+                Vector2 position1 = npc.Center - Main.screenPosition;
+                Texture2D texture2D2 = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Magic/ParadiseLost/ParadiseLostVFX2");
+                Texture2D VFX1 = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Effects/ParadiseLostVFX");
+
+                float num11 = (float)((double)Main.GlobalTimeWrappedHourly % 1.0 / 1.0);
+                float num12 = num11;
+                if ((double)num12 > 0.5)
+                    num12 = 1f - num11;
+                if ((double)num12 < 0.0)
+                    num12 = 0.0f;
+                float num13 = (float)(((double)num11 + 0.5) % 1.0);
+                float num14 = num13;
+                if ((double)num14 > 0.5)
+                    num14 = 1f - num13;
+                if ((double)num14 < 0.0)
+                    num14 = 0.0f;
+                Microsoft.Xna.Framework.Rectangle r2 = texture2D2.Frame(1, 1, 0, 0);
+                drawOrigin = r2.Size() / 2f;
+                Vector2 position3 = position1 + new Vector2(0.0f, -10f);
+                Microsoft.Xna.Framework.Color color3 = new Color(255, 0, 0, 100);
+                float magicFade = 1f + num11 * 0.25f;
+
+                Main.spriteBatch.Draw(VFX1, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3 * num12, 0, drawOrigin, 1f, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
+
+                float num15 = 1f + num11 * 0.45f;
+                Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3 * num12, 0, drawOrigin, 0.5f * num15, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
+
+                float original16 = 1f + num13 * 0.45f;
+
+                float num16 = -1f + num13 * -0.15f;
+                Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3 * num14, 0, drawOrigin, 0.5f * original16, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
+
+
+            }
+
+            return base.PreDraw(npc, spriteBatch, screenPos, drawColor);
+        }
         public override void PostDraw(NPC npc, SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
             if (SubworldSystem.Current == null)
@@ -456,6 +521,22 @@ namespace StarsAbove.Systems
                 }
                 Lighting.AddLight(npc.position, 0.1f, 0.2f, 0.7f);
             }
+            if (npc.HasBuff(BuffType<ApostleBuff>()))
+            {
+                if (Main.rand.Next(4) < 3)
+                {
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 235, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color), 1f);
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 1.8f;
+                    Main.dust[dust].velocity.Y -= 0.5f;
+                    if (Main.rand.NextBool(4))
+                    {
+                        Main.dust[dust].noGravity = false;
+                        Main.dust[dust].scale *= 0.2f;
+                    }
+                }
+                Lighting.AddLight(npc.position, 0.1f, 0.2f, 0.7f);
+            }
             if (Hyperburn)
             {
                 if (Main.rand.Next(4) < 3)
@@ -536,6 +617,28 @@ namespace StarsAbove.Systems
                         spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
                         spinningpoint5 = spinningpoint5.RotatedBy(npc.velocity.ToRotation());
                         int dust = Dust.NewDust(npc.Center, 0, 0, DustID.GemTopaz);
+                        Main.dust[dust].scale = 2f;
+                        Main.dust[dust].noGravity = true;
+                        Main.dust[dust].position = npc.Center + spinningpoint5;
+                        Main.dust[dust].velocity = npc.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 4f;
+                    }
+                    dustTimer = 0;
+                }
+
+
+            }
+            if (npc.HasBuff(BuffType<BaptisedBuff>()) && !npc.HasBuff(BuffType<ApostleBuff>()))
+            {
+                dustTimer++;
+                if (dustTimer > 60)
+                {
+                    float dustAmount = 10f;
+                    for (int i = 0; i < dustAmount; i++)
+                    {
+                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+                        spinningpoint5 = spinningpoint5.RotatedBy(npc.velocity.ToRotation());
+                        int dust = Dust.NewDust(npc.Center, 0, 0, DustID.LifeDrain);
                         Main.dust[dust].scale = 2f;
                         Main.dust[dust].noGravity = true;
                         Main.dust[dust].position = npc.Center + spinningpoint5;

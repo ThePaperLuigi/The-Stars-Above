@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using StarsAbove.Buffs;
 using StarsAbove.Buffs.Accessories;
+using StarsAbove.Buffs.Boss;
 using StarsAbove.Buffs.Celestial.BrilliantSpectrum;
 using StarsAbove.Buffs.Celestial.CatalystMemory;
 using StarsAbove.Buffs.Celestial.TheOnlyThingIKnowForReal;
@@ -61,6 +62,7 @@ using StarsAbove.Items.Armor.DraggedBelow;
 using StarsAbove.Items.Armor.LegendaryShield;
 using StarsAbove.Items.Armor.Manifestation;
 using StarsAbove.Items.Weapons.Celestial;
+using StarsAbove.Items.Weapons.Magic;
 using StarsAbove.Items.Weapons.Melee;
 using StarsAbove.Items.Weapons.Other;
 using StarsAbove.Items.Weapons.Summon;
@@ -467,6 +469,14 @@ namespace StarsAbove.Systems
 
         //Stygian Nymph
         public int duality = 100;
+
+        //ParadiseLost
+        public int paradiseLostDrainTimer;
+        public bool paradiseLostActive;
+        public float paradiseLostAnimationTimer = 0;
+        public float paradiseLostAnimationFloat1 = 0;
+        public float paradiseLostAnimationFloat2 = 0;
+
 
         //Penthesilea's Muse
         public bool paintVisible = false;
@@ -4328,6 +4338,8 @@ namespace StarsAbove.Systems
             KroniicPrincipality();
             Nanomachina();
             DraggedBelow();
+            ParadiseLost();
+
             if (M4A1Held)
             {
                 M4A1deg += 0 + MathHelper.Lerp(0.5f, 1.5f, EaseHelper.InOutQuad((float)(M4A1UseTimer / 100f)));
@@ -4341,6 +4353,82 @@ namespace StarsAbove.Systems
                 radiance = 10;
             }
         }
+
+        private void ParadiseLost()
+        {
+            if (paradiseLostActive)
+            {
+                Player.AddBuff(BuffType<ParadiseLostBuff>(), 2);
+                if (Player.statLife < 10)
+                {
+                    paradiseLostActive = false;
+                    Player.GetModPlayer<BossPlayer>().WhiteAlpha = 1f;
+                    Player.AddBuff(BuffType<Vulnerable>(), 60 * 60);
+                    for (int i = 0; i < Main.maxNPCs; i++)
+                    {
+                        NPC npc = Main.npc[i];
+                        if (npc.active && npc.friendly && npc.townNPC && npc.HasBuff(BuffType<ApostleBuff>()))
+                        {
+                            npc.DelBuff(npc.FindBuffIndex(BuffType<ApostleBuff>()));
+
+                        }
+                    }
+                }
+                else
+                {
+                    Player.lifeRegenTime = 0;
+                    paradiseLostDrainTimer++;
+                    if (paradiseLostDrainTimer > 5)
+                    {
+                        Player.statLife--;
+                        paradiseLostDrainTimer = 0;
+                    }
+                }
+                if (Player.HeldItem.type != ItemType<ParadiseLost>())
+                {
+                    for (int i = 0; i < Main.maxNPCs; i++)
+                    {
+                        NPC npc = Main.npc[i];
+                        if (npc.active && npc.friendly && npc.townNPC && npc.HasBuff(BuffType<ApostleBuff>()))
+                        {
+                            npc.DelBuff(npc.FindBuffIndex(BuffType<ApostleBuff>()));
+
+                        }
+                    }
+                    paradiseLostActive = false;
+                    Player.GetModPlayer<BossPlayer>().WhiteAlpha = 1f;
+                    Player.AddBuff(BuffType<Vulnerable>(), 60 * 60);
+                }
+            }
+
+
+            paradiseLostAnimationTimer -= 0.005f;
+            if (paradiseLostAnimationTimer > 0.7f)
+            {
+                paradiseLostAnimationFloat1 += 0.02f;
+
+            }
+            //Part 2: unleash power animation
+            else if (paradiseLostAnimationTimer > 0.6f && paradiseLostAnimationTimer < 0.7f)
+            {
+                paradiseLostAnimationFloat1 -= 0.2f;
+
+
+            }
+            else if (paradiseLostAnimationTimer > 0)
+            {
+                paradiseLostAnimationFloat1 += 0.01f;
+
+            }
+            else
+            {
+                paradiseLostAnimationFloat1 = 0f;
+            }
+            paradiseLostAnimationFloat1 = MathHelper.Clamp(paradiseLostAnimationFloat1, 0f, 1f);
+
+            paradiseLostAnimationTimer = MathHelper.Clamp(paradiseLostAnimationTimer, 0f, 1f);
+        }
+
         private void DraggedBelow()
         {
             DraggedBelowTarget = Player.GetModPlayer<StarsAbovePlayer>().playerMousePos;
