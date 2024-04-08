@@ -1,13 +1,15 @@
 using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using System;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Dialogue
 {
-    public static class StarsAboveDialogueSystem
+    public class StarsAboveDialogueSystem : ModSystem
     {
+        //Old dialogue system.
         public static void SetupDialogueSystem(int chosenStarfarer, ref int chosenDialogue, ref bool dialoguePrep, ref int dialogueLeft, ref int expression, ref string dialogue, Player Player, Mod Mod)
         {
 
@@ -9444,6 +9446,73 @@ namespace StarsAbove.Dialogue
 
             dialogue = LangHelper.Wrap(dialogue, 44);
         }
+        //Dialouge system rework.
+        public override void PostSetupContent()
+        {
+            var archive = new DialogueArchive();
 
+            var dialogue1 = new Dialogue(a);
+            dialogue1.AddPage(a);
+            dialogue1.AddExtraId(1);
+
+            //populate the archive here
+            archive.AddDialogue(dialogue1);
+
+            //Remember, dialogue needs to be accessed with the spatial disk and should really be able to be accessed without adding any extra lines
+            base.PostSetupContent();
+        }
     }
+    public class Dialogue
+    {
+        //Asphodene/Eridani
+        //if the dialogue is by someone else, this can vary
+        public string Name { get; set; }
+
+        //Categories can be longer than 1 segment
+        //(BossItemDialogue vs BossDialogue.KingSlime)
+        public string Category { get; set; }
+        // category should point to the hjson (Dialogue.[Category].[Name].[Length] i.e. Dialogue.[BossItemDialogue].[Dioskouroi].[4])
+        // dialogue should keep track of its unlock condition and if it has been read or not too
+        // 
+        // Given length, it should automatically populate
+        public int Length { get; set; }
+
+        //Dialogue, Emotion
+        public Dictionary<string, string> DialoguePages { get; set; } = new Dictionary<string, string>();
+        public string AssociatedItem { get; set; }
+        //Unlock condition (This appears in the Archive)
+        //Important info: this gives an esssence, or boss summon item, etc. (This appears in the Archive) - if there isnt any important info it defaults to unlock condition
+        public string UnlockCondition { get; set; }
+        public string ArchiveInfo { get; set; } //maybe this can be automatically defined for weapons taking into account AssociatedItem if Aspho/Eri's archives are correctly seperated
+        //Archive Category (Idle, Boss, Weapon)
+        public string ArchiveCategory { get; set; }
+        public List<int> ExtraIds { get; set; } = new List<int>();
+
+        //Maybe a place where you can define which line the item spawns on?
+        public Dialogue(string name, string category, int length, string associatedItem, string archiveCategory)
+        {
+            Name = name;
+            Category = category;
+            AssociatedItem = associatedItem; // if associated item is 0, there isn't an item
+
+            for(int i = 0; i < Length; i++)
+            {
+                AddPage(LangHelper.GetTextValue($"Dialogue." + category + "." + name + "." + i, Main.LocalPlayer.name), LangHelper.GetTextValue($"Dialogue." + category + "." + name + "." + i + ".Emotion"));
+            }
+        }
+
+        // Add page to the dialogue
+        public void AddPage(string pageContent, string emotion)
+        {
+            DialoguePages.Add(pageContent, emotion);
+        }
+
+        // WIP
+        public void AddExtraId(int id)
+        {
+            ExtraIds.Add(id);
+        }
+    }
+    
+    
 }
